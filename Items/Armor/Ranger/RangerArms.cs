@@ -1,0 +1,54 @@
+using System;
+using Server.Items;
+
+namespace Server.Items
+{
+	[FlipableAttribute( 0x13dc, 0x13d4 )]
+	public class RangerArms : BaseArmor
+	{
+		public override int BasePhysicalResistance{ get{ return 2; } }
+		public override int BaseContondantResistance{ get{ return 4; } }
+		public override int BaseTranchantResistance{ get{ return 3; } }
+		public override int BasePerforantResistance{ get{ return 3; } }
+		public override int BaseMagieResistance{ get{ return 4; } }
+
+		public override int InitMinHits{ get{ return 35; } }
+		public override int InitMaxHits{ get{ return 45; } }
+
+		public override int AosStrReq{ get{ return 25; } }
+		public override int OldStrReq{ get{ return 25; } }
+
+		public override int ArmorBase{ get{ return 16; } }
+
+		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Studded; } }
+		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
+
+		public override int LabelNumber{ get{ return 1041493; } } // studded sleeves, ranger armor
+
+		[Constructable]
+		public RangerArms() : base( 0x13DC )
+		{
+			Weight = 4.0;
+			Hue = 0x59C;
+		}
+
+		public RangerArms( Serial serial ) : base( serial )
+		{
+		}
+		
+		public override void Serialize( GenericWriter writer )
+		{
+			base.Serialize( writer );
+			writer.Write( (int) 0 );
+		}
+		
+		public override void Deserialize(GenericReader reader)
+		{
+			base.Deserialize( reader );
+			int version = reader.ReadInt();
+
+			if ( Weight == 1.0 )
+				Weight = 4.0;
+		}
+	}
+}
