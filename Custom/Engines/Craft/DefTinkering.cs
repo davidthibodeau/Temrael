@@ -383,6 +383,61 @@ namespace Server.Engines.Craft
 			AddJewelrySet( GemType.Amber, typeof( Amber ) );
 			AddJewelrySet( GemType.Diamond, typeof( Diamond ) );*/
 			#endregion
+			
+			
+			#region Vases
+            index = AddCraft(typeof(GrandVaseBec), "Vases", "Grand vase à bec", 50.0, 60.0, typeof(FerIngot), "Lingot de Fer", 5, 1044037);
+			index = AddCraft(typeof(PetitVaseBec), "Vases", "Petit vase à bec", 40.0, 50.0, typeof(FerIngot), "Lingot de Fer", 3, 1044037);
+			index = AddCraft(typeof(GrandVase), "Vases", "Grand vase", 40.0, 50.0, typeof(FerIngot), "Lingot de Fer", 5, 1044037);
+			index = AddCraft(typeof(PetitVase), "Vases", "Petit vase", 30.0, 40.0, typeof(FerIngot), "Lingot de Fer", 3, 1044037);
+			index = AddCraft(typeof(VaseRose), "Vases", "Vase à Rose", 60.0, 70.0, typeof(FerIngot), "Lingot de Fer", 5, 1044037);
+			index = AddCraft(typeof(GrandPot), "Vases", "Grand pot", 40.0, 50.0, typeof(FerIngot), "Lingot de Fer", 4, 1044037);
+			index = AddCraft(typeof(PetitPot), "Vases", "Petit pot", 20.0, 30.0, typeof(FerIngot), "Lingot de Fer", 2, 1044037);
+			#endregion
+			
+			
+			#region Mannequins
+            index = AddCraft(typeof(WigStand), "Mannequins", "Stand à perruque", 30.0, 50.0, typeof(Cloth), "Tissu", 2, 1044037);
+			AddRes(index, typeof(Feather), "Plumes", 20, 1044253);
+			AddRes(index, typeof(Log), "Bois", 2, 1044253);
+			index = AddCraft(typeof(MannequinMale), "Mannequins", "Mannequin de front", 60.0, 70.0, typeof(Cloth), "Tissu", 5, 1044037);
+			AddRes(index, typeof(Feather), "Plumes", 50, 1044253);
+			AddRes(index, typeof(Log), "Bois", 3, 1044253);
+			index = AddCraft(typeof(MannequinFemale), "Mannequins", "Mannequin de côté", 60.0, 70.0, typeof(Cloth), "Tissu", 5, 1044037);
+			AddRes(index, typeof(Feather), "Plumes", 50, 1044253);
+			AddRes(index, typeof(Log), "Bois", 3, 1044253);
+			index = AddCraft(typeof(PoupeeFemale), "Mannequins", "Poupée féminine", 60.0, 70.0, typeof(Cloth), "Tissu", 5, 1044037);
+			AddRes(index, typeof(Feather), "Plumes", 50, 1044253);
+			index = AddCraft(typeof(PoupeeMale), "Mannequins", "Poupée masculine", 60.0, 70.0, typeof(Cloth), "Tissu", 5, 1044037);
+			AddRes(index, typeof(Feather), "Plumes", 50, 1044253);
+			index = AddCraft(typeof(TeddyBear), "Mannequins", "Ourson en peluche", 30.0, 50.0, typeof(Cloth), "Tissu", 5, 1044037);
+			AddRes(index, typeof(Feather), "Plumes", 50, 1044253);
+			index = AddCraft(typeof(WoodenHorse), "Mannequins", "Cheval de bois", 70.0, 80.0, typeof(Log), "Bois", 15, 1044037);
+
+			#endregion
+			
+			#region Gamelles
+            index = AddCraft(typeof(GamelleA), "Gamelles", "Poêle à frire", 20.0, 40.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleB), "Gamelles", "Casserole sale", 20.0, 40.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleC), "Gamelles", "Poêle sale", 20.0, 40.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleD), "Gamelles", "Plat sale", 20.0, 40.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleE), "Gamelles", "Plat à poignées", 30.0, 50.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleF), "Gamelles", "Casserole", 30.0, 50.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleG), "Gamelles", "Grosse casserole sale", 50.0, 60.0, typeof(FerIngot), "Fer", 3, 1044037);
+			index = AddCraft(typeof(GamelleH), "Gamelles", "Plat à poignées sale", 50.0, 60.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleI), "Gamelles", "Grosse poêle sale", 50.0, 60.0, typeof(FerIngot), "Fer", 3, 1044037);
+			index = AddCraft(typeof(GamelleJ), "Gamelles", "Grosse gamelle", 50.0, 60.0, typeof(FerIngot), "Fer", 3, 1044037);
+			index = AddCraft(typeof(GamelleK), "Gamelles", "Plat à gratin", 50.0, 60.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleK), "Gamelles", "Plat à gratin sale", 50.0, 60.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleM), "Gamelles", "Gros plat sale", 50.0, 60.0, typeof(FerIngot), "Fer", 2, 1044037);
+			index = AddCraft(typeof(GamelleN), "Gamelles", "Gamelle profonde", 60.0, 70.0, typeof(FerIngot), "Fer", 4, 1044037);
+			index = AddCraft(typeof(GamelleO), "Gamelles", "Ecuelle sale", 20.0, 40.0, typeof(FerIngot), "Fer", 1, 1044037);
+			index = AddCraft(typeof(GamelleP), "Gamelles", "Ecuelle propre", 20.0, 40.0, typeof(FerIngot), "Fer", 1, 1044037);
+			index = AddCraft(typeof(GamelleQ), "Gamelles", "Chaudron avec support", 70.0, 80.0, typeof(FerIngot), "Fer", 20, 1044037);
+			index = AddCraft(typeof(GamelleR), "Gamelles", "Chaudron", 65.0, 75.0, typeof(FerIngot), "Fer", 15, 1044037);
+			
+			#endregion
+			
 
 			#region Multi-Component Items
 			//index = AddCraft( typeof( AxleGears ), "Ensembles", "Essieu", 0.0, 0.0, typeof( Axle ), 1044169, 1, 1044253 );

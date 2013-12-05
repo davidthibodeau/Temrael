@@ -211,6 +211,52 @@ namespace Server.Engines.Craft
             }
             #endregion
 
+
+						
+			#region paravents
+            AddCraft(typeof(ParaventA), "Paravents", "Paravent de bois sculpté", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Papier (parchemin)", 4, 1044563);
+			AddCraft(typeof(ParaventB), "Paravents", "Paravent de papier blanc", 70.0, 80.0, typeof(Board), "Planches", 5, 1044351);
+            AddRes(index, typeof(BlankScroll), "Papier (parchemin)", 5, 1044563);
+			AddCraft(typeof(ParaventC), "Paravents", "Paravent de bambou", 70.0, 80.0, typeof(Board), "Planches", 5, 1044351);
+            AddRes(index, typeof(BlankScroll), "Papier (parchemin)", 5, 1044563);	
+			#endregion
+			
+			#region fruitcontainer
+            AddCraft(typeof(FruitContainerA), "Contenant à fruits", "Tonneau de pommes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Apple), "Pommes", 50, 1044563);
+			AddCraft(typeof(FruitContainerB), "Contenant à fruits", "Tonneau de bananes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Banana), "Bananes", 50, 1044563);
+			AddCraft(typeof(FruitContainerC), "Contenant à fruits", "Tonneau de pain", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Banana), "BreadLoaf", 25, 1044563);
+			AddCraft(typeof(FruitContainerD), "Contenant à fruits", "Tonneau de dattes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Dates), "Dattes", 50, 1044563);
+			AddCraft(typeof(FruitContainerE), "Contenant à fruits", "Tonneau de citrons", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Lemon), "Citrons", 50, 1044563);
+			AddCraft(typeof(FruitContainerF), "Contenant à fruits", "Tonneau de citrons verts", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Lime), "Citrons verts", 50, 1044563);
+			AddCraft(typeof(FruitContainerG), "Contenant à fruits", "Tonneau de pommes renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Apple), "Pommes", 50, 1044563);
+			AddCraft(typeof(FruitContainerH), "Contenant à fruits", "Tonneau de bananes renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Banana), "Bananes", 50, 1044563);
+			AddCraft(typeof(FruitContainerI), "Contenant à fruits", "Tonneau de patates renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddCraft(typeof(FruitContainerH), "Contenant à fruits", "Tonneau de pêches renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
+			AddRes(index, typeof(Peach), "Pêches", 50, 1044563);
+
+
+			#endregion
+			
+			
             #region Containers
             // Containers
             AddCraft(typeof(WoodenBox), "Conteneur", 1023709, 21.0, 46.0, typeof(Board), "Planches", 10, 1044351);
