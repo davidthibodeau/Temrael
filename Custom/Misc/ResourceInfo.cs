@@ -1165,52 +1165,52 @@ namespace Server.Items
 		private static CraftResourceInfo[] m_ScaleInfo = new CraftResourceInfo[]
 			{
 				new CraftResourceInfo( 0, 1053129, "Normal",	        CraftAttributeInfo.Blank,		CraftResource.RegularScales,		typeof( RegularScales ) ),
-				new CraftResourceInfo( 0x080e, 1053130, "Nordique",	    CraftAttributeInfo.Nordique,	CraftResource.NordiqueScales,		typeof( NordiqueScales ) ),
-				new CraftResourceInfo( 2171, 1053131, "Desertique",	    CraftAttributeInfo.Desertique,	CraftResource.DesertiqueScales,		typeof( DesertiqueScales ) ),
-				new CraftResourceInfo( 1942, 1053132, "Maritime",	    CraftAttributeInfo.Maritime,	CraftResource.MaritimeScales,		typeof( MaritimeScales ) ),
-				new CraftResourceInfo( 0x860, 1053133, "Volcanique",	CraftAttributeInfo.Volcanique,	CraftResource.VolcaniqueScales,		typeof( VolcaniqueScales ) ),
-				new CraftResourceInfo( 1944, 1053134, "Ancien",	        CraftAttributeInfo.Ancien,		CraftResource.AncienScales, 		typeof( AncienScales ) ),
-                new CraftResourceInfo( 0x794, 1053134, "Wyrmique",	    CraftAttributeInfo.Wyrm,		CraftResource.WyrmScales, 		    typeof( WyrmScales ) )
+				new CraftResourceInfo( 2059, 1053130, "Nordique",	    CraftAttributeInfo.Nordique,	CraftResource.NordiqueScales,		typeof( NordiqueScales ) ),
+				new CraftResourceInfo( 2164, 1053131, "Desertique",	    CraftAttributeInfo.Desertique,	CraftResource.DesertiqueScales,		typeof( DesertiqueScales ) ),
+				new CraftResourceInfo( 2123, 1053132, "Maritime",	    CraftAttributeInfo.Maritime,	CraftResource.MaritimeScales,		typeof( MaritimeScales ) ),
+				new CraftResourceInfo( 2375, 1053133, "Volcanique",	CraftAttributeInfo.Volcanique,	CraftResource.VolcaniqueScales,		typeof( VolcaniqueScales ) ),
+				new CraftResourceInfo( 2174, 1053134, "Ancien",	        CraftAttributeInfo.Ancien,		CraftResource.AncienScales, 		typeof( AncienScales ) ),
+                new CraftResourceInfo( 1953, 1053134, "Wyrmique",	    CraftAttributeInfo.Wyrm,		CraftResource.WyrmScales, 		    typeof( WyrmScales ) )
 			};
 
 		private static CraftResourceInfo[] m_LeatherInfo = new CraftResourceInfo[]
 			{
 				new CraftResourceInfo( 0x000, 1049353, "Normal",		CraftAttributeInfo.Blank,		        CraftResource.RegularLeather,	typeof( Leather ),			typeof( Hides ) ),
-                new CraftResourceInfo( 2243, 1049354, "Reptilien",		CraftAttributeInfo.ReptilienCuir,	CraftResource.ReptilienLeather,	typeof( ReptilienLeather ),	typeof( ReptilienHides ) ),
-				new CraftResourceInfo( 0x80e, 1049354, "Nordique",		CraftAttributeInfo.NordiqueCuir,	    CraftResource.NordiqueLeather,	typeof( NordiqueLeather ),	typeof( NordiqueHides ) ),
-				new CraftResourceInfo( 2171, 1049355, "Desertique", 	CraftAttributeInfo.DesertiqueCuir,	CraftResource.DesertiqueLeather,typeof( DesertiqueLeather ),typeof( DesertiqueHides ) ),
-				new CraftResourceInfo( 1942, 1049356, "Maritime",		CraftAttributeInfo.MaritimeCuir,	    CraftResource.MaritimeLeather,	typeof( MaritimeLeather ),	typeof( MaritimeHides ) ),
-                new CraftResourceInfo( 0x860, 1049356, "Volcanique",	CraftAttributeInfo.VolcaniqueCuir,   CraftResource.VolcaniqueLeather,typeof( VolcaniqueLeather ),typeof( VolcaniqueHides ) ),
-				new CraftResourceInfo( 1950, 1049356, "Geant",   		CraftAttributeInfo.GeantCuir,        CraftResource.GeantLeather, 	typeof( GeantLeather ),	    typeof( GeantHides ) ),
-                new CraftResourceInfo( 2167, 1049356, "Minotaure",   	CraftAttributeInfo.MinotaureCuir,   	CraftResource.MinotaurLeather, 	typeof( MinotaureLeather ),	typeof( MinotaureHides ) ),
-				new CraftResourceInfo( 2069, 1049356, "Ophidien",		CraftAttributeInfo.OphidienCuir, 	CraftResource.OphidienLeather,	typeof( OphidienLeather ),	typeof( OphidienHides ) ),
-				new CraftResourceInfo( 1941, 1049356, "Arachnide",		CraftAttributeInfo.ArachnideCuir,	CraftResource.ArachnideLeather,	typeof( ArachnideLeather ),	typeof( ArachnideHides ) ),
-                new CraftResourceInfo( 2188, 1049356, "Magique", 		CraftAttributeInfo.MagiqueCuir,  	CraftResource.MagiqueLeather,	typeof( MagiqueLeather ),	typeof( MagiqueHides ) ),
-				new CraftResourceInfo( 1944, 1049356, "Ancien", 		CraftAttributeInfo.AncienCuir,  	    CraftResource.AncienLeather,	typeof( AncienLeather ),	typeof( AncienHides ) ),
-				new CraftResourceInfo( 2076, 1049356, "Demoniaque", 	CraftAttributeInfo.DemoniaqueCuir,	CraftResource.DemoniaqueLeather,typeof( DemoniaqueLeather ),typeof( DemoniaqueHides ) ),
+                new CraftResourceInfo( 2129, 1049354, "Reptilien",		CraftAttributeInfo.ReptilienCuir,	CraftResource.ReptilienLeather,	typeof( ReptilienLeather ),	typeof( ReptilienHides ) ),
+				new CraftResourceInfo( 2059, 1049354, "Nordique",		CraftAttributeInfo.NordiqueCuir,	    CraftResource.NordiqueLeather,	typeof( NordiqueLeather ),	typeof( NordiqueHides ) ),
+				new CraftResourceInfo( 2164, 1049355, "Desertique", 	CraftAttributeInfo.DesertiqueCuir,	CraftResource.DesertiqueLeather,typeof( DesertiqueLeather ),typeof( DesertiqueHides ) ),
+				new CraftResourceInfo( 2123, 1049356, "Maritime",		CraftAttributeInfo.MaritimeCuir,	    CraftResource.MaritimeLeather,	typeof( MaritimeLeather ),	typeof( MaritimeHides ) ),
+                new CraftResourceInfo( 2375, 1049356, "Volcanique",	CraftAttributeInfo.VolcaniqueCuir,   CraftResource.VolcaniqueLeather,typeof( VolcaniqueLeather ),typeof( VolcaniqueHides ) ),
+				new CraftResourceInfo( 2424, 1049356, "Geant",   		CraftAttributeInfo.GeantCuir,        CraftResource.GeantLeather, 	typeof( GeantLeather ),	    typeof( GeantHides ) ),
+                new CraftResourceInfo( 2170, 1049356, "Minotaure",   	CraftAttributeInfo.MinotaureCuir,   	CraftResource.MinotaurLeather, 	typeof( MinotaureLeather ),	typeof( MinotaureHides ) ),
+				new CraftResourceInfo( 2373, 1049356, "Ophidien",		CraftAttributeInfo.OphidienCuir, 	CraftResource.OphidienLeather,	typeof( OphidienLeather ),	typeof( OphidienHides ) ),
+				new CraftResourceInfo( 2180, 1049356, "Arachnide",		CraftAttributeInfo.ArachnideCuir,	CraftResource.ArachnideLeather,	typeof( ArachnideLeather ),	typeof( ArachnideHides ) ),
+                new CraftResourceInfo( 2326, 1049356, "Magique", 		CraftAttributeInfo.MagiqueCuir,  	CraftResource.MagiqueLeather,	typeof( MagiqueLeather ),	typeof( MagiqueHides ) ),
+				new CraftResourceInfo( 2174, 1049356, "Ancien", 		CraftAttributeInfo.AncienCuir,  	    CraftResource.AncienLeather,	typeof( AncienLeather ),	typeof( AncienHides ) ),
+				new CraftResourceInfo( 1945, 1049356, "Demoniaque", 	CraftAttributeInfo.DemoniaqueCuir,	CraftResource.DemoniaqueLeather,typeof( DemoniaqueLeather ),typeof( DemoniaqueHides ) ),
 				new CraftResourceInfo( 0x794, 1049356, "Dragonique",	CraftAttributeInfo.DragoniqueCuir,	CraftResource.DragoniqueLeather,typeof( DragoniqueLeather ),typeof( DragoniqueHides ) ),
-				new CraftResourceInfo( 0x7f9, 1049356, "Lupus", 		CraftAttributeInfo.LupusCuir,       	CraftResource.LupusLeather, 	typeof( LupusLeather ),	    typeof( LupusHides ) )
+				new CraftResourceInfo( 2054, 1049356, "Lupus", 		CraftAttributeInfo.LupusCuir,       	CraftResource.LupusLeather, 	typeof( LupusLeather ),	    typeof( LupusHides ) )
 			};
 
         private static CraftResourceInfo[] m_BonesInfo = new CraftResourceInfo[]
 			{
 				new CraftResourceInfo( 0x000, 1049353, "Normal",		CraftAttributeInfo.Blank,		CraftResource.RegularBones,	    typeof( Bone ),			typeof( Bone ) ),
                 new CraftResourceInfo( 2360, 1049353, "Gobelin",		CraftAttributeInfo.Gobelin,		CraftResource.GobelinBones,	    typeof( GobelinBone ),	typeof( GobelinBone ) ),
-                new CraftResourceInfo( 2243, 1049354, "Reptilien",		CraftAttributeInfo.Reptilien,	CraftResource.ReptilienBones,	typeof( ReptilienBone ),	typeof( ReptilienBone ) ),
-				new CraftResourceInfo( 0x80e, 1049354, "Nordique",		CraftAttributeInfo.Nordique,	CraftResource.NordiqueBones,	typeof( NordiqueBone ),	typeof( NordiqueBone ) ),
-				new CraftResourceInfo( 2171, 1049355, "Desertique", 	CraftAttributeInfo.Desertique,	CraftResource.DesertiqueBones,	typeof( DesertiqueBone ),typeof( DesertiqueBone ) ),
-				new CraftResourceInfo( 1942, 1049356, "Maritime",		CraftAttributeInfo.Maritime,	CraftResource.MaritimeBones,	typeof( MaritimeBone ),	typeof( MaritimeBone ) ),
-                new CraftResourceInfo( 0x860, 1049356, "Volcanique",	CraftAttributeInfo.Volcanique,	CraftResource.VolcaniqueBones,	typeof( VolcaniqueBone ),typeof( VolcaniqueBone ) ),
-                new CraftResourceInfo( 1950, 1049356, "Geant",		    CraftAttributeInfo.Geant,   	CraftResource.GeantBones,   	typeof( GeantBone ),	typeof( GeantBone ) ),
-                new CraftResourceInfo( 2167, 1049356, "Minotaure",		CraftAttributeInfo.Minotaure,   CraftResource.MinotaureBones,   typeof( MinotaureBone ),typeof( MinotaureBone ) ),
-				new CraftResourceInfo( 2069, 1049356, "Ophidien",		CraftAttributeInfo.Ophidien,	CraftResource.OphidienBones,	typeof( OphidienBone ),	typeof( OphidienBone ) ),
-                new CraftResourceInfo( 1941, 1049356, "Arachnide",		CraftAttributeInfo.Arachnide,	CraftResource.ArachnideBones,	typeof( ArachnideBone ),typeof( ArachnideBone ) ),
-                new CraftResourceInfo( /*2185*/ 2188, 1049356, "Magique", 		    CraftAttributeInfo.Magique,  	CraftResource.MagiqueBones,  	typeof( MagiqueBone ),	typeof( MagiqueBone ) ),
-                new CraftResourceInfo( 1944, 1049356, "Ancien", 		CraftAttributeInfo.Ancien,  	CraftResource.AncienBones,  	typeof( AncienBone ),	typeof( AncienBone ) ),
-                new CraftResourceInfo( 2076, 1049356, "Demoniaque", 	CraftAttributeInfo.Demoniaque,	CraftResource.DemonBones,   	typeof( DemonBone ),	typeof( DemonBone ) ),
+                new CraftResourceInfo( 2129, 1049354, "Reptilien",		CraftAttributeInfo.Reptilien,	CraftResource.ReptilienBones,	typeof( ReptilienBone ),	typeof( ReptilienBone ) ),
+				new CraftResourceInfo( 2059, 1049354, "Nordique",		CraftAttributeInfo.Nordique,	CraftResource.NordiqueBones,	typeof( NordiqueBone ),	typeof( NordiqueBone ) ),
+				new CraftResourceInfo( 2164, 1049355, "Desertique", 	CraftAttributeInfo.Desertique,	CraftResource.DesertiqueBones,	typeof( DesertiqueBone ),typeof( DesertiqueBone ) ),
+				new CraftResourceInfo( 2123, 1049356, "Maritime",		CraftAttributeInfo.Maritime,	CraftResource.MaritimeBones,	typeof( MaritimeBone ),	typeof( MaritimeBone ) ),
+                new CraftResourceInfo( 2375, 1049356, "Volcanique",	CraftAttributeInfo.Volcanique,	CraftResource.VolcaniqueBones,	typeof( VolcaniqueBone ),typeof( VolcaniqueBone ) ),
+                new CraftResourceInfo( 2424, 1049356, "Geant",		    CraftAttributeInfo.Geant,   	CraftResource.GeantBones,   	typeof( GeantBone ),	typeof( GeantBone ) ),
+                new CraftResourceInfo( 2170, 1049356, "Minotaure",		CraftAttributeInfo.Minotaure,   CraftResource.MinotaureBones,   typeof( MinotaureBone ),typeof( MinotaureBone ) ),
+				new CraftResourceInfo( 2373, 1049356, "Ophidien",		CraftAttributeInfo.Ophidien,	CraftResource.OphidienBones,	typeof( OphidienBone ),	typeof( OphidienBone ) ),
+                new CraftResourceInfo( 2180, 1049356, "Arachnide",		CraftAttributeInfo.Arachnide,	CraftResource.ArachnideBones,	typeof( ArachnideBone ),typeof( ArachnideBone ) ),
+                new CraftResourceInfo( /*2185*/ 2326, 1049356, "Magique", 		    CraftAttributeInfo.Magique,  	CraftResource.MagiqueBones,  	typeof( MagiqueBone ),	typeof( MagiqueBone ) ),
+                new CraftResourceInfo( 2174, 1049356, "Ancien", 		CraftAttributeInfo.Ancien,  	CraftResource.AncienBones,  	typeof( AncienBone ),	typeof( AncienBone ) ),
+                new CraftResourceInfo( 1945, 1049356, "Demoniaque", 	CraftAttributeInfo.Demoniaque,	CraftResource.DemonBones,   	typeof( DemonBone ),	typeof( DemonBone ) ),
 				new CraftResourceInfo( 0x794, 1049356, "Dragonique",    CraftAttributeInfo.Dragonique,	CraftResource.DragonBones,  	typeof( DragonBone ),	typeof( DragonBone ) ),
-				new CraftResourceInfo( 0x7f9, 1049356, "Balron",		CraftAttributeInfo.Balron,  	CraftResource.BalronBones,  	typeof( BalronBone ),	typeof( BalronBone ) ),
-				new CraftResourceInfo( 0x794, 1049356, "Wyrmique",		CraftAttributeInfo.Wyrm,    	CraftResource.WyrmBones,    	typeof( WyrmBone ),	    typeof( WyrmBone ) )
+				new CraftResourceInfo( 2055, 1049356, "Balron",		CraftAttributeInfo.Balron,  	CraftResource.BalronBones,  	typeof( BalronBone ),	typeof( BalronBone ) ),
+				new CraftResourceInfo( 1953, 1049356, "Wyrmique",		CraftAttributeInfo.Wyrm,    	CraftResource.WyrmBones,    	typeof( WyrmBone ),	    typeof( WyrmBone ) )
 
 			};
 
@@ -1225,13 +1225,13 @@ namespace Server.Items
 		private static CraftResourceInfo[] m_WoodInfo = new CraftResourceInfo[]
 			{
 				new CraftResourceInfo( 0x000, 1011542, "Erable",    CraftAttributeInfo.Blank,		CraftResource.RegularWood,	typeof( Log ),			typeof( Board ) ),
-				new CraftResourceInfo( 0x80e, 1072533, "Pin",		CraftAttributeInfo.PinWood,		CraftResource.PinWood,		typeof( PinLog ),		typeof( PinBoard ) ),
-				new CraftResourceInfo( 1941, 1072534, "Cyprès",	    CraftAttributeInfo.CypresWood,  CraftResource.CyprèsWood,	typeof( CypresLog ),	typeof( CypresBoard ) ),
-				new CraftResourceInfo( 2165, 1072535, "Cèdre",	    CraftAttributeInfo.CedreWood,	CraftResource.CèdreWood,	typeof( CedreLog ),		typeof( CedreBoard ) ),
-				new CraftResourceInfo( 0x7f9, 1072536, "Saule",		CraftAttributeInfo.SauleWood,	CraftResource.SauleWood,	typeof( SauleLog ),	    typeof( SauleBoard ) ),
-				new CraftResourceInfo( 1944, 1072538, "Chêne",		CraftAttributeInfo.CheneWood,	CraftResource.ChêneWood,	typeof( CheneLog ),	    typeof( CheneBoard ) ),
-				new CraftResourceInfo( 0x794, 1072539, "Ébène",		CraftAttributeInfo.EbeneWood,	CraftResource.ÉbèneWood,	typeof( EbeneLog ),	    typeof( EbeneBoard ) ),
-                new CraftResourceInfo( 2076, 1072539, "Acajou",		CraftAttributeInfo.AcajouWood,	CraftResource.AcajouWood,	typeof( AcajouLog ),	typeof( AcajouBoard ) )
+				new CraftResourceInfo( 2059, 1072533, "Pin",		CraftAttributeInfo.PinWood,		CraftResource.PinWood,		typeof( PinLog ),		typeof( PinBoard ) ),
+				new CraftResourceInfo( 2129, 1072534, "Cyprès",	    CraftAttributeInfo.CypresWood,  CraftResource.CyprèsWood,	typeof( CypresLog ),	typeof( CypresBoard ) ),
+				new CraftResourceInfo( 2164, 1072535, "Cèdre",	    CraftAttributeInfo.CedreWood,	CraftResource.CèdreWood,	typeof( CedreLog ),		typeof( CedreBoard ) ),
+				new CraftResourceInfo( 2170, 1072536, "Saule",		CraftAttributeInfo.SauleWood,	CraftResource.SauleWood,	typeof( SauleLog ),	    typeof( SauleBoard ) ),
+				new CraftResourceInfo( 2360, 1072538, "Chêne",		CraftAttributeInfo.CheneWood,	CraftResource.ChêneWood,	typeof( CheneLog ),	    typeof( CheneBoard ) ),
+				new CraftResourceInfo( 2055, 1072539, "Ébène",		CraftAttributeInfo.EbeneWood,	CraftResource.ÉbèneWood,	typeof( EbeneLog ),	    typeof( EbeneBoard ) ),
+                new CraftResourceInfo( 2373, 1072539, "Acajou",		CraftAttributeInfo.AcajouWood,	CraftResource.AcajouWood,	typeof( AcajouLog ),	typeof( AcajouBoard ) )
 			};
 
 		/// <summary>

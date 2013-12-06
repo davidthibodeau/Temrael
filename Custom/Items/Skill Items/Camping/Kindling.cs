@@ -17,7 +17,7 @@ namespace Server.Items
 		public Kindling( int amount ) : base( 0xDE1 )
 		{
 			Stackable = true;
-			Weight = 5.0;
+			Weight = 1.0;
 			Amount = amount;
 		}
 
