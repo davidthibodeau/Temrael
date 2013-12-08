@@ -52,7 +52,7 @@ namespace Server.Items
 		[Constructable]
 		public Banana( int amount ) : base( amount, 0x171f )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -85,7 +85,7 @@ namespace Server.Items
 		[Constructable]
 		public Bananas( int amount ) : base( amount, 0x1721 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -117,7 +117,7 @@ namespace Server.Items
 		[Constructable]
 		public SplitCoconut( int amount ) : base( amount, 0x1725 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -149,7 +149,7 @@ namespace Server.Items
 		[Constructable]
 		public Lemon( int amount ) : base( amount, 0x1728 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -181,7 +181,7 @@ namespace Server.Items
 		[Constructable]
 		public Lemons( int amount ) : base( amount, 0x1729 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -213,7 +213,7 @@ namespace Server.Items
 		[Constructable]
 		public Lime( int amount ) : base( amount, 0x172a )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -245,7 +245,7 @@ namespace Server.Items
 		[Constructable]
 		public Limes( int amount ) : base( amount, 0x172B )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -277,7 +277,7 @@ namespace Server.Items
 		[Constructable]
 		public Coconut( int amount ) : base( amount, 0x1726 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -309,7 +309,7 @@ namespace Server.Items
 		[Constructable]
 		public OpenCoconut( int amount ) : base( amount, 0x1723 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -341,7 +341,7 @@ namespace Server.Items
 		[Constructable]
 		public Dates( int amount ) : base( amount, 0x1727 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -373,7 +373,7 @@ namespace Server.Items
 		[Constructable]
 		public Grapes( int amount ) : base( amount, 0x9D1 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -405,7 +405,7 @@ namespace Server.Items
 		[Constructable]
 		public Peach( int amount ) : base( amount, 0x9D2 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -437,7 +437,7 @@ namespace Server.Items
 		[Constructable]
 		public Pear( int amount ) : base( amount, 0x994 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -469,7 +469,7 @@ namespace Server.Items
 		[Constructable]
 		public Apple( int amount ) : base( amount, 0x9D0 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -575,7 +575,7 @@ namespace Server.Items
 		[Constructable]
 		public Squash( int amount ) : base( amount, 0xc72 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 
@@ -608,7 +608,7 @@ namespace Server.Items
 		[Constructable]
 		public Cantaloupe( int amount ) : base( amount, 0xc79 )
 		{
-			this.Weight = 1.0;
+			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
 

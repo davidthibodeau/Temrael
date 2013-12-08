@@ -32,6 +32,18 @@ namespace Server.Engines.Craft
 		{
 			return 0.5; // 50%
 		}
+		
+		public override bool RetainsColorFrom(CraftItem item, Type type)
+		{
+			if ((item.ItemType.IsDefined(typeof(FurnitureAttribute), false)) &&
+				((TileData.ItemTable[CraftItem.ItemIDOf(item.ItemType)].Flags & TileFlag.PartialHue) == 0))
+				return true;
+
+			if ((type == typeof(BarrelStaves)) || (item.ItemType == typeof(BarrelStaves)))
+				return true;
+
+			return false;
+		}
 
 		private DefCarpentry() : base( 1, 1, 1.25 )// base( 1, 1, 3.0 )
 		{
@@ -97,6 +109,29 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(Shaft), "Matériaux", "Manche", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
             SetUseAllRes(index, true);
+
+			
+			index = AddCraft(typeof(PinBoard), "Matériaux", "Planche de pin", 20, 40, typeof(PinLog), "Bûche de Pin", 1, 1044351);
+            SetUseAllRes(index, true);
+			
+			index = AddCraft(typeof(CypresBoard), "Matériaux", "Planche de Cypres", 30.0, 50.0, typeof(CypresLog), "Bûche de Cypres", 1, 1044351);
+            SetUseAllRes(index, true);
+			
+			index = AddCraft(typeof(CedreBoard), "Matériaux", "Planche de cèdre", 40.0, 60.0, typeof(CedreLog), "Bûche de cèdre", 1, 1044351);
+            SetUseAllRes(index, true);
+			
+			index = AddCraft(typeof(SauleBoard), "Matériaux", "Planche de Saule", 50.0, 70.0, typeof(SauleLog), "Bûche de Saule", 1, 1044351);
+            SetUseAllRes(index, true);
+			
+			index = AddCraft(typeof(CheneBoard), "Matériaux", "Planche de chêne", 60.0, 80.0, typeof(CheneLog), "Bûche de chêne", 1, 1044351);
+            SetUseAllRes(index, true);
+			
+			index = AddCraft(typeof(EbeneBoard), "Matériaux", "Planche d'ébène", 70.0, 90.0, typeof(EbeneLog), "Bûche d'ébène", 1, 1044351);
+            SetUseAllRes(index, true);
+			
+			index = AddCraft(typeof(AcajouBoard), "Matériaux", "Planche d'Acajou", 80.0, 100.0, typeof(AcajouLog), "Bûche d'Acajou", 1, 1044351);
+            SetUseAllRes(index, true);
+			
 
 
             #endregion
@@ -211,15 +246,51 @@ namespace Server.Engines.Craft
             }
             #endregion
 
+			
+			#region chaises
+            AddCraft(typeof(ChairA), "Chaises & Bancs", "Trône rudimentaire", 30.0, 50.0, typeof(Board), "Planches", 6, 1044351);
+			AddCraft(typeof(ChairB), "Chaises & Bancs", "Banc simple", 40.0, 60.0, typeof(Board), "Planches", 6, 1044351);
+			AddCraft(typeof(ChairC), "Chaises & Bancs", "Trône avec coussins", 70.0, 90.0, typeof(Board), "Planches", 8, 1044351);
+			AddRes(index, typeof(Cloth), "Tissu", 5, 1044563);	
+
+			#endregion
 
 						
 			#region paravents
             AddCraft(typeof(ParaventA), "Paravents", "Paravent de bois sculpté", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
-            AddRes(index, typeof(Nails), "Papier (parchemin)", 4, 1044563);
+            AddRes(index, typeof(BlankScroll), "Papier (parchemin)", 4, 1044563);
 			AddCraft(typeof(ParaventB), "Paravents", "Paravent de papier blanc", 70.0, 80.0, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(BlankScroll), "Papier (parchemin)", 5, 1044563);
 			AddCraft(typeof(ParaventC), "Paravents", "Paravent de bambou", 70.0, 80.0, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(BlankScroll), "Papier (parchemin)", 5, 1044563);	
+			#endregion
+			
+			
+			#region Armoires
+            AddCraft(typeof(ArmoireA), "Armoires", "Armoire à portes vitrées", 88.0, 100.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 7, 1044563);
+			AddCraft(typeof(ArmoireA), "Armoires", "Commode à pieds", 88.0, 100.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+
+			#endregion
+			
+			#region etageres
+            AddCraft(typeof(EtagereA), "Etagères", "Support de bois clair", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
+			AddCraft(typeof(EtagereB), "Etagères", "Support de bois brut", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
+			AddCraft(typeof(EtagereC), "Etagères", "Support de bois bordeaux", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
+			AddCraft(typeof(EtagereG), "Etagères", "Support de bois sombre", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
+
+			AddCraft(typeof(EtagereD), "Etagères", "Etagère sur trois niveaux claire", 60.0, 75.0, typeof(Board), "Planches", 8, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+			AddCraft(typeof(EtagereE), "Etagères", "Etagère sur trois niveaux bordeaux", 60.0, 75.0, typeof(Board), "Planches", 8, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+			AddCraft(typeof(EtagereF), "Etagères", "Etagère sur trois niveaux sombre", 60.0, 75.0, typeof(Board), "Planches", 8, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+
 			#endregion
 			
 			#region fruitcontainer

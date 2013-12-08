@@ -3795,6 +3795,8 @@ namespace Server.Mobiles
 
             CagouleFix();
 
+            //m_FreeReset = true;
+
             /*Statistiques.Reset(this);
             Competences.Reset(this);
             this.Aptitudes.Reset();

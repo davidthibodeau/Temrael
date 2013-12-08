@@ -124,6 +124,8 @@ namespace Server.Engines.Craft
 		{
 			int index = -1;
 
+			
+
 			#region Hats
             AddCraft(typeof(SkullCap), "Chapeaux", "Bandeau", 0.0, 20.0, typeof(Cloth), "Coton", 2, 1044287);
             AddCraft(typeof(Bandana), "Chapeaux", "Bandana", 0.0, 25.0, typeof(Cloth), "Coton", 2, 1044287);
@@ -163,6 +165,32 @@ namespace Server.Engines.Craft
 			}*/
 			#endregion
 
+						
+			#region Coussins //Fucking ADddRes de plumes qui fait crash en ouvrant le sewing kit
+			AddCraft(typeof(CoussinB), "Coussins", "Petit coussin carré", 20.0, 40.0, typeof(Cloth), "Coton", 3, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044287);
+			AddCraft(typeof(CoussinA), "Coussins", "Gros oreiller", 40.0, 60.0, typeof(Cloth), "Coton", 4, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinC), "Coussins", "Gros oreiller de velours", 50.0, 70.0, typeof(Cloth), "Coton", 4, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinD), "Coussins", "Gros oreiller carré", 50.0, 70.0, typeof(Cloth), "Coton", 4, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinE), "Coussins", "Petit coussin rond clair", 0.0, 30.0, typeof(Cloth), "Coton", 3, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinF), "Coussins", "petit coussin rond sombre", 0.0, 30.0, typeof(Cloth), "Coton", 3, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinG), "Coussins", "Petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Coton", 3, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinH), "Coussins", "Autre petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Coton", 3, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinI), "Coussins", "Gros coussin carré", 40.0, 60.0, typeof(Cloth), "Coton", 3, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+			AddCraft(typeof(CoussinJ), "Coussins", "Gros coussin carré droit", 0.0, 60.0, typeof(Cloth), "Coton", 3, 1044287);
+			//AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            #endregion
+			
+			
+			
             #region Toges
             AddCraft(typeof(Robe), "Toges & Manteaux", "Toge", 0.0, 30.0, typeof(Cloth), "Coton", 16, 1044287);
             AddCraft(typeof(TogeSoutane), "Toges & Manteaux", "Soutane", 20.0, 40.0, typeof(Cloth), "Coton", 17, 1044287);
@@ -194,6 +222,9 @@ namespace Server.Engines.Craft
             AddCraft(typeof(ManteauNoble), "Toges & Manteaux", "Manteau Noble", 90.0, 120.0, typeof(Cloth), "Coton", 18, 1044287);
 
             #endregion
+			
+			
+			
 
             #region Capes
             AddCraft(typeof(CapeCourte), "Capes", "Cape Courte", 10.0, 40.0, typeof(Cloth), "Coton", 6, 1044287);
@@ -350,7 +381,7 @@ namespace Server.Engines.Craft
 
             AddCraft(typeof(Veston), "Toges & Manteaux", "Veston", 10.0, 30.0, typeof(Cloth), "Coton", 10, 1044287);
             AddCraft(typeof(VesteCuir), "Toges & Manteaux", "Veste de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044287);
-            AddCraft(typeof(VestePoil), "Toges & Manteaux", "Veste de Poil", 40.0, 60.0, typeof(Hides), "Poil", 12, 1044287);
+            AddCraft(typeof(VestePoil), "Toges & Manteaux", "Veste de Poil", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044287);
             AddCraft(typeof(Veste), "Toges & Manteaux", "Veste", 60.0, 80.0, typeof(Cloth), "Coton", 12, 1044287);
             AddCraft(typeof(VesteLourde), "Toges & Manteaux", "Veste Ample", 70.0, 90.0, typeof(Cloth), "Coton", 12, 1044287);
 
