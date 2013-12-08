@@ -2,6 +2,7 @@ using System;
 
 namespace Server.Items
 {
+	[Furniture]
 	[FlipableAttribute( 0x1BD7, 0x1BDA )]
 	public abstract class BaseTBoard : Item, ICommodity
 	{
@@ -149,6 +150,7 @@ namespace Server.Items
 		}
 	}
 
+	[Furniture]
     public class Board : BaseTBoard
     {
         [Constructable]
@@ -183,6 +185,7 @@ namespace Server.Items
         }
     }
 
+	[Furniture]
     public class SauleBoard : BaseTBoard
 	{
 		[Constructable]
@@ -217,6 +220,7 @@ namespace Server.Items
 		}
 	}
 
+	[Furniture]
     public class CheneBoard : BaseTBoard
 	{
 		[Constructable]
@@ -250,7 +254,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-
+	[Furniture]
     public class EbeneBoard : BaseTBoard
 	{
 		[Constructable]
@@ -284,7 +288,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-
+	[Furniture]
     public class PinBoard : BaseTBoard
 	{
 		[Constructable]
@@ -318,7 +322,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-
+	[Furniture]
     public class CypresBoard : BaseTBoard
 	{
 		[Constructable]
@@ -352,7 +356,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-
+	[Furniture]
     public class CedreBoard : BaseTBoard
 	{
 		[Constructable]
@@ -386,7 +390,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-
+	[Furniture]
     public class AcajouBoard : BaseTBoard
     {
         [Constructable]
