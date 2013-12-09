@@ -11,3 +11,8 @@ Crash*
 *.dll
 *.log
 *.exe
+*.zip
+*.rar
+*.old
+*.csproj*
+
