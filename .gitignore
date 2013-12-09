@@ -7,10 +7,9 @@ TheBox/
 web/
 Crash*
 *.exe
-*.dll
 *.log
 *.zip
 *.rar
 *.old
-*.csproj*
-
+bin/
+obj/
