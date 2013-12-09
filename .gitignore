@@ -1,8 +1,6 @@
 Scripts/Output/Scripts.CS.dll
 Scripts/Output/Scripts.CS.hash
 Backups/
-Data/
-Fichiers/
 Logs/
 Saves/
 TheBox/
@@ -10,7 +8,6 @@ web/
 Crash*
 *.dll
 *.log
-*.exe
 *.zip
 *.rar
 *.old
