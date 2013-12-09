@@ -1,2 +1,13 @@
-Output/Scripts.CS.dll
-Output/Scripts.CS.hash
+Scripts/Output/Scripts.CS.dll
+Scripts/Output/Scripts.CS.hash
+Backups/
+Data/
+Fichiers/
+Logs/
+Saves/
+TheBox/
+web/
+Crash*
+*.dll
+*.log
+*.exe
