@@ -2151,8 +2151,8 @@ namespace Server.Items
 
                     damage = (int)(damage * percent);
 
-                    Console.WriteLine("Percent After : " + percent);
-                    Console.WriteLine("Dmg After : " + damage);
+                    //Console.WriteLine("Percent After : " + percent);
+                    //Console.WriteLine("Dmg After : " + damage);
                 }
 
                 if (damage < 1)
@@ -3427,8 +3427,8 @@ namespace Server.Items
                 double tacticsBonus = GetBonus(attacker.Skills[SkillName.Tactiques].Value, 0.100, 50.0, 6.25);
                 //double   lumberBonus = GetBonus( attacker.Skills[SkillName.Foresterie].Value,	0.200, 100.0, 10.00 );
 
-                Console.WriteLine("Strength Bonus : " + strengthBonus.ToString());
-                Console.WriteLine("Tactic Bonus : " + tacticsBonus.ToString());
+                //Console.WriteLine("Strength Bonus : " + strengthBonus.ToString());
+                //Console.WriteLine("Tactic Bonus : " + tacticsBonus.ToString());
 
                 //if ( Type != WeaponType.Axe )
                 //	lumberBonus = 0.0;
@@ -3471,9 +3471,9 @@ namespace Server.Items
                 //double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + lumberBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
                 double totalBonus = strengthBonus + tacticsBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
 
-                Console.WriteLine("Total Bonus : " + totalBonus.ToString());
-                Console.WriteLine("Damage Avant : " + damage.ToString());
-                Console.WriteLine("Damage Après : " + (damage + (int)(damage * totalBonus)).ToString());
+                //Console.WriteLine("Total Bonus : " + totalBonus.ToString());
+                //Console.WriteLine("Damage Avant : " + damage.ToString());
+                //Console.WriteLine("Damage Après : " + (damage + (int)(damage * totalBonus)).ToString());
 
 
                 return damage + (int)(damage * totalBonus);

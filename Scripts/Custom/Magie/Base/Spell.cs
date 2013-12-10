@@ -1147,7 +1147,7 @@ namespace Server.Spells
             if (value < CastDelayMinimum)
                 value = CastDelayMinimum;
 
-            Console.WriteLine("Cast Delay : " + value);
+            //Console.WriteLine("Cast Delay : " + value);
 
             /*if (AOS.Testing)
             {
