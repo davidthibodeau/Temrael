@@ -1358,10 +1358,10 @@ namespace Server.Engines.Craft
             if (allRequiredSkills && allRequiredAptitudes)
                 chance = (valMainSkill - minMainSkill) / (maxMainSkill - minMainSkill);
 
-            Console.WriteLine("ValMainSKill :" + valMainSkill.ToString());
-            Console.WriteLine("minMainSkill :" + minMainSkill.ToString());
-            Console.WriteLine("maxMainSkill :" + minMainSkill.ToString());
-            Console.WriteLine("chance :" + chance.ToString());
+            //Console.WriteLine("ValMainSKill :" + valMainSkill.ToString());
+            //Console.WriteLine("minMainSkill :" + minMainSkill.ToString());
+            //Console.WriteLine("maxMainSkill :" + minMainSkill.ToString());
+            //Console.WriteLine("chance :" + chance.ToString());
 
             if (from is TMobile)
                 chance += ((TMobile)from).GetAptitudeValue(NAptitude.Fignolage) * 0.04;
@@ -1381,8 +1381,8 @@ namespace Server.Engines.Craft
 
                     if (allRequiredAptitudes)
                     {
-                        Console.WriteLine(allRequiredSkills.ToString());
-                        Console.WriteLine(chance);
+                        //Console.WriteLine(allRequiredSkills.ToString());
+                        //Console.WriteLine(chance);
 
                         if (allRequiredSkills && chance >= 0.0)
                         {
