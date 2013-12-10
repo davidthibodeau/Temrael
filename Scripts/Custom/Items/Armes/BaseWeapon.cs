@@ -2131,8 +2131,8 @@ namespace Server.Items
 
                     double percent = 1 - ( (armorRating * bonus) * 0.0030);
 
-                    Console.WriteLine("Percent Before : " + percent);
-                    Console.WriteLine("Dmg Before : " + damage);
+                    //Console.WriteLine("Percent Before : " + percent);
+                    //Console.WriteLine("Dmg Before : " + damage);
                     
                     if (defender is TMobile)
                         percent -= (double)(((TMobile)defender).GetAptitudeValue(NAptitude.Robustesse) * 0.02);
