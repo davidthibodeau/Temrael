@@ -1,5 +1,6 @@
 Scripts/Output/Scripts.CS.dll
 Scripts/Output/Scripts.CS.hash
+Scripts/Output/Scripts.CS.pdb
 Backups/
 Logs/
 Saves/
@@ -11,5 +12,6 @@ Crash*
 *.zip
 *.rar
 *.old
+*.dll
 bin/
 obj/
