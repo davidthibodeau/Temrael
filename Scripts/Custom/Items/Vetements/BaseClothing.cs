@@ -80,6 +80,17 @@ namespace Server.Items
 
             public override void OnClick()
             {
+                Item[] candidates = m_From.Backpack.FindItemsByType(m_Item.GetType());
+                Boolean found = false;
+                foreach(Item i in candidates)
+                {
+                    if (m_Item == i) found = true;
+                }
+                if (!found)
+                {
+                    m_From.SendMessage("L'objet doit être dans votre sac pour que vous l'équipiez.");
+                    return;
+                }
                 if (((BaseClothing)m_Item).CanEquip(m_From))
                 {
                     if (!(m_From.EquipItem(m_Item)))
