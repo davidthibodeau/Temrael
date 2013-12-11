@@ -26,18 +26,20 @@ namespace Server.Spells
 
 		public override bool CheckCast()
 		{
-			if ( Server.Misc.WeightOverloading.IsOverloaded( Caster ) )
-			{
-				Caster.SendLocalizedMessage( 502359, "", 0x22 ); // Thou art too encumbered to move.
-				return false;
-			}
+            if (Server.Misc.WeightOverloading.IsOverloaded(Caster))
+            {
+                Caster.SendLocalizedMessage(502359, "", 0x22); // Thou art too encumbered to move.
+                return false;
+            }
 
             return base.CheckCast(); //SpellHelper.CheckTravel( Caster, TravelCheckType.TeleportFrom );
+           
 		}
 
 		public override void OnCast()
 		{
-			Caster.Target = new InternalTarget( this );
+			//Caster.Target = new InternalTarget( this );
+            Caster.SendMessage("Sort temporairement désactivé en raison de bug abuse.");
 		}
 
 		public void Target( IPoint3D p )
