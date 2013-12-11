@@ -13,5 +13,6 @@ Crash*
 *.rar
 *.old
 *.dll
+*.suo
 bin/
 obj/
