@@ -89,6 +89,17 @@ namespace Server.Misc
 			World.Save( true, permitBackgroundWrite );
 		}
 
+        //Cette methode est appelee pour effectuer le restart avant un redemarrage.
+        public static void SaveForRestart()
+		{
+			World.WaitForWriteCompletion();
+
+			try{ Backup(); }
+			catch ( Exception e ) { Console.WriteLine("WARNING: Automatic backup FAILED: {0}", e); }
+
+			World.Save( true, false );
+		}
+
 		private static string[] m_Backups = new string[]
 			{
 				"Third Backup",
