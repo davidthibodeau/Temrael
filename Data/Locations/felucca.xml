@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <places>
 	<parent name="Felucca">
-			<child name="Chaos" x="1456" y="854" z="0" />
-			<child name="Compassion" x="1856" y="872" z="-1" />
-			<child name="Honesty" x="4217" y="564" z="36" />
-			<child name="Honor" x="1730" y="3528" z="3" />
-			<child name="Humility" x="4276" y="3699" z="0" />
-			<child name="Justice" x="1301" y="639" z="16" />
-			<child name="Sacrifice" x="3355" y="299" z="9" />
-			<child name="Spirituality" x="1589" y="2485" z="5" />
-			<child name="Valor" x="2496" y="3932" z="0" />
-		</parent>
+			
 		<parent name="Interne">
 			<parent name="Jail Cells">
 				<child name="Cell 1" x="5835" y="1129" z="0" />
@@ -239,5 +230,15 @@
 			</parent>
 		</parent>
 		<parent name="Shrines">
+			<child name="Chaos" x="1456" y="854" z="0" />
+			<child name="Compassion" x="1856" y="872" z="-1" />
+			<child name="Honesty" x="4217" y="564" z="36" />
+			<child name="Honor" x="1730" y="3528" z="3" />
+			<child name="Humility" x="4276" y="3699" z="0" />
+			<child name="Justice" x="1301" y="639" z="16" />
+			<child name="Sacrifice" x="3355" y="299" z="9" />
+			<child name="Spirituality" x="1589" y="2485" z="5" />
+			<child name="Valor" x="2496" y="3932" z="0" />
+		</parent>
 	</parent>
 </places>
