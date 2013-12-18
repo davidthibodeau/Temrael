@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <places>
 	<parent name="Felucca">
+			<child name="Chaos" x="1456" y="854" z="0" />
+			<child name="Compassion" x="1856" y="872" z="-1" />
+			<child name="Honesty" x="4217" y="564" z="36" />
+			<child name="Honor" x="1730" y="3528" z="3" />
+			<child name="Humility" x="4276" y="3699" z="0" />
+			<child name="Justice" x="1301" y="639" z="16" />
+			<child name="Sacrifice" x="3355" y="299" z="9" />
+			<child name="Spirituality" x="1589" y="2485" z="5" />
+			<child name="Valor" x="2496" y="3932" z="0" />
+		</parent>
+		<parent name="Interne">
+			<parent name="Jail Cells">
+				<child name="Cell 1" x="5835" y="1129" z="0" />
+				<child name="Cell 2" x="5835" y="1165" z="0" />
+				<child name="Cell 3" x="5870" y="1165" z="0" />
+				<child name="Cell 4" x="5870" y="1129" z="0" />
+				<child name="Cell 5" x="5852" y="1148" z="0" />
+			</parent>
+			<child name="Green Acres" x="3870" y="263" z="15" />
+			<child name="Green Acres 2" x="3876" y="2053" z="15" />
+			<child name="Zone de création" x="6066" y="4045" z="5" />
+		</parent>
+		<parent name="Duchés">
+			<parent name="Citarel">
+				<parent name="Ville de Citarel">
+					<child name="Entrée" x="3388" y="1995" z="-81" />
+					<child name="Banque" x="3408" y="1965" z="-75" />
+					<child name="Caserne" x="3361" y="1892" z="-74" />
+					<child name="Château" x="3311" y="1885" z="10" />
+					<child name="Temple du Croisé" x="3330" y="2009" z="-60" />
+				</parent>
+				<child name="Lice de Citarel" x="3071" y="1857" z="-81" />
+				<child name="Roquebourg" x="3240" y="2052" z="-81" />
+				<child name="Gayk Thagh" x="3234" y="2106" z="-81" />
+				<child name="Brelouche" x="3321" y="2143" z="-81" />
+				<child name="Bertogne" x="3472" y="2081" z="-80" />
+				<child name="La Fumette" x="3502" y="2039" z="-81" />
+				<child name="Queue-sur-Siche" x="2978" y="1983" z="-80" />
+				<child name="Karak Hazkal" x="2871" y="1798" z="-80" />
+				<child name="Magnaron" x="2873" y="2080" z="-80" />
+				<child name="Cycarne" x="2999" y="1495" z="-80" />
+				<child name="Montrouge" x="3293" y="1279" z="-79" />
+				<child name="Verte-Aygue" x="3318" y="1496" z="-81" />
+				<child name="Archipel Pénitencier" x="3388" y="2203" z="-79" />
+			</parent>
+			<parent name="Brandheim">
+				<parent name="Ville de Brandheim">
+					<child name="Entrée" x="2403" y="1017" z="-71" />
+					<child name="Taverne" x="2394" y="983" z="-80" />
+					<child name="Arène" x="2355" y="988" z="-81" />
+					<child name="Cimetière" x="2441" y="991" z="-71" />
+					<child name="Mine" x="2470" y="1015" z="-70" />
+				</parent>
+				<child name="Entrée du Duché" x="2775" y="1148" z="-80" />
+				<child name="Ecaquelon" x="3097" y="922" z="-79" />
+				<child name="Svenmar" x="2954" y="798" z="-82" />
+				<child name="Rivière-Rouge" x="2603" y="955" z="-81" />
+				<child name="Palissade des harpies" x="2485" y="1094" z="-81" />
+			</parent>
+			<parent name="Elamsham">
+				<parent name="Ville de Elamsham">
+					<child name="Entrée" x="2549" y="1333" z="-79" />
+					<child name="Banque" x="2536" y="1284" z="-70" />
+				</parent>
+			</parent>
+			<parent name="Sérénité">
+				<parent name="Ville de Sérénité">
+					<child name="Entrée est" x="2689" y="2118" z="-1" />
+					<child name="Entrée ouest" x="2625" y="2154" z="-1" />
+					<child name="Banque" x="2648" y="2147" z="-20" />
+					<child name="Taverne" x="2624" y="2100" z="-19" />
+					<child name="Mine" x="2578" y="2072" z="-38" />
+				</parent>
+				<child name="Port Mairä-Irin" x="2479" y="2122" z="-80" />
+				<child name="Yalumëa'Ocombë" x="2689" y="2118" z="-1" />
+			</parent>
+			<parent name="Mélandre">
+				<parent name="Ville de Mélandre">
+					<child name="Entrée" x="3095" y="2810" z="-60" />
+					<child name="Taverne" x="3041" y="2793" z="-49" />
+					<child name="Cryptes" x="3017" y="2827" z="-80" />
+					<child name="Mine" x="3072" y="2854" z="-81" />
+				</parent>
+				<child name="Arayma" x="2770" y="2780" z="-81" />
+				<child name="Val'Fekni" x="3085" y="2637" z="-81" />
+			</parent>
+		</parent>
+		<parent name="Ile Tieffelin">
+				<child name="Tartarus" x="1862" y="3361" z="-81" />
+				<child name="Stygia" x="2147" y="3149" z="-80" />
+				<child name="Lacerta" x="2324" y="3165" z="-82" />
+				<child name="Carcères" x="2257" y="2991" z="-80" />
+				<child name="Mur du Saint-ordre" x="1908" y="2990" z="-45" />
+			</parent>
+		<parent name="Caravanes">
+			<child name="Nord de Citarel" x="3212" y="1843" z="-79" />
+			<child name="Sud-est de Cycarne" x="3249" y="1475" z="-81" />
+			<child name="Karak Hazkal" x="2893" y="1814" z="-80" />
+			<child name="Sud de Brandheim" x="2767" y="1223" z="-81" />
+			<child name="Croisée d'Elamsham" x="2639" y="1516" z="-79" />
+			<child name="Col du désert" x="2891" y="2367" z="-79" />
+			<child name="Nord de Mélandre" x="2906" y="2676" z="-81" />
+			<child name="Coteaux-Verts" x="2761" y="2620" z="-29" />
+		</parent>
+		<parent name="Mines">
+			<child name="Mine d'or" x="2856" y="2100" z="-78" />
+			<child name="Mine d'acier" x="3332" y="2131" z="-80" />
+			<child name="Mine d'argent" x="3224" y="1312" z="-79" />
+			<child name="Mine de luminium" x="2814" y="920" z="-89" />
+		</parent>
 		<parent name="Factions">
 			<parent name="Towns">
 				<child name="Britain" x="1592" y="1680" z="10" />
@@ -128,152 +238,6 @@
 				<child name="Level 1" x="5571" y="1302" z="0" />
 			</parent>
 		</parent>
-		<parent name="Internal">
-			<parent name="Jail Cells">
-				<child name="Cell 1" x="5276" y="1164" z="0" />
-				<child name="Cell 2" x="5286" y="1164" z="0" />
-				<child name="Cell 3" x="5296" y="1164" z="0" />
-				<child name="Cell 4" x="5306" y="1164" z="0" />
-				<child name="Cell 5" x="5276" y="1174" z="0" />
-				<child name="Cell 6" x="5286" y="1174" z="0" />
-				<child name="Cell 7" x="5286" y="1174" z="0" />
-				<child name="Cell 8" x="5306" y="1174" z="0" />
-				<child name="Cell 9" x="5283" y="1184" z="0" />
-				<child name="Cell 10" x="5304" y="1184" z="0" />
-			</parent>
-			<child name="Green Acres" x="5445" y="1153" z="0" />
-		</parent>
 		<parent name="Shrines">
-			<child name="Chaos" x="1456" y="854" z="0" />
-			<child name="Compassion" x="1856" y="872" z="-1" />
-			<child name="Honesty" x="4217" y="564" z="36" />
-			<child name="Honor" x="1730" y="3528" z="3" />
-			<child name="Humility" x="4276" y="3699" z="0" />
-			<child name="Justice" x="1301" y="639" z="16" />
-			<child name="Sacrifice" x="3355" y="299" z="9" />
-			<child name="Spirituality" x="1589" y="2485" z="5" />
-			<child name="Valor" x="2496" y="3932" z="0" />
-		</parent>
-		<parent name="Towns">
-			<parent name="Britain">
-				<child name="Blackthorn Castle" x="1533" y="1415" z="56" />
-				<child name="Blackthorn Entrance" x="1523" y="1456" z="15" />
-				<child name="British Castle" x="1323" y="1624" z="55" />
-				<child name="British Entrance" x="1401" y="1625" z="28" />
-				<child name="Cemetery" x="1384" y="1497" z="10" />
-				<child name="Center" x="1475" y="1645" z="20" />
-				<child name="Farmlands" x="1228" y="1705" z="0" />
-				<child name="Park" x="1614" y="1641" z="35" />
-				<child name="Suburbs" x="1662" y="1572" z="5" />
-			</parent>
-			<parent name="Buccaneers Den">
-				<child name="Bathhouse" x="2667" y="2084" z="5" />
-				<child name="Docks" x="2736" y="2166" z="0" />
-				<child name="Tunnels" x="2667" y="2069" z="-20" />
-			</parent>
-			<parent name="Cove">
-				<child name="Cemetery" x="2443" y="1123" z="5" />
-				<child name="Gates" x="2285" y="1209" z="0" />
-				<child name="Guard Post" x="2218" y="1116" z="19" />
-				<child name="Orc Fort" x="2171" y="1332" z="0" />
-			</parent>
-			<parent name="Jhelom">
-				<child name="Cemetery" x="1296" y="3719" z="0" />
-				<child name="East Docks" x="1492" y="3696" z="-3" />
-				<child name="Fighting Pit" x="1398" y="3742" z="-21" />
-				<child name="Main Island" x="1414" y="3816" z="0" />
-				<child name="Medium Island" x="1124" y="3623" z="5" />
-				<child name="Small Island" x="1466" y="4015" z="5" />
-			</parent>
-			<parent name="Magincia">
-				<child name="Bank" x="3730" y="2161" z="20" />
-				<child name="Docks" x="3675" y="2259" z="20" />
-				<child name="Park" x="3719" y="2063" z="25" />
-				<child name="Parliament" x="3792" y="2248" z="20" />
-			</parent>
-			<parent name="Minoc">
-				<child name="Bridge" x="2539" y="501" z="30" />
-				<child name="Gypsy Camp" x="2540" y="651" z="0" />
-				<child name="Mining Camp" x="2583" y="528" z="15" />
-				<child name="North" x="2475" y="417" z="15" />
-				<child name="South" x="2526" y="583" z="0" />
-			</parent>
-			<parent name="Moonglow">
-				<child name="Cemetery" x="4546" y="1338" z="8" />
-				<child name="Center" x="4442" y="1122" z="5" />
-				<child name="Docks" x="4406" y="1045" z="-2" />
-				<child name="Telescope" x="4707" y="1124" z="0" />
-				<child name="Zoo" x="4549" y="1378" z="8" />
-			</parent>
-			<parent name="Nujel'm">
-				<child name="Cemetery" x="3536" y="1156" z="20" />
-				<child name="Chess Board" x="3728" y="1360" z="5" />
-				<child name="Docks" x="3803" y="1279" z="5" />
-				<child name="East" x="3755" y="1227" z="0" />
-				<child name="North" x="3668" y="1116" z="0" />
-				<child name="Palace" x="3698" y="1279" z="20" />
-				<child name="West" x="3572" y="1211" z="0" />
-			</parent>
-			<parent name="Ocllo">
-				<child name="Docks" x="3650" y="2653" z="0" />
-				<child name="Farmlands" x="3722" y="2647" z="20" />
-				<child name="North" x="3650" y="2516" z="0" />
-			</parent>
-			<parent name="Serpents Hold">
-				<child name="North" x="3023" y="3417" z="15" />
-				<child name="South" x="2906" y="3505" z="10" />
-				<child name="Guard Post" x="3011" y="3526" z="15" />
-			</parent>
-			<parent name="Skara Brae">
-				<child name="East" x="811" y="2243" z="0" />
-				<child name="East Docks" x="716" y="2233" z="-3" />
-				<child name="North" x="746" y="2165" z="0" />
-				<child name="South" x="899" y="2381" z="0" />
-				<child name="West" x="601" y="2171" z="0" />
-				<child name="West Docks" x="639" y="2236" z="-3" />
-			</parent>
-			<parent name="Trinsic">
-				<child name="Center" x="1927" y="2779" z="0" />
-				<child name="East Docks" x="2071" y="2855" z="-3" />
-				<child name="Island Park" x="2108" y="2793" z="2" />
-				<child name="North" x="1894" y="2666" z="0" />
-				<child name="South" x="1891" y="2850" z="20" />
-				<child name="South Gate" x="2000" y="2930" z="0" />
-				<child name="West Gate" x="1832" y="2779" z="0" />
-			</parent>
-			<parent name="Vesper">
-				<child name="Cemetery" x="2786" y="867" z="0" />
-				<child name="Center" x="2882" y="788" z="0" />
-				<child name="Docks" x="3013" y="828" z="-3" />
-				<child name="East" x="2760" y="981" z="0" />
-				<child name="North" x="2907" y="603" z="0" />
-			</parent>
-			<parent name="Wind">
-				<child name="Caves" x="5166" y="244" z="15" />
-				<child name="East" x="5336" y="88" z="15" />
-				<child name="Entrance" x="1362" y="896" z="0" />
-				<child name="Park" x="5211" y="22" z="15" />
-				<child name="South" x="5223" y="189" z="5" />
-				<child name="West" x="5180" y="90" z="25" />
-			</parent>
-			<parent name="Yew">
-				<child name="Cemetery" x="724" y="1138" z="0" />
-				<child name="Center" x="535" y="992" z="0" />
-				<child name="Courts and Prisons" x="354" y="836" z="20" />
-				<child name="Empath Abbey" x="635" y="860" z="0" />
-				<child name="Hidden Cave" x="313" y="787" z="-24" />
-				<child name="Orc Fort" x="633" y="1499" z="0" />
-			</parent>
-			<parent name="Delucia">
-				<child name="Watch Tower" x="5276" y="3945" z="37" />
-				<child name="Center" x="5228" y="3978" z="37" />
-				<child name="Orc Fort" x="5210" y="3636" z="3" />
-			</parent>
-			<parent name="Papua">
-				<child name="The Just Inn" x="5769" y="3176" z="0" />
-				<child name="Center" x="5730" y="3208" z="-4" />
-				<child name="Docks" x="5825" y="3256" z="2" />
-			</parent>
-		</parent>
 	</parent>
 </places>
