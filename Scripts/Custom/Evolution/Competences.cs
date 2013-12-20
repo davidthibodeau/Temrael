@@ -95,7 +95,10 @@ namespace Server
 
         public static bool CanLower(TMobile from, SkillName comp)
         {
-            int value = Convert.ToInt32(from.Skills[comp].Value);
+            Skill sk = from.Skills[comp];
+            if (sk == null)
+                return false;
+            int value = Convert.ToInt32(sk.Value);
 
             if (value > 0)
                 return true;
