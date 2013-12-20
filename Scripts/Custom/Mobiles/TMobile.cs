@@ -350,6 +350,8 @@ namespace Server.Mobiles
         private bool m_RevealTitle = true;
         private bool m_FreeReset = false;
 
+        private Point3D m_OldLocation;
+
         #region QuickSpells
         private ArrayList m_QuickSpells = new ArrayList();
 
@@ -911,6 +913,8 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Aptitudes Aptitudes { get { return m_Aptitudes; } set { m_Aptitudes = value; } }
 
+        public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
+
         #endregion
 
         public override bool RetainPackLocsOnDeath { get { return true; } }
@@ -1248,6 +1252,7 @@ namespace Server.Mobiles
         private static ArrayList m_OnSpeech;
 
         private static bool m_NoSpeechLOS1;
+        
         [CommandProperty(AccessLevel.GameMaster)]
         public static bool NoSpeechLOS1 { get { return m_NoSpeechLOS1; } set { m_NoSpeechLOS1 = value; } }
 

@@ -55,6 +55,7 @@
 				<parent name="Ville de Elamsham">
 					<child name="Entrée" x="2549" y="1333" z="-79" />
 					<child name="Banque" x="2536" y="1284" z="-70" />
+					<child name="Quartier Orcish" x="2454" y="1336" z="-69" />
 				</parent>
 			</parent>
 			<parent name="Sérénité">

@@ -74,6 +74,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".\**\*.cs" />
+    <Compile Include="Custom\Commandes\Follow.cs" />
+    <Compile Include="Custom\Commandes\JailPage.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
