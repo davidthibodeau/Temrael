@@ -9,7 +9,7 @@ namespace Server.Spells.First
     public class Bourrasque : Spell
     {
         private static SpellInfo m_Info = new SpellInfo(
-                "Tempete", "In Grav",
+                "Bourrasque", "In Grav",
                 SpellCircle.First,
                 236,
                 9031,
