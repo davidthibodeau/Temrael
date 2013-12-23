@@ -14,6 +14,7 @@ namespace Server.Items
 		public Static( int itemID ) : base( itemID )
 		{
 			Movable = false;
+            CanBeAltered = false;
 		}
 
 		[Constructable]
