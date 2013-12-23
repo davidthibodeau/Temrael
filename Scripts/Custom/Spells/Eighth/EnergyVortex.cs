@@ -31,7 +31,7 @@ namespace Server.Spells.Eighth
 			if ( !base.CheckCast() )
 				return false;
 
-			if ( (Caster.Followers + 8) > Caster.FollowersMax )
+			if ( (Caster.Followers + 1) > Caster.FollowersMax )
 			{
 				Caster.SendLocalizedMessage( 1049645 ); // You have too many followers to summon that creature.
 				return false;
@@ -47,10 +47,10 @@ namespace Server.Spells.Eighth
 
 		public void Target( IPoint3D p )
 		{
-            Server.Misc.Weather weather = Server.Misc.Weather.GetWeather(Caster.Location);
+            /*Server.Misc.Weather weather = Server.Misc.Weather.GetWeather(Caster.Location);
 
             if (weather.Wind == QuantityOfWind.Typhon || weather.Wind == QuantityOfWind.Tornade || weather.Wind == QuantityOfWind.Tempete)
-            {
+            {*/
                 Map map = Caster.Map;
 
                 SpellHelper.GetSurfaceTop(ref p);
@@ -65,13 +65,13 @@ namespace Server.Spells.Eighth
 
                     duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
 
-                    BaseCreature.Summon(new EnergyVortex(), false, Caster, new Point3D(p), 0x212, TimeSpan.FromSeconds(duration));
+                    BaseCreature.Summon(new EnergyVortex(), true, Caster, new Point3D(p), 0x212, TimeSpan.FromSeconds(duration));
                 }
-            }
+            /*}
             else
             {
                 Caster.SendMessage("Il n'y a pas assez de vent pour lancer un vortex !");
-            }
+            }*/
 
 			FinishSequence();
 		}
