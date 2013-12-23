@@ -97,7 +97,10 @@ namespace Server
         {
             Skill sk = from.Skills[comp];
             if (sk == null)
+            {
+                Console.WriteLine("BUG: Skill est null à CanLower. La compétence causant le bug est " + comp); 
                 return false;
+            }
             int value = Convert.ToInt32(sk.Value);
 
             if (value > 0)
