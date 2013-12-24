@@ -21,7 +21,7 @@ namespace Server.Misc
 	public class AccountHandler
 	{
 		private static int MaxAccountsPerIP = 1;
-		private static bool AutoAccountCreation = true;
+		private static bool AutoAccountCreation = false;
 		private static bool RestrictDeletion = !TestCenter.Enabled;
 		private static TimeSpan DeleteDelay = TimeSpan.FromDays( 7.0 );
 
