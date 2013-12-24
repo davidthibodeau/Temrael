@@ -86,7 +86,7 @@ namespace Server.Gumps
                 int linetmp = line;
 
                 line = 0;
-                AddButton(x, y + line * scale, 8, info.Image);
+                AddButton(x, y + line * scale, 9, info.Image);
                 AddTooltip(info.Tooltip);
 
                 if (from.ClasseType == ClasseType.None)
@@ -162,7 +162,7 @@ namespace Server.Gumps
                     from.SendGump(new FicheClasseGump(from));
                     break;
                 case 9:
-
+                    from.SendGump(new FicheClassesInfoGump(from, m_classeType, m_page));
                     break;
                 case 10:
                     from.SendGump(new FicheClassesInfoGump(from, m_classeType, m_page - 1));

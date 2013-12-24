@@ -113,7 +113,7 @@ namespace Server.Gumps
                 int linetmp = line;
 
                 line = 0;
-                AddButton(x, y + line * scale, 8, info.Image);
+                AddButton(x, y + line * scale, 9, info.Image);
                 //AddTooltip(TemraelClasse.GetTooltipMetier(metierType));
 
                 List<string> listDon = new List<string>();
@@ -211,7 +211,7 @@ namespace Server.Gumps
                     from.SendGump(new FicheClasseGump(from));
                     break;
                 case 9:
-
+                    from.SendGump(new FicheMetiersInfoGump(from, m_metierType, m_page));
                     break;
                 case 10:
                     from.SendGump(new FicheMetiersInfoGump(from, m_metierType, m_page - 1));
