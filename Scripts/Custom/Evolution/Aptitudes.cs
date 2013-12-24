@@ -273,7 +273,7 @@ namespace Server
         public static AptitudesEntry[] m_AptitudeEntries = new AptitudesEntry[]
 		{
                 //9 -> Artisanat
-                new AptitudesEntry( NAptitude.Boucherie,                   12, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2, ClasseBranche.Artisan ), 
+                new AptitudesEntry( NAptitude.Boucherie,                   12, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, ClasseBranche.Artisan ), 
 				new AptitudesEntry( NAptitude.Broderie,                    12, SkillName.Couture, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2, ClasseBranche.Artisan ), 
                 new AptitudesEntry( NAptitude.Botanique,                   12, SkillName.Agriculture, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2, ClasseBranche.Aucun ), 
                 new AptitudesEntry( NAptitude.Commerce,                     1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0,  ClasseBranche.Artisan ), 
@@ -286,7 +286,7 @@ namespace Server
                 new AptitudesEntry( NAptitude.Metallurgie,                 12, SkillName.Forge, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
                 new AptitudesEntry( NAptitude.Mineur,                      12, SkillName.Excavation, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 2, 3,  ClasseBranche.Artisan ), 
                 new AptitudesEntry( NAptitude.Polissage,                   -1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  1, 2, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Tanneur,                     12, SkillName.Couture, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( NAptitude.Tanneur,                     12, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,  ClasseBranche.Artisan ), 
                 new AptitudesEntry( NAptitude.Transcription,               12, SkillName.Inscription, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2,  ClasseBranche.Artisan ), 
                 //17 -> Combat
                 new AptitudesEntry( NAptitude.Barbarisme,                  -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 3, 3, ClasseBranche.Guerrier ), 
