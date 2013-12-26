@@ -78,6 +78,7 @@ namespace Server.Gumps
 
                     from.ClasseType = ClasseType.None;
                     from.MetierType.Clear();
+                    from.FamilierCheck();
 
                     from.SendMessage("Votre personnage a reset ses informations.");
                     from.SendGump(new FicheRaceGump(from));

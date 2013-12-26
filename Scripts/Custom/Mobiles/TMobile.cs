@@ -844,7 +844,7 @@ namespace Server.Mobiles
         public List<MetierType> MetierType
         {
             get { return m_MetierType; }
-            set { m_MetierType = value; }
+            set { m_MetierType = value; FamilierCheck(); }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -2486,7 +2486,6 @@ namespace Server.Mobiles
                     Metiers.GetAptitudeValue(this, MetierType2, aptitude) +
                     Metiers.GetAptitudeValue(this, MetierType3, aptitude) +
                     Metiers.GetAptitudeValue(this, MetierType4, aptitude);
-            
             return a;
         }
 

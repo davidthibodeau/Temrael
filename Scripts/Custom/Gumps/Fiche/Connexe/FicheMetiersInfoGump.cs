@@ -208,6 +208,7 @@ namespace Server.Gumps
                     break;
                 case 8:
                     from.MetierType.Add(m_metierType);
+                    from.FamilierCheck();
                     from.SendGump(new FicheClasseGump(from));
                     break;
                 case 9:
