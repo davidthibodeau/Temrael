@@ -120,7 +120,12 @@ namespace Server.Misc
 
             if (entry == null)
                 return t;
-
+            if ((int)t >= entry.Length)
+            {
+                Console.WriteLine("BUG AdjustTemperatureBySeason : Le length de entry est de " + entry.Length + " alors que l'index de température était "
+                                  + t + " ce qui donne un chiffre de " + ((int)t) + ". La saison était " + season + ".");
+                return entry[entry.Length - 1];
+            }
             return entry[(int)t];
         }
 
