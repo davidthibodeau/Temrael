@@ -28,18 +28,6 @@ namespace Server.Items
 		private Mobile m_Crafter;
 		private int m_UsesRemaining;
 
-        public override Layer Layer
-        {
-            get
-            {
-                return Layer.TwoHanded;
-            }
-            set
-            {
-                base.Layer = value;
-            }
-        }
-
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int SuccessSound
 		{
@@ -404,6 +392,7 @@ namespace Server.Items
 			m_WellSound = wellSound;
 			m_BadlySound = badlySound;
 			UsesRemaining = Utility.RandomMinMax( InitMinUses, InitMaxUses );
+            Layer = Layer.TwoHanded;
 		}
 
 		public override void GetProperties( ObjectPropertyList list )
