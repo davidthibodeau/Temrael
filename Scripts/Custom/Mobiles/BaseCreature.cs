@@ -5788,7 +5788,7 @@ namespace Server.Mobiles
 				}
 			}
 
-            if (isBoss)
+            if (isBoss && Spawner != null)
             {
                 int homeRange = 50;
 
