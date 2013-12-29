@@ -8,6 +8,7 @@ namespace Server.Items
 		[Constructable]
 		public NightSightPotion() : base( 0xF06, PotionEffect.Nightsight )
 		{
+            Name = "Potion de vision de nuit";
 		}
 
 		public NightSightPotion( Serial serial ) : base( serial )

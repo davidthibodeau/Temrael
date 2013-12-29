@@ -8,7 +8,7 @@ namespace Server.Items
         public abstract double Mana { get; }
 
         public BaseManaPotion(PotionEffect effect)
-            : base(0xF0B, effect)
+            : base(0xF08, effect)
         {
         }
 

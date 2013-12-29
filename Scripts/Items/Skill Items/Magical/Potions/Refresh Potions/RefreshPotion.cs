@@ -10,10 +10,12 @@ namespace Server.Items
 		[Constructable]
 		public RefreshPotion() : base( PotionEffect.Refresh )
 		{
+            Name = "Potion de rafraichissement";
 		}
 
 		public RefreshPotion( Serial serial ) : base( serial )
 		{
+            
 		}
 
 		public override void Serialize( GenericWriter writer )

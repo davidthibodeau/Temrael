@@ -10,6 +10,7 @@ namespace Server.Items
 		[Constructable]
 		public TotalRefreshPotion() : base( PotionEffect.RefreshTotal )
 		{
+            Name = "Grande potion de rafraichissement";
 		}
 
 		public TotalRefreshPotion( Serial serial ) : base( serial )

@@ -13,6 +13,7 @@ namespace Server.Items
 		[Constructable]
 		public GreaterConflagrationPotion() : base( PotionEffect.ConflagrationGreater )
 		{
+            Name = "Grande potion incendière";
 		}
 
 		public GreaterConflagrationPotion( Serial serial ) : base( serial )

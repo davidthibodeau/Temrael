@@ -11,6 +11,7 @@ namespace Server.Items
         public ManaPotion()
             : base(PotionEffect.Refresh)
         {
+            Name = "Potion de mana";
         }
 
         public ManaPotion(Serial serial)

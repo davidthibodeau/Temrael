@@ -11,6 +11,7 @@ namespace Server.Items
 		[Constructable]
 		public ExplosionPotion() : base( PotionEffect.Explosion )
 		{
+            Name = "Potion explosive";
 		}
 
 		public ExplosionPotion( Serial serial ) : base( serial )

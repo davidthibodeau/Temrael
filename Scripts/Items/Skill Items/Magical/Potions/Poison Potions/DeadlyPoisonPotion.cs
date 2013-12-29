@@ -13,6 +13,7 @@ namespace Server.Items
 		[Constructable]
 		public DeadlyPoisonPotion() : base( PotionEffect.PoisonDeadly )
 		{
+            Name = "Poison mortel";
 		}
 
 		public DeadlyPoisonPotion( Serial serial ) : base( serial )

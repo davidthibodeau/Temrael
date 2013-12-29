@@ -24,6 +24,7 @@ namespace Server.Items
 		[Constructable]
 		public LesserCurePotion() : base( PotionEffect.CureLesser )
 		{
+            Name = "Antidote mineur";
 		}
 
 		public LesserCurePotion( Serial serial ) : base( serial )

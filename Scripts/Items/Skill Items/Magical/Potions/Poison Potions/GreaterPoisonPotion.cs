@@ -13,6 +13,7 @@ namespace Server.Items
 		[Constructable]
 		public GreaterPoisonPotion() : base( PotionEffect.PoisonGreater )
 		{
+            Name = "Poison majeur";
 		}
 
 		public GreaterPoisonPotion( Serial serial ) : base( serial )

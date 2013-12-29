@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public HealPotion() : base( PotionEffect.Heal )
 		{
+            Name = "Potion de soins";
 		}
 
 		public HealPotion( Serial serial ) : base( serial )

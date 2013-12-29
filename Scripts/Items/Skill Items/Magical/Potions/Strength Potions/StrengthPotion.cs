@@ -11,6 +11,7 @@ namespace Server.Items
 		[Constructable]
 		public StrengthPotion() : base( PotionEffect.Strength )
 		{
+            Name = "Potion de force";
 		}
 
 		public StrengthPotion( Serial serial ) : base( serial )

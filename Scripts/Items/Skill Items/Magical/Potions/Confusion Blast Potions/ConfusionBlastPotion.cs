@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public ConfusionBlastPotion() : base( PotionEffect.ConfusionBlast )
 		{
+            Name = "Potion de confusion";
 		}
 
 		public ConfusionBlastPotion( Serial serial ) : base( serial )
