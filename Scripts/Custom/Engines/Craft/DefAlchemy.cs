@@ -99,66 +99,66 @@ namespace Server.Engines.Craft
 			int index = -1;
 
 			// Refresh Potion
-			index = AddCraft( typeof( RefreshPotion ), "Potions", "Potion Rafraichissante", 0.0, 25.0, typeof( BlackPearl ), "Perle Noire", 1, 1044361 );
-			AddRes( index, typeof ( Bottle ), 1044529, 1, 500315 );
-            index = AddCraft(typeof(TotalRefreshPotion), "Potions", "Potion Rafrai. Majeur", 25.0, 75.0, typeof(BlackPearl), "Perles Noires", 5, 1044361);
-			AddRes( index, typeof ( Bottle ), 1044529, 1, 500315 );
+			index = AddCraft( typeof( RefreshPotion ), "Potions", "Potion de rafraichissement", 0.0, 25.0, typeof( BlackPearl ), "Perle Noire", 1, 1044361 );
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(TotalRefreshPotion), "Potions", "Potion de rafrai. majeure", 25.0, 75.0, typeof( BlackPearl ), "Perles Noires", 5, 1044361);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
             // Mana Potion
-            index = AddCraft(typeof(ManaPotion), "Potions", "Potion de Mana", 0.0, 25.0, typeof(SulfurousAsh), "Cendres", 1, 1044361);
-            AddRes(index, typeof(Bottle), 1044529, 1, 500315);
-            index = AddCraft(typeof(TotalManaPotion), "Potions", "Potion de Mana Majeur", 25.0, 75.0, typeof(SulfurousAsh), "Cendres", 5, 1044361);
-            AddRes(index, typeof(Bottle), 1044529, 1, 500315);
+            index = AddCraft(typeof(ManaPotion), "Potions", "Potion de mana", 0.0, 25.0, typeof(SulfurousAsh), "Cendres", 1, 1044361);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(TotalManaPotion), "Potions", "Potion de mana majeure", 25.0, 75.0, typeof(SulfurousAsh), "Cendres", 5, 1044361);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
 			// Agility Potion
-            index = AddCraft(typeof(AgilityPotion), "Potions", "Potion d'Agilité", 15.0, 65.0, typeof(Bloodmoss), "Mousse Sanglante", 1, 1044362);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(GreaterAgilityPotion), "Potions", "Potion d'Agilité Majeur", 35.0, 85.0, typeof(Bloodmoss), "Mousse Sanglante", 3, 1044362);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
+            index = AddCraft(typeof(AgilityPotion), "Potions", "Potion d'agilité", 15.0, 65.0, typeof(Bloodmoss), "Mousse Sanglante", 1, 1044362);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(GreaterAgilityPotion), "Potions", "Potion d'agilité majeure", 35.0, 85.0, typeof(Bloodmoss), "Mousse Sanglante", 3, 1044362);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
 			// Nightsight Potion
-            index = AddCraft(typeof(NightSightPotion), "Potions", "Potion de Vision Nocturne", 0.0, 25.0, typeof(SpidersSilk), "Toiles", 1, 1044368);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
+            index = AddCraft(typeof(NightSightPotion), "Potions", "Potion de vision nocturne", 0.0, 25.0, typeof(SpidersSilk), "Toiles", 1, 1044368);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
 			// Heal Potion
-            index = AddCraft(typeof(LesserHealPotion), "Potions", "Potion de Soins Mineurs", 0.0, 25.0, typeof(Ginseng), "Ginseng", 1, 1044364);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(HealPotion), "Potions", "Potion de Soins", 30.0, 60.0, typeof(Ginseng), "Ginseng", 3, 1044364);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(GreaterHealPotion), "Potions", "Potion de Soins Majeurs", 75.0, 100.0, typeof(Ginseng), "Ginseng", 7, 1044364);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
+            index = AddCraft(typeof(LesserHealPotion), "Potions", "Potion de soins mineurs", 0.0, 25.0, typeof(Ginseng), "Ginseng", 1, 1044364);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(HealPotion), "Potions", "Potion de soins", 30.0, 60.0, typeof(Ginseng), "Ginseng", 3, 1044364);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(GreaterHealPotion), "Potions", "Potion de soins majeurs", 75.0, 100.0, typeof(Ginseng), "Ginseng", 7, 1044364);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
 			// Strength Potion
-            index = AddCraft(typeof(StrengthPotion), "Potions", "Potion de Force", 0.0, 25.0, typeof(MandrakeRoot), "Racine de Mandragore", 2, 1044365);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(GreaterStrengthPotion), "Potions", "Potion de Force Majeur", 45.0, 95.0, typeof(MandrakeRoot), "Racine de Mandragore", 5, 1044365);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
+            index = AddCraft(typeof(StrengthPotion), "Potions", "Potion de force", 0.0, 25.0, typeof(MandrakeRoot), "Racine de Mandragore", 2, 1044365);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(GreaterStrengthPotion), "Potions", "Potion de force majeure", 45.0, 95.0, typeof(MandrakeRoot), "Racine de Mandragore", 5, 1044365);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
 			// Poison Potion
-            index = AddCraft(typeof(LesserPoisonPotion), "Potions", "Potion de Poison Mineur", 0.0, 45.0, typeof(Nightshade), "Solanacée", 1, 1044366);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(PoisonPotion), "Potions", "Potion de Poison", 15.0, 65.0, typeof(Nightshade), "Solanacée", 2, 1044366);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(GreaterPoisonPotion), "Potions", "Potion de Poison Majeur", 55.0, 105.0, typeof(Nightshade), "Solanacée", 4, 1044366);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(DeadlyPoisonPotion), "Potions", "Potion de Poison Mortel", 90.0, 140.0, typeof(Nightshade), "Solanacée", 8, 1044366);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
+            index = AddCraft(typeof(LesserPoisonPotion), "Potions", "Potion de poison mineur", 0.0, 45.0, typeof(Nightshade), "Solanacée", 1, 1044366);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(PoisonPotion), "Potions", "Potion de poison", 15.0, 65.0, typeof(Nightshade), "Solanacée", 2, 1044366);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(GreaterPoisonPotion), "Potions", "Potion de poison majeur", 55.0, 105.0, typeof(Nightshade), "Solanacée", 4, 1044366);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(DeadlyPoisonPotion), "Potions", "Potion de poison mortel", 90.0, 140.0, typeof(Nightshade), "Solanacée", 8, 1044366);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
 			// Cure Potion
-            index = AddCraft(typeof(LesserCurePotion), "Potions", "Antidote Mineur", 0.0, 25.0, typeof(Garlic), "Ail", 1, 1044363);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
+            index = AddCraft(typeof(LesserCurePotion), "Potions", "Antidote mineur", 0.0, 25.0, typeof(Garlic), "Ail", 1, 1044363);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
             index = AddCraft(typeof(CurePotion), "Potions", "Antidote", 25.0, 75.0, typeof(Garlic), "Ail", 3, 1044363);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(GreaterCurePotion), "Potions", "Antidote Majeur", 65.0, 115.0, typeof(Garlic), "Ail", 6, 1044363);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(GreaterCurePotion), "Potions", "Antidote majeur", 65.0, 115.0, typeof(Garlic), "Ail", 6, 1044363);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
 			// Explosion Potion
-            index = AddCraft(typeof(LesserExplosionPotion), "Potions", "Potion Explosive Mineur", 0.0, 45.0, typeof(SulfurousAsh), "Cendres Sulfureuses", 3, 1044367);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(ExplosionPotion), "Potions", "Potion Explosive", 35.0, 85.0, typeof(SulfurousAsh), "Cendres Sulfureuses", 5, 1044367);
-            AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
-            index = AddCraft(typeof(GreaterExplosionPotion), "Potions", "Potion Explosive Majeur", 65.0, 115.0, typeof(SulfurousAsh), "Cendres Sulfureuses", 10, 1044367);
-			AddRes( index, typeof ( Bottle ), "Bouteille", 1, 500315 );
+            index = AddCraft(typeof(LesserExplosionPotion), "Potions", "Potion explosive mineure", 0.0, 45.0, typeof(SulfurousAsh), "Cendres Sulfureuses", 3, 1044367);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(ExplosionPotion), "Potions", "Potion explosive", 35.0, 85.0, typeof(SulfurousAsh), "Cendres Sulfureuses", 5, 1044367);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
+            index = AddCraft(typeof(GreaterExplosionPotion), "Potions", "Potion explosive majeure", 65.0, 115.0, typeof(SulfurousAsh), "Cendres Sulfureuses", 10, 1044367);
+            AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
 
             //Teintures
             //Débutant
