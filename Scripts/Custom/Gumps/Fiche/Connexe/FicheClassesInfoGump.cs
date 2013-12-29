@@ -86,14 +86,23 @@ namespace Server.Gumps
                 int linetmp = line;
 
                 line = 0;
-                AddButton(x, y + line * scale, 9, info.Image);
-                AddTooltip(info.Tooltip);
 
                 if (from.ClasseType == ClasseType.None)
                 {
                     AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
                     AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
                 }
+                AddButton(x, y + line * scale, 9, info.Image);
+                AddTooltip(info.Tooltip);
+
+                // Apparait en double pour assurer l'affichage correct ainsi que la priorite du bouton. 
+                if (from.ClasseType == ClasseType.None)
+                {
+                    AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
+                    AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
+                }
+
+                
 
                 line = linetmp;
                 AddSection(x + 240, y + line * scale, 300, 90, info.Nom, info.Role);

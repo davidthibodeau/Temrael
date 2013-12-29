@@ -113,6 +113,14 @@ namespace Server.Gumps
                 int linetmp = line;
 
                 line = 0;
+                if (!from.hasMetier(metierType))
+                {
+                    if (canMultiClasse(from))
+                    {
+                        AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
+                        AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Multiclasser<basefont></h3>", false, false);
+                    }
+                }
                 AddButton(x, y + line * scale, 9, info.Image);
                 //AddTooltip(TemraelClasse.GetTooltipMetier(metierType));
 
@@ -157,6 +165,7 @@ namespace Server.Gumps
                 AddSection(x, y + line * scale, 540, 155, "Aptitudes & Spécialités", temp);
 
                 line = 0;
+                // Apparait en double pour assurer l'affichage correct ainsi que la priorite du bouton. 
                 if (!from.hasMetier(metierType))
                 {
                     if (canMultiClasse(from))
