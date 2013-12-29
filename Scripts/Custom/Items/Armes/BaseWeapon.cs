@@ -421,6 +421,29 @@ namespace Server.Items
             public static int Masse_Force5 = 60;
             public static int Masse_Force6 = 70;
 
+            public static double Baton_Vitesse = 5.0;
+            public static int Baton_MinDam0 = getMinDam(0, Baton_Vitesse, true);
+            public static int Baton_MinDam1 = getMinDam(1, Baton_Vitesse, true);
+            public static int Baton_MinDam2 = getMinDam(2, Baton_Vitesse, true);
+            public static int Baton_MinDam3 = getMinDam(3, Baton_Vitesse, true);
+            public static int Baton_MinDam4 = getMinDam(4, Baton_Vitesse, true);
+            public static int Baton_MinDam5 = getMinDam(5, Baton_Vitesse, true);
+            public static int Baton_MinDam6 = getMinDam(6, Baton_Vitesse, true);
+            public static int Baton_MaxDam0 = getMaxDam(0, Baton_Vitesse, true);
+            public static int Baton_MaxDam1 = getMaxDam(1, Baton_Vitesse, true);
+            public static int Baton_MaxDam2 = getMaxDam(2, Baton_Vitesse, true);
+            public static int Baton_MaxDam3 = getMaxDam(3, Baton_Vitesse, true);
+            public static int Baton_MaxDam4 = getMaxDam(4, Baton_Vitesse, true);
+            public static int Baton_MaxDam5 = getMaxDam(5, Baton_Vitesse, true);
+            public static int Baton_MaxDam6 = getMaxDam(6, Baton_Vitesse, true);
+            public static int Baton_Force0 = 40;
+            public static int Baton_Force1 = 45;
+            public static int Baton_Force2 = 50;
+            public static int Baton_Force3 = 55;
+            public static int Baton_Force4 = 60;
+            public static int Baton_Force5 = 65;
+            public static int Baton_Force6 = 70;
+
             public static double Arc_Vitesse = 3.0;
             public static int Arc_MinDam0 = getMinDam(0, Arc_Vitesse, false);
             public static int Arc_MinDam1 = getMinDam(1, Arc_Vitesse, false);
