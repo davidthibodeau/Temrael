@@ -377,7 +377,8 @@ namespace Server
 		Int=4,
         Con=5,
         Cha=6,
-		All=7
+        Sag=7,
+		All=8
 	}
 
 	public enum StatLockType : byte
@@ -708,7 +709,7 @@ namespace Server
                 m_NetState.Send(new MobileStatus(this, this)); 
             }
         }
-        private int m_Cha, m_Con;
+        private int m_Cha, m_Con, m_Sag;
 
 		private Serial m_Serial;
 		private Map m_Map;
@@ -5420,6 +5421,7 @@ namespace Server
 			{
                 case 32:
                     {
+                        m_Sag = reader.ReadInt();
                         m_Con = reader.ReadInt();
                         m_Cha = reader.ReadInt();
                         m_XP = reader.ReadInt();
@@ -5859,6 +5861,7 @@ namespace Server
 		{
 			writer.Write( (int)32 ); // version
 
+            writer.Write(m_Sag);
             writer.Write(m_Con);
             writer.Write(m_Cha);
             writer.Write(m_XP);
@@ -7535,6 +7538,10 @@ namespace Server
         {
         }
 
+        public virtual void OnRawSagChange(int oldValue)
+        {
+        }
+
         [CommandProperty(AccessLevel.GameMaster)]
         public int RawCon
         {
@@ -7629,7 +7636,7 @@ namespace Server
                     }
 
                     OnRawChaChange(oldValue);
-                    OnRawStatChange(StatType.Int, oldValue);
+                    OnRawStatChange(StatType.Cha, oldValue);
                 }
             }
         }
@@ -7652,6 +7659,66 @@ namespace Server
             {
                 if (m_StatMods.Count == 0)
                     RawCha = value;
+            }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int RawSag
+        {
+            get
+            {
+                return m_Sag;
+            }
+            set
+            {
+                if (value < 1)
+                    value = 1;
+                else if (value > 65000)
+                    value = 65000;
+
+                if (m_Sag != value)
+                {
+                    int oldValue = m_Sag;
+
+                    m_Sag = value;
+                    Delta(MobileDelta.Stat | MobileDelta.Mana);
+
+                    if (Mana < ManaMax)
+                    {
+                        if (m_ManaTimer == null)
+                            m_ManaTimer = new ManaTimer(this);
+
+                        m_ManaTimer.Start();
+                    }
+                    else if (Mana > ManaMax)
+                    {
+                        Mana = ManaMax;
+                    }
+
+                    OnRawSagChange(oldValue);
+                    OnRawStatChange(StatType.Sag, oldValue);
+                }
+            }
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public virtual int Sag
+        {
+            get
+            {
+                int value = m_Sag + GetStatOffset(StatType.Cha);
+
+                if (value < 1)
+                    value = 1;
+                else if (value > 65000)
+                    value = 65000;
+
+                return value;
+            }
+            set
+            {
+                if (m_StatMods.Count == 0)
+                    RawSag = value;
             }
         }
 
@@ -10417,14 +10484,14 @@ namespace Server
 							if( m.CanBeRenamedBy( beholder ) )
 							{
 								if( statPacketTrue == null )
-									statPacketTrue = Packet.Acquire( new MobileStatusCompact( true, m ) );
+									statPacketTrue = Packet.Acquire( new MobileStatusCompact( true, m, beholder ) );
 
 								state.Send( statPacketTrue );
 							}
 							else
 							{
 								if( statPacketFalse == null )
-									statPacketFalse = Packet.Acquire( new MobileStatusCompact( false, m ) );
+									statPacketFalse = Packet.Acquire( new MobileStatusCompact( false, m, beholder ) );
 
 								state.Send( statPacketFalse );
 							}

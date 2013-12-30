@@ -2917,6 +2917,24 @@ namespace Server.Network
 
 			m_Stream.Write( (byte) 0 ); // type
 		}
+
+        public MobileStatusCompact(bool canBeRenamed, Mobile beheld, Mobile beholder)
+            : base(0x11)
+        {
+            string name = beheld.GetNameUseBy(beholder);
+            if (name == null) name = "";
+
+            this.EnsureCapacity(43);
+
+            m_Stream.Write((int)beheld.Serial);
+            m_Stream.WriteAsciiFixed(name, 30);
+
+            AttributeNormalizer.WriteReverse(m_Stream, beheld.Hits, beheld.HitsMax);
+
+            m_Stream.Write(canBeRenamed);
+
+            m_Stream.Write((byte)0); // type
+        }
 	}
 
 	public sealed class MobileStatusExtended : Packet
