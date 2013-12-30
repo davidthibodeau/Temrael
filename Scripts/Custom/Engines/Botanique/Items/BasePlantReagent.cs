@@ -339,7 +339,7 @@ namespace Server.Items
         public Cendres(int amount)
             : base(0x11EB)
         {
-            Name = "Fumier";
+            Name = "Cendres";
             Amount = amount;
 
             Hue = 2055;
