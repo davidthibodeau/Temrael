@@ -944,6 +944,11 @@ namespace Server.Items
 
             public override void OnClick()
             {
+                if (!m_from.Achever)
+                {
+                    m_from.SendMessage("Vous devez avoir l'autorisation de l'équipe pour achever quelqu'un.");
+                    return;
+                }
                 if (m_from.LastAchever.AddHours(3) < DateTime.Now)
                 {
                     if (((TMobile)m_corpse.Owner).MortCurrentState == MortState.Assomage)
@@ -960,6 +965,7 @@ namespace Server.Items
                         m_from.LastAchever = DateTime.Now;
                         m_from.Frozen = true;
                         m_from.SendMessage("Vous achevez le personnage et êtes pris sur place pour 5 secondes.");
+                        m_from.Achever = false;
                         if (m_from.AccessLevel == AccessLevel.Player)
                             m_from.Say("*Achève le personnage au sol.*");
                         Timer.DelayCall(TimeSpan.FromSeconds(5), new TimerStateCallback(Achever_Callback), m_from);

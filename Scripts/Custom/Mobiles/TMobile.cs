@@ -349,6 +349,7 @@ namespace Server.Mobiles
         private bool m_RevealIdentity = false;
         private bool m_RevealTitle = true;
         private bool m_FreeReset = false;
+        private bool m_Achever = false;
 
         private Point3D m_OldLocation;
 
@@ -909,6 +910,9 @@ namespace Server.Mobiles
             get { return m_NextKillAllowed; }
             set { m_NextKillAllowed = value; }
         }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool Achever { get { return m_Achever; } set { m_Achever = value; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Aptitudes Aptitudes { get { return m_Aptitudes; } set { m_Aptitudes = value; } }
@@ -3508,8 +3512,9 @@ namespace Server.Mobiles
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)4);
+            writer.Write((int)5);
 
+            writer.Write((bool)m_Achever);
             writer.Write((bool)m_FreeReset);
             writer.Write((bool)m_RevealTitle);
 
@@ -3629,6 +3634,9 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 5:
+                    m_Achever = reader.ReadBool();
+                    goto case 4;
                 case 4:
                     m_FreeReset = reader.ReadBool();
                     m_RevealTitle = reader.ReadBool();

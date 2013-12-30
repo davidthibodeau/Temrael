@@ -23,13 +23,20 @@ namespace Server.Scripts.Commands
 
             if (from is TMobile)
             {
-                if (((TMobile)from).Niveau >= 10)
+                if (((TMobile)from).Achever)
                 {
-                    from.Target = new AcheverTarget();
+                    if (((TMobile)from).Niveau >= 10)
+                    {
+                        from.Target = new AcheverTarget();
+                    }
+                    else
+                    {
+                        from.SendMessage("Vous devez etre niveau 10 !");
+                    }
                 }
                 else
                 {
-                    from.SendMessage("Vous devez etre niveau 10 !");
+                    from.SendMessage("Vous devez avoir l'autorisation de l'équipe pour achever quelqu'un.");
                 }
             }
         }
@@ -74,6 +81,7 @@ namespace Server.Scripts.Commands
                                             tmob.LastAchever = DateTime.Now;
                                             tmob.Frozen = true;
                                             tmob.SendMessage("Vous achevez le personnage et êtes pris sur place pour 5 secondes.");
+                                            tmob.Achever = false;
                                             /*if (tmob.AccessLevel == AccessLevel.Player)
                                                 tmob.Say("*Achève le personnage au sol.*");*/
                                             ((TMobile)corps.Owner).SendMessage("Vous avez ete acheve !");
