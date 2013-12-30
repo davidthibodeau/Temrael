@@ -181,7 +181,7 @@ namespace Server.Engines.Craft
             //INTERMÉDIAIRE 
             index = AddCraft(typeof(TeintureMiel), "Teintures Intermédiaire", "Teinture de miel", 50.0, 75.0, typeof(JarHoney), "Pot de miel", 5, "Vous n'avez pas assez de pots de miel.");
             AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
-            index = AddCraft(typeof(TeintureFumier), "Teintures fumier", "Teinture de fumier", 50.0, 75.0, typeof(Fumier), "Fumier", 5, "Vous n'avez pas assez de fumier.");
+            index = AddCraft(typeof(TeintureFumier), "Teintures Intermédiaire", "Teinture de fumier", 50.0, 75.0, typeof(Fumier), "Fumier", 5, "Vous n'avez pas assez de fumier.");
             AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
             index = AddCraft(typeof(TeinturePerleNoire), "Teintures Intermédiaire", "Teinture de perles noires", 50.0, 75.0, typeof(BlackPearl), "Perle noire", 15, "Vous n'avez pas assez de perles noires.");
             AddRes(index, typeof(Bottle), "Bouteille", 1, "Il vous manque une bouteille !");
