@@ -211,11 +211,12 @@ namespace Server.Spells
                 double chance = m_Caster.Skills[SkillName.ArtMagique].Value / 333;
 
                 if (pm != null)
+                {
                     chance += pm.Skills[SkillName.Concentration].Value / 333;
 
-                if (this is NecromancerSpell) //La nécro est une école de contact, donc besoin d'un bonus pour ne pas Fizzle
-                    chance += pm.Skills[SkillName.Goetie].Value / 333;
-
+                    if (this is NecromancerSpell) //La nécro est une école de contact, donc besoin d'un bonus pour ne pas Fizzle
+                        chance += pm.Skills[SkillName.Goetie].Value / 333;
+                }
                 if (chance > Utility.RandomDouble())
                     m_Caster.SendMessage("Vous réussissez à garder votre concentration.");
                 else
