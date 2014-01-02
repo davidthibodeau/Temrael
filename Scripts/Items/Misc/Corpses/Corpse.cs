@@ -956,10 +956,10 @@ namespace Server.Items
                         ((TMobile)m_corpse.Owner).Mort = true;
                         ((TMobile)m_corpse.Owner).MortCurrentState = MortState.Mourir;
 
-                        if (!((TMobile)m_corpse.Owner).Suicide)
-                        {
-                            m_from.XP = (int)(m_from.XP * 0.60);
-                        }
+                        //if (!((TMobile)m_corpse.Owner).Suicide)
+                        //{
+                        //    m_from.XP = (int)(m_from.XP * 0.60);
+                        //}
                         m_from.NextKillAllowed = DateTime.Now.AddHours(24);
 
                         m_from.LastAchever = DateTime.Now;

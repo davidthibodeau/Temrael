@@ -72,10 +72,10 @@ namespace Server.Scripts.Commands
                                             ((TMobile)corps.Owner).Mort = true;
                                             ((TMobile)corps.Owner).MortCurrentState = MortState.Mourir;
 
-                                            if (!((TMobile)corps.Owner).Suicide)
-                                            {
-                                                tmob.XP = (int)(tmob.XP * 0.60);
-                                            }
+                                            //if (!((TMobile)corps.Owner).Suicide)
+                                            //{
+                                            //    tmob.XP = (int)(tmob.XP * 0.60);
+                                            //}
                                             tmob.NextKillAllowed = DateTime.Now.AddHours(24);
 
                                             tmob.LastAchever = DateTime.Now;
