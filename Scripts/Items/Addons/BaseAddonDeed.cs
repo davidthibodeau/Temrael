@@ -91,7 +91,7 @@ namespace Server.Items
 					if ( res == AddonFitResult.Valid )
 					{
 						m_Deed.Delete();
-						house.Addons.Add( addon );
+						//house.Addons.Add( addon );
 					}
 					else
 					{
