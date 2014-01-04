@@ -6,7 +6,7 @@ Logs/
 Saves/
 TheBox/
 web/
-Crash*
+Crash/
 *.exe
 *.log
 *.zip

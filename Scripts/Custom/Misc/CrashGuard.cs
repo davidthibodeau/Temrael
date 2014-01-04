@@ -65,7 +65,7 @@ namespace Server.Misc
 
 			try
 			{
-				Process.Start( Core.ExePath );
+				Process.Start( Core.ExePath, Core.Arguments );
 				Console.WriteLine( "done" );
 
 				e.Close = true;
@@ -157,7 +157,10 @@ namespace Server.Misc
 				string fileName = String.Format( "Crash {0}.log", timeStamp );
 
 				string root = GetRoot();
-				string filePath = Combine( root, fileName );
+                string rootCrash = Combine(root, String.Format("Crash/"));
+				string filePath = Combine( rootCrash, fileName );
+
+                CreateDirectory(rootCrash);
 
 				using ( StreamWriter op = new StreamWriter( filePath ) )
 				{
@@ -226,15 +229,7 @@ namespace Server.Misc
 		private static string GetTimeStamp()
 		{
 			DateTime now = DateTime.Now;
-
-			return String.Format( "{0}-{1}-{2}-{3}-{4}-{5}",
-					now.Day,
-					now.Month,
-					now.Year,
-					now.Hour,
-					now.Minute,
-					now.Second
-				);
-		}
-	}
+            return String.Format("{0}-{1}-{2}-{3}-{4}-{5}", now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+        }
+    }
 }
