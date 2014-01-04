@@ -285,6 +285,8 @@ namespace Server.Gumps
                     {
                         int index = (m_Page * EntryCount) + (info.ButtonID - 3);
 
+                        if (index >= m_Mobiles.Count)
+                            return;
                         Mobile m = (Mobile)m_Mobiles[index];
 
                         if (index >= 0 && index < m_Mobiles.Count && (m_Owner.AccessLevel >= AccessLevel.Player && m_Owner.AccessLevel >= m.AccessLevel))
