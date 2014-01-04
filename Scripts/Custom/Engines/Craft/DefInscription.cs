@@ -183,10 +183,10 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(UnlockScroll), "Adjuration", "Ouverture Magique", 20.0, 45.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(MagicUnTrapScroll), "Adjuration", "Suppression Magique", 20.0, 45.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(HarmScroll), "Adjuration", "Nuisance", 30.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(DispelScroll), "Adjuration", "Dissipation", 30.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(DispelFieldScroll), "Adjuration", "Champ de Dissipation", 30.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(ManaDrainScroll), "Adjuration", "Drain de Mana", 40.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(PoisonScroll), "Adjuration", "Poison", 50.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(DispelScroll), "Adjuration", "Dissipation", 30.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(MassDispelScroll), "Adjuration", "Dissipation de Masse", 60.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(ManaVampireScroll), "Adjuration", "Drain Vampirique", 70.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(PoisonFieldScroll), "Adjuration", "Mur de Poison", 80.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
