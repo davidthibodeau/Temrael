@@ -463,13 +463,11 @@ namespace Server.Items
         {
             Weight = 6.0;
             Name = "Imperlame";
-            Layer = Layer.OneHanded;
         }
 
         public Imperlame(Serial serial)
             : base(serial)
         {
-            Layer = Layer.OneHanded;
         }
 
         public override void Serialize(GenericWriter writer)

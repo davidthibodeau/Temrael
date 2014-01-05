@@ -38,12 +38,10 @@ namespace Server.Items
 		{
 			Weight = 12.0;
             Name = "Lance de Joute";
-            Layer = Layer.TwoHanded;
 		}
 
 		public Lance( Serial serial ) : base( serial )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public override void Serialize( GenericWriter writer )
