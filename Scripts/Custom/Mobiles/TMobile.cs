@@ -1145,8 +1145,11 @@ namespace Server.Mobiles
                     if (m_currentLangue != player.CurrentLangue)
                     {
                         string sla = CurrentLangue.ToString();
-                        PrivateOverheadMessage(MessageType.Regular, 0x3B2,
-                            false, "[" + sla + "]", player.NetState);
+                        player.NetState.Send(
+                            new UnicodeMessage(this.Serial, Body, MessageType.Regular, 0x3B2, 3, 
+                                this.Language, this.GetNameUseBy(m), "[" + sla + "]"));
+                        //PrivateOverheadMessage(MessageType.Regular, 0x3B2,
+                        //    false, "[" + sla + "]", player.NetState);
                     }
 
 
