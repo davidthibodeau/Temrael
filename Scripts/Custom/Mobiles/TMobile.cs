@@ -1410,19 +1410,20 @@ namespace Server.Mobiles
                                 name = this.GetNameUseBy(heard);
                             }
 
-                            if (type == MessageType.Regular && this.CurrentLangue == Langue.Runique)
-                            {
-                                //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToUpper(), false);
-                                //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToUpper());
-                                regp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, text.ToUpper());
-                            }
-                            else if (type == MessageType.Regular && this.CurrentLangue == Langue.Elfique)
-                            {
-                                //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToLower(), false);
-                                //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToLower());
-                                regp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, text.ToLower());
-                            }
-                            else if (type == MessageType.Yell)
+                            //if (type == MessageType.Regular && this.CurrentLangue == Langue.Runique)
+                            //{
+                            //    //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToUpper(), false);
+                            //    //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToUpper());
+                            //    regp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, text.ToUpper());
+                            //}
+                            //else if (type == MessageType.Regular && this.CurrentLangue == Langue.Elfique)
+                            //{
+                            //    //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToLower(), false);
+                            //    //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToLower());
+                            //    regp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, text.ToLower());
+                            //}
+                            //else 
+                            if (type == MessageType.Yell)
                             {
                                 regp = new UnicodeMessage(this.Serial, Body, type, this.EmoteHue, 3, this.Language, name, "*Crie*");
                                 regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 3, this.Language, name, text);
@@ -1436,6 +1437,7 @@ namespace Server.Mobiles
                             {
                                 regp = new UnicodeMessage(this.Serial, Body, type, hue, 3, this.Language, name, text);
                             }
+                            
 
                             ns.Send(regp);
                         }
