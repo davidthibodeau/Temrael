@@ -83,7 +83,7 @@ namespace Server.Gumps
                 }
                 else
                 {
-                    from.SendMessage("Vous ne pouvez pas parlez une langue que vous ne connaissez pas");
+                    from.SendMessage("Vous ne pouvez pas parlez une langue que vous ne connaissez pas.");
                 }
             }
 
