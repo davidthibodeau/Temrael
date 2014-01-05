@@ -33,11 +33,13 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Brassards de Maillures";
+            Layer = Layer.Arms;
         }
 
         public MailluresGreaves(Serial serial)
             : base(serial)
         {
+            Layer = Layer.Arms;
         }
 
         public override void Serialize(GenericWriter writer)
@@ -50,6 +52,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Arms;
         }
     }
     public class MailluresLeggings : BaseArmor
