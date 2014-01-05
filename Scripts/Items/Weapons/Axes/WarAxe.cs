@@ -30,9 +30,9 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 31; } }
 		public override int InitMaxHits{ get{ return 80; } }
 
-		public override SkillName DefSkill{ get{ return SkillName.ArmeContondante; } }
-		public override WeaponType DefType{ get{ return WeaponType.Bashing; } }
-		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Bash1H; } }
+        public override SkillName DefSkill { get { return SkillName.ArmeTranchante; } }
+        public override WeaponType DefType { get { return WeaponType.Axe; } }
+		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
 		public override HarvestSystem HarvestSystem{ get{ return null; } }
 

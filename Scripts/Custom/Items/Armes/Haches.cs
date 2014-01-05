@@ -277,11 +277,13 @@ namespace Server.Items
         {
             Weight = 4.0;
             Name = "Furagne";
+            Layer = Layer.OneHanded;
         }
 
         public Furagne(Serial serial)
             : base(serial)
         {
+            Layer = Layer.OneHanded;
         }
 
         public override void Serialize(GenericWriter writer)
@@ -423,12 +425,13 @@ namespace Server.Items
         {
             Weight = 4.0;
             Name = "Duxtranche";
-
+            Layer = Layer.OneHanded;
         }
 
         public Duxtranche(Serial serial)
             : base(serial)
         {
+            Layer = Layer.OneHanded;
         }
 
         public override void Serialize(GenericWriter writer)

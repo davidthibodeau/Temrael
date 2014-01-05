@@ -313,18 +313,18 @@ namespace Server.Items
 
         //Armure Barbare
 
-        public const int ArmureBarbare_Cuirasse = 10;
-        public const int ArmureBarbare_Cuirasse_Contondant = 10;
-        public const int ArmureBarbare_Cuirasse_Tranchant = 10;
-        public const int ArmureBarbare_Cuirasse_Perforant = 10;
-        public const int ArmureBarbare_Cuirasse_Magique = 10;
+        public const int ArmureBarbare_Cuirasse = 6; //= 10;
+        public const int ArmureBarbare_Cuirasse_Contondant = 6; //= 10;
+        public const int ArmureBarbare_Cuirasse_Tranchant = 6; //= 10;
+        public const int ArmureBarbare_Cuirasse_Perforant = 6; //= 10;
+        public const int ArmureBarbare_Cuirasse_Magique = 6; //= 10;
         public const int ArmureBarbare_Cuirasse_Force = 15;
 
-        public const int ArmureBarbare_Jambieres = 10;
-        public const int ArmureBarbare_Jambieres_Contondant = 10;
-        public const int ArmureBarbare_Jambieres_Tranchant = 10;
-        public const int ArmureBarbare_Jambieres_Perforant = 10;
-        public const int ArmureBarbare_Jambieres_Magique = 10;
+        public const int ArmureBarbare_Jambieres = 6; //= 10;
+        public const int ArmureBarbare_Jambieres_Contondant = 6; //= 10;
+        public const int ArmureBarbare_Jambieres_Tranchant = 6; //= 10;
+        public const int ArmureBarbare_Jambieres_Perforant = 6; //= 10;
+        public const int ArmureBarbare_Jambieres_Magique = 6; //= 10;
         public const int ArmureBarbare_Jambieres_Force = 10;
 
         public const int ArmureBarbare_MinDurabilite = 125;
@@ -746,11 +746,11 @@ namespace Server.Items
         public const int PlaqueDaedric_MaxDurabilite = 300;
 
         //Divers
-        public const int TuniqueChaine = 8;
-        public const int TuniqueChaine_Contondant = 8;
-        public const int TuniqueChaine_Tranchant = 8;
-        public const int TuniqueChaine_Perforant = 8;
-        public const int TuniqueChaine_Magique = 8;
+        public const int TuniqueChaine = 6; //= 8;
+        public const int TuniqueChaine_Contondant = 6; //= 8;
+        public const int TuniqueChaine_Tranchant = 6; //= 8;
+        public const int TuniqueChaine_Perforant = 6; //= 8;
+        public const int TuniqueChaine_Magique = 6; //= 8;
         public const int TuniqueChaine_Force = 20;
         public const int TuniqueChaine_MinDurabilite = 150;
         public const int TuniqueChaine_MaxDurabilite = 175;
