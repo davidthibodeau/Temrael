@@ -10,7 +10,7 @@ namespace Server
         private static string m_name = "Forestier";
         private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Forestier];
         private static int m_tooltip = 0;
-        private static string m_description = "Augmente le nombre de bûches coupés sur les arbres selon un certain % de chance.";
+        private static string m_description = "Augmente le nombre de bûches coupées sur les arbres selon un certain % de chances.";
         private static string m_note = string.Empty;
         private static int m_image = 0;
 

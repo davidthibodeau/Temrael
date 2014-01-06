@@ -11,7 +11,7 @@ namespace Server
         private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Evasion];
         private static int m_tooltip = 3006340;
         private static string m_description = "Augmente les chances de demeurer invisible si immobile.";
-        private static string m_note = "Double cliquer un fouet puis un personnage armé.";
+        private static string m_note = string.Empty;
         private static int m_image = 0;
 
         private static String[] m_descriptionNiveau = new String[]

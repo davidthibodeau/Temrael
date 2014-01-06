@@ -10,7 +10,7 @@ namespace Server
         private static string m_name = "Fignolage";
         private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Fignolage];
         private static int m_tooltip = 3006295;
-        private static string m_description = "Augmente les chances de créé tout les objets.";
+        private static string m_description = "Augmente les chances de créer tous les objets.";
         private static string m_note = string.Empty;
         private static int m_image = 0;
 
@@ -27,7 +27,7 @@ namespace Server
                 "+36% chance de confection", 
                 "+40% chance de confection", 
                 "+44% chance de confection",
-                "+4% de chance de confection"
+                "+48% de chance de confection"
             };
 
         public static AptitudeInfo AptitudeInfo = new AptitudeInfo(

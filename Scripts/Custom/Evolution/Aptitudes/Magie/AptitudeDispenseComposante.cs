@@ -10,7 +10,7 @@ namespace Server
         private static string m_name = "Dispense Compo.";
         private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.DispenseComposante];
         private static int m_tooltip = 3006302;
-        private static string m_description = "Permet d'incanter sans composante matériels.";
+        private static string m_description = "Permet d'incanter sans composantes matériels.";
         private static string m_note = string.Empty;
         private static int m_image = 0;
 

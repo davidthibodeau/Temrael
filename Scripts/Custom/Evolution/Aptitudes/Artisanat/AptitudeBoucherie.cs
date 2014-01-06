@@ -10,7 +10,7 @@ namespace Server
         private static string m_name = "Boucherie";
         private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Boucherie];
         private static int m_tooltip = 0;
-        private static string m_description = "Augmente le nombre de plumes, os et viande récolté sur les cadavres.";
+        private static string m_description = "Augmente le nombre de plumes, os et viande récoltés sur les cadavres.";
         private static string m_note = string.Empty;
         private static int m_image = 0;
 
