@@ -1038,12 +1038,12 @@ namespace Server.Engines.Craft
 			AddSubRes( typeof( MytherilIngot ),		"Mytheril", 70.0, 1044268 );
 			AddSubRes( typeof( LuminiumIngot ),		"Luminium", 80.0, 1044268 );
 			AddSubRes( typeof( ObscuriumIngot ),	"Obscurium", 82.0, 1044268 );
-            AddSubRes( typeof( MystiriumIngot ),    "Mystirium", 84.0, 1044268);
-            AddSubRes( typeof( DominiumIngot ),     "Dominium", 86.0, 1044268);
-            AddSubRes( typeof( EclariumIngot ),     "Eclarium", 88.0, 1044268);
-            AddSubRes( typeof( VenariumIngot ),     "Venarium", 90.0, 1044268);
-            AddSubRes( typeof( AtheniumIngot ),     "Athenium", 94.0, 1044268);
-            AddSubRes( typeof( UmbrariumIngot ),    "Umbrarium", 98.0, 1044268);
+            AddSubRes( typeof( MystiriumIngot ),    "Mystirium", 90.0, 1044268);
+            AddSubRes( typeof( DominiumIngot ),     "Dominium", 90.0, 1044268);
+            AddSubRes(typeof(VenariumIngot),        "Venarium", 90.0, 1044268);
+            AddSubRes( typeof( EclariumIngot ),     "Eclarium", 100.0, 1044268);
+            AddSubRes( typeof( AtheniumIngot ),     "Athenium", 100.0, 1044268);
+            AddSubRes( typeof( UmbrariumIngot ),    "Umbrarium", 100.0, 1044268);
 
 			SetSubRes2( typeof( RegularScales ),    "Écailles" );
 

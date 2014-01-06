@@ -243,6 +243,8 @@ namespace Server.Mobiles
                false  //Noire
         };
 
+        private List<int> m_DerniereLangueApprise = new List<int>();
+
         //14 Avec Tief + 0 based
         public string[] Identity = new string[]{
                "", //1,
@@ -979,6 +981,7 @@ namespace Server.Mobiles
             if (!m_languages[(int)l])
             {
                 m_languages[(int)l] = true;
+                m_DerniereLangueApprise.Add((int)l);
                 SendMessage("Vous apprennez la langue: " + l.ToString());
             }
             else
@@ -1023,106 +1026,26 @@ namespace Server.Mobiles
 
         public void LanguageFix()
         {
-            int crashGuard = 0;
             int nbrLangue = 0;
-            int langueRaciale = 0;
-            Langue l;
-
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
                 if (understandLangue((Langue)i))
                     nbrLangue++;
             }
 
-            //Langue commune
-            nbrLangue--;
-
-            //Langue de races
-            switch (Races)
+            if (nbrLangue > Skills.ConnaissanceLangue.Fixed / 200 + 2)
             {
-                case Races.Elfe:
-                    langueRaciale++;
-                    break;
-                case Races.ElfeNoir:
-                    langueRaciale++;
-                    break;
-                case Races.Tieffelin:
-                    langueRaciale++;
-                    break;
-                case Races.Nain:
-                    langueRaciale++;
-                    break;
-                case Races.Nomade:
-                    langueRaciale++;
-                    break;
-                case Races.Nordique:
-                    langueRaciale++;
-                    break;
-                case Races.Orcish:
-                    langueRaciale++;
-                    break;
-            }
-
-            while (nbrLangue - langueRaciale > Skills.ConnaissanceLangue.Fixed / 200)
-            {
-                if (crashGuard > 10)
+                int last = m_DerniereLangueApprise.Count - 1;
+                if (last == -1)
+                {
+                    Console.WriteLine("ERREUR: Server.Mobiles.TMobile.LanguageFix() a obtenu une valeur de -1 pour la variable last");
                     return;
-
-                for (int i = 1; i < 7; i++)
-                {
-                    switch (Races)
-                    {
-                        case Races.Elfe:
-                            l = Langue.Elfique;
-                            if (m_languages[i] && i != (int)l)
-                                m_languages[i] = false;
-                            break;
-                        case Races.ElfeNoir:
-                            l = Langue.Noire;
-                            if (m_languages[i] && i != (int)l)
-                                m_languages[i] = false;
-                            break;
-                        case Races.Tieffelin:
-                            l = Langue.Morte;
-                            if (m_languages[i] && i != (int)l)
-                                m_languages[i] = false;
-                            break;
-                        case Races.Nain:
-                            l = Langue.Runique;
-                            if (m_languages[i] && i != (int)l)
-                                m_languages[i] = false;
-                            break;
-                        case Races.Nomade:
-                            l = Langue.Dunes;
-                            if (m_languages[i] && i != (int)l)
-                                m_languages[i] = false;
-                         break;
-                        case Races.Nordique:
-                            l = Langue.Nordique;
-                            if (m_languages[i] && i != (int)l)
-                                m_languages[i] = false;
-                            break;
-                        case Races.Orcish:
-                            l = Langue.Orcish;
-                            if (m_languages[i] && i != (int)l)
-                                m_languages[i] = false;
-                            break;
-                        default:
-                            if (m_languages[i])
-                                m_languages[i] = false;
-                            break;
-                    }
                 }
-
-                nbrLangue = 0;
-
-                for (int i = 0; i < 7; i++)
-                {
-                    if (understandLangue((Langue)i))
-                        nbrLangue++;
-                }
-
-                crashGuard ++;
+                m_languages[m_DerniereLangueApprise[last]] = false;
+                SendMessage("Vous n'avez pas assez de points en Connaissance (Langue) pour parler " + nbrLangue + " langues.");
+                SendMessage("La dernière langue choisie (" + (Langue)m_DerniereLangueApprise[last] + ") vous est retirée.");
+                m_DerniereLangueApprise.RemoveAt(last);
+                LanguageFix();
             }
         }
 
@@ -2436,6 +2359,14 @@ namespace Server.Mobiles
                 base.OnSkillsQuery(from);
         }
 
+        public override void OnSkillChange(SkillName skill, double oldBase)
+		{
+            base.OnSkillChange(skill, oldBase);
+
+            if (skill == SkillName.ConnaissanceLangue)
+                LanguageFix();
+		}
+
         public override bool OnMoveOver(Mobile m)
         {
             if ((m.Hidden) || (Hidden))
@@ -3517,7 +3448,11 @@ namespace Server.Mobiles
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)5);
+            writer.Write((int)6);
+
+            writer.Write(m_DerniereLangueApprise.Count);
+            for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
+                writer.Write(m_DerniereLangueApprise[i]);            
 
             writer.Write((bool)m_Achever);
             writer.Write((bool)m_FreeReset);
@@ -3639,6 +3574,11 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 6:
+                    count = reader.ReadInt();
+                    for (int i = 0; i < count; i++)
+                        m_DerniereLangueApprise.Add(reader.ReadInt());
+                    goto case 5;
                 case 5:
                     m_Achever = reader.ReadBool();
                     goto case 4;
@@ -3792,6 +3732,20 @@ namespace Server.Mobiles
             {
                 if (this.FacialHairItemID != 0)
                     this.FacialHairItemID = 0;
+            }
+
+            if (version < 6)
+            {
+                m_languages = new bool[]{
+                    true, //Commune,
+                    false, //Runique,
+                    false, //Dunes,
+                    false, //Elfique,
+                    false, //Nordique,
+                    false, //Morte,
+                    false, //Orcish,
+                    false  //Noire
+                };
             }
 
             CheckRaceGump();

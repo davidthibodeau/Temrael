@@ -164,12 +164,10 @@ namespace Server.Gumps
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Brandheim:
                                 InitializeCreation(m_from);
-                                from.apprendreLangue(Langue.Nordique);
                                 m_from.MoveToWorld(new Point3D(2402, 1005, -80), Map.Felucca);
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Elamsham:
                                 InitializeCreation(m_from);
-                                from.apprendreLangue(Langue.Noire);
                                 m_from.MoveToWorld(new Point3D(2549, 1333, -81), Map.Felucca);
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Citarel:
@@ -178,21 +176,20 @@ namespace Server.Gumps
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Serenite:
                                 InitializeCreation(m_from);
-                                from.apprendreLangue(Langue.Elfique);
                                 m_from.MoveToWorld(new Point3D(2628, 2099, -6), Map.Felucca);
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Melandre:
                                 InitializeCreation(m_from);
-                                from.apprendreLangue(Langue.Dunes);
                                 m_from.MoveToWorld(new Point3D(3088, 2809, -52), Map.Felucca);
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Tartarus:
                                 InitializeCreation(m_from);
-                                from.apprendreLangue(Langue.Morte);
                                 m_from.MoveToWorld(new Point3D(1859, 3359, -79), Map.Felucca);
                                 break;
                             default: break;
                         }
+                        m_from.SendMessage("Vous avez le droit d'apprendre une seconde langue.");
+                        m_from.SendGump(new GumpLanguage(m_from, true));
                     }
                     else
                     {
@@ -287,7 +284,6 @@ namespace Server.Gumps
                     //from.Hue = 1867;
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsNain(from.Hue));
-                    from.apprendreLangue(Langue.Runique);
                     break;
                 case Races.Nomade:
                     //from.Hue = 1816;
@@ -302,7 +298,6 @@ namespace Server.Gumps
                     //from.Hue = 1437;
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsOrcish(from.Hue));
-                    from.apprendreLangue(Langue.Orcish);
                     break;
                 case Races.Tieffelin:
                     from.RaceSecrete = from.Creation.secrete;

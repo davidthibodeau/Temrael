@@ -58,18 +58,13 @@ namespace Server.Gumps
             if (info.ButtonID >= 50 && info.ButtonID < 100)
             {
                 int nbrLangue = 0;
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     if (from.understandLangue((Langue)i))
                         nbrLangue++;
                 }
-                //nouvelle langue inclusepar défaut
-                nbrLangue--;
-                //nbrLangue--; //Langue de départ
-
-                Console.WriteLine(nbrLangue + " " + from.Skills.ConnaissanceLangue.Fixed / 200);
-
-                if (nbrLangue < from.Skills.ConnaissanceLangue.Fixed / 200)
+                
+                if (nbrLangue < from.Skills.ConnaissanceLangue.Fixed / 200 + 2)
                 {
                     from.apprendreLangue((Langue)(info.ButtonID - 50));
                 }
@@ -88,7 +83,7 @@ namespace Server.Gumps
                 }
                 else
                 {
-                    from.SendMessage("Vous ne pouvez pas parlez une langue que vous ne connaissez pas");
+                    from.SendMessage("Vous ne pouvez pas parlez une langue que vous ne connaissez pas.");
                 }
             }
 

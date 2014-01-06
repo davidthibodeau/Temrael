@@ -136,13 +136,11 @@ namespace Server.Items
         {
             Weight = 6.0;
             Name = "Mirilione";
-            Layer = Layer.OneHanded;
         }
 
         public Mirilione(Serial serial)
             : base(serial)
         {
-            Layer = Layer.OneHanded;
         }
 
         public override void Serialize(GenericWriter writer)
@@ -601,13 +599,11 @@ namespace Server.Items
         {
             Weight = 6.0;
             Name = "Niropie";
-            Layer = Layer.OneHanded;
         }
 
         public Niropie(Serial serial)
             : base(serial)
         {
-            Layer = Layer.OneHanded;
         }
 
         public override void Serialize(GenericWriter writer)
@@ -1490,13 +1486,11 @@ namespace Server.Items
         {
             Weight = 6.0;
             Name = "Zarel";
-            Layer = Layer.OneHanded;
         }
 
         public Zarel(Serial serial)
             : base(serial)
         {
-            Layer = Layer.OneHanded;
         }
 
         public override void Serialize(GenericWriter writer)
@@ -1543,13 +1537,11 @@ namespace Server.Items
         {
             Weight = 6.0;
             Name = "Sefrio";
-            Layer = Layer.OneHanded;
         }
 
         public Sefrio(Serial serial)
             : base(serial)
         {
-            Layer = Layer.OneHanded;
         }
 
         public override void Serialize(GenericWriter writer)
