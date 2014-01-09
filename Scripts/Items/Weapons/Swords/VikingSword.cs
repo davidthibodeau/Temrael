@@ -33,11 +33,13 @@ namespace Server.Items
 		public VikingSword() : base( 0x13B9 )
 		{
 			Weight = 6.0;
-            Name = "Épée Lourde";
+            		Name = "Épée Lourde";
+            		Layer = Layer.TwoHanded;
 		}
 
 		public VikingSword( Serial serial ) : base( serial )
 		{
+			Layer = Layer.TwoHanded;
 		}
 
 		public override void Serialize( GenericWriter writer )
@@ -52,6 +54,7 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+			Layer = Layer.TwoHanded;
 		}
 	}
 }

@@ -37,11 +37,13 @@ namespace Server.Items
 		public Lance() : base( 0x26C0 )
 		{
 			Weight = 12.0;
-            Name = "Lance de Joute";
+            		Name = "Lance de Joute";
+            		Layer = Layer.TwoHanded;
 		}
 
 		public Lance( Serial serial ) : base( serial )
 		{
+			Layer = Layer.TwoHanded;
 		}
 
 		public override void Serialize( GenericWriter writer )
@@ -56,6 +58,7 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+			Layer = Layer.TwoHanded;
 		}
 	}
 }

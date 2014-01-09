@@ -288,9 +288,9 @@ namespace Server.Items
             public static int Trident_MinDam1 = getMinDam(1, Trident_Vitesse, true);
             public static int Trident_MinDam2 = getMinDam(2, Trident_Vitesse, true);
             public static int Trident_MinDam3 = getMinDam(3, Trident_Vitesse, true);
-            public static int Trident_MinDam4 = getMinDam(5, Trident_Vitesse, true);
-            public static int Trident_MinDam5 = getMinDam(6, Trident_Vitesse, true);
-            public static int Trident_MinDam6 = getMinDam(0, Trident_Vitesse, true);
+            public static int Trident_MinDam4 = getMinDam(4, Trident_Vitesse, true);
+            public static int Trident_MinDam5 = getMinDam(5, Trident_Vitesse, true);
+            public static int Trident_MinDam6 = getMinDam(6, Trident_Vitesse, true);
             public static int Trident_MaxDam0 = getMaxDam(0, Trident_Vitesse, true);
             public static int Trident_MaxDam1 = getMaxDam(1, Trident_Vitesse, true);
             public static int Trident_MaxDam2 = getMaxDam(2, Trident_Vitesse, true);
