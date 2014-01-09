@@ -18,7 +18,7 @@ namespace Server.Systemes.Geopolitique
         {
             get 
             {
-                if(m_Type == -1) return TypeTerre.emptyTerre;
+                if(m_Type == -1) return TypeTerre.Empty;
                 return Geopolitique.types[m_Type];
             }
             set { m_Type = Geopolitique.types.IndexOf(value); }

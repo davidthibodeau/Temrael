@@ -8,13 +8,13 @@ namespace Server.Systemes.Geopolitique
     //Wrapper pour la normalisation des types de terres et de leurs rentes
     public class TypeTerre
     {
-        public static const TypeTerre emptyTerre = new TypeTerre("", 0);
-
+        public static TypeTerre Empty { get { return new EmptyTerre(); } }
+        
         private string m_Nom;
         private int m_Rente;
 
-        public string Nom { get { return m_Nom; } set { m_Nom = value; } }
-        public int Rente { get { return m_Rente; } set { m_Rente = value; } }
+        public virtual string Nom { get { return m_Nom; } set { m_Nom = value; } }
+        public virtual int Rente { get { return m_Rente; } set { m_Rente = value; } }
 
         public void delete()
         {
@@ -42,5 +42,17 @@ namespace Server.Systemes.Geopolitique
             xml.WriteString(XmlConvert.ToString(m_Rente));
             xml.WriteEndElement();
         }
+    }
+
+    // Utilisee pour declarer un type de terre constant.
+    public class EmptyTerre : TypeTerre
+    {
+
+        public EmptyTerre() : base("", 0)
+        {
+        }
+
+        public override string Nom { get { return ""; } set { } }
+        public override int Rente { get { return 0; } set { } }
     }
 }
