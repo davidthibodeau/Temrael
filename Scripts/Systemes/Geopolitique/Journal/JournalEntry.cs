@@ -15,7 +15,7 @@ namespace Server.Systemes.Geopolitique.Journal
     {
         private Mobile m_Createur;
 
-        public abstract EntryType Type;
+        public abstract EntryType Type { }
 
         public Mobile Createur { get { return m_Createur; } }
 

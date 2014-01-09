@@ -430,16 +430,6 @@
     <Compile Include=".\Custom\Evolution\XP.cs" />
     <Compile Include=".\Custom\Evolution\XPLogin.cs" />
     <Compile Include=".\Custom\GeoController.cs" />
-    <Compile Include=".\Custom\Geopolitique\Categorie.cs" />
-    <Compile Include=".\Custom\Geopolitique\Employe.cs" />
-    <Compile Include=".\Custom\Geopolitique\GeopolGump.cs" />
-    <Compile Include=".\Custom\Geopolitique\Geopolitique.cs" />
-    <Compile Include=".\Custom\Geopolitique\Journal\Journal.cs" />
-    <Compile Include=".\Custom\Geopolitique\Journal\JournalEntry.cs" />
-    <Compile Include=".\Custom\Geopolitique\Rente.cs" />
-    <Compile Include=".\Custom\Geopolitique\Terre.cs" />
-    <Compile Include=".\Custom\Geopolitique\Tresorier.cs" />
-    <Compile Include=".\Custom\Geopolitique\TypeTerre.cs" />
     <Compile Include=".\Custom\Gumps\AdminGump.cs" />
     <Compile Include=".\Custom\Gumps\CompetenceGump.cs" />
     <Compile Include=".\Custom\Gumps\CompetenceSmallGump.cs" />
