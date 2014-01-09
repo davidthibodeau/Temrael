@@ -3694,9 +3694,17 @@
     <Compile Include=".\Vendor\PlayerVendorGumps.cs" />
     <Compile Include="Custom\Commandes\Follow.cs" />
     <Compile Include="Custom\Commandes\JailPage.cs" />
+    <Compile Include="Systemes\Geopolitique\Categorie.cs" />
+    <Compile Include="Systemes\Geopolitique\Employe.cs" />
+    <Compile Include="Systemes\Geopolitique\GeopolGump.cs" />
+    <Compile Include="Systemes\Geopolitique\Geopolitique.cs" />
     <Compile Include="Systemes\Geopolitique\Journal\Journal.cs" />
     <Compile Include="Systemes\Geopolitique\Journal\JournalEntry.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
+    <Compile Include="Systemes\Geopolitique\Rente.cs" />
+    <Compile Include="Systemes\Geopolitique\Terre.cs" />
+    <Compile Include="Systemes\Geopolitique\Tresorier.cs" />
+    <Compile Include="Systemes\Geopolitique\TypeTerre.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">
