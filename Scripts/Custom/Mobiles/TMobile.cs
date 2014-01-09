@@ -1210,7 +1210,7 @@ namespace Server.Mobiles
             {
                 case MessageType.Regular: this.SpeechHue = hue; break;
                 case MessageType.Emote: this.EmoteHue = hue; break;
-                case MessageType.Whisper: this.WhisperHue = hue; range = 2; break;
+                case MessageType.Whisper: this.WhisperHue = hue; range = 1; break;
                 case MessageType.Yell: 
                     this.YellHue = hue; range = 18;
                     if ((int)(rage / 5) > 0)
