@@ -22,27 +22,59 @@ namespace Server.Systemes.Geopolitique
     {
         
         private Mobile m_Gestionnaire; // Joueur qui controle la tresorerie
+        private Terre m_Terre; // null si pas lie a une terre 
         private string m_Etablissement; // Nom de la tresorerie
         private string m_Description; // Description dans le menu geopol
         private int m_Fonds; // Total des fonds accumules
-        private int m_Rentes; // Rentes octroyes 
-
+        
         private Dictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
         private Timer m_Paiement; // Timer pour effectuer un paiement
 
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Gestionnaire { get { return m_Gestionnaire; } set { m_Gestionnaire = value; } }
+        public Terre Terre { get { return m_Terre; } }
         [CommandProperty(AccessLevel.GameMaster)]
         public string Etablissement { get { return m_Etablissement; } set { m_Etablissement = value; } }
         [CommandProperty(AccessLevel.GameMaster)]
         public string Description { get { return m_Description; } set { m_Description = value; } }
         [CommandProperty(AccessLevel.GameMaster, true)]
-        public int Fonds { get { return m_Fonds; } set { m_Fonds = value; } }
+        public int Fonds
+        {
+            get
+            {
+                if (m_Terre == null)
+                    return m_Fonds;
+                return m_Terre.Fonds;
+            }
+            set
+            {
+                if (m_Terre == null)
+                    m_Fonds = value;
+                else
+                    m_Terre.Fonds = value;
+            }
+        }
+        
         [CommandProperty(AccessLevel.GameMaster, true)]
-        public int Rentes { get { return m_Rentes; } set { m_Rentes = value; } }
-        [CommandProperty(AccessLevel.GameMaster, true)]
-        public Dictionary<Mobile, Employe> Employes { get { return m_Employes; } set { m_Employes = value;  } }
+        public Dictionary<Mobile, Employe> Employes { get { return m_Employes; } set { m_Employes = value; } }
+
+        public Tresorier(string description, Terre terre)
+        {
+            m_Description = description;
+            m_Terre = terre;
+            m_Fonds = 0;
+            m_Etablissement = "";
+            m_Employes = new Dictionary<Mobile, Employe>();
+        }
+
+        public Tresorier(string etablissement, Mobile gestionnaire)
+        {
+            m_Etablissement = etablissement;
+            m_Gestionnaire = gestionnaire;
+            m_Fonds = 0;
+            m_Employes = new Dictionary<Mobile, Employe>();
+        }
 
         public void AddEmploye(Mobile employe, string titre, int paie)
         {
@@ -181,9 +213,45 @@ namespace Server.Systemes.Geopolitique
                 "Vous n'avez pas " + montant + "pièces sur vous.", from.NetState);   
         }
 
-        public void OnRentePaiementEvent(object source, ElapsedEventArgs e)
+        
+        public override void Serialize(GenericWriter writer)
         {
-            Fonds += Rentes;
+            base.Serialize(writer);
+            writer.Write((int)0);
+
+            writer.Write((Mobile)m_Gestionnaire);
+            writer.Write((string)m_Etablissement);
+            writer.Write((string)m_Description);
+            writer.Write((int)m_Fonds);
+            
+            writer.Write((int)m_Employes.Count);
+            foreach (Employe e in m_Employes.Values)
+            {
+                e.Serialize(writer);
+            }
+            
+            //new Timer(
+            //m_Paiement.
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+
+            m_Gestionnaire = reader.ReadMobile();
+            m_Etablissement = reader.ReadString();
+            m_Description = reader.ReadString();
+            m_Fonds = reader.ReadInt();
+            
+            int count = reader.ReadInt();
+            m_Employes = new Dictionary<Mobile, Employe>();
+            for (int i = 0; i < count; i++)
+            {
+                Employe e = new Employe(reader);
+                m_Employes.Add(e.Nom, e);
+            }
         }
     }
 }

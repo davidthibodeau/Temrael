@@ -32,6 +32,26 @@ namespace Server.Systemes.Geopolitique
             m_Total = 0;
             m_Removed = false;
         }
+
+        public Employe(GenericReader reader)
+        {
+            int version = reader.ReadInt();
+
+            m_Nom = reader.ReadMobile();
+            m_Titre = reader.ReadString();
+            m_Paie = reader.ReadInt();
+            m_Total = reader.ReadInt();
+            m_Removed = reader.ReadBool();
+        }
+
+        public void Serialize(GenericWriter writer)
+        {
+            writer.Write((Mobile)m_Nom);
+            writer.Write((string)m_Titre);
+            writer.Write((int)m_Paie);
+            writer.Write((int)m_Total);
+            writer.Write((bool)m_Removed);
+        }
     }
 
 }
