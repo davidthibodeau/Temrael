@@ -36,6 +36,19 @@ namespace Server.Systemes.Geopolitique
             caller.SendGump(new GeopolGump(caller, geopolitique));
         }
 
+        public static DateTime GetNextWeekday(DateTime start, DayOfWeek day)
+        {
+            // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
+            int daysToAdd = ((int)day - (int)start.DayOfWeek + 7) % 7;
+            return start.AddDays(daysToAdd);
+        }
+
+        public static void StartTimer()
+        {
+            DateTime nextTuesday = GetNextWeekday(DateTime.Today.AddDays(1), DayOfWeek.Tuesday);
+
+        }
+
         public static void Load()
         {
             string filePath = Path.Combine("Saves/Geopolitique", "terres.xml");

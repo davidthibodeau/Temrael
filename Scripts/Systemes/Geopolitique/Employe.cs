@@ -12,7 +12,7 @@ namespace Server.Systemes.Geopolitique
         private int m_Paie; // Montant par semaine
         private int m_Total; // Total du a l'employee
         private bool m_Removed; // Si l'employe fut retire de la liste mais possede toujours un montant a se faire payer.
-
+        
         [CommandProperty(AccessLevel.GameMaster, true)]
         public Mobile Nom { get { return m_Nom; } set { m_Nom = value; } }
         [CommandProperty(AccessLevel.GameMaster)]

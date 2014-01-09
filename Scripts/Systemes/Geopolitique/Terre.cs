@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Timers;
 
 namespace Server.Systemes.Geopolitique
 {
@@ -61,6 +62,11 @@ namespace Server.Systemes.Geopolitique
         {
             foreach (Tresorier t in m_Tresoriers)
                 yield return t;
+        }
+
+        public void PayerRente()
+        {
+            
         }
 
         public Terre(Categorie parent, string nom)

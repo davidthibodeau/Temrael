@@ -194,6 +194,10 @@
     <Compile Include=".\Custom\Commandes\Fiche.cs" />
     <Compile Include=".\Custom\Commandes\GeneratePlantSpawner.cs" />
     <Compile Include=".\Custom\Commandes\GetParty.cs" />
+    <Compile Include=".\Custom\Commandes\Follow.cs" />
+    <Compile Include=".\Custom\Commandes\GeneratePlantSpawner.cs" />
+    <Compile Include=".\Custom\Commandes\GetParty.cs" />
+    <Compile Include=".\Custom\Commandes\JailPage.cs" />
     <Compile Include=".\Custom\Commandes\Langue.cs" />
     <Compile Include=".\Custom\Commandes\LangueEtude.cs" />
     <Compile Include=".\Custom\Commandes\Layers.cs" />
@@ -426,6 +430,16 @@
     <Compile Include=".\Custom\Evolution\XP.cs" />
     <Compile Include=".\Custom\Evolution\XPLogin.cs" />
     <Compile Include=".\Custom\GeoController.cs" />
+    <Compile Include=".\Custom\Geopolitique\Categorie.cs" />
+    <Compile Include=".\Custom\Geopolitique\Employe.cs" />
+    <Compile Include=".\Custom\Geopolitique\GeopolGump.cs" />
+    <Compile Include=".\Custom\Geopolitique\Geopolitique.cs" />
+    <Compile Include=".\Custom\Geopolitique\Journal\Journal.cs" />
+    <Compile Include=".\Custom\Geopolitique\Journal\JournalEntry.cs" />
+    <Compile Include=".\Custom\Geopolitique\Rente.cs" />
+    <Compile Include=".\Custom\Geopolitique\Terre.cs" />
+    <Compile Include=".\Custom\Geopolitique\Tresorier.cs" />
+    <Compile Include=".\Custom\Geopolitique\TypeTerre.cs" />
     <Compile Include=".\Custom\Gumps\AdminGump.cs" />
     <Compile Include=".\Custom\Gumps\CompetenceGump.cs" />
     <Compile Include=".\Custom\Gumps\CompetenceSmallGump.cs" />
@@ -849,6 +863,7 @@
     <Compile Include=".\Custom\Magie\SBScrollsGenerator.cs" />
     <Compile Include=".\Custom\Magie\ScrollsGenerator.cs" />
     <Compile Include=".\Custom\Magie\WispBete.cs" />
+    <Compile Include=".\Custom\Misc\AddonGenerator.cs" />
     <Compile Include=".\Custom\Misc\AOS.cs" />
     <Compile Include=".\Custom\Misc\CharacterCreation.cs" />
     <Compile Include=".\Custom\Misc\CrashGuard.cs" />
@@ -898,6 +913,8 @@
     <Compile Include=".\Custom\Mobiles\Animaux\Birds\Harfang.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Birds\Heron.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Birds\Hiboux.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Birds\Chicken.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Birds\Eagle.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Canines\Chacal.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Canines\DireWolf.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Canines\GreyWolf.cs" />
@@ -924,6 +941,14 @@
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Dolphin.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Frog.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Gazelle.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Critters\Fox.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Critters\Furret.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Critters\Rat.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Felines\Panther.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Misc\Boar.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Misc\BullFrog.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Misc\Dolphin.cs" />
+    <Compile Include=".\Custom\Mobiles\Animaux\Misc\Frog.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\GiantToad.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Goat.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Gorilla.cs" />
@@ -1430,6 +1455,22 @@
     <Compile Include="Regions\Villes\TerritoryElamsham.cs" />
     <Compile Include="Regions\Villes\TerritoryMelandre.cs" />
     <Compile Include="Regions\Villes\TerritorySerenite.cs" />
+    <Compile Include=".\Custom\Regions\CommerceRegion.cs" />
+    <Compile Include=".\Custom\Regions\Commerces\CitarelCommerce.cs" />
+    <Compile Include=".\Custom\Regions\Tavernes\AireReposCitarel.cs" />
+    <Compile Include=".\Custom\Regions\Tavernes\InnCitarel.cs" />
+    <Compile Include=".\Custom\Regions\Tavernes\TavernBrandheim.cs" />
+    <Compile Include=".\Custom\Regions\Tavernes\TavernCitarel.cs" />
+    <Compile Include=".\Custom\Regions\Tavernes\TavernElamsham.cs" />
+    <Compile Include=".\Custom\Regions\Tavernes\TavernMelandre.cs" />
+    <Compile Include=".\Custom\Regions\Tavernes\TavernSerenite.cs" />
+    <Compile Include=".\Custom\Regions\TavernRegion.cs" />
+    <Compile Include=".\Custom\Regions\TerritoryRegion.cs" />
+    <Compile Include=".\Custom\Regions\Villes\TerritoryBrandheim.cs" />
+    <Compile Include=".\Custom\Regions\Villes\TerritoryCitarel.cs" />
+    <Compile Include=".\Custom\Regions\Villes\TerritoryElamsham.cs" />
+    <Compile Include=".\Custom\Regions\Villes\TerritoryMelandre.cs" />
+    <Compile Include=".\Custom\Regions\Villes\TerritorySerenite.cs" />
     <Compile Include=".\Custom\Schedule\ScheduleAI.cs" />
     <Compile Include=".\Custom\Schedule\ScheduleItem.cs" />
     <Compile Include=".\Custom\Sleep\SleeperBaseAddon.cs" />
@@ -3663,6 +3704,8 @@
     <Compile Include=".\Vendor\PlayerVendorGumps.cs" />
     <Compile Include="Custom\Commandes\Follow.cs" />
     <Compile Include="Custom\Commandes\JailPage.cs" />
+    <Compile Include="Systemes\Geopolitique\Journal\Journal.cs" />
+    <Compile Include="Systemes\Geopolitique\Journal\JournalEntry.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
