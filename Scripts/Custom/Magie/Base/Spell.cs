@@ -820,6 +820,8 @@ namespace Server.Spells
 			if ( m_Scroll != null )
 				circle -= 2;
 
+            if (circle < 0)
+                circle = 0;
 			//double avg = ChanceLength * circle;
             double avg = ChanceDeCast[circle];
 
