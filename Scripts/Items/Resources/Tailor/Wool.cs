@@ -98,7 +98,7 @@ namespace Server.Items
 					}
 					else if ( wheel.Spinning )
 					{
-                        from.SendMessage("Let rouet est deja en marche !");
+                        from.SendMessage("Le rouet est deja en marche !");
 						//from.SendLocalizedMessage( 502656 ); // That spinning wheel is being used.
 					}
 					else
