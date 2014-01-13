@@ -6,12 +6,14 @@ using System.IO;
 using System.Xml;
 using Server;
 using Server.Commands;
+using Server.Systemes.Geopolitique.Log;
 
 namespace Server.Systemes.Geopolitique
 {
     public class Geopolitique
     {
         public static Categorie geopolitique;
+        public static Journal journal;
         public static List<TypeTerre> types;
 
         public static void Configure()

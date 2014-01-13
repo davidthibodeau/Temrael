@@ -3698,8 +3698,8 @@
     <Compile Include="Systemes\Geopolitique\Employe.cs" />
     <Compile Include="Systemes\Geopolitique\GeopolGump.cs" />
     <Compile Include="Systemes\Geopolitique\Geopolitique.cs" />
-    <Compile Include="Systemes\Geopolitique\Journal\Journal.cs" />
-    <Compile Include="Systemes\Geopolitique\Journal\JournalEntry.cs" />
+    <Compile Include="Systemes\Geopolitique\Log\Journal.cs" />
+    <Compile Include="Systemes\Geopolitique\Log\JournalEntry.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
     <Compile Include="Systemes\Geopolitique\Rente.cs" />
     <Compile Include="Systemes\Geopolitique\Terre.cs" />
