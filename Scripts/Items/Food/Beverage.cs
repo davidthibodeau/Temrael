@@ -968,7 +968,7 @@ namespace Server.Items
 					m_Drunk.Stam -= 1;
 					m_Drunk.Mana -= 1;
 
-					if( Utility.Random( 1, 4 ) == 1 )
+					/*if( Utility.Random( 1, 4 ) == 1 )
 					{
 						if( !m_Drunk.Mounted )
 						{
@@ -981,7 +981,7 @@ namespace Server.Items
 
 						// *hic*
 						//m_Drunk.PublicOverheadMessage( Network.MessageType.Regular, 0x3B2, 500849 );
-					}
+					}*/
 
 					if( m_Drunk.BAC <= 0 )
 					{

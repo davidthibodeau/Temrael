@@ -1210,7 +1210,7 @@ namespace Server.Mobiles
             {
                 case MessageType.Regular: this.SpeechHue = hue; break;
                 case MessageType.Emote: this.EmoteHue = hue; break;
-                case MessageType.Whisper: this.WhisperHue = hue; range = 2; break;
+                case MessageType.Whisper: this.WhisperHue = hue; range = 1; break;
                 case MessageType.Yell: 
                     this.YellHue = hue; range = 18;
                     if ((int)(rage / 5) > 0)
@@ -2263,7 +2263,7 @@ namespace Server.Mobiles
             if (from == this)
                 return Name;
 
-            if ((this.Account != null && this.Account.AccessLevel > AccessLevel.Player) || from.Account.AccessLevel > AccessLevel.Player)
+            if ((this.Account != null && this.Account.AccessLevel > AccessLevel.Player) || (from.Account != null && from.Account.AccessLevel > AccessLevel.Player))
                 return (this.m_currentIdentity == 0 ? this.Name : this.Identity[0]);
 
             if (m_Incognito)
