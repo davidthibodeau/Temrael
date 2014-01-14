@@ -211,8 +211,11 @@ namespace Server.Gumps
         }
         public void DeleteItemsOnChar(TMobile from)
         {
-            while (from.Backpack.Items.Count > 0)
-                ((Item)from.Backpack.Items[0]).Delete();
+            if (from.Backpack != null)
+            {
+                foreach (Item i in from.Backpack.Items)
+                    i.Delete();
+            }
 
             Item item;
 
