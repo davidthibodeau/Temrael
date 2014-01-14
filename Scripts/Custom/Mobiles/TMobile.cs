@@ -2263,7 +2263,7 @@ namespace Server.Mobiles
             if (from == this)
                 return Name;
 
-            if ((this.Account != null && this.Account.AccessLevel > AccessLevel.Player) || from.Account.AccessLevel > AccessLevel.Player)
+            if ((this.Account != null && this.Account.AccessLevel > AccessLevel.Player) || (from.Account != null && from.Account.AccessLevel > AccessLevel.Player))
                 return (this.m_currentIdentity == 0 ? this.Name : this.Identity[0]);
 
             if (m_Incognito)
