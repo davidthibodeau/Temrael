@@ -96,7 +96,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BaseBook( int itemID ) : this( itemID, 20, true )
+		public BaseBook( int itemID ) : this( itemID, 100, true )
 		{
 		}
 
