@@ -2264,7 +2264,7 @@ namespace Server.Mobiles
                 return Name;
 
             if ((this.Account != null && this.Account.AccessLevel > AccessLevel.Player) || (from.Account != null && from.Account.AccessLevel > AccessLevel.Player))
-                return (this.m_currentIdentity == 0 ? this.Name : this.Identity[0]);
+                return (this.m_currentIdentity == 0 ? this.Name : this.Identity[0] + " (" + this.Name + ")");
 
             if (m_Incognito)
                 return "Incognito";
@@ -3448,7 +3448,9 @@ namespace Server.Mobiles
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)6);
+            writer.Write((int)7);
+
+            writer.Write(m_currentIdentity);
 
             writer.Write(m_DerniereLangueApprise.Count);
             for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
@@ -3574,6 +3576,9 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 7:
+                    m_currentIdentity = reader.ReadInt();
+                    goto case 6;
                 case 6:
                     count = reader.ReadInt();
                     for (int i = 0; i < count; i++)
