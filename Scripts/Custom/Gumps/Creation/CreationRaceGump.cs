@@ -213,8 +213,8 @@ namespace Server.Gumps
         {
             if (from.Backpack != null)
             {
-                foreach (Item i in from.Backpack.Items)
-                    i.Delete();
+                while (from.Backpack.Items.Count > 0)
+                    ((Item)from.Backpack.Items[0]).Delete();
             }
 
             Item item;
