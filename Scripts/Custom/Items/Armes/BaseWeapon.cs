@@ -3051,7 +3051,7 @@ namespace Server.Items
 
 			foreach ( Mobile m in from.GetMobilesInRange( 10 ) )
 			{
-				if ( from != m && defender != m && SpellHelper.ValidIndirectTarget( from, m ) && from.CanBeHarmful( m, false ) && ( !Core.ML || from.InLOS( m ) ) )
+				if ( from != m && defender != m && SpellHelper.ValidIndirectTarget( from, m ) && from.CanBeHarmful( m, false ) && ( !Core.ML || from.InLOS( m ) ) && !(from.Party == m.Party))
 					list.Add( m );
 			}
 
