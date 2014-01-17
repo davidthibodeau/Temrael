@@ -47,7 +47,7 @@ namespace Server.Mobiles
         {
             AddLoot(LootPack.Average);
             AddLoot(LootPack.Meager);
-            AddLoot(LootPack.MedScrolls, 2);
+            //AddLoot(LootPack.MedScrolls, 2);
         }
 
         public override double AttackSpeed { get { return 2.5; } }

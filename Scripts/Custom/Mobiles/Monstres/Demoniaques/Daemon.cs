@@ -53,7 +53,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.Rich );
 			AddLoot( LootPack.Average, 2 );
-			AddLoot( LootPack.MedScrolls, 2 );
+			//AddLoot( LootPack.MedScrolls, 2 );
 		}
 
         public override bool AlwaysMurderer { get { return true; } }

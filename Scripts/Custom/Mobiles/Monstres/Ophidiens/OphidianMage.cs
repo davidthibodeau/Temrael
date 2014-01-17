@@ -46,8 +46,8 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Meager );
-			AddLoot( LootPack.LowScrolls );
-			AddLoot( LootPack.MedScrolls );
+            //AddLoot( LootPack.LowScrolls );
+            //AddLoot( LootPack.MedScrolls );
 		}
 
         public override bool AlwaysMurderer { get { return true; } }

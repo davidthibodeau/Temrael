@@ -209,7 +209,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.SuperBoss, 2 );
-			AddLoot( LootPack.HighScrolls, Utility.RandomMinMax( 6, 60 ) );
+			//AddLoot( LootPack.HighScrolls, Utility.RandomMinMax( 6, 60 ) );
 		}
 
         public override bool AlwaysMurderer { get { return true; } }

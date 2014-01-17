@@ -53,7 +53,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.UltraRich );
-			AddLoot( LootPack.MedScrolls );
+            //AddLoot( LootPack.MedScrolls );
 		}
 
         public override bool AlwaysMurderer { get { return true; } }

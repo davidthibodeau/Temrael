@@ -58,7 +58,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.UltraRich);
-            AddLoot(LootPack.HighScrolls);
+            //AddLoot(LootPack.HighScrolls);
         }
 
         public override bool AlwaysMurderer { get { return true; } }

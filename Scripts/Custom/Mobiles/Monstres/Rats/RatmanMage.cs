@@ -54,7 +54,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
             AddLoot(LootPack.Poor);
-			AddLoot( LootPack.LowScrolls );
+            //AddLoot( LootPack.LowScrolls );
 		}
 
 		public override bool CanRummageCorpses{ get{ return true; } }

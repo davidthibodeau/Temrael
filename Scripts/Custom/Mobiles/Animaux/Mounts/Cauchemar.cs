@@ -80,7 +80,7 @@ namespace Server.Mobiles
 		{
 			AddLoot( LootPack.Rich );
 			AddLoot( LootPack.Average );
-			AddLoot( LootPack.LowScrolls );
+			//AddLoot( LootPack.LowScrolls );
 			AddLoot( LootPack.Potions );
 		}
 

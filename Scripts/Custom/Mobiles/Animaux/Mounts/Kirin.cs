@@ -86,7 +86,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Rich );
-			AddLoot( LootPack.LowScrolls );
+			//AddLoot( LootPack.LowScrolls );
 			AddLoot( LootPack.Potions );
 		}
 

@@ -45,7 +45,7 @@ namespace Server.Mobiles
 		public override void GenerateLoot()
 		{
 			AddLoot( LootPack.Average );
-			AddLoot( LootPack.MedScrolls );
+            //AddLoot( LootPack.MedScrolls );
 		}
 
         public override double AttackSpeed { get { return 2.5; } }
