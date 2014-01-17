@@ -5,6 +5,7 @@ using Server;
 using Server.Network;
 using Server.Gumps;
 using Server.Prompts;
+using Server.Systemes.Geopolitique.Log;
 
 namespace Server.Systemes.Geopolitique
 {
@@ -194,7 +195,7 @@ namespace Server.Systemes.Geopolitique
 				}
 				case (int)Buttons.AfficherJournal:
 				{
-
+                    FunctionNonImplementee(from);
 					break;
 				}
 				case (int)Buttons.GererRentes:
@@ -234,7 +235,22 @@ namespace Server.Systemes.Geopolitique
 					break;
 				}
 
+                case (int)Buttons.AjouterTresorier:
+                {
+
+                    break;
+                }
+
             }
+        }
+
+        private void FunctionNonImplementee(Mobile from)
+        {
+            from.SendMessage("Cette commande n'est pas encore fonctionnelle.");
+            if (cat != null)
+                from.SendGump(new GeopolGump(from, cat, page));
+            else if (terre != null)
+                from.SendGump(new GeopolGump(from, terre, page));
         }
 
         private class GeopolPrompt : Prompt
@@ -257,11 +273,45 @@ namespace Server.Systemes.Geopolitique
                     case CatOuTerre.Categorie:
                         Categorie c = new Categorie(parent, text);
                         parent.AjouterCategorie(c);
+                        Geopolitique.journal.AjouterEntry(new CreerCategorieEntry(from, c));
                         from.SendGump(new GeopolGump(from, c));
                         break;
                     case CatOuTerre.Terre:
                         Terre t = new Terre(parent, text);
                         parent.AjouterTerre(t);
+                        Geopolitique.journal.AjouterEntry(new CreerTerreEntry(from, t));
+                        from.SendGump(new GeopolGump(from, t));
+                        break;
+                }
+            }
+        }
+
+        private class TresorierPrompt : Prompt
+        {
+
+            private Terre parent;
+
+            public TresorierPrompt(Terre p)
+            {
+                parent = p;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                Tresorier t = new Tresorier(text, from);
+                parent.AjouterTresorier(t);
+                switch (choix)
+                {
+                    case CatOuTerre.Categorie:
+                        Categorie c = new Categorie(parent, text);
+                        parent.AjouterCategorie(c);
+                        Geopolitique.journal.AjouterEntry(new CreerCategorieEntry(from, c));
+                        from.SendGump(new GeopolGump(from, c));
+                        break;
+                    case CatOuTerre.Terre:
+                        Terre t = new Terre(parent, text);
+                        parent.AjouterTerre(t);
+                        Geopolitique.journal.AjouterEntry(new CreerTerreEntry(from, t));
                         from.SendGump(new GeopolGump(from, t));
                         break;
                 }

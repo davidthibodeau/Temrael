@@ -25,7 +25,26 @@ namespace Server.Systemes.Geopolitique.Log
         {
             foreach (XmlElement ele in node.GetElementsByTagName("journalentry"))
             {
-                
+                EntryType type = EntryType.Invalide;
+                try
+                {
+                    type = (EntryType) Enum.Parse(typeof(EntryType), Utility.GetText(node["type"], ""));
+                }
+                catch
+                {
+                    Console.WriteLine("ERREUR: Entrée invalide dans le journal de géopolitique.");
+                    continue;
+                }
+
+                JournalEntry entry = null;
+                switch(type)
+                {
+                    case EntryType.CreerCategorie:
+                        entry = new CreerCategorieEntry(ele);
+                        break;
+                }
+
+                AjouterEntryStrict(entry);
             }
         }
 
@@ -44,6 +63,8 @@ namespace Server.Systemes.Geopolitique.Log
         
         public void AjouterEntryStrict(JournalEntry entry)
         {
+            if(entry == null)
+                Console.WriteLine("Erreur: AjouterEntryStrict a été appelé avec un journalentry null");
             List<JournalEntry> j;
             if (entriesParCreateur.TryGetValue(entry.Createur, out j))
             {
