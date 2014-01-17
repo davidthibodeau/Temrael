@@ -48,9 +48,9 @@ namespace Server.Systemes.Geopolitique
                 yield return a;
         }
 
-        public void AjouterTresorier(string description)
+        public void AjouterTresorier(Tresorier t)
         {
-            m_Tresoriers.Add(new Tresorier(description, this));
+            m_Tresoriers.Add(t);
         }
 
         public Tresorier TresorierParIndex(int i)

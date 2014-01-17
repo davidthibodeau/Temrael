@@ -226,21 +226,25 @@ namespace Server.Systemes.Geopolitique
                     {
                         if (cat.Parent != null)
                             from.SendGump(new GeopolGump(from, cat.Parent));
-
                     }
-                    else if (terre != null)
-                    {
-                        from.SendGump(new GeopolGump(from, terre.Parent));
-                    }
-					break;
+                    break;
 				}
 
                 case (int)Buttons.AjouterTresorier:
                 {
-
+                    if (terre == null) break;
+                    from.SendMessage("Entrez une description pour le trésorier que vous désirez créer.");
+                    from.Prompt = new TresorierPrompt(terre);
+					break;
+                }
+                case (int)Buttons.RetourCategorie:
+                {
+                    if (terre != null)
+                    {
+                        from.SendGump(new GeopolGump(from, terre.Parent));
+                    }
                     break;
                 }
-
             }
         }
 
@@ -300,21 +304,8 @@ namespace Server.Systemes.Geopolitique
             {
                 Tresorier t = new Tresorier(text, from);
                 parent.AjouterTresorier(t);
-                switch (choix)
-                {
-                    case CatOuTerre.Categorie:
-                        Categorie c = new Categorie(parent, text);
-                        parent.AjouterCategorie(c);
-                        Geopolitique.journal.AjouterEntry(new CreerCategorieEntry(from, c));
-                        from.SendGump(new GeopolGump(from, c));
-                        break;
-                    case CatOuTerre.Terre:
-                        Terre t = new Terre(parent, text);
-                        parent.AjouterTerre(t);
-                        Geopolitique.journal.AjouterEntry(new CreerTerreEntry(from, t));
-                        from.SendGump(new GeopolGump(from, t));
-                        break;
-                }
+                Geopolitique.journal.AjouterEntry(new CreerTresorierEntry(from, t));
+                //TODO: from.SendGump(new TresorierGump(from, t));
             }
         }
     }
