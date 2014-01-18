@@ -67,7 +67,7 @@ namespace Server.Spells.Second
                         if (duree > 60)
                             duree = 60;
 
-                        Caster.VirtualArmor += (int)value;
+                        Caster.VirtualArmorMod += (int)value;
 
                         new InternalTimer(Caster, (int)value, duree).Start();
 
@@ -139,10 +139,10 @@ namespace Server.Spells.Second
             protected override void OnTick()
             {
                 m_Owner.EndAction(typeof(DefensiveSpell));
-                m_Owner.VirtualArmor -= m_Value;
+                m_Owner.VirtualArmorMod -= m_Value;
 
-                if (m_Owner.VirtualArmor < 0)
-                    m_Owner.VirtualArmor = 0;
+                if (m_Owner.VirtualArmorMod < 0)
+                    m_Owner.VirtualArmorMod = 0;
 
                 m_Owner.SendMessage("Protection prend fin");
             }

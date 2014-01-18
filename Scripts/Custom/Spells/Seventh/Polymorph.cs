@@ -52,7 +52,12 @@ namespace Server.Spells.Seventh
             }
             else if (!Caster.CanBeginAction(typeof(PolymorphSpell)))
             {
-                Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
+                Caster.BodyMod = 0;
+                Caster.EndAction(typeof(PolymorphSpell));
+
+                if (Caster is TMobile)
+                    ((TMobile)Caster).CheckRaceGump();
+                /*Caster.SendLocalizedMessage(1005559); // This spell is already in effect.*/
                 return false;
             }
             else if (TransformationSpell.UnderTransformation(Caster))
