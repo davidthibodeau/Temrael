@@ -13,6 +13,7 @@ using Server.Engines.Craft;
 using System.Collections.Generic;
 using Server.ContextMenus;
 //using Server.Spells.Spellweaving;
+using Server.Combat;
 
 namespace Server.Items
 {
@@ -1337,336 +1338,6 @@ namespace Server.Items
 		//	return AnimalForm.UnderTransformation( m, type );
 		//}
 
-		public virtual bool CheckHit( Mobile attacker, Mobile defender )
-		{
-            //return CombatManager.get().CheckHit(attacker, defender);
-
-            ///OBSOLETE
-            ///
-			BaseWeapon atkWeapon = attacker.Weapon as BaseWeapon;
-			BaseWeapon defWeapon = defender.Weapon as BaseWeapon;
-
-			Skill atkSkill = attacker.Skills[atkWeapon.Skill];
-			Skill defSkill = defender.Skills[defWeapon.Skill];
-
-			double atkValue = atkWeapon.GetAttackSkillValue( attacker, defender );
-			double defValue = defWeapon.GetDefendSkillValue( attacker, defender );
-
-			double ourValue, theirValue;
-
-			int bonus = GetHitChanceBonus();
-            int chanceEsq = 0;
-
-            if (ExtaseMiracle.m_ExtaseTable.Contains(defender))
-            {
-                chanceEsq += (int)ExtaseMiracle.m_ExtaseTable[defender];
-                ReligiousSpell.MiracleEffet(attacker, defender, 14170, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
-                //defender.FixedParticles(14170, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-            }
-
-            if (FougueCelesteMiracle.m_FougueCelesteTable.Contains(attacker))
-            {
-                chanceEsq -= (int)FougueCelesteMiracle.m_FougueCelesteTable[attacker] * SpellHelper.GetTotalMobilesInRange(attacker, 5);
-
-                ReligiousSpell.MiracleEffet(attacker, attacker, 14154, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
-                //attacker.FixedParticles(14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-            }
-
-            if (attacker is TMobile)
-            {
-                TMobile tattacker = attacker as TMobile;
-                if (tattacker != null && tattacker.CheckFatigue(6))
-                    return false;
-                
-                Random rand = new Random();
-                
-                /*if (rand.Next(0, 10) <= 1)
-                  tattacker.AddFatigue(1);*/
-            }
-
-		/*	if ( Core.AOS )
-			{*/
-				if ( atkValue <= -20.0 )
-					atkValue = -19.9;
-
-				if ( defValue <= -20.0 )
-					defValue = -19.9;
-
-				bonus += AosAttributes.GetValue( attacker, AosAttribute.AttackChance );
-
-				//if ( Spells.Chivalry.DivineFurySpell.UnderEffect( attacker ) )
-				//	bonus += 10; // attacker gets 10% bonus when they're under divine fury
-
-				//if ( CheckAnimal( attacker, typeof( GreyWolf ) ) || CheckAnimal( attacker, typeof( BakeKitsune ) ) )
-				//	bonus += 20; // attacker gets 20% bonus when under Wolf or Bake Kitsune form
-
-			//	if ( HitLower.IsUnderAttackEffect( attacker ) )
-			//		bonus -= 25; // Under Hit Lower Attack effect -> 25% malus
-
-				WeaponAbility ability = WeaponAbility.GetCurrentAbility( attacker );
-
-				if ( ability != null )
-					bonus += ability.AccuracyBonus;
-
-				//SpecialMove move = SpecialMove.GetCurrentMove( attacker );
-
-				//if ( move != null )
-				//	bonus += move.GetAccuracyBonus( attacker );
-
-				// Max Hit Chance Increase = 45%
-
-                //Arbitraire, mais pour facilité un poil le pve
-                /*if (defender is BaseCreature)
-                    bonus += 10;*/
-
-				//if ( bonus > 75 )
-				//	bonus = 75;
-
-
-             /*   if (attacker is TMobile)
-                    bonus += Convert.ToInt32(((TMobile)attacker).GetAptitudeValue(NAptitude.Precision) * 4);*/
-
-				ourValue = (atkValue + 20.0) * (100 + bonus);
-
-				bonus = AosAttributes.GetValue( defender, AosAttribute.DefendChance );
-
-                if (bonus > 10)
-                    bonus = 10;
-
-				//if ( Spells.Chivalry.DivineFurySpell.UnderEffect( defender ) )
-				//	bonus -= 20; // defender loses 20% bonus when they're under divine fury
-
-			//	if ( HitLower.IsUnderDefenseEffect( defender ) )
-			//		bonus -= 25; // Under Hit Lower Defense effect -> 25% malus
-					
-				int blockBonus = 0;
-
-				if ( Block.GetBonus( defender, ref blockBonus ) )
-					bonus += blockBonus;
-
-
-               /* if (defender is TMobile)
-                    chanceEsq += (int)((TMobile)defender).GetAptitudeValue(NAptitude.Esquive) * 3; //Esquive*/
-
-				//int surpriseMalus = 0;
-
-				//if ( SurpriseAttack.GetMalus( defender, ref surpriseMalus ) )
-				//	bonus -= surpriseMalus;
-
-				//int discordanceEffect = 0;
-
-				// Defender loses -0/-28% if under the effect of Discordance.
-				//if ( SkillHandlers.Discordance.GetEffect( attacker, ref discordanceEffect ) )
-				//	bonus -= discordanceEffect;
-
-				// Defense Chance Increase = 45%
-				//if ( bonus > 45 )
-			//		bonus = 45;
-
-
-
-                if (chanceEsq < 0)
-                    chanceEsq = 0;
-
-                bonus += (int)chanceEsq;
-
-				theirValue = (defValue + 20.0) * (100 + bonus);
-
-				bonus = 0;
-			/*}
-			else
-			{
-				if ( atkValue <= -50.0 )
-					atkValue = -49.9;
-
-				if ( defValue <= -50.0 )
-					defValue = -49.9;
-
-				ourValue = (atkValue + 50.0);
-				theirValue = (defValue + 50.0);
-			}*/
-
-			double chance = ourValue / (theirValue * 2.0);
-
-            if (defValue < atkValue)
-                chance += (atkValue - defValue) / 200.0;
-
-
-            if (attacker is TMobile)
-                chance += (double)((TMobile)attacker).GetAptitudeValue(NAptitude.Precision) * 0.04;
-
-            /*if (defender is TMobile)
-                chance -= (double)((TMobile)defender).GetAptitudeValue(NAptitude.Esquive) * 0.03; //Esquive*/
-
-            if (defender is TMobile)
-            {
-                TMobile tmob = defender as TMobile;
-
-                if (tmob.GetAptitudeValue(NAptitude.Esquive) * 0.02 > Utility.RandomDouble())
-                {
-                    tmob.SendMessage("Vous esquivez le coup !");
-                    return false;
-                }
-            }
-
-			//chance *= 1.0 + ((double)bonus / 100);
-
-			if ( Core.AOS && chance < 0.02 )
-				chance = 0.02;
-
-         //   Console.WriteLine("{0}% de chance de toucher pour {1} avec {2}", chance, attacker.Name, atkSkill.SkillName);
-
-			return attacker.CheckSkill( atkSkill.SkillName, chance );
-		}
-
-        public virtual bool CheckHit(Mobile attacker, Mobile defender, double CheckHitScale)
-        {
-
-            BaseWeapon atkWeapon = attacker.Weapon as BaseWeapon;
-            BaseWeapon defWeapon = defender.Weapon as BaseWeapon;
-
-            Skill atkSkill = attacker.Skills[atkWeapon.Skill];
-            Skill defSkill = defender.Skills[defWeapon.Skill];
-
-            double atkValue = atkWeapon.GetAttackSkillValue(attacker, defender);
-            double defValue = defWeapon.GetDefendSkillValue(attacker, defender);
-
-            double ourValue, theirValue;
-
-            int bonus = GetHitChanceBonus();
-            int chanceEsq = 0;
-
-            if (attacker is TMobile)
-            {
-                TMobile tattacker = attacker as TMobile;
-                if (tattacker != null && tattacker.CheckFatigue(6))
-                    return false;
-
-                Random rand = new Random();
-
-                /*if (rand.Next(0, 10) <= 1)
-                  tattacker.AddFatigue(1);*/
-            }
-
-            if (Core.AOS)
-            {
-                if (atkValue <= -20.0)
-                    atkValue = -19.9;
-
-                if (defValue <= -20.0)
-                    defValue = -19.9;
-
-                int aosBonus = AosAttributes.GetValue(attacker, AosAttribute.AttackChance);
-
-                if (aosBonus > 10)
-                    aosBonus = 10;
-
-                bonus += aosBonus;
-
-                //if ( Spells.Chivalry.DivineFurySpell.UnderEffect( attacker ) )
-                //	bonus += 10; // attacker gets 10% bonus when they're under divine fury
-
-                //if ( CheckAnimal( attacker, typeof( GreyWolf ) ) || CheckAnimal( attacker, typeof( BakeKitsune ) ) )
-                //	bonus += 20; // attacker gets 20% bonus when under Wolf or Bake Kitsune form
-
-             //   if (HitLower.IsUnderAttackEffect(attacker))
-              //      bonus -= 25; // Under Hit Lower Attack effect -> 25% malus
-
-                WeaponAbility ability = WeaponAbility.GetCurrentAbility(attacker);
-
-                if (ability != null)
-                    bonus += ability.AccuracyBonus;
-
-                //SpecialMove move = SpecialMove.GetCurrentMove( attacker );
-
-                //if ( move != null )
-                //	bonus += move.GetAccuracyBonus( attacker );
-
-                // Max Hit Chance Increase = 45%
-                if (bonus > 45)
-                    bonus = 45;
-
-             /*   if (attacker is TMobile)
-                    bonus += Convert.ToInt32(((TMobile)attacker).GetAptitudeValue(NAptitude.Precision) * 0.04);*/
-
-                ourValue = (atkValue + 20.0) * (100 + bonus);
-
-
-                bonus = AosAttributes.GetValue(defender, AosAttribute.DefendChance);
-
-                //if ( Spells.Chivalry.DivineFurySpell.UnderEffect( defender ) )
-                //	bonus -= 20; // defender loses 20% bonus when they're under divine fury
-
-                if (HitLower.IsUnderDefenseEffect(defender))
-                    bonus -= 25; // Under Hit Lower Defense effect -> 25% malus
-
-                int blockBonus = 0;
-
-                if (Block.GetBonus(defender, ref blockBonus))
-                    bonus += blockBonus;
-
-                
-
-            /*    if (defender is TMobile)
-                    chanceEsq += (int)((TMobile)defender).GetAptitudeValue(NAptitude.Esquive) * 3; //Esquive*/
-
-                //int surpriseMalus = 0;
-
-                //if ( SurpriseAttack.GetMalus( defender, ref surpriseMalus ) )
-                //	bonus -= surpriseMalus;
-
-                //int discordanceEffect = 0;
-
-                // Defender loses -0/-28% if under the effect of Discordance.
-                //if ( SkillHandlers.Discordance.GetEffect( attacker, ref discordanceEffect ) )
-                //	bonus -= discordanceEffect;
-
-                // Defense Chance Increase = 45%
-                if (bonus > 45)
-                    bonus = 45;
-
-                bonus += (int)chanceEsq;
-
-
-                theirValue = (defValue + 20.0) * (100 + bonus);
-
-                bonus = 0;
-            }
-            else
-            {
-                if (atkValue <= -50.0)
-                    atkValue = -49.9;
-
-                if (defValue <= -50.0)
-                    defValue = -49.9;
-
-                ourValue = (atkValue + 50.0);
-                theirValue = (defValue + 50.0);
-            }
-
-            if (chanceEsq < 0)
-                chanceEsq = 0;
-
-
-            double chance = ourValue / (theirValue * 2.0);
-
-            if (defValue < atkValue)
-                chance += (atkValue - defValue) / 200.0;
-
-            if (attacker is TMobile)
-                chance += (double)((TMobile)attacker).GetAptitudeValue(NAptitude.Precision) * 0.04;
-
-            if (defender is TMobile)
-                chance -= (double)((TMobile)defender).GetAptitudeValue(NAptitude.Esquive) * 0.03; //Esquive
-
-        //    chance *= 1.0 + ((double)bonus / 100) + CheckHitScale - 1;
-
-            if (Core.AOS && chance < 0.02)
-                chance = 0.02;
-
-            return attacker.CheckSkill(atkSkill.SkillName, chance);
-        }
-
 		public virtual TimeSpan GetDelay( Mobile m )
 		{          
 			double speed = this.Speed;
@@ -1881,8 +1552,8 @@ namespace Server.Items
 							WeaponAbility.ClearCurrentAbility( bc );
 					}
 				}
-
-				if ( CheckHit( attacker, defender ) )
+                SequenceCombat combat = new SequenceCombat(attacker, defender);
+				if ( combat.CheckHit() )
 					OnHit( attacker, defender, damageBonus );
 				else
 					OnMiss( attacker, defender );
@@ -3186,8 +2857,8 @@ namespace Server.Items
                     for (int i = 0; i < targets.Count; ++i)
                     {
                         Mobile m = (Mobile)targets[i];
-
-                        if (attacker.HarmfulCheck(m) && CheckHit(attacker, m))
+                        SequenceCombat combat = new SequenceCombat(attacker, defender);
+                        if (attacker.HarmfulCheck(m) && combat.CheckHit())
                             OnHit(attacker, m);
                         else
                             OnMiss(attacker, m);
@@ -3202,7 +2873,8 @@ namespace Server.Items
                 defender.AddStatMod(new StatMod(StatType.Int, Serial + "Critical Strike", (int)(-1 * (wrestling / 5) * scale), TimeSpan.FromSeconds(wrestling * scale / 2)));
                 defender.SendMessage("Vous subissez un coup critique!");
 
-                if (attacker.HarmfulCheck(defender) && CheckHit(attacker, defender))
+                SequenceCombat combat = new SequenceCombat(attacker, defender);
+                if (attacker.HarmfulCheck(defender) && combat.CheckHit())
                     OnHit(attacker, defender);
                 else
                     OnMiss(attacker, defender);

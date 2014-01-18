@@ -54,6 +54,9 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Server</RootNamespace>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BoxServer">
       <HintPath>..\BoxServer.dll</HintPath>
@@ -74,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include=".\**\*.cs" />
+    <Compile Include="Combat\SequenceCombat.cs" />
     <Compile Include="Custom\Commandes\Follow.cs" />
     <Compile Include="Custom\Commandes\JailPage.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
@@ -101,6 +105,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />
