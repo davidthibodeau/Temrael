@@ -24,7 +24,7 @@ namespace Server.Items
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Studded; } }
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
 
-		public override ArmorMeditationAllowance DefMedAllowance{ get{ return ArmorMeditationAllowance.Half; } }
+        public override ArmorMeditationAllowance DefMedAllowance { get { return ArmorMeditationAllowance.All; } }
 
 		[Constructable]
 		public StuddedGorget() : base( 0x13D6 )
