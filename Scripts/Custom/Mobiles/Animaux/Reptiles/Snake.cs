@@ -55,6 +55,7 @@ namespace Server.Mobiles
         public override int Hides { get { return 1; } }
         public override HideType HideType { get { return HideType.Reptilien; } }
         public override BoneType BoneType { get { return BoneType.Reptilien; } }
+        public override PackInstinct PackInstinct { get { return PackInstinct.Canine; } }
 
 		public Snake(Serial serial) : base(serial)
 		{

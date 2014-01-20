@@ -49,7 +49,7 @@ namespace Server.Mobiles
 
         public override double AttackSpeed { get { return 4.0; } }
         public override FoodType FavoriteFood { get { return FoodType.Meat; } }
-        public override PackInstinct PackInstinct { get { return PackInstinct.Arachnid; } }
+        public override PackInstinct PackInstinct { get { return PackInstinct.Canine; } }
         public override Poison PoisonImmune { get { return Poison.Regular; } }
         public override Poison HitPoison { get { return Poison.Lesser; } }
 

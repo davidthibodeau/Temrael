@@ -54,9 +54,9 @@ namespace Server.Mobiles
         public override double AttackSpeed { get { return 4.0; } }
         public override int Meat { get { return 1; } }
         public override FoodType FavoriteFood { get { return FoodType.Meat; } }
-        public override PackInstinct PackInstinct { get { return PackInstinct.Arachnid; } }
+        public override PackInstinct PackInstinct { get { return PackInstinct.Canine; } }
         public override Poison PoisonImmune { get { return Poison.Greater; } }
-        public override Poison HitPoison { get { return (0.8 >= Utility.RandomDouble() ? Poison.Greater : Poison.Deadly); } }
+        public override Poison HitPoison { get { return Poison.Lesser; } }
         public override int Bones { get { return 1; } }
         public override int Hides { get { return 1; } }
         public override HideType HideType { get { return HideType.Desertique; } }
