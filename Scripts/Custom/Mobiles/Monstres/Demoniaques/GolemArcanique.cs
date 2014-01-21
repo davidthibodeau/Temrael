@@ -67,7 +67,7 @@ namespace Server.Mobiles
         public override HideType HideType { get { return HideType.Demoniaque; } }
         public override BoneType BoneType { get { return BoneType.Demon; } }
 
-		public Daemon( Serial serial ) : base( serial )
+		public GolemArcanique( Serial serial ) : base( serial )
 		{
 		}
 
