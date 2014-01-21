@@ -109,38 +109,38 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Bows
-            AddCraft(typeof(Arc), "Arc", "Arc", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
-            AddCraft(typeof(Tarkarc), "Arc", "Tarkarc", 20.0, 50.0, typeof(Log), 1044041, 5, 1044351);
-            AddCraft(typeof(Legarc), "Arc", "Legarc", 20.0, 50.0, typeof(Log), 1044041, 7, 1044351);
-            AddCraft(typeof(Bow), "Arc", "Arc Long", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
-            AddCraft(typeof(Blancorde), "Arc", "Blancorde", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
-            AddCraft(typeof(Glaciale), "Arc", "Glaciale", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
-            AddCraft(typeof(Souplecorde), "Arc", "Souplecorde", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Barbatrine), "Arc", "Barbatrine", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Ebonie), "Arc", "Ebonie", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Mirielle), "Arc", "Mirielle", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Composite), "Arc", "Composite", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Sombrevent), "Arc", "Sombrevent", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Flamfleche), "Arc", "Flamflèche", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Foudre), "Arc", "Foudre", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Sifflecrin), "Arc", "Sifflecrin", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Foliere), "Arc", "Foliere", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Pieuse), "Arc", "Pieuse", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Chantefleche), "Arc", "Chantefleche", 70.0, 100.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Vigne), "Arc", "Vigne", 70.0, 100.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Maegie), "Arc", "Maegie", 70.0, 100.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Arc), "Arc", "Arc", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
+            index = AddCraft(typeof(Tarkarc), "Arc", "Tarkarc", 20.0, 50.0, typeof(Log), 1044041, 5, 1044351);
+            index = AddCraft(typeof(Legarc), "Arc", "Legarc", 20.0, 50.0, typeof(Log), 1044041, 7, 1044351);
+            index = AddCraft(typeof(Bow), "Arc", "Arc Long", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
+            index = AddCraft(typeof(Blancorde), "Arc", "Blancorde", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
+            index = AddCraft(typeof(Glaciale), "Arc", "Glaciale", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
+            index = AddCraft(typeof(Souplecorde), "Arc", "Souplecorde", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Barbatrine), "Arc", "Barbatrine", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Ebonie), "Arc", "Ebonie", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Mirielle), "Arc", "Mirielle", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Composite), "Arc", "Composite", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Sombrevent), "Arc", "Sombrevent", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Flamfleche), "Arc", "Flamflèche", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Foudre), "Arc", "Foudre", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Sifflecrin), "Arc", "Sifflecrin", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Foliere), "Arc", "Foliere", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Pieuse), "Arc", "Pieuse", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Chantefleche), "Arc", "Chantefleche", 70.0, 100.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Vigne), "Arc", "Vigne", 70.0, 100.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Maegie), "Arc", "Maegie", 70.0, 100.0, typeof(Log), 1044041, 8, 1044351);
             #endregion
 
             #region Crossbow
-            AddCraft(typeof(Arbalette), "Arbalète", "Arbalète", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
-            AddCraft(typeof(ArbaletteLourde), "Arbalète", "Arbalète Lourde", 20.0, 50.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Crossbow), "Arbalète", "Arbalète à Méchanisme", 30.0, 60.0, typeof(Log), 1044041, 7, 1044351);
-            AddCraft(typeof(HeavyCrossbow), "Arbalète", "Arbalète Décoré", 30.0, 60.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(ArbaletteRepetition), "Arbalète", "Arbalète à Répétition", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Percemurs), "Arbalète", "Percemurs", 50.0, 80.0, typeof(Log), 1044041, 6, 1044351);
-            AddCraft(typeof(ArbalettePistolet), "Arbalète", "Arbalète à Main", 60.0, 90.0, typeof(Log), 1044041, 7, 1044351);
-            AddCraft(typeof(Arbavive), "Arbalète", "Arbavive", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
-            AddCraft(typeof(Lumitrait), "Arbalète", "Lumitrait", 70.0, 100.0, typeof(Log), 1044041, 7, 1044351);
+            index = AddCraft(typeof(Arbalette), "Arbalète", "Arbalète", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
+            index = AddCraft(typeof(ArbaletteLourde), "Arbalète", "Arbalète Lourde", 20.0, 50.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Crossbow), "Arbalète", "Arbalète à Méchanisme", 30.0, 60.0, typeof(Log), 1044041, 7, 1044351);
+            index = AddCraft(typeof(HeavyCrossbow), "Arbalète", "Arbalète Décoré", 30.0, 60.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(ArbaletteRepetition), "Arbalète", "Arbalète à Répétition", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Percemurs), "Arbalète", "Percemurs", 50.0, 80.0, typeof(Log), 1044041, 6, 1044351);
+            index = AddCraft(typeof(ArbalettePistolet), "Arbalète", "Arbalète à Main", 60.0, 90.0, typeof(Log), 1044041, 7, 1044351);
+            index = AddCraft(typeof(Arbavive), "Arbalète", "Arbavive", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Lumitrait), "Arbalète", "Lumitrait", 70.0, 100.0, typeof(Log), 1044041, 7, 1044351);
             #endregion
 
             #region Weapons

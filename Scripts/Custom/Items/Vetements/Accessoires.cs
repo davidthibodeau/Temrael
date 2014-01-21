@@ -587,7 +587,7 @@ namespace Server.Items
     {
         [Constructable]
         public BandeauDroit()
-            : base(0x2673)
+            : base(0x2674)
         {
             Weight = 0.1;
             Name = "Bandeau Droit";
@@ -616,7 +616,7 @@ namespace Server.Items
     {
         [Constructable]
         public BandeauAveugle()
-            : base(0x2674)
+            : base(0x2673)
         {
             Weight = 0.1;
             Name = "Bandeau Aveugle";

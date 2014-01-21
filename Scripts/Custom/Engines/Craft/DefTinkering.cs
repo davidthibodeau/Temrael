@@ -174,12 +174,12 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Wooden Items
-            AddCraft(typeof(JointingPlane), "Objets de Bois", "Rabot de Joints", 0.0, 50.0, typeof(Log), 1044041, 4, 1044351);
-            AddCraft(typeof(MouldingPlane), "Objets de Bois", "Rabot de Moulage", 0.0, 50.0, typeof(Log), 1044041, 4, 1044351);
-            AddCraft(typeof(SmoothingPlane), "Objets de Bois", "Rabot de Lissage", 0.0, 50.0, typeof(Log), 1044041, 4, 1044351);
-            AddCraft(typeof(ClockFrame), "Objets de Bois", "Cadre d'Horloge", 0.0, 50.0, typeof(Log), 1044041, 6, 1044351);
-            AddCraft(typeof(Axle), "Objets de Bois", "Essieu", 0.0, 25.0, typeof(Log), 1044041, 2, 1044351);
-            AddCraft(typeof(RollingPin), "Objets de Bois", "Rouleau à Pâtisserie", 0.0, 50.0, typeof(Log), 1044041, 5, 1044351);
+            index = AddCraft(typeof(JointingPlane), "Objets de Bois", "Rabot de Joints", 0.0, 50.0, typeof(Log), 1044041, 4, 1044351);
+            index = AddCraft(typeof(MouldingPlane), "Objets de Bois", "Rabot de Moulage", 0.0, 50.0, typeof(Log), 1044041, 4, 1044351);
+            index = AddCraft(typeof(SmoothingPlane), "Objets de Bois", "Rabot de Lissage", 0.0, 50.0, typeof(Log), 1044041, 4, 1044351);
+            index = AddCraft(typeof(ClockFrame), "Objets de Bois", "Cadre d'Horloge", 0.0, 50.0, typeof(Log), 1044041, 6, 1044351);
+            index = AddCraft(typeof(Axle), "Objets de Bois", "Essieu", 0.0, 25.0, typeof(Log), 1044041, 2, 1044351);
+            index = AddCraft(typeof(RollingPin), "Objets de Bois", "Rouleau à Pâtisserie", 0.0, 50.0, typeof(Log), 1044041, 5, 1044351);
 
 			if( Core.SE )
 			{
@@ -190,50 +190,50 @@ namespace Server.Engines.Craft
 			#endregion
 
 			#region Tools
-            AddCraft(typeof(Scissors), "Outils", "Ciseaux", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(MortarPestle), "Outils", "Mortier Pilon", 20.0, 70.0, typeof(FerIngot), 1044036, 3, 1044037);
-            AddCraft(typeof(Scorp), "Outils", "Scorp", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(TinkerTools), "Outils", "Outils de Bricolage", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
-            //AddCraft(typeof(Hatchet), "Outils", "Hachette", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
-            //AddCraft(typeof(DrawKnife), "Outils", 1024324, 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(SewingKit), "Outils", "Outils de Couture", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(Knitting), "Outils", "Outils d'Os", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(Saw), "Outils", "Scie", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(DovetailSaw), "Outils", "Scie à Queue d'Aronde", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Froe), "Outils", "Froe", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(Shovel), "Outils", "Pelle", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Hammer), "Outils", "Marteau", 30.0, 80.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(Tongs), "Outils", "Pinces", 35.0, 85.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(SmithHammer), "Outils", "Marteau de Forge", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(SledgeHammer), "Outils", "Maul de Forge", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Inshave), "Outils", "Inshave", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(Pickaxe), "Outils", "Pioche", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Lockpick), "Outils", "Crochet", 45.0, 95.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(Skillet), "Outils", "Poêlon", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Scissors), "Outils", "Ciseaux", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(MortarPestle), "Outils", "Mortier Pilon", 20.0, 70.0, typeof(FerIngot), 1044036, 3, 1044037);
+            index = AddCraft(typeof(Scorp), "Outils", "Scorp", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(TinkerTools), "Outils", "Outils de Bricolage", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
+            //index = AddCraft(typeof(Hatchet), "Outils", "Hachette", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
+            //index = AddCraft(typeof(DrawKnife), "Outils", 1024324, 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(SewingKit), "Outils", "Outils de Couture", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(Knitting), "Outils", "Outils d'Os", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(Saw), "Outils", "Scie", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(DovetailSaw), "Outils", "Scie à Queue d'Aronde", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Froe), "Outils", "Froe", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(Shovel), "Outils", "Pelle", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Hammer), "Outils", "Marteau", 30.0, 80.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(Tongs), "Outils", "Pinces", 35.0, 85.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(SmithHammer), "Outils", "Marteau de Forge", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(SledgeHammer), "Outils", "Maul de Forge", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Inshave), "Outils", "Inshave", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(Pickaxe), "Outils", "Pioche", 40.0, 90.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Lockpick), "Outils", "Crochet", 45.0, 95.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(Skillet), "Outils", "Poêlon", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
             index = AddCraft(typeof(FishingPole), "Outils", "Cane a Peche", 68.4, 93.4, typeof(Log), "Bûche", 5, 1044351); //This is in the categor of Other during AoS
             AddSkill(index, SkillName.Couture, 40.0, 45.0);
             AddRes(index, typeof(Cloth), "Coton", 5, 1044287);
-            //AddCraft(typeof(FlourSifter), "Outils", "Farine", 50.0, 100.0, typeof(FerIngot), 1044036, 3, 1044037);
-            AddCraft(typeof(FletcherTools), "Outils", "Outils d'Archer", 35.0, 85.0, typeof(Log), "Bûche", 3, 1044037);
-            //AddCraft(typeof(MapmakersPen), "Outils", 1044167, 25.0, 75.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(ScribesPen), "Outils", "Encrier", 25.0, 55.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(NewSpellbook), "Outils", "Grimoire", 35.0, 65.0, typeof(Log), "Bûche", 2, 1044037);
-            AddCraft(typeof(Runebook), "Outils", "Grimoire de Runes", 35.0, 65.0, typeof(Log), "Bûche", 2, 1044037);
-            //AddCraft(typeof(NewDivineSpellbook), "Outils", "Grimoire Divin", 45.0, 75.0, typeof(Log), "Bûche", 2, 1044037);
-            AddCraft(typeof(DeguisementKit), "Outils", "Kit de Déguisement", 50.0, 80.0, typeof(Log), "Bûche", 3, 1044037);
-            AddCraft(typeof(OutilCoagulation), "Outils", "Outil de Coagulation", 60.0, 80.0, typeof(FerIngot), "Fer", 5, 1044037);
-            AddCraft(typeof(OutilFermentation), "Outils", "Outil de Coagulation", 60.0, 80.0, typeof(FerIngot), "Fer", 5, 1044037);
+            //index = AddCraft(typeof(FlourSifter), "Outils", "Farine", 50.0, 100.0, typeof(FerIngot), 1044036, 3, 1044037);
+            index = AddCraft(typeof(FletcherTools), "Outils", "Outils d'Archer", 35.0, 85.0, typeof(Log), "Bûche", 3, 1044037);
+            //index = AddCraft(typeof(MapmakersPen), "Outils", 1044167, 25.0, 75.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(ScribesPen), "Outils", "Encrier", 25.0, 55.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(NewSpellbook), "Outils", "Grimoire", 35.0, 65.0, typeof(Log), "Bûche", 2, 1044037);
+            index = AddCraft(typeof(Runebook), "Outils", "Grimoire de Runes", 35.0, 65.0, typeof(Log), "Bûche", 2, 1044037);
+            //index = AddCraft(typeof(NewDivineSpellbook), "Outils", "Grimoire Divin", 45.0, 75.0, typeof(Log), "Bûche", 2, 1044037);
+            index = AddCraft(typeof(DeguisementKit), "Outils", "Kit de Déguisement", 50.0, 80.0, typeof(Log), "Bûche", 3, 1044037);
+            index = AddCraft(typeof(OutilCoagulation), "Outils", "Outil de Coagulation", 60.0, 80.0, typeof(FerIngot), "Fer", 5, 1044037);
+            index = AddCraft(typeof(OutilFermentation), "Outils", "Outil de Fermentation", 60.0, 80.0, typeof(FerIngot), "Fer", 5, 1044037);
 			#endregion
 
 			#region Parts
-            AddCraft(typeof(Gears), "Pièces", "Engrenage", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(ClockParts), "Pièces", "Parties d'Horloges", 25.0, 75.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(BarrelTap), "Pièces", "Couvercle de Baril", 35.0, 85.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(Springs), "Pièces", "Ressorts", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(SextantParts), "Pièces", "Pièces de Sextant", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(BarrelHoops), "Pièces", "Cercles de Baril", -15.0, 35.0, typeof(FerIngot), 1044036, 5, 1044037);
-            AddCraft(typeof(Hinge), "Pièces", "Charnière", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
-            //AddCraft(typeof(BolaBall), "Pièces", 1023699, 45.0, 95.0, typeof(FerIngot), 1044036, 10, 1044037);
+            index = AddCraft(typeof(Gears), "Pièces", "Engrenage", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(ClockParts), "Pièces", "Parties d'Horloges", 25.0, 75.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(BarrelTap), "Pièces", "Couvercle de Baril", 35.0, 85.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(Springs), "Pièces", "Ressorts", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(SextantParts), "Pièces", "Pièces de Sextant", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(BarrelHoops), "Pièces", "Cercles de Baril", -15.0, 35.0, typeof(FerIngot), 1044036, 5, 1044037);
+            index = AddCraft(typeof(Hinge), "Pièces", "Charnière", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
+            //index = AddCraft(typeof(BolaBall), "Pièces", 1023699, 45.0, 95.0, typeof(FerIngot), 1044036, 10, 1044037);
 			
 			if ( Core.ML )
 			{
@@ -246,30 +246,30 @@ namespace Server.Engines.Craft
 			#endregion
 
 			#region Utensils
-            AddCraft(typeof(ButcherKnife), "Ustensiles", "Couteau de Boucher", 25.0, 75.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(SpoonLeft), "Ustensiles", "Cuillere de Gauche", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(SpoonRight), "Ustensiles", "Cuillere de Droite", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(Plate), "Ustensiles", "Assiette", 0.0, 50.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(ForkLeft), "Ustensiles", "Fourchette de Gauche", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(ForkRight), "Ustensiles", "Fouchette de Droite", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(Cleaver), "Ustensiles", "Couperet", 20.0, 70.0, typeof(FerIngot), 1044036, 3, 1044037);
-            AddCraft(typeof(KnifeLeft), "Ustensiles", "Couteau de Gauche", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(KnifeRight), "Ustensiles", "Couteau de Droite", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
-            AddCraft(typeof(Goblet), "Ustensiles", "Goblet", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(PewterMug), "Ustensiles", "Coupe", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
-            //AddCraft(typeof(SkinningKnife), "Ustensiles", 1023781, 25.0, 75.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(ButcherKnife), "Ustensiles", "Couteau de Boucher", 25.0, 75.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(SpoonLeft), "Ustensiles", "Cuillere de Gauche", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(SpoonRight), "Ustensiles", "Cuillere de Droite", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(Plate), "Ustensiles", "Assiette", 0.0, 50.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(ForkLeft), "Ustensiles", "Fourchette de Gauche", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(ForkRight), "Ustensiles", "Fouchette de Droite", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(Cleaver), "Ustensiles", "Couperet", 20.0, 70.0, typeof(FerIngot), 1044036, 3, 1044037);
+            index = AddCraft(typeof(KnifeLeft), "Ustensiles", "Couteau de Gauche", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(KnifeRight), "Ustensiles", "Couteau de Droite", 0.0, 50.0, typeof(FerIngot), 1044036, 1, 1044037);
+            index = AddCraft(typeof(Goblet), "Ustensiles", "Goblet", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(PewterMug), "Ustensiles", "Coupe", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
+            //index = AddCraft(typeof(SkinningKnife), "Ustensiles", 1023781, 25.0, 75.0, typeof(FerIngot), 1044036, 2, 1044037);
 			#endregion
 
 			#region Misc
-            AddCraft(typeof(BlankScroll), "Divers", "Parchemin Vierge", 0.0, 30.0, typeof(Kindling), "Brindilles", 5, 1044037);
-            AddCraft(typeof(KeyRing), "Divers", "Porte Clefs", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
-            AddCraft(typeof(Candelabra), "Divers", "Candélabre", 55.0, 105.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Scales), "Divers", "Balance", 60.0, 110.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Key), "Divers", "Clef", 20.0, 70.0, typeof(FerIngot), 1044036, 3, 1044037);
-            AddCraft(typeof(Globe), "Divers", "Glove", 55.0, 105.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Spyglass), "Divers", "Lunette de Marin", 60.0, 110.0, typeof(FerIngot), 1044036, 4, 1044037);
-            AddCraft(typeof(Lantern), "Divers", "Lanterne", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
-            //AddCraft(typeof(HeatingStand), "Divers", 1026217, 60.0, 110.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(BlankScroll), "Divers", "Parchemin Vierge", 0.0, 30.0, typeof(Kindling), "Brindilles", 5, 1044037);
+            index = AddCraft(typeof(KeyRing), "Divers", "Porte Clefs", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(Candelabra), "Divers", "Candélabre", 55.0, 105.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Scales), "Divers", "Balance", 60.0, 110.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Key), "Divers", "Clef", 20.0, 70.0, typeof(FerIngot), 1044036, 3, 1044037);
+            index = AddCraft(typeof(Globe), "Divers", "Glove", 55.0, 105.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Spyglass), "Divers", "Lunette de Marin", 60.0, 110.0, typeof(FerIngot), 1044036, 4, 1044037);
+            index = AddCraft(typeof(Lantern), "Divers", "Lanterne", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
+            //index = AddCraft(typeof(HeatingStand), "Divers", 1026217, 60.0, 110.0, typeof(FerIngot), 1044036, 4, 1044037);
 
 			if ( Core.SE )
 			{

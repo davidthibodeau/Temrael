@@ -258,7 +258,7 @@ namespace Server.Items
 
         [Constructable]
         public Corset(int hue)
-            : base(0x2754, hue)
+            : base(0x2753, hue)
         {
             Weight = 5.0;
             Name = "Corset";
