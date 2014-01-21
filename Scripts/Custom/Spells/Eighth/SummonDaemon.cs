@@ -50,7 +50,7 @@ namespace Server.Spells.Eighth
             {
                 double duration = (2 * Caster.Skills.Conjuration.Fixed) / 5;
 
-                SpellHelper.Summon(new Daemon(), Caster, 0x216, TimeSpan.FromSeconds(duration), true, true);
+                SpellHelper.Summon(new GolemArcanique(), Caster, 0x216, TimeSpan.FromSeconds(duration), true, true);
 			}
 
 			FinishSequence();
