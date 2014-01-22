@@ -424,7 +424,6 @@ namespace Server.Items
 
 			Weight = 3.0;
 			Layer = Layer.OneHanded;
-			LootType = LootType.Blessed;
 
 			Content = content;
 		}
@@ -777,6 +776,8 @@ namespace Server.Items
 
 			if ( Parent is Mobile )
 				((Mobile)Parent).CheckStatTimers();
+
+            LootType = LootType.Regular;
 		}
 
 		private static int[] m_LegendPropertyCounts = new int[]
