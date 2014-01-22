@@ -136,256 +136,42 @@ namespace Server.Gumps
             if (from.Deleted || !from.Alive)
                 return;
 
+            if (info.ButtonID == 0 || info.ButtonID > 13)
+                return;
+
             if (from.LastDeguisement.AddMinutes(10) < DateTime.Now)
             {
-                switch (info.ButtonID)
+                if (info.ButtonID == 1)
                 {
-                    case 1:
-                        //from.Identity[0] = info.TextEntries[1].Text;
-                        if (from.Identity[0] != "")
-                            from.Name = from.Identity[0];
+                    if (from.Identity[0] != "")
+                        from.Name = from.Identity[0];
 
-                        from.CurrentIdent = 0;
-                        from.Disguised = false;
-                        from.LastDeguisement = DateTime.Now;
-                        break;
-                    case 2:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 1)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[1] = info.TextEntries[0].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[1];
-                            from.CurrentIdent = 1;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 3:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 2)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[2] = info.TextEntries[1].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[2];
-                            from.CurrentIdent = 2;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 4:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 3)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[3] = info.TextEntries[2].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[3];
-                            from.CurrentIdent = 3;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 5:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 4)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[4] = info.TextEntries[3].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[4];
-                            from.CurrentIdent = 4;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 6:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 5)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[5] = info.TextEntries[4].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[5];
-                            from.CurrentIdent = 5;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 7:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 6)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[6] = info.TextEntries[5].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[6];
-                            from.CurrentIdent = 6;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 8:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 7)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[7] = info.TextEntries[6].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[7];
-                            from.CurrentIdent = 7;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 9:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 8)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[8] = info.TextEntries[7].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[8];
-                            from.CurrentIdent = 8;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 10:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 9)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[9] = info.TextEntries[8].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[9];
-                            from.CurrentIdent = 9;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 11:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 10)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[10] = info.TextEntries[9].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[10];
-                            from.CurrentIdent = 10;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 12:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 11)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[11] = info.TextEntries[10].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[11];
-                            from.CurrentIdent = 11;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    case 13:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.GetAptitudeValue(NAptitude.Deguisement) >= 12)
-                        {
-                            if (from.Identity[0] == "")
-                                from.Identity[0] = from.Name;
-                            string[] ident = from.Identity;
-                            ident[12] = info.TextEntries[11].Text;
-                            from.Identity = ident;
-                            from.Name = from.Identity[12];
-                            from.CurrentIdent = 12;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        else
-                        {
-                            from.SendMessage("Vous ratez votre déguisement !");
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;
-                    /*case 14:
-                        if ((from.GetAptitudeValue(NAptitude.Deguisement) * 0.0834) > Utility.RandomDouble() && from.Races == Races.Tieffelin)
-                        {
-                            from.Identity[13] = info.TextEntries[13].Text;
-                            from.Name = from.Identity[13];
-                            from.CurrentIdent = 1;
-                            from.Disguised = true;
-                            from.LastDeguisement = DateTime.Now;
-                        }
-                        break;*/
-                    default: break;
+                    from.CurrentIdent = 0;
+                    from.Disguised = false;
                 }
+                else
+                {
+                    int id = info.ButtonID - 1;
+                    int aptDeguisement = from.GetAptitudeValue(NAptitude.Deguisement);
+                    if ((aptDeguisement * 0.0834) > Utility.RandomDouble() && aptDeguisement >= id)
+                        {
+                            if (from.Identity[0] == "")
+                                from.Identity[0] = from.Name;
+                            string[] ident = from.Identity;
+                            ident[id] = info.TextEntries[id - 1].Text;
+                            from.Identity = ident;
+                            from.Name = from.Identity[id];
+                            from.CurrentIdent = id;
+                            from.Disguised = true;    
+                        }
+                        else
+                        {
+                            from.SendMessage("Vous ratez votre déguisement !");
+                        }
+                }
+                from.LastDeguisement = DateTime.Now;
             }
-            else if (!(info.ButtonID == 0))
+            else
             {
                 from.SendMessage("Il est encore trop tôt pour se déguiser de nouveau !");
             }
