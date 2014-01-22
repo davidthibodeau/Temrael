@@ -197,6 +197,7 @@ namespace Server.Items
 					break;
 				}
 			}
+            LootType = LootType.Blessed;
 		}
 
 		[Constructable]
@@ -217,7 +218,6 @@ namespace Server.Items
 		[Constructable]
 		public Key( KeyType type, uint LockVal ) : this( type, LockVal, null )
 		{
-			m_KeyVal = LockVal;
 		}
 
 		public Key( KeyType type, uint LockVal, Item link ) : base( (int)type )
@@ -227,6 +227,7 @@ namespace Server.Items
 			m_MaxRange = 3;
 			m_KeyVal = LockVal;
 			m_Link = link;
+            LootType = LootType.Blessed;
 		}
 
 		public Key( Serial serial ) : base( serial )
