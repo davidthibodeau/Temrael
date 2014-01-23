@@ -3,6 +3,7 @@ using Server.Engines.Craft;
 using Server.Mobiles;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using System.Text.RegularExpressions;
 
 namespace Server.Items
 {
@@ -342,7 +343,12 @@ namespace Server.Items
 
             if (Identified)
             {
-                list.Add(1060393, "{0}\t{1}", couleur, Name);
+                string[] s = Regex.Split(GetType().ToString(), @"\.");
+                string t = s[s.Length - 1];
+                if (Name == null)
+                    list.Add(1060393, "{0}\t{1}", couleur, t);
+                else
+                    list.Add(1060393, "{0}\t{1}", couleur, Name);
                 list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
 
                 if (m_AosSkillBonuses != null)
@@ -435,7 +441,12 @@ namespace Server.Items
             }
             else
             {
-                list.Add(1060393, "{0}\t{1}", couleur, Name);
+                string[] s = Regex.Split(GetType().ToString(), @"\.");
+                string t = s[s.Length - 1];
+                if (Name == null)
+                    list.Add(1060393, "{0}\t{1}", couleur, t);
+                else
+                    list.Add(1060393, "{0}\t{1}", couleur, Name);
                 list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
                 list.Add(1060395, couleur);
             }
