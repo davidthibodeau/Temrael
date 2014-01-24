@@ -7,7 +7,7 @@ namespace Server.Mobiles
     public enum Races
     {
         Aucun = -1,
-        Humain = 0,
+        Capiceen = 0,
         Nordique,
         Nomade,
         Nain,
@@ -49,7 +49,7 @@ namespace Server.Mobiles
             else if (type.Equals(typeof(RaceElfe)))
                 return Races.Elfe;
             else if (type.Equals(typeof(RaceHumain)))
-                return Races.Humain;
+                return Races.Capiceen;
             else if (type.Equals(typeof(RaceNain)))
                 return Races.Nain;
             else if (type.Equals(typeof(RaceNomade)))
@@ -91,7 +91,7 @@ namespace Server.Mobiles
                     case Races.Aasimar: raceBank.Add(race, new RaceAasimar()); break;
                     case Races.ElfeNoir: raceBank.Add(race, new RaceDrow()); break;
                     case Races.Elfe: raceBank.Add(race, new RaceElfe()); break;
-                    case Races.Humain: raceBank.Add(race, new RaceHumain()); break;
+                    case Races.Capiceen: raceBank.Add(race, new RaceHumain()); break;
                     case Races.Nain: raceBank.Add(race, new RaceNain()); break;
                     case Races.Nomade: raceBank.Add(race, new RaceNomade()); break;
                     case Races.Nordique: raceBank.Add(race, new RaceNordique()); break;

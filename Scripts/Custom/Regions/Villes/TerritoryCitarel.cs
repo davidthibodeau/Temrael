@@ -6,7 +6,7 @@ namespace Server.Territories
 {
     public class TerritoryCitarel : TerritoryRegion
     {
-        public override Races RaceType { get { return Races.Humain; } }
+        public override Races RaceType { get { return Races.Capiceen; } }
 
         public TerritoryCitarel(XmlElement xml, Map map, Region parent)
             : base(xml, map, parent)

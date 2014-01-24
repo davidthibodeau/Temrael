@@ -392,7 +392,7 @@ namespace Server.Gumps
             if (m is TMobile)
             {
                 if (((TMobile)m).Races == Races.Tieffelin)
-                    return String.Format("{0}, {1}", m.GetNameUseBy(from), Races.Humain.ToString());
+                    return String.Format("{0}, {1}", m.GetNameUseBy(from), Races.Capiceen.ToString());
                 else
                     return String.Format("{0}, {1}", m.GetNameUseBy(from), ((TMobile)m).Races.ToString());
             }

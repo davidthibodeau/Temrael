@@ -170,7 +170,7 @@ namespace Server.Gumps
                     from.Creation.race = m_Races;
                     switch (from.Creation.race)
                     {
-                        case Races.Humain:
+                        case Races.Capiceen:
                             from.Creation.hue = 1023;
                             break;
                         case Races.Orcish:

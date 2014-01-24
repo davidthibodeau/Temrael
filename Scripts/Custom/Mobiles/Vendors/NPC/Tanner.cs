@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Races races = Races.Humain;
+        private Races races = Races.Capiceen;
 
         public Races Races { get { return races; } set { races = value; InitSBInfo(); } }
 
@@ -26,7 +26,7 @@ namespace Server.Mobiles
                 case Races.Aasimar: m_SBInfos.Add(new SBTannerAasimar()); break;
                 case Races.Elfe: m_SBInfos.Add(new SBTannerElfe()); break;
                 case Races.ElfeNoir: m_SBInfos.Add(new SBTannerDrow()); break;
-                case Races.Humain: m_SBInfos.Add(new SBTanner()); break;
+                case Races.Capiceen: m_SBInfos.Add(new SBTanner()); break;
                 case Races.Nain: m_SBInfos.Add(new SBTannerNain()); break;
                 case Races.Nomade: m_SBInfos.Add(new SBTannerNomade()); break;
                 case Races.Nordique: m_SBInfos.Add(new SBTannerNordique()); break;

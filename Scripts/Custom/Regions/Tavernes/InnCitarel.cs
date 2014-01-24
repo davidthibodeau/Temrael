@@ -9,7 +9,7 @@ namespace Server.Regions
     {
         public override Races RaceType
         {
-            get { return Races.Humain; }
+            get { return Races.Capiceen; }
         }
 
         public InnCitarel(XmlElement xml, Map map, Region parent)

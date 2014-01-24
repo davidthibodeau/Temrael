@@ -151,7 +151,7 @@ namespace Server.Gumps
                         complete = false;
 
                     if ((m_from.Creation.race == Races.Tieffelin || m_from.Creation.race == Races.Aasimar) && m_from.Creation.secrete == Races.Aucun)
-                        m_from.Creation.secrete = Races.Humain;
+                        m_from.Creation.secrete = Races.Capiceen;
 
                     if (complete)
                     {
@@ -276,7 +276,7 @@ namespace Server.Gumps
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsElfe(from.Hue));
                     break;
-                case Races.Humain:
+                case Races.Capiceen:
                     //from.Hue = 1024;
                     from.Hue = from.Creation.hue;
                     break;
@@ -310,7 +310,7 @@ namespace Server.Gumps
                         case Races.Nomade:
                             from.Hue = 1044;
                             break;
-                        case Races.Humain:
+                        case Races.Capiceen:
                             from.Hue = 1023;
                             break;
                     }
@@ -326,7 +326,7 @@ namespace Server.Gumps
                         case Races.Nomade:
                             from.Hue = 1044;
                             break;
-                        case Races.Humain:
+                        case Races.Capiceen:
                             from.Hue = 1023;
                             break;
                     }

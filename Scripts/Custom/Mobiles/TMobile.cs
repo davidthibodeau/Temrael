@@ -1895,7 +1895,7 @@ namespace Server.Mobiles
 
             switch (this.Races)
             {
-                case Races.Humain:
+                case Races.Capiceen:
                     color = "#006699";
                     break;
                 case Races.Elfe:
@@ -1922,7 +1922,7 @@ namespace Server.Mobiles
                 case Races.Tieffelin:
                     if (m_transformer)
                         color = "#FF6600";
-                    else if (m_RaceSecrete == Races.Humain)
+                    else if (m_RaceSecrete == Races.Capiceen)
                         color = "#006699";
                     else if (m_RaceSecrete == Races.Nordique)
                         color = "#FFFFFF";
@@ -1934,7 +1934,7 @@ namespace Server.Mobiles
                 case Races.Aasimar:
                     if (m_transformer)
                         color = "#9900FF";
-                    else if (m_RaceSecrete == Races.Humain)
+                    else if (m_RaceSecrete == Races.Capiceen)
                         color = "#006699";
                     else if (m_RaceSecrete == Races.Nordique)
                         color = "#FFFFFF";
@@ -2075,7 +2075,7 @@ namespace Server.Mobiles
                     case Races.Nomade:
                         m_from.Hue = 1044;
                         break;
-                    case Races.Humain:
+                    case Races.Capiceen:
                         m_from.Hue = 1023;
                         break;
                 }
@@ -2146,7 +2146,7 @@ namespace Server.Mobiles
                     case Races.Nomade:
                         m_from.Hue = 1044;
                         break;
-                    case Races.Humain:
+                    case Races.Capiceen:
                         m_from.Hue = 1023;
                         break;
                 }

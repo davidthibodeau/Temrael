@@ -49,7 +49,7 @@ namespace Server.Gumps
 
             switch (from.Races)
             {
-                case Races.Humain:
+                case Races.Capiceen:
                     if (from.Female)
                         AddImage(x - 5, (y + line * scale) - 40, 13);
                     else

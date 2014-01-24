@@ -50,7 +50,7 @@ namespace Server.Gumps
             {
                 switch (from.Creation.race)
                 {
-                    case Races.Humain:
+                    case Races.Capiceen:
                         if (from.Creation.hue == 0)
                             from.Creation.hue = 1023;
 
@@ -534,7 +534,7 @@ namespace Server.Gumps
                         from.SendGump(new CreationEquipementGump(from));
                         break;
                     case 27:
-                        from.Creation.secrete = Races.Humain;
+                        from.Creation.secrete = Races.Capiceen;
                         from.SendGump(new CreationEquipementGump(from));
                         break;
                     case 28:
@@ -685,7 +685,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Humain, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Capiceen, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeOrdinaire ), 		"Robe", 0x27D3, 0 ),
                 new CustomItem( typeof( RobeDomestique ), 		"Robe Domestique", 0x27A5, 0 ),
                 new CustomItem( typeof( RobeACeinture ), 		"Robe à Ceinture", 0x3156, 0 ),
@@ -697,7 +697,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( Robetrainante ), 		"Robe Trainante", 0x27A9, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Races.Humain, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Races.Capiceen, ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Chandail ), 		"Chandail", 0x277E, 0 ),
 				new CustomItem( typeof( FancyShirt ),		"Chandail", 0x1EFD, 0 ),
 				new CustomItem( typeof( ChandailNoble ), 	"Chandail Noble", 0x2775, 0 ),
@@ -713,7 +713,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( TabarLong ),		"Tabar Long", 0x2777, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Races.Humain, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Races.Capiceen, ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		"Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( TogeSoutane ),	"Toge Soutane", 0x278F, 0 ),
 				new CustomItem( typeof( TogePelerin ), 	"Toge de Pèlerin", 0x2797, 0 ),
@@ -723,7 +723,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( Veste ),	    "Veste", 0x277A, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Races.Humain, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, Races.Capiceen, ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
                 new CustomItem( typeof( SouliersBoucles ),	"Souliers Bouclés", 0x2733, 0 ),
 				new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
@@ -732,7 +732,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( BottesNoble ),      "Bottes Noble", 0x2731, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Races.Humain, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, Races.Capiceen, ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
 				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
 				new CustomItem( typeof( Bonnet ),	    "Bonnet", 0x1719, 0 ),
@@ -742,7 +742,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( ChapeauCourt ),	"Chapeau Noble", 0x272C, 0 )
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Races.Humain, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Races.Capiceen, ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
 				new CustomItem( typeof( Pantalons ), 	    "Pantalons", 0x273B, 0 ),
 				new CustomItem( typeof( PantalonsLongs ),	"Pantalons Larges", 0x273E, 0 ),
@@ -755,7 +755,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeNoble ),	"Jupe Noble", 0x3176, 0 )
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Races.Humain, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, Races.Capiceen, ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( CapeCourte ),		"Cape Courte", 0x271D, 0 ),
                 new CustomItem( typeof( Cloak ),		    "Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeDecore ),		"Cape Décoré", 0x2716, 0 ),
@@ -763,7 +763,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( CapeNoble ),		"Cape Noble", 0x2712, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Races.Humain, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, Races.Capiceen, ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
                 new CustomItem( typeof( FullApron ),		        "Tablier", 0x153d, 0 ),
                 new CustomItem( typeof( CeintureBoucle ),		    "Ceinture", 0x2663, 0 ),

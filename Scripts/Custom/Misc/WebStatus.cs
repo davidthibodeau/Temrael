@@ -105,7 +105,7 @@ namespace Server.Misc
                                                     break;
                                                 case Races.ElfeNoir: nbElfeNoir++;
                                                     break;
-                                                case Races.Humain: nbHumain++;
+                                                case Races.Capiceen: nbHumain++;
                                                     break;
                                                 case Races.Nain: nbNain++;
                                                     break;
@@ -144,7 +144,7 @@ namespace Server.Misc
                                                 break;
                                             case Races.ElfeNoir: nbElfeNoir++;
                                                 break;
-                                            case Races.Humain: nbHumain++;
+                                            case Races.Capiceen: nbHumain++;
                                                 break;
                                             case Races.Nain: nbNain++;
                                                 break;
@@ -188,7 +188,7 @@ namespace Server.Misc
                                             break;
                                         case Races.ElfeNoir: cElfeNoir++;
                                             break;
-                                        case Races.Humain: cHumain++;
+                                        case Races.Capiceen: cHumain++;
                                             break;
                                         case Races.MortVivant: cMortVivant++;
                                             break;
