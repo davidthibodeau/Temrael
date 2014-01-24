@@ -423,7 +423,14 @@ namespace Server.Items
 			Type t = m.GetType();
 
             if (m is TMobile)
-                return "Corps";
+            {
+                TMobile tmob = m as TMobile;
+                if (tmob.Races == Races.Tieffelin || tmob.Races == Races.Aasimar)
+                    return tmob.RaceSecrete.ToString();
+                else
+                    return tmob.Races.ToString();
+            }
+
 
 			object[] attrs = t.GetCustomAttributes( typeof( CorpseNameAttribute ), true );
 

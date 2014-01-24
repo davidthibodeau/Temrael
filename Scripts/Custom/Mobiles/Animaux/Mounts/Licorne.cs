@@ -4,7 +4,7 @@ using Server.Network;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Licorne" )]
+	[CorpseName( "Licorne" )]
 	public class Licorne : BaseMount
 	{
 		public override bool AllowMaleRider{ get{ return true; } }

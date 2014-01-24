@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Cyclope" )]
+	[CorpseName( "Cyclope" )]
 	public class Cyclops : BaseCreature
 	{
 		[Constructable]

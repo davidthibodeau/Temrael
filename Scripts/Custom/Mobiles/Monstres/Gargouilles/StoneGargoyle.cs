@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Gargouille de Fer" )]
+	[CorpseName( "Gargouille de Fer" )]
 	public class StoneGargoyle : BaseCreature
 	{
 		[Constructable]

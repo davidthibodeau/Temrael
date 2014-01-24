@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Diablotin" )]
+	[CorpseName( "Diablotin" )]
 	public class Imp : BaseCreature
 	{
 		[Constructable]

@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Chauve-Souris des Cavernes")]
+    [CorpseName("Chauve-Souris des Cavernes")]
 	public class Mongbat : BaseCreature
 	{
 		[Constructable]

@@ -4,7 +4,7 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Dryad")]
+    [CorpseName("Dryad")]
     public class ForestDryad : BaseCreature
     {
         public override bool InitialInnocent { get { return true; } }

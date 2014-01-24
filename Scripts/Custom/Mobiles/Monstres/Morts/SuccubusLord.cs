@@ -5,7 +5,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("a succubus corpse")]
+    [CorpseName("a succubus")]
     public class SuccubusLord : BaseCreature
     {
         [Constructable]

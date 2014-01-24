@@ -3,7 +3,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Grenouille")]
+    [CorpseName("Grenouille")]
     [TypeAlias("Server.Mobiles.Frog")]
     public class Frog : BaseCreature
     {

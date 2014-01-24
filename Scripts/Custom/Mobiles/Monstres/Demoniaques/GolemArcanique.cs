@@ -5,7 +5,7 @@ using Server.Factions;
 
 namespace Server.Mobiles
 {
-    [CorpseName( "Corps de Golem Arcanique" )]
+    [CorpseName( "Golem Arcanique" )]
 	public class GolemArcanique : BaseCreature
 	{
 		public override double DispelDifficulty{ get{ return 125.0; } }

@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Server.Mobiles
 {
-    [CorpseName("a giant spider corpse")]
+    [CorpseName("a giant spider")]
     public class Spider : BaseCreature
     {
         [Constructable]

@@ -3,7 +3,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Gargouille Geante" )]
+	[CorpseName( "Gargouille Geante" )]
 	public class GargoyleEnforcer : BaseCreature
 	{
 		public override WeaponAbility GetWeaponAbility()

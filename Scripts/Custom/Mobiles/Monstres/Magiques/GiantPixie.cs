@@ -4,7 +4,7 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Pixie Géante")]
+    [CorpseName("Pixie Géante")]
     public class GiantPixie : BaseCreature
     {
         public override bool InitialInnocent { get { return true; } }

@@ -3,7 +3,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Dragon Apprivoisé" )]
+	[CorpseName( "Dragon Apprivoisé" )]
 	public class DragonMaraisApprivoise : BaseMount
 	{
 		[Constructable]

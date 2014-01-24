@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-    [CorpseName("a skeletal corpse")]
+    [CorpseName("a skeletal")]
     public class SkeletonArcher : BaseCreature
     {
         [Constructable]

@@ -3,7 +3,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Changelin" )]
+	[CorpseName( "Changelin" )]
 	public class Doppleganger : BaseCreature
 	{
 		[Constructable]

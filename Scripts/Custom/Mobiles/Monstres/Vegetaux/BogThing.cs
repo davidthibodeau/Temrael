@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Marodeur" )]
+	[CorpseName( "Marodeur" )]
 	public class BogThing : BaseCreature
 	{
 		[Constructable]

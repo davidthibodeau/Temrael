@@ -5,7 +5,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName("Corps de Minotaure Mage")]
+	[CorpseName("Minotaure Mage")]
 	public class InterredGrizzle  : BaseCreature
 	{
 		[Constructable]

@@ -3,7 +3,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Chauve-Souris")]
+    [CorpseName("Chauve-Souris")]
     public class ThornBat : BaseCreature
     {
         [Constructable]

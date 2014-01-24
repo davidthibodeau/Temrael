@@ -5,7 +5,7 @@ using Server.Network;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Reine Fourmis" )]
+	[CorpseName( "Reine Fourmis" )]
 	public class RedSolenQueen : BaseCreature
 	{
         public override bool isBoss

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Satyr" )]
+	[CorpseName( "Satyr" )]
 	public class Satyr : BaseCreature
 	{
 		[Constructable]

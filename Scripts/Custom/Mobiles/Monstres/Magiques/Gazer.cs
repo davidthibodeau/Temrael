@@ -5,7 +5,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Gazer")]
+    [CorpseName("Gazer")]
     public class Gazer : BaseCreature
     {
         public override bool InitialInnocent { get { return true; } }

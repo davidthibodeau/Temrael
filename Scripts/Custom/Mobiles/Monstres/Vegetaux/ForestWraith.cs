@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Spectre")]
+    [CorpseName("Spectre")]
     public class ForestWrait : BaseCreature
     {
         [Constructable]

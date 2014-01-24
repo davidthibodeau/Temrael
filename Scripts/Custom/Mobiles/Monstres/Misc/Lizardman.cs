@@ -6,7 +6,7 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Lezard Geant" )]
+	[CorpseName( "Lezard Geant" )]
 	public class Lizardman : BaseCreature
 	{
 		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Lizardman; } }

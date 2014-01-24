@@ -6,7 +6,7 @@ using Server.Network;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Peste" )]
+	[CorpseName( "Peste" )]
 	public class PlagueBeast : BaseCreature, IDevourer
 	{
         public override bool isBoss

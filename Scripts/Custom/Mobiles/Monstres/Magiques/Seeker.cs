@@ -4,7 +4,7 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Chercheur")]
+    [CorpseName("Chercheur")]
     public class Seeker : BaseCreature
     {
         public override bool InitialInnocent { get { return true; } }

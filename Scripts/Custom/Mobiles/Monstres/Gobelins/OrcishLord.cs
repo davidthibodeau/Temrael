@@ -6,7 +6,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Seigneur Morgalin" )]
+	[CorpseName( "Seigneur Morgalin" )]
 	public class OrcishLord : BaseCreature
 	{
         public override bool isBoss

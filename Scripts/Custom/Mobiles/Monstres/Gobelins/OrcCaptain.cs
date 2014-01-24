@@ -6,7 +6,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Morgalin Capitaine" )]
+	[CorpseName( "Morgalin Capitaine" )]
 	public class OrcCaptain : BaseCreature
 	{
 		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Orc; } }

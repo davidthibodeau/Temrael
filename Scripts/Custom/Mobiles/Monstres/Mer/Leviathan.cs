@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Leviathan" )]
+	[CorpseName( "Leviathan" )]
 	public class Leviathan : BaseCreature
 	{
 		private Mobile m_Fisher;

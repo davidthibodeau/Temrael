@@ -3,7 +3,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-    [CorpseName("a chacal corpse")]
+    [CorpseName("a chacal")]
     [TypeAlias("Server.Mobiles.Chacal")]
     public class Chacal : BaseCreature
     {

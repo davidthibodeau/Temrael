@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Wyrm des Ombres" )]
+	[CorpseName( "Wyrm des Ombres" )]
 	public class ShadowWyrm : BaseCreature
 	{
         public override bool isBoss

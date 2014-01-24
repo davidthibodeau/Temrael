@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Kraken" )]
+	[CorpseName( "Kraken" )]
 	public class Kraken : BaseCreature
 	{
         public override bool isBoss

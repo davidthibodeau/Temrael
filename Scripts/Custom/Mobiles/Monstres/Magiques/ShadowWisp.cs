@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Wisp" )]
+	[CorpseName( "Wisp" )]
 	public class ShadowWisp : BaseCreature
 	{
 		[Constructable]

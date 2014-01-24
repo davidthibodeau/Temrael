@@ -6,7 +6,7 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-	[CorpseName("a pestilent bandage corpse")]
+	[CorpseName("a pestilent bandage")]
 	public class PestilentBandage : BaseCreature
 	{
 		// Neither Stratics nor UOGuide have much description 

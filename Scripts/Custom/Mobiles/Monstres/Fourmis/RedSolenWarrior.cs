@@ -5,7 +5,7 @@ using Server.Network;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Guerrier Fourmis" )]
+	[CorpseName( "Guerrier Fourmis" )]
 	public class RedSolenWarrior : BaseCreature
 	{
 		private bool m_BurstSac;

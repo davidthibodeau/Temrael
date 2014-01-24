@@ -5,7 +5,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName("a fetid essence corpse")]
+	[CorpseName("a fetid essence")]
 	public class  FetidEssence  : BaseCreature
 	{
 		[Constructable]

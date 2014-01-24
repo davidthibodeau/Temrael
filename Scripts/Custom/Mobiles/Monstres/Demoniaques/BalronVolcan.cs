@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Balron Volcanique")]
+    [CorpseName("Balron Volcanique")]
     public class BalronVolcan : BaseCreature
     {
         public override bool isBoss

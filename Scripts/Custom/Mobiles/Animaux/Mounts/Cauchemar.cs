@@ -5,7 +5,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Cauchemar" )]
+	[CorpseName( "Cauchemar" )]
 	public class Cauchemar : BaseMount
 	{
 		[Constructable]

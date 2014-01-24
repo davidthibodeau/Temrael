@@ -5,7 +5,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Griffon")]
+    [CorpseName("Griffon")]
 	public class Griffon : BaseMount
 	{
 		public override WeaponAbility GetWeaponAbility()

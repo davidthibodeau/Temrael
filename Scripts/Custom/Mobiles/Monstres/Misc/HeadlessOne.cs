@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Sans-Tête" )]
+	[CorpseName( "Sans-Tête" )]
 	public class HeadlessOne : BaseCreature
 	{
 		[Constructable]

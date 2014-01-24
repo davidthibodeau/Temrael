@@ -6,7 +6,7 @@ using Server.Factions;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Seigneur Ogre" )]
+	[CorpseName( "Seigneur Ogre" )]
 	public class OgreLord : BaseCreature
 	{
 		public override Faction FactionAllegiance { get { return Minax.Instance; } }

@@ -3,7 +3,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Furret")]
+    [CorpseName("Furret")]
     public class Furret : BaseCreature
     {
         [Constructable]

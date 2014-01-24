@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Seigneur Ogre des Neiges" )]
+	[CorpseName( "Seigneur Ogre des Neiges" )]
 	[TypeAlias( "Server.Mobiles.ArticOgreLord" )]
 	public class ArcticOgreLord : BaseCreature
 	{

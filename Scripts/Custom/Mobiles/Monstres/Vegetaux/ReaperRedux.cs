@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Faucheur")]
+    [CorpseName("Faucheur")]
     public class ReaperRedux : BaseCreature
     {
         [Constructable]

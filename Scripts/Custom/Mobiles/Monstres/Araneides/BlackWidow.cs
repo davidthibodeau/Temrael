@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de veuve noir")]
+    [CorpseName("veuve noir")]
     public class BlackWidow : BaseCreature
     {
         [Constructable]

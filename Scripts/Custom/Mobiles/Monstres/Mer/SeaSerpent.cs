@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Serpent de Mer" )]
+	[CorpseName( "Serpent de Mer" )]
 	[TypeAlias( "Server.Mobiles.Seaserpant" )]
 	public class SeaSerpent : BaseCreature
 	{

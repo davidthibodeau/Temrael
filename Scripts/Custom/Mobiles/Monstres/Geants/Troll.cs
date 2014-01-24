@@ -5,7 +5,7 @@ using Server.Targeting;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Troll" )]
+	[CorpseName( "Troll" )]
 	public class Troll : BaseCreature
 	{
 		[Constructable]

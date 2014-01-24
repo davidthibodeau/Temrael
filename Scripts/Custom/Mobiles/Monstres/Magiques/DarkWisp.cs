@@ -6,7 +6,7 @@ using Server.Factions;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Wisp" )]
+	[CorpseName( "Wisp" )]
 	public class DarkWisp : BaseCreature
 	{
 		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Wisp; } }

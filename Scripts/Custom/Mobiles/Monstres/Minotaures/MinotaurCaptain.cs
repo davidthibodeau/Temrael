@@ -6,7 +6,7 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Capitaine Minotaure" )]
+	[CorpseName( "Capitaine Minotaure" )]
 	public class MinotaurCaptain : BaseCreature
 	{
         public override bool isBoss

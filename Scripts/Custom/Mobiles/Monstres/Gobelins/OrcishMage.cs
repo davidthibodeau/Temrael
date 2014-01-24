@@ -5,7 +5,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Morgalin Shaman" )]
+	[CorpseName( "Morgalin Shaman" )]
 	public class OrcishMage : BaseCreature
 	{
 		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Orc; } }

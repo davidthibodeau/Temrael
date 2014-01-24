@@ -4,7 +4,7 @@ using Server.Network;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Golem")]
+    [CorpseName("Golem")]
     public class FireGolem : BaseCreature
     {
         private bool m_Stunning;

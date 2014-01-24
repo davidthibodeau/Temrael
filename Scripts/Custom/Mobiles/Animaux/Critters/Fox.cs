@@ -7,7 +7,7 @@ using Server.ContextMenus;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Renard")]
+    [CorpseName("Renard")]
     public class Fox : BaseCreature
     {
         [Constructable]

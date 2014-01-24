@@ -3,7 +3,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Chocobo" )]
+	[CorpseName( "Chocobo" )]
 	public class Chocobo : BaseMount
 	{
 		[Constructable]

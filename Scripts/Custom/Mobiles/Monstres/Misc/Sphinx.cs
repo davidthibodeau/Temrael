@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Sphinx")]
+    [CorpseName("Sphinx")]
     public class Sphinx : BaseCreature
     {
         [Constructable]

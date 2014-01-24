@@ -4,7 +4,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Dragon des Marais" )]
+	[CorpseName( "Dragon des Marais" )]
 	public class DragonMarais : BaseMount
 	{
 		private bool m_BardingExceptional;

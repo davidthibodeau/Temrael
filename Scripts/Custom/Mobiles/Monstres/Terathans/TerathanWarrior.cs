@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Terathan Guerrier" )]
+	[CorpseName( "Terathan Guerrier" )]
 	public class TerathanWarrior : BaseCreature
 	{
 		[Constructable]

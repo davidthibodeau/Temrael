@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de veuve noire geante" )] // stupid corpse name
+	[CorpseName( "veuve noire geante" )] // stupid corpse name
 	public class GiantBlackWidow : BaseCreature
 	{
         public override bool isBoss

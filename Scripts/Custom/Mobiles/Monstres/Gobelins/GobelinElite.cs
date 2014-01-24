@@ -6,7 +6,7 @@ using Server.Misc;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Corps de Gobelin")]
+    [CorpseName("Gobelin")]
     public class GobelinElite : BaseCreature
     {
         public override InhumanSpeech SpeechType { get { return InhumanSpeech.Orc; } }

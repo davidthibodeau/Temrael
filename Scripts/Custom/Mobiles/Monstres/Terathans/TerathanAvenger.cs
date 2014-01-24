@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Corps de Terathan Vengeuse" )]
+	[CorpseName( "Terathan Vengeuse" )]
 	public class TerathanAvenger : BaseCreature
 	{
 		[Constructable]

@@ -5,7 +5,7 @@ using Server.Network;
 
 namespace Server.Mobiles
 {
-    [CorpseName("a Crawler corpse")]
+    [CorpseName("a Crawler")]
     public class Crawler : BaseCreature
     {
         [Constructable]
