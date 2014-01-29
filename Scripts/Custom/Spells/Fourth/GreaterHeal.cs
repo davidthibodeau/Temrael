@@ -51,19 +51,20 @@ namespace Server.Spells.Fourth
 			}
 			else if ( CheckBSequence( m ) )
 			{
-				SpellHelper.Turn( Caster, m );
+                SpellHelper.Turn(Caster, m);
 
                 double toHeal;
 
-                toHeal = Caster.Skills[SkillName.Restoration].Value * 0.3;
-                toHeal += Utility.Random(1, 10);
+                toHeal = Caster.Skills[SkillName.Restoration].Value * 0.5;
+                toHeal += Caster.Skills[SkillName.ArtMagique].Value * 0.5;
+                toHeal += Utility.Random(1, 15);
 
                 toHeal = SpellHelper.AdjustValue(Caster, toHeal, NAptitude.Sorcellerie);
 
-				m.Heal( (int)toHeal );
+                m.Heal((int)toHeal);
 
-				m.FixedParticles( 0x376A, 9, 32, 5030, EffectLayer.Waist );
-				m.PlaySound( 0x202 );
+                m.FixedParticles(0x376A, 9, 32, 5005, EffectLayer.Waist);
+                m.PlaySound(0x1F2);
 			}
 
 			FinishSequence();

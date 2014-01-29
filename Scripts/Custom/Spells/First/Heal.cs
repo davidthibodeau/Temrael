@@ -54,9 +54,9 @@ namespace Server.Spells.First
 
 				double toHeal;
 
-				toHeal = Caster.Skills[SkillName.Restoration].Value * 0.5;
-                toHeal += Caster.Skills[SkillName.ArtMagique].Value * 0.5;
-                toHeal += Utility.Random(1, 15);
+				toHeal = Caster.Skills[SkillName.Restoration].Value * 0.3;
+                toHeal += Caster.Skills[SkillName.ArtMagique].Value * 0.3;
+                toHeal += Utility.Random(1, 10);
 
                 toHeal = SpellHelper.AdjustValue(Caster, toHeal, NAptitude.Sorcellerie);
 

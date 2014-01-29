@@ -173,10 +173,13 @@ namespace Server.Mobiles
 
 				if ( canAccess )
 				{
-					if ( this.Poisoned )
-						PrivateOverheadMessage( Network.MessageType.Regular, 0x3B2, 1049692, from.NetState ); // This mount is too ill to ride.
-					else
-						Rider = from;
+                    if (this.Poisoned)
+                        PrivateOverheadMessage(Network.MessageType.Regular, 0x3B2, 1049692, from.NetState); // This mount is too ill to ride.
+                    else
+                    {
+                        from.RevealingAction();
+                        Rider = from;
+                    }
 				}
 				else if ( !Controlled && !Summoned )
 				{
