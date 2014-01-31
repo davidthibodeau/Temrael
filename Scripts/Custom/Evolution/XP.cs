@@ -114,7 +114,13 @@ namespace Server
             }
 
             if (pm.ListCote.Count > 0)
-                return CoteMoyenne / pm.ListCote.Count;
+            {
+                double avg = CoteMoyenne / (double)pm.ListCote.Count;
+                if (avg - (int)avg < 0.5)
+                    return (int)avg;
+                else
+                    return (int)avg + 1;
+            }
             else
                 return 0;
         }
