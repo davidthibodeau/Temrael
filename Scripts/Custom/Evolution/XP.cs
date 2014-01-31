@@ -6,6 +6,8 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Items;
 using Server.Gumps;
+using Server.Systemes;
+using Server.Accounting;
 
 namespace Server
 {
@@ -92,6 +94,14 @@ namespace Server
                     pm.CoteCount = 1;
                 }
             }
+
+            foreach (CompensationGump.MJ mj in Systemes.CompensationGump.GetMJs())
+            {
+                if (mj.NextCompensation < DateTime.Now)
+                {
+                    mj.PayerXP();
+                }
+            }
         }
 
         public static int GetCote(TMobile pm)
@@ -163,6 +173,12 @@ namespace Server
             //pm.SendMessage(Convert.ToString(CoteMoyenne));
 
             pm.XP += XPgain;
+
+            CompensationGump.MJ mj = CompensationGump.GetMJ((Account)pm.Account);
+            if (mj != null)
+            {
+                mj.XpGainedThisWeek += XPgain;
+            }
 
             pm.CoteCount++;
 

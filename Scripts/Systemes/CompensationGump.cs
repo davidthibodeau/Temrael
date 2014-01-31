@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 using Server.Gumps;
 using Server.Commands;
 using Server.Network;
 using Server.Accounting;
 using Server.Mobiles;
 using Server.Prompts;
+
 
 namespace Server.Systemes
 {
@@ -24,6 +27,13 @@ namespace Server.Systemes
         public static void Initialize()
         {
             CommandSystem.Register("Compensation", AccessLevel.Player, new CommandEventHandler(Compensation_OnCommand));
+
+            foreach (MJ mj in GetMJs())
+            {
+                mj.Init();
+                compensations.Add(mj.AccountJoueur, mj);
+                
+            }
         }
 
         [Usage("Compensation")]
@@ -33,12 +43,29 @@ namespace Server.Systemes
             Mobile from = e.Mobile;
             if (from.AccessLevel < AccessLevel.Owner)
             {
-                if (compensations[(Account)from.Account] == null)
+
+                MJ mj = GetMJ((Account)from.Account);
+                if (mj == null)
                 {
                     from.SendMessage("Cette commande n'est pas accessible.");
                 }
                 else
                 {
+                    Account acc = mj.AccountJoueur;
+                    if (mj.IndexPersonnage >= acc.Count)
+                    {
+                        from.SendMessage("Il n'y a aucun personnage qui reçoit l'expérience en ce moment");
+                    }
+                    else
+                    {
+                        from.SendMessage("Le personnage qui reçoit l'expérience est : " + acc[mj.IndexPersonnage].Name);
+                    }
+                    from.SendMessage("Veuillez indiquer l'index du personnage qui recevra l'expérience.");
+                    for (int i = 0; i < acc.Count; i++)
+                    {
+                        from.SendMessage("#" + i + ". " + acc[i].Name);
+                    }
+                    from.Prompt = new IndexPJPrompt(mj);
                 }
             }
             else
@@ -49,17 +76,69 @@ namespace Server.Systemes
 
         private static void Save(WorldSaveEventArgs e)
         {
-            throw new NotImplementedException();
+            if ( !Directory.Exists( "Saves/Compensations" ) )
+				Directory.CreateDirectory( "Saves/Compensations" );
+
+			string filePath = Path.Combine( "Saves/Compensations", "compensations.xml" );
+
+            using (StreamWriter op = new StreamWriter(filePath))
+            {
+                XmlTextWriter xml = new XmlTextWriter(op);
+
+                xml.Formatting = Formatting.Indented;
+                xml.IndentChar = '\t';
+                xml.Indentation = 1;
+
+                xml.WriteStartDocument(true);
+
+                xml.WriteStartElement("compensations");
+
+                foreach (MJ mj in compensationsIndexed)
+                {
+                    xml.WriteStartElement("mj");
+                    mj.Save(xml);
+                    xml.WriteEndElement();
+                }
+                xml.Close();
+            }
         }
 
         private static void Load()
         {
-            throw new NotImplementedException();
+            compensations = new Dictionary<Account, MJ>();
+            compensationsIndexed = new List<MJ>();
+
+            string filePath = Path.Combine("Saves/Compensations", "compensations.xml");
+
+			if ( !File.Exists( filePath ) )
+				return;
+
+			XmlDocument doc = new XmlDocument();
+			doc.Load( filePath );
+
+            XmlElement root = doc["compensations"];
+
+            foreach (XmlElement mj in root.GetElementsByTagName("mj"))
+            {
+                MJ m = new MJ(mj);
+                compensationsIndexed.Add(m);
+            }
         }
 
         public static MJ GetMJ(Account acc)
         {
-            return compensations[acc];
+            MJ mj = null;
+            compensations.TryGetValue(acc, out mj);
+            return mj;
+        }
+
+        public static ICollection<MJ> GetMJs()
+        { //J'suis pas certain que le precondition soit pertinent...
+#if !MONO
+            return compensationsIndexed;
+#else
+			return new List<MJ>( compensationsIndexed );
+#endif
         }
 
         public class MJ
@@ -68,6 +147,7 @@ namespace Server.Systemes
             private int m_XpGainedThisWeek;
             private DateTime m_NextCompensation;
             private Account m_AccountJoueur;
+            private string accountname;
             private int m_IndexPersonnage;
 
             public string Nom { get { return m_Nom; } set { m_Nom = value; } }
@@ -83,6 +163,43 @@ namespace Server.Systemes
                 m_NextCompensation = DateTime.Now.AddDays(7.0);
                 m_IndexPersonnage = index;
                 m_XpGainedThisWeek = 0;
+            }
+
+            public MJ(XmlElement node)
+            {
+                m_Nom = Utility.GetText(node["nom"], "empty");
+                m_XpGainedThisWeek = Utility.GetXMLInt32(Utility.GetText(node["xpthisweek"], "0"), 0);
+                m_NextCompensation = Utility.GetXMLDateTime(Utility.GetText(node["nextcomp"], null), DateTime.Now.AddDays(7));
+                m_IndexPersonnage = Utility.GetXMLInt32(Utility.GetText(node["indexchar"], "0"), 0);
+                accountname = Utility.GetText(node["account"], "empty");
+            }
+
+            public void Init()
+            {
+                m_AccountJoueur = (Account) Accounts.GetAccount(accountname);
+            }
+
+            public void Save(XmlTextWriter xml)
+            {
+                xml.WriteStartElement("nom");
+                xml.WriteString(m_Nom);
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("xpthisweek");
+                xml.WriteString(XmlConvert.ToString(m_XpGainedThisWeek));
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("nextcomp");
+                xml.WriteString(XmlConvert.ToString(m_NextCompensation, XmlDateTimeSerializationMode.Local));
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("indexchar");
+                xml.WriteString(XmlConvert.ToString(m_IndexPersonnage));
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("account");
+                xml.WriteString(m_AccountJoueur.Username);
+                xml.WriteEndElement();
             }
 
             public void PayerXP()
@@ -126,7 +243,7 @@ namespace Server.Systemes
 			AddBackground(31, 48, 416, 432, 9250);
 			AddBackground(39, 56, 400, 417, 3500);
 			AddLabel(174, 78, 1301, @"Compensations MJ");
-			AddRadio(285, 430, 4005, 4006, false, (int)Buttons.AjouterMJ);
+            AddButton(285, 430, 4005, 4006, (int)Buttons.AjouterMJ, GumpButtonType.Reply, 0);
 			AddLabel(185, 431, 1301, @"Ajouter un MJ");
 
             int basey = 110;
@@ -164,17 +281,17 @@ namespace Server.Systemes
 			
 			AddLabel(81, 110, 1301, @"Maitre du Jeu :");
             AddLabel(210, 110, 1301, mj.Nom);
-            AddButton(383, 109, 4005, 248, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
+            AddButton(383, 109, 4005, 4006, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
 
 			AddLabel(81, 140, 1301, @"Account Joueur :");
             AddLabel(210, 140, 1301, mj.AccountJoueur.Username);
 
 			AddLabel(81, 170, 1301, @"Personnage :");
 			AddLabel(210, 170, 1301, mj.AccountJoueur[mj.IndexPersonnage].Name);
-			AddButton(383, 169, 4005, 248, (int)Buttons.ChangerPersonnage, GumpButtonType.Reply, 0);
+			AddButton(383, 169, 4005, 4006, (int)Buttons.ChangerPersonnage, GumpButtonType.Reply, 0);
 
             AddLabel(196, 211, 1301, @"Supprimer");
-            AddButton(275, 210, 4005, 248, (int)Buttons.SupprimerMJ, GumpButtonType.Reply, 0);
+            AddButton(275, 210, 4005, 4006, (int)Buttons.SupprimerMJ, GumpButtonType.Reply, 0);
         }
 
         public enum Buttons
@@ -212,10 +329,24 @@ namespace Server.Systemes
                     from.Prompt = new SupprimerMJPrompt(mj);
                     break;
 
+                case (int)Buttons.ChangerNom:
+                    from.SendMessage("Veuillez entrer le nouveau nom du MJ.");
+                    from.Prompt = new NomMJPrompt(mj);
+                    break;
+
+                case (int)Buttons.ChangerPersonnage:
+                    from.SendMessage("Veuillez indiquer l'index du personnage qui recevra l'expérience.");
+                    for (int j = 0; j < mj.AccountJoueur.Count; j++)
+                    {
+                        from.SendMessage("#" + j + ". " + mj.AccountJoueur[j].Name);
+                    }
+                    from.Prompt = new IndexPJPrompt(mj);
+                    break;
+
                 default:
                     if (i >= 10 && i < 10 + compensationsIndexed.Count)
                     {
-                        from.SendGump(new CompensationGump(compensationsIndexed[i]));
+                        from.SendGump(new CompensationGump(compensationsIndexed[i - 10]));
                     }
                     else
                         from.SendGump(new CompensationGump(page));
@@ -226,19 +357,38 @@ namespace Server.Systemes
         private class NomMJPrompt : Prompt
         {
 
+            private MJ mj;
+
             public NomMJPrompt()
             {
+            }
+
+            public NomMJPrompt(MJ mj)
+            {
+                this.mj = mj;
             }
             
             public override void OnResponse(Mobile from, string text)
             {
-                from.SendMessage("Veuillez indiquer le nom de son account joueur.");
-                from.Prompt = new AccountPJPrompt(text);
+                if (mj == null)
+                {
+                    from.SendMessage("Veuillez indiquer le nom de son account joueur.");
+                    from.Prompt = new AccountPJPrompt(text);
+                }
+                else
+                {
+                    from.SendMessage("Le nouveau nom de l'entrée est : " + text);
+                    mj.Nom = text;
+                    from.SendGump(new CompensationGump(mj));
+                }
             }
 
             public override void OnCancel(Mobile from)
             {
-                from.SendMessage("La création de l'entrée est annulée.");
+                if (mj == null)
+                    from.SendMessage("La création de l'entrée est annulée.");
+                else
+                    from.SendMessage("Le nom n'a pas été modifié.");
             }
         }
 
@@ -281,40 +431,74 @@ namespace Server.Systemes
             private string nomMJ;
             private Account accPJ;
 
+            private MJ mj;
+
             public IndexPJPrompt(string mj, Account pj)
             {
                 nomMJ = mj;
                 accPJ = pj;
             }
+
+            public IndexPJPrompt(MJ mj)
+            {
+                this.mj = mj;
+            }
             
             public override void OnResponse(Mobile from, string text)
             {
-                try
+                if (this.mj == null)
                 {
-                    int index = Convert.ToInt32(text);
-                    if (index >= accPJ.Count)
+                    try
+                    {
+                        int index = Convert.ToInt32(text);
+                        if (index < 0 || index >= accPJ.Count)
+                        {
+                            from.SendMessage("L'index que vous avez entré est invalide. Veuillez réessayer.");
+                            from.Prompt = new IndexPJPrompt(nomMJ, accPJ);
+                        }
+                        else
+                        {
+                            from.SendMessage("L'entrée est créée.");
+                            MJ mj = new MJ(nomMJ, accPJ, index);
+                            compensations.Add(accPJ, mj);
+                            compensationsIndexed.Add(mj);
+                        }
+                    }
+                    catch
                     {
                         from.SendMessage("L'index que vous avez entré est invalide. Veuillez réessayer.");
                         from.Prompt = new IndexPJPrompt(nomMJ, accPJ);
                     }
-                    else
-                    {
-                        from.SendMessage("L'entrée est créée.");
-                        MJ mj = new MJ(nomMJ, accPJ, index);
-                        compensations.Add(accPJ, mj);
-                        compensationsIndexed.Add(mj);
-                    }
-                } 
-                catch
+                }
+                else
                 {
-                    from.SendMessage("L'index que vous avez entré est invalide. Veuillez réessayer.");
-                    from.Prompt = new IndexPJPrompt(nomMJ, accPJ);
+                    try
+                    {
+                        int index = Convert.ToInt32(text);
+                        if (index < 0 || index >= mj.AccountJoueur.Count)
+                        {
+                            from.SendMessage("L'index que vous avez entré est invalide. Veuillez réessayer.");
+                            from.Prompt = new IndexPJPrompt(mj);
+                        }
+                        else
+                        {
+                            from.SendMessage("Le personnage a été changé.");
+                        }
+                    }
+                    catch
+                    {
+                        from.SendMessage("L'index que vous avez entré est invalide. Veuillez réessayer.");
+                        from.Prompt = new IndexPJPrompt(mj);
+                    }
                 }
             }
 
             public override void OnCancel(Mobile from)
             {
-                from.SendMessage("La création de l'entrée est annulée.");
+                if (mj == null)
+                    from.SendMessage("La création de l'entrée est annulée.");
+                else
+                    from.SendMessage("Le personnage n'a pas été changé.");
             }
         }
 
