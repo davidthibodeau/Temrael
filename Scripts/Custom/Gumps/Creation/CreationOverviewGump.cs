@@ -254,7 +254,7 @@ namespace Server.Gumps
             SetAptitudes(from);
             SetCaract(from);
             PackItem(from, new RedBook("a book", from.Name, 20, true));
-            PackItem(from, new Gold(2000)); //
+            PackItem(from, new Gold(250)); //
             PackItem(from, new Dagger());
             PackItem(from, new Candle());
             /*if (from.Metier == Metier.Noble || from.MetierSecondaire == Metier.Noble)
