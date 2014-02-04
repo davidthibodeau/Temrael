@@ -108,8 +108,7 @@ namespace Server
         private string m_Role;
         private ClasseBranche m_ClasseBranche;
         private int m_Image;
-        private AlignementB m_Alignement;
-
+        
         public ClasseType Classe { get { return m_Classe; } }
         public ClasseAptitudes[] FirstApt { get { return m_FirstApt; } }
         public ClasseAptitudes[] SecondApt { get { return m_SecondApt; } }
@@ -121,13 +120,12 @@ namespace Server
         public string Role { get { return m_Role; } }
         public ClasseBranche ClasseBranche { get { return m_ClasseBranche; } }
         public int Image { get { return m_Image; } }
-        public AlignementB Alignement { get { return m_Alignement; } }
-
+        
         public ClasseInfo()
         {
         }
 
-        public ClasseInfo(ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip, AlignementB alignement)
+        public ClasseInfo(ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip)
         {
             m_FirstApt = firstApt;
             m_SecondApt = secondApt;
@@ -139,10 +137,9 @@ namespace Server
             m_ClasseBranche = branche;
             m_Image = image;
             m_Tooltip = tooltip;
-            m_Alignement = alignement;
         }
 
-        public ClasseInfo(ClasseType classe, ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip, AlignementB alignement)
+        public ClasseInfo(ClasseType classe, ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip)
         {
             m_Classe = classe;
             m_FirstApt = firstApt;
@@ -155,7 +152,6 @@ namespace Server
             m_ClasseBranche = branche;
             m_Image = image;
             m_Tooltip = tooltip;
-            m_Alignement = alignement;
         }
     }
 

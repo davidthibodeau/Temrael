@@ -72,8 +72,7 @@ namespace Server
                 m_Role,
                 m_ClasseBranche,
                 m_Image,
-                m_Tooltip,
-                m_Alignement
+                m_Tooltip
             );
     }
 }

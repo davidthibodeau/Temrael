@@ -60,17 +60,10 @@ namespace Server.Gumps
             {
                 ClasseInfo tmp = Classes.GetInfos((ClasseType)i);
 
-                Console.WriteLine(i);
-                Console.WriteLine(page);
-                //Console.WriteLine(i = page * lineMax);
-                Console.WriteLine(tmp.Nom);
-
-                if ((tmp.Alignement == from.AlignementB || tmp.Alignement == AlignementB.Aucun))
-                {
-                    AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((ClasseType)i).ToString());
-                    ++line;
-                }
+                AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
+                AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((ClasseType)i).ToString());
+                ++line;
+                
             }
 
             if (page > 0)
