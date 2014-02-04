@@ -296,7 +296,7 @@ namespace Server.Systemes
 
         public enum Buttons
         {
-            AjouterMJ = 0,
+            AjouterMJ = 1,
             NextPage,
             PreviousPage,
             SupprimerMJ,
@@ -311,6 +311,8 @@ namespace Server.Systemes
             int i = info.ButtonID;
             switch (i)
             {
+                case 0:
+                    break;
                 case (int)Buttons.AjouterMJ:
                     from.SendMessage("Veuillez entrer le nom du MJ.");
                     from.Prompt = new NomMJPrompt();
