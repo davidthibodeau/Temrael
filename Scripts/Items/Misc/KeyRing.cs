@@ -18,7 +18,7 @@ namespace Server.Items
 		public KeyRing() : base( 0x1011 )
 		{
 			Weight = 1.0; // They seem to have no weight on OSI ?!
-
+            LootType = LootType.Blessed;
 			m_Keys = new List<Key>();
 		}
 
@@ -202,6 +202,7 @@ namespace Server.Items
 			int version = reader.ReadEncodedInt();
 
 			m_Keys = reader.ReadStrongItemList<Key>();
+            LootType = LootType.Blessed;
 		}
 	}
 }
