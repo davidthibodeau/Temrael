@@ -75,10 +75,12 @@ namespace Server.Engines.Help
 		{
 			m_Queue = new Queue<SpeechLogEntry>();
 		}
-
-		public void Add( Mobile from, string speech )
+        
+		public void Add(Mobile listener, Mobile from, string speech )
 		{
-			Add( new SpeechLogEntry( from, speech ) );
+            SpeechLogEntry e = new SpeechLogEntry(from, speech);
+            SpeechlogLogging.WriteLine(listener, e);
+			Add(e);
 		}
 
 		public void Add( SpeechLogEntry entry )

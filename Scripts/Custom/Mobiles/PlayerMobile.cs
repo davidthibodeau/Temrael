@@ -3899,7 +3899,7 @@ namespace Server.Mobiles
 				if ( m_SpeechLog == null )
 					m_SpeechLog = new SpeechLog();
 
-				m_SpeechLog.Add( e.Mobile, e.Speech );
+				m_SpeechLog.Add(this, e.Mobile, e.Speech );
 			}
 		}
 
