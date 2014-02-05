@@ -111,7 +111,7 @@ namespace Server.Misc
 				string timeStamp = GetTimeStamp();
 
 				string root = GetRoot();
-				string rootBackup = Combine( root, String.Format( "Backups/Crashed/{0}/", timeStamp ) );
+				string rootBackup = Combine( root, String.Format( "Backups/Saves/Crashed/{0}/", timeStamp ) );
 				string rootOrigin = Combine( root, String.Format( "Saves/" ) );
 
 				// Create new directories
@@ -157,7 +157,7 @@ namespace Server.Misc
 				string fileName = String.Format( "Crash {0}.log", timeStamp );
 
 				string root = GetRoot();
-                string rootCrash = Combine(root, String.Format("Crash/"));
+                string rootCrash = Combine(root, String.Format("Backups/CrashReports/"));
 				string filePath = Combine( rootCrash, fileName );
 
                 CreateDirectory(rootCrash);
@@ -229,7 +229,8 @@ namespace Server.Misc
 		private static string GetTimeStamp()
 		{
 			DateTime now = DateTime.Now;
-            return String.Format("{0}-{1}-{2}-{3}-{4}-{5}", now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
+            return String.Format("{0}-{1:D2}-{2:D2}-{3:D2}-{4:D2}-{5:D2}", 
+                now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
         }
     }
 }

@@ -17,18 +17,23 @@ namespace Server.Commands
 
 		public static void Initialize()
 		{
-			if ( !Directory.Exists( "Logs" ) )
-				Directory.CreateDirectory( "Logs" );
 
-			string directory = "Logs/Townsperson";
+            if ( !Directory.Exists( "Backups" ) )
+				Directory.CreateDirectory( "Backups" );
+			if ( !Directory.Exists( "Backups/Logs" ) )
+				Directory.CreateDirectory( "Backups/Logs" );
+
+			string directory = "Backups/Logs/Townsperson";
 
 			if ( !Directory.Exists( directory ) )
 				Directory.CreateDirectory( directory );
 
 			try
 			{
-				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", DateTime.Now.ToLongDateString() ) ), true );
-
+                DateTime now = DateTime.Now;
+                string today = String.Format("{0}-{1}-{2}, {3}", now.Year, now.Month, now.Day, now.DayOfWeek);
+				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", today) ), true );
+				
 				m_Output.AutoFlush = true;
 
 				m_Output.WriteLine( "##############################" );
@@ -74,6 +79,7 @@ namespace Server.Commands
 				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.Now.ToShortTimeString(), TownspersonLogging.Format( from ), text );
 
 				string path = Core.BaseDirectory;
+                AppendPath( ref path, "Backups" );
 				AppendPath( ref path, "Logs" );
 				AppendPath( ref path, "Townsperson" );
 				path = Path.Combine( path, String.Format( "{0}.log", DateTime.Now.ToLongDateString() ) );

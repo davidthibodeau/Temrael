@@ -18,17 +18,22 @@ namespace Server.Commands
 		{
 			EventSink.Command += new CommandEventHandler( EventSink_Command );
 
-			if ( !Directory.Exists( "Logs" ) )
-				Directory.CreateDirectory( "Logs" );
+            if ( !Directory.Exists( "Backups" ) )
+				Directory.CreateDirectory( "Backups" );
 
-			string directory = "Logs/Commands";
+			if ( !Directory.Exists( "Backups/Logs" ) )
+				Directory.CreateDirectory( "Backups/Logs" );
+
+			string directory = "Backups/Logs/Commands";
 
 			if ( !Directory.Exists( directory ) )
 				Directory.CreateDirectory( directory );
 
 			try
 			{
-				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", DateTime.Now.ToLongDateString() ) ), true );
+                DateTime now = DateTime.Now;
+                string today = String.Format("{0}-{1}-{2}, {3}", now.Year, now.Month, now.Day, now.DayOfWeek);
+				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", today) ), true );
 
 				m_Output.AutoFlush = true;
 
@@ -85,6 +90,7 @@ namespace Server.Commands
 
 				string name = ( acct == null ? from.Name : acct.Username );
 
+                AppendPath( ref path, "Backups" );
 				AppendPath( ref path, "Logs" );
 				AppendPath( ref path, "Commands" );
 				AppendPath( ref path, from.AccessLevel.ToString() );
