@@ -82,6 +82,7 @@
     <Compile Include="Custom\Commandes\JailPage.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
     <Compile Include="Custom\Mobiles\Monstres\Demoniaques\GolemArcanique.cs" />
+    <Compile Include="Engines\Help\Logging.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">
