@@ -22,7 +22,7 @@ namespace Server.Mobiles
 			{
 				Add( new GenericBuyInfo( typeof( Bandage ), 5, 20, 0xE21, 0 ) );
 
-				Add( new GenericBuyInfo( typeof( BlankScroll ), 5, 999, 0x0E34, 0 ) );
+				Add( new GenericBuyInfo( typeof( BlankScroll ), 10, 999, 0x0E34, 0 ) );
 
 				Add( new GenericBuyInfo( typeof( NightSightPotion ), 15, 10, 0xF06, 0 ) );
 				Add( new GenericBuyInfo( typeof( AgilityPotion ), 15, 10, 0xF08, 0 ) );

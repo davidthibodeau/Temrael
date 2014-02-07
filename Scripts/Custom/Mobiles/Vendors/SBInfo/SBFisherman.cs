@@ -23,7 +23,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo("Truite", typeof(TruiteFish), 3, 20, 0x09CC, 0));
 				//TODO: Add( new GenericBuyInfo( typeof( SmallFish ), 3, 20, 0xDD6, 0 ) );
 				//TODO: Add( new GenericBuyInfo( typeof( SmallFish ), 3, 20, 0xDD7, 0 ) );
-				Add( new GenericBuyInfo( "Cane à Peche", typeof( FishingPole ), 15, 20, 0xDC0, 0 ) );
+				Add( new GenericBuyInfo( "Cane à Peche", typeof( FishingPole ), 20, 20, 0xDC0, 0 ) );
 			} 
 		} 
 

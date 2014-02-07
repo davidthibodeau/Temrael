@@ -20,15 +20,15 @@ namespace Server.Mobiles
 		{
 			public InternalBuyInfo()
 			{
-				Add( new GenericBuyInfo( typeof( GoldRing ), 27, 20, 0x108A, 0 ) );
-				Add( new GenericBuyInfo( typeof( Necklace ), 26, 20, 0x1085, 0 ) );
-				Add( new GenericBuyInfo( typeof( GoldNecklace ), 27, 20, 0x1088, 0 ) );
-				Add( new GenericBuyInfo( typeof( GoldBeadNecklace ), 27, 20, 0x1089, 0 ) );
-				Add( new GenericBuyInfo( typeof( Beads ), 27, 20, 0x108B, 0 ) );
-				Add( new GenericBuyInfo( typeof( GoldBracelet ), 27, 20, 0x1086, 0 ) );
-				Add( new GenericBuyInfo( typeof( GoldEarrings ), 27, 20, 0x1087, 0 ) );
+                Add(new GenericBuyInfo(typeof(GoldRing), 500, 20, 0x108A, 0));
+                Add(new GenericBuyInfo(typeof(Necklace), 400, 20, 0x1085, 0));
+                Add(new GenericBuyInfo(typeof(GoldNecklace), 700, 20, 0x1088, 0));
+                Add(new GenericBuyInfo(typeof(GoldBeadNecklace), 500, 20, 0x1089, 0));
+                Add(new GenericBuyInfo(typeof(Beads), 300, 20, 0x108B, 0));
+                Add(new GenericBuyInfo(typeof(GoldBracelet), 450, 20, 0x1086, 0));
+                Add(new GenericBuyInfo(typeof(GoldEarrings), 500, 20, 0x1087, 0));
 
-				Add( new GenericBuyInfo( typeof( Board ), 3, 20, 0x1BD7, 0 ) );
+				Add( new GenericBuyInfo( typeof( Board ), 10, 20, 0x1BD7, 0 ) );
 				//Add( new GenericBuyInfo( typeof( FerIngot ), 6, 20, 0x1BF2, 0 ) );
 
 				Add( new GenericBuyInfo( typeof( StarSapphire ), 125, 20, 0xF21, 0 ) );

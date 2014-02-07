@@ -77,6 +77,7 @@ namespace Server.Items
       {
          Name = "Grimoire";
          Layer = Layer.OneHanded;
+         Weight = 6.0;
       }
 
       public override void OnDoubleClick( Mobile from )
@@ -177,6 +178,8 @@ namespace Server.Items
              temp = reader.ReadInt();
              Contents.Add(temp);
          }
+
+         Weight = 6.0;
       }
   }
 }

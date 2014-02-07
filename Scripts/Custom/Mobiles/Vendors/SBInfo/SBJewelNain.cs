@@ -20,13 +20,13 @@ namespace Server.Mobiles
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(GoldRing), 250, 20, 0x108A, 0));
-                Add(new GenericBuyInfo(typeof(Necklace), 200, 20, 0x1085, 0));
-                Add(new GenericBuyInfo(typeof(GoldNecklace), 350, 20, 0x1088, 0));
-                Add(new GenericBuyInfo(typeof(GoldBeadNecklace), 250, 20, 0x1089, 0));
-                Add(new GenericBuyInfo(typeof(Beads), 150, 20, 0x108B, 0));
-                Add(new GenericBuyInfo(typeof(GoldBracelet), 225, 20, 0x1086, 0));
-                Add(new GenericBuyInfo(typeof(GoldEarrings), 250, 20, 0x1087, 0));
+                Add(new GenericBuyInfo(typeof(GoldRing), 500, 20, 0x108A, 0));
+                Add(new GenericBuyInfo(typeof(Necklace), 400, 20, 0x1085, 0));
+                Add(new GenericBuyInfo(typeof(GoldNecklace), 700, 20, 0x1088, 0));
+                Add(new GenericBuyInfo(typeof(GoldBeadNecklace), 500, 20, 0x1089, 0));
+                Add(new GenericBuyInfo(typeof(Beads), 300, 20, 0x108B, 0));
+                Add(new GenericBuyInfo(typeof(GoldBracelet), 450, 20, 0x1086, 0));
+                Add(new GenericBuyInfo(typeof(GoldEarrings), 500, 20, 0x1087, 0));
 
                 //Add( new GenericBuyInfo( "1060740", typeof( BroadcastCrystal ),  68, 20, 0x1ED0, 0, new object[] {  500 } ) ); // 500 charges
                 //Add( new GenericBuyInfo( "1060740", typeof( BroadcastCrystal ), 131, 20, 0x1ED0, 0, new object[] { 1000 } ) ); // 1000 charges

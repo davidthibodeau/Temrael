@@ -1305,6 +1305,7 @@ namespace Server
             {
                 if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
                 {
+                    m_Item.SetLastMoved();
                     m_Item.Movable = true;
                     m_Item.LastAlteration = DateTime.Now;
                 }

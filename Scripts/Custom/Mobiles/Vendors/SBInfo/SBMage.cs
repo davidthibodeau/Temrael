@@ -20,14 +20,14 @@ namespace Server.Mobiles
 		{
 			public InternalBuyInfo()
 			{
-				Add( new GenericBuyInfo( "Grimoire", typeof( NewSpellbook ), 30, 10, 0xEFA, 0 ) );
+				Add( new GenericBuyInfo( "Grimoire", typeof( NewSpellbook ), 50, 10, 0xEFA, 0 ) );
 				
 				//if ( Core.AOS )
 				//	Add( new GenericBuyInfo( typeof( NecromancerSpellbook ), 115, 10, 0x2253, 0 ) );
 				
-				Add( new GenericBuyInfo( typeof( ScribesPen ), 8, 10, 0xFBF, 0 ) );
+				Add( new GenericBuyInfo( typeof( ScribesPen ), 20, 10, 0xFBF, 0 ) );
 
-				Add( new GenericBuyInfo( "Rouleau Vierge", typeof( BlankScroll ), 10, 20, 0x0E34, 0 ) );
+				Add( new GenericBuyInfo( "Parchemin Vierge", typeof( BlankScroll ), 10, 20, 0x0E34, 0 ) );
 
 				//Add( new GenericBuyInfo( "1041072", typeof( MagicWizardsHat ), 11, 10, 0x1718, Utility.RandomDyedHue() ) );
 

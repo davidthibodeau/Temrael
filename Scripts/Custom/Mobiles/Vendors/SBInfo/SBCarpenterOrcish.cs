@@ -23,13 +23,13 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo("Clous", typeof(Nails), 3, 20, 0x102E, 0));
                 Add(new GenericBuyInfo("Essieu", typeof(Axle), 2, 20, 0x105B, 0));
                 Add(new GenericBuyInfo("Planche", typeof(Board), 5, 20, 0x1BD7, 0));
-                Add(new GenericBuyInfo("Plane", typeof(DrawKnife), 10, 20, 0x10E4, 0));
-                Add(new GenericBuyInfo("Froe", typeof(Froe), 10, 20, 0x10E5, 0));
-                Add(new GenericBuyInfo("Scorp", typeof(Scorp), 10, 20, 0x10E7, 0));
-                Add(new GenericBuyInfo("Inshave", typeof(Inshave), 10, 20, 0x10E6, 0));
-                Add(new GenericBuyInfo("Scie à queue d'aronde", typeof(DovetailSaw), 12, 20, 0x1028, 0));
-                Add(new GenericBuyInfo("Scie", typeof(Saw), 8, 20, 0x1034, 0));
-                Add(new GenericBuyInfo("Marteau", typeof(Hammer), 4, 20, 0x102A, 0));
+                Add(new GenericBuyInfo("Plane", typeof(DrawKnife), 20, 20, 0x10E4, 0));
+                Add(new GenericBuyInfo("Froe", typeof(Froe), 20, 20, 0x10E5, 0));
+                Add(new GenericBuyInfo("Scorp", typeof(Scorp), 20, 20, 0x10E7, 0));
+                Add(new GenericBuyInfo("Inshave", typeof(Inshave), 20, 20, 0x10E6, 0));
+                Add(new GenericBuyInfo("Scie à queue d'aronde", typeof(DovetailSaw), 20, 20, 0x1028, 0));
+                Add(new GenericBuyInfo("Scie", typeof(Saw), 20, 20, 0x1034, 0));
+                Add(new GenericBuyInfo("Marteau", typeof(Hammer), 20, 20, 0x102A, 0));
                 /*Add( new GenericBuyInfo( typeof( MouldingPlane ), 11, 20, 0x102C, 0 ) );
                 Add( new GenericBuyInfo( typeof( SmoothingPlane ), 10, 20, 0x1032, 0 ) );
                 Add( new GenericBuyInfo( typeof( JointingPlane ), 11, 20, 0x1030, 0 ) );*/

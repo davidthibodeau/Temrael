@@ -25,8 +25,8 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( typeof( Torch ), 8, 10, 0xF6B, 0 ) );
 				Add( new GenericBuyInfo( typeof( Lantern ), 2, 10, 0xA25, 0 ) );
 				//Add( new GenericBuyInfo( typeof( OilFlask ), 8, 10, 0x####, 0 ) );
-				Add( new GenericBuyInfo( typeof( Pickaxe ), 25, 10, 0xE86, 0 ) );
-				Add( new GenericBuyInfo( typeof( Shovel ), 12, 10, 0xF39, 0 ) );
+				Add( new GenericBuyInfo( typeof( Pickaxe ), 20, 10, 0xE86, 0 ) );
+				Add( new GenericBuyInfo( typeof( Shovel ), 20, 10, 0xF39, 0 ) );
 			}
 		}
 

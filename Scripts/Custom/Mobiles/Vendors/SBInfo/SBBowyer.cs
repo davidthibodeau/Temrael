@@ -20,7 +20,7 @@ namespace Server.Mobiles
 		{
 			public InternalBuyInfo()
 			{
-				Add( new GenericBuyInfo( typeof( FletcherTools ), 6, 20, 0x1022, 0 ) );
+				Add( new GenericBuyInfo( typeof( FletcherTools ), 20, 20, 0x1022, 0 ) );
 
                 Add(new GenericBuyInfo("Fleche", typeof(Arrow), 2, 20, 0xF3F, 0));
                 Add(new GenericBuyInfo("Carreau", typeof(Bolt), 5, 20, 0x1BFB, 0));

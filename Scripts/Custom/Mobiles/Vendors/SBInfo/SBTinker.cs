@@ -38,37 +38,37 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Porte Clef", typeof( KeyRing ), 6, 20, 0x1010, 0 ) );
 				Add( new GenericBuyInfo( "Crochet", typeof( Lockpick ), 5, 20, 0x14FC, 0 ) );
 
-				Add( new GenericBuyInfo( "Outils de Bricoleur", typeof( TinkersTools ), 12, 20, 0x1EBC, 0 ) );
-				Add( new GenericBuyInfo( "Planche", typeof( Board ), 5, 20, 0x1BD7, 0 ) );
+				Add( new GenericBuyInfo( "Outils de Bricoleur", typeof( TinkersTools ), 20, 20, 0x1EBC, 0 ) );
+				Add( new GenericBuyInfo( "Planche", typeof( Board ), 10, 20, 0x1BD7, 0 ) );
 				Add( new GenericBuyInfo( "Lingot de Fer", typeof( FerIngot ), 10, 16, 0x1BF2, 0 ) );
-				Add( new GenericBuyInfo( "Outil de Couture", typeof( SewingKit ), 8, 20, 0xF9D, 0 ) );
-                Add( new GenericBuyInfo( "Outil d'Os", typeof(Knitting), 8, 20, 0xDF6, 0) );
+				Add( new GenericBuyInfo( "Outil de Couture", typeof( SewingKit ), 20, 20, 0xF9D, 0 ) );
+                Add( new GenericBuyInfo( "Outil d'Os", typeof(Knitting), 20, 20, 0xDF6, 0) );
 
-				Add( new GenericBuyInfo( "Plane", typeof( DrawKnife ), 10, 20, 0x10E4, 0 ) );
-				Add( new GenericBuyInfo( "Froe", typeof( Froe ), 10, 20, 0x10E5, 0 ) );
-				Add( new GenericBuyInfo( "Scorp", typeof( Scorp ), 10, 20, 0x10E7, 0 ) );
-				Add( new GenericBuyInfo( "Inshave", typeof( Inshave ), 10, 20, 0x10E6, 0 ) );
+				Add( new GenericBuyInfo( "Plane", typeof( DrawKnife ), 20, 20, 0x10E4, 0 ) );
+				Add( new GenericBuyInfo( "Froe", typeof( Froe ), 20, 20, 0x10E5, 0 ) );
+				Add( new GenericBuyInfo( "Scorp", typeof( Scorp ), 20, 20, 0x10E7, 0 ) );
+				Add( new GenericBuyInfo( "Inshave", typeof( Inshave ), 20, 20, 0x10E6, 0 ) );
 
 				Add( new GenericBuyInfo( "Couteau de Boucher", typeof( ButcherKnife ), 5, 20, 0x13F6, 0 ) );
 
-				Add( new GenericBuyInfo( "Ciseaux", typeof( Scissors ), 11, 20, 0xF9F, 0 ) );
+				Add( new GenericBuyInfo( "Ciseaux", typeof( Scissors ), 20, 20, 0xF9F, 0 ) );
 
-				Add( new GenericBuyInfo( "Pinces", typeof( Tongs ), 4, 14, 0xFBB, 0 ) );
+				Add( new GenericBuyInfo( "Pinces", typeof( Tongs ), 20, 14, 0xFBB, 0 ) );
 
-                Add(new GenericBuyInfo( "Scie à queue d'aronde", typeof(DovetailSaw), 12, 20, 0x1028, 0) );
-				Add( new GenericBuyInfo( "Scie", typeof( Saw ), 8, 20, 0x1034, 0 ) );
+                Add(new GenericBuyInfo( "Scie à queue d'aronde", typeof(DovetailSaw), 20, 20, 0x1028, 0) );
+				Add( new GenericBuyInfo( "Scie", typeof( Saw ), 20, 20, 0x1034, 0 ) );
 
-				Add( new GenericBuyInfo( "Marteau", typeof( Hammer ), 4, 20, 0x102A, 0 ) );
-				Add( new GenericBuyInfo( "Marteau de Forge", typeof( SmithHammer ), 5, 20, 0x13E3, 0 ) );
+				Add( new GenericBuyInfo( "Marteau", typeof( Hammer ), 20, 20, 0x102A, 0 ) );
+				Add( new GenericBuyInfo( "Marteau de Forge", typeof( SmithHammer ), 20, 20, 0x13E3, 0 ) );
 				// TODO: Sledgehammer
 
-				Add( new GenericBuyInfo( "Pelle", typeof( Shovel ), 12, 20, 0xF39, 0 ) );
+				Add( new GenericBuyInfo( "Pelle", typeof( Shovel ), 20, 20, 0xF39, 0 ) );
 
 				//Add( new GenericBuyInfo( "", typeof( MouldingPlane ), 15, 20, 0x102C, 0 ) );
 				//Add( new GenericBuyInfo( "", typeof( JointingPlane ), 12, 20, 0x1030, 0 ) );
 				//Add( new GenericBuyInfo( "", typeof( SmoothingPlane ), 15, 20, 0x1032, 0 ) );
 
-				Add( new GenericBuyInfo( "Pioche", typeof( Pickaxe ), 15, 20, 0xE86, 0 ) );
+				Add( new GenericBuyInfo( "Pioche", typeof( Pickaxe ), 20, 20, 0xE86, 0 ) );
 
 
 				Add( new GenericBuyInfo( "Tambours", typeof( Drums ), 20, 20, 0x0E9C, 0 ) );

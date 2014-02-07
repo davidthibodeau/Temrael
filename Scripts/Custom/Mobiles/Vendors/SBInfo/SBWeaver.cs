@@ -37,7 +37,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( typeof( LightYarn ), 18, 20, 0xE1E, 0 ) );
 				Add( new GenericBuyInfo( typeof( LightYarnUnraveled ), 18, 20, 0xE1F, 0 ) );
 
-				Add( new GenericBuyInfo( typeof( Scissors ), 11, 20, 0xF9F, 0 ) );
+				Add( new GenericBuyInfo( typeof( Scissors ), 20, 20, 0xF9F, 0 ) );
 
 			} 
 		} 

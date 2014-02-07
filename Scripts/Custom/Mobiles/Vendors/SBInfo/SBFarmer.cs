@@ -43,7 +43,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Pomme", typeof( Apple ), 3, 20, 0x9D0, 0 ) );
 				Add( new GenericBuyInfo( "Gerbe de Foin", typeof( SheafOfHay ), 2, 20, 0xF36, 0 ) );
                 Add(new GenericBuyInfo("Pot de Botanique", typeof(SmallBowl), 2, 10, 0x11C6, 0));
-                Add(new GenericBuyInfo("Pelle", typeof(Shovel), 2, 8, 0xF39, 0));
+                Add(new GenericBuyInfo("Pelle", typeof(Shovel), 20, 8, 0xF39, 0));
                 Add(new GenericBuyInfo("Graine de Coton", typeof(CotonSeed), 2, 8, 13066, 0));
 
 			} 

@@ -179,64 +179,64 @@ namespace Server.Engines.Craft
 
             #region Misc
             // Misc
-            index = AddCraft(typeof(BarrelStaves), "Divers", 1027857, 00.0, 25.0, typeof(Board), "Planches", 5, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 3, 1044563);
+            index = AddCraft(typeof(BarrelStaves), "Divers", 1027857, 00.0, 25.0, typeof(Board), "Planches", 7, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(BarrelLid), "Divers", 1027608, 11.0, 36.0, typeof(Board), "Planches", 4, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
+            index = AddCraft(typeof(BarrelLid), "Divers", 1027608, 11.0, 36.0, typeof(Board), "Planches", 5, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Easle), "Divers", 1044317, 86.8, 111.8, typeof(Board), "Planches", 20, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            index = AddCraft(typeof(Easle), "Divers", 1044317, 86.8, 111.8, typeof(Board), "Planches", 25, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
             #endregion
 
             #region Furniture
             // Furniture
-            index = AddCraft(typeof(FootStool), "Chaise", 1022910, 11.0, 36.0, typeof(Board), "Planches", 9, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 3, 1044563);
+            index = AddCraft(typeof(FootStool), "Chaise", 1022910, 11.0, 36.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Stool), "Chaise", 1022602, 11.0, 36.0, typeof(Board), "Planches", 9, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 3, 1044563);
+            index = AddCraft(typeof(Stool), "Chaise", 1022602, 11.0, 36.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(BambooChair), "Chaise", 1044300, 21.0, 46.0, typeof(Board), "Planches", 13, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+            index = AddCraft(typeof(BambooChair), "Chaise", 1044300, 21.0, 46.0, typeof(Board), "Planches", 15, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(WoodenChair), "Chaise", 1044301, 21.0, 46.0, typeof(Board), "Planches", 13, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+            index = AddCraft(typeof(WoodenChair), "Chaise", 1044301, 21.0, 46.0, typeof(Board), "Planches", 15, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(FancyWoodenChairCushion), "Chaise", 1044302, 42.1, 67.1, typeof(Board), "Planches", 15, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            index = AddCraft(typeof(FancyWoodenChairCushion), "Chaise", 1044302, 42.1, 67.1, typeof(Board), "Planches", 18, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(WoodenChairCushion), "Chaise", 1044303, 42.1, 67.1, typeof(Board), "Planches", 13, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+            index = AddCraft(typeof(WoodenChairCushion), "Chaise", 1044303, 42.1, 67.1, typeof(Board), "Planches", 15, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             //Gump invisible donc impossible à déplacer
             //index = AddCraft(typeof(WoodenBench), "Chaise", 1022860, 52.6, 77.6, typeof(Board), "Planches", 17, 1044351);
-            //AddRes(index, typeof(Nails), "Clous", 6, 1044563);
+            //AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             //Gump invisible donc impossible à déplacer
             //index = AddCraft(typeof(WoodenThrone), "Chaise", 1044304, 52.6, 77.6, typeof(Board), "Planches", 17, 1044351);
-            //AddRes(index, typeof(Nails), "Clous", 6, 1044563);
+            //AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Throne), "Chaise", 1044305, 73.6, 98.6, typeof(Board), "Planches", 19, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 7, 1044563);
+            index = AddCraft(typeof(Throne), "Chaise", 1044305, 73.6, 98.6, typeof(Board), "Planches", 22, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Nightstand), "Table", 1044306, 42.1, 67.1, typeof(Board), "Planches", 17, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 6, 1044563);
+            index = AddCraft(typeof(Nightstand), "Table", 1044306, 42.1, 67.1, typeof(Board), "Planches", 20, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(WritingTable), "Table", 1022890, 63.1, 88.1, typeof(Board), "Planches", 17, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 6, 1044563);
+            index = AddCraft(typeof(WritingTable), "Table", 1022890, 63.1, 88.1, typeof(Board), "Planches", 20, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(YewWoodTable), "Table", 1044307, 63.1, 88.1, typeof(Board), "Planches", 23, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 8, 1044563);
+            index = AddCraft(typeof(YewWoodTable), "Table", 1044307, 63.1, 88.1, typeof(Board), "Planches", 25, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LargeTable), "Table", 1044308, 84.2, 109.2, typeof(Board), "Planches", 27, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 10, 1044563);
+            index = AddCraft(typeof(LargeTable), "Table", 1044308, 84.2, 109.2, typeof(Board), "Planches", 30, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(ShortMusicStand), "Table", 1044313, 78.9, 103.9, typeof(Board), "Planches", 15, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(TallMusicStand), "Table", 1044315, 81.5, 106.5, typeof(Board), "Planches", 20, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 7, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
 			if( Core.SE )
 			{
@@ -269,28 +269,28 @@ namespace Server.Engines.Craft
 			
 			
 			#region Armoires
-            index = AddCraft(typeof(ArmoireA), "Armoires", "Armoire à portes vitrées", 88.0, 100.0, typeof(Board), "Planches", 10, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 7, 1044563);
-            index = AddCraft(typeof(ArmoireA), "Armoires", "Commode à pieds", 88.0, 100.0, typeof(Board), "Planches", 10, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            index = AddCraft(typeof(ArmoireA), "Armoires", "Armoire à portes vitrées", 88.0, 100.0, typeof(Board), "Planches", 15, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+            index = AddCraft(typeof(ArmoireA), "Armoires", "Commode à pieds", 88.0, 100.0, typeof(Board), "Planches", 15, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
 			#endregion
 			
 			#region etageres
-            index = AddCraft(typeof(EtagereA), "Etagères", "Support de bois clair", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
-            index = AddCraft(typeof(EtagereB), "Etagères", "Support de bois brut", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
-            index = AddCraft(typeof(EtagereC), "Etagères", "Support de bois bordeaux", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
-            index = AddCraft(typeof(EtagereG), "Etagères", "Support de bois sombre", 50.0, 70.0, typeof(Board), "Planches", 5, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
-            index = AddCraft(typeof(EtagereD), "Etagères", "Etagère sur trois niveaux claire", 60.0, 75.0, typeof(Board), "Planches", 8, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
-            index = AddCraft(typeof(EtagereE), "Etagères", "Etagère sur trois niveaux bordeaux", 60.0, 75.0, typeof(Board), "Planches", 8, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
-            index = AddCraft(typeof(EtagereF), "Etagères", "Etagère sur trois niveaux sombre", 60.0, 75.0, typeof(Board), "Planches", 8, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+            index = AddCraft(typeof(EtagereA), "Etagères", "Support de bois clair", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+            index = AddCraft(typeof(EtagereB), "Etagères", "Support de bois brut", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+            index = AddCraft(typeof(EtagereC), "Etagères", "Support de bois bordeaux", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+            index = AddCraft(typeof(EtagereG), "Etagères", "Support de bois sombre", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+            index = AddCraft(typeof(EtagereD), "Etagères", "Etagère sur trois niveaux claire", 60.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+            index = AddCraft(typeof(EtagereE), "Etagères", "Etagère sur trois niveaux bordeaux", 60.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+            index = AddCraft(typeof(EtagereF), "Etagères", "Etagère sur trois niveaux sombre", 60.0, 75.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
 			#endregion
 			
@@ -332,29 +332,29 @@ namespace Server.Engines.Craft
 			
             #region Containers
             // Containers
-            index = AddCraft(typeof(WoodenBox), "Conteneur", 1023709, 21.0, 46.0, typeof(Board), "Planches", 10, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+            index = AddCraft(typeof(WoodenBox), "Conteneur", 1023709, 21.0, 46.0, typeof(Board), "Planches", 12, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(SmallCrate), "Conteneur", 1044309, 10.0, 35.0, typeof(Board), "Planches", 8, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 3, 1044563);
+            index = AddCraft(typeof(SmallCrate), "Conteneur", 1044309, 10.0, 35.0, typeof(Board), "Planches", 10, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(MediumCrate), "Conteneur", 1044310, 31.0, 56.0, typeof(Board), "Planches", 15, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            index = AddCraft(typeof(MediumCrate), "Conteneur", 1044310, 31.0, 56.0, typeof(Board), "Planches", 18, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LargeCrate), "Conteneur", 1044311, 47.3, 72.3, typeof(Board), "Planches", 18, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 6, 1044563);
+            index = AddCraft(typeof(LargeCrate), "Conteneur", 1044311, 47.3, 72.3, typeof(Board), "Planches", 20, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(WoodenChest), "Conteneur", 1023650, 73.6, 98.6, typeof(Board), "Planches", 20, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 7, 1044563);
+            index = AddCraft(typeof(WoodenChest), "Conteneur", 1023650, 73.6, 98.6, typeof(Board), "Planches", 22, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(EmptyBookcase), "Conteneur", 1022718, 31.5, 56.5, typeof(Board), "Planches", 25, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 10, 1044563);
+            index = AddCraft(typeof(EmptyBookcase), "Conteneur", 1022718, 31.5, 56.5, typeof(Board), "Planches", 30, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(FancyArmoire), "Conteneur", 1044312, 84.2, 109.2, typeof(Board), "Planches", 35, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 12, 1044563);
+            index = AddCraft(typeof(FancyArmoire), "Conteneur", 1044312, 84.2, 109.2, typeof(Board), "Planches", 40, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Armoire), "Conteneur", 1022643, 84.2, 109.2, typeof(Board), "Planches", 35, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 12, 1044563);
+            index = AddCraft(typeof(Armoire), "Conteneur", 1022643, 84.2, 109.2, typeof(Board), "Planches", 40, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
 			if( Core.SE )
 			{
@@ -398,25 +398,25 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Add-On
-            index = AddCraft(typeof(SmallBedSouthDeed), "Meubles", 1044321, 94.7, 119.8, typeof(Board), "Planches", 35, 1044351);
+            index = AddCraft(typeof(SmallBedSouthDeed), "Meubles", 1044321, 94.7, 119.8, typeof(Board), "Planches", 40, 1044351);
             AddSkill(index, SkillName.Couture, 75.0, 80.0);
             AddRes(index, typeof(Cloth), "Coton", 100, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 12, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(SmallBedEastDeed), "Meubles", 1044322, 94.7, 119.8, typeof(Board), "Planches", 35, 1044351);
+            index = AddCraft(typeof(SmallBedEastDeed), "Meubles", 1044322, 94.7, 119.8, typeof(Board), "Planches", 40, 1044351);
             AddSkill(index, SkillName.Couture, 75.0, 80.0);
             AddRes(index, typeof(Cloth), "Coton", 100, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 12, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LargeBedSouthDeed), "Meubles", 1044323, 94.7, 119.8, typeof(Board), "Planches", 40, 1044351);
+            index = AddCraft(typeof(LargeBedSouthDeed), "Meubles", 1044323, 94.7, 119.8, typeof(Board), "Planches", 45, 1044351);
             AddSkill(index, SkillName.Couture, 75.0, 80.0);
             AddRes(index, typeof(Cloth), "Coton", 150, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 13, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LargeBedEastDeed), "Meubles", 1044324, 94.7, 119.8, typeof(Board), "Planches", 40, 1044351);
+            index = AddCraft(typeof(LargeBedEastDeed), "Meubles", 1044324, 94.7, 119.8, typeof(Board), "Planches", 45, 1044351);
             AddSkill(index, SkillName.Couture, 75.0, 80.0);
             AddRes(index, typeof(Cloth), "Coton", 150, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 13, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(DartBoardSouthDeed), "Meubles", 1044325, 15.7, 40.7, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(Nails), "Clou", 1, 1044563);
@@ -433,98 +433,98 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(AbbatoirDeed), "Meubles", 1044329, 100.0, 125.0, typeof(Board), 1044041, 100, 1044351);
             AddSkill(index, SkillName.ArtMagique, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 40, 1044037);*/
-            index = AddCraft(typeof(TrainingDummyEastDeed), "Meubles", 1044335, 68.4, 93.4, typeof(Board), "Planches", 35, 1044351);
+            index = AddCraft(typeof(TrainingDummyEastDeed), "Meubles", 1044335, 68.4, 93.4, typeof(Board), "Planches", 40, 1044351);
             AddSkill(index, SkillName.Couture, 50.0, 55.0);
             AddRes(index, typeof(Cloth), "Coton", 60, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(TrainingDummySouthDeed), "Meubles", 1044336, 68.4, 93.4, typeof(Board), "Planches", 35, 1044351);
+            index = AddCraft(typeof(TrainingDummySouthDeed), "Meubles", 1044336, 68.4, 93.4, typeof(Board), "Planches", 40, 1044351);
             AddSkill(index, SkillName.Couture, 50.0, 55.0);
             AddRes(index, typeof(Cloth), "Coton", 60, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(PickpocketDipEastDeed), "Meubles", 1044337, 73.6, 98.6, typeof(Board), "Planches", 35, 1044351);
+            index = AddCraft(typeof(PickpocketDipEastDeed), "Meubles", 1044337, 73.6, 98.6, typeof(Board), "Planches", 40, 1044351);
             AddSkill(index, SkillName.Couture, 50.0, 55.0);
             AddRes(index, typeof(Cloth), "Coton", 60, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(PickpocketDipSouthDeed), "Meubles", 1044338, 73.6, 98.6, typeof(Board), "Planches", 35, 1044351);
+            index = AddCraft(typeof(PickpocketDipSouthDeed), "Meubles", 1044338, 73.6, 98.6, typeof(Board), "Planches", 40, 1044351);
             AddSkill(index, SkillName.Couture, 50.0, 55.0);
             AddRes(index, typeof(Cloth), "Coton", 60, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(StoneOvenEastDeed), "Meubles", 1044345, 68.4, 93.4, typeof(Board), "Planches", 45, 1044351);
+            index = AddCraft(typeof(StoneOvenEastDeed), "Meubles", 1044345, 68.4, 93.4, typeof(Board), "Planches", 50, 1044351);
             AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 125, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 25, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(StoneOvenSouthDeed), "Meubles", 1044346, 68.4, 93.4, typeof(Board), "Planches", 45, 1044351);
+            index = AddCraft(typeof(StoneOvenSouthDeed), "Meubles", 1044346, 68.4, 93.4, typeof(Board), "Planches", 50, 1044351);
             AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 125, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 25, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(FlourMillEastDeed), "Meubles", 1044347, 94.7, 119.7, typeof(Board), "Planches", 45, 1044351);
+            index = AddCraft(typeof(FlourMillEastDeed), "Meubles", 1044347, 94.7, 119.7, typeof(Board), "Planches", 50, 1044351);
             AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 50, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 25, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(FlourMillSouthDeed), "Meubles", 1044348, 94.7, 119.7, typeof(Board), "Planches", 45, 1044351);
+            index = AddCraft(typeof(FlourMillSouthDeed), "Meubles", 1044348, 94.7, 119.7, typeof(Board), "Planches", 50, 1044351);
             AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 50, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 25, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             /*AddCraft(typeof(WaterTroughEastDeed), "Meubles", 1044349, 94.7, 119.7, typeof(Board), 1044041, 150, 1044351);
             AddCraft(typeof(WaterTroughSouthDeed), "Meubles", 1044350, 94.7, 119.7, typeof(Board), 1044041, 150, 1044351);*/
 
-            index = AddCraft(typeof(Dressform), "Meubles", 1044339, 63.1, 88.1, typeof(Board), "Planches", 25, 1044351);
+            index = AddCraft(typeof(Dressform), "Meubles", 1044339, 63.1, 88.1, typeof(Board), "Planches", 28, 1044351);
             AddSkill(index, SkillName.Couture, 65.0, 70.0);
             AddRes(index, typeof(Cloth), "Coton", 10, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(SpinningwheelEastDeed), "Meubles", 1044341, 73.6, 98.6, typeof(Board), "Planches", 30, 1044351);
+            index = AddCraft(typeof(SpinningwheelEastDeed), "Meubles", 1044341, 73.6, 98.6, typeof(Board), "Planches", 32, 1044351);
             AddSkill(index, SkillName.Couture, 65.0, 70.0);
             AddRes(index, typeof(Cloth), "Coton", 25, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(SpinningwheelSouthDeed), "Meubles", 1044342, 73.6, 98.6, typeof(Board), "Planches", 30, 1044351);
+            index = AddCraft(typeof(SpinningwheelSouthDeed), "Meubles", 1044342, 73.6, 98.6, typeof(Board), "Planches", 32, 1044351);
             AddSkill(index, SkillName.Couture, 65.0, 70.0);
             AddRes(index, typeof(Cloth), "Coton", 25, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LoomEastDeed), "Meubles", 1044343, 84.2, 109.2, typeof(Board), "Planches", 50, 1044351);
+            index = AddCraft(typeof(LoomEastDeed), "Meubles", 1044343, 84.2, 109.2, typeof(Board), "Planches", 55, 1044351);
             AddSkill(index, SkillName.Couture, 65.0, 70.0);
             AddRes(index, typeof(Cloth), "Coton", 25, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 10, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LoomSouthDeed), "Meubles", 1044344, 84.2, 109.2, typeof(Board), "Planches", 50, 1044351);
+            index = AddCraft(typeof(LoomSouthDeed), "Meubles", 1044344, 84.2, 109.2, typeof(Board), "Planches", 55, 1044351);
             AddSkill(index, SkillName.Couture, 65.0, 70.0);
             AddRes(index, typeof(Cloth), "Coton", 25, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 10, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(SmallForgeDeed), "Meubles", 1044330, 73.6, 98.6, typeof(Board), "Planches", 15, 1044351);
+            index = AddCraft(typeof(SmallForgeDeed), "Meubles", 1044330, 73.6, 98.6, typeof(Board), "Planches", 18, 1044351);
             AddSkill(index, SkillName.Forge, 75.0, 80.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 40, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 10, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LargeForgeEastDeed), "Meubles", 1044331, 78.9, 103.9, typeof(Board), "Planches", 25, 1044351);
+            index = AddCraft(typeof(LargeForgeEastDeed), "Meubles", 1044331, 78.9, 103.9, typeof(Board), "Planches", 30, 1044351);
             AddSkill(index, SkillName.Forge, 80.0, 85.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 100, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 15, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LargeForgeSouthDeed), "Meubles", 1044332, 78.9, 103.9, typeof(Board), "Planches", 25, 1044351);
+            index = AddCraft(typeof(LargeForgeSouthDeed), "Meubles", 1044332, 78.9, 103.9, typeof(Board), "Planches", 30, 1044351);
             AddSkill(index, SkillName.Forge, 80.0, 85.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 100, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 15, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(AnvilEastDeed), "Meubles", 1044333, 73.6, 98.6, typeof(Board), "Planches", 15, 1044351);
+            index = AddCraft(typeof(AnvilEastDeed), "Meubles", 1044333, 73.6, 98.6, typeof(Board), "Planches", 18, 1044351);
             AddSkill(index, SkillName.Forge, 75.0, 80.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 50, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 10, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(AnvilSouthDeed), "Meubles", 1044334, 73.6, 98.6, typeof(Board), "Planches", 15, 1044351);
+            index = AddCraft(typeof(AnvilSouthDeed), "Meubles", 1044334, 73.6, 98.6, typeof(Board), "Planches", 18, 1044351);
             AddSkill(index, SkillName.Forge, 75.0, 80.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 50, 1044037);
-            AddRes(index, typeof(Nails), "Clous", 10, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             if (Core.AOS)
             {
@@ -567,9 +567,9 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Batonmace), "Équipement", "Bâton de Guerre", 60.0, 80.0, typeof(Board), "Planches", 8, 1044351);
 
             index = AddCraft(typeof(BouclierCuir), "Équipement", "Bouclier de Cuir", 20.0, 40.0, typeof(Leather), "Cuir", 9, 1044351);
-            AddRes(index, typeof(Board), "Buche", 5, 1044287);
-            index = AddCraft(typeof(WoodenShield), "Équipement", "Bouclier de Bois", 10.0, 30.0, typeof(Board), "Planches", 9, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 4, 1044563);
+            AddRes(index, typeof(Board), "Planches", 5, 1044287);
+            index = AddCraft(typeof(WoodenShield), "Équipement", "Bouclier de Bois", 10.0, 30.0, typeof(Board), "Planches", 12, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
 			/*if( !Core.AOS )	//Duplicate Entries to preserve ordering depending on era
 			{
@@ -593,21 +593,21 @@ namespace Server.Engines.Craft
 
             #region Instruments
             // Instruments
-            index = AddCraft(typeof(LapHarp), "Instrument", 1023762, 63.1, 88.1, typeof(Board), "Planches", 20, 1044351);
+            index = AddCraft(typeof(LapHarp), "Instrument", 1023762, 63.1, 88.1, typeof(Board), "Planches", 22, 1044351);
 			AddRes( index, typeof( Cloth ), "Coton", 10, 1044287 );
-            AddRes(index, typeof(Nails), "Clous", 3, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Harp), "Instrument", 1023761, 78.9, 103.9, typeof(Board), "Planches", 35, 1044351);
+            index = AddCraft(typeof(Harp), "Instrument", 1023761, 78.9, 103.9, typeof(Board), "Planches", 38, 1044351);
 			AddRes( index, typeof( Cloth ), "Coton", 15, 1044287 );
-            AddRes(index, typeof(Nails), "Clous", 5, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Drums), "Instrument", 1023740, 57.8, 82.8, typeof(Board), "Planches", 20, 1044351);
+            index = AddCraft(typeof(Drums), "Instrument", 1023740, 57.8, 82.8, typeof(Board), "Planches", 22, 1044351);
             AddRes(index, typeof(Cloth), "Coton", 10, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Lute), "Instrument", 1023763, 68.4, 93.4, typeof(Board), "Planches", 25, 1044351);
+            index = AddCraft(typeof(Lute), "Instrument", 1023763, 68.4, 93.4, typeof(Board), "Planches", 28, 1044351);
             AddRes(index, typeof(Cloth), "Coton", 10, 1044287);
-            AddRes(index, typeof(Nails), "Clous", 2, 1044563);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(Tambourine), "Instrument", 1023741, 57.8, 82.8, typeof(Board), "Planches", 15, 1044351);
             AddRes(index, typeof(Cloth), "Coton", 10, 1044287);

@@ -254,6 +254,7 @@ namespace Server.Gumps
                     {
                         if (item.CanBeAltered)
                         {
+                            item.SetLastMoved();
                             item.Movable = true;
                         }
                     }

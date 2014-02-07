@@ -21,8 +21,8 @@ namespace Server.Mobiles
             public InternalBuyInfo()
             {
 
-                Add(new GenericBuyInfo(typeof(SewingKit), 3, 20, 0xF9D, 0));
-                Add(new GenericBuyInfo(typeof(Scissors), 11, 20, 0xF9F, 0));
+                Add(new GenericBuyInfo(typeof(SewingKit), 20, 20, 0xF9D, 0));
+                Add(new GenericBuyInfo(typeof(Scissors), 20, 20, 0xF9F, 0));
                 Add(new GenericBuyInfo(typeof(DyeTub), 8, 20, 0xFAB, 0));
                 Add(new GenericBuyInfo(typeof(Dyes), 8, 20, 0xFA9, 0));
 
