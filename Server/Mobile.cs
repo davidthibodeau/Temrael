@@ -5416,9 +5416,10 @@ namespace Server
 		public virtual void Deserialize( GenericReader reader )
 		{
 			int version = reader.ReadInt();
-
+            
 			switch( version )
 			{
+                case 33:
                 case 32:
                     {
                         m_Sag = reader.ReadInt();

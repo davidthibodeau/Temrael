@@ -2126,7 +2126,9 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-			writer.Write( 9 ); // version
+			writer.Write( 10 ); // version
+
+            writer.Write(m_canBeAltered);
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -2449,6 +2451,9 @@ namespace Server
 
 			switch ( version )
 			{
+                case 10:
+                    m_canBeAltered = reader.ReadBool();
+                    goto case 9;
 				case 9:
 				case 8:
 				case 7:
@@ -2804,7 +2809,7 @@ namespace Server
 			if ( this.HeldBy != null )
 				Timer.DelayCall( TimeSpan.Zero, new TimerCallback( FixHolding_Sandbox ) );
 
-			//if ( version < 9 )
+			if ( version < 9 )
 				VerifyCompactInfo();
 		}
 
