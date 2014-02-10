@@ -2384,14 +2384,14 @@ namespace Server.Mobiles
                             TMobile from = (TMobile)m;
                             from.SendMessage("Vous poussez le personnage hors de votre chemin.");
                             from.Stam -= 10;
-                            this.SendMessage("Vous etes poussez hors du chemin par " + from.GetNameUseBy(this));
+                            this.SendMessage("Vous etes pousse(e) hors du chemin par " + from.GetNameUseBy(this));
                             return true;
                         }
                         else
                         {
                             m.SendMessage("Vous poussez le personnage hors de votre chemin.");
                             m.Stam -= 10;
-                            this.SendMessage("Vous etes poussez hors du chemin");
+                            this.SendMessage("Vous etes pousse(e) hors du chemin");
                             return true;
                         }
                     }
