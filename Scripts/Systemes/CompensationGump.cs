@@ -219,8 +219,8 @@ namespace Server.Systemes
                 int diff = maxXP - m_XpGainedThisWeek;
                 if (diff > 10000)
                     pj.XP += 10000;
-                 else if (diff > 0)
-                     pj.XP += diff;
+                else if (diff > 0)
+                    pj.XP += diff;
 
                 m_NextCompensation.AddDays(6.3);
                 m_XpGainedThisWeek = 0;
@@ -275,8 +275,8 @@ namespace Server.Systemes
 			this.Resizable=false;
 
 			AddPage(0);
-			AddBackground(31, 48, 416, 216, 9250);
-			AddBackground(39, 56, 400, 201, 3500);
+			AddBackground(31, 48, 416, 246, 9250);
+			AddBackground(39, 56, 400, 231, 3500);
 			AddLabel(206, 75, 1301, @"Compensations MJ");
 			
 			AddLabel(81, 110, 1301, @"Maitre du Jeu :");
@@ -290,8 +290,12 @@ namespace Server.Systemes
 			AddLabel(210, 170, 1301, mj.AccountJoueur[mj.IndexPersonnage].Name);
 			AddButton(383, 169, 4005, 4006, (int)Buttons.ChangerPersonnage, GumpButtonType.Reply, 0);
 
-            AddLabel(196, 211, 1301, @"Supprimer");
-            AddButton(275, 210, 4005, 4006, (int)Buttons.SupprimerMJ, GumpButtonType.Reply, 0);
+            AddLabel(81, 200, 1301, @"Prochaine Compensation :");
+			AddLabel(210, 200, 1301, mj.NextCompensation.ToString());
+
+
+            AddLabel(196, 241, 1301, @"Supprimer");
+            AddButton(275, 240, 4005, 4006, (int)Buttons.SupprimerMJ, GumpButtonType.Reply, 0);
         }
 
         public enum Buttons
@@ -485,6 +489,7 @@ namespace Server.Systemes
                         else
                         {
                             from.SendMessage("Le personnage a été changé.");
+                            mj.IndexPersonnage = index;
                         }
                     }
                     catch
