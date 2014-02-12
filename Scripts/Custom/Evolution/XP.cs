@@ -97,6 +97,9 @@ namespace Server
 
             foreach (CompensationGump.MJ mj in Systemes.CompensationGump.GetMJs())
             {
+                CompensationGump.WriteLine(String.Format(
+                    "Verification de paiement pour {0}. Son prochain paiement est le {1}.", 
+                    mj.Nom, mj.NextCompensation.ToString()));
                 if (mj.NextCompensation < DateTime.Now)
                 {
                     mj.PayerXP();
@@ -184,6 +187,8 @@ namespace Server
             if (mj != null)
             {
                 mj.XpGainedThisWeek += XPgain;
+                CompensationGump.WriteLine(String.Format("{0} recoit {1} xp. Le total courant de la semaine est de {2}.",
+                    mj.Nom, XPgain, mj.XpGainedThisWeek));
             }
 
             pm.CoteCount++;

@@ -74,6 +74,32 @@ namespace Server.Systemes
             }
         }
 
+        public static void WriteLine(string text)
+        {
+           try
+           {
+               if (!Directory.Exists("Backups"))
+                   Directory.CreateDirectory("Backups");
+               if (!Directory.Exists("Backups/Logs"))
+                   Directory.CreateDirectory("Backups/Logs");
+
+               string directory = "Backups/Logs/Compensation";
+
+               if (!Directory.Exists(directory))
+                   Directory.CreateDirectory(directory);
+
+                DateTime now = DateTime.Now;
+                string today = String.Format("{0}-{1:D2}-{2:D2}, {3}", now.Year, now.Month, now.Day, now.DayOfWeek);
+				string path = Path.Combine( directory, String.Format( "{0}.log", today ) );
+
+				using ( StreamWriter sw = new StreamWriter( path, true ) )
+					sw.WriteLine( "[{0}] {1}", now, text);
+			}
+			catch
+			{
+			}
+        }
+
         private static void Save(WorldSaveEventArgs e)
         {
             if ( !Directory.Exists( "Saves/Compensations" ) )
@@ -221,7 +247,8 @@ namespace Server.Systemes
                     pj.XP += 10000;
                 else if (diff > 0)
                     pj.XP += diff;
-
+                WriteLine(String.Format("{0} a accumule la somme de {1} xp cette semaine. Il sera donc paye {2} xp.",
+                    pj.Name, m_XpGainedThisWeek, diff));
                 m_NextCompensation.AddDays(6.3);
                 m_XpGainedThisWeek = 0;
              }
@@ -281,7 +308,7 @@ namespace Server.Systemes
 			
 			AddLabel(81, 110, 1301, @"Maitre du Jeu :");
             AddLabel(210, 110, 1301, mj.Nom);
-            AddButton(383, 109, 4005, 4006, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
+            //AddButton(383, 109, 4005, 4006, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
 
 			AddLabel(81, 140, 1301, @"Account Joueur :");
             AddLabel(210, 140, 1301, mj.AccountJoueur.Username);
@@ -304,7 +331,7 @@ namespace Server.Systemes
             NextPage,
             PreviousPage,
             SupprimerMJ,
-            ChangerNom,
+            //ChangerNom,
             ChangerPersonnage,
         }
 
@@ -335,10 +362,10 @@ namespace Server.Systemes
                     from.Prompt = new SupprimerMJPrompt(mj);
                     break;
 
-                case (int)Buttons.ChangerNom:
-                    from.SendMessage("Veuillez entrer le nouveau nom du MJ.");
-                    from.Prompt = new NomMJPrompt(mj);
-                    break;
+                //case (int)Buttons.ChangerNom:
+                //    from.SendMessage("Veuillez entrer le nouveau nom du MJ.");
+                //    from.Prompt = new NomMJPrompt(mj);
+                //    break;
 
                 case (int)Buttons.ChangerPersonnage:
                     from.SendMessage("Veuillez indiquer l'index du personnage qui recevra l'expérience.");
