@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using System.Timers;
-using System.Collections.Generic;
 using Server.Items;
 using Server.Network;
+using Server.DataStructures;
 
 
 namespace Server.Systemes.Geopolitique
@@ -29,7 +30,7 @@ namespace Server.Systemes.Geopolitique
         private string m_Description; // Description dans le menu geopol
         private int m_Fonds; // Total des fonds accumules
         
-        private Dictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
+        private OrderedDictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
         private Timer m_Paiement; // Timer pour effectuer un paiement
 
 
@@ -58,8 +59,8 @@ namespace Server.Systemes.Geopolitique
             }
         }
         
-        [CommandProperty(AccessLevel.GameMaster, true)]
-        public Dictionary<Mobile, Employe> Employes { get { return m_Employes; } set { m_Employes = value; } }
+        //[CommandProperty(AccessLevel.GameMaster, true)]
+        //public Dictionary<Mobile, Employe> Employes { get { return m_Employes; } set { m_Employes = value; } }
 
         public Tresorier(string description, Terre terre)
         {
@@ -67,7 +68,7 @@ namespace Server.Systemes.Geopolitique
             m_Terre = terre;
             m_Fonds = 0;
             m_Etablissement = "";
-            m_Employes = new Dictionary<Mobile, Employe>();
+            m_Employes = new OrderedDictionary<Mobile, Employe>();
         }
 
         public Tresorier(string etablissement, Mobile gestionnaire)
@@ -75,7 +76,7 @@ namespace Server.Systemes.Geopolitique
             m_Etablissement = etablissement;
             m_Gestionnaire = gestionnaire;
             m_Fonds = 0;
-            m_Employes = new Dictionary<Mobile, Employe>();
+            m_Employes = new OrderedDictionary<Mobile, Employe>();
         }
 
         public void AddEmploye(Mobile employe, string titre, int paie)
@@ -102,6 +103,21 @@ namespace Server.Systemes.Geopolitique
                 e.Removed = true;
             else
                 m_Employes.Remove(employe);
+        }
+
+        public IEnumerator<Employe> Employes()
+        {
+            return m_Employes.GetEnumerator();
+        }
+
+        public Employe this[int i]
+        {
+            get { return m_Employes[i]; }
+        }
+
+        public int EmployeCount
+        {
+            get { return m_Employes.Count; }
         }
 
         public void OnPaiementEvent(object source, ElapsedEventArgs e)
@@ -227,7 +243,7 @@ namespace Server.Systemes.Geopolitique
             writer.Write((int)m_Fonds);
             
             writer.Write((int)m_Employes.Count);
-            foreach (Employe e in m_Employes.Values)
+            foreach (Employe e in m_Employes)
             {
                 e.Serialize(writer);
             }
@@ -248,7 +264,7 @@ namespace Server.Systemes.Geopolitique
             m_Fonds = reader.ReadInt();
             
             int count = reader.ReadInt();
-            m_Employes = new Dictionary<Mobile, Employe>();
+            m_Employes = new OrderedDictionary<Mobile, Employe>();
             for (int i = 0; i < count; i++)
             {
                 Employe e = new Employe(reader);

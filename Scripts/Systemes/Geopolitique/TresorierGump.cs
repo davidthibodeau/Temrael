@@ -9,11 +9,13 @@ namespace Server.Systemes.Geopolitique
     public class TresorierGump : Gump
     {
         Tresorier tresorier;
+        int page;
 
-        public TresorierGump(Tresorier tr, Mobile from)
+        public TresorierGump(Tresorier tr, Mobile from, int page)
             : base(0, 0)
         {
             tresorier = tr;
+            this.page = page;
             
             this.Closable = true;
             this.Disposable = true;
@@ -26,40 +28,36 @@ namespace Server.Systemes.Geopolitique
             AddLabel(206, 75, 1301, @"Trésorier");
             
             AddLabel(81, 110, 1301, @"Etablissement :");
-            AddLabel(210, 110, 1301, @"Caserne de Brandheim");
+            AddLabel(210, 110, 1301, tresorier.Etablissement);
             AddButton(383, 109, 4005, 248, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
 
             AddLabel(81, 140, 1301, @"Gestionnaire :");
-            AddLabel(210, 140, 1301, @"Krogard");
+            AddLabel(210, 140, 1301, tresorier.Gestionnaire.GetNameUseBy(from));
             AddButton(383, 139, 4005, 248, (int)Buttons.ChangerType, GumpButtonType.Reply, 0);
             
             AddLabel(81, 170, 1301, @"Fonds :");
-            AddLabel(210, 170, 1301, @"1 000 000");
+            AddLabel(210, 170, 1301, tresorier.Fonds.ToString());
             AddButton(383, 169, 4005, 248, (int)Buttons.ModifierFonds, GumpButtonType.Reply, 0);
 
-            AddLabel(68, 200, 1301, @"Fonds partagés pour la terre de ");
+            if(tresorier.Terre != null)
+            AddLabel(68, 200, 1301, @"Fonds partagés pour la terre de " + tresorier.Terre.Nom);
             
             AddLabel(82, 240, 1301, @"Employés :");
 
-            //foreach(Employe e in tresorier.
-            AddLabel(60, 271, 1301, @"Skalldir Fjorgeir");
-            AddLabel(200, 271, 1301, @"Recrue");
-            AddLabel(303, 271, 1301, @"00 000 000");
-            
-            AddLabel(60, 301, 1301, @"Svana Reginleif");
-            AddLabel(200, 301, 1301, @"Légionnaire");
-            //AddButton(387, 300, 4005, 248, (int)Buttons.CopyofVoirTresorerie, GumpButtonType.Reply, 0);
-            //AddLabel(60, 331, 1301, @"Caserne");
-            //AddLabel(200, 331, 1301, @"(1001, 2014, -80)");
-            //AddButton(387, 330, 4005, 248, (int)Buttons.CopyofVoirTresorerie, GumpButtonType.Reply, 0);
-            //AddLabel(60, 361, 1301, @"Caserne");
-            //AddLabel(200, 361, 1301, @"(1001, 2014, -80)");
-            //AddButton(387, 360, 4005, 248, (int)Buttons.CopyofVoirTresorerie, GumpButtonType.Reply, 0);
-            //AddLabel(60, 391, 1301, @"Caserne");
-            //AddLabel(200, 391, 1301, @"(1001, 2014, -80)");
-            //AddButton(387, 390, 4005, 248, (int)Buttons.CopyofVoirTresorerie, GumpButtonType.Reply, 0);
-            
-            AddLabel(303, 301, 1301, @"30 000");
+            int basey = 271;
+            for (int i = 0; i < tresorier.EmployeCount; i++)
+            {
+                if (i >= (page + 1) * 5)
+                    break;
+                if (i < page * 5)
+                    continue;
+
+                int j = i % 5;
+                AddLabel(60, basey + j * 30, 1301, tresorier[i].Nom.GetNameUseBy(from));
+                AddLabel(200, basey + j * 30, 1301, tresorier[i].Titre);
+                AddLabel(303, basey + j * 30, 1301, tresorier[i].Paie.ToString());
+                AddButton(387, basey + j * 30 - 1, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
+            }
 
             AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Page, 0);
             AddButton(61, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Page, 0);
@@ -96,28 +94,27 @@ namespace Server.Systemes.Geopolitique
             switch(info.ButtonID)
             {
                 case (int)Buttons.AjouterEmploye:
-                    
-
+                    //ajouter employer target
 					break;
 				
 				case (int)Buttons.AfficherJournal:
 				{
-
+                    //not implemented
 					break;
 				}
 				case (int)Buttons.AfficherTerre:
 				{
-
+                    from.SendGump(new GeopolGump(from, tresorier.Terre));
 					break;
 				}
 				case (int)Buttons.NextPage:
 				{
-
+                    from.SendGump(new TresorierGump(tresorier, from, page + 1));
 					break;
 				}
 				case (int)Buttons.PreviousPage:
 				{
-
+                    from.SendGump(new TresorierGump(tresorier, from, page - 1));
 					break;
 				}
 				case (int)Buttons.ChangerNom:
