@@ -233,7 +233,7 @@ namespace Server.Systemes
                 TMobile pj = (TMobile)m_AccountJoueur[m_IndexPersonnage];
 
                 int maxXP = 0;
-                switch (pj.Cote)
+                switch (XP.GetCote(pj))
                 {
                     case 1: maxXP = 10850; break;
                     case 2: maxXP = 13020; break;
@@ -248,8 +248,8 @@ namespace Server.Systemes
                 else if (diff > 0)
                     pj.XP += diff;
                 WriteLine(String.Format("{0} a accumule la somme de {1} xp cette semaine. Il sera donc paye {2} xp.",
-                    pj.Name, m_XpGainedThisWeek, diff));
-                m_NextCompensation.AddDays(6.3);
+                    pj.Name, m_XpGainedThisWeek, Math.Min(Math.Max(diff,0), 10000)));
+                m_NextCompensation = m_NextCompensation.AddDays(6.3);
                 m_XpGainedThisWeek = 0;
              }
         }
