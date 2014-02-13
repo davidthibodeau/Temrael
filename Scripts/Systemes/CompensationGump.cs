@@ -343,6 +343,8 @@ namespace Server.Systemes
             switch (i)
             {
                 case 0:
+                    if (mj != null)
+                        from.SendGump(new CompensationGump(0));
                     break;
                 case (int)Buttons.AjouterMJ:
                     from.SendMessage("Veuillez entrer le nom du MJ.");
@@ -456,6 +458,7 @@ namespace Server.Systemes
             public override void OnCancel(Mobile from)
             {
                 from.SendMessage("La création de l'entrée est annulée.");
+                from.SendGump(new CompensationGump(0));
             }
         }
 
@@ -530,9 +533,15 @@ namespace Server.Systemes
             public override void OnCancel(Mobile from)
             {
                 if (mj == null)
+                {
                     from.SendMessage("La création de l'entrée est annulée.");
+                    from.SendGump(new CompensationGump(0));
+                }
                 else
+                {
                     from.SendMessage("Le personnage n'a pas été changé.");
+                    from.SendGump(new CompensationGump(mj));
+                }
             }
         }
 
@@ -553,6 +562,7 @@ namespace Server.Systemes
                     compensations.Remove(mj.AccountJoueur);
                     compensationsIndexed.Remove(mj);
                     from.SendMessage(nom + " a été supprimé.");
+                    from.SendGump(new CompensationGump(0));
                 }
                 else if (string.Equals(text, "non", StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -569,6 +579,7 @@ namespace Server.Systemes
             public override void OnCancel(Mobile from)
             {
                 from.SendMessage(mj.Nom + " n'a pas été supprimé.");
+                from.SendGump(new CompensationGump(mj));
             }
         }
 
