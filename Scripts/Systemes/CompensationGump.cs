@@ -249,7 +249,7 @@ namespace Server.Systemes
                     pj.XP += diff;
                 WriteLine(String.Format("{0} a accumule la somme de {1} xp cette semaine. Il sera donc paye {2} xp.",
                     pj.Name, m_XpGainedThisWeek, Math.Min(Math.Max(diff,0), 10000)));
-                m_NextCompensation = m_NextCompensation.AddDays(6.3);
+                m_NextCompensation = DateTime.Now.AddDays(6.3);
                 m_XpGainedThisWeek = 0;
              }
         }
