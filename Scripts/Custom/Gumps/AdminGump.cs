@@ -828,7 +828,10 @@ namespace Server.Gumps
 				{
 					if ( m_List == null )
 					{
-						m_List = new ArrayList(); // new ArrayList( (ICollection)Accounts.GetAccounts() );
+                        if(from.AccessLevel <= AccessLevel.Administrator)
+                            m_List = new ArrayList(); // new ArrayList( (ICollection)Accounts.GetAccounts() );
+                        else
+                            m_List = new ArrayList( (ICollection)Accounts.GetAccounts() );
 						// m_List.Sort( AccountComparer.Instance );
 					}
 
