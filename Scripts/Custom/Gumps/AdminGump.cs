@@ -828,11 +828,13 @@ namespace Server.Gumps
 				{
 					if ( m_List == null )
 					{
-                        if(from.AccessLevel <= AccessLevel.Administrator)
+                        if (from.AccessLevel <= AccessLevel.Administrator)
                             m_List = new ArrayList(); // new ArrayList( (ICollection)Accounts.GetAccounts() );
                         else
-                            m_List = new ArrayList( (ICollection)Accounts.GetAccounts() );
-						// m_List.Sort( AccountComparer.Instance );
+                        {
+                            m_List = new ArrayList((ICollection)Accounts.GetAccounts());
+                            m_List.Sort( AccountComparer.Instance );
+                        }
 					}
 
 					ArrayList rads = ( state as ArrayList );
