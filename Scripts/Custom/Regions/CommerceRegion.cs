@@ -29,4 +29,36 @@ namespace Server.Regions
             m.SendMessage("Vous quittez un endroit de commerce.");
         }
     }
+
+    public class CommerceCitarel : CommerceRegion
+    {
+        public CommerceCitarel(XmlElement xml, Map map, Region parent)
+            : base(xml, map, parent)
+        {
+        }
+    }
+
+    public class CommerceElamsham : CommerceRegion
+    {
+        public CommerceElamsham(XmlElement xml, Map map, Region parent)
+            : base(xml, map, parent)
+        {
+        }
+    }
+
+    public class CommerceMelandre : CommerceRegion
+    {
+        public CommerceMelandre(XmlElement xml, Map map, Region parent)
+            : base(xml, map, parent)
+        {
+        }
+    }
+
+    public class CommerceSerenite : CommerceRegion
+    {
+        public CommerceSerenite(XmlElement xml, Map map, Region parent)
+            : base(xml, map, parent)
+        {
+        }
+    }
 }
