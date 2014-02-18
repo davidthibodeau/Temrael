@@ -8,6 +8,7 @@ using Server.Items;
 using Server.Gumps;
 using Server.Systemes;
 using Server.Accounting;
+using Server.Regions;
 
 namespace Server
 {
@@ -131,6 +132,8 @@ namespace Server
         public static void CheckXP(TMobile pm)
         {
             if (pm == null)
+                return;
+            if (pm.Region is Jail) // Pas d'xp quand le joueur est en jail.
                 return;
 
             int CoteMoyenne = GetCote(pm);
