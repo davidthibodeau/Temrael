@@ -102,6 +102,6 @@ namespace Server.Systemes.Geopolitique.Log
             entries.Add(entry);
         }
 
-        public void
+        //public void
     }
 }

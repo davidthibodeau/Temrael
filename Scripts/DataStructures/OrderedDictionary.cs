@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Server.DataStructures
 {
-    public class OrderedDictionary<K, T> : IEnumerable<T>, ICollection<T>
+    public class OrderedDictionary<K, T> : IEnumerable<T>
     {
         private List<T> list;
         private List<K> listK;
@@ -95,6 +95,11 @@ namespace Server.DataStructures
         }
 
         public IEnumerator<T> GetEnumerator()
+        {
+            return list.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return list.GetEnumerator();
         }

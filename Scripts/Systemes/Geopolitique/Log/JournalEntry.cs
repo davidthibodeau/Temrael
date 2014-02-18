@@ -15,7 +15,7 @@ namespace Server.Systemes.Geopolitique.Log
         CreerTresorier,
     }
 
-    public class JournalEntry
+    public abstract class JournalEntry
     {
         private Mobile m_Createur;
         private DateTime m_Timestamp;

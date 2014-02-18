@@ -79,6 +79,11 @@ namespace Server.Systemes.Geopolitique
             m_Employes = new OrderedDictionary<Mobile, Employe>();
         }
 
+        public Tresorier(Serial serial)
+        {
+
+        }
+
         public void AddEmploye(Mobile employe, string titre, int paie)
         {
             Employe e;
