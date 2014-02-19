@@ -62,26 +62,33 @@ namespace Server.Systemes.Geopolitique
         //[CommandProperty(AccessLevel.GameMaster, true)]
         //public Dictionary<Mobile, Employe> Employes { get { return m_Employes; } set { m_Employes = value; } }
 
-        public Tresorier(string description, Terre terre)
+        public Tresorier(string description, Terre terre) : this ()
         {
             m_Description = description;
             m_Terre = terre;
-            m_Fonds = 0;
             m_Etablissement = "";
-            m_Employes = new OrderedDictionary<Mobile, Employe>();
         }
 
-        public Tresorier(string etablissement, Mobile gestionnaire)
+        public Tresorier(string etablissement, Mobile gestionnaire) : this ()
         {
             m_Etablissement = etablissement;
             m_Gestionnaire = gestionnaire;
             m_Fonds = 0;
-            m_Employes = new OrderedDictionary<Mobile, Employe>();
         }
 
-        public Tresorier(Serial serial)
+        public Tresorier()
         {
+            InitStats(75, 75, 75);
+            InitBody();
+            InitOutfit();
+            m_Fonds = 0;
+            m_Employes = new OrderedDictionary<Mobile, Employe>();
+            CantWalk = true;
+        }
 
+        public Tresorier(Serial serial) : base (serial)
+        {
+            
         }
 
         public void AddEmploye(Mobile employe, string titre, int paie)
@@ -276,5 +283,44 @@ namespace Server.Systemes.Geopolitique
                 m_Employes.Add(e.Nom, e);
             }
         }
+
+        // Fonctions prisent des PlayerVendors. Ce pourrait etre une
+        // bonne idee de les installer dans une classe commune.
+		public void InitBody()
+		{
+			Hue = Utility.RandomSkinHue();
+			SpeechHue = 0x3B2;
+
+			if ( !Core.AOS )
+				NameHue = 0x35;
+
+			if ( this.Female = Utility.RandomBool() )
+			{
+				this.Body = 0x191;
+				this.Name = NameList.RandomName( "female" );
+			}
+			else
+			{
+				this.Body = 0x190;
+				this.Name = NameList.RandomName( "male" );
+			}
+		}
+
+		public virtual void InitOutfit()
+		{
+			Item item = new FancyShirt( Utility.RandomNeutralHue() );
+			item.Layer = Layer.InnerTorso;
+			AddItem( item );
+			AddItem( new LongPants( Utility.RandomNeutralHue() ) );
+			AddItem( new BodySash( Utility.RandomNeutralHue() ) );
+			AddItem( new Boots( Utility.RandomNeutralHue() ) );
+			AddItem( new Cloak( Utility.RandomNeutralHue() ) );
+
+			Utility.AssignRandomHair( this );
+
+			Container pack = new Backpack();
+			pack.Movable = false;
+			AddItem( pack );
+		}
     }
 }

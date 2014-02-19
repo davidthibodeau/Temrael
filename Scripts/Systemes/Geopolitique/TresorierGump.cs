@@ -32,8 +32,9 @@ namespace Server.Systemes.Geopolitique
             AddButton(383, 109, 4005, 248, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
 
             AddLabel(81, 140, 1301, @"Gestionnaire :");
-            AddLabel(210, 140, 1301, tresorier.Gestionnaire.GetNameUseBy(from));
-            AddButton(383, 139, 4005, 248, (int)Buttons.ChangerType, GumpButtonType.Reply, 0);
+            if(tresorier.Gestionnaire != null)
+                AddLabel(210, 140, 1301, tresorier.Gestionnaire.GetNameUseBy(from));
+            AddButton(383, 139, 4005, 248, (int)Buttons.ChangerGestionnaire, GumpButtonType.Reply, 0);
             
             AddLabel(81, 170, 1301, @"Fonds :");
             AddLabel(210, 170, 1301, tresorier.Fonds.ToString());
@@ -59,29 +60,31 @@ namespace Server.Systemes.Geopolitique
                 AddButton(387, basey + j * 30 - 1, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
             }
 
-            AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Page, 0);
-            AddButton(61, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Page, 0);
+            if((page + 1) * 5 < tresorier.EmployeCount)
+                AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Page, 0);
+            if(page > 0)
+                AddButton(61, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Page, 0);
+            
             AddButton(293, 439, 4005, 4006, (int)Buttons.AjouterEmploye, GumpButtonType.Reply, 0);
             AddLabel(148, 440, 1301, @"Ajouter un employé");
             AddImageTiled(67, 471, 342, 3, 96);
             AddImage(61, 462, 95);
             AddImage(408, 462, 97);
-            AddButton(387, 270, 4005, 248, (int)Buttons.VoirTresorerie, GumpButtonType.Reply, 0);
             AddLabel(99, 515, 1301, @"Afficher le journal des événements");
             AddButton(330, 514, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
-            AddLabel(210, 485, 1301, @"Afficher la terre");
+            AddLabel(207, 485, 1301, @"Afficher la terre");
             AddButton(330, 484, 4005, 4006, (int)Buttons.AfficherTerre, GumpButtonType.Reply, 0);
         }
 
         public enum Buttons
         {
-            AjouterEmploye,
+            AjouterEmploye = 1,
             AfficherJournal,
             AfficherTerre,
             NextPage,
             PreviousPage,
             ChangerNom,
-            ChangerType,
+            ChangerGestionnaire,
             ModifierFonds,
             VoirTresorerie,
         }
@@ -91,7 +94,8 @@ namespace Server.Systemes.Geopolitique
         {
             Mobile from = sender.Mobile;
 
-            switch(info.ButtonID)
+            int button = info.ButtonID;
+            switch(button)
             {
                 case (int)Buttons.AjouterEmploye:
                     //ajouter employer target
@@ -122,7 +126,7 @@ namespace Server.Systemes.Geopolitique
 
 					break;
 				}
-				case (int)Buttons.ChangerType:
+				case (int)Buttons.ChangerGestionnaire:
 				{
 
 					break;
@@ -137,8 +141,12 @@ namespace Server.Systemes.Geopolitique
 
 					break;
 				}
-
             }
+            if (button >= 100 && button < 100 + tresorier.EmployeCount)
+            {
+                
+            }
+            
         }
     }
 }

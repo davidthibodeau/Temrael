@@ -18,6 +18,19 @@ namespace Server.Systemes.Geopolitique
         public int CategoriesCount { get { return m_Categories.Count; } }
         public int TerresCount { get { return m_Terres.Count; } }
 
+        public int Index
+        {
+            get
+            {
+                Categorie p = m_Parent;
+                int index = 0x0;
+                int offset = 0x10;
+                if (p != null)
+                    index = p.Index * offset;
+                return index;
+            }
+        }
+
         public void AjouterCategorie(Categorie cat)
         {
             m_Categories.Add(cat);
@@ -68,14 +81,16 @@ namespace Server.Systemes.Geopolitique
 
             if (node != null)
             {
-                foreach (XmlElement ele in node.GetElementsByTagName("categorie"))
+                foreach (XmlElement ele in node.ChildNodes)//node.GetElementsByTagName("categorie"))
                 {
-                    m_Categories.Add(new Categorie(this, ele));
+                    if(ele.Name == "categorie")
+                        m_Categories.Add(new Categorie(this, ele));
                 }
 
-                foreach (XmlElement ele in node.GetElementsByTagName("terre"))
+                foreach (XmlElement ele in node.ChildNodes)//GetElementsByTagName("terre"))
                 {
-                    m_Terres.Add(new Terre(this, ele));
+                    if(ele.Name == "terre")
+                        m_Terres.Add(new Terre(this, ele));
                 }
             }
         }

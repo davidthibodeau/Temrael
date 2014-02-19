@@ -25,9 +25,23 @@ namespace Server.Systemes.Geopolitique
             set { m_Type = Geopolitique.types.IndexOf(value); }
         }
 
+        public int Rente 
+        { 
+            get 
+            {
+                int rente = Type.Rente;
+                foreach (Rente r in m_Rentes)
+                {
+                    rente += r.Ajout;
+                }
+                return rente;
+            } 
+        }
+
         public string Nom { get { return m_Nom; } set { m_Nom = value; } }
         public int Fonds { get { return m_Fonds; } set { m_Fonds = value; } }
         public Categorie Parent { get { return m_Parent; } set { m_Parent = value; } }
+        
         
         public int RentesCount { get { return m_Rentes.Count; } }
         public int TresorierCount { get { return m_Tresoriers.Count; } }
@@ -76,12 +90,14 @@ namespace Server.Systemes.Geopolitique
 
             m_Fonds = 0;
             m_Rentes = new List<Rente>();
+            m_Tresoriers = new List<Tresorier>();
         }
 
         public Terre(Categorie parent, XmlElement node)
         {
             m_Parent = parent;
             m_Rentes = new List<Rente>();
+            m_Tresoriers = new List<Tresorier>();
 
             m_Nom = Utility.GetText(node["nom"], null);
             m_Type = Utility.GetXMLInt32(Utility.GetText(node["type"],"-1"), -1);
@@ -90,6 +106,12 @@ namespace Server.Systemes.Geopolitique
             foreach (XmlElement ele in node.GetElementsByTagName("rente"))
             {
                 m_Rentes.Add(new Rente(ele));
+            }
+
+            foreach (XmlElement ele in node.GetElementsByTagName("tresorier"))
+            {
+                int serial = Utility.GetXMLInt32(Utility.GetText(ele, "0"), 0);
+                m_Tresoriers.Add((Tresorier)World.FindMobile(serial));
             }
         }
 
@@ -111,6 +133,13 @@ namespace Server.Systemes.Geopolitique
             {
                 xml.WriteStartElement("rente");
                 ajout.Save(xml);
+                xml.WriteEndElement();
+            }
+
+            foreach (Tresorier t in m_Tresoriers)
+            {
+                xml.WriteStartElement("tresorier");
+                xml.WriteString(t.Serial.Value.ToString());
                 xml.WriteEndElement();
             }
         }
