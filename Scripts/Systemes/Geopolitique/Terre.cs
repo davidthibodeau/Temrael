@@ -111,7 +111,9 @@ namespace Server.Systemes.Geopolitique
             foreach (XmlElement ele in node.GetElementsByTagName("tresorier"))
             {
                 int serial = Utility.GetXMLInt32(Utility.GetText(ele, "0"), 0);
-                m_Tresoriers.Add((Tresorier)World.FindMobile(serial));
+                Tresorier t = (Tresorier)World.FindMobile(serial);
+                m_Tresoriers.Add(t);
+                t.Terre = this;
             }
         }
 

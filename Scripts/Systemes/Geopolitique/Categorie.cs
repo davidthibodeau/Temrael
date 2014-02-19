@@ -18,19 +18,6 @@ namespace Server.Systemes.Geopolitique
         public int CategoriesCount { get { return m_Categories.Count; } }
         public int TerresCount { get { return m_Terres.Count; } }
 
-        public int Index
-        {
-            get
-            {
-                Categorie p = m_Parent;
-                int index = 0x0;
-                int offset = 0x10;
-                if (p != null)
-                    index = p.Index * offset;
-                return index;
-            }
-        }
-
         public void AjouterCategorie(Categorie cat)
         {
             m_Categories.Add(cat);

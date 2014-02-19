@@ -154,7 +154,7 @@ namespace Server.Systemes.Geopolitique
 			AddImage(408, 463, 97);
 			AddLabel(99, 516, 1301, @"Afficher le journal des événements");
 			AddButton(330, 515, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
-			AddLabel(138, 486, 1301, @"Afficher la liste des terres");
+			AddLabel(139, 486, 1301, @"Afficher la liste des terres");
             AddButton(330, 485, 4005, 4006, (int)Buttons.RetourCategorie, GumpButtonType.Reply, 0);
 
             if((page + 1) * 5 < terre.TresorierCount)

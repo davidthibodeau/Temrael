@@ -36,7 +36,7 @@ namespace Server.Systemes.Geopolitique
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Gestionnaire { get { return m_Gestionnaire; } set { m_Gestionnaire = value; } }
-        public Terre Terre { get { return m_Terre; } }
+        public Terre Terre { get { return m_Terre; } set { m_Terre = value; } }
         [CommandProperty(AccessLevel.GameMaster)]
         public string Etablissement { get { return m_Etablissement; } set { m_Etablissement = value; } }
         [CommandProperty(AccessLevel.GameMaster)]
