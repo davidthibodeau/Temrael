@@ -231,19 +231,19 @@ namespace Server.Mobiles
     public class TMobile : PlayerMobile
     {
 
-        public static void Initialize()
-        {
-            foreach (Mobile m in World.Mobiles.Values)
-            {
-                if (m is TMobile)
-                {
-                    if (!(m.X < 6082 && m.X > 6053 && m.Y < 4064 && m.Y > 4011))
-                    {
-                        m.Backpack.DropItem(new Gold(2000));
-                    }
-                }
-            }
-        }
+        //public static void Initialize()
+        //{
+        //    foreach (Mobile m in World.Mobiles.Values)
+        //    {
+        //        if (m is TMobile)
+        //        {
+        //            if (!(m.X < 6082 && m.X > 6053 && m.Y < 4064 && m.Y > 4011))
+        //            {
+        //                m.Backpack.DropItem(new Gold(2000));
+        //            }
+        //        }
+        //    }
+        //}
         #region Variables
 
         private bool[] m_languages = new bool[]{
