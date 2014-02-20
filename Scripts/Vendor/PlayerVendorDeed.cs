@@ -84,93 +84,29 @@ namespace Server.Items
             protected override void OnTarget(Mobile from, object targeted)
             {
                 //from.SendMessage(targeted.ToString());
-                if (targeted is StaticTarget)
+
+                IPoint3D p = (IPoint3D)targeted;
+                Point3D point = new Point3D(p.X, p.Y, p.Z);
+
+                if (Region.Find(point, Map.Felucca).GetType().ToString().Contains("Commerce"))
                 {
-                    StaticTarget point = (StaticTarget)targeted;
+                    Mobile v = new PlayerVendor(from, BaseHouse.FindHouseAt(from));
 
-                    if (Region.Find(point.Location, Map.Felucca).Name.Contains("Commerce"))
-                    {
-                        Mobile v = new PlayerVendor(from, BaseHouse.FindHouseAt(from));
+                    v.Direction = from.Direction & Direction.Mask;
+                    v.MoveToWorld(point, from.Map);
 
-                        v.Direction = from.Direction & Direction.Mask;
-                        v.MoveToWorld(point.Location, from.Map);
+                    v.SayTo(from, "Je suis a votre service.");
 
-                        v.SayTo(from, "Je suis a votre service.");
+                    m_Item.Delete();
 
-                        m_Item.Delete();
-
-                        //v.SayTo(from, 503246);
-                    }
-                    else
-                    {
-                        from.SendMessage("Vous pouvez seulement placer un marchand dans une zone commercial.");
-                    }
+                    //v.SayTo(from, 503246);
                 }
-                else if (targeted is LandTarget)
+                else
                 {
-                    LandTarget point = (LandTarget)targeted;
-
-                    Console.WriteLine(Region.Find(point.Location, Map.Felucca).Name);
-
-                    if (Region.Find(point.Location, Map.Felucca).Name.Contains("Commerce"))
-                    {
-                        Mobile v = new PlayerVendor(from, BaseHouse.FindHouseAt(from));
-
-                        v.Direction = from.Direction & Direction.Mask;
-                        v.MoveToWorld(point.Location, from.Map);
-
-                        v.SayTo(from, "Je suis a votre service.");
-
-                        m_Item.Delete();
-
-                        //v.SayTo(from, 503246);
-                    }
-                    else
-                    {
-                        from.SendMessage("Vous pouvez seulement placer un marchand dans une zone commercial.");
-                    }
+                    from.SendMessage("Vous pouvez seulement placer un marchand dans une zone commercial.");
                 }
-                else if (targeted is Mobile)
-                {
-                    Mobile target = (Mobile)targeted;
 
-                    if (Region.Find(target.Location, Map.Felucca).Name.Contains("Commerce"))
-                    {
-                        Mobile v = new PlayerVendor(from, BaseHouse.FindHouseAt(from));
-
-                        v.Direction = from.Direction & Direction.Mask;
-                        v.MoveToWorld(target.Location, from.Map);
-
-                        v.SayTo(from, "Je suis a votre service.");
-
-                        m_Item.Delete();
-                    }
-                    else
-                    {
-                        from.SendMessage("Vous pouvez seulement placer un marchand dans une zone commercial.");
-                    }
-                }
-                else if (targeted is Item)
-                {
-                    Item target = (Item)targeted;
-
-                    if (Region.Find(target.Location, Map.Felucca).Name.Contains("Commerce"))
-                    {
-                        Mobile v = new PlayerVendor(from, BaseHouse.FindHouseAt(from));
-
-                        v.Direction = from.Direction & Direction.Mask;
-                        v.MoveToWorld(target.Location, from.Map);
-
-                        v.SayTo(from, "Je suis a votre service.");
-
-                        m_Item.Delete();
-                    }
-                    else
-                    {
-                        from.SendMessage("Vous pouvez seulement placer un marchand dans une zone commercial.");
-                    }
-                }
             }
         }
-	}
+    }
 }
