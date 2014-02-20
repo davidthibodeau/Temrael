@@ -1356,7 +1356,10 @@ namespace Server.Mobiles
             if (i1 != null && i1 is BaseWeapon)
                 m_weapon = (BaseWeapon)i1;
             else
+            {
                 m_weapon = new ButcherKnife();
+                m_weapon.Map = this.Map;
+            }
 
             if (i2 != null && i2 is BaseWeapon)
                 m_staff = (BaseWeapon)i2;
