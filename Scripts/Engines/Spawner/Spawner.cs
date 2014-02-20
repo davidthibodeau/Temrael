@@ -51,14 +51,19 @@ namespace Server.Mobiles
                         continue;
                     Spawner s = i as Spawner;
                     html.WriteLine("         <tr>");
-                    html.WriteLine(String.Format("            <th rowspan=\"{0}\">{1}</th>", s.SpawnNamesCount, s.Serial.Value.ToString()));
-                    html.WriteLine(String.Format("            <td>{0}</td>", s.SpawnNames[0]));
-                    html.WriteLine("         </tr>");
-                    for (int j = 1; j < s.SpawnNamesCount; j++)
+                    if (s.SpawnNamesCount == 0)
+                        html.WriteLine(String.Format("            <th>{0}</th>", s.Serial.Value.ToString()));
+                    else
                     {
-                        html.WriteLine("         <tr>");
-                        html.WriteLine(String.Format("            <td>{0}</td>", s.SpawnNames[j]));
+                        html.WriteLine(String.Format("            <th rowspan=\"{0}\">{1}</th>", s.SpawnNamesCount, s.Serial.Value.ToString()));
+                        html.WriteLine(String.Format("            <td>{0}</td>", s.SpawnNames[0]));
                         html.WriteLine("         </tr>");
+                        for (int j = 1; j < s.SpawnNamesCount; j++)
+                        {
+                            html.WriteLine("         <tr>");
+                            html.WriteLine(String.Format("            <td>{0}</td>", s.SpawnNames[j]));
+                            html.WriteLine("         </tr>");
+                        }
                     }
                 }
                 html.WriteLine("      </table>");
