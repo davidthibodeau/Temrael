@@ -14,6 +14,112 @@ namespace Server.Mobiles
 {
 	public class Spawner : Item, ISpawner
 	{
+
+        public static void Initialize()
+        {
+            CommandSystem.Register( "ResetSpawners", AccessLevel.Administrator, new CommandEventHandler( ResetSpawners_OnCommand ) );
+            CommandSystem.Register( "GenSpawnerDocs", AccessLevel.Administrator, new CommandEventHandler( GenSpawnerDocs_OnCommand ) );
+        }
+
+        private static void GenSpawnerDocs_OnCommand(CommandEventArgs e)
+        {
+            World.Broadcast( 0x35, true, "La documentation des spawners est generee. Veuillez patienter." );
+            Console.WriteLine("La documentation des spawners est générée. Veuillez patienter.");
+
+			Network.NetState.FlushAll();
+			Network.NetState.Pause();
+
+			DateTime startTime = DateTime.Now;
+
+            string path = Path.Combine(Core.BaseDirectory, "docs/");
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            StreamWriter html = new StreamWriter( Path.Combine(path, "spawners.html") );
+            using (html)
+            {
+                html.WriteLine("<html>");
+                html.WriteLine("   <head>");
+                html.WriteLine("      <title>RunUO Documentation - Spawners</title>");
+                html.WriteLine("      <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\" />");
+                html.WriteLine("   </head>");
+                html.WriteLine("   <body>");
+                html.WriteLine("      <table border=1>");
+                foreach (Item i in World.Items.Values)
+                {
+                    if (!(i is Spawner))
+                        continue;
+                    Spawner s = i as Spawner;
+                    html.WriteLine("         <tr>");
+                    html.WriteLine(String.Format("            <th rowspan=\"{0}\">{1}</th>", s.SpawnNamesCount, s.Serial.Value.ToString()));
+                    html.WriteLine(String.Format("            <td>{0}</td>", s.SpawnNames[0]));
+                    html.WriteLine("         </tr>");
+                    for (int j = 1; j < s.SpawnNamesCount; j++)
+                    {
+                        html.WriteLine("         <tr>");
+                        html.WriteLine(String.Format("            <td>{0}</td>", s.SpawnNames[j]));
+                        html.WriteLine("         </tr>");
+                    }
+                }
+                html.WriteLine("      </table>");
+                html.WriteLine("   </body>");
+                html.WriteLine("</html>");
+            }
+            
+			DateTime endTime = DateTime.Now;
+
+			Network.NetState.Resume();
+
+            World.Broadcast(0x35, true, "La documentation des spawners a été generee en {0:F1} secondes.", (endTime - startTime).TotalSeconds);
+            Console.WriteLine("Documentation des spawners complétée.");
+			
+        }
+
+        private static void ResetSpawners_OnCommand(CommandEventArgs e)
+        {
+            string[] args = e.Arguments;
+            if (args.Length > 0)
+            {
+                Type type = ScriptCompiler.FindTypeByName(args[0]);
+                
+                if (typeof(Mobile).IsAssignableFrom(type))
+                {
+                    List<Mobile> l = new List<Mobile>();
+                    foreach (Mobile m in World.Mobiles.Values)
+                    {
+                        if (type.IsInstanceOfType(m) && m.Spawner != null)
+                        {
+                            l.Add(m);
+                        }
+                    }
+                    for(int i = l.Count - 1; i > -1; i--)
+                    {
+                        l[i].Delete();
+                    }
+                }
+                else if(typeof(Item).IsAssignableFrom(type))
+                {
+                    List<Item> l = new List<Item>();
+                    foreach (Item t in World.Items.Values)
+                    {
+                        if (type.IsInstanceOfType(t) && t.Spawner != null)
+                        {
+                            l.Add(t);
+                        }
+                    }
+                    for(int i = l.Count - 1; i > -1; i--)
+                    {
+                        l[i].Delete();
+                    }
+                }
+            }
+            else
+            {
+                //TODO: Add confirmation gump for resetting all spawners.
+            }
+    
+        }
+
 		private int m_Team;
 		private int m_HomeRange;
 		private int m_WalkingRange;
