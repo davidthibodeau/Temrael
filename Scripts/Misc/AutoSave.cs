@@ -107,11 +107,20 @@ namespace Server.Misc
 
             DateTime now = DateTime.Now;
             string path = Directories.AppendPath(root, String.Format("{0:D4}-{1:D2}", now.Year, now.Month));
+            string todaypath = Directories.AppendPath(root, "Today");
 
             string saves = Directories.saves;
 
             if (Directory.Exists(saves))
-                Directory.Move(saves, FormatDirectory(path, Directories.Now));
+            {
+                if (Directory.Exists(Path.Combine(path, Directories.FormatDay(now))))
+                    Directory.Move(saves, FormatDirectory(todaypath, Directories.FormatTime(now)));
+                else
+                {
+                    Directory.Move(saves, FormatDirectory(path, Directories.FormatDay(now)));
+                    Directory.Delete(todaypath, true);
+                }
+            }
         }
 
 		private static string FormatDirectory( string root, string timeStamp )
