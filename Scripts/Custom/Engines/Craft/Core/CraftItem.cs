@@ -1819,7 +1819,7 @@ namespace Server.Engines.Craft
 
                 if (tool != null && !tool.Deleted && tool.UsesRemaining > 0)
                     from.SendGump(new CraftGump(from, craftSystem, tool, mess));
-                else if (mess != null)
+                else 
                     from.SendLocalizedMessage(mess);
 			}
 			else if ( !allRequiredSkills )

@@ -61,9 +61,7 @@ namespace Server.Misc
                     int nbOrcish = 0;
                     int nbElfe = 0;
                     int nbElfeNoir = 0;
-                    int nbTieffelin = 0;
                     int nbMortVivant = 0;
-                    int nbAasimar = 0;
                     int nbMJ = 0;
 
                     int Landes = 0;

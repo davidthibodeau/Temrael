@@ -1877,16 +1877,7 @@ namespace Server.Mobiles
 							scales = 1 + ((scales * 80) / 100);
 					break;
 					
-					case 4:
-						if (wool != 0)
-                            wool = wool;
-
-                        if (hides != 0)
-                            hides =  hides;
-
-                        if (scales != 0)
-							scales = scales;
-					break;
+					case 4: break; //Les valeurs ne changent pas.
 					
 					default:
 						if (wool != 0)
@@ -1955,16 +1946,7 @@ namespace Server.Mobiles
 							bones = 1 + ((bones * 80) / 100);
 					break;
 					
-					case 4:
-						if (feathers != 0)
-                            feathers = feathers;
-
-                        if (meat != 0)
-                            meat =  meat;
-
-                        if (bones != 0)
-							bones = bones;
-					break;
+					case 4:	break; // les valeurs ne changent pas.
 					
 					default:
 						if (feathers != 0)

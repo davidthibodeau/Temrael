@@ -3184,7 +3184,7 @@ namespace Server.Mobiles
             //650 = 49%
             //1000 = 90%
 
-            double chanceToGrow = 0, chanceToFail = 0;
+            double chanceToFail = 0; //, chanceToGrow = 0;
 
             /*if (difficulty < 3)
                 chanceToGrow += (difficulty * 0.02);

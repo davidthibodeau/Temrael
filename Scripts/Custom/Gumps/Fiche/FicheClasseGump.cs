@@ -59,7 +59,6 @@ namespace Server.Gumps
             y = YBase;
 
             List<string> listDon = new List<string>();
-            bool HasDon = false;
             string temp = String.Empty;
             string nomTemp = String.Empty;
             string descrTemp = String.Empty;
@@ -141,7 +140,6 @@ namespace Server.Gumps
                 //AddTooltip(TemraelClasse.GetTooltipClasse(classeType));
 
                 listDon = new List<string>();
-                HasDon = false;
                 temp = String.Empty;
                 nomTemp = String.Empty;
                 descrTemp = String.Empty;

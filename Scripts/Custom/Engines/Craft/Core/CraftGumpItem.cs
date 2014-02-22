@@ -141,8 +141,7 @@ namespace Server.Engines.Craft
                 {
                     BaseWeapon weapon = (BaseWeapon)item;
 
-                    if (weapon.NiveauAttirail != null)
-                        AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Niveau d'Attirail : " + weapon.NiveauAttirail.ToString() + "</center><basefont></h3>", false, false);
+                    AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Niveau d'Attirail : " + weapon.NiveauAttirail.ToString() + "</center><basefont></h3>", false, false);
                 }
 
                 if (item is BaseArmor)
@@ -261,8 +260,7 @@ namespace Server.Engines.Craft
                         }
                     }*/
 
-                    if (armor.NiveauAttirail != null)
-                        AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Niveau d'Attirail : " + req.ToString() + "</center><basefont></h3>", false, false);
+                    AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Niveau d'Attirail : " + req.ToString() + "</center><basefont></h3>", false, false);
                 }
 
 

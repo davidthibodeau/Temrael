@@ -125,7 +125,6 @@ namespace Server.Gumps
                 //AddTooltip(TemraelClasse.GetTooltipMetier(metierType));
 
                 List<string> listDon = new List<string>();
-                bool HasDon = false;
                 string temp = String.Empty;
                 string nomTemp = String.Empty;
                 string descrTemp = String.Empty;

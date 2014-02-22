@@ -20,8 +20,8 @@ namespace Server.Spells.Necromancy
         public override int RequiredAptitudeValue { get { return 10; } }
         public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
 
-        public virtual double CastDelayBase { get { return 0.5; } }
-        public virtual int CastDelayMinimum { get { return 0; } }
+        public override double CastDelayBase { get { return 0.5; } }
+        public override int CastDelayMinimum { get { return 0; } }
 
 		public CurseWeaponSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

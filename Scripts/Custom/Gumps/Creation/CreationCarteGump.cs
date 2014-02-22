@@ -39,8 +39,6 @@ namespace Server.Gumps
 
             int x = XBase;
             int y = YBase;
-            int line = 2;
-            int scale = 25;
 
             y = 650;
             x = 90;

@@ -39,12 +39,12 @@ namespace Server.Gumps
             if (from.Deleted || !from.Alive)
                 return;
 
-            switch (info.ButtonID)
-            {
-                /*case 1:
-                    from.SendGump(new FicheRaceGump(from));
-                    break;*/
-            }
+            //switch (info.ButtonID)
+            //{
+            //    /*case 1:
+            //        from.SendGump(new FicheRaceGump(from));
+            //        break;*/
+            //}
         }
     }
 }

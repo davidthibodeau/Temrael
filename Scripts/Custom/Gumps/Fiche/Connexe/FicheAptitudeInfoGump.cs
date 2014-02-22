@@ -36,7 +36,6 @@ namespace Server.Gumps
             int y = YBase;
             int line = 0;
             int scale = 25;
-            int lineMax = 5;
 
             y = 650;
             x = 90;

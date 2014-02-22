@@ -89,7 +89,6 @@ namespace Server.Gumps
                 AddSection(x + 240, y + line * scale, 300, 90, info.Nom, info.Role);
 
                 List<NAptitude> listAptitude = new List<NAptitude>();
-                bool hasAptitude = false;
                 string temp = String.Empty;
                 /*string nomTemp = String.Empty;
                 string descrTemp = String.Empty;
