@@ -235,6 +235,7 @@ namespace Server.Systemes
                 int maxXP = 0;
                 switch (XP.GetCote(pj))
                 {
+                    case 0:
                     case 1: maxXP = 10850; break;
                     case 2: maxXP = 13020; break;
                     case 3: maxXP = 15190; break;
