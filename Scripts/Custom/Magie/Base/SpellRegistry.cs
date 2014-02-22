@@ -93,9 +93,10 @@ namespace Server.Spells
 					{
 						return (Spell)Activator.CreateInstance( t, m_Params );
 					}
-					catch
+					catch (Exception ex)
 					{
                         Console.WriteLine("Bad spell : " + name);
+                        Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
 					}
 				}
 			}

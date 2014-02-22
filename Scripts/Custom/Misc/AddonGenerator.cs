@@ -367,7 +367,7 @@ namespace {namespace}
             }
             catch (Exception err)
             {
-                Console.WriteLine(err.ToString());
+                Server.Misc.ExceptionLogging.WriteLine(err, new System.Diagnostics.StackFrame(0, true));
                 from.SendMessage(0x40, "The targeted components have been modified. Please retry.");
                 fail = true;
             }

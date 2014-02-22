@@ -234,8 +234,9 @@ namespace Server.Items
                                 m_Tub.Charges = 5;
                             }
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
                             Console.WriteLine("******BUG DE DYES/PITCHER******");
                             Console.WriteLine(m_WaterTiles[i + 1]);
                             Console.WriteLine(m_WaterTiles[i]);
@@ -266,8 +267,9 @@ namespace Server.Items
                             m_Tub.Charges = 5;
                         }
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
                         Console.WriteLine("******BUG DE DYES/PITCHER******");
                         Console.WriteLine(m_StaticTiles[i]);
                         Console.WriteLine(target.ItemID);

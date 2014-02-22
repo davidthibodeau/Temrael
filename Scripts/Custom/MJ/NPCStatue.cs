@@ -153,8 +153,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: MoveItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -175,7 +174,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopyProps (Item) Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
         public static void CopyProps(Mobile from, Mobile to)
@@ -203,7 +202,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopyProps (Mobile) Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
 
             if (from is TMobile && to is BaseVendor)
@@ -225,7 +224,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopySkills Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -274,7 +273,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopyItem Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
 
             return null;
@@ -303,8 +302,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopyItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 

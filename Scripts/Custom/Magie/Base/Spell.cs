@@ -946,7 +946,7 @@ namespace Server.Spells
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
                 return 10;
             }
         }

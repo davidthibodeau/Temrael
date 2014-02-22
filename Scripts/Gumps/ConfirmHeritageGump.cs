@@ -53,8 +53,7 @@ namespace Server.Gumps
 						}
 						catch ( Exception ex )
 						{
-							Console.WriteLine( ex.Message );
-							Console.WriteLine( ex.StackTrace );
+							Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
 						}				
 
 						if ( item != null )

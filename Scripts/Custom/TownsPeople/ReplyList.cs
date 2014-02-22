@@ -63,8 +63,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("\nWarning: Exception caught loading Townsperson replys:");
-                Console.WriteLine(e);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 

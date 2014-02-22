@@ -51,7 +51,7 @@ namespace Server.Engines.UOArchitect
 					}
 					catch(Exception e)
 					{
-						Console.WriteLine("Unable to import item: " + e.Message);
+						Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
 					}
 				}
 

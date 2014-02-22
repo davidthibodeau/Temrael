@@ -115,7 +115,7 @@ namespace Server.Engines.OrbRemoteServer
 					}
 					catch(Exception e)
 					{
-						Console.WriteLine("OrbServer Exception: " + e.Message);
+						Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
 					}
 				}
 			}
@@ -138,7 +138,7 @@ namespace Server.Engines.OrbRemoteServer
 					}
 					catch(Exception e)
 					{
-						Console.WriteLine("OrbServer Exception: " + e.Message);
+						Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
 					}
 				}
 			}

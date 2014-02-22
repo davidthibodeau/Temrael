@@ -446,7 +446,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
             }
 
             return false;
@@ -498,7 +498,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
             }
         }
     }

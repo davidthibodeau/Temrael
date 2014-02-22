@@ -75,8 +75,7 @@ namespace Server
 			}
 			catch ( Exception e )
 			{
-				Console.WriteLine( "Warning: Exception caught loading name lists:" );
-				Console.WriteLine( e );
+				Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
 			}
 		}
 

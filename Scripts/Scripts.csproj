@@ -181,10 +181,8 @@
     <Compile Include=".\Custom\Commandes\Dupe.cs" />
     <Compile Include=".\Custom\Commandes\ExpCommande.cs" />
     <Compile Include=".\Custom\Commandes\Fiche.cs" />
-    <Compile Include=".\Custom\Commandes\Follow.cs" />
     <Compile Include=".\Custom\Commandes\GeneratePlantSpawner.cs" />
     <Compile Include=".\Custom\Commandes\GetParty.cs" />
-    <Compile Include=".\Custom\Commandes\JailPage.cs" />
     <Compile Include=".\Custom\Commandes\Langue.cs" />
     <Compile Include=".\Custom\Commandes\LangueEtude.cs" />
     <Compile Include=".\Custom\Commandes\Layers.cs" />
@@ -840,7 +838,6 @@
     <Compile Include=".\Custom\Magie\SBScrollsGenerator.cs" />
     <Compile Include=".\Custom\Magie\ScrollsGenerator.cs" />
     <Compile Include=".\Custom\Magie\WispBete.cs" />
-    <Compile Include=".\Custom\Misc\AddonGenerator.cs" />
     <Compile Include=".\Custom\Misc\AOS.cs" />
     <Compile Include=".\Custom\Misc\CharacterCreation.cs" />
     <Compile Include=".\Custom\Misc\CrashGuard.cs" />
@@ -1404,6 +1401,8 @@
     <Compile Include=".\Custom\Races\RaceNordique.cs" />
     <Compile Include=".\Custom\Races\RaceOrcish.cs" />
     <Compile Include=".\Custom\Races\RaceTieffelin.cs" />
+    <Compile Include="Misc\ExceptionLogging.cs" />
+    <Compile Include="Misc\Directories.cs" />
     <Compile Include="Regions\CommerceRegion.cs" />
     <Compile Include="Regions\Tavernes\AireReposCitarel.cs" />
     <Compile Include="Regions\Tavernes\InnCitarel.cs" />
@@ -3650,11 +3649,9 @@
     <Compile Include=".\Vendor\PlayerVendor.cs" />
     <Compile Include=".\Vendor\PlayerVendorDeed.cs" />
     <Compile Include=".\Vendor\PlayerVendorGumps.cs" />
-    <Compile Include="Combat\SequenceCombat.cs" />
     <Compile Include="Custom\Commandes\Follow.cs" />
     <Compile Include="Custom\Commandes\JailPage.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
-    <Compile Include="Custom\Mobiles\Monstres\Demoniaques\GolemArcanique.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">

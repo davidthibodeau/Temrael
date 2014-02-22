@@ -331,7 +331,7 @@ namespace Server.Commands
 			}
 			catch ( Exception ex )
 			{
-				Console.WriteLine(ex);
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
 				return 0;
 			}
 		}

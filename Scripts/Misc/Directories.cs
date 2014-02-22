@@ -11,6 +11,7 @@ namespace Server.Misc
         public static readonly string errors = Path.Combine(backups, "Errors");
         public static readonly string docs = Path.Combine(backups, "Docs");
         public static readonly string bsaves = Path.Combine(backups, "Saves");
+        public static readonly string exceptions = Path.Combine(errors, "Exceptions");
 
         public static string Today { get { return FormatDay(DateTime.Now); } }
 
@@ -23,6 +24,7 @@ namespace Server.Misc
             EnsureDirectory(errors);
             EnsureDirectory(docs);
             EnsureDirectory(bsaves);
+            EnsureDirectory(exceptions);
         }
 
         public static void EnsureDirectory( string path )

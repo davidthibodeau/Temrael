@@ -137,7 +137,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopySkills Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -159,8 +159,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: MoveItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -181,8 +180,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopyItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -231,7 +229,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopyItem Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
 
             return null;
@@ -260,8 +258,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: CopyItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -281,8 +278,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: MoveItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -303,8 +299,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: MoveItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -325,8 +320,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Console.WriteLine("Possess: MoveItems Exception: {0}", e.Message);
-                Console.WriteLine(e.StackTrace);
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
         }
 
@@ -385,7 +379,7 @@ namespace Server
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Possess: CopyItem Exception: {0}", e.ToString());
+                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
                 }
             }
         }
@@ -429,7 +423,7 @@ namespace Server
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Possess: CopyItem Exception: {0}", ex.Message);
+                    Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
                 }
             }
         }
@@ -466,7 +460,7 @@ namespace Server
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Possess: CopyItem Exception: {0}", ex.Message);
+                    Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
                 }
             }
         }

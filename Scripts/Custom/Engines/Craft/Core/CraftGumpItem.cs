@@ -277,7 +277,7 @@ namespace Server.Engines.Craft
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
             }
 		}
 
