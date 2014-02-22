@@ -10,6 +10,11 @@ namespace Server.Misc
 
         public static void WriteLine(Exception e, StackFrame catcher)
         {
+            WriteLine(e, catcher, "");
+        }
+
+        public static void WriteLine(Exception e, StackFrame catcher, string infos)
+        {
             string path = Directories.exceptions;
             string filepath = Path.Combine(path, Directories.Today);
 
@@ -19,6 +24,8 @@ namespace Server.Misc
                 {
                     sw.WriteLine("====================================");
                     sw.WriteLine("EXCEPTION caught at {0} : line {1}", catcher.GetFileName(), catcher.GetFileLineNumber());
+                    if (infos != "")
+                        sw.WriteLine("Additional infos: {0}", infos);
                     sw.WriteLine(e);
                     sw.WriteLine();
                 }

@@ -96,15 +96,17 @@ namespace Server
         public static bool CanLower(TMobile from, SkillName comp)
         {
             Skill sk = from.Skills[comp];
-            if (sk == null)
+            try
             {
-                Console.WriteLine("BUG: Skill est null à CanLower. La compétence causant le bug est " + comp); 
-                return false;
-            }
-            int value = Convert.ToInt32(sk.Value);
+                int value = Convert.ToInt32(sk.Value);
 
-            if (value > 0)
-                return true;
+                if (value > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(), "skill index is " + comp);
+            }
 
             return false;
         }

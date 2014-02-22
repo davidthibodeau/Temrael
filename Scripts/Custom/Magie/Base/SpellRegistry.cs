@@ -95,8 +95,7 @@ namespace Server.Spells
 					}
 					catch (Exception ex)
 					{
-                        Console.WriteLine("Bad spell : " + name);
-                        Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
+                        Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true), "Spell name : " + name);
 					}
 				}
 			}

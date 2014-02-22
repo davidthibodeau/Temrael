@@ -267,13 +267,13 @@ namespace Server.Gumps
                 {
                     Spell spell = SpellRegistry.NewSpell(info.ButtonID, from, null);
 
-                    if (spell != null)
+                    try
                     {
                         spell.Cast();
                     }
-                    else
+                    catch (Exception e)
                     {
-                        Console.WriteLine("Null Spell");
+                        Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame());
                     }
 
                     if (from is TMobile)

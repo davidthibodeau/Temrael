@@ -118,15 +118,25 @@ namespace Server.Misc
             Season season = (Season)Map.Felucca.Season;
             Temperature[] entry = TemperatureEntry.GetEntry(season, timeOfDay);
 
-            if (entry == null)
-                return t;
-            if ((int)t >= entry.Length)
+            try
             {
-                Console.WriteLine("BUG AdjustTemperatureBySeason : Le length de entry est de " + entry.Length + " alors que l'index de température était "
-                                  + t + " ce qui donne un chiffre de " + ((int)t) + ". La saison était " + season + ".");
-                return entry[entry.Length - 1];
+                return entry[(int)t];
             }
-            return entry[(int)t];
+            catch (Exception e)
+            {
+                if (entry == null)
+                {
+                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(), "entry was null");
+                    return t;
+                }
+                else
+                {
+                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(),
+                        "Le length de entry est de " + entry.Length + " alors que l'index de température était "
+                                  + t + " ce qui donne un chiffre de " + ((int)t) + ". La saison était " + season + ".");
+                    return entry[entry.Length - 1];
+                }
+            }
         }
 
         public virtual Temperature GenerateTemperature()

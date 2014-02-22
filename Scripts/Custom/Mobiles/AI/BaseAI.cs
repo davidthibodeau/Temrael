@@ -773,8 +773,6 @@ namespace Server.Mobiles
 							{
 								m_Mobile.SetControlMaster( e.Mobile );
 
-                                Console.WriteLine("Test GM");
-
 								if( m_Mobile.Summoned )
 									m_Mobile.SummonMaster = e.Mobile;
 

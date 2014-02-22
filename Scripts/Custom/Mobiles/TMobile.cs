@@ -1050,11 +1050,6 @@ namespace Server.Mobiles
             if (nbrLangue > Skills.ConnaissanceLangue.Fixed / 200 + 2)
             {
                 int last = m_DerniereLangueApprise.Count - 1;
-                if (last == -1)
-                {
-                    Console.WriteLine("ERREUR: Server.Mobiles.TMobile.LanguageFix() a obtenu une valeur de -1 pour la variable last");
-                    return;
-                }
                 m_languages[m_DerniereLangueApprise[last]] = false;
                 SendMessage("Vous n'avez pas assez de points en Connaissance (Langue) pour parler " + nbrLangue + " langues.");
                 SendMessage("La dernière langue choisie (" + (Langue)m_DerniereLangueApprise[last] + ") vous est retirée.");

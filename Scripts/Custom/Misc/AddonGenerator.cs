@@ -420,19 +420,20 @@ namespace {namespace}
 #else
                 ArrayList list = tiles[p] as ArrayList;
 #endif
-
-                if (list == null)
+                try
                 {
-                    Console.WriteLine("The list is null... ");
-                    return;
-                }
-
-                foreach (StaticTile t in list)
-                {
-                    if (t.Z < center.Z)
+                    foreach (StaticTile t in list)
                     {
-                        center.Z = t.Z;
+                        if (t.Z < center.Z)
+                        {
+                            center.Z = t.Z;
+                        }
                     }
+                }
+                catch (Exception e)
+                {
+                    Server.Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame());
+                    return;
                 }
 
                 x1 = Math.Min(x1, p.X);
