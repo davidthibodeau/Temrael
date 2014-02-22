@@ -105,19 +105,13 @@ namespace Server
                 int resPerforant = m.PerforantResistance;
                 int resMagie = m.MagieResistance;
 
-                Console.WriteLine(damage);
-
                 totalDamage = damage * phys * (150 - resPhys);
                 totalDamage += damage * contondant * (150 - resContondant);
                 totalDamage += damage * tranchant * (150 - resTranchant);
                 totalDamage += damage * perforant * (150 - resPerforant);
                 totalDamage += damage * magie * (150 - resMagie);
 
-                Console.WriteLine(totalDamage);
-
                 totalDamage /= 10000;
-
-                Console.WriteLine(totalDamage);
 
                 if (Core.ML)
                 {

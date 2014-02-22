@@ -68,8 +68,6 @@ namespace Server.Engines.Craft
 
 					double difficulty = 0.0;
 
-                    Console.WriteLine("Test");
-
 					switch ( resource )
 					{
                         default: difficulty = 0.0; break;

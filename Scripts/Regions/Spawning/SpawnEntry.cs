@@ -456,8 +456,6 @@ namespace Server.Regions
             {
                 entry.m_MinSpawnTime = TimeSpan.FromMinutes(30);
                 entry.m_MaxSpawnTime = TimeSpan.FromMinutes(45);
-
-                Console.WriteLine("test");
             }
 
             args.Mobile.SendMessage("All region spawners have reseted their spawn time.");

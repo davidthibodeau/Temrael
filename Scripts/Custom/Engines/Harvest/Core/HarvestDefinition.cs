@@ -324,7 +324,7 @@ namespace Server.Engines.Harvest
 
                             if (rectangle.Contains(new Point2D(x, y)))
                             {
-                                Console.WriteLine(zone.GetType().Name);
+                                //Console.WriteLine(zone.GetType().Name);
                                 return zone.Veins;
                             }
                         }

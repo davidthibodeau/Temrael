@@ -136,7 +136,7 @@ namespace Server.Gumps
                         {
                             SpellBookEntry entry = (SpellBookEntry)obj;
 
-                            Console.WriteLine(((SpellBookEntry)obj).ToString() + " " + entry.ToString());
+                            //Console.WriteLine(((SpellBookEntry)obj).ToString() + " " + entry.ToString());
 
                             if (entry != null)
                             {

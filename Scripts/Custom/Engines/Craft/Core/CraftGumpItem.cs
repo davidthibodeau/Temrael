@@ -186,8 +186,8 @@ namespace Server.Engines.Craft
                             nameEnd = nameString;
                         }
 
-                        Console.WriteLine(craftResource.ItemType.ToString());
-                        Console.WriteLine(nameString.ToString());
+                        //Console.WriteLine(craftResource.ItemType.ToString());
+                        //Console.WriteLine(nameString.ToString());
                     }
 
                     BaseArmor armor = (BaseArmor)item;

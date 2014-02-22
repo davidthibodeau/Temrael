@@ -28,7 +28,6 @@ namespace Server.Gumps
         public FicheCommandesGump(TMobile from, int chevelurePage, int barbePage, int tatooPage)
             : base("Commandes & Accessoires", 560, 622)
         {
-            Console.WriteLine(chevelurePage);
 
             m_chevelurePage = chevelurePage;
             m_barbePage = barbePage;

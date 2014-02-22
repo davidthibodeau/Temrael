@@ -187,7 +187,7 @@ namespace Server.Items
 
         public static string GetPlantName(PlantType type)
         {
-            Console.WriteLine(type.ToString());
+            //Console.WriteLine(type.ToString());
             return GetPlantName(type, true);
         }
 

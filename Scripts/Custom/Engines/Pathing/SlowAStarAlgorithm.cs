@@ -131,7 +131,6 @@ namespace Server.PathAlgorithms.SlowAStar
 
 						if ( !found )
 						{
-							Console.WriteLine( "bugaboo.." );
 							return null;
 						}
 

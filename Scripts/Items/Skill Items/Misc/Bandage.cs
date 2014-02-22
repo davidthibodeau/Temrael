@@ -467,11 +467,9 @@ namespace Server.Items
             if (patientNumber != -1)
                 m_Patient.SendLocalizedMessage(patientNumber);
 
-            Console.WriteLine("Test");
             if (75 > Utility.Random(100))
             {
                 m_Healer.AddToBackpack(new BloodyBandage());
-                Console.WriteLine("Test 2");
             }
 
             if (playSound)
