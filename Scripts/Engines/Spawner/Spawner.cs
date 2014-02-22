@@ -9,6 +9,7 @@ using Server.Commands;
 using Server.Items;
 using Server.Network;
 using CPA = Server.CommandPropertyAttribute;
+using Server.Misc;
 
 namespace Server.Mobiles
 {
@@ -23,7 +24,7 @@ namespace Server.Mobiles
 
         private static void GenSpawnerDocs_OnCommand(CommandEventArgs e)
         {
-            World.Broadcast( 0x35, true, "La documentation des spawners est generee. Veuillez patienter." );
+            World.Broadcast( 0x35, true, "La documentation des spawners est en cours de generation. Veuillez patienter." );
             Console.WriteLine("La documentation des spawners est générée. Veuillez patienter.");
 
 			Network.NetState.FlushAll();
@@ -31,11 +32,7 @@ namespace Server.Mobiles
 
 			DateTime startTime = DateTime.Now;
 
-            string path = Path.Combine(Core.BaseDirectory, "docs/");
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
-            StreamWriter html = new StreamWriter( Path.Combine(path, "spawners.html") );
+            StreamWriter html = new StreamWriter(Path.Combine(Directories.docs, "spawners.html"));
             using (html)
             {
                 html.WriteLine("<html>");
@@ -979,18 +976,18 @@ namespace Server.Mobiles
 				{
 					Console.WriteLine( "Warning: {0} bad spawns detected, logged: 'badspawn.log'", m_List.Count );
 
-					using ( StreamWriter op = new StreamWriter( "badspawn.log", true ) )
-					{
-						op.WriteLine( "# Bad spawns : {0}", DateTime.Now );
-						op.WriteLine( "# Format: X Y Z F Name" );
-						op.WriteLine();
+                    using (StreamWriter op = new StreamWriter(Path.Combine(Directories.errors, "badspawn.log"), true))
+                    {
+                        op.WriteLine("# Bad spawns : {0}", DateTime.Now);
+                        op.WriteLine("# Format: X Y Z F Name");
+                        op.WriteLine();
 
-						foreach ( WarnEntry e in m_List )
-							op.WriteLine( "{0}\t{1}\t{2}\t{3}\t{4}", e.m_Point.X, e.m_Point.Y, e.m_Point.Z, e.m_Map, e.m_Name );
+                        foreach (WarnEntry e in m_List)
+                            op.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}", e.m_Point.X, e.m_Point.Y, e.m_Point.Z, e.m_Map, e.m_Name);
 
-						op.WriteLine();
-						op.WriteLine();
-					}
+                        op.WriteLine();
+                        op.WriteLine();
+                    }
 				}
 				catch
 				{

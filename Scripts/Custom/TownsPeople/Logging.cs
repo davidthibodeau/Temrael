@@ -3,6 +3,7 @@ using System.IO;
 using Server;
 using Server.Accounting;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Commands
 {
@@ -18,20 +19,14 @@ namespace Server.Commands
 		public static void Initialize()
 		{
 
-            if ( !Directory.Exists( "Backups" ) )
-				Directory.CreateDirectory( "Backups" );
-			if ( !Directory.Exists( "Backups/Logs" ) )
-				Directory.CreateDirectory( "Backups/Logs" );
 
-			string directory = "Backups/Logs/Townsperson";
+			string directory = Directories.AppendPath(Directories.logs,"Townsperson");
 
-			if ( !Directory.Exists( directory ) )
-				Directory.CreateDirectory( directory );
+
 
 			try
 			{
-                DateTime now = DateTime.Now;
-                string today = String.Format("{0}-{1}-{2}, {3}", now.Year, now.Month, now.Day, now.DayOfWeek);
+                string today = Directories.Today;
 				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", today) ), true );
 				
 				m_Output.AutoFlush = true;
@@ -78,26 +73,16 @@ namespace Server.Commands
 			{
 				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.Now.ToShortTimeString(), TownspersonLogging.Format( from ), text );
 
-				string path = Core.BaseDirectory;
-                AppendPath( ref path, "Backups" );
-				AppendPath( ref path, "Logs" );
-				AppendPath( ref path, "Townsperson" );
-				path = Path.Combine( path, String.Format( "{0}.log", DateTime.Now.ToLongDateString() ) );
+                // Crée un double des logs sans réelle raison ?
+                //string path = Directories.AppendPath(Directories.logs, "Townsperson" );
+                //path = Path.Combine(path, String.Format("{0}.log", Directories.Today));
 
-				using ( StreamWriter sw = new StreamWriter( path, true ) )
-					sw.WriteLine( "{0}: {1}: {2}", DateTime.Now, TownspersonLogging.Format( from ), text );
+                //using ( StreamWriter sw = new StreamWriter( path, true ) )
+                //    sw.WriteLine( "{0}: {1}: {2}", DateTime.Now, TownspersonLogging.Format( from ), text );
 			}
 			catch
 			{
 			}
-		}
-
-		public static void AppendPath( ref string path, string toAppend )
-		{
-			path = Path.Combine( path, toAppend );
-
-			if ( !Directory.Exists( path ) )
-				Directory.CreateDirectory( path );
 		}
 	}
 }

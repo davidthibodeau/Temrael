@@ -102,43 +102,21 @@ namespace Server.Misc
 
 		private static void Backup()
 		{
-            if ( !Directory.Exists( "Backups/Saves") )
-				Directory.CreateDirectory( "Backups/Saves" );
 
-			string root = Path.Combine( Core.BaseDirectory, "Backups/Saves/Automatic" );
-
-			if ( !Directory.Exists( root ) )
-				Directory.CreateDirectory( root );
+            string root = Directories.AppendPath(Directories.bsaves, "Automatic");
 
             DateTime now = DateTime.Now;
-            string path = Path.Combine(root, String.Format("{0}-{1:D2}", now.Year, now.Month));
+            string path = Directories.AppendPath(root, String.Format("{0:D4}-{1:D2}", now.Year, now.Month));
 
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
-            string saves = Path.Combine( Core.BaseDirectory, "Saves" );
+            string saves = Directories.saves;
 
             if (Directory.Exists(saves))
-                Directory.Move(saves, FormatDirectory(path, GetTimeStamp()));
+                Directory.Move(saves, FormatDirectory(path, Directories.Now));
         }
 
 		private static string FormatDirectory( string root, string timeStamp )
 		{
             return Path.Combine(root, String.Format("{0}", timeStamp));
-		}
-
-		private static string GetTimeStamp()
-		{
-			DateTime now = DateTime.Now;
-
-			return String.Format( "{0:D4}-{1:D2}-{2:D2} {3:D2}.{4:D2}.{5:D2}",
-					now.Year,
-					now.Month,
-					now.Day,
-					now.Hour,
-					now.Minute,
-					now.Second
-				);
 		}
 	}
 }

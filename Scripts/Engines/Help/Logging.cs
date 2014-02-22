@@ -3,33 +3,12 @@ using System.IO;
 using Server;
 using Server.Accounting;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Engines.Help
 {
     public class SpeechlogLogging
     {
-        private static StreamWriter m_Output;
-
-		public static StreamWriter Output
-		{
-			get{ return m_Output; } 
-		}
-
-		public static void Initialize()
-		{
-
-            if ( !Directory.Exists( "Backups" ) )
-				Directory.CreateDirectory( "Backups" );
-			if ( !Directory.Exists( "Backups/Logs" ) )
-				Directory.CreateDirectory( "Backups/Logs" );
-
-			string directory = "Backups/Logs/Speechlogs";
-
-			if ( !Directory.Exists( directory ) )
-				Directory.CreateDirectory( directory );
-
-		}
-
 		public static object Format( object o )
 		{
 			if ( o is Mobile )
@@ -56,19 +35,15 @@ namespace Server.Engines.Help
         {
            try
 			{
-				string path = Core.BaseDirectory;
+                string path = Directories.AppendPath(Directories.logs, "Speechlogs");
 
 				Account acct = from.Account as Account;
 
 				string name = ( acct == null ? from.Name : acct.Username );
-               
-                AppendPath( ref path, "Backups" );
-				AppendPath( ref path, "Logs" );
-				AppendPath( ref path, "Speechlogs" );
-				AppendPath( ref path, from.AccessLevel.ToString() );
-                AppendPath(ref path, name);
-                DateTime now = e.Created;
-                string today = String.Format("{0}-{1:D2}-{2:D2}, {3}", now.Year, now.Month, now.Day, now.DayOfWeek);
+
+                path = Directories.AppendPath(path, from.AccessLevel.ToString());
+                path = Directories.AppendPath(path, name);
+                string today = Directories.FormatDay(e.Created);
 				path = Path.Combine( path, String.Format( "{0} {1}.log", from.Name, today ) );
 
 				using ( StreamWriter sw = new StreamWriter( path, true ) )
@@ -78,14 +53,6 @@ namespace Server.Engines.Help
 			{
 			}
         }
-
-		public static void AppendPath( ref string path, string toAppend )
-		{
-			path = Path.Combine( path, toAppend );
-
-			if ( !Directory.Exists( path ) )
-				Directory.CreateDirectory( path );
-		}
 	
     }
 }

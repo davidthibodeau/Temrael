@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Accounting;
 using Server.Mobiles;
 using Server.Prompts;
+using Server.Misc;
 
 
 namespace Server.Systemes
@@ -78,22 +79,12 @@ namespace Server.Systemes
         {
            try
            {
-               if (!Directory.Exists("Backups"))
-                   Directory.CreateDirectory("Backups");
-               if (!Directory.Exists("Backups/Logs"))
-                   Directory.CreateDirectory("Backups/Logs");
+               string directory = Directories.AppendPath(Directories.logs, "Compensation");
 
-               string directory = "Backups/Logs/Compensation";
-
-               if (!Directory.Exists(directory))
-                   Directory.CreateDirectory(directory);
-
-                DateTime now = DateTime.Now;
-                string today = String.Format("{0}-{1:D2}-{2:D2}, {3}", now.Year, now.Month, now.Day, now.DayOfWeek);
-				string path = Path.Combine( directory, String.Format( "{0}.log", today ) );
+				string path = Path.Combine( directory, String.Format( "{0}.log", Directories.Today ) );
 
 				using ( StreamWriter sw = new StreamWriter( path, true ) )
-					sw.WriteLine( "[{0}] {1}", now, text);
+					sw.WriteLine( "[{0}] {1}", DateTime.Now, text);
 			}
 			catch
 			{
@@ -102,10 +93,9 @@ namespace Server.Systemes
 
         private static void Save(WorldSaveEventArgs e)
         {
-            if ( !Directory.Exists( "Saves/Compensations" ) )
-				Directory.CreateDirectory( "Saves/Compensations" );
+            string path = Directories.AppendPath(Directories.saves, "Compensations");
 
-			string filePath = Path.Combine( "Saves/Compensations", "compensations.xml" );
+			string filePath = Path.Combine( path, "compensations.xml" );
 
             using (StreamWriter op = new StreamWriter(filePath))
             {
@@ -134,7 +124,8 @@ namespace Server.Systemes
             compensations = new Dictionary<Account, MJ>();
             compensationsIndexed = new List<MJ>();
 
-            string filePath = Path.Combine("Saves/Compensations", "compensations.xml");
+            string path = Directories.AppendPath(Directories.saves, "Compensations");
+            string filePath = Path.Combine(path, "compensations.xml");
 
 			if ( !File.Exists( filePath ) )
 				return;

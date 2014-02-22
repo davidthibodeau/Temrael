@@ -4,6 +4,7 @@ using Server;
 using Server.Items;
 using Server.Multis;
 using Server.Mobiles;
+using System.IO;
 
 namespace Server.Misc
 {
@@ -114,8 +115,17 @@ namespace Server.Misc
 				else
 					Console.WriteLine( "Cleanup: Detected {0} inaccessible items, removing..", items.Count );
 
-				for ( int i = 0; i < items.Count; ++i )
-					items[i].Delete();
+                string path = Directories.errors;
+                using (StreamWriter op = new StreamWriter(Path.Combine(path, "inacessibleitems.log"), true))
+                {
+                    op.WriteLine("# Inaccessible items : {0}", DateTime.Now);
+                    
+                    for (int i = 0; i < items.Count; ++i)
+                    {
+                        op.WriteLine("Name: {0}, Type: {1}", items[i].Name, items[i].GetType());
+                        items[i].Delete();
+                    }
+                }
 			}
 
 			if ( hairCleanup.Count > 0 )

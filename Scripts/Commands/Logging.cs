@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Server;
 using Server.Accounting;
+using Server.Misc;
 
 namespace Server.Commands
 {
@@ -9,6 +10,7 @@ namespace Server.Commands
 	{
 		private static StreamWriter m_Output;
 		private static bool m_Enabled = true;
+        private static readonly string directory = Directories.AppendPath(Directories.logs, "Commands");
 
 		public static bool Enabled{ get{ return m_Enabled; } set{ m_Enabled = value; } }
 
@@ -18,22 +20,9 @@ namespace Server.Commands
 		{
 			EventSink.Command += new CommandEventHandler( EventSink_Command );
 
-            if ( !Directory.Exists( "Backups" ) )
-				Directory.CreateDirectory( "Backups" );
-
-			if ( !Directory.Exists( "Backups/Logs" ) )
-				Directory.CreateDirectory( "Backups/Logs" );
-
-			string directory = "Backups/Logs/Commands";
-
-			if ( !Directory.Exists( directory ) )
-				Directory.CreateDirectory( directory );
-
 			try
 			{
-                DateTime now = DateTime.Now;
-                string today = String.Format("{0}-{1}-{2}, {3}", now.Year, now.Month, now.Day, now.DayOfWeek);
-				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", today) ), true );
+				m_Output = new StreamWriter( Path.Combine( directory, String.Format( "{0}.log", Directories.Today) ), true );
 
 				m_Output.AutoFlush = true;
 
@@ -84,16 +73,11 @@ namespace Server.Commands
 			{
 				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.Now, from.NetState, text );
 
-				string path = Core.BaseDirectory;
-
 				Account acct = from.Account as Account;
 
 				string name = ( acct == null ? from.Name : acct.Username );
 
-                AppendPath( ref path, "Backups" );
-				AppendPath( ref path, "Logs" );
-				AppendPath( ref path, "Commands" );
-				AppendPath( ref path, from.AccessLevel.ToString() );
+                string path = Directories.AppendPath(directory, from.AccessLevel.ToString());
 				path = Path.Combine( path, String.Format( "{0}.log", name ) );
 
 				using ( StreamWriter sw = new StreamWriter( path, true ) )
@@ -105,14 +89,6 @@ namespace Server.Commands
 		}
 
 		private static char[] m_NotSafe = new char[]{ '\\', '/', ':', '*', '?', '"', '<', '>', '|' };
-
-		public static void AppendPath( ref string path, string toAppend )
-		{
-			path = Path.Combine( path, toAppend );
-
-			if ( !Directory.Exists( path ) )
-				Directory.CreateDirectory( path );
-		}
 
 		public static string Safe( string ip )
 		{

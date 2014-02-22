@@ -37,30 +37,8 @@ namespace Server.Misc
 				Restart( e );
 		}
 
-		private static string GetRoot()
-		{
-			try
-			{
-				return Path.GetDirectoryName( Environment.GetCommandLineArgs()[0] );
-			}
-			catch
-			{
-				return "";
-			}
-		}
-
-		private static string Combine( string path1, string path2 )
-		{
-			if ( path1 == "" )
-				return path2;
-
-			return Path.Combine( path1, path2 );
-		}
-
 		private static void Restart( CrashedEventArgs e )
 		{
-			string root = GetRoot();
-
 			Console.Write( "Crash: Restarting..." );
 
 			try
@@ -76,21 +54,10 @@ namespace Server.Misc
 			}
 		}
 
-		private static void CreateDirectory( string path )
-		{
-			if ( !Directory.Exists( path ) )
-				Directory.CreateDirectory( path );
-		}
-
-		private static void CreateDirectory( string path1, string path2 )
-		{
-			CreateDirectory( Combine( path1, path2 ) );
-		}
-
 		private static void CopyFile( string rootOrigin, string rootBackup, string path )
 		{
-			string originPath = Combine( rootOrigin, path );
-			string backupPath = Combine( rootBackup, path );
+			string originPath = Path.Combine( rootOrigin, path );
+			string backupPath = Path.Combine( rootBackup, path );
 
 			try
 			{
@@ -108,26 +75,22 @@ namespace Server.Misc
 
 			try
 			{
-				string timeStamp = GetTimeStamp();
-
-				string root = GetRoot();
-				string rootBackup = Combine( root, String.Format( "Backups/Saves/Crashed/{0}/", timeStamp ) );
-				string rootOrigin = Combine( root, String.Format( "Saves/" ) );
+                string rootBackup = Directories.AppendPath(Directories.bsaves, String.Format("Crashed/{0}", Directories.Now));
+                string rootOrigin = Directories.saves;
 
 				// Create new directories
-				CreateDirectory( rootBackup );
-				CreateDirectory( rootBackup, "Accounts/" );
-				CreateDirectory( rootBackup, "Items/" );
-				CreateDirectory( rootBackup, "Mobiles/" );
-				CreateDirectory( rootBackup, "Guilds/" );
-				CreateDirectory( rootBackup, "Regions/" );
+                Directories.AppendPath(rootBackup, "Accounts/");
+                Directories.AppendPath(rootBackup, "Items/");
+                Directories.AppendPath(rootBackup, "Mobiles/");
+                Directories.AppendPath(rootBackup, "Guilds/");
+                Directories.AppendPath(rootBackup, "Regions/");
 
 				// Copy files
-				CopyFile( rootOrigin, rootBackup, "Accounts/Accounts.xml" );
+                CopyFile(rootOrigin, rootBackup, "Accounts/Accounts.xml");
 
-				CopyFile( rootOrigin, rootBackup, "Items/Items.bin" );
-				CopyFile( rootOrigin, rootBackup, "Items/Items.idx" );
-				CopyFile( rootOrigin, rootBackup, "Items/Items.tdb" );
+                CopyFile(rootOrigin, rootBackup, "Items/Items.bin");
+                CopyFile(rootOrigin, rootBackup, "Items/Items.idx");
+                CopyFile(rootOrigin, rootBackup, "Items/Items.tdb");
 
 				CopyFile( rootOrigin, rootBackup, "Mobiles/Mobiles.bin" );
 				CopyFile( rootOrigin, rootBackup, "Mobiles/Mobiles.idx" );
@@ -153,14 +116,10 @@ namespace Server.Misc
 
 			try
 			{
-				string timeStamp = GetTimeStamp();
-				string fileName = String.Format( "Crash {0}.log", timeStamp );
+                string fileName = String.Format("{0}.log", Directories.Now);
 
-				string root = GetRoot();
-                string rootCrash = Combine(root, String.Format("Backups/CrashReports/"));
-				string filePath = Combine( rootCrash, fileName );
-
-                CreateDirectory(rootCrash);
+                string rootCrash = Directories.AppendPath(Directories.backups, "CrashReports");
+				string filePath = Path.Combine( rootCrash, fileName );
 
 				using ( StreamWriter op = new StreamWriter( filePath ) )
 				{
@@ -225,12 +184,5 @@ namespace Server.Misc
 				Console.WriteLine( "failed" );
 			}
 		}
-
-		private static string GetTimeStamp()
-		{
-			DateTime now = DateTime.Now;
-            return String.Format("{0}-{1:D2}-{2:D2}-{3:D2}-{4:D2}-{5:D2}", 
-                now.Year, now.Month, now.Day, now.Hour, now.Minute, now.Second);
-        }
     }
 }

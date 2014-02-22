@@ -8,6 +8,7 @@ using Server.Items;
 using Server.Engines.BulkOrders;
 using Server.Commands.Generic;
 using System.Collections.Generic;
+using Server.Misc;
 
 namespace Server.Commands
 {
@@ -220,14 +221,6 @@ namespace Server.Commands
 
 		private static string m_RootDirectory = Path.GetDirectoryName( Environment.GetCommandLineArgs()[0] );
 
-		private static void EnsureDirectory( string path )
-		{
-			path = Path.Combine( m_RootDirectory, path );
-
-			if( !Directory.Exists( path ) )
-				Directory.CreateDirectory( path );
-		}
-
 		private static void DeleteDirectory( string path )
 		{
 			path = Path.Combine( m_RootDirectory, path );
@@ -387,13 +380,11 @@ namespace Server.Commands
 
 		private static bool Document()
 		{
-			try { DeleteDirectory( "docs/" ); }
-			catch { return false; }
+            string path = Directories.docs;
 
-			EnsureDirectory( "docs/" );
-			EnsureDirectory( "docs/namespaces/" );
-			EnsureDirectory( "docs/types/" );
-			EnsureDirectory( "docs/bods/" );
+            Directories.AppendPath(path, "Namespaces");
+            Directories.AppendPath(path, "Types");
+            Directories.AppendPath(path, "Bods");
 
 			GenerateStyles();
 			GenerateIndex();
