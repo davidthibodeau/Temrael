@@ -1029,6 +1029,27 @@ namespace Server.Mobiles
             }
         }
 
+        public void Reset()
+        {
+            if (!FreeReset)
+                XP = (int)(XP * 0.95);
+            else
+                FreeReset = false;
+
+            Statistiques.Reset(this);
+            Competences.Reset(this);
+            Aptitudes.Reset();
+
+            ClasseType = ClasseType.None;
+            MetierType.Clear();
+            FamilierCheck();
+            for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
+            {
+                m_languages[m_DerniereLangueApprise[i]] = false;
+                m_DerniereLangueApprise.RemoveAt(i);
+            }
+        }
+
         public bool hasMetier(MetierType metier)
         {
             for (int i = 0; i < m_MetierType.Count; i++)

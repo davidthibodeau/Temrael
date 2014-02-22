@@ -67,18 +67,7 @@ namespace Server.Gumps
                     from.SendGump(new FicheCommandesGump(from));
                     break;
                 case 8:
-                    if (!from.FreeReset)
-                        from.XP = (int)(from.XP * 0.95);
-                    else
-                        from.FreeReset = false;
-
-                    Statistiques.Reset(from);
-                    Competences.Reset(from);
-                    from.Aptitudes.Reset();
-
-                    from.ClasseType = ClasseType.None;
-                    from.MetierType.Clear();
-                    from.FamilierCheck();
+                    from.Reset();
 
                     from.SendMessage("Votre personnage a reset ses informations.");
                     from.SendGump(new FicheRaceGump(from));
