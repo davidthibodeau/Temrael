@@ -137,7 +137,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -159,7 +159,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -180,7 +180,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -229,7 +229,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
 
             return null;
@@ -258,7 +258,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -278,7 +278,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -299,7 +299,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -320,7 +320,7 @@ namespace Server
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -379,7 +379,7 @@ namespace Server
                 }
                 catch (Exception e)
                 {
-                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
                 }
             }
         }
@@ -423,7 +423,7 @@ namespace Server
                 }
                 catch (Exception ex)
                 {
-                    Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
+                    Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
                 }
             }
         }
@@ -460,7 +460,7 @@ namespace Server
                 }
                 catch (Exception ex)
                 {
-                    Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
+                    Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
                 }
             }
         }

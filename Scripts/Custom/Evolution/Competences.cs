@@ -40,7 +40,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
             }
 
             return pc - added;
@@ -96,17 +96,10 @@ namespace Server
         public static bool CanLower(TMobile from, SkillName comp)
         {
             Skill sk = from.Skills[comp];
-            try
-            {
-                int value = Convert.ToInt32(sk.Value);
+            int value = Convert.ToInt32(sk.Value);
 
-                if (value > 0)
-                    return true;
-            }
-            catch (Exception e)
-            {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(), "skill index is " + comp);
-            }
+            if (value > 0)
+                return true;
 
             return false;
         }

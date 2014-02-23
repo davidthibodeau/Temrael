@@ -153,7 +153,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -174,7 +174,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
         public static void CopyProps(Mobile from, Mobile to)
@@ -202,7 +202,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
 
             if (from is TMobile && to is BaseVendor)
@@ -224,7 +224,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -273,7 +273,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
 
             return null;
@@ -302,7 +302,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
             }
         }
 

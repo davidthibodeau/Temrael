@@ -367,7 +367,7 @@ namespace {namespace}
             }
             catch (Exception err)
             {
-                Server.Misc.ExceptionLogging.WriteLine(err, new System.Diagnostics.StackFrame(0, true));
+                Server.Misc.ExceptionLogging.WriteLine(err, new System.Diagnostics.StackTrace(true));
                 from.SendMessage(0x40, "The targeted components have been modified. Please retry.");
                 fail = true;
             }
@@ -432,7 +432,7 @@ namespace {namespace}
                 }
                 catch (Exception e)
                 {
-                    Server.Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame());
+                    Server.Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace());
                     return;
                 }
 

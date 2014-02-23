@@ -6,27 +6,28 @@ namespace Server.Misc
 {
     public class ExceptionLogging
     {
-        int lineNumber = (new System.Diagnostics.StackFrame(0, true)).GetFileLineNumber();
 
-        public static void WriteLine(Exception e, StackFrame catcher)
+        public static void WriteLine(Exception e, StackTrace catcher)
         {
             WriteLine(e, catcher, "");
         }
 
-        public static void WriteLine(Exception e, StackFrame catcher, string infos)
+        public static void WriteLine(Exception e, StackTrace catcher, string infos)
         {
             string path = Directories.exceptions;
-            string filepath = Path.Combine(path, Directories.Today);
+            string filepath = Path.Combine(path, String.Format("{0}.log", Directories.Today));
 
             try
             {
                 using (StreamWriter sw = new StreamWriter(filepath, true))
                 {
                     sw.WriteLine("====================================");
-                    sw.WriteLine("EXCEPTION caught at {0} : line {1}", catcher.GetFileName(), catcher.GetFileLineNumber());
+                    sw.WriteLine("EXCEPTION caught at {0} : line {1}", catcher.GetFrame(0).GetFileName(), catcher.GetFrame(0).GetFileLineNumber());
                     if (infos != "")
                         sw.WriteLine("Additional infos: {0}", infos);
                     sw.WriteLine(e);
+                    sw.WriteLine();
+                    sw.WriteLine(catcher.ToString());
                     sw.WriteLine();
                 }
             }

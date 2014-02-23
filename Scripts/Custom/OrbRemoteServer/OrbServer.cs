@@ -115,7 +115,7 @@ namespace Server.Engines.OrbRemoteServer
 					}
 					catch(Exception e)
 					{
-						Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+						Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
 					}
 				}
 			}
@@ -138,7 +138,7 @@ namespace Server.Engines.OrbRemoteServer
 					}
 					catch(Exception e)
 					{
-						Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame(0, true));
+						Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
 					}
 				}
 			}

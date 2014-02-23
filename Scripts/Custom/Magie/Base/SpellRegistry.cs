@@ -95,7 +95,7 @@ namespace Server.Spells
 					}
 					catch (Exception ex)
 					{
-                        Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true), "Spell name : " + name);
+                        Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true), "Spell name : " + name);
 					}
 				}
 			}

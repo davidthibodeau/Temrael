@@ -206,7 +206,7 @@ namespace Server.Spells.Necromancy
                                     CombatManager.get().ConfigureCreature(bc, 
                                         Math.Max(1, ((TMobile)m_From).Niveau - 3 ));*/
 
-                                Console.WriteLine("{0} damage {1}:{2} speed:{3}", bc.Name, bc.DamageMin, bc.DamageMax, bc.AttackSpeed);
+                                //Console.WriteLine("{0} damage {1}:{2} speed:{3}", bc.Name, bc.DamageMin, bc.DamageMax, bc.AttackSpeed);
                             }
                         }
 					}

@@ -161,7 +161,7 @@ namespace Server.Gumps
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -253,7 +253,7 @@ namespace Server.Gumps
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
             }
         }
 
@@ -273,7 +273,7 @@ namespace Server.Gumps
                     }
                     catch (Exception e)
                     {
-                        Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackFrame());
+                        Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace());
                     }
 
                     if (from is TMobile)

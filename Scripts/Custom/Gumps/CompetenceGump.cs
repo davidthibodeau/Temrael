@@ -1116,6 +1116,11 @@ namespace Server.Gumps
                 if (info.ButtonID >= 200)
                 {
                     comp = (SkillName)(info.ButtonID - 200);
+                    if ((int)comp >= SkillInfo.Table.Length)
+                    {
+                        from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
+                        return;
+                    }
                     oldValue = Competences.GetValue(m_From, comp);
 
                     if (Competences.CanLower(m_From, comp))
@@ -1142,7 +1147,7 @@ namespace Server.Gumps
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackFrame(0, true));
+                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true), "buttonID :" + info.ButtonID + ", from : " + from.NetState);
             }
         }
     }
