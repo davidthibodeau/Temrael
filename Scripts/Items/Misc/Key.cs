@@ -79,7 +79,7 @@ namespace Server.Items
 				{
 					Key key = (Key) item;
 
-					if ( key.KeyValue == keyValue )
+					if ( key.KeyValue == keyValue && keyValue != 0 )
 						return true;
 				}
 				else
