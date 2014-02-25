@@ -956,7 +956,7 @@ namespace Server.Items
 
         [Constructable]
         public Hachette()
-            : base(0x2B14)
+            : base(0xF49)
         {
             Weight = 4.0;
             Name = "Hachette";
@@ -979,6 +979,7 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+            ItemID = 0xF49;
         }
     }
 }
