@@ -104,6 +104,14 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
+            if (from.AccessLevel < AccessLevel.GameMaster)
+            {
+                from.SendMessage("Vous ne pouvez utiliser cela.");
+                Misc.AbuseLogging.WriteLine(from, 
+                    String.Format("Ce joueur utilise la npcstatue au serial {0}.", this.Serial));
+                return;
+            }
+
             TMobile from2 = from as TMobile;
 
             if (this.activate == 0)
