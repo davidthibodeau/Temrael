@@ -2912,7 +2912,7 @@ namespace Server.Mobiles
 
             m_EndroitMort = Location;
 
-            if (m_Suicide)
+            if (m_Suicide && Region.Name != "Jail")
                 m_RisqueDeMort = true;
 
             if (!m_RisqueDeMort)
