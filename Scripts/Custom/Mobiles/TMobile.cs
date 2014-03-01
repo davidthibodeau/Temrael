@@ -2368,10 +2368,10 @@ namespace Server.Mobiles
 
         public override void DisplayPaperdollTo(Mobile to)
         {
-            string oldname = Name;
-            Name = GetNameUseBy(to);
+            //string oldname = Name;
+            //Name = GetNameUseBy(to);
             EventSink.InvokePaperdollRequest(new PaperdollRequestEventArgs(to, this));
-            Name = oldname;
+            //Name = oldname;
         }
 
         public override void OnSkillsQuery(Mobile from)
