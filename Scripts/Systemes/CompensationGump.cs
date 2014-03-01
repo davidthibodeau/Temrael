@@ -150,7 +150,7 @@ namespace Server.Systemes
         }
 
         public static ICollection<MJ> GetMJs()
-        { //J'suis pas certain que le precondition soit pertinent...
+        { //J'suis pas certain que la precondition soit pertinente...
 #if !MONO
             return compensationsIndexed;
 #else
@@ -278,8 +278,8 @@ namespace Server.Systemes
                 AddButton(383, basey + (i % 10) * 30 - 1, 4005, 4006, i + 10, GumpButtonType.Reply, 0);
                 
             }
-            AddButton(402, 411, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Page, 0);
-			AddButton(61, 410, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Page, 0);
+            AddButton(402, 411, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Reply, 0);
+			AddButton(61, 410, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Reply, 0);
 
         }
 
