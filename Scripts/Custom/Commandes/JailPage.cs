@@ -87,6 +87,8 @@ namespace Server.Scripts.Commands
                     if (m.AccessLevel <= from.AccessLevel && m.OldLocation != Point3D.Zero)
                     {
                         m.MoveToWorld(m.OldLocation, Map.Felucca);
+                        m.LogoutLocation = m.Location;
+                        m.LogoutMap = Map.Felucca;
                     }
                     else
                     {
