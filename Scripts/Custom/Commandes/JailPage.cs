@@ -122,6 +122,8 @@ namespace Server.Scripts.Commands
                     {
                         m.OldLocation = m.Location;
                         m.MoveToWorld(p, Map.Felucca);
+                        m.LogoutLocation = m.Location;
+                        m.LogoutMap = Map.Felucca;
                     }
                     else
                     {
