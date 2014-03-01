@@ -2399,42 +2399,48 @@ namespace Server.Mobiles
 
         public override bool OnMoveOver(Mobile m)
         {
-            if ((m.Hidden) || (Hidden))
+            if (m.Hidden && m.AccessLevel > AccessLevel.Player)
             {
                 return true;
             }
-            else
+            if (Hidden)
             {
-                if (!Mounted)
+                return true;
+            }
+            if (m.Hidden)
+            {
+                m.Hidden = false;
+            }
+            if (!Mounted)
+            {
+                if (m.Stam == m.StamMax)
                 {
-                    if (m.Stam == m.StamMax)
+                    if (m is TMobile)
                     {
-                        if (m is TMobile)
-                        {
-                            TMobile from = (TMobile)m;
-                            from.SendMessage("Vous poussez le personnage hors de votre chemin.");
-                            from.Stam -= 10;
-                            this.SendMessage("Vous etes pousse(e) hors du chemin par " + from.GetNameUseBy(this));
-                            return true;
-                        }
-                        else
-                        {
-                            m.SendMessage("Vous poussez le personnage hors de votre chemin.");
-                            m.Stam -= 10;
-                            this.SendMessage("Vous etes pousse(e) hors du chemin");
-                            return true;
-                        }
+                        TMobile from = (TMobile)m;
+                        from.SendMessage("Vous poussez le personnage hors de votre chemin.");
+                        from.Stam -= 10;
+                        this.SendMessage("Vous etes pousse(e) hors du chemin par " + from.GetNameUseBy(this));
+                        return true;
                     }
                     else
                     {
-                        return false;
+                        m.SendMessage("Vous poussez le personnage hors de votre chemin.");
+                        m.Stam -= 10;
+                        this.SendMessage("Vous etes pousse(e) hors du chemin");
+                        return true;
                     }
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
+            else
+            {
+                return true;
+            }
+            
         }
 
         public virtual int GetBaseAptitudeValue(NAptitude aptitude)
