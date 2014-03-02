@@ -698,7 +698,12 @@ namespace Server.Mobiles
 
 		private bool		m_IsPrisoner;
 
+        private int m_DetectionRange;
+
 		#endregion
+
+        [CommandProperty( AccessLevel.GameMaster )]
+        public virtual int DetectionRange { get { return m_DetectionRange; } set { m_DetectionRange = value; } }
 
 		public virtual InhumanSpeech SpeechType{ get{ return null; } }
 
@@ -2195,6 +2200,7 @@ namespace Server.Mobiles
 
 			m_iRangePerception = iRangePerception;
 			m_iRangeFight = iRangeFight;
+            m_DetectionRange = iRangePerception;
 
 			m_FightMode = mode;
 
@@ -2244,7 +2250,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 18 ); // version
+			writer.Write( (int) 19 ); // version
 
 			writer.Write( (int)m_CurrentAI );
 			writer.Write( (int)m_DefaultAI );
@@ -2381,6 +2387,9 @@ namespace Server.Mobiles
             writer.Write((string) m_QuestSpeechStart);
             writer.Write((string) m_QuestSpeechDuring);
             writer.Write((string) m_QuestSpeechComplete);
+
+            //Version 19
+            writer.Write((int)m_DetectionRange);
 		}
 
 		private static double[] m_StandardActiveSpeeds = new double[]
@@ -2615,6 +2624,9 @@ namespace Server.Mobiles
                 m_QuestSpeechDuring = reader.ReadString();
                 m_QuestSpeechComplete = reader.ReadString();
             }
+
+            if (version >= 19)
+                m_DetectionRange = reader.ReadInt();
 
 			if ( deleteTime > TimeSpan.Zero || LastOwner != null && !Controlled && !IsStabled )
 			{

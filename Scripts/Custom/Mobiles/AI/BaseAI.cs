@@ -2860,7 +2860,7 @@ namespace Server.Mobiles
 			if( srcSkill <= 0 )
 				return;
 
-			foreach( Mobile trg in m_Mobile.GetMobilesInRange( m_Mobile.RangePerception ) )
+			foreach( Mobile trg in m_Mobile.GetMobilesInRange( m_Mobile.DetectionRange ) )
 			{
 				if( trg != m_Mobile && trg.Player && trg.Alive && trg.Hidden && trg.AccessLevel == AccessLevel.Player && m_Mobile.InLOS( trg ) )
 				{

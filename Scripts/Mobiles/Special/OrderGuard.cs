@@ -18,6 +18,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public OrderGuard()
 		{
+            DetectionRange = 5;
 		}
 
 		public OrderGuard( Serial serial ) : base( serial )
