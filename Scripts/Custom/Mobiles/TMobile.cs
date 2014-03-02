@@ -1029,11 +1029,11 @@ namespace Server.Mobiles
             }
         }
 
-        public void Reset()
+        public void Reset(bool free)
         {
-            if (!FreeReset)
+            if (!FreeReset && !free)
                 XP = (int)(XP * 0.95);
-            else
+            else if (!free)
                 FreeReset = false;
 
             Statistiques.Reset(this);
