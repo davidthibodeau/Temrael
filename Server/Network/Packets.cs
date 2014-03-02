@@ -2872,6 +2872,19 @@ namespace Server.Network
 			m_Stream.Write( (int) m.Serial );
 			m_Stream.WriteAsciiFixed( name, 30 );
 		}
+
+        public MobileName( Mobile m, Mobile from ) : base( 0x98 )
+		{
+			//string name = m.Name;
+            string name = m.GetNameUseBy(from);
+
+			if ( name == null ) name = "";
+
+			this.EnsureCapacity( 37 );
+
+			m_Stream.Write( (int) m.Serial );
+			m_Stream.WriteAsciiFixed( name, 30 );
+		}
 	}
 
 	public sealed class MobileAnimation : Packet
@@ -2945,7 +2958,8 @@ namespace Server.Network
 
 		public MobileStatusExtended( Mobile m, NetState ns ) : base( 0x11 )
 		{
-			string name = m.Name;
+            Mobile from = ns.Mobile;
+			string name = m.GetNameUseBy(from);
 			if ( name == null ) name = "";
 
 			bool sendMLExtended = (Core.ML && ns != null && ns.SupportsExpansion( Expansion.ML ));

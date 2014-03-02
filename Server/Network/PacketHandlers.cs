@@ -543,7 +543,7 @@ namespace Server.Network
 			Mobile m = World.FindMobile( pvSrc.ReadInt32() );
 
 			if ( m != null && Utility.InUpdateRange( state.Mobile, m ) && state.Mobile.CanSee( m ) )
-				state.Send( new MobileName( m ) );
+				state.Send( new MobileName( m, state.Mobile ) );
 		}
 
 		public static void RequestScrollWindow( NetState state, PacketReader pvSrc )
