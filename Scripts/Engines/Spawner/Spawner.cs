@@ -935,10 +935,6 @@ namespace Server.Mobiles
 
 			if ( version < 3 && Weight == 0 )
 				Weight = -1;
-
-            //Revoir le temp de tous les spawners
-            m_MinDelay = TimeSpan.FromMinutes(30);
-            m_MaxDelay = TimeSpan.FromMinutes(45);
 		}
 
 		private class WarnTimer : Timer
