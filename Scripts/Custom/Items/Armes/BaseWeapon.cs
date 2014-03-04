@@ -1782,59 +1782,7 @@ namespace Server.Items
 
 		public virtual int AbsorbDamage( Mobile attacker, Mobile defender, int damage )
 		{
-			if ( Core.AOS )
-				return AbsorbDamageAOS( attacker, defender, damage );
-
-			double chance = Utility.RandomDouble();
-
-			Item armorItem;
-
-			if( chance < 0.07 )
-				armorItem = defender.NeckArmor;
-			else if( chance < 0.14 )
-				armorItem = defender.HandArmor;
-			else if( chance < 0.28 )
-				armorItem = defender.ArmsArmor;
-			else if( chance < 0.43 )
-				armorItem = defender.HeadArmor;
-			else if( chance < 0.65 )
-				armorItem = defender.LegsArmor;
-			else
-				armorItem = defender.ChestArmor;
-
-			IWearableDurability armor = armorItem as IWearableDurability;
-
-			if ( armor != null )
-				damage = armor.OnHit( this, damage );
-
-			BaseShield shield = defender.FindItemOnLayer( Layer.TwoHanded ) as BaseShield;
-			if ( shield != null )
-				damage = shield.OnHit( this, damage );
-
-			int virtualArmor = defender.VirtualArmor + defender.VirtualArmorMod;
-
-			if ( virtualArmor > 0 )
-			{
-				double scalar;
-
-				if ( chance < 0.14 )
-					scalar = 0.07;
-				else if ( chance < 0.28 )
-					scalar = 0.14;
-				else if ( chance < 0.43 )
-					scalar = 0.15;
-				else if ( chance < 0.65 )
-					scalar = 0.22;
-				else
-					scalar = 0.35;
-
-				int from = (int)(virtualArmor * scalar) / 2;
-				int to = (int)(virtualArmor * scalar);
-
-				damage -= Utility.Random( from, (to - from) + 1 );
-			}
-
-			return damage;
+            return AbsorbDamageAOS(attacker, defender, damage);
 		}
 
 		public virtual int GetPackInstinctBonus( Mobile attacker, Mobile defender )
