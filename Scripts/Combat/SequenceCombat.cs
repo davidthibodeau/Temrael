@@ -1,30 +1,36 @@
 ﻿using System;
 using Server.Mobiles;
 using Server.Items;
+using System.Collections;
 
 namespace Server.Combat
 {
     public class SequenceCombat
     {
         private Mobile attaquant;
-        private Mobile defenseur;
+        private BaseWeapon atkWeapon;
+        private double atkvalue;
 
+        private Mobile defenseur;
+        private BaseWeapon defWeapon;     
+        private double defvalue;
 
         public SequenceCombat(Mobile atk, Mobile def)
         {
             attaquant = atk;
             defenseur = def;
+
+            atkWeapon = attaquant.Weapon as BaseWeapon;
+			defWeapon = defenseur.Weapon as BaseWeapon;
+
+            atkvalue = attaquant.Skills[atkWeapon.Skill].Value;
+            defvalue = defenseur.Skills[defWeapon.Skill].Value;
         }
 
         public bool CheckHit()
         {
             double chance = 0;
 
-            BaseWeapon atkWeapon = attaquant.Weapon as BaseWeapon;
-			BaseWeapon defWeapon = defenseur.Weapon as BaseWeapon;
-            double atkvalue = attaquant.Skills[atkWeapon.Skill].Value;
-            double defvalue = defenseur.Skills[defWeapon.Skill].Value;
-            
             int materiaux = 0;
 
 			switch (atkWeapon.AccuracyLevel )
@@ -67,6 +73,131 @@ namespace Server.Combat
                 chance = 0.02;
 
             return chance >= Utility.RandomDouble();
+        }
+
+        //Precondition: attaquant is TMobile
+        public int CheckCriticalStrike(int dmg)
+        {
+            double chancetoCriticalStrike = 0.02;
+            TMobile atk = attaquant as TMobile;
+
+            if (attaquant.Mana < 4)
+                return 0;
+
+                chancetoCriticalStrike += atk.GetAptitudeValue(NAptitude.CoupPrecis) * 0.02;
+
+                if(defenseur is BaseCreature)
+                    chancetoCriticalStrike += atk.GetAptitudeValue(NAptitude.TueurDeMonstre) * 0.03;
+            
+
+            if (chancetoCriticalStrike > Utility.RandomDouble())
+            {
+                DoCriticalStrike();
+                return (int) (dmg * 0.25 * atk.GetAptitudeValue(NAptitude.CoupPuissant) * 0.05);
+            }
+            return 0;
+        }
+
+        //Precondition: attaquant is TMobile
+        private void DoCriticalStrike()
+        {
+            SkillName skill = atkWeapon.Skill;
+            TMobile atk = attaquant as TMobile;
+            StatType stat = StatType.All;
+
+            if (skill == SkillName.ArmeDistance || skill == SkillName.ArmePerforante)
+            {
+                if (defenseur.Frozen)
+                    defenseur.Frozen = false;
+                double val = 1 + atk.GetAptitudeValue(NAptitude.CoupPuissant) * 0.5;
+                defenseur.Freeze(TimeSpan.FromSeconds(val));
+
+                stat = StatType.Dex;
+            }
+            else if (skill == SkillName.ArmeContondante)
+            {
+                int dmg = (int) atkWeapon.GetAosDamage(attaquant, 0, 0, 0);
+
+                defenseur.Damage(dmg, attaquant);
+
+                stat = StatType.Con;
+            }
+            else if (skill == SkillName.ArmeTranchante)
+            {
+                // Attaque rotative. Est-ce qu'elles arrivent a quelque part d'autre?
+                Map map = attaquant.Map;
+                ArrayList targets = new ArrayList();
+
+                if (map != null)
+                {
+                    int tile = atkWeapon.MaxRange;
+
+                    if (0.10 > Utility.RandomDouble())
+                        tile++;
+
+                    if (0.60 > Utility.RandomDouble())
+                        tile++;
+
+                    foreach (Mobile m in attaquant.GetMobilesInRange((int)tile))
+                    {
+                        if (attaquant != m && attaquant.Party != defenseur.Party)
+                            targets.Add(m);
+                    }
+
+                    for (int i = 0; i < targets.Count; ++i)
+                    {
+                        Mobile m = (Mobile)targets[i];
+                        if (attaquant.HarmfulCheck(m) && CheckHit())
+                            atkWeapon.OnHit(attaquant, m);
+                        else
+                            atkWeapon.OnMiss(attaquant, m);
+                    }
+                }
+
+                stat = StatType.Str;
+            }
+            else if (skill == SkillName.ArmePoing)
+            {
+                 if (attaquant.HarmfulCheck(defenseur) && CheckHit())
+                    atkWeapon.OnHit(attaquant, defenseur);
+                else
+                    atkWeapon.OnMiss(attaquant, defenseur);
+
+                 stat = StatType.Int;
+            }
+
+
+            double scale = 1 + atk.GetAptitudeValue(NAptitude.CoupPuissant) * 0.05;
+
+            attaquant.SendMessage("Vous portez un coup critique!");
+            defenseur.AddStatMod(new StatMod(stat, atkWeapon.Serial + "Critical Strike", (int)(-1 * (atkvalue / 5) * scale), TimeSpan.FromSeconds(atkvalue * scale / 2)));
+            defenseur.SendMessage("Vous subissez un coup critique!");
+
+            attaquant.PlaySound(284);
+        }
+
+        public bool CheckParer() 
+        {
+            BaseShield shield = defenseur.FindItemOnLayer( Layer.TwoHanded ) as BaseShield;
+
+            double parry = defenseur.Skills[SkillName.Parer].Value;
+            double chance = 0;
+
+            if (shield != null)
+            {
+                chance = parry / 300;
+                if (chance < 0)
+                    chance = 0;
+            }
+            else if (!(defenseur.Weapon is Fists) && !(defenseur.Weapon is BaseRanged))
+            {
+                chance = parry / (defWeapon.Layer == Layer.OneHanded ? 800 : 600);
+            }
+
+            if (defenseur.Dex < 70)
+                chance = chance * (20 + defenseur.Dex) / 100;
+
+            return defenseur.CheckSkill(SkillName.Parer, chance);
         }
     }
 }

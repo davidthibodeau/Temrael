@@ -1554,10 +1554,10 @@ namespace Server.Items
 					}
 				}
                 SequenceCombat combat = new SequenceCombat(attacker, defender);
-				if ( combat.CheckHit() )
-					OnHit( attacker, defender, damageBonus );
-				else
-					OnMiss( attacker, defender );
+                if (combat.CheckHit())
+                    OnHit(attacker, defender, damageBonus);
+                else
+                    OnMiss(attacker, defender);
 			}
 
 			return GetDelay( attacker );
@@ -1593,84 +1593,6 @@ namespace Server.Items
 		}
 		#endregion
 
-		public static bool CheckParry( Mobile attacker, Mobile defender )
-		{
-			if ( defender == null )
-				return false;
-
-			BaseShield shield = defender.FindItemOnLayer( Layer.TwoHanded ) as BaseShield;
-
-			double parry = defender.Skills[SkillName.Parer].Value;
-            double attack = attacker.Skills[SkillName.Tactiques].Value;
-			//double bushidoNonRacial = defender.Skills[SkillName.Bushido].NonRacialValue;
-			//double bushido = defender.Skills[SkillName.Bushido].Value;
-
-			if ( shield != null )
-			{
-                double chance = parry / 300.0;
-                // Revue des chances de parré a la baisse Parry/90 => parry / 300 , soit, un coup sur 3
-                //double chance = (parry - bushidoNonRacial) / 400.0;	// As per OSI, no negitive effect from the Racial stuffs, ie, 120 parry and '0' bushido with humans
-
-                if (chance < 0) // chance shouldn't go below 0
-                    chance = 0;
-
-                // Parry/Bushido over 100 grants a 5% bonus.
-                //if ( parry >= 100.0 || bushido >= 100.0)
-                //	chance += 0.05;
-
-                // Evasion grants a variable bonus post ML. 50% prior.
-                //if ( Evasion.IsEvading( defender ) )
-                //	chance *= Evasion.GetParryScalar( defender );
-
-                // Low dexterity lowers the chance.
-                if (defender.Dex < 70)
-                    chance = chance * (20 + defender.Dex) / 100;
-                // Revue du malus de Dex a 70, le cap dex max des orcish , si tu investies moins, tu prends le malus .
-                /*if (defender is TMobile)
-                    chance += (int)((TMobile)defender).GetAptitudeValue(NAptitude.Parade);*/
-
-                return defender.CheckSkill(SkillName.Parer, chance);
-			}
-			else if ( !(defender.Weapon is Fists) && !(defender.Weapon is BaseRanged) )
-			{
-				BaseWeapon weapon = defender.Weapon as BaseWeapon;
-
-                double divisor = (weapon.Layer == Layer.OneHanded) ? 800 : 600.0;
-
-				//double chance = (parry * bushido) / divisor;
-
-                double chance = parry / divisor;
-
-				// Parry or Bushido over 100 grant a 5% bonus.
-				if( parry >= 100.0 )
-				{
-					chance += 0.05;
-				//	aosChance += 0.05;
-				}
-				//else if( bushido >= 100.0 )
-				//{
-				//	chance += 0.05;
-				//}
-
-				// Evasion grants a variable bonus post ML. 50% prior.
-				//if( Evasion.IsEvading( defender ) )
-				//	chance *= Evasion.GetParryScalar( defender );
-
-				// Low dexterity lowers the chance.
-				if( defender.Dex < 70 )
-					chance = chance * (20 + defender.Dex) / 100;
-
-                /*if (defender is TMobile)
-                    chance += (int)((TMobile)defender).GetAptitudeValue(NAptitude.Parade);*/
-
-				//if ( chance > aosChance )
-					return defender.CheckSkill( SkillName.Parer, chance );
-				//else
-				//	return (aosChance > Utility.RandomDouble()); // Only skillcheck if wielding a shield & there's no effect from Bushido
-			}
-
-			return false;
-		}
 
 		public virtual int AbsorbDamageAOS( Mobile attacker, Mobile defender, int damage )
 		{
@@ -1678,7 +1600,8 @@ namespace Server.Items
 
 			if ( defender.Player || defender.Body.IsHuman )
 			{
-				blocked = CheckParry( attacker, defender );
+                SequenceCombat combat = new SequenceCombat(attacker, defender);
+				blocked = combat.CheckParer();
 
 				if ( blocked )
 				{
@@ -2084,27 +2007,6 @@ namespace Server.Items
                 attacker.PlaySound(488);
             }
 
-            double chancetoCriticalStrike = 0.02;
-
-            if (attacker.Mana >= 4 && attacker is TMobile)
-            {
-                chancetoCriticalStrike += ((TMobile)attacker).GetAptitudeValue(NAptitude.CoupPrecis) * 0.02;
-            }
-
-            if (attacker.Mana >= 4 && attacker is TMobile && defender is BaseCreature)
-            {
-                chancetoCriticalStrike += ((TMobile)attacker).GetAptitudeValue(NAptitude.TueurDeMonstre) * 0.03;
-            }
-
-            bool isCritical = false;
-
-            if (chancetoCriticalStrike > Utility.RandomDouble())
-            {
-                isCritical = true;
-                
-                DoCriticalStrike(attacker, defender);
-            }
-
 			#region Damage Multipliers
 			/*
 			 * The following damage bonuses multiply damage by a factor.
@@ -2240,10 +2142,10 @@ namespace Server.Items
             if (defender is BaseCreature && attacker is TMobile)
                 damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(NAptitude.TueurDeMonstre) * 0.05));
 
-            if (attacker is TMobile && isCritical)
+            if (attacker is TMobile)
             {
-                damage += Convert.ToInt32((damage * 0.25));
-                damage += Convert.ToInt32((damage * ((TMobile)attacker).GetAptitudeValue(NAptitude.CoupPuissant) * 0.05));
+                SequenceCombat combat = new SequenceCombat(attacker, defender);
+                damage += combat.CheckCriticalStrike(damage);
             }
 
 			#endregion
@@ -2752,136 +2654,38 @@ namespace Server.Items
 		}
 		#endregion
 
-		public virtual CheckSlayerResult CheckSlayers( Mobile attacker, Mobile defender )
-		{
-			BaseWeapon atkWeapon = attacker.Weapon as BaseWeapon;
-			SlayerEntry atkSlayer = SlayerGroup.GetEntryByName( atkWeapon.Slayer );
-			SlayerEntry atkSlayer2 = SlayerGroup.GetEntryByName( atkWeapon.Slayer2 );
-
-			if ( atkSlayer != null && atkSlayer.Slays( defender )  || atkSlayer2 != null && atkSlayer2.Slays( defender ) )
-				return CheckSlayerResult.Slayer;
-
-			BaseTalisman talisman = attacker.Talisman as BaseTalisman;
-
-			if ( talisman != null && TalismanSlayer.Slays( talisman.Slayer, defender ) )
-				return CheckSlayerResult.Slayer;
-
-			if ( !Core.SE )
-			{
-				ISlayer defISlayer = Spellbook.FindEquippedSpellbook( defender );
-
-				if( defISlayer == null )
-					defISlayer = defender.Weapon as ISlayer;
-
-				if( defISlayer != null )
-				{
-					SlayerEntry defSlayer = SlayerGroup.GetEntryByName( defISlayer.Slayer );
-					SlayerEntry defSlayer2 = SlayerGroup.GetEntryByName( defISlayer.Slayer2 );
-
-					if( defSlayer != null && defSlayer.Group.OppositionSuperSlays( attacker ) || defSlayer2 != null && defSlayer2.Group.OppositionSuperSlays( attacker ) )
-						return CheckSlayerResult.Opposition;
-				}
-			}
-
-			return CheckSlayerResult.None;
-		}
-
-        public virtual void DoCriticalStrike(Mobile attacker, Mobile defender)
+        public virtual CheckSlayerResult CheckSlayers(Mobile attacker, Mobile defender)
         {
-            if (attacker == null || defender == null)
-                return;
+            BaseWeapon atkWeapon = attacker.Weapon as BaseWeapon;
+            SlayerEntry atkSlayer = SlayerGroup.GetEntryByName(atkWeapon.Slayer);
+            SlayerEntry atkSlayer2 = SlayerGroup.GetEntryByName(atkWeapon.Slayer2);
 
-            SkillName skill = Skill;
+            if (atkSlayer != null && atkSlayer.Slays(defender) || atkSlayer2 != null && atkSlayer2.Slays(defender))
+                return CheckSlayerResult.Slayer;
 
-            double scale = 1;
+            BaseTalisman talisman = attacker.Talisman as BaseTalisman;
 
-            if (attacker is TMobile)
-                scale += ((TMobile)attacker).GetAptitudeValue(NAptitude.CoupPuissant) * 0.05;
+            if (talisman != null && TalismanSlayer.Slays(talisman.Slayer, defender))
+                return CheckSlayerResult.Slayer;
 
-            if (skill == SkillName.ArmeDistance || skill == SkillName.ArmePerforante)
+            if (!Core.SE)
             {
-                double fencing = attacker.Skills[SkillName.ArmePerforante].Value;
+                ISlayer defISlayer = Spellbook.FindEquippedSpellbook(defender);
 
-                attacker.SendMessage("Vous portez un coup critique!");
+                if (defISlayer == null)
+                    defISlayer = defender.Weapon as ISlayer;
 
-                if (defender.Frozen)
-                    defender.Frozen = false;
-
-                double val = 1;
-
-                if (attacker is TMobile)
-                    val += ((TMobile)attacker).GetAptitudeValue(NAptitude.CoupPuissant) * 0.5;
-
-                defender.Freeze(TimeSpan.FromSeconds(val));
-                defender.AddStatMod(new StatMod(StatType.Dex, Serial + "Critical Strike", (int)(-1 * (fencing / 5) * scale), TimeSpan.FromSeconds(fencing * scale / 2)));
-                defender.SendMessage("Vous subissez un coup critique!");
-            }
-            else if (skill == SkillName.ArmeContondante)
-            {
-                double macing = attacker.Skills[SkillName.ArmeContondante].Value;
-
-                attacker.SendMessage("Vous portez un coup critique!");
-                defender.AddStatMod(new StatMod(StatType.Con, Serial + "Critical Strike", (int)(-1 * (macing / 5) * scale), TimeSpan.FromSeconds(macing * scale / 2)));
-                defender.SendMessage("Vous subissez un coup critique!");
-
-                int dmg = (int)GetAosDamage(attacker, 0, 0, 0);
-
-                defender.Damage(dmg, attacker);
-            }
-            else if (skill == SkillName.ArmeTranchante)
-            {
-                double swords = attacker.Skills[SkillName.ArmeTranchante].Value;
-
-                attacker.SendMessage("Vous portez un coup critique!");
-                defender.AddStatMod(new StatMod(StatType.Str, Serial + "Critical Strike", (int)(-1 * (swords / 5) * scale), TimeSpan.FromSeconds(swords * scale / 2)));
-                defender.SendMessage("Vous subissez un coup critique!");
-
-                Map map = attacker.Map;
-                ArrayList targets = new ArrayList();
-
-                if (map != null)
+                if (defISlayer != null)
                 {
-                    int tile = this.MaxRange;
+                    SlayerEntry defSlayer = SlayerGroup.GetEntryByName(defISlayer.Slayer);
+                    SlayerEntry defSlayer2 = SlayerGroup.GetEntryByName(defISlayer.Slayer2);
 
-                    if (0.10 > Utility.RandomDouble())
-                        tile++;
-
-                    if (0.60 > Utility.RandomDouble())
-                        tile++;
-
-                    foreach (Mobile m in attacker.GetMobilesInRange((int)tile))
-                    {
-                        if (attacker != m && !(attacker.Party == defender.Party))
-                            targets.Add(m);
-                    }
-
-                    for (int i = 0; i < targets.Count; ++i)
-                    {
-                        Mobile m = (Mobile)targets[i];
-                        SequenceCombat combat = new SequenceCombat(attacker, defender);
-                        if (attacker.HarmfulCheck(m) && combat.CheckHit())
-                            OnHit(attacker, m);
-                        else
-                            OnMiss(attacker, m);
-                    }
+                    if (defSlayer != null && defSlayer.Group.OppositionSuperSlays(attacker) || defSlayer2 != null && defSlayer2.Group.OppositionSuperSlays(attacker))
+                        return CheckSlayerResult.Opposition;
                 }
             }
-            else if (skill == SkillName.ArmePoing)
-            {
-                double wrestling = attacker.Skills[SkillName.ArmePoing].Value;
 
-                attacker.SendMessage("Vous portez un coup critique!");
-                defender.AddStatMod(new StatMod(StatType.Int, Serial + "Critical Strike", (int)(-1 * (wrestling / 5) * scale), TimeSpan.FromSeconds(wrestling * scale / 2)));
-                defender.SendMessage("Vous subissez un coup critique!");
-
-                SequenceCombat combat = new SequenceCombat(attacker, defender);
-                if (attacker.HarmfulCheck(defender) && combat.CheckHit())
-                    OnHit(attacker, defender);
-                else
-                    OnMiss(attacker, defender);
-            }
-
-            attacker.PlaySound(284);
+            return CheckSlayerResult.None;
         }
 
 		public virtual void AddBlood( Mobile attacker, Mobile defender, int damage )
