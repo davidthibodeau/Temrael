@@ -439,9 +439,10 @@ namespace Server.Systemes
                 else
                 {
                     from.SendMessage("Veuillez indiquer l'index du personnage qui recevra l'expérience.");
-                    for (int i = 0; i < acc.Count; i++)
+                    for (int i = 0; i < acc.Length; i++)
                     {
-                        from.SendMessage("#" + i + ". " + acc[i].Name);
+                        if(acc[i] != null)
+                            from.SendMessage("#" + i + ". " + acc[i].Name);
                     }
                     from.Prompt = new IndexPJPrompt(nomMJ, acc);
                 }
