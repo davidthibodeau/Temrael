@@ -480,7 +480,7 @@ namespace Server.Systemes
                     try
                     {
                         int index = Convert.ToInt32(text);
-                        if (index < 0 || index >= accPJ.Count)
+                        if (index < 0 || index >= accPJ.Length || accPJ[index] == null)
                         {
                             from.SendMessage("L'index que vous avez entré est invalide. Veuillez réessayer.");
                             from.Prompt = new IndexPJPrompt(nomMJ, accPJ);
