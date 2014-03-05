@@ -118,7 +118,7 @@ namespace Server.Misc
 			{
                 string fileName = String.Format("{0}.log", Directories.Now);
 
-                string rootCrash = Directories.AppendPath(Directories.backups, "CrashReports");
+                string rootCrash = Directories.AppendPath(Directories.errors, "Crashes");
 				string filePath = Path.Combine( rootCrash, fileName );
 
 				using ( StreamWriter op = new StreamWriter( filePath ) )
