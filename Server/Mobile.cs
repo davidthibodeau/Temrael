@@ -703,11 +703,7 @@ namespace Server
         public int XP
         {
             get { return m_XP; }
-            set { 
-                m_XP = value;
-                if ((!(this.m_Map == Map.Internal)) && (!(this.m_Map == null)))
-                m_NetState.Send(new MobileStatus(this, this)); 
-            }
+            set { m_XP = value; }
         }
         private int m_Cha, m_Con, m_Sag;
 

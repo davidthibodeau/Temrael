@@ -2988,7 +2988,7 @@ namespace Server.Network
 			m_Stream.Write( (short) m.Mana );
 			m_Stream.Write( (short) m.ManaMax );
 
-            m_Stream.Write((int)m.XP);
+            m_Stream.Write((int)m.TotalGold);
 
 			//m_Stream.Write( (int) m.TotalGold );
 			m_Stream.Write( (short) (Core.AOS ? m.PhysicalResistance : (int)(m.ArmorRating + 0.5)) );
@@ -3086,7 +3086,7 @@ namespace Server.Network
 				WriteAttr( beheld.Stam, beheld.StamMax );
 				WriteAttr( beheld.Mana, beheld.ManaMax );
 
-                m_Stream.Write( (int) beheld.XP );
+                m_Stream.Write( (int) beheld.TotalGold );
 
 				//m_Stream.Write( (int) beheld.TotalGold );
 				m_Stream.Write( (short) (Core.AOS ? beheld.PhysicalResistance : (int)(beheld.ArmorRating + 0.5)) );
