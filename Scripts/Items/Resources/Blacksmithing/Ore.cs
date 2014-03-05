@@ -73,6 +73,8 @@ namespace Server.Items
 					break;
 				}
 			}
+
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 
 		public BaseOre( CraftResource resource ) : this( resource, 1 )

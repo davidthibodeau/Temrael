@@ -2099,6 +2099,11 @@ namespace Server.Items
 
             if (version < 7)
                 m_PlayerConstructed = true; // we don't know, so, assume it's crafted
+
+            //Devrait reset les couleurs des armures au reboot.
+            if (!DefTailoring.IsNonColorable(this.GetType()))
+                Hue = CraftResources.GetHue(m_Resource);
+                    
         }
 
         public virtual CraftResource DefaultResource { get { return CraftResource.Fer; } }

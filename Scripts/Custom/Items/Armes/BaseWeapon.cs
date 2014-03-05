@@ -3659,6 +3659,8 @@ namespace Server.Items
 
 			if ( version < 6 )
 				m_PlayerConstructed = true; // we don't know, so, assume it's crafted
+
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 		#endregion
 
