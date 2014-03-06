@@ -40,6 +40,7 @@ namespace Server
             Mobile from = e.Mobile;
 
             from.SendMessage("Veuillez choisir le joueur que vous désirez reset.");
+            from.Target = new ResetTarget();
         }
 
         private class ResetTarget : Target
