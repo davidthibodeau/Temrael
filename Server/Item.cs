@@ -1237,6 +1237,12 @@ namespace Server
 
             public override void OnClick()
             {
+
+                if (!m_From.InRange(m_Item, 1))
+                {
+                    m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir décrire un objet.");
+                    return;
+                }
                 if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
                 {
                     m_From.Prompt = new DecrirePrompt(m_From, m_Item);
@@ -1303,6 +1309,12 @@ namespace Server
 
             public override void OnClick()
             {
+                if (!m_From.InRange(m_Item, 1))
+                {
+                    m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir déstatiquer un objet.");
+                    return;
+                }
+
                 if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
                 {
                     m_Item.SetLastMoved();
