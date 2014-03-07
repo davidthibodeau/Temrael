@@ -15,7 +15,7 @@ namespace Server.Spells.Second
             );
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Benedictions }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
 
         public PenaceeMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -44,7 +44,7 @@ namespace Server.Spells.Second
                     double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.Miracles].Value * 75) - ((p.Level + 1) * 2500);
                     chanceToCure /= 100;
 
-                    chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure, NAptitude.FaveurDivine);
+                    chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure, Aptitude.FaveurDivine);
 
                     if ((int)chanceToCure > Utility.Random(100))
                     {

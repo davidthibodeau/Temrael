@@ -71,7 +71,7 @@ namespace Server.Items
 
             for (int i = 0; i < 105; i++)
             {
-                NAptitude entry = (NAptitude)i;
+                Aptitude entry = (Aptitude)i;
                // DivineSpellBookEntry entry = (DivineSpellBookEntry)NewDivineSpellbookGump.m_DivineSpellBookEntry[i];
 
                 if (entry != null)

@@ -19,7 +19,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
         public PourritureDEspritSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -54,7 +54,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(1);
 
-                double scalar = SpellHelper.AdjustValue(Caster, 1 + (Caster.Skills[SkillName.ArtMagique].Value) / 1000, NAptitude.Sorcellerie);
+                double scalar = SpellHelper.AdjustValue(Caster, 1 + (Caster.Skills[SkillName.ArtMagique].Value) / 1000, Aptitude.Sorcellerie);
                 SetMindRotScalar(Caster, m, scalar, duration);
 			}
 

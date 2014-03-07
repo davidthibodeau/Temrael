@@ -18,7 +18,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 6; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Benedictions }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Benedictions }; } }
 
         public MiracleSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

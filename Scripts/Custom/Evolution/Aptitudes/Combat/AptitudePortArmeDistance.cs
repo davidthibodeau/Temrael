@@ -8,7 +8,7 @@ namespace Server
     public class AptitudePortArmeDistance
     {
         private static string m_name = "Arme de Distance";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.PortArmeDistance];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.PortArmeDistance];
         private static int m_tooltip = 3006311;
         private static string m_description = "Permet le port d'armes de distance.";
         private static string m_note = string.Empty;

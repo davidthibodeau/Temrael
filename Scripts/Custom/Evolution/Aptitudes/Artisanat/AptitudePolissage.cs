@@ -8,7 +8,7 @@ namespace Server
     public class AptitudePolissage
     {
         private static string m_name = "Polissage";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Polissage];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Polissage];
         private static int m_tooltip = 3006299;
         private static string m_description = "Augmente les chances de créer un objet exceptionel.";
         private static string m_note = string.Empty;

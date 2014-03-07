@@ -20,7 +20,7 @@ namespace Server.Spells.Fifth
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Alteration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Alteration }; } }
 
 		public MagicReflectSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -59,7 +59,7 @@ namespace Server.Spells.Fifth
                     double value = Caster.Skills[SkillName.Mysticisme].Value + Caster.Skills[SkillName.ArtMagique].Value;
                     value = 4 + (value / 300) * 7.0;//absorb from 4 to 15 "circles"
 
-                    value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+                    value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
                     Caster.MagicDamageAbsorb = (int)value;
 

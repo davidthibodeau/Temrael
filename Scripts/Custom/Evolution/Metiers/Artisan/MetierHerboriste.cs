@@ -15,16 +15,16 @@ namespace Server
 
         private static ClasseAptitudes[] m_Aptitudes = new ClasseAptitudes[]
             {
-               	new ClasseAptitudes(10, NAptitude.Hermetisme, 10),
-                new ClasseAptitudes(9, NAptitude.Hermetisme, 9),
-                new ClasseAptitudes(8, NAptitude.Hermetisme, 8),
-                new ClasseAptitudes(7, NAptitude.Hermetisme, 7),
-                new ClasseAptitudes(6, NAptitude.Hermetisme, 6),
-                new ClasseAptitudes(5, NAptitude.Hermetisme, 5),
-                new ClasseAptitudes(4, NAptitude.Hermetisme, 4),
-                new ClasseAptitudes(3, NAptitude.Hermetisme, 3),
-                new ClasseAptitudes(2, NAptitude.Hermetisme, 2),
-                new ClasseAptitudes(1, NAptitude.Hermetisme, 1),
+               	new ClasseAptitudes(10, Aptitude.Hermetisme, 10),
+                new ClasseAptitudes(9, Aptitude.Hermetisme, 9),
+                new ClasseAptitudes(8, Aptitude.Hermetisme, 8),
+                new ClasseAptitudes(7, Aptitude.Hermetisme, 7),
+                new ClasseAptitudes(6, Aptitude.Hermetisme, 6),
+                new ClasseAptitudes(5, Aptitude.Hermetisme, 5),
+                new ClasseAptitudes(4, Aptitude.Hermetisme, 4),
+                new ClasseAptitudes(3, Aptitude.Hermetisme, 3),
+                new ClasseAptitudes(2, Aptitude.Hermetisme, 2),
+                new ClasseAptitudes(1, Aptitude.Hermetisme, 1),
             };
 
         public static MetierInfo MetierInfo = new MetierInfo(

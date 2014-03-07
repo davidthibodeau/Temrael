@@ -25,34 +25,34 @@ namespace Server
 
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 3),
-                new ClasseAptitudes(NAptitude.Assassinat, 3),
-                new ClasseAptitudes(NAptitude.MouvementCache, 1)
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 3),
+                new ClasseAptitudes(Aptitude.Assassinat, 3),
+                new ClasseAptitudes(Aptitude.MouvementCache, 1)
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 4),
-                new ClasseAptitudes(NAptitude.Assassinat, 6),
-                new ClasseAptitudes(NAptitude.MouvementCache, 3)
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 4),
+                new ClasseAptitudes(Aptitude.Assassinat, 6),
+                new ClasseAptitudes(Aptitude.MouvementCache, 3)
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 5),
-                new ClasseAptitudes(NAptitude.Assassinat, 9),
-                new ClasseAptitudes(NAptitude.MouvementCache, 6)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 5),
+                new ClasseAptitudes(Aptitude.Assassinat, 9),
+                new ClasseAptitudes(Aptitude.MouvementCache, 6)
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 3),
-                new ClasseAptitudes(NAptitude.PortArme, 6),
-                new ClasseAptitudes(NAptitude.Assassinat, 12),
-                new ClasseAptitudes(NAptitude.MouvementCache, 8)
+                new ClasseAptitudes(Aptitude.PortArmure, 3),
+                new ClasseAptitudes(Aptitude.PortArme, 6),
+                new ClasseAptitudes(Aptitude.Assassinat, 12),
+                new ClasseAptitudes(Aptitude.MouvementCache, 8)
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(

@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCoupPrecis
     {
         private static string m_name = "Coup Precis";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.CoupPrecis];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.CoupPrecis];
         private static int m_tooltip = 3006305;
         private static string m_description = "Augmente les chances des coups critiques.";
         private static string m_note = string.Empty;

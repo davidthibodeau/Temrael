@@ -514,7 +514,7 @@ namespace Server.Spells
                         int maxPDP = m_Entries[i].MaxPDP;
                         int mana = m_Entries[i].Mana;
 
-                        int pouvoirdivin = m_From.GetAptitudeValue(NAptitude.GraceDivine);
+                        int pouvoirdivin = m_From.GetAptitudeValue(Aptitude.GraceDivine);
 
                         minPDP = (int)(minPDP * (1 + pouvoirdivin * 0.03));
                         maxPDP = (int)(maxPDP * (1 + pouvoirdivin * 0.03));

@@ -26,16 +26,16 @@ namespace Server
                 new ClasseAptitudes(2, NAptitude.Boucherie, 2),
                 new ClasseAptitudes(1, NAptitude.Boucherie, 1),*/
 				
-				new ClasseAptitudes(10, NAptitude.Tanneur, 5),
-                new ClasseAptitudes(9, NAptitude.Boucherie, 5),
-                new ClasseAptitudes(8, NAptitude.Tanneur, 4),
-                new ClasseAptitudes(7, NAptitude.Boucherie, 4),
-                new ClasseAptitudes(6, NAptitude.Tanneur, 3),
-                new ClasseAptitudes(5, NAptitude.Boucherie, 3),
-                new ClasseAptitudes(4, NAptitude.Tanneur, 2),
-                new ClasseAptitudes(3, NAptitude.Boucherie, 2),
-                new ClasseAptitudes(2, NAptitude.Tanneur, 1),
-                new ClasseAptitudes(1, NAptitude.Boucherie, 1)
+				new ClasseAptitudes(10, Aptitude.Tanneur, 5),
+                new ClasseAptitudes(9, Aptitude.Boucherie, 5),
+                new ClasseAptitudes(8, Aptitude.Tanneur, 4),
+                new ClasseAptitudes(7, Aptitude.Boucherie, 4),
+                new ClasseAptitudes(6, Aptitude.Tanneur, 3),
+                new ClasseAptitudes(5, Aptitude.Boucherie, 3),
+                new ClasseAptitudes(4, Aptitude.Tanneur, 2),
+                new ClasseAptitudes(3, Aptitude.Boucherie, 2),
+                new ClasseAptitudes(2, Aptitude.Tanneur, 1),
+                new ClasseAptitudes(1, Aptitude.Boucherie, 1)
             };
 
         public static MetierInfo MetierInfo = new MetierInfo(

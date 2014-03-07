@@ -59,20 +59,20 @@ namespace Server
     public class ClasseAptitudes
     {
         private int m_niveau;
-        private NAptitude m_Aptitude;
+        private Aptitude m_Aptitude;
         private int m_Value;
 
         public int Niveau { get { return m_niveau; } }
-        public NAptitude Aptitude { get { return m_Aptitude; } }
+        public Aptitude Aptitude { get { return m_Aptitude; } }
         public int Value { get { return m_Value; } }
 
-        public ClasseAptitudes(NAptitude aptitude, int value)
+        public ClasseAptitudes(Aptitude aptitude, int value)
         {
             m_Aptitude = aptitude;
             m_Value = value;
         }
 
-        public ClasseAptitudes(int niveau, NAptitude aptitude, int value)
+        public ClasseAptitudes(int niveau, Aptitude aptitude, int value)
         {
             m_niveau = niveau;
             m_Aptitude = aptitude;
@@ -170,7 +170,7 @@ namespace Server
             return true;
         }
 
-        public static int GetAptitudeValue(TMobile from, ClasseType classe, NAptitude aptitude)
+        public static int GetAptitudeValue(TMobile from, ClasseType classe, Aptitude aptitude)
         {
             ClasseInfo info = GetInfos(classe);
             ClasseAptitudes[] apt = null;

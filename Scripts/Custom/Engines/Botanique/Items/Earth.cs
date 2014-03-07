@@ -48,7 +48,7 @@ namespace Server.Items
             {
                 TMobile m = (TMobile)from;
 
-                if (m.GetAptitudeValue(NAptitude.Botanique) > 0)
+                if (m.GetAptitudeValue(Aptitude.Botanique) > 0)
                     LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType)));
             }
         }

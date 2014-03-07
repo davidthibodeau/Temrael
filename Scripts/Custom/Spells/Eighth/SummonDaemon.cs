@@ -20,7 +20,7 @@ namespace Server.Spells.Eighth
 			);
 
         public override int RequiredAptitudeValue { get { return 12; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Invocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
 
 		public SummonDaemonSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

@@ -19,7 +19,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Thaumaturgie }; } }
 
         public RevelationSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -49,7 +49,7 @@ namespace Server.Spells
 
 				if ( map != null )
 				{
-                    double tile = SpellHelper.AdjustValue(Caster, 4 + (int)(Caster.Skills[SkillName.ArtMagique].Value / 50.0), NAptitude.Sorcellerie);
+                    double tile = SpellHelper.AdjustValue(Caster, 4 + (int)(Caster.Skills[SkillName.ArtMagique].Value / 50.0), Aptitude.Sorcellerie);
 
 					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), (int)tile );
 

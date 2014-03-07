@@ -17,7 +17,7 @@ namespace Server.Spells.Sixth
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
 
 		public EnergyBoltSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -45,7 +45,7 @@ namespace Server.Spells.Sixth
               //  double damage = Utility.RandomMinMax(40, 80);
                 double damage = Utility.RandomMinMax(30, 40);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                 if (CheckResisted(m))
                 {

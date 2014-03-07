@@ -20,7 +20,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Thaumaturgie }; } }
 
         public DissipationSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -64,7 +64,7 @@ namespace Server.Spells
                     if (bc != null)
                         dispelChance = (50.0 + ((100 * (Caster.Skills.ArtMagique.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
 
-                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, NAptitude.Sorcellerie);
+                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, Aptitude.Sorcellerie);
 
                     if (dispelChance > Utility.RandomDouble())
                     {
@@ -88,7 +88,7 @@ namespace Server.Spells
                     if (pm != null)
                         dispelChance = (Caster.Skills.ArtMagique.Value - pm.Skills[SkillName.Concentration].Value + 1) / 120;
 
-                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, NAptitude.Sorcellerie);
+                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, Aptitude.Sorcellerie);
 
                     if (m == Caster)
                         dispelChance = 1;

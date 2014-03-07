@@ -16,7 +16,7 @@ namespace Server.Spells.Second
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
 
 		public AgilitySpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

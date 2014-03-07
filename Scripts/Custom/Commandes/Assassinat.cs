@@ -37,7 +37,7 @@ namespace Server.Scripts.Commands
                 {
                     pm.SendMessage("Vous devez avoir une arme a une main pour assassiner !");
                 }
-                else if (pm != null && pm.GetAptitudeValue(NAptitude.Assassinat) > 0)
+                else if (pm != null && pm.GetAptitudeValue(Aptitude.Assassinat) > 0)
                 {
                     from.Target = new AssassinatTarget();
                 }
@@ -87,7 +87,7 @@ namespace Server.Scripts.Commands
                                     double checkhitscale = 0;
 
                                     //if (pm.Hidden)
-                                        checkhitscale = (pm.GetAptitudeValue(NAptitude.Assassinat) * 0.1);
+                                        checkhitscale = (pm.GetAptitudeValue(Aptitude.Assassinat) * 0.1);
 
                                     /*if (pm.GetAptitudeValue(NAptitude.Assassinat) > 0)
                                         checkhitscale = (pm.GetAptitudeValue(NAptitude.Assassinat) * 0.05);*/
@@ -118,7 +118,7 @@ namespace Server.Scripts.Commands
 
                                     BaseWeapon weapon = ((BaseWeapon)pm.FindItemOnLayer(Layer.OneHanded));
 
-                                    double hitscale = (weapon.MaxDamage * 1.7) * (1 + (pm.GetAptitudeValue(NAptitude.Assassinat) * 0.2));
+                                    double hitscale = (weapon.MaxDamage * 1.7) * (1 + (pm.GetAptitudeValue(Aptitude.Assassinat) * 0.2));
 
                                     SequenceCombat combat = new SequenceCombat(pm, defender);
                                     if (combat.CheckHit())

@@ -21,7 +21,7 @@ namespace Server.Spells
 			);
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
 
         public SeismeSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -45,7 +45,7 @@ namespace Server.Spells
 
                     if (map != null)
                     {
-                        foreach (Mobile m in Caster.GetMobilesInRange((int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Destruction].Value / 15, NAptitude.Sorcellerie, true)))
+                        foreach (Mobile m in Caster.GetMobilesInRange((int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Destruction].Value / 15, Aptitude.Sorcellerie, true)))
                         {
                             if (Caster != m && SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false) && (!Core.AOS || Caster.InLOS(m)) && !(Caster.Party == m.Party))
                                 m_target.Add(m);

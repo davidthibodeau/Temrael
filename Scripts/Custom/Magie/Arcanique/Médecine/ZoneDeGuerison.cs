@@ -20,7 +20,7 @@ namespace Server.Spells
 			);
 
         public override int RequiredAptitudeValue { get { return 6; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
 
         public ZoneDeGuerisonSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -50,7 +50,7 @@ namespace Server.Spells
 
 				if ( map != null )
 				{
-                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Restoration].Value / 50, NAptitude.Sorcellerie, true));
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Restoration].Value / 50, Aptitude.Sorcellerie, true));
 
 					foreach ( Mobile m in eable )
 					{

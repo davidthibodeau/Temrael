@@ -18,7 +18,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Monial }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
 
         public AppelDeLaNatureSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -47,7 +47,7 @@ namespace Server.Spells
                 Effects.SendLocationEffect(p, Caster.Map, 14120, 20, 10, 1441, 0); //p, map, item, duration, speed, hue, render
                 Effects.PlaySound(p, Caster.Map, 494);//p map sound
 
-                foreach(Mobile m in Caster.Map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 10 + Caster.Skills[CastSkill].Base / 4, NAptitude.Sorcellerie, true)))
+                foreach(Mobile m in Caster.Map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 10 + Caster.Skills[CastSkill].Base / 4, Aptitude.Sorcellerie, true)))
                 {
                     if (m != null && !(m is BaseVendor) && m is BaseCreature && ((BaseCreature)m).DefaultAI == AIType.AI_Animal)
                     {

@@ -25,50 +25,50 @@ namespace Server
 
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortBouclier, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 2),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 2),
-                new ClasseAptitudes(NAptitude.LibreDeplacement, 2),
-                new ClasseAptitudes(NAptitude.Depistage, 1),
-                new ClasseAptitudes(NAptitude.Resilience, 1),
-                new ClasseAptitudes(NAptitude.Familier, 1)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortBouclier, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 2),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 2),
+                new ClasseAptitudes(Aptitude.LibreDeplacement, 2),
+                new ClasseAptitudes(Aptitude.Depistage, 1),
+                new ClasseAptitudes(Aptitude.Resilience, 1),
+                new ClasseAptitudes(Aptitude.Familier, 1)
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortBouclier, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 3),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 3),
-                new ClasseAptitudes(NAptitude.LibreDeplacement, 5),
-                new ClasseAptitudes(NAptitude.Depistage, 2),
-                new ClasseAptitudes(NAptitude.Resilience, 2),
-                new ClasseAptitudes(NAptitude.Familier, 3)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortBouclier, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 3),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 3),
+                new ClasseAptitudes(Aptitude.LibreDeplacement, 5),
+                new ClasseAptitudes(Aptitude.Depistage, 2),
+                new ClasseAptitudes(Aptitude.Resilience, 2),
+                new ClasseAptitudes(Aptitude.Familier, 3)
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortBouclier, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 3),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 4),
-                new ClasseAptitudes(NAptitude.LibreDeplacement, 7),
-                new ClasseAptitudes(NAptitude.Depistage, 3),
-                new ClasseAptitudes(NAptitude.Resilience, 3),
-                new ClasseAptitudes(NAptitude.Familier, 4)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortBouclier, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 3),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 4),
+                new ClasseAptitudes(Aptitude.LibreDeplacement, 7),
+                new ClasseAptitudes(Aptitude.Depistage, 3),
+                new ClasseAptitudes(Aptitude.Resilience, 3),
+                new ClasseAptitudes(Aptitude.Familier, 4)
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 3),
-                new ClasseAptitudes(NAptitude.PortBouclier, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 4),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 5),
-                new ClasseAptitudes(NAptitude.LibreDeplacement, 10),
-                new ClasseAptitudes(NAptitude.Depistage, 4),
-                new ClasseAptitudes(NAptitude.Resilience, 4),
-                new ClasseAptitudes(NAptitude.Familier, 6)
+                new ClasseAptitudes(Aptitude.PortArmure, 3),
+                new ClasseAptitudes(Aptitude.PortBouclier, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 4),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 5),
+                new ClasseAptitudes(Aptitude.LibreDeplacement, 10),
+                new ClasseAptitudes(Aptitude.Depistage, 4),
+                new ClasseAptitudes(Aptitude.Resilience, 4),
+                new ClasseAptitudes(Aptitude.Familier, 6)
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(

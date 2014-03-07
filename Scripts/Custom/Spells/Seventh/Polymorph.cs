@@ -25,7 +25,7 @@ namespace Server.Spells.Seventh
             );
 
         public override int RequiredAptitudeValue { get { return 8; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
 
 		private int m_NewBody;
 
@@ -167,7 +167,7 @@ namespace Server.Spells.Seventh
 
                 double duration = ((int)owner.Skills[SkillName.Reve].Value * 800) + 120;
 
-                duration = SpellHelper.AdjustValue(owner, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(owner, duration, Aptitude.Spiritisme);
 
                 if (duration > 920)
                     duration = 920;

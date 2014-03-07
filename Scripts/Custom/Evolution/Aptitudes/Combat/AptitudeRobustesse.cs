@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeRobustesse
     {
         private static string m_name = "Robustesse";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Robustesse];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Robustesse];
         private static int m_tooltip = 3006314;
         private static string m_description = "Augmente la résistance du personnage aux dégâts physiques.";
         private static string m_note = "Réduction des dégâts reçus.";

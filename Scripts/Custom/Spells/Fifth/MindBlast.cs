@@ -19,7 +19,7 @@ namespace Server.Spells.Fifth
             );
 
         public override int RequiredAptitudeValue { get { return 6; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
 
 		public MindBlastSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -48,7 +48,7 @@ namespace Server.Spells.Fifth
 
                 double damage = (intel - m.Int) / 2.5;
 
-                damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                 if (CheckResisted(m))
 				{

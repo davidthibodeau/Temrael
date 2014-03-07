@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeTueurDeMonstre
     {
         private static string m_name = "Tueur de Monstre";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.TueurDeMonstre];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.TueurDeMonstre];
         private static int m_tooltip = 3006302;
         private static string m_description = "Augmente les dégâts, la réduction de dégâts et les chances de porter des coups critiques contre les animaux et créatures.";
         private static string m_note = string.Empty;

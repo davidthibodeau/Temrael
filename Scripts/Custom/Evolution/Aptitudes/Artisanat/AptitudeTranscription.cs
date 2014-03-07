@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeTranscription
     {
         private static string m_name = "Transcription";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Transcription];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Transcription];
         private static int m_tooltip = 3006300;
         private static string m_description = "Permet d'écrire des parchemins magiques.";
         private static string m_note = string.Empty;

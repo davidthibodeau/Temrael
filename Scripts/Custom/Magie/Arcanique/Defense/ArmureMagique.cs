@@ -20,7 +20,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
 
         public ArmureMagiqueSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -34,7 +34,7 @@ namespace Server.Spells
 
             value += Caster.Skills[SkillName.Soins].Value * 0.4;
 
-            value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+            value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
             if (value < 0)
                 value = 1;

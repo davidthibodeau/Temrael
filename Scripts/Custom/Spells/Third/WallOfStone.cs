@@ -20,7 +20,7 @@ namespace Server.Spells.Third
             );
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Invocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
 
 		public WallOfStoneSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -118,7 +118,7 @@ namespace Server.Spells.Third
 
                 double duration = 30.0;
 
-                duration = SpellHelper.AdjustValue(caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(caster, duration, Aptitude.Spiritisme);
 
                 m_Timer = new InternalTimer(this, TimeSpan.FromSeconds(duration));
 				m_Timer.Start();

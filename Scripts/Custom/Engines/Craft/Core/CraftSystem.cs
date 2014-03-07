@@ -244,7 +244,7 @@ namespace Server.Engines.Craft
 			craftItem.AddSkill(skillToMake, minSkill, maxSkill);
 		}
 
-        public void AddAptitude(int index, NAptitude aptitudeToMake, int required)
+        public void AddAptitude(int index, Aptitude aptitudeToMake, int required)
         {
             CraftItem craftItem = m_CraftItems.GetAt(index);
             craftItem.AddAptitude(aptitudeToMake, required);

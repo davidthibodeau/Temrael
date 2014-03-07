@@ -153,7 +153,7 @@ namespace Server.Mobiles
 
             if (from is TMobile)
             {
-                max += ((TMobile)from).GetAptitudeValue(NAptitude.Familier);
+                max += ((TMobile)from).GetAptitudeValue(Aptitude.Familier);
             }
 
 			if ( taming >= 100.0 )

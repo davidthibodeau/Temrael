@@ -17,7 +17,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Fanatisme }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Fanatisme }; } }
 
 		public SpiritualiteSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -46,7 +46,7 @@ namespace Server.Spells
                 TimeSpan delay = TimeSpan.FromSeconds(11 - Caster.Skills[CastSkill].Value / 20);
 
                 int amount = (int)(2 + Caster.Skills[CastSkill].Base / 20);
-                amount = (int)SpellHelper.AdjustValue(m, amount, NAptitude.Sorcellerie);
+                amount = (int)SpellHelper.AdjustValue(m, amount, Aptitude.Sorcellerie);
 
                 StopTimer(m);
 

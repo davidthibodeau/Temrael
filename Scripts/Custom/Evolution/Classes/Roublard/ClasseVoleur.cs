@@ -25,38 +25,38 @@ namespace Server
 
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 1),
-                new ClasseAptitudes(NAptitude.Cambriolage, 3),
-                new ClasseAptitudes(NAptitude.Derobage, 2),
-                new ClasseAptitudes(NAptitude.Pillage, 2)
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 1),
+                new ClasseAptitudes(Aptitude.Cambriolage, 3),
+                new ClasseAptitudes(Aptitude.Derobage, 2),
+                new ClasseAptitudes(Aptitude.Pillage, 2)
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 2),
-                new ClasseAptitudes(NAptitude.Cambriolage, 6),
-                new ClasseAptitudes(NAptitude.Derobage, 4),
-                new ClasseAptitudes(NAptitude.Pillage, 4)
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 2),
+                new ClasseAptitudes(Aptitude.Cambriolage, 6),
+                new ClasseAptitudes(Aptitude.Derobage, 4),
+                new ClasseAptitudes(Aptitude.Pillage, 4)
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 2),
-                new ClasseAptitudes(NAptitude.Cambriolage, 9),
-                new ClasseAptitudes(NAptitude.Derobage, 6),
-                new ClasseAptitudes(NAptitude.Pillage, 6)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 2),
+                new ClasseAptitudes(Aptitude.Cambriolage, 9),
+                new ClasseAptitudes(Aptitude.Derobage, 6),
+                new ClasseAptitudes(Aptitude.Pillage, 6)
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 3),
-                new ClasseAptitudes(NAptitude.Cambriolage, 12),
-                new ClasseAptitudes(NAptitude.Derobage, 8),
-                new ClasseAptitudes(NAptitude.Pillage, 8)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 3),
+                new ClasseAptitudes(Aptitude.Cambriolage, 12),
+                new ClasseAptitudes(Aptitude.Derobage, 8),
+                new ClasseAptitudes(Aptitude.Pillage, 8)
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(

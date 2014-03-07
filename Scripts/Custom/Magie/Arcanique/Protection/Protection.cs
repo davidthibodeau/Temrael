@@ -22,7 +22,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Protection }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Protection }; } }
 
         public ProtectSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -40,7 +40,7 @@ namespace Server.Spells
                 double value = (int)(Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Restoration].Value);
                 value /= 15;
 
-                value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
                 m.VirtualArmorMod += (int)value;
                 m.UpdateResistances();

@@ -18,7 +18,7 @@ namespace Server.Spells.First
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
 
         public Voile(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -52,7 +52,7 @@ namespace Server.Spells.First
                     {
                         double value = Utility.Random(15, 25);
 
-                        value = SpellHelper.AdjustValue(m_Spell.Caster, value, NAptitude.Spiritisme);
+                        value = SpellHelper.AdjustValue(m_Spell.Caster, value, Aptitude.Spiritisme);
 
                         new LightCycle.NightSightTimer(targ).Start();
 

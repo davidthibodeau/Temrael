@@ -8,7 +8,7 @@ namespace Server
     public class AptitudePortArmure
     {
         private static string m_name = "Port d'Armure";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.PortArmure];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.PortArmure];
         private static int m_tooltip = 3006311;
         private static string m_description = "Permet le port d'armures.";
         private static string m_note = "Voir le port de bouclier pour les boucliers et pavois.";

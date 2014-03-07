@@ -18,7 +18,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
 		public CorpseSkinSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -50,14 +50,14 @@ namespace Server.Spells.Necromancy
 
                 double value = GetDamageSkill(Caster) / 12;
 
-                value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
                 if (value > 10)
                     value = 10;
 
                 double duration = ((ss - mr) / 2.5) + 30.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
                 if (duration > 60)
                     duration = 60;

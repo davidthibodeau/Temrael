@@ -19,7 +19,7 @@ namespace Server.Spells.Fourth
             );
 
         public override int RequiredAptitudeValue { get { return 6; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
 
 		public ManaDrainSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -56,7 +56,7 @@ namespace Server.Spells.Fourth
                 else
                     manaLost = Utility.Random(1, m.Mana);
 
-                manaLost = SpellHelper.AdjustValue(Caster, manaLost, NAptitude.Sorcellerie);
+                manaLost = SpellHelper.AdjustValue(Caster, manaLost, Aptitude.Sorcellerie);
 
                 if (manaLost > 100)
                     manaLost = 100;

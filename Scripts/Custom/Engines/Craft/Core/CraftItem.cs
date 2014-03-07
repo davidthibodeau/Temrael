@@ -154,7 +154,7 @@ namespace Server.Engines.Craft
 			CraftSkill craftSkill = new CraftSkill( skillToMake, minSkill, maxSkill );
 			m_arCraftSkill.Add( craftSkill );
 		}
-        public void AddAptitude(NAptitude aptitudeToMake, int required)
+        public void AddAptitude(Aptitude aptitudeToMake, int required)
         {
             CraftAptitude craftAptitude = new CraftAptitude(aptitudeToMake, required);
             m_arCraftAptitude.Add(craftAptitude);
@@ -872,7 +872,7 @@ namespace Server.Engines.Craft
             double bonus = 0;
 
             if (from is TMobile)
-                bonus += ((TMobile)from).GetAptitudeValue(NAptitude.Polissage) * 0.04;
+                bonus += ((TMobile)from).GetAptitudeValue(Aptitude.Polissage) * 0.04;
 
             return chance * 0.20 + bonus;
 		}
@@ -1229,15 +1229,15 @@ namespace Server.Engines.Craft
 
                     switch (craftSystem.MainSkill)
                     {
-                        case SkillName.Alchimie: value = pm.GetAptitudeValue(NAptitude.Hermetisme); break;
-                        case SkillName.Forge: value = pm.GetAptitudeValue(NAptitude.Metallurgie); break;
-                        case SkillName.Couture: value = pm.GetAptitudeValue(NAptitude.Broderie); break;
+                        case SkillName.Alchimie: value = pm.GetAptitudeValue(Aptitude.Hermetisme); break;
+                        case SkillName.Forge: value = pm.GetAptitudeValue(Aptitude.Metallurgie); break;
+                        case SkillName.Couture: value = pm.GetAptitudeValue(Aptitude.Broderie); break;
                         //case SkillName.Fletching: value = pm.GetAptitudeValue(NAptitude.FabricationArc); break;
-                        case SkillName.Menuiserie: value = pm.GetAptitudeValue(NAptitude.Ebenisterie); break;
-                        case SkillName.Inscription: value = pm.GetAptitudeValue(NAptitude.Transcription); break;
-                        case SkillName.Bricolage: value = pm.GetAptitudeValue(NAptitude.Invention); break;
+                        case SkillName.Menuiserie: value = pm.GetAptitudeValue(Aptitude.Ebenisterie); break;
+                        case SkillName.Inscription: value = pm.GetAptitudeValue(Aptitude.Transcription); break;
+                        case SkillName.Bricolage: value = pm.GetAptitudeValue(Aptitude.Invention); break;
                         //case SkillName.RemoveTrap: value = pm.GetAptitudeValue(NAptitude.Piegeage); break;
-                        case SkillName.Cuisine: value = pm.GetAptitudeValue(NAptitude.Cuisson); break;
+                        case SkillName.Cuisine: value = pm.GetAptitudeValue(Aptitude.Cuisson); break;
                         default: value = 12; break;
                     }
                 }
@@ -1364,7 +1364,7 @@ namespace Server.Engines.Craft
             //Console.WriteLine("chance :" + chance.ToString());
 
             if (from is TMobile)
-                chance += ((TMobile)from).GetAptitudeValue(NAptitude.Fignolage) * 0.04;
+                chance += ((TMobile)from).GetAptitudeValue(Aptitude.Fignolage) * 0.04;
 
             return ScaleChance(from, craftSystem, chance);
 		}

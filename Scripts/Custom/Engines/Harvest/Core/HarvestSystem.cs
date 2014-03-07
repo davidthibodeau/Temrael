@@ -227,13 +227,13 @@ namespace Server.Engines.Harvest
 
                                 if (def.Skill == SkillName.Foresterie)
                                 {
-                                    if (tmob.GetAptitudeValue(NAptitude.Forestier) * 5 > rand.Next(0, 100))
-                                        consumed += tmob.GetAptitudeValue(NAptitude.Forestier) / 3;
+                                    if (tmob.GetAptitudeValue(Aptitude.Forestier) * 5 > rand.Next(0, 100))
+                                        consumed += tmob.GetAptitudeValue(Aptitude.Forestier) / 3;
                                 }
                                 else if (def.Skill == SkillName.Excavation)
                                 {
-                                    if (tmob.GetAptitudeValue(NAptitude.Mineur) * 5 > rand.Next(0, 100))
-                                        consumed += tmob.GetAptitudeValue(NAptitude.Mineur) / 3;
+                                    if (tmob.GetAptitudeValue(Aptitude.Mineur) * 5 > rand.Next(0, 100))
+                                        consumed += tmob.GetAptitudeValue(Aptitude.Mineur) / 3;
                                 }
                             }
 

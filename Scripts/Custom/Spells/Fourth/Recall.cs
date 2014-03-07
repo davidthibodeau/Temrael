@@ -22,7 +22,7 @@ namespace Server.Spells.Fourth
             );
 
         public override int RequiredAptitudeValue { get { return 7; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
 
 		private RunebookEntry m_Entry;
 		private Runebook m_Book;

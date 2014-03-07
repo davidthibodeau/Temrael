@@ -6,7 +6,7 @@ using Server.Gumps;
 
 namespace Server
 {
-    public enum NAptitude
+    public enum Aptitude
     {
         Boucherie = 0,
         Broderie,
@@ -90,7 +90,7 @@ namespace Server
 
     public class AptitudesEntry
     {
-        private NAptitude m_Aptitude;
+        private Aptitude m_Aptitude;
         private int m_Max;
         private SkillName m_Skill;
         private double m_FirstSkill;
@@ -110,7 +110,7 @@ namespace Server
         private int m_ThirdApt;
         private ClasseBranche m_Type;
 
-        public NAptitude Aptitude { get { return m_Aptitude; } }
+        public Aptitude Aptitude { get { return m_Aptitude; } }
         public int Max { get { return m_Max; } }
         public SkillName Skill { get { return m_Skill; } }
         public double FirstSkill { get { return m_FirstSkill; } }
@@ -130,7 +130,7 @@ namespace Server
         public int ThirdApt { get { return m_ThirdApt; } }
         public ClasseBranche Type { get { return m_Type; } }
 
-        public AptitudesEntry(NAptitude aptitude, int max, SkillName skill, double firstSkillReq, double secondSkillReq, double thirdSkillReq, double fourthSkillReq, double fifthSkillReq, double sixthSkillReq, double seventhSkillReq, double eighthSkillReq, double ninthSkillReq, double tenthSkillReq, double eleventhSkillReq, double twelvethSkillReq, int firstAptReq, int secondAptReq, int thirdAptReq, ClasseBranche type)
+        public AptitudesEntry(Aptitude aptitude, int max, SkillName skill, double firstSkillReq, double secondSkillReq, double thirdSkillReq, double fourthSkillReq, double fifthSkillReq, double sixthSkillReq, double seventhSkillReq, double eighthSkillReq, double ninthSkillReq, double tenthSkillReq, double eleventhSkillReq, double twelvethSkillReq, int firstAptReq, int secondAptReq, int thirdAptReq, ClasseBranche type)
         {
             m_Aptitude = aptitude;
             m_Max = max;
@@ -187,80 +187,80 @@ namespace Server
     public sealed class Aptitudes : BaseAptitudes
     {
         #region AptitudeInfo
-        public static AptitudeInfo GetInfos(NAptitude aptitude)
+        public static AptitudeInfo GetInfos(Aptitude aptitude)
         {
             AptitudeInfo info = null;
 
             switch (aptitude)
             {
-                case NAptitude.Boucherie: info = AptitudeBoucherie.AptitudeInfo; break;
-                case NAptitude.Broderie: info = AptitudeBroderie.AptitudeInfo; break;
-                case NAptitude.Commerce: info = AptitudeCommerce.AptitudeInfo; break;
-                case NAptitude.Cuisson: info = AptitudeCuisson.AptitudeInfo; break;
-                case NAptitude.Ebenisterie: info = AptitudeEbenisterie.AptitudeInfo; break;
-                case NAptitude.Fignolage: info = AptitudeFignolage.AptitudeInfo; break;
-                case NAptitude.Forestier: info = AptitudeForestier.AptitudeInfo; break;
-                case NAptitude.Hermetisme: info = AptitudeHermetisme.AptitudeInfo; break;
-                case NAptitude.Invention: info = AptitudeInvention.AptitudeInfo; break;
-                case NAptitude.Metallurgie: info = AptitudeMetallurgie.AptitudeInfo; break;
-                case NAptitude.Mineur: info = AptitudeMineur.AptitudeInfo; break;
-                case NAptitude.Polissage: info = AptitudePolissage.AptitudeInfo; break;
-                case NAptitude.Tanneur: info = AptitudeTanneur.AptitudeInfo; break;
-                case NAptitude.Transcription: info = AptitudeTranscription.AptitudeInfo; break;
+                case Aptitude.Boucherie: info = AptitudeBoucherie.AptitudeInfo; break;
+                case Aptitude.Broderie: info = AptitudeBroderie.AptitudeInfo; break;
+                case Aptitude.Commerce: info = AptitudeCommerce.AptitudeInfo; break;
+                case Aptitude.Cuisson: info = AptitudeCuisson.AptitudeInfo; break;
+                case Aptitude.Ebenisterie: info = AptitudeEbenisterie.AptitudeInfo; break;
+                case Aptitude.Fignolage: info = AptitudeFignolage.AptitudeInfo; break;
+                case Aptitude.Forestier: info = AptitudeForestier.AptitudeInfo; break;
+                case Aptitude.Hermetisme: info = AptitudeHermetisme.AptitudeInfo; break;
+                case Aptitude.Invention: info = AptitudeInvention.AptitudeInfo; break;
+                case Aptitude.Metallurgie: info = AptitudeMetallurgie.AptitudeInfo; break;
+                case Aptitude.Mineur: info = AptitudeMineur.AptitudeInfo; break;
+                case Aptitude.Polissage: info = AptitudePolissage.AptitudeInfo; break;
+                case Aptitude.Tanneur: info = AptitudeTanneur.AptitudeInfo; break;
+                case Aptitude.Transcription: info = AptitudeTranscription.AptitudeInfo; break;
 
-                case NAptitude.Barbarisme: info = AptitudeBarbarisme.AptitudeInfo; break;
-                case NAptitude.CombatAuSol: info = AptitudeCombatAuSol.AptitudeInfo; break;
-                case NAptitude.CombatMonte: info = AptitudeCombatMonte.AptitudeInfo; break;
-                case NAptitude.Commandement: info = AptitudeCommandement.AptitudeInfo; break;
-                case NAptitude.CoupPrecis: info = AptitudeCoupPrecis.AptitudeInfo; break;
-                case NAptitude.CoupPuissant: info = AptitudeCoupPuissant.AptitudeInfo; break;
-                case NAptitude.CoupRenversant: info = AptitudeCoupRenversant.AptitudeInfo; break;
-                case NAptitude.Endurance: info = AptitudeEndurance.AptitudeInfo; break;
-                case NAptitude.Esquive: info = AptitudeEsquive.AptitudeInfo; break;
-                case NAptitude.Parade: info = AptitudeParade.AptitudeInfo; break;
-                case NAptitude.PortArmure: info = AptitudePortArmure.AptitudeInfo; break;
-                case NAptitude.PortArme: info = AptitudePortArme.AptitudeInfo; break;
-                case NAptitude.PortArmeDistance: info = AptitudePortArmeDistance.AptitudeInfo; break;
-                case NAptitude.PortBouclier: info = AptitudePortBouclier.AptitudeInfo; break;
-                case NAptitude.Precision: info = AptitudePrecision.AptitudeInfo; break;
-                case NAptitude.Resistance: info = AptitudeResistance.AptitudeInfo; break;
-                case NAptitude.Robustesse: info = AptitudeRobustesse.AptitudeInfo; break;
-                case NAptitude.Strategie: info = AptitudeStrategie.AptitudeInfo; break;
-                case NAptitude.TirPrecis: info = AptitudeTirPrecis.AptitudeInfo; break;
-                case NAptitude.TueurDeMonstre: info = AptitudeTueurDeMonstre.AptitudeInfo; break;
+                case Aptitude.Barbarisme: info = AptitudeBarbarisme.AptitudeInfo; break;
+                case Aptitude.CombatAuSol: info = AptitudeCombatAuSol.AptitudeInfo; break;
+                case Aptitude.CombatMonte: info = AptitudeCombatMonte.AptitudeInfo; break;
+                case Aptitude.Commandement: info = AptitudeCommandement.AptitudeInfo; break;
+                case Aptitude.CoupPrecis: info = AptitudeCoupPrecis.AptitudeInfo; break;
+                case Aptitude.CoupPuissant: info = AptitudeCoupPuissant.AptitudeInfo; break;
+                case Aptitude.CoupRenversant: info = AptitudeCoupRenversant.AptitudeInfo; break;
+                case Aptitude.Endurance: info = AptitudeEndurance.AptitudeInfo; break;
+                case Aptitude.Esquive: info = AptitudeEsquive.AptitudeInfo; break;
+                case Aptitude.Parade: info = AptitudeParade.AptitudeInfo; break;
+                case Aptitude.PortArmure: info = AptitudePortArmure.AptitudeInfo; break;
+                case Aptitude.PortArme: info = AptitudePortArme.AptitudeInfo; break;
+                case Aptitude.PortArmeDistance: info = AptitudePortArmeDistance.AptitudeInfo; break;
+                case Aptitude.PortBouclier: info = AptitudePortBouclier.AptitudeInfo; break;
+                case Aptitude.Precision: info = AptitudePrecision.AptitudeInfo; break;
+                case Aptitude.Resistance: info = AptitudeResistance.AptitudeInfo; break;
+                case Aptitude.Robustesse: info = AptitudeRobustesse.AptitudeInfo; break;
+                case Aptitude.Strategie: info = AptitudeStrategie.AptitudeInfo; break;
+                case Aptitude.TirPrecis: info = AptitudeTirPrecis.AptitudeInfo; break;
+                case Aptitude.TueurDeMonstre: info = AptitudeTueurDeMonstre.AptitudeInfo; break;
 
-                case NAptitude.Assassinat: info = AptitudeAssassinat.AptitudeInfo; break;
-                case NAptitude.Cambriolage: info = AptitudeCambriolage.AptitudeInfo; break;
-                case NAptitude.Composition: info = AptitudeComposition.AptitudeInfo; break;
-                case NAptitude.Deguisement: info = AptitudeDeguisement.AptitudeInfo; break;
-                case NAptitude.Depistage: info = AptitudeDepistage.AptitudeInfo; break;
-                case NAptitude.Derobage: info = AptitudeDerobage.AptitudeInfo; break;
-                case NAptitude.Evasion: info = AptitudeEvasion.AptitudeInfo; break;
-                case NAptitude.Familier: info = AptitudeFamilier.AptitudeInfo; break;
-                case NAptitude.LibreDeplacement: info = AptitudeLibreDeplacement.AptitudeInfo; break;
-                case NAptitude.MouvementCache: info = AptitudeMouvementCache.AptitudeInfo; break;
-                case NAptitude.Pillage: info = AptitudePillage.AptitudeInfo; break;
-                case NAptitude.Resilience: info = AptitudeResilience.AptitudeInfo; break;
+                case Aptitude.Assassinat: info = AptitudeAssassinat.AptitudeInfo; break;
+                case Aptitude.Cambriolage: info = AptitudeCambriolage.AptitudeInfo; break;
+                case Aptitude.Composition: info = AptitudeComposition.AptitudeInfo; break;
+                case Aptitude.Deguisement: info = AptitudeDeguisement.AptitudeInfo; break;
+                case Aptitude.Depistage: info = AptitudeDepistage.AptitudeInfo; break;
+                case Aptitude.Derobage: info = AptitudeDerobage.AptitudeInfo; break;
+                case Aptitude.Evasion: info = AptitudeEvasion.AptitudeInfo; break;
+                case Aptitude.Familier: info = AptitudeFamilier.AptitudeInfo; break;
+                case Aptitude.LibreDeplacement: info = AptitudeLibreDeplacement.AptitudeInfo; break;
+                case Aptitude.MouvementCache: info = AptitudeMouvementCache.AptitudeInfo; break;
+                case Aptitude.Pillage: info = AptitudePillage.AptitudeInfo; break;
+                case Aptitude.Resilience: info = AptitudeResilience.AptitudeInfo; break;
 
-                case NAptitude.Adjuration: info = AptitudeAdjuration.AptitudeInfo; break;
-                case NAptitude.Alteration: info = AptitudeAlteration.AptitudeInfo; break;
-                case NAptitude.DispenseComposante: info = AptitudeDispenseComposante.AptitudeInfo; break;
-                case NAptitude.Evocation: info = AptitudeEvocation.AptitudeInfo; break;
-                case NAptitude.Illusion: info = AptitudeIllusion.AptitudeInfo; break;
-                case NAptitude.Incantation: info = AptitudeIncantation.AptitudeInfo; break;
-                case NAptitude.Invocation: info = AptitudeInvocation.AptitudeInfo; break;
-                case NAptitude.Necromancie: info = AptitudeNecromancie.AptitudeInfo; break;
-                case NAptitude.PortArmeMagique: info = AptitudePortArmeMagique.AptitudeInfo; break;
-                case NAptitude.Receptacle: info = AptitudeReceptacle.AptitudeInfo; break;
-                case NAptitude.Sorcellerie: info = AptitudeSorcellerie.AptitudeInfo; break;
-                case NAptitude.SortDeMasse: info = AptitudeSortDeMasse.AptitudeInfo; break;
-                case NAptitude.Spiritisme: info = AptitudeSpiritisme.AptitudeInfo; break;
-                case NAptitude.Thaumaturgie: info = AptitudeThaumaturgie.AptitudeInfo; break;
+                case Aptitude.Adjuration: info = AptitudeAdjuration.AptitudeInfo; break;
+                case Aptitude.Alteration: info = AptitudeAlteration.AptitudeInfo; break;
+                case Aptitude.DispenseComposante: info = AptitudeDispenseComposante.AptitudeInfo; break;
+                case Aptitude.Evocation: info = AptitudeEvocation.AptitudeInfo; break;
+                case Aptitude.Illusion: info = AptitudeIllusion.AptitudeInfo; break;
+                case Aptitude.Incantation: info = AptitudeIncantation.AptitudeInfo; break;
+                case Aptitude.Invocation: info = AptitudeInvocation.AptitudeInfo; break;
+                case Aptitude.Necromancie: info = AptitudeNecromancie.AptitudeInfo; break;
+                case Aptitude.PortArmeMagique: info = AptitudePortArmeMagique.AptitudeInfo; break;
+                case Aptitude.Receptacle: info = AptitudeReceptacle.AptitudeInfo; break;
+                case Aptitude.Sorcellerie: info = AptitudeSorcellerie.AptitudeInfo; break;
+                case Aptitude.SortDeMasse: info = AptitudeSortDeMasse.AptitudeInfo; break;
+                case Aptitude.Spiritisme: info = AptitudeSpiritisme.AptitudeInfo; break;
+                case Aptitude.Thaumaturgie: info = AptitudeThaumaturgie.AptitudeInfo; break;
 
-                case NAptitude.Benedictions: info = AptitudeBenedictions.AptitudeInfo; break;
-                case NAptitude.Fanatisme: info = AptitudeFanatisme.AptitudeInfo; break;
-                case NAptitude.FaveurDivine: info = AptitudeFanatisme.AptitudeInfo; break;
-                case NAptitude.GraceDivine: info = AptitudeFanatisme.AptitudeInfo; break;
+                case Aptitude.Benedictions: info = AptitudeBenedictions.AptitudeInfo; break;
+                case Aptitude.Fanatisme: info = AptitudeFanatisme.AptitudeInfo; break;
+                case Aptitude.FaveurDivine: info = AptitudeFanatisme.AptitudeInfo; break;
+                case Aptitude.GraceDivine: info = AptitudeFanatisme.AptitudeInfo; break;
 
                 default: info = BaseAptitude.AptitudeInfo; break;
             }
@@ -273,79 +273,79 @@ namespace Server
         public static AptitudesEntry[] m_AptitudeEntries = new AptitudesEntry[]
 		{
                 //9 -> Artisanat
-                new AptitudesEntry( NAptitude.Boucherie,                   12, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, ClasseBranche.Artisan ), 
-				new AptitudesEntry( NAptitude.Broderie,                    12, SkillName.Couture, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2, ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Botanique,                   12, SkillName.Agriculture, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2, ClasseBranche.Aucun ), 
-                new AptitudesEntry( NAptitude.Commerce,                     1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Cuisson,                     12, SkillName.Cuisine, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 1, 1,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Ebenisterie,                 12, SkillName.Menuiserie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Fignolage,                   -1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  1, 1, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Forestier,                   12, SkillName.Foresterie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 2, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Hermetisme,                  12, SkillName.Alchimie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Invention,                   12, SkillName.Bricolage, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Metallurgie,                 12, SkillName.Forge, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Mineur,                      12, SkillName.Excavation, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 2, 3,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Polissage,                   -1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  1, 2, 2,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Tanneur,                     12, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,  ClasseBranche.Artisan ), 
-                new AptitudesEntry( NAptitude.Transcription,               12, SkillName.Inscription, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Boucherie,                   12, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, ClasseBranche.Artisan ), 
+				new AptitudesEntry( Aptitude.Broderie,                    12, SkillName.Couture, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2, ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Botanique,                   12, SkillName.Agriculture, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2, ClasseBranche.Aucun ), 
+                new AptitudesEntry( Aptitude.Commerce,                     1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Cuisson,                     12, SkillName.Cuisine, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 1, 1,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Ebenisterie,                 12, SkillName.Menuiserie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Fignolage,                   -1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  1, 1, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Forestier,                   12, SkillName.Foresterie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 2, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Hermetisme,                  12, SkillName.Alchimie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Invention,                   12, SkillName.Bricolage, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Metallurgie,                 12, SkillName.Forge, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Mineur,                      12, SkillName.Excavation, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 2, 3,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Polissage,                   -1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,  1, 2, 2,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Tanneur,                     12, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1,  ClasseBranche.Artisan ), 
+                new AptitudesEntry( Aptitude.Transcription,               12, SkillName.Inscription, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 2,  ClasseBranche.Artisan ), 
                 //17 -> Combat
-                new AptitudesEntry( NAptitude.Barbarisme,                  -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 3, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.CombatAuSol,                 12, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.CombatMonte,                 -1, SkillName.Equitation, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 3, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.Commandement,                -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 2, 2, ClasseBranche.Aucun ), 
-                new AptitudesEntry( NAptitude.CoupPrecis,                  -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.CoupPuissant,                -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.CoupRenversant,              12, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.Endurance,                   -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 1, 2, ClasseBranche.Guerrier), 
-                new AptitudesEntry( NAptitude.Esquive,                     -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.Parade,                      -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Aucun ), 
-                new AptitudesEntry( NAptitude.PortArmure,                   6, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  3, 4, 5, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.PortArme,                     6, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 5, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.PortArmeDistance,             6, SkillName.ArmeDistance, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 5, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.PortBouclier,                 6, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 5, ClasseBranche.Guerrier ), 
-	            new AptitudesEntry( NAptitude.Precision,                   -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.Resistance,                  -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.Robustesse,                  12, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.Strategie,                   12, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Aucun ), 
-                new AptitudesEntry( NAptitude.TirPrecis,                   -1, SkillName.ArmeDistance, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
-                new AptitudesEntry( NAptitude.TueurDeMonstre,              -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.Barbarisme,                  -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 3, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.CombatAuSol,                 12, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.CombatMonte,                 -1, SkillName.Equitation, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 3, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.Commandement,                -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 2, 2, ClasseBranche.Aucun ), 
+                new AptitudesEntry( Aptitude.CoupPrecis,                  -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.CoupPuissant,                -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.CoupRenversant,              12, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.Endurance,                   -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  1, 1, 2, ClasseBranche.Guerrier), 
+                new AptitudesEntry( Aptitude.Esquive,                     -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.Parade,                      -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Aucun ), 
+                new AptitudesEntry( Aptitude.PortArmure,                   6, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  3, 4, 5, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.PortArme,                     6, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 5, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.PortArmeDistance,             6, SkillName.ArmeDistance, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 5, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.PortBouclier,                 6, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 5, ClasseBranche.Guerrier ), 
+	            new AptitudesEntry( Aptitude.Precision,                   -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100,  2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.Resistance,                  -1, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.Robustesse,                  12, SkillName.Parer, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.Strategie,                   12, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Aucun ), 
+                new AptitudesEntry( Aptitude.TirPrecis,                   -1, SkillName.ArmeDistance, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
+                new AptitudesEntry( Aptitude.TueurDeMonstre,              -1, SkillName.Tactiques, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Guerrier ), 
                 //12 -> Roublard
-                new AptitudesEntry( NAptitude.Assassinat,                  -1, SkillName.ArmePerforante, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 4, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Cambriolage,                 12, SkillName.Crochetage, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 4, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Composition,                 12, SkillName.Musique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 4, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Deguisement,                 12, SkillName.Infiltration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 2, 3, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Depistage,                   12, SkillName.Detection, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Derobage,                    -1, SkillName.Vol, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 3, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Evasion,                     -1, SkillName.Discretion, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 2, 2, ClasseBranche.Roublard ),
-                new AptitudesEntry( NAptitude.Familier,                    -1, SkillName.Dressage, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.LibreDeplacement,            12, SkillName.Survie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.MouvementCache,              -1, SkillName.Infiltration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Pillage,                     -1, SkillName.Vol, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Roublard ), 
-                new AptitudesEntry( NAptitude.Resilience,                  -1, SkillName.Survie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Assassinat,                  -1, SkillName.ArmePerforante, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 4, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Cambriolage,                 12, SkillName.Crochetage, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 4, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Composition,                 12, SkillName.Musique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 4, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Deguisement,                 12, SkillName.Infiltration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 2, 3, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Depistage,                   12, SkillName.Detection, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Derobage,                    -1, SkillName.Vol, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 3, 3, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Evasion,                     -1, SkillName.Discretion, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 2, 2, ClasseBranche.Roublard ),
+                new AptitudesEntry( Aptitude.Familier,                    -1, SkillName.Dressage, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.LibreDeplacement,            12, SkillName.Survie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.MouvementCache,              -1, SkillName.Infiltration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Pillage,                     -1, SkillName.Vol, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Roublard ), 
+                new AptitudesEntry( Aptitude.Resilience,                  -1, SkillName.Survie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Roublard ), 
                 //10 -> Magie
-                new AptitudesEntry( NAptitude.Adjuration,                  12, SkillName.Tenebrea, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Alteration,                  12, SkillName.Mysticisme, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.DispenseComposante,           1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 12, 0, 0, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Evocation,                   12, SkillName.Destruction,30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Illusion,                    12, SkillName.Reve, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Incantation,                 10, SkillName.Concentration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 2, 2, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Invocation,                  12, SkillName.Conjuration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Necromancie,                 12, SkillName.Goetie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.PortArmeMagique,              3, SkillName.Concentration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 4, 4, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Receptacle,                  -1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Sorcellerie,                 -1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Magie ),
-                new AptitudesEntry( NAptitude.SortDeMasse,                 -1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Spiritisme,                  -1, SkillName.Concentration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Magie ), 
-                new AptitudesEntry( NAptitude.Thaumaturgie,                12, SkillName.Restoration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Adjuration,                  12, SkillName.Tenebrea, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Alteration,                  12, SkillName.Mysticisme, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.DispenseComposante,           1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 12, 0, 0, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Evocation,                   12, SkillName.Destruction,30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Illusion,                    12, SkillName.Reve, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Incantation,                 10, SkillName.Concentration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 2, 2, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Invocation,                  12, SkillName.Conjuration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Necromancie,                 12, SkillName.Goetie, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.PortArmeMagique,              3, SkillName.Concentration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 4, 4, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Receptacle,                  -1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 1, 1, 2, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Sorcellerie,                 -1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Magie ),
+                new AptitudesEntry( Aptitude.SortDeMasse,                 -1, SkillName.ArtMagique, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Spiritisme,                  -1, SkillName.Concentration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Magie ), 
+                new AptitudesEntry( Aptitude.Thaumaturgie,                12, SkillName.Restoration, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Magie ), 
                 //7 -> Cleric
-                new AptitudesEntry( NAptitude.Benedictions,                12, SkillName.Miracles, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Cleric ), 
-                new AptitudesEntry( NAptitude.Fanatisme,                   12, SkillName.Miracles, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Cleric ), 
-                new AptitudesEntry( NAptitude.FaveurDivine,                12, SkillName.Priere, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Cleric ), 
-                new AptitudesEntry( NAptitude.GraceDivine,                 12, SkillName.Priere, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Cleric ), 
-                new AptitudesEntry( NAptitude.Monial,                      12, SkillName.Miracles, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Cleric ),
+                new AptitudesEntry( Aptitude.Benedictions,                12, SkillName.Miracles, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Cleric ), 
+                new AptitudesEntry( Aptitude.Fanatisme,                   12, SkillName.Miracles, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Cleric ), 
+                new AptitudesEntry( Aptitude.FaveurDivine,                12, SkillName.Priere, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Cleric ), 
+                new AptitudesEntry( Aptitude.GraceDivine,                 12, SkillName.Priere, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 2, 2, 3, ClasseBranche.Cleric ), 
+                new AptitudesEntry( Aptitude.Monial,                      12, SkillName.Miracles, 30, 40, 50, 55, 60, 65, 70, 75, 80, 85, 90, 100, 3, 4, 4, ClasseBranche.Cleric ),
    	    
                 //Divers
-                new AptitudesEntry( NAptitude.PointSup,                    -1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ClasseBranche.Aucun ),
+                new AptitudesEntry( Aptitude.PointSup,                    -1, SkillName.Excavation, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, ClasseBranche.Aucun ),
         };
         #endregion
 
@@ -359,14 +359,14 @@ namespace Server
         {
         }
 
-        public static int GetTooltip(NAptitude aptitude)
+        public static int GetTooltip(Aptitude aptitude)
         {
             AptitudeInfo info = GetInfos(aptitude);
 
             return info.Tooltip;
         }
 
-        public static int GetValue(TMobile m, NAptitude aptitude)
+        public static int GetValue(TMobile m, Aptitude aptitude)
         {
             Aptitudes apti = m.Aptitudes;
             int value = 0;
@@ -384,7 +384,7 @@ namespace Server
 
         public static int GetRemainingPA(TMobile from)
         {
-            int pa = from.Niveau + 5 + from.GetAptitudeValue(NAptitude.PointSup);
+            int pa = from.Niveau + 5 + from.GetAptitudeValue(Aptitude.PointSup);
             int added = 0;
 
             try
@@ -392,7 +392,7 @@ namespace Server
                 for (int i = 0; i < m_AptitudeEntries.Length; i++)
                 {
                     AptitudesEntry entry = (AptitudesEntry)m_AptitudeEntries[i];
-                    NAptitude aptitude = entry.Aptitude;
+                    Aptitude aptitude = entry.Aptitude;
 
                     int value = GetValue(from, aptitude);
 
@@ -430,7 +430,7 @@ namespace Server
             return pa - added;
         }
 
-        public static int GetCompReq(TMobile from, NAptitude aptitude)
+        public static int GetCompReq(TMobile from, Aptitude aptitude)
         {
             int index = (int)aptitude;
 
@@ -447,7 +447,7 @@ namespace Server
             return -1;
         }
 
-        public static int GetCompNumReq(TMobile from, NAptitude aptitude)
+        public static int GetCompNumReq(TMobile from, Aptitude aptitude)
         {
             int index = (int)aptitude;
 
@@ -475,7 +475,7 @@ namespace Server
             return -1;
         }
 
-        public static int GetRequiredPA(TMobile from, NAptitude aptitude)
+        public static int GetRequiredPA(TMobile from, Aptitude aptitude)
         {
             int index = (int)aptitude;
             int req = 0;
@@ -496,12 +496,12 @@ namespace Server
             return req;
         }
 
-        public static int GetBaseValue(TMobile from, NAptitude aptitude)
+        public static int GetBaseValue(TMobile from, Aptitude aptitude)
         {
             return from.GetBaseAptitudeValue(aptitude);
         }
 
-        public static bool IsValid(TMobile from, NAptitude aptitude)
+        public static bool IsValid(TMobile from, Aptitude aptitude)
         {
             int index = (int)aptitude;
 
@@ -541,7 +541,7 @@ namespace Server
             return false;
         }
 
-        public static bool CanRaise(TMobile from, NAptitude aptitude)
+        public static bool CanRaise(TMobile from, Aptitude aptitude)
         {
             int requiredPA = GetRequiredPA(from, aptitude);
             int dispoPA = GetDisponiblePA(from);
@@ -581,7 +581,7 @@ namespace Server
             return false;
         }
 
-        public static bool CanLower(TMobile from, NAptitude aptitude)
+        public static bool CanLower(TMobile from, Aptitude aptitude)
         {
             int value = GetValue(from, aptitude);
 
@@ -591,7 +591,7 @@ namespace Server
             return false;
         }
 
-        public int this[NAptitude aptitude]
+        public int this[Aptitude aptitude]
         {
             get { return GetValue(aptitude); }
             set { SetValue(aptitude, value); }
@@ -606,106 +606,106 @@ namespace Server
         [CommandProperty(AccessLevel.GameMaster)]
         public int Broderie
         {
-            get { return this[NAptitude.Broderie]; }
-            set { this[NAptitude.Broderie] = value; }
+            get { return this[Aptitude.Broderie]; }
+            set { this[Aptitude.Broderie] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Boucherie
         {
-            get { return this[NAptitude.Boucherie]; }
-            set { this[NAptitude.Boucherie] = value; }
+            get { return this[Aptitude.Boucherie]; }
+            set { this[Aptitude.Boucherie] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Botanique
         {
-            get { return this[NAptitude.Botanique]; }
-            set { this[NAptitude.Botanique] = value; }
+            get { return this[Aptitude.Botanique]; }
+            set { this[Aptitude.Botanique] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Commerce
         {
-            get { return this[NAptitude.Commerce]; }
-            set { this[NAptitude.Commerce] = value; }
+            get { return this[Aptitude.Commerce]; }
+            set { this[Aptitude.Commerce] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Cuisson
         {
-            get { return this[NAptitude.Cuisson]; }
-            set { this[NAptitude.Cuisson] = value; }
+            get { return this[Aptitude.Cuisson]; }
+            set { this[Aptitude.Cuisson] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Ebenisterie
         {
-            get { return this[NAptitude.Ebenisterie]; }
-            set { this[NAptitude.Ebenisterie] = value; }
+            get { return this[Aptitude.Ebenisterie]; }
+            set { this[Aptitude.Ebenisterie] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Fignolage
         {
-            get { return this[NAptitude.Fignolage]; }
-            set { this[NAptitude.Fignolage] = value; }
+            get { return this[Aptitude.Fignolage]; }
+            set { this[Aptitude.Fignolage] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Forestier
         {
-            get { return this[NAptitude.Forestier]; }
-            set { this[NAptitude.Forestier] = value; }
+            get { return this[Aptitude.Forestier]; }
+            set { this[Aptitude.Forestier] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Hermetisme
         {
-            get { return this[NAptitude.Hermetisme]; }
-            set { this[NAptitude.Hermetisme] = value; }
+            get { return this[Aptitude.Hermetisme]; }
+            set { this[Aptitude.Hermetisme] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Invention
         {
-            get { return this[NAptitude.Invention]; }
-            set { this[NAptitude.Invention] = value; }
+            get { return this[Aptitude.Invention]; }
+            set { this[Aptitude.Invention] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Mettallurgie
         {
-            get { return this[NAptitude.Metallurgie]; }
-            set { this[NAptitude.Metallurgie] = value; }
+            get { return this[Aptitude.Metallurgie]; }
+            set { this[Aptitude.Metallurgie] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Mineur
         {
-            get { return this[NAptitude.Mineur]; }
-            set { this[NAptitude.Mineur] = value; }
+            get { return this[Aptitude.Mineur]; }
+            set { this[Aptitude.Mineur] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Polissage
         {
-            get { return this[NAptitude.Polissage]; }
-            set { this[NAptitude.Polissage] = value; }
+            get { return this[Aptitude.Polissage]; }
+            set { this[Aptitude.Polissage] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Tanneur
         {
-            get { return this[NAptitude.Tanneur]; }
-            set { this[NAptitude.Tanneur] = value; }
+            get { return this[Aptitude.Tanneur]; }
+            set { this[Aptitude.Tanneur] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Transcription
         {
-            get { return this[NAptitude.Transcription]; }
-            set { this[NAptitude.Transcription] = value; }
+            get { return this[Aptitude.Transcription]; }
+            set { this[Aptitude.Transcription] = value; }
         }
         #endregion
 
@@ -713,141 +713,141 @@ namespace Server
         [CommandProperty(AccessLevel.GameMaster)]
         public int Barbarisme
         {
-            get { return this[NAptitude.Barbarisme]; }
-            set { this[NAptitude.Barbarisme] = value; }
+            get { return this[Aptitude.Barbarisme]; }
+            set { this[Aptitude.Barbarisme] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int CombatAuSol
         {
-            get { return this[NAptitude.CombatAuSol]; }
-            set { this[NAptitude.CombatAuSol] = value; }
+            get { return this[Aptitude.CombatAuSol]; }
+            set { this[Aptitude.CombatAuSol] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int CombatMonte
         {
-            get { return this[NAptitude.CombatMonte]; }
-            set { this[NAptitude.CombatMonte] = value; }
+            get { return this[Aptitude.CombatMonte]; }
+            set { this[Aptitude.CombatMonte] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Commandement
         {
-            get { return this[NAptitude.Commandement]; }
-            set { this[NAptitude.Commandement] = value; }
+            get { return this[Aptitude.Commandement]; }
+            set { this[Aptitude.Commandement] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int CoupPrecis
         {
-            get { return this[NAptitude.CoupPrecis]; }
-            set { this[NAptitude.CoupPrecis] = value; }
+            get { return this[Aptitude.CoupPrecis]; }
+            set { this[Aptitude.CoupPrecis] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int CoupPuissant
         {
-            get { return this[NAptitude.CoupPuissant]; }
-            set { this[NAptitude.CoupPuissant] = value; }
+            get { return this[Aptitude.CoupPuissant]; }
+            set { this[Aptitude.CoupPuissant] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int CoupRenversant
         {
-            get { return this[NAptitude.CoupRenversant]; }
-            set { this[NAptitude.CoupRenversant] = value; }
+            get { return this[Aptitude.CoupRenversant]; }
+            set { this[Aptitude.CoupRenversant] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Endurance
         {
-            get { return this[NAptitude.Endurance]; }
-            set { this[NAptitude.Endurance] = value; }
+            get { return this[Aptitude.Endurance]; }
+            set { this[Aptitude.Endurance] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Esquive
         {
-            get { return this[NAptitude.Esquive]; }
-            set { this[NAptitude.Esquive] = value; }
+            get { return this[Aptitude.Esquive]; }
+            set { this[Aptitude.Esquive] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Parade
         {
-            get { return this[NAptitude.Parade]; }
-            set { this[NAptitude.Parade] = value; }
+            get { return this[Aptitude.Parade]; }
+            set { this[Aptitude.Parade] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int PortArmure
         {
-            get { return this[NAptitude.PortArmure]; }
-            set { this[NAptitude.PortArmure] = value; }
+            get { return this[Aptitude.PortArmure]; }
+            set { this[Aptitude.PortArmure] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int PortArme
         {
-            get { return this[NAptitude.PortArme]; }
-            set { this[NAptitude.PortArme] = value; }
+            get { return this[Aptitude.PortArme]; }
+            set { this[Aptitude.PortArme] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int PortArmeDistance
         {
-            get { return this[NAptitude.PortArmeDistance]; }
-            set { this[NAptitude.PortArmeDistance] = value; }
+            get { return this[Aptitude.PortArmeDistance]; }
+            set { this[Aptitude.PortArmeDistance] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int PortBouclier
         {
-            get { return this[NAptitude.PortBouclier]; }
-            set { this[NAptitude.PortBouclier] = value; }
+            get { return this[Aptitude.PortBouclier]; }
+            set { this[Aptitude.PortBouclier] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Precision
         {
-            get { return this[NAptitude.Precision]; }
-            set { this[NAptitude.Precision] = value; }
+            get { return this[Aptitude.Precision]; }
+            set { this[Aptitude.Precision] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Resistance
         {
-            get { return this[NAptitude.Resistance]; }
-            set { this[NAptitude.Resistance] = value; }
+            get { return this[Aptitude.Resistance]; }
+            set { this[Aptitude.Resistance] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Robustesse
         {
-            get { return this[NAptitude.Robustesse]; }
-            set { this[NAptitude.Robustesse] = value; }
+            get { return this[Aptitude.Robustesse]; }
+            set { this[Aptitude.Robustesse] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Strategie
         {
-            get { return this[NAptitude.Strategie]; }
-            set { this[NAptitude.Strategie] = value; }
+            get { return this[Aptitude.Strategie]; }
+            set { this[Aptitude.Strategie] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int TirPrecis
         {
-            get { return this[NAptitude.TirPrecis]; }
-            set { this[NAptitude.TirPrecis] = value; }
+            get { return this[Aptitude.TirPrecis]; }
+            set { this[Aptitude.TirPrecis] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int TueurDeMonstre
         {
-            get { return this[NAptitude.TueurDeMonstre]; }
-            set { this[NAptitude.TueurDeMonstre] = value; }
+            get { return this[Aptitude.TueurDeMonstre]; }
+            set { this[Aptitude.TueurDeMonstre] = value; }
         }
         #endregion
 
@@ -855,99 +855,99 @@ namespace Server
         [CommandProperty(AccessLevel.GameMaster)]
         public int Adjuration
         {
-            get { return this[NAptitude.Adjuration]; }
-            set { this[NAptitude.Adjuration] = value; }
+            get { return this[Aptitude.Adjuration]; }
+            set { this[Aptitude.Adjuration] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Alteration
         {
-            get { return this[NAptitude.Alteration]; }
-            set { this[NAptitude.Alteration] = value; }
+            get { return this[Aptitude.Alteration]; }
+            set { this[Aptitude.Alteration] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int DispenseComposante
         {
-            get { return this[NAptitude.DispenseComposante]; }
-            set { this[NAptitude.DispenseComposante] = value; }
+            get { return this[Aptitude.DispenseComposante]; }
+            set { this[Aptitude.DispenseComposante] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Evocation
         {
-            get { return this[NAptitude.Evocation]; }
-            set { this[NAptitude.Evocation] = value; }
+            get { return this[Aptitude.Evocation]; }
+            set { this[Aptitude.Evocation] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Illusion
         {
-            get { return this[NAptitude.Illusion]; }
-            set { this[NAptitude.Illusion] = value; }
+            get { return this[Aptitude.Illusion]; }
+            set { this[Aptitude.Illusion] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Invocation
         {
-            get { return this[NAptitude.Invocation]; }
-            set { this[NAptitude.Invocation] = value; }
+            get { return this[Aptitude.Invocation]; }
+            set { this[Aptitude.Invocation] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Incantation
         {
-            get { return this[NAptitude.Incantation]; }
-            set { this[NAptitude.Incantation] = value; }
+            get { return this[Aptitude.Incantation]; }
+            set { this[Aptitude.Incantation] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Necromancie
         {
-            get { return this[NAptitude.Necromancie]; }
-            set { this[NAptitude.Necromancie] = value; }
+            get { return this[Aptitude.Necromancie]; }
+            set { this[Aptitude.Necromancie] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int PortArmeMagique
         {
-            get { return this[NAptitude.PortArmeMagique]; }
-            set { this[NAptitude.PortArmeMagique] = value; }
+            get { return this[Aptitude.PortArmeMagique]; }
+            set { this[Aptitude.PortArmeMagique] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Receptacle
         {
-            get { return this[NAptitude.Receptacle]; }
-            set { this[NAptitude.Receptacle] = value; }
+            get { return this[Aptitude.Receptacle]; }
+            set { this[Aptitude.Receptacle] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Sorcellerie
         {
-            get { return this[NAptitude.Sorcellerie]; }
-            set { this[NAptitude.Sorcellerie] = value; }
+            get { return this[Aptitude.Sorcellerie]; }
+            set { this[Aptitude.Sorcellerie] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Spiritisme
         {
-            get { return this[NAptitude.Spiritisme]; }
-            set { this[NAptitude.Spiritisme] = value; }
+            get { return this[Aptitude.Spiritisme]; }
+            set { this[Aptitude.Spiritisme] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int SortDeMasse
         {
-            get { return this[NAptitude.SortDeMasse]; }
-            set { this[NAptitude.SortDeMasse] = value; }
+            get { return this[Aptitude.SortDeMasse]; }
+            set { this[Aptitude.SortDeMasse] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Thaumaturgie
         {
-            get { return this[NAptitude.Thaumaturgie]; }
-            set { this[NAptitude.Thaumaturgie] = value; }
+            get { return this[Aptitude.Thaumaturgie]; }
+            set { this[Aptitude.Thaumaturgie] = value; }
         }
         #endregion
 
@@ -955,78 +955,78 @@ namespace Server
         [CommandProperty(AccessLevel.GameMaster)]
         public int Assassinat
         {
-            get { return this[NAptitude.Assassinat]; }
-            set { this[NAptitude.Assassinat] = value; }
+            get { return this[Aptitude.Assassinat]; }
+            set { this[Aptitude.Assassinat] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Cambriolage
         {
-            get { return this[NAptitude.Cambriolage]; }
-            set { this[NAptitude.Cambriolage] = value; }
+            get { return this[Aptitude.Cambriolage]; }
+            set { this[Aptitude.Cambriolage] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Deguisement
         {
-            get { return this[NAptitude.Deguisement]; }
-            set { this[NAptitude.Deguisement] = value; }
+            get { return this[Aptitude.Deguisement]; }
+            set { this[Aptitude.Deguisement] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Derobage
         {
-            get { return this[NAptitude.Derobage]; }
-            set { this[NAptitude.Derobage] = value; }
+            get { return this[Aptitude.Derobage]; }
+            set { this[Aptitude.Derobage] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Evasion
         {
-            get { return this[NAptitude.Evasion]; }
-            set { this[NAptitude.Evasion] = value; }
+            get { return this[Aptitude.Evasion]; }
+            set { this[Aptitude.Evasion] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Familier
         {
-            get { return this[NAptitude.Familier]; }
-            set { this[NAptitude.Familier] = value; }
+            get { return this[Aptitude.Familier]; }
+            set { this[Aptitude.Familier] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Depistage
         {
-            get { return this[NAptitude.Depistage]; }
-            set { this[NAptitude.Depistage] = value; }
+            get { return this[Aptitude.Depistage]; }
+            set { this[Aptitude.Depistage] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int LibreDeplacement
         {
-            get { return this[NAptitude.LibreDeplacement]; }
-            set { this[NAptitude.LibreDeplacement] = value; }
+            get { return this[Aptitude.LibreDeplacement]; }
+            set { this[Aptitude.LibreDeplacement] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int MouvementCache
         {
-            get { return this[NAptitude.MouvementCache]; }
-            set { this[NAptitude.MouvementCache] = value; }
+            get { return this[Aptitude.MouvementCache]; }
+            set { this[Aptitude.MouvementCache] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Pillage
         {
-            get { return this[NAptitude.Pillage]; }
-            set { this[NAptitude.Pillage] = value; }
+            get { return this[Aptitude.Pillage]; }
+            set { this[Aptitude.Pillage] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Resilience
         {
-            get { return this[NAptitude.Resilience]; }
-            set { this[NAptitude.Resilience] = value; }
+            get { return this[Aptitude.Resilience]; }
+            set { this[Aptitude.Resilience] = value; }
         }
         #endregion
 
@@ -1034,36 +1034,36 @@ namespace Server
         [CommandProperty(AccessLevel.GameMaster)]
         public int Benedictions
         {
-            get { return this[NAptitude.Benedictions]; }
-            set { this[NAptitude.Benedictions] = value; }
+            get { return this[Aptitude.Benedictions]; }
+            set { this[Aptitude.Benedictions] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Fanatisme
         {
-            get { return this[NAptitude.Fanatisme]; }
-            set { this[NAptitude.Fanatisme] = value; }
+            get { return this[Aptitude.Fanatisme]; }
+            set { this[Aptitude.Fanatisme] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int FaveurDivine
         {
-            get { return this[NAptitude.FaveurDivine]; }
-            set { this[NAptitude.FaveurDivine] = value; }
+            get { return this[Aptitude.FaveurDivine]; }
+            set { this[Aptitude.FaveurDivine] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int GraceDivine
         {
-            get { return this[NAptitude.GraceDivine]; }
-            set { this[NAptitude.GraceDivine] = value; }
+            get { return this[Aptitude.GraceDivine]; }
+            set { this[Aptitude.GraceDivine] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int Protection
         {
-            get { return this[NAptitude.Protection]; }
-            set { this[NAptitude.Protection] = value; }
+            get { return this[Aptitude.Protection]; }
+            set { this[Aptitude.Protection] = value; }
         }
         #endregion
     }
@@ -1110,7 +1110,7 @@ namespace Server
                 writer.Write((int)m_Values[i]);
         }
 
-        public int GetValue(NAptitude aptitude)
+        public int GetValue(Aptitude aptitude)
         {
             int index = GetIndex(aptitude);
 
@@ -1124,7 +1124,7 @@ namespace Server
             return 0;
         }
 
-        public void SetValue(NAptitude aptitude, int value)
+        public void SetValue(Aptitude aptitude, int value)
         {
             int index = GetIndex(aptitude);
 
@@ -1138,7 +1138,7 @@ namespace Server
             }
         }
 
-        private int GetIndex(NAptitude aptitude)
+        private int GetIndex(Aptitude aptitude)
         {
             int index = (int)aptitude;
 
@@ -1150,10 +1150,10 @@ namespace Server
             for (int i = 0; i < m_Values.Length; i++)
             {
                 m_Values[i] = 0;
-                m_Owner.OnAptitudesChange((NAptitude)i, Owner.GetAptitudeValue((NAptitude)i) + 1, Owner.GetAptitudeValue((NAptitude)i));
+                m_Owner.OnAptitudesChange((Aptitude)i, Owner.GetAptitudeValue((Aptitude)i) + 1, Owner.GetAptitudeValue((Aptitude)i));
             }
 
-            Owner.AptitudesLibres = 5 + Owner.Niveau + Owner.GetAptitudeValue(NAptitude.PointSup);
+            Owner.AptitudesLibres = 5 + Owner.Niveau + Owner.GetAptitudeValue(Aptitude.PointSup);
         }
     }
 }

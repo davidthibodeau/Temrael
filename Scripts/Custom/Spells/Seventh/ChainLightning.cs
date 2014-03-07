@@ -23,7 +23,7 @@ namespace Server.Spells.Seventh
             );
 
         public override int RequiredAptitudeValue { get { return 12; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
 
 		public ChainLightningSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -94,7 +94,7 @@ namespace Server.Spells.Seventh
                //     double damage = Utility.RandomMinMax(60, 120);
                     double damage = Utility.RandomMinMax(30, 60);
 
-                    damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                    damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                     if (targets.Count > 0)
                     {

@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeEvocation
     {
         private static string m_name = "Evocation";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Evocation];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Evocation];
         private static int m_tooltip = 3006319;
         private static string m_description = "Permet d'évoquer les sorts de destructions.";
         private static string m_note = string.Empty;

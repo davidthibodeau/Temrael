@@ -27,7 +27,7 @@ namespace Server.Mobiles
         public abstract AlignementB[] alignB { get; }
 
         public abstract string Description { get; }
-        public abstract NAptitude Bonus { get; }
+        public abstract Aptitude Bonus { get; }
         public abstract int BonusNbr { get; }
         public abstract string BonusDescr { get; }
         public abstract int Image { get; }

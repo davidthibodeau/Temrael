@@ -19,7 +19,7 @@ namespace Server.Spells.Sixth
             );
 
         public override int RequiredAptitudeValue { get { return 9; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
 
 		public RevealSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -50,7 +50,7 @@ namespace Server.Spells.Sixth
 				{
                     double tile = GetRadiusForSpell();
 
-                    tile = SpellHelper.AdjustValue(Caster, tile, NAptitude.Sorcellerie);
+                    tile = SpellHelper.AdjustValue(Caster, tile, Aptitude.Sorcellerie);
 
 					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), (int)tile );
 

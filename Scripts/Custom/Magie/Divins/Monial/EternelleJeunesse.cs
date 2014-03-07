@@ -15,7 +15,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Monial }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
 
         public EternelleJeunesseSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeThaumaturgie
     {
         private static string m_name = "Thaumaturgie";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Thaumaturgie];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Thaumaturgie];
         private static int m_tooltip = 3006326;
         private static string m_description = "Permet de soigner les autres personnages avec les sorts de restoration.";
         private static string m_note = string.Empty;

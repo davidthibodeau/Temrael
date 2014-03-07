@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeLibreDeplacement
     {
         private static string m_name = "Libre Deplacement";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.LibreDeplacement];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.LibreDeplacement];
         private static int m_tooltip = 3006342;
         private static string m_description = "Réduit la perte de stamina sur les terrains considéré 'rudes'.";
         private static string m_note = "Les forêts, déserts, neige et marais sont considérés comme rudes.";

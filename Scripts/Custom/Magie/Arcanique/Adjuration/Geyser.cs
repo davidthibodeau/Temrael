@@ -21,7 +21,7 @@ namespace Server.Spells
 			);
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Adjuration }; } }
 
 
         public GeyserSpell(Mobile caster, Item scroll)
@@ -204,7 +204,7 @@ namespace Server.Spells
 
 					int damage = Utility.Random(20, 30);
 
-                    damage = (int)SpellHelper.AdjustValue(m_Caster, damage, NAptitude.Sorcellerie);
+                    damage = (int)SpellHelper.AdjustValue(m_Caster, damage, Aptitude.Sorcellerie);
 
 					AOS.Damage( m, m_Caster, damage, 0, 0, 100, 0, 0 );
 					m.PlaySound( 0x208 );
@@ -276,7 +276,7 @@ namespace Server.Spells
 
                                 int damage = Utility.Random(20, 30);
 
-                                damage = (int)SpellHelper.AdjustValue(caster, damage, NAptitude.Sorcellerie);
+                                damage = (int)SpellHelper.AdjustValue(caster, damage, Aptitude.Sorcellerie);
 
                                 AOS.Damage(m, caster, damage, 0, 0, 100, 0, 0);
                                 m.PlaySound(0x208);

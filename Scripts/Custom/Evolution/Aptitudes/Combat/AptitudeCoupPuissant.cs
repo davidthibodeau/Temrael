@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCoupPuissant
     {
         private static string m_name = "Coup Puissant";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.CoupPuissant];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.CoupPuissant];
         private static int m_tooltip = 3006306;
         private static string m_description = "Augmente les dégâts des coups critiques.";
         private static string m_note = string.Empty;

@@ -219,8 +219,8 @@ namespace Server.Gumps
             from.AptitudesLibres = 5;
 
             //Pour les humains
-            if (from.GetAptitudeValue(NAptitude.PointSup) > 0)
-              from.AptitudesLibres += from.GetAptitudeValue(NAptitude.PointSup);
+            if (from.GetAptitudeValue(Aptitude.PointSup) > 0)
+              from.AptitudesLibres += from.GetAptitudeValue(Aptitude.PointSup);
         }
 
         private static void SetCaract(TMobile from)

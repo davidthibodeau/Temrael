@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCambriolage
     {
         private static string m_name = "Cambriolage";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Cambriolage];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Cambriolage];
         private static int m_tooltip = 3006335;
         private static string m_description = "Augmente les chances d'ouvrir certaines portes.";
         private static string m_note = string.Empty;

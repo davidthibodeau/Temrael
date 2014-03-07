@@ -25,37 +25,37 @@ namespace Server
 
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.Invocation, 3),
-                new ClasseAptitudes(NAptitude.Spiritisme, 3),
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 1)
+                new ClasseAptitudes(Aptitude.Invocation, 3),
+                new ClasseAptitudes(Aptitude.Spiritisme, 3),
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 1)
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(NAptitude.Invocation, 6),
-                new ClasseAptitudes(NAptitude.Spiritisme, 6),
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 1)
+                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
+                new ClasseAptitudes(Aptitude.Invocation, 6),
+                new ClasseAptitudes(Aptitude.Spiritisme, 6),
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 1)
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(NAptitude.Invocation, 9),
-                new ClasseAptitudes(NAptitude.Spiritisme, 9),
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 1)
+                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
+                new ClasseAptitudes(Aptitude.Invocation, 9),
+                new ClasseAptitudes(Aptitude.Spiritisme, 9),
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 1)
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(NAptitude.Invocation, 12),
-                new ClasseAptitudes(NAptitude.Spiritisme, 12),
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 1)
+                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
+                new ClasseAptitudes(Aptitude.Invocation, 12),
+                new ClasseAptitudes(Aptitude.Spiritisme, 12),
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 1)
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(

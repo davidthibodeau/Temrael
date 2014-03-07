@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCommerce
     {
         private static string m_name = "Commerce";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Commerce];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Commerce];
         private static int m_tooltip = 0;
         private static string m_description = "Permet de placer des NPC vendeur joueur dans des zones designes.";
         private static string m_note = string.Empty;

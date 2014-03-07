@@ -15,18 +15,18 @@ namespace Server.Gumps
         private string m_Nom;
         private int m_ImageID;
         private int m_Cercle;
-        private NAptitude m_Connaissances;
+        private Aptitude m_Connaissances;
         private int m_SpellID;
 
         public int ConnaissanceLevel { get { return m_ConnaissanceLevel; } }
         public string Nom { get { return m_Nom; } }
         public int ImageID { get { return m_ImageID; } }
         public int Cercle { get { return m_Cercle; } }
-        public NAptitude Connaissance { get { return m_Connaissances; } }
+        public Aptitude Connaissance { get { return m_Connaissances; } }
         public int SpellID { get { return m_SpellID; } }
         public int Piete { get { return Spell.m_PieteTable[(int)Cercle - 1]; } }
 
-        public DivineSpellBookEntry(int conn, NAptitude connaissance, string nom, int imageid, int cercle, int spellid)
+        public DivineSpellBookEntry(int conn, Aptitude connaissance, string nom, int imageid, int cercle, int spellid)
         {
             m_ConnaissanceLevel = conn;
             m_Nom = nom;
@@ -41,31 +41,31 @@ namespace Server.Gumps
     {
         public static DivineSpellBookEntry[] m_DivineSpellBookEntry = new DivineSpellBookEntry[]
         {
-            new DivineSpellBookEntry( 1, NAptitude.Benedictions, "Repas Céleste", 0x8C1, 1, 2007),
-            new DivineSpellBookEntry( 2, NAptitude.Benedictions, "Repos Céleste", 0x8C5, 2, 2008),
-            new DivineSpellBookEntry( 3, NAptitude.Benedictions, "Panacée", 0x5CC, 3, 2005),
-            new DivineSpellBookEntry( 4, NAptitude.Benedictions, "Guérison Céleste", 0x5101, 4, 2003),
-            new DivineSpellBookEntry( 5, NAptitude.Benedictions, "Exaltation", 0x5105, 5, 2001),
-            new DivineSpellBookEntry( 6, NAptitude.Benedictions, "Stase", 0x5AC, 6, 2010),
-            new DivineSpellBookEntry( 7, NAptitude.Benedictions, "Véhémence", 0x5AB, 7, 2011),
-            new DivineSpellBookEntry( 8, NAptitude.Benedictions, "Rétablissement", 0x5D1, 8, 2009),
-            new DivineSpellBookEntry( 9, NAptitude.Benedictions, "Extase", 0x5102, 9, 2002),
-            new DivineSpellBookEntry( 10, NAptitude.Benedictions, "Bénir", 0x5AA, 10, 2000),
-            new DivineSpellBookEntry( 11, NAptitude.Benedictions, "Remède Divin", 0x5CB, 11, 2006),
-            new DivineSpellBookEntry( 12, NAptitude.Benedictions, "Guérison Mirac.", 0x5D8, 12, 2004),
+            new DivineSpellBookEntry( 1, Aptitude.Benedictions, "Repas Céleste", 0x8C1, 1, 2007),
+            new DivineSpellBookEntry( 2, Aptitude.Benedictions, "Repos Céleste", 0x8C5, 2, 2008),
+            new DivineSpellBookEntry( 3, Aptitude.Benedictions, "Panacée", 0x5CC, 3, 2005),
+            new DivineSpellBookEntry( 4, Aptitude.Benedictions, "Guérison Céleste", 0x5101, 4, 2003),
+            new DivineSpellBookEntry( 5, Aptitude.Benedictions, "Exaltation", 0x5105, 5, 2001),
+            new DivineSpellBookEntry( 6, Aptitude.Benedictions, "Stase", 0x5AC, 6, 2010),
+            new DivineSpellBookEntry( 7, Aptitude.Benedictions, "Véhémence", 0x5AB, 7, 2011),
+            new DivineSpellBookEntry( 8, Aptitude.Benedictions, "Rétablissement", 0x5D1, 8, 2009),
+            new DivineSpellBookEntry( 9, Aptitude.Benedictions, "Extase", 0x5102, 9, 2002),
+            new DivineSpellBookEntry( 10, Aptitude.Benedictions, "Bénir", 0x5AA, 10, 2000),
+            new DivineSpellBookEntry( 11, Aptitude.Benedictions, "Remède Divin", 0x5CB, 11, 2006),
+            new DivineSpellBookEntry( 12, Aptitude.Benedictions, "Guérison Mirac.", 0x5D8, 12, 2004),
 
-            new DivineSpellBookEntry( 1, NAptitude.Fanatisme, "Sacrifice", 0x5201, 1, 2021),
-            new DivineSpellBookEntry( 2, NAptitude.Fanatisme, "Sauvegarde", 0x5205, 2, 2022),
-            new DivineSpellBookEntry( 3, NAptitude.Fanatisme, "Ferveur Divine", 0x5208, 3, 2016),
-            new DivineSpellBookEntry( 4, NAptitude.Fanatisme, "Bouclier Céleste", 0x5200, 4, 2014),
-            new DivineSpellBookEntry( 5, NAptitude.Fanatisme, "Fortif. Divine", 0x5107, 5, 2017),
-            new DivineSpellBookEntry( 6, NAptitude.Fanatisme, "Monture Céleste", 0x5D3, 6, 2019),
-            new DivineSpellBookEntry( 7, NAptitude.Fanatisme, "Fougue Céleste", 0x5202, 7, 2018),
-            new DivineSpellBookEntry( 8, NAptitude.Fanatisme, "Protection Cél.", 0x520B, 8, 2020),
-            new DivineSpellBookEntry( 9, NAptitude.Fanatisme, "Bastion Céleste", 0x5203, 9, 2013),
-            new DivineSpellBookEntry( 10, NAptitude.Fanatisme, "Zèle Divin", 0x5206, 10, 2023),
-            new DivineSpellBookEntry( 11, NAptitude.Fanatisme, "Ardeur Céleste", 0x520C, 11, 2012),
-            new DivineSpellBookEntry( 12, NAptitude.Fanatisme, "Défense Divine", 0x5204, 12, 2015),
+            new DivineSpellBookEntry( 1, Aptitude.Fanatisme, "Sacrifice", 0x5201, 1, 2021),
+            new DivineSpellBookEntry( 2, Aptitude.Fanatisme, "Sauvegarde", 0x5205, 2, 2022),
+            new DivineSpellBookEntry( 3, Aptitude.Fanatisme, "Ferveur Divine", 0x5208, 3, 2016),
+            new DivineSpellBookEntry( 4, Aptitude.Fanatisme, "Bouclier Céleste", 0x5200, 4, 2014),
+            new DivineSpellBookEntry( 5, Aptitude.Fanatisme, "Fortif. Divine", 0x5107, 5, 2017),
+            new DivineSpellBookEntry( 6, Aptitude.Fanatisme, "Monture Céleste", 0x5D3, 6, 2019),
+            new DivineSpellBookEntry( 7, Aptitude.Fanatisme, "Fougue Céleste", 0x5202, 7, 2018),
+            new DivineSpellBookEntry( 8, Aptitude.Fanatisme, "Protection Cél.", 0x520B, 8, 2020),
+            new DivineSpellBookEntry( 9, Aptitude.Fanatisme, "Bastion Céleste", 0x5203, 9, 2013),
+            new DivineSpellBookEntry( 10, Aptitude.Fanatisme, "Zèle Divin", 0x5206, 10, 2023),
+            new DivineSpellBookEntry( 11, Aptitude.Fanatisme, "Ardeur Céleste", 0x520C, 11, 2012),
+            new DivineSpellBookEntry( 12, Aptitude.Fanatisme, "Défense Divine", 0x5204, 12, 2015),
 
             /*new DivineSpellBookEntry( 1, NAptitude.Monial, "Diligence", 0x5207, 1, 1000),
             new DivineSpellBookEntry( 2, NAptitude.Monial, "Spiritualité", 0x5D2, 2, 1000),
@@ -197,19 +197,19 @@ namespace Server.Gumps
         
         #region tableaux
         //Liste des magies du spellbook et leur couleur
-        public NAptitude[] m_DivineConnaissanceList = new NAptitude[] {
-            NAptitude.Protection,  
-            NAptitude.Benedictions,    
-            NAptitude.Benedictions,   
-            NAptitude.Fanatisme,    
-            NAptitude.Monial,   
-            NAptitude.Monial,     
-            NAptitude.Monial,   
-            NAptitude.Monial,    
-            NAptitude.Monial,    
-            NAptitude.Fanatisme,    
-            NAptitude.Monial,      
-            NAptitude.Protection     
+        public Aptitude[] m_DivineConnaissanceList = new Aptitude[] {
+            Aptitude.Protection,  
+            Aptitude.Benedictions,    
+            Aptitude.Benedictions,   
+            Aptitude.Fanatisme,    
+            Aptitude.Monial,   
+            Aptitude.Monial,     
+            Aptitude.Monial,   
+            Aptitude.Monial,    
+            Aptitude.Monial,    
+            Aptitude.Fanatisme,    
+            Aptitude.Monial,      
+            Aptitude.Protection     
         };
         
         public Hashtable m_DivineNameColors = new Hashtable();
@@ -217,24 +217,24 @@ namespace Server.Gumps
 
         public void InitializeHashtable()
         {
-            m_DivineNameColors[NAptitude.Protection] = 498;
-            m_DivineNameColors[NAptitude.Benedictions] = 320;
-            m_DivineNameColors[NAptitude.Benedictions] = 260;
-            m_DivineNameColors[NAptitude.Fanatisme] = 140;
-            m_DivineNameColors[NAptitude.Monial] = 340;
-            m_DivineNameColors[NAptitude.Monial] = 995;
-            m_DivineNameColors[NAptitude.Monial] = 44;
-            m_DivineNameColors[NAptitude.Monial] = 1050;
-            m_DivineNameColors[NAptitude.Monial] = 1450;
-            m_DivineNameColors[NAptitude.Fanatisme] = 1521;
-            m_DivineNameColors[NAptitude.Monial] = 2052;
-            m_DivineNameColors[NAptitude.Protection] = 1249;
+            m_DivineNameColors[Aptitude.Protection] = 498;
+            m_DivineNameColors[Aptitude.Benedictions] = 320;
+            m_DivineNameColors[Aptitude.Benedictions] = 260;
+            m_DivineNameColors[Aptitude.Fanatisme] = 140;
+            m_DivineNameColors[Aptitude.Monial] = 340;
+            m_DivineNameColors[Aptitude.Monial] = 995;
+            m_DivineNameColors[Aptitude.Monial] = 44;
+            m_DivineNameColors[Aptitude.Monial] = 1050;
+            m_DivineNameColors[Aptitude.Monial] = 1450;
+            m_DivineNameColors[Aptitude.Fanatisme] = 1521;
+            m_DivineNameColors[Aptitude.Monial] = 2052;
+            m_DivineNameColors[Aptitude.Protection] = 1249;
 
             //m_DivineNames[NAptitude.Protection] = "Protection";
-            m_DivineNames[NAptitude.Benedictions] = "Bénédictions";
-            m_DivineNames[NAptitude.Fanatisme] = "Fanatisme";
-            m_DivineNames[NAptitude.Monial] = "Vénération";
-            m_DivineNames[NAptitude.Monial] = "Monial";
+            m_DivineNames[Aptitude.Benedictions] = "Bénédictions";
+            m_DivineNames[Aptitude.Fanatisme] = "Fanatisme";
+            m_DivineNames[Aptitude.Monial] = "Vénération";
+            m_DivineNames[Aptitude.Monial] = "Monial";
         }
         #endregion
 
@@ -406,11 +406,11 @@ namespace Server.Gumps
             AddButton(123, 15, 0x89D, 0x89D, 19, GumpButtonType.Page, totpage - 1);
         }
 
-        public bool ArrayContains(NAptitude[] conn, NAptitude wanted)
+        public bool ArrayContains(Aptitude[] conn, Aptitude wanted)
         {
             for (int i = 0; i < conn.Length; i++)
             {
-                if (wanted == (NAptitude)conn[i])
+                if (wanted == (Aptitude)conn[i])
                     return true;
             }
 

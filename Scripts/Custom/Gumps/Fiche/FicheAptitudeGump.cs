@@ -121,7 +121,7 @@ namespace Server.Gumps
             }
 
             if (info.ButtonID >= 50)
-                from.SendGump(new FicheAptitudeInfoGump(from, (NAptitude)info.ButtonID - 50));
+                from.SendGump(new FicheAptitudeInfoGump(from, (Aptitude)info.ButtonID - 50));
         }
 
         public static Hashtable GetAptitudesList(TMobile from)
@@ -130,7 +130,7 @@ namespace Server.Gumps
 
             for (int i = 0; i < Aptitudes.m_AptitudeEntries.Length; ++i)
             {
-                if (from.GetAptitudeValue((NAptitude)i) > 0)
+                if (from.GetAptitudeValue((Aptitude)i) > 0)
                 {
                     AptitudeInfo infoApt = Aptitudes.GetInfos(Aptitudes.m_AptitudeEntries[i].Aptitude);
                     list.Add(Aptitudes.m_AptitudeEntries[i].Aptitude, infoApt.Name);
@@ -166,10 +166,10 @@ namespace Server.Gumps
 
                 while (en.MoveNext())
                 {
-                    if (en.Key is NAptitude)
+                    if (en.Key is Aptitude)
                     {
 
-                        NAptitude aptitude = (NAptitude)en.Key;
+                        Aptitude aptitude = (Aptitude)en.Key;
                         int index = listKeys.IndexOf(en.Value.ToString());
                         varY = (index * 16) - ((index / 26) * 416);
 

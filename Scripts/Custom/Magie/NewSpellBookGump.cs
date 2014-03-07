@@ -32,7 +32,7 @@ namespace Server.Gumps
         private Type[] m_Reagents;
         private int m_ImageID;
         private int m_Cercle;
-        private NAptitude m_Connaissances;
+        private Aptitude m_Connaissances;
         private int m_SpellID;
 
         public int ConnaissanceLevel { get { return m_ConnaissanceLevel; } }
@@ -40,10 +40,10 @@ namespace Server.Gumps
         public Type[] Reagents { get { return m_Reagents; } }
         public int ImageID { get { return m_ImageID; } }
         public int Cercle { get { return m_Cercle; } }
-        public NAptitude Connaissance { get { return m_Connaissances; } }
+        public Aptitude Connaissance { get { return m_Connaissances; } }
         public int SpellID { get { return m_SpellID; } }
 
-        public SpellBookEntry(int conn, NAptitude connaissance, string nom, Type[] regs, int imageid, int cercle, int spellid)
+        public SpellBookEntry(int conn, Aptitude connaissance, string nom, Type[] regs, int imageid, int cercle, int spellid)
         {
             m_ConnaissanceLevel = conn;
             m_Nom = nom;
@@ -60,105 +60,105 @@ namespace Server.Gumps
         public static SpellBookEntry[] m_SpellBookEntry = new SpellBookEntry[]
         {
             //Adjuration
-            new SpellBookEntry( 1, NAptitude.Adjuration, "Fermeture Mag.", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            new SpellBookEntry( 1, NAptitude.Adjuration, "Piège Magique", new Type[] { typeof(Nightshade), typeof(SpidersSilk) }, 0x8cC, 2, 13),
-            new SpellBookEntry( 2, NAptitude.Adjuration, "Ouverture Mag.", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D6, 3, 23),
-            new SpellBookEntry( 2, NAptitude.Adjuration, "Sup. De Piège", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8cD, 2, 14),
-            new SpellBookEntry( 3, NAptitude.Adjuration, "Nuisance", new Type[] { typeof(Nightshade), typeof(SpidersSilk) }, 0x8cB, 2, 12),
-            new SpellBookEntry( 4, NAptitude.Adjuration, "Champ de Dissi.", new Type[] { typeof(BlackPearl), typeof(SpidersSilk), typeof(SulfurousAsh), typeof(Garlic) }, 0x8E1, 5, 34),
-            new SpellBookEntry( 5, NAptitude.Adjuration, "Dissipation", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8E8, 6, 41),
-            new SpellBookEntry( 6, NAptitude.Adjuration, "Drain de Mana", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8DE, 4, 31),
-            new SpellBookEntry( 7, NAptitude.Adjuration, "Poison", new Type[] { typeof(Nightshade) }, 0x8D3, 3, 20),
-            new SpellBookEntry( 8, NAptitude.Adjuration, "Dissip. Masse", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(BlackPearl), typeof(SulfurousAsh) }, 0x8F5, 7, 54),
-            new SpellBookEntry( 9, NAptitude.Adjuration, "Drain Vamp.", new Type[] { typeof(BlackPearl), typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8F4, 7, 53),
-            new SpellBookEntry( 10, NAptitude.Adjuration, "Mur de Poison", new Type[] { typeof(BlackPearl), typeof(Nightshade), typeof(SpidersSilk) }, 0x8E6, 5, 39),
+            new SpellBookEntry( 1, Aptitude.Adjuration, "Fermeture Mag.", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            new SpellBookEntry( 1, Aptitude.Adjuration, "Piège Magique", new Type[] { typeof(Nightshade), typeof(SpidersSilk) }, 0x8cC, 2, 13),
+            new SpellBookEntry( 2, Aptitude.Adjuration, "Ouverture Mag.", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D6, 3, 23),
+            new SpellBookEntry( 2, Aptitude.Adjuration, "Sup. De Piège", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8cD, 2, 14),
+            new SpellBookEntry( 3, Aptitude.Adjuration, "Nuisance", new Type[] { typeof(Nightshade), typeof(SpidersSilk) }, 0x8cB, 2, 12),
+            new SpellBookEntry( 4, Aptitude.Adjuration, "Champ de Dissi.", new Type[] { typeof(BlackPearl), typeof(SpidersSilk), typeof(SulfurousAsh), typeof(Garlic) }, 0x8E1, 5, 34),
+            new SpellBookEntry( 5, Aptitude.Adjuration, "Dissipation", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8E8, 6, 41),
+            new SpellBookEntry( 6, Aptitude.Adjuration, "Drain de Mana", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8DE, 4, 31),
+            new SpellBookEntry( 7, Aptitude.Adjuration, "Poison", new Type[] { typeof(Nightshade) }, 0x8D3, 3, 20),
+            new SpellBookEntry( 8, Aptitude.Adjuration, "Dissip. Masse", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(BlackPearl), typeof(SulfurousAsh) }, 0x8F5, 7, 54),
+            new SpellBookEntry( 9, Aptitude.Adjuration, "Drain Vamp.", new Type[] { typeof(BlackPearl), typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8F4, 7, 53),
+            new SpellBookEntry( 10, Aptitude.Adjuration, "Mur de Poison", new Type[] { typeof(BlackPearl), typeof(Nightshade), typeof(SpidersSilk) }, 0x8E6, 5, 39),
 
             //Alteration
-            new SpellBookEntry( 1, NAptitude.Alteration, "Faiblesse", new Type[] { typeof(Garlic), typeof(Nightshade) }, 0x8c7, 1, 8),
-            new SpellBookEntry( 2, NAptitude.Alteration, "Maladroit", new Type[] { typeof(Bloodmoss), typeof(Nightshade) }, 0x8c0, 1, 1),
-            new SpellBookEntry( 3, NAptitude.Alteration, "Débilité", new Type[] { typeof(Ginseng), typeof(Nightshade) }, 0x8c2, 1, 3),
-            new SpellBookEntry( 4, NAptitude.Alteration, "Telekinesis", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8D4, 3, 21),
-            new SpellBookEntry( 5, NAptitude.Alteration, "Reflet", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E3, 5, 36),
-            new SpellBookEntry( 8, NAptitude.Alteration, "Malediction", new Type[] { typeof(Nightshade), typeof(Garlic), typeof(SulfurousAsh) }, 0x8DA, 4, 27),
-            new SpellBookEntry( 10, NAptitude.Alteration, "Paralysie", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
-            new SpellBookEntry( 11, NAptitude.Alteration, "Fléau", new Type[] { typeof(Garlic), typeof(Nightshade), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8ED, 6, 46),
-            new SpellBookEntry( 12, NAptitude.Alteration, "Pétrification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
+            new SpellBookEntry( 1, Aptitude.Alteration, "Faiblesse", new Type[] { typeof(Garlic), typeof(Nightshade) }, 0x8c7, 1, 8),
+            new SpellBookEntry( 2, Aptitude.Alteration, "Maladroit", new Type[] { typeof(Bloodmoss), typeof(Nightshade) }, 0x8c0, 1, 1),
+            new SpellBookEntry( 3, Aptitude.Alteration, "Débilité", new Type[] { typeof(Ginseng), typeof(Nightshade) }, 0x8c2, 1, 3),
+            new SpellBookEntry( 4, Aptitude.Alteration, "Telekinesis", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8D4, 3, 21),
+            new SpellBookEntry( 5, Aptitude.Alteration, "Reflet", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E3, 5, 36),
+            new SpellBookEntry( 8, Aptitude.Alteration, "Malediction", new Type[] { typeof(Nightshade), typeof(Garlic), typeof(SulfurousAsh) }, 0x8DA, 4, 27),
+            new SpellBookEntry( 10, Aptitude.Alteration, "Paralysie", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
+            new SpellBookEntry( 11, Aptitude.Alteration, "Fléau", new Type[] { typeof(Garlic), typeof(Nightshade), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8ED, 6, 46),
+            new SpellBookEntry( 12, Aptitude.Alteration, "Pétrification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
 
             //Evocation
-            new SpellBookEntry( 1, NAptitude.Evocation, "Bourrasque", new Type[] { typeof(MandrakeRoot) }, 0x5D7, 1, 201),
-            new SpellBookEntry( 1, NAptitude.Evocation, "Flamèche", new Type[] { typeof(BlackPearl) }, 0x5BE, 1, 202),
-            new SpellBookEntry( 1, NAptitude.Evocation, "Froid", new Type[] { typeof(Bloodmoss) }, 0x5CA, 1, 203),
-            new SpellBookEntry( 1, NAptitude.Evocation, "Tempête", new Type[] { typeof(SulfurousAsh) }, 0x5C3, 1, 204),
+            new SpellBookEntry( 1, Aptitude.Evocation, "Bourrasque", new Type[] { typeof(MandrakeRoot) }, 0x5D7, 1, 201),
+            new SpellBookEntry( 1, Aptitude.Evocation, "Flamèche", new Type[] { typeof(BlackPearl) }, 0x5BE, 1, 202),
+            new SpellBookEntry( 1, Aptitude.Evocation, "Froid", new Type[] { typeof(Bloodmoss) }, 0x5CA, 1, 203),
+            new SpellBookEntry( 1, Aptitude.Evocation, "Tempête", new Type[] { typeof(SulfurousAsh) }, 0x5C3, 1, 204),
 
-            new SpellBookEntry( 2, NAptitude.Evocation, "Boule de Feu", new Type[] { typeof(BlackPearl) }, 0x8D1, 3, 18),
-            new SpellBookEntry( 3, NAptitude.Evocation, "Mur de Feu", new Type[] { typeof(BlackPearl), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8DB, 4, 28),
-            new SpellBookEntry( 4, NAptitude.Evocation, "Énergie", new Type[] { typeof(BlackPearl), typeof(Nightshade) }, 0x8E9, 6, 42),
-            new SpellBookEntry( 5, NAptitude.Evocation, "Éclair", new Type[] { typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8DD, 4, 30),
-            new SpellBookEntry( 6, NAptitude.Evocation, "Explosion", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8EA, 6, 43),
-            new SpellBookEntry( 7, NAptitude.Evocation, "Éner. de Masse", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8F1, 7, 50),
-            new SpellBookEntry( 8, NAptitude.Evocation, "Jet de Flamme", new Type[] { typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8F2, 7, 51),
-            new SpellBookEntry( 9, NAptitude.Evocation, "Météores", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8F6, 7, 55),
-            new SpellBookEntry( 10, NAptitude.Evocation, "Tremblement", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(Ginseng), typeof(SulfurousAsh) }, 0x8F8, 8, 57),
-            new SpellBookEntry( 11, NAptitude.Evocation, "Vortex", new Type[] { typeof(Bloodmoss), typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade) }, 0x8F9, 8, 58),
-            new SpellBookEntry( 12, NAptitude.Evocation, "Chaine d'Éclair", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8F0, 7, 49),
+            new SpellBookEntry( 2, Aptitude.Evocation, "Boule de Feu", new Type[] { typeof(BlackPearl) }, 0x8D1, 3, 18),
+            new SpellBookEntry( 3, Aptitude.Evocation, "Mur de Feu", new Type[] { typeof(BlackPearl), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8DB, 4, 28),
+            new SpellBookEntry( 4, Aptitude.Evocation, "Énergie", new Type[] { typeof(BlackPearl), typeof(Nightshade) }, 0x8E9, 6, 42),
+            new SpellBookEntry( 5, Aptitude.Evocation, "Éclair", new Type[] { typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8DD, 4, 30),
+            new SpellBookEntry( 6, Aptitude.Evocation, "Explosion", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8EA, 6, 43),
+            new SpellBookEntry( 7, Aptitude.Evocation, "Éner. de Masse", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8F1, 7, 50),
+            new SpellBookEntry( 8, Aptitude.Evocation, "Jet de Flamme", new Type[] { typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8F2, 7, 51),
+            new SpellBookEntry( 9, Aptitude.Evocation, "Météores", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8F6, 7, 55),
+            new SpellBookEntry( 10, Aptitude.Evocation, "Tremblement", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(Ginseng), typeof(SulfurousAsh) }, 0x8F8, 8, 57),
+            new SpellBookEntry( 11, Aptitude.Evocation, "Vortex", new Type[] { typeof(Bloodmoss), typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade) }, 0x8F9, 8, 58),
+            new SpellBookEntry( 12, Aptitude.Evocation, "Chaine d'Éclair", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8F0, 7, 49),
 
             //Illusion
-            new SpellBookEntry( 1, NAptitude.Illusion, "Vision Noct.", new Type[] { typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8c5, 1, 6),
-            new SpellBookEntry( 1, NAptitude.Illusion, "Voile", new Type[] { typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x5BA, 1, 200),
-            new SpellBookEntry( 3, NAptitude.Illusion, "Teleportation", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8D5, 3, 22),
-            new SpellBookEntry( 4, NAptitude.Illusion, "Incognito", new Type[] { typeof(Bloodmoss), typeof(Garlic), typeof(Nightshade) }, 0x8E2, 5, 35),
-            new SpellBookEntry( 5, NAptitude.Illusion, "Marque", new Type[] { typeof(BlackPearl), typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8EC, 6, 45),
-            new SpellBookEntry( 6, NAptitude.Illusion, "Lobotomie", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade), typeof(SulfurousAsh) }, 0x8E4, 5, 37),
-            new SpellBookEntry( 7, NAptitude.Illusion, "Rappel", new Type[] { typeof(BlackPearl), typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8DF, 4, 32),
-            new SpellBookEntry( 8, NAptitude.Illusion, "Polymorph", new Type[] { typeof(Bloodmoss), typeof(SpidersSilk), typeof(MandrakeRoot) }, 0x8F7, 7, 56),
-            new SpellBookEntry( 9, NAptitude.Illusion, "Révélation", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8EF, 6, 48),
-            new SpellBookEntry( 10, NAptitude.Illusion, "Invisibilité", new Type[] { typeof(Bloodmoss), typeof(Nightshade) }, 0x8EB, 6, 44),
-            new SpellBookEntry( 12, NAptitude.Illusion, "Voyagement", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8F3, 7, 52),
+            new SpellBookEntry( 1, Aptitude.Illusion, "Vision Noct.", new Type[] { typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8c5, 1, 6),
+            new SpellBookEntry( 1, Aptitude.Illusion, "Voile", new Type[] { typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x5BA, 1, 200),
+            new SpellBookEntry( 3, Aptitude.Illusion, "Teleportation", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8D5, 3, 22),
+            new SpellBookEntry( 4, Aptitude.Illusion, "Incognito", new Type[] { typeof(Bloodmoss), typeof(Garlic), typeof(Nightshade) }, 0x8E2, 5, 35),
+            new SpellBookEntry( 5, Aptitude.Illusion, "Marque", new Type[] { typeof(BlackPearl), typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8EC, 6, 45),
+            new SpellBookEntry( 6, Aptitude.Illusion, "Lobotomie", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade), typeof(SulfurousAsh) }, 0x8E4, 5, 37),
+            new SpellBookEntry( 7, Aptitude.Illusion, "Rappel", new Type[] { typeof(BlackPearl), typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8DF, 4, 32),
+            new SpellBookEntry( 8, Aptitude.Illusion, "Polymorph", new Type[] { typeof(Bloodmoss), typeof(SpidersSilk), typeof(MandrakeRoot) }, 0x8F7, 7, 56),
+            new SpellBookEntry( 9, Aptitude.Illusion, "Révélation", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8EF, 6, 48),
+            new SpellBookEntry( 10, Aptitude.Illusion, "Invisibilité", new Type[] { typeof(Bloodmoss), typeof(Nightshade) }, 0x8EB, 6, 44),
+            new SpellBookEntry( 12, Aptitude.Illusion, "Voyagement", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8F3, 7, 52),
 
             //Invocation
-            new SpellBookEntry( 1, NAptitude.Invocation, "Nourriture", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8c1, 1, 2),
-            new SpellBookEntry( 2, NAptitude.Invocation, "Flèche Mag.", new Type[] { typeof(SulfurousAsh) }, 0x8c4, 1, 5),
-            new SpellBookEntry( 3, NAptitude.Invocation, "Mur de Pierre", new Type[] { typeof(Bloodmoss), typeof(Garlic) }, 0x8D7, 3, 24),
-            new SpellBookEntry( 4, NAptitude.Invocation, "Convocation", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E7, 5, 40),
-            new SpellBookEntry( 5, NAptitude.Invocation, "Elem. de Terre", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8FD, 8, 62),
-            new SpellBookEntry( 6, NAptitude.Invocation, "Esprit de Lame", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade) }, 0x8E0, 5, 33),
-            new SpellBookEntry( 7, NAptitude.Invocation, "Elem. d'Air", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8FB, 8, 60),
-            new SpellBookEntry( 9, NAptitude.Invocation, "Elem. de Feu", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8FE, 8, 63),
-            new SpellBookEntry( 10, NAptitude.Invocation, "Elem. d'Eau", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8FF, 8, 64),
-            new SpellBookEntry( 12, NAptitude.Invocation, "Conjuration", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8FC, 8, 61),
+            new SpellBookEntry( 1, Aptitude.Invocation, "Nourriture", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8c1, 1, 2),
+            new SpellBookEntry( 2, Aptitude.Invocation, "Flèche Mag.", new Type[] { typeof(SulfurousAsh) }, 0x8c4, 1, 5),
+            new SpellBookEntry( 3, Aptitude.Invocation, "Mur de Pierre", new Type[] { typeof(Bloodmoss), typeof(Garlic) }, 0x8D7, 3, 24),
+            new SpellBookEntry( 4, Aptitude.Invocation, "Convocation", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E7, 5, 40),
+            new SpellBookEntry( 5, Aptitude.Invocation, "Elem. de Terre", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8FD, 8, 62),
+            new SpellBookEntry( 6, Aptitude.Invocation, "Esprit de Lame", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade) }, 0x8E0, 5, 33),
+            new SpellBookEntry( 7, Aptitude.Invocation, "Elem. d'Air", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8FB, 8, 60),
+            new SpellBookEntry( 9, Aptitude.Invocation, "Elem. de Feu", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8FE, 8, 63),
+            new SpellBookEntry( 10, Aptitude.Invocation, "Elem. d'Eau", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8FF, 8, 64),
+            new SpellBookEntry( 12, Aptitude.Invocation, "Conjuration", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8FC, 8, 61),
 
             //Necromancy            
-              new SpellBookEntry( 1, NAptitude.Necromancie, "Corruption", new Type[] { typeof(GraveDust), typeof(PigIron) }, 0x5008, 9, 108),
-              new SpellBookEntry( 1, NAptitude.Necromancie, "Spectre", new Type[] { typeof(NoxCrystal), typeof(PigIron) }, 0x500F, 9, 115),
-            new SpellBookEntry( 2, NAptitude.Necromancie, "Présage", new Type[] { typeof(BatWing), typeof(NoxCrystal) }, 0x5004, 9, 104),
-            new SpellBookEntry( 2, NAptitude.Necromancie, "Sermant", new Type[] { typeof(DaemonBlood) }, 0x5001, 9, 101),
-            new SpellBookEntry( 3, NAptitude.Necromancie, "Corps Mortifié", new Type[] { typeof(BatWing), typeof(GraveDust) }, 0x5002, 9, 102),
-             new SpellBookEntry( 3, NAptitude.Necromancie, "Maudire", new Type[] { typeof(PigIron) }, 0x5003, 9, 103),
-             new SpellBookEntry( 4, NAptitude.Necromancie, "Minion", new Type[] { typeof(BatWing), typeof(GraveDust), typeof(DaemonBlood) }, 0x500B, 9, 111),
-            new SpellBookEntry( 5, NAptitude.Necromancie, "Pourriture", new Type[] { typeof(BatWing), typeof(PigIron), typeof(DaemonBlood) }, 0x5007, 9, 107),
-            new SpellBookEntry( 6, NAptitude.Necromancie, "Bête Horrifique", new Type[] { typeof(BatWing), typeof(DaemonBlood) }, 0x5005, 9, 105),
-            new SpellBookEntry( 6, NAptitude.Necromancie, "Animation", new Type[] { typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal), typeof(PigIron) }, 0x5000, 9, 100),
-            new SpellBookEntry( 7, NAptitude.Necromancie, "Venin", new Type[] { typeof(NoxCrystal) }, 0x5009, 9, 109),
-            new SpellBookEntry( 8, NAptitude.Necromancie, "Flétrir", new Type[] { typeof(NoxCrystal), typeof(GraveDust), typeof(PigIron) }, 0x500E, 9, 114),
-            new SpellBookEntry( 9, NAptitude.Necromancie, "Étranglement", new Type[] { typeof(DaemonBlood), typeof(NoxCrystal) }, 0x500A, 9, 110),
-            new SpellBookEntry( 10, NAptitude.Necromancie, "Liche", new Type[] { typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal) }, 0x5006, 9, 106),
-            new SpellBookEntry( 11, NAptitude.Necromancie, "Esprit Vengeur", new Type[] { typeof(BatWing), typeof(GraveDust), typeof(PigIron) }, 0x500D, 9, 113),
-            new SpellBookEntry( 12, NAptitude.Necromancie, "Animation", new Type[] { typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal), typeof(PigIron) }, 0x5000, 9, 100),
-            new SpellBookEntry( 12, NAptitude.Necromancie, "Vampirisme", new Type[] { typeof(BatWing), typeof(NoxCrystal), typeof(PigIron) }, 0x500C, 9, 112),
+              new SpellBookEntry( 1, Aptitude.Necromancie, "Corruption", new Type[] { typeof(GraveDust), typeof(PigIron) }, 0x5008, 9, 108),
+              new SpellBookEntry( 1, Aptitude.Necromancie, "Spectre", new Type[] { typeof(NoxCrystal), typeof(PigIron) }, 0x500F, 9, 115),
+            new SpellBookEntry( 2, Aptitude.Necromancie, "Présage", new Type[] { typeof(BatWing), typeof(NoxCrystal) }, 0x5004, 9, 104),
+            new SpellBookEntry( 2, Aptitude.Necromancie, "Sermant", new Type[] { typeof(DaemonBlood) }, 0x5001, 9, 101),
+            new SpellBookEntry( 3, Aptitude.Necromancie, "Corps Mortifié", new Type[] { typeof(BatWing), typeof(GraveDust) }, 0x5002, 9, 102),
+             new SpellBookEntry( 3, Aptitude.Necromancie, "Maudire", new Type[] { typeof(PigIron) }, 0x5003, 9, 103),
+             new SpellBookEntry( 4, Aptitude.Necromancie, "Minion", new Type[] { typeof(BatWing), typeof(GraveDust), typeof(DaemonBlood) }, 0x500B, 9, 111),
+            new SpellBookEntry( 5, Aptitude.Necromancie, "Pourriture", new Type[] { typeof(BatWing), typeof(PigIron), typeof(DaemonBlood) }, 0x5007, 9, 107),
+            new SpellBookEntry( 6, Aptitude.Necromancie, "Bête Horrifique", new Type[] { typeof(BatWing), typeof(DaemonBlood) }, 0x5005, 9, 105),
+            new SpellBookEntry( 6, Aptitude.Necromancie, "Animation", new Type[] { typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal), typeof(PigIron) }, 0x5000, 9, 100),
+            new SpellBookEntry( 7, Aptitude.Necromancie, "Venin", new Type[] { typeof(NoxCrystal) }, 0x5009, 9, 109),
+            new SpellBookEntry( 8, Aptitude.Necromancie, "Flétrir", new Type[] { typeof(NoxCrystal), typeof(GraveDust), typeof(PigIron) }, 0x500E, 9, 114),
+            new SpellBookEntry( 9, Aptitude.Necromancie, "Étranglement", new Type[] { typeof(DaemonBlood), typeof(NoxCrystal) }, 0x500A, 9, 110),
+            new SpellBookEntry( 10, Aptitude.Necromancie, "Liche", new Type[] { typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal) }, 0x5006, 9, 106),
+            new SpellBookEntry( 11, Aptitude.Necromancie, "Esprit Vengeur", new Type[] { typeof(BatWing), typeof(GraveDust), typeof(PigIron) }, 0x500D, 9, 113),
+            new SpellBookEntry( 12, Aptitude.Necromancie, "Animation", new Type[] { typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal), typeof(PigIron) }, 0x5000, 9, 100),
+            new SpellBookEntry( 12, Aptitude.Necromancie, "Vampirisme", new Type[] { typeof(BatWing), typeof(NoxCrystal), typeof(PigIron) }, 0x500C, 9, 112),
 
             //Thaumaturgie
-            new SpellBookEntry( 1, NAptitude.Thaumaturgie, "Force", new Type[] { typeof(MandrakeRoot), typeof(Nightshade) }, 0x8cF, 2, 16),
-            new SpellBookEntry( 2, NAptitude.Thaumaturgie, "Agilité", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8c8, 2, 9),
-            new SpellBookEntry( 3, NAptitude.Thaumaturgie, "Ruse", new Type[] { typeof(MandrakeRoot), typeof(Nightshade) }, 0x8c9, 2, 10),
-            new SpellBookEntry( 4, NAptitude.Thaumaturgie, "Armure Mag.", new Type[] { typeof(Garlic), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8c6, 1, 7),
-            new SpellBookEntry( 5, NAptitude.Thaumaturgie, "Protection", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(SulfurousAsh) }, 0x8cE, 2, 15),
-            new SpellBookEntry( 6, NAptitude.Thaumaturgie, "Antidote", new Type[] { typeof(Garlic), typeof(Ginseng) }, 0x8cA, 2, 11),
-            new SpellBookEntry( 7, NAptitude.Thaumaturgie, "Soins", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(SpidersSilk) }, 0x8c3, 1, 4),
-            new SpellBookEntry( 8, NAptitude.Thaumaturgie, "Puissance", new Type[] { typeof(Garlic), typeof(MandrakeRoot) }, 0x8D0, 3, 17),
-            new SpellBookEntry( 9, NAptitude.Thaumaturgie, "Remède", new Type[] { typeof(Bloodmoss), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8D8, 4, 25),
-            new SpellBookEntry( 10, NAptitude.Thaumaturgie, "Protection Mag.", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8D9, 4, 26),
-            new SpellBookEntry( 11, NAptitude.Thaumaturgie, "Soins Magiques", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8DC, 4, 29),
-            new SpellBookEntry( 12, NAptitude.Thaumaturgie, "Résurrection", new Type[] { typeof(Bloodmoss), typeof(Garlic), typeof(Ginseng) }, 0x8FA, 8, 59),
+            new SpellBookEntry( 1, Aptitude.Thaumaturgie, "Force", new Type[] { typeof(MandrakeRoot), typeof(Nightshade) }, 0x8cF, 2, 16),
+            new SpellBookEntry( 2, Aptitude.Thaumaturgie, "Agilité", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8c8, 2, 9),
+            new SpellBookEntry( 3, Aptitude.Thaumaturgie, "Ruse", new Type[] { typeof(MandrakeRoot), typeof(Nightshade) }, 0x8c9, 2, 10),
+            new SpellBookEntry( 4, Aptitude.Thaumaturgie, "Armure Mag.", new Type[] { typeof(Garlic), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8c6, 1, 7),
+            new SpellBookEntry( 5, Aptitude.Thaumaturgie, "Protection", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(SulfurousAsh) }, 0x8cE, 2, 15),
+            new SpellBookEntry( 6, Aptitude.Thaumaturgie, "Antidote", new Type[] { typeof(Garlic), typeof(Ginseng) }, 0x8cA, 2, 11),
+            new SpellBookEntry( 7, Aptitude.Thaumaturgie, "Soins", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(SpidersSilk) }, 0x8c3, 1, 4),
+            new SpellBookEntry( 8, Aptitude.Thaumaturgie, "Puissance", new Type[] { typeof(Garlic), typeof(MandrakeRoot) }, 0x8D0, 3, 17),
+            new SpellBookEntry( 9, Aptitude.Thaumaturgie, "Remède", new Type[] { typeof(Bloodmoss), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8D8, 4, 25),
+            new SpellBookEntry( 10, Aptitude.Thaumaturgie, "Protection Mag.", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8D9, 4, 26),
+            new SpellBookEntry( 11, Aptitude.Thaumaturgie, "Soins Magiques", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8DC, 4, 29),
+            new SpellBookEntry( 12, Aptitude.Thaumaturgie, "Résurrection", new Type[] { typeof(Bloodmoss), typeof(Garlic), typeof(Ginseng) }, 0x8FA, 8, 59),
 
             /*new SpellBookEntry( 1, NAptitude.Alteration, "Nourriture", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8c1, 1, 600),
             new SpellBookEntry( 2, NAptitude.Alteration, "Vision de nuit", new Type[] { typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8c5, 1, 601),
@@ -299,14 +299,14 @@ namespace Server.Gumps
         
         #region tableaux
         //Liste des magies du spellbook et leur couleur
-        public NAptitude[] m_ConnaissanceList = new NAptitude[] {
-            NAptitude.Adjuration,
-            NAptitude.Alteration,
-            NAptitude.Evocation,
-            NAptitude.Illusion,
-            NAptitude.Invocation,
-            NAptitude.Necromancie,
-            NAptitude.Thaumaturgie,
+        public Aptitude[] m_ConnaissanceList = new Aptitude[] {
+            Aptitude.Adjuration,
+            Aptitude.Alteration,
+            Aptitude.Evocation,
+            Aptitude.Illusion,
+            Aptitude.Invocation,
+            Aptitude.Necromancie,
+            Aptitude.Thaumaturgie,
         };
 
         //public Hashtable m_NameColors = new Hashtable();
@@ -322,13 +322,13 @@ namespace Server.Gumps
             m_NameColors[NAptitude.Thaumaturgie] = 554;
             m_NameColors[NAptitude.Necromancie] = 12;*/
 
-            m_Names[NAptitude.Adjuration] = "Adjuration";
-            m_Names[NAptitude.Alteration] = "Alteration";
-            m_Names[NAptitude.Evocation] = "Evocation";
-            m_Names[NAptitude.Illusion] = "Illusion";
-            m_Names[NAptitude.Invocation] = "Invocation";
-            m_Names[NAptitude.Necromancie] = "Necromancie";
-            m_Names[NAptitude.Thaumaturgie] = "Thaumaturgie";
+            m_Names[Aptitude.Adjuration] = "Adjuration";
+            m_Names[Aptitude.Alteration] = "Alteration";
+            m_Names[Aptitude.Evocation] = "Evocation";
+            m_Names[Aptitude.Illusion] = "Illusion";
+            m_Names[Aptitude.Invocation] = "Invocation";
+            m_Names[Aptitude.Necromancie] = "Necromancie";
+            m_Names[Aptitude.Thaumaturgie] = "Thaumaturgie";
         }
         #endregion
 
@@ -505,11 +505,11 @@ namespace Server.Gumps
             AddButton(123, 15, 0x89D, 0x89D, 19, GumpButtonType.Page, totpage - 1);
         }
 
-        public bool ArrayContains(NAptitude[] conn, NAptitude wanted)
+        public bool ArrayContains(Aptitude[] conn, Aptitude wanted)
         {
             for (int i = 0; i < conn.Length; i++)
             {
-                if (wanted == (NAptitude)conn[i])
+                if (wanted == (Aptitude)conn[i])
                     return true;
             }
 

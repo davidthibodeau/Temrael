@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCommandement
     {
         private static string m_name = "Commandement";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Commandement];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Commandement];
         private static int m_tooltip = 3006304;
         private static string m_description = "Augmente le nombre de soldats possible à contrôler.";
         private static string m_note = "Les soldats sont accessibles de la géopolitique ou du recrutement de mercenaires.";

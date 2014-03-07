@@ -18,7 +18,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 10; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
         public override double CastDelayBase { get { return 0.5; } }
         public override int CastDelayMinimum { get { return 0; } }
@@ -54,7 +54,7 @@ namespace Server.Spells.Necromancy
 
 				double duration = Caster.Skills[SkillName.Goetie].Value + 250.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				Timer t = (Timer)m_Table[weapon];
 

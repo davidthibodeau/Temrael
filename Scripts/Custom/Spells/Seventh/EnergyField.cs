@@ -22,7 +22,7 @@ namespace Server.Spells.Seventh
             );
 
         public override int RequiredAptitudeValue { get { return 7; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
 
 		public EnergyFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -73,7 +73,7 @@ namespace Server.Spells.Seventh
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Destruction].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				int itemID = eastToWest ? 0x3946 : 0x3956;
 

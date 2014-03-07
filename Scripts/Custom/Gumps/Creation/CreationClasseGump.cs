@@ -88,7 +88,7 @@ namespace Server.Gumps
                 line = linetmp;
                 AddSection(x + 240, y + line * scale, 300, 90, info.Nom, info.Role);
 
-                List<NAptitude> listAptitude = new List<NAptitude>();
+                List<Aptitude> listAptitude = new List<Aptitude>();
                 string temp = String.Empty;
                 /*string nomTemp = String.Empty;
                 string descrTemp = String.Empty;

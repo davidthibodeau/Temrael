@@ -21,7 +21,7 @@ namespace Server.Spells.First
         );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
 
         public Flameche(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -75,7 +75,7 @@ namespace Server.Spells.First
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Destruction].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
                 //for ( int i = -3; i <= 3; ++i )
                 //{
@@ -187,7 +187,7 @@ namespace Server.Spells.First
                     //     double damage = Utility.RandomMinMax(5, 8);
                     double damage = Utility.RandomMinMax(3, 4);
 
-                    damage = SpellHelper.AdjustValue(m_Caster, damage, NAptitude.Sorcellerie);
+                    damage = SpellHelper.AdjustValue(m_Caster, damage, Aptitude.Sorcellerie);
 
                     if (m_Spell.CheckResisted(m))
                     {
@@ -282,7 +282,7 @@ namespace Server.Spells.First
                                     double damage = Utility.RandomMinMax(3, 4);
 
 
-                                    damage = SpellHelper.AdjustValue(caster, damage, NAptitude.Sorcellerie);
+                                    damage = SpellHelper.AdjustValue(caster, damage, Aptitude.Sorcellerie);
 
                                     if (m_Item.m_Spell.CheckResisted(m))
                                     {

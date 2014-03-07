@@ -89,7 +89,7 @@ namespace Server.SkillHandlers
 						steps = 1;
 
                     if (m is TMobile)
-                        steps += (int)((TMobile)m).GetAptitudeValue(NAptitude.MouvementCache) * 2;
+                        steps += (int)((TMobile)m).GetAptitudeValue(Aptitude.MouvementCache) * 2;
 
 					m.AllowedStealthSteps = steps;
 

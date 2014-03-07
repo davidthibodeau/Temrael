@@ -560,7 +560,7 @@ namespace Server.Mobiles
         {
             get
             {
-                int devotion = GetAptitudeValue(NAptitude.GraceDivine);
+                int devotion = GetAptitudeValue(Aptitude.GraceDivine);
 
                 return devotion * 10;
             }
@@ -944,7 +944,7 @@ namespace Server.Mobiles
         {
             get
             {
-                return base.PhysicalResistance + VirtualArmor + VirtualArmorMod + GetAptitudeValue(NAptitude.Resistance) * 2;
+                return base.PhysicalResistance + VirtualArmor + VirtualArmorMod + GetAptitudeValue(Aptitude.Resistance) * 2;
             }
         }
 
@@ -1229,7 +1229,7 @@ namespace Server.Mobiles
                 return;
 
             int range = 12;
-            int rage = this.GetAptitudeValue(NAptitude.Depistage);
+            int rage = this.GetAptitudeValue(Aptitude.Depistage);
 
             if ((int)(rage / 2) > 0)
             {
@@ -1636,7 +1636,7 @@ namespace Server.Mobiles
 
                 int req = GetArmorLevel((BaseArmor)item);
 
-                if (GetAptitudeValue(NAptitude.PortBouclier) < req)
+                if (GetAptitudeValue(Aptitude.PortBouclier) < req)
                 {
                     SendMessage("Aptitude de port de bouclier requis pour être porté : " + req);
                     return false;
@@ -1659,7 +1659,7 @@ namespace Server.Mobiles
 
                 int req = GetArmorLevel((BaseArmor)item);
 
-                if (GetAptitudeValue(NAptitude.PortArmure) < req)
+                if (GetAptitudeValue(Aptitude.PortArmure) < req)
                 {
                     SendMessage("Aptitude de port d'armure requis pour être porté : " + req);
                     return false;
@@ -1681,7 +1681,7 @@ namespace Server.Mobiles
                     m_BonusMana = 25;
 
                 int req = ((BaseWeapon)item).NiveauAttirail;
-                if (GetAptitudeValue(NAptitude.PortArmeDistance) < req)
+                if (GetAptitudeValue(Aptitude.PortArmeDistance) < req)
                 {
                     SendMessage("Aptitude de port d'arme de distance requis pour être porté : " + req);
                     return false;
@@ -1703,7 +1703,7 @@ namespace Server.Mobiles
                     m_BonusMana = 25;
 
                 int req = ((BaseWeapon)item).NiveauAttirail;
-                if (GetAptitudeValue(NAptitude.PortArme) < req)
+                if (GetAptitudeValue(Aptitude.PortArme) < req)
                 {
                     SendMessage("Aptitude de port d'arme requis pour être porté : " + req);
                     return false;
@@ -1764,7 +1764,7 @@ namespace Server.Mobiles
 
                 int req = GetArmorLevel((BaseArmor)item);
 
-                if (GetAptitudeValue(NAptitude.PortBouclier) < req)
+                if (GetAptitudeValue(Aptitude.PortBouclier) < req)
                 {
                     SendMessage("Aptitude de port de bouclier requis pour être porté : " + req);
                     return false;
@@ -1787,7 +1787,7 @@ namespace Server.Mobiles
                 
                 int req = GetArmorLevel((BaseArmor)item);
                 
-                if (GetAptitudeValue(NAptitude.PortArmure) < req)
+                if (GetAptitudeValue(Aptitude.PortArmure) < req)
                 {
                     SendMessage("Aptitude de port d'armure requis pour être porté : " + req);
                     return false;
@@ -1809,7 +1809,7 @@ namespace Server.Mobiles
                     m_BonusMana = 25;
 
                 int req = ((BaseWeapon)item).NiveauAttirail;
-                if (GetAptitudeValue(NAptitude.PortArmeDistance) < req)
+                if (GetAptitudeValue(Aptitude.PortArmeDistance) < req)
                 {
                     SendMessage("Aptitude de port d'arme de distance requis pour être porté : " + req);
                     return false;
@@ -1831,7 +1831,7 @@ namespace Server.Mobiles
                     m_BonusMana = 25;
 
                 int req = ((BaseWeapon)item).NiveauAttirail;
-                if (GetAptitudeValue(NAptitude.PortArme) < req)
+                if (GetAptitudeValue(Aptitude.PortArme) < req)
                 {
                     SendMessage("Aptitude de port d'arme requis pour être porté : " + req);
                     return false;
@@ -2443,7 +2443,7 @@ namespace Server.Mobiles
             
         }
 
-        public virtual int GetBaseAptitudeValue(NAptitude aptitude)
+        public virtual int GetBaseAptitudeValue(Aptitude aptitude)
         {
             /*int metierCount = 0;*/
             int raceCount = 0;
@@ -2472,7 +2472,7 @@ namespace Server.Mobiles
             //return 0;
         }*/
 
-        public virtual int GetAptitudeValue(NAptitude aptitude)
+        public virtual int GetAptitudeValue(Aptitude aptitude)
         {
             return m_Aptitudes[aptitude] + GetBaseAptitudeValue(aptitude);
         }
@@ -2487,7 +2487,7 @@ namespace Server.Mobiles
             get
             {
                 if (m_Aptitudes != null)
-                    return 25+this.Con + (this.Str / 2) + (GetAptitudeValue(NAptitude.Endurance) * 3) + m_BonusHits;
+                    return 25+this.Con + (this.Str / 2) + (GetAptitudeValue(Aptitude.Endurance) * 3) + m_BonusHits;
                 else
                     return 25+this.Con + (this.Str / 2) + m_BonusHits;
             }
@@ -2497,7 +2497,7 @@ namespace Server.Mobiles
             get
             {
                 if (m_Aptitudes != null)
-                    return this.Dex + (this.Con / 2) + (GetAptitudeValue(NAptitude.Resilience) * 3) + m_BonusStam;
+                    return this.Dex + (this.Con / 2) + (GetAptitudeValue(Aptitude.Resilience) * 3) + m_BonusStam;
                 else
                     return this.Dex + (this.Con / 2) + m_BonusStam;
             }
@@ -2507,7 +2507,7 @@ namespace Server.Mobiles
             get
             {
                 if (m_Aptitudes != null)
-                    return this.Int + (this.Cha / 2) + (GetAptitudeValue(NAptitude.Receptacle) * 3) + m_BonusMana;
+                    return this.Int + (this.Cha / 2) + (GetAptitudeValue(Aptitude.Receptacle) * 3) + m_BonusMana;
                 else
                     return this.Int + (this.Cha / 2) + m_BonusMana;
             }
@@ -2515,33 +2515,33 @@ namespace Server.Mobiles
 
         public void FamilierCheck()
         {
-            FollowersMax = 2 + GetAptitudeValue(NAptitude.Familier);
+            FollowersMax = 2 + GetAptitudeValue(Aptitude.Familier);
             Delta(MobileDelta.Followers);
         }
 
-        public virtual void OnAptitudesChange(NAptitude aptitude, int oldvalue, int newvalue)
+        public virtual void OnAptitudesChange(Aptitude aptitude, int oldvalue, int newvalue)
         {
-            if (aptitude == NAptitude.Familier)
+            if (aptitude == Aptitude.Familier)
             {
-                FollowersMax = 2 + GetAptitudeValue(NAptitude.Familier);
+                FollowersMax = 2 + GetAptitudeValue(Aptitude.Familier);
                 Delta(MobileDelta.Followers);
             }
 
             //Validate(ValidateType.Classes);
 
-            if (aptitude == NAptitude.Endurance)
+            if (aptitude == Aptitude.Endurance)
             {
                 CheckStatTimers();
                 Delta(MobileDelta.Hits);
             }
 
-            if (aptitude == NAptitude.Resilience)
+            if (aptitude == Aptitude.Resilience)
             {
                 CheckStatTimers();
                 Delta(MobileDelta.Stam);
             }
 
-            if (aptitude == NAptitude.Receptacle)
+            if (aptitude == Aptitude.Receptacle)
             {
                 CheckStatTimers();
                 Delta(MobileDelta.Mana);
@@ -2722,7 +2722,7 @@ namespace Server.Mobiles
 
             double chance = 0.0;
             int equitation = ((int)this.Skills.Equitation.Value / 10);
-            equitation += this.GetAptitudeValue(NAptitude.CombatMonte);
+            equitation += this.GetAptitudeValue(Aptitude.CombatMonte);
 
             //int equitation = GetAptitudeValue(NAptitude.Equitation);
 

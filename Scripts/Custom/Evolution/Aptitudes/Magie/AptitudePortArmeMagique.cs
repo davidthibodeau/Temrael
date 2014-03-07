@@ -8,7 +8,7 @@ namespace Server
     public class AptitudePortArmeMagique
     {
         private static string m_name = "Port d'Arme Magique";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.PortArmeMagique];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.PortArmeMagique];
         private static int m_tooltip = 3006311;
         private static string m_description = "Permet les armes et boucliers tout en lancant des sorts.";
         private static string m_note = "Le niveau 3 permet de méditer avec une armure.";

@@ -19,7 +19,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 9; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
         public override int Body { get { return 24; } }
         public override int IntOffset { get { return 30; } }

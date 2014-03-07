@@ -156,18 +156,18 @@ namespace Server.Gumps
             try
             {
                 int oldValue = 0;
-                NAptitude aptitude;
+                Aptitude aptitude;
 
                 if (info.ButtonID >= 1000)
                 {
-                    aptitude = (NAptitude)(info.ButtonID - 1000);
+                    aptitude = (Aptitude)(info.ButtonID - 1000);
                     oldValue = Aptitudes.GetValue(m_From, aptitude);
 
                     from.SendGump(new FicheAptitudeInfoGump(m_From, aptitude));
                 }
                 else if (info.ButtonID >= 500)
                 {
-                    aptitude = (NAptitude)(info.ButtonID - 500);
+                    aptitude = (Aptitude)(info.ButtonID - 500);
                     oldValue = Aptitudes.GetValue(m_From, aptitude);
 
                     if (Aptitudes.CanLower(m_From, aptitude))
@@ -178,7 +178,7 @@ namespace Server.Gumps
                 }
                 else if (info.ButtonID >= 100)
                 {
-                    aptitude = (NAptitude)(info.ButtonID - 100);
+                    aptitude = (Aptitude)(info.ButtonID - 100);
                     oldValue = Aptitudes.GetValue(m_From, aptitude);
 
                     if (Aptitudes.CanRaise(m_From, aptitude))
@@ -236,9 +236,9 @@ namespace Server.Gumps
 
                 while (en.MoveNext())
                 {
-                    if (en.Key is NAptitude)
+                    if (en.Key is Aptitude)
                     {
-                        NAptitude aptitude = (NAptitude)en.Key;
+                        Aptitude aptitude = (Aptitude)en.Key;
                         int index = listKeys.IndexOf(en.Value.ToString());
                         int varX = ((index / 26) * 250);
                         int varY = (index * 16) - ((index / 26) * 416);

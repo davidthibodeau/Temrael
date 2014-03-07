@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeDerobage
     {
         private static string m_name = "Derobage";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Derobage];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Derobage];
         private static int m_tooltip = 3006339;
         private static string m_description = "Augmente les chances d'une réussite d'usage du fouet.";
         private static string m_note = "Double cliquer un fouet puis un personnage armé.";

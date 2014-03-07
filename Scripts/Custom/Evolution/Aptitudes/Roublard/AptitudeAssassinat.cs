@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeAssassinat
     {
         private static string m_name = "Assassinat";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Assassinat];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Assassinat];
         private static int m_tooltip = 3006334;
         private static string m_description = "Augmente les chances et dégâts d'une tentative d'assassinat réussi.";
         private static string m_note = "Double cliquez une dague et ensuite un personnage joueur pour assassiner.";

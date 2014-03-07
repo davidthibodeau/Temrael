@@ -18,7 +18,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Benedictions }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Benedictions }; } }
 
         public AmuletteSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

@@ -152,7 +152,7 @@ namespace Server.Gumps
                 else
                 {
                     int id = info.ButtonID - 1;
-                    int aptDeguisement = from.GetAptitudeValue(NAptitude.Deguisement);
+                    int aptDeguisement = from.GetAptitudeValue(Aptitude.Deguisement);
                     if ((aptDeguisement * 0.0834) > Utility.RandomDouble() && aptDeguisement >= id)
                         {
                             if (from.Identity[0] == "")

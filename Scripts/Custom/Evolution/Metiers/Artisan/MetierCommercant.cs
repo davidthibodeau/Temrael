@@ -15,7 +15,7 @@ namespace Server
 
         private static ClasseAptitudes[] m_Aptitudes = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(1, NAptitude.Commerce, 1)
+                new ClasseAptitudes(1, Aptitude.Commerce, 1)
             };
 
         public static MetierInfo MetierInfo = new MetierInfo(

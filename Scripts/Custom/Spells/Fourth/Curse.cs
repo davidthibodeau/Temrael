@@ -18,7 +18,7 @@ namespace Server.Spells.Fourth
             );
 
         public override int RequiredAptitudeValue { get { return 8; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Alteration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Alteration }; } }
 
 		public CurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

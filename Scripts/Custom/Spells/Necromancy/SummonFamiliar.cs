@@ -21,7 +21,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
 		public SummonFamiliarSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -197,7 +197,7 @@ namespace Server.Spells.Necromancy
 
                             double duration = (2 * m_From.Skills.Goetie.Fixed) / 5;
 
-                            if (BaseCreature.Summon(bc, m_From, m_From.Location, -1, TimeSpan.FromMinutes(duration + tmob.GetAptitudeValue(NAptitude.Spiritisme))))
+                            if (BaseCreature.Summon(bc, m_From, m_From.Location, -1, TimeSpan.FromMinutes(duration + tmob.GetAptitudeValue(Aptitude.Spiritisme))))
                             {
                                 m_From.FixedParticles(0x3728, 1, 10, 9910, EffectLayer.Head);
                                 bc.PlaySound(bc.GetIdleSound());

@@ -451,20 +451,20 @@ namespace Server.Spells
 
                 if (pm != null)
                 {
-                    if (pm.GetAptitudeValue(NAptitude.Spiritisme) > 0)
-                        value *= 1 + (pm.GetAptitudeValue(NAptitude.Spiritisme) * 0.05);
+                    if (pm.GetAptitudeValue(Aptitude.Spiritisme) > 0)
+                        value *= 1 + (pm.GetAptitudeValue(Aptitude.Spiritisme) * 0.05);
                 }
             }
 
             return TimeSpan.FromSeconds(value);
 		}
 
-        public static double AdjustValue(Mobile caster, double value, NAptitude aptitude)
+        public static double AdjustValue(Mobile caster, double value, Aptitude aptitude)
         {
             return AdjustValue(caster, value, aptitude, false);
         }
 
-        public static double AdjustValue(Mobile caster, double value, NAptitude aptitude, bool rayon)
+        public static double AdjustValue(Mobile caster, double value, Aptitude aptitude, bool rayon)
         {
             TMobile m = caster as TMobile;
 
@@ -472,14 +472,14 @@ namespace Server.Spells
             {
                 switch (aptitude)
                 {
-                    case NAptitude.Sorcellerie:
-                        value *= (m.GetAptitudeValue(NAptitude.Sorcellerie) * 0.04) + 1; break; //0.06
+                    case Aptitude.Sorcellerie:
+                        value *= (m.GetAptitudeValue(Aptitude.Sorcellerie) * 0.04) + 1; break; //0.06
                     //case NAptitude.Sorcellerie:
                     //    value *= (m.GetAptitudeValue(NAptitude.Sorcellerie) * 0.04) + 1; break; //0.06
-                    case NAptitude.Spiritisme:
-                        value *= (m.GetAptitudeValue(NAptitude.Spiritisme) * 0.05) + 1; break; //0.10
-                    case NAptitude.FaveurDivine:
-                        value *= (m.GetAptitudeValue(NAptitude.GraceDivine) * 0.04) + 1; break; //0.04
+                    case Aptitude.Spiritisme:
+                        value *= (m.GetAptitudeValue(Aptitude.Spiritisme) * 0.05) + 1; break; //0.10
+                    case Aptitude.FaveurDivine:
+                        value *= (m.GetAptitudeValue(Aptitude.GraceDivine) * 0.04) + 1; break; //0.04
                     //case NAptitude.ConnaissancesAccrues:
                     //    value *= 1 - (m.GetAptitudeValue(NAptitude.ConnaissancesAccrues) * 0.04); break; //0.05
                     //case NAptitude.BonusDivin:
@@ -523,9 +523,9 @@ namespace Server.Spells
             if (pm != null)
             {
                 if (curse)
-                    value *= (pm.GetAptitudeValue(NAptitude.Sorcellerie) * 0.02) + 1;
+                    value *= (pm.GetAptitudeValue(Aptitude.Sorcellerie) * 0.02) + 1;
                 else
-                    value *= (pm.GetAptitudeValue(NAptitude.Sorcellerie) * 0.03) + 1;
+                    value *= (pm.GetAptitudeValue(Aptitude.Sorcellerie) * 0.03) + 1;
             }
 
             return (int)value;
@@ -625,7 +625,7 @@ namespace Server.Spells
                 if (pm != null)
                 {
                     /* Bonus (Magie Prolongée) */
-                    double scale = (pm.GetAptitudeValue(NAptitude.Spiritisme) * 0.04) + 1;
+                    double scale = (pm.GetAptitudeValue(Aptitude.Spiritisme) * 0.04) + 1;
                     duration = TimeSpan.FromSeconds(duration.TotalSeconds * scale);
                 }
             }
@@ -636,7 +636,7 @@ namespace Server.Spells
 
                 if (pm != null)
                 {
-                    double scale = (pm.GetAptitudeValue(NAptitude.Sorcellerie) * 0.03) + 1;
+                    double scale = (pm.GetAptitudeValue(Aptitude.Sorcellerie) * 0.03) + 1;
 
                     creature.RawStr = (int)(creature.RawStr * scale);
                     creature.Hits = creature.HitsMax;

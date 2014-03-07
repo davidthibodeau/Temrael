@@ -21,7 +21,7 @@ namespace Server.Spells.Sixth
             );
 
         public override int RequiredAptitudeValue { get { return 12; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Alteration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Alteration }; } }
 
 		public ParalyzeFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -66,7 +66,7 @@ namespace Server.Spells.Sixth
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Mysticisme].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				for ( int i = -3; i <= 3; ++i )
 				{
@@ -170,7 +170,7 @@ namespace Server.Spells.Sixth
 
                     double duration = 5.0 + (m_Caster.Skills[SkillName.Mysticisme].Value * 0.2);
 
-                    duration = SpellHelper.AdjustValue(m_Caster, duration, NAptitude.Spiritisme);
+                    duration = SpellHelper.AdjustValue(m_Caster, duration, Aptitude.Spiritisme);
 
 					m.Paralyze( TimeSpan.FromSeconds( duration ) );
 

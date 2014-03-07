@@ -20,7 +20,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 7; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
 		public WitherSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -61,7 +61,7 @@ namespace Server.Spells.Necromancy
 
                         double damage = Utility.RandomMinMax(30, 35);
 
-                        damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                        damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                         if (CheckResisted(m))
                         {

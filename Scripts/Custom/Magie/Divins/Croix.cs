@@ -34,7 +34,7 @@ namespace Server.Items
                 {
                     m.SendMessage("Vous devez voir un pretre de la religion pour pouvoir convertir a celle-ci.");
                 }
-                else if (m.GetAptitudeValue(NAptitude.GraceDivine) <= 0)
+                else if (m.GetAptitudeValue(Aptitude.GraceDivine) <= 0)
                 {
                     m.SendMessage("Vous devez avoir au moins un point de Grace Divine pour user la croix.");
                 }

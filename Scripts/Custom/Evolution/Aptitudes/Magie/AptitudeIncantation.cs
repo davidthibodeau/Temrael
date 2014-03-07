@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeIncantation
     {
         private static string m_name = "Incantation";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Incantation];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Incantation];
         private static int m_tooltip = 3006324;
         private static string m_description = "Augmente la rapidité des incantations.";
         private static string m_note = string.Empty;

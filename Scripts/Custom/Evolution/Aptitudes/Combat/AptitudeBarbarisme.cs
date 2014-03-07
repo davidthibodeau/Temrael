@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeBarbarisme
     {
         private static string m_name = "Barbarisme";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Barbarisme];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Barbarisme];
         private static int m_tooltip = 3006301;
         private static string m_description = "Augmente la réduction de l'AR de l'adversaire.";
         private static string m_note = string.Empty;

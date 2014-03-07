@@ -16,7 +16,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Protection }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Protection }; } }
 
         public PoingDeValeurSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -35,7 +35,7 @@ namespace Server.Spells
                 {
                     double tile = 4;
 
-                    SpellHelper.AdjustValue(Caster, tile, NAptitude.Sorcellerie); 
+                    SpellHelper.AdjustValue(Caster, tile, Aptitude.Sorcellerie); 
 
                     if (tile > 12)
                         tile = 12;
@@ -52,7 +52,7 @@ namespace Server.Spells
                 toHeal = Caster.Skills[CastSkill].Value * 0.15;
                 toHeal += Caster.Skills[DamageSkill].Value * 0.07;
 
-                toHeal = SpellHelper.AdjustValue(Caster, toHeal, NAptitude.Sorcellerie);
+                toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.Sorcellerie);
 
                 for (int i = 0; i < targets.Count; ++i)
                 {

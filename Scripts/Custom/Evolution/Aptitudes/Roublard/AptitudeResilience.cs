@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeResilience
     {
         private static string m_name = "Resilience";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Resilience];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Resilience];
         private static int m_tooltip = 3006345;
         private static string m_description = "Augmente le maximum de stamina.";
         private static string m_note = string.Empty;

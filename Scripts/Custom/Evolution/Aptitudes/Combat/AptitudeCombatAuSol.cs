@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCombatAuSol
     {
         private static string m_name = "Combat au sol";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.CombatAuSol];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.CombatAuSol];
         private static int m_tooltip = 3006302;
         private static string m_description = "Augmente les dégâts au sol.";
         private static string m_note = string.Empty;

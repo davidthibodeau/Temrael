@@ -50,7 +50,7 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override NAptitude Bonus { get { return NAptitude.Deguisement; } }
+        public override Aptitude Bonus { get { return Aptitude.Deguisement; } }
         public override int BonusNbr { get { return 1; } }
         public override string BonusDescr { get { return "Le tieffelin est capable de se deguiser habilement. Ceci lui procure un point automatique de deguisement."; } }
         #endregion

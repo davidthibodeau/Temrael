@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeHermetisme
     {
         private static string m_name = "Hermetisme";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Hermetisme];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Hermetisme];
         private static int m_tooltip = 3006296;
         private static string m_description = "Permet de créer des objets alchimiques.";
         private static string m_note = string.Empty;

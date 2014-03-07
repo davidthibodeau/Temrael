@@ -195,7 +195,7 @@ namespace Server.Items
                     //BaseHire recruit = soldier as BaseHire;
                     if (from is TMobile)
                     {
-                        if (Soldiers.Count + 1 <= ((TMobile)from).GetAptitudeValue(NAptitude.Commandement))
+                        if (Soldiers.Count + 1 <= ((TMobile)from).GetAptitudeValue(Aptitude.Commandement))
                         Soldiers.Add(soldier);
                         soldier.ChangeAIType(AIType.AI_Army);
                         soldier.Controlled = false;
@@ -218,7 +218,7 @@ namespace Server.Items
                     }*/
                     else
                     {
-                        from.SendMessage("Vous avez {0} soldats et pouvez seulement en avoir {1}", ArmySize, ((TMobile)from).GetAptitudeValue(NAptitude.Commandement));
+                        from.SendMessage("Vous avez {0} soldats et pouvez seulement en avoir {1}", ArmySize, ((TMobile)from).GetAptitudeValue(Aptitude.Commandement));
                         //soldier.Say("You have {0} soldiers already, and can only have {1}!", ArmySize, CalculateMaxFollowers(from));
                         return false;
                     }

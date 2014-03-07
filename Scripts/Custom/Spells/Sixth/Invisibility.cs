@@ -19,7 +19,7 @@ namespace Server.Spells.Sixth
             );
 
         public override int RequiredAptitudeValue { get { return 10; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
 
 		public InvisibilitySpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -49,7 +49,7 @@ namespace Server.Spells.Sixth
 
                 double duration = ((60 * Caster.Skills[SkillName.Reve].Value) / 50) + 1;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
                 
 				Timer t = new InternalTimer( m, TimeSpan.FromSeconds(duration) );
 

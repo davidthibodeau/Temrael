@@ -50,7 +50,7 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override NAptitude Bonus { get { return NAptitude.Polissage; } }
+        public override Aptitude Bonus { get { return Aptitude.Polissage; } }
         public override int BonusNbr { get { return 1; } }
         public override string BonusDescr { get { return "Votre tradition de voyageur et de maitres artisans vous procurent un point de polissage vous permettant de creer plus souvent des objets exceptionnels."; } }
         #endregion

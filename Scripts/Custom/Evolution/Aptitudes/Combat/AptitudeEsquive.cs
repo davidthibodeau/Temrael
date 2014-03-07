@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeEsquive
     {
         private static string m_name = "Esquive";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Esquive];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Esquive];
         private static int m_tooltip = 3006309;
         private static string m_description = "Augmente les chances d'esquive.";
         private static string m_note = string.Empty;

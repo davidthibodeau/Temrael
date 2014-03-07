@@ -18,7 +18,7 @@ namespace Server.Spells.Third
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
 
 		public UnlockSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -52,7 +52,7 @@ namespace Server.Spells.Third
 				{
 					double level = Caster.Skills[SkillName.Tenebrea].Value;
 
-                    level = SpellHelper.AdjustValue(Caster, level, NAptitude.Sorcellerie);
+                    level = SpellHelper.AdjustValue(Caster, level, Aptitude.Sorcellerie);
 
 					if ( (int)level >= targ.RequiredSkill )
 					{

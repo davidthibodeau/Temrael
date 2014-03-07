@@ -17,7 +17,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
 
         public AntidoteSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -46,7 +46,7 @@ namespace Server.Spells
 					double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.Restoration].Value * 75) - ((p.Level + 1) * 2500);
                     chanceToCure /= 100;
 
-                    chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure, NAptitude.Sorcellerie);
+                    chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure, Aptitude.Sorcellerie);
 
 					if ( (int)chanceToCure > Utility.Random( 100 ) )
 					{

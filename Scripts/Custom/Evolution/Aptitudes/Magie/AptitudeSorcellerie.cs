@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeSorcellerie
     {
         private static string m_name = "Sorcellerie";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Sorcellerie];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Sorcellerie];
         private static int m_tooltip = 3006324;
         private static string m_description = "Augmente les dégâts des sorts.";
         private static string m_note = string.Empty;

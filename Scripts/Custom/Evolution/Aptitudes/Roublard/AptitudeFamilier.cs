@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeFamilier
     {
         private static string m_name = "Familier";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Familier];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Familier];
         private static int m_tooltip = 3006341;
         private static string m_description = "Augmente le nombre de compagnons maximum.";
         private static string m_note = string.Empty;

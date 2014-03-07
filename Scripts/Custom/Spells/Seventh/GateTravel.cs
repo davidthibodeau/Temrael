@@ -22,7 +22,7 @@ namespace Server.Spells.Seventh
             );
 
         public override int RequiredAptitudeValue { get { return 12; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
 
 		private RunebookEntry m_Entry;
 
@@ -86,7 +86,7 @@ namespace Server.Spells.Seventh
 
                 double duration = 30.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				InternalItem firstGate = new InternalItem( loc, map, duration );
 				firstGate.MoveToWorld( Caster.Location, Caster.Map );

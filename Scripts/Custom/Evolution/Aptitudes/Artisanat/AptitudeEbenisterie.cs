@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeEbenisterie
     {
         private static string m_name = "Ebenisterie";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Ebenisterie];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Ebenisterie];
         private static int m_tooltip = 3006294;
         private static string m_description = "Permet de créer des objets de bois.";
         private static string m_note = string.Empty;

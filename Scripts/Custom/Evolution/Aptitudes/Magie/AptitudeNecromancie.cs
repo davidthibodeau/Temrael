@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeNecromancie
     {
         private static string m_name = "Necromancie";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Necromancie];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Necromancie];
         private static int m_tooltip = 3006322;
         private static string m_description = "Permet d'utiliser les sorts qui altèrent la mort.";
         private static string m_note = string.Empty;

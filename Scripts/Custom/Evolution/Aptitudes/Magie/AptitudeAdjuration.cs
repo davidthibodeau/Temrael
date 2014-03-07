@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeAdjuration
     {
         private static string m_name = "Adjuration";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Adjuration];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Adjuration];
         private static int m_tooltip = 3006317;
         private static string m_description = "Permet d'utiliser les sorts ténébreux qui utilisent la magie noire.";
         private static string m_note = string.Empty;

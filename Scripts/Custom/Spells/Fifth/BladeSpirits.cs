@@ -19,7 +19,7 @@ namespace Server.Spells.Fifth
             );
 
         public override int RequiredAptitudeValue { get { return 6; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Invocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
 
 		public BladeSpiritsSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -63,7 +63,7 @@ namespace Server.Spells.Fifth
 			{
                 double duration = Utility.Random(120, 260);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				BaseCreature.Summon( new BladeSpirits(), false, Caster, new Point3D( p ), 0x212, TimeSpan.FromSeconds(duration) );
 			}

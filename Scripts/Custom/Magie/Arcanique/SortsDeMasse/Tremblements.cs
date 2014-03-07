@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
 
         public TremblementsSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -38,7 +38,7 @@ namespace Server.Spells
 
 				if ( map != null )
                 {
-                    double tile = SpellHelper.AdjustValue(Caster, 1 + (int)(Caster.Skills[CastSkill].Value / 12.0), NAptitude.Sorcellerie, true);
+                    double tile = SpellHelper.AdjustValue(Caster, 1 + (int)(Caster.Skills[CastSkill].Value / 12.0), Aptitude.Sorcellerie, true);
 
                     if (tile > 12)
                         tile = 12;

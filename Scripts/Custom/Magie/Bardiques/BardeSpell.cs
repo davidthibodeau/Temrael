@@ -120,7 +120,7 @@ namespace Server.Spells
         public override bool CheckSequence()
         {
             int aptitudeValueRequis = GetAptitudeValue();
-            NAptitude[] aptitudeRequise = GetAptitude();
+            Aptitude[] aptitudeRequise = GetAptitude();
 
             TMobile pm = m_Caster as TMobile;
 
@@ -164,7 +164,7 @@ namespace Server.Spells
 
                 if (pm.AccessLevel == AccessLevel.Player)
                 {
-                    int equitation = pm.GetAptitudeValue(NAptitude.CombatMonte);
+                    int equitation = pm.GetAptitudeValue(Aptitude.CombatMonte);
 
                     double chance = 100 - (equitation * 6);
 

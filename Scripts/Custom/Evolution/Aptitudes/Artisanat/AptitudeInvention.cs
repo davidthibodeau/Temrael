@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeInvention
     {
         private static string m_name = "Invention";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Invention];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Invention];
         private static int m_tooltip = 3006297;
         private static string m_description = "Permet de bricoler des objets et inventions.";
         private static string m_note = string.Empty;

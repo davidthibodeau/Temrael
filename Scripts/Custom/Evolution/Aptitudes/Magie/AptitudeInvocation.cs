@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeInvocation
     {
         private static string m_name = "Invocation";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Invocation];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Invocation];
         private static int m_tooltip = 3006321;
         private static string m_description = "Permet de conjurer des créatures et objets des mondes mystiques.";
         private static string m_note = string.Empty;

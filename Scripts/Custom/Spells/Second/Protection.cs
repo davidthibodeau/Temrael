@@ -19,7 +19,7 @@ namespace Server.Spells.Second
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
 
 		public ProtectionSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -55,14 +55,14 @@ namespace Server.Spells.Second
                         double value = (int)(Caster.Skills[SkillName.Restoration].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value);
                         value /= 9;
 
-                        value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+                        value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
                         if (value > 30)
                             value = 30;
 
                         double duree = value * 4;
 
-                        duree = SpellHelper.AdjustValue(Caster, duree, NAptitude.Spiritisme);
+                        duree = SpellHelper.AdjustValue(Caster, duree, Aptitude.Spiritisme);
 
                         if (duree > 60)
                             duree = 60;
@@ -94,14 +94,14 @@ namespace Server.Spells.Second
                 double value = (int)(Caster.Skills[SkillName.Restoration].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value);
                 value /= 9;
 
-                value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
                 if (value > 30)
                     value = 30;
 
                 double duree = value * 4;
 
-                duree = SpellHelper.AdjustValue(Caster, duree, NAptitude.Spiritisme);
+                duree = SpellHelper.AdjustValue(Caster, duree, Aptitude.Spiritisme);
 
                 if (duree > 60)
                     duree = 60;

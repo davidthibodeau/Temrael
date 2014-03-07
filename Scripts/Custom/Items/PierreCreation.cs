@@ -59,7 +59,7 @@ namespace Server.Items
                 }
 
                 for (int i = 0; i < tMob.Aptitudes.m_Values.Length; ++i)
-                    tMob.Aptitudes[(NAptitude)i] = 0;
+                    tMob.Aptitudes[(Aptitude)i] = 0;
 
                 tMob.Races = Races.Aucun;
                 if (tMob.MetierType.Count > 0)

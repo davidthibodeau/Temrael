@@ -17,7 +17,7 @@ namespace Server.Spells.First
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Invocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
 
 		public MagicArrowSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -47,7 +47,7 @@ namespace Server.Spells.First
               //  double damage = Utility.RandomMinMax(15, 20);
                 double damage = Utility.RandomMinMax(7, 10);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                 if (CheckResisted(m))
                 {

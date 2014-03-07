@@ -22,7 +22,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
 
         public MurDeFeuSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -209,7 +209,7 @@ namespace Server.Spells
 
                     int damage = Utility.Random(30, 40);
 
-                    damage = (int)SpellHelper.AdjustValue(m_Caster, damage, NAptitude.Sorcellerie);
+                    damage = (int)SpellHelper.AdjustValue(m_Caster, damage, Aptitude.Sorcellerie);
 
                     AOS.Damage(m, m_Caster, damage, 0, 100, 0, 0, 0);
                     m.PlaySound(0x208);
@@ -284,7 +284,7 @@ namespace Server.Spells
 
                                 double damage = Utility.RandomMinMax(30, 40);
 
-                                damage = (int)SpellHelper.AdjustValue(caster, damage, NAptitude.Sorcellerie);
+                                damage = (int)SpellHelper.AdjustValue(caster, damage, Aptitude.Sorcellerie);
 
                                 AOS.Damage(m, caster, (int)damage, 0, 100, 0, 0, 0);
                                 m.PlaySound(0x208);

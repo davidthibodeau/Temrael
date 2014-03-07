@@ -19,7 +19,7 @@ namespace Server.Spells.First
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
 
 		public ReactiveArmorSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -71,7 +71,7 @@ namespace Server.Spells.First
                         else if (value > 75)
                             value = 75;
 
-                        value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+                        value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
                         Caster.MeleeDamageAbsorb = (int)value;
 
@@ -108,7 +108,7 @@ namespace Server.Spells.First
                 else if (value > 75)
                     value = 75;
 
-                value = SpellHelper.AdjustValue(Caster, value, NAptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
                 m.MeleeDamageAbsorb = (int)value;
 

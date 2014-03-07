@@ -15,10 +15,10 @@ namespace Server.Misc
             CommandSystem.Register("sbscrollgen", AccessLevel.Administrator, new CommandEventHandler(OnSBScrollGen));
         }
 
-        public NAptitude[] m_ConnaissanceList = new NAptitude[] {
-            NAptitude.Benedictions,    
-            NAptitude.Fanatisme,    
-            NAptitude.Monial,      
+        public Aptitude[] m_ConnaissanceList = new Aptitude[] {
+            Aptitude.Benedictions,    
+            Aptitude.Fanatisme,    
+            Aptitude.Monial,      
         };
 
         #region Template

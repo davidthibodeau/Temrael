@@ -19,7 +19,7 @@ namespace Server.Spells.Second
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
 
 		public MagicTrapSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -48,7 +48,7 @@ namespace Server.Spells.Second
 
                 double damage = Utility.Random(10, 50);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
 				item.TrapPower = (int)damage;
 

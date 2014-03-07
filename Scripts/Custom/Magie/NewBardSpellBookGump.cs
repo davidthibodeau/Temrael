@@ -20,7 +20,7 @@ namespace Server.Gumps
     {
         private string m_Nom;
         private int m_ImageID;
-        private NAptitude m_Connaissances;
+        private Aptitude m_Connaissances;
         private int m_SpellID;
         private BardType m_BardType;
         private int m_ManaReq;
@@ -28,13 +28,13 @@ namespace Server.Gumps
 
         public string Nom { get { return m_Nom; } }
         public int ImageID { get { return m_ImageID; } }
-        public NAptitude Connaissance { get { return m_Connaissances; } }
+        public Aptitude Connaissance { get { return m_Connaissances; } }
         public int SpellID { get { return m_SpellID; } }
         public BardType BardType { get { return m_BardType; } }
         public int ManaReq { get { return m_ManaReq; } }
         public int AptitudeLevel { get { return m_AptitudeLevel; } }
 
-        public BardSpellBookEntry(BardType bard, NAptitude connaissance, string nom, int imageid, int spellid, int manaReq, int aptitudeLevel)
+        public BardSpellBookEntry(BardType bard, Aptitude connaissance, string nom, int imageid, int spellid, int manaReq, int aptitudeLevel)
         {
             m_BardType = bard;
             m_Nom = nom;
@@ -50,19 +50,19 @@ namespace Server.Gumps
     {
         public static BardSpellBookEntry[] m_BardSpellBookEntry = new BardSpellBookEntry[]
         {
-            new BardSpellBookEntry( BardType.Composition, NAptitude.Composition, "Bruit", 0x5CE,  1600, 10, 1),
-            new BardSpellBookEntry( BardType.Composition, NAptitude.Composition, "Son", 0x5CF, 1601, 10, 2),
-            new BardSpellBookEntry( BardType.Composition, NAptitude.Composition, "Murmure", 0x5D0,  1602, 15, 3),
-            new BardSpellBookEntry( BardType.Composition, NAptitude.Composition, "Sona", 0x5D6,  1603, 15, 4),
-            new BardSpellBookEntry( BardType.Composition, NAptitude.Composition, "Hymne", 0x5D5, 1604, 20, 5),
-            new BardSpellBookEntry( BardType.Composition, NAptitude.Composition, "Chant", 0x5B2,  1606, 20, 6),
+            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Bruit", 0x5CE,  1600, 10, 1),
+            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Son", 0x5CF, 1601, 10, 2),
+            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Murmure", 0x5D0,  1602, 15, 3),
+            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Sona", 0x5D6,  1603, 15, 4),
+            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Hymne", 0x5D5, 1604, 20, 5),
+            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Chant", 0x5B2,  1606, 20, 6),
 
-            new BardSpellBookEntry( BardType.Compo, NAptitude.Composition, "Sonette", 0x5B0,  1607, 25, 7),
-            new BardSpellBookEntry( BardType.Compo, NAptitude.Composition, "Fanfare", 0x5AE,  1608, 25, 8),
-            new BardSpellBookEntry( BardType.Compo, NAptitude.Composition, "Poème", 0x5AF,  1610, 30, 9),
-            new BardSpellBookEntry( BardType.Compo, NAptitude.Composition, "Symphonie", 0x5B1,  1611, 30, 10),
-            new BardSpellBookEntry( BardType.Compo, NAptitude.Composition, "Harmonie", 0x5B3,  1612, 40, 11),
-            new BardSpellBookEntry( BardType.Compo, NAptitude.Composition, "Sérénade", 0x5D8,  1613, 50, 12)
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Sonette", 0x5B0,  1607, 25, 7),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Fanfare", 0x5AE,  1608, 25, 8),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Poème", 0x5AF,  1610, 30, 9),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Symphonie", 0x5B1,  1611, 30, 10),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Harmonie", 0x5B3,  1612, 40, 11),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Sérénade", 0x5D8,  1613, 50, 12)
         };
 
         public bool HasSpell(Mobile from, int spellID)
@@ -389,11 +389,11 @@ namespace Server.Gumps
             AddButton(123, 15, 0x89D, 0x89D, 19, GumpButtonType.Page, totpage - 1);
         }
 
-        public bool ArrayContains(NAptitude[] conn, NAptitude wanted)
+        public bool ArrayContains(Aptitude[] conn, Aptitude wanted)
         {
             for (int i = 0; i < conn.Length; i++)
             {
-                if (wanted == (NAptitude)conn[i])
+                if (wanted == (Aptitude)conn[i])
                     return true;
             }
 

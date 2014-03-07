@@ -18,7 +18,7 @@ namespace Server.Spells.Third
             );
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
 
 		public TeleportSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

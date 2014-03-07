@@ -82,7 +82,7 @@ namespace Server
             return true;
         }
 
-        public static int GetAptitudeValue(TMobile from, MetierType metier, NAptitude aptitude)
+        public static int GetAptitudeValue(TMobile from, MetierType metier, Aptitude aptitude)
         {
             MetierInfo info = GetInfos(metier);
 

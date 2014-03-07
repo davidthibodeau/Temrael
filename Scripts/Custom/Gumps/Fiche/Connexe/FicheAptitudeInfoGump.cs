@@ -13,17 +13,17 @@ namespace Server.Gumps
     public class FicheAptitudeInfoGump : GumpTemrael
     {
         private TMobile m_from;
-        private NAptitude m_aptitude;
+        private Aptitude m_aptitude;
         private ClasseBranche m_categ;
         private int m_pageCateg;
         private int m_pageAptitude;
 
-        public FicheAptitudeInfoGump(TMobile from, NAptitude aptitude)
+        public FicheAptitudeInfoGump(TMobile from, Aptitude aptitude)
             : this(from, aptitude, 0, 0, ClasseBranche.Aucun)
         {
         }
 
-        public FicheAptitudeInfoGump(TMobile from, NAptitude aptitude, int pageCateg, int pageDon, ClasseBranche categ)
+        public FicheAptitudeInfoGump(TMobile from, Aptitude aptitude, int pageCateg, int pageDon, ClasseBranche categ)
             : base("Aptitudes", 560, 622)
         {
             m_from = from;
@@ -174,7 +174,7 @@ namespace Server.Gumps
 
             if (info.ButtonID >= 500)
             {
-                from.SendGump(new FicheAptitudeInfoGump(from, (NAptitude)info.ButtonID - 500, m_pageCateg, m_pageAptitude, m_categ));
+                from.SendGump(new FicheAptitudeInfoGump(from, (Aptitude)info.ButtonID - 500, m_pageCateg, m_pageAptitude, m_categ));
                 return;
             }
 

@@ -25,38 +25,38 @@ namespace Server
 
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 1),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 2),
-                new ClasseAptitudes(NAptitude.Esquive, 2),
-                new ClasseAptitudes(NAptitude.Composition, 3)
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 1),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 2),
+                new ClasseAptitudes(Aptitude.Esquive, 2),
+                new ClasseAptitudes(Aptitude.Composition, 3)
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 2),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 2),
-                new ClasseAptitudes(NAptitude.Esquive, 4),
-                new ClasseAptitudes(NAptitude.Composition, 6)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 2),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 2),
+                new ClasseAptitudes(Aptitude.Esquive, 4),
+                new ClasseAptitudes(Aptitude.Composition, 6)
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 3),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 3),
-                new ClasseAptitudes(NAptitude.Esquive, 6),
-                new ClasseAptitudes(NAptitude.Composition, 9)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 3),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 3),
+                new ClasseAptitudes(Aptitude.Esquive, 6),
+                new ClasseAptitudes(Aptitude.Composition, 9)
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 3),
-                new ClasseAptitudes(NAptitude.PortArme, 3),
-                new ClasseAptitudes(NAptitude.PortArmeDistance, 4),
-                new ClasseAptitudes(NAptitude.Esquive, 8),
-                new ClasseAptitudes(NAptitude.Composition, 12)
+                new ClasseAptitudes(Aptitude.PortArmure, 3),
+                new ClasseAptitudes(Aptitude.PortArme, 3),
+                new ClasseAptitudes(Aptitude.PortArmeDistance, 4),
+                new ClasseAptitudes(Aptitude.Esquive, 8),
+                new ClasseAptitudes(Aptitude.Composition, 12)
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(

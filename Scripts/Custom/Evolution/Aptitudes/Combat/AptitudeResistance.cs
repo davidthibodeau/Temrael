@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeResistance
     {
         private static string m_name = "Resistance";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Resistance];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Resistance];
         private static int m_tooltip = 3006313;
         private static string m_description = "Augmente l'AR naturel du personnage.";
         private static string m_note = "L'AR Naturel est ajouté automatiquement à votre personnage.";

@@ -20,7 +20,7 @@ namespace Server.Spells.Eighth
             );
 
         public override int RequiredAptitudeValue { get { return 11; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
 
 		public EnergyVortexSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -63,7 +63,7 @@ namespace Server.Spells.Eighth
                 {
                     double duration = Utility.Random(40, 80);
 
-                    duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                    duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
                     BaseCreature.Summon(new EnergyVortex(), true, Caster, new Point3D(p), 0x212, TimeSpan.FromSeconds(duration));
                 }

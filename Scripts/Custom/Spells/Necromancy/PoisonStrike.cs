@@ -18,7 +18,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 6; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
 		public PoisonStrikeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -49,7 +49,7 @@ namespace Server.Spells.Necromancy
 
                 double damage = Utility.RandomMinMax(10, 20) * ((300 + (GetDamageSkill(Caster) * 9)) / 1000);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                 int level;
 

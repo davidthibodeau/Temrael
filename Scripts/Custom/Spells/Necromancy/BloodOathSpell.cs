@@ -17,7 +17,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 10; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
 		public BloodOathSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -70,7 +70,7 @@ namespace Server.Spells.Necromancy
 
                 double duration = ((GetDamageSkill(Caster) - GetResistSkill(m)) / 8) + 8;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				new ExpireTimer( Caster, m, TimeSpan.FromSeconds(duration) ).Start();
 			}

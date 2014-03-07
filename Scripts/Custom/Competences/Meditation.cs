@@ -38,7 +38,7 @@ namespace Server.SkillHandlers
             {
                 TMobile tmob = m as TMobile;
 
-                if (tmob.GetAptitudeValue(NAptitude.PortArmeMagique) >= 3)
+                if (tmob.GetAptitudeValue(Aptitude.PortArmeMagique) >= 3)
                     canMedidatePortArme = true;
                 else
                     canMedidatePortArme = false;

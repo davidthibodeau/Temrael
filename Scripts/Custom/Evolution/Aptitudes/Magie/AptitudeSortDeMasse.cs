@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeSortDeMasse
     {
         private static string m_name = "Sort de Masse";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.SortDeMasse];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.SortDeMasse];
         private static int m_tooltip = 3006325;
         private static string m_description = "Augmente le rayon d'action des sorts de masses.";
         private static string m_note = string.Empty;

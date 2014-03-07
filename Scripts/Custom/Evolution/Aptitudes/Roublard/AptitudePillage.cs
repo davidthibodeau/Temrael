@@ -8,7 +8,7 @@ namespace Server
     public class AptitudePillage
     {
         private static string m_name = "Pillage";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Pillage];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Pillage];
         private static int m_tooltip = 3006344;
         private static string m_description = "Augmente le poid maximal qu'un voleur peut voler.";
         private static string m_note = "Le poid sur UO est évalué en 'stone'.";

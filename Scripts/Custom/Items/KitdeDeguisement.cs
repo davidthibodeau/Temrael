@@ -51,7 +51,7 @@ namespace Server.Items
                 {
                     from.SendMessage("L'objet doit etre dans votre sac.");
                 }
-                else if (from.GetAptitudeValue(NAptitude.Deguisement) <= 0)
+                else if (from.GetAptitudeValue(Aptitude.Deguisement) <= 0)
                 {
                     from.SendMessage("Vous devez avoir au moins un point en deguisement !");
                 }

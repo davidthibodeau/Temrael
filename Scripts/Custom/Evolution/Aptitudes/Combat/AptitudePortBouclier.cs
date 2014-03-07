@@ -8,7 +8,7 @@ namespace Server
     public class AptitudePortBouclier
     {
         private static string m_name = "Port de bouclier";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.PortBouclier];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.PortBouclier];
         private static int m_tooltip = 3006311;
         private static string m_description = "Permet le port de boucliers.";
         private static string m_note = String.Empty;

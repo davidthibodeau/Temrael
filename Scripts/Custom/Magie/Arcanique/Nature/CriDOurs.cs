@@ -21,7 +21,7 @@ namespace Server.Spells
 			);
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Adjuration }; } }
 
         public CriDOursSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -42,7 +42,7 @@ namespace Server.Spells
 
                 if (map != null)
                 {
-                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.ArtMagique].Value / 20, NAptitude.Sorcellerie));
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.ArtMagique].Value / 20, Aptitude.Sorcellerie));
 
                     foreach (Mobile m in eable)
                     {

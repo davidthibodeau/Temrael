@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCuisson
     {
         private static string m_name = "Cuisson";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Cuisson];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Cuisson];
         private static int m_tooltip = 3006293;
         private static string m_description = "Permet de créer des objets de cuisine.";
         private static string m_note = string.Empty;

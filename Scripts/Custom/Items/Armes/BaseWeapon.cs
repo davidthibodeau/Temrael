@@ -1753,13 +1753,13 @@ namespace Server.Items
                     //Console.WriteLine("Dmg Before : " + damage);
                     
                     if (defender is TMobile)
-                        percent -= (double)(((TMobile)defender).GetAptitudeValue(NAptitude.Robustesse) * 0.02);
+                        percent -= (double)(((TMobile)defender).GetAptitudeValue(Aptitude.Robustesse) * 0.02);
 
                     if (defender is TMobile && attacker is TMobile)
-                        percent -= (double)(((TMobile)defender).GetAptitudeValue(NAptitude.TueurDeMonstre) * 0.03);
+                        percent -= (double)(((TMobile)defender).GetAptitudeValue(Aptitude.TueurDeMonstre) * 0.03);
 
                     if (attacker is TMobile)
-                        percent += (double)((TMobile)attacker).GetAptitudeValue(NAptitude.Barbarisme) * 0.03;
+                        percent += (double)((TMobile)attacker).GetAptitudeValue(Aptitude.Barbarisme) * 0.03;
 
                     if (percent < 0.10)
                         percent = 0.10;
@@ -1919,7 +1919,7 @@ namespace Server.Items
 
             if (attacker is TMobile)
             {
-                double renversant = ((TMobile)attacker).GetAptitudeValue(NAptitude.CoupRenversant) * 0.01;
+                double renversant = ((TMobile)attacker).GetAptitudeValue(Aptitude.CoupRenversant) * 0.01;
                 if ((defender.Mounted) && (renversant > Utility.RandomDouble()))
                 {
                     BaseMount.Dismount(defender);
@@ -2079,16 +2079,16 @@ namespace Server.Items
 			damage = AOS.Scale( damage, 100 + percentageBonus );
 
             if ((this is BaseRanged) && attacker is TMobile)
-                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(NAptitude.TirPrecis) * 0.03));
+                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(Aptitude.TirPrecis) * 0.03));
 
             if (attacker is TMobile && attacker.Mounted)
-                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(NAptitude.CombatMonte) * 0.03));
+                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(Aptitude.CombatMonte) * 0.03));
 
             if (attacker is TMobile && !(attacker.Mounted))
-                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(NAptitude.CombatAuSol) * 0.03));
+                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(Aptitude.CombatAuSol) * 0.03));
 
             if (defender is BaseCreature && attacker is TMobile)
-                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(NAptitude.TueurDeMonstre) * 0.05));
+                damage += Convert.ToInt32(damage * (((TMobile)attacker).GetAptitudeValue(Aptitude.TueurDeMonstre) * 0.05));
 
             if (attacker is TMobile)
             {

@@ -16,7 +16,7 @@ namespace Server.Spells.First
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Benedictions }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
 
         public GuerisonCelesteMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -55,7 +55,7 @@ namespace Server.Spells.First
                 toHeal = Caster.Skills[SkillName.Miracles].Value * 0.35;
                 toHeal += Utility.Random(1, 5);
 
-                toHeal = SpellHelper.AdjustValue(Caster, toHeal, NAptitude.FaveurDivine);
+                toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.FaveurDivine);
 
                 m.Heal((int)toHeal);
 

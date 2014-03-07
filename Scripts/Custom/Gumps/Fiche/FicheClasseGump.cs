@@ -155,11 +155,11 @@ namespace Server.Gumps
                         temp += infoMetier.MetierCompetences[i].ToString();
                 }*/
 
-                List<NAptitude> listAptitude = new List<NAptitude>();
+                List<Aptitude> listAptitude = new List<Aptitude>();
                 bool hasAptitude = false;
                 for (int j = 0; j < infoMetier.Aptitudes.Length; j++)
                 {
-                    foreach (NAptitude aptitude in listAptitude)
+                    foreach (Aptitude aptitude in listAptitude)
                     {
                         if (aptitude == infoMetier.Aptitudes[j].Aptitude)
                         {

@@ -22,7 +22,7 @@ namespace Server.Spells.Fourth
             );
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
 
 		public FireFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -75,7 +75,7 @@ namespace Server.Spells.Fourth
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Destruction].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				for ( int i = -3; i <= 3; ++i )
 				{
@@ -183,7 +183,7 @@ namespace Server.Spells.Fourth
                  //   double damage = Utility.RandomMinMax(25, 50);
                     double damage = Utility.RandomMinMax(10, 20);
 
-                    damage = SpellHelper.AdjustValue(m_Caster, damage, NAptitude.Sorcellerie);
+                    damage = SpellHelper.AdjustValue(m_Caster, damage, Aptitude.Sorcellerie);
 
                     if (m_Spell.CheckResisted(m))
                     {
@@ -275,7 +275,7 @@ namespace Server.Spells.Fourth
 
                                     double damage = Utility.RandomMinMax(5, 8);
 
-                                    damage = SpellHelper.AdjustValue(caster, damage, NAptitude.Sorcellerie);
+                                    damage = SpellHelper.AdjustValue(caster, damage, Aptitude.Sorcellerie);
 
                                     if (m_Item.m_Spell.CheckResisted(m))
                                     {

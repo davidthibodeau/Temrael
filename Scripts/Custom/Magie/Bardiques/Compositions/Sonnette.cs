@@ -22,7 +22,7 @@ namespace Server.Spells
 			);
 
         public override int RequiredAptitudeValue { get { return 7; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Composition }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Composition }; } }
 
         public SonnetteSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -38,7 +38,7 @@ namespace Server.Spells
 
                 if (Caster is TMobile)
                 {
-                    factor -= (double)(((TMobile)Caster).GetAptitudeValue(NAptitude.Composition) * 0.04);
+                    factor -= (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * 0.04);
                 }
 
                 DateTime endtime = DateTime.Now + duration;

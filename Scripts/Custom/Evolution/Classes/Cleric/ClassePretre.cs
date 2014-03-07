@@ -25,44 +25,44 @@ namespace Server
 
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.DispenseComposante, 1),
-                new ClasseAptitudes(NAptitude.Thaumaturgie, 3),
-                new ClasseAptitudes(NAptitude.Incantation, 1),
-                new ClasseAptitudes(NAptitude.Spiritisme, 2),
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 1)
+                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
+                new ClasseAptitudes(Aptitude.Thaumaturgie, 3),
+                new ClasseAptitudes(Aptitude.Incantation, 1),
+                new ClasseAptitudes(Aptitude.Spiritisme, 2),
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 1)
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.DispenseComposante, 1),
-                new ClasseAptitudes(NAptitude.Thaumaturgie, 6),
-                new ClasseAptitudes(NAptitude.Incantation, 2),
-                new ClasseAptitudes(NAptitude.Spiritisme, 4),
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 2)
+                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
+                new ClasseAptitudes(Aptitude.Thaumaturgie, 6),
+                new ClasseAptitudes(Aptitude.Incantation, 2),
+                new ClasseAptitudes(Aptitude.Spiritisme, 4),
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 2)
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.DispenseComposante, 1),
-                new ClasseAptitudes(NAptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(NAptitude.Thaumaturgie, 9),
-                new ClasseAptitudes(NAptitude.Incantation, 3),
-                new ClasseAptitudes(NAptitude.Spiritisme, 5),
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 2)
+                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
+                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
+                new ClasseAptitudes(Aptitude.Thaumaturgie, 9),
+                new ClasseAptitudes(Aptitude.Incantation, 3),
+                new ClasseAptitudes(Aptitude.Spiritisme, 5),
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 2)
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.DispenseComposante, 1),
-                new ClasseAptitudes(NAptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(NAptitude.Thaumaturgie, 12),
-                new ClasseAptitudes(NAptitude.Incantation, 4),
-                new ClasseAptitudes(NAptitude.Spiritisme, 6),
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 2)
+                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
+                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
+                new ClasseAptitudes(Aptitude.Thaumaturgie, 12),
+                new ClasseAptitudes(Aptitude.Incantation, 4),
+                new ClasseAptitudes(Aptitude.Spiritisme, 6),
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 2)
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(

@@ -27,7 +27,7 @@ namespace Server.Spells.Fifth
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
 
 		public IncognitoSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

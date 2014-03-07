@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeSpiritisme
     {
         private static string m_name = "Spiritisme";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Spiritisme];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Spiritisme];
         private static int m_tooltip = 3006325;
         private static string m_description = "Augmente la durée des sorts.";
         private static string m_note = string.Empty;

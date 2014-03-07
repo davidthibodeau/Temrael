@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeMineur
     {
         private static string m_name = "Mineur";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Mineur];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Mineur];
         private static int m_tooltip = 0;
         private static string m_description = "Augmente le nombre de minéraux récoltés selon un certain % de chance.";
         private static string m_note = "N'augmente pas les chances de trouver des métaux plus rares.";

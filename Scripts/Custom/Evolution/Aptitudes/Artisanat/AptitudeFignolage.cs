@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeFignolage
     {
         private static string m_name = "Fignolage";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Fignolage];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Fignolage];
         private static int m_tooltip = 3006295;
         private static string m_description = "Augmente les chances de créer tous les objets.";
         private static string m_note = string.Empty;

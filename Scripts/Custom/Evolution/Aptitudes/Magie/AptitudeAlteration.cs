@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeAlteration
     {
         private static string m_name = "Alteration";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Alteration];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Alteration];
         private static int m_tooltip = 3006318;
         private static string m_description = "Permet d'utiliser les sorts mystiques qui altèrent les capacités des autres personnages.";
         private static string m_note = string.Empty;

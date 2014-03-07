@@ -19,7 +19,7 @@ namespace Server.Spells
 			);
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Necromancie }; } }
 
         public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
         public override SkillName DamageSkill { get { return SkillName.Goetie; } }

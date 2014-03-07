@@ -18,7 +18,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Protection }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Protection }; } }
 
         public ImbroglioSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

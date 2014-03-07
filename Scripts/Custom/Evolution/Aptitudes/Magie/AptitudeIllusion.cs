@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeIllusion
     {
         private static string m_name = "Illusion";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Illusion];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Illusion];
         private static int m_tooltip = 3006320;
         private static string m_description = "Permet d'user des illusions pour fourber vos adversaires.";
         private static string m_note = string.Empty;

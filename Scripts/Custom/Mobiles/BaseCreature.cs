@@ -1833,7 +1833,7 @@ namespace Server.Mobiles
                // Random rand = new Random();
 
 				//Hermine ** Tannerie **
-				switch(tmob.GetAptitudeValue(NAptitude.Tanneur))
+				switch(tmob.GetAptitudeValue(Aptitude.Tanneur))
 				{				
 					case 0:
 						if (wool != 0)
@@ -1886,22 +1886,22 @@ namespace Server.Mobiles
 					
 					default:
 						if (wool != 0)
-                            wool += tmob.GetAptitudeValue(NAptitude.Tanneur) / 2;
+                            wool += tmob.GetAptitudeValue(Aptitude.Tanneur) / 2;
 
                         if (hides != 0)
 							//tmob.SendMessage( "PreHide" + hides );
-                            hides += tmob.GetAptitudeValue(NAptitude.Tanneur) / 2;
+                            hides += tmob.GetAptitudeValue(Aptitude.Tanneur) / 2;
 							//tmob.SendMessage( "Hides" + hides );
 
                         if (scales != 0)
-							scales += tmob.GetAptitudeValue(NAptitude.Tanneur) / 2;
+							scales += tmob.GetAptitudeValue(Aptitude.Tanneur) / 2;
 					break;
 				
 				}
 						
 				
 				// Hermine **** Boucherie ***
-				switch(tmob.GetAptitudeValue(NAptitude.Boucherie))
+				switch(tmob.GetAptitudeValue(Aptitude.Boucherie))
 				{
 
 					case 0:
@@ -1955,15 +1955,15 @@ namespace Server.Mobiles
 					
 					default:
 						if (feathers != 0)
-                            feathers += tmob.GetAptitudeValue(NAptitude.Boucherie);
+                            feathers += tmob.GetAptitudeValue(Aptitude.Boucherie);
 
                         if (meat != 0)
 							//tmob.SendMessage( "PreHide" + meat );
-                            meat += tmob.GetAptitudeValue(NAptitude.Boucherie) / 2;
+                            meat += tmob.GetAptitudeValue(Aptitude.Boucherie) / 2;
 							//tmob.SendMessage( "meat" + meat );
 
                         if (bones != 0)
-							bones += tmob.GetAptitudeValue(NAptitude.Boucherie) / 2;
+							bones += tmob.GetAptitudeValue(Aptitude.Boucherie) / 2;
 					break;
 				
 				}

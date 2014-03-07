@@ -23,7 +23,7 @@ namespace Server.Spells.Eighth
             );
 
         public override int RequiredAptitudeValue { get { return 10; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
 
 		public EarthquakeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -78,7 +78,7 @@ namespace Server.Spells.Eighth
 
                 double damage = Utility.RandomMinMax(50, 100);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
 				for ( int i = 0; i < targets.Count; ++i )
 				{

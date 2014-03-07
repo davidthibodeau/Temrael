@@ -17,7 +17,7 @@ namespace Server.Spells.Fourth
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
 
 		public LightningSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -47,7 +47,7 @@ namespace Server.Spells.Fourth
                 //    double damage = Utility.RandomMinMax(35, 70);
                     double damage = Utility.RandomMinMax(40, 50);
 
-                    damage = SpellHelper.AdjustValue(Caster, damage, NAptitude.Sorcellerie);
+                    damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                     if (CheckResisted(m))
                     {

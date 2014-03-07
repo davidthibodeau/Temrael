@@ -17,7 +17,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Monial }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
 
         public StupefactionSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -34,7 +34,7 @@ namespace Server.Spells
 
 				if ( map != null )
                 {
-                    double tile = SpellHelper.AdjustValue(Caster, 1 + (int)(Caster.Skills[CastSkill].Value / 33.0), NAptitude.Sorcellerie, true);
+                    double tile = SpellHelper.AdjustValue(Caster, 1 + (int)(Caster.Skills[CastSkill].Value / 33.0), Aptitude.Sorcellerie, true);
 
                     if (tile > 5)
                         tile = 5;

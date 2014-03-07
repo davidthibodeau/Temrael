@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeReceptacle
     {
         private static string m_name = "Receptacle";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Receptacle];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Receptacle];
         private static int m_tooltip = 3006323;
         private static string m_description = "Augmente la mana maximum.";
         private static string m_note = string.Empty;

@@ -52,7 +52,7 @@ namespace Server.Items
                 {
                     TMobile tmob = from as TMobile;
 
-                    if (tmob.GetAptitudeValue(NAptitude.Commerce) > 0)
+                    if (tmob.GetAptitudeValue(Aptitude.Commerce) > 0)
                         from.Target = new PlaceTarget(this);
                     else
                         from.SendMessage("Vous n'avez pas d'aptitude de commerce.");

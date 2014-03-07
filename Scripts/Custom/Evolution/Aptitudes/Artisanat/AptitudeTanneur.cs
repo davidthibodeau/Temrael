@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeTanneur
     {
         private static string m_name = "Tanneur";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Tanneur];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Tanneur];
         private static int m_tooltip = 0;
         private static string m_description = "Augmente le nombre de cuirs, écailles et laine récolté sur les cadavres.";
         private static string m_note = string.Empty;

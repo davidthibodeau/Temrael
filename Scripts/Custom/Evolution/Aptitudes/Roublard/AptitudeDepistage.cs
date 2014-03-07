@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeDepistage
     {
         private static string m_name = "Depistage";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Depistage];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Depistage];
         private static int m_tooltip = 3006338;
         private static string m_description = "Augmente les chances des jets de détections.";
         private static string m_note = string.Empty;

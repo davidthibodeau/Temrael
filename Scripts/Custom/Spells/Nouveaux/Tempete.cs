@@ -17,7 +17,7 @@ namespace Server.Spells.First
             );
 
         public override int RequiredAptitudeValue { get { return 1; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Evocation }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
 
         public Tempete(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

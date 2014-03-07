@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCombatMonte
     {
         private static string m_name = "Combat monte";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.CombatMonte];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.CombatMonte];
         private static int m_tooltip = 3006303;
         private static string m_description = "Augmente les dégâts à cheval et les chances de rester en scelle lors d'actions complexes.";
         private static string m_note = string.Empty;

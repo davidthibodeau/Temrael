@@ -18,7 +18,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 11; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Benedictions }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
 
         public RemedeDivinMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -81,7 +81,7 @@ namespace Server.Spells
             //toHeal += Caster.Skills[SkillName.EvalInt].Value / 10;
             toHeal += Utility.Random(1, 3);
 
-            toHeal = SpellHelper.AdjustValue(Caster, toHeal, NAptitude.Sorcellerie);
+            toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.Sorcellerie);
 
             SpellHelper.Heal(m, (int)toHeal, true);
 

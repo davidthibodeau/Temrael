@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeBroderie
     {
         private static string m_name = "Broderie";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Broderie];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Broderie];
         private static int m_tooltip = 3006292;
         private static string m_description = "Permet de créer des objets de couture.";
         private static string m_note = string.Empty;

@@ -22,7 +22,7 @@ namespace Server.Spells.Fifth
             );
 
         public override int RequiredAptitudeValue { get { return 10; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Adjuration }; } }
 
 		public PoisonFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -75,7 +75,7 @@ namespace Server.Spells.Fifth
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Tenebrea].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
 				for ( int i = -3; i <= 3; ++i )
 				{

@@ -19,7 +19,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Illusion }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
 
         public CrochetageSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -54,7 +54,7 @@ namespace Server.Spells
 				{
                     double level = Caster.Skills[CastSkill].Value;
 
-                    level = SpellHelper.AdjustValue(Caster, level, NAptitude.Sorcellerie);
+                    level = SpellHelper.AdjustValue(Caster, level, Aptitude.Sorcellerie);
 
 					if ( (int)level >= targ.RequiredSkill )
 					{

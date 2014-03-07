@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeEvasion
     {
         private static string m_name = "Evasion";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Evasion];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Evasion];
         private static int m_tooltip = 3006340;
         private static string m_description = "Augmente les chances de demeurer invisible si immobile.";
         private static string m_note = string.Empty;

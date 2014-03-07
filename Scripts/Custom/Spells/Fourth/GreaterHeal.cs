@@ -20,7 +20,7 @@ namespace Server.Spells.Fourth
             );
 
         public override int RequiredAptitudeValue { get { return 11; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Thaumaturgie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
 
 		public GreaterHealSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -59,7 +59,7 @@ namespace Server.Spells.Fourth
                 toHeal += Caster.Skills[SkillName.ArtMagique].Value * 0.5;
                 toHeal += Utility.Random(1, 15);
 
-                toHeal = SpellHelper.AdjustValue(Caster, toHeal, NAptitude.Sorcellerie);
+                toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.Sorcellerie);
 
                 m.Heal((int)toHeal);
 

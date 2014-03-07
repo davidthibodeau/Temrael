@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeMouvementCache
     {
         private static string m_name = "Mouvement Cache";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.MouvementCache];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.MouvementCache];
         private static int m_tooltip = 3006343;
         private static string m_description = "Augmente le nombre de pas possible de la compétence infiltration.";
         private static string m_note = "Utiliser la compétence d'infiltration.";

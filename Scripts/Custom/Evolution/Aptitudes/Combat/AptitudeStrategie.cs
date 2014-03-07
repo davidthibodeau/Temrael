@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeStrategie
     {
         private static string m_name = "Strategie";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Strategie];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Strategie];
         private static int m_tooltip = 3006315;
         private static string m_description = "Permet l'accès aux formations militaires.";
         private static string m_note = string.Empty;

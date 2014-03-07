@@ -4,16 +4,16 @@ namespace Server.Engines.Craft
 {
     public class CraftAptitude
 	{
-        private NAptitude m_AptitudeToMake;
+        private Aptitude m_AptitudeToMake;
 		private int m_Required;
 
-        public CraftAptitude(NAptitude aptitudeToMake, int required)
+        public CraftAptitude(Aptitude aptitudeToMake, int required)
 		{
             m_AptitudeToMake = aptitudeToMake;
             m_Required = required;
 		}
 
-        public NAptitude AptitudeToMake
+        public Aptitude AptitudeToMake
 		{
             get { return m_AptitudeToMake; }
 		}

@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeTirPrecis
     {
         private static string m_name = "Tir Precis";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.TirPrecis];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.TirPrecis];
         private static int m_tooltip = 3006316;
         private static string m_description = "Bonus aux dommages infligés à l'aide des armes de jet/distance.";
         private static string m_note = string.Empty;

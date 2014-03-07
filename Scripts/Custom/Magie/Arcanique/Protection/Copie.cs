@@ -224,7 +224,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Protection }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Protection }; } }
 
         public CopieSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -321,7 +321,7 @@ namespace Server.Scripts.Commands
             {
                 TMobile pm = (TMobile)from;
 
-                if (pm.GetAptitudeValue(NAptitude.Protection) < 5)
+                if (pm.GetAptitudeValue(Aptitude.Protection) < 5)
                     from.SendMessage("Vous devez pouvoir utiliser le sort Copie.");
                 else if (targ is Copie)
                 {

@@ -19,7 +19,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 4; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Fanatisme }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Fanatisme }; } }
 
         public ArdeurCelesteMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

@@ -66,7 +66,7 @@ namespace Server.Mobiles
         #endregion
 
         #region GetBonus
-        public static NAptitude GetAptitude(Races race)
+        public static Aptitude GetAptitude(Races race)
         {
             BaseRace raceType = getRace(race);
 

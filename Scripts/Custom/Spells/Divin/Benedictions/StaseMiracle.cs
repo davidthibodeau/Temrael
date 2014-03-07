@@ -15,7 +15,7 @@ namespace Server.Spells.Fifth
             );
 
         public override int RequiredAptitudeValue { get { return 6; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Benedictions }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
 
         public StaseMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -41,7 +41,7 @@ namespace Server.Spells.Fifth
 
                 double duration = 5.0 + (Caster.Skills[SkillName.Miracles].Value * 0.2);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.FaveurDivine);
+                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.FaveurDivine);
 
                 if (CheckResisted(m))
                     duration *= 0.75;

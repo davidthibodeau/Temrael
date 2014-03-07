@@ -25,38 +25,38 @@ namespace Server
 
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 1),
-                new ClasseAptitudes(NAptitude.PortBouclier, 1),
-                new ClasseAptitudes(NAptitude.PortArme, 1),
-                new ClasseAptitudes(NAptitude.Deguisement, 3),
-                new ClasseAptitudes(NAptitude.MouvementCache, 2)
+                new ClasseAptitudes(Aptitude.PortArmure, 1),
+                new ClasseAptitudes(Aptitude.PortBouclier, 1),
+                new ClasseAptitudes(Aptitude.PortArme, 1),
+                new ClasseAptitudes(Aptitude.Deguisement, 3),
+                new ClasseAptitudes(Aptitude.MouvementCache, 2)
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortBouclier, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 2),
-                new ClasseAptitudes(NAptitude.Deguisement, 6),
-                new ClasseAptitudes(NAptitude.MouvementCache, 5)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortBouclier, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 2),
+                new ClasseAptitudes(Aptitude.Deguisement, 6),
+                new ClasseAptitudes(Aptitude.MouvementCache, 5)
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 2),
-                new ClasseAptitudes(NAptitude.PortBouclier, 2),
-                new ClasseAptitudes(NAptitude.PortArme, 2),
-                new ClasseAptitudes(NAptitude.Deguisement, 9),
-                new ClasseAptitudes(NAptitude.MouvementCache, 7)
+                new ClasseAptitudes(Aptitude.PortArmure, 2),
+                new ClasseAptitudes(Aptitude.PortBouclier, 2),
+                new ClasseAptitudes(Aptitude.PortArme, 2),
+                new ClasseAptitudes(Aptitude.Deguisement, 9),
+                new ClasseAptitudes(Aptitude.MouvementCache, 7)
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                new ClasseAptitudes(NAptitude.PortArmure, 3),
-                new ClasseAptitudes(NAptitude.PortBouclier, 3),
-                new ClasseAptitudes(NAptitude.PortArme, 3),
-                new ClasseAptitudes(NAptitude.Deguisement, 12),
-                new ClasseAptitudes(NAptitude.MouvementCache, 10)
+                new ClasseAptitudes(Aptitude.PortArmure, 3),
+                new ClasseAptitudes(Aptitude.PortBouclier, 3),
+                new ClasseAptitudes(Aptitude.PortArme, 3),
+                new ClasseAptitudes(Aptitude.Deguisement, 12),
+                new ClasseAptitudes(Aptitude.MouvementCache, 10)
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(

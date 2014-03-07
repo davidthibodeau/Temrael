@@ -50,7 +50,7 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override NAptitude Bonus { get { return NAptitude.LibreDeplacement; } }
+        public override Aptitude Bonus { get { return Aptitude.LibreDeplacement; } }
         public override int BonusNbr { get { return 2; } }
         public override string BonusDescr { get { return "Vous avez surveccu les plus rudes hivers du nord. L'habitude aux habitats rudes vous procure quelques points de libre deplacement."; } }
         #endregion

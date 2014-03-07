@@ -16,7 +16,7 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 3; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Monial }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
 
         public override bool Invocation { get { return true; } }
 

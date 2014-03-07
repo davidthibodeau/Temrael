@@ -51,7 +51,7 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override NAptitude Bonus { get { return NAptitude.Resilience; } }
+        public override Aptitude Bonus { get { return Aptitude.Resilience; } }
         public override int BonusNbr { get { return 4; } }
         public override string BonusDescr { get { return "Votre vie passe dans les cavernes du monde de Temrael vous permet de vous mouvoir plus longtemps et agilement."; } }
         #endregion

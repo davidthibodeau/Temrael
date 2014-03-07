@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeMetallurgie
     {
         private static string m_name = "Metallurgie";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Metallurgie];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Metallurgie];
         private static int m_tooltip = 3006298;
         private static string m_description = "Permet de forger des armes et armures.";
         private static string m_note = string.Empty;

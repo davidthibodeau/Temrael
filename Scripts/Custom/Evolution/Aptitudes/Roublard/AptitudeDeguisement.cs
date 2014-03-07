@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeDeguisement
     {
         private static string m_name = "Deguisement";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Deguisement];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Deguisement];
         private static int m_tooltip = 3006337;
         private static string m_description = "Augmente le nombre d'identité du personnage.";
         private static string m_note = "Accessible d'un kit de déguisement.";

@@ -114,11 +114,11 @@ namespace Server.Misc
                     {
                         switch (type)
                         {
-                            case TileType.Desert: value = pm.GetAptitudeValue(NAptitude.LibreDeplacement); break;
-                            case TileType.Jungle: value = pm.GetAptitudeValue(NAptitude.LibreDeplacement); break;
-                            case TileType.Forest: value = pm.GetAptitudeValue(NAptitude.LibreDeplacement); break;
-                            case TileType.Snow: value = pm.GetAptitudeValue(NAptitude.LibreDeplacement); break;
-                            case TileType.Swamp: value = pm.GetAptitudeValue(NAptitude.LibreDeplacement); break;
+                            case TileType.Desert: value = pm.GetAptitudeValue(Aptitude.LibreDeplacement); break;
+                            case TileType.Jungle: value = pm.GetAptitudeValue(Aptitude.LibreDeplacement); break;
+                            case TileType.Forest: value = pm.GetAptitudeValue(Aptitude.LibreDeplacement); break;
+                            case TileType.Snow: value = pm.GetAptitudeValue(Aptitude.LibreDeplacement); break;
+                            case TileType.Swamp: value = pm.GetAptitudeValue(Aptitude.LibreDeplacement); break;
                         }
                     }
                 }

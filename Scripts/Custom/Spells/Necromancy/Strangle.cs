@@ -19,7 +19,7 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 8; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] {NAptitude.Necromancie }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
 		public StrangleSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -61,7 +61,7 @@ namespace Server.Spells.Necromancy
                     TMobile pm = Caster as TMobile;
                     double duration = 5.0;
 
-                    duration = SpellHelper.AdjustValue(Caster, duration, NAptitude.Spiritisme);
+                    duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
                     ((TMobile)m).Aphonier(TimeSpan.FromSeconds(duration));
                 }

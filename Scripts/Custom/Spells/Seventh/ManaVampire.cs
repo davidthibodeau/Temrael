@@ -18,7 +18,7 @@ namespace Server.Spells.Seventh
             );
 
         public override int RequiredAptitudeValue { get { return 9; } }
-        public override NAptitude[] RequiredAptitude { get { return new NAptitude[] { NAptitude.Adjuration }; } }
+        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Adjuration }; } }
 
 		public ManaVampireSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

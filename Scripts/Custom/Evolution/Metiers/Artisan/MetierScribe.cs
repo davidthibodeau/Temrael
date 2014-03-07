@@ -15,16 +15,16 @@ namespace Server
 
         private static ClasseAptitudes[] m_Aptitudes = new ClasseAptitudes[]
             {
-               	new ClasseAptitudes(10, NAptitude.Transcription, 10),
-                new ClasseAptitudes(9, NAptitude.Transcription, 9),
-                new ClasseAptitudes(8, NAptitude.Transcription, 8),
-                new ClasseAptitudes(7, NAptitude.Transcription, 7),
-                new ClasseAptitudes(6, NAptitude.Transcription, 6),
-                new ClasseAptitudes(5, NAptitude.Transcription, 5),
-                new ClasseAptitudes(4, NAptitude.Transcription, 4),
-                new ClasseAptitudes(3, NAptitude.Transcription, 3),
-                new ClasseAptitudes(2, NAptitude.Transcription, 2),
-                new ClasseAptitudes(1, NAptitude.Transcription, 1),
+               	new ClasseAptitudes(10, Aptitude.Transcription, 10),
+                new ClasseAptitudes(9, Aptitude.Transcription, 9),
+                new ClasseAptitudes(8, Aptitude.Transcription, 8),
+                new ClasseAptitudes(7, Aptitude.Transcription, 7),
+                new ClasseAptitudes(6, Aptitude.Transcription, 6),
+                new ClasseAptitudes(5, Aptitude.Transcription, 5),
+                new ClasseAptitudes(4, Aptitude.Transcription, 4),
+                new ClasseAptitudes(3, Aptitude.Transcription, 3),
+                new ClasseAptitudes(2, Aptitude.Transcription, 2),
+                new ClasseAptitudes(1, Aptitude.Transcription, 1),
             };
 
         public static MetierInfo MetierInfo = new MetierInfo(

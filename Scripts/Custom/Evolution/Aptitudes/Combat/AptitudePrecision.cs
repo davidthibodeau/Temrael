@@ -8,7 +8,7 @@ namespace Server
     public class AptitudePrecision
     {
         private static string m_name = "Precision";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Precision];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Precision];
         private static int m_tooltip = 3006312;
         private static string m_description = "Augmente les chances d'atteindre son adversaire.";
         private static string m_note = string.Empty;

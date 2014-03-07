@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeComposition
     {
         private static string m_name = "Composition";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Composition];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Composition];
         private static int m_tooltip = 3006336;
         private static string m_description = "Donne accès aux musiques de bardes.";
         private static string m_note = "Accessible d'un instrument de musique.";

@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeCoupRenversant
     {
         private static string m_name = "Coup Renversant";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.CoupRenversant];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.CoupRenversant];
         private static int m_tooltip = 3006307;
         private static string m_description = "Augmente les chances de faire tomber un adversaire de sa monture.";
         private static string m_note = string.Empty;

@@ -8,7 +8,7 @@ namespace Server
     public class AptitudeEndurance
     {
         private static string m_name = "Endurance";
-        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)NAptitude.Endurance];
+        private static AptitudesEntry m_entry = Aptitudes.m_AptitudeEntries[(int)Aptitude.Endurance];
         private static int m_tooltip = 3006308;
         private static string m_description = "Augmente le maximum de points de vie.";
         private static string m_note = string.Empty;

@@ -82,7 +82,7 @@ namespace Server.Gumps
                 AddButton(x, y + line * scale, 8, info.Image);
                 //AddTooltip(TemraelClasse.GetTooltipMetier(metierType));
 
-                List<NAptitude> listAptitude = new List<NAptitude>();
+                List<Aptitude> listAptitude = new List<Aptitude>();
                 bool hasAptitude = false;
                 string temp = String.Empty;
                 /*string nomTemp = String.Empty;
@@ -101,7 +101,7 @@ namespace Server.Gumps
 
                 for (int j = 0; j < info.Aptitudes.Length; j++)
                 {
-                    foreach (NAptitude aptitude in listAptitude)
+                    foreach (Aptitude aptitude in listAptitude)
                     {
                         if (aptitude == info.Aptitudes[j].Aptitude)
                         {

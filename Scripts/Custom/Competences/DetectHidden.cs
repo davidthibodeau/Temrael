@@ -89,7 +89,7 @@ namespace Server.SkillHandlers
 
                             if (trg is TMobile)
                             {
-                                secondes = abri_temps_max - (double)((TMobile)trg).GetAptitudeValue(NAptitude.Evasion) * 4;
+                                secondes = abri_temps_max - (double)((TMobile)trg).GetAptitudeValue(Aptitude.Evasion) * 4;
                                 if (secondes != abri_temps_max)
                                 {
                                     hasEvasion = true;
@@ -98,7 +98,7 @@ namespace Server.SkillHandlers
 
                             if (src is TMobile)
                             {
-                                disparition = (((TMobile)src).GetAptitudeValue(NAptitude.Depistage) * 4) > trg.Skills.Discretion.Fixed;
+                                disparition = (((TMobile)src).GetAptitudeValue(Aptitude.Depistage) * 4) > trg.Skills.Discretion.Fixed;
                             }
 
                             //Peut trouver la personne SI :
