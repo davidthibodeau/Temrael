@@ -33,7 +33,6 @@ namespace Server.Systemes.Geopolitique
         private OrderedDictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
         private Timer m_Paiement; // Timer pour effectuer un paiement
 
-
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Gestionnaire { get { return m_Gestionnaire; } set { m_Gestionnaire = value; } }
         public Terre Terre { get { return m_Terre; } set { m_Terre = value; } }
@@ -62,18 +61,24 @@ namespace Server.Systemes.Geopolitique
         //[CommandProperty(AccessLevel.GameMaster, true)]
         //public Dictionary<Mobile, Employe> Employes { get { return m_Employes; } set { m_Employes = value; } }
 
-        public Tresorier(string description, Terre terre) : this ()
+        public Tresorier(string description, Terre terre, Point3D p) : this (p)
         {
             m_Description = description;
             m_Terre = terre;
             m_Etablissement = "";
         }
 
-        public Tresorier(string etablissement, Mobile gestionnaire) : this ()
+        public Tresorier(string etablissement, Mobile gestionnaire, Point3D p) : this (p)
         {
             m_Etablissement = etablissement;
             m_Gestionnaire = gestionnaire;
             m_Fonds = 0;
+        }
+
+        public Tresorier(Point3D p) : this()
+        {
+            Location = p;
+            Map = Map.Felucca;
         }
 
         public Tresorier()
@@ -183,66 +188,94 @@ namespace Server.Systemes.Geopolitique
 
         public void AjoutFonds(Mobile from, int montant)
         {
-            Gold[] gold;
-            BankCheck[] checks;
-
-            gold = (Gold[]) from.Backpack.FindItemsByType(typeof(Gold));
-            checks = (BankCheck[]) from.Backpack.FindItemsByType(typeof(BankCheck));
-
-            int totalJoueur = 0;
-            for (int i = 0; i < checks.Length; i++)
+            if (from.AccessLevel > AccessLevel.Player)
             {
-                totalJoueur += checks[i].Worth;
-                if (totalJoueur >= montant)
-                {
-                    int reste = totalJoueur - montant;
-                    if (reste == 0) {}
-                    else if (reste < 5000)
-                    {
-                        from.Backpack.DropItem(new Gold(reste));
-                    }
-                    else
-                    {
-                        from.Backpack.DropItem(new BankCheck(reste));
-                    }
-                    Fonds += montant;
-                    for (int j = 0; j < i; j++)
-                    {
-                        checks[j].Delete();
-                    }
-                    PrivateOverheadMessage(MessageType.Regular, 0x3B2, false, 
-                        "Vous avez ajouté " + montant + " aux fonds.", from.NetState);
-                    return;
-                }
+                Fonds += montant;
             }
-            for (int i = 0; i < gold.Length; i++)
+            else
             {
-                totalJoueur += gold[i].Amount;
-                if (totalJoueur >= montant)
+                Gold[] gold;
+                BankCheck[] checks;
+
+                gold = (Gold[])from.Backpack.FindItemsByType(typeof(Gold));
+                checks = (BankCheck[])from.Backpack.FindItemsByType(typeof(BankCheck));
+
+                int totalJoueur = 0;
+                for (int i = 0; i < checks.Length; i++)
                 {
-                    int reste = totalJoueur - montant;
-                    if (reste == 0) { }
-                    else
+                    totalJoueur += checks[i].Worth;
+                    if (totalJoueur >= montant)
                     {
-                        from.Backpack.DropItem(new Gold(reste));
+                        int reste = totalJoueur - montant;
+                        if (reste == 0) { }
+                        else if (reste < 5000)
+                        {
+                            from.Backpack.DropItem(new Gold(reste));
+                        }
+                        else
+                        {
+                            from.Backpack.DropItem(new BankCheck(reste));
+                        }
+                        Fonds += montant;
+                        for (int j = 0; j < i; j++)
+                        {
+                            checks[j].Delete();
+                        }
+                        PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
+                            "Vous avez ajouté " + montant + " aux fonds.", from.NetState);
+                        return;
                     }
-                    for (int j = 0; j < checks.Length; j++)
-                    {
-                        checks[j].Delete();
-                    }
-                    for (int j = 0; j < i; j++)
-                    {
-                        gold[j].Delete();
-                    }
-                    PrivateOverheadMessage(MessageType.Regular, 0x3B2, false, 
-                        "Vous avez ajouté " + montant + " aux fonds.", from.NetState);
-                    return;
                 }
+                for (int i = 0; i < gold.Length; i++)
+                {
+                    totalJoueur += gold[i].Amount;
+                    if (totalJoueur >= montant)
+                    {
+                        int reste = totalJoueur - montant;
+                        if (reste == 0) { }
+                        else
+                        {
+                            from.Backpack.DropItem(new Gold(reste));
+                        }
+                        for (int j = 0; j < checks.Length; j++)
+                        {
+                            checks[j].Delete();
+                        }
+                        for (int j = 0; j < i; j++)
+                        {
+                            gold[j].Delete();
+                        }
+                        PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
+                            "Vous avez ajouté " + montant + " aux fonds.", from.NetState);
+                        return;
+                    }
+                }
+                PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
+                    "Vous n'avez pas " + montant + " pièces sur vous.", from.NetState);
             }
-            PrivateOverheadMessage(MessageType.Regular, 0x3B2, false, 
-                "Vous n'avez pas " + montant + "pièces sur vous.", from.NetState);   
         }
 
+        public void RetraitFonds(Mobile from, int montant)
+        {
+            if (montant > Fonds)
+            {
+                PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
+                "Nous n'avons pas les fonds pour que vous puissez retirer " + montant + " pièces.", from.NetState);
+                return;
+            }
+            
+            
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            if(from == m_Gestionnaire || from.AccessLevel > AccessLevel.GameMaster)
+                from.SendGump(new TresorierGump(this, from, 0));
+            else if (m_Employes[from] != null)
+            { } //Insérer Employé Gump
+            else
+                base.OnDoubleClick(from);
+        }
         
         public override void Serialize(GenericWriter writer)
         {

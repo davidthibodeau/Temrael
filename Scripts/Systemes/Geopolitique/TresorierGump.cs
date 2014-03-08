@@ -2,6 +2,7 @@
 using Server;
 using Server.Gumps;
 using Server.Network;
+using Server.Prompts;
 
 
 namespace Server.Systemes.Geopolitique
@@ -29,19 +30,19 @@ namespace Server.Systemes.Geopolitique
             
             AddLabel(81, 110, 1301, @"Etablissement :");
             AddLabel(210, 110, 1301, tresorier.Etablissement);
-            AddButton(383, 109, 4005, 248, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
+            AddButton(383, 109, 4005, 4006, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
 
             AddLabel(81, 140, 1301, @"Gestionnaire :");
             if(tresorier.Gestionnaire != null)
                 AddLabel(210, 140, 1301, tresorier.Gestionnaire.GetNameUseBy(from));
-            AddButton(383, 139, 4005, 248, (int)Buttons.ChangerGestionnaire, GumpButtonType.Reply, 0);
+            AddButton(383, 139, 4005, 4006, (int)Buttons.ChangerGestionnaire, GumpButtonType.Reply, 0);
             
             AddLabel(81, 170, 1301, @"Fonds :");
             AddLabel(210, 170, 1301, tresorier.Fonds.ToString());
-            AddButton(383, 169, 4005, 248, (int)Buttons.ModifierFonds, GumpButtonType.Reply, 0);
+            AddButton(383, 169, 4005, 4006, (int)Buttons.ModifierFonds, GumpButtonType.Reply, 0);
 
             if(tresorier.Terre != null)
-            AddLabel(68, 200, 1301, @"Fonds partagés pour la terre de " + tresorier.Terre.Nom);
+                AddLabel(68, 200, 1301, @"Fonds partagés pour la terre de " + tresorier.Terre.Nom);
             
             AddLabel(82, 240, 1301, @"Employés :");
 
@@ -147,6 +148,31 @@ namespace Server.Systemes.Geopolitique
                 
             }
             
+        }
+
+        private class ModifierFondsPrompt : Prompt
+        {
+            private Tresorier t;
+
+            public ModifierFondsPrompt(Tresorier t)
+            {
+                this.t = t;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                int amount;
+                if (Int32.TryParse(text, out amount))
+                {
+                    if (amount > 0)
+                        t.AjoutFonds(from, amount);
+                    else
+                        t.RetraitFonds(from, -amount);
+                }
+                //t.PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
+                //    "Je n'ai pas compris le montant que vous désirer ajouter ou retirer.", from.NetState);
+                
+            }
         }
     }
 }

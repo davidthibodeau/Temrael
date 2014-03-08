@@ -375,10 +375,7 @@ namespace Server.Systemes.Geopolitique
 
                 if (p != null)
                 {
-                    Tresorier t = new Tresorier(tresorier, parent);
-                    t.X = p.X;
-                    t.Y = p.Y;
-                    t.Z = p.Z;
+                    Tresorier t = new Tresorier(tresorier, parent, new Point3D(p));
                     parent.AjouterTresorier(t);
                     Geopolitique.journal.AjouterEntry(new CreerTresorierEntry(from, t));
                     from.SendGump(new TresorierGump(t, from, 0));
