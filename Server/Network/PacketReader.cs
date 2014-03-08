@@ -57,7 +57,7 @@ namespace Server.Network
 		{
 			try
 			{
-				using ( StreamWriter sw = new StreamWriter( "Packets.log", true ) )
+				using ( StreamWriter sw = new StreamWriter(Path.Combine(Directories.errors, "Packets.log"), true ) )
 				{
 					byte[] buffer = m_Data;
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Server.Misc
+namespace Server
 {
     public class Directories
     {

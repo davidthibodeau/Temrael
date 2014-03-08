@@ -93,10 +93,11 @@ namespace Server
 
 		public static void DumpAccess()
 		{
-			using ( StreamWriter op = new StreamWriter( "warnings.log", true ) )
+			using ( StreamWriter op = 
+                new StreamWriter(Path.Combine(Directories.errors, "warnings.log"), true ) )
 			{
 				op.WriteLine( "Warning: Access to queued AggressorInfo:" );
-				op.WriteLine( new System.Diagnostics.StackTrace() );
+				op.WriteLine( new System.Diagnostics.StackTrace(true) );
 				op.WriteLine();
 				op.WriteLine();
 			}

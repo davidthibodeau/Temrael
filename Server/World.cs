@@ -715,7 +715,9 @@ namespace Server {
 			Console.WriteLine( message );
 
 			try {
-				using ( StreamWriter op = new StreamWriter( "world-save-errors.log", true ) ) {
+				using ( StreamWriter op = 
+                    new StreamWriter( Path.Combine( Directories.errors, "world-save-errors.log"), true ) ) 
+                {
 					op.WriteLine( "{0}\t{1}", DateTime.Now, message );
 					op.WriteLine( new StackTrace( 2 ).ToString() );
 					op.WriteLine();

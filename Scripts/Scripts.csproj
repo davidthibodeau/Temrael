@@ -1414,7 +1414,6 @@
     <Compile Include=".\Custom\Races\RaceTieffelin.cs" />
     <Compile Include="Misc\AbuseLogging.cs" />
     <Compile Include="Misc\ExceptionLogging.cs" />
-    <Compile Include="Misc\Directories.cs" />
     <Compile Include="Regions\CommerceRegion.cs" />
     <Compile Include="Regions\Tavernes\AireReposCitarel.cs" />
     <Compile Include="Regions\Tavernes\InnCitarel.cs" />

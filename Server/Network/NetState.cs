@@ -639,11 +639,12 @@ namespace Server.Network {
 				}
 			} else {
 				Console.WriteLine( "Client: {0}: null buffer send, disconnecting...", this );
-				using ( StreamWriter op = new StreamWriter( "null_send.log", true ) )
-				{
-					op.WriteLine( "{0} Client: {1}: null buffer send, disconnecting...", DateTime.Now, this );
-					op.WriteLine( new System.Diagnostics.StackTrace() );
-				}
+                using (StreamWriter op =
+                    new StreamWriter(Path.Combine(Directories.errors, "null_send.log"), true))
+                {
+                    op.WriteLine("{0} Client: {1}: null buffer send, disconnecting...", DateTime.Now, this);
+                    op.WriteLine(new System.Diagnostics.StackTrace(true));
+                }
 				Dispose();
 			}
 		}
@@ -1035,14 +1036,16 @@ namespace Server.Network {
 
 		public static void TraceException( Exception ex ) {
 			try {
-				using ( StreamWriter op = new StreamWriter( "network-errors.log", true ) ) {
-					op.WriteLine( "# {0}", DateTime.Now );
+                using (StreamWriter op =
+                    new StreamWriter(Path.Combine(Directories.errors, "network-errors.log"), true))
+                {
+                    op.WriteLine("# {0}", DateTime.Now);
 
-					op.WriteLine( ex );
+                    op.WriteLine(ex);
 
-					op.WriteLine();
-					op.WriteLine();
-				}
+                    op.WriteLine();
+                    op.WriteLine();
+                }
 			} catch {
 			}
 
