@@ -52,18 +52,15 @@ namespace Server.Systemes
                 else
                 {
                     Account acc = mj.AccountJoueur;
-                    if (mj.IndexPersonnage >= acc.Count)
-                    {
+                    if (mj.IndexPersonnage >= acc.Length)
                         from.SendMessage("Il n'y a aucun personnage qui reçoit l'expérience en ce moment");
-                    }
                     else
-                    {
                         from.SendMessage("Le personnage qui reçoit l'expérience est : " + acc[mj.IndexPersonnage].Name);
-                    }
                     from.SendMessage("Veuillez indiquer l'index du personnage qui recevra l'expérience.");
-                    for (int i = 0; i < acc.Count; i++)
+                    for (int i = 0; i < acc.Length; i++)
                     {
-                        from.SendMessage("#" + i + ". " + acc[i].Name);
+                        if(acc[i] != null)
+                            from.SendMessage("#" + i + ". " + acc[i].Name);
                     }
                     from.Prompt = new IndexPJPrompt(mj);
                 }
