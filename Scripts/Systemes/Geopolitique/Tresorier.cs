@@ -141,11 +141,11 @@ namespace Server.Systemes.Geopolitique
         {
             foreach (Employe employe in m_Employes.Values)
             {
-                if (employe.Nom.Deleted)
+                if (employe.Personnage.Deleted)
                 {
                     Fonds += employe.Total; // Si le perso a ete delete, l'etablissement reprend l'argent non reclame
                     employe.Total = 0;
-                    RemoveEmploye(employe.Nom);
+                    RemoveEmploye(employe.Personnage);
                     continue;
                 }
                 if (Fonds < employe.Paie)
@@ -313,7 +313,7 @@ namespace Server.Systemes.Geopolitique
             for (int i = 0; i < count; i++)
             {
                 Employe e = new Employe(reader);
-                m_Employes.Add(e.Nom, e);
+                m_Employes.Add(e.Personnage, e);
             }
         }
 

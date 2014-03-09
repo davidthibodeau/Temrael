@@ -7,7 +7,8 @@ namespace Server.Systemes.Geopolitique
     //Wrapper class pour les listes d'employes dans les tresoriers.
     public class Employe
     {
-        private Mobile m_Nom; // Employe 
+        private Mobile m_Personnage; // Employe
+        private string m_Nom; // Nom de l'Employe connu par le tresorier
         private string m_Titre; // Titre d'emploi
         private int m_Paie; // Montant par semaine
         private int m_Total; // Total du a l'employee
@@ -15,7 +16,9 @@ namespace Server.Systemes.Geopolitique
         private bool m_Removed; // Si l'employe fut retire de la liste mais possede toujours un montant a se faire payer.
         
         [CommandProperty(AccessLevel.GameMaster, true)]
-        public Mobile Nom { get { return m_Nom; } set { m_Nom = value; } }
+        public Mobile Personnage { get { return m_Personnage; } set { m_Personnage = value; } }
+        [CommandProperty(AccessLevel.GameMaster, true)]
+        public string Nom { get { return m_Nom; } set { m_Nom = value; } }
         [CommandProperty(AccessLevel.GameMaster)]
         public string Titre { get { return m_Titre; } set { m_Titre = value; } }
         [CommandProperty(AccessLevel.GameMaster)]

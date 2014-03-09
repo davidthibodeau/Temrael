@@ -3,6 +3,8 @@ using Server;
 using Server.Gumps;
 using Server.Network;
 using Server.Prompts;
+using Server.Mobiles;
+using Server.Targeting;
 
 
 namespace Server.Systemes.Geopolitique
@@ -55,7 +57,7 @@ namespace Server.Systemes.Geopolitique
                     continue;
 
                 int j = i % 5;
-                AddLabel(60, basey + j * 30, 1301, tresorier[i].Nom.GetNameUseBy(from));
+                AddLabel(60, basey + j * 30, 1301, tresorier[i].Nom);
                 AddLabel(200, basey + j * 30, 1301, tresorier[i].Titre);
                 AddLabel(303, basey + j * 30, 1301, tresorier[i].Paie.ToString());
                 AddButton(387, basey + j * 30 - 1, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
@@ -87,7 +89,6 @@ namespace Server.Systemes.Geopolitique
             ChangerNom,
             ChangerGestionnaire,
             ModifierFonds,
-            VoirTresorerie,
         }
 
 
@@ -108,36 +109,33 @@ namespace Server.Systemes.Geopolitique
 					break;
 				}
 				case (int)Buttons.AfficherTerre:
-				{
                     from.SendGump(new GeopolGump(from, tresorier.Terre));
 					break;
-				}
+
 				case (int)Buttons.NextPage:
-				{
                     from.SendGump(new TresorierGump(tresorier, from, page + 1));
 					break;
-				}
+
 				case (int)Buttons.PreviousPage:
-				{
                     from.SendGump(new TresorierGump(tresorier, from, page - 1));
 					break;
-				}
-				case (int)Buttons.ChangerNom:
-				{
 
+				case (int)Buttons.ChangerNom:
+                    from.SendMessage("Quel nom voulez-vous donner à notre organisation?");
+                    from.Prompt = new ModifierNomPrompt(tresorier);
 					break;
-				}
+
 				case (int)Buttons.ChangerGestionnaire:
 				{
-
+                    if (from.AccessLevel == AccessLevel.Player && from != tresorier.Gestionnaire)
+                        break;
+                    from.SendMessage("Veuillez choisir le nouveau gestionnaire");
+                    if (from == tresorier.Gestionnaire)
+                        from.SendMessage("Veuillez prendre note que vous perdrez vos pouvoirs de gestionnaire.");
+                    from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(ChangerGestionnaire_OnTarget));
 					break;
 				}
 				case (int)Buttons.ModifierFonds:
-				{
-
-					break;
-				}
-				case (int)Buttons.VoirTresorerie:
 				{
 
 					break;
@@ -148,6 +146,41 @@ namespace Server.Systemes.Geopolitique
                 
             }
             
+        }
+
+        private void ChangerGestionnaire_OnTarget(Mobile from, object targeted)
+        {
+            if (targeted is TMobile)
+            {
+                tresorier.Gestionnaire = (TMobile)targeted;
+                from.SendMessage("Le changement fut fait.");
+            }
+            else
+            {
+                from.SendMessage("Vous devez choisir un joueur");
+                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(ChangerGestionnaire_OnTarget));
+            }
+        }
+
+        private class ModifierNomPrompt : Prompt
+        {
+            private Tresorier t;
+
+            public ModifierNomPrompt(Tresorier t)
+            { 
+                this.t = t; 
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                t.Etablissement = text;
+                from.SendGump(new TresorierGump(t, from, 0));
+            }
+
+            public override void OnCancel(Mobile from)
+            {
+                from.SendGump(new TresorierGump(t, from, 0));
+            }
         }
 
         private class ModifierFondsPrompt : Prompt
