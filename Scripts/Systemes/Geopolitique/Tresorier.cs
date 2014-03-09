@@ -96,7 +96,7 @@ namespace Server.Systemes.Geopolitique
             
         }
 
-        public void AddEmploye(Mobile employe, string titre, int paie)
+        public void AddEmploye(Mobile employe, string nom, string titre, int paie)
         {
             Employe e;
             if (m_Employes.TryGetValue(employe, out e))
@@ -107,7 +107,7 @@ namespace Server.Systemes.Geopolitique
             }
             else
             {
-                m_Employes.Add(employe, new Employe(employe, titre, paie));
+                m_Employes.Add(employe, new Employe(employe, nom, titre, paie));
             }
         }
 

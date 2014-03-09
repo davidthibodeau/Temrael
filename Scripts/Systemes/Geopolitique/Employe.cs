@@ -158,8 +158,9 @@ namespace Server.Systemes.Geopolitique
         }
 
 
-        public Employe(Mobile nom, string titre, int paie)
+        public Employe(Mobile pj, string nom, string titre, int paie)
         {
+            m_Personnage = pj;
             m_Nom = nom;
             m_Titre = titre;
             m_Paie = paie;
@@ -172,7 +173,8 @@ namespace Server.Systemes.Geopolitique
         {
             int version = reader.ReadInt();
 
-            m_Nom = reader.ReadMobile();
+            m_Personnage = reader.ReadMobile();
+            m_Nom = reader.ReadString();
             m_Titre = reader.ReadString();
             m_Paie = reader.ReadInt();
             m_Total = reader.ReadInt();
@@ -184,7 +186,8 @@ namespace Server.Systemes.Geopolitique
         {
             writer.Write((int)0); // version
 
-            writer.Write((Mobile)m_Nom);
+            writer.Write((Mobile)m_Personnage);
+            writer.Write((string)m_Nom);
             writer.Write((string)m_Titre);
             writer.Write((int)m_Paie);
             writer.Write((int)m_Total);
