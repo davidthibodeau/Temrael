@@ -1237,8 +1237,16 @@ namespace Server
 
             public override void OnClick()
             {
-
-                if (!m_From.InRange(m_Item, 1))
+                Boolean found = false;
+                if (m_From.Backpack != null)
+                {
+                    Item[] candidates = m_From.Backpack.FindItemsByType(m_Item.GetType());
+                    foreach (Item i in candidates)
+                    {
+                        if (m_Item == i) found = true;
+                    }
+                }
+                if (!m_From.InRange(m_Item, 1) || found)
                 {
                     m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir décrire un objet.");
                     return;
