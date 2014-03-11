@@ -44,7 +44,7 @@ namespace Server.Systemes.Geopolitique
         }
     }
 
-    // Utilisee pour declarer un type de terre constant.
+    // Utilise pour declarer un type de terre constant.
     public class EmptyTerre : TypeTerre
     {
 

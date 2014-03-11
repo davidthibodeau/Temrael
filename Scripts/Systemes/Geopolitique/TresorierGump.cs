@@ -40,10 +40,10 @@ namespace Server.Systemes.Geopolitique
             AddButton(383, 139, 4005, 4006, (int)Buttons.ChangerGestionnaire, GumpButtonType.Reply, 0);
             
             AddLabel(81, 170, 1301, @"Fonds :");
-            AddLabel(210, 170, 1301, tresorier.Fonds.ToString());
+            AddLabel(210, 170, 1301, tresorier.Fonds.ToString("N", Geopolitique.NFI));
             AddButton(383, 169, 4005, 4006, (int)Buttons.ModifierFonds, GumpButtonType.Reply, 0);
 
-            if(tresorier.Terre != null)
+            if(tresorier.Terre != null && tresorier.Terre.TresorierCount > 1)
                 AddLabel(68, 200, 1301, @"Fonds partagés pour la terre de " + tresorier.Terre.Nom);
             
             AddLabel(82, 240, 1301, @"Employés :");
@@ -59,7 +59,7 @@ namespace Server.Systemes.Geopolitique
                 int j = i % 5;
                 AddLabel(60, basey + j * 30, 1301, tresorier[i].Nom);
                 AddLabel(200, basey + j * 30, 1301, tresorier[i].Titre);
-                AddLabel(303, basey + j * 30, 1301, tresorier[i].Paie.ToString());
+                AddLabel(303, basey + j * 30, 1301, tresorier[i].Paie.ToString("N", Geopolitique.NFI));
                 AddButton(387, basey + j * 30 - 1, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
             }
 

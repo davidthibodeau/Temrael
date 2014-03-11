@@ -118,10 +118,10 @@ namespace Server.Systemes.Geopolitique
             AddLabel(220, 140, 1301, t.Type.Nom);
             AddButton(383, 139, 4005, 4006, (int)Buttons.ChangerType, GumpButtonType.Reply, 0);
             AddLabel(81, 170, 1301, @"Rente mensuelle :");
-            AddLabel(220, 170, 1301, t.Rente.ToString());
+            AddLabel(220, 170, 1301, t.Rente.ToString("N", Geopolitique.NFI));
             AddButton(383, 169, 4005, 4006, (int)Buttons.ModifierRentes, GumpButtonType.Reply, 0);
 			AddLabel(82, 200, 1301, @"Fonds :");
-            AddLabel(220, 200, 1301, t.Fonds.ToString());
+            AddLabel(220, 200, 1301, t.Fonds.ToString("N", Geopolitique.NFI));
 			AddButton(383, 199, 4005, 4006, (int)Buttons.ModifierFonds, GumpButtonType.Reply, 0);
 
             if(terre.TresorierCount == 0)
@@ -154,7 +154,7 @@ namespace Server.Systemes.Geopolitique
 			AddImage(408, 463, 97);
 			AddLabel(99, 516, 1301, @"Afficher le journal des événements");
 			AddButton(330, 515, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
-			AddLabel(139, 486, 1301, @"Afficher la liste des terres");
+			AddLabel(141, 486, 1301, @"Afficher la liste des terres");
             AddButton(330, 485, 4005, 4006, (int)Buttons.RetourCategorie, GumpButtonType.Reply, 0);
 
             if((page + 1) * 5 < terre.TresorierCount)
@@ -216,7 +216,7 @@ namespace Server.Systemes.Geopolitique
 					break;
 
 				case (int)Buttons.GererRentes:
-
+                    from.SendGump(new GererRentesGump());
 					break;
 
 				case (int)Buttons.NextPage:
@@ -260,6 +260,22 @@ namespace Server.Systemes.Geopolitique
                         from.SendMessage("Veuillez entrer le nouveau nom pour la terre.");
                         from.Prompt = new RenommerTerrePrompt(terre);
                     }
+                    break;
+
+                case (int)Buttons.ModifierFonds:
+                    if (terre != null)
+                    {
+                        from.SendMessage("Veuillez indiquer quel montant la terre doit avoir.");
+                        from.Prompt = new ModifierFondsPrompt(terre);
+                    }
+                    break;
+
+                case (int)Buttons.ModifierRentes:
+
+                    break;
+
+                case (int)Buttons.ChangerType:
+
                     break;
             }
 
@@ -332,6 +348,31 @@ namespace Server.Systemes.Geopolitique
             {
                 terre.Nom = text;
                 from.SendGump(new GeopolGump(from, terre));
+            }
+        }
+
+        private class ModifierFondsPrompt : Prompt
+        {
+            private Terre terre;
+
+            public ModifierFondsPrompt(Terre t)
+            {
+                terre = t;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                int fonds;
+                if (Int32.TryParse(text, out fonds))
+                {
+                    terre.Fonds = fonds;
+                    from.SendGump(new GeopolGump(from, terre));
+                }
+                else
+                {
+                    from.SendMessage("Veuillez entrer un nombre.");
+                    from.Prompt = new ModifierFondsPrompt(terre);
+                }
             }
         }
 

@@ -1,12 +1,12 @@
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using Server;
 using Server.Commands;
 using Server.Systemes.Geopolitique.Log;
+using System.Globalization;
 
 namespace Server.Systemes.Geopolitique
 {
@@ -51,7 +51,18 @@ namespace Server.Systemes.Geopolitique
         public static void StartTimer()
         {
             DateTime nextTuesday = GetNextWeekday(DateTime.Today.AddDays(1), DayOfWeek.Tuesday);
+        }
 
+        public static NumberFormatInfo NFI
+        {
+            get
+            {
+                NumberFormatInfo nfi = new NumberFormatInfo();
+                nfi.NumberDecimalDigits = 0;
+                nfi.NumberGroupSeparator = " ";
+                //nfi.NumberGroupSizes = CultureInfo.GetCultureInfo("en-US").NumberFormat.NumberGroupSizes;
+                return nfi;
+            }
         }
 
         public static void Load()
