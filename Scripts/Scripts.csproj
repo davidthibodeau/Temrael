@@ -3699,6 +3699,7 @@
     <Compile Include="Custom\Mobiles\Monstres\Demoniaques\GolemArcanique.cs" />
     <Compile Include="Systemes\Geopolitique\Categorie.cs" />
     <Compile Include="Systemes\Geopolitique\Employe.cs" />
+    <Compile Include="Systemes\Geopolitique\EmployeGump.cs" />
     <Compile Include="Systemes\Geopolitique\GeopolGump.cs" />
     <Compile Include="Systemes\Geopolitique\Geopolitique.cs" />
     <Compile Include="Systemes\Geopolitique\GererRentesGump.cs" />

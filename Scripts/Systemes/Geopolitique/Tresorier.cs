@@ -132,6 +132,11 @@ namespace Server.Systemes.Geopolitique
             get { return m_Employes[i]; }
         }
 
+        public Employe this[Mobile m]
+        {
+            get { return m_Employes[m]; }
+        }
+
         public int EmployeCount
         {
             get { return m_Employes.Count; }
@@ -183,7 +188,6 @@ namespace Server.Systemes.Geopolitique
 
             if (e.Removed && (e.Total == 0))
                 RemoveEmploye(employe);
-                
         }
 
         public void AjoutFonds(Mobile from, int montant)
@@ -259,18 +263,25 @@ namespace Server.Systemes.Geopolitique
         {
             if (montant > Fonds)
             {
-                PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
-                "Nous n'avons pas les fonds pour que vous puissez retirer " + montant + " pièces.", from.NetState);
+                ReponseAuGump(from, "Nous n'avons pas les fonds pour que vous puissez retirer " + montant + " pièces.");
                 return;
             }  
         }
 
+        public void ReponseAuGump(Mobile from, string reponse)
+        {
+            if (InLOS(from))
+                PrivateOverheadMessage(MessageType.Regular, 0x3B2, false, reponse, from.NetState);
+            else
+                from.SendMessage(reponse);
+        }
+
         public override void OnDoubleClick(Mobile from)
         {
-            if(from == m_Gestionnaire || from.AccessLevel > AccessLevel.GameMaster)
+            if (from == m_Gestionnaire || from.AccessLevel > AccessLevel.GameMaster)
                 from.SendGump(new TresorierGump(this, from, 0));
             else if (m_Employes[from] != null)
-            { } //Insérer Employé Gump
+                from.SendGump(new EmployeGump(this, this[from], false));
             else
                 base.OnDoubleClick(from);
         }

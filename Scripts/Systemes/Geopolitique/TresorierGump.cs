@@ -143,7 +143,7 @@ namespace Server.Systemes.Geopolitique
             }
             if (button >= 100 && button < 100 + tresorier.EmployeCount)
             {
-                
+                from.SendGump(new EmployeGump(tresorier, tresorier[button - 100], true));
             }
             
         }
