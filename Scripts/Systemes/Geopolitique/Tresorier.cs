@@ -262,9 +262,7 @@ namespace Server.Systemes.Geopolitique
                 PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
                 "Nous n'avons pas les fonds pour que vous puissez retirer " + montant + " pièces.", from.NetState);
                 return;
-            }
-            
-            
+            }  
         }
 
         public override void OnDoubleClick(Mobile from)
@@ -275,6 +273,17 @@ namespace Server.Systemes.Geopolitique
             { } //Insérer Employé Gump
             else
                 base.OnDoubleClick(from);
+        }
+
+        public override bool AllowEquipFrom(Mobile mob)
+        {
+            return (mob == Gestionnaire || base.AllowEquipFrom(mob));
+        }
+
+        public override void OnDelete()
+        {
+            m_Terre.RetirerTresorier(this);
+            base.OnDelete();
         }
         
         public override void Serialize(GenericWriter writer)

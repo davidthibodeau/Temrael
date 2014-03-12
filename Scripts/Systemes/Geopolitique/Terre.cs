@@ -22,7 +22,13 @@ namespace Server.Systemes.Geopolitique
                 if(m_Type == -1) return TypeTerre.Empty;
                 return Geopolitique.types[m_Type];
             }
-            set { m_Type = Geopolitique.types.IndexOf(value); }
+            set
+            {
+                if (value == TypeTerre.Empty)
+                    m_Type = -1;
+                else
+                    m_Type = Geopolitique.types.IndexOf(value);
+            }
         }
 
         public int Rente 
@@ -83,6 +89,11 @@ namespace Server.Systemes.Geopolitique
             
         }
 
+        public void RetirerTresorier(Tresorier t)
+        {
+            m_Tresoriers.Remove(t);
+        }
+
         public Terre(Categorie parent, string nom)
         {
             m_Parent = parent;
@@ -112,8 +123,11 @@ namespace Server.Systemes.Geopolitique
             {
                 int serial = Utility.GetXMLInt32(Utility.GetText(ele, "0"), 0);
                 Tresorier t = (Tresorier)World.FindMobile(serial);
-                m_Tresoriers.Add(t);
-                t.Terre = this;
+                if (t != null)
+                {
+                    m_Tresoriers.Add(t);
+                    t.Terre = this;
+                }
             }
         }
 

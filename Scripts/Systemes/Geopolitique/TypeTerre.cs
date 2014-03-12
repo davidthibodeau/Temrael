@@ -8,7 +8,8 @@ namespace Server.Systemes.Geopolitique
     //Wrapper pour la normalisation des types de terres et de leurs rentes
     public class TypeTerre
     {
-        public static TypeTerre Empty { get { return new EmptyTerre(); } }
+        private static EmptyTerre empty = new EmptyTerre();
+        public static TypeTerre Empty { get { return empty; } }
         
         private string m_Nom;
         private int m_Rente;

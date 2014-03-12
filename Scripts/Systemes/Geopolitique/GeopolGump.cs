@@ -119,7 +119,7 @@ namespace Server.Systemes.Geopolitique
             AddButton(383, 139, 4005, 4006, (int)Buttons.ChangerType, GumpButtonType.Reply, 0);
             AddLabel(81, 170, 1301, @"Rente mensuelle :");
             AddLabel(220, 170, 1301, t.Rente.ToString("N", Geopolitique.NFI));
-            AddButton(383, 169, 4005, 4006, (int)Buttons.ModifierRentes, GumpButtonType.Reply, 0);
+            //AddButton(383, 169, 4005, 4006, (int)Buttons.ModifierRentes, GumpButtonType.Reply, 0);
 			AddLabel(82, 200, 1301, @"Fonds :");
             AddLabel(220, 200, 1301, t.Fonds.ToString("N", Geopolitique.NFI));
 			AddButton(383, 199, 4005, 4006, (int)Buttons.ModifierFonds, GumpButtonType.Reply, 0);
@@ -270,12 +270,13 @@ namespace Server.Systemes.Geopolitique
                     }
                     break;
 
-                case (int)Buttons.ModifierRentes:
+                //case (int)Buttons.ModifierRentes:
 
-                    break;
+                //    break;
 
                 case (int)Buttons.ChangerType:
-
+                    if (terre != null)
+                        from.SendGump(new ChoisirTypeGump(terre, 0));
                     break;
             }
 
@@ -426,6 +427,80 @@ namespace Server.Systemes.Geopolitique
             {
                 from.SendMessage("La création du trésorier fut annulée.");
                 from.SendGump(new GeopolGump(from, parent));
+            }
+        }
+
+        private class ChoisirTypeGump : Gump
+        {
+            Terre terre;
+            int page;
+
+            public ChoisirTypeGump(Terre t, int page)
+                : base(0, 0)
+            {
+                terre = t;
+                this.page = page;
+
+                this.Closable = true;
+                this.Disposable = true;
+                this.Dragable = true;
+                this.Resizable = false;
+
+                AddPage(0);
+                AddBackground(31, 48, 416, 401, 9250);
+                AddBackground(39, 56, 400, 386, 3500);
+                AddLabel(174, 78, 1301, String.Format("String pour la terre de {0}", t.Nom));
+
+                int basey = 110;
+                int offset = 0;
+
+                if(page == 0)
+                {
+                    AddLabel(81, 110, 1301, @"(Pas de type)");
+                    AddLabel(270, 110, 1301, @"0");
+                    AddButton(383, 109, 4005, 248, 99, GumpButtonType.Reply, 0);
+                    offset = 1;
+                }
+
+                for (int i = 0; i < Geopolitique.types.Count; i++)
+                {
+                    if (i + 1 < page * 10) continue;
+                    if ((page + 1) * 10 < i + 1) break;
+
+                    AddLabel(81, basey + offset * 30, 1301, Geopolitique.types[i].Nom);
+                    AddLabel(270, basey + offset * 30, 1301, Geopolitique.types[i].Rente.ToString("N", Geopolitique.NFI));
+                    AddButton(383, basey + offset * 30 - 1, 4005, 248, 100 + i, GumpButtonType.Reply, 0);
+
+                    offset = (offset + 1) % 10;
+                }
+
+                if((page + 1) * 10 < Geopolitique.types.Count)
+                    AddButton(402, 402, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Reply, 0);
+                if(page > 0)
+                    AddButton(61, 401, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Reply, 0);
+            }
+
+            public override void OnResponse(NetState sender, RelayInfo info)
+            {
+                Mobile from = sender.Mobile;
+
+                int button = info.ButtonID;
+                if (button == (int)Buttons.NextPage)
+                    from.SendGump(new ChoisirTypeGump(terre, page+1));
+                else if (button == (int)Buttons.PreviousPage)
+                    from.SendGump(new ChoisirTypeGump(terre, page-1));
+
+                else if (button >= 99 && button < 100 + Geopolitique.types.Count)
+                {
+                    if (button == 99)
+                        terre.Type = TypeTerre.Empty;
+                    else
+                    {
+                        terre.Type = Geopolitique.types[button - 100];
+                    }
+                    from.SendGump(new GeopolGump(from, terre));
+                }
+                
             }
         }
     }

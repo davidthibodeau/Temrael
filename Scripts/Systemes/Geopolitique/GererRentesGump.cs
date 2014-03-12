@@ -33,7 +33,7 @@ namespace Server.Systemes.Geopolitique
 
 			AddLabel(154, 75, 1301, @"Gestion des types de terres");
 
-            int basey = 123;
+            int basey = 110;
             int offset = 0;
             for (int i = 0; i < Geopolitique.types.Count; i++)
             {
