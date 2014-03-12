@@ -23,12 +23,12 @@ namespace Server.Systemes.Geopolitique
 
     public class Tresorier : Mobile
     {
-        
         private Mobile m_Gestionnaire; // Joueur qui controle la tresorerie
         private Terre m_Terre; // null si pas lie a une terre 
         private string m_Etablissement; // Nom de la tresorerie
         private string m_Description; // Description dans le menu geopol
         private int m_Fonds; // Total des fonds accumules
+        private List<string> m_Messages;
         
         private OrderedDictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
         private Timer m_Paiement; // Timer pour effectuer un paiement
@@ -57,9 +57,6 @@ namespace Server.Systemes.Geopolitique
                     m_Terre.Fonds = value;
             }
         }
-        
-        //[CommandProperty(AccessLevel.GameMaster, true)]
-        //public Dictionary<Mobile, Employe> Employes { get { return m_Employes; } set { m_Employes = value; } }
 
         public Tresorier(string description, Terre terre, Point3D p) : this (p)
         {
@@ -89,6 +86,7 @@ namespace Server.Systemes.Geopolitique
             m_Fonds = 0;
             m_Employes = new OrderedDictionary<Mobile, Employe>();
             CantWalk = true;
+            m_Messages = new List<string>();
         }
 
         public Tresorier(Serial serial) : base (serial)
@@ -153,15 +151,19 @@ namespace Server.Systemes.Geopolitique
                     RemoveEmploye(employe.Personnage);
                     continue;
                 }
-                if (Fonds < employe.Paie)
+                int apayer = employe.APayer();
+                if (Fonds < apayer)
                 {
-                    //Ajouter message pour employe et gestionnaire indiquant l'absence de fonds pour le paiement
+                    employe.AjouterMessage(String.Format("Une paie de {0} n'a pas pu vous être remis par manque de fonds.", 
+                        employe.Paie.ToString("N", Geopolitique.NFI)));
+                    AjouterMessage(String.Format("La paie de {0} d'une valeur de {1} n'a pas pu être délivrée par manque de fonds.",
+                        employe.Nom, apayer.ToString("N", Geopolitique.NFI)));
                     continue;
                 }
                 if (employe.Removed)
                     continue;
-                employe.Total += employe.Paie;
-                Fonds -= employe.Paie;
+                employe.Total += apayer;
+                Fonds -= apayer;
             }
         }
 
@@ -172,8 +174,7 @@ namespace Server.Systemes.Geopolitique
                 return;
             if (e.Total < montant)
             {
-                PrivateOverheadMessage(MessageType.Regular, 0x3B2, false, 
-                    Etablissement + " ne vous doit que " + e.Total + ".", employe.NetState);
+                ReponseAuGump(employe, Etablissement + " ne vous doit que " + e.Total + ".");
                 return;
             }
             if (montant < 5000)
@@ -225,8 +226,7 @@ namespace Server.Systemes.Geopolitique
                         {
                             checks[j].Delete();
                         }
-                        PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
-                            "Vous avez ajouté " + montant + " aux fonds.", from.NetState);
+                        ReponseAuGump(from, "Vous avez ajouté " + montant + " aux fonds.");
                         return;
                     }
                 }
@@ -249,13 +249,11 @@ namespace Server.Systemes.Geopolitique
                         {
                             gold[j].Delete();
                         }
-                        PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
-                            "Vous avez ajouté " + montant + " aux fonds.", from.NetState);
+                        ReponseAuGump(from, "Vous avez ajouté " + montant + " aux fonds.");
                         return;
                     }
                 }
-                PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
-                    "Vous n'avez pas " + montant + " pièces sur vous.", from.NetState);
+                ReponseAuGump(from, "Vous n'avez pas " + montant + " pièces sur vous.");
             }
         }
 
@@ -268,6 +266,18 @@ namespace Server.Systemes.Geopolitique
             }  
         }
 
+        public void AjouterMessage(string message)
+        {
+            m_Messages.Add(message);
+        }
+
+        public List<string> DelivrerMessages()
+        {
+            List<string> messages = m_Messages;
+            m_Messages = new List<string>();
+            return m_Messages; 
+        }
+
         public void ReponseAuGump(Mobile from, string reponse)
         {
             if (InLOS(from))
@@ -278,10 +288,32 @@ namespace Server.Systemes.Geopolitique
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from == m_Gestionnaire || from.AccessLevel > AccessLevel.GameMaster)
+            if (from == m_Gestionnaire)
+            {
+                List<string> messages = DelivrerMessages();
+                if (messages.Count > 0)
+                {
+                    ReponseAuGump(from, "J'ai des messages pour vous.");
+                    ReponseAuGump(from, "*Commence a lire les messages à haute voix*");
+                    foreach (string m in messages)
+                        ReponseAuGump(from, m);
+                }
+                from.SendGump(new TresorierGump(this, from, 0));
+            }
+            else if(from.AccessLevel > AccessLevel.GameMaster)
                 from.SendGump(new TresorierGump(this, from, 0));
             else if (m_Employes[from] != null)
+            {
                 from.SendGump(new EmployeGump(this, this[from], false));
+                List<string> messages = this[from].DelivrerMessages();
+                if (messages.Count > 0)
+                {
+                    ReponseAuGump(from, "J'ai des messages pour vous.");
+                    ReponseAuGump(from, "*Commence a lire les messages à haute voix*");
+                    foreach (string m in messages)
+                        ReponseAuGump(from, m);
+                }
+            }
             else
                 base.OnDoubleClick(from);
         }
@@ -312,6 +344,10 @@ namespace Server.Systemes.Geopolitique
             {
                 e.Serialize(writer);
             }
+
+            writer.Write((int)m_Messages.Count);
+            foreach (string m in m_Messages)
+                writer.Write((string)m);
             
             //new Timer(
             //m_Paiement.
@@ -335,11 +371,16 @@ namespace Server.Systemes.Geopolitique
                 Employe e = new Employe(reader);
                 m_Employes.Add(e.Personnage, e);
             }
+
+            count = reader.ReadInt();
+            m_Messages = new List<string>();
+            for (int i = 0; i < count; i++)
+                m_Messages.Add(reader.ReadString());
         }
 
         // Fonctions prisent des PlayerVendors. Ce pourrait etre une
         // bonne idee de les installer dans une classe commune.
-		public void InitBody()
+        public void InitBody()
 		{
 			Hue = Utility.RandomSkinHue();
 			SpeechHue = 0x3B2;

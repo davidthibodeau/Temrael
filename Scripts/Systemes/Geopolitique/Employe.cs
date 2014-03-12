@@ -14,6 +14,7 @@ namespace Server.Systemes.Geopolitique
         private int m_Total; // Total du a l'employee
         private DateTime m_LastPaie; 
         private bool m_Removed; // Si l'employe fut retire de la liste mais possede toujours un montant a se faire payer.
+        private List<string> m_Messages; // Messages du tresorier pour l'employe.
         
         [CommandProperty(AccessLevel.GameMaster, true)]
         public Mobile Personnage { get { return m_Personnage; } set { m_Personnage = value; } }
@@ -30,10 +31,27 @@ namespace Server.Systemes.Geopolitique
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Removed { get { return m_Removed; } set { m_Removed = value; } }
 
-        public void Payer()
+        public void AjouterMessage(string message)
+        {
+            m_Messages.Add(message);
+        }
+
+        public List<string> DelivrerMessages()
+        {
+            List<string> messages = m_Messages;
+            m_Messages = new List<string>();
+            return m_Messages; 
+        }
+
+        public int APayer()
+        {
+            return APayerInternal(0);
+        }
+
+        private int APayerInternal(int acc)
         {
             if (m_LastPaie.CompareTo(DateTime.Now) >= 0)
-                return;
+                return acc;
 
             int annees = DateTime.Now.Year - m_LastPaie.Year;
             if(annees == 0)
@@ -42,16 +60,17 @@ namespace Server.Systemes.Geopolitique
                 if(mois == 0)
                 {
                     int jours = DateTime.Now.Day - m_LastPaie.Day;
-                    m_Total += jours * m_Paie / DaysInMonth(m_LastPaie.Month, DateTime.IsLeapYear(m_LastPaie.Year));
+                    acc += jours * m_Paie / DaysInMonth(m_LastPaie.Month, DateTime.IsLeapYear(m_LastPaie.Year));
                     m_LastPaie = DateTime.Now;
+                    return acc;
                 }
                 else if (mois == 1)
                 {
                     if (DateTime.Now.Day > m_LastPaie.Day)
                     {
-                        m_Total += m_Paie;
+                        acc += m_Paie;
                         m_LastPaie.AddMonths(1);
-                        Payer();
+                        return APayerInternal(acc);
                     }
                     else
                     {
@@ -63,22 +82,23 @@ namespace Server.Systemes.Geopolitique
                         jours = DateTime.Now.Day;
                         m_Total = jours * m_Paie / daysthismonth;
                         m_LastPaie = DateTime.Now;
+                        return acc;
                     }   
                 }
                 else
                 {
-                    m_Total += m_Paie;
+                    acc += m_Paie;
                     m_LastPaie.AddMonths(1);
-                    Payer();
+                    return APayerInternal(acc);
                 }
             }
             else if (annees == 1)
             {
                 if (DateTime.Now.Month > m_LastPaie.Month)
                 {
-                    m_Total += m_Paie * 12;
+                    acc += m_Paie * 12;
                     m_LastPaie.AddYears(1);
-                    Payer();
+                    return APayerInternal(acc);
                 }
                 else
                 {
@@ -86,13 +106,13 @@ namespace Server.Systemes.Geopolitique
                     {
                         m_Total += m_Paie;
                         m_LastPaie.AddMonths(1);
-                        Payer();
+                        return APayerInternal(acc);
                     }
                     else if (DateTime.Now.Month > 1)
                     {
                         m_Total += m_Paie;
                         m_LastPaie.AddMonths(1);
-                        Payer();
+                        return APayerInternal(acc);
                     }
                     else // Il y a moins de 2 mois d'ecart.
                     {
@@ -100,27 +120,28 @@ namespace Server.Systemes.Geopolitique
                         {
                             m_Total += m_Paie;
                             m_LastPaie.AddMonths(1);
-                            Payer();
+                            return APayerInternal(acc);
                         }
                         else
                         {
                             int dayslastmonth = DaysInMonth(m_LastPaie.Month, DateTime.IsLeapYear(m_LastPaie.Year));
                             int jours = dayslastmonth - m_LastPaie.Day;
-                            m_Total = jours * m_Paie / dayslastmonth;
+                            acc = jours * m_Paie / dayslastmonth;
 
                             int daysthismonth = DaysInMonth(DateTime.Now.Month, DateTime.IsLeapYear(DateTime.Now.Year));
                             jours = DateTime.Now.Day;
-                            m_Total = jours * m_Paie / daysthismonth;
+                            acc = jours * m_Paie / daysthismonth;
                             m_LastPaie = DateTime.Now;
+                            return acc;
                         }
                     }
                 }
             }
             else
             {
-                m_Total += m_Paie * 12;
+                acc += m_Paie * 12;
                 m_LastPaie.AddYears(1);
-                Payer();
+                return APayerInternal(acc);
             }
         }
 
@@ -167,6 +188,7 @@ namespace Server.Systemes.Geopolitique
             m_Total = 0;
             m_LastPaie = DateTime.Now;
             m_Removed = false;
+            m_Messages = new List<string>();
         }
 
         public Employe(GenericReader reader)
@@ -180,6 +202,11 @@ namespace Server.Systemes.Geopolitique
             m_Total = reader.ReadInt();
             m_LastPaie = reader.ReadDateTime();
             m_Removed = reader.ReadBool();
+
+            int count = reader.ReadInt();
+            m_Messages = new List<string>();
+            for (int i = 0; i < count; i++)
+                m_Messages.Add(reader.ReadString());
         }
 
         public void Serialize(GenericWriter writer)
@@ -193,6 +220,10 @@ namespace Server.Systemes.Geopolitique
             writer.Write((int)m_Total);
             writer.Write((DateTime)m_LastPaie);
             writer.Write((bool)m_Removed);
+
+            writer.Write((int)m_Messages.Count);
+            for (int i = 0; i < m_Messages.Count; i++)
+                writer.Write((string)m_Messages[i]);
         }
     }
 
