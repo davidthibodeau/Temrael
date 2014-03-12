@@ -11,7 +11,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Exp", AccessLevel.GameMaster, new CommandEventHandler(Exp_OnCommand));
+            CommandSystem.Register("Exp", AccessLevel.Player, new CommandEventHandler(Exp_OnCommand));
         }
 
         [Usage("Exp")]
@@ -21,11 +21,6 @@ namespace Server.Scripts.Commands
             Mobile from = e.Mobile;
 
             from.SendMessage("Vous avez présentement : " + from.XP + " points d'expériences.");
-
-            /*if (from is TMobile)
-            {
-                from.Target = new CotationTarget();
-            }*/
         }
     }
 }
