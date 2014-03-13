@@ -41,8 +41,11 @@ namespace Server.Items
 
 			ArrayList list = new ArrayList();
 
-			foreach ( Mobile m in attacker.GetMobilesInRange( 1 ) )
-				list.Add( m );
+            foreach (Mobile m in attacker.GetMobilesInRange(1))
+            {
+                if(m.Party != attacker.Party)
+                    list.Add(m);
+            }
 
 			ArrayList targets = new ArrayList();
 
