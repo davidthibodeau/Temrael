@@ -78,7 +78,7 @@ namespace Server.Items
 
         [Constructable]
         public RoublardTunic()
-            : base(0x2724)
+            : base(0x2725)
         {
             Weight = 2.0;
             Name = "Tunique Roublarde";

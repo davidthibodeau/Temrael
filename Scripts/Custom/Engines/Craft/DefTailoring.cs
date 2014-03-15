@@ -690,10 +690,10 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Log), "Bûche", 2, 1044563);
             index = AddCraft(typeof(ElfeTunic), "Armure de Cuir Clouté", "Tunique de Feuilles", 50.0, 80.0, typeof(Leather), "Cuir", 3, 1044463);
             AddRes(index, typeof(Log), "Bûche", 2, 1044563);
-            index = AddCraft(typeof(StuddedBarbareGreaves), "Armure de Cuir Clouté", "Gorget de Cuir Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(StuddedBarbareGorget), "Armure de Cuir Clouté", "Gants de Cuir Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(StuddedBarbareLeggings), "Armure de Cuir Clouté", "Brassards de Cuir Clouté Barbare",60.0, 80.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Jambières de Cuir Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(StuddedBarbareGreaves), "Armure de Cuir Clouté", "Brassards Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(StuddedBarbareGorget), "Armure de Cuir Clouté", "Gorget Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(StuddedBarbareLeggings), "Armure de Cuir Clouté", "Jambières Clouté Barbare",60.0, 80.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Tunique Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 14, 1044463);
 
 			#endregion
 

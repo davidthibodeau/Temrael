@@ -6,6 +6,7 @@ using Server.Network;
 
 namespace Server.Items
 {
+    //Conteneur non Fonctionnel.
 	[Furniture]
 	[Flipable( 0x2815, 0x2816 )]
 	public class TallCabinet : BaseContainer
@@ -33,6 +34,7 @@ namespace Server.Items
 		}
 	}
 
+    //Conteneur non Fonctionnel.
 	[Furniture]
 	[Flipable( 0x2817, 0x2818 )]
 	public class ShortCabinet : BaseContainer
@@ -60,7 +62,7 @@ namespace Server.Items
 		}
 	}
 
-
+    //Super Buggé.
 	[Furniture]
 	[Flipable( 0x2857, 0x2858 )]
 	public class RedArmoire : BaseContainer
@@ -88,6 +90,7 @@ namespace Server.Items
 		}
 	}
 
+    //Super Buggé.
 	[Furniture]
 	[Flipable( 0x285D, 0x285E )]
 	public class CherryArmoire : BaseContainer
@@ -115,6 +118,7 @@ namespace Server.Items
 		}
 	}
 
+    //Super Buggé.
 	[Furniture]
 	[Flipable( 0x285B, 0x285C )]
 	public class MapleArmoire : BaseContainer
@@ -141,7 +145,8 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-
+    
+    //Super Buggé.
 	[Furniture]
 	[Flipable( 0x2859, 0x285A )]
 	public class ElegantArmoire : BaseContainer
@@ -195,6 +200,93 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
+
+    [Furniture]
+    [Flipable( 0xa97, 0xa99 )]
+    public class FullBookcaseA : BaseContainer
+    {
+        [Constructable]
+        public FullBookcaseA()
+            : base(0xA97)
+        {
+            Weight = 1.0;
+        }
+
+        public FullBookcaseA(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
+
+    [Furniture]
+    [Flipable( 0xa98, 0xa9a )]
+    public class FullBookcaseB : BaseContainer
+    {
+        [Constructable]
+        public FullBookcaseB()
+            : base(0xA98)
+        {
+            Weight = 1.0;
+        }
+
+        public FullBookcaseB(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
+
+    [Furniture]
+    [Flipable( 0xa9b, 0xa9c )]
+    public class FullBookcaseC : BaseContainer
+    {
+        [Constructable]
+        public FullBookcaseC()
+            : base(0xA9B)
+        {
+            Weight = 1.0;
+        }
+
+        public FullBookcaseC(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
 
 	[Furniture]
 	[Flipable( 0xa9d, 0xa9e )]
