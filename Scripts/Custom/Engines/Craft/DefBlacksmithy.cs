@@ -1030,17 +1030,17 @@ namespace Server.Engines.Craft
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material
 			AddSubRes( typeof( FerIngot ),			"Fer", 00.0, 1044267 );
-			AddSubRes( typeof( CuivreIngot ),   	"Cuivre", 20.0, 1044268 );
-			AddSubRes( typeof( BronzeIngot ),   	"Bronze", 30.0, 1044268 );
-			AddSubRes( typeof( AcierIngot ),		"Acier", 40.0, 1044268 );
-			AddSubRes( typeof( ArgentIngot ),		"Argent", 50.0, 1044268 );
+			AddSubRes( typeof( CuivreIngot ),   	"Cuivre", 40.0, 1044268 );
+			AddSubRes( typeof( BronzeIngot ),   	"Bronze", 40.0, 1044268 );
+			AddSubRes( typeof( AcierIngot ),		"Acier", 60.0, 1044268 );
+			AddSubRes( typeof( ArgentIngot ),		"Argent", 60.0, 1044268 );
 			AddSubRes( typeof( OrIngot ),			"Or", 60.0, 1044268 );
-			AddSubRes( typeof( MytherilIngot ),		"Mytheril", 70.0, 1044268 );
+			AddSubRes( typeof( MytherilIngot ),		"Mytheril", 80.0, 1044268 );
 			AddSubRes( typeof( LuminiumIngot ),		"Luminium", 80.0, 1044268 );
-			AddSubRes( typeof( ObscuriumIngot ),	"Obscurium", 82.0, 1044268 );
+			AddSubRes( typeof( ObscuriumIngot ),	"Obscurium", 80.0, 1044268 );
             AddSubRes( typeof( MystiriumIngot ),    "Mystirium", 90.0, 1044268);
             AddSubRes( typeof( DominiumIngot ),     "Dominium", 90.0, 1044268);
-            AddSubRes(typeof(VenariumIngot),        "Venarium", 90.0, 1044268);
+            AddSubRes( typeof( VenariumIngot),        "Venarium", 90.0, 1044268);
             AddSubRes( typeof( EclariumIngot ),     "Eclarium", 100.0, 1044268);
             AddSubRes( typeof( AtheniumIngot ),     "Athenium", 100.0, 1044268);
             AddSubRes( typeof( UmbrariumIngot ),    "Umbrarium", 100.0, 1044268);

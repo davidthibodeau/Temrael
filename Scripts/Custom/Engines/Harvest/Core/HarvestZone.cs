@@ -73,21 +73,21 @@ namespace Server.Engines.Harvest
 
         private static HarvestResource[] m_Resources = new HarvestResource[]
 			{
-				new HarvestResource( 00.0, -100.0, 40.0, "Vous minez quelques minerais de Fer et les déposez dans votre sac.", typeof( FerOre ) ), // 0
-				new HarvestResource( 20.0, -20.0, 50.0, "Vous minez quelques minerais de Cuivre et les déposez dans votre sac.", typeof( CuivreOre ) ), // 1
-				new HarvestResource( 30.0, -10.0, 60.0, "Vous minez quelques minerais de Bronze et les déposez dans votre sac.", typeof( BronzeOre ) ), // 2
-				new HarvestResource( 40.0, 40.0, 70.0, "Vous minez quelques minerais d'Acier et les déposez dans votre sac.", typeof( AcierOre ) ), // 3
-				new HarvestResource( 45.0, 50.0, 80.0, "Vous minez quelques minerais d'Argent et les déposez dans votre sac.", typeof( ArgentOre ) ), // 4
-				new HarvestResource( 50.0, 55.0, 90.0, "Vous minez quelques minerais d'Or et les déposez dans votre sac.", typeof( OrOre ) ), // 5
-				new HarvestResource( 55.0, 60.0, 100.0, "Vous minez quelques minerais de Mytheril et les déposez dans votre sac.", typeof( MytherilOre ) ), // 6
-				new HarvestResource( 60.0, 65.0, 110.0, "Vous minez quelques minerais de Luminium et les déposez dans votre sac.", typeof( LuminiumOre ) ), // 7
-				new HarvestResource( 65.0, 70.0, 120.0, "Vous minez quelques minerais d'Obscurium et les déposez dans votre sac.", typeof( ObscuriumOre ) ), // 8
-				new HarvestResource( 70.0, 75.0, 125.0, "Vous minez quelques minerais de Mystirium et les déposez dans votre sac.", typeof( MystiriumOre ) ), // 9
-				new HarvestResource( 75.0, 80.0, 130.0, "Vous minez quelques minerais de Dominium et les déposez dans votre sac.", typeof( DominiumOre ) ), // 10
-				new HarvestResource( 80.0, 85.0, 135.0, "Vous minez quelques minerais d'Eclarium et les déposez dans votre sac.", typeof( EclariumOre ) ), // 11
-				new HarvestResource( 85.0, 90.0, 140.0, "Vous minez quelques minerais de Venarium et les déposez dans votre sac.", typeof( VenariumOre ) ), // 12
-				new HarvestResource( 90.0, 95.0, 145.0, "Vous minez quelques minerais d'Athenium et les déposez dans votre sac.", typeof( AtheniumOre ) ), // 13
-				new HarvestResource( 90.0, 99.0, 150.0, "Vous minez quelques minerais d'Umbrarium et les déposez dans votre sac.", typeof( UmbrariumOre ) ), // 14
+				new HarvestResource( 00.0, -50.0, 50.0, "Vous minez quelques minerais de Fer et les déposez dans votre sac.", typeof( FerOre ) ), // 0
+				new HarvestResource( 40.0, -10.0, 80.0, "Vous minez quelques minerais de Cuivre et les déposez dans votre sac.", typeof( CuivreOre ) ), // 1
+				new HarvestResource( 40.0, -10.0, 80.0, "Vous minez quelques minerais de Bronze et les déposez dans votre sac.", typeof( BronzeOre ) ), // 2
+				new HarvestResource( 60.0, 10.0, 110.0, "Vous minez quelques minerais d'Acier et les déposez dans votre sac.", typeof( AcierOre ) ), // 3
+				new HarvestResource( 60.0, 10.0, 110.0, "Vous minez quelques minerais d'Argent et les déposez dans votre sac.", typeof( ArgentOre ) ), // 4
+				new HarvestResource( 60.0, 10.0, 110.0, "Vous minez quelques minerais d'Or et les déposez dans votre sac.", typeof( OrOre ) ), // 5
+				new HarvestResource( 80.0, 30.0, 130.0, "Vous minez quelques minerais de Mytheril et les déposez dans votre sac.", typeof( MytherilOre ) ), // 6
+				new HarvestResource( 80.0, 30.0, 130.0, "Vous minez quelques minerais de Luminium et les déposez dans votre sac.", typeof( LuminiumOre ) ), // 7
+				new HarvestResource( 80.0, 30.0, 130.0, "Vous minez quelques minerais d'Obscurium et les déposez dans votre sac.", typeof( ObscuriumOre ) ), // 8
+				new HarvestResource( 90.0, 40.0, 140.0, "Vous minez quelques minerais de Mystirium et les déposez dans votre sac.", typeof( MystiriumOre ) ), // 9
+				new HarvestResource( 90.0, 40.0, 140.0, "Vous minez quelques minerais de Dominium et les déposez dans votre sac.", typeof( DominiumOre ) ), // 10
+				new HarvestResource( 90.0, 40.0, 140.0, "Vous minez quelques minerais d'Eclarium et les déposez dans votre sac.", typeof( EclariumOre ) ), // 11
+				new HarvestResource( 100.0, 50.0, 150.0, "Vous minez quelques minerais de Venarium et les déposez dans votre sac.", typeof( VenariumOre ) ), // 12
+				new HarvestResource( 100.0, 50.0, 150.0, "Vous minez quelques minerais d'Athenium et les déposez dans votre sac.", typeof( AtheniumOre ) ), // 13
+				new HarvestResource( 100.0, 50.0, 150.0, "Vous minez quelques minerais d'Umbrarium et les déposez dans votre sac.", typeof( UmbrariumOre ) ), // 14
 
                 new HarvestResource( 00.0,  -100.0, 40.0, "Vous coupez quelques buches d'Érables et les déposez dans votre sac.", typeof( Log ) ), // 15
                 new HarvestResource( 20.0,  -90.0, 50.0, "Vous coupez quelques buches de Pin et les déposez dans votre sac.", typeof( PinLog ) ), // 16

@@ -1076,20 +1076,20 @@ namespace Server.Items
 
                 switch (m_Resource)
                 {
-                    case CraftResource.Cuivre: ar += 0; break;
-                    case CraftResource.Bronze: ar += 0; break;
-                    case CraftResource.Acier: ar += 0; break;
-                    case CraftResource.Argent: ar += 1; break;
-                    case CraftResource.Or: ar += 1; break;
-                    case CraftResource.Mytheril: ar += 1; break;
-                    case CraftResource.Luminium: ar += 2; break;
-                    case CraftResource.Obscurium: ar += 2; break;
-                    case CraftResource.Mystirium: ar += 2; break;
-                    case CraftResource.Dominium: ar += 2; break;
-                    case CraftResource.Eclarium: ar += 2; break;
-                    case CraftResource.Venarium: ar += 3; break;
-                    case CraftResource.Athenium: ar += 3; break;
-                    case CraftResource.Umbrarium: ar += 4; break;
+                    case CraftResource.Cuivre: ar += 1; break;
+                    case CraftResource.Bronze: ar += 1; break;
+                    case CraftResource.Acier: ar += 2; break;
+                    case CraftResource.Argent: ar += 2; break;
+                    case CraftResource.Or: ar += 2; break;
+                    case CraftResource.Mytheril: ar += 3; break;
+                    case CraftResource.Luminium: ar += 3; break;
+                    case CraftResource.Obscurium: ar += 3; break;
+                    case CraftResource.Mystirium: ar += 4; break;
+                    case CraftResource.Dominium: ar += 4; break;
+                    case CraftResource.Venarium: ar += 4; break;
+                    case CraftResource.Eclarium: ar += 5; break;
+                    case CraftResource.Athenium: ar += 5; break;
+                    case CraftResource.Umbrarium: ar += 5; break;
 
                     case CraftResource.NordiqueLeather: ar += 2; break;
                     case CraftResource.DesertiqueLeather: ar += 2; break;

@@ -290,20 +290,20 @@ namespace Server.Items
 					switch ( m_Ore.Resource )
 					{
 						default: difficulty = 0.0; break;
-						case CraftResource.Cuivre: difficulty = 15.0; break;
-						case CraftResource.Bronze: difficulty = 20.0; break;
-						case CraftResource.Acier: difficulty = 25.0; break;
-						case CraftResource.Argent: difficulty = 30.0; break;
-						case CraftResource.Or: difficulty = 45.0; break;
-						case CraftResource.Mytheril: difficulty = 50.0; break;
-						case CraftResource.Luminium: difficulty = 55.0; break;
-						case CraftResource.Obscurium: difficulty = 65.0; break;
-                        case CraftResource.Mystirium: difficulty = 70.0; break;
-                        case CraftResource.Dominium: difficulty = 70.0; break;
-                        case CraftResource.Eclarium: difficulty = 85.0; break;
-                        case CraftResource.Venarium: difficulty = 85.0; break;
-                        case CraftResource.Athenium: difficulty = 99.0; break;
-                        case CraftResource.Umbrarium: difficulty = 99.0; break;
+						case CraftResource.Cuivre: difficulty = 40.0; break;
+						case CraftResource.Bronze: difficulty = 40.0; break;
+						case CraftResource.Acier: difficulty = 60.0; break;
+						case CraftResource.Argent: difficulty = 60.0; break;
+						case CraftResource.Or: difficulty = 60.0; break;
+						case CraftResource.Mytheril: difficulty = 80.0; break;
+						case CraftResource.Luminium: difficulty = 80.0; break;
+						case CraftResource.Obscurium: difficulty = 80.0; break;
+                        case CraftResource.Mystirium: difficulty = 90.0; break;
+                        case CraftResource.Dominium: difficulty = 90.0; break;
+                        case CraftResource.Venarium: difficulty = 90.0; break;
+                        case CraftResource.Eclarium: difficulty = 100.0; break;
+                        case CraftResource.Athenium: difficulty = 100.0; break;
+                        case CraftResource.Umbrarium: difficulty = 100.0; break;
 					}
 
 					double minSkill = difficulty - 25.0;
