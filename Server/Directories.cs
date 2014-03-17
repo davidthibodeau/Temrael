@@ -6,11 +6,11 @@ namespace Server
     public class Directories
     {
         public static readonly string saves = Path.Combine(Core.BaseDirectory, "Saves");
-        public static readonly string backups = Path.Combine(Core.BaseDirectory, "Backups");
-        public static readonly string logs = Path.Combine(backups, "Logs");
-        public static readonly string errors = Path.Combine(backups, "Errors");
-        public static readonly string docs = Path.Combine(backups, "Docs");
-        public static readonly string bsaves = Path.Combine(backups, "Saves");
+        public static readonly string bsaves = Path.Combine(Core.BaseDirectory, "Backups");
+        public static readonly string logging = Path.Combine(Core.BaseDirectory, "Logging");
+        public static readonly string logs = Path.Combine(logging, "Logs");
+        public static readonly string errors = Path.Combine(logging, "Errors");
+        public static readonly string docs = Path.Combine(logging, "Docs");
         public static readonly string exceptions = Path.Combine(errors, "Exceptions");
 
         public static string Today { get { return FormatDay(DateTime.Now); } }
@@ -19,7 +19,7 @@ namespace Server
 
         public static void Configure()
         {
-            EnsureDirectory(backups);
+            EnsureDirectory(logging);
             EnsureDirectory(logs);
             EnsureDirectory(errors);
             EnsureDirectory(docs);

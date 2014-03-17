@@ -80,7 +80,6 @@
   -->
   <ItemGroup>
     <Compile Include=".\**\*.cs" />
-    <Compile Include="Directories.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="runuo.ico" />

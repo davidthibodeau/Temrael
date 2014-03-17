@@ -2380,10 +2380,10 @@ namespace Server.Mobiles
             if (from == this)
             {
                 //Console.WriteLine("Skills test");
-                //if ((this.m_SessionStart + TimeSpan.FromSeconds(10.0)) > DateTime.Now) return;
+                if ((this.SessionStart + TimeSpan.FromSeconds(2.0)) > DateTime.Now) return;
                 //from.CloseAllGumps();//optional
                 if (from is TMobile)
-                    from.SendGump(new CompetenceGump(((TMobile)from), Server.Gumps.CompetenceGump.CompDomaines.Aucun, false));//replace with your gump
+                    from.SendGump(new CompetenceGump(((TMobile)from), CompetenceGump.CompDomaines.Aucun, false));//replace with your gump
                 //base.OnSkillsQuery(from);
             }
             else
