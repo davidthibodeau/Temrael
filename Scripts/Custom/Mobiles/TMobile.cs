@@ -239,7 +239,7 @@ namespace Server.Mobiles
         //        {
         //            if (!(m.X < 6082 && m.X > 6053 && m.Y < 4064 && m.Y > 4011))
         //            {
-        //                if(m.Backpack != null)
+        //                if (m.Backpack != null)
         //                    m.Backpack.DropItem(new Gold(2000));
         //            }
         //        }
