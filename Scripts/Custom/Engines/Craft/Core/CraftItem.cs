@@ -1171,19 +1171,19 @@ namespace Server.Engines.Craft
                 switch (name)
                 {
                     case "CuivreIngot": skill += 5.0; break;
-                    case "BronzeIngot": skill += 10.0; break;
-                    case "AcierIngot": skill += 15.0; break;
-                    case "ArgentIngot": skill += 20.0; break;
-                    case "OrIngot": skill += 25.0; break;
-                    case "MytherilIngot": skill += 30.0; break;
-                    case "LuminiumIngot": skill += 35.0; break;
-                    case "ObscuriumIngot": skill += 40.0; break;
-                    case "MystiriumIngot": skill += 45.0; break;
-                    case "DominiumIngot": skill += 50.0; break;
-                    case "EclariumIngot": skill += 55.0; break;
-                    case "VenariumIngot": skill += 60.0; break;
-                    case "AtheniumIngot": skill += 65.0; break;
-                    case "UmbrariumIngot": skill += 70.0; break;
+                    case "BronzeIngot": skill += 5.0; break;
+                    case "AcierIngot": skill += 10.0; break;
+                    case "ArgentIngot": skill += 10.0; break;
+                    case "OrIngot": skill += 10.0; break;
+                    case "MytherilIngot": skill += 15.0; break;
+                    case "LuminiumIngot": skill += 15.0; break;
+                    case "ObscuriumIngot": skill += 15.0; break;
+                    case "MystiriumIngot": skill += 20.0; break;
+                    case "DominiumIngot": skill += 20.0; break;
+                    case "EclariumIngot": skill += 25.0; break;
+                    case "VenariumIngot": skill += 20.0; break;
+                    case "AtheniumIngot": skill += 25.0; break;
+                    case "UmbrariumIngot": skill += 25.0; break;
                 }
 
                 return skill;
