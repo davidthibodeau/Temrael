@@ -66,7 +66,7 @@ namespace Server.Spells.Seventh
 
                         foreach (Mobile m in eable)
                         {
-                            if (SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false))
+                            if (Caster != m && SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false))
                             {
                                 if (party != null && party.Count > 0)
                                 {
