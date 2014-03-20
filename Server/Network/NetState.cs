@@ -642,7 +642,7 @@ namespace Server.Network {
                 using (StreamWriter op =
                     new StreamWriter(Path.Combine(Directories.errors, "null_send.log"), true))
                 {
-                    op.WriteLine("{0} Client: {1}: null buffer send, disconnecting...", DateTime.Now, this);
+                    op.WriteLine("{0} Client: {1}: null buffer send for packet {2}, disconnecting...", DateTime.Now, this, p.PacketID);
                     op.WriteLine(new System.Diagnostics.StackTrace(true));
                 }
 				Dispose();

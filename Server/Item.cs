@@ -1246,7 +1246,7 @@ namespace Server
                         if (m_Item == i) found = true;
                     }
                 }
-                if (!m_From.InRange(m_Item, 1) || found)
+                if (!m_From.InRange(m_Item, 1) && !found)
                 {
                     m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir décrire un objet.");
                     return;
