@@ -176,9 +176,9 @@ namespace Server.SkillHandlers
             if (BruitSpell.m_BruitTable.Contains(from))
                 bonus += (double)BruitSpell.m_BruitTable[from];
 
-			from.CheckSkill( SkillName.Poursuite, 21.1 - bonus, 100.0 - bonus ); // Passive gain
+            from.CheckSkill(SkillName.Poursuite, 21.1 - bonus, 100.0 - bonus); // Passive gain
 
-			int range = 10 + (int)(from.Skills[SkillName.Poursuite].Value / 10) + (int)bonus;
+            int range = 10 + (int)(from.Skills[SkillName.Poursuite].Value / 3) + (int)bonus;
 
 			List<Mobile> list = new List<Mobile>();
 
@@ -210,39 +210,27 @@ namespace Server.SkillHandlers
 		// Tracking players uses tracking and detect hidden vs. hiding and stealth 
 		private static bool CheckDifficulty( Mobile from, Mobile m )
 		{
-			if ( !Core.AOS || !m.Player )
-				return true;
-
-
-
-			int tracking = from.Skills[SkillName.Poursuite].Fixed;	
+    		int tracking = from.Skills[SkillName.Poursuite].Fixed;	
 			int detectHidden = from.Skills[SkillName.Detection].Fixed;
-
-			if( Core.ML && m.Race == Race.Elf )
-				tracking /= 2; //The 'Guide' says that it requires twice as Much tracking SKILL to track an elf.  Not the total difficulty to track.
 
 			int hiding = m.Skills[SkillName.Discretion].Fixed;
 			int stealth = m.Skills[SkillName.Infiltration].Fixed;
 			int divisor = hiding + stealth;
 
-			// Necromancy forms affect tracking difficulty 
-			if ( TransformationSpellHelper.UnderTransformation( m, typeof( HorrificBeastSpell ) ) )
-				divisor -= 200;
-			else if ( TransformationSpellHelper.UnderTransformation( m, typeof( VampiricEmbraceSpell ) ) && divisor < 500 )
-				divisor = 500;
-			else if ( TransformationSpellHelper.UnderTransformation( m, typeof( WraithFormSpell ) ) && divisor <= 2000 )
-				divisor += 200;
+            // Necromancy forms affect tracking difficulty 
+            if (TransformationSpellHelper.UnderTransformation(m, typeof(HorrificBeastSpell)))
+                divisor -= 200;
+            else if (TransformationSpellHelper.UnderTransformation(m, typeof(VampiricEmbraceSpell)) && divisor < 500)
+                divisor = 500;
+            else if (TransformationSpellHelper.UnderTransformation(m, typeof(WraithFormSpell)) && divisor <= 2000)
+                divisor += 200;
 
 			int chance;
-			if ( divisor > 0 )
-			{
-				if ( Core.SE )
-					chance = 50 * (tracking * 2 + detectHidden) / divisor;
-				else
-					chance = 50 * (tracking + detectHidden + 10 * Utility.RandomMinMax( 1, 20 )) / divisor;
-			}
-			else
-				chance = 100;
+
+            if (divisor > 0)
+                chance = 50 * (tracking * 2 + detectHidden) / divisor;
+            else
+                chance = 100;
 
 			return chance > Utility.Random( 100 );
 		}
