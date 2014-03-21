@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Canard()
             : base(AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
-            Name = "a chicken";
+            Name = "Canard";
             Body = 0x72;
             BaseSoundID = 0x6E;
             Hue = 2053;
