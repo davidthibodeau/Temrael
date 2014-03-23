@@ -1746,114 +1746,31 @@ namespace Server.Gumps
                     }
                     break;
                 case 421:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        m_SelectedPlayer.ListCote.Add(1);
-                        if (m_SelectedPlayer.ListCote.Count > 5)
-                            m_SelectedPlayer.ListCote.RemoveAt(0);
-                        m_SelectedPlayer.LastCotation = DateTime.Now;
-                        from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                    }
+                    AttribuerCote(from, 1);
                     break;
                 case 422:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        m_SelectedPlayer.ListCote.Add(2);
-                        if (m_SelectedPlayer.ListCote.Count > 5)
-                            m_SelectedPlayer.ListCote.RemoveAt(0);
-                        m_SelectedPlayer.LastCotation = DateTime.Now;
-                        from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                    }
+                    AttribuerCote(from, 2);
                     break;
                 case 423:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        m_SelectedPlayer.ListCote.Add(3);
-                        if (m_SelectedPlayer.ListCote.Count > 5)
-                            m_SelectedPlayer.ListCote.RemoveAt(0);
-                        m_SelectedPlayer.LastCotation = DateTime.Now;
-                        from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                    }
+                    AttribuerCote(from, 3);
                     break;
                 case 425:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        m_SelectedPlayer.ListCote.Add(4);
-                        if (m_SelectedPlayer.ListCote.Count > 5)
-                            m_SelectedPlayer.ListCote.RemoveAt(0);
-                        m_SelectedPlayer.LastCotation = DateTime.Now;
-                        from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                    }
+                    AttribuerCote(from, 4);
                     break;
                 case 426:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        m_SelectedPlayer.ListCote.Add(5);
-                        if (m_SelectedPlayer.ListCote.Count > 5)
-                            m_SelectedPlayer.ListCote.RemoveAt(0);
-                        m_SelectedPlayer.LastCotation = DateTime.Now;
-                        from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                    }
+                    AttribuerCote(from, 5);
                     break;
                 case 427:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        if (m_SelectedPlayer.NextFiole < DateTime.Now)
-                        {
-                            m_SelectedPlayer.Backpack.AddItem(new FioleNoir());
-                            m_SelectedPlayer.NextFiole = DateTime.Now.AddDays(1);
-                            from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                        }
-                        else
-                        {
-                            m_SelectedPlayer.SendMessage("Le joueur a recus une fiole dans les dernieres 24 heures.");
-                        }
-                    }
+                    DonnerFiole(from, new FioleNoir());
                     break;
                 case 428:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        if (m_SelectedPlayer.NextFiole < DateTime.Now)
-                        {
-                            m_SelectedPlayer.Backpack.AddItem(new FioleRouge());
-                            m_SelectedPlayer.NextFiole = DateTime.Now.AddDays(1);
-                            from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                        }
-                        else
-                        {
-                            m_SelectedPlayer.SendMessage("Le joueur a recus une fiole dans les dernieres 24 heures.");
-                        }
-                    }
+                    DonnerFiole(from, new FioleRouge());
                     break;
                 case 429:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        if (m_SelectedPlayer.NextFiole < DateTime.Now)
-                        {
-                            m_SelectedPlayer.Backpack.AddItem(new FioleVerte());
-                            m_SelectedPlayer.NextFiole = DateTime.Now.AddDays(1);
-                            from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                        }
-                        else
-                        {
-                            m_SelectedPlayer.SendMessage("Le joueur a recus une fiole dans les dernieres 24 heures.");
-                        }
-                    }
+                    DonnerFiole(from, new FioleVerte());
                     break;
                 case 430:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        if (m_SelectedPlayer.NextFiole < DateTime.Now)
-                        {
-                            m_SelectedPlayer.Backpack.AddItem(new FioleBleue());
-                            m_SelectedPlayer.NextFiole = DateTime.Now.AddDays(1);
-                            from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                        }
-                        else
-                        {
-                            m_SelectedPlayer.SendMessage("Le joueur a recus une fiole dans les dernieres 24 heures.");
-                        }
-                    }
+                    DonnerFiole(from, new FioleBleue());
                     break;
             }
 
@@ -2988,6 +2905,39 @@ namespace Server.Gumps
 					online = true;
 			}
 		}
+
+        private void AttribuerCote(Mobile from, int cote)
+        {
+            if (!(m_SelectedPlayer == null))
+            {
+                m_SelectedPlayer.ListCote.Add(cote);
+                if (m_SelectedPlayer.ListCote.Count > 5)
+                    m_SelectedPlayer.ListCote.RemoveAt(0);
+                m_SelectedPlayer.LastCotation = DateTime.Now;
+                CommandLogging.WriteLine(from, "{0} a attribué une cote de {1} à {2}.", 
+                    CommandLogging.Format(from), cote, CommandLogging.Format(m_SelectedPlayer));
+                from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
+            }
+        }
+
+        private void DonnerFiole(Mobile from, BaseFiole fiole)
+        {
+            if (!(m_SelectedPlayer == null))
+            {
+                if (m_SelectedPlayer.NextFiole < DateTime.Now)
+                {
+                    m_SelectedPlayer.Backpack.AddItem(fiole);
+                    m_SelectedPlayer.NextFiole = DateTime.Now.AddDays(1);
+                    CommandLogging.WriteLine(from, "{0} a donné une fiole de {1} exp à {2}.", 
+                        CommandLogging.Format(from), fiole.Exp,CommandLogging.Format(m_SelectedPlayer));
+                    from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
+                }
+                else
+                {
+                    m_SelectedPlayer.SendMessage("Le joueur a recus une fiole dans les dernieres 24 heures.");
+                }
+            }
+        }
 
 		private class AddCommentPrompt : Prompt
 		{
