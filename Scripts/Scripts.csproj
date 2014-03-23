@@ -1412,6 +1412,7 @@
     <Compile Include=".\Custom\Races\RaceNordique.cs" />
     <Compile Include=".\Custom\Races\RaceOrcish.cs" />
     <Compile Include=".\Custom\Races\RaceTieffelin.cs" />
+    <Compile Include="Custom\Commandes\BancInvisible.cs" />
     <Compile Include="Misc\AbuseLogging.cs" />
     <Compile Include="Misc\ExceptionLogging.cs" />
     <Compile Include="Regions\CommerceRegion.cs" />
