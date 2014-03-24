@@ -293,7 +293,7 @@ namespace Server.Misc
                 if (seasonHasChanged)
                 {
                     if (seasonPacket == null)
-                        seasonPacket = new SeasonChange(Map.Felucca.Season, false);
+                        seasonPacket = Packet.Acquire(new SeasonChange(Map.Felucca.Season, false));
 
                     ns.Send(seasonPacket);
 
