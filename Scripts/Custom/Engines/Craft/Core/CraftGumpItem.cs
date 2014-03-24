@@ -317,13 +317,20 @@ namespace Server.Engines.Craft
 				chance = 0.0;
 			else if ( chance > 1.0 )
 				chance = 1.0;
+            try
+            {
+                int chan = Convert.ToInt32(chance * 100);
 
-            int chan = Convert.ToInt32(chance * 100);
-
-            AddHtml(170, 80, 300, 20, "<h3><basefont color=#FFFFFF>Chance de Succès :<basefont></h3>", false, false);
-            AddHtml(480, 80, 300, 20, "<h3><basefont color=#FFFFFF>" + chan.ToString() + "%<basefont></h3>", false, false);
-			//AddHtmlLocalized( 170, 80, 250, 18, 1044057, LabelColor, false, false ); // Success Chance:
-			//AddLabel( 430, 80, LabelHue, String.Format( "{0:F1}%", chance * 100 ) );
+                AddHtml(170, 80, 300, 20, "<h3><basefont color=#FFFFFF>Chance de Succès :<basefont></h3>", false, false);
+                AddHtml(480, 80, 300, 20, "<h3><basefont color=#FFFFFF>" + chan.ToString() + "%<basefont></h3>", false, false);
+                //AddHtmlLocalized( 170, 80, 250, 18, 1044057, LabelColor, false, false ); // Success Chance:
+                //AddLabel( 430, 80, LabelHue, String.Format( "{0:F1}%", chance * 100 ) );
+            }
+            catch (OverflowException e)
+            {
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(), 
+                    String.Format("La valeur convertie en int était {0}", chance * 100));
+            }
 
 			if ( m_ShowExceptionalChance )
 			{
