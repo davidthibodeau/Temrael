@@ -55,8 +55,13 @@ namespace Server.Systemes
                     if (mj.IndexPersonnage >= acc.Length)
                         from.SendMessage("Il n'y a aucun personnage qui reçoit l'expérience en ce moment");
                     else
-                        from.SendMessage("Le personnage qui reçoit l'expérience est : " + acc[mj.IndexPersonnage].Name);
-                    from.SendMessage("Veuillez indiquer l'index du personnage qui recevra l'expérience.");
+                    {
+                        if (acc[mj.IndexPersonnage] != null)
+                            from.SendMessage("Le personnage qui reçoit l'expérience est : " + acc[mj.IndexPersonnage].Name);
+                        else
+                            from.SendMessage("Aucun personnage ne reçoit l'expérience.");
+
+                    } from.SendMessage("Veuillez indiquer l'index du personnage qui recevra l'expérience.");
                     for (int i = 0; i < acc.Length; i++)
                     {
                         if(acc[i] != null)
@@ -218,7 +223,11 @@ namespace Server.Systemes
             public void PayerXP()
             {
                 TMobile pj = (TMobile)m_AccountJoueur[m_IndexPersonnage];
-
+                if (pj == null)
+                {
+                    WriteLine(String.Format("{0} n'a pas de personnage valide associé pour y déposer l'expérience.", m_Nom));
+                    return;
+                }
                 int maxXP = 0;
                 switch (XP.GetCote(pj))
                 {
