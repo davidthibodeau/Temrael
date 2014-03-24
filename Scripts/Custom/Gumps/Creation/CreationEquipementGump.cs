@@ -194,33 +194,29 @@ namespace Server.Gumps
             //AddBackground(140, 0, 585, 393, 5054);
             AddBackground(100, 350, 545, 298, 3500);
             AddBackground(295, 386, 337, 225, 3000);
-            AddHtml(123, 360, 565, 18, "<h3><basefont color=#025a>Équipement de Départ<basefont></h3>", false, false); // <center>VENDOR CUSTOMIZATION MENU</center>
-            AddHtml(150, 615, 150, 18, "<h3><basefont color=#025a>Ajouter<basefont></h3>", false, false); // OKAY
-            AddButton(115, 615, 4005, 4007, 8, GumpButtonType.Reply, 0);
+            AddHtml(123, 365, 565, 18, "<h3><basefont color=#025a>Équipement de Départ<basefont></h3>", false, false); // <center>VENDOR CUSTOMIZATION MENU</center>
+            AddHtml(150, 611, 150, 18, "<h3><basefont color=#025a>Ajouter<basefont></h3>", false, false); // OKAY
+            AddButton(115, 610, 4005, 4007, 8, GumpButtonType.Reply, 0);
             //AddHtmlLocalized(450, 615, 150, 18, 1011012, false, false); // CANCEL
             //AddButton(415, 615, 4005, 4007, 0, GumpButtonType.Reply, 0);
 
             y = 385;
+            Races race = Races.Aucun;
+            if (from.Creation.race == Races.Tieffelin || from.Creation.race == Races.Aasimar)
+                race = from.Creation.secrete;
+            else
+                race = from.Creation.race;
             for (int i = 0; i < Categories.Length; i++)
             {
                 CustomCategory cat = (CustomCategory)Categories[i];
-                if (from.Creation.race == Races.Tieffelin || from.Creation.race == Races.Aasimar)
+
+                if (((cat.Race == race) || cat.Race == Races.Aucun) && (cat.Archetype == from.Creation.classe || cat.Archetype == ClasseType.None))
                 {
-                    if (((cat.Race == from.Creation.secrete) || cat.Race == Races.Aucun) && (cat.Archetype == from.Creation.classe || cat.Archetype == ClasseType.None))
-                    {
-                        AddHtml(110, y, 150, 25, "<h3><basefont color=#025a>" + cat.Name + "<basefont></h3>", true, false);
-                        AddButton(260, y, 4005, 4007, 0, GumpButtonType.Page, i + 1);
-                        y += 25;
-                    }
-                }
-                else
-                {
-                    if (((cat.Race == from.Creation.race) || cat.Race == Races.Aucun) && (cat.Archetype == from.Creation.classe || cat.Archetype == ClasseType.None))
-                    {
-                        AddHtml(110, y, 150, 25, "<h3><basefont color=#025a>" + cat.Name + "<basefont></h3>", true, false);
-                        AddButton(260, y, 4005, 4007, 0, GumpButtonType.Page, i + 1);
-                        y += 25;
-                    }
+                    AddHtml(110, y, 150, 25, "<h3><basefont color=#025a>" + cat.Name + "<basefont></h3>", true, false);
+                    AddButton(260, y, 4005, 4007, 0, GumpButtonType.Page, i + 1);
+                    y += 25;
+
+
                 }
             }
 
@@ -229,18 +225,21 @@ namespace Server.Gumps
                 CustomCategory cat = (CustomCategory)Categories[i];
                 AddPage(i + 1);
 
-                for (int c = 0; c < cat.Entries.Length; c++)
+                if (((cat.Race == race) || cat.Race == Races.Aucun) && (cat.Archetype == from.Creation.classe || cat.Archetype == ClasseType.None))
                 {
-                    CustomItem entry = (CustomItem)cat.Entries[c];
-                    x = 298 + (c % 3) * 129;
-                    y = 388 + (c / 3) * 67;
+                    for (int c = 0; c < cat.Entries.Length; c++)
+                    {
+                        CustomItem entry = (CustomItem)cat.Entries[c];
+                        x = 298 + (c % 3) * 129;
+                        y = 388 + (c / 3) * 67;
 
-                    AddHtml(x, y, 100, entry.LongText ? 36 : 18, "<h3><basefont color=#5A4A31>" + entry.Name + "<basefont></h3>", false, false);
+                        AddHtml(x, y, 100, entry.LongText ? 36 : 18, "<h3><basefont color=#5A4A31>" + entry.Name + "<basefont></h3>", false, false);
 
-                    if (entry.ArtNumber != 0)
-                        AddItem(x + 20, y + 25, entry.ArtNumber);
+                        if (entry.ArtNumber != 0)
+                            AddItem(x + 20, y + 25, entry.ArtNumber);
 
-                    AddRadio(x, y + (entry.LongText ? 40 : 20), 210, 211, false, (c << 8) + i);
+                        AddRadio(x, y + (entry.LongText ? 40 : 20), 210, 211, false, (c << 8) + i);
+                    }
                 }
 
                 /*if (cat.CanDye)
