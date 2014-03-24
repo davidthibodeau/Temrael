@@ -328,7 +328,7 @@ namespace Server.Engines.Craft
             }
             catch (OverflowException e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(), 
+                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true), 
                     String.Format("La valeur convertie en int était {0}", chance * 100));
             }
 

@@ -1043,6 +1043,7 @@ namespace Server.Network {
 
                     op.WriteLine(ex);
 
+                    op.WriteLine(new System.Diagnostics.StackTrace(1, true));
                     op.WriteLine();
                     op.WriteLine();
                 }
