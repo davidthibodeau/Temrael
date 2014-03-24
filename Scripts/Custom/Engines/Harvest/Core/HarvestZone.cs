@@ -84,8 +84,8 @@ namespace Server.Engines.Harvest
 				new HarvestResource( 80.0, 30.0, 130.0, "Vous minez quelques minerais d'Obscurium et les déposez dans votre sac.", typeof( ObscuriumOre ) ), // 8
 				new HarvestResource( 90.0, 40.0, 140.0, "Vous minez quelques minerais de Mystirium et les déposez dans votre sac.", typeof( MystiriumOre ) ), // 9
 				new HarvestResource( 90.0, 40.0, 140.0, "Vous minez quelques minerais de Dominium et les déposez dans votre sac.", typeof( DominiumOre ) ), // 10
-				new HarvestResource( 90.0, 40.0, 140.0, "Vous minez quelques minerais d'Eclarium et les déposez dans votre sac.", typeof( EclariumOre ) ), // 11
-				new HarvestResource( 100.0, 50.0, 150.0, "Vous minez quelques minerais de Venarium et les déposez dans votre sac.", typeof( VenariumOre ) ), // 12
+				new HarvestResource( 100.0, 50.0, 150.0, "Vous minez quelques minerais d'Eclarium et les déposez dans votre sac.", typeof( EclariumOre ) ), // 11
+				new HarvestResource( 90.0, 40.0, 140.0, "Vous minez quelques minerais de Venarium et les déposez dans votre sac.", typeof( VenariumOre ) ), // 12
 				new HarvestResource( 100.0, 50.0, 150.0, "Vous minez quelques minerais d'Athenium et les déposez dans votre sac.", typeof( AtheniumOre ) ), // 13
 				new HarvestResource( 100.0, 50.0, 150.0, "Vous minez quelques minerais d'Umbrarium et les déposez dans votre sac.", typeof( UmbrariumOre ) ), // 14
 

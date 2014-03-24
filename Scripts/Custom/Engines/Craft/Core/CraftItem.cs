@@ -1831,7 +1831,7 @@ namespace Server.Engines.Craft
 			}
 			else
 			{
-                ConsumeType consumeType = (UseAllRes ? ConsumeType.All : ConsumeType.Half);
+                ConsumeType consumeType = (UseAllRes ? ConsumeType.Half : ConsumeType.Half);
 				int resHue = 0;
 				int maxAmount = 0;
 
