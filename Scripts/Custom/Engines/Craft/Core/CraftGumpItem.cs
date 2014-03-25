@@ -329,7 +329,7 @@ namespace Server.Engines.Craft
             catch (OverflowException e)
             {
                 Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true), 
-                    String.Format("La valeur convertie en int était {0}", chance * 100));
+                    String.Format("La valeur convertie en int était {0}. L'item était {1}", chance * 100, m_CraftItem.ItemType.ToString()));
             }
 
 			if ( m_ShowExceptionalChance )
@@ -338,13 +338,20 @@ namespace Server.Engines.Craft
 					excepChance = 0.0;
 				else if( excepChance > 1.0 )
 					excepChance = 1.0;
+                try
+                {
+                    int exept = Convert.ToInt32(excepChance * 100);
 
-                int exept = Convert.ToInt32(excepChance * 100);
-
-                AddHtml(170, 100, 300, 20, "<h3><basefont color=#FFFFFF>Chance d'Object Exceptionel:<basefont></h3>", false, false);
-                AddHtml(480, 100, 300, 20, "<h3><basefont color=#FFFFFF>" + exept.ToString() + "%<basefont></h3>", false, false);
-				//AddHtmlLocalized( 170, 100, 250, 18, 1044058, 32767, false, false ); // Exceptional Chance:
-				//AddLabel( 430, 100, LabelHue, String.Format( "{0:F1}%", excepChance * 100 ) );
+                    AddHtml(170, 100, 300, 20, "<h3><basefont color=#FFFFFF>Chance d'Object Exceptionel:<basefont></h3>", false, false);
+                    AddHtml(480, 100, 300, 20, "<h3><basefont color=#FFFFFF>" + exept.ToString() + "%<basefont></h3>", false, false);
+                    //AddHtmlLocalized( 170, 100, 250, 18, 1044058, 32767, false, false ); // Exceptional Chance:
+                    //AddLabel( 430, 100, LabelHue, String.Format( "{0:F1}%", excepChance * 100 ) );
+                }
+                catch (OverflowException e)
+                {
+                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true),
+                        String.Format("La valeur convertie en int était {0}. L'item était {1}", excepChance * 100, m_CraftItem.ItemType.ToString()));
+                }
 			}
 		}
 
