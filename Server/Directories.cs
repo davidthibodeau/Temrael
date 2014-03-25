@@ -24,7 +24,6 @@ namespace Server
             EnsureDirectory(errors);
             EnsureDirectory(docs);
             EnsureDirectory(bsaves);
-            EnsureDirectory(exceptions);
         }
 
         public static void EnsureDirectory( string path )

@@ -14,7 +14,7 @@ namespace Server.Misc
 
         public static void WriteLine(Exception e, StackTrace catcher, string infos)
         {
-            string path = Directories.exceptions;
+            string path = Directories.AppendPath(Directories.errors, "Exceptions");
             string filepath = Path.Combine(path, String.Format("{0}.log", Directories.Today));
 
             try

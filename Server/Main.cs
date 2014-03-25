@@ -482,6 +482,7 @@ namespace Server
 					return;
 			}
 
+            Directories.Configure();
 			ScriptCompiler.Invoke( "Configure" );
 			
 			Region.Load();
