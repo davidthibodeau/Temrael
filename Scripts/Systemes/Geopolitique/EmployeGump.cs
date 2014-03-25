@@ -26,8 +26,8 @@ namespace Server.Systemes.Geopolitique
             this.Resizable = false;
 
             AddPage(0);
-            AddBackground(31, 48, 416, 238, 9250);
-            AddBackground(39, 56, 400, 222, 3500);
+            AddBackground(31, 48, 416, 268, 9250);
+            AddBackground(39, 56, 400, 252, 3500);
             AddLabel(176, 75, 1301, @"Fiche d'Employé");
 
 
@@ -48,10 +48,15 @@ namespace Server.Systemes.Geopolitique
             AddLabel(210, 200, 1301, e.Total.ToString("N", Geopolitique.NFI));
             AddButton(383, 199, 4005, 4006, (int)Buttons.ModifierDu, GumpButtonType.Reply, 0);
 
+            AddLabel(82, 200, 1301, @"Dû non payé :");
+            AddLabel(210, 200, 1301, e.NonPaye.ToString("N", Geopolitique.NFI));
+            if(gestion)
+                AddButton(383, 199, 4029, 4030, (int)Buttons.PayerDu, GumpButtonType.Reply, 0);
+
             if (gestion)
             {
-                AddLabel(116, 230, 1301, @"Supprimer l'employé de la liste");
-                AddButton(314, 229, 4005, 4006, (int)Buttons.SupprimerEmploye, GumpButtonType.Reply, 0);
+                AddLabel(116, 260, 1301, @"Supprimer l'employé de la liste");
+                AddButton(314, 259, 4005, 4006, (int)Buttons.SupprimerEmploye, GumpButtonType.Reply, 0);
             }
         }
 
@@ -62,6 +67,7 @@ namespace Server.Systemes.Geopolitique
             ChangerTitre,
             ModifierPaie,
             ModifierDu,
+            PayerDu,
         }
 
 
@@ -78,7 +84,8 @@ namespace Server.Systemes.Geopolitique
                         break;
 
                     case (int)Buttons.SupprimerEmploye:
-
+                        tresorier.ReponseAuGump(from, "Êtes-vous certain de vouloir supprimer sa fiche d'employé?");
+                        from.Prompt = new SuppressionPrompt(tresorier, employe);
                         break;
 
                     case (int)Buttons.ChangerNom:
@@ -87,15 +94,20 @@ namespace Server.Systemes.Geopolitique
                         break;
 
                     case (int)Buttons.ChangerTitre:
-                            tresorier.ReponseAuGump(from, "Quel titre voulez-vous donner à " + employe.Nom + ".");
-                            from.Prompt = new ChangerTitrePrompt(tresorier, employe);
+                        tresorier.ReponseAuGump(from, "Quel titre voulez-vous donner à " + employe.Nom + ".");
+                        from.Prompt = new ChangerTitrePrompt(tresorier, employe);
                         break;
 
                     case (int)Buttons.ModifierPaie:
-
+                        tresorier.ReponseAuGump(from, "Veuillez indiquer le montant de la nouvelle paie");
+                        from.Prompt = new ModifierPaiePrompt(tresorier, employe);
                         break;
 
                     case (int)Buttons.ModifierDu:
+
+                        break;
+
+                    case (int)Buttons.PayerDu:
 
                         break;
                 }
@@ -103,6 +115,46 @@ namespace Server.Systemes.Geopolitique
             else if (info.ButtonID == (int)Buttons.ModifierDu)
             {
                 //Prompt pour la reclamation du du.
+            }
+        }
+
+        private class SuppressionPrompt : Prompt
+        {
+
+            private Employe employe;
+            private Tresorier tresorier;
+
+            public SuppressionPrompt(Tresorier t, Employe e)
+            {
+                employe = e;
+                tresorier = t;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                if (String.Equals(text, "oui", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    tresorier.ReponseAuGump(from, "Sa fiche est supprimée.");
+                    employe.APayer();
+                    tresorier.RemoveEmploye(employe.Personnage);
+                    from.SendGump(new TresorierGump(tresorier, from, 0));
+                }
+                else if (String.Equals(text, "non", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    tresorier.ReponseAuGump(from, "Sa fiche ne fut pas supprimée.");
+                    from.SendGump(new EmployeGump(tresorier, employe, true));
+                }
+                else
+                {
+                    tresorier.ReponseAuGump(from, "Je n'ai pas compris. Répondez oui ou non.");
+                    from.Prompt = new SuppressionPrompt(tresorier, employe);
+                }
+            }
+
+            public override void OnCancel(Mobile from)
+            {
+                tresorier.ReponseAuGump(from, "Sa fiche ne fut pas supprimée.");
+                from.SendGump(new EmployeGump(tresorier, employe, true));
             }
         }
 
@@ -136,7 +188,6 @@ namespace Server.Systemes.Geopolitique
             private Employe employe;
             private Tresorier tresorier;
 
-
             public ChangerTitrePrompt(Tresorier t, Employe e)
             {
                 employe = e;
@@ -147,6 +198,41 @@ namespace Server.Systemes.Geopolitique
             {
                 employe.Titre = text;
                 from.SendGump(new EmployeGump(tresorier, employe, true));
+            }
+
+            public override void OnCancel(Mobile from)
+            {
+                from.SendGump(new EmployeGump(tresorier, employe, true));
+            }
+        }
+
+
+        private class ModifierPaiePrompt : Prompt
+        {
+
+            private Employe employe;
+            private Tresorier tresorier;
+
+            public ModifierPaiePrompt(Tresorier t, Employe e)
+            {
+                employe = e;
+                tresorier = t;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                int montant;
+                if (Int32.TryParse(text, out montant))
+                {
+                    employe.APayer();
+                    employe.Paie = montant;
+                    from.SendGump(new EmployeGump(tresorier, employe, true));
+                }
+                else
+                {
+                    from.SendMessage("Vous devez indiquer un nombre");
+                    from.Prompt = new ModifierPaiePrompt(tresorier, employe);
+                }
             }
 
             public override void OnCancel(Mobile from)

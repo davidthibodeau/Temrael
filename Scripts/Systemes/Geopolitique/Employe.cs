@@ -12,6 +12,7 @@ namespace Server.Systemes.Geopolitique
         private string m_Titre; // Titre d'emploi
         private int m_Paie; // Montant par semaine
         private int m_Total; // Total du a l'employee
+        private int m_NonPaye; // Argent qui aurait du etre verse mais ne fut pas fait par manque de fonds
         private DateTime m_LastPaie; 
         private bool m_Removed; // Si l'employe fut retire de la liste mais possede toujours un montant a se faire payer.
         private List<string> m_Messages; // Messages du tresorier pour l'employe.
@@ -26,6 +27,8 @@ namespace Server.Systemes.Geopolitique
         public int Paie { get { return m_Paie; } set { m_Paie = value; } }
         [CommandProperty(AccessLevel.GameMaster, true)]
         public int Total { get { return m_Total; } set { m_Total = value; } }
+        [CommandProperty(AccessLevel.GameMaster, true)]
+        public int NonPaye { get { return m_NonPaye; } set { m_NonPaye = value; } }
         [CommandProperty(AccessLevel.GameMaster, true)]
         public DateTime LastPaie { get { return m_LastPaie; } }
         [CommandProperty(AccessLevel.GameMaster)]

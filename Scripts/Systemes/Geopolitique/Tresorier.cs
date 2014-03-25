@@ -24,6 +24,7 @@ namespace Server.Systemes.Geopolitique
     public class Tresorier : Mobile
     {
         private Mobile m_Gestionnaire; // Joueur qui controle la tresorerie
+        private string m_NomGestionnaire; // Nom utilise par le tresorier pour le personnage
         private Terre m_Terre; // null si pas lie a une terre 
         private string m_Etablissement; // Nom de la tresorerie
         private string m_Description; // Description dans le menu geopol
@@ -35,6 +36,8 @@ namespace Server.Systemes.Geopolitique
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Gestionnaire { get { return m_Gestionnaire; } set { m_Gestionnaire = value; } }
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string NomGestionnaire { get { return m_NomGestionnaire; } set { m_NomGestionnaire = value; } }
         public Terre Terre { get { return m_Terre; } set { m_Terre = value; } }
         [CommandProperty(AccessLevel.GameMaster)]
         public string Etablissement { get { return m_Etablissement; } set { m_Etablissement = value; } }
@@ -196,33 +199,29 @@ namespace Server.Systemes.Geopolitique
             if (from.AccessLevel > AccessLevel.Player)
             {
                 Fonds += montant;
+                ReponseAuGump(from, "Vous avez ajouté " + montant + " aux fonds.");
             }
             else
             {
-                Gold[] gold;
-                BankCheck[] checks;
+                Item[] gold;
+                Item[] checks;
 
-                gold = (Gold[])from.Backpack.FindItemsByType(typeof(Gold));
-                checks = (BankCheck[])from.Backpack.FindItemsByType(typeof(BankCheck));
+                gold = from.Backpack.FindItemsByType(typeof(Gold));
+                checks = from.Backpack.FindItemsByType(typeof(BankCheck));
 
                 int totalJoueur = 0;
                 for (int i = 0; i < checks.Length; i++)
                 {
-                    totalJoueur += checks[i].Worth;
+                    BankCheck check = (BankCheck)checks[i];
+                    totalJoueur += check.Worth;
                     if (totalJoueur >= montant)
                     {
                         int reste = totalJoueur - montant;
-                        if (reste == 0) { }
-                        else if (reste < 5000)
-                        {
-                            from.Backpack.DropItem(new Gold(reste));
-                        }
-                        else
-                        {
+                        if (reste > 0) 
                             from.Backpack.DropItem(new BankCheck(reste));
-                        }
+
                         Fonds += montant;
-                        for (int j = 0; j < i; j++)
+                        for (int j = 0; j <= i; j++)
                         {
                             checks[j].Delete();
                         }
@@ -236,16 +235,15 @@ namespace Server.Systemes.Geopolitique
                     if (totalJoueur >= montant)
                     {
                         int reste = totalJoueur - montant;
-                        if (reste == 0) { }
-                        else
-                        {
+                        if (reste > 0) 
                             from.Backpack.DropItem(new Gold(reste));
-                        }
+
+                        Fonds += montant;
                         for (int j = 0; j < checks.Length; j++)
                         {
                             checks[j].Delete();
                         }
-                        for (int j = 0; j < i; j++)
+                        for (int j = 0; j <= i; j++)
                         {
                             gold[j].Delete();
                         }
@@ -263,7 +261,10 @@ namespace Server.Systemes.Geopolitique
             {
                 ReponseAuGump(from, "Nous n'avons pas les fonds pour que vous puissez retirer " + montant + " pièces.");
                 return;
-            }  
+            }
+            from.Backpack.DropItem(new BankCheck(montant));
+            Fonds -= montant;
+            ReponseAuGump(from, String.Format("Vous avez retiré {0} aux fonds.", montant.ToString()));
         }
 
         public void AjouterMessage(string message)

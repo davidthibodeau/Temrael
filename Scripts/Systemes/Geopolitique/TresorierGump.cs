@@ -19,7 +19,7 @@ namespace Server.Systemes.Geopolitique
         {
             tresorier = tr;
             this.page = page;
-            
+
             this.Closable = true;
             this.Disposable = true;
             this.Dragable = true;
@@ -29,23 +29,23 @@ namespace Server.Systemes.Geopolitique
             AddBackground(31, 48, 416, 520, 9250);
             AddBackground(39, 56, 400, 504, 3500);
             AddLabel(206, 75, 1301, @"Trésorier");
-            
+
             AddLabel(81, 110, 1301, @"Etablissement :");
             AddLabel(210, 110, 1301, tresorier.Etablissement);
             AddButton(383, 109, 4005, 4006, (int)Buttons.ChangerNom, GumpButtonType.Reply, 0);
 
             AddLabel(81, 140, 1301, @"Gestionnaire :");
-            if(tresorier.Gestionnaire != null)
-                AddLabel(210, 140, 1301, tresorier.Gestionnaire.GetNameUseBy(from));
+            AddLabel(210, 140, 1301, tresorier.NomGestionnaire);
             AddButton(383, 139, 4005, 4006, (int)Buttons.ChangerGestionnaire, GumpButtonType.Reply, 0);
-            
+
             AddLabel(81, 170, 1301, @"Fonds :");
             AddLabel(210, 170, 1301, tresorier.Fonds.ToString("N", Geopolitique.NFI));
-            AddButton(383, 169, 4005, 4006, (int)Buttons.ModifierFonds, GumpButtonType.Reply, 0);
+            AddButton(343, 169, 4014, 4015, (int)Buttons.RetirerFonds, GumpButtonType.Reply, 0);
+            AddButton(383, 169, 4005, 4006, (int)Buttons.AjouterFonds, GumpButtonType.Reply, 0);
 
-            if(tresorier.Terre != null && tresorier.Terre.TresorierCount > 1)
+            if (tresorier.Terre != null && tresorier.Terre.TresorierCount > 1)
                 AddLabel(68, 200, 1301, @"Fonds partagés pour la terre de " + tresorier.Terre.Nom);
-            
+
             AddLabel(82, 240, 1301, @"Employés :");
 
             int basey = 271;
@@ -63,11 +63,11 @@ namespace Server.Systemes.Geopolitique
                 AddButton(387, basey + j * 30 - 1, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
             }
 
-            if((page + 1) * 5 < tresorier.EmployeCount)
+            if ((page + 1) * 5 < tresorier.EmployeCount)
                 AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Page, 0);
-            if(page > 0)
+            if (page > 0)
                 AddButton(61, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Page, 0);
-            
+
             AddButton(293, 439, 4005, 4006, (int)Buttons.AjouterEmploye, GumpButtonType.Reply, 0);
             AddLabel(148, 440, 1301, @"Ajouter un employé");
             AddImageTiled(67, 471, 342, 3, 96);
@@ -88,7 +88,8 @@ namespace Server.Systemes.Geopolitique
             PreviousPage,
             ChangerNom,
             ChangerGestionnaire,
-            ModifierFonds,
+            AjouterFonds,
+            RetirerFonds,
         }
 
 
@@ -97,63 +98,68 @@ namespace Server.Systemes.Geopolitique
             Mobile from = sender.Mobile;
 
             int button = info.ButtonID;
-            switch(button)
+            switch (button)
             {
                 case (int)Buttons.AjouterEmploye:
-                    //ajouter employer target
-					break;
-				
-				case (int)Buttons.AfficherJournal:
-				{
-                    //not implemented
-					break;
-				}
-				case (int)Buttons.AfficherTerre:
+                    tresorier.ReponseAuGump(from, "Veuillez indiquer l'employé que vous désirez ajouter au registre.");
+                    from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AjouterEmploye_OnTarget));
+                    break;
+
+                case (int)Buttons.AfficherJournal:
+                    {
+                        //not implemented
+                        break;
+                    }
+                case (int)Buttons.AfficherTerre:
                     from.SendGump(new GeopolGump(from, tresorier.Terre));
-					break;
+                    break;
 
-				case (int)Buttons.NextPage:
+                case (int)Buttons.NextPage:
                     from.SendGump(new TresorierGump(tresorier, from, page + 1));
-					break;
+                    break;
 
-				case (int)Buttons.PreviousPage:
+                case (int)Buttons.PreviousPage:
                     from.SendGump(new TresorierGump(tresorier, from, page - 1));
-					break;
+                    break;
 
-				case (int)Buttons.ChangerNom:
+                case (int)Buttons.ChangerNom:
                     from.SendMessage("Quel nom voulez-vous donner à notre organisation?");
                     from.Prompt = new ModifierNomPrompt(tresorier);
-					break;
+                    break;
 
-				case (int)Buttons.ChangerGestionnaire:
-				{
+                case (int)Buttons.ChangerGestionnaire:
                     if (from.AccessLevel == AccessLevel.Player && from != tresorier.Gestionnaire)
                         break;
-                    from.SendMessage("Veuillez choisir le nouveau gestionnaire");
+                    tresorier.ReponseAuGump(from, "Veuillez choisir le nouveau gestionnaire");
                     if (from == tresorier.Gestionnaire)
                         from.SendMessage("Veuillez prendre note que vous perdrez vos pouvoirs de gestionnaire.");
                     from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(ChangerGestionnaire_OnTarget));
-					break;
-				}
-				case (int)Buttons.ModifierFonds:
-				{
+                    break;
 
-					break;
-				}
+                case (int)Buttons.AjouterFonds:
+                    tresorier.ReponseAuGump(from, "Combien désirez-vous ajouter?");
+                    from.Prompt = new ModifierFondsPrompt(tresorier, true);
+                    break;
+
+                case (int)Buttons.RetirerFonds:
+                    tresorier.ReponseAuGump(from, "Combien désirez-vous retirer?");
+                    from.Prompt = new ModifierFondsPrompt(tresorier, false);
+                    break;
+
             }
             if (button >= 100 && button < 100 + tresorier.EmployeCount)
             {
                 from.SendGump(new EmployeGump(tresorier, tresorier[button - 100], true));
             }
-            
+
         }
 
         private void ChangerGestionnaire_OnTarget(Mobile from, object targeted)
         {
             if (targeted is TMobile)
             {
-                tresorier.Gestionnaire = (TMobile)targeted;
-                from.SendMessage("Le changement fut fait.");
+                tresorier.ReponseAuGump(from, "Quel est le nom de ce nouveau gestionnaire?");
+                from.Prompt = new NomGestionnairePrompt(tresorier, (Mobile)targeted);
             }
             else
             {
@@ -162,13 +168,38 @@ namespace Server.Systemes.Geopolitique
             }
         }
 
+        private class NomGestionnairePrompt : Prompt
+        {
+            private Tresorier tresorier;
+            private Mobile gestionnaire;
+
+            public NomGestionnairePrompt(Tresorier t, Mobile gest)
+            {
+                tresorier = t;
+                gestionnaire = gest;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                tresorier.Gestionnaire = gestionnaire;
+                tresorier.NomGestionnaire = text;
+                tresorier.ReponseAuGump(from, "Le changement fut fait.");
+            }
+
+            public override void OnCancel(Mobile from)
+            {
+                tresorier.ReponseAuGump(from, "Le changement fut annulé");
+                from.SendGump(new TresorierGump(tresorier, from, 0));
+            }
+        }
+
         private class ModifierNomPrompt : Prompt
         {
             private Tresorier t;
 
             public ModifierNomPrompt(Tresorier t)
-            { 
-                this.t = t; 
+            {
+                this.t = t;
             }
 
             public override void OnResponse(Mobile from, string text)
@@ -186,10 +217,12 @@ namespace Server.Systemes.Geopolitique
         private class ModifierFondsPrompt : Prompt
         {
             private Tresorier t;
+            private bool ajout;
 
-            public ModifierFondsPrompt(Tresorier t)
+            public ModifierFondsPrompt(Tresorier t, bool ajout)
             {
                 this.t = t;
+                this.ajout = ajout;
             }
 
             public override void OnResponse(Mobile from, string text)
@@ -197,15 +230,123 @@ namespace Server.Systemes.Geopolitique
                 int amount;
                 if (Int32.TryParse(text, out amount))
                 {
-                    if (amount > 0)
+                    if (ajout)
                         t.AjoutFonds(from, amount);
                     else
-                        t.RetraitFonds(from, -amount);
+                        t.RetraitFonds(from, amount);
+                    from.SendGump(new TresorierGump(t, from, 0));
                 }
-                //t.PrivateOverheadMessage(MessageType.Regular, 0x3B2, false,
-                //    "Je n'ai pas compris le montant que vous désirer ajouter ou retirer.", from.NetState);
-                
+                else
+                {
+                    t.ReponseAuGump(from, String.Format("Je n'ai pas compris le montant que vous désirez {0}.",
+                                                        ajout ? "ajouter" : "retirer"));
+                    from.Prompt = new ModifierFondsPrompt(t, ajout);
+                }
             }
+        }
+
+
+        private void AjouterEmploye_OnTarget(Mobile from, object targeted)
+        {
+            if (targeted is Mobile)
+            {
+                tresorier.ReponseAuGump(from, "Quel est le nom de ce nouvel employé?");
+                from.Prompt = new NomEmployePrompt(tresorier, targeted as Mobile);
+            }
+            else
+            {
+                from.SendMessage("Vous devez choisir un joueur");
+                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AjouterEmploye_OnTarget));
+            }
+        }
+
+        private class NomEmployePrompt : Prompt
+        {
+            private Tresorier tresorier;
+            private Mobile employe;
+
+            public NomEmployePrompt(Tresorier t, Mobile e)
+            {
+                tresorier = t;
+                employe = e;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                tresorier.ReponseAuGump(from, "Quel est son titre?");
+                from.Prompt = new TitreEmployePrompt(tresorier, employe, text);
+            }
+
+            public override void OnCancel(Mobile from)
+            {
+                tresorier.ReponseAuGump(from, "L'employé ne fut pas ajouté au registre.");
+                from.SendGump(new TresorierGump(tresorier, from, 0));
+            }
+        }
+
+        private class TitreEmployePrompt : Prompt
+        {
+            private Tresorier tresorier;
+            private Mobile employe;
+            private string nomEmploye;
+
+            public TitreEmployePrompt(Tresorier t, Mobile e, string nom)
+            {
+                tresorier = t;
+                employe = e;
+                nomEmploye = nom;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                tresorier.ReponseAuGump(from, "Quel est le montant de sa paie mensuelle?");
+                from.Prompt = new PaieEmployePrompt(tresorier, employe, nomEmploye, text);
+            }
+
+            public override void OnCancel(Mobile from)
+            {
+                tresorier.ReponseAuGump(from, "L'employé ne fut pas ajouté au registre.");
+                from.SendGump(new TresorierGump(tresorier, from, 0));
+            }
+        }
+
+        private class PaieEmployePrompt : Prompt
+        {
+            private Tresorier tresorier;
+            private Mobile employe;
+            private string nomEmploye;
+            private string titreEmploye;
+
+            public PaieEmployePrompt(Tresorier t, Mobile e, string nom, string titre)
+            {
+                tresorier = t;
+                employe = e;
+                nomEmploye = nom;
+                titreEmploye = titre;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                int montant;
+                if (Int32.TryParse(text, out montant))
+                {
+                    tresorier.ReponseAuGump(from, "L'employé fut  ajouté au registre.");
+                    tresorier.AddEmploye(employe, nomEmploye, titreEmploye, montant);
+                    from.SendGump(new TresorierGump(tresorier, from, 0));
+                }
+                else
+                {
+                    from.SendMessage("Vous devez indiquer un nombre.");
+                    from.Prompt = new PaieEmployePrompt(tresorier, employe, nomEmploye, titreEmploye);
+                }
+            }
+
+            public override void OnCancel(Mobile from)
+            {
+                tresorier.ReponseAuGump(from, "L'employé ne fut pas ajouté au registre.");
+                from.SendGump(new TresorierGump(tresorier, from, 0));
+            }
+
         }
     }
 }

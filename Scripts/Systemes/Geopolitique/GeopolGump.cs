@@ -458,7 +458,7 @@ namespace Server.Systemes.Geopolitique
                 {
                     AddLabel(81, 110, 1301, @"(Pas de type)");
                     AddLabel(270, 110, 1301, @"0");
-                    AddButton(383, 109, 4005, 248, 99, GumpButtonType.Reply, 0);
+                    AddButton(383, 109, 4005, 4006, 99, GumpButtonType.Reply, 0);
                     offset = 1;
                 }
 
@@ -469,7 +469,7 @@ namespace Server.Systemes.Geopolitique
 
                     AddLabel(81, basey + offset * 30, 1301, Geopolitique.types[i].Nom);
                     AddLabel(270, basey + offset * 30, 1301, Geopolitique.types[i].Rente.ToString("N", Geopolitique.NFI));
-                    AddButton(383, basey + offset * 30 - 1, 4005, 248, 100 + i, GumpButtonType.Reply, 0);
+                    AddButton(383, basey + offset * 30 - 1, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
 
                     offset = (offset + 1) % 10;
                 }
