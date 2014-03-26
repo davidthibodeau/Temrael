@@ -203,6 +203,7 @@ namespace Server.Systemes.Geopolitique
             m_Titre = reader.ReadString();
             m_Paie = reader.ReadInt();
             m_Total = reader.ReadInt();
+            m_NonPaye = reader.ReadInt();
             m_LastPaie = reader.ReadDateTime();
             m_Removed = reader.ReadBool();
 
@@ -221,6 +222,7 @@ namespace Server.Systemes.Geopolitique
             writer.Write((string)m_Titre);
             writer.Write((int)m_Paie);
             writer.Write((int)m_Total);
+            writer.Write((int)m_NonPaye);
             writer.Write((DateTime)m_LastPaie);
             writer.Write((bool)m_Removed);
 

@@ -147,28 +147,76 @@ namespace Server.Systemes.Geopolitique
         {
             foreach (Employe employe in m_Employes.Values)
             {
-                if (employe.Personnage.Deleted)
-                {
-                    Fonds += employe.Total; // Si le perso a ete delete, l'etablissement reprend l'argent non reclame
-                    employe.Total = 0;
-                    RemoveEmploye(employe.Personnage);
-                    continue;
-                }
-                int apayer = employe.APayer();
-                if (Fonds < apayer)
-                {
-                    employe.AjouterMessage(String.Format("Une paie de {0} n'a pas pu vous être remis par manque de fonds.", 
-                        employe.Paie.ToString("N", Geopolitique.NFI)));
-                    AjouterMessage(String.Format("La paie de {0} d'une valeur de {1} n'a pas pu être délivrée par manque de fonds.",
-                        employe.Nom, apayer.ToString("N", Geopolitique.NFI)));
-                    continue;
-                }
-                if (employe.Removed)
-                    continue;
+                PayerEmploye(employe);
+            }
+        }
+
+        public void PayerEmploye(Employe employe)
+        {
+            if (employe.Personnage.Deleted)
+            {
+                Fonds += employe.Total; // Si le perso a ete delete, l'etablissement reprend l'argent non reclame
+                employe.Total = 0;
+                RemoveEmploye(employe.Personnage);
+                return;
+            }
+            if (employe.Removed)
+                return;
+
+            PayerDu(employe);
+
+            int apayer = employe.APayer();
+            if (Fonds < apayer)
+            {
+                employe.AjouterMessage(String.Format("Une paie de {0} n'a pas pu vous être remis par manque de fonds.",
+                    employe.Paie.ToString("N", Geopolitique.NFI)));
+                AjouterMessage(String.Format("La paie de {0} d'une valeur de {1} n'a pas pu être délivrée par manque de fonds.",
+                    employe.Nom, apayer.ToString("N", Geopolitique.NFI)));
+                employe.Total += Fonds;
+                employe.NonPaye += apayer - Fonds;
+                Fonds = 0;
+            }
+            else
+            {
                 employe.Total += apayer;
                 Fonds -= apayer;
             }
         }
+
+        public void PayerDu(Employe employe)
+        {
+            if (employe.NonPaye > Fonds)
+            {
+                employe.Total += Fonds;
+                employe.NonPaye -= Fonds;
+                Fonds = 0;
+            }
+            else
+            {
+                employe.Total += employe.NonPaye;
+                Fonds -= employe.NonPaye;
+                employe.NonPaye = 0;
+            }
+        }
+
+        public void ReprendreDu(Employe employe, int montant)
+        {
+            if (montant <= employe.Total)
+            {
+                Fonds += montant;
+                employe.Total -= montant;
+            }
+        }
+
+        public void AjouterAuDu(Employe employe, int montant)
+        {
+            if (montant <= Fonds)
+            {
+                Fonds -= montant;
+                employe.Total += montant;
+            }
+        }
+
 
         public void RetraitEmploye(Mobile employe, int montant)
         {
@@ -336,6 +384,7 @@ namespace Server.Systemes.Geopolitique
             writer.Write((int)0);
 
             writer.Write((Mobile)m_Gestionnaire);
+            writer.Write((string)m_NomGestionnaire);
             writer.Write((string)m_Etablissement);
             writer.Write((string)m_Description);
             writer.Write((int)m_Fonds);
@@ -361,6 +410,7 @@ namespace Server.Systemes.Geopolitique
             int version = reader.ReadInt();
 
             m_Gestionnaire = reader.ReadMobile();
+            m_NomGestionnaire = reader.ReadString();
             m_Etablissement = reader.ReadString();
             m_Description = reader.ReadString();
             m_Fonds = reader.ReadInt();

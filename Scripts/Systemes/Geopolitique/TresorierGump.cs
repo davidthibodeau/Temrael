@@ -49,18 +49,22 @@ namespace Server.Systemes.Geopolitique
             AddLabel(82, 240, 1301, @"Employés :");
 
             int basey = 271;
+            int k = 0;
             for (int i = 0; i < tresorier.EmployeCount; i++)
             {
-                if (i >= (page + 1) * 5)
+                if (tresorier[i].Removed)
+                    continue;
+                if (k >= (page + 1) * 5)
                     break;
-                if (i < page * 5)
+                if (k < page * 5)
                     continue;
 
-                int j = i % 5;
-                AddLabel(60, basey + j * 30, 1301, tresorier[i].Nom);
-                AddLabel(200, basey + j * 30, 1301, tresorier[i].Titre);
-                AddLabel(303, basey + j * 30, 1301, tresorier[i].Paie.ToString("N", Geopolitique.NFI));
+                int j = k % 5;
+                AddLabel(60, basey + j * 30, 1301, tresorier[k].Nom);
+                AddLabel(200, basey + j * 30, 1301, tresorier[k].Titre);
+                AddLabel(303, basey + j * 30, 1301, tresorier[k].Paie.ToString("N", Geopolitique.NFI));
                 AddButton(387, basey + j * 30 - 1, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
+                k++;
             }
 
             if ((page + 1) * 5 < tresorier.EmployeCount)
@@ -149,7 +153,8 @@ namespace Server.Systemes.Geopolitique
             }
             if (button >= 100 && button < 100 + tresorier.EmployeCount)
             {
-                from.SendGump(new EmployeGump(tresorier, tresorier[button - 100], true));
+                if(!tresorier[button - 100].Removed)
+                    from.SendGump(new EmployeGump(tresorier, tresorier[button - 100], true));
             }
 
         }
