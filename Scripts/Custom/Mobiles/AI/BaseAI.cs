@@ -1724,7 +1724,7 @@ namespace Server.Mobiles
 				{
 					from.SendLocalizedMessage( 502052 ); // As an older player, you may not transfer pets to young players.
 				}
-				else if( accepted && !m_Creature.CanBeControlledBy( to ) )
+				/*else if( accepted && !m_Creature.CanBeControlledBy( to ) )
 				{
 					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );
 
@@ -1732,14 +1732,16 @@ namespace Server.Mobiles
 					to.SendLocalizedMessage( 1043249, args ); // The pet will not accept you as a master because it does not trust you.~3_BLANK~
 
 					return false;
-				}
+				}*/
 				else if( accepted && !m_Creature.CanBeControlledBy( from ) )
 				{
 					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );
 
 					from.SendLocalizedMessage( 1043250, args ); // The pet refuses to be transferred because it will not obey you sufficiently.~3_BLANK~
 					to.SendLocalizedMessage( 1043251, args ); // The pet will not accept you as a master because it does not trust ~2_NAME~.~3_BLANK~
-				}
+
+                    return false;
+                }
 				else if( accepted && (to.Followers + m_Creature.ControlSlots) > to.FollowersMax )
 				{
 					to.SendLocalizedMessage( 1049607 ); // You have too many followers to control that creature.
@@ -1818,13 +1820,13 @@ namespace Server.Mobiles
 				{
 					from.SendLocalizedMessage( 502052 ); // As an older player, you may not transfer pets to young players.
 				}
-				else if( !m_Mobile.CanBeControlledBy( to ) )
+				/*else if( !m_Mobile.CanBeControlledBy( to ) )
 				{
 					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );
 
 					from.SendLocalizedMessage( 1043248, args ); // The pet refuses to be transferred because it will not obey ~1_NAME~.~3_BLANK~
 					to.SendLocalizedMessage( 1043249, args ); // The pet will not accept you as a master because it does not trust you.~3_BLANK~
-				}
+				}*/
 				else if( !m_Mobile.CanBeControlledBy( from ) )
 				{
 					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );

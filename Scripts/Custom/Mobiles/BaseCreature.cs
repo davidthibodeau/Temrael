@@ -1377,34 +1377,14 @@ namespace Server.Mobiles
 			int lore = (int)((useBaseSkill ? m.Skills[SkillName.Elevage].Base : m.Skills[SkillName.Elevage].Value )* 10);
 			int bonus = 0, chance = 700;
 
-			if( Core.ML )
-			{
-				int SkillBonus = taming - (int)(dMinTameSkill * 10);
-				int LoreBonus = lore - (int)(dMinTameSkill * 10);
+			int difficulty = (int)(dMinTameSkill * 10);
+			int weighted = taming + lore/3;
+			bonus = weighted - difficulty;
 
-				int SkillMod = 6, LoreMod = 6;
-
-				if( SkillBonus < 0 )
-					SkillMod = 28;
-				if( LoreBonus < 0 )
-					LoreMod = 14;
-
-				SkillBonus *= SkillMod;
-				LoreBonus *= LoreMod;
-
-				bonus = (SkillBonus + LoreBonus ) / 2;
-			}
+			if ( bonus <= 0 )
+				bonus *= 14;
 			else
-			{
-				int difficulty = (int)(dMinTameSkill * 10);
-				int weighted = ((taming * 4) + lore) / 5;
-				bonus = weighted - difficulty;
-
-				if ( bonus <= 0 )
-					bonus *= 14;
-				else
-					bonus *= 6;
-			}
+				bonus *= 6;
 
 			chance += bonus;
 
@@ -1412,8 +1392,6 @@ namespace Server.Mobiles
 				chance = 200;
 			else if ( chance > 990 )
 				chance = 990;
-
-			chance -= (MaxLoyalty - m_Loyalty) * 10;
 
 			return ( (double)chance / 1000 );
 		}
