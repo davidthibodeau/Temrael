@@ -275,7 +275,7 @@ namespace Server.Engines.Craft
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(e);
             }
 		}
 
@@ -328,8 +328,9 @@ namespace Server.Engines.Craft
             }
             catch (OverflowException e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true), 
-                    String.Format("La valeur convertie en int était {0}. L'item était {1}", chance * 100, m_CraftItem.ItemType.ToString()));
+                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0}. L'item était {1}",
+                    chance * 100, m_CraftItem.ItemType.ToString());
+   
             }
 
 			if ( m_ShowExceptionalChance )
@@ -349,8 +350,8 @@ namespace Server.Engines.Craft
                 }
                 catch (OverflowException e)
                 {
-                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true),
-                        String.Format("La valeur convertie en int était {0}. L'item était {1}", excepChance * 100, m_CraftItem.ItemType.ToString()));
+                    Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0}. L'item était {1}", 
+                        excepChance * 100, m_CraftItem.ItemType.ToString());
                 }
 			}
 		}

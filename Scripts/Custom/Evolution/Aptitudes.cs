@@ -424,7 +424,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(ex);
             }
 
             return pa - added;

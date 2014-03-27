@@ -126,14 +126,13 @@ namespace Server.Misc
             {
                 if (entry == null)
                 {
-                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(), "entry was null");
+                    Misc.ExceptionLogging.WriteLine(e, "entry was null");
                     return t;
                 }
                 else
                 {
-                    Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(),
-                        "Le length de entry est de " + entry.Length + " alors que l'index de température était "
-                                  + t + " ce qui donne un chiffre de " + ((int)t) + ". La saison était " + season + ".");
+                    Misc.ExceptionLogging.WriteLine(e, "Le length de entry est de {0} alors que l'index de température" +
+                        " était {1} ce qui donne un chiffre de {2}. La saison était {3}.", entry.Length, t, (int)t, season);
                     return entry[entry.Length - 1];
                 }
             }

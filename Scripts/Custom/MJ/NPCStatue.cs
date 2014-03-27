@@ -161,7 +161,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(e);
             }
         }
 
@@ -182,7 +182,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(e);
             }
         }
         public static void CopyProps(Mobile from, Mobile to)
@@ -210,7 +210,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(e);
             }
 
             if (from is TMobile && to is BaseVendor)
@@ -232,7 +232,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(e);
             }
         }
 
@@ -281,7 +281,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(e);
             }
 
             return null;
@@ -310,7 +310,7 @@ namespace Server.Items
             }
             catch (Exception e)
             {
-                Misc.ExceptionLogging.WriteLine(e, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(e);
             }
         }
 

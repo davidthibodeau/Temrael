@@ -429,12 +429,11 @@ namespace Server
 
         public static bool CanEvolve(Mobile from)
         {
-            try
+            if (from is TMobile)
             {
-                if (from is TMobile)
+                TMobile pm = from as TMobile;
+                try
                 {
-                    TMobile pm = from as TMobile;
-
                     int currentXP = pm.XP;
                     int neededXP = GetNeededXP(pm);
 
@@ -443,11 +442,12 @@ namespace Server
                         return true;
                     }
                 }
+                catch (Exception ex)
+                {
+                    Misc.ExceptionLogging.WriteLine(ex, "{0} est niveau {1}.", pm, pm.Niveau);
+                }
             }
-            catch (Exception ex)
-            {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
-            }
+            
 
             return false;
         }
@@ -498,7 +498,7 @@ namespace Server
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(ex);
             }
         }
     }

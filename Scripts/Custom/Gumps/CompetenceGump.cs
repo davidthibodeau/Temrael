@@ -1147,7 +1147,7 @@ namespace Server.Gumps
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true), "buttonID :" + info.ButtonID + ", from : " + from.NetState);
+                Misc.ExceptionLogging.WriteLine(ex, "buttonID : {0}, from : {1}", info.ButtonID, from.NetState);
             }
         }
     }

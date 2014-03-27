@@ -188,7 +188,7 @@ namespace Server.Items
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(ex);
             }
         }
 

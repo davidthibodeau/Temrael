@@ -236,9 +236,9 @@ namespace Server.Items
                         }
                         catch(Exception ex)
                         {
-                            Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true),
-                                String.Format("Bug de Dyes/pitcher. i = {0}, tileid = {1}, m_Watertiles[i] = {2}, m_Watertiles[i+1] = {3}", 
-                                              i, tileID, m_WaterTiles[i], m_WaterTiles[i + 1]));
+                            Misc.ExceptionLogging.WriteLine(ex, 
+                                "Bug de Dyes/pitcher. i = {0}, tileid = {1}, m_Watertiles[i] = {2}, m_Watertiles[i+1] = {3}",
+                                i, tileID, m_WaterTiles[i], m_WaterTiles[i + 1]);
                         }
 				    }
 			    }
@@ -266,9 +266,8 @@ namespace Server.Items
                     }
                     catch (Exception ex)
                     {
-                        Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true),
-                            String.Format("Bug de dyes/Pitcher. i = {0}, itemid = {1}, m_statictiles[i] = {2}", 
-                                          i, target.ItemID, m_StaticTiles[i]));
+                        Misc.ExceptionLogging.WriteLine(ex, "Bug de dyes/Pitcher. i = {0}, itemid = {1}, m_statictiles[i] = {2}",
+                                          i, target.ItemID, m_StaticTiles[i]);
                     }
                 }
                 else if (targeted is BaseBeverage)

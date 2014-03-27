@@ -191,7 +191,7 @@ namespace Server.Gumps
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(ex);
             }
         }
 
@@ -268,7 +268,7 @@ namespace Server.Gumps
             }
             catch (Exception ex)
             {
-                Misc.ExceptionLogging.WriteLine(ex, new System.Diagnostics.StackTrace(true));
+                Misc.ExceptionLogging.WriteLine(ex);
             }
         }
     }
