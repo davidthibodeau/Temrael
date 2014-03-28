@@ -107,11 +107,11 @@ namespace Server.Items
 			DateTime now = DateTime.Now;
 			TimeSpan age = now - this.Created;
 
-			if ( age >= TimeSpan.FromSeconds( 100.0 ) )
+			if ( age >= TimeSpan.FromSeconds( 300.0 ) )
 				this.Delete();
-			else if ( age >= TimeSpan.FromSeconds( 90.0 ) )
+			else if ( age >= TimeSpan.FromSeconds( 290.0 ) )
 				this.Status = CampfireStatus.Off;
-			else if ( age >= TimeSpan.FromSeconds( 60.0 ) )
+			else if ( age >= TimeSpan.FromSeconds( 260.0 ) )
 				this.Status = CampfireStatus.Extinguishing;
 
 			if ( this.Status == CampfireStatus.Off || this.Deleted )
