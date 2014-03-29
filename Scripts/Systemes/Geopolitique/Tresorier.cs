@@ -315,6 +315,24 @@ namespace Server.Systemes.Geopolitique
             ReponseAuGump(from, String.Format("Vous avez retiré {0} aux fonds.", montant.ToString()));
         }
 
+        public bool TransfererFonds(Employe e, int amount)
+        {
+            if (Fonds < amount)
+                return false;
+            Fonds -= amount;
+            e.Total += amount;
+            return true;
+        }
+
+        public bool ReprendreMontant(Employe e, int amount)
+        {
+            if (e.Total < amount)
+                return false;
+            e.Total -= amount;
+            Fonds += amount;
+            return true;
+        }
+
         public void AjouterMessage(string message)
         {
             m_Messages.Add(message);

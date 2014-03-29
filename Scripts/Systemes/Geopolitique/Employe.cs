@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Server;
+using Server.Items;
 
 namespace Server.Systemes.Geopolitique
 {
@@ -146,6 +147,15 @@ namespace Server.Systemes.Geopolitique
                 m_LastPaie.AddYears(1);
                 return APayerInternal(acc);
             }
+        }
+        
+        public bool RemettreAlEmploye(int amount)
+        {
+            if (amount > Total)
+                return false;
+            Total -= amount;
+            m_Personnage.Backpack.DropItem(new BankCheck(amount));
+            return true;
         }
 
         public int DaysInMonth(int month, bool leap)

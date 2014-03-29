@@ -32,7 +32,7 @@ namespace Server.Systemes.Geopolitique
                 AddBackground(39, 56, 400, 504, 3500);
                 if (tr.Terre == null)
                 {
-                    AddLabel(170, 485, 1301, @"Attacher à une terre");
+                    AddLabel(175, 485, 1301, @"Attacher à une terre");
                     AddButton(330, 484, 4017, 4018, (int)Buttons.AttacherTerre, GumpButtonType.Reply, 0);
                 }
                 else
@@ -46,10 +46,23 @@ namespace Server.Systemes.Geopolitique
             }
             else
             {
-                AddBackground(31, 48, 416, 490, 9250);
-                AddBackground(39, 56, 400, 474, 3500);
-                AddLabel(99, 485, 1301, @"Afficher le journal des événements");
-                AddButton(330, 484, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
+                if (tresorier[from] != null)
+                {
+                    AddBackground(31, 48, 416, 520, 9250);
+                    AddBackground(39, 56, 400, 504, 3500);
+
+                    AddLabel(150, 485, 1301, @"Afficher sa fiche d'employé");
+                    AddButton(330, 484, 4011, 4012, (int)Buttons.AfficherFiche, GumpButtonType.Reply, 0);
+                    AddLabel(99, 515, 1301, @"Afficher le journal des événements");
+                    AddButton(330, 514, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
+                }
+                else
+                {
+                    AddBackground(31, 48, 416, 490, 9250);
+                    AddBackground(39, 56, 400, 474, 3500);
+                    AddLabel(99, 485, 1301, @"Afficher le journal des événements");
+                    AddButton(330, 484, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
+                }
             }
 
             AddLabel(206, 75, 1301, @"Trésorier");
@@ -116,6 +129,7 @@ namespace Server.Systemes.Geopolitique
             AjouterFonds,
             RetirerFonds,
             AttacherTerre,
+            AfficherFiche,
         }
 
 
@@ -178,6 +192,13 @@ namespace Server.Systemes.Geopolitique
                     {
                         from.SendMessage("Veuillez choisir la nouvelle terre pour ce trésorier");
                         from.SendGump(new AttacherTerreGump(tresorier, Geopolitique.geopolitique, 0));
+                    }
+                    break;
+
+                case (int)Buttons.AfficherFiche:
+                    if (tresorier[from] != null)
+                    {
+                        from.SendGump(new EmployeGump(tresorier, tresorier[from], false));
                     }
                     break;
 

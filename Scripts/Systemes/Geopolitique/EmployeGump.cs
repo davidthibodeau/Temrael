@@ -47,8 +47,13 @@ namespace Server.Systemes.Geopolitique
 
             AddLabel(82, 200, 1301, @"Dû non réclamé :");
             AddLabel(210, 200, 1301, e.Total.ToString("N", Geopolitique.NFI));
-            AddButton(343, 199, 4014, 4015, (int)Buttons.ReduireDu, GumpButtonType.Reply, 0);
-            AddButton(383, 199, 4005, 4006, (int)Buttons.AjouterDu, GumpButtonType.Reply, 0);
+            if (gestion)
+            {
+                AddButton(343, 199, 4014, 4015, (int)Buttons.ReduireDu, GumpButtonType.Reply, 0);
+                AddButton(383, 199, 4005, 4006, (int)Buttons.AjouterDu, GumpButtonType.Reply, 0);
+            }
+            else
+                AddButton(383, 199, 4029, 4030, (int)Buttons.ReclamerDu, GumpButtonType.Reply, 0);
 
             AddLabel(82, 230, 1301, @"Dû non payé :");
             AddLabel(210, 230, 1301, e.NonPaye.ToString("N", Geopolitique.NFI));
@@ -71,6 +76,7 @@ namespace Server.Systemes.Geopolitique
             AjouterDu,
             ReduireDu,
             PayerDu,
+            ReclamerDu,
         }
 
 
@@ -107,10 +113,12 @@ namespace Server.Systemes.Geopolitique
                         break;
 
                     case (int)Buttons.AjouterDu:
-
+                        tresorier.ReponseAuGump(from, "Quel montant désirez-vous rajouter à son dû?");
+                        from.Prompt = new ModifierFondsPrompt(tresorier, employe, true);
                         break;
                     case (int)Buttons.ReduireDu:
-
+                        tresorier.ReponseAuGump(from, "Quel montant désirez-vous reprendre de son dû?");
+                        from.Prompt = new ModifierFondsPrompt(tresorier, employe, false);
                         break;
 
                     case (int)Buttons.PayerDu:
@@ -119,9 +127,10 @@ namespace Server.Systemes.Geopolitique
                         break;
                 }
             }
-            else if (info.ButtonID == (int)Buttons.AjouterDu)
+            else if (info.ButtonID == (int)Buttons.ReclamerDu)
             {
-                //Prompt pour la reclamation du du.
+                tresorier.ReponseAuGump(from, "Combien désirez-vous réclamer?");
+                from.Prompt = new ReclamerDuPrompt(tresorier, employe);
             }
         }
 
@@ -176,11 +185,13 @@ namespace Server.Systemes.Geopolitique
         private class ModifierFondsPrompt : Prompt
         {
             private Tresorier t;
+            private Employe e;
             private bool ajout;
 
-            public ModifierFondsPrompt(Tresorier t, bool ajout)
+            public ModifierFondsPrompt(Tresorier t, Employe e, bool ajout)
             {
                 this.t = t;
+                this.e = e;
                 this.ajout = ajout;
             }
 
@@ -190,16 +201,30 @@ namespace Server.Systemes.Geopolitique
                 if (Int32.TryParse(text, out amount))
                 {
                     if (ajout)
-                        t.AjoutFonds(from, amount);
+                    {
+                        bool s = t.TransfererFonds(e, amount);
+                        if (s)
+                            t.ReponseAuGump(from, "Montant transféré.");
+                        else
+                            t.ReponseAuGump(from, "Nos coffres sont trop vides pour que nous puissions lui " +
+                                "donner ce montant.");
+                    }
                     else
-                        t.RetraitFonds(from, amount);
+                    {
+                        bool s = t.ReprendreMontant(e, amount);
+                        if (s)
+                            t.ReponseAuGump(from, "Montant repris.");
+                        else
+                            t.ReponseAuGump(from, "Le total de ses paies non réclamées n'est pas suffisant " +
+                                "pour que vous puissiez reprendre un tel montant.");
+                    }
                     from.SendGump(new TresorierGump(t, from, 0));
                 }
                 else
                 {
                     t.ReponseAuGump(from, String.Format("Je n'ai pas compris le montant que vous désirez {0}.",
                                                         ajout ? "ajouter" : "retirer"));
-                    from.Prompt = new ModifierFondsPrompt(t, ajout);
+                    from.Prompt = new ModifierFondsPrompt(t, e, ajout);
                 }
             }
         }
@@ -297,6 +322,39 @@ namespace Server.Systemes.Geopolitique
                 }
                 tresorier.RemoveEmploye(employe.Personnage);
                 from.SendGump(new EmployeGump(tresorier, employe, true));
+            }
+        }
+
+        private class ReclamerDuPrompt : Prompt
+        {
+            private Tresorier t;
+            private Employe e;
+
+            public ReclamerDuPrompt(Tresorier t, Employe e)
+            {
+                this.t = t;
+                this.e = e;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                int amount;
+                if (Int32.TryParse(text, out amount))
+                {
+                    bool s = e.RemettreAlEmploye(amount);
+                    if (s)
+                        t.ReponseAuGump(from, "Montant Réclamé.");
+                    else
+                        t.ReponseAuGump(from, "Nous ne vous devons pas tant!");
+
+
+                    from.SendGump(new EmployeGump(t, e, false));
+                }
+                else
+                {
+                    t.ReponseAuGump(from, "Je n'ai pas compris le montant que vous désirez réclamer.");
+                    from.Prompt = new ReclamerDuPrompt(t, e);
+                }
             }
         }
     }
