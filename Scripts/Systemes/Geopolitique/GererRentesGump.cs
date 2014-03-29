@@ -111,7 +111,7 @@ namespace Server.Systemes.Geopolitique
 
 				case (int)Buttons.AfficherTerres:
 				{
-                    from.SendGump(new GeopolGump(from, Geopolitique.geopolitique));
+                    from.SendGump(new GeopolGump(Geopolitique.geopolitique));
 					break;
 				}
 				case (int)Buttons.NextPage:

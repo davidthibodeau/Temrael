@@ -26,8 +26,32 @@ namespace Server.Systemes.Geopolitique
             this.Resizable = false;
 
             AddPage(0);
-            AddBackground(31, 48, 416, 520, 9250);
-            AddBackground(39, 56, 400, 504, 3500);
+            if (from.AccessLevel > AccessLevel.Player)
+            {
+                AddBackground(31, 48, 416, 520, 9250);
+                AddBackground(39, 56, 400, 504, 3500);
+                if (tr.Terre == null)
+                {
+                    AddLabel(170, 485, 1301, @"Attacher à une terre");
+                    AddButton(330, 484, 4017, 4018, (int)Buttons.AttacherTerre, GumpButtonType.Reply, 0);
+                }
+                else
+                {
+                    AddLabel(207, 485, 1301, @"Afficher la terre");
+                    AddButton(330, 484, 4005, 4006, (int)Buttons.AfficherTerre, GumpButtonType.Reply, 0);
+                }
+
+                AddLabel(99, 515, 1301, @"Afficher le journal des événements");
+                AddButton(330, 514, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
+            }
+            else
+            {
+                AddBackground(31, 48, 416, 490, 9250);
+                AddBackground(39, 56, 400, 474, 3500);
+                AddLabel(99, 485, 1301, @"Afficher le journal des événements");
+                AddButton(330, 484, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
+            }
+
             AddLabel(206, 75, 1301, @"Trésorier");
 
             AddLabel(81, 110, 1301, @"Etablissement :");
@@ -77,10 +101,7 @@ namespace Server.Systemes.Geopolitique
             AddImageTiled(67, 471, 342, 3, 96);
             AddImage(61, 462, 95);
             AddImage(408, 462, 97);
-            AddLabel(99, 515, 1301, @"Afficher le journal des événements");
-            AddButton(330, 514, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
-            AddLabel(207, 485, 1301, @"Afficher la terre");
-            AddButton(330, 484, 4005, 4006, (int)Buttons.AfficherTerre, GumpButtonType.Reply, 0);
+
         }
 
         public enum Buttons
@@ -94,6 +115,7 @@ namespace Server.Systemes.Geopolitique
             ChangerGestionnaire,
             AjouterFonds,
             RetirerFonds,
+            AttacherTerre,
         }
 
 
@@ -115,7 +137,8 @@ namespace Server.Systemes.Geopolitique
                         break;
                     }
                 case (int)Buttons.AfficherTerre:
-                    from.SendGump(new GeopolGump(from, tresorier.Terre));
+                    if(from.AccessLevel > AccessLevel.Player)
+                        from.SendGump(new GeopolGump(tresorier.Terre));
                     break;
 
                 case (int)Buttons.NextPage:
@@ -150,10 +173,18 @@ namespace Server.Systemes.Geopolitique
                     from.Prompt = new ModifierFondsPrompt(tresorier, false);
                     break;
 
+                case (int)Buttons.AttacherTerre:
+                    if (from.AccessLevel > AccessLevel.Player)
+                    {
+                        from.SendMessage("Veuillez choisir la nouvelle terre pour ce trésorier");
+                        from.SendGump(new AttacherTerreGump(tresorier, Geopolitique.geopolitique, 0));
+                    }
+                    break;
+
             }
             if (button >= 100 && button < 100 + tresorier.EmployeCount)
             {
-                if(!tresorier[button - 100].Removed)
+                if (!tresorier[button - 100].Removed)
                     from.SendGump(new EmployeGump(tresorier, tresorier[button - 100], true));
             }
 
@@ -352,6 +383,99 @@ namespace Server.Systemes.Geopolitique
                 from.SendGump(new TresorierGump(tresorier, from, 0));
             }
 
+        }
+
+        private class AttacherTerreGump : Gump
+        {
+
+            private Tresorier tresorier;
+            private Categorie cat;
+
+            private int page;
+
+            public AttacherTerreGump(Tresorier tr, Categorie ct, int page)
+                : base(0, 0)
+            {
+                tresorier = tr;
+                cat = ct;
+                this.page = page;
+
+                this.Closable = true;
+                this.Disposable = true;
+                this.Dragable = true;
+                this.Resizable = false;
+
+                AddPage(0);
+                AddBackground(31, 48, 416, 440, 9250);
+                AddBackground(39, 56, 400, 424, 3500);
+
+                AddLabel(174, 75, 1301, cat.Nom == "" ? @"Rentes et Géopolitique" : cat.Nom);
+
+                if (cat.Parent != null)
+                {
+                    AddButton(72, 99, 4014, 4015, (int)Buttons.MenuPrecedent, GumpButtonType.Reply, 0);
+                    AddLabel(108, 100, 1301, @"Menu Précédent");
+                }
+
+                int maxpages = (cat.CategoriesCount + cat.TerresCount) / 10;
+                int i = -1;
+                int basey = 123;
+                int offset = 0;
+                foreach (Categorie c in cat.Categories())
+                {
+                    i++;
+                    if (i < page * 10) continue;
+                    if ((page + 1) * 10 < i) break;
+                    AddLabel(86, basey + offset * 30 + 1, 1301, c.Nom);
+                    AddButton(354, basey + offset * 30, 4005, 4006, 100 + i, GumpButtonType.Reply, 0);
+                    offset = (offset + 1) % 10;
+                }
+                if (i == -1)
+                    i = 0;
+                int j = -1;
+                foreach (Terre t in cat.Terres())
+                {
+                    j++;
+                    if (i + j < page * 10) continue;
+                    if ((page + 1) * 10 < i + j) break;
+                    AddLabel(86, basey + offset * 30 + 1, 1301, t.Nom);
+                    AddButton(354, basey + offset * 30, 4011, 4012, 200 + j, GumpButtonType.Reply, 0);
+                    offset = (offset + 1) % 10;
+                }
+
+                if (page < maxpages)
+                    AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Reply, 0);
+                if (page > 0)
+                    AddButton(59, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Reply, 0);
+
+            }
+
+            public enum Buttons
+            {
+                MenuPrecedent = 1,
+                NextPage,
+                PreviousPage,
+            }
+
+            public override void OnResponse(NetState sender, RelayInfo info)
+            {
+                int b = info.ButtonID;
+                Mobile from = sender.Mobile;
+
+                if (b == (int)Buttons.MenuPrecedent)
+                    from.SendGump(new AttacherTerreGump(tresorier, cat.Parent, 0));
+                else if (b == (int)Buttons.NextPage)
+                    from.SendGump(new AttacherTerreGump(tresorier, cat, page + 1));
+                else if (b == (int)Buttons.PreviousPage)
+                    from.SendGump(new AttacherTerreGump(tresorier, cat, page - 1));
+                else if (b >= 100 && b < 100 + cat.CategoriesCount)
+                    from.SendGump(new AttacherTerreGump(tresorier, cat.CategorieParIndex(b - 100), 0));
+                else if (b >= 200 && b < 200 + cat.TerresCount)
+                {
+                    tresorier.Terre = cat.TerreParIndex(b - 200);
+                    from.SendGump(new TresorierGump(tresorier, from, 0));
+                }
+            }
         }
     }
 }

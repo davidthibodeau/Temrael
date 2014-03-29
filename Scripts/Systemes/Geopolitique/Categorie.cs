@@ -50,6 +50,23 @@ namespace Server.Systemes.Geopolitique
                 yield return t;
         }
 
+        public void SupprimerCategorie()
+        {
+            if (CategoriesCount > 0 || TerresCount > 0)
+                return;
+            Parent.RetirerCategorie(this);
+        }
+
+        private void RetirerCategorie(Categorie c)
+        {
+            m_Categories.Remove(c);
+        }
+
+        internal void RetirerTerre(Terre t)
+        {
+            m_Terres.Remove(t);
+        }
+
         public Categorie(Categorie parent, string nom)
         {
             m_Categories = new List<Categorie>();

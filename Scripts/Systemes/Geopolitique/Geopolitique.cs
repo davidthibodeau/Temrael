@@ -38,7 +38,7 @@ namespace Server.Systemes.Geopolitique
 
             if (caller.HasGump(typeof(GeopolGump)))
                 caller.CloseGump(typeof(GeopolGump));
-            caller.SendGump(new GeopolGump(caller, geopolitique));
+            caller.SendGump(new GeopolGump(geopolitique));
         }
 
         private static DateTime GetNextWeekday(DateTime start, DayOfWeek day)

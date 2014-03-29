@@ -89,6 +89,16 @@ namespace Server.Systemes.Geopolitique
             
         }
 
+        public void SupprimerTerre()
+        {
+            foreach (Tresorier t in m_Tresoriers)
+            {
+                t.Terre = null;
+            }
+            m_Tresoriers.Clear();
+            Parent.RetirerTerre(this);
+        }
+
         public void RetirerTresorier(Tresorier t)
         {
             m_Tresoriers.Remove(t);
@@ -159,5 +169,6 @@ namespace Server.Systemes.Geopolitique
                 xml.WriteEndElement();
             }
         }
+
     }
 }

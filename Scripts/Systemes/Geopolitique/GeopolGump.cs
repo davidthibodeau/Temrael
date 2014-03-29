@@ -13,19 +13,17 @@ namespace Server.Systemes.Geopolitique
     // Généré avec GumpStudio.
     public class GeopolGump : Gump
     {
-        private Mobile caller;
         private Categorie cat;
         private Terre terre;
         private int page;
 
-        public GeopolGump(Mobile from, Categorie ct)
-            : this(from, ct, 0)
+        public GeopolGump(Categorie ct)
+            : this(ct, 0)
         {
         }
 
-        public GeopolGump(Mobile from, Categorie ct, int page) : base(0, 0)
+        public GeopolGump(Categorie ct, int page) : base(0, 0)
         {
-            caller = from;
             cat = ct;
             this.page = page;
 
@@ -35,9 +33,11 @@ namespace Server.Systemes.Geopolitique
 			this.Resizable=false;
 
 			AddPage(0);
-			AddBackground(31, 48, 416, 520, 9250);
-			AddBackground(39, 56, 400, 504, 3500);
-			AddLabel(174, 75, 1301, @"Rentes et Géopolitique");
+			AddBackground(31, 48, 416, 550, 9250);
+			AddBackground(39, 56, 400, 534, 3500);
+
+            AddLabel(174, 75, 1301, cat.Nom == "" ? @"Rentes et Géopolitique" : cat.Nom);
+
 
             if (cat.Parent != null)
             {
@@ -53,10 +53,13 @@ namespace Server.Systemes.Geopolitique
             AddImageTiled(67, 472, 342, 3, 96);
 			AddImage(61, 463, 95);
 			AddImage(408, 463, 97);
-			AddLabel(99, 516, 1301, @"Afficher le journal des événements");
-			AddButton(330, 515, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
-			AddLabel(209, 486, 1301, @"Gérer les rentes");
+            AddLabel(209, 486, 1301, @"Gérer les rentes");
             AddButton(330, 485, 4005, 4006, (int)Buttons.GererRentes, GumpButtonType.Reply, 0);
+            AddLabel(177, 516, 1301, @"Supprimer la catégorie");
+			AddButton(330, 515, 4017, 4018, (int)Buttons.Supprimer, GumpButtonType.Reply, 0);
+			AddLabel(99, 546, 1301, @"Afficher le journal des événements");
+			AddButton(330, 545, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
+
 
             int maxpages = (cat.CategoriesCount + cat.TerresCount) / 10;
             int i = -1;
@@ -90,14 +93,13 @@ namespace Server.Systemes.Geopolitique
                 AddButton(59, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Reply, 0);
         }
 
-        public GeopolGump(Mobile from, Terre t)
-            : this(from, t, 0)
+        public GeopolGump(Terre t)
+            : this(t, 0)
         {
         }
 
-        public GeopolGump(Mobile from, Terre t, int page) : base (0, 0)
+        public GeopolGump(Terre t, int page) : base (0, 0)
         {
-            caller = from;
             terre = t;
             this.page = page;
 
@@ -107,8 +109,8 @@ namespace Server.Systemes.Geopolitique
 			this.Resizable=false;
 
 			AddPage(0);
-			AddBackground(31, 48, 416, 520, 9250);
-			AddBackground(39, 56, 400, 504, 3500);
+			AddBackground(31, 48, 416, 550, 9250);
+			AddBackground(39, 56, 400, 534, 3500);
 			AddLabel(174, 75, 1301, @"Rentes et Géopolitique");
 
             AddLabel(81, 110, 1301, @"Nom :");
@@ -152,10 +154,12 @@ namespace Server.Systemes.Geopolitique
             AddImageTiled(67, 472, 342, 3, 96);
 			AddImage(61, 463, 95);
 			AddImage(408, 463, 97);
-			AddLabel(99, 516, 1301, @"Afficher le journal des événements");
-			AddButton(330, 515, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
+			AddLabel(99, 546, 1301, @"Afficher le journal des événements");
+			AddButton(330, 545, 4011, 4012, (int)Buttons.AfficherJournal, GumpButtonType.Reply, 0);
 			AddLabel(141, 486, 1301, @"Afficher la liste des terres");
             AddButton(330, 485, 4005, 4006, (int)Buttons.RetourCategorie, GumpButtonType.Reply, 0);
+            AddLabel(195, 516, 1301, @"Supprimer la terre");
+			AddButton(330, 515, 4017, 4018, (int)Buttons.Supprimer, GumpButtonType.Reply, 0);
 
             if((page + 1) * 5 < terre.TresorierCount)
                 AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Page, 0);
@@ -172,6 +176,7 @@ namespace Server.Systemes.Geopolitique
             NextPage,
             PreviousPage,
             MenuPrecedent,
+            Supprimer,
 
             AjouterTresorier,
             RetourCategorie,
@@ -194,7 +199,7 @@ namespace Server.Systemes.Geopolitique
                     if (cat.CategoriesCount > 15)
                     {
                         from.SendMessage("Vous ne pouvez avoir plus de 16 catégories sous une même catégorie.");
-                        from.SendGump(new GeopolGump(from, cat));
+                        from.SendGump(new GeopolGump(cat));
                         break;
                     }
                     from.SendMessage("Entrez le nom de la catégorie que vous désirez créer.");
@@ -219,25 +224,57 @@ namespace Server.Systemes.Geopolitique
                     from.SendGump(new GererRentesGump());
 					break;
 
+                case (int)Buttons.Supprimer:
+                    if (cat != null)
+                    {
+                        if (cat == Geopolitique.geopolitique)
+                        {
+                            from.SendMessage("Vous ne pouvez supprimer la catégorie principale.");
+                            from.SendGump(new GeopolGump(cat));
+                            return;
+                        }
+                        if (cat.CategoriesCount > 0 || cat.TerresCount > 0)
+                        {
+                            from.SendMessage("Vous ne pouvez supprimer une catégorie que si elle ne contient " +
+                                "pas de terres ou d'autres catégories.");
+                            from.SendGump(new GeopolGump(cat, page));
+                        }
+                        else
+                        {
+                            Categorie c = cat.Parent;
+                            cat.SupprimerCategorie();
+                            from.SendMessage("La catégorie a été retirée.");
+                            from.SendGump(new GeopolGump(c));
+                        }
+                    }
+                    else if (terre != null)
+                    {
+                        from.SendMessage("Supprimer la terre va détacher tous les trésoriers de la terre et " +
+                            "ils n'auront plus accès aux fonds et à la rente.");
+                        from.SendMessage("Êtes vous certains de vouloir continuer?");
+                        from.Prompt = new SupprimerTerrePrompt(terre);
+                    }
+                    break;
+
 				case (int)Buttons.NextPage:
                     if (cat != null) //C'est un ou l'autre
-                        from.SendGump(new GeopolGump(from, cat, page + 1));
+                        from.SendGump(new GeopolGump(cat, page + 1));
                     else if (terre != null)
-                        from.SendGump(new GeopolGump(from, terre, page + 1));
+                        from.SendGump(new GeopolGump(terre, page + 1));
 					break;
 
 				case (int)Buttons.PreviousPage:
                     if (cat != null) //C'est un ou l'autre
-                        from.SendGump(new GeopolGump(from, cat, page - 1));
+                        from.SendGump(new GeopolGump(cat, page - 1));
                     else if (terre != null)
-                        from.SendGump(new GeopolGump(from, terre, page - 1));
+                        from.SendGump(new GeopolGump(terre, page - 1));
 					break;
 	
 				case (int)Buttons.MenuPrecedent:
                     if (cat != null)
                     {
                         if (cat.Parent != null)
-                            from.SendGump(new GeopolGump(from, cat.Parent));
+                            from.SendGump(new GeopolGump(cat.Parent));
                     }
                     break;
 
@@ -250,7 +287,7 @@ namespace Server.Systemes.Geopolitique
                 case (int)Buttons.RetourCategorie:
                     if (terre != null)
                     {
-                        from.SendGump(new GeopolGump(from, terre.Parent));
+                        from.SendGump(new GeopolGump(terre.Parent));
                     }
                     break;
            
@@ -282,11 +319,11 @@ namespace Server.Systemes.Geopolitique
 
             if (cat != null && button >= 100 && button < 100 + cat.CategoriesCount)
             {
-                from.SendGump(new GeopolGump(from, cat.CategorieParIndex(button - 100)));
+                from.SendGump(new GeopolGump(cat.CategorieParIndex(button - 100)));
             }
             if (cat != null && button >= 200 && button < 200 + cat.TerresCount)
             {
-                from.SendGump(new GeopolGump(from, cat.TerreParIndex(button - 200)));
+                from.SendGump(new GeopolGump(cat.TerreParIndex(button - 200)));
             }
             if (terre != null && button >= 300 && button < 300 + terre.TresorierCount)
             {
@@ -298,9 +335,9 @@ namespace Server.Systemes.Geopolitique
         {
             from.SendMessage("Cette commande n'est pas encore fonctionnelle.");
             if (cat != null)
-                from.SendGump(new GeopolGump(from, cat, page));
+                from.SendGump(new GeopolGump(cat, page));
             else if (terre != null)
-                from.SendGump(new GeopolGump(from, terre, page));
+                from.SendGump(new GeopolGump(terre, page));
         }
 
         private class GeopolPrompt : Prompt
@@ -324,13 +361,13 @@ namespace Server.Systemes.Geopolitique
                         Categorie c = new Categorie(parent, text);
                         parent.AjouterCategorie(c);
                         Geopolitique.journal.AjouterEntry(new CreerCategorieEntry(from, c));
-                        from.SendGump(new GeopolGump(from, c));
+                        from.SendGump(new GeopolGump(c));
                         break;
                     case CatOuTerre.Terre:
                         Terre t = new Terre(parent, text);
                         parent.AjouterTerre(t);
                         Geopolitique.journal.AjouterEntry(new CreerTerreEntry(from, t));
-                        from.SendGump(new GeopolGump(from, t));
+                        from.SendGump(new GeopolGump(t));
                         break;
                 }
             }
@@ -348,7 +385,37 @@ namespace Server.Systemes.Geopolitique
             public override void OnResponse(Mobile from, string text)
             {
                 terre.Nom = text;
-                from.SendGump(new GeopolGump(from, terre));
+                from.SendGump(new GeopolGump(terre));
+            }
+        }
+
+        private class SupprimerTerrePrompt : Prompt
+        {
+            private Terre terre;
+
+            public SupprimerTerrePrompt(Terre t)
+            {
+                terre = t;
+            }
+
+            public override void OnResponse(Mobile from, string text)
+            {
+                if (text.Equals("oui", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Categorie c = terre.Parent;
+                    terre.SupprimerTerre();
+                    from.SendMessage("La terre a été supprimée");
+                    from.SendGump(new GeopolGump(c));
+                }
+                else if (text.Equals("non", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    from.SendGump(new GeopolGump(terre));
+                }
+                else
+                {
+                    from.SendMessage("Répondez par oui ou non.");
+                    from.Prompt = new SupprimerTerrePrompt(terre);
+                }
             }
         }
 
@@ -367,7 +434,7 @@ namespace Server.Systemes.Geopolitique
                 if (Int32.TryParse(text, out fonds))
                 {
                     terre.Fonds = fonds;
-                    from.SendGump(new GeopolGump(from, terre));
+                    from.SendGump(new GeopolGump(terre));
                 }
                 else
                 {
@@ -396,7 +463,7 @@ namespace Server.Systemes.Geopolitique
 
             public override void OnCancel(Mobile from)
             {
-                from.SendGump(new GeopolGump(from, parent));
+                from.SendGump(new GeopolGump(parent));
             }
         }
 
@@ -426,7 +493,7 @@ namespace Server.Systemes.Geopolitique
             protected override void OnTargetCancel(Mobile from, TargetCancelType cancelType)
             {
                 from.SendMessage("La création du trésorier fut annulée.");
-                from.SendGump(new GeopolGump(from, parent));
+                from.SendGump(new GeopolGump(parent));
             }
         }
 
@@ -498,7 +565,7 @@ namespace Server.Systemes.Geopolitique
                     {
                         terre.Type = Geopolitique.types[button - 100];
                     }
-                    from.SendGump(new GeopolGump(from, terre));
+                    from.SendGump(new GeopolGump(terre));
                 }
                 
             }
