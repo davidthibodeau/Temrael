@@ -55,7 +55,10 @@ namespace Server.Systemes.Geopolitique
         private int APayerInternal(int acc)
         {
             if (m_LastPaie.CompareTo(DateTime.Now) >= 0)
+            {
+                m_LastPaie = DateTime.Now;
                 return acc;
+            }
 
             int annees = DateTime.Now.Year - m_LastPaie.Year;
             if(annees == 0)

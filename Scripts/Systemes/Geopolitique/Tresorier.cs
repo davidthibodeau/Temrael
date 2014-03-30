@@ -21,7 +21,7 @@ namespace Server.Systemes.Geopolitique
      *  S'assurer que les joueurs ne voient que les noms qu'ils connaissent.
      */
 
-    public class Tresorier : Mobile
+    public class Tresorier : Mobile, IEnumerable<Employe>
     {
         private Mobile m_Gestionnaire; // Joueur qui controle la tresorerie
         private string m_NomGestionnaire; // Nom utilise par le tresorier pour le personnage
@@ -30,6 +30,7 @@ namespace Server.Systemes.Geopolitique
         private string m_Description; // Description dans le menu geopol
         private int m_Fonds; // Total des fonds accumules
         private List<string> m_Messages;
+        private PaiementTimer m_PaiementTimer;
         
         private OrderedDictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
         private Timer m_Paiement; // Timer pour effectuer un paiement
@@ -90,6 +91,7 @@ namespace Server.Systemes.Geopolitique
             m_Employes = new OrderedDictionary<Mobile, Employe>();
             CantWalk = true;
             m_Messages = new List<string>();
+            TimerProchainePaie();
         }
 
         public Tresorier(Serial serial) : base (serial)
@@ -123,9 +125,14 @@ namespace Server.Systemes.Geopolitique
                 m_Employes.Remove(employe);
         }
 
-        public IEnumerator<Employe> Employes()
+        public IEnumerator<Employe> GetEnumerator()
         {
             return m_Employes.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
 
         public Employe this[int i]
@@ -143,11 +150,34 @@ namespace Server.Systemes.Geopolitique
             get { return m_Employes.Count; }
         }
 
-        public void OnPaiementEvent(object source, ElapsedEventArgs e)
+        private void TimerProchainePaie()
         {
-            foreach (Employe employe in m_Employes.Values)
+            DateTime now = DateTime.Now;
+            DateTime next = new DateTime(now.Year, now.Month, 1).AddMonths(1).AddHours(3);
+
+            m_PaiementTimer = new PaiementTimer(this, next - now);
+            m_PaiementTimer.Start();
+        }
+
+        private class PaiementTimer : Timer
+        {
+            Tresorier tresorier;
+
+            public PaiementTimer(Tresorier t, TimeSpan delay)
+                : base(delay)
             {
-                PayerEmploye(employe);
+                tresorier = t;
+
+                Priority = TimerPriority.OneMinute;
+            }
+
+            protected override void OnTick()
+            {
+                foreach (Employe employe in tresorier.m_Employes.Values)
+                {
+                    tresorier.PayerEmploye(employe);
+                }
+                tresorier.TimerProchainePaie();
             }
         }
 
@@ -165,13 +195,14 @@ namespace Server.Systemes.Geopolitique
 
             PayerDu(employe);
 
+            //Ce function call va reset LastPaie a maintenant.
             int apayer = employe.APayer();
             if (Fonds < apayer)
             {
-                employe.AjouterMessage(String.Format("Une paie de {0} n'a pas pu vous être remis par manque de fonds.",
-                    employe.Paie.ToString("N", Geopolitique.NFI)));
-                AjouterMessage(String.Format("La paie de {0} d'une valeur de {1} n'a pas pu être délivrée par manque de fonds.",
-                    employe.Nom, apayer.ToString("N", Geopolitique.NFI)));
+                //employe.AjouterMessage(String.Format("Une paie de {0} n'a pas pu vous être remis par manque de fonds.",
+                //    employe.Paie.ToString("N", Geopolitique.NFI)));
+                //AjouterMessage(String.Format("La paie de {0} d'une valeur de {1} n'a pas pu être délivrée par manque de fonds.",
+                //    employe.Nom, apayer.ToString("N", Geopolitique.NFI)));
                 employe.Total += Fonds;
                 employe.NonPaye += apayer - Fonds;
                 Fonds = 0;
@@ -216,7 +247,6 @@ namespace Server.Systemes.Geopolitique
                 employe.Total += montant;
             }
         }
-
 
         public void RetraitEmploye(Mobile employe, int montant)
         {
@@ -445,6 +475,15 @@ namespace Server.Systemes.Geopolitique
             m_Messages = new List<string>();
             for (int i = 0; i < count; i++)
                 m_Messages.Add(reader.ReadString());
+
+            DateTime thismonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            foreach(Employe e in this)
+            {
+                if (e.LastPaie < thismonth)
+                    PayerEmploye(e);
+            }
+            TimerProchainePaie();
+            
         }
 
         // Fonctions prisent des PlayerVendors. Ce pourrait etre une
@@ -485,5 +524,6 @@ namespace Server.Systemes.Geopolitique
 			pack.Movable = false;
 			AddItem( pack );
 		}
+
     }
 }

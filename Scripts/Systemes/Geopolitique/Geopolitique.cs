@@ -87,14 +87,17 @@ namespace Server.Systemes.Geopolitique
                 {
                     Console.WriteLine("ERREUR: Impossible de loader la categorie principale du systeme de Geopolitique.");
                 }
-                XmlElement cat = root["maincategorie"];
-                geopolitique = new Categorie(null, cat);
-                
+
                 foreach (XmlElement ele in root.ChildNodes)//ElementsByTagName("type"))
                 {
                     if(ele.Name == "type")
                         types.Add(new TypeTerre(ele));
                 }
+
+                XmlElement cat = root["maincategorie"];
+                geopolitique = new Categorie(null, cat);
+                
+
             }
             string journalPath = Path.Combine("Saves/Geopolitique", "geopollogs.xml");
             

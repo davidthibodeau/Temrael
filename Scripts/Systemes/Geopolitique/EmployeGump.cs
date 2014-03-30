@@ -3,6 +3,7 @@ using Server.Network;
 using Server.Prompts;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Server.Systemes.Geopolitique
@@ -26,8 +27,8 @@ namespace Server.Systemes.Geopolitique
             this.Resizable = false;
 
             AddPage(0);
-            AddBackground(31, 48, 416, 268, 9250);
-            AddBackground(39, 56, 400, 252, 3500);
+            AddBackground(31, 48, 416, 298, 9250);
+            AddBackground(39, 56, 400, 282, 3500);
             AddLabel(176, 75, 1301, @"Fiche d'Employé");
 
             AddLabel(81, 110, 1301, @"Nom :");
@@ -60,10 +61,14 @@ namespace Server.Systemes.Geopolitique
             if(gestion)
                 AddButton(383, 229, 4029, 4030, (int)Buttons.PayerDu, GumpButtonType.Reply, 0);
 
+            AddLabel(82, 260, 1301, @"Dernière paie :");
+            AddLabel(210, 260, 1301, e.LastPaie.ToString(CultureInfo.CreateSpecificCulture("fr-FR")));
+
+
             if (gestion)
             {
-                AddLabel(116, 260, 1301, @"Supprimer l'employé de la liste");
-                AddButton(314, 259, 4005, 4006, (int)Buttons.SupprimerEmploye, GumpButtonType.Reply, 0);
+                AddLabel(116, 290, 1301, @"Supprimer l'employé de la liste");
+                AddButton(314, 289, 4005, 4006, (int)Buttons.SupprimerEmploye, GumpButtonType.Reply, 0);
             }
         }
 

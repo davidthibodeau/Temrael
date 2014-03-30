@@ -14,6 +14,8 @@ namespace Server.Systemes.Geopolitique
         private List<Rente> m_Rentes;
         private List<Tresorier> m_Tresoriers;
         private Categorie m_Parent;
+        private DateTime m_LastPaiement;
+        private Timer m_PaiementTimer;
 
         public TypeTerre Type
         {
@@ -86,8 +88,42 @@ namespace Server.Systemes.Geopolitique
 
         public void PayerRente()
         {
-            
+            Fonds += Rente;
+            m_LastPaiement = DateTime.Now;
         }
+
+        private void OnPaiementEvent(object source, ElapsedEventArgs e)
+        {
+            PayerRente();
+        }
+
+        private void TimerProchaineRente()
+        {
+            DateTime now = DateTime.Now;
+            DateTime next = new DateTime(now.Year, now.Month, 1).AddMonths(1).AddHours(2);
+            
+            m_PaiementTimer = new PaiementTimer(this, next - now);
+            m_PaiementTimer.Start();
+        }
+        
+		private class PaiementTimer : Timer
+		{
+            Terre terre;
+
+            public PaiementTimer(Terre t, TimeSpan delay)
+                : base(delay)
+            {
+                terre = t;
+
+                Priority = TimerPriority.OneMinute;
+            }
+
+			protected override void OnTick()
+			{
+                terre.PayerRente();
+                terre.TimerProchaineRente();
+			}
+		}
 
         public void SupprimerTerre()
         {
@@ -112,6 +148,8 @@ namespace Server.Systemes.Geopolitique
             m_Fonds = 0;
             m_Rentes = new List<Rente>();
             m_Tresoriers = new List<Tresorier>();
+            TimerProchaineRente();
+            m_LastPaiement = DateTime.Now;
         }
 
         public Terre(Categorie parent, XmlElement node)
@@ -139,6 +177,14 @@ namespace Server.Systemes.Geopolitique
                     t.Terre = this;
                 }
             }
+
+            m_LastPaiement = Utility.GetXMLDateTime(Utility.GetText(node["lastpaiement"], ""), DateTime.Now);
+
+            DateTime thismonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            if (m_LastPaiement < thismonth)
+                PayerRente();
+
+            TimerProchaineRente();
         }
 
         internal void Save(XmlTextWriter xml)
@@ -168,7 +214,10 @@ namespace Server.Systemes.Geopolitique
                 xml.WriteString(t.Serial.Value.ToString());
                 xml.WriteEndElement();
             }
-        }
 
+            xml.WriteStartElement("lastpaiement");
+            xml.WriteString(m_LastPaiement.ToString());
+            xml.WriteEndElement();
+        }
     }
 }
