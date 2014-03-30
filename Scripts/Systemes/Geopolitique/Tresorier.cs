@@ -90,6 +90,7 @@ namespace Server.Systemes.Geopolitique
             m_Fonds = 0;
             m_Employes = new OrderedDictionary<Mobile, Employe>();
             CantWalk = true;
+            Blessed = true;
             m_Messages = new List<string>();
             TimerProchainePaie();
         }
