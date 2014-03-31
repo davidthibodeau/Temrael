@@ -116,6 +116,10 @@ namespace Server.Systemes
                     mj.Save(xml);
                     xml.WriteEndElement();
                 }
+
+                xml.WriteStartElement("lastreset");
+                xml.WriteString(XP.LastReset.ToString());
+                xml.WriteEndElement();
                 xml.Close();
             }
         }
@@ -141,6 +145,8 @@ namespace Server.Systemes
                 MJ m = new MJ(mj);
                 compensationsIndexed.Add(m);
             }
+
+            XP.LastReset = Utility.GetXMLDateTime(Utility.GetText(root["lastreset"], null), DateTime.Now);
         }
 
         public static MJ GetMJ(Account acc)
@@ -228,20 +234,11 @@ namespace Server.Systemes
                     WriteLine(String.Format("{0} n'a pas de personnage valide associé pour y déposer l'expérience.", m_Nom));
                     return;
                 }
-                int maxXP = 0;
-                switch (XP.GetCote(pj))
-                {
-                    case 0:
-                    case 1: maxXP = 10850; break;
-                    case 2: maxXP = 13020; break;
-                    case 3: maxXP = 15190; break;
-                    case 4: maxXP = 17360; break;
-                    case 5: maxXP = 21700; break;
-                }
+                int maxXP = 37800;
 
                 int diff = maxXP - m_XpGainedThisWeek;
-                if (diff > 10000)
-                    pj.XP += 10000;
+                if (diff > 20000)
+                    pj.XP += 20000;
                 else if (diff > 0)
                     pj.XP += diff;
                 WriteLine(String.Format("{0} a accumule la somme de {1} xp cette semaine. Il sera donc paye {2} xp.",
