@@ -63,7 +63,7 @@ namespace Server.DataStructures
                 }
                 catch
                 {
-                    return null;
+                    return default(T);
                 }
             }
             set
