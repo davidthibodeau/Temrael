@@ -326,7 +326,7 @@ namespace Server.Systemes.Geopolitique
                         break;
                 }
                 tresorier.RemoveEmploye(employe.Personnage);
-                from.SendGump(new EmployeGump(tresorier, employe, true));
+                from.SendGump(new TresorierGump(tresorier, from, 0));
             }
         }
 
