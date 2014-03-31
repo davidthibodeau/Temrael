@@ -57,7 +57,14 @@ namespace Server.DataStructures
         {
             get
             {
-                return dict[key];
+                try
+                {
+                    return dict[key];
+                }
+                catch
+                {
+                    return null;
+                }
             }
             set
             {
