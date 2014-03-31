@@ -424,6 +424,8 @@ namespace Server.Systemes.Geopolitique
         public override void OnDelete()
         {
             m_Terre.RetirerTresorier(this);
+            m_PaiementTimer.Stop();
+            m_PaiementTimer = null;
             base.OnDelete();
         }
         

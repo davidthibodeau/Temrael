@@ -133,6 +133,8 @@ namespace Server.Systemes.Geopolitique
             }
             m_Tresoriers.Clear();
             Parent.RetirerTerre(this);
+            m_PaiementTimer.Stop();
+            m_PaiementTimer = null;
         }
 
         public void RetirerTresorier(Tresorier t)
