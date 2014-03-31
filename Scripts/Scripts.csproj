@@ -96,7 +96,6 @@
     <Compile Include=".\Accounting\AccountTag.cs" />
     <Compile Include=".\Accounting\Firewall.cs" />
     <Compile Include=".\Accounting\IPLimiter.cs" />
-    <Compile Include=".\Addon\test2Addon.cs" />
     <Compile Include=".\Combat\SequenceCombat.cs" />
     <Compile Include=".\Commands\Add.cs" />
     <Compile Include=".\Commands\Attributes.cs" />
@@ -192,9 +191,6 @@
     <Compile Include=".\Custom\Commandes\Dupe.cs" />
     <Compile Include=".\Custom\Commandes\ExpCommande.cs" />
     <Compile Include=".\Custom\Commandes\Fiche.cs" />
-    <Compile Include=".\Custom\Commandes\GeneratePlantSpawner.cs" />
-    <Compile Include=".\Custom\Commandes\GetParty.cs" />
-    <Compile Include=".\Custom\Commandes\Follow.cs" />
     <Compile Include=".\Custom\Commandes\GeneratePlantSpawner.cs" />
     <Compile Include=".\Custom\Commandes\GetParty.cs" />
     <Compile Include=".\Custom\Commandes\JailPage.cs" />
@@ -898,8 +894,6 @@
     <Compile Include=".\Custom\Mobiles\Animaux\Bears\GrizzlyBear.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Bears\PolarBear.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Birds\Canard.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Birds\Chicken.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Birds\Eagle.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Birds\Harfang.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Birds\Heron.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Birds\Hiboux.cs" />
@@ -918,27 +912,19 @@
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\Crow.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\Dog.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\Fennec.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Critters\Fox.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Critters\Furret.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\Gerboise.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\Rat.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\WhiteFox.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Felines\Guepard.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Felines\Panther.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Boar.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Misc\BullFrog.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Caribou.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Misc\Dolphin.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Frog.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Gazelle.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\Fox.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Critters\Furret.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Critters\Rat.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Felines\Panther.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Misc\Boar.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\BullFrog.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Dolphin.cs" />
-    <Compile Include=".\Custom\Mobiles\Animaux\Misc\Frog.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\GiantToad.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Goat.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Misc\Gorilla.cs" />
@@ -1446,22 +1432,6 @@
     <Compile Include="Regions\Villes\TerritoryElamsham.cs" />
     <Compile Include="Regions\Villes\TerritoryMelandre.cs" />
     <Compile Include="Regions\Villes\TerritorySerenite.cs" />
-    <Compile Include=".\Custom\Regions\CommerceRegion.cs" />
-    <Compile Include=".\Custom\Regions\Commerces\CitarelCommerce.cs" />
-    <Compile Include=".\Custom\Regions\Tavernes\AireReposCitarel.cs" />
-    <Compile Include=".\Custom\Regions\Tavernes\InnCitarel.cs" />
-    <Compile Include=".\Custom\Regions\Tavernes\TavernBrandheim.cs" />
-    <Compile Include=".\Custom\Regions\Tavernes\TavernCitarel.cs" />
-    <Compile Include=".\Custom\Regions\Tavernes\TavernElamsham.cs" />
-    <Compile Include=".\Custom\Regions\Tavernes\TavernMelandre.cs" />
-    <Compile Include=".\Custom\Regions\Tavernes\TavernSerenite.cs" />
-    <Compile Include=".\Custom\Regions\TavernRegion.cs" />
-    <Compile Include=".\Custom\Regions\TerritoryRegion.cs" />
-    <Compile Include=".\Custom\Regions\Villes\TerritoryBrandheim.cs" />
-    <Compile Include=".\Custom\Regions\Villes\TerritoryCitarel.cs" />
-    <Compile Include=".\Custom\Regions\Villes\TerritoryElamsham.cs" />
-    <Compile Include=".\Custom\Regions\Villes\TerritoryMelandre.cs" />
-    <Compile Include=".\Custom\Regions\Villes\TerritorySerenite.cs" />
     <Compile Include=".\Custom\Schedule\ScheduleAI.cs" />
     <Compile Include=".\Custom\Schedule\ScheduleItem.cs" />
     <Compile Include=".\Custom\Sleep\SleeperBaseAddon.cs" />
@@ -3694,7 +3664,6 @@
     <Compile Include=".\Vendor\PlayerVendorDeed.cs" />
     <Compile Include=".\Vendor\PlayerVendorGumps.cs" />
     <Compile Include="Custom\Commandes\Follow.cs" />
-    <Compile Include="Custom\Commandes\JailPage.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
     <Compile Include="Custom\Mobiles\Monstres\Demoniaques\GolemArcanique.cs" />
     <Compile Include="Systemes\Geopolitique\Categorie.cs" />
@@ -3734,7 +3703,9 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Addon\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />
