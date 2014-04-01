@@ -116,6 +116,9 @@ namespace Server.Systemes
                     mj.Save(xml);
                     xml.WriteEndElement();
                 }
+                xml.WriteStartElement("lastreset");
+                xml.WriteString(XP.LastReset.ToString());
+                xml.WriteEndElement();
                 xml.Close();
             }
         }
@@ -141,6 +144,7 @@ namespace Server.Systemes
                 MJ m = new MJ(mj);
                 compensationsIndexed.Add(m);
             }
+            XP.LastReset = Utility.GetXMLDateTime(Utility.GetText(root["lastreset"], null), DateTime.Now);
         }
 
         public static MJ GetMJ(Account acc)
