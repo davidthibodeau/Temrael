@@ -86,7 +86,7 @@ namespace Server.Engines.Craft
 			index = AddCraft( typeof( SackFlour ), 1044495, 1024153, 0.0, 30.0, typeof( WheatSheaf ), 1044489, 2, 1044490 );
 			SetNeedMill( index, true );
 
-			index = AddCraft( typeof( Dough ), 1044495, 1024157, 0.0, 40.0, typeof( SackFlour ), 1044468, 1, 1044253 );
+			index = AddCraft( typeof( Dough ), 1044495, 1024157, 0.0, 30.0, typeof( SackFlour ), 1044468, 1, 1044253 );
 			AddRes( index, typeof( BaseBeverage ), 1046458, 1, 1044253 );
 
 			index = AddCraft( typeof( SweetDough ), 1044495, 1041340, 0.0, 50.0, typeof( Dough ), 1044469, 1, 1044253 );
@@ -191,6 +191,9 @@ namespace Server.Engines.Craft
 			SetNeedHeat( index, true );
 			SetUseAllRes( index, true );
 			/* End Barbecue */
+
+            index = AddCraft(typeof(BiscuitMessageVide), "Autres", "Biscuit Message", 00.0, 30.0, typeof(Dough), 1044469, 1, 1044253);
+            SetNeedOven(index, true);
 		}
 	}
 }
