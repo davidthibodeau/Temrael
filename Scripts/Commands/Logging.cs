@@ -87,6 +87,20 @@ namespace Server.Commands
 			}
 		}
 
+        public static void WriteLine(string text)
+        {
+            if (!m_Enabled)
+                return;
+
+            try
+            {
+                m_Output.WriteLine("{0}: System: {2}", DateTime.Now, text);
+            }
+            catch
+            {
+            }
+        }
+
 		private static char[] m_NotSafe = new char[]{ '\\', '/', ':', '*', '?', '"', '<', '>', '|' };
 
 		public static string Safe( string ip )

@@ -42,7 +42,7 @@ namespace Server
             DateTime today = new DateTime(now.Year, now.Month, now.Day, 3, 0, 0);
 
             if (now < today)
-                new XPResetTimer(today - now);
+                new XPResetTimer(today - now).Start();
             else
             {
                 if (LastReset < today)
@@ -50,14 +50,13 @@ namespace Server
                     Console.WriteLine("Le dernier reset de gain d'xp journalier était le {0}. Un reset est maintenant fait.", LastReset.ToString());
                     ResetEndOfDay();
                 }
-                new XPResetTimer(today.AddDays(1) - now);
+                new XPResetTimer(today.AddDays(1) - now).Start();
             }
             new XPTimer().Start();
         }
 
         private static void ManualXPReset_OnCommand(CommandEventArgs e)
         {
-            CommandLogging.WriteLine(e.Mobile, "Lancement d'un reset de gain d'xp journalier manuel.");
             ResetEndOfDay();
         }
 
@@ -106,22 +105,12 @@ namespace Server
 
         public static void ResetEndOfDay()
         {
-            ArrayList targets = new ArrayList();
-
+            CommandLogging.WriteLine("Lancement d'un reset de gain d'xp journalier manuel.");
+            
             foreach (Mobile m in World.Mobiles.Values)
             {
                 if (m is TMobile)
-                    targets.Add((TMobile)m);
-            }
-
-            if (targets.Count > 0)
-            {
-                for (int i = 0; i < targets.Count; i++)
-                {
-                    TMobile pm = (TMobile)targets[i];
-
-                    pm.CoteCount = 1;
-                }
+                    (m as TMobile).CoteCount = 1;
             }
 
             foreach (CompensationGump.MJ mj in Systemes.CompensationGump.GetMJs())
