@@ -162,9 +162,9 @@ namespace Server.Systemes.Geopolitique
 			AddButton(330, 515, 4017, 4018, (int)Buttons.Supprimer, GumpButtonType.Reply, 0);
 
             if((page + 1) * 5 < terre.TresorierCount)
-                AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Page, 0);
+                AddButton(402, 418, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Reply, 0);
             if(page > 0)
-                AddButton(61, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Page, 0);
+                AddButton(61, 418, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Reply, 0);
         }
 
         public enum Buttons
