@@ -41,7 +41,7 @@ namespace Server.Mobiles
             Karma = -5000;
 
             Tamable = true;
-            ControlSlots = 3;
+            ControlSlots = 4;
             MinTameSkill = 80.0;
 
             PackItem(new SpidersSilk(8));

@@ -10,7 +10,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Spectre() : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "a spectre";
+			Name = "Spectre";
 			Body = 84;
 			//Hue = 0x4001;
 			BaseSoundID = 0x482;

@@ -12,7 +12,7 @@ namespace Server.Mobiles
         public SkeletonArcher()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "a skeleton archer";
+            Name = "Squelette Archer";
             Body = 246;
             BaseSoundID = 0x48D;
 

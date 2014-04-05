@@ -11,7 +11,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public SkeletalKnight() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "a skeletal knight";
+			Name = "Chevalier Squelette";
 			Body = 57;
 			BaseSoundID = 451;
 

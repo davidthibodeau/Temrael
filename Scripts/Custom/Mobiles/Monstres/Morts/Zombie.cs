@@ -11,7 +11,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Zombie() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "a zombie";
+			Name = "Zombie";
 			Body = 3;
 			BaseSoundID = 471;
 
@@ -21,7 +21,7 @@ namespace Server.Mobiles
 
 			SetHits( 50, 150 );
 
-			SetDamage( 5, 10 );
+			SetDamage( 5, 15 );
 
 			SetDamageType( ResistanceType.Physical, 100 );
 

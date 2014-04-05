@@ -10,7 +10,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Lich() : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "a lich";
+			Name = "Liche";
 			Body = 24;
 			BaseSoundID = 0x3E9;
 
@@ -46,7 +46,7 @@ namespace Server.Mobiles
 
 			PackNecroReg( 10, 15 );
 
-            ControlSlots = 12;
+            ControlSlots = 8;
 		}
 
 		public override void GenerateLoot()

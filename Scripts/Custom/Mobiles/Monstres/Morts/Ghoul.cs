@@ -11,7 +11,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Ghoul() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "a ghoul";
+			Name = "Ghoul";
 			Body = 26;
 			BaseSoundID = 0x482;
 
@@ -22,7 +22,7 @@ namespace Server.Mobiles
 			SetHits( 100, 200 );
 			SetMana( 0 );
 
-			SetDamage( 5, 15 );
+			SetDamage( 12, 17 );
 
 			SetDamageType( ResistanceType.Physical, 100 );
 
