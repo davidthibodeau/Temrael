@@ -398,7 +398,7 @@ namespace Server.Systemes.Geopolitique
                 }
                 from.SendGump(new TresorierGump(this, from, 0));
             }
-            else if(from.AccessLevel > AccessLevel.GameMaster)
+            else if(from.AccessLevel >= AccessLevel.GameMaster)
                 from.SendGump(new TresorierGump(this, from, 0));
             else if (m_Employes[from] != null)
             {
