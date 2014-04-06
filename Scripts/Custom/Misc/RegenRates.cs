@@ -130,6 +130,14 @@ namespace Server.Misc
 			double armorPenalty = GetArmorOffset( from );
             //double armorPenalty = 0.0;
 
+            if (from is TMobile)
+            {
+                TMobile tmob = (TMobile)from;
+                if (tmob.Aptitudes != null)
+                    if (tmob.GetAptitudeValue(Aptitude.PortArmeMagique) >= 3)
+                        armorPenalty = 0;
+            }
+
 			if ( Core.AOS )
 			{
 				double medPoints = from.Int + (from.Skills[SkillName.Concentration].Value * 3);
