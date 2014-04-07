@@ -314,6 +314,7 @@ namespace Server.Items
                                 m_Tub.Hue = 0;
                                 m_Tub.Charges = 0;
                                 m_Tub.ItemID = 0xe83;
+                                m_Tub.Weight = 10;
                             }
                         }
 					}
