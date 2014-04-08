@@ -152,7 +152,14 @@
       <rect x="5830" y="1124" width="45" height="46" />
     </region>
 	<region name="Page" type="Jail">
-      <rect x="6111" y="1352" width="26" height="24" />
+      <rect x="6111" y="1328" width="26" height="24" />
     </region>
+	<!-- Regions de map inaccessibles aux joueurs -->
+	<region name="NordBloque" type="Inaccessible">
+		<rect x="3237" y="601" width="200" height="340" />
+		<rect x="2867" y="176" width="570" height="425" />
+		<rect x="2617" y="177" width="250" height="620" />
+		<rect x="2397" y="177" width="220" height="560" />
+	</region>
   </Facet>
 </ServerRegions>
