@@ -1419,6 +1419,7 @@
     <Compile Include="Misc\ExceptionLogging.cs" />
     <Compile Include="DataStructures\OrderedDictionary.cs" />
     <Compile Include="Regions\CommerceRegion.cs" />
+    <Compile Include="Regions\Inaccessible.cs" />
     <Compile Include="Regions\Tavernes\AireReposCitarel.cs" />
     <Compile Include="Regions\Tavernes\InnCitarel.cs" />
     <Compile Include="Regions\Tavernes\TavernBrandheim.cs" />
