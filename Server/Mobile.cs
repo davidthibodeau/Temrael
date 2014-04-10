@@ -4852,7 +4852,8 @@ namespace Server
 					{
 						Mobile heard = (Mobile)o;
 
-						if( heard.CanSee( this ) && (m_NoSpeechLOS || !heard.Player || heard.InLOS( this )) )
+						if( heard.CanSee( this ) && 
+                            (m_NoSpeechLOS || !heard.Player || heard.InLOS(this) || type == MessageType.Yell))
 						{
 							if( heard.m_NetState != null )
 								hears.Add( heard );
