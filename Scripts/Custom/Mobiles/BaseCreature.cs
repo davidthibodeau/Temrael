@@ -2788,26 +2788,25 @@ namespace Server.Mobiles
 						if ( stamGain > 0 )
 							Stam += stamGain;
 
-						if ( Core.SE )
+                        if (m_Loyalty < MaxLoyalty)
+                            SayTo(from, Name + " mange ce que vous lui donnez.");
+                        else
+                            SayTo(from, Name + " mange ce que vous lui donnez, mais est à présent complètement rassasié(e).");
+
+                        for (int i = 0; i < amount; ++i)
 						{
-							if ( m_Loyalty < MaxLoyalty )
-							{
-								m_Loyalty = MaxLoyalty;
-							}
-						}
-						else
-						{
-							for ( int i = 0; i < amount; ++i )
-							{
-								if ( m_Loyalty < MaxLoyalty  && 0.5 >= Utility.RandomDouble() )
-								{
-									m_Loyalty += 10;
-								}
-							}
+                            if (m_Loyalty < MaxLoyalty)
+                                m_Loyalty += 10;
+                            else
+                            {
+                                m_Loyalty = MaxLoyalty;
+                                SayTo(from, Name + " est à présent complètement rassasié(e).");
+                                i = amount;
+                            }
 						}
 
 						/* if ( happier )*/	// looks like in OSI pets say they are happier even if they are at maximum loyalty
-							SayTo( from, 502060 ); // Your pet looks happier.
+							//SayTo( from, 502060 ); // Your pet looks happier.
 
 						if ( Body.IsAnimal )
 							Animate( 3, 5, 1, true, false, 0 );
@@ -6022,7 +6021,7 @@ namespace Server.Mobiles
 
 	public class LoyaltyTimer : Timer
 	{
-		private static TimeSpan InternalDelay = TimeSpan.FromMinutes( 5.0 );
+        private static TimeSpan InternalDelay = TimeSpan.FromMinutes(5.0);
 
 		public static void Initialize()
 		{
@@ -6040,7 +6039,7 @@ namespace Server.Mobiles
 		protected override void OnTick()
 		{
 			if ( DateTime.Now >= m_NextHourlyCheck )
-				m_NextHourlyCheck = DateTime.Now + TimeSpan.FromHours( 1.0 );
+                m_NextHourlyCheck = DateTime.Now + TimeSpan.FromHours(1.0);
 			else
 				return;
 
@@ -6085,11 +6084,16 @@ namespace Server.Mobiles
 						{
 							c.Loyalty -= (BaseCreature.MaxLoyalty / 10);
 
-							if( c.Loyalty < (BaseCreature.MaxLoyalty / 10) )
+							if( c.Loyalty <= (BaseCreature.MaxLoyalty / 5) )
 							{
-								c.Say( 1043270, c.Name ); // * ~1_NAME~ looks around desperately *
+                                c.Say(c.Name + " meurt de faim."); // Old message: * 1043270 ~1_NAME~ looks around desperately *
 								c.PlaySound( c.GetIdleSound() );
 							}
+                            else if (c.Loyalty <= (BaseCreature.MaxLoyalty / 3))
+                            {
+                                c.Say(c.Name + " est affamé(e).");
+                                c.PlaySound(c.GetIdleSound());
+                            }
 
 							if ( c.Loyalty <= 0 )
 								toRelease.Add( c );
@@ -6113,7 +6117,7 @@ namespace Server.Mobiles
 
 			foreach ( BaseCreature c in toRelease )
 			{
-				c.Say( 1043255, c.Name ); // ~1_NAME~ appears to have decided that is better off without a master!
+				c.Say("meurt tellement de faim qu'il/elle décide de partir à la conquête de nourriture !" , c.Name ); // Old message 1043255 ~1_NAME~ appears to have decided that is better off without a master!
 				c.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully Happy
 				c.IsBonded = false;
 				c.BondingBegin = DateTime.MinValue;
