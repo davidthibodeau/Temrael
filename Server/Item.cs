@@ -26,6 +26,7 @@ using Server.Network;
 using Server.Items;
 using Server.ContextMenus;
 using Server.Prompts;
+using System.Diagnostics;
 
 namespace Server
 {
@@ -2146,8 +2147,9 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-			writer.Write( 10 ); // version
+			writer.Write( 11 ); // version
 
+            writer.Write(m_CreationFrame);
             writer.Write(m_canBeAltered);
 
 			SaveFlag flags = SaveFlag.None;
@@ -2471,6 +2473,9 @@ namespace Server
 
 			switch ( version )
 			{
+                case 11:
+                    m_CreationFrame = reader.ReadString();
+                    goto case 10;
                 case 10:
                     m_canBeAltered = reader.ReadBool();
                     goto case 9;
@@ -4771,6 +4776,10 @@ namespace Server
 
 		internal int m_TypeRef;
 
+        private string m_CreationFrame;
+
+        public string CreationFrame { get { return m_CreationFrame != null ? m_CreationFrame : ""; } }
+
 		public Item()
 		{
 			m_Serial = Serial.NewItem;
@@ -4793,6 +4802,8 @@ namespace Server
 				World.m_ItemTypes.Add( ourType );
 				m_TypeRef = World.m_ItemTypes.Count - 1;
 			}
+
+            m_CreationFrame = new StackTrace(true).ToString();
 		}
 
 		[Constructable]

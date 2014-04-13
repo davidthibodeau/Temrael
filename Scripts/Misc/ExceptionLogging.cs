@@ -1,11 +1,39 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using Server.Commands;
+using Server.Targeting;
 
 namespace Server.Misc
 {
     public class ExceptionLogging
     {
+
+        public static void Initialize()
+        {
+            CommandSystem.Register("CreationFrame", AccessLevel.Owner, new CommandEventHandler(CreationFrame_OnCommand));
+        }
+
+        public static void CreationFrame_OnCommand(CommandEventArgs e)
+        {
+            Mobile from = e.Mobile;
+            from.SendMessage("Veuillez choisir l'item.");
+            from.Target = new CreationFrameTarget();
+        }
+
+        public class CreationFrameTarget : Target
+        {
+            public CreationFrameTarget() : base(20, false, TargetFlags.None) { }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                if (targeted is Item)
+                {
+                    Item item = targeted as Item;
+                    from.SendMessage(item.CreationFrame);
+                }
+            }
+        }
 
         public static void WriteLine(Exception e)
         {

@@ -122,7 +122,9 @@ namespace Server.Misc
                     
                     for (int i = 0; i < items.Count; ++i)
                     {
+                        op.WriteLine("=================================================");
                         op.WriteLine("Name: {0}, Type: {1}", items[i].Name, items[i].GetType());
+                        op.WriteLine(items[i].CreationFrame);
                         items[i].Delete();
                     }
                 }
