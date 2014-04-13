@@ -7,6 +7,7 @@ using System.Collections;
 using Server;
 using Server.Items;
 using System.Collections.Generic;
+using Server.Commands;
 
 
 namespace Server.Items
@@ -29,31 +30,32 @@ namespace Server.Items
             get { return m_activate; }
             set { m_activate = value; }
         }
+        
 
-        public static Layer[] m_ItemLayers =
-            {
+        private readonly static List<Layer> m_ItemLayers = new List<Layer>
+            (new Layer[] {
                 Layer.FirstValid,
                 Layer.TwoHanded,
                 Layer.Shoes,
                 Layer.Pants,
-             Layer.Shirt,
+                Layer.Shirt,
                 Layer.Helm,
                 Layer.Gloves,
                 Layer.Ring,
                 Layer.Neck,
                 Layer.Hair,
-             Layer.Waist,
+                Layer.Waist,
                 Layer.InnerTorso,
                 Layer.Bracelet,
                 Layer.FacialHair,
                 Layer.MiddleTorso,
-             Layer.Earrings,
+                Layer.Earrings,
                 Layer.Arms,
                 Layer.Cloak,
                 Layer.OuterTorso,
                 Layer.OuterLegs,
                 Layer.Mount
-            };
+            });
 
         private static string[] m_PropsToNotChange = new string[]
             {
@@ -106,7 +108,7 @@ namespace Server.Items
         {
             if (from.AccessLevel < AccessLevel.GameMaster)
             {
-                from.SendMessage("Vous ne pouvez utiliser cela.");
+                from.SendMessage("Vous ne pouvez utiliser cela. Veuillez contacter un maitre du jeu.");
                 Misc.AbuseLogging.WriteLine(from, 
                     String.Format("Ce joueur utilise la npcstatue au serial {0}.", this.Serial));
                 return;
@@ -144,46 +146,28 @@ namespace Server.Items
             return true;
         }
 
+        /// <summary>
+        /// Supprime tous les items du mobile <paramref name="from"/> qui sont sur un layer liste dans <paramref name="m_ItemLayers"/>.
+        /// </summary>
+        /// <param name="from">Le mobile dont les items seront supprimes</param>
         public static void CleanupEquipItems(Mobile from)
         {
-            try
-            {
-                ArrayList m_PossessItems = new ArrayList(from.Items);
+            List<Item> m_PossessItems = new List<Item>(from.Items);
 
-                for (int i = 0; i < m_PossessItems.Count; i++)
-                {
-                    Item item = m_PossessItems[i] as Item;
-                    if (Array.IndexOf(m_ItemLayers, item.Layer) != -1)
-                    {
-                        item.Delete();
-                    }
-                }
-            }
-            catch (Exception e)
+            for (int i = 0; i < m_PossessItems.Count; i++)
             {
-                Misc.ExceptionLogging.WriteLine(e);
+                Item item = m_PossessItems[i] as Item;
+                if (m_ItemLayers.Contains(item.Layer))
+                {
+                    item.Delete();
+                }
             }
         }
 
 
         public static void CopyProps(Item dest, Item src)
         {
-            try
-            {
-                PropertyInfo[] props = src.GetType().GetProperties();
-
-                for (int i = 0; i < props.Length; i++)
-                {
-                    if (props[i].CanRead && props[i].CanWrite)
-                    {
-                        props[i].SetValue(dest, props[i].GetValue(src, null), null);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Misc.ExceptionLogging.WriteLine(e);
-            }
+            Dupe.CopyProperties(dest, src, dest.GetType(), m_PropsToNotChange);
         }
         public static void CopyProps(Mobile from, Mobile to)
         {
@@ -298,7 +282,7 @@ namespace Server.Items
 
                     Item copy = m_PossessItems[i] as Item;
 
-                    if (Array.IndexOf(m_ItemLayers, copy.Layer) != -1)
+                    if (m_ItemLayers.Contains(copy.Layer))
                     {
                         Item newItem = CopyItem(copy);
 
@@ -345,6 +329,7 @@ namespace Server.Items
                     }
                     catch (Exception ex)
                     {
+                        Misc.ExceptionLogging.WriteLine(e);
                         Console.WriteLine("Possess: CopyItem Exception: {0}", ex.Message);
                     }
 

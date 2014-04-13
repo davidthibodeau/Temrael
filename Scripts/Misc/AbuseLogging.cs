@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Commands;
+using System;
 using System.Diagnostics;
 using System.IO;
 
@@ -15,7 +16,7 @@ namespace Server.Misc
             {
                 using (StreamWriter sw = new StreamWriter(filepath, true))
                 {
-                    sw.WriteLine("[{0}] {1} : {2}", DateTime.Now, from.NetState, infos);
+                    sw.WriteLine("[{0}] {1} : {2} {3}", DateTime.Now, from.NetState, CommandLogging.Format(from), infos);
                 }
             }
             catch { }

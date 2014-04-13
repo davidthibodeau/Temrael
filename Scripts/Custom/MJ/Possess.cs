@@ -98,6 +98,7 @@ namespace Server
             catch (Exception e)
             {
                 Console.WriteLine("Possess: CopyProps (Mobile) Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e);
             }
 
             if (from is TMobile && to is BaseVendor)
@@ -123,6 +124,7 @@ namespace Server
             catch (Exception e)
             {
                 Console.WriteLine("Possess: CopyProps (Item) Exception: {0}", e.Message);
+                Misc.ExceptionLogging.WriteLine(e);
             }
         }
 
@@ -147,7 +149,7 @@ namespace Server
             {
                 ArrayList m_PossessItems = new ArrayList(from.Items);
 
-                for (int i = 0; i <= m_PossessItems.Count; i++)
+                for (int i = 0; i < m_PossessItems.Count; i++)
                 {
                     Item item = m_PossessItems[i] as Item;
 
@@ -169,7 +171,7 @@ namespace Server
             {
                 ArrayList m_PossessItems = new ArrayList(from.Items);
 
-                for (int i = 0; i <= m_PossessItems.Count; i++)
+                for (int i = 0; i < m_PossessItems.Count; i++)
                 {
                     Item copy = m_PossessItems[i] as Item;
                     Item newItem = CopyItem(copy);
@@ -270,7 +272,7 @@ namespace Server
             {
                 ArrayList m_PossessItems = new ArrayList(from.Items);
 
-                for (int i = 0; i <= m_PossessItems.Count; i++)
+                for (int i = 0; i < m_PossessItems.Count; i++)
                 {
                     Item item = m_PossessItems[i] as Item;
                     item.Delete();
@@ -288,7 +290,7 @@ namespace Server
             {
                 ArrayList m_PossessItems = new ArrayList(from.Items);
 
-                for (int i = 0; i <= m_PossessItems.Count; i++)
+                for (int i = 0; i < m_PossessItems.Count; i++)
                 {
                     Item item = m_PossessItems[i] as Item;
                     if (Array.IndexOf(m_ItemLayers, item.Layer) != -1)
@@ -309,7 +311,7 @@ namespace Server
             {
                 ArrayList m_PossessItems = new ArrayList(from.Items);
 
-                for (int i = 0; i <= m_PossessItems.Count; i++)
+                for (int i = 0; i < m_PossessItems.Count; i++)
                 {
                     Item item = m_PossessItems[i] as Item;
                     if (item.ItemID == 7939)

@@ -202,8 +202,9 @@ namespace Server.Commands
                         props[i].SetValue(dest, props[i].GetValue(src, null), null);
                     }
                 }
-                catch
+                catch (Exception e)
                 {
+                    Misc.ExceptionLogging.WriteLine(e, "item type: {0}. props that failed: {1}", dest.GetType(), props[i]);
                     //Console.WriteLine( "Denied" );
                 }
             }
