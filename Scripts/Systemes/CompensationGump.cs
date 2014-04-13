@@ -542,7 +542,8 @@ namespace Server.Systemes
                 else
                 {
                     from.SendMessage("Le personnage n'a pas été changé.");
-                    from.SendGump(new CompensationGump(mj));
+                    if (from.AccessLevel == AccessLevel.Owner)
+                        from.SendGump(new CompensationGump(mj));
                 }
             }
         }
