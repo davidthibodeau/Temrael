@@ -33,7 +33,7 @@ namespace Server.Commands
 
 			Register( "GetFollowers", AccessLevel.GameMaster, new CommandEventHandler( GetFollowers_OnCommand ) );
 
-			Register( "ClearFacet", AccessLevel.Administrator, new CommandEventHandler( ClearFacet_OnCommand ) );
+			//Register( "ClearFacet", AccessLevel.Administrator, new CommandEventHandler( ClearFacet_OnCommand ) );
 
 			Register( "Where", AccessLevel.Counselor, new CommandEventHandler( Where_OnCommand ) );
 
