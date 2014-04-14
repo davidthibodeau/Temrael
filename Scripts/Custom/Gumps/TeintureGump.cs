@@ -493,10 +493,7 @@ namespace Server.Gumps
                             from.SendGump(new TeintureGump(from, TeintureTabs.Baies, m_tub));
                         else if (m_tub.Redyable)
                         {
-                            if (((TMobile)from).LastTeinture != null)
-                                m_tub.Hue = ((TMobile)from).LastTeinture;
-                            else
-                                from.SendMessage("Vous n'avez pas de derniere teinture d'enregistre.");
+                            m_tub.Hue = ((TMobile)from).LastTeinture;
 
                             from.SendGump(new TeintureGump(from, TeintureTabs.Baies, m_tub));
                         }

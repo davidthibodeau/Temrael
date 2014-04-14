@@ -72,26 +72,24 @@ namespace Server.Items
             for (int i = 0; i < 105; i++)
             {
                 Aptitude entry = (Aptitude)i;
-               // DivineSpellBookEntry entry = (DivineSpellBookEntry)NewDivineSpellbookGump.m_DivineSpellBookEntry[i];
+                // DivineSpellBookEntry entry = (DivineSpellBookEntry)NewDivineSpellbookGump.m_DivineSpellBookEntry[i];
 
-                if (entry != null)
-                {
-                    //string name = entry.Nom;
-                    //int scrollappearance = 7971;
-                    //int scrollappearancea = 7971;
-                    //Spell spell = SpellRegistry.NewSpell(entry.SpellID, e.Mobile, null);
-                    //int SpellID = entry.SpellID;
-                    //int hue = m_CerclesHue[entry.Cercle];
+                //string name = entry.Nom;
+                //int scrollappearance = 7971;
+                //int scrollappearancea = 7971;
+                //Spell spell = SpellRegistry.NewSpell(entry.SpellID, e.Mobile, null);
+                //int SpellID = entry.SpellID;
+                //int hue = m_CerclesHue[entry.Cercle];
 
-                    //if (spell != null)
-                    //{
-                        //Type spelltype = spell.GetType();
+                //if (spell != null)
+                //{
+                //Type spelltype = spell.GetType();
 
-                        //if (spelltype != null && name != null && scrollappearance != 0)
-                        //{
-                            //string final = m_Template;
+                //if (spelltype != null && name != null && scrollappearance != 0)
+                //{
+                //string final = m_Template;
 
-                            string final = @"
+                string final = @"
         [CommandProperty(AccessLevel.GameMaster)]
         public double {conn}
         {
@@ -99,19 +97,19 @@ namespace Server.Items
             set { this[NAptitude.{conn}] = value; }
         }
 ";
-                            final = final.Replace("{conn}", entry.ToString());
-                            //final = final.Replace("{scrollappearance}", scrollappearance.ToString());
-                            //final = final.Replace("{scrollappearancea}", scrollappearancea.ToString());
-                            //final = final.Replace("{spelltype}", spelltype.Name);
-                            //final = final.Replace("{spellid}", SpellID.ToString());
-                            //final = final.Replace("{huer}", hue.ToString());
+                final = final.Replace("{conn}", entry.ToString());
+                //final = final.Replace("{scrollappearance}", scrollappearance.ToString());
+                //final = final.Replace("{scrollappearancea}", scrollappearancea.ToString());
+                //final = final.Replace("{spelltype}", spelltype.Name);
+                //final = final.Replace("{spellid}", SpellID.ToString());
+                //final = final.Replace("{huer}", hue.ToString());
 
-                            //m_TotalTemplate = m_TotalTemplate + final;
+                //m_TotalTemplate = m_TotalTemplate + final;
 
-                            m_TotalTemplate = m_TotalTemplate + final;
-                        //}
-                    //}
-                }
+                m_TotalTemplate = m_TotalTemplate + final;
+                //}
+                //}
+                
             }
 
             m_TotalTemplate = m_TotalTemplate + m_TemplateSuffixe;
