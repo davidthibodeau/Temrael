@@ -73,7 +73,7 @@ namespace Server.Misc
         public DateTime NextWeatherChange { get { return m_NextWeatherChange; } set { m_NextWeatherChange = value; } }
         public bool IsStatic { get { return m_IsStatic; } }
         public bool IsRaining { get { return m_Cloud == DensityOfCloud.FaiblePluie || m_Cloud == DensityOfCloud.Pluie || m_Cloud == DensityOfCloud.FortePluie; } }
-        public bool IsUnderEarth { get { return m_Wind == QuantityOfWind.Aucun; } }
+        public bool IsUnderEarth { get { return false; } } //{ get { return m_Wind == QuantityOfWind.Aucun; } }
         public bool IsUnderZero { get { return Map.Felucca.Season == (int)Season.Winter; } }
 
         public static Weather GetWeather(IPoint2D p)
@@ -172,7 +172,7 @@ namespace Server.Misc
         public virtual DensityOfCloud GenerateCloud()
         {
             if (!IsUnderEarth)
-            {
+            {  
                 int c = (int)m_Cloud;
 
                 if (c == 0 || c == 1)
