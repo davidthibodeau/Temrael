@@ -3666,8 +3666,6 @@
     <Compile Include=".\Vendor\PlayerVendorDeed.cs" />
     <Compile Include=".\Vendor\PlayerVendorGumps.cs" />
     <Compile Include="Custom\Commandes\Follow.cs" />
-    <Compile Include="Custom\Misc\AddonGenerator.cs" />
-    <Compile Include="Custom\Mobiles\Monstres\Demoniaques\GolemArcanique.cs" />
     <Compile Include="Systemes\Geopolitique\Categorie.cs" />
     <Compile Include="Systemes\Geopolitique\Employe.cs" />
     <Compile Include="Systemes\Geopolitique\EmployeGump.cs" />

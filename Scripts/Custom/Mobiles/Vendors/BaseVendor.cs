@@ -254,7 +254,7 @@ namespace Server.Mobiles
 			return Utility.RandomBool();
 		}
 
-		public virtual void InitBody()
+		public override void InitBody()
 		{
 			InitStats( 100, 100, 25 );
 
@@ -289,7 +289,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public virtual int GetShoeHue()
+		public override int GetShoeHue()
 		{
 			if ( 0.1 > Utility.RandomDouble() )
 				return 0;
@@ -469,7 +469,7 @@ namespace Server.Mobiles
 			return Utility.RandomHairHue();
 		}
 
-		public virtual void InitOutfit()
+		public override void InitOutfit()
 		{
 			switch ( Utility.Random( 3 ) )
 			{
