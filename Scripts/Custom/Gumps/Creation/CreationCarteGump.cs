@@ -61,99 +61,99 @@ namespace Server.Gumps
             x = XBase;
             y = YBase;
 
-            if (Temrael.beta)
-            {
-                AddImage(175, 150, 448);
-            }
-            else
-            {
-                AddBackground(170, 145, 445, 478, 2620);
-                AddImage(175, 150, 1766);
-            }
+            //if (Temrael.beta)
+            //{
+            //    AddImage(175, 150, 448);
+            //}
+            //else
+            //{
+            AddBackground(170, 145, 445, 478, 2620);
+            AddImage(175, 150, 1766);
+            //}
 
             //Hasteindale
-            if (Temrael.beta)
+            //if (Temrael.beta)
+            //{
+            //    if (m_destination == DestinationsDepart.Hasteindale)
+            //    {
+            //        AddButton(446, 354, 9009, 9009, 8, GumpButtonType.Reply, 0);
+            //        AddTooltip(3006430);
+            //    }
+            //    else
+            //    {
+            //        AddButton(446, 354, 9008, 9008, 8, GumpButtonType.Reply, 0);
+            //        AddTooltip(3006430);
+            //    }
+            //}
+            //else
+            //{
+            //184, 148
+            if (m_destination == DestinationsDepart.Brandheim)
             {
-                if (m_destination == DestinationsDepart.Hasteindale)
-                {
-                    AddButton(446, 354, 9009, 9009, 8, GumpButtonType.Reply, 0);
-                    AddTooltip(3006430);
-                }
-                else
-                {
-                    AddButton(446, 354, 9008, 9008, 8, GumpButtonType.Reply, 0);
-                    AddTooltip(3006430);
-                }
+                AddButton(442, 250, 9009, 9009, 9, GumpButtonType.Reply, 0);
+                AddTooltip(3006432);
             }
             else
             {
-                //184, 148
-                if (m_destination == DestinationsDepart.Brandheim)
-                {
-                    AddButton(442, 250, 9009, 9009, 9, GumpButtonType.Reply, 0);
-                    AddTooltip(3006432);
-                }
-                else
-                {
-                    AddButton(442, 250, 9008, 9008, 9, GumpButtonType.Reply, 0);
-                    AddTooltip(3006432);
-                }
-
-                if (m_destination == DestinationsDepart.Elamsham)
-                {
-                    AddButton(448, 290, 9009, 9009, 10, GumpButtonType.Reply, 0);
-                    AddTooltip(3006433);
-                }
-                else
-                {
-                    AddButton(448, 290, 9008, 9008, 10, GumpButtonType.Reply, 0);
-                    AddTooltip(3006433);
-                }
-
-                if (m_destination == DestinationsDepart.Citarel)
-                {
-                    AddButton(559, 347, 9009, 9009, 11, GumpButtonType.Reply, 0);
-                    AddTooltip(3006434);
-                }
-                else
-                {
-                    AddButton(559, 347, 9008, 9008, 11, GumpButtonType.Reply, 0);
-                    AddTooltip(3006434);
-                }
-
-                if (m_destination == DestinationsDepart.Serenite)
-                {
-                    AddButton(468, 376, 9009, 9009, 12, GumpButtonType.Reply, 0);
-                    AddTooltip(3006435);
-                }
-                else
-                {
-                    AddButton(468, 376, 9008, 9008, 12, GumpButtonType.Reply, 0);
-                    AddTooltip(3006435);
-                }
-
-                if (m_destination == DestinationsDepart.Melandre)
-                {
-                    AddButton(512, 462, 9009, 9009, 13, GumpButtonType.Reply, 0);
-                    AddTooltip(3006436);
-                }
-                else
-                {
-                    AddButton(512, 462, 9008, 9008, 13, GumpButtonType.Reply, 0);
-                    AddTooltip(3006436);
-                }
-
-                /*if (m_destination == DestinationsDepart.Tartarus)
-                {
-                    AddButton(381, 519, 9009, 9009, 14, GumpButtonType.Reply, 0);
-                    AddTooltip(3006437);
-                }
-                else
-                {
-                    AddButton(381, 519, 9008, 9008, 14, GumpButtonType.Reply, 0);
-                    AddTooltip(3006437);
-                }*/
+                AddButton(442, 250, 9008, 9008, 9, GumpButtonType.Reply, 0);
+                AddTooltip(3006432);
             }
+
+            if (m_destination == DestinationsDepart.Elamsham)
+            {
+                AddButton(448, 290, 9009, 9009, 10, GumpButtonType.Reply, 0);
+                AddTooltip(3006433);
+            }
+            else
+            {
+                AddButton(448, 290, 9008, 9008, 10, GumpButtonType.Reply, 0);
+                AddTooltip(3006433);
+            }
+
+            if (m_destination == DestinationsDepart.Citarel)
+            {
+                AddButton(559, 347, 9009, 9009, 11, GumpButtonType.Reply, 0);
+                AddTooltip(3006434);
+            }
+            else
+            {
+                AddButton(559, 347, 9008, 9008, 11, GumpButtonType.Reply, 0);
+                AddTooltip(3006434);
+            }
+
+            if (m_destination == DestinationsDepart.Serenite)
+            {
+                AddButton(468, 376, 9009, 9009, 12, GumpButtonType.Reply, 0);
+                AddTooltip(3006435);
+            }
+            else
+            {
+                AddButton(468, 376, 9008, 9008, 12, GumpButtonType.Reply, 0);
+                AddTooltip(3006435);
+            }
+
+            if (m_destination == DestinationsDepart.Melandre)
+            {
+                AddButton(512, 462, 9009, 9009, 13, GumpButtonType.Reply, 0);
+                AddTooltip(3006436);
+            }
+            else
+            {
+                AddButton(512, 462, 9008, 9008, 13, GumpButtonType.Reply, 0);
+                AddTooltip(3006436);
+            }
+
+            /*if (m_destination == DestinationsDepart.Tartarus)
+            {
+                AddButton(381, 519, 9009, 9009, 14, GumpButtonType.Reply, 0);
+                AddTooltip(3006437);
+            }
+            else
+            {
+                AddButton(381, 519, 9008, 9008, 14, GumpButtonType.Reply, 0);
+                AddTooltip(3006437);
+            }*/
+            //}
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)

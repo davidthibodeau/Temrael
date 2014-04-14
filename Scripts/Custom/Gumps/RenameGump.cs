@@ -40,7 +40,7 @@ namespace Server.Gumps
                         from.CloseGump(typeof(RenameGump));
                         break;
                     }
-                    from.SendGump(new RenameGump((TMobile)from));
+                    //from.SendGump(new RenameGump((TMobile)from));
             }
         }
     }

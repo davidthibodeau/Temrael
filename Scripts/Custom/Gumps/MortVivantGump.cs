@@ -69,8 +69,8 @@ namespace Server.Gumps
 
                         m_From.Hits = (m_From.HitsMax / 2) + Utility.RandomMinMax(-5, 5);
                         m_From.Frozen = true;
-                        if (Temrael.beta)
-                            m_From.Map = Map.Ilshenar;
+                        //if (Temrael.beta)
+                        //    m_From.Map = Map.Ilshenar;
                         m_From.Location = m_From.EndroitMort;
                         m_From.Mort = false;
                         m_From.Resurrect();

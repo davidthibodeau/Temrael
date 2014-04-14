@@ -322,17 +322,17 @@ namespace Server.SkillHandlers
 					{
 						m_Tamer.RevealingAction();
 
-						switch ( Utility.Random( 5 ) )
-						{
-                            /*case 0: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "J'ai toujours voulu d'un compagnon comme toi."); break;
-                            case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Prêt a partir à l'aventure l'ami ?"); break;
-                            case 2: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Je peux t'offrir dequoi te nourrir."); break;
-                            case 3: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Allez viens par ici."); break;
-                            case 4: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Suis moi le copain."); break;*/
-							/*case 0: m_Tamer.PublicOverheadMessage( MessageType.Regular, 0x3B2, Utility.Random( 502790, 4 ) ); break;
-							case 1: m_Tamer.PublicOverheadMessage( MessageType.Regular, 0x3B2, Utility.Random( 1005608, 6 ) ); break;
-							case 2: m_Tamer.PublicOverheadMessage( MessageType.Regular, 0x3B2, Utility.Random( 1010593, 4 ) ); break;*/
-						}
+                        //switch ( Utility.Random( 5 ) )
+                        //{
+                        //    /*case 0: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "J'ai toujours voulu d'un compagnon comme toi."); break;
+                        //    case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Prêt a partir à l'aventure l'ami ?"); break;
+                        //    case 2: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Je peux t'offrir dequoi te nourrir."); break;
+                        //    case 3: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Allez viens par ici."); break;
+                        //    case 4: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Suis moi le copain."); break;*/
+                        //    /*case 0: m_Tamer.PublicOverheadMessage( MessageType.Regular, 0x3B2, Utility.Random( 502790, 4 ) ); break;
+                        //    case 1: m_Tamer.PublicOverheadMessage( MessageType.Regular, 0x3B2, Utility.Random( 1005608, 6 ) ); break;
+                        //    case 2: m_Tamer.PublicOverheadMessage( MessageType.Regular, 0x3B2, Utility.Random( 1010593, 4 ) ); break;*/
+                        //}
 
 						if ( !alreadyOwned ) // Passively check animal lore for gain
 							m_Tamer.CheckTargetSkill( SkillName.Elevage, m_Creature, 0.0, 120.0 );
