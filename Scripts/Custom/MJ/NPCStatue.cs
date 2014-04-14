@@ -329,7 +329,7 @@ namespace Server.Items
                     }
                     catch (Exception ex)
                     {
-                        Misc.ExceptionLogging.WriteLine(e);
+                        Misc.ExceptionLogging.WriteLine(ex);
                         Console.WriteLine("Possess: CopyItem Exception: {0}", ex.Message);
                     }
 
