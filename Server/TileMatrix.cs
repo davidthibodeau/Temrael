@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: TileMatrix.cs 621 2010-12-13 03:37:33Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace Server
 {
@@ -34,6 +35,7 @@ namespace Server
 		private StaticTile[][][] m_EmptyStaticBlock;
 
 		private FileStream m_Map;
+		private UOPIndex m_MapIndex;
 
 		private FileStream m_Index;
 		private BinaryReader m_IndexReader;
@@ -50,13 +52,13 @@ namespace Server
 		private int[][] m_StaticPatches;
 		private int[][] m_LandPatches;
 
-		public Map Owner
+		/*public Map Owner
 		{
 			get
 			{
 				return m_Owner;
 			}
-		}
+		}*/
 
 		public TileMatrixPatch Patch
 		{
@@ -82,7 +84,7 @@ namespace Server
 			}
 		}
 
-		public int Width
+		/*public int Width
 		{
 			get
 			{
@@ -96,13 +98,18 @@ namespace Server
 			{
 				return m_Height;
 			}
-		}
+		}*/
 
 		public FileStream MapStream
 		{
 			get{ return m_Map; }
 			set{ m_Map = value; }
 		}
+
+		/*public bool MapUOPPacked
+		{
+			get{ return ( m_MapIndex != null ); }
+		}*/
 
 		public FileStream IndexStream
 		{
@@ -132,18 +139,25 @@ namespace Server
 
 		public TileMatrix( Map owner, int fileIndex, int mapID, int width, int height )
 		{
-			for ( int i = 0; i < m_Instances.Count; ++i )
-			{
-				TileMatrix tm = m_Instances[i];
-
-				if ( tm.m_FileIndex == fileIndex )
+			lock (m_Instances) {
+				for ( int i = 0; i < m_Instances.Count; ++i )
 				{
-					tm.m_FileShare.Add( this );
-					m_FileShare.Add( tm );
+					TileMatrix tm = m_Instances[i];
+
+					if ( tm.m_FileIndex == fileIndex )
+					{
+						lock (m_FileShare) {
+							lock (tm.m_FileShare) {
+								tm.m_FileShare.Add( this );
+								m_FileShare.Add( tm );
+							}
+						}
+					}
 				}
+
+				m_Instances.Add( this );
 			}
 
-			m_Instances.Add( this );
 			m_FileIndex = fileIndex;
 			m_Width = width;
 			m_Height = height;
@@ -157,7 +171,19 @@ namespace Server
 				string mapPath = Core.FindDataFile( "map{0}.mul", fileIndex );
 
 				if ( File.Exists( mapPath ) )
+				{
 					m_Map = new FileStream( mapPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
+				}
+				else
+				{
+					mapPath = Core.FindDataFile( "map{0}LegacyMUL.uop", fileIndex );
+
+					if ( File.Exists( mapPath ) )
+					{
+						m_Map = new FileStream( mapPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite );
+						m_MapIndex = new UOPIndex( m_Map );
+					}
+				}
 
 				string indexPath = Core.FindDataFile( "staidx{0}.mul", fileIndex );
 
@@ -201,6 +227,7 @@ namespace Server
 			}
 		}
 
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		public void SetStaticBlock( int x, int y, StaticTile[][][] value )
 		{
 			if ( x < 0 || y < 0 || x >= m_BlockWidth || y >= m_BlockHeight )
@@ -217,6 +244,7 @@ namespace Server
 			m_StaticPatches[x][y >> 5] |= 1 << (y & 0x1F);
 		}
 
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		public StaticTile[][][] GetStaticBlock( int x, int y )
 		{
 			if ( x < 0 || y < 0 || x >= m_BlockWidth || y >= m_BlockHeight || m_Statics == null || m_Index == null )
@@ -229,23 +257,27 @@ namespace Server
 
 			if ( tiles == null )
 			{
-				for ( int i = 0; tiles == null && i < m_FileShare.Count; ++i )
-				{
-					TileMatrix shared = m_FileShare[i];
-
-					if ( x >= 0 && x < shared.m_BlockWidth && y >= 0 && y < shared.m_BlockHeight )
+				lock (m_FileShare) {
+					for ( int i = 0; tiles == null && i < m_FileShare.Count; ++i )
 					{
-						StaticTile[][][][] theirTiles = shared.m_StaticTiles[x];
+						TileMatrix shared = m_FileShare[i];
 
-						if ( theirTiles != null )
-							tiles = theirTiles[y];
+						lock (shared) {
+							if ( x >= 0 && x < shared.m_BlockWidth && y >= 0 && y < shared.m_BlockHeight )
+							{
+								StaticTile[][][][] theirTiles = shared.m_StaticTiles[x];
 
-						if ( tiles != null )
-						{
-							int[] theirBits = shared.m_StaticPatches[x];
+								if ( theirTiles != null )
+									tiles = theirTiles[y];
 
-							if ( theirBits != null && (theirBits[y >> 5] & (1 << (y & 0x1F))) != 0 )
-								tiles = null;
+								if ( tiles != null )
+								{
+									int[] theirBits = shared.m_StaticPatches[x];
+
+									if ( theirBits != null && (theirBits[y >> 5] & (1 << (y & 0x1F))) != 0 )
+										tiles = null;
+								}
+							}
 						}
 					}
 				}
@@ -266,17 +298,18 @@ namespace Server
 			return tiles[x & 0x7][y & 0x7];
 		}
 
-		private static TileList m_TilesList = new TileList();
+		private TileList m_TilesList = new TileList();
 
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		public StaticTile[] GetStaticTiles( int x, int y, bool multis )
 		{
 			StaticTile[][][] tiles = GetStaticBlock( x >> 3, y >> 3 );
 
 			if ( multis )
 			{
-				IPooledEnumerable eable = m_Owner.GetMultiTilesAt( x, y );
+				IPooledEnumerable<StaticTile[]> eable = m_Owner.GetMultiTilesAt( x, y );
 
-				if ( eable == Map.NullEnumerable.Instance )
+				if ( eable == Map.NullEnumerable<StaticTile[]>.Instance )
 					return tiles[x & 0x7][y & 0x7];
 
 				bool any = false;
@@ -304,6 +337,7 @@ namespace Server
 			}
 		}
 
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		public void SetLandBlock( int x, int y, LandTile[] value )
 		{
 			if ( x < 0 || y < 0 || x >= m_BlockWidth || y >= m_BlockHeight )
@@ -320,6 +354,7 @@ namespace Server
 			m_LandPatches[x][y >> 5] |= 1 << (y & 0x1F);
 		}
 
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		public LandTile[] GetLandBlock( int x, int y )
 		{
 			if ( x < 0 || y < 0 || x >= m_BlockWidth || y >= m_BlockHeight || m_Map == null )
@@ -332,23 +367,27 @@ namespace Server
 
 			if ( tiles == null )
 			{
-				for ( int i = 0; tiles == null && i < m_FileShare.Count; ++i )
-				{
-					TileMatrix shared = m_FileShare[i];
-
-					if ( x >= 0 && x < shared.m_BlockWidth && y >= 0 && y < shared.m_BlockHeight )
+				lock (m_FileShare) {
+					for ( int i = 0; tiles == null && i < m_FileShare.Count; ++i )
 					{
-						LandTile[][] theirTiles = shared.m_LandTiles[x];
+						TileMatrix shared = m_FileShare[i];
 
-						if ( theirTiles != null )
-							tiles = theirTiles[y];
+						lock (shared) {
+							if ( x >= 0 && x < shared.m_BlockWidth && y >= 0 && y < shared.m_BlockHeight )
+							{
+								LandTile[][] theirTiles = shared.m_LandTiles[x];
 
-						if ( tiles != null )
-						{
-							int[] theirBits = shared.m_LandPatches[x];
+								if ( theirTiles != null )
+									tiles = theirTiles[y];
 
-							if ( theirBits != null && (theirBits[y >> 5] & (1 << (y & 0x1F))) != 0 )
-								tiles = null;
+								if ( tiles != null )
+								{
+									int[] theirBits = shared.m_LandPatches[x];
+
+									if ( theirBits != null && (theirBits[y >> 5] & (1 << (y & 0x1F))) != 0 )
+										tiles = null;
+								}
+							}
 						}
 					}
 				}
@@ -369,10 +408,11 @@ namespace Server
 			return tiles[((y & 0x7) << 3) + (x & 0x7)];
 		}
 
-		private static TileList[][] m_Lists;
+		private TileList[][] m_Lists;
 
-		private static StaticTile[] m_TileBuffer = new StaticTile[128];
+		private StaticTile[] m_TileBuffer = new StaticTile[128];
 
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		private unsafe StaticTile[][][] ReadStaticBlock( int x, int y )
 		{
 			try
@@ -443,10 +483,10 @@ namespace Server
 			}
 			catch ( EndOfStreamException )
 			{
-				if ( DateTime.Now >= m_NextStaticWarning )
+				if ( DateTime.UtcNow >= m_NextStaticWarning )
 				{
 					Console.WriteLine( "Warning: Static EOS for {0} ({1}, {2})", m_Owner, x, y );
-					m_NextStaticWarning = DateTime.Now + TimeSpan.FromMinutes( 1.0 );
+					m_NextStaticWarning = DateTime.UtcNow + TimeSpan.FromMinutes( 1.0 );
 				}
 
 				return m_EmptyStaticBlock;
@@ -462,11 +502,17 @@ namespace Server
 				throw new Exception();
 		}
 
+		[MethodImpl(MethodImplOptions.Synchronized)]
 		private unsafe LandTile[] ReadLandBlock( int x, int y )
 		{
 			try
 			{
-				m_Map.Seek( ((x * m_BlockHeight) + y) * 196 + 4, SeekOrigin.Begin );
+				int offset = ((x * m_BlockHeight) + y) * 196 + 4;
+
+				if ( m_MapIndex != null )
+					offset = m_MapIndex.Lookup( offset );
+
+				m_Map.Seek( offset, SeekOrigin.Begin );
 
 				LandTile[] tiles = new LandTile[64];
 
@@ -483,10 +529,10 @@ namespace Server
 			}
 			catch
 			{
-				if ( DateTime.Now >= m_NextLandWarning )
+				if ( DateTime.UtcNow >= m_NextLandWarning )
 				{
 					Console.WriteLine( "Warning: Land EOS for {0} ({1}, {2})", m_Owner, x, y );
-					m_NextLandWarning = DateTime.Now + TimeSpan.FromMinutes( 1.0 );
+					m_NextLandWarning = DateTime.UtcNow + TimeSpan.FromMinutes( 1.0 );
 				}
 
 				return m_InvalidLandBlock;
@@ -495,7 +541,9 @@ namespace Server
 
 		public void Dispose()
 		{
-			if ( m_Map != null )
+			if ( m_MapIndex != null )
+				m_MapIndex.Close();
+			else if ( m_Map != null )
 				m_Map.Close();
 
 			if ( m_Statics != null )
@@ -506,7 +554,7 @@ namespace Server
 		}
 	}
 
-	[System.Runtime.InteropServices.StructLayout( System.Runtime.InteropServices.LayoutKind.Sequential, Pack=1 )]
+	[StructLayout(LayoutKind.Sequential, Pack=1)]
 	public struct LandTile
 	{
 		internal short m_ID;
@@ -547,7 +595,7 @@ namespace Server
 		}
 	}
 
-	[System.Runtime.InteropServices.StructLayout( System.Runtime.InteropServices.LayoutKind.Sequential, Pack=1 )]
+	[StructLayout(LayoutKind.Sequential, Pack=1)]
 	public struct StaticTile
 	{
 		internal ushort m_ID;
@@ -622,6 +670,132 @@ namespace Server
 			m_Y = y;
 			m_Z = z;
 			m_Hue = hue;
+		}
+	}
+
+	public class UOPIndex
+	{
+		private class UOPEntry : IComparable<UOPEntry>
+		{
+			public int m_Offset;
+			public int m_Length;
+			public int m_Order;
+
+			public UOPEntry( int offset, int length )
+			{
+				m_Offset = offset;
+				m_Length = length;
+				m_Order = 0;
+			}
+
+			public int CompareTo( UOPEntry other )
+			{
+				return m_Order.CompareTo( other.m_Order );
+			}
+		}
+
+		private class OffsetComparer : IComparer<UOPEntry>
+		{
+			public static readonly IComparer<UOPEntry> Instance = new OffsetComparer();
+
+			public OffsetComparer()
+			{
+			}
+
+			public int Compare( UOPEntry x, UOPEntry y )
+			{
+				return x.m_Offset.CompareTo( y.m_Offset );
+			}
+		}
+
+		private BinaryReader m_Reader;
+		private int m_Length;
+		private int m_Version;
+		private UOPEntry[] m_Entries;
+
+		public int Version
+		{
+			get { return m_Version; }
+		}
+
+		public UOPIndex( FileStream stream )
+		{
+			m_Reader = new BinaryReader( stream );
+			m_Length = (int)stream.Length;
+
+			if ( m_Reader.ReadInt32() != 0x50594D )
+				throw new ArgumentException( "Invalid UOP file." );
+
+			m_Version = m_Reader.ReadInt32();
+			m_Reader.ReadInt32();
+			int nextTable = m_Reader.ReadInt32();
+
+			List<UOPEntry> entries = new List<UOPEntry>();
+
+			do
+			{
+				stream.Seek( nextTable, SeekOrigin.Begin );
+				int count = m_Reader.ReadInt32();
+				nextTable = m_Reader.ReadInt32();
+				m_Reader.ReadInt32();
+
+				for ( int i = 0; i < count; ++i )
+				{
+					int offset = m_Reader.ReadInt32();
+
+					if ( offset == 0 )
+					{
+						stream.Seek( 30, SeekOrigin.Current );
+						continue;
+					}
+
+					m_Reader.ReadInt64();
+					int length = m_Reader.ReadInt32();
+
+					entries.Add( new UOPEntry( offset, length ) );
+
+					stream.Seek( 18, SeekOrigin.Current );
+				}
+			}
+			while ( nextTable != 0 && nextTable < m_Length );
+
+			entries.Sort( OffsetComparer.Instance );
+
+			for ( int i = 0; i < entries.Count; ++i )
+			{
+				stream.Seek( entries[i].m_Offset + 2, SeekOrigin.Begin );
+
+				int dataOffset = m_Reader.ReadInt16();
+				entries[i].m_Offset += 4 + dataOffset;
+
+				stream.Seek( dataOffset, SeekOrigin.Current );
+				entries[i].m_Order = m_Reader.ReadInt32();
+			}
+
+			entries.Sort();
+			m_Entries = entries.ToArray();
+		}
+
+		public int Lookup( int offset )
+		{
+			int total = 0;
+
+			for ( int i = 0; i < m_Entries.Length; ++i )
+			{
+				int newTotal = total + m_Entries[i].m_Length;
+
+				if ( offset < newTotal )
+					return m_Entries[i].m_Offset + ( offset - total );
+
+				total = newTotal;
+			}
+
+			return m_Length;
+		}
+
+		public void Close()
+		{
+			m_Reader.Close();
 		}
 	}
 }

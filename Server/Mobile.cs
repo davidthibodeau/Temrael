@@ -3304,7 +3304,7 @@ namespace Server
 
 			if( m_Map != null )
 			{
-				IPooledEnumerable eable = m_Map.GetObjectsInRange( m_Location, Core.GlobalMaxUpdateRange );
+                IPooledEnumerable<IEntity> eable = m_Map.GetObjectsInRange(m_Location, Core.GlobalMaxUpdateRange);
 
 				foreach( object o in eable )
 				{
@@ -4010,7 +4010,7 @@ namespace Server
 				Packet animPacket = null;//new DeathAnimation( this, c );
 				Packet remPacket = null;//this.RemovePacket;
 
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -4365,7 +4365,7 @@ namespace Server
 
 							if( Mobile.DragEffects && map != null && (root == null || root is Item) )
 							{
-								IPooledEnumerable eable = map.GetClientsInRange( from.Location );
+                                IPooledEnumerable<NetState> eable = map.GetClientsInRange(from.Location);
 								Packet p = null;
 
 								foreach( NetState ns in eable )
@@ -4500,7 +4500,7 @@ namespace Server
 
 				if( map != null && (root == null || root is Item) )
 				{
-					IPooledEnumerable eable = map.GetClientsInRange( m_Location );
+                    IPooledEnumerable<NetState> eable = map.GetClientsInRange(m_Location);
 					Packet p = null;
 
 					foreach( NetState ns in eable )
@@ -4742,42 +4742,42 @@ namespace Server
 
 		#region Get*InRange
 
-		public IPooledEnumerable GetItemsInRange( int range )
+		public IPooledEnumerable<Item> GetItemsInRange(int range)
 		{
 			Map map = m_Map;
 
 			if( map == null )
-				return Server.Map.NullEnumerable.Instance;
+				return Server.Map.NullEnumerable<Item>.Instance;
 
 			return map.GetItemsInRange( m_Location, range );
 		}
 
-		public IPooledEnumerable GetObjectsInRange( int range )
+		public IPooledEnumerable<IEntity> GetObjectsInRange(int range)
 		{
 			Map map = m_Map;
 
 			if( map == null )
-				return Server.Map.NullEnumerable.Instance;
+				return Server.Map.NullEnumerable<IEntity>.Instance;
 
 			return map.GetObjectsInRange( m_Location, range );
 		}
 
-		public IPooledEnumerable GetMobilesInRange( int range )
+		public IPooledEnumerable<Mobile> GetMobilesInRange(int range)
 		{
 			Map map = m_Map;
 
 			if( map == null )
-				return Server.Map.NullEnumerable.Instance;
+				return Server.Map.NullEnumerable<Mobile>.Instance;
 
 			return map.GetMobilesInRange( m_Location, range );
 		}
 
-		public IPooledEnumerable GetClientsInRange( int range )
+		public IPooledEnumerable<NetState> GetClientsInRange(int range)
 		{
 			Map map = m_Map;
 
 			if( map == null )
-				return Server.Map.NullEnumerable.Instance;
+				return Server.Map.NullEnumerable<NetState>.Instance;
 
 			return map.GetClientsInRange( m_Location, range );
 		}
@@ -4844,9 +4844,9 @@ namespace Server
 
 			if( m_Map != null )
 			{
-				IPooledEnumerable eable = m_Map.GetObjectsInRange( m_Location, range );
+                IPooledEnumerable<IEntity> eable = m_Map.GetObjectsInRange(m_Location, range);
 
-				foreach( object o in eable )
+				foreach(IEntity o in eable)
 				{
 					if( o is Mobile )
 					{
@@ -5309,7 +5309,7 @@ namespace Server
 			if( map == null )
 				return;
 
-			IPooledEnumerable eable = map.GetClientsInRange( m_Location );
+            IPooledEnumerable<NetState> eable = map.GetClientsInRange(m_Location);
 
 			Packet pNew = null;
 			Packet pOld = null;
@@ -6268,7 +6268,7 @@ namespace Server
 				Packet p = null;
 				//Packet pNew = null;
 
-				IPooledEnumerable eable = map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -6318,7 +6318,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -6587,19 +6587,12 @@ namespace Server
 		{
 			if( m_Map != null )
 			{
-				Packet p = null;
-
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
 					if( state != m_NetState && (everyone || !state.Mobile.CanSee( this )) )
-					{
-						if( p == null )
-							p = this.RemovePacket;
-
-						state.Send( p );
-					}
+                        state.Send(this.RemovePacket);
 				}
 
 				eable.Free();
@@ -6612,25 +6605,25 @@ namespace Server
 
 			if( m_Map != null && ns != null )
 			{
-				IPooledEnumerable eable = m_Map.GetObjectsInRange( m_Location, Core.GlobalMaxUpdateRange );
+                IPooledEnumerable<IEntity> eable = m_Map.GetObjectsInRange(m_Location, Core.GlobalMaxUpdateRange);
 
-				foreach( object o in eable )
-				{
-					if( o is Mobile )
-					{
-						Mobile m = (Mobile)o;
+                foreach (IEntity o in eable)
+                {
+                    if (o is Mobile)
+                    {
+                        Mobile m = (Mobile)o;
 
-						if( m != this && Utility.InUpdateRange( m_Location, m.m_Location ) )
-							ns.Send( m.RemovePacket );
-					}
-					else if( o is Item )
-					{
-						Item item = (Item)o;
+                        if (m != this && Utility.InUpdateRange(m_Location, m.m_Location))
+                            ns.Send(m.RemovePacket);
+                    }
+                    else if (o is Item)
+                    {
+                        Item item = (Item)o;
 
-						if( InRange( item.Location, item.GetUpdateRange( this ) ) )
-							ns.Send( item.RemovePacket );
-					}
-				}
+                        if (InRange(item.Location, item.GetUpdateRange(this)))
+                            ns.Send(item.RemovePacket);
+                    }
+                }
 
 				eable.Free();
 			}
@@ -6815,48 +6808,51 @@ namespace Server
 
 			if( m_Map != null && ns != null )
 			{
-				IPooledEnumerable eable = m_Map.GetObjectsInRange( m_Location, Core.GlobalMaxUpdateRange );
+                IPooledEnumerable<IEntity> eable = m_Map.GetObjectsInRange(m_Location, Core.GlobalMaxUpdateRange);
 
-				foreach( object o in eable )
-				{
-					if( o is Item )
-					{
-						Item item = (Item)o;
+                foreach (IEntity o in eable)
+                {
+                    if (o is Item)
+                    {
+                        Item item = (Item)o;
 
-						if( CanSee( item ) && InRange( item.Location, item.GetUpdateRange( this ) ) )
-							item.SendInfoTo( ns );
-					}
-					else if( o is Mobile )
-					{
-						Mobile m = (Mobile)o;
+                        if (CanSee(item) && InRange(item.Location, item.GetUpdateRange(this)))
+                            item.SendInfoTo(ns);
+                    }
+                    else if (o is Mobile)
+                    {
+                        Mobile m = (Mobile)o;
 
-						if( CanSee( m ) && Utility.InUpdateRange( m_Location, m.m_Location ) )
-						{
-							if ( ns.StygianAbyss ) {
-								ns.Send( new MobileIncoming( this, m ) );
+                        if (CanSee(m) && Utility.InUpdateRange(m_Location, m.m_Location))
+                        {
+                            if (ns.StygianAbyss)
+                            {
+                                ns.Send(new MobileIncoming(this, m));
 
-								if ( m.Poisoned )
-									ns.Send( new HealthbarPoison( m ) );
+                                if (m.Poisoned)
+                                    ns.Send(new HealthbarPoison(m));
 
-								if ( m.Blessed || m.YellowHealthbar )
-									ns.Send( new HealthbarYellow( m ) );
-							} else {
-								ns.Send( new MobileIncomingOld( this, m ) );
-							}
+                                if (m.Blessed || m.YellowHealthbar)
+                                    ns.Send(new HealthbarYellow(m));
+                            }
+                            else
+                            {
+                                ns.Send(new MobileIncomingOld(this, m));
+                            }
 
-							if( m.IsDeadBondedPet )
-								ns.Send( new BondedStatus( 0, m.m_Serial, 1 ) );
+                            if (m.IsDeadBondedPet)
+                                ns.Send(new BondedStatus(0, m.m_Serial, 1));
 
-							if( ObjectPropertyList.Enabled )
-							{
-								ns.Send( m.OPLPacket );
+                            if (ObjectPropertyList.Enabled)
+                            {
+                                ns.Send(m.OPLPacket);
 
-								//foreach ( Item item in m.m_Items )
-								//	ns.Send( item.OPLPacket );
-							}
-						}
-					}
-				}
+                                //foreach ( Item item in m.m_Items )
+                                //	ns.Send( item.OPLPacket );
+                            }
+                        }
+                    }
+                }
 
 				eable.Free();
 			}
@@ -8178,37 +8174,30 @@ namespace Server
 
 					if( m_Map != null )
 					{
-						Packet p = null;
-
-						IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                        IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 						foreach( NetState state in eable )
 						{
-							if( !state.Mobile.CanSee( this ) )
-							{
-								if( p == null )
-									p = this.RemovePacket;
+                            if (!state.Mobile.CanSee(this))
+                                state.Send(this.RemovePacket);
+                            else
+                            {
+                                if (state.StygianAbyss)
+                                    state.Send(new MobileIncoming(state.Mobile, this));
+                                else
+                                    state.Send(new MobileIncomingOld(state.Mobile, this));
 
-								state.Send( p );
-							}
-							else
-							{
-								if ( state.StygianAbyss )
-									state.Send( new MobileIncoming( state.Mobile, this ) );
-								else
-									state.Send( new MobileIncomingOld( state.Mobile, this ) );
+                                if (IsDeadBondedPet)
+                                    state.Send(new BondedStatus(0, m_Serial, 1));
 
-								if( IsDeadBondedPet )
-									state.Send( new BondedStatus( 0, m_Serial, 1 ) );
+                                if (ObjectPropertyList.Enabled)
+                                {
+                                    state.Send(OPLPacket);
 
-								if( ObjectPropertyList.Enabled )
-								{
-									state.Send( OPLPacket );
-
-									//foreach ( Item item in m_Items )
-									//	state.Send( item.OPLPacket );
-								}
-							}
+                                    //foreach ( Item item in m_Items )
+                                    //	state.Send( item.OPLPacket );
+                                }
+                            }
 						}
 
 						eable.Free();
@@ -9311,20 +9300,12 @@ namespace Server
 
 				if( map != null )
 				{
-					// First, send a remove message to everyone who can no longer see us. (inOldRange && !inNewRange)
-					Packet removeThis = null;
-
-					IPooledEnumerable eable = map.GetClientsInRange( oldLocation );
+                    IPooledEnumerable<NetState> eable = map.GetClientsInRange(oldLocation);
 
 					foreach( NetState ns in eable )
 					{
-						if( ns != m_NetState && !Utility.InUpdateRange( newLocation, ns.Mobile.Location ) )
-						{
-							if( removeThis == null )
-								removeThis = this.RemovePacket;
-
-							ns.Send( removeThis );
-						}
+                        if (ns != m_NetState && !Utility.InUpdateRange(newLocation, ns.Mobile.Location))
+                            ns.Send(this.RemovePacket);
 					}
 
 					eable.Free();
@@ -9334,85 +9315,91 @@ namespace Server
 					// Check to see if we are attached to a client
 					if( ourState != null )
 					{
-						eable = map.GetObjectsInRange( newLocation, Core.GlobalMaxUpdateRange );
+						IPooledEnumerable<IEntity> eeable = map.GetObjectsInRange( newLocation, Core.GlobalMaxUpdateRange );
 
 						// We are attached to a client, so it's a bit more complex. We need to send new items and people to ourself, and ourself to other clients
-						foreach( object o in eable )
-						{
-							if( o is Item )
-							{
-								Item item = (Item)o;
+                        foreach (IEntity o in eeable)
+                        {
+                            if (o is Item)
+                            {
+                                Item item = (Item)o;
 
-								int range = item.GetUpdateRange( this );
-								Point3D loc = item.Location;
+                                int range = item.GetUpdateRange(this);
+                                Point3D loc = item.Location;
 
-								if( !Utility.InRange( oldLocation, loc, range ) && Utility.InRange( newLocation, loc, range ) && CanSee( item ) )
-									item.SendInfoTo( ourState );
-							}
-							else if( o != this && o is Mobile )
-							{
-								Mobile m = (Mobile)o;
+                                if (!Utility.InRange(oldLocation, loc, range) && Utility.InRange(newLocation, loc, range) && CanSee(item))
+                                    item.SendInfoTo(ourState);
+                            }
+                            else if (o != this && o is Mobile)
+                            {
+                                Mobile m = (Mobile)o;
 
-								if( !Utility.InUpdateRange( newLocation, m.m_Location ) )
-									continue;
+                                if (!Utility.InUpdateRange(newLocation, m.m_Location))
+                                    continue;
 
-								bool inOldRange = Utility.InUpdateRange( oldLocation, m.m_Location );
+                                bool inOldRange = Utility.InUpdateRange(oldLocation, m.m_Location);
 
-								if( (isTeleport || !inOldRange) && m.m_NetState != null && m.CanSee( this ) )
-								{
-									if ( m.m_NetState.StygianAbyss ) {
-										m.m_NetState.Send( new MobileIncoming( m, this ) );
+                                if ((isTeleport || !inOldRange) && m.m_NetState != null && m.CanSee(this))
+                                {
+                                    if (m.m_NetState.StygianAbyss)
+                                    {
+                                        m.m_NetState.Send(new MobileIncoming(m, this));
 
-										if ( m_Poison != null )
-											m.m_NetState.Send( new HealthbarPoison( this ) );
+                                        if (m_Poison != null)
+                                            m.m_NetState.Send(new HealthbarPoison(this));
 
-										if ( m_Blessed || m_YellowHealthbar )
-											m.m_NetState.Send( new HealthbarYellow( this ) );
-									} else {
-										m.m_NetState.Send( new MobileIncomingOld( m, this ) );
-									}
+                                        if (m_Blessed || m_YellowHealthbar)
+                                            m.m_NetState.Send(new HealthbarYellow(this));
+                                    }
+                                    else
+                                    {
+                                        m.m_NetState.Send(new MobileIncomingOld(m, this));
+                                    }
 
-									if( IsDeadBondedPet )
-										m.m_NetState.Send( new BondedStatus( 0, m_Serial, 1 ) );
+                                    if (IsDeadBondedPet)
+                                        m.m_NetState.Send(new BondedStatus(0, m_Serial, 1));
 
-									if( ObjectPropertyList.Enabled )
-									{
-										m.m_NetState.Send( OPLPacket );
+                                    if (ObjectPropertyList.Enabled)
+                                    {
+                                        m.m_NetState.Send(OPLPacket);
 
-										//foreach ( Item item in m_Items )
-										//	m.m_NetState.Send( item.OPLPacket );
-									}
-								}
+                                        //foreach ( Item item in m_Items )
+                                        //	m.m_NetState.Send( item.OPLPacket );
+                                    }
+                                }
 
-								if( !inOldRange && CanSee( m ) )
-								{
-									if ( ourState.StygianAbyss ) {
-										ourState.Send( new MobileIncoming( this, m ) );
+                                if (!inOldRange && CanSee(m))
+                                {
+                                    if (ourState.StygianAbyss)
+                                    {
+                                        ourState.Send(new MobileIncoming(this, m));
 
-										if ( m.Poisoned )
-											ourState.Send( new HealthbarPoison( m ) );
+                                        if (m.Poisoned)
+                                            ourState.Send(new HealthbarPoison(m));
 
-										if ( m.Blessed || m.YellowHealthbar )
-											ourState.Send( new HealthbarYellow( m ) );
-									} else {
-										ourState.Send( new MobileIncomingOld( this, m ) );
-									}
+                                        if (m.Blessed || m.YellowHealthbar)
+                                            ourState.Send(new HealthbarYellow(m));
+                                    }
+                                    else
+                                    {
+                                        ourState.Send(new MobileIncomingOld(this, m));
+                                    }
 
-									if( m.IsDeadBondedPet )
-										ourState.Send( new BondedStatus( 0, m.m_Serial, 1 ) );
+                                    if (m.IsDeadBondedPet)
+                                        ourState.Send(new BondedStatus(0, m.m_Serial, 1));
 
-									if( ObjectPropertyList.Enabled )
-									{
-										ourState.Send( m.OPLPacket );
+                                    if (ObjectPropertyList.Enabled)
+                                    {
+                                        ourState.Send(m.OPLPacket);
 
-										//foreach ( Item item in m.m_Items )
-										//	ourState.Send( item.OPLPacket );
-									}
-								}
-							}
-						}
+                                        //foreach ( Item item in m.m_Items )
+                                        //	ourState.Send( item.OPLPacket );
+                                    }
+                                }
+                            }
+                        }
 
-						eable.Free();
+						eeable.Free();
 					}
 					else
 					{
@@ -9756,7 +9743,7 @@ namespace Server
 		{
 			if( m_Map != null )
 			{
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -10404,7 +10391,7 @@ namespace Server
 			{
 				Mobile beholder;
 
-				IPooledEnumerable eable = m.Map.GetClientsInRange( m.m_Location );
+                IPooledEnumerable<NetState> eable = m.Map.GetClientsInRange(m.m_Location);
 
 				Packet hitsPacket = null;
 				Packet statPacketTrue = null, statPacketFalse = null;
@@ -10680,7 +10667,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -10722,7 +10709,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -10752,7 +10739,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -10832,7 +10819,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
@@ -10857,7 +10844,7 @@ namespace Server
 			{
 				Packet p = null;
 
-				IPooledEnumerable eable = m_Map.GetClientsInRange( m_Location );
+                IPooledEnumerable<NetState> eable = m_Map.GetClientsInRange(m_Location);
 
 				foreach( NetState state in eable )
 				{
