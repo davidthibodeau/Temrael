@@ -13,8 +13,7 @@ namespace Server
         private static int m_Tooltip = 0;
         private static string m_Name = "Aucune";
         private static string m_Role = string.Empty;
-        private static AlignementB m_Alignement = AlignementB.Aucun;
-
+ 
         private static String[] m_Noms = new String[]
             {
                 "",

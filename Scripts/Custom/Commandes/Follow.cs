@@ -99,7 +99,6 @@ namespace Server.Scripts.Commands
     public class FollowTimer : Timer
     {
         private Mobile m_From, m_Target;
-        private int m_LastX, m_LastY;
 
         public FollowTimer(Mobile from, Mobile target): base(TimeSpan.FromSeconds(0.25), TimeSpan.FromSeconds(2.5))
         {

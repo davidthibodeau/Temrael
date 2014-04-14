@@ -33,7 +33,6 @@ namespace Server.Systemes.Geopolitique
         private PaiementTimer m_PaiementTimer;
         
         private OrderedDictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
-        private Timer m_Paiement; // Timer pour effectuer un paiement
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Mobile Gestionnaire { get { return m_Gestionnaire; } set { m_Gestionnaire = value; } }

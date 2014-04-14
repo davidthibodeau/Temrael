@@ -78,7 +78,6 @@ namespace Server.Spells
 		public Type[] Reagents{ get{ return m_Info.Reagents; } }
 		public Item Scroll{ get{ return m_Scroll; } }
 
-		private static double NextSpellDelay = 2.0;
 		private static TimeSpan AnimateDelay = TimeSpan.FromSeconds( 1.5 );
 
 		public virtual SkillName CastSkill{ get{ return SkillName.ArtMagique; } }

@@ -86,8 +86,6 @@ namespace Server.Items
 		private bool m_WasBlessed;
 		private InternalTimer m_Timer;
 
-        private bool m_DoubleBed;
-
         public bool DoubleBed { get { return false; } }
 		
 		// Configuration stuff

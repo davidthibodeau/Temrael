@@ -23,9 +23,7 @@ namespace Server.Gumps
     class TeintureGump : Gump
     {
         private Mobile m_From;
-        int m_hue;
         DyeTub m_tub;
-        Item m_item;
         //Server.Gumps.CreationGump.PaperPreviewItem m_previewItem;
         //CreationGump m_gump;
 

@@ -12,7 +12,6 @@ namespace Server.Gumps
 {
     public class CreationEquipementGump : GumpTemrael
     {
-        private TMobile m_from;
         private static List<PaperPreviewItem> m_gumpList = new List<PaperPreviewItem>();
 
         public CreationEquipementGump(TMobile from)

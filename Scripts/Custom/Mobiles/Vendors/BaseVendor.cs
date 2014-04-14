@@ -24,7 +24,6 @@ namespace Server.Mobiles
     public abstract class BaseVendor : Townsperson, IVendor
 	{
 		private const int MaxSell = 500;
-        private Mobile m_buyer;
 
 		protected abstract List<SBInfo> SBInfos { get; }
 

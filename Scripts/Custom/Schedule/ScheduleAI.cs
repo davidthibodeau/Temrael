@@ -16,8 +16,6 @@ namespace Server.Mobiles
 		private bool IsWalking;
 		private PathFollower m_Path;
 		
-		private bool Seated;
-	
 		public ScheduleAI(BaseCreature m, BaseAI a, ScheduleItem s)
 		{
 			m_Mobile = m;

@@ -12,9 +12,6 @@ namespace Server.Gumps
 {
     public class CreationAlignementGump : GumpTemrael
     {
-        private TMobile m_From;
-        private Aura m_aura;
-
         public CreationAlignementGump(TMobile from)
             : base("Alignement", 560, 622)
         {

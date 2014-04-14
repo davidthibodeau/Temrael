@@ -13,7 +13,6 @@ namespace Server
         private static int m_Tooltip = 0;
         private static string m_Name = "Paladin Dechu";
         private static string m_Role = "À venir";
-        private static AlignementB m_Alignement = AlignementB.Mauvais;
 
         private static String[] m_Noms = new String[]
             {

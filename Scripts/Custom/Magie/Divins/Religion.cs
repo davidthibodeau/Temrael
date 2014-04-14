@@ -441,7 +441,6 @@ namespace Server.Spells
 
             private TMobile m_From;
             private Dieux m_Dieux;
-            private Item m_Croix;
 
             public PriereGump(TMobile from, Dieux Dieux)
                 : base(0, 0)
@@ -535,7 +534,6 @@ namespace Server.Spells
             private int m_minPDP;
             private int m_maxPDP;
             private int m_mana;
-            private Item m_Croix;
 
             public DieuxChangeGump(TMobile from, Dieux Dieux, int seconds, int minPDP, int maxPDP, int mana)
                 : base(0, 0)

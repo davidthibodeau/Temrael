@@ -14,7 +14,6 @@ namespace Server.Gumps
     public class FicheAptitudeGump : GumpTemrael
     {
         private TMobile m_from;
-        private int m_page;
 
         public FicheAptitudeGump(TMobile from)
             : this(from, 0)

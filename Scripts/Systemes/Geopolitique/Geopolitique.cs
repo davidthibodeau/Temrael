@@ -16,9 +16,6 @@ namespace Server.Systemes.Geopolitique
         public static Journal journal;
         public static List<TypeTerre> types;
 
-        private static List<Terre> terres;
-        private static List<Categorie> categories;
-
         public static void Configure()
         {
             EventSink.WorldLoad += new WorldLoadEventHandler(Load);
