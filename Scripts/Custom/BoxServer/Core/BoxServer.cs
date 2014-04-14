@@ -38,7 +38,7 @@ namespace TheBox.BoxServer
 		private static void StartServer( object obj )
 		{
 			TcpServerChannel channel = new TcpServerChannel( "boxserver", BoxConfig.Port );
-			ChannelServices.RegisterChannel( channel );
+            ChannelServices.RegisterChannel(channel, true);
 
 			RemotingConfiguration.RegisterWellKnownServiceType( typeof( BoxRemote ), "BoxRemote", WellKnownObjectMode.Singleton );
 
