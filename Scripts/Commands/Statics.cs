@@ -12,16 +12,16 @@ namespace Server
 {
 	public class Statics
 	{
-		public static void Initialize()
-		{
-			CommandSystem.Register( "Freeze", AccessLevel.Administrator, new CommandEventHandler( Freeze_OnCommand ) );
-			CommandSystem.Register( "FreezeMap", AccessLevel.Administrator, new CommandEventHandler( FreezeMap_OnCommand ) );
-			CommandSystem.Register( "FreezeWorld", AccessLevel.Administrator, new CommandEventHandler( FreezeWorld_OnCommand ) );
+        //public static void Initialize()
+        //{
+        //    CommandSystem.Register( "Freeze", AccessLevel.Administrator, new CommandEventHandler( Freeze_OnCommand ) );
+        //    CommandSystem.Register( "FreezeMap", AccessLevel.Administrator, new CommandEventHandler( FreezeMap_OnCommand ) );
+        //    CommandSystem.Register( "FreezeWorld", AccessLevel.Administrator, new CommandEventHandler( FreezeWorld_OnCommand ) );
 
-			CommandSystem.Register( "Unfreeze", AccessLevel.Administrator, new CommandEventHandler( Unfreeze_OnCommand ) );
-			CommandSystem.Register( "UnfreezeMap", AccessLevel.Administrator, new CommandEventHandler( UnfreezeMap_OnCommand ) );
-			CommandSystem.Register( "UnfreezeWorld", AccessLevel.Administrator, new CommandEventHandler( UnfreezeWorld_OnCommand ) );
-		}
+        //    CommandSystem.Register( "Unfreeze", AccessLevel.Administrator, new CommandEventHandler( Unfreeze_OnCommand ) );
+        //    CommandSystem.Register( "UnfreezeMap", AccessLevel.Administrator, new CommandEventHandler( UnfreezeMap_OnCommand ) );
+        //    CommandSystem.Register( "UnfreezeWorld", AccessLevel.Administrator, new CommandEventHandler( UnfreezeWorld_OnCommand ) );
+        //}
 
 		private static Point3D NullP3D = new Point3D( int.MinValue, int.MinValue, int.MinValue );
 

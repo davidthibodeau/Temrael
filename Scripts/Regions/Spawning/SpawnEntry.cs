@@ -320,7 +320,7 @@ namespace Server.Regions
 			CommandSystem.Register( "StartRegionSpawns", AccessLevel.GameMaster, new CommandEventHandler( StartRegionSpawns_OnCommand ) );
 			CommandSystem.Register( "StopAllRegionSpawns", AccessLevel.Administrator, new CommandEventHandler( StopAllRegionSpawns_OnCommand ) );
 			CommandSystem.Register( "StopRegionSpawns", AccessLevel.GameMaster, new CommandEventHandler( StopRegionSpawns_OnCommand ) );
-            CommandSystem.Register("ResetSpawnTime", AccessLevel.Administrator, new CommandEventHandler(ResetSpawnTime_OnCommand));
+            //CommandSystem.Register("ResetSpawnTime", AccessLevel.Administrator, new CommandEventHandler(ResetSpawnTime_OnCommand));
 		}
 
 		private static BaseRegion GetCommandData( CommandEventArgs args )

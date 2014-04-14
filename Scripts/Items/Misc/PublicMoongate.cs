@@ -98,10 +98,10 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 
-		public static void Initialize()
-		{
-			CommandSystem.Register( "MoonGen", AccessLevel.Administrator, new CommandEventHandler( MoonGen_OnCommand ) );
-		}
+        //public static void Initialize()
+        //{
+        //    CommandSystem.Register( "MoonGen", AccessLevel.Administrator, new CommandEventHandler( MoonGen_OnCommand ) );
+        //}
 
 		[Usage( "MoonGen" )]
 		[Description( "Generates public moongates. Removes all old moongates." )]
