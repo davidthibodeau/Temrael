@@ -2191,17 +2191,17 @@ namespace Server.Items
                     int dexBonus = ComputeStatBonus(StatType.Dex), dexReq = ComputeStatReq(StatType.Dex);
                     int intBonus = ComputeStatBonus(StatType.Int), intReq = ComputeStatReq(StatType.Int);
 
-                    if (from.Dex < dexReq || (from.Dex + dexBonus) < 1)
+                    if (from.RawDex < dexReq || (from.Dex + dexBonus) < 1)
                     {
                         from.SendLocalizedMessage(502077); // You do not have enough dexterity to equip this item.
                         return false;
                     }
-                    else if (from.Str < strReq || (from.Str + strBonus) < 1)
+                    else if (from.RawStr < strReq || (from.Str + strBonus) < 1)
                     {
                         from.SendLocalizedMessage(500213); // You are not strong enough to equip that.
                         return false;
                     }
-                    else if (from.Int < intReq || (from.Int + intBonus) < 1)
+                    else if (from.RawInt < intReq || (from.Int + intBonus) < 1)
                     {
                         from.SendMessage("You are not smart enough to equip that.");
                         return false;

@@ -1157,17 +1157,17 @@ namespace Server.Items
 
 				return false;
 			}
-			else if ( from.Dex < DexRequirement )
+			else if ( from.RawDex < DexRequirement )
 			{
 				from.SendMessage( "You are not nimble enough to equip that." );
 				return false;
-			} 
-			else if ( from.Str < AOS.Scale( StrRequirement, 100 - GetLowerStatReq() ) )
+			}
+            else if (from.RawStr < AOS.Scale(StrRequirement, 100 - GetLowerStatReq()))
 			{
 				from.SendLocalizedMessage( 500213 ); // You are not strong enough to equip that.
 				return false;
 			}
-			else if ( from.Int < IntRequirement )
+            else if (from.RawInt < IntRequirement)
 			{
 				from.SendMessage( "You are not smart enough to equip that." );
 				return false;

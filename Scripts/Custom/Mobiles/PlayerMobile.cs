@@ -813,9 +813,9 @@ namespace Server.Mobiles
 
 				bool moved = false;
 
-				int str = this.Str;
-				int dex = this.Dex;
-				int intel = this.Int;
+                int str = this.RawStr;  //this.Str;
+                int dex = this.RawDex;  //this.Dex;
+                int intel = this.RawInt;  //this.Int;
 
 				#region Factions
 				int factionItemCount = 0;

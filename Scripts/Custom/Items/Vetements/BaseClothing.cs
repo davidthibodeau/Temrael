@@ -334,7 +334,7 @@ namespace Server.Items
 					int strBonus = ComputeStatBonus( StatType.Str );
 					int strReq = ComputeStatReq( StatType.Str );
 
-					if( from.Str < strReq || (from.Str + strBonus) < 1 )
+                    if (from.RawStr < strReq || (from.Str + strBonus) < 1)
 					{
 						from.SendLocalizedMessage( 500213 ); // You are not strong enough to equip that.
 						return false;
