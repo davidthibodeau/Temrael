@@ -15,10 +15,10 @@ namespace Server.Mobiles
             Body = 20;
             BaseSoundID = 1170;
 
-            SetStr(196, 220);
-            SetDex(126, 145);
-            SetInt(286, 310);
-
+            SetStr(76, 100);
+            SetDex(96, 115);
+            SetInt(36, 60);
+            
             SetHits(500, 800);
 
             SetDamage(20, 40);

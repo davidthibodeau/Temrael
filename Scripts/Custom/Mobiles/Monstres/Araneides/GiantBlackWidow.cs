@@ -23,11 +23,11 @@ namespace Server.Mobiles
 			Body =  79;
 			BaseSoundID = 0x388; // TODO: validate
 
-			SetStr( 76, 100 );
-			SetDex( 96, 115 );
-			SetInt( 36, 60 );
+            SetStr(196, 220);
+            SetDex(126, 145);
+            SetInt(286, 310);
 
-			SetHits( 1000, 2000 );
+			SetHits( 1500, 2000 );
 
 			SetDamage( 45, 90 );
 
@@ -50,7 +50,7 @@ namespace Server.Mobiles
 			Karma = -3500;
 
             Tamable = true;
-            ControlSlots = 12;
+            ControlSlots = 8;
             MinTameSkill = 110.0;
 
 			PackItem( new SpidersSilk( 5 ) );
