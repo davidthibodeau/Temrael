@@ -226,6 +226,8 @@ namespace Server.Systemes
 
             public void PayerXP()
             {
+                if (m_AccountJoueur == null)
+                    return;
                 TMobile pj = (TMobile)m_AccountJoueur[m_IndexPersonnage];
                 if (pj == null)
                 {
