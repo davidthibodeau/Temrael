@@ -395,7 +395,8 @@ namespace Server.Items
                     if (m_Bowl.Plant.StateOfHydration == StateOfHydration.Low && Utility.Random(m_Bowl.Plant.Hydration * 2) == 0)
                         m_Bowl.Plant.Die(CauseOfDie.NotHydrated);
 
-                    if (m_Bowl.Plant.StateOfHydration == StateOfHydration.Drowned && Utility.Random(101 - m_Bowl.Plant.Hydration) == 0)
+                    if (m_Bowl.Plant.StateOfHydration == StateOfHydration.Drowned 
+                        && Utility.Random((101 - m_Bowl.Plant.Hydration) < 1 ? 1 : 101 - m_Bowl.Plant.Hydration) == 0)
                         m_Bowl.Plant.Die(CauseOfDie.TooHydrated);
 
                     if (m_Bowl.Plant.HasInsects && Utility.RandomBool())
