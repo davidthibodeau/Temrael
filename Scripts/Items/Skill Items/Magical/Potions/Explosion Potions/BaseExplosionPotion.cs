@@ -249,8 +249,8 @@ namespace Server.Items
 			if ( direct )
 				alchemyBonus = (int)(from.Skills.Alchimie.Value / (Core.AOS ? 5 : 10));
 
-            IPooledEnumerable<IEntity> eable = LeveledExplosion ? map.GetObjectsInRange(loc, ExplosionRange)
-                : (IPooledEnumerable<IEntity>)map.GetMobilesInRange(loc, ExplosionRange);
+            IPooledEnumerable eable = LeveledExplosion ? (IPooledEnumerable)map.GetObjectsInRange(loc, ExplosionRange)
+                : (IPooledEnumerable) map.GetMobilesInRange(loc, ExplosionRange);
 
 			ArrayList toExplode = new ArrayList();
 
