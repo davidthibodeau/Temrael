@@ -89,8 +89,10 @@ namespace Server
 
 				if ( item != null )
 				{
-					if ( !item.Stackable || !cont.TryDropItem( from, item, false ) )
-						cont.DropItem( item );
+                    if (!item.Stackable || !cont.TryDropItem(from, item, false))
+                        cont.DropItem(item);
+                    else
+                        item.Delete();
 				}
 			}
 		}
