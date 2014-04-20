@@ -272,6 +272,7 @@ namespace Server.Engines.Craft
 				    //AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1044059, LabelColor, false, false ); // This item may hold its maker's mark
 				    m_ShowExceptionalChance = true;
 			    }
+                item.Delete();
             }
             catch (Exception e)
             {
