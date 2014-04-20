@@ -889,8 +889,9 @@ namespace Server
 
 				return item;
 			}
-			catch
+			catch (Exception e)
 			{
+                Misc.ExceptionLogging.WriteLine(e);
 			}
 
 			return null;

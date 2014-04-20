@@ -947,8 +947,9 @@ namespace Server
 			{
 				return Activator.CreateInstance( type ) as Item;
 			}
-			catch
+			catch (Exception e)
 			{
+                Misc.ExceptionLogging.WriteLine(e);
 				return null;
 			}
 		}
