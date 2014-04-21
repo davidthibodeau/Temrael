@@ -76,8 +76,8 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Harpe", typeof( LapHarp ), 75, 20, 0x0EB2, 0 ) );
 				Add( new GenericBuyInfo( "Lute", typeof( Lute ), 50, 20, 0x0EB3, 0 ) );
                 Add(new GenericBuyInfo("Kit de Déguisement", typeof(DeguisementKit), 50, 20, 0x1EBA, 0));
-                Add(new GenericBuyInfo("Outil de Fermentation", typeof(OutilFermentation), 50, 20, 0x1EBA, 0));
-                Add(new GenericBuyInfo("Outil de Coagulation", typeof(OutilCoagulation), 50, 20, 0x1EBA, 0));
+                //Add(new GenericBuyInfo("Outil de Fermentation", typeof(OutilFermentation), 50, 20, 0x1EBA, 0));
+                //Add(new GenericBuyInfo("Outil de Coagulation", typeof(OutilCoagulation), 50, 20, 0x1EBA, 0));
 			} 
 		} 
 
