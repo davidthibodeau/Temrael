@@ -470,7 +470,8 @@ namespace Server.Systemes.Geopolitique
             for (int i = 0; i < count; i++)
             {
                 Employe e = new Employe(reader);
-                m_Employes.Add(e.Personnage, e);
+                if(e.Personnage != null)
+                    m_Employes.Add(e.Personnage, e);
             }
 
             count = reader.ReadInt();
