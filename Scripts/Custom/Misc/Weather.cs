@@ -177,15 +177,15 @@ namespace Server.Misc
 
                 if (c == 0 || c == 1)
                 {
-                    c += Utility.RandomMinMax(1, 3);
+                    c += Utility.RandomMinMax(1, 2);
                 }
-                else if (c == 7 || c == 8)
+                else if (c == 6 || c == 7 || c == 8)
                 {
-                    c -= Utility.RandomMinMax(1, 3);
+                    c -= Utility.RandomMinMax(3, 5);
                 }
                 else
                 {
-                    c += Utility.RandomMinMax(-3, 3);
+                    c += Utility.RandomMinMax(-2, 2);
 
                     if (c > 8)
                         c = 8;
@@ -256,9 +256,9 @@ namespace Server.Misc
                     type = 2;
 
                 if (m_Cloud == DensityOfCloud.FaiblePluie)
-                    density = 30;
+                    density = 10;
                 else if (m_Cloud == DensityOfCloud.Pluie)
-                    density = 50;
+                    density = 40;
                 else if (m_Cloud == DensityOfCloud.FortePluie)
                     density = 70;
             }
