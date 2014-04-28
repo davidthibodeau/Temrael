@@ -484,7 +484,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(GnarledStaff), "Équipement", "Bâton Noué", 30.0, 50.0, typeof(Board), "Planches", 7, 1044351);
             index = AddCraft(typeof(Canne), "Équipement", "Canne", 40.0, 60.0, typeof(Board), "Planches", 5, 1044351);
             index = AddCraft(typeof(CanneOsseux), "Équipement", "Canne Osseuse", 45.0, 65.0, typeof(Board), "Planches", 5, 1044351);
-            AddRes(index, typeof(Bone), "Os", 3, 1044287);
+            //AddRes(index, typeof(Bone), "Os", 3, 1044287);
 
             index = AddCraft(typeof(BatonVoyage), "Équipement", "Baton de Voyage", 45.0, 65.0, typeof(Board), "Planches", 6, 1044351);
             index = AddCraft(typeof(BatonElfique), "Équipement", "Baton Elfique", 45.0, 65.0, typeof(Board), "Planches", 6, 1044351);
@@ -502,7 +502,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(BatonElement), "Équipement", "Baton d'Elementaliste", 70.0, 90.0, typeof(Board), "Planches", 5, 1044351);
             index = AddCraft(typeof(BatonDruide), "Équipement", "Baton de Druide", 75.0, 100.0, typeof(Board), "Planches", 8, 1044351);
             index = AddCraft(typeof(BatonOsseux), "Équipement", "Baton Osseux", 75.0, 100.0, typeof(Board), "Planches", 8, 1044351);
-            AddRes(index, typeof(Bone), "Os", 10, 1044287);
+            //AddRes(index, typeof(Bone), "Os", 10, 1044287);
 
             index = AddCraft(typeof(Club), "Équipement", "Club", 0.0, 20.0, typeof(Board), "Planches", 3, 1044351);
             index = AddCraft(typeof(Gourpic), "Équipement", "Gourpic", 10.0, 30.0, typeof(Board), "Planches", 3, 1044351);
