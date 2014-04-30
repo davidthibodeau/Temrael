@@ -42,6 +42,7 @@ namespace Server.Mobiles
 
         public override double AttackSpeed { get { return 2.5; } }
 		public override int Meat{ get{ return 1; } }
+        public override int Bones { get { return 4; } }
 		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
 
 		public Pig(Serial serial) : base(serial)

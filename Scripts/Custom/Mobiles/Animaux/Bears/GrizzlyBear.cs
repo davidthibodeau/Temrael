@@ -50,6 +50,7 @@ namespace Server.Mobiles
         public override double AttackSpeed { get { return 3.0; } }
 		public override int Meat{ get{ return 2; } }
 		public override int Hides{ get{ return 6; } }
+        public override int Bones { get { return 6; } }
 		public override FoodType FavoriteFood{ get{ return FoodType.Fish | FoodType.FruitsAndVegies | FoodType.Meat; } }
 		public override PackInstinct PackInstinct{ get{ return PackInstinct.Bear; } }
 
