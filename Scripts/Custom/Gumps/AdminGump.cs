@@ -40,7 +40,6 @@ namespace Server.Gumps
 		AccountDetails_ChangePassword,
 		AccountDetails_ChangeAccess,
 		FirewallInfo,
-        CoterClientInfo
 	}
 
 	public class AdminGump : Gump
@@ -216,79 +215,6 @@ namespace Server.Gumps
 
 			switch ( pageType )
 			{
-                case AdminGumpPage.CoterClientInfo:
-                {
-                    if (state is TMobile)
-                    {
-                        m_SelectedPlayer = (TMobile)state;
-
-                        AddHtml(10, 125, 400, 20, Color(Center("Cotation"), LabelColor32), false, false);
-
-                        int y = 146;
-
-                        AddLabel(20, y, LabelHue, "Name:");
-                        AddLabel(200, y, GetHueFor(m_SelectedPlayer), m_SelectedPlayer.Name);
-                        y += 20;
-
-                        Account a = m_SelectedPlayer.Account as Account;
-
-                        AddLabel(20, y, LabelHue, "Account:");
-                        AddLabel(200, y, (a != null && a.Banned) ? RedHue : LabelHue, a == null ? "(no account)" : a.Username);
-                        AddButton(380, y, 0xFA5, 0xFA7, GetButtonID(7, 14), GumpButtonType.Reply, 0);
-                        y += 20;
-
-                        NetState ns = m_SelectedPlayer.NetState;
-
-                        if (ns == null)
-                        {
-                            AddLabel(20, y, LabelHue, "Address:");
-                            AddLabel(200, y, RedHue, "Offline");
-                            y += 20;
-
-                            AddLabel(20, y, LabelHue, "Cote:");
-                            AddLabel(200, y, LabelHue, XP.GetCote(m_SelectedPlayer).ToString());
-                            y += 45;
-                        }
-                        else
-                        {
-                            String str = "";
-                            int[] tmp = m_SelectedPlayer.ListCote.ToArray();
-
-                            foreach (int temp in tmp)
-                            {
-                                str += "( " + temp.ToString() + " ) ";
-                            }
-
-                            AddLabel(20, y, LabelHue, "Cotes:");
-                            AddLabel(200, y, LabelHue, str);
-                            y += 20;
-
-                            AddLabel(20, y, LabelHue, "Cote Moyenne:");
-                            AddLabel(200, y, LabelHue, XP.GetCote(m_SelectedPlayer).ToString());
-                            y += 35;
-
-                            /*AddLabel(20, y, LabelHue, "Location:");
-                            AddLabel(200, y, LabelHue, String.Format("{0} [{1}]", mob.Location, mob.Map));
-                            y += 24;*/
-                        }
-
-                        AddButtonLabeled(20, y, 421, "Cote 1");
-                        y += 25;
-
-                        AddButtonLabeled(20, y, 422, "Cote 2");
-                        y += 25;
-
-                        AddButtonLabeled(20, y, 423, "Cote 3");
-                        y += 25;
-
-                        AddButtonLabeled(20, y, 425, "Cote 4");
-                        y += 25;
-
-                        AddButtonLabeled(20, y, 426, "Cote 5");
-                        y += 25;
-                    }
-                    break;
-                }
 				case AdminGumpPage.Information_General:
 				{
 					int banned = 0;
@@ -637,31 +563,13 @@ namespace Server.Gumps
 						}
 						else
 						{
-                            if ((m is TMobile) && (!(m.AccessLevel > AccessLevel.Player)))
-                            {
-                                TMobile mob = (TMobile)m;
-
-                                AddLabelCropped(12, offset, 81, 20, mob.LastCotation.AddDays(DelaisCote) < DateTime.Now ? RedHue : GreenHue /*GetHueFor( m )*/, m.Name);
-                            }
-                            else
-                            {
-                                AddLabelCropped(12, offset, 81, 20, GetHueFor( m ), m.Name);
-                            }
+                            AddLabelCropped(12, offset, 81, 20, GetHueFor(m), m.Name);
 						}
-                        if ((m is TMobile) && (!(m.AccessLevel > AccessLevel.Player)))
-                        {
-                            TMobile mob = (TMobile) m;
 
-                            AddLabelCropped(95, offset, 81, 20, mob.LastCotation.AddDays(DelaisCote) < DateTime.Now ? RedHue : GreenHue, a == null ? "(no account)" : a.Username);
-                            AddLabelCropped(178, offset, 81, 20, mob.LastCotation.AddDays(DelaisCote) < DateTime.Now ? RedHue : GreenHue, m == null ? (a != null ? FormatAccessLevel(a.AccessLevel) : "") : FormatAccessLevel(m.AccessLevel));
-                            AddLabelCropped(273, offset, 109, 20, mob.LastCotation.AddDays(DelaisCote) < DateTime.Now ? RedHue : GreenHue, ns.ToString());
-                        }
-                        else
-                        {
-                            AddLabelCropped(95, offset, 81, 20, LabelHue, a == null ? "(no account)" : a.Username);
-                            AddLabelCropped(178, offset, 81, 20, LabelHue, m == null ? (a != null ? FormatAccessLevel(a.AccessLevel) : "") : FormatAccessLevel(m.AccessLevel));
-                            AddLabelCropped(273, offset, 109, 20, LabelHue, ns.ToString());
-                        }
+                        AddLabelCropped(95, offset, 81, 20, LabelHue, a == null ? "(no account)" : a.Username);
+                        AddLabelCropped(178, offset, 81, 20, LabelHue, m == null ? (a != null ? FormatAccessLevel(a.AccessLevel) : "") : FormatAccessLevel(m.AccessLevel));
+                        AddLabelCropped(273, offset, 109, 20, LabelHue, ns.ToString());
+
 
 						if ( a != null || m != null )
 							AddButton( 380, offset - 1, 0xFA5, 0xFA7, GetButtonID( 4, index + 2 ), GumpButtonType.Reply, 0 );
@@ -727,7 +635,6 @@ namespace Server.Gumps
 
 					AddButtonLabeled(  20, y, GetButtonID( 7, 0 ), "Go to" );
 					AddButtonLabeled( 150, y, GetButtonID( 7, 1 ), "Get" );
-                    AddButtonLabeled( 280, y, 420, "Coter");
 					y += 20;
 
 					AddButtonLabeled(  20, y, GetButtonID( 7, 2 ), "Kick" );
@@ -1739,27 +1646,6 @@ namespace Server.Gumps
 
             switch (info.ButtonID)
             {
-                case 420:
-                    if (!(m_SelectedPlayer == null))
-                    {
-                        from.SendGump(new AdminGump(from, AdminGumpPage.CoterClientInfo, 0, null, "", m_SelectedPlayer));
-                    }
-                    break;
-                case 421:
-                    AttribuerCote(from, 1);
-                    break;
-                case 422:
-                    AttribuerCote(from, 2);
-                    break;
-                case 423:
-                    AttribuerCote(from, 3);
-                    break;
-                case 425:
-                    AttribuerCote(from, 4);
-                    break;
-                case 426:
-                    AttribuerCote(from, 5);
-                    break;
                 case 427:
                     DonnerFiole(from, new FioleNoir());
                     break;

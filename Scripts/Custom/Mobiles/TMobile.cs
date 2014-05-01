@@ -367,6 +367,8 @@ namespace Server.Mobiles
         private bool m_RevealTitle = true;
         private bool m_FreeReset = false;
         private bool m_Achever = false;
+        private bool[,] m_Ticks = new bool[7,9];
+        private bool m_XPMode = false;
 
         private Point3D m_OldLocation;
 
@@ -936,6 +938,17 @@ namespace Server.Mobiles
 
         public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
 
+        [CommandProperty(AccessLevel.GameMaster)]
+        //false = daily. true = hebdo
+        public bool XPMode { get { return m_XPMode; } set { m_XPMode = value; } }
+
+        public bool[,] Ticks
+        {
+            get
+            {
+                return m_Ticks;
+            }
+        }
         #endregion
 
         public override bool RetainPackLocsOnDeath { get { return true; } }
@@ -3485,7 +3498,12 @@ namespace Server.Mobiles
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)7);
+            writer.Write((int)8);
+
+            writer.Write(m_XPMode);
+            for (int i = 0; i < 7; i++)
+                for (int j = 0; j < 9; j++)
+                    writer.Write(m_Ticks[i, j]);
 
             writer.Write(m_currentIdentity);
 
@@ -3566,8 +3584,6 @@ namespace Server.Mobiles
             writer.Write((int)m_Niveau);
             writer.Write((int)m_AptitudesLibres);
             writer.Write((int)m_CompetencesLibres);
-            writer.Write((int)m_Cote);
-            writer.Write((int)m_CoteCount);
             writer.Write((int)m_Classe);
 
             writer.Write((int)m_Fatigue);
@@ -3613,6 +3629,12 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 8:
+                    m_XPMode = reader.ReadBool();
+                    for (int i = 0; i < 7; i++)
+                        for (int j = 0; j < 9; j++)
+                            m_Ticks[i, j] = reader.ReadBool();
+                    goto case 7;
                 case 7:
                     m_currentIdentity = reader.ReadInt();
                     goto case 6;
@@ -3709,8 +3731,16 @@ namespace Server.Mobiles
                     m_Niveau = reader.ReadInt();
                     m_AptitudesLibres = reader.ReadInt();
                     m_CompetencesLibres = reader.ReadInt();
-                    m_Cote = reader.ReadInt();
-                    m_CoteCount = reader.ReadInt();
+                    if (version > 7)
+                    {
+                        reader.ReadInt();
+                        reader.ReadInt();
+                    }
+                    else
+                    {
+                        m_Cote = reader.ReadInt();
+                        m_CoteCount = reader.ReadInt();
+                    }
                     m_Classe = (Classe)reader.ReadInt();
 
                     m_Fatigue = reader.ReadInt();

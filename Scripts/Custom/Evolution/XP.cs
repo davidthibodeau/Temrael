@@ -15,14 +15,10 @@ namespace Server
 {
     public class XP
     {
-        public static Hashtable m_XPparNiveau = new Hashtable();
-        public static Hashtable m_XPparCote = new Hashtable();
-        public static Hashtable m_XPparCount = new Hashtable();
         public static TimeSpan m_IntervaleXP = TimeSpan.FromMinutes(10);
         public static DateTime LastReset = DateTime.Now;
 
-        private static double[] m_ExpGainTable = new double[] { 200.0, 250.0, 300.0, 350.0,
-            400.0, 500.0, 600.0 };
+        private const int ExpGain = 750;
 
         private static int[] m_ExpReqTable = new int[] { 0, 0, 1000, 3000,
             6000, 10000, 15000, 21000, 28000, 36000, 45000, 55000, 66000,
@@ -33,9 +29,6 @@ namespace Server
 
         public static void Initialize()
         {
-            MakeXPparCote();
-            MakeXPparCount();
-
             CommandSystem.Register("manualxpreset", AccessLevel.Owner, new CommandEventHandler(ManualXPReset_OnCommand));
 
             DateTime now = DateTime.Now;
@@ -92,7 +85,7 @@ namespace Server
        public class XPResetTimer : Timer
         {
             public XPResetTimer(TimeSpan delay)
-                : base(delay, TimeSpan.FromDays(1))
+                : base(delay, TimeSpan.FromDays(7))
             {
                 Priority = TimerPriority.FiveSeconds;
             }
@@ -110,7 +103,16 @@ namespace Server
             foreach (Mobile m in World.Mobiles.Values)
             {
                 if (m is TMobile)
-                    (m as TMobile).CoteCount = 1;
+                {
+                    bool[,] ticks = (m as TMobile).Ticks;
+                    for (int i = 0; i < 7; i++)
+                    {
+                        for (int j = 0; j < 9; j++)
+                        {
+                            ticks[i, j] = false;
+                        }
+                    }
+                }
             }
 
             foreach (CompensationGump.MJ mj in Systemes.CompensationGump.GetMJs())
@@ -127,27 +129,6 @@ namespace Server
             LastReset = DateTime.Now;
         }
 
-        public static int GetCote(TMobile pm)
-        {
-            int CoteMoyenne = 0;
-
-            foreach (int cotation in pm.ListCote)
-            {
-                CoteMoyenne += cotation;
-            }
-
-            if (pm.ListCote.Count > 0)
-            {
-                double avg = CoteMoyenne / (double)pm.ListCote.Count;
-                if (avg - (int)avg < 0.5)
-                    return (int)avg;
-                else
-                    return (int)avg + 1;
-            }
-            else
-                return 0;
-        }
-
         public static void CheckXP(TMobile pm)
         {
             if (pm == null)
@@ -155,53 +136,7 @@ namespace Server
             if (pm.Region is Jail) // Pas d'xp quand le joueur est en jail.
                 return;
 
-            int CoteMoyenne = GetCote(pm);
-
-            /*foreach (Cote cotation in pm.CoteList)
-            {
-                CoteMoyenne = cotation.GetCote();
-            }*/
-
-            //int Cote = pm.Cote;
-            int Count = pm.CoteCount;
-            int XPparCote = 1600;
-            double XPparCount = 0.01;
-
-            //CoteMoyenne += 5;
-
-            if (CoteMoyenne > 5)
-              {
-                 CoteMoyenne = 5;
-                 pm.Cote = 5;
-              }
-
-            if (CoteMoyenne < 0)
-               {
-                 CoteMoyenne = 0;
-                 pm.Cote = 0;
-               }
-
-            if (m_XPparCote.Contains(CoteMoyenne))
-                XPparCote = (int)m_ExpGainTable[CoteMoyenne];
-                //XPparCote = (int)m_XPparCote[CoteMoyenne];
-
-            if (m_XPparCount.Contains(Count))
-                XPparCount = (double)m_XPparCount[Count];
-            else
-                XPparCount = 0.01;
-
-            int XPgain = (int)(XPparCote * XPparCount);
-
-            if (XPgain < 0)
-            {
-                XPgain = 0;
-            }
-
-            if (XPgain > 500)
-                XPgain = 500;
-
-            //pm.SendMessage(Convert.ToString(XPgain));
-            //pm.SendMessage(Convert.ToString(CoteMoyenne));
+            int XPgain = (int)(ExpGain * XPparCount(GetNextTick(pm)));
 
             pm.XP += XPgain;
 
@@ -214,67 +149,58 @@ namespace Server
             }
 
             pm.CoteCount++;
-
-            //if (AOS.Testing)
-            //    pm.SendMessage("XP : " + XPgain.ToString());
         }
 
-        public static void ChangePallier(TMobile pm)
+        public static int GetNextTick(TMobile pm)
         {
-            if (pm == null)
-                return;
-
-            int Cote = pm.Cote;
-            //int Pallier = 9;
-            //double Moyenne = pm.GetAverageCote();         
-        }
-
-        public static void MakeXP()
-        {
-            int baseGain = 2000;
-            int value = 1000;
-
-            for (int i = 1; i < 101; i++)
+            DateTime now = DateTime.Now;
+            bool[,] ticks = pm.Ticks;
+            if (pm.XPMode) //hebdo
             {
-                if (i > 1)
+                for (int j = 0; j < 9; j++)
                 {
-                    value += baseGain;
-                    m_XPparNiveau[i] = value;
+                    for (int i = 0; i < 7; i++)
+                    {
+                        if (!ticks[i, j])
+                        {
+                            ticks[i, j] = true;
+                            return j;
+                        }
+                    }
                 }
-                else
-                {
-                    m_XPparNiveau[i] = value;
-                }
-                baseGain += 1000;
             }
-        }
-
-        public static void MakeXPparCote()
-        {
-            if (m_XPparCote == null)
-                m_XPparCote = new Hashtable();
-
-            for (int i = 0; i < 21; i++)
+            else //daily
             {
-                int value = -1000 + 325 * i;
-                m_XPparCote[i] = value;
+                for (int i = 0; i <= (int)now.DayOfWeek; i++)
+                {
+                    for (int j = 0; j < 9; j++)
+                    {
+                        if (!ticks[i, j])
+                        {
+                            ticks[i, j] = true;
+                            return j;
+                        }
+                    }
+                }
             }
+            return -1;
         }
 
-        public static void MakeXPparCount()
+        public static double XPparCount(int i)
         {
-            if (m_XPparCount == null)
-                m_XPparCount = new Hashtable();
-
-            m_XPparCount[0] = 1.00;
-            m_XPparCount[1] = 0.95;
-            m_XPparCount[2] = 0.90;
-            m_XPparCount[3] = 0.85;
-            m_XPparCount[4] = 0.80;
-            m_XPparCount[5] = 0.75;
-            m_XPparCount[6] = 0.70;
-            m_XPparCount[7] = 0.65;
-            m_XPparCount[8] = 0.60;
+            switch (i)
+            {
+                case 0: return 1.00;
+                case 1: return 0.95;
+                case 2: return 0.90;
+                case 3: return 0.85;
+                case 4: return 0.80;
+                case 5: return 0.75;
+                case 6: return 0.70;
+                case 7: return 0.65;
+                case 8: return 0.60;
+                default: return 0.01;
+            }
         }
 
         
@@ -386,42 +312,35 @@ namespace Server
 
         public static void Evolve(Mobile from)
         {
-            try
+            if (from is TMobile)
             {
-                if (from is TMobile)
+                TMobile pm = from as TMobile;
+
+                int currentXP = pm.XP;
+                int neededXP = GetNeededXP(pm);
+
+                if (currentXP > neededXP)
                 {
-                    TMobile pm = from as TMobile;
+                    pm.Niveau++;
 
-                    int currentXP = pm.XP;
-                    int neededXP = GetNeededXP(pm);
+                    int SkillsCaps = 350 + pm.Niveau * 15;
+                    double SkillsInd = 40 + pm.Niveau * 2.0;
 
-                    if (currentXP > neededXP)
-                    {
-                        pm.Niveau++;
+                    if (SkillsInd > 100)
+                        SkillsInd = 100;
 
-                        int SkillsCaps = 350 + pm.Niveau * 15;
-                        double SkillsInd = 40 + pm.Niveau * 2.0;
+                    if (SkillsCaps > 800)
+                        SkillsCaps = 800;
 
-                        if (SkillsInd > 100)
-                            SkillsInd = 100;
+                    SetSkills(pm, SkillsCaps, SkillsInd);
+                    SetPAs(pm);
+                    SetPCs(pm);
+                    SetPSs(pm);
 
-                        if (SkillsCaps > 800)
-                            SkillsCaps = 800;
-
-                        SetSkills(pm, SkillsCaps, SkillsInd);
-                        SetPAs(pm);
-                        SetPCs(pm);
-                        SetPSs(pm);
-
-                        pm.SendMessage("Vous gagnez un niveau !");
-                    }
-                    else
-                        pm.SendMessage("Il vous manque des points d'experieces pour gagner votre niveau !");
+                    pm.SendMessage("Vous gagnez un niveau !");
                 }
-            }
-            catch (Exception ex)
-            {
-                Misc.ExceptionLogging.WriteLine(ex);
+                else
+                    pm.SendMessage("Il vous manque des points d'experieces pour gagner votre niveau !");
             }
         }
     }
