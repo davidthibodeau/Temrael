@@ -30,27 +30,36 @@ namespace Server
         public static void Initialize()
         {
             CommandSystem.Register("manualxpreset", AccessLevel.Owner, new CommandEventHandler(ManualXPReset_OnCommand));
+            CommandSystem.Register("xpmode", AccessLevel.Player, new CommandEventHandler(XPMode_OnCommand));
 
             DateTime now = DateTime.Now;
             DateTime today = new DateTime(now.Year, now.Month, now.Day, 3, 0, 0);
+            DateTime next = today.AddDays(6 - (int)today.DayOfWeek);
 
-            if (now < today)
-                new XPResetTimer(today - now).Start();
-            else
+            new XPResetTimer(next - now).Start();
+
+            if (LastReset.AddDays(6 - (int)today.DayOfWeek) < now)
             {
-                if (LastReset < today)
-                {
-                    Console.WriteLine("Le dernier reset de gain d'xp journalier était le {0}. Un reset est maintenant fait.", LastReset.ToString());
-                    ResetEndOfDay();
-                }
-                new XPResetTimer(today.AddDays(1) - now).Start();
+                Console.WriteLine("Le dernier reset de gain d'xp hebdomadaire était le {0}. Un reset est maintenant fait.", LastReset.ToString());
+                ResetEndOfDay();
             }
+
             new XPTimer().Start();
         }
 
         private static void ManualXPReset_OnCommand(CommandEventArgs e)
         {
             ResetEndOfDay();
+        }
+
+        private static void XPMode_OnCommand(CommandEventArgs e)
+        {
+            if (e.Mobile is TMobile)
+            {
+                TMobile m = e.Mobile as TMobile;
+                m.XPMode = !m.XPMode;
+                m.SendMessage("Vous avez choisi le mode d'expérience " + (!m.XPMode ? "journalier." : "hebdomadaire."));
+            }
         }
 
         public class XPTimer : Timer
@@ -87,7 +96,7 @@ namespace Server
             public XPResetTimer(TimeSpan delay)
                 : base(delay, TimeSpan.FromDays(7))
             {
-                Priority = TimerPriority.FiveSeconds;
+                Priority = TimerPriority.OneMinute;
             }
 
             protected override void OnTick()
@@ -137,7 +146,6 @@ namespace Server
                 return;
 
             int XPgain = (int)(ExpGain * XPparCount(GetNextTick(pm)));
-
             pm.XP += XPgain;
 
             CompensationGump.MJ mj = CompensationGump.GetMJ((Account)pm.Account);
@@ -147,39 +155,21 @@ namespace Server
                 CompensationGump.WriteLine(String.Format("{0} recoit {1} xp. Le total courant de la semaine est de {2}.",
                     mj.Nom, XPgain, mj.XpGainedThisWeek));
             }
-
-            pm.CoteCount++;
         }
 
         public static int GetNextTick(TMobile pm)
         {
             DateTime now = DateTime.Now;
             bool[,] ticks = pm.Ticks;
-            if (pm.XPMode) //hebdo
+
+            for (int j = 0; j < 9; j++)
             {
-                for (int j = 0; j < 9; j++)
+                for (int i = 0; i <= (pm.XPMode ? 6 : (int)now.DayOfWeek); i++)
                 {
-                    for (int i = 0; i < 7; i++)
+                    if (!ticks[i, j])
                     {
-                        if (!ticks[i, j])
-                        {
-                            ticks[i, j] = true;
-                            return j;
-                        }
-                    }
-                }
-            }
-            else //daily
-            {
-                for (int i = 0; i <= (int)now.DayOfWeek; i++)
-                {
-                    for (int j = 0; j < 9; j++)
-                    {
-                        if (!ticks[i, j])
-                        {
-                            ticks[i, j] = true;
-                            return j;
-                        }
+                        ticks[i, j] = true;
+                        return j;
                     }
                 }
             }

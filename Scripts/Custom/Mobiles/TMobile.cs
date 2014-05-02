@@ -292,8 +292,6 @@ namespace Server.Mobiles
         private int m_Niveau;
         private int m_AptitudesLibres;
         private int m_CompetencesLibres;
-        private int m_Cote;
-        private int m_CoteCount;
         private Classe m_Classe;
 
         private int m_Fatigue;
@@ -480,20 +478,6 @@ namespace Server.Mobiles
         {
             get { return m_CompetencesLibres; }
             set { m_CompetencesLibres = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public int Cote
-        {
-            get { return m_Cote; }
-            set { m_Cote = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public int CoteCount
-        {
-            get { return m_CoteCount; }
-            set { m_CoteCount = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -3731,15 +3715,10 @@ namespace Server.Mobiles
                     m_Niveau = reader.ReadInt();
                     m_AptitudesLibres = reader.ReadInt();
                     m_CompetencesLibres = reader.ReadInt();
-                    if (version > 7)
+                    if (version < 8)
                     {
                         reader.ReadInt();
                         reader.ReadInt();
-                    }
-                    else
-                    {
-                        m_Cote = reader.ReadInt();
-                        m_CoteCount = reader.ReadInt();
                     }
                     m_Classe = (Classe)reader.ReadInt();
 
