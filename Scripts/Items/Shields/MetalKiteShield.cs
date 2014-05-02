@@ -3,7 +3,7 @@ using Server;
 
 namespace Server.Items
 {
-	public class MetalKiteShield : BaseShield
+	public class MetalKiteShield : BaseShield, IDyable
 	{
         public override int NiveauAttirail { get { return 4; } }
 
