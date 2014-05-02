@@ -83,11 +83,11 @@ namespace Server.Systemes.Geopolitique
                     {
                         int dayslastmonth = DaysInMonth(m_LastPaie.Month, DateTime.IsLeapYear(m_LastPaie.Year));
                         int jours = dayslastmonth - m_LastPaie.Day;
-                        m_Total = jours * m_Paie / dayslastmonth;
+                        acc += jours * m_Paie / dayslastmonth;
 
                         int daysthismonth = DaysInMonth(DateTime.Now.Month, DateTime.IsLeapYear(DateTime.Now.Year));
                         jours = DateTime.Now.Day;
-                        m_Total = jours * m_Paie / daysthismonth;
+                        acc += jours * m_Paie / daysthismonth;
                         m_LastPaie = DateTime.Now;
                         return acc;
                     }   
@@ -111,13 +111,13 @@ namespace Server.Systemes.Geopolitique
                 {
                     if (m_LastPaie.Month < 12)
                     {
-                        m_Total += m_Paie;
+                        acc += m_Paie;
                         m_LastPaie.AddMonths(1);
                         return APayerInternal(acc);
                     }
                     else if (DateTime.Now.Month > 1)
                     {
-                        m_Total += m_Paie;
+                        acc += m_Paie;
                         m_LastPaie.AddMonths(1);
                         return APayerInternal(acc);
                     }
@@ -125,7 +125,7 @@ namespace Server.Systemes.Geopolitique
                     {
                         if (DateTime.Now.Day > m_LastPaie.Day)
                         {
-                            m_Total += m_Paie;
+                            acc += m_Paie;
                             m_LastPaie.AddMonths(1);
                             return APayerInternal(acc);
                         }
