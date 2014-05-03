@@ -35,6 +35,8 @@ namespace Server
             DateTime now = DateTime.Now;
             DateTime today = new DateTime(now.Year, now.Month, now.Day, 3, 0, 0);
             DateTime next = today.AddDays(6 - (int)today.DayOfWeek);
+            if (next < now)
+                next = next.AddDays(7);
 
             new XPResetTimer(next - now).Start();
 
