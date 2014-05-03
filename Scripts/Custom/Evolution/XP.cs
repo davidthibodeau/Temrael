@@ -34,13 +34,14 @@ namespace Server
 
             DateTime now = DateTime.Now;
             DateTime today = new DateTime(now.Year, now.Month, now.Day, 3, 0, 0);
-            DateTime next = today.AddDays(6 - (int)today.DayOfWeek);
-            if (next < now)
-                next = next.AddDays(7);
+            DateTime next = today.AddDays(7 - (int)today.DayOfWeek);
+            //Pour eviter 2 resets hebdo deux jours en ligne. A supprimer par apres.
+            if (now < new DateTime(2014, 5, 5))
+                next = new DateTime(2014, 5, 11, 3, 0, 0);
 
             new XPResetTimer(next - now).Start();
-
-            if (LastReset.AddDays(6 - (int)today.DayOfWeek) < now)
+            // Comme en haut. A supprimer apres la date
+            if (LastReset.AddDays(now < new DateTime(2014, 5, 11, 3, 0, 0) ? 8 : 7) < now)
             {
                 Console.WriteLine("Le dernier reset de gain d'xp hebdomadaire était le {0}. Un reset est maintenant fait.", LastReset.ToString());
                 ResetEndOfDay();
