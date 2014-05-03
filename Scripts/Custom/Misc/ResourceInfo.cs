@@ -184,31 +184,23 @@ namespace Server.Items
 			Blank = new CraftAttributeInfo();
 
 			CraftAttributeInfo cuivre = Cuivre = new CraftAttributeInfo();
-            cuivre.WeaponDirectDamage = 1;
-            cuivre.ArmorPhysicalResist = 1;
-            cuivre.ArmorTranchantResist = 1;
-            cuivre.ArmorContondantResist = 1;
-            cuivre.ArmorPerforantResist = 1;
-            cuivre.ArmorMagieResist = 1;
-            cuivre.ArmorDurability = 50;
-            cuivre.ArmorLowerRequirements = 20;
-            cuivre.WeaponDurability = 100;
-            cuivre.WeaponLowerRequirements = 50;
-            cuivre.RunicMinAttributes = 1;
+            cuivre.WeaponDirectDamage = 2;
+            cuivre.ArmorPhysicalResist = 2;
+            cuivre.ArmorTranchantResist = 2;
+            cuivre.ArmorContondantResist = 2;
+            cuivre.ArmorPerforantResist = 2;
+            cuivre.ArmorMagieResist = 2;
+            cuivre.ArmorDurability = 100;
+            cuivre.WeaponDurability = 50;
+            cuivre.RunicMinAttributes = 2;
             cuivre.RunicMaxAttributes = 2;
-			if ( Core.ML )
-			{
-                cuivre.RunicMinIntensity = 40;
-                cuivre.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                cuivre.RunicMinIntensity = 10;
-                cuivre.RunicMaxIntensity = 35;
-			}
+            cuivre.RunicMinIntensity = 45;
+            cuivre.RunicMaxIntensity = 100;
+            cuivre.RunicMinIntensity = 10;
+            cuivre.RunicMaxIntensity = 60;
 
 			CraftAttributeInfo bronze = Bronze = new CraftAttributeInfo();
-             bronze.WeaponDirectDamage = 2;
+            bronze.WeaponDirectDamage = 2;
             bronze.ArmorPhysicalResist = 2;
             bronze.ArmorTranchantResist = 2;
             bronze.ArmorContondantResist = 2;
@@ -218,16 +210,11 @@ namespace Server.Items
             bronze.WeaponDurability = 50;
             bronze.RunicMinAttributes = 2;
             bronze.RunicMaxAttributes = 2;
-			if ( Core.ML )
-			{
-                bronze.RunicMinIntensity = 45;
-                bronze.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                bronze.RunicMinIntensity = 20;
-                bronze.RunicMaxIntensity = 45;
-			}
+            bronze.RunicMinIntensity = 45;
+            bronze.RunicMaxIntensity = 100;
+            bronze.RunicMinIntensity = 10;
+            bronze.RunicMaxIntensity = 60;
+
 
             CraftAttributeInfo acier = Acier = new CraftAttributeInfo();
             acier.WeaponDirectDamage = 4;
@@ -236,18 +223,10 @@ namespace Server.Items
             acier.ArmorContondantResist = 4;
             acier.ArmorPerforantResist = 4;
             acier.ArmorMagieResist = 4;
-            acier.RunicMinAttributes = 2;
+            acier.RunicMinAttributes = 3;
             acier.RunicMaxAttributes = 3;
-			if ( Core.ML )
-			{
-                acier.RunicMinIntensity = 50;
-                acier.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                acier.RunicMinIntensity = 25;
-                acier.RunicMaxIntensity = 50;
-			}
+            acier.RunicMinIntensity = 20;
+            acier.RunicMaxIntensity = 70;
 
             CraftAttributeInfo argent = Argent = new CraftAttributeInfo();
             argent.WeaponDirectDamage = 4;
@@ -258,165 +237,87 @@ namespace Server.Items
             argent.ArmorMagieResist = 4;
             argent.RunicMinAttributes = 3;
             argent.RunicMaxAttributes = 3;
-			if ( Core.ML )
-			{
-                argent.RunicMinIntensity = 55;
-                argent.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                argent.RunicMinIntensity = 30;
-                argent.RunicMaxIntensity = 65;
-			}
-
+            argent.RunicMinIntensity = 20;
+            argent.RunicMaxIntensity = 70;
 
 			CraftAttributeInfo or = Or = new CraftAttributeInfo();
-             or.WeaponDirectDamage = 4;
+            or.WeaponDirectDamage = 4;
             or.ArmorPhysicalResist = 4;
             or.ArmorTranchantResist = 4;
             or.ArmorContondantResist = 4;
             or.ArmorPerforantResist = 4;
             or.ArmorMagieResist = 4;
-			//golden.ArmorLuck = 40;
-            or.ArmorLowerRequirements = 30;
-			//golden.WeaponLuck = 40;
-            or.WeaponLowerRequirements = 50;
             or.RunicMinAttributes = 3;
-            or.RunicMaxAttributes = 4;
-			if ( Core.ML )
-			{
-                or.RunicMinIntensity = 60;
-                or.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                or.RunicMinIntensity = 35;
-                or.RunicMaxIntensity = 75;
-			}
+            or.RunicMaxAttributes = 3;
+            or.RunicMinIntensity = 20;
+            or.RunicMaxIntensity = 70;
+
+            or.ArmorLowerRequirements = 30;
+            or.WeaponLowerRequirements = 50;
 
             CraftAttributeInfo mytheril = Mytheril = new CraftAttributeInfo();
-             mytheril.WeaponDirectDamage = 6;
-            mytheril.ArmorPhysicalResist = 6;
-            mytheril.ArmorTranchantResist = 6;
-            mytheril.ArmorContondantResist = 6;
-            mytheril.ArmorPerforantResist = 6;
-            mytheril.ArmorMagieResist = 6;
+            mytheril.WeaponDirectDamage = 7;
+            mytheril.ArmorPhysicalResist = 7;
+            mytheril.ArmorTranchantResist = 7;
+            mytheril.ArmorContondantResist = 7;
+            mytheril.ArmorPerforantResist = 7;
+            mytheril.ArmorMagieResist = 7;
             mytheril.RunicMinAttributes = 4;
             mytheril.RunicMaxAttributes = 4;
-			if ( Core.ML )
-			{
-                mytheril.RunicMinIntensity = 65;
-                mytheril.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                mytheril.RunicMinIntensity = 40;
-                mytheril.RunicMaxIntensity = 80;
-			}
+            mytheril.RunicMinIntensity = 30;
+            mytheril.RunicMaxIntensity = 80;
 
             CraftAttributeInfo luminium = Luminium = new CraftAttributeInfo();
-             luminium.WeaponDirectDamage = 6;
-            luminium.ArmorPhysicalResist = 6;
-            luminium.ArmorContondantResist = 6;
-            luminium.ArmorTranchantResist = 6;
-            luminium.ArmorPerforantResist = 6;
-            luminium.ArmorMagieResist = 6;
+            luminium.WeaponDirectDamage = 7;
+            luminium.ArmorPhysicalResist = 7;
+            luminium.ArmorTranchantResist = 7;
+            luminium.ArmorContondantResist = 7;
+            luminium.ArmorPerforantResist = 7;
+            luminium.ArmorMagieResist = 7;
             luminium.RunicMinAttributes = 4;
-            luminium.RunicMaxAttributes = 5;
-			if ( Core.ML )
-			{
-                luminium.RunicMinIntensity = 70;
-                luminium.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                luminium.RunicMinIntensity = 45;
-                luminium.RunicMaxIntensity = 90;
-			}
+            luminium.RunicMaxAttributes = 4;
+            luminium.RunicMinIntensity = 30;
+            luminium.RunicMaxIntensity = 80;
 
             CraftAttributeInfo obscurium = Obscurium = new CraftAttributeInfo();
-             obscurium.WeaponDirectDamage = 8;
-            obscurium.ArmorPhysicalResist = 8;
-            obscurium.ArmorContondantResist = 8;
-            obscurium.ArmorTranchantResist = 8;
-            obscurium.ArmorPerforantResist = 8;
-            obscurium.ArmorMagieResist = 8;
-            obscurium.ArmorDurability = 50;
-            obscurium.RunicMinAttributes = 5;
-            obscurium.RunicMaxAttributes = 5;
-			if ( Core.ML )
-			{
-                obscurium.RunicMinIntensity = 85;
-                obscurium.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                obscurium.RunicMinIntensity = 50;
-                obscurium.RunicMaxIntensity = 100;
-			}
+            obscurium.WeaponDirectDamage = 7;
+            obscurium.ArmorPhysicalResist = 7;
+            obscurium.ArmorTranchantResist = 7;
+            obscurium.ArmorContondantResist = 7;
+            obscurium.ArmorPerforantResist = 7;
+            obscurium.ArmorMagieResist = 7;
+            obscurium.RunicMinAttributes = 4;
+            obscurium.RunicMaxAttributes = 4;
+            obscurium.RunicMinIntensity = 30;
+            obscurium.RunicMaxIntensity = 80;
 
             CraftAttributeInfo mystirium = Mystirium = new CraftAttributeInfo();
-             mystirium.WeaponDirectDamage = 8;
-            mystirium.ArmorPhysicalResist = 8;
-            mystirium.ArmorContondantResist = 8;
-            mystirium.ArmorTranchantResist = 8;
-            mystirium.ArmorPerforantResist = 8;
-            mystirium.ArmorMagieResist = 8;
-            mystirium.ArmorDurability = 50;
+            mystirium.WeaponDirectDamage = 10;
+            mystirium.ArmorPhysicalResist = 10;
+            mystirium.ArmorContondantResist = 10;
+            mystirium.ArmorTranchantResist = 10;
+            mystirium.ArmorPerforantResist = 10;
+            mystirium.ArmorMagieResist = 10;
             mystirium.RunicMinAttributes = 5;
             mystirium.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                mystirium.RunicMinIntensity = 85;
-                mystirium.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                mystirium.RunicMinIntensity = 50;
-                mystirium.RunicMaxIntensity = 100;
-            }
+            mystirium.RunicMinIntensity = 40;
+            mystirium.RunicMaxIntensity = 90;
+
+            mystirium.ArmorDurability = 50;
 
             CraftAttributeInfo dominium = Dominium = new CraftAttributeInfo();
-            dominium.WeaponDirectDamage = 8;
-            dominium.ArmorPhysicalResist = 8;
-            dominium.ArmorContondantResist = 8;
-            dominium.ArmorTranchantResist = 8;
-            dominium.ArmorPerforantResist = 8;
-            dominium.ArmorMagieResist = 8;
-            dominium.ArmorDurability = 50;
+            dominium.WeaponDirectDamage = 10;
+            dominium.ArmorPhysicalResist = 10;
+            dominium.ArmorContondantResist = 10;
+            dominium.ArmorTranchantResist = 10;
+            dominium.ArmorPerforantResist = 10;
+            dominium.ArmorMagieResist = 10;
             dominium.RunicMinAttributes = 5;
             dominium.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                dominium.RunicMinIntensity = 85;
-                dominium.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                dominium.RunicMinIntensity = 50;
-                dominium.RunicMaxIntensity = 100;
-            }
+            dominium.RunicMinIntensity = 40;
+            dominium.RunicMaxIntensity = 90;
 
-            CraftAttributeInfo eclarium = Eclarium = new CraftAttributeInfo();
-            eclarium.WeaponDirectDamage = 10;
-            eclarium.ArmorPhysicalResist = 10;
-            eclarium.ArmorContondantResist = 10;
-            eclarium.ArmorTranchantResist = 10;
-            eclarium.ArmorPerforantResist = 10;
-            eclarium.ArmorMagieResist = 10;
-            eclarium.ArmorDurability = 50;
-            eclarium.RunicMinAttributes = 5;
-            eclarium.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                eclarium.RunicMinIntensity = 85;
-                eclarium.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                eclarium.RunicMinIntensity = 50;
-                eclarium.RunicMaxIntensity = 100;
-            }
+            dominium.ArmorDurability = 50;
 
             CraftAttributeInfo venarium = Venarium = new CraftAttributeInfo();
             venarium.WeaponDirectDamage = 10;
@@ -425,19 +326,25 @@ namespace Server.Items
             venarium.ArmorTranchantResist = 10;
             venarium.ArmorPerforantResist = 10;
             venarium.ArmorMagieResist = 10;
-            venarium.ArmorDurability = 50;
             venarium.RunicMinAttributes = 5;
             venarium.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                venarium.RunicMinIntensity = 85;
-                venarium.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                venarium.RunicMinIntensity = 50;
-                venarium.RunicMaxIntensity = 100;
-            }
+            venarium.RunicMinIntensity = 40;
+            venarium.RunicMaxIntensity = 90;
+
+            venarium.ArmorDurability = 50;
+
+            CraftAttributeInfo eclarium = Eclarium = new CraftAttributeInfo();
+            eclarium.WeaponDirectDamage = 12;
+            eclarium.ArmorPhysicalResist = 12;
+            eclarium.ArmorContondantResist = 12;
+            eclarium.ArmorTranchantResist = 12;
+            eclarium.ArmorPerforantResist = 12;
+            eclarium.ArmorMagieResist = 12;
+            eclarium.ArmorDurability = 50;
+            eclarium.RunicMinAttributes = 5;
+            eclarium.RunicMaxAttributes = 5;
+            eclarium.RunicMinIntensity = 50;
+            eclarium.RunicMaxIntensity = 100;
 
             CraftAttributeInfo athenium = Athenium = new CraftAttributeInfo();
             athenium.WeaponDirectDamage = 12;
@@ -449,16 +356,8 @@ namespace Server.Items
             athenium.ArmorDurability = 50;
             athenium.RunicMinAttributes = 5;
             athenium.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                athenium.RunicMinIntensity = 85;
-                athenium.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                athenium.RunicMinIntensity = 50;
-                athenium.RunicMaxIntensity = 100;
-            }
+            athenium.RunicMinIntensity = 50;
+            athenium.RunicMaxIntensity = 100;
 
             CraftAttributeInfo umbarium = Umbrarium = new CraftAttributeInfo();
             umbarium.WeaponDirectDamage = 12;
@@ -468,623 +367,340 @@ namespace Server.Items
             umbarium.ArmorPerforantResist = 12;
             umbarium.ArmorMagieResist = 12;
             umbarium.ArmorDurability = 50;
-            /*umbarium.WeaponContondantDamage = 10;
-            umbarium.WeaponTranchantDamage = 20;
-            umbarium.WeaponPerforantDamage = 20;
-            umbarium.WeaponMagieDamage = 10;*/
             umbarium.RunicMinAttributes = 5;
             umbarium.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                umbarium.RunicMinIntensity = 85;
-                umbarium.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                umbarium.RunicMinIntensity = 50;
-                umbarium.RunicMaxIntensity = 100;
-            }
+            umbarium.RunicMinIntensity = 50;
+            umbarium.RunicMaxIntensity = 100;
 
             CraftAttributeInfo gobelin = Gobelin = new CraftAttributeInfo();
-
             gobelin.ArmorPhysicalResist = 2;
             gobelin.ArmorContondantResist = 2;
             gobelin.ArmorTranchantResist = 2;
             gobelin.ArmorPerforantResist = 2;
             gobelin.ArmorMagieResist = 2;
-            gobelin.RunicMinAttributes = 3;
-            gobelin.RunicMaxAttributes = 4;
-            if (Core.ML)
-            {
-                gobelin.RunicMinIntensity = 40;
-                gobelin.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                gobelin.RunicMinIntensity = 20;
-                gobelin.RunicMaxIntensity = 40;
-            }
+            gobelin.RunicMinAttributes = 2;
+            gobelin.RunicMaxAttributes = 2;
+            gobelin.RunicMinIntensity = 10;
+            gobelin.RunicMaxIntensity = 60;
 
             CraftAttributeInfo reptilien = Reptilien = new CraftAttributeInfo();
-
             reptilien.ArmorPhysicalResist = 2;
             reptilien.ArmorContondantResist = 2;
             reptilien.ArmorTranchantResist = 2;
             reptilien.ArmorPerforantResist = 2;
             reptilien.ArmorMagieResist = 2;
-            reptilien.RunicMinAttributes = 3;
-            reptilien.RunicMaxAttributes = 4;
-            if (Core.ML)
-            {
-                reptilien.RunicMinIntensity = 40;
-                reptilien.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                reptilien.RunicMinIntensity = 20;
-                reptilien.RunicMaxIntensity = 40;
-            }
+            reptilien.RunicMinAttributes = 2;
+            reptilien.RunicMaxAttributes = 2;
+            reptilien.RunicMinIntensity = 10;
+            reptilien.RunicMaxIntensity = 60;
 
 			CraftAttributeInfo nordique = Nordique = new CraftAttributeInfo();
-
             nordique.ArmorPhysicalResist = 2;
             nordique.ArmorContondantResist = 2;
             nordique.ArmorTranchantResist = 2;
             nordique.ArmorPerforantResist = 2;
             nordique.ArmorMagieResist = 2;
-            nordique.RunicMinAttributes = 3;
-            nordique.RunicMaxAttributes = 4;
-			if ( Core.ML )
-			{
-				nordique.RunicMinIntensity = 40;
-				nordique.RunicMaxIntensity = 100;
-			}
-			else
-			{
-				nordique.RunicMinIntensity = 20;
-				nordique.RunicMaxIntensity = 40;
-			}
+            nordique.RunicMinAttributes = 2;
+            nordique.RunicMaxAttributes = 2;
+            nordique.RunicMinIntensity = 10;
+            nordique.RunicMaxIntensity = 60;
 
 			CraftAttributeInfo desertique = Desertique = new CraftAttributeInfo();
-
             desertique.ArmorPhysicalResist = 2;
             desertique.ArmorContondantResist = 2;
             desertique.ArmorTranchantResist = 2;
             desertique.ArmorPerforantResist = 2;
             desertique.ArmorMagieResist = 2;
-            desertique.RunicMinAttributes = 3;
-            desertique.RunicMaxAttributes = 4;
-			if ( Core.ML )
-			{
-                desertique.RunicMinIntensity = 45;
-                desertique.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                desertique.RunicMinIntensity = 30;
-                desertique.RunicMaxIntensity = 70;
-			}
+            desertique.RunicMinAttributes = 2;
+            desertique.RunicMaxAttributes = 2;
+            desertique.RunicMinIntensity = 10;
+            desertique.RunicMaxIntensity = 60;
 
 			CraftAttributeInfo maritime = Maritime = new CraftAttributeInfo();
-
-            maritime.ArmorPhysicalResist = 4;
-            maritime.ArmorContondantResist = 4;
-            maritime.ArmorTranchantResist = 4;
-            maritime.ArmorPerforantResist =4;
-            maritime.ArmorMagieResist = 4;
-            maritime.RunicMinAttributes = 4;
-            maritime.RunicMaxAttributes = 5;
-			if ( Core.ML )
-			{
-                maritime.RunicMinIntensity = 50;
-                maritime.RunicMaxIntensity = 100;
-			}
-			else
-			{
-                maritime.RunicMinIntensity = 40;
-                maritime.RunicMaxIntensity = 100;
-			}
+            maritime.ArmorPhysicalResist = 3;
+            maritime.ArmorContondantResist = 3;
+            maritime.ArmorTranchantResist = 3;
+            maritime.ArmorPerforantResist = 3;
+            maritime.ArmorMagieResist = 3;
+            maritime.RunicMinAttributes = 3;
+            maritime.RunicMaxAttributes = 3;
+            maritime.RunicMinIntensity = 20;
+            maritime.RunicMaxIntensity = 70;
 
             CraftAttributeInfo volcanique = Volcanique = new CraftAttributeInfo();
-
-            volcanique.ArmorPhysicalResist = 4;
-            volcanique.ArmorContondantResist = 4;
-            volcanique.ArmorTranchantResist = 4;
-            volcanique.ArmorPerforantResist = 4;
-            volcanique.ArmorMagieResist = 4;
-            volcanique.RunicMinAttributes = 4;
-            volcanique.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                volcanique.RunicMinIntensity = 50;
-                volcanique.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                volcanique.RunicMinIntensity = 40;
-                volcanique.RunicMaxIntensity = 100;
-            }
+            volcanique.ArmorPhysicalResist = 3;
+            volcanique.ArmorContondantResist = 3;
+            volcanique.ArmorTranchantResist = 3;
+            volcanique.ArmorPerforantResist = 3;
+            volcanique.ArmorMagieResist = 3;
+            volcanique.RunicMinAttributes = 3;
+            volcanique.RunicMaxAttributes = 3;
+            volcanique.RunicMinIntensity = 20;
+            volcanique.RunicMaxIntensity = 70;
 
             CraftAttributeInfo geant = Geant = new CraftAttributeInfo();
-
-            geant.ArmorPhysicalResist = 6;
-            geant.ArmorContondantResist = 6;
-            geant.ArmorTranchantResist = 6;
-            geant.ArmorPerforantResist = 6;
-            geant.ArmorMagieResist = 6;
-            geant.RunicMinAttributes = 4;
-            geant.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                geant.RunicMinIntensity = 50;
-                geant.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                geant.RunicMinIntensity = 40;
-                geant.RunicMaxIntensity = 100;
-            }
+            geant.ArmorPhysicalResist = 3;
+            geant.ArmorContondantResist = 3;
+            geant.ArmorTranchantResist = 3;
+            geant.ArmorPerforantResist = 3;
+            geant.ArmorMagieResist = 3;
+            geant.RunicMinAttributes = 3;
+            geant.RunicMaxAttributes = 3;
+            geant.RunicMinIntensity = 20;
+            geant.RunicMaxIntensity = 70;
 
             CraftAttributeInfo minotaure = Minotaure = new CraftAttributeInfo();
-
-            minotaure.ArmorPhysicalResist = 6;
-            minotaure.ArmorContondantResist = 6;
-            minotaure.ArmorTranchantResist = 6;
-            minotaure.ArmorPerforantResist = 6;
-            minotaure.ArmorMagieResist = 6;
+            minotaure.ArmorPhysicalResist = 4;
+            minotaure.ArmorContondantResist = 4;
+            minotaure.ArmorTranchantResist = 4;
+            minotaure.ArmorPerforantResist = 4;
+            minotaure.ArmorMagieResist = 4;
             minotaure.RunicMinAttributes = 4;
-            minotaure.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                minotaure.RunicMinIntensity = 50;
-                minotaure.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                minotaure.RunicMinIntensity = 40;
-                minotaure.RunicMaxIntensity = 100;
-            }
+            minotaure.RunicMaxAttributes = 4;
+            minotaure.RunicMinIntensity = 30;
+            minotaure.RunicMaxIntensity = 80;
 
             CraftAttributeInfo ophidien = Ophidien = new CraftAttributeInfo();
-
-            ophidien.ArmorPhysicalResist = 6;
-            ophidien.ArmorContondantResist = 6;
-            ophidien.ArmorTranchantResist = 6;
-            ophidien.ArmorPerforantResist = 6;
-            ophidien.ArmorMagieResist = 6;
+            ophidien.ArmorPhysicalResist = 4;
+            ophidien.ArmorContondantResist = 4;
+            ophidien.ArmorTranchantResist = 4;
+            ophidien.ArmorPerforantResist = 4;
+            ophidien.ArmorMagieResist = 4;
             ophidien.RunicMinAttributes = 4;
-            ophidien.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                ophidien.RunicMinIntensity = 50;
-                ophidien.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                ophidien.RunicMinIntensity = 40;
-                ophidien.RunicMaxIntensity = 100;
-            }
+            ophidien.RunicMaxAttributes = 4;
+            ophidien.RunicMinIntensity = 30;
+            ophidien.RunicMaxIntensity = 80;
 
             CraftAttributeInfo arachnide = Arachnide = new CraftAttributeInfo();
-
-            arachnide.ArmorPhysicalResist = 6;
-            arachnide.ArmorContondantResist = 6;
-            arachnide.ArmorTranchantResist = 6;
-            arachnide.ArmorPerforantResist = 6;
-            arachnide.ArmorMagieResist = 6;
+            arachnide.ArmorPhysicalResist = 4;
+            arachnide.ArmorContondantResist = 4;
+            arachnide.ArmorTranchantResist = 4;
+            arachnide.ArmorPerforantResist = 4;
+            arachnide.ArmorMagieResist = 4;
             arachnide.RunicMinAttributes = 4;
-            arachnide.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                arachnide.RunicMinIntensity = 50;
-                arachnide.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                arachnide.RunicMinIntensity = 40;
-                arachnide.RunicMaxIntensity = 100;
-            }
+            arachnide.RunicMaxAttributes = 4;
+            arachnide.RunicMinIntensity = 30;
+            arachnide.RunicMaxIntensity = 80;
 
             CraftAttributeInfo magique = Magique = new CraftAttributeInfo();
-
-            magique.ArmorPhysicalResist = 6;
-            magique.ArmorContondantResist = 6;
-            magique.ArmorTranchantResist = 6;
-            magique.ArmorPerforantResist = 6;
-            magique.ArmorMagieResist = 6;
-            magique.RunicMinAttributes = 4;
+            magique.ArmorPhysicalResist = 5;
+            magique.ArmorContondantResist = 5;
+            magique.ArmorTranchantResist = 5;
+            magique.ArmorPerforantResist = 5;
+            magique.ArmorMagieResist = 5;
+            magique.RunicMinAttributes = 5;
             magique.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                magique.RunicMinIntensity = 50;
-                magique.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                magique.RunicMinIntensity = 40;
-                magique.RunicMaxIntensity = 100;
-            }
+            magique.RunicMinIntensity = 40;
+            magique.RunicMaxIntensity = 90;
 
             CraftAttributeInfo ancien = Ancien = new CraftAttributeInfo();
-
-            ancien.ArmorPhysicalResist = 10;
-            ancien.ArmorContondantResist = 10;
-            ancien.ArmorTranchantResist = 10;
-            ancien.ArmorPerforantResist = 10;
-            ancien.ArmorMagieResist = 10;
-            ancien.RunicMinAttributes = 4;
+            ancien.ArmorPhysicalResist = 5;
+            ancien.ArmorContondantResist = 5;
+            ancien.ArmorTranchantResist = 5;
+            ancien.ArmorPerforantResist = 5;
+            ancien.ArmorMagieResist = 5;
+            ancien.RunicMinAttributes = 5;
             ancien.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                ancien.RunicMinIntensity = 50;
-                ancien.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                ancien.RunicMinIntensity = 40;
-                ancien.RunicMaxIntensity = 100;
-            }
+            ancien.RunicMinIntensity = 40;
+            ancien.RunicMaxIntensity = 90;
 
             CraftAttributeInfo demoniaque = Demoniaque = new CraftAttributeInfo();
-
-            demoniaque.ArmorPhysicalResist = 10;
-            demoniaque.ArmorContondantResist = 10;
-            demoniaque.ArmorTranchantResist = 10;
-            demoniaque.ArmorPerforantResist = 10;
-            demoniaque.ArmorMagieResist = 10;
-            demoniaque.RunicMinAttributes = 4;
+            demoniaque.ArmorPhysicalResist = 5;
+            demoniaque.ArmorContondantResist = 5;
+            demoniaque.ArmorTranchantResist = 5;
+            demoniaque.ArmorPerforantResist = 5;
+            demoniaque.ArmorMagieResist = 5;
+            demoniaque.RunicMinAttributes = 5;
             demoniaque.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                demoniaque.RunicMinIntensity = 50;
-                demoniaque.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                demoniaque.RunicMinIntensity = 40;
-                demoniaque.RunicMaxIntensity = 100;
-            }
+            demoniaque.RunicMinIntensity = 40;
+            demoniaque.RunicMaxIntensity = 90;
 
             CraftAttributeInfo dragonique = Dragonique = new CraftAttributeInfo();
-
-            dragonique.ArmorPhysicalResist = 10;
-            dragonique.ArmorContondantResist = 10;
-            dragonique.ArmorTranchantResist = 10;
-            dragonique.ArmorPerforantResist = 10;
-            dragonique.ArmorMagieResist = 10;
-            dragonique.RunicMinAttributes = 4;
-            dragonique.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                dragonique.RunicMinIntensity = 50;
-                dragonique.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                dragonique.RunicMinIntensity = 40;
-                dragonique.RunicMaxIntensity = 100;
-            }
+            dragonique.ArmorPhysicalResist = 6;
+            dragonique.ArmorContondantResist = 6;
+            dragonique.ArmorTranchantResist = 6;
+            dragonique.ArmorPerforantResist = 6;
+            dragonique.ArmorMagieResist = 6;
+            dragonique.RunicMinAttributes = 6;
+            dragonique.RunicMaxAttributes = 6;
+            dragonique.RunicMinIntensity = 50;
+            dragonique.RunicMaxIntensity = 100;
 
             CraftAttributeInfo balron = Balron = new CraftAttributeInfo();
-
-            balron.ArmorPhysicalResist = 12;
-            balron.ArmorContondantResist = 12;
-            balron.ArmorTranchantResist = 12;
-            balron.ArmorPerforantResist = 12;
-            balron.ArmorMagieResist = 12;
-            balron.RunicMinAttributes = 4;
-            balron.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                balron.RunicMinIntensity = 50;
-                balron.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                balron.RunicMinIntensity = 40;
-                balron.RunicMaxIntensity = 100;
-            }
+            balron.ArmorPhysicalResist = 6;
+            balron.ArmorContondantResist = 6;
+            balron.ArmorTranchantResist = 6;
+            balron.ArmorPerforantResist = 6;
+            balron.ArmorMagieResist = 6;
+            balron.RunicMinAttributes = 6;
+            balron.RunicMaxAttributes = 6;
+            balron.RunicMinIntensity = 50;
+            balron.RunicMaxIntensity = 100;
 
             CraftAttributeInfo wyrm = Wyrm = new CraftAttributeInfo();
-
-            wyrm.ArmorPhysicalResist = 12;
-            wyrm.ArmorContondantResist = 12;
-            wyrm.ArmorTranchantResist = 12;
-            wyrm.ArmorPerforantResist = 12;
-            wyrm.ArmorMagieResist = 12;
-            wyrm.RunicMinAttributes = 4;
-            wyrm.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                wyrm.RunicMinIntensity = 50;
-                wyrm.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                wyrm.RunicMinIntensity = 40;
-                wyrm.RunicMaxIntensity = 100;
-            }
+            wyrm.ArmorPhysicalResist = 6;
+            wyrm.ArmorContondantResist = 6;
+            wyrm.ArmorTranchantResist = 6;
+            wyrm.ArmorPerforantResist = 6;
+            wyrm.ArmorMagieResist = 6;
+            wyrm.RunicMinAttributes = 6;
+            wyrm.RunicMaxAttributes = 6;
+            wyrm.RunicMinIntensity = 50;
+            wyrm.RunicMaxIntensity = 100;
 
             CraftAttributeInfo reptilienCuir = ReptilienCuir = new CraftAttributeInfo();
-
-            reptilienCuir.ArmorPhysicalResist = 1;
-            reptilienCuir.ArmorContondantResist = 1;
-            reptilienCuir.ArmorTranchantResist = 1;
-            reptilienCuir.ArmorPerforantResist = 1;
-            reptilienCuir.ArmorMagieResist = 1;
-            reptilienCuir.RunicMinAttributes = 3;
-            reptilienCuir.RunicMaxAttributes = 4;
-            if (Core.ML)
-            {
-                reptilienCuir.RunicMinIntensity = 40;
-                reptilienCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                reptilienCuir.RunicMinIntensity = 20;
-                reptilienCuir.RunicMaxIntensity = 40;
-            }
+            reptilienCuir.ArmorPhysicalResist = 2;
+            reptilienCuir.ArmorContondantResist = 2;
+            reptilienCuir.ArmorTranchantResist = 2;
+            reptilienCuir.ArmorPerforantResist = 2;
+            reptilienCuir.ArmorMagieResist = 2;
+            reptilienCuir.RunicMinAttributes = 2;
+            reptilienCuir.RunicMaxAttributes = 2;
+            reptilienCuir.RunicMinIntensity = 10;
+            reptilienCuir.RunicMaxIntensity = 60;
 
             CraftAttributeInfo nordiqueCuir = NordiqueCuir = new CraftAttributeInfo();
-
-            nordiqueCuir.ArmorPhysicalResist = 1;
-            nordiqueCuir.ArmorContondantResist = 1;
-            nordiqueCuir.ArmorTranchantResist = 1;
-            nordiqueCuir.ArmorPerforantResist = 1;
-            nordiqueCuir.ArmorMagieResist = 1;
-            nordiqueCuir.RunicMinAttributes = 3;
-            nordiqueCuir.RunicMaxAttributes = 4;
-            if (Core.ML)
-            {
-                nordiqueCuir.RunicMinIntensity = 40;
-                nordiqueCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                nordiqueCuir.RunicMinIntensity = 20;
-                nordiqueCuir.RunicMaxIntensity = 40;
-            }
+            nordiqueCuir.ArmorPhysicalResist = 2;
+            nordiqueCuir.ArmorContondantResist = 2;
+            nordiqueCuir.ArmorTranchantResist = 2;
+            nordiqueCuir.ArmorPerforantResist = 2;
+            nordiqueCuir.ArmorMagieResist = 2;
+            nordiqueCuir.RunicMinAttributes = 2;
+            nordiqueCuir.RunicMaxAttributes = 2;
+            nordiqueCuir.RunicMinIntensity = 10;
+            nordiqueCuir.RunicMaxIntensity = 60;
 
             CraftAttributeInfo desertiqueCuir = DesertiqueCuir = new CraftAttributeInfo();
-
-            desertiqueCuir.ArmorPhysicalResist = 1;
-            desertiqueCuir.ArmorContondantResist = 1;
-            desertiqueCuir.ArmorTranchantResist = 1;
-            desertiqueCuir.ArmorPerforantResist = 1;
-            desertiqueCuir.ArmorMagieResist = 1;
-            desertiqueCuir.RunicMinAttributes = 3;
-            desertiqueCuir.RunicMaxAttributes = 4;
-            if (Core.ML)
-            {
-                desertiqueCuir.RunicMinIntensity = 45;
-                desertiqueCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                desertiqueCuir.RunicMinIntensity = 30;
-                desertiqueCuir.RunicMaxIntensity = 70;
-            }
+            desertiqueCuir.ArmorPhysicalResist = 2;
+            desertiqueCuir.ArmorContondantResist = 2;
+            desertiqueCuir.ArmorTranchantResist = 2;
+            desertiqueCuir.ArmorPerforantResist = 2;
+            desertiqueCuir.ArmorMagieResist = 2;
+            desertiqueCuir.RunicMinAttributes = 2;
+            desertiqueCuir.RunicMaxAttributes = 2;
+            desertiqueCuir.RunicMinIntensity = 10;
+            desertiqueCuir.RunicMaxIntensity = 60;
 
             CraftAttributeInfo maritimeCuir = MaritimeCuir = new CraftAttributeInfo();
-
-            maritimeCuir.ArmorPhysicalResist = 2;
-            maritimeCuir.ArmorContondantResist = 2;
-            maritimeCuir.ArmorTranchantResist = 2;
-            maritimeCuir.ArmorPerforantResist = 2;
-            maritimeCuir.ArmorMagieResist = 2;
-            maritimeCuir.RunicMinAttributes = 4;
-            maritimeCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                maritimeCuir.RunicMinIntensity = 50;
-                maritimeCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                maritimeCuir.RunicMinIntensity = 40;
-                maritimeCuir.RunicMaxIntensity = 100;
-            }
+            maritimeCuir.ArmorPhysicalResist = 3;
+            maritimeCuir.ArmorContondantResist = 3;
+            maritimeCuir.ArmorTranchantResist = 3;
+            maritimeCuir.ArmorPerforantResist = 3;
+            maritimeCuir.ArmorMagieResist = 3;
+            maritimeCuir.RunicMinAttributes = 3;
+            maritimeCuir.RunicMaxAttributes = 3;
+            maritimeCuir.RunicMinIntensity = 20;
+            maritimeCuir.RunicMaxIntensity = 70;
 
             CraftAttributeInfo volcaniqueCuir = VolcaniqueCuir = new CraftAttributeInfo();
-
-            volcaniqueCuir.ArmorPhysicalResist = 2;
-            volcaniqueCuir.ArmorContondantResist = 2;
-            volcaniqueCuir.ArmorTranchantResist = 2;
-            volcaniqueCuir.ArmorPerforantResist = 2;
-            volcaniqueCuir.ArmorMagieResist = 2;
-            volcaniqueCuir.RunicMinAttributes = 4;
-            volcaniqueCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                volcaniqueCuir.RunicMinIntensity = 50;
-                volcaniqueCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                volcaniqueCuir.RunicMinIntensity = 40;
-                volcaniqueCuir.RunicMaxIntensity = 100;
-            }
+            volcaniqueCuir.ArmorPhysicalResist = 3;
+            volcaniqueCuir.ArmorContondantResist = 3;
+            volcaniqueCuir.ArmorTranchantResist = 3;
+            volcaniqueCuir.ArmorPerforantResist = 3;
+            volcaniqueCuir.ArmorMagieResist = 3;
+            volcaniqueCuir.RunicMinAttributes = 3;
+            volcaniqueCuir.RunicMaxAttributes = 3;
+            volcaniqueCuir.RunicMinIntensity = 20;
+            volcaniqueCuir.RunicMaxIntensity = 70;
 
             CraftAttributeInfo geantCuir = GeantCuir = new CraftAttributeInfo();
-
             geantCuir.ArmorPhysicalResist = 3;
             geantCuir.ArmorContondantResist = 3;
             geantCuir.ArmorTranchantResist = 3;
             geantCuir.ArmorPerforantResist = 3;
             geantCuir.ArmorMagieResist = 3;
-            geantCuir.RunicMinAttributes = 4;
-            geantCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                geantCuir.RunicMinIntensity = 50;
-                geantCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                geantCuir.RunicMinIntensity = 40;
-                geantCuir.RunicMaxIntensity = 100;
-            }
+            geantCuir.RunicMinAttributes = 3;
+            geantCuir.RunicMaxAttributes = 3;
+            geantCuir.RunicMinIntensity = 20;
+            geantCuir.RunicMaxIntensity = 70;
 
             CraftAttributeInfo minotaureCuir = MinotaureCuir = new CraftAttributeInfo();
-
-            minotaureCuir.ArmorPhysicalResist = 3;
-            minotaureCuir.ArmorContondantResist = 3;
-            minotaureCuir.ArmorTranchantResist = 3;
-            minotaureCuir.ArmorPerforantResist = 3;
-            minotaureCuir.ArmorMagieResist = 3;
+            minotaureCuir.ArmorPhysicalResist = 4;
+            minotaureCuir.ArmorContondantResist = 4;
+            minotaureCuir.ArmorTranchantResist = 4;
+            minotaureCuir.ArmorPerforantResist = 4;
+            minotaureCuir.ArmorMagieResist = 4;
             minotaureCuir.RunicMinAttributes = 4;
-            minotaureCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                minotaureCuir.RunicMinIntensity = 50;
-                minotaureCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                minotaureCuir.RunicMinIntensity = 40;
-                minotaureCuir.RunicMaxIntensity = 100;
-            }
+            minotaureCuir.RunicMaxAttributes = 4;
+            minotaureCuir.RunicMinIntensity = 30;
+            minotaureCuir.RunicMaxIntensity = 80;
 
             CraftAttributeInfo ophidienCuir = OphidienCuir = new CraftAttributeInfo();
-
-            ophidienCuir.ArmorPhysicalResist = 3;
-            ophidienCuir.ArmorContondantResist = 3;
-            ophidienCuir.ArmorTranchantResist = 3;
-            ophidienCuir.ArmorPerforantResist = 3;
-            ophidienCuir.ArmorMagieResist = 3;
+            ophidienCuir.ArmorPhysicalResist = 4;
+            ophidienCuir.ArmorContondantResist = 4;
+            ophidienCuir.ArmorTranchantResist = 4;
+            ophidienCuir.ArmorPerforantResist = 4;
+            ophidienCuir.ArmorMagieResist = 4;
             ophidienCuir.RunicMinAttributes = 4;
-            ophidienCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                ophidienCuir.RunicMinIntensity = 50;
-                ophidienCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                ophidienCuir.RunicMinIntensity = 40;
-                ophidienCuir.RunicMaxIntensity = 100;
-            }
+            ophidienCuir.RunicMaxAttributes = 4;
+            ophidienCuir.RunicMinIntensity = 30;
+            ophidienCuir.RunicMaxIntensity = 80;
 
             CraftAttributeInfo arachnideCuir = ArachnideCuir = new CraftAttributeInfo();
-
-            arachnideCuir.ArmorPhysicalResist = 3;
-            arachnideCuir.ArmorContondantResist = 3;
-            arachnideCuir.ArmorTranchantResist = 3;
-            arachnideCuir.ArmorPerforantResist = 3;
-            arachnideCuir.ArmorMagieResist = 3;
+            arachnideCuir.ArmorPhysicalResist = 4;
+            arachnideCuir.ArmorContondantResist = 4;
+            arachnideCuir.ArmorTranchantResist = 4;
+            arachnideCuir.ArmorPerforantResist = 4;
+            arachnideCuir.ArmorMagieResist = 4;
             arachnideCuir.RunicMinAttributes = 4;
-            arachnideCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                arachnideCuir.RunicMinIntensity = 50;
-                arachnideCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                arachnideCuir.RunicMinIntensity = 40;
-                arachnideCuir.RunicMaxIntensity = 100;
-            }
+            arachnideCuir.RunicMaxAttributes = 4;
+            arachnideCuir.RunicMinIntensity = 30;
+            arachnideCuir.RunicMaxIntensity = 80;
 
             CraftAttributeInfo magiqueCuir = MagiqueCuir = new CraftAttributeInfo();
-
-            magiqueCuir.ArmorPhysicalResist = 3;
-            magiqueCuir.ArmorContondantResist = 3;
-            magiqueCuir.ArmorTranchantResist = 3;
-            magiqueCuir.ArmorPerforantResist = 3;
-            magiqueCuir.ArmorMagieResist = 3;
-            magiqueCuir.RunicMinAttributes = 4;
+            magiqueCuir.ArmorPhysicalResist = 5;
+            magiqueCuir.ArmorContondantResist = 5;
+            magiqueCuir.ArmorTranchantResist = 5;
+            magiqueCuir.ArmorPerforantResist = 5;
+            magiqueCuir.ArmorMagieResist = 5;
+            magiqueCuir.RunicMinAttributes = 5;
             magiqueCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                magiqueCuir.RunicMinIntensity = 50;
-                magiqueCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                magiqueCuir.RunicMinIntensity = 40;
-                magiqueCuir.RunicMaxIntensity = 100;
-            }
+            magiqueCuir.RunicMinIntensity = 40;
+            magiqueCuir.RunicMaxIntensity = 90;
 
             CraftAttributeInfo ancienCuir = AncienCuir = new CraftAttributeInfo();
-
-            ancienCuir.ArmorPhysicalResist = 4;
-            ancienCuir.ArmorContondantResist = 4;
-            ancienCuir.ArmorTranchantResist = 4;
-            ancienCuir.ArmorPerforantResist = 4;
-            ancienCuir.ArmorMagieResist = 4;
-            ancienCuir.RunicMinAttributes = 4;
+            ancienCuir.ArmorPhysicalResist = 5;
+            ancienCuir.ArmorContondantResist = 5;
+            ancienCuir.ArmorTranchantResist = 5;
+            ancienCuir.ArmorPerforantResist = 5;
+            ancienCuir.ArmorMagieResist = 5;
+            ancienCuir.RunicMinAttributes = 5;
             ancienCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                ancienCuir.RunicMinIntensity = 50;
-                ancienCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                ancienCuir.RunicMinIntensity = 40;
-                ancienCuir.RunicMaxIntensity = 100;
-            }
+            ancienCuir.RunicMinIntensity = 40;
+            ancienCuir.RunicMaxIntensity = 90;
 
             CraftAttributeInfo demoniaqueCuir = DemoniaqueCuir = new CraftAttributeInfo();
-
-            demoniaqueCuir.ArmorPhysicalResist = 4;
-            demoniaqueCuir.ArmorContondantResist = 4;
-            demoniaqueCuir.ArmorTranchantResist = 4;
-            demoniaqueCuir.ArmorPerforantResist = 4;
-            demoniaqueCuir.ArmorMagieResist = 4;
-            demoniaqueCuir.RunicMinAttributes = 4;
+            demoniaqueCuir.ArmorPhysicalResist = 5;
+            demoniaqueCuir.ArmorContondantResist = 5;
+            demoniaqueCuir.ArmorTranchantResist = 5;
+            demoniaqueCuir.ArmorPerforantResist = 5;
+            demoniaqueCuir.ArmorMagieResist = 5;
+            demoniaqueCuir.RunicMinAttributes = 5;
             demoniaqueCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                demoniaqueCuir.RunicMinIntensity = 50;
-                demoniaqueCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                demoniaqueCuir.RunicMinIntensity = 40;
-                demoniaqueCuir.RunicMaxIntensity = 100;
-            }
+            demoniaqueCuir.RunicMinIntensity = 40;
+            demoniaqueCuir.RunicMaxIntensity = 90;
 
             CraftAttributeInfo dragoniqueCuir = DragoniqueCuir = new CraftAttributeInfo();
-
-            dragoniqueCuir.ArmorPhysicalResist = 4;
-            dragoniqueCuir.ArmorContondantResist = 4;
-            dragoniqueCuir.ArmorTranchantResist = 4;
-            dragoniqueCuir.ArmorPerforantResist = 4;
-            dragoniqueCuir.ArmorMagieResist = 4;
-            dragoniqueCuir.RunicMinAttributes = 4;
-            dragoniqueCuir.RunicMaxAttributes = 5;
-
-            if (Core.ML)
-            {
-                dragoniqueCuir.RunicMinIntensity = 50;
-                dragoniqueCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                dragoniqueCuir.RunicMinIntensity = 40;
-                dragoniqueCuir.RunicMaxIntensity = 100;
-            }
+            dragoniqueCuir.ArmorPhysicalResist = 6;
+            dragoniqueCuir.ArmorContondantResist = 6;
+            dragoniqueCuir.ArmorTranchantResist = 6;
+            dragoniqueCuir.ArmorPerforantResist = 6;
+            dragoniqueCuir.ArmorMagieResist = 6;
+            dragoniqueCuir.RunicMinAttributes = 6;
+            dragoniqueCuir.RunicMaxAttributes = 6;
+            dragoniqueCuir.RunicMinIntensity = 50;
+            dragoniqueCuir.RunicMaxIntensity = 100;
 
             CraftAttributeInfo lupusCuir = LupusCuir = new CraftAttributeInfo();
-
-            lupusCuir.ArmorPhysicalResist = 5;
-            lupusCuir.ArmorContondantResist = 5;
-            lupusCuir.ArmorTranchantResist = 5;
-            lupusCuir.ArmorPerforantResist = 5;
-            lupusCuir.ArmorMagieResist = 5;
-            lupusCuir.RunicMinAttributes = 4;
-            lupusCuir.RunicMaxAttributes = 5;
-            if (Core.ML)
-            {
-                lupusCuir.RunicMinIntensity = 50;
-                lupusCuir.RunicMaxIntensity = 100;
-            }
-            else
-            {
-                lupusCuir.RunicMinIntensity = 40;
-                lupusCuir.RunicMaxIntensity = 100;
-            }
+            lupusCuir.ArmorPhysicalResist = 6;
+            lupusCuir.ArmorContondantResist = 6;
+            lupusCuir.ArmorTranchantResist = 6;
+            lupusCuir.ArmorPerforantResist = 6;
+            lupusCuir.ArmorMagieResist = 6;
+            lupusCuir.RunicMinAttributes = 6;
+            lupusCuir.RunicMaxAttributes = 6;
+            lupusCuir.RunicMinIntensity = 50;
+            lupusCuir.RunicMaxIntensity = 100;
 
 			//public static readonly CraftAttributeInfo OakWood, AshWood, YewWood, Heartwood, Bloodwood, Frostwood;
 
@@ -1092,22 +708,22 @@ namespace Server.Items
             pin.WeaponDirectDamage = 1;
 
 			CraftAttributeInfo cypres = CypresWood = new CraftAttributeInfo();
-            pin.WeaponDirectDamage = 1;
+            cypres.WeaponDirectDamage = 1;
 
 			CraftAttributeInfo cedre = CedreWood = new CraftAttributeInfo();
-            pin.WeaponDirectDamage = 2;
+            cedre.WeaponDirectDamage = 2;
 
 			CraftAttributeInfo saule = SauleWood = new CraftAttributeInfo();
-            pin.WeaponDirectDamage = 2;
+            saule.WeaponDirectDamage = 2;
 
 			CraftAttributeInfo chene = CheneWood = new CraftAttributeInfo();
-            pin.WeaponDirectDamage = 3;
+            chene.WeaponDirectDamage = 3;
 
             CraftAttributeInfo ebene = EbeneWood = new CraftAttributeInfo();
-            pin.WeaponDirectDamage = 3;
+            ebene.WeaponDirectDamage = 3;
 
             CraftAttributeInfo acajou = AcajouWood = new CraftAttributeInfo();
-            pin.WeaponDirectDamage = 4;
+            acajou.WeaponDirectDamage = 4;
 		}
 	}
 
