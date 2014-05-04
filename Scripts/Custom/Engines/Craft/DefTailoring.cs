@@ -718,24 +718,24 @@ namespace Server.Engines.Craft
 			#endregion
 
 			// Set the overridable material
-			SetSubRes( typeof( Leather ), "Cuir" );
+			SetSubRes(typeof(Leather), "Cuir");
 
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material
-			AddSubRes( typeof( Leather ),		"Cuir", 00.0, 1049311 );
+			AddSubRes(typeof(Leather), "Cuir", 00.0, 1049311);
             AddSubRes(typeof(ReptilienLeather), "Cuir Reptilien", 20.0, 1049311);
             AddSubRes(typeof(NordiqueLeather), "Cuir Nordique", 20.0, 1049311);
-            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", 30.0, 1049311);
+            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", 20.0, 1049311);
             AddSubRes(typeof(MaritimeLeather), "Cuir Maritime", 40.0, 1049311);
-            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", 50.0, 1049311);
-            AddSubRes(typeof(GeantLeather), "Cuir Géant", 50.0, 1049311);
-            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", 50.0, 1049311);
+            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", 40.0, 1049311);
+            AddSubRes(typeof(GeantLeather), "Cuir Géant", 40.0, 1049311);
+            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", 60.0, 1049311);
             AddSubRes(typeof(OphidienLeather), "Cuir Ophidien", 60.0, 1049311);
             AddSubRes(typeof(ArachnideLeather), "Cuir Arachnide", 60.0, 1049311);
-            AddSubRes(typeof(MagiqueLeather), "Cuir Magique", 60.0, 1049311);
-            AddSubRes(typeof(AncienLeather), "Cuir Ancien", 70.0, 1049311);
+            AddSubRes(typeof(MagiqueLeather), "Cuir Magique", 80.0, 1049311);
+            AddSubRes(typeof(AncienLeather), "Cuir Ancien", 80.0, 1049311);
             AddSubRes(typeof(DemoniaqueLeather), "Cuir Demoniaque", 80.0, 1049311);
-            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", 90.0, 1049311);
+            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", 100.0, 1049311);
             AddSubRes(typeof(LupusLeather), "Cuir Lupus", 100.0, 1049311);
 			/*AddSubRes( typeof( SpinedLeather ),	1049151, 65.0, 1044462, 1049311 );
 			AddSubRes( typeof( HornedLeather ),	1049152, 80.0, 1044462, 1049311 );

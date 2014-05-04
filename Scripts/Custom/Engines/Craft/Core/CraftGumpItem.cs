@@ -192,7 +192,7 @@ namespace Server.Engines.Craft
                     BaseArmor armor = (BaseArmor)item;
                     int req = armor.NiveauAttirail;
 
-                    if (armor.MaterialType == ArmorMaterialType.Bone)
+                    /*if (armor.MaterialType == ArmorMaterialType.Bone)
                     {
                         switch (nameEnd)
                         {
@@ -226,6 +226,7 @@ namespace Server.Engines.Craft
                                 break;
                         }
                     }
+                    */
                     /*else if (armor.MaterialType == ArmorMaterialType.Leather || armor.MaterialType == ArmorMaterialType.Studded)
                     {
                         switch (nameEnd)
@@ -672,17 +673,19 @@ namespace Server.Engines.Craft
                 switch (name)
                 {
                     case "ReptilienLeather": skill += 5.0; break;
-                    case "NordiqueLeather": skill += 10.0; break;
-                    case "LupusLeather": skill += 15.0; break;
-                    case "GeantLeather": skill += 20.0; break;
-                    case "MaritimeLeather": skill += 20.0; break;
-                    case "PierreLeather": skill += 25.0; break;
-                    case "TerathanLeather": skill += 30.0; break;
-                    case "OphidianLeather": skill += 35.0; break;
-                    case "GargouillienLeather": skill += 40.0; break;
-                    case "RautourLeather": skill += 45.0; break;
-                    case "DraconiqueLeather": skill += 50.0; break;
-                    case "DemoniaqueLeather": skill += 50.0; break;
+                    case "NordiqueLeather": skill += 5.0; break;
+                    case "DesertiqueLeather": skill += 5.0; break;
+                    case "MaritimeLeather": skill += 10.0; break;
+                    case "VolcaniqueLeather": skill += 10.0; break;
+                    case "GeantLeather": skill += 10.0; break;
+                    case "MinotaureLeather": skill += 20.0; break;
+                    case "OphidienLeather": skill += 20.0; break;
+                    case "ArachnideLeather": skill += 20.0; break;
+                    case "MagiqueLeather": skill += 30.0; break;
+                    case "AncienLeather": skill += 30.0; break;
+                    case "DemoniaqueLeather": skill += 30.0; break;
+                    case "DragoniqueLeather": skill += 40.0; break;
+                    case "LupusLeather": skill += 40.0; break;
                 }
 
                 return skill;
@@ -697,17 +700,22 @@ namespace Server.Engines.Craft
             {
                 switch (name)
                 {
-                    case "MorcithBone": skill += 15.0; break;
-                    case "ReptilienBone": skill += 15.0; break;
-                    case "NordiqueBone": skill += 20.0; break;
-                    case "DesertiqueBone": skill += 20.0; break;
-                    case "VolcaniqueBone": skill += 30.0; break;
-                    case "GeantBone": skill += 30.0; break;
-                    case "MaritimeBone": skill += 40.0; break;
-                    case "CentiriusBone": skill += 40.0; break;
-                    case "DragonBone": skill += 45.0; break;
-                    case "DemonBone": skill += 45.0; break;
-                    case "AncienneBone": skill += 50.0; break;
+                    case "GobelinBone": skill += 5.0; break;
+                    case "ReptilienBone": skill += 5.0; break;
+                    case "NordiqueBone": skill += 5.0; break;
+                    case "DesertiqueBone": skill += 5.0; break;
+                    case "MaritimeBone": skill += 10.0; break;
+                    case "VolcaniqueBone": skill += 10.0; break;
+                    case "GeantBone": skill += 10.0; break;
+                    case "MinotaureBone": skill += 20.0; break;
+                    case "OphidienBone": skill += 20.0; break;
+                    case "ArachnideBone": skill += 20.0; break;
+                    case "MagiqueBone": skill += 30.0; break;
+                    case "AncienBone": skill += 30.0; break;
+                    case "DemonBone": skill += 30.0; break;
+                    case "DragonBone": skill += 40.0; break;
+                    case "BalronBone": skill += 40.0; break;
+                    case "WyrmBone": skill += 40.0; break;
                 }
 
                 return skill;
@@ -732,8 +740,8 @@ namespace Server.Engines.Craft
                     case "ObscuriumIngot": skill += 15.0; break;
                     case "MystiriumIngot": skill += 20.0; break;
                     case "DominiumIngot": skill += 20.0; break;
-                    case "EclariumIngot": skill += 25.0; break;
                     case "VenariumIngot": skill += 20.0; break;
+                    case "EclariumIngot": skill += 25.0; break;
                     case "AtheniumIngot": skill += 25.0; break;
                     case "UmbrariumIngot": skill += 25.0; break;
                 }

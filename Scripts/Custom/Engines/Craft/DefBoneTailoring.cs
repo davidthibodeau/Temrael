@@ -126,23 +126,20 @@ namespace Server.Engines.Craft
             int index = -1;
 
             #region Bone Armor
-            index = AddCraft( typeof( BoneHelm ), "Armure d'Os", "Casque d'Os", 30.0, 50.0, typeof( Bone ), "Os", 4, 1044463 );
+            index = AddCraft(typeof(BoneHelm), "Armure d'Os", "Casque d'Os", 50.0, 70.0, typeof(Bone), "Os", 4, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 2, "Cuir");
 
-            index = AddCraft(typeof(BoneGloves), "Armure d'Os", "Gants d'Os", 30.0, 50.0, typeof(Bone), "Os", 6, 1044463);
-            AddRes(index, typeof(Leather), "Cuir", 2, "Cuir");
+            index = AddCraft(typeof(BoneGloves), "Armure d'Os", "Gants d'Os", 50.0, 70.0, typeof(Bone), "Os", 6, 1044463);
+            AddRes(index, typeof(Leather), "Cuir", 3, "Cuir");
 
-            index = AddCraft(typeof(BoneArms), "Armure d'Os", "Brassards d'Os", 30.0, 50.0, typeof(Bone), "Os", 8, 1044463);
+            index = AddCraft(typeof(BoneArms), "Armure d'Os", "Brassards d'Os", 50.0, 70.0, typeof(Bone), "Os", 8, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 4, "Cuir");
 
-            index = AddCraft(typeof(BoneLegs), "Armure d'Os", "Jambieres d'Os", 30.0, 50.0, typeof(Bone), "Os", 10, 1044463);
+            index = AddCraft(typeof(BoneLegs), "Armure d'Os", "Jambieres d'Os", 50.0, 70.0, typeof(Bone), "Os", 10, 1044463);
+            AddRes(index, typeof(Leather), "Cuir", 5, "Cuir");
+
+            index = AddCraft(typeof(BoneChest), "Armure d'Os", "Plastron d'Os", 50.0, 70.0, typeof(Bone), "Os", 12, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 6, "Cuir");
-
-            index = AddCraft(typeof(BoneChest), "Armure d'Os", "Plastron d'Os", 30.0, 50.0, typeof(Bone), "Os", 12, 1044463);
-            AddRes(index, typeof(Leather), "Cuir", 10, "Cuir");
-
-            //index = AddCraft(typeof(OrcHelm), "Armure d'Os", 1027947, 90.0, 115.0, typeof(Bone), 1044462, 6, 1044463);
-            //AddRes(index, typeof(Leather), "Cuir", 4, 1049063);
             #endregion
 
             // Set the overridable material
@@ -154,17 +151,17 @@ namespace Server.Engines.Craft
             AddSubRes(typeof(GobelinBone), "Os Gobelin", 20.0, 1049311);
             AddSubRes(typeof(ReptilienBone), "Os Reptilien", 20.0, 1049311);
             AddSubRes(typeof(NordiqueBone), "Os Nordique", 20.0, 1049311);
-            AddSubRes(typeof(DesertiqueBone), "Os Désertique", 30.0, 1049311);
+            AddSubRes(typeof(DesertiqueBone), "Os Désertique", 20.0, 1049311);
             AddSubRes(typeof(MaritimeBone), "Os Maritime", 40.0, 1049311);
-            AddSubRes(typeof(VolcaniqueBone), "Os Volcanique", 50.0, 1049311);
-            AddSubRes(typeof(GeantBone), "Os Géant", 50.0, 1049311);
-            AddSubRes(typeof(MinotaureBone), "Os Minotaure", 50.0, 1049311);
+            AddSubRes(typeof(VolcaniqueBone), "Os Volcanique", 40.0, 1049311);
+            AddSubRes(typeof(GeantBone), "Os Géant", 40.0, 1049311);
+            AddSubRes(typeof(MinotaureBone), "Os Minotaure", 60.0, 1049311);
             AddSubRes(typeof(OphidienBone), "Os Ophidien", 60.0, 1049311);
             AddSubRes(typeof(ArachnideBone), "Os Arachnide", 60.0, 1049311);
-            AddSubRes(typeof(MagiqueBone), "Os Magique", 60.0, 1049311);
-            AddSubRes(typeof(AncienBone), "Os Ancien", 70.0, 1049311);
+            AddSubRes(typeof(MagiqueBone), "Os Magique", 80.0, 1049311);
+            AddSubRes(typeof(AncienBone), "Os Ancien", 80.0, 1049311);
             AddSubRes(typeof(DemonBone), "Os Demoniaque", 80.0, 1049311);
-            AddSubRes(typeof(DragonBone), "Os Dragonique", 90.0, 1049311);
+            AddSubRes(typeof(DragonBone), "Os Dragonique", 100.0, 1049311);
             AddSubRes(typeof(BalronBone), "Os Balron", 100.0, 1049311);
             AddSubRes(typeof(WyrmBone), "Os Wyrmique", 100.0, 1049311);
 

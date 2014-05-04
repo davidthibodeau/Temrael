@@ -121,7 +121,7 @@ namespace Server.Items
         public const int Leather_Casque_Tranchant = 2;
         public const int Leather_Casque_Perforant = 2;
         public const int Leather_Casque_Magique = 2;
-        public const int Leather_Casque_Force = 2;
+        public const int Leather_Casque_Force = 0;
 
         public const int Leather_Gorget = 2;
         public const int Leather_Gorget_Contondant = 2;
@@ -198,40 +198,40 @@ namespace Server.Items
         public const int Studded_Jambieres_Magique = 2;
         public const int Studded_Jambieres_Force = 10;
 
-        public const int Studded_MinDurabilite = 100;
-        public const int Studded_MaxDurabilite = 125;
+        public const int Studded_MinDurabilite = 125;
+        public const int Studded_MaxDurabilite = 150;
 
         //OS
 
-        public const int Os_Casque = 2;
+        public const int Os_Casque = 4;
         public const int Os_Casque_Contondant = 2;
         public const int Os_Casque_Tranchant = 2;
         public const int Os_Casque_Perforant = 2;
         public const int Os_Casque_Magique = 2;
-        public const int Os_Casque_Force = 5;
+        public const int Os_Casque_Force = 0;
 
-        public const int Os_Gants = 2;
+        public const int Os_Gants = 4;
         public const int Os_Gants_Contondant = 2;
         public const int Os_Gants_Tranchant = 2;
         public const int Os_Gants_Perforant = 2;
         public const int Os_Gants_Magique = 2;
         public const int Os_Gants_Force = 0;
 
-        public const int Os_Brassards = 2;
+        public const int Os_Brassards = 4;
         public const int Os_Brassards_Contondant = 2;
         public const int Os_Brassards_Tranchant = 2;
         public const int Os_Brassards_Perforant = 2;
         public const int Os_Brassards_Magique = 2;
-        public const int Os_Brassards_Force = 10;
+        public const int Os_Brassards_Force = 12;
 
-        public const int Os_Cuirasse = 2;
+        public const int Os_Cuirasse = 4;
         public const int Os_Cuirasse_Contondant = 2;
         public const int Os_Cuirasse_Tranchant = 2;
         public const int Os_Cuirasse_Perforant = 2;
         public const int Os_Cuirasse_Magique = 2;
-        public const int Os_Cuirasse_Force = 30;
+        public const int Os_Cuirasse_Force = 15;
 
-        public const int Os_Jambieres = 2;
+        public const int Os_Jambieres = 4;
         public const int Os_Jambieres_Contondant = 2;
         public const int Os_Jambieres_Tranchant = 2;
         public const int Os_Jambieres_Perforant = 2;
@@ -314,18 +314,18 @@ namespace Server.Items
 
         //Armure Barbare
 
-        public const int ArmureBarbare_Cuirasse = 6; //= 10;
-        public const int ArmureBarbare_Cuirasse_Contondant = 6; //= 10;
-        public const int ArmureBarbare_Cuirasse_Tranchant = 6; //= 10;
-        public const int ArmureBarbare_Cuirasse_Perforant = 6; //= 10;
-        public const int ArmureBarbare_Cuirasse_Magique = 6; //= 10;
+        public const int ArmureBarbare_Cuirasse = 6;
+        public const int ArmureBarbare_Cuirasse_Contondant = 6;
+        public const int ArmureBarbare_Cuirasse_Tranchant = 6;
+        public const int ArmureBarbare_Cuirasse_Perforant = 6;
+        public const int ArmureBarbare_Cuirasse_Magique = 6;
         public const int ArmureBarbare_Cuirasse_Force = 15;
 
-        public const int ArmureBarbare_Jambieres = 6; //= 10;
-        public const int ArmureBarbare_Jambieres_Contondant = 6; //= 10;
-        public const int ArmureBarbare_Jambieres_Tranchant = 6; //= 10;
-        public const int ArmureBarbare_Jambieres_Perforant = 6; //= 10;
-        public const int ArmureBarbare_Jambieres_Magique = 6; //= 10;
+        public const int ArmureBarbare_Jambieres = 6;
+        public const int ArmureBarbare_Jambieres_Contondant = 6;
+        public const int ArmureBarbare_Jambieres_Tranchant = 6;
+        public const int ArmureBarbare_Jambieres_Perforant = 6;
+        public const int ArmureBarbare_Jambieres_Magique = 6;
         public const int ArmureBarbare_Jambieres_Force = 10;
 
         public const int ArmureBarbare_MinDurabilite = 125;

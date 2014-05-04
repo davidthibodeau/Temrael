@@ -6,7 +6,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1c02, 0x1c03 )]
 	public class FemaleStuddedChest : BaseArmor
 	{
-        public override int NiveauAttirail { get { return 1; } }
+        public override int NiveauAttirail { get { return 2; } }
 
         public override Layer Layer
         {
