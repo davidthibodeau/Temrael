@@ -439,6 +439,60 @@ namespace Server.Items
 
             int version = reader.ReadInt();
         }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            if ( from.Backpack != null ){
+                if (IsChildOf(from.Backpack))
+                {
+                    from.SendMessage("Ciblez une créature morte.");
+                    from.Target = new PickCorpseTarget(this);
+                }
+                else
+                {
+                    from.SendLocalizedMessage(1042001); // That must be in your pack for you to use it.
+                    return;
+                }
+            }
+        }
+
+        private class PickCorpseTarget : Target
+        {
+            private OutilCoagulation m_OutilCoagulation;
+
+            public PickCorpseTarget(OutilCoagulation outilCoagulation)
+                : base(3, false, TargetFlags.None)
+            {
+                m_OutilCoagulation = outilCoagulation;
+            }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                if (m_OutilCoagulation.Deleted)
+                    return;
+
+                Corpse m = targeted as Corpse;
+
+                if (m != null && m is Corpse)
+                {
+                    if (!m.Name.Contains("Saigné"))
+                    {
+                        if (from.Backpack.ConsumeTotal(typeof(Bottle), 1))
+                        {
+                            from.AddToBackpack(new FioleDeSang(1));
+                            from.SendMessage("Vous remplissez une fiole avec le sang de la créature.");
+                            m.Name = m.Name + " Saigné";
+                        }
+                        else
+                            from.SendMessage("Vous devez avoir une bouteille vide dans votre sac pour utiliser ça.");
+                    }
+                    else
+                        from.SendMessage("Le sang de cette créature a déjà été recueilli.");
+                }
+                else
+                    from.SendMessage("Vous devez cibler une créature morte !");
+            }
+        }
     }
 
     public class ResineAmbreBleue : BasePlantReagent
