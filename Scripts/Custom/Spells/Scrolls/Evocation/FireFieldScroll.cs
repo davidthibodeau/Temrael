@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public FireFieldScroll( int amount ) : base( 28, 0x1F48, amount )
 		{
+            Name = "Evocation: Mur de Feu";
 		}
 
 		public FireFieldScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Evocation: Mur de Feu";
 		}
 
 		/*public override Item Dupe( int amount )

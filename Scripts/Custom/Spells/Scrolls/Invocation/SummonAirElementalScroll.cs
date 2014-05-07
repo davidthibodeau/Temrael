@@ -4,19 +4,20 @@ using Server.Items;
 
 namespace Server.Items
 {
-	public class ResurrectionScroll : SpellScroll
+	public class SummonAirElementalScroll : SpellScroll
 	{
 		[Constructable]
-		public ResurrectionScroll() : this( 1 )
+		public SummonAirElementalScroll() : this( 1 )
 		{
 		}
 
 		[Constructable]
-		public ResurrectionScroll( int amount ) : base( 59, 0x1F67, amount )
+		public SummonAirElementalScroll( int amount ) : base( 60, 0x1F68, amount )
 		{
+            Name = "Invocation: Élémental d'air";
 		}
 
-		public ResurrectionScroll( Serial serial ) : base( serial )
+		public SummonAirElementalScroll( Serial serial ) : base( serial )
 		{
 		}
 
@@ -36,7 +37,7 @@ namespace Server.Items
 
 		/*public override Item Dupe( int amount )
 		{
-			return base.Dupe( new ResurrectionScroll( amount ), amount );
+			return base.Dupe( new SummonAirElementalScroll( amount ), amount );
 		}*/
 	}
 }

@@ -4,19 +4,20 @@ using Server.Items;
 
 namespace Server.Items
 {
-	public class EarthquakeScroll : SpellScroll
+	public class EnergyVortexScroll : SpellScroll
 	{
 		[Constructable]
-		public EarthquakeScroll() : this( 1 )
+		public EnergyVortexScroll() : this( 1 )
 		{
 		}
 
 		[Constructable]
-		public EarthquakeScroll( int amount ) : base( 57, 0x1F65, amount )
+		public EnergyVortexScroll( int amount ) : base( 58, 0x1F66, amount )
 		{
+            Name = "Évocation: Vortex";
 		}
 
-		public EarthquakeScroll( Serial serial ) : base( serial )
+		public EnergyVortexScroll( Serial serial ) : base( serial )
 		{
 		}
 
@@ -32,11 +33,13 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Vortex";
 		}
 
 		/*public override Item Dupe( int amount )
 		{
-			return base.Dupe( new EarthquakeScroll( amount ), amount );
+			return base.Dupe( new EnergyVortexScroll( amount ), amount );
 		}*/
 	}
 }

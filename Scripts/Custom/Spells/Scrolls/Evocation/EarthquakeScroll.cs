@@ -4,19 +4,20 @@ using Server.Items;
 
 namespace Server.Items
 {
-	public class SummonAirElementalScroll : SpellScroll
+	public class EarthquakeScroll : SpellScroll
 	{
 		[Constructable]
-		public SummonAirElementalScroll() : this( 1 )
+		public EarthquakeScroll() : this( 1 )
 		{
 		}
 
 		[Constructable]
-		public SummonAirElementalScroll( int amount ) : base( 60, 0x1F68, amount )
+		public EarthquakeScroll( int amount ) : base( 57, 0x1F65, amount )
 		{
+            Name = "Évocation: Tremblement";
 		}
 
-		public SummonAirElementalScroll( Serial serial ) : base( serial )
+		public EarthquakeScroll( Serial serial ) : base( serial )
 		{
 		}
 
@@ -32,11 +33,13 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Tremblement";
 		}
 
 		/*public override Item Dupe( int amount )
 		{
-			return base.Dupe( new SummonAirElementalScroll( amount ), amount );
+			return base.Dupe( new EarthquakeScroll( amount ), amount );
 		}*/
 	}
 }

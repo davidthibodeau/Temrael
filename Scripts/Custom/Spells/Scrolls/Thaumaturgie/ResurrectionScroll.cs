@@ -4,19 +4,20 @@ using Server.Items;
 
 namespace Server.Items
 {
-	public class EnergyVortexScroll : SpellScroll
+	public class ResurrectionScroll : SpellScroll
 	{
 		[Constructable]
-		public EnergyVortexScroll() : this( 1 )
+		public ResurrectionScroll() : this( 1 )
 		{
 		}
 
 		[Constructable]
-		public EnergyVortexScroll( int amount ) : base( 58, 0x1F66, amount )
+		public ResurrectionScroll( int amount ) : base( 59, 0x1F67, amount )
 		{
+            Name = "Thaumaturgie: Resurrection";
 		}
 
-		public EnergyVortexScroll( Serial serial ) : base( serial )
+		public ResurrectionScroll( Serial serial ) : base( serial )
 		{
 		}
 
@@ -32,11 +33,13 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Resurrection";
 		}
 
 		/*public override Item Dupe( int amount )
 		{
-			return base.Dupe( new EnergyVortexScroll( amount ), amount );
+			return base.Dupe( new ResurrectionScroll( amount ), amount );
 		}*/
 	}
 }
