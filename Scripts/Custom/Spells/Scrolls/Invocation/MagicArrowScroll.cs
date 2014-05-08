@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MagicArrowScroll( int amount ) : base( 5, 0x1F32, amount )
 		{
+            Name = "Invocation: Flèche Magique";
 		}
 		
 		public MagicArrowScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Flèche Magique";
 		}
 
 		/*public override Item Dupe( int amount )

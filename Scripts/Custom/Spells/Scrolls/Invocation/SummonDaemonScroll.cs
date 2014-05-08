@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonDaemonScroll( int amount ) : base( 61, 0x1F69, amount )
 		{
+            Name = "Invocation: Conjuration";
 		}
 
 		public SummonDaemonScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Conjuration";
 		}
 
 		/*public override Item Dupe( int amount )

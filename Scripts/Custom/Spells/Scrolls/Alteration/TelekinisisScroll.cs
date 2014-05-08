@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public TelekinisisScroll( int amount ) : base( 21, 0x1F41, amount )
 		{
+            Name = "Altération: Télékinesis";
 		}
 
 		public TelekinisisScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Télékinesis";
 		}
 
 		/*public override Item Dupe( int amount )

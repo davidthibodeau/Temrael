@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public HarmScroll( int amount ) : base( 12, 0x1F38, amount )
 		{
+            Name = "Adjuration: Nuissance";
 		}
 
 		public HarmScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Nuissance";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public LightningScroll( int amount ) : base( 30, 0x1F4A, amount )
 		{
+            Name = "Évocation: Éclair";
 		}
 
 		public LightningScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Éclair";
 		}
 
 		/*public override Item Dupe( int amount )

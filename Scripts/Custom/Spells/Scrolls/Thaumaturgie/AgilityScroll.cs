@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public AgilityScroll( int amount ) : base( 9, 0x1F35, amount )
 		{
+            Name = "Thaumaturgie: Agilité";
 		}
 
 		public AgilityScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Agilité";
 		}
 
 		/*public override Item Dupe( int amount )

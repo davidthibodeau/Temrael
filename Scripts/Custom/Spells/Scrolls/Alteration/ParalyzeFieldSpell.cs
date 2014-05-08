@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ParalyzeFieldScroll( int amount ) : base( 47, 0x1F5B, amount )
 		{
+            Name = "Altération: Pétrification";
 		}
 
 		public ParalyzeFieldScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Pétrification";
 		}
 
 		/*public override Item Dupe( int amount )

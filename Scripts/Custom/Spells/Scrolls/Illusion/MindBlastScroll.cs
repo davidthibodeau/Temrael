@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MindBlastScroll( int amount ) : base( 37, 0x1F51, amount )
 		{
+            Name = "Illusion: Lobotomie";
 		}
 
 		public MindBlastScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Lobotomie";
 		}
 
 		/*public override Item Dupe( int amount )

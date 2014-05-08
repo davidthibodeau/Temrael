@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public GreaterHealScroll( int amount ) : base( 29, 0x1F49, amount )
 		{
+            Name = "Thaumaturgie: Soins Magiques";
 		}
 
 		public GreaterHealScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Soins Magiques";
 		}
 
 		/*public override Item Dupe( int amount )

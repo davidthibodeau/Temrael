@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public CurseWeaponScroll( int amount ) : base( 103, 0x2263, amount )
 		{
+            Name = "Nécromancie: Maudire";
 		}
 
 		public CurseWeaponScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Maudire";
 		}
 
 		/*public override Item Dupe( int amount )

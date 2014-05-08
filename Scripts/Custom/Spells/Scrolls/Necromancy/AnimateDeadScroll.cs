@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public AnimateDeadScroll( int amount ) : base( 100, 0x2260, amount )
 		{
+            Name = "Nécromancie: Animation";
 		}
 
 		public AnimateDeadScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Animation";
 		}
 
 		/*public override Item Dupe( int amount )

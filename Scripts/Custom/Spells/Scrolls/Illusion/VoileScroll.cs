@@ -13,13 +13,12 @@ namespace Server.Items
         }
 
         [Constructable]
-        public VoileScroll(int amount)
-            : base(200, 0x1F65, amount)
+        public VoileScroll(int amount) : base(200, 0x1F65, amount)
         {
+            Name = "Illusion: Voile";
         }
 
-        public VoileScroll(Serial serial)
-            : base(serial)
+        public VoileScroll(Serial serial) : base(serial)
         {
         }
 
@@ -35,6 +34,8 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            Name = "Illusion: Voile";
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonFamiliarScroll( int amount ) : base( 111, 0x226B, amount )
 		{
+            Name = "Nécromancie: Minion";
 		}
 
 		public SummonFamiliarScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Minion";
 		}
 
 		/*public override Item Dupe( int amount )

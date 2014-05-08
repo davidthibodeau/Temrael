@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public CunningScroll( int amount ) : base( 10, 0x1F36, amount )
 		{
+            Name = "Thaumaturgie: Ruse";
 		}
 
 		public CunningScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Ruse";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public FeeblemindScroll( int amount ) : base( 3, 0x1F30, amount )
 		{
+            Name = "Altération: Débilité";
 		}
 
 		public FeeblemindScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Débilité";
 		}
 
 		/*public override Item Dupe( int amount )

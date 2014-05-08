@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public BloodOathScroll( int amount ) : base( 101, 0x2261, amount )
 		{
+            Name = "Nécromancie: Sermant";
 		}
 
 		public BloodOathScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Sermant";
 		}
 
 		/*public override Item Dupe( int amount )

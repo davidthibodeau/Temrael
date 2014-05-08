@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ManaDrainScroll( int amount ) : base( 31, 0x1F4B, amount )
 		{
+            Name = "Adjuration: Drain de Mana";
 		}
 
 		public ManaDrainScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Drain de Mana";
 		}
 
 		/*public override Item Dupe( int amount )

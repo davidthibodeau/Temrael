@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MagicReflectScroll( int amount ) : base( 36, 0x1F50, amount )
 		{
+            Name = "Altération: Reflet";
 		}
 
 		public MagicReflectScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Reflet";
 		}
 
 		/*public override Item Dupe( int amount )

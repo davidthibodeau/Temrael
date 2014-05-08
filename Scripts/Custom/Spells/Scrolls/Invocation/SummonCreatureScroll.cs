@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonCreatureScroll( int amount ) : base( 40, 0x1F54, amount )
 		{
+            Name = "Invocation: Convocation";
 		}
 
 		public SummonCreatureScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Convocation";
 		}
 
 		/*public override Item Dupe( int amount )

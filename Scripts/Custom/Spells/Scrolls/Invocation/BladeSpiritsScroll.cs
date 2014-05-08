@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public BladeSpiritsScroll( int amount ) : base( 33, 0x1F4D, amount )
 		{
+            Name = "Invocation: Esprit des Lames";
 		}
 
 		public BladeSpiritsScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Esprit des Lames";
 		}
 
 		/*public override Item Dupe( int amount )

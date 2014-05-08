@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ManaVampireScroll( int amount ) : base( 53, 0x1F61, amount )
 		{
+            Name = "Adjuration: Drain Vampirique";
 		}
 
 		public ManaVampireScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Drain Vampirique";
 		}
 
 		/*public override Item Dupe( int amount )

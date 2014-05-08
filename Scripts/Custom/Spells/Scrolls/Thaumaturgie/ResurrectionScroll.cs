@@ -14,7 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ResurrectionScroll( int amount ) : base( 59, 0x1F67, amount )
 		{
-            Name = "Thaumaturgie: Resurrection";
+            Name = "Thaumaturgie: Résurrection";
 		}
 
 		public ResurrectionScroll( Serial serial ) : base( serial )
@@ -34,7 +34,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Thaumaturgie: Resurrection";
+            Name = "Thaumaturgie: Résurrection";
 		}
 
 		/*public override Item Dupe( int amount )

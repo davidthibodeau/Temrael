@@ -14,7 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonAirElementalScroll( int amount ) : base( 60, 0x1F68, amount )
 		{
-            Name = "Invocation: Élémental d'air";
+            Name = "Invocation: Élémental d'Air";
 		}
 
 		public SummonAirElementalScroll( Serial serial ) : base( serial )
@@ -33,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Élémental d'Air";
 		}
 
 		/*public override Item Dupe( int amount )

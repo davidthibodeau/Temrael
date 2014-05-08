@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MeteorSwarmScroll( int amount ) : base( 55, 0x1F63, amount )
 		{
+            Name = "Évocation: Météores";
 		}
 
 		public MeteorSwarmScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Météores";
 		}
 
 		/*public override Item Dupe( int amount )

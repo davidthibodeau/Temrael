@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MassCurseScroll( int amount ) : base( 46, 0x1F5A, amount )
 		{
+            Name = "Altération: Fléau";
 		}
 
 		public MassCurseScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Fléau";
 		}
 
 		/*public override Item Dupe( int amount )

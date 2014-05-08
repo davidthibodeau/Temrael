@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ParalyzeScroll( int amount ) : base( 38, 0x1F52, amount )
 		{
+            Name = "Altération: Paralysie";
 		}
 		
 		public ParalyzeScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Paralysie";
 		}
 
 		/*public override Item Dupe( int amount )

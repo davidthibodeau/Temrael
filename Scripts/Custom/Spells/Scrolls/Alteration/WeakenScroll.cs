@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public WeakenScroll( int amount ) : base( 8, 0x1F34, amount )
 		{
+            Name = "Altération: Faiblesse";
 		}
 
 		public WeakenScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Faiblesse";
 		}
 
 		/*public override Item Dupe( int amount )

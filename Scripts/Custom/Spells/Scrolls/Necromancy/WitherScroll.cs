@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public WitherScroll( int amount ) : base( 114, 0x226E, amount )
 		{
+            Name = "Nécromancie: Flétrir";
 		}
 
 		public WitherScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Flétrir";
 		}
 
 		/*public override Item Dupe( int amount )

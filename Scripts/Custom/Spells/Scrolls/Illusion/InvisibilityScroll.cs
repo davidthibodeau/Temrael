@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public InvisibilityScroll( int amount ) : base( 44, 0x1F58, amount )
 		{
+            Name = "Illusion: Invisibilité";
 		}
 
 		public InvisibilityScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Invisibilité";
 		}
 
 		/*public override Item Dupe( int amount )

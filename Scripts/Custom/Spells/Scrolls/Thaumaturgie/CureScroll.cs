@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public CureScroll( int amount ) : base( 11, 0x1F37, amount )
 		{
+            Name = "Thaumaturgie: Antidote";
 		}
 
 		public CureScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Antidote";
 		}
 
 		/*public override Item Dupe( int amount )

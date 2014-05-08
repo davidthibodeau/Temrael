@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public VampiricEmbraceScroll( int amount ) : base( 112, 0x226C, amount )
 		{
+            Name = "Nécromancie: Vampirisme";
 		}
 
 		public VampiricEmbraceScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Vampirisme";
 		}
 
 		/*public override Item Dupe( int amount )

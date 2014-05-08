@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public CreateFoodScroll( int amount ) : base( 2, 0x1F2F, amount )
 		{
+            Name = "Invocation: Nourriture";
 		}
 
 		public CreateFoodScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Nourriture";
 		}
 
 		/*public override Item Dupe( int amount )

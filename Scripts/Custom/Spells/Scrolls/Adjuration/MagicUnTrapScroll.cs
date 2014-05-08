@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MagicUnTrapScroll( int amount ) : base( 14, 0x1F3A, amount )
 		{
+            Name = "Adjuration: Supreesion de Piège";
 		}
 
 		public MagicUnTrapScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Supreesion de Piège";
 		}
 
 		/*public override Item Dupe( int amount )

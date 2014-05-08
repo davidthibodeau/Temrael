@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public PainSpikeScroll( int amount ) : base( 108, 0x2268, amount )
 		{
+            Name = "Nécromancie: Corruption";
 		}
 
 		public PainSpikeScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Corruption";
 		}
 
 		/*public override Item Dupe( int amount )

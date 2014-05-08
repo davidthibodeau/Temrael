@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public PoisonFieldScroll( int amount ) : base( 39, 0x1F53, amount )
 		{
+            Name = "Adjuration: Mur de Poison";
 		}
 
 		public PoisonFieldScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Mur de Poison";
 		}
 
 		/*public override Item Dupe( int amount )

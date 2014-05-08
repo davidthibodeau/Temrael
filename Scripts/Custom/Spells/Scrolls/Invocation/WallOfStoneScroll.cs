@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public WallOfStoneScroll( int amount ) : base( 24, 0x1F44, amount )
 		{
+            Name = "Invocation: Mur de Pierre";
 		}
 
 		public WallOfStoneScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Mur de Pierre";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public TeleportScroll( int amount ) : base( 22, 0x1F42, amount )
 		{
+            Name = "Illusion: Téléportation";
 		}
 
 		public TeleportScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Téléportation";
 		}
 
 		/*public override Item Dupe( int amount )

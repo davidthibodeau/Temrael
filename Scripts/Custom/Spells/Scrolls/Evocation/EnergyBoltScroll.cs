@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public EnergyBoltScroll( int amount ) : base( 42, 0x1F56, amount )
 		{
+            Name = "Évocation: Énergie";
 		}
 
 		public EnergyBoltScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Énergie";
 		}
 
 		/*public override Item Dupe( int amount )

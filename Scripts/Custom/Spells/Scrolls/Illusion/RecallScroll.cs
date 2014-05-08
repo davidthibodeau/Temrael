@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public RecallScroll( int amount ) : base( 32, 0x1F4C, amount )
 		{
+            Name = "Illusion: Rappel";
 		}
 
 		public RecallScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Rappel";
 		}
 
 		/*public override Item Dupe( int amount )

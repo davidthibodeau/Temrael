@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public VengefulSpiritScroll( int amount ) : base( 113, 0x226D, amount )
 		{
+            Name = "Nécromancie: Esprit Vengeur";
 		}
 
 		public VengefulSpiritScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Esprit Vengeur";
 		}
 
 		/*public override Item Dupe( int amount )

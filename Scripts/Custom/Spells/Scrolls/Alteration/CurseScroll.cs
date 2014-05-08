@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public CurseScroll( int amount ) : base( 27, 0x1F47, amount )
 		{
+            Name = "Altération: Malédiction";
 		}
 
 		public CurseScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Malédiction";
 		}
 
 		/*public override Item Dupe( int amount )

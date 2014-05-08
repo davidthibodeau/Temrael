@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public StrangleScroll( int amount ) : base( 110, 0x226A, amount )
 		{
+            Name = "Nécromancie: Étranglement";
 		}
 
 		public StrangleScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Étranglement";
 		}
 
 		/*public override Item Dupe( int amount )

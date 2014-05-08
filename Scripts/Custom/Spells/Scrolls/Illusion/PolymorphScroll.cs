@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public PolymorphScroll( int amount ) : base( 56, 0x1F64, amount )
 		{
+            Name = "Illusion: Polymorph";
 		}
 
 		public PolymorphScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Polymorph";
 		}
 
 		/*public override Item Dupe( int amount )

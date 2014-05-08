@@ -13,13 +13,12 @@ namespace Server.Items
         }
 
         [Constructable]
-        public FlamecheScroll(int amount)
-            : base(202, 0x1F65, amount)
+        public FlamecheScroll(int amount) : base(202, 0x1F65, amount)
         {
+            Name = "Évocation: Flamèche";
         }
 
-        public FlamecheScroll(Serial serial)
-            : base(serial)
+        public FlamecheScroll(Serial serial) : base(serial)
         {
         }
 
@@ -35,6 +34,8 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            Name = "Évocation: Flamèche";
         }
     }
 }

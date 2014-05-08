@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MagicLockScroll( int amount ) : base( 19, 0x1F3F, amount )
 		{
+            Name = "Adjuration: Ouverture Magique";
 		}
 
 		public MagicLockScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Ouverture Magique";
 		}
 
 		/*public override Item Dupe( int amount )

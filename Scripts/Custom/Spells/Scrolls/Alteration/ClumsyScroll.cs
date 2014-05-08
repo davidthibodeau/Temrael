@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ClumsyScroll( int amount ) : base( 1, 0x1F2E, amount )
 		{
+            Name = "Altération: Maladroit";
 		}
 
 		public ClumsyScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Altération: Maladroit";
 		}
 
 		/*public override Item Dupe( int amount )

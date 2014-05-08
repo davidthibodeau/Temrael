@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public PoisonStrikeScroll( int amount ) : base( 109, 0x2269, amount )
 		{
+            Name = "Nécromancie: Venin";
 		}
 
 		public PoisonStrikeScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Venin";
 		}
 
 		/*public override Item Dupe( int amount )

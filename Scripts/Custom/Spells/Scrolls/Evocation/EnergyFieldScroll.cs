@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public EnergyFieldScroll( int amount ) : base( 50, 0x1F5E, amount )
 		{
+            Name = "Évocation: Énergie de Masse";
 		}
 
 		public EnergyFieldScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Énergie de Masse";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MarkScroll( int amount ) : base( 45, 0x1F59, amount )
 		{
+            Name = "Illusion: Marque";
 		}
 
 		public MarkScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Marque";
 		}
 
 		/*public override Item Dupe( int amount )

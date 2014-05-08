@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ExplosionScroll( int amount ) : base( 43, 0x1F57, amount )
 		{
+            Name = "Évocation: Explosion";
 		}
 
 		public ExplosionScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Explosion";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public GateTravelScroll( int amount ) : base( 52, 0x1F60, amount )
 		{
+            Name = "Illusion: Voyagement";
 		}
 
 		public GateTravelScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Voyagement";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public MassDispelScroll( int amount ) : base( 54, 0x1F62, amount )
 		{
+            Name = "Adjuration: Dissipation de Masse";
 		}
 
 		public MassDispelScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Dissipation de Masse";
 		}
 
 		/*public override Item Dupe( int amount )

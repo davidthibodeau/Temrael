@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public DispelFieldScroll( int amount ) : base( 34, 0x1F4E, amount )
 		{
+            Name = "Adjuration: Champ de dissipation";
 		}
 
 		public DispelFieldScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Champ de dissipation";
 		}
 
 		/*public override Item Dupe( int amount )

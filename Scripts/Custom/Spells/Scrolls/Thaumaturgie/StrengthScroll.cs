@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public StrengthScroll( int amount ) : base( 16, 0x1F3C, amount )
 		{
+            Name = "Thaumaturgie: Force";
 		}
 
 		public StrengthScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Force";
 		}
 
 		/*public override Item Dupe( int amount )

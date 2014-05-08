@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public FireballScroll( int amount ) : base( 18, 0x1F3E, amount )
 		{
+            Name = "Évocation: Boule de Feu";
 		}
 
 		public FireballScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Évocation: Boule de Feu";
 		}
 
 		/*public override Item Dupe( int amount )

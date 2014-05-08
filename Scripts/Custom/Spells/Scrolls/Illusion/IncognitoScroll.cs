@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public IncognitoScroll( int amount ) : base( 35, 0x1F4F, amount )
 		{
+            Name = "Illusion: Incognito";
 		}
 
 		public IncognitoScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Incognito";
 		}
 
 		/*public override Item Dupe( int amount )

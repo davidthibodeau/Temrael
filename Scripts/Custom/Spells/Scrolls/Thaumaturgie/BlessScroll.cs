@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public BlessScroll( int amount ) : base( 17, 0x1F3D, amount )
 		{
+            Name = "Thaumaturgie: Puissance";
 		}
 
 		public BlessScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Puissance";
 		}
 
 		/*public override Item Dupe( int amount )

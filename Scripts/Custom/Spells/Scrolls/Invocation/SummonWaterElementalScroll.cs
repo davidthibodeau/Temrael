@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonWaterElementalScroll( int amount ) : base( 64, 0x1F6C, amount )
 		{
+            Name = "Invocation: Élémental d'Eau";
 		}
 
 		public SummonWaterElementalScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Invocation: Élémental d'Eau";
 		}
 
 		/*public override Item Dupe( int amount )

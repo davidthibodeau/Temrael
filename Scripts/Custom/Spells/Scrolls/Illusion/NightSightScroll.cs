@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public NightSightScroll( int amount ) : base( 6, 0x1F33, amount )
 		{
+            Name = "Illusion: Vision Nocturne";
 		}
 
 		public NightSightScroll( Serial ser ) : base(ser)
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Illusion: Vision Nocturne";
 		}
 
 		/*public override Item Dupe( int amount )

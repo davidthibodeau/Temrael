@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ProtectionScroll( int amount ) : base( 15, 0x1F3B, amount )
 		{
+            Name = "Thaumaturgie: Protection";
 		}
 
 		public ProtectionScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Protection";
 		}
 
 		/*public override Item Dupe( int amount )

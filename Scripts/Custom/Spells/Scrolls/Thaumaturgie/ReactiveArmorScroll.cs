@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ReactiveArmorScroll( int amount ) : base( 7, 0x1F2D, amount )
 		{
+            Name = "Thaumaturgie: Armure Magique";
 		}
 
 		public ReactiveArmorScroll( Serial ser ) : base(ser)
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Thaumaturgie: Armure Magique";
 		}
 
 		/*public override Item Dupe( int amount )

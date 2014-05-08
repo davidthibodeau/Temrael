@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public WraithFormScroll( int amount ) : base( 115, 0x226F, amount )
 		{
+            Name = "Nécromancie: Spectre";
 		}
 
 		public WraithFormScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Nécromancie: Spectre";
 		}
 
 		/*public override Item Dupe( int amount )

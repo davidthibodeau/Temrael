@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public PoisonScroll( int amount ) : base( 20, 0x1F40, amount )
 		{
+            Name = "Adjuration: Poison";
 		}
 
 		public PoisonScroll( Serial serial ) : base( serial )
@@ -32,6 +33,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Name = "Adjuration: Poison";
 		}
 
 		/*public override Item Dupe( int amount )

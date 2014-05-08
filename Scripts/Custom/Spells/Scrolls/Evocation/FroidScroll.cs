@@ -13,13 +13,12 @@ namespace Server.Items
         }
 
         [Constructable]
-        public FroidScroll(int amount)
-            : base(203, 0x1F65, amount)
+        public FroidScroll(int amount) : base(203, 0x1F65, amount)
         {
+            Name = "Évocation: Froid";
         }
 
-        public FroidScroll(Serial serial)
-            : base(serial)
+        public FroidScroll(Serial serial) : base(serial)
         {
         }
 
@@ -35,6 +34,8 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            Name = "Évocation: Froid";
         }
     }
 }

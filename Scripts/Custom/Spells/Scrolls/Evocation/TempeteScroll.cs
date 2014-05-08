@@ -13,13 +13,12 @@ namespace Server.Items
         }
 
         [Constructable]
-        public TempeteScroll(int amount)
-            : base(204, 0x1F65, amount)
+        public TempeteScroll(int amount) : base(204, 0x1F65, amount)
         {
+            Name = "Évocation: Tempête";
         }
 
-        public TempeteScroll(Serial serial)
-            : base(serial)
+        public TempeteScroll(Serial serial) : base(serial)
         {
         }
 
@@ -35,6 +34,8 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            Name = "Évocation: Tempête";
         }
     }
 }
