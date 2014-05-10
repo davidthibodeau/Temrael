@@ -58,7 +58,7 @@ namespace Server.Items
 
             m_Resource = resource;
 
-            Name = "Poisson : " + resource.ToString();
+            //Name = "Poisson : " + resource.ToString();
 		}
 
 		public BaseFish( Serial serial ) : base( serial )
@@ -135,13 +135,13 @@ namespace Server.Items
             }
         }
 
-        public override void AddNameProperty(ObjectPropertyList list)
+        /*public override void AddNameProperty(ObjectPropertyList list)
         {
             if (Amount > 1)
                 list.Add(1060532, String.Format("{3} {0}{1}{2}", "Poissons [", GetMaterial(), "]", Amount)); // ~1_NUMBER~ ~2_ITEMNAME~
             else
                 list.Add(String.Format("{0}{1}{2}", "Poisson [", GetMaterial(), "]")); // ingots
-        }
+        }*/
     }
 
     public class TruiteFish : BaseFish, ICarvable
@@ -178,6 +178,7 @@ namespace Server.Items
         public void Carve(Mobile from, Item item)
         {
             int amount = Amount;
+            
             /*Item newItem = new TruiteScales(Amount);
 
             if (!(this.Parent is Container) || !((Container)this.Parent).TryDropItem(from, newItem, false))

@@ -54,7 +54,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-        public BaseFishSteak(CraftResource resource, int amount) : base(0x97A) //Utility.Random(0x09CC, 4)
+        public BaseFishSteak(CraftResource resource, int amount) : base(0x97B) //Utility.Random(0x09CC, 4)
 		{
 			Stackable = true;
 			Weight = 0.1;
@@ -131,13 +131,13 @@ namespace Server.Items
             }
         }
 
-        public override void AddNameProperty(ObjectPropertyList list)
+        /*public override void AddNameProperty(ObjectPropertyList list)
         {
             if (Amount > 1)
                 list.Add(1060532, String.Format("{3} {0}{1}{2}", "Poissons [", GetMaterial(), "]", Amount)); // ~1_NUMBER~ ~2_ITEMNAME~
             else
                 list.Add(String.Format("{0}{1}{2}", "Poissons [", GetMaterial(), "]")); // ingots
-        }
+        }*/
     }
 
     public class TruiteFishSteak : BaseFishSteak
@@ -150,7 +150,7 @@ namespace Server.Items
         [Constructable]
         public TruiteFishSteak(int amount) : base(CraftResource.Truite, amount)
         {
-            Name = "Truite";
+            Name = "Filet de Truite";
         }
 
         public TruiteFishSteak(Serial serial) : base(serial)
@@ -182,7 +182,7 @@ namespace Server.Items
         [Constructable]
         public DoreFishSteak(int amount) : base(CraftResource.Dore, amount)
         {
-            Name = "Doré Cui";
+            Name = "Filet de Doré";
         }
 
         public DoreFishSteak(Serial serial) : base(serial)
@@ -214,7 +214,7 @@ namespace Server.Items
         [Constructable]
         public CarpeFishSteak(int amount) : base(CraftResource.Carpe, amount)
         {
-            Name = "Carpe Cui";
+            Name = "Filet de Carpe";
         }
 
         public CarpeFishSteak(Serial serial) : base(serial)
@@ -246,7 +246,7 @@ namespace Server.Items
         [Constructable]
         public AnguilleFishSteak(int amount) : base(CraftResource.Anguille, amount)
         {
-            Name = "Anguille Cui";
+            Name = "Filet d'Anguille";
         }
 
         public AnguilleFishSteak(Serial serial) : base(serial)
@@ -278,7 +278,7 @@ namespace Server.Items
         [Constructable]
         public EsturgeonFishSteak(int amount) : base(CraftResource.Esturgeon, amount)
         {
-            Name = "Esturgeon Cui";
+            Name = "Filet d'Esturgeon";
         }
 
         public EsturgeonFishSteak(Serial serial) : base(serial)
@@ -310,7 +310,7 @@ namespace Server.Items
         [Constructable]
         public BrochetFishSteak(int amount) : base(CraftResource.Brochet, amount)
         {
-            Name = "Brochet Cui";
+            Name = "Filet de Brochet";
         }
 
         public BrochetFishSteak(Serial serial) : base(serial)
@@ -342,7 +342,7 @@ namespace Server.Items
         [Constructable]
         public SardineFishSteak(int amount) : base(CraftResource.Sardine, amount)
         {
-            Name = "Sardine Cui";
+            Name = "Filet de Sardine";
         }
 
         public SardineFishSteak(Serial serial) : base(serial)
@@ -374,7 +374,7 @@ namespace Server.Items
         [Constructable]
         public AnchoieFishSteak(int amount) : base(CraftResource.Anchoie, amount)
         {
-            Name = "Anchoie Cui";
+            Name = "Filet d'Anchoie";
         }
 
         public AnchoieFishSteak(Serial serial) : base(serial)
@@ -406,7 +406,7 @@ namespace Server.Items
         [Constructable]
         public MorueFishSteak(int amount) : base(CraftResource.Morue, amount)
         {
-            Name = "Morue Cui";
+            Name = "Filet de Morue";
         }
 
         public MorueFishSteak(Serial serial) : base(serial)
@@ -438,7 +438,7 @@ namespace Server.Items
         [Constructable]
         public HarengFishSteak(int amount) : base(CraftResource.Hareng, amount)
         {
-            Name = "Hareng Cui";
+            Name = "Filet de Hareng";
         }
 
         public HarengFishSteak(Serial serial) : base(serial)
@@ -470,7 +470,7 @@ namespace Server.Items
         [Constructable]
         public FletanFishSteak(int amount) : base(CraftResource.Fletan, amount)
         {
-            Name = "Fletan Cui";
+            Name = "Filet de Flétan";
         }
 
         public FletanFishSteak(Serial serial) : base(serial)
@@ -502,7 +502,7 @@ namespace Server.Items
         [Constructable]
         public MaquereauFishSteak(int amount) : base(CraftResource.Maquereau, amount)
         {
-            Name = "Maquereau Cui";
+            Name = "Filet de Maquereau";
         }
 
         public MaquereauFishSteak(Serial serial) : base(serial)
@@ -534,7 +534,7 @@ namespace Server.Items
         [Constructable]
         public SoleFishSteak(int amount) : base(CraftResource.Sole, amount)
         {
-            Name = "Sole Cui";
+            Name = "Filet de Sole";
         }
 
         public SoleFishSteak(Serial serial) : base(serial)
@@ -566,7 +566,7 @@ namespace Server.Items
         [Constructable]
         public ThonFishSteak(int amount) : base(CraftResource.Thon, amount)
         {
-            Name = "Thon Cui";
+            Name = "Filet de Thon";
         }
 
         public ThonFishSteak(Serial serial) : base(serial)
@@ -598,7 +598,7 @@ namespace Server.Items
         [Constructable]
         public SaumonFishSteak(int amount) : base(CraftResource.Saumon, amount)
         {
-            Name = "Saumon Cui";
+            Name = "Filet de Saumon";
         }
 
         public SaumonFishSteak(Serial serial) : base(serial)
@@ -630,7 +630,7 @@ namespace Server.Items
         [Constructable]
         public GrandBrochetFishSteak(int amount) : base(CraftResource.GrandBrochet, amount)
         {
-            Name = "Grand Brochet Cui";
+            Name = "Filet de Grand Brochet";
         }
 
         public GrandBrochetFishSteak(Serial serial) : base(serial)
@@ -662,7 +662,7 @@ namespace Server.Items
         [Constructable]
         public TruiteSauvageFishSteak(int amount) : base(CraftResource.TruiteSauvage, amount)
         {
-            Name = "Truite Sauvage Cui";
+            Name = "Filet de Truite Sauvage";
         }
 
         public TruiteSauvageFishSteak(Serial serial) : base(serial)
@@ -694,7 +694,7 @@ namespace Server.Items
         [Constructable]
         public GrandDoreFishSteak(int amount) : base(CraftResource.GrandDore, amount)
         {
-            Name = "Grand Doré Cui";
+            Name = "Filet de Grand Doré";
         }
 
         public GrandDoreFishSteak(Serial serial) : base(serial)
@@ -726,7 +726,7 @@ namespace Server.Items
         [Constructable]
         public TruiteMerFishSteak(int amount) : base(CraftResource.TruiteMer, amount)
         {
-            Name = "Truite des Mers Cui";
+            Name = "Filet de Truite des Mers";
         }
 
         public TruiteMerFishSteak(Serial serial) : base(serial)
@@ -758,7 +758,7 @@ namespace Server.Items
         [Constructable]
         public EsturgeonMerFishSteak(int amount) : base(CraftResource.EsturgeonMer, amount)
         {
-            Name = "Esturgeon Cui";
+            Name = "Filet d'Esturgeon des Mers";
         }
 
         public EsturgeonMerFishSteak(Serial serial) : base(serial)
@@ -790,7 +790,7 @@ namespace Server.Items
         [Constructable]
         public GrandSaumonFishSteak(int amount) : base(CraftResource.GrandSaumon, amount)
         {
-            Name = "Grand Saumon Cui";
+            Name = "Filet de Grand Saumon";
         }
 
         public GrandSaumonFishSteak(Serial serial) : base(serial)
@@ -822,7 +822,7 @@ namespace Server.Items
         [Constructable]
         public RaieFishSteak(int amount) : base(CraftResource.Raie, amount)
         {
-            Name = "Raie Cui";
+            Name = "Filet de Raie";
         }
 
         public RaieFishSteak(Serial serial) : base(serial)
@@ -854,7 +854,7 @@ namespace Server.Items
         [Constructable]
         public EspadonFishSteak(int amount) : base(CraftResource.Espadon, amount)
         {
-            Name = "Espadon Cui";
+            Name = "Filet d'Espadon";
         }
 
         public EspadonFishSteak(Serial serial) : base(serial)
@@ -886,7 +886,7 @@ namespace Server.Items
         [Constructable]
         public RequinGrisFishSteak(int amount) : base(CraftResource.RequinGris, amount)
         {
-            Name = "Requin Gris Cui";
+            Name = "Filet de Requin Gris";
         }
 
         public RequinGrisFishSteak(Serial serial) : base(serial)
@@ -918,7 +918,7 @@ namespace Server.Items
         [Constructable]
         public RequinBlancFishSteak(int amount) : base(CraftResource.RequinBlanc, amount)
         {
-            Name = "Requin Blanc Cui";
+            Name = "Filet de Requin Blanc";
         }
 
         public RequinBlancFishSteak(Serial serial) : base(serial)
@@ -948,7 +948,7 @@ namespace Server.Items
             Stackable = false;
             ItemID = 2486;
             Hue = 2113;
-            Name = "Huitre Cui";
+            Name = "Huitre cuite";
         }
 
         public HuitreFishSteak(Serial serial) : base(serial)
@@ -982,7 +982,7 @@ namespace Server.Items
         [Constructable]
         public CalmarFishSteak(int amount) : base(CraftResource.Calmar, amount)
         {
-            Name = "Calmar Cui";
+            Name = "Calmar Cuit";
         }
 
         public CalmarFishSteak(Serial serial) : base(serial)
@@ -1016,7 +1016,7 @@ namespace Server.Items
         {
             ItemID = 2427;
             Hue = 2222;
-            Name = "Pieuvre Cui";
+            Name = "Pieuvre Cuite";
         }
 
         public PieuvreFishSteak(Serial serial) : base(serial)

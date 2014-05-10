@@ -17,6 +17,11 @@ namespace Server.Items
 			set{ m_Resource = value; }
 		}
 
+        public override double DefaultWeight
+        {
+            get { return 0.1; }
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
@@ -54,10 +59,9 @@ namespace Server.Items
 		}
 
 		[Constructable]
-        public BaseRawFishSteak(CraftResource resource, int amount) : base(0x097A) //Utility.Random(0x09CC, 4)
+        public BaseRawFishSteak(CraftResource resource, int amount) : base(0x097A, 10) //Utility.Random(0x09CC, 4)
 		{
 			Stackable = true;
-			Weight = 0.1;
             Amount = amount;
             Hue = 0;
 
@@ -130,13 +134,13 @@ namespace Server.Items
             }
         }
 
-        public override void AddNameProperty(ObjectPropertyList list)
+        /*public override void AddNameProperty(ObjectPropertyList list)
         {
             if (Amount > 1)
                 list.Add(1060532, String.Format("{3} {0}{1}{2}", "Poissons crus [", GetMaterial(), "]", Amount)); // ~1_NUMBER~ ~2_ITEMNAME~
             else
                 list.Add(String.Format("{0}{1}{2}", "Poisson cru [", GetMaterial(), "]")); // ingots
-        }
+        }*/
     }
 
     public class RawTruiteFishSteak : BaseRawFishSteak
@@ -149,7 +153,7 @@ namespace Server.Items
         [Constructable]
         public RawTruiteFishSteak(int amount) : base(CraftResource.Truite, amount)
         {
-            Name = "Truite Cru";
+            Name = "filet de Truite Cru";
         }
 
         public RawTruiteFishSteak(Serial serial) : base(serial)
@@ -186,7 +190,7 @@ namespace Server.Items
         [Constructable]
         public RawDoreFishSteak(int amount) : base(CraftResource.Dore, amount)
         {
-            Name = "Doré Cru";
+            Name = "filet de Doré Cru";
         }
 
         public RawDoreFishSteak(Serial serial) : base(serial)
@@ -223,7 +227,7 @@ namespace Server.Items
         [Constructable]
         public RawCarpeFishSteak(int amount) : base(CraftResource.Carpe, amount)
         {
-            Name = "Carpe Cru";
+            Name = "filet de Carpe Cru";
         }
 
         public RawCarpeFishSteak(Serial serial) : base(serial)
@@ -260,7 +264,7 @@ namespace Server.Items
         [Constructable]
         public RawAnguilleFishSteak(int amount) : base(CraftResource.Anguille, amount)
         {
-            Name = "Anguille Cru";
+            Name = "filet d'Anguille Cru";
         }
 
         public RawAnguilleFishSteak(Serial serial) : base(serial)
@@ -297,7 +301,7 @@ namespace Server.Items
         [Constructable]
         public RawEsturgeonFishSteak(int amount) : base(CraftResource.Esturgeon, amount)
         {
-            Name = "Esturgeon Cru";
+            Name = "filet d'Esturgeon Cru";
         }
 
         public RawEsturgeonFishSteak(Serial serial) : base(serial)
@@ -334,7 +338,7 @@ namespace Server.Items
         [Constructable]
         public RawBrochetFishSteak(int amount) : base(CraftResource.Brochet, amount)
         {
-            Name = "Brochet Cru";
+            Name = "filet de Brochet Cru";
         }
 
         public RawBrochetFishSteak(Serial serial) : base(serial)
@@ -371,7 +375,7 @@ namespace Server.Items
         [Constructable]
         public RawSardineFishSteak(int amount) : base(CraftResource.Sardine, amount)
         {
-            Name = "Sardine Cru";
+            Name = "filet de Sardine Cru";
         }
 
         public RawSardineFishSteak(Serial serial) : base(serial)
@@ -408,7 +412,7 @@ namespace Server.Items
         [Constructable]
         public RawAnchoieFishSteak(int amount) : base(CraftResource.Anchoie, amount)
         {
-            Name = "Anchoie Cru";
+            Name = "filet d'Anchoie Cru";
         }
 
         public RawAnchoieFishSteak(Serial serial) : base(serial)
@@ -445,7 +449,7 @@ namespace Server.Items
         [Constructable]
         public RawMorueFishSteak(int amount) : base(CraftResource.Morue, amount)
         {
-            Name = "Morue Cru";
+            Name = "filet de Morue Cru";
         }
 
         public RawMorueFishSteak(Serial serial) : base(serial)
@@ -482,7 +486,7 @@ namespace Server.Items
         [Constructable]
         public RawHarengFishSteak(int amount) : base(CraftResource.Hareng, amount)
         {
-            Name = "Hareng Cru";
+            Name = "filet d'Hareng Cru";
         }
 
         public RawHarengFishSteak(Serial serial) : base(serial)
@@ -519,7 +523,7 @@ namespace Server.Items
         [Constructable]
         public RawFletanFishSteak(int amount) : base(CraftResource.Fletan, amount)
         {
-            Name = "Fletan Cru";
+            Name = "filet de Flétan Cru";
         }
 
         public RawFletanFishSteak(Serial serial) : base(serial)
@@ -556,7 +560,7 @@ namespace Server.Items
         [Constructable]
         public RawMaquereauFishSteak(int amount) : base(CraftResource.Maquereau, amount)
         {
-            Name = "Maquereau Cru";
+            Name = "filet de Maquereau Cru";
         }
 
         public RawMaquereauFishSteak(Serial serial) : base(serial)
@@ -593,7 +597,7 @@ namespace Server.Items
         [Constructable]
         public RawSoleFishSteak(int amount) : base(CraftResource.Sole, amount)
         {
-            Name = "Sole Cru";
+            Name = "filet de Sole Cru";
         }
 
         public RawSoleFishSteak(Serial serial) : base(serial)
@@ -630,7 +634,7 @@ namespace Server.Items
         [Constructable]
         public RawThonFishSteak(int amount) : base(CraftResource.Thon, amount)
         {
-            Name = "Thon Cru";
+            Name = "filet de Thon Cru";
         }
 
         public RawThonFishSteak(Serial serial) : base(serial)
@@ -667,7 +671,7 @@ namespace Server.Items
         [Constructable]
         public RawSaumonFishSteak(int amount) : base(CraftResource.Saumon, amount)
         {
-            Name = "Saumon Cru";
+            Name = "filet de Saumon Cru";
         }
 
         public RawSaumonFishSteak(Serial serial) : base(serial)
@@ -704,7 +708,7 @@ namespace Server.Items
         [Constructable]
         public RawGrandBrochetFishSteak(int amount) : base(CraftResource.GrandBrochet, amount)
         {
-            Name = "Grand Brochet Cru";
+            Name = "filet de Grand Brochet Cru";
         }
 
         public RawGrandBrochetFishSteak(Serial serial) : base(serial)
@@ -741,7 +745,7 @@ namespace Server.Items
         [Constructable]
         public RawTruiteSauvageFishSteak(int amount) : base(CraftResource.TruiteSauvage, amount)
         {
-            Name = "Truite Sauvage Cru";
+            Name = "filet de Truite Sauvage Cru";
         }
 
         public RawTruiteSauvageFishSteak(Serial serial) : base(serial)
@@ -778,7 +782,7 @@ namespace Server.Items
         [Constructable]
         public RawGrandDoreFishSteak(int amount) : base(CraftResource.GrandDore, amount)
         {
-            Name = "Grand Doré Cru";
+            Name = "filet de Grand Doré Cru";
         }
 
         public RawGrandDoreFishSteak(Serial serial) : base(serial)
@@ -815,7 +819,7 @@ namespace Server.Items
         [Constructable]
         public RawTruiteMerFishSteak(int amount) : base(CraftResource.TruiteMer, amount)
         {
-            Name = "Truite des Mers Cru";
+            Name = "filet de Truite des Mers Cru";
         }
 
         public RawTruiteMerFishSteak(Serial serial) : base(serial)
@@ -852,7 +856,7 @@ namespace Server.Items
         [Constructable]
         public RawEsturgeonMerFishSteak(int amount) : base(CraftResource.EsturgeonMer, amount)
         {
-            Name = "Esturgeon Cru";
+            Name = "filet d'Esturgeon des Mers Cru";
         }
 
         public RawEsturgeonMerFishSteak(Serial serial) : base(serial)
@@ -889,7 +893,7 @@ namespace Server.Items
         [Constructable]
         public RawGrandSaumonFishSteak(int amount) : base(CraftResource.GrandSaumon, amount)
         {
-            Name = "Grand Saumon Cru";
+            Name = "filet de Grand Saumon Cru";
         }
 
         public RawGrandSaumonFishSteak(Serial serial) : base(serial)
@@ -926,7 +930,7 @@ namespace Server.Items
         [Constructable]
         public RawRaieFishSteak(int amount) : base(CraftResource.Raie, amount)
         {
-            Name = "Raie Cru";
+            Name = "filet de Raie Cru";
         }
 
         public RawRaieFishSteak(Serial serial) : base(serial)
@@ -963,7 +967,7 @@ namespace Server.Items
         [Constructable]
         public RawEspadonFishSteak(int amount) : base(CraftResource.Espadon, amount)
         {
-            Name = "Espadon Cru";
+            Name = "filet d'Espadon Cru";
         }
 
         public RawEspadonFishSteak(Serial serial) : base(serial)
@@ -1000,7 +1004,7 @@ namespace Server.Items
         [Constructable]
         public RawRequinGrisFishSteak(int amount) : base(CraftResource.RequinGris, amount)
         {
-            Name = "Requin Gris Cru";
+            Name = "filet de Requin Gris Cru";
         }
 
         public RawRequinGrisFishSteak(Serial serial) : base(serial)
@@ -1037,7 +1041,7 @@ namespace Server.Items
         [Constructable]
         public RawRequinBlancFishSteak(int amount) : base(CraftResource.RequinBlanc, amount)
         {
-            Name = "Requin Blanc Cru";
+            Name = "filet de Requin Blanc Cru";
         }
 
         public RawRequinBlancFishSteak(Serial serial) : base(serial)
