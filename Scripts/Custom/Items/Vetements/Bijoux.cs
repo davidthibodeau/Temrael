@@ -10,7 +10,7 @@ namespace Server.Items
             : base(0x3171)
         {
             Weight = 0.1;
-            Name = "Colier de Coquillages";
+            Name = "Collier de Coquillages";
         }
 
         public ColierCoquillages(Serial serial)
@@ -39,7 +39,7 @@ namespace Server.Items
             : base(0x2647)
         {
             Weight = 0.1;
-            Name = "Colier";
+            Name = "Collier";
         }
 
         public ColierSud(Serial serial)
@@ -97,7 +97,7 @@ namespace Server.Items
             : base(0x264F)
         {
             Weight = 0.1;
-            Name = "Colier Simple";
+            Name = "Collier Simple";
         }
 
         public ColierSimple(Serial serial)
@@ -126,7 +126,7 @@ namespace Server.Items
             : base(0x2650)
         {
             Weight = 0.1;
-            Name = "Colier Orne";
+            Name = "Collier Orne";
         }
 
         public ColierOrne(Serial serial)
@@ -155,7 +155,7 @@ namespace Server.Items
             : base(0x2651)
         {
             Weight = 0.1;
-            Name = "Colier Long";
+            Name = "Collier Long";
         }
 
         public ColierLong(Serial serial)
@@ -184,7 +184,7 @@ namespace Server.Items
             : base(0x2652)
         {
             Weight = 0.1;
-            Name = "Colier de Rubis";
+            Name = "Collier de Rubis";
         }
 
         public ColierRubis(Serial serial)
@@ -242,7 +242,7 @@ namespace Server.Items
             : base(0x2654)
         {
             Weight = 0.1;
-            Name = "Colier Serpantin";
+            Name = "Collier Serpantin";
         }
 
         public ColierSerpantin(Serial serial)
@@ -271,7 +271,7 @@ namespace Server.Items
             : base(0x2655)
         {
             Weight = 0.1;
-            Name = "Colier de Fer";
+            Name = "Collier de Fer";
         }
 
         public ColierFer(Serial serial)
@@ -300,7 +300,7 @@ namespace Server.Items
             : base(0x2656)
         {
             Weight = 0.1;
-            Name = "Colier de Saphyre";
+            Name = "Collier de Saphyre";
         }
 
         public ColierSaphyre(Serial serial)
@@ -329,7 +329,7 @@ namespace Server.Items
             : base(0x2657)
         {
             Weight = 0.1;
-            Name = "Colier Triple";
+            Name = "Collier Triple";
         }
 
         public ColierTriple(Serial serial)
@@ -358,7 +358,7 @@ namespace Server.Items
             : base(0x2658)
         {
             Weight = 0.1;
-            Name = "Colier de Large Rubis";
+            Name = "Collier de Large Rubis";
         }
 
         public ColierLargeRubis(Serial serial)
@@ -387,7 +387,7 @@ namespace Server.Items
             : base(0x2659)
         {
             Weight = 0.1;
-            Name = "Colier Araignee";
+            Name = "Collier Araignee";
         }
 
         public ColierAraignee(Serial serial)
@@ -416,7 +416,7 @@ namespace Server.Items
             : base(0x265A)
         {
             Weight = 0.1;
-            Name = "Colier de Dents";
+            Name = "Collier de Dents";
         }
 
         public ColierDents(Serial serial)
@@ -445,7 +445,7 @@ namespace Server.Items
             : base(0x265B)
         {
             Weight = 0.1;
-            Name = "Colier Nordique";
+            Name = "Collier Nordique";
         }
 
         public ColierNordique(Serial serial)
@@ -474,7 +474,7 @@ namespace Server.Items
             : base(0x265C)
         {
             Weight = 0.1;
-            Name = "Colier d'Emeraudes";
+            Name = "Collier d'Emeraudes";
         }
 
         public ColierEmeraudes(Serial serial)
