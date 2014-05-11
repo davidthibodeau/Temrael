@@ -98,8 +98,6 @@ namespace Server.Engines.Craft
 			int index = 0;
 
             #region Matériaux
-            //index = AddCraft(typeof(Board), "Matériaux", "Planche", 10.0, 30.0, typeof(Log), "Bûche", 1, 1044465);
-            //SetUseAllRes(index, true);
 
             index = AddCraft(typeof(Kindling), "Matériaux", "Branchette", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
             SetUseAllRes(index, true);
@@ -157,14 +155,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(WoodenChairCushion), "Chaises", "Chaise avec coussin", 42.1, 67.1, typeof(Board), "Planches", 15, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            //Gump invisible donc impossible à déplacer
-            //index = AddCraft(typeof(WoodenBench), "Chaise", 1022860, 52.6, 77.6, typeof(Board), "Planches", 17, 1044351);
-            //AddRes(index, typeof(Nails), "Clous", 1, 1044563);
-
-            //Gump invisible donc impossible à déplacer
-            //index = AddCraft(typeof(WoodenThrone), "Chaise", 1044304, 52.6, 77.6, typeof(Board), "Planches", 17, 1044351);
-            //AddRes(index, typeof(Nails), "Clous", 1, 1044563);
-
             index = AddCraft(typeof(Throne), "Chaises", "Trône", 73.6, 98.6, typeof(Board), "Planches", 22, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
@@ -210,16 +200,22 @@ namespace Server.Engines.Craft
             #region Etagères
             index = AddCraft(typeof(EtagereA), "Etagères", "Support de bois clair", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+
             index = AddCraft(typeof(EtagereB), "Etagères", "Support de bois brut", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+
             index = AddCraft(typeof(EtagereC), "Etagères", "Support de bois bordeaux", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+
             index = AddCraft(typeof(EtagereG), "Etagères", "Support de bois sombre", 50.0, 70.0, typeof(Board), "Planches", 6, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+
             index = AddCraft(typeof(EtagereD), "Etagères", "Etagère sur trois niveaux claire", 60.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+
             index = AddCraft(typeof(EtagereE), "Etagères", "Etagère sur trois niveaux bordeaux", 60.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
+
             index = AddCraft(typeof(EtagereF), "Etagères", "Etagère sur trois niveaux sombre", 60.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
@@ -228,11 +224,11 @@ namespace Server.Engines.Craft
             #region Contenant à fruits
             index = AddCraft(typeof(FruitContainerA), "Contenant à fruits", "Tonneau de pommes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Apple), "Pommes", 50, 1044563);
+			AddRes(index, typeof(Apple), "Pommes", 25, 1044563);
 
             index = AddCraft(typeof(FruitContainerB), "Contenant à fruits", "Tonneau de bananes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Banana), "Bananes", 50, 1044563);
+			AddRes(index, typeof(Banana), "Bananes", 25, 1044563);
 
             index = AddCraft(typeof(FruitContainerC), "Contenant à fruits", "Tonneau de pain", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
@@ -240,31 +236,31 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(FruitContainerD), "Contenant à fruits", "Tonneau de dattes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Dates), "Dattes", 50, 1044563);
+			AddRes(index, typeof(Dates), "Dattes", 25, 1044563);
 
             index = AddCraft(typeof(FruitContainerE), "Contenant à fruits", "Tonneau de citrons", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Lemon), "Citrons", 50, 1044563);
+			AddRes(index, typeof(Lemon), "Citrons", 25, 1044563);
 
             index = AddCraft(typeof(FruitContainerF), "Contenant à fruits", "Tonneau de citrons verts", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Lime), "Citrons verts", 50, 1044563);
+			AddRes(index, typeof(Lime), "Citrons verts", 25, 1044563);
 
             index = AddCraft(typeof(FruitContainerG), "Contenant à fruits", "Tonneau de pommes renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Apple), "Pommes", 50, 1044563);
+			AddRes(index, typeof(Apple), "Pommes", 25, 1044563);
 
             index = AddCraft(typeof(FruitContainerH), "Contenant à fruits", "Tonneau de bananes renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Banana), "Bananes", 50, 1044563);
+			AddRes(index, typeof(Banana), "Bananes", 25, 1044563);
 
             index = AddCraft(typeof(FruitContainerI), "Contenant à fruits", "Tonneau de patates renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-
             //Il y a un tonneau de Patates mais pas de Patates. Rien de vraiment semblable pour remplacer dans le craft.
+
             index = AddCraft(typeof(FruitContainerJ), "Contenant à fruits", "Tonneau de pêches renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-			AddRes(index, typeof(Peach), "Pêches", 50, 1044563);
+			AddRes(index, typeof(Peach), "Pêches", 25, 1044563);
 
 
 			#endregion
@@ -350,12 +346,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(BallotBoxDeed), "Meubles", "Urne de vote", 47.3, 72.3, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(Nails), "Clou", 1, 1044563);
 
-            /*index = AddCraft(typeof(PentagramDeed), "Meubles", 1044328, 100.0, 125.0, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.ArtMagique, 75.0, 80.0);
-            AddRes(index, typeof(FerIngot), 1044036, 40, 1044037);
-            index = AddCraft(typeof(AbbatoirDeed), "Meubles", 1044329, 100.0, 125.0, typeof(Board), 1044041, 100, 1044351);
-            AddSkill(index, SkillName.ArtMagique, 50.0, 55.0);
-            AddRes(index, typeof(FerIngot), "Lingot de Fer", 40, 1044037);*/
             index = AddCraft(typeof(TrainingDummyEastDeed), "Meubles", "Mannequin Combat (Est)", 68.4, 93.4, typeof(Board), "Planches", 40, 1044351);
             AddSkill(index, SkillName.Couture, 50.0, 55.0);
             AddRes(index, typeof(Cloth), "Coton", 60, 1044287);
@@ -395,9 +385,6 @@ namespace Server.Engines.Craft
             AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 50, 1044037);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
-
-            /*AddCraft(typeof(WaterTroughEastDeed), "Meubles", 1044349, 94.7, 119.7, typeof(Board), 1044041, 150, 1044351);
-            AddCraft(typeof(WaterTroughSouthDeed), "Meubles", 1044350, 94.7, 119.7, typeof(Board), 1044041, 150, 1044351);*/
 
             index = AddCraft(typeof(Dressform), "Meubles", "Mannequin Vêtements", 63.1, 88.1, typeof(Board), "Planches", 28, 1044351);
             AddSkill(index, SkillName.Couture, 65.0, 70.0);
@@ -613,10 +600,6 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( WaterTroughSouthDeed ), 1044299, 1044350, 94.7, 119.7, typeof( Log ), 1044041, 150, 1044351 );*/
             #endregion
 
-
-            MarkOption = true;
-			Repair = Core.AOS;
-
 			SetSubRes( typeof( Board ), "Érable" );
 
 			// Add every material you want the player to be able to choose from
@@ -629,12 +612,6 @@ namespace Server.Engines.Craft
             AddSubRes(typeof(CheneBoard), "Chêne", 60.0, 1072652);
             AddSubRes(typeof(EbeneBoard), "Ébène", 70.0, 1072652);
             AddSubRes(typeof(AcajouBoard), "Acajou", 80.0, 1072652);
-			/*AddSubRes( typeof( OakLog ), 1072644, 65.0, 1044041, 1072652 );
-			AddSubRes( typeof( AshLog ), 1072645, 80.0, 1044041, 1072652 );
-			AddSubRes( typeof( YewLog ), 1072646, 95.0, 1044041, 1072652 );
-			AddSubRes( typeof( HeartwoodLog ), 1072647, 100.0, 1044041, 1072652 );
-			AddSubRes( typeof( BloodwoodLog ), 1072648, 100.0, 1044041, 1072652 );
-			AddSubRes( typeof( FrostwoodLog ), 1072649, 100.0, 1044041, 1072652 );*/
 
             SetSubRes2(typeof(Log), "Bûche");
 
@@ -646,6 +623,9 @@ namespace Server.Engines.Craft
             AddSubRes2(typeof(CheneLog), "Bûche de Chêne", 60.0, 1072652);
             AddSubRes2(typeof(EbeneLog), "Bûche d'Ébène", 70.0, 1072652);
             AddSubRes2(typeof(AcajouLog), "Bûche d'Acajou", 80.0, 1072652);
+
+            MarkOption = true;
+            Repair = Core.AOS;
 		}
 	}
 }

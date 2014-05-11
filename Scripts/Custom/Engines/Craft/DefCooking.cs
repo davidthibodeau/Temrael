@@ -84,7 +84,6 @@ namespace Server.Engines.Craft
 
 			/* Begin Ingredients */
 			index = AddCraft( typeof( SackFlour ), "Ingrédients", "Sac de farine", 0.0, 30.0, typeof( WheatSheaf ), "Blé", 2, 1044490 );
-			//SetNeedMill( index, true );
 
             index = AddCraft(typeof(Dough), "Ingrédients", "Pâte", 0.0, 30.0, typeof(SackFlour), "Sac de farine", 1, 1044253);
 			AddRes( index, typeof( BaseBeverage ), "Eau", 1, 1044253 );
@@ -123,9 +122,6 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(UnbakedPumpkinPie), "Préparations", "Tarte à la citrouille", 40.0, 80.0, typeof(Dough), "Pâte", 1, 1044253);
 			AddRes( index, typeof( Pumpkin ), 1044484, 1, 1044253 );
-
-			//index = AddCraft( typeof( TribalPaint ), 1044496, 1040000, Core.ML? 55.0 : 80.0, Core.ML? 105.0 : 80.0, typeof( SackFlour ), 1044468, 1, 1044253 );
-			//AddRes( index, typeof( TribalBerry ), 1046460, 1, 1044253 );
 
 			/* Begin Baking */
             index = AddCraft(typeof(BreadLoaf), "Cuisson", "Miche de pain", 10.0, 60.0, typeof(Dough), "Pâte", 1, 1044253);

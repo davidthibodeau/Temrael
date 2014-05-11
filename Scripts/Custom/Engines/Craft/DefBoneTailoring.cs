@@ -127,19 +127,19 @@ namespace Server.Engines.Craft
 
             #region Bone Armor
             index = AddCraft(typeof(BoneHelm), "Armure d'Os", "Casque d'Os", 50.0, 70.0, typeof(Bone), "Os", 4, 1044463);
-            AddRes(index, typeof(Leather), "Cuir", 2, "Cuir");
+            AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
 
             index = AddCraft(typeof(BoneGloves), "Armure d'Os", "Gants d'Os", 50.0, 70.0, typeof(Bone), "Os", 6, 1044463);
-            AddRes(index, typeof(Leather), "Cuir", 3, "Cuir");
+            AddRes(index, typeof(Leather), "Cuir", 3, 1044463);
 
             index = AddCraft(typeof(BoneArms), "Armure d'Os", "Brassards d'Os", 50.0, 70.0, typeof(Bone), "Os", 8, 1044463);
-            AddRes(index, typeof(Leather), "Cuir", 4, "Cuir");
+            AddRes(index, typeof(Leather), "Cuir", 4, 1044463);
 
             index = AddCraft(typeof(BoneLegs), "Armure d'Os", "Jambieres d'Os", 50.0, 70.0, typeof(Bone), "Os", 10, 1044463);
-            AddRes(index, typeof(Leather), "Cuir", 5, "Cuir");
+            AddRes(index, typeof(Leather), "Cuir", 5, 1044463);
 
             index = AddCraft(typeof(BoneChest), "Armure d'Os", "Plastron d'Os", 50.0, 70.0, typeof(Bone), "Os", 12, 1044463);
-            AddRes(index, typeof(Leather), "Cuir", 6, "Cuir");
+            AddRes(index, typeof(Leather), "Cuir", 6, 1044463);
             #endregion
 
             // Set the overridable material

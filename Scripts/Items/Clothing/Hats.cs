@@ -738,6 +738,7 @@ namespace Server.Items
 		public WizardsHat( int hue ) : base( 0x1718, hue )
 		{
 			Weight = 1.0;
+            Name = "Bérêt";
 		}
 
 		public WizardsHat( Serial serial ) : base( serial )

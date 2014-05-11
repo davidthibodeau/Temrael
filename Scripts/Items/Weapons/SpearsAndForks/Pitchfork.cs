@@ -7,27 +7,30 @@ namespace Server.Items
 	[FlipableAttribute( 0xE87, 0xE88 )]
 	public class Pitchfork : BaseSpear
 	{
-		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
-		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
+        public override int NiveauAttirail { get { return 1; } }
 
-		public override int AosStrengthReq{ get{ return 55; } }
-		public override int AosMinDamage{ get{ return 13; } }
-		public override int AosMaxDamage{ get{ return 14; } }
-		public override double AosSpeed{ get{ return 43; } }
-		public override float MlSpeed{ get{ return 2.50f; } }
+        public override WeaponAbility PrimaryAbility { get { return WeaponAbility.BleedAttack; } }
+        public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-		public override int OldStrengthReq{ get{ return 15; } }
-		public override int OldMinDamage{ get{ return 4; } }
-		public override int OldMaxDamage{ get{ return 16; } }
-		public override int OldSpeed{ get{ return 45; } }
+        public override int AosStrengthReq { get { return Trident_Force1; } }
+        public override int AosMinDamage { get { return Trident_MinDam1; } }
+        public override int AosMaxDamage { get { return Trident_MaxDam1; } }
+        public override double AosSpeed { get { return Trident_Vitesse; } }
+        public override float MlSpeed { get { return 2.75f; } }
 
-		public override int InitMinHits{ get{ return 31; } }
-		public override int InitMaxHits{ get{ return 60; } }
+        public override int OldStrengthReq { get { return 30; } }
+        public override int OldMinDamage { get { return 2; } }
+        public override int OldMaxDamage { get { return 36; } }
+        public override int OldSpeed { get { return 46; } }
+
+        public override int InitMinHits { get { return 31; } }
+        public override int InitMaxHits { get { return 80; } }
 
 		[Constructable]
 		public Pitchfork() : base( 0xE87 )
 		{
 			Weight = 11.0;
+            Name = "Fourche";
 		}
 
 		public Pitchfork( Serial serial ) : base( serial )
