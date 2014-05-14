@@ -24,7 +24,7 @@ namespace Server
         Confortable,
         Chaud,
         Torride,
-        Brûlant
+        Brulant
     }
 
     public enum DensityOfCloud

@@ -159,7 +159,7 @@ namespace Server.Misc
                 Temperature.Chaud,
                 Temperature.Torride,
                 Temperature.Torride,
-                Temperature.Brûlant
+                Temperature.Brulant
             };
 
         private static Temperature[] m_SummerScaleToNight = new Temperature[]

@@ -222,7 +222,7 @@ namespace Server.Gumps
             {
                 if (targeted is PoisonPotion)
                 {
-                    m_Bowl.Plant.Poison = PlantPoison.Empoisonné;
+                    m_Bowl.Plant.Poison = PlantPoison.Empoisonnee;
                     ((Item)targeted).Delete();
                     from.SendMessage("Vous empoisonnez la plante !");
                     from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));

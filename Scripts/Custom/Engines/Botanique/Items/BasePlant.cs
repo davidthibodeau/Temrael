@@ -297,10 +297,10 @@ namespace Server.Items
             {
                 case 0: return Disease.Aleurodes;
                 case 1: return Disease.Armillaire;
-                case 2: return Disease.Cécidomyie;
+                case 2: return Disease.Cecidomyie;
                 case 3: return Disease.Chancre;
                 case 4: return Disease.Fumagine;
-                case 5: return Disease.Nématode;
+                case 5: return Disease.Nematode;
                 case 6: return Disease.Noctuelle;
                 case 7: return Disease.Psylle;
                 case 8: return Disease.Rouille;

@@ -100,10 +100,10 @@ namespace Server.Items
         None,
         Aleurodes,
         Armillaire,
-        Cécidomyie,
+        Cecidomyie,
         Chancre,
         Fumagine,
-        Nématode,
+        Nematode,
         Noctuelle,
         Psylle,
         Rouille,
@@ -144,6 +144,6 @@ namespace Server.Items
     public enum PlantPoison
     {
         None,
-        Empoisonné
+        Empoisonnee
     }
 }
