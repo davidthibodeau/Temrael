@@ -33,7 +33,7 @@ namespace Server.Spells
 
         public override bool DelayedDamage { get { return false; } }
 
-        private static int[] m_ManaTable = new int[] { 5, 5, 8, 8, 10, 10, 13, 13, 15, 15, 18, 20 };
+        private new static int[] m_ManaTable = new int[] { 5, 5, 8, 8, 10, 10, 13, 13, 15, 15, 18, 20 };
         private static int[] m_ToLostTable = new int[] { 10, 12, 15, 17, 20, 22, 25, 27, 30, 35, 38, 40 };
         private static int[] m_ToGainTable = new int[] { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60 };
 

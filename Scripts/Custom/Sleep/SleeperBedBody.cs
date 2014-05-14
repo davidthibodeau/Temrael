@@ -248,7 +248,7 @@ namespace Server.Items
 		{
 		}
 
-		public virtual void SendInfoTo( NetState state )
+		public new void SendInfoTo( NetState state )
 		{
 			base.SendInfoTo( state );
 
