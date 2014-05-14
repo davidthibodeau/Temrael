@@ -232,7 +232,7 @@ namespace Server.Items
 		}
 		[Constructable]
 		public CypresLog( int amount )
-			: base( CraftResource.CyprèsWood, amount )
+			: base( CraftResource.CypresWood, amount )
 		{
 		}
         public CypresLog(Serial serial)
@@ -271,7 +271,7 @@ namespace Server.Items
 
 		[Constructable]
 		public CedreLog( int amount )
-			: base( CraftResource.CèdreWood, amount )
+			: base( CraftResource.CedreWood, amount )
 		{
 		}
 
@@ -355,7 +355,7 @@ namespace Server.Items
 
 		[Constructable]
 		public CheneLog( int amount )
-			: base( CraftResource.ChêneWood, amount )
+			: base( CraftResource.CheneWood, amount )
 		{
 		}
 
@@ -397,7 +397,7 @@ namespace Server.Items
 
 		[Constructable]
 		public EbeneLog( int amount )
-			: base( CraftResource.ÉbèneWood, amount )
+			: base( CraftResource.EbeneWood, amount )
 		{
 		}
 

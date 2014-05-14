@@ -231,7 +231,7 @@ namespace Server.Items
 
 		[Constructable]
 		public CheneBoard( int amount )
-			: base( CraftResource.ChêneWood, amount )
+			: base( CraftResource.CheneWood, amount )
 		{
 		}
 
@@ -265,7 +265,7 @@ namespace Server.Items
 
 		[Constructable]
 		public EbeneBoard( int amount )
-			: base( CraftResource.ÉbèneWood, amount )
+			: base( CraftResource.EbeneWood, amount )
 		{
 		}
 
@@ -333,7 +333,7 @@ namespace Server.Items
 
 		[Constructable]
 		public CypresBoard( int amount )
-			: base( CraftResource.CyprèsWood, amount )
+			: base( CraftResource.CypresWood, amount )
 		{
 		}
 
@@ -367,7 +367,7 @@ namespace Server.Items
 
 		[Constructable]
 		public CedreBoard( int amount )
-			: base( CraftResource.CèdreWood, amount )
+			: base( CraftResource.CedreWood, amount )
 		{
 		}
 
@@ -401,7 +401,7 @@ namespace Server.Items
 
         [Constructable]
         public AcajouBoard(int amount)
-            : base(CraftResource.CèdreWood, amount)
+            : base(CraftResource.CedreWood, amount)
         {
         }
 
