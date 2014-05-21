@@ -1358,7 +1358,7 @@ namespace Server.Mobiles
             else
             {
                 m_weapon = new ButcherKnife();
-                m_weapon.Map = this.Map;
+                AddItem(m_weapon);
             }
 
             if (i2 != null && i2 is BaseWeapon)
