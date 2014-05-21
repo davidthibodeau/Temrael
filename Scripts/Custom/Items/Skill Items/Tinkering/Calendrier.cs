@@ -74,16 +74,16 @@ namespace Server.Items
 			{
 				new CalendrierEntry( Month.Janvier, Season.Winter, 31 ),
 				new CalendrierEntry( Month.Fevrier, Season.Winter, 28 ),
-				new CalendrierEntry( Month.Mars, Season.Spring, 31 ),
+				new CalendrierEntry( Month.Mars, Season.Winter, 31 ),
 				new CalendrierEntry( Month.Avril, Season.Spring, 30 ),
 				new CalendrierEntry( Month.Mai, Season.Spring, 31 ),
-				new CalendrierEntry( Month.Juin, Season.Summer, 30 ),
+				new CalendrierEntry( Month.Juin, Season.Spring, 30 ),
 				new CalendrierEntry( Month.Juillet, Season.Summer, 31 ),
 				new CalendrierEntry( Month.Aout, Season.Summer, 31 ),
-				new CalendrierEntry( Month.Septembre, Season.Automn, 30 ),
+				new CalendrierEntry( Month.Septembre, Season.Summer, 30 ),
 				new CalendrierEntry( Month.Octobre, Season.Automn, 31 ),
                 new CalendrierEntry( Month.Novembre, Season.Automn, 30 ),
-                new CalendrierEntry( Month.Decembre, Season.Winter, 31 )
+                new CalendrierEntry( Month.Decembre, Season.Automn, 31 )
 			};
 
         public static void CheckSeason()
@@ -99,7 +99,7 @@ namespace Server.Items
 
         public static int GetMonth(int totalDays)
         {
-            totalDays %= 360;
+            totalDays %= 365;
             int month = 0;
 
             for (int i = 0; i < m_Entries.Length; ++i)
@@ -120,7 +120,7 @@ namespace Server.Items
 
         public static int GetDay(int totalDays)
         {
-            totalDays %= 360;
+            totalDays %= 365;
             int month = GetMonth(totalDays) - 1;
 
             //Console.WriteLine(totalDays);
@@ -146,10 +146,11 @@ namespace Server.Items
         {
             TimeSpan timeSpan = DateTime.Now - Clock.WorldStart;
 
-            int totalMinutes = (int)(timeSpan.TotalSeconds * Clock.SecondsPerUOMinute);
-            int totalDays = totalMinutes / 80;
+            int totalMinutes = (int)(timeSpan.TotalSeconds / Clock.SecondsPerUOMinute);
+            int totalDays = totalMinutes / (24 * 60);
+            Console.WriteLine("Seconds {2}. Minutes {0}. Days {1}", totalMinutes, totalDays, timeSpan.TotalSeconds);
 
-            year = totalMinutes / 518400;
+            year = totalDays / 365 + 190;
             month = GetMonth(totalDays);
             day = GetDay(totalDays);
         }

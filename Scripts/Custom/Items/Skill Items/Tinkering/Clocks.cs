@@ -45,10 +45,10 @@ namespace Server.Items
 		{
 		}
 
-		public const double SecondsPerUOMinute = 0.05;
-		public const double MinutesPerUODay = SecondsPerUOMinute * 60;
+		public const double SecondsPerUOMinute = 15;
+        public const double MinutesPerUODay = 0.05 * 60;//SecondsPerUOMinute * 60; Just in case MinutesPerUODay is important elsewhere
 
-		public static DateTime WorldStart = new DateTime( 2012, 6, 1 );
+		public static DateTime WorldStart = new DateTime( 2014, 1, 1 );
 
 		public static MoonPhase GetMoonPhase( Map map, int x, int y )
 		{
