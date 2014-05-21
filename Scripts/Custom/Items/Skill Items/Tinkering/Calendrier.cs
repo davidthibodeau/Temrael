@@ -148,14 +148,13 @@ namespace Server.Items
 
             int totalMinutes = (int)(timeSpan.TotalSeconds / Clock.SecondsPerUOMinute);
             int totalDays = totalMinutes / (24 * 60);
-            Console.WriteLine("Seconds {2}. Minutes {0}. Days {1}", totalMinutes, totalDays, timeSpan.TotalSeconds);
 
             year = totalDays / 365 + 190;
             month = GetMonth(totalDays);
             day = GetDay(totalDays);
         }
 
-        public static void OnSeasonChange(Season seacon)
+        public static void OnSeasonChange(Season season)
         {
             ArrayList items = new ArrayList(World.Items.Values);
 
