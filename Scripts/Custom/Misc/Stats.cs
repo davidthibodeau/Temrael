@@ -11,36 +11,73 @@ namespace Server.Misc
     {
         private static Stats stats;
 
-        private Dictionary<IAccount, bool> CompteurCourant;
-        private DateTime DerniereHeure;
-        private OrderedDictionary<DateTime, int> data = new OrderedDictionary<DateTime,int>();
+        private Dictionary<IAccount, bool> ThisHour;
+        private DateTime LastHour;
+        private OrderedDictionary<DateTime, int> DataHourly;
+
+        private Dictionary<IAccount, bool> ThisDay;
+        private DateTime LastDay;
+        private OrderedDictionary<DateTime, int> DataDaily;
+
+        private Dictionary<IAccount, bool> ThisWeek;
+        private DateTime LastWeek;
+        private OrderedDictionary<DateTime, int> DataWeekly;
 
         public static void Initialize()
         {
             stats = new Stats();
             // Load of stats
-            // Save stats
+            // Save stats EventSink
             EventSink.Login += new LoginEventHandler(OnLogin);
+
             DateTime next = LastRoundHour().AddHours(1);
-            new RecordingTimer(next - DateTime.Now).Start();
+            new HourlyTimer(next - DateTime.Now).Start();
+            next = LastRoundDay().AddDays(1);
+            new DailyTimer(next - DateTime.Now).Start();
+            next = today.AddDays(7 - (int)DateTime.Now.DayOfWeek); //maybe with LastRoundWeek()?
+            new DailyTimer(next - DateTime.Now).Start();
+            
         }
 
         public static void OnLogin(LoginEventArgs e)
         {
-            stats.AjouterCourant(e.Mobile.Account);
+            stats.RecordPlayer(e.Mobile.Account);
         }
 
         public Stats()
         {
-            CompteurCourant = new Dictionary<IAccount, bool>();
-            data = new OrderedDictionary<DateTime, int>();
-            DerniereHeure = LastRoundHour();
+            ThisHour = new Dictionary<IAccount, bool>();
+            ThisDay = new Dictionary<IAccount, bool>();
+            ThisWeek = new Dictionary<IAccount, bool>();
+
+            DataHourly = new OrderedDictionary<DateTime, int>();
+            DataDaily = new OrderedDictionary<DateTime, int>();
+            DataWeekly = new OrderedDictionary<DateTime, int>();
+
+            LastHour = LastRoundHour();
+            LastDay = LastRoundDay();
+            LastWeek = LastRoundWeek();
         }
 
-        public void AjouterCourant(IAccount a)
+        public void RecordPlayer (IAccount a)
         {
-            if(a.AccessLevel == AccessLevel.Player && !CompteurCourant.ContainsKey(a))
-                CompteurCourant.Add(a, true);
+            if(a.AccessLevel > AccessLevel.Player)
+                return;
+            if(!ThisHour.ContainsKey(a)))
+                ThisHour.Add(a, true);
+            if(!ThisDay.ContainsKey(a)))
+                ThisDay.Add(a, true);
+            if(!ThisWeek.ContainsKey(a)))
+                ThisWeek.Add(a, true);
+        
+        }
+
+        public void RecordOnline()
+        {
+            foreach(Netstate ns in Nestate.Instances)
+            {
+                RecordPlayer(ns.Account);
+            }
         }
 
         public static DateTime LastRoundHour()
@@ -49,24 +86,71 @@ namespace Server.Misc
             return new DateTime(now.Year, now.Month, now.Day, now.Hour, 0, 0);
         }
 
-        public void Enregistrer()
+        public static DateTime LastRoundDay()
         {
-            int courant = CompteurCourant.Count;
-            data.Add(DerniereHeure, courant);
-            DerniereHeure = LastRoundHour();
+            DateTime now = DateTime.Now;
+            return new DateTime(now.Year, now.Month, now.Day);
+        }
 
-            CompteurCourant.Clear();
-            foreach (NetState ns in NetState.Instances)
+        public static DateTime LastRoundWeek()
+        {
+            DateTime now = DateTime.Now;
+            return new DateTime(now.Year, now.Month, now.Day); //.AddDays(7 - now.DayOfWeek);
+            //Find right day of the week for previous.
+        }
+
+        public void RecordHour()
+        {
+            int count = ThisHour.Count;
+            DataHourly.Add(LastHour, count);
+            WriteRaw("rawHour.log", String.Format("[{0}] {1}", LastHour.ToString(), count.ToString())); 
+            LastHour = LastRoundHour();
+
+            ThisHour.Clear();
+            RecordOnline();
+        }
+
+        public void RecordDay()
+        {
+            int count = ThisDay.Count;
+            DataDaily.Add(LastDay, count);
+            WriteRaw("rawDay.log", String.Format("[{0}] {1}", LastDay.ToString(), count.ToString())); 
+
+            LastDay = LastRoundDay();
+
+            ThisDay.Clear();
+            RecordOnline();
+        }
+
+        public void RecordWeek()
+        {
+            int count = ThisWeek.Count;
+            DataWeekly.Add(LastWeek, count);
+            WriteRaw("rawWeek.log", String.Format("[{0}] {1}", LastWeek.ToString(), count.ToString())); 
+
+            LastWeek = LastRoundWeek();
+
+            ThisWeek.Clear();
+            RecordOnline();
+        }
+
+        public void WriteRaw(string file, string entry)
+        {
+            try
             {
-                AjouterCourant(ns.Account);
+                using(StreamWriter sw = new StreamWriter(file, true))
+                {
+                    sw.WriteLine(entry);
+                }
             }
+            catch { }
         }
 
         // Generate graph and statistics
 
-        private class RecordingTimer : Timer
+        private class HourlyTimer : Timer
         {
-            public RecordingTimer(TimeSpan delay)
+            public HourlyTimer(TimeSpan delay)
                 : base(delay, TimeSpan.FromHours(1))
             {
                 Priority = TimerPriority.FiveSeconds;
@@ -74,9 +158,36 @@ namespace Server.Misc
 
             protected override void OnTick()
             {
-                stats.Enregistrer();
+                stats.RecordHour();
             }
         }
 
+        private class DailyTimer : Timer
+        {
+            public DailyTimer(TimeSpan delay)
+                : base(delay, TimeSpan.FromDays(1))
+            {
+                Priority = TimerPriority.OneMinute;
+            }
+
+            protected override void OnTick()
+            {
+                stats.RecordDay();
+            }
+        }
+
+        private class WeeklyTimer : Timer
+        {
+            public WeeklyTimer(TimeSpan delay)
+                : base(delay, TimeSpan.FromDays(7))
+            {
+                Priority = TimerPriority.OneMinute;
+            }
+
+            protected override void OnTick()
+            {
+                stats.RecordWeek();
+            }
+        }
     }
 }
