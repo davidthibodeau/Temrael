@@ -843,7 +843,7 @@ namespace Server.Mobiles
             int x = m.X;
             int y = m.Y;
 
-            Clock.GetTime(out hours, out minutes);
+            Time.GetTime(out hours, out minutes);
 
             /* RunUO times: (from LightCycle.cs)
              * 

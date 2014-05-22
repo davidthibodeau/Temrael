@@ -4,53 +4,11 @@ using Server.Network;
 using Server.Commands;
 using Server.Items;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server
 {
-    public enum TimeOfDay
-    {
-        Night,
-        ScaleToDay,
-        Day,
-        ScaleToNight
-    }
 
-    public enum Temperature
-    {
-        Glacial,
-        Hivernal,
-        Froid,
-        Frais,
-        Confortable,
-        Chaud,
-        Torride,
-        Brulant
-    }
-
-    public enum DensityOfCloud
-    {
-        Ensolleile,
-        PassageNuageux,
-        CielVariable,
-        NuageuxAvecEclaircies,
-        Nuageux,
-        FaiblePluie,
-        Pluie,
-        FortePluie,
-        Caverne
-    }
-
-    public enum QuantityOfWind
-    {
-        Aucun,
-        Faible,
-        Modeste,
-        Rafale,
-        Bourrasque,
-        Tempete,
-        Tornade,
-        Typhon
-    }
 	public class LightCycle
 	{
 		public const int DayLevel = 0;
@@ -125,95 +83,9 @@ namespace Server
 			Mobile m = args.Mobile;
 
 			m.CheckLightLevels( true );
-            Calendrier.CheckSeason();
+            Time.CheckSeason();
 
 		}
-
-        public static TimeOfDay GetTimeofDay()
-        {
-            int hours, minutes;
-
-            Server.Items.Clock.GetTime(out hours, out minutes);
-
-            switch (Map.Felucca.Season)
-            {
-                case 0: // Printemps
-                    {
-                        if (hours < 5)
-                            return TimeOfDay.Night;
-
-                        if (hours < 8)
-                            return TimeOfDay.ScaleToDay;
-
-                        if (hours < 19)
-                            return TimeOfDay.Day;
-
-                        if (hours < 23)
-                            return TimeOfDay.ScaleToNight;
-
-                        if (hours < 24)
-                            return TimeOfDay.Night;
-
-                        break;
-                    }
-                case 1: // Été
-                    {
-                        if (hours < 5)
-                            return TimeOfDay.Night;
-
-                        if (hours < 8)
-                            return TimeOfDay.ScaleToDay;
-
-                        if (hours < 20)
-                            return TimeOfDay.Day;
-
-                        if (hours < 24)
-                            return TimeOfDay.ScaleToNight;
-
-                        break;
-                    }
-                case 2: // Automne
-                    {
-                        if (hours < 5)
-                            return TimeOfDay.Night;
-
-                        if (hours < 8)
-                            return TimeOfDay.ScaleToDay;
-
-                        if (hours < 19)
-                            return TimeOfDay.Day;
-
-                        if (hours < 23)
-                            return TimeOfDay.ScaleToNight;
-
-                        if (hours < 24)
-                            return TimeOfDay.Night;
-
-                        break;
-                    }
-                case 3: // Hiver
-                    {
-                        if (hours < 6)
-                            return TimeOfDay.Night;
-
-                        if (hours < 9)
-                            return TimeOfDay.ScaleToDay;
-
-                        if (hours < 18)
-                            return TimeOfDay.Day;
-
-                        if (hours < 22)
-                            return TimeOfDay.ScaleToNight;
-
-                        if (hours < 24)
-                            return TimeOfDay.Night;
-
-                        break;
-                    }
-            }
-
-            return TimeOfDay.Night; // should never be
-        }
 
 		public static int ComputeLevelFor( Mobile from )
 		{
@@ -224,58 +96,9 @@ namespace Server
 
             int level = NightLevel;
 
-            Server.Items.Clock.GetTime(out hours, out minutes);
+            Time.GetTime(out hours, out minutes);
 
-            /* OSI times:
-             * 
-             * Midnight ->  3:59 AM : Night
-             *  4:00 AM -> 11:59 PM : Day
-             * 
-             * RunUO times:
-             * 
-             * 10:00 PM -> 11:59 PM : Scale to night
-             * Midnight ->  3:59 AM : Night
-             *  4:00 AM ->  5:59 AM : Scale to day
-             *  6:00 AM ->  9:59 PM : Day
-             *
-             * Server times:
-             * 
-             * Été
-             *
-             *  5:00 AM -> 7:59 AM : Scale to day
-             *  8:00 AM -> 7:59 PM : Day
-             *  8:00 PM -> 11:59 PM : Scale to night
-             *  00:00 AM -> 4:59 AM : Night
-             *
-             * Automne
-             *
-             *  5:00 AM -> 7:59 AM : Scale to day
-             *  8:00 AM -> 6:59 PM : Day
-             *  7:00 PM -> 10:59 PM : Scale to night
-             *  11:00 PM -> 4:59 AM : Night
-             *
-             * Hiver
-             *
-             *  6:00 AM -> 8:59 AM : Scale to day
-             *  9:00 AM -> 5:59 PM : Day
-             *  6:00 PM -> 9:59 PM : Scale to night
-             *  10:00 PM -> 5:59 AM : Night 
-             * 
-             * Abyss
-             *
-             *  7:00 AM -> 9:59 AM : Scale to day
-             *  10:00 AM -> 4:59 PM : Day
-             *  5:00 PM -> 7:59 PM : Scale to night
-             *  8:00 PM -> 6:59 AM : Night 
-             * 
-             * Printemps
-             * 
-             *  5:00 AM -> 7:59 AM : Scale to day
-             *  8:00 AM -> 6:59 PM : Day
-             *  7:00 PM -> 10:59 PM : Scale to night
-             *  11:00 PM -> 4:59 AM : Night 
-             * 
-             */
+
 
             int season = Map.Felucca.Season;
 

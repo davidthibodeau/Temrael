@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Network;
+using Server.Misc;
 
 namespace Server.Items
 {
@@ -29,7 +30,7 @@ namespace Server.Items
 				int hours;
 				int minutes;
 
-				Clock.GetTime( out hours, out minutes );
+				Time.GetTime( out hours, out minutes );
 
 				if ( hours < 4 || hours > 20 )
 					Effects.PlaySound( Location, Map, 0x569 );
@@ -70,7 +71,7 @@ namespace Server.Items
 			int hours;
 			int minutes;
 
-			Clock.GetTime( out hours, out minutes );
+			Time.GetTime( out hours, out minutes );
 
 			if ( FacingSouth )
 			{

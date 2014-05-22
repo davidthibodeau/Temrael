@@ -4,6 +4,7 @@ using System.Collections;
 using Server;
 using Server.Items;
 using Server.Movement;
+using Server.Misc;
 
 namespace Server.Mobiles
 {
@@ -500,7 +501,7 @@ namespace Server.Mobiles
 
         public static void _OnTick()
         {
-            Calendrier.OnSeasonChange((Season)Map.Felucca.Season);
+            Time.OnSeasonChange((Season)Map.Felucca.Season);
         }
     }
 }

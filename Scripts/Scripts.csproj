@@ -1416,6 +1416,7 @@
     <Compile Include="Custom\Commandes\BancInvisible.cs" />
     <Compile Include="Custom\Items\Food\BiscuitMessage.cs" />
     <Compile Include="Custom\Misc\Stats.cs" />
+    <Compile Include="Custom\Misc\Time.cs" />
     <Compile Include="DataStructures\Pair.cs" />
     <Compile Include="Misc\AbuseLogging.cs" />
     <Compile Include="Misc\ExceptionLogging.cs" />

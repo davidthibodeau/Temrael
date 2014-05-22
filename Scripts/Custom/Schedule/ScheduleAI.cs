@@ -4,6 +4,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Items;
+using Server.Misc;
 
 namespace Server.Mobiles
 {
@@ -34,7 +35,7 @@ namespace Server.Mobiles
 			int hours;
 			int minutes;
 			
-			Clock.GetTime(out hours, out minutes);
+			Time.GetTime(out hours, out minutes);
 			
 			// Divide hours by 2 to get current schedule
 			int entry = hours >> 1;

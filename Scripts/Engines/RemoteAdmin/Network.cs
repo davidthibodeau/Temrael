@@ -4,6 +4,7 @@ using System.Text;
 using System.Collections;
 using Server.Accounting;
 using Server.Network;
+using Server.Misc;
 
 namespace Server.RemoteAdmin
 {
@@ -99,7 +100,9 @@ namespace Server.RemoteAdmin
 			}
 			else if ( cmd == 0xFF )
 			{
-				string statStr = String.Format( ", Name={0}, Age={1}, Clients={2}, Items={3}, Chars={4}, Mem={5}K", Server.Misc.ServerList.ServerName, (int)(DateTime.Now-Server.Items.Clock.ServerStart).TotalHours, NetState.Instances.Count, World.Items.Count, World.Mobiles.Count, (int)(System.GC.GetTotalMemory(false)/1024) );
+				string statStr = String.Format( ", Name={0}, Age={1}, Clients={2}, Items={3}, Chars={4}, Mem={5}K", 
+                    ServerList.ServerName, (int)(DateTime.Now-Time.ServerStart).TotalHours, NetState.Instances.Count, 
+                    World.Items.Count, World.Mobiles.Count, (int)(System.GC.GetTotalMemory(false)/1024) );
 				state.Send( new UOGInfo( statStr ) );
 				state.Dispose();
 			}

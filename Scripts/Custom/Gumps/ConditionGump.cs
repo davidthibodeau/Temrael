@@ -4,6 +4,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Items;
 using Server.Network;
+using Server.Misc;
 
 namespace Server.Gumps
 {
@@ -141,7 +142,7 @@ namespace Server.Gumps
 
                 if (weather != null)
                 {
-                    TimeOfDay t = LightCycle.GetTimeofDay();
+                    TimeOfDay t = Time.GetTimeofDay();
                     Season s = (Season)Map.Felucca.Season;
                     DensityOfCloud c = weather.Cloud;
                     string[] cloud;
@@ -161,7 +162,7 @@ namespace Server.Gumps
                             cloud = m_DensityOfCloudSummerDay;
                     }
                     int year, month, day;
-                    Calendrier.GetDate(out year, out month, out day);
+                    Time.GetDate(out year, out month, out day);
 
                     AddHtml(130, 380, 200, 20, String.Format("<h3><basefont color=#5A4A31>Température : {0}<basefont></h3>", m_Temperature[(int)weather.Temperature]), false, false);
                     AddHtml(130, 410, 200, 20, String.Format("<h3><basefont color=#5A4A31>Temps : {0}<basefont></h3>", cloud[(int)c]), false, false);
