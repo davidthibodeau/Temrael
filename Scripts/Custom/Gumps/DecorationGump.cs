@@ -141,19 +141,14 @@ namespace Server.Gumps
 
                             item.Location = point;
                         }
-                        from.SendGump(new DecorationGump(from));
                     }
                     else
-                    {
                         from.SendMessage("Ceci est hors de votre portée.");
-                    }
                 }
                 else
-                {
                     from.SendMessage("Vous pouvez seulement deplacer un objet !");
-                    from.SendGump(new DecorationGump(from));
-                }
             }
+            from.SendGump(new DecorationGump(from));
         }
     }
     public class NudgeDownTarget : Target
@@ -181,19 +176,14 @@ namespace Server.Gumps
 
                             item.Location = point;
                         }
-                        from.SendGump(new DecorationGump(from));
                     }
                     else
-                    {
                         from.SendMessage("Ceci est hors de votre portée.");
-                    }
                 }
                 else
-                {
                     from.SendMessage("Vous pouvez seulement deplacer un objet !");
-                    from.SendGump(new DecorationGump(from));
-                }
             }
+            from.SendGump(new DecorationGump(from));
         }
     }
     public class DecoLockTarget : Target
@@ -220,18 +210,12 @@ namespace Server.Gumps
                         }
                     }
                     else
-                    {
                         from.SendMessage("Ceci est hors de votre portée.");
-                    }
-
-                    from.SendGump(new DecorationGump(from));
                 }
                 else
-                {
                     from.SendMessage("Vous pouvez seulement barrer/debarrer un objet !");
-                    from.SendGump(new DecorationGump(from));
-                }
             }
+            from.SendGump(new DecorationGump(from));
         }
     }
     public class DecoUnLockTarget : Target
@@ -259,18 +243,12 @@ namespace Server.Gumps
                         }
                     }
                     else
-                    {
                         from.SendMessage("Ceci est hors de votre portée.");
-                    }
-
-                    from.SendGump(new DecorationGump(from));
                 }
                 else
-                {
                     from.SendMessage("Vous pouvez seulement barrer/debarrer un objet !");
-                    from.SendGump(new DecorationGump(from));
-                }
             }
+            from.SendGump(new DecorationGump(from));
         }
     }
     public class DecoMoveTarget : Target
@@ -334,18 +312,12 @@ namespace Server.Gumps
                         }
                     }
                     else
-                    {
                         from.SendMessage("Ceci est hors de votre portée.");
-                    }
-
-                    from.SendGump(new DecorationGump(from));
                 }
                 else
-                {
                     from.SendMessage("Vous pouvez seulement deplacer un objet !");
-                    from.SendGump(new DecorationGump(from));
-                }
             }
+            from.SendGump(new DecorationGump(from));
         }
     }
 }
