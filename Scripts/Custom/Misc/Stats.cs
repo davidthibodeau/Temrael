@@ -23,25 +23,49 @@ namespace Server.Misc
         private DateTime LastWeek;
         private OrderedDictionary<DateTime, int> DataWeekly;
 
-        public static void Initialize()
+        public static void Configure()
         {
             stats = new Stats();
-            // Load of stats
-            // Save stats EventSink
             EventSink.Login += new LoginEventHandler(OnLogin);
+            EventSink.WorldLoad += new WorldLoadEventHandler(Load);
+            EventSink.WorldSave += new WorldSaveEventHandler(Save);
+        }
 
+        public static void OnLogin(LoginEventArgs e)
+        {
+            stats.RecordPlayer(e.Mobile.Account);
+        }
+
+        public static void Load (WorldLoadEventArgs e)
+        {
+            string filePath = Path.Combine("Saves/Misc", "stats.xml");
+
+            XmlDocument doc;
+            XmlElement root;
+            if(File.Exists(filePath))
+            {
+                doc = new XMLDocument();
+                doc.Load(filePath);
+
+                root = doc["stats"];
+                if(root == null)
+                {
+                    Console.WriteLine("ERREUR: Impossible de lire la liste des stats");
+                }
+                DateTime read = Utility.GetXMLDateTime(Utility.GetText(node["lasthour"], ""), DateTime.Now);
+                LastHour = read < LastHour ? read 
+            }
+
+        }
+
+        public static void Save (WorldSaveEventArgs e)
+        {
             DateTime next = LastRoundHour().AddHours(1);
             new HourlyTimer(next - DateTime.Now).Start();
             next = LastRoundDay().AddDays(1);
             new DailyTimer(next - DateTime.Now).Start();
             next = today.AddDays(7 - (int)DateTime.Now.DayOfWeek); //maybe with LastRoundWeek()?
             new DailyTimer(next - DateTime.Now).Start();
-            
-        }
-
-        public static void OnLogin(LoginEventArgs e)
-        {
-            stats.RecordPlayer(e.Mobile.Account);
         }
 
         public Stats()
