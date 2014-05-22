@@ -66,7 +66,7 @@ namespace Server.Items
         {
             TimeSpan timeSpan = DateTime.Now - WorldStart;
 
-            int totalMinutes = (int)(timeSpan.TotalSeconds * SecondsPerUOMinute);
+            int totalMinutes = (int)(timeSpan.TotalSeconds / SecondsPerUOMinute);
 
             hours = (totalMinutes / 60) % 24;
             minutes = totalMinutes % 60;
