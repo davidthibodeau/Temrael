@@ -4,6 +4,8 @@ using System.Text;
 using Server.DataStructures;
 using Server.Network;
 using Server.Accounting;
+using System.IO;
+using System.Xml;
 
 namespace Server.Misc
 {
@@ -36,7 +38,7 @@ namespace Server.Misc
             stats.RecordPlayer(e.Mobile.Account);
         }
 
-        public static void Load (WorldLoadEventArgs e)
+        public static void Load()
         {
             string filePath = Path.Combine("Saves/Misc", "stats.xml");
 
@@ -44,7 +46,7 @@ namespace Server.Misc
             XmlElement root;
             if(File.Exists(filePath))
             {
-                doc = new XMLDocument();
+                doc = new XmlDocument();
                 doc.Load(filePath);
 
                 root = doc["stats"];
@@ -52,20 +54,86 @@ namespace Server.Misc
                 {
                     Console.WriteLine("ERREUR: Impossible de lire la liste des stats");
                 }
-                DateTime read = Utility.GetXMLDateTime(Utility.GetText(node["lasthour"], ""), DateTime.Now);
-                LastHour = read < LastHour ? read 
+                XmlElement hourlies = root["hourlies"];
+                foreach (XmlElement hourly in hourlies.ChildNodes)
+                    stats.ThisHour.Add(Accounts.GetAccount(hourly.InnerText), true);
+                XmlElement dailies = root["dailies"];
+                foreach (XmlElement daily in dailies.ChildNodes)
+                    stats.ThisDay.Add(Accounts.GetAccount(daily.InnerText), true);
+                XmlElement weeklies = root["weeklies"];
+                foreach (XmlElement weekly in weeklies.ChildNodes)
+                    stats.ThisWeek.Add(Accounts.GetAccount(weekly.InnerText), true);
+
+                DateTime read = Utility.GetXMLDateTime(Utility.GetText(root["lasthour"], ""), DateTime.Now);
+                if (read < stats.LastHour)
+                    stats.RecordHour();
+                read = Utility.GetXMLDateTime(Utility.GetText(root["lastday"], ""), DateTime.Now);
+                if (read < stats.LastDay)
+                    stats.RecordDay();
+                read = Utility.GetXMLDateTime(Utility.GetText(root["lastweek"], ""), DateTime.Now);
+                if (read < stats.LastWeek)
+                    stats.RecordWeek();
             }
 
         }
 
         public static void Save (WorldSaveEventArgs e)
         {
-            DateTime next = LastRoundHour().AddHours(1);
-            new HourlyTimer(next - DateTime.Now).Start();
-            next = LastRoundDay().AddDays(1);
-            new DailyTimer(next - DateTime.Now).Start();
-            next = today.AddDays(7 - (int)DateTime.Now.DayOfWeek); //maybe with LastRoundWeek()?
-            new DailyTimer(next - DateTime.Now).Start();
+            string path = Directories.AppendPath(Directories.saves, "Misc");
+            string filePath = Path.Combine(path, "stats.xml");
+            using (StreamWriter op = new StreamWriter(filePath))
+            {
+                XmlTextWriter xml = new XmlTextWriter(op);
+
+                xml.Formatting = Formatting.Indented;
+                xml.IndentChar = '\t';
+                xml.Indentation = 1;
+
+                xml.WriteStartDocument(true);
+                xml.WriteStartElement("stats");
+
+                xml.WriteStartElement("hourlies");
+                foreach (IAccount acc in stats.ThisHour.Keys)
+                {
+                    xml.WriteStartElement("hourly");
+                    xml.WriteString(acc.Username);
+                    xml.WriteEndElement();
+                }
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("dailies");
+                foreach (IAccount acc in stats.ThisDay.Keys)
+                {
+                    xml.WriteStartElement("daily");
+                    xml.WriteString(acc.Username);
+                    xml.WriteEndElement();
+                }
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("weeklies");
+                foreach (IAccount acc in stats.ThisWeek.Keys)
+                {
+                    xml.WriteStartElement("weekly");
+                    xml.WriteString(acc.Username);
+                    xml.WriteEndElement();
+                }
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("lasthour");
+                xml.WriteString(stats.LastHour.ToString());
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("lastday");
+                xml.WriteString(stats.LastDay.ToString());
+                xml.WriteEndElement();
+
+                xml.WriteStartElement("lastweek");
+                xml.WriteString(stats.LastWeek.ToString());
+                xml.WriteEndElement();
+
+                xml.WriteEndElement();
+                xml.Close();
+            }
         }
 
         public Stats()
@@ -81,24 +149,27 @@ namespace Server.Misc
             LastHour = LastRoundHour();
             LastDay = LastRoundDay();
             LastWeek = LastRoundWeek();
+
+            new HourlyTimer(LastHour.AddHours(1) - DateTime.Now).Start();
+            new DailyTimer(LastDay.AddDays(1) - DateTime.Now).Start();
+            new DailyTimer(LastWeek.AddDays(7) - DateTime.Now).Start();
         }
 
         public void RecordPlayer (IAccount a)
         {
             if(a.AccessLevel > AccessLevel.Player)
                 return;
-            if(!ThisHour.ContainsKey(a)))
+            if(!ThisHour.ContainsKey(a))
                 ThisHour.Add(a, true);
-            if(!ThisDay.ContainsKey(a)))
+            if(!ThisDay.ContainsKey(a))
                 ThisDay.Add(a, true);
-            if(!ThisWeek.ContainsKey(a)))
+            if(!ThisWeek.ContainsKey(a))
                 ThisWeek.Add(a, true);
-        
         }
 
         public void RecordOnline()
         {
-            foreach(Netstate ns in Nestate.Instances)
+            foreach(NetState ns in NetState.Instances)
             {
                 RecordPlayer(ns.Account);
             }
@@ -119,8 +190,7 @@ namespace Server.Misc
         public static DateTime LastRoundWeek()
         {
             DateTime now = DateTime.Now;
-            return new DateTime(now.Year, now.Month, now.Day); //.AddDays(7 - now.DayOfWeek);
-            //Find right day of the week for previous.
+            return new DateTime(now.Year, now.Month, now.Day).Subtract(TimeSpan.FromDays((int)now.DayOfWeek));
         }
 
         public void RecordHour()
@@ -160,9 +230,10 @@ namespace Server.Misc
 
         public void WriteRaw(string file, string entry)
         {
+            string path = Path.Combine(Directories.stats, file);
             try
             {
-                using(StreamWriter sw = new StreamWriter(file, true))
+                using(StreamWriter sw = new StreamWriter(path, true))
                 {
                     sw.WriteLine(entry);
                 }

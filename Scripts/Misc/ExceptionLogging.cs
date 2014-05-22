@@ -52,8 +52,7 @@ namespace Server.Misc
 
         private static void WriteLine(Exception e, StackTrace catcher, string infos)
         {
-            string path = Directories.AppendPath(Directories.errors, "Exceptions");
-            string filepath = Path.Combine(path, String.Format("{0}.log", Directories.Today));
+            string filepath = Path.Combine(Directories.exceptions, String.Format("{0}.log", Directories.Today));
             StackTrace testcatcher = new System.Diagnostics.StackTrace(e, true);
             StackFrame testframe = testcatcher.GetFrame(testcatcher.FrameCount - 1);
 
