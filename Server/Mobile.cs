@@ -10676,9 +10676,9 @@ namespace Server
 						if( p == null )
 						{
 							if( ascii )
-								p = new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text );
+								p = new AsciiMessage( m_Serial, Body, type, hue, 3, GetNameUseBy(state.Mobile), text );
 							else
-								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text );
+								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(state.Mobile), text );
 
 							p.Acquire();
 						}

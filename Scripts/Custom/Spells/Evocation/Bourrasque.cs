@@ -1,8 +1,8 @@
 ﻿using System;
 using Server.Targeting;
-using Server.Network;
 using Server;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Spells.First
 {
@@ -55,9 +55,10 @@ namespace Server.Spells.First
 
                         //value = SpellHelper.AdjustValue(m_Spell.Caster, value, NAptitude.Spiritisme);
 
-                        Server.Misc.Weather.RemoveWeather(from.Location);
+                        Weather.RemoveWeather(from.Location);
 
-                        Server.Misc.Weather.AddWeather(weather.Temperature, weather.Cloud, (QuantityOfWind)value, false, new Rectangle2D(new Point2D(0, 0), new Point2D(6145, 4097)));
+                        Weather.AddWeather(weather.Temperature, weather.Cloud, (QuantityOfWind)value, false, 
+                            new Rectangle2D(new Point2D(0, 0), new Point2D(6145, 4097)));
 
                         from.SendMessage(String.Concat("Le vent est désormais ", ((QuantityOfWind)value).ToString()));
                     }

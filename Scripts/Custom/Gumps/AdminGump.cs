@@ -11,6 +11,7 @@ using Server.Network;
 using Server.Accounting;
 using Server.Commands;
 using Server.Mobiles;
+using Server.Misc;
 
 namespace Server.Gumps
 {
@@ -253,7 +254,7 @@ namespace Server.Gumps
 					AddLabel( 150, 270, LabelHue, Core.ScriptItems.ToString() );
 
 					AddLabel( 20, 290, LabelHue, "Uptime:" );
-					AddLabel( 150, 290, LabelHue, FormatTimeSpan( DateTime.Now - Clock.ServerStart ) );
+					AddLabel( 150, 290, LabelHue, FormatTimeSpan( DateTime.Now - Time.ServerStart ) );
 
 					AddLabel( 20, 310, LabelHue, "Memory:" );
 					AddLabel( 150, 310, LabelHue, FormatByteAmount( GC.GetTotalMemory( false ) ) );

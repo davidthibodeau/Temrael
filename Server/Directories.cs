@@ -11,7 +11,9 @@ namespace Server
         public static readonly string logs = Path.Combine(logging, "Logs");
         public static readonly string errors = Path.Combine(logging, "Errors");
         public static readonly string docs = Path.Combine(logging, "Docs");
+        public static readonly string stats = Path.Combine(logging, "Stats");
         public static readonly string exceptions = Path.Combine(errors, "Exceptions");
+
 
         public static string Today { get { return FormatDay(DateTime.Now); } }
 
@@ -24,6 +26,8 @@ namespace Server
             EnsureDirectory(errors);
             EnsureDirectory(docs);
             EnsureDirectory(bsaves);
+            EnsureDirectory(exceptions);
+            EnsureDirectory(stats);
         }
 
         public static void EnsureDirectory( string path )

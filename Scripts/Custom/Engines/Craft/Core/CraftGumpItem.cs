@@ -363,8 +363,8 @@ namespace Server.Engines.Craft
             }
             catch (OverflowException e)
             {
-                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0}. L'item était {1}",
-                    chance * 100, m_CraftItem.ItemType.ToString());
+                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0} * 100. L'item était {1}",
+                    chance, m_CraftItem.ItemType.ToString());
    
             }
 
@@ -385,8 +385,8 @@ namespace Server.Engines.Craft
                 }
                 catch (OverflowException e)
                 {
-                    Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0}. L'item était {1}", 
-                        excepChance * 100, m_CraftItem.ItemType.ToString());
+                    Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0} * 100. The original chance value was : {1}. L'item était {2}", 
+                        excepChance, chance, m_CraftItem.ItemType.ToString());
                 }
 			}
 		}

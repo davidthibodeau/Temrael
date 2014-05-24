@@ -843,7 +843,7 @@ namespace Server.Mobiles
             int x = m.X;
             int y = m.Y;
 
-            Clock.GetTime(out hours, out minutes);
+            Time.GetTime(out hours, out minutes);
 
             /* RunUO times: (from LightCycle.cs)
              * 
@@ -1358,7 +1358,7 @@ namespace Server.Mobiles
             else
             {
                 m_weapon = new ButcherKnife();
-                m_weapon.Map = this.Map;
+                AddItem(m_weapon);
             }
 
             if (i2 != null && i2 is BaseWeapon)

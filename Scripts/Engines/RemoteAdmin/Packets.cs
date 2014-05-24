@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using Server;
-using Server.Items;
+using Server.Misc;
 using Server.Network;
 using Server.Accounting;
 using Server.Commands;
@@ -83,7 +83,7 @@ namespace Server.RemoteAdmin
 			m_Stream.Write( (int) World.Items.Count );
 			m_Stream.Write( (int) Core.ScriptItems );
 
-			m_Stream.Write( (uint)(DateTime.Now - Clock.ServerStart).TotalSeconds );
+			m_Stream.Write( (uint)(DateTime.Now - Time.ServerStart).TotalSeconds );
 			m_Stream.Write( (uint) GC.GetTotalMemory( false ) );
 			m_Stream.WriteAsciiNull( netVer );
 			m_Stream.WriteAsciiNull( os );

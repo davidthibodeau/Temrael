@@ -7,6 +7,43 @@ using System.Collections.Generic;
 
 namespace Server.Misc
 {
+    public enum Temperature
+    {
+        Glacial,
+        Hivernal,
+        Froid,
+        Frais,
+        Confortable,
+        Chaud,
+        Torride,
+        Brulant
+    }
+
+    public enum DensityOfCloud
+    {
+        Ensolleile,
+        PassageNuageux,
+        CielVariable,
+        NuageuxAvecEclaircies,
+        Nuageux,
+        FaiblePluie,
+        Pluie,
+        FortePluie,
+        Caverne
+    }
+
+    public enum QuantityOfWind
+    {
+        Aucun,
+        Faible,
+        Modeste,
+        Rafale,
+        Bourrasque,
+        Tempete,
+        Tornade,
+        Typhon
+    }
+
     public class Weather
     {
         public static TimeSpan Interval = TimeSpan.FromHours(2.0); //4.0 hours
@@ -114,7 +151,7 @@ namespace Server.Misc
 
         public virtual Temperature AdjustTemperatureBySeason(Temperature t)
         {
-            TimeOfDay timeOfDay = LightCycle.GetTimeofDay();
+            TimeOfDay timeOfDay = Time.GetTimeofDay();
             Season season = (Season)Map.Felucca.Season;
             Temperature[] entry = TemperatureEntry.GetEntry(season, timeOfDay);
 
@@ -265,14 +302,14 @@ namespace Server.Misc
 
             int year, month, day;
 
-            Calendrier.GetDate(out year, out month, out day);
+            Time.GetDate(out year, out month, out day);
 
-            Season season = Calendrier.m_Entries[month - 1].Season;
+            Season season = Time.Months[month - 1].Season;
 
             if (Map.Felucca.Season != (int)season)
             {
                 Map.Felucca.Season = (int)season;
-                Calendrier.OnSeasonChange(season);
+                Time.OnSeasonChange(season);
                 seasonHasChanged = true;
             }
 

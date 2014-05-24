@@ -1431,10 +1431,10 @@ namespace Server.Mobiles
 		{
 			public static TimeSpan GetInterval()
 			{
-				if ( BaseHouse.NewVendorSystem )
-					return TimeSpan.FromDays( 1.0 );
-				else
-					return TimeSpan.FromMinutes( Clock.MinutesPerUODay );
+                if (BaseHouse.NewVendorSystem)
+                    return TimeSpan.FromDays(1.0);
+                else
+                    return TimeSpan.FromMinutes(0.05 * 60); // Originellement MinutesPerUODay qui fut retire.
 			}
 
 			private PlayerVendor m_Vendor;

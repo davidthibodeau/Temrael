@@ -826,7 +826,7 @@ namespace Server.Items
                 return false;
             }
 
-            base.ScissorHelper(from, new DragoniqueHides(), 1);
+            base.ScissorHelper(from, new DragoniqueLeather(), 1);
 
             return true;
         }
