@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class ElfiquePlaqueGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueElfique_Gorget; } }
-        public override int BaseContondantResistance { get { return PlaqueElfique_Gorget_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueElfique_Gorget_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueElfique_Gorget_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueElfique_Gorget_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueElfique_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueElfique_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueElfique_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueElfique_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueElfique_Magique; } }
 
         public override int InitMinHits { get { return PlaqueElfique_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueElfique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueElfique_Gorget_Force; } }
+        public override int AosStrReq { get { return PlaqueElfique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class ElfiquePlaqueLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueElfique_Jambieres; } }
-        public override int BaseContondantResistance { get { return PlaqueElfique_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueElfique_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueElfique_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueElfique_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueElfique_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueElfique_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueElfique_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueElfique_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueElfique_Magique; } }
 
         public override int InitMinHits { get { return PlaqueElfique_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueElfique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueElfique_Jambieres_Force; } }
+        public override int AosStrReq { get { return PlaqueElfique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -103,18 +103,18 @@ namespace Server.Items
     }
     public class ElfiquePlaqueTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueElfique_Cuirasse; } }
-        public override int BaseContondantResistance { get { return PlaqueElfique_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueElfique_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueElfique_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueElfique_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueElfique_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueElfique_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueElfique_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueElfique_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueElfique_Magique; } }
 
         public override int InitMinHits { get { return PlaqueElfique_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueElfique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueElfique_Cuirasse_Force; } }
+        public override int AosStrReq { get { return PlaqueElfique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

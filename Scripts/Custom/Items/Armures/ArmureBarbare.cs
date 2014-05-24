@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class TunicBarbare : BaseArmor
     {
-        public override int NiveauAttirail { get { return 3; } }
+        public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmureBarbare_Cuirasse; } }
-        public override int BaseContondantResistance { get { return ArmureBarbare_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmureBarbare_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmureBarbare_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return ArmureBarbare_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureBarbare_Physique; } }
+        public override int BaseContondantResistance { get { return ArmureBarbare_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmureBarbare_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmureBarbare_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmureBarbare_Magique; } }
 
         public override int InitMinHits { get { return ArmureBarbare_MinDurabilite; } }
         public override int InitMaxHits { get { return ArmureBarbare_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return ArmureBarbare_Cuirasse_Force; } }
+        public override int AosStrReq { get { return ArmureBarbare_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class LeggingsBarbare : BaseArmor
     {
-        public override int NiveauAttirail { get { return 3; } }
+        public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmureBarbare_Jambieres; } }
-        public override int BaseContondantResistance { get { return ArmureBarbare_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmureBarbare_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmureBarbare_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return ArmureBarbare_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureBarbare_Physique; } }
+        public override int BaseContondantResistance { get { return ArmureBarbare_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmureBarbare_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmureBarbare_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmureBarbare_Magique; } }
 
         public override int InitMinHits { get { return ArmureBarbare_MinDurabilite; } }
         public override int InitMaxHits { get { return ArmureBarbare_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return ArmureBarbare_Jambieres_Force; } }
+        public override int AosStrReq { get { return ArmureBarbare_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -81,7 +81,7 @@ namespace Server.Items
             : base(0x287D)
         {
             Weight = 2.0;
-            Name = "Jambieres Barbare";
+            Name = "Jambieres Barbares";
         }
 
         public LeggingsBarbare(Serial serial)

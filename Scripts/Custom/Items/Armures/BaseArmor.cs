@@ -36,815 +36,344 @@ namespace Server.Items
 
         //BOUCLIERS
 
-        public const int Resistances_None0 = 0;
-        public const int Resistances_Inferior0 = 12;
-        public const int Resistances_Low0 = 25;
-        public const int Resistances_Average0 = 40;
-        public const int Resistances_Med0 = 50;
-        public const int Resistances_High0 = 70;
-        public const int Resistances_Advanced0 = 85;
-        public const int Resistances_Max0 = 100;
-
-        public const int Bouclier_Def0 = 2;
-        public const int Bouclier_Def1 = 5;
-        public const int Bouclier_Def2 = 8;
-        public const int Bouclier_Def3 = 12;
-        public const int Bouclier_Def4 = 15;
-        public const int Bouclier_Def5 = 20;
-        public const int Bouclier_Def6 = 25;
-        public const int Bouclier_Force0 = 0;
+        public const int Bouclier_Def1 = 2;
+        public const int Bouclier_Def2 = 4;
+        public const int Bouclier_Def3 = 6;
+        public const int Bouclier_Def4 = 8;
+        public const int Bouclier_Def5 = 10;
+        public const int Bouclier_Def6 = 12;
         public const int Bouclier_Force1 = 10;
-        public const int Bouclier_Force2 = 15;
-        public const int Bouclier_Force3 = 20;
-        public const int Bouclier_Force4 = 30;
-        public const int Bouclier_Force5 = 40;
+        public const int Bouclier_Force2 = 20;
+        public const int Bouclier_Force3 = 30;
+        public const int Bouclier_Force4 = 40;
+        public const int Bouclier_Force5 = 50;
         public const int Bouclier_Force6 = 60;
-        public const int Bouclier_MinDurabilite0 = 80;
-        public const int Bouclier_MaxDurabilite0 = 100;
-        public const int Bouclier_MinDurabilite1 = 85;
-        public const int Bouclier_MaxDurabilite1 = 105;
-        public const int Bouclier_MinDurabilite2 = 110;
-        public const int Bouclier_MaxDurabilite2 = 125;
-        public const int Bouclier_MinDurabilite3 = 130;
-        public const int Bouclier_MaxDurabilite3 = 150;
-        public const int Bouclier_MinDurabilite4 = 150;
-        public const int Bouclier_MaxDurabilite4 = 175;
-        public const int Bouclier_MinDurabilite5 = 180;
-        public const int Bouclier_MaxDurabilite5 = 200;
+        public const int Bouclier_MinDurabilite1 = 100;
+        public const int Bouclier_MaxDurabilite1 = 125;
+        public const int Bouclier_MinDurabilite2 = 125;
+        public const int Bouclier_MaxDurabilite2 = 150;
+        public const int Bouclier_MinDurabilite3 = 150;
+        public const int Bouclier_MaxDurabilite3 = 175;
+        public const int Bouclier_MinDurabilite4 = 175;
+        public const int Bouclier_MaxDurabilite4 = 200;
+        public const int Bouclier_MinDurabilite5 = 200;
+        public const int Bouclier_MaxDurabilite5 = 225;
         public const int Bouclier_MinDurabilite6 = 225;
         public const int Bouclier_MaxDurabilite6 = 250;
 
-        //FEUILLES
-
-        public const int Feuille_Casque = 2;
-        public const int Feuille_Casque_Contondant = 2;
-        public const int Feuille_Casque_Tranchant = 2;
-        public const int Feuille_Casque_Perforant = 2;
-        public const int Feuille_Casque_Magique = 2;
-        public const int Feuille_Casque_Force = 0;
-
-        public const int Feuille_Gorget = 2;
-        public const int Feuille_Gorget_Contondant = 2;
-        public const int Feuille_Gorget_Tranchant = 2;
-        public const int Feuille_Gorget_Perforant = 2;
-        public const int Feuille_Gorget_Magique = 2;
-        public const int Feuille_Gorget_Force = 0;
-
-        public const int Feuille_Brassards = 2;
-        public const int Feuille_Brassards_Contondant = 2;
-        public const int Feuille_Brassards_Tranchant = 2;
-        public const int Feuille_Brassards_Perforant = 2;
-        public const int Feuille_Brassards_Magique = 2;
-        public const int Feuille_Brassards_Force = 12;
-
-        public const int Feuille_Cuirasse = 2;
-        public const int Feuille_Cuirasse_Contondant = 2;
-        public const int Feuille_Cuirasse_Tranchant = 2;
-        public const int Feuille_Cuirasse_Perforant = 2;
-        public const int Feuille_Cuirasse_Magique = 2;
-        public const int Feuille_Cuirasse_Force = 15;
-
-        public const int Feuille_Jambieres = 2;
-        public const int Feuille_Jambieres_Contondant = 2;
-        public const int Feuille_Jambieres_Tranchant = 2;
-        public const int Feuille_Jambieres_Perforant = 2;
-        public const int Feuille_Jambieres_Magique = 2;
-        public const int Feuille_Jambieres_Force = 10;
-
-        public const int Feuille_MinDurabilite = 25;
-        public const int Feuille_MaxDurabilite = 50;
-
         //LEATHER
 
-        public const int Leather_Casque = 2;
-        public const int Leather_Casque_Contondant = 2;
-        public const int Leather_Casque_Tranchant = 2;
-        public const int Leather_Casque_Perforant = 2;
-        public const int Leather_Casque_Magique = 2;
-        public const int Leather_Casque_Force = 0;
-
-        public const int Leather_Gorget = 2;
-        public const int Leather_Gorget_Contondant = 2;
-        public const int Leather_Gorget_Tranchant = 2;
-        public const int Leather_Gorget_Perforant = 2;
-        public const int Leather_Gorget_Magique = 2;
-        public const int Leather_Gorget_Force = 0;
-
-        public const int Leather_Gants = 2;
-        public const int Leather_Gants_Contondant = 2;
-        public const int Leather_Gants_Tranchant = 2;
-        public const int Leather_Gants_Perforant = 2;
-        public const int Leather_Gants_Magique = 2;
-        public const int Leather_Gants_Force = 0;
-
-        public const int Leather_Brassards = 2;
-        public const int Leather_Brassards_Contondant = 2;
-        public const int Leather_Brassards_Tranchant = 2;
-        public const int Leather_Brassards_Perforant = 2;
-        public const int Leather_Brassards_Magique = 2;
-        public const int Leather_Brassards_Force = 12;
-
-        public const int Leather_Cuirasse = 2;
-        public const int Leather_Cuirasse_Contondant = 2;
-        public const int Leather_Cuirasse_Tranchant = 2;
-        public const int Leather_Cuirasse_Perforant = 2;
-        public const int Leather_Cuirasse_Magique = 2;
-        public const int Leather_Cuirasse_Force = 15;
-
-        public const int Leather_Jambieres = 2;
-        public const int Leather_Jambieres_Contondant = 2;
-        public const int Leather_Jambieres_Tranchant = 2;
-        public const int Leather_Jambieres_Perforant = 2;
-        public const int Leather_Jambieres_Magique = 2;
-        public const int Leather_Jambieres_Force = 10;
+        public const int Leather_Physique = 2;
+        public const int Leather_Contondant = 2;
+        public const int Leather_Tranchant = 2;
+        public const int Leather_Perforant = 2;
+        public const int Leather_Magique = 2;
+        public const int Leather_Force = 10;
 
         public const int Leather_MinDurabilite = 100;
         public const int Leather_MaxDurabilite = 125;
 
+        //FEUILLES
+
+        public const int Feuille_Physique = 5;
+        public const int Feuille_Contondant = 5;
+        public const int Feuille_Tranchant = 5;
+        public const int Feuille_Perforant = 5;
+        public const int Feuille_Magique = 5;
+        public const int Feuille_Force = 10;
+
+        public const int Feuille_MinDurabilite = 100;
+        public const int Feuille_MaxDurabilite = 125;
+
         //STUDDED
 
-        public const int Studded_Gorget = 4;
-        public const int Studded_Gorget_Contondant = 2;
-        public const int Studded_Gorget_Tranchant = 2;
-        public const int Studded_Gorget_Perforant = 2;
-        public const int Studded_Gorget_Magique = 2;
-        public const int Studded_Gorget_Force = 0;
+        public const int Studded_Physique = 5;
+        public const int Studded_Contondant = 5;
+        public const int Studded_Tranchant = 5;
+        public const int Studded_Perforant = 5;
+        public const int Studded_Magique = 5;
+        public const int Studded_Force = 10;
 
-        public const int Studded_Gants = 4;
-        public const int Studded_Gants_Contondant = 2;
-        public const int Studded_Gants_Tranchant = 2;
-        public const int Studded_Gants_Perforant = 2;
-        public const int Studded_Gants_Magique = 2;
-        public const int Studded_Gants_Force = 0;
-
-        public const int Studded_Brassards = 4;
-        public const int Studded_Brassards_Contondant = 2;
-        public const int Studded_Brassards_Tranchant = 2;
-        public const int Studded_Brassards_Perforant = 2;
-        public const int Studded_Brassards_Magique = 2;
-        public const int Studded_Brassards_Force = 12;
-
-        public const int Studded_Cuirasse = 4;
-        public const int Studded_Cuirasse_Contondant = 2;
-        public const int Studded_Cuirasse_Tranchant = 2;
-        public const int Studded_Cuirasse_Perforant = 2;
-        public const int Studded_Cuirasse_Magique = 2;
-        public const int Studded_Cuirasse_Force = 15;
-
-        public const int Studded_Jambieres = 4;
-        public const int Studded_Jambieres_Contondant = 2;
-        public const int Studded_Jambieres_Tranchant = 2;
-        public const int Studded_Jambieres_Perforant = 2;
-        public const int Studded_Jambieres_Magique = 2;
-        public const int Studded_Jambieres_Force = 10;
-
-        public const int Studded_MinDurabilite = 125;
-        public const int Studded_MaxDurabilite = 150;
+        public const int Studded_MinDurabilite = 100;
+        public const int Studded_MaxDurabilite = 125;
 
         //OS
 
-        public const int Os_Casque = 4;
-        public const int Os_Casque_Contondant = 2;
-        public const int Os_Casque_Tranchant = 2;
-        public const int Os_Casque_Perforant = 2;
-        public const int Os_Casque_Magique = 2;
-        public const int Os_Casque_Force = 0;
+        public const int Os_Physique = 2;
+        public const int Os_Contondant = 2;
+        public const int Os_Tranchant = 2;
+        public const int Os_Perforant = 2;
+        public const int Os_Magique = 2;
+        public const int Os_Force = 10;
 
-        public const int Os_Gants = 4;
-        public const int Os_Gants_Contondant = 2;
-        public const int Os_Gants_Tranchant = 2;
-        public const int Os_Gants_Perforant = 2;
-        public const int Os_Gants_Magique = 2;
-        public const int Os_Gants_Force = 0;
-
-        public const int Os_Brassards = 4;
-        public const int Os_Brassards_Contondant = 2;
-        public const int Os_Brassards_Tranchant = 2;
-        public const int Os_Brassards_Perforant = 2;
-        public const int Os_Brassards_Magique = 2;
-        public const int Os_Brassards_Force = 12;
-
-        public const int Os_Cuirasse = 4;
-        public const int Os_Cuirasse_Contondant = 2;
-        public const int Os_Cuirasse_Tranchant = 2;
-        public const int Os_Cuirasse_Perforant = 2;
-        public const int Os_Cuirasse_Magique = 2;
-        public const int Os_Cuirasse_Force = 15;
-
-        public const int Os_Jambieres = 4;
-        public const int Os_Jambieres_Contondant = 2;
-        public const int Os_Jambieres_Tranchant = 2;
-        public const int Os_Jambieres_Perforant = 2;
-        public const int Os_Jambieres_Magique = 2;
-        public const int Os_Jambieres_Force = 10;
-
-        public const int Os_MinDurabilite = 125;
-        public const int Os_MaxDurabilite = 150;
+        public const int Os_MinDurabilite = 100;
+        public const int Os_MaxDurabilite = 125;
 
         //RINGMAIL
 
-        public const int Ring_Casque = 4;
-        public const int Ring_Casque_Contondant = 4;
-        public const int Ring_Casque_Tranchant = 4;
-        public const int Ring_Casque_Perforant = 4;
-        public const int Ring_Casque_Magique = 4;
-        public const int Ring_Casque_Force = 2;
-        public const int Ring_Casque_Dex = -1;
+        public const int Ring_Niveau = 1;
 
-        public const int Ring_Gants = 2;
-        public const int Ring_Gants_Contondant = 4;
-        public const int Ring_Gants_Tranchant = 4;
-        public const int Ring_Gants_Perforant = 4;
-        public const int Ring_Gants_Magique = 4;
-        public const int Ring_Gants_Force = 0;
-        public const int Ring_Gants_Dex = -1;
+        public const int Ring_Physique = 2;
+        public const int Ring_Contondant = 2;
+        public const int Ring_Tranchant = 2;
+        public const int Ring_Perforant = 2;
+        public const int Ring_Magique = 2;
+        public const int Ring_Force = 10;
+        public const int Ring_Dex = -1;
 
-        public const int Ring_Brassards = 4;
-        public const int Ring_Brassards_Contondant = 4;
-        public const int Ring_Brassards_Tranchant = 4;
-        public const int Ring_Brassards_Perforant = 4;
-        public const int Ring_Brassards_Magique = 4;
-        public const int Ring_Brassards_Force = 12;
-        public const int Ring_Brassards_Dex = -3;
-
-        public const int Ring_Cuirasse = 4;
-        public const int Ring_Cuirasse_Contondant = 4;
-        public const int Ring_Cuirasse_Tranchant = 4;
-        public const int Ring_Cuirasse_Perforant = 4;
-        public const int Ring_Cuirasse_Magique = 4;
-        public const int Ring_Cuirasse_Force = 15;
-        public const int Ring_Cuirasse_Dex = -5;
-
-        public const int Ring_Jambieres = 4;
-        public const int Ring_Jambieres_Contondant = 4;
-        public const int Ring_Jambieres_Tranchant = 4;
-        public const int Ring_Jambieres_Perforant = 4;
-        public const int Ring_Jambieres_Magique = 4;
-        public const int Ring_Jambieres_Force = 10;
-        public const int Ring_Jamvieres_Dex = -4;
-
-        public const int Ring_MinDurabilite = 125;
-        public const int Ring_MaxDurabilite = 150;
+        public const int Ring_MinDurabilite = 100;
+        public const int Ring_MaxDurabilite = 125;
 
         //BOURGEON
 
-        public const int Bourgeon_Brassards = 4;
-        public const int Bourgeon_Brassards_Contondant = 4;
-        public const int Bourgeon_Brassards_Tranchant = 4;
-        public const int Bourgeon_Brassards_Perforant = 4;
-        public const int Bourgeon_Brassards_Magique = 4;
-        public const int Bourgeon_Brassards_Force = 12;
+        public const int Bourgeon_Niveau = 1;
 
-        public const int Bourgeon_Cuirasse = 4;
-        public const int Bourgeon_Cuirasse_Contondant = 4;
-        public const int Bourgeon_Cuirasse_Tranchant = 4;
-        public const int Bourgeon_Cuirasse_Perforant = 4;
-        public const int Bourgeon_Cuirasse_Magique = 4;
-        public const int Bourgeon_Cuirasse_Force = 15;
+        public const int Bourgeon_Physique = 2;
+        public const int Bourgeon_Contondant = 2;
+        public const int Bourgeon_Tranchant = 2;
+        public const int Bourgeon_Perforant = 2;
+        public const int Bourgeon_Magique = 2;
+        public const int Bourgeon_Force = 10;
 
-        public const int Bourgeon_Jambieres = 4;
-        public const int Bourgeon_Jambieres_Contondant = 4;
-        public const int Bourgeon_Jambieres_Tranchant = 4;
-        public const int Bourgeon_Jambieres_Perforant = 4;
-        public const int Bourgeon_Jambieres_Magique = 4;
-        public const int Bourgeon_Jambieres_Force = 10;
-
-        public const int Bourgeon_MinDurabilite = 125;
-        public const int Bourgeon_MaxDurabilite = 150;
-
-        //Armure Barbare
-
-        public const int ArmureBarbare_Cuirasse = 6;
-        public const int ArmureBarbare_Cuirasse_Contondant = 6;
-        public const int ArmureBarbare_Cuirasse_Tranchant = 6;
-        public const int ArmureBarbare_Cuirasse_Perforant = 6;
-        public const int ArmureBarbare_Cuirasse_Magique = 6;
-        public const int ArmureBarbare_Cuirasse_Force = 15;
-
-        public const int ArmureBarbare_Jambieres = 6;
-        public const int ArmureBarbare_Jambieres_Contondant = 6;
-        public const int ArmureBarbare_Jambieres_Tranchant = 6;
-        public const int ArmureBarbare_Jambieres_Perforant = 6;
-        public const int ArmureBarbare_Jambieres_Magique = 6;
-        public const int ArmureBarbare_Jambieres_Force = 10;
-
-        public const int ArmureBarbare_MinDurabilite = 125;
-        public const int ArmureBarbare_MaxDurabilite = 150;
+        public const int Bourgeon_MinDurabilite = 100;
+        public const int Bourgeon_MaxDurabilite = 125;
 
         //Maillons
 
-        public const int Maillons_Brassards = 6;
-        public const int Maillons_Brassards_Contondant = 6;
-        public const int Maillons_Brassards_Tranchant = 6;
-        public const int Maillons_Brassards_Perforant = 6;
-        public const int Maillons_Brassards_Magique = 6;
-        public const int Maillons_Brassards_Force = 13;
+        public const int Maillons_Niveau = 2;
 
-        public const int Maillons_Cuirasse = 6;
-        public const int Maillons_Cuirasse_Contondant = 6;
-        public const int Maillons_Cuirasse_Tranchant = 6;
-        public const int Maillons_Cuirasse_Perforant = 6;
-        public const int Maillons_Cuirasse_Magique = 6;
-        public const int Maillons_Cuirasse_Force = 20;
+        public const int Maillons_Physique = 4;
+        public const int Maillons_Contondant = 4;
+        public const int Maillons_Tranchant = 4;
+        public const int Maillons_Perforant = 4;
+        public const int Maillons_Magique = 4;
+        public const int Maillons_Force = 20;
+        public const int Maillons_Dex = -1;
 
-        public const int Maillons_Jambieres = 6;
-        public const int Maillons_Jambieres_Contondant = 6;
-        public const int Maillons_Jambieres_Tranchant = 6;
-        public const int Maillons_Jambieres_Perforant = 6;
-        public const int Maillons_Jambieres_Magique = 6;
-        public const int Maillons_Jambieres_Force = 15;
-
-        public const int Maillons_MinDurabilite = 150;
-        public const int Maillons_MaxDurabilite = 175;
+        public const int Maillons_MinDurabilite = 125;
+        public const int Maillons_MaxDurabilite = 150;
 
         //Maillures
 
-        public const int Maillures_Brassards = 6;
-        public const int Maillures_Brassards_Contondant = 6;
-        public const int Maillures_Brassards_Tranchant = 6;
-        public const int Maillures_Brassards_Perforant = 6;
-        public const int Maillures_Brassards_Magique = 6;
-        public const int Maillures_Brassards_Force = 13;
+        public const int Maillures_Niveau = 2;
 
-        public const int Maillures_Cuirasse = 6;
-        public const int Maillures_Cuirasse_Contondant = 6;
-        public const int Maillures_Cuirasse_Tranchant = 6;
-        public const int Maillures_Cuirasse_Perforant = 6;
-        public const int Maillures_Cuirasse_Magique = 6;
-        public const int Maillures_Cuirasse_Force = 20;
+        public const int Maillures_Physique = 4;
+        public const int Maillures_Contondant = 4;
+        public const int Maillures_Tranchant = 4;
+        public const int Maillures_Perforant = 4;
+        public const int Maillures_Magique = 4;
+        public const int Maillures_Force = 20;
 
-        public const int Maillures_Jambieres = 6;
-        public const int Maillures_Jambieres_Contondant = 6;
-        public const int Maillures_Jambieres_Tranchant = 6;
-        public const int Maillures_Jambieres_Perforant = 6;
-        public const int Maillures_Jambieres_Magique = 6;
-        public const int Maillures_Jambieres_Force = 15;
-
-        public const int Maillures_MinDurabilite = 150;
-        public const int Maillures_MaxDurabilite = 175;
+        public const int Maillures_MinDurabilite = 125;
+        public const int Maillures_MaxDurabilite = 150;
 
         //Chain
 
-        public const int Chain_Casque = 8;
-        public const int Chain_Casque_Contondant = 8;
-        public const int Chain_Casque_Tranchant = 8;
-        public const int Chain_Casque_Perforant = 8;
-        public const int Chain_Casque_Magique = 8;
-        public const int Chain_Casque_Force = 15;
+        public const int Chain_Niveau = 3;
 
-        public const int Chain_Cuirasse = 8;
-        public const int Chain_Cuirasse_Contondant = 8;
-        public const int Chain_Cuirasse_Tranchant = 8;
-        public const int Chain_Cuirasse_Perforant = 8;
-        public const int Chain_Cuirasse_Magique = 8;
-        public const int Chain_Cuirasse_Force = 30;
+        public const int Chain_Physique = 6;
+        public const int Chain_Contondant = 6;
+        public const int Chain_Tranchant = 6;
+        public const int Chain_Perforant = 6;
+        public const int Chain_Magique = 6;
+        public const int Chain_Force = 30;
 
-        public const int Chain_Jambieres = 8;
-        public const int Chain_Jambieres_Contondant = 8;
-        public const int Chain_Jambieres_Tranchant = 8;
-        public const int Chain_Jambieres_Perforant = 8;
-        public const int Chain_Jambieres_Magique = 8;
-        public const int Chain_Jambieres_Force = 20;
+        public const int Chain_MinDurabilite = 150;
+        public const int Chain_MaxDurabilite = 175;
 
-        public const int Chain_MinDurabilite = 200;
-        public const int Chain_MaxDurabilite = 225;
+        //Armure Barbare
+
+        public const int ArmureBarbare_Niveau = 3;
+
+        public const int ArmureBarbare_Physique = 6;
+        public const int ArmureBarbare_Contondant = 6;
+        public const int ArmureBarbare_Tranchant = 6;
+        public const int ArmureBarbare_Perforant = 6;
+        public const int ArmureBarbare_Magique = 6;
+        public const int ArmureBarbare_Force = 30;
+
+        public const int ArmureBarbare_MinDurabilite = 150;
+        public const int ArmureBarbare_MaxDurabilite = 175;
 
         //Chain Elfique
 
-        public const int ChainElfique_Cuirasse = 8;
-        public const int ChainElfique_Cuirasse_Contondant = 8;
-        public const int ChainElfique_Cuirasse_Tranchant = 8;
-        public const int ChainElfique_Cuirasse_Perforant = 8;
-        public const int ChainElfique_Cuirasse_Magique = 8;
-        public const int ChainElfique_Cuirasse_Force = 30;
+        public const int ChainElfique_Niveau = 3;
 
-        public const int ChainElfique_Jambieres = 8;
-        public const int ChainElfique_Jambieres_Contondant = 8;
-        public const int ChainElfique_Jambieres_Tranchant = 8;
-        public const int ChainElfique_Jambieres_Perforant = 8;
-        public const int ChainElfique_Jambieres_Magique = 8;
-        public const int ChainElfique_Jambieres_Force = 20;
+        public const int ChainElfique_Physique = 6;
+        public const int ChainElfique_Contondant = 6;
+        public const int ChainElfique_Tranchant = 6;
+        public const int ChainElfique_Perforant = 6;
+        public const int ChainElfique_Magique = 6;
+        public const int ChainElfique_Force = 30;
 
-        public const int ChainElfique_MinDurabilite = 200;
-        public const int ChainElfique_MaxDurabilite = 225;
+        public const int ChainElfique_MinDurabilite = 150;
+        public const int ChainElfique_MaxDurabilite = 175;
+
+        //Chain Elfe Noir
+
+        public const int ChainElfeNoir_Niveau = 3;
+
+        public const int ChainElfeNoir_Physique = 6;
+        public const int ChainElfeNoir_Contondant = 6;
+        public const int ChainElfeNoir_Tranchant = 6;
+        public const int ChainElfeNoir_Perforant = 6;
+        public const int ChainElfeNoir_Magique = 6;
+        public const int ChainElfeNoir_Force = 30;
+
+        public const int ChainElfeNoir_MinDurabilite = 150;
+        public const int ChainElfeNoir_MaxDurabilite = 175;
 
         //Mailles
 
-        public const int Mailles_Casque = 8;
-        public const int Mailles_Casque_Contondant = 8;
-        public const int Mailles_Casque_Tranchant = 8;
-        public const int Mailles_Casque_Perforant = 8;
-        public const int Mailles_Casque_Magique = 8;
-        public const int Mailles_Casque_Force = 20;
+        public const int Mailles_Niveau = 4;
 
-        public const int Mailles_Cuirasse = 8;
-        public const int Mailles_Cuirasse_Contondant = 8;
-        public const int Mailles_Cuirasse_Tranchant = 8;
-        public const int Mailles_Cuirasse_Perforant = 8;
-        public const int Mailles_Cuirasse_Magique = 8;
-        public const int Mailles_Cuirasse_Force = 35;
+        public const int Mailles_Physique = 8;
+        public const int Mailles_Contondant = 8;
+        public const int Mailles_Tranchant = 8;
+        public const int Mailles_Perforant = 8;
+        public const int Mailles_Magique = 8;
+        public const int Mailles_Force = 40;
 
-        public const int Mailles_Jambieres = 8;
-        public const int Mailles_Jambieres_Contondant = 8;
-        public const int Mailles_Jambieres_Tranchant = 8;
-        public const int Mailles_Jambieres_Perforant = 8;
-        public const int Mailles_Jambieres_Magique = 8;
-        public const int Mailles_Jambieres_Force = 25;
-
-        public const int Mailles_MinDurabilite = 200;
-        public const int Mailles_MaxDurabilite = 225;
+        public const int Mailles_MinDurabilite = 175;
+        public const int Mailles_MaxDurabilite = 200;
 
         //Plaque
 
-        public const int Plaque_Casque = 9;
-        public const int Plaque_Casque_Contondant = 9;
-        public const int Plaque_Casque_Tranchant = 9;
-        public const int Plaque_Casque_Perforant = 9;
-        public const int Plaque_Casque_Magique = 9;
-        public const int Plaque_Casque_Force = 30;
+        public const int Plaque_Niveau = 4;
 
-        public const int Plaque_Gorget = 9;
-        public const int Plaque_Gorget_Contondant = 9;
-        public const int Plaque_Gorget_Tranchant = 9;
-        public const int Plaque_Gorget_Perforant = 9;
-        public const int Plaque_Gorget_Magique = 9;
-        public const int Plaque_Gorget_Force = 20;
+        public const int Plaque_Physique = 8;
+        public const int Plaque_Contondant = 8;
+        public const int Plaque_Tranchant = 8;
+        public const int Plaque_Perforant = 8;
+        public const int Plaque_Magique = 8;
+        public const int Plaque_Force = 40;
 
-        public const int Plaque_Gants = 9;
-        public const int Plaque_Gants_Contondant = 9;
-        public const int Plaque_Gants_Tranchant = 9;
-        public const int Plaque_Gants_Perforant = 9;
-        public const int Plaque_Gants_Magique = 9;
-        public const int Plaque_Gants_Force = 30;
-
-        public const int Plaque_Brassards = 9;
-        public const int Plaque_Brassards_Contondant = 9;
-        public const int Plaque_Brassards_Tranchant = 9;
-        public const int Plaque_Brassards_Perforant = 9;
-        public const int Plaque_Brassards_Magique = 9;
-        public const int Plaque_Brassards_Force = 40;
-
-        public const int Plaque_Cuirasse = 9;
-        public const int Plaque_Cuirasse_Contondant = 9;
-        public const int Plaque_Cuirasse_Tranchant = 9;
-        public const int Plaque_Cuirasse_Perforant = 9;
-        public const int Plaque_Cuirasse_Magique = 9;
-        public const int Plaque_Cuirasse_Force = 50;
-
-        public const int Plaque_Jambieres = 9;
-        public const int Plaque_Jambieres_Contondant = 9;
-        public const int Plaque_Jambieres_Tranchant = 9;
-        public const int Plaque_Jambieres_Perforant = 9;
-        public const int Plaque_Jambieres_Magique = 9;
-        public const int Plaque_Jambieres_Force = 40;
-
-        public const int Plaque_MinDurabilite = 225;
-        public const int Plaque_MaxDurabilite = 250;
+        public const int Plaque_MinDurabilite = 175;
+        public const int Plaque_MaxDurabilite = 200;
 
         //Plaque Elfique
 
-        public const int PlaqueElfique_Gorget = 9;
-        public const int PlaqueElfique_Gorget_Contondant = 9;
-        public const int PlaqueElfique_Gorget_Tranchant = 9;
-        public const int PlaqueElfique_Gorget_Perforant = 9;
-        public const int PlaqueElfique_Gorget_Magique = 9;
-        public const int PlaqueElfique_Gorget_Force = 20;
+        public const int PlaqueElfique_Niveau = 5;
 
-        public const int PlaqueElfique_Cuirasse = 9;
-        public const int PlaqueElfique_Cuirasse_Contondant = 9;
-        public const int PlaqueElfique_Cuirasse_Tranchant = 9;
-        public const int PlaqueElfique_Cuirasse_Perforant = 9;
-        public const int PlaqueElfique_Cuirasse_Magique = 9;
-        public const int PlaqueElfique_Cuirasse_Force = 50;
+        public const int PlaqueElfique_Physique = 10;
+        public const int PlaqueElfique_Contondant = 10;
+        public const int PlaqueElfique_Tranchant = 10;
+        public const int PlaqueElfique_Perforant = 10;
+        public const int PlaqueElfique_Magique = 10;
+        public const int PlaqueElfique_Force = 50;
 
-        public const int PlaqueElfique_Jambieres = 9;
-        public const int PlaqueElfique_Jambieres_Contondant = 9;
-        public const int PlaqueElfique_Jambieres_Tranchant = 9;
-        public const int PlaqueElfique_Jambieres_Perforant = 9;
-        public const int PlaqueElfique_Jambieres_Magique = 9;
-        public const int PlaqueElfique_Jambieres_Force = 40;
-
-        public const int PlaqueElfique_MinDurabilite = 225;
-        public const int PlaqueElfique_MaxDurabilite = 250;
+        public const int PlaqueElfique_MinDurabilite = 200;
+        public const int PlaqueElfique_MaxDurabilite = 225;
 
         //Plaque Gothique
 
-        public const int PlaqueGothique_Casque = 9;
-        public const int PlaqueGothique_Casque_Contondant = 9;
-        public const int PlaqueGothique_Casque_Tranchant = 9;
-        public const int PlaqueGothique_Casque_Perforant = 9;
-        public const int PlaqueGothique_Casque_Magique = 9;
-        public const int PlaqueGothique_Casque_Force = 30;
+        public const int PlaqueGothique_Niveau = 5;
 
-        public const int PlaqueGothique_Brassards = 9;
-        public const int PlaqueGothique_Brassards_Contondant = 9;
-        public const int PlaqueGothique_Brassards_Tranchant = 9;
-        public const int PlaqueGothique_Brassards_Perforant = 9;
-        public const int PlaqueGothique_Brassards_Magique = 9;
-        public const int PlaqueGothique_Brassards_Force = 50;
+        public const int PlaqueGothique_Physique = 10;
+        public const int PlaqueGothique_Contondant = 10;
+        public const int PlaqueGothique_Tranchant = 10;
+        public const int PlaqueGothique_Perforant = 10;
+        public const int PlaqueGothique_Magique = 10;
+        public const int PlaqueGothique_Force = 50;
 
-        public const int PlaqueGothique_Cuirasse = 9;
-        public const int PlaqueGothique_Cuirasse_Contondant = 9;
-        public const int PlaqueGothique_Cuirasse_Tranchant = 9;
-        public const int PlaqueGothique_Cuirasse_Perforant = 9;
-        public const int PlaqueGothique_Cuirasse_Magique = 9;
-        public const int PlaqueGothique_Cuirasse_Force = 60;
-
-        public const int PlaqueGothique_MinDurabilite = 225;
-        public const int PlaqueGothique_MaxDurabilite = 250;
+        public const int PlaqueGothique_MinDurabilite = 200;
+        public const int PlaqueGothique_MaxDurabilite = 225;
 
         //Plaque Barbare
 
-        public const int PlaqueBarbare_Gorget = 9;
-        public const int PlaqueBarbare_Gorget_Contondant = 9;
-        public const int PlaqueBarbare_Gorget_Tranchant = 9;
-        public const int PlaqueBarbare_Gorget_Perforant = 9;
-        public const int PlaqueBarbare_Gorget_Magique = 9;
-        public const int PlaqueBarbare_Gorget_Force = 20;
+        public const int PlaqueBarbare_Niveau = 5;
 
-        public const int PlaqueBarbare_Brassards = 9;
-        public const int PlaqueBarbare_Brassards_Contondant = 9;
-        public const int PlaqueBarbare_Brassards_Tranchant = 9;
-        public const int PlaqueBarbare_Brassards_Perforant = 9;
-        public const int PlaqueBarbare_Brassards_Magique = 9;
-        public const int PlaqueBarbare_Brassards_Force = 40;
+        public const int PlaqueBarbare_Physique = 10;
+        public const int PlaqueBarbare_Contondant = 10;
+        public const int PlaqueBarbare_Tranchant = 10;
+        public const int PlaqueBarbare_Perforant = 10;
+        public const int PlaqueBarbare_Magique = 10;
+        public const int PlaqueBarbare_Force = 50;
 
-        public const int PlaqueBarbare_Cuirasse = 9;
-        public const int PlaqueBarbare_Cuirasse_Contondant = 9;
-        public const int PlaqueBarbare_Cuirasse_Tranchant = 9;
-        public const int PlaqueBarbare_Cuirasse_Perforant = 9;
-        public const int PlaqueBarbare_Cuirasse_Magique = 9;
-        public const int PlaqueBarbare_Cuirasse_Force = 50;
-
-        public const int PlaqueBarbare_Jambieres = 9;
-        public const int PlaqueBarbare_Jambieres_Contondant = 9;
-        public const int PlaqueBarbare_Jambieres_Tranchant = 9;
-        public const int PlaqueBarbare_Jambieres_Perforant = 9;
-        public const int PlaqueBarbare_Jambieres_Magique = 9;
-        public const int PlaqueBarbare_Jambieres_Force = 40;
-
-        public const int PlaqueBarbare_MinDurabilite = 225;
-        public const int PlaqueBarbare_MaxDurabilite = 250;
+        public const int PlaqueBarbare_MinDurabilite = 200;
+        public const int PlaqueBarbare_MaxDurabilite = 225;
 
         //Plaque Orné
 
-        public const int PlaqueOrne_Brassards = 10;
-        public const int PlaqueOrne_Brassards_Contondant = 10;
-        public const int PlaqueOrne_Brassards_Tranchant = 10;
-        public const int PlaqueOrne_Brassards_Perforant = 10;
-        public const int PlaqueOrne_Brassards_Magique = 10;
-        public const int PlaqueOrne_Brassards_Force = 60;
+        public const int PlaqueOrne_Niveau = 6;
 
-        public const int PlaqueOrne_Cuirasse = 10;
-        public const int PlaqueOrne_Cuirasse_Contondant = 10;
-        public const int PlaqueOrne_Cuirasse_Tranchant = 10;
-        public const int PlaqueOrne_Cuirasse_Perforant = 10;
-        public const int PlaqueOrne_Cuirasse_Magique = 10;
-        public const int PlaqueOrne_Cuirasse_Force = 70;
+        public const int PlaqueOrne_Physique = 12;
+        public const int PlaqueOrne_Contondant = 12;
+        public const int PlaqueOrne_Tranchant = 12;
+        public const int PlaqueOrne_Perforant = 12;
+        public const int PlaqueOrne_Magique = 12;
+        public const int PlaqueOrne_Force = 60;
 
-        public const int PlaqueOrne_MinDurabilite = 250;
-        public const int PlaqueOrne_MaxDurabilite = 300;
+        public const int PlaqueOrne_MinDurabilite = 225;
+        public const int PlaqueOrne_MaxDurabilite = 250;
 
         //Plaque Décoré
 
-        public const int PlaqueDecore_Casque = 10;
-        public const int PlaqueDecore_Casque_Contondant = 10;
-        public const int PlaqueDecore_Casque_Tranchant = 10;
-        public const int PlaqueDecore_Casque_Perforant = 10;
-        public const int PlaqueDecore_Casque_Magique = 10;
-        public const int PlaqueDecore_Casque_Force = 40;
+        public const int PlaqueDecore_Niveau = 6;
 
-        public const int PlaqueDecore_Gorget = 10;
-        public const int PlaqueDecore_Gorget_Contondant = 10;
-        public const int PlaqueDecore_Gorget_Tranchant = 10;
-        public const int PlaqueDecore_Gorget_Perforant = 10;
-        public const int PlaqueDecore_Gorget_Magique = 10;
-        public const int PlaqueDecore_Gorget_Force = 25;
+        public const int PlaqueDecore_Physique = 12;
+        public const int PlaqueDecore_Contondant = 12;
+        public const int PlaqueDecore_Tranchant = 12;
+        public const int PlaqueDecore_Perforant = 12;
+        public const int PlaqueDecore_Magique = 12;
+        public const int PlaqueDecore_Force = 60;
 
-        public const int PlaqueDecore_Gants = 10;
-        public const int PlaqueDecore_Gants_Contondant = 10;
-        public const int PlaqueDecore_Gants_Tranchant = 10;
-        public const int PlaqueDecore_Gants_Perforant = 10;
-        public const int PlaqueDecore_Gants_Magique = 10;
-        public const int PlaqueDecore_Gants_Force = 35;
-
-        public const int PlaqueDecore_Brassards = 10;
-        public const int PlaqueDecore_Brassards_Contondant = 10;
-        public const int PlaqueDecore_Brassards_Tranchant = 10;
-        public const int PlaqueDecore_Brassards_Perforant = 10;
-        public const int PlaqueDecore_Brassards_Magique = 10;
-        public const int PlaqueDecore_Brassards_Force = 60;
-
-        public const int PlaqueDecore_Cuirasse = 10;
-        public const int PlaqueDecore_Cuirasse_Contondant = 10;
-        public const int PlaqueDecore_Cuirasse_Tranchant = 10;
-        public const int PlaqueDecore_Cuirasse_Perforant = 10;
-        public const int PlaqueDecore_Cuirasse_Magique = 10;
-        public const int PlaqueDecore_Cuirasse_Force = 70;
-
-        public const int PlaqueDecore_Jambieres = 10;
-        public const int PlaqueDecore_Jambieres_Contondant = 10;
-        public const int PlaqueDecore_Jambieres_Tranchant = 10;
-        public const int PlaqueDecore_Jambieres_Perforant = 10;
-        public const int PlaqueDecore_Jambieres_Magique = 10;
-        public const int PlaqueDecore_Jambieres_Force = 60;
-
-        public const int PlaqueDecore_MinDurabilite = 250;
-        public const int PlaqueDecore_MaxDurabilite = 300;
+        public const int PlaqueDecore_MinDurabilite = 225;
+        public const int PlaqueDecore_MaxDurabilite = 250;
 
         //Plaque Noble
 
-        public const int PlaqueNoble_Casque = 10;
-        public const int PlaqueNoble_Casque_Contondant = 10;
-        public const int PlaqueNoble_Casque_Tranchant = 10;
-        public const int PlaqueNoble_Casque_Perforant = 10;
-        public const int PlaqueNoble_Casque_Magique = 10;
-        public const int PlaqueNoble_Casque_Force = 40;
+        public const int PlaqueNoble_Niveau = 6;
 
-        public const int PlaqueNoble_Gorget = 10;
-        public const int PlaqueNoble_Gorget_Contondant = 10;
-        public const int PlaqueNoble_Gorget_Tranchant = 10;
-        public const int PlaqueNoble_Gorget_Perforant = 10;
-        public const int PlaqueNoble_Gorget_Magique = 10;
-        public const int PlaqueNoble_Gorget_Force = 25;
+        public const int PlaqueNoble_Physique = 12;
+        public const int PlaqueNoble_Contondant = 12;
+        public const int PlaqueNoble_Tranchant = 12;
+        public const int PlaqueNoble_Perforant = 12;
+        public const int PlaqueNoble_Magique = 12;
+        public const int PlaqueNoble_Force = 40;
 
-        public const int PlaqueNoble_Gants = 10;
-        public const int PlaqueNoble_Gants_Contondant = 10;
-        public const int PlaqueNoble_Gants_Tranchant = 10;
-        public const int PlaqueNoble_Gants_Perforant = 10;
-        public const int PlaqueNoble_Gants_Magique = 10;
-        public const int PlaqueNoble_Gants_Force = 35;
-
-        public const int PlaqueNoble_Brassards = 10;
-        public const int PlaqueNoble_Brassards_Contondant = 10;
-        public const int PlaqueNoble_Brassards_Tranchant = 10;
-        public const int PlaqueNoble_Brassards_Perforant = 10;
-        public const int PlaqueNoble_Brassards_Magique = 10;
-        public const int PlaqueNoble_Brassards_Force = 60;
-
-        public const int PlaqueNoble_Cuirasse = 10;
-        public const int PlaqueNoble_Cuirasse_Contondant = 10;
-        public const int PlaqueNoble_Cuirasse_Tranchant = 10;
-        public const int PlaqueNoble_Cuirasse_Perforant = 10;
-        public const int PlaqueNoble_Cuirasse_Magique = 10;
-        public const int PlaqueNoble_Cuirasse_Force = 70;
-
-        public const int PlaqueNoble_Jambieres = 10;
-        public const int PlaqueNoble_Jambieres_Contondant = 10;
-        public const int PlaqueNoble_Jambieres_Tranchant = 10;
-        public const int PlaqueNoble_Jambieres_Perforant = 10;
-        public const int PlaqueNoble_Jambieres_Magique = 10;
-        public const int PlaqueNoble_Jambieres_Force = 60;
-
-        public const int PlaqueNoble_MinDurabilite = 250;
-        public const int PlaqueNoble_MaxDurabilite = 300;
+        public const int PlaqueNoble_MinDurabilite = 225;
+        public const int PlaqueNoble_MaxDurabilite = 250;
 
         //Plaque Daedric
 
-        public const int PlaqueDaedric_Casque = 10;
-        public const int PlaqueDaedric_Casque_Contondant = 10;
-        public const int PlaqueDaedric_Casque_Tranchant = 10;
-        public const int PlaqueDaedric_Casque_Perforant = 10;
-        public const int PlaqueDaedric_Casque_Magique = 10;
-        public const int PlaqueDaedric_Casque_Force = 40;
+        public const int PlaqueDaedric_Niveau = 6;
 
-        public const int PlaqueDaedric_Gorget = 10;
-        public const int PlaqueDaedric_Gorget_Contondant = 10;
-        public const int PlaqueDaedric_Gorget_Tranchant = 10;
-        public const int PlaqueDaedric_Gorget_Perforant = 10;
-        public const int PlaqueDaedric_Gorget_Magique = 10;
-        public const int PlaqueDaedric_Gorget_Force = 25;
+        public const int PlaqueDaedric_Physique = 12;
+        public const int PlaqueDaedric_Contondant = 12;
+        public const int PlaqueDaedric_Tranchant = 12;
+        public const int PlaqueDaedric_Perforant = 12;
+        public const int PlaqueDaedric_Magique = 12;
+        public const int PlaqueDaedric_Force = 60;
 
-        public const int PlaqueDaedric_Gants = 10;
-        public const int PlaqueDaedric_Gants_Contondant = 10;
-        public const int PlaqueDaedric_Gants_Tranchant = 10;
-        public const int PlaqueDaedric_Gants_Perforant = 10;
-        public const int PlaqueDaedric_Gants_Magique = 10;
-        public const int PlaqueDaedric_Gants_Force = 35;
-
-        public const int PlaqueDaedric_Brassards = 10;
-        public const int PlaqueDaedric_Brassards_Contondant = 10;
-        public const int PlaqueDaedric_Brassards_Tranchant = 10;
-        public const int PlaqueDaedric_Brassards_Perforant = 10;
-        public const int PlaqueDaedric_Brassards_Magique = 10;
-        public const int PlaqueDaedric_Brassards_Force = 60;
-
-        public const int PlaqueDaedric_Cuirasse = 10;
-        public const int PlaqueDaedric_Cuirasse_Contondant = 10;
-        public const int PlaqueDaedric_Cuirasse_Tranchant = 10;
-        public const int PlaqueDaedric_Cuirasse_Perforant = 10;
-        public const int PlaqueDaedric_Cuirasse_Magique = 10;
-        public const int PlaqueDaedric_Cuirasse_Force = 70;
-
-        public const int PlaqueDaedric_Jambieres = 10;
-        public const int PlaqueDaedric_Jambieres_Contondant = 10;
-        public const int PlaqueDaedric_Jambieres_Tranchant = 10;
-        public const int PlaqueDaedric_Jambieres_Perforant = 10;
-        public const int PlaqueDaedric_Jambieres_Magique = 10;
-        public const int PlaqueDaedric_Jambieres_Force = 60;
-
-        public const int PlaqueDaedric_MinDurabilite = 250;
-        public const int PlaqueDaedric_MaxDurabilite = 300;
+        public const int PlaqueDaedric_MinDurabilite = 225;
+        public const int PlaqueDaedric_MaxDurabilite = 250;
 
         //Divers
-        public const int TuniqueChaine = 6; //= 8;
-        public const int TuniqueChaine_Contondant = 6; //= 8;
-        public const int TuniqueChaine_Tranchant = 6; //= 8;
-        public const int TuniqueChaine_Perforant = 6; //= 8;
-        public const int TuniqueChaine_Magique = 6; //= 8;
-        public const int TuniqueChaine_Force = 20;
-        public const int TuniqueChaine_MinDurabilite = 150;
-        public const int TuniqueChaine_MaxDurabilite = 175;
-
-        public const int CuirasseReligieuse = 8;
-        public const int CuirasseReligieuse_Contondant = 8;
-        public const int CuirasseReligieuse_Tranchant = 8;
-        public const int CuirasseReligieuse_Perforant = 8;
-        public const int CuirasseReligieuse_Magique = 8;
-        public const int CuirasseReligieuse_Force = 30;
-        public const int CuirasseReligieuse_MinDurabilite = 200;
-        public const int CuirasseReligieuse_MaxDurabilite = 225;
-
-        public const int Cuirasse = 10;
-        public const int Cuirasse_Contondant = 10;
-        public const int Cuirasse_Tranchant = 10;
-        public const int Cuirasse_Perforant = 10;
-        public const int Cuirasse_Magique = 10;
-        public const int Cuirasse_Force = 50;
-        public const int Cuirasse_MinDurabilite = 225;
-        public const int Cuirasse_MaxDurabilite = 250;
-
-        public const int CuirasseBarbare = 10;
-        public const int CuirasseBarbare_Contondant = 10;
-        public const int CuirasseBarbare_Tranchant = 10;
-        public const int CuirasseBarbare_Perforant = 10;
-        public const int CuirasseBarbare_Magique = 10;
-        public const int CuirasseBarbare_Force = 30;
-        public const int CuirasseBarbare_MinDurabilite = 200;
-        public const int CuirasseBarbare_MaxDurabilite = 225;
-
-        public const int CuirasseNordique = 10;
-        public const int CuirasseNordique_Contondant = 10;
-        public const int CuirasseNordique_Tranchant = 10;
-        public const int CuirasseNordique_Perforant = 10;
-        public const int CuirasseNordique_Magique = 10;
-        public const int CuirasseNordique_Force = 50;
-        public const int CuirasseNordique_MinDurabilite = 225;
-        public const int CuirasseNordique_MaxDurabilite = 250;
-
-        public const int CuirasseDraconique_Cuirasse = 10;
-        public const int CuirasseDraconique_Cuirasse_Contondant = 10;
-        public const int CuirasseDraconique_Cuirasse_Tranchant = 10;
-        public const int CuirasseDraconique_Cuirasse_Perforant = 10;
-        public const int CuirasseDraconique_Cuirasse_Magique = 10;
-        public const int CuirasseDraconique_Cuirasse_Force = 70;
-        public const int CuirasseDraconique_MinDurabilite = 250;
-        public const int CuirasseDraconique_MaxDurabilite = 300;
-
-        public const int CasqueNordique = 6;
-        public const int CasqueNordique_Contondant = 6;
-        public const int CasqueNordique_Tranchant = 6;
-        public const int CasqueNordique_Perforant = 6;
-        public const int CasqueNordique_Magique = 6;
-        public const int CasqueNordique_Force = 15;
-        public const int CasqueNordique_MinDurabilite = 200;
-        public const int CasqueNordique_MaxDurabilite = 225;
-
-        public const int CasqueNomade = 6;
-        public const int CasqueNomade_Contondant = 6;
-        public const int CasqueNomade_Tranchant = 6;
-        public const int CasqueNomade_Perforant = 6;
-        public const int CasqueNomade_Magique = 6;
-        public const int CasqueNomade_Force = 15;
-        public const int CasqueNomade_MinDurabilite = 200;
-        public const int CasqueNomade_MaxDurabilite = 225;
-
-        public const int CasqueCorne = 8;
-        public const int CasqueCorne_Contondant = 8;
-        public const int CasqueCorne_Tranchant = 8;
-        public const int CasqueCorne_Perforant = 8;
-        public const int CasqueCorne_Magique = 8;
-        public const int CasqueCorne_Force = 30;
-        public const int CasqueCorne_MinDurabilite = 225;
-        public const int CasqueCorne_MaxDurabilite = 250;
-
-        public const int Brassards = 10;
-        public const int Brassards_Contondant = 10;
-        public const int Brassards_Tranchant = 10;
-        public const int Brassards_Perforant = 10;
-        public const int Brassards_Magique = 10;
-        public const int Brassards_Force = 40;
-        public const int Brassards_MinDurabilite = 225;
-        public const int Brassards_MaxDurabilite = 250;
-
-        public const int BrassardsChaotique = 10;
-        public const int BrassardsChaotique_Contondant = 10;
-        public const int BrassardsChaotique_Tranchant = 10;
-        public const int BrassardsChaotique_Perforant = 10;
-        public const int BrassardsChaotique_Magique = 10;
-        public const int BrassardsChaotique_Force = 60;
-        public const int BrassardsChaotique_MinDurabilite = 250;
-        public const int BrassardsChaotique_MaxDurabilite = 300;
+        public const int ArmureDivers_Def1 = 2;
+        public const int ArmureDivers_Def2 = 4;
+        public const int ArmureDivers_Def3 = 6;
+        public const int ArmureDivers_Def4 = 8;
+        public const int ArmureDivers_Def5 = 10;
+        public const int ArmureDivers_Def6 = 12;
+        public const int ArmureDivers_Force1 = 10;
+        public const int ArmureDivers_Force2 = 20;
+        public const int ArmureDivers_Force3 = 30;
+        public const int ArmureDivers_Force4 = 40;
+        public const int ArmureDivers_Force5 = 50;
+        public const int ArmureDivers_Force6 = 60;
+        public const int ArmureDivers_MinDurabilite1 = 100;
+        public const int ArmureDivers_MaxDurabilite1 = 125;
+        public const int ArmureDivers_MinDurabilite2 = 125;
+        public const int ArmureDivers_MaxDurabilite2 = 150;
+        public const int ArmureDivers_MinDurabilite3 = 150;
+        public const int ArmureDivers_MaxDurabilite3 = 175;
+        public const int ArmureDivers_MinDurabilite4 = 175;
+        public const int ArmureDivers_MaxDurabilite4 = 200;
+        public const int ArmureDivers_MinDurabilite5 = 200;
+        public const int ArmureDivers_MaxDurabilite5 = 225;
+        public const int ArmureDivers_MinDurabilite6 = 225;
+        public const int ArmureDivers_MaxDurabilite6 = 250;
 
         #endregion
 

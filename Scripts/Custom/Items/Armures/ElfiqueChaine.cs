@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class ElfiqueChaineTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 4; } }
+        public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ChainElfique_Cuirasse; } }
-        public override int BaseContondantResistance { get { return ChainElfique_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return ChainElfique_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return ChainElfique_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return ChainElfique_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return ChainElfique_Physique; } }
+        public override int BaseContondantResistance { get { return ChainElfique_Contondant; } }
+        public override int BaseTranchantResistance { get { return ChainElfique_Tranchant; } }
+        public override int BasePerforantResistance { get { return ChainElfique_Perforant; } }
+        public override int BaseMagieResistance { get { return ChainElfique_Magique; } }
 
         public override int InitMinHits { get { return ChainElfique_MinDurabilite; } }
         public override int InitMaxHits { get { return ChainElfique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return ChainElfique_Cuirasse_Force; } }
+        public override int AosStrReq { get { return ChainElfique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class ElfiqueChaineLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 4; } }
+        public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ChainElfique_Jambieres; } }
-        public override int BaseContondantResistance { get { return ChainElfique_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return ChainElfique_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return ChainElfique_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return ChainElfique_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return ChainElfique_Physique; } }
+        public override int BaseContondantResistance { get { return ChainElfique_Contondant; } }
+        public override int BaseTranchantResistance { get { return ChainElfique_Tranchant; } }
+        public override int BasePerforantResistance { get { return ChainElfique_Perforant; } }
+        public override int BaseMagieResistance { get { return ChainElfique_Magique; } }
 
         public override int InitMinHits { get { return ChainElfique_MinDurabilite; } }
         public override int InitMaxHits { get { return ChainElfique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return ChainElfique_Jambieres_Force; } }
+        public override int AosStrReq { get { return ChainElfique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

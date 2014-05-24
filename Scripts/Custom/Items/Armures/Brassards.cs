@@ -7,16 +7,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 6; } }
 
-        public override int BasePhysicalResistance { get { return BrassardsChaotique; } }
-        public override int BaseContondantResistance { get { return BrassardsChaotique_Contondant; } }
-        public override int BaseTranchantResistance { get { return BrassardsChaotique_Tranchant; } }
-        public override int BasePerforantResistance { get { return BrassardsChaotique_Perforant; } }
-        public override int BaseMagieResistance { get { return BrassardsChaotique_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def6; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def6; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def6; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def6; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def6; } }
 
-        public override int InitMinHits { get { return BrassardsChaotique_MinDurabilite; } }
-        public override int InitMaxHits { get { return BrassardsChaotique_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite6; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite6; } }
 
-        public override int AosStrReq { get { return BrassardsChaotique_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force6; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -56,16 +56,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return Brassards; } }
-        public override int BaseContondantResistance { get { return Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def5; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def5; } }
 
-        public override int InitMinHits { get { return Brassards_MinDurabilite; } }
-        public override int InitMaxHits { get { return Brassards_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite5; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite5; } }
 
-        public override int AosStrReq { get { return Brassards_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force5; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

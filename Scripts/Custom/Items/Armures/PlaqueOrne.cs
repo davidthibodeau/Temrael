@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class CuirasseOrne : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueOrne_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueOrne_Cuirasse; } }
-        public override int BaseContondantResistance { get { return PlaqueOrne_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueOrne_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueOrne_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueOrne_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueOrne_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueOrne_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueOrne_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueOrne_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueOrne_Magique; } }
 
         public override int InitMinHits { get { return PlaqueOrne_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueOrne_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueOrne_Cuirasse_Force; } }
+        public override int AosStrReq { get { return PlaqueOrne_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class BrassardsOrne : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueOrne_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueOrne_Brassards; } }
-        public override int BaseContondantResistance { get { return PlaqueOrne_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueOrne_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueOrne_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueOrne_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueOrne_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueOrne_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueOrne_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueOrne_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueOrne_Magique; } }
 
         public override int InitMinHits { get { return PlaqueOrne_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueOrne_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueOrne_Brassards_Force; } }
+        public override int AosStrReq { get { return PlaqueOrne_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

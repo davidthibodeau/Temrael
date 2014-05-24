@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class PlaqueBarbareGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Brassards; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
 
         public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Brassards_Force; } }
+        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class PlaqueBarbareGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Gorget; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Gorget_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Gorget_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Gorget_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Gorget_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
 
         public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Gorget_Force; } }
+        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -103,18 +103,18 @@ namespace Server.Items
     }
     public class PlaqueBarbareLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Jambieres; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
 
         public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Jambieres_Force; } }
+        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -152,18 +152,18 @@ namespace Server.Items
     }
     public class PlaqueBarbareTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Cuirasse; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
 
         public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Cuirasse_Force; } }
+        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

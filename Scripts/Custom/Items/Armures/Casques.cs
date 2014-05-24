@@ -7,16 +7,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 3; } }
 
-        public override int BasePhysicalResistance { get { return CasqueNomade; } }
-        public override int BaseContondantResistance { get { return CasqueNomade_Contondant; } }
-        public override int BaseTranchantResistance { get { return CasqueNomade_Tranchant; } }
-        public override int BasePerforantResistance { get { return CasqueNomade_Perforant; } }
-        public override int BaseMagieResistance { get { return CasqueNomade_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def3; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def3; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def3; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def3; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def3; } }
 
-        public override int InitMinHits { get { return CasqueNomade_MinDurabilite; } }
-        public override int InitMaxHits { get { return CasqueNomade_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite3; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite3; } }
 
-        public override int AosStrReq { get { return CasqueNomade_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force3; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -56,16 +56,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return CasqueNomade; } }
-        public override int BaseContondantResistance { get { return CasqueNomade_Contondant; } }
-        public override int BaseTranchantResistance { get { return CasqueNomade_Tranchant; } }
-        public override int BasePerforantResistance { get { return CasqueNomade_Perforant; } }
-        public override int BaseMagieResistance { get { return CasqueNomade_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def4; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def4; } }
 
-        public override int InitMinHits { get { return CasqueNomade_MinDurabilite; } }
-        public override int InitMaxHits { get { return CasqueNomade_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite4; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite4; } }
 
-        public override int AosStrReq { get { return CasqueNomade_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force4; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -105,16 +105,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return CasqueCorne; } }
-        public override int BaseContondantResistance { get { return CasqueCorne_Contondant; } }
-        public override int BaseTranchantResistance { get { return CasqueCorne_Tranchant; } }
-        public override int BasePerforantResistance { get { return CasqueCorne_Perforant; } }
-        public override int BaseMagieResistance { get { return CasqueCorne_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def5; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def5; } }
 
-        public override int InitMinHits { get { return CasqueCorne_MinDurabilite; } }
-        public override int InitMaxHits { get { return CasqueCorne_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite5; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite5; } }
 
-        public override int AosStrReq { get { return CasqueCorne_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force5; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -154,16 +154,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return CasqueNordique; } }
-        public override int BaseContondantResistance { get { return CasqueNordique_Contondant; } }
-        public override int BaseTranchantResistance { get { return CasqueNordique_Tranchant; } }
-        public override int BasePerforantResistance { get { return CasqueNordique_Perforant; } }
-        public override int BaseMagieResistance { get { return CasqueNordique_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def4; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def4; } }
 
-        public override int InitMinHits { get { return CasqueNordique_MinDurabilite; } }
-        public override int InitMaxHits { get { return CasqueNordique_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite4; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite4; } }
 
-        public override int AosStrReq { get { return CasqueNordique_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force4; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

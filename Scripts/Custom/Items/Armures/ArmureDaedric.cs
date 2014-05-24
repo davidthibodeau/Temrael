@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class ArmureDaedricGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Brassards; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
 
         public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Brassards_Force; } }
+        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class ArmureDaedricTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Cuirasse; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
 
         public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Cuirasse_Force; } }
+        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -103,18 +103,18 @@ namespace Server.Items
     }
     public class ArmureDaedricHelm : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Casque; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Casque_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Casque_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Casque_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Casque_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
 
         public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Casque_Force; } }
+        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -152,18 +152,18 @@ namespace Server.Items
     }
     public class ArmureDaedricGloves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Gants; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Gants_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Gants_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Gants_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Gants_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
 
         public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Gants_Force; } }
+        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -201,18 +201,18 @@ namespace Server.Items
     }
     public class ArmureDaedricGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Gorget; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Gorget_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Gorget_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Gorget_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Gorget_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
 
         public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Gorget_Force; } }
+        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -250,18 +250,18 @@ namespace Server.Items
     }
     public class ArmureDaedricLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Jambieres; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
 
         public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Jambieres_Force; } }
+        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

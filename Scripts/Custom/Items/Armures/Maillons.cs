@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class MaillonsGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 3; } }
+        public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Maillons_Brassards; } }
-        public override int BaseContondantResistance { get { return Maillons_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return Maillons_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return Maillons_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return Maillons_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return Maillons_Physique; } }
+        public override int BaseContondantResistance { get { return Maillons_Contondant; } }
+        public override int BaseTranchantResistance { get { return Maillons_Tranchant; } }
+        public override int BasePerforantResistance { get { return Maillons_Perforant; } }
+        public override int BaseMagieResistance { get { return Maillons_Magique; } }
 
         public override int InitMinHits { get { return Maillons_MinDurabilite; } }
         public override int InitMaxHits { get { return Maillons_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Maillons_Brassards_Force; } }
+        public override int AosStrReq { get { return Maillons_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class MaillonsLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 3; } }
+        public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Maillons_Jambieres; } }
-        public override int BaseContondantResistance { get { return Maillons_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return Maillons_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return Maillons_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return Maillons_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return Maillons_Physique; } }
+        public override int BaseContondantResistance { get { return Maillons_Contondant; } }
+        public override int BaseTranchantResistance { get { return Maillons_Tranchant; } }
+        public override int BasePerforantResistance { get { return Maillons_Perforant; } }
+        public override int BaseMagieResistance { get { return Maillons_Magique; } }
 
         public override int InitMinHits { get { return Maillons_MinDurabilite; } }
         public override int InitMaxHits { get { return Maillons_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Maillons_Jambieres_Force; } }
+        public override int AosStrReq { get { return Maillons_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -103,18 +103,18 @@ namespace Server.Items
     }
     public class MaillonsTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 3; } }
+        public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Maillons_Cuirasse; } }
-        public override int BaseContondantResistance { get { return Maillons_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return Maillons_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return Maillons_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return Maillons_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return Maillons_Physique; } }
+        public override int BaseContondantResistance { get { return Maillons_Contondant; } }
+        public override int BaseTranchantResistance { get { return Maillons_Tranchant; } }
+        public override int BasePerforantResistance { get { return Maillons_Perforant; } }
+        public override int BaseMagieResistance { get { return Maillons_Magique; } }
 
         public override int InitMinHits { get { return Maillons_MinDurabilite; } }
         public override int InitMaxHits { get { return Maillons_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Maillons_Cuirasse_Force; } }
+        public override int AosStrReq { get { return Maillons_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

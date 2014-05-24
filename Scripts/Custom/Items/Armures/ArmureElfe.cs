@@ -5,18 +5,17 @@ namespace Server.Items
 {
     public class ElfeHelm : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Feuille_Casque; } }
-        public override int BaseContondantResistance { get { return Feuille_Casque_Contondant; } }
-        public override int BaseTranchantResistance { get { return Feuille_Casque_Tranchant; } }
-        public override int BasePerforantResistance { get { return Feuille_Casque_Perforant; } }
-        public override int BaseMagieResistance { get { return Feuille_Casque_Magique; } }
+        public override int BasePhysicalResistance { get { return Feuille_Physique; } }
+        public override int BaseContondantResistance { get { return Feuille_Contondant; } }
+        public override int BaseTranchantResistance { get { return Feuille_Tranchant; } }
+        public override int BasePerforantResistance { get { return Feuille_Perforant; } }
+        public override int BaseMagieResistance { get { return Feuille_Magique; } }
 
         public override int InitMinHits { get { return Feuille_MinDurabilite; } }
         public override int InitMaxHits { get { return Feuille_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Feuille_Casque_Force; } }
+        public override int AosStrReq { get { return Feuille_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +53,17 @@ namespace Server.Items
     }
     public class ElfeGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Feuille_Gorget; } }
-        public override int BaseContondantResistance { get { return Feuille_Gorget_Contondant; } }
-        public override int BaseTranchantResistance { get { return Feuille_Gorget_Tranchant; } }
-        public override int BasePerforantResistance { get { return Feuille_Gorget_Perforant; } }
-        public override int BaseMagieResistance { get { return Feuille_Gorget_Magique; } }
+        public override int BasePhysicalResistance { get { return Feuille_Physique; } }
+        public override int BaseContondantResistance { get { return Feuille_Contondant; } }
+        public override int BaseTranchantResistance { get { return Feuille_Tranchant; } }
+        public override int BasePerforantResistance { get { return Feuille_Perforant; } }
+        public override int BaseMagieResistance { get { return Feuille_Magique; } }
 
         public override int InitMinHits { get { return Feuille_MinDurabilite; } }
         public override int InitMaxHits { get { return Feuille_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Feuille_Gorget_Force; } }
+        public override int AosStrReq { get { return Feuille_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -103,18 +101,17 @@ namespace Server.Items
     }
     public class ElfeArms : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Feuille_Brassards; } }
-        public override int BaseContondantResistance { get { return Feuille_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return Feuille_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return Feuille_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return Feuille_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return Feuille_Physique; } }
+        public override int BaseContondantResistance { get { return Feuille_Contondant; } }
+        public override int BaseTranchantResistance { get { return Feuille_Tranchant; } }
+        public override int BasePerforantResistance { get { return Feuille_Perforant; } }
+        public override int BaseMagieResistance { get { return Feuille_Magique; } }
 
         public override int InitMinHits { get { return Feuille_MinDurabilite; } }
         public override int InitMaxHits { get { return Feuille_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Feuille_Brassards_Force; } }
+        public override int AosStrReq { get { return Feuille_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -152,18 +149,17 @@ namespace Server.Items
     }
     public class ElfeLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Feuille_Jambieres; } }
-        public override int BaseContondantResistance { get { return Feuille_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return Feuille_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return Feuille_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return Feuille_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return Feuille_Physique; } }
+        public override int BaseContondantResistance { get { return Feuille_Contondant; } }
+        public override int BaseTranchantResistance { get { return Feuille_Tranchant; } }
+        public override int BasePerforantResistance { get { return Feuille_Perforant; } }
+        public override int BaseMagieResistance { get { return Feuille_Magique; } }
 
         public override int InitMinHits { get { return Feuille_MinDurabilite; } }
         public override int InitMaxHits { get { return Feuille_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Feuille_Jambieres_Force; } }
+        public override int AosStrReq { get { return Feuille_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -201,18 +197,17 @@ namespace Server.Items
     }
     public class ElfeTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Feuille_Cuirasse; } }
-        public override int BaseContondantResistance { get { return Feuille_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return Feuille_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return Feuille_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return Feuille_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return Feuille_Physique; } }
+        public override int BaseContondantResistance { get { return Feuille_Contondant; } }
+        public override int BaseTranchantResistance { get { return Feuille_Tranchant; } }
+        public override int BasePerforantResistance { get { return Feuille_Perforant; } }
+        public override int BaseMagieResistance { get { return Feuille_Magique; } }
 
         public override int InitMinHits { get { return Feuille_MinDurabilite; } }
         public override int InitMaxHits { get { return Feuille_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Feuille_Cuirasse_Force; } }
+        public override int AosStrReq { get { return Feuille_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

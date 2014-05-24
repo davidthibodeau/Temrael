@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class DrowHelm : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return ChainElfeNoir_Niveau; } }
 
         public override Layer Layer
         {
@@ -19,19 +19,19 @@ namespace Server.Items
             }
         }
 
-        public override int BasePhysicalResistance { get { return Ring_Casque; } }
-        public override int BaseContondantResistance { get { return Ring_Casque_Contondant; } }
-        public override int BaseTranchantResistance { get { return Ring_Casque_Tranchant; } }
-        public override int BasePerforantResistance { get { return Ring_Casque_Perforant; } }
-        public override int BaseMagieResistance { get { return Ring_Casque_Magique; } }
+        public override int BasePhysicalResistance { get { return ChainElfeNoir_Physique; } }
+        public override int BaseContondantResistance { get { return ChainElfeNoir_Contondant; } }
+        public override int BaseTranchantResistance { get { return ChainElfeNoir_Tranchant; } }
+        public override int BasePerforantResistance { get { return ChainElfeNoir_Perforant; } }
+        public override int BaseMagieResistance { get { return ChainElfeNoir_Magique; } }
 
-        public override int InitMinHits { get { return Ring_MinDurabilite; } }
-        public override int InitMaxHits { get { return Ring_MaxDurabilite; } }
+        public override int InitMinHits { get { return ChainElfeNoir_MinDurabilite; } }
+        public override int InitMaxHits { get { return ChainElfeNoir_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Ring_Casque_Force; } }
+        public override int AosStrReq { get { return ChainElfeNoir_Force; } }
         public override int OldStrReq { get { return 40; } }
 
-        public override int OldDexBonus { get { return Ring_Casque_Dex; } }
+        public override int OldDexBonus { get { return -2; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -66,7 +66,7 @@ namespace Server.Items
     }
     public class DrowGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return ChainElfeNoir_Niveau; } }
 
         public override Layer Layer
         {
@@ -80,19 +80,19 @@ namespace Server.Items
             }
         }
 
-        public override int BasePhysicalResistance { get { return Ring_Gants; } }
-        public override int BaseContondantResistance { get { return Ring_Gants_Contondant; } }
-        public override int BaseTranchantResistance { get { return Ring_Gants_Tranchant; } }
-        public override int BasePerforantResistance { get { return Ring_Gants_Perforant; } }
-        public override int BaseMagieResistance { get { return Ring_Gants_Magique; } }
+        public override int BasePhysicalResistance { get { return ChainElfeNoir_Physique; } }
+        public override int BaseContondantResistance { get { return ChainElfeNoir_Contondant; } }
+        public override int BaseTranchantResistance { get { return ChainElfeNoir_Tranchant; } }
+        public override int BasePerforantResistance { get { return ChainElfeNoir_Perforant; } }
+        public override int BaseMagieResistance { get { return ChainElfeNoir_Magique; } }
 
-        public override int InitMinHits { get { return Ring_MinDurabilite; } }
-        public override int InitMaxHits { get { return Ring_MaxDurabilite; } }
+        public override int InitMinHits { get { return ChainElfeNoir_MinDurabilite; } }
+        public override int InitMaxHits { get { return ChainElfeNoir_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Ring_Gants_Force; } }
+        public override int AosStrReq { get { return ChainElfeNoir_Force; } }
         public override int OldStrReq { get { return 40; } }
 
-        public override int OldDexBonus { get { return Ring_Gants_Dex; } }
+        public override int OldDexBonus { get { return -2; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -127,7 +127,7 @@ namespace Server.Items
     }
     public class DrowArms : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return ChainElfeNoir_Niveau; } }
 
         public override Layer Layer
         {
@@ -141,19 +141,19 @@ namespace Server.Items
             }
         }
 
-        public override int BasePhysicalResistance { get { return Ring_Brassards; } }
-        public override int BaseContondantResistance { get { return Ring_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return Ring_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return Ring_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return Ring_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return ChainElfeNoir_Physique; } }
+        public override int BaseContondantResistance { get { return ChainElfeNoir_Contondant; } }
+        public override int BaseTranchantResistance { get { return ChainElfeNoir_Tranchant; } }
+        public override int BasePerforantResistance { get { return ChainElfeNoir_Perforant; } }
+        public override int BaseMagieResistance { get { return ChainElfeNoir_Magique; } }
 
-        public override int InitMinHits { get { return Ring_MinDurabilite; } }
-        public override int InitMaxHits { get { return Ring_MaxDurabilite; } }
+        public override int InitMinHits { get { return ChainElfeNoir_MinDurabilite; } }
+        public override int InitMaxHits { get { return ChainElfeNoir_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Ring_Brassards_Force; } }
+        public override int AosStrReq { get { return ChainElfeNoir_Force; } }
         public override int OldStrReq { get { return 40; } }
 
-        public override int OldDexBonus { get { return Ring_Brassards_Dex; } }
+        public override int OldDexBonus { get { return -2; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -188,7 +188,7 @@ namespace Server.Items
     }
     public class DrowLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return ChainElfeNoir_Niveau; } }
 
         public override Layer Layer
         {
@@ -202,19 +202,19 @@ namespace Server.Items
             }
         }
 
-        public override int BasePhysicalResistance { get { return Ring_Jambieres; } }
-        public override int BaseContondantResistance { get { return Ring_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return Ring_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return Ring_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return Ring_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return ChainElfeNoir_Physique; } }
+        public override int BaseContondantResistance { get { return ChainElfeNoir_Contondant; } }
+        public override int BaseTranchantResistance { get { return ChainElfeNoir_Tranchant; } }
+        public override int BasePerforantResistance { get { return ChainElfeNoir_Perforant; } }
+        public override int BaseMagieResistance { get { return ChainElfeNoir_Magique; } }
 
-        public override int InitMinHits { get { return Ring_MinDurabilite; } }
-        public override int InitMaxHits { get { return Ring_MaxDurabilite; } }
+        public override int InitMinHits { get { return ChainElfeNoir_MinDurabilite; } }
+        public override int InitMaxHits { get { return ChainElfeNoir_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Ring_Jambieres_Force; } }
+        public override int AosStrReq { get { return ChainElfeNoir_Force; } }
         public override int OldStrReq { get { return 40; } }
 
-        public override int OldDexBonus { get { return Ring_Jamvieres_Dex; } }
+        public override int OldDexBonus { get { return -2; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -249,7 +249,7 @@ namespace Server.Items
     }
     public class DrowTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return ChainElfeNoir_Niveau; } }
 
         public override Layer Layer
         {
@@ -263,19 +263,19 @@ namespace Server.Items
             }
         }
 
-        public override int BasePhysicalResistance { get { return Ring_Cuirasse; } }
-        public override int BaseContondantResistance { get { return Ring_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return Ring_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return Ring_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return Ring_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return ChainElfeNoir_Physique; } }
+        public override int BaseContondantResistance { get { return ChainElfeNoir_Contondant; } }
+        public override int BaseTranchantResistance { get { return ChainElfeNoir_Tranchant; } }
+        public override int BasePerforantResistance { get { return ChainElfeNoir_Perforant; } }
+        public override int BaseMagieResistance { get { return ChainElfeNoir_Magique; } }
 
-        public override int InitMinHits { get { return Ring_MinDurabilite; } }
-        public override int InitMaxHits { get { return Ring_MaxDurabilite; } }
+        public override int InitMinHits { get { return ChainElfeNoir_MinDurabilite; } }
+        public override int InitMaxHits { get { return ChainElfeNoir_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Ring_Cuirasse_Force; } }
+        public override int AosStrReq { get { return ChainElfeNoir_Force; } }
         public override int OldStrReq { get { return 40; } }
 
-        public override int OldDexBonus { get { return Ring_Cuirasse_Dex; } }
+        public override int OldDexBonus { get { return -2; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

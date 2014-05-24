@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class CasqueGothique : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueGothique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueGothique_Casque; } }
-        public override int BaseContondantResistance { get { return PlaqueGothique_Casque_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueGothique_Casque_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueGothique_Casque_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueGothique_Casque_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueGothique_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueGothique_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueGothique_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueGothique_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueGothique_Magique; } }
 
         public override int InitMinHits { get { return PlaqueGothique_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueGothique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueGothique_Casque_Force; } }
+        public override int AosStrReq { get { return PlaqueGothique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class BrassardsGothique : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueGothique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueGothique_Brassards; } }
-        public override int BaseContondantResistance { get { return PlaqueGothique_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueGothique_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueGothique_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueGothique_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueGothique_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueGothique_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueGothique_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueGothique_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueGothique_Magique; } }
 
         public override int InitMinHits { get { return PlaqueGothique_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueGothique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueGothique_Brassards_Force; } }
+        public override int AosStrReq { get { return PlaqueGothique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -103,18 +103,18 @@ namespace Server.Items
     }
     public class CuirasseGothique : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        public override int NiveauAttirail { get { return PlaqueGothique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueGothique_Cuirasse; } }
-        public override int BaseContondantResistance { get { return PlaqueGothique_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueGothique_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueGothique_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueGothique_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueGothique_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueGothique_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueGothique_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueGothique_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueGothique_Magique; } }
 
         public override int InitMinHits { get { return PlaqueGothique_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueGothique_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueGothique_Cuirasse_Force; } }
+        public override int AosStrReq { get { return PlaqueGothique_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

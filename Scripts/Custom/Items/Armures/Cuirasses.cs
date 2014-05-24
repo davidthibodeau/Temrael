@@ -7,16 +7,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return CuirasseReligieuse; } }
-        public override int BaseContondantResistance { get { return CuirasseReligieuse_Contondant; } }
-        public override int BaseTranchantResistance { get { return CuirasseReligieuse_Tranchant; } }
-        public override int BasePerforantResistance { get { return CuirasseReligieuse_Perforant; } }
-        public override int BaseMagieResistance { get { return CuirasseReligieuse_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def4; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def4; } }
 
-        public override int InitMinHits { get { return CuirasseReligieuse_MinDurabilite; } }
-        public override int InitMaxHits { get { return CuirasseReligieuse_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite4; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite4; } }
 
-        public override int AosStrReq { get { return CuirasseReligieuse_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force4; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -56,16 +56,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 3; } }
 
-        public override int BasePhysicalResistance { get { return TuniqueChaine; } }
-        public override int BaseContondantResistance { get { return TuniqueChaine_Contondant; } }
-        public override int BaseTranchantResistance { get { return TuniqueChaine_Tranchant; } }
-        public override int BasePerforantResistance { get { return TuniqueChaine_Perforant; } }
-        public override int BaseMagieResistance { get { return TuniqueChaine_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def3; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def3; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def3; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def3; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def3; } }
 
-        public override int InitMinHits { get { return TuniqueChaine_MinDurabilite; } }
-        public override int InitMaxHits { get { return TuniqueChaine_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite3; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite3; } }
 
-        public override int AosStrReq { get { return TuniqueChaine_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force3; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -105,16 +105,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return Cuirasse; } }
-        public override int BaseContondantResistance { get { return Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def5; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def5; } }
 
-        public override int InitMinHits { get { return Cuirasse_MinDurabilite; } }
-        public override int InitMaxHits { get { return Cuirasse_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite5; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite5; } }
 
-        public override int AosStrReq { get { return Cuirasse_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force5; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -154,16 +154,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 6; } }
 
-        public override int BasePhysicalResistance { get { return CuirasseDraconique_Cuirasse; } }
-        public override int BaseContondantResistance { get { return CuirasseDraconique_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return CuirasseDraconique_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return CuirasseDraconique_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return CuirasseDraconique_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def6; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def6; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def6; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def6; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def6; } }
 
-        public override int InitMinHits { get { return CuirasseDraconique_MinDurabilite; } }
-        public override int InitMaxHits { get { return CuirasseDraconique_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite6; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite6; } }
 
-        public override int AosStrReq { get { return CuirasseDraconique_Cuirasse_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force6; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -203,16 +203,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return CuirasseBarbare; } }
-        public override int BaseContondantResistance { get { return CuirasseBarbare_Contondant; } }
-        public override int BaseTranchantResistance { get { return CuirasseBarbare_Tranchant; } }
-        public override int BasePerforantResistance { get { return CuirasseBarbare_Perforant; } }
-        public override int BaseMagieResistance { get { return CuirasseBarbare_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def4; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def4; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def4; } }
 
-        public override int InitMinHits { get { return CuirasseBarbare_MinDurabilite; } }
-        public override int InitMaxHits { get { return CuirasseBarbare_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite4; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite4; } }
 
-        public override int AosStrReq { get { return CuirasseBarbare_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force4; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -252,16 +252,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return CuirasseNordique; } }
-        public override int BaseContondantResistance { get { return CuirasseNordique_Contondant; } }
-        public override int BaseTranchantResistance { get { return CuirasseNordique_Tranchant; } }
-        public override int BasePerforantResistance { get { return CuirasseNordique_Perforant; } }
-        public override int BaseMagieResistance { get { return CuirasseNordique_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseTranchantResistance { get { return ArmureDivers_Def5; } }
+        public override int BasePerforantResistance { get { return ArmureDivers_Def5; } }
+        public override int BaseMagieResistance { get { return ArmureDivers_Def5; } }
 
-        public override int InitMinHits { get { return CuirasseNordique_MinDurabilite; } }
-        public override int InitMaxHits { get { return CuirasseNordique_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmureDivers_MinDurabilite5; } }
+        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite5; } }
 
-        public override int AosStrReq { get { return CuirasseNordique_Force; } }
+        public override int AosStrReq { get { return ArmureDivers_Force5; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

@@ -5,15 +5,58 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
+    public class BouclierDecorer : BaseShield
+    {
+        public override int NiveauAttirail { get { return 6; } }
+
+        public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def6; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def6; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def6; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def6; } }
+
+        public override int InitMinHits { get { return Bouclier_MinDurabilite6; } }
+        public override int InitMaxHits { get { return Bouclier_MaxDurabilite6; } }
+
+        public override int AosStrReq { get { return Bouclier_Force6; } }
+
+        public override int ArmorBase { get { return 30; } }
+
+        [Constructable]
+        public BouclierDecorer()
+            : base(0x2883)
+        {
+            Weight = 2.0;
+            Name = "Bouclier Decore";
+        }
+
+        public BouclierDecorer(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
+    
     public class BouclierElfique : BaseShield
     {
         public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def5; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def5; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def5; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def5; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def5; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite5; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite5; } }
@@ -53,16 +96,16 @@ namespace Server.Items
     {
         public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return 0; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 1; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BasePhysicalResistance { get { return Bouclier_Def1; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def1; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def1; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def1; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def1; } }
 
-        public override int InitMinHits { get { return 25; } }
-        public override int InitMaxHits { get { return 30; } }
+        public override int InitMinHits { get { return Bouclier_MinDurabilite1; } }
+        public override int InitMaxHits { get { return Bouclier_MinDurabilite1; } }
 
-        public override int AosStrReq { get { return 35; } }
+        public override int AosStrReq { get { return Bouclier_Force1; } }
 
         public override int ArmorBase { get { return 10; } }
 
@@ -98,10 +141,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def5; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def5; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def5; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def5; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def5; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite5; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite5; } }
@@ -142,10 +185,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def5; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def5; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def5; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def5; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def5; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite5; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite5; } }
@@ -186,10 +229,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def6; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def6; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def6; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def6; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite6; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite6; } }
@@ -230,10 +273,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def4; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def4; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def4; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def4; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite4; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite4; } }
@@ -274,10 +317,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def4; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def4; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def4; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def4; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite4; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite4; } }
@@ -318,10 +361,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def4; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def4; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def4; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def4; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite4; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite4; } }
@@ -362,10 +405,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
-        public override int BaseContondantResistance { get { return 0; } }
-        public override int BaseTranchantResistance { get { return 0; } }
-        public override int BasePerforantResistance { get { return 0; } }
-        public override int BaseMagieResistance { get { return 0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def6; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def6; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def6; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def6; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite6; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite6; } }
@@ -406,10 +449,10 @@ namespace Server.Items
         public override int NiveauAttirail { get { return 3; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def3; } }
-        public override int BaseContondantResistance { get { return Resistances_Low0; } }
-        public override int BaseTranchantResistance { get { return Resistances_Inferior0; } }
-        public override int BasePerforantResistance { get { return Resistances_Inferior0; } }
-        public override int BaseMagieResistance { get { return Resistances_Low0; } }
+        public override int BaseContondantResistance { get { return Bouclier_Def3; } }
+        public override int BaseTranchantResistance { get { return Bouclier_Def3; } }
+        public override int BasePerforantResistance { get { return Bouclier_Def3; } }
+        public override int BaseMagieResistance { get { return Bouclier_Def3; } }
 
         public override int InitMinHits { get { return Bouclier_MinDurabilite3; } }
         public override int InitMaxHits { get { return Bouclier_MaxDurabilite3; } }

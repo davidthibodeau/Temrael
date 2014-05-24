@@ -5,18 +5,17 @@ namespace Server.Items
 {
     public class StuddedBarbareGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Studded_Brassards; } }
-        public override int BaseContondantResistance { get { return Studded_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return Studded_Physique; } }
+        public override int BaseContondantResistance { get { return Studded_Contondant; } }
+        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
+        public override int BasePerforantResistance { get { return Studded_Perforant; } }
+        public override int BaseMagieResistance { get { return Studded_Magique; } }
 
         public override int InitMinHits { get { return Studded_MinDurabilite; } }
         public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Studded_Brassards_Force; } }
+        public override int AosStrReq { get { return Studded_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -24,7 +23,7 @@ namespace Server.Items
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
 
-        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
+        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Studded; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularLeather; } }
 
         [Constructable]
@@ -54,18 +53,17 @@ namespace Server.Items
     }
     public class StuddedBarbareGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Studded_Gorget; } }
-        public override int BaseContondantResistance { get { return Studded_Gorget_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Gorget_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Gorget_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Gorget_Magique; } }
+        public override int BasePhysicalResistance { get { return Studded_Physique; } }
+        public override int BaseContondantResistance { get { return Studded_Contondant; } }
+        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
+        public override int BasePerforantResistance { get { return Studded_Perforant; } }
+        public override int BaseMagieResistance { get { return Studded_Magique; } }
 
         public override int InitMinHits { get { return Studded_MinDurabilite; } }
         public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Studded_Gorget_Force; } }
+        public override int AosStrReq { get { return Studded_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -73,7 +71,7 @@ namespace Server.Items
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
 
-        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
+        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Studded; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularLeather; } }
 
         [Constructable]
@@ -103,18 +101,17 @@ namespace Server.Items
     }
     public class StuddedBarbareLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Studded_Jambieres; } }
-        public override int BaseContondantResistance { get { return Studded_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return Studded_Physique; } }
+        public override int BaseContondantResistance { get { return Studded_Contondant; } }
+        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
+        public override int BasePerforantResistance { get { return Studded_Perforant; } }
+        public override int BaseMagieResistance { get { return Studded_Magique; } }
 
         public override int InitMinHits { get { return Studded_MinDurabilite; } }
         public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Studded_Jambieres_Force; } }
+        public override int AosStrReq { get { return Studded_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -122,7 +119,7 @@ namespace Server.Items
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
 
-        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
+        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Studded; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularLeather; } }
 
         [Constructable]
@@ -152,18 +149,17 @@ namespace Server.Items
     }
     public class StuddedBarbareTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Studded_Cuirasse; } }
-        public override int BaseContondantResistance { get { return Studded_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return Studded_Physique; } }
+        public override int BaseContondantResistance { get { return Studded_Contondant; } }
+        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
+        public override int BasePerforantResistance { get { return Studded_Perforant; } }
+        public override int BaseMagieResistance { get { return Studded_Magique; } }
 
         public override int InitMinHits { get { return Studded_MinDurabilite; } }
         public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Studded_Cuirasse_Force; } }
+        public override int AosStrReq { get { return Studded_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -171,7 +167,7 @@ namespace Server.Items
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
 
-        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
+        public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Studded; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularLeather; } }
 
         [Constructable]

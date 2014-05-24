@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class PlaqueChevalierGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueNoble_Brassards; } }
-        public override int BaseContondantResistance { get { return PlaqueNoble_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueNoble_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueNoble_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueNoble_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueNoble_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueNoble_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueNoble_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueNoble_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueNoble_Magique; } }
 
         public override int InitMinHits { get { return PlaqueNoble_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueNoble_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueNoble_Brassards_Force; } }
+        public override int AosStrReq { get { return PlaqueNoble_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class PlaqueChevalierTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueNoble_Cuirasse; } }
-        public override int BaseContondantResistance { get { return PlaqueNoble_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueNoble_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueNoble_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueNoble_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueNoble_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueNoble_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueNoble_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueNoble_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueNoble_Magique; } }
 
         public override int InitMinHits { get { return PlaqueNoble_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueNoble_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueNoble_Cuirasse_Force; } }
+        public override int AosStrReq { get { return PlaqueNoble_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -103,18 +103,18 @@ namespace Server.Items
     }
     public class PlaqueChevalierHelm : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueNoble_Casque; } }
-        public override int BaseContondantResistance { get { return PlaqueNoble_Casque_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueNoble_Casque_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueNoble_Casque_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueNoble_Casque_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueNoble_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueNoble_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueNoble_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueNoble_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueNoble_Magique; } }
 
         public override int InitMinHits { get { return PlaqueNoble_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueNoble_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueNoble_Casque_Force; } }
+        public override int AosStrReq { get { return PlaqueNoble_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -152,18 +152,18 @@ namespace Server.Items
     }
     public class PlaqueChevalierGloves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueNoble_Gants; } }
-        public override int BaseContondantResistance { get { return PlaqueNoble_Gants_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueNoble_Gants_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueNoble_Gants_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueNoble_Gants_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueNoble_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueNoble_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueNoble_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueNoble_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueNoble_Magique; } }
 
         public override int InitMinHits { get { return PlaqueNoble_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueNoble_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueNoble_Gants_Force; } }
+        public override int AosStrReq { get { return PlaqueNoble_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -201,18 +201,18 @@ namespace Server.Items
     }
     public class PlaqueChevalierGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueNoble_Gorget; } }
-        public override int BaseContondantResistance { get { return PlaqueNoble_Gorget_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueNoble_Gorget_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueNoble_Gorget_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueNoble_Gorget_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueNoble_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueNoble_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueNoble_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueNoble_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueNoble_Magique; } }
 
         public override int InitMinHits { get { return PlaqueNoble_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueNoble_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueNoble_Gorget_Force; } }
+        public override int AosStrReq { get { return PlaqueNoble_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -250,18 +250,18 @@ namespace Server.Items
     }
     public class PlaqueChevalierLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueNoble_Jambieres; } }
-        public override int BaseContondantResistance { get { return PlaqueNoble_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueNoble_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueNoble_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueNoble_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return PlaqueNoble_Physique; } }
+        public override int BaseContondantResistance { get { return PlaqueNoble_Contondant; } }
+        public override int BaseTranchantResistance { get { return PlaqueNoble_Tranchant; } }
+        public override int BasePerforantResistance { get { return PlaqueNoble_Perforant; } }
+        public override int BaseMagieResistance { get { return PlaqueNoble_Magique; } }
 
         public override int InitMinHits { get { return PlaqueNoble_MinDurabilite; } }
         public override int InitMaxHits { get { return PlaqueNoble_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return PlaqueNoble_Jambieres_Force; } }
+        public override int AosStrReq { get { return PlaqueNoble_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }

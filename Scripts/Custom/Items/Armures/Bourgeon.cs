@@ -5,18 +5,18 @@ namespace Server.Items
 {
     public class BourgeonGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Bourgeon_Brassards; } }
-        public override int BaseContondantResistance { get { return Bourgeon_Brassards_Contondant; } }
-        public override int BaseTranchantResistance { get { return Bourgeon_Brassards_Tranchant; } }
-        public override int BasePerforantResistance { get { return Bourgeon_Brassards_Perforant; } }
-        public override int BaseMagieResistance { get { return Bourgeon_Brassards_Magique; } }
+        public override int BasePhysicalResistance { get { return Bourgeon_Physique; } }
+        public override int BaseContondantResistance { get { return Bourgeon_Contondant; } }
+        public override int BaseTranchantResistance { get { return Bourgeon_Tranchant; } }
+        public override int BasePerforantResistance { get { return Bourgeon_Perforant; } }
+        public override int BaseMagieResistance { get { return Bourgeon_Magique; } }
 
         public override int InitMinHits { get { return Bourgeon_MinDurabilite; } }
         public override int InitMaxHits { get { return Bourgeon_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Bourgeon_Brassards_Force; } }
+        public override int AosStrReq { get { return Bourgeon_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -32,7 +32,7 @@ namespace Server.Items
             : base(0x2858)
         {
             Weight = 2.0;
-            Name = "Bourgeon";
+            Name = "Brassards Bourgeon";
         }
 
         public BourgeonGreaves(Serial serial)
@@ -54,18 +54,18 @@ namespace Server.Items
     }
     public class BourgeonLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Bourgeon_Jambieres; } }
-        public override int BaseContondantResistance { get { return Bourgeon_Jambieres_Contondant; } }
-        public override int BaseTranchantResistance { get { return Bourgeon_Jambieres_Tranchant; } }
-        public override int BasePerforantResistance { get { return Bourgeon_Jambieres_Perforant; } }
-        public override int BaseMagieResistance { get { return Bourgeon_Jambieres_Magique; } }
+        public override int BasePhysicalResistance { get { return Bourgeon_Physique; } }
+        public override int BaseContondantResistance { get { return Bourgeon_Contondant; } }
+        public override int BaseTranchantResistance { get { return Bourgeon_Tranchant; } }
+        public override int BasePerforantResistance { get { return Bourgeon_Perforant; } }
+        public override int BaseMagieResistance { get { return Bourgeon_Magique; } }
 
         public override int InitMinHits { get { return Bourgeon_MinDurabilite; } }
         public override int InitMaxHits { get { return Bourgeon_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Bourgeon_Jambieres_Force; } }
+        public override int AosStrReq { get { return Bourgeon_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -81,7 +81,7 @@ namespace Server.Items
             : base(0x2859)
         {
             Weight = 2.0;
-            Name = "Bourgeon";
+            Name = "Jambières Bourgeon";
         }
 
         public BourgeonLeggings(Serial serial)
@@ -103,18 +103,18 @@ namespace Server.Items
     }
     public class BourgeonTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 2; } }
+        public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Bourgeon_Cuirasse; } }
-        public override int BaseContondantResistance { get { return Bourgeon_Cuirasse_Contondant; } }
-        public override int BaseTranchantResistance { get { return Bourgeon_Cuirasse_Tranchant; } }
-        public override int BasePerforantResistance { get { return Bourgeon_Cuirasse_Perforant; } }
-        public override int BaseMagieResistance { get { return Bourgeon_Cuirasse_Magique; } }
+        public override int BasePhysicalResistance { get { return Bourgeon_Physique; } }
+        public override int BaseContondantResistance { get { return Bourgeon_Contondant; } }
+        public override int BaseTranchantResistance { get { return Bourgeon_Tranchant; } }
+        public override int BasePerforantResistance { get { return Bourgeon_Perforant; } }
+        public override int BaseMagieResistance { get { return Bourgeon_Magique; } }
 
         public override int InitMinHits { get { return Bourgeon_MinDurabilite; } }
         public override int InitMaxHits { get { return Bourgeon_MaxDurabilite; } }
 
-        public override int AosStrReq { get { return Bourgeon_Cuirasse_Force; } }
+        public override int AosStrReq { get { return Bourgeon_Force; } }
         public override int OldStrReq { get { return 40; } }
 
         public override int OldDexBonus { get { return -2; } }
@@ -130,7 +130,7 @@ namespace Server.Items
             : base(0x285A)
         {
             Weight = 2.0;
-            Name = "Bourgeon";
+            Name = "Tunique Bourgeon";
         }
 
         public BourgeonTunic(Serial serial)
