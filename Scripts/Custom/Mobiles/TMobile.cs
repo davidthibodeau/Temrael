@@ -1562,50 +1562,100 @@ namespace Server.Mobiles
         {
             int req = armor.NiveauAttirail;
 
-            if (armor.MaterialType == ArmorMaterialType.Bone /*|| armor.MaterialType == ArmorMaterialType.Leather || armor.MaterialType == ArmorMaterialType.Studded*/)
+            if (armor.MaterialType == ArmorMaterialType.Bone)
             {
                 switch (armor.Resource)
                 {
                     case CraftResource.RegularBones:
-                    case CraftResource.RegularLeather:
-                    case CraftResource.ReptilienBones:
-                    case CraftResource.ReptilienLeather:
                         req = 1;
                         break;
+                    case CraftResource.GobelinBones:
+                    case CraftResource.ReptilienBones:
                     case CraftResource.NordiqueBones:
-                    case CraftResource.NordiqueLeather:
                     case CraftResource.DesertiqueBones:
-                    case CraftResource.DesertiqueLeather:
                         req = 2;
                         break;
                     case CraftResource.MaritimeBones:
-                    case CraftResource.MaritimeLeather:
                     case CraftResource.VolcaniqueBones:
-                    case CraftResource.VolcaniqueLeather:
+                    case CraftResource.GeantBones:
                         req = 3;
                         break;
-                    case CraftResource.GeantBones:
-                    case CraftResource.GeantLeather:
                     case CraftResource.MinotaureBones:
-                    case CraftResource.MinotaurLeather:
                     case CraftResource.OphidienBones:
-                    case CraftResource.OphidienLeather:
                     case CraftResource.ArachnideBones:
-                    case CraftResource.ArachnideLeather:
                         req = 4;
                         break;
                     case CraftResource.MagiqueBones:
-                    case CraftResource.MagiqueLeather:
                     case CraftResource.AncienBones:
-                    case CraftResource.AncienLeather:
                     case CraftResource.DemonBones:
-                    case CraftResource.DemoniaqueLeather:
-                    case CraftResource.DragonBones:
-                    case CraftResource.DragoniqueLeather:
                         req = 5;
                         break;
+                    case CraftResource.DragonBones:
                     case CraftResource.BalronBones:
                     case CraftResource.WyrmBones:
+                        req = 6;
+                        break;
+                }
+            }
+            else if (armor.MaterialType == ArmorMaterialType.Leather)
+            {
+                switch (armor.Resource)
+                {
+                    case CraftResource.RegularLeather:
+                    case CraftResource.ReptilienLeather:
+                    case CraftResource.NordiqueLeather:
+                    case CraftResource.DesertiqueLeather:
+                        req = 1;
+                        break;
+                    case CraftResource.MaritimeLeather:
+                    case CraftResource.VolcaniqueLeather:
+                    case CraftResource.GeantLeather:
+                        req = 2;
+                        break;
+                    case CraftResource.MinotaurLeather:
+                    case CraftResource.OphidienLeather:
+                    case CraftResource.ArachnideLeather:
+                        req = 3;
+                        break;
+                    case CraftResource.MagiqueLeather:
+                    case CraftResource.AncienLeather:
+                    case CraftResource.DemoniaqueLeather:
+                        req = 4;
+                        break;
+                    case CraftResource.DragoniqueLeather:
+                    case CraftResource.LupusLeather:
+                        req = 5;
+                        break;
+                }
+            }
+            else if (armor.MaterialType == ArmorMaterialType.Studded)
+            {
+                switch (armor.Resource)
+                {
+                    case CraftResource.RegularLeather:
+                        req = 1;
+                        break;
+                    case CraftResource.ReptilienLeather:
+                    case CraftResource.NordiqueLeather:
+                    case CraftResource.DesertiqueLeather:
+                        req = 2;
+                        break;
+                    case CraftResource.MaritimeLeather:
+                    case CraftResource.VolcaniqueLeather:
+                    case CraftResource.GeantLeather:
+                        req = 3;
+                        break;
+                    case CraftResource.MinotaurLeather:
+                    case CraftResource.OphidienLeather:
+                    case CraftResource.ArachnideLeather:
+                        req = 4;
+                        break;
+                    case CraftResource.MagiqueLeather:
+                    case CraftResource.AncienLeather:
+                    case CraftResource.DemoniaqueLeather:
+                        req = 5;
+                        break;
+                    case CraftResource.DragoniqueLeather:
                     case CraftResource.LupusLeather:
                         req = 6;
                         break;
