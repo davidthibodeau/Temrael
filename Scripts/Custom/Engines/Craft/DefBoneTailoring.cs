@@ -126,19 +126,19 @@ namespace Server.Engines.Craft
             int index = -1;
 
             #region Bone Armor
-            index = AddCraft(typeof(BoneHelm), "Armure d'Os", "Casque d'Os", 50.0, 70.0, typeof(Bone), "Os", 4, 1044463);
+            index = AddCraft(typeof(BoneHelm), "Armure d'Os", "Casque d'Os", 40.0, 70.0, typeof(Bone), "Os", 4, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
 
-            index = AddCraft(typeof(BoneGloves), "Armure d'Os", "Gants d'Os", 50.0, 70.0, typeof(Bone), "Os", 6, 1044463);
+            index = AddCraft(typeof(BoneGloves), "Armure d'Os", "Gants d'Os", 40.0, 70.0, typeof(Bone), "Os", 6, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 3, 1044463);
 
-            index = AddCraft(typeof(BoneArms), "Armure d'Os", "Brassards d'Os", 50.0, 70.0, typeof(Bone), "Os", 8, 1044463);
+            index = AddCraft(typeof(BoneArms), "Armure d'Os", "Brassards d'Os", 40.0, 70.0, typeof(Bone), "Os", 8, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 4, 1044463);
 
-            index = AddCraft(typeof(BoneLegs), "Armure d'Os", "Jambieres d'Os", 50.0, 70.0, typeof(Bone), "Os", 10, 1044463);
+            index = AddCraft(typeof(BoneLegs), "Armure d'Os", "Jambieres d'Os", 40.0, 70.0, typeof(Bone), "Os", 10, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 5, 1044463);
 
-            index = AddCraft(typeof(BoneChest), "Armure d'Os", "Plastron d'Os", 50.0, 70.0, typeof(Bone), "Os", 12, 1044463);
+            index = AddCraft(typeof(BoneChest), "Armure d'Os", "Plastron d'Os", 40.0, 70.0, typeof(Bone), "Os", 12, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 6, 1044463);
             #endregion
 
@@ -148,22 +148,22 @@ namespace Server.Engines.Craft
             // Add every material you want the player to be able to choose from
             // This will override the overridable material
             AddSubRes(typeof(Bone), "Os", 00.0, 1049311);
-            AddSubRes(typeof(GobelinBone), "Os Gobelin", 20.0, 1049311);
-            AddSubRes(typeof(ReptilienBone), "Os Reptilien", 20.0, 1049311);
-            AddSubRes(typeof(NordiqueBone), "Os Nordique", 20.0, 1049311);
-            AddSubRes(typeof(DesertiqueBone), "Os Désertique", 20.0, 1049311);
-            AddSubRes(typeof(MaritimeBone), "Os Maritime", 40.0, 1049311);
-            AddSubRes(typeof(VolcaniqueBone), "Os Volcanique", 40.0, 1049311);
-            AddSubRes(typeof(GeantBone), "Os Géant", 40.0, 1049311);
-            AddSubRes(typeof(MinotaureBone), "Os Minotaure", 60.0, 1049311);
-            AddSubRes(typeof(OphidienBone), "Os Ophidien", 60.0, 1049311);
-            AddSubRes(typeof(ArachnideBone), "Os Arachnide", 60.0, 1049311);
+            AddSubRes(typeof(GobelinBone), "Os Gobelin", 50.0, 1049311);
+            AddSubRes(typeof(ReptilienBone), "Os Reptilien", 50.0, 1049311);
+            AddSubRes(typeof(NordiqueBone), "Os Nordique", 50.0, 1049311);
+            AddSubRes(typeof(DesertiqueBone), "Os Désertique", 50.0, 1049311);
+            AddSubRes(typeof(MaritimeBone), "Os Maritime", 60.0, 1049311);
+            AddSubRes(typeof(VolcaniqueBone), "Os Volcanique", 60.0, 1049311);
+            AddSubRes(typeof(GeantBone), "Os Géant", 60.0, 1049311);
+            AddSubRes(typeof(MinotaureBone), "Os Minotaure", 70.0, 1049311);
+            AddSubRes(typeof(OphidienBone), "Os Ophidien", 70.0, 1049311);
+            AddSubRes(typeof(ArachnideBone), "Os Arachnide", 70.0, 1049311);
             AddSubRes(typeof(MagiqueBone), "Os Magique", 80.0, 1049311);
             AddSubRes(typeof(AncienBone), "Os Ancien", 80.0, 1049311);
             AddSubRes(typeof(DemonBone), "Os Demoniaque", 80.0, 1049311);
-            AddSubRes(typeof(DragonBone), "Os Dragonique", 100.0, 1049311);
-            AddSubRes(typeof(BalronBone), "Os Balron", 100.0, 1049311);
-            AddSubRes(typeof(WyrmBone), "Os Wyrmique", 100.0, 1049311);
+            AddSubRes(typeof(DragonBone), "Os Dragonique", 90.0, 1049311);
+            AddSubRes(typeof(BalronBone), "Os Balron", 90.0, 1049311);
+            AddSubRes(typeof(WyrmBone), "Os Wyrmique", 90.0, 1049311);
 
             MarkOption = true;
             Repair = Core.AOS;

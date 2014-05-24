@@ -520,37 +520,37 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(LeatherSkirt), "Armure de Cuir", "Jupette de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
             index = AddCraft(typeof(LeatherBustierArms), "Armure de Cuir", "Brassards Féminins", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
             index = AddCraft(typeof(FemaleLeatherChest), "Armure de Cuir", "Cuirasse Féminine", 30.0, 50.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(LeatherBarbareLeggings), "Armure de Cuir", "Jambière de Cuir Barbare", 50.0, 70.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(LeatherBarbareTunic), "Armure de Cuir", "Plastron de Cuir Barbare", 50.0, 70.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(RoublardLeggings), "Armure de Cuir", "Jambières Roublardes", 70.0, 90.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(RoublardTunic), "Armure de Cuir", "Plastron Roublard", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(ElfiqueCuirTunic), "Armure de Cuir", "Plastron de Cuir Elfique", 75.0, 95.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(ElfiqueCuirRobe), "Armure de Cuir", "Vetement de Cuir Elfique", 75.0, 95.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(LeatherBarbareLeggings), "Armure de Cuir", "Jambière de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(LeatherBarbareTunic), "Armure de Cuir", "Plastron de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(RoublardLeggings), "Armure de Cuir", "Jambières Roublardes", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(RoublardTunic), "Armure de Cuir", "Plastron Roublard", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(ElfiqueCuirTunic), "Armure de Cuir", "Plastron de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(ElfiqueCuirRobe), "Armure de Cuir", "Vetement de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 14, 1044463);
 
 			#endregion
 
 			#region Studded Armor
-            index = AddCraft(typeof(StuddedGorget), "Armure de Cuir Clouté", "Gorget de Cuir Clouté", 50.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(StuddedGloves), "Armure de Cuir Clouté", "Gants de Cuir Clouté", 50.0, 70.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(StuddedArms), "Armure de Cuir Clouté", "Brassards de Cuir Clouté", 50.0, 70.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(StuddedLegs), "Armure de Cuir Clouté", "Jambières de Cuir Clouté", 50.0, 70.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(StuddedChest), "Armure de Cuir Clouté", "Plastron de Cuir Clouté", 50.0, 70.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(StuddedBustierArms), "Armure de Cuir Clouté", "Brassards Féminins", 50.0, 70.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(FemaleStuddedChest), "Armure de Cuir Clouté", "Cuirasse Féminine", 50.0, 70.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(ElfeHelm), "Armure de Cuir Clouté", "Casque de Feuilles", 50.0, 80.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(StuddedGorget), "Armure de Cuir Clouté", "Gorget de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(StuddedGloves), "Armure de Cuir Clouté", "Gants de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(StuddedArms), "Armure de Cuir Clouté", "Brassards de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(StuddedLegs), "Armure de Cuir Clouté", "Jambières de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(StuddedChest), "Armure de Cuir Clouté", "Plastron de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(StuddedBustierArms), "Armure de Cuir Clouté", "Brassards Féminins", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(FemaleStuddedChest), "Armure de Cuir Clouté", "Cuirasse Féminine", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(ElfeHelm), "Armure de Cuir Clouté", "Casque de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeGorget), "Armure de Cuir Clouté", "Gorget de Feuilles", 50.0, 80.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeGorget), "Armure de Cuir Clouté", "Gorget de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeArms), "Armure de Cuir Clouté", "Brassards de Feuilles", 50.0, 80.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeArms), "Armure de Cuir Clouté", "Brassards de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeLeggings), "Armure de Cuir Clouté", "Jambières de Feuilles", 50.0, 80.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeLeggings), "Armure de Cuir Clouté", "Jambières de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeTunic), "Armure de Cuir Clouté", "Tunique de Feuilles", 50.0, 80.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeTunic), "Armure de Cuir Clouté", "Tunique de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(StuddedBarbareGreaves), "Armure de Cuir Clouté", "Brassards Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(StuddedBarbareGorget), "Armure de Cuir Clouté", "Gorget Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(StuddedBarbareLeggings), "Armure de Cuir Clouté", "Jambières Clouté Barbare",60.0, 80.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Tunique Clouté Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(StuddedBarbareGreaves), "Armure de Cuir Clouté", "Brassards Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(StuddedBarbareGorget), "Armure de Cuir Clouté", "Gorget Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(StuddedBarbareLeggings), "Armure de Cuir Clouté", "Jambières Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Tunique Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 14, 1044463);
 
 			#endregion
 
@@ -560,20 +560,20 @@ namespace Server.Engines.Craft
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material
 			AddSubRes(typeof(Leather), "Cuir", 00.0, 1049311);
-            AddSubRes(typeof(ReptilienLeather), "Cuir Reptilien", 20.0, 1049311);
-            AddSubRes(typeof(NordiqueLeather), "Cuir Nordique", 20.0, 1049311);
-            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", 20.0, 1049311);
-            AddSubRes(typeof(MaritimeLeather), "Cuir Maritime", 40.0, 1049311);
-            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", 40.0, 1049311);
-            AddSubRes(typeof(GeantLeather), "Cuir Géant", 40.0, 1049311);
-            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", 60.0, 1049311);
-            AddSubRes(typeof(OphidienLeather), "Cuir Ophidien", 60.0, 1049311);
-            AddSubRes(typeof(ArachnideLeather), "Cuir Arachnide", 60.0, 1049311);
+            AddSubRes(typeof(ReptilienLeather), "Cuir Reptilien", 50.0, 1049311);
+            AddSubRes(typeof(NordiqueLeather), "Cuir Nordique", 50.0, 1049311);
+            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", 50.0, 1049311);
+            AddSubRes(typeof(MaritimeLeather), "Cuir Maritime", 60.0, 1049311);
+            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", 60.0, 1049311);
+            AddSubRes(typeof(GeantLeather), "Cuir Géant", 60.0, 1049311);
+            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", 70.0, 1049311);
+            AddSubRes(typeof(OphidienLeather), "Cuir Ophidien", 70.0, 1049311);
+            AddSubRes(typeof(ArachnideLeather), "Cuir Arachnide", 70.0, 1049311);
             AddSubRes(typeof(MagiqueLeather), "Cuir Magique", 80.0, 1049311);
             AddSubRes(typeof(AncienLeather), "Cuir Ancien", 80.0, 1049311);
             AddSubRes(typeof(DemoniaqueLeather), "Cuir Demoniaque", 80.0, 1049311);
-            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", 100.0, 1049311);
-            AddSubRes(typeof(LupusLeather), "Cuir Lupus", 100.0, 1049311);
+            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", 90.0, 1049311);
+            AddSubRes(typeof(LupusLeather), "Cuir Lupus", 90.0, 1049311);
 
 			MarkOption = true;
 			Repair = Core.AOS;
