@@ -8,6 +8,7 @@ namespace Server.Items
 		public GrandVaseBec() : base(0x0B45)
 		{
 			Weight = 2;
+            Name = "Grand vase à bec";
 		}
 
 		public GrandVaseBec(Serial serial) : base(serial)
@@ -35,6 +36,7 @@ namespace Server.Items
 		public PetitVaseBec() : base(0x0B46)
 		{
 			Weight = 2;
+            Name = "Petit vase à bec";
 		}
 
 		public PetitVaseBec(Serial serial) : base(serial)
@@ -62,6 +64,7 @@ namespace Server.Items
 		public GrandVase() : base(0x0B47)
 		{
 			Weight = 2;
+            Name = "Grand vase";
 		}
 
 		public GrandVase(Serial serial) : base(serial)
@@ -89,6 +92,7 @@ namespace Server.Items
 		public PetitVase() : base(0x0B48)
 		{
 			Weight = 2;
+            Name = "Petit vase";
 		}
 
 		public PetitVase(Serial serial) : base(serial)
@@ -116,6 +120,7 @@ namespace Server.Items
 		public VaseRose() : base(0x0EB0)
 		{
 			Weight = 2;
+            Name = "Vase rose";
 		}
 
 		public VaseRose(Serial serial) : base(serial)
@@ -143,6 +148,7 @@ namespace Server.Items
 		public PetitPot() : base(0x11C6)
 		{
 			Weight = 2;
+            Name = "Petit pot";
 		}
 
 		public PetitPot(Serial serial) : base(serial)
@@ -170,6 +176,7 @@ namespace Server.Items
 		public GrandPot() : base(0x11C7)
 		{
 			Weight = 2;
+            Name = "Grand pot";
 		}
 
 		public GrandPot(Serial serial) : base(serial)
@@ -190,36 +197,4 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-
-	/*[FlipableAttribute(0x1EB1, 0x1EB2, 0x1EB3, 0x1EB4)]
-	public class BarrelStaves : Item
-	{
-		[Constructable]
-		public BarrelStaves() : base(0x1EB1)
-		{
-			Weight = 1;
-		}
-
-		public BarrelStaves(Serial serial) : base(serial)
-		{
-		}
-
-		public override void Serialize(GenericWriter writer)
-		{
-			base.Serialize(writer);
-
-			writer.Write((int) 0);
-		}
-
-		public override void Deserialize(GenericReader reader)
-		{
-			base.Deserialize(reader);
-
-			int version = reader.ReadInt();
-		}
-	}
-*/
-	
-
-	
 }

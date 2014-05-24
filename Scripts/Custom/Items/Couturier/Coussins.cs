@@ -11,6 +11,7 @@ namespace Server.Items
 		public CoussinA() : base( 0x13A4 )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinA(Serial serial) : base(serial)
@@ -52,6 +53,7 @@ namespace Server.Items
 		public CoussinB() : base( 0x1397 )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinB(Serial serial) : base(serial)
@@ -92,6 +94,7 @@ namespace Server.Items
 		public CoussinC() : base( 0x13A9 )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinC(Serial serial) : base(serial)
@@ -132,6 +135,7 @@ namespace Server.Items
 		public CoussinD() : base( 0x13AD )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinD(Serial serial) : base(serial)
@@ -171,6 +175,7 @@ namespace Server.Items
 		public CoussinE() : base( 0x13A7 )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinE(Serial serial) : base(serial)
@@ -210,6 +215,7 @@ namespace Server.Items
 		public CoussinF() : base( 0x13A8 )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinF(Serial serial) : base(serial)
@@ -249,6 +255,7 @@ namespace Server.Items
 		public CoussinG() : base( 0x13AB )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinG(Serial serial) : base(serial)
@@ -288,6 +295,7 @@ namespace Server.Items
 		public CoussinH() : base( 0x13AC )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinH(Serial serial) : base(serial)
@@ -326,6 +334,7 @@ namespace Server.Items
 		public CoussinI() : base( 0x163A )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinI(Serial serial) : base(serial)
@@ -364,6 +373,7 @@ namespace Server.Items
 		public CoussinJ() : base( 0x163B )
 		{
 			Weight = 1.0;
+            Name = "Coussin";
 		}
 
 		public CoussinJ(Serial serial) : base(serial)
@@ -395,40 +405,4 @@ namespace Server.Items
 			return true;
 		}
 	}
-
-
-	
-
-	/*
-	[Flipable( 0x1945, 0x1946 )]
-	public class ParaventA : Item
-	{
-		[Constructable]
-		public ParaventA() : base( 0x1945 )
-		{
-			Weight = 5.0;
-		}
-
-		public ParaventA(Serial serial) : base(serial)
-		{
-		}
-
-		public override void Serialize(GenericWriter writer)
-		{
-			base.Serialize(writer);
-
-			writer.Write((int) 0);
-		}
-
-		public override void Deserialize(GenericReader reader)
-		{
-			base.Deserialize(reader);
-
-			int version = reader.ReadInt();
-
-		}
-	}
-	*/
-	
-
 }
