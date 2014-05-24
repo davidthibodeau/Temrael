@@ -192,29 +192,30 @@ namespace Server.Engines.Craft
                     BaseArmor armor = (BaseArmor)item;
                     int req = armor.NiveauAttirail;
 
-                    /*if (armor.MaterialType == ArmorMaterialType.Bone)
+                    if (armor.MaterialType == ArmorMaterialType.Bone)
                     {
                         switch (nameEnd)
                         {
                             case "Os":
-                            case "Os Reptilien":
                                 req = 1;
                                 break;
+                            case "Os Gobelin":
+                            case "Os Reptilien":
                             case "Os Nordique":
                             case "Os Désertique":
+                            case "Os Maritime":
                                 req = 2;
                                 break;
-                            case "Os Maritime":
                             case "Os Volcanique":
-                                req = 3;
-                                break;
                             case "Os Géant":
                             case "Os Minotaure":
-                            case "Os Ophidien":
+                                req = 3;
+                                break;
                             case "Os Arachnide":
+                            case "Os Ophidien":
+                            case "Os Magique":
                                 req = 4;
                                 break;
-                            case "Os Magique":
                             case "Os Ancien":
                             case "Os Demoniaque":
                             case "Os Dragonique":
@@ -226,24 +227,56 @@ namespace Server.Engines.Craft
                                 break;
                         }
                     }
-                    */
-                    /*else if (armor.MaterialType == ArmorMaterialType.Leather || armor.MaterialType == ArmorMaterialType.Studded)
+                    
+                    else if (armor.MaterialType == ArmorMaterialType.Leather)
                     {
                         switch (nameEnd)
                         {
                             case "Cuir":
                             case "Cuir Reptilien":
+                            case "Cuir Nordique":
+                            case "Cuir Désertique":
                                 req = 1;
                                 break;
+                            case "Cuir Maritime":
+                            case "Cuir Volcanique":
+                                req = 2;
+                                break;
+                            case "Cuir Géant":
+                            case "Cuir Minotaure":
+                            case "Cuir Ophidien":
+                            case "Cuir Arachnide":
+                                req = 3;
+                                break;
+                            case "Cuir Magique":
+                            case "Cuir Ancien":
+                            case "Cuir Demoniaque":
+                                req = 4;
+                                break;
+                            case "Cuir Dragonique":
+                            case "Cuir Lupus":
+                                req = 5;
+                                break;
+                        }
+                    }
+
+                    else if (armor.MaterialType == ArmorMaterialType.Studded)
+                    {
+                        switch (nameEnd)
+                        {
+                            case "Cuir":
+                                req = 1;
+                                break;
+                            case "Cuir Reptilien":
                             case "Cuir Nordique":
                             case "Cuir Désertique":
                                 req = 2;
                                 break;
                             case "Cuir Maritime":
                             case "Cuir Volcanique":
+                            case "Cuir Géant":
                                 req = 3;
                                 break;
-                            case "Cuir Géant":
                             case "Cuir Minotaure":
                             case "Cuir Ophidien":
                             case "Cuir Arachnide":
@@ -252,14 +285,14 @@ namespace Server.Engines.Craft
                             case "Cuir Magique":
                             case "Cuir Ancien":
                             case "Cuir Demoniaque":
-                            case "Cuir Dragonique":
                                 req = 5;
                                 break;
+                            case "Cuir Dragonique":
                             case "Cuir Lupus":
                                 req = 6;
                                 break;
                         }
-                    }*/
+                    }
 
                     AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Niveau d'Attirail : " + req.ToString() + "</center><basefont></h3>", false, false);
                 }
@@ -672,20 +705,20 @@ namespace Server.Engines.Craft
             {
                 switch (name)
                 {
-                    case "ReptilienLeather": skill += 5.0; break;
-                    case "NordiqueLeather": skill += 5.0; break;
-                    case "DesertiqueLeather": skill += 5.0; break;
-                    case "MaritimeLeather": skill += 10.0; break;
-                    case "VolcaniqueLeather": skill += 10.0; break;
-                    case "GeantLeather": skill += 10.0; break;
-                    case "MinotaureLeather": skill += 20.0; break;
-                    case "OphidienLeather": skill += 20.0; break;
-                    case "ArachnideLeather": skill += 20.0; break;
-                    case "MagiqueLeather": skill += 30.0; break;
-                    case "AncienLeather": skill += 30.0; break;
-                    case "DemoniaqueLeather": skill += 30.0; break;
-                    case "DragoniqueLeather": skill += 40.0; break;
-                    case "LupusLeather": skill += 40.0; break;
+                    case "ReptilienLeather": skill += 10.0; break;
+                    case "NordiqueLeather": skill += 10.0; break;
+                    case "DesertiqueLeather": skill += 10.0; break;
+                    case "MaritimeLeather": skill += 20.0; break;
+                    case "VolcaniqueLeather": skill += 20.0; break;
+                    case "GeantLeather": skill += 20.0; break;
+                    case "MinotaureLeather": skill += 30.0; break;
+                    case "OphidienLeather": skill += 30.0; break;
+                    case "ArachnideLeather": skill += 30.0; break;
+                    case "MagiqueLeather": skill += 40.0; break;
+                    case "AncienLeather": skill += 40.0; break;
+                    case "DemoniaqueLeather": skill += 40.0; break;
+                    case "DragoniqueLeather": skill += 50.0; break;
+                    case "LupusLeather": skill += 50.0; break;
                 }
 
                 return skill;
@@ -700,22 +733,22 @@ namespace Server.Engines.Craft
             {
                 switch (name)
                 {
-                    case "GobelinBone": skill += 5.0; break;
-                    case "ReptilienBone": skill += 5.0; break;
-                    case "NordiqueBone": skill += 5.0; break;
-                    case "DesertiqueBone": skill += 5.0; break;
-                    case "MaritimeBone": skill += 10.0; break;
-                    case "VolcaniqueBone": skill += 10.0; break;
-                    case "GeantBone": skill += 10.0; break;
-                    case "MinotaureBone": skill += 20.0; break;
-                    case "OphidienBone": skill += 20.0; break;
-                    case "ArachnideBone": skill += 20.0; break;
-                    case "MagiqueBone": skill += 30.0; break;
-                    case "AncienBone": skill += 30.0; break;
-                    case "DemonBone": skill += 30.0; break;
-                    case "DragonBone": skill += 40.0; break;
-                    case "BalronBone": skill += 40.0; break;
-                    case "WyrmBone": skill += 40.0; break;
+                    case "GobelinBone": skill += 10.0; break;
+                    case "ReptilienBone": skill += 10.0; break;
+                    case "NordiqueBone": skill += 10.0; break;
+                    case "DesertiqueBone": skill += 10.0; break;
+                    case "MaritimeBone": skill += 20.0; break;
+                    case "VolcaniqueBone": skill += 20.0; break;
+                    case "GeantBone": skill += 20.0; break;
+                    case "MinotaureBone": skill += 30.0; break;
+                    case "OphidienBone": skill += 30.0; break;
+                    case "ArachnideBone": skill += 30.0; break;
+                    case "MagiqueBone": skill += 40.0; break;
+                    case "AncienBone": skill += 40.0; break;
+                    case "DemonBone": skill += 40.0; break;
+                    case "DragonBone": skill += 50.0; break;
+                    case "BalronBone": skill += 50.0; break;
+                    case "WyrmBone": skill += 50.0; break;
                 }
 
                 return skill;
