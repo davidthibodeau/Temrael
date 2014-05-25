@@ -641,6 +641,7 @@ namespace Server.Items
 		private WeaponDurabilityLevel m_DurabilityLevel;
 		private WeaponQuality m_Quality;
 		private Mobile m_Crafter;
+        private string m_CrafterName;
 		private Poison m_Poison;
 		private int m_PoisonCharges;
 		private bool m_Identified;
@@ -828,6 +829,13 @@ namespace Server.Items
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string CrafterName
+        {
+            get { return m_CrafterName; }
+            set { m_CrafterName = value; InvalidateProperties(); }
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public SlayerName Slayer
@@ -3889,10 +3897,11 @@ namespace Server.Items
                     list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
                     list.Add(1060393, "{0}\t{1}", couleur, Name);
-                list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
-                if (m_Crafter != null)
-                    list.Add(1050043, couleur, m_Crafter.Name); // crafted by ~1_NAME~
+                if (m_CrafterName != null)
+                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
 
                 #region Factions
                 if (m_FactionState != null)
@@ -4141,7 +4150,7 @@ namespace Server.Items
                     list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
                     list.Add(1060393, "{0}\t{1}", couleur, Name);
-                list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
                 list.Add(1060395, couleur);
             }
 		}
@@ -4259,8 +4268,11 @@ namespace Server.Items
 		{
 			Quality = (WeaponQuality)quality;
 
-			if ( makersMark )
-				Crafter = from;
+            if (makersMark)
+            {
+                Crafter = from;
+                m_CrafterName = from.Name;
+            }
 
 			PlayerConstructed = true;
 

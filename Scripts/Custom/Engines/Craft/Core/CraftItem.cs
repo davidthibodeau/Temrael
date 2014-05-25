@@ -1943,7 +1943,7 @@ namespace Server.Engines.Craft
 					if ( quality == 2 && m_From.Skills[m_CraftSystem.MainSkill].Base >= 100.0 )
 						makersMark = m_CraftItem.IsMarkable( m_CraftItem.ItemType );
 
-					if ( makersMark && context.MarkOption == CraftMarkOption.PromptForMark )
+					if ( makersMark ) //&& context.MarkOption == CraftMarkOption.PromptForMark )
 					{
 						m_From.SendGump( new QueryMakersMarkGump( quality, m_From, m_CraftItem, m_CraftSystem, m_TypeRes, m_Tool ) );
 					}

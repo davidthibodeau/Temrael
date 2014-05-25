@@ -30,12 +30,17 @@ namespace Server.Engines.Craft
 			AddBackground( 0, 0, 220, 170, 5054 );
 			AddBackground( 10, 10, 200, 150, 3000 );
 
-			AddHtmlLocalized( 20, 20, 180, 80, 1018317, false, false ); // Do you wish to place your maker's mark on this item?
+            AddHtml(20, 20, 180, 80, "Voulez-vous graver votre nom sur l'objet que vous avez fabriqué ?", false, false);
+			//AddHtmlLocalized( 20, 20, 180, 80, 1018317, false, false ); // Do you wish to place your maker's mark on this item?
 
-			AddHtmlLocalized( 55, 100, 140, 25, 1011011, false, false ); // CONTINUE
+            AddHtml(55, 100, 140, 25, "Oui", false, false);
+			//AddHtmlLocalized( 55, 100, 140, 25, 1011011, false, false ); // CONTINUE
+
 			AddButton( 20, 100, 4005, 4007, 1, GumpButtonType.Reply, 0 );
 
-			AddHtmlLocalized( 55, 125, 140, 25, 1011012, false, false ); // CANCEL
+            AddHtml(55, 125, 140, 25, "Non", false, false);
+			//AddHtmlLocalized( 55, 125, 140, 25, 1011012, false, false ); // CANCEL
+
 			AddButton( 20, 125, 4005, 4007, 0, GumpButtonType.Reply, 0 );
 		}
 
@@ -43,10 +48,12 @@ namespace Server.Engines.Craft
 		{
 			bool makersMark = ( info.ButtonID == 1 );
 
-			if ( makersMark )
-				m_From.SendLocalizedMessage( 501808 ); // You mark the item.
-			else
-				m_From.SendLocalizedMessage( 501809 ); // Cancelled mark.
+            if (makersMark)
+                //m_From.SendLocalizedMessage( 501808 ); // You mark the item.
+                m_From.SendMessage("Vous gravez votre nom sur l'objet");
+            else
+                m_From.SendMessage("Vous renoncez à graver l'objet");
+                //m_From.SendLocalizedMessage(501809); // Cancelled mark.
 
 			m_CraftItem.CompleteCraft( m_Quality, makersMark, m_From, m_CraftSystem, m_TypeRes, m_Tool, null );
 		}

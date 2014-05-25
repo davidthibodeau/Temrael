@@ -127,6 +127,7 @@ namespace Server.Items
 		private int m_MaxHitPoints;
 		private int m_HitPoints;
 		private Mobile m_Crafter;
+        private string m_CrafterName;
 		private ClothingQuality m_Quality;
 		private bool m_PlayerConstructed;
 		protected CraftResource m_Resource;
@@ -208,6 +209,13 @@ namespace Server.Items
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string CrafterName
+        {
+            get { return m_CrafterName; }
+            set { m_CrafterName = value; InvalidateProperties(); }
+        }
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public int StrRequirement
@@ -731,10 +739,11 @@ namespace Server.Items
                     list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
                     list.Add(1060393, "{0}\t{1}", couleur, Name);
-                list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
-                if (m_Crafter != null)
-                    list.Add(1050043, couleur, m_Crafter.Name); // crafted by ~1_NAME~
+                if (m_CrafterName != null)
+                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
 
                 if (m_AosSkillBonuses != null)
                     m_AosSkillBonuses.GetProperties(list, couleur);
@@ -847,7 +856,7 @@ namespace Server.Items
                     list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
                     list.Add(1060393, "{0}\t{1}", couleur, Name);
-                list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
                 list.Add(1060395, couleur);
             }
 		}
@@ -1233,12 +1242,15 @@ namespace Server.Items
 
 		#region ICraftable Members
 
-		public virtual int OnCraft( int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
+        public virtual int OnCraft( int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
 		{
 			Quality = (ClothingQuality)quality;
 
-			if ( makersMark )
-				Crafter = from;
+            if (makersMark)
+            {
+                Crafter = from;
+                m_CrafterName = from.Name;
+            }
 
 			if ( DefaultResource != CraftResource.None )
 			{

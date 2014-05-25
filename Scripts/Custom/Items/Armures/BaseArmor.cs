@@ -497,6 +497,7 @@ namespace Server.Items
         private int m_MaxHitPoints;
         private int m_HitPoints;
         private Mobile m_Crafter;
+        private string m_CrafterName;
         private ArmorQuality m_Quality;
         private ArmorDurabilityLevel m_Durability;
         private ArmorProtectionLevel m_Protection;
@@ -808,6 +809,12 @@ namespace Server.Items
             set { m_Crafter = value; InvalidateProperties(); }
         }
 
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string CrafterName
+        {
+            get { return m_CrafterName; }
+            set { m_CrafterName = value; InvalidateProperties(); }
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public ArmorQuality Quality
@@ -1231,7 +1238,8 @@ namespace Server.Items
             IntReq = 0x00200000,
             MedAllowance = 0x00400000,
             SkillBonuses = 0x00800000,
-            PlayerConstructed = 0x01000000
+            PlayerConstructed = 0x01000000,
+            CrafterName = 0x02000000
         }
 
         public override void Serialize(GenericWriter writer)
@@ -1256,6 +1264,7 @@ namespace Server.Items
             SetSaveFlag(ref flags, SaveFlag.MaxHitPoints, m_MaxHitPoints != 0);
             SetSaveFlag(ref flags, SaveFlag.HitPoints, m_HitPoints != 0);
             SetSaveFlag(ref flags, SaveFlag.Crafter, m_Crafter != null);
+            SetSaveFlag(ref flags, SaveFlag.CrafterName, m_CrafterName != null);
             SetSaveFlag(ref flags, SaveFlag.Quality, m_Quality != ArmorQuality.Regular);
             SetSaveFlag(ref flags, SaveFlag.Durability, m_Durability != ArmorDurabilityLevel.Regular);
             SetSaveFlag(ref flags, SaveFlag.Protection, m_Protection != ArmorProtectionLevel.Regular);
@@ -1302,6 +1311,9 @@ namespace Server.Items
 
             if (GetSaveFlag(flags, SaveFlag.Crafter))
                 writer.Write((Mobile)m_Crafter);
+
+            if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                writer.Write((string)m_CrafterName);
 
             if (GetSaveFlag(flags, SaveFlag.Quality))
                 writer.WriteEncodedInt((int)m_Quality);
@@ -1397,6 +1409,9 @@ namespace Server.Items
 
                         if (GetSaveFlag(flags, SaveFlag.Crafter))
                             m_Crafter = reader.ReadMobile();
+
+                        if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                            m_CrafterName = reader.ReadString();
 
                         if (GetSaveFlag(flags, SaveFlag.Quality))
                             m_Quality = (ArmorQuality)reader.ReadEncodedInt();
@@ -1505,6 +1520,7 @@ namespace Server.Items
                         m_MaxHitPoints = reader.ReadInt();
                         m_HitPoints = reader.ReadInt();
                         m_Crafter = reader.ReadMobile();
+                        m_CrafterName = reader.ReadString();
                         m_Quality = (ArmorQuality)reader.ReadInt();
                         m_Durability = (ArmorDurabilityLevel)reader.ReadInt();
                         m_Protection = (ArmorProtectionLevel)reader.ReadInt();
@@ -1996,10 +2012,11 @@ namespace Server.Items
                     list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
                     list.Add(1060393, "{0}\t{1}", couleur, Name);
-                list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
-                if (m_Crafter != null)
-                    list.Add(1050043, couleur, m_Crafter.Name); // crafted by ~1_NAME~
+                if (m_CrafterName != null)
+                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
 
                 #region Factions
                 if (m_FactionState != null)
@@ -2211,7 +2228,10 @@ namespace Server.Items
             Quality = (ArmorQuality)quality;
 
             if (makersMark)
+            {
                 Crafter = from;
+                m_CrafterName = from.Name;
+            }
 
             Type resourceType = typeRes;
 
