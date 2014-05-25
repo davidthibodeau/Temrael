@@ -253,15 +253,18 @@ namespace Server.Items
 					{
 						if ( String.IsNullOrEmpty( relay.Text ) )
 						{
-							m_Target.EngravedText = null;
+							//m_Target.EngravedText = null;
+                            m_Target.CrafterName = null;
 							state.Mobile.SendLocalizedMessage( 1072362 ); // You remove the engraving from the object.
 						}
 						else
 						{
 							if( relay.Text.Length > 64 )
-								m_Target.EngravedText = Utility.FixHtml( relay.Text.Substring( 0, 64 ) );
+								//m_Target.EngravedText = Utility.FixHtml( relay.Text.Substring( 0, 64 ) );
+                                m_Target.CrafterName = Utility.FixHtml( relay.Text.Substring( 0, 64 ) );
 							else
-								m_Target.EngravedText = Utility.FixHtml( relay.Text );
+								//m_Target.EngravedText = Utility.FixHtml( relay.Text );
+                                m_Target.CrafterName = Utility.FixHtml(relay.Text);
 						
 							state.Mobile.SendLocalizedMessage( 1072361 ); // You engraved the object.	
 							m_Target.InvalidateProperties();						

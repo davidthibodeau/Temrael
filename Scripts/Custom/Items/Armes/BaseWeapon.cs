@@ -497,7 +497,6 @@ namespace Server.Items
 
         private TemraelAttributes m_TemraelAttributes;
         private RareteItem m_rarete;
-        private string m_EngravedText;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public TemraelAttributes TemAttributes
@@ -513,13 +512,6 @@ namespace Server.Items
             set { m_rarete = value; InvalidateProperties(); }
         }
 		
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string EngravedText
-		{
-			get{ return m_EngravedText; }
-			set{ m_EngravedText = value; InvalidateProperties(); }
-		}
-
 		#region Factions
 		private FactionItem m_FactionState;
 
@@ -3190,6 +3182,7 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Poison,			m_Poison != null );
 			SetSaveFlag( ref flags, SaveFlag.PoisonCharges,		m_PoisonCharges != 0 );
 			SetSaveFlag( ref flags, SaveFlag.Crafter,			m_Crafter != null );
+            SetSaveFlag( ref flags, SaveFlag.CrafterName,       m_CrafterName != null);
 			SetSaveFlag( ref flags, SaveFlag.Identified,		m_Identified != false );
 			SetSaveFlag( ref flags, SaveFlag.StrReq,			m_StrReq != -1 );
 			SetSaveFlag( ref flags, SaveFlag.DexReq,			m_DexReq != -1 );
@@ -3210,7 +3203,6 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.Slayer2,			m_Slayer2 != SlayerName.None );
 			SetSaveFlag( ref flags, SaveFlag.ElementalDamages,	!m_AosElementDamages.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.EngravedText,		!String.IsNullOrEmpty( m_EngravedText ) );
 
 			writer.Write( (int) flags );
 
@@ -3243,6 +3235,9 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.Crafter ) )
 				writer.Write( (Mobile) m_Crafter );
+
+            if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                writer.Write((string)m_CrafterName);
 
 			if ( GetSaveFlag( flags, SaveFlag.StrReq ) )
 				writer.Write( (int) m_StrReq );
@@ -3298,8 +3293,6 @@ namespace Server.Items
 			if( GetSaveFlag( flags, SaveFlag.ElementalDamages ) )
 				m_AosElementDamages.Serialize( writer );
 
-			if( GetSaveFlag( flags, SaveFlag.EngravedText ) )
-				writer.Write( (string) m_EngravedText );
 		}
 
 		[Flags]
@@ -3336,7 +3329,7 @@ namespace Server.Items
 			SkillBonuses			= 0x08000000,
 			Slayer2					= 0x10000000,
 			ElementalDamages		= 0x20000000,
-			EngravedText			= 0x40000000
+			CrafterName 			= 0x40000000,
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -3406,6 +3399,9 @@ namespace Server.Items
 
 					if ( GetSaveFlag( flags, SaveFlag.Crafter ) )
 						m_Crafter = reader.ReadMobile();
+
+                    if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                        m_CrafterName = reader.ReadString();
 
 					if ( GetSaveFlag( flags, SaveFlag.Identified ) )
 						m_Identified = ( version >= 6 || reader.ReadBool() );
@@ -3533,9 +3529,6 @@ namespace Server.Items
                     else
                         m_AosElementDamages = new AosElementAttributes(this);
 
-					if( GetSaveFlag( flags, SaveFlag.EngravedText ) )
-						m_EngravedText = reader.ReadString();
-
 					break;
 				}
 				case 4:
@@ -3595,6 +3588,7 @@ namespace Server.Items
 					m_Quality = (WeaponQuality)reader.ReadInt();
 
 					m_Crafter = reader.ReadMobile();
+                    m_CrafterName = reader.ReadString();
 
 					m_Poison = Poison.Deserialize( reader );
 					m_PoisonCharges = reader.ReadInt();
@@ -3810,23 +3804,6 @@ namespace Server.Items
 			else
 				list.Add( Name );
 				
-			/*
-			 * Want to move this to the engraving tool, let the non-harmful 
-			 * formatting show, and remove CLILOCs embedded: more like OSI
-			 * did with the books that had markup, etc.
-			 * 
-			 * This will have a negative effect on a few event things imgame 
-			 * as is.
-			 * 
-			 * If we cant find a more OSI-ish way to clean it up, we can 
-			 * easily put this back, and use it in the deserialize
-			 * method and engraving tool, to make it perm cleaned up.
-			 */
-
-			if ( !String.IsNullOrEmpty( m_EngravedText ) )
-				list.Add( 1062613, m_EngravedText );
-
-				/* list.Add( 1062613, Utility.FixHtml( m_EngravedText ) ); */
 		}
 
 		public override bool AllowEquipedCast( Mobile from )

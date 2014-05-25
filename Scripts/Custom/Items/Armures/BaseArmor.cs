@@ -2137,7 +2137,7 @@ namespace Server.Items
                     list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
                     list.Add(1060393, "{0}\t{1}", couleur, Name);
-                list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
                 list.Add(1060395, couleur);
             }
         }

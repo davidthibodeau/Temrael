@@ -960,7 +960,9 @@ namespace Server.Items
 			PlayerConstructed	= 0x00000080,
 			Crafter				= 0x00000100,
 			Quality				= 0x00000200,
-			StrReq				= 0x00000400
+			StrReq				= 0x00000400,
+            CrafterName         = 0x00000800
+
 		}
 
 		public override void Serialize( GenericWriter writer )
@@ -985,8 +987,10 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.HitPoints,			m_HitPoints != 0 );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed,	m_PlayerConstructed != false );
 			SetSaveFlag( ref flags, SaveFlag.Crafter,			m_Crafter != null );
+            SetSaveFlag( ref flags, SaveFlag.CrafterName,       m_CrafterName != null);
 			SetSaveFlag( ref flags, SaveFlag.Quality,			m_Quality != ClothingQuality.Regular );
 			SetSaveFlag( ref flags, SaveFlag.StrReq,			m_StrReq != -1 );
+            
 
 			writer.WriteEncodedInt( (int) flags );
 
@@ -1013,6 +1017,9 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.Crafter ) )
 				writer.Write( (Mobile) m_Crafter );
+
+            if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                writer.Write((string)m_CrafterName);
 
 			if ( GetSaveFlag( flags, SaveFlag.Quality ) )
 				writer.WriteEncodedInt( (int) m_Quality );
@@ -1082,6 +1089,9 @@ namespace Server.Items
 					if ( GetSaveFlag( flags, SaveFlag.Crafter ) )
 						m_Crafter = reader.ReadMobile();
 
+                    if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                        m_CrafterName = reader.ReadString();
+
 					if ( GetSaveFlag( flags, SaveFlag.Quality ) )
 						m_Quality = (ClothingQuality)reader.ReadEncodedInt();
 					else
@@ -1120,6 +1130,7 @@ namespace Server.Items
 				case 1:
 				{
 					m_Crafter = reader.ReadMobile();
+                    m_CrafterName = reader.ReadString();
 					m_Quality = (ClothingQuality)reader.ReadInt();
 					break;
 				}
