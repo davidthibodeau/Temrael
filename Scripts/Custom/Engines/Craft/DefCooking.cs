@@ -192,110 +192,110 @@ namespace Server.Engines.Craft
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(DoreFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawDoreFishSteak), "Filet de doré cru", 1, 1044253);
+            index = AddCraft(typeof(DoreFishSteak), "Grillade de poissons", "Doré", 10.0, 60.0, typeof(RawDoreFishSteak), "Filet de doré cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(CarpeFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawCarpeFishSteak), "Filet de carpe cru", 1, 1044253);
+            index = AddCraft(typeof(CarpeFishSteak), "Grillade de poissons", "Carpe", 10.0, 60.0, typeof(RawCarpeFishSteak), "Filet de carpe cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(AnguilleFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawAnguilleFishSteak), "Filet d'anguille cru", 1, 1044253);
+            index = AddCraft(typeof(AnguilleFishSteak), "Grillade de poissons", "Anguille", 10.0, 60.0, typeof(RawAnguilleFishSteak), "Filet d'anguille cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(EsturgeonFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawEsturgeonFishSteak), "Filet d'esturgeon cru", 1, 1044253);
+            index = AddCraft(typeof(EsturgeonFishSteak), "Grillade de poissons", "Esturgeon", 10.0, 60.0, typeof(RawEsturgeonFishSteak), "Filet d'esturgeon cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(BrochetFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawBrochetFishSteak), "Filet de brochet cru", 1, 1044253);
+            index = AddCraft(typeof(BrochetFishSteak), "Grillade de poissons", "Brochet", 10.0, 60.0, typeof(RawBrochetFishSteak), "Filet de brochet cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(SardineFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawSardineFishSteak), "Filet de sardine cru", 1, 1044253);
+            index = AddCraft(typeof(SardineFishSteak), "Grillade de poissons", "Sardine", 10.0, 60.0, typeof(RawSardineFishSteak), "Filet de sardine cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(AnchoieFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawAnchoieFishSteak), "Filet d'anchoie cru", 1, 1044253);
+            index = AddCraft(typeof(AnchoieFishSteak), "Grillade de poissons", "Anchoie", 10.0, 60.0, typeof(RawAnchoieFishSteak), "Filet d'anchoie cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(MorueFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawMorueFishSteak), "Filet de morue cru", 1, 1044253);
+            index = AddCraft(typeof(MorueFishSteak), "Grillade de poissons", "Morue", 10.0, 60.0, typeof(RawMorueFishSteak), "Filet de morue cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(HarengFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawHarengFishSteak), "Filet d'hareng cru", 1, 1044253);
+            index = AddCraft(typeof(HarengFishSteak), "Grillade de poissons", "Hareng", 10.0, 60.0, typeof(RawHarengFishSteak), "Filet d'hareng cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(FletanFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawFletanFishSteak), "Filet de flétan cru", 1, 1044253);
+            index = AddCraft(typeof(FletanFishSteak), "Grillade de poissons", "Flétan", 10.0, 60.0, typeof(RawFletanFishSteak), "Filet de flétan cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(MaquereauFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawMaquereauFishSteak), "Filet de maquereau cru", 1, 1044253);
+            index = AddCraft(typeof(MaquereauFishSteak), "Grillade de poissons", "Maquereau", 10.0, 60.0, typeof(RawMaquereauFishSteak), "Filet de maquereau cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(SoleFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawSoleFishSteak), "Filet de sole cru", 1, 1044253);
+            index = AddCraft(typeof(SoleFishSteak), "Grillade de poissons", "Sole", 10.0, 60.0, typeof(RawSoleFishSteak), "Filet de sole cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(ThonFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawThonFishSteak), "Filet de thon cru", 1, 1044253);
+            index = AddCraft(typeof(ThonFishSteak), "Grillade de poissons", "Thon", 10.0, 60.0, typeof(RawThonFishSteak), "Filet de thon cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(SaumonFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawSaumonFishSteak), "Filet de saumon cru", 1, 1044253);
+            index = AddCraft(typeof(SaumonFishSteak), "Grillade de poissons", "Saumon", 10.0, 60.0, typeof(RawSaumonFishSteak), "Filet de saumon cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(GrandBrochetFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawGrandBrochetFishSteak), "Filet de grand brochet cru", 1, 1044253);
+            index = AddCraft(typeof(GrandBrochetFishSteak), "Grillade de poissons", "Grand brochet", 10.0, 60.0, typeof(RawGrandBrochetFishSteak), "Filet de grand brochet cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(TruiteSauvageFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawTruiteSauvageFishSteak), "Filet de truite sauvage cru", 1, 1044253);
+            index = AddCraft(typeof(TruiteSauvageFishSteak), "Grillade de poissons", "Truite sauvage", 10.0, 60.0, typeof(RawTruiteSauvageFishSteak), "Filet de truite sauvage cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(GrandDoreFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawGrandDoreFishSteak), "Filet de grand doré cru", 1, 1044253);
+            index = AddCraft(typeof(GrandDoreFishSteak), "Grillade de poissons", "Grand doré", 10.0, 60.0, typeof(RawGrandDoreFishSteak), "Filet de grand doré cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(TruiteMerFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawTruiteMerFishSteak), "Filet de truite des mers cru", 1, 1044253);
+            index = AddCraft(typeof(TruiteMerFishSteak), "Grillade de poissons", "Truite des mers", 10.0, 60.0, typeof(RawTruiteMerFishSteak), "Filet de truite des mers cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(EsturgeonMerFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawEsturgeonMerFishSteak), "Filet d'esturgeon de mers cru", 1, 1044253);
+            index = AddCraft(typeof(EsturgeonMerFishSteak), "Grillade de poissons", "Esturgeon des mers", 10.0, 60.0, typeof(RawEsturgeonMerFishSteak), "Filet d'esturgeon de mers cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(GrandSaumonFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawGrandSaumonFishSteak), "Filet de grand saumon cru", 1, 1044253);
+            index = AddCraft(typeof(GrandSaumonFishSteak), "Grillade de poissons", "Grand saumon", 10.0, 60.0, typeof(RawGrandSaumonFishSteak), "Filet de grand saumon cru", 1, 1044253);
             SetNeedHeat(index, true);
 
-            index = AddCraft(typeof(RaieFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawRaieFishSteak), "Filet de raie cru", 1, 1044253);
-            SetNeedHeat(index, true);
-            SetUseAllRes(index, true);
-
-            index = AddCraft(typeof(EspadonFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawEspadonFishSteak), "Filet d'espadon cru", 1, 1044253);
+            index = AddCraft(typeof(RaieFishSteak), "Grillade de poissons", "Raie", 10.0, 60.0, typeof(RawRaieFishSteak), "Filet de raie cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(RequinGrisFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawRequinGrisFishSteak), "Filet de requin gris cru", 1, 1044253);
+            index = AddCraft(typeof(EspadonFishSteak), "Grillade de poissons", "Espadon", 10.0, 60.0, typeof(RawEspadonFishSteak), "Filet d'espadon cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(RequinBlancFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawRequinBlancFishSteak), "Filet de requin blanc cru", 1, 1044253);
+            index = AddCraft(typeof(RequinGrisFishSteak), "Grillade de poissons", "Requin gris", 10.0, 60.0, typeof(RawRequinGrisFishSteak), "Filet de requin gris cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(HuitreFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawHuitreFishSteak), "Huitre crue", 1, 1044253);
+            index = AddCraft(typeof(RequinBlancFishSteak), "Grillade de poissons", "Requin blanc", 10.0, 60.0, typeof(RawRequinBlancFishSteak), "Filet de requin blanc cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(CalmarFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawCalmarFishSteak), "Calmar cru", 1, 1044253);
+            index = AddCraft(typeof(HuitreFishSteak), "Grillade de poissons", "Huitre", 10.0, 60.0, typeof(RawHuitreFishSteak), "Huitre crue", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(PieuvreFishSteak), "Grillade de poissons", "Truite", 10.0, 60.0, typeof(RawPieuvreFishSteak), "Pieuvre crue", 1, 1044253);
+            index = AddCraft(typeof(CalmarFishSteak), "Grillade de poissons", "Calmar", 10.0, 60.0, typeof(RawCalmarFishSteak), "Calmar cru", 1, 1044253);
+            SetNeedHeat(index, true);
+            SetUseAllRes(index, true);
+
+            index = AddCraft(typeof(PieuvreFishSteak), "Grillade de poissons", "Pieuvre", 10.0, 60.0, typeof(RawPieuvreFishSteak), "Pieuvre crue", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
             /* End Grillade de poissons */
