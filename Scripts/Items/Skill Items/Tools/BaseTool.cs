@@ -87,7 +87,10 @@ namespace Server.Items
 			if ( m_Quality == ToolQuality.Exceptional )
 				list.Add( 1060636 ); // exceptional
 
-			list.Add( 1060584, m_UsesRemaining.ToString() ); // uses remaining: ~1_val~
+			if(m_UsesRemaining > 1)
+                list.Add("Utilisations restantes: " + m_UsesRemaining.ToString());
+            else
+                list.Add( "Utilisation restante: " + m_UsesRemaining.ToString());
 		}
 
 		public virtual void DisplayDurabilityTo( Mobile m )
