@@ -197,8 +197,11 @@ namespace Server.Misc
         {
             int count = ThisHour.Count;
             DataHourly.Add(LastHour, count);
-            WriteRaw("rawHour.log", String.Format("[{0}] {1}", LastHour.ToString(), count.ToString())); 
-            LastHour = LastRoundHour();
+            WriteRaw("rawHour.log", String.Format("[{0}] {1}", LastHour.ToString(), count.ToString()));
+            if (LastHour == LastRoundHour())
+                LastHour = LastHour.AddHours(1);
+            else
+                LastHour = LastRoundHour();
 
             ThisHour.Clear();
             RecordOnline();
@@ -208,9 +211,11 @@ namespace Server.Misc
         {
             int count = ThisDay.Count;
             DataDaily.Add(LastDay, count);
-            WriteRaw("rawDay.log", String.Format("[{0}] {1}", LastDay.ToString(), count.ToString())); 
-
-            LastDay = LastRoundDay();
+            WriteRaw("rawDay.log", String.Format("[{0}] {1}", LastDay.ToString(), count.ToString()));
+            if (LastDay == LastRoundDay())
+                LastDay = LastRoundDay().AddDays(1);
+            else
+                LastDay = LastRoundDay();
 
             ThisDay.Clear();
             RecordOnline();
@@ -220,9 +225,11 @@ namespace Server.Misc
         {
             int count = ThisWeek.Count;
             DataWeekly.Add(LastWeek, count);
-            WriteRaw("rawWeek.log", String.Format("[{0}] {1}", LastWeek.ToString(), count.ToString())); 
-
-            LastWeek = LastRoundWeek();
+            WriteRaw("rawWeek.log", String.Format("[{0}] {1}", LastWeek.ToString(), count.ToString()));
+            if (LastWeek == LastRoundWeek())
+                LastWeek = LastRoundWeek().AddDays(7);
+            else
+                LastWeek = LastRoundWeek();
 
             ThisWeek.Clear();
             RecordOnline();
