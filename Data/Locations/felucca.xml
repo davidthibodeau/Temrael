@@ -77,6 +77,7 @@
 					<child name="Mine" x="3072" y="2854" z="-81" />
 				</parent>
 				<child name="Arayma" x="2770" y="2780" z="-81" />
+				<child name="Côteaux-Verts" x="2745" y="2510" z="-30" />
 				<child name="Val'Fekni" x="3085" y="2637" z="-81" />
 			</parent>
 		</parent>
