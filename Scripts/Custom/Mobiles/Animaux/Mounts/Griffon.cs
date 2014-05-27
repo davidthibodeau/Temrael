@@ -106,7 +106,7 @@ namespace Server.Mobiles
 
 			Tamable = true;
 			ControlSlots = 4;
-			MinTameSkill = 99.0;
+			MinTameSkill = 97.0;
 
 			if( Utility.RandomDouble() < .33 )
 				PackItem( Engines.Plants.Seed.RandomBonsaiSeed() );
