@@ -59,7 +59,7 @@ namespace Server.Spells.Necromancy
                 if (m is TMobile)
                 {
                     TMobile pm = Caster as TMobile;
-                    double duration = 5.0;
+                    double duration = 10.0;
 
                     duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 

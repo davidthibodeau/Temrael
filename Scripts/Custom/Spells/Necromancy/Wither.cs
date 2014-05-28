@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Engines.PartySystem;
 
 namespace Server.Spells.Necromancy
 {
@@ -30,6 +31,9 @@ namespace Server.Spells.Necromancy
 
 		public override void OnCast()
 		{
+            Party party = Engines.PartySystem.Party.Get(Caster);
+            bool inParty = false;
+
 			if ( CheckSequence() )
 			{
 				/* Creates a withering frost around the Caster,
@@ -45,7 +49,25 @@ namespace Server.Spells.Necromancy
 					foreach ( Mobile m in Caster.GetMobilesInRange( GetRadiusForSpell() ) )
 					{
 						if ( Caster != m && Caster.InLOS( m ) && SpellHelper.ValidIndirectTarget( Caster, m ) && Caster.CanBeHarmful( m, false ) )
-							targets.Add( m );
+                        {
+							if (party != null && party.Count > 0)
+                            {
+                                for (int k = 0; k < party.Members.Count; ++k)
+                                {
+                                    PartyMemberInfo pmi = (PartyMemberInfo)party.Members[k];
+                                    Mobile member = pmi.Mobile;
+                                    if (member.Serial == m.Serial)
+                                        inParty = true;
+                                }
+                                if (!inParty)
+                                    targets.Add(m);
+                            }
+                            else
+                            {
+                                targets.Add(m);
+                            }
+                        }
+                        inParty = false;
 					}
 
 					Effects.PlaySound( Caster.Location, map, 0x1FB );

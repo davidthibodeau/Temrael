@@ -576,7 +576,9 @@ namespace Server.Mobiles
                 {
                     m_Aphonie = value;
 
-                    SendMessage(m_Aphonie ? "Vous ne pouvez parler!" : "Vous pouvez parler!");
+                    //SendMessage(m_Aphonie ? "Vous ne pouvez parler!" : "Vous pouvez parler!");
+                    SendMessage(m_Aphonie ? "Vous ne pouvez incanter!" : "Vous pouvez incanter!");
+                    
 
                     if (m_AphonieTimer != null)
                     {

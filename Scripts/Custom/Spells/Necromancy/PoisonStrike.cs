@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Engines.PartySystem;
 
 namespace Server.Spells.Necromancy
 {
@@ -33,6 +34,9 @@ namespace Server.Spells.Necromancy
 
 		public void Target( Mobile m )
 		{
+            Party party = Engines.PartySystem.Party.Get(Caster);
+            bool inParty = false;
+
 			if ( CheckHSequence( m ) )
 			{
 				SpellHelper.Turn( Caster, m );
@@ -47,24 +51,24 @@ namespace Server.Spells.Necromancy
 				Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x36B0, 1, 14, 63, 7, 9915, 0 );
 				Effects.PlaySound( m.Location, m.Map, 0x229 );
 
-                double damage = Utility.RandomMinMax(10, 20) * ((300 + (GetDamageSkill(Caster) * 9)) / 1000);
+                //double damage = Utility.RandomMinMax(10, 20) * ((300 + (GetDamageSkill(Caster) * 9)) / 1000);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                //damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                 int level;
 
                 double total = (Caster.Skills[SkillName.Goetie].Value + Caster.Skills[SkillName.Empoisonner].Value);
 
-                if (total >= 200.0 && 3 > Utility.Random(10))
-                    level = 3;
-                else if (total > 140.0)
+                if (total >= 180.0)
                     level = 2;
-                else
+                else if (total > 140.0)
                     level = 1;
+                else
+                    level = 0;
 
                 m.ApplyPoison(Caster, Poison.GetPoison(level));
 
-                SpellHelper.Damage(this, m, damage, 0, 0, 0, 100, 0);
+                //SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
 
 				Map map = m.Map;
 
@@ -75,20 +79,42 @@ namespace Server.Spells.Necromancy
 					foreach ( Mobile targ in m.GetMobilesInRange( GetRadiusForSpell() ) )
 					{
                         if ((Caster != targ && m != targ && SpellHelper.ValidIndirectTarget(Caster, targ)) && Caster.CanBeHarmful(targ, false))
-							targets.Add( targ );
+                        {
+                            if (party != null && party.Count > 0)
+                            {
+                                for (int k = 0; k < party.Members.Count; ++k)
+                                {
+                                    PartyMemberInfo pmi = (PartyMemberInfo)party.Members[k];
+                                    Mobile member = pmi.Mobile;
+                                    if (member.Serial == targ.Serial)
+                                        inParty = true;
+                                }
+                                if (!inParty)
+                                    targets.Add(targ);
+                            }
+                            else
+                            {
+                                targets.Add(targ);
+                            }
+                        }
+                        inParty = false;
 					}
 
 					for ( int i = 0; i < targets.Count; ++i )
 					{
 						Mobile targ = (Mobile)targets[i];
 
-                        if (!m_Table.Contains(targ))
+                        targ.ApplyPoison(Caster, Poison.GetPoison(level));
+
+                        //SpellHelper.Damage(this, targ, damage, 0, 0, 0, 0, 100);
+
+                        /*if (!m_Table.Contains(targ))
                         {
                             Timer t = new InternalTimer(targ, Caster);
                             t.Start();
 
-                            m_Table[m] = t;
-                        }
+                            m_Table[targ] = t;
+                        }*/
 					}
 				}
 			}
@@ -96,7 +122,7 @@ namespace Server.Spells.Necromancy
 			FinishSequence();
         }
 
-        private class InternalTimer : Timer
+        /*private class InternalTimer : Timer
         {
             private Mobile m_Target;
             private Mobile m_Caster;
@@ -135,7 +161,7 @@ namespace Server.Spells.Necromancy
 
                 m_Target.Damage((int)toDamage);
             }
-        }
+        }*/
 
         private static Hashtable m_Table = new Hashtable();
 
