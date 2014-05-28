@@ -47,7 +47,7 @@ namespace Server.Spells.Sixth
 
 				RemoveTimer( m );
 
-                double duration = ((60 * Caster.Skills[SkillName.Reve].Value) / 50) + 1;
+                double duration = ((120 * Caster.Skills[SkillName.Reve].Value) / 50) + 1;
 
                 duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
                 
