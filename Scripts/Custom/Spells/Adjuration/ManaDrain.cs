@@ -52,7 +52,7 @@ namespace Server.Spells.Fourth
                 if (CheckResisted(m))
                     m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                 else if (m.Mana >= 100)
-                    manaLost = Utility.Random(1, 100);
+                    manaLost = Utility.Random(25, 100);
                 else
                     manaLost = Utility.Random(1, m.Mana);
 
