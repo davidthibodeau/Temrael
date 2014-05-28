@@ -23,24 +23,16 @@ namespace Server.Mobiles
 		public EnergyVortex()
 			: base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "an energy vortex";
+			Name = "Vortex d'Énergie";
 
-			if( Core.SE && 0.002 > Utility.RandomDouble() ) // Per OSI FoF, it's a 1/500 chance.
-			{
-				// Llama vortex!
-				Body = 0xDC;
-				Hue = 0x76;
-			}
-			else
-			{
-				Body = 164;
-			}
+			Body = 84;
+            Hue = 2192;
 
 			SetStr( 200 );
 			SetDex( 200 );
 			SetInt( 100 );
 
-			SetHits( ( Core.SE ) ? 140 : 70 );
+			SetHits( 200 );
 			SetStam( 250 );
 			SetMana( 0 );
 
@@ -62,10 +54,10 @@ namespace Server.Mobiles
 			Fame = 0;
 			Karma = 0;
 
-			ControlSlots = ( Core.SE ) ? 2 : 1;
+            ControlSlots = 1;
 		}
 
-        public override double AttackSpeed { get { return 3.0; } }
+        public override double AttackSpeed { get { return 2.5; } }
 		public override bool BleedImmune{ get{ return true; } }
 		public override Poison PoisonImmune { get { return Poison.Lethal; } }
 
