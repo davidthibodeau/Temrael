@@ -157,6 +157,8 @@ namespace Server.Misc
 
         public void RecordPlayer (IAccount a)
         {
+            if (a == null)
+                return;
             if(a.AccessLevel > AccessLevel.Player)
                 return;
             if(!ThisHour.ContainsKey(a))
