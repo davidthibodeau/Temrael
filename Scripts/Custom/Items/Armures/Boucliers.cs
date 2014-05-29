@@ -27,7 +27,7 @@ namespace Server.Items
             : base(0x2883)
         {
             Weight = 2.0;
-            Name = "Bouclier Decore";
+            Name = "Bouclier Decoré";
         }
 
         public BouclierDecorer(Serial serial)
@@ -290,7 +290,7 @@ namespace Server.Items
             : base(0x2A45)
         {
             Weight = 6.0;
-            Name = "Bouclier";
+            Name = "Bouclier de Karmilide";
         }
 
         public BouclierComte(Serial serial)
@@ -334,7 +334,7 @@ namespace Server.Items
             : base(0x2A46)
         {
             Weight = 6.0;
-            Name = "Bouclier";
+            Name = "Bouclier de Faréligue";
         }
 
         public BouclierMarquis(Serial serial)
@@ -378,7 +378,7 @@ namespace Server.Items
             : base(0x2A47)
         {
             Weight = 6.0;
-            Name = "Bouclier";
+            Name = "Bouclier d'Horlé";
         }
 
         public BouclierDuc(Serial serial)
@@ -422,7 +422,7 @@ namespace Server.Items
             : base(0x2A48)
         {
             Weight = 6.0;
-            Name = "Sombre Pavois";
+            Name = "Pavois Royal";
         }
 
         public BouclierPavoisNoir(Serial serial)
@@ -466,7 +466,7 @@ namespace Server.Items
             : base(0x2A49)
         {
             Weight = 6.0;
-            Name = "Bouclier";
+            Name = "Bouclier Métallique";
         }
 
         public BouclierGarde(Serial serial)

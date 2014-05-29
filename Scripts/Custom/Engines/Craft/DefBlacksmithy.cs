@@ -416,35 +416,35 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(MetalShield), "Boucliers", "Bouclier", 30.0, 60.0, typeof(FerIngot), "Lingots", 14, 1044037);
 
-            index = AddCraft(typeof(WoodenKiteShield), "Boucliers", "Bouclier de Bois", 40.0, 70.0, typeof(FerIngot), "Lingots", 8, 1044037);
-
-            index = AddCraft(typeof(BouclierGarde), "Boucliers", "Bouclier Métalique", 50.0, 80.0, typeof(FerIngot), "Lingots", 16, 1044037);
-
-            index = AddCraft(typeof(MetalKiteShield), "Boucliers", "Bouclier Croisé", 50.0, 80.0, typeof(FerIngot), "Lingots", 16, 1044037);
-
             index = AddCraft(typeof(ChaosShield), "Boucliers", "Bouclier du Chaos", 40.0, 70.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
             index = AddCraft(typeof(OrderShield), "Boucliers", "Bouclier d'Ordre", 50.0, 80.0, typeof(FerIngot), "Lingots", 18, 1044037);
+
+            index = AddCraft(typeof(WoodenKiteShield), "Boucliers", "Bouclier de Bois", 40.0, 70.0, typeof(FerIngot), "Lingots", 8, 1044037);
+
+            index = AddCraft(typeof(BouclierGarde), "Boucliers", "Bouclier Métallique", 50.0, 80.0, typeof(FerIngot), "Lingots", 16, 1044037);
+
+            index = AddCraft(typeof(MetalKiteShield), "Boucliers", "Bouclier Croisé", 50.0, 80.0, typeof(FerIngot), "Lingots", 16, 1044037);
 
             index = AddCraft(typeof(BouclierComte), "Boucliers", "Bouclier de Karmilide", 50.0, 80.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
             index = AddCraft(typeof(BouclierMarquis), "Boucliers", "Bouclier de Faréligue", 50.0, 80.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
-            index = AddCraft(typeof(BouclierDuc), "Boucliers", "Bouclier d'Horlé ", 50.0, 80.0, typeof(FerIngot), "Lingots", 18, 1044037);
+            index = AddCraft(typeof(BouclierDuc), "Boucliers", "Bouclier d'Horlé", 50.0, 80.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
             index = AddCraft(typeof(BouclierNordique), "Boucliers", "Bouclier Nordique", 60.0, 90.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
             index = AddCraft(typeof(BouclierElfique), "Boucliers", "Bouclier Elfique", 60.0, 90.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
-            index = AddCraft(typeof(BouclierChevaleresque), "Boucliers", "Bouclier Elfique", 60.0, 90.0, typeof(FerIngot), "Lingots", 18, 1044037);
+            index = AddCraft(typeof(BouclierChevaleresque), "Boucliers", "Bouclier Chevaleresque", 60.0, 90.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
             index = AddCraft(typeof(BouclierVieux), "Boucliers", "Vieux Pavois", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
             index = AddCraft(typeof(HeaterShield), "Boucliers", "Pavois", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
-            index = AddCraft(typeof(BouclierDecorer), "Boucliers", "Bouclier Decorer", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
+            index = AddCraft(typeof(BouclierDecorer), "Boucliers", "Pavois Decoré", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
 
-            index = AddCraft(typeof(BouclierPavoisNoir), "Boucliers", "Bouclier Royal", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
+            index = AddCraft(typeof(BouclierPavoisNoir), "Boucliers", "Pavois Royal", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
 			#endregion
 
 			#region Bladed

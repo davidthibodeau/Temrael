@@ -24,6 +24,7 @@ namespace Server.Items
 		public HeaterShield() : base( 0x1B76 )
 		{
 			Weight = 8.0;
+            Name = "Pavois";
 		}
 
 		public HeaterShield( Serial serial ) : base(serial)

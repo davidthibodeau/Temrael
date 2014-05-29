@@ -24,6 +24,7 @@ namespace Server.Items
 		public MetalShield() : base( 0x1B7B )
 		{
 			Weight = 6.0;
+            Name = "Bouclier";
 		}
 
 		public MetalShield( Serial serial ) : base(serial)

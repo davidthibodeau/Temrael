@@ -24,10 +24,8 @@ namespace Server.Items
 		[Constructable]
 		public ChaosShield() : base( 0x1BC3 )
 		{
-			if ( !Core.AOS )
-				LootType = LootType.Newbied;
-
 			Weight = 5.0;
+            Name = "Bouclier du Chaos";
 		}
 
 		public ChaosShield( Serial serial ) : base(serial)
