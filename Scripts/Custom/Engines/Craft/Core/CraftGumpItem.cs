@@ -197,30 +197,28 @@ namespace Server.Engines.Craft
                         switch (nameEnd)
                         {
                             case "Os":
-                                req = 1;
-                                break;
                             case "Os Gobelin":
                             case "Os Reptilien":
                             case "Os Nordique":
                             case "Os Désertique":
-                            case "Os Maritime":
                                 req = 2;
                                 break;
+                            case "Os Maritime":
                             case "Os Volcanique":
                             case "Os Géant":
-                            case "Os Minotaure":
                                 req = 3;
                                 break;
+                            case "Os Minotaure":
                             case "Os Arachnide":
                             case "Os Ophidien":
-                            case "Os Magique":
                                 req = 4;
                                 break;
+                            case "Os Magique":
                             case "Os Ancien":
                             case "Os Demoniaque":
-                            case "Os Dragonique":
                                 req = 5;
                                 break;
+                            case "Os Dragonique":
                             case "Os Balron":
                             case "Os Wyrmique":
                                 req = 6;
@@ -240,9 +238,9 @@ namespace Server.Engines.Craft
                                 break;
                             case "Cuir Maritime":
                             case "Cuir Volcanique":
+                            case "Cuir Géant":
                                 req = 2;
                                 break;
-                            case "Cuir Géant":
                             case "Cuir Minotaure":
                             case "Cuir Ophidien":
                             case "Cuir Arachnide":
@@ -265,8 +263,6 @@ namespace Server.Engines.Craft
                         switch (nameEnd)
                         {
                             case "Cuir":
-                                req = 1;
-                                break;
                             case "Cuir Reptilien":
                             case "Cuir Nordique":
                             case "Cuir Désertique":
