@@ -24,6 +24,7 @@ namespace Server.Items
 		public Buckler() : base( 0x1B73 )
 		{
 			Weight = 5.0;
+            Name = "Bouclet";
 		}
 
 		public Buckler( Serial serial ) : base(serial)

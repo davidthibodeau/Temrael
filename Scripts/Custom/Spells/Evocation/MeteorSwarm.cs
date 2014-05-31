@@ -87,11 +87,6 @@ namespace Server.Spells.Seventh
 					eable.Free();
 				}
 
-           //     double damage = Utility.RandomMinMax(45, 90);
-                double damage = Utility.RandomMinMax(22, 45);
-
-                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
-
 				if ( targets.Count > 0 )
 				{
 					Effects.PlaySound( p, Caster.Map, 0x160 );
@@ -99,6 +94,11 @@ namespace Server.Spells.Seventh
 					for ( int i = 0; i < targets.Count; ++i )
 					{
                         Mobile m = (Mobile)targets[i];
+
+                        //double damage = Utility.RandomMinMax(45, 90);
+                        double damage = Utility.RandomMinMax(22, 45);
+
+                        damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
 						if ( CheckResisted( m ) )
 						{

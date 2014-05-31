@@ -51,7 +51,7 @@ namespace Server.Mobiles
 
             Tamable = true;
             ControlSlots = 12;
-            MinTameSkill = 120.0;
+            MinTameSkill = 97.0;
 		}
 
 		public override void GenerateLoot()

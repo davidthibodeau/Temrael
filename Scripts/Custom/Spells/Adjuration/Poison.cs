@@ -59,7 +59,7 @@ namespace Server.Spells.Third
                     //if (dist >= 3.0)
                     //    total -= (dist - 3.0) * 10.0;
 
-                    if (total >= 200.0 && 3 > Utility.Random(10))
+                    if (total >= 180.0)
                         level = 3;
                     else if (total > 140.0)
                         level = 2;

@@ -24,10 +24,8 @@ namespace Server.Items
 		[Constructable]
 		public OrderShield() : base( 0x1BC4 )
 		{
-			if ( !Core.AOS )
-				LootType = LootType.Newbied;
-
 			Weight = 7.0;
+            Name = "Bouclier d'Ordre";
 		}
 
 		public OrderShield( Serial serial ) : base(serial)

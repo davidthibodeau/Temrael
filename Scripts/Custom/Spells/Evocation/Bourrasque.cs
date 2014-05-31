@@ -51,7 +51,8 @@ namespace Server.Spells.First
 
                         SpellHelper.Turn(m_Spell.Caster, targ);
 
-                        double value = Utility.Random(3, 7);
+                        double value = Utility.RandomMinMax(3, 7);
+                        
 
                         //value = SpellHelper.AdjustValue(m_Spell.Caster, value, NAptitude.Spiritisme);
 
@@ -64,7 +65,7 @@ namespace Server.Spells.First
                     }
                     else
                     {
-                        from.SendMessage("Vous ne pouvez pas faire ca sous terre !");
+                        from.SendMessage("Vous ne pouvez pas faire ça sous terre !");
                     }
                 }
 

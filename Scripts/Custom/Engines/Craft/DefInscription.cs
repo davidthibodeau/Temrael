@@ -236,9 +236,9 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(NightSightScroll), "Illusion", "Vision Nocturne", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(TeleportScroll), "Illusion", "Téléportation", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(IncognitoScroll), "Illusion", "Incognito", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(MarkScroll), "Illusion", "Marque", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(RecallScroll), "Illusion", "Rappel", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(MindBlastScroll), "Illusion", "Lobotomie", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(RecallScroll), "Illusion", "Rappel", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MarkScroll), "Illusion", "Marque", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(PolymorphScroll), "Illusion", "Polymorph", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(RevealScroll), "Illusion", "Révélation", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(InvisibilityScroll), "Illusion", "Invisibilité", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);

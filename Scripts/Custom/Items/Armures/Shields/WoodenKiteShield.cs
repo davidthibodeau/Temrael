@@ -24,6 +24,7 @@ namespace Server.Items
 		public WoodenKiteShield() : base( 0x1B79 )
 		{
 			Weight = 5.0;
+            Name = "Bouclier de Bois";
 		}
 
 		public WoodenKiteShield( Serial serial ) : base(serial)
