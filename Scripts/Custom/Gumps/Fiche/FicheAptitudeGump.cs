@@ -14,6 +14,7 @@ namespace Server.Gumps
     public class FicheAptitudeGump : GumpTemrael
     {
         private TMobile m_from;
+        private int m_page;
 
         public FicheAptitudeGump(TMobile from)
             : this(from, 0)
@@ -24,6 +25,7 @@ namespace Server.Gumps
             : base("Aptitudes & Compétences", 560, 622)
         {
             m_from = from;
+            m_page = page;
 
             int x = XBase;
             int y = YBase;
@@ -65,11 +67,16 @@ namespace Server.Gumps
             x = 380;
             AddSection(x, y + line * scale, 255, 465, "Compétences");
             line += 2;
-
+            int i = -1;
             for (int s = 0; s < from.Skills.Length; s++)
             {
                 if (from.Skills[s].Value > 0)
                 {
+                    i++;
+                    if (page * 16 > i)
+                        continue;
+                    if (i >= (page + 1) * 16)
+                        break;
                     AddHtmlTexte(x + 30, y + line * scale, DefaultHtmlLength, from.Skills[s].Name + " [ " + from.Skills[s].Value + "% ]");
                     ++line;
                 }
@@ -77,6 +84,11 @@ namespace Server.Gumps
 
             AddButton(x + 30, 580, 52, 52, 9, GumpButtonType.Reply, 0);
             AddHtml(x + 80, 592, 200, 20, "<h3><basefont color=#025a>Compétences<basefont></h3>", false, false);
+            
+            if(i >= (page + 1) * 16)
+                AddButton(x + 220, 580, 10, 5601, 5605);
+            if(page > 0)
+                AddButton(x + 200, 580, 11, 5603, 5607);
 
             AddButton(130, 580, 52, 52, 8, GumpButtonType.Reply, 0);
             AddHtml(180, 592, 200, 20, "<h3><basefont color=#025a>Aptitudes<basefont></h3>", false, false);
@@ -116,6 +128,12 @@ namespace Server.Gumps
                     break;
                 case 9:
                     from.SendGump(new CompetenceGump(from, Server.Gumps.CompetenceGump.CompDomaines.Aucun, false));
+                    break;
+                case 10:
+                    from.SendGump(new FicheAptitudeGump(from, m_page + 1));
+                    break;
+                case 11:
+                    from.SendGump(new FicheAptitudeGump(from, m_page - 1));
                     break;
             }
 
