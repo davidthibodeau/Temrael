@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Misc;
 using Server.Items;
 using Server.Mobiles;
+using Server.Engines.PartySystem;
 
 namespace Server.Spells
 {
@@ -12,6 +13,10 @@ namespace Server.Spells
 	{
         public static Hashtable m_MurmureTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
+
+        //Identification des constantes utilisées (pour modification aisée)
+        private const double bonus_donne = 0.0;
+        private const int portee = 8;
 
 		private static SpellInfo m_Info = new SpellInfo(
 				"Murmure", "",
@@ -34,11 +39,12 @@ namespace Server.Spells
             if (CheckSequence())
             {
                 TimeSpan duration = GetDurationForSpell(20, 1.5);
-                double factor = 3;
+                double amount = 1;
 
+                //Calcul du bonus donné par le sort (niveau * bonus_donne)
                 if (Caster is TMobile)
                 {
-                    factor *= ((TMobile)Caster).GetAptitudeValue(Aptitude.Composition);
+                    amount += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
                 }
 
                 DateTime endtime = DateTime.Now + duration;
@@ -47,14 +53,30 @@ namespace Server.Spells
 
                 Map map = Caster.Map;
 
+                Party party = Engines.PartySystem.Party.Get(Caster);
+
+                //Définition des cibles du sort
+                m_target.Add(Caster);
+
                 if (map != null)
                 {
-                    foreach (Mobile m in Caster.GetMobilesInRange(8))
+                    foreach (Mobile m in Caster.GetMobilesInRange(portee))
                     {
-                        if (Caster.CanBeBeneficial(m, false) && (Caster.Party == m.Party) && (m.AccessLevel < AccessLevel.GameMaster))
-                            m_target.Add(m);
+                        if (SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false))
+                        {
+                            if (party != null && party.Count > 0)
+                            {
+                                for (int k = 0; k < party.Members.Count; ++k)
+                                {
+                                    PartyMemberInfo pmi = (PartyMemberInfo)party.Members[k];
+                                    Mobile member = pmi.Mobile;
+                                    if (member.Serial == m.Serial)
+                                        m_target.Add(m);
+                                }
+                            }
+                        }
                     }
-                }
+                }       
 
                 for (int i = 0; i < m_target.Count; ++i)
                 {
@@ -62,7 +84,7 @@ namespace Server.Spells
 
                     StopTimer(targ);
 
-                    m_MurmureTable[targ] = factor;
+                    m_MurmureTable[targ] = amount;
 
                     Timer t = new MurmureTimer(targ, DateTime.Now + duration);
                     m_Timers[targ] = t;
