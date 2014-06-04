@@ -21,12 +21,12 @@ namespace Server.Regions
 
         public override void OnEnter(Mobile m)
         {
-            m.SendMessage("Vous pénétrez une aire de commerce");
+            m.SendMessage("Vous pénétrez dans le marché de la ville");
         }
 
         public override void OnExit(Mobile m)
         {
-            m.SendMessage("Vous quittez un endroit de commerce.");
+            m.SendMessage("Vous quittez le marché de la ville.");
         }
     }
 
