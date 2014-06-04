@@ -10,15 +10,20 @@ namespace Server
     {
         public static void Reset(TMobile from)
         {
-            from.SkillsCap = 350 * 10 + (from.Niveau * 15);
+            int niveau = from.Niveau;
+
+            if (niveau > 30)
+                niveau = 30;
+
+            from.SkillsCap = 350 * 10 + (niveau * 15);
 
             for (int i = 0; i < from.Skills.Length; ++i)
             {
                 from.Skills[i].Base = 0.0;
-                from.Skills[i].Cap = 40.0 + (from.Niveau * 2.0);
+                from.Skills[i].Cap = 40.0 + (niveau * 2.0);
             }
 
-            from.CompetencesLibres = 350 + (from.Niveau * 15);
+            from.CompetencesLibres = 350 + (niveau * 15);
         }
 
         public static int GetDisponibleComp(TMobile from)
@@ -28,7 +33,12 @@ namespace Server
 
         public static int GetRemainingComp(TMobile from)
         {
-            int pc = (from.Niveau * 15) + 350;
+            int niveau = from.Niveau;
+
+            if (niveau > 30)
+                niveau = 30;
+
+            int pc = (niveau * 15) + 350;
             int added = 0;
 
             try
