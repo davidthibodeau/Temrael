@@ -55,14 +55,14 @@ namespace Server.Gumps
             new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Murmure", 0x5D0,  1602, 15, 3),
             new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Sona", 0x5D6,  1603, 15, 4),
             new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Hymne", 0x5D5, 1604, 20, 5),
-            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Chant", 0x5B2,  1606, 20, 6),
+            new BardSpellBookEntry( BardType.Composition, Aptitude.Composition, "Chant", 0x5B2,  1605, 20, 6),
 
-            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Sonette", 0x5B0,  1607, 25, 7),
-            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Fanfare", 0x5AE,  1608, 25, 8),
-            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Poème", 0x5AF,  1610, 30, 9),
-            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Symphonie", 0x5B1,  1611, 30, 10),
-            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Harmonie", 0x5B3,  1612, 40, 11),
-            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Sérénade", 0x5D8,  1613, 50, 12)
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Sonette", 0x5B0,  1606, 25, 7),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Fanfare", 0x5AE,  1607, 25, 8),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Poème", 0x5AF,  1608, 30, 9),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Symphonie", 0x5B1,  1609, 30, 10),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Harmonie", 0x5B3,  1610, 40, 11),
+            new BardSpellBookEntry( BardType.Compo, Aptitude.Composition, "Sérénade", 0x5D8,  1611, 50, 12)
         };
 
         public bool HasSpell(Mobile from, int spellID)

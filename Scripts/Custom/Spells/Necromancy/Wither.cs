@@ -92,7 +92,7 @@ namespace Server.Spells.Necromancy
                             m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                         }
 
-						SpellHelper.Damage( this, m, damage, 0, 0, 100, 0, 0 );
+						SpellHelper.Damage( this, m, damage, 0, 0, 0, 0, 100 );
 					}
 				}
 			}

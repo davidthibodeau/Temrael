@@ -35,6 +35,7 @@ namespace Server.Mobiles
 				//Add( new GenericBuyInfo( "1060740", typeof( ReceiverCrystal ), 6, 20, 0x1ED0, 0 ) );
 
 				Add( new GenericBuyInfo( typeof( StarSapphire ), 125, 20, 0xF21, 0 ) );
+                Add( new GenericBuyInfo( typeof( ObsidienRegeant ), 125, 20, 3977, 0));
 				Add( new GenericBuyInfo( typeof( Emerald ), 100, 20, 0xF10, 0 ) );
 				Add( new GenericBuyInfo( typeof( Sapphire ), 100, 20, 0xF19, 0 ) );
 				Add( new GenericBuyInfo( typeof( Ruby ), 75, 20, 0xF13, 0 ) );

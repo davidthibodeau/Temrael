@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Misc;
 using Server.Items;
 using Server.Mobiles;
+using Server.Engines.PartySystem;
 
 namespace Server.Spells
 {
@@ -14,7 +15,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
         //Identification des constantes utilisées (pour modification aisée)
-        private const double bonus_donne = 0.03;
+        private const double bonus_donne = 0.2;
         private const int portee = 8;
 
 		private static SpellInfo m_Info = new SpellInfo(
@@ -37,12 +38,13 @@ namespace Server.Spells
         {
             if (CheckSequence())
             {
-                TimeSpan duration = GetDurationForSpell(20, 1.5);
-                double factor = 0;
+                TimeSpan duration = GetDurationForSpell(1, 0.1);
+                double amount = 1;
 
+                //Calcul du bonus donné par le sort (niveau * bonus_donne)
                 if (Caster is TMobile)
                 {
-                    factor += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
+                    amount += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
                 }
 
                 DateTime endtime = DateTime.Now + duration;
@@ -51,14 +53,30 @@ namespace Server.Spells
 
                 Map map = Caster.Map;
 
+                Party party = Engines.PartySystem.Party.Get(Caster);
+
+                //Définition des cibles du sort
+                m_target.Add(Caster);
+
                 if (map != null)
                 {
                     foreach (Mobile m in Caster.GetMobilesInRange(portee))
                     {
-                        if (Caster.CanBeBeneficial(m, false) && (Caster.Party == m.Party) && (m.AccessLevel < AccessLevel.GameMaster))
-                            m_target.Add(m);
+                        if (SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false))
+                        {
+                            if (party != null && party.Count > 0)
+                            {
+                                for (int k = 0; k < party.Members.Count; ++k)
+                                {
+                                    PartyMemberInfo pmi = (PartyMemberInfo)party.Members[k];
+                                    Mobile member = pmi.Mobile;
+                                    if (member.Serial == m.Serial)
+                                        m_target.Add(m);
+                                }
+                            }
+                        }
                     }
-                }
+                }       
 
                 for (int i = 0; i < m_target.Count; ++i)
                 {
@@ -66,9 +84,9 @@ namespace Server.Spells
 
                     StopTimer(targ);
 
-                    m_HarmonieTable[targ] = factor;
+                    m_HarmonieTable[targ] = amount;
 
-                    Timer t = new HarmonieTimer(targ, DateTime.Now + duration);
+                    Timer t = new HarmonieTimer(targ, amount, DateTime.Now + duration);
                     m_Timers[targ] = t;
                     t.Start();
 
@@ -99,12 +117,16 @@ namespace Server.Spells
         {
             private Mobile m_target;
             private DateTime endtime;
+            private double m_amount;
+            private int m_total;
 
-            public HarmonieTimer(Mobile target, DateTime end)
+            public HarmonieTimer(Mobile target, double amount, DateTime end)
                 : base(TimeSpan.Zero, TimeSpan.FromSeconds(2))
             {
                 m_target = target;
                 endtime = end;
+                m_amount = amount;
+                m_total = 0;
 
                 Priority = TimerPriority.OneSecond;
             }
@@ -116,10 +138,18 @@ namespace Server.Spells
                     HarmonieSpell.m_HarmonieTable.Remove(m_target);
                     HarmonieSpell.m_Timers.Remove(m_target);
 
+                    m_target.VirtualArmorMod -= m_total;
+
                     m_target.FixedParticles(14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(517);
 
                     Stop();
+                }
+                else
+                {
+                    m_target.FixedParticles(14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    m_target.VirtualArmorMod += (int)m_amount;
+                    m_total += (int)m_amount;
                 }
             }
         }
