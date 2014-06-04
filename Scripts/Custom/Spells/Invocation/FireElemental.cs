@@ -44,7 +44,7 @@ namespace Server.Spells.Eighth
 		{
 			if ( CheckSequence() )
             {
-                double duration = (2 * Caster.Skills.ArtMagique.Fixed) / 5;
+                double duration = (2 * Caster.Skills.Conjuration.Fixed) / 5;
 
                 SpellHelper.Summon(new FireElemental(), Caster, 0x217, TimeSpan.FromSeconds(duration), true, true);
 			}
