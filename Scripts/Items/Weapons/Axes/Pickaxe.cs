@@ -32,7 +32,7 @@ namespace Server.Items
 		[Constructable]
 		public Pickaxe() : base( 0xE86 )
 		{
-			Weight = 11.0;
+			Weight = 5.0;
 			UsesRemaining = 50;
 			ShowUsesRemaining = true;
             Name = "Pioche";
