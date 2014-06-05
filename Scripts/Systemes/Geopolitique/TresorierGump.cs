@@ -286,9 +286,17 @@ namespace Server.Systemes.Geopolitique
                 if (Int32.TryParse(text, out amount))
                 {
                     if (ajout)
+                    {
                         t.AjoutFonds(from, amount);
+                        Commands.CommandLogging.WriteLine(from, "Le trésorier {0} {1} a reçu {2}.", t.Etablissement, 
+                            t.Terre == null ? "" : String.Format("de la terre {0}", t.Terre.Nom), amount);
+                    }
                     else
+                    {
                         t.RetraitFonds(from, amount);
+                        Commands.CommandLogging.WriteLine(from, "Le trésorier {0} {1} s'est fait réclamé {2}.", t.Etablissement, 
+                            t.Terre == null ? "" : String.Format("de la terre {0}", t.Terre.Nom), amount);
+                    }
                     from.SendGump(new TresorierGump(t, from, 0));
                 }
                 else
@@ -385,7 +393,7 @@ namespace Server.Systemes.Geopolitique
                 int montant;
                 if (Int32.TryParse(text, out montant))
                 {
-                    tresorier.ReponseAuGump(from, "L'employé fut  ajouté au registre.");
+                    tresorier.ReponseAuGump(from, "L'employé fut ajouté au registre.");
                     tresorier.AddEmploye(employe, nomEmploye, titreEmploye, montant);
                     from.SendGump(new TresorierGump(tresorier, from, 0));
                 }

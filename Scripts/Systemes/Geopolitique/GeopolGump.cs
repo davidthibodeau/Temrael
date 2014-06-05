@@ -435,6 +435,7 @@ namespace Server.Systemes.Geopolitique
                 {
                     terre.Fonds = fonds;
                     from.SendGump(new GeopolGump(terre));
+                    Commands.CommandLogging.WriteLine(from, "Les fonds de la terre {0} ont été mis à {1}.", terre.Nom, fonds);
                 }
                 else
                 {
