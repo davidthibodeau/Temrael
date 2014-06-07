@@ -28,7 +28,7 @@ namespace Server.Mobiles
 			Hue = 1;
 			// TODO: Sound values?
 
-			double scalar = caster.Skills[SkillName.Goetie].Value * 0.01;
+			double scalar = caster.Skills[SkillName.Goetie].Value * 0.015;
 
 			m_Target = target;
 			m_ExpireTime = DateTime.Now + duration;
@@ -58,7 +58,7 @@ namespace Server.Mobiles
 			Fame = 0;
 			Karma = 0;
 
-			ControlSlots = 3;
+			ControlSlots = 1;
 
 			VirtualArmor = 32;
 
