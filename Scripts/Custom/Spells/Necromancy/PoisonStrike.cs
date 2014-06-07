@@ -57,11 +57,13 @@ namespace Server.Spells.Necromancy
 
                 int level;
 
-                double total = (Caster.Skills[SkillName.Goetie].Value + Caster.Skills[SkillName.Empoisonner].Value);
+                double total = Caster.Skills[SkillName.Goetie].Value; // + Caster.Skills[SkillName.Empoisonner].Value;
 
-                if (total >= 180.0)
+                if (total >= 90.0)
+                    level = 3;
+                else if (total > 70.0)
                     level = 2;
-                else if (total > 140.0)
+                else if (total > 45.0)
                     level = 1;
                 else
                     level = 0;

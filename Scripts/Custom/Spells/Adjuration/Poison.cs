@@ -52,18 +52,18 @@ namespace Server.Spells.Third
                 {*/
                     int level;
 
-                    double total = (Caster.Skills[SkillName.Tenebrea].Value + Caster.Skills[SkillName.Empoisonner].Value);
+                    double total = Caster.Skills[SkillName.Tenebrea].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
 
                     //double dist = Caster.GetDistanceToSqrt(m);
 
                     //if (dist >= 3.0)
                     //    total -= (dist - 3.0) * 10.0;
 
-                    if (total >= 180.0)
+                    if (total >= 90.0)
                         level = 3;
-                    else if (total > 140.0)
+                    else if (total > 70.0)
                         level = 2;
-                    else if (total > 90.0)
+                    else if (total > 45.0)
                         level = 1;
                     else
                         level = 0;
