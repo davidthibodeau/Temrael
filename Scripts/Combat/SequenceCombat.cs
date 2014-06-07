@@ -2,6 +2,7 @@
 using Server.Mobiles;
 using Server.Items;
 using System.Collections;
+using Server.Engines.PartySystem;
 
 namespace Server.Combat
 {
@@ -127,6 +128,8 @@ namespace Server.Combat
                 // Attaque rotative. Est-ce qu'elles arrivent a quelque part d'autre?
                 Map map = attaquant.Map;
                 ArrayList targets = new ArrayList();
+                Party party = Engines.PartySystem.Party.Get(attaquant);
+                bool inParty = false;
 
                 if (map != null)
                 {
@@ -138,11 +141,36 @@ namespace Server.Combat
                     if (0.60 > Utility.RandomDouble())
                         tile++;
 
-                    foreach (Mobile m in attaquant.GetMobilesInRange((int)tile))
+                    /*foreach (Mobile m in attaquant.GetMobilesInRange((int)tile))
                     {
                         if (attaquant != m && attaquant.Party != defenseur.Party)
                             targets.Add(m);
+                    }*/
+
+                    foreach (Mobile m in attaquant.GetMobilesInRange((int)tile))
+                    {
+                        if (attaquant != m)
+                        {
+                            if (party != null && party.Count > 0)
+                            {
+                                for (int k = 0; k < party.Members.Count; ++k)
+                                {
+                                    PartyMemberInfo pmi = (PartyMemberInfo)party.Members[k];
+                                    Mobile member = pmi.Mobile;
+                                    if (member.Serial == m.Serial)
+                                        inParty = true;
+                                }
+                                if (!inParty)
+                                    targets.Add(m);
+                            }
+                            else
+                            {
+                                targets.Add(m);
+                            }
+                        }
+                        inParty = false;
                     }
+
 
                     for (int i = 0; i < targets.Count; ++i)
                     {
@@ -163,7 +191,8 @@ namespace Server.Combat
                 else
                     atkWeapon.OnMiss(attaquant, defenseur);
 
-                 stat = StatType.Int;
+                //stat = StatType.Int;
+                stat = StatType.Str;
             }
 
 
