@@ -527,14 +527,16 @@ namespace Server.Items
 
                 if (onSelf)
                 {
-                    seconds = AOS.GeneralTimeScaling * (9.4 + (0.6 * ((double)(120 - dex) / 10)));
+                    //seconds = AOS.GeneralTimeScaling * (9.4 + (0.6 * ((double)(120 - dex) / 10)));
+                    seconds = 6.0 + (100 - (healer.Skills[SkillName.Soins].Value)) / 10;
                 }
                 else
                 {
-                    if (dex > 150)
+                    /*if (dex > 150)
                         dex = 150;
 
-                    seconds = AOS.GeneralTimeScaling * (0.6 * ((double)(150 - dex) / 9));
+                    seconds = AOS.GeneralTimeScaling * (0.6 * ((double)(150 - dex) / 9));*/
+                    seconds = 4.0 + (100 - (healer.Skills[SkillName.Soins].Value)) / 10;
                 }
 
                 BandageContext context = GetContext(healer);
