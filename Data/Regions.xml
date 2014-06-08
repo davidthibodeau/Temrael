@@ -10,6 +10,10 @@
       <rect x="2378" y="978" width="11" height="19" />
       <guards disabled="true" />
     </region>
+		<region type="CommerceBrandheim" priority="60" name="Marché de Brandheim">
+      <rect x="2349" y="982" width="11" height="10" />
+      <guards disabled="true" />
+    </region>
 	
 	<!-- Elamsham -->
     <region type="TerritoryElamsham" priority="50" name="Territoire d'Elamsham">
@@ -41,7 +45,7 @@
       <guards disabled="true" />
     </region>
 	<region type="CommerceSerenite" priority="60" name="Marché de Sérénité">
-      <rect x="2601" y="2149" width="27" height="19" />
+      <rect x="2658" y="2113" width="10" height="19" />
       <guards disabled="true" />
     </region>
     <region priority="55" name="Seigneurie de Yalumëa'Ocombë">
@@ -131,7 +135,7 @@
       <guards disabled="true" />
     </region>
 	<region type="CommerceMelandre" priority="60" name="Marché de Melandre">
-      <rect x="3087" y="2818" width="15" height="15" />
+      <rect x="3053" y="2802" width="10" height="13" />
       <guards disabled="true" />
     </region>
 
