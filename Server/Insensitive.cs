@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Insensitive.cs 567 2010-10-20 01:09:57Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
