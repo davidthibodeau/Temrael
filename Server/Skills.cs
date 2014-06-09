@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Skills.cs 634 2010-12-18 23:01:22Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -689,7 +689,7 @@ namespace Server
 	}
 
 	[PropertyObject]
-	public class Skills
+	public class Skills : IEnumerable
 	{
 		private Mobile m_Owner;
 		private Skill[] m_Skills;
@@ -942,11 +942,11 @@ namespace Server
 
 				if ( info.Callback != null )
 				{
-					if ( from.NextSkillTime <= DateTime.Now && from.Spell == null )
+					if (Core.TickCount - from.NextSkillTime >= 0 && from.Spell == null)
 					{
 						from.DisruptiveAction();
 
-						from.NextSkillTime = DateTime.Now + info.Callback( from );
+						from.NextSkillTime = Core.TickCount + (int)(info.Callback(from)).TotalMilliseconds;
 
 						return true;
 					}
@@ -1106,6 +1106,11 @@ namespace Server
 
 			if ( ns != null )
 				ns.Send( new SkillChange( skill ) );
+		}
+
+		public IEnumerator GetEnumerator()
+		{
+			return m_Skills.GetEnumerator();
 		}
 	}
 }
