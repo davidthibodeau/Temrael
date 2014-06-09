@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: ScriptCompiler.cs 651 2010-12-28 09:24:08Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -55,7 +55,7 @@ namespace Server
 		{
 			List<string> list = new List<string>();
 
-			string path = Path.Combine( Core.BaseDirectory, "Data/Assemblies.cfg" );
+			string path = Path.Combine( Core.BaseDirectory, "Data/Assemblies_4_0.cfg" );
 
 			if( File.Exists( path ) )
 			{
@@ -78,28 +78,31 @@ namespace Server
 			return list.ToArray();
 		}
 
-		public static string GetDefines()
+		public static string GetCompilerOptions( bool debug )
 		{
 			StringBuilder sb = null;
 
+			if( !debug )
+				AppendCompilerOption( ref sb, "/optimize" );
+
 #if MONO
-			AppendDefine( ref sb, "/d:MONO" );
+			AppendCompilerOption( ref sb, "/d:MONO" );
 #endif
 
-			//These two defines are legacy, ie, depreciated.
+			//These three defines are deprecated
 			if( Core.Is64Bit )
-				AppendDefine( ref sb, "/d:x64" );
+				AppendCompilerOption( ref sb, "/d:x64" );
 
-			AppendDefine( ref sb, "/d:Framework_2_0" );
+			AppendCompilerOption( ref sb, "/d:Framework_2_0" );
+			AppendCompilerOption( ref sb, "/d:Framework_4_0" );
 
-#if Framework_4_0
-			AppendDefine( ref sb, "/d:Framework_4_0" );
-#endif
+			AppendCompilerOption(ref sb, "/d:NEWTIMERS");
+			AppendCompilerOption(ref sb, "/d:NEWPARENT");
 
 			return (sb == null ? null : sb.ToString());
 		}
 
-		public static void AppendDefine( ref StringBuilder sb, string define )
+		private static void AppendCompilerOption( ref StringBuilder sb, string define )
 		{
 			if( sb == null )
 				sb = new StringBuilder();
@@ -219,10 +222,10 @@ namespace Server
 
 				CompilerParameters parms = new CompilerParameters( GetReferenceAssemblies(), path, debug );
 
-				string defines = GetDefines();
+				string options = GetCompilerOptions( debug );
 
-				if( defines != null )
-					parms.CompilerOptions = defines;
+				if( options != null )
+					parms.CompilerOptions = options;
 
 				if( Core.HaltOnWarning )
 					parms.WarningLevel = 4;
@@ -359,10 +362,10 @@ namespace Server
 
 				CompilerParameters parms = new CompilerParameters( GetReferenceAssemblies(), path, debug );
 
-				string defines = GetDefines();
+				string options = GetCompilerOptions( debug );
 
-				if( defines != null )
-					parms.CompilerOptions = String.Format( "/D:{0}", defines );
+				if( options != null )
+					parms.CompilerOptions = options;
 
 				if( Core.HaltOnWarning )
 					parms.WarningLevel = 4;
@@ -456,7 +459,7 @@ namespace Server
 					Utility.PushColor( ConsoleColor.DarkYellow );
 
 					foreach( CompilerError e in list )
-						Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
+						Console.WriteLine( "    {0}: Line {1}: {2}", e.ErrorNumber, e.Line, e.ErrorText );
 
 					Utility.PopColor();
 				}
@@ -481,7 +484,7 @@ namespace Server
 					Utility.PushColor( ConsoleColor.DarkRed );
 
 					foreach( CompilerError e in list )
-						Console.WriteLine( "    {0}: Line {1}: {3}", e.ErrorNumber, e.Line, e.Column, e.ErrorText );
+						Console.WriteLine( "    {0}: Line {1}: {2}", e.ErrorNumber, e.Line, e.ErrorText );
 
 					Utility.PopColor();
 				}
