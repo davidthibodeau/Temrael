@@ -23,12 +23,12 @@ namespace Server.Mobiles
 
 		public Revenant( Mobile caster, Mobile target, TimeSpan duration ) : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.18, 0.36 )
 		{
-			Name = "a revenant";
+			Name = "Esprit Vengeur";
 			Body = 100;
 			Hue = 1;
 			// TODO: Sound values?
 
-			double scalar = caster.Skills[SkillName.Goetie].Value * 0.015;
+            double scalar = caster.Skills[SkillName.Goetie].Value * 0.01;
 
 			m_Target = target;
 			m_ExpireTime = DateTime.Now + duration;
@@ -37,17 +37,14 @@ namespace Server.Mobiles
 			SetDex( 150 );
 			SetInt( 150 );
 
-			SetDamage( 16, 17 );
+			SetDamage( 15, 20 );
 
-			// Bestiary says 50 phys 50 cold, animal lore says differently
 			SetDamageType( ResistanceType.Physical, 100 );
 
-			SetSkill( SkillName.Concentration, 100.0 * scalar ); // magic resist is absolute value of spiritspeak
-			SetSkill( SkillName.Tactiques, 100.0 ); // always 100
-			SetSkill( SkillName.ArmeTranchante, 100.0 * scalar ); // not displayed in animal lore but tests clearly show this is influenced
+			SetSkill( SkillName.Concentration, 100.0 * scalar );
+			SetSkill( SkillName.Tactiques, 100.0 );
+            SetSkill( SkillName.ArmeHaste, 100.0 * scalar );
 			SetSkill( SkillName.Detection, 75.0 * scalar );
-
-			scalar /= 1.2;
 
 			SetResistance( ResistanceType.Physical, 40 + (int)(20 * scalar), 50 + (int)(20 * scalar)  );
 			SetResistance( ResistanceType.Tranchant, 40 + (int)(20 * scalar), 50 + (int)(20 * scalar) );

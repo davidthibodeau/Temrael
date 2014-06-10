@@ -60,12 +60,16 @@ namespace Server.Spells.Necromancy
                 m.FixedParticles(0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head);
                 m.PlaySound(0x210);
 
-                double damage = ((GetDamageSkill(Caster) - GetResistSkill(m)) / 10) + (m.Player ? 15 : 27);
+                //Le dégât est ajusté sur le % de vie restant de la cible, puisque c'est un sort de type Exécution/Finisher
+                double damage = (m.HitsMax / m.Hits) * (GetDamageSkill(Caster) - GetResistSkill(m)) / 20 + (m.Player ? 15 : 27);
 
                 damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
 
                 if (damage < 1)
                     damage = 1;
+
+                if (damage > m.Hits)
+                    damage = m.Hits + 3;
 
                 if (m_Table.Contains(m))
                     damage /= 10;

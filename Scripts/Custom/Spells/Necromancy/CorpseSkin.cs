@@ -48,19 +48,19 @@ namespace Server.Spells.Necromancy
                 double ss = GetDamageSkill(Caster);
                 double mr = (Caster == m ? 0.0 : GetResistSkill(m));
 
-                double value = GetDamageSkill(Caster) / 12;
+                double value = GetDamageSkill(Caster) / 2.5;
 
                 value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
 
-                if (value > 10)
-                    value = 10;
+                if (value > 40)
+                    value = 40;
 
                 double duration = ((ss - mr) / 2.5) + 30.0;
 
                 duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
-                if (duration > 60)
-                    duration = 60;
+                if (duration > 90)
+                    duration = 90;
 
                 m.VirtualArmorMod -= (int)value;
 

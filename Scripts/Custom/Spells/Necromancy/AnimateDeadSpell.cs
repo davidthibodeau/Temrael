@@ -85,13 +85,13 @@ namespace Server.Spells.Necromancy
 
                                     if (map.CanSpawnMobile(x, y, z))
                                     {
-                                        bc.SetStr((int)(bc.Str / 3));
-                                        bc.SetDex((int)(bc.Dex / 3));
-                                        bc.SetInt((int)(bc.Int / 3));
-                                        bc.SetHits((int)(bc.Hits / 3));
-                                        bc.SetStam((int)(bc.Stam / 3));
-                                        bc.SetMana((int)(bc.Mana / 3));
-                                        bc.SetDamage((int)(Utility.RandomMinMax(bc.DamageMin, bc.DamageMax) / 3));
+                                        bc.SetStr((int)(bc.Str / 2));
+                                        bc.SetDex((int)(bc.Dex / 2));
+                                        bc.SetInt((int)(bc.Int / 2));
+                                        bc.SetHits((int)(bc.Hits / 2));
+                                        bc.SetStam((int)(bc.Stam / 2));
+                                        bc.SetMana((int)(bc.Mana / 2));
+                                        bc.SetDamage((int)(Utility.RandomMinMax(bc.DamageMin, bc.DamageMax) / 2));
 
                                         BaseCreature.Summon(bc, true, Caster, m_Location, 0x217, TimeSpan.FromDays(90));
 
