@@ -254,8 +254,8 @@ namespace Server
 
             int neededXP = 0;
 
-            if (pm.Niveau > 30)
-                neededXP = 435000 + (30000 * (pm.Niveau - 30));
+            if (pm.Niveau >= 30)
+                neededXP = 435000 + (30000 * (pm.Niveau - 29));
             else
                 neededXP = m_ExpReqTable[pm.Niveau + 1];
 
