@@ -94,7 +94,7 @@ namespace Server.Combat
             if (chancetoCriticalStrike > Utility.RandomDouble())
             {
                 DoCriticalStrike();
-                return (int) (dmg * 0.25 * atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.05);
+                return (int) (dmg * atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.05);
             }
             return 0;
         }
@@ -106,24 +106,24 @@ namespace Server.Combat
             TMobile atk = attaquant as TMobile;
             StatType stat = StatType.All;
 
-            if (skill == SkillName.ArmeDistance || skill == SkillName.ArmePerforante)
+            if (skill == SkillName.ArmeDistance || skill == SkillName.ArmePerforante /*Ajout->*/ || skill == SkillName.ArmeContondante)
             {
                 if (defenseur.Frozen)
                     defenseur.Frozen = false;
                 double val = 1 + atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.5;
                 defenseur.Freeze(TimeSpan.FromSeconds(val));
 
-                stat = StatType.Dex;
+                stat = StatType.Con;
             }
-            else if (skill == SkillName.ArmeContondante)
+            /*else if (skill == SkillName.ArmeContondante)
             {
                 int dmg = (int) atkWeapon.GetAosDamage(attaquant, 0, 0, 0);
 
                 defenseur.Damage(dmg, attaquant);
 
                 stat = StatType.Con;
-            }
-            else if (skill == SkillName.ArmeTranchante)
+            }*/
+            else if (skill == SkillName.ArmeTranchante || skill == SkillName.ArmeHaste)
             {
                 // Attaque rotative. Est-ce qu'elles arrivent a quelque part d'autre?
                 Map map = attaquant.Map;
