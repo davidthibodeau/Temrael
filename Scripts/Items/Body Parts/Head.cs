@@ -33,8 +33,8 @@ namespace Server.Items
 		{
 			get
 			{
-				if ( m_PlayerName == null )
-					return base.DefaultName;
+                if (m_PlayerName == null)
+                    return "A head";
 
 				switch ( m_HeadType )
 				{

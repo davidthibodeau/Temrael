@@ -1327,7 +1327,7 @@ namespace Server.Items
 				new LeftArm().MoveToWorld( Location, Map );
 				new RightLeg().MoveToWorld( Location, Map );
 				new RightArm().MoveToWorld( Location, Map );
-				new Head( dead.Name ).MoveToWorld( Location, Map );
+				new Head( null ).MoveToWorld( Location, Map );
 
 				SetFlag( CorpseFlag.Carved, true );
 
@@ -1367,7 +1367,7 @@ namespace Server.Items
                 new LeftArm().MoveToWorld(Location, Map);
                 new RightLeg().MoveToWorld(Location, Map);
                 new RightArm().MoveToWorld(Location, Map);
-                new Head(dead.Name).MoveToWorld(Location, Map);
+                new Head(null).MoveToWorld(Location, Map);
 
                 SetFlag(CorpseFlag.Carved, true);
 
