@@ -53,51 +53,6 @@ namespace Server.Mobiles
         Noire = 7
     }
 
-    public enum Classe
-    {
-        Aucune,
-        Enfant,
-        Jeune,
-
-        Recrue,
-        Apprenti,
-        Vagabond,
-        Pelerin,
-        Artisan,
-
-        Tireur,
-        FrancTireur,
-        Archer,
-        Sauvage,
-        Barbare,
-        Guerrier,
-        Hero,
-        Champion,
-        Cavalier,
-        Chevaucheur,
-
-        Templier,
-        Fanatique,
-        Paladin,
-        Disciple,
-        Moine,
-        Pretre,
-
-        Eclaireur,
-        Rodeur,
-        Assassin,
-        Rogue,
-        Espion,
-        Voleur,
-
-        Incantateur,
-        Mage,
-        Sorcier,
-        Magistere,
-        MageDeBataille,
-        Ensorceleur
-    }
-
     public enum EquitationType
     {
         Attacking,
@@ -153,8 +108,6 @@ namespace Server.Mobiles
         #region Constructeur
         public Creation()
         {
-            m_alignementA = AlignementA.Aucun;
-            m_alignementB = AlignementB.Aucun;
             m_race = Races.Aucun;
             m_classe = ClasseType.None;
             m_metier = MetierType.None;
@@ -168,8 +121,6 @@ namespace Server.Mobiles
         #region Méthodes
         public void Reboot()
         {
-            m_alignementA = AlignementA.Aucun;
-            m_alignementB = AlignementB.Aucun;
             m_race = Races.Aucun;
             m_classe = ClasseType.None;
             m_metier = MetierType.None;
@@ -179,8 +130,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Variables
-        private AlignementA m_alignementA;
-        private AlignementB m_alignementB;
         //private List<Server.Gumps.CreationGump.PaperPreviewItem> m_gumps;
         private Races m_race;
         private ClasseType m_classe;
@@ -191,8 +140,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Accessors
-        public AlignementA alignementA { get { return m_alignementA; } set { m_alignementA = value; } }
-        public AlignementB alignementB { get { return m_alignementB; } set { m_alignementB = value; } }
         //public List<Server.Gumps.CreationGump.PaperPreviewItem> gumps { get { return m_gumps; } set { m_gumps = value; } }
         public Races race { get { return m_race; } set { m_race = value; } }
         public ClasseType classe { get { return m_classe; } set { m_classe = value; } }
@@ -292,7 +239,6 @@ namespace Server.Mobiles
         private int m_Niveau;
         private int m_AptitudesLibres;
         private int m_CompetencesLibres;
-        private Classe m_Classe;
 
         private int m_Fatigue;
         private DateTime m_NextDieuxChange;
@@ -355,9 +301,6 @@ namespace Server.Mobiles
 
         private ClasseType m_ClasseType = ClasseType.None;
         private List<MetierType> m_MetierType = new List<MetierType>(3);
-        private AlignementA m_AlignementA = AlignementA.Aucun;
-        private AlignementB m_AlignementB = AlignementB.Aucun;
-        private DateTime m_NextAlignementChange;
         private bool m_Suicide;
         private DateTime m_NextKillAllowed;
         private Races m_RaceSecrete;
@@ -478,13 +421,6 @@ namespace Server.Mobiles
         {
             get { return m_CompetencesLibres; }
             set { m_CompetencesLibres = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public Classe Classe
-        {
-            get { return m_Classe; }
-            set { m_Classe = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -882,27 +818,6 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public AlignementA AlignementA
-        {
-            get { return m_AlignementA; }
-            set { m_AlignementA = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public AlignementB AlignementB
-        {
-            get { return m_AlignementB; }
-            set { m_AlignementB = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime NextAlignementChange
-        {
-            get { return m_NextAlignementChange; }
-            set { m_NextAlignementChange = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
         public bool Suicide
         {
             get { return m_Suicide; }
@@ -1001,32 +916,6 @@ namespace Server.Mobiles
             else
                 SendMessage("Vous connaissez déjà la langue: " + l.ToString());
 
-        }
-
-        public void ClasseFix()
-        {
-            if (!Classes.IsValid(this, ClasseType))
-            {
-                /*ClasseInfo info = Classes.GetInfos(Classe);
-
-                switch (info.ClasseArbre)
-                {
-                    case ClasseArbre.Guerrier:
-                        Classe = Mobiles.Classe.Recrue;
-                        break;
-                    case ClasseArbre.Cleric:
-                        Classe = Mobiles.Classe.Pelerin;
-                        break;
-                    case ClasseArbre.Magie:
-                        Classe = Mobiles.Classe.Apprenti;
-                        break;
-                    case ClasseArbre.Roublard:
-                        Classe = Mobiles.Classe.Vagabond;
-                        break;
-                }*/
-
-                NextClasseChange = DateTime.Now;
-            }
         }
 
         public void Reset(bool free)
@@ -3534,7 +3423,7 @@ namespace Server.Mobiles
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
-            writer.Write((int)8);
+            writer.Write((int)9);
 
             writer.Write(m_XPMode);
             for (int i = 0; i < 7; i++)
@@ -3557,9 +3446,6 @@ namespace Server.Mobiles
 
             writer.Write((DateTime)(m_NextKillAllowed));
             writer.Write((bool)m_Suicide);
-            writer.Write((DateTime)m_NextAlignementChange);
-            writer.Write((int)m_AlignementA);
-            writer.Write((int)m_AlignementB);
             writer.Write((int)m_MetierType.Count);
             foreach (MetierType metier in m_MetierType)
             {
@@ -3620,7 +3506,6 @@ namespace Server.Mobiles
             writer.Write((int)m_Niveau);
             writer.Write((int)m_AptitudesLibres);
             writer.Write((int)m_CompetencesLibres);
-            writer.Write((int)m_Classe);
 
             writer.Write((int)m_Fatigue);
             writer.Write((DateTime)m_NextDieuxChange);
@@ -3696,9 +3581,12 @@ namespace Server.Mobiles
                 case 1:
                     m_NextKillAllowed = reader.ReadDateTime();
                     m_Suicide = reader.ReadBool();
-                    m_NextAlignementChange = reader.ReadDateTime();
-                    m_AlignementA = (AlignementA)reader.ReadInt();
-                    m_AlignementB = (AlignementB)reader.ReadInt();
+                    if (version < 9)
+                    {
+                        reader.ReadDateTime();
+                        reader.ReadInt();
+                        reader.ReadInt();
+                    }
                     count = reader.ReadInt();
                     for (int i = 0; i < count; i++)
                     {
@@ -3772,7 +3660,8 @@ namespace Server.Mobiles
                         reader.ReadInt();
                         reader.ReadInt();
                     }
-                    m_Classe = (Classe)reader.ReadInt();
+                    if(version < 9)
+                        reader.ReadInt();
 
                     m_Fatigue = reader.ReadInt();
                     m_NextDieuxChange = reader.ReadDateTime();
@@ -3864,8 +3753,6 @@ namespace Server.Mobiles
             m_creation = new Creation();
 
             LanguageFix();
-
-            ClasseFix();
 
             CagouleFix();
 

@@ -15,7 +15,7 @@ namespace Server.Gumps
         private TMobile m_from;
 
         public FicheRaceGump(TMobile from)
-            : base("Race & Alignement", 560, 622)
+            : base("Race", 560, 622)
         {
             m_from = from;
 
@@ -51,90 +51,6 @@ namespace Server.Gumps
                 BaseRace race = RaceManager.getRace(from.Races);
                 AddButton(x, y + line * scale, 8, race.Image);
                 AddTooltip(race.Tooltip);
-
-                /*Alignement*/
-                switch (from.AlignementB)
-                {
-                    case AlignementB.Bon:
-                        {
-                            if (from.AlignementA == AlignementA.Loyal)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Loyal Bon");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 491, 491, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            else if (from.AlignementA == AlignementA.Neutre)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Neutre Bon");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 492, 492, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            else if (from.AlignementA == AlignementA.Chaotique)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Chaotique Bon");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 493, 493, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            break;
-                        }
-                    case AlignementB.Neutre:
-                        {
-                            if (from.AlignementA == AlignementA.Loyal)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Loyal Neutre");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 494, 494, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            else if (from.AlignementA == AlignementA.Neutre)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Neutre");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 495, 495, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            else if (from.AlignementA == AlignementA.Chaotique)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Chaotique Neutre");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 496, 496, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            break;
-                        }
-                    case AlignementB.Mauvais:
-                        {
-                            if (from.AlignementA == AlignementA.Loyal)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Loyal Mauvais");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 497, 497, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            else if (from.AlignementA == AlignementA.Neutre)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Chaotique Mauvais");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 498, 498, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            else if (from.AlignementA == AlignementA.Chaotique)
-                            {
-                                AddTitre(x + 330, y + line * scale, 180, "Chaotique Mauvais");
-                                ++line;
-                                AddButton(x + 340, y + line * scale, 499, 499, 9, GumpButtonType.Reply, 0);
-                                AddTooltip(1063492);
-                            }
-                            break;
-                        }
-                }
-
-                line += 5;
-                AddButton(440, y + (line * scale), 52, 52, 9, GumpButtonType.Reply, 0);
-                AddHtml(490, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Modifier<basefont></h3>", false, false);
 
                 /*Bonus Raciaux*/
                 string bonus = race.BonusDescr;
@@ -191,9 +107,6 @@ namespace Server.Gumps
                     break;
                 case 8:
                     from.SendGump(new FicheRacesInfoGump(from));
-                    break;
-                case 9:
-                    from.SendGump(new FicheAlignementsInfoGump(from));
                     break;
                 case 10:
                     if (XP.CanEvolve((TMobile)from))

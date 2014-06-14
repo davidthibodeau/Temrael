@@ -23,9 +23,6 @@ namespace Server.Mobiles
         public abstract int Con{get;}
         public abstract int Cha{get;}
 
-        public abstract AlignementA[] alignA { get; }
-        public abstract AlignementB[] alignB { get; }
-
         public abstract string Description { get; }
         public abstract Aptitude Bonus { get; }
         public abstract int BonusNbr { get; }

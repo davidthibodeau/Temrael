@@ -430,7 +430,6 @@
     <Compile Include=".\Custom\Gumps\CompetenceGump.cs" />
     <Compile Include=".\Custom\Gumps\CompetenceSmallGump.cs" />
     <Compile Include=".\Custom\Gumps\ConditionGump.cs" />
-    <Compile Include=".\Custom\Gumps\Creation\CreationAlignementGump.cs" />
     <Compile Include=".\Custom\Gumps\Creation\CreationCarteGump.cs" />
     <Compile Include=".\Custom\Gumps\Creation\CreationClasseGump.cs" />
     <Compile Include=".\Custom\Gumps\Creation\CreationEquipementGump.cs" />
@@ -440,7 +439,6 @@
     <Compile Include=".\Custom\Gumps\DecorationGump.cs" />
     <Compile Include=".\Custom\Gumps\DeguisementGump.cs" />
     <Compile Include=".\Custom\Gumps\EtatGump.cs" />
-    <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheAlignementsInfoGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheAptitudeInfoGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheAptitudesGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheClassesInfoGump.cs" />
@@ -888,7 +886,6 @@
     <Compile Include=".\Custom\MJ\xSay.cs" />
     <Compile Include=".\Custom\Mobiles\AI\BaseAI.cs" />
     <Compile Include=".\Custom\Mobiles\AI\SpeedInfo.cs" />
-    <Compile Include=".\Custom\Mobiles\Alignement.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Bears\BlackBear.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Bears\BrownBear.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Bears\GrizzlyBear.cs" />
@@ -966,7 +963,6 @@
     <Compile Include=".\Custom\Mobiles\Animaux\Rodents\SnowRabbit.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Rodents\Spider.cs" />
     <Compile Include=".\Custom\Mobiles\Animaux\Slimes\Slime.cs" />
-    <Compile Include=".\Custom\Mobiles\Aura.cs" />
     <Compile Include=".\Custom\Mobiles\BaseCreature.cs" />
     <Compile Include=".\Custom\Mobiles\Gardes\BaseGardes.cs" />
     <Compile Include=".\Custom\Mobiles\Gardes\GardesSimple.cs" />

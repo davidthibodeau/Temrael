@@ -24,17 +24,6 @@ namespace Server.Mobiles
         public override string NameF { get { return "Orcish"; } }
         #endregion
 
-        #region Alignement
-        public override AlignementA[] alignA
-        {
-            get { return new AlignementA[] { AlignementA.Chaotique }; }
-        }
-        public override AlignementB[] alignB
-        {
-            get { return new AlignementB[] { AlignementB.Aucun }; }
-        }
-        #endregion
-
         #region Caract
         public override int Str { get { return 100; } }
         public override int Con { get { return 100; } }

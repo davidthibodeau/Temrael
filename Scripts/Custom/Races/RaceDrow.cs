@@ -25,17 +25,6 @@ namespace Server.Mobiles
 
         #endregion
 
-        #region Alignement
-        public override AlignementA[] alignA
-        {
-            get { return new AlignementA[] { AlignementA.Aucun }; }
-        }
-        public override AlignementB[] alignB
-        {
-            get { return new AlignementB[] { AlignementB.Mauvais, AlignementB.Neutre }; }
-        }
-        #endregion
-
         #region Caract
         public override int Str { get { return 75; } }
         public override int Con { get { return 70; } }

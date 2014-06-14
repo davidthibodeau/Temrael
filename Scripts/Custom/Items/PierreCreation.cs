@@ -68,9 +68,9 @@ namespace Server.Items
                 tMob.Title = "";
                 tMob.MortEvo = MortEvo.Aucune;
 
-                tMob.CloseGump(typeof(CreationAlignementGump));
+                tMob.CloseGump(typeof(CreationRaceGump));
 
-                tMob.SendGump(new CreationAlignementGump(tMob));
+                tMob.SendGump(new CreationRaceGump(tMob));
             }
             else
             {

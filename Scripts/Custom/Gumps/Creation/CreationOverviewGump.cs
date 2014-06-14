@@ -27,7 +27,6 @@ namespace Server.Gumps
             x = 90;
             int space = 80;
 
-            AddMenuItem(x, y, 1189, 1, true);
             x += space;
             AddMenuItem(x, y, 1193, 2, true);
             x += space;
@@ -56,8 +55,6 @@ namespace Server.Gumps
             y = 310;
             AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race: " + from.Creation.race + "<basefont></h3>");
             line++;
-            AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Alignement: " + Alignements.getString(from.Creation.alignementA, from.Creation.alignementB));
-            line++;
             AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Classe: " + from.Creation.classe.ToString() + "<basefont></h3>");
             line++;
             AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Métier: " + from.Creation.metier.ToString() + "<basefont></h3>");
@@ -79,18 +76,8 @@ namespace Server.Gumps
 
             switch (info.ButtonID)
             {
-                case 1:
-                    from.SendGump(new CreationAlignementGump(from));
-                    break;
                 case 2:
-                    if (from.Creation.alignementA != AlignementA.Aucun && from.Creation.alignementB != AlignementB.Aucun)
-                    {
-                        from.SendGump(new CreationRaceGump(from));
-                    }
-                    else
-                    {
-                        goto case 1;
-                    }
+                    from.SendGump(new CreationRaceGump(from));
                     break;
                 case 3:
                     if (from.Creation.race != Races.Aucun)

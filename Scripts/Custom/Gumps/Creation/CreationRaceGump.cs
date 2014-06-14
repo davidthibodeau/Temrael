@@ -35,7 +35,6 @@ namespace Server.Gumps
             x = 90;
             int space = 80;
 
-            AddMenuItem(x, y, 1189, 1, true);
             x += space;
             AddMenuItem(x, y, 1193, 2, false);
             x += space;
@@ -52,34 +51,15 @@ namespace Server.Gumps
             x = XBase;
             y = YBase;
 
-            AddTitre(x + 360, y + line * scale, 190, "Races Selon l'Alignement");
+            AddTitre(x + 360, y + line * scale, 190, "Races");
             ++line;
             for (int i = 0; i < (int)Races.Maximum; i++)
             {
                 if ((Races)(i) != Races.MortVivant)
                 {
-                    BaseRace tmp = RaceManager.getRace((Races)i);
-                    bool accessibleA = false;
-                    bool accessibleB = false;
-
-                    for (int j = 0; j < tmp.alignA.Length; j++)
-                    {
-                        if (tmp.alignA[j] == from.Creation.alignementA || tmp.alignA[j] == AlignementA.Aucun)
-                            accessibleA = true;
-                    }
-
-                    for (int j = 0; j < tmp.alignB.Length; j++)
-                    {
-                        if (tmp.alignB[j] == from.Creation.alignementB || tmp.alignB[j] == AlignementB.Aucun)
-                            accessibleB = true;
-                    }
-
-                    if (accessibleA && accessibleB)
-                    {
-                        AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                        AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Races)i).ToString());
-                        ++line;
-                    }
+                    AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
+                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Races)i).ToString());
+                    ++line;
                 }
             }
 
@@ -116,18 +96,8 @@ namespace Server.Gumps
 
             switch (info.ButtonID)
             {
-                case 1:
-                    from.SendGump(new CreationAlignementGump(from));
-                    break;
                 case 2:
-                    if (from.Creation.alignementA != AlignementA.Aucun && from.Creation.alignementB != AlignementB.Aucun)
-                    {
-                        from.SendGump(new CreationRaceGump(from));
-                    }
-                    else
-                    {
-                        goto case 1;
-                    }
+                    from.SendGump(new CreationRaceGump(from));
                     break;
                 case 3:
                     if (from.Creation.race != Races.Aucun)
