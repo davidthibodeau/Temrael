@@ -221,7 +221,7 @@ namespace Server.Misc
             int count = ThisHour.Count;
             DataHourly.Add(LastHour, count);
             WriteRaw("rawHour.log", String.Format("[{0}] {1}", LastHour.ToString(), count.ToString()));
-            LastHour = LastRoundHour();
+            LastHour = LastRoundHour() <= LastHour ? LastHour.AddHours(1) : LastRoundHour();
             NextHour = LastHour.AddHours(1);
 
             ThisHour.Clear();
@@ -233,7 +233,7 @@ namespace Server.Misc
             int count = ThisDay.Count;
             DataDaily.Add(LastDay, count);
             WriteRaw("rawDay.log", String.Format("[{0}] {1}", LastDay.ToString(), count.ToString()));
-            LastDay = LastRoundDay();
+            LastDay = LastRoundDay() <= LastDay ? LastDay.AddDays(1) : LastRoundDay();
             NextDay = LastDay.AddDays(1);
 
             ThisDay.Clear();
@@ -245,7 +245,7 @@ namespace Server.Misc
             int count = ThisWeek.Count;
             DataWeekly.Add(LastWeek, count);
             WriteRaw("rawWeek.log", String.Format("[{0}] {1}", LastWeek.ToString(), count.ToString()));
-            LastWeek = LastRoundWeek();
+            LastWeek = LastRoundWeek() <= LastWeek ? LastWeek.AddDays(7) : LastRoundWeek();
             NextWeek = LastWeek.AddDays(7);
 
             ThisWeek.Clear();
