@@ -30,6 +30,14 @@ namespace Server.Regions
         }
     }
 
+    public class CommerceBrandheim : CommerceRegion
+    {
+        public CommerceBrandheim(XmlElement xml, Map map, Region parent)
+            : base(xml, map, parent)
+        {
+        }
+    }
+
     public class CommerceCitarel : CommerceRegion
     {
         public CommerceCitarel(XmlElement xml, Map map, Region parent)
