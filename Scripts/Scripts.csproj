@@ -752,7 +752,6 @@
     <Compile Include=".\Custom\Magie\Base\SpellInfo.cs" />
     <Compile Include=".\Custom\Magie\Base\SpellRegistry.cs" />
     <Compile Include=".\Custom\Magie\DivineScrolls.cs" />
-    <Compile Include=".\Custom\Magie\Divins\Chapelet.cs" />
     <Compile Include=".\Custom\Magie\Divins\Collegial\Essouflement.cs" />
     <Compile Include=".\Custom\Magie\Divins\Collegial\Griffes.cs" />
     <Compile Include=".\Custom\Magie\Divins\Collegial\Imbroglio.cs" />
@@ -765,7 +764,6 @@
     <Compile Include=".\Custom\Magie\Divins\Corruption\Horreur.cs" />
     <Compile Include=".\Custom\Magie\Divins\Corruption\Mortification.cs" />
     <Compile Include=".\Custom\Magie\Divins\Corruption\Pourrissement.cs" />
-    <Compile Include=".\Custom\Magie\Divins\Croix.cs" />
     <Compile Include=".\Custom\Magie\Divins\Discretion\Decheance.cs" />
     <Compile Include=".\Custom\Magie\Divins\Discretion\Echo.cs" />
     <Compile Include=".\Custom\Magie\Divins\Discretion\Intrinseque.cs" />
@@ -808,7 +806,6 @@
     <Compile Include=".\Custom\Magie\Divins\Pretrise\Regenerescence.cs" />
     <Compile Include=".\Custom\Magie\Divins\Pretrise\Renouvellement.cs" />
     <Compile Include=".\Custom\Magie\Divins\Pretrise\Repartition.cs" />
-    <Compile Include=".\Custom\Magie\Divins\Religion.cs" />
     <Compile Include=".\Custom\Magie\Divins\ReligiousSpell.cs" />
     <Compile Include=".\Custom\Magie\Divins\Restauration\Amulette.cs" />
     <Compile Include=".\Custom\Magie\Divins\Restauration\Bouclier.cs" />

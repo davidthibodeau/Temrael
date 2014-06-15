@@ -448,9 +448,6 @@ namespace Server.Systemes.Geopolitique
             writer.Write((int)m_Messages.Count);
             foreach (string m in m_Messages)
                 writer.Write((string)m);
-            
-            //new Timer(
-            //m_Paiement.
         }
 
         public override void Deserialize(GenericReader reader)

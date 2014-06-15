@@ -1908,7 +1908,6 @@ namespace Server.Items
                 TMobile def = (TMobile)defender;
 
                 def.CheckEquitation(EquitationType.BeingAttacked);
-                def.CheckPraying();
             }
 
             TMobile player = null;
@@ -1922,8 +1921,6 @@ namespace Server.Items
                     player.CheckEquitation(EquitationType.Ranged);
                 else
                     player.CheckEquitation(EquitationType.Attacking);
-
-                player.CheckPraying();
             }
 
             double damagebonus = 0;

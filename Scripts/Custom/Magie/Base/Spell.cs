@@ -668,10 +668,6 @@ namespace Server.Spells
 			{
 				m_Caster.SendLocalizedMessage( 502644 ); // You must wait for that spell to have an effect.
             }
-            else if (this is ReligiousSpell && pm != null && pm.Piete < GetPiete())
-            {
-                m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, false, "Vous n'avez pas assez de pieté pour lancé ce miracle.");
-            }
 			else if ( m_Caster.Mana >= ScaleMana( GetMana() ) )
 			{
 				if (m_Caster.Spell == null && m_Caster.CheckSpellCast( this ) && CheckCast() && m_Caster.Region.OnBeginSpellCast( m_Caster, this ) )
@@ -776,13 +772,7 @@ namespace Server.Spells
 
 		public virtual void OnBeginCast()
 		{
-            if (m_Caster is TMobile)
-            {
-                TMobile pm = (TMobile)m_Caster;
 
-                if (pm.IsPraying)
-                    pm.BreakPraying();
-            }
 		}
 
         public virtual void OnEndCast()
@@ -1192,8 +1182,6 @@ namespace Server.Spells
             
             if (pm != null)
             {
-                pm.CheckPraying();
-                //pm.CheckEtude();
             }
 
 			if ( m_Caster.Deleted || !m_Caster.Alive || m_Caster.Spell != this || m_State != SpellState.Sequencing )
@@ -1212,10 +1200,6 @@ namespace Server.Spells
 			{
 				m_Caster.LocalOverheadMessage( MessageType.Regular, 0x22, 502625 ); // Insufficient mana for this spell.
             }
-            else if (this is ReligiousSpell && pm != null && pm.Piete < pieteRequis)
-            {
-                m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, false, "Vous n'avez pas assez de piete.");
-            }
             else if (pm != null && !VerifyConn(pm, connaissanceRequise, connaissanceValueRequis))
             {
                 m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, false, "L'aptitude necessaire n'est pas assez augmente.");
@@ -1227,9 +1211,6 @@ namespace Server.Spells
 			else if ( CheckFizzle() )
 			{
                 m_Caster.Mana -= mana;
-
-                if (pm != null)
-                    pm.Piete -= pieteRequis;
 
 				if ( m_Scroll is SpellScroll )
 					m_Scroll.Consume();

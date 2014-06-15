@@ -47,29 +47,7 @@ namespace Server.Spells
                 TimeSpan duration = GetDurationForSpell(30, 1.8);
                 if (Caster is TMobile)
                 {
-                    switch (((TMobile)Caster).Dieux)
-                    {
-                        /*case Dieux.Valar:
-                            SpellHelper.Summon(new DragonMarais(), Caster, 0x217, duration, false, false);
-                            break;
-                        case Dieux.Sheol:
-                            SpellHelper.Summon(new Cauchemar(), Caster, 0x217, duration, false, false);
-                            break;
-                        case Dieux.Erys:
-                            SpellHelper.Summon(new Scarabee(), Caster, 0x217, duration, false, false);
-                            break;
-                        case Dieux.Niobe:
-                            SpellHelper.Summon(new Licorne(), Caster, 0x217, duration, false, false);
-                            break;
-                        case Dieux.Jarnsaxa:
-                            SpellHelper.Summon(new Kirin(), Caster, 0x217, duration, false, false);
-                            break;
-                        case Dieux.Xenon:
-                            //SpellHelper.Summon(new Nightmare(), Caster, 0x217, duration, false, false);
-                            SpellHelper.Summon(new Chocobo(), Caster, 0x217, duration, false, false);
-                            break;*/
-                        default: SpellHelper.Summon(new Horse(), Caster, 0x217, duration, false, false); break;
-                    }
+                    SpellHelper.Summon(new Horse(), Caster, 0x217, duration, false, false);
                 }
                 else
                 {

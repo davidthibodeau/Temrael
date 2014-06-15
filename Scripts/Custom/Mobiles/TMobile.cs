@@ -241,13 +241,6 @@ namespace Server.Mobiles
         private int m_CompetencesLibres;
 
         private int m_Fatigue;
-        private DateTime m_NextDieuxChange;
-        private Dieux m_Dieux;
-        private DateTime m_NextPrayingTime;
-        private Timer m_TimerPraying;
-        private Timer m_TimerPdp;
-        private Point3D m_LastPrayerLocation;
-        private int m_Piete;
 
         private bool m_Aphonie;
         private AphonieTimer m_AphonieTimer;
@@ -434,69 +427,6 @@ namespace Server.Mobiles
                 return m_Fatigue;
             }
             set { m_Fatigue = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime NextDieuxChange
-        {
-            get { return m_NextDieuxChange; }
-            set { m_NextDieuxChange = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public Dieux Dieux
-        {
-            get { return m_Dieux; }
-            set { m_Dieux = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public DateTime NextPrayingTime
-        {
-            get { return m_NextPrayingTime; }
-            set { m_NextPrayingTime = value; }
-        }
-
-        public Timer TimerPraying
-        {
-            get { return m_TimerPraying; }
-            set { m_TimerPraying = value; }
-        }
-
-        public Timer TimerPdp
-        {
-            get { return m_TimerPdp; }
-            set { m_TimerPdp = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public bool IsPraying
-        {
-            get
-            {
-                return m_NextPrayingTime > DateTime.Now;
-            }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public int PieteMax
-        {
-            get
-            {
-                int devotion = GetAptitudeValue(Aptitude.GraceDivine);
-
-                return devotion * 10;
-            }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public int Piete
-        {
-            get { return m_Piete; }
-            set { if (value > PieteMax) 
-                    m_Piete = PieteMax;
-                  else
-                    m_Piete = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -1822,40 +1752,12 @@ namespace Server.Mobiles
 
             string color = "#FFFFFF";
 
-            /*switch (this.Races)
-            {
-                case Races.Humain:
-                    break;
-                case Races.Elfe:
-                    break;
-                case Races.ElfeNoir:
-                    break;
-                case Races.MortVivant:
-                    break;
-                case Races.Nain:
-                    break;
-                case Races.Nomade:
-                    break;
-                case Races.Nordique:
-                    break;
-                case Races.Orcish:
-                    break;
-                case Races.Tieffelin:
-                    break;
-                case Races.MJ:
-                    break;
-                default: break;
-            }*/
-
             list.Add(1060526, String.Format("<h3><BASEFONT COLOR={0}>{1}, {2}</BASEFONT></h3>", color, name, Title)); // ~1_PREFIX~~2_NAME~~3_SUFFIX~
         }
 
         public override void GetProperties(ObjectPropertyList list)
         {
-            //AddNameProperties(list);
-        
-            //list.Add(1060538, String.Format("<BASEFONT COLOR=#ffffff>{0}, {1}{2}{3}</BASEFONT>", Title, (Guild != null && GuildTitle != null && DisplayGuildTitle == true ? (", " + GuildTitle.Trim() + " [" + Utility.FixHtml(Guild.Abbreviation) + "]") : "")));
-        
+
         }
 
         public override void SendPropertiesTo(Mobile from)
@@ -2430,7 +2332,6 @@ namespace Server.Mobiles
             }
 
             CheckEquitation(EquitationType.Running, Location);
-            CheckPraying();
 
             if (Hidden && CheckRevealStealth() && AccessLevel == AccessLevel.Player)
             {
@@ -2438,38 +2339,6 @@ namespace Server.Mobiles
             }
 
             return base.Move(d);
-        }
-
-        public void CheckPraying()
-        {
-            if (IsPraying)
-            {
-                if (!InRange(m_LastPrayerLocation, 2))
-                    BreakPraying();
-            }
-        }
-
-        public void BreakPraying()
-        {
-            if (m_TimerPraying != null)
-            {
-                m_TimerPraying.Stop();
-                m_TimerPraying = null;
-
-                SendMessage("Votre prière a été interrompue.");
-            }
-
-            m_NextPrayingTime = DateTime.Now;
-        }
-
-        public virtual void AddPiete(int amount)
-        {
-            int disponible = PieteMax;
-
-            if (disponible < amount)
-                amount = disponible;
-
-            m_Piete += amount;
         }
 
         public static double PenaliteStatistique(Mobile m, double stat)
@@ -2865,8 +2734,6 @@ namespace Server.Mobiles
             //if (_HallucineTimer != null)
             //    _HallucineTimer.Stop();
 
-            if (m_TimerPdp != null)
-                m_TimerPdp.Stop();
         }
 
         public virtual void CheckRaceGump()
@@ -3302,44 +3169,6 @@ namespace Server.Mobiles
             }
         }
 
-        public class PrayingTimer : Timer
-        {
-            private TMobile m_Owner;
-            private int m_piete;
-
-            public PrayingTimer(TMobile m, TimeSpan duration, int piete)
-                : base(duration)
-            {
-                m_Owner = m;
-                m_piete = piete;
-            }
-
-            protected override void OnTick()
-            {
-                //m_Owner.AddPdp(m_Pdp);
-                m_Owner.AddPiete(m_piete);
-
-                m_Owner.SendMessage("Vous terminez votre prière.");
-            }
-        }
-
-        /*public class PdpTimer : Timer
-        {
-            private TMobile m_Owner;
-
-            public PdpTimer(TMobile m)
-                : base(m.GetPdpRegenRate(), m.GetPdpRegenRate())
-            {
-                m_Owner = m;
-            }
-
-            protected override void OnTick()
-            {
-                m_Owner.PouvoirDivinProcure++;
-
-                Delay = Interval = m_Owner.GetPdpRegenRate();
-            }
-        }*/
         #endregion
 
         public override void Serialize(GenericWriter writer)
@@ -3430,10 +3259,6 @@ namespace Server.Mobiles
             writer.Write((int)m_CompetencesLibres);
 
             writer.Write((int)m_Fatigue);
-            writer.Write((DateTime)m_NextDieuxChange);
-            writer.Write((int)m_Dieux);
-            writer.Write((DateTime)m_NextPrayingTime);
-            writer.Write((int)m_Piete);
 
             writer.Write((bool)m_Aphonie);
             writer.Write((bool)m_Disguised);
@@ -3586,10 +3411,13 @@ namespace Server.Mobiles
                         reader.ReadInt();
 
                     m_Fatigue = reader.ReadInt();
-                    m_NextDieuxChange = reader.ReadDateTime();
-                    m_Dieux = (Dieux)reader.ReadInt();
-                    m_NextPrayingTime = reader.ReadDateTime();
-                    m_Piete = reader.ReadInt();
+                    if (version < 9)
+                    {
+                        reader.ReadDateTime();
+                        reader.ReadInt();
+                        reader.ReadDateTime();
+                        reader.ReadInt();
+                    }
 
                     m_Aphonie = reader.ReadBool();
                     m_Disguised = reader.ReadBool();
