@@ -1862,96 +1862,18 @@ namespace Server.Mobiles
         {
             string color = "#FFFFFF";
 
-            switch (this.Races)
-            {
-                case Races.Capiceen:
-                    color = "#006699";
-                    break;
-                case Races.Elfe:
-                    color = "#339900";
-                    break;
-                case Races.ElfeNoir:
-                    color = "#6633CC";
-                    break;
-                case Races.MortVivant:
-                    color = "#666666";
-                    break;
-                case Races.Nain:
-                    color = "#663300";
-                    break;
-                case Races.Nomade:
-                    color = "#FFCC00";
-                    break;
-                case Races.Nordique:
-                    color = "#FFFFFF";
-                    break;
-                case Races.Orcish:
-                    color = "#993300";
-                    break;
-                case Races.Tieffelin:
-                    if (m_transformer)
-                        color = "#FF6600";
-                    else if (m_RaceSecrete == Races.Capiceen)
-                        color = "#006699";
-                    else if (m_RaceSecrete == Races.Nordique)
-                        color = "#FFFFFF";
-                    else if (m_RaceSecrete == Races.Nomade)
-                        color = "#FFCC00";
-                    else
-                        color = "#006699";
-                    break;
-                case Races.Aasimar:
-                    if (m_transformer)
-                        color = "#9900FF";
-                    else if (m_RaceSecrete == Races.Capiceen)
-                        color = "#006699";
-                    else if (m_RaceSecrete == Races.Nordique)
-                        color = "#FFFFFF";
-                    else if (m_RaceSecrete == Races.Nomade)
-                        color = "#FFCC00";
-                    else
-                        color = "#006699";
-                    break;
-                case Races.MJ:
-                    color = "#CC6699";
-                    break;
-                default: break;
-            }
             string displayName = (from == this ? Name : GetNameUseBy(from));
             if (!CanBeginAction(typeof(IncognitoSpell)))
             {
                 displayName = "Anonyme";
             }
-            if (from.Female)
-            {
-                /*IntellecteFeminin intel = ((IntellecteFeminin)(this.Int / 10));
-                BeauteFeminin beaute = ((BeauteFeminin)(this.Cha / 10));*/
 
-                ObjectPropertyList list = new ObjectPropertyList(this);
-                //list.Add(from == this ? Name : GetNameUseBy(from));
+            ObjectPropertyList list = new ObjectPropertyList(this);
 
-                list.Add("<h3><basefont color=" + color + ">" + displayName + (Title == "" ? "" : (", " + Title)) + "<basefont></h3>");
-                //list.Add("<h3><basefont color=#CCCCCC>[" + intel.ToString() + ", " + beaute.ToString() + "]<basefont></h3>");
-                //list.Add(1060634, "{0}\t{1}\t{2}", color, from == this ? Name : GetNameUseBy(from), Title);
-                //list.Add(1060526, String.Format("<h3><BASEFONT COLOR={0}>{1}, {2}</BASEFONT></h3>", color, from == this ? Name : GetNameUseBy(from), Title)); // ~1_PREFIX~~2_NAME~~3_SUFFIX~
+            list.Add("<h3><basefont color=" + color + ">" + displayName + (Title == "" ? "" : (", " + Title)) + "<basefont></h3>");
 
-                from.Send(list);
-            }
-            else
-            {
-                /*Intellecte intel = ((Intellecte)(this.Int / 10));
-                Beaute beaute = ((Beaute)(this.Cha / 10));*/
-
-                ObjectPropertyList list = new ObjectPropertyList(this);
-                //list.Add(from == this ? Name : GetNameUseBy(from));
-
-                list.Add("<h3><basefont color=" + color + ">" + displayName + (Title == "" ? "" : (", " + Title)) + "<basefont></h3>");
-                //list.Add("<h3><basefont color=#CCCCCC>[" + intel.ToString() + ", " + beaute.ToString() + "]<basefont></h3>");
-                //list.Add(1060634, "{0}\t{1}\t{2}", color, from == this ? Name : GetNameUseBy(from), Title);
-                //list.Add(1060526, String.Format("<h3><BASEFONT COLOR={0}>{1}, {2}</BASEFONT></h3>", color, from == this ? Name : GetNameUseBy(from), Title)); // ~1_PREFIX~~2_NAME~~3_SUFFIX~
-
-                from.Send(list);
-            }
+            from.Send(list);
+            
         }
 
         private class RenameEntry : ContextMenuEntry
