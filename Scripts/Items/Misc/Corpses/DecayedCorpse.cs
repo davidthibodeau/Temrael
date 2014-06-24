@@ -65,13 +65,13 @@ namespace Server.Items
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
 			//list.Add( 1046414, Name ); // the remains of ~1_NAME~
-            list.Add("Corps de " + Name);
+            list.Add(Name);
 		}
 
 		public override void OnSingleClick( Mobile from )
 		{
 			//this.LabelTo( from, 1046414, Name ); // the remains of ~1_NAME~
-            this.LabelTo(from, "Corps de " + Name);
+            this.LabelTo(from, Name);
 		}
 
 		public DecayedCorpse( Serial serial ) : base( serial )

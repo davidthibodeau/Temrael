@@ -1265,12 +1265,12 @@ namespace Server.Items
 					list.Add( m_CorpseName );
 				else
 					list.Add( 1046414, this.Name ); // the remains of ~1_NAME~*/
-                list.Add("Corps de " + m_CorpseName);
+                list.Add(m_CorpseName);
 			}
 			else // Bone form
 			{
 				//list.Add( 1046414, this.Name ); // the remains of ~1_NAME~
-                list.Add("Corps de " + m_CorpseName);
+                list.Add(m_CorpseName);
 			}
 		}
 
