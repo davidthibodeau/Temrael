@@ -91,7 +91,8 @@ namespace Server.Misc
 
             CheckBonusSkill(from, from.Stam, from.StamMax, SkillName.Concentration);
 
-			int points =(int)(from.Skills[SkillName.Concentration].Value * 0.1);
+			int points =(int)(from.Skills[SkillName.Concentration].Value * 0.03); //Stam regen for Mage
+            points += (int)(from.StamMax * 0.04); //Stam regen for others
 
             if (points > 5)
                 points = 5;
