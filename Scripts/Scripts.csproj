@@ -1414,6 +1414,7 @@
     <Compile Include=".\Custom\Races\RaceOrcish.cs" />
     <Compile Include=".\Custom\Races\RaceTieffelin.cs" />
     <Compile Include="Custom\Commandes\BancInvisible.cs" />
+    <Compile Include="Custom\Crepuscule Housing\CrepuHousing.cs" />
     <Compile Include="Custom\Items\Bricoleur\newArtEtSculptures.cs" />
     <Compile Include="Custom\Items\Bricoleur\newAccessoiresEclairage.cs" />
     <Compile Include="Custom\Items\Couturier\newRideaux.cs" />
