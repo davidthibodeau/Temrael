@@ -186,6 +186,10 @@ namespace Server.Gumps
                                 InitializeCreation(m_from);
                                 m_from.MoveToWorld(new Point3D(1859, 3359, -79), Map.Felucca);
                                 break;
+                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Prison:
+                                InitializeCreation(m_from);
+                                m_from.MoveToWorld(new Point3D(3388, 2203, -79), Map.Felucca);
+                                break;
                             default: break;
                         }
                         m_from.SendMessage("Vous avez le droit d'apprendre une seconde langue.");
