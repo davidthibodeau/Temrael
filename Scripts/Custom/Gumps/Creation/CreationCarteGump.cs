@@ -259,6 +259,7 @@ namespace Server.Gumps
                 case 15:
                     from.Creation.destination = DestinationsDepart.Prison;
                     from.SendGump(new CreationCarteGump(from));
+                    break;
             }
         }
     }
