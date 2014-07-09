@@ -7,7 +7,7 @@ web/
 docs/
 local/
 Crash/
-*.exe
+
 *.log
 *.zip
 *.rar
