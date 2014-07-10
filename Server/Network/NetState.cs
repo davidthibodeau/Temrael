@@ -33,6 +33,7 @@ using Server.Gumps;
 using Server.Menus;
 using Server.HuePickers;
 using Server.Diagnostics;
+using NATUPNPLib;
 
 namespace Server.Network {
 	public interface IPacketEncoder {
@@ -859,6 +860,7 @@ namespace Server.Network {
 			Socket s = (Socket)asyncResult.AsyncState;
 
 			try {
+                //((IPEndPoint)s.RemoteEndPoint).Port;
 				int byteCount = s.EndReceive( asyncResult );
 
 				if ( byteCount > 0 ) {
@@ -1062,6 +1064,17 @@ namespace Server.Network {
 			Dispose( true );
 		}
 
+        private void ClosePortUPnP(Socket s)
+        {
+            UPnPNATClass upnpnat = new UPnPNATClass();
+            IStaticPortMappingCollection mappings = upnpnat.StaticPortMappingCollection;
+
+            int port = ((IPEndPoint)s.RemoteEndPoint).Port;
+
+            mappings.Remove(port, "TCP");
+            mappings.Remove(port, "UDP");
+        }
+
 		public virtual void Dispose( bool flush ) {
 			if ( m_Socket == null || m_Disposing ) {
 				return;
@@ -1077,6 +1090,15 @@ namespace Server.Network {
 			} catch ( SocketException ex ) {
 				TraceException( ex );
 			}
+
+            try
+            {
+                ClosePortUPnP(m_Socket);
+            }
+            catch (Exception ex)
+            {
+                TraceException(ex);
+            }            
 
 			try {
 				m_Socket.Close();

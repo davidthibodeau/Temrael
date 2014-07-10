@@ -13,7 +13,7 @@ Crash/
 *.rar
 *.old
 *.lnk
-*.dll
+
 *.suo
 *.user
 \#*\#

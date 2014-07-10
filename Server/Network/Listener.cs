@@ -25,6 +25,7 @@ using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
+using NATUPNPLib;
 using Server;
 
 namespace Server.Network
@@ -201,6 +202,7 @@ namespace Server.Network
 
 			if ( accepted != null ) {
 				if ( VerifySocket( accepted ) ) {
+                    OpenPortUPnP(accepted);
 					Enqueue( accepted );
 				} else {
 					Release( accepted );
@@ -215,6 +217,18 @@ namespace Server.Network
 			}
 		}
 #endif
+
+        private void OpenPortUPnP(Socket s)
+        {
+            UPnPNATClass upnpnat = new UPnPNATClass();
+            IStaticPortMappingCollection mappings = upnpnat.StaticPortMappingCollection;
+
+            IPEndPoint iep = (IPEndPoint)s.RemoteEndPoint;
+            int port = iep.Port;
+
+            mappings.Add(port, "TCP", port, "192.168.1.2", true, "Serveur Temrael (UPnP) at " + iep.ToString());
+            mappings.Add(port, "UDP", port, "192.168.1.2", true, "Serveur Temrael (UPnP) at " + iep.ToString());
+        }
 
 		private bool VerifySocket( Socket socket ) {
 			try {
