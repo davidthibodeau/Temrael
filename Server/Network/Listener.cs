@@ -224,8 +224,8 @@ namespace Server.Network
             int port = iep.Port;
 
             NAT.Discover();
-            NAT.ForwardPort(port, ProtocolType.Tcp, "Serveur Temrael (TCP) at" + iep.ToString());
-            NAT.ForwardPort(port, ProtocolType.Udp, "Serveur Temrael (UDP) at" + iep.ToString());
+            NAT.ForwardPort(port, ProtocolType.Tcp, "Serveur Temrael (TCP) at " + iep.ToString());
+            NAT.ForwardPort(port, ProtocolType.Udp, "Serveur Temrael (UDP) at " + iep.ToString());
         }
 
 		private bool VerifySocket( Socket socket ) {

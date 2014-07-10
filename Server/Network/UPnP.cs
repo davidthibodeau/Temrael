@@ -21,8 +21,7 @@ namespace Server.Network
             get { return _timeout; }
             set { _timeout = value; }
         }
-        static string _descUrl, _serviceUrl, _eventUrl;
-        static string wanConnection = "WANIPConnection";
+        static string _descUrl, _serviceUrl, _eventUrl, _servType;
         public static bool Discover()
         {
             Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -78,16 +77,13 @@ namespace Server.Network
                 XmlNode typen = desc.SelectSingleNode("//tns:device/tns:deviceType/text()", nsMgr);
                 if (!typen.Value.Contains("InternetGatewayDevice"))
                     return null;
-                XmlNode node = desc.SelectSingleNode("//tns:service[tns:serviceType=\"urn:schemas-upnp-org:service:WANIPConnection:1\"]/tns:controlURL/text()", nsMgr);
+                XmlNode serv = desc.SelectSingleNode("//tns:service/tns:serviceType/text()", nsMgr);
+                _servType = "urn:schemas-upnp-org:service:WANPPPConnection:1";
+                XmlNode node = desc.SelectSingleNode(String.Format("//tns:service[tns:serviceType=\"{0}\"]/tns:controlURL/text()", _servType), nsMgr);
                 if (node == null)
-                {
-                    node = desc.SelectSingleNode("//tns:service[tns:serviceType=\"urn:schemas-upnp-org:service:WANPPPConnection:1\"]/tns:controlURL/text()", nsMgr);
-                    if(node == null)
-                        return null;
-                    wanConnection = "WANPPPConnection";
-                }
+                    return null;
 
-                XmlNode eventnode = desc.SelectSingleNode("//tns:service[tns:serviceType=\"urn:schemas-upnp-org:service:" + wanConnection + ":1\"]/tns:eventSubURL/text()", nsMgr);
+                XmlNode eventnode = desc.SelectSingleNode("//tns:service[tns:serviceType=\"" + _servType + "\"]/tns:eventSubURL/text()", nsMgr);
                 _eventUrl = CombineUrls(resp, eventnode.Value);
                 return CombineUrls(resp, node.Value);
 #if !DEBUG
@@ -107,31 +103,27 @@ namespace Server.Network
         {
             if (string.IsNullOrEmpty(_serviceUrl))
                 throw new Exception("No UPnP service available or Discover() has not been called");
-            XmlDocument xdoc = SOAPRequest(_serviceUrl, "<u:AddPortMapping xmlns:u=\"urn:schemas-upnp-org:service:" + wanConnection + ":1\">" +
-                "<NewRemoteHost></NewRemoteHost><NewExternalPort>" + port.ToString() + "</NewExternalPort><NewProtocol>" + protocol.ToString().ToUpper() + "</NewProtocol>" +
-                "<NewInternalPort>" + port.ToString() + "</NewInternalPort><NewInternalClient>" + Dns.GetHostAddresses(Dns.GetHostName())[0].ToString() +
-                "</NewInternalClient><NewEnabled>1</NewEnabled><NewPortMappingDescription>" + description +
-            "</NewPortMappingDescription><NewLeaseDuration>0</NewLeaseDuration></u:AddPortMapping>", "AddPortMapping");
+            // Note: The ip is hardcoded. Need to fix that.
+            XmlDocument xdoc = SOAPRequest(_serviceUrl, 
+                String.Format("<u:AddPortMapping xmlns:u=\"{0}\"><NewRemoteHost></NewRemoteHost><NewExternalPort>{1}</NewExternalPort><NewProtocol>{2}</NewProtocol><NewInternalPort>{3}</NewInternalPort>"
+                               + "<NewInternalClient>{4}</NewInternalClient><NewEnabled>1</NewEnabled><NewPortMappingDescription>{5}</NewPortMappingDescription><NewLeaseDuration>0</NewLeaseDuration></u:AddPortMapping>", 
+                               _servType, port.ToString(), protocol.ToString().ToUpper(), port.ToString(), "192.168.1.2", description), "AddPortMapping");
         }
 
         public static void DeleteForwardingRule(int port, ProtocolType protocol)
         {
             if (string.IsNullOrEmpty(_serviceUrl))
                 throw new Exception("No UPnP service available or Discover() has not been called");
-            XmlDocument xdoc = SOAPRequest(_serviceUrl,
-                "<u:DeletePortMapping xmlns:u=\"urn:schemas-upnp-org:service:"+ wanConnection + ":1\">" +
-            "<NewRemoteHost>" +
-            "</NewRemoteHost>" +
-            "<NewExternalPort>"+ port+"</NewExternalPort>" +
-            "<NewProtocol>" + protocol.ToString().ToUpper() + "</NewProtocol>" +
-            "</u:DeletePortMapping>", "DeletePortMapping");
+            XmlDocument xdoc = SOAPRequest(_serviceUrl, 
+                String.Format("<u:DeletePortMapping xmlns:u=\"{0}\"><NewRemoteHost></NewRemoteHost><NewExternalPort>{1}</NewExternalPort><NewProtocol>{2}</NewProtocol></u:DeletePortMapping>",
+                               _servType, port.ToString(), protocol.ToString().ToUpper()), "DeletePortMapping");
         }
 
         public static IPAddress GetExternalIP()
         {
             if (string.IsNullOrEmpty(_serviceUrl))
                 throw new Exception("No UPnP service available or Discover() has not been called");
-            XmlDocument xdoc = SOAPRequest(_serviceUrl, "<u:GetExternalIPAddress xmlns:u=\"urn:schemas-upnp-org:service:" + wanConnection + ":1\">" +
+            XmlDocument xdoc = SOAPRequest(_serviceUrl, "<u:GetExternalIPAddress xmlns:u=\"" + _servType + "\">" +
             "</u:GetExternalIPAddress>", "GetExternalIPAddress");
             XmlNamespaceManager nsMgr = new XmlNamespaceManager(xdoc.NameTable);
             nsMgr.AddNamespace("tns", "urn:schemas-upnp-org:device-1-0");
@@ -150,7 +142,7 @@ namespace Server.Network
             WebRequest r = HttpWebRequest.Create(url);
             r.Method = "POST";
             byte[] b = Encoding.UTF8.GetBytes(req);
-            r.Headers.Add("SOAPACTION", "\"urn:schemas-upnp-org:service:" + wanConnection + ":1#" + function + "\"");
+            r.Headers.Add("SOAPACTION", "\"" + _servType + "#" + function + "\"");
             r.ContentType = "text/xml; charset=\"utf-8\"";
             r.ContentLength = b.Length;
             r.GetRequestStream().Write(b, 0, b.Length);
