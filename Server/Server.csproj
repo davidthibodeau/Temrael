@@ -80,6 +80,7 @@
   -->
   <ItemGroup>
     <Compile Include=".\**\*.cs" />
+    <Compile Include="Network\UPnP.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="runuo.ico" />
@@ -117,16 +118,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="NATUPNPLib">
-      <Guid>{1C565858-F302-471E-B409-F180AA4ABEC6}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
 </Project>
