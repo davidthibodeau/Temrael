@@ -19,6 +19,8 @@ namespace Server.Engines.Craft
 		private const int LabelColor = 0x7FFF;
 		private const int FontColor = 0xFFFFFF;
 
+        private int maxItemPerPage = 30;
+
 		private enum CraftPage
 		{
 			None,
@@ -30,7 +32,7 @@ namespace Server.Engines.Craft
 		{
 		}*/
 
-		public CraftGump( Mobile from, CraftSystem craftSystem, BaseTool tool, object notice ) : this( from, craftSystem, tool, notice, CraftPage.None )
+		public CraftGump( Mobile from, CraftSystem craftSystem, BaseTool tool, object notice ) : this( from, craftSystem, tool, notice, CraftPage.None)
 		{
 		}
 
@@ -41,6 +43,7 @@ namespace Server.Engines.Craft
 			m_Tool = tool;
 			m_Page = page;
 
+
 			CraftContext context = craftSystem.GetContext( from );
 
 			from.CloseGump( typeof( CraftGump ) );
@@ -48,14 +51,14 @@ namespace Server.Engines.Craft
 
 			AddPage( 0 );
 
-			AddBackground( 0, 0, 530, 437, 5054 );
-			AddImageTiled( 10, 10, 510, 22, 2624 );
-			AddImageTiled( 10, 292, 150, 45, 2624 );
-			AddImageTiled( 165, 292, 355, 45, 2624 );
-			AddImageTiled( 10, 342, 510, 85, 2624 );
-			AddImageTiled( 10, 37, 200, 250, 2624 );
-			AddImageTiled( 215, 37, 305, 250, 2624 );
-			AddAlphaRegion( 10, 10, 510, 417 );
+            AddBackground(0, 0, 830, 537, 5054);
+            AddImageTiled(10, 10, 810, 22, 2624);
+            AddImageTiled(10, 37, 200, 350, 2624);
+            AddImageTiled(215, 37, 605, 350, 2624);
+            AddImageTiled(10, 392, 150, 45, 2624);
+            AddImageTiled(165, 392, 655, 45, 2624);
+            AddImageTiled(10, 442, 810, 85, 2624);
+            AddAlphaRegion(10, 10, 810, 517);
 
 			if ( craftSystem.GumpTitleNumber > 0 )
 				AddHtmlLocalized( 10, 12, 510, 20, craftSystem.GumpTitleNumber, LabelColor, false, false );
@@ -67,45 +70,45 @@ namespace Server.Engines.Craft
 			//AddHtmlLocalized( 215, 37, 305, 22, 1044011, LabelColor, false, false ); // <CENTER>SELECTIONS</CENTER>
 			//AddHtmlLocalized( 10, 302, 150, 25, 1044012, LabelColor, false, false ); // <CENTER>NOTICES</CENTER>
 
-            AddHtml(10, 37, 200, 20, "<h3><basefont color=#FFFFFF>Catégories<basefont></h3>", false, false);
-            AddHtml(215, 37, 200, 20, "<h3><basefont color=#FFFFFF>Sélections<basefont></h3>", false, false);
-            AddHtml(10, 302, 200, 20, "<h3><basefont color=#FFFFFF>Message<basefont></h3>", false, false);
+            AddHtml(13, 37, 200, 20, "<h3><basefont color=#FFFFFF>Catégories<basefont></h3>", false, false);
+            AddHtml(218, 37, 200, 20, "<h3><basefont color=#FFFFFF>Sélections<basefont></h3>", false, false);
+            AddHtml(13, 402, 200, 20, "<h3><basefont color=#FFFFFF>Message<basefont></h3>", false, false);
 
-			AddButton( 15, 402, 4017, 4019, 0, GumpButtonType.Reply, 0 );
+			AddButton( 15, 502, 4017, 4019, 0, GumpButtonType.Reply, 0 );
 			//AddHtmlLocalized( 50, 405, 150, 18, 1011441, LabelColor, false, false ); // EXIT
-            AddHtml(50, 405, 200, 20, "<h3><basefont color=#FFFFFF>Quitter<basefont></h3>", false, false);
+            AddHtml(50, 502, 200, 20, "<h3><basefont color=#FFFFFF>Quitter<basefont></h3>", false, false);
 
-			AddButton( 270, 382, 4005, 4007, GetButtonID( 6, 2 ), GumpButtonType.Reply, 0 );
+			AddButton( 650, 482, 4005, 4007, GetButtonID( 6, 2 ), GumpButtonType.Reply, 0 );
 			//AddHtmlLocalized( 305, 405, 150, 18, 1044013, LabelColor, false, false ); // MAKE LAST
-            AddHtml(305, 385, 200, 20, "<h3><basefont color=#FFFFFF>Refaire<basefont></h3>", false, false);
+            AddHtml(685, 485, 200, 20, "<h3><basefont color=#FFFFFF>Refaire<basefont></h3>", false, false);
 
 			// Mark option
 			if ( craftSystem.MarkOption )
 			{
-				AddButton( 270, 362, 4005, 4007, GetButtonID( 6, 6 ), GumpButtonType.Reply, 0 );
+				AddButton( 650, 462, 4005, 4007, GetButtonID( 6, 6 ), GumpButtonType.Reply, 0 );
 				//AddHtmlLocalized( 305, 365, 150, 18, 1044017 + (context == null ? 0 : (int)context.MarkOption), LabelColor, false, false ); // MARK ITEM
                 if (context.MarkOption == CraftMarkOption.DoNotMark)
-                    AddHtml(305, 365, 200, 20, "<h3><basefont color=#FFFFFF>Marquer<basefont></h3>", false, false);
+                    AddHtml(685, 465, 200, 20, "<h3><basefont color=#FFFFFF>Marquer<basefont></h3>", false, false);
                 else
-                    AddHtml(305, 365, 200, 20, "<h3><basefont color=#FFFFFF>Ne Pas Marquer<basefont></h3>", false, false);
+                    AddHtml(685, 465, 200, 20, "<h3><basefont color=#FFFFFF>Ne Pas Marquer<basefont></h3>", false, false);
 			}
 			// ****************************************
 
 			// Resmelt option
 			if ( craftSystem.Resmelt )
 			{
-				AddButton( 15, 342, 4005, 4007, GetButtonID( 6, 1 ), GumpButtonType.Reply, 0 );
+				AddButton( 15, 442, 4005, 4007, GetButtonID( 6, 1 ), GumpButtonType.Reply, 0 );
 				//AddHtmlLocalized( 50, 345, 150, 18, 1044259, LabelColor, false, false ); // SMELT ITEM
-                AddHtml(50, 345, 150, 20, "<h3><basefont color=#FFFFFF>Fondre<basefont></h3>", false, false);
+                AddHtml(50, 445, 150, 20, "<h3><basefont color=#FFFFFF>Fondre<basefont></h3>", false, false);
 			}
 			// ****************************************
 
 			// Repair option
 			if ( craftSystem.Repair )
 			{
-				AddButton( 270, 342, 4005, 4007, GetButtonID( 6, 5 ), GumpButtonType.Reply, 0 );
+				AddButton( 650, 442, 4005, 4007, GetButtonID( 6, 5 ), GumpButtonType.Reply, 0 );
 				//AddHtmlLocalized( 305, 345, 150, 18, 1044260, LabelColor, false, false ); // REPAIR ITEM
-                AddHtml(305, 345, 200, 20, "<h3><basefont color=#FFFFFF>Réparer<basefont></h3>", false, false);
+                AddHtml(685, 445, 200, 20, "<h3><basefont color=#FFFFFF>Réparer<basefont></h3>", false, false);
 			}
 			// ****************************************
 
@@ -118,10 +121,10 @@ namespace Server.Engines.Craft
 			// ****************************************
 
 			if ( notice is int && (int)notice > 0 )
-				AddHtmlLocalized( 170, 295, 350, 40, (int)notice, LabelColor, false, false );
+				AddHtmlLocalized( 170, 395, 350, 40, (int)notice, LabelColor, false, false );
 			else if ( notice is string )
 			//	AddHtml( 170, 295, 350, 40, String.Format( "<BASEFONT COLOR=#{0:X6}>{1}</BASEFONT>", FontColor, notice ), false, false );
-                AddHtml(170, 245, 350, 40, "<h3><basefont color=#FFFFFF>" + notice + "<basefont></h3>", false, false);
+                AddHtml(170, 345, 350, 40, "<h3><basefont color=#FFFFFF>" + notice + "<basefont></h3>", false, false);
 
 			// If the system has more than one resource
 			if ( craftSystem.CraftSubRes.Init )
@@ -152,13 +155,13 @@ namespace Server.Engines.Craft
                         resourceCount += items[i].Amount;
                 }
 
-				AddButton( 15, 362, 4005, 4007, GetButtonID( 6, 0 ), GumpButtonType.Reply, 0 );
+				AddButton( 15, 462, 4005, 4007, GetButtonID( 6, 0 ), GumpButtonType.Reply, 0 );
 
 				if ( nameNumber > 0 )
-					AddHtmlLocalized( 50, 365, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
+					AddHtmlLocalized( 50, 465, 250, 18, nameNumber, resourceCount.ToString(), LabelColor, false, false );
 				else
                     //AddLabel( 50, 362, LabelHue, String.Format( "{0} ({1} Available)", nameString, resourceCount ) );
-                    AddHtml(50, 362, 350, 40, "<h3><basefont color=#FFFFFF>" + nameString + " " + resourceCount + "<basefont></h3>", false, false);
+                    AddHtml(50, 462, 450, 40, "<h3><basefont color=#FFFFFF>" + nameString + " " + resourceCount + "<basefont></h3>", false, false);
 			}
 			// ****************************************
 
@@ -216,19 +219,19 @@ namespace Server.Engines.Craft
 
 			for ( int i = 0; i < res.Count; ++i )
 			{
-				int index = i % 10;
+				int index = i % maxItemPerPage;
 
 				CraftSubRes subResource = res.GetAt( i );
 
 				if ( index == 0 )
 				{
 					if ( i > 0 )
-						AddButton( 485, 260, 4005, 4007, 0, GumpButtonType.Page, (i / 10) + 1 );
+                        AddButton(485, 360, 4005, 4007, 0, GumpButtonType.Page, (i / maxItemPerPage) + 1);
 
-					AddPage( (i / 10) + 1 );
+                    AddPage((i / maxItemPerPage) + 1);
 
 					if ( i > 0 )
-						AddButton( 455, 260, 4014, 4015, 0, GumpButtonType.Page, i / 10 );
+                        AddButton(455, 360, 4014, 4015, 0, GumpButtonType.Page, (i / maxItemPerPage));
 
 					CraftContext context = m_CraftSystem.GetContext( m_From );
 
@@ -269,7 +272,7 @@ namespace Server.Engines.Craft
 			{
 				for ( int i = 0; i < items.Count; ++i )
 				{
-					int index = i % 10;
+					int index = i % maxItemPerPage;
 
 					CraftItem craftItem = items[i];
 
@@ -277,18 +280,18 @@ namespace Server.Engines.Craft
 					{
 						if ( i > 0 )
 						{
-							AddButton( 370, 260, 4005, 4007, 0, GumpButtonType.Page, (i / 10) + 1 );
+                            AddButton(370, 360, 4005, 4007, 0, GumpButtonType.Page, (i / maxItemPerPage) + 1);
 							//AddHtmlLocalized( 405, 263, 100, 18, 1044045, LabelColor, false, false ); // NEXT PAGE
                             AddHtml(405, 263, 200, 20, "<h3><basefont color=#FFFFFF>Page Suivante<basefont></h3>", false, false);
 						}
 
-						AddPage( (i / 10) + 1 );
+                        AddPage((i / maxItemPerPage) + 1);
 
 						if ( i > 0 )
 						{
-							AddButton( 220, 260, 4014, 4015, 0, GumpButtonType.Page, i / 10 );
+                            AddButton(220, 360, 4014, 4015, 0, GumpButtonType.Page, (i / maxItemPerPage));
 							//AddHtmlLocalized( 255, 263, 100, 18, 1044044, LabelColor, false, false ); // PREV PAGE
-                            AddHtml(255, 263, 200, 20, "<h3><basefont color=#FFFFFF>Page Précédante<basefont></h3>", false, false);
+                            AddHtml(255, 363, 200, 20, "<h3><basefont color=#FFFFFF>Page Précédante<basefont></h3>", false, false);
 						}
 					}
 
@@ -307,7 +310,7 @@ namespace Server.Engines.Craft
 			{
 				// NOTE: This is not as OSI; it is an intentional difference
 
-                AddHtml(230, 62, 200, 20, "<h3><basefont color=#FFFFFF>Vous n'avez encore rien fait.<basefont></h3>", false, false);
+                AddHtml(230, 62, 400, 20, "<h3><basefont color=#FFFFFF>Vous n'avez encore rien fait.<basefont></h3>", false, false);
 
 				//AddHtmlLocalized( 230, 62, 200, 22, 1044165, LabelColor, false, false ); // You haven't made anything yet.
 			}
@@ -315,7 +318,9 @@ namespace Server.Engines.Craft
 
 		public void CreateItemList( int selectedGroup )
 		{
-			if ( selectedGroup == 501 ) // 501 : Last 10
+            int numberOfPage = 0;
+
+            if ( selectedGroup == 501 ) // 501 : Last 10
 			{
 				CreateMakeLastList();
 				return;
@@ -327,7 +332,7 @@ namespace Server.Engines.Craft
 
 			for ( int i = 0; i < craftItemCol.Count; ++i )
 			{
-				int index = i % 10;
+				int index = i % maxItemPerPage;
 
 				CraftItem craftItem = craftItemCol.GetAt( i );
 
@@ -335,30 +340,46 @@ namespace Server.Engines.Craft
 				{
 					if ( i > 0 )
 					{
-						AddButton( 370, 260, 4005, 4007, 0, GumpButtonType.Page, (i / 10) + 1 );
+                        AddButton(780, 360, 4005, 4007, 0, GumpButtonType.Page, (i / maxItemPerPage) + 1);
 						//AddHtmlLocalized( 405, 263, 100, 18, 1044045, LabelColor, false, false ); // NEXT PAGE
-                        AddHtml(405, 263, 200, 20, "<h3><basefont color=#FFFFFF>Page Suivante<basefont></h3>", false, false);
+                        AddHtml(655, 363, 200, 20, "<h3><basefont color=#FFFFFF>Page Suivante<basefont></h3>", false, false);
 					}
 
-					AddPage( (i / 10) + 1 );
+                    AddPage((i / maxItemPerPage) + 1);
+                    numberOfPage++;
 
 					if ( i > 0 )
 					{
-						AddButton( 220, 260, 4014, 4015, 0, GumpButtonType.Page, i / 10 );
+                        AddButton(220, 360, 4014, 4015, 0, GumpButtonType.Page, (i / maxItemPerPage));
 						//AddHtmlLocalized( 255, 263, 100, 18, 1044044, LabelColor, false, false ); // PREV PAGE
-                        AddHtml(255, 263, 200, 20, "<h3><basefont color=#FFFFFF>Page Précédante<basefont></h3>", false, false);
+                        AddHtml(255, 363, 200, 20, "<h3><basefont color=#FFFFFF>Page Précédante<basefont></h3>", false, false);
 					}
 				}
 
-				AddButton( 220, 60 + (index * 20), 4005, 4007, GetButtonID( 1, i ), GumpButtonType.Reply, 0 );
+                if (i < (maxItemPerPage / 2 + ((numberOfPage - 1) * maxItemPerPage)))
+                {
+                    AddButton(220, 60 + (index * 20), 4005, 4007, GetButtonID(1, i), GumpButtonType.Reply, 0);
 
-				if ( craftItem.NameNumber > 0 )
-					AddHtmlLocalized( 255, 63 + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false );
-				else
-					//AddLabel( 255, 60 + (index * 20), LabelHue, craftItem.NameString );
-                    AddHtml(255, 60 + (index * 20), 200, 20, "<h3><basefont color=#FFFFFF>" + craftItem.NameString + "<basefont></h3>", false, false);
+                    if (craftItem.NameNumber > 0)
+                        AddHtmlLocalized(255, 63 + (index * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false);
+                    else
+                        //AddLabel( 255, 60 + (index * 20), LabelHue, craftItem.NameString );
+                        AddHtml(255, 60 + (index * 20), 200, 20, "<h3><basefont color=#FFFFFF>" + (i + 1) + ". " + craftItem.NameString + "<basefont></h3>", false, false);
 
-				AddButton( 480, 60 + (index * 20), 4011, 4012, GetButtonID( 2, i ), GumpButtonType.Reply, 0 );
+                    AddButton(480, 60 + (index * 20), 4011, 4012, GetButtonID(2, i), GumpButtonType.Reply, 0);
+                }
+                else
+                {
+                    AddButton(520, 60 + ((index - maxItemPerPage / 2) * 20), 4005, 4007, GetButtonID(1, i), GumpButtonType.Reply, 0);
+
+                    if (craftItem.NameNumber > 0)
+                        AddHtmlLocalized(555, 63 + ((index - maxItemPerPage / 2) * 20), 220, 18, craftItem.NameNumber, LabelColor, false, false);
+                    else
+                        //AddLabel( 255, 60 + (index * 20), LabelHue, craftItem.NameString );
+                        AddHtml(555, 60 + ((index - maxItemPerPage / 2) * 20), 200, 20, "<h3><basefont color=#FFFFFF>" + (i + 1) + ". " + craftItem.NameString + "<basefont></h3>", false, false);
+
+                    AddButton(780, 60 + ((index - maxItemPerPage / 2) * 20), 4011, 4012, GetButtonID(2, i), GumpButtonType.Reply, 0);
+                }
 			}
 		}
 
@@ -368,7 +389,7 @@ namespace Server.Engines.Craft
 
 			AddButton( 15, 60, 4005, 4007, GetButtonID( 6, 3 ), GumpButtonType.Reply, 0 );
 			//AddHtmlLocalized( 50, 63, 150, 18, 1044014, LabelColor, false, false ); // LAST TEN
-            AddHtml(50, 63, 200, 20, "<h3><basefont color=#FFFFFF>Dernier Objets<basefont></h3>", false, false);
+            AddHtml(50, 63, 300, 20, "<h3><basefont color=#FFFFFF>Dernier Objets<basefont></h3>", false, false);
 
 			for ( int i = 0; i < craftGroupCol.Count; i++ )
 			{
@@ -397,7 +418,7 @@ namespace Server.Engines.Craft
 
 			if ( num > 0 )
 			{
-				m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, num ) );
+                m_From.SendGump(new CraftGump(m_From, m_CraftSystem, m_Tool, num));
 			}
 			else
 			{
@@ -441,7 +462,7 @@ namespace Server.Engines.Craft
 					if ( index >= 0 && index < groups.Count )
 					{
 						context.LastGroupIndex = index;
-						m_From.SendGump( new CraftGump( m_From, system, m_Tool, null ) );
+						m_From.SendGump( new CraftGump( m_From, system, m_Tool, null) );
 					}
 
 					break;
@@ -474,8 +495,8 @@ namespace Server.Engines.Craft
 					{
 						CraftGroup group = groups.GetAt( groupIndex );
 
-						if ( index >= 0 && index < group.CraftItems.Count )
-							m_From.SendGump( new CraftGumpItem( m_From, system, group.CraftItems.GetAt( index ), m_Tool ) );
+                        if (index >= 0 && index < group.CraftItems.Count)
+                            m_From.SendGump(new CraftGumpItem(m_From, system, group.CraftItems.GetAt(index), m_Tool));
 					}
 
 					break;
@@ -500,7 +521,7 @@ namespace Server.Engines.Craft
 					List<CraftItem> lastTen = context.Items;
 
 					if ( index >= 0 && index < lastTen.Count )
-						m_From.SendGump( new CraftGumpItem( m_From, system, lastTen[index], m_Tool ) );
+                        m_From.SendGump(new CraftGumpItem(m_From, system, lastTen[index], m_Tool));
 
 					break;
 				}
@@ -514,14 +535,14 @@ namespace Server.Engines.Craft
 
 						if ( m_From.Skills[system.MainSkill].Base < res.RequiredSkill )
 						{
-							m_From.SendGump( new CraftGump( m_From, system, m_Tool, res.Message ) );
+                            m_From.SendGump(new CraftGump(m_From, system, m_Tool, res.Message));
 						}
 						else
 						{
 							if ( context != null )
 								context.LastResourceIndex = index;
 
-							m_From.SendGump( new CraftGump( m_From, system, m_Tool, null ) );
+                            m_From.SendGump(new CraftGump(m_From, system, m_Tool, null));
 						}
 					}
 					else if ( m_Page == CraftPage.PickResource2 && index >= 0 && index < system.CraftSubRes2.Count )
@@ -532,14 +553,14 @@ namespace Server.Engines.Craft
 
 						if ( m_From.Skills[system.MainSkill].Base < res.RequiredSkill )
 						{
-							m_From.SendGump( new CraftGump( m_From, system, m_Tool, res.Message ) );
+                            m_From.SendGump(new CraftGump(m_From, system, m_Tool, res.Message));
 						}
 						else
 						{
 							if ( context != null )
 								context.LastResourceIndex2 = index;
 
-							m_From.SendGump( new CraftGump( m_From, system, m_Tool, null ) );
+                            m_From.SendGump(new CraftGump(m_From, system, m_Tool, null));
 						}
 					}
 
@@ -552,7 +573,7 @@ namespace Server.Engines.Craft
 						case 0: // Resource selection
 						{
 							if ( system.CraftSubRes.Init )
-								m_From.SendGump( new CraftGump( m_From, system, m_Tool, null, CraftPage.PickResource ) );
+                                m_From.SendGump(new CraftGump(m_From, system, m_Tool, null, CraftPage.PickResource));
 
 							break;
 						}
@@ -583,7 +604,7 @@ namespace Server.Engines.Craft
 								break;
 
 							context.LastGroupIndex = 501;
-							m_From.SendGump( new CraftGump( m_From, system, m_Tool, null ) );
+                            m_From.SendGump(new CraftGump(m_From, system, m_Tool, null));
 
 							break;
 						}
@@ -594,7 +615,7 @@ namespace Server.Engines.Craft
 
 							context.DoNotColor = !context.DoNotColor;
 
-							m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, null, m_Page ) );
+                            m_From.SendGump(new CraftGump(m_From, m_CraftSystem, m_Tool, null, m_Page));
 
 							break;
 						}
@@ -617,7 +638,7 @@ namespace Server.Engines.Craft
 								case CraftMarkOption.PromptForMark: context.MarkOption = CraftMarkOption.MarkItem; break;
 							}
 
-							m_From.SendGump( new CraftGump( m_From, m_CraftSystem, m_Tool, null, m_Page ) );
+                            m_From.SendGump(new CraftGump(m_From, m_CraftSystem, m_Tool, null, m_Page));
 
 							break;
 						}
