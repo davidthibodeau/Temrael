@@ -38,7 +38,7 @@ namespace Server.Misc
 		 * firewalls) or specific IP adddresses you can do so by modifying the file SocketOptions.cs found in this directory.
 		 */
 
-        public static readonly string Address = "127.0.0.1";
+                public static readonly string Address = "serveur.uotemrael.com";
 		public static readonly string ServerName = "Temrael";
 
 		public static readonly bool AutoDetect = true;
