@@ -211,24 +211,29 @@ namespace Server.Gumps
 
         private static void SetSkills(TMobile from)
         {
-            from.SkillsCap = 350 * 10;
+            from.SkillsCap = 800 * 10;
 
             for (int i = 0; i < from.Skills.Length; ++i)
             {
                 from.Skills[i].Base = 0.0;
-                from.Skills[i].Cap = 40.0;
+                from.Skills[i].Cap = 100.0;
             }
 
-            from.CompetencesLibres = 350;
+            from.CompetencesLibres = 800;
         }
 
         private static void SetAptitudes(TMobile from)
         {
-            from.AptitudesLibres = 5;
+            from.AptitudesLibres = 35;
 
             //Pour les humains
             if (from.GetAptitudeValue(Aptitude.PointSup) > 0)
               from.AptitudesLibres += from.GetAptitudeValue(Aptitude.PointSup);
+        }
+
+        private static void SetNiveau(TMobile from)
+        {
+            from.Niveau = 30;
         }
 
         private static void SetCaract(TMobile from)
@@ -260,11 +265,12 @@ namespace Server.Gumps
             from.Niveau = 0;
             SetSkills(from);
             SetAptitudes(from);
+            SetNiveau(from);
             SetCaract(from);
-            PackItem(from, new RedBook("a book", from.Name, 20, true));
-            PackItem(from, new Gold(2000)); //
-            PackItem(from, new Dagger());
-            PackItem(from, new Candle());
+            //PackItem(from, new RedBook("a book", from.Name, 20, true));
+            //PackItem(from, new Gold(2000)); //
+            //PackItem(from, new Dagger());
+            //PackItem(from, new Candle());
             /*if (from.Metier == Metier.Noble || from.MetierSecondaire == Metier.Noble)
                 from.PointDestin = 1;
             else if (from.Races == Races.Tieffelin)
