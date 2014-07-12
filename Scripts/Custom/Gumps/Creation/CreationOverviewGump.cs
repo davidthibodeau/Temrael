@@ -188,7 +188,7 @@ namespace Server.Gumps
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.PosteDeGarde:
                                 InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(3522, 2295, -75), Map.Felucca);
+                                m_from.MoveToWorld(new Point3D(3462, 2279, -75), Map.Felucca);
                                 break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Prison:
                                 InitializeCreation(m_from);
