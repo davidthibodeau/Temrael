@@ -28,7 +28,8 @@ namespace Server.Gumps
             Tartarus,
 
             /*prison*/
-            Prison
+            Prison,
+            PosteDeGarde
         }
 
         private TMobile m_from;
@@ -158,15 +159,26 @@ namespace Server.Gumps
             }*/
             //}
 
-            if (m_destination == DestinationsDepart.Prison)
+            if (m_destination == DestinationsDepart.PosteDeGarde)
             {
-                AddButton(575, 398, 9009, 9009, 15, GumpButtonType.Reply, 0);
-                AddTooltip(3006436);
+                AddButton(560, 390, 9009, 9009, 15, GumpButtonType.Reply, 0);
+                AddLabel(470, 405, 0, "Poste de Garde");
             }
             else
             {
-                AddButton(575, 398, 9008, 9008, 15, GumpButtonType.Reply, 0);
-                AddTooltip(3006436);
+                AddButton(560, 390, 9008, 9008, 15, GumpButtonType.Reply, 0);
+                AddLabel(470, 405, 0, "Poste de Garde");
+            }
+
+            if (m_destination == DestinationsDepart.Prison)
+            {
+                AddButton(590, 400, 9009, 9009, 16, GumpButtonType.Reply, 0);
+                AddLabel(575, 415, 0, "Prison");
+            }
+            else
+            {
+                AddButton(590, 400, 9008, 9008, 16, GumpButtonType.Reply, 0);
+                AddLabel(575, 415, 0, "Prison");
             }
         }
 
@@ -257,6 +269,10 @@ namespace Server.Gumps
                     from.SendGump(new CreationCarteGump(from));
                     break;
                 case 15:
+                    from.Creation.destination = DestinationsDepart.PosteDeGarde;
+                    from.SendGump(new CreationCarteGump(from));
+                    break;
+                case 16:
                     from.Creation.destination = DestinationsDepart.Prison;
                     from.SendGump(new CreationCarteGump(from));
                     break;

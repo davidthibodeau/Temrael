@@ -186,9 +186,13 @@ namespace Server.Gumps
                                 InitializeCreation(m_from);
                                 m_from.MoveToWorld(new Point3D(1859, 3359, -79), Map.Felucca);
                                 break;
+                            case Server.Gumps.CreationCarteGump.DestinationsDepart.PosteDeGarde:
+                                InitializeCreation(m_from);
+                                m_from.MoveToWorld(new Point3D(3522, 2295, -75), Map.Felucca);
+                                break;
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Prison:
                                 InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(3388, 2203, -79), Map.Felucca);
+                                m_from.MoveToWorld(new Point3D(3565, 2270, -80), Map.Felucca);
                                 break;
                             default: break;
                         }
