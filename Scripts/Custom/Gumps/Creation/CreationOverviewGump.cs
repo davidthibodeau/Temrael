@@ -267,7 +267,14 @@ namespace Server.Gumps
             SetAptitudes(from);
             SetNiveau(from);
             SetCaract(from);
-            //PackItem(from, new RedBook("a book", from.Name, 20, true));
+            PackItem(from, new DyeTub());
+            PackItem(from, new Dyes());
+            PackItem(from, new HairDye());
+            PackItem(from, new RedBook("Livre de poche", from.Name, 100, true));
+            EquipItem(from, new LongPants());
+            EquipItem(from, new Shirt());
+            EquipItem(from, new Shoes());
+
             //PackItem(from, new Gold(2000)); //
             //PackItem(from, new Dagger());
             //PackItem(from, new Candle());

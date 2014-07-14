@@ -193,9 +193,10 @@ namespace Server.Gumps
             //AddBackground(140, 0, 585, 393, 5054);
             AddBackground(100, 350, 545, 298, 3500);
             AddBackground(295, 386, 337, 225, 3000);
-            AddHtml(123, 365, 565, 18, "<h3><basefont color=#025a>Équipement de Départ<basefont></h3>", false, false); // <center>VENDOR CUSTOMIZATION MENU</center>
-            AddHtml(150, 611, 150, 18, "<h3><basefont color=#025a>Ajouter<basefont></h3>", false, false); // OKAY
-            AddButton(115, 610, 4005, 4007, 8, GumpButtonType.Reply, 0);
+            AddHtml(123, 365, 565, 18, "<h3><basefont color=#025a>L'équipement vous sera fourni en jeu.<basefont></h3>", false, false);
+            //AddHtml(123, 365, 565, 18, "<h3><basefont color=#025a>Équipement de Départ<basefont></h3>", false, false); // <center>VENDOR CUSTOMIZATION MENU</center>
+            //AddHtml(150, 611, 150, 18, "<h3><basefont color=#025a>Ajouter<basefont></h3>", false, false); // OKAY
+            //AddButton(115, 610, 4005, 4007, 8, GumpButtonType.Reply, 0);
             //AddHtmlLocalized(450, 615, 150, 18, 1011012, false, false); // CANCEL
             //AddButton(415, 615, 4005, 4007, 0, GumpButtonType.Reply, 0);
 
@@ -683,7 +684,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Capiceen, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Capiceen, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeOrdinaire ), 		"Robe", 0x27D3, 0 ),
                 new CustomItem( typeof( RobeDomestique ), 		"Robe Domestique", 0x27A5, 0 ),
                 new CustomItem( typeof( RobeACeinture ), 		"Robe à Ceinture", 0x3156, 0 ),
@@ -779,7 +780,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Nordique, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Nordique, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeSoubrette ), 		"Robe Simple", 0x27CB, 0 ),
                 new CustomItem( typeof( RobeBohemienne ), 		"Robe Bohémienne", 0x27BF, 0 ),
                 new CustomItem( typeof( RobeServeuse ), 		"Robe Serveuse", 0x27A3, 0 ),
@@ -870,7 +871,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Nomade, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Nomade, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeBohemienne ), 		"Robe Bohémienne", 0x27BF, 0 ),
                 new CustomItem( typeof( RobeGitane ), 		    "Robe Gitane", 0x27C6, 0 ),
                 new CustomItem( typeof( RobeFleurit ), 		    "Robe Fleurit", 0x2799, 0 ),
@@ -963,7 +964,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Nain, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Nain, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobePetite ), 		"Petite Robe", 0x27CC, 0 ),
                 new CustomItem( typeof( RobeGamine ), 		"Robe de Gamine", 0x27D4, 0 ),
                 new CustomItem( typeof( RobeEnfantine ), 	"Robe Enfantine", 0x27CD, 0 ),
@@ -1056,7 +1057,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Elfe, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Elfe, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeDemoiselle ), 		"Robe de Demoiselle", 0x2798, 0 ),
                 new CustomItem( typeof( RobeAttrayante ), 		"Robe Attrayante", 0x27CF, 0 ),
                 new CustomItem( typeof( RobeNymph ), 		    "Robe de Nymph", 0x2BDE, 0 ),
@@ -1145,7 +1146,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.ElfeNoir, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.ElfeNoir, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeElfeNoir ), 		    "Robe Antique", 0x2BE7, 0 ),
                 new CustomItem( typeof( RobeSoubrette ), 		"Robe", 0x27CB, 0 ),
                 new CustomItem( typeof( RobeBohemienne ), 		"Robe Bohémienne", 0x27BF, 0 ),
@@ -1231,7 +1232,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Orcish, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Orcish, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeDechire ), 		"Robe Déchiré", 0x27D2, 0 ),
                 new CustomItem( typeof( RobeDomestique ), 	"Robe de Domestique", 0x27A5, 0 ),
                 new CustomItem( typeof( RobeBohemienne ), 	"Robe Bohémienne", 0x27BF, 0 ),
@@ -1319,7 +1320,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Tieffelin, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Tieffelin, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeOrdinaire ), 		"Robe Ordinaire", 0x27D3, 0 ),
                 new CustomItem( typeof( RobeDomestique ), 		"Robe de Domestique", 0x27A5, 0 ),
                 new CustomItem( typeof( RobeACeinture ), 		"Robe à Ceinture", 0x3156, 0 ),
@@ -1408,7 +1409,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Aasimar, ClasseType.None, new CustomItem[]{// Upper Torso
+			/*new CustomCategory( Layer.InnerTorso, "Robes", true, Races.Aasimar, ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeSimple ), 		"Robe Simple", 0x27CA, 0 ),
                 new CustomItem( typeof( RobeSansManches ), 	"Robe Sans Manches", 0x279A, 0 ),
                 new CustomItem( typeof( RobeAubergiste ), 	"Robe d'Aubergiste", 0x27C8, 0 ),
@@ -1494,7 +1495,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.FirstValid, "Armes", false, Races.Aucun, ClasseType.Guerrier, new CustomItem[]{//Held items
+			/*new CustomCategory( Layer.FirstValid, "Armes", false, Races.Aucun, ClasseType.Guerrier, new CustomItem[]{//Held items
 				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
 				new CustomItem( typeof( Broadsword ),	"Épée", 3936, 0 ),
                 new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
@@ -1630,7 +1631,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( SewingKit ),    "Kit de Couture", 0xF9D, 0 ),
                 new CustomItem( typeof( Shovel ),       "Pelle", 0xF39, 0 ),
                 new CustomItem( typeof( MortarPestle ), "Mortar", 0xE9B, 0 )
-			} ),
+			} ),*/
 		};
 
         private class PVHuePicker : HuePicker
