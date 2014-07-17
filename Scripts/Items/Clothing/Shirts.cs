@@ -8,7 +8,7 @@ namespace Server.Items
 		{
 		}
 
-		public BaseShirt( int itemID, int hue ) : base( itemID, Layer.Shirt, hue )
+		public BaseShirt( int itemID, int hue ) : base( itemID, Layer.InnerTorso, hue )
 		{
 		}
 
@@ -28,6 +28,8 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Layer = Layer.InnerTorso;
 		}
 	}
 

@@ -1033,8 +1033,8 @@ namespace Server.Mobiles
         {
             if (!FreeReset && !free)
                 XP = (int)(XP * 0.95);
-            else if (!free)
-                FreeReset = false;
+            //else if (!free)
+                //FreeReset = false;
 
             Statistiques.Reset(this);
             Competences.Reset(this);
