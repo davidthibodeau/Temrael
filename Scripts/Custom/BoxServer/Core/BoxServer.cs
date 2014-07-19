@@ -5,6 +5,7 @@ using System.Runtime.Remoting.Channels.Tcp;
 using Server;
 using Server.Accounting;
 using System.Runtime.Remoting.Channels;
+using System.Net.Sockets;
 
 namespace TheBox.BoxServer
 {
@@ -37,13 +38,21 @@ namespace TheBox.BoxServer
 		/// </summary>
 		private static void StartServer( object obj )
 		{
-			TcpServerChannel channel = new TcpServerChannel( "boxserver", BoxConfig.Port );
-                        ChannelServices.RegisterChannel(channel, false);
+            try
+            {
+                TcpServerChannel channel = new TcpServerChannel("boxserver", BoxConfig.Port);
+                ChannelServices.RegisterChannel(channel, false);
 
-			RemotingConfiguration.RegisterWellKnownServiceType( typeof( BoxRemote ), "BoxRemote", WellKnownObjectMode.Singleton );
+                RemotingConfiguration.RegisterWellKnownServiceType(typeof(BoxRemote), "BoxRemote", WellKnownObjectMode.Singleton);
 
-			Console.WriteLine( "Pandora is listening on port {0} - BoxServer version {1}", BoxConfig.Port, m_Version );
-
+                Console.WriteLine("Pandora is listening on port {0} - BoxServer version {1}", BoxConfig.Port, m_Version);
+            }
+            catch (SocketException e)
+            {
+                Console.WriteLine("Box Server did not bind. Retrying in 2 seconds");
+                Thread.Sleep(2000);
+                StartServer(obj);
+            }
 			while ( true )
 			{
 				Thread.Sleep( 30000 );
