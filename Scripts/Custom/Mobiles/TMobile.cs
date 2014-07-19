@@ -3297,6 +3297,7 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 9:
                 case 8:
                     m_XPMode = reader.ReadBool();
                     for (int i = 0; i < 7; i++)
