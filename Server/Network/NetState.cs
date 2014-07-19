@@ -569,7 +569,7 @@ namespace Server.Network {
 				m_Address = Utility.Intern( ( ( IPEndPoint ) m_Socket.RemoteEndPoint ).Address );
 				m_ToString = m_Address.ToString();
 			} catch ( Exception ex ) {
-				TraceException( ex );
+                TraceException(ex, m_Socket);
 				m_Address = IPAddress.None;
 				m_ToString = "(error)";
 			}
@@ -622,7 +622,7 @@ namespace Server.Network {
 						try {
 							m_Socket.BeginSend( gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, m_Socket );
 						} catch ( Exception ex ) {
-							TraceException( ex );
+                            TraceException(ex, m_Socket);
 							Dispose( false );
 						}
 #endif
@@ -844,7 +844,7 @@ namespace Server.Network {
 					}
 				}
 			} catch ( Exception ex ) {
-				TraceException( ex );
+                TraceException(ex, m_Socket);
 				Dispose( false );
 			}
 		}
@@ -882,7 +882,7 @@ namespace Server.Network {
 							try {
 								InternalBeginReceive();
 							} catch ( Exception ex ) {
-								TraceException( ex );
+                                TraceException(ex, m_Socket);
 								Dispose( false );
 							}
 						}
@@ -922,7 +922,7 @@ namespace Server.Network {
 					try {
 						s.BeginSend( gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, s );
 					} catch ( Exception ex ) {
-						TraceException( ex );
+                        TraceException(ex, m_Socket);
 						Dispose( false );
 					}
 				}
@@ -960,7 +960,7 @@ namespace Server.Network {
 						if ( ( ns.m_AsyncState & AsyncState.Pending ) == 0 )
 							ns.InternalBeginReceive();
 					} catch ( Exception ex ) {
-						TraceException( ex );
+                        TraceException(ex, ns.m_Socket);
 						ns.Dispose( false );
 					}
 				}
@@ -983,7 +983,7 @@ namespace Server.Network {
 					m_Socket.BeginSend( gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, m_Socket );
 					return true;
 				} catch ( Exception ex ) {
-					TraceException( ex );
+                    TraceException(ex, m_Socket);
 					Dispose( false );
 				}
 			}
@@ -1035,12 +1035,14 @@ namespace Server.Network {
 			return false;
 		}
 
-		public static void TraceException( Exception ex ) {
+		public static void TraceException(Exception ex, Socket sock) {
 			try {
                 using (StreamWriter op =
                     new StreamWriter(Path.Combine(Directories.errors, "network-errors.log"), true))
                 {
                     op.WriteLine("# {0}", DateTime.Now);
+
+                    op.WriteLine("Socket : {0}", sock == null ? "(null)" : sock.ToString());
 
                     op.WriteLine(ex);
 
@@ -1084,7 +1086,7 @@ namespace Server.Network {
 			try {
 				m_Socket.Shutdown( SocketShutdown.Both );
 			} catch ( SocketException ex ) {
-				TraceException( ex );
+                TraceException(ex, m_Socket);
 			}
 
             try
@@ -1099,7 +1101,7 @@ namespace Server.Network {
 			try {
 				m_Socket.Close();
 			} catch ( SocketException ex ) {
-				TraceException( ex );
+                TraceException(ex, m_Socket);
 			}
 
 			if ( m_RecvBuffer != null )
@@ -1138,7 +1140,7 @@ namespace Server.Network {
 					m_Instances[i].CheckAlive();
 				}
 			} catch ( Exception ex ) {
-				TraceException( ex );
+                TraceException(ex, null);
 			}
 		}
 
