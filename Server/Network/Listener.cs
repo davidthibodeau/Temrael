@@ -72,7 +72,7 @@ namespace Server.Network
 			try {
 				IAsyncResult res = m_Listener.BeginAccept( m_OnAccept, m_Listener );
 			} catch ( SocketException ex ) {
-				NetState.TraceException( ex );
+                NetState.TraceException(ex, m_Listener);
 			} catch ( ObjectDisposedException ) {
 			}
 #endif
@@ -195,7 +195,7 @@ namespace Server.Network
 			try {
 				accepted = listener.EndAccept( asyncResult );
 			} catch ( SocketException ex ) {
-				NetState.TraceException( ex );
+                NetState.TraceException(ex, listener);
 			} catch ( ObjectDisposedException ) {
 				return;
 			}
@@ -211,7 +211,7 @@ namespace Server.Network
 			try {
 				listener.BeginAccept( m_OnAccept, listener );
 			} catch ( SocketException ex ) {
-				NetState.TraceException( ex );
+                NetState.TraceException(ex, listener);
 			} catch ( ObjectDisposedException ) {
 			}
 		}
@@ -225,7 +225,7 @@ namespace Server.Network
 
 				return args.AllowConnection;
 			} catch ( Exception ex ) {
-				NetState.TraceException( ex );
+                NetState.TraceException(ex, socket);
 
 				return false;
 			}
@@ -243,13 +243,13 @@ namespace Server.Network
 			try {
 				socket.Shutdown( SocketShutdown.Both );
 			} catch ( SocketException ex ) {
-				NetState.TraceException( ex );
+                NetState.TraceException(ex, socket);
 			}
 
 			try {
 				socket.Close();
 			} catch ( SocketException ex ) {
-				NetState.TraceException( ex );
+                NetState.TraceException(ex, socket);
 			}
 		}
 

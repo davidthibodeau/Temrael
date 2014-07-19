@@ -1079,8 +1079,7 @@ namespace Server.Network {
 				m_Socket.Shutdown( SocketShutdown.Both );
 			} catch ( SocketException ex ) {
                 TraceException(ex, m_Socket);
-			}
-
+			}     
 
 			try {
 				m_Socket.Close();
