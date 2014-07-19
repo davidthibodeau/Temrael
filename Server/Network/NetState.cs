@@ -1065,14 +1065,6 @@ namespace Server.Network {
 			Dispose( true );
 		}
 
-        private void ClosePortUPnP(Socket s)
-        {
-            int port = ((IPEndPoint)s.RemoteEndPoint).Port;
-
-            NAT.DeleteForwardingRule(port, ProtocolType.Tcp);
-            NAT.DeleteForwardingRule(port, ProtocolType.Udp);
-        }
-
 		public virtual void Dispose( bool flush ) {
 			if ( m_Socket == null || m_Disposing ) {
 				return;
@@ -1089,14 +1081,6 @@ namespace Server.Network {
                 TraceException(ex, m_Socket);
 			}
 
-            try
-            {
-                ClosePortUPnP(m_Socket);
-            }
-            catch (Exception ex)
-            {
-                TraceException(ex);
-            }            
 
 			try {
 				m_Socket.Close();

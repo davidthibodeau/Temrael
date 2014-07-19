@@ -202,7 +202,6 @@ namespace Server.Network
 
 			if ( accepted != null ) {
 				if ( VerifySocket( accepted ) ) {
-                    OpenPortUPnP(accepted);
 					Enqueue( accepted );
 				} else {
 					Release( accepted );
@@ -217,16 +216,6 @@ namespace Server.Network
 			}
 		}
 #endif
-
-        private void OpenPortUPnP(Socket s)
-        {
-            IPEndPoint iep = (IPEndPoint)s.RemoteEndPoint;
-            int port = iep.Port;
-
-            NAT.Discover();
-            NAT.ForwardPort(port, ProtocolType.Tcp, "Serveur Temrael (TCP) at " + iep.ToString());
-            NAT.ForwardPort(port, ProtocolType.Udp, "Serveur Temrael (UDP) at " + iep.ToString());
-        }
 
 		private bool VerifySocket( Socket socket ) {
 			try {
