@@ -497,11 +497,6 @@ namespace Server.Gumps
 
                             from.SendGump(new TeintureGump(from, TeintureTabs.Baies, m_tub));
                         }
-                        else if (m_tub is BlackDyeTub)
-                        {
-                            from.SendLocalizedMessage(1010092); // You can not use this on a black dye tub.
-                            from.SendGump(new TeintureGump(from, TeintureTabs.Baies, m_tub));
-                        }
                         else
                         {
                             from.SendMessage("That dye tub may not be redyed.");

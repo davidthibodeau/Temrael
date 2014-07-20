@@ -2,7 +2,7 @@ using System;
 
 namespace Server.Items
 {
-	public class SpecialDyeTub : DyeTub, Engines.VeteranRewards.IRewardItem
+	public class SpecialDyeTub : DyeTub
 	{
 		public override CustomHuePicker CustomHuePicker{ get{ return CustomHuePicker.SpecialDyeTub; } }
 		public override int LabelNumber{ get{ return 1041285; } } // Special Dye Tub
@@ -24,9 +24,6 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( m_IsRewardItem && !Engines.VeteranRewards.RewardSystem.CheckIsUsableBy( from, this, null ) )
-				return;
-
 			base.OnDoubleClick( from );
 		}
 

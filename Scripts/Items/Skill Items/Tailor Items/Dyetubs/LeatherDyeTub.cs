@@ -2,7 +2,7 @@ using System;
 
 namespace Server.Items
 {
-	public class LeatherDyeTub : DyeTub, Engines.VeteranRewards.IRewardItem
+	public class LeatherDyeTub : DyeTub
 	{
 		public override bool AllowDyables{ get{ return false; } }
 		public override bool AllowLeather{ get{ return true; } }
@@ -28,9 +28,6 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( m_IsRewardItem && !Engines.VeteranRewards.RewardSystem.CheckIsUsableBy( from, this, null ) )
-				return;
-
 			base.OnDoubleClick( from );
 		}
 

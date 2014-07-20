@@ -30,15 +30,6 @@ namespace Server.Misc
 					items.Add( item );
 					continue;
 				}
-				else if ( item is CommodityDeed )
-				{
-					CommodityDeed deed = (CommodityDeed)item;
-
-					if ( deed.Commodity != null )
-						validItems.Add( deed.Commodity );
-
-					continue;
-				}
 				else if ( item is BaseHouse )
 				{
 					BaseHouse house = (BaseHouse)item;

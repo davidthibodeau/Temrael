@@ -998,40 +998,38 @@ namespace Server.Multis
 				case SecureAccessResult.Inaccessible: return false;
 			}
 
-			if ( !IsLockedDown( item ) )
-				return true;
-			else if ( from.AccessLevel >= AccessLevel.GameMaster )
-				return true;
-			else if ( item is Runebook )
-				return true;
-			else if ( item is ISecurable )
-				return HasSecureAccess( from, ((ISecurable)item).Level );
-			else if ( item is Container )
-				return IsCoOwner( from );
-			else if ( item.Stackable )
-				return true;
-			else if ( item is BaseLight )
-				return IsFriend( from );
-			else if ( item is PotionKeg )
-				return IsFriend( from );
-			else if ( item is BaseBoard )
-				return true;
-			else if ( item is Dices )
-				return true;
-			else if ( item is RecallRune )
-				return true;
-			else if ( item is TreasureMap )
-				return true;
-			else if ( item is Clock )
-				return true;
-			else if ( item is BaseInstrument )
-				return true;
-			else if ( item is Dyes || item is DyeTub )
-				return true;
-			else if ( item is VendorRentalContract )
-				return true;
-			else if ( item is RewardBrazier )
-				return true;
+            if (!IsLockedDown(item))
+                return true;
+            else if (from.AccessLevel >= AccessLevel.GameMaster)
+                return true;
+            else if (item is Runebook)
+                return true;
+            else if (item is ISecurable)
+                return HasSecureAccess(from, ((ISecurable)item).Level);
+            else if (item is Container)
+                return IsCoOwner(from);
+            else if (item.Stackable)
+                return true;
+            else if (item is BaseLight)
+                return IsFriend(from);
+            else if (item is PotionKeg)
+                return IsFriend(from);
+            else if (item is BaseBoard)
+                return true;
+            else if (item is Dices)
+                return true;
+            else if (item is RecallRune)
+                return true;
+            else if (item is TreasureMap)
+                return true;
+            else if (item is Clock)
+                return true;
+            else if (item is BaseInstrument)
+                return true;
+            else if (item is Dyes || item is DyeTub)
+                return true;
+            else if (item is VendorRentalContract)
+                return true;
 
 			return false;
 		}
@@ -1801,9 +1799,6 @@ namespace Server.Multis
 				item.PublicOverheadMessage( Server.Network.MessageType.Label, 0x3B2, 501657 );//[no longer locked down]
 				SetLockdown( item, false );
 				//TidyItemList( m_LockDowns );
-
-				if ( item is RewardBrazier )
-					((RewardBrazier) item).TurnOff();
 			}
 			else if ( IsSecure( item ) )
 			{

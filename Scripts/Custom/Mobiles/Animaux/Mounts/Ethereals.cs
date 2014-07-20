@@ -2,24 +2,15 @@ using System;
 using Server.Mobiles;
 using Server.Items;
 using Server.Spells;
-using Server.Engines.VeteranRewards;
 
 namespace Server.Mobiles
 {
-	public class EtherealMount : Item, IMount, IMountItem, Engines.VeteranRewards.IRewardItem
+	public class EtherealMount : Item, IMount, IMountItem
 	{
 		private int m_MountedID;
 		private int m_RegularID;
 		private Mobile m_Rider;
-		private bool m_IsRewardItem;
 		private bool m_IsDonationItem;
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public bool IsRewardItem
-		{
-			get { return m_IsRewardItem; }
-			set { m_IsRewardItem = value; }
-		}
 
 		public override double DefaultWeight
 		{
@@ -55,8 +46,6 @@ namespace Server.Mobiles
 				list.Add( "Donation Ethereal" );
 				list.Add( "7.5 sec slower cast time if not a 9mo. Veteran" );
 			}
-			if( Core.ML && m_IsRewardItem )
-				list.Add( RewardSystem.GetRewardYearLabel( this, new object[] { } ) ); // X Year Veteran Reward
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
@@ -128,11 +117,6 @@ namespace Server.Mobiles
 				from.SayTo( from, 1010095 ); // This must be on your person to use.
 				return false;
 			}
-			else if( m_IsRewardItem && !Engines.VeteranRewards.RewardSystem.CheckIsUsableBy( from, this, null ) )
-			{
-				// CheckIsUsableBy sends the message
-				return false;
-			}
 			else if( !BaseMount.CheckMountAllowed( from, true ) )
 			{
 				// CheckMountAllowed sends the message
@@ -180,7 +164,6 @@ namespace Server.Mobiles
 			writer.Write( (int)3 ); // version
 
 			writer.Write( m_IsDonationItem );
-			writer.Write( m_IsRewardItem );
 
 			writer.Write( (int)m_MountedID );
 			writer.Write( (int)m_RegularID );
@@ -203,7 +186,7 @@ namespace Server.Mobiles
 				}
 				case 2:
 				{
-					m_IsRewardItem = reader.ReadBool();
+					reader.ReadBool();
 					goto case 0;
 				}
 				case 1: reader.ReadInt(); goto case 0;
@@ -343,97 +326,6 @@ namespace Server.Mobiles
 		{
 		}
 
-		/*private class EtherealSpell : Spell
-		{
-			private static SpellInfo m_Info = new SpellInfo( "Ethereal Mount", "", 230 );
-
-			private EtherealMount m_Mount;
-			private Mobile m_Rider;
-
-			public EtherealSpell( EtherealMount mount, Mobile rider )
-				: base( rider, null, m_Info )
-			{
-				m_Rider = rider;
-				m_Mount = mount;
-			}
-
-			public override bool ClearHandsOnCast { get { return false; } }
-			public override bool RevealOnCast { get { return false; } }
-
-			public override TimeSpan GetCastRecovery()
-			{
-				return TimeSpan.Zero;
-			}
-
-			public override double CastDelayFastScalar { get { return 0; } }
-
-			public override TimeSpan CastDelayBase
-			{
-				get
-				{
-					return TimeSpan.FromSeconds( ( ( m_Mount.IsDonationItem && RewardSystem.GetRewardLevel( m_Rider ) < 3 ) ? ( 7.5 + ( Core.AOS ? 3.0 : 2.0 ) ) : ( Core.AOS ? 3.0 : 2.0 ) ) );
-				}
-			}
-
-			public override int GetMana()
-			{
-				return 0;
-			}
-
-			public override bool ConsumeReagents()
-			{
-				return true;
-			}
-
-			public override bool CheckFizzle()
-			{
-				return true;
-			}
-
-			private bool m_Stop;
-
-			public void Stop()
-			{
-				m_Stop = true;
-				Disturb( DisturbType.Hurt, false, false );
-			}
-
-			public override bool CheckDisturb( DisturbType type, bool checkFirst, bool resistable )
-			{
-				if( type == DisturbType.EquipRequest || type == DisturbType.UseRequest || type == DisturbType.Hurt )
-					return false;
-
-				return true;
-			}
-
-			public override void DoHurtFizzle()
-			{
-				if( !m_Stop )
-					base.DoHurtFizzle();
-			}
-
-			public override void DoFizzle()
-			{
-				if( !m_Stop )
-					base.DoFizzle();
-			}
-
-			public override void OnDisturb( DisturbType type, bool message )
-			{
-				if( message && !m_Stop )
-					Caster.SendLocalizedMessage( 1049455 ); // You have been disrupted while attempting to summon your ethereal mount!
-
-				//m_Mount.UnmountMe();
-			}
-
-			public override void OnCast()
-			{
-				if( !m_Mount.Deleted && m_Mount.Rider == null && m_Mount.Validate( m_Rider ) )
-					m_Mount.Rider = m_Rider;
-
-				FinishSequence();
-			}
-		}*/
 	}
 
 	public class EtherealHorse : EtherealMount

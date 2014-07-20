@@ -135,18 +135,6 @@ namespace Server.Mobiles
 
 		public List<Mobile> AutoStabled { get { return m_AutoStabled; } }
 
-		public bool NinjaWepCooldown
-		{
-			get
-			{
-				return m_NinjaWepCooldown;
-			}
-			set
-			{
-				m_NinjaWepCooldown = value;
-			}
-		}
-
 		public List<Mobile> AllFollowers
 		{
 			get
@@ -271,12 +259,6 @@ namespace Server.Mobiles
 		{
 			get { return m_ToTTotalMonsterFame; }
 			set { m_ToTTotalMonsterFame = value; }
-		}
-
-		public int ExecutesLightningStrike
-		{
-			get { return m_ExecutesLightningStrike; }
-			set { m_ExecutesLightningStrike = value; }
 		}
 
 		#endregion
@@ -429,21 +411,6 @@ namespace Server.Mobiles
 		}
 
 		#endregion
-
-		private DateTime m_AnkhNextUse;
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime AnkhNextUse
-		{
-			get{ return m_AnkhNextUse; }
-			set{ m_AnkhNextUse = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan DisguiseTimeLeft
-		{
-			get{ return DisguiseTimers.TimeRemaining( this ); }
-		}
 
 		private DateTime m_PeacedUntil;
 
@@ -2713,6 +2680,7 @@ namespace Server.Mobiles
 
 			switch ( version )
 			{
+                case 30: //Will denote the change.
 				case 28:
 				{
 					m_PeacedUntil = reader.ReadDateTime();
@@ -2721,7 +2689,8 @@ namespace Server.Mobiles
 				}
 				case 27:
 				{
-					m_AnkhNextUse = reader.ReadDateTime();
+                    if(version < 30)
+                        reader.ReadDateTime();
 
 					goto case 26;
 				}
@@ -3001,10 +2970,11 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-			writer.Write( (int) 28 ); // version
-
+			writer.Write( (int) 30 ); // version
+            // Note, 28 was previous version before changes
+            
 			writer.Write( (DateTime) m_PeacedUntil );
-			writer.Write( (DateTime) m_AnkhNextUse );
+
 			writer.Write( m_AutoStabled, true );
 
 			if( m_AcquiredRecipes == null )
@@ -3160,9 +3130,6 @@ namespace Server.Mobiles
 
 		public override bool CanSee( Mobile m )
 		{
-			if ( m is CharacterStatue )
-				((CharacterStatue) m).OnRequestedAnimation( this );
-
 			if ( m is PlayerMobile && ((PlayerMobile)m).m_VisList.Contains( this ) )
 				return true;
 
@@ -3215,20 +3182,6 @@ namespace Server.Mobiles
 						list.Add( 1060776, "{0}\t{1}", MerchantTitles.GetInfo( pl.MerchantTitle ).Title, faction.Definition.PropName ); // ~1_val~, ~2_val~
 					else
 						list.Add( 1060776, "{0}\t{1}", pl.Rank.Title, faction.Definition.PropName ); // ~1_val~, ~2_val~
-				}
-			}
-
-			if ( Core.ML )
-			{
-				for ( int i = AllFollowers.Count - 1; i >= 0; i-- )
-				{
-					BaseCreature c = AllFollowers[ i ] as BaseCreature;
-
-					if ( c != null && c.ControlOrder == OrderType.Guard )
-					{
-						list.Add( 501129 ); // guarded
-						break;
-					}
 				}
 			}
 		}

@@ -5310,12 +5310,6 @@ namespace Server.Mobiles
 
 						Region region = ds.m_Mobile.Region;
 
-						if( !givenToTKill && ( Map == Map.Tokuno || region.IsPartOf( "Yomotsu Mines" ) || region.IsPartOf( "Fan Dancer's Dojo" ) ))
-						{
-							givenToTKill = true;
-							TreasuresOfTokuno.HandleKill( this, ds.m_Mobile );
-						}
-
 						if ( givenQuestKill )
 							continue;
 

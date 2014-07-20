@@ -16,8 +16,7 @@ namespace Server.Mobiles
 		public override Type[] UniqueList{ get{ return new Type[] { typeof( Subdue ) }; } }
 		public override Type[] SharedList{ get{ return new Type[] { }; } }
 		public override Type[] DecorativeList{ get{ return new Type[] { typeof( ArtifactLargeVase ),
-										typeof( ArtifactVase ),
-										typeof( MinotaurStatueDeed ) }; } }
+										typeof( ArtifactVase ) }; } }
 
 		public override MonsterStatuetteType[] StatueTypes{ get{ return new MonsterStatuetteType[] { 	
 			MonsterStatuetteType.Minotaur }; } }

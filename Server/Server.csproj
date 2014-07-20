@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Server</RootNamespace>
-    <AssemblyName>Server</AssemblyName>
+    <AssemblyName>RunUO</AssemblyName>
     <ApplicationIcon>runuo.ico</ApplicationIcon>
     <StartupObject>Server.Core</StartupObject>
     <FileUpgradeFlags>
