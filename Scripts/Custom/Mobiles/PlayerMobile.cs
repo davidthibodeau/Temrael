@@ -1220,41 +1220,19 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int HitsMax
 		{
-			get
-			{
-				int strBase;
-				int strOffs = GetStatOffset( StatType.Str );
-
-				if ( Core.AOS )
-				{
-					strBase = this.Str;	//this.Str already includes GetStatOffset/str
-					strOffs = AosAttributes.GetValue( this, AosAttribute.BonusHits );
-
-					if ( Core.ML && strOffs > 25 && AccessLevel <= AccessLevel.Player )
-						strOffs = 25;
-
-					//if ( AnimalForm.UnderTransformation( this, typeof( BakeKitsune ) ) || AnimalForm.UnderTransformation( this, typeof( GreyWolf ) ) )
-					//	strOffs += 20;
-				}
-				else
-				{
-					strBase = this.RawStr;
-				}
-
-				return (strBase / 2) + 50 + strOffs;
-			}
+            get { return (Str >= 100 ? (125 + RawStr) : (100 + RawStr)); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int StamMax
 		{
-			get{ return base.StamMax + AosAttributes.GetValue( this, AosAttribute.BonusStam ); }
+            get { return (RawDex >= 100 ? (25 + RawDex) : RawDex); }
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
 		public override int ManaMax
 		{
-			get{ return base.ManaMax + AosAttributes.GetValue( this, AosAttribute.BonusMana ) + ((Core.ML && Race == Race.Elf) ? 20 : 0); }
+			get { return (RawInt >= 100 ? (25 + RawInt) : RawInt); }
 		}
 		#endregion
 

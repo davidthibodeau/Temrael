@@ -2191,7 +2191,7 @@ namespace Server.Mobiles
             return m_Aptitudes[aptitude] + GetPrestigeBaseAptitudeValue(aptitude);
         }*/
 
-        public override int HitsMax
+        /*public override int HitsMax
         {
             get
             {
@@ -2220,7 +2220,7 @@ namespace Server.Mobiles
                 else
                     return this.Int + (this.Cha / 2) + m_BonusMana;
             }
-        }
+        }*/
 
         public void FamilierCheck()
         {
