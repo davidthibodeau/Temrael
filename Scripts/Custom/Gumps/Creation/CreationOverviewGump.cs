@@ -32,9 +32,8 @@ namespace Server.Gumps
             x += space;
             AddMenuItem(x, y, 1190, 3, true);
             x += space;
-            AddMenuItem(x, y, 1192, 4, true);
             x += space;
-            AddMenuItem(x, y, 1188, 5, true);
+            AddMenuItem(x, y, 1188, 4, true);
             x += space;
             AddMenuItem(x, y, 1224, 6, true);
             x += space;
@@ -56,8 +55,6 @@ namespace Server.Gumps
             AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race: " + from.Creation.race + "<basefont></h3>");
             line++;
             AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Classe: " + from.Creation.classe.ToString() + "<basefont></h3>");
-            line++;
-            AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Métier: " + from.Creation.metier.ToString() + "<basefont></h3>");
             line++;
             AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Destination: " + from.Creation.destination.ToString() + "<basefont></h3>");
             line++;
@@ -92,21 +89,11 @@ namespace Server.Gumps
                 case 4:
                     if (from.Creation.classe != ClasseType.None)
                     {
-                        from.SendGump(new CreationMetierGump(from));
-                    }
-                    else
-                    {
-                        goto case 3;
-                    }
-                    break;
-                case 5:
-                    if (from.Creation.metier != MetierType.None)
-                    {
                         from.SendGump(new CreationEquipementGump(from));
                     }
                     else
                     {
-                        goto case 4;
+                        goto case 3;
                     }
                     break;
                 case 6:
@@ -120,14 +107,6 @@ namespace Server.Gumps
 
                     if (m_from.Creation.race != Races.Aucun)
                         m_from.Races = m_from.Creation.race;
-                    else
-                        complete = false;
-
-                    if (m_from.Creation.metier != MetierType.None)
-                        if (m_from.MetierType.Count > 0)
-                            m_from.MetierType[0] = m_from.Creation.metier;
-                        else
-                            m_from.MetierType.Add(m_from.Creation.metier);
                     else
                         complete = false;
 

@@ -110,7 +110,6 @@ namespace Server.Mobiles
         {
             m_race = Races.Aucun;
             m_classe = ClasseType.None;
-            m_metier = MetierType.None;
             m_destination = CreationCarteGump.DestinationsDepart.Aucune;
             //m_gumps = new List<CreationGump.PaperPreviewItem>();
             m_hue = 0;
@@ -123,7 +122,6 @@ namespace Server.Mobiles
         {
             m_race = Races.Aucun;
             m_classe = ClasseType.None;
-            m_metier = MetierType.None;
             m_hue = 0;
             m_secrete = Races.Aucun;
         }
@@ -133,7 +131,6 @@ namespace Server.Mobiles
         //private List<Server.Gumps.CreationGump.PaperPreviewItem> m_gumps;
         private Races m_race;
         private ClasseType m_classe;
-        private MetierType m_metier;
         private Server.Gumps.CreationCarteGump.DestinationsDepart m_destination;
         private int m_hue;
         private Races m_secrete;
@@ -143,7 +140,6 @@ namespace Server.Mobiles
         //public List<Server.Gumps.CreationGump.PaperPreviewItem> gumps { get { return m_gumps; } set { m_gumps = value; } }
         public Races race { get { return m_race; } set { m_race = value; } }
         public ClasseType classe { get { return m_classe; } set { m_classe = value; } }
-        public MetierType metier { get { return m_metier; } set { m_metier = value; } }
         public Server.Gumps.CreationCarteGump.DestinationsDepart destination { get { return m_destination; } set { m_destination = value; } }
         public int hue { get { return m_hue; } set { m_hue = value; } }
         public Races secrete { get { return m_secrete; } set { m_secrete = value; } }
@@ -293,7 +289,6 @@ namespace Server.Mobiles
         private bool m_DisguiseHidden = false;
 
         private ClasseType m_ClasseType = ClasseType.None;
-        private List<MetierType> m_MetierType = new List<MetierType>(3);
         private bool m_Suicide;
         private DateTime m_NextKillAllowed;
         private Races m_RaceSecrete;
@@ -713,41 +708,6 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public List<MetierType> MetierType
-        {
-            get { return m_MetierType; }
-            set { m_MetierType = value; FamilierCheck(); }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public MetierType MetierType1
-        {
-            get { if (m_MetierType.Count > 0) return m_MetierType[0]; else return Server.MetierType.None; }
-            set { if (m_MetierType.Count > 0) m_MetierType[0] = value; else m_MetierType.Add(value); }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public MetierType MetierType2
-        {
-            get { if (m_MetierType.Count > 1) return m_MetierType[1]; else return Server.MetierType.None; }
-            set { if (m_MetierType.Count > 1) m_MetierType[1] = value; else m_MetierType.Add(value); }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public MetierType MetierType3
-        {
-            get { if (m_MetierType.Count > 2) return m_MetierType[2]; else return Server.MetierType.None; }
-            set { if (m_MetierType.Count > 2) m_MetierType[2] = value; else m_MetierType.Add(value); }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public MetierType MetierType4
-        {
-            get { if (m_MetierType.Count > 3) return m_MetierType[3]; else return Server.MetierType.None; }
-            set { if (m_MetierType.Count > 3) m_MetierType[3] = value; else m_MetierType.Add(value); }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
         public bool Suicide
         {
             get { return m_Suicide; }
@@ -860,22 +820,12 @@ namespace Server.Mobiles
             Aptitudes.Reset();
 
             ClasseType = ClasseType.None;
-            MetierType.Clear();
             FamilierCheck();
             for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
             {
                 m_languages[m_DerniereLangueApprise[i]] = false;
                 m_DerniereLangueApprise.RemoveAt(i);
             }
-        }
-
-        public bool hasMetier(MetierType metier)
-        {
-            for (int i = 0; i < m_MetierType.Count; i++)
-                if (m_MetierType[i] == metier)
-                    return true;
-
-            return false;
         }
 
         public void LanguageFix()
@@ -2220,11 +2170,7 @@ namespace Server.Mobiles
                 raceCount = RaceManager.GetAptitudeNbr(m_race);
 
             int a = Classes.GetAptitudeValue(this, m_ClasseType, aptitude) +
-                    raceCount +
-                    Metiers.GetAptitudeValue(this, MetierType1, aptitude) +
-                    Metiers.GetAptitudeValue(this, MetierType2, aptitude) +
-                    Metiers.GetAptitudeValue(this, MetierType3, aptitude) +
-                    Metiers.GetAptitudeValue(this, MetierType4, aptitude);
+                    raceCount;
             return a;
         }
 
@@ -3197,11 +3143,6 @@ namespace Server.Mobiles
 
             writer.Write((DateTime)(m_NextKillAllowed));
             writer.Write((bool)m_Suicide);
-            writer.Write((int)m_MetierType.Count);
-            foreach (MetierType metier in m_MetierType)
-            {
-                writer.Write((int)metier);
-            }
             writer.Write((int)m_ClasseType);
 
             writer.Write((bool)m_DisguiseHidden);
@@ -3335,10 +3276,13 @@ namespace Server.Mobiles
                         reader.ReadInt();
                         reader.ReadInt();
                     }
-                    count = reader.ReadInt();
-                    for (int i = 0; i < count; i++)
+                    if (version < 9)
                     {
-                        m_MetierType.Add((MetierType)reader.ReadInt());
+                        count = reader.ReadInt();
+                        for (int i = 0; i < count; i++)
+                        {
+                            reader.ReadInt();
+                        }
                     }
                     m_ClasseType = (ClasseType)reader.ReadInt();
 

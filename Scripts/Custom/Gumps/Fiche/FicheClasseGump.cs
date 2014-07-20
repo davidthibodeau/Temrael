@@ -14,21 +14,19 @@ namespace Server.Gumps
     {
         private TMobile m_from;
         private ClasseType m_classeType;
-        private MetierType m_metierType;
         private int m_pageClasse;
         private int m_pageMetier;
 
         public FicheClasseGump(TMobile from)
-            : this(from, from.ClasseType, (from.MetierType.Count > 0 ? from.MetierType[0] : MetierType.None), 0, 0)
+            : this(from, from.ClasseType, 0, 0)
         {
         }
 
-        public FicheClasseGump(TMobile from, ClasseType classeType, MetierType metierType, int pageClasse, int pageMetier)
+        public FicheClasseGump(TMobile from, ClasseType classeType, int pageClasse, int pageMetier)
             : base("Classe & Métier", 560, 622)
         {
             m_from = from;
             m_classeType = classeType;
-            m_metierType = metierType;
             m_pageClasse = pageClasse;
             m_pageMetier = pageMetier;
 
@@ -128,76 +126,8 @@ namespace Server.Gumps
                 AddButton(x, y + (line * scale) + 10, 52, 52, 8, GumpButtonType.Reply, 0);
                 AddHtml(x + 50, y + (line * scale) + 22, 200, 20, "<h3><basefont color=#025a>Classe<basefont></h3>", false, false);
             }
-
-            /*Metier*/
-            if (metierType != MetierType.None && metierType != MetierType.Maximum)
-            {
-                MetierInfo infoMetier = Metiers.GetInfos(metierType);
-
-                line = 0;
-                x += 275;
-                AddButton(x, y + line * scale, 9, infoMetier.Image);
-                //AddTooltip(TemraelClasse.GetTooltipClasse(classeType));
-
-                listDon = new List<string>();
-                temp = String.Empty;
-                nomTemp = String.Empty;
-                descrTemp = String.Empty;
-                reqTemp = String.Empty;
-
-                /*temp += "<strong>Compétences de Classe</strong>: ";
-
-                for (int i = 0; i < infoMetier.MetierCompetences.Length; i++)
-                {
-                    if (i != infoMetier.MetierCompetences.Length - 1)
-                        temp += infoMetier.MetierCompetences[i].ToString() + ", ";
-                    else
-                        temp += infoMetier.MetierCompetences[i].ToString();
-                }*/
-
-                List<Aptitude> listAptitude = new List<Aptitude>();
-                bool hasAptitude = false;
-                for (int j = 0; j < infoMetier.Aptitudes.Length; j++)
-                {
-                    foreach (Aptitude aptitude in listAptitude)
-                    {
-                        if (aptitude == infoMetier.Aptitudes[j].Aptitude)
-                        {
-                            hasAptitude = true;
-                        }
-                    }
-
-                    if (!hasAptitude)
-                    {
-                        AptitudeInfo infoApt = Aptitudes.GetInfos(infoMetier.Aptitudes[j].Aptitude);
-                        temp += "<strong>" + infoApt.Name + "</strong>: " + infoApt.Description + Environment.NewLine;
-                        listAptitude.Add(infoMetier.Aptitudes[j].Aptitude);
-                    }
-                }
-
-                line = 13;
-                /*metiers = new TemraelMetier[from.GetMetiers().Count];
-                from.GetMetiers().CopyTo(metiers, 0);*/
-                if (pageMetier > 0)
-                    AddButton(x + 50, y + line * scale, 4014, 4015, 12, GumpButtonType.Reply, 0);
-                if (pageMetier < from.MetierType.Count - 1)
-                    AddButton(x + 100, y + line * scale, 4005, 4006, 13, GumpButtonType.Reply, 0);
-
-                line = 14;
-                AddSection(x, y + line * scale, 265, 120, infoMetier.Nom, temp);
-
-                line -= 3;
-                AddButton(x, y + (line * scale) + 10, 52, 52, 9, GumpButtonType.Reply, 0);
-                AddHtml(x + 50, y + (line * scale) + 22, 200, 20, "<h3><basefont color=#025a>Métier<basefont></h3>", false, false);
-            }
-            else
-            {
-                line = 11;
-                x += 275;
-                AddButton(x, y + (line * scale) + 10, 52, 52, 9, GumpButtonType.Reply, 0);
-                AddHtml(x + 50, y + (line * scale) + 22, 200, 20, "<h3><basefont color=#025a>Métier<basefont></h3>", false, false);
-            }
         }
+
         public override void OnResponse(NetState sender, RelayInfo info)
         {
             TMobile from = (TMobile)sender.Mobile;
@@ -231,24 +161,14 @@ namespace Server.Gumps
                 case 8:
                     from.SendGump(new FicheClassesInfoGump(from, m_classeType, 0));
                     break;
-                case 9:
-                    from.SendGump(new FicheMetiersInfoGump(from, m_metierType, 0));
-                    break;
-                /*case 10:
-                    --m_pageClasse;
-                    from.SendGump(new FicheClasseGump(from, classes[m_pageClasse].CType, m_metierType, m_pageClasse, m_pageMetier));
-                    break;
-                case 11:
-                    ++m_pageClasse;
-                    from.SendGump(new FicheClasseGump(from, classes[m_pageClasse].CType, m_metierType, m_pageClasse, m_pageMetier));
-                    break;*/
+                
                 case 12:
                     --m_pageMetier;
-                    from.SendGump(new FicheClasseGump(from, m_classeType, from.MetierType[m_pageMetier], m_pageClasse, m_pageMetier));
+                    from.SendGump(new FicheClasseGump(from, m_classeType, m_pageClasse, m_pageMetier));
                     break;
                 case 13:
                     ++m_pageMetier;
-                    from.SendGump(new FicheClasseGump(from, m_classeType, from.MetierType[m_pageMetier], m_pageClasse, m_pageMetier));
+                    from.SendGump(new FicheClasseGump(from, m_classeType, m_pageClasse, m_pageMetier));
                     break;
                 case 14:
                     /*if (from.Dons.canUpClasse())
@@ -265,7 +185,7 @@ namespace Server.Gumps
                         if (c != null)
                             from.MakeClasse(c.GetType(), c.Niveau + 1);
                     }*/
-                    from.SendGump(new FicheClasseGump(from, m_classeType, m_metierType, m_pageClasse, m_pageMetier));
+                    from.SendGump(new FicheClasseGump(from, m_classeType, m_pageClasse, m_pageMetier));
                     break;
             }
         }

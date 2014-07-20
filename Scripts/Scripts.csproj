@@ -409,19 +409,6 @@
     <Compile Include=".\Custom\Evolution\Competences.cs" />
     <Compile Include=".\Custom\Evolution\Deplacement.cs" />
     <Compile Include=".\Custom\Evolution\Fioles.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierBoucher.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierBricoleur.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierCharpentier.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierCommercant.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierCouturier.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierCuisinier.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierForgeron.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierHerboriste.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Artisan\MetierScribe.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\BaseMetier.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Divers\MetierDresseur.cs" />
-    <Compile Include=".\Custom\Evolution\Metiers\Divers\MetierNoble.cs" />
     <Compile Include=".\Custom\Evolution\Statistiques.cs" />
     <Compile Include=".\Custom\Evolution\XP.cs" />
     <Compile Include=".\Custom\Evolution\XPLogin.cs" />
@@ -433,7 +420,6 @@
     <Compile Include=".\Custom\Gumps\Creation\CreationCarteGump.cs" />
     <Compile Include=".\Custom\Gumps\Creation\CreationClasseGump.cs" />
     <Compile Include=".\Custom\Gumps\Creation\CreationEquipementGump.cs" />
-    <Compile Include=".\Custom\Gumps\Creation\CreationMetierGump.cs" />
     <Compile Include=".\Custom\Gumps\Creation\CreationOverviewGump.cs" />
     <Compile Include=".\Custom\Gumps\Creation\CreationRaceGump.cs" />
     <Compile Include=".\Custom\Gumps\DecorationGump.cs" />
@@ -442,7 +428,6 @@
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheAptitudeInfoGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheAptitudesGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheClassesInfoGump.cs" />
-    <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheMetiersInfoGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheRacesInfoGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheAptitudeGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheCaracteristiqueGump.cs" />

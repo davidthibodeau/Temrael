@@ -31,9 +31,8 @@ namespace Server.Gumps
             x += space;
             AddMenuItem(x, y, 1190, 3, true);
             x += space;
-            AddMenuItem(x, y, 1192, 4, true);
             x += space;
-            AddMenuItem(x, y, 1188, 5, false);
+            AddMenuItem(x, y, 1188, 4, false);
             x += space;
             AddMenuItem(x, y, 1224, 6, true);
             x += space;
@@ -275,21 +274,11 @@ namespace Server.Gumps
                 case 4:
                     if (from.Creation.classe != ClasseType.None)
                     {
-                        from.SendGump(new CreationMetierGump(from));
-                    }
-                    else
-                    {
-                        goto case 3;
-                    }
-                    break;
-                case 5:
-                    if (from.Creation.metier != MetierType.None)
-                    {
                         from.SendGump(new CreationEquipementGump(from));
                     }
                     else
                     {
-                        goto case 4;
+                        goto case 3;
                     }
                     break;
                 case 6:

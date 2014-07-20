@@ -62,8 +62,6 @@ namespace Server.Items
                     tMob.Aptitudes[(Aptitude)i] = 0;
 
                 tMob.Races = Races.Aucun;
-                if (tMob.MetierType.Count > 0)
-                    tMob.MetierType[0] = MetierType.None;
                 tMob.ClasseType = ClasseType.None;
                 tMob.Title = "";
                 tMob.MortEvo = MortEvo.Aucune;
