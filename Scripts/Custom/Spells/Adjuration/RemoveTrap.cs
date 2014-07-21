@@ -16,9 +16,6 @@ namespace Server.Spells.Second
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
-
 		public RemoveTrapSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

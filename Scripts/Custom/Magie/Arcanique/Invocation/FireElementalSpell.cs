@@ -18,9 +18,6 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
 			);
 
-        public override int RequiredAptitudeValue { get { return 4; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
         public override bool Invocation { get { return true; } }
 
         public ElementaireFeuSpell(Mobile caster, Item scroll)

@@ -21,9 +21,6 @@ namespace Server.Spells.Sixth
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 11; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Alteration }; } }
-
 		public MassCurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

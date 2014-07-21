@@ -22,9 +22,6 @@ namespace Server.Spells.Eighth
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 10; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
-
 		public EarthquakeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
         }

@@ -21,9 +21,6 @@ namespace Server.Spells.Seventh
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 8; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
-
 		public MassDispelSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}
@@ -72,8 +69,6 @@ namespace Server.Spells.Seventh
 						continue;
 
 					double dispelChance = (50.0 + ((100 * (Caster.Skills.Tenebrea.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
-
-                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, Aptitude.Sorcellerie);
 
 					if ( dispelChance > Utility.RandomDouble() )
                     {

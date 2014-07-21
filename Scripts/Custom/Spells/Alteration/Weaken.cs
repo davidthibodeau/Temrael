@@ -15,9 +15,6 @@ namespace Server.Spells.First
 				Reagent.Nightshade
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Alteration }; } }
-
 		public WeakenSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

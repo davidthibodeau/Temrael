@@ -19,9 +19,6 @@ namespace Server.Spells.Fourth
 				Reagent.MandrakeRoot
             );
 
-        public override int RequiredAptitudeValue { get { return 9; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
-
 		public ArchCureSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

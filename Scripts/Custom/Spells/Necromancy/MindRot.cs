@@ -18,9 +18,6 @@ namespace Server.Spells.Necromancy
 				Reagent.DaemonBlood
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
-
 		public MindRotSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

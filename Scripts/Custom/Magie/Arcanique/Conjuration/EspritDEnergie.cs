@@ -18,9 +18,6 @@ namespace Server.Spells
 				Reagent.Nightshade
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
         public override bool Invocation { get { return true; } }
 
         public EspritDEnergieSpell(Mobile caster, Item scroll)

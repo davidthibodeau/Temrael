@@ -18,9 +18,6 @@ namespace Server.Spells
                 Reagent.BlackPearl
 			);
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
         public override bool Invocation { get { return true; } }
 
         public ElementaireTerreSpell(Mobile caster, Item scroll)

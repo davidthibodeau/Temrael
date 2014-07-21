@@ -18,9 +18,6 @@ namespace Server.Spells
                 9041
             );
 
-        public override int RequiredAptitudeValue { get { return 4; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Fanatisme }; } }
-
         public ArdeurCelesteMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

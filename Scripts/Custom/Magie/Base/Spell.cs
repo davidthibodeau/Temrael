@@ -170,8 +170,6 @@ namespace Server.Spells
 
 			damage = AOS.Scale( damage, 100 + damageBonus );
 
-            damage = (int)SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
-
             /*if (AOS.Testing)
                 Caster.SendMessage("Spell - Damage : " + String.Format("{0:0.##}", (damage / 100)));*/
 
@@ -282,15 +280,8 @@ namespace Server.Spells
             {
                 TMobile tmob = (TMobile)m_Caster;
 
-                if (tmob.GetAptitudeValue(Aptitude.DispenseComposante) == 0)
-                {
-                    if (pack.ConsumeTotal(m_Info.Reagents, m_Info.Amounts) == -1)
-                        return true;
-                }
-                else
-                {
+                if (pack.ConsumeTotal(m_Info.Reagents, m_Info.Amounts) == -1)
                     return true;
-                }
 
             }
 
@@ -457,13 +448,6 @@ namespace Server.Spells
 
             valeur *= valeurbonus;
 
-            if(Caster is TMobile)
-            {
-                TMobile m = (TMobile)Caster;
-
-                valeur = SpellHelper.AdjustValue(m, valeur, Aptitude.Spiritisme);
-            }
-
             if (valeur < 0.5)
                 return TimeSpan.FromSeconds(0.5);
 
@@ -500,13 +484,6 @@ namespace Server.Spells
         public virtual int GetRadiusForSpell(int min)
         {
             int bonus = 0;
-
-            if (Caster is TMobile)
-            {
-                TMobile tmob = (TMobile)Caster;
-
-                bonus += tmob.GetAptitudeValue(Aptitude.SortDeMasse);
-            }
 
             return min + bonus;
         }
@@ -729,41 +706,6 @@ namespace Server.Spells
         {
             bool clear = ClearHandsOnCast;
 
-            if (Caster is TMobile)
-            {
-                /*ClasseType classe = ((TMobile)Caster).ClasseType;
-                ClasseInfo classeInfo = Classes.GetInfos(classe);*/
-
-                TMobile from = (TMobile)Caster;
-                Item firstHanded = Caster.FindItemOnLayer(Layer.OneHanded);
-                Item secondHanded = Caster.FindItemOnLayer(Layer.TwoHanded);
-
-                if (firstHanded is BaseWeapon)
-                {
-                    if (from.GetAptitudeValue(Aptitude.PortArmeMagique) >= 1)
-                        clear = false;
-                    else
-                        clear = true;
-                }
-
-                if (secondHanded is BaseWeapon)
-                {
-                    if (secondHanded is BaseStaff && from.GetAptitudeValue(Aptitude.PortArmeMagique) >= 1)
-                        clear = false;
-                    else if (from.GetAptitudeValue(Aptitude.PortArmeMagique) >= 2)
-                        clear = false;
-                    else
-                        clear = true;
-
-                }
-                else if (secondHanded is BaseShield)
-                {
-                    if (from.GetAptitudeValue(Aptitude.PortArmeMagique) >= 3)
-                        clear = false;
-                    else
-                        clear = true;
-                }
-            }
 
             return clear;
         }
@@ -853,10 +795,6 @@ namespace Server.Spells
                         BaseArmor armor = (BaseArmor)item;
 
                         int req = tmob.GetArmorLevel(armor);
-
-                        if (tmob.Aptitudes != null)
-                            if (req - tmob.GetAptitudeValue(Aptitude.PortArmure) > 0)
-                                count += (req - tmob.GetAptitudeValue(Aptitude.PortArmure)) * 5;
                     }
 
                     if (item is BaseWeapon)
@@ -864,10 +802,6 @@ namespace Server.Spells
                         BaseWeapon weapon = (BaseWeapon)item;
 
                         int req = weapon.NiveauAttirail;
-
-                        if (tmob.Aptitudes != null)
-                            if (req - tmob.GetAptitudeValue(Aptitude.PortArme) > 0)
-                                count += (req - tmob.GetAptitudeValue(Aptitude.PortArme)) * 5;
                     }
                 }
 
@@ -955,19 +889,8 @@ namespace Server.Spells
                 return RequiredAptitudeValue;
         }
 
-        //public virtual int GetMagicCapacity()
-        //{
-        //    return RequiredMagicCapacity;
-        //}
-
-        public virtual Aptitude[] GetAptitude()
-        {
-            return RequiredAptitude;
-        }
-
         public virtual int RequiredAptitudeValue { get { return 0; } }
-        //public virtual int RequiredMagicCapacity { get { return 0; } }
-        public virtual Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
+
 
 		public virtual int ScaleMana( int mana )
 		{
@@ -976,14 +899,7 @@ namespace Server.Spells
             if (PourritureDEspritSpell.HasMindRotScalar(Caster))
                 scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
 
-            if (Caster is TMobile)
-            {
-                TMobile m = (TMobile)Caster;
-
-                mana = (int)SpellHelper.AdjustValue(m, mana, Aptitude.Spiritisme);
-
-                mana = (int)(mana * (1 - (Caster.Int * 0.003)));
-            }
+            mana = (int)(mana * (1 - (Caster.Int * 0.003)));
 
 			// Lower Mana Cost = 40%
 			int lmc = AosAttributes.GetValue( m_Caster, AosAttribute.LowerManaCost );
@@ -1005,20 +921,6 @@ namespace Server.Spells
 
             if (PourritureDEspritSpell.HasMindRotScalar(Caster))
                 scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
-
-            if (Caster is TMobile)
-            {
-                TMobile m = (TMobile)Caster;
-
-                pdp = (int)SpellHelper.AdjustValue(m, pdp, Aptitude.GraceDivine);
-            }
-
-            // Lower Mana Cost = 40%
-            //int lmc = AosAttributes.GetValue( m_Caster, AosAttribute.LowerManaCost );
-            //if ( lmc > 40 )
-            //	lmc = 40;
-
-            //scalar -= (double)lmc / 100;
 
             if (scalar < 1.0)
                 scalar = 1.0;
@@ -1050,13 +952,6 @@ namespace Server.Spells
             //    return NextSpellDelay;
 
             int fcr = AosAttributes.GetValue(m_Caster, AosAttribute.CastRecovery);
-
-            if (m_Caster is TMobile)
-            {
-                TMobile tmob = (TMobile)m_Caster;
-
-                fcr = (int)(tmob.GetAptitudeValue(Aptitude.Incantation) / 2);
-            }
 
             if (fcr > 5)
                 fcr = 5;
@@ -1091,12 +986,6 @@ namespace Server.Spells
 
             double bonus = 4;
 
-            //if (Caster is TMobile && ((TMobile)Caster).CriDOurs)
-            //    bonus -= 0.10;
-
-            if (Caster is TMobile && this is ReligiousSpell)
-                bonus -= (double)(0.04 * ((TMobile)Caster).GetAptitudeValue(Aptitude.FaveurDivine));
-
             if (PromptitudeSpell.m_PromptitudeTable.Contains(Caster))
             {
                 bonus -= (double)PromptitudeSpell.m_PromptitudeTable[Caster];
@@ -1118,33 +1007,8 @@ namespace Server.Spells
                 Caster.FixedParticles(14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
             }
 
-            /*if (SymphonieSpell.m_SymphonieTable.Contains(Caster))
-            {
-                double symphonie = (double)SymphonieSpell.m_SymphonieTable[Caster];
-                bonus -= symphonie;
-            }
-
-            value *= bonus;*/
-
-            /*value *= (2 - TMobile.PenaliteStatistique(Caster, Caster.Dex));
-            value *= (2 - TMobile.PenaliteStatistique(Caster, Caster.Int));*/
-
-            if (m_Caster is TMobile)
-            {
-                TMobile tmob = m_Caster as TMobile;
-
-                value -= (tmob.GetAptitudeValue(Aptitude.Incantation) * 0.08);
-            }
-
             if (value < CastDelayMinimum)
                 value = CastDelayMinimum;
-
-            //Console.WriteLine("Cast Delay : " + value);
-
-            /*if (AOS.Testing)
-            {
-                Caster.SendMessage("Spell - Délais : " + String.Format("{0:0.##}", bonus) + "/" + String.Format("{0:0.##}", value));
-            }*/
 
             return TimeSpan.FromSeconds(value);
 		}
@@ -1157,26 +1021,9 @@ namespace Server.Spells
 				m_Caster.Spell = null;
 		}
 
-        public virtual bool VerifyConn(TMobile pm, Aptitude[] aptitudes, int cValueRequis)
-        {
-            bool ok = false;
-
-            for (int i = 0; !ok && i < aptitudes.Length; ++i)
-            {
-                Aptitude c = aptitudes[i];
-
-                ok = (pm.GetAptitudeValue(c) >= cValueRequis);
-            }
-
-            return ok;
-        }
-
         public virtual bool CheckSequence()
 		{
             int mana = ScaleMana(GetMana());
-            int pieteRequis = ScalePdp(GetPiete());
-            int connaissanceValueRequis = GetAptitudeValue();
-            Aptitude[] connaissanceRequise = GetAptitude();
 
             TMobile pm = m_Caster as TMobile;
             
@@ -1199,10 +1046,6 @@ namespace Server.Spells
 			else if ( m_Caster.Mana < mana )
 			{
 				m_Caster.LocalOverheadMessage( MessageType.Regular, 0x22, 502625 ); // Insufficient mana for this spell.
-            }
-            else if (pm != null && !VerifyConn(pm, connaissanceRequise, connaissanceValueRequis))
-            {
-                m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, false, "L'aptitude necessaire n'est pas assez augmente.");
             }
             else if (pm != null && !pm.CheckEquitation(EquitationType.Attacking))
             {

@@ -14,9 +14,6 @@ namespace Server.Spells.Fifth
                 9012
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
-
         public StaseMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

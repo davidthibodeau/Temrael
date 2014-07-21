@@ -22,9 +22,6 @@ namespace Server.Spells.Seventh
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 9; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
-
 		public MeteorSwarmSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

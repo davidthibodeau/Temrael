@@ -19,9 +19,6 @@ namespace Server.Spells.Eighth
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 7; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
 		public AirElementalSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

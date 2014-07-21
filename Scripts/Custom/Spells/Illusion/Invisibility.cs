@@ -18,9 +18,6 @@ namespace Server.Spells.Sixth
 				Reagent.Nightshade
             );
 
-        public override int RequiredAptitudeValue { get { return 10; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
-
 		public InvisibilitySpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

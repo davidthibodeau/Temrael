@@ -19,9 +19,6 @@ namespace Server.Spells.Eighth
 				Reagent.Nightshade
             );
 
-        public override int RequiredAptitudeValue { get { return 11; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
-
 		public EnergyVortexSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

@@ -20,9 +20,6 @@ namespace Server.Spells.Sixth
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 12; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Alteration }; } }
-
 		public ParalyzeFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

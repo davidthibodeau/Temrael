@@ -17,9 +17,6 @@ namespace Server.Spells
 				Reagent.GraveDust
             );
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Necromancie }; } }
-
         public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
         public override SkillName DamageSkill { get { return SkillName.Goetie; } }
 

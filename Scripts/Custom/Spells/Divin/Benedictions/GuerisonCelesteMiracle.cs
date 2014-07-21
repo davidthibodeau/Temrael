@@ -15,9 +15,6 @@ namespace Server.Spells.First
                 9061
             );
 
-        public override int RequiredAptitudeValue { get { return 4; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
-
         public GuerisonCelesteMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

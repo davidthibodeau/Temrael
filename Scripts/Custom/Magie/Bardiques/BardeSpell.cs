@@ -119,8 +119,6 @@ namespace Server.Spells
 
         public override bool CheckSequence()
         {
-            int aptitudeValueRequis = GetAptitudeValue();
-            Aptitude[] aptitudeRequise = GetAptitude();
 
             TMobile pm = m_Caster as TMobile;
 
@@ -133,10 +131,6 @@ namespace Server.Spells
             if (m_Caster.Deleted || !m_Caster.Alive || m_Caster.Spell != this || m_State != SpellState.Sequencing)
             {
                 DoFizzle();
-            }
-            else if (pm != null && !VerifyConn(pm, aptitudeRequise, aptitudeValueRequis))
-            {
-                m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, false, "Vous n'avez pas investi assez de points dans l'aptitude de composition.");
             }
             else 
             {
@@ -164,9 +158,7 @@ namespace Server.Spells
 
                 if (pm.AccessLevel == AccessLevel.Player)
                 {
-                    int equitation = pm.GetAptitudeValue(Aptitude.CombatMonte);
-
-                    double chance = 100 - (equitation * 6);
+                    double chance = 100 - pm.Skills.Equitation.Value;
 
                     if (Utility.Random(0, 100) <= chance)
                         return false;

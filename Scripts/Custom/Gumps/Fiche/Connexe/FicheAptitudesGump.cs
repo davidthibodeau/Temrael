@@ -170,10 +170,6 @@ namespace Server.Gumps
                     aptitude = (Aptitude)(info.ButtonID - 500);
                     oldValue = Aptitudes.GetValue(m_From, aptitude);
 
-                    if (Aptitudes.CanLower(m_From, aptitude))
-                    {
-                        m_From.Aptitudes.SetValue(aptitude, oldValue - 1);
-                    }
                     from.SendGump(new FicheAptitudesGump(m_From, m_Tab));
                 }
                 else if (info.ButtonID >= 100)
@@ -181,11 +177,6 @@ namespace Server.Gumps
                     aptitude = (Aptitude)(info.ButtonID - 100);
                     oldValue = Aptitudes.GetValue(m_From, aptitude);
 
-                    if (Aptitudes.CanRaise(m_From, aptitude))
-                    {
-                        m_From.AptitudesLibres -= Aptitudes.GetRequiredPA(m_From, aptitude);
-                        m_From.Aptitudes.SetValue(aptitude, oldValue + 1);
-                    }
                     from.SendGump(new FicheAptitudesGump(m_From, m_Tab));
                 }
             }
@@ -198,15 +189,6 @@ namespace Server.Gumps
         public static Hashtable GetAptitudesList(TMobile from, ClasseBranche archetype)
         {
             Hashtable list = new Hashtable();
-
-            for (int i = 0; i < Aptitudes.m_AptitudeEntries.Length; ++i)
-            {
-                if ((Aptitudes.m_AptitudeEntries[i].Type == archetype) || (archetype == ClasseBranche.Aucun))
-                {
-                    AptitudeInfo infoApt = Aptitudes.GetInfos(Aptitudes.m_AptitudeEntries[i].Aptitude);
-                    list.Add(Aptitudes.m_AptitudeEntries[i].Aptitude, infoApt.Name);
-                }
-            }
 
             return list;
         }
@@ -244,7 +226,6 @@ namespace Server.Gumps
                         int varY = (index * 16) - ((index / 26) * 416);
 
                         AddHtml(145 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + en.Value.ToString() + "<basefont></h3>", false, false);
-                        AddTooltip(Aptitudes.GetTooltip(aptitude));
                         AddHtml(272 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + String.Format(": {0}", from.GetAptitudeValue(aptitude)) + "<basefont></h3>", false, false);
                         AddHtml(330 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + Aptitudes.GetRequiredPA(from, aptitude).ToString() + "<basefont></h3>", false, false);
                         AddHtml(375 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + (Aptitudes.GetCompReq(from, aptitude) > -1 ? m_From.Skills[Aptitudes.GetCompReq(from, aptitude)].Name:"Aucun") + "<basefont></h3>", false, false);

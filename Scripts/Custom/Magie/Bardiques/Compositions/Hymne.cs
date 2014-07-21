@@ -27,7 +27,6 @@ namespace Server.Spells
 			);
 
         public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Composition }; } }
 
         public HymneSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
@@ -40,12 +39,6 @@ namespace Server.Spells
             {
                 TimeSpan duration = GetDurationForSpell(20, 1.5);
                 double amount = 1;
-
-                //Calcul du bonus donné par le sort (niveau * bonus_donne)
-                if (Caster is TMobile)
-                {
-                    amount += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
-                }
 
                 DateTime endtime = DateTime.Now + duration;
 

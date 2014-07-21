@@ -26,9 +26,6 @@ namespace Server.Spells
 				false
 			);
 
-        public override int RequiredAptitudeValue { get { return 11; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Composition }; } }
-
         public HarmonieSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

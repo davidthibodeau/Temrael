@@ -18,9 +18,6 @@ namespace Server.Spells.Second
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
-
 		public ProtectionSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

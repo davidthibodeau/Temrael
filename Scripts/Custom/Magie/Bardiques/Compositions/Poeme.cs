@@ -26,9 +26,6 @@ namespace Server.Spells
                 false
             );
 
-        public override int RequiredAptitudeValue { get { return 9; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Composition }; } }
-
         public PoemeSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

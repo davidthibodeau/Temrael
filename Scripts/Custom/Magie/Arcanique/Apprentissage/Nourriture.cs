@@ -15,9 +15,6 @@ namespace Server.Spells
 				Reagent.MandrakeRoot
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Alteration }; } }
-
         public NourritureSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

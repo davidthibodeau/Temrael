@@ -18,9 +18,6 @@ namespace Server.Spells
 				Reagent.SpidersSilk
 			);
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
         public override bool Invocation { get { return true; } }
 
         public DemonSpell(Mobile caster, Item scroll)

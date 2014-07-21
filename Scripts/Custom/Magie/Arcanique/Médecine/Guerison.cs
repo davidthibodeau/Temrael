@@ -18,9 +18,6 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
-
         public GuerisonSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

@@ -21,9 +21,6 @@ namespace Server.Spells.Necromancy
                 Reagent.PigIron
             );
 
-        public override int RequiredAptitudeValue { get { return 12; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
-
 		public AnimateDeadSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
         }

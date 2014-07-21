@@ -19,9 +19,6 @@ namespace Server.Spells.Fourth
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 11; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
-
 		public GreaterHealSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

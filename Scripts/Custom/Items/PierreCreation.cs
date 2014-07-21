@@ -58,9 +58,6 @@ namespace Server.Items
                     act.SetTag("XPBeta", "True");
                 }
 
-                for (int i = 0; i < tMob.Aptitudes.m_Values.Length; ++i)
-                    tMob.Aptitudes[(Aptitude)i] = 0;
-
                 tMob.Races = Races.Aucun;
                 tMob.ClasseType = ClasseType.None;
                 tMob.Title = "";

@@ -14,9 +14,6 @@ namespace Server.Spells
 				9041
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Protection }; } }
-
         public VisionDivineSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

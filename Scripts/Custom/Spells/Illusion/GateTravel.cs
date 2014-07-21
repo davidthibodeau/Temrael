@@ -21,9 +21,6 @@ namespace Server.Spells.Seventh
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 12; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
-
 		private RunebookEntry m_Entry;
 
 		public GateTravelSpell( Mobile caster, Item scroll ) : this( caster, scroll, null )

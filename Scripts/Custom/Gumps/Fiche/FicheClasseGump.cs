@@ -93,12 +93,6 @@ namespace Server.Gumps
                 else
                     classeApt = info.FirstApt;
 
-                for (int j = 0; j < classeApt.Length; j++)
-                {
-                    AptitudeInfo infoApt = Aptitudes.GetInfos(classeApt[j].Aptitude);
-                    temp += "<strong>" + infoApt.Name + "</strong>: " + infoApt.Description + Environment.NewLine;
-                }
-
                 line = 13;
                 /*classes = new TemraelClasse[from.GetClasses().Count];
                 from.GetClasses().CopyTo(classes, 0);

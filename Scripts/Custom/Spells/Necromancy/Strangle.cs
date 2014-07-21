@@ -18,9 +18,6 @@ namespace Server.Spells.Necromancy
 				Reagent.NoxCrystal
             );
 
-        public override int RequiredAptitudeValue { get { return 8; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
-
 		public StrangleSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

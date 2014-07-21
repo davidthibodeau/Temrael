@@ -21,9 +21,6 @@ namespace Server.Spells
 				Reagent.MandrakeRoot
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
-
 		private RunebookEntry m_Entry;
 		private Runebook m_Book;
 

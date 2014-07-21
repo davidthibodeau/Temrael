@@ -19,9 +19,6 @@ namespace Server.Spells
 				Reagent.BlackPearl
 			);
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
-
         public HallucinationsSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

@@ -16,9 +16,6 @@ namespace Server.Spells
 				Reagent.Garlic
 			);
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Adjuration }; } }
-
         public AbeillesSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

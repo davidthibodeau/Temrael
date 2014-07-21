@@ -16,9 +16,6 @@ namespace Server.Spells
                 false
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Fanatisme }; } }
-
         public override bool Invocation { get { return true; } }
 
         public MontureCelesteMiracle(Mobile caster, Item scroll)

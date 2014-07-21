@@ -18,9 +18,6 @@ namespace Server.Spells.Necromancy
 				Reagent.NoxCrystal
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
-
 		public PoisonStrikeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

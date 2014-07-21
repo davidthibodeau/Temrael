@@ -22,9 +22,6 @@ namespace Server.Spells.Seventh
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 12; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
-
 		public ChainLightningSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

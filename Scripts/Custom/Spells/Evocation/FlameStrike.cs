@@ -16,9 +16,6 @@ namespace Server.Spells.Seventh
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 8; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
-
 		public FlameStrikeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

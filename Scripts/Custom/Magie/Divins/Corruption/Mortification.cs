@@ -18,9 +18,6 @@ namespace Server.Spells
 				9011
             );
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
-
         public MortificationSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

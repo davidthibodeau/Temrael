@@ -17,9 +17,6 @@ namespace Server.Spells.First
                 Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
-
         public Voile(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

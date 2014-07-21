@@ -18,9 +18,6 @@ namespace Server.Spells.Fifth
 				Reagent.Nightshade
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
 		public BladeSpiritsSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

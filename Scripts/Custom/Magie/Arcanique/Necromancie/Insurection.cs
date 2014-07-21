@@ -18,9 +18,6 @@ namespace Server.Spells
                 Reagent.DaemonBlood
 			);
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Necromancie }; } }
-
         public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
         public override SkillName DamageSkill { get { return SkillName.Goetie; } }
 

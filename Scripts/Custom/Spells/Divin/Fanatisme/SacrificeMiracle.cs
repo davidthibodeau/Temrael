@@ -18,9 +18,6 @@ namespace Server.Spells
                 9062
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Fanatisme }; } }
-
         public SacrificeMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

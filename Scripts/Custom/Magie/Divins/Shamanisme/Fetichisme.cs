@@ -17,9 +17,6 @@ namespace Server.Spells
 				9041
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
-
         public FetichismeSpell(Mobile Target, Item scroll)
             : base(Target, scroll, m_Info)
 		{

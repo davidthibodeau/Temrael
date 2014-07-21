@@ -20,9 +20,6 @@ namespace Server.Spells.First
         Reagent.BlackPearl
         );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
-
         public Flameche(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

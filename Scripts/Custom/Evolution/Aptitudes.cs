@@ -154,120 +154,8 @@ namespace Server
         }
     }
 
-    public class AptitudeInfo
-    {
-        private string m_name = string.Empty;
-        private AptitudesEntry m_entry = null;
-        private int m_tooltip = 0;
-        private int m_Image = 0;
-        private string m_Description;
-        private string[] m_DescriptionNiveau;
-        private string m_Note;
-
-        public string Name { get { return m_name; } }
-        public AptitudesEntry Entry { get { return m_entry; } }
-        public int Tooltip { get { return m_tooltip; } }
-        public string Description { get { return m_Description; } }
-        public string[] DescriptionNiveau { get { return m_DescriptionNiveau; } }
-        public string Note { get { return m_Note; } }
-        public int Image { get { return m_Image; } }
-
-        public AptitudeInfo(string name, AptitudesEntry entry, int tooltip, string description, string[] descriptionNiveau, string note, int image)
-        {
-            m_name = name;
-            m_entry = entry;
-            m_tooltip = tooltip;
-            m_Description = description;
-            m_DescriptionNiveau = descriptionNiveau;
-            m_Note = note;
-            m_Image = image;
-        }
-    }
-
     public sealed class Aptitudes : BaseAptitudes
     {
-        #region AptitudeInfo
-        public static AptitudeInfo GetInfos(Aptitude aptitude)
-        {
-            AptitudeInfo info = null;
-
-            switch (aptitude)
-            {
-                case Aptitude.Boucherie: info = AptitudeBoucherie.AptitudeInfo; break;
-                case Aptitude.Broderie: info = AptitudeBroderie.AptitudeInfo; break;
-                case Aptitude.Commerce: info = AptitudeCommerce.AptitudeInfo; break;
-                case Aptitude.Cuisson: info = AptitudeCuisson.AptitudeInfo; break;
-                case Aptitude.Ebenisterie: info = AptitudeEbenisterie.AptitudeInfo; break;
-                case Aptitude.Fignolage: info = AptitudeFignolage.AptitudeInfo; break;
-                case Aptitude.Forestier: info = AptitudeForestier.AptitudeInfo; break;
-                case Aptitude.Hermetisme: info = AptitudeHermetisme.AptitudeInfo; break;
-                case Aptitude.Invention: info = AptitudeInvention.AptitudeInfo; break;
-                case Aptitude.Metallurgie: info = AptitudeMetallurgie.AptitudeInfo; break;
-                case Aptitude.Mineur: info = AptitudeMineur.AptitudeInfo; break;
-                case Aptitude.Polissage: info = AptitudePolissage.AptitudeInfo; break;
-                case Aptitude.Tanneur: info = AptitudeTanneur.AptitudeInfo; break;
-                case Aptitude.Transcription: info = AptitudeTranscription.AptitudeInfo; break;
-
-                case Aptitude.Barbarisme: info = AptitudeBarbarisme.AptitudeInfo; break;
-                case Aptitude.CombatAuSol: info = AptitudeCombatAuSol.AptitudeInfo; break;
-                case Aptitude.CombatMonte: info = AptitudeCombatMonte.AptitudeInfo; break;
-                case Aptitude.Commandement: info = AptitudeCommandement.AptitudeInfo; break;
-                case Aptitude.CoupPrecis: info = AptitudeCoupPrecis.AptitudeInfo; break;
-                case Aptitude.CoupPuissant: info = AptitudeCoupPuissant.AptitudeInfo; break;
-                case Aptitude.CoupRenversant: info = AptitudeCoupRenversant.AptitudeInfo; break;
-                case Aptitude.Endurance: info = AptitudeEndurance.AptitudeInfo; break;
-                case Aptitude.Esquive: info = AptitudeEsquive.AptitudeInfo; break;
-                case Aptitude.Parade: info = AptitudeParade.AptitudeInfo; break;
-                case Aptitude.PortArmure: info = AptitudePortArmure.AptitudeInfo; break;
-                case Aptitude.PortArme: info = AptitudePortArme.AptitudeInfo; break;
-                case Aptitude.PortArmeDistance: info = AptitudePortArmeDistance.AptitudeInfo; break;
-                case Aptitude.PortBouclier: info = AptitudePortBouclier.AptitudeInfo; break;
-                case Aptitude.Precision: info = AptitudePrecision.AptitudeInfo; break;
-                case Aptitude.Resistance: info = AptitudeResistance.AptitudeInfo; break;
-                case Aptitude.Robustesse: info = AptitudeRobustesse.AptitudeInfo; break;
-                case Aptitude.Strategie: info = AptitudeStrategie.AptitudeInfo; break;
-                case Aptitude.TirPrecis: info = AptitudeTirPrecis.AptitudeInfo; break;
-                case Aptitude.TueurDeMonstre: info = AptitudeTueurDeMonstre.AptitudeInfo; break;
-
-                case Aptitude.Assassinat: info = AptitudeAssassinat.AptitudeInfo; break;
-                case Aptitude.Cambriolage: info = AptitudeCambriolage.AptitudeInfo; break;
-                case Aptitude.Composition: info = AptitudeComposition.AptitudeInfo; break;
-                case Aptitude.Deguisement: info = AptitudeDeguisement.AptitudeInfo; break;
-                case Aptitude.Depistage: info = AptitudeDepistage.AptitudeInfo; break;
-                case Aptitude.Derobage: info = AptitudeDerobage.AptitudeInfo; break;
-                case Aptitude.Evasion: info = AptitudeEvasion.AptitudeInfo; break;
-                case Aptitude.Familier: info = AptitudeFamilier.AptitudeInfo; break;
-                case Aptitude.LibreDeplacement: info = AptitudeLibreDeplacement.AptitudeInfo; break;
-                case Aptitude.MouvementCache: info = AptitudeMouvementCache.AptitudeInfo; break;
-                case Aptitude.Pillage: info = AptitudePillage.AptitudeInfo; break;
-                case Aptitude.Resilience: info = AptitudeResilience.AptitudeInfo; break;
-
-                case Aptitude.Adjuration: info = AptitudeAdjuration.AptitudeInfo; break;
-                case Aptitude.Alteration: info = AptitudeAlteration.AptitudeInfo; break;
-                case Aptitude.DispenseComposante: info = AptitudeDispenseComposante.AptitudeInfo; break;
-                case Aptitude.Evocation: info = AptitudeEvocation.AptitudeInfo; break;
-                case Aptitude.Illusion: info = AptitudeIllusion.AptitudeInfo; break;
-                case Aptitude.Incantation: info = AptitudeIncantation.AptitudeInfo; break;
-                case Aptitude.Invocation: info = AptitudeInvocation.AptitudeInfo; break;
-                case Aptitude.Necromancie: info = AptitudeNecromancie.AptitudeInfo; break;
-                case Aptitude.PortArmeMagique: info = AptitudePortArmeMagique.AptitudeInfo; break;
-                case Aptitude.Receptacle: info = AptitudeReceptacle.AptitudeInfo; break;
-                case Aptitude.Sorcellerie: info = AptitudeSorcellerie.AptitudeInfo; break;
-                case Aptitude.SortDeMasse: info = AptitudeSortDeMasse.AptitudeInfo; break;
-                case Aptitude.Spiritisme: info = AptitudeSpiritisme.AptitudeInfo; break;
-                case Aptitude.Thaumaturgie: info = AptitudeThaumaturgie.AptitudeInfo; break;
-
-                case Aptitude.Benedictions: info = AptitudeBenedictions.AptitudeInfo; break;
-                case Aptitude.Fanatisme: info = AptitudeFanatisme.AptitudeInfo; break;
-                case Aptitude.FaveurDivine: info = AptitudeFanatisme.AptitudeInfo; break;
-                case Aptitude.GraceDivine: info = AptitudeFanatisme.AptitudeInfo; break;
-
-                default: info = BaseAptitude.AptitudeInfo; break;
-            }
-
-            return info;
-        }
-        #endregion
 
         #region AptitudesEntry
         public static AptitudesEntry[] m_AptitudeEntries = new AptitudesEntry[]
@@ -359,22 +247,9 @@ namespace Server
         {
         }
 
-        public static int GetTooltip(Aptitude aptitude)
-        {
-            AptitudeInfo info = GetInfos(aptitude);
-
-            return info.Tooltip;
-        }
-
         public static int GetValue(TMobile m, Aptitude aptitude)
         {
-            Aptitudes apti = m.Aptitudes;
-            int value = 0;
-
-            if (apti != null)
-                value = apti[aptitude];
-
-            return value;
+            return 0;
         }
 
         public static int GetDisponiblePA(TMobile from)

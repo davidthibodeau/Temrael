@@ -15,9 +15,6 @@ namespace Server.Spells
 				9040
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
-
         public override bool Invocation { get { return true; } }
 
 		public AnimauxSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )

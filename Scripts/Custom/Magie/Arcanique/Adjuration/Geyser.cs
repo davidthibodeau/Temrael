@@ -20,9 +20,6 @@ namespace Server.Spells
 				Reagent.Ginseng
 			);
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Adjuration }; } }
-
 
         public GeyserSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

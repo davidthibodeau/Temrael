@@ -118,12 +118,6 @@ namespace Server.Gumps
                         temp += info.ClasseCompetences[i].ToString();
                 }*/
 
-                for (int j = 0; j < info.FourthApt.Length; j++)
-                {
-                    AptitudeInfo infoApt = Aptitudes.GetInfos(info.FourthApt[j].Aptitude);
-                    temp += "<strong>" + infoApt.Name + "</strong>: " + infoApt.Description + Environment.NewLine;
-                }
-
                 line = 12;
                 AddSection(x, y + line * scale, 540, 155, "Aptitudes & Spécialités", temp);
             }

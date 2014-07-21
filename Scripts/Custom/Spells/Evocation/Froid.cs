@@ -17,9 +17,6 @@ namespace Server.Spells.First
                 Reagent.Bloodmoss
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
-
         public Froid(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

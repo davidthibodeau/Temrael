@@ -20,7 +20,6 @@ namespace Server.Spells.Necromancy
             );
 
         public override int RequiredAptitudeValue { get { return 11; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
 
 		public VengefulSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
@@ -56,8 +55,6 @@ namespace Server.Spells.Necromancy
 				SpellHelper.Turn( Caster, m );
 
                 double duration = ((GetDamageSkill(Caster) * 80) / 130) + 10;
-
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
 
                 TimeSpan t = TimeSpan.FromSeconds(duration);
 

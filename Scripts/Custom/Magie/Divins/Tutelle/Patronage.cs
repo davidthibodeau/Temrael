@@ -18,9 +18,6 @@ namespace Server.Spells
                 9041
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
-
         public PatronageSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

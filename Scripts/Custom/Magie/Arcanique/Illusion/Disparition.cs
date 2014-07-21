@@ -19,9 +19,6 @@ namespace Server.Spells
 				Reagent.Nightshade
 			);
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Illusion }; } }
-
         public DisparitionSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

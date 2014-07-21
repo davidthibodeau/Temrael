@@ -16,9 +16,6 @@ namespace Server.Spells
 				9031
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Fanatisme }; } }
-
 		public SpiritualiteSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

@@ -18,7 +18,6 @@ namespace Server.Spells
             );
 
         public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
 
         public EclairSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)

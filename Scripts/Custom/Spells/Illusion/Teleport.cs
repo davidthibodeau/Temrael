@@ -17,9 +17,6 @@ namespace Server.Spells.Third
 				Reagent.MandrakeRoot
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
-
 		public TeleportSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

@@ -18,9 +18,6 @@ namespace Server.Spells.Necromancy
 				Reagent.NoxCrystal
             );
 
-        public override int RequiredAptitudeValue { get { return 9; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Necromancie }; } }
-
         public override int Body { get { return 24; } }
         public override int IntOffset { get { return 30; } }
 

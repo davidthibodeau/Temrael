@@ -17,9 +17,6 @@ namespace Server.Spells
 				Reagent.BlackPearl
 			);
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
         public override bool Invocation { get { return true; } }
 
 		public EspritAnimalSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )

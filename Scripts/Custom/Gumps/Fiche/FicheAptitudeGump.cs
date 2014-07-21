@@ -144,16 +144,6 @@ namespace Server.Gumps
         public static Hashtable GetAptitudesList(TMobile from)
         {
             Hashtable list = new Hashtable();
-
-            for (int i = 0; i < Aptitudes.m_AptitudeEntries.Length; ++i)
-            {
-                if (from.GetAptitudeValue((Aptitude)i) > 0)
-                {
-                    AptitudeInfo infoApt = Aptitudes.GetInfos(Aptitudes.m_AptitudeEntries[i].Aptitude);
-                    list.Add(Aptitudes.m_AptitudeEntries[i].Aptitude, infoApt.Name);
-                }
-            }
-
             return list;
         }
 

@@ -20,9 +20,6 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
-
         public MurDeParalysieSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

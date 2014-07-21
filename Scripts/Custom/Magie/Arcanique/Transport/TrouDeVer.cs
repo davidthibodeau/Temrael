@@ -21,9 +21,6 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
-
 		private RunebookEntry m_Entry;
 
 		public TrouDeVerSpell( Mobile caster, Item scroll ) : this( caster, scroll, null )

@@ -17,9 +17,6 @@ namespace Server.Spells.Fourth
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 8; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Alteration }; } }
-
 		public CurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

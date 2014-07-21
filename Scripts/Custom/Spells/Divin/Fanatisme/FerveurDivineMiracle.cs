@@ -19,9 +19,6 @@ namespace Server.Spells
                 9050
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Fanatisme }; } }
-
         public FerveurDivineMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

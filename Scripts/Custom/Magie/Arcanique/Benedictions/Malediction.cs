@@ -21,9 +21,6 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
-
         public MaledictionSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

@@ -13,9 +13,6 @@ namespace Server.Spells.Third
                 9050
             );
 
-        public override int RequiredAptitudeValue { get { return 10; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
-
         public BenirMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

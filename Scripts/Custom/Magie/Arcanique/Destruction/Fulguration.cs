@@ -17,9 +17,6 @@ namespace Server.Spells
                 Reagent.Ginseng
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
-
         public FulgurationSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

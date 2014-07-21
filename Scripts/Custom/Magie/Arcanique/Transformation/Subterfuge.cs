@@ -30,9 +30,6 @@ namespace Server.Spells
         private int m_HueMod;
         private string m_NameMod;
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Alteration }; } }
-
         public static Hashtable m_Mods = new Hashtable();
 
 		public SubterfugeSpell( Mobile caster, Item scroll, string name, int body, int hue) : base( caster, scroll, m_Info )

@@ -15,9 +15,6 @@ namespace Server.Spells.Third
 				Reagent.Nightshade
             );
 
-        public override int RequiredAptitudeValue { get { return 7; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Adjuration }; } }
-
 		public PoisonSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

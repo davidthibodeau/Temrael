@@ -17,9 +17,6 @@ namespace Server.Spells.Fifth
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 10; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Alteration }; } }
-
 		public ParalyzeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

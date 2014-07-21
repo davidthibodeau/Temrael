@@ -77,9 +77,6 @@ namespace Server.Spells
                 false
             );
 
-        public override int RequiredAptitudeValue { get { return 4; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Protection }; } }
-
         public override bool Invocation { get { return true; } }
 
         public LumiereDivineSpell(Mobile caster, Item scroll)

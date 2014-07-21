@@ -18,9 +18,6 @@ namespace Server.Spells
                 9041
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
-
         public PurificationSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

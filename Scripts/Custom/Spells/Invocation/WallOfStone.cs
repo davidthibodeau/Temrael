@@ -19,9 +19,6 @@ namespace Server.Spells.Third
 				Reagent.Garlic
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Invocation }; } }
-
 		public WallOfStoneSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

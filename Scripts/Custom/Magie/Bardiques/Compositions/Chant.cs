@@ -26,9 +26,6 @@ namespace Server.Spells
 				false
 			);
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Composition }; } }
-
         public ChantSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

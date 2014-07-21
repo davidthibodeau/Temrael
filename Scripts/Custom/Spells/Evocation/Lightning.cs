@@ -16,9 +16,6 @@ namespace Server.Spells.Fourth
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Evocation }; } }
-
 		public LightningSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

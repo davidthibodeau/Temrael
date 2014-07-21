@@ -15,9 +15,6 @@ namespace Server.Spells.Third
 				Reagent.MandrakeRoot
             );
 
-        public override int RequiredAptitudeValue { get { return 8; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Thaumaturgie }; } }
-
 		public BlessSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 

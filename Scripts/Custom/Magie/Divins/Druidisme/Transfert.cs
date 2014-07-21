@@ -20,9 +20,6 @@ namespace Server.Spells
                 9041
             );
 
-        public override int RequiredAptitudeValue { get { return 6; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Monial }; } }
-
         private class PossessTarget : Target
         {
             private TransfertSpell spell;

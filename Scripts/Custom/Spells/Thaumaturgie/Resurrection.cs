@@ -20,9 +20,6 @@ namespace Server.Spells.Eighth
 				Reagent.Ginseng
             );
 
-        public override int RequiredAptitudeValue { get { return 12; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Thaumaturgie }; } }
-
 		public ResurrectionSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

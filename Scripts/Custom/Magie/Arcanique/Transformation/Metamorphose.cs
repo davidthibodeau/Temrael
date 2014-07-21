@@ -34,9 +34,6 @@ namespace Server.Spells
         private double m_SkillReq;
         private string m_NameMod;
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Alteration }; } }
-
         public static Hashtable m_Mods = new Hashtable();
 
 		public MetamorphoseSpell( Mobile caster, Item scroll, string name, int body, int StrMod, int DexMod, int IntMod, double SkillReq, int hue) : base( caster, scroll, m_Info )

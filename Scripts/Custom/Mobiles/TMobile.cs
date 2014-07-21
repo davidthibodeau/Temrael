@@ -231,7 +231,6 @@ namespace Server.Mobiles
         private DateTime m_LastCotation;
 
         private int m_TileToDontFall;
-        private Aptitudes m_Aptitudes;
         private int m_Niveau;
         private int m_AptitudesLibres;
         private int m_CompetencesLibres;
@@ -724,9 +723,6 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Achever { get { return m_Achever; } set { m_Achever = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
-        public Aptitudes Aptitudes { get { return m_Aptitudes; } set { m_Aptitudes = value; } }
-
         public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -774,7 +770,6 @@ namespace Server.Mobiles
             //m_classe = new ClasseGuerrier(this);
             this.FollowersMax = 2;
             Mana = 0;
-            m_Aptitudes = new Aptitudes(this);
             m_creation = new Creation();
             
 
@@ -817,7 +812,6 @@ namespace Server.Mobiles
 
             Statistiques.Reset(this);
             Competences.Reset(this);
-            Aptitudes.Reset();
 
             ClasseType = ClasseType.None;
             FamilierCheck();
@@ -2183,7 +2177,7 @@ namespace Server.Mobiles
 
         public virtual int GetAptitudeValue(Aptitude aptitude)
         {
-            return m_Aptitudes[aptitude] + GetBaseAptitudeValue(aptitude);
+            return GetBaseAptitudeValue(aptitude);
         }
 
         /*public virtual int GetPrestigeAptitudeValue(NAptitude aptitude)
@@ -2195,30 +2189,21 @@ namespace Server.Mobiles
         {
             get
             {
-                if (m_Aptitudes != null)
-                    return 25+this.Con + (this.Str / 2) + (GetAptitudeValue(Aptitude.Endurance) * 3) + m_BonusHits;
-                else
-                    return 25+this.Con + (this.Str / 2) + m_BonusHits;
+                return 25 + this.Con + (this.Str / 2) + m_BonusHits;
             }
         }
         public override int StamMax
         {
             get
             {
-                if (m_Aptitudes != null)
-                    return this.Dex + (this.Con / 2) + (GetAptitudeValue(Aptitude.Resilience) * 3) + m_BonusStam;
-                else
-                    return this.Dex + (this.Con / 2) + m_BonusStam;
+                return this.Dex + (this.Con / 2) + m_BonusStam;
             }
         }
         public override int ManaMax
         {
             get
             {
-                if (m_Aptitudes != null)
-                    return this.Int + (this.Cha / 2) + (GetAptitudeValue(Aptitude.Receptacle) * 3) + m_BonusMana;
-                else
-                    return this.Int + (this.Cha / 2) + m_BonusMana;
+                return this.Int + (this.Cha / 2) + m_BonusMana;
             }
         }*/
 
@@ -3059,7 +3044,6 @@ namespace Server.Mobiles
                             pm.MortEvo = MortEvo.Zombie;
                             ZombieGump zombieGump = new ZombieGump();
                             EquipItem(pm, zombieGump, pm.Hue);
-                            pm.Aptitudes.Reset();
                             Competences.Reset(pm);
                             Statistiques.Reset(pm);
                             break;
@@ -3190,10 +3174,6 @@ namespace Server.Mobiles
             writer.Write((DateTime) m_LastCotation);
             
             writer.Write((int) m_TileToDontFall);
-
-            if (m_Aptitudes == null)
-                m_Aptitudes = new Aptitudes(this);
-            m_Aptitudes.Serialize(writer);
 
             writer.Write((int)m_Niveau);
             writer.Write((int)m_AptitudesLibres);
@@ -3342,7 +3322,8 @@ namespace Server.Mobiles
 
                     m_TileToDontFall = reader.ReadInt();
 
-                    m_Aptitudes = new Aptitudes(this, reader);
+                    if(version < 9)
+                        new Aptitudes(this, reader);
 
                     m_Niveau = reader.ReadInt();
                     m_AptitudesLibres = reader.ReadInt();

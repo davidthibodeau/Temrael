@@ -15,24 +15,7 @@ namespace Server
     {
         public static void Initialize()
         {
-            CommandSystem.Register("RebootAptitudes", AccessLevel.Owner, new CommandEventHandler(RebootAptitudes_OnCommand));
             CommandSystem.Register("ForceReset", AccessLevel.GameMaster, new CommandEventHandler(ForceReset_OnCommand));
-        }
-
-        public static void RebootAptitudes_OnCommand(CommandEventArgs e)
-        {
-
-            foreach (NetState state in NetState.Instances)
-            {
-                Mobile m = state.Mobile;
-
-                if (m != null && m is TMobile)
-                {
-                    TMobile pm = (TMobile)m;
-
-                    pm.Aptitudes.Reset();
-                }
-            }
         }
 
         public static void ForceReset_OnCommand(CommandEventArgs e)

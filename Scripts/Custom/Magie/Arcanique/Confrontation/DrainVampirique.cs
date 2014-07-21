@@ -16,9 +16,6 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Necromancie }; } }
-
         public DrainVampiriqueSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

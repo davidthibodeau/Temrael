@@ -18,9 +18,6 @@ namespace Server.Spells.Sixth
 				Reagent.SulfurousAsh
             );
 
-        public override int RequiredAptitudeValue { get { return 9; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] {Aptitude.Illusion }; } }
-
 		public RevealSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

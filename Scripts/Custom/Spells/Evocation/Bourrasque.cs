@@ -16,9 +16,6 @@ namespace Server.Spells.First
                 Reagent.MandrakeRoot
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Evocation }; } }
-
         public Bourrasque(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {

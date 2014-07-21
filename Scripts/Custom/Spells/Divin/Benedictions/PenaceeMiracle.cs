@@ -14,9 +14,6 @@ namespace Server.Spells.Second
                 9061
             );
 
-        public override int RequiredAptitudeValue { get { return 3; } }
-        public override Aptitude[] RequiredAptitude { get { return new Aptitude[] { Aptitude.Benedictions }; } }
-
         public PenaceeMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
         {
