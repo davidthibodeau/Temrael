@@ -69,7 +69,7 @@ namespace Server.Gumps
             if (page > 0)
                 AddButton(x + 360, y + line * scale, 4014, 4015, 10, GumpButtonType.Reply, 0);
             if (page < (int)ClasseType.Maximum / lineMax)
-                AddButton(x + 515, y + line * scale, 4005, 4006, 11, GumpButtonType.Reply, 0);
+                AddButton(x + 500, y + line * scale, 4005, 4006, 11, GumpButtonType.Reply, 0);
             ++line;
 
             if (classeType != ClasseType.None && classeType != ClasseType.Maximum)
@@ -141,10 +141,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));

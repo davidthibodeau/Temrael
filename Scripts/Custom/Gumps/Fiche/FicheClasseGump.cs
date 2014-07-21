@@ -23,7 +23,7 @@ namespace Server.Gumps
         }
 
         public FicheClasseGump(TMobile from, ClasseType classeType, int pageClasse, int pageMetier)
-            : base("Classe & Métier", 560, 622)
+            : base("Classe", 560, 622)
         {
             m_from = from;
             m_classeType = classeType;
@@ -70,18 +70,6 @@ namespace Server.Gumps
                 AddButton(x, y + line * scale, 8, info.Image);
                 AddTooltip(info.Tooltip);
 
-                /*temp += "<strong>Arme de Prédilection</strong>: " + info.ArmeAllow.ToString() + Environment.NewLine;
-                temp += "<strong>Armure de Prédilection</strong>: " + info.ArmorAllow.ToString() + Environment.NewLine;
-                temp += "<strong>Compétences de Classe</strong>: ";
-
-                for (int i = 0; i < info.ClasseCompetences.Length; i++)
-                {
-                    if (i != info.ClasseCompetences.Length - 1)
-                        temp += info.ClasseCompetences[i].ToString() + ", ";
-                    else
-                        temp += info.ClasseCompetences[i].ToString();
-                }*/
-
                 ClasseAptitudes[] classeApt = null;
 
                 if (from.Niveau >= 30)
@@ -94,25 +82,13 @@ namespace Server.Gumps
                     classeApt = info.FirstApt;
 
                 line = 13;
-                /*classes = new TemraelClasse[from.GetClasses().Count];
-                from.GetClasses().CopyTo(classes, 0);
-                if (pageClasse > 0)
-                    AddButton(x + 175, y + line * scale, 4014, 4015, 10, GumpButtonType.Reply, 0);
-                if (pageClasse < classes.Length - 1)
-                    AddButton(x + 225, y + line * scale, 4005, 4006, 11, GumpButtonType.Reply, 0);*/
 
                 ++line;
-                AddSection(x, y + line * scale, 265, 120, info.Nom, temp);
+                AddSection(x, y + line * scale, 540, 120, info.Nom, temp);
                 
                 line -= 3;
                 AddButton(x, y + (line * scale) + 10, 52, 52, 8, GumpButtonType.Reply, 0);
                 AddHtml(x + 50, y + (line * scale) + 22, 200, 20, "<h3><basefont color=#025a>Classe<basefont></h3>", false, false);
-
-                /*if (from.NivClassDispo > 0 && canUpClasse(from, info))
-                {
-                    line += 9;
-                    AddButton(x + 105, y + line * scale, 4005, 4006, 14, GumpButtonType.Reply, 0);
-                }*/
             }
             else
             {
@@ -141,10 +117,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));

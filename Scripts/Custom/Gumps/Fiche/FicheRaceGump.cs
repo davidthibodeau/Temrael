@@ -50,29 +50,34 @@ namespace Server.Gumps
             {
                 BaseRace race = RaceManager.getRace(from.Races);
                 AddButton(x, y + line * scale, 8, race.Image);
-                AddTooltip(race.Tooltip);
-
-                /*Bonus Raciaux*/
-                string bonus = race.BonusDescr;
-
-                line += 8;
-                AddSection(x + 220, y + line * scale, 300, 120, "Bonus Raciaux", bonus);
-
-                line -= 5;
-                AddSection(x + 220, y + line * scale, 300, 80, "Évolution");
-                ++line;
-                ++line;
-                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Exp : ", from.XP));
-                ++line;
-                AddButton(x + 235, y + line * scale, 2117, 2118, 10, GumpButtonType.Reply, 0);
-                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Niveau : ", from.Niveau));
-                ++line;
-                AddButton(x + 235, y + line * scale, 2117, 2118, 11, GumpButtonType.Reply, 0);
-                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Reset", (from.FreeReset == true ? " (1 Gratuit)" : " (0 Gratuit)")));
-
-                line -= 1;
+                //AddTooltip(race.Tooltip);
+                
+                line += 12;
                 AddButton(x, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
                 AddHtml(x + 50, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Informations<basefont></h3>", false, false);
+
+                line = 0;
+                AddSection(x + 220, y + line * scale, 300, 100, "Description", race.Description);
+
+                line += 7;
+                /*Bonus Raciaux*/
+                string bonus = race.BonusDescr;
+                AddSection(x + 220, y + line * scale, 300, 100, "Bonus Raciaux", bonus);
+
+                line += 7;
+                AddSection(x + 220, y + line * scale, 300, 80, "Évolution");
+                line += 2;
+                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Exp : ", from.XP));
+                ++line;
+                AddButton(x + 237, y + line * scale, 2117, 2118, 10, GumpButtonType.Reply, 0);
+                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Niveau : ", from.Niveau));
+                ++line;
+                AddButton(x + 237, y + line * scale, 2117, 2118, 11, GumpButtonType.Reply, 0);
+                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Reset", (from.FreeReset == true ? " (1 Gratuit)" : " (0 Gratuit)")));
+
+
+
+
             }
         }
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -94,10 +99,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));

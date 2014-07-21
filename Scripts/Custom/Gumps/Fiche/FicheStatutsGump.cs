@@ -169,13 +169,13 @@ namespace Server.Gumps
             AddSection(x, y + line * scale, 400, 60, "Maladies");
             AddBackground(x + 420, y + line * scale, 95, 132, 2620);
             AddButton(x + 425, (y + line * scale) + 5, 1443, 1443, 0, GumpButtonType.Reply, 0);
-            AddTooltip(3001045);
+            AddTooltip(3001044);
             line += 6;
 
             AddSection(x, y + line * scale, 400, 60, "Faim, Soif & Fatigue", new string[] { String.Format("Faim: {0} / 20", from.Hunger) + "<basefont></h3>", String.Format("Soif: {0} / 20", from.Thirst) + "<basefont></h3>", String.Format("Fatigue: {0} / 1000", from.Fatigue) + "<basefont></h3>" });
             AddBackground(x + 420, y + line * scale, 95, 132, 2620);
             AddButton(x + 425, (y + line * scale) + 5, 1444, 1444, 0, GumpButtonType.Reply, 0);
-            AddTooltip(3001045);
+            AddTooltip(3001042);
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
@@ -196,10 +196,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));

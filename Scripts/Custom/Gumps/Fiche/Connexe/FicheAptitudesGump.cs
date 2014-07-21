@@ -111,7 +111,7 @@ namespace Server.Gumps
                 //Navigation
                 case 0:
                     if (m_Tab == ClasseBranche.Aucun)
-                        from.SendGump(new FicheAptitudeGump(m_From));
+                        from.SendGump(new FicheCompetencesGump(m_From));
                     else
                         from.SendGump(new FicheAptitudesGump(m_From, ClasseBranche.Aucun));
                     break;
@@ -125,10 +125,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(m_From));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(m_From));
+                    from.SendGump(new FicheCompetencesGump(m_From));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(m_From));
+                    from.SendGump(new FicheStatistiquesGump(m_From));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(m_From));

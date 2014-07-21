@@ -47,70 +47,38 @@ namespace Server.Gumps
 
             int lineStart = line;
 
-            int StatTotal = from.RawStr + from.RawCon + from.RawDex + from.RawCha + from.RawInt;
+            int StatTotal = from.RawStr + from.RawDex + from.RawInt;
             int attente = from.StatCap - StatTotal;
 
-            AddSection(x, y + line * scale, 200, 100, "Caractéristiques", "Les caractéristiques influencent les attributs (vitalité, stamina & mana) ainsi que certains systèmes comme le combat ou les différentes sortes de magie. Vous regagnez les points indisponibles à chaque niveau.", new string[] { "<h3><basefont color=#5A4A31>Dispo | Indispo: " + from.StatistiquesLibres.ToString() + "|" + attente.ToString() + "<basefont></h3>" });
+            AddSection(x, y + line * scale, 539, 60, "Caractéristiques", "Les caractéristiques influencent les attributs (vitalité, stamina & mana) ainsi que le système de combat et de magie. Un bonus est appliqué lorsqu'une caractéristique atteint le chiffre de 100. Vous regagnez les points indisponibles à chaque niveau.", new string[] { "<basefont color=#5A4A31>Dispo | Indispo: " + from.StatistiquesLibres.ToString() + "|" + attente.ToString() + "<basefont>" });
             line += 6;
-            ++line;
 
-            AddSection(x, y + line * scale, 200, 100, "Constitution", "Augmente le maximum de points de vitalités ainsi que le maximum de points de stamina.", new string[] { "<h3><basefont color=#5A4A31>Constitution: " + from.RawCon + "%<basefont></h3>" });
-            line += 6;
-            if (Statistiques.CanRaise(from, StatType.Con))
-                AddButton(x + 130, (y + line * scale) - 3, 9770, 9770, 15, GumpButtonType.Reply, 0);
-            if (Statistiques.CanLower(from, StatType.Con))
-                AddButton(x + 155, (y + line * scale) - 3, 9771, 9771, 16, GumpButtonType.Reply, 0);
-            ++line;
-
-            AddSection(x, y + line * scale, 200, 100, "Charisme", "Influence la religion et les miracles ainsi que les familiers (plus de chance aux jets de dressage) et augmente le maximum de mana.", new string[] { "<h3><basefont color=#5A4A31>Charisme: " + from.RawCha + "%<basefont></h3>" });
-            line += 6;
-            if (Statistiques.CanRaise(from, StatType.Cha))
-                AddButton(x + 130, (y + line * scale) - 3, 9770, 9770, 19, GumpButtonType.Reply, 0);
-            if (Statistiques.CanLower(from, StatType.Cha))
-                AddButton(x + 155, (y + line * scale) - 3, 9771, 9771, 20, GumpButtonType.Reply, 0);
-
-            //Images center
-            line = lineStart;
-            x += 215;
-            AddBackground(x, y + line * scale, 110, 112, 2620);
-            AddButton(x + 5, (y + line * scale) + 5, 1436, 1436, 0, GumpButtonType.Reply, 0);
+            AddButton(x, (y + line * scale) + 20, 1436, 1436, 0, GumpButtonType.Reply, 0);
             AddTooltip(3001037);
-            line += 5;
+            AddSection(x + 110, y + line * scale, 426, 60, "Force", "Augmente le poids maximum pouvant être porté, la regénération de la vie, les dégâts physiques et le maximum de points de vitalité. Bonus: +25 Vitalité, +25 Stones max.", new string[] { "<basefont color=#5A4A31>Force: " + from.RawStr + "%<basefont>" });
 
-            AddBackground(x, y + line * scale, 110, 112, 2620);
-            AddButton(x + 5, (y + line * scale) + 5, 1437, 1437, 0, GumpButtonType.Reply, 0);
-            AddTooltip(3001037);
-            line += 5;
-
-            AddBackground(x, y + line * scale, 110, 112, 2620);
-            AddButton(x + 5, (y + line * scale) + 5, 1438, 1438, 0, GumpButtonType.Reply, 0);
-            AddTooltip(3001037);
-
-            //2e ranger
-            line = lineStart;
-            x += 125;
-            AddSection(x, y + line * scale, 200, 100, "Force", "Augmente le poid maximum pouvant être porté, les dégâts ainsi que le maximum de points de vitalités.", new string[] { "<h3><basefont color=#5A4A31>Force: " + from.RawStr + "%<basefont></h3>" });
-            line += 6;
             if (Statistiques.CanRaise(from, StatType.Str))
-                AddButton(x + 130, (y + line * scale) - 3, 9770, 9770, 13, GumpButtonType.Reply, 0);
+                AddButton(x + 130 + 110, (y + line * scale) + 60, 9770, 9770, 13, GumpButtonType.Reply, 0);
             if (Statistiques.CanLower(from, StatType.Str))
-                AddButton(x + 155, (y + line * scale) - 3, 9771, 9771, 14, GumpButtonType.Reply, 0);
-            ++line;
+                AddButton(x + 155 + 110, (y + line * scale) + 60, 9771, 9771, 14, GumpButtonType.Reply, 0);
+            line += 5;
 
-            AddSection(x, y + line * scale, 200, 100, "Dexterite", "Augmente la vitesse de frappe et la stamina. Elle est réduite pas le port d'armures lourdes.", new string[] { "<h3><basefont color=#5A4A31>Dexterite: " + from.RawDex + "%<basefont></h3>" });
-            line += 6;
+            AddButton(x, (y + line * scale) + 20, 1437, 1437, 0, GumpButtonType.Reply, 0);
+            AddTooltip(3001037);
+            AddSection(x + 110, y + line * scale, 426, 60, "Dexterité", "Augmente la regénération de la stamina, la vitesse de frappe, la vitesse de lancer de sort et le maximum de points de stamina. Bonus: +25 Stamina", new string[] { "<basefont color=#5A4A31>Dexterite: " + from.RawDex + "%<basefont>" });
             if (Statistiques.CanRaise(from, StatType.Dex))
-                AddButton(x + 130, (y + line * scale) - 3, 9770, 9770, 17, GumpButtonType.Reply, 0);
+                AddButton(x + 130 + 110, (y + line * scale) + 60, 9770, 9770, 17, GumpButtonType.Reply, 0);
             if (Statistiques.CanLower(from, StatType.Dex))
-                AddButton(x + 155, (y + line * scale) - 3, 9771, 9771, 18, GumpButtonType.Reply, 0);
-            ++line;
+                AddButton(x + 155 + 110, (y + line * scale) + 60, 9771, 9771, 18, GumpButtonType.Reply, 0);
+            line += 5;
 
-            AddSection(x, y + line * scale, 200, 100, "Intelligence", "Augmente le maximum de mana et influence les sorts et le système de magie arcanique.", new string[] { "<h3><basefont color=#5A4A31>Intelligence: " + from.RawInt + "%<basefont></h3>" });
-            line += 6;
+            AddButton(x, (y + line * scale) + 20, 1438, 1438, 0, GumpButtonType.Reply, 0);
+            AddTooltip(3001037);
+            AddSection(x + 110, y + line * scale, 426, 60, "Intelligence", "Augmente la regénération de la mana, la puissance des sorts et le maximum de points de mana.               Bonus: +25 Mana", new string[] { "<basefont color=#5A4A31>Intelligence: " + from.RawInt + "%<basefont>" });
             if (Statistiques.CanRaise(from, StatType.Int))
-                AddButton(x + 130, (y + line * scale) - 3, 9770, 9770, 21, GumpButtonType.Reply, 0);
+                AddButton(x + 130 + 110, (y + line * scale) + 60, 9770, 9770, 21, GumpButtonType.Reply, 0);
             if (Statistiques.CanLower(from, StatType.Int))
-                AddButton(x + 155, (y + line * scale) - 3, 9771, 9771, 22, GumpButtonType.Reply, 0);
+                AddButton(x + 155 + 110, (y + line * scale) + 60, 9771, 9771, 22, GumpButtonType.Reply, 0);
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
@@ -131,10 +99,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));

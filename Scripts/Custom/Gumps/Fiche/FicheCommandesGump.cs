@@ -52,27 +52,27 @@ namespace Server.Gumps
             x += space;
             AddMenuItem(x, y, 1196, 5, true);
             x += space;
-            AddMenuItem(x, y, 1222, 6, true);
+            AddMenuItem(x, y, 1221, 6, true);
             x += space;
             AddMenuItem(x, y, 1191, 7, false);
 
             x = XBase;
             y = YBase;
 
-            AddBackground(515, 125, 95, 132, 2620);
-            AddButton(520, 130, 1440, 1440, 0, GumpButtonType.Reply, 0);
-            //AddTooltip(3001045);
+            AddBackground(515, 145, 95, 132, 2620);
+            AddButton(520, 150, 1440, 1440, 7, GumpButtonType.Reply, 0);
+            AddTooltip(3001045);
 
             //AddBackground(545, 325, 95, 132, 2620);
-            //AddButton(550, 330, 1439, 1439, 0, GumpButtonType.Reply, 0);
+            //AddButton(550, 330, 1439, 1439, 7, GumpButtonType.Reply, 0);
             //AddTooltip(3001045);
 
             AddBackground(515, 495, 95, 132, 2620);
-            AddButton(520, 500, 1441, 1441, 0, GumpButtonType.Reply, 0);
-            //AddTooltip(3001045);
+            AddButton(520, 500, 1441, 1441, 7, GumpButtonType.Reply, 0);
+            AddTooltip(3001045);
 
             AddHtml(105, 115, 200, 20, "<h3><basefont color=#5A4A31>Commandes<basefont></h3>", false, false);
-            AddBackground(102, 135, 400, 160, 3500);
+            AddBackground(102, 135, 400, 150, 3500);
             AddImage(95, 120, 95);
             AddImage(102, 129, 96);
             AddImage(202, 129, 96);
@@ -97,16 +97,16 @@ namespace Server.Gumps
             AddButton(320, 172, 2117, 2118, 21, GumpButtonType.Reply, 0);
             AddHtml(338, 170, 190, 20, "<h3><basefont color=#5A4A31>Niveau<basefont></h3>", false, false);
 
-            AddHtml(105, 315, 200, 20, "<h3><basefont color=#5A4A31>Chevelures & Barbes<basefont></h3>", false, false);
-            AddBackground(102, 335, 267, 140, 3500);
-            AddBackground(369, 335, 267, 140, 3500);
-            AddImage(95, 320, 95);
-            AddImage(102, 329, 96);
-            AddImage(202, 329, 96);
-            AddImage(322, 329, 96);
-            AddImage(405, 329, 96);
-            AddImage(460, 329, 96);
-            AddImage(635, 320, 97);
+            AddHtml(105, 295, 200, 20, "<h3><basefont color=#5A4A31>Chevelures & Barbes<basefont></h3>", false, false);
+            AddBackground(102, 315, 267, 150, 3500);
+            AddBackground(369, 315, 267, 150, 3500);
+            AddImage(95, 300, 95);
+            AddImage(102, 309, 96);
+            AddImage(202, 309, 96);
+            AddImage(322, 309, 96);
+            AddImage(405, 309, 96);
+            AddImage(460, 309, 96);
+            AddImage(635, 300, 97);
 
             bool second = false;
 
@@ -116,14 +116,14 @@ namespace Server.Gumps
                 {
                     if (!second)
                     {
-                        AddButton(120 + (i * 40), 352, 2117, 2118, m_Chevelures[i + (m_chevelurePage * 6)], GumpButtonType.Reply, 0);
-                        AddItem(120 + (i * 40) + 20, 350, m_Chevelures[i + (m_chevelurePage * 6)]);
+                        AddButton(120 + (i * 40), 332, 2117, 2118, m_Chevelures[i + (m_chevelurePage * 6)], GumpButtonType.Reply, 0);
+                        AddItem(120 + (i * 40) + 20, 330, m_Chevelures[i + (m_chevelurePage * 6)]);
                         second = true;
                     }
                     else
                     {
-                        AddButton(120 + ((i - 1) * 40), 402, 2117, 2118, m_Chevelures[i + (m_chevelurePage * 6)], GumpButtonType.Reply, 0);
-                        AddItem(120 + ((i - 1) * 40) + 20, 400, m_Chevelures[i + (m_chevelurePage * 6)]);
+                        AddButton(120 + ((i - 1) * 40), 382, 2117, 2118, m_Chevelures[i + (m_chevelurePage * 6)], GumpButtonType.Reply, 0);
+                        AddItem(120 + ((i - 1) * 40) + 20, 380, m_Chevelures[i + (m_chevelurePage * 6)]);
                         second = false;
                     }
                 }
@@ -137,36 +137,36 @@ namespace Server.Gumps
                 {
                     if (!second)
                     {
-                        AddButton(387 + (i * 40), 352, 2117, 2118, m_Barbes[i + (m_barbePage * 6)], GumpButtonType.Reply, 0);
-                        AddItem(387 + (i * 40) + 20, 350, m_Barbes[i + (m_barbePage * 6)]);
+                        AddButton(387 + (i * 40), 332, 2117, 2118, m_Barbes[i + (m_barbePage * 6)], GumpButtonType.Reply, 0);
+                        AddItem(387 + (i * 40) + 20, 330, m_Barbes[i + (m_barbePage * 6)]);
                         second = true;
                     }
                     else
                     {
-                        AddButton(387 + ((i - 1) * 40), 402, 2117, 2118, m_Barbes[i + (m_barbePage * 6)], GumpButtonType.Reply, 0);
-                        AddItem(387 + ((i - 1) * 40) + 20, 400, m_Barbes[i + (m_barbePage * 6)]);
+                        AddButton(387 + ((i - 1) * 40), 382, 2117, 2118, m_Barbes[i + (m_barbePage * 6)], GumpButtonType.Reply, 0);
+                        AddItem(387 + ((i - 1) * 40) + 20, 380, m_Barbes[i + (m_barbePage * 6)]);
                         second = false;
                     }
                 }
             }
 
-            AddHtml(160, 445, 150, 18, "<h3><basefont color=#025a>Précédent<basefont></h3>", false, false);
-            AddButton(125, 445, 4014, 4016, 15, GumpButtonType.Reply, 0);
-            AddHtml(260, 445, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
-            AddButton(315, 445, 4005, 4007, 16, GumpButtonType.Reply, 0);
+            AddHtml(160, 425, 150, 18, "<h3><basefont color=#025a>Précédent<basefont></h3>", false, false);
+            AddButton(125, 425, 4014, 4016, 15, GumpButtonType.Reply, 0);
+            AddHtml(260, 425, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
+            AddButton(315, 425, 4005, 4007, 16, GumpButtonType.Reply, 0);
 
-            AddHtml(430, 445, 150, 18, "<h3><basefont color=#025a>Précédent<basefont></h3>", false, false);
-            AddButton(395, 445, 4014, 4016, 17, GumpButtonType.Reply, 0);
-            AddHtml(535, 445, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
-            AddButton(580, 445, 4005, 4007, 18, GumpButtonType.Reply, 0);
+            AddHtml(430, 425, 150, 18, "<h3><basefont color=#025a>Précédent<basefont></h3>", false, false);
+            AddButton(395, 425, 4014, 4016, 17, GumpButtonType.Reply, 0);
+            AddHtml(535, 425, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
+            AddButton(580, 425, 4005, 4007, 18, GumpButtonType.Reply, 0);
 
-            AddHtml(105, 485, 200, 20, "<h3><basefont color=#5A4A31>Tatoos<basefont></h3>", false, false);
-            AddBackground(102, 505, 400, 140, 3500);
-            AddImage(95, 490, 95);
-            AddImage(102, 499, 96);
-            AddImage(202, 499, 96);
-            AddImage(322, 499, 96);
-            AddImage(500, 490, 97);
+            AddHtml(105, 470, 200, 20, "<h3><basefont color=#5A4A31>Tatoos<basefont></h3>", false, false);
+            AddBackground(102, 490, 400, 150, 3500);
+            AddImage(95, 475, 95);
+            AddImage(102, 484, 96);
+            AddImage(202, 484, 96);
+            AddImage(322, 484, 96);
+            AddImage(500, 475, 97);
 
             second = false;
 
@@ -176,24 +176,24 @@ namespace Server.Gumps
                 {
                     if (!second)
                     {
-                        AddButton(120 + (i * 35), 522, 2117, 2118, m_Tatoos[i + (m_tatooPage * 10)], GumpButtonType.Reply, 0);
-                        AddItem(120 + (i * 35) + 20, 520, m_Tatoos[i + (m_tatooPage * 10)]);
+                        AddButton(120 + (i * 35), 507, 2117, 2118, m_Tatoos[i + (m_tatooPage * 10)], GumpButtonType.Reply, 0);
+                        AddItem(120 + (i * 35) + 20, 505, m_Tatoos[i + (m_tatooPage * 10)]);
                         second = true;
                     }
                     else
                     {
-                        AddButton(120 + ((i - 1) * 35), 572, 2117, 2118, m_Tatoos[i + (m_tatooPage * 10)], GumpButtonType.Reply, 0);
-                        AddItem(120 + ((i - 1) * 35) + 20, 570, m_Tatoos[i + (m_tatooPage * 10)]);
+                        AddButton(120 + ((i - 1) * 35), 557, 2117, 2118, m_Tatoos[i + (m_tatooPage * 10)], GumpButtonType.Reply, 0);
+                        AddItem(120 + ((i - 1) * 35) + 20, 555, m_Tatoos[i + (m_tatooPage * 10)]);
                         second = false;
                     }
                 }
             }
 
-            AddHtml(160, 615, 150, 18, "<h3><basefont color=#025a>Précédent<basefont></h3>", false, false);
-            AddButton(125, 615, 4014, 4016, 19, GumpButtonType.Reply, 0);
+            AddHtml(160, 600, 150, 18, "<h3><basefont color=#025a>Précédent<basefont></h3>", false, false);
+            AddButton(125, 600, 4014, 4016, 19, GumpButtonType.Reply, 0);
 
-            AddHtml(390, 615, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
-            AddButton(445, 615, 4005, 4007, 20, GumpButtonType.Reply, 0);
+            AddHtml(390, 600, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
+            AddButton(445, 600, 4005, 4007, 20, GumpButtonType.Reply, 0);
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
@@ -214,10 +214,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));

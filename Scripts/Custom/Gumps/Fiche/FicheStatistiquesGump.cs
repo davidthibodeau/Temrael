@@ -10,17 +10,19 @@ using System.Collections.Generic;
 
 namespace Server.Gumps
 {
-    public class FicheMagieGump : GumpTemrael
+    public class FicheStatistiquesGump : GumpTemrael
     {
         private TMobile m_from;
 
-        public FicheMagieGump(TMobile from)
-            : base("Magie", 560, 622)
+        public FicheStatistiquesGump(TMobile from)
+            : base("Statistiques", 560, 622)
         {
             m_from = from;
 
             int x = XBase;
             int y = YBase;
+            int line = 0;
+            int scale = 25;
 
             y = 650;
             x = 90;
@@ -62,10 +64,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));

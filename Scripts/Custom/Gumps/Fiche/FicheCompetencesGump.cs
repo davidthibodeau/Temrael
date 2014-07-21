@@ -11,18 +11,18 @@ using System.Collections;
 
 namespace Server.Gumps
 {
-    public class FicheAptitudeGump : GumpTemrael
+    public class FicheCompetencesGump : GumpTemrael
     {
         private TMobile m_from;
         private int m_page;
 
-        public FicheAptitudeGump(TMobile from)
+        public FicheCompetencesGump(TMobile from)
             : this(from, 0)
         {
         }
 
-        public FicheAptitudeGump(TMobile from, int page)
-            : base("Aptitudes & Compétences", 560, 622)
+        public FicheCompetencesGump(TMobile from, int page)
+            : base("Compétences", 560, 622)
         {
             m_from = from;
             m_page = page;
@@ -54,18 +54,17 @@ namespace Server.Gumps
             y = YBase;
 
             /*Dons*/
-            AddSection(x, y + line * scale, 255, 465, "Aptitudes");
+            /*AddSection(x, y + line * scale, 255, 465, "Aptitudes");
             line += 2;
 
             AddHtml(x + 30, y + line * scale, 400, 20, "<h3><basefont color=#5A4A31>Dispo | Indispo: " + Aptitudes.GetDisponiblePA(from) + " | " + (Aptitudes.GetRemainingPA(from) - Aptitudes.GetDisponiblePA(from)) + "<basefont></h3>", false, false);
             ++line;
 
-            CreateAptitudes(from);
+            CreateAptitudes(from);*/
 
             /*Compétences*/
             line = 0;
-            x = 380;
-            AddSection(x, y + line * scale, 255, 465, "Compétences");
+            AddSection(x, y + line * scale, 540, 465, "Compétences");
             line += 2;
             int i = -1;
             for (int s = 0; s < from.Skills.Length; s++)
@@ -77,12 +76,13 @@ namespace Server.Gumps
                         continue;
                     if (i >= (page + 1) * 16)
                         break;
-                    AddHtmlTexte(x + 30, y + line * scale, DefaultHtmlLength, from.Skills[s].Name + " [ " + from.Skills[s].Value + "% ]");
+                    AddHtmlTexte(x + 30, y + line * scale, DefaultHtmlLength, from.Skills[s].Name);
+                    AddHtmlTexte(x + 450, y + line * scale, DefaultHtmlLength, " [ " + from.Skills[s].Value + "% ]");
                     ++line;
                 }
             }
 
-            AddButton(x + 30, 580, 52, 52, 9, GumpButtonType.Reply, 0);
+            AddButton(x + 30, 580, 52, 52, 8, GumpButtonType.Reply, 0);
             AddHtml(x + 80, 592, 200, 20, "<h3><basefont color=#025a>Compétences<basefont></h3>", false, false);
             
             if(i >= (page + 1) * 16)
@@ -90,8 +90,8 @@ namespace Server.Gumps
             if(page > 0)
                 AddButton(x + 200, 580, 11, 5603, 5607);
 
-            AddButton(130, 580, 52, 52, 8, GumpButtonType.Reply, 0);
-            AddHtml(180, 592, 200, 20, "<h3><basefont color=#025a>Aptitudes<basefont></h3>", false, false);
+            /*AddButton(130, 580, 52, 52, 8, GumpButtonType.Reply, 0);
+            AddHtml(180, 592, 200, 20, "<h3><basefont color=#025a>Aptitudes<basefont></h3>", false, false);*/
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
@@ -112,10 +112,10 @@ namespace Server.Gumps
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
                 case 4:
-                    from.SendGump(new FicheAptitudeGump(from));
+                    from.SendGump(new FicheCompetencesGump(from));
                     break;
                 case 5:
-                    from.SendGump(new FicheMagieGump(from));
+                    from.SendGump(new FicheStatistiquesGump(from));
                     break;
                 case 6:
                     from.SendGump(new FicheStatutsGump(from));
@@ -130,10 +130,10 @@ namespace Server.Gumps
                     from.SendGump(new CompetenceGump(from, Server.Gumps.CompetenceGump.CompDomaines.Aucun, false));
                     break;
                 case 10:
-                    from.SendGump(new FicheAptitudeGump(from, m_page + 1));
+                    from.SendGump(new FicheCompetencesGump(from, m_page + 1));
                     break;
                 case 11:
-                    from.SendGump(new FicheAptitudeGump(from, m_page - 1));
+                    from.SendGump(new FicheCompetencesGump(from, m_page - 1));
                     break;
             }
 
@@ -141,13 +141,13 @@ namespace Server.Gumps
                 from.SendGump(new FicheAptitudeInfoGump(from, (Aptitude)info.ButtonID - 50));
         }
 
-        public static Hashtable GetAptitudesList(TMobile from)
+        /*public static Hashtable GetAptitudesList(TMobile from)
         {
             Hashtable list = new Hashtable();
             return list;
-        }
+        }*/
 
-        private void CreateAptitudes(TMobile from)
+        /*private void CreateAptitudes(TMobile from)
         {
             Hashtable aptitudes = GetAptitudesList(from);
             int count = 0;
@@ -196,6 +196,6 @@ namespace Server.Gumps
             {
                 Misc.ExceptionLogging.WriteLine(ex);
             }
-        }
+        }*/
     }
 }

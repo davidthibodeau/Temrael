@@ -367,7 +367,7 @@
     <Compile Include=".\Custom\Gumps\Fiche\FicheCaracteristiqueGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheClasseGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheCommandesGump.cs" />
-    <Compile Include=".\Custom\Gumps\Fiche\FicheMagieGump.cs" />
+    <Compile Include="Custom\Gumps\Fiche\FicheStatistiquesGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheRaceGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheResetMessageGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheStatutsGump.cs" />

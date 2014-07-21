@@ -212,21 +212,21 @@ namespace Server.Gumps
         {
             AddBackground(x, y, largeur, hauteur + 58, 3500);
             AddLigne(x + 20, y + 20, largeur - 37);
-            AddHtmlTitre(x + 30, y + 15, largeur - 35, titre);
+            AddHtmlTitre(x + 30, y + 13, largeur - 35, titre);
         }
         public void AddSection(int x, int y, int largeur, int hauteur, string titre, string description)
         {
             AddBackground(x, y, largeur, hauteur + 58, 3500);
             AddLigne(x + 20, y + 20, largeur - 37);
-            AddHtmlTitre(x + 30, y + 15, largeur - 35, titre);
+            AddHtmlTitre(x + 30, y + 13, largeur - 35, titre);
             AddHtml(x + 15, y + 43, largeur - 30, hauteur, String.Concat("<h3><basefont color=#241b0d>", description, "<basefont></h3>"), true, true);
         }
         public void AddSection(int x, int y, int largeur, int hauteur, string titre, string description, string[] texte)
         {
             AddBackground(x, y, largeur, hauteur + 58 + (texte.Length * 20), 3500);
             AddLigne(x + 20, y + 20, largeur - 37);
-            AddHtmlTitre(x + 30, y + 15, largeur - 35, titre);
-            AddHtml(x + 15, y + 43, largeur - 30, hauteur, String.Concat("<h3><basefont color=#241b0d>", description, "<basefont></h3>"), true, true);
+            AddHtmlTitre(x + 30, y + 13, largeur - 35, titre);
+            AddHtml(x + 20, y + 43, largeur - 30, hauteur, String.Concat("<h3><basefont color=#241b0d>", description, "<basefont></h3>"), true, true);
 
             for (int i = 0; i < texte.Length; i++)
             {
@@ -237,11 +237,11 @@ namespace Server.Gumps
         {
             AddBackground(x, y, largeur, hauteur + (texte.Length * 20), 3500);
             AddLigne(x + 20, y + 20, largeur - 37);
-            AddHtmlTitre(x + 30, y + 15, largeur - 35, titre);
+            AddHtmlTitre(x + 30, y + 13, largeur - 35, titre);
 
             for (int i = 0; i < texte.Length; i++)
             {
-                AddHtmlTexte(x + 15, (y + 43) + (i * 20), largeur - 35, texte[i]);
+                AddHtmlTexte(x + 20, (y + 43) + (i * 20), largeur - 35, texte[i]);
             }
         }
         public void AddInvisibleSection(int x, int y, int largeur, int hauteur)
