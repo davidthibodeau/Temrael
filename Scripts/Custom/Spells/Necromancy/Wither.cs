@@ -80,7 +80,7 @@ namespace Server.Spells.Necromancy
 
                         double damage = Utility.RandomMinMax(30, 35);
 
-                        damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                        damage = SpellHelper.AdjustValue(Caster, damage);
 
                         if (CheckResisted(m))
                         {

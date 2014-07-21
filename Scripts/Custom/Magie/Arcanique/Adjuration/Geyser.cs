@@ -201,7 +201,7 @@ namespace Server.Spells
 
 					int damage = Utility.Random(20, 30);
 
-                    damage = (int)SpellHelper.AdjustValue(m_Caster, damage, Aptitude.Sorcellerie);
+                    damage = (int)SpellHelper.AdjustValue(m_Caster, damage);
 
 					AOS.Damage( m, m_Caster, damage, 0, 0, 100, 0, 0 );
 					m.PlaySound( 0x208 );
@@ -273,7 +273,7 @@ namespace Server.Spells
 
                                 int damage = Utility.Random(20, 30);
 
-                                damage = (int)SpellHelper.AdjustValue(caster, damage, Aptitude.Sorcellerie);
+                                damage = (int)SpellHelper.AdjustValue(caster, damage);
 
                                 AOS.Damage(m, caster, damage, 0, 0, 100, 0, 0);
                                 m.PlaySound(0x208);

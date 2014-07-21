@@ -91,7 +91,7 @@ namespace Server.Spells.Seventh
                //     double damage = Utility.RandomMinMax(60, 120);
                     double damage = Utility.RandomMinMax(30, 60);
 
-                    damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                    damage = SpellHelper.AdjustValue(Caster, damage);
 
                     if (targets.Count > 0)
                     {

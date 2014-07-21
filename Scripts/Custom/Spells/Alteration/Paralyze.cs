@@ -40,7 +40,7 @@ namespace Server.Spells.Fifth
 
                 double duration = 5.0 + (Caster.Skills[SkillName.Mysticisme].Value * 0.2);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
                 if (CheckResisted(m))
                     duration *= 0.75;

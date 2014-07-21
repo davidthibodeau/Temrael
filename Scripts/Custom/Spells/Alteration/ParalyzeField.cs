@@ -63,7 +63,7 @@ namespace Server.Spells.Sixth
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Mysticisme].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				for ( int i = -3; i <= 3; ++i )
 				{
@@ -167,7 +167,7 @@ namespace Server.Spells.Sixth
 
                     double duration = 5.0 + (m_Caster.Skills[SkillName.Mysticisme].Value * 0.2);
 
-                    duration = SpellHelper.AdjustValue(m_Caster, duration, Aptitude.Spiritisme);
+                    duration = SpellHelper.AdjustValue(m_Caster, duration);
 
 					m.Paralyze( TimeSpan.FromSeconds( duration ) );
 

@@ -42,7 +42,7 @@ namespace Server.Spells
 
                     if (map != null)
                     {
-                        foreach (Mobile m in Caster.GetMobilesInRange((int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Destruction].Value / 15, Aptitude.Sorcellerie, true)))
+                        foreach (Mobile m in Caster.GetMobilesInRange((int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Destruction].Value / 15, true)))
                         {
                             if (Caster != m && SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false) && (!Core.AOS || Caster.InLOS(m)) && !(Caster.Party == m.Party))
                                 m_target.Add(m);

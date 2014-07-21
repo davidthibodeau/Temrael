@@ -72,7 +72,7 @@ namespace Server.Spells.First
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Destruction].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
                 //for ( int i = -3; i <= 3; ++i )
                 //{
@@ -184,7 +184,7 @@ namespace Server.Spells.First
                     //     double damage = Utility.RandomMinMax(5, 8);
                     double damage = Utility.RandomMinMax(3, 4);
 
-                    damage = SpellHelper.AdjustValue(m_Caster, damage, Aptitude.Sorcellerie);
+                    damage = SpellHelper.AdjustValue(m_Caster, damage);
 
                     if (m_Spell.CheckResisted(m))
                     {
@@ -279,7 +279,7 @@ namespace Server.Spells.First
                                     double damage = Utility.RandomMinMax(3, 4);
 
 
-                                    damage = SpellHelper.AdjustValue(caster, damage, Aptitude.Sorcellerie);
+                                    damage = SpellHelper.AdjustValue(caster, damage);
 
                                     if (m_Item.m_Spell.CheckResisted(m))
                                     {

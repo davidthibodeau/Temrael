@@ -65,7 +65,7 @@ namespace Server.Spells
 
             toHeal += Caster.Skills[SkillName.Soins].Value * scale / 3;
 
-            toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.Sorcellerie);
+            toHeal = SpellHelper.AdjustValue(Caster, toHeal);
 
             if (RegenerescenceSpell.m_RegenerescenceTable.Contains(m))
                 toHeal *= (double)RegenerescenceSpell.m_RegenerescenceTable[m];

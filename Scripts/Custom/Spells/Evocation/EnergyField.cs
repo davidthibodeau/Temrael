@@ -70,7 +70,7 @@ namespace Server.Spells.Seventh
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Destruction].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				int itemID = eastToWest ? 0x3946 : 0x3956;
 

@@ -45,7 +45,7 @@ namespace Server.Spells.Second
 
                 double damage = Utility.Random(10, 50);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage);
 
 				item.TrapPower = (int)damage;
 

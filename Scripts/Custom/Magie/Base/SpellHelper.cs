@@ -459,33 +459,33 @@ namespace Server.Spells
             return TimeSpan.FromSeconds(value);
 		}
 
-        public static double AdjustValue(Mobile caster, double value, Aptitude aptitude)
+        public static double AdjustValue(Mobile caster, double value)
         {
-            return AdjustValue(caster, value, aptitude, false);
+            return AdjustValue(caster, value, false);
         }
 
-        public static double AdjustValue(Mobile caster, double value, Aptitude aptitude, bool rayon)
+        public static double AdjustValue(Mobile caster, double value, bool rayon)
         {
             TMobile m = caster as TMobile;
 
-            if (m != null)
-            {
-                switch (aptitude)
-                {
-                    case Aptitude.Sorcellerie:
-                        value *= (m.GetAptitudeValue(Aptitude.Sorcellerie) * 0.04) + 1; break; //0.06
-                    //case NAptitude.Sorcellerie:
-                    //    value *= (m.GetAptitudeValue(NAptitude.Sorcellerie) * 0.04) + 1; break; //0.06
-                    case Aptitude.Spiritisme:
-                        value *= (m.GetAptitudeValue(Aptitude.Spiritisme) * 0.05) + 1; break; //0.10
-                    case Aptitude.FaveurDivine:
-                        value *= (m.GetAptitudeValue(Aptitude.GraceDivine) * 0.04) + 1; break; //0.04
-                    //case NAptitude.ConnaissancesAccrues:
-                    //    value *= 1 - (m.GetAptitudeValue(NAptitude.ConnaissancesAccrues) * 0.04); break; //0.05
-                    //case NAptitude.BonusDivin:
-                    //    value *= 1 - (m.GetAptitudeValue(NAptitude.BonusDivin) * 0.03); break; //0.04
-                }
-            }
+            //if (m != null)
+            //{
+            //    switch (aptitude)
+            //    {
+            //        case Aptitude.Sorcellerie:
+            //            value *= (m.GetAptitudeValue(Aptitude.Sorcellerie) * 0.04) + 1; break; //0.06
+            //        //case NAptitude.Sorcellerie:
+            //        //    value *= (m.GetAptitudeValue(NAptitude.Sorcellerie) * 0.04) + 1; break; //0.06
+            //        case Aptitude.Spiritisme:
+            //            value *= (m.GetAptitudeValue(Aptitude.Spiritisme) * 0.05) + 1; break; //0.10
+            //        case Aptitude.FaveurDivine:
+            //            value *= (m.GetAptitudeValue(Aptitude.GraceDivine) * 0.04) + 1; break; //0.04
+            //        //case NAptitude.ConnaissancesAccrues:
+            //        //    value *= 1 - (m.GetAptitudeValue(NAptitude.ConnaissancesAccrues) * 0.04); break; //0.05
+            //        //case NAptitude.BonusDivin:
+            //        //    value *= 1 - (m.GetAptitudeValue(NAptitude.BonusDivin) * 0.03); break; //0.04
+            //    }
+            //}
 
             if (rayon)
             {

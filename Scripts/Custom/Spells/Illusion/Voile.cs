@@ -49,7 +49,7 @@ namespace Server.Spells.First
                     {
                         double value = Utility.Random(15, 25);
 
-                        value = SpellHelper.AdjustValue(m_Spell.Caster, value, Aptitude.Spiritisme);
+                        value = SpellHelper.AdjustValue(m_Spell.Caster, value);
 
                         new LightCycle.NightSightTimer(targ).Start();
 

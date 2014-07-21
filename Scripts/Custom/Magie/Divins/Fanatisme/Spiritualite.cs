@@ -43,7 +43,7 @@ namespace Server.Spells
                 TimeSpan delay = TimeSpan.FromSeconds(11 - Caster.Skills[CastSkill].Value / 20);
 
                 int amount = (int)(2 + Caster.Skills[CastSkill].Base / 20);
-                amount = (int)SpellHelper.AdjustValue(m, amount, Aptitude.Sorcellerie);
+                amount = (int)SpellHelper.AdjustValue(m, amount);
 
                 StopTimer(m);
 

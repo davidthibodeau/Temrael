@@ -61,7 +61,7 @@ namespace Server.Spells
                     if (bc != null)
                         dispelChance = (50.0 + ((100 * (Caster.Skills.ArtMagique.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
 
-                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, Aptitude.Sorcellerie);
+                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance);
 
                     if (dispelChance > Utility.RandomDouble())
                     {
@@ -85,7 +85,7 @@ namespace Server.Spells
                     if (pm != null)
                         dispelChance = (Caster.Skills.ArtMagique.Value - pm.Skills[SkillName.Concentration].Value + 1) / 120;
 
-                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, Aptitude.Sorcellerie);
+                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance);
 
                     if (m == Caster)
                         dispelChance = 1;

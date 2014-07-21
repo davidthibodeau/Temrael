@@ -84,7 +84,7 @@ namespace Server.Spells
 
                 double duration = 30.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				InternalItem firstGate = new InternalItem( loc, map, duration );
 				firstGate.MoveToWorld( Caster.Location, Caster.Map );

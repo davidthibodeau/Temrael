@@ -42,7 +42,7 @@ namespace Server.Spells.Sixth
               //  double damage = Utility.RandomMinMax(40, 80);
                 double damage = Utility.RandomMinMax(30, 40);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage);
 
                 if (CheckResisted(m))
                 {

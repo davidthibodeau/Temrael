@@ -67,7 +67,7 @@ namespace Server.Spells.Necromancy
 
                 double duration = ((GetDamageSkill(Caster) - GetResistSkill(m)) / 8) + 8;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				new ExpireTimer( Caster, m, TimeSpan.FromSeconds(duration) ).Start();
 			}

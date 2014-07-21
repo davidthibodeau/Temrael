@@ -51,7 +51,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(1);
 
-                double scalar = SpellHelper.AdjustValue(Caster, 1 + (Caster.Skills[SkillName.ArtMagique].Value) / 1000, Aptitude.Sorcellerie);
+                double scalar = SpellHelper.AdjustValue(Caster, 1 + (Caster.Skills[SkillName.ArtMagique].Value) / 1000);
                 SetMindRotScalar(Caster, m, scalar, duration);
 			}
 

@@ -194,7 +194,7 @@ namespace Server.Spells
 
                     double duration = 5.0 + (m_Caster.Skills[SkillName.ArtMagique].Value * 0.2);
 
-                    duration = SpellHelper.AdjustValue(m_Caster, duration, Aptitude.Spiritisme);
+                    duration = SpellHelper.AdjustValue(m_Caster, duration);
 
 					m.Paralyze( TimeSpan.FromSeconds( duration ) );
 

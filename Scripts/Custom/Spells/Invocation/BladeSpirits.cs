@@ -60,7 +60,7 @@ namespace Server.Spells.Fifth
 			{
                 double duration = Utility.Random(120, 260);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				BaseCreature.Summon( new BladeSpirits(), false, Caster, new Point3D( p ), 0x212, TimeSpan.FromSeconds(duration) );
 			}

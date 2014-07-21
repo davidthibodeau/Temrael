@@ -58,7 +58,7 @@ namespace Server.Spells.Necromancy
                     TMobile pm = Caster as TMobile;
                     double duration = 10.0;
 
-                    duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                    duration = SpellHelper.AdjustValue(Caster, duration);
 
                     ((TMobile)m).Aphonier(TimeSpan.FromSeconds(duration));
                 }

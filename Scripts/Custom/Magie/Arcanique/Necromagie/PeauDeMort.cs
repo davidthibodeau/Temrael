@@ -51,7 +51,7 @@ namespace Server.Spells
 
                 double value = 3 + 10 * ((ss + mr) / 225);//5 à 18
 
-                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value);
 
                 TimeSpan duration = GetDurationForSpell(0.5);
 

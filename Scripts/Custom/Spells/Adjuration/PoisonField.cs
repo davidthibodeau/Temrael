@@ -72,7 +72,7 @@ namespace Server.Spells.Fifth
 
                 double duration = 4.0 + (Caster.Skills[SkillName.Tenebrea].Value * 0.4);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				for ( int i = -3; i <= 3; ++i )
 				{

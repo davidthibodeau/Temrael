@@ -61,7 +61,7 @@ namespace Server.Spells.Necromancy
 
                 double duration = 7.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				Timer.DelayCall( TimeSpan.FromSeconds(duration), new TimerStateCallback( EffectExpire_Callback ), m );
 			}

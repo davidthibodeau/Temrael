@@ -164,7 +164,7 @@ namespace Server.Spells.Seventh
 
                 double duration = ((int)owner.Skills[SkillName.Reve].Value * 800) + 120;
 
-                duration = SpellHelper.AdjustValue(owner, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(owner, duration);
 
                 if (duration > 920)
                     duration = 920;

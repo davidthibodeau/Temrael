@@ -68,7 +68,7 @@ namespace Server.Spells.First
                         else if (value > 75)
                             value = 75;
 
-                        value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+                        value = SpellHelper.AdjustValue(Caster, value);
 
                         Caster.MeleeDamageAbsorb = (int)value;
 
@@ -105,7 +105,7 @@ namespace Server.Spells.First
                 else if (value > 75)
                     value = 75;
 
-                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value);
 
                 m.MeleeDamageAbsorb = (int)value;
 

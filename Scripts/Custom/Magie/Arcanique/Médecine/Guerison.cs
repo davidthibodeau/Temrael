@@ -57,7 +57,7 @@ namespace Server.Spells
 
                 toHeal += Caster.Skills[SkillName.Soins].Value * 0.15;
 
-                toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.Sorcellerie);
+                toHeal = SpellHelper.AdjustValue(Caster, toHeal);
 
 				SpellHelper.Heal( m, (int)toHeal, true );
 

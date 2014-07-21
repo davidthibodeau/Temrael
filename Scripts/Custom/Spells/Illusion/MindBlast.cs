@@ -45,7 +45,7 @@ namespace Server.Spells.Fifth
 
                 double damage = (intel - m.Int) / 2.5;
 
-                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage);
 
                 if (CheckResisted(m))
 				{

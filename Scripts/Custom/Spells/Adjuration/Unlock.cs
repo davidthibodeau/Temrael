@@ -49,7 +49,7 @@ namespace Server.Spells.Third
 				{
 					double level = Caster.Skills[SkillName.Tenebrea].Value;
 
-                    level = SpellHelper.AdjustValue(Caster, level, Aptitude.Sorcellerie);
+                    level = SpellHelper.AdjustValue(Caster, level);
 
 					if ( (int)level >= targ.RequiredSkill )
 					{

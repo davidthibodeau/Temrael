@@ -37,7 +37,7 @@ namespace Server.Spells
                 double value = (int)(Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Restoration].Value);
                 value /= 15;
 
-                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value);
 
                 m.VirtualArmorMod += (int)value;
                 m.UpdateResistances();

@@ -38,7 +38,7 @@ namespace Server.Spells.Fifth
 
                 double duration = 5.0 + (Caster.Skills[SkillName.Miracles].Value * 0.2);
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.FaveurDivine);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
                 if (CheckResisted(m))
                     duration *= 0.75;

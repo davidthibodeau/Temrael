@@ -52,7 +52,7 @@ namespace Server.Spells.First
                 toHeal = Caster.Skills[SkillName.Miracles].Value * 0.35;
                 toHeal += Utility.Random(1, 5);
 
-                toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.FaveurDivine);
+                toHeal = SpellHelper.AdjustValue(Caster, toHeal);
 
                 m.Heal((int)toHeal);
 

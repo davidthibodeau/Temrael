@@ -31,7 +31,7 @@ namespace Server.Spells
 
 				if ( map != null )
                 {
-                    double tile = SpellHelper.AdjustValue(Caster, 1 + (int)(Caster.Skills[CastSkill].Value / 33.0), Aptitude.Sorcellerie, true);
+                    double tile = SpellHelper.AdjustValue(Caster, 1 + (int)(Caster.Skills[CastSkill].Value / 33.0), true);
 
                     if (tile > 5)
                         tile = 5;

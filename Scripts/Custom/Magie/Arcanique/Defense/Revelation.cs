@@ -46,7 +46,7 @@ namespace Server.Spells
 
 				if ( map != null )
 				{
-                    double tile = SpellHelper.AdjustValue(Caster, 4 + (int)(Caster.Skills[SkillName.ArtMagique].Value / 50.0), Aptitude.Sorcellerie);
+                    double tile = SpellHelper.AdjustValue(Caster, 4 + (int)(Caster.Skills[SkillName.ArtMagique].Value / 50.0));
 
 					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), (int)tile );
 

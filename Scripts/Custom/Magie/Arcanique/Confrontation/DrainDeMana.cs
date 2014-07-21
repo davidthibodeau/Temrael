@@ -49,7 +49,7 @@ namespace Server.Spells
                 else
                     manaLost = Utility.Random(1, m.Mana);
 
-                manaLost = SpellHelper.AdjustValue(Caster, manaLost, Aptitude.Sorcellerie);
+                manaLost = SpellHelper.AdjustValue(Caster, manaLost);
 
                 if (manaLost > 100)
                     manaLost = 100;

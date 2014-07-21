@@ -79,7 +79,7 @@ namespace Server.Spells.Fourth
                             double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.Restoration].Value * 75) - ((poison.Level + 1) * 2500);
                             chanceToCure /= 100;
 
-                            chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure, Aptitude.Sorcellerie);
+                            chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure);
 
 							if ( chanceToCure > Utility.Random( 100 ) && m.CurePoison( Caster ) )
 								++cured;

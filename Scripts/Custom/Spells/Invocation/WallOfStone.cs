@@ -115,7 +115,7 @@ namespace Server.Spells.Third
 
                 double duration = 30.0;
 
-                duration = SpellHelper.AdjustValue(caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(caster, duration);
 
                 m_Timer = new InternalTimer(this, TimeSpan.FromSeconds(duration));
 				m_Timer.Start();

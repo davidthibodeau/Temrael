@@ -41,7 +41,7 @@ namespace Server.Spells.Second
                     double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.Miracles].Value * 75) - ((p.Level + 1) * 2500);
                     chanceToCure /= 100;
 
-                    chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure, Aptitude.FaveurDivine);
+                    chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure);
 
                     if ((int)chanceToCure > Utility.Random(100))
                     {

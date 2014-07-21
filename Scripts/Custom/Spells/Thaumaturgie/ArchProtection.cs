@@ -64,14 +64,14 @@ namespace Server.Spells.Fourth
                 double value = (int)(Caster.Skills[SkillName.Restoration].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value);
                 value /= 30;
 
-                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value);
 
                 if (value > 10)
                     value = 10;
 
                 double duree = value * 9;
 
-                duree = SpellHelper.AdjustValue(Caster, duree, Aptitude.Spiritisme);
+                duree = SpellHelper.AdjustValue(Caster, duree);
 
                 if (duree > 120)
                     duree = 120;

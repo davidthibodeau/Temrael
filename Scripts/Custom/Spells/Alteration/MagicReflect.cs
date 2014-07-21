@@ -56,7 +56,7 @@ namespace Server.Spells.Fifth
                     double value = Caster.Skills[SkillName.Mysticisme].Value + Caster.Skills[SkillName.ArtMagique].Value;
                     value = 4 + (value / 300) * 7.0;//absorb from 4 to 15 "circles"
 
-                    value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+                    value = SpellHelper.AdjustValue(Caster, value);
 
                     Caster.MagicDamageAbsorb = (int)value;
 

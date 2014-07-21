@@ -51,7 +51,7 @@ namespace Server.Spells.Necromancy
 
 				double duration = Caster.Skills[SkillName.Goetie].Value + 250.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
 				Timer t = (Timer)m_Table[weapon];
 

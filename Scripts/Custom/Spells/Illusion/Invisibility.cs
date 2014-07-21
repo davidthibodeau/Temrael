@@ -46,7 +46,7 @@ namespace Server.Spells.Sixth
 
                 double duration = ((120 * Caster.Skills[SkillName.Reve].Value) / 50) + 1;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
                 
 				Timer t = new InternalTimer( m, TimeSpan.FromSeconds(duration) );
 

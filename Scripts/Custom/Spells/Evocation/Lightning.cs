@@ -44,7 +44,7 @@ namespace Server.Spells.Fourth
                 //    double damage = Utility.RandomMinMax(35, 70);
                     double damage = Utility.RandomMinMax(40, 50);
 
-                    damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                    damage = SpellHelper.AdjustValue(Caster, damage);
 
                     if (CheckResisted(m))
                     {

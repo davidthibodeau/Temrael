@@ -47,14 +47,14 @@ namespace Server.Spells.Necromancy
 
                 double value = GetDamageSkill(Caster) / 2.5;
 
-                value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+                value = SpellHelper.AdjustValue(Caster, value);
 
                 if (value > 40)
                     value = 40;
 
                 double duration = ((ss - mr) / 2.5) + 30.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
                 if (duration > 90)
                     duration = 90;

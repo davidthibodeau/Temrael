@@ -51,7 +51,7 @@ namespace Server.Spells
                     else if (value > 33)
                         value = 33;
 
-                    value = SpellHelper.AdjustValue(Caster, value, Aptitude.FaveurDivine);
+                    value = SpellHelper.AdjustValue(Caster, value);
 
                     Caster.MeleeDamageAbsorb = (int)value;
 

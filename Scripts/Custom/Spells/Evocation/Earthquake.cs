@@ -75,7 +75,7 @@ namespace Server.Spells.Eighth
 
                 double damage = Utility.RandomMinMax(50, 100);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage);
 
 				for ( int i = 0; i < targets.Count; ++i )
 				{

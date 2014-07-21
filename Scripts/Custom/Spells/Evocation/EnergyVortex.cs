@@ -60,7 +60,7 @@ namespace Server.Spells.Eighth
                 {
                     double duration = Utility.Random(40, 80);
 
-                    duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                    duration = SpellHelper.AdjustValue(Caster, duration);
 
                     BaseCreature.Summon(new EnergyVortex(), true, Caster, new Point3D(p), 0x212, TimeSpan.FromSeconds(duration));
                 }

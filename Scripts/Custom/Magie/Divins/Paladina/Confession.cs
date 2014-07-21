@@ -60,7 +60,7 @@ namespace Server.Spells
             toHeal = Caster.Hits * (Caster.Skills[spell.CastSkill].Value / 100) * scale;
             toHeal += Utility.Random(1, 5);
 
-            toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.Sorcellerie);
+            toHeal = SpellHelper.AdjustValue(Caster, toHeal);
 
             if (toHeal > Caster.Hits)
                 toHeal = Caster.Hits;

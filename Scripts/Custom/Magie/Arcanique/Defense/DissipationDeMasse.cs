@@ -48,7 +48,7 @@ namespace Server.Spells
 
 				if ( map != null )
 				{
-                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[CastSkill].Value / 25, Aptitude.Sorcellerie, true));
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[CastSkill].Value / 25, true));
 
 					foreach ( Mobile m in eable )
 					{
@@ -70,7 +70,7 @@ namespace Server.Spells
 
 					double dispelChance = (50.0 + ((100 * (Caster.Skills.ArtMagique.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
 
-                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance, Aptitude.Sorcellerie);
+                    dispelChance = SpellHelper.AdjustValue(Caster, dispelChance);
 
 					if ( dispelChance > Utility.RandomDouble() )
                     {

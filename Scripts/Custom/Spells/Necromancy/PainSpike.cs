@@ -57,7 +57,7 @@ namespace Server.Spells.Necromancy
                 //Le dégât est ajusté sur le % de vie restant de la cible, puisque c'est un sort de type Exécution/Finisher
                 double damage = (m.HitsMax / m.Hits) * (GetDamageSkill(Caster) - GetResistSkill(m)) / 20 + (m.Player ? 15 : 27);
 
-                damage = SpellHelper.AdjustValue(Caster, damage, Aptitude.Sorcellerie);
+                damage = SpellHelper.AdjustValue(Caster, damage);
 
                 if (damage < 1)
                     damage = 1;

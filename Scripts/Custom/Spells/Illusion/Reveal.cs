@@ -47,7 +47,7 @@ namespace Server.Spells.Sixth
 				{
                     double tile = GetRadiusForSpell();
 
-                    tile = SpellHelper.AdjustValue(Caster, tile, Aptitude.Sorcellerie);
+                    tile = SpellHelper.AdjustValue(Caster, tile);
 
 					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), (int)tile );
 

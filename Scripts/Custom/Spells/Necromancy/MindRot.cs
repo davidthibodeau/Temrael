@@ -48,7 +48,7 @@ namespace Server.Spells.Necromancy
 
 				double duration = ((GetDamageSkill( Caster ) - GetResistSkill( m )) / 5.0) + 20.0;
 
-                duration = SpellHelper.AdjustValue(Caster, duration, Aptitude.Spiritisme);
+                duration = SpellHelper.AdjustValue(Caster, duration);
 
                 double scalar = 1 + (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Goetie].Value) / 8;
 

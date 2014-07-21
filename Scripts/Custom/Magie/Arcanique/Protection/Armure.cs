@@ -35,7 +35,7 @@ namespace Server.Spells
 
             value += Caster.Skills[SkillName.Soins].Value * 0.4;
 
-            value = SpellHelper.AdjustValue(Caster, value, Aptitude.Sorcellerie);
+            value = SpellHelper.AdjustValue(Caster, value);
 
             if (value < 0)
                 value = 1;

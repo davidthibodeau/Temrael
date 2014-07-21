@@ -32,7 +32,7 @@ namespace Server.Spells
                 {
                     double tile = 4;
 
-                    SpellHelper.AdjustValue(Caster, tile, Aptitude.Sorcellerie); 
+                    SpellHelper.AdjustValue(Caster, tile); 
 
                     if (tile > 12)
                         tile = 12;
@@ -49,7 +49,7 @@ namespace Server.Spells
                 toHeal = Caster.Skills[CastSkill].Value * 0.15;
                 toHeal += Caster.Skills[DamageSkill].Value * 0.07;
 
-                toHeal = SpellHelper.AdjustValue(Caster, toHeal, Aptitude.Sorcellerie);
+                toHeal = SpellHelper.AdjustValue(Caster, toHeal);
 
                 for (int i = 0; i < targets.Count; ++i)
                 {

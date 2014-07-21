@@ -51,7 +51,7 @@ namespace Server.Spells
 				{
                     double level = Caster.Skills[CastSkill].Value;
 
-                    level = SpellHelper.AdjustValue(Caster, level, Aptitude.Sorcellerie);
+                    level = SpellHelper.AdjustValue(Caster, level);
 
 					if ( (int)level >= targ.RequiredSkill )
 					{
