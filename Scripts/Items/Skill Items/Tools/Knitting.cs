@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class Knitting : BaseTool
     {
-        public override CraftSystem CraftSystem { get { return DefBoneTailoring.CraftSystem; } }
+        public override CraftSystem CraftSystem { get { return DefBoneLeatherTailoring.CraftSystem; } }
 
         [Constructable]
         public Knitting()

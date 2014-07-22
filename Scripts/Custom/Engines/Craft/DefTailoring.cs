@@ -124,8 +124,6 @@ namespace Server.Engines.Craft
 		{
 			int index = -1;
 
-			
-
 			#region Hats
             index = AddCraft(typeof(SkullCap), "Chapeaux", "Bandeau", 0.0, 20.0, typeof(Cloth), "Tissu", 2, 1044287);
             index = AddCraft(typeof(Bandana), "Chapeaux", "Bandana", 0.0, 25.0, typeof(Cloth), "Tissu", 2, 1044287);
@@ -151,10 +149,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ChapeauMelon), "Chapeaux", "Chapeau Melon", 70.0, 90.0, typeof(Cloth), "Tissu", 6, 1044287);
             index = AddCraft(typeof(ChapeauNoble), "Chapeaux", "Béret", 80.0, 90.0, typeof(Cloth), "Tissu", 6, 1044287);
             index = AddCraft(typeof(ChapeauLoup), "Chapeaux", "Tête de Loup", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
-
 			#endregion
-
-						
+			
 			#region Coussins
 			index = AddCraft(typeof(CoussinB), "Coussins", "Petit coussin carré", 20.0, 40.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
@@ -178,7 +174,6 @@ namespace Server.Engines.Craft
 			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
             #endregion
 			
-			
             #region Toges
             index = AddCraft(typeof(Robe), "Toges & Manteaux", "Toge", 0.0, 30.0, typeof(Cloth), "Tissu", 16, 1044287);
             index = AddCraft(typeof(TogeSoutane), "Toges & Manteaux", "Soutane", 20.0, 40.0, typeof(Cloth), "Tissu", 17, 1044287);
@@ -200,14 +195,12 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(TogeFeminine), "Toges & Manteaux", "Toge de Prêtrise", 90.0, 110.0, typeof(Cloth), "Tissu", 17, 1044287);
             index = AddCraft(typeof(TogeSorcier), "Toges & Manteaux", "Toge de Sorcier", 90.0, 110.0, typeof(Cloth), "Tissu", 18, 1044287);
             index = AddCraft(typeof(TogeOr), "Toges & Manteaux", "Toge d'Or", 90.0, 120.0, typeof(Cloth), "Tissu", 18, 1044287);
-
             index = AddCraft(typeof(ManteauPardessus), "Toges & Manteaux", "Vieux Manteau", 30.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(ManteauTabar), "Toges & Manteaux", "Manteau d'Arme", 40.0, 70.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(ManteauCourt), "Toges & Manteaux", "Manteau Court", 60.0, 80.0, typeof(Cloth), "Tissu", 11, 1044287);
             index = AddCraft(typeof(ManteauLong), "Toges & Manteaux", "Manteau Long", 70.0, 90.0, typeof(Cloth), "Tissu", 13, 1044287);
             index = AddCraft(typeof(ManteauRaye), "Toges & Manteaux", "Manteau Rayé", 80.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(ManteauNoble), "Toges & Manteaux", "Manteau Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 18, 1044287);
-
             #endregion
 
             #region Capes
@@ -234,7 +227,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(CapeJarl), "Capes", "Cape de Fourrure", 90.0, 120.0, typeof(Leather), "Cuir", 14, 1044463);
             index = AddCraft(typeof(CapePlume), "Capes", "Cape à Plumes", 90.0, 120.0, typeof(Feather), "Plumes", 60, 1044563);
             index = AddCraft(typeof(CapeSombre), "Capes", "Cape Sombre", 90.0, 120.0, typeof(Cloth), "Tissu", 60, 1044287);
-
             #endregion
 
             #region Robes
@@ -363,11 +355,11 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(TuniqueAssassin), "Tuniques & Chemises", "Tunique d'Assassin", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TuniqueNoble), "Tuniques & Chemises", "Tunique Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 14, 1044287);
 
-            index = AddCraft(typeof(Veston), "Toges & Manteaux", "Veston", 10.0, 30.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(VesteCuir), "Toges & Manteaux", "Veste de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(VestePoil), "Toges & Manteaux", "Veste de Poil", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(Veste), "Toges & Manteaux", "Veste", 60.0, 80.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(VesteLourde), "Toges & Manteaux", "Veste Ample", 70.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(Veston), "Tuniques & Chemises", "Veston", 10.0, 30.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(VesteCuir), "Tuniques & Chemises", "Veste de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(VestePoil), "Tuniques & Chemises", "Veste de Poil", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(Veste), "Tuniques & Chemises", "Veste", 60.0, 80.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(VesteLourde), "Tuniques & Chemises", "Veste Ample", 70.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
 
             index = AddCraft(typeof(Surcoat), "Tuniques & Chemises", "Surcot", 30.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TabarCourt), "Tuniques & Chemises", "Tabar Court", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
@@ -433,33 +425,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(JartellesNoir), "Accessoires", "Jartelles Sombres", 30.0, 50.0, typeof(Cloth), "Tissu", 11, 1044287);
             index = AddCraft(typeof(Jartelles), "Accessoires", "Jartelles Complètes", 40.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
 
-            index = AddCraft(typeof(CeinturePauvre), "Accessoires", "Ceinture Pauvre", 0.0, 20.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(Bourse), "Accessoires", "Bourse", 10.0, 30.0, typeof(Leather), "Cuir", 2, 1044463);
-            index = AddCraft(typeof(Ceinture), "Accessoires", "Ceinture Simple", 20.0, 40.0, typeof(Leather), "Cuir", 3, 1044463);
-            index = AddCraft(typeof(CeintureBourse), "Accessoires", "Ceinture Bourse", 20.0, 40.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(CeintureBoucle), "Accessoires", "Ceinture Bouclé", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(CeintureCuir), "Accessoires", "Ceinture de Cuir", 40.0, 70.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(CeinturePendante), "Accessoires", "Ceinture Pendante", 50.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(CeintureNordique), "Accessoires", "Ceinture Nordique", 60.0, 90.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(CeintureLongue), "Accessoires", "Ceinture Longue", 70.0, 100.0, typeof(Leather), "Cuir", 8, 1044463);
-
-            index = AddCraft(typeof(Carquois), "Accessoires", "Carquois", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(Fourreau), "Accessoires", "Fourreau", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(FourreauDos), "Accessoires", "Fourreau de Dos", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(FourreauDague), "Accessoires", "Fourreau à Dague", 40.0, 70.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauDecouvert), "Accessoires", "Fourreau à Découvert", 50.0, 80.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauRapiere), "Accessoires", "Fourreau d'Estoc", 60.0, 90.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauEpee), "Accessoires", "Fourreau à Épées", 60.0, 90.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauSabre), "Accessoires", "Fourreau à Sabres", 70.0, 100.0, typeof(Leather), "Cuir", 5, 1044463);
-
-            index = AddCraft(typeof(SacocheCeinture), "Accessoires", "Ceinture Double", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(SacocheHerboriste), "Accessoires", "Sacoche d'Herboriste", 40.0, 60.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(SacocheRoublard), "Accessoires", "Sacoche de Roublard", 50.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(SacocheAventure), "Accessoires", "Sacoche d'Aventurier", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
-
-            index = AddCraft(typeof(Pardessus), "Accessoires", "Pardessus", 20.0, 40.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(PardessusBarbare), "Accessoires", "Pardessus Barbare", 40.0, 60.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(EpauliereBarbare), "Accessoires", "Épaulière Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
+            
             
             index = AddCraft(typeof(Bracer), "Accessoires", "Bracer", 30.1, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
             index = AddCraft(typeof(BrassardsFeminins), "Accessoires", "Brassards Feminins", 40.0, 60.0, typeof(Cloth), "Tissu", 8, 1044287);
@@ -486,73 +452,65 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(BandeauAveugle), "Accessoires", "Bandeau d'Aveugle", 10.0, 30.0, typeof(Cloth), "Tissu", 4, 1044287);
             index = AddCraft(typeof(BandeauGauche), "Accessoires", "Bandeau d'Oeil Gauche", 10.0, 30.0, typeof(Cloth), "Tissu", 4, 1044287);
 
-			#endregion
+            index = AddCraft(typeof(Hamac), "Accessoires", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(LitDeCamp), "Accessoires", "Lit De Camp", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(OreillerDePaille), "Accessoires", "Oreiller De Paille", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            AddRes(index, typeof(SheafOfHay), "Paille (Sheaf of Hay)", 5, 1044563);
+            index = AddCraft(typeof(ChandailSurpendu), "Accessoires", "Chandail Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(PantalonSurpendu), "Accessoires", "Pantalon Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(JupeSurpendu), "Accessoires", "Jupe Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(HaillonSurpendu), "Accessoires", "Haillon Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(RideauSurpendu), "Accessoires", "Rideau Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            #endregion
 
-			#region Footwear
-            index = AddCraft(typeof(Sandals), "Chassures", "Sandales", 10.0, 20.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(Geta), "Chassures", "Geta", 20.0, 30.0, typeof(Leather), "Cuir", 5, 1044463);
+            #region Rideaux & Tapis
+            index = AddCraft(typeof(RideauSurSocle), "Rideaux & Tapis", "Rideau Sur Socle", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(RideauDroit), "Rideaux & Tapis", "Rideau Droit", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(RideauBlanc), "Rideaux & Tapis", "Rideau Blanc", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(RideauBlancSimple), "Rideaux & Tapis", "Rideau Blanc Simple", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(RideauDessus), "Rideaux & Tapis", "Rideau Dessus", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisBrun), "Rideaux & Tapis", "Tapis Brun", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisVert), "Rideaux & Tapis", "Tapis Vert", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisBleuFleuri), "Rideaux & Tapis", "Tapis Bleu Fleuri", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisRougeDeLys), "Rideaux & Tapis", "Tapis Rouge De Lys", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisBleuAvecMotifs), "Rideaux & Tapis", "Tapis Bleu Avec Motifs", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisJauneAvecMotifs), "Rideaux & Tapis", "Tapis Jaune Avec Motifs", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisBleuBourgogne), "Rideaux & Tapis", "Tapis Bleu Bourgogne", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            #endregion
 
-            index = AddCraft(typeof(Shoes), "Chassures", "Souliers", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(SouliersFourrure), "Chassures", "Souliers Fourrure", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(SouliersBoucles), "Chassures", "Souliers Bouclés", 50.0, 70.0, typeof(Leather), "Cuir", 7, 1044463);
+            #region Draperie
+            index = AddCraft(typeof(DrapGris), "Draperie", "Drap Gris", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(DrapBlanc), "Draperie", "Drap Blanc", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            #endregion
 
-            index = AddCraft(typeof(BottesPetites), "Chassures", "Petites Bottes", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(Boots), "Chassures", "Bottes", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(ThighBoots), "Chassures", "Bottes Longues", 50.0, 70.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(BottesBoucles), "Chassures", "Bottes Bouclés", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(Bottes), "Chassures", "Bottes Simples", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(BottesVoyage), "Chassures", "Bottes de Voyage", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(BottesLourdes), "Chassures", "Bottes Lourdes", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(BottesNoble), "Chassures", "Bottes Nobles", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(BottesFourrure), "Chassures", "Bottes Fourrure", 80.0, 100.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(BottesSombres), "Chassures", "Bottes Sombres", 90.0, 120.0, typeof(Leather), "Cuir", 16, 1044463);
+            /*#region Taxidermie
+            index = AddCraft(typeof(TeteOurs), "Draperie", "Tete d'Ours", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteCerf), "Draperie", "Tete de Cerf", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(PoissonPlanche), "Draperie", "Poisson sur Planche", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteOgre), "Draperie", "Tete d'Ogre", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteOrc), "Draperie", "Tete d'Orc", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteOursPolaire), "Draperie", "Tete d'Ours Polaire", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteTroll), "Draperie", "Tete de Troll", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            #endregion*/
 
-			#endregion
-
-			#region Leather Armor
-            index = AddCraft(typeof(LeatherGorget), "Armure de Cuir", "Gorget de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(LeatherCap), "Armure de Cuir", "Casque de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 2, 1044463);
-            index = AddCraft(typeof(LeatherGloves), "Armure de Cuir", "Gants de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 3, 1044463);
-            index = AddCraft(typeof(LeatherArms), "Armure de Cuir", "Brassards de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(LeatherLegs), "Armure de Cuir", "Jambières de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(LeatherChest), "Armure de Cuir", "Plastron de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(LeatherShorts), "Armure de Cuir", "Jupe de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(LeatherSkirt), "Armure de Cuir", "Jupette de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(LeatherBustierArms), "Armure de Cuir", "Brassards Féminins", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(FemaleLeatherChest), "Armure de Cuir", "Cuirasse Féminine", 30.0, 50.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(LeatherBarbareLeggings), "Armure de Cuir", "Jambière de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(LeatherBarbareTunic), "Armure de Cuir", "Plastron de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(RoublardLeggings), "Armure de Cuir", "Jambières Roublardes", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(RoublardTunic), "Armure de Cuir", "Plastron Roublard", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(ElfiqueCuirTunic), "Armure de Cuir", "Plastron de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(ElfiqueCuirRobe), "Armure de Cuir", "Vetement de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 14, 1044463);
-
-			#endregion
-
-			#region Studded Armor
-            index = AddCraft(typeof(StuddedGorget), "Armure de Cuir Clouté", "Gorget de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(StuddedGloves), "Armure de Cuir Clouté", "Gants de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(StuddedArms), "Armure de Cuir Clouté", "Brassards de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(StuddedLegs), "Armure de Cuir Clouté", "Jambières de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(StuddedChest), "Armure de Cuir Clouté", "Plastron de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(StuddedBustierArms), "Armure de Cuir Clouté", "Brassards Féminins", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(FemaleStuddedChest), "Armure de Cuir Clouté", "Cuirasse Féminine", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(ElfeHelm), "Armure de Cuir Clouté", "Casque de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
-            AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeGorget), "Armure de Cuir Clouté", "Gorget de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
-            AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeArms), "Armure de Cuir Clouté", "Brassards de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
-            AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeLeggings), "Armure de Cuir Clouté", "Jambières de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
-            AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeTunic), "Armure de Cuir Clouté", "Tunique de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
-            AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(StuddedBarbareGreaves), "Armure de Cuir Clouté", "Brassards Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(StuddedBarbareGorget), "Armure de Cuir Clouté", "Gorget Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(StuddedBarbareLeggings), "Armure de Cuir Clouté", "Jambières Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Tunique Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 14, 1044463);
-
-			#endregion
+            
 
 			// Set the overridable material
 			SetSubRes(typeof(Leather), "Cuir");
