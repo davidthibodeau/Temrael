@@ -1447,13 +1447,13 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
 
-                int req = GetArmorLevel((BaseArmor)item);
+                /*int req = GetArmorLevel((BaseArmor)item);
 
                 if (GetAptitudeValue(Aptitude.PortBouclier) < req)
                 {
                     SendMessage("Aptitude de port de bouclier requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             else if (item is BaseArmor)
             {
@@ -1470,13 +1470,13 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
 
-                int req = GetArmorLevel((BaseArmor)item);
+                /*int req = GetArmorLevel((BaseArmor)item);
 
                 if (GetAptitudeValue(Aptitude.PortArmure) < req)
                 {
                     SendMessage("Aptitude de port d'armure requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             else if (item is BaseRanged)
             {
@@ -1493,12 +1493,12 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
 
-                int req = ((BaseWeapon)item).NiveauAttirail;
+                /*int req = ((BaseWeapon)item).NiveauAttirail;
                 if (GetAptitudeValue(Aptitude.PortArmeDistance) < req)
                 {
                     SendMessage("Aptitude de port d'arme de distance requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             else if (item is BaseWeapon)
             {
@@ -1515,12 +1515,12 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
 
-                int req = ((BaseWeapon)item).NiveauAttirail;
+                /*int req = ((BaseWeapon)item).NiveauAttirail;
                 if (GetAptitudeValue(Aptitude.PortArme) < req)
                 {
                     SendMessage("Aptitude de port d'arme requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             else if (item is BaseJewel)
             {
@@ -1575,13 +1575,13 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
 
-                int req = GetArmorLevel((BaseArmor)item);
+                /*int req = GetArmorLevel((BaseArmor)item);
 
                 if (GetAptitudeValue(Aptitude.PortBouclier) < req)
                 {
                     SendMessage("Aptitude de port de bouclier requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             if (item is BaseArmor)
             {
@@ -1598,13 +1598,13 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
                 
-                int req = GetArmorLevel((BaseArmor)item);
+                /*int req = GetArmorLevel((BaseArmor)item);
                 
                 if (GetAptitudeValue(Aptitude.PortArmure) < req)
                 {
                     SendMessage("Aptitude de port d'armure requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             else if (item is BaseRanged)
             {
@@ -1621,12 +1621,12 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
 
-                int req = ((BaseWeapon)item).NiveauAttirail;
+                /*int req = ((BaseWeapon)item).NiveauAttirail;
                 if (GetAptitudeValue(Aptitude.PortArmeDistance) < req)
                 {
                     SendMessage("Aptitude de port d'arme de distance requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             else if (item is BaseWeapon)
             {
@@ -1643,12 +1643,12 @@ namespace Server.Mobiles
                 if (m_BonusMana > 25)
                     m_BonusMana = 25;
 
-                int req = ((BaseWeapon)item).NiveauAttirail;
+                /*int req = ((BaseWeapon)item).NiveauAttirail;
                 if (GetAptitudeValue(Aptitude.PortArme) < req)
                 {
                     SendMessage("Aptitude de port d'arme requis pour être porté : " + req);
                     return false;
-                }
+                }*/
             }
             else if (item is BaseJewel)
             {
