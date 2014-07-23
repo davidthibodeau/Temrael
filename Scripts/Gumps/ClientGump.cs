@@ -55,7 +55,7 @@ namespace Server.Gumps
 
                         if (text != null)
                         {
-                            focus.SendMessage(0x482, "{0} vous a envoye un message HRP: ", from.GetNameUseBy(focus));
+                            focus.SendMessage(0x482, "{0} {1} vous a envoye un message HRP: ", from.GetNameUseBy(focus));
                             focus.SendMessage(0x482, text.Text);
 
                             CommandLogging.WriteLine(from, "{0} {1} telling {2} \"{3}\" ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus), text.Text);
@@ -65,6 +65,23 @@ namespace Server.Gumps
 
                         break;
                     }
+                case 2: // Tell + Reply Gump
+                    {
+                    TextRelay text = info.GetTextEntry(0);
+
+                        if (text != null)
+                        {
+                            focus.SendMessage(0x482, "{0} vous a envoye un message HRP: ", from.GetNameUseBy(focus));
+                            focus.SendMessage(0x482, text.Text);
+                            focus.SendGump(new ClientGump(focus, state));
+                            CommandLogging.WriteLine(from, "{0} {1} telling {2} \"{3}\" ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus), text.Text);
+                        }
+
+                        //from.SendGump(new ClientGump(from, m_State));
+
+                        break;
+                    }
+
                 case 4: // Props
                     {
                         Resend(from, info);
@@ -247,7 +264,7 @@ namespace Server.Gumps
                     AddHtml(14, 36 + (line * 20), 200, 20, Color("Location:", LabelColor32), false, false);
                     AddHtml(70, 36 + (line++ * 20), 200, 20, Color(String.Format("{0} [{1}]", m.Location, m.Map), LabelColor32), false, false);
                 }
-                AddButton(13, 157, 0xFAB, 0xFAD, 1, GumpButtonType.Reply, 0);
+                AddButton(13, 157, 0xFAB, 0xFAD, 2, GumpButtonType.Reply, 0);
                 AddHtml(48, 158, 200, 20, Color("Envoyer", LabelColor32), false, false);
 
                 AddImageTiled(12, 182, 376, 80, 0xA40);
@@ -387,14 +404,14 @@ namespace Server.Gumps
 #endif
         }
 
-        private static string GetNameFor(Mobile m, Mobile from)
+        private static string GetNameFor(Mobile m, Mobile m_Owner)
         {
             if (m is TMobile)
             {
-                if (((TMobile)m).Races == Races.Tieffelin)
-                    return String.Format("{0}, {1}", m.GetNameUseBy(from), Races.Capiceen.ToString());
+                if (((TMobile)m).Races == Races.Tieffelin || ((TMobile)m).Races == Races.Aasimar)
+                    return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).RaceSecrete.ToString());
                 else
-                    return String.Format("{0}, {1}", m.GetNameUseBy(from), ((TMobile)m).Races.ToString());
+                    return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).Races.ToString());
             }
             else
             {
