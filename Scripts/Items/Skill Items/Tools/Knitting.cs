@@ -13,7 +13,8 @@ namespace Server.Items
             : base(0xDF6)
         {
             Weight = 2.0;
-            Layer = Layer.OneHanded;
+            Name = "Kit de couture (Cuir/Os)";
+            Layer = Layer.TwoHanded;
         }
 
         [Constructable]
@@ -21,7 +22,8 @@ namespace Server.Items
             : base(uses, 0xDF6)
         {
             Weight = 2.0;
-            Layer = Layer.OneHanded;
+            Name = "Kit de couture (Cuir/Os)";
+            Layer = Layer.TwoHanded;
         }
 
         public Knitting(Serial serial)

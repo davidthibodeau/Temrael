@@ -50,7 +50,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Sac à dos", typeof( Backpack ), 15, 20, 0x9B2, 0 ) );
 
 				Add( new GenericBuyInfo( "Cuir", typeof( Leather ), 12, 20, 0x1081, 0 ) );
-                Add(new GenericBuyInfo("Outil à Os", typeof(BoneSewingKit), 12, 20, 0xF9D, 0));
+                Add( new GenericBuyInfo( "Kit de couture (Cuir/Os)", typeof(BoneLeatherSewingKit), 12, 20, 0xF9D, 0));
 
 				//Add( new GenericBuyInfo( typeof( SkinningKnife ), 10, 20, 0xEC4, 0 ) );
 

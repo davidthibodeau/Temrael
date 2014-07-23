@@ -258,7 +258,6 @@
     <Compile Include=".\Custom\Engines\Craft\Core\Resmelt.cs" />
     <Compile Include=".\Custom\Engines\Craft\DefAlchemy.cs" />
     <Compile Include=".\Custom\Engines\Craft\DefBlacksmithy.cs" />
-    <Compile Include=".\Custom\Engines\Craft\DefBoneTailoring.cs" />
     <Compile Include=".\Custom\Engines\Craft\DefBowFletching.cs" />
     <Compile Include=".\Custom\Engines\Craft\DefCarpentry.cs" />
     <Compile Include=".\Custom\Engines\Craft\DefCartography.cs" />
@@ -367,6 +366,7 @@
     <Compile Include=".\Custom\Gumps\Fiche\FicheCaracteristiqueGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheClasseGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheCommandesGump.cs" />
+    <Compile Include="Custom\Engines\Craft\DefBoneLeatherTailoring.cs" />
     <Compile Include="Custom\Gumps\Fiche\FicheStatistiquesGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheRaceGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheResetMessageGump.cs" />

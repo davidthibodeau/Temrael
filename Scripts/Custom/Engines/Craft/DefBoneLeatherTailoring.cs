@@ -125,24 +125,20 @@ namespace Server.Engines.Craft
         {
             int index = -1;
 
-            #region Bone Armor
+            #region Armure d'Os
             index = AddCraft(typeof(BoneHelm), "Armure d'Os", "Casque d'Os", 40.0, 70.0, typeof(Bone), "Os", 4, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
-
             index = AddCraft(typeof(BoneGloves), "Armure d'Os", "Gants d'Os", 40.0, 70.0, typeof(Bone), "Os", 6, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 3, 1044463);
-
             index = AddCraft(typeof(BoneArms), "Armure d'Os", "Brassards d'Os", 40.0, 70.0, typeof(Bone), "Os", 8, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 4, 1044463);
-
             index = AddCraft(typeof(BoneLegs), "Armure d'Os", "Jambieres d'Os", 40.0, 70.0, typeof(Bone), "Os", 10, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 5, 1044463);
-
             index = AddCraft(typeof(BoneChest), "Armure d'Os", "Plastron d'Os", 40.0, 70.0, typeof(Bone), "Os", 12, 1044463);
             AddRes(index, typeof(Leather), "Cuir", 6, 1044463);
             #endregion
 
-            #region Leather Armor
+            #region Armure de Cuir
             index = AddCraft(typeof(LeatherGorget), "Armure de Cuir", "Gorget de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463);
             index = AddCraft(typeof(LeatherCap), "Armure de Cuir", "Casque de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 2, 1044463);
             index = AddCraft(typeof(LeatherGloves), "Armure de Cuir", "Gants de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 3, 1044463);
@@ -162,7 +158,7 @@ namespace Server.Engines.Craft
 
             #endregion
 
-            #region Studded Armor
+            #region Armure de Cuir Clouté
             index = AddCraft(typeof(StuddedGorget), "Armure de Cuir Clouté", "Gorget de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 6, 1044463);
             index = AddCraft(typeof(StuddedGloves), "Armure de Cuir Clouté", "Gants de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463);
             index = AddCraft(typeof(StuddedArms), "Armure de Cuir Clouté", "Brassards de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
@@ -186,24 +182,24 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Tunique Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 14, 1044463);
             #endregion
 
-            #region Footwear
-            index = AddCraft(typeof(Sandals), "Chassures", "Sandales", 10.0, 20.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(Geta), "Chassures", "Geta", 20.0, 30.0, typeof(Leather), "Cuir", 5, 1044463);
+            #region Chaussures
+            index = AddCraft(typeof(Sandals), "Chaussures & Bottes", "Sandales", 10.0, 20.0, typeof(Leather), "Cuir", 4, 1044463);
+            index = AddCraft(typeof(Geta), "Chaussures & Bottes", "Geta", 20.0, 30.0, typeof(Leather), "Cuir", 5, 1044463);
 
-            index = AddCraft(typeof(Shoes), "Chassures", "Souliers", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(SouliersFourrure), "Chassures", "Souliers Fourrure", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(SouliersBoucles), "Chassures", "Souliers Bouclés", 50.0, 70.0, typeof(Leather), "Cuir", 7, 1044463);
+            index = AddCraft(typeof(Shoes), "Chaussures & Bottes", "Souliers", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(SouliersFourrure), "Chaussures & Bottes", "Souliers Fourrure", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(SouliersBoucles), "Chaussures & Bottes", "Souliers Bouclés", 50.0, 70.0, typeof(Leather), "Cuir", 7, 1044463);
 
-            index = AddCraft(typeof(BottesPetites), "Chassures", "Petites Bottes", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(Boots), "Chassures", "Bottes", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(ThighBoots), "Chassures", "Bottes Longues", 50.0, 70.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(BottesBoucles), "Chassures", "Bottes Bouclés", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(Bottes), "Chassures", "Bottes Simples", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(BottesVoyage), "Chassures", "Bottes de Voyage", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(BottesLourdes), "Chassures", "Bottes Lourdes", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(BottesNoble), "Chassures", "Bottes Nobles", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(BottesFourrure), "Chassures", "Bottes Fourrure", 80.0, 100.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(BottesSombres), "Chassures", "Bottes Sombres", 90.0, 120.0, typeof(Leather), "Cuir", 16, 1044463);
+            index = AddCraft(typeof(BottesPetites), "Chaussures & Bottes", "Petites Bottes", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(Boots), "Chaussures & Bottes", "Bottes", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(ThighBoots), "Chaussures & Bottes", "Bottes Longues", 50.0, 70.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(BottesBoucles), "Chaussures & Bottes", "Bottes Bouclés", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(Bottes), "Chaussures & Bottes", "Bottes Simples", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(BottesVoyage), "Chaussures & Bottes", "Bottes de Voyage", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(BottesLourdes), "Chaussures & Bottes", "Bottes Lourdes", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(BottesNoble), "Chaussures & Bottes", "Bottes Nobles", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(BottesFourrure), "Chaussures & Bottes", "Bottes Fourrure", 80.0, 100.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(BottesSombres), "Chaussures & Bottes", "Bottes Sombres", 90.0, 120.0, typeof(Leather), "Cuir", 16, 1044463);
             #endregion
 
             index = AddCraft(typeof(CeinturePauvre), "Accessoires", "Ceinture Pauvre", 0.0, 20.0, typeof(Leather), "Cuir", 4, 1044463);

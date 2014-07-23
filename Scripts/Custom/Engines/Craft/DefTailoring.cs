@@ -124,7 +124,7 @@ namespace Server.Engines.Craft
 		{
 			int index = -1;
 
-			#region Hats
+            #region Chapeaux
             index = AddCraft(typeof(SkullCap), "Chapeaux", "Bandeau", 0.0, 20.0, typeof(Cloth), "Tissu", 2, 1044287);
             index = AddCraft(typeof(Bandana), "Chapeaux", "Bandana", 0.0, 25.0, typeof(Cloth), "Tissu", 2, 1044287);
             index = AddCraft(typeof(Turban), "Chapeaux", "Turban", 10.0, 20.0, typeof(Cloth), "Tissu", 5, 1044287);
@@ -150,31 +150,114 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ChapeauNoble), "Chapeaux", "Béret", 80.0, 90.0, typeof(Cloth), "Tissu", 6, 1044287);
             index = AddCraft(typeof(ChapeauLoup), "Chapeaux", "Tête de Loup", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
 			#endregion
-			
-			#region Coussins
-			index = AddCraft(typeof(CoussinB), "Coussins", "Petit coussin carré", 20.0, 40.0, typeof(Cloth), "Tissu", 3, 1044287);
-            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinA), "Coussins", "Gros oreiller", 40.0, 60.0, typeof(Cloth), "Tissu", 4, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinC), "Coussins", "Gros oreiller de velours", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinD), "Coussins", "Gros oreiller carré", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinE), "Coussins", "Petit coussin rond clair", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinF), "Coussins", "petit coussin rond sombre", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinG), "Coussins", "Petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinH), "Coussins", "Autre petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinI), "Coussins", "Gros coussin carré", 40.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-			index = AddCraft(typeof(CoussinJ), "Coussins", "Gros coussin carré droit", 0.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
-			AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+
+            #region Capes
+            index = AddCraft(typeof(CapeCourte), "Capes", "Cape Courte", 10.0, 40.0, typeof(Cloth), "Tissu", 6, 1044287);
+            index = AddCraft(typeof(CapeVoyage), "Capes", "Cape de Voyage", 20.0, 50.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(CapeBarbare), "Capes", "Cape Barbare", 30.0, 60.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(CapeNordique), "Capes", "Cape Nordique", 30.0, 60.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(Cloak), "Capes", "Cape", 40.0, 70.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(CapeEtendard), "Capes", "Cape Étendard", 40.0, 70.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(CapeCapuche), "Capes", "Cape à Capuche", 40.0, 70.0, typeof(Cloth), "Tissu", 15, 1044287);
+            index = AddCraft(typeof(CapeCol), "Capes", "Cape à Col", 40.0, 70.0, typeof(Cloth), "Tissu", 15, 1044287);
+            index = AddCraft(typeof(CapeColLong), "Capes", "Cape à Long Col", 50.0, 80.0, typeof(Cloth), "Tissu", 16, 1044287);
+            index = AddCraft(typeof(CapeSolide), "Capes", "Cape Solide", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(CapeEpauliere), "Capes", "Cape à Épaulières", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(CapeDecore), "Capes", "Cape Décorée", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(CapeLongue), "Capes", "Cape Longue", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(CapeTrainee), "Capes", "Cape à Trainée", 60.0, 90.0, typeof(Cloth), "Tissu", 17, 1044287);
+            index = AddCraft(typeof(CapeCagoule), "Capes", "Cape à Cagoule", 60.0, 90.0, typeof(Cloth), "Tissu", 15, 1044287);
+            index = AddCraft(typeof(CapeNoble), "Capes", "Cape Noble", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(Voile), "Capes", "Voile", 70.0, 100.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(CapeFeminine), "Capes", "Cape Féminine", 70.0, 100.0, typeof(Cloth), "Tissu", 13, 1044287);
+            index = AddCraft(typeof(CapeFourrure), "Capes", "Cape de Cuir", 80.0, 110.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(CapePoil), "Capes", "Cape de Poil", 80.0, 110.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(CapeJarl), "Capes", "Cape de Fourrure", 90.0, 120.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(CapePlume), "Capes", "Cape à Plumes", 90.0, 120.0, typeof(Feather), "Plumes", 60, 1044563);
+            index = AddCraft(typeof(CapeSombre), "Capes", "Cape Sombre", 90.0, 120.0, typeof(Cloth), "Tissu", 60, 1044287);
             #endregion
-			
-            #region Toges
+
+            #region Chandails & Chemises
+            index = AddCraft(typeof(ChandailCourtDechire), "Chandails & Chemises", "Chandail Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(ChandailDechire), "Chandails & Chemises", "Chemise Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(ChandailLongDechire), "Chandails & Chemises", "Chandail Long Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(TuniqueDechire), "Tuniques", "Tunique Déchirée", 0.0, 10.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TuniqueLongueDechire), "Tuniques", "Tunique Longue Déchirée", 0.0, 10.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(TabarDechire), "Tuniques", "Tabar Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 10, 1044287);
+
+            index = AddCraft(typeof(ChandailCourtBarbare), "Chandails & Chemises", "Chandail Court Barbare", 5.0, 20.0, typeof(Cloth), "Tissu", 6, 1044287);
+            index = AddCraft(typeof(ChandailLongBarbare), "Chandails & Chemises", "Chandail Long Barbare", 5.0, 20.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailVieux), "Chandails & Chemises", "Vieux Chandail", 10.0, 30.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(SoutienGorge), "Chandails & Chemises", "Petit Soutien Gorge", 20.0, 40.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailSoutienGorge), "Chandails & Chemises", "Soutien Gorge", 20.0, 40.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(Chandail), "Chandails & Chemises", "Chandail", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(Shirt), "Chandails & Chemises", "Chandail Sans Manches", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailSombre), "Chandails & Chemises", "Chandail Sombre", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(FancyShirt), "Chandails & Chemises", "Chandail à manches longues", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailBordel), "Chandails & Chemises", "Chandail de Bordel", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailDecore), "Chandails & Chemises", "Chandail Decoré", 60.0, 90.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailCourt), "Chandails & Chemises", "Chandail Court", 60.0, 90.0, typeof(Cloth), "Tissu", 7, 1044287);
+            index = AddCraft(typeof(ChandailMarin), "Chandails & Chemises", "Chandail Marin", 70.0, 100.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailCombat), "Chandails & Chemises", "Chandail de Combat", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailFeminin), "Chandails & Chemises", "Chandail Féminin", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChandailNoble), "Chandails & Chemises", "Chandail Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 8, 1044287);
+
+            index = AddCraft(typeof(ChemiseOrient), "Chandails & Chemises", "Chemise d'Orient", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChemiseCol), "Chandails & Chemises", "Chemise à Col", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChemiseReligieuse), "Chandails & Chemises", "Chemise Religieuse", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(Chemiselacee), "Chandails & Chemises", "Chemise Lacée", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChemiseBourgeoise), "Chandails & Chemises", "Chemise Bourgeoise", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ChemiseGaine), "Chandails & Chemises", "Chemise à Gaine", 60.0, 90.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(ChemiseLongue), "Chandails & Chemises", "Chemise à manches longues", 70.0, 100.0, typeof(Cloth), "Tissu", 11, 1044287);
+            index = AddCraft(typeof(ChemiseElfique), "Chandails & Chemises", "Chemise Elfique", 70.0, 100.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(ChemiseAmple), "Chandails & Chemises", "Chemise Ample", 80.0, 110.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(ChemiseNoble), "Chandails & Chemises", "Chemise Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 10, 1044287);
+
+            index = AddCraft(typeof(CorsetPetit), "Chandails & Chemises", "Petit Corset", 10.0, 30.0, typeof(Cloth), "Tissu", 6, 1044287);
+            index = AddCraft(typeof(CorsetOuvert), "Chandails & Chemises", "Corset Ouvert", 30.0, 50.0, typeof(Cloth), "Tissu", 7, 1044287);
+            index = AddCraft(typeof(Corset), "Chandails & Chemises", "Corset Simple", 50.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(CorsetLong), "Chandails & Chemises", "Corset Long", 60.0, 90.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(CorsetAmple), "Chandails & Chemises", "Corset Ample", 70.0, 100.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(CorsetSombre), "Chandails & Chemises", "Corset Sombre", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
+            #endregion
+
+            #region Tuniques & Veston
+            index = AddCraft(typeof(Doublet), "Tuniques & Veston", "Doublet", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(DoubletBouton), "Tuniques & Veston", "Doublet à Boutons", 50.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(DoubletAmple), "Tuniques & Veston", "Doublet Ample", 60.0, 90.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(DoubletFeminin), "Tuniques & Veston", "Doublet d'Alfar", 70.0, 100.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(DoubletArmure), "Tuniques & Veston", "Doublet Armuré", 80.0, 110.0, typeof(Cloth), "Tissu", 9, 1044287);
+
+            index = AddCraft(typeof(TuniqueOuverte), "Tuniques & Veston", "Tunique Ouverte", 0.0, 20.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(TuniquePardessus), "Tuniques & Veston", "Tunique de Voyage", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(Tunic), "Tuniques & Veston", "Tunique", 20.0, 50.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(TuniquePaysanne), "Tuniques & Veston", "Tunique Simple", 30.0, 60.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(TuniqueVoyage), "Tuniques & Veston", "Tunique de Voyage", 40.0, 70.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(Tunique), "Tuniques & Veston", "Large Tunique", 40.0, 70.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(TuniqueAmple), "Tuniques & Veston", "Tunique Ample", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniquePirate), "Tuniques & Veston", "Tunique de Pirate", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(JesterSuit), "Tuniques & Veston", "Tunique des Fols", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueOrientale), "Tuniques & Veston", "Tunique Orientale", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueNomade), "Tuniques & Veston", "Tunique de Nomade", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueBourgeoise), "Tuniques & Veston", "Tunique Bourgeoise", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniquePage), "Tuniques & Veston", "Tunique de Page", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueAssassin), "Tuniques & Veston", "Tunique d'Assassin", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueNoble), "Tuniques & Veston", "Tunique Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 14, 1044287);
+
+            index = AddCraft(typeof(Veston), "Tuniques & Veston", "Veston", 10.0, 30.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(VesteCuir), "Tuniques & Veston", "Veste de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463);
+            index = AddCraft(typeof(VestePoil), "Tuniques & Veston", "Veste de Poil", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463);
+            index = AddCraft(typeof(Veste), "Tuniques & Veston", "Veste", 60.0, 80.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(VesteLourde), "Tuniques & Veston", "Veste Ample", 70.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
+
+            index = AddCraft(typeof(Surcoat), "Tuniques & Veston", "Surcot", 30.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TabarCourt), "Tuniques & Veston", "Tabar Court", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TabarReligieux), "Tuniques & Veston", "Tabar Religieux", 70.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TabarLong), "Tuniques & Veston", "Tabar Long", 80.0, 100.0, typeof(Cloth), "Tissu", 18, 1044287);
+
+            #endregion
+
+            #region Toges & Manteaux
             index = AddCraft(typeof(Robe), "Toges & Manteaux", "Toge", 0.0, 30.0, typeof(Cloth), "Tissu", 16, 1044287);
             index = AddCraft(typeof(TogeSoutane), "Toges & Manteaux", "Soutane", 20.0, 40.0, typeof(Cloth), "Tissu", 17, 1044287);
             index = AddCraft(typeof(TogePelerin), "Toges & Manteaux", "Toge Pèlerine", 30.0, 50.0, typeof(Cloth), "Tissu", 17, 1044287);
@@ -201,32 +284,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ManteauLong), "Toges & Manteaux", "Manteau Long", 70.0, 90.0, typeof(Cloth), "Tissu", 13, 1044287);
             index = AddCraft(typeof(ManteauRaye), "Toges & Manteaux", "Manteau Rayé", 80.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(ManteauNoble), "Toges & Manteaux", "Manteau Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 18, 1044287);
-            #endregion
-
-            #region Capes
-            index = AddCraft(typeof(CapeCourte), "Capes", "Cape Courte", 10.0, 40.0, typeof(Cloth), "Tissu", 6, 1044287);
-            index = AddCraft(typeof(CapeVoyage), "Capes", "Cape de Voyage", 20.0, 50.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(CapeBarbare), "Capes", "Cape Barbare", 30.0, 60.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(CapeNordique), "Capes", "Cape Nordique", 30.0, 60.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(Cloak), "Capes", "Cape", 40.0, 70.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(CapeEtendard), "Capes", "Cape Étendard", 40.0, 70.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(CapeCapuche), "Capes", "Cape à Capuche", 40.0, 70.0, typeof(Cloth), "Tissu", 15, 1044287);
-            index = AddCraft(typeof(CapeCol), "Capes", "Cape à Col", 40.0, 70.0, typeof(Cloth), "Tissu", 15, 1044287);
-            index = AddCraft(typeof(CapeColLong), "Capes", "Cape à Long Col", 50.0, 80.0, typeof(Cloth), "Tissu", 16, 1044287);
-            index = AddCraft(typeof(CapeSolide), "Capes", "Cape Solide", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(CapeEpauliere), "Capes", "Cape à Épaulières", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(CapeDecore), "Capes", "Cape Décorée", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(CapeLongue), "Capes", "Cape Longue", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(CapeTrainee), "Capes", "Cape à Trainée", 60.0, 90.0, typeof(Cloth), "Tissu", 17, 1044287);
-            index = AddCraft(typeof(CapeCagoule), "Capes", "Cape à Cagoule", 60.0, 90.0, typeof(Cloth), "Tissu", 15, 1044287);
-            index = AddCraft(typeof(CapeNoble), "Capes", "Cape Noble", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(Voile), "Capes", "Voile", 70.0, 100.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(CapeFeminine), "Capes", "Cape Féminine", 70.0, 100.0, typeof(Cloth), "Tissu", 13, 1044287);
-            index = AddCraft(typeof(CapeFourrure), "Capes", "Cape de Cuir", 80.0, 110.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(CapePoil), "Capes", "Cape de Poil", 80.0, 110.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(CapeJarl), "Capes", "Cape de Fourrure", 90.0, 120.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(CapePlume), "Capes", "Cape à Plumes", 90.0, 120.0, typeof(Feather), "Plumes", 60, 1044563);
-            index = AddCraft(typeof(CapeSombre), "Capes", "Cape Sombre", 90.0, 120.0, typeof(Cloth), "Tissu", 60, 1044287);
             #endregion
 
             #region Robes
@@ -290,128 +347,52 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(RobeMariage), "Robes", "Robe de Mariage", 95.0, 125.0, typeof(Cloth), "Tissu", 16, 1044287);
             #endregion
 
-            #region Shirts
-            index = AddCraft(typeof(ChandailCourtDechire), "Tuniques & Chemises", "Chandail Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(ChandailDechire), "Tuniques & Chemises", "Chemise Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(ChandailLongDechire), "Tuniques & Chemises", "Chandail Long Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(TuniqueDechire), "Tuniques & Chemises", "Tunique Déchirée", 0.0, 10.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TuniqueLongueDechire), "Tuniques & Chemises", "Tunique Longue Déchirée", 0.0, 10.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(TabarDechire), "Tuniques & Chemises", "Tabar Déchiré", 0.0, 10.0, typeof(Cloth), "Tissu", 10, 1044287);
+            #region Pantalons
+            index = AddCraft(typeof(PantalonsDechires), "Pantalons", "Pantalons Déchirés", 0.0, 10.0, typeof(Cloth), "Tissu", 5, 1044287);
+            index = AddCraft(typeof(PantalonsPauvre), "Pantalons", "Pantalons Pauvres", 0.0, 10.0, typeof(Cloth), "Tissu", 6, 1044287);
 
-            index = AddCraft(typeof(ChandailCourtBarbare), "Tuniques & Chemises", "Chandail Court Barbare", 5.0, 20.0, typeof(Cloth), "Tissu", 6, 1044287);
-            index = AddCraft(typeof(ChandailLongBarbare), "Tuniques & Chemises", "Chandail Long Barbare", 5.0, 20.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailVieux), "Tuniques & Chemises", "Vieux Chandail", 10.0, 30.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(SoutienGorge), "Tuniques & Chemises", "Petit Soutien Gorge", 20.0, 40.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailSoutienGorge), "Tuniques & Chemises", "Soutien Gorge", 20.0, 40.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(Chandail), "Tuniques & Chemises", "Chandail", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(Shirt), "Tuniques & Chemises", "Chandail Sans Manches", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailSombre), "Tuniques & Chemises", "Chandail Sombre", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(FancyShirt), "Tuniques & Chemises", "Chandail à manches longues", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailBordel), "Tuniques & Chemises", "Chandail de Bordel", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailDecore), "Tuniques & Chemises", "Chandail Decoré", 60.0, 90.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailCourt), "Tuniques & Chemises", "Chandail Court", 60.0, 90.0, typeof(Cloth), "Tissu", 7, 1044287);
-            index = AddCraft(typeof(ChandailMarin), "Tuniques & Chemises", "Chandail Marin", 70.0, 100.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailCombat), "Tuniques & Chemises", "Chandail de Combat", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailFeminin), "Tuniques & Chemises", "Chandail Féminin", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChandailNoble), "Tuniques & Chemises", "Chandail Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(ShortPants), "Pantalons", "Pantalons Courts", 5.0, 20.0, typeof(Cloth), "Tissu", 6, 1044287);
+            index = AddCraft(typeof(LongPants), "Pantalons", "Pantalons Longs", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(PantalonsOuvert), "Pantalons", "Pantalons Ouvert", 20.0, 50.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(PantalonsOrient), "Pantalons", "Pantalons d'Orient", 30.0, 60.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(PantalonsNordique), "Pantalons", "Pantalons Nordiques", 40.0, 70.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(PantalonsNomade), "Pantalons", "Pantalons de Nomades", 40.0, 70.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(Pantalons), "Pantalons", "Pantalons Simples", 50.0, 80.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(PantalonsCourts), "Pantalons", "Pantalons Amples Courts", 50.0, 80.0, typeof(Cloth), "Tissu", 7, 1044287);
+            index = AddCraft(typeof(PantalonsLongs), "Pantalons", "Pantalons Amples Longs", 60.0, 90.0, typeof(Cloth), "Tissu", 9, 1044287);
+            index = AddCraft(typeof(PantalonsCuir), "Pantalons", "Pantalons de Cuir", 70.0, 100.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(PantalonsMoulant), "Pantalons", "Pantalons Moulants", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(PantalonsArmure), "Pantalons", "Pantalons Armuré", 90.0, 120.0, typeof(Leather), "Cuir", 9, 1044463);
+            #endregion
 
-            index = AddCraft(typeof(ChemiseOrient), "Tuniques & Chemises", "Chemise d'Orient", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChemiseCol), "Tuniques & Chemises", "Chemise à Col", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChemiseReligieuse), "Tuniques & Chemises", "Chemise Religieuse", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(Chemiselacee), "Tuniques & Chemises", "Chemise Lacée", 40.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChemiseBourgeoise), "Tuniques & Chemises", "Chemise Bourgeoise", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(ChemiseGaine), "Tuniques & Chemises", "Chemise à Gaine", 60.0, 90.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(ChemiseLongue), "Tuniques & Chemises", "Chemise à manches longues", 70.0, 100.0, typeof(Cloth), "Tissu", 11, 1044287);
-            index = AddCraft(typeof(ChemiseElfique), "Tuniques & Chemises", "Chemise Elfique", 70.0, 100.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(ChemiseAmple), "Tuniques & Chemises", "Chemise Ample", 80.0, 110.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(ChemiseNoble), "Tuniques & Chemises", "Chemise Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 10, 1044287);
+            #region Kilt & Jupes
+            index = AddCraft(typeof(Kilt), "Kilt & Jupes", "Kilt", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(TuniqueKilt), "Kilt & Jupes", "Long Kilt", 30.0, 50.0, typeof(Cloth), "Tissu", 12, 1044287);
 
-            index = AddCraft(typeof(CorsetPetit), "Tuniques & Chemises", "Petit Corset", 10.0, 30.0, typeof(Cloth), "Tissu", 6, 1044287);
-            index = AddCraft(typeof(CorsetOuvert), "Tuniques & Chemises", "Corset Ouvert", 30.0, 50.0, typeof(Cloth), "Tissu", 7, 1044287);
-            index = AddCraft(typeof(Corset), "Tuniques & Chemises", "Corset Simple", 50.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(CorsetLong), "Tuniques & Chemises", "Corset Long", 60.0, 90.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(CorsetAmple), "Tuniques & Chemises", "Corset Ample", 70.0, 100.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(CorsetSombre), "Tuniques & Chemises", "Corset Sombre", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
-
-            index = AddCraft(typeof(Doublet), "Tuniques & Chemises", "Doublet", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(DoubletBouton), "Tuniques & Chemises", "Doublet à Boutons", 50.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(DoubletAmple), "Tuniques & Chemises", "Doublet Ample", 60.0, 90.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(DoubletFeminin), "Tuniques & Chemises", "Doublet d'Alfar", 70.0, 100.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(DoubletArmure), "Tuniques & Chemises", "Doublet Armuré", 80.0, 110.0, typeof(Cloth), "Tissu", 9, 1044287);
-
-            index = AddCraft(typeof(TuniqueOuverte), "Tuniques & Chemises", "Tunique Ouverte", 0.0, 20.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(TuniquePardessus), "Tuniques & Chemises", "Tunique de Voyage", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(Tunic), "Tuniques & Chemises", "Tunique", 20.0, 50.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(TuniquePaysanne), "Tuniques & Chemises", "Tunique Simple", 30.0, 60.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(TuniqueVoyage), "Tuniques & Chemises", "Tunique de Voyage", 40.0, 70.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(Tunique), "Tuniques & Chemises", "Large Tunique", 40.0, 70.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(TuniqueAmple), "Tuniques & Chemises", "Tunique Ample", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TuniquePirate), "Tuniques & Chemises", "Tunique de Pirate", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(JesterSuit), "Tuniques & Chemises", "Tunique des Fols", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TuniqueOrientale), "Tuniques & Chemises", "Tunique Orientale", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TuniqueNomade), "Tuniques & Chemises", "Tunique de Nomade", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TuniqueBourgeoise), "Tuniques & Chemises", "Tunique Bourgeoise", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TuniquePage), "Tuniques & Chemises", "Tunique de Page", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TuniqueAssassin), "Tuniques & Chemises", "Tunique d'Assassin", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TuniqueNoble), "Tuniques & Chemises", "Tunique Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 14, 1044287);
-
-            index = AddCraft(typeof(Veston), "Tuniques & Chemises", "Veston", 10.0, 30.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(VesteCuir), "Tuniques & Chemises", "Veste de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(VestePoil), "Tuniques & Chemises", "Veste de Poil", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(Veste), "Tuniques & Chemises", "Veste", 60.0, 80.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(VesteLourde), "Tuniques & Chemises", "Veste Ample", 70.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
-
-            index = AddCraft(typeof(Surcoat), "Tuniques & Chemises", "Surcot", 30.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TabarCourt), "Tuniques & Chemises", "Tabar Court", 50.0, 80.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TabarReligieux), "Tuniques & Chemises", "Tabar Religieux", 70.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
-            index = AddCraft(typeof(TabarLong), "Tuniques & Chemises", "Tabar Long", 80.0, 100.0, typeof(Cloth), "Tissu", 18, 1044287);
+            index = AddCraft(typeof(JupeOuvrier), "Kilt & Jupes", "Jupe Dechiré", 0.0, 10.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(Jupette), "Kilt & Jupes", "Jupette", 5.0, 20.0, typeof(Cloth), "Tissu", 4, 1044287);
+            index = AddCraft(typeof(JupeCourte), "Kilt & Jupes", "Jupe Courte", 10.0, 30.0, typeof(Cloth), "Tissu", 4, 1044287);
+            index = AddCraft(typeof(Skirt), "Kilt & Jupes", "Jupe Simple", 20.0, 40.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(Jupe), "Kilt & Jupes", "Jupe", 20.0, 50.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(JupeHakama), "Kilt & Jupes", "Hakama", 30.0, 60.0, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(JupeCourteBarbare), "Kilt & Jupes", "Jupe Courte Barbare", 30.0, 60.0, typeof(Leather), "Cuir", 4, 1044463);
+            index = AddCraft(typeof(JupeLongueBarbare), "Kilt & Jupes", "Jupe Longue Barbare", 30.0, 60.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(JupeCuir), "Kilt & Jupes", "Jupe de Cuir", 40.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(JupeOrcish), "Kilt & Jupes", "Jupe Orcish", 40.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(JupeNomade), "Kilt & Jupes", "Jupe Nomade", 40.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(JupeOuverte), "Kilt & Jupes", "Jupe Ouverte", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(JupeDecore), "Kilt & Jupes", "Jupe Decoré", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(JupeLongue), "Kilt & Jupes", "Jupe Longue", 60.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(JupeAPans), "Kilt & Jupes", "Jupe a Pans", 60.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(JupeOrient), "Kilt & Jupes", "Jupe d'Orient", 70.0, 100.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(JupeAmple), "Kilt & Jupes", "Jupe Ample", 70.0, 100.0, typeof(Cloth), "Tissu", 12, 1044287);
+            index = AddCraft(typeof(JupeGrande), "Kilt & Jupes", "Grande Jupe", 80.0, 110.0, typeof(Cloth), "Tissu", 13, 1044287);
+            index = AddCraft(typeof(JupeBordel), "Kilt & Jupes", "Jupe de Bordel", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(JupeNoble), "Kilt & Jupes", "Jupe Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 13, 1044287);
 
 			#endregion
 
-			#region Pants
-            index = AddCraft(typeof(PantalonsDechires), "Pantalons & Jupes", "Pantalons Déchirés", 0.0, 10.0, typeof(Cloth), "Tissu", 5, 1044287);
-            index = AddCraft(typeof(PantalonsPauvre), "Pantalons & Jupes", "Pantalons Pauvres", 0.0, 10.0, typeof(Cloth), "Tissu", 6, 1044287);
-
-            index = AddCraft(typeof(ShortPants), "Pantalons & Jupes", "Pantalons Courts", 5.0, 20.0, typeof(Cloth), "Tissu", 6, 1044287);
-            index = AddCraft(typeof(LongPants), "Pantalons & Jupes", "Pantalons Longs", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(PantalonsOuvert), "Pantalons & Jupes", "Pantalons Ouvert", 20.0, 50.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(PantalonsOrient), "Pantalons & Jupes", "Pantalons d'Orient", 30.0, 60.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(PantalonsNordique), "Pantalons & Jupes", "Pantalons Nordiques", 40.0, 70.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(PantalonsNomade), "Pantalons & Jupes", "Pantalons de Nomades", 40.0, 70.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(Pantalons), "Pantalons & Jupes", "Pantalons Simples", 50.0, 80.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(PantalonsCourts), "Pantalons & Jupes", "Pantalons Amples Courts", 50.0, 80.0, typeof(Cloth), "Tissu", 7, 1044287);
-            index = AddCraft(typeof(PantalonsLongs), "Pantalons & Jupes", "Pantalons Amples Longs", 60.0, 90.0, typeof(Cloth), "Tissu", 9, 1044287);
-            index = AddCraft(typeof(PantalonsCuir), "Pantalons & Jupes", "Pantalons de Cuir", 70.0, 100.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(PantalonsMoulant), "Pantalons & Jupes", "Pantalons Moulants", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(PantalonsArmure), "Pantalons & Jupes", "Pantalons Armuré", 90.0, 120.0, typeof(Leather), "Cuir", 9, 1044463);
-
-            index = AddCraft(typeof(Kilt), "Pantalons & Jupes", "Kilt", 10.0, 30.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(TuniqueKilt), "Pantalons & Jupes", "Long Kilt", 30.0, 50.0, typeof(Cloth), "Tissu", 12, 1044287);
-
-            index = AddCraft(typeof(JupeOuvrier), "Pantalons & Jupes", "Jupe Dechiré", 0.0, 10.0, typeof(Cloth), "Tissu", 3, 1044287);
-            index = AddCraft(typeof(Jupette), "Pantalons & Jupes", "Jupette", 5.0, 20.0, typeof(Cloth), "Tissu", 4, 1044287);
-            index = AddCraft(typeof(JupeCourte), "Pantalons & Jupes", "Jupe Courte", 10.0, 30.0, typeof(Cloth), "Tissu", 4, 1044287);
-            index = AddCraft(typeof(Skirt), "Pantalons & Jupes", "Jupe Simple", 20.0, 40.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Jupe), "Pantalons & Jupes", "Jupe", 20.0, 50.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(JupeHakama), "Pantalons & Jupes", "Hakama", 30.0, 60.0, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(JupeCourteBarbare), "Pantalons & Jupes", "Jupe Courte Barbare", 30.0, 60.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(JupeLongueBarbare), "Pantalons & Jupes", "Jupe Longue Barbare", 30.0, 60.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(JupeCuir), "Pantalons & Jupes", "Jupe de Cuir", 40.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(JupeOrcish), "Pantalons & Jupes", "Jupe Orcish", 40.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(JupeNomade), "Pantalons & Jupes", "Jupe Nomade", 40.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(JupeOuverte), "Pantalons & Jupes", "Jupe Ouverte", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(JupeDecore), "Pantalons & Jupes", "Jupe Decoré", 50.0, 80.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(JupeLongue), "Pantalons & Jupes", "Jupe Longue", 60.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(JupeAPans), "Pantalons & Jupes", "Jupe a Pans", 60.0, 90.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(JupeOrient), "Pantalons & Jupes", "Jupe d'Orient", 70.0, 100.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(JupeAmple), "Pantalons & Jupes", "Jupe Ample", 70.0, 100.0, typeof(Cloth), "Tissu", 12, 1044287);
-            index = AddCraft(typeof(JupeGrande), "Pantalons & Jupes", "Grande Jupe", 80.0, 110.0, typeof(Cloth), "Tissu", 13, 1044287);
-            index = AddCraft(typeof(JupeBordel), "Pantalons & Jupes", "Jupe de Bordel", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
-            index = AddCraft(typeof(JupeNoble), "Pantalons & Jupes", "Jupe Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 13, 1044287);
-
-			#endregion
-
-			#region Misc
+            #region Accessoires
             index = AddCraft(typeof(BodySash), "Accessoires", "Ceinture de Torse", 0.0, 10.0, typeof(Cloth), "Tissu", 4, 1044287);
             index = AddCraft(typeof(Cocarde), "Accessoires", "Cocarde", 20.0, 40.0, typeof(Cloth), "Tissu", 5, 1044287);
             index = AddCraft(typeof(CeintureTorseGrande), "Accessoires", "Large Ceinture de Torse", 30.0, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
@@ -425,8 +406,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(JartellesNoir), "Accessoires", "Jartelles Sombres", 30.0, 50.0, typeof(Cloth), "Tissu", 11, 1044287);
             index = AddCraft(typeof(Jartelles), "Accessoires", "Jartelles Complètes", 40.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
 
-            
-            
             index = AddCraft(typeof(Bracer), "Accessoires", "Bracer", 30.1, 50.0, typeof(Cloth), "Tissu", 8, 1044287);
             index = AddCraft(typeof(BrassardsFeminins), "Accessoires", "Brassards Feminins", 40.0, 60.0, typeof(Cloth), "Tissu", 8, 1044287);
             index = AddCraft(typeof(BrassardsCommun), "Accessoires", "Brassards", 50.0, 70.0, typeof(Cloth), "Tissu", 8, 1044287);
@@ -497,6 +476,29 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             #endregion
 
+            #region Coussins
+            index = AddCraft(typeof(CoussinB), "Coussins", "Petit coussin carré", 20.0, 40.0, typeof(Cloth), "Tissu", 3, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinA), "Coussins", "Gros oreiller", 40.0, 60.0, typeof(Cloth), "Tissu", 4, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinC), "Coussins", "Gros oreiller de velours", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinD), "Coussins", "Gros oreiller carré", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinE), "Coussins", "Petit coussin rond clair", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinF), "Coussins", "petit coussin rond sombre", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinG), "Coussins", "Petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinH), "Coussins", "Autre petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinI), "Coussins", "Gros coussin carré", 40.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            index = AddCraft(typeof(CoussinJ), "Coussins", "Gros coussin carré droit", 0.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            #endregion
+
             /*#region Taxidermie
             index = AddCraft(typeof(TeteOurs), "Draperie", "Tete d'Ours", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(TeteCerf), "Draperie", "Tete de Cerf", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
@@ -510,7 +512,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             #endregion*/
 
-            
 
 			// Set the overridable material
 			SetSubRes(typeof(Leather), "Cuir");

@@ -5,12 +5,12 @@ using Server.Network;
 namespace Server.Items
 {
 	[FlipableAttribute( 0xf45, 0xf46 )]
-	public class ExecutionersAxe : BaseAxe
+    public class ExecutionersAxe : BasePoleArm
 	{
         public override int NiveauAttirail { get { return 4; } }
 
-		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
-		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
+        public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
+        public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
         public override int AosStrengthReq { get { return Bardiche_Force4; } }
         public override int AosMinDamage { get { return Bardiche_MinDam4; } }

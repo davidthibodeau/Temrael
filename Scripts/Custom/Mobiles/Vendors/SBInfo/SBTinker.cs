@@ -42,7 +42,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Planche", typeof( Board ), 10, 20, 0x1BD7, 0 ) );
 				Add( new GenericBuyInfo( "Lingot de Fer", typeof( FerIngot ), 10, 16, 0x1BF2, 0 ) );
 				Add( new GenericBuyInfo( "Outil de Couture", typeof( SewingKit ), 20, 20, 0xF9D, 0 ) );
-                Add( new GenericBuyInfo( "Outil d'Os", typeof(Knitting), 20, 20, 0xDF6, 0) );
+                //Add( new GenericBuyInfo( "Outil d'Os", typeof(Knitting), 20, 20, 0xDF6, 0) );
 
 				Add( new GenericBuyInfo( "Plane", typeof( DrawKnife ), 20, 20, 0x10E4, 0 ) );
 				Add( new GenericBuyInfo( "Froe", typeof( Froe ), 20, 20, 0x10E5, 0 ) );

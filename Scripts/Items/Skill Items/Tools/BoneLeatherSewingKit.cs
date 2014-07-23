@@ -4,27 +4,31 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-    public class BoneSewingKit : BaseTool
+    public class BoneLeatherSewingKit : BaseTool
     {
         public override CraftSystem CraftSystem { get { return DefBoneLeatherTailoring.CraftSystem; } }
 
         [Constructable]
-        public BoneSewingKit()
+        public BoneLeatherSewingKit()
             : base(0xF9D)
         {
             Weight = 2.0;
+            Name = "Kit de couture (Cuir/Os)";
+            Hue = 1833;
             Layer = Layer.TwoHanded;
         }
 
         [Constructable]
-        public BoneSewingKit(int uses)
+        public BoneLeatherSewingKit(int uses)
             : base(uses, 0xF9D)
         {
             Weight = 2.0;
+            Name = "Kit de couture (Cuir/Os)";
+            Hue = 1833;
             Layer = Layer.TwoHanded;
         }
 
-        public BoneSewingKit(Serial serial)
+        public BoneLeatherSewingKit(Serial serial)
             : base(serial)
         {
         }

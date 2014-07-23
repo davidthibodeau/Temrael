@@ -169,7 +169,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Scorp), "Outils", "Scorp", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
             index = AddCraft(typeof(TinkerTools), "Outils", "Outils de Bricolage", 10.0, 60.0, typeof(FerIngot), 1044036, 2, 1044037);
             index = AddCraft(typeof(SewingKit), "Outils", "Outils de Couture", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
-            index = AddCraft(typeof(Knitting), "Outils", "Outils d'Os", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
+            //index = AddCraft(typeof(Knitting), "Outils", "Outils d'Os", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(BoneLeatherSewingKit), "Outils", "Kit de couture (Cuir/Os)", 10.0, 70.0, typeof(FerIngot), 1044036, 2, 1044037);
             index = AddCraft(typeof(Saw), "Outils", "Scie", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
             index = AddCraft(typeof(DovetailSaw), "Outils", "Scie à Queue d'Aronde", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
             index = AddCraft(typeof(Froe), "Outils", "Froe", 30.0, 80.0, typeof(FerIngot), 1044036, 2, 1044037);
