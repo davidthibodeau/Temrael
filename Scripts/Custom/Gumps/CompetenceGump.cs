@@ -359,7 +359,7 @@ namespace Server.Gumps
                     AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + (int)m_From.Skills.Parer.SkillID, GumpButtonType.Reply, 0);
                 ypos += 20;
 
-                AddButton(110, (ybase + ypos + 3), 2103, 2104, 303, GumpButtonType.Reply, 0);
+                //AddButton(110, (ybase + ypos + 3), 2103, 2104, 303, GumpButtonType.Reply, 0);
                 AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Soins<basefont></h3>", false, false);
                 AddTooltip(3006390);
                 if (m_ShowCaps)
@@ -487,7 +487,7 @@ namespace Server.Gumps
                     AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + (int)m_From.Skills.Empoisonner.SkillID, GumpButtonType.Reply, 0);
                 ypos += 20;
 
-                AddButton(110, (ybase + ypos + 3), 2103, 2104, 309, GumpButtonType.Reply, 0);
+                //AddButton(110, (ybase + ypos + 3), 2103, 2104, 309, GumpButtonType.Reply, 0);
                 AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Fouille<basefont></h3>", false, false);
                 AddTooltip(3006398);
                 if (m_ShowCaps)
@@ -552,7 +552,7 @@ namespace Server.Gumps
                     AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + (int)m_From.Skills.Poursuite.SkillID, GumpButtonType.Reply, 0);
                 ypos += 20;
 
-                AddButton(110, (ybase + ypos + 3), 2103, 2104, 313, GumpButtonType.Reply, 0);
+                //AddButton(110, (ybase + ypos + 3), 2103, 2104, 313, GumpButtonType.Reply, 0);
                 AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Survie<basefont></h3>", false, false);
                 AddTooltip(3006403);
                 if (m_ShowCaps)
@@ -744,7 +744,7 @@ namespace Server.Gumps
 
             if (m_Comp == CompDomaines.Connaissances)
             {
-                /*AddButton(110, (ybase + ypos + 3), 2103, 2104, 315, GumpButtonType.Reply, 0);
+                /*//AddButton(110, (ybase + ypos + 3), 2103, 2104, 315, GumpButtonType.Reply, 0);
                 AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Connaissance(Bestiaire)<basefont></h3>", false, false);
                 AddTooltip(3006416);
                 if (m_ShowCaps)
@@ -757,7 +757,7 @@ namespace Server.Gumps
                     AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + (int)m_From.Skills.ConnaissanceBestiaire.SkillID, GumpButtonType.Reply, 0);
                 ypos += 20;*/
 
-                AddButton(110, (ybase + ypos + 3), 2103, 2104, 316, GumpButtonType.Reply, 0);
+                //AddButton(110, (ybase + ypos + 3), 2103, 2104, 316, GumpButtonType.Reply, 0);
                 AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Connaissance(Langue)<basefont></h3>", false, false);
                 AddTooltip(3006417);
                 if (m_ShowCaps)
@@ -770,7 +770,7 @@ namespace Server.Gumps
                     AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + (int)m_From.Skills.ConnaissanceLangue.SkillID, GumpButtonType.Reply, 0);
                 ypos += 20;
 
-                /*AddButton(110, (ybase + ypos + 3), 2103, 2104, 317, GumpButtonType.Reply, 0);
+                /*//AddButton(110, (ybase + ypos + 3), 2103, 2104, 317, GumpButtonType.Reply, 0);
                 AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Connaissance(Nature)<basefont></h3>", false, false);
                 AddTooltip(3006418);
                 if (m_ShowCaps)
@@ -783,7 +783,7 @@ namespace Server.Gumps
                     AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + (int)m_From.Skills.ConnaissanceNature.SkillID, GumpButtonType.Reply, 0);
                 ypos += 20;
 
-                AddButton(110, (ybase + ypos + 3), 2103, 2104, 318, GumpButtonType.Reply, 0);
+                //AddButton(110, (ybase + ypos + 3), 2103, 2104, 318, GumpButtonType.Reply, 0);
                 AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Connaissance(Noblesse)<basefont></h3>", false, false);
                 AddTooltip(3006419);
                 if (m_ShowCaps)
@@ -930,7 +930,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Magie, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Magie, m_ShowCaps));
                     break;
                     //Inscription
                 case 301:
@@ -943,15 +943,15 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Magie, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Magie, m_ShowCaps));
                     break;
                     //Prieres
                 case 302:
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Magie, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Magie, m_ShowCaps));
                     break;
                     //Soins
                 case 303:
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Combat, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Combat, m_ShowCaps));
                     break;
                     //Degustation
                 case 304:
@@ -964,7 +964,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Detection
                 case 305:
@@ -977,7 +977,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Discretion
                 case 306:
@@ -990,7 +990,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Dressage
                 case 307:
@@ -1003,7 +1003,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Empoisonner
                 case 308:
@@ -1016,7 +1016,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Fouille
                 case 309:
@@ -1033,7 +1033,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                 case 311:
                     if (from.NextSkillTime < DateTime.Now)
@@ -1045,7 +1045,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Poursuite
                 case 312:
@@ -1058,7 +1058,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Survie
                 case 313:
@@ -1075,24 +1075,25 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                     //Connaissances Bestiaire
                 case 315:
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
                     break;
                     //Connaissances Langue
                 case 316:
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
                     break;
                     //Connaissances Nature
                 case 317:
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
                     break;
                     //Connaissances Noblesse
                 case 318:
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Connaissances, m_ShowCaps));
                     break;
+                    //Identification
                 case 319:
                     if (from.NextSkillTime < DateTime.Now)
                     {
@@ -1103,7 +1104,7 @@ namespace Server.Gumps
                     {
                         from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
                     }
-                    from.SendGump(new CompetenceGump(m_From, CompDomaines.Artisanat, m_ShowCaps));
+                    //from.SendGump(new CompetenceGump(m_From, CompDomaines.Artisanat, m_ShowCaps));
                     break;
                 default: break;
             }
