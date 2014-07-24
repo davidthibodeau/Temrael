@@ -74,7 +74,7 @@ namespace Server.Gumps
 
             AddButton(x, (y + line * scale) + 20, 1438, 1438, 0, GumpButtonType.Reply, 0);
             AddTooltip(3001037);
-            AddSection(x + 110, y + line * scale, 426, 60, "Intelligence", "Augmente la regénération de la mana, la puissance des sorts et le maximum de points de mana.               Bonus: +25 Mana", new string[] { "<basefont color=#5A4A31>Intelligence: " + from.RawInt + "%<basefont>" });
+            AddSection(x + 110, y + line * scale, 426, 60, "Intelligence", "Augmente la regénération de la mana, la puissance des sorts et le maximum de points de mana. Bonus: +25 Mana", new string[] { "<basefont color=#5A4A31>Intelligence: " + from.RawInt + "%<basefont>" });
             if (Statistiques.CanRaise(from, StatType.Int))
                 AddButton(x + 130 + 110, (y + line * scale) + 60, 9770, 9770, 21, GumpButtonType.Reply, 0);
             if (Statistiques.CanLower(from, StatType.Int))
