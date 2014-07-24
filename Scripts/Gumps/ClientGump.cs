@@ -9,6 +9,7 @@ using Server.Gumps;
 using Server.Scripts.Commands;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Gumps;
 
 namespace Server.Gumps
 {
@@ -20,7 +21,7 @@ namespace Server.Gumps
         {
             TextRelay te = info.GetTextEntry(0);
 
-            to.SendGump(new ClientGump(to, m_State, te == null ? "" : te.Text));
+            to.SendGump(new ClientGump(to, m_State, "", te == null ? "" : te.Text, ""));
         }
 
         public override void OnResponse(NetState state, RelayInfo info)
@@ -71,9 +72,9 @@ namespace Server.Gumps
 
                         if (text != null)
                         {
-                            focus.SendMessage(0x482, "{0} vous a envoye un message HRP: ", from.GetNameUseBy(focus));
-                            focus.SendMessage(0x482, text.Text);
-                            focus.SendGump(new ClientGump(focus, state));
+                            //focus.SendMessage(0x482, "{0} vous a envoye un message HRP: ", from.GetNameUseBy(focus));
+                            //focus.SendMessage(0x482, text.Text);
+                            focus.SendGump(new ClientGump(focus, state, from.GetNameUseBy(focus), "", text.Text));
                             CommandLogging.WriteLine(from, "{0} {1} telling {2} \"{3}\" ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus), text.Text);
                         }
 
@@ -191,7 +192,7 @@ namespace Server.Gumps
         }
 
         public ClientGump(Mobile from, NetState state)
-            : this(from, state, "")
+            : this(from, state, "", "", "")
         {
         }
 
@@ -207,7 +208,7 @@ namespace Server.Gumps
             return String.Format("<BASEFONT COLOR=#{0:X6}>{1}</BASEFONT>", color, text);
         }
 
-        public ClientGump(Mobile from, NetState state, string initialText)
+        public ClientGump(Mobile from, NetState state, string nameSender, string initialText, string receivedText)
             : base(30, 20)
         {
             if (state == null)
@@ -217,7 +218,10 @@ namespace Server.Gumps
 
             AddPage(0);
 
-            AddBackground(0, 0, 400, 274, 5054);
+            if (nameSender != "" || receivedText != "")
+                AddBackground(0, 0, 400, 400, 5054);
+            else
+                AddBackground(0, 0, 400, 274, 5054);
 
             AddImageTiled(10, 10, 380, 19, 0xA40);
             AddAlphaRegion(10, 10, 380, 19);
@@ -225,13 +229,13 @@ namespace Server.Gumps
             AddImageTiled(10, 32, 380, 232, 0xA40);
             AddAlphaRegion(10, 32, 380, 232);
 
-            AddHtml(10, 10, 380, 20, Color(Center("User's Information"), LabelColor32), false, false);
+            AddHtml(10, 10, 380, 20, Color(Center("Information de l'utilisateur"), LabelColor32), false, false);
 
             int line = 0;
 
             if (from.AccessLevel >= AccessLevel.GameMaster)
             {
-                AddHtml(14, 36 + (line * 20), 200, 20, Color("Address:", LabelColor32), false, false);
+                AddHtml(14, 36 + (line * 20), 200, 20, Color("Addresse:", LabelColor32), false, false);
                 AddHtml(70, 36 + (line++ * 20), 200, 20, Color(state.ToString(), LabelColor32), false, false);
             }
             if (from.AccessLevel >= AccessLevel.Counselor)
@@ -239,9 +243,10 @@ namespace Server.Gumps
                 AddHtml(14, 36 + (line * 20), 200, 20, Color("Client:", LabelColor32), false, false);
                 AddHtml(70, 36 + (line++ * 20), 200, 20, Color(state.Version == null ? "(null)" : state.Version.ToString(), LabelColor32), false, false);
 
-                AddHtml(14, 36 + (line * 20), 200, 20, Color("Version:", LabelColor32), false, false);
+                //AddHtml(14, 36 + (line * 20), 200, 20, Color("Version:", LabelColor32), false, false);
                 //AddHtml(70, 36 + (line++ * 20), 200, 20, Color(((state.Flags & 0x10) != 0) ? "Samurai Empire" : ((state.Flags & 0x08) != 0) ? "Age of Shadows" : ((state.Flags & 0x04) != 0) ? "Blackthorn's Revenge" : ((state.Flags & 0x02) != 0) ? "Third Dawn" : ((state.Flags & 0x01) != 0) ? "Renaissance" : "The Second Age", LabelColor32), false, false); // some flags yet unverified
             }
+
             Account a = state.Account as Account;
             Mobile m = state.Mobile;
 
@@ -269,9 +274,14 @@ namespace Server.Gumps
 
                 AddImageTiled(12, 182, 376, 80, 0xA40);
                 AddImageTiled(13, 183, 374, 78, 0xBBC);
-                AddTextEntry(15, 183, 372, 78, 0x480, 0, "");
-
                 AddImageTiled(245, 35, 142, 144, 5058);
+                AddTextEntry(17, 183, 368, 78, 0x480, 0, initialText);
+
+                if (nameSender != "" || receivedText != "")
+                {
+                    AddHtml(20, 265, 360, 20, Color(Center("Message envoyé par: " + nameSender), 0x1d), false, false);
+                    AddHtml(20, 285, 360, 78, Color(receivedText, 0x1d), false, true);
+                }
 
                 AddImageTiled(246, 36, 140, 142, 0xA40);
                 AddAlphaRegion(246, 36, 140, 142);
