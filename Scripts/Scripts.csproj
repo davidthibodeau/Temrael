@@ -362,11 +362,14 @@
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheAptitudesGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheClassesInfoGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\Connexe\FicheRacesInfoGump.cs" />
-    <Compile Include=".\Custom\Gumps\Fiche\FicheAptitudeGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheCaracteristiqueGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheClasseGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheCommandesGump.cs" />
+    <Compile Include="Custom\Commandes\Chuchottement.cs" />
+    <Compile Include="Custom\Commandes\Devoiler.cs" />
     <Compile Include="Custom\Engines\Craft\DefBoneLeatherTailoring.cs" />
+    <Compile Include="Custom\Gumps\AccountListGump.cs" />
+    <Compile Include="Custom\Gumps\Fiche\FicheCompetencesGump.cs" />
     <Compile Include="Custom\Gumps\Fiche\FicheStatistiquesGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheRaceGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheResetMessageGump.cs" />
@@ -2830,7 +2833,7 @@
     <Compile Include=".\Items\Skill Items\Tools\BaseRunicTool.cs" />
     <Compile Include=".\Items\Skill Items\Tools\BaseTool.cs" />
     <Compile Include=".\Items\Skill Items\Tools\Blowpipe.cs" />
-    <Compile Include=".\Items\Skill Items\Tools\BoneSewingKit.cs" />
+    <Compile Include="Items\Skill Items\Tools\BoneLeatherSewingKit.cs" />
     <Compile Include=".\Items\Skill Items\Tools\DovetailSaw.cs" />
     <Compile Include=".\Items\Skill Items\Tools\DrawKnife.cs" />
     <Compile Include=".\Items\Skill Items\Tools\FletcherTools.cs" />
