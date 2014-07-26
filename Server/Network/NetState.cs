@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: NetState.cs 698 2011-07-31 04:05:09Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -19,12 +19,12 @@
  ***************************************************************************/
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Threading.Tasks;
 using Server;
 using Server.Accounting;
 using Server.Network;
@@ -42,7 +42,7 @@ namespace Server.Network {
 
 	public delegate void NetStateCreatedCallback( NetState ns );
 
-	public class NetState {
+	public class NetState : IComparable<NetState> {
 		private Socket m_Socket;
 		private IPAddress m_Address;
 		private ByteQueue m_Buffer;
@@ -51,7 +51,7 @@ namespace Server.Network {
 		private bool m_Seeded;
 		private bool m_Running;
 
-#if Framework_4_0
+#if NewAsyncSockets
 		private SocketAsyncEventArgs m_ReceiveEventArgs, m_SendEventArgs;
 #else
 		private AsyncCallback m_OnReceive, m_OnSend;
@@ -165,7 +165,11 @@ namespace Server.Network {
 			set {
 				m_Version = value;
 
-				if ( value >= m_Version70160 ) {
+				if ( value >= m_Version70331 ) {
+					_ProtocolChanges = ProtocolChanges.Version70331;
+				} else if ( value >= m_Version70300 ) {
+					_ProtocolChanges = ProtocolChanges.Version70300;
+				} else if ( value >= m_Version70160 ) {
 					_ProtocolChanges = ProtocolChanges.Version70160;
 				} else if ( value >= m_Version70130 ) {
 					_ProtocolChanges = ProtocolChanges.Version70130;
@@ -202,6 +206,8 @@ namespace Server.Network {
 		private static ClientVersion m_Version7090	= new ClientVersion( "7.0.9.0" );
 		private static ClientVersion m_Version70130	= new ClientVersion( "7.0.13.0" );
 		private static ClientVersion m_Version70160	= new ClientVersion( "7.0.16.0" );
+		private static ClientVersion m_Version70300	= new ClientVersion( "7.0.30.0" );
+		private static ClientVersion m_Version70331 = new ClientVersion( "7.0.33.1" );
 
 		private ProtocolChanges _ProtocolChanges;
 
@@ -217,6 +223,8 @@ namespace Server.Network {
 			HighSeas			= 0x00000100,
 			NewCharacterList		= 0x00000200,
 			NewCharacterCreation		= 0x00000400,
+			ExtendedStatus			= 0x00000800,
+			NewMobileIncoming		= 0x00001000,
 
 			Version400a			= NewSpellbook,
 			Version407a			= Version400a  | DamagePacket,
@@ -228,7 +236,9 @@ namespace Server.Network {
 			Version7000			= Version60142 | StygianAbyss,
 			Version7090			= Version7000  | HighSeas,
 			Version70130			= Version7090  | NewCharacterList,
-			Version70160			= Version70130 | NewCharacterCreation
+			Version70160			= Version70130 | NewCharacterCreation,
+			Version70300			= Version70160 | ExtendedStatus,
+			Version70331			= Version70300 | NewMobileIncoming
 		}
 
 		public bool NewSpellbook { get { return ((_ProtocolChanges & ProtocolChanges.NewSpellbook) != 0); } }
@@ -242,6 +252,8 @@ namespace Server.Network {
 		public bool HighSeas { get { return ((_ProtocolChanges & ProtocolChanges.HighSeas) != 0); } }
 		public bool NewCharacterList { get { return ((_ProtocolChanges & ProtocolChanges.NewCharacterList) != 0); } }
 		public bool NewCharacterCreation { get { return ((_ProtocolChanges & ProtocolChanges.NewCharacterCreation) != 0); } }
+		public bool ExtendedStatus { get { return ((_ProtocolChanges & ProtocolChanges.ExtendedStatus) != 0); } }
+		public bool NewMobileIncoming { get { return ((_ProtocolChanges & ProtocolChanges.NewMobileIncoming) != 0); } }
 
 		public bool IsUOTDClient {
 			get {
@@ -561,7 +573,7 @@ namespace Server.Network {
 
 			m_SendQueue = new SendQueue();
 
-			m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 0.5 );
+			m_NextCheckActivity = Core.TickCount + 30000;
 
 			m_Instances.Add( this );
 
@@ -582,13 +594,14 @@ namespace Server.Network {
 			}
 		}
 
+		private bool _sending;
+		private object _sendL = new object();
+
 		public virtual void Send( Packet p ) {
 			if ( m_Socket == null || m_BlockAllPackets ) {
 				p.OnSend();
 				return;
 			}
-
-			PacketSendProfile prof = PacketSendProfile.Acquire( p.GetType() );
 
 			int length;
 			byte[] buffer = p.Compile( m_CompressionEnabled, out length );
@@ -598,6 +611,10 @@ namespace Server.Network {
 					p.OnSend();
 					return;
 				}
+
+				PacketSendProfile prof = null;
+				
+				if (Core.Profiling) prof = PacketSendProfile.Acquire(p.GetType());
 
 				if ( prof != null ) {
 					prof.Start();
@@ -610,22 +627,25 @@ namespace Server.Network {
 				try {
 					SendQueue.Gram gram;
 
-					lock ( m_SendQueue ) {
-						gram = m_SendQueue.Enqueue( buffer, length );
-					}
+					lock (_sendL) {
+						lock (m_SendQueue)
+							gram = m_SendQueue.Enqueue(buffer, length);
 
-					if ( gram != null ) {
-#if Framework_4_0
-						m_SendEventArgs.SetBuffer( gram.Buffer, 0, gram.Length );
-						Send_Start();
+						if (gram != null && !_sending) {
+							_sending = true;
+#if NewAsyncSockets
+							m_SendEventArgs.SetBuffer( gram.Buffer, 0, gram.Length );
+							Send_Start();
 #else
-						try {
-							m_Socket.BeginSend( gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, m_Socket );
-						} catch ( Exception ex ) {
-							TraceException( ex );
-							Dispose( false );
-						}
+							try {
+									m_Socket.BeginSend(gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, m_Socket);
+							}
+							catch (Exception ex) {
+								TraceException(ex);
+								Dispose(false);
+							}
 #endif
+						}
 					}
 				} catch ( CapacityExceededException ) {
 					Console.WriteLine( "Client: {0}: Too much data pending, disconnecting...", this );
@@ -639,17 +659,16 @@ namespace Server.Network {
 				}
 			} else {
 				Console.WriteLine( "Client: {0}: null buffer send, disconnecting...", this );
-                using (StreamWriter op =
-                    new StreamWriter(Path.Combine(Directories.errors, "null_send.log"), true))
-                {
-                    op.WriteLine("{0} Client: {1}: null buffer send for packet {2}, disconnecting...", DateTime.Now, this, p.PacketID);
-                    op.WriteLine(new System.Diagnostics.StackTrace(true));
-                }
+				using ( StreamWriter op = new StreamWriter(Path.Combine(Directories.errors, "null_send.log"), true ) )
+				{
+					op.WriteLine( "{0} Client: {1}: null buffer send, disconnecting...", DateTime.Now, this );
+					op.WriteLine( new System.Diagnostics.StackTrace() );
+				}
 				Dispose();
 			}
 		}
 
-#if Framework_4_0
+#if NewAsyncSockets
 		public void Start() {
 			m_ReceiveEventArgs = new SocketAsyncEventArgs();
 			m_ReceiveEventArgs.Completed += new EventHandler<SocketAsyncEventArgs>( Receive_Completion );
@@ -704,9 +723,11 @@ namespace Server.Network {
 			if ( e.SocketError != SocketError.Success || byteCount <= 0 ) {
 				Dispose( false );
 				return;
+			} else if ( m_Disposing ) {
+				return;
 			}
 
-			m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
+			m_NextCheckActivity = Core.TickCount + 90000;
 
 			byte[] buffer = m_RecvBuffer;
 
@@ -755,11 +776,17 @@ namespace Server.Network {
 
 			lock ( m_SendQueue ) {
 				gram = m_SendQueue.Dequeue();
+
+				if (gram == null && m_SendQueue.IsFlushReady)
+					gram = m_SendQueue.CheckFlushReady();
 			}
 
 			if ( gram != null ) {
 				m_SendEventArgs.SetBuffer( gram.Buffer, 0, gram.Length );
 				Send_Start();
+			} else {
+				lock (_sendL)
+					_sending = false;
 			}
 		}
 
@@ -772,7 +799,7 @@ namespace Server.Network {
 				return;
 			}
 
-			m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
+			m_NextCheckActivity = Core.TickCount + 90000;
 		}
 
 		public static void Pause() {
@@ -807,19 +834,27 @@ namespace Server.Network {
 		}
 
 		public bool Flush() {
-			if ( m_Socket == null || !m_SendQueue.IsFlushReady ) {
-				return false;
-			}
+			if ( m_Socket == null )
+					return false;
 
-			SendQueue.Gram gram;
+			lock (_sendL) {
+				if (_sending)
+					return false;
 
-			lock ( m_SendQueue ) {
-				gram = m_SendQueue.CheckFlushReady();
-			}
+				SendQueue.Gram gram;
 
-			if ( gram != null ) {
-				m_SendEventArgs.SetBuffer( gram.Buffer, 0, gram.Length );
-				Send_Start();
+				lock ( m_SendQueue ) {
+					if (!m_SendQueue.IsFlushReady)
+						return false;
+
+					gram = m_SendQueue.CheckFlushReady();
+				}
+
+				if ( gram != null ) {
+					_sending = true;
+					m_SendEventArgs.SetBuffer( gram.Buffer, 0, gram.Length );
+					Send_Start();
+				}
 			}
 
 			return false;
@@ -862,7 +897,7 @@ namespace Server.Network {
 				int byteCount = s.EndReceive( asyncResult );
 
 				if ( byteCount > 0 ) {
-					m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
+					m_NextCheckActivity = Core.TickCount + 90000;
 
 					byte[] buffer = m_RecvBuffer;
 
@@ -905,25 +940,31 @@ namespace Server.Network {
 					return;
 				}
 
-				m_NextCheckActivity = DateTime.Now + TimeSpan.FromMinutes( 1.2 );
+				m_NextCheckActivity = Core.TickCount + 90000;
 
-				if ( m_CoalesceSleep >= 0 ) {
-					Thread.Sleep( m_CoalesceSleep );
+				if (m_CoalesceSleep >= 0) {
+					Thread.Sleep(m_CoalesceSleep);
 				}
 
 				SendQueue.Gram gram;
 
-				lock ( m_SendQueue ) {
+				lock (m_SendQueue) {
 					gram = m_SendQueue.Dequeue();
+
+					if (gram == null && m_SendQueue.IsFlushReady)
+						gram = m_SendQueue.CheckFlushReady();
 				}
 
-				if ( gram != null ) {
+				if (gram != null) {
 					try {
-						s.BeginSend( gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, s );
-					} catch ( Exception ex ) {
-						TraceException( ex );
-						Dispose( false );
+						s.BeginSend(gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, s);
+					} catch (Exception ex) {
+						TraceException(ex);
+						Dispose(false);
 					}
+				} else {
+					lock (_sendL)
+						_sending = false;
 				}
 			} catch ( Exception ){
 				Dispose( false );
@@ -967,23 +1008,31 @@ namespace Server.Network {
 		}
 
 		public bool Flush() {
-			if ( m_Socket == null || !m_SendQueue.IsFlushReady ) {
+			if (m_Socket == null)
 				return false;
-			}
 
-			SendQueue.Gram gram;
+			lock (_sendL) {
+				if (_sending)
+					return false;
 
-			lock ( m_SendQueue ) {
-				gram = m_SendQueue.CheckFlushReady();
-			}
+				SendQueue.Gram gram;
 
-			if ( gram != null ) {
-				try {
-					m_Socket.BeginSend( gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, m_Socket );
-					return true;
-				} catch ( Exception ex ) {
-					TraceException( ex );
-					Dispose( false );
+				lock (m_SendQueue) {
+					if (!m_SendQueue.IsFlushReady)
+						return false;
+
+					gram = m_SendQueue.CheckFlushReady();
+				}
+
+				if (gram != null) {
+					try {
+						_sending = true;
+						m_Socket.BeginSend(gram.Buffer, 0, gram.Length, SocketFlags.None, m_OnSend, m_Socket);
+						return true;
+					} catch (Exception ex) {
+						TraceException(ex);
+						Dispose(false);
+					}
 				}
 			}
 
@@ -1000,11 +1049,12 @@ namespace Server.Network {
 		}
 
 		public static void FlushAll() {
-			for ( int i = 0; i < m_Instances.Count; ++i ) {
-				NetState ns = m_Instances[i];
-
-				ns.Flush();
-			}
+			if (m_Instances.Count >= 1024)
+				Parallel.ForEach(m_Instances, ns => ns.Flush());
+			else
+				for ( int i = 0; i < m_Instances.Count; ++i ) {
+					m_Instances[i].Flush();
+				}
 		}
 
 		private static int m_CoalesceSleep = -1;
@@ -1018,35 +1068,35 @@ namespace Server.Network {
 			}
 		}
 
-		private DateTime m_NextCheckActivity;
+		private long m_NextCheckActivity;
 
-		public bool CheckAlive() {
+		public void CheckAlive(long curTicks) {
 			if ( m_Socket == null )
-				return false;
+				return;
 
-			if ( DateTime.Now < m_NextCheckActivity ) {
-				return true;
+			if (m_NextCheckActivity - curTicks >= 0) {
+				return;
 			}
 
 			Console.WriteLine( "Client: {0}: Disconnecting due to inactivity...", this );
 
 			Dispose();
-			return false;
+			return;
 		}
 
 		public static void TraceException( Exception ex ) {
+			if (!Core.Debug)
+				return;
+
 			try {
-                using (StreamWriter op =
-                    new StreamWriter(Path.Combine(Directories.errors, "network-errors.log"), true))
-                {
-                    op.WriteLine("# {0}", DateTime.Now);
+				using ( StreamWriter op = new StreamWriter(Path.Combine(Directories.errors, "network-errors.log"), true ) ) {
+					op.WriteLine("# {0}", DateTime.Now);
 
-                    op.WriteLine(ex);
+					op.WriteLine( ex );
 
-                    op.WriteLine(new System.Diagnostics.StackTrace(1, true));
-                    op.WriteLine();
-                    op.WriteLine();
-                }
+					op.WriteLine();
+					op.WriteLine();
+				}
 			} catch {
 			}
 
@@ -1084,15 +1134,17 @@ namespace Server.Network {
 				TraceException( ex );
 			}
 
-			if ( m_RecvBuffer != null )
-				m_ReceiveBufferPool.ReleaseBuffer( m_RecvBuffer );
+			if ( m_RecvBuffer != null ) {
+				lock (m_ReceiveBufferPool)
+					m_ReceiveBufferPool.ReleaseBuffer( m_RecvBuffer );
+			}
 
 			m_Socket = null;
 
 			m_Buffer = null;
 			m_RecvBuffer = null;
 
-#if Framework_4_0
+#if NewAsyncSockets
 			m_ReceiveEventArgs = null;
 			m_SendEventArgs = null;
 #else
@@ -1102,10 +1154,11 @@ namespace Server.Network {
 
 			m_Running = false;
 
-			m_Disposed.Enqueue( this );
+			lock (m_Disposed)
+				m_Disposed.Enqueue( this );
 
-			if ( /*!flush &&*/ !m_SendQueue.IsEmpty ) {
-				lock ( m_SendQueue )
+			lock (m_SendQueue)
+				if ( /*!flush &&*/ !m_SendQueue.IsEmpty ) {
 					m_SendQueue.Clear();
 			}
 		}
@@ -1116,45 +1169,51 @@ namespace Server.Network {
 
 		public static void CheckAllAlive() {
 			try {
-				for ( int i = 0; i < m_Instances.Count; ++i ) {
-					m_Instances[i].CheckAlive();
-				}
+				long curTicks = Core.TickCount;
+
+				if (m_Instances.Count >= 1024)
+					Parallel.ForEach(m_Instances, ns => ns.CheckAlive(curTicks));
+				else
+					for ( int i = 0; i < m_Instances.Count; ++i ) {
+						m_Instances[i].CheckAlive(curTicks);
+					}
 			} catch ( Exception ex ) {
 				TraceException( ex );
 			}
 		}
 
-		private static Queue m_Disposed = Queue.Synchronized( new Queue() );
+		private static Queue<NetState> m_Disposed = new Queue<NetState>();
 
 		public static void ProcessDisposedQueue() {
-			int breakout = 0;
+			lock (m_Disposed) {
+				int breakout = 0;
 
-			while ( breakout < 200 && m_Disposed.Count > 0 ) {
-				++breakout;
+				while ( breakout < 200 && m_Disposed.Count > 0 ) {
+					++breakout;
+					NetState ns = m_Disposed.Dequeue();
 
-				NetState ns = ( NetState ) m_Disposed.Dequeue();
+					Mobile m = ns.m_Mobile;
+					IAccount a = ns.m_Account;
 
-				Mobile m = ns.m_Mobile;
-				IAccount a = ns.m_Account;
+					if ( m != null ) {
+						m.NetState = null;
+						ns.m_Mobile = null;
+					}
 
-				if ( m != null ) {
-					m.NetState = null;
-					ns.m_Mobile = null;
-				}
+					ns.m_Gumps.Clear();
+					ns.m_Menus.Clear();
+					ns.m_HuePickers.Clear();
+					ns.m_Account = null;
+					ns.m_ServerInfo = null;
+					ns.m_CityInfo = null;
 
-				ns.m_Gumps.Clear();
-				ns.m_Menus.Clear();
-				ns.m_HuePickers.Clear();
-				ns.m_Account = null;
-				ns.m_ServerInfo = null;
-				ns.m_CityInfo = null;
+					m_Instances.Remove( ns );
 
-				m_Instances.Remove( ns );
-
-				if ( a != null ) {
-					ns.WriteConsole( "Disconnected. [{0} Online] [{1}]", m_Instances.Count, a );
-				} else {
-					ns.WriteConsole( "Disconnected. [{0} Online]", m_Instances.Count );
+					if ( a != null ) {
+						ns.WriteConsole( "Disconnected. [{0} Online] [{1}]", m_Instances.Count, a );
+					} else {
+						ns.WriteConsole( "Disconnected. [{0} Online]", m_Instances.Count );
+					}
 				}
 			}
 		}
@@ -1226,6 +1285,13 @@ namespace Server.Network {
 
 		public bool SupportsExpansion( ExpansionInfo info ) {
 			return SupportsExpansion( info, true );
+		}
+
+		public int CompareTo( NetState other ) {
+			if ( other == null )
+				return 1;
+
+			return m_ToString.CompareTo( other.m_ToString );
 		}
 	}
 }
