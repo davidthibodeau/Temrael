@@ -368,7 +368,7 @@
     <Compile Include="Custom\Commandes\Chuchottement.cs" />
     <Compile Include="Custom\Commandes\Devoiler.cs" />
     <Compile Include="Custom\Engines\Craft\DefBoneLeatherTailoring.cs" />
-    <Compile Include="Custom\Gumps\AccountListGump.cs" />
+    <Compile Include="Custom\Gumps\RechercheListeGump.cs" />
     <Compile Include="Custom\Gumps\Fiche\FicheCompetencesGump.cs" />
     <Compile Include="Custom\Gumps\Fiche\FicheStatistiquesGump.cs" />
     <Compile Include=".\Custom\Gumps\Fiche\FicheRaceGump.cs" />

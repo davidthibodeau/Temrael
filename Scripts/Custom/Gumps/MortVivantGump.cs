@@ -41,11 +41,11 @@ namespace Server.Gumps
             AddImage(268, 119, 96);
             AddImage(445, 110, 97);
 
-            AddHtml(240, 105, 200, 20, "<h3><basefont color=#025a>Mort Vivant<basefont></h3>", false, false);
+            AddHtml(240, 105, 200, 20, "<h3><basefont color=#025a>Mort-Vivant<basefont></h3>", false, false);
 
             AddButton(130, 130, 441, 441, 1, GumpButtonType.Reply, 0);
 
-            AddHtml(120, 440, 340, 90, "Cliquez l'image ci-haut pour devenir un mort-vivant. Un mort-vivant peut temporairement revenir a la vie en se nourissant de l'ame des vivants. Plus la decomposition se prolonge, plus cela sera difficile donc n'attendez pas trop longtemps !", true, true);
+            AddHtml(120, 440, 340, 90, "Cliquez l'image ci-haut pour devenir un mort-vivant. Un mort-vivant peut temporairement revenir à la vie en se nourissant de l'âme des vivants. Plus la décomposition se prolonge, plus cela sera difficile et voir même impossible jusqu'à un certain point. Un conseil, n'attendez pas trop longtemps !", true, true);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -60,6 +60,8 @@ namespace Server.Gumps
                 case 1:
                     if (!(m_From.MortCurrentState == MortState.MortVivant))
                     {
+                        m_From.AmeLastFed = DateTime.Now;
+                        
                         m_From.MortVivant = true;
                         m_From.MortCurrentState = MortState.MortVivant;
 

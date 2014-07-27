@@ -751,9 +751,9 @@ namespace Server.Mobiles
 
         public void OnAmeEating()
         {
+            m_AmeLastFed = DateTime.Now;
             if ((m_MortEvo == MortEvo.Zombie) || (m_MortEvo == MortEvo.Squelette))
             {
-                m_AmeLastFed = DateTime.Now;
                 m_MortEvo = MortEvo.Aucune;
                 m_race = m_trueRace;
                 if (this.FindItemOnLayer(Layer.Shirt) is BaseMortGumps)
@@ -3024,7 +3024,7 @@ namespace Server.Mobiles
             private Mobile m;
 
             public MortVivantEvoTimer(Mobile from)
-                : base(TimeSpan.FromMinutes(10))
+                : base(TimeSpan.FromSeconds(10),TimeSpan.FromMinutes(30))
             {
                 m = from;
             }
@@ -3033,12 +3033,16 @@ namespace Server.Mobiles
             {
                 TMobile pm = m as TMobile;
 
-                if (pm.MortVivant && pm.AmeLastFed.AddDays(7) < DateTime.Now)
+                if (pm.MortVivant && (pm.AmeLastFed.AddDays(7) < DateTime.Now))
                 {
-                    Stop();
+                    pm.AmeLastFed = DateTime.Now;
+
                     switch (pm.MortEvo)
                     {
                         case MortEvo.Aucune:
+                            if (pm.FindItemOnLayer(Layer.Shirt) is BaseRaceGumps)
+                                pm.FindItemOnLayer(Layer.Shirt).Delete();
+                            pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
                             pm.MortRace = pm.Races;
                             pm.Races = Races.MortVivant;
                             pm.MortEvo = MortEvo.Zombie;
@@ -3048,24 +3052,31 @@ namespace Server.Mobiles
                             Statistiques.Reset(pm);
                             break;
                         case MortEvo.Zombie:
+                            if (pm.FindItemOnLayer(Layer.Shirt) is BaseMortGumps)
+                                pm.FindItemOnLayer(Layer.Shirt).Delete();
+                            pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 14 jours, votre corps se déteriore à nouveau.");
+                            pm.SendMessage("Avertissement: La prochaine transformation qui aura lieu dans 7 jours sera définitive. Nourrissez-vous de l'âme d'un vivant d'ici là.");
                             pm.MortEvo = MortEvo.Squelette;
                             SqueletteGump squeletteGump = new SqueletteGump();
                             EquipItem(pm, squeletteGump, pm.Hue);
                             break;
                         case MortEvo.Squelette:
-                            if ((pm.Str >= pm.Dex && pm.Str >= pm.Int && pm.Str >= pm.Cha) || (pm.Con >= pm.Dex && pm.Con >= pm.Int && pm.Con >= pm.Cha))
+                            if (pm.FindItemOnLayer(Layer.Shirt) is BaseMortGumps)
+                                pm.FindItemOnLayer(Layer.Shirt).Delete();
+                            pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 21 jours, votre corps se transforme en cette chose définitivement.");
+                            if (pm.Str >= pm.Dex && pm.Str >= pm.Int)
                             {
                                 pm.MortEvo = MortEvo.Faucheur;
                                 FaucheurGump faucheurGump = new FaucheurGump();
                                 EquipItem(pm, faucheurGump, pm.Hue);
                             }
-                            else if (pm.Dex >= pm.Str && pm.Dex >= pm.Int && pm.Dex >= pm.Cha && pm.Dex >= pm.Con)
+                            else if (pm.Dex >= pm.Str && pm.Dex >= pm.Int)
                             {
                                 pm.MortEvo = MortEvo.Spectre;
                                 SpectreGump spectreGump = new SpectreGump();
                                 EquipItem(pm, spectreGump, pm.Hue);
                             }
-                            else if ((pm.Cha >= pm.Dex && pm.Cha >= pm.Str && pm.Cha >= pm.Con) || (pm.Int >= pm.Dex && pm.Int >= pm.Str && pm.Int >= pm.Con))
+                            else if (pm.Int >= pm.Dex && pm.Int >= pm.Str)
                             {
                                 pm.MortEvo = MortEvo.Esprit;
                                 EspritGump espritGump = new EspritGump();
@@ -3073,10 +3084,13 @@ namespace Server.Mobiles
                             }
                             break;
                         case MortEvo.Spectre:
+                            Stop();
                             break;
                         case MortEvo.Esprit:
+                            Stop();
                             break;
                         case MortEvo.Faucheur:
+                            Stop();
                             break;
                     }
                 }

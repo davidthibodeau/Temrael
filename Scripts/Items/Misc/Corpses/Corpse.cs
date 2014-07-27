@@ -1322,12 +1322,12 @@ namespace Server.Items
 			{
 				new Blood( 0x122D ).MoveToWorld( Location, Map );
 
-				new Torso().MoveToWorld( Location, Map );
+				/*new Torso().MoveToWorld( Location, Map );
 				new LeftLeg().MoveToWorld( Location, Map );
 				new LeftArm().MoveToWorld( Location, Map );
 				new RightLeg().MoveToWorld( Location, Map );
 				new RightArm().MoveToWorld( Location, Map );
-				new Head( null ).MoveToWorld( Location, Map );
+				new Head( null ).MoveToWorld( Location, Map );*/
 
 				SetFlag( CorpseFlag.Carved, true );
 
@@ -1362,12 +1362,14 @@ namespace Server.Items
             {
                 new Blood(0x122D).MoveToWorld(Location, Map);
 
-                new Torso().MoveToWorld(Location, Map);
+                /*new Torso().MoveToWorld(Location, Map);
                 new LeftLeg().MoveToWorld(Location, Map);
                 new LeftArm().MoveToWorld(Location, Map);
                 new RightLeg().MoveToWorld(Location, Map);
                 new RightArm().MoveToWorld(Location, Map);
-                new Head(null).MoveToWorld(Location, Map);
+                new Head(null).MoveToWorld(Location, Map);*/
+
+                from.SendMessage("Vous vous nourrissez de l'âme de ce corps");
 
                 SetFlag(CorpseFlag.Carved, true);
 
