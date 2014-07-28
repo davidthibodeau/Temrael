@@ -13,7 +13,7 @@ namespace Server.Gumps
         private bool m_apprentissage = false;
 
         public GumpLanguage(TMobile _owner, bool apprentissage)
-            : base((apprentissage ? "Apprentissage (langage)" : "Choix d'un language"), 200, 200)
+            : base((apprentissage ? "Apprentissage des langues" : "Choix d'un language"), 250, 250)
         {
             m_owner = _owner;
             m_apprentissage = apprentissage;
@@ -22,7 +22,7 @@ namespace Server.Gumps
             int line = 0;
             int scale = 21;
 
-            AddHtml(x, y + line * scale, 200, 20, "<h3><basefont color=#5A4A31>Langues:<basefont></h3>", false, false);
+            AddHtml(x, y + line * scale, 200, 20, "<h3><basefont color=#E2CDAA>Liste des langues:<basefont></h3>", false, false); //Anciennement 5A4A31
             line++;
 
             for (int i = 0; i < 8; i++)
@@ -53,7 +53,6 @@ namespace Server.Gumps
         {
             Mobile f = sender.Mobile;
             TMobile from = f as TMobile;
-            //Augmentation de matirise:
 
             if (info.ButtonID >= 50 && info.ButtonID < 100)
             {
@@ -70,7 +69,7 @@ namespace Server.Gumps
                 }
                 else
                 {
-                    from.SendMessage("Pas assez de compétence en language pour apprendre une langue supplémentaire");
+                    from.SendMessage("Pas assez de compétence en connaissance des langues pour apprendre une langue supplémentaire");
                 }
 
             }
@@ -83,7 +82,7 @@ namespace Server.Gumps
                 }
                 else
                 {
-                    from.SendMessage("Vous ne pouvez pas parlez une langue que vous ne connaissez pas.");
+                    from.SendMessage("Vous ne pouvez pas parler une langue que vous ne connaissez pas.");
                 }
             }
 

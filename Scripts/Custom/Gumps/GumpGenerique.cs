@@ -80,7 +80,7 @@ namespace Server.Gumps
                 AddImage(0, _y + 320, 0x28a2); //Dragon
             AddImage(m_Largeur + 18, 46, 0x1582); //Sigle UO
 
-            AddHtml(_x + 30, _y + 17, 200, 20, "<h3><basefont color=#025a>" + titre + "<basefont></h3>", false, false);
+            AddHtml(_x + 30, _y + 17, 200, 20, "<h3><basefont color=#00025A>" + titre + "<basefont></h3>", false, false);
 
         }
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -104,7 +104,7 @@ namespace Server.Gumps
                 AddImage(x, y, ButtonID[1], 2118);
             else
                 AddButton(x, y, ButtonID[0], ButtonID[1], id, GumpButtonType.Reply, 0);
-            AddHtml(x + 20, y - 3, 200, 20, "<h3><basefont color=#" + (select ? "025a" : "5A4A31") + ">" + text + "<basefont></h3>", false, false);
+            AddHtml(x + 20, y - 3, 200, 20, "<h3><basefont color=#" + (select ? "00025A" : "E2CDAA") + ">" + text + "<basefont></h3>", false, false); //Anciennement "00025A : "5A4A31")
         }
         public void AddSimpleButton(int x, int y, int id, string text)
         {
