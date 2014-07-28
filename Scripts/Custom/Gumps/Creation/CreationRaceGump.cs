@@ -33,19 +33,17 @@ namespace Server.Gumps
 
             y = 650;
             x = 90;
-            int space = 80;
+            int space = 70;
 
+            AddCreationMenuItem(x, y, 1193, 2, false);
             x += space;
-            AddMenuItem(x, y, 1193, 2, false);
+            AddCreationMenuItem(x, y, 1190, 3, true);
             x += space;
-            AddMenuItem(x, y, 1190, 3, true);
+            AddCreationMenuItem(x, y, 1188, 4, true);
             x += space;
+            AddCreationMenuItem(x, y, 1224, 6, true);
             x += space;
-            AddMenuItem(x, y, 1188, 4, true);
-            x += space;
-            AddMenuItem(x, y, 1224, 6, true);
-            x += space;
-            AddMenuItem(x, y, 1182, 7, true);
+            AddCreationMenuItem(x, y, 1182, 7, true);
 
             x = XBase;
             y = YBase;
@@ -76,8 +74,8 @@ namespace Server.Gumps
                 line = linetmp;
                 AddSection(x + 260, y + line * scale, 275, 170, race.Name, race.Description);
                 line += 10;
-                AddButton(470, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
-                AddHtml(520, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
+                AddButton(470, 645, 52, 52, 8, GumpButtonType.Reply, 0);
+                AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
 
                 line = 12;
 

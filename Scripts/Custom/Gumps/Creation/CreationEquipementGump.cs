@@ -24,19 +24,17 @@ namespace Server.Gumps
 
             y = 650;
             x = 90;
-            int space = 80;
+            int space = 70;
 
+            AddCreationMenuItem(x, y, 1193, 2, true);
             x += space;
-            AddMenuItem(x, y, 1193, 2, true);
+            AddCreationMenuItem(x, y, 1190, 3, true);
             x += space;
-            AddMenuItem(x, y, 1190, 3, true);
+            AddCreationMenuItem(x, y, 1188, 4, false);
             x += space;
+            AddCreationMenuItem(x, y, 1224, 6, true);
             x += space;
-            AddMenuItem(x, y, 1188, 4, false);
-            x += space;
-            AddMenuItem(x, y, 1224, 6, true);
-            x += space;
-            AddMenuItem(x, y, 1182, 7, true);
+            AddCreationMenuItem(x, y, 1182, 7, true);
 
             x = XBase;
             y = YBase;
@@ -183,19 +181,14 @@ namespace Server.Gumps
                 ++line;
             }
 
-            /*for (int i = 0; i < m_gumpList.Count; i++)
-            {
-                AddImage(155, 110, m_gumpList[i].GumpID, m_gumpList[i].Hue);
-            }*/
-
-            //AddBackground(140, 0, 585, 393, 5054);
             AddBackground(100, 350, 545, 298, 3500);
             AddBackground(295, 386, 337, 225, 3000);
-            AddHtml(123, 365, 565, 18, "<h3><basefont color=#025a>Équipement de Départ<basefont></h3>", false, false); // <center>VENDOR CUSTOMIZATION MENU</center>
-            AddHtml(150, 611, 150, 18, "<h3><basefont color=#025a>Ajouter<basefont></h3>", false, false); // OKAY
+            AddHtml(123, 365, 565, 18, "<h3><basefont color=#025a>Équipement de départ<basefont></h3>", false, false);
+            AddHtml(150, 611, 150, 18, "<h3><basefont color=#025a>Ajouter<basefont></h3>", false, false);
             AddButton(115, 610, 4005, 4007, 8, GumpButtonType.Reply, 0);
-            //AddHtmlLocalized(450, 615, 150, 18, 1011012, false, false); // CANCEL
-            //AddButton(415, 615, 4005, 4007, 0, GumpButtonType.Reply, 0);
+
+            AddButton(470, 645, 52, 52, 30, GumpButtonType.Reply, 0);
+            AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Terminer<basefont></h3>", false, false);
 
             y = 385;
             Races race = Races.Aucun;
@@ -238,15 +231,6 @@ namespace Server.Gumps
                         AddRadio(x, y + (entry.LongText ? 40 : 20), 210, 211, false, (c << 8) + i);
                     }
                 }
-
-                /*if (cat.CanDye)
-                {
-                    AddHtml(385, 585, 100, 18, "<h3><basefont color=#5A4A31>Couleur<basefont></h3>", false, false); // Color
-                    AddRadio(437, 585, 210, 211, false, 100 + i);
-                }
-
-                AddHtml(510, 585, 100, 18, "<h3><basefont color=#5A4A31>Supprimer<basefont></h3>", false, false); // Remove
-                AddRadio(586, 585, 210, 211, false, 200 + i);*/
             }
         }
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -386,16 +370,6 @@ namespace Server.Gumps
                                             previewItem = m_gumpList[i];
                                     }
 
-                                    /*if ((item != null) && (previewItem != null))
-                                    {
-                                        from.SendGump(new TeintureGump(from, TeintureTabs.Baies, item, previewItem, this));
-                                        //new PVHuePicker( item, from ).SendTo( sender );
-                                    }
-                                    else
-                                    {
-                                        from.SendGump(new CreationGump(from));
-                                    }*/
-
                                     from.SendGump(new CreationEquipementGump(from));
                                 }
                             }
@@ -521,6 +495,9 @@ namespace Server.Gumps
                         from.Creation.secrete = Races.Nordique;
                         from.SendGump(new CreationEquipementGump(from));
                         break;
+                    case 30:
+                        from.SendGump(new CreationCarteGump(from));
+                        break;
             }
         }
 
@@ -533,21 +510,6 @@ namespace Server.Gumps
             private bool m_LongText;
             private int m_GumpID;
             private bool m_femaleGump;
-
-            /*public CustomItem(int itemID, string name)
-                : this(null, itemID, name, 0, false)
-            {
-            }
-
-            public CustomItem(int itemID, string name, bool longText)
-                : this(null, itemID, name, 0, longText)
-            {
-            }
-
-            public CustomItem(Type type, string name)
-                : this(type, name, 0)
-            {
-            }*/
 
             public CustomItem(Type type, string name, int art, int GumpID)
                 : this(type, 0, name, art, false, GumpID, false)
@@ -1552,31 +1514,26 @@ namespace Server.Gumps
 
             new CustomCategory( Layer.FirstValid, "Grimoire", false, Races.Aucun, ClasseType.Magicien, new CustomItem[]{//Held items
 				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                //new CustomItem( typeof( Runebook ),     "Manuscrit", 0x22C5, 0 ),
                 new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Grimoire", false, Races.Aucun, ClasseType.Sorcier, new CustomItem[]{//Held items
 				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                //new CustomItem( typeof( Runebook ),     "Manuscrit", 0x22C5, 0 ),
                 new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Grimoire", false, Races.Aucun, ClasseType.Necromancien, new CustomItem[]{//Held items
 				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                //new CustomItem( typeof( Runebook ),     "Manuscrit", 0x22C5, 0 ),
                 new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Grimoire", false, Races.Aucun, ClasseType.Illusioniste, new CustomItem[]{//Held items
 				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                //new CustomItem( typeof( Runebook ),     "Manuscrit", 0x22C5, 0 ),
                 new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Grimoire", false, Races.Aucun, ClasseType.Conjurateur, new CustomItem[]{//Held items
 				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                //new CustomItem( typeof( Runebook ),     "Manuscrit", 0x22C5, 0 ),
                 new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
 			} ),
 

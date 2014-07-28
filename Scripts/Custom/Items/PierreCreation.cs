@@ -34,15 +34,13 @@ namespace Server.Items
                 tMob.StatistiquesLibres = 0;
                 tMob.AptitudesLibres = 0;
                 tMob.CompetencesLibres = 0;
-                //tMob.Niveau = 0;
-                //tMob.XP = 0;
-                tMob.StatCap = 275;
+                tMob.StatCap = 255;
 
                 tMob.RawStr = 10;
                 tMob.RawDex = 10;
-                tMob.RawCon = 10;
                 tMob.RawInt = 10;
-                tMob.RawCha = 10;
+                tMob.RawCon = 0;
+                tMob.RawCha = 0;
 
                 Account act = tMob.Account as Account;
 

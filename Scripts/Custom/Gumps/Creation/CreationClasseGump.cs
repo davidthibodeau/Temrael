@@ -36,19 +36,17 @@ namespace Server.Gumps
 
             y = 650;
             x = 90;
-            int space = 80;
+            int space = 70;
 
+            AddCreationMenuItem(x, y, 1193, 2, true);
             x += space;
-            AddMenuItem(x, y, 1193, 2, true);
+            AddCreationMenuItem(x, y, 1190, 3, false);
             x += space;
-            AddMenuItem(x, y, 1190, 3, false);
+            AddCreationMenuItem(x, y, 1188, 4, true);
             x += space;
+            AddCreationMenuItem(x, y, 1224, 6, true);
             x += space;
-            AddMenuItem(x, y, 1188, 4, true);
-            x += space;
-            AddMenuItem(x, y, 1224, 6, true);
-            x += space;
-            AddMenuItem(x, y, 1182, 7, true);
+            AddCreationMenuItem(x, y, 1182, 7, true);
 
             x = XBase;
             y = YBase;
@@ -80,32 +78,23 @@ namespace Server.Gumps
                 AddButton(x, y + line * scale, 8, info.Image);
                 AddTooltip(info.Tooltip);
 
-                AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
-                AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
+                AddButton(470, 645, 52, 52, 8, GumpButtonType.Reply, 0);
+                AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
 
                 line = linetmp;
                 AddSection(x + 240, y + line * scale, 300, 90, info.Nom, info.Role);
 
-                List<Aptitude> listAptitude = new List<Aptitude>();
                 string temp = String.Empty;
-                /*string nomTemp = String.Empty;
-                string descrTemp = String.Empty;
-                string reqTemp = String.Empty;*/
-
-                /*temp += "<strong>Arme de Prédilection</strong>: " + info.ArmeAllow.ToString() + Environment.NewLine;
-                temp += "<strong>Armure de Prédilection</strong>: " + info.ArmorAllow.ToString() + Environment.NewLine;*/
-                /*temp += "<strong>Compétences de Classe</strong>: ";
 
                 for (int i = 0; i < info.ClasseCompetences.Length; i++)
                 {
+                    temp += info.ClasseCompetences[i].SkillName.ToString() + ": " + info.ClasseCompetences[i].Value.ToString() + "%";
                     if (i != info.ClasseCompetences.Length - 1)
-                        temp += info.ClasseCompetences[i].ToString() + ", ";
-                    else
-                        temp += info.ClasseCompetences[i].ToString();
-                }*/
+                         temp += Environment.NewLine;
+                }
 
                 line = 12;
-                AddSection(x, y + line * scale, 540, 180, "Aptitudes", temp);
+                AddSection(x, y + line * scale, 540, 180, "Compétences appliquées au niveau 30", temp);
             }
         }
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -148,6 +137,7 @@ namespace Server.Gumps
                     break;
                 case 8:
                     from.Creation.classe = m_classeType;
+                    from.SendGump(new CreationEquipementGump(from));
                     break;
                 case 9:
                     from.SendGump(new CreationClasseGump(from, m_classeType, m_page - 1));

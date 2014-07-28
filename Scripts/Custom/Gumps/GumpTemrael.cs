@@ -219,18 +219,18 @@ namespace Server.Gumps
             AddBackground(x, y, largeur, hauteur + 58, 3500);
             AddLigne(x + 20, y + 20, largeur - 37);
             AddHtmlTitre(x + 30, y + 13, largeur - 35, titre);
-            AddHtml(x + 15, y + 43, largeur - 30, hauteur, String.Concat("<h3><basefont color=#241b0d>", description, "<basefont></h3>"), true, true);
+            AddHtml(x + 20, y + 43, largeur - 33, hauteur, String.Concat("<h3><basefont color=#241b0d>", description, "<basefont></h3>"), true, true);
         }
         public void AddSection(int x, int y, int largeur, int hauteur, string titre, string description, string[] texte)
         {
             AddBackground(x, y, largeur, hauteur + 58 + (texte.Length * 20), 3500);
             AddLigne(x + 20, y + 20, largeur - 37);
             AddHtmlTitre(x + 30, y + 13, largeur - 35, titre);
-            AddHtml(x + 20, y + 43, largeur - 30, hauteur, String.Concat("<h3><basefont color=#241b0d>", description, "<basefont></h3>"), true, true);
+            AddHtml(x + 20, y + 43, largeur - 35, hauteur, String.Concat("<h3><basefont color=#241b0d>", description, "<basefont></h3>"), true, true);
 
             for (int i = 0; i < texte.Length; i++)
             {
-                AddHtmlTexte(x + 15, (y + 43) + hauteur + (i * 20), largeur - 35, texte[i]);
+                AddHtmlTexte(x + 17, (y + 43) + hauteur + (i * 20), largeur - 35, texte[i]);
             }
         }
         public void AddSection(int x, int y, int largeur, int hauteur, string titre, string[] texte)
@@ -241,7 +241,7 @@ namespace Server.Gumps
 
             for (int i = 0; i < texte.Length; i++)
             {
-                AddHtmlTexte(x + 20, (y + 43) + (i * 20), largeur - 35, texte[i]);
+                AddHtmlTexte(x + 17, (y + 43) + (i * 20), largeur - 35, texte[i]);
             }
         }
         public void AddInvisibleSection(int x, int y, int largeur, int hauteur)
@@ -255,8 +255,17 @@ namespace Server.Gumps
                 AddBackground(x, y, 80, 62, 9300);
 
             AddButton(x + 20, y + 10, gumpID, gumpID, buttonID, GumpButtonType.Reply, 0);
-            AddButton(x + 58, y + 12, 2087, 2087, buttonID, GumpButtonType.Reply, 0);
-            AddButton(x + 10, y + 12, 2097, 2097, buttonID, GumpButtonType.Reply, 0);
+            //AddButton(x + 58, y + 12, 2087, 2087, buttonID, GumpButtonType.Reply, 0);
+            //AddButton(x + 10, y + 12, 2097, 2097, buttonID, GumpButtonType.Reply, 0);
+        }
+        public void AddCreationMenuItem(int x, int y, int gumpID, int buttonID, bool isActive)
+        {
+            if (isActive)
+                AddBackground(x, y, 70, 62, 9300);
+
+            AddButton(x + 15, y + 10, gumpID, gumpID, buttonID, GumpButtonType.Reply, 0);
+            //AddButton(x + 47, y + 12, 2087, 2087, buttonID, GumpButtonType.Reply, 0);
+            //AddButton(x + 7, y + 12, 2097, 2097, buttonID, GumpButtonType.Reply, 0);
         }
         public void AddBackgroundImage(int x, int y, int width, int height, int id, int gumpID)
         {

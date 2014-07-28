@@ -42,32 +42,23 @@ namespace Server.Gumps
 
             y = 650;
             x = 90;
-            int space = 80;
+            int space = 70;
 
+            AddCreationMenuItem(x, y, 1193, 2, true);
             x += space;
-            AddMenuItem(x, y, 1193, 2, true);
+            AddCreationMenuItem(x, y, 1190, 3, true);
             x += space;
-            AddMenuItem(x, y, 1190, 3, true);
+            AddCreationMenuItem(x, y, 1188, 4, true);
             x += space;
+            AddCreationMenuItem(x, y, 1224, 6, false);
             x += space;
-            AddMenuItem(x, y, 1188, 4, true);
-            x += space;
-            AddMenuItem(x, y, 1224, 6, false);
-            x += space;
-            AddMenuItem(x, y, 1182, 7, true);
+            AddCreationMenuItem(x, y, 1182, 7, true);
 
             x = XBase;
             y = YBase;
 
-            //if (Temrael.beta)
-            //{
-            //    AddImage(175, 150, 448);
-            //}
-            //else
-            //{
             AddBackground(170, 145, 445, 478, 2620);
             AddImage(175, 150, 1766);
-            //}
 
             //Hasteindale
             //if (Temrael.beta)
@@ -190,31 +181,31 @@ namespace Server.Gumps
                     break;
                 case 8:
                     from.Creation.destination = DestinationsDepart.Hasteindale;
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationOverviewGump(from));
                     break;
                 case 9:
                     from.Creation.destination = DestinationsDepart.Brandheim;
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationOverviewGump(from));
                     break;
                 case 10:
                     from.Creation.destination = DestinationsDepart.Elamsham;
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationOverviewGump(from));
                     break;
                 case 11:
                     from.Creation.destination = DestinationsDepart.Citarel;
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationOverviewGump(from));
                     break;
                 case 12:
                     from.Creation.destination = DestinationsDepart.Serenite;
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationOverviewGump(from));
                     break;
                 case 13:
                     from.Creation.destination = DestinationsDepart.Melandre;
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationOverviewGump(from));
                     break;
                 case 14:
                     from.Creation.destination = DestinationsDepart.Tartarus;
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationOverviewGump(from));
                     break;
             }
         }

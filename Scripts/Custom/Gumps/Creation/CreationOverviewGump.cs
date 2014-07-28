@@ -25,27 +25,25 @@ namespace Server.Gumps
 
             y = 650;
             x = 90;
-            int space = 80;
+            int space = 70;
 
+            AddCreationMenuItem(x, y, 1193, 2, true);
             x += space;
-            AddMenuItem(x, y, 1193, 2, true);
+            AddCreationMenuItem(x, y, 1190, 3, true);
             x += space;
-            AddMenuItem(x, y, 1190, 3, true);
+            AddCreationMenuItem(x, y, 1188, 4, true);
             x += space;
+            AddCreationMenuItem(x, y, 1224, 6, true);
             x += space;
-            AddMenuItem(x, y, 1188, 4, true);
-            x += space;
-            AddMenuItem(x, y, 1224, 6, true);
-            x += space;
-            AddMenuItem(x, y, 1182, 7, false);
+            AddCreationMenuItem(x, y, 1182, 7, false);
 
             x = XBase;
             y = YBase;
 
-            AddBackground(110, 125, 535, 140, 3500);
-            AddHtml(125, 140, 510, 70, "Vérifiez les informations ci-dessous avant d'accepter. Une fois accepté, plusieurs de celles-ci ne peuvent être changés en jeu. Si vous souhaitez édité l'une des valeurs, retournez à la page correspondante.", true, true);
-            AddHtml(520, 227, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
-            AddButton(470, 215, 52, 52, 8, GumpButtonType.Reply, 0);
+            AddBackground(110, 125, 535, 90, 3500);
+            AddHtml(125, 140, 510, 60, "<h3><basefont color=#5A4A31>Vérifiez les informations ci-dessous avant d'accepter. Une fois accepté, plusieurs de celles-ci ne peuvent être changés en jeu. Si vous souhaitez éditer l'une des valeurs, retournez à la page correspondante.<basefont></h3>", true, false);
+            AddButton(470, 645, 52, 52, 8, GumpButtonType.Reply, 0);
+            AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
 
             x = 110;
             y = 305;
