@@ -9,7 +9,6 @@ namespace Server
     public enum ClasseType
     {
         None = -1,
-        //Guerrier
         Archer = 0,
         Barbare,
         Guerrier,
@@ -24,9 +23,6 @@ namespace Server
         Necromancien,
         Illusioniste,
         Conjurateur,
-        //Ensorceleur,
-        //Druide,
-        //Shaman,
 
         //Roublard
         Espion,
@@ -37,8 +33,6 @@ namespace Server
 
         Artisan,
 
-        //Divin
-        //Moine,
         Pretre,
         Paladin,
         PaladinDechu,
@@ -95,9 +89,25 @@ namespace Server
         }
     }
 
+    public class ClasseCompetences
+    {
+        private SkillName m_SkillName;
+        private double m_Value;
+
+        public SkillName SkillName { get { return m_SkillName; } }
+        public double Value { get { return m_Value; } }
+
+        public ClasseCompetences(SkillName skillName, double value)
+        {
+            m_SkillName = skillName;
+            m_Value = value;
+        }
+    }
+
     public class ClasseInfo
     {
         private ClasseType m_Classe;
+        private ClasseCompetences[] m_ClasseCompetences;
         private ClasseAptitudes[] m_FirstApt;
         private ClasseAptitudes[] m_SecondApt;
         private ClasseAptitudes[] m_ThirdApt;
@@ -110,6 +120,7 @@ namespace Server
         private int m_Image;
         
         public ClasseType Classe { get { return m_Classe; } }
+        public ClasseCompetences[] ClasseCompetences { get { return m_ClasseCompetences; } }
         public ClasseAptitudes[] FirstApt { get { return m_FirstApt; } }
         public ClasseAptitudes[] SecondApt { get { return m_SecondApt; } }
         public ClasseAptitudes[] ThirdApt { get { return m_ThirdApt; } }
@@ -125,8 +136,9 @@ namespace Server
         {
         }
 
-        public ClasseInfo(ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip)
+        public ClasseInfo(ClasseCompetences[] classeCompetences, ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip)
         {
+            m_ClasseCompetences = classeCompetences;
             m_FirstApt = firstApt;
             m_SecondApt = secondApt;
             m_ThirdApt = thirdApt;
@@ -139,9 +151,10 @@ namespace Server
             m_Tooltip = tooltip;
         }
 
-        public ClasseInfo(ClasseType classe, ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip)
+        public ClasseInfo(ClasseType classe, ClasseCompetences[] classeCompetences, ClasseAptitudes[] firstApt, ClasseAptitudes[] secondApt, ClasseAptitudes[] thirdApt, ClasseAptitudes[] fourthApt, string name, string[] noms, string role, ClasseBranche branche, int image, int tooltip)
         {
             m_Classe = classe;
+            m_ClasseCompetences = classeCompetences;
             m_FirstApt = firstApt;
             m_SecondApt = secondApt;
             m_ThirdApt = thirdApt;
@@ -228,6 +241,31 @@ namespace Server
 
                     if (!table.ContainsKey(aptitudes.Aptitude))
                         table.Add(aptitudes.Aptitude, aptitudes.Value);
+                }
+            }
+
+            return table;
+        }
+
+        public static Hashtable GetCompetences(ClasseType classe)
+        {
+            Hashtable table = new Hashtable();
+            ClasseInfo info = GetInfos(classe);
+            ClasseCompetences[] cpt = null;
+
+            if (info == null)
+                return table;
+
+            cpt = info.ClasseCompetences;
+
+            if (cpt != null)
+            {
+                for (int i = 0; i < cpt.Length; ++i)
+                {
+                    ClasseCompetences competences = cpt[i];
+
+                    if (!table.ContainsKey(competences.SkillName))
+                        table.Add(competences.SkillName, competences.Value);
                 }
             }
 
