@@ -22,28 +22,34 @@ namespace Server
                 ""
             };
 
+        private static ClasseCompetences[] m_classeCompetences = new ClasseCompetences[]
+            {
+                //new ClasseCompetences(SkillName.Identification)
+            };
+
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
-                //new ClasseAptitudes(NAptitude.PortArmeDistance, 6),
+                //new ClasseAptitudes(Aptitude.PortArmeDistance, 6),
             };
 
         private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
             {
-                //new ClasseAptitudes(NAptitude.PortArmeDistance, 6),
+                //new ClasseAptitudes(Aptitude.PortArmeDistance, 6),
             };
 
         private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
             {
-                //new ClasseAptitudes(NAptitude.PortArmeDistance, 6),
+                //new ClasseAptitudes(Aptitude.PortArmeDistance, 6),
             };
 
         private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
             {
-                //new ClasseAptitudes(NAptitude.PortArmeDistance, 6),
+                //new ClasseAptitudes(Aptitude.PortArmeDistance, 6),
             };
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(
                 m_Classe,
+                m_classeCompetences,
                 m_firstApt,
                 m_secondApt,
                 m_thirdApt,

@@ -22,6 +22,11 @@ namespace Server
                 "Rodeur"
             };
 
+        private static ClasseCompetences[] m_classeCompetences = new ClasseCompetences[]
+            {
+
+            };
+
         private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
             {
                 new ClasseAptitudes(Aptitude.PortArmure, 2),
@@ -72,6 +77,7 @@ namespace Server
 
         public static ClasseInfo ClasseInfo = new ClasseInfo(
                 m_Classe,
+                m_classeCompetences,
                 m_firstApt,
                 m_secondApt,
                 m_thirdApt,
