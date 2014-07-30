@@ -2150,103 +2150,15 @@ namespace Server.Mobiles
             
         }
 
-        public virtual int GetBaseAptitudeValue(Aptitude aptitude)
-        {
-            /*int metierCount = 0;*/
-            int raceCount = 0;
-
-            /*for (int i = 0; i < m_MetierType.Count; i++)
-            {
-                metierCount = Metiers.GetAptitudeValue(this, m_MetierType[i], aptitude);
-            }*/
-
-            if (RaceManager.GetAptitude(m_race) == aptitude)
-                raceCount = RaceManager.GetAptitudeNbr(m_race);
-
-            int a = Classes.GetAptitudeValue(this, m_ClasseType, aptitude) +
-                    raceCount;
-            return a;
-        }
-
-        /*public virtual int GetPrestigeBaseAptitudeValue(NAptitude aptitude)
-        {
-            //Sans la classe de prestige pour tester les aptitudes lors du gain de prestige
-            return Classes.GetAptitudeValue(this,m_Classe, aptitude) + Metiers.GetAptitudeValue(m_Metier, aptitude) + Metiers.GetAptitudeValue(m_metierSecondaire, aptitude);
-            //return 0;
-        }*/
-
         public virtual int GetAptitudeValue(Aptitude aptitude)
         {
-            return GetBaseAptitudeValue(aptitude);
+            return 0;
         }
-
-        /*public virtual int GetPrestigeAptitudeValue(NAptitude aptitude)
-        {
-            return m_Aptitudes[aptitude] + GetPrestigeBaseAptitudeValue(aptitude);
-        }*/
-
-        /*public override int HitsMax
-        {
-            get
-            {
-                return 25 + this.Con + (this.Str / 2) + m_BonusHits;
-            }
-        }
-        public override int StamMax
-        {
-            get
-            {
-                return this.Dex + (this.Con / 2) + m_BonusStam;
-            }
-        }
-        public override int ManaMax
-        {
-            get
-            {
-                return this.Int + (this.Cha / 2) + m_BonusMana;
-            }
-        }*/
 
         public void FamilierCheck()
         {
             FollowersMax = 2 + GetAptitudeValue(Aptitude.Familier);
             Delta(MobileDelta.Followers);
-        }
-
-        public virtual void OnAptitudesChange(Aptitude aptitude, int oldvalue, int newvalue)
-        {
-            if (aptitude == Aptitude.Familier)
-            {
-                FollowersMax = 2 + GetAptitudeValue(Aptitude.Familier);
-                Delta(MobileDelta.Followers);
-            }
-
-            //Validate(ValidateType.Classes);
-
-            if (aptitude == Aptitude.Endurance)
-            {
-                CheckStatTimers();
-                Delta(MobileDelta.Hits);
-            }
-
-            if (aptitude == Aptitude.Resilience)
-            {
-                CheckStatTimers();
-                Delta(MobileDelta.Stam);
-            }
-
-            if (aptitude == Aptitude.Receptacle)
-            {
-                CheckStatTimers();
-                Delta(MobileDelta.Mana);
-            }
-
-            //if (aptitude == NAptitude.Deguisement && m_DeguisementInfos != null)
-            //{
-            //    Deguisements.CheckDeguisement(this);
-            //}
-
-            CheckStatTimers();
         }
 
         public virtual bool CheckEquitation(EquitationType type)
@@ -3336,8 +3248,13 @@ namespace Server.Mobiles
 
                     m_TileToDontFall = reader.ReadInt();
 
-                    if(version < 9)
-                        new Aptitudes(this, reader);
+                    if (version < 9)
+                    {
+                        reader.ReadInt();
+                        int oldLength = reader.ReadInt();
+                        for (int i = 0; i < oldLength; ++i)
+                            reader.ReadInt();
+                    }
 
                     m_Niveau = reader.ReadInt();
                     m_AptitudesLibres = reader.ReadInt();

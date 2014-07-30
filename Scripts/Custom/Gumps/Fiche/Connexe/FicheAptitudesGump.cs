@@ -45,7 +45,6 @@ namespace Server.Gumps
             if (!(tab == ClasseBranche.Aucun))
             {
                 //AddLabel(302, 32, 2101, "Aptitudes");
-                AddHtml(251, 135, 400, 20, String.Format("<h3><basefont color=#025a>Disponible : {0} | Indisponible : {1}<basefont></h3>", Aptitudes.GetDisponiblePA(m_From), Aptitudes.GetRemainingPA(m_From) - Aptitudes.GetDisponiblePA(m_From)), false, false);
                 AddImage(240, 140, 95);
                 AddImageTiled(240, 149, 247, 3, 96);
                 AddImage(485, 140, 97);
@@ -62,40 +61,6 @@ namespace Server.Gumps
                 AddHtml(375, 172, 200, 20, "<h3><basefont color=#025a>Compétence Requise<basefont></h3>", false, false);
             }
 
-            switch(tab)
-            {
-                case ClasseBranche.Aucun:
-                    AddButton(125, 148, 166, 166, 8, GumpButtonType.Reply, 0);
-                    AddButton(320, 148, 167, 167, 9, GumpButtonType.Reply, 0);
-                    AddButton(480, 148, 168, 168, 10, GumpButtonType.Reply, 0);
-                    //AddButton(165, 390, 169, 169, 11, GumpButtonType.Reply, 0);
-                    AddButton(395, 390, 170, 170, 12, GumpButtonType.Reply, 0);
-                    break;
-                case ClasseBranche.Guerrier:
-                    AddImage(425, 248, 263);
-                    CreateAptitudes(m_From, ClasseBranche.Guerrier);
-                    break;
-                case ClasseBranche.Artisan:
-                    AddImage(125, 328, 179);
-                    AddImage(325, 348, 318);
-                    CreateAptitudes(m_From, ClasseBranche.Artisan);
-                    break;
-                case ClasseBranche.Cleric:
-                    AddImage(125, 328, 350);
-                    CreateAptitudes(m_From, ClasseBranche.Cleric);
-                    break;
-                case ClasseBranche.Magie:
-                    AddImage(125, 328, 438);
-                    AddImage(522, 328, 299);
-                    CreateAptitudes(m_From, ClasseBranche.Magie);
-                    break;
-                case ClasseBranche.Roublard:
-                    AddImage(535, 348, 308);
-                    AddImage(275, 398, 316);
-                    CreateAptitudes(m_From, ClasseBranche.Roublard);
-                    break;
-                default: break;
-            }
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -151,106 +116,11 @@ namespace Server.Gumps
                 case 12:
                     from.SendGump(new FicheAptitudesGump(m_From, ClasseBranche.Roublard));
                     break;
+                default:
+                    break;
             }
 
-            try
-            {
-                int oldValue = 0;
-                Aptitude aptitude;
-
-                if (info.ButtonID >= 1000)
-                {
-                    aptitude = (Aptitude)(info.ButtonID - 1000);
-                    oldValue = Aptitudes.GetValue(m_From, aptitude);
-
-                    from.SendGump(new FicheAptitudeInfoGump(m_From, aptitude));
-                }
-                else if (info.ButtonID >= 500)
-                {
-                    aptitude = (Aptitude)(info.ButtonID - 500);
-                    oldValue = Aptitudes.GetValue(m_From, aptitude);
-
-                    from.SendGump(new FicheAptitudesGump(m_From, m_Tab));
-                }
-                else if (info.ButtonID >= 100)
-                {
-                    aptitude = (Aptitude)(info.ButtonID - 100);
-                    oldValue = Aptitudes.GetValue(m_From, aptitude);
-
-                    from.SendGump(new FicheAptitudesGump(m_From, m_Tab));
-                }
-            }
-            catch (Exception ex)
-            {
-                Misc.ExceptionLogging.WriteLine(ex);
-            }
-        }
-
-        public static Hashtable GetAptitudesList(TMobile from, ClasseBranche archetype)
-        {
-            Hashtable list = new Hashtable();
-
-            return list;
-        }
-
-        private void CreateAptitudes(TMobile from, ClasseBranche archetype)
-        {
-            Hashtable aptitudes = GetAptitudesList(from, archetype);
-            int count = 0;
-
-            ArrayList listKeys = new ArrayList();
-
-            IDictionaryEnumerator en = aptitudes.GetEnumerator();
-
-            while (en.MoveNext())
-            {
-                if (en.Value is string)
-                {
-                    listKeys.Add((string)en.Value);
-                }
-            }
-
-            listKeys.Sort();
-
-            try
-            {
-                en = aptitudes.GetEnumerator();
-
-                while (en.MoveNext())
-                {
-                    if (en.Key is Aptitude)
-                    {
-                        Aptitude aptitude = (Aptitude)en.Key;
-                        int index = listKeys.IndexOf(en.Value.ToString());
-                        int varX = ((index / 26) * 250);
-                        int varY = (index * 16) - ((index / 26) * 416);
-
-                        AddHtml(145 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + en.Value.ToString() + "<basefont></h3>", false, false);
-                        AddHtml(272 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + String.Format(": {0}", from.GetAptitudeValue(aptitude)) + "<basefont></h3>", false, false);
-                        AddHtml(330 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + Aptitudes.GetRequiredPA(from, aptitude).ToString() + "<basefont></h3>", false, false);
-                        AddHtml(375 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>" + (Aptitudes.GetCompReq(from, aptitude) > -1 ? m_From.Skills[Aptitudes.GetCompReq(from, aptitude)].Name:"Aucun") + "<basefont></h3>", false, false);
-                        AddHtml(515 + varX, 195 + varY, 200, 20, "<h3><basefont color=#5A4A31>[" + Aptitudes.GetCompNumReq(from, aptitude) + "%]<basefont></h3>", false, false);
-
-                        //AddLabel(120 + varX, 195 + varY, 2101, en.Value.ToString());
-                        //AddLabel(247 + varX, 195 + varY, 2101, String.Format(": {0}", from.GetAptitudeValue(aptitude)));
-                        //AddLabel(300 + varX, 195 + varY, 2101, Aptitudes.GetRequiredPA(from, aptitude).ToString());
-
-                        if (Aptitudes.CanRaise(from, aptitude))
-                            AddButton(105 + varX, 200 + varY, 2089, 2089, 100 + (int)aptitude, GumpButtonType.Reply, 0);
-
-                        if (Aptitudes.CanLower(from, aptitude))
-                            AddButton(123 + varX, 199 + varY, 2086, 2086, 500 + (int)aptitude, GumpButtonType.Reply, 0);
-
-                        AddButton(580 + varX, 195 + varY, 4011, 4013, 1000 + (int)aptitude, GumpButtonType.Reply, 0);
-
-                        ++count;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Misc.ExceptionLogging.WriteLine(ex);
-            }
+            
         }
     }
 }

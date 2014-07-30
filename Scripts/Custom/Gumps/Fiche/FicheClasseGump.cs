@@ -65,26 +65,7 @@ namespace Server.Gumps
             /*Classe*/
             if (classeType != ClasseType.None && classeType != ClasseType.Maximum)
             {
-                ClasseInfo info = Classes.GetInfos(classeType);
 
-                AddButton(x, y + line * scale, 8, info.Image);
-                AddTooltip(info.Tooltip);
-
-                ClasseAptitudes[] classeApt = null;
-
-                if (from.Niveau >= 30)
-                    classeApt = info.FourthApt;
-                else if (from.Niveau >= 20)
-                    classeApt = info.ThirdApt;
-                else if (from.Niveau >= 10)
-                    classeApt = info.SecondApt;
-                else
-                    classeApt = info.FirstApt;
-
-                line = 13;
-
-                ++line;
-                AddSection(x, y + line * scale, 540, 120, info.Nom, temp);
                 
                 line -= 3;
                 AddButton(x, y + (line * scale) + 10, 52, 52, 8, GumpButtonType.Reply, 0);
