@@ -4,9 +4,9 @@ using Server.Items;
 using System.Collections;
 using Server.Engines.PartySystem;
 
-namespace Server.Combat
+namespace Server.Engines.Combat
 {
-    public class SequenceCombat
+    public class Combat
     {
         private Mobile attaquant;
         private BaseWeapon atkWeapon;
@@ -16,7 +16,7 @@ namespace Server.Combat
         private BaseWeapon defWeapon;     
         private double defvalue;
 
-        public SequenceCombat(Mobile atk, Mobile def)
+        public Combat(Mobile atk, Mobile def)
         {
             attaquant = atk;
             defenseur = def;

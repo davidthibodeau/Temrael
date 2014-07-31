@@ -13,7 +13,7 @@ using Server.Engines.Craft;
 using System.Collections.Generic;
 using Server.ContextMenus;
 //using Server.Spells.Spellweaving;
-using Server.Combat;
+using Server.Engines.Combat;
 using System.Text.RegularExpressions;
 
 namespace Server.Items
@@ -1564,7 +1564,7 @@ namespace Server.Items
 							WeaponAbility.ClearCurrentAbility( bc );
 					}
 				}
-                SequenceCombat combat = new SequenceCombat(attacker, defender);
+                Combat combat = new Combat(attacker, defender);
                 if (combat.CheckHit())
                     OnHit(attacker, defender, damageBonus);
                 else
@@ -1611,7 +1611,7 @@ namespace Server.Items
 
 			if ( defender.Player || defender.Body.IsHuman )
 			{
-                SequenceCombat combat = new SequenceCombat(attacker, defender);
+                Combat combat = new Combat(attacker, defender);
 				blocked = combat.CheckParer();
 
 				if ( blocked )
@@ -1988,17 +1988,7 @@ namespace Server.Items
 
 			//factor *= damageBonus;
 			percentageBonus += (int)(damageBonus * 100) - 100;
-
-			CheckSlayerResult cs = CheckSlayers( attacker, defender );
-
-			if ( cs != CheckSlayerResult.None )
-			{
-				if ( cs == CheckSlayerResult.Slayer )
-					defender.FixedEffect( 0x37B9, 10, 5 );
-
-				//factor *= 2.0;
-				percentageBonus += 100;
-			}
+		
 
 			if ( !attacker.Player )
 			{
@@ -2100,7 +2090,7 @@ namespace Server.Items
 
             if (attacker is TMobile)
             {
-                SequenceCombat combat = new SequenceCombat(attacker, defender);
+                Combat combat = new Combat(attacker, defender);
                 damage += combat.CheckCriticalStrike(damage);
             }
 
@@ -2609,40 +2599,6 @@ namespace Server.Items
 			}
 		}
 		#endregion
-
-        public virtual CheckSlayerResult CheckSlayers(Mobile attacker, Mobile defender)
-        {
-            BaseWeapon atkWeapon = attacker.Weapon as BaseWeapon;
-            SlayerEntry atkSlayer = SlayerGroup.GetEntryByName(atkWeapon.Slayer);
-            SlayerEntry atkSlayer2 = SlayerGroup.GetEntryByName(atkWeapon.Slayer2);
-
-            if (atkSlayer != null && atkSlayer.Slays(defender) || atkSlayer2 != null && atkSlayer2.Slays(defender))
-                return CheckSlayerResult.Slayer;
-
-            BaseTalisman talisman = attacker.Talisman as BaseTalisman;
-
-            if (talisman != null && TalismanSlayer.Slays(talisman.Slayer, defender))
-                return CheckSlayerResult.Slayer;
-
-            if (!Core.SE)
-            {
-                ISlayer defISlayer = Spellbook.FindEquippedSpellbook(defender);
-
-                if (defISlayer == null)
-                    defISlayer = defender.Weapon as ISlayer;
-
-                if (defISlayer != null)
-                {
-                    SlayerEntry defSlayer = SlayerGroup.GetEntryByName(defISlayer.Slayer);
-                    SlayerEntry defSlayer2 = SlayerGroup.GetEntryByName(defISlayer.Slayer2);
-
-                    if (defSlayer != null && defSlayer.Group.OppositionSuperSlays(attacker) || defSlayer2 != null && defSlayer2.Group.OppositionSuperSlays(attacker))
-                        return CheckSlayerResult.Opposition;
-                }
-            }
-
-            return CheckSlayerResult.None;
-        }
 
 		public virtual void AddBlood( Mobile attacker, Mobile defender, int damage )
 		{
@@ -3875,7 +3831,7 @@ namespace Server.Items
                 list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
                 if (m_CrafterName != null)
-                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
+                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriquèßpar: " + m_CrafterName); // Fabriquèßpar: ~1_NAME~
 
                 #region Factions
                 if (m_FactionState != null)
@@ -4422,12 +4378,5 @@ namespace Server.Items
 		}
 
 		#endregion
-	}
-
-	public enum CheckSlayerResult
-	{
-		None,
-		Slayer,
-		Opposition
 	}
 }

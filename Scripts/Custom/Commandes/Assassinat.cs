@@ -6,7 +6,7 @@ using Server.Commands;
 using Server.Items;
 using Server.Targeting;
 using Server.Network;
-using Server.Combat;
+using Server.Engines.Combat;
 
 // Revue du délais entre chaque assassinat a 5 Minutes 
 // Revue a la hausse des dégats de 1.5 à 1.7
@@ -120,7 +120,7 @@ namespace Server.Scripts.Commands
 
                                     double hitscale = (weapon.MaxDamage * 1.7) * (1 + (pm.GetAptitudeValue(Aptitude.Assassinat) * 0.2));
 
-                                    SequenceCombat combat = new SequenceCombat(pm, defender);
+                                    Combat combat = new Combat(pm, defender);
                                     if (combat.CheckHit())
                                         weapon.OnHit(pm, defender, hitscale);
                                     else

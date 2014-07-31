@@ -3,7 +3,7 @@ using Server.Items;
 using Server.Network;
 using Server.Spells;
 using Server.Mobiles;
-using Server.Combat;
+using Server.Engines.Combat;
 
 namespace Server.Items
 {
@@ -78,7 +78,7 @@ namespace Server.Items
 
 					if ( OnFired( attacker, defender ) )
 					{
-                        SequenceCombat combat = new SequenceCombat(attacker, defender);
+                        Combat combat = new Combat(attacker, defender);
 						if ( combat.CheckHit() )
 							OnHit( attacker, defender );
 						else
