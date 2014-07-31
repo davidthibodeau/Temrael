@@ -65,8 +65,8 @@ namespace Server.Gumps
             /*Classe*/
             if (classeType != ClasseType.None && classeType != ClasseType.Maximum)
             {
-                ClasseInfo info = Classes.GetInfos(classeType);
 
+<<<<<<< HEAD
                 AddButton(x, y + line * scale, 8, info.Image);
                 AddTooltip(info.Tooltip);
 
@@ -79,6 +79,8 @@ namespace Server.Gumps
 
                 line = 12;
                 AddSection(x, y + line * scale, 540, 120, "Compétences appliquées au niveau 30", temp);
+=======
+>>>>>>> 4b39792576608ba3c5968f75b438da77ed08160c
                 
                 line -= 3;
                 AddButton(x, y + (line * scale) + 10, 52, 52, 8, GumpButtonType.Reply, 0);

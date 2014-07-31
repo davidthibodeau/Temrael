@@ -56,15 +56,7 @@ namespace Server.Gumps
 
             AddTitre(x + 360, y + line * scale, 190, "Classes");
             ++line;
-            for (int i = page * lineMax; i < (page * lineMax) + lineMax && i < (int)ClasseType.Maximum; i++)
-            {
-                ClasseInfo tmp = Classes.GetInfos((ClasseType)i);
 
-                AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((ClasseType)i).ToString());
-                ++line;
-                
-            }
 
             if (page > 0)
                 AddButton(x + 360, y + line * scale, 4014, 4015, 10, GumpButtonType.Reply, 0);
@@ -74,31 +66,7 @@ namespace Server.Gumps
 
             if (classeType != ClasseType.None && classeType != ClasseType.Maximum)
             {
-                ClasseInfo info = Classes.GetInfos(classeType);
 
-                int linetmp = line;
-
-                line = 0;
-
-                if (from.ClasseType == ClasseType.None)
-                {
-                    AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
-                    AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
-                }
-                AddButton(x, y + line * scale, 9, info.Image);
-                AddTooltip(info.Tooltip);
-
-                // Apparait en double pour assurer l'affichage correct ainsi que la priorite du bouton. 
-                if (from.ClasseType == ClasseType.None)
-                {
-                    AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
-                    AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
-                }
-
-                
-
-                line = linetmp;
-                AddSection(x + 240, y + line * scale, 300, 90, info.Nom, info.Role);
 
                 List<string> listDon = new List<string>();
                 string temp = String.Empty;

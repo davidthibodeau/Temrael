@@ -51,16 +51,7 @@ namespace Server.Gumps
             x = XBase;
             y = YBase;
 
-            AddTitre(x + 360, y + line * scale, 190, "Classes");
-            ++line;
-            for (int i = page * lineMax; i < (page * lineMax) + lineMax && i < (int)ClasseType.Maximum; i++)
-            {
-                ClasseInfo tmp = Classes.GetInfos((ClasseType)i);
 
-                AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((ClasseType)i).ToString());
-                ++line;
-            }
 
             if (page > 0)
                 AddButton(x + 360, y + line * scale, 4014, 4015, 9, GumpButtonType.Reply, 0);
@@ -68,34 +59,6 @@ namespace Server.Gumps
                 AddButton(x + 515, y + line * scale, 4005, 4006, 10, GumpButtonType.Reply, 0);
             ++line;
 
-            if (classeType != ClasseType.None)
-            {
-                ClasseInfo info = Classes.GetInfos(classeType);
-
-                int linetmp = line;
-
-                line = 0;
-                AddButton(x, y + line * scale, 8, info.Image);
-                AddTooltip(info.Tooltip);
-
-                AddButton(470, 645, 52, 52, 8, GumpButtonType.Reply, 0);
-                AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
-
-                line = linetmp;
-                AddSection(x + 240, y + line * scale, 300, 90, info.Nom, info.Role);
-
-                string temp = String.Empty;
-
-                for (int i = 0; i < info.ClasseCompetences.Length; i++)
-                {
-                    temp += info.ClasseCompetences[i].SkillName.ToString() + ": " + info.ClasseCompetences[i].Value.ToString() + "%";
-                    if (i != info.ClasseCompetences.Length - 1)
-                         temp += Environment.NewLine;
-                }
-
-                line = 12;
-                AddSection(x, y + line * scale, 540, 180, "Compétences appliquées au niveau 30", temp);
-            }
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {

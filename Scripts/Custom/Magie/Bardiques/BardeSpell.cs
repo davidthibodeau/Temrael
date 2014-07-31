@@ -154,8 +154,6 @@ namespace Server.Spells
             {
                 TMobile pm = (TMobile)m_Caster;
 
-                ClasseInfo cInfo = Classes.GetInfos(pm.ClasseType);
-
                 if (pm.AccessLevel == AccessLevel.Player)
                 {
                     double chance = 100 - pm.Skills.Equitation.Value;

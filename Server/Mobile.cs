@@ -4792,7 +4792,7 @@ namespace Server
 			if( m_Deleted || CommandSystem.Handle( this, text, type ) )
 				return;
 
-			int range = 15;
+			int range = 12;
 
 			switch( type )
 			{
@@ -4902,6 +4902,7 @@ namespace Server
 				for( int i = 0; i < hears.Count; ++i )
 				{
 					Mobile heard = hears[i];
+                    SendPropertiesTo(heard);
 
 					if( mutatedArgs == null || !CheckHearsMutatedSpeech( heard, mutateContext ) )
 					{
@@ -4912,7 +4913,7 @@ namespace Server
 						if( ns != null )
 						{
 							if( regp == null )
-								regp = Packet.Acquire( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text ) );
+								regp = Packet.Acquire( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), text ) );
 
 							ns.Send( regp );
 						}
@@ -4926,7 +4927,7 @@ namespace Server
 						if( ns != null )
 						{
 							if( mutp == null )
-								mutp = Packet.Acquire( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, mutatedText ) );
+								mutp = Packet.Acquire( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), mutatedText ) );
 
 							ns.Send( mutp );
 						}

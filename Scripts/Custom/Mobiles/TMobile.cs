@@ -18,40 +18,11 @@ using Server.Mobiles;
 using Server.Multis;
 using Server.ContextMenus;
 using Server.Prompts;
+using Server.Engines.Langues;
 
 namespace Server.Mobiles
 {
-    public class LangageWords
-    {
-        public static string[] LangueCommune =
-            "estu parti an odus cristi est menos puras victus sancti bridus mocta linus abun dare".Split(" ".ToCharArray());
-        public static string[] LangueRunique =
-            "KEL ART IN POR TOR KARTRAK RAVINAR MANI UN".Split(" ".ToCharArray());
-        public static string[] LangueDunes =
-            "بية العربية ب المغرب العربية قطر الكويت الأردن قطر السعودية العر الجزائر".Split(" ".ToCharArray());
-        public static string[] LangueElfique =
-            "A Elbereth Gilthoniel silivren penna míriel o menel aglar elenath Na-chaered palan-díriel".Split(" ".ToCharArray());
-        public static string[] LangueNordique =
-            "зақс Қаза стан едонс кед дони нија Српск бија и Црна Гора mål Бълга ария".Split(" ".ToCharArray());
-        public static string[] LangueMorte =
-            "ปร ะเท ศไ ทย ภา ษาธิ ไทยรู้".Split(" ".ToCharArray());
-        public static string[] LangueOrcish =
-            "한 국 어 한 국 灣 台 語 中 文 新 加 坡".Split(" ".ToCharArray());
-        public static string[] LangueNoire =
-            "ԱԾ ՂՃՅ ՇՆԻ ԷԹ ԵՖ ՔՓՑ".Split(" ".ToCharArray());
-    }
 
-    public enum Langue
-    {
-        Commune = 0,
-        Runique = 1,
-        Dunes = 2,
-        Elfique = 3,
-        Nordique = 4,
-        Morte = 5,
-        Orcish = 6,
-        Noire = 7
-    }
 
     public enum EquitationType
     {
@@ -191,18 +162,7 @@ namespace Server.Mobiles
         //}
         #region Variables
 
-        private bool[] m_languages = new bool[]{
-               true, //Commune,
-               false, //Runique,
-               false, //Dunes,
-               false, //Elfique,
-               false, //Nordique,
-               false, //Morte,
-               false, //Orcish,
-               false  //Noire
-        };
 
-        private List<int> m_DerniereLangueApprise = new List<int>();
 
         //14 Avec Tief + 0 based
         public string[] Identity = new string[]{
@@ -222,7 +182,7 @@ namespace Server.Mobiles
                "" //14
         };
 
-        private Langue m_currentLangue = Langue.Commune;
+        
         private int m_currentIdentity = 0;
 
         private List<Identity> KnewIdentity = new List<Identity>();
@@ -367,13 +327,6 @@ namespace Server.Mobiles
         {
             get { return m_RaceSecrete; }
             set { m_RaceSecrete = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public Langue CurrentLangue
-        {
-            get { return m_currentLangue; }
-            set { m_currentLangue = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -786,23 +739,7 @@ namespace Server.Mobiles
         #endregion
 
         #region languages
-        public bool understandLangue(Langue l)
-        {
-            return m_languages[(int)l];
-        }
-
-        public void apprendreLangue(Langue l)
-        {
-            if (!m_languages[(int)l])
-            {
-                m_languages[(int)l] = true;
-                m_DerniereLangueApprise.Add((int)l);
-                SendMessage("Vous apprennez la langue: " + l.ToString());
-            }
-            else
-                SendMessage("Vous connaissez déjà la langue: " + l.ToString());
-
-        }
+        
 
         public void Reset(bool free)
         {
@@ -816,32 +753,10 @@ namespace Server.Mobiles
 
             ClasseType = ClasseType.None;
             FamilierCheck();
-            for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
-            {
-                m_languages[m_DerniereLangueApprise[i]] = false;
-                m_DerniereLangueApprise.RemoveAt(i);
-            }
+
         }
 
-        public void LanguageFix()
-        {
-            int nbrLangue = 0;
-            for (int i = 0; i < 8; i++)
-            {
-                if (understandLangue((Langue)i))
-                    nbrLangue++;
-            }
 
-            if (nbrLangue > Skills.ConnaissanceLangue.Fixed / 200 + 2)
-            {
-                int last = m_DerniereLangueApprise.Count - 1;
-                m_languages[m_DerniereLangueApprise[last]] = false;
-                SendMessage("Vous n'avez pas assez de points en Connaissance (Langue) pour parler " + nbrLangue + " langues.");
-                SendMessage("La dernière langue choisie (" + (Langue)m_DerniereLangueApprise[last] + ") vous est retirée.");
-                m_DerniereLangueApprise.RemoveAt(last);
-                LanguageFix();
-            }
-        }
 
         public override bool CheckHearsMutatedSpeech(Mobile m, object context)
         {
@@ -849,29 +764,7 @@ namespace Server.Mobiles
             {
                 TMobile player = m as TMobile;
 
-                //Console.WriteLine("Chance de compréhension: "+chanceComprendre);
-
-                if ( /*(player == this) || */
-                    (player.AccessLevel >= AccessLevel.GameMaster) ||
-                    player.understandLangue(m_currentLangue)) //Comprehension totale
-                {
-                    //Console.WriteLine("Comprehension Ok pour "+player );
-                    //return base.MutateSpeech( hears, ref text, ref context );
-
-
-                    if (m_currentLangue != player.CurrentLangue)
-                    {
-                        string sla = CurrentLangue.ToString();
-                        player.NetState.Send(
-                            new UnicodeMessage(this.Serial, Body, MessageType.Regular, 0x3B2, 3, 
-                                this.Language, this.GetNameUseBy(m), "[" + sla + "]"));
-                        //PrivateOverheadMessage(MessageType.Regular, 0x3B2,
-                        //    false, "[" + sla + "]", player.NetState);
-                    }
-
-
-                    return false;
-                }
+                return Langues.HearsGibberish(player);
             }
             return true;
 
@@ -886,7 +779,7 @@ namespace Server.Mobiles
             {
                 for (int h = 0; h < hears.Count; ++h)
                 {
-                    object o = hears[h];
+                    Mobile o = hears[h];
                     //Console.WriteLine("Text: "+text);
                     //Console.WriteLine("Context: "+context);
                     if (o is TMobile)
@@ -914,28 +807,7 @@ namespace Server.Mobiles
 
                         //int sayValue = GetCompetence( m_LanguageActuel ).Value;
 
-                        string[] split = text.Split(' ');
-                        for (int i = 0; i < split.Length; ++i)
-                        {
-                            if (m_currentLangue == Langue.Commune)
-                                split[i] = LangageWords.LangueCommune[Utility.Random(LangageWords.LangueCommune.Length)];
-                            else if (m_currentLangue == Langue.Runique)
-                                split[i] = LangageWords.LangueRunique[Utility.Random(LangageWords.LangueRunique.Length)];
-                            else if (m_currentLangue == Langue.Dunes)
-                                split[i] = LangageWords.LangueDunes[Utility.Random(LangageWords.LangueDunes.Length)];
-                            else if (m_currentLangue == Langue.Elfique)
-                                split[i] = LangageWords.LangueElfique[Utility.Random(LangageWords.LangueElfique.Length)];
-                            else if (m_currentLangue == Langue.Nordique)
-                                split[i] = LangageWords.LangueNordique[Utility.Random(LangageWords.LangueNordique.Length)];
-                            else if (m_currentLangue == Langue.Morte)
-                                split[i] = LangageWords.LangueMorte[Utility.Random(LangageWords.LangueMorte.Length)];
-                            else if (m_currentLangue == Langue.Orcish)
-                                split[i] = LangageWords.LangueOrcish[Utility.Random(LangageWords.LangueOrcish.Length)];
-                            else
-                                split[i] = LangageWords.LangueNoire[Utility.Random(LangageWords.LangueNoire.Length)];
-                        }
-                        text = String.Join(" ", split);
-                        return true;
+                        return Langues.MutateSpeech(ref text);
                     }
                 }
 
@@ -944,299 +816,11 @@ namespace Server.Mobiles
             return base.MutateSpeech(hears, ref text, ref context);
         }
 
-        /*public static void PublicOverheadFontMessage(Mobile mob, MessageType type, int hue, int font, string text, bool noLineOfSight)
-        {
-            if (mob != null && mob.Map != null)
-            {
-                Packet p = null;
-                IPooledEnumerable eable = mob.Map.GetClientsInRange(mob.Location);
-
-                foreach (NetState state in eable)
-                {
-                    if (state.Mobile.CanSee(mob) && (noLineOfSight || state.Mobile.InLOS(mob)))
-                    {
-                        if (p == null)
-                        {
-                            p = new AsciiMessage(mob.Serial, mob.Body, type, hue, font, ((TMobile)mob).GetNameUseBy(state.Mobile), text);
-                            p.Acquire();
-                            Console.WriteLine("*******Journal********");
-                            Console.WriteLine("beholder : " + mob.Name);
-                            Console.WriteLine("beheld : " + state.Mobile.Name);
-                            Console.WriteLine("Result : " + state.Mobile.GetNameUseBy(mob));
-                        }
-                        state.Send(p);
-                    }
-                }
-                Packet.Release(p);
-                eable.Free();
-            }
-        }*/
 
         private static List<Mobile> m_Hears;
         private static ArrayList m_OnSpeech;
 
         private static bool m_NoSpeechLOS1;
-        
-        [CommandProperty(AccessLevel.GameMaster)]
-        public static bool NoSpeechLOS1 { get { return m_NoSpeechLOS1; } set { m_NoSpeechLOS1 = value; } }
-
-        public override bool CanSee(Mobile m)
-        {
-            //SendPropertiesTo(this);
-            //SendPropertiesTo(m);
-            return base.CanSee(m);
-        }
-
-        public override void DoSpeech(string text, int[] keywords, MessageType type, int hue)
-        {
-           if ( CommandSystem.Handle(this, text))
-                return;
-
-            int range = 12;
-            int rage = this.GetAptitudeValue(Aptitude.Depistage);
-
-            if ((int)(rage / 2) > 0)
-            {
-                range = 12 + ((int)(rage / 2));
-            }
-            
-            switch (type)
-            {
-                case MessageType.Regular: this.SpeechHue = hue; break;
-                case MessageType.Emote: this.EmoteHue = hue; break;
-                case MessageType.Whisper: this.WhisperHue = hue; range = 1; break;
-                case MessageType.Yell: 
-                    this.YellHue = hue; range = 18;
-                    if ((int)(rage / 5) > 0)
-                    {
-                        range = 18 + ((int)(rage / 5));
-                    }
-                break;
-                default: type = MessageType.Regular; break;
-            }
-
-            SpeechEventArgs regArgs = new SpeechEventArgs(this, text, type, hue, keywords);
-
-            EventSink.InvokeSpeech(regArgs);
-            this.Region.OnSpeech(regArgs);
-            OnSaid(regArgs);
-
-            if (regArgs.Blocked)
-                return;
-
-            text = regArgs.Speech;
-
-            if (text == null || text.Length == 0)
-                return;
-
-            if (m_Hears == null)
-                m_Hears = new List<Mobile>();
-            else if (m_Hears.Count > 0)
-                m_Hears.Clear();
-
-            if (m_OnSpeech == null)
-                m_OnSpeech = new ArrayList();
-            else if (m_OnSpeech.Count > 0)
-                m_OnSpeech.Clear();
-
-            List<Mobile> hears = m_Hears;
-            ArrayList onSpeech = m_OnSpeech;
-
-            if (this.Map != null)
-            {
-                IPooledEnumerable eable = this.Map.GetObjectsInRange(this.Location, range);
-
-                foreach (object o in eable)
-                {
-                    if (o is Mobile)
-                    {
-                        Mobile heard = (Mobile)o;
-
-                        if (heard.CanSee(this) && (m_NoSpeechLOS1 ||  !heard.Player || heard.InLOS(this)))
-                        {
-                            if (heard.NetState != null)
-                                hears.Add(heard);
-
-                            if (heard.HandlesOnSpeech(this))
-                                onSpeech.Add(heard);
-
-                            for (int i = 0; i < heard.Items.Count; ++i)
-                            {
-                                Item item = (Item)heard.Items[i];
-
-                                if (item.HandlesOnSpeech)
-                                    onSpeech.Add(item);
-
-                                //if (item is Container)
-                                //    AddSpeechItemsFrom(onSpeech, (Container)item);
-                            }
-                        }
-                    }
-                    else if (o is Item)
-                    {
-                        if (((Item)o).HandlesOnSpeech)
-                            onSpeech.Add(o);
-
-                        //if (o is Container)
-                        //    AddSpeechItemsFrom(onSpeech, (Container)o);
-                    }
-                }
-
-                //eable.Free();
-
-                object mutateContext = null;
-                string mutatedText = text;
-                SpeechEventArgs mutatedArgs = null;
-
-                if (MutateSpeech(hears, ref mutatedText, ref mutateContext))
-                    mutatedArgs = new SpeechEventArgs(this, mutatedText, type, hue, new int[0]);
-
-                CheckSpeechManifest();
-
-                ProcessDelta();
-
-                Packet regp = null;
-                Packet mutp = null;
-
-                for (int i = 0; i < hears.Count; ++i)
-                {
-                    Mobile heard = (Mobile)hears[i];
-                    SendPropertiesTo(heard);
-                    
-                    if (mutatedArgs == null || !CheckHearsMutatedSpeech(heard, mutateContext))
-                    {
-                        heard.OnSpeech(regArgs);
-
-                        NetState ns = heard.NetState;
-
-                        if (ns != null)
-                        {
-                            string name = Name;
-
-                            // To Self and GMs, send always the good name
-                            if (this == heard || heard.AccessLevel >= AccessLevel.Counselor)
-                            {
-                                name = Name;
-                            }
-                            /*else if (this.Incognito == 1)
-                            {
-                                name = this.Female ? "Inconnue" : "Inconnu";
-                            }*/
-                            else if (this.AccessLevel == AccessLevel.Player)
-                            {
-                                name = this.GetNameUseBy(heard);
-                            }
-
-                            //if (type == MessageType.Regular && this.CurrentLangue == Langue.Runique)
-                            //{
-                            //    //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToUpper(), false);
-                            //    //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToUpper());
-                            //    regp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, text.ToUpper());
-                            //}
-                            //else if (type == MessageType.Regular && this.CurrentLangue == Langue.Elfique)
-                            //{
-                            //    //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToLower(), false);
-                            //    //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToLower());
-                            //    regp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, text.ToLower());
-                            //}
-                            //else 
-                            if (type == MessageType.Yell)
-                            {
-                                regp = new UnicodeMessage(this.Serial, Body, type, this.EmoteHue, 3, this.Language, name, "*Crie*");
-                                regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 3, this.Language, name, text);
-                            }
-                            else if (type == MessageType.Whisper)
-                            {
-                                regp = new UnicodeMessage(this.Serial, Body, type, this.EmoteHue, 3, this.Language, name, "*Murmure*");
-                                regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 3, this.Language, name, text);
-                            }
-                            else
-                            {
-                                regp = new UnicodeMessage(this.Serial, Body, type, hue, 3, this.Language, name, text);
-                            }
-                            
-
-                            ns.Send(regp);
-                        }
-                    }
-                    else
-                    {
-                        heard.OnSpeech(mutatedArgs);
-
-                        NetState ns = heard.NetState;
-
-                        if (ns != null)
-                        {
-                            //if (mutp == null)
-                           // {
-                            string name = Name;
-
-                            // To Self and GMs, send always the good name
-                            if (this == heard || heard.AccessLevel >= AccessLevel.Counselor)
-                            {
-                                name = Name;
-                            }
-                            /*else if (this.Incognito == 1)
-                            {
-                                name = this.Female ? "Inconnue" : "Inconnu";
-                            }*/
-                            else if (this.AccessLevel == AccessLevel.Player)
-                            {
-                                name = this.GetNameUseBy(heard);
-                            }
-
-                            if (type == MessageType.Regular && this.CurrentLangue == Langue.Runique)
-                            {
-                                //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToUpper(), false);
-                                mutp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, mutatedText.ToUpper());
-                                //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToUpper());
-                            }
-                            else if (type == MessageType.Regular && this.CurrentLangue == Langue.Elfique)
-                            {
-                                //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 8, text.ToLower(), false);
-                                mutp = new AsciiMessage(this.Serial, Body, type, hue, 8, name, mutatedText.ToLower());
-                                //regp = new UnicodeMessage(this.Serial, Body, type, SpeechHue, 8, this.Language, name, text.ToLower());
-                            }
-                            else
-                            {
-                                mutp = new UnicodeMessage(this.Serial, Body, type, hue, 3, this.Language, name, mutatedText);
-                            }
-                           // }
-                            ns.Send(mutp);
-                        }
-                    }
-                }
-
-                //if (onSpeech.Count > 1)
-               //     onSpeech.Sort(LocationComparer.GetInstance(this));
-
-                for (int i = 0; i < onSpeech.Count; ++i)
-                {
-                    object obj = onSpeech[i];
-
-                    if (obj is Mobile)
-                    {
-                        Mobile heard = (Mobile)obj;
-
-                        if (mutatedArgs == null || !CheckHearsMutatedSpeech(heard, mutateContext))
-                            heard.OnSpeech(regArgs);
-                        else
-                            if (heard is BaseCreature)
-                                heard.OnSpeech(regArgs);
-                            else
-                                heard.OnSpeech(mutatedArgs);
-                    }
-                    else
-                    {
-                        Item item = (Item)obj;
-
-                        item.OnSpeech(regArgs);
-                    }
-                }
-            }
-            
-       
-        }
 
         public override void OnSaid(SpeechEventArgs e)
         {
@@ -2102,7 +1686,7 @@ namespace Server.Mobiles
             base.OnSkillChange(skill, oldBase);
 
             if (skill == SkillName.ConnaissanceLangue)
-                LanguageFix();
+                Langues.FixLangues();
 		}
 
         public override bool OnMoveOver(Mobile m)
@@ -2151,103 +1735,15 @@ namespace Server.Mobiles
             
         }
 
-        public virtual int GetBaseAptitudeValue(Aptitude aptitude)
-        {
-            /*int metierCount = 0;*/
-            int raceCount = 0;
-
-            /*for (int i = 0; i < m_MetierType.Count; i++)
-            {
-                metierCount = Metiers.GetAptitudeValue(this, m_MetierType[i], aptitude);
-            }*/
-
-            if (RaceManager.GetAptitude(m_race) == aptitude)
-                raceCount = RaceManager.GetAptitudeNbr(m_race);
-
-            int a = Classes.GetAptitudeValue(this, m_ClasseType, aptitude) +
-                    raceCount;
-            return a;
-        }
-
-        /*public virtual int GetPrestigeBaseAptitudeValue(NAptitude aptitude)
-        {
-            //Sans la classe de prestige pour tester les aptitudes lors du gain de prestige
-            return Classes.GetAptitudeValue(this,m_Classe, aptitude) + Metiers.GetAptitudeValue(m_Metier, aptitude) + Metiers.GetAptitudeValue(m_metierSecondaire, aptitude);
-            //return 0;
-        }*/
-
         public virtual int GetAptitudeValue(Aptitude aptitude)
         {
-            return GetBaseAptitudeValue(aptitude);
+            return 0;
         }
-
-        /*public virtual int GetPrestigeAptitudeValue(NAptitude aptitude)
-        {
-            return m_Aptitudes[aptitude] + GetPrestigeBaseAptitudeValue(aptitude);
-        }*/
-
-        /*public override int HitsMax
-        {
-            get
-            {
-                return 25 + this.Con + (this.Str / 2) + m_BonusHits;
-            }
-        }
-        public override int StamMax
-        {
-            get
-            {
-                return this.Dex + (this.Con / 2) + m_BonusStam;
-            }
-        }
-        public override int ManaMax
-        {
-            get
-            {
-                return this.Int + (this.Cha / 2) + m_BonusMana;
-            }
-        }*/
 
         public void FamilierCheck()
         {
             FollowersMax = 2 + GetAptitudeValue(Aptitude.Familier);
             Delta(MobileDelta.Followers);
-        }
-
-        public virtual void OnAptitudesChange(Aptitude aptitude, int oldvalue, int newvalue)
-        {
-            if (aptitude == Aptitude.Familier)
-            {
-                FollowersMax = 2 + GetAptitudeValue(Aptitude.Familier);
-                Delta(MobileDelta.Followers);
-            }
-
-            //Validate(ValidateType.Classes);
-
-            if (aptitude == Aptitude.Endurance)
-            {
-                CheckStatTimers();
-                Delta(MobileDelta.Hits);
-            }
-
-            if (aptitude == Aptitude.Resilience)
-            {
-                CheckStatTimers();
-                Delta(MobileDelta.Stam);
-            }
-
-            if (aptitude == Aptitude.Receptacle)
-            {
-                CheckStatTimers();
-                Delta(MobileDelta.Mana);
-            }
-
-            //if (aptitude == NAptitude.Deguisement && m_DeguisementInfos != null)
-            //{
-            //    Deguisements.CheckDeguisement(this);
-            //}
-
-            CheckStatTimers();
         }
 
         public virtual bool CheckEquitation(EquitationType type)
@@ -3139,10 +2635,6 @@ namespace Server.Mobiles
 
             writer.Write(m_currentIdentity);
 
-            writer.Write(m_DerniereLangueApprise.Count);
-            for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
-                writer.Write(m_DerniereLangueApprise[i]);            
-
             writer.Write((bool)m_Achever);
             writer.Write((bool)m_FreeReset);
             writer.Write((bool)m_RevealTitle);
@@ -3188,10 +2680,6 @@ namespace Server.Mobiles
             writer.Write((DateTime)m_lastAssassinat);
             writer.Write((DateTime)m_lastDeguisement);
             writer.Write((DateTime)m_NextCraftTime);
-
-            writer.Write((int)m_languages.Length);
-            for (int i = 0; i < m_languages.Length; i++)
-                writer.Write((bool)m_languages[i]);
 
             writer.Write(m_QuickSpells.Count);
             for (int i = 0; i < m_QuickSpells.Count; i++)
@@ -3255,9 +2743,12 @@ namespace Server.Mobiles
                     m_currentIdentity = reader.ReadInt();
                     goto case 6;
                 case 6:
-                    count = reader.ReadInt();
-                    for (int i = 0; i < count; i++)
-                        m_DerniereLangueApprise.Add(reader.ReadInt());
+                    if (version < 9)
+                    {
+                        count = reader.ReadInt();
+                        for (int i = 0; i < count; i++)
+                            Langues.apprendreLangue((Langue)reader.ReadInt(), false);
+                    }
                     goto case 5;
                 case 5:
                     m_Achever = reader.ReadBool();
@@ -3330,11 +2821,13 @@ namespace Server.Mobiles
                     m_lastDeguisement = reader.ReadDateTime();
                     m_NextCraftTime = reader.ReadDateTime();
 
-                    int langueCount = reader.ReadInt();
-                    m_languages = new bool[langueCount];
-                    for (int i = 0; i < langueCount; i++)
+                    if (version < 9)
                     {
-                        m_languages[i] = reader.ReadBool();
+                        int langueCount = reader.ReadInt();
+                        for (int i = 0; i < langueCount; i++)
+                        {
+                            reader.ReadBool();
+                        }
                     }
 
                     m_QuickSpells = new ArrayList();
@@ -3348,8 +2841,13 @@ namespace Server.Mobiles
 
                     m_TileToDontFall = reader.ReadInt();
 
-                    if(version < 9)
-                        new Aptitudes(this, reader);
+                    if (version < 9)
+                    {
+                        reader.ReadInt();
+                        int oldLength = reader.ReadInt();
+                        for (int i = 0; i < oldLength; ++i)
+                            reader.ReadInt();
+                    }
 
                     m_Niveau = reader.ReadInt();
                     m_AptitudesLibres = reader.ReadInt();
@@ -3428,20 +2926,6 @@ namespace Server.Mobiles
                     this.FacialHairItemID = 0;
             }
 
-            if (version < 6)
-            {
-                m_languages = new bool[]{
-                    true, //Commune,
-                    false, //Runique,
-                    false, //Dunes,
-                    false, //Elfique,
-                    false, //Nordique,
-                    false, //Morte,
-                    false, //Orcish,
-                    false  //Noire
-                };
-            }
-
             CheckRaceGump();
 
             BaseArmor.ValidateMobile(this);
@@ -3453,8 +2937,6 @@ namespace Server.Mobiles
                 m_Aphonie = false;
 
             m_creation = new Creation();
-
-            LanguageFix();
 
             CagouleFix();
 

@@ -210,18 +210,6 @@ namespace Server
             //from.SkillsPlace += (double)3.0;
         }
 
-        public static void SetPAs(TMobile from)
-        {
-            from.AptitudesLibres++;
-
-            int paEnAttente = Aptitudes.GetRemainingPA(from) - Aptitudes.GetDisponiblePA(from);
-
-            //if (paEnAttente > 15)
-            //    paEnAttente = 15;
-
-            from.AptitudesLibres += paEnAttente;
-        }
-
         public static void SetPCs(TMobile from)
         {
             from.CompetencesLibres += 25;
@@ -326,7 +314,6 @@ namespace Server
                         SkillsCaps = 800;
 
                     SetSkills(pm, SkillsCaps, SkillsInd);
-                    SetPAs(pm);
                     SetPCs(pm);
                     SetPSs(pm);
 
