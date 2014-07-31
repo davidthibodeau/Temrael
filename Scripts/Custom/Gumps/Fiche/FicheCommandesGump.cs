@@ -41,6 +41,8 @@ namespace Server.Gumps
             y = 650;
             x = 90;
             int space = 80;
+            int line = 0;
+            int scale = 20;
 
             AddMenuItem(x, y, 1178, 1, true);
             x += space;
@@ -79,23 +81,27 @@ namespace Server.Gumps
             AddImage(322, 129, 96);
             AddImage(500, 120, 97);
 
-            AddButton(120, 152, 2117, 2118, 8, GumpButtonType.Reply, 0);
-            AddHtml(138, 150, 200, 20, "<h3><basefont color=#5A4A31>Vemotes<basefont></h3>", false, false);
-            AddButton(120, 172, 2117, 2118, 9, GumpButtonType.Reply, 0);
-            AddHtml(138, 170, 200, 20, "<h3><basefont color=#5A4A31>Langue<basefont></h3>", false, false);
-            AddButton(120, 192, 2117, 2118, 10, GumpButtonType.Reply, 0);
-            AddHtml(138, 190, 200, 20, "<h3><basefont color=#5A4A31>Étude des Langues<basefont></h3>", false, false);
-            AddButton(120, 212, 2117, 2118, 11, GumpButtonType.Reply, 0);
-            AddHtml(138, 210, 200, 20, "<h3><basefont color=#5A4A31>EXP<basefont></h3>", false, false);
-            AddButton(120, 232, 2117, 2118, 12, GumpButtonType.Reply, 0);
-            AddHtml(138, 230, 200, 20, "<h3><basefont color=#5A4A31>Titre<basefont></h3>", false, false);
-            AddButton(120, 252, 2117, 2118, 13, GumpButtonType.Reply, 0);
-            AddHtml(138, 250, 200, 20, "<h3><basefont color=#5A4A31>Météo<basefont></h3>", false, false);
+            y = 152;
+            x = 120;
+            line = 0;
 
-            AddButton(320, 152, 2117, 2118, 14, GumpButtonType.Reply, 0);
-            AddHtml(338, 150, 190, 20, "<h3><basefont color=#5A4A31>Décoration<basefont></h3>", false, false);
-            AddButton(320, 172, 2117, 2118, 21, GumpButtonType.Reply, 0);
-            AddHtml(338, 170, 190, 20, "<h3><basefont color=#5A4A31>Niveau<basefont></h3>", false, false);
+            AddButton(x, y, 2117, 2118, 9, GumpButtonType.Reply, 0);
+            AddHtml(x + 18, y - 2, 200, 20, "<h3><basefont color=#5A4A31>Langue<basefont></h3>", false, false);
+            line++;
+            AddButton(x, y + line * scale, 2117, 2118, 10, GumpButtonType.Reply, 0);
+            AddHtml(x + 18, y + line * scale - 2, 200, 20, "<h3><basefont color=#5A4A31>Étude des Langues<basefont></h3>", false, false);
+            line++;
+            AddButton(x, y + line * scale, 2117, 2118, 11, GumpButtonType.Reply, 0);
+            AddHtml(x + 18, y + line * scale - 2, 200, 20, "<h3><basefont color=#5A4A31>Exp<basefont></h3>", false, false);
+            line++;
+            AddButton(x, y + line * scale, 2117, 2118, 13, GumpButtonType.Reply, 0);
+            AddHtml(x + 18, y + line * scale - 2, 200, 20, "<h3><basefont color=#5A4A31>Météo<basefont></h3>", false, false);
+            line++;
+            AddButton(x, y + line * scale, 2117, 2118, 14, GumpButtonType.Reply, 0);
+            AddHtml(x + 18, y + line * scale - 2, 190, 20, "<h3><basefont color=#5A4A31>Décoration<basefont></h3>", false, false);
+            line++;
+            AddButton(x, y + line * scale, 2117, 2118, 21, GumpButtonType.Reply, 0);
+            AddHtml(x + 18, y + line * scale - 2, 190, 20, "<h3><basefont color=#5A4A31>Niveau<basefont></h3>", false, false);
 
             AddHtml(105, 295, 200, 20, "<h3><basefont color=#5A4A31>Chevelures & Barbes<basefont></h3>", false, false);
             AddBackground(102, 315, 267, 150, 3500);
@@ -157,7 +163,7 @@ namespace Server.Gumps
 
             AddHtml(430, 425, 150, 18, "<h3><basefont color=#025a>Précédent<basefont></h3>", false, false);
             AddButton(395, 425, 4014, 4016, 17, GumpButtonType.Reply, 0);
-            AddHtml(535, 425, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
+            AddHtml(530, 425, 150, 18, "<h3><basefont color=#025a>Suivant<basefont></h3>", false, false);
             AddButton(580, 425, 4005, 4007, 18, GumpButtonType.Reply, 0);
 
             AddHtml(105, 470, 200, 20, "<h3><basefont color=#5A4A31>Tatoos<basefont></h3>", false, false);

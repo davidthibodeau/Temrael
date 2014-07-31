@@ -77,7 +77,7 @@ namespace Server.Gumps
                     if (i >= (page + 1) * 16)
                         break;
                     AddHtmlTexte(x + 30, y + line * scale, DefaultHtmlLength, from.Skills[s].Name);
-                    AddHtmlTexte(x + 450, y + line * scale, DefaultHtmlLength, " [ " + from.Skills[s].Value + "% ]");
+                    AddHtmlTexte(x + 440, y + line * scale, DefaultHtmlLength, " [ " + from.Skills[s].Value + "% ]");
                     ++line;
                 }
             }

@@ -70,21 +70,15 @@ namespace Server.Gumps
                 AddButton(x, y + line * scale, 8, info.Image);
                 AddTooltip(info.Tooltip);
 
-                ClasseAptitudes[] classeApt = null;
+                for (int i = 0; i < info.ClasseCompetences.Length; i++)
+                {
+                    temp += info.ClasseCompetences[i].SkillName.ToString() + ": " + info.ClasseCompetences[i].Value.ToString() + "%";
+                    if (i != info.ClasseCompetences.Length - 1)
+                        temp += Environment.NewLine;
+                }
 
-                if (from.Niveau >= 30)
-                    classeApt = info.FourthApt;
-                else if (from.Niveau >= 20)
-                    classeApt = info.ThirdApt;
-                else if (from.Niveau >= 10)
-                    classeApt = info.SecondApt;
-                else
-                    classeApt = info.FirstApt;
-
-                line = 13;
-
-                ++line;
-                AddSection(x, y + line * scale, 540, 120, info.Nom, temp);
+                line = 12;
+                AddSection(x, y + line * scale, 540, 120, "Compétences appliquées au niveau 30", temp);
                 
                 line -= 3;
                 AddButton(x, y + (line * scale) + 10, 52, 52, 8, GumpButtonType.Reply, 0);

@@ -6,6 +6,7 @@ using Server.Items;
 using Server.Network;
 using System.Reflection;
 using Server.HuePickers;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Server.Gumps
@@ -18,11 +19,12 @@ namespace Server.Gumps
             : base("Statistiques", 560, 622)
         {
             m_from = from;
-
+            Mobile m = (Mobile)from;
+            
             int x = XBase;
             int y = YBase;
             int line = 0;
-            int scale = 25;
+            int scale = 20;
 
             y = 650;
             x = 90;
@@ -44,6 +46,55 @@ namespace Server.Gumps
 
             x = XBase;
             y = YBase;
+
+            /*Statistiques*/
+            line = 0;
+            AddSection(x, y + line * scale, 540, 465, "Statistiques");
+
+            Hashtable table = new Hashtable();
+
+            String[] list= new String[18];
+            int i = 0;
+
+            list[i++] = "Régénération de vie:";
+            list[i++] = ((1 / (Mobile.GetHitsRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
+
+            list[i++] = "Régénération de mana:";
+            list[i++] = ((1 / (Mobile.GetManaRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
+
+            list[i++] = "Régénération de stamina:";
+            list[i++] = ((1 / (Mobile.GetStamRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
+
+            list[i++] = "Langue courante:";
+            list[i++] = from.CurrentLangue.ToString();
+
+            list[i++] = "Position actuelle:";
+            list[i++] = from.Location.ToString();
+
+            list[i++] = "Prochain gain d'expérience:";
+            list[i++] = from.NextExp.ToString();
+
+            list[i++] = "Mode Expérience:";
+            list[i++] = from.XPMode ? "Hebdomadaire" : "Quotidien";
+
+            list[i++] = "Mode Suicide:";
+            list[i++] = from.Suicide ? "Activé" : "Désactivé";
+
+            if (from.MortVivant)
+            {
+                list[i++] = "Phase Mort-Vivant";
+                list[i++] = from.MortEvo.ToString(); //17
+            }
+
+            x = 125;
+            line++;
+
+            for (i = 0; i < list.Length; i++)
+            {
+                line++;
+                AddHtmlTexte(x, y + line * scale, 200, list[i++]);
+                AddHtmlTexte(x + 250, y + line * scale, 200, list[i]);
+            }
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {

@@ -106,20 +106,15 @@ namespace Server.Gumps
                 string descrTemp = String.Empty;
                 string reqTemp = String.Empty;
 
-                /*temp += "<strong>Arme de Prédilection</strong>: " + info.ArmeAllow.ToString() + Environment.NewLine;
-                temp += "<strong>Armure de Prédilection</strong>: " + info.ArmorAllow.ToString() + Environment.NewLine;
-                temp += "<strong>Compétences de Classe</strong>: ";
-
                 for (int i = 0; i < info.ClasseCompetences.Length; i++)
                 {
+                    temp += info.ClasseCompetences[i].SkillName.ToString() + ": " + info.ClasseCompetences[i].Value.ToString() + "%";
                     if (i != info.ClasseCompetences.Length - 1)
-                        temp += info.ClasseCompetences[i].ToString() + ", ";
-                    else
-                        temp += info.ClasseCompetences[i].ToString();
-                }*/
+                        temp += Environment.NewLine;
+                }
 
                 line = 12;
-                AddSection(x, y + line * scale, 540, 155, "Aptitudes & Spécialités", temp);
+                AddSection(x, y + line * scale, 540, 180, "Compétences appliquées au niveau 30", temp);
             }
         }
         public override void OnResponse(NetState sender, RelayInfo info)

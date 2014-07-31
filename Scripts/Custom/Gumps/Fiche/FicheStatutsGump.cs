@@ -100,7 +100,7 @@ namespace Server.Gumps
                         case MortEvo.Esprit:
                             AddImage(155, 110, 51113);
                             break;
-                        case MortEvo.Faucheur:
+                        case MortEvo.Ombre:
                             AddImage(155, 110, 51111);
                             break;
                         case MortEvo.Aucune:

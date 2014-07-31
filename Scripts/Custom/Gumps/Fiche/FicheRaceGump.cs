@@ -52,11 +52,11 @@ namespace Server.Gumps
                 AddButton(x, y + line * scale, 8, race.Image);
                 //AddTooltip(race.Tooltip);
                 
-                line += 12;
+                line += 13;
                 AddButton(x, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
                 AddHtml(x + 50, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Informations<basefont></h3>", false, false);
 
-                line = 0;
+                line = 1;
                 AddSection(x + 220, y + line * scale, 300, 100, "Description", race.Description);
 
                 line += 7;
@@ -67,7 +67,7 @@ namespace Server.Gumps
                 line += 7;
                 AddSection(x + 220, y + line * scale, 300, 80, "Évolution");
                 line += 2;
-                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Exp : ", from.XP));
+                AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Expérience : ", from.XP));
                 ++line;
                 AddButton(x + 237, y + line * scale, 2117, 2118, 10, GumpButtonType.Reply, 0);
                 AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Niveau : ", from.Niveau));
