@@ -30,7 +30,7 @@ namespace Server.Engines.Langues
             {
                 if (m_apprentissage)
                 {
-                    if (m_owner.Langues.understandLangue((Langue)i))
+                    if (m_owner.Langues[i])
                         AddButtonTrueFalse(x, y + line * scale, 666, true, ((Langue)i).ToString());
                     else
                         AddButtonTrueFalse(x, y + line * scale, 50 + i, false, ((Langue)i).ToString());
@@ -38,7 +38,7 @@ namespace Server.Engines.Langues
                 }
                 else
                 {
-                    if (m_owner.Langues.understandLangue((Langue)i))
+                    if (m_owner.Langues[i])
                     {
                         if ((int)m_owner.Langues.CurrentLangue == i)
                             AddButtonTrueFalse(x, y + line * scale, 666, true, ((Langue)i).ToString());
@@ -60,13 +60,13 @@ namespace Server.Engines.Langues
                 int nbrLangue = 0;
                 for (int i = 0; i < 8; i++)
                 {
-                    if (from.Langues.understandLangue((Langue)i))
+                    if (from.Langues[i])
                         nbrLangue++;
                 }
                 
                 if (nbrLangue < from.Skills.ConnaissanceLangue.Fixed / 200 + 2)
                 {
-                    from.Langues.apprendreLangue((Langue)(info.ButtonID - 50), true);
+                    from.Langues.Apprendre(info.ButtonID - 50);
                 }
                 else
                 {
@@ -76,7 +76,7 @@ namespace Server.Engines.Langues
             }
             else if (info.ButtonID >= 100 && info.ButtonID < 150)
             {
-                if (from.Langues.understandLangue((Langue)(info.ButtonID - 100)))
+                if (from.Langues[info.ButtonID - 100])
                 {
                     from.Langues.CurrentLangue = (Langue)info.ButtonID - 100;
                     from.SendMessage("Vous parlez maintenant la langue: " + from.Langues.CurrentLangue.ToString());

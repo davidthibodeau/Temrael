@@ -2747,7 +2747,7 @@ namespace Server.Mobiles
                     {
                         count = reader.ReadInt();
                         for (int i = 0; i < count; i++)
-                            Langues.apprendreLangue((Langue)reader.ReadInt(), false);
+                            Langues[reader.ReadInt()] = true;
                     }
                     goto case 5;
                 case 5:

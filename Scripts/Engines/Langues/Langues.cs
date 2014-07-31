@@ -43,7 +43,7 @@ namespace Server.Engines.Langues
     {
         private Mobile m_Mobile;
 
-        private bool[] m_languages = new bool[]{
+		private bool[] m_Langues = new bool[]{
                true, //Commune,
                false, //Runique,
                false, //Dunes,
@@ -55,70 +55,90 @@ namespace Server.Engines.Langues
         };
 
         private List<int> m_DerniereLangueApprise = new List<int>();
-        private Langue m_currentLangue = Langue.Commune;
+        private Langue m_CurrentLangue = Langue.Commune;
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Langue CurrentLangue
         {
-            get { return m_currentLangue; }
-            set { m_currentLangue = value; }
+			get { return m_CurrentLangue; }
+            set { m_CurrentLangue = value; }
         }
 
         #region Langues Getters & Setters
+
+		public bool this[int i]
+		{
+			get { return m_Langues[i]; }
+			set
+			{
+				if (value && !m_Langues[i])
+					m_DerniereLangueApprise.Add(i);
+				else if (!value && m_Langues[i])
+					m_DerniereLangueApprise.Remove(i);
+				m_Langues[i] = value;
+			}
+		}
+
+		public bool this[Langue l]
+		{
+			get { return this[(int)l]; }
+			set { this[(int)l] = value; }
+		}
+
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Commune
         {
-            get { return m_languages[0]; }
-            set { m_languages[0] = value; }
+			get { return this[0]; }
+            set { this[0] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Runique
         {
-            get { return m_languages[1]; }
-            set { m_languages[1] = value; }
+            get { return this[1]; }
+            set { this[1] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Dunes
         {
-            get { return m_languages[2]; }
-            set { m_languages[2] = value; }
+            get { return this[2]; }
+            set { this[2] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Elfique
         {
-            get { return m_languages[3]; }
-            set { m_languages[3] = value; }
+            get { return this[3]; }
+            set { this[3] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Nordique
         {
-            get { return m_languages[4]; }
-            set { m_languages[4] = value; }
+            get { return this[4]; }
+            set { this[4] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Morte
         {
-            get { return m_languages[5]; }
-            set { m_languages[5] = value; }
+            get { return this[5]; }
+            set { this[5] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Orcish
         {
-            get { return m_languages[6]; }
-            set { m_languages[6] = value; }
+            get { return this[6]; }
+            set { this[6] = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Noire
         {
-            get { return m_languages[7]; }
-            set { m_languages[7] = value; }
+            get { return this[7]; }
+            set { this[7] = value; }
         }
         #endregion
 
@@ -134,33 +154,32 @@ namespace Server.Engines.Langues
 
             int count = reader.ReadInt();
             for (int i = 0; i < count; i++)
-                apprendreLangue((Langue)reader.ReadInt(), false);
+                this[reader.ReadInt()] = true;
+
+			m_CurrentLangue = (Langue)reader.ReadInt();
         }
 
-        public bool understandLangue(Langue l)
+		public void Apprendre(int i)
+		{
+			Apprendre((Langue)i);
+		}
+			
+        public void Apprendre(Langue l)
         {
-            return m_languages[(int)l];
-        }
-
-        public void apprendreLangue(Langue l, bool message)
-        {
-            if (!m_languages[(int)l])
+            if (!this[l])
             {
-                m_languages[(int)l] = true;
-                m_DerniereLangueApprise.Add((int)l);
-                if(message)
-                    m_Mobile.SendMessage("Vous apprenez la langue: " + l.ToString());
+				this[l] = true;
+				m_Mobile.SendMessage("Vous apprenez la langue: " + l.ToString());
             }
-            else if(message)
+            else
                 m_Mobile.SendMessage("Vous connaissez déjà la langue: " + l.ToString());
-
         }
 
         public void ResetLangues()
         {
             for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
             {
-                m_languages[m_DerniereLangueApprise[i]] = false;
+                m_Langues[m_DerniereLangueApprise[i]] = false;
                 m_DerniereLangueApprise.RemoveAt(i);
             }
         }
@@ -170,14 +189,14 @@ namespace Server.Engines.Langues
             int nbrLangue = 0;
             for (int i = 0; i < 8; i++)
             {
-                if (understandLangue((Langue)i))
+                if (this[i])
                     nbrLangue++;
             }
 
             if (nbrLangue > m_Mobile.Skills.ConnaissanceLangue.Fixed / 200 + 2)
             {
                 int last = m_DerniereLangueApprise.Count - 1;
-                m_languages[m_DerniereLangueApprise[last]] = false;
+                m_Langues[m_DerniereLangueApprise[last]] = false;
                 m_Mobile.SendMessage("Vous n'avez pas assez de points en Connaissance (Langue) pour parler " + nbrLangue + " langues.");
                 m_Mobile.SendMessage("La dernière langue choisie (" + (Langue)m_DerniereLangueApprise[last] + ") vous est retirée.");
                 m_DerniereLangueApprise.RemoveAt(last);
@@ -190,19 +209,19 @@ namespace Server.Engines.Langues
             string[] split = text.Split(' ');
             for (int i = 0; i < split.Length; ++i)
             {
-                if (m_currentLangue == Langue.Commune)
+                if (m_CurrentLangue == Langue.Commune)
                     split[i] = LangageWords.LangueCommune[Utility.Random(LangageWords.LangueCommune.Length)];
-                else if (m_currentLangue == Langue.Runique)
+                else if (m_CurrentLangue == Langue.Runique)
                     split[i] = LangageWords.LangueRunique[Utility.Random(LangageWords.LangueRunique.Length)];
-                else if (m_currentLangue == Langue.Dunes)
+                else if (m_CurrentLangue == Langue.Dunes)
                     split[i] = LangageWords.LangueDunes[Utility.Random(LangageWords.LangueDunes.Length)];
-                else if (m_currentLangue == Langue.Elfique)
+                else if (m_CurrentLangue == Langue.Elfique)
                     split[i] = LangageWords.LangueElfique[Utility.Random(LangageWords.LangueElfique.Length)];
-                else if (m_currentLangue == Langue.Nordique)
+                else if (m_CurrentLangue == Langue.Nordique)
                     split[i] = LangageWords.LangueNordique[Utility.Random(LangageWords.LangueNordique.Length)];
-                else if (m_currentLangue == Langue.Morte)
+                else if (m_CurrentLangue == Langue.Morte)
                     split[i] = LangageWords.LangueMorte[Utility.Random(LangageWords.LangueMorte.Length)];
-                else if (m_currentLangue == Langue.Orcish)
+                else if (m_CurrentLangue == Langue.Orcish)
                     split[i] = LangageWords.LangueOrcish[Utility.Random(LangageWords.LangueOrcish.Length)];
                 else
                     split[i] = LangageWords.LangueNoire[Utility.Random(LangageWords.LangueNoire.Length)];
@@ -215,9 +234,9 @@ namespace Server.Engines.Langues
         {
             Langues interlocuteur = m.Langues;
 
-            if (m.AccessLevel >= AccessLevel.GameMaster || interlocuteur.understandLangue(m_currentLangue))
+            if (m.AccessLevel >= AccessLevel.GameMaster || interlocuteur[m_CurrentLangue])
             {
-                if (m_currentLangue != interlocuteur.CurrentLangue)
+                if (m_CurrentLangue != interlocuteur.CurrentLangue)
                 {
                     string sla = CurrentLangue.ToString();
                     m.NetState.Send(new UnicodeMessage(m_Mobile.Serial, m_Mobile.Body, MessageType.Regular, 0x3B2, 3,
@@ -236,6 +255,7 @@ namespace Server.Engines.Langues
             for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
                 writer.Write(m_DerniereLangueApprise[i]);    
             
+			writer.Write((int)m_CurrentLangue);
         }
     }
 }

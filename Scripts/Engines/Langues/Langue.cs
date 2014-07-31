@@ -28,7 +28,7 @@ namespace Server.Engines.Langues
                     try
                     {
                         Langue langue = (Langue) Enum.Parse(typeof(Langue), e.GetString(0), true);
-                        if (tm.Langues.understandLangue(langue))
+                        if (tm.Langues[langue])
                         {
                             tm.Langues.CurrentLangue = langue;
                             tm.SendMessage("Vous parlez maintenant la langue: " + langue);
