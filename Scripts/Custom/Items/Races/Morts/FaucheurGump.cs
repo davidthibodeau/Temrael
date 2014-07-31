@@ -5,25 +5,25 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class FaucheurGump : BaseMortGumps
+    public class OmbreGump : BaseMortGumps
     {
-        public override int BodyMod { get { return 100; } }
+        //public override int BodyMod { get { return 100; } }
         public override int HueMod { get { return 0; } }
-        public override MortEvo EMort { get { return MortEvo.Faucheur; } }
+        public override MortEvo EMort { get { return MortEvo.Ombre; } }
 
         [Constructable]
-        public FaucheurGump()
+        public OmbreGump()
             : this(0)
         {
         }
 
         [Constructable]
-        public FaucheurGump(int hue)
+        public OmbreGump(int hue)
             : base(0x146E, hue)
         {
         }
 
-        public FaucheurGump(Serial serial)
+        public OmbreGump(Serial serial)
             : base(serial)
         {
         }

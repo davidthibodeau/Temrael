@@ -77,11 +77,12 @@ namespace Server.Mobiles
     public enum MortEvo
     {
         Aucune,
+        Decomposition,
         Zombie,
         Squelette,
+        Ombre,
         Spectre,
-        Esprit,
-        Faucheur
+        Esprit
     }
 
     public enum Blessures
@@ -752,7 +753,7 @@ namespace Server.Mobiles
         public void OnAmeEating()
         {
             m_AmeLastFed = DateTime.Now;
-            if ((m_MortEvo == MortEvo.Zombie) || (m_MortEvo == MortEvo.Squelette))
+            if ((m_MortEvo == MortEvo.Decomposition) || (m_MortEvo == MortEvo.Zombie) || (m_MortEvo == MortEvo.Squelette))
             {
                 m_MortEvo = MortEvo.Aucune;
                 m_race = m_trueRace;
@@ -3004,7 +3005,7 @@ namespace Server.Mobiles
             private Mobile m;
 
             public RisqueDeMortTimer(Mobile from)
-                : base(TimeSpan.FromMinutes(10))
+                : base(TimeSpan.FromSeconds(10))
             {
                 m = from;
             }
@@ -3024,7 +3025,7 @@ namespace Server.Mobiles
             private Mobile m;
 
             public MortVivantEvoTimer(Mobile from)
-                : base(TimeSpan.FromSeconds(10),TimeSpan.FromMinutes(30))
+                : base(TimeSpan.FromSeconds(60),TimeSpan.FromSeconds(10))
             {
                 m = from;
             }
@@ -3032,64 +3033,75 @@ namespace Server.Mobiles
             protected override void OnTick()
             {
                 TMobile pm = m as TMobile;
+                Item item = pm.FindItemOnLayer(Layer.Shirt);
+                Item hair = pm.FindItemOnLayer(Layer.Hair);
+                Item facialhair = pm.FindItemOnLayer(Layer.FacialHair);
 
-                if (pm.MortVivant && (pm.AmeLastFed.AddDays(7) < DateTime.Now))
+                if (pm.MortVivant)
                 {
-                    pm.AmeLastFed = DateTime.Now;
-
                     switch (pm.MortEvo)
                     {
                         case MortEvo.Aucune:
-                            if (pm.FindItemOnLayer(Layer.Shirt) is BaseRaceGumps)
-                                pm.FindItemOnLayer(Layer.Shirt).Delete();
-                            pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
-                            pm.MortRace = pm.Races;
-                            pm.Races = Races.MortVivant;
-                            pm.MortEvo = MortEvo.Zombie;
-                            ZombieGump zombieGump = new ZombieGump();
-                            EquipItem(pm, zombieGump, pm.Hue);
-                            Competences.Reset(pm);
-                            Statistiques.Reset(pm);
+                            if ((pm.AmeLastFed.AddSeconds(30) < DateTime.Now))
+                            {
+                                pm.AmeLastFed = DateTime.Now;
+                                if (item is BaseRaceGumps)
+                                    item.Hue = 0;
+                                pm.HueMod = 0;
+                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
+                                pm.MortRace = pm.Races;
+                                pm.Races = Races.MortVivant;
+                                pm.MortEvo = MortEvo.Decomposition;
+                                Competences.Reset(pm);
+                                Statistiques.Reset(pm);
+                            }
+                            break;
+                        case MortEvo.Decomposition:
+                            if ((pm.AmeLastFed.AddSeconds(60) < DateTime.Now))
+                            {
+                                pm.AmeLastFed = DateTime.Now;
+                                if (item is BaseRaceGumps)
+                                    item.Delete();
+                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 14 jours, votre corps se déteriore à nouveau.");
+                                pm.MortEvo = MortEvo.Zombie;
+                                ZombieGump zombieGump = new ZombieGump();
+                                EquipItem(pm, zombieGump, pm.Hue);
+                            }
                             break;
                         case MortEvo.Zombie:
-                            if (pm.FindItemOnLayer(Layer.Shirt) is BaseMortGumps)
-                                pm.FindItemOnLayer(Layer.Shirt).Delete();
-                            pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 14 jours, votre corps se déteriore à nouveau.");
-                            pm.SendMessage("Avertissement: La prochaine transformation qui aura lieu dans 7 jours sera définitive. Nourrissez-vous de l'âme d'un vivant d'ici là.");
-                            pm.MortEvo = MortEvo.Squelette;
-                            SqueletteGump squeletteGump = new SqueletteGump();
-                            EquipItem(pm, squeletteGump, pm.Hue);
+                            if ((pm.AmeLastFed.AddSeconds(90) < DateTime.Now))
+                            {
+                                pm.AmeLastFed = DateTime.Now;
+                                if (item is BaseMortGumps)
+                                    item.Delete();
+                                if (hair != null)
+                                    hair.Delete();
+                                if (facialhair != null)
+                                    facialhair.Delete();
+                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 28 jours, votre corps se déteriore à nouveau.");
+                                pm.SendMessage("Avertissement: La prochaine transformation qui aura lieu dans 28 jours sera définitive. Nourrissez-vous de l'âme d'un vivant d'ici là.");
+                                pm.MortEvo = MortEvo.Squelette;
+                                SqueletteGump squeletteGump = new SqueletteGump();
+                                EquipItem(pm, squeletteGump, 0);
+                            }
                             break;
                         case MortEvo.Squelette:
-                            if (pm.FindItemOnLayer(Layer.Shirt) is BaseMortGumps)
-                                pm.FindItemOnLayer(Layer.Shirt).Delete();
-                            pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 21 jours, votre corps se transforme en cette chose définitivement.");
-                            if (pm.Str >= pm.Dex && pm.Str >= pm.Int)
+                            if ((pm.AmeLastFed.AddSeconds(120) < DateTime.Now))
                             {
-                                pm.MortEvo = MortEvo.Faucheur;
-                                FaucheurGump faucheurGump = new FaucheurGump();
-                                EquipItem(pm, faucheurGump, pm.Hue);
-                            }
-                            else if (pm.Dex >= pm.Str && pm.Dex >= pm.Int)
-                            {
-                                pm.MortEvo = MortEvo.Spectre;
-                                SpectreGump spectreGump = new SpectreGump();
-                                EquipItem(pm, spectreGump, pm.Hue);
-                            }
-                            else if (pm.Int >= pm.Dex && pm.Int >= pm.Str)
-                            {
-                                pm.MortEvo = MortEvo.Esprit;
-                                EspritGump espritGump = new EspritGump();
-                                EquipItem(pm, espritGump, pm.Hue);
+                                pm.AmeLastFed = DateTime.Now;
+                                if (item is BaseMortGumps)
+                                    item.Delete();
+                                if (hair != null)
+                                    hair.Delete();
+                                if (facialhair != null)
+                                    facialhair.Delete();
+                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 56 jours, votre corps se transforme en cette chose définitivement.");
+                                pm.MortEvo = MortEvo.Ombre;
+                                OmbreGump ombreGump = new OmbreGump();
+                                EquipItem(pm, ombreGump, 0);
                             }
                             break;
-                        case MortEvo.Spectre:
-                            Stop();
-                            break;
-                        case MortEvo.Esprit:
-                            Stop();
-                            break;
-                        case MortEvo.Faucheur:
+                        case MortEvo.Ombre:
                             Stop();
                             break;
                     }

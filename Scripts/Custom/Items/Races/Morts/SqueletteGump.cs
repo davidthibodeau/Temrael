@@ -7,7 +7,7 @@ namespace Server.Items
 {
     public class SqueletteGump : BaseMortGumps
     {
-        public override int BodyMod { get { return 50; } }
+        //public override int BodyMod { get { return 50; } }
         public override int HueMod { get { return 0; } }
         public override MortEvo EMort { get { return MortEvo.Squelette; } }
 

@@ -38,16 +38,6 @@ namespace Server.Items
             {
                 mob.MortEvo = EMort;
 
-                //FontaineEternelle.MortanyssEntry entry = FontaineEternelle.m_MortaEntries[(int)mob.EMorta - 1];
-
-                //mob.RawStr = entry.StrCap;
-                //mob.RawDex = entry.DexCap;
-                //mob.RawInt = entry.IntCap;
-                //mob.tHitsMax = entry.HitsCap;
-                //mob.tStamMax = entry.StamCap;
-                //mob.tManaMax = entry.ManaCap;
-                //mob.VirtualArmor = entry.Ar;
-
                 mob.Delta(MobileDelta.Hits);
                 mob.Delta(MobileDelta.Stam);
                 mob.Delta(MobileDelta.Mana);
