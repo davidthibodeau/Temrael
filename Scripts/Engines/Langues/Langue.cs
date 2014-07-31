@@ -4,7 +4,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
 
-namespace Server.Scripts.Commands
+namespace Server.Engines.Langues
 {
     class LangueCommand
     {
@@ -20,17 +20,17 @@ namespace Server.Scripts.Commands
         {
             Mobile from = e.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile tm = from as TMobile;
+                PlayerMobile tm = from as PlayerMobile;
                 if (e.Length == 1)
                 {
                     try
                     {
                         Langue langue = (Langue) Enum.Parse(typeof(Langue), e.GetString(0), true);
-                        if (tm.understandLangue(langue))
+                        if (tm.Langues.understandLangue(langue))
                         {
-                            tm.CurrentLangue = langue;
+                            tm.Langues.CurrentLangue = langue;
                             tm.SendMessage("Vous parlez maintenant la langue: " + langue);
                         }
                         else
@@ -46,6 +46,26 @@ namespace Server.Scripts.Commands
                 }
                 else
                     from.SendGump(new GumpLanguage(tm, false));
+            }
+        }
+    }
+
+    class LangueEtude
+    {
+        public static void Initialize()
+        {
+            CommandSystem.Register("LangueEtude", AccessLevel.Player, new CommandEventHandler(LangueEtude_OnCommand));
+        }
+
+        [Usage("LangueEtude")]
+        [Description("Permet d'apprendre des langues")]
+        public static void LangueEtude_OnCommand(CommandEventArgs e)
+        {
+            Mobile from = e.Mobile;
+
+            if (from is TMobile)
+            {
+                from.SendGump(new GumpLanguage((PlayerMobile)from, true));
             }
         }
     }

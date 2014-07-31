@@ -1128,7 +1128,7 @@ namespace Server.Gumps
                     {
                         Competences.Lower(m_From, comp, oldValue - 1);
                         if (comp == SkillName.ConnaissanceLangue)
-                            m_From.LanguageFix();
+                            m_From.Langues.FixLangues();
                         //m_From.Skills.(comp, oldValue - 1);
                     }
                     from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));

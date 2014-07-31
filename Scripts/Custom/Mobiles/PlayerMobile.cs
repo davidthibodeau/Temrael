@@ -23,6 +23,7 @@ using Server.Engines.CannedEvil;
 using Server.Engines.Craft;
 //using Server.Spells.Spellweaving;
 using Server.Engines.PartySystem;
+using Server.Engines.Langues;
 
 namespace Server.Mobiles
 {
@@ -118,6 +119,8 @@ namespace Server.Mobiles
 		private List<Mobile> m_AutoStabled;
 		private List<Mobile> m_AllFollowers;
 		private List<Mobile> m_RecentlyReported;
+
+        private Langues m_Langues;
 
 		#region Getters & Setters
 
@@ -260,6 +263,13 @@ namespace Server.Mobiles
 			get { return m_ToTTotalMonsterFame; }
 			set { m_ToTTotalMonsterFame = value; }
 		}
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public Langues Langues
+        {
+            get { return m_Langues; }
+            set { }
+        }
 
 		#endregion
 
@@ -2394,6 +2404,8 @@ namespace Server.Mobiles
 
 			m_ChampionTitles = new ChampionTitleInfo();
 
+            m_Langues = new Langues(this);
+
 			InvalidateMyRunUO();
 		}
 
@@ -2659,8 +2671,13 @@ namespace Server.Mobiles
 			switch ( version )
 			{
                 case 30: //Will denote the change.
+                    m_Langues = new Langues(this, reader);
+                    goto case 28;
 				case 28:
 				{
+                    if (version < 30)
+                        m_Langues = new Langues(this);
+
 					m_PeacedUntil = reader.ReadDateTime();
 
 					goto case 27;
@@ -2950,6 +2967,7 @@ namespace Server.Mobiles
 
 			writer.Write( (int) 30 ); // version
             // Note, 28 was previous version before changes
+            m_Langues.Serialize(writer);
             
 			writer.Write( (DateTime) m_PeacedUntil );
 

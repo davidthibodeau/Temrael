@@ -194,8 +194,7 @@
     <Compile Include=".\Custom\Commandes\GeneratePlantSpawner.cs" />
     <Compile Include=".\Custom\Commandes\GetParty.cs" />
     <Compile Include=".\Custom\Commandes\JailPage.cs" />
-    <Compile Include=".\Custom\Commandes\Langue.cs" />
-    <Compile Include=".\Custom\Commandes\LangueEtude.cs" />
+    <Compile Include="Engines\Langues\Langue.cs" />
     <Compile Include=".\Custom\Commandes\Layers.cs" />
     <Compile Include=".\Custom\Commandes\Meteo.cs" />
     <Compile Include=".\Custom\Commandes\NiveauCommande.cs" />
@@ -300,6 +299,7 @@
     <Compile Include="Engines\Harvest\Fishing\Zones\Requins.cs" />
     <Compile Include="Engines\Harvest\Lumberjacking.cs" />
     <Compile Include="Engines\Khaldun\RaiseSwitch.cs" />
+    <Compile Include="Engines\Langues\Langues.cs" />
     <Compile Include="Engines\Party\AddPartyTarget.cs" />
     <Compile Include="Engines\Party\DeclineTimer.cs" />
     <Compile Include="Engines\Party\Packets.cs" />
@@ -356,7 +356,7 @@
     <Compile Include=".\Custom\Gumps\Geopolitique\GeoEtranger.cs" />
     <Compile Include=".\Custom\Gumps\Geopolitique\GeoMaitre.cs" />
     <Compile Include=".\Custom\Gumps\GumpGenerique.cs" />
-    <Compile Include=".\Custom\Gumps\GumpLanguage.cs" />
+    <Compile Include="Engines\Langues\GumpLanguage.cs" />
     <Compile Include=".\Custom\Gumps\GumpTemrael.cs" />
     <Compile Include=".\Custom\Gumps\LayersGump.cs" />
     <Compile Include=".\Custom\Gumps\MortDefinitiveGump.cs" />

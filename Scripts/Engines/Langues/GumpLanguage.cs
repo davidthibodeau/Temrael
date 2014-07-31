@@ -4,16 +4,17 @@ using Server;
 using Server.Network;
 using Server.Multis;
 using Server.Mobiles;
+using Server.Gumps;
 
-namespace Server.Gumps
+namespace Server.Engines.Langues
 {
     public class GumpLanguage : GumpGenerique
     {
-        private TMobile m_owner;
+        private PlayerMobile m_owner;
         private bool m_apprentissage = false;
 
-        public GumpLanguage(TMobile _owner, bool apprentissage)
-            : base((apprentissage ? "Apprentissage des langues" : "Choix d'un language"), 250, 250)
+        public GumpLanguage(PlayerMobile _owner, bool apprentissage)
+            : base((apprentissage ? "Apprentissage des langues" : "Choix d'un langage"), 250, 250)
         {
             m_owner = _owner;
             m_apprentissage = apprentissage;
@@ -29,7 +30,7 @@ namespace Server.Gumps
             {
                 if (m_apprentissage)
                 {
-                    if (m_owner.understandLangue((Langue)i))
+                    if (m_owner.Langues.understandLangue((Langue)i))
                         AddButtonTrueFalse(x, y + line * scale, 666, true, ((Langue)i).ToString());
                     else
                         AddButtonTrueFalse(x, y + line * scale, 50 + i, false, ((Langue)i).ToString());
@@ -37,9 +38,9 @@ namespace Server.Gumps
                 }
                 else
                 {
-                    if (m_owner.understandLangue((Langue)i))
+                    if (m_owner.Langues.understandLangue((Langue)i))
                     {
-                        if ((int)m_owner.CurrentLangue == i)
+                        if ((int)m_owner.Langues.CurrentLangue == i)
                             AddButtonTrueFalse(x, y + line * scale, 666, true, ((Langue)i).ToString());
                         else
                             AddButtonTrueFalse(x, y + line * scale, 100 + i, false, ((Langue)i).ToString());
@@ -52,20 +53,20 @@ namespace Server.Gumps
         public override void OnResponse(NetState sender, RelayInfo info)
         {
             Mobile f = sender.Mobile;
-            TMobile from = f as TMobile;
+            PlayerMobile from = f as PlayerMobile;
 
             if (info.ButtonID >= 50 && info.ButtonID < 100)
             {
                 int nbrLangue = 0;
                 for (int i = 0; i < 8; i++)
                 {
-                    if (from.understandLangue((Langue)i))
+                    if (from.Langues.understandLangue((Langue)i))
                         nbrLangue++;
                 }
                 
                 if (nbrLangue < from.Skills.ConnaissanceLangue.Fixed / 200 + 2)
                 {
-                    from.apprendreLangue((Langue)(info.ButtonID - 50));
+                    from.Langues.apprendreLangue((Langue)(info.ButtonID - 50), true);
                 }
                 else
                 {
@@ -75,10 +76,10 @@ namespace Server.Gumps
             }
             else if (info.ButtonID >= 100 && info.ButtonID < 150)
             {
-                if (from.understandLangue((Langue)(info.ButtonID - 100)))
+                if (from.Langues.understandLangue((Langue)(info.ButtonID - 100)))
                 {
-                    from.CurrentLangue = (Langue)info.ButtonID - 100;
-                    from.SendMessage("Vous parlez maintenant la langue: " + from.CurrentLangue.ToString());
+                    from.Langues.CurrentLangue = (Langue)info.ButtonID - 100;
+                    from.SendMessage("Vous parlez maintenant la langue: " + from.Langues.CurrentLangue.ToString());
                 }
                 else
                 {
