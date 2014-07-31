@@ -119,8 +119,6 @@ namespace Server.Gumps
                 default:
                     break;
             }
-
-            
         }
     }
 }

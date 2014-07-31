@@ -66,7 +66,7 @@ namespace Server.Gumps
             list[i++] = ((1 / (Mobile.GetStamRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
 
             list[i++] = "Langue courante:";
-            list[i++] = from.CurrentLangue.ToString();
+            list[i++] = from.Langues.CurrentLangue.ToString();
 
             list[i++] = "Position actuelle:";
             list[i++] = from.Location.ToString();
