@@ -19,6 +19,7 @@ using Server.Multis;
 using Server.ContextMenus;
 using Server.Prompts;
 using Server.Engines.Langues;
+using Server.Engines.Identities;
 
 namespace Server.Mobiles
 {
@@ -1220,24 +1221,6 @@ namespace Server.Mobiles
             
         }
 
-        private class RenameEntry : ContextMenuEntry
-        {
-            private TMobile m_from;
-            private TMobile m_target;
-
-            public RenameEntry(TMobile from, TMobile target)
-                : base(6097, -1)
-            {
-                m_from = from;
-                m_target = target;
-            }
-
-            public override void OnClick()
-            {
-                m_from.Prompt = new RenamePrompt(m_from, m_target);
-            }
-        }
-
         private class TransformerTieffelinEntry : ContextMenuEntry
         {
             private TMobile m_from;
@@ -1391,26 +1374,6 @@ namespace Server.Mobiles
                 m_from.Identities.CurrentIdentity = 0;
 
                 m_from.Transformer = false;
-            }
-        }
-
-        public class RenamePrompt : Prompt
-        {
-            private TMobile m_target;
-            private TMobile m_from;
-
-            public RenamePrompt(TMobile from, TMobile target)
-            {
-                from.SendMessage("Entrez le nouveau nom que vous souhaitez attribuer au personnage:");
-                m_target = target;
-                m_from = from;
-            }
-
-            public override void OnResponse(Mobile from, string text)
-            {
-                if (m_target != null && !(m_target.Deleted))
-                    if (m_from.Alive && !(m_from.Deleted))
-                        m_target.NewName(text, m_from);
             }
         }
 

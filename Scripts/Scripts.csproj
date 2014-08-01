@@ -630,7 +630,7 @@
     <Compile Include="Custom\Gumps\QSLGump.cs" />
     <Compile Include="Custom\Gumps\QuiGump.cs" />
     <Compile Include="Custom\Gumps\RegIdentificationGump.cs" />
-    <Compile Include="Custom\Gumps\RenameGump.cs" />
+    <Compile Include="Engines\Identities\Rename.cs" />
     <Compile Include="Custom\Gumps\RunebookGump.cs" />
     <Compile Include="Custom\Gumps\TeintureGump.cs" />
     <Compile Include="Custom\Items\Addons\TrainingDummies.cs" />

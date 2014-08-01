@@ -140,8 +140,12 @@ namespace Server.Engines.Identities
             }
         }
 
-        public void NewName(string name, PlayerMobile mob)
+        public void NewName(string name, Mobile m)
         {
+            PlayerMobile mob = m as PlayerMobile;
+            if (mob == null)
+                return;
+
             if (m_DisguiseHidden && !m_RevealIdentity)
             {
                 m_Mobile.SendMessage("Vous n'etes pas apte a identifier ce personnage.");
