@@ -547,7 +547,6 @@
     <Compile Include="Custom\Commandes\PetSay.cs" />
     <Compile Include="Custom\Commandes\QSL.cs" />
     <Compile Include="Custom\Commandes\ResetAllPlayers.cs" />
-    <Compile Include="Custom\Commandes\RevealIdentity.cs" />
     <Compile Include="Custom\Commandes\RevealTitle.cs" />
     <Compile Include="Custom\Commandes\Statut.cs" />
     <Compile Include="Custom\Commandes\Suicide.cs" />
@@ -608,7 +607,6 @@
     <Compile Include="Custom\Gumps\Creation\CreationOverviewGump.cs" />
     <Compile Include="Custom\Gumps\Creation\CreationRaceGump.cs" />
     <Compile Include="Custom\Gumps\DecorationGump.cs" />
-    <Compile Include="Custom\Gumps\DeguisementGump.cs" />
     <Compile Include="Custom\Gumps\EtatGump.cs" />
     <Compile Include="Custom\Gumps\Fiche\Connexe\FicheAptitudeInfoGump.cs" />
     <Compile Include="Custom\Gumps\Fiche\Connexe\FicheAptitudesGump.cs" />
@@ -690,7 +688,6 @@
     <Compile Include="Custom\Items\CombatManager.cs" />
     <Compile Include="Custom\Items\Couturier\Coussins.cs" />
     <Compile Include="Custom\Items\Food\Fruits.cs" />
-    <Compile Include="Custom\Items\KitdeDeguisement.cs" />
     <Compile Include="Custom\Items\Meubles\Armoires.cs" />
     <Compile Include="Custom\Items\Meubles\Chairs.cs" />
     <Compile Include="Custom\Items\Meubles\Etageres.cs" />
@@ -3566,6 +3563,11 @@
     <Compile Include="Vendor\PlayerVendorDeed.cs" />
     <Compile Include="Vendor\PlayerVendorGumps.cs" />
     <Compile Include="Engines\Combat\Combat.cs" />
+    <Compile Include="Engines\Identities\Identities.cs" />
+    <Compile Include="Engines\Identities\Identity.cs" />
+    <Compile Include="Engines\Identities\RevealIdentity.cs" />
+    <Compile Include="Engines\Identities\DeguisementGump.cs" />
+    <Compile Include="Engines\Identities\KitdeDeguisement.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">
@@ -3592,6 +3594,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Addon\" />
+    <Folder Include="Engines\Identities\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>

@@ -44,8 +44,8 @@ namespace Server.Spells
 
                     pm.DispelAllTransformations();
 
-                    if (pm.Disguised)
-                        pm.Disguised = false;
+                    if (pm.Identities.Disguised)
+                        pm.Identities.Disguised = false;
 
                     /*if (pm.m_DeguisementInfos != null)
                     {

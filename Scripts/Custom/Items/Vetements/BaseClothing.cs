@@ -498,7 +498,7 @@ namespace Server.Items
                     from.BonusMana -= Attributes.BonusMana;
 
                     if (Disguise)
-                        from.DisguiseHidden = false;
+                        from.Identities.DisguiseHidden = false;
                 }
 
 				mob.CheckStatTimers();

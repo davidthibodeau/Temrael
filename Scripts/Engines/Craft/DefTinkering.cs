@@ -3,6 +3,7 @@ using Server;
 using Server.Items;
 using Server.Factions;
 using Server.Targeting;
+using Server.Engines.Identities;
 
 namespace Server.Engines.Craft
 {

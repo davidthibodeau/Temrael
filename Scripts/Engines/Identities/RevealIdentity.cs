@@ -4,7 +4,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
 
-namespace Server.Scripts.Commands
+namespace Server.Engines.Identities
 {
     public class RevealIdentity
     {
@@ -21,15 +21,15 @@ namespace Server.Scripts.Commands
             {
                 TMobile from = (TMobile)e.Mobile;
 
-                if (from.RevealIdentity == true)
+                if (from.Identities.RevealIdentity == true)
                 {
-                    from.RevealIdentity = false;
-                    from.SendMessage("Vous cachez votre identite avec le foulard.");
+                    from.Identities.RevealIdentity = false;
+                    from.SendMessage("Vous cachez votre identité avec le foulard.");
                 }
                 else
                 {
-                    from.RevealIdentity = true;
-                    from.SendMessage("Vous revelez votre identite avec le foulard.");
+                    from.Identities.RevealIdentity = true;
+                    from.SendMessage("Vous révélez votre identité avec le foulard.");
                 }
             }
         }

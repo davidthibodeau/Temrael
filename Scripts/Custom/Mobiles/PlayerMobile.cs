@@ -24,6 +24,7 @@ using Server.Engines.Craft;
 //using Server.Spells.Spellweaving;
 using Server.Engines.PartySystem;
 using Server.Engines.Langues;
+using Server.Engines.Identities;
 
 namespace Server.Mobiles
 {
@@ -119,8 +120,6 @@ namespace Server.Mobiles
 		private List<Mobile> m_AutoStabled;
 		private List<Mobile> m_AllFollowers;
 		private List<Mobile> m_RecentlyReported;
-
-        private Langues m_Langues;
 
 		#region Getters & Setters
 
@@ -267,8 +266,15 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public Langues Langues
         {
-            get { return m_Langues; }
-            set { }
+            get;
+            private set;
+        }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public Identities Identities
+        {
+            get;
+            private set;
         }
 
 		#endregion
@@ -2404,7 +2410,8 @@ namespace Server.Mobiles
 
 			m_ChampionTitles = new ChampionTitleInfo();
 
-            m_Langues = new Langues(this);
+            Langues = new Langues(this);
+            Identities = new Identities(this);
 
 			InvalidateMyRunUO();
 		}
@@ -2671,13 +2678,11 @@ namespace Server.Mobiles
 			switch ( version )
 			{
                 case 30: //Will denote the change.
-                    m_Langues = new Langues(this, reader);
+                    Langues = new Langues(this, reader);
+                    Identities = new Identities(reader);
                     goto case 28;
 				case 28:
 				{
-                    if (version < 30)
-                        m_Langues = new Langues(this);
-
 					m_PeacedUntil = reader.ReadDateTime();
 
 					goto case 27;
@@ -2895,6 +2900,12 @@ namespace Server.Mobiles
 				{
 					if( version < 26 )
 						m_AutoStabled = new List<Mobile>();
+
+                    if (version < 30)
+                    {
+                        Langues = new Langues(this);
+                        Identities = new Identities(this);
+                    }
 					break;
 				}
 			}
@@ -2967,7 +2978,8 @@ namespace Server.Mobiles
 
 			writer.Write( (int) 30 ); // version
             // Note, 28 was previous version before changes
-            m_Langues.Serialize(writer);
+            Langues.Serialize(writer);
+            Identities.Serialize(writer);
             
 			writer.Write( (DateTime) m_PeacedUntil );
 

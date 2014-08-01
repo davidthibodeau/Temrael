@@ -147,10 +147,11 @@ namespace Server.Engines.Langues
             m_Mobile = m;
         }
 
-        public Langues(Mobile m, GenericReader reader)
-            : this(m)
+        public Langues(GenericReader reader)
         {
             int version = reader.ReadInt();
+
+			m_Mobile = reader.ReadMobile();
 
             int count = reader.ReadInt();
             for (int i = 0; i < count; i++)
@@ -250,6 +251,8 @@ namespace Server.Engines.Langues
         public void Serialize(GenericWriter writer)
         {
             writer.Write(0); //version
+
+			writer.Write(m_Mobile);
             
             writer.Write(m_DerniereLangueApprise.Count);
             for (int i = 0; i < m_DerniereLangueApprise.Count; i++)

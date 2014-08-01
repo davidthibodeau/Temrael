@@ -7,7 +7,7 @@ using Server.Spells.Seventh;
 using Server.Spells.Necromancy;
 using Server.Scripts.Commands;
 
-namespace Server.Items
+namespace Server.Engines.Identities
 {
     public class DeguisementKit : Item
     {
@@ -55,7 +55,7 @@ namespace Server.Items
                 {
                     from.SendMessage("Vous devez avoir au moins un point en deguisement !");
                 }
-                else if (from.CurrentIdent == 13)
+                else if (from.Identities.CurrentIdentity == 13)
                 {
                     from.SendMessage("Vous ne pouvez pas vous déguisez en forme Aasimar ou Tieffeline !");
                 }

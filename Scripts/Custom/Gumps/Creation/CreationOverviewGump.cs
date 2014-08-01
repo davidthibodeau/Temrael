@@ -120,7 +120,7 @@ namespace Server.Gumps
 
                     if (complete)
                     {
-                        m_from.Identity[0] = m_from.Name;
+                        m_from.Identities[0] = m_from.Name;
                         switch (m_from.Creation.destination)
                         {
                             case Server.Gumps.CreationCarteGump.DestinationsDepart.Hasteindale:

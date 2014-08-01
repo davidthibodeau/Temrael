@@ -118,31 +118,6 @@ namespace Server.Mobiles
         #endregion
     }
 
-    public class Identity
-    {
-        private int m_serial;
-        private string m_name;
-        private int m_identity;
-
-        public int serial { get { return m_serial; } set { m_serial = value; } }
-        public string name { get { return m_name; } set { m_name = value; } }
-        public int identity { get { return m_identity; } set { m_identity = value; } }
-
-        public Identity()
-        {
-            m_serial = 0;
-            m_name = "";
-            m_identity = 0;
-        }
-
-        public Identity(int serial, string name, int identity)
-        {
-            m_serial = serial;
-            m_name = name;
-            m_identity = identity;
-        }
-    }
-
     public class TMobile : PlayerMobile
     {
 
@@ -162,32 +137,6 @@ namespace Server.Mobiles
         //}
         #region Variables
 
-
-
-        //14 Avec Tief + 0 based
-        public string[] Identity = new string[]{
-               "", //1,
-               "", //2,
-               "", //3,
-               "", //4,
-               "", //5,
-               "", //6,
-               "", //7,
-               "", //8
-               "", //9
-               "", //10
-               "", //11
-               "", //12
-               "", //13
-               "" //14
-        };
-
-        
-        private int m_currentIdentity = 0;
-
-        private List<Identity> KnewIdentity = new List<Identity>();
-        private Mobile temp_from = null;
-
         private List<int> m_ListCote = new List<int>(5);
         private DateTime m_LastCotation;
 
@@ -204,7 +153,6 @@ namespace Server.Mobiles
         public static Hashtable m_SpellTransformation = new Hashtable();
         public static Hashtable m_SpellName = new Hashtable();
         public static Hashtable m_SpellHue = new Hashtable();
-        private bool m_Disguised;
 
         private Container m_Corps;
         private bool m_RisqueDeMort;
@@ -246,13 +194,11 @@ namespace Server.Mobiles
         private Mobile m_PossessStorage;
 
         private bool m_Incognito = false;
-        private bool m_DisguiseHidden = false;
 
         private ClasseType m_ClasseType = ClasseType.None;
         private bool m_Suicide;
         private DateTime m_NextKillAllowed;
         private Races m_RaceSecrete;
-        private bool m_RevealIdentity = false;
         private bool m_RevealTitle = true;
         private bool m_FreeReset = false;
         private bool m_Achever = false;
@@ -313,13 +259,6 @@ namespace Server.Mobiles
         {
             get { return m_RevealTitle; }
             set { m_RevealTitle = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public bool RevealIdentity
-        {
-            get { return m_RevealIdentity; }
-            set { m_RevealIdentity = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -413,13 +352,6 @@ namespace Server.Mobiles
         {
             get { return m_MetamorphoseList; }
             set { m_MetamorphoseList = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public bool Disguised
-        {
-            get { return m_Disguised; }
-            set { m_Disguised = value; }
         }
 
         public Container Corps
@@ -570,13 +502,7 @@ namespace Server.Mobiles
             get { return m_creation; }
             set { m_creation = value; }
         }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public int CurrentIdent
-        {
-            get { return m_currentIdentity; }
-            set { m_currentIdentity = value; }
-        }
+            
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DateTime NextClasseChange
@@ -644,13 +570,6 @@ namespace Server.Mobiles
         {
             get { return m_Incognito; }
             set { m_Incognito = value; }
-        }
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public bool DisguiseHidden
-        {
-            get { return m_DisguiseHidden; }
-            set { m_DisguiseHidden = value; }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -815,12 +734,6 @@ namespace Server.Mobiles
             //Console.WriteLine(text);
             return base.MutateSpeech(hears, ref text, ref context);
         }
-
-
-        private static List<Mobile> m_Hears;
-        private static ArrayList m_OnSpeech;
-
-        private static bool m_NoSpeechLOS1;
 
         public override void OnSaid(SpeechEventArgs e)
         {
@@ -1138,7 +1051,7 @@ namespace Server.Mobiles
                     m_BonusMana = 25;
 
                 if (((BaseClothing)item).Disguise)
-                    m_DisguiseHidden = true;
+                    Identities.DisguiseHidden = true;
             }
             return base.CheckEquip(item);
         }
@@ -1266,7 +1179,7 @@ namespace Server.Mobiles
                     m_BonusMana = 25;
 
                 if (((BaseClothing)item).Disguise)
-                    m_DisguiseHidden = true;
+                    Identities.DisguiseHidden = true;
             }
             return base.OnEquip(item);
         }
@@ -1361,9 +1274,9 @@ namespace Server.Mobiles
 
                 m_from.AddItem(new CornesTieffelin());
 
-                if (m_from.Identity[0] == "")
-                    m_from.Identity[0] = m_from.Name;
-                m_from.m_currentIdentity = 13;
+                if (m_from.Identities[0] == "")
+                    m_from.Identities[0] = m_from.Name;
+                m_from.Identities.CurrentIdentity = 13;
 
                 m_from.Transformer = true;
             }
@@ -1402,9 +1315,9 @@ namespace Server.Mobiles
                         break;
                 }
 
-                if (m_from.Identity[0] == "")
-                    m_from.Identity[0] = m_from.Name;
-                m_from.m_currentIdentity = 0;
+                if (m_from.Identities[0] == "")
+                    m_from.Identities[0] = m_from.Name;
+                m_from.Identities.CurrentIdentity = 0;
 
                 m_from.Transformer = false;
             }
@@ -1436,9 +1349,9 @@ namespace Server.Mobiles
 
                 m_from.AddItem(new CorpsAasimar());
 
-                if (m_from.Identity[0] == "")
-                    m_from.Identity[0] = m_from.Name;
-                m_from.m_currentIdentity = 13;
+                if (m_from.Identities[0] == "")
+                    m_from.Identities[0] = m_from.Name;
+                m_from.Identities.CurrentIdentity = 13;
 
                 m_from.Transformer = true;
             }
@@ -1473,9 +1386,9 @@ namespace Server.Mobiles
                         break;
                 }
 
-                if (m_from.Identity[0] == "")
-                    m_from.Identity[0] = m_from.Name;
-                m_from.m_currentIdentity = 0;
+                if (m_from.Identities[0] == "")
+                    m_from.Identities[0] = m_from.Name;
+                m_from.Identities.CurrentIdentity = 0;
 
                 m_from.Transformer = false;
             }
@@ -1526,12 +1439,6 @@ namespace Server.Mobiles
             }
         }
 
-        private void LaunchGumpName()
-        {
-            if (!(temp_from == null))
-                temp_from.SendGump(new RenameGump(this));
-        }
-
         private void LaunchFicheGump()
         {
             this.SendGump(new FicheRaceGump(this));
@@ -1546,87 +1453,15 @@ namespace Server.Mobiles
                 /*Console.WriteLine("TMOB : " + tmob.Name);
                 Console.WriteLine("THIS : " + Name);*/
 
-                if ((Incognito) || (DisguiseHidden))
-                {
-                    this.SendMessage("Vous n'etes pas apte a identifier ce personnage.");
-                    return;
-                }
+                Identities.NewName(entry, tmob);
 
-                Identity[] ident = tmob.KnewIdentity.ToArray();
-                List<int> index = new List<int>();
-
-                for (int i = 0; i < ident.GetLength(0); i++)
-                {
-                    if (ident[i].serial == Serial.Value && ident[i].identity == m_currentIdentity)
-                    {
-                        index.Add(i);
-                    }
-                }
-
-                for (int i = 0; i < index.Count; i++)
-                {
-                    try
-                    {
-                        tmob.KnewIdentity.RemoveAt(index[i - i]);
-                    }
-                    catch
-                    {
-                    }
-                }
-
-                tmob.KnewIdentity.Add(new Identity(Serial.Value, entry, m_currentIdentity));
-            
                 SendPropertiesTo(mob);
             }
         }
 
         public override string GetNameUseBy(Mobile from)
         {           
-            if (from == this)
-                return Name;
-
-            if ((this.Account != null && this.Account.AccessLevel > AccessLevel.Player) || (from.Account != null && from.Account.AccessLevel > AccessLevel.Player))
-                return (this.m_currentIdentity == 0 ? this.Name : this.Identity[0] + " (" + this.Name + ")");
-
-            if (m_Incognito)
-                return "Incognito";
-
-            if (m_DisguiseHidden && !m_RevealIdentity)
-                return "Identite Cache";
-
-            if (from is TMobile)
-            {
-                TMobile tmob = (TMobile)from;
-
-                /*Console.WriteLine("This : " + Name);
-                Console.WriteLine("Tmob : " + tmob.Name);
-                Console.WriteLine("Ident Count : " + tmob.KnewIdentity.Count);*/
-
-                foreach (Identity ident in tmob.KnewIdentity)
-                {
-                    /*Console.WriteLine("Ident Serial : " + ident.serial);
-                    Console.WriteLine("This Serial : " + Serial.Value);
-                    Console.WriteLine("tmob Serial : " + tmob.Serial.Value);
-                    Console.WriteLine("Ident : " + ident.identity);
-                    Console.WriteLine("This Ident : " + m_currentIdentity);*/
-
-                    if (ident.serial == Serial.Value && ident.identity == m_currentIdentity)
-                    {
-                        return ident.name;
-                    }
-                }
-            }
-
-            return DefaultName(from);
-        }
-
-        private string DefaultName(Mobile from)
-        {
-            /*if (from.Female)
-                return "une femme";
-            else
-                return "un homme";*/
-            return "Anonyme";
+            return Identities.GetNameUseBy(from);
         }
 
         public override void OnAosSingleClick(Mobile from)
@@ -2115,7 +1950,7 @@ namespace Server.Mobiles
                     Deguisements.RemoveDeguisement(this);
                 }*/
 
-                Disguised = false;
+                //Disguised = false;
 
                 NameMod = null;
                 BodyMod = 0;
@@ -2272,9 +2107,9 @@ namespace Server.Mobiles
             }
 
             if (Inconnu)
-                m_DisguiseHidden = true;
+                Identities.DisguiseHidden = true;
             else
-                m_DisguiseHidden = false;
+                Identities.DisguiseHidden = false;
         }
 
         public void OnNameChange(string name)
@@ -2633,13 +2468,9 @@ namespace Server.Mobiles
                 for (int j = 0; j < 9; j++)
                     writer.Write(m_Ticks[i, j]);
 
-            writer.Write(m_currentIdentity);
-
             writer.Write((bool)m_Achever);
             writer.Write((bool)m_FreeReset);
             writer.Write((bool)m_RevealTitle);
-
-            writer.Write((bool)m_RevealIdentity);
 
             writer.Write((int)m_RaceSecrete);
 
@@ -2647,12 +2478,7 @@ namespace Server.Mobiles
             writer.Write((bool)m_Suicide);
             writer.Write((int)m_ClasseType);
 
-            writer.Write((bool)m_DisguiseHidden);
             writer.Write((bool)m_Incognito);
-
-            writer.Write((int)Identity.Length);
-            for (int i = 0; i < Identity.Length; i++)
-                writer.Write((string)Identity[i]);
 
             writer.Write((Mobile)m_Possess);
             writer.Write((Mobile)m_PossessStorage);
@@ -2696,7 +2522,6 @@ namespace Server.Mobiles
             writer.Write((int)m_Fatigue);
 
             writer.Write((bool)m_Aphonie);
-            writer.Write((bool)m_Disguised);
 
             writer.Write((Container)m_Corps);
             writer.Write(m_RisqueDeMort);
@@ -2712,15 +2537,6 @@ namespace Server.Mobiles
 
             writer.Write((DateTime)m_AmeLastFed);
             writer.Write((bool)m_MortVivant);
-
-            writer.Write((int)KnewIdentity.Count);
-            foreach (Identity ident in KnewIdentity)
-            {
-                writer.Write((int)ident.serial);
-                writer.Write((string)ident.name);
-                writer.Write((int)ident.identity);
-            }
-
         }
 
         public override void Deserialize(GenericReader reader)
@@ -2740,7 +2556,8 @@ namespace Server.Mobiles
                             m_Ticks[i, j] = reader.ReadBool();
                     goto case 7;
                 case 7:
-                    m_currentIdentity = reader.ReadInt();
+                    if(version < 9)
+                        Identities.CurrentIdentity = reader.ReadInt();
                     goto case 6;
                 case 6:
                     if (version < 9)
@@ -2759,7 +2576,8 @@ namespace Server.Mobiles
 
                     goto case 3;
                 case 3:
-                    m_RevealIdentity = reader.ReadBool();
+                    if(version < 9)
+                        Identities.RevealIdentity = reader.ReadBool();
                     goto case 2;
                 case 2:
                     m_RaceSecrete = (Mobiles.Races)reader.ReadInt();
@@ -2783,15 +2601,12 @@ namespace Server.Mobiles
                     }
                     m_ClasseType = (ClasseType)reader.ReadInt();
 
-                    m_DisguiseHidden = reader.ReadBool();
+                    if(version < 9)
+                        Identities.DisguiseHidden = reader.ReadBool();
                     m_Incognito = reader.ReadBool();
 
-                    int IdentityCount = reader.ReadInt();
-                    Identity = new string[IdentityCount];
-                    for (int i = 0; i < IdentityCount; i++)
-                    {
-                        Identity[i] = reader.ReadString();
-                    }
+                    if (version < 9)
+                        Identities.ConvertPre9Ident(reader);
 
                     m_Possess = reader.ReadMobile();
                     m_PossessStorage = reader.ReadMobile();
@@ -2870,7 +2685,8 @@ namespace Server.Mobiles
                     }
 
                     m_Aphonie = reader.ReadBool();
-                    m_Disguised = reader.ReadBool();
+                    if(version < 9)
+                        Identities.Disguised = reader.ReadBool();
 
                     m_Corps = (Container)reader.ReadItem();
                     m_RisqueDeMort = reader.ReadBool();
@@ -2889,11 +2705,8 @@ namespace Server.Mobiles
 
                     goto case 0;
                 case 0:
-                    count = reader.ReadInt();
-                    for (int i = 0; i < count; i++)
-                    {
-                        KnewIdentity.Add(new Identity(reader.ReadInt(), reader.ReadString(), reader.ReadInt()));
-                    }
+                    if(version < 9)
+                        Identities.ConvertPre9Knew(reader);
                     break;
                 default: break;
             }
