@@ -9,8 +9,6 @@ namespace Server.Mobiles
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
 
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.TinkersGuild; } }
-
 		[Constructable]
 		public Architect() : base( "Architecte" )
 		{

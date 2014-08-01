@@ -10,8 +10,6 @@ namespace Server.Mobiles
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
 
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.TailorsGuild; } }
-
 		[Constructable]
 		public Weaver() : base( "Tisserand" )
 		{

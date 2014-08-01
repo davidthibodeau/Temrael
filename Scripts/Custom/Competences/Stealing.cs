@@ -23,11 +23,6 @@ namespace Server.SkillHandlers
 		public static readonly bool ClassicMode = false;
 		public static readonly bool SuspendOnMurder = false;
 
-		public static bool IsInGuild( Mobile m )
-		{
-			return ( m is PlayerMobile && ((PlayerMobile)m).NpcGuild == NpcGuild.ThievesGuild );
-		}
-
 		public static bool IsInnocentTo( Mobile from, Mobile to )
 		{
 			return ( Notoriety.Compute( from, (Mobile)to ) == Notoriety.Innocent );
@@ -342,9 +337,6 @@ namespace Server.SkillHandlers
 					{
 						Mobile mobRoot = (Mobile)root;
 
-						if ( !IsInGuild( mobRoot ) && IsInnocentTo( m_Thief, mobRoot ) )
-							m_Thief.CriminalAction( false );
-
                         string message = String.Format("Vous appercevez un personnage tenter d'en voler un autre.");
 
                         from.RevealingAction();
@@ -363,7 +355,7 @@ namespace Server.SkillHandlers
 					m_Thief.CriminalAction( false );
 				}
 
-				if ( root is Mobile && ((Mobile)root).Player && m_Thief is PlayerMobile && IsInnocentTo( m_Thief, (Mobile)root ) && !IsInGuild( (Mobile)root ) )
+				if ( root is Mobile && ((Mobile)root).Player && m_Thief is PlayerMobile && IsInnocentTo( m_Thief, (Mobile)root ))
 				{
 					PlayerMobile pm = (PlayerMobile)m_Thief;
 

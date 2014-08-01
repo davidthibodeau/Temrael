@@ -9,7 +9,6 @@ namespace Server.Mobiles
 {
 	public class Minter : Banker
 	{
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.MerchantsGuild; } }
 
 		[Constructable]
 		public Minter()

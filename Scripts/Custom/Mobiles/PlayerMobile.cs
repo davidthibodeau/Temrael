@@ -49,23 +49,6 @@ namespace Server.Mobiles
 		HasStatReward			= 0x00002000
 	}
 
-	public enum NpcGuild
-	{
-		None,
-		MagesGuild,
-		WarriorsGuild,
-		ThievesGuild,
-		RangersGuild,
-		HealersGuild,
-		MinersGuild,
-		MerchantsGuild,
-		TinkersGuild,
-		TailorsGuild,
-		FishermensGuild,
-		BardsGuild,
-		BlacksmithsGuild
-	}
-
 	public enum SolenFriendship
 	{
 		None,
@@ -95,10 +78,7 @@ namespace Server.Mobiles
 
 		private DesignContext m_DesignContext;
 
-		private NpcGuild m_NpcGuild;
-		private DateTime m_NpcGuildJoinTime;
 		private DateTime m_NextBODTurnInTime;
-		private TimeSpan m_NpcGuildGameTime;
 		private PlayerFlag m_Flags;
 		private int m_StepsTaken;
 		private int m_Profession;
@@ -211,20 +191,6 @@ namespace Server.Mobiles
 		}
 
 		[CommandProperty( AccessLevel.GameMaster )]
-		public NpcGuild NpcGuild
-		{
-			get{ return m_NpcGuild; }
-			set{ m_NpcGuild = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public DateTime NpcGuildJoinTime
-		{
-			get{ return m_NpcGuildJoinTime; }
-			set{ m_NpcGuildJoinTime = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
 		public DateTime NextBODTurnInTime
 		{
 			get{ return m_NextBODTurnInTime; }
@@ -236,13 +202,6 @@ namespace Server.Mobiles
 		{
 			get{ return m_LastOnline; }
 			set{ m_LastOnline = value; }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public TimeSpan NpcGuildGameTime
-		{
-			get{ return m_NpcGuildGameTime; }
-			set{ m_NpcGuildGameTime = value; }
 		}
 
 		private int m_ToTItemsTurnedIn;
@@ -2678,7 +2637,7 @@ namespace Server.Mobiles
 			switch ( version )
 			{
                 case 30: //Will denote the change.
-                    Langues = new Langues(this, reader);
+                    Langues = new Langues(reader);
                     Identities = new Identities(reader);
                     goto case 28;
 				case 28:
@@ -2850,10 +2809,13 @@ namespace Server.Mobiles
 					goto case 8;
 				}
 				case 8:
-				{
-					m_NpcGuild = (NpcGuild)reader.ReadInt();
-					m_NpcGuildJoinTime = reader.ReadDateTime();
-					m_NpcGuildGameTime = reader.ReadTimeSpan();
+                {
+                    if (version < 30)
+                    {
+                        reader.ReadInt();
+                        reader.ReadDateTime();
+                        reader.ReadTimeSpan();
+                    }
 					goto case 7;
 				}
 				case 7:
@@ -3059,10 +3021,6 @@ namespace Server.Mobiles
 			}
 
 			writer.Write( SavagePaintExpiration );
-
-			writer.Write( (int) m_NpcGuild );
-			writer.Write( (DateTime) m_NpcGuildJoinTime );
-			writer.Write( (TimeSpan) m_NpcGuildGameTime );
 
 			writer.Write( m_PermaFlags, true );
 

@@ -42,8 +42,6 @@ namespace Server.Mobiles
 		public virtual bool IsActiveBuyer { get { return IsActiveVendor; } } // response to vendor SELL
 		public virtual bool IsActiveSeller { get { return IsActiveVendor; } } // repsonse to vendor BUY
 
-		public virtual NpcGuild NpcGuild { get { return NpcGuild.None; } }
-
 		public virtual bool IsInvulnerable { get { return true; } }
 
 		public override bool ShowFameTitle { get { return false; } }

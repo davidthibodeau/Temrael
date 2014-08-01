@@ -816,8 +816,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Bard ),
-				typeof( BardGuildmaster )
+				typeof( Bard )
 			},
 			new FillableEntry[]
 			{
@@ -832,8 +831,7 @@ namespace Server.Items
 			2,
 			new Type[]
 			{
-				typeof( Blacksmith ),
-				typeof( BlacksmithGuildmaster )
+				typeof( Blacksmith )
 			},
 			new FillableEntry[]
 			{
@@ -919,8 +917,7 @@ namespace Server.Items
 			new Type[]
 			{
 				typeof( Tailor ),
-				typeof( Weaver ),
-				typeof( TailorGuildmaster )
+				typeof( Weaver )
 			},
 			new FillableEntry[]
 			{
@@ -957,8 +954,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Fisherman ),
-				typeof( FisherGuildmaster )
+				typeof( Fisherman )
 			},
 			new FillableEntry[]
 			{
@@ -1002,7 +998,6 @@ namespace Server.Items
 			3,
 			new Type[]
 			{
-				typeof( WarriorGuildmaster )
 			},
 			new FillableEntry[]
 			{
@@ -1029,8 +1024,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Healer ),
-				typeof( HealerGuildmaster )
+				typeof( Healer )
 			},
 			new FillableEntry[]
 			{
@@ -1105,8 +1099,7 @@ namespace Server.Items
 			new Type[]
 			{
 				typeof( Mage ),
-				typeof( HolyMage ),
-				typeof( MageGuildmaster )
+				typeof( HolyMage )
 			},
 			new FillableEntry[]
 			{
@@ -1126,7 +1119,6 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( MerchantGuildmaster )
 			},
 			new FillableEntry[]
 			{
@@ -1297,8 +1289,7 @@ namespace Server.Items
 			2,
 			new Type[]
 			{
-				typeof( Ranger ),
-				typeof( RangerGuildmaster )
+				typeof( Ranger )
 			},
 			new FillableEntry[]
 			{
@@ -1384,8 +1375,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Thief ),
-				typeof( ThiefGuildmaster )
+				typeof( Thief )
 			},
 			new FillableEntry[]
 			{
@@ -1401,8 +1391,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Tinker ),
-				typeof( TinkerGuildmaster )
+				typeof( Tinker )
 			},
 			new FillableEntry[]
 			{

@@ -11,7 +11,6 @@ namespace Server.Mobiles
         private Races races = Races.Capiceen;
 
         public Races Races { get { return races; } set { races = value; InitSBInfo(); } }
-		public override NpcGuild NpcGuild{ get{ return NpcGuild.TinkersGuild; } }
 
 		[Constructable]
 		public Carpenter() : base( "Charpentier" )

@@ -1332,19 +1332,6 @@
     <Compile Include="Custom\Mobiles\Vendors\NPC\Furtrader.cs" />
     <Compile Include="Custom\Mobiles\Vendors\NPC\Glassblower.cs" />
     <Compile Include="Custom\Mobiles\Vendors\NPC\GolemCrafter.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\BardGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\BaseGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\BlacksmithGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\FisherGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\HealerGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\MageGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\MerchantGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\MinerGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\RangerGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\TailorGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\ThiefGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\TinkerGuildmaster.cs" />
-    <Compile Include="Custom\Mobiles\Vendors\NPC\Guildmasters\WarriorGuildmaster.cs" />
     <Compile Include="Custom\Mobiles\Vendors\NPC\GypsyAnimalTrainer.cs" />
     <Compile Include="Custom\Mobiles\Vendors\NPC\GypsyBanker.cs" />
     <Compile Include="Custom\Mobiles\Vendors\NPC\GypsyMaiden.cs" />
@@ -3594,7 +3581,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Addon\" />
-    <Folder Include="Engines\Identities\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
