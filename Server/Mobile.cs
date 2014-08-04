@@ -455,7 +455,8 @@ namespace Server
 	{
 		None,
 		Related,
-		Everyone
+		Everyone,
+        Selective
 	}
 
 	public enum ResistanceType
