@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Target.cs 644 2010-12-23 09:18:45Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -26,6 +26,14 @@ namespace Server.Targeting
 	public abstract class Target
 	{
 		private static int m_NextTargetID;
+
+		private static bool m_TargetIDValidation = true;
+
+		public static bool TargetIDValidation
+		{
+			get { return m_TargetIDValidation; }
+			set { m_TargetIDValidation = value; }
+		}
 
 		private int m_TargetID;
 		private int m_Range;
