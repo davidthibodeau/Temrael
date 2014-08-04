@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Container.cs 564 2010-10-18 04:56:28Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -1598,7 +1598,8 @@ namespace Server.Items
 			base.OnSingleClick( from );
 
 			if ( CheckContentDisplay( from ) )
-				LabelTo( from, "({0} items, {1} stones)", TotalItems, TotalWeight );
+				LabelTo(from, "({0} items, {1} stones)", TotalItems, TotalWeight);
+				//LabelTo(from, 1050044, String.Format("{0}\t{1}", TotalItems, TotalWeight)); // ~1_COUNT~ items, ~2_WEIGHT~ stones
 		}
 
 		private List<Mobile> m_Openers;
