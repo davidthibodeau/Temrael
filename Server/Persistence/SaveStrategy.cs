@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: SaveStrategy.cs 641 2010-12-20 03:34:25Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -31,13 +31,9 @@ namespace Server
 			{
 				int processorCount = Core.ProcessorCount;
 
-				if (processorCount > 16)
+				if (processorCount > 2)
 				{
-#if Framework_4_0
-					return new DynamicSaveStrategy();
-#else
-					return new ParallelSaveStrategy(processorCount);
-#endif
+					return new DualSaveStrategy(); // return new DynamicSaveStrategy(); (4.0 or return new ParallelSaveStrategy(processorCount); (2.0)
 				}
 				else
 				{

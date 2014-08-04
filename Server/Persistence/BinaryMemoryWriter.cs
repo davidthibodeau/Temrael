@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: BinaryMemoryWriter.cs 37 2006-06-19 17:28:24Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
