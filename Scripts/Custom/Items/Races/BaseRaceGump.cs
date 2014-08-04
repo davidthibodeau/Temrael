@@ -33,7 +33,7 @@ namespace Server.Items
         {
         }
 
-        public override void OnAdded(object parent)
+        public override void OnAdded(IEntity parent)
         {
             Mobile mob = parent as Mobile;
 
@@ -43,7 +43,7 @@ namespace Server.Items
             base.OnAdded(parent);
         }
 
-        public override void OnRemoved(object parent)
+        public override void OnRemoved(IEntity parent)
         {
             Mobile mob = parent as Mobile;
 
