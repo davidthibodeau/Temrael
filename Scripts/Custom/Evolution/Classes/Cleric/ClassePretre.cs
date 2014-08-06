@@ -27,55 +27,9 @@ namespace Server
 
             };
 
-        private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
-                new ClasseAptitudes(Aptitude.Thaumaturgie, 3),
-                new ClasseAptitudes(Aptitude.Incantation, 1),
-                new ClasseAptitudes(Aptitude.Spiritisme, 2),
-                new ClasseAptitudes(Aptitude.PortArmure, 1),
-                new ClasseAptitudes(Aptitude.PortArme, 1)
-            };
-
-        private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
-                new ClasseAptitudes(Aptitude.Thaumaturgie, 6),
-                new ClasseAptitudes(Aptitude.Incantation, 2),
-                new ClasseAptitudes(Aptitude.Spiritisme, 4),
-                new ClasseAptitudes(Aptitude.PortArmure, 1),
-                new ClasseAptitudes(Aptitude.PortArme, 2)
-            };
-
-        private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
-                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(Aptitude.Thaumaturgie, 9),
-                new ClasseAptitudes(Aptitude.Incantation, 3),
-                new ClasseAptitudes(Aptitude.Spiritisme, 5),
-                new ClasseAptitudes(Aptitude.PortArmure, 2),
-                new ClasseAptitudes(Aptitude.PortArme, 2)
-            };
-
-        private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.DispenseComposante, 1),
-                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(Aptitude.Thaumaturgie, 12),
-                new ClasseAptitudes(Aptitude.Incantation, 4),
-                new ClasseAptitudes(Aptitude.Spiritisme, 6),
-                new ClasseAptitudes(Aptitude.PortArmure, 2),
-                new ClasseAptitudes(Aptitude.PortArme, 2)
-            };
-
         public static ClasseInfo ClasseInfo = new ClasseInfo(
                 m_Classe,
                 m_classeCompetences,
-                m_firstApt,
-                m_secondApt,
-                m_thirdApt,
-                m_fourthApt,
                 m_Name,
                 m_Noms,
                 m_Role,

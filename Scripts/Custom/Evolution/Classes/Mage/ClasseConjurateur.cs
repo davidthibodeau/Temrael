@@ -27,48 +27,9 @@ namespace Server
 
             };
 
-        private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.Invocation, 3),
-                new ClasseAptitudes(Aptitude.Spiritisme, 3),
-                new ClasseAptitudes(Aptitude.PortArmure, 1),
-                new ClasseAptitudes(Aptitude.PortArme, 1)
-            };
-
-        private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(Aptitude.Invocation, 6),
-                new ClasseAptitudes(Aptitude.Spiritisme, 6),
-                new ClasseAptitudes(Aptitude.PortArmure, 1),
-                new ClasseAptitudes(Aptitude.PortArme, 1)
-            };
-
-        private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(Aptitude.Invocation, 9),
-                new ClasseAptitudes(Aptitude.Spiritisme, 9),
-                new ClasseAptitudes(Aptitude.PortArmure, 2),
-                new ClasseAptitudes(Aptitude.PortArme, 1)
-            };
-
-        private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.PortArmeMagique, 1),
-                new ClasseAptitudes(Aptitude.Invocation, 12),
-                new ClasseAptitudes(Aptitude.Spiritisme, 12),
-                new ClasseAptitudes(Aptitude.PortArmure, 2),
-                new ClasseAptitudes(Aptitude.PortArme, 1)
-            };
-
         public static ClasseInfo ClasseInfo = new ClasseInfo(
                 m_Classe,
                 m_classeCompetences,
-                m_firstApt,
-                m_secondApt,
-                m_thirdApt,
-                m_fourthApt,
                 m_Name,
                 m_Noms,
                 m_Role,

@@ -27,49 +27,9 @@ namespace Server
 
             };
 
-        private static ClasseAptitudes[] m_firstApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.PortArmure, 1),
-                new ClasseAptitudes(Aptitude.PortBouclier, 1),
-                new ClasseAptitudes(Aptitude.PortArme, 1),
-                new ClasseAptitudes(Aptitude.Deguisement, 3),
-                new ClasseAptitudes(Aptitude.MouvementCache, 2)
-            };
-
-        private static ClasseAptitudes[] m_secondApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.PortArmure, 2),
-                new ClasseAptitudes(Aptitude.PortBouclier, 2),
-                new ClasseAptitudes(Aptitude.PortArme, 2),
-                new ClasseAptitudes(Aptitude.Deguisement, 6),
-                new ClasseAptitudes(Aptitude.MouvementCache, 5)
-            };
-
-        private static ClasseAptitudes[] m_thirdApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.PortArmure, 2),
-                new ClasseAptitudes(Aptitude.PortBouclier, 2),
-                new ClasseAptitudes(Aptitude.PortArme, 2),
-                new ClasseAptitudes(Aptitude.Deguisement, 9),
-                new ClasseAptitudes(Aptitude.MouvementCache, 7)
-            };
-
-        private static ClasseAptitudes[] m_fourthApt = new ClasseAptitudes[]
-            {
-                new ClasseAptitudes(Aptitude.PortArmure, 3),
-                new ClasseAptitudes(Aptitude.PortBouclier, 3),
-                new ClasseAptitudes(Aptitude.PortArme, 3),
-                new ClasseAptitudes(Aptitude.Deguisement, 12),
-                new ClasseAptitudes(Aptitude.MouvementCache, 10)
-            };
-
         public static ClasseInfo ClasseInfo = new ClasseInfo(
                 m_Classe,
                 m_classeCompetences,
-                m_firstApt,
-                m_secondApt,
-                m_thirdApt,
-                m_fourthApt,
                 m_Name,
                 m_Noms,
                 m_Role,
