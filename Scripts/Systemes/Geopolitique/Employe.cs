@@ -76,7 +76,7 @@ namespace Server.Systemes.Geopolitique
                     if (DateTime.Now.Day > m_LastPaie.Day)
                     {
                         acc += m_Paie;
-                        m_LastPaie.AddMonths(1);
+                        m_LastPaie = m_LastPaie.AddMonths(1);
                         return APayerInternal(acc);
                     }
                     else
@@ -95,7 +95,7 @@ namespace Server.Systemes.Geopolitique
                 else
                 {
                     acc += m_Paie;
-                    m_LastPaie.AddMonths(1);
+                    m_LastPaie = m_LastPaie.AddMonths(1);
                     return APayerInternal(acc);
                 }
             }
@@ -104,7 +104,7 @@ namespace Server.Systemes.Geopolitique
                 if (DateTime.Now.Month > m_LastPaie.Month)
                 {
                     acc += m_Paie * 12;
-                    m_LastPaie.AddYears(1);
+                    m_LastPaie = m_LastPaie.AddYears(1);
                     return APayerInternal(acc);
                 }
                 else
@@ -112,13 +112,13 @@ namespace Server.Systemes.Geopolitique
                     if (m_LastPaie.Month < 12)
                     {
                         acc += m_Paie;
-                        m_LastPaie.AddMonths(1);
+                        m_LastPaie = m_LastPaie.AddMonths(1);
                         return APayerInternal(acc);
                     }
                     else if (DateTime.Now.Month > 1)
                     {
                         acc += m_Paie;
-                        m_LastPaie.AddMonths(1);
+                        m_LastPaie = m_LastPaie.AddMonths(1);
                         return APayerInternal(acc);
                     }
                     else // Il y a moins de 2 mois d'ecart.
@@ -126,7 +126,7 @@ namespace Server.Systemes.Geopolitique
                         if (DateTime.Now.Day > m_LastPaie.Day)
                         {
                             acc += m_Paie;
-                            m_LastPaie.AddMonths(1);
+                            m_LastPaie = m_LastPaie.AddMonths(1);
                             return APayerInternal(acc);
                         }
                         else
@@ -138,7 +138,7 @@ namespace Server.Systemes.Geopolitique
                             int daysthismonth = DaysInMonth(DateTime.Now.Month, DateTime.IsLeapYear(DateTime.Now.Year));
                             jours = DateTime.Now.Day;
                             acc = jours * m_Paie / daysthismonth;
-                            m_LastPaie = DateTime.Now;
+                            m_LastPaie = m_LastPaie = DateTime.Now;
                             return acc;
                         }
                     }
@@ -147,7 +147,7 @@ namespace Server.Systemes.Geopolitique
             else
             {
                 acc += m_Paie * 12;
-                m_LastPaie.AddYears(1);
+                m_LastPaie = m_LastPaie.AddYears(1);
                 return APayerInternal(acc);
             }
         }
