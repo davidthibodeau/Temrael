@@ -497,7 +497,7 @@ namespace Server.Spells
                     {
                         m_From.SendLocalizedMessage(500446); // That is too far away.
                     }*/
-                    if (m_From.NextActionTime > DateTime.Now)
+                    if (m_From.NextActionTime > Core.TickCount)
                     {
                         m_From.SendMessage("Vous devant attendre avant de prier.");
                     }

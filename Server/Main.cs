@@ -159,6 +159,11 @@ namespace Server
 			}
 		}
 
+        public static long GetTicks(TimeSpan ts)
+        {
+            return (int)ts.TotalMilliseconds;
+        }
+
 		public static readonly bool Is64Bit = Environment.Is64BitProcess;
 
 		private static bool m_MultiProcessor;

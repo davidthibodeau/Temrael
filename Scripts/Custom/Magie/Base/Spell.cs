@@ -550,7 +550,7 @@ namespace Server.Spells
 
                 DoFizzle();
 
-                m_Caster.NextSpellTime = DateTime.Now + GetDisturbRecovery();
+                m_Caster.NextSpellTime = Core.TickCount + Core.GetTicks(GetDisturbRecovery());
             }
             /*else if (m_State == SpellState.Sequencing)
             {
@@ -664,7 +664,7 @@ namespace Server.Spells
 			{
 				m_Caster.SendLocalizedMessage( 502643 ); // You can not cast a spell while frozen.
 			}
-			else if ( CheckNextSpellTime && DateTime.Now < m_Caster.NextSpellTime )
+			else if ( CheckNextSpellTime && Core.TickCount < m_Caster.NextSpellTime )
 			{
 				m_Caster.SendLocalizedMessage( 502644 ); // You must wait for that spell to have an effect.
             }
@@ -1341,7 +1341,7 @@ namespace Server.Spells
                         m_Spell.m_CastTimer = null;
                         m_Spell.m_Caster.OnSpellCast(m_Spell);
                         m_Spell.m_Caster.Region.OnSpellCast(m_Spell.m_Caster, m_Spell);
-                        m_Spell.m_Caster.NextSpellTime = DateTime.Now + m_Spell.GetCastRecovery();// Spell.NextSpellDelay;
+                        m_Spell.m_Caster.NextSpellTime = Core.TickCount + Core.GetTicks(m_Spell.GetCastRecovery());
 
                         Target originalTarget = m_Spell.m_Caster.Target;
 
@@ -1360,7 +1360,7 @@ namespace Server.Spells
                     m_Spell.m_CastTimer = null;
 
                     if (m_Spell != null && m_Spell.m_Caster != null)
-                        m_Spell.m_Caster.NextSpellTime = DateTime.Now;
+                        m_Spell.m_Caster.NextSpellTime = Core.TickCount;
                 }
 			}
 		}

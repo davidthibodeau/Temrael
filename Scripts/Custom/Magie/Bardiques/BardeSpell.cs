@@ -58,7 +58,7 @@ namespace Server.Spells
             {
                 m_Caster.SendLocalizedMessage(502643); // You can not cast a spell while frozen.
             }
-            else if (CheckNextSpellTime && DateTime.Now < m_Caster.NextSpellTime)
+            else if (CheckNextSpellTime && Core.TickCount < m_Caster.NextSpellTime)
             {
                 m_Caster.SendLocalizedMessage(502644); // You must wait for that spell to have an effect.
             }

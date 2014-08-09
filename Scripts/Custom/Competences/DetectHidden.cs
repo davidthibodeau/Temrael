@@ -106,7 +106,7 @@ namespace Server.SkillHandlers
                             // - Skills de DH >= skills de Hiding
                             // - Son niveau d'accès >= à la personne qu'elle cherche à dehider
                             // - Si l'habiletée disparition de la personne n'est plus en fonction OU si elle est en fonction mais que la personne cherchant à plus de point en détection que (disparition/2)
-                            if (hasEvasion == false || (hasEvasion == true && DateTime.Now < (trg.LastMoveTime + TimeSpan.FromSeconds(secondes))))
+                            if (hasEvasion == false || (hasEvasion == true && Core.TickCount < (trg.LastMoveTime + (int)secondes * 1000)))
                             {
                                 if ((sourceSkill >= targetSkill) && (src.AccessLevel >= trg.AccessLevel))
                                 {
