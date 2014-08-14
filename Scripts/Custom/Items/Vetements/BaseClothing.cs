@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Server;
 using Server.Engines.Craft;
-using Server.Factions;
 using Server.Network;
 using Server.ContextMenus;
 using Server.Mobiles;
@@ -24,104 +23,8 @@ namespace Server.Items
 		int MaxArcaneCharges{ get; set; }
 	}
 
-	public abstract class BaseClothing : Item, IDyable, IScissorable, IFactionItem, ICraftable, IWearableDurability
+	public abstract class BaseClothing : BaseWearable, IDyable, IScissorable, ICraftable, IWearableDurability
 	{
-		#region Factions
-		private FactionItem m_FactionState;
-
-		public FactionItem FactionItemState
-		{
-			get{ return m_FactionState; }
-			set
-			{
-				m_FactionState = value;
-
-				if ( m_FactionState == null )
-					Hue = 0;
-
-				LootType = ( m_FactionState == null ? LootType.Regular : LootType.Blessed );
-			}
-		}
-		#endregion
-
-        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
-        {
-            base.GetContextMenuEntries(from, list);
-
-            if (RootParent is Mobile)
-            {
-                if ((Mobile)RootParent == from)
-                {
-                    if (from.FindItemOnLayer(this.Layer) == this)
-                        list.Add(new UnEquipEntry(from, this));
-                    else
-                        list.Add(new EquipEntry(from, this));
-                }
-            }
-            else if (RootParent is Item || RootParent == null)
-            {
-                if (from.FindItemOnLayer(this.Layer) == this)
-                    list.Add(new UnEquipEntry(from, this));
-                else
-                    list.Add(new EquipEntry(from, this));
-            }
-        }
-
-        private class EquipEntry : ContextMenuEntry
-        {
-            private Mobile m_From;
-            private BaseClothing m_Item;
-
-            public EquipEntry(Mobile from, Item item)
-                : base(6163, -1)
-            {
-                m_From = (Mobile)from;
-                m_Item = (BaseClothing)item;
-            }
-
-            public override void OnClick()
-            {
-                Item[] candidates = m_From.Backpack.FindItemsByType(m_Item.GetType());
-                Boolean found = false;
-                foreach(Item i in candidates)
-                {
-                    if (m_Item == i) found = true;
-                }
-                if (!found)
-                {
-                    m_From.SendMessage("L'objet doit être dans votre sac pour que vous l'équipiez.");
-                    return;
-                }
-                if (((BaseClothing)m_Item).CanEquip(m_From))
-                {
-                    if (!(m_From.EquipItem(m_Item)))
-                        m_From.SendMessage("Vous ne parvenez pas a equiper cet objet.");
-                }
-                else
-                {
-                    m_From.SendMessage("Vous ne pouvez pas equiper cet objet !");
-                }
-            }
-        }
-
-        private class UnEquipEntry : ContextMenuEntry
-        {
-            private Mobile m_From;
-            private BaseClothing m_Item;
-
-            public UnEquipEntry(Mobile from, Item item)
-                : base(6164, -1)
-            {
-                m_From = (Mobile)from;
-                m_Item = (BaseClothing)item;
-            }
-
-            public override void OnClick()
-            {
-                m_From.PlaceInBackpack(m_Item);
-            }
-        }
-
 		public virtual bool CanFortify{ get{ return true; } }
 
 		private int m_MaxHitPoints;
@@ -926,7 +829,7 @@ namespace Server.Items
 			}
 
 			#region Factions
-			if ( m_FactionState != null )
+			if ( FactionItemState != null )
 				attrs.Add( new EquipInfoAttribute( 1041350 ) ); // faction item
 			#endregion
 

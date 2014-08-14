@@ -29,7 +29,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)0); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -38,20 +38,6 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2: break; // empty, resource removed
-				case 1:
-				{
-					m_Resource = (CraftResource)reader.ReadInt();
-					break;
-				}
-				case 0:
-				{
-					m_Resource = DefaultResource;
-					break;
-				}
-			}
 		}
 	}
 

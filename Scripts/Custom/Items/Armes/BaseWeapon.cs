@@ -8,7 +8,6 @@ using Server.Spells;
 using Server.Spells.Necromancy;
 //using Server.Spells.Bushido;
 //using Server.Spells.Ninjitsu;
-using Server.Factions;
 using Server.Engines.Craft;
 using System.Collections.Generic;
 using Server.ContextMenus;
@@ -25,7 +24,7 @@ namespace Server.Items
 		SlayerName Slayer2 { get; set; }
 	}
 
-	public abstract class BaseWeapon : Item, IWeapon, IFactionItem, ICraftable, ISlayer, IDurability
+	public abstract class BaseWeapon : BaseWearable, IWeapon, ICraftable, ISlayer, IDurability
     {
         private static double[] m_DpsTab
         {
@@ -511,24 +510,6 @@ namespace Server.Items
             get { return m_rarete; }
             set { m_rarete = value; InvalidateProperties(); }
         }
-		
-		#region Factions
-		private FactionItem m_FactionState;
-
-		public FactionItem FactionItemState
-		{
-			get{ return m_FactionState; }
-			set
-			{
-				m_FactionState = value;
-
-				if ( m_FactionState == null )
-					Hue = CraftResources.GetHue( Resource );
-
-				LootType = ( m_FactionState == null ? LootType.Regular : LootType.Blessed );
-			}
-		}
-		#endregion
 
 		/* Weapon internals work differently now (Mar 13 2003)
 		 * 
@@ -545,85 +526,6 @@ namespace Server.Items
 		 *  - WeaponAnimation
 		 *  - MaxRange
 		 */
-
-        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
-        {
-            base.GetContextMenuEntries(from, list);
-
-            if (RootParent is Mobile)
-            {
-                if ((Mobile)RootParent == from)
-                {
-                    if (from.FindItemOnLayer(this.Layer) == this)
-                        list.Add(new UnEquipEntry(from, this));
-                    else
-                        list.Add(new EquipEntry(from, this));
-                }
-            }
-            else if (RootParent is Item || RootParent == null)
-            {
-                if (from.FindItemOnLayer(this.Layer) == this)
-                    list.Add(new UnEquipEntry(from, this));
-                else
-                    list.Add(new EquipEntry(from, this));
-            }
-        }
-
-        private class EquipEntry : ContextMenuEntry
-        {
-            private Mobile m_From;
-            private BaseWeapon m_Item;
-
-            public EquipEntry(Mobile from, Item item)
-                : base(6163, -1)
-            {
-                m_From = (Mobile)from;
-                m_Item = (BaseWeapon)item;
-            }
-
-            public override void OnClick()
-            {
-                Item[] candidates = m_From.Backpack.FindItemsByType(m_Item.GetType());
-                Boolean found = false;
-                foreach(Item i in candidates)
-                {
-                    if (m_Item == i) found = true;
-                }
-                if (!found)
-                {
-                    m_From.SendMessage("L'objet doit être dans votre sac pour que vous l'équipiez.");
-                    return;
-                }
-                if (((BaseWeapon)m_Item).CanEquip(m_From))
-                {
-                    if (!(m_From.EquipItem(m_Item)))
-                        m_From.SendMessage("Vous ne parvenez pas a equiper cet objet.");
-                }
-                else
-                {
-                    m_From.SendMessage("Vous ne pouvez pas equiper cet objet !");
-                }
-            }
-        }
-
-        private class UnEquipEntry : ContextMenuEntry
-        {
-            private Mobile m_From;
-            private BaseWeapon m_Item;
-
-            public UnEquipEntry(Mobile from, Item item)
-                : base(6164, -1)
-            {
-                m_From = (Mobile)from;
-                m_Item = (BaseWeapon)item;
-            }
-
-            public override void OnClick()
-            {
-                m_From.PlaceInBackpack(m_Item);
-                //m_From.EquipItem(m_Item);
-            }
-        }
 
 		#region Var declarations
 
@@ -3834,7 +3736,7 @@ namespace Server.Items
                     list.Add(1060394, "{0}\t{1}", couleur, "Fabriquèßpar: " + m_CrafterName); // Fabriquèßpar: ~1_NAME~
 
                 #region Factions
-                if (m_FactionState != null)
+                if (FactionItemState != null)
                     list.Add(1041350); // faction item
                 #endregion
 
@@ -4126,7 +4028,7 @@ namespace Server.Items
 			}
 
 			#region Factions
-			if ( m_FactionState != null )
+			if ( FactionItemState != null )
 				attrs.Add( new EquipInfoAttribute( 1041350 ) ); // faction item
 			#endregion
 

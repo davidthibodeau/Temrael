@@ -86,6 +86,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\Items\BaseWearable.cs" />
     <Compile Include="Engines\Langues\Langue.cs" />
     <Compile Include="Engines\Botanique\BotaniqueSystem.cs" />
     <Compile Include="Engines\Botanique\Enums.cs" />
