@@ -91,7 +91,7 @@ namespace Server.Mobiles
 				bool rejected;
 				LRReason reject;
 
-				NextActionTime = DateTime.Now;
+				NextActionTime = Core.TickCount;
 
 				Lift( item, item.Amount, out rejected, out reject );
 

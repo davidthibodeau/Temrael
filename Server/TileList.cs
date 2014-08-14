@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: TileList.cs 591 2010-12-06 06:45:45Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 

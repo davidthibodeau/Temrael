@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: QuestArrow.cs 619 2010-12-12 23:55:08Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 

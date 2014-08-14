@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: SecureTrade.cs 521 2010-06-17 07:11:43Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 

@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: DynamicSaveStrategy.cs 645 2010-12-23 11:36:25Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -18,7 +18,6 @@
  *
  ***************************************************************************/
 
-#if Framework_4_0
 
 using System;
 using System.Collections.Generic;
@@ -158,8 +157,6 @@ namespace Server
 			return commitTask;
 		}
 
-
-
 		private Task SaveMobiles()
 		{
 			//Start the blocking consumer; this runs in background.
@@ -242,7 +239,10 @@ namespace Server
 
 			while( _decayBag.TryTake( out item ) )
 			{
-				item.Delete();
+				if( item.OnDecay() )
+				{
+					item.Delete();
+				}
 			}
 		}
 
@@ -311,4 +311,3 @@ namespace Server
 	}
 
 }
-#endif

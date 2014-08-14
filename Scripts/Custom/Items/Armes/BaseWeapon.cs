@@ -1214,7 +1214,7 @@ namespace Server.Items
                     m.AddStatMod(new StatMod(StatType.Con, modName + "Con", conBonus, TimeSpan.Zero));
 			}
 
-			from.NextCombatTime = DateTime.Now + GetDelay( from );
+            from.NextCombatTime = Core.TickCount + Core.GetTicks(GetDelay(from));
 
 			if ( UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular )
 			{
@@ -1237,7 +1237,7 @@ namespace Server.Items
 			return true;
 		}
 
-		public override void OnAdded( object parent )
+		public override void OnAdded(IEntity parent)
 		{
 			base.OnAdded( parent );
 
@@ -1253,7 +1253,7 @@ namespace Server.Items
 			}
 		}
 
-		public override void OnRemoved( object parent )
+		public override void OnRemoved(IEntity parent)
 		{
 			if ( parent is Mobile )
 			{
@@ -1276,8 +1276,8 @@ namespace Server.Items
                     from.BonusMana -= Attributes.BonusMana;
                 }
 
-				if ( weapon != null )
-					m.NextCombatTime = DateTime.Now + weapon.GetDelay( m );
+                if (weapon != null)
+                    m.NextCombatTime = Core.TickCount + Core.GetTicks(weapon.GetDelay(m));
 
 				if ( UseSkillMod && m_SkillMod != null )
 				{

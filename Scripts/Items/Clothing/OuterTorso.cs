@@ -228,7 +228,6 @@ namespace Server.Items
 		}
 	}
 
-
 	[Flipable]
 	public class Robe : BaseOuterTorso, IArcaneEquip
 	{

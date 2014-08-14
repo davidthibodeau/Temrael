@@ -1175,6 +1175,14 @@ namespace Server.Accounting
 			return m_Username.CompareTo( other.m_Username );
 		}
 
+		public int CompareTo( IAccount other )
+		{
+			if ( other == null )
+				return 1;
+
+			return m_Username.CompareTo( other.Username );
+		}
+
 		public int CompareTo( object obj )
 		{
 			if ( obj is Account )
@@ -1182,5 +1190,5 @@ namespace Server.Accounting
 
 			throw new ArgumentException();
 		}
-	}
+    }
 }

@@ -128,7 +128,7 @@ namespace Server.Scripts.Commands
 
                                     pm.RevealingAction();
 
-                                    pm.NextSkillTime = DateTime.Now + TimeSpan.FromSeconds(5);
+                                    pm.NextSkillTime = Core.TickCount + 5000;
 
                                     pm.LastAssassinat = DateTime.Now;
                                 }

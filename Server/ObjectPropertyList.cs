@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: ObjectPropertyList.cs 653 2010-12-31 11:09:18Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 

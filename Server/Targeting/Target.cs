@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Target.cs 644 2010-12-23 09:18:45Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -26,6 +26,14 @@ namespace Server.Targeting
 	public abstract class Target
 	{
 		private static int m_NextTargetID;
+
+		private static bool m_TargetIDValidation = true;
+
+		public static bool TargetIDValidation
+		{
+			get { return m_TargetIDValidation; }
+			set { m_TargetIDValidation = value; }
+		}
 
 		private int m_TargetID;
 		private int m_Range;
@@ -65,7 +73,7 @@ namespace Server.Targeting
 
 		public void BeginTimeout( Mobile from, TimeSpan delay )
 		{
-			m_TimeoutTime = DateTime.Now + delay;
+			m_TimeoutTime = DateTime.UtcNow + delay;
 
 			if ( m_TimeoutTimer != null )
 				m_TimeoutTimer.Stop();

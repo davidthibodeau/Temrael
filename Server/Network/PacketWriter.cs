@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: PacketWriter.cs 114 2006-12-13 18:28:37Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -97,7 +97,7 @@ namespace Server.Network
 		/// <summary>
 		/// Internal format buffer.
 		/// </summary>
-		private static byte[] m_Buffer = new byte[4];
+		private byte[] m_Buffer = new byte[4];
 
 		/// <summary>
 		/// Instantiates a new PacketWriter instance with the default capacity of 4 bytes.

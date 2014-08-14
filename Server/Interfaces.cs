@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Interfaces.cs 649 2010-12-26 05:18:57Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 

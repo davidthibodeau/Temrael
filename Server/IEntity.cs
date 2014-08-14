@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: IEntity.cs 149 2007-01-19 22:10:11Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -27,7 +27,7 @@ namespace Server
 		Serial Serial{ get; }
 		Point3D Location{ get; }
 		Map Map{ get; }
-        bool Deleted { get; }
+		bool Deleted { get; }
 
 		void Delete();
 		void ProcessDelta();
@@ -59,14 +59,14 @@ namespace Server
 		private Serial m_Serial;
 		private Point3D m_Location;
 		private Map m_Map;
-        private bool m_Deleted;
+		private bool m_Deleted;
 
 		public Entity( Serial serial, Point3D loc, Map map )
 		{
 			m_Serial = serial;
 			m_Location = loc;
 			m_Map = map;
-            m_Deleted = false;
+			m_Deleted = false;
 		}
 
 		public Serial Serial {
@@ -105,10 +105,11 @@ namespace Server
 			}
 		}
 
-        public bool Deleted
-        {
-            get { return m_Deleted; }
-        }
+		public bool Deleted {
+			get {
+				return m_Deleted;
+			}
+		}
 
 		public void Delete()
 		{

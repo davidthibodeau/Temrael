@@ -272,7 +272,7 @@ namespace Server.Items
 			GlobalWayPointList.Add(this);
 		}
 
-		public override void OnRemoved( object parent )
+		public override void OnRemoved(IEntity parent)
 		{
 			base.OnRemoved(parent);
 			GlobalWayPointList.Remove(this);

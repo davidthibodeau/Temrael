@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: GumpEntry.cs 644 2010-12-23 09:18:45Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -70,24 +70,19 @@ namespace Server.Gumps
 			}
 		}
 
-		public Gump Parent
-		{
-			get
-			{
+		public Gump Parent {
+			get {
 				return m_Parent;
 			}
-			set
-			{
-				if ( m_Parent != value )
-				{
-					if ( m_Parent != null )
-					{
-						m_Parent.Remove( this );
-					}
+			set {
+				if (m_Parent != value) {
+					if (m_Parent != null)
+						m_Parent.Remove(this);
 
 					m_Parent = value;
 
-					m_Parent.Add( this );
+					if (m_Parent != null)
+						m_Parent.Add(this);
 				}
 			}
 		}

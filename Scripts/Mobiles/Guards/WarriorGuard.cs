@@ -90,7 +90,7 @@ namespace Server.Mobiles
 			Skills[SkillName.Concentration].Base = 120.0;
 			Skills[SkillName.Detection].Base = 100.0;
 
-			this.NextCombatTime = DateTime.Now + TimeSpan.FromSeconds( 0.5 );
+			this.NextCombatTime = Core.TickCount + 500;
 			this.Focus = target;
 		}
 

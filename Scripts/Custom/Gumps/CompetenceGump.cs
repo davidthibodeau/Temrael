@@ -921,10 +921,10 @@ namespace Server.Gumps
                     }
                     //Concentration
                 case 300:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = Meditation.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -934,10 +934,10 @@ namespace Server.Gumps
                     break;
                     //Inscription
                 case 301:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = Inscribe.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -955,10 +955,10 @@ namespace Server.Gumps
                     break;
                     //Degustation
                 case 304:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = TasteID.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -968,10 +968,10 @@ namespace Server.Gumps
                     break;
                     //Detection
                 case 305:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = DetectHidden.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -981,10 +981,10 @@ namespace Server.Gumps
                     break;
                     //Discretion
                 case 306:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = Hiding.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -994,10 +994,10 @@ namespace Server.Gumps
                     break;
                     //Dressage
                 case 307:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = AnimalTaming.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -1007,10 +1007,10 @@ namespace Server.Gumps
                     break;
                     //Empoisonner
                 case 308:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = Poisoning.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -1024,10 +1024,10 @@ namespace Server.Gumps
                     break;
                     //Infiltration
                 case 310:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = Stealth.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -1036,10 +1036,10 @@ namespace Server.Gumps
                     //from.SendGump(new CompetenceGump(m_From, CompDomaines.Roublard, m_ShowCaps));
                     break;
                 case 311:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = RemoveTrap.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -1049,10 +1049,10 @@ namespace Server.Gumps
                     break;
                     //Poursuite
                 case 312:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = Tracking.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -1066,10 +1066,10 @@ namespace Server.Gumps
                     break;
                     //Vol
                 case 314:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = Stealing.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {
@@ -1095,10 +1095,10 @@ namespace Server.Gumps
                     break;
                     //Identification
                 case 319:
-                    if (from.NextSkillTime < DateTime.Now)
+                    if (from.NextSkillTime < Core.TickCount)
                     {
                         TimeSpan span = ItemIdentification.OnUse(from);
-                        from.NextSkillTime = DateTime.Now.Add(span);
+                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
                     }
                     else
                     {

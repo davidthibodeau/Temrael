@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Body.cs 4 2006-06-15 04:28:39Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -45,7 +45,7 @@ namespace Server
 			{
 				using ( StreamReader ip = new StreamReader( "Data/bodyTable.cfg" ) )
 				{
-					m_Types = new BodyType[1000];
+					m_Types = new BodyType[0x1000];
 
 					string line;
 
@@ -56,15 +56,14 @@ namespace Server
 
 						string[] split = line.Split( '\t' );
 
-						try
-						{
-							int bodyID = int.Parse( split[0] );
-							BodyType type = (BodyType)Enum.Parse( typeof( BodyType ), split[1], true );
+						BodyType type;
+						int bodyID;
 
-							if ( bodyID >= 0 && bodyID < m_Types.Length )
-								m_Types[bodyID] = type;
+						if( int.TryParse( split[0], out bodyID ) && Enum.TryParse( split[1], true, out type ) && bodyID >= 0 && bodyID < m_Types.Length )
+						{
+							m_Types[bodyID] = type;
 						}
-						catch
+						else
 						{
 							Console.WriteLine( "Warning: Invalid bodyTable entry:" );
 							Console.WriteLine( line );
@@ -107,7 +106,20 @@ namespace Server
 					&& m_BodyID != 403
 					&& m_BodyID != 607
 					&& m_BodyID != 608
+					&& m_BodyID != 694
+					&& m_BodyID != 695
 					&& m_BodyID != 970;
+			}
+		}
+
+		public bool IsGargoyle
+		{
+			get
+			{
+				return m_BodyID == 666
+					|| m_BodyID == 667
+					|| m_BodyID == 694
+					|| m_BodyID == 695;
 			}
 		}
 
@@ -121,6 +133,8 @@ namespace Server
 					|| m_BodyID == 402
 					|| m_BodyID == 605
 					|| m_BodyID == 607
+					|| m_BodyID == 666
+					|| m_BodyID == 694
 					|| m_BodyID == 750;
 			}
 		}
@@ -135,6 +149,8 @@ namespace Server
 					|| m_BodyID == 403
 					|| m_BodyID == 606
 					|| m_BodyID == 608
+					|| m_BodyID == 667
+					|| m_BodyID == 695
 					|| m_BodyID == 751;
 			}
 		}
@@ -147,6 +163,8 @@ namespace Server
 					|| m_BodyID == 403
 					|| m_BodyID == 607
 					|| m_BodyID == 608
+					|| m_BodyID == 694
+					|| m_BodyID == 695
 					|| m_BodyID == 970;
 			}
 		}

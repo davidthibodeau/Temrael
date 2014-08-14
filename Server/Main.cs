@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Main.cs 651 2010-12-28 09:24:08Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -28,10 +28,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-#if Framework_4_0
 using System.Threading.Tasks;
-#endif
-
 using Server;
 using Server.Accounting;
 using Server.Gumps;
@@ -112,11 +109,62 @@ namespace Server
 		public static Thread Thread { get { return m_Thread; } }
 		public static MultiTextWriter MultiConsoleOut { get { return m_MultiConOut; } }
 
-#if Framework_4_0
-		public static readonly bool Is64Bit = Environment.Is64BitProcess;
-#else
-		public static readonly bool Is64Bit = (IntPtr.Size == 8);	//Returns the size for the current /process/
+		/* DateTime.Now and DateTime.UtcNow are based on actual system clock time.
+		 * The resolution is acceptable but large clock jumps are possible and cause issues.
+		 * GetTickCount and GetTickCount64 have poor resolution.
+		 * GetTickCount64 is unavailable on Windows XP and Windows Server 2003.
+		 * Stopwatch.GetTimestamp() (QueryPerformanceCounter) is high resolution, but
+		 * somewhat expensive to call and unreliable with certain system configurations.
+		 */
+
+		/* The following implementation contains an effective substitute for GetTickCount64 that
+		 * is reliable as long as it is retrieved once every 2^32 ms (~49 days).
+		 */
+
+		/* We don't really need this, but it may be useful in the future.
+		private static ThreadLocal<long> _HighOrder = new ThreadLocal<long>();
+		private static ThreadLocal<uint> _LastTickCount = new ThreadLocal<uint>();
+		*/
+
+		private static readonly bool _HighRes = Stopwatch.IsHighResolution;
+		private static readonly double _Frequency = 1000.0 / Stopwatch.Frequency;
+
+		private static bool _UseHRT;
+
+		public static bool UsingHighResolutionTiming { get { return _UseHRT && _HighRes && !m_Unix; } }
+
+		public static long TickCount {
+			get {
+#if !MONO
+				if (_UseHRT && _HighRes)
+				{
+					long t = 0;
+					SafeNativeMethods.QueryPerformanceCounter(out t);
+					return (long)((double)t * _Frequency);
+				}
+				else
 #endif
+					return (long)((double)DateTime.Now.Ticks * 0.0001);
+
+				/* We don't really need this, but it may be useful in the future.
+				uint t = (uint)Environment.TickCount;
+
+				if (_LastTickCount.Value > t) // Wrapped
+					_HighOrder.Value += 0x100000000;
+
+				_LastTickCount.Value = t;
+				
+				return _HighOrder.Value | _LastTickCount.Value;
+				*/
+			}
+		}
+
+        public static long GetTicks(TimeSpan ts)
+        {
+            return (int)ts.TotalMilliseconds;
+        }
+
+		public static readonly bool Is64Bit = Environment.Is64BitProcess;
 
 		private static bool m_MultiProcessor;
 		private static int m_ProcessorCount;
@@ -202,6 +250,11 @@ namespace Server
 			get { return m_Expansion >= Expansion.SA; }
 		}
 
+		public static bool HS
+		{
+			get { return m_Expansion >= Expansion.HS; }
+		}
+
 		#endregion
 
 		public static string ExePath
@@ -277,19 +330,15 @@ namespace Server
 					{
 					}
 
-					if ( m_Service ) {
-						Console.WriteLine( "This exception is fatal." );
-					} else {
-						Console.WriteLine( "This exception is fatal, press return to exit" );
-						Console.ReadLine();
-					}
+					Console.WriteLine( "This exception is fatal, press return to exit" );
+					Console.ReadLine();
 				}
 
-				m_Closing = true;
+				Kill();
 			}
 		}
 
-		private enum ConsoleEventType
+		internal enum ConsoleEventType
 		{
 			CTRL_C_EVENT,
 			CTRL_BREAK_EVENT,
@@ -298,18 +347,25 @@ namespace Server
 			CTRL_SHUTDOWN_EVENT
 		}
 
-		private delegate bool ConsoleEventHandler( ConsoleEventType type );
-		private static ConsoleEventHandler m_ConsoleEventHandler;
+		internal delegate bool ConsoleEventHandler( ConsoleEventType type );
+		internal static ConsoleEventHandler m_ConsoleEventHandler;
 
-		[DllImport( "Kernel32" )]
-		private static extern bool SetConsoleCtrlHandler( ConsoleEventHandler callback, bool add );
+		internal class SafeNativeMethods {
+			[DllImport("kernel32")]
+			internal static extern bool QueryPerformanceCounter(out long value);
+		}
+
+		internal class UnsafeNativeMethods {
+			[DllImport("Kernel32")]
+			internal static extern bool SetConsoleCtrlHandler(ConsoleEventHandler callback, bool add);
+		}
 
 		private static bool OnConsoleEvent( ConsoleEventType type )
 		{
 			if( World.Saving || ( m_Service && type == ConsoleEventType.CTRL_LOGOFF_EVENT ) )
 				return true;
 			
-			Kill();	//Kill -> HandleClosed will hadnle waiting for the completion of flushign to disk
+			Kill();	//Kill -> HandleClosed will handle waiting for the completion of flushing to disk
 
 			return true;
 		}
@@ -403,6 +459,8 @@ namespace Server
 					m_HaltOnWarning = true;
 				else if ( Insensitive.Equals( args[i], "-vb" ) )
 					m_VBdotNET = true;
+				else if (Insensitive.Equals(args[i], "-usehrt"))
+					_UseHRT = true;
 			}
 
 			try
@@ -440,8 +498,8 @@ namespace Server
 			Version ver = m_Assembly.GetName().Version;
 
 			// Added to help future code support on forums, as a 'check' people can ask for to it see if they recompiled core or not
-			Console.WriteLine( "RunUO - [www.runuo.com] Version {0}.{1}, Build {2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision );
-			Console.WriteLine( "Core: Running on .NET Framework Version {0}.{1}.{2}", Environment.Version.Major, Environment.Version.Minor, Environment.Version.Build );
+			Console.WriteLine("RunUO - [https://github.com/runuo/] Version {0}.{1}.{2}.{3}", ver.Major, ver.Minor, ver.Build, ver.Revision);
+			Console.WriteLine("Core: Running on .NET Framework Version {0}.{1}.{2}", Environment.Version.Major, Environment.Version.Minor, Environment.Version.Build);
 
 			string s = Arguments;
 
@@ -463,11 +521,16 @@ namespace Server
 			}
 			else {
 				m_ConsoleEventHandler = new ConsoleEventHandler( OnConsoleEvent );
-				SetConsoleCtrlHandler( m_ConsoleEventHandler, true );
+				UnsafeNativeMethods.SetConsoleCtrlHandler( m_ConsoleEventHandler, true );
 			}
 
 			if ( GCSettings.IsServerGC )
 				Console.WriteLine("Core: Server garbage collection mode enabled");
+
+			if (_UseHRT)
+				Console.WriteLine("Core: Requested high resolution timing ({0})", UsingHighResolutionTiming ? "Supported" : "Unsupported");
+
+			Console.WriteLine("RandomImpl: {0} ({1})", RandomImpl.Type.Name, RandomImpl.IsHardwareRNG ? "Hardware" : "Software");
 
 			while( !ScriptCompiler.Compile( m_Debug, m_Cache ) )
 			{
@@ -490,7 +553,7 @@ namespace Server
 
 			ScriptCompiler.Invoke( "Initialize" );
 
-			MessagePump messagePump = new MessagePump();
+			MessagePump messagePump = m_MessagePump = new MessagePump();
 
 			timerThread.Start();
 
@@ -503,15 +566,17 @@ namespace Server
 
 			try
 			{
-				DateTime now, last = DateTime.Now;
+				long now, last = TickCount;
 
 				const int sampleInterval = 100;
-				const float ticksPerSecond = (float)(TimeSpan.TicksPerSecond * sampleInterval);
+				const float ticksPerSecond = (float)(1000 * sampleInterval);
 
 				long sample = 0;
 
-				while( m_Signal.WaitOne() )
+				while( !m_Closing )
 				{
+					m_Signal.WaitOne();
+
 					Mobile.ProcessDeltaQueue();
 					Item.ProcessDeltaQueue();
 
@@ -526,9 +591,9 @@ namespace Server
 
 					if( (++sample % sampleInterval) == 0 )
 					{
-						now = DateTime.Now;
+						now = TickCount;
 						m_CyclesPerSecond[m_CycleIndex++ % m_CyclesPerSecond.Length] =
-							ticksPerSecond / (now.Ticks - last.Ticks);
+							ticksPerSecond / (now - last);
 						last = now;
 					}
 				}
@@ -669,21 +734,14 @@ namespace Server
 			if( a == null )
 				return;
 
-#if Framework_4_0
 			Parallel.ForEach(a.GetTypes(), t => 
 				{
 					VerifyType(t);
 				});
-#else
-			foreach (Type t in a.GetTypes())
-			{
-				VerifyType(t);
-			}
-#endif
 		}
 	}
 
-	public class FileLogger : TextWriter, IDisposable
+	public class FileLogger : TextWriter
 	{
 		private string m_FileName;
 		private bool m_NewLine;
