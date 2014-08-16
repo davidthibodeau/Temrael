@@ -99,9 +99,9 @@ namespace Server.Engines.Craft
             // Resmelt option
             if (craftSystem.Resmelt)
             {
-                AddButton(15, 442, 4005, 4007, GetButtonID(6, 1), GumpButtonType.Reply, 0);
+                AddButton(415, 442, 4005, 4007, GetButtonID(6, 1), GumpButtonType.Reply, 0);
                 //AddHtmlLocalized( 50, 345, 150, 18, 1044259, LabelColor, false, false ); // SMELT ITEM
-                AddHtml(50, 445, 150, 20, "<h3><basefont color=#FFFFFF>Fondre<basefont></h3>", false, false);
+                AddHtml(450, 445, 150, 20, "<h3><basefont color=#FFFFFF>Fondre<basefont></h3>", false, false);
             }
             // ****************************************
 
