@@ -63,7 +63,12 @@ namespace Server.Engines.Identities
 
         public string this[int i]
         {
-            get { return m_Identity[i]; }
+            get
+            {
+                if (i == 0 && (m_Identity[0] == "" || m_Identity[0] == null))
+                    m_Identity[0] = m_Mobile.Name;
+                return m_Identity[i];
+            }
             set { m_Identity[i] = value; }
         }
 
