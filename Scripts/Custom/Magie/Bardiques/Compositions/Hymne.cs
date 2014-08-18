@@ -26,8 +26,6 @@ namespace Server.Spells
 				false
 			);
 
-        public override int RequiredAptitudeValue { get { return 5; } }
-
         public HymneSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

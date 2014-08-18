@@ -19,8 +19,6 @@ namespace Server.Spells.Necromancy
 				Reagent.PigIron
             );
 
-        public override int RequiredAptitudeValue { get { return 11; } }
-
 		public VengefulSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

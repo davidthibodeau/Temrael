@@ -9,11 +9,20 @@ namespace Server.Spells.Sixth
 {
 	public class DispelSpell : Spell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+        
+        private static SpellInfo m_Info = new SpellInfo(
 				"Dissipation", "An Ort",
 				SpellCircle.Fifth,
 				218,
 				9002,
+                9002,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot,
 				Reagent.SulfurousAsh

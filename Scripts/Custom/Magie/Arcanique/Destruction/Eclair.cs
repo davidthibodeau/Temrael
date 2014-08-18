@@ -17,8 +17,6 @@ namespace Server.Spells
                 Reagent.BlackPearl
             );
 
-        public override int RequiredAptitudeValue { get { return 2; } }
-
         public EclairSpell(Mobile caster, Item scroll)
             : base(caster, scroll, m_Info)
 		{

@@ -17,8 +17,6 @@ namespace Server.Spells.First
 				Reagent.SpidersSilk
             );
 
-        public override int RequiredAptitudeValue { get { return 1; } }
-
 		public NightSightSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{
 		}

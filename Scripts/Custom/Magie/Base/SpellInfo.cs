@@ -13,36 +13,51 @@ namespace Server.Spells
 		private int m_Action;
 		private bool m_AllowTown;
         private int m_LeftHandEffect, m_RightHandEffect;
+        private SkillName m_SkillForCasting;
+        private int m_MinSkillForCasting;
+        private int m_ManaCost;
 
-        public SpellInfo(string name, string mantra, SpellCircle circle, int action) : this(name, mantra, circle, action, 0, 0, true, Reagent.Bloodmoss)
+        public SpellInfo(string name, string mantra, SpellCircle circle, int action)
+            : this(name, mantra, circle, action, 0, 0, 0, SkillName.ArtMagique, 0, true, Reagent.Bloodmoss)
         {
         }
 
-		public SpellInfo( string name, string mantra, SpellCircle circle, params Type[] regs ) : this( name, mantra, circle, 16, 0, 0, true, regs )
+        public SpellInfo(string name, string mantra, SpellCircle circle, params Type[] regs)
+            : this(name, mantra, circle, 16, 0, 0, 0, SkillName.ArtMagique, 0, true, regs)
 		{
 		}
 
-		public SpellInfo( string name, string mantra, SpellCircle circle, bool allowTown, params Type[] regs ) : this( name, mantra, circle, 16, 0, 0, allowTown, regs )
+        public SpellInfo(string name, string mantra, SpellCircle circle, bool allowTown, params Type[] regs)
+            : this(name, mantra, circle, 16, 0, 0, 0, SkillName.ArtMagique, 0, allowTown, regs)
 		{
 		}
 
-		public SpellInfo( string name, string mantra, SpellCircle circle, int action, params Type[] regs ) : this( name, mantra, circle, action, 0, 0, true, regs )
+        public SpellInfo(string name, string mantra, SpellCircle circle, int action, params Type[] regs)
+            : this(name, mantra, circle, action, 0, 0, 0, SkillName.ArtMagique, 0, true, regs)
 		{
 		}
 
-		public SpellInfo( string name, string mantra, SpellCircle circle, int action, bool allowTown, params Type[] regs ) : this( name, mantra, circle, action, 0, 0, allowTown, regs )
+        public SpellInfo(string name, string mantra, SpellCircle circle, int action, bool allowTown, params Type[] regs)
+            : this(name, mantra, circle, action, 0, 0, 0, SkillName.ArtMagique, 0, allowTown, regs)
 		{
 		}
 
-		public SpellInfo( string name, string mantra, SpellCircle circle, int action, int handEffect, params Type[] regs ) : this( name, mantra, circle, action, handEffect, handEffect, true, regs )
+        public SpellInfo(string name, string mantra, SpellCircle circle, int action, int handEffect, params Type[] regs)
+            : this(name, mantra, circle, action, handEffect, handEffect, 0, SkillName.ArtMagique, 0, true, regs)
 		{
 		}
 
-		public SpellInfo( string name, string mantra, SpellCircle circle, int action, int handEffect, bool allowTown, params Type[] regs ) : this( name, mantra, circle, action, handEffect, handEffect, allowTown, regs )
+        public SpellInfo(string name, string mantra, SpellCircle circle, int action, int handEffect, bool allowTown, params Type[] regs)
+            : this(name, mantra, circle, action, handEffect, handEffect, 0, SkillName.ArtMagique, 0, allowTown, regs)
 		{
 		}
 
-		public SpellInfo( string name, string mantra, SpellCircle circle, int action, int leftHandEffect, int rightHandEffect, bool allowTown, params Type[] regs )
+        public SpellInfo(string name, string mantra, SpellCircle circle, int action, int handEffect, int manaCost, SkillName skillForCasting, int minSkillForCasting, bool allowTown, params Type[] regs)
+            : this(name, mantra, circle, action, handEffect, handEffect, manaCost, skillForCasting, minSkillForCasting, allowTown, regs)
+        {
+        }
+
+        public SpellInfo(string name, string mantra, SpellCircle circle, int action, int leftHandEffect, int rightHandEffect, int manaCost, SkillName skillForCasting, int minSkillForCasting, bool allowTown, params Type[] regs)
 		{
 			m_Name = name;
 			m_Mantra = mantra;
@@ -50,6 +65,9 @@ namespace Server.Spells
 			m_Action = action;
 			m_Reagents = regs;
 			m_AllowTown = allowTown;
+            m_SkillForCasting = skillForCasting;
+            m_MinSkillForCasting = minSkillForCasting;
+            m_ManaCost = manaCost;
 
 			m_LeftHandEffect = leftHandEffect;
 			m_RightHandEffect = rightHandEffect;
@@ -72,5 +90,8 @@ namespace Server.Spells
 		public Type[] Reagents{ get{ return m_Reagents; } set{ m_Reagents = value; } }
 		public int LeftHandEffect{ get{ return m_LeftHandEffect; } set{ m_LeftHandEffect = value; } }
 		public int RightHandEffect{ get{ return m_RightHandEffect; } set{ m_RightHandEffect = value; } }
+        public SkillName skillForCasting { get { return m_SkillForCasting; } set { m_SkillForCasting = value; } }
+        public int minSkillForCasting { get { return m_MinSkillForCasting; } set { m_MinSkillForCasting = value; } }
+        public int manaCost { get { return m_ManaCost; } set { m_ManaCost = value; } }
 	}
 }

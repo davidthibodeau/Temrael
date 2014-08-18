@@ -29,26 +29,11 @@ namespace Server.Spells
                 Caster.SendMessage(m.Name + " est déjà transformé.");
                 return false;
             }
-            /*else if (!m.CanBeginAction(typeof(BaseMorphPotion)))
-            {
-                Caster.SendMessage(m.Name + " est déjà transformé.");
-                return false;
-            }*/
             else if (!m.CanBeginAction(typeof(InstinctCharnelSpell)))
             {
                 Caster.SendMessage(m.Name + " est déjà transformé.");
                 return false;
             }
-            /*else if (!m.CanBeginAction(typeof(ChauveSouris)))
-            {
-                Caster.SendMessage(m.Name + " est sous la forme d'une chauve-souris.");
-                return false;
-            }
-            else if (!m.CanBeginAction(typeof(BaseMorphPotion)))
-            {
-                Caster.SendMessage(m.Name + " est déjà transformé.");
-                return false;
-            }*/
             else if (m.BodyMod == 183 || m.BodyMod == 184)
             {
                 Caster.SendLocalizedMessage(1042512); // You cannot polymorph while wearing body paint
@@ -74,6 +59,7 @@ namespace Server.Spells
 		public SpellInfo Info{ get{ return m_Info; } }
 		public string Name{ get{ return m_Info.Name; } }
 		public string Mantra{ get{ return m_Info.Mantra; } }
+        public int ManaCost { get { return m_Info.manaCost; } }
 		public SpellCircle Circle{ get{ return m_Info.Circle; } }
 		public Type[] Reagents{ get{ return m_Info.Reagents; } }
 		public Item Scroll{ get{ return m_Scroll; } }
@@ -109,10 +95,6 @@ namespace Server.Spells
 		{
 			int damage = Utility.Dice( dice, sides, bonus ) * 100;
 			int damageBonus = 0;
-
-            //int inscribeSkill = GetInscribeFixed( m_Caster );
-            //int inscribeBonus = (inscribeSkill + (1000 * (inscribeSkill / 1000))) / 200;
-            //damageBonus += inscribeBonus;
 
             double anatomySkill = Caster.Skills[SkillName.ArtMagique].Value;
             damageBonus += (int)(anatomySkill / 2.5);
@@ -152,12 +134,6 @@ namespace Server.Spells
             int evalSkill = GetDamageFixed( m_Caster );
             damageBonus += ((9 * evalSkill) / 100);
 
-			//int sdiBonus = AosAttributes.GetValue( m_Caster, AosAttribute.SpellDamage );
-			// PvP spell damage increase cap of 15% from an item’s magic property
-			//if ( playerVsPlayer && sdiBonus > 15 )
-			//	sdiBonus = 15;
-			//damageBonus += sdiBonus;
-
             switch (DamageStat)
             {
                 case StatType.Int:
@@ -169,9 +145,6 @@ namespace Server.Spells
             }
 
 			damage = AOS.Scale( damage, 100 + damageBonus );
-
-            /*if (AOS.Testing)
-                Caster.SendMessage("Spell - Damage : " + String.Format("{0:0.##}", (damage / 100)));*/
 
             if (Caster is BaseCreature) //Les créatures ont toutes 12 de magie offensive.
                 damage *= 2;
@@ -188,7 +161,6 @@ namespace Server.Spells
 			if ( Caster.Player )
 			{
 				scale += Caster.Int * 0.001;
-				//scale += AosAttributes.GetValue( m_Caster, AosAttribute.SpellDamage ) * 0.01;
 			}
 
 			int baseDamage = min + (int)(GetDamageSkill( m_Caster ) / div);
@@ -307,17 +279,14 @@ namespace Server.Spells
 
             n += target.MagieResistance / 10;
 
-            //if (target is TMobile)
-            //    n += ((TMobile)target).GetAttributValue(Attribut.Resistance) / 1000;
-
             if ( n <= 0.0 )
             	return false;
 
             if ( n >= 1.0 )
                 return true;
 
-            int maxSkill = (1 + (int)GetMaxAptitudeValue()) * 10;
-            maxSkill += (1 + ((int)GetMaxAptitudeValue() / 6)) * 25;
+            int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
+            maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
 
             if ( target.Skills[SkillName.Concentration].Value < maxSkill )
                 target.CheckSkill( SkillName.Concentration, 0.0, 120.0 );
@@ -327,17 +296,11 @@ namespace Server.Spells
 
 		public virtual double GetInscribeSkill( Mobile m )
 		{
-			// There is no chance to gain
-			// m.CheckSkill( SkillName.Inscribe, 0.0, 120.0 );
-
 			return m.Skills[SkillName.Inscription].Value;
 		}
 
 		public virtual int GetInscribeFixed( Mobile m )
 		{
-			// There is no chance to gain
-			// m.CheckSkill( SkillName.Inscribe, 0.0, 120.0 );
-
 			return m.Skills[SkillName.Inscription].Fixed;
 		}
 
@@ -357,8 +320,8 @@ namespace Server.Spells
 
 		public virtual int GetResistFixed( Mobile m )
 		{
-            int maxSkill = (1 + (int)GetMaxAptitudeValue()) * 10;
-            maxSkill += (1 + ((int)GetMaxAptitudeValue() / 6)) * 25;
+            int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
+            maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
 
 			if ( m.Skills[SkillName.Concentration].Value < maxSkill )
 				m.CheckSkill( SkillName.Concentration, 0.0, 120.0 );
@@ -369,8 +332,8 @@ namespace Server.Spells
 
 		public virtual double GetResistSkill( Mobile m )
 		{
-            int maxSkill = (1 + (int)GetMaxAptitudeValue()) * 10;
-            maxSkill += (1 + ((int)GetMaxAptitudeValue() / 6)) * 25;
+            int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
+            maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
 
 			if ( m.Skills[SkillName.Concentration].Value < maxSkill )
 				m.CheckSkill( SkillName.Concentration, 0.0, 120.0 );
@@ -399,7 +362,7 @@ namespace Server.Spells
 
 		public virtual double GetResistPercent( Mobile target )
 		{
-			return GetResistPercentForAptitude( target, GetMaxAptitudeValue() );
+            return GetResistPercentForAptitude(target, GetSkillValue()/10);
 		}
 
 		public virtual double GetDamageScalar( Mobile target )
@@ -566,7 +529,6 @@ namespace Server.Spells
 
             BaseCreature bc = m_Caster as BaseCreature;
 
-            //if (bc != null && (bc.Squelched || (bc != null && bc.Aphonie)))
             if (bc != null && (bc.Squelched))
                 return false;
 
@@ -577,43 +539,7 @@ namespace Server.Spells
 		{
 			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && m_Caster.Player )
 				m_Caster.PublicOverheadMessage( MessageType.Spell, m_Caster.SpeechHue, true, m_Info.Mantra, false );
-
-            //if (m_Info.Mantra != null && m_Info.Mantra.Length > 0 /*&& m_Caster.Player*/)
-            //{
-            //    //  m_Caster.PublicOverheadMessage(MessageType.Spell, m_Caster.SpeechHue, true, m_Info.Mantra, false);
-            //    string[] splitted = m_Info.Mantra.Trim().Split(' ');
-            //    TimeSpan castDelay = this.GetCastDelay();
-
-            //    Timer m_ParolesTimer = new ParolesTimer(Caster, castDelay, splitted);
-            //    m_ParolesTimer.Start();
-            //}
 		}
-
-        //public class ParolesTimer : Timer
-        //{
-        //    private int Count;
-        //    private Mobile m_Caster = null;
-        //    private string[] split = null;
-
-        //    public ParolesTimer(Mobile Caster, TimeSpan castDelay, string[] splitted)
-        //        : base(TimeSpan.Zero, TimeSpan.FromSeconds(castDelay.TotalSeconds / splitted.Length))
-        //    {
-        //        Count = 0;
-        //        m_Caster = Caster;
-        //        split = splitted;
-        //    }
-
-        //    protected override void OnTick()
-        //    {
-        //        if (m_Caster != null && split != null)
-        //        {
-        //            if (Count < split.Length)
-        //                m_Caster.Say(split[Count]);
-        //        }
-
-        //        Count++;
-        //    }
-        //}
 
 		public virtual bool BlockedByHorrificBeast{ get{ return false; } }
 		public virtual bool BlocksMovement{ get{ return true; } }
@@ -645,59 +571,61 @@ namespace Server.Spells
 			{
 				m_Caster.SendLocalizedMessage( 502644 ); // You must wait for that spell to have an effect.
             }
-			else if ( m_Caster.Mana >= ScaleMana( GetMana() ) )
-			{
-				if (m_Caster.Spell == null && m_Caster.CheckSpellCast( this ) && CheckCast() && m_Caster.Region.OnBeginSpellCast( m_Caster, this ) )
-				{
+            else if (m_Caster.Skills[m_Info.skillForCasting].Value < m_Info.minSkillForCasting)
+            {
+                m_Caster.SendMessage("Vous n'êtes pas assez doué dans votre école de magie pour lancer ce sort.");
+            }
+            else if (m_Caster.Mana >= GetMana())
+            {
+                if (m_Caster.Spell == null && m_Caster.CheckSpellCast(this) && CheckCast() && m_Caster.Region.OnBeginSpellCast(m_Caster, this))
+                {
+                    m_State = SpellState.Casting;
+                    m_Caster.Spell = this;
 
-					m_State = SpellState.Casting;
-					m_Caster.Spell = this;
+                    if (RevealOnCast)
+                        m_Caster.RevealingAction();
 
-					if ( RevealOnCast )
-						m_Caster.RevealingAction();
+                    SayMantra();
 
-					SayMantra();
+                    TimeSpan castDelay = this.GetCastDelay();
 
-					TimeSpan castDelay = this.GetCastDelay();
+                    if (m_Caster.Body.IsHuman)
+                    {
+                        int count = (int)Math.Ceiling(castDelay.TotalSeconds / AnimateDelay.TotalSeconds);
 
-					if ( m_Caster.Body.IsHuman )
-					{
+                        if (count != 0 && AnimateOnCast)
+                        {
+                            m_AnimTimer = new AnimTimer(this, count);
+                            m_AnimTimer.Start();
+                        }
 
-						int count = (int)Math.Ceiling( castDelay.TotalSeconds / AnimateDelay.TotalSeconds );
+                        if (m_Info.LeftHandEffect > 0)
+                            Caster.FixedParticles(0, 10, 5, m_Info.LeftHandEffect, EffectLayer.LeftHand);
 
-						if ( count != 0 && AnimateOnCast)
-						{
-							m_AnimTimer = new AnimTimer( this, count );
-							m_AnimTimer.Start();
-						}
+                        if (m_Info.RightHandEffect > 0)
+                            Caster.FixedParticles(0, 10, 5, m_Info.RightHandEffect, EffectLayer.RightHand);
+                    }
 
-						if ( m_Info.LeftHandEffect > 0 )
-							Caster.FixedParticles( 0, 10, 5, m_Info.LeftHandEffect, EffectLayer.LeftHand );
+                    if (CheckHands())
+                        m_Caster.ClearHands();
 
-						if ( m_Info.RightHandEffect > 0 )
-							Caster.FixedParticles( 0, 10, 5, m_Info.RightHandEffect, EffectLayer.RightHand );
-					}
+                    m_CastTimer = new CastTimer(this, castDelay);
+                    m_CastTimer.Start();
 
-					if ( CheckHands() )
-						m_Caster.ClearHands();
+                    OnBeginCast();
 
-					m_CastTimer = new CastTimer( this, castDelay );
-					m_CastTimer.Start();
-
-					OnBeginCast();
-
-					return true;
-				}
-				else
-				{
+                    return true;
+                }
+                else
+                {
                     m_Caster.SendMessage("Vous ne pouvez pas lancer ce sort !");
-					return false;
-				}
-			}
-			else
-			{
-				m_Caster.LocalOverheadMessage( MessageType.Regular, 0x22, 502625 ); // Insufficient mana
-			}
+                    return false;
+                }
+            }
+            else
+            {
+                m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, 502625); // Insufficient mana
+            }
 
 			return false;
 		}
@@ -746,7 +674,7 @@ namespace Server.Spells
 		public virtual void GetCastSkills( out double min, out double max )
 		{
 			//int circle = (int)m_Info.Circle;
-            int circle = GetAptitudeValue();
+            int circle = GetSkillValue()/10;
 
 			if ( m_Scroll != null )
 				circle -= 2;
@@ -847,11 +775,9 @@ namespace Server.Spells
         private static double[] m_CastingTable = new double[] { 0.501, 0.161, 0.051, 0.021,
             0.011, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 };
 
-		public static int[] m_ManaTable = new int[]{ 4, 8, 10, 12, 18, 22, 30, 40, 60 };
-
 		public virtual int GetMana()
 		{
-            return m_ManaTable[(int)GetMaxAptitudeValue()];
+            return ManaCost;
         }
 
         public static int[] m_PieteTable = new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5 };
@@ -865,7 +791,7 @@ namespace Server.Spells
             {
 
                 //Console.WriteLine(m_PdPTable[(int)GetPouvoirDivin() - 1]);
-                return m_PieteTable[(int)GetMaxAptitudeValue()];
+                return m_PieteTable[(int)GetSkillValue()/10];
             }
             catch (Exception ex)
             {
@@ -874,46 +800,12 @@ namespace Server.Spells
             }
         }
 
-        public virtual int GetAptitudeValue()
+        public virtual int RequiredSkillValue { get { return m_Info.minSkillForCasting; } }
+
+        public virtual int GetSkillValue()
         {
-            return RequiredAptitudeValue;
+            return RequiredSkillValue;
         }
-
-        public virtual int GetMaxAptitudeValue()
-        {
-            if (RequiredAptitudeValue > 8)
-                return 8;
-            else if (RequiredAptitudeValue < 1)
-                return 1;
-            else
-                return RequiredAptitudeValue;
-        }
-
-        public virtual int RequiredAptitudeValue { get { return 0; } }
-
-
-		public virtual int ScaleMana( int mana )
-		{
-			double scalar = 1.0;
-
-            if (PourritureDEspritSpell.HasMindRotScalar(Caster))
-                scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
-
-            mana = (int)(mana * (1 - (Caster.Int * 0.003)));
-
-			// Lower Mana Cost = 40%
-			int lmc = AosAttributes.GetValue( m_Caster, AosAttribute.LowerManaCost );
-
-			if ( lmc > 10 )
-				lmc = 10;
-
-			//scalar -= (double)lmc / 100;
-
-            if (scalar < 1.0)
-                scalar = 1.0;
-
-			return (int)(mana * scalar);
-		}
 
         public virtual int ScalePdp(int pdp)
         {
@@ -976,13 +868,7 @@ namespace Server.Spells
 
 		public virtual TimeSpan GetCastDelay()
 		{
-           // int scalar = 2;
-
-         /*   if (Invocation)
-                scalar = 1;*/
-
-          //  double value = (CastDelayBase + (CastDelayCircleScalar * (int)Circle / scalar)) / CastDelayPerSecond;
-            double value = CastDelayBase + (double)GetAptitudeValue() * .1;
+            double value = CastDelayBase + (double)GetSkillValue()/10 * .1;
 
             double bonus = 4;
 
@@ -1023,7 +909,7 @@ namespace Server.Spells
 
         public virtual bool CheckSequence()
 		{
-            int mana = ScaleMana(GetMana());
+            int mana = GetMana();
 
             TMobile pm = m_Caster as TMobile;
             
@@ -1039,7 +925,7 @@ namespace Server.Spells
 			{
 				DoFizzle();
             }
-            else if (!ConsumeReagents())
+            else if (!ConsumeReagents() && m_Caster.AccessLevel < AccessLevel.GameMaster)
             {
                 m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, 502630); // More reagents are needed for this spell.
             }

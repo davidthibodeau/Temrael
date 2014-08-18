@@ -10,15 +10,23 @@ namespace Server.Spells.Fifth
 {
 	public class PoisonFieldSpell : Spell
 	{
-		private static SpellInfo m_Info = new SpellInfo(
-				"Mur de Poison", "In Nox Grav",
-				SpellCircle.Sixth,
-				230,
-				9052,
-				false,
-				Reagent.BlackPearl,
-				Reagent.Nightshade,
-				Reagent.SpidersSilk
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
+        private static SpellInfo m_Info = new SpellInfo(
+                "Mur de Poison", "In Nox Grav", 
+                SpellCircle.Sixth, 
+                230, 
+                9052, 
+                9052,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast, 
+                false, 
+                Reagent.BlackPearl,
+                Reagent.Nightshade,
+                Reagent.SpidersSilk
             );
 
 		public PoisonFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
