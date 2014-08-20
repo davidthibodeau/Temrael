@@ -243,9 +243,9 @@ namespace Server.Engines.Langues
                     m.NetState.Send(new UnicodeMessage(m_Mobile.Serial, m_Mobile.Body, MessageType.Regular, 0x3B2, 3,
                                                        m_Mobile.Language, m_Mobile.GetNameUseBy(m), "[" + sla + "]"));
                 }
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         public void Serialize(GenericWriter writer)
