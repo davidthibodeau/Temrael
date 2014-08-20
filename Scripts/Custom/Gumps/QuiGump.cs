@@ -80,10 +80,11 @@ namespace Server.Gumps
 
         private class InternalComparer : IComparer
         {
-            public static readonly IComparer Instance = new InternalComparer();
+            Mobile m_Owner;
 
-            public InternalComparer()
+            public InternalComparer(Mobile from)
             {
+                m_Owner = from;
             }
 
             public int Compare(object x, object y)
@@ -106,7 +107,7 @@ namespace Server.Gumps
                 else if (a.AccessLevel < b.AccessLevel)
                     return 1;
                 else
-                    return Insensitive.Compare(a.Name, b.Name);
+                    return Insensitive.Compare(a.GetNameUseBy(m_Owner), b.GetNameUseBy(m_Owner));
             }
         }
 
@@ -139,7 +140,7 @@ namespace Server.Gumps
                     list.Add(m);
             }
 
-            list.Sort(InternalComparer.Instance);
+            list.Sort(new InternalComparer(owner));
 
             return list;
         }
