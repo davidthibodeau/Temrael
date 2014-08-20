@@ -53,13 +53,13 @@ namespace Server.Items
         private class EquipEntry : ContextMenuEntry
         {
             private Mobile m_From;
-            private BaseArmor m_Item;
+            private BaseWearable m_Item;
 
             public EquipEntry(Mobile from, Item item)
                 : base(6163, -1)
             {
                 m_From = (Mobile)from;
-                m_Item = (BaseArmor)item;
+                m_Item = (BaseWearable)item;
             }
 
             public override void OnClick()
@@ -75,7 +75,7 @@ namespace Server.Items
                     m_From.SendMessage("L'objet doit être dans votre sac pour que vous l'équipiez.");
                     return;
                 }
-                if (((BaseArmor)m_Item).CanEquip(m_From))
+                if (((BaseWearable)m_Item).CanEquip(m_From))
                 {
                     if (!(m_From.EquipItem(m_Item)))
                         m_From.SendMessage("Vous ne parvenez pas a equiper cet objet.");
@@ -90,13 +90,13 @@ namespace Server.Items
         private class UnEquipEntry : ContextMenuEntry
         {
             private Mobile m_From;
-            private BaseArmor m_Item;
+            private BaseWearable m_Item;
 
             public UnEquipEntry(Mobile from, Item item)
                 : base(6164, -1)
             {
                 m_From = (Mobile)from;
-                m_Item = (BaseArmor)item;
+                m_Item = (BaseWearable)item;
             }
 
             public override void OnClick()
