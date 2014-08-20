@@ -111,6 +111,11 @@ namespace Server.Items
         {
         }
 
+        public BaseWearable(int itemID)
+            : base(itemID)
+        {
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
