@@ -19,7 +19,7 @@ namespace Server.Gumps
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Recherche", AccessLevel.Administrator, new CommandEventHandler(AccountList_OnCommand));
+            CommandSystem.Register("Recherche", AccessLevel.GameMaster, new CommandEventHandler(AccountList_OnCommand));
         }
 
         [Usage("Recherche")]
@@ -27,7 +27,14 @@ namespace Server.Gumps
         [Description("Lists all accounts/clients/IPs.")]
         private static void AccountList_OnCommand(CommandEventArgs e)
         {
-            e.Mobile.SendGump(new RechercheListeGump(e.Mobile));
+            RechercheListeGump g = new RechercheListeGump(e.Mobile);
+            if (e.Length == 0)
+            {
+                e.Mobile.SendGump(g);
+                return;
+            }
+            g.Results(e.ArgString);
+            
         }
 
         public static bool OldStyle = false;
@@ -51,8 +58,8 @@ namespace Server.Gumps
 
         public const int PrevWidth = 20;
         public const int PrevOffsetX = 2, PrevOffsetY = 2;
-        public const int PrevButtonID1 = 0x15E1;
-        public const int PrevButtonID2 = 0x15E5;
+        public const int PrevButtonID1 = 0x15E3;
+        public const int PrevButtonID2 = 0x15E7;
 
         public const int NextWidth = 20;
         public const int NextOffsetX = 2, NextOffsetY = 2;
@@ -87,6 +94,7 @@ namespace Server.Gumps
         private ArrayList c_Characters;
         private ArrayList c_Accounts;
         private int m_Page;
+        private bool withIPs;
 
         private class InternalComparer : IComparer
         {
@@ -121,11 +129,11 @@ namespace Server.Gumps
         }
 
         public RechercheListeGump(Mobile owner)
-            : this(owner, BuildListCharacters(), BuildListAccounts(), 0)
+            : this(owner, BuildListCharacters(false), BuildListAccounts(), 0, false)
         {
         }
 
-        public RechercheListeGump(Mobile owner, ArrayList list_characters, ArrayList list_accounts, int page)
+        public RechercheListeGump(Mobile owner, ArrayList list_characters, ArrayList list_accounts, int page, bool withips)
             : base(GumpOffsetX, GumpOffsetY)
         {
             owner.CloseGump(typeof(RechercheListeGump));
@@ -133,11 +141,12 @@ namespace Server.Gumps
             m_Owner = owner;
             c_Characters = list_characters;
             c_Accounts = list_accounts;
+            withIPs = withips;
 
             Initialize(page);
         }
 
-        public static ArrayList BuildListCharacters()
+        public static ArrayList BuildListCharacters(bool withIps)
         {
             ArrayList list_characters = new ArrayList();
             string result;
@@ -147,10 +156,14 @@ namespace Server.Gumps
                 for (int i = 0; i < acct.Length; ++i)
                 {
                     if (acct[i] != null){
-                        result = "Account: " + acct.Username + "  Nom: " + acct[i] + "  IP: ";
+                        result = "Account: " + acct.Username + "  Nom: " + acct[i];
 
-                        for (int j = 0; j < acct.LoginIPs.Length; ++j)
-                            result = result + acct.LoginIPs[j] + ", ";
+                        if (withIps)
+                        {
+                            result += "  IPs: ";
+                            for (int j = 0; j < acct.LoginIPs.Length; ++j)
+                                result = result + acct.LoginIPs[j] + ", ";
+                        }
                         list_characters.Add(result);
                     }
                 }
@@ -248,7 +261,12 @@ namespace Server.Gumps
             AddTextEntry(x, y, EntryWidth, EntryHeight, 602, 0, "");
             y += EntryHeight + OffsetSize;
 
-            AddButton(x + TextOffsetX, y, 0xF7, 0xF7, 3, GumpButtonType.Reply, 0);
+            y += 10;
+            AddButton(x + TextOffsetX, y, 0xF7, 0xF8, 3, GumpButtonType.Reply, 0);
+            y += 5;
+            AddButton(x + TextOffsetX + 120, y, withIPs ? 5003 : 5002, withIPs ? 5002 : 5003, 4, GumpButtonType.Reply, 0);
+            AddImageTiled(x + 140, y, 120, EntryHeight - 4, EntryGumpID);
+            AddHtml(x + TextOffsetX + 140, y - 1, 120, EntryHeight, "<h3><basefont color=#025a>" + "Afficher les IPs" + "<basefont></h3>", false, false);
 
         }
 
@@ -265,14 +283,14 @@ namespace Server.Gumps
                 case 1: // Previous
                     {
                         if (m_Page > 0)
-                            from.SendGump(new RechercheListeGump(from, c_Characters, c_Accounts, m_Page - 1));
+                            from.SendGump(new RechercheListeGump(from, c_Characters, c_Accounts, m_Page - 1, withIPs));
 
                         break;
                     }
                 case 2: // Next
                     {
                         if ((m_Page + 1) * EntryCount < c_Characters.Count)
-                            from.SendGump(new RechercheListeGump(from, c_Characters, c_Accounts, m_Page + 1));
+                            from.SendGump(new RechercheListeGump(from, c_Characters, c_Accounts, m_Page + 1, withIPs));
 
                         break;
                     }
@@ -281,22 +299,34 @@ namespace Server.Gumps
                     {
                         TextRelay entry = info.GetTextEntry(0);
                         string text = (entry == null ? "" : entry.Text.Trim());
-                        ArrayList newList = new ArrayList();
-                        from.SendMessage("Recherche en cours pour : " + text);
 
-                        foreach (string item in c_Characters)
-                        {
-                            if (item.Contains(text))
-                                newList.Add(item);
-                        }
-
-                        from.SendMessage("Résultat:");
-                        for (int i = 0; i < newList.Count; i++)
-                            from.SendMessage("Résultat: " + newList[i]);
-
+                        Results(text);
+                        break;
+                    }
+                case 4: // Toggle ips
+                    {
+                        withIPs = (!withIPs);
+                        Console.WriteLine("withIPs : {0}", withIPs);
+                        from.SendGump(new RechercheListeGump(from, BuildListCharacters(withIPs), c_Accounts, m_Page, withIPs));
                         break;
                     }
             }
+        }
+
+        private void Results(string text)
+        {
+            ArrayList newList = new ArrayList();
+            m_Owner.SendMessage("Recherche en cours pour : " + text);
+
+            foreach (string item in c_Characters)
+            {
+                if (item.ToLower().Contains(text.ToLower()))
+                    newList.Add(item);
+            }
+
+            m_Owner.SendMessage("Résultat:");
+            for (int i = 0; i < newList.Count; i++)
+                m_Owner.SendMessage("Résultat: " + newList[i]);
         }
     }
 }
