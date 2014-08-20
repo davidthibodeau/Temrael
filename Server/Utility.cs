@@ -30,6 +30,7 @@ using System.Text;
 using System.Xml;
 using Microsoft.Win32;
 using Server.Network;
+using Server.Gumps;
 
 namespace Server
 {
