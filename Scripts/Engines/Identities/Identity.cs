@@ -46,7 +46,7 @@ namespace Server.Engines.Identities
 
         public bool Equals(Identity other)
         {
-            if (other == null)
+            if ((object)other == null)
                 return false;
 
             if (m_serial == other.m_serial && m_identity == other.m_identity)
@@ -58,7 +58,7 @@ namespace Server.Engines.Identities
         public override bool Equals(Object obj)
         {
             Identity idObj = obj as Identity;
-            if (idObj == null)
+            if (obj == null)
                 return false;
             else
                 return Equals(idObj);
@@ -71,7 +71,7 @@ namespace Server.Engines.Identities
 
         public static bool operator == (Identity id1, Identity id2)
         {
-            if (id1 == null || id2 == null)
+            if ((object)id1 == null || (object)id2 == null)
                 return Object.Equals(id1, id2);
 
             return id1.Equals(id2);
@@ -79,10 +79,7 @@ namespace Server.Engines.Identities
 
         public static bool operator != (Identity id1, Identity id2)
         {
-            if (id1 == null || id2 == null)
-                return !Object.Equals(id1, id2);
-
-            return !id1.Equals(id2);
+            return !(id1 == id2);
         }
     }
 }
