@@ -10,7 +10,7 @@ namespace Server.Items
 		private int m_StopSound;
 		private TimeSpan m_CloseDelay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxElevation
 		{
 			get{ return m_MaxElevation; }
@@ -25,13 +25,13 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MoveSound{ get{ return m_MoveSound; } set{ m_MoveSound = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int StopSound{ get{ return m_StopSound; } set{ m_StopSound = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan CloseDelay{ get{ return m_CloseDelay; } set{ m_CloseDelay = value; } }
 
 		[Constructable]

@@ -12,21 +12,21 @@ namespace Server.Items
 		private Poison m_Poison;
 		private int m_FillFactor;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Poisoner
 		{
 			get { return m_Poisoner; }
 			set { m_Poisoner = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Poison Poison
 		{
 			get { return m_Poison; }
 			set { m_Poison = value; }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int FillFactor
 		{
 			get { return m_FillFactor; }

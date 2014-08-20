@@ -11,7 +11,7 @@ namespace Server.Mobiles
 	{
 		private DateTime m_NextWoolTime;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextWoolTime
 		{
 			get{ return m_NextWoolTime; }

@@ -20,10 +20,10 @@ namespace Server.Commands
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Wipe", AccessLevel.GameMaster, new CommandEventHandler( WipeAll_OnCommand ) );
-			CommandSystem.Register( "WipeItems", AccessLevel.GameMaster, new CommandEventHandler( WipeItems_OnCommand ) );
-			CommandSystem.Register( "WipeNPCs", AccessLevel.GameMaster, new CommandEventHandler( WipeNPCs_OnCommand ) );
-			CommandSystem.Register( "WipeMultis", AccessLevel.GameMaster, new CommandEventHandler( WipeMultis_OnCommand ) );
+			CommandSystem.Register( "Wipe", AccessLevel.Batisseur, new CommandEventHandler( WipeAll_OnCommand ) );
+			CommandSystem.Register( "WipeItems", AccessLevel.Batisseur, new CommandEventHandler( WipeItems_OnCommand ) );
+			CommandSystem.Register( "WipeNPCs", AccessLevel.Batisseur, new CommandEventHandler( WipeNPCs_OnCommand ) );
+			CommandSystem.Register( "WipeMultis", AccessLevel.Batisseur, new CommandEventHandler( WipeMultis_OnCommand ) );
 		}
 
 		[Usage( "Wipe" )]

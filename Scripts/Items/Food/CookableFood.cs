@@ -9,7 +9,7 @@ namespace Server.Items
 	{
 		private int m_CookingLevel;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CookingLevel
 		{
 			get

@@ -425,7 +425,7 @@ namespace Server.Movement
 			{
 				int hold;
 
-				if ( m.Player && m.AccessLevel < AccessLevel.GameMaster ) {
+				if ( m.Player && m.AccessLevel < AccessLevel.Batisseur ) {
 					if ( !Check( map, m, itemsLeft, xLeft, yLeft, startTop, startZ, m.CanSwim, m.CantWalk, out hold ) || !Check( map, m, itemsRight, xRight, yRight, startTop, startZ, m.CanSwim, m.CantWalk, out hold ) )
 						moveIsOk = false;
 				} else {

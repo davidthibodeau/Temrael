@@ -24,7 +24,7 @@ namespace Server.Engines.MyRunUO
 			{
 				Timer.DelayCall( TimeSpan.FromSeconds( 10.0 ), Config.CharacterUpdateInterval, new TimerCallback( Begin ) );
 
-				CommandSystem.Register( "UpdateMyRunUO", AccessLevel.Administrator, new CommandEventHandler( UpdateMyRunUO_OnCommand ) );
+				CommandSystem.Register( "UpdateMyRunUO", AccessLevel.Coordinateur, new CommandEventHandler( UpdateMyRunUO_OnCommand ) );
 
 				CommandSystem.Register( "PublicChar", AccessLevel.Player, new CommandEventHandler( PublicChar_OnCommand ) );
 				CommandSystem.Register( "PrivateChar", AccessLevel.Player, new CommandEventHandler( PrivateChar_OnCommand ) );

@@ -24,7 +24,7 @@ namespace Server
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Path", AccessLevel.GameMaster, new CommandEventHandler( Path_OnCommand ) );
+			CommandSystem.Register( "Path", AccessLevel.Batisseur, new CommandEventHandler( Path_OnCommand ) );
 		}
 
 		public static void Path_OnCommand( CommandEventArgs e )

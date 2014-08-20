@@ -1020,7 +1020,7 @@ namespace Server.Mobiles
 			if ( validBuy.Count == 0 )
 				return false;
 
-			bought = ( buyer.AccessLevel >= AccessLevel.GameMaster );
+			bought = ( buyer.AccessLevel >= AccessLevel.Batisseur );
 
 			cont = buyer.Backpack;
 			if ( !bought && cont != null )
@@ -1126,7 +1126,7 @@ namespace Server.Mobiles
 
 			if ( fullPurchase )
 			{
-				if ( buyer.AccessLevel >= AccessLevel.GameMaster )
+				if ( buyer.AccessLevel >= AccessLevel.Batisseur )
                     SayTo(buyer, "Vous etes notre dieu vous n'avez pas a payer.");
 					//SayTo( buyer, true, "I would not presume to charge thee anything.  Here are the goods you requested." );
 				else if ( fromBank )
@@ -1138,7 +1138,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				if ( buyer.AccessLevel >= AccessLevel.GameMaster )
+				if ( buyer.AccessLevel >= AccessLevel.Batisseur )
                     SayTo(buyer, "Vous etes notre dieu vous n'avez pas a payer.");
 					//SayTo( buyer, true, "I would not presume to charge thee anything.  Unfortunately, I could not sell you all the goods you requested." );
 				else if ( fromBank )

@@ -73,7 +73,7 @@ namespace Server.Commands.Generic
 
 		public static bool IsAccessible( Mobile from, object obj )
 		{
-			if ( from.AccessLevel >= AccessLevel.Administrator || obj == null )
+			if ( from.AccessLevel >= AccessLevel.Coordinateur || obj == null )
 				return true;
 
 			Mobile mob;

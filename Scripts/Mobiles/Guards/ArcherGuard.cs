@@ -90,7 +90,7 @@ namespace Server.Mobiles
 			return base.OnBeforeDeath();
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override Mobile Focus
 		{
 			get

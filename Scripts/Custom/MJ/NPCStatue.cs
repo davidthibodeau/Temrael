@@ -17,14 +17,14 @@ namespace Server.Items
         private Mobile m_Store;
         private int m_activate;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Store
         {
             get { return m_Store; }
             set { m_Store = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int activate
         {
             get { return m_activate; }
@@ -106,7 +106,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from.AccessLevel < AccessLevel.GameMaster)
+            if (from.AccessLevel < AccessLevel.Batisseur)
             {
                 from.SendMessage("Vous ne pouvez utiliser cela. Veuillez contacter un maitre du jeu.");
                 Misc.AbuseLogging.WriteLine(from, 

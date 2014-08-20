@@ -25,7 +25,7 @@ namespace Server.Mobiles
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "TownCriers", AccessLevel.GameMaster, new CommandEventHandler( TownCriers_OnCommand ) );
+			CommandSystem.Register( "TownCriers", AccessLevel.Batisseur, new CommandEventHandler( TownCriers_OnCommand ) );
 		}
 
 		[Usage( "TownCriers" )]
@@ -440,7 +440,7 @@ namespace Server.Mobiles
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				from.SendGump( new TownCrierGump( from, this ) );
 			else
 				base.OnDoubleClick( from );

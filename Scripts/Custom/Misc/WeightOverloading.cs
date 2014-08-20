@@ -62,7 +62,7 @@ namespace Server.Misc
 		{
             Mobile from = e.Mobile;
 
-            if (!from.Player || !from.Alive || from.AccessLevel >= AccessLevel.GameMaster)
+            if (!from.Player || !from.Alive || from.AccessLevel >= AccessLevel.Batisseur)
                 return;
 
             int maxWeight = GetMaxWeight(from) + OverloadAllowance;

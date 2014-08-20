@@ -13,13 +13,13 @@ namespace Server.Engines.CannedEvil
 		private ChampionSkullType m_Type;
 		private Item m_Skull;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ChampionSkullPlatform Platform{ get{ return m_Platform; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ChampionSkullType Type{ get{ return m_Type; } set{ m_Type = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Item Skull{ get{ return m_Skull; } set{ m_Skull = value; if ( m_Platform != null ) m_Platform.Validate(); } }
 
 		public override int LabelNumber{ get{ return 1049489 + (int)m_Type; } }

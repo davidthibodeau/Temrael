@@ -16,7 +16,7 @@ namespace Server.Items
 
 		public override int LabelNumber{ get{ return 1062917; } } // The Tapestry of Sosaria
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }

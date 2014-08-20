@@ -35,14 +35,14 @@ namespace Server.Multis
 		private DateTime m_LastRefreshed;
 		private bool m_RestrictDecay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastRefreshed
 		{
 			get{ return m_LastRefreshed; }
 			set{ m_LastRefreshed = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool RestrictDecay
 		{
 			get{ return m_RestrictDecay; }
@@ -66,14 +66,14 @@ namespace Server.Multis
 				if ( acct == null )
 					return Core.AOS ? DecayType.Condemned : DecayType.ManualRefresh;
 
-				if ( acct.AccessLevel >= AccessLevel.GameMaster )
+				if ( acct.AccessLevel >= AccessLevel.Batisseur )
 					return DecayType.Ageless;
 
 				for ( int i = 0; i < acct.Length; ++i )
 				{
 					Mobile mob = acct[i];
 
-					if ( mob != null && mob.AccessLevel >= AccessLevel.GameMaster )
+					if ( mob != null && mob.AccessLevel >= AccessLevel.Batisseur )
 						return DecayType.Ageless;
 				}
 
@@ -128,7 +128,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual DecayLevel DecayLevel
 		{
 			get
@@ -209,7 +209,7 @@ namespace Server.Multis
 
 		public virtual TimeSpan RestrictedPlacingTime { get { return TimeSpan.FromHours( 1.0 ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual double BonusStorageScalar { get { return (Core.ML ? 1.2 : 1.0); } }
 
 		private bool m_Public;
@@ -914,7 +914,7 @@ namespace Server.Multis
 
 		public static bool CheckAccessible( Mobile m, Item item )
 		{
-			if ( m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m.AccessLevel >= AccessLevel.Batisseur )
 				return true; // Staff can access anything
 
 			BaseHouse house = FindHouseAt( item );
@@ -1000,7 +1000,7 @@ namespace Server.Multis
 
             if (!IsLockedDown(item))
                 return true;
-            else if (from.AccessLevel >= AccessLevel.GameMaster)
+            else if (from.AccessLevel >= AccessLevel.Batisseur)
                 return true;
             else if (item is Runebook)
                 return true;
@@ -1880,7 +1880,7 @@ namespace Server.Multis
 
 		public virtual bool IsCombatRestricted( Mobile m )
 		{
-			if ( m == null || !m.Player || m.AccessLevel >= AccessLevel.GameMaster || !IsAosRules || ( m_Owner != null && m_Owner.AccessLevel >= AccessLevel.GameMaster ))
+			if ( m == null || !m.Player || m.AccessLevel >= AccessLevel.Batisseur || !IsAosRules || ( m_Owner != null && m_Owner.AccessLevel >= AccessLevel.Batisseur ))
 				return false;
 
 			for ( int i = 0; i < m.Aggressed.Count; ++i )
@@ -1899,7 +1899,7 @@ namespace Server.Multis
 
 		public bool HasSecureAccess( Mobile m, SecureLevel level )
 		{
-			if ( m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( IsCombatRestricted( m ) )
@@ -2639,7 +2639,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get
@@ -2679,14 +2679,14 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Visits
 		{
 			get{ return m_Visits; }
 			set{ m_Visits = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Public
 		{
 			get
@@ -2708,7 +2708,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxSecures
 		{
 			get
@@ -2721,7 +2721,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D BanLocation
 		{
 			get
@@ -2734,7 +2734,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D RelativeBanLocation
 		{
 			get
@@ -2748,7 +2748,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxLockDowns
 		{
 			get
@@ -3117,7 +3117,7 @@ namespace Server.Multis
 			if ( m == null )
 				return false;
 
-			if ( m == m_Owner || m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m == m_Owner || m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			return IsAosRules && CheckAccount( m, m_Owner );
@@ -3200,7 +3200,7 @@ namespace Server.Multis
 
 		public virtual int DefaultPrice{ get{ return 0; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Price{ get{ return m_Price; } set{ m_Price = value; } }
 
 		public virtual HouseDeed GetDeed()

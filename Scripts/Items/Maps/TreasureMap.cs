@@ -19,22 +19,22 @@ namespace Server.Items
 		private Map m_Map;
 		private Point2D m_Location;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Level{ get{ return m_Level; } set{ m_Level = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Completed{ get{ return m_Completed; } set{ m_Completed = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile CompletedBy{ get{ return m_CompletedBy; } set{ m_CompletedBy = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Decoder{ get{ return m_Decoder; } set{ m_Decoder = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map ChestMap{ get{ return m_Map; } set{ m_Map = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point2D ChestLocation{ get{ return m_Location; } set{ m_Location = value; } }
 
 		private static Point2D[] m_Locations;
@@ -618,7 +618,7 @@ namespace Server.Items
 
 		private bool CheckYoung( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( from is PlayerMobile && ((PlayerMobile)from).Young )

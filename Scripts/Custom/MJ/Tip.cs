@@ -10,7 +10,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Tip", AccessLevel.GameMaster, new CommandEventHandler(Tip_OnCommand));
+            CommandSystem.Register("Tip", AccessLevel.Batisseur, new CommandEventHandler(Tip_OnCommand));
         }
 
         public static void Tip_OnCommand(CommandEventArgs e)

@@ -13,7 +13,7 @@ namespace Server.Mobiles
 
 		public virtual TimeSpan MountAbilityDelay { get { return TimeSpan.Zero; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextMountAbility
 		{
 			get { return m_NextMountAbility; }
@@ -49,7 +49,7 @@ namespace Server.Mobiles
 			writer.Write( m_InternalItem );
 		}
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get
@@ -167,7 +167,7 @@ namespace Server.Mobiles
 
 			if ( from.InRange( this, 1 ) )
 			{
-				bool canAccess = ( from.AccessLevel >= AccessLevel.GameMaster )
+				bool canAccess = ( from.AccessLevel >= AccessLevel.Batisseur )
 					|| ( Controlled && ControlMaster == from )
 					|| ( Summoned && SummonMaster == from );
 
@@ -198,7 +198,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ItemID
 		{
 			get
@@ -223,7 +223,7 @@ namespace Server.Mobiles
 				mount.Rider = null;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Rider
 		{
 			get

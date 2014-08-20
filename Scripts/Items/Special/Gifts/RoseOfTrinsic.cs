@@ -22,14 +22,14 @@ namespace Server.Items
 
 		public override int LabelNumber{ get{ return 1062913; } } // Rose of Trinsic
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }
 			set{ m_Level = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Petals
 		{
 			get{ return m_Petals; }

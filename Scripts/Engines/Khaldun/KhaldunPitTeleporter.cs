@@ -8,21 +8,21 @@ namespace Server.Items
 		private Point3D m_PointDest;
 		private Map m_MapDest;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get { return m_Active; }
 			set { m_Active = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D PointDest
 		{
 			get { return m_PointDest; }
 			set { m_PointDest = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map MapDest
 		{
 			get { return m_MapDest; }

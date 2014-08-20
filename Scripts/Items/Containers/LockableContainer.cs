@@ -13,7 +13,7 @@ namespace Server.Items
 		private Mobile m_Picker;
 		private bool m_TrapOnLockpick;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Picker
 		{
 			get
@@ -26,7 +26,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxLockLevel
 		{
 			get
@@ -39,7 +39,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int LockLevel
 		{
 			get
@@ -52,7 +52,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RequiredSkill
 		{
 			get
@@ -65,7 +65,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual bool Locked
 		{
 			get
@@ -83,7 +83,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public uint KeyValue
 		{
 			get
@@ -104,7 +104,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool TrapOnLockpick
 		{
 			get
@@ -222,7 +222,7 @@ namespace Server.Items
 
 		public override bool TryDropItem( Mobile from, Item dropped, bool sendFullMessage )
 		{
-			if ( from.AccessLevel < AccessLevel.GameMaster && m_Locked )
+			if ( from.AccessLevel < AccessLevel.Batisseur && m_Locked )
 			{
 				from.SendLocalizedMessage( 501747 ); // It appears to be locked.
 				return false;
@@ -233,7 +233,7 @@ namespace Server.Items
 
 		public override bool OnDragDropInto( Mobile from, Item item, Point3D p )
 		{
-			if ( from.AccessLevel < AccessLevel.GameMaster && m_Locked )
+			if ( from.AccessLevel < AccessLevel.Batisseur && m_Locked )
 			{
 				from.SendLocalizedMessage( 501747 ); // It appears to be locked.
 				return false;
@@ -247,7 +247,7 @@ namespace Server.Items
 			if ( !base.CheckLift( from, item, ref reject ) )
 				return false;
 
-			if ( item != this && from.AccessLevel < AccessLevel.GameMaster && m_Locked )
+			if ( item != this && from.AccessLevel < AccessLevel.Batisseur && m_Locked )
 				return false;
 
 			return true;
@@ -258,7 +258,7 @@ namespace Server.Items
 			if ( !base.CheckItemUse( from, item ) )
 				return false;
 
-			if ( item != this && from.AccessLevel < AccessLevel.GameMaster && m_Locked )
+			if ( item != this && from.AccessLevel < AccessLevel.Batisseur && m_Locked )
 			{
 				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
 				return false;
@@ -277,7 +277,7 @@ namespace Server.Items
 			{
 				int number;
 
-				if ( from.AccessLevel >= AccessLevel.GameMaster )
+				if ( from.AccessLevel >= AccessLevel.Batisseur )
 				{
 					number = 502502; // That is locked, but you open it with your godly powers.
 				}
@@ -401,7 +401,7 @@ namespace Server.Items
 
 		private bool m_IsShipwreckedItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
         public bool IsShipwreckedItem
 		{
 			get { return m_IsShipwreckedItem; }

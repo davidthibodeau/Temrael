@@ -75,13 +75,13 @@ namespace Server.Items
 		private int m_SpawnRange;
 		private TimeSpan m_NextSpawnDelay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextSpawn { get { return m_NextSpawn; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SpawnRange { get { return m_SpawnRange; } set { m_SpawnRange = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan NextSpawnDelay { get { return m_NextSpawnDelay; } set { m_NextSpawnDelay = value; } }
 
 		public override int LabelNumber { get { return 1023633; } } // Brazier

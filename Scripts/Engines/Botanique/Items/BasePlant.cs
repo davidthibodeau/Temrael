@@ -31,7 +31,7 @@ namespace Server.Items
         private DateTime m_NextSeed;
         private Timer m_TimerGrowth;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public StateOfGrowth StateOfGrowth
         {
             get { return m_StateOfGrowth; }
@@ -45,7 +45,7 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public StateOfHydration StateOfHydration
         {
             get
@@ -65,35 +65,35 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Insects Insects
         {
             get { return m_Insects; }
             set { m_Insects = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Disease Disease
         {
             get { return m_Disease; }
             set { m_Disease = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Fungi Champignons
         {
             get { return m_Fungi; }
             set { m_Fungi = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public PlantPoison Poison
         {
             get { return m_Poison; }
             set { m_Poison = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Hydration
         {
             get { return m_Hydration; }
@@ -109,7 +109,7 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Reagent
         {
             get { return m_Reagent; }
@@ -125,7 +125,7 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Seed
         {
             get { return m_Seed; }
@@ -141,28 +141,28 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public BaseBowl Bowl
         {
             get { return m_Bowl; }
             set { m_Bowl = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime NextGrowth
         {
             get { return m_NextGrowth; }
             set { m_NextGrowth = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime NextSeed
         {
             get { return m_NextSeed; }
             set { m_NextSeed = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Timer TimerGrowth
         {
             get { return m_TimerGrowth; }

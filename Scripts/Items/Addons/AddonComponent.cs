@@ -61,7 +61,7 @@ namespace Server.Items
 	{
 		private int m_LabelNumber;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Number
 		{
 			get{ return m_LabelNumber; }
@@ -111,7 +111,7 @@ namespace Server.Items
 		private Point3D m_Offset;
 		private BaseAddon m_Addon;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BaseAddon Addon
 		{
 			get
@@ -124,7 +124,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Offset
 		{
 			get
@@ -137,7 +137,7 @@ namespace Server.Items
 			}
 		}
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get

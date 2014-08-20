@@ -106,7 +106,7 @@ namespace Server.Misc
                 if (mobile is TMobile)
                 {
                     TMobile m = mobile as TMobile;
-                    if (m != null && m.AccessLevel >= AccessLevel.GameMaster && m.AccessLevel > from.AccessLevel)
+                    if (m != null && m.AccessLevel >= AccessLevel.Batisseur && m.AccessLevel > from.AccessLevel)
                     {
                         //m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, ((TMobile)from).PlayerName, String.Format("[Chuchotte]: {0}", texte)));
                         m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, from.GetNameUseBy(m), String.Format("[Chuchote]: {0}", texte)));

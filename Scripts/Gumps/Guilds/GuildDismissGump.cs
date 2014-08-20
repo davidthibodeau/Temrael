@@ -43,7 +43,7 @@ namespace Server.Gumps
 						{
 							m_Guild.RemoveMember( m );
 
-							if ( m_Mobile.AccessLevel >= AccessLevel.GameMaster || m_Mobile == m_Guild.Leader )
+							if ( m_Mobile.AccessLevel >= AccessLevel.Batisseur || m_Mobile == m_Guild.Leader )
 							{
 								GuildGump.EnsureClosed( m_Mobile );
 								m_Mobile.SendGump( new GuildmasterGump( m_Mobile, m_Guild ) );
@@ -52,7 +52,7 @@ namespace Server.Gumps
 					}
 				}
 			}
-			else if ( info.ButtonID == 2 && (m_Mobile.AccessLevel >= AccessLevel.GameMaster || m_Mobile == m_Guild.Leader) )
+			else if ( info.ButtonID == 2 && (m_Mobile.AccessLevel >= AccessLevel.Batisseur || m_Mobile == m_Guild.Leader) )
 			{
 				GuildGump.EnsureClosed( m_Mobile );
 				m_Mobile.SendGump( new GuildmasterGump( m_Mobile, m_Guild ) );

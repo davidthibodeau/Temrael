@@ -15,56 +15,56 @@ namespace Server.Items
 		private int m_SoundID;
 		private TimeSpan m_Delay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool SourceEffect
 		{
 			get{ return m_SourceEffect; }
 			set{ m_SourceEffect = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool DestEffect
 		{
 			get{ return m_DestEffect; }
 			set{ m_DestEffect = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SoundID
 		{
 			get{ return m_SoundID; }
 			set{ m_SoundID = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan Delay
 		{
 			get{ return m_Delay; }
 			set{ m_Delay = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get { return m_Active; }
 			set { m_Active = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D PointDest
 		{
 			get { return m_PointDest; }
 			set { m_PointDest = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map MapDest
 		{
 			get { return m_MapDest; }
 			set { m_MapDest = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Creatures
 		{
 			get { return m_Creatures; }
@@ -72,7 +72,7 @@ namespace Server.Items
 		}
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool CombatCheck
 		{
 			get { return m_CombatCheck; }
@@ -273,28 +273,28 @@ namespace Server.Items
 		private string m_MessageString;
 		private int m_MessageNumber;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SkillName Skill
 		{
 			get{ return m_Skill; }
 			set{ m_Skill = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double Required
 		{
 			get{ return m_Required; }
 			set{ m_Required = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string MessageString
 		{
 			get{ return m_MessageString; }
 			set{ m_MessageString = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MessageNumber
 		{
 			get{ return m_MessageNumber; }
@@ -405,21 +405,21 @@ namespace Server.Items
 		private int m_Keyword;
 		private int m_Range;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Substring
 		{
 			get{ return m_Substring; }
 			set{ m_Substring = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Keyword
 		{
 			get{ return m_Keyword; }
 			set{ m_Keyword = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Range
 		{
 			get{ return m_Range; }

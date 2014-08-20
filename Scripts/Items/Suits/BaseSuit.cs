@@ -7,7 +7,7 @@ namespace Server.Items
 	{
 		private AccessLevel m_AccessLevel;
 
-		[CommandProperty( AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Coordinateur )]
 		public AccessLevel AccessLevel{ get{ return m_AccessLevel; } set{ m_AccessLevel = value; } }
 
 		public BaseSuit( AccessLevel level, int hue, int itemID ) : base( itemID )

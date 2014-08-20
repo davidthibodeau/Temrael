@@ -34,14 +34,14 @@ namespace Server.Items
 			0xA, 0x24, 0x42, 0x56, 0x1A, 0x4C, 0x3C, 0x60, 0x2E, 0x55, 0x23, 0x38, 0x482, 0x6, 0x10
 		};
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int SoundID
 		{
 			get { return m_SoundID; }
 			set { m_SoundID = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public string Giver { get { return m_Maker; } set { m_Maker = value; } }
 
 		public override string DefaultName

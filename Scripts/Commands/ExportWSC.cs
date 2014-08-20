@@ -12,7 +12,7 @@ namespace Server.Commands
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "ExportWSC", AccessLevel.Administrator, new CommandEventHandler( Export_OnCommand ) );
+			CommandSystem.Register( "ExportWSC", AccessLevel.Coordinateur, new CommandEventHandler( Export_OnCommand ) );
 		}
 
 		public static void Export_OnCommand( CommandEventArgs e )

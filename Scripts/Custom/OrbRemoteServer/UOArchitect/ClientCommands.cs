@@ -12,8 +12,8 @@ namespace System.Scripts.Commands
 	{
 		public static void Initialize()
 		{
-            CommandSystem.Register("NudgeSelfDown", AccessLevel.GameMaster, new CommandEventHandler(NudgeSelfDown_OnCommand));
-            CommandSystem.Register("NudgeSelfUp", AccessLevel.GameMaster, new CommandEventHandler(NudgeSelfUp_OnCommand));
+            CommandSystem.Register("NudgeSelfDown", AccessLevel.Batisseur, new CommandEventHandler(NudgeSelfDown_OnCommand));
+            CommandSystem.Register("NudgeSelfUp", AccessLevel.Batisseur, new CommandEventHandler(NudgeSelfUp_OnCommand));
 		}
 
 		[Usage( "NudgeSelfDown <amount>")]
@@ -46,7 +46,7 @@ namespace System.Scripts.Commands
 
 		public static void Initialize()
 		{
-            CommandSystem.Register("MRemove", AccessLevel.GameMaster, new CommandEventHandler(MultiRemove_OnCommand));
+            CommandSystem.Register("MRemove", AccessLevel.Batisseur, new CommandEventHandler(MultiRemove_OnCommand));
 		}
 
 		[Usage( "MRemove")]

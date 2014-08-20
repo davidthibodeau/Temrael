@@ -388,7 +388,7 @@ namespace Server.Scripts.Commands
 
         public static void Initialize()
         {
-            CommandSystem.Register("GeneratePlantSpawner", AccessLevel.Administrator, new CommandEventHandler(GeneratePlantSpawner_OnCommand));
+            CommandSystem.Register("GeneratePlantSpawner", AccessLevel.Coordinateur, new CommandEventHandler(GeneratePlantSpawner_OnCommand));
         }
 
         public static void GeneratePlantSpawner_OnCommand(CommandEventArgs e)

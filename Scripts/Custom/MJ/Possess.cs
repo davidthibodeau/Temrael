@@ -55,12 +55,12 @@ namespace Server
 
         public static void Initialize()
         {
-            CommandSystem.Register("Possess", AccessLevel.GameMaster, new CommandEventHandler(Possess_OnCommand));
-            CommandSystem.Register("Unpossess", AccessLevel.GameMaster, new CommandEventHandler(UnPossess_OnCommand));
+            CommandSystem.Register("Possess", AccessLevel.Batisseur, new CommandEventHandler(Possess_OnCommand));
+            CommandSystem.Register("Unpossess", AccessLevel.Batisseur, new CommandEventHandler(UnPossess_OnCommand));
 
-            CommandSystem.Register("CopyGm", AccessLevel.GameMaster, new CommandEventHandler(CopyGm_OnCommand));
-            CommandSystem.Register("CloneNPC", AccessLevel.GameMaster, new CommandEventHandler(CloneNPC_OnCommand));
-            CommandSystem.Register("CopyNPC", AccessLevel.GameMaster, new CommandEventHandler(CopyNPC_OnCommand));
+            CommandSystem.Register("CopyGm", AccessLevel.Batisseur, new CommandEventHandler(CopyGm_OnCommand));
+            CommandSystem.Register("CloneNPC", AccessLevel.Batisseur, new CommandEventHandler(CloneNPC_OnCommand));
+            CommandSystem.Register("CopyNPC", AccessLevel.Batisseur, new CommandEventHandler(CopyNPC_OnCommand));
         }
 
         public static bool ToChange(string prop)

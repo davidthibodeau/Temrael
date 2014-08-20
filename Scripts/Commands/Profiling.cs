@@ -12,13 +12,13 @@ namespace Server.Commands
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "DumpTimers", AccessLevel.Administrator, new CommandEventHandler( DumpTimers_OnCommand ) );
-			CommandSystem.Register( "CountObjects", AccessLevel.Administrator, new CommandEventHandler( CountObjects_OnCommand ) );
-			CommandSystem.Register( "ProfileWorld", AccessLevel.Administrator, new CommandEventHandler( ProfileWorld_OnCommand ) );
-			CommandSystem.Register( "TraceInternal", AccessLevel.Administrator, new CommandEventHandler( TraceInternal_OnCommand ) );
-			CommandSystem.Register( "TraceExpanded", AccessLevel.Administrator, new CommandEventHandler( TraceExpanded_OnCommand ) );
-			CommandSystem.Register( "WriteProfiles", AccessLevel.Administrator, new CommandEventHandler( WriteProfiles_OnCommand ) );
-			CommandSystem.Register( "SetProfiles", AccessLevel.Administrator, new CommandEventHandler( SetProfiles_OnCommand ) );
+			CommandSystem.Register( "DumpTimers", AccessLevel.Coordinateur, new CommandEventHandler( DumpTimers_OnCommand ) );
+			CommandSystem.Register( "CountObjects", AccessLevel.Coordinateur, new CommandEventHandler( CountObjects_OnCommand ) );
+			CommandSystem.Register( "ProfileWorld", AccessLevel.Coordinateur, new CommandEventHandler( ProfileWorld_OnCommand ) );
+			CommandSystem.Register( "TraceInternal", AccessLevel.Coordinateur, new CommandEventHandler( TraceInternal_OnCommand ) );
+			CommandSystem.Register( "TraceExpanded", AccessLevel.Coordinateur, new CommandEventHandler( TraceExpanded_OnCommand ) );
+			CommandSystem.Register( "WriteProfiles", AccessLevel.Coordinateur, new CommandEventHandler( WriteProfiles_OnCommand ) );
+			CommandSystem.Register( "SetProfiles", AccessLevel.Coordinateur, new CommandEventHandler( SetProfiles_OnCommand ) );
 		}
 
 		[Usage( "WriteProfiles" )]

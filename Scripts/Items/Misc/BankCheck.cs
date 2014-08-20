@@ -14,7 +14,7 @@ namespace Server.Items
 	{
 		private int m_Worth;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Worth
 		{
 			get{ return m_Worth; }

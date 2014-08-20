@@ -318,7 +318,7 @@ namespace Server.Mobiles
 	{
 		private bool m_Corrosive;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public bool Corrosive
 		{
 			get { return m_Corrosive; }

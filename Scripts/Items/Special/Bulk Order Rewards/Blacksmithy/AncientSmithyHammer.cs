@@ -10,7 +10,7 @@ namespace Server.Items
 		private int m_Bonus;
 		private SkillMod m_SkillMod;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Bonus
 		{
 			get

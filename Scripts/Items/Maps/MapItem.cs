@@ -22,28 +22,28 @@ namespace Server.Items
 
 		private const int MaxUserPins = 50;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Protected
 		{
 			get { return m_Protected; }
 			set { m_Protected = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Rectangle2D Bounds
 		{
 			get { return m_Bounds; }
 			set { m_Bounds = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Width
 		{
 			get { return m_Width; }
 			set { m_Width = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Height
 		{
 			get { return m_Height; }
@@ -188,7 +188,7 @@ namespace Server.Items
 		{
 			if ( !from.CanSee( this ) || from.Map != this.Map || !from.Alive || InSecureTrade )
 				return false;
-			else if ( from.AccessLevel >= AccessLevel.GameMaster )
+			else if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 			else if ( !Movable || m_Protected || !from.InRange( GetWorldLocation(), 2 ) )
 				return false;

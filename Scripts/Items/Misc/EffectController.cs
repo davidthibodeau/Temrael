@@ -55,90 +55,90 @@ namespace Server.Items
 
 		private int m_TriggerRange;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ECEffectType EffectType{ get{ return m_EffectType; } set{ m_EffectType = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public EffectTriggerType TriggerType{ get{ return m_TriggerType; } set{ m_TriggerType = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public EffectLayer EffectLayer{ get{ return m_EffectLayer; } set{ m_EffectLayer = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan EffectDelay{ get{ return m_EffectDelay; } set{ m_EffectDelay = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan TriggerDelay{ get{ return m_TriggerDelay; } set{ m_TriggerDelay = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan SoundDelay{ get{ return m_SoundDelay; } set{ m_SoundDelay = value; } }
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Item SourceItem{ get{ return m_Source as Item; } set{ m_Source = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile SourceMobile{ get{ return m_Source as Mobile; } set{ m_Source = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool SourceNull{ get{ return ( m_Source == null ); } set{ if ( value ) m_Source = null; } }
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Item TargetItem{ get{ return m_Target as Item; } set{ m_Target = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile TargetMobile{ get{ return m_Target as Mobile; } set{ m_Target = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool TargetNull{ get{ return ( m_Target == null ); } set{ if ( value ) m_Target = null; } }
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public EffectController Sequence{ get{ return m_Trigger; } set{ m_Trigger = value; } }
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		private bool FixedDirection{ get{ return m_FixedDirection; } set{ m_FixedDirection = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		private bool Explodes{ get{ return m_Explodes; } set{ m_Explodes = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		private bool PlaySoundAtTrigger{ get{ return m_PlaySoundAtTrigger; } set{ m_PlaySoundAtTrigger = value; } }
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int EffectItemID{ get{ return m_ItemID; } set{ m_ItemID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int EffectHue{ get{ return m_Hue; } set{ m_Hue = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RenderMode{ get{ return m_RenderMode; } set{ m_RenderMode = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Speed{ get{ return m_Speed; } set{ m_Speed = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Duration{ get{ return m_Duration; } set{ m_Duration = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ParticleEffect{ get{ return m_ParticleEffect; } set{ m_ParticleEffect = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ExplodeParticleEffect{ get{ return m_ExplodeParticleEffect; } set{ m_ExplodeParticleEffect = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ExplodeSound{ get{ return m_ExplodeSound; } set{ m_ExplodeSound = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Unknown{ get{ return m_Unknown; } set{ m_Unknown = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SoundID{ get{ return m_SoundID; } set{ m_SoundID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TriggerRange{ get{ return m_TriggerRange; } set{ m_TriggerRange = value; } }
 
 		public override string DefaultName

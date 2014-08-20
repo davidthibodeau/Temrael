@@ -99,34 +99,34 @@ namespace Server.Items
 		//wtry is the "wake try" counter. After two attempts to wake someone else up, you get zapped
 		private int wtry;
 	
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Bed
 		{
 			get{ return m_Location; }
 			set{ m_Location = value; }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Debug
 		{
 			get{ return m_Debug; }
 			set{ m_Debug = value; }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get{ return m_Active; }
 			set{ m_Active = value; InvalidateProperties(); }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Asleep
 		{
 			get{ return m_Sleeping; }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Mobile
 		{
 			get{ return m_Player; }
@@ -145,7 +145,7 @@ namespace Server.Items
 		
 		public SleeperBedBody SleeperBedBody { get { return m_SleeperBedBody; } }		
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SleeperBaseAddon Sleeper
 		{
 			get{ return m_Sleeper; }

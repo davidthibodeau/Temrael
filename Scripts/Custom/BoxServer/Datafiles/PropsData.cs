@@ -55,7 +55,7 @@ namespace TheBox.Data
 		/// </summary>
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenPropsData", AccessLevel.Administrator, new CommandEventHandler( OnPropsData ) );
+			CommandSystem.Register( "GenPropsData", AccessLevel.Coordinateur, new CommandEventHandler( OnPropsData ) );
 		}
 
 		/// <summary>
@@ -379,7 +379,7 @@ namespace TheBox.Data
 
 				if ( prop.SetAccess.ToString() == "5" ) // Weird access level on Account property
 				{
-					prop.SetAccess = AccessLevel.Administrator;
+					prop.SetAccess = AccessLevel.Coordinateur;
 					prop.CanSet = false;
 				}
 

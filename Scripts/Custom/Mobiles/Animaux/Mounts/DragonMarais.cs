@@ -13,28 +13,28 @@ namespace Server.Mobiles
 		private bool m_HasBarding;
 		private CraftResource m_BardingResource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile BardingCrafter
 		{
 			get{ return m_BardingCrafter; }
 			set{ m_BardingCrafter = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool BardingExceptional
 		{
 			get{ return m_BardingExceptional; }
 			set{ m_BardingExceptional = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int BardingHP
 		{
 			get{ return m_BardingHP; }
 			set{ m_BardingHP = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool HasBarding
 		{
 			get{ return m_HasBarding; }
@@ -59,7 +59,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource BardingResource
 		{
 			get{ return m_BardingResource; }
@@ -74,7 +74,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int BardingMaxHP
 		{
 			get{ return m_BardingExceptional ? 2500 : 1000; }

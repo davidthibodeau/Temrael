@@ -19,14 +19,14 @@ namespace Server.Items
 		private Map m_TargetMap;
 		private int m_Level;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map TargetMap
 		{
 			get{ return m_TargetMap; }
 			set{ m_TargetMap = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Level
 		{
 			get{ return m_Level; }

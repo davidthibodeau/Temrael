@@ -17,7 +17,7 @@ namespace Server.Factions
 
 		public override bool BardImmune{ get{ return true; } }
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public Faction Faction
 		{
 			get{ return m_Faction; }
@@ -29,7 +29,7 @@ namespace Server.Factions
 			get{ return m_Orders; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public Town Town
 		{
 			get{ return m_Town; }

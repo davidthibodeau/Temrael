@@ -34,28 +34,28 @@ namespace Server.Misc
 			set{ m_Addresses = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public string Title
 		{
 			get{ return m_Title; }
 			set{ m_Title = ShardPollPrompt.UrlToHref( value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public TimeSpan Duration
 		{
 			get{ return m_Duration; }
 			set{ m_Duration = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public DateTime StartTime
 		{
 			get{ return m_StartTime; }
 			set{ m_StartTime = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public TimeSpan TimeRemaining
 		{
 			get
@@ -79,7 +79,7 @@ namespace Server.Misc
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public bool Active
 		{
 			get{ return m_Active; }
@@ -151,7 +151,7 @@ namespace Server.Misc
 			get { return "shard poller"; }
 		}
 
-		[Constructable( AccessLevel.Administrator )]
+		[Constructable( AccessLevel.Coordinateur )]
 		public ShardPoller() : base( 0x1047 )
 		{
 			m_Duration = TimeSpan.FromHours( 24.0 );
@@ -226,7 +226,7 @@ namespace Server.Misc
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.Administrator )
+			if ( from.AccessLevel >= AccessLevel.Coordinateur )
 				from.SendGump( new ShardPollGump( from, this, true, null ) );
 		}
 

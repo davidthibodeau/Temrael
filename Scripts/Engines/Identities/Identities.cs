@@ -33,28 +33,28 @@ namespace Server.Engines.Identities
         private bool m_DisguiseHidden = false;
         private bool m_RevealIdentity = true;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool RevealIdentity
         {
             get { return m_RevealIdentity; }
             set { m_RevealIdentity = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int CurrentIdentity
         {
             get { return m_currentIdentity; }
             set { m_currentIdentity = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Disguised
         {
             get { return m_Disguised; }
             set { m_Disguised = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool DisguiseHidden
         {
             get { return m_DisguiseHidden; }

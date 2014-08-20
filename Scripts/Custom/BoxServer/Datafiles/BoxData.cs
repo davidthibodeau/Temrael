@@ -23,7 +23,7 @@ namespace TheBox.Data
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenBoxData", AccessLevel.Administrator, new CommandEventHandler( GenBoxData_OnCommand ) );
+			CommandSystem.Register( "GenBoxData", AccessLevel.Coordinateur, new CommandEventHandler( GenBoxData_OnCommand ) );
 		}
 
 		private static void GenBoxData_OnCommand( CommandEventArgs e )

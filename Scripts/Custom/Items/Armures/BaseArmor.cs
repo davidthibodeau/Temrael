@@ -451,14 +451,14 @@ namespace Server.Items
         private RareteItem m_rarete;
         private TemraelAttributes m_TemraelAttributes;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TemraelAttributes TemAttributes
         {
             get { return m_TemraelAttributes; }
             set { }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public RareteItem Rarete
         {
             get { return m_rarete; }
@@ -477,14 +477,14 @@ namespace Server.Items
             armor.m_AosSkillBonuses = new AosSkillBonuses(newItem, m_AosSkillBonuses);
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public AMA MeditationAllowance
         {
             get { return (m_Meditate == (AMA)(-1) ? Core.AOS ? AosMedAllowance : OldMedAllowance : m_Meditate); }
             set { m_Meditate = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BaseArmorRating
         {
             get
@@ -573,63 +573,63 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int StrBonus
         {
             get { return (m_StrBonus == -1 ? Core.AOS ? AosStrBonus : OldStrBonus : m_StrBonus); }
             set { m_StrBonus = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int DexBonus
         {
             get { return (m_DexBonus == -1 ? Core.AOS ? AosDexBonus : OldDexBonus : m_DexBonus); }
             set { m_DexBonus = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int IntBonus
         {
             get { return (m_IntBonus == -1 ? Core.AOS ? AosIntBonus : OldIntBonus : m_IntBonus); }
             set { m_IntBonus = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int StrRequirement
         {
             get { return (m_StrReq == -1 ? Core.AOS ? AosStrReq : OldStrReq : m_StrReq); }
             set { m_StrReq = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int DexRequirement
         {
             get { return (m_DexReq == -1 ? Core.AOS ? AosDexReq : OldDexReq : m_DexReq); }
             set { m_DexReq = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int IntRequirement
         {
             get { return (m_IntReq == -1 ? Core.AOS ? AosIntReq : OldIntReq : m_IntReq); }
             set { m_IntReq = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Identified
         {
             get { return m_Identified; }
             set { m_Identified = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool PlayerConstructed
         {
             get { return m_PlayerConstructed; }
             set { m_PlayerConstructed = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public CraftResource Resource
         {
             get
@@ -673,14 +673,14 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int MaxHitPoints
         {
             get { return m_MaxHitPoints; }
             set { m_MaxHitPoints = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitPoints
         {
             get
@@ -704,28 +704,28 @@ namespace Server.Items
         }
 
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Crafter
         {
             get { return m_Crafter; }
             set { m_Crafter = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string CrafterName
         {
             get { return m_CrafterName; }
             set { m_CrafterName = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public ArmorQuality Quality
         {
             get { return m_Quality; }
             set { UnscaleDurability(); m_Quality = value; Invalidate(); InvalidateProperties(); ScaleDurability(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public ArmorDurabilityLevel Durability
         {
             get { return m_Durability; }
@@ -737,7 +737,7 @@ namespace Server.Items
             get { return 0; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public ArmorProtectionLevel ProtectionLevel
         {
             get
@@ -759,21 +759,21 @@ namespace Server.Items
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public AosAttributes Attributes
         {
             get { return m_AosAttributes; }
             set { }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public AosArmorAttributes ArmorAttributes
         {
             get { return m_AosArmorAttributes; }
             set { }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public AosSkillBonuses SkillBonuses
         {
             get { return m_AosSkillBonuses; }
@@ -804,19 +804,19 @@ namespace Server.Items
                 return IntBonus + Attributes.BonusInt;
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int PhysicalBonus { get { return m_PhysicalBonus; } set { m_PhysicalBonus = value; InvalidateProperties(); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ContondantBonus { get { return m_ContondantBonus; } set { m_ContondantBonus = value; InvalidateProperties(); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int TranchantBonus { get { return m_TranchantBonus; } set { m_TranchantBonus = value; InvalidateProperties(); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int PerforantBonus { get { return m_PerforantBonus; } set { m_PerforantBonus = value; InvalidateProperties(); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int MagieBonus { get { return m_MagieBonus; } set { m_MagieBonus = value; InvalidateProperties(); } }
 
         public virtual int BasePhysicalResistance { get { return 0; } }
@@ -834,7 +834,7 @@ namespace Server.Items
         public virtual int InitMinHits { get { return 0; } }
         public virtual int InitMaxHits { get { return 0; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public ArmorBodyType BodyPosition
         {
             get
@@ -1022,7 +1022,7 @@ namespace Server.Items
 
                         m.AddToBackpack(armor);
                     }
-                    else if (!armor.AllowMaleWearer && !m.Female && m.AccessLevel < AccessLevel.GameMaster)
+                    else if (!armor.AllowMaleWearer && !m.Female && m.AccessLevel < AccessLevel.Batisseur)
                     {
                         if (armor.AllowFemaleWearer)
                             m.SendLocalizedMessage(1010388); // Only females can wear this.
@@ -1031,7 +1031,7 @@ namespace Server.Items
 
                         m.AddToBackpack(armor);
                     }
-                    else if (!armor.AllowFemaleWearer && m.Female && m.AccessLevel < AccessLevel.GameMaster)
+                    else if (!armor.AllowFemaleWearer && m.Female && m.AccessLevel < AccessLevel.Batisseur)
                     {
                         if (armor.AllowMaleWearer)
                             m.SendLocalizedMessage(1063343); // Only males can wear this.
@@ -1603,7 +1603,7 @@ namespace Server.Items
             if (!Ethics.Ethic.CheckEquip(from, this))
                 return false;
 
-            if (from.AccessLevel < AccessLevel.GameMaster)
+            if (from.AccessLevel < AccessLevel.Batisseur)
             {
                 if (RequiredRace != null && from.Race != RequiredRace)
                 {
@@ -1800,7 +1800,7 @@ namespace Server.Items
             return name;
         }
 
-        [Hue, CommandProperty(AccessLevel.GameMaster)]
+        [Hue, CommandProperty(AccessLevel.Batisseur)]
         public override int Hue
         {
             get { return base.Hue; }
@@ -2092,7 +2092,7 @@ namespace Server.Items
             if (m_Quality == ArmorQuality.Exceptional)
                 attrs.Add(new EquipInfoAttribute(1018305 - (int)m_Quality));
 
-            if (m_Identified || from.AccessLevel >= AccessLevel.GameMaster)
+            if (m_Identified || from.AccessLevel >= AccessLevel.Batisseur)
             {
                 if (m_Durability != ArmorDurabilityLevel.Regular)
                     attrs.Add(new EquipInfoAttribute(1038000 + (int)m_Durability));

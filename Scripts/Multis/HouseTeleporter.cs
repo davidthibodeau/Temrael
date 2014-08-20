@@ -14,14 +14,14 @@ namespace Server.Items
 		private Item m_Target;
 		private SecureLevel m_Level;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Item Target
 		{
 			get{ return m_Target; }
 			set{ m_Target = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }

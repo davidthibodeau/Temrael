@@ -92,7 +92,7 @@ namespace Server.Engines.Doom
 		private LeverPuzzleController Controller;
 		public Mobile m_Occupant;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Occupant
 		{
 			get

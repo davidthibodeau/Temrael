@@ -113,7 +113,7 @@ namespace Server.Mobiles
             base.OnDeath(c);
         }
 
-        [CommandProperty(AccessLevel.Administrator)]
+        [CommandProperty(AccessLevel.Coordinateur)]
         public ArmyController Army
         {
             get
@@ -131,7 +131,7 @@ namespace Server.Mobiles
             }
         }
 
-        [CommandProperty(AccessLevel.Administrator)]
+        [CommandProperty(AccessLevel.Coordinateur)]
         public bool IsInArmy
         {
             get
@@ -149,7 +149,7 @@ namespace Server.Mobiles
             }
         }
 
-        [CommandProperty(AccessLevel.Administrator)]
+        [CommandProperty(AccessLevel.Coordinateur)]
         public bool IsHired
         {
             get

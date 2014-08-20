@@ -407,73 +407,73 @@ namespace Server
             from.CheckStatTimers();
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int RegenHits { get { return this[AosAttribute.RegenHits]; } set { this[AosAttribute.RegenHits] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int RegenStam { get { return this[AosAttribute.RegenStam]; } set { this[AosAttribute.RegenStam] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int RegenMana { get { return this[AosAttribute.RegenMana]; } set { this[AosAttribute.RegenMana] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int DefendChance { get { return this[AosAttribute.DefendChance]; } set { this[AosAttribute.DefendChance] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int AttackChance { get { return this[AosAttribute.AttackChance]; } set { this[AosAttribute.AttackChance] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BonusStr { get { return this[AosAttribute.BonusStr]; } set { this[AosAttribute.BonusStr] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BonusDex { get { return this[AosAttribute.BonusDex]; } set { this[AosAttribute.BonusDex] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BonusInt { get { return this[AosAttribute.BonusInt]; } set { this[AosAttribute.BonusInt] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BonusHits { get { return this[AosAttribute.BonusHits]; } set { this[AosAttribute.BonusHits] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BonusStam { get { return this[AosAttribute.BonusStam]; } set { this[AosAttribute.BonusStam] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BonusMana { get { return this[AosAttribute.BonusMana]; } set { this[AosAttribute.BonusMana] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int WeaponDamage { get { return this[AosAttribute.WeaponDamage]; } set { this[AosAttribute.WeaponDamage] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int WeaponSpeed { get { return this[AosAttribute.WeaponSpeed]; } set { this[AosAttribute.WeaponSpeed] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int SpellDamage { get { return this[AosAttribute.SpellDamage]; } set { this[AosAttribute.SpellDamage] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int CastRecovery { get { return this[AosAttribute.CastRecovery]; } set { this[AosAttribute.CastRecovery] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int CastSpeed { get { return this[AosAttribute.CastSpeed]; } set { this[AosAttribute.CastSpeed] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int LowerManaCost { get { return this[AosAttribute.LowerManaCost]; } set { this[AosAttribute.LowerManaCost] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int LowerRegCost { get { return this[AosAttribute.LowerRegCost]; } set { this[AosAttribute.LowerRegCost] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ReflectPhysical { get { return this[AosAttribute.ReflectPhysical]; } set { this[AosAttribute.ReflectPhysical] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int EnhancePotions { get { return this[AosAttribute.EnhancePotions]; } set { this[AosAttribute.EnhancePotions] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Luck { get { return this[AosAttribute.Luck]; } set { this[AosAttribute.Luck] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int SpellChanneling { get { return this[AosAttribute.SpellChanneling]; } set { this[AosAttribute.SpellChanneling] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int NightSight { get { return this[AosAttribute.NightSight]; } set { this[AosAttribute.NightSight] = value; } }
     }
 
@@ -559,79 +559,79 @@ namespace Server
             return "...";
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int LowerStatReq { get { return this[AosWeaponAttribute.LowerStatReq]; } set { this[AosWeaponAttribute.LowerStatReq] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int SelfRepair { get { return this[AosWeaponAttribute.SelfRepair]; } set { this[AosWeaponAttribute.SelfRepair] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitLeechHits { get { return this[AosWeaponAttribute.HitLeechHits]; } set { this[AosWeaponAttribute.HitLeechHits] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitLeechStam { get { return this[AosWeaponAttribute.HitLeechStam]; } set { this[AosWeaponAttribute.HitLeechStam] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitLeechMana { get { return this[AosWeaponAttribute.HitLeechMana]; } set { this[AosWeaponAttribute.HitLeechMana] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitLowerAttack { get { return this[AosWeaponAttribute.HitLowerAttack]; } set { this[AosWeaponAttribute.HitLowerAttack] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitLowerDefend { get { return this[AosWeaponAttribute.HitLowerDefend]; } set { this[AosWeaponAttribute.HitLowerDefend] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitMagicArrow { get { return this[AosWeaponAttribute.HitMagicArrow]; } set { this[AosWeaponAttribute.HitMagicArrow] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitHarm { get { return this[AosWeaponAttribute.HitHarm]; } set { this[AosWeaponAttribute.HitHarm] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitFireball { get { return this[AosWeaponAttribute.HitFireball]; } set { this[AosWeaponAttribute.HitFireball] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitLightning { get { return this[AosWeaponAttribute.HitLightning]; } set { this[AosWeaponAttribute.HitLightning] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitDispel { get { return this[AosWeaponAttribute.HitDispel]; } set { this[AosWeaponAttribute.HitDispel] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitTranchantArea { get { return this[AosWeaponAttribute.HitTranchantArea]; } set { this[AosWeaponAttribute.HitTranchantArea] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitContondantArea { get { return this[AosWeaponAttribute.HitContondantArea]; } set { this[AosWeaponAttribute.HitContondantArea] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitPerforantArea { get { return this[AosWeaponAttribute.HitPerforantArea]; } set { this[AosWeaponAttribute.HitPerforantArea] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitMagieArea { get { return this[AosWeaponAttribute.HitMagieArea]; } set { this[AosWeaponAttribute.HitMagieArea] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HitPhysicalArea { get { return this[AosWeaponAttribute.HitPhysicalArea]; } set { this[AosWeaponAttribute.HitPhysicalArea] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ResistPhysicalBonus { get { return this[AosWeaponAttribute.ResistPhysicalBonus]; } set { this[AosWeaponAttribute.ResistPhysicalBonus] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ResistContondantBonus { get { return this[AosWeaponAttribute.ResistContondantBonus]; } set { this[AosWeaponAttribute.ResistContondantBonus] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ResistTranchantBonus { get { return this[AosWeaponAttribute.ResistTranchantBonus]; } set { this[AosWeaponAttribute.ResistTranchantBonus] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ResistPerforantBonus { get { return this[AosWeaponAttribute.ResistPerforantBonus]; } set { this[AosWeaponAttribute.ResistPerforantBonus] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ResistMagieBonus { get { return this[AosWeaponAttribute.ResistMagieBonus]; } set { this[AosWeaponAttribute.ResistMagieBonus] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int UseBestSkill { get { return this[AosWeaponAttribute.UseBestSkill]; } set { this[AosWeaponAttribute.UseBestSkill] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int MageWeapon { get { return this[AosWeaponAttribute.MageWeapon]; } set { this[AosWeaponAttribute.MageWeapon] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int DurabilityBonus { get { return this[AosWeaponAttribute.DurabilityBonus]; } set { this[AosWeaponAttribute.DurabilityBonus] = value; } }
     }
 
@@ -703,16 +703,16 @@ namespace Server
             return "...";
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int LowerStatReq { get { return this[AosArmorAttribute.LowerStatReq]; } set { this[AosArmorAttribute.LowerStatReq] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int SelfRepair { get { return this[AosArmorAttribute.SelfRepair]; } set { this[AosArmorAttribute.SelfRepair] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int MageArmor { get { return this[AosArmorAttribute.MageArmor]; } set { this[AosArmorAttribute.MageArmor] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int DurabilityBonus { get { return this[AosArmorAttribute.DurabilityBonus]; } set { this[AosArmorAttribute.DurabilityBonus] = value; } }
     }
 
@@ -810,10 +810,10 @@ namespace Server
             return "...";
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int CharismaBonus { get { return this[TemraelAttribute.CharismaBonus]; } set { this[TemraelAttribute.CharismaBonus] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ConstitutionBonus { get { return this[TemraelAttribute.ConstitutionBonus]; } set { this[TemraelAttribute.ConstitutionBonus] = value; } }
     }
 
@@ -1030,34 +1030,34 @@ namespace Server
         }
 
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public double Skill_1_Value { get { return GetBonus(0); } set { SetBonus(0, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public SkillName Skill_1_Name { get { return GetSkill(0); } set { SetSkill(0, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public double Skill_2_Value { get { return GetBonus(1); } set { SetBonus(1, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public SkillName Skill_2_Name { get { return GetSkill(1); } set { SetSkill(1, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public double Skill_3_Value { get { return GetBonus(2); } set { SetBonus(2, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public SkillName Skill_3_Name { get { return GetSkill(2); } set { SetSkill(2, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public double Skill_4_Value { get { return GetBonus(3); } set { SetBonus(3, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public SkillName Skill_4_Name { get { return GetSkill(3); } set { SetSkill(3, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public double Skill_5_Value { get { return GetBonus(4); } set { SetBonus(4, value); } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public SkillName Skill_5_Name { get { return GetSkill(4); } set { SetSkill(4, value); } }
     }
 
@@ -1101,25 +1101,25 @@ namespace Server
             return "...";
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Physical { get { return this[AosElementAttribute.Physical]; } set { this[AosElementAttribute.Physical] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Contondant { get { return this[AosElementAttribute.Contondant]; } set { this[AosElementAttribute.Contondant] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Tranchant { get { return this[AosElementAttribute.Tranchant]; } set { this[AosElementAttribute.Tranchant] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Perforant { get { return this[AosElementAttribute.Perforant]; } set { this[AosElementAttribute.Perforant] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Magie { get { return this[AosElementAttribute.Magie]; } set { this[AosElementAttribute.Magie] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Chaos { get { return this[AosElementAttribute.Chaos]; } set { this[AosElementAttribute.Chaos] = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Direct { get { return this[AosElementAttribute.Direct]; } set { this[AosElementAttribute.Direct] = value; } }
     }
 

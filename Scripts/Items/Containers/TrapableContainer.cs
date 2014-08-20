@@ -17,7 +17,7 @@ namespace Server.Items
 		private int m_TrapPower;
 		private int m_TrapLevel;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TrapType TrapType
 		{
 			get
@@ -30,7 +30,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TrapPower
 		{
 			get
@@ -43,7 +43,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TrapLevel
 		{
 			get
@@ -89,7 +89,7 @@ namespace Server.Items
 				Point3D loc = this.GetWorldLocation();
 				Map facet = this.Map;
 
-				if ( from.AccessLevel >= AccessLevel.GameMaster )
+				if ( from.AccessLevel >= AccessLevel.Batisseur )
 				{
 					SendMessageTo( from, "That is trapped, but you open it with your godly powers.", 0x3B2 );
 					return false;

@@ -10,21 +10,21 @@ namespace Server.Items
 		private string m_Word;
 		private Rectangle2D m_Destination;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get{ return m_Active; }
 			set{ m_Active = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Word
 		{
 			get{ return m_Word; }
 			set{ m_Word = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Rectangle2D Destination
 		{
 			get{ return m_Destination; }

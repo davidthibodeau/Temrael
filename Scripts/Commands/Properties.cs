@@ -503,9 +503,9 @@ namespace Server.Commands
 				if ( toSet is AccessLevel )
 				{
 					AccessLevel newLevel = (AccessLevel) toSet;
-					AccessLevel reqLevel = AccessLevel.Administrator;
+					AccessLevel reqLevel = AccessLevel.Coordinateur;
 
-					if ( newLevel == AccessLevel.Administrator )
+					if ( newLevel == AccessLevel.Coordinateur )
 						reqLevel = AccessLevel.Developer;
 					else if ( newLevel >= AccessLevel.Developer )
 						reqLevel = AccessLevel.Owner;

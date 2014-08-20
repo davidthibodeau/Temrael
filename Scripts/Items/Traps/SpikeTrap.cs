@@ -14,7 +14,7 @@ namespace Server.Items
 
 	public class SpikeTrap : BaseTrap
 	{
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SpikeTrapType Type
 		{
 			get

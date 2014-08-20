@@ -184,16 +184,16 @@ namespace Server.Items
 		private Mobile m_Hunter;
 		private int m_AnimalWeight;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int WestID{ get{ return m_WestID; } set{ m_WestID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int NorthID{ get{ return m_NorthID; } set{ m_NorthID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DeedNumber{ get{ return m_DeedNumber; } set{ m_DeedNumber = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AddonNumber{ get{ return m_AddonNumber; } set{ m_AddonNumber = value; InvalidateProperties(); } }
 
 		public override int LabelNumber{ get{ return m_AddonNumber; } }
@@ -346,22 +346,22 @@ namespace Server.Items
 		private Mobile m_Hunter;
 		private int m_AnimalWeight;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int WestID{ get{ return m_WestID; } set{ m_WestID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int NorthID{ get{ return m_NorthID; } set{ m_NorthID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DeedNumber{ get{ return m_DeedNumber; } set{ m_DeedNumber = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AddonNumber{ get{ return m_AddonNumber; } set{ m_AddonNumber = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Hunter{ get{ return m_Hunter; } set{ m_Hunter = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AnimalWeight{ get{ return m_AnimalWeight; } set{ m_AnimalWeight = value; InvalidateProperties(); } }
 
 		public override int LabelNumber{ get{ return m_DeedNumber; } }

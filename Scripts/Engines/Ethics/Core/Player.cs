@@ -59,19 +59,19 @@ namespace Server.Ethics
 		public Ethic Ethic { get { return m_Ethic; } }
 		public Mobile Mobile { get { return m_Mobile; } }
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public int Power { get { return m_Power; } set { m_Power = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public int History { get { return m_History; } set { m_History = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public Mobile Steed { get { return m_Steed; } set { m_Steed = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public Mobile Familiar { get { return m_Familiar; } set { m_Familiar = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsShielded
 		{
 			get

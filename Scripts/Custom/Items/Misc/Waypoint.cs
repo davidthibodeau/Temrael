@@ -13,11 +13,11 @@ namespace Server.Items
 		
 		public static void Initialize()
 		{
-			CommandSystem.Register( "WPSequence", AccessLevel.GameMaster, new CommandEventHandler( WayPointSeq_OnCommand ) );			
-			CommandSystem.Register( "WPConnect", AccessLevel.GameMaster, new CommandEventHandler( WayPointCon_OnCommand ) );			
-			CommandSystem.Register( "WPConSequence", AccessLevel.GameMaster, new CommandEventHandler( WayPointConSeq_OnCommand ) );			
-			CommandSystem.Register( "WPDisconnect", AccessLevel.GameMaster, new CommandEventHandler( WayPointRem_OnCommand ) );			
-			CommandSystem.Register( "WPFixLinks", AccessLevel.GameMaster, new CommandEventHandler( WayPointFixLinks_OnCommand ) );			
+			CommandSystem.Register( "WPSequence", AccessLevel.Batisseur, new CommandEventHandler( WayPointSeq_OnCommand ) );			
+			CommandSystem.Register( "WPConnect", AccessLevel.Batisseur, new CommandEventHandler( WayPointCon_OnCommand ) );			
+			CommandSystem.Register( "WPConSequence", AccessLevel.Batisseur, new CommandEventHandler( WayPointConSeq_OnCommand ) );			
+			CommandSystem.Register( "WPDisconnect", AccessLevel.Batisseur, new CommandEventHandler( WayPointRem_OnCommand ) );			
+			CommandSystem.Register( "WPFixLinks", AccessLevel.Batisseur, new CommandEventHandler( WayPointFixLinks_OnCommand ) );			
 		}
 
 		[Usage( "WPSequence" )]
@@ -86,7 +86,7 @@ namespace Server.Items
 			InvalidateProperties();
 		}
 				
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override string DefaultName
 		{
 			get 
@@ -138,7 +138,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint NextPoint
 		{
 			get
@@ -181,7 +181,7 @@ namespace Server.Items
 			get { return m_Connections; }
 		}
 				
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint Connection1
 		{
 			get { return GetConnection(0); }
@@ -190,7 +190,7 @@ namespace Server.Items
 			}
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint Connection2
 		{
 			get { return GetConnection(1); }
@@ -200,7 +200,7 @@ namespace Server.Items
 
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint Connection3
 		{
 			get { return GetConnection(2); }
@@ -210,7 +210,7 @@ namespace Server.Items
 
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint Connection4
 		{
 			get { return GetConnection(3); }
@@ -219,7 +219,7 @@ namespace Server.Items
 			}
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint Connection5
 		{
 			get { return GetConnection(4); }
@@ -229,7 +229,7 @@ namespace Server.Items
 
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint Connection6
 		{
 			get { return GetConnection(5); }

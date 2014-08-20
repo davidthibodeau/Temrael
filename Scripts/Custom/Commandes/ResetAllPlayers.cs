@@ -13,7 +13,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("ResetAllPlayers", AccessLevel.Administrator, new CommandEventHandler(ResetAllPlayer_OnCommand));
+            CommandSystem.Register("ResetAllPlayers", AccessLevel.Coordinateur, new CommandEventHandler(ResetAllPlayer_OnCommand));
         }
 
         [Usage("ResetAllPlayers")]

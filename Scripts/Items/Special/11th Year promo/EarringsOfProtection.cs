@@ -39,7 +39,7 @@ namespace Server.Items
 
 	public class EarringsOfProtection : BaseJewel
 	{
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual AosElementAttribute Attribute
 		{
 			get

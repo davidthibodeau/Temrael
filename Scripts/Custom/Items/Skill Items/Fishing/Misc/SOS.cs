@@ -22,13 +22,13 @@ namespace Server.Items
 		private Point3D m_TargetLocation;
 		private int m_MessageIndex;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsAncient
 		{
 			get{ return ( m_Level >= 4 ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Level
 		{
 			get{ return m_Level; }
@@ -40,21 +40,21 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map TargetMap
 		{
 			get{ return m_TargetMap; }
 			set{ m_TargetMap = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D TargetLocation
 		{
 			get{ return m_TargetLocation; }
 			set{ m_TargetLocation = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MessageIndex
 		{
 			get{ return m_MessageIndex; }

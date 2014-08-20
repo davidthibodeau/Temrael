@@ -26,13 +26,13 @@ namespace Server.Mobiles
         private GeoController m_controller = null;
         private ArmyController m_army = null;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool IsGuarding { get { return m_isGuarding; } set { m_isGuarding = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoController Controller { get { return m_controller; } set { m_controller = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public ArmyController Army { get { return m_army; } set { m_army = value; } }
 
         public BaseGardes(GeoController controller, ArmyController army)

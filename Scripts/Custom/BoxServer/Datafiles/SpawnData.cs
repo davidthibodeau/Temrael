@@ -49,7 +49,7 @@ namespace TheBox.BoxServer
 		/// </summary>
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenSpawnData", AccessLevel.Administrator, new CommandEventHandler( OnGenSpawnData ) );
+			CommandSystem.Register( "GenSpawnData", AccessLevel.Coordinateur, new CommandEventHandler( OnGenSpawnData ) );
 		}
 
 		/// <summary>

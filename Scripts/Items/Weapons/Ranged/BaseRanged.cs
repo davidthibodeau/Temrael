@@ -26,14 +26,14 @@ namespace Server.Items
 		private bool m_Balanced;
 		private int m_Velocity;
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Balanced
 		{
 			get{ return m_Balanced; }
 			set{ m_Balanced = value; InvalidateProperties(); }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Velocity
 		{
 			get{ return m_Velocity; }

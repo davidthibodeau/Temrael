@@ -321,7 +321,7 @@ namespace Server.Gumps
         {
             Mobile from = sender.Mobile;
 
-            if (from.AccessLevel < AccessLevel.GameMaster)
+            if (from.AccessLevel < AccessLevel.Batisseur)
                 if (from.Deleted || !from.Alive)
                     return;
 

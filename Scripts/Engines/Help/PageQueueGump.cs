@@ -264,7 +264,7 @@ namespace Server.Engines.Help
 
 			from.CloseGump( typeof( PredefGump ) );
 
-			bool canEdit = ( from.AccessLevel >= AccessLevel.GameMaster );
+			bool canEdit = ( from.AccessLevel >= AccessLevel.Batisseur );
 
 			AddPage( 0 );
 
@@ -351,7 +351,7 @@ namespace Server.Engines.Help
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
-			if ( m_From.AccessLevel < AccessLevel.Administrator )
+			if ( m_From.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			if ( m_Response == null )

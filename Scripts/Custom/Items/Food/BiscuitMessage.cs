@@ -8,7 +8,7 @@ namespace Server.Items
 	{
         private string m_Message;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string Message
         {
             get { return m_Message; }

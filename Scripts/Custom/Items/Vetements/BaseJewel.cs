@@ -111,35 +111,35 @@ namespace Server.Items
         private RareteItem m_rarete;
         private TemraelAttributes m_TemraelAttributes;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TemraelAttributes TemAttributes
         {
             get { return m_TemraelAttributes; }
             set {  }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public RareteItem Rarete
         {
             get { return m_rarete; }
             set { m_rarete = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Identified
         {
             get { return m_Identified; }
             set { m_Identified = value; InvalidateProperties(); }
         }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxHitPoints
 		{
 			get{ return m_MaxHitPoints; }
 			set{ m_MaxHitPoints = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HitPoints
 		{
 			get 
@@ -169,28 +169,28 @@ namespace Server.Items
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosElementAttributes Resistances
 		{
 			get{ return m_AosResistances; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosSkillBonuses SkillBonuses
 		{
 			get{ return m_AosSkillBonuses; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource; }
 			set{ m_Resource = value; Hue = CraftResources.GetHue( m_Resource ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public GemType GemType
 		{
 			get{ return m_GemType; }

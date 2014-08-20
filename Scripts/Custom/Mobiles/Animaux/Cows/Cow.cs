@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	{
 		private DateTime m_MilkedOn;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime MilkedOn
 		{
 			get { return m_MilkedOn; }
@@ -17,7 +17,7 @@ namespace Server.Mobiles
 
 		private int m_Milk;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Milk
 		{
 			get { return m_Milk; }

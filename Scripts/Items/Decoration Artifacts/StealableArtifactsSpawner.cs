@@ -193,8 +193,8 @@ namespace Server.Items
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenStealArties", AccessLevel.Administrator, new CommandEventHandler( GenStealArties_OnCommand ) );
-			CommandSystem.Register( "RemoveStealArties", AccessLevel.Administrator, new CommandEventHandler( RemoveStealArties_OnCommand ) );
+			CommandSystem.Register( "GenStealArties", AccessLevel.Coordinateur, new CommandEventHandler( GenStealArties_OnCommand ) );
+			CommandSystem.Register( "RemoveStealArties", AccessLevel.Coordinateur, new CommandEventHandler( RemoveStealArties_OnCommand ) );
 		}
 
 		[Usage( "GenStealArties" )]

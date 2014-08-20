@@ -11,7 +11,7 @@ namespace Server.Items
 
 		private bool m_IsShipwreckedItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsShipwreckedItem
 		{
 			get { return m_IsShipwreckedItem; }

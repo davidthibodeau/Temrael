@@ -184,7 +184,7 @@ namespace Server.Mobiles
 
 		public static bool CheckAccess( BaseCreature animal, Mobile from )
 		{
-			if ( from == animal || from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from == animal || from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( from.Alive && animal.Controlled && !animal.IsDeadPet && (from == animal.ControlMaster || from == animal.SummonMaster) )

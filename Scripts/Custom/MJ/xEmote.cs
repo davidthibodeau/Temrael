@@ -12,7 +12,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("xEmote", AccessLevel.GameMaster, new CommandEventHandler(xEmote_OnCommand));
+            CommandSystem.Register("xEmote", AccessLevel.Batisseur, new CommandEventHandler(xEmote_OnCommand));
         }
 
         public static void xEmote_OnCommand(CommandEventArgs e)

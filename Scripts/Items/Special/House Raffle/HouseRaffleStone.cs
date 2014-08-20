@@ -99,7 +99,7 @@ namespace Server.Items
 
 		private List<RaffleEntry> m_Entries;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public HouseRaffleState CurrentState
 		{
 			get
@@ -134,7 +134,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public Rectangle2D PlotBounds
 		{
 			get { return m_Bounds; }
@@ -147,7 +147,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public Map PlotFacet
 		{
 			get { return m_Facet; }
@@ -160,35 +160,35 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public Mobile Winner
 		{
 			get { return m_Winner; }
 			set { m_Winner = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public HouseRaffleDeed Deed
 		{
 			get { return m_Deed; }
 			set { m_Deed = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public DateTime Started
 		{
 			get { return m_Started; }
 			set { m_Started = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public TimeSpan Duration
 		{
 			get { return m_Duration; }
 			set { m_Duration = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public bool IsExpired
 		{
 			get
@@ -200,7 +200,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public int TicketPrice
 		{
 			get { return m_TicketPrice; }
@@ -402,7 +402,7 @@ namespace Server.Items
 		{
 			base.GetContextMenuEntries( from, list );
 
-			if ( from.AccessLevel >= AccessLevel.Seer )
+			if ( from.AccessLevel >= AccessLevel.Chroniqueur )
 			{
 				list.Add( new EditEntry( from, this ) );
 
@@ -622,7 +622,7 @@ namespace Server.Items
 
 			public override void OnClick()
 			{
-				if ( m_Stone.Deleted || m_From.AccessLevel < AccessLevel.Seer )
+				if ( m_Stone.Deleted || m_From.AccessLevel < AccessLevel.Chroniqueur )
 					return;
 
 				m_From.SendGump( new PropertiesGump( m_From, m_Stone ) );
@@ -640,7 +640,7 @@ namespace Server.Items
 
 			public override void OnClick()
 			{
-				if ( m_Stone.Deleted || m_From.AccessLevel < AccessLevel.Seer || m_Stone.Active || !m_Stone.ValidLocation() )
+				if ( m_Stone.Deleted || m_From.AccessLevel < AccessLevel.Chroniqueur || m_Stone.Active || !m_Stone.ValidLocation() )
 					return;
 
 				m_Stone.Active = true;
@@ -656,7 +656,7 @@ namespace Server.Items
 
 			public override void OnClick()
 			{
-				if ( m_Stone.Deleted || m_From.AccessLevel < AccessLevel.Seer )
+				if ( m_Stone.Deleted || m_From.AccessLevel < AccessLevel.Chroniqueur )
 					return;
 
 				m_From.SendGump( new HouseRaffleManagementGump( m_Stone ) );

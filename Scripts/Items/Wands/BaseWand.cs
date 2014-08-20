@@ -45,14 +45,14 @@ namespace Server.Items
 
 		public virtual TimeSpan GetUseDelay{ get{ return TimeSpan.FromSeconds( 4.0 ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WandEffect Effect
 		{
 			get{ return m_WandEffect; }
 			set{ m_WandEffect = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Charges
 		{
 			get{ return m_Charges; }

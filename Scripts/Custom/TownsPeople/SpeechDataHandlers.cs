@@ -23,7 +23,7 @@ namespace Server.Mobiles.Data
         {
             Console.Write("Initializing SpeechRules Dataset...");
 
-            CommandSystem.Register("dbReload", AccessLevel.GameMaster, new CommandEventHandler(dbReload_OnCommand));
+            CommandSystem.Register("dbReload", AccessLevel.Batisseur, new CommandEventHandler(dbReload_OnCommand));
             SpeechData.LoadData();
 
             Console.WriteLine("done ({0})", SpeechData.dsSpeechRules.DataSetName);

@@ -527,7 +527,7 @@ namespace Server.Factions
 			if ( mob == null )
 				return false;
 
-			return ( mob.AccessLevel >= AccessLevel.GameMaster || mob == Commander );
+			return ( mob.AccessLevel >= AccessLevel.Batisseur || mob == Commander );
 		}
 
 		public Faction()
@@ -571,11 +571,11 @@ namespace Server.Factions
 
 			Timer.DelayCall( TimeSpan.FromSeconds( 30.0 ), TimeSpan.FromSeconds( 30.0 ), new TimerCallback( ProcessTick ) );
 
-			CommandSystem.Register( "FactionElection", AccessLevel.GameMaster, new CommandEventHandler( FactionElection_OnCommand ) );
-			CommandSystem.Register( "FactionCommander", AccessLevel.Administrator, new CommandEventHandler( FactionCommander_OnCommand ) );
-			CommandSystem.Register( "FactionItemReset", AccessLevel.Administrator, new CommandEventHandler( FactionItemReset_OnCommand ) );
-			CommandSystem.Register( "FactionReset", AccessLevel.Administrator, new CommandEventHandler( FactionReset_OnCommand ) );
-			CommandSystem.Register( "FactionTownReset", AccessLevel.Administrator, new CommandEventHandler( FactionTownReset_OnCommand ) );
+			CommandSystem.Register( "FactionElection", AccessLevel.Batisseur, new CommandEventHandler( FactionElection_OnCommand ) );
+			CommandSystem.Register( "FactionCommander", AccessLevel.Coordinateur, new CommandEventHandler( FactionCommander_OnCommand ) );
+			CommandSystem.Register( "FactionItemReset", AccessLevel.Coordinateur, new CommandEventHandler( FactionItemReset_OnCommand ) );
+			CommandSystem.Register( "FactionReset", AccessLevel.Coordinateur, new CommandEventHandler( FactionReset_OnCommand ) );
+			CommandSystem.Register( "FactionTownReset", AccessLevel.Coordinateur, new CommandEventHandler( FactionTownReset_OnCommand ) );
 		}
 
 		public static void FactionTownReset_OnCommand( CommandEventArgs e )
@@ -1308,7 +1308,7 @@ namespace Server.Factions
 		{
 			m_KickType = kickType;
 
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllMobiles;
 			ObjectTypes = ObjectTypes.Mobiles;
 

@@ -409,7 +409,7 @@ namespace Server.Factions
 				towns[i].Finance = towns[i].Finance;
 			}
 
-			CommandSystem.Register( "GrantTownSilver", AccessLevel.Administrator, new CommandEventHandler( GrantTownSilver_OnCommand ) );
+			CommandSystem.Register( "GrantTownSilver", AccessLevel.Coordinateur, new CommandEventHandler( GrantTownSilver_OnCommand ) );
 		}
 
 		public Town()
@@ -425,7 +425,7 @@ namespace Server.Factions
 			if ( mob == null || mob.Deleted )
 				return false;
 
-			return ( mob.AccessLevel >= AccessLevel.GameMaster || mob == Sheriff );
+			return ( mob.AccessLevel >= AccessLevel.Batisseur || mob == Sheriff );
 		}
 
 		public bool IsFinance( Mobile mob )
@@ -433,7 +433,7 @@ namespace Server.Factions
 			if ( mob == null || mob.Deleted )
 				return false;
 
-			return ( mob.AccessLevel >= AccessLevel.GameMaster || mob == Finance );
+			return ( mob.AccessLevel >= AccessLevel.Batisseur || mob == Finance );
 		}
 
 		public static List<Town> Towns { get { return Reflector.Towns; } }

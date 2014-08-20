@@ -11,7 +11,7 @@ namespace Server.Items
 	{
 		private Mobile m_Owner;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get{ return m_Owner; }

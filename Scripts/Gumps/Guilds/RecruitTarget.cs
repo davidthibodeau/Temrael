@@ -72,7 +72,7 @@ namespace Server.Gumps
 					m_Mobile.SendMessage( "That person is quitting their faction and so you may not recruit them." );
 				}
 				#endregion
-				else if ( m_Mobile.AccessLevel >= AccessLevel.GameMaster || m_Guild.Leader == m_Mobile )
+				else if ( m_Mobile.AccessLevel >= AccessLevel.Batisseur || m_Guild.Leader == m_Mobile )
 				{
 					m_Guild.Accepted.Add( m );
 				}

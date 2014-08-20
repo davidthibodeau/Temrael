@@ -76,7 +76,7 @@ namespace Server.Items
 		private int m_SideLength;
 		private Node[] m_Path;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SideLength
 		{
 			get{ return m_SideLength; }

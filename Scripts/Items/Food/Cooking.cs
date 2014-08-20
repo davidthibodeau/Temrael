@@ -414,7 +414,7 @@ namespace Server.Items
 	{
 		private int m_Quantity;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Quantity
 		{
 			get{ return m_Quantity; }

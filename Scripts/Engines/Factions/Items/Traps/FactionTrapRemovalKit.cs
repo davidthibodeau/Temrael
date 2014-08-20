@@ -8,7 +8,7 @@ namespace Server.Factions
 	{
 		private int m_Charges;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Charges
 		{
 			get{ return m_Charges; }

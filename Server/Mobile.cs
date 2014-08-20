@@ -444,9 +444,9 @@ namespace Server
 	{
 		Player,
 		Counselor,
-		GameMaster,
-		Seer,
-		Administrator,
+		Batisseur,
+		Chroniqueur,
+		Coordinateur,
 		Developer,
 		Owner
 	}
@@ -713,7 +713,7 @@ namespace Server
 		#region Var declarations
         //TEMRAEL
         private int m_XP;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int XP
         {
             get { return m_XP; }
@@ -813,7 +813,7 @@ namespace Server
 		private static readonly TimeSpan WarmodeSpamDelay = TimeSpan.FromSeconds( (Core.SE ? 4.0 : 2.0) );
 		private const int WarmodeCatchCount = 4; // Allow four warmode changes in 0.5 seconds, any more will be delay for two seconds
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Race Race
 		{
 			get
@@ -1226,13 +1226,13 @@ namespace Server
 
 		public List<Mobile> Stabled { get { return m_Stabled; } }
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public VirtueInfo Virtues { get { return m_Virtues; } set { } }
 
 		public object Party { get { return m_Party; } set { m_Party = value; } }
 		public List<SkillMod> SkillMods { get { return m_SkillMods; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int VirtualArmorMod
 		{
 			get
@@ -1401,7 +1401,7 @@ namespace Server
 			Warmode = value;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MeleeDamageAbsorb
 		{
 			get
@@ -1414,7 +1414,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MagicDamageAbsorb
 		{
 			get
@@ -1427,7 +1427,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SkillsTotal
 		{
 			get
@@ -1436,7 +1436,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SkillsCap
 		{
 			get
@@ -1482,7 +1482,7 @@ namespace Server
 			return m_Map.LineOfSight( this, target );
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int BaseSoundID
 		{
 			get
@@ -1540,7 +1540,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int NameHue
 		{
 			get
@@ -1553,7 +1553,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Hunger
 		{
 			get
@@ -1573,7 +1573,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Thirst
 		{
 			get
@@ -1586,7 +1586,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int BAC
 		{
 			get
@@ -1604,7 +1604,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the number of steps this player may take when hidden before being revealed.
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AllowedStealthSteps
 		{
 			get
@@ -1689,7 +1689,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual bool Paralyzed
 		{
 			get
@@ -1714,7 +1714,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool DisarmReady
 		{
 			get
@@ -1728,7 +1728,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool StunReady
 		{
 			get
@@ -1742,7 +1742,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Frozen
 		{
 			get
@@ -1790,7 +1790,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the <see cref="StatLockType">lock state</see> for the <see cref="RawStr" /> property.
 		/// </summary>
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public StatLockType StrLock
 		{
 			get
@@ -1812,7 +1812,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the <see cref="StatLockType">lock state</see> for the <see cref="RawDex" /> property.
 		/// </summary>
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public StatLockType DexLock
 		{
 			get
@@ -1834,7 +1834,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the <see cref="StatLockType">lock state</see> for the <see cref="RawInt" /> property.
 		/// </summary>
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public StatLockType IntLock
 		{
 			get
@@ -2222,7 +2222,7 @@ namespace Server
 		/// Overridable. Gets or sets which Mobile that this Mobile is currently engaged in combat with.
 		/// <seealso cref="OnCombatantChange" />
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual Mobile Combatant
 		{
 			get
@@ -2501,25 +2501,25 @@ namespace Server
 			UpdateAggrExpire();
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalGold
 		{
 			get { return GetTotal( TotalType.Gold ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalItems
 		{
 			get { return GetTotal( TotalType.Items ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalWeight
 		{
 			get { return GetTotal( TotalType.Weight ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TithingPoints
 		{
 			get
@@ -2537,7 +2537,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Followers
 		{
 			get
@@ -2555,7 +2555,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int FollowersMax
 		{
 			get
@@ -3496,7 +3496,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Coordinateur )]
 		public bool AutoPageNotify
 		{
 			get
@@ -3601,7 +3601,7 @@ namespace Server
 
 		private IAccount m_Account;
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Owner )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Owner )]
 		public IAccount Account
 		{
 			get
@@ -3624,7 +3624,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int VirtualArmor
 		{
 			get
@@ -3642,7 +3642,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual double ArmorRating
 		{
 			get
@@ -4018,7 +4018,7 @@ namespace Server
 
 		private Container m_Corpse;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Container Corpse
 		{
 			get
@@ -4277,7 +4277,7 @@ namespace Server
 			Mobile from = this;
 			NetState state = m_NetState;
 
-			if (from.AccessLevel >= AccessLevel.GameMaster || Core.TickCount - from.NextActionTime >= 0)
+			if (from.AccessLevel >= AccessLevel.Batisseur || Core.TickCount - from.NextActionTime >= 0)
 			{
 				if( from.CheckAlive() )
 				{
@@ -4287,7 +4287,7 @@ namespace Server
 					{
 						reject = LRReason.AreHolding;
 					}
-					else if( from.AccessLevel < AccessLevel.GameMaster && !from.InRange( item.GetWorldLocation(), 2 ) )
+					else if( from.AccessLevel < AccessLevel.Batisseur && !from.InRange( item.GetWorldLocation(), 2 ) )
 					{
 						reject = LRReason.OutOfRange;
 					}
@@ -5126,7 +5126,7 @@ namespace Server
 
 		private Mobile m_LastKiller;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile LastKiller
 		{
 			get { return m_LastKiller; }
@@ -5413,7 +5413,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Squelched
 		{
 			get
@@ -5850,7 +5850,7 @@ namespace Server
 
 		private DateTime m_CreationTime;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime CreationTime
 		{
 			get
@@ -5996,7 +5996,7 @@ namespace Server
 			writer.Write( (byte)m_IntLock );
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int LightLevel
 		{
 			get
@@ -6017,7 +6017,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public string Profile
 		{
 			get
@@ -6030,7 +6030,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public bool ProfileLocked
 		{
 			get
@@ -6043,7 +6043,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public bool Player
 		{
 			get
@@ -6064,7 +6064,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Title
 		{
 			get
@@ -6392,7 +6392,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public AccessLevel AccessLevel
 		{
 			get
@@ -6423,7 +6423,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Fame
 		{
 			get
@@ -6450,7 +6450,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Karma
 		{
 			get
@@ -6604,7 +6604,7 @@ namespace Server
 		}
 		#endregion
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Blessed
 		{
 			get
@@ -6887,7 +6887,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public Map Map
 		{
 			get
@@ -7341,7 +7341,7 @@ namespace Server
 		/// <seealso cref="OnRawStrChange" />
 		/// <seealso cref="OnRawStatChange" />
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RawStr
 		{
 			get
@@ -7385,7 +7385,7 @@ namespace Server
 		/// <seealso cref="RawStr" />
 		/// <seealso cref="StatMod" />
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int Str
 		{
 			get
@@ -7415,7 +7415,7 @@ namespace Server
 		/// <seealso cref="OnRawDexChange" />
 		/// <seealso cref="OnRawStatChange" />
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RawDex
 		{
 			get
@@ -7459,7 +7459,7 @@ namespace Server
 		/// <seealso cref="RawDex" />
 		/// <seealso cref="StatMod" />
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int Dex
 		{
 			get
@@ -7487,7 +7487,7 @@ namespace Server
 		/// <seealso cref="OnRawIntChange" />
 		/// <seealso cref="OnRawStatChange" />
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RawInt
 		{
 			get
@@ -7531,7 +7531,7 @@ namespace Server
 		/// <seealso cref="RawInt" />
 		/// <seealso cref="StatMod" />
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int Int
 		{
 			get
@@ -7565,7 +7565,7 @@ namespace Server
         {
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int RawCon
         {
             get
@@ -7604,7 +7604,7 @@ namespace Server
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public virtual int Con
         {
             get
@@ -7625,7 +7625,7 @@ namespace Server
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int RawCha
         {
             get
@@ -7664,7 +7664,7 @@ namespace Server
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public virtual int Cha
         {
             get
@@ -7685,7 +7685,7 @@ namespace Server
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int RawSag
         {
             get
@@ -7724,7 +7724,7 @@ namespace Server
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public virtual int Sag
         {
             get
@@ -7760,7 +7760,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the current hit point of the Mobile. This value ranges from 0 to <see cref="HitsMax" />, inclusive. When set to the value of <see cref="HitsMax" />, the <see cref="AggressorInfo.CanReportMurder">CanReportMurder</see> flag of all aggressors is reset to false, and the list of damage entries is cleared.
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Hits
 		{
 			get
@@ -7818,7 +7818,7 @@ namespace Server
 		/// <summary>
 		/// Overridable. Gets the maximum hit point of the Mobile. By default, this returns: <c>50 + (<see cref="Str" /> / 2)</c>
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int HitsMax
 		{
 			get
@@ -7830,7 +7830,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the current stamina of the Mobile. This value ranges from 0 to <see cref="StamMax" />, inclusive.
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Stam
 		{
 			get
@@ -7882,7 +7882,7 @@ namespace Server
 		/// <summary>
 		/// Overridable. Gets the maximum stamina of the Mobile. By default, this returns: <c><see cref="Dex" /></c>
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int StamMax
 		{
 			get
@@ -7894,7 +7894,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the current stamina of the Mobile. This value ranges from 0 to <see cref="ManaMax" />, inclusive.
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Mana
 		{
 			get
@@ -7952,7 +7952,7 @@ namespace Server
 		/// <summary>
 		/// Overridable. Gets the maximum mana of the Mobile. By default, this returns: <c><see cref="Int" /></c>
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int ManaMax
 		{
 			get
@@ -7978,7 +7978,7 @@ namespace Server
 
 		private int m_HueMod = -1;
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public int HueMod
 		{
 			get
@@ -7996,7 +7996,7 @@ namespace Server
 			}
 		}
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public virtual int Hue
 		{
 			get
@@ -8025,7 +8025,7 @@ namespace Server
 			m_Direction = dir;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Direction Direction
 		{
 			get
@@ -8103,7 +8103,7 @@ namespace Server
 			return flags;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Female
 		{
 			get
@@ -8125,7 +8125,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Flying
 		{
 			get
@@ -8146,7 +8146,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Warmode
 		{
 			get
@@ -8195,7 +8195,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Hidden
 		{
 			get
@@ -8256,7 +8256,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Owner )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Owner )]
 		public NetState NetState
 		{
 			get
@@ -8432,10 +8432,10 @@ namespace Server
 
 		public virtual bool CanBeRenamedBy( Mobile from )
 		{
-			return (from.AccessLevel >= AccessLevel.GameMaster && from.m_AccessLevel > m_AccessLevel);
+			return (from.AccessLevel >= AccessLevel.Batisseur && from.m_AccessLevel > m_AccessLevel);
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Language
 		{
 			get
@@ -8449,7 +8449,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SpeechHue
 		{
 			get
@@ -8462,7 +8462,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int EmoteHue
 		{
 			get
@@ -8475,7 +8475,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int WhisperHue
 		{
 			get
@@ -8488,7 +8488,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int YellHue
 		{
 			get
@@ -8501,7 +8501,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string GuildTitle
 		{
 			get
@@ -8530,7 +8530,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool DisplayGuildTitle
 		{
 			get
@@ -8544,7 +8544,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile GuildFealty
 		{
 			get
@@ -8559,7 +8559,7 @@ namespace Server
 
 		private string m_NameMod;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string NameMod
 		{
 			get
@@ -8579,7 +8579,7 @@ namespace Server
 
 		private bool m_YellowHealthbar;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool YellowHealthbar
 		{
 			get
@@ -8593,14 +8593,14 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string RawName
 		{
 			get { return m_Name; }
 			set { Name = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Name
 		{
 			get
@@ -8627,7 +8627,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastStrGain
 		{
 			get
@@ -8640,7 +8640,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastIntGain
 		{
 			get
@@ -8653,7 +8653,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastDexGain
 		{
 			get
@@ -8724,7 +8724,7 @@ namespace Server
 			get { return m_PoisonTimer; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Poison Poison
 		{
 			get
@@ -8936,7 +8936,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Poisoned
 		{
 			get
@@ -8945,7 +8945,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsBodyMod
 		{
 			get
@@ -8954,7 +8954,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Body BodyMod
 		{
 			get
@@ -8984,7 +8984,7 @@ namespace Server
 				198,
 			};
 
-		[Body, CommandProperty( AccessLevel.GameMaster )]
+		[Body, CommandProperty( AccessLevel.Batisseur )]
 		public Body Body
 		{
 			get
@@ -9021,7 +9021,7 @@ namespace Server
 			return 0;
 		}
 
-		[Body, CommandProperty( AccessLevel.GameMaster )]
+		[Body, CommandProperty( AccessLevel.Batisseur )]
 		public int BodyValue
 		{
 			get
@@ -9043,7 +9043,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public Point3D Location
 		{
 			get
@@ -9056,7 +9056,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public Point3D LogoutLocation
 		{
 			get
@@ -9069,7 +9069,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public Map LogoutMap
 		{
 			get
@@ -9200,7 +9200,7 @@ namespace Server
 
 		private int m_SolidHueOverride = -1;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SolidHueOverride
 		{
 			get { return m_SolidHueOverride; }
@@ -9505,7 +9505,7 @@ namespace Server
 		private HairInfo m_Hair;
 		private FacialHairInfo m_FacialHair;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HairItemID
 		{
 			get
@@ -9531,7 +9531,7 @@ namespace Server
 		//		[CommandProperty( AccessLevel.GameMaster )]
 		//		public int HairSerial { get { return HairInfo.FakeSerial( this ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int FacialHairItemID
 		{
 			get
@@ -9557,7 +9557,7 @@ namespace Server
 		//		[CommandProperty( AccessLevel.GameMaster )]
 		//		public int FacialHairSerial { get { return FacialHairInfo.FakeSerial( this ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HairHue
 		{
 			get
@@ -9576,7 +9576,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int FacialHairHue
 		{
 			get
@@ -9605,7 +9605,7 @@ namespace Server
 
 		private IWeapon m_Weapon;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual IWeapon Weapon
 		{
 			get
@@ -9636,7 +9636,7 @@ namespace Server
 
 		private BankBox m_BankBox;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BankBox BankBox
 		{
 			get
@@ -9665,7 +9665,7 @@ namespace Server
 
 		private Container m_Backpack;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Container Backpack
 		{
 			get
@@ -9697,21 +9697,21 @@ namespace Server
 			return null;
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int X
 		{
 			get { return m_Location.m_X; }
 			set { Location = new Point3D( value, m_Location.m_Y, m_Location.m_Z ); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int Y
 		{
 			get { return m_Location.m_Y; }
 			set { Location = new Point3D( m_Location.m_X, value, m_Location.m_Z ); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int Z
 		{
 			get { return m_Location.m_Z; }
@@ -9863,7 +9863,7 @@ namespace Server
 
 		public virtual bool CheckNonlocalLift( Mobile from, Item item )
 		{
-			if( from == this || (from.AccessLevel > this.AccessLevel && from.AccessLevel >= AccessLevel.GameMaster) )
+			if( from == this || (from.AccessLevel > this.AccessLevel && from.AccessLevel >= AccessLevel.Batisseur) )
 				return true;
 
 			return false;
@@ -10030,7 +10030,7 @@ namespace Server
 
 		public virtual bool CheckNonlocalDrop( Mobile from, Item item, Item target )
 		{
-			if( from == this || (from.AccessLevel > this.AccessLevel && from.AccessLevel >= AccessLevel.GameMaster) )
+			if( from == this || (from.AccessLevel > this.AccessLevel && from.AccessLevel >= AccessLevel.Batisseur) )
 				return true;
 
 			return false;
@@ -10056,7 +10056,7 @@ namespace Server
 
 		public virtual bool AllowEquipFrom( Mobile mob )
 		{
-			return (mob == this || (mob.AccessLevel >= AccessLevel.GameMaster && mob.AccessLevel > this.AccessLevel));
+			return (mob == this || (mob.AccessLevel >= AccessLevel.Batisseur && mob.AccessLevel > this.AccessLevel));
 		}
 
 		public virtual bool EquipItem( Item item )
@@ -10622,7 +10622,7 @@ namespace Server
 			while (m_DeltaQueueR.Count > 0) m_DeltaQueueR.Dequeue().ProcessDelta();
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int Kills
 		{
 			get
@@ -10655,7 +10655,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ShortTermMurders
 		{
 			get
@@ -10674,7 +10674,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public bool Criminal
 		{
 			get
@@ -11203,7 +11203,7 @@ namespace Server
 
 		private Item m_MountItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public IMount Mount
 		{
 			get
@@ -11220,7 +11220,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Mounted
 		{
 			get
@@ -11468,7 +11468,7 @@ namespace Server
 		/// <summary>
 		/// Gets or sets the maximum attainable value for <see cref="RawStr" />, <see cref="RawDex" />, and <see cref="RawInt" />.
 		/// </summary>
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int StatCap
 		{
 			get
@@ -11486,7 +11486,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Meditating
 		{
 			get
@@ -11499,7 +11499,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool CanSwim
 		{
 			get
@@ -11512,7 +11512,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool CantWalk
 		{
 			get
@@ -11525,7 +11525,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool CanHearGhosts
 		{
 			get
@@ -11538,7 +11538,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RawStatTotal
 		{
 			get

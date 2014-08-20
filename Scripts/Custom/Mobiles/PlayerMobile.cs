@@ -131,7 +131,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if( this.AccessLevel >= AccessLevel.GameMaster )
+				if( this.AccessLevel >= AccessLevel.Batisseur )
 					return Server.Guilds.RankDefinition.Leader;
 				else
 					return m_GuildRank;
@@ -139,21 +139,21 @@ namespace Server.Mobiles
 			set{ m_GuildRank = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GuildMessageHue
 		{
 			get{ return m_GuildMessageHue; }
 			set{ m_GuildMessageHue = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AllianceMessageHue
 		{
 			get { return m_AllianceMessageHue; }
 			set { m_AllianceMessageHue = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Profession
 		{
 			get{ return m_Profession; }
@@ -166,14 +166,14 @@ namespace Server.Mobiles
 			set{ m_StepsTaken = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsStealthing // IsStealthing should be moved to Server.Mobiles
 		{
 			get { return m_IsStealthing; }
 			set { m_IsStealthing = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IgnoreMobiles // IgnoreMobiles should be moved to Server.Mobiles
 		{
 			get
@@ -190,14 +190,14 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextBODTurnInTime
 		{
 			get{ return m_NextBODTurnInTime; }
 			set{ m_NextBODTurnInTime = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastOnline
 		{
 			get{ return m_LastOnline; }
@@ -206,7 +206,7 @@ namespace Server.Mobiles
 
 		private int m_ToTItemsTurnedIn;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ToTItemsTurnedIn
 		{
 			get { return m_ToTItemsTurnedIn; }
@@ -215,21 +215,21 @@ namespace Server.Mobiles
 
 		private int m_ToTTotalMonsterFame;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ToTTotalMonsterFame
 		{
 			get { return m_ToTTotalMonsterFame; }
 			set { m_ToTTotalMonsterFame = value; }
 		}
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Langues Langues
         {
             get;
             private set;
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Identities Identities
         {
             get;
@@ -245,84 +245,84 @@ namespace Server.Mobiles
 			set{ m_Flags = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool PagingSquelched
 		{
 			get{ return GetFlag( PlayerFlag.PagingSquelched ); }
 			set{ SetFlag( PlayerFlag.PagingSquelched, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Glassblowing
 		{
 			get{ return GetFlag( PlayerFlag.Glassblowing ); }
 			set{ SetFlag( PlayerFlag.Glassblowing, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Masonry
 		{
 			get{ return GetFlag( PlayerFlag.Masonry ); }
 			set{ SetFlag( PlayerFlag.Masonry, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool SandMining
 		{
 			get{ return GetFlag( PlayerFlag.SandMining ); }
 			set{ SetFlag( PlayerFlag.SandMining, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool StoneMining
 		{
 			get{ return GetFlag( PlayerFlag.StoneMining ); }
 			set{ SetFlag( PlayerFlag.StoneMining, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ToggleMiningStone
 		{
 			get{ return GetFlag( PlayerFlag.ToggleMiningStone ); }
 			set{ SetFlag( PlayerFlag.ToggleMiningStone, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool KarmaLocked
 		{
 			get{ return GetFlag( PlayerFlag.KarmaLocked ); }
 			set{ SetFlag( PlayerFlag.KarmaLocked, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool AutoRenewInsurance
 		{
 			get{ return GetFlag( PlayerFlag.AutoRenewInsurance ); }
 			set{ SetFlag( PlayerFlag.AutoRenewInsurance, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool UseOwnFilter
 		{
 			get{ return GetFlag( PlayerFlag.UseOwnFilter ); }
 			set{ SetFlag( PlayerFlag.UseOwnFilter, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool PublicMyRunUO
 		{
 			get{ return GetFlag( PlayerFlag.PublicMyRunUO ); }
 			set{ SetFlag( PlayerFlag.PublicMyRunUO, value ); InvalidateMyRunUO(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool AcceptGuildInvites
 		{
 			get{ return GetFlag( PlayerFlag.AcceptGuildInvites ); }
 			set{ SetFlag( PlayerFlag.AcceptGuildInvites, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool HasStatReward
 		{
 			get{ return GetFlag( PlayerFlag.HasStatReward ); }
@@ -389,7 +389,7 @@ namespace Server.Mobiles
 
 		private DateTime m_PeacedUntil;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime PeacedUntil
 		{
 			get { return m_PeacedUntil; }
@@ -399,7 +399,7 @@ namespace Server.Mobiles
 		#region Scroll of Alacrity
 		private DateTime m_AcceleratedStart;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public DateTime AcceleratedStart
 		{
 			get { return m_AcceleratedStart; }
@@ -408,7 +408,7 @@ namespace Server.Mobiles
 
 		private SkillName m_AcceleratedSkill;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public SkillName AcceleratedSkill
 		{
 			get { return m_AcceleratedSkill; }
@@ -710,7 +710,7 @@ namespace Server.Mobiles
 
 					Timer.DelayCall( TimeSpan.FromSeconds( 1.0 ), new TimerStateCallback( Disconnect ), from );
 				}
-				else if ( from.AccessLevel >= AccessLevel.Administrator )
+				else if ( from.AccessLevel >= AccessLevel.Coordinateur )
 				{
 					notice = "The server is currently under lockdown. As you are an administrator, you may change this from the [Admin gump.";
 				}
@@ -838,11 +838,11 @@ namespace Server.Mobiles
 
 						bool drop = false;
 
-						if ( !armor.AllowMaleWearer && !from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						if ( !armor.AllowMaleWearer && !from.Female && from.AccessLevel < AccessLevel.Batisseur )
 						{
 							drop = true;
 						}
-						else if ( !armor.AllowFemaleWearer && from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						else if ( !armor.AllowFemaleWearer && from.Female && from.AccessLevel < AccessLevel.Batisseur )
 						{
 							drop = true;
 						}
@@ -886,11 +886,11 @@ namespace Server.Mobiles
 
 						bool drop = false;
 
-						if ( !clothing.AllowMaleWearer && !from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						if ( !clothing.AllowMaleWearer && !from.Female && from.AccessLevel < AccessLevel.Batisseur )
 						{
 							drop = true;
 						}
-						else if ( !clothing.AllowFemaleWearer && from.Female && from.AccessLevel < AccessLevel.GameMaster )
+						else if ( !clothing.AllowFemaleWearer && from.Female && from.AccessLevel < AccessLevel.Batisseur )
 						{
 							drop = true;
 						}
@@ -1082,7 +1082,7 @@ namespace Server.Mobiles
 
 		public override void OnSubItemAdded( Item item )
 		{
-			if ( AccessLevel < AccessLevel.GameMaster && item.IsChildOf( this.Backpack ) )
+			if ( AccessLevel < AccessLevel.Batisseur && item.IsChildOf( this.Backpack ) )
 			{
 				int maxWeight = WeightOverloading.GetMaxWeight( this );
 				int curWeight = Mobile.BodyWeight + this.TotalWeight;
@@ -1184,19 +1184,19 @@ namespace Server.Mobiles
 		}
 
 		#region [Stats]Max
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int HitsMax
 		{
             get { return (Str >= 100 ? (125 + RawStr) : (100 + RawStr)); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int StamMax
 		{
             get { return (RawDex >= 100 ? (25 + RawDex) : RawDex); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ManaMax
 		{
 			get { return (RawInt >= 100 ? (25 + RawInt) : RawInt); }
@@ -1205,7 +1205,7 @@ namespace Server.Mobiles
 
 		#region Stat Getters/Setters
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int Str
 		{
 			get
@@ -1221,7 +1221,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int Int
 		{
 			get
@@ -1237,7 +1237,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int Dex
 		{
 			get
@@ -1738,7 +1738,7 @@ namespace Server.Mobiles
 			}
 			#endregion
 
-			if ( this.AccessLevel < AccessLevel.GameMaster && item.Layer != Layer.Mount && this.HasTrade )
+			if ( this.AccessLevel < AccessLevel.Batisseur && item.Layer != Layer.Mount && this.HasTrade )
 			{
 				BounceInfo bounce = item.GetBounce();
 
@@ -1832,7 +1832,7 @@ namespace Server.Mobiles
 			if ( !base.CheckNonlocalDrop( from, item, target ) )
 				return false;
 
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			Container pack = this.Backpack;
@@ -2271,7 +2271,7 @@ namespace Server.Mobiles
 			set{ m_Learning = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan SavagePaintExpiration
 		{
 			get
@@ -2289,7 +2289,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan NextSmithBulkOrder
 		{
 			get
@@ -2308,7 +2308,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan NextTailorBulkOrder
 		{
 			get
@@ -2327,14 +2327,14 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastEscortTime
 		{
 			get{ return m_LastEscortTime; }
 			set{ m_LastEscortTime = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastPetBallTime
 		{
 			get{ return m_LastPetBallTime; }
@@ -2435,7 +2435,7 @@ namespace Server.Mobiles
 			{
 				Mobile mob = ns.Mobile;
 
-				if( mob != null && mob.AccessLevel >= AccessLevel.GameMaster && mob.AccessLevel > from.AccessLevel )
+				if( mob != null && mob.AccessLevel >= AccessLevel.Batisseur && mob.AccessLevel > from.AccessLevel )
 				{
 					if( p == null )
 						p = Packet.Acquire( new UnicodeMessage( from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, from.Name, text ) );
@@ -3068,13 +3068,13 @@ namespace Server.Mobiles
 			m_LongTermElapse = this.GameTime + TimeSpan.FromHours( 40 );
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime SessionStart
 		{
 			get{ return m_SessionStart; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan GameTime
 		{
 			get
@@ -3223,7 +3223,7 @@ namespace Server.Mobiles
 			set{ m_BedrollLogout = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override bool Paralyzed
 		{
 			get
@@ -3244,7 +3244,7 @@ namespace Server.Mobiles
 		#region Ethics
 		private Ethics.Player m_EthicPlayer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Ethics.Player EthicPlayer
 		{
 			get { return m_EthicPlayer; }
@@ -3279,7 +3279,7 @@ namespace Server.Mobiles
 			set{ m_DoneQuests = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SolenFriendship SolenFriendship
 		{
 			get{ return m_SolenFriendship; }
@@ -3561,7 +3561,7 @@ namespace Server.Mobiles
 		public DateTime LastSacrificeGain{ get{ return m_LastSacrificeGain; } set{ m_LastSacrificeGain = value; } }
 		public DateTime LastSacrificeLoss{ get{ return m_LastSacrificeLoss; } set{ m_LastSacrificeLoss = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AvailableResurrects{ get{ return m_AvailableResurrects; } set{ m_AvailableResurrects = value; } }
 
 		private DateTime m_NextJustAward;
@@ -3598,7 +3598,7 @@ namespace Server.Mobiles
 		#endregion
 
 		#region Young system
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Young
 		{
 			get{ return GetFlag( PlayerFlag.Young ); }
@@ -3819,7 +3819,7 @@ namespace Server.Mobiles
 		#endregion
 
 		#region Champion Titles
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool DisplayChampionTitle
 		{
 			get { return GetFlag( PlayerFlag.DisplayChampionTitle ); }
@@ -3828,7 +3828,7 @@ namespace Server.Mobiles
 
 		private ChampionTitleInfo m_ChampionTitles;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ChampionTitleInfo ChampionTitles { get { return m_ChampionTitles; } set { } }
 
 		private void ToggleChampionTitleDisplay()
@@ -3985,31 +3985,31 @@ namespace Server.Mobiles
 				return "...";
 			}
 
-			[CommandProperty(AccessLevel.GameMaster)]
+			[CommandProperty(AccessLevel.Batisseur)]
 			public int Pestilence { get { return GetValue(ChampionSpawnType.Pestilence); } set { SetValue(ChampionSpawnType.Pestilence, value); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int Abyss { get { return GetValue( ChampionSpawnType.Abyss ); } set { SetValue( ChampionSpawnType.Abyss, value ); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int Arachnid { get { return GetValue( ChampionSpawnType.Arachnid ); } set { SetValue( ChampionSpawnType.Arachnid, value ); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int ColdBlood { get { return GetValue( ChampionSpawnType.ColdBlood ); } set { SetValue( ChampionSpawnType.ColdBlood, value ); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int ForestLord { get { return GetValue( ChampionSpawnType.ForestLord ); } set { SetValue( ChampionSpawnType.ForestLord, value ); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int SleepingDragon { get { return GetValue( ChampionSpawnType.SleepingDragon ); } set { SetValue( ChampionSpawnType.SleepingDragon, value ); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int UnholyTerror { get { return GetValue( ChampionSpawnType.UnholyTerror ); } set { SetValue( ChampionSpawnType.UnholyTerror, value ); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int VerminHorde { get { return GetValue( ChampionSpawnType.VerminHorde ); } set { SetValue( ChampionSpawnType.VerminHorde, value ); } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public int Harrower { get { return m_Harrower; } set { m_Harrower = value; } }
 
 			public ChampionTitleInfo()
@@ -4147,7 +4147,7 @@ namespace Server.Mobiles
 			m_AcquiredRecipes = null;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int KnownRecipes
 		{
 			get

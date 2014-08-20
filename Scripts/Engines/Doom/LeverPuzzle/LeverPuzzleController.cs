@@ -34,7 +34,7 @@ namespace Server.Engines.Doom
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenLeverPuzzle", AccessLevel.Administrator, new CommandEventHandler( GenLampPuzzle_OnCommand ) );
+			CommandSystem.Register( "GenLeverPuzzle", AccessLevel.Coordinateur, new CommandEventHandler( GenLampPuzzle_OnCommand ) );
 		}
 
 		[Usage( "GenLeverPuzzle" )]
@@ -58,13 +58,13 @@ namespace Server.Engines.Doom
 				e.Mobile.SendMessage( "Lamp room puzzle successfully generated." );
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public UInt16 MyKey { get{ return m_MyKey; } set{ m_MyKey = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public UInt16 TheirKey { get{ return m_TheirKey; } set{ m_TheirKey = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Enabled { get{ return m_Enabled; } set{ m_Enabled = value; } }
 
 		public Mobile Successful { get{ return m_Successful; } }

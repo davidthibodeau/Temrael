@@ -87,14 +87,14 @@ namespace Server.Items
 			set{ m_Greeting = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Title
 		{
 			get{ return m_Title; }
 			set{ m_Title = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }
@@ -334,21 +334,21 @@ namespace Server.Items
 		private Mobile m_Poster;
 		private string m_Message;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime Time
 		{
 			get{ return m_Time; }
 			set{ m_Time = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Poster
 		{
 			get{ return m_Poster; }
 			set{ m_Poster = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Message
 		{
 			get{ return m_Message; }
@@ -540,7 +540,7 @@ namespace Server.Items
 				}
 				case 8: // Post props
 				{
-					if ( from.AccessLevel >= AccessLevel.GameMaster )
+					if ( from.AccessLevel >= AccessLevel.Batisseur )
 					{
 						PlayerBBMessage message = board.Greeting;
 
@@ -632,7 +632,7 @@ namespace Server.Items
 					AddHtmlLocalized( 330, 393, 150, 20, 1062411, LabelColor, false, false ); // Delete Message
 				}
 
-				if ( from.AccessLevel >= AccessLevel.GameMaster )
+				if ( from.AccessLevel >= AccessLevel.Batisseur )
 					AddButton( 135, 242, 1209, 1210, 8, GumpButtonType.Reply, 0 ); // Post props
 			}
 		}

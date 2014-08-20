@@ -9,7 +9,7 @@ namespace Server.Engines.Quests.Collector
 	{
 		private ImageType m_Image;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ImageType Image
 		{
 			get { return m_Image; }

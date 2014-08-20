@@ -10,7 +10,7 @@ namespace Server.Engines.Quests.Haven
 	{
 		private bool m_Active;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get { return m_Active; }

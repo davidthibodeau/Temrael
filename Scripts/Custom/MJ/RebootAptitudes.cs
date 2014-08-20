@@ -15,7 +15,7 @@ namespace Server
     {
         public static void Initialize()
         {
-            CommandSystem.Register("ForceReset", AccessLevel.GameMaster, new CommandEventHandler(ForceReset_OnCommand));
+            CommandSystem.Register("ForceReset", AccessLevel.Batisseur, new CommandEventHandler(ForceReset_OnCommand));
         }
 
         public static void ForceReset_OnCommand(CommandEventArgs e)

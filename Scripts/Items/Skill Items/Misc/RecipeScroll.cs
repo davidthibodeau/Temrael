@@ -12,7 +12,7 @@ namespace Server.Items
 
 		private int m_RecipeID;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RecipeID
 		{
 			get { return m_RecipeID; }

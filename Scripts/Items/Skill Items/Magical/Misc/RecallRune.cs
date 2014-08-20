@@ -63,7 +63,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public BaseHouse House
 		{
 			get
@@ -76,7 +76,7 @@ namespace Server.Items
 			set{ m_House = value; CalculateHue(); InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public string Description
 		{
 			get
@@ -90,7 +90,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public bool Marked
 		{
 			get
@@ -108,7 +108,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public Point3D Target
 		{
 			get
@@ -121,7 +121,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public Map TargetMap
 		{
 			get

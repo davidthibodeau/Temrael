@@ -48,42 +48,42 @@ namespace Server.Items
         
         public virtual bool Disguise { get { return false; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TemraelAttributes TemAttributes
         {
             get { return m_TemraelAttributes; }
             set { }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public RareteItem Rarete
         {
             get { return m_rarete; }
             set { m_rarete = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Identified
         {
             get { return m_Identified; }
             set { m_Identified = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Layer BaseLayer
         {
             get { return m_BaseLayer; }
             set { m_BaseLayer = value; InvalidateProperties(); }
         }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxHitPoints
 		{
 			get{ return m_MaxHitPoints; }
 			set{ m_MaxHitPoints = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HitPoints
 		{
 			get 
@@ -106,35 +106,35 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string CrafterName
         {
             get { return m_CrafterName; }
             set { m_CrafterName = value; InvalidateProperties(); }
         }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int StrRequirement
 		{
 			get{ return ( m_StrReq == -1 ? (Core.AOS ? AosStrReq : OldStrReq) : m_StrReq ); }
 			set{ m_StrReq = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ClothingQuality Quality
 		{
 			get{ return m_Quality; }
 			set{ m_Quality = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool PlayerConstructed
 		{
 			get{ return m_PlayerConstructed; }
@@ -143,35 +143,35 @@ namespace Server.Items
 
 		public virtual CraftResource DefaultResource{ get{ return CraftResource.None; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource; }
 			set{ m_Resource = value; Hue = CraftResources.GetHue( m_Resource ); InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosAttributes Attributes
 		{
 			get{ return m_AosAttributes; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosArmorAttributes ClothingAttributes
 		{
 			get{ return m_AosClothingAttributes; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosSkillBonuses SkillBonuses
 		{
 			get{ return m_AosSkillBonuses; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosElementAttributes Resistances
 		{
 			get{ return m_AosResistances; }
@@ -211,7 +211,7 @@ namespace Server.Items
 			if ( !Ethics.Ethic.CheckEquip( from, this ) )
 				return false;
 
-			if( from.AccessLevel < AccessLevel.GameMaster )
+			if( from.AccessLevel < AccessLevel.Batisseur )
 			{
 				if( RequiredRace != null && from.Race != RequiredRace )
 				{
@@ -332,7 +332,7 @@ namespace Server.Items
 
 						m.AddToBackpack( clothing );
 					}
-					else if ( !clothing.AllowMaleWearer && !m.Female && m.AccessLevel < AccessLevel.GameMaster )
+					else if ( !clothing.AllowMaleWearer && !m.Female && m.AccessLevel < AccessLevel.Batisseur )
 					{
 						if ( clothing.AllowFemaleWearer )
 							m.SendLocalizedMessage( 1010388 ); // Only females can wear this.
@@ -341,7 +341,7 @@ namespace Server.Items
 
 						m.AddToBackpack( clothing );
 					}
-					else if ( !clothing.AllowFemaleWearer && m.Female && m.AccessLevel < AccessLevel.GameMaster )
+					else if ( !clothing.AllowFemaleWearer && m.Female && m.AccessLevel < AccessLevel.Batisseur )
 					{
 						if ( clothing.AllowMaleWearer )
 							m.SendLocalizedMessage( 1063343 ); // Only males can wear this.

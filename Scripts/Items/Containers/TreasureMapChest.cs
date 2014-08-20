@@ -34,16 +34,16 @@ namespace Server.Items
 
 		private List<Mobile> m_Guardians;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Level{ get{ return m_Level; } set{ m_Level = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner{ get{ return m_Owner; } set{ m_Owner = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime DeleteTime{ get{ return m_DeleteTime; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Temporary{ get{ return m_Temporary; } set{ m_Temporary = value; } }
 
 		public List<Mobile> Guardians { get { return m_Guardians; } }
@@ -305,7 +305,7 @@ namespace Server.Items
 			if ( !this.Locked )
 				return false;
 
-			if ( this.Level == 0 && from.AccessLevel < AccessLevel.GameMaster )
+			if ( this.Level == 0 && from.AccessLevel < AccessLevel.Batisseur )
 			{
 				foreach ( Mobile m in this.Guardians )
 				{
@@ -332,7 +332,7 @@ namespace Server.Items
 			if ( m_Temporary )
 				return false;
 
-			if ( m.AccessLevel >= AccessLevel.GameMaster || m_Owner == null || m == m_Owner )
+			if ( m.AccessLevel >= AccessLevel.Batisseur || m_Owner == null || m == m_Owner )
 				return true;
 
 			Party p = Party.Get( m_Owner );
@@ -390,7 +390,7 @@ namespace Server.Items
 
 		public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
 		{
-			if ( m.AccessLevel < AccessLevel.GameMaster )
+			if ( m.AccessLevel < AccessLevel.Batisseur )
 			{
 				m.SendLocalizedMessage( 1048122, "", 0x8A5 ); // The chest refuses to be filled with treasure again.
 				return false;

@@ -10,7 +10,7 @@ namespace Server.Items
 	{
 		private RaisableItem m_RaisableItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public RaisableItem RaisableItem
 		{
 			get{ return m_RaisableItem; }
@@ -19,7 +19,7 @@ namespace Server.Items
 
         private BasePorticullis m_RaisableDoor;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public BasePorticullis RaisableDoor
         {
             get { return m_RaisableDoor; }
@@ -28,7 +28,7 @@ namespace Server.Items
 
         private Mobile m_Owner;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Owner
         {
             get { return m_Owner; }

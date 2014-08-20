@@ -31,7 +31,7 @@ namespace Server.Items
 		private int m_Recharges;
 		private BagOfSendingHue m_BagOfSendingHue;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Charges
 		{
 			get{ return m_Charges; }
@@ -48,7 +48,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Recharges
 		{
 			get{ return m_Recharges; }
@@ -65,17 +65,17 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxCharges{ get{ return 30; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxRecharges{ get{ return 255; } }
 
 		public string TranslocationItemName{ get{ return "bag of sending"; } }
 
 		public override int LabelNumber{ get{ return 1054104; } } // a bag of sending
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BagOfSendingHue BagOfSendingHue
 		{
 			get{ return m_BagOfSendingHue; }

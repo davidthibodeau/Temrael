@@ -11,7 +11,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("FindSerial", AccessLevel.Seer, new CommandEventHandler(FindSerial_OnCommand));
+            CommandSystem.Register("FindSerial", AccessLevel.Chroniqueur, new CommandEventHandler(FindSerial_OnCommand));
         }
 
         public static void FindSerial_OnCommand(CommandEventArgs e)

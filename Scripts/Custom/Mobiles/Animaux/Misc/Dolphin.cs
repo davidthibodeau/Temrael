@@ -60,7 +60,7 @@ namespace Server.Mobiles
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if( from.AccessLevel >= AccessLevel.GameMaster )
+			if( from.AccessLevel >= AccessLevel.Batisseur )
 				Jump();
 		}
 

@@ -12,7 +12,7 @@ namespace Server.Items
 
 		private int m_ClosedID;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ClosedID
 		{
 			get { return m_ClosedID; }

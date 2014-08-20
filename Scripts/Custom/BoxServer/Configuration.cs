@@ -22,6 +22,6 @@ namespace TheBox.BoxServer
 		/// <summary>
 		/// The general access level needed to use BoxServer. Can be overridden in individual modules.
 		/// </summary>
-		public static readonly AccessLevel MinAccessLevel = AccessLevel.GameMaster;
+		public static readonly AccessLevel MinAccessLevel = AccessLevel.Batisseur;
 	}
 }

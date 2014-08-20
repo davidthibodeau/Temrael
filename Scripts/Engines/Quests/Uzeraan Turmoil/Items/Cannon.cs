@@ -18,10 +18,10 @@ namespace Server.Engines.Quests.Haven
 		private CannonDirection m_CannonDirection;
 		private MilitiaCanoneer m_Canoneer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CannonDirection CannonDirection { get { return m_CannonDirection; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MilitiaCanoneer Canoneer { get { return m_Canoneer; } set { m_Canoneer = value; } }
 
 		[Constructable]
@@ -149,7 +149,7 @@ namespace Server.Engines.Quests.Haven
 
 	public class CannonComponent : AddonComponent
 	{
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MilitiaCanoneer Canoneer
 		{
 			get { return Addon is Cannon ? ((Cannon)Addon).Canoneer : null; }

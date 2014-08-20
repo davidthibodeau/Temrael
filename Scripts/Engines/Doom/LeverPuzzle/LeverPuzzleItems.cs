@@ -100,7 +100,7 @@ namespace Server.Engines.Doom
 		private UInt16 m_Code;
 		private LeverPuzzleController m_Controller;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public UInt16 Code
 		{
 			get{ return m_Code; }

@@ -29,10 +29,10 @@ namespace Server
 		private int m_ItemID;
 		private int m_Hue;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ItemID { get { return m_ItemID; } set { m_ItemID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Hue { get { return m_Hue; } set { m_Hue = value; } }
 
 		protected BaseHairInfo( int itemid )

@@ -21,21 +21,21 @@ namespace Server.Mobiles
 		private int m_DevourGoal;
 		private bool m_HasMetalChest = false;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalDevoured
 		{
 			get { return m_DevourTotal; }
 			set { m_DevourTotal = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DevourGoal
 		{
 			get { return ( IsParagon ? m_DevourGoal + 25 : m_DevourGoal ); }
 			set { m_DevourGoal = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool HasMetalChest
 		{
 			get { return m_HasMetalChest; }

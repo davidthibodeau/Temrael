@@ -27,7 +27,7 @@ namespace Server.Items
 			EventSink.OpenSpellbookRequest += new OpenSpellbookRequestEventHandler( EventSink_OpenSpellbookRequest );
 			EventSink.CastSpellRequest += new CastSpellRequestEventHandler( EventSink_CastSpellRequest );
 
-			CommandSystem.Register( "AllSpells", AccessLevel.GameMaster, new CommandEventHandler( AllSpells_OnCommand ) );
+			CommandSystem.Register( "AllSpells", AccessLevel.Batisseur, new CommandEventHandler( AllSpells_OnCommand ) );
 		}
 
 		[Usage( "AllSpells" )]
@@ -273,21 +273,21 @@ namespace Server.Items
 		private AosSkillBonuses m_AosSkillBonuses;
         private TemraelAttributes m_TemraelAttributes;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosAttributes Attributes
 		{
 			get{ return m_AosAttributes; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosSkillBonuses SkillBonuses
 		{
 			get{ return m_AosSkillBonuses; }
 			set{}
 		}
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TemraelAttributes TemAttributes
         {
             get { return m_TemraelAttributes; }
@@ -371,7 +371,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ulong Content
 		{
 			get
@@ -397,7 +397,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SpellCount
 		{
 			get
@@ -548,7 +548,7 @@ namespace Server.Items
 
 		private Mobile m_Crafter;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
@@ -679,14 +679,14 @@ namespace Server.Items
 		private SlayerName m_Slayer2;
 		//Currently though there are no dual slayer spellbooks, OSI has a habit of putting dual slayer stuff in later
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SlayerName Slayer
 		{
 			get { return m_Slayer; }
 			set { m_Slayer = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SlayerName Slayer2
 		{
 			get { return m_Slayer2; }

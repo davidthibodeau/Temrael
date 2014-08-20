@@ -655,9 +655,24 @@ namespace Server.Accounting
 						break;
 					}
 			}
-
-			m_AccessLevel = (AccessLevel)Enum.Parse( typeof( AccessLevel ), Utility.GetText( node["accessLevel"], "Player" ), true );
-			m_Flags = Utility.GetXMLInt32( Utility.GetText( node["flags"], "0" ), 0 );
+            try
+            {
+                m_AccessLevel = (AccessLevel)Enum.Parse(typeof(AccessLevel), Utility.GetText(node["accessLevel"], "Player"), true);
+            }
+            catch
+            {
+                switch (Utility.GetText(node["accessLevel"], "Player"))
+                {
+                    case "GameMaster": m_AccessLevel = AccessLevel.Batisseur; break;
+                    case "Seer": m_AccessLevel = AccessLevel.Chroniqueur; break;
+                    case "Administrator": m_AccessLevel = AccessLevel.Chroniqueur; break;
+                    default:
+                        Console.WriteLine("ERROR: Incapable d'identifier le accesslevel d'un compte (accesslevel: {0}). Avez-vous changé leurs noms?",
+                            Utility.GetText(node["accessLevel"], "Player"));
+                        break;
+                }
+            }
+            m_Flags = Utility.GetXMLInt32(Utility.GetText(node["flags"], "0"), 0);
 			m_Created = Utility.GetXMLDateTime( Utility.GetText( node["created"], null ), DateTime.Now );
 			m_LastLogin = Utility.GetXMLDateTime( Utility.GetText( node["lastLogin"], null ), DateTime.Now );
 

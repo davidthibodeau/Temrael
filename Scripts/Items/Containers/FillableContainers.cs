@@ -20,10 +20,10 @@ namespace Server.Items
 		protected DateTime m_NextRespawnTime;
 		protected Timer m_RespawnTimer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextRespawnTime { get { return m_NextRespawnTime; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public FillableContentType ContentType
 		{
 			get { return FillableContent.Lookup( m_Content ); }

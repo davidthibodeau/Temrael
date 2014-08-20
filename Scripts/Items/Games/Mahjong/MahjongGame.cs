@@ -30,14 +30,14 @@ namespace Server.Engines.Mahjong
 
 		private SecureLevel m_Level;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }
 			set{ m_Level = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ShowScores
 		{
 			get { return m_ShowScores; }
@@ -57,7 +57,7 @@ namespace Server.Engines.Mahjong
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool SpectatorVision
 		{
 			get { return m_SpectatorVision; }

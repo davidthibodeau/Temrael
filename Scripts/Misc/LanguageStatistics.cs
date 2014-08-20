@@ -238,7 +238,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "LanguageStatistics", AccessLevel.Administrator, new CommandEventHandler( LanguageStatistics_OnCommand ) );
+			CommandSystem.Register( "LanguageStatistics", AccessLevel.Coordinateur, new CommandEventHandler( LanguageStatistics_OnCommand ) );
 		}
 
 		[Usage( "LanguageStatistics" )]

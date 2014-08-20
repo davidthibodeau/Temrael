@@ -62,49 +62,49 @@ namespace Server.Multis
 		private Timer m_TurnTimer;
 		private Timer m_MoveTimer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Hold Hold{ get{ return m_Hold; } set{ m_Hold = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TillerMan TillerMan{ get{ return m_TillerMan; } set{ m_TillerMan = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Plank PPlank{ get{ return m_PPlank; } set{ m_PPlank = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Plank SPlank{ get{ return m_SPlank; } set{ m_SPlank = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner{ get{ return m_Owner; } set{ m_Owner = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Direction Facing{ get{ return m_Facing; } set{ SetFacing( value ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Direction Moving{ get{ return m_Moving; } set{ m_Moving = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsMoving{ get{ return ( m_MoveTimer != null ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Speed{ get{ return m_Speed; } set{ m_Speed = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Anchored{ get{ return m_Anchored; } set{ m_Anchored = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string ShipName{ get{ return m_ShipName; } set{ m_ShipName = value; if ( m_TillerMan != null ) m_TillerMan.InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BoatOrder Order{ get{ return m_Order; } set{ m_Order = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MapItem MapItem{ get{ return m_MapItem; } set{ m_MapItem = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int NextNavPoint{ get{ return m_NextNavPoint; } set{ m_NextNavPoint = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime TimeOfDecay{ get{ return m_DecayTime; } set{ m_DecayTime = value; if ( m_TillerMan != null ) m_TillerMan.InvalidateProperties(); } }
 
 		public int Status
@@ -586,7 +586,7 @@ namespace Server.Multis
 			if ( CheckDecay() )
 				return;
 
-			if ( from.AccessLevel < AccessLevel.GameMaster && from != m_Owner )
+			if ( from.AccessLevel < AccessLevel.Batisseur && from != m_Owner )
 			{
 				if ( m_TillerMan != null )
 					m_TillerMan.Say( Utility.Random( 1042876, 4 ) ); // Arr, don't do that! | Arr, leave me alone! | Arr, watch what thour'rt doing, matey! | Arr! Do that again and I’ll throw ye overhead!
@@ -605,7 +605,7 @@ namespace Server.Multis
 			if ( Deleted || CheckDecay() )
 				return;
 
-			if ( from.AccessLevel < AccessLevel.GameMaster && from != m_Owner )
+			if ( from.AccessLevel < AccessLevel.Batisseur && from != m_Owner )
 			{
 				if ( m_TillerMan != null )
 					m_TillerMan.Say( 1042880 ); // Arr! Only the owner of the ship may change its name!
@@ -740,7 +740,7 @@ namespace Server.Multis
 			if ( CheckDecay() )
 				return;
 
-			if ( e.Mobile.AccessLevel < AccessLevel.GameMaster && e.Mobile != m_Owner )
+			if ( e.Mobile.AccessLevel < AccessLevel.Batisseur && e.Mobile != m_Owner )
 			{
 				if ( m_TillerMan != null )
 					m_TillerMan.Say( 1042880 ); // Arr! Only the owner of the ship may change its name!
@@ -795,7 +795,7 @@ namespace Server.Multis
 			if ( CheckDecay() )
 				return;
 
-			if ( m.AccessLevel < AccessLevel.GameMaster && m != m_Owner )
+			if ( m.AccessLevel < AccessLevel.Batisseur && m != m_Owner )
 			{
 				if ( m_TillerMan != null )
 					m_TillerMan.Say( 1042880 ); // Arr! Only the owner of the ship may change its name!

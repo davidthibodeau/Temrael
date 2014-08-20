@@ -14,7 +14,7 @@ namespace Server.Gumps
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "ViewHouses", AccessLevel.GameMaster, new CommandEventHandler( ViewHouses_OnCommand ) );
+			CommandSystem.Register( "ViewHouses", AccessLevel.Batisseur, new CommandEventHandler( ViewHouses_OnCommand ) );
 		}
 
 		[Usage( "ViewHouses" )]

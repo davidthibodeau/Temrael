@@ -40,14 +40,14 @@ namespace Server.Items
 
         private TotemType m_TotemType;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int MaxRange
         {
             get { return m_MaxRange; }
             set { m_MaxRange = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime ToDelete
         {
             get { return m_ToDelete; }
@@ -60,14 +60,14 @@ namespace Server.Items
             set { m_DeleteTimer = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Caster
         {
             get { return m_Caster; }
             set { m_Caster = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public double Bonus
         {
             get { return m_Bonus; }
@@ -80,42 +80,42 @@ namespace Server.Items
                 }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int EffectID
         {
             get { return m_EffectID; }
             set { m_EffectID = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int EffectSpeed
         {
             get { return m_EffectSpeed; }
             set { m_EffectSpeed = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int EffectDuration
         {
             get { return m_EffectDuration; }
             set { m_EffectDuration = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public EffectLayer EffectLayer
         {
             get { return m_EffectLayer; }
             set { m_EffectLayer = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int SoundID
         {
             get { return m_SoundID; }
             set { m_SoundID = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TotemType TotemType
         {
             get { return m_TotemType; }

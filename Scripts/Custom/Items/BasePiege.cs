@@ -52,28 +52,28 @@ namespace Server.Items
         private Poison mPoison = Poison.Lesser;
         private int mEffectID = 0x36B0;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Poison PPoison
         {
             get { return mPoison; }
             set { mPoison = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Poisonning
         {
             get { return mPoisonning; }
             set { mPoisonning = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Degat
         {
             get { return mDegat; }
             set { mDegat = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Amorce
         {
             get { return mAmorce; }
@@ -81,55 +81,55 @@ namespace Server.Items
         }
 
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int TourRechargement
         {
             get { return mTourRechargement; }
             set { mTourRechargement = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Range
         {
             get { return mRange; }
             set { mRange = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Difficulte
         {
             get { return mDifficulte; }
             set { mDifficulte = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime LastUtilisation
         {
             get { return mLastUtilisation; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TimeSpan Retardement
         {
             get { return mRetardement; }
             set { mRetardement = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Utilisation
         {
             get { return mUtilisation; }
             set { mUtilisation = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public PiegeDeclencheur Declencheur
         {
             get { return mDeclencheur; }
             set { mDeclencheur = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Mecanique
         {
             get { return mMecanique; }

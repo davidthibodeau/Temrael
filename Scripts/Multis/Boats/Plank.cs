@@ -71,22 +71,22 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BaseBoat Boat{ get{ return m_Boat; } set{ m_Boat = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlankSide Side{ get{ return m_Side; } set{ m_Side = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Locked{ get{ return m_Locked; } set{ m_Locked = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public uint KeyValue{ get{ return m_KeyValue; } set{ m_KeyValue = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsOpen{ get{ return ( ItemID == 0x3ED5 || ItemID == 0x3ED4 || ItemID == 0x3E84 || ItemID == 0x3E89 ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Starboard{ get{ return ( m_Side == PlankSide.Starboard ); } }
 
 		public void SetFacing( Direction dir )
@@ -264,7 +264,7 @@ namespace Server.Items
 						{
 							Open();
 						}
-						else if ( from.AccessLevel >= AccessLevel.GameMaster )
+						else if ( from.AccessLevel >= AccessLevel.Batisseur )
 						{
 							from.LocalOverheadMessage( Network.MessageType.Regular, 0x00, 502502 ); // That is locked but your godly powers allow access
 							Open();
@@ -278,7 +278,7 @@ namespace Server.Items
 					{
 						from.Location = new Point3D( this.X, this.Y, this.Z + 3 );
 					}
-					else if ( from.AccessLevel >= AccessLevel.GameMaster )
+					else if ( from.AccessLevel >= AccessLevel.Batisseur )
 					{
 						from.LocalOverheadMessage( Network.MessageType.Regular, 0x00, 502502 ); // That is locked but your godly powers allow access
 						from.Location = new Point3D( this.X, this.Y, this.Z + 3 );

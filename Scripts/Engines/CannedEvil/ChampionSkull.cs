@@ -8,7 +8,7 @@ namespace Server.Items
 	{
 		private ChampionSkullType m_Type;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ChampionSkullType Type{ get{ return m_Type; } set{ m_Type = value; InvalidateProperties(); } }
 
 		public override int LabelNumber{ get{ return 1049479 + (int)m_Type; } }

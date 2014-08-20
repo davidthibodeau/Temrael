@@ -15,7 +15,7 @@ namespace Server.Commands
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "DocGen", AccessLevel.Administrator, new CommandEventHandler( DocGen_OnCommand ) );
+			CommandSystem.Register( "DocGen", AccessLevel.Coordinateur, new CommandEventHandler( DocGen_OnCommand ) );
 		}
 
 		[Usage( "DocGen" )]
@@ -1674,9 +1674,9 @@ namespace Server.Commands
 
 						switch( last )
 						{
-							case AccessLevel.Administrator: html.WriteLine( "      <b>Administrator</b> | <a href=\"#GameMaster\">Game Master</a> | <a href=\"#Counselor\">Counselor</a> | <a href=\"#Player\">Player</a><br><br>" ); break;
-							case AccessLevel.GameMaster: html.WriteLine( "      <a href=\"#Top\">Administrator</a> | <b>Game Master</b> | <a href=\"#Counselor\">Counselor</a> | <a href=\"#Player\">Player</a><br><br>" ); break;
-							case AccessLevel.Seer: html.WriteLine( "      <a href=\"#Top\">Administrator</a> | <a href=\"#GameMaster\">Game Master</a> | <a href=\"#Counselor\">Counselor</a> | <a href=\"#Player\">Player</a><br><br>" ); break;
+							case AccessLevel.Coordinateur: html.WriteLine( "      <b>Administrator</b> | <a href=\"#GameMaster\">Game Master</a> | <a href=\"#Counselor\">Counselor</a> | <a href=\"#Player\">Player</a><br><br>" ); break;
+							case AccessLevel.Batisseur: html.WriteLine( "      <a href=\"#Top\">Administrator</a> | <b>Game Master</b> | <a href=\"#Counselor\">Counselor</a> | <a href=\"#Player\">Player</a><br><br>" ); break;
+							case AccessLevel.Chroniqueur: html.WriteLine( "      <a href=\"#Top\">Administrator</a> | <a href=\"#GameMaster\">Game Master</a> | <a href=\"#Counselor\">Counselor</a> | <a href=\"#Player\">Player</a><br><br>" ); break;
 							case AccessLevel.Counselor: html.WriteLine( "      <a href=\"#Top\">Administrator</a> | <a href=\"#GameMaster\">Game Master</a> | <b>Counselor</b> | <a href=\"#Player\">Player</a><br><br>" ); break;
 							case AccessLevel.Player: html.WriteLine( "      <a href=\"#Top\">Administrator</a> | <a href=\"#GameMaster\">Game Master</a> | <a href=\"#Counselor\">Counselor</a> | <b>Player</b><br><br>" ); break;
 						}
@@ -1684,7 +1684,7 @@ namespace Server.Commands
 						html.WriteLine( "      <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" );
 						html.WriteLine( "      <tr><td class=\"tbl-border\">" );
 						html.WriteLine( "      <table width=\"100%\" cellpadding=\"4\" cellspacing=\"1\">" );
-						html.WriteLine( "         <tr><td colspan=\"2\" width=\"100%\" class=\"header\">{0}</td></tr>", last == AccessLevel.GameMaster ? "Game Master" : last.ToString() );
+						html.WriteLine( "         <tr><td colspan=\"2\" width=\"100%\" class=\"header\">{0}</td></tr>", last == AccessLevel.Batisseur ? "Game Master" : last.ToString() );
 					}
 
 					DocumentCommand( html, e );

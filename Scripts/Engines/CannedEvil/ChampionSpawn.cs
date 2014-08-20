@@ -41,14 +41,14 @@ namespace Server.Engines.CannedEvil
 
 		private Dictionary<Mobile, int> m_DamageEntries;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ConfinedRoaming
 		{
 			get { return m_ConfinedRoaming; }
 			set { m_ConfinedRoaming = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool HasBeenAdvanced
 		{
 			get { return m_HasBeenAdvanced; }
@@ -108,14 +108,14 @@ namespace Server.Engines.CannedEvil
 			*/
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool RandomizeType
 		{
 			get { return m_RandomizeType; }
 			set { m_RandomizeType = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Kills
 		{
 			get
@@ -129,7 +129,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Rectangle2D SpawnArea
 		{
 			get
@@ -144,7 +144,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan RestartDelay
 		{
 			get
@@ -157,7 +157,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime RestartTime
 		{
 			get
@@ -166,7 +166,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan ExpireDelay
 		{
 			get
@@ -179,7 +179,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime ExpireTime
 		{
 			get
@@ -192,7 +192,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ChampionSpawnType Type
 		{
 			get
@@ -206,7 +206,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get
@@ -224,7 +224,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Champion
 		{
 			get
@@ -237,7 +237,7 @@ namespace Server.Engines.CannedEvil
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Level
 		{
 			get

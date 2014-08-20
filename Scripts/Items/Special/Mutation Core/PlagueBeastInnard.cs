@@ -36,7 +36,7 @@ namespace Server.Items
 
 		public override bool IsAccessibleTo( Mobile check )
 		{
-			if ( (int) check.AccessLevel >= (int) AccessLevel.GameMaster )
+			if ( (int) check.AccessLevel >= (int) AccessLevel.Batisseur )
 				return true;
 
 			PlagueBeastLord owner = Owner;

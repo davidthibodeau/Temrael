@@ -13,21 +13,21 @@ namespace Server.Engines.Quests
 		private Map m_DestMap;
 		private int m_Charges;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D DestLoc
 		{
 			get{ return m_DestLoc; }
 			set{ m_DestLoc = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map DestMap
 		{
 			get{ return m_DestMap; }
 			set{ m_DestMap = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Charges
 		{
 			get{ return m_Charges; }

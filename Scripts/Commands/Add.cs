@@ -14,10 +14,10 @@ namespace Server.Commands
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Tile", AccessLevel.GameMaster, new CommandEventHandler( Tile_OnCommand ) );
-			CommandSystem.Register( "TileRXYZ", AccessLevel.GameMaster, new CommandEventHandler( TileRXYZ_OnCommand ) );
-			CommandSystem.Register( "TileXYZ", AccessLevel.GameMaster, new CommandEventHandler( TileXYZ_OnCommand ) );
-			CommandSystem.Register( "TileZ", AccessLevel.GameMaster, new CommandEventHandler( TileZ_OnCommand ) );
+			CommandSystem.Register( "Tile", AccessLevel.Batisseur, new CommandEventHandler( Tile_OnCommand ) );
+			CommandSystem.Register( "TileRXYZ", AccessLevel.Batisseur, new CommandEventHandler( TileRXYZ_OnCommand ) );
+			CommandSystem.Register( "TileXYZ", AccessLevel.Batisseur, new CommandEventHandler( TileXYZ_OnCommand ) );
+			CommandSystem.Register( "TileZ", AccessLevel.Batisseur, new CommandEventHandler( TileZ_OnCommand ) );
 		}
 
 		public static void Invoke( Mobile from, Point3D start, Point3D end, string[] args )

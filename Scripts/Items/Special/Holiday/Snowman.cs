@@ -75,7 +75,7 @@ namespace Server.Items
 
 		private string m_Title;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Title
 		{
 			get{ return m_Title; }

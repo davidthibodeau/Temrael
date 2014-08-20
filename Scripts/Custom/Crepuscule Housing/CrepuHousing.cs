@@ -28,56 +28,56 @@ namespace Server.Items
                           null
                         };
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile[] CoProprio
         {
             get { return m_CoProprio; }
             set { m_CoProprio = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string NomProprio
         {
             get { return m_OwnerName != null ? m_OwnerName.Replace("\"", "") : ""; }
             set { m_OwnerName = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public BaseDoor Porte1
         {
             get { return m_Doors1; }
             set { m_Doors1 = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public BaseDoor Porte2
         {
             get { return m_Doors2; }
             set { m_Doors2 = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int PrixVente
         {
             get { return m_SellPrice; }
             set { m_SellPrice = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool MontrerProprio
         {
             get { return m_ShowOwnerName; }
             set { m_ShowOwnerName = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Proprio
         {
             get { return owner; }
             set { if (owner == null) NomProprio = "A vendre"; owner = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool IsCommerce
         {
             get { return m_Commerce; }

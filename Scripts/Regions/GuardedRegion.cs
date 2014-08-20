@@ -24,9 +24,9 @@ namespace Server.Regions
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "CheckGuarded", AccessLevel.GameMaster, new CommandEventHandler( CheckGuarded_OnCommand ) );
-			CommandSystem.Register( "SetGuarded", AccessLevel.Administrator, new CommandEventHandler( SetGuarded_OnCommand ) );
-			CommandSystem.Register( "ToggleGuarded", AccessLevel.Administrator, new CommandEventHandler( ToggleGuarded_OnCommand ) );
+			CommandSystem.Register( "CheckGuarded", AccessLevel.Batisseur, new CommandEventHandler( CheckGuarded_OnCommand ) );
+			CommandSystem.Register( "SetGuarded", AccessLevel.Coordinateur, new CommandEventHandler( SetGuarded_OnCommand ) );
+			CommandSystem.Register( "ToggleGuarded", AccessLevel.Coordinateur, new CommandEventHandler( ToggleGuarded_OnCommand ) );
 		}
 
 		[Usage( "CheckGuarded" )]
@@ -106,7 +106,7 @@ namespace Server.Regions
 
 		public virtual bool CheckVendorAccess( BaseVendor vendor, Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster || IsDisabled() )
+			if ( from.AccessLevel >= AccessLevel.Batisseur || IsDisabled() )
 				return true;
 
 			return ( from.Kills < 5 );

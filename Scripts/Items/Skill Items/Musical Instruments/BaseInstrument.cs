@@ -28,42 +28,42 @@ namespace Server.Items
 		private Mobile m_Crafter;
 		private int m_UsesRemaining;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SuccessSound
 		{
 			get{ return m_WellSound; }
 			set{ m_WellSound = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int FailureSound
 		{
 			get{ return m_BadlySound; }
 			set{ m_BadlySound = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SlayerName Slayer
 		{
 			get{ return m_Slayer; }
 			set{ m_Slayer = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SlayerName Slayer2
 		{
 			get{ return m_Slayer2; }
 			set{ m_Slayer2 = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public InstrumentQuality Quality
 		{
 			get{ return m_Quality; }
 			set{ UnscaleUses(); m_Quality = value; InvalidateProperties(); ScaleUses(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
@@ -75,7 +75,7 @@ namespace Server.Items
 
 		public virtual TimeSpan ChargeReplenishRate { get { return TimeSpan.FromMinutes( 5.0 ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int UsesRemaining
 		{
 			get{ CheckReplenishUses(); return m_UsesRemaining; }
@@ -84,7 +84,7 @@ namespace Server.Items
 
 		private DateTime m_LastReplenished;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastReplenished
 		{
 			get { return m_LastReplenished; }
@@ -92,7 +92,7 @@ namespace Server.Items
 		}
 
 		private bool m_ReplenishesCharges;
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ReplenishesCharges
 		{
 			get { return m_ReplenishesCharges; }

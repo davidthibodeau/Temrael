@@ -48,7 +48,7 @@ namespace Server.Items
 		public HairInfo Hair { get { return m_Hair; } }
 		public FacialHairInfo FacialHair { get { return m_FacialHair; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get{ return m_Owner; }

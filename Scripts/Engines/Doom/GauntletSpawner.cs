@@ -38,35 +38,35 @@ namespace Server.Engines.Doom
 
 		private Region m_Region;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string TypeName
 		{
 			get{ return m_TypeName; }
 			set{ m_TypeName = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BaseDoor Door
 		{
 			get{ return m_Door; }
 			set{ m_Door = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BaseAddon Addon
 		{
 			get{ return m_Addon; }
 			set{ m_Addon = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public GauntletSpawner Sequence
 		{
 			get{ return m_Sequence; }
 			set{ m_Sequence = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool HasCompleted
 		{
 			get
@@ -86,14 +86,14 @@ namespace Server.Engines.Doom
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Rectangle2D RegionBounds
 		{
 			get{ return m_RegionBounds; }
 			set{ m_RegionBounds = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public GauntletSpawnerState State
 		{
 			get{ return m_State; }
@@ -474,7 +474,7 @@ namespace Server.Engines.Doom
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenGauntlet", AccessLevel.Administrator, new CommandEventHandler( GenGauntlet_OnCommand ) );
+			CommandSystem.Register( "GenGauntlet", AccessLevel.Coordinateur, new CommandEventHandler( GenGauntlet_OnCommand ) );
 		}
 
 		public static void CreateTeleporter( int xFrom, int yFrom, int xTo, int yTo )

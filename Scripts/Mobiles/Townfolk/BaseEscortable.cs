@@ -19,7 +19,7 @@ namespace Server.Mobiles
 
 		public override bool Commandable { get { return false; } } // Our master cannot boss us around!
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public string Destination
 		{
 			get { return m_Destination == null ? null : m_Destination.Name; }
@@ -408,7 +408,7 @@ namespace Server.Mobiles
 
 		public override bool CanBeRenamedBy(Mobile from)
 		{
-			return (from.AccessLevel >= AccessLevel.GameMaster);
+			return (from.AccessLevel >= AccessLevel.Batisseur);
 		}
 
 		public override void AddCustomContextEntries(Mobile from, List<ContextMenuEntry> list)

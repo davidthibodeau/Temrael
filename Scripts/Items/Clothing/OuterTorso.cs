@@ -234,21 +234,21 @@ namespace Server.Items
 		#region Arcane Impl
 		private int m_MaxArcaneCharges, m_CurArcaneCharges;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxArcaneCharges
 		{
 			get{ return m_MaxArcaneCharges; }
 			set{ m_MaxArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CurArcaneCharges
 		{
 			get{ return m_CurArcaneCharges; }
 			set{ m_CurArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsArcane
 		{
 			get{ return ( m_MaxArcaneCharges > 0 && m_CurArcaneCharges >= 0 ); }

@@ -21,10 +21,10 @@ namespace Server.Items
         private bool m_accessPop;
         private bool m_accessRel;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Mob { get { return m_mob; } set { m_mob = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Salaire { get { return m_salaire; } set { m_salaire = value; } }
     }
     public class GeoMembre
@@ -40,34 +40,34 @@ namespace Server.Items
         private bool m_dimePayer;
         private GeoClasses m_classeSociale;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Mob { get { return m_mob; } set { m_mob = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Salaire { get { return m_salaire; } set { m_salaire = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Taxe { get { return m_taxe; } set { m_taxe = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int SalaireTresorerie { get { return m_salaireTresorerie; } set { m_salaireTresorerie = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int TaxeTresorerie { get { return m_taxeTresorerie; } set { m_taxeTresorerie = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool TaxePayer { get { return m_taxePayer; } set { m_taxePayer = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Dime { get { return m_dime; } set { m_dime = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int DimeTresorerie { get { return m_dimeTresorerie; } set { m_dimeTresorerie = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool DimePayer { get { return m_dimePayer; } set { m_dimePayer = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoClasses ClasseSociale { get { return m_classeSociale; } set { m_classeSociale = value; } }
     }
     public class GeoMilitaire
@@ -83,31 +83,31 @@ namespace Server.Items
         private int m_cavaliers;
         private int m_chevaliers;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Manpower { get { return m_manpower; } set { m_manpower = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Cout { get { return m_cout; } set { m_cout = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Races Race { get { return m_race; } set { m_race = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Sauvages { get { return m_sauvages; } set { m_sauvages = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Archers { get { return m_archers; } set { m_archers = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Hallebardiers { get { return m_hallebardiers; } set { m_hallebardiers = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Fantassins { get { return m_fantassins; } set { m_fantassins = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Cavaliers { get { return m_cavaliers; } set { m_cavaliers = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Chevaliers { get { return m_chevaliers; } set { m_chevaliers = value; } }
     }
     public class GeoRev
@@ -117,16 +117,16 @@ namespace Server.Items
         private int m_clercRev;
         private int m_nobleRev;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int SerfRev { get { return m_serfRev; } set { m_serfRev = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int BourgRev { get { return m_bourgRev; } set { m_bourgRev = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ClercRev { get { return m_clercRev; } set { m_clercRev = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int NobleRev { get { return m_nobleRev; } set { m_nobleRev = value; } }
     }
     public class GeoBuild
@@ -138,22 +138,22 @@ namespace Server.Items
         private GeoEffet m_effet;
         private int m_effetLevel;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoBuildType Construction { get { return m_construction; } set { m_construction = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Level { get { return m_level; } set { m_level = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ToolTip { get { return m_tooltip; } set { m_tooltip = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Image { get { return m_image; } set { m_image = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoEffet Effet { get { return m_effet; } set { m_effet = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int EffetLevel { get { return m_effetLevel; } set { m_effetLevel = value; } }
     }
     public enum GeoClasses
@@ -282,31 +282,31 @@ namespace Server.Items
     class GeoController : Item
     {
         private GeoTerrains m_Terrain;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoTerrains Terrain { get { return m_Terrain; } set { m_Terrain = value; } }
 
         private List<GeoBuild> m_Constructions;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public List<GeoBuild> Constructions { get { return m_Constructions; } set { m_Constructions = value; } }
 
         private GeoBuild m_Projet;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoBuild Projet { get { return m_Projet; } set { m_Projet = value; } }
 
         private GeoMilitaire m_Armee;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoMilitaire Armee { get { return m_Armee; } set { m_Armee = value; } }
 
         private GeoRev m_Revolte;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoRev Revolte { get { return m_Revolte; } set { m_Revolte = value; } }
 
         private List<GeoConseiller> m_Conseillers;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public List<GeoConseiller> Conseillers { get { return m_Conseillers; } set { m_Conseillers = value; } }
 
         private List<GeoMembre> m_Citoyens;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public List<GeoMembre> Citoyens { get { return m_Citoyens; } set { m_Citoyens = value; } }
 
         //private int m_Taille;
@@ -314,51 +314,51 @@ namespace Server.Items
         //public int Taille { get { return m_Taille; } set { m_Taille = value; } }
 
         private int m_Aides;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Aides { get { return m_Aides; } set { m_Aides = value; } }
 
         private int m_Octroi;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Octroi { get { return m_Octroi; } set { m_Octroi = value; } }
 
         private int m_Taillon;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Taillon { get { return m_Taillon; } set { m_Taillon = value; } }
 
         private int m_Traites;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Traites { get { return m_Traites; } set { m_Traites = value; } }
 
         private int m_Aides4Cas;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Aides4Cas { get { return m_Aides4Cas; } set { m_Aides4Cas = value; } }
 
         private int m_Dime;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Dime { get { return m_Dime; } set { m_Dime = value; } }
 
         private int m_Tresorerie;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Tresorerie { get { return m_Tresorerie; } set { m_Tresorerie = value; } }
 
         private int m_TresorerieReligion;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int TresorerieReligion { get { return m_TresorerieReligion; } set { m_TresorerieReligion = value; } }
 
         private GeoController m_Liege;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public GeoController Liege { get { return m_Liege; } set { m_Liege = value; } }
 
         private Mobile m_Owner;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Owner { get { return m_Owner; } set { m_Owner = value; } }
 
         private DateTime m_LastUpdate;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime LastUpdate { get { return m_LastUpdate; } set { m_LastUpdate = value; } }
 
         private UpdateTimer m_updateTimer;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public UpdateTimer InternalUpdateTimer { get { return m_updateTimer; } set { m_updateTimer = value; } }
 
         [Constructable]

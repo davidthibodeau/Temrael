@@ -26,9 +26,9 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Restart", AccessLevel.Administrator, new CommandEventHandler( Restart_OnCommand ) );
-            CommandSystem.Register( "Miseajour", AccessLevel.Administrator, new CommandEventHandler( Miseajour_OnCommand ) );
-            CommandSystem.Register( "Cancelrestart", AccessLevel.Administrator, new CommandEventHandler(CancelRestart_OnCommand ) );
+			CommandSystem.Register( "Restart", AccessLevel.Coordinateur, new CommandEventHandler( Restart_OnCommand ) );
+            CommandSystem.Register( "Miseajour", AccessLevel.Coordinateur, new CommandEventHandler( Miseajour_OnCommand ) );
+            CommandSystem.Register( "Cancelrestart", AccessLevel.Coordinateur, new CommandEventHandler(CancelRestart_OnCommand ) );
 			new AutoRestart().Start();
 		}
 

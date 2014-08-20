@@ -91,7 +91,7 @@ namespace Server.Items
 
 		public static readonly TimeSpan InstancedCorpseTime = TimeSpan.FromMinutes( 3.0 );
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual bool InstancedCorpse 
 		{ 
 			get 
@@ -253,7 +253,7 @@ namespace Server.Items
 			get{ return false; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime TimeOfDeath
 		{
 			get{ return m_TimeOfDeath; }
@@ -265,47 +265,47 @@ namespace Server.Items
 		public HairInfo Hair { get { return m_Hair; } }
 		public FacialHairInfo FacialHair { get { return m_FacialHair; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsBones
 		{
 			get { return GetFlag( CorpseFlag.IsBones ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Devoured
 		{
 			get { return (m_Devourer != null); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Carved
 		{
 			get{ return GetFlag( CorpseFlag.Carved ); }
 			set { SetFlag( CorpseFlag.Carved, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool VisitedByTaxidermist
 		{
 			get { return GetFlag( CorpseFlag.VisitedByTaxidermist ); }
 			set { SetFlag( CorpseFlag.VisitedByTaxidermist, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Channeled
 		{
 			get { return GetFlag( CorpseFlag.Channeled ); }
 			set { SetFlag( CorpseFlag.Channeled, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Animated
 		{
 			get { return GetFlag( CorpseFlag.Animated ); }
 			set { SetFlag( CorpseFlag.Animated, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AccessLevel AccessLevel
 		{
 			get{ return m_AccessLevel; }
@@ -321,7 +321,7 @@ namespace Server.Items
 			get{ return m_Looters; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Killer
 		{
 			get{ return m_Killer; }
@@ -337,21 +337,21 @@ namespace Server.Items
 			get{ return m_Guild; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Kills
 		{
 			get{ return m_Kills; }
 			set{ m_Kills = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Criminal
 		{
 			get { return GetFlag( CorpseFlag.Criminal ); }
 			set { SetFlag( CorpseFlag.Criminal, value ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get{ return m_Owner; }
@@ -834,7 +834,7 @@ namespace Server.Items
 
 		public bool IsCriminalAction( Mobile from )
 		{
-			if ( from == m_Owner || from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from == m_Owner || from.AccessLevel >= AccessLevel.Batisseur )
 				return false;
 
 			Party p = Party.Get( m_Owner );

@@ -12,7 +12,7 @@ namespace Server.Commands.Generic
 		{
 			Accessors = new string[]{ "Contained" };
 			SupportRequirement = CommandSupport.Contained;
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Usage = "Contained <command> [condition]";
 			Description = "Invokes the command on all child items in a targeted container. Optional condition arguments can further restrict the set of objects.";
 		}

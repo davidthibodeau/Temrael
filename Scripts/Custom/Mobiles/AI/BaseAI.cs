@@ -302,7 +302,7 @@ namespace Server.Mobiles
 
 		public virtual bool HandlesOnSpeech( Mobile from )
 		{
-			if( from.AccessLevel >= AccessLevel.GameMaster )
+			if( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if( from.Alive && m_Mobile.Controlled && m_Mobile.Commandable && (from == m_Mobile.ControlMaster || m_Mobile.IsPetFriend( from )) )
@@ -756,7 +756,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				if( e.Mobile.AccessLevel >= AccessLevel.GameMaster )
+				if( e.Mobile.AccessLevel >= AccessLevel.Batisseur )
 				{
 					m_Mobile.DebugSay( "It's from a GM" );
 

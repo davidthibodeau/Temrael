@@ -138,7 +138,7 @@ namespace Server.Gumps
                     }
                 case 8: // Kick
                     {
-                        if (from.AccessLevel >= AccessLevel.GameMaster && from.AccessLevel > focus.AccessLevel)
+                        if (from.AccessLevel >= AccessLevel.Batisseur && from.AccessLevel > focus.AccessLevel)
                         {
                             focus.Say("I've been kicked!");
 
@@ -151,7 +151,7 @@ namespace Server.Gumps
                     }
                 case 9: // Kill
                     {
-                        if (from.AccessLevel >= AccessLevel.GameMaster && from.AccessLevel > focus.AccessLevel)
+                        if (from.AccessLevel >= AccessLevel.Batisseur && from.AccessLevel > focus.AccessLevel)
                         {
                             focus.Kill();
                             CommandLogging.WriteLine(from, "{0} {1} tue {2} ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus));
@@ -163,7 +163,7 @@ namespace Server.Gumps
                     }
                 case 10: //Res
                     {
-                        if (from.AccessLevel >= AccessLevel.GameMaster && from.AccessLevel > focus.AccessLevel)
+                        if (from.AccessLevel >= AccessLevel.Batisseur && from.AccessLevel > focus.AccessLevel)
                         {
                             focus.PlaySound(0x214);
                             focus.FixedEffect(0x376A, 10, 16);
@@ -233,7 +233,7 @@ namespace Server.Gumps
 
             int line = 0;
 
-            if (from.AccessLevel >= AccessLevel.GameMaster)
+            if (from.AccessLevel >= AccessLevel.Batisseur)
             {
                 AddHtml(14, 36 + (line * 20), 200, 20, Color("Addresse:", LabelColor32), false, false);
                 AddHtml(70, 36 + (line++ * 20), 200, 20, Color(state.ToString(), LabelColor32), false, false);
@@ -288,7 +288,7 @@ namespace Server.Gumps
 
                 line = 0;
 
-                if ((from.AccessLevel >= AccessLevel.GameMaster) && (from.AccessLevel > m.AccessLevel))
+                if ((from.AccessLevel >= AccessLevel.Batisseur) && (from.AccessLevel > m.AccessLevel))
                 {
                     AddButton(246, 36 + (line * 20), 0xFA5, 0xFA7, 4, GumpButtonType.Reply, 0);
                     AddHtml(280, 38 + (line++ * 20), 100, 20, Color("Props", LabelColor32), false, false);
@@ -311,7 +311,7 @@ namespace Server.Gumps
                     AddHtml(280, 38 + (line++ * 20), 100, 20, Color("Move here", LabelColor32), false, false);
                 }
 
-                if (from.AccessLevel >= AccessLevel.GameMaster && m.AccessLevel == AccessLevel.Player)
+                if (from.AccessLevel >= AccessLevel.Batisseur && m.AccessLevel == AccessLevel.Player)
                 {
                     AddButton(246, 36 + (line * 20), 0xFA5, 0xFA7, 8, GumpButtonType.Reply, 0);
                     AddHtml(280, 38 + (line++ * 20), 100, 20, Color("Disconnect", LabelColor32), false, false);

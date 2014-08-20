@@ -34,7 +34,7 @@ namespace Server.Items
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ItemID {
 			get {
 				return base.ItemID;

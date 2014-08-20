@@ -37,14 +37,14 @@ namespace Server.Items
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SkillName Skill
 		{
 			get { return m_Skill; }
 			set { m_Skill = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double Value
 		{
 			get { return m_Value; }

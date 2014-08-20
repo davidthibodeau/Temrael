@@ -295,7 +295,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public double Base
 		{
 			get
@@ -332,7 +332,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public double Cap
 		{
 			get
@@ -873,7 +873,7 @@ namespace Server
 
 		#endregion
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int Cap
 		{
 			get{ return m_Cap; } 

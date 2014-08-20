@@ -46,14 +46,14 @@ namespace Server.Items
         private Bait m_Bait;
         private int m_Charge;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Bait Bait
         {
             get { return m_Bait; }
             set { m_Bait = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Charge
         {
             get { return m_Charge; }

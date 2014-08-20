@@ -17,7 +17,7 @@ namespace Server.Engines.UOArchitect
 
 		public static void Initialize()
 		{
-			OrbServer.Register("UOAR_SelectItems", typeof(SelectItemsRequest), AccessLevel.GameMaster, true);
+			OrbServer.Register("UOAR_SelectItems", typeof(SelectItemsRequest), AccessLevel.Batisseur, true);
 		}
 
 		public override void OnRequest(OrbClientInfo clientInfo, OrbRequestArgs reqArgs)

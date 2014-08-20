@@ -9,7 +9,7 @@ namespace Server.Scripts.UOArchitect
 	{
 		public static void Initialize()
 		{
-			OrbServer.Register("UOAR_DeleteItems", typeof(DeleteItems), AccessLevel.GameMaster, true);
+			OrbServer.Register("UOAR_DeleteItems", typeof(DeleteItems), AccessLevel.Batisseur, true);
 		}
 
 		public override void OnCommand(OrbClientInfo clientInfo, OrbCommandArgs cmdArgs)

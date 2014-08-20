@@ -9,9 +9,9 @@ namespace Server.Commands
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "SetSkill", AccessLevel.GameMaster, new CommandEventHandler( SetSkill_OnCommand ) );
-			CommandSystem.Register( "GetSkill", AccessLevel.GameMaster, new CommandEventHandler( GetSkill_OnCommand ) );
-			CommandSystem.Register( "SetAllSkills", AccessLevel.GameMaster, new CommandEventHandler( SetAllSkills_OnCommand ) );
+			CommandSystem.Register( "SetSkill", AccessLevel.Batisseur, new CommandEventHandler( SetSkill_OnCommand ) );
+			CommandSystem.Register( "GetSkill", AccessLevel.Batisseur, new CommandEventHandler( GetSkill_OnCommand ) );
+			CommandSystem.Register( "SetAllSkills", AccessLevel.Batisseur, new CommandEventHandler( SetAllSkills_OnCommand ) );
 		}
 
 		[Usage( "SetSkill <name> <value>" )]

@@ -576,39 +576,39 @@ namespace Server.Items
 
 		public abstract int ComputeItemID();
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsEmpty
 		{
 			get { return ( m_Quantity <= 0 ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ContainsAlchohol
 		{
 			get { return ( !IsEmpty && m_Content != BeverageType.Milk && m_Content != BeverageType.Water ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsFull
 		{
 			get { return ( m_Quantity >= MaxQuantity ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Poison Poison
 		{
 			get { return m_Poison; }
 			set { m_Poison = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Poisoner
 		{
 			get { return m_Poisoner; }
 			set { m_Poisoner = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BeverageType Content
 		{
 			get { return m_Content; }
@@ -627,7 +627,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Quantity
 		{
 			get { return m_Quantity; }

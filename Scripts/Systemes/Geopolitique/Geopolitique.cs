@@ -24,7 +24,7 @@ namespace Server.Systemes.Geopolitique
 
         public static void Initialize()
         {
-            CommandSystem.Register("geopol", AccessLevel.GameMaster, new CommandEventHandler(Geopol_OnCommand));
+            CommandSystem.Register("geopol", AccessLevel.Batisseur, new CommandEventHandler(Geopol_OnCommand));
         }
 
         [Usage("Geopol")]

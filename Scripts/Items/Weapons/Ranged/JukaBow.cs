@@ -13,7 +13,7 @@ namespace Server.Items
 		public override int OldStrengthReq{ get{ return 80; } }
 		public override int OldDexterityReq{ get{ return 80; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsModified
 		{
 			get{ return ( Hue == 0x453 ); }

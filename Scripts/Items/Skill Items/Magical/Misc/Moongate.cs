@@ -15,7 +15,7 @@ namespace Server.Items
 		private Map m_TargetMap;
 		private bool m_bDispellable;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Target
 		{
 			get
@@ -28,7 +28,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map TargetMap
 		{
 			get
@@ -41,7 +41,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Dispellable
 		{
 			get
@@ -274,49 +274,49 @@ namespace Server.Items
 
 		private string m_MessageString;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GumpWidth
 		{
 			get{ return m_GumpWidth; }
 			set{ m_GumpWidth = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GumpHeight
 		{
 			get{ return m_GumpHeight; }
 			set{ m_GumpHeight = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TitleColor
 		{
 			get{ return m_TitleColor; }
 			set{ m_TitleColor = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MessageColor
 		{
 			get{ return m_MessageColor; }
 			set{ m_MessageColor = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TitleNumber
 		{
 			get{ return m_TitleNumber; }
 			set{ m_TitleNumber = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MessageNumber
 		{
 			get{ return m_MessageNumber; }
 			set{ m_MessageNumber = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string MessageString
 		{
 			get{ return m_MessageString; }

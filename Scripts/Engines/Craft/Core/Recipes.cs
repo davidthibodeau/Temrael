@@ -10,8 +10,8 @@ namespace Server.Engines.Craft
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "LearnAllRecipes", AccessLevel.GameMaster, new CommandEventHandler( LearnAllRecipes_OnCommand ) );
-			CommandSystem.Register( "ForgetAllRecipes", AccessLevel.GameMaster, new CommandEventHandler( ForgetAllRecipes_OnCommand ) );
+			CommandSystem.Register( "LearnAllRecipes", AccessLevel.Batisseur, new CommandEventHandler( LearnAllRecipes_OnCommand ) );
+			CommandSystem.Register( "ForgetAllRecipes", AccessLevel.Batisseur, new CommandEventHandler( ForgetAllRecipes_OnCommand ) );
 		}
 
 		[Usage( "LearnAllRecipes" )]

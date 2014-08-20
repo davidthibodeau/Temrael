@@ -17,7 +17,7 @@ namespace Server.Mobiles
 			get { return 1.0; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public bool IsDonationItem
 		{
 			get { return m_IsDonationItem; }
@@ -48,7 +48,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MountedID
 		{
 			get
@@ -67,7 +67,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RegularID
 		{
 			get
@@ -224,7 +224,7 @@ namespace Server.Mobiles
 				mount.Rider = null;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Rider
 		{
 			get

@@ -23,21 +23,21 @@ namespace Server.Factions
 
 		private Timer m_Concealing;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Faction Faction
 		{
 			get{ return m_Faction; }
 			set{ m_Faction = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Placer
 		{
 			get{ return m_Placer; }
 			set{ m_Placer = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime TimeOfPlacement
 		{
 			get{ return m_TimeOfPlacement; }

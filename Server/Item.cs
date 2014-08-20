@@ -569,9 +569,9 @@ namespace Server
         #region Alteration By Players
         private bool m_canBeAltered = true;
         private DateTime m_lastAlteration;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public virtual bool CanBeAltered { get { return m_canBeAltered; } set { m_canBeAltered = value; } }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime LastAlteration { get { return m_lastAlteration; } set { m_lastAlteration = value; } }
         #endregion
 
@@ -1632,7 +1632,7 @@ namespace Server
 		/// </summary>
 		public bool Deleted{ get{ return GetFlag( ImplFlag.Deleted ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public LootType LootType
 		{
 			get
@@ -1655,7 +1655,7 @@ namespace Server
 
 		public static TimeSpan DefaultDecayTime{ get{ return m_DDT; } set{ m_DDT = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual TimeSpan DecayTime
 		{
 			get
@@ -1664,7 +1664,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual bool Decays
 		{
 			get
@@ -1775,7 +1775,7 @@ namespace Server
 			return bounds;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Stackable
 		{
 			get{ return GetFlag( ImplFlag.Stackable ); }
@@ -1985,7 +1985,7 @@ namespace Server
 			Packet.Release( ref m_WorldPacketHS );
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Visible
 		{
 			get{ return GetFlag( ImplFlag.Visible ); }
@@ -2018,7 +2018,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Movable
 		{
 			get{ return GetFlag( ImplFlag.Movable ); }
@@ -2081,7 +2081,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public Map Map
 		{
 			get
@@ -2951,19 +2951,19 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalGold
 		{
 			get { return GetTotal( TotalType.Gold ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalItems
 		{
 			get { return GetTotal( TotalType.Items ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalWeight
 		{
 			get { return GetTotal( TotalType.Weight ); }
@@ -2985,7 +2985,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public double Weight
 		{
 			get
@@ -3019,7 +3019,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int PileWeight
 		{
 			get
@@ -3036,7 +3036,7 @@ namespace Server
 			}
 		}
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public virtual int Hue
 		{
 			get
@@ -3069,7 +3069,7 @@ namespace Server
 				from.SendLocalizedMessage( 1049343 ); // You can only drop quest items into the top-most level of your backpack while you still need them for your quest.
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual Layer Layer
 		{
 			get
@@ -3100,7 +3100,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public IEntity RootParent
 		{
 			get
@@ -3728,7 +3728,7 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public virtual Point3D Location
 		{
 			get
@@ -3808,21 +3808,21 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int X
 		{
 			get{ return m_Location.m_X; }
 			set{ Location = new Point3D( value, m_Location.m_Y, m_Location.m_Z ); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int Y
 		{
 			get{ return m_Location.m_Y; }
 			set{ Location = new Point3D( m_Location.m_X, value, m_Location.m_Z ); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
 		public int Z
 		{
 			get{ return m_Location.m_Z; }
@@ -3830,7 +3830,7 @@ namespace Server
 		}
 		#endregion
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int ItemID
 		{
 			get
@@ -3861,7 +3861,7 @@ namespace Server
 			get { return null; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Name
 		{
 			get
@@ -3889,7 +3889,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty(AccessLevel.GameMaster, AccessLevel.Developer)]
+		[CommandProperty(AccessLevel.Batisseur, AccessLevel.Developer)]
 		public IEntity Parent
 		{
 			get
@@ -3915,7 +3915,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public LightType Light
 		{
 			get
@@ -3934,7 +3934,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Direction Direction
 		{
 			get
@@ -3953,7 +3953,7 @@ namespace Server
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Amount
 		{
 			get
@@ -4013,7 +4013,7 @@ namespace Server
 		{
 			if ( Deleted || from.Deleted || target.Deleted || from.Map != target.Map || from.Map == null || target.Map == null )
 				return false;
-			else if ( from.AccessLevel < AccessLevel.GameMaster && !from.InRange( target.Location, 2 ) )
+			else if ( from.AccessLevel < AccessLevel.Batisseur && !from.InRange( target.Location, 2 ) )
 				return false;
 			else if ( !from.CanSee( target ) || !from.InLOS( target ) )
 				return false;
@@ -4046,7 +4046,7 @@ namespace Server
 		{
 			if ( Deleted || from.Deleted || target.Deleted || from.Map != target.Map || from.Map == null || target.Map == null )
 				return false;
-			else if ( from.AccessLevel < AccessLevel.GameMaster && !from.InRange( target.GetWorldLocation(), 2 ) )
+			else if ( from.AccessLevel < AccessLevel.Batisseur && !from.InRange( target.GetWorldLocation(), 2 ) )
 				return false;
 			else if ( !from.CanSee( target ) || !from.InLOS( target ) )
 				return false;
@@ -4070,7 +4070,7 @@ namespace Server
 
 			object root = target.RootParent;
 
-			if ( from.AccessLevel < AccessLevel.GameMaster && !from.InRange( target.GetWorldLocation(), 2 ) )
+			if ( from.AccessLevel < AccessLevel.Batisseur && !from.InRange( target.GetWorldLocation(), 2 ) )
 				return false;
 			else if ( !from.CanSee( target ) || !from.InLOS( target ) )
 				return false;
@@ -4745,7 +4745,7 @@ namespace Server
 			Delete();
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool QuestItem
 		{
 			get { return GetFlag( ImplFlag.QuestItem ); }

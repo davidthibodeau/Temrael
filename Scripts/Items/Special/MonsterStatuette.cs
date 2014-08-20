@@ -130,21 +130,21 @@ namespace Server.Items
 		private bool m_TurnedOn;
 		private bool m_IsRewardItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsRewardItem
 		{
 			get{ return m_IsRewardItem; }
 			set{ m_IsRewardItem = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool TurnedOn
 		{
 			get{ return m_TurnedOn; }
 			set{ m_TurnedOn = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MonsterStatuetteType Type
 		{
 			get{ return m_Type; }

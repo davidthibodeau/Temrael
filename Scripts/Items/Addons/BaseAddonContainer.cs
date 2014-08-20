@@ -11,7 +11,7 @@ namespace Server.Items
 	{
 		public override bool DisplayWeight { get { return false; } }
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get
@@ -37,7 +37,7 @@ namespace Server.Items
 
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get { return m_Resource; }

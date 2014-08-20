@@ -14,7 +14,7 @@ namespace Server.Items
 	{
 		private SecureLevel m_Level;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }
@@ -126,7 +126,7 @@ namespace Server.Items
 
 		public static bool ValidateDefault( Mobile from, BaseBoard board )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( !from.Alive )
@@ -153,7 +153,7 @@ namespace Server.Items
 			private Mobile m_From;
 			private BaseBoard m_Board;
 
-			public DefaultEntry( Mobile from, BaseBoard board ) : base( 6162, from.AccessLevel >= AccessLevel.GameMaster ? -1 : 1 )
+			public DefaultEntry( Mobile from, BaseBoard board ) : base( 6162, from.AccessLevel >= AccessLevel.Batisseur ? -1 : 1 )
 			{
 				m_From = from;
 				m_Board = board;

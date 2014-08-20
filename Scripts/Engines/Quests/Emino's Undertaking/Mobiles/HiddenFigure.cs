@@ -16,7 +16,7 @@ namespace Server.Engines.Quests.Ninja
 
 		private int m_Message;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Message{ get{ return m_Message; } set{ m_Message = value; } }
 
 		[Constructable]

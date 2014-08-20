@@ -49,7 +49,7 @@ namespace TheBox.BoxServer
 		{
 			get
 			{
-				return AccessLevel.GameMaster;
+				return AccessLevel.Batisseur;
 			}
 		}
 

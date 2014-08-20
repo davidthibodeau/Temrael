@@ -12,7 +12,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("xSay", AccessLevel.GameMaster, new CommandEventHandler(xSay_OnCommand));
+            CommandSystem.Register("xSay", AccessLevel.Batisseur, new CommandEventHandler(xSay_OnCommand));
         }
 
         public static void xSay_OnCommand(CommandEventArgs e)

@@ -51,21 +51,21 @@ namespace Server.Items
         private BasePlant m_Plant;
         private Manure m_Manure;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public EarthType EarthType
         {
             get { return m_EarthType; }
             set { m_EarthType = value; ItemID = ComputeItemID(); Weight = ComputeWeight(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public BasePlant Plant
         {
             get { return m_Plant; }
             set { m_Plant = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Manure Manure
         {
             get { return m_Manure; }

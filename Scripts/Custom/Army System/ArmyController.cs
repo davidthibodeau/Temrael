@@ -26,36 +26,36 @@ namespace Server.Items
     {
 
         private Mobile m_Owner;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Owner { get { return m_Owner; } set { m_Owner = value; } }
 
         private bool m_War;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool War { get { return m_War; } set { m_War = value; } }
 
         private bool m_Free;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Free { get { return m_Free; } set { m_Free = value; } }
 
         private Point3D m_ArmyHome;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Point3D ArmyHome { get { return m_ArmyHome; } set { m_ArmyHome = value; } }
 
         private Direction m_ArmyDirection = Direction.North;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Direction ArmyDirection { get { return m_ArmyDirection; } set { m_ArmyDirection = value; } }
 
         private Direction m_ArmyFormationDirection = Direction.North;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Direction ArmyFormationDirection { get { return m_ArmyFormationDirection; } set { m_ArmyFormationDirection = value; } }
 
         private ArmyFormationEnum m_CurrentFormation = ArmyFormationEnum.FullSquare;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public ArmyFormationEnum CurrentFormation { get { return m_CurrentFormation; } set { m_CurrentFormation = value; } }
 
         private ArrayList Soldiers = new ArrayList();
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ArmySize { get { return Soldiers.Count; } }
 
         [Constructable]
@@ -495,7 +495,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from.AccessLevel >= AccessLevel.GameMaster)
+            if (from.AccessLevel >= AccessLevel.Batisseur)
                 m_Owner = from;
             if (m_Owner == null)
             {

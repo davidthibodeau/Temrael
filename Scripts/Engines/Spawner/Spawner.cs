@@ -17,8 +17,8 @@ namespace Server.Mobiles
 
         public static void Initialize()
         {
-            CommandSystem.Register( "ResetSpawners", AccessLevel.Administrator, new CommandEventHandler( ResetSpawners_OnCommand ) );
-            CommandSystem.Register( "GenSpawnerDocs", AccessLevel.Administrator, new CommandEventHandler( GenSpawnerDocs_OnCommand ) );
+            CommandSystem.Register( "ResetSpawners", AccessLevel.Coordinateur, new CommandEventHandler( ResetSpawners_OnCommand ) );
+            CommandSystem.Register( "GenSpawnerDocs", AccessLevel.Coordinateur, new CommandEventHandler( GenSpawnerDocs_OnCommand ) );
         }
 
         private static void GenSpawnerDocs_OnCommand(CommandEventArgs e)
@@ -163,14 +163,14 @@ namespace Server.Mobiles
 			s.m_Spawned = new List<ISpawnable>();
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Count
 		{
 			get { return m_Count; }
 			set { m_Count = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint WayPoint
 		{
 			get
@@ -183,7 +183,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Running
 		{
 			get { return m_Running; }
@@ -198,42 +198,42 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HomeRange
 		{
 			get { return m_HomeRange; }
 			set { m_HomeRange = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )] 
+		[CommandProperty( AccessLevel.Batisseur )] 
 		public int WalkingRange 
 		{ 
 		   get { return m_WalkingRange; } 
 		   set { m_WalkingRange = value; InvalidateProperties(); } 
 		} 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Team
 		{
 			get { return m_Team; }
 			set { m_Team = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan MinDelay
 		{
 			get { return m_MinDelay; }
 			set { m_MinDelay = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan MaxDelay
 		{
 			get { return m_MaxDelay; }
 			set { m_MaxDelay = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan NextSpawn
 		{
 			get
@@ -250,7 +250,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Group
 		{
 			get { return m_Group; }
@@ -315,7 +315,7 @@ namespace Server.Mobiles
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.AccessLevel < AccessLevel.GameMaster )
+			if ( from.AccessLevel < AccessLevel.Batisseur )
 				return;
 
 			SpawnerGump g = new SpawnerGump( this );
@@ -572,7 +572,7 @@ namespace Server.Mobiles
 					{
 						CPA attr = Properties.GetCPA( thisProp );
 
-						if ( attr != null && AccessLevel.GameMaster >= attr.WriteLevel && thisProp.CanWrite && !attr.ReadOnly )
+						if ( attr != null && AccessLevel.Batisseur >= attr.WriteLevel && thisProp.CanWrite && !attr.ReadOnly )
 							realProps[i] = thisProp;
 					}
 				}
@@ -584,7 +584,7 @@ namespace Server.Mobiles
 			{
 				ConstructorInfo ctor = ctors[i];
 
-				if ( !Add.IsConstructable( ctor, AccessLevel.GameMaster ) )
+				if ( !Add.IsConstructable( ctor, AccessLevel.Batisseur ) )
 					continue;
 
 				ParameterInfo[] paramList = ctor.GetParameters();

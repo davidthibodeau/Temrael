@@ -150,7 +150,7 @@ namespace Server.Mobiles
 			if ( !base.CheckTarget( from, targ, targeted ) )
 				return false;
 
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			return targ.GetType().IsDefined( typeof( PlayerVendorTargetAttribute ), false );
@@ -509,28 +509,28 @@ namespace Server.Mobiles
 			AddItem( pack );
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get{ return m_Owner; }
 			set{ m_Owner = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int BankAccount
 		{
 			get{ return m_BankAccount; }
 			set{ m_BankAccount = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HoldGold
 		{
 			get{ return m_HoldGold; }
 			set{ m_HoldGold = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string ShopName
 		{
 			get{ return m_ShopName; }
@@ -545,7 +545,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextPayTime
 		{
 			get{ return m_NextPayTime; }
@@ -621,7 +621,7 @@ namespace Server.Mobiles
 
 		public virtual bool IsOwner( Mobile m )
 		{
-			if ( m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( BaseHouse.NewVendorSystem && House != null )
@@ -1727,7 +1727,7 @@ namespace Server.Mobiles
 		private PlayerVendor m_Vendor;
 		private ExpireTimer m_Timer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlayerVendor Vendor{ get{ return m_Vendor; } }
 
 		public PlayerVendorPlaceholder( PlayerVendor vendor ) : base( 0x1F28 )

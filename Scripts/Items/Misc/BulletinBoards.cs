@@ -38,7 +38,7 @@ namespace Server.Items
 	{
 		private string m_BoardName;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string BoardName
 		{
 			get{ return m_BoardName; }
@@ -174,7 +174,7 @@ namespace Server.Items
 
 		public virtual bool CheckRange( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			return ( from.Map == this.Map && from.InRange( GetWorldLocation(), 2 ) );
@@ -311,7 +311,7 @@ namespace Server.Items
 			if ( msg == null || msg.Parent != board )
 				return;
 
-			if ( from.AccessLevel < AccessLevel.GameMaster && msg.Poster != from )
+			if ( from.AccessLevel < AccessLevel.Batisseur && msg.Poster != from )
 				return;
 
 			msg.Delete();

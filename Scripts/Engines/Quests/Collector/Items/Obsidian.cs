@@ -89,7 +89,7 @@ namespace Server.Engines.Quests.Collector
 		private int m_Quantity;
 		private string m_StatueName;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Quantity
 		{
 			get { return m_Quantity; }
@@ -113,7 +113,7 @@ namespace Server.Engines.Quests.Collector
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string StatueName
 		{
 			get { return m_StatueName; }

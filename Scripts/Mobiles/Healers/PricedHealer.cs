@@ -8,7 +8,7 @@ namespace Server.Mobiles
 	{
 		private int m_Price;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Price
 		{
 			get{ return m_Price; }

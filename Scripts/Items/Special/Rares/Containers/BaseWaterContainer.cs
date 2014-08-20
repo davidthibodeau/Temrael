@@ -8,13 +8,13 @@
 
 		public override int DefaultGumpID { get { return 0x3e; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual bool IsEmpty { get { return ( m_Quantity <= 0 ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual bool IsFull { get { return ( m_Quantity >= MaxQuantity ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int Quantity
 		{
 			get

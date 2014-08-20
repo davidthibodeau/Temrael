@@ -13,14 +13,14 @@ namespace Server.Mobiles
 		private Mobile m_Owner;
 		private DateTime m_ExpireTime;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get{ return m_Owner; }
 			set{ m_Owner = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime ExpireTime
 		{
 			get{ return m_ExpireTime; }

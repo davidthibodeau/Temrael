@@ -42,7 +42,7 @@ namespace Server.Engines.Plants
 
 		private SecureLevel m_Level;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }
@@ -69,7 +69,7 @@ namespace Server.Engines.Plants
 		}
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlantStatus PlantStatus
 		{
 			get { return m_PlantStatus; }
@@ -107,7 +107,7 @@ namespace Server.Engines.Plants
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlantType PlantType
 		{
 			get { return m_PlantType; }
@@ -118,7 +118,7 @@ namespace Server.Engines.Plants
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlantHue PlantHue
 		{
 			get { return m_PlantHue; }
@@ -129,7 +129,7 @@ namespace Server.Engines.Plants
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ShowType
 		{
 			get { return m_ShowType; }
@@ -140,7 +140,7 @@ namespace Server.Engines.Plants
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ValidGrowthLocation
 		{
 			get
@@ -164,13 +164,13 @@ namespace Server.Engines.Plants
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsGrowable
 		{
 			get { return m_PlantStatus >= PlantStatus.BowlOfDirt && m_PlantStatus <= PlantStatus.Stage9; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsCrossable
 		{
 			get { return PlantHueInfo.IsCrossable( this.PlantHue ) && PlantTypeInfo.IsCrossable( this.PlantType ); }

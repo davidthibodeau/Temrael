@@ -34,56 +34,56 @@ namespace Server.Factions
 		private DateTime m_CorruptionStart;
 		private DateTime m_PurificationStart;
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public DateTime LastStolen
 		{
 			get{ return m_LastStolen; }
 			set{ m_LastStolen = value; }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public DateTime GraceStart
 		{
 			get{ return m_GraceStart; }
 			set{ m_GraceStart = value; }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public DateTime CorruptionStart
 		{
 			get{ return m_CorruptionStart; }
 			set{ m_CorruptionStart = value; }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public DateTime PurificationStart
 		{
 			get{ return m_PurificationStart; }
 			set{ m_PurificationStart = value; }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Town Town
 		{
 			get{ return m_Town; }
 			set{ m_Town = value; Update(); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Faction Corrupted
 		{
 			get{ return m_Corrupted; }
 			set{ m_Corrupted = value; Update(); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Faction Corrupting
 		{
 			get{ return m_Corrupting; }
 			set{ m_Corrupting = value; Update(); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public BaseMonolith LastMonolith
 		{
 			get{ return m_LastMonolith; }
@@ -242,7 +242,7 @@ namespace Server.Factions
 			m_CorruptionStart = DateTime.MinValue;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan TimeUntilCorruption
 		{
 			get

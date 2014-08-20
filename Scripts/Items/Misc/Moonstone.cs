@@ -14,7 +14,7 @@ namespace Server.Items
 	{
 		private MoonstoneType m_Type;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MoonstoneType Type
 		{
 			get

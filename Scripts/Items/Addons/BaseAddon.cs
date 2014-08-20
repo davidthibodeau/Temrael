@@ -228,7 +228,7 @@ namespace Server.Items
 
 		public virtual bool ShareHue{ get{ return true; } }
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get

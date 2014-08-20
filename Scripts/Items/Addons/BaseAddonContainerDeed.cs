@@ -14,7 +14,7 @@ namespace Server.Items
 		
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource;	}

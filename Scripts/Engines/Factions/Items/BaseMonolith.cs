@@ -9,7 +9,7 @@ namespace Server.Factions
 		private Faction m_Faction;
 		private Sigil m_Sigil;
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Sigil Sigil
 		{
 			get{ return m_Sigil; }
@@ -30,7 +30,7 @@ namespace Server.Factions
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Town Town
 		{
 			get{ return m_Town; }
@@ -41,7 +41,7 @@ namespace Server.Factions
 			}
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Faction Faction
 		{
 			get{ return m_Faction; }

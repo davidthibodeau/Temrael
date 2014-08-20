@@ -18,21 +18,21 @@ namespace Server.Systemes.Geopolitique
         private bool m_Removed; // Si l'employe fut retire de la liste mais possede toujours un montant a se faire payer.
         private List<string> m_Messages; // Messages du tresorier pour l'employe.
         
-        [CommandProperty(AccessLevel.GameMaster, true)]
+        [CommandProperty(AccessLevel.Batisseur, true)]
         public Mobile Personnage { get { return m_Personnage; } set { m_Personnage = value; } }
-        [CommandProperty(AccessLevel.GameMaster, true)]
+        [CommandProperty(AccessLevel.Batisseur, true)]
         public string Nom { get { return m_Nom; } set { m_Nom = value; } }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string Titre { get { return m_Titre; } set { m_Titre = value; } }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Paie { get { return m_Paie; } set { m_Paie = value; } }
-        [CommandProperty(AccessLevel.GameMaster, true)]
+        [CommandProperty(AccessLevel.Batisseur, true)]
         public int Total { get { return m_Total; } set { m_Total = value; } }
-        [CommandProperty(AccessLevel.GameMaster, true)]
+        [CommandProperty(AccessLevel.Batisseur, true)]
         public int NonPaye { get { return m_NonPaye; } set { m_NonPaye = value; } }
-        [CommandProperty(AccessLevel.GameMaster, true)]
+        [CommandProperty(AccessLevel.Batisseur, true)]
         public DateTime LastPaie { get { return m_LastPaie; } }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Removed { get { return m_Removed; } set { m_Removed = value; } }
 
         public void AjouterMessage(string message)

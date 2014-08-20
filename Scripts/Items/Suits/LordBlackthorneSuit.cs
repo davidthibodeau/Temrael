@@ -6,7 +6,7 @@ namespace Server.Items
 	public class LordBlackthorneSuit : BaseSuit
 	{
 		[Constructable]
-		public LordBlackthorneSuit() : base( AccessLevel.GameMaster, 0x0, 0x2043 )
+		public LordBlackthorneSuit() : base( AccessLevel.Batisseur, 0x0, 0x2043 )
 		{
 		}
 

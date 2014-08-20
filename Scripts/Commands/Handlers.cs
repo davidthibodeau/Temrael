@@ -31,7 +31,7 @@ namespace Server.Commands
 
 			Register( "DropHolding", AccessLevel.Counselor, new CommandEventHandler( DropHolding_OnCommand ) );
 
-			Register( "GetFollowers", AccessLevel.GameMaster, new CommandEventHandler( GetFollowers_OnCommand ) );
+			Register( "GetFollowers", AccessLevel.Batisseur, new CommandEventHandler( GetFollowers_OnCommand ) );
 
 			//Register( "ClearFacet", AccessLevel.Administrator, new CommandEventHandler( ClearFacet_OnCommand ) );
 
@@ -40,7 +40,7 @@ namespace Server.Commands
 			Register( "AutoPageNotify", AccessLevel.Counselor, new CommandEventHandler( APN_OnCommand ) );
 			Register( "APN", AccessLevel.Counselor, new CommandEventHandler( APN_OnCommand ) );
 
-			Register( "Animate", AccessLevel.GameMaster, new CommandEventHandler( Animate_OnCommand ) );
+			Register( "Animate", AccessLevel.Batisseur, new CommandEventHandler( Animate_OnCommand ) );
 
 			Register( "Cast", AccessLevel.Counselor, new CommandEventHandler( Cast_OnCommand ) );
 
@@ -48,34 +48,34 @@ namespace Server.Commands
 
 			Register( "Help", AccessLevel.Player, new CommandEventHandler( Help_OnCommand ) );
 
-			Register( "Save", AccessLevel.Administrator, new CommandEventHandler( Save_OnCommand ) );
-			Register( "BackgroundSave", AccessLevel.Administrator, new CommandEventHandler( BackgroundSave_OnCommand ) );
-			Register( "BGSave", AccessLevel.Administrator, new CommandEventHandler( BackgroundSave_OnCommand ) );
-			Register( "SaveBG", AccessLevel.Administrator, new CommandEventHandler( BackgroundSave_OnCommand ) );
+			Register( "Save", AccessLevel.Coordinateur, new CommandEventHandler( Save_OnCommand ) );
+			Register( "BackgroundSave", AccessLevel.Coordinateur, new CommandEventHandler( BackgroundSave_OnCommand ) );
+			Register( "BGSave", AccessLevel.Coordinateur, new CommandEventHandler( BackgroundSave_OnCommand ) );
+			Register( "SaveBG", AccessLevel.Coordinateur, new CommandEventHandler( BackgroundSave_OnCommand ) );
 
-			Register( "Move", AccessLevel.GameMaster, new CommandEventHandler( Move_OnCommand ) );
+			Register( "Move", AccessLevel.Batisseur, new CommandEventHandler( Move_OnCommand ) );
 			Register( "Client", AccessLevel.Counselor, new CommandEventHandler( Client_OnCommand ) );
 
 			Register( "SMsg", AccessLevel.Counselor, new CommandEventHandler( StaffMessage_OnCommand ) );
 			Register( "SM", AccessLevel.Counselor, new CommandEventHandler( StaffMessage_OnCommand ) );
 			Register( "S", AccessLevel.Counselor, new CommandEventHandler( StaffMessage_OnCommand ) );
 
-			Register( "BCast", AccessLevel.GameMaster, new CommandEventHandler( BroadcastMessage_OnCommand ) );
-			Register( "BC", AccessLevel.GameMaster, new CommandEventHandler( BroadcastMessage_OnCommand ) );
-			Register( "B", AccessLevel.GameMaster, new CommandEventHandler( BroadcastMessage_OnCommand ) );
+			Register( "BCast", AccessLevel.Batisseur, new CommandEventHandler( BroadcastMessage_OnCommand ) );
+			Register( "BC", AccessLevel.Batisseur, new CommandEventHandler( BroadcastMessage_OnCommand ) );
+			Register( "B", AccessLevel.Batisseur, new CommandEventHandler( BroadcastMessage_OnCommand ) );
 
-			Register( "Bank", AccessLevel.GameMaster, new CommandEventHandler( Bank_OnCommand ) );
+			Register( "Bank", AccessLevel.Batisseur, new CommandEventHandler( Bank_OnCommand ) );
 
 			Register( "Echo", AccessLevel.Counselor, new CommandEventHandler( Echo_OnCommand ) );
 
-			Register( "Sound", AccessLevel.GameMaster, new CommandEventHandler( Sound_OnCommand ) );
+			Register( "Sound", AccessLevel.Batisseur, new CommandEventHandler( Sound_OnCommand ) );
 
-			Register( "ViewEquip", AccessLevel.GameMaster, new CommandEventHandler( ViewEquip_OnCommand ) );
+			Register( "ViewEquip", AccessLevel.Batisseur, new CommandEventHandler( ViewEquip_OnCommand ) );
 
 			Register( "Light", AccessLevel.Counselor, new CommandEventHandler( Light_OnCommand ) );
 			Register( "Stats", AccessLevel.Counselor, new CommandEventHandler( Stats_OnCommand ) );
 
-			Register( "ReplaceBankers", AccessLevel.Administrator, new CommandEventHandler( ReplaceBankers_OnCommand ) );
+			Register( "ReplaceBankers", AccessLevel.Coordinateur, new CommandEventHandler( ReplaceBankers_OnCommand ) );
 
 			Register( "SpeedBoost", AccessLevel.Counselor, new CommandEventHandler( SpeedBoost_OnCommand ) );
 		}

@@ -97,7 +97,7 @@ namespace Server.Engines.Quests.Ninja
 
 		public override bool CheckLift( Mobile from, Item item, ref LRReason reject )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			PlayerMobile player = from as PlayerMobile;

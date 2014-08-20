@@ -19,9 +19,9 @@ namespace Server.Scripts.Commands
         public static void GM_OnCommand(CommandEventArgs e)
         {
             Mobile from = e.Mobile;
-            if (from.AccessLevel >= AccessLevel.GameMaster)
+            if (from.AccessLevel >= AccessLevel.Batisseur)
                 from.AccessLevel = AccessLevel.Player;
-            else if (from.Account.AccessLevel >= AccessLevel.GameMaster)
+            else if (from.Account.AccessLevel >= AccessLevel.Batisseur)
                 from.AccessLevel = from.Account.AccessLevel;
             else
                 from.SendMessage("Vous devez être GM pour utiliser cette commande");

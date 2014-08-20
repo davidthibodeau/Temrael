@@ -41,8 +41,8 @@ namespace Server.Items
 		{
 			EventSink.OpenDoorMacroUsed += new OpenDoorMacroEventHandler( EventSink_OpenDoorMacroUsed );
 
-			CommandSystem.Register( "Link", AccessLevel.GameMaster, new CommandEventHandler( Link_OnCommand ) );
-			CommandSystem.Register( "ChainLink", AccessLevel.GameMaster, new CommandEventHandler( ChainLink_OnCommand ) );
+			CommandSystem.Register( "Link", AccessLevel.Batisseur, new CommandEventHandler( Link_OnCommand ) );
+			CommandSystem.Register( "ChainLink", AccessLevel.Batisseur, new CommandEventHandler( ChainLink_OnCommand ) );
 		}
 
 		[Usage( "Link" )]
@@ -202,7 +202,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Locked
 		{
 			get
@@ -215,7 +215,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public uint KeyValue
 		{
 			get
@@ -228,7 +228,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Open
 		{
 			get
@@ -321,7 +321,7 @@ namespace Server.Items
 			return true;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OpenedID
 		{
 			get
@@ -334,7 +334,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ClosedID
 		{
 			get
@@ -347,7 +347,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OpenedSound
 		{
 			get
@@ -360,7 +360,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ClosedSound
 		{
 			get
@@ -373,7 +373,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Offset
 		{
 			get
@@ -386,7 +386,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BaseDoor Link
 		{
 			get
@@ -455,7 +455,7 @@ namespace Server.Items
 		{
 			if ( m_Locked && !m_Open && UseLocks() )
 			{
-				if ( from.AccessLevel >= AccessLevel.GameMaster )
+				if ( from.AccessLevel >= AccessLevel.Batisseur )
 				{
 					from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 502502 ); // That is locked, but you open it with your godly powers.
 					//from.Send( new MessageLocalized( Serial, ItemID, MessageType.Regular, 0x3B2, 3, 502502, "", "" ) ); // That is locked, but you open it with your godly powers.

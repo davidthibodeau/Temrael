@@ -17,7 +17,7 @@ namespace Server.Gumps
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "AddMenu", AccessLevel.GameMaster, new CommandEventHandler( AddMenu_OnCommand ) );
+			CommandSystem.Register( "AddMenu", AccessLevel.Batisseur, new CommandEventHandler( AddMenu_OnCommand ) );
 		}
 
 		[Usage( "AddMenu [searchString]" )]

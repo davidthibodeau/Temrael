@@ -54,7 +54,7 @@ namespace Server.Items
 		private int m_Charges;
 		private List<ReceiverCrystal> m_Receivers;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get{ return this.ItemID == 0x1ECD; }
@@ -65,7 +65,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Charges
 		{
 			get{ return m_Charges; }
@@ -307,7 +307,7 @@ namespace Server.Items
 
 		private BroadcastCrystal m_Sender;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get{ return this.ItemID == 0x1ED1; }
@@ -318,7 +318,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BroadcastCrystal Sender
 		{
 			get{ return m_Sender; }

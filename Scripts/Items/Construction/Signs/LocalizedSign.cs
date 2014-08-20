@@ -9,7 +9,7 @@ namespace Server.Items
 
 		public override int LabelNumber{ get{ return m_LabelNumber; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Number{ get{ return m_LabelNumber; } set{ m_LabelNumber = value; InvalidateProperties(); } }
 
 		[Constructable]

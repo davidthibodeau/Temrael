@@ -11,7 +11,7 @@ namespace Server.Commands.Generic
 			Accessors = new string[]{ "Region" };
 			SupportRequirement = CommandSupport.Region;
 			SupportsConditionals = true;
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Usage = "Region <command> [condition]";
 			Description = "Invokes the command on all appropriate mobiles in your current region. Optional condition arguments can further restrict the set of objects.";
 		}

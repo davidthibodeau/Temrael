@@ -497,14 +497,14 @@ namespace Server.Items
         private TemraelAttributes m_TemraelAttributes;
         private RareteItem m_rarete;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TemraelAttributes TemAttributes
         {
             get { return m_TemraelAttributes; }
             set { }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public RareteItem Rarete
         {
             get { return m_rarete; }
@@ -622,56 +622,56 @@ namespace Server.Items
 		#endregion
 
 		#region Getters & Setters
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosAttributes Attributes
 		{
 			get{ return m_AosAttributes; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosWeaponAttributes WeaponAttributes
 		{
 			get{ return m_AosWeaponAttributes; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosSkillBonuses SkillBonuses
 		{
 			get{ return m_AosSkillBonuses; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosElementAttributes AosElementDamages
 		{
 			get { return m_AosElementDamages; }
 			set { }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Cursed
 		{
 			get{ return m_Cursed; }
 			set{ m_Cursed = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Consecrated
 		{
 			get{ return m_Consecrated; }
 			set{ m_Consecrated = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Identified
 		{
 			get{ return m_Identified; }
 			set{ m_Identified = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HitPoints
 		{
 			get{ return m_Hits; }
@@ -689,147 +689,147 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxHitPoints
 		{
 			get{ return m_MaxHits; }
 			set{ m_MaxHits = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int PoisonCharges
 		{
 			get{ return m_PoisonCharges; }
 			set{ m_PoisonCharges = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Poison Poison
 		{
 			get{ return m_Poison; }
 			set{ m_Poison = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponQuality Quality
 		{
 			get{ return m_Quality; }
 			set{ UnscaleDurability(); m_Quality = value; ScaleDurability(); InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string CrafterName
         {
             get { return m_CrafterName; }
             set { m_CrafterName = value; InvalidateProperties(); }
         }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SlayerName Slayer
 		{
 			get{ return m_Slayer; }
 			set{ m_Slayer = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SlayerName Slayer2
 		{
 			get { return m_Slayer2; }
 			set { m_Slayer2 = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource; }
 			set{ UnscaleDurability(); m_Resource = value; Hue = CraftResources.GetHue( m_Resource ); InvalidateProperties(); ScaleDurability(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponDamageLevel DamageLevel
 		{
 			get{ return m_DamageLevel; }
 			set{ m_DamageLevel = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponDurabilityLevel DurabilityLevel
 		{
 			get{ return m_DurabilityLevel; }
 			set{ UnscaleDurability(); m_DurabilityLevel = value; InvalidateProperties(); ScaleDurability(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool PlayerConstructed
 		{
 			get{ return m_PlayerConstructed; }
 			set{ m_PlayerConstructed = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxRange
 		{
 			get{ return ( m_MaxRange == -1 ? Core.AOS ? AosMaxRange : OldMaxRange : m_MaxRange ); }
 			set{ m_MaxRange = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponAnimation Animation
 		{
 			get{ return ( m_Animation == (WeaponAnimation)(-1) ? Core.AOS ? AosAnimation : OldAnimation : m_Animation ); } 
 			set{ m_Animation = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponType Type
 		{
 			get{ return ( m_Type == (WeaponType)(-1) ? Core.AOS ? AosType : OldType : m_Type ); }
 			set{ m_Type = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SkillName Skill
 		{
 			get{ return ( m_Skill == (SkillName)(-1) ? Core.AOS ? AosSkill : OldSkill : m_Skill ); }
 			set{ m_Skill = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HitSound
 		{
 			get{ return ( m_HitSound == -1 ? Core.AOS ? AosHitSound : OldHitSound : m_HitSound ); }
 			set{ m_HitSound = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MissSound
 		{
 			get{ return ( m_MissSound == -1 ? Core.AOS ? AosMissSound : OldMissSound : m_MissSound ); }
 			set{ m_MissSound = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MinDamage
 		{
 			get{ return ( m_MinDamage == -1 ? Core.AOS ? AosMinDamage : OldMinDamage : m_MinDamage ); }
 			set{ m_MinDamage = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxDamage
 		{
 			get{ return ( m_MaxDamage == -1 ? Core.AOS ? AosMaxDamage : OldMaxDamage : m_MaxDamage ); }
 			set{ m_MaxDamage = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public float Speed
 		{
 			get
@@ -847,28 +847,28 @@ namespace Server.Items
 			set{ m_Speed = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int StrRequirement
 		{
 			get{ return ( m_StrReq == -1 ? Core.AOS ? AosStrengthReq : OldStrengthReq : m_StrReq ); }
 			set{ m_StrReq = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DexRequirement
 		{
 			get{ return ( m_DexReq == -1 ? Core.AOS ? AosDexterityReq : OldDexterityReq : m_DexReq ); }
 			set{ m_DexReq = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int IntRequirement
 		{
 			get{ return ( m_IntReq == -1 ? Core.AOS ? AosIntelligenceReq : OldIntelligenceReq : m_IntReq ); }
 			set{ m_IntReq = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponAccuracyLevel AccuracyLevel
 		{
 			get
@@ -3577,7 +3577,7 @@ namespace Server.Items
 			return name;
 		}
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get{ return base.Hue; }
@@ -4035,7 +4035,7 @@ namespace Server.Items
 			if ( m_Quality == WeaponQuality.Exceptional )
 				attrs.Add( new EquipInfoAttribute( 1018305 - (int)m_Quality ) );
 
-			if ( m_Identified || from.AccessLevel >= AccessLevel.GameMaster )
+			if ( m_Identified || from.AccessLevel >= AccessLevel.Batisseur )
 			{
 				if( m_Slayer != SlayerName.None )
 				{

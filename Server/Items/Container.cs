@@ -67,7 +67,7 @@ namespace Server.Items
 			set{ m_ContainerData = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ItemID
 		{
 			get{ return base.ItemID; }
@@ -82,28 +82,28 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GumpID
 		{
 			get{ return ( m_GumpID == -1 ? DefaultGumpID : m_GumpID ); }
 			set{ m_GumpID = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DropSound
 		{
 			get{ return ( m_DropSound == -1 ? DefaultDropSound : m_DropSound ); }
 			set{ m_DropSound = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxItems
 		{
 			get{ return ( m_MaxItems == -1 ? DefaultMaxItems : m_MaxItems ); }
 			set{ m_MaxItems = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int MaxWeight
 		{
 			get
@@ -119,7 +119,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool LiftOverride
 		{
 			get{ return m_LiftOverride; }
@@ -158,7 +158,7 @@ namespace Server.Items
 
 		public override bool CheckLift( Mobile from, Item item, ref LRReason reject )
 		{
-			if ( from.AccessLevel < AccessLevel.GameMaster && IsDecoContainer )
+			if ( from.AccessLevel < AccessLevel.Batisseur && IsDecoContainer )
 			{
 				reject = LRReason.CannotLift;
 				return false;
@@ -169,7 +169,7 @@ namespace Server.Items
 
 		public override bool CheckItemUse( Mobile from, Item item )
 		{
-			if ( item != this && from.AccessLevel < AccessLevel.GameMaster && IsDecoContainer )
+			if ( item != this && from.AccessLevel < AccessLevel.Batisseur && IsDecoContainer )
 			{
 				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
 				return false;
@@ -190,7 +190,7 @@ namespace Server.Items
 
 		public virtual bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
 		{
-			if ( m.AccessLevel < AccessLevel.GameMaster )
+			if ( m.AccessLevel < AccessLevel.Batisseur )
 			{
 				if ( IsDecoContainer )
 				{

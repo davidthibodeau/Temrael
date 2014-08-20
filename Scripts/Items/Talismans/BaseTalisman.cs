@@ -23,7 +23,7 @@ namespace Server.Items
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register("RandomTalisman", AccessLevel.GameMaster, new CommandEventHandler(RandomTalisman_OnCommand));
+			CommandSystem.Register("RandomTalisman", AccessLevel.Batisseur, new CommandEventHandler(RandomTalisman_OnCommand));
 		}
 
 		[Usage("RandomTalisman <count>")]
@@ -49,21 +49,21 @@ namespace Server.Items
 		private int m_ChargeTime;
 		private bool m_Blessed;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int KarmaLoss
 		{
 			get { return m_KarmaLoss; }
 			set { m_KarmaLoss = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int MaxCharges
 		{
 			get { return m_MaxCharges; }
 			set { m_MaxCharges = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int Charges
 		{
 			get { return m_Charges; }
@@ -78,7 +78,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int MaxChargeTime
 		{
 			get { return m_MaxChargeTime; }
@@ -91,7 +91,7 @@ namespace Server.Items
 			set { m_ChargeTime = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public bool Blessed
 		{
 			get { return m_Blessed; }
@@ -101,7 +101,7 @@ namespace Server.Items
 		#region Slayer
 		private TalismanSlayerName m_Slayer;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public TalismanSlayerName Slayer
 		{
 			get { return m_Slayer; }
@@ -114,14 +114,14 @@ namespace Server.Items
 		private TalismanRemoval m_Removal;
 		private Mobile m_Creature;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public TalismanAttribute Summoner
 		{
 			get { return m_Summoner; }
 			set { m_Summoner = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public TalismanRemoval Removal
 		{
 			get { return m_Removal; }
@@ -133,14 +133,14 @@ namespace Server.Items
 		private TalismanAttribute m_Protection;
 		private TalismanAttribute m_Killer;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public TalismanAttribute Protection
 		{
 			get { return m_Protection; }
 			set { m_Protection = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public TalismanAttribute Killer
 		{
 			get { return m_Killer; }
@@ -153,21 +153,21 @@ namespace Server.Items
 		private int m_SuccessBonus;
 		private int m_ExceptionalBonus;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public SkillName Skill
 		{
 			get { return m_Skill; }
 			set { m_Skill = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int SuccessBonus
 		{
 			get { return m_SuccessBonus; }
 			set { m_SuccessBonus = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int ExceptionalBonus
 		{
 			get { return m_ExceptionalBonus; }
@@ -179,14 +179,14 @@ namespace Server.Items
 		private AosAttributes m_AosAttributes;
 		private AosSkillBonuses m_AosSkillBonuses;
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public AosAttributes Attributes
 		{
 			get { return m_AosAttributes; }
 			set { }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public AosSkillBonuses SkillBonuses
 		{
 			get { return m_AosSkillBonuses; }

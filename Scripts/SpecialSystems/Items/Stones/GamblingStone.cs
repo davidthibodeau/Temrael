@@ -4,7 +4,7 @@ namespace Server.Items
 	{
 		private int m_GamblePot = 2500;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GamblePot
 		{
 			get

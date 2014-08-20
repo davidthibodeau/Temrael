@@ -10,21 +10,21 @@ namespace Server.Items
 		private Map m_Facet;
 		private Mobile m_AwardedTo;
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public Point3D PlotLocation
 		{
 			get { return m_PlotLocation; }
 			set { m_PlotLocation = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public Map PlotFacet
 		{
 			get { return m_Facet; }
 			set { m_Facet = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Seer )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Chroniqueur )]
 		public Mobile AwardedTo
 		{
 			get { return m_AwardedTo; }

@@ -24,7 +24,7 @@ namespace Server.Engines.PartySystem
 			EventSink.Login += new LoginEventHandler( EventSink_Login );
 			EventSink.PlayerDeath += new PlayerDeathEventHandler( EventSink_PlayerDeath );
 
-			CommandSystem.Register( "ListenToParty", AccessLevel.GameMaster, new CommandEventHandler( ListenToParty_OnCommand ) );
+			CommandSystem.Register( "ListenToParty", AccessLevel.Batisseur, new CommandEventHandler( ListenToParty_OnCommand ) );
 		}
 
 		public static void ListenToParty_OnCommand( CommandEventArgs e )
@@ -368,7 +368,7 @@ namespace Server.Engines.PartySystem
 			{
 				Mobile mob = ns.Mobile;
 
-				if( mob != null && mob.AccessLevel >= AccessLevel.GameMaster && mob.AccessLevel > from.AccessLevel && mob.Party != this && !m_Listeners.Contains( mob ) )
+				if( mob != null && mob.AccessLevel >= AccessLevel.Batisseur && mob.AccessLevel > from.AccessLevel && mob.Party != this && !m_Listeners.Contains( mob ) )
 				{
 					if( p == null )
 						p = Packet.Acquire( new UnicodeMessage( from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, from.Name, text ) );

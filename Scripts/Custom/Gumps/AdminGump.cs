@@ -130,7 +130,7 @@ namespace Server.Gumps
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Admin", AccessLevel.Administrator, new CommandEventHandler( Admin_OnCommand ) );
+			CommandSystem.Register( "Admin", AccessLevel.Coordinateur, new CommandEventHandler( Admin_OnCommand ) );
 		}
 
 		[Usage( "Admin" )]
@@ -149,9 +149,9 @@ namespace Server.Gumps
 			{
 				case AccessLevel.Owner:
 				case AccessLevel.Developer:
-				case AccessLevel.Administrator: return 0x516;
-				case AccessLevel.Seer: return 0x144;
-				case AccessLevel.GameMaster: return 0x21;
+				case AccessLevel.Coordinateur: return 0x516;
+				case AccessLevel.Chroniqueur: return 0x144;
+				case AccessLevel.Batisseur: return 0x21;
 				case AccessLevel.Counselor: return 0x2;
 				case AccessLevel.Player: default:
 				{
@@ -169,9 +169,9 @@ namespace Server.Gumps
 			{
 				"Player",
 				"Counselor",
-				"Game Master",
-				"Seer",
-				"Administrator",
+				"Batisseur",
+				"Chroniqueur",
+				"Coordinateur",
 				"Developer",
 				"Owner"
 			};
@@ -428,9 +428,9 @@ namespace Server.Gumps
 					bool isLockedDown = ( level > AccessLevel.Player );
 
 					AddSelectedButton( 20, 230, GetButtonID( 3, 500 ), "Not Locked Down", !isLockedDown );
-					AddSelectedButton( 20, 260, GetButtonID( 3, 504 ), "Administrators", ( isLockedDown && level <= AccessLevel.Administrator ) );
-					AddSelectedButton( 20, 280, GetButtonID( 3, 503 ), "Seers", ( isLockedDown && level <= AccessLevel.Seer ) );
-					AddSelectedButton( 20, 300, GetButtonID( 3, 502 ), "Game Masters", ( isLockedDown && level <= AccessLevel.GameMaster ) );
+					AddSelectedButton( 20, 260, GetButtonID( 3, 504 ), "Administrators", ( isLockedDown && level <= AccessLevel.Coordinateur ) );
+					AddSelectedButton( 20, 280, GetButtonID( 3, 503 ), "Seers", ( isLockedDown && level <= AccessLevel.Chroniqueur ) );
+					AddSelectedButton( 20, 300, GetButtonID( 3, 502 ), "Game Masters", ( isLockedDown && level <= AccessLevel.Batisseur ) );
 					AddSelectedButton( 20, 320, GetButtonID( 3, 501 ), "Counselors", ( isLockedDown && level <= AccessLevel.Counselor ) );
 
 					AddButtonLabeled( 20, 350, GetButtonID( 3, 510 ), "Purge Invalid Clients" );
@@ -456,7 +456,7 @@ namespace Server.Gumps
 					AddButtonLabeled( 20, 310, GetButtonID( 3, 312 ), "Make Game Master" );
 					AddButtonLabeled( 20, 330, GetButtonID( 3, 313 ), "Make Seer" );
 
-					if ( from.AccessLevel > AccessLevel.Administrator )
+					if ( from.AccessLevel > AccessLevel.Coordinateur )
 					{
 						AddButtonLabeled( 220, 270, GetButtonID( 3, 314 ), "Make Administrator" );
 
@@ -736,7 +736,7 @@ namespace Server.Gumps
 				{
 					if ( m_List == null )
 					{
-                        if (from.AccessLevel <= AccessLevel.Administrator)
+                        if (from.AccessLevel <= AccessLevel.Coordinateur)
                             m_List = new ArrayList(); // new ArrayList( (ICollection)Accounts.GetAccounts() );
                         else
                         {
@@ -867,7 +867,7 @@ namespace Server.Gumps
 					AddButtonLabeled( 20, 240, GetButtonID( 5, 22 ), "Game Master" );
 					AddButtonLabeled( 20, 260, GetButtonID( 5, 23 ), "Seer" );
 
-					if ( from.AccessLevel > AccessLevel.Administrator )
+					if ( from.AccessLevel > AccessLevel.Coordinateur )
 					{
 						AddButtonLabeled( 20, 280, GetButtonID( 5, 24 ), "Administrator" );
 
@@ -1447,7 +1447,7 @@ namespace Server.Gumps
 
 		public static void BanShared_Callback( Mobile from, bool okay, object state )
 		{
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			string notice;
@@ -1479,7 +1479,7 @@ namespace Server.Gumps
 
 		public static void AccountDelete_Callback( Mobile from, bool okay, object state )
 		{
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			if ( okay )
@@ -1499,7 +1499,7 @@ namespace Server.Gumps
 
 		public static void ResendGump_Callback( Mobile from, object state )
 		{
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			object[] states = (object[])state;
@@ -1512,7 +1512,7 @@ namespace Server.Gumps
 
 		public static void Marked_Callback( Mobile from, bool okay, object state )
 		{
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			object[] states = (object[])state;
@@ -1561,7 +1561,7 @@ namespace Server.Gumps
 
 		public static void FirewallShared_Callback( Mobile from, bool okay, object state )
 		{
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			string notice;
@@ -1585,7 +1585,7 @@ namespace Server.Gumps
 
 		public static void Firewall_Callback( Mobile from, bool okay, object state )
 		{
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			object[] states = (object[])state;
@@ -1618,7 +1618,7 @@ namespace Server.Gumps
 
 			Mobile from = m_From;
 
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			if ( m_PageType == AdminGumpPage.Accounts )
@@ -1778,7 +1778,7 @@ namespace Server.Gumps
 
 						case 314:
 						{
-							if ( from.AccessLevel > AccessLevel.Administrator )
+							if ( from.AccessLevel > AccessLevel.Coordinateur )
 							{
 								InvokeCommand( "Set AccessLevel Administrator" );
 								notice = "Target the player to change their access level. (Administrator)";
@@ -2288,9 +2288,9 @@ namespace Server.Gumps
 								default:
 								case 20: newLevel = AccessLevel.Player; break;
 								case 21: newLevel = AccessLevel.Counselor; break;
-								case 22: newLevel = AccessLevel.GameMaster; break;
-								case 23: newLevel = AccessLevel.Seer; break;
-								case 24: newLevel = AccessLevel.Administrator; break;
+								case 22: newLevel = AccessLevel.Batisseur; break;
+								case 23: newLevel = AccessLevel.Chroniqueur; break;
+								case 24: newLevel = AccessLevel.Coordinateur; break;
 								case 33: newLevel = AccessLevel.Developer; break;
 								case 34: newLevel = AccessLevel.Owner; break;
 							}

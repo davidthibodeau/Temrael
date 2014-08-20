@@ -158,7 +158,7 @@ namespace {namespace}
 
         public static void Initialize()
         {
-            CommandSystem.Register("AddonGen", AccessLevel.Administrator, new CommandEventHandler(OnAddonGen));
+            CommandSystem.Register("AddonGen", AccessLevel.Coordinateur, new CommandEventHandler(OnAddonGen));
         }
 
         #region Command

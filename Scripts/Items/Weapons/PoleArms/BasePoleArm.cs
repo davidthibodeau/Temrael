@@ -22,14 +22,14 @@ namespace Server.Items
 		private int m_UsesRemaining;
 		private bool m_ShowUsesRemaining;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int UsesRemaining
 		{
 			get { return m_UsesRemaining; }
 			set { m_UsesRemaining = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ShowUsesRemaining
 		{
 			get { return m_ShowUsesRemaining; }

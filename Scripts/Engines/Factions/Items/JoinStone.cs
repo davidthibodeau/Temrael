@@ -9,7 +9,7 @@ namespace Server.Factions
 	{
 		private Faction m_Faction;
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Faction Faction
 		{
 			get{ return m_Faction; }

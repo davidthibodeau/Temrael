@@ -10,7 +10,7 @@ namespace Server.Commands
 		
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenKhaldun", AccessLevel.Administrator, new CommandEventHandler( GenKhaldun_OnCommand ) );
+			CommandSystem.Register( "GenKhaldun", AccessLevel.Coordinateur, new CommandEventHandler( GenKhaldun_OnCommand ) );
 		}
 		
 		public static bool FindMorphItem( int x, int y, int z, int inactiveItemID, int activeItemID )

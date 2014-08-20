@@ -42,7 +42,7 @@ namespace Server.Items
 
 		public bool ValidatePlacement( Mobile from, Point3D loc )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( !from.InRange( this.GetWorldLocation(), 1 ) )

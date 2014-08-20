@@ -19,7 +19,7 @@ namespace Server.Gumps
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Recherche", AccessLevel.GameMaster, new CommandEventHandler(AccountList_OnCommand));
+            CommandSystem.Register("Recherche", AccessLevel.Batisseur, new CommandEventHandler(AccountList_OnCommand));
         }
 
         [Usage("Recherche")]

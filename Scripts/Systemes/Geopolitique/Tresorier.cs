@@ -34,16 +34,16 @@ namespace Server.Systemes.Geopolitique
         
         private OrderedDictionary<Mobile, Employe> m_Employes; //Liste d'employes a payer
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Gestionnaire { get { return m_Gestionnaire; } set { m_Gestionnaire = value; } }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string NomGestionnaire { get { return m_NomGestionnaire; } set { m_NomGestionnaire = value; } }
         public Terre Terre { get { return m_Terre; } set { m_Terre = value; } }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string Etablissement { get { return m_Etablissement; } set { m_Etablissement = value; } }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string Description { get { return m_Description; } set { m_Description = value; } }
-        [CommandProperty(AccessLevel.GameMaster, true)]
+        [CommandProperty(AccessLevel.Batisseur, true)]
         public int Fonds
         {
             get
@@ -397,7 +397,7 @@ namespace Server.Systemes.Geopolitique
                 }
                 from.SendGump(new TresorierGump(this, from, 0));
             }
-            else if(from.AccessLevel >= AccessLevel.GameMaster)
+            else if(from.AccessLevel >= AccessLevel.Batisseur)
                 from.SendGump(new TresorierGump(this, from, 0));
             else if (m_Employes[from] != null)
             {

@@ -26,7 +26,7 @@ namespace Server.Mobiles
 
         private Mobile m_Caster;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Caster
         {
             get { return m_Caster; }
@@ -35,7 +35,7 @@ namespace Server.Mobiles
 
         private bool m_Aggro;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Aggro
         {
             get { return m_Aggro; }

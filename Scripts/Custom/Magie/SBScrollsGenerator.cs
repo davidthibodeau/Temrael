@@ -12,7 +12,7 @@ namespace Server.Misc
     {
         public static void Initialize()
         {
-            CommandSystem.Register("sbscrollgen", AccessLevel.Administrator, new CommandEventHandler(OnSBScrollGen));
+            CommandSystem.Register("sbscrollgen", AccessLevel.Coordinateur, new CommandEventHandler(OnSBScrollGen));
         }
 
         public Aptitude[] m_ConnaissanceList = new Aptitude[] {

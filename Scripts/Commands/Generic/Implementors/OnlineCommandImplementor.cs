@@ -13,7 +13,7 @@ namespace Server.Commands.Generic
 			Accessors = new string[]{ "Online" };
 			SupportRequirement = CommandSupport.Online;
 			SupportsConditionals = true;
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Usage = "Online <command> [condition]";
 			Description = "Invokes the command on all mobiles that are currently logged in. Optional condition arguments can further restrict the set of objects.";
 		}

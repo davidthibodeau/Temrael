@@ -29,7 +29,7 @@ namespace Server.Multis.Deeds
 
 				Region reg = Region.Find( new Point3D( p ), from.Map );
 
-				if ( from.AccessLevel >= AccessLevel.GameMaster || reg.AllowHousing( from, p ) )
+				if ( from.AccessLevel >= AccessLevel.Batisseur || reg.AllowHousing( from, p ) )
 					m_Deed.OnPlacement( from, p );
 				//else if ( reg.IsPartOf( typeof( TreasureRegion ) ) )
 				//	from.SendLocalizedMessage( 1043287 ); // The house could not be created here.  Either something is blocking the house, or the house would not be on valid terrain.
@@ -44,7 +44,7 @@ namespace Server.Multis.Deeds
 		private int m_MultiID;
 		private Point3D m_Offset;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MultiID
 		{
 			get
@@ -57,7 +57,7 @@ namespace Server.Multis.Deeds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Offset
 		{
 			get
@@ -126,7 +126,7 @@ namespace Server.Multis.Deeds
 			{
 				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
 			}
-			else if ( from.AccessLevel < AccessLevel.GameMaster && BaseHouse.HasAccountHouse( from ) )
+			else if ( from.AccessLevel < AccessLevel.Batisseur && BaseHouse.HasAccountHouse( from ) )
 			{
 				from.SendLocalizedMessage( 501271 ); // You already own a house, you may not place another!
 			}
@@ -152,7 +152,7 @@ namespace Server.Multis.Deeds
 			{
 				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
 			}
-			else if ( from.AccessLevel < AccessLevel.GameMaster && BaseHouse.HasAccountHouse( from ) )
+			else if ( from.AccessLevel < AccessLevel.Batisseur && BaseHouse.HasAccountHouse( from ) )
 			{
 				from.SendLocalizedMessage( 501271 ); // You already own a house, you may not place another!
 			}

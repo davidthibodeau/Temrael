@@ -8,7 +8,7 @@ namespace Server.Items
     {
         private EarthType m_EarthType;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public EarthType EarthType
         {
             get { return m_EarthType; }

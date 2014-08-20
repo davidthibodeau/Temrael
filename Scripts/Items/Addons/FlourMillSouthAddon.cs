@@ -12,32 +12,32 @@ namespace Server.Items
 		private int m_Flour;
 		private Timer m_Timer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxFlour
 		{
 			get{ return 2; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CurFlour
 		{
 			get{ return m_Flour; }
 			set{ m_Flour = Math.Max( 0, Math.Min( value, MaxFlour ) ); UpdateStage(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool HasFlour
 		{
 			get{ return ( m_Flour > 0 ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsFull
 		{
 			get{ return ( m_Flour >= MaxFlour ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsWorking
 		{
 			get{ return ( m_Timer != null ); }

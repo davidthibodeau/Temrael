@@ -42,7 +42,7 @@ namespace TheBox.BoxServer
 		{
 			get
 			{
-				return AccessLevel.GameMaster;
+				return AccessLevel.Batisseur;
 			}
 		}
 
@@ -91,7 +91,7 @@ namespace TheBox.BoxServer
 
 				case "account" : // View account information
 
-					if ( from.AccessLevel == AccessLevel.Administrator || ( from.Account as Server.Accounting.Account ).AccessLevel == AccessLevel.Administrator )
+					if ( from.AccessLevel == AccessLevel.Coordinateur || ( from.Account as Server.Accounting.Account ).AccessLevel == AccessLevel.Coordinateur )
 					{
 						from.SendGump( new Server.Gumps.AdminGump( from, Server.Gumps.AdminGumpPage.AccountDetails_Information, 0, null, "Request from Pandora's Box", target.Account ) );
 					}

@@ -20,7 +20,7 @@ namespace Server.Items
 	{
 		private DecorateCommand m_Command;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DecorateCommand Command{ get{ return m_Command; } set{ m_Command = value; InvalidateProperties(); } }
 
 		[Constructable]

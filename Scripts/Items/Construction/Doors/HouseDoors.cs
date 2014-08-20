@@ -97,14 +97,14 @@ namespace Server.Items
 		private DoorFacing m_Facing;
 		private SecureLevel m_Level;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DoorFacing Facing
 		{
 			get{ return m_Facing; }
 			set{ m_Facing = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }

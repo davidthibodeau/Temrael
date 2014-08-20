@@ -11,7 +11,7 @@ namespace Server.Mobiles
 
 		private DrainTimer m_Timer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Harrower
 		{
 			get

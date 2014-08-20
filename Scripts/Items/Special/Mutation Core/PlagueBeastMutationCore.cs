@@ -9,7 +9,7 @@ namespace Server.Items
 	{
 		private bool m_Cut;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Cut
 		{
 			get { return m_Cut; }

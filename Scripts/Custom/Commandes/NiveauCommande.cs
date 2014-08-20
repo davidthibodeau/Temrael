@@ -11,7 +11,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Niveau", AccessLevel.GameMaster, new CommandEventHandler(Niveau_OnCommande));
+            CommandSystem.Register("Niveau", AccessLevel.Batisseur, new CommandEventHandler(Niveau_OnCommande));
         }
 
         [Usage("Niveau")]

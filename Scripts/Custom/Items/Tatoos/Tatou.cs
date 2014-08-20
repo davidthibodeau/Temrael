@@ -64,7 +64,7 @@ namespace Server.Items
 
         public override bool VerifyMove(Mobile from)
         {
-            return (from.AccessLevel >= AccessLevel.GameMaster);
+            return (from.AccessLevel >= AccessLevel.Batisseur);
         }
 
         public override DeathMoveResult OnParentDeath(Mobile parent)

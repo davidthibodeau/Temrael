@@ -10,34 +10,34 @@ namespace Server.Items
 		private TextDefinition m_Name;
 		private int m_Amount;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Type Type
 		{
 			get{ return m_Type; }
 			set{ m_Type = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TextDefinition Name
 		{
 			get{ return m_Name; }
 			set{ m_Name = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Amount
 		{
 			get { return m_Amount; }
 			set { m_Amount = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsEmpty
 		{
 			get { return m_Type == null; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsItem
 		{
 			get { return m_Type != null && m_Type.Namespace.Equals( "Server.Items" ); }

@@ -10,14 +10,14 @@ namespace Server.Factions
 		private Town m_Town;
 		private Faction m_Faction;
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Town Town
 		{
 			get{ return m_Town; }
 			set{ Unregister(); m_Town = value; Register(); }
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Faction Faction
 		{
 			get{ return m_Faction; }

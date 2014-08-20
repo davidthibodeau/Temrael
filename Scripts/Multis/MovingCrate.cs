@@ -151,7 +151,7 @@ namespace Server.Multis
 
 		public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
 		{
-			if ( m.AccessLevel < AccessLevel.GameMaster )
+			if ( m.AccessLevel < AccessLevel.Batisseur )
 			{
 				m.SendLocalizedMessage( 1061145 ); // You cannot place items into a house moving crate.
 				return false;

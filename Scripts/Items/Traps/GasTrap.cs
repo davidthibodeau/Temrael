@@ -15,14 +15,14 @@ namespace Server.Items
 	{
 		private Poison m_Poison;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Poison Poison
 		{
 			get{ return m_Poison; }
 			set{ m_Poison = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public GasTrapType Type
 		{
 			get

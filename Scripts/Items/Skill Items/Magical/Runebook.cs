@@ -26,28 +26,28 @@ namespace Server.Items
 		
 		private List<Mobile> m_Openers = new List<Mobile>();
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextUse
 		{
 			get{ return m_NextUse; }
 			set{ m_NextUse = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }
 			set{ m_Level = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Description
 		{
 			get
@@ -61,7 +61,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CurCharges
 		{
 			get
@@ -74,7 +74,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxCharges
 		{
 			get
@@ -355,7 +355,7 @@ namespace Server.Items
 
 		public bool CheckAccess( Mobile m )
 		{
-			if ( !IsLockedDown || m.AccessLevel >= AccessLevel.GameMaster )
+			if ( !IsLockedDown || m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			BaseHouse house = BaseHouse.FindHouseAt( this );
@@ -370,7 +370,7 @@ namespace Server.Items
 		{
 			if ( dropped is RecallRune )
 			{
-				if ( IsLockedDown && from.AccessLevel < AccessLevel.GameMaster )
+				if ( IsLockedDown && from.AccessLevel < AccessLevel.Batisseur )
 				{
 					from.SendLocalizedMessage( 502413, null, 0x35 ); // That cannot be done while the book is locked down.
 				}

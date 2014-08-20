@@ -19,7 +19,7 @@ namespace Server.Items
 		private BraceletOfBinding m_Bound;
 		private TransportTimer m_Timer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Charges
 		{
 			get{ return m_Charges; }
@@ -36,7 +36,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Recharges
 		{
 			get{ return m_Recharges; }
@@ -53,15 +53,15 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxCharges{ get{ return 20; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxRecharges{ get{ return 255; } }
 
 		public string TranslocationItemName{ get{ return "bracelet of binding"; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Inscription
 		{
 			get{ return m_Inscription; }
@@ -72,7 +72,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BraceletOfBinding Bound
 		{
 			get

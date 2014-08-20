@@ -12,7 +12,7 @@ namespace Server.Commands.Generic
 			Accessors = new string[]{ "Area", "Group" };
 			SupportRequirement = CommandSupport.Area;
 			SupportsConditionals = true;
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Usage = "Area <command> [condition]";
 			Description = "Invokes the command on all appropriate objects in a targeted area. Optional condition arguments can further restrict the set of objects.";
 		}

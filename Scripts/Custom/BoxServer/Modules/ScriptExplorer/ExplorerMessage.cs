@@ -26,7 +26,7 @@ namespace TheBox.BoxServer
 		{
 			get
 			{
-				return AccessLevel.Administrator;
+				return AccessLevel.Coordinateur;
 			}
 		}
 

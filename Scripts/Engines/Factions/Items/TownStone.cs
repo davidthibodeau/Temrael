@@ -9,7 +9,7 @@ namespace Server.Factions
 	{
 		private Town m_Town;
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Town Town
 		{
 			get{ return m_Town; }
@@ -42,10 +42,10 @@ namespace Server.Factions
 
 			Faction faction = Faction.Find( from );
 
-			if ( faction == null && from.AccessLevel < AccessLevel.GameMaster )
+			if ( faction == null && from.AccessLevel < AccessLevel.Batisseur )
 				return; // TODO: Message?
 
-			if ( m_Town.Owner == null || ( from.AccessLevel < AccessLevel.GameMaster && faction != m_Town.Owner ) )
+			if ( m_Town.Owner == null || ( from.AccessLevel < AccessLevel.Batisseur && faction != m_Town.Owner ) )
 				from.SendLocalizedMessage( 1010332 ); // Your faction does not control this town
 			else if ( !m_Town.Owner.IsCommander( from ) )
 				from.SendLocalizedMessage( 1005242 ); // Only faction Leaders can use townstones

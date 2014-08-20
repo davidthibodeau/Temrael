@@ -13,7 +13,7 @@ namespace Server.Items
 
 		private bool m_IsRewardItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsRewardItem
 		{
 			get{ return m_IsRewardItem; }

@@ -22,89 +22,89 @@ namespace Server
 		private string m_Unknown;
         private DateTime m_TimeReceived;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CpuModel{ get{ return m_CpuModel; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CpuClockSpeed{ get{ return m_CpuClockSpeed; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CpuQuantity{ get{ return m_CpuQuantity; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OSMajor{ get{ return m_OSMajor; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OSMinor{ get{ return m_OSMinor; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OSRevision{ get{ return m_OSRevision; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int InstanceID{ get{ return m_InstanceID; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ScreenWidth{ get{ return m_ScreenWidth; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ScreenHeight{ get{ return m_ScreenHeight; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ScreenDepth{ get{ return m_ScreenDepth; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int PhysicalMemory{ get{ return m_PhysicalMemory; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CpuManufacturer{ get{ return m_CpuManufacturer; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CpuFamily{ get{ return m_CpuFamily; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int VCVendorID{ get{ return m_VCVendorID; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int VCDeviceID{ get{ return m_VCDeviceID; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int VCMemory{ get{ return m_VCMemory; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DXMajor{ get{ return m_DXMajor; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DXMinor{ get{ return m_DXMinor; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string VCDescription{ get{ return m_VCDescription; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Language{ get{ return m_Language; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Distribution{ get{ return m_Distribution; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ClientsRunning{ get{ return m_ClientsRunning; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ClientsInstalled{ get{ return m_ClientsInstalled; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int PartialInstalled{ get{ return m_PartialInstalled; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Unknown{ get{ return m_Unknown; } }
 
-        [CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.Batisseur )]
         public DateTime TimeReceived { get { return m_TimeReceived; } }
 
 		public static void Initialize()
 		{
 			PacketHandlers.Register( 0xD9, 0x10C, false, new OnPacketReceive( OnReceive ) );
 
-			CommandSystem.Register( "HWInfo", AccessLevel.GameMaster, new CommandEventHandler( HWInfo_OnCommand ) );
+			CommandSystem.Register( "HWInfo", AccessLevel.Batisseur, new CommandEventHandler( HWInfo_OnCommand ) );
 		}
 
 		[Usage( "HWInfo" )]

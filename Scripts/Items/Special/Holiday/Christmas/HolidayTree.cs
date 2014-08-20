@@ -17,7 +17,7 @@ namespace Server.Items
 		private ArrayList m_Components;
 		private Mobile m_Placer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Placer
 		{
 			get{ return m_Placer; }
@@ -285,7 +285,7 @@ namespace Server.Items
 		{
 			if ( from.InRange( this.GetWorldLocation(), 1 ) )
 			{
-				if ( m_Placer == null || from == m_Placer || from.AccessLevel >= AccessLevel.GameMaster )
+				if ( m_Placer == null || from == m_Placer || from.AccessLevel >= AccessLevel.Batisseur )
 				{
 					from.AddToBackpack( new HolidayTreeDeed() );
 

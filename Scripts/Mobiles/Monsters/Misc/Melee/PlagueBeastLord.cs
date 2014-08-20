@@ -11,14 +11,14 @@ namespace Server.Mobiles
 
 		private Mobile m_OpenedBy;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile OpenedBy
 		{
 			get { return m_OpenedBy; }
 			set { m_OpenedBy = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsBleeding
 		{
 			get
@@ -186,7 +186,7 @@ namespace Server.Mobiles
 
 		public virtual bool IsAccessibleTo( Mobile check )
 		{
-			if ( check.AccessLevel >= AccessLevel.GameMaster )
+			if ( check.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( !InRange( check, 2 ) )

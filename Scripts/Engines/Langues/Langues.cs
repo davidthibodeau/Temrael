@@ -57,7 +57,7 @@ namespace Server.Engines.Langues
         private List<int> m_DerniereLangueApprise = new List<int>();
         private Langue m_CurrentLangue = Langue.Commune;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Langue CurrentLangue
         {
 			get { return m_CurrentLangue; }
@@ -85,56 +85,56 @@ namespace Server.Engines.Langues
 			set { this[(int)l] = value; }
 		}
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Commune
         {
 			get { return this[0]; }
             set { this[0] = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Runique
         {
             get { return this[1]; }
             set { this[1] = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Dunes
         {
             get { return this[2]; }
             set { this[2] = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Elfique
         {
             get { return this[3]; }
             set { this[3] = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Nordique
         {
             get { return this[4]; }
             set { this[4] = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Morte
         {
             get { return this[5]; }
             set { this[5] = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Orcish
         {
             get { return this[6]; }
             set { this[6] = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Noire
         {
             get { return this[7]; }
@@ -235,7 +235,7 @@ namespace Server.Engines.Langues
         {
             Langues interlocuteur = m.Langues;
 
-            if (m.AccessLevel >= AccessLevel.GameMaster || interlocuteur[m_CurrentLangue])
+            if (m.AccessLevel >= AccessLevel.Batisseur || interlocuteur[m_CurrentLangue])
             {
                 if (m_CurrentLangue != interlocuteur.CurrentLangue)
                 {

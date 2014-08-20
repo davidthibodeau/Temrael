@@ -63,7 +63,7 @@ namespace Server.Gumps
 			{
 				try
 				{
-					if ( m_From.AccessLevel >= AccessLevel.GameMaster )
+					if ( m_From.AccessLevel >= AccessLevel.Batisseur )
 					{
 						TextRelay text = info.GetTextEntry( 0 );
 
@@ -229,7 +229,7 @@ namespace Server.Gumps
 
 						if ( sk != null )
 						{
-							if ( m_From.AccessLevel >= AccessLevel.GameMaster )
+							if ( m_From.AccessLevel >= AccessLevel.Batisseur )
 							{
 								m_From.SendGump( new EditSkillGump( m_From, m_Target, sk, m_Selected ) );
 							}
@@ -255,7 +255,7 @@ namespace Server.Gumps
 
 						if ( sk != null )
 						{
-							if ( m_From.AccessLevel >= AccessLevel.GameMaster )
+							if ( m_From.AccessLevel >= AccessLevel.Batisseur )
 							{
 								switch ( sk.Lock )
 								{

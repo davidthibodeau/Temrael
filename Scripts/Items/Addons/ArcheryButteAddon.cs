@@ -15,42 +15,42 @@ namespace Server.Items
 
 		private DateTime m_LastUse;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double MinSkill
 		{
 			get{ return m_MinSkill; }
 			set{ m_MinSkill = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double MaxSkill
 		{
 			get{ return m_MaxSkill; }
 			set{ m_MaxSkill = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastUse
 		{
 			get{ return m_LastUse; }
 			set{ m_LastUse = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool FacingEast
 		{
 			get{ return ( ItemID == 0x100A ); }
 			set{ ItemID = value ? 0x100A : 0x100B; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Arrows
 		{
 			get{ return m_Arrows; }
 			set{ m_Arrows = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Bolts
 		{
 			get{ return m_Bolts; }

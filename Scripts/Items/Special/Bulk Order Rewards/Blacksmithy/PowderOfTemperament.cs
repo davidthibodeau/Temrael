@@ -10,7 +10,7 @@ namespace Server.Items
 	{
 		private int m_UsesRemaining;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int UsesRemaining
 		{
 			get { return m_UsesRemaining; }

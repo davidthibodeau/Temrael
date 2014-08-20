@@ -145,7 +145,7 @@ namespace Server.Mobiles
 
 		private BarkeeperRumor[] m_Rumors;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get{ return m_Owner; }
@@ -167,7 +167,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string TipMessage
 		{
 			get{ return m_TipMessage; }
@@ -356,7 +356,7 @@ namespace Server.Mobiles
 			if ( from == null || from.Deleted || this.Deleted )
 				return false;
 
-			if ( from.AccessLevel > AccessLevel.GameMaster )
+			if ( from.AccessLevel > AccessLevel.Batisseur )
 				return true;
 
 			return ( m_Owner == from );

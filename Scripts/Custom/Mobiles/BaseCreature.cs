@@ -208,13 +208,13 @@ namespace Server.Mobiles
         public BaseCreature m_ElevageMale;
         public Timer m_ElevageTimer;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime FinElevage { get { return m_FinElevage; } set { m_FinElevage = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public BaseCreature ElevageFemale { get { return m_ElevageFemale; } set { m_ElevageFemale = value; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public BaseCreature ElevageMale { get { return m_ElevageMale; } set { m_ElevageMale = value; } }
 
         public class ElevageTimer : Timer
@@ -295,99 +295,99 @@ namespace Server.Mobiles
 
         public virtual bool isBoss { get { return false; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Quete
         {
             get { return m_Quest; }
             set { m_Quest = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteTitre
         {
             get { return m_QuestTitre; }
             set { m_QuestTitre = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteDescription
         {
             get { return m_QuestDescription; }
             set { m_QuestDescription = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteTag
         {
             get { return m_QuestTag; }
             set { m_QuestTag = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteTagCompletion
         {
             get { return m_QuestTagCompletion; }
             set { m_QuestTagCompletion = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteNextTitre
         {
             get { return m_QuestNextTitre; }
             set { m_QuestNextTitre = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteNextDescription
         {
             get { return m_QuestNextDescription; }
             set { m_QuestNextDescription = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int QueteExp
         {
             get { return m_QuestExpBonus; }
             set { m_QuestExpBonus = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Item QueteObjetRecompense
         {
             get { return m_QuestItemRecompense; }
             set { m_QuestItemRecompense = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Item QueteObjetCompletion
         {
             get { return m_QuestItemCompletion; }
             set { m_QuestItemCompletion = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile QueteNPCCompletion
         {
             get { return m_QuestMobileCompletion; }
             set { m_QuestMobileCompletion = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteSpeechDebut
         {
             get { return m_QuestSpeechStart; }
             set { m_QuestSpeechStart = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteSpeechDurant
         {
             get { return m_QuestSpeechDuring; }
             set { m_QuestSpeechDuring = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string QueteSpeechFin
         {
             get { return m_QuestSpeechComplete; }
             set { m_QuestSpeechComplete = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Body QueteMobileID
         {
             get { return m_QuestMobileID; }
             set { m_QuestMobileID = value; }
         }
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int QueteItemID
         {
             get { return m_QuestItemID; }
@@ -612,7 +612,7 @@ namespace Server.Mobiles
         #region Kill Bonus
         private int m_expKillBonus = 1;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ExpKillBonus { get { return m_expKillBonus; } set { m_expKillBonus = value; } }
         #endregion
 
@@ -624,7 +624,7 @@ namespace Server.Mobiles
         private AIType m_CurrentAI;			// The current AI
         private AIType m_DefaultAI;			// The default AI
         ///// ALAMBIK: ARMY SYSTEM /////////
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public AIType DefaultAI
         { get { return m_DefaultAI; } set { m_DefaultAI = value; } }
 
@@ -702,12 +702,12 @@ namespace Server.Mobiles
 
 		#endregion
 
-        [CommandProperty( AccessLevel.GameMaster )]
+        [CommandProperty( AccessLevel.Batisseur )]
         public virtual int DetectionRange { get { return m_DetectionRange; } set { m_DetectionRange = value; } }
 
 		public virtual InhumanSpeech SpeechType{ get{ return null; } }
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public bool IsStabled
 		{
 			get{ return m_IsStabled; }
@@ -719,7 +719,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsPrisoner
 		{
 			get{ return m_IsPrisoner; }
@@ -755,7 +755,7 @@ namespace Server.Mobiles
 		private DateTime m_BondingBegin;
 		private DateTime m_OwnerAbandonTime;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile LastOwner
 		{
 			get
@@ -767,7 +767,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsBonded
 		{
 			get{ return m_IsBonded; }
@@ -780,14 +780,14 @@ namespace Server.Mobiles
 			set{ m_IsDeadPet = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime BondingBegin
 		{
 			get{ return m_BondingBegin; }
 			set{ m_BondingBegin = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime OwnerAbandonTime
 		{
 			get{ return m_OwnerAbandonTime; }
@@ -798,7 +798,7 @@ namespace Server.Mobiles
 		#region Delete Previously Tamed Timer
 		private DeleteTimer		m_DeleteTimer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan DeleteTimeLeft
 		{
 			get
@@ -862,45 +862,45 @@ namespace Server.Mobiles
 		public override int BasePerforantResistance{ get{ return m_PerforantResistance; } }
 		public override int BaseMagieResistance{ get{ return m_MagieResistance; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int PhysicalResistanceSeed{ get{ return m_PhysicalResistance; } set{ m_PhysicalResistance = value; UpdateResistances(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
         public int ContondantResistSeed { get { return m_ContondantResistance; } set { m_ContondantResistance = value; UpdateResistances(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
         public int TranchantResistSeed { get { return m_TranchantResistance; } set { m_TranchantResistance = value; UpdateResistances(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int PerforantResistSeed{ get{ return m_PerforantResistance; } set{ m_PerforantResistance = value; UpdateResistances(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
         public int MagieResistSeed { get { return m_MagieResistance; } set { m_MagieResistance = value; UpdateResistances(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int PhysicalDamage{ get{ return m_PhysicalDamage; } set{ m_PhysicalDamage = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ContondantDamage{ get{ return m_ContondantDamage; } set{ m_ContondantDamage = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TranchantDamage{ get{ return m_TranchantDamage; } set{ m_TranchantDamage = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int PerforantDamage{ get{ return m_PerforantDamage; } set{ m_PerforantDamage = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MagieDamage{ get{ return m_MagieDamage; } set{ m_MagieDamage = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ChaosDamage{ get{ return m_ChaosDamage; } set{ m_ChaosDamage = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DirectDamage{ get{ return m_DirectDamage; } set{ m_DirectDamage = value; } }
 
 		#endregion
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsParagon
 		{
 			get{ return m_Paragon; }
@@ -1357,7 +1357,7 @@ namespace Server.Mobiles
 
 		public virtual double GetControlChance( Mobile m, bool useBaseSkill )
 		{
-			if ( m_dMinTameSkill <= 29.1 || m_bSummoned || m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m_dMinTameSkill <= 29.1 || m_bSummoned || m.AccessLevel >= AccessLevel.Batisseur )
 				return 1.0;
 
             if (m is TMobile)
@@ -1520,7 +1520,7 @@ namespace Server.Mobiles
 			return ( p != null && p.Level >= poison.Level );
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Loyalty
 		{
 			get
@@ -1533,7 +1533,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint CurrentWayPoint
 		{
 			get
@@ -1546,7 +1546,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public IPoint2D TargetLocation
 		{
 			get
@@ -1593,13 +1593,13 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int DamageMin{ get{ return m_DamageMin; } set{ m_DamageMin = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int DamageMax{ get{ return m_DamageMax; } set{ m_DamageMax = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int HitsMax
 		{
 			get
@@ -1619,14 +1619,14 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HitsMaxSeed
 		{
 			get{ return m_HitsMax; }
 			set{ m_HitsMax = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int StamMax
 		{
 			get
@@ -1646,14 +1646,14 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int StamMaxSeed
 		{
 			get{ return m_StamMax; }
 			set{ m_StamMax = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ManaMax
 		{
 			get
@@ -1673,7 +1673,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ManaMaxSeed
 		{
 			get{ return m_ManaMax; }
@@ -2953,7 +2953,7 @@ namespace Server.Mobiles
 			ChangeAIType(m_DefaultAI);
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AIType AI
 		{
 			get
@@ -2973,7 +2973,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Coordinateur )]
 		public bool Debug
 		{
 			get
@@ -2986,7 +2986,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Team
 		{
 			get
@@ -3005,7 +3005,7 @@ namespace Server.Mobiles
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile FocusMob
 		{
 			get
@@ -3018,7 +3018,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public FightMode FightMode
 		{
 			get
@@ -3031,7 +3031,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RangePerception
 		{
 			get
@@ -3044,7 +3044,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RangeFight
 		{
 			get
@@ -3057,7 +3057,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RangeHome
 		{
 			get
@@ -3070,7 +3070,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double ActiveSpeed
 		{
 			get
@@ -3083,7 +3083,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double PassiveSpeed
 		{
 			get
@@ -3096,7 +3096,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double CurrentSpeed
 		{
 			get
@@ -3118,7 +3118,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Home
 		{
 			get
@@ -3131,7 +3131,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Controlled
 		{
 			get
@@ -3205,7 +3205,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile ControlMaster
 		{
 			get
@@ -3227,7 +3227,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile SummonMaster
 		{
 			get
@@ -3247,7 +3247,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile ControlTarget
 		{
 			get
@@ -3260,7 +3260,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D ControlDest
 		{
 			get
@@ -3273,7 +3273,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public OrderType ControlOrder
 		{
 			get
@@ -3294,7 +3294,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool BardProvoked
 		{
 			get
@@ -3307,7 +3307,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool BardPacified
 		{
 			get
@@ -3320,7 +3320,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile BardMaster
 		{
 			get
@@ -3333,7 +3333,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile BardTarget
 		{
 			get
@@ -3346,7 +3346,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime BardEndTime
 		{
 			get
@@ -3359,7 +3359,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double MinTameSkill
 		{
 			get
@@ -3372,7 +3372,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Tamable
 		{
 			get
@@ -3385,7 +3385,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Coordinateur )]
 		public bool Summoned
 		{
 			get
@@ -3406,7 +3406,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Coordinateur )]
 		public int ControlSlots
 		{
 			get
@@ -4850,7 +4850,7 @@ namespace Server.Mobiles
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster && !Body.IsHuman )
+			if ( from.AccessLevel >= AccessLevel.Batisseur && !Body.IsHuman )
 			{
 				Container pack = this.Backpack;
 
@@ -6006,10 +6006,10 @@ namespace Server.Mobiles
 		// used for deleting untamed creatures [in houses]
 		private int m_RemoveStep;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool RemoveIfUntamed{ get{ return m_RemoveIfUntamed; } set{ m_RemoveIfUntamed = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RemoveStep { get { return m_RemoveStep; } set { m_RemoveStep = value; } }
 	}
 

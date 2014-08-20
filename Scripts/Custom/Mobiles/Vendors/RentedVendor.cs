@@ -82,48 +82,48 @@ namespace Server.Mobiles
 			get{ return m_RentalDuration; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RentalPrice
 		{
 			get{ return m_RentalPrice; }
 			set{ m_RentalPrice = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool LandlordRenew
 		{
 			get{ return m_LandlordRenew; }
 			set{ m_LandlordRenew = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool RenterRenew
 		{
 			get{ return m_RenterRenew; }
 			set{ m_RenterRenew = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Renew
 		{
 			get{ return LandlordRenew && RenterRenew && House != null && House.DecayType != DecayType.Condemned; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RenewalPrice
 		{
 			get{ return m_RenewalPrice; }
 			set{ m_RenewalPrice = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RentalGold
 		{
 			get{ return m_RentalGold; }
 			set{ m_RentalGold = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime RentalExpireTime
 		{
 			get{ return m_RentalExpireTime; }
@@ -131,10 +131,10 @@ namespace Server.Mobiles
 
 		public override bool IsOwner( Mobile m )
 		{
-			return m == Owner || m.AccessLevel >= AccessLevel.GameMaster;
+			return m == Owner || m.AccessLevel >= AccessLevel.Batisseur;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Landlord
 		{
 			get

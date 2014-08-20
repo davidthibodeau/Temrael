@@ -925,7 +925,7 @@ namespace Server.Spells
 			{
 				DoFizzle();
             }
-            else if (!ConsumeReagents() && m_Caster.AccessLevel < AccessLevel.GameMaster)
+            else if (!ConsumeReagents() && m_Caster.AccessLevel < AccessLevel.Batisseur)
             {
                 m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, 502630); // More reagents are needed for this spell.
             }

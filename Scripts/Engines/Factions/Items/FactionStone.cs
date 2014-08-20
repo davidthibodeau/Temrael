@@ -9,7 +9,7 @@ namespace Server.Factions
 	{
 		private Faction m_Faction;
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Counselor, AccessLevel.Coordinateur )]
 		public Faction Faction
 		{
 			get{ return m_Faction; }
@@ -52,7 +52,7 @@ namespace Server.Factions
 			{
 				Faction existingFaction = Faction.Find( from );
 
-				if ( existingFaction == m_Faction || from.AccessLevel >= AccessLevel.GameMaster )
+				if ( existingFaction == m_Faction || from.AccessLevel >= AccessLevel.Batisseur )
 				{
 					PlayerState pl = PlayerState.Find( from );
 

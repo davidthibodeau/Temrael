@@ -14,7 +14,7 @@ namespace Server.Commands.Generic
 	{
 		public InterfaceCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.Complex | CommandSupport.Simple;
 			Commands = new string[]{ "Interface" };
 			ObjectTypes = ObjectTypes.Both;

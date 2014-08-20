@@ -11,7 +11,7 @@ namespace Server.Items
 
 		private int m_Fruits;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Fruits
 		{
 			get { return m_Fruits; }

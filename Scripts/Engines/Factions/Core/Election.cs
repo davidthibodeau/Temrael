@@ -29,10 +29,10 @@ namespace Server.Factions
 		public ElectionState State{ get{ return m_State; } set{ m_State = value; m_LastStateTime = DateTime.Now; } }
 		public DateTime LastStateTime{ get{ return m_LastStateTime; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ElectionState CurrentState{ get{ return m_State; } }
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public TimeSpan NextStateTime
 		{
 			get

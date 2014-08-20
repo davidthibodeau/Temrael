@@ -21,21 +21,21 @@ namespace Server.Engines.Quests.Doom
 		private SkeletalDragon m_Dragon;
 		private bool m_Summoning;
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public Chyloth Chyloth
 		{
 			get{ return m_Chyloth; }
 			set{ m_Chyloth = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public SkeletalDragon Dragon
 		{
 			get{ return m_Dragon; }
 			set{ m_Dragon = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster, AccessLevel.Administrator )]
+		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Coordinateur )]
 		public bool Summoning
 		{
 			get{ return m_Summoning; }

@@ -36,7 +36,7 @@ namespace Server.Commands
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "RebuildCategorization", AccessLevel.Administrator, new CommandEventHandler( RebuildCategorization_OnCommand ) );
+			CommandSystem.Register( "RebuildCategorization", AccessLevel.Coordinateur, new CommandEventHandler( RebuildCategorization_OnCommand ) );
 		}
 
 		[Usage( "RebuildCategorization" )]

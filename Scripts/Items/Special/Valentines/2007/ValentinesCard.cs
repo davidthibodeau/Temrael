@@ -6,10 +6,10 @@ namespace Server.Items
 {
 	public class ValentinesCard : Item
 	{
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public virtual string From { get { return m_From; } set { m_From = value; } }
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public virtual string To { get { return m_To; } set { m_To = value; } }
 
 		private static string Unsigned = "___";

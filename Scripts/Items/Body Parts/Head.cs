@@ -15,14 +15,14 @@ namespace Server.Items
 		private string m_PlayerName;
 		private HeadType m_HeadType;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string PlayerName
 		{
 			get { return m_PlayerName; }
 			set { m_PlayerName = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public HeadType HeadType
 		{
 			get { return m_HeadType; }

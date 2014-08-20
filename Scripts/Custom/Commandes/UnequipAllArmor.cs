@@ -13,7 +13,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("UnequipAllArmor", AccessLevel.Administrator, new CommandEventHandler(UnequipAllArmor_OnCommand));
+            CommandSystem.Register("UnequipAllArmor", AccessLevel.Coordinateur, new CommandEventHandler(UnequipAllArmor_OnCommand));
         }
 
         [Usage("UnequipAllArmor")]

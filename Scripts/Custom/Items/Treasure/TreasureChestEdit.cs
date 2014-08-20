@@ -16,8 +16,8 @@ namespace Server.Scripts.Commands
 	{	
 		public static void Initialize()
 		{
-            CommandSystem.Register("setchest", AccessLevel.GameMaster, new CommandEventHandler(SetChestCommand_OnCommand));
-            CommandSystem.Register("resetchest", AccessLevel.GameMaster, new CommandEventHandler(ResetChestCommand_OnCommand));
+            CommandSystem.Register("setchest", AccessLevel.Batisseur, new CommandEventHandler(SetChestCommand_OnCommand));
+            CommandSystem.Register("resetchest", AccessLevel.Batisseur, new CommandEventHandler(ResetChestCommand_OnCommand));
         }
 
         [Usage("setchest")]

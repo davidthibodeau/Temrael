@@ -8,7 +8,7 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("BancInvis", AccessLevel.GameMaster, new CommandEventHandler(BancInvis_OnCommand));
+            CommandSystem.Register("BancInvis", AccessLevel.Batisseur, new CommandEventHandler(BancInvis_OnCommand));
             //CommandSystem.Register("BancInvisible", AccessLevel.GameMaster, new CommandEventHandler(BancInvis_OnCommand));
         }
 

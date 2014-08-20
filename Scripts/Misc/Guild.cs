@@ -620,7 +620,7 @@ namespace Server.Guilds
 				{
 					from.SendGump( new PropertiesGump( from, g ) );
 
-					if ( NewGuildSystem && from.AccessLevel >= AccessLevel.GameMaster && from is PlayerMobile )
+					if ( NewGuildSystem && from.AccessLevel >= AccessLevel.Batisseur && from is PlayerMobile )
 						from.SendGump( new GuildInfoGump( (PlayerMobile)from, g ) );
 				}
 			}
@@ -663,7 +663,7 @@ namespace Server.Guilds
 				{
 					from.SendGump( new PropertiesGump( from, g ) );
 
-					if( NewGuildSystem && from.AccessLevel >= AccessLevel.GameMaster && from is PlayerMobile )
+					if( NewGuildSystem && from.AccessLevel >= AccessLevel.Batisseur && from is PlayerMobile )
 						from.SendGump( new GuildInfoGump( (PlayerMobile)from, g ) );
 				}
 				else
@@ -1072,7 +1072,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Leader
 		{
 			get
@@ -1672,7 +1672,7 @@ namespace Server.Guilds
 		#endregion
 
 		#region Getters & Setters
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Item Guildstone
 		{
 			get
@@ -1685,7 +1685,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Item Teleporter
 		{
 			get
@@ -1698,7 +1698,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override string Name
 		{
 			get
@@ -1716,7 +1716,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Website
 		{
 			get
@@ -1729,7 +1729,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override string Abbreviation
 		{
 			get
@@ -1747,7 +1747,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Charter
 		{
 			get
@@ -1760,7 +1760,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override GuildType Type
 		{
 			get
@@ -1781,7 +1781,7 @@ namespace Server.Guilds
 
 
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastFealty
 		{
 			get
@@ -1794,7 +1794,7 @@ namespace Server.Guilds
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime TypeLastChange
 		{
 			get

@@ -203,7 +203,7 @@ namespace Server.Items
 				GuildGump.EnsureClosed( from );
 				from.SendGump( new GuildGump( from, m_Guild ) );
 			}
-			else if( from.AccessLevel < AccessLevel.GameMaster && !m_Guild.IsMember( from ) )
+			else if( from.AccessLevel < AccessLevel.Batisseur && !m_Guild.IsMember( from ) )
 			{
 				from.Send( new MessageLocalized( Serial, ItemID, MessageType.Regular, 0x3B2, 3, 501158, "", "" ) ); // You are not a member ...
 			}

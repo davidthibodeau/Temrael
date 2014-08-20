@@ -23,7 +23,7 @@ namespace Server.Items
 
 		private MusicName m_Music;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MusicName Music
 		{
 			get { return m_Music; }

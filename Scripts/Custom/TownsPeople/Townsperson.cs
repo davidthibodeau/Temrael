@@ -61,49 +61,49 @@ namespace Server.Mobiles
         private bool m_SpeechRumeur = false;
         private bool m_SpeechFamille = false;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool SpeechSalutation
         {
             get { return m_SpeechSalutation; }
             set { m_SpeechSalutation = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool SpeechAurevoir
         {
             get { return m_SpeechAurevoir; }
             set { m_SpeechAurevoir = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool SpeechOccupation
         {
             get { return m_SpeechOccupation; }
             set { m_SpeechOccupation = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool SpeechPresentation
         {
             get { return m_SpeechPresentation; }
             set { m_SpeechPresentation = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool SpeechTemperature
         {
             get { return m_SpeechTemperature; }
             set { m_SpeechTemperature = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool SpeechRumeur
         {
             get { return m_SpeechRumeur; }
             set { m_SpeechRumeur = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool SpeechFamille
         {
             get { return m_SpeechFamille; }
@@ -341,7 +341,7 @@ namespace Server.Mobiles
         public override bool Commandable { get { return false; } }
         public override bool CanTeach { get { return true; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Attitude attitude
         {
             get { return m_attitude; }
@@ -353,7 +353,7 @@ namespace Server.Mobiles
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Wealth wealth
         {
             get { return m_wealth; }
@@ -377,7 +377,7 @@ namespace Server.Mobiles
         }
 
         // Property to use to filter responses
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public string Tag
         {
             get { return m_tagText; }
@@ -387,7 +387,7 @@ namespace Server.Mobiles
         // Does the Attacker become Criminal?
         private bool m_criminalAction = false; //default
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool AttackIsCriminal
         {
             get { return m_criminalAction; }
@@ -1408,7 +1408,7 @@ namespace Server.Mobiles
                 case 4: // Hide
                     //set to GM and allow to roam
                     m_accessLevel = this.AccessLevel;
-                    AccessLevel = AccessLevel.GameMaster;
+                    AccessLevel = AccessLevel.Batisseur;
                     Hidden = true;
                     Timer.DelayCall(TimeSpan.FromMinutes(5), new TimerCallback(UnHideCallBack));
                     AddGreetTime(TimeSpan.FromMinutes(5));

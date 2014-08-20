@@ -202,10 +202,10 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int HitsMax{ get{ return m_TrueForm ? 65000 : 30000; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ManaMax{ get{ return 5000; } }
 
 		public Harrower( Serial serial ) : base( serial )

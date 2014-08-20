@@ -27,7 +27,7 @@ namespace Server.Items
 
 		private AosWeaponAttributes m_AosWeaponAttributes;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public AosWeaponAttributes WeaponAttributes
 		{
 			get{ return m_AosWeaponAttributes; }

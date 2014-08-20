@@ -7,7 +7,7 @@ namespace Server.Items
 	{
 		private MiniHouseType m_Type;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MiniHouseType Type
 		{
 			get{ return m_Type; }
@@ -84,7 +84,7 @@ namespace Server.Items
 	{
 		private MiniHouseType m_Type;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public MiniHouseType Type
 		{
 			get{ return m_Type; }

@@ -17,35 +17,35 @@ namespace Server.Items
 		private int m_WeightReduction;
 		private int m_DamageIncrease;
 
-		[CommandProperty( AccessLevel.GameMaster)]
+		[CommandProperty( AccessLevel.Batisseur)]
 		public AosAttributes Attributes
 		{
 			get{ return m_Attributes; }
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster)]
+		[CommandProperty( AccessLevel.Batisseur)]
 		public int Capacity
 		{
 			get{ return m_Capacity; }
 			set{ m_Capacity = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster)]
+		[CommandProperty( AccessLevel.Batisseur)]
 		public int LowerAmmoCost
 		{
 			get{ return m_LowerAmmoCost; }
 			set{ m_LowerAmmoCost = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster)]
+		[CommandProperty( AccessLevel.Batisseur)]
 		public int WeightReduction
 		{
 			get{ return m_WeightReduction; }
 			set{ m_WeightReduction = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster)]
+		[CommandProperty( AccessLevel.Batisseur)]
 		public int DamageIncrease
 		{
 			get{ return m_DamageIncrease; }
@@ -55,14 +55,14 @@ namespace Server.Items
 		private Mobile m_Crafter;
 		private ClothingQuality m_Quality;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ClothingQuality Quality
 		{
 			get{ return m_Quality; }

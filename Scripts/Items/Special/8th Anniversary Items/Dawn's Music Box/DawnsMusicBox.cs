@@ -31,7 +31,7 @@ namespace Server.Items
 
 		private SecureLevel m_Level;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get { return m_Level; }
@@ -119,7 +119,7 @@ namespace Server.Items
 
 		public bool HasAccces( Mobile m )
 		{
-			if ( m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			BaseHouse house = BaseHouse.FindHouseAt( this );

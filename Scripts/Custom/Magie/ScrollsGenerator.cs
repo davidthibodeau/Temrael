@@ -12,7 +12,7 @@ namespace Server.Misc
     {
         public static void Initialize()
         {
-            CommandSystem.Register("scrollgen", AccessLevel.Administrator, new CommandEventHandler(OnScrollGen));
+            CommandSystem.Register("scrollgen", AccessLevel.Coordinateur, new CommandEventHandler(OnScrollGen));
         }
 
         #region Template

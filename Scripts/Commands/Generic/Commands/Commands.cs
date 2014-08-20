@@ -27,15 +27,15 @@ namespace Server.Commands.Generic
 			Register( new FirewallCommand() );
 			Register( new TeleCommand() );
 			Register( new SetCommand() );
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "Immortal", "blessed", "true", ObjectTypes.Mobiles ) );
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "Invul", "blessed", "true", ObjectTypes.Mobiles ) );
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "Mortal", "blessed", "false", ObjectTypes.Mobiles ) );
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "NoInvul", "blessed", "false", ObjectTypes.Mobiles ) );
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "Squelch", "squelched", "true", ObjectTypes.Mobiles ) );
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "Unsquelch", "squelched", "false", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "Immortal", "blessed", "true", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "Invul", "blessed", "true", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "Mortal", "blessed", "false", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "NoInvul", "blessed", "false", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "Squelch", "squelched", "true", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "Unsquelch", "squelched", "false", ObjectTypes.Mobiles ) );
 
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "ShaveHair", "HairItemID", "0", ObjectTypes.Mobiles ) );
-			Register( new AliasedSetCommand( AccessLevel.GameMaster, "ShaveBeard", "FacialHairItemID", "0", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "ShaveHair", "HairItemID", "0", ObjectTypes.Mobiles ) );
+			Register( new AliasedSetCommand( AccessLevel.Batisseur, "ShaveBeard", "FacialHairItemID", "0", ObjectTypes.Mobiles ) );
 
 			Register( new GetCommand() );
 			Register( new GetTypeCommand() );
@@ -82,7 +82,7 @@ namespace Server.Commands.Generic
 	{
 		public ConditionCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.Simple | CommandSupport.Complex | CommandSupport.Self;
 			Commands = new string[]{ "Condition" };
 			ObjectTypes = ObjectTypes.All;
@@ -117,7 +117,7 @@ namespace Server.Commands.Generic
 	{
 		public BringToPackCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllItems;
 			Commands = new string[]{ "BringToPack" };
 			ObjectTypes = ObjectTypes.Items;
@@ -143,7 +143,7 @@ namespace Server.Commands.Generic
 	{
 		public RefreshHouseCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.Simple;
 			Commands = new string[]{ "RefreshHouse" };
 			ObjectTypes = ObjectTypes.Items;
@@ -178,7 +178,7 @@ namespace Server.Commands.Generic
 	{
 		public CountCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.Complex;
 			Commands = new string[]{ "Count" };
 			ObjectTypes = ObjectTypes.All;
@@ -200,7 +200,7 @@ namespace Server.Commands.Generic
 	{
 		public OpenBrowserCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllMobiles;
 			Commands = new string[]{ "OpenBrowser", "OB" };
 			ObjectTypes = ObjectTypes.Mobiles;
@@ -300,7 +300,7 @@ namespace Server.Commands.Generic
 	{
 		public PrivSoundCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllMobiles;
 			Commands = new string[]{ "PrivSound" };
 			ObjectTypes = ObjectTypes.Mobiles;
@@ -354,7 +354,7 @@ namespace Server.Commands.Generic
 	{
 		public AddToPackCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.All;
 			Commands = new string[]{ "AddToPack", "AddToCont" };
 			ObjectTypes = ObjectTypes.Both;
@@ -394,7 +394,7 @@ namespace Server.Commands.Generic
 	{
 		public AddCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.Simple | CommandSupport.Self;
 			Commands = new string[]{ "Add" };
 			ObjectTypes = ObjectTypes.All;
@@ -498,7 +498,7 @@ namespace Server.Commands.Generic
 	{
 		public DismountCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllMobiles;
 			Commands = new string[]{ "Dismount" };
 			ObjectTypes = ObjectTypes.Mobiles;
@@ -557,7 +557,7 @@ namespace Server.Commands.Generic
 	{
 		public RestockCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllNPCs;
 			Commands = new string[]{ "Restock" };
 			ObjectTypes = ObjectTypes.Mobiles;
@@ -717,7 +717,7 @@ namespace Server.Commands.Generic
 	{
 		public DeleteCommand()
 		{
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllNPCs | CommandSupport.AllItems;
 			Commands = new string[]{ "Delete", "Remove" };
 			ObjectTypes = ObjectTypes.Both;
@@ -802,7 +802,7 @@ namespace Server.Commands.Generic
 		{
 			m_Value = value;
 
-			AccessLevel = AccessLevel.GameMaster;
+			AccessLevel = AccessLevel.Batisseur;
 			Supports = CommandSupport.AllMobiles;
 			Commands = value ? new string[]{ "Kill" } : new string[]{ "Resurrect", "Res" };
 			ObjectTypes = ObjectTypes.Mobiles;
@@ -936,7 +936,7 @@ namespace Server.Commands.Generic
 	{
 		public FirewallCommand()
 		{
-			AccessLevel = AccessLevel.Administrator;
+			AccessLevel = AccessLevel.Coordinateur;
 			Supports = CommandSupport.AllMobiles;
 			Commands = new string[]{ "Firewall" };
 			ObjectTypes = ObjectTypes.Mobiles;
@@ -979,7 +979,7 @@ namespace Server.Commands.Generic
 		{
 			m_Ban = ban;
 
-			AccessLevel = ( ban ? AccessLevel.Administrator : AccessLevel.GameMaster );
+			AccessLevel = ( ban ? AccessLevel.Coordinateur : AccessLevel.Batisseur );
 			Supports = CommandSupport.AllMobiles;
 			Commands = new string[]{ ban ? "Ban" : "Kick" };
 			ObjectTypes = ObjectTypes.Mobiles;

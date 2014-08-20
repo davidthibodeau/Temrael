@@ -29,7 +29,7 @@ namespace Server.Commands
         }
         public static void Initialize()
         {
-            CommandSystem.Register("savexp", AccessLevel.Administrator,
+            CommandSystem.Register("savexp", AccessLevel.Coordinateur,
                new CommandEventHandler(savexp_OnCommand));
         }
         public static void savexp_OnCommand(CommandEventArgs e)

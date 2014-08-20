@@ -18,7 +18,7 @@ namespace Server.Items
         #region items
         private int m_WeaponQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int WeaponQuantity
         {
             get { return m_WeaponQuantity; }
@@ -27,7 +27,7 @@ namespace Server.Items
 
         private int m_ArmorQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ArmorQuantity
         {
             get { return m_ArmorQuantity; }
@@ -36,7 +36,7 @@ namespace Server.Items
 
         private int m_JewelQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int JewelQuantity
         {
             get { return m_JewelQuantity; }
@@ -45,7 +45,7 @@ namespace Server.Items
 
         private int m_ClothingQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ClothingQuantity
         {
             get { return m_ClothingQuantity; }
@@ -54,7 +54,7 @@ namespace Server.Items
 
         private int m_GemQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int GemQuantity
         {
             get { return m_GemQuantity; }
@@ -63,7 +63,7 @@ namespace Server.Items
 
         private int m_RegsQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int RegsQuantity
         {
             get { return m_RegsQuantity; }
@@ -72,7 +72,7 @@ namespace Server.Items
 
         private int m_DiversQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int DiversQuantity
         {
             get { return m_DiversQuantity; }
@@ -81,7 +81,7 @@ namespace Server.Items
 
         private int m_GoldQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int GoldQuantity
         {
             get { return m_GoldQuantity; }
@@ -90,7 +90,7 @@ namespace Server.Items
 
         private int m_PotionQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int PotionQuantity
         {
             get { return m_PotionQuantity; }
@@ -99,7 +99,7 @@ namespace Server.Items
 
         private int m_ArtefactQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ArtefactQuantity
         {
             get { return m_ArtefactQuantity; }
@@ -108,7 +108,7 @@ namespace Server.Items
 
         private int m_ScrollsQuantity;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ScrollsQuantity
         {
             get { return m_ScrollsQuantity; }
@@ -116,21 +116,21 @@ namespace Server.Items
         }
         #endregion
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Delay
         {
             get { return m_Delay; }
             set { m_Delay = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int LockLevelSeed
         {
             get { return m_LockLevelSeed; }
             set { m_LockLevelSeed = value; SetLockLevel(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int TrapLevelSeed
         {
             get { return m_TrapLevelSeed; }

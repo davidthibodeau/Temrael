@@ -29,7 +29,7 @@ namespace Server.Items
 
 		private string m_Dipper;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Dipper{ get{ return m_Dipper; } set{ m_Dipper = value; } }
 
 		[Constructable]
