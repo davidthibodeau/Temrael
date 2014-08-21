@@ -113,6 +113,7 @@
     <Compile Include="Gumps\GumpImageTileButton.cs" />
     <Compile Include="Gumps\GumpImageTiled.cs" />
     <Compile Include="Gumps\GumpItem.cs" />
+    <Compile Include="Gumps\GumpItemProperty.cs" />
     <Compile Include="Gumps\GumpLabel.cs" />
     <Compile Include="Gumps\GumpLabelCropped.cs" />
     <Compile Include="Gumps\GumpPage.cs" />
@@ -176,6 +177,7 @@
     <Compile Include="Prompt.cs" />
     <Compile Include="QuestArrow.cs" />
     <Compile Include="Race.cs" />
+    <Compile Include="Random.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="ScriptCompiler.cs" />
     <Compile Include="Sector.cs" />
@@ -197,11 +199,6 @@
     <Compile Include="Utility.cs" />
     <Compile Include="VirtueInfo.cs" />
     <Compile Include="World.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="runuo.ico" />
@@ -237,11 +234,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Folder Include="Properties\" />
   </ItemGroup>
 </Project>
