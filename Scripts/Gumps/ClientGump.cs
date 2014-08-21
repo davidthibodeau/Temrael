@@ -68,14 +68,27 @@ namespace Server.Gumps
                     }
                 case 2: // Tell + Reply Gump
                     {
-                    TextRelay text = info.GetTextEntry(0);
+                        TextRelay text = info.GetTextEntry(0);
 
                         if (text != null)
                         {
-                            //focus.SendMessage(0x482, "{0} vous a envoye un message HRP: ", from.GetNameUseBy(focus));
-                            //focus.SendMessage(0x482, text.Text);
-                            focus.SendGump(new ClientGump(focus, state, from.GetNameUseBy(focus), "", text.Text));
-                            CommandLogging.WriteLine(from, "{0} {1} telling {2} \"{3}\" ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus), text.Text);
+                            string name = from.GetNameUseBy(focus);
+                            if (focus is PlayerMobile)
+                            {
+                                PlayerMobile pm = focus as PlayerMobile;
+                                int q = (int)pm.QuiOptions;
+                                bool cantBeDelivered = (q & 0x100) != 0 || (name == "Anonyme" && (q & 0x001) != 0) || (name == "Identite Cachee" && (q & 0x010) != 0);
+                                Console.WriteLine("q = {0:X}, canBeDelivered = {1}, q & 0x100 = {2}, name == \"Anonyme\" = {3}", q, cantBeDelivered, q & 0x100, name == "Anonyme");
+                                if (from.AccessLevel > AccessLevel.Player || !cantBeDelivered)
+                                {
+                                    focus.SendGump(new ClientGump(focus, state, from.GetNameUseBy(focus), "", text.Text));
+                                    CommandLogging.WriteLine(from, "{0} {1} telling {2} \"{3}\" ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus), text.Text);
+                                }
+                                else
+                                {
+                                    from.SendMessage("{0} refuse de recevoir votre message", focus.GetNameUseBy(from));
+                                }
+                            }
                         }
 
                         //from.SendGump(new ClientGump(from, m_State));
@@ -331,87 +344,6 @@ namespace Server.Gumps
                     //AddHtml(280, 38 + (line++ * 20), 100, 20, Color("Voir Cote", LabelColor32), false, false);
                 }
             }
-
-#if false
-			AddPage( 0 );
-
-			AddBackground( 0, 0, 300, 370, 5054 );
-			AddBackground( 8, 8, 284, 354, 3000 );
-
-			AddLabel( 12, 12, 0, "Client Info" );
-
-			int line = 0;
-
-			AddLabel( 12, 38 + (line++ * 22), 0, String.Format( "Address: {0}", state ) );
-			AddLabel( 12, 38 + (line++ * 22), 0, String.Format( "Version: {0}; Flags: 0x{1:X}", state.Version == null ? "(null)" : state.Version.ToString(), state.Flags ) );
-
-			Account a = state.Account as Account;
-			Mobile m = state.Mobile;
-
-			if ( from.AccessLevel >= AccessLevel.GameMaster && a != null )
-			{
-				AddLabel( 12, 38 + (line++ * 22), 0, String.Format( "Account: {0}", a.Username ) );
-			}
-			
-			if ( from.AccessLevel >= AccessLevel.Counselor)
-			{
-				if ( m != null )
-				{
-					AddLabel( 12, 38 + (line++ * 22), 0, String.Format( "Mobile: {0} (0x{1:X})", m.Name, m.Serial.Value ) );
-					AddLabel( 12, 38 + (line++ * 22), 0, String.Format( "Location: {0} [{1}]", m.Location, m.Map ) );
-
-					AddButton( 12, 38 + (line * 22), 0xFAB, 0xFAD, 1, GumpButtonType.Reply, 0 );
-					AddImageTiled( 47, 38 + (line * 22), 234, 22, 0xA40 );
-					AddImageTiled( 48, 38 + (line * 22) + 1, 232, 20, 0xBBC );
-					AddTextEntry( 48, 38 + (line++ * 22) + 1, 232, 20, 0, 0, initialText );
-				}
-
-				/*if ( from.AccessLevel >= AccessLevel.Administrator && a != null && from != m )
-				{
-					AddButton( 12, 38 + (line * 22), 0xFA2, 0xFA4, 2, GumpButtonType.Reply, 0 );
-					AddLabel( 48, 38 + (line++ * 22), 0, "Ban" );
-				}*/
-
-				/*if ( from.AccessLevel >= AccessLevel.Administrator && from != m )
-				{
-					AddButton( 12, 38 + (line * 22), 0xFA2, 0xFA4, 3, GumpButtonType.Reply, 0 );
-					AddLabel( 48, 38 + (line++ * 22), 0, "Firewall" );
-				}*/
-
-				if ( m != null )
-				{
-					AddButton( 12, 38 + (line * 22), 0xFB7, 0xFB9, 4, GumpButtonType.Reply, 0 );
-					AddLabel( 48, 38 + (line++ * 22), 0, "Props" );
-
-					if ( from != m )
-					{
-						AddButton( 12, 38 + (line * 22), 0xFA5, 0xFA7, 5, GumpButtonType.Reply, 0 );
-						AddLabel( 48, 38 + (line++ * 22), 0, "Go to" );
-
-						AddButton( 12, 38 + (line * 22), 0xFAE, 0xFB0, 6, GumpButtonType.Reply, 0 );
-						AddLabel( 48, 38 + (line++ * 22), 0, "Get here" );
-					}
-
-					AddButton( 12, 38 + (line * 22), 0xFA8, 0xFAA, 7, GumpButtonType.Reply, 0 );
-					AddLabel( 48, 38 + (line++ * 22), 0, "Move here" );
-
-					if ( from.AccessLevel >= AccessLevel.GameMaster && from.AccessLevel > m.AccessLevel )
-					{
-						AddButton( 12, 38 + (line * 22), 0xFA2, 0xFA4, 8, GumpButtonType.Reply, 0 );
-						AddLabel( 48, 38 + (line++ * 22), 0, "Kick" );
-
-						AddButton( 12, 38 + (line * 22), 0xFB7, 0xFB9, 9, GumpButtonType.Reply, 0 );
-						AddLabel( 48, 38 + (line++ * 22), 0, "Kill" );
-
-						AddButton( 12, 38 + (line * 22), 0xFB7, 0xFB9, 10, GumpButtonType.Reply, 0 );
-						AddLabel( 48, 38 + (line++ * 22), 0, "Rez" );
-
-						AddButton( 12, 38 + (line * 22), 0xFB7, 0xFB9, 11, GumpButtonType.Reply, 0 );
-						AddLabel( 48, 38 + (line++ * 22), 0, "Player's Skills" );
-					}
-				}
-			}
-#endif
         }
 
         private static string GetNameFor(Mobile m, Mobile m_Owner)

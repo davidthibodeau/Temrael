@@ -236,6 +236,13 @@ namespace Server.Mobiles
             private set;
         }
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public QuiOptions QuiOptions
+        {
+            get;
+            set;
+        }
+
 		#endregion
 
 		#region PlayerFlags
@@ -2631,6 +2638,7 @@ namespace Server.Mobiles
                 case 30: //Will denote the change.
                     Langues = new Langues(reader);
                     Identities = new Identities(reader);
+                    QuiOptions = (QuiOptions)reader.ReadInt();
                     goto case 28;
 				case 28:
 				{
@@ -2934,6 +2942,7 @@ namespace Server.Mobiles
             // Note, 28 was previous version before changes
             Langues.Serialize(writer);
             Identities.Serialize(writer);
+            writer.Write((int)QuiOptions);
             
 			writer.Write( (DateTime) m_PeacedUntil );
 

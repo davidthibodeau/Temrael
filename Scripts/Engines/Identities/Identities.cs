@@ -175,7 +175,7 @@ namespace Server.Engines.Identities
                 return (CurrentIdentity == 0 ? this[CurrentIdentity] : this[0] + " (" + this[CurrentIdentity] + ")");
 
             if (m_DisguiseHidden && !m_RevealIdentity)
-                return "Identite Cache";
+                return "Identite Cachee";
 
             if (from is PlayerMobile)
             {

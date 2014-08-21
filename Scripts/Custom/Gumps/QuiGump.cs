@@ -172,7 +172,7 @@ namespace Server.Gumps
                 AddImageTiled(x - (OldStyle ? OffsetSize : 0), y, emptyWidth + (OldStyle ? OffsetSize * 2 : 0), EntryHeight, EntryGumpID);
 
             AddHtml(x + TextOffsetX, y, 200, 20, String.Format("<h3><basefont color=#5A4A31>Page {0} de {1} ({2})<basefont></h3>", page + 1, (m_Mobiles.Count + EntryCount - 1) / EntryCount, m_Mobiles.Count), false, false);
-
+            AddButton(x + TextOffsetX + 131, y + 2, 0x5f9, 0x5f9, 3, GumpButtonType.Reply, 0);
             x += emptyWidth + OffsetSize;
 
             if (OldStyle)
@@ -218,7 +218,7 @@ namespace Server.Gumps
                     AddImageTiled(x, y, SetWidth, EntryHeight, SetGumpID);
 
                 if (m.NetState != null && !m.Deleted)
-                    AddButton(x + SetOffsetX, y + SetOffsetY, SetButtonID1, SetButtonID2, i + 3, GumpButtonType.Reply, 0);
+                    AddButton(x + SetOffsetX, y + SetOffsetY, SetButtonID1, SetButtonID2, i + 10, GumpButtonType.Reply, 0);
             }
         }
 
@@ -282,15 +282,21 @@ namespace Server.Gumps
 
                         break;
                     }
+                case 3: // Options
+                    {
+                        if(from is PlayerMobile)
+                            from.SendGump(new QuiOptionsGump((PlayerMobile)from));
+                        break;
+                    }
                 default:
                     {
-                        int index = (m_Page * EntryCount) + (info.ButtonID - 3);
+                        int index = (m_Page * EntryCount) + (info.ButtonID - 10);
 
                         if (index >= m_Mobiles.Count)
                             return;
                         Mobile m = (Mobile)m_Mobiles[index];
 
-                        if (index >= 0 && index < m_Mobiles.Count && (m_Owner.AccessLevel >= AccessLevel.Player && m_Owner.AccessLevel >= m.AccessLevel))
+                        if (index >= 0 && index < m_Mobiles.Count && m_Owner.AccessLevel >= m.AccessLevel)
                         {
                             if (m.Deleted)
                             {
@@ -316,6 +322,81 @@ namespace Server.Gumps
                         break;
                     }
             }
+        }
+    }
+
+    public enum QuiOptions
+    {
+        All                = 0x000,
+        SansAnonyme        = 0x001,
+        SansIdentiteCachee = 0x010,
+        SansAnonNiIC       = 0x011,
+        SansConnus         = 0x100,
+        SeulementIC        = 0x101,
+        SeulementAnon      = 0x110,
+        None               = 0x111
+    }
+
+    public class QuiOptionsGump : Gump
+    {
+
+        PlayerMobile owner;
+
+        public QuiOptionsGump(PlayerMobile from) : base(30, 30)
+        {
+            owner = from;
+            int q = (int)owner.QuiOptions;
+
+			AddPage(0);
+			AddBackground(39, 56, 350, 120, 3500);
+
+            AddHtml(75, 75, 300, 50, "<h3><basefont color=#5A4A31>" + "Options de réception de messages privés" + "<basefont><h3>", false, false);
+
+            if ((q & 0x001) == 0)
+                AddButton(100, 100, 0x138a, 0x138b, 2, GumpButtonType.Reply, 0);
+            else
+                AddButton(100, 100, 0x138b, 0x138a, 2, GumpButtonType.Reply, 0);
+            AddHtml(125, 99, 300, 50, "<h3><basefont color=#025a>" + "Bloquer les anonymes" + "<basefont><h3>", false, false);
+
+            if ((q & 0x010) == 0)
+                AddButton(100, 120, 0x138a, 0x138b, 3, GumpButtonType.Reply, 0);
+            else
+                AddButton(100, 120, 0x138b, 0x138a, 3, GumpButtonType.Reply, 0);
+            AddHtml(125, 119, 300, 50, "<h3><basefont color=#025a>" + "Bloquer les identités cachées" + "<basefont><h3>", false, false);
+
+            if ((q & 0x100) == 0)
+                AddButton(100, 140, 0x138a, 0x138b, 4, GumpButtonType.Reply, 0);
+            else
+                AddButton(100, 140, 0x138b, 0x138a, 4, GumpButtonType.Reply, 0);
+            AddHtml(125, 139, 300, 50, "<h3><basefont color=#025a>" + "Bloquer les gens renommés" + "<basefont><h3>", false, false);
+
+            //TODO: Créer un gum pour choisir parmi les options.
+        }
+
+        public override void OnResponse(NetState sender, RelayInfo info)
+        {
+            if (info.ButtonID == 0)
+            {
+                owner.SendGump(new QuiGump(owner));
+                return;
+            }
+            int q = (int)owner.QuiOptions;
+            switch (info.ButtonID)
+            {
+                case 2: // Toggle Anonyme
+                    owner.QuiOptions = (QuiOptions)((q | 0x001) & (~q | 0x110));
+                    break;
+
+                case 3: //Toggle Identite Cachee
+                    owner.QuiOptions = (QuiOptions)((q | 0x010) & (~q | 0x101));
+                    break;
+
+                case 4: //Toggle Les personnes connues
+                    owner.QuiOptions  = (QuiOptions)((q | 0x100) & (~q | 0x011));
+                    break;
+                    
+            }
+            owner.SendGump(new QuiOptionsGump(owner));
         }
     }
 }
