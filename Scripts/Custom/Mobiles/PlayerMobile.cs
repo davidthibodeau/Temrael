@@ -226,14 +226,14 @@ namespace Server.Mobiles
         public Langues Langues
         {
             get;
-            private set;
+            set;
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public Identities Identities
         {
             get;
-            private set;
+            set;
         }
 
         [CommandProperty(AccessLevel.Batisseur)]

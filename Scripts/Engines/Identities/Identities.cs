@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Server.Mobiles;
+using System.Collections;
 
 namespace Server.Engines.Identities
 {
-    public class Identities
+    [PropertyObject]
+    public class Identities : IEnumerable
     {
         private readonly Mobile m_Mobile;
     
@@ -194,6 +196,16 @@ namespace Server.Engines.Identities
         private string DefaultName(Mobile from)
         {
             return "Anonyme";
+        }
+
+        public override string ToString()
+        {
+            return "...";
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return m_Identity.GetEnumerator();
         }
     }
 }

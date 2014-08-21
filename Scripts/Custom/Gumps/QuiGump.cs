@@ -370,7 +370,6 @@ namespace Server.Gumps
                 AddButton(100, 140, 0x138b, 0x138a, 4, GumpButtonType.Reply, 0);
             AddHtml(125, 139, 300, 50, "<h3><basefont color=#025a>" + "Bloquer les gens renommés" + "<basefont><h3>", false, false);
 
-            //TODO: Créer un gum pour choisir parmi les options.
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)

@@ -1,6 +1,7 @@
 ﻿using Server.Mobiles;
 using Server.Network;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -39,7 +40,7 @@ namespace Server.Engines.Langues
     }
 
     [PropertyObject]
-    public class Langues
+    public class Langues : IEnumerable
     {
         private Mobile m_Mobile;
 
@@ -176,6 +177,11 @@ namespace Server.Engines.Langues
                 m_Mobile.SendMessage("Vous connaissez déjà la langue: " + l.ToString());
         }
 
+        public override string ToString()
+        {
+            return "...";
+        }
+
         public void ResetLangues()
         {
             for (int i = 0; i < m_DerniereLangueApprise.Count; i++)
@@ -259,6 +265,11 @@ namespace Server.Engines.Langues
                 writer.Write(m_DerniereLangueApprise[i]);    
             
 			writer.Write((int)m_CurrentLangue);
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return m_Langues.GetEnumerator();
         }
     }
 }
