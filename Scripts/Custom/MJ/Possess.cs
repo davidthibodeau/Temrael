@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Commands;
 using System.Collections.Generic;
+using Server.Network;
 
 namespace Server
 {
@@ -61,6 +62,8 @@ namespace Server
             CommandSystem.Register("CopyGm", AccessLevel.Batisseur, new CommandEventHandler(CopyGm_OnCommand));
             CommandSystem.Register("CloneNPC", AccessLevel.Batisseur, new CommandEventHandler(CloneNPC_OnCommand));
             CommandSystem.Register("CopyNPC", AccessLevel.Batisseur, new CommandEventHandler(CopyNPC_OnCommand));
+
+            //CommandSystem.Register("testPossess", AccessLevel.Batisseur, new CommandEventHandler(TestPossess_OnCommand));
         }
 
         public static bool ToChange(string prop)
@@ -467,7 +470,84 @@ namespace Server
             }
         }
 
+        private class TestPossessTarget : Target
+        {
+            public TestPossessTarget()
+                : base(-1, false, TargetFlags.None)
+            {
+            }
 
+            protected override void OnTarget(Mobile from, object o)
+            {
+                try
+                {
+                    Mobile m = o as Mobile;
+                    if (m is BaseCreature)
+                        ((BaseCreature)m).DisableAI();
+                    NetState ns = from.NetState;
+                    from.CloseAllGumps();
+
+                    ns.BlockAllPackets = true;
+                    from.NetState = null;
+                    m.NetState = ns;
+                    ns.Mobile = m;
+                    ns.BlockAllPackets = false;
+
+
+                    ns.Send(new LoginConfirm(m));
+
+                    if (m.Map != null)
+                        ns.Send(new MapChange(m));
+
+                    ns.Send(new MapPatches());
+
+                    ns.Send(SeasonChange.Instantiate(m.GetSeason(), true));
+
+                    ns.Send(SupportedFeatures.Instantiate(ns));
+
+                    ns.Sequence = 0;
+                    ns.Send(new MobileUpdateOld(m));
+                    ns.Send(new MobileUpdateOld(m));
+
+                    m.CheckLightLevels(true);
+
+                    ns.Send(new MobileUpdateOld(m));
+
+                    ns.Send(new MobileIncomingOld(m, m));
+                    //ns.Send( new MobileAttributes( m ) );
+                    ns.Send(new MobileStatus(m, m));
+                    ns.Send(Server.Network.SetWarMode.Instantiate(m.Warmode));
+
+                    m.SendEverything();
+
+                    ns.Send(SupportedFeatures.Instantiate(ns));
+                    ns.Send(new MobileUpdateOld(m));
+                    //ns.Send( new MobileAttributes( m ) );
+                    ns.Send(new MobileStatus(m, m));
+                    ns.Send(Server.Network.SetWarMode.Instantiate(m.Warmode));
+                    ns.Send(new MobileIncomingOld(m, m));
+
+
+                    ns.Send(LoginComplete.Instance);
+                    ns.Send(new CurrentTime());
+                    ns.Send(SeasonChange.Instantiate(m.GetSeason(), true));
+                    ns.Send(new MapChange(m));
+
+                    //PacketHandlers.DoLogin(ns, origo);
+
+                    //origo.NetState = from.NetState;
+                    //from.NetState.Mobile = origo;
+                    //from.InvalidateProperties();
+                    //from.NetState.Flush();
+                    
+                    
+                }
+                catch (Exception ex)
+                {
+                    Misc.ExceptionLogging.WriteLine(ex);
+                }
+            }
+        }
 
 
         [Usage("Possess")]
@@ -567,6 +647,12 @@ namespace Server
         {
             e.Mobile.Target = new CopyTarget();
         }
+
+        public static void TestPossess_OnCommand(CommandEventArgs e)
+        {
+            e.Mobile.Target = new TestPossessTarget();
+        }
+
 
     }
 }

@@ -2897,6 +2897,11 @@ namespace Server.Mobiles
 
 		protected virtual BaseAI ForcedAI { get { return null; } }
 
+        public void DisableAI()
+        {
+            m_AI = null;
+        }
+
 		public  void ChangeAIType( AIType NewAI )
 		{
 			if ( m_AI != null )
