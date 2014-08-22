@@ -4789,8 +4789,9 @@ namespace Server
 				case MessageType.Emote:
 					m_EmoteHue = hue;
 					break;
-				case MessageType.Whisper:
-					m_WhisperHue = hue;
+				case MessageType.Whisper: // CHUCHOT1:
+					m_WhisperHue = 936;   // Couleur blanche par defaut.
+                    hue = m_WhisperHue;
 					range = 1;
 					break;
 				case MessageType.Yell:
@@ -4801,6 +4802,11 @@ namespace Server
 					type = MessageType.Regular;
 					break;
 			}
+
+            // CHUCHOT2:
+            // Revele une personne hidee qui ne whisper ou ne fait pas une emote.
+            if (Hidden && !(MessageType.Whisper == type || MessageType.Emote == type)) 
+                RevealingAction();
 
 			SpeechEventArgs regArgs = new SpeechEventArgs( this, text, type, hue, keywords );
 
@@ -4827,7 +4833,8 @@ namespace Server
 					if( o is Mobile ) {
 						Mobile heard = (Mobile)o;
 
-						if( heard.CanSee( this ) && (m_NoSpeechLOS || !heard.Player || heard.InLOS( this )) )
+                        // CHUCHOT3: Permet aux autres joueurs de voir les messages Whisper par les personnes invisibles.
+						if( ((heard.CanSee( this )) || MessageType.Whisper == type) && (m_NoSpeechLOS || !heard.Player || heard.InLOS( this )) )
 						{
 							if( heard.m_NetState != null )
 								hears.Add( heard );
@@ -4875,29 +4882,31 @@ namespace Server
 
 				// TODO: Should this be sorted like onSpeech is below?
 
-				for( int i = 0; i < hears.Count; ++i ) {
+				for( int i = 0; i < hears.Count ; ++i ) {
 					Mobile heard = hears[i];
                     SendPropertiesTo(heard);
 
 					if( mutatedArgs == null || !CheckHearsMutatedSpeech( heard, mutateContext ) ) {
+
 						heard.OnSpeech( regArgs );
 
 						NetState ns = heard.NetState;
 
 						if( ns != null ) {
-							if( regp == null )
-								regp = Packet.Acquire( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), text ) );
+                            if (regp == null)
+                                regp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), text));
 
 							ns.Send( regp );
 						}
 					} else {
+
 						heard.OnSpeech( mutatedArgs );
 
 						NetState ns = heard.NetState;
 
 						if( ns != null ) {
 							if( mutp == null )
-								mutp = Packet.Acquire( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), mutatedText ) );
+                                mutp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), mutatedText));
 
 							ns.Send( mutp );
 						}
