@@ -1881,12 +1881,6 @@ namespace Server.Mobiles
                 Location = Utility.RandomBool() ? new Point3D(5280, 2160, 5) : new Point3D(5283, 2013, 60);
                 Frozen = false;
 
-                if (Hunger <= 0)
-                    Hunger = 2;
-
-                if (Thirst <= 0)
-                    Thirst = 2;
-
                 if (Blessed && AccessLevel == AccessLevel.Player)
                     Blessed = false;
 

@@ -1038,8 +1038,6 @@ namespace Server.Items
 			}
 			else if( from == targ )
 			{
-				if( from.Thirst < 20 )
-					from.Thirst += 1;
 
 				if( ContainsAlchohol )
 				{

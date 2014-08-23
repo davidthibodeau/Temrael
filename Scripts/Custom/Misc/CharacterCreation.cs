@@ -78,9 +78,6 @@ namespace Server.Misc
 			//newChar.Hue = Utility.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
 			newChar.Hue = newChar.Race.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
 
-			newChar.Hunger = 20;
-            newChar.Thirst = 20;
-
 			bool young = false;
 
 			if ( newChar is PlayerMobile )

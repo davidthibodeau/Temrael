@@ -781,7 +781,6 @@ namespace Server
 		private bool m_Frozen;
 		private FrozenTimer m_FrozenTimer;
 		private int m_AllowedStealthSteps;
-		private int m_Hunger;
 		private int m_NameHue = -1;
 		private Region m_Region;
 		private bool m_DisarmReady, m_StunReady;
@@ -796,7 +795,7 @@ namespace Server
 		private int m_WarmodeChanges = 0;
 		private DateTime m_NextWarmodeChange;
 		private WarmodeTimer m_WarmodeTimer;
-		private int m_Thirst, m_BAC;
+		private int m_BAC;
 		private int m_VirtualArmorMod;
 		private VirtueInfo m_Virtues;
 		private object m_Party;
@@ -1550,39 +1549,6 @@ namespace Server
 			set
 			{
 				m_NameHue = value;
-			}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int Hunger
-		{
-			get
-			{
-				return m_Hunger;
-			}
-			set
-			{
-				int oldValue = m_Hunger;
-
-				if( oldValue != value )
-				{
-					m_Hunger = value;
-
-					EventSink.InvokeHungerChanged( new HungerChangedEventArgs( this, oldValue ) );
-				}
-			}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int Thirst
-		{
-			get
-			{
-				return m_Thirst;
-			}
-			set
-			{
-				m_Thirst = value;
 			}
 		}
 
@@ -5523,7 +5489,6 @@ namespace Server
 					}
 				case 17:
 					{
-						m_Thirst = reader.ReadInt();
 						m_BAC = reader.ReadInt();
 
 						goto case 16;
@@ -5633,7 +5598,6 @@ namespace Server
 					}
 				case 1:
 					{
-						m_Hunger = reader.ReadInt();
 
 						goto case 0;
 					}
@@ -5919,7 +5883,6 @@ namespace Server
 
 			VirtueInfo.Serialize( writer, m_Virtues );
 
-			writer.Write( m_Thirst );
 			writer.Write( m_BAC );
 
 			writer.Write( m_ShortTermMurders );
@@ -5955,8 +5918,6 @@ namespace Server
 			writer.Write( m_StatCap );
 
 			writer.Write( m_NameHue );
-
-			writer.Write( m_Hunger );
 
 			writer.Write( m_Location );
 			writer.Write( (int)m_Body );

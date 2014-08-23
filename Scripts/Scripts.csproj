@@ -1016,7 +1016,6 @@
     <Compile Include="Custom\Misc\CrashGuard.cs" />
     <Compile Include="Custom\Misc\CurrentExpansion.cs" />
     <Compile Include="Custom\Misc\DataPath.cs" />
-    <Compile Include="Custom\Misc\FoodDecay.cs" />
     <Compile Include="Custom\Misc\GuildOverload.cs" />
     <Compile Include="Custom\Misc\LightCycle.cs" />
     <Compile Include="Custom\Misc\Loot.cs" />
