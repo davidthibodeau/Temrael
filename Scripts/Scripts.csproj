@@ -688,7 +688,6 @@
     <Compile Include="Custom\Items\Bricoleur\Gamelles.cs" />
     <Compile Include="Custom\Items\Bricoleur\Mannequins.cs" />
     <Compile Include="Custom\Items\Bricoleur\Vases.cs" />
-    <Compile Include="Custom\Items\CombatManager.cs" />
     <Compile Include="Custom\Items\Couturier\Coussins.cs" />
     <Compile Include="Custom\Items\Food\Fruits.cs" />
     <Compile Include="Custom\Items\Meubles\Armoires.cs" />

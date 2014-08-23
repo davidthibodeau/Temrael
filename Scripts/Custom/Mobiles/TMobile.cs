@@ -615,14 +615,6 @@ namespace Server.Mobiles
         public override bool RetainPackLocsOnDeath { get { return true; } }
         public override bool KeepsItemsOnDeath { get { return false; } }
 
-        public override int PhysicalResistance
-        {
-            get
-            {
-                return base.PhysicalResistance + VirtualArmor + VirtualArmorMod + GetAptitudeValue(Aptitude.Resistance) * 2;
-            }
-        }
-
         public void OnAmeEating()
         {
             m_AmeLastFed = DateTime.Now;
@@ -776,51 +768,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Port d'Attirail
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public override int Dex
-        {
-            get
-            {
-                int count = base.Dex;
-
-                return count;
-            }
-            set
-            {
-                base.Dex = value;
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public override int Int
-        {
-            get
-            {
-                int count = base.Int;
-
-                return count;
-            }
-            set
-            {
-                base.Int = value;
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public override int Str
-        {
-            get
-            {
-                int count = base.Str;
-
-                return count;
-            }
-            set
-            {
-                base.Str = value;
-            }
-        }
 
         public int GetArmorLevel(BaseArmor armor)
         {

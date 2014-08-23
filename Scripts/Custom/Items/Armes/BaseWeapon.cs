@@ -1837,34 +1837,6 @@ namespace Server.Items
                 }
             }
 
-            if (FougueCelesteMiracle.m_FougueCelesteTable.Contains(attacker))
-            {
-                damagebonus += (double)FougueCelesteMiracle.m_FougueCelesteTable[attacker] * SpellHelper.GetTotalMobilesInRange(attacker, 5);
-
-                ReligiousSpell.MiracleEffet(attacker, attacker, 14154, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
-                //attacker.FixedParticles(14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-            }
-
-            if (ArdeurCelesteMiracle.m_ArdeurCelesteTable.Contains(attacker) && 0.20 < (double)((double)attacker.Hits / (double)attacker.HitsMax))
-            {
-                double val = (double)ArdeurCelesteMiracle.m_ArdeurCelesteTable[attacker] - 1;
-                damagebonus += val;
-
-                int valeur = (int)(attacker.Hits * (val / 4));
-
-                if (valeur > 40)
-                    valeur = 40;
-
-                valeur += Utility.Random(0, 5);
-
-                AOS.Damage(attacker, attacker, valeur, 100, 0, 0, 0, 0);
-
-                ReligiousSpell.MiracleEffet(attacker, attacker, 14133, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
-
-                //attacker.FixedParticles(14201, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-                attacker.PlaySound(488);
-            }
-
 			#region Damage Multipliers
 			/*
 			 * The following damage bonuses multiply damage by a factor.
