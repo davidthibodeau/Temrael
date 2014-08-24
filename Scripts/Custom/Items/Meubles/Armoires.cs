@@ -59,8 +59,94 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-	
 
+    [Furniture]
+    [Flipable(0x2342, 0x2343)]
+    public class SecretaireFonce : BaseContainer
+    {
+        [Constructable]
+        public SecretaireFonce()
+            : base(0x2342)
+        {
+            Weight = 5.0;
+            Name = "Secrétaire foncé";
+        }
 
+        public SecretaireFonce(Serial serial)
+            : base(serial)
+        {
+        }
 
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
+
+    [Furniture]
+    [Flipable(0x2344, 0x2345)]
+    public class SecretairePale : BaseContainer
+    {
+        [Constructable]
+        public SecretairePale()
+            : base(0x2344)
+        {
+            Weight = 5.0;
+            Name = "Secrétaire pâle";
+        }
+
+        public SecretairePale(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
+
+    [Furniture]
+    [Flipable(0x2346, 0x2347)]
+    public class SecretaireBourgogne : BaseContainer
+    {
+        [Constructable]
+        public SecretaireBourgogne()
+            : base(0x2346)
+        {
+            Weight = 5.0;
+            Name = "Secrétaire bourgogne";
+        }
+
+        public SecretaireBourgogne(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
 }

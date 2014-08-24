@@ -3,16 +3,19 @@ using System;
 namespace Server.Items
 {
 	[Furniture]
-	[Flipable( 0x1945, 0x1946 )]
-	public class ParaventA : Item
+    [Flipable(0x2D0E, 0x2D0F)]
+	public class StatueBoisFemme : Item
 	{
 		[Constructable]
-		public ParaventA() : base( 0x1945 )
+        public StatueBoisFemme()
+            : base(0x2D0E)
 		{
 			Weight = 10.0;
+            Name = "Statue de femme";
 		}
 
-		public ParaventA(Serial serial) : base(serial)
+        public StatueBoisFemme(Serial serial)
+            : base(serial)
 		{
 		}
 
@@ -35,16 +38,18 @@ namespace Server.Items
 	}
 	
 	[Furniture]
-	[Flipable( 0x24CB, 0x24CC, 0x24CD, 0x24CE, 0x24CF )]
-	public class ParaventB : Item
+    [Flipable(0x2D12, 0x2D13)]
+	public class StatueBoisHomme : Item
 	{
 		[Constructable]
-		public ParaventB() : base( 0x24CB )
+		public StatueBoisHomme() : base( 0x24CB )
 		{
 			Weight = 10.0;
+            Name = "Statue d'homme";
 		}
 
-		public ParaventB(Serial serial) : base(serial)
+        public StatueBoisHomme(Serial serial)
+            : base(serial)
 		{
 		}
 
@@ -67,16 +72,18 @@ namespace Server.Items
 	}
 	
 	[Furniture]
-    [Flipable(0x24D0, 0x24D1, 0x24D2, 0x24D3, 0x24D4)]
-	public class ParaventC : Item
+    [Flipable(0x2D10, 0x2D11)]
+	public class StatueBoisEcureuil : Item
 	{
 		[Constructable]
-		public ParaventC() : base( 0x24D0 )
+		public StatueBoisEcureuil() : base( 0x24D0 )
 		{
 			Weight = 10.0;
+            Name = "Statue d'écureuil";
 		}
 
-		public ParaventC(Serial serial) : base(serial)
+        public StatueBoisEcureuil(Serial serial)
+            : base(serial)
 		{
 		}
 
@@ -97,6 +104,4 @@ namespace Server.Items
 				Weight = 10.0;
 		}
 	}
-	
-
 }
