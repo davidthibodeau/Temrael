@@ -7,18 +7,17 @@ namespace Server.Items
 	{
         //public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return Bouclier_Def1; } }
-        public override int BaseContondantResistance { get { return Bouclier_Def1; } }
-        public override int BaseTranchantResistance { get { return Bouclier_Def1; } }
-        public override int BasePerforantResistance { get { return Bouclier_Def1; } }
-        public override int BaseMagieResistance { get { return Bouclier_Def1; } }
+        public override int BasePhysicalResistance { get { return ShldWoodn.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ShldWoodn.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ShldWoodn.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ShldWoodn.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ShldWoodn.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Bouclier_MinDurabilite1; } }
-        public override int InitMaxHits { get { return Bouclier_MaxDurabilite1; } }
+        public override int InitMinHits { get { return ShldWoodn.min_Durabilite; } }
+        public override int InitMaxHits { get { return ShldWoodn.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Bouclier_Force1; } }
-
-		public override int ArmorBase{ get{ return 8; } }
+        public override int AosStrReq { get { return ShldWoodn.force_Requise; } }
+        public override int AosDexBonus { get { return ShldWoodn.malus_Dex; } }
 
 		[Constructable]
 		public WoodenShield() : base( 0x1B7A )

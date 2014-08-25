@@ -7,16 +7,17 @@ namespace Server.Items
 	{
         //public override int NiveauAttirail { get { return 2; } }
 
-        public override int BasePhysicalResistance { get { return Bouclier_Def2; } }
-        public override int BaseContondantResistance { get { return Bouclier_Def2; } }
-        public override int BaseTranchantResistance { get { return Bouclier_Def2; } }
-        public override int BasePerforantResistance { get { return Bouclier_Def2; } }
-        public override int BaseMagieResistance { get { return Bouclier_Def2; } }
+        public override int BasePhysicalResistance { get { return ShldMetal.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ShldMetal.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ShldMetal.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ShldMetal.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ShldMetal.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Bouclier_MinDurabilite2; } }
-        public override int InitMaxHits { get { return Bouclier_MaxDurabilite2; } }
+        public override int InitMinHits { get { return ShldMetal.min_Durabilite; } }
+        public override int InitMaxHits { get { return ShldMetal.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Bouclier_Force2; } }
+        public override int AosStrReq { get { return ShldMetal.force_Requise; } }
+        public override int AosDexBonus { get { return ShldMetal.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 11; } }
 

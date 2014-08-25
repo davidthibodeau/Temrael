@@ -7,16 +7,17 @@ namespace Server.Items
 	{
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
-        public override int BaseContondantResistance { get { return Bouclier_Def4; } }
-        public override int BaseTranchantResistance { get { return Bouclier_Def4; } }
-        public override int BasePerforantResistance { get { return Bouclier_Def4; } }
-        public override int BaseMagieResistance { get { return Bouclier_Def4; } }
+        public override int BasePhysicalResistance { get { return ShldMetalKite.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ShldMetalKite.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ShldMetalKite.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ShldMetalKite.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ShldMetalKite.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Bouclier_MinDurabilite4; } }
-        public override int InitMaxHits { get { return Bouclier_MaxDurabilite4; } }
+        public override int InitMinHits { get { return ShldMetalKite.min_Durabilite; } }
+        public override int InitMaxHits { get { return ShldMetalKite.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Bouclier_Force4; } }
+        public override int AosStrReq { get { return ShldMetalKite.force_Requise; } }
+        public override int AosStrReq { get { return ShldMetalKite.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 16; } }
 

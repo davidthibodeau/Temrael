@@ -7,19 +7,17 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
-        public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
-        public override int BaseTranchantResistance { get { return ArmureDivers_Def4; } }
-        public override int BasePerforantResistance { get { return ArmureDivers_Def4; } }
-        public override int BaseMagieResistance { get { return ArmureDivers_Def4; } }
+        public override int BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorDivers4.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorDivers4.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorDivers4.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureDivers_MinDurabilite4; } }
-        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite4; } }
+        public override int InitMinHits { get { return ArmorDivers4.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorDivers4.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureDivers_Force4; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorDivers4.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorDivers4.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -56,19 +54,17 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 3; } }
 
-        public override int BasePhysicalResistance { get { return ArmureDivers_Def3; } }
-        public override int BaseContondantResistance { get { return ArmureDivers_Def3; } }
-        public override int BaseTranchantResistance { get { return ArmureDivers_Def3; } }
-        public override int BasePerforantResistance { get { return ArmureDivers_Def3; } }
-        public override int BaseMagieResistance { get { return ArmureDivers_Def3; } }
+        public override int BasePhysicalResistance { get { return ArmorDivers3.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorDivers3.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorDivers3.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorDivers3.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorDivers3.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureDivers_MinDurabilite3; } }
-        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite3; } }
+        public override int InitMinHits { get { return ArmorDivers3.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorDivers3.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureDivers_Force3; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorDivers3.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorDivers3.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -105,19 +101,17 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
-        public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
-        public override int BaseTranchantResistance { get { return ArmureDivers_Def5; } }
-        public override int BasePerforantResistance { get { return ArmureDivers_Def5; } }
-        public override int BaseMagieResistance { get { return ArmureDivers_Def5; } }
+        public override int BasePhysicalResistance { get { return ArmorDivers5.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorDivers5.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorDivers5.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorDivers5.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorDivers5.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureDivers_MinDurabilite5; } }
-        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite5; } }
+        public override int InitMinHits { get { return ArmorDivers5.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorDivers5.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureDivers_Force5; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorDivers5.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorDivers5.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -154,19 +148,17 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 6; } }
 
-        public override int BasePhysicalResistance { get { return ArmureDivers_Def6; } }
-        public override int BaseContondantResistance { get { return ArmureDivers_Def6; } }
-        public override int BaseTranchantResistance { get { return ArmureDivers_Def6; } }
-        public override int BasePerforantResistance { get { return ArmureDivers_Def6; } }
-        public override int BaseMagieResistance { get { return ArmureDivers_Def6; } }
+        public override int BasePhysicalResistance { get { return ArmorDivers6.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorDivers6.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorDivers6.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorDivers6.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorDivers6.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureDivers_MinDurabilite6; } }
-        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite6; } }
+        public override int InitMinHits { get { return ArmorDivers6.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorDivers6.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureDivers_Force6; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorDivers6.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorDivers6.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -203,19 +195,17 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
-        public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
-        public override int BaseTranchantResistance { get { return ArmureDivers_Def4; } }
-        public override int BasePerforantResistance { get { return ArmureDivers_Def4; } }
-        public override int BaseMagieResistance { get { return ArmureDivers_Def4; } }
+        public override int BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorDivers4.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorDivers4.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorDivers4.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureDivers_MinDurabilite4; } }
-        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite4; } }
+        public override int InitMinHits { get { return ArmorDivers4.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorDivers4.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureDivers_Force4; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorDivers4.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorDivers4.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -252,19 +242,17 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
-        public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
-        public override int BaseTranchantResistance { get { return ArmureDivers_Def5; } }
-        public override int BasePerforantResistance { get { return ArmureDivers_Def5; } }
-        public override int BaseMagieResistance { get { return ArmureDivers_Def5; } }
+        public override int BasePhysicalResistance { get { return ArmorDivers5.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorDivers5.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorDivers5.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorDivers5.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorDivers5.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureDivers_MinDurabilite5; } }
-        public override int InitMaxHits { get { return ArmureDivers_MaxDurabilite5; } }
+        public override int InitMinHits { get { return ArmorDivers5.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorDivers5.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureDivers_Force5; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorDivers5.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorDivers5.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

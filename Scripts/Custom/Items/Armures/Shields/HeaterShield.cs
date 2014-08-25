@@ -7,16 +7,17 @@ namespace Server.Items
 	{
         //public override int NiveauAttirail { get { return 6; } }
 
-        public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
-        public override int BaseContondantResistance { get { return Bouclier_Def6; } }
-        public override int BaseTranchantResistance { get { return Bouclier_Def6; } }
-        public override int BasePerforantResistance { get { return Bouclier_Def6; } }
-        public override int BaseMagieResistance { get { return Bouclier_Def6; } }
+        public override int BasePhysicalResistance { get { return ShldHeater.resistance_Physique ; } }
+        public override int BaseContondantResistance { get { return ShldHeater.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ShldHeater.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ShldHeater.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ShldHeater.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Bouclier_MinDurabilite6; } }
-        public override int InitMaxHits { get { return Bouclier_MaxDurabilite6; } }
+        public override int InitMinHits { get { return ShldHeater.min_Durabilite; } }
+        public override int InitMaxHits { get { return ShldHeater.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Bouclier_Force6; } }
+        public override int AosStrReq { get { return ShldHeater.force_Requise; } }
+        public override int AosDexBonus { get { return ShldHeater.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 23; } }
 
