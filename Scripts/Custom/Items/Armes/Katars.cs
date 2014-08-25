@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class Griffes : BaseKatar
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
         
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class Katar : BaseKatar
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
@@ -102,7 +102,7 @@ namespace Server.Items
     }
     public class Katara : BaseKatar
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }

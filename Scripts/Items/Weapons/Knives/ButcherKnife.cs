@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13F6, 0x13F7 )]
 	public class ButcherKnife : BaseKnife
 	{
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }

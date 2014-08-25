@@ -7,17 +7,17 @@ namespace Server.Items
 	public class LeatherBustierArms : BaseArmor
 	{
 
-        public override int BasePhysicalResistance { get { return Leather_Physique; } }
-		public override int BaseContondantResistance{ get{ return Leather_Contondant; } }
-        public override int BaseTranchantResistance { get { return Leather_Tranchant; } }
-        public override int BasePerforantResistance { get { return Leather_Perforant; } }
-        public override int BaseMagieResistance { get { return Leather_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
+		public override int BaseContondantResistance{ get{ return ArmorLeather.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorLeather.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorLeather.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Leather_MinDurabilite; } }
-        public override int InitMaxHits { get { return Leather_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Leather_Force; } }
-		public override int OldStrReq{ get{ return 15; } }
+        public override int AosStrReq { get { return ArmorLeather.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorLeather.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 13; } }
 

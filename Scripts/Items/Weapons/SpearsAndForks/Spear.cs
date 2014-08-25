@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF62, 0xF63 )]
 	public class Spear : BaseSpear
 	{
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }

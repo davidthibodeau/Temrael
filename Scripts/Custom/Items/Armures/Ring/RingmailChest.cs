@@ -6,21 +6,19 @@ namespace Server.Items
 	[FlipableAttribute( 0x13ec, 0x13ed )]
 	public class RingmailChest : BaseArmor
 	{
-        public override int NiveauAttirail { get { return Ring_Niveau; } }
+        //public override int NiveauAttirail { get { return Ring_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Ring_Physique; } }
-        public override int BaseContondantResistance { get { return Ring_Contondant; } }
-        public override int BaseTranchantResistance { get { return Ring_Tranchant; } }
-        public override int BasePerforantResistance { get { return Ring_Perforant; } }
-        public override int BaseMagieResistance { get { return Ring_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorRingmail.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorRingmail.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorRingmail.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorRingmail.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorRingmail.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Ring_MinDurabilite; } }
-        public override int InitMaxHits { get { return Ring_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorRingmail.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorRingmail.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Ring_Force; } }
-		public override int OldStrReq{ get{ return 20; } }
-
-        public override int OldDexBonus { get { return Ring_Dex; } }
+        public override int AosStrReq { get { return ArmorRingmail.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorRingmail.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 22; } }
 

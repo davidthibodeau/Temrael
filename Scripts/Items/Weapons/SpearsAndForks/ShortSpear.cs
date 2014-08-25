@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1403, 0x1402 )]
 	public class ShortSpear : BaseSpear
 	{
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }

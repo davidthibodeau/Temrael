@@ -5,7 +5,7 @@ namespace Server.Items
 {
 	public class BronzeShield : BaseShield
 	{
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def1; } }
         public override int BaseContondantResistance { get { return Bouclier_Def1; } }

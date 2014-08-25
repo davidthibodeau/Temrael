@@ -8,7 +8,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x26BA, 0x26C4 )]
 	public class Scythe : BasePoleArm
 	{
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }

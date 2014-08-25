@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class BourgeonGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
+        //public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Bourgeon_Physique; } }
-        public override int BaseContondantResistance { get { return Bourgeon_Contondant; } }
-        public override int BaseTranchantResistance { get { return Bourgeon_Tranchant; } }
-        public override int BasePerforantResistance { get { return Bourgeon_Perforant; } }
-        public override int BaseMagieResistance { get { return Bourgeon_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorBourgeon.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorBourgeon.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorBourgeon.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorBourgeon.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorBourgeon.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Bourgeon_MinDurabilite; } }
-        public override int InitMaxHits { get { return Bourgeon_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorBourgeon.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorBourgeon.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Bourgeon_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorBourgeon.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorBourgeon.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,21 +52,19 @@ namespace Server.Items
     }
     public class BourgeonLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
+        //public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Bourgeon_Physique; } }
-        public override int BaseContondantResistance { get { return Bourgeon_Contondant; } }
-        public override int BaseTranchantResistance { get { return Bourgeon_Tranchant; } }
-        public override int BasePerforantResistance { get { return Bourgeon_Perforant; } }
-        public override int BaseMagieResistance { get { return Bourgeon_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorBourgeon.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorBourgeon.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorBourgeon.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorBourgeon.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorBourgeon.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Bourgeon_MinDurabilite; } }
-        public override int InitMaxHits { get { return Bourgeon_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorBourgeon.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorBourgeon.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Bourgeon_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorBourgeon.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorBourgeon.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -103,21 +99,19 @@ namespace Server.Items
     }
     public class BourgeonTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
+        //public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Bourgeon_Physique; } }
-        public override int BaseContondantResistance { get { return Bourgeon_Contondant; } }
-        public override int BaseTranchantResistance { get { return Bourgeon_Tranchant; } }
-        public override int BasePerforantResistance { get { return Bourgeon_Perforant; } }
-        public override int BaseMagieResistance { get { return Bourgeon_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorBourgeon.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorBourgeon.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorBourgeon.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorBourgeon.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorBourgeon.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Bourgeon_MinDurabilite; } }
-        public override int InitMaxHits { get { return Bourgeon_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorBourgeon.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorBourgeon.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Bourgeon_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorBourgeon.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorBourgeon.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

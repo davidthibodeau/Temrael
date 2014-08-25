@@ -5,21 +5,19 @@ namespace Server.Items
 {
 	public class PlateGorget : BaseArmor
 	{
-        public override int NiveauAttirail { get { return Plaque_Niveau; } }
+        //public override int NiveauAttirail { get { return Plaque_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Plaque_Physique; } }
-        public override int BaseContondantResistance { get { return Plaque_Contondant; } }
-        public override int BaseTranchantResistance { get { return Plaque_Tranchant; } }
-        public override int BasePerforantResistance { get { return Plaque_Perforant; } }
-        public override int BaseMagieResistance { get { return Plaque_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaque.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaque.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaque.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaque.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaque.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Plaque_MinDurabilite; } }
-        public override int InitMaxHits { get { return Plaque_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaque.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaque.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Plaque_Force; } }
-		public override int OldStrReq{ get{ return 30; } }
-
-		public override int OldDexBonus{ get{ return -1; } }
+        public override int AosStrReq { get { return ArmorPlaque.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaque.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 40; } }
 

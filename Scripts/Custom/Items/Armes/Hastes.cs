@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class Granbarde : BasePoleArm
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class Guisarme : BasePoleArm
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -102,7 +102,7 @@ namespace Server.Items
     }
     public class Bardine : BasePoleArm
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -150,7 +150,7 @@ namespace Server.Items
     }
     public class Vougue : BasePoleArm
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -198,7 +198,7 @@ namespace Server.Items
     }
     public class Hastiche : BasePoleArm
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -246,7 +246,7 @@ namespace Server.Items
     }
     public class Helbarde : BasePoleArm
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -294,7 +294,7 @@ namespace Server.Items
     }
     public class Cythe : BasePoleArm
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }

@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1405, 0x1404 )]
 	public class WarFork : BaseSpear
 	{
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }

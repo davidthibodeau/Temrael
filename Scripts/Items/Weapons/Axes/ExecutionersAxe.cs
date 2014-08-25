@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xf45, 0xf46 )]
     public class ExecutionersAxe : BasePoleArm
 	{
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }

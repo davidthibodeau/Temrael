@@ -6,19 +6,17 @@ namespace Server.Items
     public class StuddedBarbareGreaves : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return Studded_Physique; } }
-        public override int BaseContondantResistance { get { return Studded_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorStudded.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorStudded.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorStudded.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Studded_MinDurabilite; } }
-        public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Studded_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorStudded.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorStudded.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,19 +52,17 @@ namespace Server.Items
     public class StuddedBarbareGorget : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return Studded_Physique; } }
-        public override int BaseContondantResistance { get { return Studded_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorStudded.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorStudded.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorStudded.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Studded_MinDurabilite; } }
-        public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Studded_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorStudded.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorStudded.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -102,19 +98,17 @@ namespace Server.Items
     public class StuddedBarbareLeggings : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return Studded_Physique; } }
-        public override int BaseContondantResistance { get { return Studded_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorStudded.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorStudded.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorStudded.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Studded_MinDurabilite; } }
-        public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Studded_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorStudded.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorStudded.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -150,19 +144,17 @@ namespace Server.Items
     public class StuddedBarbareTunic : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return Studded_Physique; } }
-        public override int BaseContondantResistance { get { return Studded_Contondant; } }
-        public override int BaseTranchantResistance { get { return Studded_Tranchant; } }
-        public override int BasePerforantResistance { get { return Studded_Perforant; } }
-        public override int BaseMagieResistance { get { return Studded_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorStudded.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorStudded.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorStudded.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Studded_MinDurabilite; } }
-        public override int InitMaxHits { get { return Studded_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Studded_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorStudded.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorStudded.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

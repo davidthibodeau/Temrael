@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13B6, 0x13B5 )]
 	public class Scimitar : BaseSword
 	{
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }

@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class Percemurs : BaseRanged
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -62,7 +62,7 @@ namespace Server.Items
     }
     public class Arbavive : BaseRanged
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -118,7 +118,7 @@ namespace Server.Items
     }
     public class Lumitrait : BaseRanged
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -174,7 +174,7 @@ namespace Server.Items
     }
     public class Arbalette : BaseRanged
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -230,7 +230,7 @@ namespace Server.Items
     }
     public class ArbaletteLourde : BaseRanged
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -286,7 +286,7 @@ namespace Server.Items
     }
     public class ArbaletteRepetition : BaseRanged
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -342,7 +342,7 @@ namespace Server.Items
     }
     public class ArbalettePistolet : BaseRanged
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }

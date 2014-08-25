@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class PlaqueEcailleHelm : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class PlaqueEcailleArms : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -103,7 +103,7 @@ namespace Server.Items
     }
     public class PlaqueEcailleLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -152,7 +152,7 @@ namespace Server.Items
     }
     public class PlaqueEcailleTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }

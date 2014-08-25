@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class Fleau : BaseBashing
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class Granmace : BaseBashing
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -102,7 +102,7 @@ namespace Server.Items
     }
     public class Batonmace : BaseBashing
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -150,7 +150,7 @@ namespace Server.Items
     }
     public class Brisecrane : BaseBashing
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -198,7 +198,7 @@ namespace Server.Items
     }
     public class Defonceur : BaseBashing
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -246,7 +246,7 @@ namespace Server.Items
     }
     public class Ecraseface : BaseBashing
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -294,7 +294,7 @@ namespace Server.Items
     }
     public class Gourdin : BaseBashing
     {
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -342,7 +342,7 @@ namespace Server.Items
     }
     public class Gourpic : BaseBashing
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -390,7 +390,7 @@ namespace Server.Items
     }
     public class Malert : BaseBashing
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -440,7 +440,7 @@ namespace Server.Items
     }
     public class Massue : BaseBashing
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -488,7 +488,7 @@ namespace Server.Items
     }
     public class Ecracheur : BaseBashing
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -536,7 +536,7 @@ namespace Server.Items
     }
     public class MarteauGuerre : BaseBashing
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -586,7 +586,7 @@ namespace Server.Items
     }
     public class Broyeur : BaseBashing
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }

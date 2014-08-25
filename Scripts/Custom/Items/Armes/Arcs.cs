@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class Legarc : BaseRanged
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override int EffectID{ get{ return 0xF42; } }
 		public override Type AmmoType{ get{ return typeof( Arrow ); } }
@@ -62,7 +62,7 @@ namespace Server.Items
     }
     public class Tarkarc : BaseRanged
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -119,7 +119,7 @@ namespace Server.Items
     }
     public class Souplecorde : BaseRanged
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -176,7 +176,7 @@ namespace Server.Items
     }
     public class Sombrevent : BaseRanged
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -233,7 +233,7 @@ namespace Server.Items
     }
     public class Sifflecrin : BaseRanged
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -290,7 +290,7 @@ namespace Server.Items
     }
     public class Chantefleche : BaseRanged
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -347,7 +347,7 @@ namespace Server.Items
     }
     public class Flamfleche : BaseRanged
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -404,7 +404,7 @@ namespace Server.Items
     }
     public class Barbatrine : BaseRanged
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -461,7 +461,7 @@ namespace Server.Items
     }
     public class Ebonie : BaseRanged
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -518,7 +518,7 @@ namespace Server.Items
     }
     public class Arc : BaseRanged
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -575,7 +575,7 @@ namespace Server.Items
     }
     public class Foliere : BaseRanged
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -632,7 +632,7 @@ namespace Server.Items
     }
     public class Maegie : BaseRanged
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -689,7 +689,7 @@ namespace Server.Items
     }
     public class Blancorde : BaseRanged
     {
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -746,7 +746,7 @@ namespace Server.Items
     }
     public class Composite : BaseRanged
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -803,7 +803,7 @@ namespace Server.Items
     }
     public class Pieuse : BaseRanged
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -860,7 +860,7 @@ namespace Server.Items
     }
     public class Foudre : BaseRanged
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -917,7 +917,7 @@ namespace Server.Items
     }
     public class Mirielle : BaseRanged
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -974,7 +974,7 @@ namespace Server.Items
     }
     public class Glaciale : BaseRanged
     {
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -1031,7 +1031,7 @@ namespace Server.Items
     }
     public class Vigne : BaseRanged
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }

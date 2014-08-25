@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13F8, 0x13F9 )]
 	public class GnarledStaff : BaseStaff
 	{
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }

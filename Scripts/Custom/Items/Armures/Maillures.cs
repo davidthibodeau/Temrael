@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class MailluresGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return Maillures_Niveau; } }
+        //public override int NiveauAttirail { get { return Maillures_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Maillures_Physique; } }
-        public override int BaseContondantResistance { get { return Maillures_Contondant; } }
-        public override int BaseTranchantResistance { get { return Maillures_Tranchant; } }
-        public override int BasePerforantResistance { get { return Maillures_Perforant; } }
-        public override int BaseMagieResistance { get { return Maillures_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorMaillures.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorMaillures.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorMaillures.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorMaillures.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorMaillures.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Maillures_MinDurabilite; } }
-        public override int InitMaxHits { get { return Maillures_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorMaillures.min_Durabilite; } }
 
-        public override int AosStrReq { get { return Maillures_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorMaillures.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorMaillures.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -57,21 +55,19 @@ namespace Server.Items
     }
     public class MailluresLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return Maillures_Niveau; } }
+        //public override int NiveauAttirail { get { return Maillures_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Maillures_Physique; } }
-        public override int BaseContondantResistance { get { return Maillures_Contondant; } }
-        public override int BaseTranchantResistance { get { return Maillures_Tranchant; } }
-        public override int BasePerforantResistance { get { return Maillures_Perforant; } }
-        public override int BaseMagieResistance { get { return Maillures_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorMaillures.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorMaillures.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorMaillures.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorMaillures.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorMaillures.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Maillures_MinDurabilite; } }
-        public override int InitMaxHits { get { return Maillures_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorMaillures.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Maillures_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorMaillures.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorMaillures.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -106,21 +102,19 @@ namespace Server.Items
     }
     public class MailluresTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return Maillures_Niveau; } }
+        //public override int NiveauAttirail { get { return Maillures_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Maillures_Physique; } }
-        public override int BaseContondantResistance { get { return Maillures_Contondant; } }
-        public override int BaseTranchantResistance { get { return Maillures_Tranchant; } }
-        public override int BasePerforantResistance { get { return Maillures_Perforant; } }
-        public override int BaseMagieResistance { get { return Maillures_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorMaillures.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorMaillures.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorMaillures.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorMaillures.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorMaillures.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Maillures_MinDurabilite; } }
-        public override int InitMaxHits { get { return Maillures_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorMaillures.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Maillures_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorMaillures.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorMaillures.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

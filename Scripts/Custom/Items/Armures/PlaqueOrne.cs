@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class CuirasseOrne : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueOrne_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueOrne_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueOrne_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueOrne_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueOrne_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueOrne_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueOrne_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueOrne.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueOrne.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueOrne.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueOrne.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueOrne.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueOrne_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueOrne_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueOrne.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueOrne.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueOrne_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueOrne.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueOrne.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,21 +52,19 @@ namespace Server.Items
     }
     public class BrassardsOrne : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueOrne_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueOrne_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueOrne_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueOrne_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueOrne_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueOrne_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueOrne_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueOrne.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueOrne.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueOrne.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueOrne.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueOrne.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueOrne_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueOrne_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueOrne.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueOrne.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueOrne_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueOrne.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueOrne.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

@@ -6,21 +6,19 @@ namespace Server.Items
 	[FlipableAttribute( 0x13be, 0x13c3 )]
 	public class ChainLegs : BaseArmor
 	{
-        public override int NiveauAttirail { get { return Chain_Niveau; } }
+        //public override int NiveauAttirail { get { return Chain_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Chain_Physique; } }
-        public override int BaseContondantResistance { get { return Chain_Contondant; } }
-        public override int BaseTranchantResistance { get { return Chain_Tranchant; } }
-        public override int BasePerforantResistance { get { return Chain_Perforant; } }
-        public override int BaseMagieResistance { get { return Chain_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorChain.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorChain.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorChain.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorChain.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorChain.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Chain_MinDurabilite; } }
-        public override int InitMaxHits { get { return Chain_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorChain.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorChain.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Chain_Force; } }
-		public override int OldStrReq{ get{ return 20; } }
-
-		public override int OldDexBonus{ get{ return -3; } }
+        public override int AosStrReq { get { return ArmorChain.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorChain.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 28; } }
 

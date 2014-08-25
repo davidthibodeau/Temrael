@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class Elvetrine : BaseAxe
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -56,7 +56,7 @@ namespace Server.Items
     }
     public class Noctame : BaseAxe
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -104,7 +104,7 @@ namespace Server.Items
     }
     public class Biliane : BaseAxe
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -152,7 +152,7 @@ namespace Server.Items
     }
     public class Viftranche : BaseAxe
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -202,7 +202,7 @@ namespace Server.Items
     }
     public class Venmar : BaseAxe
     {
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -252,7 +252,7 @@ namespace Server.Items
     }
     public class Furagne : BaseAxe
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -300,7 +300,7 @@ namespace Server.Items
     }
     public class Luminar : BaseAxe
     {
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -348,7 +348,7 @@ namespace Server.Items
     }
     public class Tranchecorps : BaseAxe
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -398,7 +398,7 @@ namespace Server.Items
     }
     public class Duxtranche : BaseAxe
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -447,7 +447,7 @@ namespace Server.Items
     }
     public class Morgrove : BaseAxe
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -497,7 +497,7 @@ namespace Server.Items
     }
     public class Morgate : BaseAxe
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -547,7 +547,7 @@ namespace Server.Items
     }
     public class Grochette : BaseAxe
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -595,7 +595,7 @@ namespace Server.Items
     }
     public class Loragne : BaseAxe
     {
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -643,7 +643,7 @@ namespace Server.Items
     }
     public class Minarque : BaseAxe
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -691,7 +691,7 @@ namespace Server.Items
     }
     public class Montorgne : BaseAxe
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -739,7 +739,7 @@ namespace Server.Items
     }
     public class Orcarinia : BaseAxe
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -787,7 +787,7 @@ namespace Server.Items
     }
     public class Coupecrane : BaseAxe
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -837,7 +837,7 @@ namespace Server.Items
     }
     public class HacheDouble : BaseAxe
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -887,7 +887,7 @@ namespace Server.Items
     }
     public class HachetteDouble : BaseAxe
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
@@ -935,7 +935,7 @@ namespace Server.Items
     }
     public class Hachette : BaseAxe
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }

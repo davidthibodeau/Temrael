@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1441, 0x1440 )]
 	public class Cutlass : BaseSword
 	{
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }

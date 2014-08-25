@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1443, 0x1442 )]
 	public class TwoHandedAxe : BaseAxe
 	{
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }

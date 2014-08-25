@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1439, 0x1438 )]
 	public class WarHammer : BaseBashing
 	{
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.CrushingBlow; } }

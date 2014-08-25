@@ -7,7 +7,7 @@ namespace Server.Items
 {
     public class BouclierDecorer : BaseShield
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
         public override int BaseContondantResistance { get { return Bouclier_Def6; } }
@@ -50,7 +50,7 @@ namespace Server.Items
     
     public class BouclierElfique : BaseShield
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def5; } }
         public override int BaseContondantResistance { get { return Bouclier_Def5; } }
@@ -94,7 +94,7 @@ namespace Server.Items
     }
     public class BouclierCuir : BaseShield
     {
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def1; } }
         public override int BaseContondantResistance { get { return Bouclier_Def1; } }
@@ -138,7 +138,7 @@ namespace Server.Items
     }
     public class BouclierNordique : BaseShield
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def5; } }
         public override int BaseContondantResistance { get { return Bouclier_Def5; } }
@@ -182,7 +182,7 @@ namespace Server.Items
     }
     public class BouclierChevaleresque : BaseShield
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def5; } }
         public override int BaseContondantResistance { get { return Bouclier_Def5; } }
@@ -226,7 +226,7 @@ namespace Server.Items
     }
     public class BouclierVieux : BaseShield
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
         public override int BaseContondantResistance { get { return Bouclier_Def6; } }
@@ -270,7 +270,7 @@ namespace Server.Items
     }
     public class BouclierComte : BaseShield
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
         public override int BaseContondantResistance { get { return Bouclier_Def4; } }
@@ -314,7 +314,7 @@ namespace Server.Items
     }
     public class BouclierMarquis : BaseShield
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
         public override int BaseContondantResistance { get { return Bouclier_Def4; } }
@@ -358,7 +358,7 @@ namespace Server.Items
     }
     public class BouclierDuc : BaseShield
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
         public override int BaseContondantResistance { get { return Bouclier_Def4; } }
@@ -402,7 +402,7 @@ namespace Server.Items
     }
     public class BouclierPavoisNoir : BaseShield
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
         public override int BaseContondantResistance { get { return Bouclier_Def6; } }
@@ -446,7 +446,7 @@ namespace Server.Items
     }
     public class BouclierGarde : BaseShield
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def3; } }
         public override int BaseContondantResistance { get { return Bouclier_Def3; } }

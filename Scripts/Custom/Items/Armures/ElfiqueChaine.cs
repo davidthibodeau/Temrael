@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class ElfiqueChaineTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
+        //public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ChainElfique_Physique; } }
-        public override int BaseContondantResistance { get { return ChainElfique_Contondant; } }
-        public override int BaseTranchantResistance { get { return ChainElfique_Tranchant; } }
-        public override int BasePerforantResistance { get { return ChainElfique_Perforant; } }
-        public override int BaseMagieResistance { get { return ChainElfique_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorChainElf.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorChainElf.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorChainElf.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorChainElf.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorChainElf.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ChainElfique_MinDurabilite; } }
-        public override int InitMaxHits { get { return ChainElfique_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorChainElf.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorChainElf.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ChainElfique_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorChainElf.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorChainElf.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,21 +52,19 @@ namespace Server.Items
     }
     public class ElfiqueChaineLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
+        //public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ChainElfique_Physique; } }
-        public override int BaseContondantResistance { get { return ChainElfique_Contondant; } }
-        public override int BaseTranchantResistance { get { return ChainElfique_Tranchant; } }
-        public override int BasePerforantResistance { get { return ChainElfique_Perforant; } }
-        public override int BaseMagieResistance { get { return ChainElfique_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorChainElf.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorChainElf.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorChainElf.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorChainElf.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorChainElf.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ChainElfique_MinDurabilite; } }
-        public override int InitMaxHits { get { return ChainElfique_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorChainElf.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorChainElf.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ChainElfique_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorChainElf.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorChainElf.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

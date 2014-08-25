@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class CasqueChaine : BaseArmor
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def3; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def3; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class CasqueSudiste : BaseArmor
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
@@ -103,7 +103,7 @@ namespace Server.Items
     }
     public class CasqueCorne : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
@@ -152,7 +152,7 @@ namespace Server.Items
     }
     public class CasqueNordique : BaseArmor
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }

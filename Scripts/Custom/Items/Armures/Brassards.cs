@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class BrassardsChaotique : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def6; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def6; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class Brassards : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }

@@ -5,7 +5,7 @@ namespace Server.Items
 {
 	public class MetalKiteShield : BaseShield, IDyable
 	{
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def4; } }
         public override int BaseContondantResistance { get { return Bouclier_Def4; } }

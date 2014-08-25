@@ -5,7 +5,7 @@ namespace Server.Items
 {
 	public class WoodenKiteShield : BaseShield
 	{
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def3; } }
         public override int BaseContondantResistance { get { return Bouclier_Def3; } }

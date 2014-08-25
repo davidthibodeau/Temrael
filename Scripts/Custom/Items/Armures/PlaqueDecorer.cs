@@ -6,21 +6,19 @@ namespace Server.Items
     
     public class CasqueClosDecorer : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDecore_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDecore_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDecore_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDecore_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDecore_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDeco.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDeco.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDeco.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDeco.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDeco.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDecore_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDecore_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDeco.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDeco.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDecore_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDeco.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDeco.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -55,21 +53,19 @@ namespace Server.Items
     }
     public class CasqueDecorer : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDecore_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDecore_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDecore_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDecore_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDecore_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDeco.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDeco.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDeco.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDeco.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDeco.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDecore_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDecore_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDeco.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDeco.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDecore_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDeco.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDeco.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -104,21 +100,19 @@ namespace Server.Items
     }
     public class GorgetDecorer : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDecore_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDecore_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDecore_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDecore_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDecore_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDeco.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDeco.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDeco.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDeco.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDeco.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDecore_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDecore_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDeco.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDeco.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDecore_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDeco.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDeco.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -153,21 +147,19 @@ namespace Server.Items
     }
     public class JambieresDecorer : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDecore_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDecore_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDecore_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDecore_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDecore_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDeco.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDeco.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDeco.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDeco.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDeco.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDecore_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDecore_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDeco.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDeco.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDecore_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDeco.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDeco.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -202,21 +194,19 @@ namespace Server.Items
     }
     public class GantsDecorer : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDecore_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDecore_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDecore_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDecore_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDecore_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDeco.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDeco.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDeco.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDeco.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDeco.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDecore_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDecore_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDeco.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDeco.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDecore_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDeco.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDeco.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -251,21 +241,19 @@ namespace Server.Items
     }
     public class CuirasseDecorer : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDecore_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDecore_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDecore_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDecore_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDecore_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDeco.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDeco.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDeco.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDeco.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDeco.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDecore_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDecore_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDeco.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDeco.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDecore_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDeco.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDeco.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -300,21 +288,19 @@ namespace Server.Items
     }
     public class BrassardsDecorer : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDecore_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDecore_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDecore_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDecore_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDecore_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDecore_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDeco.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDeco.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDeco.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDeco.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDeco.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDecore_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDecore_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDeco.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDeco.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDecore_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDeco.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDeco.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

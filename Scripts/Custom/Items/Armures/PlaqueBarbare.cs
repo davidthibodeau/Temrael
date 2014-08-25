@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class PlaqueBarbareGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueBarb.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueBarb.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueBarb.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex ; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,21 +52,19 @@ namespace Server.Items
     }
     public class PlaqueBarbareGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueBarb.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueBarb.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueBarb.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -103,21 +99,19 @@ namespace Server.Items
     }
     public class PlaqueBarbareLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueBarb.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueBarb.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueBarb.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -152,21 +146,19 @@ namespace Server.Items
     }
     public class PlaqueBarbareTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueBarbare_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueBarbare_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueBarbare_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueBarbare_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueBarbare_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueBarb.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueBarb.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueBarb.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueBarbare_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueBarbare_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueBarbare_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

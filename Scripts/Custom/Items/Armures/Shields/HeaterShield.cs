@@ -5,7 +5,7 @@ namespace Server.Items
 {
 	public class HeaterShield : BaseShield
 	{
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def6; } }
         public override int BaseContondantResistance { get { return Bouclier_Def6; } }

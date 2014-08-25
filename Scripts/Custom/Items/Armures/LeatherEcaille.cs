@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class LeatherEcailleGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class LeatherEcailleArms : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -103,7 +103,7 @@ namespace Server.Items
     }
     public class LeatherEcailleLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -152,7 +152,7 @@ namespace Server.Items
     }
     public class LeatherEcailleTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }

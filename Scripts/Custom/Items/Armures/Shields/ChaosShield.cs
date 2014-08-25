@@ -6,7 +6,7 @@ namespace Server.Items
 {
 	public class ChaosShield : BaseShield
 	{
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
         public override int BasePhysicalResistance { get { return Bouclier_Def2; } }
         public override int BaseContondantResistance { get { return Bouclier_Def2; } }

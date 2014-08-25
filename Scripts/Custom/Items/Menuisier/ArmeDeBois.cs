@@ -6,7 +6,7 @@ namespace Server.Items
 {
     public class DagueEntrainement : BaseSword
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override int AosStrengthReq { get { return Dague_Force0; } }
         public override int AosMinDamage { get { return Dague_MinDam0; } }
@@ -51,7 +51,7 @@ namespace Server.Items
     }
     public class LanceEntrainement : BaseSpear
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override int AosStrengthReq { get { return Lance_Force0; } }
         public override int AosMinDamage { get { return Lance_MinDam0; } }
@@ -99,7 +99,7 @@ namespace Server.Items
     }
     public class MasseEntrainement : BaseBashing
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override int AosStrengthReq { get { return Masse_Force0; } }
         public override int AosMinDamage { get { return Masse_MinDam0; } }
@@ -144,7 +144,7 @@ namespace Server.Items
     }
     public class BatonEntrainement : BaseStaff
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override int AosStrengthReq { get { return Baton_Force0; } }
         public override int AosMinDamage { get { return Baton_MinDam0; } }
@@ -192,7 +192,7 @@ namespace Server.Items
     }
     public class EpeeEntrainement : BaseSword
     {
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
         public override int AosStrengthReq { get { return Lame_Force0; } }
         public override int AosMinDamage { get { return Lame_MinDam0; } }

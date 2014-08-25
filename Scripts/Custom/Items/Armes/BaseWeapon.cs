@@ -1088,9 +1088,9 @@ namespace Server.Items
 
 		public override bool OnEquip( Mobile from )
 		{
-			int strBonus = (m_AosAttributes.BonusStr > 5 ? 5 : m_AosAttributes.BonusStr);
-			int dexBonus = (m_AosAttributes.BonusDex > 5 ? 5 : m_AosAttributes.BonusDex);
-			int intBonus = (m_AosAttributes.BonusInt > 5 ? 5 : m_AosAttributes.BonusInt);
+			int strBonus = m_AosAttributes.BonusStr;
+			int dexBonus = m_AosAttributes.BonusDex;
+			int intBonus = m_AosAttributes.BonusInt;
             int chaBonus = (m_TemraelAttributes.CharismaBonus > 5 ? 5 : m_TemraelAttributes.CharismaBonus);
             int conBonus = (m_TemraelAttributes.ConstitutionBonus > 5 ? 5 : m_TemraelAttributes.ConstitutionBonus);
 

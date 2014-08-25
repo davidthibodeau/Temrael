@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class ScalemailArms : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class ScalemailLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }
@@ -103,7 +103,7 @@ namespace Server.Items
     }
     public class ScalemailTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return 3; } }
         public override int BaseContondantResistance { get { return 3; } }

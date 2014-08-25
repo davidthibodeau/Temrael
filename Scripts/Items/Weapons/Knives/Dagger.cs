@@ -8,7 +8,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF52, 0xF51 )]
 	public class Dagger : BaseKnife
 	{
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }

@@ -7,19 +7,17 @@ namespace Server.Items
 	public class BoneChest : BaseArmor
 	{
 
-        public override int BasePhysicalResistance { get { return Os_Physique; } }
-        public override int BaseContondantResistance { get { return Os_Contondant; } }
-        public override int BaseTranchantResistance { get { return Os_Tranchant; } }
-        public override int BasePerforantResistance { get { return Os_Perforant; } }
-        public override int BaseMagieResistance { get { return Os_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorBone.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorBone.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorBone.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorBone.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorBone.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Os_MinDurabilite; } }
-        public override int InitMaxHits { get { return Os_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorBone.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorBone.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Os_Force; } }
-		public override int OldStrReq{ get{ return 40; } }
-
-		public override int OldDexBonus{ get{ return -6; } }
+        public override int AosStrReq { get { return ArmorBone.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorBone.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 30; } }
 		public override int RevertArmorBase{ get{ return 11; } }

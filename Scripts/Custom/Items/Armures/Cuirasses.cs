@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class CuirasseReligieuse : BaseArmor
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
@@ -54,7 +54,7 @@ namespace Server.Items
     }
     public class TuniqueChaine : BaseArmor
     {
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def3; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def3; } }
@@ -103,7 +103,7 @@ namespace Server.Items
     }
     public class Cuirasse : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }
@@ -152,7 +152,7 @@ namespace Server.Items
     }
     public class CuirasseDraconique : BaseArmor
     {
-        public override int NiveauAttirail { get { return 6; } }
+        //public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def6; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def6; } }
@@ -201,7 +201,7 @@ namespace Server.Items
     }
     public class CuirasseBarbare : BaseArmor
     {
-        public override int NiveauAttirail { get { return 4; } }
+        //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def4; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def4; } }
@@ -250,7 +250,7 @@ namespace Server.Items
     }
     public class CuirasseNordique : BaseArmor
     {
-        public override int NiveauAttirail { get { return 5; } }
+        //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return ArmureDivers_Def5; } }
         public override int BaseContondantResistance { get { return ArmureDivers_Def5; } }

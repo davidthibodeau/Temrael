@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13B9, 0x13Ba )]
 	public class VikingSword : BaseSword
 	{
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }

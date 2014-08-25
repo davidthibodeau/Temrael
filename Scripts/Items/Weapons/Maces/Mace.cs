@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF5C, 0xF5D )]
 	public class Mace : BaseBashing
 	{
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Disarm; } }

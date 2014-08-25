@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13b4, 0x13b3 )]
 	public class Club : BaseBashing
 	{
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }

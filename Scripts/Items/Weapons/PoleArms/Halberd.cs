@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x143E, 0x143F )]
 	public class Halberd : BasePoleArm
 	{
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.WhirlwindAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }

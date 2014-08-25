@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x13FD, 0x13FC )]
 	public class HeavyCrossbow : BaseRanged
 	{
-        public override int NiveauAttirail { get { return 3; } }
+        //public override int NiveauAttirail { get { return 3; } }
 
 		public override int EffectID{ get{ return 0x1BFE; } }
 		public override Type AmmoType{ get{ return typeof( Bolt ); } }

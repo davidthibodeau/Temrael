@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class ArmureDaedricGreaves : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDaed.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDaed.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDaed.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDaed.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDaed.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,21 +52,19 @@ namespace Server.Items
     }
     public class ArmureDaedricTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDaed.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDaed.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDaed.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDaed.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDaed.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -103,21 +99,19 @@ namespace Server.Items
     }
     public class ArmureDaedricHelm : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDaed.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDaed.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDaed.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDaed.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDaed.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -152,21 +146,19 @@ namespace Server.Items
     }
     public class ArmureDaedricGloves : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDaed.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDaed.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDaed.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDaed.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDaed.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -201,21 +193,19 @@ namespace Server.Items
     }
     public class ArmureDaedricGorget : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDaed.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDaed.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDaed.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDaed.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDaed.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -250,21 +240,19 @@ namespace Server.Items
     }
     public class ArmureDaedricLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
+        //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return PlaqueDaedric_Physique; } }
-        public override int BaseContondantResistance { get { return PlaqueDaedric_Contondant; } }
-        public override int BaseTranchantResistance { get { return PlaqueDaedric_Tranchant; } }
-        public override int BasePerforantResistance { get { return PlaqueDaedric_Perforant; } }
-        public override int BaseMagieResistance { get { return PlaqueDaedric_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorPlaqueDaed.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorPlaqueDaed.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorPlaqueDaed.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
-        public override int InitMinHits { get { return PlaqueDaedric_MinDurabilite; } }
-        public override int InitMaxHits { get { return PlaqueDaedric_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
 
-        public override int AosStrReq { get { return PlaqueDaedric_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorPlaqueDaed.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorPlaqueDaed.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

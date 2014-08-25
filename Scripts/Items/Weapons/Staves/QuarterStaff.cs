@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xE89, 0xE8a )]
 	public class QuarterStaff : BaseStaff
 	{
-        public override int NiveauAttirail { get { return 0; } }
+        //public override int NiveauAttirail { get { return 0; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }

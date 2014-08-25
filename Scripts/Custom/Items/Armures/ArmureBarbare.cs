@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class TunicBarbare : BaseArmor
     {
-        public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
+        //public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmureBarbare_Physique; } }
-        public override int BaseContondantResistance { get { return ArmureBarbare_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmureBarbare_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmureBarbare_Perforant; } }
-        public override int BaseMagieResistance { get { return ArmureBarbare_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorBarbare.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorBarbare.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorBarbare.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorBarbare.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorBarbare.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureBarbare_MinDurabilite; } }
-        public override int InitMaxHits { get { return ArmureBarbare_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorBarbare.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorBarbare.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureBarbare_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorBarbare.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorBarbare.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,21 +52,19 @@ namespace Server.Items
     }
     public class LeggingsBarbare : BaseArmor
     {
-        public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
+        //public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmureBarbare_Physique; } }
-        public override int BaseContondantResistance { get { return ArmureBarbare_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmureBarbare_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmureBarbare_Perforant; } }
-        public override int BaseMagieResistance { get { return ArmureBarbare_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorBarbare.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorBarbare.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorBarbare.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorBarbare.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorBarbare.resistance_Magique; } }
 
-        public override int InitMinHits { get { return ArmureBarbare_MinDurabilite; } }
-        public override int InitMaxHits { get { return ArmureBarbare_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorBarbare.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorBarbare.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmureBarbare_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorBarbare.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorBarbare.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

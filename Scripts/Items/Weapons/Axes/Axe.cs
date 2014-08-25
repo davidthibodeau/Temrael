@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xF49, 0xF4a )]
 	public class Axe : BaseAxe
 	{
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }

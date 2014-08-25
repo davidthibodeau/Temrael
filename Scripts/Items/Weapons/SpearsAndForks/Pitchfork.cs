@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0xE87, 0xE88 )]
 	public class Pitchfork : BaseSpear
 	{
-        public override int NiveauAttirail { get { return 1; } }
+        //public override int NiveauAttirail { get { return 1; } }
 
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.BleedAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }

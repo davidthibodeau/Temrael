@@ -5,21 +5,19 @@ namespace Server.Items
 {
     public class MaillesHelm : BaseArmor
     {
-        public override int NiveauAttirail { get { return Mailles_Niveau; } }
+        //public override int NiveauAttirail { get { return Mailles_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Mailles_Physique; } }
-        public override int BaseContondantResistance { get { return Mailles_Contondant; } }
-        public override int BaseTranchantResistance { get { return Mailles_Tranchant; } }
-        public override int BasePerforantResistance { get { return Mailles_Perforant; } }
-        public override int BaseMagieResistance { get { return Mailles_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorMailles.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorMailles.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorMailles.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorMailles.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorMailles.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Mailles_MinDurabilite; } }
-        public override int InitMaxHits { get { return Mailles_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorMailles.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorMailles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Mailles_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorMailles.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorMailles.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -54,21 +52,19 @@ namespace Server.Items
     }
     public class MaillesTunic : BaseArmor
     {
-        public override int NiveauAttirail { get { return Mailles_Niveau; } }
+        //public override int NiveauAttirail { get { return Mailles_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Mailles_Physique; } }
-        public override int BaseContondantResistance { get { return Mailles_Contondant; } }
-        public override int BaseTranchantResistance { get { return Mailles_Tranchant; } }
-        public override int BasePerforantResistance { get { return Mailles_Perforant; } }
-        public override int BaseMagieResistance { get { return Mailles_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorMailles.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorMailles.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorMailles.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorMailles.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorMailles.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Mailles_MinDurabilite; } }
-        public override int InitMaxHits { get { return Mailles_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorMailles.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorMailles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Mailles_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorMailles.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorMailles.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }
@@ -103,21 +99,19 @@ namespace Server.Items
     }
     public class MaillesLeggings : BaseArmor
     {
-        public override int NiveauAttirail { get { return Mailles_Niveau; } }
+        //public override int NiveauAttirail { get { return Mailles_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return Mailles_Physique; } }
-        public override int BaseContondantResistance { get { return Mailles_Contondant; } }
-        public override int BaseTranchantResistance { get { return Mailles_Tranchant; } }
-        public override int BasePerforantResistance { get { return Mailles_Perforant; } }
-        public override int BaseMagieResistance { get { return Mailles_Magique; } }
+        public override int BasePhysicalResistance { get { return ArmorMailles.resistance_Physique; } }
+        public override int BaseContondantResistance { get { return ArmorMailles.resistance_Contondant; } }
+        public override int BaseTranchantResistance { get { return ArmorMailles.resistance_Tranchant; } }
+        public override int BasePerforantResistance { get { return ArmorMailles.resistance_Perforant; } }
+        public override int BaseMagieResistance { get { return ArmorMailles.resistance_Magique; } }
 
-        public override int InitMinHits { get { return Mailles_MinDurabilite; } }
-        public override int InitMaxHits { get { return Mailles_MaxDurabilite; } }
+        public override int InitMinHits { get { return ArmorMailles.min_Durabilite; } }
+        public override int InitMaxHits { get { return ArmorMailles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return Mailles_Force; } }
-        public override int OldStrReq { get { return 40; } }
-
-        public override int OldDexBonus { get { return -2; } }
+        public override int AosStrReq { get { return ArmorMailles.force_Requise; } }
+        public override int AosDexBonus { get { return ArmorMailles.malus_Dex; } }
 
         public override int ArmorBase { get { return 30; } }
         public override int RevertArmorBase { get { return 4; } }

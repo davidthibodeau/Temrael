@@ -7,7 +7,7 @@ namespace Server.Items
 	[FlipableAttribute( 0x1407, 0x1406 )]
 	public class WarMace : BaseBashing
 	{
-        public override int NiveauAttirail { get { return 2; } }
+        //public override int NiveauAttirail { get { return 2; } }
 
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.BleedAttack; } }

@@ -60,293 +60,41 @@ namespace Server.Items
         public const int Bouclier_MinDurabilite6 = 225;
         public const int Bouclier_MaxDurabilite6 = 250;
 
-        //LEATHER
+        /* 
+         * TODO :
+         * - Voir quelles armures sont en jeu dans les armures divers.
+         * - Faire une classe pour les boucliers, et un tableau comme pour les ArmorValues.
+         * - Mettre de bonnes valeurs pour les malus de dex.
+         *  
+         *   Arvendor 25 Août 2014.
+         * */
+
+        //                                                                                                      Mettre valeur negative pour les dex malus.
+
+                           //                            Physique   Contondant  Tranchant   Perforant    Magique    Force_req   Dex_malus     Min_Dura     Max_Dura
+        public ArmorValues ArmorLeather = new ArmorValues(  2,          2,          2,          2,          2,          10,         1,          100,        125);
+        public ArmorValues ArmorFeuilles = new ArmorValues( 5,          5,          5,          5,          5,          10,         1,          100,        125);
+        public ArmorValues ArmorStudded = new ArmorValues(  5,          5,          5,          5,          5,          10,         1,          100,        125);
+        public ArmorValues ArmorBone = new ArmorValues(     2,          2,          2,          2,          2,          10,         1,          100,        125);
+        public ArmorValues ArmorRingmail = new ArmorValues( 2,          2,          2,          2,          2,          10,         1,          100,        125);
+        public ArmorValues ArmorBourgeon = new ArmorValues( 2,          2,          2,          2,          2,          10,         1,          100,        125);
+        public ArmorValues ArmorMaillons = new ArmorValues( 4,          4,          4,          4,          4,          20,         1,          125,        150);
+        public ArmorValues ArmorMaillures = new ArmorValues(4,          4,          4,          4,          4,          20,         1,          125,        150);
+        public ArmorValues ArmorChain = new ArmorValues(    6,          6,          6,          6,          6,          30,         1,          150,        175);
+        public ArmorValues ArmorBarbare = new ArmorValues(  6,          6,          6,          6,          6,          30,         1,          150,        175);
+        public ArmorValues ArmorChainElf = new ArmorValues( 6,          6,          6,          6,          6,          30,         1,          150,        175);
+        public ArmorValues ArmorChainNoir = new ArmorValues(6,          6,          6,          6,          6,          30,         1,          150,        175);
+        public ArmorValues ArmorMailles = new ArmorValues(  8,          8,          8,          8,          8,          40,         1,          175,        200);
+        public ArmorValues ArmorPlaque = new ArmorValues(   8,          8,          8,          8,          8,          40,         1,          175,        200);
+        public ArmorValues ArmorPlaqueElf = new ArmorValues(10,         10,         10,         10,         10,         50,         1,          200,        225);
+        public ArmorValues ArmorPlaqueGoth= new ArmorValues(10,         10,         10,         10,         10,         50,         1,          200,        225);
+        public ArmorValues ArmorPlaqueBarb= new ArmorValues(10,         10,         10,         10,         10,         50,         1,          200,        225);
+        public ArmorValues ArmorPlaqueOrne= new ArmorValues(12,         12,         12,         12,         12,         60,         1,          225,        250);
+        public ArmorValues ArmorPlaqueDeco= new ArmorValues(12,         12,         12,         12,         12,         60,         1,          225,        250);
+        public ArmorValues ArmorPlaqueNobl= new ArmorValues(12,         12,         12,         12,         12,         60,         1,          225,        250);
+        public ArmorValues ArmorPlaqueDaed= new ArmorValues(12,         12,         12,         12,         12,         60,         1,          225,        250);
 
-        public const int Leather_Physique = 2;
-        public const int Leather_Contondant = 2;
-        public const int Leather_Tranchant = 2;
-        public const int Leather_Perforant = 2;
-        public const int Leather_Magique = 2;
-        public const int Leather_Force = 10;
 
-        public const int Leather_MinDurabilite = 100;
-        public const int Leather_MaxDurabilite = 125;
-
-        //FEUILLES
-
-        public const int Feuille_Physique = 5;
-        public const int Feuille_Contondant = 5;
-        public const int Feuille_Tranchant = 5;
-        public const int Feuille_Perforant = 5;
-        public const int Feuille_Magique = 5;
-        public const int Feuille_Force = 10;
-
-        public const int Feuille_MinDurabilite = 100;
-        public const int Feuille_MaxDurabilite = 125;
-
-        //STUDDED
-
-        public const int Studded_Physique = 5;
-        public const int Studded_Contondant = 5;
-        public const int Studded_Tranchant = 5;
-        public const int Studded_Perforant = 5;
-        public const int Studded_Magique = 5;
-        public const int Studded_Force = 10;
-
-        public const int Studded_MinDurabilite = 100;
-        public const int Studded_MaxDurabilite = 125;
-
-        //OS
-
-        public const int Os_Physique = 2;
-        public const int Os_Contondant = 2;
-        public const int Os_Tranchant = 2;
-        public const int Os_Perforant = 2;
-        public const int Os_Magique = 2;
-        public const int Os_Force = 10;
-
-        public const int Os_MinDurabilite = 100;
-        public const int Os_MaxDurabilite = 125;
-
-        //RINGMAIL
-
-        public const int Ring_Niveau = 1;
-
-        public const int Ring_Physique = 2;
-        public const int Ring_Contondant = 2;
-        public const int Ring_Tranchant = 2;
-        public const int Ring_Perforant = 2;
-        public const int Ring_Magique = 2;
-        public const int Ring_Force = 10;
-        public const int Ring_Dex = -1;
-
-        public const int Ring_MinDurabilite = 100;
-        public const int Ring_MaxDurabilite = 125;
-
-        //BOURGEON
-
-        public const int Bourgeon_Niveau = 1;
-
-        public const int Bourgeon_Physique = 2;
-        public const int Bourgeon_Contondant = 2;
-        public const int Bourgeon_Tranchant = 2;
-        public const int Bourgeon_Perforant = 2;
-        public const int Bourgeon_Magique = 2;
-        public const int Bourgeon_Force = 10;
-
-        public const int Bourgeon_MinDurabilite = 100;
-        public const int Bourgeon_MaxDurabilite = 125;
-
-        //Maillons
-
-        public const int Maillons_Niveau = 2;
-
-        public const int Maillons_Physique = 4;
-        public const int Maillons_Contondant = 4;
-        public const int Maillons_Tranchant = 4;
-        public const int Maillons_Perforant = 4;
-        public const int Maillons_Magique = 4;
-        public const int Maillons_Force = 20;
-        public const int Maillons_Dex = -1;
-
-        public const int Maillons_MinDurabilite = 125;
-        public const int Maillons_MaxDurabilite = 150;
-
-        //Maillures
-
-        public const int Maillures_Niveau = 2;
-
-        public const int Maillures_Physique = 4;
-        public const int Maillures_Contondant = 4;
-        public const int Maillures_Tranchant = 4;
-        public const int Maillures_Perforant = 4;
-        public const int Maillures_Magique = 4;
-        public const int Maillures_Force = 20;
-
-        public const int Maillures_MinDurabilite = 125;
-        public const int Maillures_MaxDurabilite = 150;
-
-        //Chain
-
-        public const int Chain_Niveau = 3;
-
-        public const int Chain_Physique = 6;
-        public const int Chain_Contondant = 6;
-        public const int Chain_Tranchant = 6;
-        public const int Chain_Perforant = 6;
-        public const int Chain_Magique = 6;
-        public const int Chain_Force = 30;
-
-        public const int Chain_MinDurabilite = 150;
-        public const int Chain_MaxDurabilite = 175;
-
-        //Armure Barbare
-
-        public const int ArmureBarbare_Niveau = 3;
-
-        public const int ArmureBarbare_Physique = 6;
-        public const int ArmureBarbare_Contondant = 6;
-        public const int ArmureBarbare_Tranchant = 6;
-        public const int ArmureBarbare_Perforant = 6;
-        public const int ArmureBarbare_Magique = 6;
-        public const int ArmureBarbare_Force = 30;
-
-        public const int ArmureBarbare_MinDurabilite = 150;
-        public const int ArmureBarbare_MaxDurabilite = 175;
-
-        //Chain Elfique
-
-        public const int ChainElfique_Niveau = 3;
-
-        public const int ChainElfique_Physique = 6;
-        public const int ChainElfique_Contondant = 6;
-        public const int ChainElfique_Tranchant = 6;
-        public const int ChainElfique_Perforant = 6;
-        public const int ChainElfique_Magique = 6;
-        public const int ChainElfique_Force = 30;
-
-        public const int ChainElfique_MinDurabilite = 150;
-        public const int ChainElfique_MaxDurabilite = 175;
-
-        //Chain Elfe Noir
-
-        public const int ChainElfeNoir_Niveau = 3;
-
-        public const int ChainElfeNoir_Physique = 6;
-        public const int ChainElfeNoir_Contondant = 6;
-        public const int ChainElfeNoir_Tranchant = 6;
-        public const int ChainElfeNoir_Perforant = 6;
-        public const int ChainElfeNoir_Magique = 6;
-        public const int ChainElfeNoir_Force = 30;
-
-        public const int ChainElfeNoir_MinDurabilite = 150;
-        public const int ChainElfeNoir_MaxDurabilite = 175;
-
-        //Mailles
-
-        public const int Mailles_Niveau = 4;
-
-        public const int Mailles_Physique = 8;
-        public const int Mailles_Contondant = 8;
-        public const int Mailles_Tranchant = 8;
-        public const int Mailles_Perforant = 8;
-        public const int Mailles_Magique = 8;
-        public const int Mailles_Force = 40;
-
-        public const int Mailles_MinDurabilite = 175;
-        public const int Mailles_MaxDurabilite = 200;
-
-        //Plaque
-
-        public const int Plaque_Niveau = 4;
-
-        public const int Plaque_Physique = 8;
-        public const int Plaque_Contondant = 8;
-        public const int Plaque_Tranchant = 8;
-        public const int Plaque_Perforant = 8;
-        public const int Plaque_Magique = 8;
-        public const int Plaque_Force = 40;
-
-        public const int Plaque_MinDurabilite = 175;
-        public const int Plaque_MaxDurabilite = 200;
-
-        //Plaque Elfique
-
-        public const int PlaqueElfique_Niveau = 5;
-
-        public const int PlaqueElfique_Physique = 10;
-        public const int PlaqueElfique_Contondant = 10;
-        public const int PlaqueElfique_Tranchant = 10;
-        public const int PlaqueElfique_Perforant = 10;
-        public const int PlaqueElfique_Magique = 10;
-        public const int PlaqueElfique_Force = 50;
-
-        public const int PlaqueElfique_MinDurabilite = 200;
-        public const int PlaqueElfique_MaxDurabilite = 225;
-
-        //Plaque Gothique
-
-        public const int PlaqueGothique_Niveau = 5;
-
-        public const int PlaqueGothique_Physique = 10;
-        public const int PlaqueGothique_Contondant = 10;
-        public const int PlaqueGothique_Tranchant = 10;
-        public const int PlaqueGothique_Perforant = 10;
-        public const int PlaqueGothique_Magique = 10;
-        public const int PlaqueGothique_Force = 50;
-
-        public const int PlaqueGothique_MinDurabilite = 200;
-        public const int PlaqueGothique_MaxDurabilite = 225;
-
-        //Plaque Barbare
-
-        public const int PlaqueBarbare_Niveau = 5;
-
-        public const int PlaqueBarbare_Physique = 10;
-        public const int PlaqueBarbare_Contondant = 10;
-        public const int PlaqueBarbare_Tranchant = 10;
-        public const int PlaqueBarbare_Perforant = 10;
-        public const int PlaqueBarbare_Magique = 10;
-        public const int PlaqueBarbare_Force = 50;
-
-        public const int PlaqueBarbare_MinDurabilite = 200;
-        public const int PlaqueBarbare_MaxDurabilite = 225;
-
-        //Plaque Orné
-
-        public const int PlaqueOrne_Niveau = 6;
-
-        public const int PlaqueOrne_Physique = 12;
-        public const int PlaqueOrne_Contondant = 12;
-        public const int PlaqueOrne_Tranchant = 12;
-        public const int PlaqueOrne_Perforant = 12;
-        public const int PlaqueOrne_Magique = 12;
-        public const int PlaqueOrne_Force = 60;
-
-        public const int PlaqueOrne_MinDurabilite = 225;
-        public const int PlaqueOrne_MaxDurabilite = 250;
-
-        //Plaque Décoré
-
-        public const int PlaqueDecore_Niveau = 6;
-
-        public const int PlaqueDecore_Physique = 12;
-        public const int PlaqueDecore_Contondant = 12;
-        public const int PlaqueDecore_Tranchant = 12;
-        public const int PlaqueDecore_Perforant = 12;
-        public const int PlaqueDecore_Magique = 12;
-        public const int PlaqueDecore_Force = 60;
-
-        public const int PlaqueDecore_MinDurabilite = 225;
-        public const int PlaqueDecore_MaxDurabilite = 250;
-
-        //Plaque Noble
-
-        public const int PlaqueNoble_Niveau = 6;
-
-        public const int PlaqueNoble_Physique = 12;
-        public const int PlaqueNoble_Contondant = 12;
-        public const int PlaqueNoble_Tranchant = 12;
-        public const int PlaqueNoble_Perforant = 12;
-        public const int PlaqueNoble_Magique = 12;
-        public const int PlaqueNoble_Force = 40;
-
-        public const int PlaqueNoble_MinDurabilite = 225;
-        public const int PlaqueNoble_MaxDurabilite = 250;
-
-        //Plaque Daedric
-
-        public const int PlaqueDaedric_Niveau = 6;
-
-        public const int PlaqueDaedric_Physique = 12;
-        public const int PlaqueDaedric_Contondant = 12;
-        public const int PlaqueDaedric_Tranchant = 12;
-        public const int PlaqueDaedric_Perforant = 12;
-        public const int PlaqueDaedric_Magique = 12;
-        public const int PlaqueDaedric_Force = 60;
-
-        public const int PlaqueDaedric_MinDurabilite = 225;
-        public const int PlaqueDaedric_MaxDurabilite = 250;
 
         //Divers
         public const int ArmureDivers_Def1 = 2;
@@ -584,7 +332,7 @@ namespace Server.Items
         public int DexBonus
         {
             get { return (m_DexBonus == -1 ? Core.AOS ? AosDexBonus : OldDexBonus : m_DexBonus); }
-            set { m_DexBonus = value; InvalidateProperties(); }
+            set { m_DexBonus = value; InvalidateProperties(); Console.WriteLine(m_DexBonus); }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -1535,6 +1283,7 @@ namespace Server.Items
             int strBonus = ComputeStatBonus(StatType.Str);
             int dexBonus = ComputeStatBonus(StatType.Dex);
             int intBonus = ComputeStatBonus(StatType.Int);
+            Console.WriteLine(dexBonus);
 
             if (Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0))
             {
@@ -1677,9 +1426,9 @@ namespace Server.Items
         {
             from.CheckStatTimers();
 
-            int strBonus = (m_AosAttributes.BonusStr > 5 ? 5 : m_AosAttributes.BonusStr);
-            int dexBonus = (m_AosAttributes.BonusDex > 5 ? 5 : m_AosAttributes.BonusDex);
-            int intBonus = (m_AosAttributes.BonusInt > 5 ? 5 : m_AosAttributes.BonusInt);
+            int strBonus = m_AosAttributes.BonusStr;
+            int dexBonus = m_AosAttributes.BonusDex;
+            int intBonus = m_AosAttributes.BonusInt;
             int chaBonus = (m_TemraelAttributes.CharismaBonus > 5 ? 5 : m_TemraelAttributes.CharismaBonus);
             int conBonus = (m_TemraelAttributes.ConstitutionBonus > 5 ? 5 : m_TemraelAttributes.ConstitutionBonus);
 
@@ -1696,6 +1445,9 @@ namespace Server.Items
                 if (intBonus != 0)
                     from.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
             }
+
+            // Ajout du malus de Dex.
+            from.RawDex += AosDexBonus;
 
             return base.OnEquip(from);
         }
@@ -1724,7 +1476,11 @@ namespace Server.Items
 
                 ((Mobile)parent).Delta(MobileDelta.Armor); // Tell them armor rating has changed
                 m.CheckStatTimers();
+
+                // Retrait du malus de Dex.
+                m.RawDex -= AosDexBonus;
             }
+
 
             base.OnRemoved(parent);
         }
@@ -2070,6 +1826,7 @@ namespace Server.Items
 
             if (v != 0)
                 list.Add(1060446, "{0}\t{1}", couleur, v.ToString()); // energy resist ~1_val~%
+
         }
 
         public override void OnSingleClick(Mobile from)
@@ -2199,5 +1956,35 @@ namespace Server.Items
         }
 
         #endregion
+    }
+
+    // Sert à contenir les informations sur les différentes armures.
+    public class ArmorValues
+    {
+        public int resistance_Physique = 0;
+        public int resistance_Contondant = 0;
+        public int resistance_Tranchant = 0;
+        public int resistance_Perforant = 0;
+        public int resistance_Magique = 0;
+        public int force_Requise = 0;
+        public int malus_Dex = 0;
+        public int min_Durabilite = 0;
+        public int max_Durabilite = 0;
+
+        private ArmorValues() // Constructeur vide impossible.
+        { }
+
+        public ArmorValues(int res_Phys, int res_Cont, int res_Tranch, int res_Perfo, int res_Mag, int force_Req, int malus_dex, int min_Dura, int max_Dura)
+        {
+            resistance_Physique = res_Phys;
+            resistance_Contondant = res_Cont;
+            resistance_Tranchant = res_Tranch;
+            resistance_Perforant = res_Perfo;
+            resistance_Magique = res_Mag;
+            force_Requise = force_Req;
+            min_Durabilite = min_Dura;
+            max_Durabilite = max_Dura;
+            malus_Dex = malus_dex;
+        }
     }
 }
