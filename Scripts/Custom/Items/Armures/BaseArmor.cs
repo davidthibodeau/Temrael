@@ -328,7 +328,7 @@ namespace Server.Items
         public int DexBonus
         {
             get { return (m_DexBonus == -1 ? Core.AOS ? AosDexBonus : OldDexBonus : m_DexBonus); }
-            set { m_DexBonus = value; InvalidateProperties(); Console.WriteLine(m_DexBonus); }
+            set { m_DexBonus = value; InvalidateProperties();}
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -1279,7 +1279,6 @@ namespace Server.Items
             int strBonus = ComputeStatBonus(StatType.Str);
             int dexBonus = ComputeStatBonus(StatType.Dex);
             int intBonus = ComputeStatBonus(StatType.Int);
-            Console.WriteLine(dexBonus);
 
             if (Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0))
             {

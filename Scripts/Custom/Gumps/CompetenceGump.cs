@@ -282,7 +282,7 @@ namespace Server.Gumps
                 ypos += 20;
 
                 //AddButton(110, (ybase + ypos + 3), 2103, 2104, 7, GumpButtonType.Reply, 0);
-                AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Armes ArmorMaillons.resistance_Contondantes<basefont></h3>", false, false);
+                AddHtml(125, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>Armes Contondantes<basefont></h3>", false, false);
                 AddTooltip(3006384);
                 if (m_ShowCaps)
                     AddHtml(m_From.Skills.ArmeContondante.Cap > 99 ? 327 : 332, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>" + m_From.Skills.ArmeContondante.Cap + "<basefont></h3>", false, false);
