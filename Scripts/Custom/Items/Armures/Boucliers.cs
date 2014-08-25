@@ -333,7 +333,7 @@ namespace Server.Items
         public override int InitMaxHits { get { return ShldMarquis.max_Durabilite; } }
 
         public override int AosStrReq { get { return ShldMarquis.force_Requise; } }
-        public override int AosStrReq { get { return ShldMarquis.malus_Dex; } }
+        public override int AosDexBonus { get { return ShldMarquis.malus_Dex; } }
 
         public override int ArmorBase { get { return 10; } }
 

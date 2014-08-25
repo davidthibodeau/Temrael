@@ -17,7 +17,7 @@ namespace Server.Items
         public override int InitMaxHits { get { return ShldMetalKite.max_Durabilite; } }
 
         public override int AosStrReq { get { return ShldMetalKite.force_Requise; } }
-        public override int AosStrReq { get { return ShldMetalKite.malus_Dex; } }
+        public override int AosDexBonus { get { return ShldMetalKite.malus_Dex; } }
 
 		public override int ArmorBase{ get{ return 16; } }
 

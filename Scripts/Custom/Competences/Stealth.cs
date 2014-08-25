@@ -90,7 +90,7 @@ namespace Server.SkillHandlers
 				{
                     double diviseur = DiviseurNombreDePasMarche;
 
-					int steps = (int)(m.Skills[SkillName.Infiltration].Value / diviseur; // A 100, 20 steps, ou 5 steps en courrant.
+					int steps = (int)(m.Skills[SkillName.Infiltration].Value / diviseur); // A 100, 20 steps, ou 5 steps en courrant.
 
 					if( steps < 1 )
 						steps = 1;

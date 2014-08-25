@@ -3207,12 +3207,13 @@ namespace Server.Mobiles
 
 					if( running )
 					{
-						if( (AllowedStealthSteps-- <= 0 )
+						if( (AllowedStealthSteps-- <= 0 ))
 							RevealingAction();
 					}
 					else if( AllowedStealthSteps-- <= 0 )
 					{
-						Server.SkillHandlers.Stealth.OnUse( this , false );
+						//Server.SkillHandlers.Stealth.OnUse( this , false );
+                        Server.SkillHandlers.Stealth.OnUse(this);
 					}
 				}
 				else
