@@ -3004,8 +3004,19 @@ namespace Server
 		{
 			if( m_Hidden && m_AccessLevel == AccessLevel.Player )
 			{
-				if( m_AllowedStealthSteps-- <= 0 || (d & Direction.Running) != 0 || this.Mounted )
-					RevealingAction();
+                if (m_AllowedStealthSteps-- <= 0 || /*(d & Direction.Running) != 0 ||*/ this.Mounted)
+                {
+
+                    if ((d & Direction.Running) != 0) // Si le personnage courre ( NON TESTÉ )
+                    {
+                        // Jet de Stealth avec le bool a 0.
+                    }
+                    else
+                    {
+                        // Jet de Stealth avec le bool à 1.
+                    }
+                }
+				//RevealingAction();
 			}
 
 			return true;

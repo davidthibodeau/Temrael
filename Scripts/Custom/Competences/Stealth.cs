@@ -6,6 +6,11 @@ namespace Server.SkillHandlers
 {
 	public class Stealth
 	{
+        private const double DiviseurNombreDePasMarche = 5.0;
+        private const double DiviseurNombreDePasCourse = 20.0;
+
+
+
 		public static void Initialize()
 		{
 			SkillInfo.Table[(int)SkillName.Infiltration].Callback = new SkillUseCallback( OnUse );
@@ -83,7 +88,9 @@ namespace Server.SkillHandlers
 				//else if( m.CheckSkill( SkillName.Infiltration, -20.0 + (armorRating * 2), (Core.AOS ? 60.0 : 80.0) + (armorRating * 2) ) )
                 else if ( m.CheckSkill(SkillName.Infiltration, 0, 40) )
 				{
-					int steps = (int)(m.Skills[SkillName.Infiltration].Value / (Core.AOS ? 5.0 : 10.0));
+                    double diviseur = DiviseurNombreDePasMarche;
+
+					int steps = (int)(m.Skills[SkillName.Infiltration].Value / diviseur; // A 100, 20 steps, ou 5 steps en courrant.
 
 					if( steps < 1 )
 						steps = 1;
@@ -99,8 +106,6 @@ namespace Server.SkillHandlers
     						pm.IsStealthing = true;
 
 					m.SendLocalizedMessage( 502730 ); // You begin to move quietly.
-
-					return TimeSpan.FromSeconds( 10.0 );
 				}
 				else
 				{
@@ -109,7 +114,7 @@ namespace Server.SkillHandlers
 				}
 			}
 
-			return TimeSpan.FromSeconds( 10.0 );
+			return TimeSpan.FromSeconds( 0.5 );
 		}
 	}
 }

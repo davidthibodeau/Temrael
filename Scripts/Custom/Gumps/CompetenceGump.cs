@@ -983,8 +983,8 @@ namespace Server.Gumps
                 case 306:
                     if (from.NextSkillTime < Core.TickCount)
                     {
-                        TimeSpan span = Hiding.OnUse(from);
-                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
+                        Hiding.OnUse(from);
+                        goto case 310; // Jet de Stealth automatique juste après le hiding.
                     }
                     else
                     {
@@ -1026,8 +1026,8 @@ namespace Server.Gumps
                 case 310:
                     if (from.NextSkillTime < Core.TickCount)
                     {
-                        TimeSpan span = Stealth.OnUse(from);
-                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
+                        Stealth.OnUse(from);
+                        // Retrait du délai avant le prochain jet de Stealth. Les jets sont relancés dans Mobile.OnMove
                     }
                     else
                     {
