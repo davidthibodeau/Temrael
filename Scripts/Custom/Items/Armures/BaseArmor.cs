@@ -174,6 +174,7 @@ namespace Server.Items
         public virtual AMA AosMedAllowance { get { return DefMedAllowance; } }
         public virtual AMA OldMedAllowance { get { return DefMedAllowance; } }
 
+        public static int DexMalusTotal = 0;
 
         public virtual int AosStrBonus { get { return 0; } }
         public virtual int AosDexBonus { get { return 0; } }
@@ -1442,6 +1443,7 @@ namespace Server.Items
             }
 
             // Ajout du malus de Dex.
+            DexMalusTotal += AosDexBonus;
             from.RawDex += AosDexBonus;
 
             return base.OnEquip(from);
@@ -1474,6 +1476,8 @@ namespace Server.Items
 
                 // Retrait du malus de Dex.
                 m.RawDex -= AosDexBonus;
+                DexMalusTotal -= AosDexBonus;
+
             }
 
 

@@ -226,13 +226,13 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(DrowLeggings), "Anneaux", "Jambières d'Alfar", 20.0, 50.0, typeof(FerIngot), "Lingots", 18, 1044037);
             index = AddCraft(typeof(DrowTunic), "Anneaux", "Tunique d'Alfar", 20.0, 50.0, typeof(FerIngot), "Lingots", 15, 1044037);
             #endregion
-
+            /*
             #region Scalemail
             index = AddCraft(typeof(ScalemailArms), "Anneaux", "Brassards d'Anneaux d'Écailles", 20.0, 50.0, typeof(FerIngot), "Lingots", 15, 1044037);
             index = AddCraft(typeof(ScalemailLeggings), "Anneaux", "Jambieres d'Anneaux d'Écailles", 20.0, 50.0, typeof(FerIngot), "Lingots", 15, 1044037);
             index = AddCraft(typeof(ScalemailTunic), "Anneaux", "Tunique d'Anneaux d'Écailles", 20.0, 50.0, typeof(FerIngot), "Lingots", 15, 1044037);
 
-            #endregion
+            #endregion*/
 
             #region Bourgeon
             index = AddCraft(typeof(BourgeonLeggings), "Anneaux", "Jambieres", 20.0, 50.0, typeof(FerIngot), "Lingots", 16, 1044037);

@@ -6,15 +6,20 @@ namespace Server.SkillHandlers
 {
 	public class Stealth
 	{
-        private const double DiviseurNombreDePasMarche = 5.0;
-        private const double DiviseurNombreDePasCourse = 20.0;
+        private const double Diviseur = 5.0; // Nombre de pas = (SkillStealthValue) / Diviseur.
+        public const int CoutPasMarche = 1;  // Le coût d'un pas lorsque l'on marche en étant stealth.
+        public const int CoutPasCourse = 5;  // Le coût d'un pas lorsque l'on courre en étant stealth.
 
-
+        private const double TempsJetReussit = 0.0;
+        private const double TempsJetRate = 10.0;
+        private const double TempsJetImposs = 0.0; // Si le jet n'a pas pu être fait à cause d'une cause extérieure.
 
 		public static void Initialize()
 		{
 			SkillInfo.Table[(int)SkillName.Infiltration].Callback = new SkillUseCallback( OnUse );
 		}
+
+        //int Huehue = Server.Items.BaseArmor.DexMalusTotal; --- Test pour la future intégration des malus de Dex dans le calcul des chances de Stealth.
 
 		public static int[,] ArmorTable{ get { return m_ArmorTable; } }
 		private static int[,] m_ArmorTable = new int[,]
@@ -37,7 +42,7 @@ namespace Server.SkillHandlers
 		{
 			if( !Core.AOS )
 				return (int)m.ArmorRating;
-			
+            
 			int ar = 0;
 
 			for( int i = 0; i < m.Items.Count; i++ )
@@ -88,9 +93,7 @@ namespace Server.SkillHandlers
 				//else if( m.CheckSkill( SkillName.Infiltration, -20.0 + (armorRating * 2), (Core.AOS ? 60.0 : 80.0) + (armorRating * 2) ) )
                 else if ( m.CheckSkill(SkillName.Infiltration, 0, 40) )
 				{
-                    double diviseur = DiviseurNombreDePasMarche;
-
-					int steps = (int)(m.Skills[SkillName.Infiltration].Value / diviseur); // A 100, 20 steps, ou 5 steps en courrant.
+                    int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 5 steps en courrant.
 
 					if( steps < 1 )
 						steps = 1;
@@ -106,15 +109,16 @@ namespace Server.SkillHandlers
     						pm.IsStealthing = true;
 
 					m.SendLocalizedMessage( 502730 ); // You begin to move quietly.
+                    return TimeSpan.FromSeconds(TempsJetReussit); // Si le stealth a fonctionné.
 				}
 				else
 				{
 					m.SendLocalizedMessage( 502731 ); // You fail in your attempt to move unnoticed.
 					m.RevealingAction();
+                    return TimeSpan.FromSeconds(TempsJetRate); // Si le jet de stealth a raté.
 				}
 			}
-
-			return TimeSpan.FromSeconds( 0.5 );
+            return TimeSpan.FromSeconds(TempsJetImposs);
 		}
 	}
 }

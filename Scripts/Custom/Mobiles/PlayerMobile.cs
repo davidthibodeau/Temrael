@@ -3193,9 +3193,6 @@ namespace Server.Mobiles
 
 		protected override bool OnMove( Direction d )
 		{
-			if( !Core.SE )
-				return base.OnMove( d );
-
 			if( AccessLevel != AccessLevel.Player )
 				return true;
 
@@ -3203,16 +3200,15 @@ namespace Server.Mobiles
 			{
 				if( !Mounted && Skills.Infiltration.Value >= 25.0 )
 				{
-					bool running = (d & Direction.Running) != 0;
-
-					if( running )
+                    if ( (d & Direction.Running) != 0) // isRunning
 					{
-						if( (AllowedStealthSteps-- <= 0 ))
-							RevealingAction();
+                        if ((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasCourse) <= 0)
+                        {
+                            Server.SkillHandlers.Stealth.OnUse(this);
+                        }
 					}
-					else if( AllowedStealthSteps-- <= 0 )
+					else if((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasMarche) <= 0 )
 					{
-						//Server.SkillHandlers.Stealth.OnUse( this , false );
                         Server.SkillHandlers.Stealth.OnUse(this);
 					}
 				}

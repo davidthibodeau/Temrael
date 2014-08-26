@@ -3002,24 +3002,14 @@ namespace Server
 		/// <returns>True if the move is allowed, false if not.</returns>
 		protected virtual bool OnMove( Direction d )
 		{
-			if( m_Hidden && m_AccessLevel == AccessLevel.Player )
+            // On en a plus besoin ? Je le garde au cas...
+            if( m_Hidden && m_AccessLevel == AccessLevel.Player )
 			{
-                if (m_AllowedStealthSteps-- <= 0 || /*(d & Direction.Running) != 0 ||*/ this.Mounted)
-                {
+				if( m_AllowedStealthSteps-- <= 0 || (d & Direction.Running) != 0 || this.Mounted )
+					RevealingAction();
+            }
 
-                    if ((d & Direction.Running) != 0) // Si le personnage courre ( NON TESTÉ )
-                    {
-                        // Jet de Stealth avec le bool a 0.
-                    }
-                    else
-                    {
-                        // Jet de Stealth avec le bool à 1.
-                    }
-                }
-				//RevealingAction();
-			}
-
-			return true;
+            return true;
 		}
 
 		private static Packet[][] m_MovingPacketCache = new Packet[2][]

@@ -9,6 +9,10 @@ namespace Server.SkillHandlers
 {
 	public class Hiding
 	{
+        private const double TempsJetReussit = 0.0; // Si le jet reussit, jet automatique de stealth.
+        private const double TempsJetRate = 10.0;   // Si le jet a raté.
+        private const double TempsJetImposs = 0.0;
+
 		private static bool m_CombatOverride;
 
 		public static bool CombatOverride
@@ -24,95 +28,102 @@ namespace Server.SkillHandlers
 
 		public static TimeSpan OnUse( Mobile m )
 		{
-			if ( m.Spell != null )
-			{
-				m.SendLocalizedMessage( 501238 ); // You are busy doing something else and cannot hide.
-				return TimeSpan.FromSeconds( 1.0 );
-			}
+            if (! m.Hidden)
+            {
 
-			if ( Core.ML && m.Target != null )
-			{
-				Targeting.Target.Cancel( m );
-			}
+                if (m.Spell != null)
+                {
+                    m.SendLocalizedMessage(501238); // You are busy doing something else and cannot hide.
+                    return TimeSpan.FromSeconds(TempsJetImposs);
+                }
 
-			double bonus = 0.0;
+                if (Core.ML && m.Target != null)
+                {
+                    Targeting.Target.Cancel(m);
+                }
 
-			BaseHouse house = BaseHouse.FindHouseAt( m );
+                double bonus = 0.0;
 
-			if ( house != null && house.IsFriend( m ) )
-			{
-				bonus = 100.0;
-			}
-			else if ( !Core.AOS )
-			{
-				if ( house == null )
-					house = BaseHouse.FindHouseAt( new Point3D( m.X - 1, m.Y, 127 ), m.Map, 16 );
+                BaseHouse house = BaseHouse.FindHouseAt(m);
 
-				if ( house == null )
-					house = BaseHouse.FindHouseAt( new Point3D( m.X + 1, m.Y, 127 ), m.Map, 16 );
+                if (house != null && house.IsFriend(m))
+                {
+                    bonus = 100.0;
+                }
+                else if (!Core.AOS)
+                {
+                    if (house == null)
+                        house = BaseHouse.FindHouseAt(new Point3D(m.X - 1, m.Y, 127), m.Map, 16);
 
-				if ( house == null )
-					house = BaseHouse.FindHouseAt( new Point3D( m.X, m.Y - 1, 127 ), m.Map, 16 );
+                    if (house == null)
+                        house = BaseHouse.FindHouseAt(new Point3D(m.X + 1, m.Y, 127), m.Map, 16);
 
-				if ( house == null )
-					house = BaseHouse.FindHouseAt( new Point3D( m.X, m.Y + 1, 127 ), m.Map, 16 );
+                    if (house == null)
+                        house = BaseHouse.FindHouseAt(new Point3D(m.X, m.Y - 1, 127), m.Map, 16);
 
-				if ( house != null )
-					bonus = 50.0;
-			}
+                    if (house == null)
+                        house = BaseHouse.FindHouseAt(new Point3D(m.X, m.Y + 1, 127), m.Map, 16);
 
-            if (MurmureSpell.m_MurmureTable.Contains(m))
-                bonus += (double)MurmureSpell.m_MurmureTable[m];
+                    if (house != null)
+                        bonus = 50.0;
+                }
 
-			//int range = 18 - (int)(m.Skills[SkillName.Discretion].Value / 10);
-			int range = Math.Min( (int)((100 - m.Skills[SkillName.Discretion].Value)/2) + 8, 18 );	//Cap of 18 not OSI-exact, intentional difference
+                if (MurmureSpell.m_MurmureTable.Contains(m))
+                    bonus += (double)MurmureSpell.m_MurmureTable[m];
 
-			bool badCombat = ( !m_CombatOverride && m.Combatant != null && m.InRange( m.Combatant.Location, range ) && m.Combatant.InLOS( m ) );
-			bool ok = ( !badCombat && (!m.Mounted) /*&& m.CheckSkill( SkillName.Discretion, 0.0 - bonus, 100.0 - bonus )*/ );
+                //int range = 18 - (int)(m.Skills[SkillName.Discretion].Value / 10);
+                int range = Math.Min((int)((100 - m.Skills[SkillName.Discretion].Value) / 2) + 8, 18);	//Cap of 18 not OSI-exact, intentional difference
 
-			if ( ok )
-			{
-				if ( !m_CombatOverride )
-				{
-					foreach ( Mobile check in m.GetMobilesInRange( range ) )
-					{
-						if ( check.InLOS( m ) && check.Combatant == m )
-						{
-							badCombat = true;
-							ok = false;
-							break;
-						}
-					}
-				}
+                bool badCombat = (!m_CombatOverride && m.Combatant != null && m.InRange(m.Combatant.Location, range) && m.Combatant.InLOS(m));
+                bool ok = (!badCombat && (!m.Mounted) /*&& m.CheckSkill( SkillName.Discretion, 0.0 - bonus, 100.0 - bonus )*/ );
 
-				ok = ( !badCombat && m.CheckSkill( SkillName.Discretion, 0.0 - bonus, 100.0 - bonus ) );
-			}
+                if (ok)
+                {
+                    if (!m_CombatOverride)
+                    {
+                        foreach (Mobile check in m.GetMobilesInRange(range))
+                        {
+                            if (check.InLOS(m) && check.Combatant == m)
+                            {
+                                badCombat = true;
+                                ok = false;
+                                break;
+                            }
+                        }
+                    }
 
-			if ( badCombat )
-			{
-				m.RevealingAction();
+                    ok = (!badCombat && m.CheckSkill(SkillName.Discretion, 0.0 - bonus, 100.0 - bonus));
+                }
 
-				m.LocalOverheadMessage( MessageType.Regular, 0x22, 501237 ); // You can't seem to hide right now.
+                if (badCombat)
+                {
+                    m.RevealingAction();
 
-				return TimeSpan.FromSeconds( 0.5 );
-			}
-			else 
-			{
-				if ( ok )
-				{
-					m.Hidden = true;
-					m.Warmode = false;
-					m.LocalOverheadMessage( MessageType.Regular, 0x1F4, 501240 ); // You have hidden yourself well.
-				}
-				else
-				{
-					m.RevealingAction();
+                    m.LocalOverheadMessage(MessageType.Regular, 0x22, 501237); // You can't seem to hide right now.
+                }
+                else
+                {
+                    if (ok)
+                    {
+                        m.Hidden = true;
+                        m.Warmode = false;
+                        m.LocalOverheadMessage(MessageType.Regular, 0x1F4, 501240); // You have hidden yourself well.
+                        Stealth.OnUse(m);
+                        return TimeSpan.FromSeconds(TempsJetReussit);
+                    }
+                    else
+                    {
+                        m.RevealingAction();
 
-					m.LocalOverheadMessage( MessageType.Regular, 0x22, 501241 ); // You can't seem to hide here.
-				}
-
-				return TimeSpan.FromSeconds( 0.5 );
-			}
+                        m.LocalOverheadMessage(MessageType.Regular, 0x22, 501241); // You can't seem to hide here.
+                    }
+                }
+            }
+            else
+            {
+                m.RevealingAction();
+            }
+            return TimeSpan.FromSeconds(TempsJetRate);
 		}
 	}
 }

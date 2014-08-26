@@ -52,7 +52,9 @@ namespace Server.SkillHandlers
                 bool foundAnyone = false;
 
                 Point3D p;
-                if (targ is Mobile)
+                if (targ is TMobile)
+                    p = ((TMobile)targ).Location;
+                else if (targ is Mobile)
                     p = ((Mobile)targ).Location;
                 else if (targ is Item)
                     p = ((Item)targ).Location;
