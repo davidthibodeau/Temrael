@@ -86,6 +86,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\Commandes\Reveler.cs" />
     <Compile Include="Custom\Items\BaseWearable.cs" />
     <Compile Include="Custom\Items\Meubles\ArmesEntrainement.cs" />
     <Compile Include="Custom\Items\Meubles\Bacs.cs" />

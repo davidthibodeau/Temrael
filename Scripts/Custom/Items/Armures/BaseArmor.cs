@@ -35,7 +35,6 @@ namespace Server.Items
 
         /* 
          * TODO :
-         * - Voir quelles armures sont en jeu dans les armures divers.
          * - Mettre de bonnes valeurs pour les malus de dex.
          *  
          *   Arvendor 25 Août 2014.

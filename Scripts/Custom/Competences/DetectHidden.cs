@@ -118,7 +118,8 @@ namespace Server.SkillHandlers
                             }
                         }
                     }
-
+                    // Quand on utilise la compétence DetectHidden, il arrive que le personnage plante ici.
+                    // Demain, voir ce que fait au juste cette fonction. -v
                     inRange.Free();
                 }
 
