@@ -1422,7 +1422,7 @@ namespace Server.Items
             from.CheckStatTimers();
 
             int strBonus = m_AosAttributes.BonusStr;
-            int dexBonus = m_AosAttributes.BonusDex;
+            int dexBonus = m_AosAttributes.BonusDex + AosDexBonus;
             int intBonus = m_AosAttributes.BonusInt;
             int chaBonus = (m_TemraelAttributes.CharismaBonus > 5 ? 5 : m_TemraelAttributes.CharismaBonus);
             int conBonus = (m_TemraelAttributes.ConstitutionBonus > 5 ? 5 : m_TemraelAttributes.ConstitutionBonus);
@@ -1440,10 +1440,6 @@ namespace Server.Items
                 if (intBonus != 0)
                     from.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
             }
-
-            // Ajout du malus de Dex.
-            DexMalusTotal += AosDexBonus;
-            from.RawDex += AosDexBonus;
 
             return base.OnEquip(from);
         }
@@ -1472,13 +1468,7 @@ namespace Server.Items
 
                 ((Mobile)parent).Delta(MobileDelta.Armor); // Tell them armor rating has changed
                 m.CheckStatTimers();
-
-                // Retrait du malus de Dex.
-                m.RawDex -= AosDexBonus;
-                DexMalusTotal -= AosDexBonus;
-
             }
-
 
             base.OnRemoved(parent);
         }

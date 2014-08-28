@@ -59,7 +59,7 @@ namespace Server.Scripts.Commands
                     }
                     else
                     {
-                        from.SendMessage("Vous devez pointer un personnage !");
+                        from.SendMessage("Vous devez viser un personnage !");
                     }
                 }
             }
