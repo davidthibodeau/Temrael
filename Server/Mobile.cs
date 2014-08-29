@@ -773,7 +773,7 @@ namespace Server
 		private Timer m_LogoutTimer;
 		private Timer m_CombatTimer;
 		private Timer m_ManaTimer, m_HitsTimer, m_StamTimer;
-        private long m_NextSkillTime { set { if (value != 0) m_NextSkillTime = value; } } // Pour empêcher que l'écriture d'un NextSkillTime = 0 override un ancien timer.
+        private long m_NextSkillTime;
 		private long m_NextActionTime;
 		private long m_NextActionMessage;
 		private bool m_Paralyzed;
@@ -2144,10 +2144,12 @@ namespace Server
 			{
 				return m_NextSkillTime;
 			}
-			set
-			{
-				m_NextSkillTime = value;
-			}
+
+            set 
+            { 
+                if (value != 0) m_NextSkillTime = value; // Pour empêcher que l'écriture d'un NextSkillTime = 0 override un ancien timer.
+            }
+
 		}
 
 		public List<AggressorInfo> Aggressors
