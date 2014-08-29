@@ -33,41 +33,35 @@ namespace Server.Items
     {
         #region Balancement
 
-        /* 
-         * TODO :
-         * - Mettre de bonnes valeurs pour les malus de dex.
-         *  
-         *   Arvendor 25 Août 2014.
-         * */
 
         //BOUCLIERS                                                                                             Mettre valeur negative pour les dex malus.
 
         //                                               Physique   Contondant  Tranchant   Perforant    Magique    Force_req   Dex_malus     Min_Dura     Max_Dura
-        public ShieldValues ShldBronze = new ShieldValues   (2,         2,          2,          2,          2,          10,         1,          100,        125);
-        public ShieldValues ShldBuckler = new ShieldValues  (2,         2,          2,          2,          2,          10,         1,          100,        125);
-        public ShieldValues ShldWoodn = new ShieldValues    (2,         2,          2,          2,          2,          10,         1,          100,        125);
-        public ShieldValues ShldCuir = new ShieldValues     (2,         2,          2,          2,          2,          10,         1,          100,        125);
+        public ShieldValues ShldBronze = new ShieldValues   (2,         2,          2,          2,          2,          10,         -4,          100,        125);
+        public ShieldValues ShldBuckler = new ShieldValues  (2,         2,          2,          2,          2,          10,         -4,          100,        125);
+        public ShieldValues ShldWoodn = new ShieldValues    (2,         2,          2,          2,          2,          10,         -4,          100,        125);
+        public ShieldValues ShldCuir = new ShieldValues     (2,         2,          2,          2,          2,          10,         -4,          100,        125);
 
-        public ShieldValues ShldChaos = new ShieldValues    (4,         4,          4,          4,          4,          20,         1,          125,        150);
-        public ShieldValues ShldMetal = new ShieldValues    (4,         4,          4,          4,          4,          20,         1,          125,        150);
+        public ShieldValues ShldChaos = new ShieldValues    (4,         4,          4,          4,          4,          20,         -5,          125,        150);
+        public ShieldValues ShldMetal = new ShieldValues    (4,         4,          4,          4,          4,          20,         -5,          125,        150);
 
-        public ShieldValues ShldHeater = new ShieldValues   (6,         6,          6,          6,          6,          30,         1,          150,        175);
-        public ShieldValues ShldOrder = new ShieldValues    (6,         6,          6,          6,          6,          30,         1,          150,        175);
-        public ShieldValues ShldWoodnKite = new ShieldValues(6,         6,          6,          6,          6,          30,         1,          150,        175);
-        public ShieldValues ShldDecorer = new ShieldValues  (6,         6,          6,          6,          6,          30,         1,          150,        175);
-        public ShieldValues ShldGarde = new ShieldValues    (6,         6,          6,          6,          6,          30,         1,          150,        175);
+        public ShieldValues ShldHeater = new ShieldValues   (6,         6,          6,          6,          6,          30,         -6,          150,        175);
+        public ShieldValues ShldOrder = new ShieldValues    (6,         6,          6,          6,          6,          30,         -6,          150,        175);
+        public ShieldValues ShldWoodnKite = new ShieldValues(6,         6,          6,          6,          6,          30,         -6,          150,        175);
+        public ShieldValues ShldDecorer = new ShieldValues  (6,         6,          6,          6,          6,          30,         -6,          150,        175);
+        public ShieldValues ShldGarde = new ShieldValues    (6,         6,          6,          6,          6,          30,         -6,          150,        175);
 
-        public ShieldValues ShldMetalKite = new ShieldValues(8,         8,          8,          8,          8,          40,         1,          175,        200);
-        public ShieldValues ShldElfique = new ShieldValues  (8,         8,          8,          8,          8,          40,         1,          175,        200);
-        public ShieldValues ShldComte = new ShieldValues    (8,         8,          8,          8,          8,          40,         1,          175,        200);
-        public ShieldValues ShldMarquis = new ShieldValues  (8,         8,          8,          8,          8,          40,         1,          175,        200);
-        public ShieldValues ShldDuc = new ShieldValues      (8,         8,          8,          8,          8,          40,         1,          175,        200);
+        public ShieldValues ShldMetalKite = new ShieldValues(8,         8,          8,          8,          8,          40,         -7,          175,        200);
+        public ShieldValues ShldElfique = new ShieldValues  (8,         8,          8,          8,          8,          40,         -7,          175,        200);
+        public ShieldValues ShldComte = new ShieldValues    (8,         8,          8,          8,          8,          40,         -7,          175,        200);
+        public ShieldValues ShldMarquis = new ShieldValues  (8,         8,          8,          8,          8,          40,         -7,          175,        200);
+        public ShieldValues ShldDuc = new ShieldValues      (8,         8,          8,          8,          8,          40,         -7,          175,        200);
 
-        public ShieldValues ShldNordique = new ShieldValues (10,        10,         10,         10,         10,         50,         1,          200,        225);
-        public ShieldValues ShldChevalier = new ShieldValues(10,        10,         10,         10,         10,         50,         1,          200,        225);
+        public ShieldValues ShldNordique = new ShieldValues (10,        10,         10,         10,         10,         50,         -8,          200,        225);
+        public ShieldValues ShldChevalier = new ShieldValues(10,        10,         10,         10,         10,         50,         -8,          200,        225);
 
-        public ShieldValues ShldPavoisBlk = new ShieldValues(12,        12,         12,         12,         12,         60,         1,          225,        250);
-        public ShieldValues ShldVieux = new ShieldValues    (12,        12,         12,         12,         12,         60,         1,          225,        250);
+        public ShieldValues ShldPavoisBlk = new ShieldValues(12,        12,         12,         12,         12,         60,         -9,          225,        250);
+        public ShieldValues ShldVieux = new ShieldValues    (12,        12,         12,         12,         12,         60,         -9,          225,        250);
 
 
 
@@ -77,32 +71,32 @@ namespace Server.Items
 
         //                                               Physique   Contondant  Tranchant   Perforant    Magique    Force_req   Dex_malus     Min_Dura     Max_Dura
         // Cap 1
-        public ArmorValues ArmorLeather = new ArmorValues(  2,          2,          2,          2,          2,          10,         4,          100,        125);
-        public ArmorValues ArmorFeuilles = new ArmorValues( 2,          2,          2,          2,          2,          10,         4,          100,        125);
-        public ArmorValues ArmorBone = new ArmorValues(     2,          2,          2,          2,          2,          10,         4,          100,        125);
-        public ArmorValues ArmorRingmail = new ArmorValues( 2,          2,          2,          2,          2,          10,         4,          100,        125);
-        public ArmorValues ArmorBourgeon = new ArmorValues( 2,          2,          2,          2,          2,          10,         4,          100,        125);
+        public ArmorValues ArmorLeather = new ArmorValues(  2,          2,          2,          2,          2,          10,         -4,          100,        125);
+        public ArmorValues ArmorFeuilles = new ArmorValues( 2,          2,          2,          2,          2,          10,         -4,          100,        125);
+        public ArmorValues ArmorBone = new ArmorValues(     2,          2,          2,          2,          2,          10,         -4,          100,        125);
+        public ArmorValues ArmorRingmail = new ArmorValues( 2,          2,          2,          2,          2,          10,         -4,          100,        125);
+        public ArmorValues ArmorBourgeon = new ArmorValues( 2,          2,          2,          2,          2,          10,         -4,          100,        125);
         // Cap 2
-        public ArmorValues ArmorMaillons = new ArmorValues( 4,          4,          4,          4,          4,          20,         5,          125,        150);
-        public ArmorValues ArmorMaillures = new ArmorValues(4,          4,          4,          4,          4,          20,         5,          125,        150);
-        public ArmorValues ArmorStudded = new ArmorValues(  4,          4,          4,          4,          4,          20,         5,          125,        150);
+        public ArmorValues ArmorMaillons = new ArmorValues( 4,          4,          4,          4,          4,          20,         -5,          125,        150);
+        public ArmorValues ArmorMaillures = new ArmorValues(4,          4,          4,          4,          4,          20,         -5,          125,        150);
+        public ArmorValues ArmorStudded = new ArmorValues(  4,          4,          4,          4,          4,          20,         -5,          125,        150);
         // Cap 3
-        public ArmorValues ArmorChain = new ArmorValues(    6,          6,          6,          6,          6,          30,         6,          150,        175);
-        public ArmorValues ArmorBarbare = new ArmorValues(  6,          6,          6,          6,          6,          30,         6,          150,        175);
-        public ArmorValues ArmorChainElf = new ArmorValues( 6,          6,          6,          6,          6,          30,         6,          150,        175);
-        public ArmorValues ArmorChainNoir = new ArmorValues(6,          6,          6,          6,          6,          30,         6,          150,        175);
+        public ArmorValues ArmorChain = new ArmorValues(    6,          6,          6,          6,          6,          30,         -6,          150,        175);
+        public ArmorValues ArmorBarbare = new ArmorValues(  6,          6,          6,          6,          6,          30,         -6,          150,        175);
+        public ArmorValues ArmorChainElf = new ArmorValues( 6,          6,          6,          6,          6,          30,         -6,          150,        175);
+        public ArmorValues ArmorChainNoir = new ArmorValues(6,          6,          6,          6,          6,          30,         -6,          150,        175);
         // Cap 4
-        public ArmorValues ArmorMailles = new ArmorValues(  8,          8,          8,          8,          8,          40,         7,          175,        200);
-        public ArmorValues ArmorPlaque = new ArmorValues(   8,          8,          8,          8,          8,          40,         7,          175,        200);
+        public ArmorValues ArmorMailles = new ArmorValues(  8,          8,          8,          8,          8,          40,         -7,          175,        200);
+        public ArmorValues ArmorPlaque = new ArmorValues(   8,          8,          8,          8,          8,          40,         -7,          175,        200);
         // Cap 5
-        public ArmorValues ArmorPlaqueElf = new ArmorValues(10,         10,         10,         10,         10,         50,         8,          200,        225);
-        public ArmorValues ArmorPlaqueGoth= new ArmorValues(10,         10,         10,         10,         10,         50,         8,          200,        225);
-        public ArmorValues ArmorPlaqueBarb= new ArmorValues(10,         10,         10,         10,         10,         50,         8,          200,        225);
+        public ArmorValues ArmorPlaqueElf = new ArmorValues(10,         10,         10,         10,         10,         50,         -8,          200,        225);
+        public ArmorValues ArmorPlaqueGoth= new ArmorValues(10,         10,         10,         10,         10,         50,         -8,          200,        225);
+        public ArmorValues ArmorPlaqueBarb= new ArmorValues(10,         10,         10,         10,         10,         50,         -8,          200,        225);
         // Cap 6
-        public ArmorValues ArmorPlaqueOrne= new ArmorValues(12,         12,         12,         12,         12,         60,         9,          225,        250);
-        public ArmorValues ArmorPlaqueDeco= new ArmorValues(12,         12,         12,         12,         12,         60,         9,          225,        250);
-        public ArmorValues ArmorPlaqueNobl= new ArmorValues(12,         12,         12,         12,         12,         60,         9,          225,        250);
-        public ArmorValues ArmorPlaqueDaed= new ArmorValues(12,         12,         12,         12,         12,         60,         9,          225,        250);
+        public ArmorValues ArmorPlaqueOrne= new ArmorValues(12,         12,         12,         12,         12,         60,         -9,          225,        250);
+        public ArmorValues ArmorPlaqueDeco= new ArmorValues(12,         12,         12,         12,         12,         60,         -9,          225,        250);
+        public ArmorValues ArmorPlaqueNobl= new ArmorValues(12,         12,         12,         12,         12,         60,         -9,          225,        250);
+        public ArmorValues ArmorPlaqueDaed= new ArmorValues(12,         12,         12,         12,         12,         60,         -9,          225,        250);
 
 
 
@@ -110,12 +104,12 @@ namespace Server.Items
         //ARMURES DIVERS                                                                                       Mettre valeur negative pour les dex malus.
 
         //                                               Physique   Contondant  Tranchant   Perforant    Magique    Force_req   Dex_malus     Min_Dura     Max_Dura
-        public ArmorValues ArmorDivers1 = new ArmorValues(  2,          2,          2,          2,          2,          10,         1,          100,        125);
-        public ArmorValues ArmorDivers2 = new ArmorValues(  4,          4,          4,          4,          4,          20,         1,          125,        150);
-        public ArmorValues ArmorDivers3 = new ArmorValues(  6,          6,          6,          6,          6,          30,         1,          150,        175);
-        public ArmorValues ArmorDivers4 = new ArmorValues(  8,          8,          8,          8,          8,          40,         1,          175,        200);
-        public ArmorValues ArmorDivers5 = new ArmorValues(  10,         10,         10,         10,         10,         50,         1,          200,        225);
-        public ArmorValues ArmorDivers6 = new ArmorValues(  12,         12,         12,         12,         12,         60,         1,          225,        250);
+        public ArmorValues ArmorDivers1 = new ArmorValues(  2,          2,          2,          2,          2,          10,         -4,          100,        125);
+        public ArmorValues ArmorDivers2 = new ArmorValues(  4,          4,          4,          4,          4,          20,         -5,          125,        150);
+        public ArmorValues ArmorDivers3 = new ArmorValues(  6,          6,          6,          6,          6,          30,         -6,          150,        175);
+        public ArmorValues ArmorDivers4 = new ArmorValues(  8,          8,          8,          8,          8,          40,         -7,          175,        200);
+        public ArmorValues ArmorDivers5 = new ArmorValues(  10,         10,         10,         10,         10,         50,         -8,          200,        225);
+        public ArmorValues ArmorDivers6 = new ArmorValues(  12,         12,         12,         12,         12,         60,         -9,          225,        250);
 
 
         #endregion
