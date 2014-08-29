@@ -84,14 +84,15 @@ namespace Server.SkillHandlers
 			else
 			{
 				int armorRating = GetArmorRating( m );
+                // CALCUL DU BONUSMALUS ICI.
 
-				if( armorRating >= (Core.AOS ? 42 : 26) )	//I have a hunch '42' was chosen cause someone's a fan of DNA
+				if( armorRating >= (Core.AOS ? 42 : 26) )   // TEST POUR VOIR SI L'ARMURE EST TROP LOURDE.
 				{
 					m.SendLocalizedMessage( 502727 ); // You could not hope to move quietly wearing this much armor.
 					m.RevealingAction();
 				}
-				//else if( m.CheckSkill( SkillName.Infiltration, -20.0 + (armorRating * 2), (Core.AOS ? 60.0 : 80.0) + (armorRating * 2) ) )
-                else if ( m.CheckSkill(SkillName.Infiltration, 0, 40) )
+
+                else if (m.CheckSkill(SkillName.Infiltration, 0, 40)  /*   BONUS OU MALUS ICI    */)
 				{
                     int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 5 steps en courrant.
 
