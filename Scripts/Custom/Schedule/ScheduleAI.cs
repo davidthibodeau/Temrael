@@ -88,11 +88,6 @@ namespace Server.Mobiles
 				{
 					Wander();
 				}
-				else if ( act == ScheduleAct.Sleep )
-				{
-					// TODO : make not a magic number but configurable
-					FindBed( 7 );
-				}
 				else if ( act == ScheduleAct.Eat )
 				{
 					FindSeat( 15 );
@@ -108,11 +103,6 @@ namespace Server.Mobiles
 		
 			ScheduleAct act = m_Schedule.Entries[m_Schedule.CurEntry].activity;
 
-			if ( act == ScheduleAct.Sleep ) {
-				EndSleep();
-			}
-			//else if ( act == ) {
-			//}
 		}
 		
 		public void FindSeat( int range )
@@ -126,52 +116,6 @@ namespace Server.Mobiles
             //    }
                 //StaticTile[] tiles = map.Tiles.GetStaticTiles(x, y, true);
             //}
-		}
-		
-		public void FindBed( int range )
-		{
-			IPooledEnumerable eable = m_Mobile.GetItemsInRange( range );
-			
-			foreach ( Item item in eable )
-			{
-				if ( item is SleeperBaseAddon ) {
-					SleeperBaseAddon bed = (SleeperBaseAddon)item;
-					if ( !bed.Asleep )
-					{
-						if ( MoveTo( item, false, 2 ) )
-						{
-							// Nobody is sleeping here, go go go gooooo!
-							bed.OnDoubleClick( m_Mobile );
-							
-							if ( bed.SleeperBedBody != null )
-								bed.SleeperBedBody.OnDoubleClick( m_Mobile );
-							
-							// Set nextAct to -1 so it stops trying to do anything
-							m_Schedule.nextAct = DateTime.MinValue;
-							
-							break;
-						}
-					}
-				}
-			}
-			
-			eable.Free();
-		}
-		
-		public void EndSleep()
-		{
-			IPooledEnumerable eable = m_Mobile.GetItemsInRange( 3 );
-			foreach ( Item item in eable ) {
-				if ( item is SleeperBaseAddon ) {
-					SleeperBaseAddon bed = (SleeperBaseAddon)item;
-					if ( bed.Asleep && bed.Mobile == m_Mobile ) {
-						// Get up
-						bed.OnDoubleClick( m_Mobile );
-						break;
-					}
-				}
-			}
-			eable.Free();
 		}
 		
 		public bool MoveTo( Item m, bool run, int range )

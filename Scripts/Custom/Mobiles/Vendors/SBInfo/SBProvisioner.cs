@@ -41,7 +41,6 @@ namespace Server.Mobiles
 				//TODO: Oil Flask @ 8GP
 
 				Add( new GenericBuyInfo( "Crochet", typeof( Lockpick ), 5, 20, 0x14FC, 0 ) );
-                Add(new GenericBuyInfo("Bedroll", typeof(SleeperBedrollEWAddon), 5, 20, 0xA58, 0));
 
 				/*Add( new GenericBuyInfo( typeof( FloppyHat ), 7, 20, 0x1713, Utility.RandomDyedHue() ) );
 				Add( new GenericBuyInfo( typeof( WideBrimHat ), 8, 20, 0x1714, Utility.RandomDyedHue() ) );

@@ -9,7 +9,6 @@ namespace Server.Items
 	{
 		None,
 		Eat,
-		Sleep,
 		Wander
 	};
 	
