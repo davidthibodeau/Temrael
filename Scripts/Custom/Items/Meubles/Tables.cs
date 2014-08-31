@@ -11,7 +11,7 @@ namespace Server.Items
             : base(0x0AFD)
 		{
 			Weight = 2.0;
-            Name = "Table";
+            Name = "Table de vitre";
 		}
 
         public TableDeVitre(Serial serial)

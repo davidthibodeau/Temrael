@@ -10,6 +10,7 @@ namespace Server.Items
 		public ParaventA() : base( 0x1945 )
 		{
 			Weight = 10.0;
+            Name = "Paravent bourgogne";
 		}
 
 		public ParaventA(Serial serial) : base(serial)
@@ -42,6 +43,7 @@ namespace Server.Items
 		public ParaventB() : base( 0x24CB )
 		{
 			Weight = 10.0;
+            Name = "Paravent papier";
 		}
 
 		public ParaventB(Serial serial) : base(serial)
@@ -74,6 +76,7 @@ namespace Server.Items
 		public ParaventC() : base( 0x24D0 )
 		{
 			Weight = 10.0;
+            Name = "Paravent bambou";
 		}
 
 		public ParaventC(Serial serial) : base(serial)
