@@ -5,14 +5,14 @@ using Server.Items;
 
 namespace Server.TechniquesCombat
 {
-    public class AttackSpeed
+    public class Assassinat
     {
 
         public static Hashtable mobilesList = new Hashtable();
 
         // Ressources
         private PlayerMobile m_Caster;
-        public AttackSpeed(PlayerMobile caster)
+        public Assassinat(PlayerMobile caster)
         {
             m_Caster = caster;
             Use();
@@ -23,7 +23,7 @@ namespace Server.TechniquesCombat
         private const int m_ManaCost = 10;
 
         // Valeur utilisée par a l'extérieur.
-        public const float MultiplicateurSpeed = 5f;
+        public const int MultiplicateurBonusDegat = 3;
 
 
         TimeSpan CalculDuree()

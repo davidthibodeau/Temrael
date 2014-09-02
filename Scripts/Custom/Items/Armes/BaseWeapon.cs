@@ -1402,6 +1402,10 @@ namespace Server.Items
             if (delayInSeconds < 1.0)
                 delayInSeconds = 1.0;
 
+            // Modificateur de la technique AttackSpeed.
+            if (TechniquesCombat.AttackSpeed.mobilesList.Contains(m))
+                delayInSeconds /= TechniquesCombat.AttackSpeed.MultiplicateurSpeed;
+
 			return TimeSpan.FromSeconds( delayInSeconds );
 		}
 
@@ -1768,34 +1772,12 @@ namespace Server.Items
             mob.EndAction(typeof(BaseMount));
         }
 
+        //
+        // FONCTION IMPORTANTE POUR LE COMBAT.
+        //
+
 		public virtual void OnHit( Mobile attacker, Mobile defender, double damageBonus )
 		{
-
-
-			//if ( MirrorImage.HasClone( defender ) && (defender.Skills.ArtMagique.Value / 150.0) > Utility.RandomDouble() )
-			//{
-			//	Clone bc;
-            //
-			//	foreach ( Mobile m in defender.GetMobilesInRange( 4 ) )
-			//	{
-			//		bc = m as Clone;
-            //
-			//		if ( bc != null && bc.Summoned && bc.SummonMaster == defender )
-			//		{
-			//			attacker.SendLocalizedMessage( 1063141 ); // Your attack has been diverted to a nearby mirror image of your target!
-			//			defender.SendLocalizedMessage( 1063140 ); // You manage to divert the attack onto one of your nearby mirror images.
-            //
-						/*
-						 * TODO: What happens if the Clone parries a blow?
-						 * And what about if the attacker is using Honorable Execution
-						 * and kills it?
-						 */
-
-			//			defender = m;
-			//			break;
-			//		}
-			//	}
-			//}
 
 			PlaySwingAnimation( attacker );
 			PlayHurtAnimation( defender );
@@ -1970,7 +1952,22 @@ namespace Server.Items
 
 			#endregion
 
-			if ( attacker is BaseCreature )
+            #region Techniques de Combat
+
+            if (TechniquesCombat.Assassinat.mobilesList.Contains(attacker))
+                damage += damage * TechniquesCombat.Assassinat.MultiplicateurBonusDegat;
+
+
+
+
+
+
+            #endregion
+
+
+
+
+            if ( attacker is BaseCreature )
 				((BaseCreature)attacker).AlterMeleeDamageTo( defender, ref damage );
 
 			if ( defender is BaseCreature )
