@@ -27,7 +27,7 @@ namespace Server.Engines.Quests.Samurai
 			SetResistance( ResistanceType.Magie, 95, 98 );
 
 			SetSkill( SkillName.Tactiques, 120.0 );
-			SetSkill( SkillName.ArmePoing, 120.0 );
+			SetSkill( SkillName.Anatomie, 120.0 );
 			SetSkill( SkillName.ArtMagique, 120.0 );
 
 			Fame = 15000;

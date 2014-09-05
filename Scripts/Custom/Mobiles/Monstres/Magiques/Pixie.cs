@@ -37,7 +37,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 90.1, 100.0 );
 			SetSkill( SkillName.Concentration, 100.5, 150.0 );
 			SetSkill( SkillName.Tactiques, 10.1, 20.0 );
-			SetSkill( SkillName.ArmePoing, 10.1, 12.5 );
+			SetSkill( SkillName.Anatomie, 10.1, 12.5 );
 
 			Fame = 7000;
 			Karma = 7000;

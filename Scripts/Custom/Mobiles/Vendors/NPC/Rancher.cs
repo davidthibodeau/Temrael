@@ -19,7 +19,7 @@ namespace Server.Mobiles
 		{
 			//SetSkill( SkillName.AnimalLore, 55.0, 78.0 );
 			SetSkill( SkillName.Dressage, 55.0, 78.0 );
-			SetSkill( SkillName.Elevage, 64.0, 100.0 );
+			SetSkill( SkillName.Dressage, 64.0, 100.0 );
 			SetSkill( SkillName.Soins, 60.0, 83.0 );
 		}
 

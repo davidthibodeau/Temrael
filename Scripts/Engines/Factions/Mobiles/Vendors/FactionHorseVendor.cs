@@ -12,7 +12,7 @@ namespace Server.Factions
 	{
 		public FactionHorseVendor( Town town, Faction faction ) : base( town, faction, "the Horse Breeder" )
 		{
-			SetSkill( SkillName.Elevage, 64.0, 100.0 );
+			SetSkill( SkillName.Dressage, 64.0, 100.0 );
 			SetSkill( SkillName.Dressage, 90.0, 100.0 );
 			SetSkill( SkillName.Soins, 65.0, 88.0 );	
 		}

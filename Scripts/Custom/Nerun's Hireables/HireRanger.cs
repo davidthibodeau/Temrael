@@ -50,7 +50,7 @@ namespace Server.Mobiles
 
             SetDamage(13, 24);
 
-            SetSkill(SkillName.ArmePoing, 15, 37);
+            SetSkill(SkillName.Anatomie, 15, 37);
             SetSkill(SkillName.Parer, 45, 60);
             SetSkill(SkillName.ArmeDistance, 66, 97);
             SetSkill(SkillName.ArtMagique, 62, 62);

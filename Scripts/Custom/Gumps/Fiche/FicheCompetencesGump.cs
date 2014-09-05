@@ -127,7 +127,7 @@ namespace Server.Gumps
                     from.SendGump(new FicheAptitudesGump(from, ClasseBranche.Aucun));
                     break;
                 case 9:
-                    from.SendGump(new CompetenceGump(from, Server.Gumps.CompetenceGump.CompDomaines.Aucun, false));
+                    from.SendGump(new CompetenceGump(from, SkillCategory.Aucun, false));
                     break;
                 case 10:
                     from.SendGump(new FicheCompetencesGump(from, m_page + 1));

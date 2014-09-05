@@ -926,7 +926,7 @@ namespace Server.Items
 			//SkillName.Fletching,
 			SkillName.Inscription,
 			SkillName.Couture,
-			SkillName.Bricolage,
+			SkillName.Menuiserie,
 		};
 
 		public static SkillName GetRandomSkill()

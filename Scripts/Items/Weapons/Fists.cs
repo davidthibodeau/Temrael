@@ -31,7 +31,7 @@ namespace Server.Items
 		public override int DefHitSound{ get{ return -1; } }
 		public override int DefMissSound{ get{ return -1; } }
 
-		public override SkillName DefSkill{ get{ return SkillName.ArmePoing; } }
+		public override SkillName DefSkill{ get{ return SkillName.Anatomie; } }
 		public override WeaponType DefType{ get{ return WeaponType.Fists; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Wrestle; } }
 
@@ -48,7 +48,7 @@ namespace Server.Items
 
 		public override double GetDefendSkillValue( Mobile attacker, Mobile defender )
 		{
-			double wresValue = defender.Skills[SkillName.ArmePoing].Value;
+			double wresValue = defender.Skills[SkillName.Anatomie].Value;
 			//double anatValue = defender.Skills[SkillName.Anatomy].Value;
 			//double evalValue = defender.Skills[SkillName.EvalInt].Value;
 			//double incrValue = (anatValue + evalValue + 20.0) * 0.5;
@@ -70,7 +70,7 @@ namespace Server.Items
 			{
 				if ( attacker.CanBeginAction( typeof( Fists ) ) )
 				{
-					if ( attacker.Skills[SkillName.ArmePoing].Value >= 80.0 )
+					if ( attacker.Skills[SkillName.Anatomie].Value >= 80.0 )
 					{
 						if ( attacker.Stam >= 15 )
 						{
@@ -111,7 +111,7 @@ namespace Server.Items
 				{
 					if ( defender.Player || defender.Body.IsHuman )
 					{
-						if ( attacker.Skills[SkillName.ArmePoing].Value >= 80.0 )
+						if ( attacker.Skills[SkillName.Anatomie].Value >= 80.0 )
 						{
 							if ( attacker.Stam >= 15 )
 							{
@@ -192,7 +192,7 @@ namespace Server.Items
 
 		private static bool CheckMove( Mobile m, SkillName other )
 		{
-			double wresValue = m.Skills[SkillName.ArmePoing].Value;
+			double wresValue = m.Skills[SkillName.Anatomie].Value;
 			double scndValue = m.Skills[other].Value;
 
 			/* 40% chance at 80, 80
@@ -220,7 +220,7 @@ namespace Server.Items
 			Mobile m = e.Mobile;
 
 			double armsValue = m.Skills[SkillName.Tactiques].Value;
-			double wresValue = m.Skills[SkillName.ArmePoing].Value;
+			double wresValue = m.Skills[SkillName.Anatomie].Value;
 
 			if ( !HasFreeHands( m ) )
 			{
@@ -245,7 +245,7 @@ namespace Server.Items
 			Mobile m = e.Mobile;
 
 			//double anatValue = m.Skills[SkillName.Anatomy].Value;
-			double wresValue = m.Skills[SkillName.ArmePoing].Value;
+			double wresValue = m.Skills[SkillName.Anatomie].Value;
 
 			if ( !HasFreeHands( m ) )
 			{

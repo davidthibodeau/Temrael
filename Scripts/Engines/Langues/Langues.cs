@@ -200,7 +200,7 @@ namespace Server.Engines.Langues
                     nbrLangue++;
             }
 
-            if (nbrLangue > m_Mobile.Skills.ConnaissanceLangue.Fixed / 200 + 2)
+            if (nbrLangue > m_Mobile.Skills.Langues.Fixed / 200 + 2)
             {
                 int last = m_DerniereLangueApprise.Count - 1;
                 m_Langues[m_DerniereLangueApprise[last]] = false;

@@ -194,8 +194,6 @@ namespace Server.Misc
 
 		private static bool AllowGain( Mobile from, Skill skill, object obj )
 		{
-            return false;
-
 			if ( Core.AOS && Faction.InSkillLoss( from ) )	//Changed some time between the introduction of AoS and SE.
 				return false;
 
@@ -209,8 +207,6 @@ namespace Server.Misc
 
 		public static void Gain( Mobile from, Skill skill )
 		{
-            return;
-
 			if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
 				return;
 
@@ -302,8 +298,6 @@ namespace Server.Misc
 
 		public static void IncreaseStat( Mobile from, Stat stat, bool atrophy )
 		{
-            return;
-
 			atrophy = atrophy || (from.RawStatTotal >= from.StatCap);
 
 			switch ( stat )
@@ -361,9 +355,6 @@ namespace Server.Misc
 
 		public static void GainStat( Mobile from, Stat stat )
 		{
-            //Temrael
-            return;
-
 			switch( stat )
 			{
 				case Stat.Str:

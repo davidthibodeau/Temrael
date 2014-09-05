@@ -11,7 +11,7 @@ namespace Server.Factions
 		public FactionBottleVendor( Town town, Faction faction ) : base( town, faction, "the Bottle Seller" )
 		{
 			SetSkill( SkillName.Alchimie, 85.0, 100.0 );
-			SetSkill( SkillName.Degustation, 65.0, 88.0 );
+			SetSkill( SkillName.Empoisonnement, 65.0, 88.0 );
 		}
 
 		public override void InitSBInfo()

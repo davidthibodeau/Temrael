@@ -55,7 +55,7 @@ namespace Server.Gumps
 		private Mobile m_Target;
 		private Skill m_Skill;
 
-		private SkillsGumpGroup m_Selected;
+		private SkillCategory m_Selected;
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
@@ -92,7 +92,7 @@ namespace Server.Gumps
 			}
 		}
 
-		public EditSkillGump( Mobile from, Mobile target, Skill skill, SkillsGumpGroup selected ) : base( GumpOffsetX, GumpOffsetY )
+		public EditSkillGump( Mobile from, Mobile target, Skill skill, SkillCategory selected ) : base( GumpOffsetX, GumpOffsetY )
 		{
 			m_From = from;
 			m_Target = target;
@@ -195,8 +195,7 @@ namespace Server.Gumps
 		private Mobile m_From;
 		private Mobile m_Target;
 
-		private SkillsGumpGroup[] m_Groups;
-		private SkillsGumpGroup m_Selected;
+		private SkillCategory m_Selected;
 
 		public override void OnResponse( NetState sender, RelayInfo info )
 		{
@@ -209,23 +208,24 @@ namespace Server.Gumps
 			{
 				case 0:
 				{
-					if ( index >= 0 && index < m_Groups.Length )
+					if ( index >= 0 && index < Enum.GetValues(typeof(SkillCategory)).Length )
 					{
-						SkillsGumpGroup newSelection = m_Groups[index];
+						SkillCategory newSelection = (SkillCategory)index;
 
 						if ( m_Selected != newSelection )
 							m_From.SendGump( new SkillsGump( m_From, m_Target, newSelection ) );
 						else
-							m_From.SendGump( new SkillsGump( m_From, m_Target, null ) );
+							m_From.SendGump( new SkillsGump( m_From, m_Target, SkillCategory.Aucun ) );
 					}
 
 					break;
 				}
 				case 1:
 				{
-					if ( m_Selected != null && index >= 0 && index < m_Selected.Skills.Length )
+                    SkillName[] sks = SkillInfo.GetCategory(m_Selected);
+					if ( m_Selected != SkillCategory.Aucun && index >= 0 && index < sks.Length )
 					{
-						Skill sk = m_Target.Skills[m_Selected.Skills[index]];
+						Skill sk = m_Target.Skills[sks[index]];
 
 						if ( sk != null )
 						{
@@ -249,9 +249,10 @@ namespace Server.Gumps
 				}
 				case 2:
 				{
-					if ( m_Selected != null && index >= 0 && index < m_Selected.Skills.Length )
+                    SkillName[] sks = SkillInfo.GetCategory(m_Selected);
+					if ( m_Selected != null && index >= 0 && index < sks.Length )
 					{
-						Skill sk = m_Target.Skills[m_Selected.Skills[index]];
+						Skill sk = m_Target.Skills[sks[index]];
 
 						if ( sk != null )
 						{
@@ -283,22 +284,22 @@ namespace Server.Gumps
 			return 1 + (index * 3) + type;
 		}
 
-		public SkillsGump( Mobile from, Mobile target ) : this( from, target, null )
+		public SkillsGump( Mobile from, Mobile target ) : this( from, target, SkillCategory.Aucun )
 		{
 		}
 
-		public SkillsGump( Mobile from, Mobile target, SkillsGumpGroup selected ) : base( GumpOffsetX, GumpOffsetY )
+		public SkillsGump( Mobile from, Mobile target, SkillCategory selected ) : base( GumpOffsetX, GumpOffsetY )
 		{
 			m_From = from;
 			m_Target = target;
 
-			m_Groups = SkillsGumpGroup.Groups;
 			m_Selected = selected;
 
-			int count = m_Groups.Length;
+			int count = Enum.GetValues(typeof(SkillCategory)).Length - 1;
 
-			if ( selected != null )
-				count += selected.Skills.Length;
+            SkillName[] sks = SkillInfo.GetCategory(m_Selected);
+
+            count += sks.Length;
 
 			int totalHeight = OffsetSize + ((EntryHeight + OffsetSize) * (count + 1));
 
@@ -327,26 +328,27 @@ namespace Server.Gumps
 			if ( !OldStyle )
 				AddImageTiled( x, y, NextWidth, EntryHeight, HeaderGumpID );
 
-			for ( int i = 0; i < m_Groups.Length; ++i )
+			foreach (SkillCategory sc in Enum.GetValues(typeof(SkillCategory)))
 			{
+                if (sc == SkillCategory.Aucun)
+                    continue;
+
 				x = BorderSize + OffsetSize;
 				y += EntryHeight + OffsetSize;
 
-				SkillsGumpGroup group = m_Groups[i];
-
 				AddImageTiled( x, y, PrevWidth, EntryHeight, HeaderGumpID );
 
-				if ( group == selected )
-					AddButton( x + PrevOffsetX, y + PrevOffsetY, 0x15E2, 0x15E6, GetButtonID( 0, i ), GumpButtonType.Reply, 0 );
+				if ( sc == selected )
+					AddButton( x + PrevOffsetX, y + PrevOffsetY, 0x15E2, 0x15E6, GetButtonID( 0, (int)sc ), GumpButtonType.Reply, 0 );
 				else
-					AddButton( x + PrevOffsetX, y + PrevOffsetY, 0x15E1, 0x15E5, GetButtonID( 0, i ), GumpButtonType.Reply, 0 );
+					AddButton( x + PrevOffsetX, y + PrevOffsetY, 0x15E1, 0x15E5, GetButtonID( 0, (int)sc ), GumpButtonType.Reply, 0 );
 
 				x += PrevWidth + OffsetSize;
 
 				x -= (OldStyle ? OffsetSize : 0);
 
 				AddImageTiled( x, y, emptyWidth + (OldStyle ? OffsetSize * 2 : 0), EntryHeight, EntryGumpID );
-				AddLabel( x + TextOffsetX, y, TextHue, group.Name );
+				AddLabel( x + TextOffsetX, y, TextHue, sc.ToString() );
 
 				x += emptyWidth + (OldStyle ? OffsetSize * 2 : 0);
 				x += OffsetSize;
@@ -354,14 +356,14 @@ namespace Server.Gumps
 				if ( SetGumpID != 0 )
 					AddImageTiled( x, y, SetWidth, EntryHeight, SetGumpID );
 
-				if ( group == selected )
+				if ( sc == selected )
 				{
 					int indentMaskX = BorderSize;
 					int indentMaskY = y + EntryHeight + OffsetSize;
-
-					for ( int j = 0; j < group.Skills.Length; ++j )
+                    int j = 0;
+					foreach (SkillName skN in sks)
 					{
-						Skill sk = target.Skills[group.Skills[j]];
+						Skill sk = target.Skills[skN];
 
 						x = BorderSize + OffsetSize;
 						y += EntryHeight + OffsetSize;
@@ -419,143 +421,10 @@ namespace Server.Gumps
 						}
 					}
 
-					AddImageTiled( indentMaskX, indentMaskY, IndentWidth + OffsetSize, (group.Skills.Length * (EntryHeight + OffsetSize)) - (i < (m_Groups.Length - 1) ? OffsetSize : 0), BackGumpID + 4 );
-				}
+					AddImageTiled( indentMaskX, indentMaskY, IndentWidth + OffsetSize, (sks.Length * (EntryHeight + OffsetSize)) - ((int)sc < (Enum.GetValues(typeof(SkillCategory)).Length - 2) ? OffsetSize : 0), BackGumpID + 4 );
+                    j++;
+                }
 			}
-		}
-	}
-
-	public class SkillsGumpGroup
-	{
-		private string m_Name;
-		private SkillName[] m_Skills;
-
-		public string Name{ get{ return m_Name; } }
-		public SkillName[] Skills{ get{ return m_Skills; } }
-
-		public SkillsGumpGroup( string name, SkillName[] skills )
-		{
-			m_Name = name;
-			m_Skills = skills;
-
-			Array.Sort( m_Skills, new SkillNameComparer() );
-		}
-
-		private class SkillNameComparer : IComparer
-		{
-			public SkillNameComparer()
-			{
-			}
-
-			public int Compare( object x, object y )
-			{
-				SkillName a = (SkillName)x;
-				SkillName b = (SkillName)y;
-
-				string aName = SkillInfo.Table[(int)a].Name;
-				string bName = SkillInfo.Table[(int)b].Name;
-
-				return aName.CompareTo( bName );
-			}
-		}
-
-		private static SkillsGumpGroup[] m_Groups = new SkillsGumpGroup[]
-			{
-				new SkillsGumpGroup( "Crafting", new SkillName[]
-				{
-					SkillName.Alchimie,
-					SkillName.Forge,
-					//SkillName.Cartography,
-					SkillName.Menuiserie,
-					SkillName.Cuisine,
-					//SkillName.Fletching,
-					SkillName.Inscription,
-					SkillName.Couture,
-					SkillName.Bricolage,
-                    SkillName.FabricationArt
-				} ),
-				//new SkillsGumpGroup( "Bardic", new SkillName[]
-				//{
-					//SkillName.Discordance,
-					//SkillName.Peacemaking,
-					//SkillName.Provocation
-				//} ),
-				new SkillsGumpGroup( "Magical", new SkillName[]
-				{
-					SkillName.Miracles,
-					//SkillName.EvalInt,
-					SkillName.ArtMagique,
-					SkillName.Concentration,
-					//SkillName.Concentration,
-					SkillName.Goetie,
-                    SkillName.Illusion,
-                    SkillName.Conjuration,
-                    SkillName.Destruction,
-                    SkillName.Tenebrea,
-                    SkillName.Reve,
-                    SkillName.Goetie,
-                    SkillName.Mysticisme,
-                    SkillName.Priere
-					//SkillName.SpiritSpeak,
-					//SkillName.Ninjitsu,
-					//SkillName.Bushido,
-					//SkillName.Spellweaving
-				} ),
-				new SkillsGumpGroup( "Miscellaneous", new SkillName[]
-				{
-					SkillName.Survie,
-					SkillName.Peche,
-					//SkillName.Focus,
-					SkillName.Soins,
-					SkillName.Elevage,
-					SkillName.Foresterie,
-					SkillName.Excavation,
-					SkillName.Fouille,
-                    SkillName.Agriculture
-					//SkillName.Veterinary
-				} ),
-				new SkillsGumpGroup( "Combat", new SkillName[]
-				{
-					SkillName.ArmeDistance,
-					SkillName.ArmePerforante,
-					SkillName.ArmeContondante,
-					SkillName.Parer,
-					SkillName.ArmeTranchante,
-					SkillName.Tactiques,
-					SkillName.ArmePoing,
-                    SkillName.ArmeHaste,
-                    SkillName.Equitation
-				} ),
-				new SkillsGumpGroup( "Roublardise", new SkillName[]
-				{
-                    SkillName.Crochetage,
-					SkillName.Dressage,
-					//SkillName.Begging,
-					SkillName.Detection,
-					SkillName.Discretion,
-					SkillName.Pieges,
-					SkillName.Empoisonner,
-					SkillName.Vol,
-					SkillName.Infiltration,
-					SkillName.Poursuite,
-                    SkillName.Musique
-				} ),
-				new SkillsGumpGroup( "Connaissances", new SkillName[]
-				{
-					SkillName.ConnaissanceLangue,
-					SkillName.ConnaissanceNoblesse,
-					SkillName.ConnaissanceNature,
-					SkillName.ConnaissanceBestiaire,
-                    SkillName.ConnaissanceHistoire,
-                    SkillName.ConnaissanceReligion,
-					SkillName.Identification,
-					SkillName.Degustation
-				} )
-			};
-
-		public static SkillsGumpGroup[] Groups
-		{
-			get{ return m_Groups; }
 		}
 	}
 }

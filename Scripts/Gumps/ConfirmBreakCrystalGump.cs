@@ -36,7 +36,7 @@ namespace Server.Gumps
 					summon.MoveToWorld( from.Location, from.Map );
 					summon.IsBonded = true;
 					
-					summon.Skills.ArmePoing.Base = 100;
+					summon.Skills.Anatomie.Base = 100;
 					summon.Skills.Tactiques.Base = 100;
 					//summon.Skills.MagicResist.Base = 100;
 					//summon.Skills.Anatomy.Base = 100;

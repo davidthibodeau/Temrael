@@ -14,7 +14,7 @@ namespace Server.Mobiles
 		{ 
 			SetSkill( SkillName.Alchimie, 80.0, 100.0 );
 			SetSkill( SkillName.Cuisine, 80.0, 100.0 );
-			SetSkill( SkillName.Degustation, 80.0, 100.0 );
+			SetSkill( SkillName.Empoisonnement, 80.0, 100.0 );
 		} 
 
 		public override void InitSBInfo() 

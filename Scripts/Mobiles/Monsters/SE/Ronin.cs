@@ -39,7 +39,7 @@ namespace Server.Mobiles
 
 			SetSkill( SkillName.Concentration, 42.6, 57.5 );
 			SetSkill( SkillName.Tactiques, 115.1, 130.0 );
-			SetSkill( SkillName.ArmePoing, 92.6, 107.5 );
+			SetSkill( SkillName.Anatomie, 92.6, 107.5 );
 			//SetSkill( SkillName.Anatomy, 110.1, 125.0 );
 
 			SetSkill( SkillName.ArmePerforante, 92.6, 107.5 );

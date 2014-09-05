@@ -42,7 +42,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 77.5, 100.0 );
 			SetSkill( SkillName.ArmeTranchante, 62.5, 85.0 );
 			SetSkill( SkillName.Tactiques, 62.5, 85.0 );
-			SetSkill( SkillName.ArmePoing, 62.5, 85.0 );
+			SetSkill( SkillName.Anatomie, 62.5, 85.0 );
 
 			Fame = 1000;
 			Karma = -1000;
@@ -241,7 +241,7 @@ namespace Server.Mobiles
 
 							m.Paralyzed = false;
 
-							double total = Skills[SkillName.ArtMagique].Value + Skills[SkillName.Empoisonner].Value;
+							double total = Skills[SkillName.ArtMagique].Value + Skills[SkillName.Empoisonnement].Value;
 
 							double dist = GetDistanceToSqrt( m );
 

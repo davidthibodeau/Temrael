@@ -103,7 +103,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 60, 80 );
 			SetResistance( ResistanceType.Magie, 60, 80 );
 
-			SetSkill( SkillName.ArmePoing, 90.1, 100.0 );
+			SetSkill( SkillName.Anatomie, 90.1, 100.0 );
 			SetSkill( SkillName.Tactiques, 90.2, 110.0 );
 			SetSkill( SkillName.Concentration, 120.2, 160.0 );
 			SetSkill( SkillName.ArtMagique, 120.0 );

@@ -48,7 +48,7 @@ namespace Server.Engines.Harvest
 			fish.MaxRespawn = TimeSpan.FromMinutes( 25.0 );
 
 			// Skill checking is done on the Fishing skill
-			fish.Skill = SkillName.Peche;
+			fish.Skill = SkillName.Cuisine;
 
 			// Set the list of harvestable tiles
 			fish.Tiles = m_WaterTiles;

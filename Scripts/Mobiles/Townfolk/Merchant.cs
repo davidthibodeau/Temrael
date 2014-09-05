@@ -11,7 +11,7 @@ namespace Server.Mobiles
 		public Merchant()
 		{
 			Title = "the merchant";
-			SetSkill( SkillName.Identification, 55.0, 78.0 );
+			SetSkill( SkillName.Polissage, 55.0, 78.0 );
 			//SetSkill( SkillName.ArmsLore, 55, 78 );
 		}
 

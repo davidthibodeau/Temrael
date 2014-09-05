@@ -64,7 +64,7 @@ namespace Server.Engines.Langues
                         nbrLangue++;
                 }
                 
-                if (nbrLangue < from.Skills.ConnaissanceLangue.Fixed / 200 + 2)
+                if (nbrLangue < from.Skills.Langues.Fixed / 200 + 2)
                 {
                     from.Langues.Apprendre(info.ButtonID - 50);
                 }

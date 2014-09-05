@@ -144,7 +144,7 @@ namespace Server.Items
 				SkillName.ArmePerforante,
 				SkillName.ArmeContondante,
 				SkillName.ArmeDistance,
-				SkillName.ArmePoing,
+				SkillName.Anatomie,
 				SkillName.Parer,
 				SkillName.Tactiques,
 				//SkillName.Anatomy,

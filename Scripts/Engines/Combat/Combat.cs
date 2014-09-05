@@ -184,7 +184,7 @@ namespace Server.Engines.Combat
 
                 stat = StatType.Str;
             }
-            else if (skill == SkillName.ArmePoing)
+            else if (skill == SkillName.Anatomie)
             {
                  if (attaquant.HarmfulCheck(defenseur) && CheckHit())
                     atkWeapon.OnHit(attaquant, defenseur);

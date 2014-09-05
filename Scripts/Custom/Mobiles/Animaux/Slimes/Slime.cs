@@ -32,10 +32,10 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Physical, 5, 10 );
 			SetResistance( ResistanceType.Perforant, 10, 20 );
 
-			SetSkill( SkillName.Empoisonner, 30.1, 50.0 );
+			SetSkill( SkillName.Empoisonnement, 30.1, 50.0 );
 			SetSkill( SkillName.Concentration, 15.1, 20.0 );
 			SetSkill( SkillName.Tactiques, 19.3, 34.0 );
-			SetSkill( SkillName.ArmePoing, 19.3, 34.0 );
+			SetSkill( SkillName.Anatomie, 19.3, 34.0 );
 
 			Fame = 300;
 			Karma = -300;

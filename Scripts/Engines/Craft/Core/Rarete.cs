@@ -483,13 +483,13 @@ namespace Server.Items
                                 switch (rand.Next(0, 2))
                                 {
                                     case 0:
-                                        item.ArmorAttributes.SetValue(0x00000001, (int)(Crafter.Skills.Identification.Fixed / 10));
+                                        item.ArmorAttributes.SetValue(0x00000001, (int)(Crafter.Skills.Polissage.Fixed / 10));
                                         break;
                                     case 1:
-                                        item.ArmorAttributes.SetValue(0x00000002, (int)(Crafter.Skills.Identification.Fixed / 10));
+                                        item.ArmorAttributes.SetValue(0x00000002, (int)(Crafter.Skills.Polissage.Fixed / 10));
                                         break;
                                     case 2:
-                                        item.ArmorAttributes.SetValue(0x00000008, (int)(Crafter.Skills.Identification.Fixed / 10));
+                                        item.ArmorAttributes.SetValue(0x00000008, (int)(Crafter.Skills.Polissage.Fixed / 10));
                                         break;
                                 }
                                 break;
@@ -681,13 +681,13 @@ namespace Server.Items
                                 switch (rand.Next(0, 2))
                                 {
                                     case 0:
-                                        item.ClothingAttributes.SetValue(0x00000001, (int)(Crafter.Skills.Identification.Fixed / 10));
+                                        item.ClothingAttributes.SetValue(0x00000001, (int)(Crafter.Skills.Polissage.Fixed / 10));
                                         break;
                                     case 1:
-                                        item.ClothingAttributes.SetValue(0x00000002, (int)(Crafter.Skills.Identification.Fixed / 10));
+                                        item.ClothingAttributes.SetValue(0x00000002, (int)(Crafter.Skills.Polissage.Fixed / 10));
                                         break;
                                     case 2:
-                                        item.ClothingAttributes.SetValue(0x00000008, (int)(Crafter.Skills.Identification.Fixed / 10));
+                                        item.ClothingAttributes.SetValue(0x00000008, (int)(Crafter.Skills.Polissage.Fixed / 10));
                                         break;
                                 }
                                 break;

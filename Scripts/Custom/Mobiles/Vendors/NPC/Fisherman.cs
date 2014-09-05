@@ -12,7 +12,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Fisherman() : base( "Pecheur" )
 		{
-			SetSkill( SkillName.Peche, 75.0, 98.0 );
+			SetSkill( SkillName.Cuisine, 75.0, 98.0 );
 		}
 
 		public override void InitSBInfo()

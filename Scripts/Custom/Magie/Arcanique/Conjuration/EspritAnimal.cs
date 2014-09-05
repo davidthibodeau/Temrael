@@ -29,7 +29,7 @@ namespace Server.Mobiles
 
 			//SetSkill( SkillName.MagicResist, 20.1, 35.0 );
 			SetSkill( SkillName.Tactiques, 75.1, 90.0 );
-			SetSkill( SkillName.ArmePoing, 75.1, 90.0 );
+			SetSkill( SkillName.Anatomie, 75.1, 90.0 );
 
 			VirtualArmor = 30;
 

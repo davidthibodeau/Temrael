@@ -47,7 +47,7 @@ namespace Server.Spells.Third
 
 				if ( targ.Locked/* && targ.LockLevel != 0 */)
 				{
-					double level = Caster.Skills[SkillName.Tenebrea].Value;
+					double level = Caster.Skills[SkillName.Tenebrae].Value;
 
                     level = SpellHelper.AdjustValue(Caster, level);
 

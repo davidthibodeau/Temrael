@@ -45,7 +45,7 @@ namespace Server.Items
 			if ( weapon == null )
 				return true;
 
-			return weapon.Skill != SkillName.ArmePoing;
+			return weapon.Skill != SkillName.Anatomie;
 		}
 
 		public override bool OnBeforeSwing( Mobile attacker, Mobile defender )

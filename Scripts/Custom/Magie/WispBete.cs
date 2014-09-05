@@ -28,7 +28,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.ArtMagique, 50.0, 70.5);
             //SetSkill(SkillName.MagicResist, 20.1, 30.0);
             SetSkill(SkillName.Tactiques, 25.1, 32.0);
-            SetSkill(SkillName.ArmePoing, 15.1, 18.0);
+            SetSkill(SkillName.Anatomie, 15.1, 18.0);
 			//SetSkill(SkillName.Anatomy, 9.1, 12.0);
 
             VirtualArmor = 6;

@@ -52,7 +52,7 @@ namespace Server.Spells
                         new DefaultSkillMod( SkillName.ArmeHaste, false, m.Skills[SkillName.ArmeHaste].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.ArmeDistance, false, m.Skills[SkillName.ArmeDistance].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.ArmePerforante, false, m.Skills[SkillName.ArmePerforante].Base + (Caster.Skills[CastSkill].Value / 2) ),
-                        new DefaultSkillMod( SkillName.ArmePoing, false, m.Skills[SkillName.ArmePoing].Base + (Caster.Skills[CastSkill].Value / 2) ),
+                        new DefaultSkillMod( SkillName.Anatomie, false, m.Skills[SkillName.Anatomie].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.Equitation, false, m.Skills[SkillName.Equitation].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.ArmeContondante, false, m.Skills[SkillName.ArmeContondante].Base + (Caster.Skills[CastSkill].Value / 2) )
                     };

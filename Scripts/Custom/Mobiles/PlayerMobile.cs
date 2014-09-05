@@ -1324,14 +1324,6 @@ namespace Server.Mobiles
 			return DesignContext.Check( this );
 		}
 
-		public SkillName[] AnimalFormRestrictedSkills{ get{ return m_AnimalFormRestrictedSkills; } }
-
-		private SkillName[] m_AnimalFormRestrictedSkills = new SkillName[]
-		{
-			SkillName.Inscription, SkillName.Identification, SkillName.Concentration, SkillName.Pieges, SkillName.Vol,
-			SkillName.Degustation
-		};
-
 		public override bool AllowSkillUse( SkillName skill )
 		{
 			/*if ( AnimalForm.UnderTransformation( this ) )

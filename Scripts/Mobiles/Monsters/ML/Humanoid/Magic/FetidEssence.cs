@@ -34,11 +34,11 @@ namespace Server.Mobiles
 			SetSkill(SkillName.Concentration, 91.4, 99.4 );
 			//SetSkill(SkillName.EvalInt, 88.5, 92.3 );
 			SetSkill(SkillName.ArtMagique, 97.9, 101.7 );
-			SetSkill(SkillName.Empoisonner, 100 );
+			SetSkill(SkillName.Empoisonnement, 100 );
 			//SetSkill(SkillName.Anatomy, 0, 4.5 );
 			SetSkill( SkillName.Concentration, 103.5, 108.8 );
 			SetSkill( SkillName.Tactiques, 81.0, 84.6 );
-			SetSkill( SkillName.ArmePoing, 81.3, 83.9 );
+			SetSkill( SkillName.Anatomie, 81.3, 83.9 );
 
 			Fame = 3700;  // Guessed
 			Karma = -3700;  // Guessed

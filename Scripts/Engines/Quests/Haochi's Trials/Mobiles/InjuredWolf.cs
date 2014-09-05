@@ -30,7 +30,7 @@ namespace Server.Engines.Quests.Samurai
 
 			SetSkill( SkillName.Concentration, 10.0 );
 			SetSkill( SkillName.Tactiques, 0.0, 5.0 );
-			SetSkill( SkillName.ArmePoing, 20.0, 30.0 );
+			SetSkill( SkillName.Anatomie, 20.0, 30.0 );
 		}
 
 		public override int GetIdleSound()

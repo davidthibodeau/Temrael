@@ -31,7 +31,7 @@ namespace Server.Items
 				return;
 			}
 
-			double tinkerSkill = from.Skills[SkillName.Bricolage].Value;
+			double tinkerSkill = from.Skills[SkillName.Menuiserie].Value;
 
 			if ( tinkerSkill < 60.0 )
 			{

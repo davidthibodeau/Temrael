@@ -13,7 +13,7 @@ namespace Server.Items
 
 		public override void CraftInit( Mobile from )
 		{
-			double skillValue = from.Skills[SkillName.ConnaissanceHistoire].Value;
+			double skillValue = from.Skills[SkillName.Langues].Value;
 			int dist = 64 + (int)(skillValue * 2);
 
 			SetDisplay( from.X - dist, from.Y - dist, from.X + dist, from.Y + dist, 200, 200 );

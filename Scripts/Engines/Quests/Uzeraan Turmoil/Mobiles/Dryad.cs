@@ -22,7 +22,7 @@ namespace Server.Engines.Quests.Haven
 			SetSkill( SkillName.Cuisine, 80.0, 100.0 );
 			//SetSkill( SkillName.Provocation, 80.0, 100.0 );
 			SetSkill( SkillName.Musique, 80.0, 100.0 );
-			SetSkill( SkillName.Empoisonner, 80.0, 100.0 );
+			SetSkill( SkillName.Empoisonnement, 80.0, 100.0 );
 			SetSkill( SkillName.ArmeDistance, 80.0, 100.0 );
 			SetSkill( SkillName.Couture, 80.0, 100.0 );
 		}

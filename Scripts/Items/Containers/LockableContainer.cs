@@ -360,7 +360,7 @@ namespace Server.Items
 
 		public int OnCraft( int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
 		{
-			if ( from.CheckSkill( SkillName.Bricolage, -5.0, 15.0 ) )
+			if ( from.CheckSkill( SkillName.Menuiserie, -5.0, 15.0 ) )
 			{
 				from.SendLocalizedMessage( 500636 ); // Your tinker skill was sufficient to make the item lockable.
 
@@ -369,7 +369,7 @@ namespace Server.Items
 				KeyValue = key.KeyValue;
 				DropItem( key );
 
-				double tinkering = from.Skills[SkillName.Bricolage].Value;
+				double tinkering = from.Skills[SkillName.Menuiserie].Value;
 				int level = (int)(tinkering * 0.8);
 
 				RequiredSkill = level - 4;

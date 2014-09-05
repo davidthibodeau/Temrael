@@ -27,10 +27,10 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Physical, 10 );
 			SetResistance( ResistanceType.Perforant, 100 );
 
-			SetSkill( SkillName.ArmePoing, 90.0 );
+			SetSkill( SkillName.Anatomie, 90.0 );
 			SetSkill( SkillName.Tactiques, 50.0 );
 			SetSkill( SkillName.Concentration, 100.0 );
-			SetSkill( SkillName.Empoisonner, 150.0 );
+			SetSkill( SkillName.Empoisonnement, 150.0 );
 
 			ControlSlots = 1;
 		}

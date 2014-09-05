@@ -1419,7 +1419,7 @@ namespace Server.Mobiles
                 if ((this.SessionStart + TimeSpan.FromSeconds(2.0)) > DateTime.Now) return;
                 //from.CloseAllGumps();//optional
                 if (from is TMobile)
-                    from.SendGump(new CompetenceGump(((TMobile)from), CompetenceGump.CompDomaines.Aucun, false));//replace with your gump
+                    from.SendGump(new CompetenceGump(((TMobile)from), SkillCategory.Aucun, false));//replace with your gump
                 //base.OnSkillsQuery(from);
             }
             else
@@ -1430,7 +1430,7 @@ namespace Server.Mobiles
 		{
             base.OnSkillChange(skill, oldBase);
 
-            if (skill == SkillName.ConnaissanceLangue)
+            if (skill == SkillName.Langues)
                 Langues.FixLangues();
 		}
 

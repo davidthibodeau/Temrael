@@ -1374,7 +1374,7 @@ namespace Server.Mobiles
 				dMinTameSkill = -24.9;
 
 			int taming = (int)((useBaseSkill ? m.Skills[SkillName.Dressage].Base : m.Skills[SkillName.Dressage].Value ) * 10);
-			int lore = (int)((useBaseSkill ? m.Skills[SkillName.Elevage].Base : m.Skills[SkillName.Elevage].Value )* 10);
+			int lore = (int)((useBaseSkill ? m.Skills[SkillName.Dressage].Base : m.Skills[SkillName.Dressage].Value )* 10);
 			int bonus = 0, chance = 700;
 
 			int difficulty = (int)(dMinTameSkill * 10);
@@ -3478,7 +3478,7 @@ namespace Server.Mobiles
 			if ( p != null && HitPoisonChance >= Utility.RandomDouble() ) {
 				defender.ApplyPoison( this, p );
 				if ( this.Controlled )
-					this.CheckSkill(SkillName.Empoisonner, 0, this.Skills[SkillName.Empoisonner].Cap);
+					this.CheckSkill(SkillName.Empoisonnement, 0, this.Skills[SkillName.Empoisonnement].Cap);
 			}
 
 			if( AutoDispel && defender is BaseCreature && ((BaseCreature)defender).IsDispellable && AutoDispelChance > Utility.RandomDouble() )

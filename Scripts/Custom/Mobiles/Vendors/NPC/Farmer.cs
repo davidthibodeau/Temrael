@@ -13,7 +13,7 @@ namespace Server.Mobiles
 		public Farmer() : base( "Fermier" )
 		{
 			SetSkill( SkillName.Foresterie, 36.0, 68.0 );
-			SetSkill( SkillName.Degustation, 36.0, 68.0 );
+			SetSkill( SkillName.Empoisonnement, 36.0, 68.0 );
 			SetSkill( SkillName.Cuisine, 36.0, 68.0 );
 		}
 

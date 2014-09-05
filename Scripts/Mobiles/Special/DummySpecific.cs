@@ -262,9 +262,9 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			this.Skills[SkillName.Inscription].Base = 100;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 
 
 			// Name
@@ -333,9 +333,9 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 100;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 80;
-			this.Skills[SkillName.ArmePoing].Base = 80;
+			this.Skills[SkillName.Anatomie].Base = 80;
 			this.Skills[SkillName.Concentration].Base = 100;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 
 
 			// Name
@@ -426,9 +426,9 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 120;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 			this.Skills[SkillName.Inscription].Base = 100;
 
 			// Name
@@ -524,7 +524,7 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 120;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
 			this.Skills[SkillName.Soins].Base = 100;
 
@@ -617,7 +617,7 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArmeTranchante].Base = 120;
 			this.Skills[SkillName.Tactiques].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 
 			// Name
 			this.Name = "Hybrid Assassin";
@@ -736,7 +736,7 @@ namespace Server.Mobiles
 			this.Skills[SkillName.Vol].Base = 120;
 			//this.Skills[SkillName.ArmsLore].Base = 100;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 
 			// Name
 			this.Name = "Hybrid Theif";

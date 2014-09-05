@@ -78,7 +78,7 @@ namespace Server.Spells.Fifth
 
                 int itemID = eastToWest ? 0x3915 : 0x3922;
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Tenebrea].Value * 0.4);
+                double duration = 4.0 + (Caster.Skills[SkillName.Tenebrae].Value * 0.4);
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 
@@ -175,7 +175,7 @@ namespace Server.Spells.Fifth
 
                 Poison p;
 
-                double total = (m_Caster.Skills[SkillName.Tenebrea].Value + m_Caster.Skills[SkillName.Tenebrea].Value) / 2;
+                double total = (m_Caster.Skills[SkillName.Tenebrae].Value + m_Caster.Skills[SkillName.Tenebrae].Value) / 2;
 
                 if (total >= 100)
                     p = Poison.Deadly;

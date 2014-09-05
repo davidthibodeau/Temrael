@@ -67,11 +67,11 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.EvalInt, 100 );
 			SetSkill( SkillName.ArtMagique, 100 );
 			SetSkill( SkillName.Concentration, 0 );
-			SetSkill( SkillName.Empoisonner, 5.4 );
+			SetSkill( SkillName.Empoisonnement, 5.4 );
 			//SetSkill( SkillName.Anatomy, 117.5 );
 			SetSkill( SkillName.Concentration, 120.0 );
 			SetSkill( SkillName.Tactiques, 119.9 );
-			SetSkill( SkillName.ArmePoing, 119.9 );
+			SetSkill( SkillName.Anatomie, 119.9 );
 
 			Fame = 50000;
 			Karma = -50000;

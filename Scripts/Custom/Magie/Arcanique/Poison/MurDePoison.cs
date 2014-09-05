@@ -165,7 +165,7 @@ namespace Server.Spells
 
                 Poison p;
 
-                double total = m_Caster.Skills[SkillName.ArtMagique].Value + m_Caster.Skills[SkillName.Empoisonner].Value;
+                double total = m_Caster.Skills[SkillName.ArtMagique].Value + m_Caster.Skills[SkillName.Empoisonnement].Value;
 
                 if (total >= 175)
                     p = Poison.Deadly;

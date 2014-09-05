@@ -10,7 +10,7 @@ namespace Server.SkillHandlers
 	{
 		public static void Initialize()
 		{
-			SkillInfo.Table[(int)SkillName.Degustation].Callback = new SkillUseCallback( OnUse );
+			SkillInfo.Table[(int)SkillName.Empoisonnement].Callback = new SkillUseCallback( OnUse );
 		}
 
 		public static TimeSpan OnUse( Mobile m )
@@ -40,7 +40,7 @@ namespace Server.SkillHandlers
 				{
 					Food food = (Food) targeted;
 
-					if ( from.CheckTargetSkill( SkillName.Degustation, food, 0, 100 ) )
+					if ( from.CheckTargetSkill( SkillName.Empoisonnement, food, 0, 100 ) )
 					{
 						if ( food.Poison != null )
 						{

@@ -59,7 +59,7 @@ namespace Server.Mobiles
             SetDamage(10, 23);
 
             SetSkill(SkillName.Tactiques, 5, 27);
-            SetSkill(SkillName.ArmePoing, 5, 5);
+            SetSkill(SkillName.Anatomie, 5, 5);
             SetSkill(SkillName.ArmeTranchante, 5, 27);
 
             Fame = 0;

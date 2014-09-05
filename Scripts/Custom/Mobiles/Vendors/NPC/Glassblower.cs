@@ -15,7 +15,7 @@ namespace Server.Mobiles
             : base("Souffleur de verre")
 		{
 			SetSkill( SkillName.Alchimie, 85.0, 100.0 );
-			SetSkill( SkillName.Degustation, 85.0, 100.0 );
+			SetSkill( SkillName.Empoisonnement, 85.0, 100.0 );
 		}
 
 		public override void InitSBInfo()

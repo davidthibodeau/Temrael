@@ -16,7 +16,7 @@ namespace Server.Mobiles
 		{
 			//SetSkill( SkillName.EvalInt, 100.0 );
 			SetSkill( SkillName.Tactiques, 70.0, 90.0 );
-			SetSkill( SkillName.ArmePoing, 70.0, 90.0 );
+			SetSkill( SkillName.Anatomie, 70.0, 90.0 );
 			SetSkill( SkillName.Concentration, 70.0, 90.0 );
 			SetSkill( SkillName.ArmeContondante, 70.0, 90.0 );
 		}

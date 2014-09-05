@@ -11,7 +11,7 @@ namespace Server.Engines.Craft
 	{
 		public override SkillName MainSkill
 		{
-			get	{ return SkillName.Bricolage; }
+			get	{ return SkillName.Menuiserie; }
 		}
 
 		public override int GumpTitleNumber
@@ -547,7 +547,7 @@ namespace Server.Engines.Craft
 
 			if ( message == 0 )
 			{
-				int trapLevel = (int)(From.Skills.Bricolage.Value / 10);
+				int trapLevel = (int)(From.Skills.Menuiserie.Value / 10);
 
 				Container.TrapType = this.TrapType;
 				Container.TrapPower = trapLevel * 9;

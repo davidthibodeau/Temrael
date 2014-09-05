@@ -31,7 +31,7 @@ namespace Server.Engines.Quests.Samurai
 
 			SetSkill( SkillName.ArtMagique, 120.0 );
 			SetSkill( SkillName.Tactiques, 120.0 );
-			SetSkill( SkillName.ArmePoing, 120.0 );
+			SetSkill( SkillName.Anatomie, 120.0 );
 
 			Fame = 2500;
 			Karma = -2500;

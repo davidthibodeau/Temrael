@@ -58,7 +58,7 @@ namespace Server.Mobiles
 
             //SetSkill(SkillName.Begging, 66, 97);
             SetSkill(SkillName.Tactiques, 5, 27);
-            SetSkill(SkillName.ArmePoing, 5, 27);
+            SetSkill(SkillName.Anatomie, 5, 27);
             SetSkill(SkillName.ArtMagique, 2, 2);
 
             Fame = 0;

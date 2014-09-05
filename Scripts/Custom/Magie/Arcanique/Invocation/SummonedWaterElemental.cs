@@ -30,7 +30,7 @@ namespace Server.Mobiles
             //SetSkill(SkillName.Magery, 100.1, 115.0);
             //SetSkill(SkillName.MagicResist, 100.1, 115.0);
             SetSkill(SkillName.Tactiques, 50.1, 70.0);
-            SetSkill(SkillName.ArmePoing, 50.1, 70.0);
+            SetSkill(SkillName.Anatomie, 50.1, 70.0);
 
             VirtualArmor = 60;
             ControlSlots = 6;

@@ -42,6 +42,7 @@
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>219</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,6 +53,7 @@
     <WarningLevel>0</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>Server</RootNamespace>
@@ -66,6 +68,7 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BoxServer">

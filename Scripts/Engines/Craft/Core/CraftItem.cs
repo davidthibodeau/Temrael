@@ -1235,7 +1235,6 @@ namespace Server.Engines.Craft
                         //case SkillName.Fletching: value = pm.GetAptitudeValue(NAptitude.FabricationArc); break;
                         case SkillName.Menuiserie: value = pm.GetAptitudeValue(Aptitude.Ebenisterie); break;
                         case SkillName.Inscription: value = pm.GetAptitudeValue(Aptitude.Transcription); break;
-                        case SkillName.Bricolage: value = pm.GetAptitudeValue(Aptitude.Invention); break;
                         //case SkillName.RemoveTrap: value = pm.GetAptitudeValue(NAptitude.Piegeage); break;
                         case SkillName.Cuisine: value = pm.GetAptitudeValue(Aptitude.Cuisson); break;
                         default: value = 12; break;

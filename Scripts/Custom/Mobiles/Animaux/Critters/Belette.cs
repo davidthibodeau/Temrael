@@ -26,7 +26,7 @@ namespace Server.Mobiles
 
             SetDamageType(ResistanceType.Physical, 100);
 
-            SetSkill(SkillName.ArmePoing, 4.2, 6.4);
+            SetSkill(SkillName.Anatomie, 4.2, 6.4);
             SetSkill(SkillName.Tactiques, 4.0, 6.0);
             SetSkill(SkillName.Concentration, 4.0, 5.0);
 

@@ -48,7 +48,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 120.0 );
 			SetSkill( SkillName.Concentration, 150.0 );
 			SetSkill( SkillName.Tactiques, 97.6, 100.0 );
-			SetSkill( SkillName.ArmePoing, 97.6, 100.0 );
+			SetSkill( SkillName.Anatomie, 97.6, 100.0 );
 
 			Fame = 22500;
 			Karma = -22500;
@@ -64,7 +64,7 @@ namespace Server.Mobiles
 
 			Scimitar weapon = new Scimitar();
 
-			weapon.Skill = SkillName.ArmePoing;
+			weapon.Skill = SkillName.Anatomie;
 			weapon.Hue = 38;
 			weapon.Movable = false;
 

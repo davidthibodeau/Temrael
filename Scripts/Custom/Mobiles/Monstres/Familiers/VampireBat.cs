@@ -34,7 +34,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 10, 15 );
 			SetResistance( ResistanceType.Magie, 10, 15 );
 
-			SetSkill( SkillName.ArmePoing, 95.1, 100.0 );
+			SetSkill( SkillName.Anatomie, 95.1, 100.0 );
 			SetSkill( SkillName.Tactiques, 50.0 );
 
 			ControlSlots = 1;

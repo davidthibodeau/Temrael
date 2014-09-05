@@ -94,7 +94,7 @@ namespace Server.SkillHandlers
 					}
 					else
 					{
-						if ( (Core.ML && isOwner) || (from.CheckTargetSkill( SkillName.Pieges, trap, 80.0, 100.0 ) && from.CheckTargetSkill( SkillName.Bricolage, trap, 80.0, 100.0 )) )
+						if ( (Core.ML && isOwner) || (from.CheckTargetSkill( SkillName.Pieges, trap, 80.0, 100.0 ) && from.CheckTargetSkill( SkillName.Menuiserie, trap, 80.0, 100.0 )) )
 						{
 							from.PrivateOverheadMessage( MessageType.Regular, trap.MessageHue, trap.DisarmMessage, from.NetState );
 

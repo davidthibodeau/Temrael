@@ -28,7 +28,7 @@ namespace Server.Mobiles
 
 			SetSkill( SkillName.ArmePerforante, 60.0, 82.5 );
 			SetSkill( SkillName.ArmeContondante, 60.0, 82.5 );
-			SetSkill( SkillName.Empoisonner, 60.0, 82.5 );
+			SetSkill( SkillName.Empoisonnement, 60.0, 82.5 );
 			SetSkill( SkillName.Concentration, 57.5, 80.0 );
 			SetSkill( SkillName.ArmeTranchante, 60.0, 82.5 );
 			SetSkill( SkillName.Tactiques, 60.0, 82.5 );

@@ -59,7 +59,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.Parer, 60, 82);
             SetSkill(SkillName.ArmeContondante, 36, 67);
             //SetSkill(SkillName.Focus, 36, 67);
-            SetSkill(SkillName.ArmePoing, 25, 47);
+            SetSkill(SkillName.Anatomie, 25, 47);
 
             Fame = 100;
             Karma = 100;

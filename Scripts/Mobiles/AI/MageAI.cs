@@ -591,7 +591,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if( SmartAI && !m_Mobile.StunReady && m_Mobile.Skills[ SkillName.ArmePoing ].Value >= 80.0 && m_Mobile.Skills[ SkillName.Tactiques ].Value >= 80.0 )
+			if( SmartAI && !m_Mobile.StunReady && m_Mobile.Skills[ SkillName.Anatomie ].Value >= 80.0 && m_Mobile.Skills[ SkillName.Tactiques ].Value >= 80.0 )
 				EventSink.InvokeStunRequest( new StunRequestEventArgs( m_Mobile ) );
 
 			if( !m_Mobile.InRange( c, m_Mobile.RangePerception ) )

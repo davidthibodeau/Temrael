@@ -10,7 +10,7 @@ namespace Server.Items
 	{
 		public static void Initialize()
 		{
-			SkillInfo.Table[(int)SkillName.Identification].Callback = new SkillUseCallback( OnUse );
+			SkillInfo.Table[(int)SkillName.Polissage].Callback = new SkillUseCallback( OnUse );
 		}
 
 		public static TimeSpan OnUse( Mobile from )
@@ -33,7 +33,7 @@ namespace Server.Items
 			{
 				if ( o is Item )
 				{
-					if ( from.CheckTargetSkill( SkillName.Identification, o, 0, 100 ) )
+					if ( from.CheckTargetSkill( SkillName.Polissage, o, 0, 100 ) )
 					{
                         if (o is BaseWeapon)
                             ((BaseWeapon)o).Identified = true;

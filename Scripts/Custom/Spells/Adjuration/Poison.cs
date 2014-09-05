@@ -49,7 +49,7 @@ namespace Server.Spells.Third
                 {*/
                     int level;
 
-                    double total = Caster.Skills[SkillName.Tenebrea].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
+                    double total = Caster.Skills[SkillName.Tenebrae].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
 
                     //double dist = Caster.GetDistanceToSqrt(m);
 

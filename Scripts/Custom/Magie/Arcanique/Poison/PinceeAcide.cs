@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 int level;
 
-                double total = (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Empoisonner].Value);
+                double total = (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Empoisonnement].Value);
 
                 if (total >= 200.0 && 3 > Utility.Random(10))
                     level = 2;

@@ -68,7 +68,7 @@ namespace Server.Spells.Seventh
 					if ( bc == null )
 						continue;
 
-					double dispelChance = (50.0 + ((100 * (Caster.Skills.Tenebrea.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
+					double dispelChance = (50.0 + ((100 * (Caster.Skills.Tenebrae.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
 
 					if ( dispelChance > Utility.RandomDouble() )
                     {

@@ -15,7 +15,7 @@ namespace Server.Mobiles
 		{
 			SetSkill( SkillName.Crochetage, 60.0, 83.0 );
 			SetSkill( SkillName.Pieges, 75.0, 98.0 );
-			SetSkill( SkillName.Bricolage, 64.0, 100.0 );
+			SetSkill( SkillName.Menuiserie, 64.0, 100.0 );
 		}
 
 		public override void InitSBInfo()

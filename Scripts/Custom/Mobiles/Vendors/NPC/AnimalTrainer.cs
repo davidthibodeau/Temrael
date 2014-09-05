@@ -17,7 +17,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public AnimalTrainer() : base( "Dresseur" )
 		{
-			SetSkill( SkillName.Elevage, 64.0, 100.0 );
+			SetSkill( SkillName.Dressage, 64.0, 100.0 );
 			SetSkill( SkillName.Dressage, 90.0, 100.0 );
 			SetSkill( SkillName.Soins, 65.0, 88.0 );
 		}
@@ -136,7 +136,7 @@ namespace Server.Mobiles
 		public static int GetMaxStabled( Mobile from )
 		{
 			double taming = from.Skills[SkillName.Dressage].Value;
-			double anlore = from.Skills[SkillName.Elevage].Value;
+			double anlore = from.Skills[SkillName.Dressage].Value;
 			double vetern = from.Skills[SkillName.Soins].Value;
 			double sklsum = taming + anlore + vetern;
 

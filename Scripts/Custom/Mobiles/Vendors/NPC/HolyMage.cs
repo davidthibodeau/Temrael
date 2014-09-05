@@ -18,7 +18,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.ArtMagique, 64.0, 100.0 );
 			SetSkill( SkillName.Concentration, 60.0, 83.0 );
 			SetSkill( SkillName.Concentration, 65.0, 88.0 );
-			SetSkill( SkillName.ArmePoing, 36.0, 68.0 );
+			SetSkill( SkillName.Anatomie, 36.0, 68.0 );
 		}
 
 		public override void InitSBInfo()

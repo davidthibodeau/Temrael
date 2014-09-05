@@ -9,7 +9,6 @@ using Server.Gumps;
 using Server.Scripts.Commands;
 using Server.Commands;
 using Server.Commands.Generic;
-using Server.Gumps;
 
 namespace Server.Gumps
 {

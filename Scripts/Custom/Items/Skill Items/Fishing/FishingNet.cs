@@ -33,7 +33,7 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-            if (from.Skills[SkillName.Peche].Value >= 40.0)
+            if (from.Skills[SkillName.Cuisine].Value >= 40.0)
                 Fishing.System.BeginHarvesting(from, this);
             else
                 from.SendMessage("Vous n'êtes pas assez compétent pour utiliser cet objet.");

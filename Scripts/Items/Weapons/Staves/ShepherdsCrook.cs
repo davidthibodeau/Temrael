@@ -151,10 +151,10 @@ namespace Server.Items
 						double min = m_Creature.MinTameSkill - 30;
 						double max = m_Creature.MinTameSkill + 30 + Utility.Random( 10 );
 
-						if ( max <= from.Skills[ SkillName.Elevage ].Value )
+						if ( max <= from.Skills[ SkillName.Dressage ].Value )
 							m_Creature.PrivateOverheadMessage( MessageType.Regular, 0x3B2, 502471, from.NetState ); // That wasn't even challenging.
 
-						if ( from.CheckTargetSkill( SkillName.Elevage, m_Creature, min, max ) )
+						if ( from.CheckTargetSkill( SkillName.Dressage, m_Creature, min, max ) )
 						{
 							IPoint2D p = (IPoint2D) targ;
 

@@ -40,7 +40,7 @@ namespace Server.Items
 			if ( weapon == null )
 				return false;
 
-			return weapon.Skill != SkillName.ArmePoing;
+			return weapon.Skill != SkillName.Anatomie;
 		}
 
 		public static readonly TimeSpan BlockEquipDuration = TimeSpan.FromSeconds( 5.0 );

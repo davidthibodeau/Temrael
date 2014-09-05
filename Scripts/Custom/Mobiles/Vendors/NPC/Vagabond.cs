@@ -13,7 +13,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Vagabond() : base( "Vagabond" )
 		{
-			SetSkill( SkillName.Identification, 60.0, 83.0 );
+			SetSkill( SkillName.Polissage, 60.0, 83.0 );
 		}
 
 		public override void InitSBInfo()

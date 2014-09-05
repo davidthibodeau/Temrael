@@ -13,7 +13,7 @@ namespace Server.Mobiles
 		public Baker() : base( "Boulanger" )
 		{
 			SetSkill( SkillName.Cuisine, 75.0, 98.0 );
-			SetSkill( SkillName.Degustation, 36.0, 68.0 );
+			SetSkill( SkillName.Empoisonnement, 36.0, 68.0 );
 		}
 
 		public override void InitSBInfo()

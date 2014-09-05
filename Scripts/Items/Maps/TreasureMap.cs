@@ -651,7 +651,7 @@ namespace Server.Items
 
 		private bool HasRequiredSkill( Mobile from )
 		{
-			return ( from.Skills[SkillName.ConnaissanceHistoire].Value >= GetMinSkillLevel() );
+			return ( from.Skills[SkillName.Langues].Value >= GetMinSkillLevel() );
 		}
 
 		public void Decode( Mobile from )
@@ -671,12 +671,12 @@ namespace Server.Items
 			{
 				double minSkill = GetMinSkillLevel();
 
-                if (from.Skills[SkillName.ConnaissanceHistoire].Value < minSkill)
+                if (from.Skills[SkillName.Langues].Value < minSkill)
 					from.SendLocalizedMessage( 503013 ); // The map is too difficult to attempt to decode.
 
 				double maxSkill = minSkill + 60.0;
 
-                if (!from.CheckSkill(SkillName.ConnaissanceHistoire, minSkill, maxSkill))
+                if (!from.CheckSkill(SkillName.Langues, minSkill, maxSkill))
 				{
 					from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 503018 ); // You fail to make anything of the map.
 					return;

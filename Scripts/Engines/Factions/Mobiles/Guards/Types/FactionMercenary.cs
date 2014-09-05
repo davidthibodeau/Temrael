@@ -26,7 +26,7 @@ namespace Server.Factions
 			VirtualArmor = 16;
 
 			SetSkill( SkillName.ArmePerforante, 90.0, 100.0 );
-			SetSkill( SkillName.ArmePoing, 90.0, 100.0 );
+			SetSkill( SkillName.Anatomie, 90.0, 100.0 );
 			SetSkill( SkillName.Tactiques, 90.0, 100.0 );
 			SetSkill( SkillName.Concentration, 90.0, 100.0 );
 			SetSkill( SkillName.Soins, 90.0, 100.0 );

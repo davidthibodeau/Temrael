@@ -28,7 +28,7 @@ namespace Server.Engines.Quests.Samurai
 
 			SetSkill( SkillName.Concentration, 5.0 );
 			SetSkill( SkillName.Tactiques, 4.0 );
-			SetSkill( SkillName.ArmePoing, 5.0 );
+			SetSkill( SkillName.Anatomie, 5.0 );
 
 			VirtualArmor = 8;
 		}

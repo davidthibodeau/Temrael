@@ -1230,8 +1230,8 @@ namespace Server.Items
 			{
 				sk = Skill;
 
-				if ( sk != SkillName.ArmePoing && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.ArmePoing].Value > m.Skills[sk].Value )
-					sk = SkillName.ArmePoing;
+				if ( sk != SkillName.Anatomie && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.Anatomie].Value > m.Skills[sk].Value )
+					sk = SkillName.Anatomie;
 			}
 
 			return sk;

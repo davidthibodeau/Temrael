@@ -59,7 +59,7 @@ namespace Server.Items
 			double skillTotal = GetSkill( from, SkillName.ArmeTranchante ) + GetSkill( from, SkillName.ArmeContondante )
 				+ GetSkill( from, SkillName.ArmePerforante ) + GetSkill( from, SkillName.ArmeDistance ) + GetSkill( from, SkillName.Parer )
 				+ GetSkill( from, SkillName.Foresterie ) + GetSkill( from, SkillName.Infiltration )
-				+ GetSkill( from, SkillName.Empoisonner ) + GetSkill( from, SkillName.Tactiques );
+				+ GetSkill( from, SkillName.Empoisonnement ) + GetSkill( from, SkillName.Tactiques );
 
 			if ( skillTotal >= 300.0 )
 				mana -= 10;

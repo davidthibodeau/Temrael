@@ -333,7 +333,7 @@ namespace Server.Engines.Harvest
                 
                 return def;
             }
-            else if (Skill == SkillName.Peche)
+            else if (Skill == SkillName.Cuisine)
             {
                 HarvestVein[] def = Veins;
                 HarvestZone zone;

@@ -43,7 +43,7 @@ namespace Server.Spells
             {
                 if (Caster.BeginAction(typeof(DefensiveSpell)))
                 {
-                    double value = Caster.Skills[SkillName.Miracles].Value + Caster.Skills[SkillName.Priere].Value;
+                    double value = Caster.Skills[SkillName.Miracles].Value + Caster.Skills[SkillName.Miracles].Value;
                     value /= 3;
 
                     if (value < 0)

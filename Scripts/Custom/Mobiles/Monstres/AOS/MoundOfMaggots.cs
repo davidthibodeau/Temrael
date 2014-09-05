@@ -29,7 +29,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 100 );
 
 			SetSkill( SkillName.Tactiques, 50.0 );
-			SetSkill( SkillName.ArmePoing, 50.1, 60.0 );
+			SetSkill( SkillName.Anatomie, 50.1, 60.0 );
 
 			Fame = 1000;
 			Karma = -1000;

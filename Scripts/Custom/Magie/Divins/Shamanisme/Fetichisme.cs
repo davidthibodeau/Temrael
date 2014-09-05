@@ -131,7 +131,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.ArtMagique, Target.Skills[SkillName.ArtMagique].Value);
             //SetSkill(SkillName.MagicResist, Target.Skills[SkillName.MagicResist].Value);
             SetSkill(SkillName.Tactiques, Target.Skills[SkillName.Tactiques].Value);
-            SetSkill(SkillName.ArmePoing, Target.Skills[SkillName.ArmePoing].Value);
+            SetSkill(SkillName.Anatomie, Target.Skills[SkillName.Anatomie].Value);
             //SetSkill(SkillName.Swords, Target.Skills[SkillName.Swords].Value);
             //SetSkill(SkillName.Macing, Target.Skills[SkillName.Macing].Value);
             //SetSkill(SkillName.Archery, Target.Skills[SkillName.Archery].Value);

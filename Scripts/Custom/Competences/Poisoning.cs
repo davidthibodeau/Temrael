@@ -9,7 +9,7 @@ namespace Server.SkillHandlers
 	{
 		public static void Initialize()
 		{
-			SkillInfo.Table[(int)SkillName.Empoisonner].Callback = new SkillUseCallback( OnUse );
+			SkillInfo.Table[(int)SkillName.Empoisonnement].Callback = new SkillUseCallback( OnUse );
 		}
 
 		public static TimeSpan OnUse( Mobile m )
@@ -112,7 +112,7 @@ namespace Server.SkillHandlers
 
 					protected override void OnTick()
 					{
-						if ( m_From.CheckTargetSkill( SkillName.Empoisonner, m_Target, m_MinSkill, m_MaxSkill ) )
+						if ( m_From.CheckTargetSkill( SkillName.Empoisonnement, m_Target, m_MinSkill, m_MaxSkill ) )
 						{
 							if ( m_Target is Food )
 							{
@@ -141,7 +141,7 @@ namespace Server.SkillHandlers
 						else // Failed
 						{
 							// 5% of chance of getting poisoned if failed
-							if ( m_From.Skills[SkillName.Empoisonner].Base < 80.0 && Utility.Random( 20 ) == 0 )
+							if ( m_From.Skills[SkillName.Empoisonnement].Base < 80.0 && Utility.Random( 20 ) == 0 )
 							{
 								m_From.SendLocalizedMessage( 502148 ); // You make a grave mistake while applying the poison.
 								m_From.ApplyPoison( m_From, m_Poison );

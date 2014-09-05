@@ -41,11 +41,11 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 20, 30 );
 			SetResistance( ResistanceType.Magie, 20, 30 );
 
-			SetSkill( SkillName.Empoisonner, 0.0, 10.0 );
+			SetSkill( SkillName.Empoisonnement, 0.0, 10.0 );
 			//SetSkill( SkillName.Anatomy, 0 );
 			SetSkill( SkillName.Concentration, 75.0, 80.0 );
 			SetSkill( SkillName.Tactiques, 80.0, 85.0 );
-			SetSkill( SkillName.ArmePoing, 70.0, 75.0 );
+			SetSkill( SkillName.Anatomie, 70.0, 75.0 );
 
 			Fame = 20000;
 			Karma = -20000;

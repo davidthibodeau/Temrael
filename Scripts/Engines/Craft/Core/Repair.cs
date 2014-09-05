@@ -170,7 +170,7 @@ namespace Server.Engines.Craft
 					}
 					else
 					{
-						double skillValue = (usingDeed)? m_Deed.SkillLevel : from.Skills[SkillName.Bricolage].Value;
+						double skillValue = (usingDeed)? m_Deed.SkillLevel : from.Skills[SkillName.Menuiserie].Value;
 
 						if ( skillValue < 60.0 )
 						{
@@ -187,7 +187,7 @@ namespace Server.Engines.Craft
 
 							damage += 30;
 
-							if ( !from.CheckSkill( SkillName.Bricolage, 0.0, 100.0 ) )
+							if ( !from.CheckSkill( SkillName.Menuiserie, 0.0, 100.0 ) )
 								damage /= 2;
 
 							Container pack = from.Backpack;

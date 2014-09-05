@@ -440,26 +440,28 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(DartBoardEastDeed), "Utilitaires", "Darts (Est)", 15.7, 40.7, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(Nails), "Clou", 1, 1044563);
 
+
             index = AddCraft(typeof(BallotBoxDeed), "Utilitaires", "Urne de vote", 47.3, 72.3, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(Nails), "Clou", 1, 1044563);
 
             index = AddCraft(typeof(StoneOvenEastDeed), "Utilitaires", "Four (Est)", 68.4, 93.4, typeof(Board), "Planches", 50, 1044351);
-            AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
+            AddSkill(index, SkillName.Menuiserie, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 125, 1044037);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(StoneOvenSouthDeed), "Utilitaires", "Four (Sud)", 68.4, 93.4, typeof(Board), "Planches", 50, 1044351);
-            AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
+            AddSkill(index, SkillName.Menuiserie, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 125, 1044037);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(FlourMillEastDeed), "Utilitaires", "Moulin (Est)", 94.7, 119.7, typeof(Board), "Planches", 50, 1044351);
-            AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
+            AddSkill(index, SkillName.Menuiserie, 50.0, 55.0);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 50, 1044037);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(FlourMillSouthDeed), "Utilitaires", "Moulin (Sud)", 94.7, 119.7, typeof(Board), "Planches", 50, 1044351);
-            AddSkill(index, SkillName.Bricolage, 50.0, 55.0);
+            AddSkill(index, SkillName.Menuiserie, 50.0, 55.0);
+
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 50, 1044037);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
