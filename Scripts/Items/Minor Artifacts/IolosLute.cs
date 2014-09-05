@@ -14,9 +14,6 @@ namespace Server.Items
 		public IolosLute()
 		{
 			Hue = 0x47E;
-			Slayer = SlayerName.Silver;
-			//Slayer2 = SlayerName.DaemonDismissal;
-			Slayer2 = SlayerName.Exorcism;
 		}
 
 		public IolosLute( Serial serial ) : base( serial )

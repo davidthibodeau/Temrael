@@ -273,7 +273,7 @@ namespace Server.Items
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 25 );
+				int random = GetUniqueRandom( 24 );
 
 				if ( random == -1 )
 					break;
@@ -335,8 +335,7 @@ namespace Server.Items
 					case 20: ApplyAttribute( secondary,	min, max, AosWeaponAttribute.ResistPerforantBonus,		1, 15 ); break;
 					case 21: ApplyAttribute( secondary,	min, max, AosWeaponAttribute.ResistMagieBonus,		    1, 15 ); break;
 					case 22: ApplyAttribute( secondary, min, max, AosWeaponAttribute.DurabilityBonus,		    10, 100, 10 ); break;
-					case 23: weapon.Slayer = GetRandomSlayer(); break;
-					case 24: GetElementalDamages( weapon ); break;
+					case 23: GetElementalDamages( weapon ); break;
 				}
 			}
 		}
@@ -403,35 +402,6 @@ namespace Server.Items
 			weapon.AosElementDamages[attr] = random;
 
 			return (totalDamage - random);
-		}
-
-		public static SlayerName GetRandomSlayer()
-		{
-			// TODO: Check random algorithm on OSI
-
-			SlayerGroup[] groups = SlayerGroup.Groups;
-
-			if ( groups.Length == 0 )
-				return SlayerName.None;
-
-			SlayerGroup group = groups[Utility.Random( groups.Length -1 )]; //-1 To Exclude the Fey Slayer which appears ONLY on a certain artifact.
-			SlayerEntry entry;
-
-			if ( 10 > Utility.Random( 100 ) ) // 10% chance to do super slayer
-			{
-				entry = group.Super;
-			}
-			else
-			{
-				SlayerEntry[] entries = group.Entries;
-
-				if ( entries.Length == 0 )
-					return SlayerName.None;
-
-				entry = entries[Utility.Random( entries.Length )];
-			}
-
-			return entry.Name;
 		}
 
 		public void ApplyAttributesTo( BaseArmor armor )
@@ -649,7 +619,7 @@ namespace Server.Items
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 16 );
+				int random = GetUniqueRandom( 15 );
 
 				if ( random == -1 )
 					break;
@@ -679,7 +649,6 @@ namespace Server.Items
 					case 12: ApplyAttribute( primary,	min, max, AosAttribute.LowerRegCost,			1, 20 ); break;
 					case 13: ApplyAttribute( primary,	min, max, AosAttribute.LowerManaCost,			1, 8 ); break;
 					case 14: ApplyAttribute( primary,	min, max, AosAttribute.RegenMana,				1, 2 ); break;
-					case 15: spellbook.Slayer = GetRandomSlayer(); break;
 				}
 			}
 		}

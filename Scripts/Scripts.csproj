@@ -3101,7 +3101,6 @@
     <Compile Include="Items\Talismans\Items\RunedSwitch.cs" />
     <Compile Include="Items\Talismans\RandomTalisman.cs" />
     <Compile Include="Items\Talismans\TalismanAttribute.cs" />
-    <Compile Include="Items\Talismans\TalismanSlayer.cs" />
     <Compile Include="Items\Talismans\TalismanSummons.cs" />
     <Compile Include="Items\Traps\BaseTrap.cs" />
     <Compile Include="Items\Traps\FireColumnTrap.cs" />
@@ -3238,9 +3237,6 @@
     <Compile Include="Items\Weapons\SE Weapons\Tetsubo.cs" />
     <Compile Include="Items\Weapons\SE Weapons\Wakizashi.cs" />
     <Compile Include="Items\Weapons\SE Weapons\Yumi.cs" />
-    <Compile Include="Items\Weapons\SlayerEntry.cs" />
-    <Compile Include="Items\Weapons\SlayerGroup.cs" />
-    <Compile Include="Items\Weapons\SlayerName.cs" />
     <Compile Include="Items\Weapons\SpearsAndForks\BaseSpear.cs" />
     <Compile Include="Items\Weapons\SpearsAndForks\BladedStaff.cs" />
     <Compile Include="Items\Weapons\SpearsAndForks\DoubleBladedStaff.cs" />

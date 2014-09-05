@@ -20,7 +20,6 @@ namespace Server.Items
 			WeaponAttributes.HitLeechMana = 40;
 			WeaponAttributes.HitLeechHits = 40;
 			Attributes.WeaponSpeed = 60;
-			Slayer = SlayerName.Repond;
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

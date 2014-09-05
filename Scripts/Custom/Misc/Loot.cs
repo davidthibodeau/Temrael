@@ -928,7 +928,6 @@ namespace Server
 			}
 
 			talisman.Blessed = BaseTalisman.GetRandomBlessed();
-			talisman.Slayer = BaseTalisman.GetRandomSlayer();
 			talisman.Protection = BaseTalisman.GetRandomProtection();
 			talisman.Killer = BaseTalisman.GetRandomKiller();
 			talisman.Skill = BaseTalisman.GetRandomSkill();

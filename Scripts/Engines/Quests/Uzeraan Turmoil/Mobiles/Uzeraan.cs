@@ -341,8 +341,6 @@ namespace Server.Engines.Quests.Haven
 									weapon.DurabilityLevel = (WeaponDurabilityLevel)BaseCreature.RandomMinMaxScaled( 2, 4 );
 								}
 
-								weapon.Slayer = SlayerName.Silver;
-
 								reward = weapon;
 							}
 

@@ -33,7 +33,6 @@ namespace Server.Items
 			}
 
 			Blessed = BaseTalisman.GetRandomBlessed();
-			Slayer = BaseTalisman.GetRandomSlayer();
 			Protection = BaseTalisman.GetRandomProtection();
 			Killer = BaseTalisman.GetRandomKiller();
 			Skill = BaseTalisman.GetRandomSkill();

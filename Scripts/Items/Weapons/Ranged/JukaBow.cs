@@ -67,7 +67,6 @@ namespace Server.Items
 				g.Consume();
 
 				Hue = 0x453;
-				Slayer = (SlayerName)Utility.Random( 2, 25 );
 
 				from.SendMessage( "You modify it." );
 			}

@@ -15,8 +15,6 @@ namespace Server.Items
 		public BladeOfTheRighteous()
 		{
 			Hue = 0x47E;
-			//Slayer = SlayerName.DaemonDismissal;
-			Slayer = SlayerName.Exorcism;
 			WeaponAttributes.HitLeechHits = 50;
 			WeaponAttributes.UseBestSkill = 1;
 			Attributes.BonusHits = 10;
@@ -39,9 +37,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
-
-			if ( Slayer == SlayerName.None )
-				Slayer = SlayerName.Exorcism;
 		}
 	}
 }

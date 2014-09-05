@@ -20,7 +20,7 @@ namespace Server.Items
 		Arcanist
 	}
 
-	public class Spellbook : Item, ICraftable, ISlayer
+	public class Spellbook : Item, ICraftable
 	{
 		public static void Initialize()
 		{
@@ -566,20 +566,6 @@ namespace Server.Items
 				
 			m_AosSkillBonuses.GetProperties( list );
 
-			if( m_Slayer != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer );
-				if( entry != null )
-					list.Add( entry.Title );
-			}
-
-			if( m_Slayer2 != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer2 );
-				if( entry != null )
-					list.Add( entry.Title );
-			}
-
 			int prop;
 
 			if ( (prop = m_AosAttributes.WeaponDamage) != 0 )
@@ -674,34 +660,12 @@ namespace Server.Items
 				from.SendLocalizedMessage( 500207 ); // The spellbook must be in your backpack (and not in a container within) to open.
 		}
 
-
-		private SlayerName m_Slayer;
-		private SlayerName m_Slayer2;
-		//Currently though there are no dual slayer spellbooks, OSI has a habit of putting dual slayer stuff in later
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public SlayerName Slayer
-		{
-			get { return m_Slayer; }
-			set { m_Slayer = value; InvalidateProperties(); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public SlayerName Slayer2
-		{
-			get { return m_Slayer2; }
-			set { m_Slayer2 = value; InvalidateProperties(); }
-		}
-
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int) 0 ); // version
 			writer.Write( m_Crafter );
-
-			writer.Write( (int)m_Slayer );
-			writer.Write( (int)m_Slayer2 );
 
 			m_AosAttributes.Serialize( writer );
 			m_AosSkillBonuses.Serialize( writer );
@@ -716,34 +680,14 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 3:
-				{
-					m_Crafter = reader.ReadMobile();
-					goto case 2;
-				}
-				case 2:
-				{
-					m_Slayer = (SlayerName)reader.ReadInt();
-					m_Slayer2 = (SlayerName)reader.ReadInt();
-					goto case 1;
-				}
-				case 1:
-				{
-					m_AosAttributes = new AosAttributes( this, reader );
-					m_AosSkillBonuses = new AosSkillBonuses( this, reader );
+            m_Crafter = reader.ReadMobile();
 
-					goto case 0;
-				}
-				case 0:
-				{
-					m_Content = reader.ReadULong();
-					m_Count = reader.ReadInt();
+            m_AosAttributes = new AosAttributes(this, reader);
+            m_AosSkillBonuses = new AosSkillBonuses(this, reader);
 
-					break;
-				}
-			}
+
+            m_Content = reader.ReadULong();
+            m_Count = reader.ReadInt();
 
 			if ( m_AosAttributes == null )
 				m_AosAttributes = new AosAttributes( this );

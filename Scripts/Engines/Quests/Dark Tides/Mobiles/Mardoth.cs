@@ -143,8 +143,6 @@ namespace Server.Engines.Quests.Necro
 
 								BaseWeapon weapon = new BoneHarvester();
 
-								weapon.Slayer = SlayerName.OrcSlaying;
-
 								if ( Core.AOS )
 								{
 									BaseRunicTool.ApplyAttributesTo( weapon, 3, 20, 40 );

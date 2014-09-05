@@ -4657,40 +4657,6 @@ namespace Server.Mobiles
 			return val;
 		}
 
-		public bool PackSlayer()
-		{
-			return PackSlayer( 0.05 );
-		}
-
-		public bool PackSlayer( double chance )
-		{
-			if ( chance <= Utility.RandomDouble() )
-				return false;
-
-			if ( Utility.RandomBool() )
-			{
-				BaseInstrument instrument = Loot.RandomInstrument();
-
-				if ( instrument != null )
-				{
-					instrument.Slayer = SlayerGroup.GetLootSlayerType( GetType() );
-					PackItem( instrument );
-				}
-			}
-			else if ( !Core.AOS )
-			{
-				BaseWeapon weapon = Loot.RandomWeapon();
-
-				if ( weapon != null )
-				{
-					weapon.Slayer = SlayerGroup.GetLootSlayerType( GetType() );
-					PackItem( weapon );
-				}
-			}
-
-			return true;
-		}
-
 		public bool PackWeapon( int minLevel, int maxLevel )
 		{
 			return PackWeapon( minLevel, maxLevel, 1.0 );
@@ -4727,9 +4693,6 @@ namespace Server.Mobiles
 
 				if ( weapon == null )
 					return false;
-
-				if ( 0.05 > Utility.RandomDouble() )
-					weapon.Slayer = SlayerName.Silver;
 
 				weapon.DamageLevel = (WeaponDamageLevel)RandomMinMaxScaled( minLevel, maxLevel );
 				weapon.AccuracyLevel = (WeaponAccuracyLevel)RandomMinMaxScaled( minLevel, maxLevel );

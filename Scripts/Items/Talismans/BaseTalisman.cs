@@ -98,17 +98,6 @@ namespace Server.Items
 			set { m_Blessed = value; InvalidateProperties(); }
 		}
 
-		#region Slayer
-		private TalismanSlayerName m_Slayer;
-
-		[CommandProperty(AccessLevel.Batisseur)]
-		public TalismanSlayerName Slayer
-		{
-			get { return m_Slayer; }
-			set { m_Slayer = value; InvalidateProperties(); }
-		}
-		#endregion
-
 		#region Summoner/Removal
 		private TalismanAttribute m_Summoner;
 		private TalismanRemoval m_Removal;
@@ -502,9 +491,6 @@ namespace Server.Items
 
 			if (m_MaxCharges > 0)
 				list.Add(1060741, m_Charges.ToString()); // charges: ~1_val~
-
-			if (m_Slayer != TalismanSlayerName.None)
-				list.Add(1072503 + (int)m_Slayer);
 		}
 
 		private static void SetSaveFlag(ref SaveFlag flags, SaveFlag toSet, bool setIf)
@@ -538,7 +524,6 @@ namespace Server.Items
 			MaxChargeTime = 0x00002000,
 			ChargeTime = 0x00004000,
 			Blessed = 0x00008000,
-			Slayer = 0x00010000,
 		}
 
 		public override void Serialize(GenericWriter writer)
@@ -564,7 +549,6 @@ namespace Server.Items
 			SetSaveFlag(ref flags, SaveFlag.MaxChargeTime, m_MaxChargeTime != 0);
 			SetSaveFlag(ref flags, SaveFlag.ChargeTime, m_ChargeTime != 0);
 			SetSaveFlag(ref flags, SaveFlag.Blessed, m_Blessed);
-			SetSaveFlag(ref flags, SaveFlag.Slayer, m_Slayer != TalismanSlayerName.None);
 
 			writer.WriteEncodedInt((int)flags);
 
@@ -609,9 +593,6 @@ namespace Server.Items
 
 			if (GetSaveFlag(flags, SaveFlag.ChargeTime))
 				writer.WriteEncodedInt(m_ChargeTime);
-
-			if (GetSaveFlag(flags, SaveFlag.Slayer))
-				writer.WriteEncodedInt((int)m_Slayer);
 		}
 
 		public override void Deserialize(GenericReader reader)
@@ -681,9 +662,6 @@ namespace Server.Items
 
 						if (GetSaveFlag(flags, SaveFlag.ChargeTime))
 							m_ChargeTime = reader.ReadEncodedInt();
-
-						if (GetSaveFlag(flags, SaveFlag.Slayer))
-							m_Slayer = (TalismanSlayerName)reader.ReadEncodedInt();
 
 						m_Blessed = GetSaveFlag(flags, SaveFlag.Blessed);
 
@@ -964,14 +942,6 @@ namespace Server.Items
 				return true;
 
 			return false;
-		}
-
-		public static TalismanSlayerName GetRandomSlayer()
-		{
-			if (0.01 > Utility.RandomDouble())
-				return (TalismanSlayerName)Utility.RandomMinMax(1, 9);
-
-			return TalismanSlayerName.None;
 		}
 
 		public static int GetRandomCharges()

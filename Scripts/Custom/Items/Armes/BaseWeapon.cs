@@ -17,14 +17,7 @@ using System.Text.RegularExpressions;
 
 namespace Server.Items
 {
-
-	public interface ISlayer
-	{
-		SlayerName Slayer { get; set; }
-		SlayerName Slayer2 { get; set; }
-	}
-
-	public abstract class BaseWeapon : BaseWearable, IWeapon, ICraftable, ISlayer, IDurability
+	public abstract class BaseWeapon : BaseWearable, IWeapon, ICraftable, IDurability
     {
         private static double[] m_DpsTab
         {
@@ -539,8 +532,6 @@ namespace Server.Items
 		private bool m_Identified;
 		private int m_Hits;
 		private int m_MaxHits;
-		private SlayerName m_Slayer;
-		private SlayerName m_Slayer2;
 		private SkillMod m_SkillMod, m_MageMod;
 		private CraftResource m_Resource;
 		private bool m_PlayerConstructed;
@@ -706,20 +697,6 @@ namespace Server.Items
             get { return m_CrafterName; }
             set { m_CrafterName = value; InvalidateProperties(); }
         }
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public SlayerName Slayer
-		{
-			get{ return m_Slayer; }
-			set{ m_Slayer = value; InvalidateProperties(); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public SlayerName Slayer2
-		{
-			get { return m_Slayer2; }
-			set { m_Slayer2 = value; InvalidateProperties(); }
-		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
@@ -1400,11 +1377,6 @@ namespace Server.Items
 
 		public virtual TimeSpan OnSwing( Mobile attacker, Mobile defender )
 		{
-			return OnSwing( attacker, defender, 1.0 );
-		}
-
-		public virtual TimeSpan OnSwing( Mobile attacker, Mobile defender, double damageBonus )
-		{
 			bool canSwing = true;
 
 			if ( Core.AOS )
@@ -1448,7 +1420,7 @@ namespace Server.Items
 				}
                 Combat combat = new Combat(attacker, defender);
                 if (combat.CheckHit())
-                    OnHit(attacker, defender, damageBonus);
+                    OnHit(attacker, defender, 1.0);
                 else
                     OnMiss(attacker, defender);
 			}
@@ -1934,13 +1906,7 @@ namespace Server.Items
                 damage += damage * TechniquesCombat.Assassinat.MultiplicateurBonusDegat;
 
 
-
-
-
-
             #endregion
-
-
 
 
             if ( attacker is BaseCreature )
@@ -2978,7 +2944,6 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Quality,			m_Quality != WeaponQuality.Regular );
 			SetSaveFlag( ref flags, SaveFlag.Hits,				m_Hits != 0 );
 			SetSaveFlag( ref flags, SaveFlag.MaxHits,			m_MaxHits != 0 );
-			SetSaveFlag( ref flags, SaveFlag.Slayer,			m_Slayer != SlayerName.None );
 			SetSaveFlag( ref flags, SaveFlag.Poison,			m_Poison != null );
 			SetSaveFlag( ref flags, SaveFlag.PoisonCharges,		m_PoisonCharges != 0 );
 			SetSaveFlag( ref flags, SaveFlag.Crafter,			m_Crafter != null );
@@ -3001,7 +2966,6 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.xWeaponAttributes,	!m_AosWeaponAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed,	m_PlayerConstructed );
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.Slayer2,			m_Slayer2 != SlayerName.None );
 			SetSaveFlag( ref flags, SaveFlag.ElementalDamages,	!m_AosElementDamages.IsEmpty );
 
 			writer.Write( (int) flags );
@@ -3023,9 +2987,6 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.MaxHits ) )
 				writer.Write( (int) m_MaxHits );
-
-			if ( GetSaveFlag( flags, SaveFlag.Slayer ) )
-				writer.Write( (int) m_Slayer );
 
 			if ( GetSaveFlag( flags, SaveFlag.Poison ) )
 				Poison.Serialize( m_Poison, writer );
@@ -3086,10 +3047,6 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
 				m_AosSkillBonuses.Serialize( writer );
-
-			if ( GetSaveFlag( flags, SaveFlag.Slayer2 ) )
-				writer.Write( (int)m_Slayer2 );
-
 			if( GetSaveFlag( flags, SaveFlag.ElementalDamages ) )
 				m_AosElementDamages.Serialize( writer );
 
@@ -3105,7 +3062,7 @@ namespace Server.Items
 			Quality					= 0x00000008,
 			Hits					= 0x00000010,
 			MaxHits					= 0x00000020,
-			Slayer					= 0x00000040,
+			//Slayer					= 0x00000040,
 			Poison					= 0x00000080,
 			PoisonCharges			= 0x00000100,
 			Crafter					= 0x00000200,
@@ -3127,7 +3084,7 @@ namespace Server.Items
 			xWeaponAttributes		= 0x02000000,
 			PlayerConstructed		= 0x04000000,
 			SkillBonuses			= 0x08000000,
-			Slayer2					= 0x10000000,
+			//Slayer2					= 0x10000000,
 			ElementalDamages		= 0x20000000,
 			CrafterName 			= 0x40000000,
 		}
@@ -3187,9 +3144,6 @@ namespace Server.Items
 
 					if ( GetSaveFlag( flags, SaveFlag.MaxHits ) )
 						m_MaxHits = reader.ReadInt();
-
-					if ( GetSaveFlag( flags, SaveFlag.Slayer ) )
-						m_Slayer = (SlayerName)reader.ReadInt();
 
 					if ( GetSaveFlag( flags, SaveFlag.Poison ) )
 						m_Poison = Poison.Deserialize( reader );
@@ -3318,9 +3272,6 @@ namespace Server.Items
                     else
                         m_AosSkillBonuses = new AosSkillBonuses(this);
 
-					if( GetSaveFlag( flags, SaveFlag.Slayer2 ) )
-						m_Slayer2 = (SlayerName)reader.ReadInt();
-
                     if (GetSaveFlag(flags, SaveFlag.ElementalDamages))
                     {
                         m_AosElementDamages = new AosElementAttributes(this, reader);
@@ -3333,8 +3284,6 @@ namespace Server.Items
 				}
 				case 4:
 				{
-					m_Slayer = (SlayerName)reader.ReadInt();
-
 					goto case 3;
 				}
 				case 3:
@@ -3743,20 +3692,6 @@ namespace Server.Items
                 if (m_Poison != null && m_PoisonCharges > 0)
                     list.Add(1060526, "{0}\t{1}", couleur, m_PoisonCharges.ToString());
 
-                if (m_Slayer != SlayerName.None)
-                {
-                    SlayerEntry entry = SlayerGroup.GetEntryByName(m_Slayer);
-                    if (entry != null)
-                        list.Add(entry.Title);
-                }
-
-                if (m_Slayer2 != SlayerName.None)
-                {
-                    SlayerEntry entry = SlayerGroup.GetEntryByName(m_Slayer2);
-                    if (entry != null)
-                        list.Add(entry.Title);
-                }
-
                 /*if (Core.ML && this is BaseRanged && ((BaseRanged)this).Balanced)
                     list.Add(1072792); // Balanced*/
 
@@ -3946,19 +3881,6 @@ namespace Server.Items
 
 			if ( m_Identified || from.AccessLevel >= AccessLevel.Batisseur )
 			{
-				if( m_Slayer != SlayerName.None )
-				{
-					SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer );
-					if( entry != null )
-						attrs.Add( new EquipInfoAttribute( entry.Title ) );
-				}
-
-				if( m_Slayer2 != SlayerName.None )
-				{
-					SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer2 );
-					if( entry != null )
-						attrs.Add( new EquipInfoAttribute( entry.Title ) );
-				}
 
 				if ( m_DurabilityLevel != WeaponDurabilityLevel.Regular )
 					attrs.Add( new EquipInfoAttribute( 1038000 + (int)m_DurabilityLevel ) );
@@ -3969,7 +3891,7 @@ namespace Server.Items
 				if ( m_AccuracyLevel != WeaponAccuracyLevel.Regular )
 					attrs.Add( new EquipInfoAttribute( 1038010 + (int)m_AccuracyLevel ) );
 			}
-			else if( m_Slayer != SlayerName.None || m_Slayer2 != SlayerName.None || m_DurabilityLevel != WeaponDurabilityLevel.Regular || m_DamageLevel != WeaponDamageLevel.Regular || m_AccuracyLevel != WeaponAccuracyLevel.Regular )
+			else if( m_DurabilityLevel != WeaponDurabilityLevel.Regular || m_DamageLevel != WeaponDamageLevel.Regular || m_AccuracyLevel != WeaponAccuracyLevel.Regular )
 				attrs.Add( new EquipInfoAttribute( 1038000 ) ); // Unidentified
 
 			if ( m_Poison != null && m_PoisonCharges > 0 )

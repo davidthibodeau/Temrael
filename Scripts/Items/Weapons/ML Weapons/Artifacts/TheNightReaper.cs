@@ -14,7 +14,6 @@ namespace Server.Items
 			ItemID = 0x26CD;
 			Hue = 0x41C;
 
-			Slayer = SlayerName.Exorcism;
 			Attributes.NightSight = 1;
 			Attributes.WeaponSpeed = 25;
 			Attributes.WeaponDamage = 55;

@@ -15,7 +15,6 @@ namespace Server.Items
 		{
 			Hue = 0x460;
 			WeaponAttributes.HitMagicArrow = 25;
-			Slayer = SlayerName.ReptilianDeath;
 			Attributes.AttackChance = 15;
 			Attributes.WeaponDamage = 40;
 		}

@@ -20,10 +20,9 @@ namespace Server.Items
 		Exceptional
 	}
 
-	public abstract class BaseInstrument : Item, ICraftable, ISlayer
+	public abstract class BaseInstrument : Item, ICraftable
 	{
 		private int m_WellSound, m_BadlySound;
-		private SlayerName m_Slayer, m_Slayer2;
 		private InstrumentQuality m_Quality;
 		private Mobile m_Crafter;
 		private int m_UsesRemaining;
@@ -40,20 +39,6 @@ namespace Server.Items
 		{
 			get{ return m_BadlySound; }
 			set{ m_BadlySound = value; }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public SlayerName Slayer
-		{
-			get{ return m_Slayer; }
-			set{ m_Slayer = value; InvalidateProperties(); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public SlayerName Slayer2
-		{
-			get{ return m_Slayer2; }
-			set{ m_Slayer2 = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -353,32 +338,6 @@ namespace Server.Items
 			if ( m_Quality == InstrumentQuality.Exceptional )
 				val -= 5.0; // 10%
 
-			if ( m_Slayer != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer );
-
-				if ( entry != null )
-				{
-					if ( entry.Slays( targ ) )
-						val -= 10.0; // 20%
-					else if ( entry.Group.OppositionSuperSlays( targ ) )
-						val += 10.0; // -20%
-				}
-			}
-
-			if ( m_Slayer2 != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer2 );
-
-				if ( entry != null )
-				{
-					if ( entry.Slays( targ ) )
-						val -= 10.0; // 20%
-					else if ( entry.Group.OppositionSuperSlays( targ ) )
-						val += 10.0; // -20%
-				}
-			}
-
 			return val;
 		}
 
@@ -413,20 +372,6 @@ namespace Server.Items
 			if( m_ReplenishesCharges )
 				list.Add( 1070928 ); // Replenish Charges
 
-			if( m_Slayer != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer );
-				if( entry != null )
-					list.Add( entry.Title );
-			}
-
-			if( m_Slayer2 != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer2 );
-				if( entry != null )
-					list.Add( entry.Title );
-			}
-
 			if( m_UsesRemaining != oldUses )
 				Timer.DelayCall( TimeSpan.Zero, new TimerCallback( InvalidateProperties ) );
 		}
@@ -448,21 +393,6 @@ namespace Server.Items
 
 			if( m_ReplenishesCharges )
 				attrs.Add( new EquipInfoAttribute( 1070928 ) ); // Replenish Charges
-
-			// TODO: Must this support item identification?
-			if( m_Slayer != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer );
-				if( entry != null )
-					attrs.Add( new EquipInfoAttribute( entry.Title ) );
-			}
-
-			if( m_Slayer2 != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer2 );
-				if( entry != null )
-					attrs.Add( new EquipInfoAttribute( entry.Title ) );
-			}
 
 			int number;
 
@@ -492,7 +422,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int) 0 ); // version
 
 			writer.Write( m_ReplenishesCharges );
 			if( m_ReplenishesCharges )
@@ -502,9 +432,6 @@ namespace Server.Items
 			writer.Write( m_Crafter );
 
 			writer.WriteEncodedInt( (int) m_Quality );
-			writer.WriteEncodedInt( (int) m_Slayer );
-			writer.WriteEncodedInt( (int) m_Slayer2 );
-
 			writer.WriteEncodedInt( (int)UsesRemaining );
 
 			writer.WriteEncodedInt( (int) m_WellSound );
@@ -517,55 +444,23 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 3:
-				{
-					m_ReplenishesCharges = reader.ReadBool();
+            m_ReplenishesCharges = reader.ReadBool();
 
-					if( m_ReplenishesCharges )
-						m_LastReplenished = reader.ReadDateTime();
+            if (m_ReplenishesCharges)
+                m_LastReplenished = reader.ReadDateTime();
 
-					goto case 2;
-				}
-				case 2:
-				{
-					m_Crafter = reader.ReadMobile();
 
-					m_Quality = (InstrumentQuality)reader.ReadEncodedInt();
-					m_Slayer = (SlayerName)reader.ReadEncodedInt();
-					m_Slayer2 = (SlayerName)reader.ReadEncodedInt();
+            m_Crafter = reader.ReadMobile();
 
-					UsesRemaining = reader.ReadEncodedInt();
+            m_Quality = (InstrumentQuality)reader.ReadEncodedInt();
 
-					m_WellSound = reader.ReadEncodedInt();
-					m_BadlySound = reader.ReadEncodedInt();
+
+            UsesRemaining = reader.ReadEncodedInt();
+
+            m_WellSound = reader.ReadEncodedInt();
+            m_BadlySound = reader.ReadEncodedInt();
 					
-					break;
-				}
-				case 1:
-				{
-					m_Crafter = reader.ReadMobile();
 
-					m_Quality = (InstrumentQuality)reader.ReadEncodedInt();
-					m_Slayer = (SlayerName)reader.ReadEncodedInt();
-
-					UsesRemaining = reader.ReadEncodedInt();
-
-					m_WellSound = reader.ReadEncodedInt();
-					m_BadlySound = reader.ReadEncodedInt();
-
-					break;
-				}
-				case 0:
-				{
-					m_WellSound = reader.ReadInt();
-					m_BadlySound = reader.ReadInt();
-					UsesRemaining = Utility.RandomMinMax( InitMinUses, InitMaxUses );
-
-					break;
-				}
-			}
 
 			CheckReplenishUses();
 		}

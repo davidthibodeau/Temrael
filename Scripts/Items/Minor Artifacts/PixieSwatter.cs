@@ -19,8 +19,6 @@ namespace Server.Items
             
 			WeaponAttributes.UseBestSkill = 1;
 			WeaponAttributes.ResistMagieBonus = 12;
-
-			Slayer = SlayerName.Fey;
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

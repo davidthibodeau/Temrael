@@ -15,7 +15,6 @@ namespace Server.Items
 		public ZyronicClaw()
 		{
 			Hue = 0x485;
-			Slayer = SlayerName.ElementalBan;
 			WeaponAttributes.HitLeechMana = 50;
 			Attributes.AttackChance = 30;
 			Attributes.WeaponDamage = 50;
@@ -44,8 +43,6 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			if ( Slayer == SlayerName.None )
-				Slayer = SlayerName.ElementalBan;
 		}
 	}
 }

@@ -15,7 +15,6 @@ namespace Server.Items
 		public TheDragonSlayer()
 		{
 			Hue = 0x530;
-			Slayer = SlayerName.DragonSlaying;
 			Attributes.Luck = 110;
 			Attributes.WeaponDamage = 50;
 			WeaponAttributes.ResistTranchantBonus = 20;
@@ -44,9 +43,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
-
-			if ( Slayer == SlayerName.None )
-				Slayer = SlayerName.DragonSlaying;
 		}
 	}
 }
