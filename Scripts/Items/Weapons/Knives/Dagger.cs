@@ -8,8 +8,6 @@ namespace Server.Items
 	[FlipableAttribute( 0xF52, 0xF51 )]
 	public class Dagger : BaseKnife
 	{
-        //public override int NiveauAttirail { get { return 0; } }
-
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.InfectiousStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 
@@ -18,11 +16,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam0; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
 		public override float MlSpeed{ get{ return 2.00f; } }
-
-		public override int OldStrengthReq{ get{ return 1; } }
-		public override int OldMinDamage{ get{ return 3; } }
-		public override int OldMaxDamage{ get{ return 15; } }
-		public override int OldSpeed{ get{ return 55; } }
 
 		public override int InitMinHits{ get{ return 31; } }
 		public override int InitMaxHits{ get{ return 40; } }

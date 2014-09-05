@@ -23,11 +23,6 @@ namespace Server.Items
 		public override double AosSpeed{ get{ return 4.0; } }
 		public override float MlSpeed{ get{ return 2.50f; } }
 
-		public override int OldStrengthReq{ get{ return 0; } }
-		public override int OldMinDamage{ get{ return 1; } }
-		public override int OldMaxDamage{ get{ return 8; } }
-		public override int OldSpeed{ get{ return 30; } }
-
 		public override int DefHitSound{ get{ return -1; } }
 		public override int DefMissSound{ get{ return -1; } }
 

@@ -7,8 +7,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x13b4, 0x13b3 )]
 	public class Club : BaseBashing
 	{
-        //public override int NiveauAttirail { get { return 0; } }
-
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 
@@ -17,11 +15,6 @@ namespace Server.Items
 		public override int AosMaxDamage{ get{ return 13; } }
 		public override double AosSpeed{ get{ return 44; } }
 		public override float MlSpeed{ get{ return 2.50f; } }
-
-		public override int OldStrengthReq{ get{ return 10; } }
-		public override int OldMinDamage{ get{ return 8; } }
-		public override int OldMaxDamage{ get{ return 24; } }
-		public override int OldSpeed{ get{ return 40; } }
 
 		public override int InitMinHits{ get{ return 31; } }
 		public override int InitMaxHits{ get{ return 40; } }

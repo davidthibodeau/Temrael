@@ -492,8 +492,6 @@ namespace Server.Items
             public static int Arbalete_Force6 = 70;
         #endregion
 
-        public virtual int NiveauAttirail { get { return 0; } }
-
         private TemraelAttributes m_TemraelAttributes;
         private RareteItem m_rarete;
 
@@ -584,28 +582,6 @@ namespace Server.Items
 		public virtual int AosMaxDamage{ get{ return 0; } }
 		public virtual double AosSpeed{ get{ return 0; } }
 		public virtual float MlSpeed{ get{ return 0.0f; } }
-		public virtual int AosMaxRange{ get{ return DefMaxRange; } }
-		public virtual int AosHitSound{ get{ return DefHitSound; } }
-		public virtual int AosMissSound{ get{ return DefMissSound; } }
-		public virtual SkillName AosSkill{ get{ return DefSkill; } }
-		public virtual WeaponType AosType{ get{ return DefType; } }
-		public virtual WeaponAnimation AosAnimation{ get{ return DefAnimation; } }
-
-		public virtual int OldStrengthReq{ get{ return 0; } }
-		public virtual int OldDexterityReq{ get{ return 0; } }
-		public virtual int OldIntelligenceReq{ get{ return 0; } }
-        public virtual int OldStrengthBonus { get { return 0; } }
-        public virtual int OldDexterityBonus { get { return 0; } }
-        public virtual int OldIntelligenceBonus { get { return 0; } }
-		public virtual int OldMinDamage{ get{ return 0; } }
-		public virtual int OldMaxDamage{ get{ return 0; } }
-		public virtual int OldSpeed{ get{ return 0; } }
-		public virtual int OldMaxRange{ get{ return DefMaxRange; } }
-		public virtual int OldHitSound{ get{ return DefHitSound; } }
-		public virtual int OldMissSound{ get{ return DefMissSound; } }
-		public virtual SkillName OldSkill{ get{ return DefSkill; } }
-		public virtual WeaponType OldType{ get{ return DefType; } }
-		public virtual WeaponAnimation OldAnimation{ get{ return DefAnimation; } }
 
 		public virtual int InitMinHits{ get{ return 0; } }
 		public virtual int InitMaxHits{ get{ return 0; } }
@@ -776,56 +752,56 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxRange
 		{
-			get{ return ( m_MaxRange == -1 ? Core.AOS ? AosMaxRange : OldMaxRange : m_MaxRange ); }
+			get{ return ( m_MaxRange == -1 ? DefMaxRange : m_MaxRange ); }
 			set{ m_MaxRange = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponAnimation Animation
 		{
-			get{ return ( m_Animation == (WeaponAnimation)(-1) ? Core.AOS ? AosAnimation : OldAnimation : m_Animation ); } 
+			get{ return ( m_Animation == (WeaponAnimation)(-1) ? DefAnimation : m_Animation ); } 
 			set{ m_Animation = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponType Type
 		{
-			get{ return ( m_Type == (WeaponType)(-1) ? Core.AOS ? AosType : OldType : m_Type ); }
+			get{ return ( m_Type == (WeaponType)(-1) ? DefType : m_Type ); }
 			set{ m_Type = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public SkillName Skill
 		{
-			get{ return ( m_Skill == (SkillName)(-1) ? Core.AOS ? AosSkill : OldSkill : m_Skill ); }
+			get{ return ( m_Skill == (SkillName)(-1) ? DefSkill : m_Skill ); }
 			set{ m_Skill = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int HitSound
 		{
-			get{ return ( m_HitSound == -1 ? Core.AOS ? AosHitSound : OldHitSound : m_HitSound ); }
+			get{ return ( m_HitSound == -1 ? DefHitSound : m_HitSound ); }
 			set{ m_HitSound = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MissSound
 		{
-			get{ return ( m_MissSound == -1 ? Core.AOS ? AosMissSound : OldMissSound : m_MissSound ); }
+			get{ return ( m_MissSound == -1 ? DefMissSound : m_MissSound ); }
 			set{ m_MissSound = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? Core.AOS ? AosMinDamage : OldMinDamage : m_MinDamage ); }
+			get{ return ( m_MinDamage == -1 ? AosMinDamage : m_MinDamage ); }
 			set{ m_MinDamage = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? Core.AOS ? AosMaxDamage : OldMaxDamage : m_MaxDamage ); }
+			get{ return ( m_MaxDamage == -1 ? AosMaxDamage : m_MaxDamage ); }
 			set{ m_MaxDamage = value; InvalidateProperties(); }
 		}
 
@@ -839,10 +815,10 @@ namespace Server.Items
 
 				if ( Core.ML )
 					return MlSpeed;
-				else if ( Core.AOS )
-                    return (float)AosSpeed;
 
-				return OldSpeed;
+                return (float)AosSpeed;
+
+
 			}
 			set{ m_Speed = value; InvalidateProperties(); }
 		}
@@ -850,21 +826,21 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int StrRequirement
 		{
-			get{ return ( m_StrReq == -1 ? Core.AOS ? AosStrengthReq : OldStrengthReq : m_StrReq ); }
+			get{ return ( m_StrReq == -1 ? AosStrengthReq : m_StrReq ); }
 			set{ m_StrReq = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int DexRequirement
 		{
-			get{ return ( m_DexReq == -1 ? Core.AOS ? AosDexterityReq : OldDexterityReq : m_DexReq ); }
+			get{ return ( m_DexReq == -1 ? AosDexterityReq : m_DexReq ); }
 			set{ m_DexReq = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int IntRequirement
 		{
-			get{ return ( m_IntReq == -1 ? Core.AOS ? AosIntelligenceReq : OldIntelligenceReq : m_IntReq ); }
+			get{ return ( m_IntReq == -1 ? AosIntelligenceReq  : m_IntReq ); }
 			set{ m_IntReq = value; }
 		}
 
@@ -3416,42 +3392,6 @@ namespace Server.Items
 
 					m_Poison = Poison.Deserialize( reader );
 					m_PoisonCharges = reader.ReadInt();
-
-					if ( m_StrReq == OldStrengthReq )
-						m_StrReq = -1;
-
-					if ( m_DexReq == OldDexterityReq )
-						m_DexReq = -1;
-
-					if ( m_IntReq == OldIntelligenceReq )
-						m_IntReq = -1;
-
-					if ( m_MinDamage == OldMinDamage )
-						m_MinDamage = -1;
-
-					if ( m_MaxDamage == OldMaxDamage )
-						m_MaxDamage = -1;
-
-					if ( m_HitSound == OldHitSound )
-						m_HitSound = -1;
-
-					if ( m_MissSound == OldMissSound )
-						m_MissSound = -1;
-
-					if ( m_Speed == OldSpeed )
-						m_Speed = -1;
-
-					if ( m_MaxRange == OldMaxRange )
-						m_MaxRange = -1;
-
-					if ( m_Skill == OldSkill )
-						m_Skill = (SkillName)(-1);
-
-					if ( m_Type == OldType )
-						m_Type = (WeaponType)(-1);
-
-					if ( m_Animation == OldAnimation )
-						m_Animation = (WeaponAnimation)(-1);
 
 					if ( UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular && Parent is Mobile )
 					{

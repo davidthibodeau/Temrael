@@ -7,8 +7,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x13F8, 0x13F9 )]
 	public class GnarledStaff : BaseStaff
 	{
-        //public override int NiveauAttirail { get { return 0; } }
-
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
@@ -17,11 +15,6 @@ namespace Server.Items
 		public override int AosMaxDamage{ get{ return 17; } }
 		public override double AosSpeed{ get{ return 33; } }
 		public override float MlSpeed{ get{ return 3.25f; } }
-
-		public override int OldStrengthReq{ get{ return 20; } }
-		public override int OldMinDamage{ get{ return 10; } }
-		public override int OldMaxDamage{ get{ return 30; } }
-		public override int OldSpeed{ get{ return 33; } }
 
 		public override int InitMinHits{ get{ return 31; } }
 		public override int InitMaxHits{ get{ return 50; } }

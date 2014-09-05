@@ -21,11 +21,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 43; } }
-        public override int OldSpeed { get { return 18; } }
-
         public override int DefMaxRange { get { return 8; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -62,8 +57,6 @@ namespace Server.Items
     }
     public class Arbavive : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }
@@ -76,11 +69,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arbalete_MaxDam5; } }
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 43; } }
-        public override int OldSpeed { get { return 18; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -133,11 +121,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 43; } }
-        public override int OldSpeed { get { return 18; } }
-
         public override int DefMaxRange { get { return 8; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -174,8 +157,6 @@ namespace Server.Items
     }
     public class Arbalette : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 0; } }
-
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }
@@ -188,11 +169,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arbalete_MaxDam0; } }
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 43; } }
-        public override int OldSpeed { get { return 18; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -230,8 +206,6 @@ namespace Server.Items
     }
     public class ArbaletteLourde : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }
@@ -244,11 +218,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arbalete_MaxDam1; } }
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 43; } }
-        public override int OldSpeed { get { return 18; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -286,8 +255,6 @@ namespace Server.Items
     }
     public class ArbaletteRepetition : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }
@@ -300,11 +267,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arbalete_MaxDam3; } }
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 43; } }
-        public override int OldSpeed { get { return 18; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -342,8 +304,6 @@ namespace Server.Items
     }
     public class ArbalettePistolet : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }
@@ -356,11 +316,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arbalete_MaxDam5; } }
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 43; } }
-        public override int OldSpeed { get { return 18; } }
 
         public override int DefMaxRange { get { return 8; } }
 

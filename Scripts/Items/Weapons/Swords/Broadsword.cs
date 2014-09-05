@@ -7,8 +7,6 @@ namespace Server.Items
 	[FlipableAttribute( 0xF5E, 0xF5F )]
 	public class Broadsword : BaseSword
 	{
-        //public override int NiveauAttirail { get { return 0; } }
-
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 
@@ -17,11 +15,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lame_MaxDam0; } }
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-		public override int OldStrengthReq{ get{ return 25; } }
-		public override int OldMinDamage{ get{ return 5; } }
-		public override int OldMaxDamage{ get{ return 29; } }
-		public override int OldSpeed{ get{ return 45; } }
 
 		public override int DefHitSound{ get{ return 0x237; } }
 		public override int DefMissSound{ get{ return 0x23A; } }

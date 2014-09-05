@@ -7,8 +7,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x1441, 0x1440 )]
 	public class Cutlass : BaseSword
 	{
-        //public override int NiveauAttirail { get { return 5; } }
-
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 
@@ -17,11 +15,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Sabre_MaxDam5; } }
         public override double AosSpeed { get { return Sabre_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-		public override int OldStrengthReq{ get{ return 10; } }
-		public override int OldMinDamage{ get{ return 6; } }
-		public override int OldMaxDamage{ get{ return 28; } }
-		public override int OldSpeed{ get{ return 45; } }
 
 		public override int DefHitSound{ get{ return 0x23B; } }
 		public override int DefMissSound{ get{ return 0x23A; } }

@@ -6,8 +6,6 @@ namespace Server.Items
 {
     public class Poignard : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -16,11 +14,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam1; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -54,8 +47,6 @@ namespace Server.Items
     }
     public class Dracourbe : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -64,11 +55,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam6; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -102,8 +88,6 @@ namespace Server.Items
     }
     public class Ecorchette : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -112,11 +96,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam6; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -161,11 +140,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
 
@@ -198,8 +172,6 @@ namespace Server.Items
     }
     public class Dentsombre : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 2; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -208,11 +180,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam2; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -246,8 +213,6 @@ namespace Server.Items
     }
  /*3*/   public class Eblame : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -256,11 +221,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam3; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -305,11 +265,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
 
@@ -353,11 +308,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
 
@@ -390,8 +340,6 @@ namespace Server.Items
     }
     public class Brillaume : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -400,11 +348,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam5; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -438,8 +381,6 @@ namespace Server.Items
     }
     public class Imperlame : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -448,11 +389,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam6; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -486,8 +422,6 @@ namespace Server.Items
     }
  /*3*/   public class Basilarda : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -496,11 +430,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam3; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -545,11 +474,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
 
@@ -593,11 +517,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
 
@@ -630,8 +549,6 @@ namespace Server.Items
     }
     public class Elvine : BaseKnife
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -640,11 +557,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Dague_MaxDam5; } }
         public override double AosSpeed { get { return Dague_Vitesse; } }
         public override float MlSpeed { get { return 2.00f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }

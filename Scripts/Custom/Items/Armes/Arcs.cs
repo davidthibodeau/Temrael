@@ -21,11 +21,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
 
-		public override int OldStrengthReq{ get{ return 20; } }
-		public override int OldMinDamage{ get{ return 9; } }
-		public override int OldMaxDamage{ get{ return 41; } }
-		public override int OldSpeed{ get{ return 20; } }
-
 		public override int DefMaxRange{ get{ return 10; } }
 
 		public override int InitMinHits{ get{ return 31; } }
@@ -76,11 +71,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam1; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -134,11 +124,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
 
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
-
         public override int DefMaxRange { get { return 10; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -190,11 +175,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam4; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -248,11 +228,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
 
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
-
         public override int DefMaxRange { get { return 10; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -290,8 +265,6 @@ namespace Server.Items
     }
     public class Chantefleche : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -304,11 +277,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam6; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -347,8 +315,6 @@ namespace Server.Items
     }
     public class Flamfleche : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -361,11 +327,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam4; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -404,8 +365,6 @@ namespace Server.Items
     }
     public class Barbatrine : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -418,11 +377,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam3; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -461,8 +415,6 @@ namespace Server.Items
     }
     public class Ebonie : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -475,11 +427,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam3; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -518,8 +465,6 @@ namespace Server.Items
     }
     public class Arc : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 0; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -532,11 +477,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam0; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -575,8 +515,6 @@ namespace Server.Items
     }
     public class Foliere : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -589,11 +527,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam5; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -647,11 +580,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
 
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
-
         public override int DefMaxRange { get { return 10; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -689,8 +617,6 @@ namespace Server.Items
     }
     public class Blancorde : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 2; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -703,11 +629,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam2; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -746,8 +667,6 @@ namespace Server.Items
     }
     public class Composite : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -760,11 +679,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam4; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -803,8 +717,6 @@ namespace Server.Items
     }
     public class Pieuse : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -817,11 +729,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam5; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -860,8 +767,6 @@ namespace Server.Items
     }
     public class Foudre : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -874,11 +779,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam4; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -932,11 +832,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
 
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
-
         public override int DefMaxRange { get { return 10; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -974,8 +869,6 @@ namespace Server.Items
     }
     public class Glaciale : BaseRanged
     {
-        //public override int NiveauAttirail { get { return 2; } }
-
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
         public override Item Ammo { get { return new Arrow(); } }
@@ -988,11 +881,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam2; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 
@@ -1045,11 +933,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam6; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 20; } }
-        public override int OldMinDamage { get { return 9; } }
-        public override int OldMaxDamage { get { return 41; } }
-        public override int OldSpeed { get { return 20; } }
 
         public override int DefMaxRange { get { return 10; } }
 

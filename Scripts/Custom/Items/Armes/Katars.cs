@@ -6,8 +6,6 @@ namespace Server.Items
 {
     public class Griffes : BaseKatar
     {
-        //public override int NiveauAttirail { get { return 1; } }
-        
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -16,11 +14,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam1; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -54,8 +47,6 @@ namespace Server.Items
     }
     public class Katar : BaseKatar
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -64,11 +55,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam3; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -102,8 +88,6 @@ namespace Server.Items
     }
     public class Katara : BaseKatar
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -112,11 +96,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam6; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }

@@ -6,8 +6,6 @@ namespace Server.Items
 {
     public class Granbarde : BasePoleArm
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -16,11 +14,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Hallebarde_MaxDam6; } }
         public override double AosSpeed { get { return Hallebarde_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 37; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -54,8 +47,6 @@ namespace Server.Items
     }
     public class Guisarme : BasePoleArm
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -64,11 +55,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Bardiche_MaxDam6; } }
         public override double AosSpeed { get { return Bardiche_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 37; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -102,8 +88,6 @@ namespace Server.Items
     }
     public class Bardine : BasePoleArm
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -112,11 +96,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Hallebarde_MaxDam3; } }
         public override double AosSpeed { get { return Hallebarde_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 37; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -150,8 +129,6 @@ namespace Server.Items
     }
     public class Vougue : BasePoleArm
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -160,11 +137,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Bardiche_MaxDam3; } }
         public override double AosSpeed { get { return Bardiche_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 37; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -209,11 +181,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Hallebarde_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 37; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
 
@@ -257,11 +224,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Hallebarde_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 37; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
 
@@ -294,8 +256,6 @@ namespace Server.Items
     }
     public class Cythe : BasePoleArm
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -304,11 +264,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Bardiche_MaxDam5; } }
         public override double AosSpeed { get { return Bardiche_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 37; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }

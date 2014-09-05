@@ -7,8 +7,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x13B2, 0x13B1 )]
 	public class Bow : BaseRanged
 	{
-        //public override int NiveauAttirail { get { return 2; } }
-
 		public override int EffectID{ get{ return 0xF42; } }
 		public override Type AmmoType{ get{ return typeof( Arrow ); } }
 		public override Item Ammo{ get{ return new Arrow(); } }
@@ -21,11 +19,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arc_MaxDam2; } }
         public override double AosSpeed { get { return Arc_Vitesse; } }
         public override float MlSpeed { get { return 4.25f; } }
-
-		public override int OldStrengthReq{ get{ return 20; } }
-		public override int OldMinDamage{ get{ return 9; } }
-		public override int OldMaxDamage{ get{ return 41; } }
-		public override int OldSpeed{ get{ return 20; } }
 
 		public override int DefMaxRange{ get{ return 10; } }
 

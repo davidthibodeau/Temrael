@@ -7,8 +7,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x13FD, 0x13FC )]
 	public class HeavyCrossbow : BaseRanged
 	{
-        //public override int NiveauAttirail { get { return 3; } }
-
 		public override int EffectID{ get{ return 0x1BFE; } }
 		public override Type AmmoType{ get{ return typeof( Bolt ); } }
 		public override Item Ammo{ get{ return new Bolt(); } }
@@ -21,11 +19,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Arbalete_MaxDam3; } }
         public override double AosSpeed { get { return Arbalete_Vitesse; } }
         public override float MlSpeed { get { return 4.50f; } }
-
-		public override int OldStrengthReq{ get{ return 40; } }
-		public override int OldMinDamage{ get{ return 11; } }
-		public override int OldMaxDamage{ get{ return 56; } }
-		public override int OldSpeed{ get{ return 10; } }
 
 		public override int DefMaxRange{ get{ return 8; } }
 

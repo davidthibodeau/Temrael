@@ -725,12 +725,6 @@ namespace Server.Spells
                         int req = tmob.GetArmorLevel(armor);
                     }
 
-                    if (item is BaseWeapon)
-                    {
-                        BaseWeapon weapon = (BaseWeapon)item;
-
-                        int req = weapon.NiveauAttirail;
-                    }
                 }
 
                 if (Utility.Random(1, 100) < count)

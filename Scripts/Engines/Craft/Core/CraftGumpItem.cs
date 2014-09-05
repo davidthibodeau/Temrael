@@ -137,13 +137,6 @@ namespace Server.Engines.Craft
 
                 Item item = (Item)Activator.CreateInstance(m_CraftItem.ItemType);
 
-                if (item is BaseWeapon)
-                {
-                    BaseWeapon weapon = (BaseWeapon)item;
-
-                    AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Niveau d'Attirail : " + weapon.NiveauAttirail.ToString() + "</center><basefont></h3>", false, false);
-                }
-
                 if (item is BaseArmor)
                 {
                     string nameEnd = String.Empty;

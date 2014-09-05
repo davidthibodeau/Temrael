@@ -6,8 +6,6 @@ namespace Server.Items
 {
     public class Fleau : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -16,11 +14,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Masse_MaxDam5; } }
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -65,11 +58,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
 
@@ -102,8 +90,6 @@ namespace Server.Items
     }
     public class Batonmace : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -112,11 +98,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return 13; } }
         public override double AosSpeed { get { return 44; } }
         public override float MlSpeed { get { return 2.50f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -150,8 +131,6 @@ namespace Server.Items
     }
     public class Brisecrane : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -160,11 +139,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Masse_MaxDam3; } }
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -198,8 +172,6 @@ namespace Server.Items
     }
     public class Defonceur : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -208,11 +180,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Masse_MaxDam6; } }
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -257,11 +224,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
 
@@ -294,8 +256,6 @@ namespace Server.Items
     }
     public class Gourdin : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 2; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -304,11 +264,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return 13; } }
         public override double AosSpeed { get { return 44; } }
         public override float MlSpeed { get { return 2.50f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -342,8 +297,6 @@ namespace Server.Items
     }
     public class Gourpic : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -352,11 +305,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return 13; } }
         public override double AosSpeed { get { return 44; } }
         public override float MlSpeed { get { return 2.50f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -400,11 +348,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Marteau_MaxDam6; } }
         public override double AosSpeed { get { return Marteau_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -451,11 +394,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
 
@@ -488,8 +426,6 @@ namespace Server.Items
     }
     public class Ecracheur : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -498,11 +434,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Masse_MaxDam5; } }
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
@@ -547,11 +478,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Marteau_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }
 
@@ -586,8 +512,6 @@ namespace Server.Items
     }
     public class Broyeur : BaseBashing
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
@@ -596,11 +520,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Masse_MaxDam6; } }
         public override double AosSpeed { get { return Masse_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 10; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 24; } }
-        public override int OldSpeed { get { return 40; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 40; } }

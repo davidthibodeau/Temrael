@@ -6,8 +6,6 @@ namespace Server.Items
 {
     public class DoubleLance : BaseSpear
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
@@ -16,11 +14,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lance_MaxDam5; } }
         public override double AosSpeed { get { return Lance_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-		public override int OldStrengthReq{ get{ return 30; } }
-		public override int OldMinDamage{ get{ return 2; } }
-		public override int OldMaxDamage{ get{ return 36; } }
-		public override int OldSpeed{ get{ return 46; } }
 
 		public override int InitMinHits{ get{ return 31; } }
 		public override int InitMaxHits{ get{ return 80; } }
@@ -63,11 +56,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lance_MaxDam2; } }
         public override double AosSpeed { get { return Lance_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
@@ -112,11 +100,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Lance_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
 
@@ -159,11 +142,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Trident_MaxDam2; } }
         public override double AosSpeed { get { return Trident_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
@@ -208,11 +186,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Trident_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
 
@@ -255,11 +228,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Trident_MaxDam3; } }
         public override double AosSpeed { get { return Trident_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
@@ -304,11 +272,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Lance_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
 
@@ -351,11 +314,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lance_MaxDam3; } }
         public override double AosSpeed { get { return Lance_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
@@ -401,11 +359,6 @@ namespace Server.Items
         public override double AosSpeed { get { return 42; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
 
@@ -449,11 +402,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Trident_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
 
@@ -495,12 +443,6 @@ namespace Server.Items
         public override int AosMinDamage { get { return Trident_MinDam4; } }
         public override int AosMaxDamage { get { return Trident_MaxDam4; } }
         public override double AosSpeed { get { return Trident_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
@@ -545,11 +487,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Trident_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }
 
@@ -582,8 +519,6 @@ namespace Server.Items
     }
     public class Lancel : BaseSpear
     {
-        //public override int NiveauAttirail { get { return 0; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ArmorIgnore; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -592,11 +527,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lance_MaxDam0; } }
         public override double AosSpeed { get { return Lance_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 30; } }
-        public override int OldMinDamage { get { return 2; } }
-        public override int OldMaxDamage { get { return 36; } }
-        public override int OldSpeed { get { return 46; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 80; } }

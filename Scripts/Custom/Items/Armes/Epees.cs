@@ -17,11 +17,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Sabre_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -57,8 +52,6 @@ namespace Server.Items
     }
     public class Prisienne : BaseSword
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -67,11 +60,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Sabre_MaxDam4; } }
         public override double AosSpeed { get { return Sabre_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -119,11 +107,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -159,8 +142,6 @@ namespace Server.Items
     }
     public class Draglast : BaseSword
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -169,11 +150,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lame_MaxDam3; } }
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -221,11 +197,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Sabre_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -272,11 +243,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Sabre_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -312,8 +278,6 @@ namespace Server.Items
     }
     public class Couliere : BaseSword
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -322,11 +286,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam6; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -365,8 +324,6 @@ namespace Server.Items
     }
     public class Biliome : BaseSword
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -375,11 +332,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return CourteLame_MaxDam1; } }
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -427,11 +379,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -469,8 +416,6 @@ namespace Server.Items
     }
     public class Hectmore : BaseSword
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -479,11 +424,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lame_MaxDam6; } }
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -531,11 +471,6 @@ namespace Server.Items
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -581,11 +516,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lame_MaxDam6; } }
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -633,11 +563,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -673,8 +598,6 @@ namespace Server.Items
     }
     public class Gerumir : BaseSword
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -683,11 +606,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return CourteLame_MaxDam6; } }
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -735,11 +653,6 @@ namespace Server.Items
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -785,11 +698,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return CourteLame_MaxDam2; } }
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -837,11 +745,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -879,8 +782,6 @@ namespace Server.Items
     }
     public class Claymore : BaseSword
     {
-        //public override int NiveauAttirail { get { return 2; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -889,11 +790,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Claymore_MaxDam2; } }
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -943,11 +839,6 @@ namespace Server.Items
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -985,8 +876,6 @@ namespace Server.Items
     }
     public class Dorleane : BaseSword
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -995,11 +884,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam5; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1049,11 +933,6 @@ namespace Server.Items
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1089,8 +968,6 @@ namespace Server.Items
     }
     public class Dravene : BaseSword
     {
-        //public override int NiveauAttirail { get { return 2; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -1099,11 +976,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Lame_MaxDam2; } }
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1151,11 +1023,6 @@ namespace Server.Items
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1193,8 +1060,6 @@ namespace Server.Items
     }
     public class Auderre : BaseSword
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -1203,11 +1068,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam1; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1257,11 +1117,6 @@ namespace Server.Items
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1309,11 +1164,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Claymore_MaxDam2; } }
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1363,11 +1213,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1415,11 +1260,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Claymore_MaxDam6; } }
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1469,11 +1309,6 @@ namespace Server.Items
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1519,11 +1354,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return CourteLame_MaxDam3; } }
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1571,11 +1401,6 @@ namespace Server.Items
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1611,8 +1436,6 @@ namespace Server.Items
     }
     public class Conquise : BaseSword
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -1621,11 +1444,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam3; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1664,8 +1482,6 @@ namespace Server.Items
     }
     public class Flamberge : BaseSword
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -1674,11 +1490,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Claymore_MaxDam4; } }
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1728,11 +1539,6 @@ namespace Server.Items
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1780,11 +1586,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam4; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1834,11 +1635,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1874,8 +1670,6 @@ namespace Server.Items
     }
     public class Atargne : BaseSword
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -1884,11 +1678,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam4; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -1938,11 +1727,6 @@ namespace Server.Items
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -1980,8 +1764,6 @@ namespace Server.Items
     }
     public class Excalior : BaseSword
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -1990,11 +1772,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam3; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -2044,11 +1821,6 @@ namespace Server.Items
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -2086,8 +1858,6 @@ namespace Server.Items
     }
     public class Courbelle : BaseSword
     {
-        //public override int NiveauAttirail { get { return 3; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -2096,11 +1866,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Claymore_MaxDam3; } }
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -2150,11 +1915,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -2202,11 +1962,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Claymore_MaxDam5; } }
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -2256,11 +2011,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -2309,11 +2059,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Lame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -2360,11 +2105,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
 
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
-
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
 
@@ -2402,8 +2142,6 @@ namespace Server.Items
     }
     public class Batarde : BaseSword
     {
-        //public override int NiveauAttirail { get { return 2; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -2412,11 +2150,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam2; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -2455,8 +2188,6 @@ namespace Server.Items
     }
     public class Espadon : BaseSword
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -2465,11 +2196,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Claymore_MaxDam5; } }
         public override double AosSpeed { get { return Claymore_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -2508,8 +2234,6 @@ namespace Server.Items
     }
     public class Dawn : BaseSword
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -2518,11 +2242,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return CourteLame_MaxDam5; } }
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -2559,8 +2278,6 @@ namespace Server.Items
     }
     public class Astoria : BaseSword
     {
-        //public override int NiveauAttirail { get { return 0; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -2569,11 +2286,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return CourteLame_MaxDam0; } }
         public override double AosSpeed { get { return CourteLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -2610,8 +2322,6 @@ namespace Server.Items
     }
     public class Abysse : BaseSword
     {
-        //public override int NiveauAttirail { get { return 5; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -2620,11 +2330,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return LourdeLame_MaxDam5; } }
         public override double AosSpeed { get { return LourdeLame_Vitesse; } }
         public override float MlSpeed { get { return 3.75f; } }
-
-        public override int OldStrengthReq { get { return 40; } }
-        public override int OldMinDamage { get { return 6; } }
-        public override int OldMaxDamage { get { return 34; } }
-        public override int OldSpeed { get { return 30; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }

@@ -18,11 +18,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Lance_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-		public override int OldStrengthReq{ get{ return 35; } }
-		public override int OldMinDamage{ get{ return 4; } }
-		public override int OldMaxDamage{ get{ return 32; } }
-		public override int OldSpeed{ get{ return 45; } }
-
 		public override int DefHitSound{ get{ return 0x236; } }
 		public override int DefMissSound{ get{ return 0x238; } }
 

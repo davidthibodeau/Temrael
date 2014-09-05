@@ -6,8 +6,6 @@ namespace Server.Items
 {
     public class CanneOsseux : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -16,11 +14,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -54,8 +47,6 @@ namespace Server.Items
     }
     public class Canne : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 0; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -64,11 +55,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam0; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -102,8 +88,6 @@ namespace Server.Items
     }
     public class BatonTenebrea : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -112,11 +96,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -161,11 +140,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
 
@@ -198,8 +172,6 @@ namespace Server.Items
     }
     public class BatonThaumaturge : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -208,11 +180,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -246,8 +213,6 @@ namespace Server.Items
     }
     public class BatonOsseux : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -256,11 +221,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -294,8 +254,6 @@ namespace Server.Items
     }
     public class BatonDruide : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -304,11 +262,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -342,8 +295,6 @@ namespace Server.Items
     }
     public class BatonVoyage : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -352,11 +303,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -390,8 +336,6 @@ namespace Server.Items
     }
     public class Eteurfer : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -400,11 +344,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -438,8 +377,6 @@ namespace Server.Items
     }
     public class Boulnar : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -448,11 +385,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -497,11 +429,6 @@ namespace Server.Items
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
 
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
-
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
 
@@ -534,8 +461,6 @@ namespace Server.Items
     }
     public class Crochire : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -544,11 +469,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -582,8 +502,6 @@ namespace Server.Items
     }
     public class BatonElfique : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -592,11 +510,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -630,8 +543,6 @@ namespace Server.Items
     }
     public class BatonElement : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -640,11 +551,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -678,8 +584,6 @@ namespace Server.Items
     }
     public class BatonSorcier : BaseStaff
     {
-        //public override int NiveauAttirail { get { return 1; } }
-
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
@@ -688,11 +592,6 @@ namespace Server.Items
         public override int AosMaxDamage { get { return Baton_MaxDam1; } }
         public override double AosSpeed { get { return Baton_Vitesse; } }
         public override float MlSpeed { get { return 2.75f; } }
-
-        public override int OldStrengthReq { get { return 35; } }
-        public override int OldMinDamage { get { return 8; } }
-        public override int OldMaxDamage { get { return 33; } }
-        public override int OldSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
