@@ -101,6 +101,7 @@
     <Compile Include="Custom\Items\Meubles\Statues.cs" />
     <Compile Include="Custom\Spells\TechniquesCombat\Assassinat.cs" />
     <Compile Include="Custom\Spells\TechniquesCombat\AttackSpeed.cs" />
+    <Compile Include="Engines\Combat\CombatStrategy.cs" />
     <Compile Include="Engines\Langues\Langue.cs" />
     <Compile Include="Engines\Botanique\BotaniqueSystem.cs" />
     <Compile Include="Engines\Botanique\Enums.cs" />

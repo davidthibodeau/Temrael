@@ -729,7 +729,7 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxRange
 		{
-			get{ return ( m_MaxRange == -1 ? DefMaxRange : m_MaxRange ); }
+			get{ return ( m_MaxRange == -1 ? CombatStrategy.Range : m_MaxRange ); }
 			set{ m_MaxRange = value; InvalidateProperties(); }
 		}
 
@@ -859,6 +859,12 @@ namespace Server.Items
 			}
 		}
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public CombatStrategy CombatStrategy
+        {
+            get;
+            set;
+        }
 		#endregion
 
 		public override void OnAfterDuped( Item newItem )
@@ -1214,9 +1220,6 @@ namespace Server.Items
 
 			double delayInSeconds;
 
-
-          
-
             if ( false /*Core.SE*/)
 			{
 				/*
@@ -1281,9 +1284,6 @@ namespace Server.Items
 
 				delayInSeconds = ticks * 0.25;
 			}
-		
-            
-            
             //else if ( Core.AOS )
 			{
                 delayInSeconds = speed - ( ( (m.Dex-70) / 100) * 1.5 );
@@ -1329,15 +1329,6 @@ namespace Server.Items
 				if ( delayInSeconds < 1.25 )
 					delayInSeconds = 1.25;*/
 			}
-			/*else
-			{
-				int v = (m.Stam + 100) * (int) speed;
-
-				if ( v <= 0 )
-					v = 1;
-
-				delayInSeconds = 15000.0 / v;
-			}*/
 
             if (m is BaseCreature)
             {
@@ -1424,7 +1415,7 @@ namespace Server.Items
                 else
                     OnMiss(attacker, defender);
 			}
-
+            CombatStrategy.Sequence(attacker, defender);
 			return GetDelay( attacker );
 		}
 
@@ -2554,17 +2545,6 @@ namespace Server.Items
 			return Utility.RandomMinMax( min, max );
 		}
 
-		public virtual double GetBonus( double value, double scalar, double threshold, double offset )
-		{
-            //attacker.Str,										0.300, 100.0,  5.00
-            double bonus = value * scalar;
-
-            if (value >= threshold)
-                bonus += offset;
-
-            return bonus / 100;
-		}
-
 		public virtual int GetHitChanceBonus()
 		{
 			if ( !Core.AOS )
@@ -2647,9 +2627,9 @@ namespace Server.Items
 			     * No caps apply.
 			     */
 
-                double strengthBonus = GetBonus(attacker.Str, 0.100, 30.0, 5.00);
+                //double strengthBonus = GetBonus(attacker.Str, 0.100, 30.0, 5.00);
                 //double  anatomyBonus = GetBonus( attacker.Skills[SkillName.Anatomy].Value,			0.500, 100.0,  5.00 );
-                double tacticsBonus = GetBonus(attacker.Skills[SkillName.Tactiques].Value, 0.100, 50.0, 6.25);
+                //double tacticsBonus = GetBonus(attacker.Skills[SkillName.Tactiques].Value, 0.100, 50.0, 6.25);
                 //double   lumberBonus = GetBonus( attacker.Skills[SkillName.Foresterie].Value,	0.200, 100.0, 10.00 );
 
                 //Console.WriteLine("Strength Bonus : " + strengthBonus.ToString());
@@ -2694,7 +2674,7 @@ namespace Server.Items
                 #endregion
 
                 //double totalBonus = strengthBonus + anatomyBonus + tacticsBonus + lumberBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
-                double totalBonus = strengthBonus + tacticsBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
+                double totalBonus = 0; //strengthBonus + tacticsBonus + ((double)(GetDamageBonus() + damageBonus) / 100.0);
 
                 //Console.WriteLine("Total Bonus : " + totalBonus.ToString());
                 //Console.WriteLine("Damage Avant : " + damage.ToString());
