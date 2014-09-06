@@ -87,8 +87,8 @@ namespace Server
         Detection,
 
         // Artisanat
-        Polissage,
         Fignolage,
+        Polissage,
         Excavation,
         Foresterie,
         Forge,
@@ -626,14 +626,14 @@ namespace Server
 			{
 
                 new SkillInfo( SkillName.Alchimie,		  "Alchimie",		SkillCategory.Artisanat,	0.0,	5.0,	5.0,	null,	0.0,	0.5,	0.5,	1.0 ),
-				new SkillInfo( SkillName.Polissage, 	  "Polissage",  	SkillCategory.Artisanat,    0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
+				new SkillInfo( SkillName.Fignolage, 	  "Fignolage",  	SkillCategory.Artisanat,    0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
 				new SkillInfo( SkillName.Forge,           "Forge",      	SkillCategory.Artisanat,	10.0,	0.0,	0.0,	null,	1.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Menuiserie,      "Menuiserie",		SkillCategory.Artisanat,	20.0,	5.0,	0.0,	null,	2.0,	0.5,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Cuisine,         "Cuisine",		SkillCategory.Artisanat,	0.0,	20.0,	30.0,	null,	0.0,	2.0,	3.0,	1.0 ),
 				new SkillInfo( SkillName.Couture,         "Couture",		SkillCategory.Artisanat,	3.75,	16.25,	5.0,	null,	0.38,	1.63,	0.5,	1.0 ),
 				new SkillInfo( SkillName.Foresterie,      "Foresterie",		SkillCategory.Artisanat,    20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Excavation,      "Excavation",		SkillCategory.Artisanat,	20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
-                new SkillInfo( SkillName.Fignolage,       "Fignolage",		SkillCategory.Artisanat,	0.0,	0.0,	0.0,	null,	0.0,	1.0,	2.0,	1.0 ),
+                new SkillInfo( SkillName.Polissage,       "Polissage",		SkillCategory.Artisanat,	0.0,	0.0,	0.0,	null,	0.0,	1.0,	2.0,	1.0 ),
 
                 new SkillInfo( SkillName.ArmeHaste,		  "Arme d'Haste",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.15,	0.15,	0.7,	1.0 ),
 				new SkillInfo( SkillName.Parer, 		  "Parer",				SkillCategory.Combat,	7.5,	2.5,	0.0,	null,	0.75,	0.25,	0.0,	1.0 ),
@@ -876,7 +876,7 @@ namespace Server
 		public Skill Langues{ get{ return this[SkillName.Langues]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public Skill Polissage{ get{ return this[SkillName.Polissage]; } set{} }
+		public Skill Fignolage{ get{ return this[SkillName.Fignolage]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Poursuite{ get{ return this[SkillName.Poursuite]; } set{} }
@@ -894,7 +894,7 @@ namespace Server
 		public Skill ArmePerforante{ get{ return this[SkillName.ArmePerforante]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public Skill Fignolage{ get{ return this[SkillName.Fignolage]; } set{} }
+		public Skill Polissage{ get{ return this[SkillName.Polissage]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Foresterie{ get{ return this[SkillName.Foresterie]; } set{} }

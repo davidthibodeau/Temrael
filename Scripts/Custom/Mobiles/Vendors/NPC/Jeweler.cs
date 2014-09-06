@@ -15,7 +15,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Jeweler() : base( "Bijoutier" )
 		{
-			SetSkill( SkillName.Polissage, 64.0, 100.0 );
+			SetSkill( SkillName.Fignolage, 64.0, 100.0 );
 		}
 
 		public override void InitSBInfo()

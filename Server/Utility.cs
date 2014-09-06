@@ -1058,8 +1058,8 @@ namespace Server
                 SkillName.Detection,
 
                 // Artisanat
-                SkillName.Polissage,
                 SkillName.Fignolage,
+                SkillName.Polissage,
                 SkillName.Excavation,
                 SkillName.Foresterie,
                 SkillName.Forge,
@@ -1090,8 +1090,8 @@ namespace Server
 
 		private static SkillName[] m_CraftSkills = new SkillName[]
 			{
-                 SkillName.Polissage,
                  SkillName.Fignolage,
+                 SkillName.Polissage,
                  SkillName.Excavation,
                  SkillName.Foresterie,
                  SkillName.Forge,

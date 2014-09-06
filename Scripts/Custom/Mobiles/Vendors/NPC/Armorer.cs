@@ -15,7 +15,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Armorer() : base( "Armurier" )
 		{
-			SetSkill( SkillName.Polissage, 64.0, 100.0 );
+			SetSkill( SkillName.Fignolage, 64.0, 100.0 );
 			SetSkill( SkillName.Forge, 60.0, 83.0 );
 		}
 

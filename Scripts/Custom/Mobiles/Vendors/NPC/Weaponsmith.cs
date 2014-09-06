@@ -13,7 +13,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Weaponsmith() : base( "the weaponsmith" )
 		{
-			SetSkill( SkillName.Polissage, 64.0, 100.0 );
+			SetSkill( SkillName.Fignolage, 64.0, 100.0 );
 			SetSkill( SkillName.Forge, 65.0, 88.0 );
 			SetSkill( SkillName.ArmePerforante, 45.0, 68.0 );
 			SetSkill( SkillName.ArmeContondante, 45.0, 68.0 );

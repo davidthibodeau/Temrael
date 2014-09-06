@@ -352,8 +352,8 @@ namespace Server.Mobiles
                 SkillName.Detection,
 
                 // Artisanat
-                SkillName.Polissage,
                 SkillName.Fignolage,
+                SkillName.Polissage,
                 SkillName.Excavation,
                 SkillName.Foresterie,
                 SkillName.Forge,

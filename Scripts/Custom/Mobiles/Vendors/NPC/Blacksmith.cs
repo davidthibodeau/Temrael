@@ -16,7 +16,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Blacksmith() : base( "Forgeron" )
 		{
-			SetSkill( SkillName.Polissage, 36.0, 68.0 );
+			SetSkill( SkillName.Fignolage, 36.0, 68.0 );
 			SetSkill( SkillName.Forge, 65.0, 88.0 );
 			SetSkill( SkillName.ArmePerforante, 60.0, 83.0 );
 			SetSkill( SkillName.ArmeContondante, 61.0, 93.0 );
