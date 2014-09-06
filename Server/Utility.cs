@@ -1348,5 +1348,14 @@ namespace Server
 
 			return output;
 		}
+
+        public static int AbsoluteInt(int value)
+        {
+            if (value >= 0)
+                return value;
+            else
+                return -value;
+        }
+
 	}
 }

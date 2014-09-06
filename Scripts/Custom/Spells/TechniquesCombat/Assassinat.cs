@@ -21,9 +21,8 @@ namespace Server.TechniquesCombat
 
         // Modifiables.
         private const int m_ManaCost = 10;
-
-        // Valeur utilisée par a l'extérieur.
-        public const int MultiplicateurBonusDegat = 3;
+        private const float BaseBonusDegat = 10 / 100; 
+        private const float ScalingPoursuite = 0.2f;
 
 
         TimeSpan CalculDuree()
@@ -36,6 +35,22 @@ namespace Server.TechniquesCombat
             Seconds = 20;
 
             return new TimeSpan(Hours, Minutes, Seconds);
+        }
+
+        // Fait la verification de si tout correspond aux critères, et donne le bonus ou non.
+        static public int Bonus(Mobile attacker, Mobile defender, int damage)
+        {
+            if (mobilesList.Contains(attacker))
+            {
+                // Si l'attaquant est en train de tracker le défenseur.
+                if (SkillHandlers.Tracking.m_Table.ContainsValue(new SkillHandlers.Tracking.TrackingInfo(attacker, defender)))
+                {
+                    // total = damage + (damage * (10% + (Poursuite * 0.2)))
+                    damage += (int)(damage * (BaseBonusDegat + (attacker.Skills[SkillName.Poursuite].Value * ScalingPoursuite)) );
+                }
+            }
+
+            return damage;
         }
 
 
@@ -63,7 +78,6 @@ namespace Server.TechniquesCombat
         private class BonusTimer : Timer
         {
             private PlayerMobile m_Caster;
-            private BaseWeapon m_Weapon;
 
 
 

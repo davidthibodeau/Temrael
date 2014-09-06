@@ -726,12 +726,12 @@ namespace Server.Items
 			set{ m_PlayerConstructed = value; }
 		}
 
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int MaxRange
-		{
-			get{ return ( m_MaxRange == -1 ? CombatStrategy.Range : m_MaxRange ); }
-			set{ m_MaxRange = value; InvalidateProperties(); }
-		}
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int MaxRange
+        {
+            get { return (m_MaxRange == -1 ? CombatStrategy.Range : m_MaxRange); }
+            set { m_MaxRange = value; InvalidateProperties(); }
+        }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public WeaponAnimation Animation
@@ -1347,8 +1347,7 @@ namespace Server.Items
                 delayInSeconds = 1.0;
 
             // Modificateur de la technique AttackSpeed.
-            if (TechniquesCombat.AttackSpeed.mobilesList.Contains(m))
-                delayInSeconds /= TechniquesCombat.AttackSpeed.MultiplicateurSpeed;
+            delayInSeconds = TechniquesCombat.AttackSpeed.Bonus(m, delayInSeconds);
 
 			return TimeSpan.FromSeconds( delayInSeconds );
 		}
@@ -1893,8 +1892,7 @@ namespace Server.Items
 
             #region Techniques de Combat
 
-            if (TechniquesCombat.Assassinat.mobilesList.Contains(attacker))
-                damage += damage * TechniquesCombat.Assassinat.MultiplicateurBonusDegat;
+            damage = TechniquesCombat.Assassinat.Bonus(attacker, defender, damage);
 
 
             #endregion

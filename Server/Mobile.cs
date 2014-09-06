@@ -3350,11 +3350,12 @@ namespace Server
 					m_MoveClientList.Clear();
 			}
 
-			OnAfterMove( oldLocation );
+            if (oldLocation != newLocation)
+                OnAfterMove(d);
 			return true;
 		}
 
-		public virtual void OnAfterMove( Point3D oldLocation )
+		public virtual void OnAfterMove( Direction d )
 		{
 		}
 
@@ -4739,6 +4740,18 @@ namespace Server
 		}
 
 		#endregion
+
+        // Redonne le range en nombre de pas minimal.
+        public int GetStepsBetweenYouAnd(Mobile m)
+        {
+            int deltaX = Utility.AbsoluteInt(Location.X - m.Location.X);
+            int deltaY = Utility.AbsoluteInt(Location.Y - m.Location.Y);
+
+            if (deltaX >= deltaY)
+                return deltaX;
+            else
+                return deltaY;
+        }
 
 		private static List<Mobile> m_Hears = new List<Mobile>();
 		private static List<IEntity> m_OnSpeech = new List<IEntity>();

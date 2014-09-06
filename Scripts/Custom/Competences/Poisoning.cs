@@ -9,6 +9,7 @@ namespace Server.SkillHandlers
 	{
 		public static void Initialize()
 		{
+            // ?
 			SkillInfo.Table[(int)SkillName.Empoisonnement].Callback = new SkillUseCallback( OnUse );
 		}
 

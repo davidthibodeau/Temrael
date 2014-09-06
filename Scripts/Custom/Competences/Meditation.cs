@@ -8,7 +8,7 @@ namespace Server.SkillHandlers
 	{
 		public static void Initialize()
 		{
-			SkillInfo.Table[46].Callback = new SkillUseCallback( OnUse );
+			SkillInfo.Table[(int)SkillName.Meditation].Callback = new SkillUseCallback( OnUse );
 		}
 
 		public static bool CheckOkayHolding( Item item )

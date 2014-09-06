@@ -3185,33 +3185,41 @@ namespace Server.Mobiles
 
 		protected override bool OnMove( Direction d )
 		{
-			if( AccessLevel != AccessLevel.Player )
-				return true;
+			return true;
+		}
 
-			if( Hidden && DesignContext.Find( this ) == null )	//Hidden & NOT customizing a house
-			{
-				if( !Mounted && Skills.Infiltration.Value >= 25.0 )
-				{
-                    if ( (d & Direction.Running) != 0) // isRunning
-					{
+        public override void OnAfterMove(Direction d)
+        {
+            if (Hidden && DesignContext.Find(this) == null)	//Hidden & NOT customizing a house
+            {
+                // Surtout pour le PvP.
+                foreach (Mobile m in GetMobilesInRange(10))
+                {
+                    if (m != this)
+                        SkillHandlers.DetectHidden.OnUseSingleTarget(m, this, m.GetStepsBetweenYouAnd(this));
+                }
+
+                // Surtout pour le PVM.
+                if (!Mounted && Skills.Infiltration.Value >= 25.0)
+                {
+                    if ((d & Direction.Running) != 0) // isRunning
+                    {
                         if ((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasCourse) <= 0)
                         {
                             Server.SkillHandlers.Stealth.OnUse(this);
                         }
-					}
-					else if((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasMarche) <= 0 )
-					{
+                    }
+                    else if ((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasMarche) <= 0)
+                    {
                         Server.SkillHandlers.Stealth.OnUse(this);
-					}
-				}
-				else
-				{
-					RevealingAction();
-				}
-			}
-
-			return true;
-		}
+                    }
+                }
+                else
+                {
+                    RevealingAction();
+                }
+            }
+        }
 
 		private bool m_BedrollLogout;
 

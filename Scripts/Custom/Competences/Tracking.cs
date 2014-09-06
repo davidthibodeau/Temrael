@@ -42,7 +42,7 @@ namespace Server.SkillHandlers
 			}
 		}
 
-		private static Dictionary<Mobile, TrackingInfo> m_Table = new Dictionary<Mobile, TrackingInfo>();
+		public static Dictionary<Mobile, TrackingInfo> m_Table = new Dictionary<Mobile, TrackingInfo>();
 
 		public static void AddInfo( Mobile tracker, Mobile target )
 		{

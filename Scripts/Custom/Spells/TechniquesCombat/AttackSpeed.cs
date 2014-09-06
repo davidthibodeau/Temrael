@@ -21,9 +21,7 @@ namespace Server.TechniquesCombat
 
         // Modifiables.
         private const int m_ManaCost = 10;
-
-        // Valeur utilisée par a l'extérieur.
-        public const float MultiplicateurSpeed = 5f;
+        private const float MultiplicateurSpeed = 30 / 100;
 
 
         TimeSpan CalculDuree()
@@ -36,6 +34,18 @@ namespace Server.TechniquesCombat
             Seconds = 20;
 
             return new TimeSpan(Hours, Minutes, Seconds);
+        }
+
+
+        // Fait la verification de si tout correspond aux critères, et donne le bonus ou non.
+        static public double Bonus(Mobile m, double delaiEntreAttaques)
+        {
+            if (mobilesList.Contains(m))
+            {
+                delaiEntreAttaques /= (delaiEntreAttaques + (delaiEntreAttaques * MultiplicateurSpeed));
+            }
+
+            return delaiEntreAttaques;
         }
 
 
@@ -63,7 +73,6 @@ namespace Server.TechniquesCombat
         private class BonusTimer : Timer
         {
             private PlayerMobile m_Caster;
-            private BaseWeapon m_Weapon;
 
 
 
