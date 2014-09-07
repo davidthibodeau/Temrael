@@ -3550,6 +3550,7 @@
     <Compile Include="Engines\Identities\RevealIdentity.cs" />
     <Compile Include="Engines\Identities\DeguisementGump.cs" />
     <Compile Include="Engines\Identities\KitdeDeguisement.cs" />
+    <Compile Include="Engines\Combat\StrategyPoings.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">

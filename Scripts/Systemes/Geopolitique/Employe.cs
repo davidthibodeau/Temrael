@@ -138,7 +138,7 @@ namespace Server.Systemes.Geopolitique
                             int daysthismonth = DaysInMonth(DateTime.Now.Month, DateTime.IsLeapYear(DateTime.Now.Year));
                             jours = DateTime.Now.Day;
                             acc = jours * m_Paie / daysthismonth;
-                            m_LastPaie = m_LastPaie = DateTime.Now;
+                            m_LastPaie = DateTime.Now;
                             return acc;
                         }
                     }

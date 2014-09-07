@@ -16,7 +16,10 @@ namespace Server.Engines.Combat
             if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
                 chance = GetBonus(parry, 0.25, 5);
             else
-                chance = GetBonus(parry, 0.10, 5);
+                chance = GetBonus(parry, 0.125, 5);
+
+            if (def.Int < 80)
+                chance = chance * (20 + def.Int) / 100;
 
             return chance;
         }
@@ -24,25 +27,39 @@ namespace Server.Engines.Combat
 
     public class StrategyPerforante : StrategyMelee
     {
+        private static CombatStrategy m_Strategy = new StrategyPerforante();
+        public static CombatStrategy Strategy { get { return m_Strategy; } }
+
         public override SkillName ToucherSkill { get { return SkillName.ArmePerforante; } }
 
-        // TODO: Implanter Coups Critiques
+        protected override double CritiqueChance(Mobile atk)
+        {
+            double chance = base.CritiqueChance(atk);
+            double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.05, 5);
+            return IncreasedValue(chance, incChance);
+        }
     }
 
     public class StrategyTranchante : StrategyMelee
     {
+        private static CombatStrategy m_Strategy = new StrategyTranchante();
+        public static CombatStrategy Strategy { get { return m_Strategy; } }
+
         public override SkillName ToucherSkill { get { return SkillName.ArmeTranchante; } }
 
         protected override double ToucherChance(Mobile atk, Mobile def)
         {
             double chance = base.ToucherChance(atk, def);
             double incChance = GetBonus(atk.Skills[SkillName.ArmeTranchante].Value, 0.05, 5);
-            return chance * (1 + incChance);
+            return IncreasedValue(chance, incChance);
         }
     }
 
     public class StrategyContondante : StrategyMelee
     {
+        private static CombatStrategy m_Strategy = new StrategyContondante();
+        public static CombatStrategy Strategy { get { return m_Strategy; } }
+
         public override SkillName ToucherSkill { get { return SkillName.ArmeContondante; } }
 
         protected override double ReducedArmor(Mobile atk, double baseArmor)
@@ -55,9 +72,32 @@ namespace Server.Engines.Combat
 
     public class StrategyHaste : StrategyMelee
     {
+        private static CombatStrategy m_Strategy = new StrategyHaste();
+        public static CombatStrategy Strategy { get { return m_Strategy; } }
+
         public override SkillName ToucherSkill { get { return SkillName.ArmeHaste; } }
 
-        // TODO: Faire en sorte que ce soit applique qu'a pied.
-        public override int Range { get { return 2; } }
+        public override int BaseRange { get { return 2; } }
+
+        public override int Range(Mobile atk)
+        {
+            if (atk.Mounted)
+                return base.BaseRange;
+            return BaseRange;
+        }
+    }
+
+    public class StrategyHache : StrategyTranchante
+    {
+        private static CombatStrategy m_Strategy = new StrategyHache();
+        public new static CombatStrategy Strategy { get { return m_Strategy; } }
+
+        protected override double ComputerDegats(Mobile atk, int basedmg)
+        {
+            double dmg = base.ComputerDegats(atk, basedmg);
+            double foresterieBonus = GetBonus(atk.Skills[SkillName.Foresterie].Value, 0.2, 10);
+
+            return dmg + basedmg * foresterieBonus;
+        }
     }
 }

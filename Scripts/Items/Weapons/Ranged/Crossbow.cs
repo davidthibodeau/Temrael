@@ -5,7 +5,7 @@ using Server.Items;
 namespace Server.Items
 {
 	[FlipableAttribute( 0xF50, 0xF4F )]
-	public class Crossbow : BaseRanged
+	public class Crossbow : BaseArbalette
 	{
 		public override int EffectID{ get{ return 0x1BFE; } }
 		public override Type AmmoType{ get{ return typeof( Bolt ); } }

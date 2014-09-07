@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Items
 {
-    public class Legarc : BaseRanged
+    public class Legarc : BaseArc
     {
         //public override int NiveauAttirail { get { return 1; } }
 
@@ -55,7 +55,7 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
     }
-    public class Tarkarc : BaseRanged
+    public class Tarkarc : BaseArc
     {
         //public override int NiveauAttirail { get { return 1; } }
 
@@ -107,7 +107,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Souplecorde : BaseRanged
+    public class Souplecorde : BaseArc
     {
         //public override int NiveauAttirail { get { return 3; } }
 
@@ -159,7 +159,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Sombrevent : BaseRanged
+    public class Sombrevent : BaseArc
     {
         //public override int NiveauAttirail { get { return 4; } }
 
@@ -211,7 +211,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Sifflecrin : BaseRanged
+    public class Sifflecrin : BaseArc
     {
         //public override int NiveauAttirail { get { return 5; } }
 
@@ -263,7 +263,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Chantefleche : BaseRanged
+    public class Chantefleche : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -313,7 +313,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Flamfleche : BaseRanged
+    public class Flamfleche : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -363,7 +363,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Barbatrine : BaseRanged
+    public class Barbatrine : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -413,7 +413,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Ebonie : BaseRanged
+    public class Ebonie : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -463,7 +463,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Arc : BaseRanged
+    public class Arc : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -513,7 +513,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Foliere : BaseRanged
+    public class Foliere : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -563,7 +563,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Maegie : BaseRanged
+    public class Maegie : BaseArc
     {
         //public override int NiveauAttirail { get { return 6; } }
 
@@ -615,7 +615,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Blancorde : BaseRanged
+    public class Blancorde : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -665,7 +665,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Composite : BaseRanged
+    public class Composite : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -715,7 +715,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Pieuse : BaseRanged
+    public class Pieuse : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -765,7 +765,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Foudre : BaseRanged
+    public class Foudre : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -815,7 +815,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Mirielle : BaseRanged
+    public class Mirielle : BaseArc
     {
         //public override int NiveauAttirail { get { return 3; } }
 
@@ -867,7 +867,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Glaciale : BaseRanged
+    public class Glaciale : BaseArc
     {
         public override int EffectID { get { return 0xF42; } }
         public override Type AmmoType { get { return typeof(Arrow); } }
@@ -917,7 +917,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Vigne : BaseRanged
+    public class Vigne : BaseArc
     {
         //public override int NiveauAttirail { get { return 6; } }
 

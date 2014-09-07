@@ -7,7 +7,7 @@ using Server.Engines.Combat;
 
 namespace Server.Items
 {
-	public abstract class BaseRanged : BaseMeleeWeapon
+	public abstract class BaseRanged : BaseWeapon
 	{
 		public abstract int EffectID{ get; }
 		public abstract Type AmmoType{ get; }
@@ -181,7 +181,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int) 0 ); // version
 
 			writer.Write( (bool) m_Balanced );
 			writer.Write( (int) m_Velocity );
@@ -189,36 +189,43 @@ namespace Server.Items
 
 		public override void Deserialize( GenericReader reader )
 		{
-			base.Deserialize( reader );
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 3:
-				{
-					m_Balanced = reader.ReadBool();
-					m_Velocity = reader.ReadInt();
+            m_Balanced = reader.ReadBool();
+            m_Velocity = reader.ReadInt();
 
-					goto case 2;
-				}
-				case 2:
-				case 1:
-				{
-					break;
-				}
-				case 0:
-				{
-					/*m_EffectID =*/ reader.ReadInt();
-					break;
-				}
-			}
-
-			if ( version < 2 )
-			{
-				WeaponAttributes.MageWeapon = 0;
-				WeaponAttributes.UseBestSkill = 0;
-			}
-		}
+        }
 	}
+
+    public abstract class BaseArc : BaseRanged
+    {
+        public BaseArc(int itemID)
+            : base(itemID)
+        {
+        }
+
+        public BaseArc(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override CombatStrategy CombatStrategy { get { return StrategyArc.Strategy; } }
+    }
+
+    public abstract class BaseArbalette : BaseRanged
+    {
+        public BaseArbalette(int itemID)
+            : base(itemID)
+        {
+        }
+
+        public BaseArbalette(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override CombatStrategy CombatStrategy { get { return StrategyArbalette.Strategy; } }
+    }
 }

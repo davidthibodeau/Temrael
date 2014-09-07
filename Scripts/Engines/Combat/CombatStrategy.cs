@@ -14,15 +14,6 @@ namespace Server.Engines.Combat
     [PropertyObject]
     public abstract class CombatStrategy
     {
-        public virtual SkillName ToucherSkill { get { return SkillName.ArmeTranchante; } }
-        public virtual int Range { get { return 1; } }
-
-        /// <summary>
-        /// Cette valeur détermine le pourcentage de pénétration avec 100 dans la compétence Penetration.
-        /// Une valeur inférieure de pénétration scale de façon linéaire.
-        /// </summary>
-        public virtual double PenetrationRatio { get { return 0.3; } }
-
         #region Sequence de Combat
         /// <summary>
         /// Détermine la séquence de combat d'une tentative de coup de l'attaquant au défenseur.
@@ -36,7 +27,18 @@ namespace Server.Engines.Combat
         }
         #endregion
 
+        #region Range
+        public virtual int BaseRange { get { return 1; } }
+
+        public virtual int Range(Mobile atk)
+        {
+            return BaseRange;
+        }
+        #endregion
+
         #region Toucher
+        public virtual SkillName ToucherSkill { get { return SkillName.ArmeTranchante; } }
+
         public bool Toucher(Mobile atk, Mobile def)
         {
             double chance = ToucherChance(atk, def);
@@ -64,6 +66,8 @@ namespace Server.Engines.Combat
             int basedmg = Utility.RandomMinMax((atk.Weapon as BaseWeapon).MinDamage, (atk.Weapon as BaseWeapon).MaxDamage);
 
             double dmg = ComputerDegats(atk, basedmg);
+            if (Critique(atk))
+                dmg = CritiqueDegats(atk, dmg);
             double resist = ReducedArmor(atk, def.PhysicalResistance);
 
             // TODO: Insérer valeur de résistance naturelle dans le calcul
@@ -96,7 +100,7 @@ namespace Server.Engines.Combat
 
         protected virtual double ReducedArmor(Mobile atk, double baseArmor)
         {
-            double pen = GetBonus(atk.Skills[SkillName.Penetration].Value, PenetrationRatio, 5);
+            double pen = GetBonus(atk.Skills[SkillName.Penetration].Value, 0.3, 5);
             double resist = ReduceValue(baseArmor, pen);
             return resist;
         }
@@ -114,6 +118,31 @@ namespace Server.Engines.Combat
         protected double ReduceValue(double value, double factor)
         {
             return value * (1 - factor);
+        }
+
+        protected double IncreasedValue(double value, double factor)
+        {
+            return value * (1 + factor);
+        }
+        #endregion
+
+        #region Coup Critique
+        public bool Critique(Mobile atk)
+        {
+            double chance = CritiqueChance(atk);
+            return chance >= Utility.RandomDouble();
+        }
+
+        protected virtual double CritiqueChance(Mobile atk)
+        {
+            double chance = GetBonus(atk.Skills[SkillName.CoupCritique].Value, 0.2, 5);
+            return chance;
+        }
+
+        protected virtual double CritiqueDegats(Mobile atk, double dmg)
+        {
+            double intvalue = GetBonus(atk.Int, 0.25, 10);
+            return dmg * (1 + intvalue);
         }
         #endregion
 

@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Items;
 using Server.Targets;
+using Server.Engines.Combat;
 
 namespace Server.Items
 {
@@ -10,6 +11,8 @@ namespace Server.Items
 		public override SkillName DefSkill{ get{ return SkillName.ArmeTranchante; } }
 		public override WeaponType DefType{ get{ return WeaponType.Slashing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
+
+        public override CombatStrategy CombatStrategy { get { return StrategyTranchante.Strategy; } }
 
 		public BaseSword( int itemID ) : base( itemID )
 		{

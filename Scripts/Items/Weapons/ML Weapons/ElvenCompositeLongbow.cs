@@ -5,7 +5,7 @@ using Server.Items;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x2D1E, 0x2D2A )]
-	public class ElvenCompositeLongbow : BaseRanged
+	public class ElvenCompositeLongbow : BaseArc
 	{
 		public override int EffectID{ get{ return 0xF42; } }
 		public override Type AmmoType{ get{ return typeof( Arrow ); } }

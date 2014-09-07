@@ -25,11 +25,17 @@ namespace Server.Engines.Combat
 
     public class StrategyArc : StrategyDistance
     {
-        public override int Range { get { return 10; } }
+        private static CombatStrategy m_Strategy = new StrategyArc();
+        public static CombatStrategy Strategy { get { return m_Strategy; } }
+
+        public override int BaseRange { get { return 10; } }
     }
 
     public class StrategyArbalette : StrategyDistance
     {
-        public override int Range { get { return 8; } }
+        private static CombatStrategy m_Strategy = new StrategyArbalette();
+        public static CombatStrategy Strategy { get { return m_Strategy; } }
+
+        public override int BaseRange { get { return 8; } }
     }
 }

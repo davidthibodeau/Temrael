@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Engines.Combat;
 
 namespace Server.Items
 {
@@ -12,6 +13,8 @@ namespace Server.Items
 		public override SkillName DefSkill{ get{ return SkillName.ArmeHaste; } }
 		public override WeaponType DefType{ get{ return WeaponType.Piercing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Pierce2H; } }
+
+        public override CombatStrategy CombatStrategy { get { return StrategyHaste.Strategy; } }
 
 		public BaseSpear( int itemID ) : base( itemID )
 		{

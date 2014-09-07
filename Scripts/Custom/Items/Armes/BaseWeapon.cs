@@ -729,7 +729,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Batisseur)]
         public int MaxRange
         {
-            get { return (m_MaxRange == -1 ? CombatStrategy.Range : m_MaxRange); }
+            get { return (m_MaxRange == -1 ? RootParent is Mobile ? CombatStrategy.Range(RootParent as Mobile) : CombatStrategy.BaseRange : m_MaxRange); }
             set { m_MaxRange = value; InvalidateProperties(); }
         }
 
@@ -860,10 +860,9 @@ namespace Server.Items
 		}
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public CombatStrategy CombatStrategy
+        public abstract CombatStrategy CombatStrategy
         {
             get;
-            set;
         }
 		#endregion
 

@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Network;
+using Server.Engines.Combat;
 
 namespace Server.Items
 {
@@ -29,6 +30,8 @@ namespace Server.Items
 		public override SkillName DefSkill{ get{ return SkillName.Anatomie; } }
 		public override WeaponType DefType{ get{ return WeaponType.Fists; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Wrestle; } }
+
+        public override CombatStrategy CombatStrategy { get { return StrategyPoings.Strategy; } }
 
 		public Fists() : base( 0 )
 		{

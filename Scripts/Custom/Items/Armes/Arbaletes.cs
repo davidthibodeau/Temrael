@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Items
 {
-    public class Percemurs : BaseRanged
+    public class Percemurs : BaseArbalette
     {
         //public override int NiveauAttirail { get { return 4; } }
 
@@ -55,7 +55,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Arbavive : BaseRanged
+    public class Arbavive : BaseArbalette
     {
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -104,7 +104,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Lumitrait : BaseRanged
+    public class Lumitrait : BaseArbalette
     {
         //public override int NiveauAttirail { get { return 6; } }
 
@@ -155,7 +155,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class Arbalette : BaseRanged
+    public class Arbalette : BaseArbalette
     {
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -204,7 +204,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class ArbaletteLourde : BaseRanged
+    public class ArbaletteLourde : BaseArbalette
     {
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -253,7 +253,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class ArbaletteRepetition : BaseRanged
+    public class ArbaletteRepetition : BaseArbalette
     {
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
@@ -302,7 +302,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
-    public class ArbalettePistolet : BaseRanged
+    public class ArbalettePistolet : BaseArbalette
     {
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }

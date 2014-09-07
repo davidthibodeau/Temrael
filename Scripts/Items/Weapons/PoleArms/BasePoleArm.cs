@@ -5,6 +5,7 @@ using Server;
 using Server.Items;
 using Server.Engines.Harvest;
 using Server.ContextMenus;
+using Server.Engines.Combat;
 
 namespace Server.Items
 {
@@ -16,6 +17,8 @@ namespace Server.Items
 		public override SkillName DefSkill{ get{ return SkillName.ArmeHaste; } }
 		public override WeaponType DefType{ get{ return WeaponType.Polearm; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash2H; } }
+
+        public override CombatStrategy CombatStrategy { get { return StrategyHaste.Strategy; } }
 
 		public virtual HarvestSystem HarvestSystem{ get{ return Lumberjacking.System; } }
 

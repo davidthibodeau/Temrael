@@ -250,7 +250,7 @@ namespace Server.Gumps
 				case 2:
 				{
                     SkillName[] sks = SkillInfo.GetCategory(m_Selected);
-					if ( m_Selected != null && index >= 0 && index < sks.Length )
+                        if ( m_Selected != SkillCategory.Aucun && index >= 0 && index < sks.Length )
 					{
 						Skill sk = m_Target.Skills[sks[index]];
 

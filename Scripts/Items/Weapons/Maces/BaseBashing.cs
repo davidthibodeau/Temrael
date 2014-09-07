@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Engines.Combat;
 
 namespace Server.Items
 {
@@ -12,6 +13,8 @@ namespace Server.Items
 		public override SkillName DefSkill{ get{ return SkillName.ArmeContondante; } }
 		public override WeaponType DefType{ get{ return WeaponType.Bashing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Bash1H; } }
+
+        public override CombatStrategy CombatStrategy { get { return StrategyContondante.Strategy; } }
 
 		public BaseBashing( int itemID ) : base( itemID )
 		{
