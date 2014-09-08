@@ -192,7 +192,7 @@ namespace Server.Items
 			m_LastUse = DateTime.Now;
 
 			from.Direction = from.GetDirectionTo( GetWorldLocation() );
-			bow.PlaySwingAnimation( from );
+			bow.SwingAnimation( from );
 			from.MovingEffect( this, bow.EffectID, 18, 1, false, false );
 
 			ScoreEntry se = GetEntryFor( from );

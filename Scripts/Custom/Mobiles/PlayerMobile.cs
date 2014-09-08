@@ -824,8 +824,6 @@ namespace Server.Mobiles
 							drop = true;
 						else if( intel < weapon.IntRequirement )
 							drop = true;
-						else if( weapon.RequiredRace != null && weapon.RequiredRace != this.Race )
-							drop = true;
 
 						if ( drop )
 						{

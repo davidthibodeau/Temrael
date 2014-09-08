@@ -50,7 +50,7 @@ namespace Server.Items
             Layer = Layer.TwoHanded;
 		}
 
-		public override TimeSpan OnSwing( Mobile attacker, Mobile defender )
+		public override int OnSwing( Mobile attacker, Mobile defender )
 		{
 			WeaponAbility a = WeaponAbility.GetCurrentAbility( attacker );
 
@@ -58,7 +58,7 @@ namespace Server.Items
 			if (Core.TickCount > (attacker.LastMoveTime + (Core.SE ? 250 : (Core.AOS ? 500 : 1000) )) || (Core.AOS && WeaponAbility.GetCurrentAbility( attacker ) is MovingShot) )
 			{
 				bool canSwing = true;
-
+                int delay = 0;
 				if ( Core.AOS )
 				{
 					canSwing = ( !attacker.Paralyzed && !attacker.Frozen );
@@ -78,23 +78,19 @@ namespace Server.Items
 
 					if ( OnFired( attacker, defender ) )
 					{
-                        Combat combat = new Combat(attacker, defender);
-						if ( combat.CheckHit() )
-							OnHit( attacker, defender );
-						else
-							OnMiss( attacker, defender );
+                        delay = CombatStrategy.Sequence(attacker, defender);
 					}
 				}
 
 				attacker.RevealingAction();
 
-				return GetDelay( attacker );
+                return delay;
 			}
 			else
 			{
 				attacker.RevealingAction();
 
-				return TimeSpan.FromSeconds( 0.25 );
+                return 250;
 			}
 		}
 

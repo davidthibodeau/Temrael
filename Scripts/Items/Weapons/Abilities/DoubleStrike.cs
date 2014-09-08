@@ -49,7 +49,7 @@ namespace Server.Items
 			{
 				BaseWeapon.InDoubleStrike = true;
 				attacker.RevealingAction();
-                attacker.NextCombatTime = Core.TickCount + Core.GetTicks(weapon.OnSwing(attacker, defender));
+                attacker.NextCombatTime = Core.TickCount + weapon.OnSwing(attacker, defender);
 				BaseWeapon.InDoubleStrike = false;
 			}
 		}

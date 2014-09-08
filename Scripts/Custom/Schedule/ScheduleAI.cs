@@ -224,7 +224,7 @@ namespace Server.Mobiles
                         BaseWeapon weapon = (BaseWeapon)m_Mobile.Weapon;
 
                         m_Mobile.Direction = m_Mobile.GetDirectionTo(anvil.GetWorldLocation());
-                        weapon.PlaySwingAnimation(m_Mobile);
+                        weapon.SwingAnimation(m_Mobile);
 
                         Effects.PlaySound(anvil.GetWorldLocation(), anvil.Map, 0x2b);
 

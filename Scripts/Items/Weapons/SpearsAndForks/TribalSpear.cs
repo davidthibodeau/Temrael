@@ -19,8 +19,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 31; } }
 		public override int InitMaxHits{ get{ return 80; } }
 
-		public override int VirtualDamageBonus{ get{ return 25; } }
-
 		public override string DefaultName
 		{
 			get { return "a tribal spear"; }

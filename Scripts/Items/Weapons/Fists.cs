@@ -62,7 +62,7 @@ namespace Server.Items
 			//	return incrValue;
 		}
 
-		public override TimeSpan OnSwing( Mobile attacker, Mobile defender )
+		public override int OnSwing( Mobile attacker, Mobile defender )
 		{
 			if ( attacker.StunReady )
 			{

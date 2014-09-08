@@ -1,4 +1,5 @@
 ﻿using Server.Items;
+using Server.Mobiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 
 namespace Server.Engines.Combat
 {
+
     /// <summary>
     /// Class servant de base au système de combat.
     /// Chaque type de combat (mêlée, distance, haches, créatures) va override cette class et 
@@ -23,8 +25,52 @@ namespace Server.Engines.Combat
         /// <returns>Le délai nécessaire avant de pouvoir porter le prochain coup.</returns>
         public int Sequence(Mobile atk, Mobile def)
         {
-            return 0;
+            if (Toucher(atk, def))
+                OnHit(atk, def);
+            else
+                OnMiss(atk, def);
+            return ProchaineAttaque(atk);
         }
+
+        public virtual void OnHit(Mobile atk, Mobile def)
+        {
+            AttaqueAnimation(atk);
+            DegatsAnimation(def);
+
+            atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));
+            def.PlaySound(Weapon(def).GetHitDefendSound(atk, def));
+
+            if (DefStrategy(def).Parer(def))
+            {
+                def.FixedEffect(0x37B9, 10, 16);
+            }
+        }
+
+        public virtual void OnMiss(Mobile atk, Mobile def)
+        {
+            AttaqueAnimation(atk);
+            atk.PlaySound(Weapon(atk).GetMissAttackSound(atk, def));
+        }
+
+        public virtual void AttaqueAnimation(Mobile atk)
+        {
+            int action = Weapon(atk).SwingAnimation(atk);
+            atk.Animate(action, 7, 1, true, false, 0);
+        }
+        
+        public virtual void DegatsAnimation(Mobile def)
+        {
+            int action, frames;
+            if (Weapon(def).PlayHurtAnimation(def, out action, out frames))
+                def.Animate(action, frames, 1, true, false, 0);
+        }
+
+        //public delegate void EffetsAuxiliaires(Mobile atk, Mobile def);
+        // Note: Should be in mobile.
+        #endregion
+
+        #region Equitation Check
+        // TODO : Add Equitation checks.
         #endregion
 
         #region Range
@@ -95,6 +141,8 @@ namespace Server.Engines.Combat
             double exceptBonus = (atk.Weapon as BaseWeapon).Quality == WeaponQuality.Exceptional ?
                 GetBonus(atk.Skills[SkillName.Polissage].Value, 0.5, 10) : 0;
 
+            // TODO : Ajouter effet de la qualité et du dmg level basé sur le minerais ?
+
             return basedmg * (1 + strBonus + tactiqueBonus + anatomyBonus);
         }
 
@@ -146,6 +194,24 @@ namespace Server.Engines.Combat
         }
         #endregion
 
+        #region Vitesse
+        /// <summary>
+        /// Calcule le délai avant la prochaine attaque basé sur la vitesse du personnage.
+        /// </summary>
+        /// <param name="atk">Le personnage portant l'attaque.</param>
+        /// <returns>Le délai en millisecondes.</returns>
+        public int ProchaineAttaque(Mobile atk)
+        {
+            return (int)(Vitesse(atk) * 10);
+        }
+
+        public double Vitesse(Mobile atk)
+        {
+            //TODO: Add to this function
+            return 0;
+        }
+        #endregion
+
         #region Parer
         /// <summary>
         /// Cette fonction sert à déterminer si le défenseur a paré le coup.
@@ -161,5 +227,15 @@ namespace Server.Engines.Combat
 
         protected abstract double ParerChance(Mobile def);
         #endregion
+
+        protected CombatStrategy DefStrategy(Mobile def)
+        {
+            return (def.Weapon as BaseWeapon).CombatStrategy;
+        }
+
+        protected BaseWeapon Weapon(Mobile m)
+        {
+            return m.Weapon as BaseWeapon;
+        }
     }
 }

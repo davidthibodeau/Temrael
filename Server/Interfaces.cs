@@ -68,7 +68,7 @@ namespace Server
 	{
 		int MaxRange{ get; }
 		void OnBeforeSwing( Mobile attacker, Mobile defender );
-		TimeSpan OnSwing( Mobile attacker, Mobile defender );
+		int OnSwing( Mobile attacker, Mobile defender );
 		void GetStatusDamage( Mobile from, out int min, out int max );
 	}
 
