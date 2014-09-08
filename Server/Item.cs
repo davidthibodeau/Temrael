@@ -102,9 +102,9 @@ namespace Server
 		/// </summary>
 		Bracelet	 = 0x0E,
 		/// <summary>
-		/// Unused.
+		/// Tatoo.
 		/// </summary>
-		Unused_xF	 = 0x0F,
+		Tatoo   	 = 0x0F,
 		/// <summary>
 		/// Beards and mustaches.
 		/// </summary>

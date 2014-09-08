@@ -3,9 +3,9 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public abstract class Tatou : Item
+    public abstract class Tatoo : Item
     {
-        /*public static Tatou CreateByID(int id, int hue)
+        /*public static Tatoo CreateByID(int id, int hue)
         {
             switch (id)
             {
@@ -28,7 +28,7 @@ namespace Server.Items
                 case 12413: return new Tatoo17(hue);
                 case 12453: return new Tatoo18(hue);
                 case 12457: return new Tatoo19(hue);
-                default: return new GenericTatou(id, hue);
+                default: return new GenericTatoo(id, hue);
             }
         }*/
 
@@ -42,20 +42,20 @@ namespace Server.Items
             return base.CanEquip(m);
         }
 
-        public Tatou(int itemID)
+        public Tatoo(int itemID)
             : this(itemID, 0)
         {
         }
 
-        public Tatou(int itemID, int hue)
+        public Tatoo(int itemID, int hue)
             : base(itemID)
         {
             LootType = LootType.Blessed;
-            Layer = Layer.Unused_xF;
+            Layer = Layer.Tatoo;
             Hue = hue;
         }
 
-        public Tatou(Serial serial)
+        public Tatoo(Serial serial)
             : base(serial)
         {
         }
@@ -90,16 +90,16 @@ namespace Server.Items
         }
     }
 
-    public class GenericTatou : Tatou
+    public class GenericTatoo : Tatoo
     {
         [Constructable]
-        public GenericTatou(int itemID)
+        public GenericTatoo(int itemID)
             : this(itemID, 0)
         {
         }
 
         [Constructable]
-        public GenericTatou(int itemID, int hue)
+        public GenericTatoo(int itemID, int hue)
             : base(itemID, hue)
         {
             Name = "Tatoo";
@@ -107,14 +107,14 @@ namespace Server.Items
             CanBeAltered = false;
         }
 
-        public GenericTatou(Serial serial)
+        public GenericTatoo(Serial serial)
             : base(serial)
         {
         }
 
         /*public override Item Dupe(int amount)
         {
-            return base.Dupe(new GenericTatou(ItemID, Hue), amount);
+            return base.Dupe(new GenericTatoo(ItemID, Hue), amount);
         }*/
 
         public override void Serialize(GenericWriter writer)

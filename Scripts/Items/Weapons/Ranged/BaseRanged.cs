@@ -212,6 +212,20 @@ namespace Server.Items
         }
 
         public override CombatStrategy CombatStrategy { get { return StrategyArc.Strategy; } }
+
+        /*
+         * Ne fonctionne pas.
+         * 
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }*/
+
     }
 
     public abstract class BaseArbalette : BaseRanged
@@ -227,5 +241,19 @@ namespace Server.Items
         }
 
         public override CombatStrategy CombatStrategy { get { return StrategyArbalette.Strategy; } }
+
+
+        /*
+         * Ne fonctionne pas.
+         * 
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }*/
     }
 }

@@ -53,6 +53,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Pied de chauffage", typeof( HeatingStand ), 2, 100, 0x1849, 0 ) ); 
 
 				Add( new GenericBuyInfo( "Colorant à Cheveux", typeof( HairDye ), 37, 10, 0xEFF, 0 ) );
+                Add( new GenericBuyInfo( "Encre à Tatouage", typeof( TatooDye ), 37, 10, 0xEFF, 0));
 
 				//Add( new GenericBuyInfo( typeof( HeatingStand ), 2, 100, 0x1849, 0 ) ); // This is on OSI :-P
 
@@ -75,6 +76,7 @@ namespace Server.Mobiles
 				Add( typeof( Bottle ), 1 );
 				Add( typeof( MortarPestle ), 1 );
 				Add( typeof( HairDye ), 2 );
+                Add( typeof( TatooDye), 2 );
 
                 if (Core.AOS)
                 {

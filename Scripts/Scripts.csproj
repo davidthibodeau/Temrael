@@ -99,6 +99,7 @@
     <Compile Include="Custom\Items\Meubles\Tables.cs" />
     <Compile Include="Custom\Items\Meubles\Lits.cs" />
     <Compile Include="Custom\Items\Meubles\Statues.cs" />
+    <Compile Include="Custom\Items\Tatoos\TatooDye.cs" />
     <Compile Include="Custom\Spells\TechniquesCombat\Assassinat.cs" />
     <Compile Include="Custom\Spells\TechniquesCombat\AttackSpeed.cs" />
     <Compile Include="Engines\Combat\CombatStrategy.cs" />
@@ -763,7 +764,7 @@
     <Compile Include="Custom\Items\Skill Items\Tinkering\Calendrier.cs" />
     <Compile Include="Custom\Items\Skill Items\Tinkering\Clocks.cs" />
     <Compile Include="Custom\Items\Skill Items\Tinkering\Spyglass.cs" />
-    <Compile Include="Custom\Items\Tatoos\Tatou.cs" />
+    <Compile Include="Custom\Items\Tatoos\Tatoo.cs" />
     <Compile Include="Custom\Items\Treasure\BaseTreasureChest.cs" />
     <Compile Include="Custom\Items\Treasure\TreasureChest.cs" />
     <Compile Include="Custom\Items\Treasure\TreasureChestEdit.cs" />

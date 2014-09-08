@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public HairDye() : base( 0xEFF )
 		{
+            Name = "Teinture a cheveux";
 			Weight = 1.0;
 		}
 
@@ -114,10 +115,10 @@ namespace Server.Items
 			AddBackground( 100, 10, 350, 355, 2600 );
 			AddBackground( 120, 54, 110, 270, 5100 );
 
-			AddHtmlLocalized( 70, 25, 400, 35, 1011013, false, false ); // <center>Hair Color Selection Menu</center>
+			AddHtml( 70, 25, 400, 35, "<center>Menu de la sélection de la couleur des cheveux</center>", false, false ); // <center>Hair Color Selection Menu</center>
 
 			AddButton( 149, 328, 4005, 4007, 1, GumpButtonType.Reply, 0 );
-			AddHtmlLocalized( 185, 329, 250, 35, 1011014, false, false ); // Dye my hair this color!
+            AddHtml(185, 329, 250, 35, "Teindre mes cheveux !", false, false);
 
 			for ( int i = 0; i < m_Entries.Length; ++i )
 			{
@@ -177,7 +178,7 @@ namespace Server.Items
 							m.HairHue = hue;
 							m.FacialHairHue = hue;
 
-							m.SendLocalizedMessage( 501199 );  // You dye your hair
+							m.SendMessage( "Vous teignez vos cheveux" );
 							m_HairDye.Delete();
 							m.PlaySound( 0x4E );
 						}
@@ -186,7 +187,7 @@ namespace Server.Items
 			}
 			else
 			{
-				m.SendLocalizedMessage( 501200 ); // You decide not to dye your hair
+                m.SendMessage("Vous décidez de ne pas teindre vos cheveux."); // You decide not to dye your hair
 			}
 		}
 	}

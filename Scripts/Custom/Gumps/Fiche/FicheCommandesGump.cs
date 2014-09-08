@@ -295,9 +295,9 @@ namespace Server.Gumps
                     from.SendGump(new FicheCommandesGump(from, m_chevelurePage, m_barbePage, m_tatooPage));
                     break;
                 case 11025:
-                    if (from.FindItemOnLayer(Layer.Unused_xF) != null)
-                        if (from.FindItemOnLayer(Layer.Unused_xF) is GenericTatou)
-                            from.FindItemOnLayer(Layer.Unused_xF).Delete();
+                    if (from.FindItemOnLayer(Layer.Tatoo) != null)
+                        if (from.FindItemOnLayer(Layer.Tatoo) is GenericTatoo)
+                            from.FindItemOnLayer(Layer.Tatoo).Delete();
                     from.SendGump(new FicheCommandesGump(from, m_chevelurePage, m_barbePage, m_tatooPage));
                     return;
                 case 12366:
@@ -330,13 +330,13 @@ namespace Server.Gumps
             {
                 if (m_Tatoos[i] == info.ButtonID)
                 {
-                    GenericTatou tatou = new GenericTatou(info.ButtonID);
-                    if (from.FindItemOnLayer(Layer.Unused_xF) != null)
-                        if (from.FindItemOnLayer(Layer.Unused_xF) is GenericTatou)
-                            from.FindItemOnLayer(Layer.Unused_xF).Delete();
+                    GenericTatoo Tatoo = new GenericTatoo(info.ButtonID);
+                    if (from.FindItemOnLayer(Layer.Tatoo) != null)
+                        if (from.FindItemOnLayer(Layer.Tatoo) is GenericTatoo)
+                            from.FindItemOnLayer(Layer.Tatoo).Delete();
 
-                    if (!from.EquipItem(tatou))
-                        tatou.Delete();
+                    if (!from.EquipItem(Tatoo))
+                        Tatoo.Delete();
                     //from.FacialHairItemID = info.ButtonID;
                     from.SendGump(new FicheCommandesGump(from, m_chevelurePage, m_barbePage, m_tatooPage));
                 }
