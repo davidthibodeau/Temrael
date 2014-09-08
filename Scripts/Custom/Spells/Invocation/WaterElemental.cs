@@ -7,12 +7,19 @@ namespace Server.Spells.Eighth
 {
 	public class WaterElementalSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Elemental d'Eau", "Kal Vas Xen An Flam",
                 SpellCircle.Sixth,
 				269,
 				9070,
-				false,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Bloodmoss,
 				Reagent.MandrakeRoot,
 				Reagent.SpidersSilk

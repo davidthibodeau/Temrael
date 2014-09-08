@@ -11,11 +11,19 @@ namespace Server.Spells.Seventh
 {
 	public class GateTravelSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Voyagement", "Vas Rel Por",
 				SpellCircle.Fourth,
 				263,
 				9032,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BlackPearl,
 				Reagent.MandrakeRoot,
 				Reagent.SulfurousAsh

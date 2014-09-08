@@ -8,11 +8,19 @@ namespace Server.Spells.Necromancy
 {
 	public class MindRotSpell : NecromancerSpell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Pourriture", "Wis An Ben",
 				SpellCircle.Fourth,
 				203,
 				9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BatWing,
 				Reagent.PigIron,
 				Reagent.DaemonBlood

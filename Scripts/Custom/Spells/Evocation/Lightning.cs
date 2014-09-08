@@ -7,11 +7,19 @@ namespace Server.Spells.Fourth
 {
 	public class LightningSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Éclair", "Por Ort Grav",
 				SpellCircle.Fourth,
 				239,
 				9021,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.MandrakeRoot,
 				Reagent.SulfurousAsh
             );

@@ -9,11 +9,19 @@ namespace Server.Spells.Sixth
 {
 	public class RevealSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Révélation", "Wis Quas",
 				SpellCircle.Sixth,
 				206,
 				9002,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Bloodmoss,
 				Reagent.SulfurousAsh
             );

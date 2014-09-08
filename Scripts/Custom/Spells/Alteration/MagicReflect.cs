@@ -9,11 +9,19 @@ namespace Server.Spells.Fifth
 {
 	public class MagicReflectSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Reflet", "In Jux Sanct",
 				SpellCircle.Third,
 				242,
 				9012,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot,
 				Reagent.SpidersSilk

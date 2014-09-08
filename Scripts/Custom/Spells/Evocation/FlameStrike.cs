@@ -7,11 +7,19 @@ namespace Server.Spells.Seventh
 {
 	public class FlameStrikeSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Jet de Flamme", "Kal Vas Flam",
 				SpellCircle.Eighth,
 				245,
 				9042,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.SpidersSilk,
 				Reagent.SulfurousAsh
             );

@@ -6,12 +6,20 @@ using Server.Mobiles;
 namespace Server.Spells.Fifth
 {
 	public class MindBlastSpell : Spell
-	{
+    {
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Destruction Cérébrale", "Por Corp Wis",
 				SpellCircle.Fifth,
 				218,
 				9032,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BlackPearl,
 				Reagent.MandrakeRoot,
 				Reagent.Nightshade,

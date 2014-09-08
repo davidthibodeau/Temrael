@@ -5,11 +5,19 @@ namespace Server.Spells.First
 {
 	public class CreateFoodSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Nourriture", "In Mani Ylem",
 				SpellCircle.First,
 				224,
 				9011,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.Ginseng,
 				Reagent.MandrakeRoot

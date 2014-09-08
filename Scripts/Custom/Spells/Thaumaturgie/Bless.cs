@@ -6,11 +6,19 @@ namespace Server.Spells.Third
 {
 	public class BlessSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Puissance", "Rel Sanct",
 				SpellCircle.Fifth,
 				203,
 				9061,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot
             );

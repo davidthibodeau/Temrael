@@ -8,11 +8,19 @@ namespace Server.Spells.Necromancy
 {
 	public class VampiricEmbraceSpell : TransformationSpell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Vampirisme", "Rel Xen An Sanct",
 				SpellCircle.Fifth,
 				203,
 				9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BatWing,
 				Reagent.NoxCrystal,
 				Reagent.PigIron

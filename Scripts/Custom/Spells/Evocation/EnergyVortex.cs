@@ -7,12 +7,19 @@ namespace Server.Spells.Eighth
 {
 	public class EnergyVortexSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Vortex", "Vas Corp Por",
 				SpellCircle.Eighth,
 				260,
 				9032,
-				false,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Bloodmoss,
 				Reagent.BlackPearl,
 				Reagent.MandrakeRoot,

@@ -6,11 +6,19 @@ namespace Server.Spells.First
 {
 	public class WeakenSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Faiblesse", "Des Mani",
 				SpellCircle.First,
 				212,
 				9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.Nightshade
             );

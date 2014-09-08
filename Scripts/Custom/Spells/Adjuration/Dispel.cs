@@ -18,7 +18,6 @@ namespace Server.Spells.Sixth
 				SpellCircle.Fifth,
 				218,
 				9002,
-                9002,
                 s_ManaCost,
                 s_SkillForCast,
                 s_MinSkillForCast,

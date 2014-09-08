@@ -9,12 +9,19 @@ namespace Server.Spells.Seventh
 {
 	public class EnergyFieldSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Energie de Masse", "In Sanct Grav",
 				SpellCircle.Seventh,
 				221,
 				9022,
-				false,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BlackPearl,
 				Reagent.MandrakeRoot,
 				Reagent.SpidersSilk,

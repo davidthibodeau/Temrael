@@ -7,11 +7,19 @@ namespace Server.Spells.Third
 {
 	public class FireballSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Boule de Feu", "Vas Flam",
 				SpellCircle.Third,
 				203,
 				9041,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BlackPearl
             );
 

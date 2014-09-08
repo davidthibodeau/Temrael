@@ -11,13 +11,20 @@ namespace Server.Spells.First
 {
     public class Flameche : Spell
     {
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
         private static SpellInfo m_Info = new SpellInfo(
-        "Flameche", "In Flam",
-        SpellCircle.Fourth,
-        215,
-        9041,
-        false,
-        Reagent.BlackPearl
+            "Flameche", "In Flam",
+            SpellCircle.Fourth,
+            215,
+            9041,
+            s_ManaCost,
+            s_SkillForCast,
+            s_MinSkillForCast,
+            false,
+            Reagent.BlackPearl
         );
 
         public Flameche(Mobile caster, Item scroll)

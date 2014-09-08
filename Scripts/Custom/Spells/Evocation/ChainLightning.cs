@@ -10,12 +10,19 @@ namespace Server.Spells.Seventh
 {
 	public class ChainLightningSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Éclair en Chaine", "Vas Ort Grav",
 				SpellCircle.Seventh,
 				209,
 				9022,
-				false,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BlackPearl,
 				Reagent.Bloodmoss,
 				Reagent.MandrakeRoot,

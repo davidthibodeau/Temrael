@@ -8,11 +8,19 @@ namespace Server.Spells.Necromancy
 {
 	public class LichFormSpell : TransformationSpell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Liche", "Rel Xen Corp Ort",
 				SpellCircle.Fifth,
 				203,
 				9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.GraveDust,
 				Reagent.DaemonBlood,
 				Reagent.NoxCrystal

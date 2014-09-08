@@ -7,12 +7,20 @@ using Server.Targeting;
 namespace Server.Spells.Necromancy
 {
 	public class CorpseSkinSpell : NecromancerSpell
-	{
+    {
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Corps Mortifié", "In Agle Corp Ylem",
 				SpellCircle.Third,
 				203,
 				9051,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BatWing,
 				Reagent.GraveDust
             );

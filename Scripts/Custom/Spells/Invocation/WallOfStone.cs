@@ -9,12 +9,19 @@ namespace Server.Spells.Third
 {
 	public class WallOfStoneSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Mur de Pierre", "In Sanct Ylem",
 				SpellCircle.Fourth,
 				227,
 				9011,
-				false,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Bloodmoss,
 				Reagent.Garlic
             );

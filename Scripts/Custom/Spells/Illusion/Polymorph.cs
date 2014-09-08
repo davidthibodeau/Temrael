@@ -14,11 +14,19 @@ namespace Server.Spells.Seventh
 {
 	public class PolymorphSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Polymorph", "Vas Ylem Rel",
 				SpellCircle.Seventh,
 				221,
 				9002,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Bloodmoss,
 				Reagent.SpidersSilk,
 				Reagent.MandrakeRoot

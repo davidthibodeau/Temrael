@@ -10,11 +10,19 @@ namespace Server.Spells.Necromancy
 {
 	public class WitherSpell : NecromancerSpell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Flétrir", "Kal Vas An Flam",
 				SpellCircle.Sixth,
 				203,
 				9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.NoxCrystal,
 				Reagent.GraveDust,
 				Reagent.PigIron

@@ -9,11 +9,19 @@ namespace Server.Spells.First
 {
     public class Froid : Spell
     {
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
         private static SpellInfo m_Info = new SpellInfo(
                 "Tempete", "An Flam",
                 SpellCircle.First,
                 236,
                 9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
                 Reagent.Bloodmoss
             );
 

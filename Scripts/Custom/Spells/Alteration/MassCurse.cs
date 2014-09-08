@@ -9,12 +9,19 @@ namespace Server.Spells.Sixth
 {
 	public class MassCurseSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Fléau", "Vas Des Sanct",
 				SpellCircle.Seventh,
 				218,
 				9031,
-				false,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.Nightshade,
 				Reagent.MandrakeRoot,

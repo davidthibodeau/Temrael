@@ -9,11 +9,19 @@ namespace Server.Spells.Necromancy
 {
 	public class StrangleSpell : NecromancerSpell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Étranglement", "In Bal Nox",
 				SpellCircle.Sixth,
 				209,
 				9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.DaemonBlood,
 				Reagent.NoxCrystal
             );

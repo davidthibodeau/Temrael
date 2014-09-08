@@ -7,13 +7,19 @@ namespace Server.Spells.Eighth
 {
 	public class AirElementalSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
 
 		private static SpellInfo m_Info = new SpellInfo(
 				"Élemental d'Air", "Kal Vas Xen Hur",
 				SpellCircle.Sixth,
 				269,
 				9010,
-				false,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Bloodmoss,
 				Reagent.MandrakeRoot,
 				Reagent.SpidersSilk

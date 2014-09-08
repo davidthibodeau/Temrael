@@ -8,11 +8,19 @@ namespace Server.Spells.First
 {
 	public class MagicArrowSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Flèche Magique", "In Por Ylem",
 				SpellCircle.First,
 				212,
 				9041,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.SulfurousAsh
             );
 

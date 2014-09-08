@@ -8,11 +8,19 @@ namespace Server.Spells.Second
 {
 	public class MagicTrapSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Piège Magique", "In Jux",
 				SpellCircle.First,
 				212,
 				9001,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.SpidersSilk,
 				Reagent.SulfurousAsh

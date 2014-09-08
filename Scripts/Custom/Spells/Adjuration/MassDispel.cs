@@ -10,11 +10,19 @@ namespace Server.Spells.Seventh
 {
 	public class MassDispelSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Dissipation de Masse", "Vas An Ort",
 				SpellCircle.Seventh,
 				263,
 				9002,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot,
 				Reagent.BlackPearl,

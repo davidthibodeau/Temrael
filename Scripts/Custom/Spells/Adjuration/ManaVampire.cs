@@ -6,11 +6,19 @@ namespace Server.Spells.Seventh
 {
 	public class ManaVampireSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Drain Vampirique", "Ort Sanct",
 				SpellCircle.Seventh,
 				221,
 				9032,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.BlackPearl,
 				Reagent.Bloodmoss,
 				Reagent.MandrakeRoot,

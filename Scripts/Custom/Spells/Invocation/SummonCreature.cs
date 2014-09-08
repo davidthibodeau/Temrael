@@ -8,11 +8,19 @@ namespace Server.Spells.Fifth
 {
 	public class SummonCreatureSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Convocation", "Kal Xen",
 				SpellCircle.Fourth,
 				266,
 				9040,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Bloodmoss,
 				Reagent.MandrakeRoot,
 				Reagent.SpidersSilk

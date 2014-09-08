@@ -8,11 +8,19 @@ namespace Server.Spells.First
 {
 	public class NightSightSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Vision Nocturne", "In Lor",
 				SpellCircle.First,
 				236,
 				9031,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.SulfurousAsh,
 				Reagent.SpidersSilk
             );

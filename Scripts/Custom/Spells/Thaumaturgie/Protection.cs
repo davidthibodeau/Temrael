@@ -8,11 +8,19 @@ namespace Server.Spells.Second
 {
 	public class ProtectionSpell : Spell
 	{
+        private static int s_ManaCost = 50;
+        private static SkillName s_SkillForCast = SkillName.ArtMagique;
+        private static int s_MinSkillForCast = 50;
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Protection", "Uus Sanct",
 				SpellCircle.Fifth,
 				236,
 				9011,
+                s_ManaCost,
+                s_SkillForCast,
+                s_MinSkillForCast,
+                false,
 				Reagent.Garlic,
 				Reagent.Ginseng,
 				Reagent.SulfurousAsh
