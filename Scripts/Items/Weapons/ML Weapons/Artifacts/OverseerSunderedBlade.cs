@@ -18,8 +18,6 @@ namespace Server.Items
 			Attributes.AttackChance = 10;
 			Attributes.WeaponSpeed = 35;
 			Attributes.WeaponDamage = 45;
-
-			Hue = this.GetElementalDamageHue();
 		}
 
 		public override void GetDamageTypes( Mobile wielder, out int phys, out int fire, out int cold, out int pois, out int nrgy, out int chaos, out int direct )

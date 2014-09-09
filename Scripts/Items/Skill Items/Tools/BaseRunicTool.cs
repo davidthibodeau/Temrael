@@ -389,8 +389,6 @@ namespace Server.Items
 
 			//Order is Cold, Energy, Fire, Poison -> Physical left
 			//Cannot be looped, AoselementAttribute is 'out of order'
-
-			weapon.Hue = weapon.GetElementalDamageHue();
 		}
 
 		private static int AssignElementalDamage( BaseWeapon weapon, AosElementAttribute attr, int totalDamage )

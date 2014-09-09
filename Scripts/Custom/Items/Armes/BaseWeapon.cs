@@ -1688,44 +1688,7 @@ namespace Server.Items
 			}
 		}
 
-		public virtual void DoAreaAttack( Mobile from, Mobile defender, int sound, int hue, int phys, int contondant, int tranchant, int perforant, int magie )
-		{
-			Map map = from.Map;
 
-			if ( map == null )
-				return;
-
-			List<Mobile> list = new List<Mobile>();
-
-			foreach ( Mobile m in from.GetMobilesInRange( 10 ) )
-			{
-				if ( from != m && defender != m && SpellHelper.ValidIndirectTarget( from, m ) && from.CanBeHarmful( m, false ) && ( !Core.ML || from.InLOS( m ) ) && !(from.Party == m.Party))
-					list.Add( m );
-			}
-
-			if ( list.Count == 0 )
-				return;
-
-			Effects.PlaySound( from.Location, map, sound );
-
-			// TODO: What is the damage calculation?
-
-			for ( int i = 0; i < list.Count; ++i )
-			{
-				Mobile m = list[i];
-
-				double scalar = (11 - from.GetDistanceToSqrt( m )) / 10;
-
-				if ( scalar > 1.0 )
-					scalar = 1.0;
-				else if ( scalar < 0.0 )
-					continue;
-
-				from.DoHarmful( m, true );
-				//m.FixedEffect( 0x3779, 1, 15, hue, 0 );
-				AOS.Damage( m, from, (int)(GetBaseDamage( from ) * scalar), phys, contondant, tranchant, perforant, magie );
-			}
-		}
 
 		public virtual void AddBlood( Mobile attacker, Mobile defender, int damage )
 		{
@@ -1827,42 +1790,6 @@ namespace Server.Items
 			//if ( move != null )
 			//	move.OnMiss( attacker, defender );
 
-			if ( defender is IHonorTarget && ((IHonorTarget)defender).ReceivedHonorContext != null )
-				((IHonorTarget)defender).ReceivedHonorContext.OnTargetMissed( attacker );
-		}
-
-		public virtual void GetBaseDamageRange( Mobile attacker, out int min, out int max )
-		{
-			if ( attacker is BaseCreature )
-			{
-				BaseCreature c = (BaseCreature)attacker;
-
-				if ( c.DamageMin >= 0 )
-				{
-					min = c.DamageMin;
-					max = c.DamageMax;
-					return;
-				}
-
-				/*if ( this is Fists && !attacker.Body.IsHuman )
-				{
-					min = attacker.Str / 28;
-					max = attacker.Str / 28;
-					return;
-				}*/
-			}
-
-			min = MinDamage;
-			max = MaxDamage;
-		}
-
-		public virtual double GetBaseDamage( Mobile attacker )
-		{
-			int min, max;
-
-			GetBaseDamageRange( attacker, out min, out max );
-
-			return Utility.RandomMinMax( min, max );
 		}
 
 		public virtual int GetHitChanceBonus()
@@ -2559,41 +2486,6 @@ namespace Server.Items
 			set{ base.Hue = value; InvalidateProperties(); }
 		}
 
-		public int GetElementalDamageHue()
-		{
-			int phys, contondant, tranchant, perforant, magie, chaos, direct;
-			GetDamageTypes( null, out phys, out contondant, out tranchant, out perforant, out magie, out chaos, out direct );
-			//Order is Cold, Energy, Fire, Poison, Physical left
-
-			int currentMax = 50;
-			int hue = 0;
-
-			if( perforant >= currentMax )
-			{
-				hue = 1267 + (perforant - 50) / 10;
-				currentMax = perforant;
-			}
-
-			if( contondant >= currentMax )
-			{
-                hue = 1255 + (contondant - 50) / 10;
-                currentMax = contondant;
-			}
-
-			if( magie >= currentMax )
-			{
-                hue = 1273 + (magie - 50) / 10;
-                currentMax = magie;
-			}
-
-			if( tranchant >= currentMax )
-			{
-                hue = 1261 + (tranchant - 50) / 10;
-                currentMax = tranchant;
-			}
-
-			return hue;
-		}
 
 		public override void AddNameProperty( ObjectPropertyList list )
 		{
@@ -2648,21 +2540,6 @@ namespace Server.Items
 		{
 			get{ return 0; }
 		}
-
-		//public virtual int GetLuckBonus()
-		//{
-		//	CraftResourceInfo resInfo = CraftResources.GetInfo( m_Resource );
-        //
-		//	if ( resInfo == null )
-		//		return 0;
-        //
-		//	CraftAttributeInfo attrInfo = resInfo.AttributeInfo;
-        //
-		//	if ( attrInfo == null )
-		//		return 0;
-        //
-		//	return attrInfo.WeaponLuck;
-		//}
 
 		public override void GetProperties( ObjectPropertyList list )
 		{

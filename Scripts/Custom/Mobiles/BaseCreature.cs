@@ -196,7 +196,7 @@ namespace Server.Mobiles
 		}
 	}
 
-	public class BaseCreature : Mobile, IHonorTarget
+	public class BaseCreature : Mobile
 	{
         #region Elevage
         public virtual bool HasASex { get { return false; } }
@@ -1711,10 +1711,6 @@ namespace Server.Mobiles
 			BardPacified = false;
 		}
 
-		private HonorContext m_ReceivedHonorContext;
-
-		public HonorContext ReceivedHonorContext{ get{ return m_ReceivedHonorContext; } set{ m_ReceivedHonorContext = value; } }
-
 		public override void OnDamage( int amount, Mobile from, bool willKill )
 		{
 			if ( BardPacified && (HitsMax - Hits) * 0.001 > Utility.RandomDouble() )
@@ -1746,9 +1742,6 @@ namespace Server.Mobiles
 
 			if ( speechType != null && !willKill )
 				speechType.OnDamage( this, amount );
-
-			if ( m_ReceivedHonorContext != null )
-				m_ReceivedHonorContext.OnTargetDamaged( from, amount );
 
 			if ( willKill && from is PlayerMobile )
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
@@ -4965,9 +4958,6 @@ namespace Server.Mobiles
 			if ( speechType != null )
 				speechType.OnDeath( this );
 
-			if ( m_ReceivedHonorContext != null )
-				m_ReceivedHonorContext.OnTargetKilled();
-
 			return base.OnBeforeDeath();
 		}
 
@@ -5334,9 +5324,6 @@ namespace Server.Mobiles
 
 			SetControlMaster( null );
 			SummonMaster = null;
-
-			if ( m_ReceivedHonorContext != null )
-				m_ReceivedHonorContext.Cancel();
 
 			base.OnDelete();
 

@@ -210,9 +210,6 @@ namespace Server.Engines.Craft
 
 						w.Resource = resource;
 
-						int hue = w.GetElementalDamageHue();
-						if( hue > 0 )
-							w.Hue = hue;
 					}
 					else if( item is BaseArmor )	//Sanity
 					{

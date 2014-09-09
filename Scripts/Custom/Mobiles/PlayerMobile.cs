@@ -57,7 +57,7 @@ namespace Server.Mobiles
 	}
 	#endregion
 
-	public class PlayerMobile : Mobile, IHonorTarget
+	public class PlayerMobile : Mobile
 	{
 		private class CountAndTimeStamp
 		{
@@ -1926,9 +1926,6 @@ namespace Server.Mobiles
 
 		public override void OnBeneficialAction( Mobile target, bool isCriminal )
 		{
-			if ( m_SentHonorContext != null )
-				m_SentHonorContext.OnSourceBeneficialAction( target );
-
 			base.OnBeneficialAction( target, isCriminal );
 		}
 
@@ -1955,11 +1952,6 @@ namespace Server.Mobiles
 			//	Confidence.StopRegenerating( this );
 
 			WeightOverloading.FatigueOnDamage( this, amount );
-
-			if ( m_ReceivedHonorContext != null )
-				m_ReceivedHonorContext.OnTargetDamaged( from, amount );
-			if ( m_SentHonorContext != null )
-				m_SentHonorContext.OnSourceDamaged( from, amount );
 
 			if ( willKill && from is PlayerMobile )
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
@@ -2051,11 +2043,6 @@ namespace Server.Mobiles
 
 			if ( m_InsuranceAward is PlayerMobile )
 				((PlayerMobile)m_InsuranceAward).m_InsuranceBonus = 0;
-
-			if ( m_ReceivedHonorContext != null )
-				m_ReceivedHonorContext.OnTargetKilled();
-			if ( m_SentHonorContext != null )
-				m_SentHonorContext.OnSourceKilled();
 
 			RecoverAmmo();
 
@@ -2184,19 +2171,6 @@ namespace Server.Mobiles
 					pointsToGain += (int) Math.Sqrt( this.GameTime.TotalSeconds * 4 );
 					pointsToGain *= 5;
 					pointsToGain += (int) Math.Pow( this.Skills.Total / 250, 2 );
-
-					if ( VirtueHelper.Award( m, VirtueName.Justice, pointsToGain, ref gainedPath ) )
-					{
-						if ( gainedPath )
-							m.SendLocalizedMessage( 1049367 ); // You have gained a path in Justice!
-						else
-							m.SendLocalizedMessage( 1049363 ); // You have gained in Justice.
-
-						m.FixedParticles( 0x375A, 9, 20, 5027, EffectLayer.Waist );
-						m.PlaySound( 0x1F7 );
-
-						m_NextJustAward = DateTime.Now + TimeSpan.FromMinutes( pointsToGain / 3 );
-					}
 				}
 			}
 
@@ -3035,11 +3009,6 @@ namespace Server.Mobiles
 
 		public static void CheckAtrophies( Mobile m )
 		{
-			SacrificeVirtue.CheckAtrophy( m );
-			JusticeVirtue.CheckAtrophy( m );
-			CompassionVirtue.CheckAtrophy( m );
-			ValorVirtue.CheckAtrophy( m );
-
 			if( m is PlayerMobile )
 				ChampionTitleInfo.CheckAtrophy( (PlayerMobile)m );
 		}
@@ -3377,11 +3346,6 @@ namespace Server.Mobiles
 
 		public override void OnDelete()
 		{
-			if ( m_ReceivedHonorContext != null )
-				m_ReceivedHonorContext.Cancel();
-			if ( m_SentHonorContext != null )
-				m_SentHonorContext.Cancel();
-
 			InvalidateMyRunUO();
 		}
 
@@ -3590,15 +3554,11 @@ namespace Server.Mobiles
 		private DateTime m_LastHonorLoss;
 		private DateTime m_LastHonorUse;
 		private bool m_HonorActive;
-		private HonorContext m_ReceivedHonorContext;
-		private HonorContext m_SentHonorContext;
 		public DateTime m_hontime;
 
 		public DateTime LastHonorLoss{ get{ return m_LastHonorLoss; } set{ m_LastHonorLoss = value; } }
 		public DateTime LastHonorUse{ get{ return m_LastHonorUse; } set{ m_LastHonorUse = value; } }
 		public bool HonorActive{ get{ return m_HonorActive; } set{ m_HonorActive = value; } }
-		public HonorContext ReceivedHonorContext{ get{ return m_ReceivedHonorContext; } set{ m_ReceivedHonorContext = value; } }
-		public HonorContext SentHonorContext{ get{ return m_SentHonorContext; } set{ m_SentHonorContext = value; } }
 		#endregion
 
 		#region Young system

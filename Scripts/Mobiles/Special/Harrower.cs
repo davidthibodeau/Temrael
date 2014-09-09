@@ -309,17 +309,10 @@ namespace Server.Mobiles
 					{
 						Mobile prot = (Mobile)pm.JusticeProtectors[j];
 
-						if ( prot.Map != m.Map || prot.Kills >= 5 || prot.Criminal || !JusticeVirtue.CheckMapRegion( m, prot ) )
+						if ( prot.Map != m.Map || prot.Kills >= 5 || prot.Criminal)
 							continue;
 
 						int chance = 0;
-
-						switch ( VirtueHelper.GetLevel( prot, VirtueName.Justice ) )
-						{
-							case VirtueLevel.Seeker: chance = 60; break;
-							case VirtueLevel.Follower: chance = 80; break;
-							case VirtueLevel.Knight: chance = 100; break;
-						}
 
 						if ( chance > Utility.Random( 100 ) )
 						{

@@ -180,18 +180,6 @@ namespace Server.Gumps
 
 				from.Resurrect();
 
-				if( m_Healer != null && from != m_Healer )
-				{
-					VirtueLevel level = VirtueHelper.GetLevel( m_Healer, VirtueName.Compassion );
-
-					switch( level )
-					{
-						case VirtueLevel.Seeker: from.Hits = AOS.Scale( from.HitsMax, 20 ); break;
-						case VirtueLevel.Follower: from.Hits = AOS.Scale( from.HitsMax, 40 ); break;
-						case VirtueLevel.Knight: from.Hits = AOS.Scale( from.HitsMax, 80 ); break;
-					}
-				}
-
 				if( m_FromSacrifice && from is PlayerMobile )
 				{
 					((PlayerMobile)from).AvailableResurrects -= 1;

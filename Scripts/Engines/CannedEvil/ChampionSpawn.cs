@@ -430,17 +430,10 @@ namespace Server.Engines.CannedEvil
 			{
 				Mobile prot = (Mobile)pm.JusticeProtectors[j];
 				
-				if ( prot.Map != killer.Map || prot.Kills >= 5 || prot.Criminal || !JusticeVirtue.CheckMapRegion( killer, prot ) )
+				if ( prot.Map != killer.Map || prot.Kills >= 5 || prot.Criminal)
 					continue;
 
 				int chance = 0;
-
-				switch ( VirtueHelper.GetLevel( prot, VirtueName.Justice ) )
-				{
-					case VirtueLevel.Seeker: chance = 60; break;
-					case VirtueLevel.Follower: chance = 80; break;
-					case VirtueLevel.Knight: chance = 100; break;
-				}
 
 				if ( chance > Utility.Random( 100 ) )
 				{
@@ -566,16 +559,6 @@ namespace Server.Engines.CannedEvil
 								bool gainedPath = false;
 
 								int pointsToGain = mobSubLevel * 40;
-
-								if( VirtueHelper.Award( killer, VirtueName.Valor, pointsToGain, ref gainedPath ) )
-								{
-									if( gainedPath )
-										m.SendLocalizedMessage( 1054032 ); // You have gained a path in Valor!
-									else
-										m.SendLocalizedMessage( 1054030 ); // You have gained in Valor!
-
-									//No delay on Valor gains
-								}
 
 								PlayerMobile.ChampionTitleInfo info = ((PlayerMobile)killer).ChampionTitles;
 
