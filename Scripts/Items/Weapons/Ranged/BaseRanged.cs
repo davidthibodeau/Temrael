@@ -209,18 +209,19 @@ namespace Server.Items
 
         public override CombatStrategy CombatStrategy { get { return StrategyArc.Strategy; } }
 
-        /*
-         * Ne fonctionne pas.
-         * 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-        }
+		public override void Serialize( GenericWriter writer )
+		{
+			base.Serialize( writer );
 
-        public override void Deserialize(GenericReader reader)
-        {
+			writer.Write( (int) 0 ); // version
+		}
+
+		public override void Deserialize( GenericReader reader )
+		{
             base.Deserialize(reader);
-        }*/
+
+            int version = reader.ReadInt();
+        }
 
     }
 
@@ -238,18 +239,18 @@ namespace Server.Items
 
         public override CombatStrategy CombatStrategy { get { return StrategyArbalette.Strategy; } }
 
+		public override void Serialize( GenericWriter writer )
+		{
+			base.Serialize( writer );
 
-        /*
-         * Ne fonctionne pas.
-         * 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-        }
+			writer.Write( (int) 0 ); // version
+		}
 
-        public override void Deserialize(GenericReader reader)
-        {
+		public override void Deserialize( GenericReader reader )
+		{
             base.Deserialize(reader);
-        }*/
+
+            int version = reader.ReadInt();
+        }
     }
 }
