@@ -35,11 +35,11 @@ namespace Server.Gumps
             if (m_Comp == SkillCategory.Aucun)
                 AddBackground(80, 72, 345, 215, 5170);
             else if (m_Comp == SkillCategory.Magie)
-                AddBackground(80, 72, 345, 435, 5170);
+                AddBackground(80, 72, 345, 475, 5170);
             else if (m_Comp == SkillCategory.Combat)
-                AddBackground(80, 72, 345, 415, 5170);
+                AddBackground(80, 72, 345, 515, 5170);
             else if (m_Comp == SkillCategory.Roublardise)
-                AddBackground(80, 72, 345, 495, 5170);
+                AddBackground(80, 72, 345, 475, 5170);
             else if (m_Comp == SkillCategory.Artisanat)
                 AddBackground(80, 72, 345, 395, 5170);
 
@@ -61,33 +61,47 @@ namespace Server.Gumps
                 if (m_Comp == cd)
                     AddButton(100, (ybase + ypos + 2), 2086, 2086, 3 + (int)cd, GumpButtonType.Reply, 0);
                 else
-                    AddButton(100, ybase + ypos, 2087, 2087, 2 + (int)cd, GumpButtonType.Reply, 0);
-                AddHtml(115, ypos, 200, 20, String.Format("<h3><basefont color=#025a>{0}<basefont></h3>", cd.ToString()), false, false);
-                AddImageTiled(160, (ybase + ypos + 7), 195, 5, 2101);
+                    AddButton(100, ybase + ypos, 2087, 2087, 3 + (int)cd, GumpButtonType.Reply, 0);
+                AddHtml(115, ybase + ypos, 200, 20, String.Format("<h3><basefont color=#025a>{0}<basefont></h3>", cd.ToString()), false, false);
+                int textoffset = 0;
+                switch (cd)
+                {
+                    case SkillCategory.Artisanat: textoffset = 70; break;
+                    case SkillCategory.Combat: textoffset = 50; break;
+                    case SkillCategory.Magie: textoffset = 48; break;
+                    case SkillCategory.Roublardise: textoffset = 82; break;
+                        
+                }
+                AddImageTiled(115 + textoffset, ybase + ypos + 7, 250 - textoffset, 5, 2101);
                 ypos += 20;
 
-                foreach (SkillName sn in sns)
-                {
-                    int i = (int)sn;
-                    SkillInfo si = SkillInfo.Table[i];
-                    if (si.Category != cd)
-                        continue;
+                if(m_Comp == cd)
+                    foreach (SkillName sn in sns)
+                    {
+                        int i = (int)sn;
+                        SkillInfo si = null;
 
-                    if (si.Callback != null)
-                        AddButton(110, (ybase + ypos + 3), 2103, 2104, 300 + (int)sn, GumpButtonType.Reply, 0);
-                    AddHtml(125, (ybase + ypos), 200, 20, String.Format("<h3><basefont color=#5A4A31>{0}<basefont></h3>", si.Name), false, false);
-                    AddTooltip(3006369 + i); //TODO: Fix those.
+                        si = SkillInfo.Table[i];
+                        if (si.Category != cd)
+                            continue;
 
-                    if (m_ShowCaps)
-                        AddHtml(m_From.Skills[sn].Cap > 99 ? 327 : 332, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>" + m_From.Skills[sn].Cap + "<basefont></h3>", false, false);
-                    else
-                        AddHtml(m_From.Skills[sn].Value > 99 ? 327 : 332, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>" + m_From.Skills[sn].Value + "<basefont></h3>", false, false);
-                    if (Competences.CanRaise(from, m_From.Skills[sn]))
-                        AddButton(353, (ybase + ypos + 3), 2089, 2089, 100 + i, GumpButtonType.Reply, 0);
-                    if (Competences.CanLower(from, m_From.Skills[sn]))
-                        AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + i, GumpButtonType.Reply, 0);
-                    ypos += 20;
-                }
+                        if (si.Callback != null)
+                            AddButton(110, (ybase + ypos + 3), 2103, 2104, 300 + (int)sn, GumpButtonType.Reply, 0);
+                        AddHtml(125, (ybase + ypos), 200, 20, String.Format("<h3><basefont color=#5A4A31>{0}<basefont></h3>", si.Name), false, false);
+                        AddTooltip(3006369 + i); //TODO: Fix those.
+
+                        if (m_ShowCaps)
+                            AddHtml(m_From.Skills[sn].Cap > 99 ? 327 : 332, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>" + m_From.Skills[sn].Cap + "<basefont></h3>", false, false);
+                        else
+                            AddHtml(m_From.Skills[sn].Value > 99 ? 327 : 332, (ybase + ypos), 200, 20, "<h3><basefont color=#5A4A31>" + m_From.Skills[sn].Value + "<basefont></h3>", false, false);
+                        if (Competences.CanRaise(from, m_From.Skills[sn]))
+                            AddButton(353, (ybase + ypos + 3), 2089, 2089, 100 + i, GumpButtonType.Reply, 0);
+                        if (Competences.CanLower(from, m_From.Skills[sn]))
+                            AddButton(368, (ybase + ypos + 3), 2086, 2086, 200 + i, GumpButtonType.Reply, 0);
+                        ypos += 20;
+
+
+                    }
 
             }
 
@@ -128,7 +142,7 @@ namespace Server.Gumps
             AddImage(385, 115, 2088);
             AddImage(385, (ybase + ypos + 25), 2086);
 
-            AddButton(242, (ybase + ypos + 59), 2094, 2095, 2, GumpButtonType.Reply, 0);
+            //AddButton(242, (ybase + ypos + 59), 2094, 2095, 2, GumpButtonType.Reply, 0);
 
             //Ligne
             //AddImage(150, (222 + ypos), 2091);
@@ -158,6 +172,7 @@ namespace Server.Gumps
 
             switch (info.ButtonID)
             {
+                case 0: return;
                 case 1: from.SendGump(new CompetenceSmallGump(m_From, m_Comp, m_ShowCaps)); break;
                 case 2: from.SendGump(new CompetenceSmallGump(m_From, m_Comp, m_ShowCaps)); break;
                 case 3:
@@ -169,78 +184,80 @@ namespace Server.Gumps
                     {
                         from.SendGump(new CompetenceGump(m_From, m_Comp, true)); break;
                     }
-                default: break;
+                default:
+                    try
+                    {
+                        int oldValue = 0;
+                        SkillName comp;
+
+                        if (info.ButtonID >= 300)
+                        {
+                            int i = info.ButtonID - 300;
+                            comp = (SkillName)i;
+                            if (i >= SkillInfo.Table.Length)
+                            {
+                                from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
+                                return;
+                            }
+                            if (from.NextSkillTime < Core.TickCount)
+                            {
+                                TimeSpan span = SkillInfo.Table[i].Callback(from);
+                                from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
+                            }
+                            else
+                                from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
+                        }
+                        if (info.ButtonID >= 200)
+                        {
+                            comp = (SkillName)(info.ButtonID - 200);
+                            if ((int)comp >= SkillInfo.Table.Length)
+                            {
+                                from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
+                                return;
+                            }
+                            oldValue = Competences.GetValue(m_From, comp);
+
+                            if (Competences.CanLower(m_From, comp))
+                            {
+                                Competences.Lower(m_From, comp, oldValue - 1);
+                                if (comp == SkillName.Langues)
+                                    m_From.Langues.FixLangues();
+                                //m_From.Skills.(comp, oldValue - 1);
+                            }
+                            from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
+                        }
+                        else if (info.ButtonID >= 100)
+                        {
+                            comp = (SkillName)(info.ButtonID - 100);
+                            oldValue = Competences.GetValue(m_From, comp);
+
+                            if (Competences.CanRaise(m_From, comp))
+                            {
+                                m_From.CompetencesLibres -= 1;
+                                Competences.Raise(m_From, comp, oldValue + 1);
+                            }
+                            from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
+                        }
+                        else
+                        {
+                            if (m_Comp != SkillCategory.Aucun)
+                            {
+                                from.SendGump(new CompetenceGump(m_From, SkillCategory.Aucun, m_ShowCaps));
+                            }
+                            else
+                            {
+                                from.SendGump(new CompetenceGump(m_From, (SkillCategory)(info.ButtonID - 3), m_ShowCaps));
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Misc.ExceptionLogging.WriteLine(ex, "buttonID : {0}, from : {1}", info.ButtonID, from.NetState);
+                    }
+                    break;
             }
 
-            try
-            {
-                int oldValue = 0;
-                SkillName comp;
-
-                if (info.ButtonID >= 300)
-                {
-                    int i = info.ButtonID - 300;
-                    comp = (SkillName)i;
-                    if (i >= SkillInfo.Table.Length)
-                    {
-                        from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
-                        return;
-                    }
-                    if (from.NextSkillTime < Core.TickCount)
-                    {
-                        TimeSpan span = SkillInfo.Table[i].Callback(from);
-                        from.NextSkillTime = Core.TickCount + Core.GetTicks(span);
-                    }
-                    else
-                        from.SendMessage("Il est trop tot pour utiliser une competence a nouveau.");
-                }
-                if (info.ButtonID >= 200)
-                {
-                    comp = (SkillName)(info.ButtonID - 200);
-                    if ((int)comp >= SkillInfo.Table.Length)
-                    {
-                        from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
-                        return;
-                    }
-                    oldValue = Competences.GetValue(m_From, comp);
-
-                    if (Competences.CanLower(m_From, comp))
-                    {
-                        Competences.Lower(m_From, comp, oldValue - 1);
-                        if (comp == SkillName.Langues)
-                            m_From.Langues.FixLangues();
-                        //m_From.Skills.(comp, oldValue - 1);
-                    }
-                    from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
-                }
-                else if (info.ButtonID >= 100)
-                {
-                    comp = (SkillName)(info.ButtonID - 100);
-                    oldValue = Competences.GetValue(m_From, comp);
-
-                    if (Competences.CanRaise(m_From, comp))
-                    {
-                        m_From.CompetencesLibres -= 1;
-                        Competences.Raise(m_From, comp, oldValue + 1);
-                    }
-                    from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));
-                }
-                else
-                {
-                    if (m_Comp != SkillCategory.Aucun)
-                    {
-                        from.SendGump(new CompetenceGump(m_From, SkillCategory.Aucun, m_ShowCaps));
-                    }
-                    else
-                    {
-                        from.SendGump(new CompetenceGump(m_From, (SkillCategory)(info.ButtonID - 3), m_ShowCaps));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Misc.ExceptionLogging.WriteLine(ex, "buttonID : {0}, from : {1}", info.ButtonID, from.NetState);
-            }
+            
         }
     }
 }
