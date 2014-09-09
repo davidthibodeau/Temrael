@@ -52,6 +52,7 @@ namespace Server
         Anatomie,
         ResistanceMagique,
         Concentration,
+        ArmureNaturelle,
 
         // Magie
         ArtMagique,
@@ -648,6 +649,8 @@ namespace Server
 				new SkillInfo( SkillName.Concentration,   "Concentration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
                 new SkillInfo( SkillName.Penetration,     "Penetration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.5,	0.0,	1.0 ),
                 new SkillInfo( SkillName.CoupCritique,    "Coup Critique",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
+                new SkillInfo( SkillName.ResistanceMagique,"Résistance Magique",SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
+                new SkillInfo( SkillName.ArmureNaturelle, "Armure Naturelle",   SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
                 
 				new SkillInfo( SkillName.Inscription,     "Inscription",		SkillCategory.Magie,	0.0,	2.0,	8.0,	null,	0.0,	0.2,	0.8,	1.0 ),
 				new SkillInfo( SkillName.ArtMagique,      "Art de la Magie",	SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	1.5,	1.0 ),
@@ -1084,66 +1087,44 @@ namespace Server
                 m_Skills[i] = new Skill(this, info[i], 0, 1000, SkillLock.Up);
 		}
 
-		public Skills( Mobile owner, GenericReader reader )
-		{
-			m_Owner = owner;
+        public Skills(Mobile owner, GenericReader reader)
+        {
+            m_Owner = owner;
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 3:
-				case 2:
-				{
-					m_Cap = reader.ReadInt();
+            m_Cap = reader.ReadInt();
 
-					goto case 1;
-				}
-				case 1:
-				{
-					if ( version < 2 )
-						m_Cap = 7000;
+            SkillInfo[] info = SkillInfo.Table;
 
-					if ( version < 3 )
-						/*m_Total =*/ reader.ReadInt();
+            m_Skills = new Skill[info.Length];
 
-					SkillInfo[] info = SkillInfo.Table;
+            int count = reader.ReadInt();
+            if (count != info.Length)
+                Console.WriteLine("Warning: SkillInfo.Table a size {0} alors que m_Skills a size {1}. Si vous n'avez pas ajouté de skill, il y a un probleme.",
+                    info.Length, count);
 
-					m_Skills = new Skill[info.Length];
+            for (int i = 0; i < count; ++i)
+            {
+                if (i < info.Length)
+                {
+                    Skill sk = new Skill(this, info[i], reader);
 
-					int count = reader.ReadInt();
+                    if (sk.BaseFixedPoint != 0 || sk.CapFixedPoint != 1000 || sk.Lock != SkillLock.Up)
+                    {
+                        m_Skills[i] = sk;
+                        m_Total += sk.BaseFixedPoint;
+                    }
+                }
+                else
+                {
+                    new Skill(this, null, reader);
+                }
+            }
 
-					for ( int i = 0; i < count; ++i )
-					{
-						if ( i < info.Length )
-						{
-							Skill sk = new Skill( this, info[i], reader );
 
-							if ( sk.BaseFixedPoint != 0 || sk.CapFixedPoint != 1000 || sk.Lock != SkillLock.Up )
-							{
-								m_Skills[i] = sk;
-								m_Total += sk.BaseFixedPoint;
-							}
-						}
-						else
-						{
-							new Skill( this, null, reader );
-						}
-					}
 
-					//for ( int i = count; i < info.Length; ++i )
-					//	m_Skills[i] = new Skill( this, info[i], 0, 1000, SkillLock.Up );
-
-					break;
-				}
-				case 0:
-				{
-					reader.ReadInt();
-
-					goto case 1;
-				}
-			}
-		}
+        }
 
 		public void OnSkillChange( Skill skill )
 		{
