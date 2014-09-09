@@ -199,7 +199,6 @@
     <Compile Include="Engines\Pathing\PathAlgorithm.cs" />
     <Compile Include="Engines\Pathing\PathFollower.cs" />
     <Compile Include="Engines\Pathing\SlowAStarAlgorithm.cs" />
-    <Compile Include="Engines\Temrael.cs" />
     <Compile Include="Custom\Commandes\Chuchottement.cs" />
     <Compile Include="Custom\Commandes\Devoiler.cs" />
     <Compile Include="Engines\Craft\DefBoneLeatherTailoring.cs" />
