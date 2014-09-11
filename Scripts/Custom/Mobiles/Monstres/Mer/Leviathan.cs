@@ -121,18 +121,11 @@ namespace Server.Mobiles
 
 			// Equipment
 			typeof( AlchemistsBauble ),
-			typeof( ArcticDeathDealer ),
-			typeof( BlazeOfDeath ),
 			typeof( BurglarsBandana ),
-			typeof( CaptainQuacklebushsCutlass ),
-			typeof( CavortingClub ),
 			typeof( DreadPirateHat ),
-			typeof( EnchantedTitanLegBone ),
 			typeof( GwennosHarp ),
 			typeof( IolosLute ),
-			typeof( LunaLance ),
 			typeof( NightsKiss ),
-			typeof( NoxRangersHeavyCrossbow ),
 			typeof( PolarBearMask ),
 			typeof( VioletCourage )
 		};
@@ -149,19 +142,6 @@ namespace Server.Mobiles
 				m.SendMessage( "As a reward for slaying the mighty leviathan, an artifact has been placed in your backpack." );
 			else
 				m.SendMessage( "As your backpack is full, your reward for destroying the legendary leviathan has been placed at your feet." );
-		}
-
-		public override void OnKilledBy( Mobile mob )
-		{
-			base.OnKilledBy( mob );
-
-			if ( Paragon.CheckArtifactChance( mob, this ) )
-			{
-				GiveArtifactTo( mob );
-
-				if ( mob == m_Fisher )
-					m_Fisher = null;
-			}
 		}
 
 		public override void OnDeath( Container c )

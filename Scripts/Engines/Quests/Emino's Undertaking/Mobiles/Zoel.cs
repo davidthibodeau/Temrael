@@ -35,11 +35,7 @@ namespace Server.Engines.Quests.Ninja
 			AddItem( new TattsukeHakama() );
 			AddItem( new Bandana() );
 
-			//AddItem( new LeatherNinjaBelt() );
 
-			Tekagi tekagi = new Tekagi();
-			tekagi.Movable = false;
-			AddItem( tekagi );
 		}
 
 		public override int TalkNumber{ get	{ return -1; } }

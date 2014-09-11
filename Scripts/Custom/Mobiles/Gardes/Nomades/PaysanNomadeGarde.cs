@@ -68,13 +68,12 @@ namespace Server.Mobiles
             AddItem(new Shirt());
 
             // Pick a random sword
-            switch (Utility.Random(5))
+            switch (Utility.Random(4))
             {
                 case 0: AddItem(new Longsword()); break;
                 case 1: AddItem(new Broadsword()); break;
                 case 2: AddItem(new VikingSword()); break;
-                case 3: AddItem(new BattleAxe()); break;
-                case 4: AddItem(new TwoHandedAxe()); break;
+                case 3: AddItem(new TwoHandedAxe()); break;
             }
 
             // Pick a random shield

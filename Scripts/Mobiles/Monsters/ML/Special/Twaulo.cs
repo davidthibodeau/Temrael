@@ -13,8 +13,8 @@ namespace Server.Mobiles
 	{
 		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Pain; } }
 
-		public override Type[] UniqueList{ get{ return new Type[] { typeof( Quell ) }; } }
-		public override Type[] SharedList{ get{ return new Type[] { typeof( TheMostKnowledgePerson ), typeof( OblivionsNeedle ) }; } }
+		public override Type[] UniqueList{ get{ return new Type[] {}; } }
+		public override Type[] SharedList{ get{ return new Type[] { typeof( TheMostKnowledgePerson )}; } }
 		public override Type[] DecorativeList{ get{ return new Type[] { typeof( Pier ), typeof( MonsterStatuette ) }; } }
 
 		public override MonsterStatuetteType[] StatueTypes{ get{ return new MonsterStatuetteType[] { MonsterStatuetteType.DreadHorn }; } }

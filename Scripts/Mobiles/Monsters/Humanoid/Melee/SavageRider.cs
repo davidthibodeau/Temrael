@@ -42,7 +42,6 @@ namespace Server.Mobiles
 			if ( 0.1 > Utility.RandomDouble() )
 				PackItem( new BolaBall() );
 
-			AddItem( new TribalSpear() );
 			AddItem( new BoneArms() );
 			AddItem( new BoneLegs() );
 			// TODO: BEAR MASK

@@ -20,7 +20,6 @@ namespace Server.Mobiles
 		{
 			public InternalBuyInfo()
 			{
-				Add( new GenericBuyInfo( typeof( HammerPick ), 26, 20, 0x143D, 0 ) );
 				Add( new GenericBuyInfo( typeof( Club ), 16, 20, 0x13B4, 0 ) );
 				Add( new GenericBuyInfo( typeof( Mace ), 28, 20, 0xF5C, 0 ) );
 				Add( new GenericBuyInfo( typeof( Maul ), 21, 20, 0x143B, 0 ) );

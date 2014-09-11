@@ -34,12 +34,6 @@ namespace Server.Engines.Quests.Samurai
 
 			AddItem( new Bandana( Utility.RandomNondyedHue() ) );
 
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0: AddItem( new NoDachi() ); break;
-				case 1: AddItem( new Lajatang() ); break;
-				default: AddItem( new Wakizashi() ); break;
-			}
 
 			SetSkill( SkillName.ArmeTranchante, 50.0 );
 			SetSkill( SkillName.Tactiques, 50.0 );

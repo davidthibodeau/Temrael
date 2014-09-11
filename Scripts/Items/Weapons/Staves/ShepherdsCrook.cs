@@ -103,8 +103,6 @@ namespace Server.Items
 
 			private bool IsHerdable( BaseCreature bc )
 			{
-				if ( bc.IsParagon )
-					return false;
 
 				if ( bc.Tamable )
 					return true;

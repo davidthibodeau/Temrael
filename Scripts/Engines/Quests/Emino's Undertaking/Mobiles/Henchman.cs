@@ -23,11 +23,6 @@ namespace Server.Engines.Quests.Ninja
 			AddItem( new LeatherNinjaPants() );
 			AddItem( new NinjaTabi() );
 
-			if ( Utility.RandomBool() )
-				AddItem( new Kama() );
-			else
-				AddItem( new Tessen() );
-
 			SetSkill( SkillName.ArmeTranchante, 50.0 );
 			SetSkill( SkillName.Tactiques, 50.0 );
 		}

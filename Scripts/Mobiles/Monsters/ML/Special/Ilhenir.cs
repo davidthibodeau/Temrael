@@ -21,7 +21,6 @@ namespace Server.Mobiles
 			{
 				return new Type[] { 	typeof( ANecromancerShroud ),
 										typeof( LieutenantOfTheBritannianRoyalGuard ),
-										typeof( OblivionsNeedle ),
 										typeof( TheRobeOfBritanniaAri ) };
 			}
 		}

@@ -31,11 +31,9 @@ namespace Server.Mobiles
 
 				if ( Core.AOS )
 				{
-					Add( new GenericBuyInfo( typeof( BoneHarvester ), 35, 20, 0x26BB, 0 ) );
-					Add( new GenericBuyInfo( typeof( CrescentBlade ), 37, 20, 0x26C1, 0 ) );
-					Add( new GenericBuyInfo( typeof( DoubleBladedStaff ), 35, 20, 0x26BF, 0 ) );
+
 					Add( new GenericBuyInfo( typeof( Lance ), 34, 20, 0x26C0, 0 ) );
-					Add( new GenericBuyInfo( typeof( Pike ), 39, 20, 0x26BE, 0 ) );
+
 					Add( new GenericBuyInfo( typeof( Scythe ), 39, 20, 0x26BA, 0 ) );
 				}
 

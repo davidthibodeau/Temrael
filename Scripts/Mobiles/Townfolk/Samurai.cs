@@ -38,13 +38,6 @@ namespace Server.Mobiles
 
 			switch ( Utility.Random( 3 ) )
 			{
-				case 0:	AddItem( new Lajatang() );	break;
-				case 1:	AddItem( new Wakizashi() );	break;
-				case 2:	AddItem( new NoDachi() );	break;
-			}
-
-			switch ( Utility.Random( 3 ) )
-			{
 				case 0:	AddItem( new LeatherSuneate() );	break;
 				case 1:	AddItem( new PlateSuneate() );		break;
 				case 2:	AddItem( new StuddedHaidate() );	break;

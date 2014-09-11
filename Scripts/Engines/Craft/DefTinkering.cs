@@ -156,12 +156,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Axle), "Objets de Bois", "Essieu", 0.0, 25.0, typeof(Log), 1044041, 2, 1044351);
             index = AddCraft(typeof(RollingPin), "Objets de Bois", "Rouleau à Pâtisserie", 0.0, 50.0, typeof(Log), 1044041, 5, 1044351);
 
-			if( Core.SE )
-			{
-				index = AddCraft( typeof( Nunchaku ), 1044042, 1030158, 70.0, 120.0, typeof( FerIngot ), 1044036, 3, 1044037 );
-				AddRes( index, typeof( Log ), 1044041, 8, 1044351 );
-				SetNeededExpansion( index, Expansion.SE );
-			}
 			#endregion
 
 			#region Tools

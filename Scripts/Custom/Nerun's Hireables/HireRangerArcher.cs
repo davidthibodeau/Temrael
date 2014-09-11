@@ -65,12 +65,9 @@ namespace Server.Mobiles
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
 
-            // Pick a random sword
-            switch (Utility.Random(2))
-            {
-                case 0: AddItem(new Bow()); break;
-                case 1: AddItem(new CompositeBow()); break;
-            }
+
+            AddItem(new Bow());
+
 
             AddItem(new RangerChest());
             AddItem(new RangerArms());

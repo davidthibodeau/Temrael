@@ -36,7 +36,6 @@ namespace Server.Engines.Quests.Doom
 		public override void InitOutfit()
 		{
 			EquipItem( new ChylothShroud() );
-			EquipItem( new ChylothStaff() );
 		}
 
 		private Mobile m_AngryAt;

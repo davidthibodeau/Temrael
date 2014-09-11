@@ -694,8 +694,6 @@ namespace Server.Mobiles
 
 		private bool		m_HasGeneratedLoot; // have we generated our loot yet?
 
-		private bool		m_Paragon;
-
 		private bool		m_IsPrisoner;
 
         private int m_DetectionRange;
@@ -900,25 +898,6 @@ namespace Server.Mobiles
 
 		#endregion
 
-		[CommandProperty( AccessLevel.Batisseur )]
-		public bool IsParagon
-		{
-			get{ return m_Paragon; }
-			set
-			{
-				if ( m_Paragon == value )
-					return;
-				else if ( value )
-					Paragon.Convert( this );
-				else
-					Paragon.UnConvert( this );
-
-				m_Paragon = value;
-
-				InvalidateProperties();
-			}
-		}
-
 		public virtual FoodType FavoriteFood{ get{ return FoodType.Meat; } }
 		public virtual PackInstinct PackInstinct{ get{ return PackInstinct.None; } }
 
@@ -1091,9 +1070,6 @@ namespace Server.Mobiles
 		public virtual int BreathComputeDamage()
 		{
 			int damage = (int)(Hits * BreathDamageScalar);
-
-			if ( IsParagon )
-				damage = (int)(damage / Paragon.HitsBuff);
 
 			return damage;
 		}
@@ -2319,9 +2295,6 @@ namespace Server.Mobiles
 			// Version 11
 			writer.Write( (bool) m_HasGeneratedLoot );
 
-			// Version 12
-			writer.Write( (bool) m_Paragon );
-
 			// Version 13
 			writer.Write( (bool) ( m_Friends != null && m_Friends.Count > 0 ) );
 
@@ -2525,11 +2498,6 @@ namespace Server.Mobiles
 			else
 				m_HasGeneratedLoot = true;
 
-			if ( version >= 12 )
-				m_Paragon = reader.ReadBool();
-			else
-				m_Paragon = false;
-
 			if ( version >= 13 && reader.ReadBool() )
 				m_Friends = reader.ReadStrongMobileList();
 			else if ( version < 13 && m_ControlOrder >= OrderType.Unfriend )
@@ -2556,10 +2524,10 @@ namespace Server.Mobiles
 			else if ( isStandardPassive && m_dCurrentSpeed == m_dPassiveSpeed )
 				m_dCurrentSpeed = passiveSpeed;
 
-			if ( isStandardActive && !m_Paragon )
+			if ( isStandardActive)
 				m_dActiveSpeed = activeSpeed;
 
-			if ( isStandardPassive && !m_Paragon )
+			if ( isStandardPassive)
 				m_dPassiveSpeed = passiveSpeed;
 
 			if ( version >= 14 )
@@ -2608,10 +2576,6 @@ namespace Server.Mobiles
 				m_DeleteTimer.Start();
 			}
 
-			if( version <= 14 && m_Paragon && Hue == 0x31 )
-			{
-				Hue = Paragon.Hue; //Paragon hue fixed, should now be 0x501.
-			}
 
 			CheckStatTimers();
 
@@ -3375,7 +3339,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				return m_bTamable && !m_Paragon;
+                return m_bTamable;
 			}
 			set
 			{
@@ -3465,8 +3429,6 @@ namespace Server.Mobiles
 		{
 			Poison p = HitPoison;
 
-			if ( m_Paragon )
-				p = PoisonImpl.IncreaseLevel( p );
 
 			if ( p != null && HitPoisonChance >= Utility.RandomDouble() ) {
 				defender.ApplyPoison( this, p );
@@ -4085,7 +4047,7 @@ namespace Server.Mobiles
 		{
 			base.OnMovement( m, oldLocation );
 
-			if ( ReacquireOnMovement || m_Paragon )
+			if ( ReacquireOnMovement)
 				ForceReacquire();
 
 			InhumanSpeech speechType = this.SpeechType;
@@ -4477,20 +4439,6 @@ namespace Server.Mobiles
 				m_KillersLuck = LootPack.GetLuckChanceForKiller( this );
 
 			GenerateLoot();
-
-			if ( m_Paragon )
-			{
-				if ( Fame < 1250 )
-					AddLoot( LootPack.Meager );
-				else if ( Fame < 2500 )
-					AddLoot( LootPack.Average );
-				else if ( Fame < 5000 )
-					AddLoot( LootPack.Rich );
-				else if ( Fame < 10000 )
-					AddLoot( LootPack.FilthyRich );
-				else
-					AddLoot( LootPack.UltraRich );
-			}
 
 			m_Spawning = false;
 			m_KillersLuck = 0;
@@ -4930,9 +4878,7 @@ namespace Server.Mobiles
 
 			if ( !Summoned && !NoKillAwards && !IsBonded && treasureLevel >= 0 )
 			{
-				if ( m_Paragon && Paragon.ChestChance > Utility.RandomDouble() )
-					PackItem( new ParagonChest( this.Name, treasureLevel ) );
-				else if ( (Map == Map.Felucca || Map == Map.Trammel) && TreasureMap.LootChance >= Utility.RandomDouble() )
+                if ( (Map == Map.Felucca || Map == Map.Trammel) && TreasureMap.LootChance >= Utility.RandomDouble() )
 					PackItem( new TreasureMap( treasureLevel, Map ) );
 			}
 
@@ -5484,22 +5430,6 @@ namespace Server.Mobiles
 			return true;
 		}
 
-		private static Type[] m_MinorArtifactsMl = new Type[]
-		{
-			typeof( AegisOfGrace ), typeof( BladeDance ), typeof( Bonesmasher ),
-			typeof( Boomstick ), typeof( FeyLeggings ), typeof( FleshRipper ),
-			typeof( HelmOfSwiftness ), typeof( PadsOfTheCuSidhe ), typeof( QuiverOfRage ),
-			typeof( QuiverOfElements ), typeof( RaedsGlory ), typeof( RighteousAnger ),
-			typeof( RobeOfTheEclipse ), typeof( RobeOfTheEquinox ), typeof( SoulSeeker ),
-			typeof( TalonBite ), typeof( WildfireBow ), typeof( Windsong ),
-			// TODO: Brightsight lenses, Bloodwood spirit, Totem of the void
-		};
-
-		public static Type[] MinorArtifactsMl
-		{
-			get { return m_MinorArtifactsMl; }
-		}
-
 		private static bool EnableRummaging = true;
 
 		private const double ChanceToRummage = 0.5; // 50%
@@ -5804,7 +5734,7 @@ namespace Server.Mobiles
 				{
 					BaseCreature t = (BaseCreature)target;
 
-					if ( t.Unprovokable || (t.IsParagon && BaseInstrument.GetBaseDifficulty( t ) >= 160.0) )
+					if ( t.Unprovokable || (BaseInstrument.GetBaseDifficulty( t ) >= 160.0) )
 						return;
 
 					t.BardProvoked = true;

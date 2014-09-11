@@ -12,7 +12,7 @@ namespace Server.Mobiles
 	{
 		public override ChampionSkullType SkullType{ get{ return ChampionSkullType.Greed; } }
 
-		public override Type[] UniqueList{ get{ return new Type[] { typeof( FangOfRactus ) }; } }
+		public override Type[] UniqueList{ get{ return new Type[] {  }; } }
 		public override Type[] SharedList{ get{ return new Type[] { 	typeof( EmbroideredOakLeafCloak ),
 										typeof( DjinnisRing ),
 										typeof( DetectiveBoots ),

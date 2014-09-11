@@ -178,9 +178,7 @@ namespace Server.Engines.BulkOrders
 	{
 		#region Constructors
 		private static readonly ConstructCallback SturdyShovel = new ConstructCallback( CreateSturdyShovel );
-		private static readonly ConstructCallback SturdyPickaxe = new ConstructCallback( CreateSturdyPickaxe );
 		private static readonly ConstructCallback MiningGloves = new ConstructCallback( CreateMiningGloves );
-		private static readonly ConstructCallback GargoylesPickaxe = new ConstructCallback( CreateGargoylesPickaxe );
 		private static readonly ConstructCallback ProspectorsTool = new ConstructCallback( CreateProspectorsTool );
 		private static readonly ConstructCallback PowderOfTemperament = new ConstructCallback( CreatePowderOfTemperament );
 		private static readonly ConstructCallback RunicHammer = new ConstructCallback( CreateRunicHammer );
@@ -193,10 +191,6 @@ namespace Server.Engines.BulkOrders
 			return new SturdyShovel();
 		}
 
-		private static Item CreateSturdyPickaxe( int type )
-		{
-			return new SturdyPickaxe();
-		}
 
 		private static Item CreateMiningGloves( int type )
 		{
@@ -208,11 +202,6 @@ namespace Server.Engines.BulkOrders
 				return new RingmailGlovesOfMining( 5 );
 
 			throw new InvalidOperationException();
-		}
-
-		private static Item CreateGargoylesPickaxe( int type )
-		{
-			return new GargoylesPickaxe();
 		}
 
 		private static Item CreateProspectorsTool( int type )
@@ -270,9 +259,9 @@ namespace Server.Engines.BulkOrders
 				// Weapons
 				new RewardType( 200, typeof( Bardiche ), typeof( Halberd ) ),
 				new RewardType( 300, typeof( Dagger ), typeof( ShortSpear ), typeof( Spear ), typeof( WarFork ), typeof( Kryss ) ),	//OSI put the dagger in there.  Odd, ain't it.
-				new RewardType( 350, typeof( Axe ), typeof( BattleAxe ), typeof( DoubleAxe ), typeof( ExecutionersAxe ), typeof( LargeBattleAxe ), typeof( TwoHandedAxe ) ),
+				new RewardType( 350, typeof( Axe ), typeof( DoubleAxe ), typeof( ExecutionersAxe ), typeof( LargeBattleAxe ), typeof( TwoHandedAxe ) ),
 				new RewardType( 350, typeof( Broadsword ), typeof( Cutlass ), typeof( Katana ), typeof( Longsword ), typeof( Scimitar ), /*typeof( ThinLongsword ),*/ typeof( VikingSword ) ),
-				new RewardType( 350, typeof( WarAxe ), typeof( HammerPick ), typeof( Mace ), typeof( Maul ), typeof( WarHammer ), typeof( WarMace ) )
+				new RewardType( 350, typeof( WarAxe ),  typeof( Mace ), typeof( Maul ), typeof( WarHammer ), typeof( WarMace ) )
 			};
 
 		public override int ComputePoints( int quantity, bool exceptional, BulkMaterialType material, int itemCount, Type type )
@@ -432,10 +421,10 @@ namespace Server.Engines.BulkOrders
 			Groups = new RewardGroup[]
 				{
 					new RewardGroup(    0, new RewardItem( 1, SturdyShovel ) ),
-					new RewardGroup(   25, new RewardItem( 1, SturdyPickaxe ) ),
-					new RewardGroup(   50, new RewardItem( 45, SturdyShovel ), new RewardItem( 45, SturdyPickaxe ), new RewardItem( 10, MiningGloves, 1 ) ),
-					new RewardGroup(  200, new RewardItem( 45, GargoylesPickaxe ), new RewardItem( 45, ProspectorsTool ), new RewardItem( 10, MiningGloves, 3 ) ),
-					new RewardGroup(  400, new RewardItem( 2, GargoylesPickaxe ), new RewardItem( 2, ProspectorsTool ), new RewardItem( 1, PowderOfTemperament ) ),
+
+					new RewardGroup(   50, new RewardItem( 45, SturdyShovel ),  new RewardItem( 10, MiningGloves, 1 ) ),
+					new RewardGroup(  200, new RewardItem( 45, ProspectorsTool ), new RewardItem( 10, MiningGloves, 3 ) ),
+					new RewardGroup(  400, new RewardItem( 2, ProspectorsTool ), new RewardItem( 1, PowderOfTemperament ) ),
 					new RewardGroup(  450, new RewardItem( 9, PowderOfTemperament ), new RewardItem( 1, MiningGloves, 5 ) ),
 					new RewardGroup(  500, new RewardItem( 1, RunicHammer, 1 ) ),
 					new RewardGroup(  550, new RewardItem( 3, RunicHammer, 1 ), new RewardItem( 2, RunicHammer, 2 ) ),

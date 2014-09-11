@@ -119,7 +119,6 @@ namespace Server.Engines.Craft
 				if ( m_CraftSystem is DefTinkering )
 				{
 					return ( weapon is Cleaver )
-						|| ( weapon is Hatchet )
 						|| ( weapon is Pickaxe )
 						|| ( weapon is ButcherKnife )
 						|| ( weapon is SkinningKnife );

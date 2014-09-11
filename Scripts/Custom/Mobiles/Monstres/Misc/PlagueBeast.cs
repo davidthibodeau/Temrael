@@ -31,7 +31,7 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int DevourGoal
 		{
-			get { return ( IsParagon ? m_DevourGoal + 25 : m_DevourGoal ); }
+			get { return (m_DevourGoal ); }
 			set { m_DevourGoal = value; }
 		}
 
@@ -88,7 +88,7 @@ namespace Server.Mobiles
 		{
 			base.OnGaveMeleeAttack( defender );
 
-			defender.ApplyPoison( this, IsParagon ? Poison.Lethal : Poison.Deadly );
+			defender.ApplyPoison( this, Poison.Deadly );
 			defender.FixedParticles( 0x374A, 10, 15, 5021, EffectLayer.Waist );
 			defender.PlaySound( 0x1CB );
 		}
@@ -234,9 +234,6 @@ namespace Server.Mobiles
 		private void IncreaseHits( int hp )
 		{
             int maxhits = 2000;
-
-            if ( this.IsParagon )
-                maxhits = (int)(maxhits * Paragon.HitsBuff);
 
 			if( hp < 1000 && !Core.AOS )
 				hp = (hp * 100) / 60;

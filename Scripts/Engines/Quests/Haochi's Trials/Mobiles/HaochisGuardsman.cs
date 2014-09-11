@@ -47,15 +47,6 @@ namespace Server.Engines.Quests.Samurai
 				default: AddItem( new LeatherJingasa() ); break;
 			}
 
-			Item weapon;
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0: weapon = new NoDachi(); break;
-				case 1: weapon = new Lajatang(); break;
-				default: weapon = new Wakizashi(); break;
-			}
-			weapon.Movable = false;
-			AddItem( weapon );
 		}
 
 		public override int TalkNumber{ get	{ return -1; } }

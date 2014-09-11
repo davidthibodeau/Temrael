@@ -66,21 +66,7 @@ namespace Server.Mobiles
 			AddItem( new LeatherNinjaHood());
 			AddItem( new LeatherNinjaPants());
 			AddItem( new LeatherNinjaMitts());
-			
-			//if( Utility.RandomDouble() < 0.33 )
-			//	AddItem( new SmokeBomb() );
-
-			switch ( Utility.Random( 8 ))
-			{
-				case 0: AddItem( new Tessen() ); break;
-				case 1: AddItem( new Wakizashi() ); break;
-				case 2: AddItem( new Nunchaku() ); break;
-				case 3: AddItem( new Daisho() ); break;
-				case 4: AddItem( new Sai() ); break;
-				case 5: AddItem( new Tekagi() ); break;
-				case 6: AddItem( new Kama() ); break;
-				case 7: AddItem( new Katana() ); break;
-			}
+		   
 
 			Utility.AssignRandomHair( this );
 		}

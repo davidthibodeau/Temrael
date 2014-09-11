@@ -55,8 +55,6 @@ namespace Server.Mobiles
 
 			PackItem( pack );
 
-			AddItem( new JukaBow() );
-
 			// TODO: Bandage self
 		}
 

@@ -18,12 +18,8 @@ namespace Server.Items
 		private static Type[] m_Artifacts = new Type[]
 		{
 			typeof( CandelabraOfSouls ), typeof( GoldBricks ), typeof( PhillipsWoodenSteed ),
-			typeof( ArcticDeathDealer ), typeof( BlazeOfDeath ), typeof( BurglarsBandana ),
-			typeof( CavortingClub ), typeof( DreadPirateHat ),
-			typeof( EnchantedTitanLegBone ), typeof( GwennosHarp ), typeof( IolosLute ),
-			typeof( LunaLance ), typeof( NightsKiss ), typeof( NoxRangersHeavyCrossbow ),
-			typeof( PolarBearMask ), typeof( VioletCourage ), typeof( HeartOfTheLion ),
-			typeof( ColdBlood ), typeof( AlchemistsBauble )
+			typeof( BurglarsBandana ), typeof( DreadPirateHat ),typeof( GwennosHarp ), typeof( IolosLute ),
+			typeof( NightsKiss ), typeof( PolarBearMask ), typeof( VioletCourage ), typeof( HeartOfTheLion ),typeof( AlchemistsBauble )
 		};
 
 		private int m_Level;

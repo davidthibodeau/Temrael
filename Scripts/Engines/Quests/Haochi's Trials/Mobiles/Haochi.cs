@@ -147,10 +147,6 @@ namespace Server.Engines.Quests.Samurai
 
 				if ( obj != null && !obj.Completed )
 				{
-					BaseWeapon weapon = new Daisho();
-					BaseRunicTool.ApplyAttributesTo( weapon, Utility.Random( 1,3 ), 10, 30 );
-					player.AddToBackpack( weapon );
-
 					BaseArmor armor = new LeatherDo();
 					BaseRunicTool.ApplyAttributesTo( armor, Utility.Random( 1,3 ), 10, 20 );
 					player.AddToBackpack( armor );

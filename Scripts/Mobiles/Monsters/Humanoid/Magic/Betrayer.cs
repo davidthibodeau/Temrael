@@ -62,15 +62,11 @@ namespace Server.Mobiles
 
 			if ( 0.05 > Utility.RandomDouble() )
 			{
-				if ( !IsParagon )
-				{
-					if ( 0.75 > Utility.RandomDouble() )
-						c.DropItem( DawnsMusicGear.RandomCommon );
-					else
-						c.DropItem( DawnsMusicGear.RandomUncommon );
-				}
-				else
-					c.DropItem( DawnsMusicGear.RandomRare );
+                if (0.75 > Utility.RandomDouble())
+                    c.DropItem(DawnsMusicGear.RandomCommon);
+                else
+                    c.DropItem(DawnsMusicGear.RandomUncommon);
+
 			}
 		}
 

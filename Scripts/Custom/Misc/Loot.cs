@@ -9,15 +9,6 @@ namespace Server
 	public class Loot
 	{
 		#region List definitions
-		private static Type[] m_SEWeaponTypes = new Type[]
-			{
-				typeof( Bokuto ),				typeof( Daisho ),				typeof( Kama ),
-				typeof( Lajatang ),				typeof( NoDachi ),				typeof( Nunchaku ),
-				typeof( Sai ),					typeof( Tekagi ),				typeof( Tessen ),
-				typeof( Tetsubo ),				typeof( Wakizashi )
-			};
-
-		public static Type[] SEWeaponTypes{ get{ return m_SEWeaponTypes; } }
 
 		private static Type[] m_AosWeaponTypes = new Type[]
 			{
@@ -30,8 +21,8 @@ namespace Server
 
 		private static Type[] m_WeaponTypes = new Type[]
 			{
-				typeof( Axe ),					typeof( BattleAxe ),			typeof( DoubleAxe ),
-				typeof( ExecutionersAxe ),		typeof( Hatchet ),				typeof( LargeBattleAxe ),
+				typeof( Axe ),					typeof( DoubleAxe ),
+				typeof( ExecutionersAxe ),		typeof( LargeBattleAxe ),
 				typeof( TwoHandedAxe ),			typeof( WarAxe ),				typeof( Club ),
 				typeof( Mace ),					typeof( Maul ),					typeof( WarHammer ),
 				typeof( WarMace ),				typeof( Bardiche ),				typeof( Halberd ),
@@ -40,7 +31,7 @@ namespace Server
 				typeof( QuarterStaff ),			typeof( Broadsword ),			typeof( Cutlass ),
 				typeof( Katana ),				typeof( Kryss ),				typeof( Longsword ),
 				typeof( Scimitar ),				typeof( VikingSword ),			typeof( Pickaxe ),
-				typeof( HammerPick ),			typeof( ButcherKnife ),			typeof( Cleaver ),
+				typeof( ButcherKnife ),			typeof( Cleaver ),
 				typeof( Dagger ),				typeof( SkinningKnife ),		typeof( ShepherdsCrook )
 			};
 
@@ -104,20 +95,6 @@ namespace Server
 			};
 
         public static Type[] TemraelWeaponTypes { get { return m_TemraelWeaponTypes; } }
-
-		private static Type[] m_SERangedWeaponTypes = new Type[]
-			{
-				typeof( Yumi )
-			};
-
-		public static Type[] SERangedWeaponTypes{ get{ return m_SERangedWeaponTypes; } }
-
-		private static Type[] m_AosRangedWeaponTypes = new Type[]
-			{
-				typeof( CompositeBow ),			typeof( RepeatingCrossbow )
-			};
-
-		public static Type[] AosRangedWeaponTypes{ get{ return m_AosRangedWeaponTypes; } }
 
 		private static Type[] m_RangedWeaponTypes = new Type[]
 			{
@@ -392,16 +369,6 @@ namespace Server
 		public static Type[] TavarasJournalTypes{ get{ return m_TavarasJournalTypes; } }
 
 
-		private static Type[] m_WandTypes = new Type[]
-			{
-				typeof( ClumsyWand ),               typeof( FeebleWand ),           typeof( FireballWand ),
-				typeof( GreaterHealWand ),          typeof( HarmWand ),             typeof( HealWand ),
-				typeof( IDWand ),                   typeof( LightningWand ),        typeof( MagicArrowWand ),
-				typeof( ManaDrainWand ),            typeof( WeaknessWand )          
-                
-			};
-		public static Type[] WandTypes{ get{ return m_WandTypes; } }
-
 		private static Type[] m_SEClothingTypes = new Type[]
 			{
 				typeof( ClothNinjaJacket ),		typeof( FemaleKimono ),			typeof( Hakama ),
@@ -626,11 +593,6 @@ namespace Server
 
 		#region Accessors
 
-		public static BaseWand RandomWand()
-		{
-			return Construct( m_WandTypes ) as BaseWand;
-		}
-
 		public static BaseClothing RandomClothing()
 		{
 			return RandomClothing( false );
@@ -792,11 +754,9 @@ namespace Server
 
 		public static Item RandomArmorOrShieldOrWeapon( bool inTokuno )
 		{
-			if ( Core.SE && inTokuno )
-				return Construct( m_SEWeaponTypes, m_AosWeaponTypes, m_WeaponTypes, m_SERangedWeaponTypes, m_AosRangedWeaponTypes, m_RangedWeaponTypes, m_SEArmorTypes, m_ArmorTypes, m_SEHatTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes );
 
 			if ( Core.AOS )
-				return Construct( m_AosWeaponTypes, m_WeaponTypes, m_AosRangedWeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes );
+				return Construct( m_AosWeaponTypes, m_WeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes );
 
 			return Construct( m_WeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_HatTypes, m_ShieldTypes );
 		}
@@ -808,11 +768,8 @@ namespace Server
 
 		public static Item RandomArmorOrShieldOrWeaponOrJewelry( bool inTokuno )
 		{
-			if ( Core.SE && inTokuno )
-				return Construct( m_SEWeaponTypes, m_AosWeaponTypes, m_WeaponTypes, m_SERangedWeaponTypes, m_AosRangedWeaponTypes, m_RangedWeaponTypes, m_SEArmorTypes, m_ArmorTypes, m_SEHatTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes, m_JewelryTypes );
-
 			if ( Core.AOS )
-				return Construct( m_AosWeaponTypes, m_WeaponTypes, m_AosRangedWeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes, m_JewelryTypes );
+				return Construct( m_AosWeaponTypes, m_WeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes, m_JewelryTypes );
 
 			return Construct( m_WeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_HatTypes, m_ShieldTypes, m_JewelryTypes );
 		}
@@ -820,7 +777,7 @@ namespace Server
 		#region Chest of Heirlooms
 		public static Item ChestOfHeirloomsContains()
 		{
-			return Construct( m_SEArmorTypes, m_SEHatTypes, m_SEWeaponTypes, m_SERangedWeaponTypes, m_JewelryTypes );
+			return Construct( m_SEArmorTypes, m_SEHatTypes, m_JewelryTypes );
 		}
 		#endregion
 

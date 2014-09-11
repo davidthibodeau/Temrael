@@ -36,10 +36,6 @@ namespace Server.Engines.Quests.Ninja
 			AddItem( new PlateHaidate() );
 			AddItem( new PlateDo() );
 			AddItem( new PlateHiroSode() );
-
-			Nunchaku nunchaku = new Nunchaku();
-			nunchaku.Movable = false;
-			AddItem( nunchaku );
 		}
 
 		public override int GetAutoTalkRange( PlayerMobile pm )
@@ -151,28 +147,7 @@ namespace Server.Engines.Quests.Ninja
 											if ( walk != null )
 												stolenTreasure = walk.StolenTreasure;
 
-											Kama kama = new Kama();
 
-											if ( stolenTreasure )
-												BaseRunicTool.ApplyAttributesTo( kama, 1, 10, 20 );
-											else
-												BaseRunicTool.ApplyAttributesTo( kama, 1, 10, 30 );
-
-											if ( player.PlaceInBackpack( kama ) )
-											{
-												katana.Delete();
-												obj.Complete();
-
-												if ( stolenTreasure )
-													qs.AddConversation( new EarnLessGiftsConversation() );
-												else
-													qs.AddConversation( new EarnGiftsConversation() );
-											}
-											else
-											{
-												kama.Delete();
-												player.SendLocalizedMessage( 1046260 ); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.
-											}
 										}
 									}
 								}

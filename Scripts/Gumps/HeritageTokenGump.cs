@@ -285,10 +285,8 @@ namespace Server.Gumps
 				// 7th anniversary
 				case 0x64: types.Add( typeof( LeggingsOfEmbers ) ); cliloc = 1078147; break;
 				case 0x65: types.Add( typeof( RoseOfTrinsic ) ); cliloc = 1062913; break;
-				case 0x66: types.Add( typeof( ShaminoCrossbow ) ); cliloc = 1062915; break;
 				case 0x67: types.Add( typeof( TapestryOfSosaria ) ); cliloc = 1062917; break;
 				case 0x68: types.Add( typeof( HearthOfHomeFireDeed ) ); cliloc = 1062919; break;
-				case 0x69: types.Add( typeof( HolySword ) ); cliloc = 1062921; break;
 				case 0x6A: types.Add( typeof( SamuraiHelm ) ); cliloc = 1062923; break;
 
 				// 8th anniversary

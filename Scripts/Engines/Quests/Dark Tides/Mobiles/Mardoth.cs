@@ -141,7 +141,7 @@ namespace Server.Engines.Quests.Necro
 								cont.DropItem( new DaemonBlood( 20 ) );
 								cont.DropItem( new GraveDust( 20 ) );
 
-								BaseWeapon weapon = new BoneHarvester();
+                                BaseWeapon weapon = new Dagger();
 
 								if ( Core.AOS )
 								{

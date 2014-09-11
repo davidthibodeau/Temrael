@@ -1414,8 +1414,6 @@ namespace Server.Mobiles
 					}
 			}
 
-			if ( IsParagon )
-				IsParagon = false;
 
 			if ( Core.AOS && NameHue == 0x35 )
 				NameHue = -1;
