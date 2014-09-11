@@ -9,6 +9,7 @@ using Server.Spells.Fifth;
 using Server.Spells.Necromancy;
 using System.Collections;
 using Server.Spells;
+using Server.Custom;
 using Server.Scripts.Commands;
 
 //Adjuration
@@ -587,11 +588,19 @@ namespace Server.Spells
 
                     SayMantra();
 
-                    TimeSpan castDelay = this.GetCastDelay();
+                    TimeSpan castTime;
+                    if (this is Custom.CustomSpell.CustomSpell)
+                    {
+                        castTime = (this as Custom.CustomSpell.CustomSpell).m_info.castTime;
+                    }
+                    else
+                    {
+                        castTime = this.GetCastDelay();
+                    }
 
                     if (m_Caster.Body.IsHuman)
                     {
-                        int count = (int)Math.Ceiling(castDelay.TotalSeconds / AnimateDelay.TotalSeconds);
+                        int count = (int)Math.Ceiling(castTime.TotalSeconds / AnimateDelay.TotalSeconds);
 
                         if (count != 0 && AnimateOnCast)
                         {
@@ -609,7 +618,7 @@ namespace Server.Spells
                     if (CheckHands())
                         m_Caster.ClearHands();
 
-                    m_CastTimer = new CastTimer(this, castDelay);
+                    m_CastTimer = new CastTimer(this, castTime);
                     m_CastTimer.Start();
 
                     OnBeginCast();

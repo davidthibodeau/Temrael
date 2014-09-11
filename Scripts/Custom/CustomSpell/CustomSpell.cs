@@ -24,18 +24,18 @@ namespace Server.Custom.CustomSpell
     // Classe de base pour les autres sortes de spell. Non-instanciable.
     public class CustomSpell : Server.Spells.Spell
     {
-        private StyleSpell m_Style;
+        public InfoSpell m_info;
 
         private CustomSpell(Mobile caster, Item scroll, InfoSpell info)
             : base(caster, scroll, (Server.Spells.SpellInfo)info)
         {
-            m_Style = info.style;
+            m_info = info;
         }
 
         // Appelle la bonne fonction, dépendant du type de spell. La fonction appellée est virtual ici, et overridée dans les classes spécialisées.
         public override void OnCast()
         {
-            switch (m_Style)
+            switch (m_info.style)
             {
                     // Targetted
                 case (StyleSpell.Targetted): UseSpellTargetted();
@@ -97,8 +97,9 @@ namespace Server.Custom.CustomSpell
         // NON FONCTIONNEL.
         public abstract class CSpellTargetted : CustomSpell
         {
-            private InfoSpell.Targetted m_info;
+            private new InfoSpell.Targetted m_info;
 
+            // Pourraient être des tableaux --v
             public object   target1 = null,
                             target2 = null, 
                             target3 = null;
@@ -107,8 +108,6 @@ namespace Server.Custom.CustomSpell
                          target2rdy = false,
                          target3rdy = false;
 
-            // Permet de passer à travers la fonction Effect() à chaque fois qu'on click un target.
-            public bool UnEffectParTarget = false;
 
 
             public CSpellTargetted(Mobile caster, Item scroll, InfoSpell.Targetted info)
@@ -126,38 +125,42 @@ namespace Server.Custom.CustomSpell
             }
 
             public override void OnCast()
-            {base.OnCast();}
+            {
+                base.OnCast();
+            }
 
             // Appellé à chaque fois que l'utilisateur clique sur un target.
             private void OnNewTarget()
             {
-                if (UnEffectParTarget)
+                if (target1 != null) // Si le player a cancellé.
                 {
-                    // Un effet à chaque target.
-                    Effect();
-                }
-                else
-                {
-                    if (target1rdy && (target2rdy || m_info.nbTarget <= 1) && (target3rdy || m_info.nbTarget <= 2))
+                    if (m_info.unEffectParTarget)
                     {
-                        // Appelle l'effet seulement lorsque tous les targets demandés sont faits.
+                        // Un effet à chaque target.
                         Effect();
                     }
-                }
+                    else
+                    {
+                        if (target1rdy && (target2rdy || m_info.nbTarget <= 1) && (target3rdy || m_info.nbTarget <= 2))
+                        {
+                            // Appelle l'effet seulement lorsque tous les targets demandés sont faits.
+                            Effect();
+                        }
+                    }
 
-                // Si on veut plus de targets, on en créée un nouveau.
-                if (target2 == null && m_info.nbTarget <= 2)
-                {
-                    Caster.Target = new InternalTarget(this, 2);
-                }
-                else if (target3 == null && m_info.nbTarget <= 3)
-                {
-                    Caster.Target = new InternalTarget(this, 3);
-                }
-                else
-                {
-                    m_Caster.SendMessage("Sequence Finie");
-                    FinishSequence();
+                    // Si on veut plus de targets, on en créée un nouveau.
+                    if (target2 == null && m_info.nbTarget >= 2)
+                    {
+                        Caster.Target = new InternalTarget(this, 2);
+                    }
+                    else if (target3 == null && m_info.nbTarget >= 3)
+                    {
+                        Caster.Target = new InternalTarget(this, 3);
+                    }
+                    else
+                    {
+                        FinishSequence();
+                    }
                 }
             }
 
@@ -207,6 +210,16 @@ namespace Server.Custom.CustomSpell
                     }
 
                     m_Owner.OnNewTarget();
+                }
+
+                protected override void OnTargetCancel(Mobile from, TargetCancelType cancelType)
+                {
+                    // Empêche le cast.
+                    m_Owner.target1 = null;
+                    m_Owner.target2 = null;
+                    m_Owner.target3 = null;
+
+                    base.OnTargetCancel(from, cancelType);
                 }
             }
 

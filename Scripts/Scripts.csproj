@@ -93,7 +93,7 @@
     <Compile Include="Custom\Commandes\TechniqueCombat.cs" />
     <Compile Include="Custom\CustomSpell\CustomSpell.cs" />
     <Compile Include="Custom\CustomSpell\CustomSpellInfo.cs" />
-    <Compile Include="Custom\CustomSpell\CBouleDeGlace.cs" />
+    <Compile Include="Custom\CustomSpell\ExempleTargetted.cs" />
     <Compile Include="Custom\Items\BaseWearable.cs" />
     <Compile Include="Custom\Items\Meubles\ArmesEntrainement.cs" />
     <Compile Include="Custom\Items\Meubles\Bacs.cs" />
@@ -3570,9 +3570,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Addon\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Custom\CustomSpell\CustomSpell - README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
