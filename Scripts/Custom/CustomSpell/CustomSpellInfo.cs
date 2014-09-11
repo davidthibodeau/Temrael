@@ -40,10 +40,21 @@ namespace Server.Custom.CustomSpell
         public class Targetted : InfoSpell
         {
             // Membres aditionnels.
+            private int m_NbTarget = 1;
+            public int nbTarget { get { return m_NbTarget; } set { if (value <= 3 && value >= 1) m_NbTarget = value; } }
 
-            public Targetted(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, int CastTime, params Type[] regs)
+            private int m_Range = 10;
+            public int range { get { return m_Range; } set { if (value <= 20 && value >= 1) m_Range = value; } }
+
+            // Permet de passer à travers la fonction Effect() à chaque fois qu'on click un target.
+            public bool unEffectParTarget = false;
+
+
+            public Targetted(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, int CastTime, int NbTarget, bool unEffectParTarget, int Range, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.Targetted, regs)
             {
+                nbTarget = NbTarget;
+                range = Range;
             }
         }
 
