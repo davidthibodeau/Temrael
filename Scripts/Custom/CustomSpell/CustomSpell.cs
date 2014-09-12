@@ -42,7 +42,7 @@ namespace Server.Custom.CustomSpell
                     break;
 
                     // TargettedTimer
-                case    (StyleSpell.TargettedTimer) : UseSpellTargettedTimer();
+                case (StyleSpell.TargettedTimer) : UseSpellTargettedTimer();
                     break;
 
                     // AoE
@@ -94,7 +94,7 @@ namespace Server.Custom.CustomSpell
         #endregion
 
 
-        // NON FONCTIONNEL.
+        // FONCTIONNEL !
         public abstract class CSpellTargetted : CustomSpell
         {
             private new InfoSpell.Targetted m_info;
@@ -116,20 +116,20 @@ namespace Server.Custom.CustomSpell
                 m_info = info;
             }
 
-            // Point d'entrée, lorsque l'on appelle un Spell.Cast();
-            public override void UseSpellTargetted()
-            {
-                // Pré spell.
-
-                Caster.Target = new InternalTarget(this, 1);
-            }
-
             public override void OnCast()
             {
                 base.OnCast();
             }
 
+
+            // Point d'entrée, lorsque l'on appelle un Spell.Cast();
+            public override void UseSpellTargetted()
+            {
+                Caster.Target = new InternalTarget(this, 1);
+            }
+
             // Appellé à chaque fois que l'utilisateur clique sur un target.
+            // Gère aussi quand est-ce que la fonction Effect() est appellée.
             private void OnNewTarget()
             {
                 if (target1 != null) // Si le player a cancellé.
@@ -226,15 +226,21 @@ namespace Server.Custom.CustomSpell
         }
 
 
-
-
-
-
-
         // NON FONCTIONNEL.
         public abstract class CSpellTargettedTimer : CustomSpell
         {
-            private InfoSpell.TargettedTimer m_info;
+            private new InfoSpell.TargettedTimer m_info;
+
+            private EffectTimer effectTimer;
+
+            // Pourraient être des tableaux --v
+            public object target1 = null,
+                            target2 = null,
+                            target3 = null;
+
+            private bool target1rdy = false,
+                         target2rdy = false,
+                         target3rdy = false;
 
             public CSpellTargettedTimer(Mobile caster, Item scroll, InfoSpell.TargettedTimer info)
                 : base(caster, scroll, (InfoSpell)info)
@@ -242,19 +248,158 @@ namespace Server.Custom.CustomSpell
                 m_info = info;
             }
 
-            public override void UseSpellTargettedTimer()
+            public override void OnCast()
             {
-                // Partie gérée par la classe... - range, cast time, mana cost, etc.. etc..
-
-                // TIMER !
-
-                Effect();
-
-                //
+                base.OnCast();
             }
 
-            public abstract void Effect();
+
+            // Appellé par .Cast().
+            public override void UseSpellTargettedTimer()
+            {
+                Caster.Target = new InternalTarget(this, 1);
+            }
+
+            // Appellé à chaque fois que l'utilisateur clique sur un target.
+            // Gère aussi quand est-ce que la fonction Effect() est appellée.
+            private void OnNewTarget()
+            {
+                if (target1 != null) // Si le player a cancellé.
+                {
+
+                    if (target1rdy && (target2rdy || m_info.nbTarget <= 1) && (target3rdy || m_info.nbTarget <= 2))
+                    {
+                        // CREATION DU TIMER.
+                        effectTimer = new EffectTimer(this, m_info.duree, m_info.intervale);
+                    }
+
+                    // Si on veut plus de targets, on en créée un nouveau.
+                    if (target2 == null && m_info.nbTarget >= 2)
+                    {
+                        Caster.Target = new InternalTarget(this, 2);
+                    }
+                    else if (target3 == null && m_info.nbTarget >= 3)
+                    {
+                        Caster.Target = new InternalTarget(this, 3);
+                    }
+                    else
+                    {
+                        FinishSequence();
+                    }
+                }
+            }
+
+
+            // Effet au début du timer.
+            public abstract void OnStart();
+            // Effet à chaque Tick du timer.
+            public abstract void OnTick();
+            // Effet a la fin du timer.
+            public abstract void OnEnd();
+
+
+            // Timer qui est utilisé après le temps de cast, et une fois que tous les targets ont été choisis. Appelle les fonctions asbtract OnStart, OnTick, et OnEnd définies par l'utilisteur.
+            private class EffectTimer : Timer
+            {
+                private CSpellTargettedTimer m_owner;
+                private DateTime m_End;
+
+                private int m_NumeroTick = 0;
+                public int NumeroTick { get { return m_NumeroTick; } }
+
+                public EffectTimer(CSpellTargettedTimer owner, TimeSpan duree, TimerPriority intervale )
+                    : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0))
+                {
+                    m_End = DateTime.Now + duree;
+                    m_owner = owner;
+
+                    Priority = intervale;
+
+                    m_owner.OnStart();
+                    Start();
+                }
+
+                protected override void OnTick()
+                {
+                    m_NumeroTick++;
+                    // Si le temps est fini.
+                    if (DateTime.Now >= m_End)
+                    {
+                        m_owner.OnEnd();
+                        Stop();
+                    }
+                    else
+                    {
+                        m_owner.OnTick();
+                    }
+                }
+            }
+            public void StopSpell()
+            {
+                effectTimer.Stop();
+            }
+            public int NumeroTick
+            {
+                get { return effectTimer.NumeroTick; }
+            }
+
+            // Créer un target et retourner l'objet dans le "target" spécifié par le int.
+            private class InternalTarget : Target
+            {
+                private CSpellTargettedTimer m_Owner;
+
+                private int m_numeroTarget = 1;
+                private int numeroTarget { get { return m_numeroTarget; } set { if (value <= 3 && value >= 1) m_numeroTarget = numeroTarget; } }
+
+                public InternalTarget(CSpellTargettedTimer owner, int NumeroTarget)
+                    : base(owner.m_info.range, true, TargetFlags.None)
+                {
+                    numeroTarget = NumeroTarget;
+                    m_Owner = owner;
+
+                    switch (numeroTarget)
+                    {
+                        case 1: m_Owner.target1rdy = false;
+                            break;
+                        case 2: m_Owner.target2rdy = false;
+                            break;
+                        case 3: m_Owner.target3rdy = false;
+                            break;
+                    }
+                }
+
+                protected override void OnTarget(Mobile from, object o)
+                {
+                    switch (numeroTarget)
+                    {
+                        case 1: m_Owner.target1 = o;
+                            m_Owner.target1rdy = true;
+                            break;
+                        case 2: m_Owner.target2 = o;
+                            m_Owner.target2rdy = true;
+                            break;
+                        case 3: m_Owner.target3 = o;
+                            m_Owner.target3rdy = true;
+                            break;
+                    }
+
+                    m_Owner.OnNewTarget();
+                }
+
+                protected override void OnTargetCancel(Mobile from, TargetCancelType cancelType)
+                {
+                    // Empêche le cast.
+                    m_Owner.target1 = null;
+                    m_Owner.target2 = null;
+                    m_Owner.target3 = null;
+
+                    base.OnTargetCancel(from, cancelType);
+                }
+            }
+
         }
+
+
 
 
         // NON FONCTIONNEL.
@@ -279,7 +424,6 @@ namespace Server.Custom.CustomSpell
 
             public abstract void Effect();
         }
-
 
         // NON FONCTIONNEL.
         public abstract class CSpellAoETimer : CustomSpell
@@ -306,7 +450,6 @@ namespace Server.Custom.CustomSpell
             public abstract void Effect();
         }
 
-
         // NON FONCTIONNEL.
         public abstract class CSpellSelf : CustomSpell
         {
@@ -331,7 +474,6 @@ namespace Server.Custom.CustomSpell
 
             public abstract void Effect();
         }
-
 
         // NON FONCTIONNEL.
         public abstract class CSpellSelfTimer : CustomSpell

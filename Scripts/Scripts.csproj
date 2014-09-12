@@ -94,6 +94,7 @@
     <Compile Include="Custom\CustomSpell\CustomSpell.cs" />
     <Compile Include="Custom\CustomSpell\CustomSpellInfo.cs" />
     <Compile Include="Custom\CustomSpell\ExempleTargetted.cs" />
+    <Compile Include="Custom\CustomSpell\ExempleTargettedTimer.cs" />
     <Compile Include="Custom\Items\BaseWearable.cs" />
     <Compile Include="Custom\Items\Meubles\ArmesEntrainement.cs" />
     <Compile Include="Custom\Items\Meubles\Bacs.cs" />

@@ -5,6 +5,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
 using Server.TechniquesCombat;
+using Server.Spells;
 
 namespace Server.Custom.Commandes
 {
@@ -15,6 +16,8 @@ namespace Server.Custom.Commandes
             CommandSystem.Register("TechniqueAssassin", AccessLevel.Player, new CommandEventHandler(TechniqueAssassin_OnCommand));
             CommandSystem.Register("Technique1", AccessLevel.Player, new CommandEventHandler(Technique1_OnCommand));
             // ...
+            CommandSystem.Register("Targetted", AccessLevel.Player, new CommandEventHandler(Targetted_OnCommand));
+            CommandSystem.Register("TargettedTimer", AccessLevel.Player, new CommandEventHandler(TargettedTimer_OnCommand));
         }
 
         [Usage("TechniqueAssassin")]
@@ -34,5 +37,19 @@ namespace Server.Custom.Commandes
         }
 
         // ...
+
+        [Usage("Targetted")]
+        [Description("Exemple du targettedTimer")]
+        public static void Targetted_OnCommand(CommandEventArgs e)
+        {
+            (new Custom.CustomSpell.ExempleTargetted(e.Mobile, null)).Cast();
+        }
+
+        [Usage("TargettedTimer")]
+        [Description("Exemple du targettedTimer")]
+        public static void TargettedTimer_OnCommand(CommandEventArgs e)
+        {
+            (new Custom.CustomSpell.ExempleTargettedTimer(e.Mobile, null)).Cast();
+        }
     }
 }
