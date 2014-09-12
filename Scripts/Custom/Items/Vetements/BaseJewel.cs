@@ -7,14 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Server.Items
 {
-    public enum RareteItem
-    {
-        Mediocre,
-        Normal,
-        Magique,
-        Rare,
-        Legendaire
-    }
+
 	public enum GemType
 	{
 		None,
@@ -29,86 +22,17 @@ namespace Server.Items
 		Diamond
 	}
 
-	public abstract class BaseJewel : Item, ICraftable
+	public abstract class BaseJewel : BaseWearable, ICraftable
 	{
-        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
-        {
-            base.GetContextMenuEntries(from, list);
-
-            if (RootParent is Mobile)
-            {
-                if ((Mobile)RootParent == from)
-                {
-                    if (from.FindItemOnLayer(this.Layer) == this)
-                        list.Add(new UnEquipEntry(from, this));
-                    else
-                        list.Add(new EquipEntry(from, this));
-                }
-            }
-            else if (RootParent is Item || RootParent == null)
-            {
-                if (from.FindItemOnLayer(this.Layer) == this)
-                    list.Add(new UnEquipEntry(from, this));
-                else
-                    list.Add(new EquipEntry(from, this));
-            }
-        }
-
-        private class EquipEntry : ContextMenuEntry
-        {
-            private Mobile m_From;
-            private BaseJewel m_Item;
-
-            public EquipEntry(Mobile from, Item item)
-                : base(6163, -1)
-            {
-                m_From = (Mobile)from;
-                m_Item = (BaseJewel)item;
-            }
-
-            public override void OnClick()
-            {
-                if (((BaseJewel)m_Item).CanEquip(m_From))
-                {
-                    if (!(m_From.EquipItem(m_Item)))
-                        m_From.SendMessage("Vous ne parvenez pas a equiper cet objet.");
-                }
-                else
-                {
-                    m_From.SendMessage("Vous ne pouvez pas equiper cet objet !");
-                }
-            }
-        }
-
-        private class UnEquipEntry : ContextMenuEntry
-        {
-            private Mobile m_From;
-            private BaseJewel m_Item;
-
-            public UnEquipEntry(Mobile from, Item item)
-                : base(6164, -1)
-            {
-                m_From = (Mobile)from;
-                m_Item = (BaseJewel)item;
-            }
-
-            public override void OnClick()
-            {
-                m_From.PlaceInBackpack(m_Item);
-            }
-        }
-
-		private int m_MaxHitPoints;
-		private int m_HitPoints;
-
+        private int m_MaxHitPoints;
+        private int m_HitPoints;
 		private AosAttributes m_AosAttributes;
 		private AosElementAttributes m_AosResistances;
 		private AosSkillBonuses m_AosSkillBonuses;
 		private CraftResource m_Resource;
 		private GemType m_GemType;
 
-        private bool m_Identified;
-        private RareteItem m_rarete;
+
         private TemraelAttributes m_TemraelAttributes;
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -118,19 +42,6 @@ namespace Server.Items
             set {  }
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public RareteItem Rarete
-        {
-            get { return m_rarete; }
-            set { m_rarete = value; InvalidateProperties(); }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Identified
-        {
-            get { return m_Identified; }
-            set { m_Identified = value; InvalidateProperties(); }
-        }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxHitPoints
@@ -240,9 +151,6 @@ namespace Server.Items
 			m_Resource = CraftResource.Fer;
 			m_GemType = GemType.None;
             m_TemraelAttributes = new TemraelAttributes( this );
-            m_Identified = false;
-
-            m_rarete = RareteItem.Normal;
 
 			Layer = layer;
 
@@ -480,8 +388,6 @@ namespace Server.Items
 
             writer.Write((int)0); // version
 
-            writer.Write((bool)m_Identified);
-            writer.Write((int)m_rarete);
             m_TemraelAttributes.Serialize(writer);
 
 			writer.WriteEncodedInt( (int) m_MaxHitPoints );
@@ -501,9 +407,6 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            m_Identified = reader.ReadBool();
-            m_rarete = (RareteItem)reader.ReadInt();
-            m_rarete = RareteItem.Normal;
             m_TemraelAttributes = new TemraelAttributes(this, reader);
 
             m_MaxHitPoints = reader.ReadEncodedInt();
@@ -545,7 +448,6 @@ namespace Server.Items
 
             if (Parent is Mobile)
                 ((Mobile)Parent).CheckStatTimers();
-
         }
 		#region ICraftable Members
 

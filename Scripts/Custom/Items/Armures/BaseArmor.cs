@@ -142,7 +142,7 @@ namespace Server.Items
         private ArmorDurabilityLevel m_Durability;
         private ArmorProtectionLevel m_Protection;
         private CraftResource m_Resource;
-        private bool m_Identified, m_PlayerConstructed;
+        private bool m_PlayerConstructed;
         private int m_PhysicalBonus, m_ContondantBonus, m_TranchantBonus, m_PerforantBonus, m_MagieBonus;
 
         private AosAttributes m_AosAttributes;
@@ -187,7 +187,6 @@ namespace Server.Items
 
         public virtual bool CanFortify { get { return true; } }
 
-        private RareteItem m_rarete;
         private TemraelAttributes m_TemraelAttributes;
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -197,12 +196,6 @@ namespace Server.Items
             set { }
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public RareteItem Rarete
-        {
-            get { return m_rarete; }
-            set { m_rarete = value; InvalidateProperties(); }
-        }
 
         public override void OnAfterDuped(Item newItem)
         {
@@ -352,13 +345,6 @@ namespace Server.Items
         {
             get { return (m_IntReq == -1 ? Core.AOS ? AosIntReq : OldIntReq : m_IntReq); }
             set { m_IntReq = value; InvalidateProperties(); }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Identified
-        {
-            get { return m_Identified; }
-            set { m_Identified = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -889,7 +875,6 @@ namespace Server.Items
 
             writer.Write((int)0); // version
 
-            writer.Write((int)m_rarete);
             m_TemraelAttributes.Serialize(writer);
 
             SaveFlag flags = SaveFlag.None;
@@ -901,7 +886,6 @@ namespace Server.Items
             SetSaveFlag(ref flags, SaveFlag.TranchantBonus, m_TranchantBonus != 0);
             SetSaveFlag(ref flags, SaveFlag.PerforantBonus, m_PerforantBonus != 0);
             SetSaveFlag(ref flags, SaveFlag.MagieBonus, m_MagieBonus != 0);
-            SetSaveFlag(ref flags, SaveFlag.Identified, m_Identified != false);
             SetSaveFlag(ref flags, SaveFlag.MaxHitPoints, m_MaxHitPoints != 0);
             SetSaveFlag(ref flags, SaveFlag.HitPoints, m_HitPoints != 0);
             SetSaveFlag(ref flags, SaveFlag.Crafter, m_Crafter != null);
@@ -1002,6 +986,8 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
+            m_TemraelAttributes = new TemraelAttributes(this, reader);
+
             SaveFlag flags = (SaveFlag)reader.ReadEncodedInt();
 
             if (GetSaveFlag(flags, SaveFlag.Attributes))
@@ -1029,9 +1015,6 @@ namespace Server.Items
             if (GetSaveFlag(flags, SaveFlag.MagieBonus))
                 m_MagieBonus = reader.ReadEncodedInt();
 
-            if (GetSaveFlag(flags, SaveFlag.Identified))
-                m_Identified = (version >= 7 || reader.ReadBool());
-
             if (GetSaveFlag(flags, SaveFlag.MaxHitPoints))
                 m_MaxHitPoints = reader.ReadEncodedInt();
 
@@ -1047,9 +1030,6 @@ namespace Server.Items
             if (GetSaveFlag(flags, SaveFlag.Quality))
                 m_Quality = (ArmorQuality)reader.ReadEncodedInt();
             else
-                m_Quality = ArmorQuality.Regular;
-
-            if (version == 5 && m_Quality == ArmorQuality.Low)
                 m_Quality = ArmorQuality.Regular;
 
             if (GetSaveFlag(flags, SaveFlag.Durability))
@@ -1170,8 +1150,6 @@ namespace Server.Items
             m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax(InitMinHits, InitMaxHits);
 
             this.Layer = (Layer)ItemData.Quality;
-
-            m_rarete = RareteItem.Normal;
 
             m_AosAttributes = new AosAttributes(this);
             m_AosArmorAttributes = new AosArmorAttributes(this);
@@ -1676,7 +1654,7 @@ namespace Server.Items
             if (m_Quality == ArmorQuality.Exceptional)
                 attrs.Add(new EquipInfoAttribute(1018305 - (int)m_Quality));
 
-            if (m_Identified || from.AccessLevel >= AccessLevel.Batisseur)
+            if (Identified || from.AccessLevel >= AccessLevel.Batisseur)
             {
                 if (m_Durability != ArmorDurabilityLevel.Regular)
                     attrs.Add(new EquipInfoAttribute(1038000 + (int)m_Durability));

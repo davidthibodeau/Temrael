@@ -42,8 +42,6 @@ namespace Server.Items
 		private AosElementAttributes m_AosResistances;
 
         private Layer m_BaseLayer;
-        private bool m_Identified;
-        private RareteItem m_rarete;
         private TemraelAttributes m_TemraelAttributes;
         
         public virtual bool Disguise { get { return false; } }
@@ -53,20 +51,6 @@ namespace Server.Items
         {
             get { return m_TemraelAttributes; }
             set { }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public RareteItem Rarete
-        {
-            get { return m_rarete; }
-            set { m_rarete = value; InvalidateProperties(); }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Identified
-        {
-            get { return m_Identified; }
-            set { m_Identified = value; InvalidateProperties(); }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -482,8 +466,6 @@ namespace Server.Items
 
 			m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax( InitMinHits, InitMaxHits );
 
-            m_rarete = RareteItem.Normal;
-
 			m_AosAttributes = new AosAttributes( this );
 			m_AosClothingAttributes = new AosArmorAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
@@ -869,8 +851,6 @@ namespace Server.Items
 			writer.Write( (int) 0 ); // version
 
             writer.Write((int)m_BaseLayer);
-            writer.Write((bool)m_Identified);
-            writer.Write((int)m_rarete);
             m_TemraelAttributes.Serialize(writer);
 
 			SaveFlag flags = SaveFlag.None;
@@ -932,9 +912,6 @@ namespace Server.Items
             int version = reader.ReadInt();
 
             m_BaseLayer = (Layer)reader.ReadInt();
-            m_Identified = reader.ReadBool();
-            m_rarete = (RareteItem)reader.ReadInt();
-            m_rarete = RareteItem.Normal;
             m_TemraelAttributes = new TemraelAttributes(this, reader);
 
             SaveFlag flags = (SaveFlag)reader.ReadEncodedInt();

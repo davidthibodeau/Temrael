@@ -486,20 +486,12 @@ namespace Server.Items
         #endregion
 
         private TemraelAttributes m_TemraelAttributes;
-        private RareteItem m_rarete;
 
         [CommandProperty(AccessLevel.Batisseur)]
         public TemraelAttributes TemAttributes
         {
             get { return m_TemraelAttributes; }
             set { }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public RareteItem Rarete
-        {
-            get { return m_rarete; }
-            set { m_rarete = value; InvalidateProperties(); }
         }
 
 		/* Weapon internals work differently now (Mar 13 2003)
@@ -529,7 +521,6 @@ namespace Server.Items
         private string m_CrafterName;
 		private Poison m_Poison;
 		private int m_PoisonCharges;
-		private bool m_Identified;
 		private int m_Hits;
 		private int m_MaxHits;
 		private SkillMod m_SkillMod, m_MageMod;
@@ -628,13 +619,6 @@ namespace Server.Items
 		{
 			get{ return m_Consecrated; }
 			set{ m_Consecrated = value; }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public bool Identified
-		{
-			get{ return m_Identified; }
-			set{ m_Identified = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -1964,9 +1948,8 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+            writer.Write((int)0); // version
 
-            writer.Write((int)m_rarete);
             m_TemraelAttributes.Serialize(writer);
 
 			SaveFlag flags = SaveFlag.None;
@@ -1981,7 +1964,6 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.PoisonCharges,		m_PoisonCharges != 0 );
 			SetSaveFlag( ref flags, SaveFlag.Crafter,			m_Crafter != null );
             SetSaveFlag( ref flags, SaveFlag.CrafterName,       m_CrafterName != null);
-			SetSaveFlag( ref flags, SaveFlag.Identified,		m_Identified != false );
 			SetSaveFlag( ref flags, SaveFlag.StrReq,			m_StrReq != -1 );
 			SetSaveFlag( ref flags, SaveFlag.DexReq,			m_DexReq != -1 );
 			SetSaveFlag( ref flags, SaveFlag.IntReq,			m_IntReq != -1 );
@@ -2128,8 +2110,6 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            m_rarete = (RareteItem)reader.ReadInt();
-            m_rarete = RareteItem.Normal;
             m_TemraelAttributes = new TemraelAttributes(this, reader);
 
             SaveFlag flags = (SaveFlag)reader.ReadInt();
@@ -2180,9 +2160,6 @@ namespace Server.Items
 
             if (GetSaveFlag(flags, SaveFlag.CrafterName))
                 m_CrafterName = reader.ReadString();
-
-            if (GetSaveFlag(flags, SaveFlag.Identified))
-                m_Identified = (version >= 6 || reader.ReadBool());
 
             if (GetSaveFlag(flags, SaveFlag.StrReq))
                 m_StrReq = reader.ReadInt();
@@ -2327,9 +2304,6 @@ namespace Server.Items
                 m_Hits = m_MaxHits = Utility.RandomMinMax(InitMinHits, InitMaxHits);
             }
 
-            if (version < 6)
-                m_PlayerConstructed = true; // we don't know, so, assume it's crafted
-
             Hue = CraftResources.GetHue(m_Resource);
         }
 		#endregion
@@ -2362,7 +2336,6 @@ namespace Server.Items
 			m_AosElementDamages = new AosElementAttributes( this );
             m_TemraelAttributes = new TemraelAttributes( this );
 
-            m_rarete = RareteItem.Normal;
 		}
 
 		public BaseWeapon( Serial serial ) : base( serial )
@@ -2766,7 +2739,7 @@ namespace Server.Items
 			if ( m_Quality == WeaponQuality.Exceptional )
 				attrs.Add( new EquipInfoAttribute( 1018305 - (int)m_Quality ) );
 
-			if ( m_Identified || from.AccessLevel >= AccessLevel.Batisseur )
+			if ( Identified || from.AccessLevel >= AccessLevel.Batisseur )
 			{
 
 				if ( m_DurabilityLevel != WeaponDurabilityLevel.Regular )

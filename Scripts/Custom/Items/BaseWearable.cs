@@ -7,8 +7,34 @@ using System.Text;
 
 namespace Server.Items
 {
+    public enum RareteItem
+    {
+        Mediocre,
+        Normal,
+        Magique,
+        Rare,
+        Legendaire
+    }
+
     public abstract class BaseWearable : Item, IFactionItem
     {
+        private bool m_Identified;
+        private RareteItem m_rarete;
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public RareteItem Rarete
+        {
+            get { return m_rarete; }
+            set { m_rarete = value; InvalidateProperties(); }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool Identified
+        {
+            get { return m_Identified; }
+            set { m_Identified = value; InvalidateProperties(); }
+        }
+
         #region Factions
         private FactionItem m_FactionState;
 
@@ -66,7 +92,7 @@ namespace Server.Items
             {
                 Item[] candidates = m_From.Backpack.FindItemsByType(m_Item.GetType());
                 Boolean found = false;
-                foreach(Item i in candidates)
+                foreach (Item i in candidates)
                 {
                     if (m_Item == i) found = true;
                 }
@@ -114,6 +140,9 @@ namespace Server.Items
         public BaseWearable(int itemID)
             : base(itemID)
         {
+            m_Identified = false;
+            m_rarete = RareteItem.Normal;
+
         }
 
         public override void Serialize(GenericWriter writer)
@@ -121,6 +150,10 @@ namespace Server.Items
             base.Serialize(writer);
 
             writer.Write(0); //version
+
+            writer.Write((bool)m_Identified);
+            writer.Write((int)m_rarete);
+
         }
 
         public override void Deserialize(GenericReader reader)
@@ -128,6 +161,9 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            m_Identified = reader.ReadBool();
+            m_rarete = (RareteItem)reader.ReadInt();
         }
     }
 }
