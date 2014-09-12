@@ -1964,7 +1964,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 10 ); // version
+			writer.Write( (int) 0 ); // version
 
             writer.Write((int)m_rarete);
             m_TemraelAttributes.Serialize(writer);
@@ -2122,305 +2122,216 @@ namespace Server.Items
 			CrafterName 			= 0x40000000,
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-                case 10:
-                    m_rarete = (RareteItem)reader.ReadInt();
-                    m_rarete = RareteItem.Normal;
-                    m_TemraelAttributes = new TemraelAttributes(this, reader);
-                    goto case 9;
-				case 9:
-				case 8:
-				case 7:
-				case 6:
-				case 5:
-				{
-					SaveFlag flags = (SaveFlag)reader.ReadInt();
+            m_rarete = (RareteItem)reader.ReadInt();
+            m_rarete = RareteItem.Normal;
+            m_TemraelAttributes = new TemraelAttributes(this, reader);
 
-					if ( GetSaveFlag( flags, SaveFlag.DamageLevel ) )
-					{
-						m_DamageLevel = (WeaponDamageLevel)reader.ReadInt();
+            SaveFlag flags = (SaveFlag)reader.ReadInt();
 
-						if ( m_DamageLevel > WeaponDamageLevel.Vanq )
-							m_DamageLevel = WeaponDamageLevel.Ruin;
-					}
+            if (GetSaveFlag(flags, SaveFlag.DamageLevel))
+            {
+                m_DamageLevel = (WeaponDamageLevel)reader.ReadInt();
 
-					if ( GetSaveFlag( flags, SaveFlag.AccuracyLevel ) )
-					{
-						m_AccuracyLevel = (WeaponAccuracyLevel)reader.ReadInt();
+                if (m_DamageLevel > WeaponDamageLevel.Vanq)
+                    m_DamageLevel = WeaponDamageLevel.Ruin;
+            }
 
-						if ( m_AccuracyLevel > WeaponAccuracyLevel.Supremely )
-							m_AccuracyLevel = WeaponAccuracyLevel.Accurate;
-					}
+            if (GetSaveFlag(flags, SaveFlag.AccuracyLevel))
+            {
+                m_AccuracyLevel = (WeaponAccuracyLevel)reader.ReadInt();
 
-					if ( GetSaveFlag( flags, SaveFlag.DurabilityLevel ) )
-					{
-						m_DurabilityLevel = (WeaponDurabilityLevel)reader.ReadInt();
+                if (m_AccuracyLevel > WeaponAccuracyLevel.Supremely)
+                    m_AccuracyLevel = WeaponAccuracyLevel.Accurate;
+            }
 
-						if ( m_DurabilityLevel > WeaponDurabilityLevel.Indestructible )
-							m_DurabilityLevel = WeaponDurabilityLevel.Durable;
-					}
+            if (GetSaveFlag(flags, SaveFlag.DurabilityLevel))
+            {
+                m_DurabilityLevel = (WeaponDurabilityLevel)reader.ReadInt();
 
-					if ( GetSaveFlag( flags, SaveFlag.Quality ) )
-						m_Quality = (WeaponQuality)reader.ReadInt();
-					else
-						m_Quality = WeaponQuality.Regular;
+                if (m_DurabilityLevel > WeaponDurabilityLevel.Indestructible)
+                    m_DurabilityLevel = WeaponDurabilityLevel.Durable;
+            }
 
-					if ( GetSaveFlag( flags, SaveFlag.Hits ) )
-						m_Hits = reader.ReadInt();
+            if (GetSaveFlag(flags, SaveFlag.Quality))
+                m_Quality = (WeaponQuality)reader.ReadInt();
+            else
+                m_Quality = WeaponQuality.Regular;
 
-					if ( GetSaveFlag( flags, SaveFlag.MaxHits ) )
-						m_MaxHits = reader.ReadInt();
+            if (GetSaveFlag(flags, SaveFlag.Hits))
+                m_Hits = reader.ReadInt();
 
-					if ( GetSaveFlag( flags, SaveFlag.Poison ) )
-						m_Poison = Poison.Deserialize( reader );
+            if (GetSaveFlag(flags, SaveFlag.MaxHits))
+                m_MaxHits = reader.ReadInt();
 
-					if ( GetSaveFlag( flags, SaveFlag.PoisonCharges ) )
-						m_PoisonCharges = reader.ReadInt();
+            if (GetSaveFlag(flags, SaveFlag.Poison))
+                m_Poison = Poison.Deserialize(reader);
 
-					if ( GetSaveFlag( flags, SaveFlag.Crafter ) )
-						m_Crafter = reader.ReadMobile();
+            if (GetSaveFlag(flags, SaveFlag.PoisonCharges))
+                m_PoisonCharges = reader.ReadInt();
 
-                    if (GetSaveFlag(flags, SaveFlag.CrafterName))
-                        m_CrafterName = reader.ReadString();
+            if (GetSaveFlag(flags, SaveFlag.Crafter))
+                m_Crafter = reader.ReadMobile();
 
-					if ( GetSaveFlag( flags, SaveFlag.Identified ) )
-						m_Identified = ( version >= 6 || reader.ReadBool() );
+            if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                m_CrafterName = reader.ReadString();
 
-					if ( GetSaveFlag( flags, SaveFlag.StrReq ) )
-						m_StrReq = reader.ReadInt();
-					else
-						m_StrReq = -1;
+            if (GetSaveFlag(flags, SaveFlag.Identified))
+                m_Identified = (version >= 6 || reader.ReadBool());
 
-					if ( GetSaveFlag( flags, SaveFlag.DexReq ) )
-						m_DexReq = reader.ReadInt();
-					else
-						m_DexReq = -1;
+            if (GetSaveFlag(flags, SaveFlag.StrReq))
+                m_StrReq = reader.ReadInt();
+            else
+                m_StrReq = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.IntReq ) )
-						m_IntReq = reader.ReadInt();
-					else
-						m_IntReq = -1;
+            if (GetSaveFlag(flags, SaveFlag.DexReq))
+                m_DexReq = reader.ReadInt();
+            else
+                m_DexReq = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.MinDamage ) )
-						m_MinDamage = reader.ReadInt();
-					else
-						m_MinDamage = -1;
+            if (GetSaveFlag(flags, SaveFlag.IntReq))
+                m_IntReq = reader.ReadInt();
+            else
+                m_IntReq = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.MaxDamage ) )
-						m_MaxDamage = reader.ReadInt();
-					else
-						m_MaxDamage = -1;
+            if (GetSaveFlag(flags, SaveFlag.MinDamage))
+                m_MinDamage = reader.ReadInt();
+            else
+                m_MinDamage = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.HitSound ) )
-						m_HitSound = reader.ReadInt();
-					else
-						m_HitSound = -1;
+            if (GetSaveFlag(flags, SaveFlag.MaxDamage))
+                m_MaxDamage = reader.ReadInt();
+            else
+                m_MaxDamage = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.MissSound ) )
-						m_MissSound = reader.ReadInt();
-					else
-						m_MissSound = -1;
+            if (GetSaveFlag(flags, SaveFlag.HitSound))
+                m_HitSound = reader.ReadInt();
+            else
+                m_HitSound = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.Speed ) )
-					{
-						if ( version < 9 )
-							m_Speed = reader.ReadInt();
-						else
-							m_Speed = reader.ReadFloat();
-					}
-					else
-						m_Speed = -1;
+            if (GetSaveFlag(flags, SaveFlag.MissSound))
+                m_MissSound = reader.ReadInt();
+            else
+                m_MissSound = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.MaxRange ) )
-						m_MaxRange = reader.ReadInt();
-					else
-						m_MaxRange = -1;
+            if (GetSaveFlag(flags, SaveFlag.Speed))
+                m_Speed = reader.ReadInt();
+            else
+                m_Speed = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.Skill ) )
-						m_Skill = (SkillName)reader.ReadInt();
-					else
-						m_Skill = (SkillName)(-1);
+            if (GetSaveFlag(flags, SaveFlag.MaxRange))
+                m_MaxRange = reader.ReadInt();
+            else
+                m_MaxRange = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.Type ) )
-						m_Type = (WeaponType)reader.ReadInt();
-					else
-						m_Type = (WeaponType)(-1);
+            if (GetSaveFlag(flags, SaveFlag.Skill))
+                m_Skill = (SkillName)reader.ReadInt();
+            else
+                m_Skill = (SkillName)(-1);
 
-					if ( GetSaveFlag( flags, SaveFlag.Animation ) )
-						m_Animation = (WeaponAnimation)reader.ReadInt();
-					else
-						m_Animation = (WeaponAnimation)(-1);
+            if (GetSaveFlag(flags, SaveFlag.Type))
+                m_Type = (WeaponType)reader.ReadInt();
+            else
+                m_Type = (WeaponType)(-1);
 
-					if ( GetSaveFlag( flags, SaveFlag.Resource ) )
-						m_Resource = (CraftResource)reader.ReadInt();
-					else
-						m_Resource = CraftResource.Fer;
+            if (GetSaveFlag(flags, SaveFlag.Animation))
+                m_Animation = (WeaponAnimation)reader.ReadInt();
+            else
+                m_Animation = (WeaponAnimation)(-1);
 
-                    if (GetSaveFlag(flags, SaveFlag.xAttributes))
-                    {
-                        m_AosAttributes = new AosAttributes(this, reader);
-                        m_AosAttributes = new AosAttributes(this);
-                    }
-                    else
-                        m_AosAttributes = new AosAttributes(this);
+            if (GetSaveFlag(flags, SaveFlag.Resource))
+                m_Resource = (CraftResource)reader.ReadInt();
+            else
+                m_Resource = CraftResource.Fer;
 
-                    if (GetSaveFlag(flags, SaveFlag.xWeaponAttributes))
-                    {
-                        m_AosWeaponAttributes = new AosWeaponAttributes(this, reader);
-                        m_AosWeaponAttributes = new AosWeaponAttributes(this);
-                    }
-                    else
-                        m_AosWeaponAttributes = new AosWeaponAttributes(this);
+            if (GetSaveFlag(flags, SaveFlag.xAttributes))
+            {
+                m_AosAttributes = new AosAttributes(this, reader);
+                m_AosAttributes = new AosAttributes(this);
+            }
+            else
+                m_AosAttributes = new AosAttributes(this);
 
-					if ( UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular && Parent is Mobile )
-					{
-						m_SkillMod = new DefaultSkillMod( AccuracySkill, true, (int)m_AccuracyLevel * 5 );
-						((Mobile)Parent).AddSkillMod( m_SkillMod );
-					}
+            if (GetSaveFlag(flags, SaveFlag.xWeaponAttributes))
+            {
+                m_AosWeaponAttributes = new AosWeaponAttributes(this, reader);
+                m_AosWeaponAttributes = new AosWeaponAttributes(this);
+            }
+            else
+                m_AosWeaponAttributes = new AosWeaponAttributes(this);
 
-					if ( version < 7 && m_AosWeaponAttributes.MageWeapon != 0 )
-						m_AosWeaponAttributes.MageWeapon = 30 - m_AosWeaponAttributes.MageWeapon;
+            if (UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular && Parent is Mobile)
+            {
+                m_SkillMod = new DefaultSkillMod(AccuracySkill, true, (int)m_AccuracyLevel * 5);
+                ((Mobile)Parent).AddSkillMod(m_SkillMod);
+            }
 
-					if ( Core.AOS && m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 && Parent is Mobile )
-					{
-						m_MageMod = new DefaultSkillMod( SkillName.ArtMagique, true, -30 + m_AosWeaponAttributes.MageWeapon );
-						((Mobile)Parent).AddSkillMod( m_MageMod );
-					}
+            if (Core.AOS && m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 && Parent is Mobile)
+            {
+                m_MageMod = new DefaultSkillMod(SkillName.ArtMagique, true, -30 + m_AosWeaponAttributes.MageWeapon);
+                ((Mobile)Parent).AddSkillMod(m_MageMod);
+            }
 
-					if ( GetSaveFlag( flags, SaveFlag.PlayerConstructed ) )
-						m_PlayerConstructed = true;
+            if (GetSaveFlag(flags, SaveFlag.PlayerConstructed))
+                m_PlayerConstructed = true;
 
-                    if (GetSaveFlag(flags, SaveFlag.SkillBonuses))
-                    {
-                        m_AosSkillBonuses = new AosSkillBonuses(this, reader);
-                        m_AosSkillBonuses = new AosSkillBonuses(this);
-                    }
-                    else
-                        m_AosSkillBonuses = new AosSkillBonuses(this);
+            if (GetSaveFlag(flags, SaveFlag.SkillBonuses))
+            {
+                m_AosSkillBonuses = new AosSkillBonuses(this, reader);
+                m_AosSkillBonuses = new AosSkillBonuses(this);
+            }
+            else
+                m_AosSkillBonuses = new AosSkillBonuses(this);
 
-                    if (GetSaveFlag(flags, SaveFlag.ElementalDamages))
-                    {
-                        m_AosElementDamages = new AosElementAttributes(this, reader);
-                        m_AosElementDamages = new AosElementAttributes(this);
-                    }
-                    else
-                        m_AosElementDamages = new AosElementAttributes(this);
+            if (GetSaveFlag(flags, SaveFlag.ElementalDamages))
+            {
+                m_AosElementDamages = new AosElementAttributes(this, reader);
+                m_AosElementDamages = new AosElementAttributes(this);
+            }
+            else
+                m_AosElementDamages = new AosElementAttributes(this);
 
-					break;
-				}
-				case 4:
-				{
-					goto case 3;
-				}
-				case 3:
-				{
-					m_StrReq = reader.ReadInt();
-					m_DexReq = reader.ReadInt();
-					m_IntReq = reader.ReadInt();
+            if (Core.AOS && Parent is Mobile)
+                m_AosSkillBonuses.AddTo((Mobile)Parent);
 
-					goto case 2;
-				}
-				case 2:
-				{
-					m_Identified = reader.ReadBool();
+            int strBonus = m_AosAttributes.BonusStr;
+            int dexBonus = m_AosAttributes.BonusDex;
+            int intBonus = m_AosAttributes.BonusInt;
 
-					goto case 1;
-				}
-				case 1:
-				{
-					m_MaxRange = reader.ReadInt();
+            if (this.Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0))
+            {
+                Mobile m = (Mobile)this.Parent;
 
-					goto case 0;
-				}
-				case 0:
-				{
-					if ( version == 0 )
-						m_MaxRange = 1; // default
+                string modName = this.Serial.ToString();
 
-					if ( version < 5 )
-					{
-						m_Resource = CraftResource.Fer;
-						m_AosAttributes = new AosAttributes( this );
-						m_AosWeaponAttributes = new AosWeaponAttributes( this );
-						m_AosElementDamages = new AosElementAttributes( this );
-						m_AosSkillBonuses = new AosSkillBonuses( this );
-					}
+                if (strBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Str, modName + "Str", strBonus, TimeSpan.Zero));
 
-					m_MinDamage = reader.ReadInt();
-					m_MaxDamage = reader.ReadInt();
+                if (dexBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero));
 
-					m_Speed = reader.ReadInt();
+                if (intBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
+            }
 
-					m_HitSound = reader.ReadInt();
-					m_MissSound = reader.ReadInt();
+            if (Parent is Mobile)
+                ((Mobile)Parent).CheckStatTimers();
 
-					m_Skill = (SkillName)reader.ReadInt();
-					m_Type = (WeaponType)reader.ReadInt();
-					m_Animation = (WeaponAnimation)reader.ReadInt();
-					m_DamageLevel = (WeaponDamageLevel)reader.ReadInt();
-					m_AccuracyLevel = (WeaponAccuracyLevel)reader.ReadInt();
-					m_DurabilityLevel = (WeaponDurabilityLevel)reader.ReadInt();
-					m_Quality = (WeaponQuality)reader.ReadInt();
+            if (m_Hits <= 0 && m_MaxHits <= 0)
+            {
+                m_Hits = m_MaxHits = Utility.RandomMinMax(InitMinHits, InitMaxHits);
+            }
 
-					m_Crafter = reader.ReadMobile();
-                    m_CrafterName = reader.ReadString();
-
-					m_Poison = Poison.Deserialize( reader );
-					m_PoisonCharges = reader.ReadInt();
-
-					if ( UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular && Parent is Mobile )
-					{
-						m_SkillMod = new DefaultSkillMod( AccuracySkill, true, (int)m_AccuracyLevel * 5);
-						((Mobile)Parent).AddSkillMod( m_SkillMod );
-					}
-
-					break;
-				}
-			}
-
-			if ( Core.AOS && Parent is Mobile )
-				m_AosSkillBonuses.AddTo( (Mobile)Parent );
-
-			int strBonus = m_AosAttributes.BonusStr;
-			int dexBonus = m_AosAttributes.BonusDex;
-			int intBonus = m_AosAttributes.BonusInt;
-
-			if ( this.Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0) )
-			{
-				Mobile m = (Mobile)this.Parent;
-
-				string modName = this.Serial.ToString();
-
-				if ( strBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Str, modName + "Str", strBonus, TimeSpan.Zero ) );
-
-				if ( dexBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero ) );
-
-				if ( intBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
-			}
-
-			if ( Parent is Mobile )
-				((Mobile)Parent).CheckStatTimers();
-
-			if ( m_Hits <= 0 && m_MaxHits <= 0 )
-			{
-				m_Hits = m_MaxHits = Utility.RandomMinMax( InitMinHits, InitMaxHits );
-			}
-
-			if ( version < 6 )
-				m_PlayerConstructed = true; // we don't know, so, assume it's crafted
+            if (version < 6)
+                m_PlayerConstructed = true; // we don't know, so, assume it's crafted
 
             Hue = CraftResources.GetHue(m_Resource);
-		}
+        }
 		#endregion
 
 		public BaseWeapon( int itemID ) : base( itemID )
