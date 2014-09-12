@@ -31,7 +31,7 @@ namespace Server.Custom.CustomSpell
         /*     Mana cost */ 5,
         /* Skill utilisé */ SkillName.ArtMagique,
         /* Pts Skill req */ 0,
-        /* Temps de cast */ new TimeSpan(0,0,5),
+        /* Temps de cast */ TimeSpan.FromSeconds(5),
 
         /*-------- TARGETTED INFO --------*/
         /* Nb de targets */ 1,
