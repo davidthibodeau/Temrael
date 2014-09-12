@@ -13,8 +13,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Claymore_Force3; } }
         public override int AosMinDamage { get { return Claymore_MinDam3; } }
         public override int AosMaxDamage { get { return Claymore_MaxDam3; } }
-        public override double AosSpeed { get { return Claymore_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Claymore_Vitesse; } }
 
 		public override int DefHitSound{ get{ return 0x237; } }
 		public override int DefMissSound{ get{ return 0x23A; } }

@@ -13,8 +13,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Hachette_Force1; } }
         public override int AosMinDamage { get { return Hachette_MinDam1; } }
         public override int AosMaxDamage { get { return Hachette_MaxDam1; } }
-        public override double AosSpeed { get { return Hachette_Vitesse; } }
-        public override float MlSpeed { get { return 3.00f; } }
+        public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return Armes_MinDurabilite0; } }
         public override int InitMaxHits { get { return Armes_MaxDurabilite0; } }

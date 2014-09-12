@@ -14,8 +14,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Hachette_Force4; } }
         public override int AosMinDamage { get { return Hachette_MinDam4; } }
         public override int AosMaxDamage { get { return Hachette_MaxDam4; } }
-        public override double AosSpeed { get { return Hachette_Vitesse; } }
-        public override float MlSpeed { get { return 3.00f; } }
+        public override int DefSpeed { get { return Hachette_Vitesse; } }
 
 		public override int DefHitSound{ get{ return 0x233; } }
 		public override int DefMissSound{ get{ return 0x239; } }

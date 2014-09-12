@@ -9,8 +9,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force0; } }
         public override int AosMinDamage { get { return Dague_MinDam0; } }
         public override int AosMaxDamage { get { return Dague_MaxDam0; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 100; } }
@@ -47,8 +46,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Lance_Force0; } }
         public override int AosMinDamage { get { return Lance_MinDam0; } }
         public override int AosMaxDamage { get { return Lance_MaxDam0; } }
-        public override double AosSpeed { get { return Lance_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Lance_Vitesse; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -88,8 +86,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Masse_Force0; } }
         public override int AosMinDamage { get { return Masse_MinDam0; } }
         public override int AosMaxDamage { get { return Masse_MaxDam0; } }
-        public override double AosSpeed { get { return Masse_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 100; } }
@@ -126,8 +123,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Baton_Force0; } }
         public override int AosMinDamage { get { return Baton_MinDam0; } }
         public override int AosMaxDamage { get { return Baton_MaxDam0; } }
-        public override double AosSpeed { get { return Baton_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -167,8 +163,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Lame_Force0; } }
         public override int AosMinDamage { get { return Lame_MinDam0; } }
         public override int AosMaxDamage { get { return Lame_MaxDam0; } }
-        public override double AosSpeed { get { return Lame_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Lame_Vitesse; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }

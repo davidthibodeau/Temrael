@@ -26,7 +26,7 @@ namespace Server.Items
 		public override int AosStrengthReq{ get{ return 40; } }
 		public override int AosMinDamage{ get{ return 13; } }
 		public override int AosMaxDamage{ get{ return 15; } }
-		public override double AosSpeed{ get{ return 33; } }
+		public override int DefSpeed{ get{ return 33; } }
 
 		[Constructable]
 		public ProspectorsTool() : base( 0xFB4 )

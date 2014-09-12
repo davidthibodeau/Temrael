@@ -70,7 +70,7 @@ namespace Server.Items
             public static int Armes_MinDurabilite6 = 200;
             public static int Armes_MaxDurabilite6 = 225;
 
-            public static double Claymore_Vitesse = 4.0;
+            public static int Claymore_Vitesse = 40;
             public static int Claymore_MinDam0 = getMinDam(0, Claymore_Vitesse, true);
             public static int Claymore_MinDam1 = getMinDam(1, Claymore_Vitesse, true);
             public static int Claymore_MinDam2 = getMinDam(2, Claymore_Vitesse, true);
@@ -93,7 +93,7 @@ namespace Server.Items
             public static int Claymore_Force5 = 60;
             public static int Claymore_Force6 = 70;
 
-            public static double LourdeLame_Vitesse = 3.5;
+            public static int LourdeLame_Vitesse = 35;
             public static int LourdeLame_MinDam0 = getMinDam(0, LourdeLame_Vitesse, true);
             public static int LourdeLame_MinDam1 = getMinDam(1, LourdeLame_Vitesse, true);
             public static int LourdeLame_MinDam2 = getMinDam(2, LourdeLame_Vitesse, true);
@@ -116,7 +116,7 @@ namespace Server.Items
             public static int LourdeLame_Force5 = 55;
             public static int LourdeLame_Force6 = 65;
 
-            public static double Lame_Vitesse = 3.0;
+            public static int Lame_Vitesse = 30;
             public static int Lame_MinDam0 = getMinDam(0, Lame_Vitesse, false);
             public static int Lame_MinDam1 = getMinDam(1, Lame_Vitesse, false);
             public static int Lame_MinDam2 = getMinDam(2, Lame_Vitesse, false);
@@ -139,7 +139,7 @@ namespace Server.Items
             public static int Lame_Force5 = 35;
             public static int Lame_Force6 = 40;
 
-            public static double CourteLame_Vitesse = 3.0;
+            public static int CourteLame_Vitesse = 30;
             public static int CourteLame_MinDam0 = getMinDam(0, CourteLame_Vitesse, false);
             public static int CourteLame_MinDam1 = getMinDam(1, CourteLame_Vitesse, false);
             public static int CourteLame_MinDam2 = getMinDam(2, CourteLame_Vitesse, false);
@@ -162,7 +162,7 @@ namespace Server.Items
             public static int CourteLame_Force5 = 30;
             public static int CourteLame_Force6 = 35;
 
-            public static double Sabre_Vitesse = 3.0;
+            public static int Sabre_Vitesse = 30;
             public static int Sabre_MinDam0 = getMinDam(0, Sabre_Vitesse, false);
             public static int Sabre_MinDam1 = getMinDam(1, Sabre_Vitesse, false);
             public static int Sabre_MinDam2 = getMinDam(2, Sabre_Vitesse, false);
@@ -185,7 +185,7 @@ namespace Server.Items
             public static int Sabre_Force5 = 50;
             public static int Sabre_Force6 = 60;
 
-            public static double Hallebarde_Vitesse = 4.0;
+            public static int Hallebarde_Vitesse = 40;
             public static int Hallebarde_MinDam0 = getMinDam(0, Hallebarde_Vitesse, true);
             public static int Hallebarde_MinDam1 = getMinDam(1, Hallebarde_Vitesse, true);
             public static int Hallebarde_MinDam2 = getMinDam(2, Hallebarde_Vitesse, true);
@@ -208,7 +208,7 @@ namespace Server.Items
             public static int Hallebarde_Force5 = 65;
             public static int Hallebarde_Force6 = 70;
 
-            public static double Bardiche_Vitesse = 4.0;
+            public static int Bardiche_Vitesse = 40;
             public static int Bardiche_MinDam0 = getMinDam(0, Bardiche_Vitesse, true);
             public static int Bardiche_MinDam1 = getMinDam(1, Bardiche_Vitesse, true);
             public static int Bardiche_MinDam2 = getMinDam(2, Bardiche_Vitesse, true);
@@ -231,7 +231,7 @@ namespace Server.Items
             public static int Bardiche_Force5 = 65;
             public static int Bardiche_Force6 = 70;
 
-            public static double Hache_Vitesse = 4.0;
+            public static int Hache_Vitesse = 40;
             public static int Hache_MinDam0 = getMinDam(0, Hache_Vitesse, true);
             public static int Hache_MinDam1 = getMinDam(1, Hache_Vitesse, true);
             public static int Hache_MinDam2 = getMinDam(2, Hache_Vitesse, true);
@@ -254,7 +254,7 @@ namespace Server.Items
             public static int Hache_Force5 = 65;
             public static int Hache_Force6 = 70;
 
-            public static double Hachette_Vitesse = 3.0;
+            public static int Hachette_Vitesse = 30;
             public static int Hachette_MinDam0 = getMinDam(0, Hachette_Vitesse, false);
             public static int Hachette_MinDam1 = getMinDam(1, Hachette_Vitesse, false);
             public static int Hachette_MinDam2 = getMinDam(2, Hachette_Vitesse, false);
@@ -277,7 +277,7 @@ namespace Server.Items
             public static int Hachette_Force5 = 60;
             public static int Hachette_Force6 = 70;
 
-            public static double Trident_Vitesse = 4.0;
+            public static int Trident_Vitesse = 40;
             public static int Trident_MinDam0 = getMinDam(0, Trident_Vitesse, true);
             public static int Trident_MinDam1 = getMinDam(1, Trident_Vitesse, true);
             public static int Trident_MinDam2 = getMinDam(2, Trident_Vitesse, true);
@@ -300,7 +300,7 @@ namespace Server.Items
             public static int Trident_Force5 = 65;
             public static int Trident_Force6 = 70;
 
-            public static double Lance_Vitesse = 3.5;
+            public static int Lance_Vitesse = 35;
             public static int Lance_MinDam0 = getMinDam(0, Lance_Vitesse, true);
             public static int Lance_MinDam1 = getMinDam(1, Lance_Vitesse, true);
             public static int Lance_MinDam2 = getMinDam(2, Lance_Vitesse, true);
@@ -323,7 +323,7 @@ namespace Server.Items
             public static int Lance_Force5 = 55;
             public static int Lance_Force6 = 60;
 
-            public static double Rapiere_Vitesse = 2.5;
+            public static int Rapiere_Vitesse = 25;
             public static int Rapiere_MinDam0 = getMinDam(0, Rapiere_Vitesse, false);
             public static int Rapiere_MinDam1 = getMinDam(1, Rapiere_Vitesse, false);
             public static int Rapiere_MinDam2 = getMinDam(2, Rapiere_Vitesse, false);
@@ -346,7 +346,7 @@ namespace Server.Items
             public static int Rapiere_Force5 = 30;
             public static int Rapiere_Force6 = 35;
 
-            public static double Dague_Vitesse = 2.0;
+            public static int Dague_Vitesse = 20;
             public static int Dague_MinDam0 = getMinDam(0, Dague_Vitesse, true);
             public static int Dague_MinDam1 = getMinDam(1, Dague_Vitesse, true);
             public static int Dague_MinDam2 = getMinDam(2, Dague_Vitesse, true);
@@ -369,7 +369,7 @@ namespace Server.Items
             public static int Dague_Force5 = 25;
             public static int Dague_Force6 = 30;
 
-            public static double Marteau_Vitesse = 4.0;
+            public static int Marteau_Vitesse = 40;
             public static int Marteau_MinDam0 = getMinDam(0, Marteau_Vitesse, true);
             public static int Marteau_MinDam1 = getMinDam(1, Marteau_Vitesse, true);
             public static int Marteau_MinDam2 = getMinDam(2, Marteau_Vitesse, true);
@@ -392,7 +392,7 @@ namespace Server.Items
             public static int Marteau_Force5 = 65;
             public static int Marteau_Force6 = 70;
 
-            public static double Masse_Vitesse = 3.0;
+            public static int Masse_Vitesse = 30;
             public static int Masse_MinDam0 = getMinDam(0, Masse_Vitesse, false);
             public static int Masse_MinDam1 = getMinDam(1, Masse_Vitesse, false);
             public static int Masse_MinDam2 = getMinDam(2, Masse_Vitesse, false);
@@ -415,7 +415,7 @@ namespace Server.Items
             public static int Masse_Force5 = 60;
             public static int Masse_Force6 = 70;
 
-            public static double Baton_Vitesse = 5.0;
+            public static int Baton_Vitesse = 50;
             public static int Baton_MinDam0 = getMinDam(0, Baton_Vitesse, true);
             public static int Baton_MinDam1 = getMinDam(1, Baton_Vitesse, true);
             public static int Baton_MinDam2 = getMinDam(2, Baton_Vitesse, true);
@@ -438,7 +438,7 @@ namespace Server.Items
             public static int Baton_Force5 = 65;
             public static int Baton_Force6 = 70;
 
-            public static double Arc_Vitesse = 3.0;
+            public static int Arc_Vitesse = 30;
             public static int Arc_MinDam0 = getMinDam(0, Arc_Vitesse, false);
             public static int Arc_MinDam1 = getMinDam(1, Arc_Vitesse, false);
             public static int Arc_MinDam2 = getMinDam(2, Arc_Vitesse, false);
@@ -461,7 +461,7 @@ namespace Server.Items
             public static int Arc_Force5 = 50;
             public static int Arc_Force6 = 60;
 
-            public static double Arbalete_Vitesse = 4.0;
+            public static int Arbalete_Vitesse = 40;
             public static int Arbalete_MinDam0 = getMinDam(0, Arbalete_Vitesse, false);
             public static int Arbalete_MinDam1 = getMinDam(1, Arbalete_Vitesse, false);
             public static int Arbalete_MinDam2 = getMinDam(2, Arbalete_Vitesse, false);
@@ -548,7 +548,7 @@ namespace Server.Items
 		private int m_StrReq, m_DexReq, m_IntReq;
 		private int m_MinDamage, m_MaxDamage;
 		private int m_HitSound, m_MissSound;
-		private float m_Speed;
+		private int m_Speed;
 		private int m_MaxRange;
 		private SkillName m_Skill;
 		private WeaponType m_Type;
@@ -571,8 +571,7 @@ namespace Server.Items
 		public virtual int AosIntelligenceReq{ get{ return 0; } }
 		public virtual int AosMinDamage{ get{ return 0; } }
 		public virtual int AosMaxDamage{ get{ return 0; } }
-		public virtual double AosSpeed{ get{ return 0; } }
-		public virtual float MlSpeed{ get{ return 0.0f; } }
+		public virtual int DefSpeed{ get{ return 0; } }
 
 		public virtual int InitMinHits{ get{ return 0; } }
 		public virtual int InitMaxHits{ get{ return 0; } }
@@ -783,17 +782,14 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public float Speed
+		public int Speed
 		{
 			get
 			{
 				if ( m_Speed != -1 )
 					return m_Speed;
 
-				if ( Core.ML )
-					return MlSpeed;
-
-                return (float)AosSpeed;
+					return DefSpeed;
 
 
 			}

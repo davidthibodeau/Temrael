@@ -12,8 +12,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Hallebarde_Force6; } }
         public override int AosMinDamage { get { return Hallebarde_MinDam6; } }
         public override int AosMaxDamage { get { return Hallebarde_MaxDam6; } }
-        public override double AosSpeed { get { return Hallebarde_Vitesse; } }
-        public override float MlSpeed { get { return 4.25f; } }
+        public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -53,8 +52,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Bardiche_Force6; } }
         public override int AosMinDamage { get { return Bardiche_MinDam6; } }
         public override int AosMaxDamage { get { return Bardiche_MaxDam6; } }
-        public override double AosSpeed { get { return Bardiche_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -94,8 +92,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Hallebarde_Force3; } }
         public override int AosMinDamage { get { return Hallebarde_MinDam3; } }
         public override int AosMaxDamage { get { return Hallebarde_MaxDam3; } }
-        public override double AosSpeed { get { return Hallebarde_Vitesse; } }
-        public override float MlSpeed { get { return 4.25f; } }
+        public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -135,8 +132,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Bardiche_Force3; } }
         public override int AosMinDamage { get { return Bardiche_MinDam3; } }
         public override int AosMaxDamage { get { return Bardiche_MaxDam3; } }
-        public override double AosSpeed { get { return Bardiche_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -178,8 +174,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Hallebarde_Force4; } }
         public override int AosMinDamage { get { return Hallebarde_MinDam4; } }
         public override int AosMaxDamage { get { return Hallebarde_MaxDam4; } }
-        public override double AosSpeed { get { return Hallebarde_Vitesse; } }
-        public override float MlSpeed { get { return 4.25f; } }
+        public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -221,8 +216,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Hallebarde_Force5; } }
         public override int AosMinDamage { get { return Hallebarde_MinDam5; } }
         public override int AosMaxDamage { get { return Hallebarde_MaxDam5; } }
-        public override double AosSpeed { get { return Hallebarde_Vitesse; } }
-        public override float MlSpeed { get { return 4.25f; } }
+        public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }
@@ -262,8 +256,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Bardiche_Force5; } }
         public override int AosMinDamage { get { return Bardiche_MinDam5; } }
         public override int AosMaxDamage { get { return Bardiche_MaxDam5; } }
-        public override double AosSpeed { get { return Bardiche_Vitesse; } }
-        public override float MlSpeed { get { return 3.75f; } }
+        public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 110; } }

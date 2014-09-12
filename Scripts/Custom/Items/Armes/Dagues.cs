@@ -12,8 +12,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force1; } }
         public override int AosMinDamage { get { return Dague_MinDam1; } }
         public override int AosMaxDamage { get { return Dague_MaxDam1; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -53,8 +52,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force6; } }
         public override int AosMinDamage { get { return Dague_MinDam6; } }
         public override int AosMaxDamage { get { return Dague_MaxDam6; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -94,8 +92,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force6; } }
         public override int AosMinDamage { get { return Dague_MinDam6; } }
         public override int AosMaxDamage { get { return Dague_MaxDam6; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -137,8 +134,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force1; } }
         public override int AosMinDamage { get { return Dague_MinDam1; } }
         public override int AosMaxDamage { get { return Dague_MaxDam1; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -178,8 +174,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force2; } }
         public override int AosMinDamage { get { return Dague_MinDam2; } }
         public override int AosMaxDamage { get { return Dague_MaxDam2; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -219,8 +214,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force3; } }
         public override int AosMinDamage { get { return Dague_MinDam3; } }
         public override int AosMaxDamage { get { return Dague_MaxDam3; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -262,8 +256,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force3; } }
         public override int AosMinDamage { get { return Dague_MinDam3; } }
         public override int AosMaxDamage { get { return Dague_MaxDam3; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -305,8 +298,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force4; } }
         public override int AosMinDamage { get { return Dague_MinDam4; } }
         public override int AosMaxDamage { get { return Dague_MaxDam4; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -346,8 +338,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force5; } }
         public override int AosMinDamage { get { return Dague_MinDam5; } }
         public override int AosMaxDamage { get { return Dague_MaxDam5; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -387,8 +378,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force6; } }
         public override int AosMinDamage { get { return Dague_MinDam6; } }
         public override int AosMaxDamage { get { return Dague_MaxDam6; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -428,8 +418,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force3; } }
         public override int AosMinDamage { get { return Dague_MinDam3; } }
         public override int AosMaxDamage { get { return Dague_MaxDam3; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -471,8 +460,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force4; } }
         public override int AosMinDamage { get { return Dague_MinDam4; } }
         public override int AosMaxDamage { get { return Dague_MaxDam4; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -514,8 +502,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force6; } }
         public override int AosMinDamage { get { return Dague_MinDam6; } }
         public override int AosMaxDamage { get { return Dague_MaxDam6; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -555,8 +542,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Dague_Force5; } }
         public override int AosMinDamage { get { return Dague_MinDam5; } }
         public override int AosMaxDamage { get { return Dague_MaxDam5; } }
-        public override double AosSpeed { get { return Dague_Vitesse; } }
-        public override float MlSpeed { get { return 2.00f; } }
+        public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }

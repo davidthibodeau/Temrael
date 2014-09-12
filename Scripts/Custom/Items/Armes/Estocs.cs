@@ -12,8 +12,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force5; } }
         public override int AosMinDamage { get { return Rapiere_MinDam5; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam5; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -53,8 +52,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force6; } }
         public override int AosMinDamage { get { return Rapiere_MinDam6; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam6; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -94,8 +92,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force0; } }
         public override int AosMinDamage { get { return Rapiere_MinDam0; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam0; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -137,8 +134,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force2; } }
         public override int AosMinDamage { get { return Rapiere_MinDam2; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam2; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -180,8 +176,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force4; } }
         public override int AosMinDamage { get { return Rapiere_MinDam4; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam4; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -223,8 +218,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force6; } }
         public override int AosMinDamage { get { return Rapiere_MinDam6; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam6; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -266,8 +260,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force1; } }
         public override int AosMinDamage { get { return Rapiere_MinDam1; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam1; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -307,8 +300,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Rapiere_Force3; } }
         public override int AosMinDamage { get { return Rapiere_MinDam3; } }
         public override int AosMaxDamage { get { return Rapiere_MaxDam3; } }
-        public override double AosSpeed { get { return Rapiere_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return Rapiere_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }

@@ -17,8 +17,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force3; } }
         public override int AosMinDamage { get { return Arbalete_MinDam3; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam3; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
 		public override int DefMaxRange{ get{ return 8; } }
 

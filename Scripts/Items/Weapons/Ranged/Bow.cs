@@ -17,8 +17,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arc_Force2; } }
         public override int AosMinDamage { get { return Arc_MinDam2; } }
         public override int AosMaxDamage { get { return Arc_MaxDam2; } }
-        public override double AosSpeed { get { return Arc_Vitesse; } }
-        public override float MlSpeed { get { return 4.25f; } }
+        public override int DefSpeed { get { return Arc_Vitesse; } }
 
 		public override int DefMaxRange{ get{ return 10; } }
 

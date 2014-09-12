@@ -12,8 +12,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return LourdeLame_Force1; } }
         public override int AosMinDamage { get { return LourdeLame_MinDam1; } }
         public override int AosMaxDamage { get { return LourdeLame_MaxDam1; } }
-        public override double AosSpeed { get { return LourdeLame_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return LourdeLame_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -53,8 +52,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return LourdeLame_Force3; } }
         public override int AosMinDamage { get { return LourdeLame_MinDam3; } }
         public override int AosMaxDamage { get { return LourdeLame_MaxDam3; } }
-        public override double AosSpeed { get { return LourdeLame_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return LourdeLame_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -94,8 +92,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return LourdeLame_Force6; } }
         public override int AosMinDamage { get { return LourdeLame_MinDam6; } }
         public override int AosMaxDamage { get { return LourdeLame_MaxDam6; } }
-        public override double AosSpeed { get { return LourdeLame_Vitesse; } }
-        public override float MlSpeed { get { return 2.75f; } }
+        public override int DefSpeed { get { return LourdeLame_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }

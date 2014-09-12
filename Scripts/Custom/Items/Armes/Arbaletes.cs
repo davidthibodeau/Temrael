@@ -18,8 +18,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force4; } }
         public override int AosMinDamage { get { return Arbalete_MinDam4; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam4; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -67,8 +66,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force5; } }
         public override int AosMinDamage { get { return Arbalete_MinDam5; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam5; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -118,8 +116,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force6; } }
         public override int AosMinDamage { get { return Arbalete_MinDam6; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam6; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -167,8 +164,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force0; } }
         public override int AosMinDamage { get { return Arbalete_MinDam0; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam0; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -216,8 +212,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force1; } }
         public override int AosMinDamage { get { return Arbalete_MinDam1; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam1; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -265,8 +260,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force3; } }
         public override int AosMinDamage { get { return Arbalete_MinDam3; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam3; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
 
@@ -314,8 +308,7 @@ namespace Server.Items
         public override int AosStrengthReq { get { return Arbalete_Force5; } }
         public override int AosMinDamage { get { return Arbalete_MinDam5; } }
         public override int AosMaxDamage { get { return Arbalete_MaxDam5; } }
-        public override double AosSpeed { get { return Arbalete_Vitesse; } }
-        public override float MlSpeed { get { return 4.50f; } }
+        public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
 
