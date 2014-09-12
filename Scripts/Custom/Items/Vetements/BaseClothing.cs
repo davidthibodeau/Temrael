@@ -866,7 +866,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 6 ); // version
+			writer.Write( (int) 0 ); // version
 
             writer.Write((int)m_BaseLayer);
             writer.Write((bool)m_Identified);
@@ -925,148 +925,90 @@ namespace Server.Items
 				writer.WriteEncodedInt( (int) m_StrReq );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-                case 6:
-                {
-                    m_BaseLayer = (Layer)reader.ReadInt();
-                    m_Identified = reader.ReadBool();
-                    m_rarete = (RareteItem)reader.ReadInt();
-                    m_rarete = RareteItem.Normal;
-                    m_TemraelAttributes = new TemraelAttributes(this, reader);
-                    goto case 5;
-                }
-				case 5:
-				{
-					SaveFlag flags = (SaveFlag)reader.ReadEncodedInt();
+            m_BaseLayer = (Layer)reader.ReadInt();
+            m_Identified = reader.ReadBool();
+            m_rarete = (RareteItem)reader.ReadInt();
+            m_rarete = RareteItem.Normal;
+            m_TemraelAttributes = new TemraelAttributes(this, reader);
 
-					if ( GetSaveFlag( flags, SaveFlag.Resource ) )
-						m_Resource = (CraftResource)reader.ReadEncodedInt();
-					else
-						m_Resource = DefaultResource;
+            SaveFlag flags = (SaveFlag)reader.ReadEncodedInt();
 
-                    if (GetSaveFlag(flags, SaveFlag.Attributes))
-                    {
-                        m_AosAttributes = new AosAttributes(this, reader);
-                        m_AosAttributes = new AosAttributes(this);
-                    }
-                    else
-                        m_AosAttributes = new AosAttributes(this);
+            if (GetSaveFlag(flags, SaveFlag.Resource))
+                m_Resource = (CraftResource)reader.ReadEncodedInt();
+            else
+                m_Resource = DefaultResource;
 
-                    if (GetSaveFlag(flags, SaveFlag.ClothingAttributes))
-                    {
-                        m_AosClothingAttributes = new AosArmorAttributes(this, reader);
-                        m_AosClothingAttributes = new AosArmorAttributes(this);
-                    }
-                    else
-                        m_AosClothingAttributes = new AosArmorAttributes(this);
+            if (GetSaveFlag(flags, SaveFlag.Attributes))
+            {
+                m_AosAttributes = new AosAttributes(this, reader);
+                m_AosAttributes = new AosAttributes(this);
+            }
+            else
+                m_AosAttributes = new AosAttributes(this);
 
-					if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
-						m_AosSkillBonuses = new AosSkillBonuses( this, reader );
-					else
-						m_AosSkillBonuses = new AosSkillBonuses( this );
+            if (GetSaveFlag(flags, SaveFlag.ClothingAttributes))
+            {
+                m_AosClothingAttributes = new AosArmorAttributes(this, reader);
+                m_AosClothingAttributes = new AosArmorAttributes(this);
+            }
+            else
+                m_AosClothingAttributes = new AosArmorAttributes(this);
 
-					if ( GetSaveFlag( flags, SaveFlag.Resistances ) )
-						m_AosResistances = new AosElementAttributes( this, reader );
-					else
-						m_AosResistances = new AosElementAttributes( this );
+            if (GetSaveFlag(flags, SaveFlag.SkillBonuses))
+                m_AosSkillBonuses = new AosSkillBonuses(this, reader);
+            else
+                m_AosSkillBonuses = new AosSkillBonuses(this);
 
-					if ( GetSaveFlag( flags, SaveFlag.MaxHitPoints ) )
-						m_MaxHitPoints = reader.ReadEncodedInt();
+            if (GetSaveFlag(flags, SaveFlag.Resistances))
+                m_AosResistances = new AosElementAttributes(this, reader);
+            else
+                m_AosResistances = new AosElementAttributes(this);
 
-					if ( GetSaveFlag( flags, SaveFlag.HitPoints ) )
-						m_HitPoints = reader.ReadEncodedInt();
+            if (GetSaveFlag(flags, SaveFlag.MaxHitPoints))
+                m_MaxHitPoints = reader.ReadEncodedInt();
 
-					if ( GetSaveFlag( flags, SaveFlag.Crafter ) )
-						m_Crafter = reader.ReadMobile();
+            if (GetSaveFlag(flags, SaveFlag.HitPoints))
+                m_HitPoints = reader.ReadEncodedInt();
 
-                    if (GetSaveFlag(flags, SaveFlag.CrafterName))
-                        m_CrafterName = reader.ReadString();
+            if (GetSaveFlag(flags, SaveFlag.Crafter))
+                m_Crafter = reader.ReadMobile();
 
-					if ( GetSaveFlag( flags, SaveFlag.Quality ) )
-						m_Quality = (ClothingQuality)reader.ReadEncodedInt();
-					else
-						m_Quality = ClothingQuality.Regular;
+            if (GetSaveFlag(flags, SaveFlag.CrafterName))
+                m_CrafterName = reader.ReadString();
 
-					if ( GetSaveFlag( flags, SaveFlag.StrReq ) )
-						m_StrReq = reader.ReadEncodedInt();
-					else
-						m_StrReq = -1;
+            if (GetSaveFlag(flags, SaveFlag.Quality))
+                m_Quality = (ClothingQuality)reader.ReadEncodedInt();
+            else
+                m_Quality = ClothingQuality.Regular;
 
-					if ( GetSaveFlag( flags, SaveFlag.PlayerConstructed ) )
-						m_PlayerConstructed = true;
+            if (GetSaveFlag(flags, SaveFlag.StrReq))
+                m_StrReq = reader.ReadEncodedInt();
+            else
+                m_StrReq = -1;
 
-					break;
-				}
-				case 4:
-				{
-					m_Resource = (CraftResource)reader.ReadInt();
+            if (GetSaveFlag(flags, SaveFlag.PlayerConstructed))
+                m_PlayerConstructed = true;
 
-					goto case 3;
-				}
-				case 3:
-				{
-					m_AosAttributes = new AosAttributes( this, reader );
-					m_AosClothingAttributes = new AosArmorAttributes( this, reader );
-					m_AosSkillBonuses = new AosSkillBonuses( this, reader );
-					m_AosResistances = new AosElementAttributes( this, reader );
+            if (m_MaxHitPoints == 0 && m_HitPoints == 0)
+                m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax(InitMinHits, InitMaxHits);
 
-					goto case 2;
-				}
-				case 2:
-				{
-					m_PlayerConstructed = reader.ReadBool();
-					goto case 1;
-				}
-				case 1:
-				{
-					m_Crafter = reader.ReadMobile();
-                    m_CrafterName = reader.ReadString();
-					m_Quality = (ClothingQuality)reader.ReadInt();
-					break;
-				}
-				case 0:
-				{
-					m_Crafter = null;
-					m_Quality = ClothingQuality.Regular;
-					break;
-				}
-			}
+            Mobile parent = Parent as Mobile;
 
-			if ( version < 2 )
-				m_PlayerConstructed = true; // we don't know, so, assume it's crafted
+            if (parent != null)
+            {
+                if (Core.AOS)
+                    m_AosSkillBonuses.AddTo(parent);
 
-			if ( version < 3 )
-			{
-				m_AosAttributes = new AosAttributes( this );
-				m_AosClothingAttributes = new AosArmorAttributes( this );
-				m_AosSkillBonuses = new AosSkillBonuses( this );
-				m_AosResistances = new AosElementAttributes( this );
-			}
-
-			if ( version < 4 )
-				m_Resource = DefaultResource;
-
-			if ( m_MaxHitPoints == 0 && m_HitPoints == 0 )
-				m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax( InitMinHits, InitMaxHits );
-
-			Mobile parent = Parent as Mobile;
-
-			if ( parent != null )
-			{
-				if ( Core.AOS )
-					m_AosSkillBonuses.AddTo( parent );
-
-				AddStatBonuses( parent );
-				parent.CheckStatTimers();
-			}
-		}
+                AddStatBonuses(parent);
+                parent.CheckStatTimers();
+            }
+        }
 		#endregion
 
 		public virtual bool Dye( Mobile from, DyeTub sender )
