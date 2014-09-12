@@ -478,7 +478,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 4 ); // version
+            writer.Write((int)0); // version
 
             writer.Write((bool)m_Identified);
             writer.Write((int)m_rarete);
@@ -495,90 +495,58 @@ namespace Server.Items
 			m_AosSkillBonuses.Serialize( writer );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-                case 4:
-                {
-                    m_Identified = reader.ReadBool();
-                    m_rarete = (RareteItem)reader.ReadInt();
-                    m_rarete = RareteItem.Normal;
-                    m_TemraelAttributes = new TemraelAttributes(this, reader);
-                    goto case 3;
-                }
-				case 3:
-				{
-					m_MaxHitPoints = reader.ReadEncodedInt();
-					m_HitPoints = reader.ReadEncodedInt();
+            m_Identified = reader.ReadBool();
+            m_rarete = (RareteItem)reader.ReadInt();
+            m_rarete = RareteItem.Normal;
+            m_TemraelAttributes = new TemraelAttributes(this, reader);
 
-					goto case 2;
-				}
-				case 2:
-				{
-					m_Resource = (CraftResource)reader.ReadEncodedInt();
-					m_GemType = (GemType)reader.ReadEncodedInt();
+            m_MaxHitPoints = reader.ReadEncodedInt();
+            m_HitPoints = reader.ReadEncodedInt();
 
-					goto case 1;
-				}
-				case 1:
-				{
-					m_AosAttributes = new AosAttributes( this, reader );
-					m_AosResistances = new AosElementAttributes( this, reader );
-					m_AosSkillBonuses = new AosSkillBonuses( this, reader );
+            m_Resource = (CraftResource)reader.ReadEncodedInt();
+            m_GemType = (GemType)reader.ReadEncodedInt();
 
-                    m_AosAttributes = new AosAttributes(this);
-                    m_AosResistances = new AosElementAttributes(this);
-                    m_AosSkillBonuses = new AosSkillBonuses(this);
+            m_AosAttributes = new AosAttributes(this, reader);
+            m_AosResistances = new AosElementAttributes(this, reader);
+            m_AosSkillBonuses = new AosSkillBonuses(this, reader);
 
-					if ( Core.AOS && Parent is Mobile )
-						m_AosSkillBonuses.AddTo( (Mobile)Parent );
+            m_AosAttributes = new AosAttributes(this);
+            m_AosResistances = new AosElementAttributes(this);
+            m_AosSkillBonuses = new AosSkillBonuses(this);
 
-					int strBonus = m_AosAttributes.BonusStr;
-					int dexBonus = m_AosAttributes.BonusDex;
-					int intBonus = m_AosAttributes.BonusInt;
+            if (Core.AOS && Parent is Mobile)
+                m_AosSkillBonuses.AddTo((Mobile)Parent);
 
-					if ( Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0) )
-					{
-						Mobile m = (Mobile)Parent;
+            int strBonus = m_AosAttributes.BonusStr;
+            int dexBonus = m_AosAttributes.BonusDex;
+            int intBonus = m_AosAttributes.BonusInt;
 
-						string modName = Serial.ToString();
+            if (Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0))
+            {
+                Mobile m = (Mobile)Parent;
 
-						if ( strBonus != 0 )
-							m.AddStatMod( new StatMod( StatType.Str, modName + "Str", strBonus, TimeSpan.Zero ) );
+                string modName = Serial.ToString();
 
-						if ( dexBonus != 0 )
-							m.AddStatMod( new StatMod( StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero ) );
+                if (strBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Str, modName + "Str", strBonus, TimeSpan.Zero));
 
-						if ( intBonus != 0 )
-							m.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
-					}
+                if (dexBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero));
 
-					if ( Parent is Mobile )
-						((Mobile)Parent).CheckStatTimers();
+                if (intBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
+            }
 
-					break;
-				}
-				case 0:
-				{
-					m_AosAttributes = new AosAttributes( this );
-					m_AosResistances = new AosElementAttributes( this );
-					m_AosSkillBonuses = new AosSkillBonuses( this );
+            if (Parent is Mobile)
+                ((Mobile)Parent).CheckStatTimers();
 
-					break;
-				}
-			}
-
-			if ( version < 2 )
-			{
-				m_Resource = CraftResource.Fer;
-				m_GemType = GemType.None;
-			}
-		}
+        }
 		#region ICraftable Members
 
 		public int OnCraft( int Quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
