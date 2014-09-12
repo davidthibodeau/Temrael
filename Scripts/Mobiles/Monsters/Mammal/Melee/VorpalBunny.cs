@@ -30,9 +30,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 5.0 );
 			SetSkill( SkillName.Anatomie, 5.0 );
 
-			Fame = 1000;
-			Karma = 0;
-
 			VirtualArmor = 4;
 
 			int carrots = Utility.RandomMinMax( 5, 10 );

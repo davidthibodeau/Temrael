@@ -46,8 +46,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 50.1, 60.0 );
 			SetSkill( SkillName.Anatomie, 30.1, 100.0 );
 
-			Fame = 15000;
-			Karma = 15000;
 		}
 
         public override double AttackSpeed { get { return 3.0; } }

@@ -32,16 +32,11 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 10, 20 );
 			SetResistance( ResistanceType.Magie, 35, 45 );
 
-			//SetSkill( SkillName.Anatomy, 80.1, 90.0 );
-			//SetSkill( SkillName.EvalInt, 80.2, 100.0 );
 			SetSkill( SkillName.ArtMagique, 99.1, 100.0 );
 			SetSkill( SkillName.Concentration, 80.2, 100.0 );
 			SetSkill( SkillName.Concentration, 140.1, 150.0 );
 			SetSkill( SkillName.Tactiques, 80.1, 90.0 );
 			SetSkill( SkillName.Anatomie, 80.1, 90.0 );
-
-			Fame = 15000;
-			Karma = -15000;
 
 			VirtualArmor = 16;
 

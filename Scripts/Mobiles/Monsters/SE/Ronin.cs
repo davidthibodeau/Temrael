@@ -46,9 +46,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.ArmeContondante, 92.6, 107.5 );
 			SetSkill( SkillName.ArmeTranchante, 92.6, 107.5 );
 
-			Fame = 8500;
-			Karma = -8500;
-
 			AddItem( new SamuraiTabi() );
 			AddItem( new LeatherHiroSode());
 			AddItem( new LeatherDo());

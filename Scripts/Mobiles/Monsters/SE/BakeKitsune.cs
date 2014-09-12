@@ -37,9 +37,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 70.1, 90.0 );
 			SetSkill( SkillName.Anatomie, 50.1, 55.0 );
 
-			Fame = 8000;
-			Karma = -8000;
-
 			Tamable = true;
 			ControlSlots = 2;
 			MinTameSkill = 80.7;
@@ -60,7 +57,6 @@ namespace Server.Mobiles
 		public override int Hides{ get{ return 10; } }
 		public override HideType HideType{ get{ return HideType.Regular; } }
 		public override FoodType FavoriteFood{ get{ return FoodType.Fish; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool ClickTitle{ get{ return false; } }
 		public override bool PropertyTitle{ get{ return false; } }
 

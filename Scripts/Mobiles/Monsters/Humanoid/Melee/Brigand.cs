@@ -44,9 +44,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 65.0, 87.5 );
 			SetSkill( SkillName.Anatomie, 15.0, 37.5 );
 
-			Fame = 1000;
-			Karma = -1000;
-
 			AddItem( new Boots( Utility.RandomNeutralHue() ) );
 			AddItem( new FancyShirt());
 			AddItem( new Bandana());

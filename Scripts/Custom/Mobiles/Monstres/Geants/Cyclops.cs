@@ -36,9 +36,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 80.1, 100.0 );
 			SetSkill( SkillName.Anatomie, 80.1, 90.0 );
 
-			Fame = 4500;
-			Karma = -4500;
-
 			VirtualArmor = 75;
             Tamable = true;
             ControlSlots = 6;

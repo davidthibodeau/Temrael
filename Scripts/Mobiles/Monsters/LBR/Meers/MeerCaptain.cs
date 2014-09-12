@@ -38,9 +38,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 91.0, 100.0 );
 			SetSkill( SkillName.Anatomie, 80.9, 89.9 );
 
-			Fame = 2000;
-			Karma = 5000;
-
 			VirtualArmor = 28;
 
 			Container pack = new Backpack();

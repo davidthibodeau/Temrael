@@ -50,9 +50,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 97.6, 100.0 );
 			SetSkill( SkillName.Anatomie, 97.6, 100.0 );
 
-			Fame = 22500;
-			Karma = -22500;
-
 			VirtualArmor = 70;
 
 			AddItem( new FancyShirt( Utility.RandomGreenHue() ) );
@@ -78,7 +75,6 @@ namespace Server.Mobiles
 		public override bool Uncalmable{ get{ return Core.SE; } }
 		public override Poison PoisonImmune{ get{ return Poison.Deadly; } }
 
-		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool ClickTitle{ get{ return false; } }
 
 		public void Polymorph( Mobile m )

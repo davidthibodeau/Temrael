@@ -38,9 +38,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 80.4, 94.7 );
 			SetSkill( SkillName.Anatomie, 70.2, 93.5 );
 
-			Fame = 5000;
-			Karma = -5000;
-
 			VirtualArmor = 28; // Don't know what it should be
 
 			PackItem( new Bandage( 5 ) );  // How many?

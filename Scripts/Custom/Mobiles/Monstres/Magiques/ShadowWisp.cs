@@ -36,9 +36,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 0.1, 15.0 );
 			SetSkill( SkillName.Anatomie, 25.1, 40.0 );
 
-			Fame = 500;
-
-			//AddItem( new LightSource() );
 		}
 
         public override bool AlwaysMurderer { get { return true; } }

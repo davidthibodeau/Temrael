@@ -38,11 +38,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 100.1, 110.0 );
 			SetSkill( SkillName.Tactiques, 85.1, 95.0 );
 			SetSkill( SkillName.Anatomie, 85.1, 95.0 );
-			//SetSkill( SkillName.Anatomy, 85.1, 95.0 );
 
-			Fame = 9000;
-			Karma = -9000;
-			
 			if ( Utility.RandomDouble() < .33 )
 				PackItem( Engines.Plants.Seed.RandomBonsaiSeed() );
 

@@ -34,9 +34,6 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 20, 30 );
 			SetResistance( ResistanceType.Magie, 30, 40 );
 
-			Fame = 18000;
-			Karma = -18000;
-
 			VirtualArmor = 60;
 		}
 

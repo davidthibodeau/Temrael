@@ -39,9 +39,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 60.1, 70.0 );
 			SetSkill( SkillName.Anatomie, 60.1, 70.0 );
 
-			Fame = 20000;
-			Karma = -20000;
-
 			int count = Utility.RandomMinMax( 2, 3 );
 
 			/*for ( int i = 0; i < count; ++i )

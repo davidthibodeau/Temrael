@@ -39,9 +39,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 70.1, 90.0 );
 			SetSkill( SkillName.Anatomie, 60.1, 80.0 );
 
-			Fame = 8000;
-			Karma = 8000;
-
 			VirtualArmor = 16;
 
 			m_NextAbilityTime = DateTime.Now + TimeSpan.FromSeconds( Utility.RandomMinMax( 2, 5 ) );

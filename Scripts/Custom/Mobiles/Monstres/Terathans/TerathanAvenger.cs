@@ -39,9 +39,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 90.1, 100.0 );
 			SetSkill( SkillName.Anatomie, 90.1, 100.0 );
 
-			Fame = 15000;
-			Karma = -15000;
-
 			VirtualArmor = 50;
 		}
 

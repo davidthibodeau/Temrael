@@ -55,16 +55,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, (60.1*scalar), (100.0*scalar) );
 			SetSkill( SkillName.Anatomie, (60.1*scalar), (100.0*scalar) );
 
-			if ( summoned )
-			{
-				Fame = 10;
-				Karma = 10;
-			}
-			else
-			{
-				Fame = 3500;
-				Karma = -3500;
-			}
 
 			ControlSlots = 3;
 		}

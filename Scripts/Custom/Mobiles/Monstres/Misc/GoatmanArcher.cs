@@ -36,9 +36,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Tactiques, 5.1, 10.0);
             SetSkill(SkillName.Anatomie, 5.1, 10.0);
 
-            Fame = 150;
-            Karma = -150;
-
             PackItem(new Arrow(Utility.RandomMinMax(1, 8))); // OSI it is different: in a sub backpack, this is probably just a limitation of their engine
         }
 

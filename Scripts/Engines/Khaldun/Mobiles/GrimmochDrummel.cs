@@ -6,7 +6,6 @@ namespace Server.Mobiles
 	public class GrimmochDrummel : BaseCreature
 	{
 		public override bool ClickTitle{ get{ return false; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool DeleteCorpseOnDeath{ get{ return true; } }
 
 		[Constructable]
@@ -59,9 +58,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 90.1, 100.0 );
 			SetSkill( SkillName.Concentration, 60.1, 70.0 );
 			//SetSkill( SkillName.Anatomy, 90.1, 100.0 );
-
-			Fame = 5000;
-			Karma = -1000;
 
 			PackItem( new Arrow( 40 ) );
 

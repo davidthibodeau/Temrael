@@ -43,9 +43,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 60.1, 100.0 );
 			SetSkill( SkillName.Anatomie, 60.1, 100.0 );
 
-			Fame = 3500;
-			Karma = -3500;
-
 			VirtualArmor = 38;
 
 			Item ore = new MytherilOre( oreAmount );

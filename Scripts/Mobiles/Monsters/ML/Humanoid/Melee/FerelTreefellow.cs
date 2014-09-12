@@ -37,9 +37,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 65.1, 90.0 );// Unknown
 			SetSkill( SkillName.Anatomie, 65.1, 85.0 );// Unknown
 
-			Fame = 12500;  //Unknown
-			Karma = 12500;  //Unknown
-
 			VirtualArmor = 24;
 			PackItem( new Log( Utility.RandomMinMax( 23, 34 ) ) );
 		}

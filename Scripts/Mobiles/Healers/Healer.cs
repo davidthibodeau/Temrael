@@ -39,25 +39,7 @@ namespace Server.Mobiles
 			SBInfos.Add( new SBHealer() );
 		}
 
-		public override bool CheckResurrect( Mobile m )
-		{
-			if ( m.Criminal )
-			{
-				Say( 501222 ); // Thou art a criminal.  I shall not resurrect thee.
-				return false;
-			}
-			else if ( m.Kills >= 5 )
-			{
-				Say( 501223 ); // Thou'rt not a decent and good person. I shall not resurrect thee.
-				return false;
-			}
-			else if ( m.Karma < 0 )
-			{
-				Say( 501224 ); // Thou hast strayed from the path of virtue, but thou still deservest a second chance.
-			}
 
-			return true;
-		}
 
 		public Healer( Serial serial ) : base( serial )
 		{

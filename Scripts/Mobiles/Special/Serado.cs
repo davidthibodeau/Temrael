@@ -57,9 +57,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Anatomie, 70.0 );
 			SetSkill( SkillName.Empoisonnement, 150.0 );
 
-			Fame = 22500;
-			Karma = -22500;
-
 			PackItem( Engines.Plants.Seed.RandomBonsaiSeed() );
 		}
 
@@ -78,7 +75,6 @@ namespace Server.Mobiles
 
 		public override int Feathers{ get{ return 30; } }
 
-		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool ClickTitle{ get{ return false; } }
 
 		// TODO: Hit Lightning Area

@@ -59,9 +59,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomie, 25, 47);
 
 
-            Fame = 100;
-            Karma = 100;
-
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
 

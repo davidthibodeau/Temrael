@@ -89,9 +89,6 @@ namespace Server.Mobiles
 			SetDex( 125, 135 );
 			SetInt( 1000, 1200 );
 
-			Fame = 22500;
-			Karma = -22500;
-
 			VirtualArmor = 60;
 
 			SetDamageType( ResistanceType.Physical, 50 );

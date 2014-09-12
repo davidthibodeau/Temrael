@@ -53,9 +53,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 82.0, 100.0 );
 			SetSkill( SkillName.Tactiques, 82.0, 100.0 );
 
-			Fame = 1000;
-			Karma = 10000;
-
 			PackItem( new Bandage( Utility.RandomMinMax( 5, 10 ) ) );
 			PackItem( new HealPotion() );
 			PackItem( new CurePotion() );

@@ -61,9 +61,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomie, 5, 27);
             SetSkill(SkillName.ArtMagique, 2, 2);
 
-            Fame = 0;
-            Karma = 0;
-
             AddItem(new Sandals(Utility.RandomNeutralHue()));
 
             switch (Utility.Random(2))

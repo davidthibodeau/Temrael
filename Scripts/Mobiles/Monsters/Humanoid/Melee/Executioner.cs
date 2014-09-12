@@ -52,9 +52,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 125.0 );
 			SetSkill( SkillName.Foresterie, 125.0 );
 
-			Fame = 5000;
-			Karma = -5000;
-
 			VirtualArmor = 40;
 
 			AddItem( new ThighBoots( Utility.RandomRedHue() ) ); 

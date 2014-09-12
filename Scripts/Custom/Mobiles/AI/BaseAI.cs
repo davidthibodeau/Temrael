@@ -2804,14 +2804,6 @@ namespace Server.Mobiles
 							bValid = ( m_Mobile.GetFactionAllegiance( m ) == BaseCreature.Allegiance.Enemy || m_Mobile.GetEthicAllegiance( m ) == BaseCreature.Allegiance.Enemy );
 						#endregion
 
-						if ( acqType == FightMode.Evil && !bValid )
-						{
-							if( m is BaseCreature && ((BaseCreature)m).Controlled && ((BaseCreature)m).ControlMaster != null )
-							bValid = ( ((BaseCreature)m).ControlMaster.Karma < 0 );
-							else
-							bValid = ( m.Karma < 0 );
-						}
-
 						if ( !bValid )
 							continue;
 					} else {

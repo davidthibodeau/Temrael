@@ -23,8 +23,6 @@ namespace Server.Mobiles
 		{
 			Title = "the healer";
 
-			Karma = -10000;
-
 			SetSkill( SkillName.ArtMagique, 80.0, 100.0 );
 			SetSkill( SkillName.Goetie, 80.0, 100.0 );
 			SetSkill( SkillName.ArmeTranchante, 80.0, 100.0 );

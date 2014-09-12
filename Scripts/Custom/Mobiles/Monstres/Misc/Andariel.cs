@@ -43,9 +43,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Tactiques, 65.1, 90.0);
             SetSkill(SkillName.Anatomie, 65.1, 80.0);
 
-            Fame = 5500;
-            Karma = -5500;
-
             PackReg(3);
         }
 

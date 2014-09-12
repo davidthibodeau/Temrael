@@ -42,9 +42,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.ArmeTranchante, 77.6, 92.5 );
 			SetSkill( SkillName.Tactiques, 77.6, 87.5 );
 
-			Fame = 5000;
-			Karma = -5000;
-
 			CraftResource res = CraftResource.None;
 
 			/*switch (Utility.Random( 6 ))
@@ -147,7 +144,6 @@ namespace Server.Mobiles
 		public override bool BardImmune{ get{ return !Core.AOS; } }
 		public override bool CanRummageCorpses{ get{ return true; } }
 		public override bool AlwaysMurderer{ get{ return true; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 
 		public override bool OnBeforeDeath()
 		{

@@ -44,9 +44,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 4.0, 6.0 );
 			SetSkill( SkillName.Concentration, 4.0, 5.0 );
 
-			Fame = 150;
-			Karma = 0;
-
 			Tamable = true;
 			ControlSlots = 1;
 			MinTameSkill = 5.0;
@@ -105,9 +102,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Anatomie, 4.2, 6.4 );
 			SetSkill( SkillName.Tactiques, 4.0, 6.0 );
 			SetSkill( SkillName.Concentration, 4.0, 5.0 );
-
-			Fame = 150;
-			Karma = 0;
 
 			Tamable = true;
 			ControlSlots = 1;

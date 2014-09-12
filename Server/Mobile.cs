@@ -51,298 +51,6 @@ namespace Server
 	public delegate void PromptStateCallback<T>( Mobile from, string text, T state );
 	#endregion
 
-	#region [...]Mods
-	public class TimedSkillMod : SkillMod
-	{
-		private DateTime m_Expire;
-
-		public TimedSkillMod( SkillName skill, bool relative, double value, TimeSpan delay )
-			: this( skill, relative, value, DateTime.Now + delay )
-		{
-		}
-
-		public TimedSkillMod( SkillName skill, bool relative, double value, DateTime expire )
-			: base( skill, relative, value )
-		{
-			m_Expire = expire;
-		}
-
-		public override bool CheckCondition()
-		{
-			return (DateTime.Now < m_Expire);
-		}
-	}
-
-	public class EquipedSkillMod : SkillMod
-	{
-		private Item m_Item;
-		private Mobile m_Mobile;
-
-		public EquipedSkillMod( SkillName skill, bool relative, double value, Item item, Mobile mobile )
-			: base( skill, relative, value )
-		{
-			m_Item = item;
-			m_Mobile = mobile;
-		}
-
-		public override bool CheckCondition()
-		{
-			return (!m_Item.Deleted && !m_Mobile.Deleted && m_Item.Parent == m_Mobile);
-		}
-	}
-
-	public class DefaultSkillMod : SkillMod
-	{
-		public DefaultSkillMod( SkillName skill, bool relative, double value )
-			: base( skill, relative, value )
-		{
-		}
-
-		public override bool CheckCondition()
-		{
-			return true;
-		}
-	}
-
-	public abstract class SkillMod
-	{
-		private Mobile m_Owner;
-		private SkillName m_Skill;
-		private bool m_Relative;
-		private double m_Value;
-		private bool m_ObeyCap;
-
-		protected SkillMod( SkillName skill, bool relative, double value )
-		{
-			m_Skill = skill;
-			m_Relative = relative;
-			m_Value = value;
-		}
-
-		public bool ObeyCap
-		{
-			get { return m_ObeyCap; }
-			set
-			{
-				m_ObeyCap = value;
-
-				if( m_Owner != null )
-				{
-					Skill sk = m_Owner.Skills[m_Skill];
-
-					if( sk != null )
-						sk.Update();
-				}
-			}
-		}
-
-		public Mobile Owner
-		{
-			get
-			{
-				return m_Owner;
-			}
-			set
-			{
-				if( m_Owner != value )
-				{
-					if( m_Owner != null )
-						m_Owner.RemoveSkillMod( this );
-
-					m_Owner = value;
-
-					if( m_Owner != value )
-						m_Owner.AddSkillMod( this );
-				}
-			}
-		}
-
-		public void Remove()
-		{
-			Owner = null;
-		}
-
-		public SkillName Skill
-		{
-			get
-			{
-				return m_Skill;
-			}
-			set
-			{
-				if( m_Skill != value )
-				{
-					Skill oldUpdate = (m_Owner != null ? m_Owner.Skills[m_Skill] : null);
-
-					m_Skill = value;
-
-					if( m_Owner != null )
-					{
-						Skill sk = m_Owner.Skills[m_Skill];
-
-						if( sk != null )
-							sk.Update();
-					}
-
-					if( oldUpdate != null )
-						oldUpdate.Update();
-				}
-			}
-		}
-
-		public bool Relative
-		{
-			get
-			{
-				return m_Relative;
-			}
-			set
-			{
-				if( m_Relative != value )
-				{
-					m_Relative = value;
-
-					if( m_Owner != null )
-					{
-						Skill sk = m_Owner.Skills[m_Skill];
-
-						if( sk != null )
-							sk.Update();
-					}
-				}
-			}
-		}
-
-		public bool Absolute
-		{
-			get
-			{
-				return !m_Relative;
-			}
-			set
-			{
-				if( m_Relative == value )
-				{
-					m_Relative = !value;
-
-					if( m_Owner != null )
-					{
-						Skill sk = m_Owner.Skills[m_Skill];
-
-						if( sk != null )
-							sk.Update();
-					}
-				}
-			}
-		}
-
-		public double Value
-		{
-			get
-			{
-				return m_Value;
-			}
-			set
-			{
-				if( m_Value != value )
-				{
-					m_Value = value;
-
-					if( m_Owner != null )
-					{
-						Skill sk = m_Owner.Skills[m_Skill];
-
-						if( sk != null )
-							sk.Update();
-					}
-				}
-			}
-		}
-
-		public abstract bool CheckCondition();
-	}
-
-	public class ResistanceMod
-	{
-		private Mobile m_Owner;
-		private ResistanceType m_Type;
-		private int m_Offset;
-
-		public Mobile Owner
-		{
-			get { return m_Owner; }
-			set { m_Owner = value; }
-		}
-
-		public ResistanceType Type
-		{
-			get { return m_Type; }
-			set
-			{
-				if( m_Type != value )
-				{
-					m_Type = value;
-
-					if( m_Owner != null )
-						m_Owner.UpdateResistances();
-				}
-			}
-		}
-
-		public int Offset
-		{
-			get { return m_Offset; }
-			set
-			{
-				if( m_Offset != value )
-				{
-					m_Offset = value;
-
-					if( m_Owner != null )
-						m_Owner.UpdateResistances();
-				}
-			}
-		}
-
-		public ResistanceMod( ResistanceType type, int offset )
-		{
-			m_Type = type;
-			m_Offset = offset;
-		}
-	}
-
-	public class StatMod
-	{
-		private StatType m_Type;
-		private string m_Name;
-		private int m_Offset;
-		private TimeSpan m_Duration;
-		private DateTime m_Added;
-
-		public StatType Type { get { return m_Type; } }
-		public string Name { get { return m_Name; } }
-		public int Offset { get { return m_Offset; } }
-
-		public bool HasElapsed()
-		{
-			if( m_Duration == TimeSpan.Zero )
-				return false;
-
-			return (DateTime.Now - m_Added) >= m_Duration;
-		}
-
-		public StatMod( StatType type, string name, int offset, TimeSpan duration )
-		{
-			m_Type = type;
-			m_Name = name;
-			m_Offset = offset;
-			m_Duration = duration;
-			m_Added = DateTime.Now;
-		}
-	}
-
-	#endregion
-
 	public class DamageEntry
 	{
 		private Mobile m_Damager;
@@ -506,7 +214,7 @@ namespace Server
 	/// <summary>
 	/// Base class representing players, npcs, and creatures.
 	/// </summary>
-	public class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable
+	public partial class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable
 	{
 		#region CompareTo(...)
 		public int CompareTo( IEntity other )
@@ -600,72 +308,7 @@ namespace Server
 
 		#endregion
 
-		#region Regeneration
-
-		private static RegenRateHandler m_HitsRegenRate, m_StamRegenRate, m_ManaRegenRate;
-		private static TimeSpan m_DefaultHitsRate, m_DefaultStamRate, m_DefaultManaRate;
-
-		public static RegenRateHandler HitsRegenRateHandler
-		{
-			get { return m_HitsRegenRate; }
-			set { m_HitsRegenRate = value; }
-		}
-
-		public static TimeSpan DefaultHitsRate
-		{
-			get { return m_DefaultHitsRate; }
-			set { m_DefaultHitsRate = value; }
-		}
-
-		public static RegenRateHandler StamRegenRateHandler
-		{
-			get { return m_StamRegenRate; }
-			set { m_StamRegenRate = value; }
-		}
-
-		public static TimeSpan DefaultStamRate
-		{
-			get { return m_DefaultStamRate; }
-			set { m_DefaultStamRate = value; }
-		}
-
-		public static RegenRateHandler ManaRegenRateHandler
-		{
-			get { return m_ManaRegenRate; }
-			set { m_ManaRegenRate = value; }
-		}
-
-		public static TimeSpan DefaultManaRate
-		{
-			get { return m_DefaultManaRate; }
-			set { m_DefaultManaRate = value; }
-		}
-
-		public static TimeSpan GetHitsRegenRate( Mobile m )
-		{
-			if( m_HitsRegenRate == null )
-				return m_DefaultHitsRate;
-			else
-				return m_HitsRegenRate( m );
-		}
-
-		public static TimeSpan GetStamRegenRate( Mobile m )
-		{
-			if( m_StamRegenRate == null )
-				return m_DefaultStamRate;
-			else
-				return m_StamRegenRate( m );
-		}
-
-		public static TimeSpan GetManaRegenRate( Mobile m )
-		{
-			if( m_ManaRegenRate == null )
-				return m_DefaultManaRate;
-			else
-				return m_ManaRegenRate( m );
-		}
-
-		#endregion
+		
 
 		private class MovementRecord
 		{
@@ -737,7 +380,6 @@ namespace Server
 		private int m_StatCap;
 		private int m_Str, m_Dex, m_Int;
 		private int m_Hits, m_Stam, m_Mana;
-		private int m_Fame, m_Karma;
 		private AccessLevel m_AccessLevel;
 		private Skills m_Skills;
 		private List<Item> m_Items;
@@ -1083,9 +725,6 @@ namespace Server
 				name = String.Empty;
 
 			string prefix = "";
-
-			if( ShowFameTitle && (m_Player || m_Body.IsHuman) && m_Fame >= 10000 )
-				prefix = m_Female ? "Lady" : "Lord";
 
 			string suffix = "";
 
@@ -5504,8 +5143,6 @@ namespace Server
             m_Mana = reader.ReadInt();
             m_Map = reader.ReadMap();
             m_Blessed = reader.ReadBool();
-            m_Fame = reader.ReadInt();
-            m_Karma = reader.ReadInt();
             m_AccessLevel = (AccessLevel)reader.ReadByte();
 
             m_Skills = new Skills(this, reader);
@@ -5782,8 +5419,6 @@ namespace Server
 			writer.Write( m_Map );
 
 			writer.Write( m_Blessed );
-			writer.Write( m_Fame );
-			writer.Write( m_Karma );
 			writer.Write( (byte)m_AccessLevel );
 			m_Skills.Serialize( writer );
 
@@ -6230,55 +5865,6 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int Fame
-		{
-			get
-			{
-				return m_Fame;
-			}
-			set
-			{
-				int oldValue = m_Fame;
-
-				if( oldValue != value )
-				{
-					m_Fame = value;
-
-					if( ShowFameTitle && (m_Player || m_Body.IsHuman) && (oldValue >= 10000) != (value >= 10000) )
-						InvalidateProperties();
-
-					OnFameChange( oldValue );
-				}
-			}
-		}
-
-		public virtual void OnFameChange( int oldValue )
-		{
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int Karma
-		{
-			get
-			{
-				return m_Karma;
-			}
-			set
-			{
-				int old = m_Karma;
-
-				if( old != value )
-				{
-					m_Karma = value;
-					OnKarmaChange( old );
-				}
-			}
-		}
-
-		public virtual void OnKarmaChange( int oldValue )
-		{
-		}
 
 		// Mobile did something which should unhide him
 		public virtual void RevealingAction()
@@ -10885,8 +10471,6 @@ namespace Server
 		public static bool GuildClickMessage { get { return m_GuildClickMessage; } set { m_GuildClickMessage = value; } }
 		public static bool OldPropertyTitles { get { return m_OldPropertyTitles; } set { m_OldPropertyTitles = value; } }
 
-		public virtual bool ShowFameTitle { get { return true; } }//(m_Player || m_Body.IsHuman) && m_Fame >= 10000; } 
-
 		/// <summary>
 		/// Overridable. Event invoked when the Mobile is single clicked.
 		/// </summary>
@@ -10937,9 +10521,6 @@ namespace Server
 				name = String.Empty;
 
 			string prefix = "";
-
-			if( ShowFameTitle && (m_Player || m_Body.IsHuman) && m_Fame >= 10000 )
-				prefix = (m_Female ? "Lady" : "Lord");
 
 			string suffix = "";
 

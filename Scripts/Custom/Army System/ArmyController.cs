@@ -279,30 +279,6 @@ namespace Server.Items
 
         private int CalculateMaxFollowers(Mobile from)
         {
-            //REMOVE ME: if (!TestBool) Console.WriteLine("About to calculate Max Army Size.");
-            for (int x = 0; x < FameLevels.Length; x++)
-            {
-                if (from.Fame >= FameLevels[x])
-                {
-                    #region Test Console Messages
-                    //REMOVE ME: if (!TestBool)
-                    //REMOVE ME: {
-                    //REMOVE ME:     Console.WriteLine("from.Fame - {0} is greater than or equal to FameLevels - {1}.",
-                    //REMOVE ME:         from.Fame.ToString(), FameLevels[x].ToString());
-                    //REMOVE ME:     Console.WriteLine("from.Followers = {0}.", from.Followers);
-                    //REMOVE ME:     Console.WriteLine("6 - from.Followers = {0}.",((int)(6 - from.Followers)).ToString());
-                    //REMOVE ME:     Console.WriteLine("ArmyLimit[{0}] = {1}.", x.ToString(), ArmyLimit[x].ToString());
-                    //REMOVE ME:     Console.WriteLine("So returning Army Size of {0}.", (ArmyLimit[x] * (6 - from.Followers) / 6));
-                    //REMOVE ME: }
-                    //REMOVE ME: TestBool = true;
-                    //REMOVE ME: Console.WriteLine("Returning Army Size of {0}.", (ArmyLimit[x]*(6 - from.Followers) / 6));
-                    #endregion
-                    return (ArmyLimit[x] * (6 - from.Followers) / 6);
-                }
-                //REMOVE ME: if (!TestBool) Console.WriteLine("Iteration {0}: FameLevels[x] is {1}. from.Fame is {2}, so go again.",
-                //REMOVE ME:    x.ToString(),FameLevels[x].ToString(),from.Fame.ToString());
-            }
-            //REMOVE ME: TestBool = true;
             return 0;
         }
 

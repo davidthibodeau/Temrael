@@ -43,8 +43,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Concentration, 80.1, 100.0);
             SetSkill(SkillName.Tactiques, 70.1, 90.0);
 
-            Fame = 8000;
-            Karma = -8000;
         }
 
         public override void GenerateLoot()

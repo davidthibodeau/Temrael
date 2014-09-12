@@ -35,9 +35,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Tactiques, 40.0, 60.0);
             SetSkill(SkillName.Anatomie, 40.0, 60.0);
 
-            Fame = 450;
-            Karma = -450;
-
             switch (Utility.Random(5))
             {
                 case 0: PackItem(new BoneArms()); break;

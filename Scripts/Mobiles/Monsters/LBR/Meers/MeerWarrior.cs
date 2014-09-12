@@ -38,8 +38,6 @@ namespace Server.Mobiles
 
 			VirtualArmor = 22;
 
-			Fame = 2000;
-			Karma = 5000;
 		}
 
 		public override void GenerateLoot()

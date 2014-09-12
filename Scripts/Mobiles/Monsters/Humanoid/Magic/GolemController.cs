@@ -44,9 +44,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 65.0, 87.5 );
 			SetSkill( SkillName.Anatomie, 65.0, 87.5 );
 
-			Fame = 4000;
-			Karma = -4000;
-
 			VirtualArmor = 16;
 
 			if ( 0.7 > Utility.RandomDouble() )
@@ -73,7 +70,6 @@ namespace Server.Mobiles
 		}
 
 		public override bool ClickTitle{ get{ return false; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool AlwaysMurderer{ get{ return true; } }
 
 		public GolemController( Serial serial ) : base( serial ) 

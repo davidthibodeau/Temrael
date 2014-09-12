@@ -39,8 +39,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.ArmeTranchante, 70.1, 95.0);
             SetSkill(SkillName.Tactiques, 85.1, 100.0);
 
-            Fame = 2500;
-            Karma = -2500;
         }
 
         public override void GenerateLoot()

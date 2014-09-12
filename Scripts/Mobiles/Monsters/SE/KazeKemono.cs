@@ -42,8 +42,6 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.Anatomy, 25.1, 35.0 );
 			SetSkill( SkillName.ArtMagique, 95.1, 105.0 );
 
-			Fame = 8000;
-			Karma = -8000;
 		}
 
 

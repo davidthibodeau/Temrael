@@ -39,9 +39,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 60.1, 100.0 );
 			SetSkill( SkillName.Anatomie, 60.1, 100.0 );
 
-			Fame = 4500;
-			Karma = -4500;
-
 			VirtualArmor = 23;
 
 			Item ore = new BronzeOre( oreAmount );

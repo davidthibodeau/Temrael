@@ -36,10 +36,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 30.1, 38.0 );
 			//SetSkill( SkillName.Anatomy, 20.1, 24.0 );
 
-			Fame = 700;
-			Karma = -700;
-
-
 			if( Utility.RandomBool() )
 			{
 				Item i = Loot.RandomReagent();

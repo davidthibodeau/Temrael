@@ -44,9 +44,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 62.5, 85.0 );
 			SetSkill( SkillName.Anatomie, 62.5, 85.0 );
 
-			Fame = 1000;
-			Karma = -1000;
-			
 			PackReg( 10, 15 );
 			PackItem( new Bandage( Utility.RandomMinMax( 1, 15 ) ) );
 
@@ -66,7 +63,6 @@ namespace Server.Mobiles
 
 		public override int Meat{ get{ return 1; } }
 		public override bool AlwaysMurderer{ get{ return true; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 
 		public override OppositionGroup OppositionGroup
 		{

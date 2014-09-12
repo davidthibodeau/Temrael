@@ -6,7 +6,6 @@ namespace Server.Mobiles
 	public class LysanderGathenwale : BaseCreature
 	{
 		public override bool ClickTitle{ get{ return false; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 		public override bool DeleteCorpseOnDeath{ get{ return true; } }
 
 		[Constructable]
@@ -57,9 +56,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.ArtMagique, 90.1, 100.0 );
 			//SetSkill( SkillName.EvalInt, 95.1, 100.0 );
 			SetSkill( SkillName.Concentration, 90.1, 100.0 );
-
-			Fame = 5000;
-			Karma = -10000;
 
 			Item reags = Loot.RandomReagent();
 			reags.Amount = 30;

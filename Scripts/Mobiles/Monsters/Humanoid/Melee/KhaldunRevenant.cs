@@ -97,9 +97,6 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 20, 30 );
 			SetResistance( ResistanceType.Magie, 20, 30 );
 
-			Fame = 0;
-			Karma = 0;
-
 			VirtualArmor = 60;
 
 			Halberd weapon = new Halberd();

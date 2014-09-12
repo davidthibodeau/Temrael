@@ -63,10 +63,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.ArmeDistance, 36, 67);
             SetSkill(SkillName.Parer, 45, 60);
             SetSkill(SkillName.Musique, 66.0, 97.5);
-            //SetSkill(SkillName.Peacemaking, 65.0, 87.5);
-
-            Fame = 100;
-            Karma = 100;
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));
 

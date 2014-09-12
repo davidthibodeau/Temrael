@@ -43,9 +43,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 70.1, 80.0 );
 			SetSkill( SkillName.Anatomie, 60.1, 80.0 );
 
-			Fame = 15000;
-			Karma = -15000;
-
 			ControlSlots = Core.SE ? 4 : 5;
 		}
 

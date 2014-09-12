@@ -39,10 +39,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 50.1, 58.0 );
 			SetSkill( SkillName.Tactiques, 67.1, 77.0 );
 			SetSkill( SkillName.Anatomie, 50.1, 60.0 );
-			//SetSkill( SkillName.Anatomy, 30.1, 34.0 );
-
-			Fame = 1400;
-			Karma = -1400;
 
 			switch ( Utility.Random( 12 ) )
 			{

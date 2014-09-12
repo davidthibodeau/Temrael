@@ -31,9 +31,6 @@ namespace Server.Engines.Quests.Samurai
 			SetSkill( SkillName.Tactiques, 5.0, 15.0 );
 			SetSkill( SkillName.Concentration, 10.0 );
 
-			Fame = 200;
-			Karma = -200;
-
 			switch ( Utility.Random( 10 ) )
 			{
 				case 0: PackItem( new LeftArm() ); break;

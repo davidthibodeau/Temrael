@@ -42,9 +42,6 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.EvalInt, 70.1, 80.0 );
 			SetSkill( SkillName.Concentration, 70.1, 80.0 );
 
-			Fame = 7000;
-			Karma = -10000;
-
 			VirtualArmor = 55;
 		}
 

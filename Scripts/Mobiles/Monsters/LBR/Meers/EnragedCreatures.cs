@@ -197,7 +197,6 @@ namespace Server.Mobiles
 			if( Dex < Stam )
 				Dex = Stam;
 
-			Karma = -1000;
 			Tamable = false;
 
 			SummonMaster = summoner;

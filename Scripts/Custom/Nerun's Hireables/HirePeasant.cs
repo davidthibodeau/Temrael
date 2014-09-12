@@ -62,9 +62,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomie, 5, 5);
             SetSkill(SkillName.ArmeTranchante, 5, 27);
 
-            Fame = 0;
-            Karma = 0;
-
             AddItem(new Sandals(Utility.RandomNeutralHue()));
             switch (Utility.Random(2))
             {

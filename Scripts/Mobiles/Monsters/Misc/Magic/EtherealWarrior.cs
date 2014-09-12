@@ -40,9 +40,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 90.1, 100.0 );
 			SetSkill( SkillName.Anatomie, 97.6, 100.0 );
 
-			Fame = 7000;
-			Karma = 7000;
-
 			VirtualArmor = 120;
 		}
 
@@ -64,7 +61,7 @@ namespace Server.Mobiles
 				if (!from.Frozen && (DateTime.Now >= m_NextResurrect) && InRange(from, 4) && !InRange(oldLocation, 4) && InLOS(from))
 				{
 					m_NextResurrect = DateTime.Now + ResurrectDelay;
-					if (!from.Criminal && (from.Kills < 5) && (from.Karma > 0))
+					if (!from.Criminal && (from.Kills < 5))
 					{
 						if (from.Map != null && from.Map.CanFit(from.Location, 16, false, false))
 						{

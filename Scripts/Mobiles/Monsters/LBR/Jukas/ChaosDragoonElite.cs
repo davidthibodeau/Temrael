@@ -42,9 +42,6 @@ namespace Server.Mobiles
 			SetSkill(SkillName.ArmePerforante, 85.1, 100);
 			SetSkill(SkillName.ArmeContondante, 85.1, 100);
 
-			Fame = 8000;
-			Karma = -8000;
-
 			CraftResource res = CraftResource.None;;
 
 			/*switch (Utility.Random(6))
@@ -161,7 +158,6 @@ namespace Server.Mobiles
 		public override bool BardImmune { get { return !Core.AOS; } }
 		public override bool CanRummageCorpses { get { return true; } }
 		public override bool AlwaysMurderer { get { return true; } }
-		public override bool ShowFameTitle { get { return false; } }
 
 		public override bool OnBeforeDeath()
 		{

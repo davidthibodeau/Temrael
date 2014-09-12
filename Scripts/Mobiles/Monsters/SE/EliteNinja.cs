@@ -49,18 +49,6 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.Ninjitsu, 95.0, 120.0 );
 
 
-			Fame = 8500;
-			Karma = -8500;
-
-			/* TODO:	
-					Uses Smokebombs
-					Hides
-					Stealths
-					Can use Ninjitsu Abilities
-					Can change weapons during a fight
-			*/
-					
-
 			AddItem( new NinjaTabi() );
 			AddItem( new LeatherNinjaJacket());
 			AddItem( new LeatherNinjaHood());

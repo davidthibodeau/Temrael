@@ -36,9 +36,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Tactiques, 5.1, 10.0);
             SetSkill(SkillName.Anatomie, 5.1, 10.0);
 
-            Fame = 150;
-            Karma = -150;
-
             Tamable = false;
         }
 

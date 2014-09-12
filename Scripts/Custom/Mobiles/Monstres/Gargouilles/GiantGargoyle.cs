@@ -49,9 +49,6 @@ namespace Server.Mobiles
             //SetSkill( SkillName.EvalInt, 70.3, 100.0 );
             SetSkill(SkillName.Concentration, 90.0, 130.0);
 
-            Fame = 5000;
-            Karma = -5000;
-
             PackItem(new EclatDeVolcan(5));
         }
 

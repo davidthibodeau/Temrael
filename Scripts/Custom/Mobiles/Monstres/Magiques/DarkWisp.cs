@@ -45,9 +45,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 80.0 );
 			SetSkill( SkillName.Anatomie, 80.0 );
 
-			Fame = 4000;
-			Karma = -4000;
-
 			//AddItem( new LightSource() );
 		}
 

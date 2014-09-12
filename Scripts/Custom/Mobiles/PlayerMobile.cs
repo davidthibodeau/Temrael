@@ -3306,15 +3306,6 @@ namespace Server.Mobiles
 			InvalidateMyRunUO();
 		}
 
-		public override void OnKarmaChange( int oldValue )
-		{
-			InvalidateMyRunUO();
-		}
-
-		public override void OnFameChange( int oldValue )
-		{
-			InvalidateMyRunUO();
-		}
 
 		public override void OnSkillChange( SkillName skill, double oldBase )
 		{

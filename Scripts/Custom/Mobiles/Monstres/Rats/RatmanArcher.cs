@@ -40,9 +40,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 40, 50 );
 			SetSkill( SkillName.Anatomie, 40, 50 );
 
-			Fame = 6500;
-			Karma = -6500;
-
 			VirtualArmor = 10;
 
 			PackItem( new Arrow( Utility.RandomMinMax( 1, 5 ) ) );

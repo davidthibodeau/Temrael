@@ -4324,31 +4324,6 @@ namespace Server.Mobiles
 			}
 		}
 
-		public void SetFameLevel( int level )
-		{
-			switch ( level )
-			{
-				case 1: Fame = Utility.RandomMinMax(     0,  1249 ); break;
-				case 2: Fame = Utility.RandomMinMax(  1250,  2499 ); break;
-				case 3: Fame = Utility.RandomMinMax(  2500,  4999 ); break;
-				case 4: Fame = Utility.RandomMinMax(  5000,  9999 ); break;
-				case 5: Fame = Utility.RandomMinMax( 10000, 10000 ); break;
-			}
-		}
-
-		public void SetKarmaLevel( int level )
-		{
-			switch ( level )
-			{
-				case 0: Karma = -Utility.RandomMinMax(     0,   624 ); break;
-				case 1: Karma = -Utility.RandomMinMax(   625,  1249 ); break;
-				case 2: Karma = -Utility.RandomMinMax(  1250,  2499 ); break;
-				case 3: Karma = -Utility.RandomMinMax(  2500,  4999 ); break;
-				case 4: Karma = -Utility.RandomMinMax(  5000,  9999 ); break;
-				case 5: Karma = -Utility.RandomMinMax( 10000, 10000 ); break;
-			}
-		}
-
 		#endregion
 
 		public static void Cap( ref int val, int min, int max )
@@ -5142,100 +5117,6 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				if ( !Summoned && !m_NoKillAwards )
-				{
-					int totalFame = Fame / 100;
-					int totalKarma = -Karma / 100;
-					if (Map == Map.Felucca)
-					{
-						totalFame += ((totalFame/10)*3);
-						totalKarma += ((totalKarma/10)*3);
-					}
-
-					List<DamageStore> list = GetLootingRights( this.DamageEntries, this.HitsMax );
-					List<Mobile> titles = new List<Mobile>();
-					List<int> fame = new List<int>();
-					List<int> karma = new List<int>();
-
-					bool givenQuestKill = false;
-					bool givenFactionKill = false;
-					bool givenToTKill = false;
-
-					for ( int i = 0; i < list.Count; ++i )
-					{
-						DamageStore ds = list[i];
-
-						if ( !ds.m_HasRight )
-							continue;
-
-						Party party = Engines.PartySystem.Party.Get( ds.m_Mobile );
-
-						if ( party != null )
-						{
-							int divedFame = totalFame / party.Members.Count;
-							int divedKarma = totalKarma / party.Members.Count;
-
-							for ( int j = 0; j < party.Members.Count; ++j )
-							{
-								PartyMemberInfo info = party.Members[ j ] as PartyMemberInfo;
-
-								if ( info != null && info.Mobile != null )
-								{
-									int index = titles.IndexOf( info.Mobile );
-
-									if ( index == -1 )
-									{
-										titles.Add( info.Mobile );
-										fame.Add( divedFame );
-										karma.Add( divedKarma );
-									}
-									else
-									{
-										fame[ index ] += divedFame;
-										karma[ index ] += divedKarma;
-									}
-								}
-							}
-						}
-						else
-						{
-							titles.Add( ds.m_Mobile );
-							fame.Add( totalFame );
-							karma.Add( totalKarma );
-						}
-
-						OnKilledBy( ds.m_Mobile );
-
-						if ( !givenFactionKill )
-						{
-							givenFactionKill = true;
-							Faction.HandleDeath( this, ds.m_Mobile );
-						}
-
-						Region region = ds.m_Mobile.Region;
-
-						if ( givenQuestKill )
-							continue;
-
-						PlayerMobile pm = ds.m_Mobile as PlayerMobile;
-
-						if ( pm != null )
-						{
-							QuestSystem qs = pm.Quest;
-
-							if ( qs != null )
-							{
-								qs.OnKill( this, c );
-								givenQuestKill = true;
-							}
-						}
-					}
-					for ( int i = 0; i < titles.Count; ++i )
-					{
-						//Titles.AwardFame( titles[ i ], fame[ i ], true );
-						//Titles.AwardKarma( titles[ i ], karma[ i ], true );
-					}
-				}
 
 				base.OnDeath( c );
 

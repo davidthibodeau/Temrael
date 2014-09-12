@@ -10,7 +10,6 @@ namespace Server.Mobiles
 	public class KhaldunZealot : BaseCreature
 	{
 		public override bool ClickTitle{ get{ return false; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 
 		[Constructable]
 		public KhaldunZealot(): base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
@@ -43,8 +42,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 90.1, 100.0 );
 			SetSkill( SkillName.Tactiques, 90.1, 100.0 );
 
-			Fame = 10000;
-			Karma = -10000;
 			VirtualArmor = 40;
 
 			VikingSword weapon = new VikingSword();

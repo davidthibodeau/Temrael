@@ -50,8 +50,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Concentration, 90.1, 100 ); 
 
 			VirtualArmor = 40; 
-			Fame = 7000; 
-			Karma = -7000;             
+           
 		}
 
 		public override int GetIdleSound()

@@ -44,7 +44,6 @@ namespace Server.Mobiles
 
 		public virtual bool IsInvulnerable { get { return true; } }
 
-		public override bool ShowFameTitle { get { return false; } }
 
 		public virtual bool IsValidBulkOrder( Item item )
 		{

@@ -52,9 +52,6 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Perforant, 100 );
 			SetResistance( ResistanceType.Magie, 40 + (int)(20 * scalar), 50 + (int)(20 * scalar) );
 
-			Fame = 0;
-			Karma = 0;
-
 			ControlSlots = 1;
 
 			VirtualArmor = 32;

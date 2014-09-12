@@ -40,9 +40,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 20.0, 40.0 );
 			SetSkill( SkillName.Anatomie, 40.0, 70.0 );
 
-			Fame = 2000;
-			Karma = -2000;
-
 			VirtualArmor = 20;
 			
 			PackItem( new SpidersSilk( 2 ) );

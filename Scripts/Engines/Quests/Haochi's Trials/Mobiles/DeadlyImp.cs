@@ -33,9 +33,6 @@ namespace Server.Engines.Quests.Samurai
 			SetSkill( SkillName.Tactiques, 120.0 );
 			SetSkill( SkillName.Anatomie, 120.0 );
 
-			Fame = 2500;
-			Karma = -2500;
-
 			CantWalk = true;
 		}
 

@@ -71,7 +71,7 @@ namespace Server.Engines.Quests.Haven
 					return IsEnemy( master );
 			}
 
-			return m.Karma < 0;
+			return false;
 		}
 
 		public MilitiaFighter( Serial serial ) : base( serial )

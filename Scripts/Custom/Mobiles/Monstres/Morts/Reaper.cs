@@ -38,9 +38,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Tactiques, 90.0, 110.0);
             SetSkill(SkillName.Anatomie, 90.0, 110.0);
 
-			Fame = 3500;
-			Karma = -3500;
-
             ControlSlots = 8;
 		}
 

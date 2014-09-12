@@ -38,8 +38,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 70.1, 100.0 );
 			SetSkill( SkillName.Anatomie, 70.1, 100.0 );
 
-			Fame = 4500;
-			Karma = -4500;
 		}
 
         public override bool AlwaysMurderer { get { return true; } }

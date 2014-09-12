@@ -349,7 +349,6 @@ namespace Server.Mobiles
             {
                 m_attitude = value;
                 UpdateGreetings();
-                UpdateKarmaFame();
             }
         }
 
@@ -455,7 +454,6 @@ namespace Server.Mobiles
                 m_attitude = Attitude.Indifferent;
 
             UpdateGreetings();
-            UpdateKarmaFame();
 
             InitBody();
             InitOutfit();
@@ -521,7 +519,6 @@ namespace Server.Mobiles
                 m_attitude = Attitude.Indifferent;
 
             UpdateGreetings();
-            UpdateKarmaFame();
 
             //InitBody();
             //InitOutfit();
@@ -885,12 +882,6 @@ namespace Server.Mobiles
                 default:
                 case 3: m_greetings = indifGreetings; break;
             }
-        }
-
-        public virtual void UpdateKarmaFame()
-        {
-            this.Fame = (int)m_wealth * 533 + Utility.RandomMinMax(0, 533); // 0 to 1599 based on Wealth
-            this.Karma = (int)m_attitude * 533 + Utility.RandomMinMax(0, 533) - 1333; // -800 to 799 based on Attitude
         }
 
         public static void SetSkills(Townsperson m)

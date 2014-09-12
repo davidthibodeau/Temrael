@@ -24,7 +24,6 @@ namespace Server.Mobiles
 		public EvilWanderingHealer()
 		{
 			Title = ( Core.AOS ) ? "the Priest Of Mondain" : "the evil wandering healer";
-			Karma = -10000;
 
 			AddItem( new GnarledStaff() );
 

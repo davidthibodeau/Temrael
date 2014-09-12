@@ -45,9 +45,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 45.1, 60.0 );
 			SetSkill( SkillName.Anatomie, 45.1, 60.0 );
 
-			Fame = 11000;
-			Karma = -11000;
-
 			CanSwim = true;
 			CantWalk = true;
 		}

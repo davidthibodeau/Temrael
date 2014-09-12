@@ -43,9 +43,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 20.1, 30.0 );
 			SetSkill( SkillName.Anatomie, 20.1, 30.0 );
 
-			Fame = 1000;
-			Karma = -1000;
-
 			m_Timer = new UnhideTimer( this );
 			m_Timer.Start();
 		}

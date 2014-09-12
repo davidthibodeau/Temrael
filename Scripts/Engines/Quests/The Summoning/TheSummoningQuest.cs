@@ -104,14 +104,7 @@ namespace Server.Engines.Quests.Doom
 			if ( creature == null || creature.Controlled || creature.Summoned )
 				return 0;
 
-			int fame = creature.Fame;
-
-			if ( fame < 1500 )
-				return Utility.Dice( 2, 5, -1 );
-			else if ( fame < 20000 )
-				return Utility.Dice( 2, 4, 8 );
-			else
-				return 50;
+            return 10;
 		}
 
 		public TheSummoningQuest( Victoria victoria, PlayerMobile from ) : base( from )

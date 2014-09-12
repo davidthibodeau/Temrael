@@ -72,7 +72,7 @@ namespace Server.Mobiles
 
 			foreach ( Mobile m in this.GetMobilesInRange( 5 ) )
 			{
-				if ( m.Player && m.Alive && !m.IsDeadBondedPet && m.Karma <= 0 && m.AccessLevel < AccessLevel.Counselor )
+				if ( m.Player && m.Alive && !m.IsDeadBondedPet && m.AccessLevel < AccessLevel.Counselor )
 					list.Add( m );
 			}
 
@@ -90,7 +90,7 @@ namespace Server.Mobiles
 				if ( friendly )
 				{
 					m.FixedEffect( 0x37C4, 1, 12, 1109, 3 ); // At player
-					m.Mana += 1 - (m.Karma / 1000);
+					m.Mana += 1;
 				}
 			}
 		}

@@ -7,7 +7,6 @@ namespace Server.Mobiles
 	public class Cursed : BaseCreature
 	{
 		public override bool ClickTitle{ get{ return false; } }
-		public override bool ShowFameTitle{ get{ return false; } }
 
 		[Constructable]
 		public Cursed() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
@@ -47,8 +46,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 60.0, 82.5 );
 			SetSkill( SkillName.Empoisonnement, 60.0, 82.5 );
 
-			Fame = 1000;
-			Karma = -2000;
 		}
 
 		public override int GetAttackSound()

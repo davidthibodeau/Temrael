@@ -40,10 +40,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 81.3-89.9 );
 			SetSkill( SkillName.Anatomie, 80.1, 88.7 );
 
-			Fame = 5000;
-			Karma = -5000;
-
-			// VirtualArmor = 6; Not sure
 		}
 
 		public override bool AlwaysAttackable{ get{ return true; } }

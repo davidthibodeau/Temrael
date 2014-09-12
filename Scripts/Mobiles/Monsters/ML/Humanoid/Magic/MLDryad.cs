@@ -44,9 +44,6 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Tactiques, 70.0, 80.0 );
 			SetSkill( SkillName.Anatomie, 70.0, 80.0 );
 
-			Fame = 5000;
-			Karma = 5000;
-
 			VirtualArmor = 28; // Don't know what it should be
 
 			if ( Core.ML && Utility.RandomDouble() < .60 )

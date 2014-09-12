@@ -59,9 +59,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.ArmePerforante, 15, 37);
             SetSkill(SkillName.Tactiques, 65, 87);
 
-            Fame = 100;
-            Karma = 125;
-
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
 

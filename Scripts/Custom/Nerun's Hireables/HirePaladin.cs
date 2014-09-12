@@ -68,9 +68,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Parer, 45.0, 60.5);
             SetSkill(SkillName.Miracles, 85, 100);
 
-            Fame = 100;
-            Karma = 250;
-
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
             AddItem(new VikingSword());
