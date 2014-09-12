@@ -140,9 +140,6 @@ namespace Server.Spells
                 case StatType.Int:
                     damageBonus += Caster.Int / 10;
                     break;
-                case StatType.Cha:
-                    damageBonus += Caster.Cha / 10;
-                    break;
             }
 
 			damage = AOS.Scale( damage, 100 + damageBonus );

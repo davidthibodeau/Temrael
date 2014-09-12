@@ -1114,15 +1114,13 @@ namespace Server.Commands
 			{
 				Item item = (Item)items[i];
 
-				if( item is SturdyPickaxe || item is SturdyShovel )
+				if(item is SturdyShovel )
 					rewards[0] = true;
 				else if( item is LeatherGlovesOfMining )
 					rewards[1] = true;
 				else if( item is StuddedGlovesOfMining )
 					rewards[2] = true;
 				else if( item is RingmailGlovesOfMining )
-					rewards[3] = true;
-				else if( item is GargoylesPickaxe )
 					rewards[4] = true;
 				else if( item is ProspectorsTool )
 					rewards[5] = true;

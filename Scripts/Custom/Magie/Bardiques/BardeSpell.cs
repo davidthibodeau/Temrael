@@ -12,7 +12,7 @@ namespace Server.Spells
         public override SkillName CastSkill { get { return SkillName.Musique; } }
         public override SkillName DamageSkill { get { return SkillName.Musique; } }
 
-        public override StatType DamageStat { get { return StatType.Cha; } }
+        public override StatType DamageStat { get { return StatType.Int; } }
 
         public BaseInstrument m_Instrument;
 
@@ -23,7 +23,7 @@ namespace Server.Spells
 
         public override TimeSpan GetDurationForSpell(double min, double scale)
         {
-            double valeur = (min + Caster.Skills[SkillName.Musique].Base + Caster.Cha) * scale;
+            double valeur = (min + Caster.Skills[SkillName.Musique].Base) * scale;
 
             return TimeSpan.FromSeconds(valeur);
         }

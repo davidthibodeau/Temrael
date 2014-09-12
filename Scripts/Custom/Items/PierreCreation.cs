@@ -39,8 +39,6 @@ namespace Server.Items
                 tMob.RawStr = 10;
                 tMob.RawDex = 10;
                 tMob.RawInt = 10;
-                tMob.RawCon = 0;
-                tMob.RawCha = 0;
 
                 Account act = tMob.Account as Account;
 

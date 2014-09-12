@@ -810,11 +810,7 @@ namespace Server
             return "...";
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int CharismaBonus { get { return this[TemraelAttribute.CharismaBonus]; } set { this[TemraelAttribute.CharismaBonus] = value; } }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int ConstitutionBonus { get { return this[TemraelAttribute.ConstitutionBonus]; } set { this[TemraelAttribute.ConstitutionBonus] = value; } }
     }
 
     public sealed class AosSkillBonuses : BaseAttributes

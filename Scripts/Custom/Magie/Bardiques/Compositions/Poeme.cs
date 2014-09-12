@@ -136,7 +136,6 @@ namespace Server.Spells
                     PoemeSpell.m_Timers.Remove(m_target);
 
                     m_target.Dex -= m_total;
-                    m_target.Cha -= m_total;
 
                     m_target.FixedParticles(14170, 10, 20, 5013, 1945, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(483);
@@ -147,7 +146,6 @@ namespace Server.Spells
                 {
                     m_target.FixedParticles(14170, 10, 20, 5013, 2144, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.Dex += (int)m_amount;
-                    m_target.Cha += (int)m_amount;
                     m_total += (int)m_amount;
                 }
             }

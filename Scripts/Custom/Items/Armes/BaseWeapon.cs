@@ -1038,8 +1038,6 @@ namespace Server.Items
 			int strBonus = m_AosAttributes.BonusStr;
 			int dexBonus = m_AosAttributes.BonusDex;
 			int intBonus = m_AosAttributes.BonusInt;
-            int chaBonus = (m_TemraelAttributes.CharismaBonus > 5 ? 5 : m_TemraelAttributes.CharismaBonus);
-            int conBonus = (m_TemraelAttributes.ConstitutionBonus > 5 ? 5 : m_TemraelAttributes.ConstitutionBonus);
 
 			if ( (strBonus != 0 || dexBonus != 0 || intBonus != 0) )
 			{
@@ -1056,11 +1054,6 @@ namespace Server.Items
 				if ( intBonus != 0 )
 					m.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
 
-                if (chaBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Cha, modName + "Cha", chaBonus, TimeSpan.Zero));
-
-                if (conBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Con, modName + "Con", conBonus, TimeSpan.Zero));
 			}
 
             from.NextCombatTime = Core.TickCount + Core.GetTicks(GetDelay(from));
@@ -2622,14 +2615,9 @@ namespace Server.Items
                 if ((prop = m_AosAttributes.BonusDex) != 0)
                     list.Add(1060409, "{0}\t{1}", couleur, prop.ToString()); // dexterity bonus ~1_val~
 
-                if ((prop = m_TemraelAttributes.ConstitutionBonus) != 0)
-                    list.Add("<h3><basefont color=#" + couleur + ">Bonus Constitution: " + prop.ToString() + "<basefont></h3>");
-
                 if ((prop = m_AosAttributes.BonusInt) != 0)
                     list.Add(1060432, "{0}\t{1}", couleur, prop.ToString()); // intelligence bonus ~1_val~
 
-                if ((prop = m_TemraelAttributes.CharismaBonus) != 0)
-                    list.Add("<h3><basefont color=#" + couleur + ">Bonus Charisme: " + prop.ToString() + "<basefont></h3>");
 
                 if ((prop = m_AosAttributes.BonusHits) != 0)
                     list.Add(1060431, "{0}\t{1}", couleur, prop.ToString()); // hit point increase ~1_val~

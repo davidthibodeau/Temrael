@@ -113,7 +113,6 @@ namespace Server.Engines.Combat
                 double val = 1 + atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.5;
                 defenseur.Freeze(TimeSpan.FromSeconds(val));
 
-                stat = StatType.Con;
             }
             /*else if (skill == SkillName.ArmeContondante)
             {

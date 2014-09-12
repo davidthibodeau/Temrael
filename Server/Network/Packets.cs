@@ -3144,7 +3144,7 @@ namespace Server.Network
 				m_Stream.Write( (byte)(m.Race.RaceID + 1));	// Would be 0x00 if it's a non-ML enabled account but...
 			}
 
-            m_Stream.Write((short)m.Con);
+            m_Stream.Write((short)0); //Con
 
 			//m_Stream.Write( (short) m.StatCap );
 
@@ -3173,7 +3173,7 @@ namespace Server.Network
                 m_Stream.Write((short)m.TranchantResistance); // Cold
                 m_Stream.Write((short)m.PerforantResistance); // Poison
                 m_Stream.Write((short)m.MagieResistance); // Energy
-                m_Stream.Write((short)m.Cha); // Luck
+                m_Stream.Write((short)0); // Luck
 
                 IWeapon weapon = m.Weapon;
 
@@ -3265,7 +3265,7 @@ namespace Server.Network
 					m_Stream.Write( (byte)(beheld.Race.RaceID + 1) );	// Would be 0x00 if it's a non-ML enabled account but...
 				}
 
-                m_Stream.Write((short)beheld.Con);
+                m_Stream.Write((short)0); //con
 
 				//m_Stream.Write( (short) beheld.StatCap );
 
@@ -3294,7 +3294,7 @@ namespace Server.Network
                     m_Stream.Write((short)beheld.TranchantResistance); // Cold
                     m_Stream.Write((short)beheld.PerforantResistance); // Poison
                     m_Stream.Write((short)beheld.MagieResistance); // Energy
-                    m_Stream.Write((short)beheld.Cha); // Luck
+                    m_Stream.Write((short)0); // Luck or Cha
 
                     IWeapon weapon = beheld.Weapon;
 

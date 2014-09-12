@@ -377,9 +377,6 @@ namespace Server
 		Str=1,
 		Dex=2,
 		Int=4,
-        Con=5,
-        Cha=6,
-        Sag=7,
 		All=8
 	}
 
@@ -719,7 +716,6 @@ namespace Server
             get { return m_XP; }
             set { m_XP = value; }
         }
-        private int m_Cha, m_Con, m_Sag;
 
 		private Serial m_Serial;
 		private Map m_Map;
@@ -5417,341 +5413,169 @@ namespace Server
 			}
 		}
 
-		public virtual void Deserialize( GenericReader reader )
-		{
-			int version = reader.ReadInt();
+        public virtual void Deserialize(GenericReader reader)
+        {
+            int version = reader.ReadInt();
 
-			switch( version )
-			{
-                case 33: // Removed StuckMenu 
-				case 32:
-					{
-                        m_Sag = reader.ReadInt();
-                        m_Con = reader.ReadInt();
-                        m_Cha = reader.ReadInt();
-                        m_XP = reader.ReadInt();
-						goto case 31;
-					}
-				case 31:
-					{
-						m_LastStrGain = reader.ReadDeltaTime();
-						m_LastIntGain = reader.ReadDeltaTime();
-						m_LastDexGain = reader.ReadDeltaTime();
+            m_XP = reader.ReadInt();
 
-						goto case 30;
-					}
-				case 30:
-					{
-						byte hairflag = reader.ReadByte();
+            m_LastStrGain = reader.ReadDeltaTime();
+            m_LastIntGain = reader.ReadDeltaTime();
+            m_LastDexGain = reader.ReadDeltaTime();
 
-						if( (hairflag & 0x01) != 0 )
-							m_Hair = new HairInfo( reader );
-						if( (hairflag & 0x02) != 0 )
-							m_FacialHair = new FacialHairInfo( reader );
+            byte hairflag = reader.ReadByte();
 
-						goto case 29;
-					}
-				case 29:
-					{
-						m_Race = reader.ReadRace();
-						goto case 28;
-					}
-				case 28:
-					{
-						if( version <= 30 )
-							LastStatGain = reader.ReadDeltaTime();
+            if ((hairflag & 0x01) != 0)
+                m_Hair = new HairInfo(reader);
+            if ((hairflag & 0x02) != 0)
+                m_FacialHair = new FacialHairInfo(reader);
 
-						goto case 27;
-					}
-				case 27:
-					{
-						m_TithingPoints = reader.ReadInt();
+            m_Race = reader.ReadRace();
 
-						goto case 26;
-					}
-				case 26:
-				case 25:
-				case 24:
-					{
-						m_Corpse = reader.ReadItem() as Container;
+            m_TithingPoints = reader.ReadInt();
 
-						goto case 23;
-					}
-				case 23:
-					{
-						m_CreationTime = reader.ReadDateTime();
+            m_Corpse = reader.ReadItem() as Container;
 
-						goto case 22;
-					}
-				case 22: // Just removed followers
-				case 21:
-					{
-						m_Stabled = reader.ReadStrongMobileList();
+            m_CreationTime = reader.ReadDateTime();
 
-						goto case 20;
-					}
-				case 20:
-					{
-						m_CantWalk = reader.ReadBool();
 
-						goto case 19;
-					}
-				case 19: // Just removed variables
-				case 18:
-					{
-						m_Virtues = new VirtueInfo( reader );
+            m_Stabled = reader.ReadStrongMobileList();
 
-						goto case 17;
-					}
-				case 17:
-					{
-						m_BAC = reader.ReadInt();
+            m_CantWalk = reader.ReadBool();
 
-						goto case 16;
-					}
-				case 16:
-					{
-						m_ShortTermMurders = reader.ReadInt();
 
-						if( version <= 24 )
-						{
-							reader.ReadDateTime();
-							reader.ReadDateTime();
-						}
+            m_Virtues = new VirtueInfo(reader);
 
-						goto case 15;
-					}
-				case 15:
-					{
-						if( version < 22 )
-							reader.ReadInt(); // followers
 
-						m_FollowersMax = reader.ReadInt();
+            m_BAC = reader.ReadInt();
 
-						goto case 14;
-					}
-				case 14:
-					{
-						m_MagicDamageAbsorb = reader.ReadInt();
+            m_ShortTermMurders = reader.ReadInt();
 
-						goto case 13;
-					}
-				case 13:
-					{
-						m_GuildFealty = reader.ReadMobile();
+            m_FollowersMax = reader.ReadInt();
 
-						goto case 12;
-					}
-				case 12:
-					{
-						m_Guild = reader.ReadGuild();
+            m_MagicDamageAbsorb = reader.ReadInt();
 
-						goto case 11;
-					}
-				case 11:
-					{
-						m_DisplayGuildTitle = reader.ReadBool();
+            m_GuildFealty = reader.ReadMobile();
 
-						goto case 10;
-					}
-				case 10:
-					{
-						m_CanSwim = reader.ReadBool();
+            m_Guild = reader.ReadGuild();
 
-						goto case 9;
-					}
-				case 9:
-					{
-						m_Squelched = reader.ReadBool();
+            m_DisplayGuildTitle = reader.ReadBool();
 
-						goto case 8;
-					}
-				case 8:
-					{
-						m_Holding = reader.ReadItem();
+            m_CanSwim = reader.ReadBool();
 
-						goto case 7;
-					}
-				case 7:
-					{
-						m_VirtualArmor = reader.ReadInt();
 
-						goto case 6;
-					}
-				case 6:
-					{
-						m_BaseSoundID = reader.ReadInt();
+            m_Squelched = reader.ReadBool();
 
-						goto case 5;
-					}
-				case 5:
-					{
-						m_DisarmReady = reader.ReadBool();
-						m_StunReady = reader.ReadBool();
+            m_Holding = reader.ReadItem();
 
-						goto case 4;
-					}
-				case 4:
-					{
-						if( version <= 25 )
-						{
-							Poison.Deserialize( reader );
-						}
+            m_VirtualArmor = reader.ReadInt();
 
-						goto case 3;
-					}
-				case 3:
-					{
-						m_StatCap = reader.ReadInt();
+            m_BaseSoundID = reader.ReadInt();
 
-						goto case 2;
-					}
-				case 2:
-					{
-						m_NameHue = reader.ReadInt();
+            m_DisarmReady = reader.ReadBool();
+            m_StunReady = reader.ReadBool();
 
-						goto case 1;
-					}
-				case 1:
-					{
+            m_StatCap = reader.ReadInt();
 
-						goto case 0;
-					}
-				case 0:
-					{
-						if( version < 21 )
-							m_Stabled = new List<Mobile>();
+            m_NameHue = reader.ReadInt();
 
-						if( version < 18 )
-							m_Virtues = new VirtueInfo();
 
-						if( version < 11 )
-							m_DisplayGuildTitle = true;
+            m_Location = reader.ReadPoint3D();
+            m_Body = new Body(reader.ReadInt());
+            m_Name = reader.ReadString();
+            m_GuildTitle = reader.ReadString();
+            m_Criminal = reader.ReadBool();
+            m_Kills = reader.ReadInt();
+            m_SpeechHue = reader.ReadInt();
+            m_EmoteHue = reader.ReadInt();
+            m_WhisperHue = reader.ReadInt();
+            m_YellHue = reader.ReadInt();
+            m_Language = reader.ReadString();
+            m_Female = reader.ReadBool();
+            m_Warmode = reader.ReadBool();
+            m_Hidden = reader.ReadBool();
+            m_Direction = (Direction)reader.ReadByte();
+            m_Hue = reader.ReadInt();
+            m_Str = reader.ReadInt();
+            m_Dex = reader.ReadInt();
+            m_Int = reader.ReadInt();
+            m_Hits = reader.ReadInt();
+            m_Stam = reader.ReadInt();
+            m_Mana = reader.ReadInt();
+            m_Map = reader.ReadMap();
+            m_Blessed = reader.ReadBool();
+            m_Fame = reader.ReadInt();
+            m_Karma = reader.ReadInt();
+            m_AccessLevel = (AccessLevel)reader.ReadByte();
 
-						if( version < 3 )
-							m_StatCap = 225;
+            m_Skills = new Skills(this, reader);
 
-						if( version < 15 )
-						{
-							m_Followers = 0;
-							m_FollowersMax = 5;
-						}
+            m_Items = reader.ReadStrongItemList();
 
-						m_Location = reader.ReadPoint3D();
-						m_Body = new Body( reader.ReadInt() );
-						m_Name = reader.ReadString();
-						m_GuildTitle = reader.ReadString();
-						m_Criminal = reader.ReadBool();
-						m_Kills = reader.ReadInt();
-						m_SpeechHue = reader.ReadInt();
-						m_EmoteHue = reader.ReadInt();
-						m_WhisperHue = reader.ReadInt();
-						m_YellHue = reader.ReadInt();
-						m_Language = reader.ReadString();
-						m_Female = reader.ReadBool();
-						m_Warmode = reader.ReadBool();
-						m_Hidden = reader.ReadBool();
-						m_Direction = (Direction)reader.ReadByte();
-						m_Hue = reader.ReadInt();
-						m_Str = reader.ReadInt();
-						m_Dex = reader.ReadInt();
-						m_Int = reader.ReadInt();
-						m_Hits = reader.ReadInt();
-						m_Stam = reader.ReadInt();
-						m_Mana = reader.ReadInt();
-						m_Map = reader.ReadMap();
-						m_Blessed = reader.ReadBool();
-						m_Fame = reader.ReadInt();
-						m_Karma = reader.ReadInt();
-						m_AccessLevel = (AccessLevel)reader.ReadByte();
+            m_Player = reader.ReadBool();
+            m_Title = reader.ReadString();
+            m_Profile = reader.ReadString();
+            m_ProfileLocked = reader.ReadBool();
 
-						m_Skills = new Skills( this, reader );
 
-						m_Items = reader.ReadStrongItemList();
+            m_AutoPageNotify = reader.ReadBool();
 
-						m_Player = reader.ReadBool();
-						m_Title = reader.ReadString();
-						m_Profile = reader.ReadString();
-						m_ProfileLocked = reader.ReadBool();
+            m_LogoutLocation = reader.ReadPoint3D();
+            m_LogoutMap = reader.ReadMap();
 
-						if( version <= 18 )
-						{
-							reader.ReadInt();
-							reader.ReadInt();
-							reader.ReadInt();
-						}
+            m_StrLock = (StatLockType)reader.ReadByte();
+            m_DexLock = (StatLockType)reader.ReadByte();
+            m_IntLock = (StatLockType)reader.ReadByte();
 
-						m_AutoPageNotify = reader.ReadBool();
+            m_StatMods = new List<StatMod>();
+            m_SkillMods = new List<SkillMod>();
 
-						m_LogoutLocation = reader.ReadPoint3D();
-						m_LogoutMap = reader.ReadMap();
 
-						m_StrLock = (StatLockType)reader.ReadByte();
-						m_DexLock = (StatLockType)reader.ReadByte();
-						m_IntLock = (StatLockType)reader.ReadByte();
+            if (m_Player && m_Map != Map.Internal)
+            {
+                m_LogoutLocation = m_Location;
+                m_LogoutMap = m_Map;
 
-						m_StatMods = new List<StatMod>();
-						m_SkillMods = new List<SkillMod>();
+                m_Map = Map.Internal;
+            }
 
-						if (version < 33)
-						{
-							if (reader.ReadBool())
-							{
-								int count = reader.ReadInt();
-								for (int i = 0; i < count; ++i)
-								{
-									reader.ReadDateTime();
-								}
-							}
-						}
+            if (m_Map != null)
+                m_Map.OnEnter(this);
 
-						if( m_Player && m_Map != Map.Internal )
-						{
-							m_LogoutLocation = m_Location;
-							m_LogoutMap = m_Map;
+            if (m_Criminal)
+            {
+                if (m_ExpireCriminal == null)
+                    m_ExpireCriminal = new ExpireCriminalTimer(this);
 
-							m_Map = Map.Internal;
-						}
+                m_ExpireCriminal.Start();
+            }
 
-						if( m_Map != null )
-							m_Map.OnEnter( this );
+            if (ShouldCheckStatTimers)
+                CheckStatTimers();
 
-						if( m_Criminal )
-						{
-							if( m_ExpireCriminal == null )
-								m_ExpireCriminal = new ExpireCriminalTimer( this );
+            if (!m_Player && m_Dex <= 100 && m_CombatTimer != null)
+                m_CombatTimer.Priority = TimerPriority.FiftyMS;
+            else if (m_CombatTimer != null)
+                m_CombatTimer.Priority = TimerPriority.EveryTick;
 
-							m_ExpireCriminal.Start();
-						}
+            UpdateRegion();
 
-						if( ShouldCheckStatTimers )
-							CheckStatTimers();
+            UpdateResistances();
 
-						if( !m_Player && m_Dex <= 100 && m_CombatTimer != null )
-							m_CombatTimer.Priority = TimerPriority.FiftyMS;
-						else if( m_CombatTimer != null )
-							m_CombatTimer.Priority = TimerPriority.EveryTick;
 
-						UpdateRegion();
 
-						UpdateResistances();
+            if (!m_Player)
+                Utility.Intern(ref m_Name);
 
-						break;
-					}
-			}
+            Utility.Intern(ref m_Title);
+            Utility.Intern(ref m_Language);
 
-			if( !m_Player )
-				Utility.Intern( ref m_Name );
+            /*	//Moved into cleanup in scripts.
+            if( version < 30 )
+                Timer.DelayCall( TimeSpan.Zero, new TimerCallback( ConvertHair ) );
+             * */
 
-			Utility.Intern( ref m_Title );
-			Utility.Intern( ref m_Language );
-
-			/*	//Moved into cleanup in scripts.
-			if( version < 30 )
-				Timer.DelayCall( TimeSpan.Zero, new TimerCallback( ConvertHair ) );
-			 * */
-
-		}
+        }
 
 		public void ConvertHair()
 		{
@@ -5860,11 +5684,8 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-			writer.Write( (int)33 ); // version
+			writer.Write( (int)0 ); // version
 
-            writer.Write(m_Sag);
-            writer.Write(m_Con);
-            writer.Write(m_Cha);
             writer.Write(m_XP);
 
 			writer.WriteDeltaTime( m_LastStrGain );
@@ -7538,199 +7359,6 @@ namespace Server
 			}
 		}
 
-        //Temrael
-        public virtual void OnRawConChange(int oldValue)
-        {
-        }
-
-        public virtual void OnRawChaChange(int oldValue)
-        {
-        }
-
-        public virtual void OnRawSagChange(int oldValue)
-        {
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int RawCon
-        {
-            get
-            {
-                return m_Con;
-            }
-            set
-            {
-                if (value < 1)
-                    value = 1;
-                else if (value > 65000)
-                    value = 65000;
-
-                if (m_Con != value)
-                {
-                    int oldValue = m_Con;
-
-                    m_Con = value;
-                    Delta(MobileDelta.Stat | MobileDelta.Hits);
-
-                    if (Hits < HitsMax)
-                    {
-                        if (m_HitsTimer == null)
-                            m_HitsTimer = new HitsTimer(this);
-
-                        m_HitsTimer.Start();
-                    }
-                    else if (Hits > HitsMax)
-                    {
-                        Hits = HitsMax;
-                    }
-
-                    OnRawConChange(oldValue);
-                    OnRawStatChange(StatType.Con, oldValue);
-                }
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public virtual int Con
-        {
-            get
-            {
-                int value = m_Con + GetStatOffset(StatType.Con);
-
-                if (value < 1)
-                    value = 1;
-                else if (value > 65000)
-                    value = 65000;
-
-                return value;
-            }
-            set
-            {
-                if (m_StatMods.Count == 0)
-                    RawCon = value;
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int RawCha
-        {
-            get
-            {
-                return m_Cha;
-            }
-            set
-            {
-                if (value < 1)
-                    value = 1;
-                else if (value > 65000)
-                    value = 65000;
-
-                if (m_Cha != value)
-                {
-                    int oldValue = m_Cha;
-
-                    m_Cha = value;
-                    Delta(MobileDelta.Stat | MobileDelta.Mana);
-
-                    if (Mana < ManaMax)
-                    {
-                        if (m_ManaTimer == null)
-                            m_ManaTimer = new ManaTimer(this);
-
-                        m_ManaTimer.Start();
-                    }
-                    else if (Mana > ManaMax)
-                    {
-                        Mana = ManaMax;
-                    }
-
-                    OnRawChaChange(oldValue);
-                    OnRawStatChange(StatType.Cha, oldValue);
-                }
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public virtual int Cha
-        {
-            get
-            {
-                int value = m_Cha + GetStatOffset(StatType.Cha);
-
-                if (value < 1)
-                    value = 1;
-                else if (value > 65000)
-                    value = 65000;
-
-                return value;
-            }
-            set
-            {
-                if (m_StatMods.Count == 0)
-                    RawCha = value;
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int RawSag
-        {
-            get
-            {
-                return m_Sag;
-            }
-            set
-            {
-                if (value < 1)
-                    value = 1;
-                else if (value > 65000)
-                    value = 65000;
-
-                if (m_Sag != value)
-                {
-                    int oldValue = m_Sag;
-
-                    m_Sag = value;
-                    Delta(MobileDelta.Stat | MobileDelta.Mana);
-
-                    if (Mana < ManaMax)
-                    {
-                        if (m_ManaTimer == null)
-                            m_ManaTimer = new ManaTimer(this);
-
-                        m_ManaTimer.Start();
-                    }
-                    else if (Mana > ManaMax)
-                    {
-                        Mana = ManaMax;
-                    }
-
-                    OnRawSagChange(oldValue);
-                    OnRawStatChange(StatType.Sag, oldValue);
-                }
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public virtual int Sag
-        {
-            get
-            {
-                int value = m_Sag + GetStatOffset(StatType.Cha);
-
-                if (value < 1)
-                    value = 1;
-                else if (value > 65000)
-                    value = 65000;
-
-                return value;
-            }
-            set
-            {
-                if (m_StatMods.Count == 0)
-                    RawSag = value;
-            }
-        }
-
 		public virtual void OnHitsChange( int oldValue )
 		{
 		}
@@ -7873,7 +7501,7 @@ namespace Server
 		{
 			get
 			{
-				return Dex;
+				return 2 * Dex;
 			}
 		}
 
@@ -7943,7 +7571,7 @@ namespace Server
 		{
 			get
 			{
-				return Int;
+				return 2 * Int;
 			}
 		}
 

@@ -14,8 +14,6 @@ namespace Server
             from.RawStr = 10;
             from.RawDex = 10;
             from.RawInt = 10;
-            from.RawCon = 0;
-            from.RawCha = 0;
 
             from.StatistiquesLibres = 225;
         }

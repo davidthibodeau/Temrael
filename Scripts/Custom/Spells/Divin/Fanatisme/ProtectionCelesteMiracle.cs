@@ -47,8 +47,7 @@ namespace Server.Spells
                     mods = new StatMod[]
                     {
                         new StatMod( StatType.Str, "Protection Celeste", (int)(Caster.Skills[CastSkill].Value / 5), TimeSpan.FromSeconds((int)(Caster.Skills[CastSkill].Value / 2)) ),
-                        new StatMod( StatType.Dex, "Protection Celeste", (int)(Caster.Skills[CastSkill].Value / 5), TimeSpan.FromSeconds((int)(Caster.Skills[CastSkill].Value / 2)) ),
-                        new StatMod( StatType.Con, "Protection Celeste", (int)(Caster.Skills[CastSkill].Value / 5), TimeSpan.FromSeconds((int)(Caster.Skills[CastSkill].Value / 2)) )
+                        new StatMod( StatType.Dex, "Protection Celeste", (int)(Caster.Skills[CastSkill].Value / 5), TimeSpan.FromSeconds((int)(Caster.Skills[CastSkill].Value / 2)) )
                     };
 
                     for (int i = 0; i < mods.Length; ++i)

@@ -11,7 +11,7 @@ namespace Server.Spells
         public override SkillName CastSkill { get { return SkillName.Miracles; } }
         public override SkillName DamageSkill { get { return SkillName.Miracles; } }
 
-        public override StatType DamageStat { get { return StatType.Cha; } }
+        public override StatType DamageStat { get { return StatType.Int; } }
 
         public ReligiousSpell(Mobile caster, Item scroll, SpellInfo info) : base(caster, scroll, info)
 		{
