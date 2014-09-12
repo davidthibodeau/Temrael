@@ -26,7 +26,7 @@ namespace Server.Custom.CustomSpell
         /* Pts Skill req */ 0,
 
         /*-------- TARGETTED INFO --------*/
-        /* Temps de cast */ 1,
+        /* Temps de cast */ TimeSpan.FromSeconds(1),
         /* Nb de targets */ 1,
         /* Effect/Target */ false,
         /*         Range */ 10,
@@ -41,7 +41,7 @@ namespace Server.Custom.CustomSpell
         {
             m_Caster = caster;
 
-            UnEffectParTarget = false;
+            //UnEffectParTarget = false;
         }
 
         public override void Effect()

@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Custom\Commandes\Reveler.cs" />
     <Compile Include="Custom\Commandes\TechniqueCombat.cs" />
+    <Compile Include="Custom\CustomSpell\CBouleDeGlace.cs" />
     <Compile Include="Custom\CustomSpell\CustomSpell.cs" />
     <Compile Include="Custom\CustomSpell\CustomSpellInfo.cs" />
     <Compile Include="Custom\CustomSpell\ExempleTargetted.cs" />
