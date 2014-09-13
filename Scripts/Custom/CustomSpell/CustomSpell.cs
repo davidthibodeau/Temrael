@@ -125,7 +125,14 @@ namespace Server.Custom.CustomSpell
             // Point d'entrée, lorsque l'on appelle un Spell.Cast();
             public override void UseSpellTargetted()
             {
-                Caster.Target = new InternalTarget(this, 1);
+                if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
+                {
+                    Caster.Target = new InternalTarget(this, 1);
+                }
+                else
+                {
+                    FinishSequence();
+                }
             }
 
             // Appellé à chaque fois que l'utilisateur clique sur un target.
@@ -225,8 +232,7 @@ namespace Server.Custom.CustomSpell
 
         }
 
-
-        // NON FONCTIONNEL.
+        // FONCTIONNEL !
         public abstract class CSpellTargettedTimer : CustomSpell
         {
             private new InfoSpell.TargettedTimer m_info;
@@ -257,7 +263,14 @@ namespace Server.Custom.CustomSpell
             // Appellé par .Cast().
             public override void UseSpellTargettedTimer()
             {
-                Caster.Target = new InternalTarget(this, 1);
+                if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
+                {
+                    Caster.Target = new InternalTarget(this, 1);
+                }
+                else
+                {
+                    FinishSequence();
+                }
             }
 
             // Appellé à chaque fois que l'utilisateur clique sur un target.
@@ -402,7 +415,7 @@ namespace Server.Custom.CustomSpell
 
 
 
-        // NON FONCTIONNEL.
+        // FONCTIONNEL !
         public abstract class CSpellAoE : CustomSpell
         {
             private InfoSpell.AoE m_info;
@@ -413,22 +426,38 @@ namespace Server.Custom.CustomSpell
                 m_info = info;
             }
 
-            public override void UseSpellAoE()
+            public override void OnCast()
             {
-                // Partie gérée par la classe... - range, cast time, mana cost, etc.. etc..
-
-                Effect();
-
-                //
+                base.OnCast();
             }
 
-            public abstract void Effect();
+            public override void UseSpellAoE()
+            {
+                if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
+                {
+                    UniqueEffect();
+                    foreach(Mobile target in Caster.GetMobilesInRange(m_info.range))
+                    {
+                        TargetEffect(target);
+                    }
+                }
+                FinishSequence();
+            }
+
+            // Un seul effect pour le spell (Ex Animation de feu sur le caster..)
+            public abstract void UniqueEffect();
+            // Effect sur tous les Mobiles (Ex 10 de damage)
+            public abstract void TargetEffect(Mobile target);
         }
 
-        // NON FONCTIONNEL.
+        // FONCTIONNEL !
         public abstract class CSpellAoETimer : CustomSpell
         {
             private InfoSpell.AoETimer m_info;
+
+            private EffectTimer effectTimer;
+
+            private IPooledEnumerable<Mobile> targetsList;
 
             public CSpellAoETimer(Mobile caster, Item scroll, InfoSpell.AoETimer info)
                 : base(caster, scroll, (InfoSpell)info)
@@ -438,16 +467,113 @@ namespace Server.Custom.CustomSpell
 
             public override void UseSpellAoETimer()
             {
-                // Partie gérée par la classe... - range, cast time, mana cost, etc.. etc..
-
-                // TIMER !
-
-                Effect();
-
-                //
+                if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
+                {
+                    // CREATION DU TIMER.
+                    effectTimer = new EffectTimer(this, m_info.duree, m_info.intervale);
+                }
+                else
+                {
+                    FinishSequence();
+                }
             }
 
-            public abstract void Effect();
+            // Un seul effect pour le spell (Ex Animation de feu sur le caster..) Avant que le timer débute.
+            public abstract void UniqueEffect();
+
+            // Effet au début du timer sur tous les targets.
+            public abstract void OnStart(Mobile target);
+            // Effet à chaque Tick du timer sur tous les targets.
+            public abstract void OnTick(Mobile target);
+            // Effet a la fin du timer sur tous les targets.
+            public abstract void OnEnd(Mobile target);
+
+
+            // Timer qui est utilisé après le temps de cast. Appelle les fonctions asbtract OnStart, OnTick, et OnEnd définies par l'utilisteur.
+            private class EffectTimer : Timer
+            {
+                private CSpellAoETimer m_owner;
+                private DateTime m_End;
+
+                private int m_NumeroTick = 0;
+                public int NumeroTick { get { return m_NumeroTick; } }
+
+                public EffectTimer(CSpellAoETimer owner, TimeSpan duree, TimerPriority intervale)
+                    : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0))
+                {
+                    m_End = DateTime.Now + duree;
+                    m_owner = owner;
+
+                    Priority = intervale;
+
+                    m_owner.targetsList = m_owner.m_Caster.GetMobilesInRange(m_owner.m_info.range);
+
+                    m_owner.UniqueEffect();
+
+                    ChoixTarget(m_owner.OnStart);
+
+                    Start();
+
+                    if (!m_owner.m_info.continueCastDuringTimer)
+                    {
+                        m_owner.FinishSequence();
+                    }
+                }
+
+                protected override void OnTick()
+                {
+                    m_NumeroTick++;
+                    // Si le temps n'est pas fini.
+                    if (DateTime.Now < m_End)
+                    {
+                        ChoixTarget(m_owner.OnTick);
+                    }
+                    else // Si le timer est fini.
+                    {
+                        ChoixTarget(m_owner.OnEnd);
+
+                        if (m_owner.m_info.continueCastDuringTimer)
+                        {
+                            m_owner.FinishSequence();
+                        }
+
+                        Stop();
+                    }
+                }
+
+                // Décide si on doit utiliser la targetlist settée au début, ou si on doit se mettre à jour sur les nouveaux personnages en range.
+                private void ChoixTarget(Action<Mobile> Fonction)
+                {
+                    if (m_owner.m_info.targetsDebutCast)
+                    {
+                        foreach (Mobile target in m_owner.targetsList)
+                        {
+                            Fonction(target);
+                        }
+                    }
+                    else
+                    {
+                        foreach (Mobile target in m_owner.Caster.GetMobilesInRange(m_owner.m_info.range))
+                        {
+                            Fonction(target);
+                        }
+                    }
+                }
+
+
+                ~EffectTimer()
+                {
+                    m_owner.FinishSequence();
+                }
+            }
+            public void StopSpell()
+            {
+                effectTimer.Stop();
+            }
+            public int NumeroTick
+            {
+                get { return effectTimer.NumeroTick; }
+            }
         }
 
         // NON FONCTIONNEL.

@@ -51,12 +51,12 @@ namespace Server.Custom.CustomSpell
             public bool unEffectParTarget { get { return m_unEffectParTarget; } }
 
 
-            public Targetted(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool unEffectParTarget, int Range, params Type[] regs)
+            public Targetted(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool UnEffectParTarget, int Range, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.Targetted, regs)
             {
                 if (NbTarget <= 3 && NbTarget >= 1) m_NbTarget = NbTarget;
-                if (range <= 20 && range >= 1) m_Range = range;
-                m_unEffectParTarget = unEffectParTarget;
+                if (range <= 20 && range >= 1) m_Range = Range;
+                m_unEffectParTarget = UnEffectParTarget;
             }
         }
 
@@ -83,7 +83,7 @@ namespace Server.Custom.CustomSpell
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.TargettedTimer, regs)
             {
                 if (NbTarget <= 3 && NbTarget >= 1) m_NbTarget = NbTarget;
-                if (range <= 20 && range >= 1) m_Range = range;
+                if (range <= 20 && range >= 1) m_Range = Range;
                 m_duree = Duree;
                 m_intervale = Intervale;
             }
@@ -92,22 +92,43 @@ namespace Server.Custom.CustomSpell
         public class AoE : InfoSpell
         {
             // Membres aditionnels.
+            private int m_Range = 10;
+            public int range { get { return m_Range; } }
 
-            public AoE(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, params Type[] regs)
+            public AoE(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int Range, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.AoE, regs)
             {
-
+                if (range <= 20 && range >= 1) m_Range = range;
             }
         }
 
         public class AoETimer : InfoSpell
         {
             // Membres aditionnels.
+            private bool m_targetsDebutCast = false;
+            public bool targetsDebutCast { get { return m_targetsDebutCast; } }
 
-            public AoETimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, params Type[] regs)
+            // INUTILE POUR LE MOMENT.
+            private bool m_continueCastDuringTimer = false;
+            public bool continueCastDuringTimer { get { return m_continueCastDuringTimer; } }
+
+            private int m_Range = 10;
+            public int range { get { return m_Range; } }
+
+            private TimeSpan m_duree = TimeSpan.FromSeconds(0);
+            public TimeSpan duree { get { return m_duree; } }
+
+            private TimerPriority m_intervale = TimerPriority.OneSecond;
+            public TimerPriority intervale { get { return m_intervale; } }
+
+            public AoETimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, bool TargetsDebutCast, bool ContinueCastDuringTimer, int Range, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.AoETimer, regs)
             {
-
+                m_targetsDebutCast = TargetsDebutCast;
+                m_continueCastDuringTimer = ContinueCastDuringTimer;
+                if (range <= 20 && range >= 1) m_Range = range;
+                m_duree = Duree;
+                m_intervale = Intervale;
             }
         }
 

@@ -59,7 +59,7 @@ namespace Server.Custom.CustomSpell
 			    {
                     m_Caster.SendLocalizedMessage(500237); // Target can not be seen.
 			    }
-                else if (CheckSequence())
+                else
 			    {
 				    SpellHelper.Turn( m_Caster, m_target );
 

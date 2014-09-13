@@ -93,6 +93,8 @@
     <Compile Include="Custom\Commandes\TechniqueCombat.cs" />
     <Compile Include="Custom\CustomSpell\CustomSpell.cs" />
     <Compile Include="Custom\CustomSpell\CustomSpellInfo.cs" />
+    <Compile Include="Custom\CustomSpell\ExempleAoE.cs" />
+    <Compile Include="Custom\CustomSpell\ExempleAoETimer.cs" />
     <Compile Include="Custom\CustomSpell\ExempleTargetted.cs" />
     <Compile Include="Custom\CustomSpell\ExempleTargettedTimer.cs" />
     <Compile Include="Custom\Items\BaseWearable.cs" />
