@@ -412,9 +412,6 @@ namespace Server.Custom.CustomSpell
 
         }
 
-
-
-
         // FONCTIONNEL !
         public abstract class CSpellAoE : CustomSpell
         {
@@ -576,7 +573,7 @@ namespace Server.Custom.CustomSpell
             }
         }
 
-        // NON FONCTIONNEL.
+        // FONCTIONNEL !
         public abstract class CSpellSelf : CustomSpell
         {
             private InfoSpell.Self m_info;
@@ -589,22 +586,22 @@ namespace Server.Custom.CustomSpell
 
             public override void UseSpellSelf()
             {
-                // Partie gérée par la classe... - range, cast time, mana cost, etc.. etc..
-
-                // TIMER !
-
-                Effect();
-
-                //
+                if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
+                {
+                    Effect(Caster);
+                }
+                FinishSequence();
             }
 
-            public abstract void Effect();
+            public abstract void Effect(Mobile caster);
         }
 
-        // NON FONCTIONNEL.
+        // FONCTIONNEL !
         public abstract class CSpellSelfTimer : CustomSpell
         {
             private InfoSpell.SelfTimer m_info;
+
+            private EffectTimer effectTimer;
 
             public CSpellSelfTimer(Mobile caster, Item scroll, InfoSpell.SelfTimer info)
                 : base(caster, scroll, (InfoSpell)info)
@@ -614,16 +611,83 @@ namespace Server.Custom.CustomSpell
 
             public override void UseSpellSelfTimer()
             {
-                // Partie gérée par la classe... - range, cast time, mana cost, etc.. etc..
-
-                // TIMER !
-
-                Effect();
-
-                //
+                if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
+                {
+                    // CREATION DU TIMER.
+                    effectTimer = new EffectTimer(this, m_info.duree, m_info.intervale);
+                }
+                else
+                {
+                    FinishSequence();
+                }
             }
 
-            public abstract void Effect();
+
+            // Un seul effect pour le spell (Ex Animation de feu sur le caster..) Avant que le timer débute.
+            public abstract void UniqueEffect();
+
+            // Effet au début du timer sur tous les targets.
+            public abstract void OnStart(Mobile target);
+            // Effet à chaque Tick du timer sur tous les targets.
+            public abstract void OnTick(Mobile target);
+            // Effet a la fin du timer sur tous les targets.
+            public abstract void OnEnd(Mobile target);
+
+            // Timer qui est utilisé après le temps de cast. Appelle les fonctions asbtract OnStart, OnTick, et OnEnd définies par l'utilisteur.
+            private class EffectTimer : Timer
+            {
+                private CSpellSelfTimer m_owner;
+                private DateTime m_End;
+
+                private int m_NumeroTick = 0;
+                public int NumeroTick { get { return m_NumeroTick; } }
+
+                public EffectTimer(CSpellSelfTimer owner, TimeSpan duree, TimerPriority intervale)
+                    : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0))
+                {
+                    m_End = DateTime.Now + duree;
+                    m_owner = owner;
+
+                    Priority = intervale;
+
+                    m_owner.UniqueEffect();
+
+                    m_owner.OnStart(m_owner.Caster);
+                    Start();
+
+                    m_owner.FinishSequence();
+                }
+
+                protected override void OnTick()
+                {
+                    m_NumeroTick++;
+                    // Si le temps n'est pas fini.
+                    if (DateTime.Now < m_End)
+                    {
+                        m_owner.OnTick(m_owner.Caster);
+                    }
+                    else // Si le timer est fini.
+                    {
+                        m_owner.OnEnd(m_owner.Caster);
+
+                        Stop();
+                    }
+                }
+
+                ~EffectTimer()
+                {
+                    m_owner.FinishSequence();
+                }
+            }
+            public void StopSpell()
+            {
+                effectTimer.Stop();
+            }
+            public int NumeroTick
+            {
+                get { return effectTimer.NumeroTick; }
+            }
+
         }
     }
 }

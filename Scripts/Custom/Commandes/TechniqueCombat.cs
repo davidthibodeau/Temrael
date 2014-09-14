@@ -20,6 +20,8 @@ namespace Server.Custom.Commandes
             CommandSystem.Register("TargettedTimer", AccessLevel.Player, new CommandEventHandler(TargettedTimer_OnCommand));
             CommandSystem.Register("AoE", AccessLevel.Player, new CommandEventHandler(AoE_OnCommand));
             CommandSystem.Register("AoETimer", AccessLevel.Player, new CommandEventHandler(AoETimer_OnCommand));
+            CommandSystem.Register("SpellSelf", AccessLevel.Player, new CommandEventHandler(Self_OnCommand));
+            CommandSystem.Register("SelfTimer", AccessLevel.Player, new CommandEventHandler(SelfTimer_OnCommand));
         }
 
         [Usage("TechniqueAssassin")]
@@ -66,6 +68,20 @@ namespace Server.Custom.Commandes
         public static void AoETimer_OnCommand(CommandEventArgs e)
         {
             (new Custom.CustomSpell.ExempleAoETimer(e.Mobile, null)).Cast();
+        }
+
+        [Usage("SpellSelf")]
+        [Description("Exemple du Self")]
+        public static void Self_OnCommand(CommandEventArgs e)
+        {
+            (new Custom.CustomSpell.ExempleSelf(e.Mobile, null)).Cast();
+        }
+
+        [Usage("SelfTimer")]
+        [Description("Exemple du SelfTimer")]
+        public static void SelfTimer_OnCommand(CommandEventArgs e)
+        {
+            (new Custom.CustomSpell.ExempleSelfTimer(e.Mobile, null)).Cast();
         }
     }
 }

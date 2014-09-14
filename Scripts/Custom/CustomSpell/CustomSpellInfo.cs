@@ -137,20 +137,26 @@ namespace Server.Custom.CustomSpell
             // Membres aditionnels.
 
             public Self(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, params Type[] regs)
-                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.AoETimer, regs)
+                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.Self, regs)
             {
-
             }
         }
 
         public class SelfTimer : InfoSpell
         {
             // Membres aditionnels.
+            private TimeSpan m_duree = TimeSpan.FromSeconds(0);
+            public TimeSpan duree { get { return m_duree; } }
 
-            public SelfTimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, params Type[] regs)
-                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.AoETimer, regs)
+            private TimerPriority m_intervale = TimerPriority.OneSecond;
+            public TimerPriority intervale { get { return m_intervale; } }
+
+
+            public SelfTimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
+                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.SelfTimer, regs)
             {
-
+                m_duree = Duree;
+                m_intervale = Intervale;
             }
         }
         #endregion
