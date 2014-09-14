@@ -769,7 +769,7 @@ namespace Server.Items
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
         public override int AosStrengthReq { get { return Claymore_Force2; } }
-        public override int AosMinDamage { get { return Claymore_MinDam2; } }
+        public override int AosMinDamage { get { return Claymore_MinDam; } }
         public override int AosMaxDamage { get { return Claymore_MaxDam2; } }
         public override int DefSpeed { get { return Claymore_Vitesse; } }
 
@@ -1135,7 +1135,7 @@ namespace Server.Items
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
         public override int AosStrengthReq { get { return Claymore_Force2; } }
-        public override int AosMinDamage { get { return Claymore_MinDam2; } }
+        public override int AosMinDamage { get { return Claymore_MinDam; } }
         public override int AosMaxDamage { get { return Claymore_MaxDam2; } }
         public override int DefSpeed { get { return Claymore_Vitesse; } }
 
@@ -2055,7 +2055,7 @@ namespace Server.Items
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
         public override int AosStrengthReq { get { return Claymore_Force1; } }
-        public override int AosMinDamage { get { return Claymore_MinDam1; } }
+        public override int AosMinDamage { get { return Claymore_MinDam; } }
         public override int AosMaxDamage { get { return Claymore_MaxDam1; } }
         public override int DefSpeed { get { return Claymore_Vitesse; } }
 

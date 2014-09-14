@@ -418,6 +418,7 @@ namespace Server.Gumps
 							AddLabelCropped( x + TextOffsetX, y - 1, 48 - TextOffsetX, EntryHeight - 3, TextHue, sk.Base.ToString( "F1" ) );
 
 							y -= 2;
+                            j++;
 						}
 					}
 

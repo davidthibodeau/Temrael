@@ -44,6 +44,12 @@ namespace Server.Engines.Combat
             {
                 def.FixedEffect(0x37B9, 10, 16);
             }
+
+            int degats = Degats(atk, def);
+            if (DefStrategy(def).Parer(def))
+                degats = 0;
+
+            def.Damage(degats,atk);
         }
 
         public virtual void OnMiss(Mobile atk, Mobile def)
@@ -83,7 +89,7 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Toucher
-        public virtual SkillName ToucherSkill { get { return SkillName.ArmeTranchante; } }
+        public abstract SkillName ToucherSkill { get; }
 
         public bool Toucher(Mobile atk, Mobile def)
         {
@@ -150,7 +156,7 @@ namespace Server.Engines.Combat
         {
             double pen = GetBonus(atk.Skills[SkillName.Penetration].Value, 0.3, 5);
             double resist = ReduceValue(baseArmor, pen);
-            return resist;
+            return resist / 100;
         }
 
         protected double GetBonus(double value, double scalar, double offset)
@@ -202,13 +208,24 @@ namespace Server.Engines.Combat
         /// <returns>Le délai en millisecondes.</returns>
         public int ProchaineAttaque(Mobile atk)
         {
-            return (int)(Vitesse(atk) * 10);
+            return (int)(Vitesse(atk) * 100);
         }
 
+        /// <summary>
+        /// Calcule la vitesse du personnage en fonction de la vitesse de son arme (celle-ci calculée en dixième de seconde)
+        /// </summary>
+        /// <param name="atk">Le personnage portant l'attaque.</param>
+        /// <returns>Retourne le délai entre deux attaques en dixième de seconde.</returns>
         public double Vitesse(Mobile atk)
         {
-            //TODO: Add to this function
-            return 0;
+            //Par tranche de 50 de stam, on retire 0.25 secondes (ou 0.1 secondes tous les 20 de stam)
+            double s = Weapon(atk).Speed - atk.Stam/20;
+
+            //Le délai minimal est de 1.25 secondes entre deux attaques.
+            if (s < 12.5)
+                s = 12.5;
+
+            return s;
         }
         #endregion
 

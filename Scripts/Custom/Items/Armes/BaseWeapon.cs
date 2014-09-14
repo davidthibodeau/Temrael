@@ -47,11 +47,11 @@ namespace Server.Items
         }
         private static int getMinDam(int niv, double speed, bool twohands)
         {
-            return (int)(Math.Truncate(getDam(niv, speed, twohands) * .94));
+            return 10;
         }
         private static int getMaxDam(int niv, double speed, bool twohands)
         {
-            return (int)(Math.Round(getDam(niv, speed, twohands) * 1.06));
+            return 13;
         }
 
         #region Balancement
@@ -71,9 +71,7 @@ namespace Server.Items
             public static int Armes_MaxDurabilite6 = 225;
 
             public static int Claymore_Vitesse = 40;
-            public static int Claymore_MinDam0 = getMinDam(0, Claymore_Vitesse, true);
-            public static int Claymore_MinDam1 = getMinDam(1, Claymore_Vitesse, true);
-            public static int Claymore_MinDam2 = getMinDam(2, Claymore_Vitesse, true);
+            public static int Claymore_MinDam = getMinDam(0, Claymore_Vitesse, true);
             public static int Claymore_MinDam3 = getMinDam(3, Claymore_Vitesse, true);
             public static int Claymore_MinDam4 = getMinDam(4, Claymore_Vitesse, true);
             public static int Claymore_MinDam5 = getMinDam(5, Claymore_Vitesse, true);
