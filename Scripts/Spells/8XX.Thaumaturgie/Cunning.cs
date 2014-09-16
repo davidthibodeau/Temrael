@@ -11,6 +11,7 @@ namespace Server.Spells
         private static int s_ManaCost = 50;
         private static SkillName s_SkillForCast = SkillName.ArtMagique;
         private static int s_MinSkillForCast = 50;
+        private static TimeSpan s_Duree = TimeSpan.FromSeconds(1);
 
 		private static SpellInfo m_Info = new SpellInfo(
 				"Ruse", "Uus Wis",
@@ -18,12 +19,12 @@ namespace Server.Spells
 				212,
 				9061,
                 s_ManaCost,
+                s_Duree,
                 s_SkillForCast,
                 s_MinSkillForCast,
                 false,
 				Reagent.MandrakeRoot,
-				Reagent.Nightshade
-            );
+				Reagent.Nightshade);
 
 		public CunningSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
 		{

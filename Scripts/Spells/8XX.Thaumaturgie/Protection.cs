@@ -13,6 +13,7 @@ namespace Server.Spells
         private static int s_ManaCost = 50;
         private static SkillName s_SkillForCast = SkillName.ArtMagique;
         private static int s_MinSkillForCast = 50;
+        private static TimeSpan s_Duree = TimeSpan.FromSeconds(1);
 
 		private static SpellInfo m_Info = new SpellInfo(
 				"Protection", "Uus Sanct",
@@ -20,6 +21,7 @@ namespace Server.Spells
 				236,
 				9011,
                 s_ManaCost,
+                s_Duree,
                 s_SkillForCast,
                 s_MinSkillForCast,
                 false,

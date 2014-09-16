@@ -9,9 +9,6 @@ namespace Server.Custom.CustomSpell
     public class InfoSpell : Server.Spells.SpellInfo
     {
         // Commun à tous les spells.
-        private TimeSpan m_castTime = new TimeSpan(0, 0, -1);
-        public TimeSpan castTime { get { return m_castTime; } set { if (value.Seconds <= 60 && value.Seconds >= 0) m_castTime = value; } }
-
         public StyleSpell style = StyleSpell.Unsetted;
 
 
@@ -27,9 +24,8 @@ namespace Server.Custom.CustomSpell
 
 
         private InfoSpell(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, StyleSpell Style, params Type[] regs)
-            : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, true, regs)
+            : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, CastTime, SkillUtilise, NiveauSkillReq, true, regs)
         {
-            castTime = CastTime;
             style = Style;
 
             CheckValidity();
