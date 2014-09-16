@@ -9,9 +9,9 @@ namespace Server.Custom.CustomSpell
     // Utilisation du spell.
 
     // Mobile caster = new Mobile();
-    // (new Custom.CustomSpell.ExempleTargetted(caster, null)).Cast();
+    // (new Custom.CustomSpell.ExempleTargeted(caster, null)).Cast();
 
-    class ExempleTargetted : CustomSpell.CSpellTargetted
+    class ExempleTargeted : CustomSpell.CSpellTargeted
     {
 
         Mobile m_caster = null;
@@ -19,7 +19,7 @@ namespace Server.Custom.CustomSpell
 
         const double scalingSkill = 0.1;
 
-        static private InfoSpell.Targetted m_info = new InfoSpell.Targetted(
+        static private InfoSpell.Targeted m_info = new InfoSpell.Targeted(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
@@ -32,7 +32,7 @@ namespace Server.Custom.CustomSpell
             /* Pts Skill req */ 0,
             /* Temps de cast */ TimeSpan.FromSeconds(5),
 
-        /*-------- TARGETTED INFO --------*/
+        /*-------- Targeted INFO --------*/
             /* Nb de targets */ 1,
             /* Effect/Target */ false,
             /*         Range */ 10,
@@ -42,7 +42,7 @@ namespace Server.Custom.CustomSpell
 
 
 
-        public ExempleTargetted(Mobile caster, Item scroll)
+        public ExempleTargeted(Mobile caster, Item scroll)
             : base(caster, scroll, m_info)
         {
             m_caster = caster;
@@ -78,7 +78,7 @@ namespace Server.Custom.CustomSpell
         }
     }
 
-    class ExempleTargettedTimer : CustomSpell.CSpellTargettedTimer
+    class ExempleTargetedTimer : CustomSpell.CSpellTargetedTimer
     {
 
         Mobile m_caster = null;
@@ -86,7 +86,7 @@ namespace Server.Custom.CustomSpell
 
         const double scalingSkill = 0.1;
 
-        static private InfoSpell.TargettedTimer m_info = new InfoSpell.TargettedTimer(
+        static private InfoSpell.TargetedTimer m_info = new InfoSpell.TargetedTimer(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
@@ -99,7 +99,7 @@ namespace Server.Custom.CustomSpell
             /* Pts Skill req */ 0,
             /* Temps de cast */ TimeSpan.FromSeconds(5),
 
-        /*-------- TARGETTED INFO --------*/
+        /*-------- TARGETED INFO --------*/
             /* Nb de targets */ 1,
             /* Effect/Target */ false,
             /*         Range */ 10,
@@ -110,7 +110,7 @@ namespace Server.Custom.CustomSpell
         Reagent.Garlic);
 
 
-        public ExempleTargettedTimer(Mobile caster, Item scroll)
+        public ExempleTargetedTimer(Mobile caster, Item scroll)
             : base(caster, scroll, m_info)
         {
             m_caster = caster;

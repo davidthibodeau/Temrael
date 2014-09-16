@@ -16,8 +16,8 @@ namespace Server.Custom.Commandes
             CommandSystem.Register("TechniqueAssassin", AccessLevel.Player, new CommandEventHandler(TechniqueAssassin_OnCommand));
             CommandSystem.Register("Technique1", AccessLevel.Player, new CommandEventHandler(Technique1_OnCommand));
             // ...
-            CommandSystem.Register("Targetted", AccessLevel.Player, new CommandEventHandler(Targetted_OnCommand));
-            CommandSystem.Register("TargettedTimer", AccessLevel.Player, new CommandEventHandler(TargettedTimer_OnCommand));
+            CommandSystem.Register("Targeted", AccessLevel.Player, new CommandEventHandler(Targeted_OnCommand));
+            CommandSystem.Register("TargetedTimer", AccessLevel.Player, new CommandEventHandler(TargetedTimer_OnCommand));
             CommandSystem.Register("AoE", AccessLevel.Player, new CommandEventHandler(AoE_OnCommand));
             CommandSystem.Register("AoETimer", AccessLevel.Player, new CommandEventHandler(AoETimer_OnCommand));
             CommandSystem.Register("SpellSelf", AccessLevel.Player, new CommandEventHandler(Self_OnCommand));
@@ -42,18 +42,18 @@ namespace Server.Custom.Commandes
 
         // ...
 
-        [Usage("Targetted")]
-        [Description("Exemple du targettedTimer")]
-        public static void Targetted_OnCommand(CommandEventArgs e)
+        [Usage("Targeted")]
+        [Description("Exemple du TargetedTimer")]
+        public static void Targeted_OnCommand(CommandEventArgs e)
         {
-            (new Custom.CustomSpell.ExempleTargetted(e.Mobile, null)).Cast();
+            (new Custom.CustomSpell.ExempleTargeted(e.Mobile, null)).Cast();
         }
 
-        [Usage("TargettedTimer")]
-        [Description("Exemple du targettedTimer")]
-        public static void TargettedTimer_OnCommand(CommandEventArgs e)
+        [Usage("TargetedTimer")]
+        [Description("Exemple du TargetedTimer")]
+        public static void TargetedTimer_OnCommand(CommandEventArgs e)
         {
-            (new Custom.CustomSpell.ExempleTargettedTimer(e.Mobile, null)).Cast();
+            (new Custom.CustomSpell.ExempleTargetedTimer(e.Mobile, null)).Cast();
         }
 
         [Usage("AoE")]

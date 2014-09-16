@@ -55,21 +55,21 @@ namespace Server.Scripts.Commands
 
         protected override void OnTarget(Mobile from, object target)
         {
-            Mobile targetted = null;
+            Mobile Targeted = null;
 
             if (from != null && !from.Deleted)
             {
                 if ( target != null && target is Mobile)
                 {
-                    targetted = target as Mobile;
+                    Targeted = target as Mobile;
                     if (target != from)
                     {
                         if (!Follow.Collection.Contains(from))
                         {
-                            if (from.AccessLevel >= targetted.AccessLevel)
+                            if (from.AccessLevel >= Targeted.AccessLevel)
                             {
-                                Follow.Collection[from] = targetted;
-                                m_Timer = new FollowTimer(from, targetted);
+                                Follow.Collection[from] = Targeted;
+                                m_Timer = new FollowTimer(from, Targeted);
                                 m_Timer.Start();
                             }
                             else

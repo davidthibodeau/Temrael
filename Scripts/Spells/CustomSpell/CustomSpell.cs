@@ -11,8 +11,8 @@ namespace Server.Custom.CustomSpell
     {
         Unsetted, // Par défaut, si non défini.
 
-        Targetted,
-        TargettedTimer,
+        Targeted,
+        TargetedTimer,
 
         AoE,
         AoETimer,
@@ -37,12 +37,12 @@ namespace Server.Custom.CustomSpell
         {
             switch (m_info.style)
             {
-                    // Targetted
-                case (StyleSpell.Targetted): UseSpellTargetted();
+                    // Targeted
+                case (StyleSpell.Targeted): UseSpellTargeted();
                     break;
 
-                    // TargettedTimer
-                case (StyleSpell.TargettedTimer) : UseSpellTargettedTimer();
+                    // TargetedTimer
+                case (StyleSpell.TargetedTimer) : UseSpellTargetedTimer();
                     break;
 
                     // AoE
@@ -68,11 +68,11 @@ namespace Server.Custom.CustomSpell
 
 
         #region Fonctions virtual, utilisées par les classes spécialisées.
-        public virtual void UseSpellTargetted()
+        public virtual void UseSpellTargeted()
         {
         }
 
-        public virtual void UseSpellTargettedTimer()
+        public virtual void UseSpellTargetedTimer()
         {
         }
 
@@ -95,9 +95,9 @@ namespace Server.Custom.CustomSpell
 
 
         // FONCTIONNEL !
-        public abstract class CSpellTargetted : CustomSpell
+        public abstract class CSpellTargeted : CustomSpell
         {
-            private new InfoSpell.Targetted m_info;
+            private new InfoSpell.Targeted m_info;
 
             // Pourraient être des tableaux --v
             public object   target1 = null,
@@ -110,7 +110,7 @@ namespace Server.Custom.CustomSpell
 
 
 
-            public CSpellTargetted(Mobile caster, Item scroll, InfoSpell.Targetted info)
+            public CSpellTargeted(Mobile caster, Item scroll, InfoSpell.Targeted info)
                 : base(caster, scroll, (InfoSpell)info)
             {
                 m_info = info;
@@ -123,7 +123,7 @@ namespace Server.Custom.CustomSpell
 
 
             // Point d'entrée, lorsque l'on appelle un Spell.Cast();
-            public override void UseSpellTargetted()
+            public override void UseSpellTargeted()
             {
                 if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
                 {
@@ -179,12 +179,12 @@ namespace Server.Custom.CustomSpell
             // Créer un target et retourner l'objet dans le "target" spécifié par le int.
             private class InternalTarget : Target
             {
-                private CSpellTargetted m_Owner;
+                private CSpellTargeted m_Owner;
 
                 private int m_numeroTarget = 1;
                 private int numeroTarget { get { return m_numeroTarget; } set { if (value <= 3 && value >= 1) m_numeroTarget = numeroTarget; } }
 
-                public InternalTarget(CSpellTargetted owner, int NumeroTarget)
+                public InternalTarget(CSpellTargeted owner, int NumeroTarget)
                     : base(owner.m_info.range, true, TargetFlags.None)
                 {
                     numeroTarget = NumeroTarget;
@@ -233,9 +233,9 @@ namespace Server.Custom.CustomSpell
         }
 
         // FONCTIONNEL !
-        public abstract class CSpellTargettedTimer : CustomSpell
+        public abstract class CSpellTargetedTimer : CustomSpell
         {
-            private new InfoSpell.TargettedTimer m_info;
+            private new InfoSpell.TargetedTimer m_info;
 
             private EffectTimer effectTimer;
 
@@ -248,7 +248,7 @@ namespace Server.Custom.CustomSpell
                          target2rdy = false,
                          target3rdy = false;
 
-            public CSpellTargettedTimer(Mobile caster, Item scroll, InfoSpell.TargettedTimer info)
+            public CSpellTargetedTimer(Mobile caster, Item scroll, InfoSpell.TargetedTimer info)
                 : base(caster, scroll, (InfoSpell)info)
             {
                 m_info = info;
@@ -261,7 +261,7 @@ namespace Server.Custom.CustomSpell
 
 
             // Appellé par .Cast().
-            public override void UseSpellTargettedTimer()
+            public override void UseSpellTargetedTimer()
             {
                 if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
                 {
@@ -314,13 +314,13 @@ namespace Server.Custom.CustomSpell
             // Timer qui est utilisé après le temps de cast, et une fois que tous les targets ont été choisis. Appelle les fonctions asbtract OnStart, OnTick, et OnEnd définies par l'utilisteur.
             private class EffectTimer : Timer
             {
-                private CSpellTargettedTimer m_owner;
+                private CSpellTargetedTimer m_owner;
                 private DateTime m_End;
 
                 private int m_NumeroTick = 0;
                 public int NumeroTick { get { return m_NumeroTick; } }
 
-                public EffectTimer(CSpellTargettedTimer owner, TimeSpan duree, TimerPriority intervale )
+                public EffectTimer(CSpellTargetedTimer owner, TimeSpan duree, TimerPriority intervale )
                     : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0))
                 {
                     m_End = DateTime.Now + duree;
@@ -359,12 +359,12 @@ namespace Server.Custom.CustomSpell
             // Créer un target et retourner l'objet dans le "target" spécifié par le int.
             private class InternalTarget : Target
             {
-                private CSpellTargettedTimer m_Owner;
+                private CSpellTargetedTimer m_Owner;
 
                 private int m_numeroTarget = 1;
                 private int numeroTarget { get { return m_numeroTarget; } set { if (value <= 3 && value >= 1) m_numeroTarget = numeroTarget; } }
 
-                public InternalTarget(CSpellTargettedTimer owner, int NumeroTarget)
+                public InternalTarget(CSpellTargetedTimer owner, int NumeroTarget)
                     : base(owner.m_info.range, true, TargetFlags.None)
                 {
                     numeroTarget = NumeroTarget;

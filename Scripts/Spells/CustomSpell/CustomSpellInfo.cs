@@ -37,7 +37,7 @@ namespace Server.Custom.CustomSpell
 
 
         #region Spécialisations d'InfoBaseSpell pour chaque type de spell.
-        public class Targetted : InfoSpell
+        public class Targeted : InfoSpell
         {
             // Membres aditionnels.
             private int m_NbTarget = 1;
@@ -51,8 +51,8 @@ namespace Server.Custom.CustomSpell
             public bool unEffectParTarget { get { return m_unEffectParTarget; } }
 
 
-            public Targetted(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool UnEffectParTarget, int Range, params Type[] regs)
-                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.Targetted, regs)
+            public Targeted(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool UnEffectParTarget, int Range, params Type[] regs)
+                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.Targeted, regs)
             {
                 if (NbTarget <= 3 && NbTarget >= 1) m_NbTarget = NbTarget;
                 if (range <= 20 && range >= 1) m_Range = Range;
@@ -60,7 +60,7 @@ namespace Server.Custom.CustomSpell
             }
         }
 
-        public class TargettedTimer : InfoSpell
+        public class TargetedTimer : InfoSpell
         {
             // Membres aditionnels.
             private int m_NbTarget = 1;
@@ -79,8 +79,8 @@ namespace Server.Custom.CustomSpell
             public bool unEffectParTarget = false;
 
 
-            public TargettedTimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool unEffectParTarget, int Range, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
-                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.TargettedTimer, regs)
+            public TargetedTimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool unEffectParTarget, int Range, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
+                : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.TargetedTimer, regs)
             {
                 if (NbTarget <= 3 && NbTarget >= 1) m_NbTarget = NbTarget;
                 if (range <= 20 && range >= 1) m_Range = Range;
