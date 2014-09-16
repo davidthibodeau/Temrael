@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public GateTravelScroll( int amount ) : base( 52, 0x1F60, amount )
+		public GateTravelScroll( int amount ) : base( GateTravelSpell.spellID, 0x1F60, amount )
 		{
             Name = "Illusion: Voyagement";
 		}

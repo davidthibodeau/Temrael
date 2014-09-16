@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public VengefulSpiritScroll( int amount ) : base( 113, 0x226D, amount )
+		public VengefulSpiritScroll( int amount ) : base( VengefulSpiritSpell.spellID, 0x226D, amount )
 		{
             Name = "Nécromancie: Esprit Vengeur";
 		}

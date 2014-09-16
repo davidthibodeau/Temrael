@@ -42,7 +42,7 @@ namespace Server.SkillHandlers
 
 		public static bool CheckMastery( Mobile tamer, BaseCreature creature )
 		{
-			BaseCreature familiar = (BaseCreature)Spells.Necromancy.SummonFamiliarSpell.Table[tamer];
+			BaseCreature familiar = (BaseCreature)Spells.SummonFamiliarSpell.Table[tamer];
 
 			if ( familiar != null && !familiar.Deleted && familiar is DarkWolfFamiliar )
 			{

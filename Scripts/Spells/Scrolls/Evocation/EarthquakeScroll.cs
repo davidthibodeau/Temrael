@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public EarthquakeScroll( int amount ) : base( 57, 0x1F65, amount )
+		public EarthquakeScroll( int amount ) : base( EarthquakeSpell.spellID, 0x1F65, amount )
 		{
             Name = "Évocation: Tremblement";
 		}

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public NightSightScroll( int amount ) : base( 6, 0x1F33, amount )
+		public NightSightScroll( int amount ) : base( NightSightSpell.spellID, 0x1F33, amount )
 		{
             Name = "Illusion: Vision Nocturne";
 		}

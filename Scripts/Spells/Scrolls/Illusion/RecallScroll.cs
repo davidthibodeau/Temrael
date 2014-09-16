@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public RecallScroll( int amount ) : base( 32, 0x1F4C, amount )
+		public RecallScroll( int amount ) : base( RecallSpell.spellID, 0x1F4C, amount )
 		{
             Name = "Illusion: Rappel";
 		}

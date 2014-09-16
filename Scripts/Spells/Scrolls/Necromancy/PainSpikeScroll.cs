@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PainSpikeScroll( int amount ) : base( 108, 0x2268, amount )
+		public PainSpikeScroll( int amount ) : base( PainSpikeSpell.spellID, 0x2268, amount )
 		{
             Name = "Nécromancie: Corruption";
 		}

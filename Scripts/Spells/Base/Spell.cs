@@ -3,12 +3,8 @@ using Server.Items;
 using Server.Network;
 using Server.Targeting;
 using Server.Mobiles;
-using Server.Spells.First;
-using Server.Spells.Second;
-using Server.Spells.Fifth;
-using Server.Spells.Necromancy;
-using System.Collections;
 using Server.Spells;
+using System.Collections;
 using Server.Custom;
 using Server.Scripts.Commands;
 

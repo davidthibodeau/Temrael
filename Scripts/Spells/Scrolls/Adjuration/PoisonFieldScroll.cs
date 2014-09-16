@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PoisonFieldScroll( int amount ) : base( 39, 0x1F53, amount )
+		public PoisonFieldScroll( int amount ) : base( PoisonFieldSpell.spellID, 0x1F53, amount )
 		{
             Name = "Adjuration: Mur de Poison";
 		}

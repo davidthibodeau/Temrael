@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public StrengthScroll( int amount ) : base( 16, 0x1F3C, amount )
+		public StrengthScroll( int amount ) : base( StrengthSpell.spellID, 0x1F3C, amount )
 		{
             Name = "Thaumaturgie: Force";
 		}

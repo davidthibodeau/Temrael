@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public FireballScroll( int amount ) : base( 18, 0x1F3E, amount )
+		public FireballScroll( int amount ) : base( FireballSpell.spellID, 0x1F3E, amount )
 		{
             Name = "Évocation: Boule de Feu";
 		}

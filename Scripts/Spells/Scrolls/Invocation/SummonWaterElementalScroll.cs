@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonWaterElementalScroll( int amount ) : base( 64, 0x1F6C, amount )
+		public SummonWaterElementalScroll( int amount ) : base( WaterElementalSpell.spellID, 0x1F6C, amount )
 		{
             Name = "Invocation: Élémental d'Eau";
 		}

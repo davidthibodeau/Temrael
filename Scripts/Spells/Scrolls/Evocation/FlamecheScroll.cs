@@ -1,6 +1,7 @@
 ﻿using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -13,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public FlamecheScroll(int amount) : base(202, 0x1F65, amount)
+        public FlamecheScroll(int amount) : base(Flameche.spellID, 0x1F65, amount)
         {
             Name = "Évocation: Flamèche";
         }

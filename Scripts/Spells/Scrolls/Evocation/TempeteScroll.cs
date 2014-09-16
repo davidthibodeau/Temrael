@@ -1,6 +1,7 @@
 ﻿using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -13,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public TempeteScroll(int amount) : base(204, 0x1F65, amount)
+        public TempeteScroll(int amount) : base(Tempete.spellID, 0x1F65, amount)
         {
             Name = "Évocation: Tempête";
         }

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public TelekinisisScroll( int amount ) : base( 21, 0x1F41, amount )
+		public TelekinisisScroll( int amount ) : base( TelekinesisSpell.spellID, 0x1F41, amount )
 		{
             Name = "Altération: Télékinesis";
 		}

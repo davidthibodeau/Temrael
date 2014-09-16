@@ -1,6 +1,7 @@
 ﻿using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -13,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public VoileScroll(int amount) : base(200, 0x1F65, amount)
+        public VoileScroll(int amount) : base(Spells.Voile.spellID, 0x1F65, amount)
         {
             Name = "Illusion: Voile";
         }

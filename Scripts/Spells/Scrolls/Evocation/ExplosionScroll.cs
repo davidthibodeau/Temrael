@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ExplosionScroll( int amount ) : base( 43, 0x1F57, amount )
+		public ExplosionScroll( int amount ) : base( ExplosionSpell.spellID, 0x1F57, amount )
 		{
             Name = "Évocation: Explosion";
 		}

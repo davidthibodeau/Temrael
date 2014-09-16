@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public HarmScroll( int amount ) : base( 12, 0x1F38, amount )
+		public HarmScroll( int amount ) : base( HarmSpell.spellID, 0x1F38, amount )
 		{
             Name = "Adjuration: Nuissance";
 		}

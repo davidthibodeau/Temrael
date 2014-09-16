@@ -7,8 +7,6 @@ using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 using Server.Spells;
-using Server.Spells.Fifth;
-using Server.Spells.Seventh;
 //using Server.Spells.Ninjitsu;
 
 namespace Server

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ParalyzeScroll( int amount ) : base( 38, 0x1F52, amount )
+		public ParalyzeScroll( int amount ) : base( ParalyzeSpell.spellID, 0x1F52, amount )
 		{
             Name = "Altération: Paralysie";
 		}

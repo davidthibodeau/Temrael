@@ -2,8 +2,6 @@ using System;
 using Server;
 using Server.Items;
 using Server.Spells;
-using Server.Spells.Necromancy;
-//using Server.Spells.Ninjitsu;
 using Server.Mobiles;
 
 namespace Server.Misc

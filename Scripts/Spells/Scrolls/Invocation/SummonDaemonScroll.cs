@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonDaemonScroll( int amount ) : base( 61, 0x1F69, amount )
+		public SummonDaemonScroll( int amount ) : base( SummonCreatureSpell.spellID, 0x1F69, amount )
 		{
             Name = "Invocation: Conjuration";
 		}

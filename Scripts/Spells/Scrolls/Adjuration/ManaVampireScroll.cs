@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ManaVampireScroll( int amount ) : base( 53, 0x1F61, amount )
+		public ManaVampireScroll( int amount ) : base( ManaVampireSpell.spellID, 0x1F61, amount )
 		{
             Name = "Adjuration: Drain Vampirique";
 		}

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public EnergyVortexScroll( int amount ) : base( 58, 0x1F66, amount )
+		public EnergyVortexScroll( int amount ) : base( EnergyVortexSpell.spellID, 0x1F66, amount )
 		{
             Name = "Évocation: Vortex";
 		}

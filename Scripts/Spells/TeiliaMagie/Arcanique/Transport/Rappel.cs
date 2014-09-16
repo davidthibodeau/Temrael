@@ -5,7 +5,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
 using Server.Regions;
-using Server.Spells.Necromancy;
+using Server.Spells;
 
 namespace Server.Spells
 {

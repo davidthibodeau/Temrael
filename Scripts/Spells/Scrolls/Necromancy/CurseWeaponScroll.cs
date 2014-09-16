@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CurseWeaponScroll( int amount ) : base( 103, 0x2263, amount )
+		public CurseWeaponScroll( int amount ) : base( CurseWeaponSpell.spellID, 0x2263, amount )
 		{
             Name = "Nécromancie: Maudire";
 		}

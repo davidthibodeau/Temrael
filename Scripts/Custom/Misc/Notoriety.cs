@@ -8,8 +8,6 @@ using Server.Multis;
 using Server.Mobiles;
 using Server.Engines.PartySystem;
 using Server.Factions;
-using Server.Spells.Necromancy;
-//using Server.Spells.Ninjitsu;
 using Server.Spells;
 
 namespace Server.Misc
@@ -340,7 +338,7 @@ namespace Server.Misc
 
 			if( !(target is BaseCreature && ((BaseCreature)target).InitialInnocent) )   //If Target is NOT A baseCreature, OR it's a BC and the BC is initial innocent...
 			{
-				if( !target.Body.IsHuman && !target.Body.IsGhost && !IsPet( target as BaseCreature ) && !(target is PlayerMobile) || !Core.ML && !target.CanBeginAction( typeof( Server.Spells.Seventh.PolymorphSpell ) ) )
+				if( !target.Body.IsHuman && !target.Body.IsGhost && !IsPet( target as BaseCreature ) && !(target is PlayerMobile) || !Core.ML && !target.CanBeginAction( typeof( Server.Spells.PolymorphSpell ) ) )
 					return Notoriety.CanBeAttacked;
 			}
 

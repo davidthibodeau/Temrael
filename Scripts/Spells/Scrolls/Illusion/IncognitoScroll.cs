@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public IncognitoScroll( int amount ) : base( 35, 0x1F4F, amount )
+		public IncognitoScroll( int amount ) : base( IncognitoSpell.spellID, 0x1F4F, amount )
 		{
             Name = "Illusion: Incognito";
 		}

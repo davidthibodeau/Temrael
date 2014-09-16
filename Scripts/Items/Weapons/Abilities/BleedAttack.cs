@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using Server.Mobiles;
-using Server.Spells.Necromancy;
+using Server.Spells;
 using Server.Network;
 using Server.Spells;
 

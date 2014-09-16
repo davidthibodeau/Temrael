@@ -11,9 +11,7 @@ using Server.ContextMenus;
 using Server.Engines.Quests;
 using Server.Engines.PartySystem;
 using Server.Factions;
-//using Server.Spells.Bushido;
-//using Server.Spells.Spellweaving;
-using Server.Spells.Necromancy;
+
 
 namespace Server.Mobiles
 {
@@ -1420,10 +1418,10 @@ namespace Server.Mobiles
 			if ( Core.AOS && !this.Summoned && this.Controlled && 0.2 > Utility.RandomDouble() )
 				amount = (int)(amount * BonusPetDamageScalar);
 
-			if ( Spells.Necromancy.EvilOmenSpell.CheckEffect( this ) )
+			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
 				amount = (int)(amount * 1.25);
 
-			Mobile oath = Spells.Necromancy.BloodOathSpell.GetBloodOath( from );
+			Mobile oath = Spells.BloodOathSpell.GetBloodOath( from );
 
 			if ( oath == this )
 			{
@@ -1475,7 +1473,7 @@ namespace Server.Mobiles
 			if ( !Alive || IsDeadPet )
 				return ApplyPoisonResult.Immune;
 
-			if ( Spells.Necromancy.EvilOmenSpell.CheckEffect( this ) )
+			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
 				poison = PoisonImpl.IncreaseLevel( poison );
 
 			ApplyPoisonResult result = base.ApplyPoison( from, poison );
@@ -2584,7 +2582,7 @@ namespace Server.Mobiles
 			AddFollowers();
 
 			if ( IsAnimatedDead )
-				Spells.Necromancy.AnimateDeadSpell.Register( m_SummonMaster, this );
+				Spells.AnimateDeadSpell.Register( m_SummonMaster, this );
 		}
 
 		public virtual bool IsHumanInTown()
@@ -3114,7 +3112,7 @@ namespace Server.Mobiles
 
 		public override void RevealingAction()
 		{
-			Spells.Sixth.InvisibilitySpell.RemoveTimer( this );
+			Spells.InvisibilitySpell.RemoveTimer( this );
 
 			base.RevealingAction();
 		}
@@ -3459,7 +3457,7 @@ namespace Server.Mobiles
 			FocusMob = null;
 
 			if ( IsAnimatedDead )
-				Spells.Necromancy.AnimateDeadSpell.Unregister( m_SummonMaster, this );
+				Spells.AnimateDeadSpell.Unregister( m_SummonMaster, this );
 
 			base.OnAfterDelete();
 		}
@@ -4744,7 +4742,7 @@ namespace Server.Mobiles
 
 			if ( this.DeathAdderCharmable && from.CanBeHarmful( this, false ) )
 			{
-				DeathAdder da = Spells.Necromancy.SummonFamiliarSpell.Table[from] as DeathAdder;
+				DeathAdder da = Spells.SummonFamiliarSpell.Table[from] as DeathAdder;
 
 				if ( da != null && !da.Deleted )
 				{
@@ -4770,7 +4768,7 @@ namespace Server.Mobiles
 				if ( !m_Charmed.DeathAdderCharmable || m_Charmed.Combatant != null || !from.CanBeHarmful( m_Charmed, false ) )
 					return;
 
-				DeathAdder da = Spells.Necromancy.SummonFamiliarSpell.Table[from] as DeathAdder;
+				DeathAdder da = Spells.SummonFamiliarSpell.Table[from] as DeathAdder;
 				if ( da == null || da.Deleted )
 					return;
 

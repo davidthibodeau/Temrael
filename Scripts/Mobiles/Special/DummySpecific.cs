@@ -291,11 +291,11 @@ namespace Server.Mobiles
 			AddItem( skc );
 
 			// Spells
-			AddSpellAttack( typeof(Spells.First.MagicArrowSpell) );
-			AddSpellAttack( typeof(Spells.First.WeakenSpell) );
-			AddSpellAttack( typeof(Spells.Third.FireballSpell) );
-			AddSpellDefense( typeof(Spells.Third.WallOfStoneSpell) );
-			AddSpellDefense( typeof(Spells.First.HealSpell) );
+			AddSpellAttack( typeof(Spells.MagicArrowSpell) );
+			AddSpellAttack( typeof(Spells.WeakenSpell) );
+			AddSpellAttack( typeof(Spells.FireballSpell) );
+			AddSpellDefense( typeof(Spells.WallOfStoneSpell) );
+			AddSpellDefense( typeof(Spells.HealSpell) );
 		}
 
 		public DummyNox( Serial serial ) : base( serial )
@@ -385,11 +385,11 @@ namespace Server.Mobiles
 			AddItem( cap );
 
 			// Spells
-			AddSpellAttack( typeof(Spells.First.MagicArrowSpell) );
-			AddSpellAttack( typeof(Spells.First.WeakenSpell) );
-			AddSpellAttack( typeof(Spells.Third.FireballSpell) );
-			AddSpellDefense( typeof(Spells.Third.WallOfStoneSpell) );
-			AddSpellDefense( typeof(Spells.First.HealSpell) );
+			AddSpellAttack( typeof(Spells.MagicArrowSpell) );
+			AddSpellAttack( typeof(Spells.WeakenSpell) );
+			AddSpellAttack( typeof(Spells.FireballSpell) );
+			AddSpellDefense( typeof(Spells.WallOfStoneSpell) );
+			AddSpellDefense( typeof(Spells.HealSpell) );
 		}
 
 		public DummyStun( Serial serial ) : base( serial )
@@ -483,11 +483,11 @@ namespace Server.Mobiles
 			AddItem( dblt );
 
 			// Spells
-			AddSpellAttack( typeof(Spells.First.MagicArrowSpell) );
-			AddSpellAttack( typeof(Spells.First.WeakenSpell) );
-			AddSpellAttack( typeof(Spells.Third.FireballSpell) );
-			AddSpellDefense( typeof(Spells.Third.WallOfStoneSpell) );
-			AddSpellDefense( typeof(Spells.First.HealSpell) );
+			AddSpellAttack( typeof(Spells.MagicArrowSpell) );
+			AddSpellAttack( typeof(Spells.WeakenSpell) );
+			AddSpellAttack( typeof(Spells.FireballSpell) );
+			AddSpellDefense( typeof(Spells.WallOfStoneSpell) );
+			AddSpellDefense( typeof(Spells.HealSpell) );
 		}
 
 		public DummySuper( Serial serial ) : base( serial )

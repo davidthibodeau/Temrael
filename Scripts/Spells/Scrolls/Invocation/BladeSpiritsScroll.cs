@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BladeSpiritsScroll( int amount ) : base( 33, 0x1F4D, amount )
+		public BladeSpiritsScroll( int amount ) : base(BladeSpiritsSpell.spellID, 0x1F4D, amount )
 		{
             Name = "Invocation: Esprit des Lames";
 		}

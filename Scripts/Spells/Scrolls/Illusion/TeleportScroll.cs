@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public TeleportScroll( int amount ) : base( 22, 0x1F42, amount )
+		public TeleportScroll( int amount ) : base( TeleportSpell.spellID, 0x1F42, amount )
 		{
             Name = "Illusion: Téléportation";
 		}

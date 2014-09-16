@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BlessScroll( int amount ) : base( 17, 0x1F3D, amount )
+		public BlessScroll( int amount ) : base( BlessSpell.spellID, 0x1F3D, amount )
 		{
             Name = "Thaumaturgie: Puissance";
 		}

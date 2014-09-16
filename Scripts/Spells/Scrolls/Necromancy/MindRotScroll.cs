@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MindRotScroll( int amount ) : base( 107, 0x2267, amount )
+		public MindRotScroll( int amount ) : base( MindRotSpell.spellID, 0x2267, amount )
 		{
             Name = "Nécromancie: Pourriture";
 		}

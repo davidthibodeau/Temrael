@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonFamiliarScroll( int amount ) : base( 111, 0x226B, amount )
+		public SummonFamiliarScroll( int amount ) : base( SummonFamiliarSpell.spellID, 0x226B, amount )
 		{
             Name = "Nécromancie: Minion";
 		}

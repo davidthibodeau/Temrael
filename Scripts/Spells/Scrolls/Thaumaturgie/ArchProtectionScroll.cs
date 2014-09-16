@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ArchProtectionScroll( int amount ) : base( 26, 0x1F46, amount )
+		public ArchProtectionScroll( int amount ) : base( ArchProtectionSpell.spellID, 0x1F46, amount )
 		{
             Name = "Thaumaturgie: Protection Magique";
 		}

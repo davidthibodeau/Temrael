@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ParalyzeFieldScroll( int amount ) : base( 47, 0x1F5B, amount )
+		public ParalyzeFieldScroll( int amount ) : base( ParalyzeFieldSpell.spellID, 0x1F5B, amount )
 		{
             Name = "Altération: Pétrification";
 		}

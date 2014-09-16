@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MarkScroll( int amount ) : base( 45, 0x1F59, amount )
+		public MarkScroll( int amount ) : base( MarkSpell.spellID, 0x1F59, amount )
 		{
             Name = "Illusion: Marque";
 		}

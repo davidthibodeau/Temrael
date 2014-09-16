@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicArrowScroll( int amount ) : base( 5, 0x1F32, amount )
+		public MagicArrowScroll( int amount ) : base( MagicArrowSpell.spellID, 0x1F32, amount )
 		{
             Name = "Invocation: Flèche Magique";
 		}

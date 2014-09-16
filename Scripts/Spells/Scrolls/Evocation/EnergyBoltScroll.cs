@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public EnergyBoltScroll( int amount ) : base( 42, 0x1F56, amount )
+		public EnergyBoltScroll( int amount ) : base( EnergyBoltSpell.spellID, 0x1F56, amount )
 		{
             Name = "Évocation: Énergie";
 		}

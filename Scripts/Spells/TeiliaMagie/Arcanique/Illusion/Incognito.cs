@@ -7,8 +7,6 @@ using Server.Items;
 using Server.Gumps;
 using Server.Prompts;
 using Server.Spells;
-using Server.Spells.Seventh;
-using Server.Spells.Necromancy;
 using Server.Targeting;
 
 using Server.Scripts.Commands;

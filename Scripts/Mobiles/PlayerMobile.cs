@@ -9,9 +9,6 @@ using Server.Engines.Help;
 using Server.ContextMenus;
 using Server.Network;
 using Server.Spells;
-using Server.Spells.Fifth;
-using Server.Spells.Seventh;
-using Server.Spells.Necromancy;
 //using Server.Spells.Ninjitsu;
 //using Server.Spells.Bushido;
 using Server.Targeting;
@@ -1062,7 +1059,7 @@ namespace Server.Mobiles
 			if ( m_DesignContext != null )
 				return;
 
-			Spells.Sixth.InvisibilitySpell.RemoveTimer( this );
+			Spells.InvisibilitySpell.RemoveTimer( this );
 
 			base.RevealingAction();
 
@@ -2425,10 +2422,10 @@ namespace Server.Mobiles
 
 		public override void Damage( int amount, Mobile from )
 		{
-			if ( Spells.Necromancy.EvilOmenSpell.CheckEffect( this ) )
+			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
 				amount = (int)(amount * 1.25);
 
-			Mobile oath = Spells.Necromancy.BloodOathSpell.GetBloodOath( from );
+			Mobile oath = Spells.BloodOathSpell.GetBloodOath( from );
 
 				/* Per EA's UO Herald Pub48 (ML):
 				 * ((resist spellsx10)/20 + 10=percentage of damage resisted)
@@ -2476,7 +2473,7 @@ namespace Server.Mobiles
 			if ( !Alive )
 				return ApplyPoisonResult.Immune;
 
-			if ( Spells.Necromancy.EvilOmenSpell.CheckEffect( this ) )
+			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
 				poison = PoisonImpl.IncreaseLevel( poison );
 
 			ApplyPoisonResult result = base.ApplyPoison( from, poison );

@@ -84,7 +84,7 @@ namespace Server.Items
 
 		public override void Drink( Mobile from )
 		{
-			/*if ( TransformationSpellHelper.UnderTransformation( from, typeof( Spells.Necromancy.VampiricEmbraceSpell ) ) )
+			/*if ( TransformationSpellHelper.UnderTransformation( from, typeof( Spells.VampiricEmbraceSpell ) ) )
 			{
 				from.SendLocalizedMessage( 1061652 ); // The garlic in the potion would surely kill you.
 			}*/

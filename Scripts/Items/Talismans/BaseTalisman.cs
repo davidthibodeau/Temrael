@@ -1,11 +1,7 @@
 using System;
 using Server.Commands;
 using Server.Mobiles;
-using Server.Spells.Fifth;
-using Server.Spells.First;
-using Server.Spells.Fourth;
-using Server.Spells.Necromancy;
-using Server.Spells.Second;
+using Server.Spells;
 using Server.Targeting;
 
 namespace Server.Items

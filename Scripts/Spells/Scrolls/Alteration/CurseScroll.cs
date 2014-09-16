@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CurseScroll( int amount ) : base( 27, 0x1F47, amount )
+		public CurseScroll( int amount ) : base( CurseSpell.spellID, 0x1F47, amount )
 		{
             Name = "Altération: Malédiction";
 		}

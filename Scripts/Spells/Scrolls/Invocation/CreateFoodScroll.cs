@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CreateFoodScroll( int amount ) : base( 2, 0x1F2F, amount )
+		public CreateFoodScroll( int amount ) : base( CreateFoodSpell.spellID, 0x1F2F, amount )
 		{
             Name = "Invocation: Nourriture";
 		}

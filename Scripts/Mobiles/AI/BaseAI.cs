@@ -12,9 +12,7 @@ using Server.Engines.Quests;
 using Server.Engines.Quests.Necro;
 using MoveImpl=Server.Movement.MovementImpl;
 using Server.Spells;
-//using Server.Spells.Spellweaving;
 using Server.PathAlgorithms;
-using Server.Spells.Fourth;
 
 namespace Server.Mobiles
 {

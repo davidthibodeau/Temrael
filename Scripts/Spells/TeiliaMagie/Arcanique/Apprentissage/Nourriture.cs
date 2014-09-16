@@ -56,7 +56,7 @@ namespace Server.Spells
 			FinishSequence();
 		}
 	}
-
+    /*
 	public class FoodInfo
 	{
 		private Type m_Type;
@@ -86,5 +86,5 @@ namespace Server.Spells
 
 			return item;
 		}
-	}
+	}*/
 }

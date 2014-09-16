@@ -1,10 +1,6 @@
 using System;
 using Server;
 using Server.Spells;
-using Server.Spells.Third;
-using Server.Spells.First;
-using Server.Spells.Second;
-using Server.Spells.Fifth;
 
 namespace Server.Spells
 {
@@ -13,109 +9,109 @@ namespace Server.Spells
         public static void Initialize()
         {
             // First circle
-            Register(01, typeof(First.ClumsySpell));
-            Register(02, typeof(First.CreateFoodSpell));
-            Register(03, typeof(First.FeeblemindSpell));
-            Register(04, typeof(First.HealSpell));
-            Register(05, typeof(First.MagicArrowSpell));
-            Register(06, typeof(First.NightSightSpell));
-            Register(07, typeof(First.ReactiveArmorSpell));
-            Register(08, typeof(First.WeakenSpell));
+            Register(ClumsySpell.spellID,           typeof(ClumsySpell));
+            Register(CreateFoodSpell.spellID,       typeof(CreateFoodSpell));
+            Register(FeeblemindSpell.spellID,       typeof(FeeblemindSpell));
+            Register(HealSpell.spellID,             typeof(HealSpell));
+            Register(MagicArrowSpell.spellID,       typeof(MagicArrowSpell));
+            Register(NightSightSpell.spellID,       typeof(NightSightSpell));
+            Register(ReactiveArmorSpell.spellID,    typeof(ReactiveArmorSpell));
+            Register(WeakenSpell.spellID,           typeof(WeakenSpell));
 
             // Second circle
-            Register(09, typeof(Second.AgilitySpell));
-            Register(10, typeof(Second.CunningSpell));
-            Register(11, typeof(Second.CureSpell));
-            Register(12, typeof(Second.HarmSpell));
-            Register(13, typeof(Second.MagicTrapSpell));
-            Register(14, typeof(Second.RemoveTrapSpell));
-            Register(15, typeof(Second.ProtectionSpell));
-            Register(16, typeof(Second.StrengthSpell));
+            Register(AgilitySpell.spellID,          typeof(AgilitySpell));
+            Register(CunningSpell.spellID,          typeof(CunningSpell));
+            Register(CureSpell.spellID,             typeof(CureSpell));
+            Register(HarmSpell.spellID,             typeof(HarmSpell));
+            Register(MagicTrapSpell.spellID,        typeof(MagicTrapSpell));
+            Register(RemoveTrapSpell.spellID,       typeof(RemoveTrapSpell));
+            Register(ProtectionSpell.spellID,       typeof(ProtectionSpell));
+            Register(StrengthSpell.spellID,         typeof(StrengthSpell));
 
             // Third circle
-            Register(17, typeof(Third.BlessSpell));
-            Register(18, typeof(Third.FireballSpell));
-            Register(19, typeof(Third.MagicLockSpell));
-            Register(20, typeof(Third.PoisonSpell));
-            Register(21, typeof(Third.TelekinesisSpell));
-            Register(22, typeof(Third.TeleportSpell));
-            Register(23, typeof(Third.UnlockSpell));
-            Register(24, typeof(Third.WallOfStoneSpell));
+            Register(BlessSpell.spellID,            typeof(BlessSpell));
+            Register(FireballSpell.spellID,         typeof(FireballSpell));
+            Register(MagicLockSpell.spellID,        typeof(MagicLockSpell));
+            Register(PoisonSpell.spellID,           typeof(PoisonSpell));
+            Register(TelekinesisSpell.spellID,      typeof(TelekinesisSpell));
+            Register(TeleportSpell.spellID,         typeof(TeleportSpell));
+            Register(UnlockSpell.spellID,           typeof(UnlockSpell));
+            Register(WallOfStoneSpell.spellID,      typeof(WallOfStoneSpell));
 
             // Fourth circle
-            Register(25, typeof(Fourth.ArchCureSpell));
-            Register(26, typeof(Fourth.ArchProtectionSpell));
-            Register(27, typeof(Fourth.CurseSpell));
-            Register(28, typeof(Fourth.FireFieldSpell));
-            Register(29, typeof(Fourth.GreaterHealSpell));
-            Register(30, typeof(Fourth.LightningSpell));
-            Register(31, typeof(Fourth.ManaDrainSpell));
-            Register(32, typeof(Fourth.RecallSpell));
+            Register(ArchCureSpell.spellID,         typeof(ArchCureSpell));
+            Register(ArchProtectionSpell.spellID,   typeof(ArchProtectionSpell));
+            Register(CurseSpell.spellID,            typeof(CurseSpell));
+            Register(FireFieldSpell.spellID,        typeof(FireFieldSpell));
+            Register(GreaterHealSpell.spellID,      typeof(GreaterHealSpell));
+            Register(LightningSpell.spellID,        typeof(LightningSpell));
+            Register(ManaDrainSpell.spellID,        typeof(ManaDrainSpell));
+            Register(RecallSpell.spellID,           typeof(RecallSpell));
 
             // Fifth circle
-            Register(33, typeof(Fifth.BladeSpiritsSpell));
-            Register(34, typeof(Fifth.DispelFieldSpell));
-            Register(35, typeof(Fifth.IncognitoSpell));
-            Register(36, typeof(Fifth.MagicReflectSpell));
-            Register(37, typeof(Fifth.MindBlastSpell));
-            Register(38, typeof(Fifth.ParalyzeSpell));
-            Register(39, typeof(Fifth.PoisonFieldSpell));
-            Register(40, typeof(Fifth.SummonCreatureSpell));
+            Register(BladeSpiritsSpell.spellID,     typeof(BladeSpiritsSpell));
+            Register(DispelFieldSpell.spellID,      typeof(DispelFieldSpell));
+            Register(IncognitoSpell.spellID,        typeof(IncognitoSpell));
+            Register(MagicReflectSpell.spellID,     typeof(MagicReflectSpell));
+            Register(MindBlastSpell.spellID,        typeof(MindBlastSpell));
+            Register(ParalyzeSpell.spellID,         typeof(ParalyzeSpell));
+            Register(PoisonFieldSpell.spellID,      typeof(PoisonFieldSpell));
+            Register(SummonCreatureSpell.spellID,   typeof(SummonCreatureSpell));
 
             // Sixth circle
-            Register(41, typeof(Sixth.DispelSpell));
-            Register(42, typeof(Sixth.EnergyBoltSpell));
-            Register(43, typeof(Sixth.ExplosionSpell));
-            Register(44, typeof(Sixth.InvisibilitySpell));
-            Register(45, typeof(Sixth.MarkSpell));
-            Register(46, typeof(Sixth.MassCurseSpell));
-            Register(47, typeof(Sixth.ParalyzeFieldSpell));
-            Register(48, typeof(Sixth.RevealSpell));
+            Register(DispelSpell.spellID,           typeof(DispelSpell));
+            Register(EnergyBoltSpell.spellID,       typeof(EnergyBoltSpell));
+            Register(ExplosionSpell.spellID,        typeof(ExplosionSpell));
+            Register(InvisibilitySpell.spellID,     typeof(InvisibilitySpell));
+            Register(MarkSpell.spellID,             typeof(MarkSpell));
+            Register(MassCurseSpell.spellID,        typeof(MassCurseSpell));
+            Register(ParalyzeFieldSpell.spellID,    typeof(ParalyzeFieldSpell));
+            Register(RevealSpell.spellID,           typeof(RevealSpell));
 
             // Seventh circle
-            Register(49, typeof(Seventh.ChainLightningSpell));
-            Register(50, typeof(Seventh.EnergyFieldSpell));
-            Register(51, typeof(Seventh.FlameStrikeSpell));
-            Register(52, typeof(Seventh.GateTravelSpell));
-            Register(53, typeof(Seventh.ManaVampireSpell));
-            Register(54, typeof(Seventh.MassDispelSpell));
-            Register(55, typeof(Seventh.MeteorSwarmSpell));
-            Register(56, typeof(Seventh.PolymorphSpell));
+            Register(ChainLightningSpell.spellID,   typeof(ChainLightningSpell));
+            Register(EnergyFieldSpell.spellID,      typeof(EnergyFieldSpell));
+            Register(FlameStrikeSpell.spellID,      typeof(FlameStrikeSpell));
+            Register(GateTravelSpell.spellID,       typeof(GateTravelSpell));
+            Register(ManaVampireSpell.spellID,      typeof(ManaVampireSpell));
+            Register(MassDispelSpell.spellID,       typeof(MassDispelSpell));
+            Register(MeteorSwarmSpell.spellID,      typeof(MeteorSwarmSpell));
+            Register(PolymorphSpell.spellID,        typeof(PolymorphSpell));
 
             // Eighth circle
-            Register(57, typeof(Eighth.EarthquakeSpell));
-            Register(58, typeof(Eighth.EnergyVortexSpell));
-            Register(59, typeof(Eighth.ResurrectionSpell));
-            Register(60, typeof(Eighth.AirElementalSpell));
-            Register(61, typeof(Eighth.SummonDaemonSpell));
-            Register(62, typeof(Eighth.EarthElementalSpell));
-            Register(63, typeof(Eighth.FireElementalSpell));
-            Register(64, typeof(Eighth.WaterElementalSpell));
+            Register(EarthquakeSpell.spellID,       typeof(EarthquakeSpell));
+            Register(EnergyVortexSpell.spellID,     typeof(EnergyVortexSpell));
+            Register(ResurrectionSpell.spellID,     typeof(ResurrectionSpell));
+            Register(AirElementalSpell.spellID,     typeof(AirElementalSpell));
+            Register(SummonDaemonSpell.spellID,     typeof(SummonDaemonSpell));
+            Register(EarthElementalSpell.spellID,   typeof(EarthElementalSpell));
+            Register(FireElementalSpell.spellID,    typeof(FireElementalSpell));
+            Register(WaterElementalSpell.spellID,   typeof(WaterElementalSpell));
 
             // Necromancy spells
-            Register(100, typeof(Necromancy.AnimateDeadSpell));
-            Register(101, typeof(Necromancy.BloodOathSpell));
-            Register(102, typeof(Necromancy.CorpseSkinSpell));
-            Register(103, typeof(Necromancy.CurseWeaponSpell));
-            Register(104, typeof(Necromancy.EvilOmenSpell));
-            Register(105, typeof(Necromancy.HorrificBeastSpell));
-            Register(106, typeof(Necromancy.LichFormSpell));
-            Register(107, typeof(Necromancy.MindRotSpell));
-            Register(108, typeof(Necromancy.PainSpikeSpell));
-            Register(109, typeof(Necromancy.PoisonStrikeSpell));
-            Register(110, typeof(Necromancy.StrangleSpell));
-            Register(111, typeof(Necromancy.SummonFamiliarSpell));
-            Register(112, typeof(Necromancy.VampiricEmbraceSpell));
-            Register(113, typeof(Necromancy.VengefulSpiritSpell));
-            Register(114, typeof(Necromancy.WitherSpell));
-            Register(115, typeof(Necromancy.WraithFormSpell));
+            Register(AnimateDeadSpell.spellID,      typeof(AnimateDeadSpell));
+            Register(BloodOathSpell.spellID,        typeof(BloodOathSpell));
+            Register(CorpseSkinSpell.spellID,       typeof(CorpseSkinSpell));
+            Register(CurseWeaponSpell.spellID,      typeof(CurseWeaponSpell));
+            Register(EvilOmenSpell.spellID,         typeof(EvilOmenSpell));
+            Register(HorrificBeastSpell.spellID,    typeof(HorrificBeastSpell));
+            Register(LichFormSpell.spellID,         typeof(LichFormSpell));
+            Register(MindRotSpell.spellID,          typeof(MindRotSpell));
+            Register(PainSpikeSpell.spellID,        typeof(PainSpikeSpell));
+            Register(PoisonStrikeSpell.spellID,     typeof(PoisonStrikeSpell));
+            Register(StrangleSpell.spellID,         typeof(StrangleSpell));
+            Register(SummonFamiliarSpell.spellID,   typeof(SummonFamiliarSpell));
+            Register(VampiricEmbraceSpell.spellID,  typeof(VampiricEmbraceSpell));
+            Register(VengefulSpiritSpell.spellID,   typeof(VengefulSpiritSpell));
+            Register(WitherSpell.spellID,           typeof(WitherSpell));
+            Register(WraithFormSpell.spellID,       typeof(WraithFormSpell));
 
             // Nouveaux
-            Register(200, typeof(First.Voile));
-            Register(201, typeof(First.Bourrasque));
-            Register(202, typeof(First.Flameche));
-            Register(203, typeof(First.Froid));
-            Register(204, typeof(First.Tempete));
+            Register(Voile.spellID,                 typeof(Voile));
+            Register(Bourrasque.spellID,            typeof(Bourrasque));
+            Register(Flameche.spellID,              typeof(Flameche));
+            Register(Froid.spellID,                 typeof(Froid));
+            Register(Tempete.spellID,               typeof(Tempete));
 
             //Register(400, typeof(AttaquesSpell));
 

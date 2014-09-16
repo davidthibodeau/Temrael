@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public FlamestrikeScroll( int amount ) : base( 51, 0x1F5F, amount )
+		public FlamestrikeScroll( int amount ) : base( FlameStrikeSpell.spellID, 0x1F5F, amount )
 		{
             Name = "Évocation: Jeu de Flamme";
 		}

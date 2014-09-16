@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ClumsyScroll( int amount ) : base( 1, 0x1F2E, amount )
+		public ClumsyScroll( int amount ) : base( ClumsySpell.spellID, 0x1F2E, amount )
 		{
             Name = "Altération: Maladroit";
 		}

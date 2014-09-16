@@ -11,7 +11,7 @@ using Server.Targeting;
 using Server.Engines.PartySystem;
 using Server.Misc;
 using System.Collections.Generic;
-using Server.Spells.Fifth;
+using Server.Spells;
 
 namespace Server
 {
@@ -1032,7 +1032,10 @@ namespace Server.Spells
             {
                 m_Table.Remove(m);
 
-                List<ResistanceMod> mods = context.Mods;
+
+                List<ResistanceMod> mods = new List<ResistanceMod>(context.Mods.Count);
+                foreach (ResistanceMod item in context.Mods) mods.Add(item);
+
 
                 for (int i = 0; i < mods.Count; ++i)
                     m.RemoveResistanceMod(mods[i]);
@@ -1207,30 +1210,46 @@ namespace Server.Spells
     public class TransformContext
     {
         private Timer m_Timer;
-        private List<ResistanceMod> m_Mods;
+        private ArrayList m_Mods;
         private Type m_Type;
         private ITransformationSpell m_Spell;
 
         public Timer Timer { get { return m_Timer; } }
-        public List<ResistanceMod> Mods { get { return m_Mods; } }
+        public ArrayList Mods { get { return m_Mods; } }
         public Type Type { get { return m_Type; } }
         public ITransformationSpell Spell { get { return m_Spell; } }
 
         public TransformContext(Timer timer, List<ResistanceMod> mods, Type type, ITransformationSpell spell)
         {
             m_Timer = timer;
-            m_Mods = mods;
+            m_Mods = new ArrayList(mods);
             m_Type = type;
             m_Spell = spell;
+        }
+
+        public TransformContext(Timer timer, ArrayList mods, Type type)
+        {
+            m_Timer = timer;
+            m_Mods = mods;
+            m_Type = type;
         }
     }
 
     public class TransformTimer : Timer
     {
         private Mobile m_Mobile;
-        private ITransformationSpell m_Spell;
+        private TransformationSpell m_Spell;
 
         public TransformTimer(Mobile from, ITransformationSpell spell)
+            : base(TimeSpan.FromSeconds(spell.TickRate), TimeSpan.FromSeconds(spell.TickRate))
+        {
+            m_Mobile = from;
+            m_Spell = (TransformationSpell)spell;
+
+            Priority = TimerPriority.TwoFiftyMS;
+        }
+
+        public TransformTimer(Mobile from, TransformationSpell spell)
             : base(TimeSpan.FromSeconds(spell.TickRate), TimeSpan.FromSeconds(spell.TickRate))
         {
             m_Mobile = from;

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public LichFormScroll( int amount ) : base( 106, 0x2266, amount )
+		public LichFormScroll( int amount ) : base( LichFormSpell.spellID , 0x2266, amount )
 		{
             Name = "Nécromancie: Liche";
 		}

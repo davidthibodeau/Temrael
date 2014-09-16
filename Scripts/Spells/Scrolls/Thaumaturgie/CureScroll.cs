@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CureScroll( int amount ) : base( 11, 0x1F37, amount )
+		public CureScroll( int amount ) : base( CureSpell.spellID, 0x1F37, amount )
 		{
             Name = "Thaumaturgie: Antidote";
 		}

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public DispelScroll( int amount ) : base( 41, 0x1F55, amount )
+        public DispelScroll(int amount) : base(DispelSpell.spellID, 0x1F55, amount)
 		{
             Name = "Adjuration: Dissipation";
 		}

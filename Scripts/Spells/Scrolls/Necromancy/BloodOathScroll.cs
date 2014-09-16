@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BloodOathScroll( int amount ) : base( 101, 0x2261, amount )
+		public BloodOathScroll( int amount ) : base( BloodOathSpell.spellID, 0x2261, amount )
 		{
             Name = "Nécromancie: Sermant";
 		}

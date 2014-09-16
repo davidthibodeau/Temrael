@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public WeakenScroll( int amount ) : base( 8, 0x1F34, amount )
+		public WeakenScroll( int amount ) : base( WeakenSpell.spellID, 0x1F34, amount )
 		{
             Name = "Altération: Faiblesse";
 		}

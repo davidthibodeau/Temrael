@@ -7,13 +7,6 @@ using Server.Mobiles;
 using Server.Targeting;
 using Server.Factions.AI;
 using Server.Spells;
-using Server.Spells.First;
-using Server.Spells.Second;
-using Server.Spells.Third;
-using Server.Spells.Fourth;
-using Server.Spells.Fifth;
-using Server.Spells.Sixth;
-using Server.Spells.Seventh;
 
 namespace Server.Factions
 {

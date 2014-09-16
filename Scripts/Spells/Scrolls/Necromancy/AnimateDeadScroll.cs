@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public AnimateDeadScroll( int amount ) : base( 100, 0x2260, amount )
+		public AnimateDeadScroll( int amount ) : base( AnimateDeadSpell.spellID, 0x2260, amount )
 		{
             Name = "Nécromancie: Animation";
 		}

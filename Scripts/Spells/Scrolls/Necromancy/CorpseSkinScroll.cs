@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CorpseSkinScroll( int amount ) : base( 102, 0x2262, amount )
+		public CorpseSkinScroll( int amount ) : base( CorpseSkinSpell.spellID, 0x2262, amount )
 		{
             Name = "Nécromancie: Corps Mortifié";
 		}

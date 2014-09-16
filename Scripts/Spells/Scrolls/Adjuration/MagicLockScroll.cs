@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicLockScroll( int amount ) : base( 19, 0x1F3F, amount )
+		public MagicLockScroll( int amount ) : base( MagicLockSpell.spellID, 0x1F3F, amount )
 		{
             Name = "Adjuration: Ouverture Magique";
 		}

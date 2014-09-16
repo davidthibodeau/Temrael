@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public VampiricEmbraceScroll( int amount ) : base( 112, 0x226C, amount )
+		public VampiricEmbraceScroll( int amount ) : base( VampiricEmbraceSpell.spellID, 0x226C, amount )
 		{
             Name = "Nécromancie: Vampirisme";
 		}

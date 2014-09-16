@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public DispelFieldScroll( int amount ) : base( 34, 0x1F4E, amount )
+        public DispelFieldScroll(int amount) : base(DispelFieldSpell.spellID, 0x1F4E, amount)
 		{
             Name = "Adjuration: Champ de dissipation";
 		}
@@ -36,10 +37,5 @@ namespace Server.Items
 
             Name = "Adjuration: Champ de dissipation";
 		}
-
-		/*public override Item Dupe( int amount )
-		{
-			return base.Dupe( new DispelFieldScroll( amount ), amount );
-		}*/
 	}
 }

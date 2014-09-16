@@ -225,7 +225,7 @@ namespace Server.Engines.Quests.Necro
 		{
 			if ( System.From.Map == Map.Malas && System.From.InRange( new Point3D( 1076, 450, -84 ), 5 ) )
 			{
-				HordeMinionFamiliar hmf = Spells.Necromancy.SummonFamiliarSpell.Table[System.From] as HordeMinionFamiliar;
+				HordeMinionFamiliar hmf = Spells.SummonFamiliarSpell.Table[System.From] as HordeMinionFamiliar;
 
 				if ( hmf != null && hmf.InRange( System.From, 5 ) && hmf.TargetLocation == null )
 				{

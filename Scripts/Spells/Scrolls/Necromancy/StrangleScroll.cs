@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public StrangleScroll( int amount ) : base( 110, 0x226A, amount )
+		public StrangleScroll( int amount ) : base( StrangleSpell.spellID, 0x226A, amount )
 		{
             Name = "Nécromancie: Étranglement";
 		}

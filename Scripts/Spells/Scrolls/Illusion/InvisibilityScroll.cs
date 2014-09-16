@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public InvisibilityScroll( int amount ) : base( 44, 0x1F58, amount )
+		public InvisibilityScroll( int amount ) : base( InvisibilitySpell.spellID, 0x1F58, amount )
 		{
             Name = "Illusion: Invisibilité";
 		}

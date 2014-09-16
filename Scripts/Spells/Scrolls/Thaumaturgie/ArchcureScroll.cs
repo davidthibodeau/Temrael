@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ArchCureScroll( int amount ) : base( 25, 0x1F45, amount )
+		public ArchCureScroll( int amount ) : base( ArchCureSpell.spellID, 0x1F45, amount )
 		{
             Name = "Thaumaturgie: Remède";
 		}

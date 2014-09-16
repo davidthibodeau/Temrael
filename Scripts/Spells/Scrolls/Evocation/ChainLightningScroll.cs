@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ChainLightningScroll( int amount ) : base( 49, 0x1F5D, amount )
+		public ChainLightningScroll( int amount ) : base( ChainLightningSpell.spellID, 0x1F5D, amount )
 		{
             Name = "Évocation: Chaîne d'Éclairs";
 		}

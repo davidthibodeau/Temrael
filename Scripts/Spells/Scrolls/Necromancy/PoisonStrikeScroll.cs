@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PoisonStrikeScroll( int amount ) : base( 109, 0x2269, amount )
+		public PoisonStrikeScroll( int amount ) : base( PoisonStrikeSpell.spellID, 0x2269, amount )
 		{
             Name = "Nécromancie: Venin";
 		}

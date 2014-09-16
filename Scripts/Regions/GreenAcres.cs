@@ -3,9 +3,6 @@ using System.Xml;
 using Server;
 using Server.Mobiles;
 using Server.Spells;
-using Server.Spells.Seventh;
-using Server.Spells.Fourth;
-using Server.Spells.Sixth;
 //using Server.Spells.Chivalry;
 
 namespace Server.Regions

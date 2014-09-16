@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Accounting;
 using Server.Items;
-using Server.Spells.Sixth;
+using Server.Spells;
 using Server.Targeting;
 
 namespace Server.Regions

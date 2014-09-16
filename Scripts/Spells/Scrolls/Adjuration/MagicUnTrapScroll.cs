@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,9 +13,9 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicUnTrapScroll( int amount ) : base( 14, 0x1F3A, amount )
+		public MagicUnTrapScroll( int amount ) : base( RemoveTrapSpell.spellID, 0x1F3A, amount )
 		{
-            Name = "Adjuration: Supreesion de Piège";
+            Name = "Adjuration: Supression de Piège";
 		}
 
 		public MagicUnTrapScroll( Serial serial ) : base( serial )
@@ -34,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Adjuration: Supreesion de Piège";
+            Name = "Adjuration: Supression de Piège";
 		}
 
 		/*public override Item Dupe( int amount )

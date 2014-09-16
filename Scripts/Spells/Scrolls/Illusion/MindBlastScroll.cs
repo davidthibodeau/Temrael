@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MindBlastScroll( int amount ) : base( 37, 0x1F51, amount )
+		public MindBlastScroll( int amount ) : base( MindBlastSpell.spellID, 0x1F51, amount )
 		{
             Name = "Illusion: Lobotomie";
 		}

@@ -2,9 +2,7 @@
 using Server;
 using Server.Gumps;
 using Server.Mobiles;
-using Server.Spells.Fifth;
-using Server.Spells.Seventh;
-using Server.Spells.Necromancy;
+using Server.Spells;
 using Server.Scripts.Commands;
 
 namespace Server.Engines.Identities

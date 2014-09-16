@@ -1,6 +1,7 @@
 ﻿using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -13,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public FroidScroll(int amount) : base(203, 0x1F65, amount)
+        public FroidScroll(int amount) : base(Froid.spellID, 0x1F65, amount)
         {
             Name = "Évocation: Froid";
         }

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public HorrificBeastScroll( int amount ) : base( 105, 0x2265, amount )
+		public HorrificBeastScroll( int amount ) : base( HorrificBeastSpell.spellID, 0x2265, amount )
 		{
             Name = "Nécromancie: Bête Horrifique";
 		}

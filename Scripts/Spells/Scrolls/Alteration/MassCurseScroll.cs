@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MassCurseScroll( int amount ) : base( 46, 0x1F5A, amount )
+		public MassCurseScroll( int amount ) : base( MassCurseSpell.spellID, 0x1F5A, amount )
 		{
             Name = "Altération: Fléau";
 		}

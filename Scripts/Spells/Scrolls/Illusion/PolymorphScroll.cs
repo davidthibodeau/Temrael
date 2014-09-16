@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PolymorphScroll( int amount ) : base( 56, 0x1F64, amount )
+		public PolymorphScroll( int amount ) : base( PolymorphSpell.spellID, 0x1F64, amount )
 		{
             Name = "Illusion: Polymorph";
 		}

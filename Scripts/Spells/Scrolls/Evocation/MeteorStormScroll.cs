@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MeteorSwarmScroll( int amount ) : base( 55, 0x1F63, amount )
+		public MeteorSwarmScroll( int amount ) : base( MeteorSwarmSpell.spellID, 0x1F63, amount )
 		{
             Name = "Évocation: Météores";
 		}

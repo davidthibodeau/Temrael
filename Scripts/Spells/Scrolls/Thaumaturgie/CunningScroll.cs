@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CunningScroll( int amount ) : base( 10, 0x1F36, amount )
+		public CunningScroll( int amount ) : base( CunningSpell.spellID, 0x1F36, amount )
 		{
             Name = "Thaumaturgie: Ruse";
 		}

@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public AgilityScroll( int amount ) : base( 9, 0x1F35, amount )
+		public AgilityScroll( int amount ) : base( AgilitySpell.spellID, 0x1F35, amount )
 		{
             Name = "Thaumaturgie: Agilité";
 		}

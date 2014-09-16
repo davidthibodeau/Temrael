@@ -1,6 +1,7 @@
 using System;
 using Server;
 using Server.Items;
+using Server.Spells;
 
 namespace Server.Items
 {
@@ -12,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicTrapScroll( int amount ) : base( 13, 0x1F39, amount )
+		public MagicTrapScroll( int amount ) : base( MagicTrapSpell.spellID, 0x1F39, amount )
 		{
             Name = "Adjuration: Piège Magique";
 		}
