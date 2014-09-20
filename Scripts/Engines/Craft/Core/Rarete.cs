@@ -20,8 +20,7 @@ namespace Server.Items
         None,
         Attributes,
         ItemAttributes,
-        SkillsAttributes,
-        TemAttributes
+        SkillsAttributes
     }
 
     public class RareteInit
@@ -109,7 +108,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Rare;
                             chance = 0.30;
                             scale = rand.Next(1, 4);
@@ -120,7 +118,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Legendaire;
                             chance = 0.30;
                             repeat = rand.Next(1, 3);
@@ -294,17 +291,6 @@ namespace Server.Items
                                         break;
                                 }
                                 break;
-                            case ItemAttributes.TemAttributes:
-                                switch (rand.Next(0, 2))
-                                {
-                                    case 0:
-                                        item.TemAttributes.SetValue(0x00000001, scale);
-                                        break;
-                                    case 1:
-                                        item.TemAttributes.SetValue(0x00000002, scale);
-                                        break;
-                                }
-                                break;
                         }
                     }
                     repeat--;
@@ -373,7 +359,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Rare;
                             chance = 0.30;
                             scale = rand.Next(15, 45);
@@ -384,7 +369,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Legendaire;
                             chance = 0.15;
                             repeat = rand.Next(1, 3);
@@ -492,17 +476,6 @@ namespace Server.Items
                                         break;
                                 }
                                 break;
-                            case ItemAttributes.TemAttributes:
-                                switch (rand.Next(0, 2))
-                                {
-                                    case 0:
-                                        item.TemAttributes.SetValue(0x00000001, scale);
-                                        break;
-                                    case 1:
-                                        item.TemAttributes.SetValue(0x00000002, scale);
-                                        break;
-                                }
-                                break;
                         }
                     }
                     repeat--;
@@ -571,7 +544,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Rare;
                             chance = 0.30;
                             scale = rand.Next(15, 45);
@@ -582,7 +554,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Legendaire;
                             chance = 0.15;
                             repeat = rand.Next(1, 3);
@@ -690,17 +661,6 @@ namespace Server.Items
                                         break;
                                 }
                                 break;
-                            case ItemAttributes.TemAttributes:
-                                switch (rand.Next(0, 2))
-                                {
-                                    case 0:
-                                        item.TemAttributes.SetValue(0x00000001, scale);
-                                        break;
-                                    case 1:
-                                        item.TemAttributes.SetValue(0x00000002, scale);
-                                        break;
-                                }
-                                break;
                         }
                     }
                     repeat--;
@@ -769,7 +729,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Rare;
                             chance = 0.30;
                             scale = rand.Next(15, 45);
@@ -780,7 +739,6 @@ namespace Server.Items
                             effects.Add(ItemAttributes.Attributes);
                             effects.Add(ItemAttributes.SkillsAttributes);
                             effects.Add(ItemAttributes.ItemAttributes);
-                            effects.Add(ItemAttributes.TemAttributes);
                             rarete = RareteItem.Legendaire;
                             chance = 0.15;
                             repeat = rand.Next(1, 3);
@@ -888,17 +846,7 @@ namespace Server.Items
                                         break;
                                 }
                                 break;*/
-                            case ItemAttributes.TemAttributes:
-                                switch (rand.Next(0, 2))
-                                {
-                                    case 0:
-                                        item.TemAttributes.SetValue(0x00000001, scale);
-                                        break;
-                                    case 1:
-                                        item.TemAttributes.SetValue(0x00000002, scale);
-                                        break;
-                                }
-                                break;
+
                         }
                     }
                     repeat--;

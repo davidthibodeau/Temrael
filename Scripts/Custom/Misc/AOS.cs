@@ -28,11 +28,6 @@ namespace Server
             }
         }
 
-        public static int Damage(Mobile m, int damage, bool ignoreArmor, int phys, int contondant, int tranchant, int perforant, int magie)
-        {
-            return Damage(m, null, damage, ignoreArmor, phys, contondant, tranchant, perforant, magie);
-        }
-
         public static int Damage(Mobile m, int damage, int phys, int contondant, int tranchant, int perforant, int magie)
         {
             return Damage(m, null, damage, phys, contondant, tranchant, perforant, magie);
@@ -46,11 +41,6 @@ namespace Server
         public static int Damage(Mobile m, Mobile from, int damage, bool ignoreArmor, int phys, int contondant, int tranchant, int perforant, int magie)
         {
             return Damage(m, from, damage, ignoreArmor, phys, contondant, tranchant, perforant, magie, 0, 0, false, false, false);
-        }
-
-        public static int Damage(Mobile m, Mobile from, int damage, int phys, int contondant, int tranchant, int perforant, int magie, bool keepAlive)
-        {
-            return Damage(m, from, damage, false, phys, contondant, tranchant, perforant, magie, 0, 0, keepAlive, false, false);
         }
 
         public static int Damage(Mobile m, Mobile from, int damage, bool ignoreArmor, int phys, int contondant, int tranchant, int perforant, int magie, int chaos, int direct, bool keepAlive, bool archer, bool deathStrike)
@@ -714,103 +704,7 @@ namespace Server
         public int DurabilityBonus { get { return this[AosArmorAttribute.DurabilityBonus]; } set { this[AosArmorAttribute.DurabilityBonus] = value; } }
     }
 
-    [Flags]
-    public enum TemraelAttribute
-    {
-        CharismaBonus = 0x00000001,
-        ConstitutionBonus = 0x00000002
-
-    }
-
-    public sealed class TemraelAttributes : BaseAttributes
-    {
-        public TemraelAttributes(Item owner)
-            : base(owner)
-        {
-        }
-
-        public TemraelAttributes(Item owner, GenericReader reader)
-            : base(owner, reader)
-        {
-        }
-
-        public TemraelAttributes(Item owner, TemraelAttributes other)
-            : base(owner, other)
-        {
-        }
-
-        public static int GetValue(Mobile m, TemraelAttribute attribute)
-        {
-            if (!Core.AOS)
-                return 0;
-
-            List<Item> items = m.Items;
-            int value = 0;
-
-            for (int i = 0; i < items.Count; ++i)
-            {
-                Item obj = items[i];
-
-                if (obj is BaseWeapon)
-                {
-                    TemraelAttributes attrs = ((BaseWeapon)obj).TemAttributes;
-
-                    if (attrs != null)
-                        value += attrs[attribute];
-
-                    //if( attribute == AosAttribute.Luck )
-                    //	value += ((BaseWeapon)obj).GetLuckBonus();
-                }
-                else if (obj is BaseArmor)
-                {
-                    TemraelAttributes attrs = ((BaseArmor)obj).TemAttributes;
-
-                    if (attrs != null)
-                        value += attrs[attribute];
-
-                    //if( attribute == AosAttribute.Luck )
-                    //	value += ((BaseArmor)obj).GetLuckBonus();
-                }
-                else if (obj is BaseJewel)
-                {
-                    TemraelAttributes attrs = ((BaseJewel)obj).TemAttributes;
-
-                    if (attrs != null)
-                        value += attrs[attribute];
-                }
-                else if (obj is BaseClothing)
-                {
-                    TemraelAttributes attrs = ((BaseClothing)obj).TemAttributes;
-
-                    if (attrs != null)
-                        value += attrs[attribute];
-                }
-                else if (obj is Spellbook)
-                {
-                    TemraelAttributes attrs = ((Spellbook)obj).TemAttributes;
-
-                    if (attrs != null)
-                        value += attrs[attribute];
-                }
-            }
-
-            return value;
-        }
-
-        public int this[TemraelAttribute attribute]
-        {
-            get { return GetValue((int)attribute); }
-            set { SetValue((int)attribute, value); }
-        }
-
-        public override string ToString()
-        {
-            return "...";
-        }
-
-
-    }
-
+   
     public sealed class AosSkillBonuses : BaseAttributes
     {
         private List<SkillMod> m_Mods;

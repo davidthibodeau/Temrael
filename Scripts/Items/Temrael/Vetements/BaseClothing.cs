@@ -42,16 +42,8 @@ namespace Server.Items
 		private AosElementAttributes m_AosResistances;
 
         private Layer m_BaseLayer;
-        private TemraelAttributes m_TemraelAttributes;
-        
-        public virtual bool Disguise { get { return false; } }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public TemraelAttributes TemAttributes
-        {
-            get { return m_TemraelAttributes; }
-            set { }
-        }
+        public virtual bool Disguise { get { return false; } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public Layer BaseLayer
@@ -470,7 +462,6 @@ namespace Server.Items
 			m_AosClothingAttributes = new AosArmorAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
 			m_AosResistances = new AosElementAttributes( this );
-            m_TemraelAttributes = new TemraelAttributes( this );
 		}
 
 		public override void OnAfterDuped( Item newItem )
@@ -484,7 +475,6 @@ namespace Server.Items
 			clothing.m_AosResistances = new AosElementAttributes( newItem, m_AosResistances );
 			clothing.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 			clothing.m_AosClothingAttributes = new AosArmorAttributes( newItem, m_AosClothingAttributes );
-            clothing.m_TemraelAttributes = new TemraelAttributes(newItem, m_TemraelAttributes);
 		}
 
 		public BaseClothing( Serial serial ) : base( serial )
@@ -851,7 +841,6 @@ namespace Server.Items
 			writer.Write( (int) 0 ); // version
 
             writer.Write((int)m_BaseLayer);
-            m_TemraelAttributes.Serialize(writer);
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -912,8 +901,7 @@ namespace Server.Items
             int version = reader.ReadInt();
 
             m_BaseLayer = (Layer)reader.ReadInt();
-            m_TemraelAttributes = new TemraelAttributes(this, reader);
-
+            
             SaveFlag flags = (SaveFlag)reader.ReadEncodedInt();
 
             if (GetSaveFlag(flags, SaveFlag.Resource))

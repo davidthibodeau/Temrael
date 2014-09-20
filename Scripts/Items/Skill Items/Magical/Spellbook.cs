@@ -271,7 +271,6 @@ namespace Server.Items
 
 		private AosAttributes m_AosAttributes;
 		private AosSkillBonuses m_AosSkillBonuses;
-        private TemraelAttributes m_TemraelAttributes;
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public AosAttributes Attributes
@@ -286,13 +285,6 @@ namespace Server.Items
 			get{ return m_AosSkillBonuses; }
 			set{}
 		}
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public TemraelAttributes TemAttributes
-        {
-            get { return m_TemraelAttributes; }
-            set { }
-        }
 
 		public virtual SpellbookType SpellbookType{ get{ return SpellbookType.Regular; } }
 		public virtual int BookOffset{ get{ return 0; } }
@@ -420,7 +412,6 @@ namespace Server.Items
 		{
 			m_AosAttributes = new AosAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
-            m_TemraelAttributes = new TemraelAttributes( this );
 
 			Weight = 3.0;
 			Layer = Layer.OneHanded;

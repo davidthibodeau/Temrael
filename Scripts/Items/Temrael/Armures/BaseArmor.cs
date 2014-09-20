@@ -187,14 +187,6 @@ namespace Server.Items
 
         public virtual bool CanFortify { get { return true; } }
 
-        private TemraelAttributes m_TemraelAttributes;
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public TemraelAttributes TemAttributes
-        {
-            get { return m_TemraelAttributes; }
-            set { }
-        }
 
 
         public override void OnAfterDuped(Item newItem)
@@ -875,8 +867,6 @@ namespace Server.Items
 
             writer.Write((int)0); // version
 
-            m_TemraelAttributes.Serialize(writer);
-
             SaveFlag flags = SaveFlag.None;
 
             SetSaveFlag(ref flags, SaveFlag.Attributes, !m_AosAttributes.IsEmpty);
@@ -985,8 +975,6 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            m_TemraelAttributes = new TemraelAttributes(this, reader);
 
             SaveFlag flags = (SaveFlag)reader.ReadEncodedInt();
 
@@ -1154,7 +1142,6 @@ namespace Server.Items
             m_AosAttributes = new AosAttributes(this);
             m_AosArmorAttributes = new AosArmorAttributes(this);
             m_AosSkillBonuses = new AosSkillBonuses(this);
-            m_TemraelAttributes = new TemraelAttributes(this);
         }
 
         public override bool AllowSecureTrade(Mobile from, Mobile to, Mobile newOwner, bool accepted)

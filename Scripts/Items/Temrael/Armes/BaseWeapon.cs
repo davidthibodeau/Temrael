@@ -482,15 +482,6 @@ namespace Server.Items
             public static int Arbalete_Force6 = 70;
         #endregion
 
-        private TemraelAttributes m_TemraelAttributes;
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public TemraelAttributes TemAttributes
-        {
-            get { return m_TemraelAttributes; }
-            set { }
-        }
-
 		/* Weapon internals work differently now (Mar 13 2003)
 		 * 
 		 * The attributes defined below default to -1.
@@ -1947,8 +1938,6 @@ namespace Server.Items
 
             writer.Write((int)0); // version
 
-            m_TemraelAttributes.Serialize(writer);
-
 			SaveFlag flags = SaveFlag.None;
 
 			SetSaveFlag( ref flags, SaveFlag.DamageLevel,		m_DamageLevel != WeaponDamageLevel.Regular );
@@ -2106,8 +2095,6 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            m_TemraelAttributes = new TemraelAttributes(this, reader);
 
             SaveFlag flags = (SaveFlag)reader.ReadInt();
 
@@ -2331,7 +2318,6 @@ namespace Server.Items
 			m_AosWeaponAttributes = new AosWeaponAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
 			m_AosElementDamages = new AosElementAttributes( this );
-            m_TemraelAttributes = new TemraelAttributes( this );
 
 		}
 

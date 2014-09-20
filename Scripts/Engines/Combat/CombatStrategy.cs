@@ -222,8 +222,8 @@ namespace Server.Engines.Combat
             double s = Weapon(atk).Speed - atk.Stam/20;
 
             //Le délai minimal est de 1.25 secondes entre deux attaques.
-            if (s < 12.5)
-                s = 12.5;
+            if (s < 10)
+                s = 10;
 
             return s;
         }

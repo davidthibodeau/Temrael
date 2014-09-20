@@ -33,16 +33,6 @@ namespace Server.Items
 		private GemType m_GemType;
 
 
-        private TemraelAttributes m_TemraelAttributes;
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public TemraelAttributes TemAttributes
-        {
-            get { return m_TemraelAttributes; }
-            set {  }
-        }
-
-
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxHitPoints
 		{
@@ -150,7 +140,6 @@ namespace Server.Items
 			m_AosSkillBonuses = new AosSkillBonuses( this );
 			m_Resource = CraftResource.Fer;
 			m_GemType = GemType.None;
-            m_TemraelAttributes = new TemraelAttributes( this );
 
 			Layer = layer;
 
@@ -388,8 +377,6 @@ namespace Server.Items
 
             writer.Write((int)0); // version
 
-            m_TemraelAttributes.Serialize(writer);
-
 			writer.WriteEncodedInt( (int) m_MaxHitPoints );
 			writer.WriteEncodedInt( (int) m_HitPoints );
 
@@ -406,8 +393,6 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            m_TemraelAttributes = new TemraelAttributes(this, reader);
 
             m_MaxHitPoints = reader.ReadEncodedInt();
             m_HitPoints = reader.ReadEncodedInt();
