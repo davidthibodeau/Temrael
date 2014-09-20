@@ -9,8 +9,6 @@ namespace Server.Items
 
 		public override int ArtifactRarity{ get{ return 11; } }
 
-		public override int BaseTranchantResistance{ get{ return 23; } }
-
 		public override int InitMinHits{ get{ return 255; } }
 		public override int InitMaxHits{ get{ return 255; } }
 

@@ -7,12 +7,6 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1094911; } } // Captain John's Hat [Replica]
 
-		public override int BasePhysicalResistance{ get{ return 2; } }
-		public override int BaseContondantResistance{ get{ return 6; } }
-		public override int BaseTranchantResistance{ get{ return 9; } }
-		public override int BasePerforantResistance{ get{ return 7; } }
-		public override int BaseMagieResistance{ get{ return 23; } }
-
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
 

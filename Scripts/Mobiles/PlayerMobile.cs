@@ -902,10 +902,9 @@ namespace Server.Mobiles
 						}
 						else
 						{
-							int strBonus = clothing.ComputeStatBonus( StatType.Str );
 							int strReq = clothing.ComputeStatReq( StatType.Str );
 
-							if( str < strReq || (str + strBonus) < 1 )
+							if( str < strReq)
 								drop = true;
 						}
 

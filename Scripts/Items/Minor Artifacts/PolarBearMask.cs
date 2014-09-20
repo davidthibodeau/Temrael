@@ -7,9 +7,6 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1070637; } }
 
-		public override int BasePhysicalResistance{ get{ return 15; } }
-		public override int BaseTranchantResistance{ get{ return 21; } }
-
 		public override int InitMinHits{ get{ return 255; } }
 		public override int InitMaxHits{ get{ return 255; } }
 

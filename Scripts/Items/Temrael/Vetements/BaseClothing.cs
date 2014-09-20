@@ -153,24 +153,8 @@ namespace Server.Items
 			get{ return m_AosResistances; }
 			set{}
 		}
-
-		public virtual int BasePhysicalResistance{ get{ return 0; } }
-		public virtual int BaseContondantResistance{ get{ return 0; } }
-		public virtual int BaseTranchantResistance{ get{ return 0; } }
-		public virtual int BasePerforantResistance{ get{ return 0; } }
-		public virtual int BaseMagieResistance{ get{ return 0; } }
-
-		public override int PhysicalResistance{ get{ return BasePhysicalResistance + m_AosResistances.Physical; } }
-		public override int ContondantResistance{ get{ return BaseContondantResistance + m_AosResistances.Contondant; } }
-		public override int TranchantResistance{ get{ return BaseTranchantResistance + m_AosResistances.Tranchant; } }
-		public override int PerforantResistance{ get{ return BasePerforantResistance + m_AosResistances.Perforant; } }
-		public override int MagieResistance{ get{ return BaseMagieResistance + m_AosResistances.Magie; } }
-
+            
 		public virtual int ArtifactRarity{ get{ return 0; } }
-
-		public virtual int BaseStrBonus{ get{ return 0; } }
-		public virtual int BaseDexBonus{ get{ return 0; } }
-		public virtual int BaseIntBonus{ get{ return 0; } }
 
 		public override bool AllowSecureTrade( Mobile from, Mobile to, Mobile newOwner, bool accepted )
 		{
@@ -218,10 +202,9 @@ namespace Server.Items
 				}
 				else
 				{
-					int strBonus = ComputeStatBonus( StatType.Str );
 					int strReq = ComputeStatReq( StatType.Str );
 
-                    if (from.RawStr < strReq || (from.Str + strBonus) < 1)
+                    if (from.RawStr < strReq)
 					{
 						from.SendLocalizedMessage( 500213 ); // You are not strong enough to equip that.
 						return false;
@@ -251,41 +234,7 @@ namespace Server.Items
 
 			return AOS.Scale( v, 100 - GetLowerStatReq() );
 		}
-
-		public int ComputeStatBonus( StatType type )
-		{
-			if ( type == StatType.Str )
-				return BaseStrBonus + Attributes.BonusStr;
-			else if ( type == StatType.Dex )
-				return BaseDexBonus + Attributes.BonusDex;
-			else
-				return BaseIntBonus + Attributes.BonusInt;
-		}
-
-		public virtual void AddStatBonuses( Mobile parent )
-		{
-			if ( parent == null )
-				return;
-
-			int strBonus = ComputeStatBonus( StatType.Str );
-			int dexBonus = ComputeStatBonus( StatType.Dex );
-			int intBonus = ComputeStatBonus( StatType.Int );
-
-			if ( strBonus == 0 && dexBonus == 0 && intBonus == 0 )
-				return;
-
-			string modName = this.Serial.ToString();
-
-			if ( strBonus != 0 )
-				parent.AddStatMod( new StatMod( StatType.Str, modName + "Str", strBonus, TimeSpan.Zero ) );
-
-			if ( dexBonus != 0 )
-				parent.AddStatMod( new StatMod( StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero ) );
-
-			if ( intBonus != 0 )
-				parent.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
-		}
-
+            
 		public static void ValidateMobile( Mobile m )
 		{
 			for ( int i = m.Items.Count - 1; i >= 0; --i )
@@ -347,7 +296,6 @@ namespace Server.Items
 				if ( Core.AOS )
 					m_AosSkillBonuses.AddTo( mob );
 
-				AddStatBonuses( mob );
 				mob.CheckStatTimers();
 			}
 
@@ -970,7 +918,6 @@ namespace Server.Items
                 if (Core.AOS)
                     m_AosSkillBonuses.AddTo(parent);
 
-                AddStatBonuses(parent);
                 parent.CheckStatTimers();
             }
         }

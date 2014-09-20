@@ -188,8 +188,6 @@ namespace Server.Items
 			}
 		}
 
-		public override int BasePhysicalResistance{ get{ return 3; } }
-
 		public override void OnAdded(IEntity parent)
 		{
 			base.OnAdded( parent );

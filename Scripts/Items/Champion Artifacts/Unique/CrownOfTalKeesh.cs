@@ -7,12 +7,6 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1094903; } } // Crown of Tal'Keesh [Replica]
 
-		public override int BasePhysicalResistance{ get{ return 0; } }
-		public override int BaseContondantResistance{ get{ return 5; } }
-		public override int BaseTranchantResistance{ get{ return 9; } }
-		public override int BasePerforantResistance{ get{ return 20; } }
-		public override int BaseMagieResistance{ get{ return 20; } }
-
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
 

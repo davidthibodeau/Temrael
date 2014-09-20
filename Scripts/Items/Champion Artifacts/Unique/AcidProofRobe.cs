@@ -7,8 +7,6 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1095236; } } // Acid-Proof Robe [Replica]
 
-		public override int BaseContondantResistance{ get{ return 4; } }
-
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
 
