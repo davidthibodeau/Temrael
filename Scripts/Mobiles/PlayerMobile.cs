@@ -380,7 +380,7 @@ namespace Server.Mobiles
 								name = String.Format( "#{0}", ammo.LabelNumber );
 
 							PlaceInBackpack( ammo );
-							SendLocalizedMessage( 1073504, String.Format( "{0}\t{1}", ammo.Amount, name ) ); // You recover ~1_NUM~ ~2_AMMO~.
+							SendLocalizedMessage( 1073504, String.Format( "{0}t{1}", ammo.Amount, name ) ); // You recover ~1_NUM~ ~2_AMMO~.
 						}
 					}
 				}
@@ -1428,7 +1428,7 @@ namespace Server.Mobiles
 			{
 				Mobile prot = m_JusticeProtectors[i];
 
-				string args = String.Format( "{0}\t{1}", this.Name, prot.Name );
+				string args = String.Format( "{0}t{1}", this.Name, prot.Name );
 
 				prot.SendLocalizedMessage( 1049371, args ); // The protective relationship between ~1_PLAYER1~ and ~2_PLAYER2~ has been ended.
 				this.SendLocalizedMessage( 1049371, args ); // The protective relationship between ~1_PLAYER1~ and ~2_PLAYER2~ has been ended.
@@ -3062,13 +3062,13 @@ namespace Server.Mobiles
 					if ( faction.Commander == this )
 						list.Add( 1042733, faction.Definition.PropName ); // Commanding Lord of the ~1_FACTION_NAME~
 					else if ( pl.Sheriff != null )
-						list.Add( 1042734, "{0}\t{1}", pl.Sheriff.Definition.FriendlyName, faction.Definition.PropName ); // The Sheriff of  ~1_CITY~, ~2_FACTION_NAME~
+						list.Add( 1042734, "{0}t{1}", pl.Sheriff.Definition.FriendlyName, faction.Definition.PropName ); // The Sheriff of  ~1_CITY~, ~2_FACTION_NAME~
 					else if ( pl.Finance != null )
-						list.Add( 1042735, "{0}\t{1}", pl.Finance.Definition.FriendlyName, faction.Definition.PropName ); // The Finance Minister of ~1_CITY~, ~2_FACTION_NAME~
+						list.Add( 1042735, "{0}t{1}", pl.Finance.Definition.FriendlyName, faction.Definition.PropName ); // The Finance Minister of ~1_CITY~, ~2_FACTION_NAME~
 					else if ( pl.MerchantTitle != MerchantTitle.None )
-						list.Add( 1060776, "{0}\t{1}", MerchantTitles.GetInfo( pl.MerchantTitle ).Title, faction.Definition.PropName ); // ~1_val~, ~2_val~
+						list.Add( 1060776, "{0}t{1}", MerchantTitles.GetInfo( pl.MerchantTitle ).Title, faction.Definition.PropName ); // ~1_val~, ~2_val~
 					else
-						list.Add( 1060776, "{0}\t{1}", pl.Rank.Title, faction.Definition.PropName ); // ~1_val~, ~2_val~
+						list.Add( 1060776, "{0}t{1}", pl.Rank.Title, faction.Definition.PropName ); // ~1_val~, ~2_val~
 				}
 			}
 		}

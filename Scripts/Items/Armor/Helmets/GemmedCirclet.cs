@@ -7,9 +7,6 @@ namespace Server.Items
 	public class GemmedCirclet : BaseArmor
 	{
 		public override int BasePhysicalResistance{ get{ return 1; } }
-		public override int BaseContondantResistance{ get{ return 5; } }
-		public override int BaseTranchantResistance{ get{ return 2; } }
-		public override int BasePerforantResistance{ get{ return 2; } }
 		public override int BaseMagieResistance{ get{ return 5; } }
 
 		public override int InitMinHits{ get{ return 20; } }

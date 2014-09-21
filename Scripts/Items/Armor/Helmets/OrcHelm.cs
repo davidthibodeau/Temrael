@@ -6,9 +6,6 @@ namespace Server.Items
 	public class OrcHelm : BaseArmor
 	{
 		public override int BasePhysicalResistance{ get{ return 3; } }
-		public override int BaseContondantResistance{ get{ return 1; } }
-		public override int BaseTranchantResistance{ get{ return 3; } }
-		public override int BasePerforantResistance{ get{ return 3; } }
 		public override int BaseMagieResistance{ get{ return 5; } }
 
 		public override int InitMinHits{ get{ return 30; } }
