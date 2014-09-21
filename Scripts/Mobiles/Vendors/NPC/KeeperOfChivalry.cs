@@ -47,8 +47,6 @@ namespace Server.Mobiles
 				case 2: AddItem( new Tunic( 0x482 ) ); break;
 			}
 
-			AddItem( new Broadsword() );
-
 			Item shield = new MetalKiteShield();
 
 			shield.Hue = Utility.RandomNondyedHue();

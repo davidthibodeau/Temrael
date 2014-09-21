@@ -50,8 +50,6 @@ namespace Server.Mobiles
                 AddItem(beard);
             }
 
-            AddItem(new Katana());
-
             SetStr(26, 26);
             SetDex(21, 21);
             SetInt(16, 16);

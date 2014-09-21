@@ -42,14 +42,12 @@ namespace Server.Mobiles
 			pack.DropItem( new Bolt( Utility.RandomMinMax( 10, 20 ) ) );
 			pack.DropItem( new Bolt( Utility.RandomMinMax( 10, 20 ) ) );
 
-			switch ( Utility.Random( 6 ) )
+			switch ( Utility.Random( 4 ) )
 			{
-				case 0: pack.DropItem( new Broadsword() ); break;
 				case 1: pack.DropItem( new Cutlass() ); break;
-				case 2: pack.DropItem( new Katana() ); break;
 				case 3: pack.DropItem( new Longsword() ); break;
-				case 4: pack.DropItem( new Scimitar() ); break;
-				case 5: pack.DropItem( new VikingSword() ); break;
+				case 2: pack.DropItem( new Scimitar() ); break;
+				case 0: pack.DropItem( new VikingSword() ); break;
 			}
 
 			Container bag = new Bag();

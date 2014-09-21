@@ -964,12 +964,12 @@ namespace Server.Mobiles
 				typeof( Dagger ),				typeof( Dagger ),			    typeof( Dagger ),//poor good 
 				typeof( Club ),			    	typeof( Club ),			        typeof( Club ),//poor bad 
 				typeof( Dagger ),				typeof( Club ),			        //poor indif
-				typeof( QuarterStaff ),			typeof( Kryss ),			    typeof( Katana ),//norm good 
-				typeof( Broadsword ),			typeof( GnarledStaff ),//norm bad
-				typeof( Kryss ),			    typeof( Cutlass ),			    typeof( Broadsword ),//norm indif
-				typeof( Scimitar ),				typeof( Katana ),			    typeof( QuarterStaff ),//rich good 
-				typeof( Kryss ),				typeof( Scimitar ),			    typeof( Broadsword ),//rich bad
-				typeof( Katana ),			    typeof( Scimitar ),			    typeof( Longsword ),//rich indif
+				typeof( QuarterStaff ),//norm good 
+				typeof( GnarledStaff ),//norm bad
+				typeof( Cutlass ),//norm indif
+				typeof( Scimitar ),				typeof( QuarterStaff ),//rich good 
+				typeof( Scimitar ),//rich bad
+                typeof( Scimitar ),			    typeof( Longsword ),//rich indif
             };
 
         public virtual Type GetRandomWeaponType()

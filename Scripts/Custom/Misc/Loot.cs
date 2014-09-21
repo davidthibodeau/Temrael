@@ -28,8 +28,7 @@ namespace Server
 				typeof( WarMace ),				typeof( Bardiche ),				typeof( Halberd ),
 				typeof( Spear ),				typeof( ShortSpear ),			typeof( Pitchfork ),
 				typeof( WarFork ),				typeof( BlackStaff ),			typeof( GnarledStaff ),
-				typeof( QuarterStaff ),			typeof( Broadsword ),			typeof( Cutlass ),
-				typeof( Katana ),				typeof( Kryss ),				typeof( Longsword ),
+                typeof( QuarterStaff ),			typeof( Cutlass ),              typeof( Longsword ),
 				typeof( Scimitar ),				typeof( VikingSword ),			typeof( Pickaxe ),
 				typeof( ButcherKnife ),			typeof( Cleaver ),
 				typeof( Dagger ),				typeof( SkinningKnife ),		typeof( ShepherdsCrook )
@@ -39,7 +38,7 @@ namespace Server
 
         private static Type[] m_TemraelWeaponTypes = new Type[]
 			{
-                typeof( Broadsword ),   typeof( Astoria ),   typeof( Vorlame ),   typeof( Biliome ),   typeof( Rodere ),
+                typeof( Astoria ),   typeof( Vorlame ),   typeof( Biliome ),   typeof( Rodere ),
                 typeof( Dravene ),   typeof( Vifcoupe ),   typeof( Draglast ),   typeof( Auderre ),   typeof( Batarde ),
                 typeof( Tranchevil ),   typeof( Ventmore ),   typeof( Excalior ),   typeof( Conquise ),   typeof( Runire ),
                 typeof( Nerfille ),   typeof( Myliron ),   typeof( Nhilarte ),   typeof( Abysse ),   typeof( Atargne ),

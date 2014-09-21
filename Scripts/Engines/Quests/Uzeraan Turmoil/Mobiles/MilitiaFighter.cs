@@ -38,9 +38,7 @@ namespace Server.Engines.Quests.Haven
 			Item weapon;
 			switch ( Utility.Random( 6 ) )
 			{
-				case 0: weapon = new Broadsword(); break;
 				case 1: weapon = new Cutlass(); break;
-				case 2: weapon = new Katana(); break;
 				case 3: weapon = new Longsword(); break;
 				case 4: weapon = new Scimitar(); break;
 				default: weapon = new VikingSword(); break;

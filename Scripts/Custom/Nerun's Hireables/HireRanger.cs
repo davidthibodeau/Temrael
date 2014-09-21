@@ -62,11 +62,10 @@ namespace Server.Mobiles
             AddItem(new Shirt());
 
             // Pick a random sword
-            switch (Utility.Random(3))
+            switch (Utility.Random(2))
             {
                 case 0: AddItem(new Longsword()); break;
                 case 1: AddItem(new VikingSword()); break;
-                case 2: AddItem(new Broadsword()); break;
             }
 
             AddItem(new RangerChest());

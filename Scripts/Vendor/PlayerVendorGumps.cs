@@ -445,7 +445,6 @@ namespace Server.Gumps
 				new CustomItem( typeof( WarMace ),		1011415, 5126 ),
 				new CustomItem( typeof( TwoHandedAxe ),	1011416, 5186 ),
 				new CustomItem( typeof( Spear ),		1011417, 3939 ),
-				new CustomItem( typeof( Katana ),		1011418, 5118 ),
 				new CustomItem( typeof( Spellbook ),	1011419, 3834 )
 			} )
 		};

@@ -388,7 +388,6 @@ namespace Server.Engines.Craft
 
             //Épées Longues
 
-            index = AddCraft(typeof(Broadsword), "Épées", "Épée", 10.0, 40.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Rodere), "Épées", "Rodère", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Dravene), "Épées", "Dravène", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Draglast), "Épées", "Draglast", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);

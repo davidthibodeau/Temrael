@@ -122,7 +122,6 @@ namespace Server.Mobiles
 			typeof( DreadPirateHat ),
 			typeof( GwennosHarp ),
 			typeof( IolosLute ),
-			typeof( NightsKiss ),
 			typeof( PolarBearMask ),
 			typeof( VioletCourage )
 		};

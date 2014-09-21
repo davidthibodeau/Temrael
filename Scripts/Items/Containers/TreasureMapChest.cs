@@ -19,7 +19,7 @@ namespace Server.Items
 		{
 			typeof( CandelabraOfSouls ), typeof( GoldBricks ), typeof( PhillipsWoodenSteed ),
 			typeof( BurglarsBandana ), typeof( DreadPirateHat ),typeof( GwennosHarp ), typeof( IolosLute ),
-			typeof( NightsKiss ), typeof( PolarBearMask ), typeof( VioletCourage ), typeof( HeartOfTheLion ),typeof( AlchemistsBauble )
+            typeof( PolarBearMask ), typeof( VioletCourage ), typeof( HeartOfTheLion ),typeof( AlchemistsBauble )
 		};
 
 		private int m_Level;

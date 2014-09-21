@@ -191,13 +191,6 @@ namespace Server.Mobiles
 			// Name
 			this.Name = "Swordsman";
 
-			// Equip
-			Katana kat = new Katana();
-			kat.Crafter = this;
-			kat.Movable = true;
-			kat.Quality = WeaponQuality.Regular;
-			AddItem( kat );
-
 			Boots bts = new Boots();
 			bts.Hue = iHue;
 			AddItem( bts );
@@ -628,15 +621,6 @@ namespace Server.Mobiles
 			book.LootType = LootType.Newbied;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddToBackpack( book );
-
-			Katana kat = new Katana();
-			kat.Movable = false;
-			kat.LootType = LootType.Newbied;
-			kat.Crafter = this;
-			kat.Poison = Poison.Deadly;
-			kat.PoisonCharges = 12;
-			kat.Quality = WeaponQuality.Regular;
-			AddToBackpack( kat );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;

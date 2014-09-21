@@ -21,20 +21,17 @@ namespace Server.Mobiles
 			AddItem( new Kilt( 0x59C ) );
 			AddItem( new Sandals( 0x599 ) );
 
-			Kryss kryss = new Kryss();
 			Buckler buckler = new Buckler();
 			RingmailGloves gloves = new RingmailGloves();
 			FemalePlateChest chest = new FemalePlateChest();
 
-			kryss.Hue = 0x96F; kryss.Movable = false;
 			buckler.Hue = 0x96F; buckler.Movable = false;
 			gloves.Hue = 0x599;
 			chest.Hue = 0x96F;
 
-			AddItem( kryss );
-			AddItem( buckler );
-			AddItem( gloves );
-			AddItem( chest );
+            AddItem(buckler);
+            AddItem(gloves);
+            AddItem(chest);
 
 			SetStr( 111, 120 );
 			SetDex( 111, 120 );

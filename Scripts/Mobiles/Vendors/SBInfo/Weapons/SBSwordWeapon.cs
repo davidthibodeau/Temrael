@@ -21,9 +21,6 @@ namespace Server.Mobiles
 			public InternalBuyInfo()
 			{
 				Add( new GenericBuyInfo( typeof( Cutlass ), 24, 20, 0x1441, 0 ) );
-				Add( new GenericBuyInfo( typeof( Katana ), 33, 20, 0x13FF, 0 ) );
-				Add( new GenericBuyInfo( typeof( Kryss ), 32, 20, 0x1401, 0 ) );
-				Add( new GenericBuyInfo( typeof( Broadsword ), 35, 20, 0xF5E, 0 ) );
 				Add( new GenericBuyInfo( typeof( Longsword ), 55, 20, 0xF61, 0 ) );
 				Add( new GenericBuyInfo( typeof( ThinLongsword ), 27, 20, 0x13B8, 0 ) );
 				Add( new GenericBuyInfo( typeof( VikingSword ), 55, 20, 0x13B9, 0 ) );
@@ -45,10 +42,7 @@ namespace Server.Mobiles
 		{
 			public InternalSellInfo()
 			{
-				Add( typeof( Broadsword ), 17 );
 				Add( typeof( Cutlass ), 12 );
-				Add( typeof( Katana ), 16 );
-				Add( typeof( Kryss ), 16 );
 				Add( typeof( Longsword ), 27 );
 				Add( typeof( Scimitar ), 18 );
 				Add( typeof( ThinLongsword ), 13 );

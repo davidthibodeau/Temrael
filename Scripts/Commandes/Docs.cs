@@ -512,7 +512,6 @@ namespace Server.Commands
 
 				SmallBOD sbod = new SmallSmithBOD();
 
-				sbod.Type = typeof( Katana );
 				sbod.Material = BulkMaterialType.None;
 				sbod.AmountMax = 10;
 

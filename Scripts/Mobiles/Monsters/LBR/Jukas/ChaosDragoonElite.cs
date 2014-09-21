@@ -54,17 +54,6 @@ namespace Server.Mobiles
 				case 5: res = CraftResource.WhiteScales; break;
 			}*/
 
-			BaseWeapon melee = null;
-
-			switch (Utility.Random(3))
-			{
-				case 0: melee = new Kryss(); break;
-				case 1: melee = new Broadsword(); break;
-				case 2: melee = new Katana(); break;
-			}
-
-			melee.Movable = false;
-			AddItem(melee);
 
 			DragonChest Tunic = new DragonChest();
 			Tunic.Resource = res;
