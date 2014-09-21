@@ -6,8 +6,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x2B72, 0x3169 )]
 	public class VultureHelm : BaseArmor
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
-
 		public override int BasePhysicalResistance{ get{ return 5; } }
 		public override int BaseContondantResistance{ get{ return 1; } }
 		public override int BaseTranchantResistance{ get{ return 2; } }

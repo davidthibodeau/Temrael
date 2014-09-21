@@ -6,7 +6,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x2B78, 0x316F )]
 	public class HidePants : BaseArmor
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
 
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseContondantResistance{ get{ return 3; } }

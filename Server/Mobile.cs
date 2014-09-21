@@ -434,45 +434,12 @@ namespace Server
 		private DateTime m_LastStrGain;
 		private DateTime m_LastIntGain;
 		private DateTime m_LastDexGain;
-		private Race m_Race;
 
 		#endregion
 
 		private static readonly TimeSpan WarmodeSpamCatch = TimeSpan.FromSeconds( (Core.SE ? 1.0 : 0.5) );
 		private static readonly TimeSpan WarmodeSpamDelay = TimeSpan.FromSeconds( (Core.SE ? 4.0 : 2.0) );
 		private const int WarmodeCatchCount = 4; // Allow four warmode changes in 0.5 seconds, any more will be delay for two seconds
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public Race Race
-		{
-			get
-			{
-				if( m_Race == null )
-					m_Race = Race.DefaultRace;
-
-				return m_Race;
-			}
-			set
-			{
-				Race oldRace = this.Race;
-
-				m_Race = value;
-
-				if( m_Race == null )
-					m_Race = Race.DefaultRace;
-
-				this.Body = m_Race.Body( this );
-				this.UpdateResistances();
-
-				Delta( MobileDelta.Race );
-
-				OnRaceChange( oldRace );
-			}
-		}
-
-		protected virtual void OnRaceChange( Race oldRace )
-		{
-		}
 
 		public virtual double RacialSkillBonus { get { return 0; } }
 
@@ -3012,7 +2979,7 @@ namespace Server
 				Mana = 0;
 
 				BodyMod = 0;
-				Body = this.Race.AliveBody( this );
+                Body = this.Female ? 401 : 400;
 
 				ProcessDeltaQueue();
 
@@ -3502,8 +3469,8 @@ namespace Server
 				Warmode = false;
 
 				BodyMod = 0;
-				//Body = this.Female ? 0x193 : 0x192;
-				Body = this.Race.GhostBody( this );
+				Body = this.Female ? 0x193 : 0x192;
+				
 
 				Item deathShroud = new Item( 0x204E );
 
@@ -4867,8 +4834,6 @@ namespace Server
             if ((hairflag & 0x02) != 0)
                 m_FacialHair = new FacialHairInfo(reader);
 
-            m_Race = reader.ReadRace();
-
             m_TithingPoints = reader.ReadInt();
 
             m_Corpse = reader.ReadItem() as Container;
@@ -5072,8 +5037,6 @@ namespace Server
 				m_Hair.Serialize( writer );
 			if( (hairflag & 0x02) != 0 )
 				m_FacialHair.Serialize( writer );
-
-			writer.Write( this.Race );
 
 			writer.Write( (int)m_TithingPoints );
 

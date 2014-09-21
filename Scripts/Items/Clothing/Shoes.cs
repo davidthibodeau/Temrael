@@ -414,7 +414,6 @@ namespace Server.Items
 	{
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
 
-		public override Race RequiredRace { get { return Race.Elf; } }
 
 		[Constructable]
 		public ElvenBoots() : this( 0 )

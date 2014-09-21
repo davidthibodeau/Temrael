@@ -73,10 +73,8 @@ namespace Server.Misc
 			newChar.Female = args.Female;
 			//newChar.Body = newChar.Female ? 0x191 : 0x190;
 
-            newChar.Race = Race.DefaultRace;
+            newChar.Hue = Utility.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
 
-			//newChar.Hue = Utility.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
-			newChar.Hue = newChar.Race.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
 
 			bool young = false;
 
@@ -96,19 +94,12 @@ namespace Server.Misc
 
 			SetStats( newChar, state, args.Str, args.Dex, args.Int );
 
-			Race race = newChar.Race;
+            newChar.HairItemID = args.HairID;
+            newChar.HairHue = args.HairHue & 0x3FFF;
 
-			if( race.ValidateHair( newChar, args.HairID ) )
-			{
-				newChar.HairItemID = args.HairID;
-				newChar.HairHue = race.ClipHairHue( args.HairHue & 0x3FFF );
-			}
-
-			if( race.ValidateFacialHair( newChar, args.BeardID ) )
-			{
-				newChar.FacialHairItemID = args.BeardID;
-				newChar.FacialHairHue = race.ClipHairHue( args.BeardHue & 0x3FFF );
-			}
+            newChar.FacialHairItemID = args.BeardID;
+            newChar.FacialHairHue = args.BeardHue & 0x3FFF;
+			
 
 			CityInfo city = GetStartLocation( args, young );
 

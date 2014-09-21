@@ -95,10 +95,6 @@ namespace Server.Mobiles
 			}
 
 			Title = "the mystic llama herder";
-			Hue = Race.Human.RandomSkinHue();
-			HairItemID = Race.Human.RandomHair( this );
-			HairHue = Race.Human.RandomHairHue();
-			FacialHairItemID = Race.Human.RandomFacialHair( this );
 			FacialHairHue = HairHue;
 
 			switch ( Utility.Random( 4 ) )

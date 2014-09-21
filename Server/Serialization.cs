@@ -93,8 +93,6 @@ namespace Server
 		public abstract HashSet<BaseGuild> ReadGuildSet();
 		public abstract HashSet<T> ReadGuildSet<T>() where T : BaseGuild;
 
-		public abstract Race ReadRace();
-
 		public abstract bool End();
 	}
 
@@ -141,8 +139,6 @@ namespace Server
 		public abstract void WriteItem<T>( T value ) where T : Item;
 		public abstract void WriteMobile<T>( T value ) where T : Mobile;
 		public abstract void WriteGuild<T>( T value ) where T : BaseGuild;
-
-		public abstract void Write( Race value );
 
 		public abstract void WriteItemList( ArrayList list );
 		public abstract void WriteItemList( ArrayList list, bool tidy );
@@ -579,14 +575,6 @@ namespace Server
 		{
 			if( value != null )
 				Write( (byte)value.MapIndex );
-			else
-				Write( (byte)0xFF );
-		}
-
-		public override void Write( Race value )
-		{
-			if( value != null )
-				Write( (byte)value.RaceIndex );
 			else
 				Write( (byte)0xFF );
 		}
@@ -1398,11 +1386,6 @@ namespace Server
 			}
 		}
 
-		public override Race ReadRace()
-		{
-			return Race.Races[ReadByte()];
-		}
-
 		public override bool End()
 		{
 			return m_File.PeekChar() == -1;
@@ -1721,14 +1704,6 @@ namespace Server
 		{
 			if( value != null )
 				Write( (byte)value.MapIndex );
-			else
-				Write( (byte)0xFF );
-		}
-
-		public override void Write( Race value )
-		{
-			if( value != null )
-				Write( (byte)value.RaceIndex );
 			else
 				Write( (byte)0xFF );
 		}

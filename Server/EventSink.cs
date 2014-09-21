@@ -678,8 +678,6 @@ namespace Server
 		private int m_Profession;
 		private Mobile m_Mobile;
 
-		private Race m_Race;
-
 		public NetState State{ get{ return m_State; } }
 		public IAccount Account{ get{ return m_Account; } }
 		public Mobile Mobile{ get{ return m_Mobile; } set{ m_Mobile = value; } }
@@ -698,9 +696,8 @@ namespace Server
 		public int BeardID{ get{ return m_BeardID; } }
 		public int BeardHue{ get{ return m_BeardHue; } }
 		public int Profession{ get{ return m_Profession; } set{ m_Profession = value; }}
-		public Race Race { get { return m_Race; } }
 
-		public CharacterCreatedEventArgs( NetState state, IAccount a, string name, bool female, int hue, int str, int dex, int intel, CityInfo city, SkillNameValue[] skills, int shirtHue, int pantsHue, int hairID, int hairHue, int beardID, int beardHue, int profession, Race race )
+		public CharacterCreatedEventArgs( NetState state, IAccount a, string name, bool female, int hue, int str, int dex, int intel, CityInfo city, SkillNameValue[] skills, int shirtHue, int pantsHue, int hairID, int hairHue, int beardID, int beardHue, int profession)
 		{
 			m_State = state;
 			m_Account = a;
@@ -719,7 +716,6 @@ namespace Server
 			m_BeardID = beardID;
 			m_BeardHue = beardHue;
 			m_Profession = profession;
-			m_Race = race;
 		}
 	}
 

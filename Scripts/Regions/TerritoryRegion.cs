@@ -263,9 +263,6 @@ namespace Server.Territories
 
                     ennemies.Add(secondrace);
                 }
-
-                Race[] racelist = (Race[])ennemies.ToArray(typeof(Race));
-                Vigies[firstrace] = racelist;
             }
         }
 

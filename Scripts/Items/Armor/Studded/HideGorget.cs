@@ -6,7 +6,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x2B76, 0x316D )]
 	public class HideGorget : BaseArmor
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
 
 		public override int BasePhysicalResistance{ get{ return 3; } }
 		public override int BaseContondantResistance{ get{ return 3; } }

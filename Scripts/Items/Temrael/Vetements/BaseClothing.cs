@@ -156,8 +156,6 @@ namespace Server.Items
 			return base.AllowSecureTrade( from, to, newOwner, accepted );
 		}
 
-		public virtual Race RequiredRace { get { return null; } }
-
 		public override bool CanEquip( Mobile from )
 		{
 			if ( !Ethics.Ethic.CheckEquip( from, this ) )
@@ -165,16 +163,7 @@ namespace Server.Items
 
 			if( from.AccessLevel < AccessLevel.Batisseur )
 			{
-				if( RequiredRace != null && from.Race != RequiredRace )
-				{
-					if( RequiredRace == Race.Elf )
-						from.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
-					else
-						from.SendMessage( "Only {0} may use this.", RequiredRace.PluralName );
-
-					return false;
-				}
-				else if( !AllowMaleWearer && !from.Female )
+                if( !AllowMaleWearer && !from.Female )
 				{
 					if( AllowFemaleWearer )
 						from.SendLocalizedMessage( 1010388 ); // Only females can wear this.
@@ -240,16 +229,7 @@ namespace Server.Items
 				{
 					BaseClothing clothing = (BaseClothing)item;
 
-					if( clothing.RequiredRace != null && m.Race != clothing.RequiredRace )
-					{
-						if( clothing.RequiredRace == Race.Elf )
-							m.SendLocalizedMessage( 1072203 ); // Only Elves may use this.
-						else
-							m.SendMessage( "Only {0} may use this.", clothing.RequiredRace.PluralName );
-
-						m.AddToBackpack( clothing );
-					}
-					else if ( !clothing.AllowMaleWearer && !m.Female && m.AccessLevel < AccessLevel.Batisseur )
+                    if ( !clothing.AllowMaleWearer && !m.Female && m.AccessLevel < AccessLevel.Batisseur )
 					{
 						if ( clothing.AllowFemaleWearer )
 							m.SendLocalizedMessage( 1010388 ); // Only females can wear this.

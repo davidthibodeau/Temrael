@@ -17,8 +17,6 @@ namespace Server.Engines.Quests.Samurai
 		{
 			InitStats( 100, 100, 25 );
 
-			Hue = Race.Human.RandomSkinHue();
-
 			Female = false;
 			Body = 0x190;
 			Name = NameList.RandomName( "male" );

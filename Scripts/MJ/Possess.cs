@@ -103,11 +103,6 @@ namespace Server
                 Console.WriteLine("Possess: CopyProps (Mobile) Exception: {0}", e.Message);
                 Misc.ExceptionLogging.WriteLine(e);
             }
-
-            if (from is TMobile && to is BaseVendor)
-                ((BaseVendor)to).Race = ((TMobile)from).Race;
-            else if (from is BaseVendor && to is TMobile)
-                ((TMobile)to).Race = ((BaseVendor)from).Race;
         }
 
         public static void CopyProps(Item dest, Item src)

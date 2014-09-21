@@ -3178,7 +3178,6 @@
     <Compile Include="Misc\NameVerification.cs" />
     <Compile Include="Misc\ProfanityProtection.cs" />
     <Compile Include="Misc\ProtocolExtensions.cs" />
-    <Compile Include="Misc\RaceDefinitions.cs" />
     <Compile Include="Misc\RenameRequests.cs" />
     <Compile Include="Misc\ShardPoller.cs" />
     <Compile Include="Misc\ShrinkTable.cs" />

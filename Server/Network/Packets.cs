@@ -3141,7 +3141,7 @@ namespace Server.Network
 			if ( type >= 5 )
 			{
 				m_Stream.Write( (short)m.MaxWeight );
-				m_Stream.Write( (byte)(m.Race.RaceID + 1));	// Would be 0x00 if it's a non-ML enabled account but...
+				m_Stream.Write( (byte)1);	// Would be 0x00 if it's a non-ML enabled account but...
 			}
 
             m_Stream.Write((short)0); //Con
@@ -3262,7 +3262,7 @@ namespace Server.Network
 				if ( type >= 5 )
 				{
 					m_Stream.Write( (short)beheld.MaxWeight );
-					m_Stream.Write( (byte)(beheld.Race.RaceID + 1) );	// Would be 0x00 if it's a non-ML enabled account but...
+					m_Stream.Write( (byte)1);	// Would be 0x00 if it's a non-ML enabled account but...
 				}
 
                 m_Stream.Write((short)0); //con

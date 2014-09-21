@@ -599,22 +599,8 @@ namespace Server.Mobiles
 
 			int max = base.GetMaxResistance( type );
 
-			//if ( type != ResistanceType.Physical && 60 < max && Spells.Fourth.CurseSpell.UnderEffect( this ) )
-			//	max = 60;
-
-			if( Core.ML && this.Race == Race.Elf && type == ResistanceType.Magie )
-				max += 5; //Intended to go after the 60 max from curse
-
 			return max;
 		}
-
-		protected override void OnRaceChange( Race oldRace )
-		{
-			ValidateEquipment();
-			UpdateResistances();
-		}
-
-		public override int MaxWeight { get { return (((Core.ML && this.Race == Race.Human) ? 100 : 40) + (int)(3.5 * this.Str)); } }
 
 		private int m_LastGlobalLight = -1, m_LastPersonalLight = -1;
 
@@ -628,9 +614,7 @@ namespace Server.Mobiles
 		{
 			global = LightCycle.ComputeLevelFor( this );
 
-			bool racialNightSight = (Core.ML && this.Race == Race.Elf);
-
-			if ( this.LightLevel < 21 && ( AosAttributes.GetValue( this, AosAttribute.NightSight ) > 0 || racialNightSight ))
+			if ( this.LightLevel < 21 && AosAttributes.GetValue( this, AosAttribute.NightSight ) > 0)
 				personal = 21;
 			else
 				personal = this.LightLevel;
@@ -848,10 +832,6 @@ namespace Server.Mobiles
 						{
 							drop = true;
 						}
-						else if( armor.RequiredRace != null && armor.RequiredRace != this.Race )
-						{
-							drop = true;
-						}
 						else
 						{
 							int strBonus = armor.ComputeStatBonus( StatType.Str ), strReq = armor.ComputeStatReq( StatType.Str );
@@ -893,10 +873,6 @@ namespace Server.Mobiles
 							drop = true;
 						}
 						else if ( !clothing.AllowFemaleWearer && from.Female && from.AccessLevel < AccessLevel.Batisseur )
-						{
-							drop = true;
-						}
-						else if( clothing.RequiredRace != null && clothing.RequiredRace != this.Race )
 						{
 							drop = true;
 						}
@@ -1967,17 +1943,6 @@ namespace Server.Mobiles
 
 				if ( !EquipItem( deathRobe ) )
 					deathRobe.Delete();*/
-			}
-		}
-
-		public override double RacialSkillBonus
-		{
-			get
-			{
-				if( Core.ML && this.Race == Race.Human )
-					return 20.0;
-
-				return 0;
 			}
 		}
 

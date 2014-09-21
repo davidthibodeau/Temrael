@@ -2240,18 +2240,7 @@ namespace Server.Network
 			*/
 
 			bool female = ((genderRace % 2) != 0);
-
-			Race race = null;
-
-			if ( state.StygianAbyss ) {
-				byte raceID = (byte)(genderRace < 4 ? 0 : ((genderRace / 2) - 1));
-				race = Race.Races[raceID];
-			} else {
-				race = Race.Races[(byte)(genderRace / 2)];
-			}
-
-			if( race == null )
-				race = Race.DefaultRace;
+            // We ignore the information about race. We only care about gender.
 
 			CityInfo[] info = state.CityInfo;
 			IAccount a = state.Account;
@@ -2291,8 +2280,7 @@ namespace Server.Network
 					shirtHue, pantsHue,
 					hairVal, hairHue,
 					hairValf, hairHuef,
-					prof,
-					race
+					prof
 					);
 
 				state.Send( new ClientVersionReq() );
@@ -2365,14 +2353,6 @@ namespace Server.Network
 
 			bool female = ((genderRace % 2) != 0);
 
-			Race race = null;
-
-			byte raceID = (byte)(genderRace < 4 ? 0 : ((genderRace / 2) - 1));
-			race = Race.Races[raceID];
-		
-			if( race == null )
-				race = Race.DefaultRace;
-
 			CityInfo[] info = state.CityInfo;
 			IAccount a = state.Account;
 
@@ -2412,8 +2392,7 @@ namespace Server.Network
 					shirtHue, pantsHue,
 					hairVal, hairHue,
 					hairValf, hairHuef,
-					prof,
-					race
+					prof
 					);
 
 				state.Send( new ClientVersionReq() );

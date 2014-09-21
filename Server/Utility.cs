@@ -1296,18 +1296,35 @@ namespace Server
 			AssignRandomHair( m, true );
 		}
 
+        public static int RandomHair( bool female )   //Random hair doesn't include baldness
+        {
+            switch (Random(9))
+            {
+                case 0: return 0x203B;  //Short
+                case 1: return 0x203C;  //Long
+                case 2: return 0x203D;  //Pony Tail
+                case 3: return 0x2044;  //Mohawk
+                case 4: return 0x2045;  //Pageboy
+                case 5: return 0x2047;  //Afro
+                case 6: return 0x2049;  //Pig tails
+                case 7: return 0x204A;  //Krisna
+                default:
+                    return (female ? 0x2046 : 0x2048); //Buns or Receeding Hair
+            }
+        }
+
 		public static void AssignRandomHair( Mobile m, int hue )
-		{
-			m.HairItemID = m.Race.RandomHair( m );
-			m.HairHue = hue;
-		}
+        {
+            m.HairItemID = RandomHair(m.Female);
+            m.HairHue = hue;
+        }
 
 		public static void AssignRandomHair( Mobile m, bool randomHue )
 		{
-			m.HairItemID = m.Race.RandomHair( m );
+            m.HairItemID = RandomHair(m.Female);
 
 			if( randomHue )
-				m.HairHue = m.Race.RandomHairHue();
+				m.HairHue = RandomHairHue();
 		}
 
 		public static void AssignRandomFacialHair( Mobile m )
@@ -1315,18 +1332,28 @@ namespace Server
 			AssignRandomFacialHair( m, true );
 		}
 
+        public static int RandomFacialHair( bool female )
+        {
+            if (female)
+                return 0;
+
+            int rand = Utility.Random(7);
+
+            return ((rand < 4) ? 0x203E : 0x2047) + rand;
+        }
+
 		public static void AssignRandomFacialHair( Mobile m, int hue )
 		{
-			m.FacialHairItemID = m.Race.RandomFacialHair( m );
+            m.FacialHairItemID = RandomFacialHair(m.Female);
 			m.FacialHairHue = hue;
 		}
 
 		public static void AssignRandomFacialHair( Mobile m, bool randomHue )
 		{
-			m.FacialHairItemID = m.Race.RandomFacialHair( m );
+            m.FacialHairItemID = RandomFacialHair(m.Female);
 
 			if( randomHue )
-				m.FacialHairHue = m.Race.RandomHairHue();
+				m.FacialHairHue = RandomHairHue();
 		}
 
 		public static List<TOutput> CastConvertList<TInput, TOutput>( List<TInput> list ) where TOutput : TInput

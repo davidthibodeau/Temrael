@@ -27,14 +27,6 @@ namespace Server.Items
 			ArmorAttributes.SelfRepair = 2;
 		}
 
-		public override Race RequiredRace
-		{
-			get
-			{
-				return Race.Elf;
-			}
-		}
-
 		public AegisOfGrace( Serial serial ) : base( serial )
 		{
 		}

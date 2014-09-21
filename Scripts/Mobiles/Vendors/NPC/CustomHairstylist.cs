@@ -508,12 +508,6 @@ namespace Server.Mobiles
 			if ( m_FacialHair && (m_From.Female || m_From.Body.IsFemale) )
 				return;
 
-			if ( m_From.Race == Race.Elf )
-			{
-				m_From.SendMessage( "This isn't implemented for elves yet.  Sorry!" );
-				return;
-			}
-
 			if ( info.ButtonID == 1 )
 			{
 				int[] switches = info.Switches;

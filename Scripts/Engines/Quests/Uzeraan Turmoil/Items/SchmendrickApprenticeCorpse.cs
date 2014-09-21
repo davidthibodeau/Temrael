@@ -66,16 +66,16 @@ namespace Server.Engines.Quests.Haven
 		private static int m_HairHue;
 		private static HairInfo GetHair()
 		{
-			m_HairHue = Race.Human.RandomHairHue();
+			m_HairHue = Utility.RandomHairHue();
 
-			return new HairInfo( Race.Human.RandomHair( false ), m_HairHue );
+			return new HairInfo( Utility.RandomHair( false ), m_HairHue );
 		}
 
 		private static FacialHairInfo GetFacialHair()
 		{
-			m_HairHue = Race.Human.RandomHairHue();
+			m_HairHue = Utility.RandomHairHue();
 
-			return new FacialHairInfo( Race.Human.RandomFacialHair( false ), m_HairHue );
+            return new FacialHairInfo( Utility.RandomFacialHair( false ), m_HairHue );
 		}
 
 		private Lantern m_Lantern;

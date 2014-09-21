@@ -562,7 +562,6 @@ namespace Server.Items
 	[Flipable( 0x2FB9, 0x3173 )]
 	public class MaleElvenRobe : BaseOuterTorso
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
 
 		[Constructable]
 		public MaleElvenRobe() : this( 0 )
@@ -597,7 +596,6 @@ namespace Server.Items
 	[Flipable( 0x2FBA, 0x3174 )]
 	public class FemaleElvenRobe : BaseOuterTorso
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
 		[Constructable]
 		public FemaleElvenRobe() : this( 0 )
 		{

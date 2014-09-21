@@ -27,7 +27,6 @@ namespace Server.Items
 			ArmorAttributes.MageArmor = 1;
 		}
 
-		public override Race RequiredRace { get { return Race.Elf; } }
 
 		public FeyLeggings( Serial serial ) : base( serial )
 		{

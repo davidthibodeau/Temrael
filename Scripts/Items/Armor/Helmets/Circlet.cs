@@ -24,8 +24,6 @@ namespace Server.Items
 
 		public override ArmorMeditationAllowance DefMedAllowance{ get{ return ArmorMeditationAllowance.All; } }
 
-		public override Race RequiredRace{ get { return Race.Elf; } }
-
 		[Constructable]
 		public Circlet() : base( 0x2B6E )
 		{

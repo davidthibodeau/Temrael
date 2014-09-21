@@ -1914,11 +1914,6 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				if( Core.ML && from.Race == Race.Human )
-				{
-					//hides = (int)Math.Ceiling( hides * 1.1 );	//10% Bonus Only applies to Hides, Ore & Logs
-				}
-
 				if ( corpse.Map == Map.Felucca )
 				{
 					/*feathers *= 2;

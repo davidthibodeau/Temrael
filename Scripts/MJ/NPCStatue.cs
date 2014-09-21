@@ -196,11 +196,6 @@ namespace Server.Items
             {
                 Misc.ExceptionLogging.WriteLine(e);
             }
-
-            if (from is TMobile && to is BaseVendor)
-                ((BaseVendor)to).Race = ((TMobile)from).Race;
-            else if (from is BaseVendor && to is TMobile)
-                ((TMobile)to).Race = ((BaseVendor)from).Race;
         }
 
 

@@ -6,7 +6,6 @@ namespace Server.Items
 	[FlipableAttribute( 0x2FCA, 0x3180 )]
 	public class LeafTonlet : BaseArmor
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseContondantResistance{ get{ return 3; } }
 		public override int BaseTranchantResistance{ get{ return 2; } }

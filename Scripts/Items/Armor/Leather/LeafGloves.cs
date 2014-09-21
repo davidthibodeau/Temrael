@@ -6,7 +6,6 @@ namespace Server.Items
 	[Flipable]
 	public class LeafGloves : BaseArmor, IArcaneEquip
 	{
-		public override Race RequiredRace { get { return Race.Elf; } }
 		public override int BasePhysicalResistance{ get{ return 2; } }
 		public override int BaseContondantResistance{ get{ return 3; } }
 		public override int BaseTranchantResistance{ get{ return 2; } }
