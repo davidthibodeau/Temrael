@@ -2559,7 +2559,6 @@
     <Compile Include="Items\Minor Artifacts\ML\RobeOfTheEclipse.cs" />
     <Compile Include="Items\Minor Artifacts\ML\RobeOfTheEquinox.cs" />
     <Compile Include="Items\Minor Artifacts\ML\TotemOfVoid.cs" />
-    <Compile Include="Items\Minor Artifacts\NightsKiss.cs" />
     <Compile Include="Items\Minor Artifacts\OrcishVisage.cs" />
     <Compile Include="Items\Minor Artifacts\PhillipsWoodenSteed.cs" />
     <Compile Include="Items\Minor Artifacts\PolarBearMask.cs" />
@@ -3088,9 +3087,6 @@
     <Compile Include="Items\Weapons\Abilities\TalonStrike.cs" />
     <Compile Include="Items\Weapons\Abilities\WeaponAbility.cs" />
     <Compile Include="Items\Weapons\Abilities\WhirlwindAttack.cs" />
-    <Compile Include="Items\Weapons\Artifacts\BoneCrusher.cs" />
-    <Compile Include="Items\Weapons\Artifacts\SerpentsFang.cs" />
-    <Compile Include="Items\Weapons\Artifacts\TheDryadBow.cs" />
     <Compile Include="Items\Weapons\Axes\Axe.cs" />
     <Compile Include="Items\Weapons\Axes\BaseAxe.cs" />
     <Compile Include="Items\Weapons\Axes\DoubleAxe.cs" />
@@ -3133,10 +3129,7 @@
     <Compile Include="Items\Weapons\Staves\QuarterStaff.cs" />
     <Compile Include="Items\Weapons\Staves\ShepherdsCrook.cs" />
     <Compile Include="Items\Weapons\Swords\BaseSword.cs" />
-    <Compile Include="Items\Weapons\Swords\Broadsword.cs" />
     <Compile Include="Items\Weapons\Swords\Cutlass.cs" />
-    <Compile Include="Items\Weapons\Swords\Katana.cs" />
-    <Compile Include="Items\Weapons\Swords\Kryss.cs" />
     <Compile Include="Items\Weapons\Swords\Lance.cs" />
     <Compile Include="Items\Weapons\Swords\Longsword.cs" />
     <Compile Include="Items\Weapons\Swords\Scimitar.cs" />
