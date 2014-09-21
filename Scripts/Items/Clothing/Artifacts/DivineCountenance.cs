@@ -31,7 +31,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 1 );
+			writer.Write( (int) 0 );
 		}
 		
 		public override void Deserialize(GenericReader reader)
@@ -39,18 +39,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
-
-			switch ( version )
-			{
-				case 0:
-				{
-					Resistances.Physical = 0;
-					Resistances.Contondant = 0;
-					Resistances.Tranchant = 0;
-					Resistances.Perforant = 0;
-					break;
-				}
-			}
 		}
 	}
 }

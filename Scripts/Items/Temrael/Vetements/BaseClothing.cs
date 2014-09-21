@@ -39,7 +39,6 @@ namespace Server.Items
 		private AosAttributes m_AosAttributes;
 		private AosArmorAttributes m_AosClothingAttributes;
 		private AosSkillBonuses m_AosSkillBonuses;
-		private AosElementAttributes m_AosResistances;
 
         private Layer m_BaseLayer;
 
@@ -147,13 +146,6 @@ namespace Server.Items
 			set{}
 		}
 
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosElementAttributes Resistances
-		{
-			get{ return m_AosResistances; }
-			set{}
-		}
-            
 		public virtual int ArtifactRarity{ get{ return 0; } }
 
 		public override bool AllowSecureTrade( Mobile from, Mobile to, Mobile newOwner, bool accepted )
@@ -409,7 +401,6 @@ namespace Server.Items
 			m_AosAttributes = new AosAttributes( this );
 			m_AosClothingAttributes = new AosArmorAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
-			m_AosResistances = new AosElementAttributes( this );
 		}
 
 		public override void OnAfterDuped( Item newItem )
@@ -420,7 +411,6 @@ namespace Server.Items
 				return;
 
 			clothing.m_AosAttributes = new AosAttributes( newItem, m_AosAttributes );
-			clothing.m_AosResistances = new AosElementAttributes( newItem, m_AosResistances );
 			clothing.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 			clothing.m_AosClothingAttributes = new AosArmorAttributes( newItem, m_AosClothingAttributes );
 		}
@@ -796,7 +786,6 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Attributes,		!m_AosAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.ClothingAttributes,!m_AosClothingAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.Resistances,		!m_AosResistances.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.MaxHitPoints,		m_MaxHitPoints != 0 );
 			SetSaveFlag( ref flags, SaveFlag.HitPoints,			m_HitPoints != 0 );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed,	m_PlayerConstructed != false );
@@ -819,9 +808,6 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
 				m_AosSkillBonuses.Serialize( writer );
-
-			if ( GetSaveFlag( flags, SaveFlag.Resistances ) )
-				m_AosResistances.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.MaxHitPoints ) )
 				writer.WriteEncodedInt( (int) m_MaxHitPoints );
@@ -877,11 +863,6 @@ namespace Server.Items
                 m_AosSkillBonuses = new AosSkillBonuses(this, reader);
             else
                 m_AosSkillBonuses = new AosSkillBonuses(this);
-
-            if (GetSaveFlag(flags, SaveFlag.Resistances))
-                m_AosResistances = new AosElementAttributes(this, reader);
-            else
-                m_AosResistances = new AosElementAttributes(this);
 
             if (GetSaveFlag(flags, SaveFlag.MaxHitPoints))
                 m_MaxHitPoints = reader.ReadEncodedInt();
@@ -983,23 +964,6 @@ namespace Server.Items
 
 			from.SendLocalizedMessage( 502440 ); // Scissors can not be used on that to produce anything.
 			return false;
-		}
-
-		public void DistributeBonuses( int amount )
-		{
-			for ( int i = 0; i < amount; ++i )
-			{
-				switch ( Utility.Random( 5 ) )
-				{
-					case 0: ++m_AosResistances.Physical; break;
-					case 1: ++m_AosResistances.Contondant; break;
-					case 2: ++m_AosResistances.Tranchant; break;
-					case 3: ++m_AosResistances.Perforant; break;
-					case 4: ++m_AosResistances.Magie; break;
-				}
-			}
-
-			InvalidateProperties();
 		}
 
 		#region ICraftable Members

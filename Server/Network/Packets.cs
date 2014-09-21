@@ -3169,9 +3169,9 @@ namespace Server.Network
 				//m_Stream.Write( (short) min ); // Damage min
 				//m_Stream.Write( (short) max ); // Damage max
 
-                m_Stream.Write((short)m.ContondantResistance); // Fire
-                m_Stream.Write((short)m.TranchantResistance); // Cold
-                m_Stream.Write((short)m.PerforantResistance); // Poison
+                m_Stream.Write((short)0); // Fire
+                m_Stream.Write((short)0); // Cold
+                m_Stream.Write((short)0); // Poison
                 m_Stream.Write((short)m.MagieResistance); // Energy
                 m_Stream.Write((short)0); // Luck
 
@@ -3290,9 +3290,9 @@ namespace Server.Network
 					//m_Stream.Write( (short) min ); // Damage min
 					//m_Stream.Write( (short) max ); // Damage max
 
-                    m_Stream.Write((short)beheld.ContondantResistance); // Fire
-                    m_Stream.Write((short)beheld.TranchantResistance); // Cold
-                    m_Stream.Write((short)beheld.PerforantResistance); // Poison
+                    m_Stream.Write((short)0); // Fire
+                    m_Stream.Write((short)0); // Cold
+                    m_Stream.Write((short)0); // Poison
                     m_Stream.Write((short)beheld.MagieResistance); // Energy
                     m_Stream.Write((short)0); // Luck or Cha
 

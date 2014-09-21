@@ -47,9 +47,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Detection, 75.0 * scalar );
 
 			SetResistance( ResistanceType.Physical, 40 + (int)(20 * scalar), 50 + (int)(20 * scalar)  );
-			SetResistance( ResistanceType.Tranchant, 40 + (int)(20 * scalar), 50 + (int)(20 * scalar) );
-			SetResistance( ResistanceType.Contondant, (int)(20 * scalar) );
-			SetResistance( ResistanceType.Perforant, 100 );
+			
 			SetResistance( ResistanceType.Magie, 40 + (int)(20 * scalar), 50 + (int)(20 * scalar) );
 
 			ControlSlots = 1;

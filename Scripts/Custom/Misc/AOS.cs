@@ -88,15 +88,9 @@ namespace Server
             {
                 // Armor Ignore on OSI ignores all defenses, not just physical.
                 int resPhys = m.PhysicalResistance;
-                int resContondant = m.ContondantResistance;
-                int resTranchant = m.TranchantResistance;
-                int resPerforant = m.PerforantResistance;
                 int resMagie = m.MagieResistance;
 
                 totalDamage = damage * phys * (150 - resPhys);
-                totalDamage += damage * contondant * (150 - resContondant);
-                totalDamage += damage * tranchant * (150 - resTranchant);
-                totalDamage += damage * perforant * (150 - resPerforant);
                 totalDamage += damage * magie * (150 - resMagie);
 
                 totalDamage /= 10000;
@@ -947,68 +941,6 @@ namespace Server
 
         [CommandProperty(AccessLevel.Batisseur)]
         public SkillName Skill_5_Name { get { return GetSkill(4); } set { SetSkill(4, value); } }
-    }
-
-    [Flags]
-    public enum AosElementAttribute
-    {
-        Physical = 0x00000001,
-        Contondant = 0x00000002,
-        Tranchant = 0x00000004,
-        Perforant = 0x00000008,
-        Magie = 0x00000010,
-        Chaos = 0x00000020,
-        Direct = 0x00000040
-    }
-
-    public sealed class AosElementAttributes : BaseAttributes
-    {
-        public AosElementAttributes(Item owner)
-            : base(owner)
-        {
-        }
-
-        public AosElementAttributes(Item owner, AosElementAttributes other)
-            : base(owner, other)
-        {
-        }
-
-        public AosElementAttributes(Item owner, GenericReader reader)
-            : base(owner, reader)
-        {
-        }
-
-        public int this[AosElementAttribute attribute]
-        {
-            get { return GetValue((int)attribute); }
-            set { SetValue((int)attribute, value); }
-        }
-
-        public override string ToString()
-        {
-            return "...";
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Physical { get { return this[AosElementAttribute.Physical]; } set { this[AosElementAttribute.Physical] = value; } }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Contondant { get { return this[AosElementAttribute.Contondant]; } set { this[AosElementAttribute.Contondant] = value; } }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Tranchant { get { return this[AosElementAttribute.Tranchant]; } set { this[AosElementAttribute.Tranchant] = value; } }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Perforant { get { return this[AosElementAttribute.Perforant]; } set { this[AosElementAttribute.Perforant] = value; } }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Magie { get { return this[AosElementAttribute.Magie]; } set { this[AosElementAttribute.Magie] = value; } }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Chaos { get { return this[AosElementAttribute.Chaos]; } set { this[AosElementAttribute.Chaos] = value; } }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Direct { get { return this[AosElementAttribute.Direct]; } set { this[AosElementAttribute.Direct] = value; } }
     }
 
     [PropertyObject]

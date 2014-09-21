@@ -31,9 +31,6 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Magie, 50 );
 
 			SetResistance( ResistanceType.Physical, 30, 40 );
-			SetResistance( ResistanceType.Contondant, 10, 20 );
-			SetResistance( ResistanceType.Tranchant, 50, 60 );
-			SetResistance( ResistanceType.Perforant, 50, 60 );
 			SetResistance( ResistanceType.Magie, 50, 60 );
 
 			SetSkill( SkillName.Concentration, 50.1, 95.0 );

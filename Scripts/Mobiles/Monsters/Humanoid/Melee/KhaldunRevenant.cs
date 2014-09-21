@@ -84,7 +84,7 @@ namespace Server.Mobiles
 			SetDamage( 20, 30 );
 
 			SetDamageType( ResistanceType.Physical, 50 );
-			SetDamageType( ResistanceType.Tranchant, 50 );
+			
 
 			SetSkill( SkillName.Concentration, 100.1, 150.0 );
 			SetSkill( SkillName.Tactiques, 90.1, 100.0 );
@@ -92,9 +92,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Anatomie, 90.1, 100.0 );
 
 			SetResistance( ResistanceType.Physical, 55, 65  );
-			SetResistance( ResistanceType.Contondant, 30, 40 );
-			SetResistance( ResistanceType.Tranchant, 60, 70 );
-			SetResistance( ResistanceType.Perforant, 20, 30 );
+			
 			SetResistance( ResistanceType.Magie, 20, 30 );
 
 			VirtualArmor = 60;

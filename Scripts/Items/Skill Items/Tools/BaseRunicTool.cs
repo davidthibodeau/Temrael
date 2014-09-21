@@ -128,16 +128,6 @@ namespace Server.Items
 			attrs[attr] = Scale( min, max, low / scale, high / scale ) * scale;
 		}
 
-		private static void ApplyAttribute( AosElementAttributes attrs, int min, int max, AosElementAttribute attr, int low, int high )
-		{
-			attrs[attr] = Scale( min, max, low, high );
-		}
-
-		private static void ApplyAttribute( AosElementAttributes attrs, int min, int max, AosElementAttribute attr, int low, int high, int scale )
-		{
-			attrs[attr] = Scale( min, max, low / scale, high / scale ) * scale;
-		}
-
 		private static SkillName[] m_PossibleBonusSkills = new SkillName[]
 			{
 				SkillName.ArmeTranchante,
@@ -203,9 +193,6 @@ namespace Server.Items
 			switch ( res )
 			{
 				case ResistanceType.Physical: ar.PhysicalBonus += Scale( min, max, low, high ); break;
-				case ResistanceType.Contondant: ar.ContondantBonus += Scale( min, max, low, high ); break;
-				case ResistanceType.Tranchant: ar.TranchantBonus += Scale( min, max, low, high ); break;
-				case ResistanceType.Perforant: ar.PerforantBonus += Scale( min, max, low, high ); break;
 				case ResistanceType.Magie: ar.MagieBonus += Scale( min, max, low, high ); break;
 			}
 		}
@@ -273,7 +260,7 @@ namespace Server.Items
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 24 );
+				int random = GetUniqueRandom( 23 );
 
 				if ( random == -1 )
 					break;
@@ -335,71 +322,8 @@ namespace Server.Items
 					case 20: ApplyAttribute( secondary,	min, max, AosWeaponAttribute.ResistPerforantBonus,		1, 15 ); break;
 					case 21: ApplyAttribute( secondary,	min, max, AosWeaponAttribute.ResistMagieBonus,		    1, 15 ); break;
 					case 22: ApplyAttribute( secondary, min, max, AosWeaponAttribute.DurabilityBonus,		    10, 100, 10 ); break;
-					case 23: GetElementalDamages( weapon ); break;
 				}
 			}
-		}
-
-		public static void GetElementalDamages( BaseWeapon weapon )
-		{
-			GetElementalDamages( weapon, true );
-		}
-
-		public static void GetElementalDamages( BaseWeapon weapon, bool randomizeOrder )
-		{
-			int fire, phys, cold, nrgy, pois, chaos, direct;
-
-			weapon.GetDamageTypes( null, out phys, out fire, out cold, out pois, out nrgy, out chaos, out direct );
-
-			int totalDamage = phys;
-
-			AosElementAttribute[] attrs = new AosElementAttribute[]
-			{
-				AosElementAttribute.Tranchant,
-				AosElementAttribute.Magie,
-				AosElementAttribute.Contondant,
-				AosElementAttribute.Perforant
-			};
-
-			if( randomizeOrder )
-			{
-				for( int i = 0; i < attrs.Length; i++ )
-				{
-					int rand = Utility.Random( attrs.Length );
-					AosElementAttribute temp = attrs[i];
-
-					attrs[i] = attrs[rand];
-					attrs[rand] = temp;
-				}
-			}
-
-
-			/*
-			totalDamage = AssignElementalDamage( weapon, AosElementAttribute.Cold,		totalDamage );
-			totalDamage = AssignElementalDamage( weapon, AosElementAttribute.Energy,	totalDamage );
-			totalDamage = AssignElementalDamage( weapon, AosElementAttribute.Fire,		totalDamage );
-			totalDamage = AssignElementalDamage( weapon, AosElementAttribute.Poison,	totalDamage );
-
-			weapon.AosElementDamages[AosElementAttribute.Physical] = 100 - totalDamage;
-			 * */
-
-			for( int i = 0; i < attrs.Length; i++ )
-				totalDamage = AssignElementalDamage( weapon, attrs[i], totalDamage );
-
-
-			//Order is Cold, Energy, Fire, Poison -> Physical left
-			//Cannot be looped, AoselementAttribute is 'out of order'
-		}
-
-		private static int AssignElementalDamage( BaseWeapon weapon, AosElementAttribute attr, int totalDamage )
-		{
-			if( totalDamage <= 0 )
-				return 0;
-
-			int random = Utility.Random( (int)(totalDamage/10) + 1 ) * 10;
-			weapon.AosElementDamages[attr] = random;
-
-			return (totalDamage - random);
 		}
 
 		public void ApplyAttributesTo( BaseArmor armor )
@@ -490,10 +414,7 @@ namespace Server.Items
 					case 17: ApplyAttribute( primary,	min, max, AosAttribute.Luck,					1, 100 ); break;
 					case 18: ApplyAttribute( primary,	min, max, AosAttribute.ReflectPhysical,			1, 15 ); break;
 					case 19: ApplyResistance( armor,	min, max, ResistanceType.Physical,				1, 15 ); break;
-					case 20: ApplyResistance( armor,	min, max, ResistanceType.Contondant,					1, 15 ); break;
-					case 21: ApplyResistance( armor,	min, max, ResistanceType.Tranchant,					1, 15 ); break;
-					case 22: ApplyResistance( armor,	min, max, ResistanceType.Perforant,				1, 15 ); break;
-					case 23: ApplyResistance( armor,	min, max, ResistanceType.Magie,				1, 15 ); break;
+					case 20: ApplyResistance( armor,	min, max, ResistanceType.Magie,				1, 15 ); break;
 					/* End Armor */
 				}
 			}
@@ -511,13 +432,12 @@ namespace Server.Items
 
 			AosAttributes primary = hat.Attributes;
 			AosArmorAttributes secondary = hat.ClothingAttributes;
-			AosElementAttributes resists = hat.Resistances;
 
 			m_Props.SetAll( false );
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 19 );
+				int random = GetUniqueRandom( 14 );
 
 				if ( random == -1 )
 					break;
@@ -538,11 +458,6 @@ namespace Server.Items
 					case 11: ApplyAttribute( secondary,	min, max, AosArmorAttribute.LowerStatReq,		10, 100, 10 ); break;
 					case 12: ApplyAttribute( secondary,	min, max, AosArmorAttribute.SelfRepair,			1, 5 ); break;
 					case 13: ApplyAttribute( secondary,	min, max, AosArmorAttribute.DurabilityBonus,	10, 100, 10 ); break;
-					case 14: ApplyAttribute( resists,	min, max, AosElementAttribute.Physical,			1, 15 ); break;
-					case 15: ApplyAttribute( resists,	min, max, AosElementAttribute.Contondant,		1, 15 ); break;
-					case 16: ApplyAttribute( resists,	min, max, AosElementAttribute.Tranchant,		1, 15 ); break;
-					case 17: ApplyAttribute( resists,	min, max, AosElementAttribute.Perforant,	    1, 15 ); break;
-					case 18: ApplyAttribute( resists,	min, max, AosElementAttribute.Magie,			1, 15 ); break;
 				}
 			}
 		}
@@ -558,44 +473,38 @@ namespace Server.Items
 			m_LuckChance = luckChance;
 
 			AosAttributes primary = jewelry.Attributes;
-			AosElementAttributes resists = jewelry.Resistances;
 			AosSkillBonuses skills = jewelry.SkillBonuses;
 
 			m_Props.SetAll( false );
 
 			for ( int i = 0; i < attributeCount; ++i )
 			{
-				int random = GetUniqueRandom( 24 );
+				int random = GetUniqueRandom( 20 );
 
 				if ( random == -1 )
 					break;
 
 				switch ( random )
 				{
-					case  0: ApplyAttribute( resists,	min, max, AosElementAttribute.Physical,			1, 15 ); break;
-					case  1: ApplyAttribute( resists,	min, max, AosElementAttribute.Contondant,		1, 15 ); break;
-					case  2: ApplyAttribute( resists,	min, max, AosElementAttribute.Tranchant,		1, 15 ); break;
-					case  3: ApplyAttribute( resists,	min, max, AosElementAttribute.Perforant,		1, 15 ); break;
-					case  4: ApplyAttribute( resists,	min, max, AosElementAttribute.Magie,			1, 15 ); break;
-					case  5: ApplyAttribute( primary,	min, max, AosAttribute.WeaponDamage,			1, 25 ); break;
-					case  6: ApplyAttribute( primary,	min, max, AosAttribute.DefendChance,			1, 15 ); break;
-					case  7: ApplyAttribute( primary,	min, max, AosAttribute.AttackChance,			1, 15 ); break;
-					case  8: ApplyAttribute( primary,	min, max, AosAttribute.BonusStr,				1, 8 ); break;
-					case  9: ApplyAttribute( primary,	min, max, AosAttribute.BonusDex,				1, 8 ); break;
-					case 10: ApplyAttribute( primary,	min, max, AosAttribute.BonusInt,				1, 8 ); break;
-					case 11: ApplyAttribute( primary,	min, max, AosAttribute.EnhancePotions,			5, 25, 5 ); break;
-					case 12: ApplyAttribute( primary,	min, max, AosAttribute.CastSpeed,				1, 1 ); break;
-					case 13: ApplyAttribute( primary,	min, max, AosAttribute.CastRecovery,			1, 3 ); break;
-					case 14: ApplyAttribute( primary,	min, max, AosAttribute.LowerManaCost,			1, 8 ); break;
-					case 15: ApplyAttribute( primary,	min, max, AosAttribute.LowerRegCost,			1, 20 ); break;
-					case 16: ApplyAttribute( primary,	min, max, AosAttribute.Luck,					1, 100 ); break;
-					case 17: ApplyAttribute( primary,	min, max, AosAttribute.SpellDamage,				1, 12 ); break;
-					case 18: ApplyAttribute( primary,	min, max, AosAttribute.NightSight,				1, 1 ); break;
-					case 19: ApplySkillBonus( skills,	min, max, 0,									1, 15 ); break;
-					case 20: ApplySkillBonus( skills,	min, max, 1,									1, 15 ); break;
-					case 21: ApplySkillBonus( skills,	min, max, 2,									1, 15 ); break;
-					case 22: ApplySkillBonus( skills,	min, max, 3,									1, 15 ); break;
-					case 23: ApplySkillBonus( skills,	min, max, 4,									1, 15 ); break;
+					case  1: ApplyAttribute( primary,	min, max, AosAttribute.WeaponDamage,			1, 25 ); break;
+					case  2: ApplyAttribute( primary,	min, max, AosAttribute.DefendChance,			1, 15 ); break;
+					case  3: ApplyAttribute( primary,	min, max, AosAttribute.AttackChance,			1, 15 ); break;
+					case  4: ApplyAttribute( primary,	min, max, AosAttribute.BonusStr,				1, 8 ); break;
+					case  5: ApplyAttribute( primary,	min, max, AosAttribute.BonusDex,				1, 8 ); break;
+					case  6: ApplyAttribute( primary,	min, max, AosAttribute.BonusInt,				1, 8 ); break;
+					case  7: ApplyAttribute( primary,	min, max, AosAttribute.EnhancePotions,			5, 25, 5 ); break;
+					case  8: ApplyAttribute( primary,	min, max, AosAttribute.CastSpeed,				1, 1 ); break;
+					case  9: ApplyAttribute( primary,	min, max, AosAttribute.CastRecovery,			1, 3 ); break;
+					case 10: ApplyAttribute( primary,	min, max, AosAttribute.LowerManaCost,			1, 8 ); break;
+					case 11: ApplyAttribute( primary,	min, max, AosAttribute.LowerRegCost,			1, 20 ); break;
+					case 12: ApplyAttribute( primary,	min, max, AosAttribute.Luck,					1, 100 ); break;
+					case 13: ApplyAttribute( primary,	min, max, AosAttribute.SpellDamage,				1, 12 ); break;
+					case 14: ApplyAttribute( primary,	min, max, AosAttribute.NightSight,				1, 1 ); break;
+					case 15: ApplySkillBonus( skills,	min, max, 0,									1, 15 ); break;
+					case 16: ApplySkillBonus( skills,	min, max, 1,									1, 15 ); break;
+					case 17: ApplySkillBonus( skills,	min, max, 2,									1, 15 ); break;
+					case 18: ApplySkillBonus( skills,	min, max, 3,									1, 15 ); break;
+					case 19: ApplySkillBonus( skills,	min, max, 4,									1, 15 ); break;
 				}
 			}
 		}

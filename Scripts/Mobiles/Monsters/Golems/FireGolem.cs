@@ -43,14 +43,6 @@ namespace Server.Mobiles
             SetDamageType(ResistanceType.Physical, 100);
 
             SetResistance(ResistanceType.Physical, (int)(35 * scalar), (int)(55 * scalar));
-
-            if (summoned)
-                SetResistance(ResistanceType.Contondant, (int)(50 * scalar), (int)(60 * scalar));
-            else
-                SetResistance(ResistanceType.Contondant, (int)(100 * scalar));
-
-            SetResistance(ResistanceType.Tranchant, (int)(10 * scalar), (int)(30 * scalar));
-            SetResistance(ResistanceType.Perforant, (int)(10 * scalar), (int)(25 * scalar));
             SetResistance(ResistanceType.Magie, (int)(30 * scalar), (int)(40 * scalar));
 
             SetSkill(SkillName.Concentration, (150.1 * scalar), (190.0 * scalar));

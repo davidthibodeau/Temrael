@@ -24,11 +24,9 @@ namespace Server.Mobiles
 			SetDamage( 11, 17 );
 
 			SetDamageType( ResistanceType.Physical, 20 );
-			SetDamageType( ResistanceType.Contondant, 80 );
+			
 
 			SetResistance( ResistanceType.Physical, 25, 35 );
-			SetResistance( ResistanceType.Contondant, 30, 40 );
-			SetResistance( ResistanceType.Perforant, 10, 20 );
 			SetResistance( ResistanceType.Magie, 10, 20 );
 
 			VirtualArmor = 30;

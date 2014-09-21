@@ -15,7 +15,6 @@ namespace Server.Items
 			Attributes.BonusDex = 8;
 			Attributes.RegenStam = 6;
 			Attributes.AttackChance = 15;
-			Resistances.Perforant = 20;
 		}
 
 		public RingOfTheVile( Serial serial ) : base( serial )

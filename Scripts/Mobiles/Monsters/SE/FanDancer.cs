@@ -25,14 +25,8 @@ namespace Server.Mobiles
 			SetDamage( 12, 17 );
 
 			SetDamageType( ResistanceType.Physical, 70 );
-			SetDamageType( ResistanceType.Contondant, 10 );
-			SetDamageType( ResistanceType.Tranchant, 10 );
-			SetDamageType( ResistanceType.Perforant, 10 );
 
 			SetResistance( ResistanceType.Physical, 40, 60 );
-			SetResistance( ResistanceType.Contondant, 50, 70 );
-			SetResistance( ResistanceType.Tranchant, 50, 70 );
-			SetResistance( ResistanceType.Perforant, 50, 70 );
 			SetResistance( ResistanceType.Magie, 40, 60 );
 
 			SetSkill( SkillName.Concentration, 100.1, 110.0 );
@@ -111,20 +105,12 @@ namespace Server.Mobiles
 				defender.SendLocalizedMessage( 1070833 ); // The creature fans you with fire, reducing your resistance to fire attacks.
 
 				int effect = -(defender.MagieResistance / 10);
-
-				ResistanceMod mod = new ResistanceMod( ResistanceType.Contondant, effect );
-
 				defender.FixedParticles( 0x37B9, 10, 30, 0x34, EffectLayer.RightFoot );
 				defender.PlaySound( 0x208 );
 
 				// This should be done in place of the normal attack damage.
 				//AOS.Damage( defender, this, Utility.RandomMinMax( 35, 45 ), 0, 100, 0, 0, 0 );
-
-				defender.AddResistanceMod( mod );
-		
-				ExpireTimer timer = new ExpireTimer( defender, mod, TimeSpan.FromSeconds( 10.0 ) );
-				timer.Start();
-				m_Table[defender] = timer;
+               
 			}
 		}
 

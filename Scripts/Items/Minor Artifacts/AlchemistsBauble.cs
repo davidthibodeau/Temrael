@@ -13,8 +13,7 @@ namespace Server.Items
 			Hue = 0x290;
 			SkillBonuses.SetValues( 0, SkillName.ArtMagique, 10.0 );
 			Attributes.EnhancePotions = 30;
-			Attributes.LowerRegCost = 20;
-			Resistances.Magie = 10;
+            Attributes.LowerRegCost = 20;
 		}
 
 		public AlchemistsBauble( Serial serial ) : base( serial )

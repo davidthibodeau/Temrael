@@ -26,33 +26,18 @@ namespace Server.Items
 		{
 		}
 		
-		public override void Serialize( GenericWriter writer )
-		{
-			base.Serialize( writer );
+		public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
 
-			writer.Write( (int) 3 );
-		}
+            writer.Write((int)0);
+        }
 		
 		public override void Deserialize(GenericReader reader)
 		{
-			base.Deserialize( reader );
+            base.Deserialize(reader);
 
 			int version = reader.ReadInt();
-
-			if ( version < 3 )
-			{
-				Resistances.Contondant = 0;
-				Resistances.Perforant = 0;
-			}
-
-			if ( version < 1 )
-			{
-				Attributes.Luck = 0;
-				Attributes.AttackChance = 10;
-				Attributes.NightSight = 1;
-				SkillBonuses.SetValues( 0, Utility.RandomCombatSkill(), 10.0 );
-				SkillBonuses.SetBonus( 1, 0 );
-			}
 		}
 	}
 }

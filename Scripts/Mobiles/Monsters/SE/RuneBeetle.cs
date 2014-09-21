@@ -29,13 +29,9 @@ namespace Server.Mobiles
 			SetDamage( 15, 22 );
 
 			SetDamageType( ResistanceType.Physical, 20 );
-			SetDamageType( ResistanceType.Perforant, 10 );
 			SetDamageType( ResistanceType.Magie, 70 );
 
 			SetResistance( ResistanceType.Physical, 40, 65 );
-			SetResistance( ResistanceType.Contondant, 35, 50 );
-			SetResistance( ResistanceType.Tranchant, 35, 50 );
-			SetResistance( ResistanceType.Perforant, 75, 95 );
 			SetResistance( ResistanceType.Magie, 40, 60 );
 
 			//SetSkill( SkillName.EvalInt, 100.1, 125.0 );
@@ -134,15 +130,6 @@ namespace Server.Mobiles
 					if ( defender.PhysicalResistance > 0 )
 						mods.Add( new ResistanceMod( ResistanceType.Physical, -(defender.PhysicalResistance / 2) ) );
 
-					if ( defender.ContondantResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Contondant, -(defender.ContondantResistance / 2) ) );
-
-					if ( defender.TranchantResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Tranchant, -(defender.TranchantResistance / 2) ) );
-
-					if ( defender.PerforantResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Perforant, -(defender.PerforantResistance / 2) ) );
-
 					if ( defender.MagieResistance > 0 )
 						mods.Add( new ResistanceMod( ResistanceType.Magie, -(defender.MagieResistance / 2) ) );
 				}
@@ -150,15 +137,6 @@ namespace Server.Mobiles
 				{
 					if ( defender.PhysicalResistance > 0 )
 						mods.Add( new ResistanceMod( ResistanceType.Physical, (defender.PhysicalResistance > 70) ? -70 : -defender.PhysicalResistance ) );
-
-					if ( defender.ContondantResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Contondant, (defender.ContondantResistance > 70) ? -70 : -defender.ContondantResistance ) );
-
-					if ( defender.TranchantResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Tranchant, (defender.TranchantResistance > 70) ? -70 : -defender.TranchantResistance ) );
-
-					if ( defender.PerforantResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Perforant, (defender.PerforantResistance > 70) ? -70 : -defender.PerforantResistance ) );
 
 					if ( defender.MagieResistance > 0 )
 						mods.Add( new ResistanceMod( ResistanceType.Magie, (defender.MagieResistance > 70) ? -70 : -defender.MagieResistance ) );

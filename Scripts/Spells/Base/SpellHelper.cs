@@ -1148,15 +1148,6 @@ namespace Server.Spells
                     if (transformSpell.PhysResistOffset != 0)
                         mods.Add(new ResistanceMod(ResistanceType.Physical, transformSpell.PhysResistOffset));
 
-                    if (transformSpell.FireResistOffset != 0)
-                        mods.Add(new ResistanceMod(ResistanceType.Contondant, transformSpell.FireResistOffset));
-
-                    if (transformSpell.ColdResistOffset != 0)
-                        mods.Add(new ResistanceMod(ResistanceType.Tranchant, transformSpell.ColdResistOffset));
-
-                    if (transformSpell.PoisResistOffset != 0)
-                        mods.Add(new ResistanceMod(ResistanceType.Perforant, transformSpell.PoisResistOffset));
-
                     if (transformSpell.NrgyResistOffset != 0)
                         mods.Add(new ResistanceMod(ResistanceType.Magie, transformSpell.NrgyResistOffset));
 
@@ -1194,9 +1185,6 @@ namespace Server.Spells
         int Hue { get; }
 
         int PhysResistOffset { get; }
-        int FireResistOffset { get; }
-        int ColdResistOffset { get; }
-        int PoisResistOffset { get; }
         int NrgyResistOffset { get; }
 
         double TickRate { get; }

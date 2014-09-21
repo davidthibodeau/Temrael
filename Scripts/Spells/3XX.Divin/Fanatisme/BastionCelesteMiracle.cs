@@ -50,9 +50,6 @@ namespace Server.Spells
                 {
                     mods = new ResistanceMod[]
                     {
-                        new ResistanceMod(ResistanceType.Tranchant, (int)(Caster.Skills[CastSkill].Value / 4) ),
-                        new ResistanceMod(ResistanceType.Contondant, (int)(Caster.Skills[CastSkill].Value / 4) ),
-                        new ResistanceMod(ResistanceType.Perforant, (int)(Caster.Skills[CastSkill].Value / 4) ),
                         new ResistanceMod(ResistanceType.Magie, (int)(Caster.Skills[CastSkill].Value / 4) ),
                     };
 

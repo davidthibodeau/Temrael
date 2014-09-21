@@ -27,12 +27,12 @@ namespace Server.Mobiles
 			SetDamage( 15, 30 );
 
 			SetDamageType( ResistanceType.Physical, 75 );
-			SetDamageType( ResistanceType.Contondant, 25 );
+			
 
             SetResistance(ResistanceType.Physical, 0, 10);
-            SetResistance(ResistanceType.Contondant, 0, 10);
-            SetResistance(ResistanceType.Tranchant, 0, 10);
-            SetResistance(ResistanceType.Perforant, 0, 10);
+            
+            
+            
             SetResistance(ResistanceType.Magie, 0, 10);
 
 			SetSkill( SkillName.Concentration, 70.1, 85.0 );

@@ -27,7 +27,6 @@ namespace Server.Items
         private int m_MaxHitPoints;
         private int m_HitPoints;
 		private AosAttributes m_AosAttributes;
-		private AosElementAttributes m_AosResistances;
 		private AosSkillBonuses m_AosSkillBonuses;
 		private CraftResource m_Resource;
 		private GemType m_GemType;
@@ -71,13 +70,6 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public AosElementAttributes Resistances
-		{
-			get{ return m_AosResistances; }
-			set{}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
 		public AosSkillBonuses SkillBonuses
 		{
 			get{ return m_AosSkillBonuses; }
@@ -98,11 +90,6 @@ namespace Server.Items
 			set{ m_GemType = value; InvalidateProperties(); }
 		}
 
-		public override int PhysicalResistance{ get{ return m_AosResistances.Physical; } }
-		public override int ContondantResistance{ get{ return m_AosResistances.Contondant; } }
-		public override int TranchantResistance{ get{ return m_AosResistances.Tranchant; } }
-		public override int PerforantResistance{ get{ return m_AosResistances.Perforant; } }
-		public override int MagieResistance{ get{ return m_AosResistances.Magie; } }
 		public virtual int BaseGemTypeNumber{ get{ return 0; } }
 
 		public virtual int InitMinHits{ get{ return 0; } }
@@ -127,7 +114,6 @@ namespace Server.Items
 				return;
 
 			jewel.m_AosAttributes = new AosAttributes( newItem, m_AosAttributes );
-			jewel.m_AosResistances = new AosElementAttributes( newItem, m_AosResistances );
 			jewel.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 		}
 
@@ -136,7 +122,6 @@ namespace Server.Items
 		public BaseJewel( int itemID, Layer layer ) : base( itemID )
 		{
 			m_AosAttributes = new AosAttributes( this );
-			m_AosResistances = new AosElementAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
 			m_Resource = CraftResource.Fer;
 			m_GemType = GemType.None;
@@ -384,7 +369,6 @@ namespace Server.Items
 			writer.WriteEncodedInt( (int) m_GemType );
 
 			m_AosAttributes.Serialize( writer );
-			m_AosResistances.Serialize( writer );
 			m_AosSkillBonuses.Serialize( writer );
 		}
 
@@ -401,11 +385,9 @@ namespace Server.Items
             m_GemType = (GemType)reader.ReadEncodedInt();
 
             m_AosAttributes = new AosAttributes(this, reader);
-            m_AosResistances = new AosElementAttributes(this, reader);
             m_AosSkillBonuses = new AosSkillBonuses(this, reader);
 
             m_AosAttributes = new AosAttributes(this);
-            m_AosResistances = new AosElementAttributes(this);
             m_AosSkillBonuses = new AosSkillBonuses(this);
 
             if (Core.AOS && Parent is Mobile)

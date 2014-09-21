@@ -678,9 +678,6 @@ namespace Server.Mobiles
 		private int			m_DamageMax = -1;
 
 		private int			m_PhysicalResistance, m_PhysicalDamage = 100;
-		private int			m_ContondantResistance, m_ContondantDamage;
-		private int			m_TranchantResistance, m_TranchantDamage;
-		private int			m_PerforantResistance, m_PerforantDamage;
 		private int			m_MagieResistance, m_MagieDamage;
 		private int			m_ChaosDamage;
 		private int			m_DirectDamage;
@@ -853,37 +850,16 @@ namespace Server.Mobiles
 		#region Elemental Resistance/Damage
 
 		public override int BasePhysicalResistance{ get{ return m_PhysicalResistance; } }
-		public override int BaseContondantResistance{ get{ return m_ContondantResistance; } }
-		public override int BaseTranchantResistance{ get{ return m_TranchantResistance; } }
-		public override int BasePerforantResistance{ get{ return m_PerforantResistance; } }
 		public override int BaseMagieResistance{ get{ return m_MagieResistance; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int PhysicalResistanceSeed{ get{ return m_PhysicalResistance; } set{ m_PhysicalResistance = value; UpdateResistances(); } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
-        public int ContondantResistSeed { get { return m_ContondantResistance; } set { m_ContondantResistance = value; UpdateResistances(); } }
-
-		[CommandProperty( AccessLevel.Batisseur )]
-        public int TranchantResistSeed { get { return m_TranchantResistance; } set { m_TranchantResistance = value; UpdateResistances(); } }
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int PerforantResistSeed{ get{ return m_PerforantResistance; } set{ m_PerforantResistance = value; UpdateResistances(); } }
-
-		[CommandProperty( AccessLevel.Batisseur )]
         public int MagieResistSeed { get { return m_MagieResistance; } set { m_MagieResistance = value; UpdateResistances(); } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int PhysicalDamage{ get{ return m_PhysicalDamage; } set{ m_PhysicalDamage = value; } }
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int ContondantDamage{ get{ return m_ContondantDamage; } set{ m_ContondantDamage = value; } }
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int TranchantDamage{ get{ return m_TranchantDamage; } set{ m_TranchantDamage = value; } }
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int PerforantDamage{ get{ return m_PerforantDamage; } set{ m_PerforantDamage = value; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MagieDamage{ get{ return m_MagieDamage; } set{ m_MagieDamage = value; } }
@@ -2269,15 +2245,6 @@ namespace Server.Mobiles
 			writer.Write( (int) m_PhysicalResistance );
 			writer.Write( (int) m_PhysicalDamage );
 
-			writer.Write( (int) m_ContondantResistance );
-			writer.Write( (int) m_ContondantDamage );
-
-			writer.Write( (int) m_TranchantResistance );
-			writer.Write( (int) m_TranchantDamage );
-
-			writer.Write( (int) m_PerforantResistance );
-			writer.Write( (int) m_PerforantDamage );
-
 			writer.Write( (int) m_MagieResistance );
 			writer.Write( (int) m_MagieDamage );
 
@@ -2464,15 +2431,6 @@ namespace Server.Mobiles
 			{
 				m_PhysicalResistance = reader.ReadInt();
 				m_PhysicalDamage = reader.ReadInt();
-
-				m_ContondantResistance = reader.ReadInt();
-				m_ContondantDamage = reader.ReadInt();
-
-				m_TranchantResistance = reader.ReadInt();
-				m_TranchantDamage = reader.ReadInt();
-
-				m_PerforantResistance = reader.ReadInt();
-				m_PerforantDamage = reader.ReadInt();
 
 				m_MagieResistance = reader.ReadInt();
 				m_MagieDamage = reader.ReadInt();
@@ -2746,7 +2704,7 @@ namespace Server.Mobiles
                         if (m_Loyalty < MaxLoyalty)
                             SayTo(from, Name + " mange ce que vous lui donnez.");
                         else
-                            SayTo(from, Name + " mange ce que vous lui donnez, mais est à présent complètement rassasié(e).");
+                            SayTo(from, Name + " mange ce que vous lui donnez, mais est ï¿½ prï¿½sent complï¿½tement rassasiï¿½(e).");
 
                         for (int i = 0; i < amount; ++i)
 						{
@@ -2755,7 +2713,7 @@ namespace Server.Mobiles
                             else
                             {
                                 m_Loyalty = MaxLoyalty;
-                                SayTo(from, Name + " est à présent complètement rassasié(e).");
+                                SayTo(from, Name + " est ï¿½ prï¿½sent complï¿½tement rassasiï¿½(e).");
                                 i = amount;
                             }
 						}
@@ -4267,9 +4225,6 @@ namespace Server.Mobiles
 			switch ( type )
 			{
 				case ResistanceType.Physical: m_PhysicalDamage = val; break;
-				case ResistanceType.Contondant: m_ContondantDamage = val; break;
-				case ResistanceType.Tranchant: m_TranchantDamage = val; break;
-				case ResistanceType.Perforant: m_PerforantDamage = val; break;
 				case ResistanceType.Magie: m_MagieDamage = val; break;
 			}
 		}
@@ -4284,9 +4239,6 @@ namespace Server.Mobiles
 			switch ( type )
 			{
 				case ResistanceType.Physical: m_PhysicalResistance = val; break;
-				case ResistanceType.Contondant: m_ContondantResistance = val; break;
-				case ResistanceType.Tranchant: m_TranchantResistance = val; break;
-				case ResistanceType.Perforant: m_PerforantResistance = val; break;
 				case ResistanceType.Magie: m_MagieResistance = val; break;
 			}
 
@@ -5849,7 +5801,7 @@ namespace Server.Mobiles
 							}
                             else if (c.Loyalty <= (BaseCreature.MaxLoyalty / 3))
                             {
-                                c.Say(c.Name + " est affamé(e).");
+                                c.Say(c.Name + " est affamï¿½(e).");
                                 c.PlaySound(c.GetIdleSound());
                             }
 
@@ -5875,7 +5827,7 @@ namespace Server.Mobiles
 
 			foreach ( BaseCreature c in toRelease )
 			{
-				c.Say("meurt tellement de faim qu'il/elle décide de partir à la conquête de nourriture !" , c.Name ); // Old message 1043255 ~1_NAME~ appears to have decided that is better off without a master!
+				c.Say("meurt tellement de faim qu'il/elle dï¿½cide de partir ï¿½ la conquï¿½te de nourriture !" , c.Name ); // Old message 1043255 ~1_NAME~ appears to have decided that is better off without a master!
 				c.Loyalty = BaseCreature.MaxLoyalty; // Wonderfully Happy
 				c.IsBonded = false;
 				c.BondingBegin = DateTime.MinValue;

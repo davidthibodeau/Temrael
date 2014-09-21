@@ -43,13 +43,10 @@ namespace Server.Mobiles
 			SetDamage( 29, 35 );
 
 			SetDamageType( ResistanceType.Physical, 70 );
-			SetDamageType( ResistanceType.Perforant, 20 );
+			
 			SetDamageType( ResistanceType.Magie, 10 );
 
 			SetResistance( ResistanceType.Physical, 30 );
-			SetResistance( ResistanceType.Contondant, 60 );
-			SetResistance( ResistanceType.Tranchant, 60 );
-			SetResistance( ResistanceType.Perforant, 90 );
 			SetResistance( ResistanceType.Magie, 50 );
 
 			SetSkill( SkillName.Concentration, 120.0 );
@@ -100,9 +97,6 @@ namespace Server.Mobiles
 			double hitsLost = (HitsMax - Hits) / (double)HitsMax;
 
 			SetResistance( ResistanceType.Physical,	30 + (int)(hitsLost * ( 95 - 30 )) );
-			SetResistance( ResistanceType.Contondant,		60 + (int)(hitsLost * ( 95 - 60 )) );
-			SetResistance( ResistanceType.Tranchant,		60 + (int)(hitsLost * ( 95 - 60 )) );
-			SetResistance( ResistanceType.Perforant,	90 + (int)(hitsLost * ( 95 - 90 )) );
 			SetResistance( ResistanceType.Magie,	50 + (int)(hitsLost * ( 95 - 50 )) );
 		}
 

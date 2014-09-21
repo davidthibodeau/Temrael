@@ -18,12 +18,7 @@ namespace Server.Engines.Quests.Samurai
 
 			SetDamage( 50, 80 );
 
-			SetDamageType( ResistanceType.Contondant, 100 );
-
 			SetResistance( ResistanceType.Physical, 95, 98 );
-			SetResistance( ResistanceType.Contondant, 95, 98 );
-			SetResistance( ResistanceType.Tranchant, 95, 98 );
-			SetResistance( ResistanceType.Perforant, 95, 98 );
 			SetResistance( ResistanceType.Magie, 95, 98 );
 
 			SetSkill( SkillName.Tactiques, 120.0 );

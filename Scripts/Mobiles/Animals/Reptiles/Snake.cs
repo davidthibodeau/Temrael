@@ -27,7 +27,7 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Physical, 100 );
 
 			SetResistance( ResistanceType.Physical, 15, 20 );
-			SetResistance( ResistanceType.Perforant, 20, 30 );
+			
 
 			SetSkill( SkillName.Empoisonnement, 50.1, 70.0 );
 			SetSkill( SkillName.Concentration, 15.1, 20.0 );

@@ -14,11 +14,6 @@ namespace Server.Items
 		public PolarBearMask()
 		{
 			Hue = 0x481;
-
-			ClothingAttributes.SelfRepair = 3;
-
-			Attributes.RegenHits = 2;
-			Attributes.NightSight = 1;
 		}
 
 		public PolarBearMask( Serial serial ) : base( serial )
@@ -29,7 +24,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 );
+            writer.Write((int)0);
 		}
 		
 		public override void Deserialize(GenericReader reader)
@@ -37,15 +32,6 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
-
-			if ( version < 2 )
-			{
-				Resistances.Physical = 0;
-				Resistances.Tranchant = 0;
-			}
-
-			if ( Attributes.NightSight == 0 )
-				Attributes.NightSight = 1;
 		}
 	}
 }

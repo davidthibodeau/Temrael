@@ -26,9 +26,6 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Magie, 30 );
 
 			SetResistance( ResistanceType.Physical, 40, 60 );
-			SetResistance( ResistanceType.Contondant, 70, 90 );
-			SetResistance( ResistanceType.Tranchant, 40, 60 );
-			SetResistance( ResistanceType.Perforant, 40, 60 );
 			SetResistance( ResistanceType.Magie, 40, 60 );
 
 			//SetSkill( SkillName.EvalInt, 80.1, 90.0 );
@@ -261,9 +258,6 @@ namespace Server.Mobiles
 			if ( version == 0 && PhysicalResistance > 60 )
 			{
 				SetResistance( ResistanceType.Physical, 40, 60 );
-				SetResistance( ResistanceType.Contondant, 70, 90 );
-				SetResistance( ResistanceType.Tranchant, 40, 60 );
-				SetResistance( ResistanceType.Perforant, 40, 60 );
 				SetResistance( ResistanceType.Magie, 40, 60 );
 			}
 

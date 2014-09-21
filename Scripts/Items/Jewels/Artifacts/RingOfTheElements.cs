@@ -13,7 +13,6 @@ namespace Server.Items
 		{
 			Hue = 0x4E9;
 			Attributes.Luck = 100;
-			Resistances.Magie = 25;
 		}
 
 		public RingOfTheElements( Serial serial ) : base( serial )

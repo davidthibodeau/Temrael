@@ -19,10 +19,7 @@ namespace Server.Factions
 			SetInt( 151, 175 );
 
 			SetResistance( ResistanceType.Physical, 40, 60 );
-			SetResistance( ResistanceType.Contondant, 40, 60 );
-			SetResistance( ResistanceType.Tranchant, 40, 60 );
 			SetResistance( ResistanceType.Magie, 40, 60 );
-			SetResistance( ResistanceType.Perforant, 40, 60 );
 
 			VirtualArmor = 32;
 

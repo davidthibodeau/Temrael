@@ -24,8 +24,8 @@ namespace Server.Mobiles
 			SetDamage( 24, 26 );
 
 			SetDamageType( ResistanceType.Physical, 25 );
-			SetDamageType( ResistanceType.Contondant, 25 );
-			SetDamageType( ResistanceType.Tranchant, 25 );
+			
+			
 			SetDamageType( ResistanceType.Magie, 25 );
 
 			//SetResistance( ResistanceType.Physical, 25, 38 );

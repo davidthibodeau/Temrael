@@ -46,9 +46,6 @@ namespace Server.Factions
 			SetDamageType( ResistanceType.Physical, 100 );
 
 			SetResistance( ResistanceType.Physical, 40, 50 );
-			SetResistance( ResistanceType.Contondant, 30, 40 );
-			SetResistance( ResistanceType.Tranchant, 30, 40 );
-			SetResistance( ResistanceType.Perforant, 30, 40 );
 			SetResistance( ResistanceType.Magie, 30, 40 );
 
 			SetSkill( SkillName.Concentration, 25.1, 30.0 );

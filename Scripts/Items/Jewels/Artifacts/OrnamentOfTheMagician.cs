@@ -16,7 +16,6 @@ namespace Server.Items
 			Attributes.CastSpeed = 2;
 			Attributes.LowerManaCost = 10;
 			Attributes.LowerRegCost = 20;
-			Resistances.Magie = 15;
 		}
 
 		public OrnamentOfTheMagician( Serial serial ) : base( serial )

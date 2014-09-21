@@ -2809,7 +2809,6 @@
     <Compile Include="Items\Skill Items\Tools\SmoothingPlane.cs" />
     <Compile Include="Items\Skill Items\Tools\TinkerTools.cs" />
     <Compile Include="Items\Skill Items\Tools\Tongs.cs" />
-    <Compile Include="Items\Special\11th Year promo\EarringsOfProtection.cs" />
     <Compile Include="Items\Special\8th Anniversary Items\Dawn%27s Music Box\DawnsMusicBox.cs" />
     <Compile Include="Items\Special\8th Anniversary Items\Dawn%27s Music Box\DawnsMusicGear.cs" />
     <Compile Include="Items\Special\8th Anniversary Items\Dawn%27s Music Box\DawnsMusicInfo.cs" />

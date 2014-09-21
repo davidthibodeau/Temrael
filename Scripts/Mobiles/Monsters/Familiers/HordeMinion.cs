@@ -33,8 +33,8 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Physical, 100 );
 
 			SetResistance( ResistanceType.Physical, 50, 60 );
-			SetResistance( ResistanceType.Contondant, 50, 55 );
-			SetResistance( ResistanceType.Perforant, 25, 30 );
+			
+			
 			SetResistance( ResistanceType.Magie, 25, 30 );
 
 			SetSkill( SkillName.Anatomie, 70.1, 75.0 );

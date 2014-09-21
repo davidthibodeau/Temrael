@@ -31,13 +31,13 @@ namespace Server.Mobiles
 			SetDamage( 20, 40 );
 
 			SetDamageType( ResistanceType.Physical, 0 );
-			SetDamageType( ResistanceType.Tranchant, 60 );
+			
 			SetDamageType( ResistanceType.Magie, 40 );
 
             SetResistance(ResistanceType.Physical, 40, 60);
-            SetResistance(ResistanceType.Contondant, 40, 60);
-            SetResistance(ResistanceType.Tranchant, 40, 60);
-            SetResistance(ResistanceType.Perforant, 40, 60);
+            
+            
+            
             SetResistance(ResistanceType.Magie, 40, 60);
 
 			SetSkill( SkillName.Goetie, 90, 110.0 );

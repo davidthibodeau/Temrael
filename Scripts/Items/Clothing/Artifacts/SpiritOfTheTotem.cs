@@ -28,25 +28,14 @@ namespace Server.Items
 		
 		public override void Serialize( GenericWriter writer )
 		{
-			base.Serialize( writer );
-
-			writer.Write( (int) 1 );
+            base.Serialize(writer);
 		}
 		
 		public override void Deserialize(GenericReader reader)
 		{
-			base.Deserialize( reader );
+            base.Deserialize(reader);
 
 			int version = reader.ReadInt();
-
-			switch ( version )
-			{
-				case 0:
-				{
-					Resistances.Physical = 0;
-					break;
-				}
-			}
 		}
 	}
 }

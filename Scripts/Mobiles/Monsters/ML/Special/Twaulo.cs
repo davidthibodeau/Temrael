@@ -40,9 +40,6 @@ namespace Server.Mobiles
 			SetDamageType( ResistanceType.Physical, 100 );
 
 			SetResistance( ResistanceType.Physical, 65, 75 );
-			SetResistance( ResistanceType.Contondant, 45, 55 );
-			SetResistance( ResistanceType.Tranchant, 50, 60 );
-			SetResistance( ResistanceType.Perforant, 50, 60 );
 			SetResistance( ResistanceType.Magie, 50, 60 );
 
 			//SetSkill( SkillName.EvalInt, 0 ); // Per Stratics?!?

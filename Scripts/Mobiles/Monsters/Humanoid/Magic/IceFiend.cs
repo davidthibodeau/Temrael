@@ -29,9 +29,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Anatomie, 80.1, 100.0 );
 
 			SetResistance( ResistanceType.Physical, 55, 65 );
-			SetResistance( ResistanceType.Contondant, 10, 20 );
-			SetResistance( ResistanceType.Tranchant, 60, 70 );
-			SetResistance( ResistanceType.Perforant, 20, 30 );
+			
 			SetResistance( ResistanceType.Magie, 30, 40 );
 
 			VirtualArmor = 60;

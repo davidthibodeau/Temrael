@@ -6,8 +6,6 @@ namespace Server.Items
 {
     public class Percemurs : BaseArbalette
     {
-        //public override int NiveauAttirail { get { return 4; } }
-
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }
@@ -31,7 +29,6 @@ namespace Server.Items
         {
             Weight = 7.0;
             Layer = Layer.TwoHanded;
-            AosElementDamages.Perforant = 20;
             Name = "Percemurs";
         }
 
@@ -79,7 +76,6 @@ namespace Server.Items
         {
             Weight = 7.0;
             Layer = Layer.TwoHanded;
-            AosElementDamages.Perforant = 40;
             Name = "Arbavive";
         }
 
@@ -104,8 +100,6 @@ namespace Server.Items
     }
     public class Lumitrait : BaseArbalette
     {
-        //public override int NiveauAttirail { get { return 6; } }
-
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }
@@ -129,7 +123,6 @@ namespace Server.Items
         {
             Weight = 7.0;
             Layer = Layer.TwoHanded;
-            AosElementDamages.Perforant = 50;
             Name = "Lumitrait";
         }
 
@@ -177,7 +170,6 @@ namespace Server.Items
         {
             Weight = 7.0;
             Layer = Layer.TwoHanded;
-            AosElementDamages.Perforant = 50;
             Name = "Arbalette";
         }
 
@@ -225,7 +217,6 @@ namespace Server.Items
         {
             Weight = 7.0;
             Layer = Layer.TwoHanded;
-            AosElementDamages.Perforant = 50;
             Name = "Arbalette Lourde";
         }
 
@@ -273,7 +264,6 @@ namespace Server.Items
         {
             Weight = 7.0;
             Layer = Layer.TwoHanded;
-            AosElementDamages.Perforant = 50;
             Name = "Arbalette à Répétition";
         }
 
@@ -321,7 +311,6 @@ namespace Server.Items
         {
             Weight = 7.0;
             Layer = Layer.TwoHanded;
-            AosElementDamages.Perforant = 50;
             Name = "Arbalette à Main";
         }
 

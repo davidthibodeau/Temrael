@@ -521,7 +521,6 @@ namespace Server.Items
 		private AosAttributes m_AosAttributes;
 		private AosWeaponAttributes m_AosWeaponAttributes;
 		private AosSkillBonuses m_AosSkillBonuses;
-		private AosElementAttributes m_AosElementDamages;
 
 		// Overridable values. These values are provided to override the defaults which get defined in the individual weapon scripts.
 		private int m_StrReq, m_DexReq, m_IntReq;
@@ -586,13 +585,6 @@ namespace Server.Items
 		{
 			get{ return m_AosSkillBonuses; }
 			set{}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosElementAttributes AosElementDamages
-		{
-			get { return m_AosElementDamages; }
-			set { }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -842,7 +834,6 @@ namespace Server.Items
 				return;
 
 			weap.m_AosAttributes = new AosAttributes( newItem, m_AosAttributes );
-			weap.m_AosElementDamages = new AosElementAttributes( newItem, m_AosElementDamages );
 			weap.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 			weap.m_AosWeaponAttributes = new AosWeaponAttributes( newItem, m_AosWeaponAttributes );
 		}
@@ -1669,75 +1660,6 @@ namespace Server.Items
 			}
 		}
 
-		public virtual void GetDamageTypes( Mobile wielder, out int phys, out int contondant, out int tranchant, out int perforant, out int magie, out int chaos, out int direct )
-		{
-			if( wielder is BaseCreature )
-			{
-				BaseCreature bc = (BaseCreature)wielder;
-
-				phys = bc.PhysicalDamage;
-				contondant = bc.ContondantDamage;
-				tranchant = bc.TranchantDamage;
-				perforant = bc.PerforantDamage;
-				magie = bc.MagieDamage;
-				chaos = bc.ChaosDamage;
-				direct = bc.DirectDamage;
-			}
-			else
-			{
-				contondant = m_AosElementDamages.Contondant;
-				tranchant = m_AosElementDamages.Tranchant;
-				perforant = m_AosElementDamages.Perforant;
-				magie = m_AosElementDamages.Magie;
-				chaos = m_AosElementDamages.Chaos;
-				direct = m_AosElementDamages.Direct;
-
-				phys = 100 - contondant - tranchant - perforant - magie - chaos - direct;
-
-				CraftResourceInfo resInfo = CraftResources.GetInfo( m_Resource );
-
-				if( resInfo != null )
-				{
-					CraftAttributeInfo attrInfo = resInfo.AttributeInfo;
-
-					if( attrInfo != null )
-					{
-						int left = phys;
-
-						left = ApplyCraftAttributeElementDamage( attrInfo.WeaponTranchantDamage,    ref tranchant, left );
-						left = ApplyCraftAttributeElementDamage( attrInfo.WeaponMagieDamage,	    ref magie, left );
-						left = ApplyCraftAttributeElementDamage( attrInfo.WeaponContondantDamage,	ref contondant, left );
-						left = ApplyCraftAttributeElementDamage( attrInfo.WeaponPerforantDamage,    ref perforant, left );
-						left = ApplyCraftAttributeElementDamage( attrInfo.WeaponChaosDamage,	    ref chaos, left );
-						left = ApplyCraftAttributeElementDamage( attrInfo.WeaponDirectDamage,	    ref direct, left );
-
-						phys = left;
-					}
-				}
-			}
-		}
-
-		private int ApplyCraftAttributeElementDamage( int attrDamage, ref int element, int totalRemaining )
-		{
-			if( totalRemaining <= 0 )
-				return 0;
-
-			if ( attrDamage <= 0 )
-				return totalRemaining;
-
-			int appliedDamage = attrDamage;
-
-			if ( (appliedDamage + element) > 100 )
-				appliedDamage = 100 - element;
-
-			if( appliedDamage > totalRemaining )
-				appliedDamage = totalRemaining;
-
-			element += appliedDamage;
-
-			return totalRemaining - appliedDamage;
-		}
-
 		public virtual void OnMiss( Mobile attacker, Mobile defender )
 		{
 
@@ -1967,7 +1889,6 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.xWeaponAttributes,	!m_AosWeaponAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed,	m_PlayerConstructed );
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.ElementalDamages,	!m_AosElementDamages.IsEmpty );
 
 			writer.Write( (int) flags );
 
@@ -2048,8 +1969,6 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
 				m_AosSkillBonuses.Serialize( writer );
-			if( GetSaveFlag( flags, SaveFlag.ElementalDamages ) )
-				m_AosElementDamages.Serialize( writer );
 
 		}
 
@@ -2249,14 +2168,6 @@ namespace Server.Items
             else
                 m_AosSkillBonuses = new AosSkillBonuses(this);
 
-            if (GetSaveFlag(flags, SaveFlag.ElementalDamages))
-            {
-                m_AosElementDamages = new AosElementAttributes(this, reader);
-                m_AosElementDamages = new AosElementAttributes(this);
-            }
-            else
-                m_AosElementDamages = new AosElementAttributes(this);
-
             if (Core.AOS && Parent is Mobile)
                 m_AosSkillBonuses.AddTo((Mobile)Parent);
 
@@ -2317,7 +2228,6 @@ namespace Server.Items
 			m_AosAttributes = new AosAttributes( this );
 			m_AosWeaponAttributes = new AosWeaponAttributes( this );
 			m_AosSkillBonuses = new AosSkillBonuses( this );
-			m_AosElementDamages = new AosElementAttributes( this );
 
 		}
 
@@ -2588,32 +2498,7 @@ namespace Server.Items
 
                 if ((prop = m_AosWeaponAttributes.MageWeapon) != 0)
                     list.Add(1060438, "{0}\t{1}", couleur, (30 - prop).ToString()); // mage weapon -~1_val~ skill
-
-                int phys, contondant, tranchant, perforant, magie, chaos, direct;
-
-                GetDamageTypes(null, out phys, out contondant, out tranchant, out perforant, out magie, out chaos, out direct);
-
-                if (phys != 0)
-                    list.Add(1060403, "{0}\t{1}", couleur, phys.ToString()); // physical damage ~1_val~%
-
-                if (contondant != 0)
-                    list.Add(1060405, "{0}\t{1}", couleur, contondant.ToString()); // fire damage ~1_val~%
-
-                if (tranchant != 0)
-                    list.Add(1060404, "{0}\t{1}", couleur, tranchant.ToString()); // cold damage ~1_val~%
-
-                if (perforant != 0)
-                    list.Add(1060406, "{0}\t{1}", couleur, perforant.ToString()); // poison damage ~1_val~%
-
-                if (magie != 0)
-                    list.Add(1060407, "{0}\t{1}", couleur, magie.ToString()); // energy damage ~1_val
-
-                if (Core.ML && chaos != 0)
-                    list.Add(1072846, chaos.ToString()); // chaos damage ~1_val~%
-
-                if (Core.ML && direct != 0)
-                    list.Add(1079978, direct.ToString()); // Direct Damage: ~1_PERCENT~%
-
+                    
                 list.Add(1061168, "{0}\t{1}\t{2}", couleur, MinDamage.ToString(), MaxDamage.ToString()); // weapon damage ~1_val~ - ~2_val~
 
                 if (Core.ML)

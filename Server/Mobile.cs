@@ -167,9 +167,6 @@ namespace Server
 	public enum ResistanceType
 	{
 		Physical,
-		Contondant,
-		Tranchant,
-		Perforant,
 		Magie
 	}
 
@@ -513,24 +510,6 @@ namespace Server
 		public virtual int PhysicalResistance
 		{
 			get { return GetResistance( ResistanceType.Physical ); }
-		}
-
-		[CommandProperty( AccessLevel.Counselor )]
-		public virtual int ContondantResistance
-		{
-			get { return GetResistance( ResistanceType.Contondant ); }
-		}
-
-		[CommandProperty( AccessLevel.Counselor )]
-		public virtual int TranchantResistance
-		{
-			get { return GetResistance( ResistanceType.Tranchant ); }
-		}
-
-		[CommandProperty( AccessLevel.Counselor )]
-		public virtual int PerforantResistance
-		{
-			get { return GetResistance( ResistanceType.Perforant ); }
 		}
 
 		[CommandProperty( AccessLevel.Counselor )]

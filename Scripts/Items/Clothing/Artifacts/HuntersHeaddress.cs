@@ -15,14 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public HuntersHeaddress()
 		{
-			Hue = 0x594;
-
-			SkillBonuses.SetValues( 0, SkillName.ArmeDistance, 20 );
-
-			Attributes.BonusDex = 8;
-			Attributes.NightSight = 1;
-			Attributes.AttackChance = 15;
-
+            Hue = 0x594;
 		}
 
 		public HuntersHeaddress( Serial serial ) : base( serial )
@@ -31,24 +24,16 @@ namespace Server.Items
 		
 		public override void Serialize( GenericWriter writer )
 		{
-			base.Serialize( writer );
+            base.Serialize(writer);
 
-			writer.Write( (int) 1 );
+            writer.Write((int)0);
 		}
 		
 		public override void Deserialize(GenericReader reader)
 		{
-			base.Deserialize( reader );
+            base.Deserialize(reader);
 
 			int version = reader.ReadInt();
-			switch ( version )
-			{
-				case 0:
-				{
-					Resistances.Tranchant = 0;
-					break;
-				}
-			}
 		}
 	}
 }

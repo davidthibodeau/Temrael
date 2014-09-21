@@ -180,15 +180,9 @@ namespace Server.Mobiles
 			SetDamage( 17, 21 );
 
 			SetDamageType( ResistanceType.Physical, 20 );
-			SetDamageType( ResistanceType.Contondant, 20 );
-			SetDamageType( ResistanceType.Tranchant, 20 );
-			SetDamageType( ResistanceType.Perforant, 20 );
 			SetDamageType( ResistanceType.Magie, 20 );
 
 			SetResistance( ResistanceType.Physical, 30 );
-			SetResistance( ResistanceType.Contondant, 30 );
-			SetResistance( ResistanceType.Tranchant, 30 );
-			SetResistance( ResistanceType.Perforant, 30 );
 			SetResistance( ResistanceType.Magie, 30 );
 
 			SetSkill( SkillName.Goetie, 120, 120.0 );
