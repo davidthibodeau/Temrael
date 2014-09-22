@@ -41,7 +41,7 @@ namespace Server.Spells
                 //Calcul du bonus donné par le sort (niveau * bonus_donne)
                 if (Caster is TMobile)
                 {
-                    amount += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
+                    //amount += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
                 }
 
                 DateTime endtime = DateTime.Now + duration;

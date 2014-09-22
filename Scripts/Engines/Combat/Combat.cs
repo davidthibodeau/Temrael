@@ -54,14 +54,14 @@ namespace Server.Engines.Combat
                 if (tatk.CheckFatigue(6))
                     return false;
 
-                chance += tatk.GetAptitudeValue(Aptitude.Precision) * 0.04;
+                //chance += tatk.GetAptitudeValue(Aptitude.Precision) * 0.04;
             }
 
             if (defenseur is TMobile)
             {
                 TMobile tdef = defenseur as TMobile;
 
-                if (tdef.GetAptitudeValue(Aptitude.Esquive) * 0.02 >= Utility.RandomDouble())
+                if (/*tdef.GetAptitudeValue(Aptitude.Esquive)*/ 0 * 0.02 >= Utility.RandomDouble())
                 {
                     tdef.SendMessage("Vous esquivez le coup !");
                     return false;
@@ -85,16 +85,16 @@ namespace Server.Engines.Combat
             if (attaquant.Mana < 4)
                 return 0;
 
-                chancetoCriticalStrike += atk.GetAptitudeValue(Aptitude.CoupPrecis) * 0.02;
+                //chancetoCriticalStrike += atk.GetAptitudeValue(Aptitude.CoupPrecis) * 0.02;
 
                 if(defenseur is BaseCreature)
-                    chancetoCriticalStrike += atk.GetAptitudeValue(Aptitude.TueurDeMonstre) * 0.03;
+                    //chancetoCriticalStrike += atk.GetAptitudeValue(Aptitude.TueurDeMonstre) * 0.03;
             
 
             if (chancetoCriticalStrike > Utility.RandomDouble())
             {
                 DoCriticalStrike();
-                return (int) (dmg * atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.05);
+                return (int)0;//(dmg * atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.05);
             }
             return 0;
         }
@@ -110,7 +110,7 @@ namespace Server.Engines.Combat
             {
                 if (defenseur.Frozen)
                     defenseur.Frozen = false;
-                double val = 1 + atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.5;
+                double val = 1; /*+ atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.5*/
                 defenseur.Freeze(TimeSpan.FromSeconds(val));
 
             }
@@ -195,7 +195,7 @@ namespace Server.Engines.Combat
             }
 
 
-            double scale = 1 + atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.05;
+            double scale = 1 ;/*+ atk.GetAptitudeValue(Aptitude.CoupPuissant) * 0.05*/
 
             attaquant.SendMessage("Vous portez un coup critique!");
             defenseur.AddStatMod(new StatMod(stat, atkWeapon.Serial + "Critical Strike", (int)(-1 * (atkvalue / 5) * scale), TimeSpan.FromSeconds(atkvalue * scale / 2)));

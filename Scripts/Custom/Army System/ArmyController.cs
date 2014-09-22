@@ -187,48 +187,49 @@ namespace Server.Items
             }
             UpdateAction();
         }
+        
+        //public bool GeoRecruit(Mobile from, BaseCreature soldier)
+        //{
 
-        public bool GeoRecruit(Mobile from, BaseCreature soldier)
-        {
-            if (!Soldiers.Contains(soldier))
-            {
-                    //BaseHire recruit = soldier as BaseHire;
-                    if (from is TMobile)
-                    {
-                        if (Soldiers.Count + 1 <= ((TMobile)from).GetAptitudeValue(Aptitude.Commandement))
-                        Soldiers.Add(soldier);
-                        soldier.ChangeAIType(AIType.AI_Army);
-                        soldier.Controlled = false;
-                        soldier.ControlMaster = null;
-                        from.SendMessage("{0} has joined the Army.", soldier.Name);
-                        //SetFormation(ArmyFormationEnum.Latest);
-                        //SetDirection(m_ArmyDirection);
-                        return true;
-                    }
-                    /*else if (Soldiers.Count + 1 <= CalculateMaxFollowers(from))
-                    {
-                        Soldiers.Add(soldier);
-                        soldier.ChangeAIType(AIType.AI_Army);
-                        soldier.Controlled = false;
-                        soldier.ControlMaster = null;
-                        from.SendMessage("{0} has joined the Army.", recruit.Title);
-                        //SetFormation(ArmyFormationEnum.Latest);
-                        //SetDirection(m_ArmyDirection);
-                        return true;
-                    }*/
-                    else
-                    {
-                        from.SendMessage("Vous avez {0} soldats et pouvez seulement en avoir {1}", ArmySize, ((TMobile)from).GetAptitudeValue(Aptitude.Commandement));
-                        //soldier.Say("You have {0} soldiers already, and can only have {1}!", ArmySize, CalculateMaxFollowers(from));
-                        return false;
-                    }
-            }
-            else
-            {
-                soldier.Say("Sir, I am already in the Army!");
-                return false;
-            }
-        }
+        //    if (!Soldiers.Contains(soldier))
+        //    {
+        //            //BaseHire recruit = soldier as BaseHire;
+        //            if (from is TMobile)
+        //            {
+        //                if (Soldiers.Count + 1 <= ((TMobile)from).GetAptitudeValue(Aptitude.Commandement))
+        //                Soldiers.Add(soldier);
+        //                soldier.ChangeAIType(AIType.AI_Army);
+        //                soldier.Controlled = false;
+        //                soldier.ControlMaster = null;
+        //                from.SendMessage("{0} has joined the Army.", soldier.Name);
+        //                //SetFormation(ArmyFormationEnum.Latest);
+        //                //SetDirection(m_ArmyDirection);
+        //                return true;
+        //            }
+        //            /*else if (Soldiers.Count + 1 <= CalculateMaxFollowers(from))
+        //            {
+        //                Soldiers.Add(soldier);
+        //                soldier.ChangeAIType(AIType.AI_Army);
+        //                soldier.Controlled = false;
+        //                soldier.ControlMaster = null;
+        //                from.SendMessage("{0} has joined the Army.", recruit.Title);
+        //                //SetFormation(ArmyFormationEnum.Latest);
+        //                //SetDirection(m_ArmyDirection);
+        //                return true;
+        //            }*/
+        //            else
+        //            {
+        //                from.SendMessage("Vous avez {0} soldats et pouvez seulement en avoir {1}", ArmySize, ((TMobile)from).GetAptitudeValue(Aptitude.Commandement));
+        //                //soldier.Say("You have {0} soldiers already, and can only have {1}!", ArmySize, CalculateMaxFollowers(from));
+        //                return false;
+        //            }
+        //    }
+        //    else
+        //    {
+        //        soldier.Say("Sir, I am already in the Army!");
+        //        return false;
+        //    }
+        //}
 
         public void Recruit(Mobile from, BaseCreature soldier)
         {

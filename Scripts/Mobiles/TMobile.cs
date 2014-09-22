@@ -1477,14 +1477,12 @@ namespace Server.Mobiles
             
         }
 
-        public virtual int GetAptitudeValue(Aptitude aptitude)
-        {
-            return 0;
-        }
 
         public void FamilierCheck()
         {
-            FollowersMax = 2 + GetAptitudeValue(Aptitude.Familier);
+            // TOCHECK FAMILIER.
+            FollowersMax = 5;
+
             Delta(MobileDelta.Followers);
         }
 
@@ -1622,15 +1620,11 @@ namespace Server.Mobiles
 
             double chance = 0.0;
             int equitation = ((int)this.Skills.Equitation.Value / 10);
-            equitation += this.GetAptitudeValue(Aptitude.CombatMonte);
 
             //int equitation = GetAptitudeValue(NAptitude.Equitation);
 
             if (equitation < 0)
                 equitation = 0;
-
-            if (equitation > 10)
-                equitation = 10;
 
             switch (type)
             {

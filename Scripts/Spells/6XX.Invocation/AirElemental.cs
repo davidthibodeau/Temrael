@@ -51,7 +51,7 @@ namespace Server.Spells
 		{
 			if ( CheckSequence() )
             {
-                double duration = (2 * Caster.Skills.Conjuration.Fixed) / 5;
+                double duration = (2 * Caster.Skills.Immuabilite.Fixed) / 5;
 
                 SpellHelper.Summon(new AirElemental(), Caster, 0x217, TimeSpan.FromSeconds(duration), true, true);
 			}

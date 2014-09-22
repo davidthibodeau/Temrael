@@ -52,7 +52,7 @@ namespace Server.Spells
 
                 DateTime endtime = DateTime.Now + duration;
 
-                Effects.SendLocationEffect(new Point3D(p), Caster.Map, 0x37CC, (int)(Caster.Skills[SkillName.Destruction].Value* 1.5));
+                Effects.SendLocationEffect(new Point3D(p), Caster.Map, 0x37CC, (int)(Caster.Skills[SkillName.Evocation].Value* 1.5));
 
                 m_Timer = new VortexTimer(Caster, damage, endtime, p, m_Timer, this);
                 m_Timer.Start();
@@ -104,7 +104,7 @@ namespace Server.Spells
 
                     if (map != null)
                     {
-                        IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(loc), (int)SpellHelper.AdjustValue(m_caster, 1 + m_caster.Skills[SkillName.Destruction].Base / 25, true));
+                        IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(loc), (int)SpellHelper.AdjustValue(m_caster, 1 + m_caster.Skills[SkillName.Evocation].Base / 25, true));
 
                         foreach (Mobile m in eable)
                         {

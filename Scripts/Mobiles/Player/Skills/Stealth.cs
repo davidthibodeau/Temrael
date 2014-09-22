@@ -99,9 +99,6 @@ namespace Server.SkillHandlers
 					if( steps < 1 )
 						steps = 1;
 
-                    if (m is TMobile)
-                        steps += (int)((TMobile)m).GetAptitudeValue(Aptitude.MouvementCache) * 2;
-
 					m.AllowedStealthSteps = steps;
 
 					PlayerMobile pm = m as PlayerMobile; // IsStealthing should be moved to Server.Mobiles

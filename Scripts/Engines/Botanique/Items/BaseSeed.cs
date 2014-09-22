@@ -55,7 +55,7 @@ namespace Server.Items
             {
                 TMobile m = (TMobile)from;
 
-                if (SeedName != null && SeedName != "" && m.GetAptitudeValue(Aptitude.Botanique) > 0)
+                if (SeedName != null && SeedName != "")
                     LabelTo(m, String.Format("[{0}]", SeedName));
             }
         }

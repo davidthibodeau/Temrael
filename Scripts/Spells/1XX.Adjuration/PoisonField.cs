@@ -82,7 +82,7 @@ namespace Server.Spells
 
                 int itemID = eastToWest ? 0x3915 : 0x3922;
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Tenebrae].Value * 0.4);
+                double duration = 4.0 + (Caster.Skills[SkillName.Necromancie].Value * 0.4);
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 
@@ -179,7 +179,7 @@ namespace Server.Spells
 
                 Poison p;
 
-                double total = (m_Caster.Skills[SkillName.Tenebrae].Value + m_Caster.Skills[SkillName.Tenebrae].Value) / 2;
+                double total = (m_Caster.Skills[SkillName.Necromancie].Value + m_Caster.Skills[SkillName.Necromancie].Value) / 2;
 
                 if (total >= 100)
                     p = Poison.Deadly;

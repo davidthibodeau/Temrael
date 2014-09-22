@@ -11,7 +11,7 @@ namespace Server.Items
 		{
 			LootType = LootType.Blessed;
 
-			SkillBonuses.SetValues( 0, SkillName.Goetie, 10.0 );
+			SkillBonuses.SetValues( 0, SkillName.Necromancie, 10.0 );
 			Attributes.RegenMana = 1;
 			Attributes.CastSpeed = 1;
 			//Attributes.IncreasedKarmaLoss = 5;

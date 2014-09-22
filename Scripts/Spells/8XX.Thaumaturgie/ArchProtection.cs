@@ -73,7 +73,7 @@ namespace Server.Spells
 
                 Effects.PlaySound(p, Caster.Map, 0x299);
 
-                double value = (int)(Caster.Skills[SkillName.Restoration].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value);
+                double value = (int)(Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value);
                 value /= 30;
 
                 value = SpellHelper.AdjustValue(Caster, value);

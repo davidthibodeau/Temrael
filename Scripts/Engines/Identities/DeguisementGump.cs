@@ -149,8 +149,8 @@ namespace Server.Engines.Identities
                 else
                 {
                     int id = info.ButtonID - 1;
-                    int aptDeguisement = from.GetAptitudeValue(Aptitude.Deguisement);
-                    if ((aptDeguisement * 0.0834) > Utility.RandomDouble() && aptDeguisement >= id)
+                    double skillDeguisement = from.Skills.Deguisement.Value;
+                    if ((skillDeguisement) > (Utility.RandomDouble() * 100) && skillDeguisement >= id)
                     {
                         from.Identities[id] = info.TextEntries[id - 1].Text;
                         from.Identities.CurrentIdentity = id;

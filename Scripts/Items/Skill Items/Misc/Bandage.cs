@@ -239,7 +239,7 @@ namespace Server.Items
                 return SkillName.AnimalLore;
             else
                 return SkillName.Anatomy;*/
-            return SkillName.Restoration;
+            return SkillName.Thaumaturgie;
         }
 
         public void EndHeal()

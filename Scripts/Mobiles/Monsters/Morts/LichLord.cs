@@ -40,7 +40,7 @@ namespace Server.Mobiles
             
             SetResistance(ResistanceType.Magie, 40, 60);
 
-			SetSkill( SkillName.Goetie, 90, 110.0 );
+			SetSkill( SkillName.Necromancie, 90, 110.0 );
 			//SetSkill( SkillName.SpiritSpeak, 90.0, 110.0 );
 
 			//SetSkill( SkillName.EvalInt, 90.1, 100.0 );

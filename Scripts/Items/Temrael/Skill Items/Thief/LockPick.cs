@@ -141,7 +141,8 @@ namespace Server.Items
 						return;
 					}
 
-                    if (m_From.Skills[SkillName.Crochetage].Value < m_Item.RequiredSkill - (int)((TMobile)m_From).GetAptitudeValue(Aptitude.Cambriolage) * 4)
+                    // TOCHECK CROCHETAGE
+                    if (m_From.Skills[SkillName.Crochetage].Value < m_Item.RequiredSkill /*- (int)((TMobile)m_From).GetAptitudeValue(Aptitude.Cambriolage) * 4*/)
 					{
 						/*
 						// Do some training to gain skills

@@ -172,7 +172,7 @@ namespace Server.Spells
 			{
 				m_Owner = owner;
 
-                double duration = ((int)owner.Skills[SkillName.Reve].Value * 800) + 120;
+                double duration = ((int)owner.Skills[SkillName.Hallucination].Value * 800) + 120;
 
                 duration = SpellHelper.AdjustValue(owner, duration);
 

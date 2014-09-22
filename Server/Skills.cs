@@ -37,41 +37,51 @@ namespace Server
 
 	public enum SkillName
 	{
+        // Artisanat
+        Alchimie,
+		Fignolage,
+		Forge,
+		Menuiserie,
+		Cuisine,
+		Couture,
+		Foresterie,
+		Excavation,
+        Polissage,
+
         // Combat
-        Tactiques,
-        Parer,
-        ArmeTranchante,
-        ArmeContondante,
-        ArmePerforante,
         ArmeHaste,
-        ArmeDistance,
+		Parer,
         Equitation,
-        CoupCritique,
-        Soins,
+		Soins,
+		Tactiques,
+		ArmeDistance,
+		ArmeTranchante,
+		ArmeContondante,
+		ArmePerforante,
+		Anatomie,
+		Concentration,
         Penetration,
-        Anatomie,
+        CoupCritique,
         ResistanceMagique,
-        Concentration,
         ArmureNaturelle,
 
         // Magie
         ArtMagique,
-        // 9 branches de magie
-        // Ces branches sont temporaires pour faire fonctionner le code existant.
-        Conjuration,
-        Goetie,
-        Miracles,
-        Mysticisme,
-        Restoration,
-        Reve,
-        Tenebrae,
-        Musique,
-        Destruction,
-        ///////////////////////////
+        // Nouvelles branches.
+        Evocation,
+        Immuabilite,
+        Alteration,
+        Providence,
+        Transmutation,
+        Thaumaturgie,
+        Hallucination,
+        Ensorcellement,
+        Necromancie,
+        /////////////////////
         Meditation,
         Inscription,
         MagieDeGuerre,
-        
+
         // Roublardise
         Discretion,
         Infiltration,
@@ -86,17 +96,7 @@ namespace Server
         Deguisement,
         Langues,
         Detection,
-
-        // Artisanat
-        Fignolage,
-        Polissage,
-        Excavation,
-        Foresterie,
-        Forge,
-        Couture,
-        Menuiserie,
-        Cuisine,
-        Alchimie
+        Musique,
 	}
 
     public enum SkillCategory 
@@ -652,19 +652,20 @@ namespace Server
                 new SkillInfo( SkillName.ResistanceMagique,"Résistance Magique",SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
                 new SkillInfo( SkillName.ArmureNaturelle, "Armure Naturelle",   SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
                 
-				new SkillInfo( SkillName.Inscription,     "Inscription",		SkillCategory.Magie,	0.0,	2.0,	8.0,	null,	0.0,	0.2,	0.8,	1.0 ),
-				new SkillInfo( SkillName.ArtMagique,      "Art de la Magie",	SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.ArtMagique,        "Art de la Magie",  SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Evocation,         "Evocation",        SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Immuabilite,       "Immuabilite",      SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Alteration,        "Alteration",       SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Providence,        "Providence",       SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Transmutation,     "Transmutation",    SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Thaumaturgie,      "Thaumaturgie",     SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Hallucination,     "Hallucination",    SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Ensorcellement,    "Ensorcellement",   SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Necromancie,       "Necromancie",      SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
                 new SkillInfo( SkillName.Meditation,      "Meditation",			SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	1.5,	1.0 ),
+				new SkillInfo( SkillName.Inscription,     "Inscription",		SkillCategory.Magie,	0.0,	2.0,	8.0,	null,	0.0,	0.2,	0.8,	1.0 ),
                 new SkillInfo( SkillName.MagieDeGuerre,   "Magie de Guerre",	SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	1.5,	1.0 ),
-                new SkillInfo( SkillName.Destruction,     "Destruction",        SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Conjuration,     "Conjuration",        SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Goetie,          "Goetie",             SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Miracles,        "Miracles",           SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Mysticisme,      "Mysticisme",         SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Reve,            "Reve",               SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Restoration,     "Restoration",        SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Tenebrae,        "Tenebrae",           SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
-                new SkillInfo( SkillName.Musique,         "Musique",            SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,    1.5,    1.0 ),
+
 
                 new SkillInfo( SkillName.Survie,          "Survie",	  			SkillCategory.Roublardise,	20.0,	15.0,	15.0, 	null,	2.0,	1.5,	1.5,	1.0 ),
 				new SkillInfo( SkillName.Detection,       "Detection",			SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.4,	0.6,	1.0 ),
@@ -679,6 +680,7 @@ namespace Server
 				new SkillInfo( SkillName.Pieges,          "Maitrise des Pieges",SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Langues,         "Langues",			SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
                 new SkillInfo( SkillName.Deguisement,     "Deguisement",		SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
+                new SkillInfo( SkillName.Musique,         "Musique",            SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
 
 			};
 
@@ -791,18 +793,36 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Parer{ get{ return this[SkillName.Parer]; } set{} }
 
-        //[CommandProperty( AccessLevel.Counselor )]
-        //public Skill Illusion{ get{ return this[SkillName.Illusion]; } set{} }
-
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Forge{ get{ return this[SkillName.Forge]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Equitation{ get{ return this[SkillName.Equitation]; } set{} }
 
-        //Ce skill est a changer en changeant le systeme de magie.
+        // Magie
         [CommandProperty(AccessLevel.Counselor)]
-        public Skill Conjuration { get { return this[SkillName.Conjuration]; } set { } }
+        public Skill Evocation { get { return this[SkillName.Evocation]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Immuabilite { get { return this[SkillName.Immuabilite]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Alteration { get { return this[SkillName.Alteration]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Providence { get { return this[SkillName.Providence]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Transmutation { get { return this[SkillName.Transmutation]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Thaumaturgie { get { return this[SkillName.Thaumaturgie]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Hallucination { get { return this[SkillName.Hallucination]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Ensorcellement { get { return this[SkillName.Ensorcellement]; } set { } }
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Necromancie { get { return this[SkillName.Necromancie]; } set { } }
+
+
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill Musique { get { return this[SkillName.Musique]; } set { } }
+
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Survie{ get{ return this[SkillName.Survie]; } set{} }
@@ -810,21 +830,11 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Menuiserie{ get{ return this[SkillName.Menuiserie]; } set{} }
 
-        //[CommandProperty( AccessLevel.Counselor )]
-        //public Skill Destruction{ get{ return this[SkillName.Destruction]; } set{} }
-
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Cuisine{ get{ return this[SkillName.Cuisine]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Detection{ get{ return this[SkillName.Detection]; } set{} }
-
-        //Ce skill est a changer en changeant le systeme de magie.
-        [CommandProperty(AccessLevel.Counselor)]
-        public Skill Tenebrae { get { return this[SkillName.Tenebrae]; } set { } }
-
-        //[CommandProperty( AccessLevel.Counselor )]
-        //public Skill Restoration{ get{ return this[SkillName.Restoration]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Soins{ get{ return this[SkillName.Soins]; } set{} }
@@ -832,18 +842,11 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill ResistanceMagique{ get{ return this[SkillName.ResistanceMagique]; } set{} }
 
-        //[CommandProperty( AccessLevel.Counselor )]
-        //public Skill Reve{ get{ return this[SkillName.Reve]; } set{} }
-
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Meditation{ get{ return this[SkillName.Meditation]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Discretion{ get{ return this[SkillName.Discretion]; } set{} }
-
-        //Ce skill est a changer en changeant le systeme de magie.
-        [CommandProperty(AccessLevel.Counselor)]
-        public Skill Goetie { get { return this[SkillName.Goetie]; } set { } }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Inscription{ get{ return this[SkillName.Inscription]; } set{} }
@@ -853,9 +856,6 @@ namespace Server
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill ArtMagique{ get{ return this[SkillName.ArtMagique]; } set{} }
-
-        //[CommandProperty( AccessLevel.Counselor )]
-        //public Skill Mysticisme{ get{ return this[SkillName.Mysticisme]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Tactiques{ get{ return this[SkillName.Tactiques]; } set{} }
@@ -892,9 +892,6 @@ namespace Server
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Poursuite{ get{ return this[SkillName.Poursuite]; } set{} }
-
-        //[CommandProperty( AccessLevel.Counselor )]
-        //public Skill Miracles{ get{ return this[SkillName.Miracles]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill ArmeTranchante{ get{ return this[SkillName.ArmeTranchante]; } set{} }

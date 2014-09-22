@@ -448,12 +448,13 @@ namespace Server.Spells
             if (caster is TMobile)
             {
                 TMobile pm = caster as TMobile;
-
+                /* TOCHECK SCALINGSPELLS
                 if (pm != null)
                 {
                     if (pm.GetAptitudeValue(Aptitude.Spiritisme) > 0)
                         value *= 1 + (pm.GetAptitudeValue(Aptitude.Spiritisme) * 0.05);
                 }
+                */
             }
 
             return TimeSpan.FromSeconds(value);
@@ -510,7 +511,7 @@ namespace Server.Spells
 
 		public static int GetOffset( Mobile caster, Mobile target, StatType type, bool curse )
         {
-            double value = 1 + (caster.Skills[SkillName.ArtMagique].Value + caster.Skills[SkillName.Mysticisme].Value) * 0.3;
+            double value = 1 + (caster.Skills[SkillName.ArtMagique].Value + caster.Skills[SkillName.ArtMagique].Value) * 0.3;
 
             if (curse)
             {
@@ -519,14 +520,14 @@ namespace Server.Spells
             }
 
             TMobile pm = caster as TMobile;
-
+            /* //TOCHECK SCALINGSPELLS
             if (pm != null)
             {
                 if (curse)
                     value *= (pm.GetAptitudeValue(Aptitude.Sorcellerie) * 0.02) + 1;
                 else
                     value *= (pm.GetAptitudeValue(Aptitude.Sorcellerie) * 0.03) + 1;
-            }
+            }*/
 
             return (int)value;
 		}
@@ -617,14 +618,14 @@ namespace Server.Spells
                 caster.SendMessage("Vous ne pouvez pas controller plus de familiers.");
                 return;
             }
-
+            /* //TOCHECK SCALINGSPELLS
             if (scaleDuration)
             {
                 TMobile pm = caster as TMobile;
 
                 if (pm != null)
                 {
-                    /* Bonus (Magie Prolongée) */
+                    //Bonus (Magie Prolongée)
                     double scale = (pm.GetAptitudeValue(Aptitude.Spiritisme) * 0.04) + 1;
                     duration = TimeSpan.FromSeconds(duration.TotalSeconds * scale);
                 }
@@ -650,7 +651,7 @@ namespace Server.Spells
                     creature.DamageMin = (int)(creature.DamageMin * scale);
                     creature.DamageMax = (int)(creature.DamageMax * scale);
                 }
-            }
+            }*/
 
             int offset = Utility.Random(8) * 2;
 

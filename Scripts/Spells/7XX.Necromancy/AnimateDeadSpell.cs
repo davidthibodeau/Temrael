@@ -62,7 +62,7 @@ namespace Server.Spells
 
 		public override void OnCast()
         {
-            double skill = (Caster.Skills[SkillName.ArtMagique].Base + Caster.Skills[SkillName.Goetie].Base) / 2;
+            double skill = (Caster.Skills[SkillName.ArtMagique].Base + Caster.Skills[SkillName.Necromancie].Base) / 2;
 
             if (CheckSequence())
             {

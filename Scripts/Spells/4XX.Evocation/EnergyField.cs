@@ -79,7 +79,7 @@ namespace Server.Spells
 
                 Effects.PlaySound(p, Caster.Map, 0x20B);
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Destruction].Value * 0.4);
+                double duration = 4.0 + (Caster.Skills[SkillName.Evocation].Value * 0.4);
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 

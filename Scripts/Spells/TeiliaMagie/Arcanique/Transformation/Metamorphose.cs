@@ -63,7 +63,7 @@ namespace Server.Spells
             {
                 if (m.Alive && Caster.CanSee(m) && m.BodyMod == 0)
                 {
-                    MetamorphoseGump.MetamorphoseEntry entry = new MetamorphoseGump.MetamorphoseEntry(m.Name, ShrinkTable.Lookup(m.Body), m.Body, 0, (int)(Caster.Skills[SkillName.Reve].Base / 4), (int)(Caster.Skills[SkillName.Reve].Base / 4), (int)(Caster.Skills[SkillName.Reve].Base / 4), 0, m.Hue);
+                    MetamorphoseGump.MetamorphoseEntry entry = new MetamorphoseGump.MetamorphoseEntry(m.Name, ShrinkTable.Lookup(m.Body), m.Body, 0, (int)(Caster.Skills[SkillName.Hallucination].Base / 4), (int)(Caster.Skills[SkillName.Hallucination].Base / 4), (int)(Caster.Skills[SkillName.Hallucination].Base / 4), 0, m.Hue);
 
                     if (Caster is TMobile)
                     {
@@ -72,7 +72,7 @@ namespace Server.Spells
                         if (pm.MetamorphoseList == null)
                             pm.MetamorphoseList = new ArrayList();
 
-                        int max = (int)(pm.Skills[SkillName.Reve].Base / 5);
+                        int max = (int)(pm.Skills[SkillName.Hallucination].Base / 5);
 
                         if (pm.MetamorphoseList.Count >= max)
                             pm.SendMessage("Vous ne pouvez pas avoir plus de " + max.ToString() + " créatures dans votre liste de métamorphoses.");

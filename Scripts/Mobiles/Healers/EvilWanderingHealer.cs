@@ -29,7 +29,7 @@ namespace Server.Mobiles
 
 			SetSkill( SkillName.Survie, 80.0, 100.0 );
 			SetSkill( SkillName.Soins, 80.0, 100.0 );
-			SetSkill( SkillName.Goetie, 80.0, 100.0 );
+			SetSkill( SkillName.Necromancie, 80.0, 100.0 );
             SetSkill(SkillName.ArtMagique, 80.0, 100.0);
 		}
 

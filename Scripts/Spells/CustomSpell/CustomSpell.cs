@@ -61,8 +61,7 @@ namespace Server.Custom.CustomSpell
                 case (StyleSpell.SelfTimer): UseSpellSelfTimer();
                     break;
 
-                case (StyleSpell.Unsetted): throw new Exception("StyleSpell non setté.");
-                    break;
+                default: throw new Exception("StyleSpell non setté.");
             }
         }
 

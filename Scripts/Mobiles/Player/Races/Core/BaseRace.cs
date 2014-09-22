@@ -24,7 +24,6 @@ namespace Server.Mobiles
         public abstract int Cha{get;}
 
         public abstract string Description { get; }
-        public abstract Aptitude Bonus { get; }
         public abstract int BonusNbr { get; }
         public abstract string BonusDescr { get; }
         public abstract int Image { get; }

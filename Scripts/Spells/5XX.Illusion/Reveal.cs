@@ -93,7 +93,7 @@ namespace Server.Spells
 			if ( InvisibilitySpell.HasTimer( m ) )
 				return true;
 
-			double magery = from.Skills[SkillName.Reve].Value;
+			double magery = from.Skills[SkillName.Hallucination].Value;
             double detectHidden = from.Skills[SkillName.ArtMagique].Value;
 
             double hiding = m.Skills[SkillName.Discretion].Value;

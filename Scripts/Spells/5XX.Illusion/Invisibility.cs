@@ -56,7 +56,7 @@ namespace Server.Spells
 
 				RemoveTimer( m );
 
-                double duration = ((120 * Caster.Skills[SkillName.Reve].Value) / 50) + 1;
+                double duration = ((120 * Caster.Skills[SkillName.Hallucination].Value) / 50) + 1;
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
                 

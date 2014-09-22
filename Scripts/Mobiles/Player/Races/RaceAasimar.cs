@@ -39,7 +39,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override Aptitude Bonus { get { return Aptitude.Spiritisme; } }
         public override int BonusNbr { get { return 1; } }
         public override string BonusDescr { get { return "Votre relation avec les dieux vous permet d'avoir un point bonus de spiritisme."; } }
         #endregion

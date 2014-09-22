@@ -143,12 +143,6 @@ namespace Server.Items
                 m_from = from;
                 m_instrument = instrument;
             }
-
-            public override void OnClick()
-            {
-                m_from.CloseGump(typeof(NewBardSpellbookGump));
-                m_from.SendGump(new NewBardSpellbookGump(m_from, m_instrument));
-            }
         }
 
         private class QSLEntry : ContextMenuEntry

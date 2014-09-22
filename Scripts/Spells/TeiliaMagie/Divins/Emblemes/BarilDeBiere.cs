@@ -88,10 +88,10 @@ namespace Server.Spells
                     return;
                 }
 
-                foreach (Mobile m in m_BaseTotem.GetMobilesInRange(1 + (int)(m_BaseTotem.Caster.Skills[SkillName.Miracles].Base / 10)))
+                foreach (Mobile m in m_BaseTotem.GetMobilesInRange(1 + (int)(m_BaseTotem.Caster.Skills[SkillName.ArtMagique].Base / 10)))
                 {
                     if (m != null && m.Alive && m.CanSee(m_BaseTotem))
-                        m_BaseTotem.Caster.Heal(1 + (int)(m_BaseTotem.Caster.Skills[SkillName.Miracles].Base / 10));
+                        m_BaseTotem.Caster.Heal(1 + (int)(m_BaseTotem.Caster.Skills[SkillName.ArtMagique].Base / 10));
                 }
             }
         }

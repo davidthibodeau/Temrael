@@ -59,7 +59,7 @@ namespace Server.Spells
 
 				if ( targ.Locked/* && targ.LockLevel != 0 */)
 				{
-					double level = Caster.Skills[SkillName.Tenebrae].Value;
+					double level = Caster.Skills[SkillName.Necromancie].Value;
 
                     level = SpellHelper.AdjustValue(Caster, level);
 

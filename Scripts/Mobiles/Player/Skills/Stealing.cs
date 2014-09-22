@@ -206,9 +206,6 @@ namespace Server.SkillHandlers
 
                     double max = 6;
 
-                    if (m_Thief is TMobile)
-                        max += ((TMobile)m_Thief).GetAptitudeValue(Aptitude.Pillage) * 5; 
-
 					if ( w > max )
 					{
 						m_Thief.SendMessage( "That is too heavy to steal." );

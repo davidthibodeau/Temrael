@@ -731,7 +731,7 @@ namespace Server.Mobiles
 		#region Bonding
 		public const bool BondingEnabled = true;
 
-		public virtual bool IsNecromancer { get { return ( Skills[ SkillName.Goetie ].Value > 50 ); } }
+		public virtual bool IsNecromancer { get { return ( Skills[ SkillName.Necromancie ].Value > 50 ); } }
 
 		public virtual bool IsBondable{ get{ return ( BondingEnabled && !Summoned ); } }
 		public virtual TimeSpan BondingDelay{ get{ return TimeSpan.FromDays( 7.0 ); } }
@@ -1753,142 +1753,11 @@ namespace Server.Mobiles
                 TMobile tmob = (TMobile)from;
                // Random rand = new Random();
 
-				//Hermine ** Tannerie **
-				switch(tmob.GetAptitudeValue(Aptitude.Tanneur))
-				{				
-					case 0:
-						if (wool != 0)
-                            wool = 1 + ((wool * 20) / 100);
+                // TOCHECK CUISINE
+                if (meat != 0)
+                    meat += (int)(tmob.Skills.Cuisine.Value / 10) / 2;
 
-                        if (hides != 0)
-                            hides = 1 +  ((hides * 20) / 100);
-							
 
-                        if (scales != 0)
-							scales = 1 + ((scales * 20) / 100);
-					break;
-					
-					case 1:
-						if (wool != 0)
-                            wool = 1 + ((wool * 40) / 100);
-
-                        if (hides != 0)
-                            hides = 1 +  ((hides * 40) / 100);
-
-                        if (scales != 0)
-							scales = 1 + ((scales * 40) / 100);
-					break;
-					
-					case 2:
-						if (wool != 0)
-                            wool = 1 + ((wool * 60) / 100);
-
-                        if (hides != 0)
-							//tmob.SendMessage( "PreHide" + hides );
-                            hides = 1 +  ((hides * 60) / 100);
-							//tmob.SendMessage( "Hides" + hides );
-
-                        if (scales != 0)
-							scales = 1 + ((scales * 60) / 100);
-					break;
-					
-					case 3:
-						if (wool != 0)
-                            wool = 1 + ((wool * 80) / 100);
-
-                        if (hides != 0)
-                            hides = 1 +  ((hides * 80) / 100);
-
-                        if (scales != 0)
-							scales = 1 + ((scales * 80) / 100);
-					break;
-					
-					case 4: break; //Les valeurs ne changent pas.
-					
-					default:
-						if (wool != 0)
-                            wool += tmob.GetAptitudeValue(Aptitude.Tanneur) / 2;
-
-                        if (hides != 0)
-							//tmob.SendMessage( "PreHide" + hides );
-                            hides += tmob.GetAptitudeValue(Aptitude.Tanneur) / 2;
-							//tmob.SendMessage( "Hides" + hides );
-
-                        if (scales != 0)
-							scales += tmob.GetAptitudeValue(Aptitude.Tanneur) / 2;
-					break;
-				
-				}
-						
-				
-				// Hermine **** Boucherie ***
-				switch(tmob.GetAptitudeValue(Aptitude.Boucherie))
-				{
-
-					case 0:
-						if (feathers != 0)
-                            feathers = 5 + ((feathers * 20) / 100);
-
-                        if (meat != 0)
-                            meat = 1 +  ((meat * 20) / 100);
-							
-
-                        if (bones != 0)
-							bones = 1 + ((bones * 20) / 100);
-					break;
-					
-					case 1:
-						if (feathers != 0)
-                            feathers = 5 + ((feathers * 40) / 100);
-
-                        if (meat != 0)
-                            meat = 1 +  ((meat * 40) / 100);
-
-                        if (bones != 0)
-							bones = 1 + ((bones * 40) / 100);
-					break;
-					
-					case 2:
-						if (feathers != 0)
-                            feathers = 5 + ((feathers * 60) / 100);
-
-                        if (meat != 0)
-							//tmob.SendMessage( "PreHide" + meat );
-                            meat = 1 +  ((meat * 60) / 100);
-							//tmob.SendMessage( "meat" + meat );
-
-                        if (bones != 0)
-							bones = 1 + ((bones * 60) / 100);
-					break;
-					
-					case 3:
-						if (feathers != 0)
-                            feathers = 5 + ((feathers * 80) / 100);
-
-                        if (meat != 0)
-                            meat = 1 +  ((meat * 80) / 100);
-
-                        if (bones != 0)
-							bones = 1 + ((bones * 80) / 100);
-					break;
-					
-					case 4:	break; // les valeurs ne changent pas.
-					
-					default:
-						if (feathers != 0)
-                            feathers += tmob.GetAptitudeValue(Aptitude.Boucherie);
-
-                        if (meat != 0)
-							//tmob.SendMessage( "PreHide" + meat );
-                            meat += tmob.GetAptitudeValue(Aptitude.Boucherie) / 2;
-							//tmob.SendMessage( "meat" + meat );
-
-                        if (bones != 0)
-							bones += tmob.GetAptitudeValue(Aptitude.Boucherie) / 2;
-					break;
-				
-				}
-				
                /* if (tmob.GetAptitudeValue(NAptitude.Tanneur) > 0)
                 {
                     if (tmob.GetAptitudeValue(NAptitude.Tanneur) * 5 > rand.Next(0, 100))
@@ -3550,7 +3419,7 @@ namespace Server.Mobiles
 			if ( skill == SkillName.Pieges && (from.Skills[SkillName.Crochetage].Base < 50.0 || from.Skills[SkillName.Detection].Base < 50.0) )
 				return false;
 
-			if ( !Core.AOS && (skill == SkillName.Miracles || skill == SkillName.Goetie) )
+			if ( !Core.AOS && (skill == SkillName.ArtMagique || skill == SkillName.Necromancie) )
 				return false;
 
 			return true;

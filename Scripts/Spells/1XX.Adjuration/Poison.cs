@@ -61,7 +61,7 @@ namespace Server.Spells
                 {*/
                     int level;
 
-                    double total = Caster.Skills[SkillName.Tenebrae].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
+                    double total = Caster.Skills[SkillName.Necromancie].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
 
                     //double dist = Caster.GetDistanceToSqrt(m);
 

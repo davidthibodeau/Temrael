@@ -973,7 +973,7 @@ namespace Server.Gumps
                             PaysanNomadeGarde soldier = new PaysanNomadeGarde(m_item, controller);
                             soldier.MoveToWorld(m_From.Location, m_From.Map);
                             bool recruit = false;
-                            recruit = controller.GeoRecruit(from, soldier);
+                            //recruit = controller.GeoRecruit(from, soldier);
                             if (!(recruit))
                             {
                                 soldier.Delete();
@@ -990,7 +990,7 @@ namespace Server.Gumps
                             PaysanNomadeGarde soldier = new PaysanNomadeGarde(m_item, controller);
                             soldier.MoveToWorld(m_From.Location, m_From.Map);
                             bool recruit = false;
-                            recruit = controller.GeoRecruit(from, soldier);
+                            //recruit = controller.GeoRecruit(from, soldier);
                             if (!(recruit))
                                 soldier.Delete();
                             else

@@ -225,6 +225,8 @@ namespace Server.Engines.Harvest
                                 TMobile tmob = (TMobile)from;
                                 Random rand = new Random();
 
+                                //TOCHECK HARVESTING
+                                /*
                                 if (def.Skill == SkillName.Foresterie)
                                 {
                                     if (tmob.GetAptitudeValue(Aptitude.Forestier) * 5 > rand.Next(0, 100))
@@ -235,6 +237,7 @@ namespace Server.Engines.Harvest
                                     if (tmob.GetAptitudeValue(Aptitude.Mineur) * 5 > rand.Next(0, 100))
                                         consumed += tmob.GetAptitudeValue(Aptitude.Mineur) / 3;
                                 }
+                                */
                             }
 
                             consumed += Utility.RandomMinMax(-1, 1);

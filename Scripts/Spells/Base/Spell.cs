@@ -178,7 +178,7 @@ namespace Server.Spells
                     chance += pm.Skills[SkillName.Concentration].Value / 333;
 
                     if (this is NecromancerSpell) //La nécro est une école de contact, donc besoin d'un bonus pour ne pas Fizzle
-                        chance += pm.Skills[SkillName.Goetie].Value / 333;
+                        chance += pm.Skills[SkillName.Necromancie].Value / 333;
                 }
                 if (chance > Utility.RandomDouble())
                     m_Caster.SendMessage("Vous réussissez à garder votre concentration.");

@@ -39,7 +39,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override Aptitude Bonus { get { return Aptitude.PointSup; } }
         public override int BonusNbr { get { return 1; } }
         public override string BonusDescr { get { return "La grande diversite des Capiceen vous permet d'avoir un point d'aptitude supplementaire a la creation de votre personnage."; } }
         #endregion

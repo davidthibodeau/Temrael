@@ -75,7 +75,7 @@ namespace Server.Spells
                 {
                     BaseCreature creature = (BaseCreature)Activator.CreateInstance(m_Creature);
                     
-                    double duration = 240 + (5 * Caster.Skills[SkillName.Conjuration].Value);
+                    double duration = 240 + (5 * Caster.Skills[SkillName.Immuabilite].Value);
 
                     SpellHelper.Summon(creature, Caster, 0x215, TimeSpan.FromSeconds(duration), true, true);
 				}
@@ -164,7 +164,7 @@ namespace Server.Spells
 
                 for (int i = 0; i < m_Table.Length; ++i)
                 {
-                    if (m_Caster.Skills[SkillName.Conjuration].Value >= m_Table[i].RequiredSkill)
+                    if (m_Caster.Skills[SkillName.Immuabilite].Value >= m_Table[i].RequiredSkill)
                         AddButton(97 + ((i / 5) * 110), 107 + (75 * i) - ((i / 5) * 375), 2117, 2118, i + 1, GumpButtonType.Reply, 0);
                     else
                         AddImage(97 + ((i / 5) * 110), 107 + (75 * i) - ((i / 5) * 375), 2117, 972);

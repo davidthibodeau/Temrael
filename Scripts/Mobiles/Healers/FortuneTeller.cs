@@ -28,7 +28,7 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.Anatomy, 85.0, 100.0 );
 			SetSkill( SkillName.Soins, 90.0, 100.0 );
 			SetSkill( SkillName.ArtMagique, 75.0, 98.0 );
-			SetSkill( SkillName.Goetie, 65.0, 88.0 );
+			SetSkill( SkillName.Necromancie, 65.0, 88.0 );
 		}
 
 		public override bool IsActiveVendor{ get{ return true; } }

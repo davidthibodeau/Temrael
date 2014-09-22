@@ -31,7 +31,7 @@ namespace Server.Spells
                 return;
             }
 
-            foreach (Item itema in Caster.GetItemsInRange(1 + (int)(Caster.Skills[SkillName.Miracles].Base / 10)))
+            foreach (Item itema in Caster.GetItemsInRange(1 + (int)(Caster.Skills[SkillName.ArtMagique].Base / 10)))
             {
                 if (itema != null && itema is Corpse)
                 {

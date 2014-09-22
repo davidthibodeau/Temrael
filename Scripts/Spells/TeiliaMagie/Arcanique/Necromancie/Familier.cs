@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Goetie; } }
+        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
 
         public override bool Invocation { get { return true; } }
 
@@ -111,7 +111,7 @@ namespace Server.Spells
 			AddHtmlLocalized( 30, 26, 200, 20, 1060147, EnabledColor16, false, false ); // Chose thy familiar...
 
             double necro = from.Skills[SkillName.ArtMagique].Base;
-			double spirit = from.Skills[SkillName.Goetie].Base;
+			double spirit = from.Skills[SkillName.Necromancie].Base;
 
 			for ( int i = 0; i < entries.Length; ++i )
 			{
@@ -139,7 +139,7 @@ namespace Server.Spells
 				FamilierEntry entry = m_Entries[index];
 
                 double necro = m_From.Skills[SkillName.ArtMagique].Base;
-				double spirit = m_From.Skills[SkillName.Goetie].Base;
+				double spirit = m_From.Skills[SkillName.Necromancie].Base;
 
                 //BaseCreature check = (BaseCreature)FamilierSpell.Table[m_From];
 
@@ -175,7 +175,7 @@ namespace Server.Spells
 
 						bc.Skills.Concentration = m_From.Skills.Concentration;
 
-						if ( BaseCreature.Summon( bc, m_From, m_From.Location, -1, TimeSpan.FromSeconds(10 + m_From.Skills[SkillName.Goetie].Base * 2.4) ) )
+						if ( BaseCreature.Summon( bc, m_From, m_From.Location, -1, TimeSpan.FromSeconds(10 + m_From.Skills[SkillName.Necromancie].Base * 2.4) ) )
 						{
 							m_From.FixedParticles( 0x3728, 1, 10, 9910, EffectLayer.Head );
 							bc.PlaySound( bc.GetIdleSound() );

@@ -31,12 +31,12 @@ namespace Server.Mobiles
 
             SetDamage(25, 30);
 
-            SetSkill(SkillName.Goetie, 83.1, 85.5);
+            SetSkill(SkillName.Necromancie, 83.1, 85.5);
             SetSkill(SkillName.ArtMagique, 83.0, 85.5);
             SetSkill(SkillName.Concentration, 73.1, 75.0);
             SetSkill(SkillName.Tactiques, 62.1, 64.0);
             SetSkill(SkillName.Anatomie, 62.1, 64.0);
-            SetSkill(SkillName.Destruction, 45.1, 50.0);
+            SetSkill(SkillName.Evocation, 45.1, 50.0);
 
             VirtualArmor = 71;
 

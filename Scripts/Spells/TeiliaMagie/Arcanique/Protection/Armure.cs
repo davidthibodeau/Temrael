@@ -30,7 +30,7 @@ namespace Server.Spells
 
         public static void ToogleArmure(Spell spell, Mobile Caster, Mobile m)
         {
-            double value = 10 + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Restoration].Value;
+            double value = 10 + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Thaumaturgie].Value;
             value /= 1.5;
 
             value += Caster.Skills[SkillName.Soins].Value * 0.4;

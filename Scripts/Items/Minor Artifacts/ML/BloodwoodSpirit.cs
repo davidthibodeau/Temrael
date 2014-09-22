@@ -19,7 +19,7 @@ namespace Server.Items
 			Protection = GetRandomProtection();
 
 			SkillBonuses.SetValues( 0, SkillName.ArtMagique, 10.0 );
-			SkillBonuses.SetValues( 1, SkillName.Goetie, 5.0 );
+			SkillBonuses.SetValues( 1, SkillName.Necromancie, 5.0 );
 		}
 
 		public BloodwoodSpirit( Serial serial ) :  base( serial )

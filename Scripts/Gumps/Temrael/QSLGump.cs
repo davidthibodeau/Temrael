@@ -25,46 +25,11 @@ namespace Server.Gumps
 
                 int val = (int)from.QuickSpells[i];
 
-                DivineSpellBookEntry dentry = NewDivineSpellbookGump.FindEntryBySpellID(val);
-
-                if (dentry != null && book.HasSpell(dentry.SpellID))
-                {
-                    list.Add(dentry);
-                }
-
                 SpellBookEntry entry = NewSpellbookGump.FindEntryBySpellID(val);
 
                 if (entry != null && book.HasSpell(entry.SpellID))
                 {
                     list.Add(entry);
-                }
-
-                BardSpellBookEntry bentry = NewBardSpellbookGump.FindEntryBySpellID(val);
-
-                if (bentry != null && book.HasSpell(bentry.SpellID))
-                {
-                    list.Add(bentry);
-                }
-            }
-
-            return list;
-        }
-
-        public static ArrayList GetSpellList(TMobile from, BaseInstrument instrument)
-        {
-            ArrayList list = new ArrayList();
-
-            for (int i = 0; i < from.QuickSpells.Count; i++)
-            {
-                int val = (int)from.QuickSpells[i];
-
-                SpellBookEntry entry = NewSpellbookGump.FindEntryBySpellID(val);
-
-                BardSpellBookEntry bentry = NewBardSpellbookGump.FindEntryBySpellID(val);
-
-                if (bentry != null)
-                {
-                    list.Add(bentry);
                 }
             }
 
@@ -122,31 +87,11 @@ namespace Server.Gumps
 
                         object obj = (object)list[i];
 
-                        if (book is NewDivineSpellbook)
-                        {
-                            DivineSpellBookEntry entry = (DivineSpellBookEntry)obj;
-
-                            if (entry != null)
-                            {
-                                AddButton(74 + hindex * 44, 42 + vindex * 44, entry.ImageID, entry.ImageID, entry.SpellID, GumpButtonType.Reply, 0);
-                                //AddButton(102 + hindex * 57, 71 + vindex * 45, 2103, 2104, entry.SpellID + 2000, GumpButtonType.Reply, 0);
-                            }
-                        }
-                        else if (book is NewSpellbook)
+                        if (book is NewSpellbook)
                         {
                             SpellBookEntry entry = (SpellBookEntry)obj;
 
                             //Console.WriteLine(((SpellBookEntry)obj).ToString() + " " + entry.ToString());
-
-                            if (entry != null)
-                            {
-                                AddButton(74 + hindex * 44, 42 + vindex * 44, entry.ImageID, entry.ImageID, entry.SpellID, GumpButtonType.Reply, 0);
-                                //AddButton(102 + hindex * 57, 71 + vindex * 45, 2103, 2104, entry.SpellID + 2000, GumpButtonType.Reply, 0);
-                            }
-                        }
-                        else if (obj is BardSpellBookEntry)
-                        {
-                            BardSpellBookEntry entry = (BardSpellBookEntry)obj;
 
                             if (entry != null)
                             {
@@ -170,9 +115,6 @@ namespace Server.Gumps
         {
             try
             {
-                if (list == null)
-                    list = GetSpellList(from, instrument);
-
                 if (list != null)
                 {
                     m_List = list;
@@ -226,26 +168,7 @@ namespace Server.Gumps
                                 //AddButton(102 + hindex * 57, 71 + vindex * 45, 2103, 2104, entry.SpellID + 2000, GumpButtonType.Reply, 0);
                             }
                         }
-                        else if (obj is DivineSpellBookEntry)
-                        {
-                            DivineSpellBookEntry entry = (DivineSpellBookEntry)obj;
-
-                            if (entry != null)
-                            {
-                                AddButton(74 + hindex * 44, 42 + vindex * 44, entry.ImageID, entry.ImageID, entry.SpellID, GumpButtonType.Reply, 0);
-                                //AddButton(102 + hindex * 57, 71 + vindex * 45, 2103, 2104, entry.SpellID + 2000, GumpButtonType.Reply, 0);
-                            }
-                        }
-                        else if (obj is BardSpellBookEntry)
-                        {
-                            BardSpellBookEntry entry = (BardSpellBookEntry)obj;
-
-                            if (entry != null)
-                            {
-                                AddButton(74 + hindex * 44, 42 + vindex * 44, entry.ImageID, entry.ImageID, entry.SpellID, GumpButtonType.Reply, 0);
-                                //AddButton(102 + hindex * 57, 71 + vindex * 45, 2103, 2104, entry.SpellID + 2000, GumpButtonType.Reply, 0);
-                            }
-                        }
+                        
 
                         vindex++;
                     }
@@ -293,20 +216,6 @@ namespace Server.Gumps
                     if (entry != null && m_Book.HasSpell(entry.SpellID))
                     {
                         name = entry.Nom;
-                    }
-
-                    DivineSpellBookEntry dentry = (DivineSpellBookEntry)NewDivineSpellbookGump.FindEntryBySpellID(info.ButtonID);
-
-                    if (dentry != null && m_Book.HasSpell(dentry.SpellID))
-                    {
-                        name = dentry.Nom;
-                    }
-
-                    BardSpellBookEntry bentry = (BardSpellBookEntry)NewBardSpellbookGump.FindEntryBySpellID(info.ButtonID - 2000);
-
-                    if (bentry != null && m_Book.HasSpell(bentry.SpellID))
-                    {
-                        name = bentry.Nom;
                     }
 
                     from.SendMessage(name);

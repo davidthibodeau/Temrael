@@ -1513,6 +1513,8 @@ namespace Server.Items
                     //Console.WriteLine("Percent Before : " + percent);
                     //Console.WriteLine("Dmg Before : " + damage);
                     
+                    /* FLUSHÉ DANS LE NOUVEAU SYSTÈME ANYWAY
+                     * 
                     if (defender is TMobile)
                         percent -= (double)(((TMobile)defender).GetAptitudeValue(Aptitude.Robustesse) * 0.02);
 
@@ -1521,6 +1523,9 @@ namespace Server.Items
 
                     if (attacker is TMobile)
                         percent += (double)((TMobile)attacker).GetAptitudeValue(Aptitude.Barbarisme) * 0.03;
+
+                     * 
+                     */
 
                     if (percent < 0.10)
                         percent = 0.10;

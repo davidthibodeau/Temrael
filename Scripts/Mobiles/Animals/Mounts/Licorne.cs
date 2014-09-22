@@ -30,7 +30,7 @@ namespace Server.Mobiles
 
 				if( p != null )
 				{
-					int chanceToCure = 10000 + (int)(this.Skills[SkillName.Miracles].Value * 75) - ((p.Level + 1) * (Core.AOS ? (p.Level < 4 ? 3300 : 3100) : 1750));
+					int chanceToCure = 10000 + (int)(this.Skills[SkillName.ArtMagique].Value * 75) - ((p.Level + 1) * (Core.AOS ? (p.Level < 4 ? 3300 : 3100) : 1750));
 					chanceToCure /= 100;
 
 					if( chanceToCure > Utility.Random( 100 ) )
@@ -75,8 +75,8 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Physical, 55, 65 );
 			SetResistance( ResistanceType.Magie, 25, 40 );
 
-			SetSkill( SkillName.Reve, 80.1, 90.0 );
-			SetSkill( SkillName.Restoration, 60.2, 80.0 );
+			SetSkill( SkillName.Hallucination, 80.1, 90.0 );
+			SetSkill( SkillName.Thaumaturgie, 60.2, 80.0 );
 			SetSkill( SkillName.ArtMagique, 50.1, 60.0 );
 			SetSkill( SkillName.Concentration, 75.3, 90.0 );
 			SetSkill( SkillName.Tactiques, 20.1, 22.5 );

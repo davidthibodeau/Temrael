@@ -135,37 +135,8 @@ namespace Server.Mobiles
 
 		public static int GetMaxStabled( Mobile from )
 		{
-			double taming = from.Skills[SkillName.Dressage].Value;
-			double anlore = from.Skills[SkillName.Dressage].Value;
-			double vetern = from.Skills[SkillName.Soins].Value;
-			double sklsum = taming + anlore + vetern;
-
-			int max;
-
-			if ( sklsum >= 240.0 )
-				max = 5;
-			else if ( sklsum >= 200.0 )
-				max = 4;
-			else if ( sklsum >= 160.0 )
-				max = 3;
-			else
-				max = 2;
-
-            if (from is TMobile)
-            {
-                max += ((TMobile)from).GetAptitudeValue(Aptitude.Familier);
-            }
-
-			if ( taming >= 100.0 )
-				max += (int)((taming - 90.0) / 10);
-
-			if ( anlore >= 100.0 )
-				max += (int)((anlore - 90.0) / 10);
-
-			if ( vetern >= 100.0 )
-				max += (int)((vetern - 90.0) / 10);
-
-			return max;
+            // TOCHECK MAXSTABLED
+			return 10;
 		}
 
 		private class StableTarget : Target

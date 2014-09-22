@@ -185,7 +185,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Physical, 30 );
 			SetResistance( ResistanceType.Magie, 30 );
 
-			SetSkill( SkillName.Goetie, 120, 120.0 );
+			SetSkill( SkillName.Necromancie, 120, 120.0 );
 			//SetSkill( SkillName.SpiritSpeak, 120.0, 120.0 );
 
 			SetSkill( SkillName.Detection, 80.0 );

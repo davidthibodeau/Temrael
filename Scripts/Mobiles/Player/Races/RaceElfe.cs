@@ -39,7 +39,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override Aptitude Bonus { get { return Aptitude.Receptacle; } }
         public override int BonusNbr { get { return 4; } }
         public override string BonusDescr { get { return "La grande sagesse des elfes vous procure des points bonus de receptacle et ainsi plus de mana."; } }
         #endregion

@@ -50,7 +50,7 @@ namespace Server.Spells
 
 				if ( map != null )
 				{
-                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Restoration].Value / 50, true));
+                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.Thaumaturgie].Value / 50, true));
 
 					foreach ( Mobile m in eable )
 					{
@@ -77,7 +77,7 @@ namespace Server.Spells
 
 						if ( poison != null )
                         {
-                            double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.Restoration].Value * 75) - ((poison.Level + 1) * 2500);
+                            double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.Thaumaturgie].Value * 75) - ((poison.Level + 1) * 2500);
                             chanceToCure /= 100;
 
                             chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure);

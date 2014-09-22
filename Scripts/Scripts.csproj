@@ -91,6 +91,10 @@
   <ItemGroup>
     <Compile Include="Commandes\Temrael\Reveler.cs" />
     <Compile Include="Commandes\Temrael\TechniqueCombat.cs" />
+    <Compile Include="Custom\Army System\ArmyAI.cs" />
+    <Compile Include="Custom\Army System\ArmyController.cs" />
+    <Compile Include="Custom\Army System\ArmyGump.cs" />
+    <Compile Include="Engines\Combat\Combat.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpell.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpellInfo.cs" />
     <Compile Include="Spells\CustomSpell\Exemples.cs" />
@@ -118,8 +122,6 @@
     <Compile Include="Engines\Botanique\Items\BaseSeed.cs" />
     <Compile Include="Engines\Botanique\Items\Earth.cs" />
     <Compile Include="Engines\Botanique\Items\Shovel.cs" />
-    <Compile Include="Engines\Craft\Core\CraftAptitude.cs" />
-    <Compile Include="Engines\Craft\Core\CraftAptitudeCol.cs" />
     <Compile Include="Engines\Craft\Core\CraftContext.cs" />
     <Compile Include="Engines\Craft\Core\CraftGroup.cs" />
     <Compile Include="Engines\Craft\Core\CraftGroupCol.cs" />
@@ -210,7 +212,6 @@
     <Compile Include="Gumps\Temrael\Fiche\FicheStatistiquesGump.cs" />
     <Compile Include="Engines\Langues\GumpLanguage.cs" />
     <Compile Include="Commandes\Temrael\BancInvisible.cs" />
-    <Compile Include="Mobiles\Player\Evolution\Aptitudes.cs" />
     <Compile Include="Multis\Crepuscule Housing\CrepuHousing.cs" />
     <Compile Include="Items\Temrael\Bricoleur\newArtEtSculptures.cs" />
     <Compile Include="Items\Temrael\Bricoleur\newAccessoiresEclairage.cs" />
@@ -517,9 +518,6 @@
     <Compile Include="Context Menus\EjectPlayer.cs" />
     <Compile Include="Context Menus\OpenBankEntry.cs" />
     <Compile Include="Context Menus\TeachEntry.cs" />
-    <Compile Include="Custom\Army System\ArmyAI.cs" />
-    <Compile Include="Custom\Army System\ArmyController.cs" />
-    <Compile Include="Custom\Army System\ArmyGump.cs" />
     <Compile Include="Custom\BoxServer\Configuration.cs" />
     <Compile Include="Custom\BoxServer\Core\Authentication.cs" />
     <Compile Include="Custom\BoxServer\Core\BoxServer.cs" />
@@ -556,7 +554,6 @@
     <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\MoveRequest.cs" />
     <Compile Include="Custom\BoxServer\Modules\SpawnGroups\SpawnMessage.cs" />
     <Compile Include="Commandes\Temrael\Achever.cs" />
-    <Compile Include="Commandes\Temrael\Assassinat.cs" />
     <Compile Include="Commandes\Temrael\Decoration.cs" />
     <Compile Include="Commandes\Temrael\Dupe.cs" />
     <Compile Include="Commandes\Temrael\ExpCommande.cs" />
@@ -630,8 +627,6 @@
     <Compile Include="Gumps\Temrael\Creation\CreationRaceGump.cs" />
     <Compile Include="Gumps\Temrael\DecorationGump.cs" />
     <Compile Include="Gumps\Temrael\EtatGump.cs" />
-    <Compile Include="Gumps\Temrael\Fiche\Connexe\FicheAptitudeInfoGump.cs" />
-    <Compile Include="Gumps\Temrael\Fiche\Connexe\FicheAptitudesGump.cs" />
     <Compile Include="Gumps\Temrael\Fiche\Connexe\FicheClassesInfoGump.cs" />
     <Compile Include="Gumps\Temrael\Fiche\Connexe\FicheRacesInfoGump.cs" />
     <Compile Include="Gumps\Temrael\Fiche\FicheCaracteristiqueGump.cs" />
@@ -1017,14 +1012,8 @@
     <Compile Include="Spells\TeiliaMagie\Divins\Tutelle\Sauvegarde.cs" />
     <Compile Include="Spells\TeiliaMagie\Divins\Tutelle\VisionReelle.cs" />
     <Compile Include="Spells\TeiliaMagie\Initializer.cs" />
-    <Compile Include="Spells\TeiliaMagie\NewBardSpellBook.cs" />
-    <Compile Include="Spells\TeiliaMagie\NewBardSpellBookGump.cs" />
-    <Compile Include="Spells\TeiliaMagie\NewDivineSpellBook.cs" />
-    <Compile Include="Spells\TeiliaMagie\NewDivineSpellBookGump.cs" />
     <Compile Include="Spells\TeiliaMagie\NewSpellBook.cs" />
     <Compile Include="Spells\TeiliaMagie\NewSpellBookGump.cs" />
-    <Compile Include="Spells\TeiliaMagie\SBScrollsGenerator.cs" />
-    <Compile Include="Spells\TeiliaMagie\ScrollsGenerator.cs" />
     <Compile Include="Spells\TeiliaMagie\WispBete.cs" />
     <Compile Include="Custom\Misc\AddonGenerator.cs" />
     <Compile Include="Custom\Misc\AOS.cs" />
@@ -3409,7 +3398,6 @@
     <Compile Include="Vendor\PlayerVendor.cs" />
     <Compile Include="Vendor\PlayerVendorDeed.cs" />
     <Compile Include="Vendor\PlayerVendorGumps.cs" />
-    <Compile Include="Engines\Combat\Combat.cs" />
     <Compile Include="Engines\Identities\Identities.cs" />
     <Compile Include="Engines\Identities\Identity.cs" />
     <Compile Include="Engines\Identities\RevealIdentity.cs" />

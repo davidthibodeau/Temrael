@@ -52,10 +52,8 @@ namespace Server.Items
                 {
                     TMobile tmob = from as TMobile;
 
-                    if (tmob.GetAptitudeValue(Aptitude.Commerce) > 0)
-                        from.Target = new PlaceTarget(this);
-                    else
-                        from.SendMessage("Vous n'avez pas d'aptitude de commerce.");
+                    // TOCHECK VENDEURS.
+                    from.Target = new PlaceTarget(this);
                 }
 
 				//Mobile v = new PlayerVendor( from, BaseHouse.FindHouseAt( from ) );

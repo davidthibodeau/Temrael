@@ -62,7 +62,7 @@ namespace Server.Spells
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 
-                double scalar = 1 + (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Goetie].Value) / 8;
+                double scalar = 1 + (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Necromancie].Value) / 8;
 
 				if ( m.Player )
                     SetMindRotScalar(Caster, m, scalar, TimeSpan.FromSeconds(duration));

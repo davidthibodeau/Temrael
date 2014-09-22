@@ -80,7 +80,7 @@ namespace Server.Spells
 					if ( bc == null )
 						continue;
 
-					double dispelChance = (50.0 + ((100 * (Caster.Skills.Tenebrae.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
+					double dispelChance = (50.0 + ((100 * (Caster.Skills.Necromancie.Value - bc.DispelDifficulty)) / (bc.DispelFocus * 2))) / 120;
 
 					if ( dispelChance > Utility.RandomDouble() )
                     {

@@ -34,7 +34,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Physical, 90 );
 			SetResistance( ResistanceType.Magie, 55 );
 
-			SetSkill( SkillName.Miracles, 120.0 );
+			SetSkill( SkillName.ArtMagique, 120.0 );
 			SetSkill( SkillName.Detection, 80.0 );
 			//SetSkill( SkillName.EvalInt, 100.0 );
 			SetSkill( SkillName.ArtMagique, 100.0 );

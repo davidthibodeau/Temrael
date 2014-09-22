@@ -39,7 +39,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override Aptitude Bonus { get { return Aptitude.PointSup; } }
         public override int BonusNbr { get { return 1; } }
         public override string BonusDescr { get { return ""; } }
         #endregion

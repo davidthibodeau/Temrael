@@ -141,7 +141,7 @@ namespace Server.Spells
 			AddHtml( 30, 26, 200, 20, "Choisissez le familier...", false, false ); // Chose thy familiar...
 
             double necro = from.Skills[SkillName.ArtMagique].Base;
-			double spirit = from.Skills[SkillName.Goetie].Base;
+			double spirit = from.Skills[SkillName.Necromancie].Base;
 
 			for ( int i = 0; i < entries.Length; ++i )
 			{
@@ -169,7 +169,7 @@ namespace Server.Spells
 				SummonFamiliarEntry entry = m_Entries[index];
 
                 double necro = m_From.Skills[SkillName.ArtMagique].Base;
-				double spirit = m_From.Skills[SkillName.Goetie].Base;
+				double spirit = m_From.Skills[SkillName.Necromancie].Base;
 
 				//BaseCreature check = (BaseCreature)SummonFamiliarSpell.Table[m_From];
 
@@ -204,9 +204,9 @@ namespace Server.Spells
                         {
                             TMobile tmob = (TMobile)m_From;
 
-                            double duration = (2 * m_From.Skills.Goetie.Fixed) / 5;
+                            double duration = (2 * m_From.Skills.Necromancie.Fixed) / 5;
 
-                            if (BaseCreature.Summon(bc, m_From, m_From.Location, -1, TimeSpan.FromMinutes(duration + tmob.GetAptitudeValue(Aptitude.Spiritisme))))
+                            if (BaseCreature.Summon(bc, m_From, m_From.Location, -1, TimeSpan.FromMinutes(duration)))
                             {
                                 m_From.FixedParticles(0x3728, 1, 10, 9910, EffectLayer.Head);
                                 bc.PlaySound(bc.GetIdleSound());

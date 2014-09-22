@@ -61,7 +61,7 @@ namespace Server.Spells
 				Caster.FixedParticles( 0x37B9, 1, 14, 9502, 32, 5, (EffectLayer)255 );
 				new SoundEffectTimer( Caster ).Start();
 
-				double duration = Caster.Skills[SkillName.Goetie].Value + 250.0;
+				double duration = Caster.Skills[SkillName.Necromancie].Value + 250.0;
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 

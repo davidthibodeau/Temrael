@@ -34,7 +34,7 @@ namespace Server.Spells
 
                 TimeSpan duration = spell.GetDurationForSpell(1);
 
-                double value = (int)(Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Restoration].Value);
+                double value = (int)(Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Thaumaturgie].Value);
                 value /= 15;
 
                 value = SpellHelper.AdjustValue(Caster, value);

@@ -179,15 +179,6 @@ namespace Server.Gumps
             from.CompetencesLibres = 350;
         }
 
-        private static void SetAptitudes(TMobile from)
-        {
-            from.AptitudesLibres = 5;
-
-            //Pour les humains
-            if (from.GetAptitudeValue(Aptitude.PointSup) > 0)
-              from.AptitudesLibres += from.GetAptitudeValue(Aptitude.PointSup);
-        }
-
         private static void SetCaract(TMobile from)
         {
             Statistiques.Reset(from);
@@ -216,7 +207,6 @@ namespace Server.Gumps
         {
             from.Niveau = 0;
             SetSkills(from);
-            SetAptitudes(from);
             SetCaract(from);
             PackItem(from, new RedBook("a book", from.Name, 20, true));
             PackItem(from, new Gold(2000)); //

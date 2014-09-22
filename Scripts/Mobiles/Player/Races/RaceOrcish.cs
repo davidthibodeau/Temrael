@@ -39,7 +39,6 @@ namespace Server.Mobiles
         #endregion
 
         #region Bonus
-        public override Aptitude Bonus { get { return Aptitude.Endurance; } }
         public override int BonusNbr { get { return 4; } }
         public override string BonusDescr { get { return "L'Orcish possede l'un des metabolismes les plus resistant du monde de Temrael. Ceci lui procure quelques points d'endurance."; } }
         #endregion

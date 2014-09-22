@@ -26,11 +26,11 @@ namespace Server.Mobiles
 
             SetDamage(60, 70);
 
-            SetSkill(SkillName.Goetie, 100.1, 110.0);
+            SetSkill(SkillName.Necromancie, 100.1, 110.0);
             SetSkill(SkillName.ArtMagique, 100.1, 110.0);
             SetSkill(SkillName.Concentration, 100.1, 101.0);
             SetSkill(SkillName.Empoisonnement, 100.1, 101.0);
-            SetSkill(SkillName.Destruction, 105.2, 125.0);
+            SetSkill(SkillName.Evocation, 105.2, 125.0);
             SetSkill(SkillName.Tactiques, 90.1, 100.0);
             SetSkill(SkillName.Anatomie, 75.1, 100.0);
 

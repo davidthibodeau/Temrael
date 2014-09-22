@@ -318,9 +318,9 @@ namespace Server.Scripts.Commands
             {
                 TMobile pm = (TMobile)from;
 
-                if (pm.GetAptitudeValue(Aptitude.Protection) < 5)
-                    from.SendMessage("Vous devez pouvoir utiliser le sort Copie.");
-                else if (targ is Copie)
+                /*if (pm.GetAptitudeValue(Aptitude.Protection) < 5)
+                    from.SendMessage("Vous devez pouvoir utiliser le sort Copie.");*/
+                if (targ is Copie)
                 {
                     Copie target = (Copie)targ;
 

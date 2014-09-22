@@ -244,12 +244,6 @@ namespace Server.Engines.Craft
 			craftItem.AddSkill(skillToMake, minSkill, maxSkill);
 		}
 
-        public void AddAptitude(int index, Aptitude aptitudeToMake, int required)
-        {
-            CraftItem craftItem = m_CraftItems.GetAt(index);
-            craftItem.AddAptitude(aptitudeToMake, required);
-        }
-
 		public void SetUseSubRes2( int index, bool val )
 		{
 			CraftItem craftItem = m_CraftItems.GetAt(index);

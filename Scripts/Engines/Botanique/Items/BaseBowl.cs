@@ -157,7 +157,8 @@ namespace Server.Items
             {
                 TMobile m = (TMobile)from;
 
-                if (m.GetAptitudeValue(Aptitude.Botanique) > 0)
+                //TOCHECK BOTANIQUE
+                if (false)
                     LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType, false)));
             }
         }

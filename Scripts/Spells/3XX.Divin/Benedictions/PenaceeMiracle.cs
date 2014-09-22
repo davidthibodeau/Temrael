@@ -40,7 +40,7 @@ namespace Server.Spells
 
                 if (p != null)
                 {
-                    double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.Miracles].Value * 75) - ((p.Level + 1) * 2500);
+                    double chanceToCure = 10000 + (int)(Caster.Skills[SkillName.ArtMagique].Value * 75) - ((p.Level + 1) * 2500);
                     chanceToCure /= 100;
 
                     chanceToCure = SpellHelper.AdjustValue(Caster, chanceToCure);

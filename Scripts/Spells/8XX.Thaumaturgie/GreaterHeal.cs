@@ -64,7 +64,7 @@ namespace Server.Spells
 
                 double toHeal;
 
-                toHeal = Caster.Skills[SkillName.Restoration].Value * 0.5;
+                toHeal = Caster.Skills[SkillName.Thaumaturgie].Value * 0.5;
                 toHeal += Caster.Skills[SkillName.ArtMagique].Value * 0.5;
                 toHeal += Utility.Random(1, 15);
 

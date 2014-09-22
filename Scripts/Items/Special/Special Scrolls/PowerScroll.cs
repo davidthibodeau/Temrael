@@ -47,13 +47,11 @@ namespace Server.Items
 				SkillName.Concentration,
 				SkillName.Concentration,
 				SkillName.Dressage,
-				SkillName.Musique,
 			};
 
 		private static SkillName[] m_AOSSkills = new SkillName[]
 			{
-				SkillName.Miracles,
-				SkillName.Goetie,
+				SkillName.Necromancie,
 				SkillName.Vol,
 				SkillName.Infiltration
 			};

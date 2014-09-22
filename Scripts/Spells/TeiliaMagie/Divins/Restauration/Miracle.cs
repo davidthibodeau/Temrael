@@ -90,7 +90,7 @@ namespace Server.Spells
                     return;
                 }
 
-                foreach (Item itema in m_BaseTotem.GetItemsInRange(1 + (int)(m_BaseTotem.Caster.Skills[SkillName.Miracles].Base / 10)))
+                foreach (Item itema in m_BaseTotem.GetItemsInRange(1 + (int)(m_BaseTotem.Caster.Skills[SkillName.ArtMagique].Base / 10)))
                 {
                     if (itema != null && itema is Corpse)
                     {

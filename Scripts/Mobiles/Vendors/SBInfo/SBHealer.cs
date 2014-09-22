@@ -21,7 +21,6 @@ namespace Server.Mobiles
 			public InternalBuyInfo()
 			{
 				Add( new GenericBuyInfo( "Bandage", typeof( Bandage ), 1, 20, 0xE21, 0 ) );
-                Add(new GenericBuyInfo("Grimoire", typeof(NewDivineSpellbook), 50, 20, 0xE21, 0));
 				//Add( new GenericBuyInfo( "Potion de Soins Mineur", typeof( LesserHealPotion ), 30, 20, 0xF0C, 0 ) );
 				Add( new GenericBuyInfo( "Ginseng", typeof( Ginseng ), 3, 20, 0xF85, 0 ) );
 				Add( new GenericBuyInfo( "Garlic", typeof( Garlic ), 3, 20, 0xF84, 0 ) );

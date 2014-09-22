@@ -28,7 +28,7 @@ namespace Server.Mobiles
 			Hue = 1;
 			// TODO: Sound values?
 
-            double scalar = caster.Skills[SkillName.Goetie].Value * 0.01;
+            double scalar = caster.Skills[SkillName.Necromancie].Value * 0.01;
 
 			m_Target = target;
 			m_ExpireTime = DateTime.Now + duration;

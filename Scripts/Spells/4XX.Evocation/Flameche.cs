@@ -81,7 +81,7 @@ namespace Server.Spells
 
                 int itemID = eastToWest ? 0x19AB : 0x19AB;
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Destruction].Value * 0.4);
+                double duration = 4.0 + (Caster.Skills[SkillName.Evocation].Value * 0.4);
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 

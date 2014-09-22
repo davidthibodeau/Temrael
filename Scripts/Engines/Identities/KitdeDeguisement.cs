@@ -49,10 +49,6 @@ namespace Server.Engines.Identities
                 {
                     from.SendMessage("L'objet doit etre dans votre sac.");
                 }
-                else if (from.GetAptitudeValue(Aptitude.Deguisement) <= 0)
-                {
-                    from.SendMessage("Vous devez avoir au moins un point en deguisement !");
-                }
                 else if (from.Identities.CurrentIdentity == 13)
                 {
                     from.SendMessage("Vous ne pouvez pas vous déguisez en forme Aasimar ou Tieffeline !");

@@ -38,7 +38,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                double duration = 5.0 + (Caster.Skills[SkillName.Miracles].Value * 0.2);
+                double duration = 5.0 + (Caster.Skills[SkillName.ArtMagique].Value * 0.2);
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 

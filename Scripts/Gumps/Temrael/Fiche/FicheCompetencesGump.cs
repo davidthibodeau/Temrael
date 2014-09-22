@@ -123,9 +123,6 @@ namespace Server.Gumps
                 case 7:
                     from.SendGump(new FicheCommandesGump(from));
                     break;
-                case 8:
-                    from.SendGump(new FicheAptitudesGump(from, ClasseBranche.Aucun));
-                    break;
                 case 9:
                     from.SendGump(new CompetenceGump(from, SkillCategory.Aucun, false));
                     break;
@@ -136,9 +133,6 @@ namespace Server.Gumps
                     from.SendGump(new FicheCompetencesGump(from, m_page - 1));
                     break;
             }
-
-            if (info.ButtonID >= 50)
-                from.SendGump(new FicheAptitudeInfoGump(from, (Aptitude)info.ButtonID - 50));
         }
 
         /*public static Hashtable GetAptitudesList(TMobile from)

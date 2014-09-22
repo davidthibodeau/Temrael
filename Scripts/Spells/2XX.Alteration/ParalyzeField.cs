@@ -72,7 +72,7 @@ namespace Server.Spells
 
                 int itemID = eastToWest ? 0x3967 : 0x3979;
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Mysticisme].Value * 0.4);
+                double duration = 4.0 + (Caster.Skills[SkillName.ArtMagique].Value * 0.4);
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 
@@ -176,7 +176,7 @@ namespace Server.Spells
 				{
 					m_Caster.DoHarmful( m );
 
-                    double duration = 5.0 + (m_Caster.Skills[SkillName.Mysticisme].Value * 0.2);
+                    double duration = 5.0 + (m_Caster.Skills[SkillName.ArtMagique].Value * 0.2);
 
                     duration = SpellHelper.AdjustValue(m_Caster, duration);
 
