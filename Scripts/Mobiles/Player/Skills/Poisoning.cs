@@ -9,7 +9,6 @@ namespace Server.SkillHandlers
 	{
 		public static void Initialize()
 		{
-            // ?
 			SkillInfo.Table[(int)SkillName.Empoisonnement].Callback = new SkillUseCallback( OnUse );
 		}
 
@@ -17,7 +16,7 @@ namespace Server.SkillHandlers
 		{
 			m.Target = new InternalTargetPoison();
 
-			m.SendLocalizedMessage( 502137 ); // Select the poison you wish to use
+			m.SendMessage("Sélectionnez votre poison, ou la nourriture à identifier.");
 
 			return TimeSpan.FromSeconds( 10.0 ); // 10 second delay before beign able to re-use a skill
 		}
@@ -30,16 +29,44 @@ namespace Server.SkillHandlers
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
+                // Application de poison à un item.
 				if ( targeted is BasePoisonPotion )
 				{
-					from.SendLocalizedMessage( 502142 ); // To what do you wish to apply the poison?
+					from.SendMessage("Quel objet voulez vous empoisonner?");
 					from.Target = new InternalTarget( (BasePoisonPotion)targeted );
 				}
-				else // Not a Poison Potion
+                // Jet de tasteID.
+                else if (targeted is Food)
+                {
+                    TasteID(from, (Food)targeted);
+                }
+                // Not a poison potion.
+                else
 				{
-					from.SendLocalizedMessage( 502139 ); // That is not a poison potion.
+                    from.SendMessage("Ceci n'est pas une potion de poison.") ; // That is not a poison potion.
 				}
 			}
+
+            void TasteID(Mobile from, Food food)
+            {
+                if (from.CheckTargetSkill(SkillName.Empoisonnement, food, 0, 100))
+                {
+                    if (food.Poison != null)
+                    {
+                        food.SendLocalizedMessageTo(from, 1038284); // It appears to have poison smeared on it.
+                    }
+                    else
+                    {
+                        // No poison on the food
+                        food.SendLocalizedMessageTo(from, 1010600); // You detect nothing unusual about this substance.
+                    }
+                }
+                else
+                {
+                    // Skill check failed
+                    food.SendLocalizedMessageTo(from, 502823); // You cannot discern anything about this substance.
+                }
+            }
 
 			private class InternalTarget : Target
 			{
@@ -57,24 +84,21 @@ namespace Server.SkillHandlers
 
 					bool startTimer = false;
 
-					/*if ( targeted is Food || targeted is FukiyaDarts || targeted is Shuriken )
-					{
-						startTimer = true;
-					}*/
 					if ( targeted is BaseWeapon )
 					{
 						BaseWeapon weapon = (BaseWeapon)targeted;
 
-						/*if ( Core.AOS )
-						{
-							startTimer = ( weapon.PrimaryAbility == WeaponAbility.InfectiousStrike || weapon.SecondaryAbility == WeaponAbility.InfectiousStrike );
-						}*/
 						if ( weapon.Layer == Layer.OneHanded )
 						{
 							// Only Bladed or Piercing weapon can be poisoned
 							startTimer = ( /*weapon.Type == WeaponType.Slashing ||*/ weapon.Type == WeaponType.Piercing );
 						}
 					}
+                    else if ( targeted is Food)
+                    {
+                        startTimer = true;
+                    }
+
 
 					if ( startTimer )
 					{
@@ -87,10 +111,7 @@ namespace Server.SkillHandlers
 					}
 					else // Target can't be poisoned
 					{
-						if ( Core.AOS )
-							from.SendLocalizedMessage( 1060204 ); // You cannot poison that! You can only poison infectious weapons, food or drink.
-						else
-							from.SendLocalizedMessage( 502145 ); // You cannot poison that! You can only poison bladed or piercing weapons, food or drink.
+                        from.SendMessage("Vous ne pouvez pas empoisonner celà ! Vous pouvez seulement empoisonner les dagues ou la nourriture.");
 					}
 				}
 
@@ -124,20 +145,8 @@ namespace Server.SkillHandlers
 								((BaseWeapon)m_Target).Poison = m_Poison;
 								((BaseWeapon)m_Target).PoisonCharges = 18 - (m_Poison.Level * 2);
 							}
-							/*else if ( m_Target is FukiyaDarts )
-							{
-								((FukiyaDarts)m_Target).Poison = m_Poison;
-								((FukiyaDarts)m_Target).PoisonCharges = Math.Min( 18 - (m_Poison.Level * 2), ((FukiyaDarts)m_Target).UsesRemaining );
-							}
-							else if ( m_Target is Shuriken )
-							{
-								((Shuriken)m_Target).Poison = m_Poison;
-								((Shuriken)m_Target).PoisonCharges = Math.Min( 18 - (m_Poison.Level * 2), ((Shuriken)m_Target).UsesRemaining );
-							}*/
 
 							m_From.SendLocalizedMessage( 1010517 ); // You apply the poison
-
-							//Misc.Titles.AwardKarma( m_From, -20, true );
 						}
 						else // Failed
 						{

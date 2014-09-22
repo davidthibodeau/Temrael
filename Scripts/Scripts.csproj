@@ -588,7 +588,6 @@
     <Compile Include="Mobiles\Player\Skills\Snooping.cs" />
     <Compile Include="Mobiles\Player\Skills\Stealing.cs" />
     <Compile Include="Mobiles\Player\Skills\Stealth.cs" />
-    <Compile Include="Mobiles\Player\Skills\TasteID.cs" />
     <Compile Include="Mobiles\Player\Skills\Tracking.cs" />
     <Compile Include="Mobiles\Player\Evolution\Classes.cs" />
     <Compile Include="Mobiles\Player\Evolution\Classes\BaseClasse.cs" />
