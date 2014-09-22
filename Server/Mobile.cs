@@ -8382,6 +8382,7 @@ namespace Server
 
 			m_NextSkillTime = Core.TickCount;
 			m_CreationTime = DateTime.Now;
+            Body = this.Female ? 401 : 400;
 		}
 
 		private static Queue<Mobile> m_DeltaQueue = new Queue<Mobile>();
