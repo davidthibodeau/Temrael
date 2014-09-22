@@ -8,9 +8,9 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Races races = Races.Capiceen;
+        private Race races = Race.Capiceen;
 
-        public Races Races { get { return races; } set { races = value; InitSBInfo(); } }
+        public Race Races { get { return races; } set { races = value; InitSBInfo(); } }
 
 		[Constructable]
 		public Jeweler() : base( "Bijoutier" )
@@ -23,15 +23,15 @@ namespace Server.Mobiles
             m_SBInfos.Clear();
             switch (races)
             {
-                case Races.Aasimar: m_SBInfos.Add(new SBJewelAasimar()); break;
-                case Races.Elfe: m_SBInfos.Add(new SBJewelElfe()); break;
-                case Races.ElfeNoir: m_SBInfos.Add(new SBJewelDrow()); break;
-                case Races.Capiceen: m_SBInfos.Add(new SBJewel()); break;
-                case Races.Nain: m_SBInfos.Add(new SBJewelNain()); break;
-                case Races.Nomade: m_SBInfos.Add(new SBJewelNomade()); break;
-                case Races.Nordique: m_SBInfos.Add(new SBJewelNordique()); break;
-                case Races.Orcish: m_SBInfos.Add(new SBJewelOrcish()); break;
-                case Races.Tieffelin: m_SBInfos.Add(new SBJewelTieffelin()); break;
+                case Race.Aasimar: m_SBInfos.Add(new SBJewelAasimar()); break;
+                case Race.Elfe: m_SBInfos.Add(new SBJewelElfe()); break;
+                case Race.ElfeNoir: m_SBInfos.Add(new SBJewelDrow()); break;
+                case Race.Capiceen: m_SBInfos.Add(new SBJewel()); break;
+                case Race.Nain: m_SBInfos.Add(new SBJewelNain()); break;
+                case Race.Nomade: m_SBInfos.Add(new SBJewelNomade()); break;
+                case Race.Nordique: m_SBInfos.Add(new SBJewelNordique()); break;
+                case Race.Orcish: m_SBInfos.Add(new SBJewelOrcish()); break;
+                case Race.Tieffelin: m_SBInfos.Add(new SBJewelTieffelin()); break;
                 default: m_SBInfos.Add(new SBJewel()); break;
             }
 

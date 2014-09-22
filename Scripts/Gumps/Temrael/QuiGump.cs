@@ -226,7 +226,7 @@ namespace Server.Gumps
         {
             if (m is TMobile)
             {
-                if (((TMobile)m).Races == Races.Tieffelin || ((TMobile)m).Races == Races.Aasimar)
+                if (((TMobile)m).Races == Race.Tieffelin || ((TMobile)m).Races == Race.Aasimar)
                     return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).RaceSecrete.ToString());
                 else
                     return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).Races.ToString());

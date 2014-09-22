@@ -13,14 +13,14 @@ namespace Server.Gumps
     public class FicheRacesInfoGump : GumpTemrael
     {
         private TMobile m_from;
-        private Races m_Races;
+        private Race m_Races;
 
         public FicheRacesInfoGump(TMobile from)
             : this(from, from.Races)
         {
         }
 
-        public FicheRacesInfoGump(TMobile from, Races Races)
+        public FicheRacesInfoGump(TMobile from, Race Races)
             : base("Race & Alignement", 560, 622)
         {
             m_from = from;
@@ -54,17 +54,17 @@ namespace Server.Gumps
 
             AddTitre(x + 360, y + line * scale, 190, "Races");
             ++line;
-            for (int i = 0; i < (int)Races.Maximum; i++)
+            for (int i = 0; i < (int)Race.Maximum; i++)
             {
-                if ((Races)(i) != Races.MortVivant)
+                if ((Race)(i) != Race.MortVivant)
                 {
                     AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Races)i).ToString());
+                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Race)i).ToString());
                     ++line;
                 }
             }
 
-            if (Races != Races.Aucun)
+            if (Races != Race.Aucun)
             {
                 BaseRace race = RaceManager.getRace(Races);
 
@@ -118,7 +118,7 @@ namespace Server.Gumps
 
             if (info.ButtonID >= 50)
             {
-                from.SendGump(new FicheRacesInfoGump(from, (Races)(info.ButtonID - 50)));
+                from.SendGump(new FicheRacesInfoGump(from, (Race)(info.ButtonID - 50)));
             }
         }
     }

@@ -13,14 +13,14 @@ namespace Server.Gumps
     public class CreationRaceGump : GumpTemrael
     {
         private TMobile m_from;
-        private Races m_Races;
+        private Race m_Races;
 
         public CreationRaceGump(TMobile from)
             : this(from, from.Creation.race)
         {
         }
 
-        public CreationRaceGump(TMobile from, Races Races)
+        public CreationRaceGump(TMobile from, Race Races)
             : base("Race", 560, 622)
         {
             m_from = from;
@@ -50,18 +50,18 @@ namespace Server.Gumps
 
             AddTitre(x + 360, y + line * scale, 190, "Races");
             ++line;
-            for (int i = 0; i < (int)Races.Maximum; i++)
+            for (int i = 0; i < (int)Race.Maximum; i++)
             {
-                if ((Races)(i) != Races.MortVivant)
+                if ((Race)(i) != Race.MortVivant)
                 {
                     AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Races)i).ToString());
+                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Race)i).ToString());
                     ++line;
                 }
             }
 
 
-            if (Races != Races.Aucun)
+            if (Races != Race.Aucun)
             {
                 BaseRace race = RaceManager.getRace(Races);
 
@@ -97,7 +97,7 @@ namespace Server.Gumps
                     from.SendGump(new CreationRaceGump(from));
                     break;
                 case 3:
-                    if (from.Creation.race != Races.Aucun)
+                    if (from.Creation.race != Race.Aucun)
                     {
                         from.SendGump(new CreationClasseGump(from));
                     }
@@ -127,34 +127,34 @@ namespace Server.Gumps
                     from.Creation.race = m_Races;
                     switch (from.Creation.race)
                     {
-                        case Races.Capiceen:
+                        case Race.Capiceen:
                             from.Creation.hue = 1023;
                             break;
-                        case Races.Orcish:
+                        case Race.Orcish:
                             from.Creation.hue = 1446;
                             break;
-                        case Races.Elfe:
+                        case Race.Elfe:
                             from.Creation.hue = 1023;
                             break;
-                        case Races.Nordique:
+                        case Race.Nordique:
                             from.Creation.hue = 1023;
                             break;
-                        case Races.ElfeNoir:
+                        case Race.ElfeNoir:
                             from.Creation.hue = 2410;
                             break;
-                        case Races.Nain:
+                        case Race.Nain:
                             from.Creation.hue = 1054;
                             break;
-                        case Races.Nomade:
+                        case Race.Nomade:
                             from.Creation.hue = 1044;
                             break;
-                        case Races.Tieffelin:
+                        case Race.Tieffelin:
                             from.Creation.hue = 0;
                             break;
-                        case Races.Aasimar:
+                        case Race.Aasimar:
                             from.Creation.hue = 0;
                             break;
-                        case Races.Aucun:
+                        case Race.Aucun:
                             break;
                     }
                     from.SendGump(new CreationClasseGump(from));
@@ -163,7 +163,7 @@ namespace Server.Gumps
 
             if (info.ButtonID >= 50)
             {
-                from.SendGump(new CreationRaceGump(from, (Races)(info.ButtonID - 50)));
+                from.SendGump(new CreationRaceGump(from, (Race)(info.ButtonID - 50)));
             }
         }
         public void DeleteItemsOnChar(TMobile from)

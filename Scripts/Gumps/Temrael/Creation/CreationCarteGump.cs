@@ -158,7 +158,7 @@ namespace Server.Gumps
                     from.SendGump(new CreationRaceGump(from));
                     break;
                 case 3:
-                    if (from.Creation.race != Races.Aucun)
+                    if (from.Creation.race != Race.Aucun)
                     {
                         from.SendGump(new CreationClasseGump(from));
                     }

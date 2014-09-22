@@ -54,7 +54,7 @@ namespace Server.Items
                     act.SetTag("XPBeta", "True");
                 }
 
-                tMob.Races = Races.Aucun;
+                tMob.Races = Race.Aucun;
                 tMob.ClasseType = ClasseType.None;
                 tMob.Title = "";
                 tMob.MortEvo = MortEvo.Aucune;

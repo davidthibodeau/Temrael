@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Server.Mobiles
 {
-    public enum Races
+    public enum Race
     {
         Aucun = -1,
         Capiceen = 0,
@@ -24,11 +24,11 @@ namespace Server.Mobiles
     public class RaceManager
     {
         #region RaceBank
-        public static Dictionary<Races, BaseRace> raceBank = new Dictionary<Races, BaseRace>();
+        public static Dictionary<Race, BaseRace> raceBank = new Dictionary<Race, BaseRace>();
         #endregion
 
         #region GetRace
-        public static BaseRace getRace(Races race)
+        public static BaseRace getRace(Race race)
         {
             BaseRace raceClass = null;
             if (!raceBank.ContainsKey(race))
@@ -40,40 +40,40 @@ namespace Server.Mobiles
             return raceClass;
         }
 
-        public static Races getRaceType(Type type)
+        public static Race getRaceType(Type type)
         {
             if (type.Equals(typeof(RaceAasimar)))
-                return Races.Aasimar;
+                return Race.Aasimar;
             else if (type.Equals(typeof(RaceDrow)))
-                return Races.ElfeNoir;
+                return Race.ElfeNoir;
             else if (type.Equals(typeof(RaceElfe)))
-                return Races.Elfe;
+                return Race.Elfe;
             else if (type.Equals(typeof(RaceHumain)))
-                return Races.Capiceen;
+                return Race.Capiceen;
             else if (type.Equals(typeof(RaceNain)))
-                return Races.Nain;
+                return Race.Nain;
             else if (type.Equals(typeof(RaceNomade)))
-                return Races.Nomade;
+                return Race.Nomade;
             else if (type.Equals(typeof(RaceNordique)))
-                return Races.Nordique;
+                return Race.Nordique;
             else if (type.Equals(typeof(RaceOrcish)))
-                return Races.Orcish;
+                return Race.Orcish;
             else if (type.Equals(typeof(RaceTieffelin)))
-                return Races.Tieffelin;
+                return Race.Tieffelin;
 
-            return Races.Aucun;
+            return Race.Aucun;
         }
         #endregion
 
         #region GetBonus
-        public static Aptitude GetAptitude(Races race)
+        public static Aptitude GetAptitude(Race race)
         {
             BaseRace raceType = getRace(race);
 
             return raceType.Bonus;
         }
 
-        public static int GetAptitudeNbr(Races race)
+        public static int GetAptitudeNbr(Race race)
         {
             BaseRace raceType = getRace(race);
 
@@ -82,24 +82,24 @@ namespace Server.Mobiles
         #endregion
 
         #region CreateRace
-        private static void createRace(Races race)
+        private static void createRace(Race race)
         {
             if ( !raceBank.ContainsKey(race))
             {
                 switch (race)
                 {
-                    case Races.Aasimar: raceBank.Add(race, new RaceAasimar()); break;
-                    case Races.ElfeNoir: raceBank.Add(race, new RaceDrow()); break;
-                    case Races.Elfe: raceBank.Add(race, new RaceElfe()); break;
-                    case Races.Capiceen: raceBank.Add(race, new RaceHumain()); break;
-                    case Races.Nain: raceBank.Add(race, new RaceNain()); break;
-                    case Races.Nomade: raceBank.Add(race, new RaceNomade()); break;
-                    case Races.Nordique: raceBank.Add(race, new RaceNordique()); break;
-                    case Races.Orcish: raceBank.Add(race, new RaceOrcish()); break;
-                    case Races.Tieffelin: raceBank.Add(race, new RaceTieffelin()); break;
-                    case Races.MortVivant: raceBank.Add(race, new RaceMortVivant()); break;
-                    case Races.MJ: raceBank.Add(race, new RaceHumain()); break;
-                    case Races.Aucun: raceBank.Add(race, new RaceHumain()); break;
+                    case Race.Aasimar: raceBank.Add(race, new RaceAasimar()); break;
+                    case Race.ElfeNoir: raceBank.Add(race, new RaceDrow()); break;
+                    case Race.Elfe: raceBank.Add(race, new RaceElfe()); break;
+                    case Race.Capiceen: raceBank.Add(race, new RaceHumain()); break;
+                    case Race.Nain: raceBank.Add(race, new RaceNain()); break;
+                    case Race.Nomade: raceBank.Add(race, new RaceNomade()); break;
+                    case Race.Nordique: raceBank.Add(race, new RaceNordique()); break;
+                    case Race.Orcish: raceBank.Add(race, new RaceOrcish()); break;
+                    case Race.Tieffelin: raceBank.Add(race, new RaceTieffelin()); break;
+                    case Race.MortVivant: raceBank.Add(race, new RaceMortVivant()); break;
+                    case Race.MJ: raceBank.Add(race, new RaceHumain()); break;
+                    case Race.Aucun: raceBank.Add(race, new RaceHumain()); break;
                 }
             }
         }

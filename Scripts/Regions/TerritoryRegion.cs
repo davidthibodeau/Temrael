@@ -26,7 +26,7 @@ namespace Server.Territories
 {
     public abstract class TerritoryRegion : Region
     {
-        public abstract Races RaceType { get; }
+        public abstract Race RaceType { get; }
         public virtual bool IsCity { get { return false; } }
         public virtual bool UseWatchTower { get { return false; } }
         public virtual int StartX { get { return 0; } }
@@ -249,7 +249,7 @@ namespace Server.Territories
                 if (arace == null || arace.Length <= 0)
                     continue;
 
-                Races firstrace = GetRace(arace);
+                Race firstrace = GetRace(arace);
 
                 ArrayList ennemies = new ArrayList();
 
@@ -259,32 +259,32 @@ namespace Server.Territories
                     if (brace == null || brace.Length <= 0)
                         continue;
 
-                    Races secondrace = GetRace(brace);
+                    Race secondrace = GetRace(brace);
 
                     ennemies.Add(secondrace);
                 }
             }
         }
 
-        public static Races GetRace(string racestring)
+        public static Race GetRace(string racestring)
         {
             for (int i = 0; i < LoadRaces.Length; i++)
             {
                 if (racestring == (string)LoadRaces[i])
                 {
-                    return (Races)i;
+                    return (Race)i;
                 }
             }
 
-            return Races.Aucun;
+            return Race.Aucun;
         }
 
-        public virtual bool IsEnnemyOf(Races firstRace, Races secondRace)
+        public virtual bool IsEnnemyOf(Race firstRace, Race secondRace)
         {
-            if (firstRace <= Races.Aucun || firstRace >= Races.MJ)
+            if (firstRace <= Race.Aucun || firstRace >= Race.MJ)
                 return false;
 
-            if (secondRace <= Races.Aucun || secondRace >= Races.MJ)
+            if (secondRace <= Race.Aucun || secondRace >= Race.MJ)
                 return false;
 
             if (Vigies == null)
@@ -292,11 +292,11 @@ namespace Server.Territories
 
             if (Vigies.Contains(firstRace))
             {
-                Races[] racelist = (Races[])Vigies[firstRace];
+                Race[] racelist = (Race[])Vigies[firstRace];
 
                 for (int i = 0; i < racelist.Length; i++)
                 {
-                    if ((Races)racelist[i] == secondRace)
+                    if ((Race)racelist[i] == secondRace)
                         return true;
                 }
             }
@@ -304,9 +304,9 @@ namespace Server.Territories
             return false;
         }
 
-        public static TerritoryRegion GetRaceTerritory(Races race)
+        public static TerritoryRegion GetRaceTerritory(Race race)
         {
-            if (race <= Races.Aucun || race >= Races.MJ)
+            if (race <= Race.Aucun || race >= Race.MJ)
                 return null;
 
             for (int i = 0; i < Regions.Count; ++i)

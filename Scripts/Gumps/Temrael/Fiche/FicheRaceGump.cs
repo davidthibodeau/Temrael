@@ -46,7 +46,7 @@ namespace Server.Gumps
             y = YBase;
 
             /*Race*/
-            if (from.Races != Races.Aucun && from.Races != Races.Maximum)
+            if (from.Races != Race.Aucun && from.Races != Race.Maximum)
             {
                 BaseRace race = RaceManager.getRace(from.Races);
                 AddButton(x, y + line * scale, 8, race.Image);

@@ -49,31 +49,31 @@ namespace Server.Gumps
 
             switch (from.Races)
             {
-                case Races.Capiceen:
+                case Race.Capiceen:
                     if (from.Female)
                         AddImage(x - 5, (y + line * scale) - 40, 13);
                     else
                         AddImage(x - 5, (y + line * scale) - 40, 12);
                     break;
-                case Races.Orcish:
+                case Race.Orcish:
                     if (from.Female)
                         AddImage(x - 5, (y + line * scale) - 40, 60908);
                     else
                         AddImage(x - 5, (y + line * scale) - 40, 50908);
                     break;
-                case Races.Elfe:
+                case Race.Elfe:
                     if (from.Female)
                         AddImage(x - 5, (y + line * scale) - 40, 61027);
                     else
                         AddImage(x - 5, (y + line * scale) - 40, 51027);
                     break;
-                case Races.Nordique:
+                case Race.Nordique:
                     if (from.Female)
                         AddImage(x - 5, (y + line * scale) - 40, 61106);
                     else
                         AddImage(x - 5, (y + line * scale) - 40, 51106);
                     break;
-                case Races.ElfeNoir:
+                case Race.ElfeNoir:
                     if (from.Female)
                     {
                         AddImage(x - 5, (y + line * scale) - 40, 13, 1900);
@@ -85,7 +85,7 @@ namespace Server.Gumps
                         AddImage(x - 5, (y + line * scale) - 40, 51029, 1900);
                     }
                     break;
-                case Races.MortVivant:
+                case Race.MortVivant:
                     /*switch (from.MortEvo)
                     {
                         case MortEvo.Zombie:
@@ -108,19 +108,19 @@ namespace Server.Gumps
                             break;
                     }*/
                     break;
-                case Races.Nain:
+                case Race.Nain:
                     if (from.Female)
                         AddImage(x - 5, (y + line * scale) - 40, 61033);
                     else
                         AddImage(x - 5, (y + line * scale) - 40, 51033);
                     break;
-                case Races.Nomade:
+                case Race.Nomade:
                     if (from.Female)
                         AddImage(x - 5, (y + line * scale) - 40, 13, 2416);
                     else
                         AddImage(x - 5, (y + line * scale) - 40, 12, 2416);
                     break;
-                case Races.Tieffelin:
+                case Race.Tieffelin:
                     if (from.Female)
                     {
                         AddImage(x - 5, (y + line * scale) - 40, 60681);
@@ -134,7 +134,7 @@ namespace Server.Gumps
                         AddImage(x - 5, (y + line * scale) - 40, 51000);
                     }
                     break;
-                case Races.Aasimar:
+                case Race.Aasimar:
                     if (from.Female)
                     {
                         AddImage(x - 5, (y + line * scale) - 40, 60997);

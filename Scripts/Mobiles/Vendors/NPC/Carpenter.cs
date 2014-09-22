@@ -8,9 +8,9 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Races races = Races.Capiceen;
+        private Race races = Race.Capiceen;
 
-        public Races Races { get { return races; } set { races = value; InitSBInfo(); } }
+        public Race Races { get { return races; } set { races = value; InitSBInfo(); } }
 
 		[Constructable]
 		public Carpenter() : base( "Charpentier" )
@@ -24,15 +24,15 @@ namespace Server.Mobiles
             m_SBInfos.Clear();
             switch (races)
             {
-                case Races.Aasimar: m_SBInfos.Add(new SBCarpenter()); break;
-                case Races.Elfe: m_SBInfos.Add(new SBCarpenterElfe()); break;
-                case Races.ElfeNoir: m_SBInfos.Add(new SBCarpenterDrow()); break;
-                case Races.Capiceen: m_SBInfos.Add(new SBCarpenter()); break;
-                case Races.Nain: m_SBInfos.Add(new SBCarpenterNain()); break;
-                case Races.Nomade: m_SBInfos.Add(new SBCarpenterNomade()); break;
-                case Races.Nordique: m_SBInfos.Add(new SBCarpenterNordique()); break;
-                case Races.Orcish: m_SBInfos.Add(new SBCarpenterOrcish()); break;
-                case Races.Tieffelin: m_SBInfos.Add(new SBCarpenterTieffelin()); break;
+                case Race.Aasimar: m_SBInfos.Add(new SBCarpenter()); break;
+                case Race.Elfe: m_SBInfos.Add(new SBCarpenterElfe()); break;
+                case Race.ElfeNoir: m_SBInfos.Add(new SBCarpenterDrow()); break;
+                case Race.Capiceen: m_SBInfos.Add(new SBCarpenter()); break;
+                case Race.Nain: m_SBInfos.Add(new SBCarpenterNain()); break;
+                case Race.Nomade: m_SBInfos.Add(new SBCarpenterNomade()); break;
+                case Race.Nordique: m_SBInfos.Add(new SBCarpenterNordique()); break;
+                case Race.Orcish: m_SBInfos.Add(new SBCarpenterOrcish()); break;
+                case Race.Tieffelin: m_SBInfos.Add(new SBCarpenterTieffelin()); break;
                 default: m_SBInfos.Add(new SBCarpenter()); break;
             }
 

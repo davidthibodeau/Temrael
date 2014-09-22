@@ -425,7 +425,7 @@ namespace Server.Items
             if (m is TMobile)
             {
                 TMobile tmob = m as TMobile;
-                if (tmob.Races == Races.Tieffelin || tmob.Races == Races.Aasimar)
+                if (tmob.Races == Race.Tieffelin || tmob.Races == Race.Aasimar)
                     return tmob.RaceSecrete.ToString();
                 else
                     return tmob.Races.ToString();

@@ -9,9 +9,9 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Races races = Races.Capiceen;
+        private Race races = Race.Capiceen;
 
-        public Races Races { get { return races; } set { races = value; InitSBInfo(); } }
+        public Race Races { get { return races; } set { races = value; InitSBInfo(); } }
 
 		[Constructable]
 		public Tailor() : base( "Couturier" )
@@ -24,15 +24,15 @@ namespace Server.Mobiles
             m_SBInfos.Clear();
             switch (races)
             {
-                case Races.Aasimar: m_SBInfos.Add(new SBTailorAasimar()); break;
-                case Races.Elfe: m_SBInfos.Add(new SBTailorElfe()); break;
-                case Races.ElfeNoir: m_SBInfos.Add(new SBTailorDrow()); break;
-                case Races.Capiceen: m_SBInfos.Add(new SBTailor()); break;
-                case Races.Nain: m_SBInfos.Add(new SBTailorNain()); break;
-                case Races.Nomade: m_SBInfos.Add(new SBTailorNomade()); break;
-                case Races.Nordique: m_SBInfos.Add(new SBTailorNordique()); break;
-                case Races.Orcish: m_SBInfos.Add(new SBTailorOrcish()); break;
-                case Races.Tieffelin: m_SBInfos.Add(new SBTailorTieffelin()); break;
+                case Race.Aasimar: m_SBInfos.Add(new SBTailorAasimar()); break;
+                case Race.Elfe: m_SBInfos.Add(new SBTailorElfe()); break;
+                case Race.ElfeNoir: m_SBInfos.Add(new SBTailorDrow()); break;
+                case Race.Capiceen: m_SBInfos.Add(new SBTailor()); break;
+                case Race.Nain: m_SBInfos.Add(new SBTailorNain()); break;
+                case Race.Nomade: m_SBInfos.Add(new SBTailorNomade()); break;
+                case Race.Nordique: m_SBInfos.Add(new SBTailorNordique()); break;
+                case Race.Orcish: m_SBInfos.Add(new SBTailorOrcish()); break;
+                case Race.Tieffelin: m_SBInfos.Add(new SBTailorTieffelin()); break;
                 default: m_SBInfos.Add(new SBTailor()); break;
             }
 

@@ -78,41 +78,41 @@ namespace Server.Mobiles
         #region Constructeur
         public Creation()
         {
-            m_race = Races.Aucun;
+            m_race = Race.Aucun;
             m_classe = ClasseType.None;
             m_destination = CreationCarteGump.DestinationsDepart.Aucune;
             //m_gumps = new List<CreationGump.PaperPreviewItem>();
             m_hue = 0;
-            m_secrete = Races.Aucun;
+            m_secrete = Race.Aucun;
         }
         #endregion
 
         #region Méthodes
         public void Reboot()
         {
-            m_race = Races.Aucun;
+            m_race = Race.Aucun;
             m_classe = ClasseType.None;
             m_hue = 0;
-            m_secrete = Races.Aucun;
+            m_secrete = Race.Aucun;
         }
         #endregion
 
         #region Variables
         //private List<Server.Gumps.CreationGump.PaperPreviewItem> m_gumps;
-        private Races m_race;
+        private Race m_race;
         private ClasseType m_classe;
         private Server.Gumps.CreationCarteGump.DestinationsDepart m_destination;
         private int m_hue;
-        private Races m_secrete;
+        private Race m_secrete;
         #endregion
 
         #region Accessors
         //public List<Server.Gumps.CreationGump.PaperPreviewItem> gumps { get { return m_gumps; } set { m_gumps = value; } }
-        public Races race { get { return m_race; } set { m_race = value; } }
+        public Race race { get { return m_race; } set { m_race = value; } }
         public ClasseType classe { get { return m_classe; } set { m_classe = value; } }
         public Server.Gumps.CreationCarteGump.DestinationsDepart destination { get { return m_destination; } set { m_destination = value; } }
         public int hue { get { return m_hue; } set { m_hue = value; } }
-        public Races secrete { get { return m_secrete; } set { m_secrete = value; } }
+        public Race secrete { get { return m_secrete; } set { m_secrete = value; } }
         #endregion
     }
 
@@ -160,7 +160,7 @@ namespace Server.Mobiles
         private bool m_Mort;
         private MortState m_MortState;
         private MortEvo m_MortEvo;
-        private Races m_race;
+        private Race m_race;
 
         private DateTime m_BrulerPlanteLast;
         private int m_LastTeinture = 0;
@@ -172,7 +172,7 @@ namespace Server.Mobiles
         private bool m_transformer;
         private Timer m_MortVivantTimer;
         private DateTime m_lastAchever;
-        private Races m_trueRace;
+        private Race m_trueRace;
         private DateTime m_lastAssassinat;
         private DateTime m_lastDeguisement;
         private DateTime m_NextCraftTime;
@@ -196,7 +196,7 @@ namespace Server.Mobiles
         private ClasseType m_ClasseType = ClasseType.None;
         private bool m_Suicide;
         private DateTime m_NextKillAllowed;
-        private Races m_RaceSecrete;
+        private Race m_RaceSecrete;
         private bool m_RevealTitle = true;
         private bool m_FreeReset = false;
         private bool m_Achever = false;
@@ -260,7 +260,7 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public Races RaceSecrete
+        public Race RaceSecrete
         {
             get { return m_RaceSecrete; }
             set { m_RaceSecrete = value; }
@@ -412,7 +412,7 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.Coordinateur)]
-        public Races Races
+        public Race Races
         {
             get { return m_race; }
             set { m_race = value; SendPropertiesTo(this); }
@@ -467,7 +467,7 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public Races MortRace
+        public Race MortRace
         {
             get { return m_trueRace; }
             set { m_trueRace = value; }
@@ -1230,14 +1230,14 @@ namespace Server.Mobiles
 
                 switch (m_from.RaceSecrete)
                 {
-                    case Races.Nordique:
+                    case Race.Nordique:
                         m_from.Hue = 1023;
                         m_from.EquipItem(new CorpsNordique(m_from.Hue));
                         break;
-                    case Races.Nomade:
+                    case Race.Nomade:
                         m_from.Hue = 1044;
                         break;
-                    case Races.Capiceen:
+                    case Race.Capiceen:
                         m_from.Hue = 1023;
                         break;
                 }
@@ -1301,14 +1301,14 @@ namespace Server.Mobiles
 
                 switch (m_from.RaceSecrete)
                 {
-                    case Races.Nordique:
+                    case Race.Nordique:
                         m_from.Hue = 1023;
                         m_from.EquipItem(new CorpsNordique(m_from.Hue));
                         break;
-                    case Races.Nomade:
+                    case Race.Nomade:
                         m_from.Hue = 1044;
                         break;
-                    case Races.Capiceen:
+                    case Race.Capiceen:
                         m_from.Hue = 1023;
                         break;
                 }
@@ -1335,13 +1335,13 @@ namespace Server.Mobiles
             else
             {
                 list.Add(new CallbackEntry(6098, new ContextCallback(LaunchFicheGump)));
-                if (this.Races == Races.Tieffelin && !(this.m_transformer))
+                if (this.Races == Race.Tieffelin && !(this.m_transformer))
                     list.Add(new TransformerTieffelinEntry(this));
-                else if (this.Races == Races.Tieffelin && this.m_transformer)
+                else if (this.Races == Race.Tieffelin && this.m_transformer)
                     list.Add(new FinTransformerTieffelinEntry(this));
-                if (this.Races == Races.Aasimar && !(this.m_transformer))
+                if (this.Races == Race.Aasimar && !(this.m_transformer))
                     list.Add(new TransformerAasimarEntry(this));
-                else if (this.Races == Races.Aasimar && this.m_transformer)
+                else if (this.Races == Race.Aasimar && this.m_transformer)
                     list.Add(new FinTransformerAasimarEntry(this));
             }
         }
@@ -2041,7 +2041,7 @@ namespace Server.Mobiles
             }
         }
 
-        public void OnRaceModChange(Races newrace, Races oldrace)
+        public void OnRaceModChange(Race newrace, Race oldrace)
         {
             /*if (newrace == Races.Aucun)
             {
@@ -2282,7 +2282,7 @@ namespace Server.Mobiles
                                 pm.HueMod = 0;
                                 pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
                                 pm.MortRace = pm.Races;
-                                pm.Races = Races.MortVivant;
+                                pm.Races = Race.MortVivant;
                                 pm.MortEvo = MortEvo.Decomposition;
                                 Competences.Reset(pm);
                                 Statistiques.Reset(pm);
@@ -2481,7 +2481,7 @@ namespace Server.Mobiles
                         Identities.RevealIdentity = reader.ReadBool();
                     goto case 2;
                 case 2:
-                    m_RaceSecrete = (Mobiles.Races)reader.ReadInt();
+                    m_RaceSecrete = (Mobiles.Race)reader.ReadInt();
                     goto case 1;
                 case 1:
                     m_NextKillAllowed = reader.ReadDateTime();
@@ -2532,7 +2532,7 @@ namespace Server.Mobiles
                     m_StatistiquesLibres = reader.ReadInt();
                     m_transformer = reader.ReadBool();
                     m_lastAchever = reader.ReadDateTime();
-                    m_trueRace = (Races)reader.ReadInt();
+                    m_trueRace = (Race)reader.ReadInt();
                     m_lastAssassinat = reader.ReadDateTime();
                     m_lastDeguisement = reader.ReadDateTime();
                     m_NextCraftTime = reader.ReadDateTime();
@@ -2596,7 +2596,7 @@ namespace Server.Mobiles
 
                     m_MortState = (MortState)reader.ReadInt();
                     m_MortEvo = (MortEvo)reader.ReadInt();
-                    m_race = (Races)reader.ReadInt();
+                    m_race = (Race)reader.ReadInt();
 
                     m_BrulerPlanteLast = reader.ReadDateTime();
                     m_LastTeinture = reader.ReadInt();

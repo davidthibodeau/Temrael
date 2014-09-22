@@ -6,7 +6,7 @@ namespace Server.Territories
 {
     public class TerritoryBrandheim : TerritoryRegion
     {
-        public override Races RaceType { get { return Races.Nordique; } }
+        public override Race RaceType { get { return Race.Nordique; } }
 
         public TerritoryBrandheim(XmlElement xml, Map map, Region parent)
             : base(xml, map, parent)

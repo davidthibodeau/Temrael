@@ -9,9 +9,9 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Races races = Races.Capiceen;
+        private Race races = Race.Capiceen;
 
-        public Races Races { get { return races; } set { races = value; InitSBInfo(); } }
+        public Race Races { get { return races; } set { races = value; InitSBInfo(); } }
 
 		[Constructable]
 		public Bowyer() : base( "Fabricant d'Arcs" )
@@ -43,15 +43,15 @@ namespace Server.Mobiles
             m_SBInfos.Clear();
             switch (races)
             {
-                case Races.Aasimar: m_SBInfos.Add(new SBBowyerAasimar()); break;
-                case Races.Elfe: m_SBInfos.Add(new SBBowyerElfe()); break;
-                case Races.ElfeNoir: m_SBInfos.Add(new SBBowyerDrow()); break;
-                case Races.Capiceen: m_SBInfos.Add(new SBBowyer()); break;
-                case Races.Nain: m_SBInfos.Add(new SBBowyerNain()); break;
-                case Races.Nomade: m_SBInfos.Add(new SBBowyerNomade()); break;
-                case Races.Nordique: m_SBInfos.Add(new SBBowyerNordique()); break;
-                case Races.Orcish: m_SBInfos.Add(new SBBowyerOrcish()); break;
-                case Races.Tieffelin: m_SBInfos.Add(new SBBowyerTieffelin()); break;
+                case Race.Aasimar: m_SBInfos.Add(new SBBowyerAasimar()); break;
+                case Race.Elfe: m_SBInfos.Add(new SBBowyerElfe()); break;
+                case Race.ElfeNoir: m_SBInfos.Add(new SBBowyerDrow()); break;
+                case Race.Capiceen: m_SBInfos.Add(new SBBowyer()); break;
+                case Race.Nain: m_SBInfos.Add(new SBBowyerNain()); break;
+                case Race.Nomade: m_SBInfos.Add(new SBBowyerNomade()); break;
+                case Race.Nordique: m_SBInfos.Add(new SBBowyerNordique()); break;
+                case Race.Orcish: m_SBInfos.Add(new SBBowyerOrcish()); break;
+                case Race.Tieffelin: m_SBInfos.Add(new SBBowyerTieffelin()); break;
                 default: m_SBInfos.Add(new SBBowyer()); break;
             }
 

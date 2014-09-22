@@ -89,7 +89,7 @@ namespace Server.Misc
                                 {
                                     totaljoueurs++;
 
-                                    if (tm.Races == Races.MortVivant)
+                                    if (tm.Races == Race.MortVivant)
                                     {
                                         if (tm.MortVivant)
                                         {
@@ -99,37 +99,37 @@ namespace Server.Misc
                                         {
                                             switch (tm.MortRace)
                                             {
-                                                case Races.Elfe: nbElfe++;
+                                                case Race.Elfe: nbElfe++;
                                                     break;
-                                                case Races.ElfeNoir: nbElfeNoir++;
+                                                case Race.ElfeNoir: nbElfeNoir++;
                                                     break;
-                                                case Races.Capiceen: nbHumain++;
+                                                case Race.Capiceen: nbHumain++;
                                                     break;
-                                                case Races.Nain: nbNain++;
+                                                case Race.Nain: nbNain++;
                                                     break;
-                                                case Races.Nomade: nbNomade++;
+                                                case Race.Nomade: nbNomade++;
                                                     break;
-                                                case Races.Nordique: nbNordique++;
+                                                case Race.Nordique: nbNordique++;
                                                     break;
-                                                case Races.Orcish: nbOrcish++;
+                                                case Race.Orcish: nbOrcish++;
                                                     break;
-                                                case Races.Tieffelin:
-                                                    if (tm.RaceSecrete == Races.Nomade)
+                                                case Race.Tieffelin:
+                                                    if (tm.RaceSecrete == Race.Nomade)
                                                         nbNomade++;
-                                                    else if (tm.RaceSecrete == Races.Nordique)
+                                                    else if (tm.RaceSecrete == Race.Nordique)
                                                         nbNordique++;
                                                     else
                                                         nbHumain++;
                                                     break;
-                                                case Races.Aasimar:
-                                                    if (tm.RaceSecrete == Races.Nomade)
+                                                case Race.Aasimar:
+                                                    if (tm.RaceSecrete == Race.Nomade)
                                                         nbNomade++;
-                                                    else if (tm.RaceSecrete == Races.Nordique)
+                                                    else if (tm.RaceSecrete == Race.Nordique)
                                                         nbNordique++;
                                                     else
                                                         nbHumain++;
                                                     break;
-                                                case Races.MJ: if (!(tm.Hidden)) nbMJ++;
+                                                case Race.MJ: if (!(tm.Hidden)) nbMJ++;
                                                     break;
                                             }
                                         }
@@ -138,42 +138,42 @@ namespace Server.Misc
                                     {
                                         switch (tm.Races)
                                         {
-                                            case Races.Elfe: nbElfe++;
+                                            case Race.Elfe: nbElfe++;
                                                 break;
-                                            case Races.ElfeNoir: nbElfeNoir++;
+                                            case Race.ElfeNoir: nbElfeNoir++;
                                                 break;
-                                            case Races.Capiceen: nbHumain++;
+                                            case Race.Capiceen: nbHumain++;
                                                 break;
-                                            case Races.Nain: nbNain++;
+                                            case Race.Nain: nbNain++;
                                                 break;
-                                            case Races.Nomade: nbNomade++;
+                                            case Race.Nomade: nbNomade++;
                                                 break;
-                                            case Races.Nordique: nbNordique++;
+                                            case Race.Nordique: nbNordique++;
                                                 break;
-                                            case Races.Orcish: nbOrcish++;
+                                            case Race.Orcish: nbOrcish++;
                                                 break;
-                                            case Races.Tieffelin:
-                                                if (tm.RaceSecrete == Races.Nomade)
+                                            case Race.Tieffelin:
+                                                if (tm.RaceSecrete == Race.Nomade)
                                                     nbNomade++;
-                                                else if (tm.RaceSecrete == Races.Nordique)
+                                                else if (tm.RaceSecrete == Race.Nordique)
                                                     nbNordique++;
                                                 else
                                                     nbHumain++;
                                                 break;
-                                            case Races.Aasimar:
-                                                if (tm.RaceSecrete == Races.Nomade)
+                                            case Race.Aasimar:
+                                                if (tm.RaceSecrete == Race.Nomade)
                                                     nbNomade++;
-                                                else if (tm.RaceSecrete == Races.Nordique)
+                                                else if (tm.RaceSecrete == Race.Nordique)
                                                     nbNordique++;
                                                 else
                                                     nbHumain++;
                                                 break;
-                                            case Races.MJ: if(!(tm.Hidden)) nbMJ++;
+                                            case Race.MJ: if(!(tm.Hidden)) nbMJ++;
                                                 break;
                                         }
                                     }
 
-                                    Races race = Races.Aucun;
+                                    Race race = Race.Aucun;
 
                                     if (tm.Region is TerritoryRegion)
                                         race = ((TerritoryRegion)tm.Region).RaceType;
@@ -182,23 +182,23 @@ namespace Server.Misc
 
                                     switch (race)
                                     {
-                                        case Races.Elfe: cElfe++;
+                                        case Race.Elfe: cElfe++;
                                             break;
-                                        case Races.ElfeNoir: cElfeNoir++;
+                                        case Race.ElfeNoir: cElfeNoir++;
                                             break;
-                                        case Races.Capiceen: cHumain++;
+                                        case Race.Capiceen: cHumain++;
                                             break;
-                                        case Races.MortVivant: cMortVivant++;
+                                        case Race.MortVivant: cMortVivant++;
                                             break;
-                                        case Races.Nain: cNain++;
+                                        case Race.Nain: cNain++;
                                             break;
-                                        case Races.Nomade: cNomade++;
+                                        case Race.Nomade: cNomade++;
                                             break;
-                                        case Races.Nordique: cNordique++;
+                                        case Race.Nordique: cNordique++;
                                             break;
-                                        case Races.Orcish: cOrcish++;
+                                        case Race.Orcish: cOrcish++;
                                             break;
-                                        case Races.Tieffelin: cTieffelin++;
+                                        case Race.Tieffelin: cTieffelin++;
                                             break;
                                         default: 
                                             Landes++;

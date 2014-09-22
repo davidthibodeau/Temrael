@@ -74,7 +74,7 @@ namespace Server.Items
     {
         private int m_manpower;
         private int m_cout;
-        private Races m_race;
+        private Race m_race;
 
         private int m_sauvages;
         private int m_archers;
@@ -90,7 +90,7 @@ namespace Server.Items
         public int Cout { get { return m_cout; } set { m_cout = value; } }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public Races Race { get { return m_race; } set { m_race = value; } }
+        public Race Race { get { return m_race; } set { m_race = value; } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public int Sauvages { get { return m_sauvages; } set { m_sauvages = value; } }

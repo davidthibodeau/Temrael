@@ -12,7 +12,7 @@ namespace Server.Regions
 {
     public class TavernRegion : Region
     {
-        public virtual Races RaceType { get { return Races.Aucun; } }
+        public virtual Race RaceType { get { return Race.Aucun; } }
         public override MusicName DefaultMusic { get { return MusicName.Tavern04; } }
             
         public TavernRegion(XmlElement xml, Map map, Region parent) : base(xml, map, parent)

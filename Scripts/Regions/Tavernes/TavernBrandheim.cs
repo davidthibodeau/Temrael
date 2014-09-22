@@ -7,9 +7,9 @@ namespace Server.Regions
 {
     public class TavernBrandheim : TavernRegion
     {
-        public override Races RaceType
+        public override Race RaceType
         {
-            get { return Races.Nordique; }
+            get { return Race.Nordique; }
         }
 
         public TavernBrandheim(XmlElement xml, Map map, Region parent)

@@ -57,7 +57,7 @@ namespace Server.Gumps
             line++;
             AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Destination: " + from.Creation.destination.ToString() + "<basefont></h3>");
             line++;
-            if (m_from.Creation.race == Races.Aasimar || m_from.Creation.race == Races.Tieffelin)
+            if (m_from.Creation.race == Race.Aasimar || m_from.Creation.race == Race.Tieffelin)
             {
                 AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: " + from.Creation.secrete.ToString() + "<basefont></h3>");
                 line++;
@@ -76,7 +76,7 @@ namespace Server.Gumps
                     from.SendGump(new CreationRaceGump(from));
                     break;
                 case 3:
-                    if (from.Creation.race != Races.Aucun)
+                    if (from.Creation.race != Race.Aucun)
                     {
                         from.SendGump(new CreationClasseGump(from));
                     }
@@ -104,7 +104,7 @@ namespace Server.Gumps
                 case 8:
                     bool complete = true;
 
-                    if (m_from.Creation.race != Races.Aucun)
+                    if (m_from.Creation.race != Race.Aucun)
                         m_from.Races = m_from.Creation.race;
                     else
                         complete = false;
@@ -115,8 +115,8 @@ namespace Server.Gumps
                     if (m_from.Creation.destination == CreationCarteGump.DestinationsDepart.Aucune)
                         complete = false;
 
-                    if ((m_from.Creation.race == Races.Tieffelin || m_from.Creation.race == Races.Aasimar) && m_from.Creation.secrete == Races.Aucun)
-                        m_from.Creation.secrete = Races.Capiceen;
+                    if ((m_from.Creation.race == Race.Tieffelin || m_from.Creation.race == Race.Aasimar) && m_from.Creation.secrete == Race.Aucun)
+                        m_from.Creation.secrete = Race.Capiceen;
 
                     if (complete)
                     {
@@ -231,67 +231,67 @@ namespace Server.Gumps
 
             switch (from.Races)
             {
-                case Races.Elfe:
+                case Race.Elfe:
                     //from.Hue = 2425;
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsElfe(from.Hue));
                     break;
-                case Races.ElfeNoir:
+                case Race.ElfeNoir:
                     //from.Hue = 1900;
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsElfe(from.Hue));
                     break;
-                case Races.Capiceen:
+                case Race.Capiceen:
                     //from.Hue = 1024;
                     from.Hue = from.Creation.hue;
                     break;
-                case Races.Nain:
+                case Race.Nain:
                     //from.Hue = 1867;
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsNain(from.Hue));
                     break;
-                case Races.Nomade:
+                case Race.Nomade:
                     //from.Hue = 1816;
                     from.Hue = from.Creation.hue;
                     break;
-                case Races.Nordique:
+                case Race.Nordique:
                     //from.Hue = 1048;
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsNordique(from.Hue));
                     break;
-                case Races.Orcish:
+                case Race.Orcish:
                     //from.Hue = 1437;
                     from.Hue = from.Creation.hue;
                     EquipItem(from, new CorpsOrcish(from.Hue));
                     break;
-                case Races.Tieffelin:
+                case Race.Tieffelin:
                     from.RaceSecrete = from.Creation.secrete;
                     switch (from.RaceSecrete)
                     {
-                        case Races.Nordique:
+                        case Race.Nordique:
                             from.Hue = 1023;
                             from.EquipItem(new CorpsNordique(from.Hue));
                             break;
-                        case Races.Nomade:
+                        case Race.Nomade:
                             from.Hue = 1044;
                             break;
-                        case Races.Capiceen:
+                        case Race.Capiceen:
                             from.Hue = 1023;
                             break;
                     }
                     break;
-                case Races.Aasimar:
+                case Race.Aasimar:
                     from.RaceSecrete = from.Creation.secrete;
                     switch (from.RaceSecrete)
                     {
-                        case Races.Nordique:
+                        case Race.Nordique:
                             from.Hue = 1023;
                             from.EquipItem(new CorpsNordique(from.Hue));
                             break;
-                        case Races.Nomade:
+                        case Race.Nomade:
                             from.Hue = 1044;
                             break;
-                        case Races.Capiceen:
+                        case Race.Capiceen:
                             from.Hue = 1023;
                             break;
                     }
