@@ -2,6 +2,8 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Factions;
+using Server.Network;
+using System.Collections.Generic;
 
 namespace Server.Misc
 {
@@ -81,6 +83,25 @@ namespace Server.Misc
 			Mobile.SkillCheckDirectTargetHandler = new SkillCheckDirectTargetHandler( Mobile_SkillCheckDirectTarget );
 		}
 
+        public class SkillGainTimer : Timer
+        {
+            public SkillGainTimer()
+                : base(TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(20))
+            {
+                Priority = TimerPriority.FiftyMS;
+            }
+
+            protected override void OnTick()
+            {
+                foreach (NetState state in NetState.Instances)
+                {
+                    Mobile m = state.Mobile;
+
+                    IncreaseRandomUpSkill(m);
+                }
+            }
+        }
+
 		public static bool Mobile_SkillCheckLocation( Mobile from, SkillName skillName, double minSkill, double maxSkill )
 		{
 			Skill skill = from.Skills[skillName];
@@ -117,25 +138,38 @@ namespace Server.Misc
 			return CheckSkill( from, skill, loc, chance );
 		}
 
+        public static void IncreaseRandomUpSkill(Mobile from)
+        {
+            Skills sks = from.Skills;
+            List<Skill> l = new List<Skill>();
+            foreach (Skill sk in sks)
+            {
+                if (sk.Lock == SkillLock.Up && sk.Base < sk.Cap)
+                    l.Add(sk);
+            }
+            Gain(from, l[Utility.Random(l.Count)]);
+        }
+
 		public static bool CheckSkill( Mobile from, Skill skill, object amObj, double chance )
 		{
-            if (from is TMobile)
-            {
-                TMobile tattacker = from as TMobile;
-                if (tattacker != null && tattacker.CheckFatigue(4))
-                    return false;
+            // Check de fatigue...
+            //if (from is TMobile)
+            //{
+            //    TMobile tattacker = from as TMobile;
+            //    if (tattacker != null && tattacker.CheckFatigue(4))
+            //        return false;
 
-                Random rand = new Random();
+            //    Random rand = new Random();
 
-                /*if (rand.Next(0, 10) <= 1)
-                  tattacker.AddFatigue(1);*/
-            }
+            //    /*if (rand.Next(0, 10) <= 1)
+            //      tattacker.AddFatigue(1);*/
+            //}
 
 			if ( from.Skills.Cap == 0 )
 				return false;
 
 			bool success = ( chance >= Utility.RandomDouble() );
-		/*	double gc = (double)(from.Skills.Cap - from.Skills.Total) / from.Skills.Cap;
+			double gc = (double)(from.Skills.Cap - from.Skills.Total) / from.Skills.Cap;
 			gc += ( skill.Cap - skill.Base ) / skill.Cap;
 			gc /= 2;
 
@@ -151,7 +185,7 @@ namespace Server.Misc
 				gc *= 2;
 
 			if ( from.Alive && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) || skill.Base < 10.0 ) )
-				Gain( from, skill );*/
+				Gain( from, skill );
 
           //  Console.WriteLine("Checkckill {0}: {1}", skill, success);
 
@@ -238,15 +272,6 @@ namespace Server.Misc
 						}
 					}
 				}
-
-				#region Scroll of Alacrity
-				PlayerMobile pm = from as PlayerMobile;
-
-				if ( from is PlayerMobile )
-					if (pm != null && skill.SkillName == pm.AcceleratedSkill && pm.AcceleratedStart > DateTime.Now)
-					toGain *= Utility.RandomMinMax(2, 5);
-					#endregion
-
 				if ( !from.Player || (skills.Total + toGain) <= skills.Cap )
 				{
 					skill.BaseFixedPoint += toGain;
