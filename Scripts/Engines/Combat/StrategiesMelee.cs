@@ -42,9 +42,8 @@ namespace Server.Engines.Combat
 
     public class StrategyTranchante : StrategyMelee
     {
-        private static CombatStrategy m_Strategy = new StrategyTranchante();
-        public static CombatStrategy Strategy { get { return m_Strategy; } }
-
+        public readonly static CombatStrategy Strategy = new StrategyTranchante();
+        
         public override SkillName ToucherSkill { get { return SkillName.ArmeTranchante; } }
 
         protected override double ToucherChance(Mobile atk, Mobile def)
@@ -57,9 +56,8 @@ namespace Server.Engines.Combat
 
     public class StrategyContondante : StrategyMelee
     {
-        private static CombatStrategy m_Strategy = new StrategyContondante();
-        public static CombatStrategy Strategy { get { return m_Strategy; } }
-
+        public readonly static CombatStrategy Strategy = new StrategyContondante();
+        
         public override SkillName ToucherSkill { get { return SkillName.ArmeContondante; } }
 
         protected override double ReducedArmor(Mobile atk, double baseArmor)
@@ -72,9 +70,8 @@ namespace Server.Engines.Combat
 
     public class StrategyHaste : StrategyMelee
     {
-        private static CombatStrategy m_Strategy = new StrategyHaste();
-        public static CombatStrategy Strategy { get { return m_Strategy; } }
-
+        public readonly static CombatStrategy Strategy = new StrategyHaste();
+        
         public override SkillName ToucherSkill { get { return SkillName.ArmeHaste; } }
 
         public override int BaseRange { get { return 2; } }
@@ -89,9 +86,8 @@ namespace Server.Engines.Combat
 
     public class StrategyHache : StrategyTranchante
     {
-        private static CombatStrategy m_Strategy = new StrategyHache();
-        public new static CombatStrategy Strategy { get { return m_Strategy; } }
-
+        public readonly new static CombatStrategy Strategy = new StrategyHache();
+        
         protected override double ComputerDegats(Mobile atk, int basedmg)
         {
             double dmg = base.ComputerDegats(atk, basedmg);

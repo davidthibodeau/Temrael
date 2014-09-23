@@ -40,14 +40,12 @@ namespace Server.Engines.Combat
             atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));
             def.PlaySound(Weapon(def).GetHitDefendSound(atk, def));
 
+            int degats = Degats(atk, def);
             if (DefStrategy(def).Parer(def))
             {
                 def.FixedEffect(0x37B9, 10, 16);
-            }
-
-            int degats = Degats(atk, def);
-            if (DefStrategy(def).Parer(def))
                 degats = 0;
+            }
 
             def.Damage(degats,atk);
         }
@@ -144,12 +142,19 @@ namespace Server.Engines.Combat
             double strBonus = GetBonus(atk.Str, 0.3, 5);
             double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.625, 6.25);
             double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.5, 5);
-            double exceptBonus = (atk.Weapon as BaseWeapon).Quality == WeaponQuality.Exceptional ?
-                GetBonus(atk.Skills[SkillName.Polissage].Value, 0.5, 10) : 0;
-
+            double exceptBonus = 0;
+            switch ((atk.Weapon as BaseWeapon).Quality)
+            {
+                case WeaponQuality.Low: exceptBonus = -0.20; break;
+                case WeaponQuality.Regular: exceptBonus = 0; break;
+                case WeaponQuality.Exceptional:
+                    exceptBonus = 0.20;
+                    exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.2, 10);
+                    break;
+            }
             // TODO : Ajouter effet de la qualité et du dmg level basé sur le minerais ?
 
-            return basedmg * (1 + strBonus + tactiqueBonus + anatomyBonus);
+            return basedmg * (1 + strBonus + tactiqueBonus + anatomyBonus + exceptBonus);
         }
 
         protected virtual double ReducedArmor(Mobile atk, double baseArmor)
