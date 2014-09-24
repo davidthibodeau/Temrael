@@ -114,7 +114,7 @@ namespace Server
 					typeof( Skeleton ),			typeof( Slime ),
 					typeof( Walrus ),			typeof( RestlessSoul ),
 					typeof( CrystalElemental ),	typeof( DarknightCreeper ),	typeof( MoundOfMaggots ),
-					typeof( Juggernaut ),		typeof( Yamandon ),			typeof( Serado ),
+					typeof( Juggernaut ),		typeof( Yamandon ),
 
                     //Ancien medium
                     typeof( ToxicElemental ),	typeof( AgapiteElemental ),	typeof( Alligator ),
@@ -139,7 +139,7 @@ namespace Server
 					typeof( GiantSpider ),		typeof( GiantToad ),		typeof( Goat ),
 					typeof( GoldenElemental ),	typeof( Gorilla ),			typeof( GreatHart ),
 					typeof( GreyWolf ),			typeof( GrizzlyBear ),		typeof( Guardian ),
-					typeof( Harpy ),			typeof( Harrower ),			typeof( HellHound ),
+					typeof( Harpy ),			typeof( HellHound ),
 					typeof( Hind ),				typeof( HordeMinion ),		typeof( Horse ),
 					typeof( Horse ),			typeof( IceElemental ),		typeof( IceFiend ),
 					typeof( Imp ),				
@@ -188,7 +188,7 @@ namespace Server
 					typeof( YomotsuWarrior ),	typeof( RevenantLion ),		typeof( Oni ),
 					typeof( Scarabee ),
 
-					typeof( LordOaks ),			typeof( Silvani ),			typeof( AirElemental ),
+					typeof( Silvani ),			typeof( AirElemental ),
 					typeof( AncientWyrm ),		typeof( Balron ),			typeof( BladeSpirits ),
 					typeof( DreadSpider ),		typeof( Efreet ),			typeof( EtherealWarrior ),
 					typeof( Lich ),				typeof( Cauchemar ),		typeof( OphidianArchmage ),
@@ -203,8 +203,7 @@ namespace Server
 				/* Very Fast */
 				new SpeedInfo( 0.175, 0.350, new Type[]
 				{
-					typeof( Barracoon ),		typeof( Mephitis ),			typeof( Neira ),
-					typeof( Rikktor ),			typeof( Semidar ),			typeof( EnergyVortex ),
+                    typeof( EnergyVortex ),
 					typeof( EliteNinja ),			typeof( Pixie ),		
 					typeof( VorpalBunny ),		typeof( FleshRenderer ),	typeof( KhaldunRevenant ),
 					typeof( FactionDragoon ),	typeof( FactionKnight ),	typeof( FactionPaladin ),

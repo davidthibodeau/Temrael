@@ -9,16 +9,12 @@ using Server.Engines.Help;
 using Server.ContextMenus;
 using Server.Network;
 using Server.Spells;
-//using Server.Spells.Ninjitsu;
-//using Server.Spells.Bushido;
 using Server.Targeting;
 using Server.Engines.Quests;
 using Server.Factions;
 using Server.Regions;
 using Server.Accounting;
-using Server.Engines.CannedEvil;
 using Server.Engines.Craft;
-//using Server.Spells.Spellweaving;
 using Server.Engines.PartySystem;
 using Server.Engines.Langues;
 using Server.Engines.Identities;
@@ -680,8 +676,6 @@ namespace Server.Mobiles
 		private static void OnLogin( LoginEventArgs e )
 		{
 			Mobile from = e.Mobile;
-
-			CheckAtrophies( from );
 
 			if ( AccountHandler.LockdownLevel > AccessLevel.Player )
 			{
@@ -1357,9 +1351,6 @@ namespace Server.Mobiles
 
 				if ( m_JusticeProtectors.Count > 0 )
 					list.Add( new CallbackEntry( 6157, new ContextCallback( CancelProtection ) ) );
-
-                if (Alive && InsuranceEnabled)
-					list.Add( new CallbackEntry( 6210, new ContextCallback( ToggleChampionTitleDisplay ) ) );
 			}
 			if ( from != this )
 			{
@@ -2258,8 +2249,6 @@ namespace Server.Mobiles
 			m_JusticeProtectors = new List<Mobile>();
 			m_GuildRank = Guilds.RankDefinition.Lowest;
 
-			m_ChampionTitles = new ChampionTitleInfo();
-
             Langues = new Langues(this);
             Identities = new Identities(this);
 
@@ -2575,7 +2564,6 @@ namespace Server.Mobiles
 				}
 				case 23:
 				{
-					m_ChampionTitles = new ChampionTitleInfo( reader );
 					goto case 22;
 				}
 				case 22:
@@ -2786,9 +2774,6 @@ namespace Server.Mobiles
 			if( m_LastOnline == DateTime.MinValue && Account != null )
 				m_LastOnline = ((Account)Account).LastLogin;
 
-			if( m_ChampionTitles == null )
-				m_ChampionTitles = new ChampionTitleInfo();
-
 			if ( AccessLevel > AccessLevel.Player )
 				m_IgnoreMobiles = true;
 
@@ -2801,8 +2786,6 @@ namespace Server.Mobiles
 				if ( bc != null )
 					bc.IsStabled = true;
 			}
-
-			CheckAtrophies( this );
 
 			if( Hidden )	//Hiding is the only buff where it has an effect that's serialized.
 				AddBuff( new BuffInfo( BuffIcon.HidingAndOrStealth, 1075655 ) );
@@ -2825,8 +2808,6 @@ namespace Server.Mobiles
 			}
 
 			CheckKillDecay();
-
-			CheckAtrophies( this );
 
 			base.Serialize( writer );
 
@@ -2856,8 +2837,6 @@ namespace Server.Mobiles
 			}
 
 			writer.WriteDeltaTime( m_LastHonorLoss );
-
-			ChampionTitleInfo.Serialize( writer, m_ChampionTitles );
 
 			writer.Write( m_LastValorLoss );
 			writer.WriteEncodedInt( m_ToTItemsTurnedIn );
@@ -2933,12 +2912,6 @@ namespace Server.Mobiles
 			writer.Write( m_LongTermElapse );
 			writer.Write( m_ShortTermElapse );
 			writer.Write( this.GameTime );
-		}
-
-		public static void CheckAtrophies( Mobile m )
-		{
-			if( m is PlayerMobile )
-				ChampionTitleInfo.CheckAtrophy( (PlayerMobile)m );
 		}
 
 		public void CheckKillDecay()
@@ -3675,296 +3648,6 @@ namespace Server.Mobiles
 					m_SpeechLog = new SpeechLog();
 
 				m_SpeechLog.Add(this, e.Mobile, e.Speech );
-			}
-		}
-
-		#endregion
-
-		#region Champion Titles
-		[CommandProperty( AccessLevel.Batisseur )]
-		public bool DisplayChampionTitle
-		{
-			get { return GetFlag( PlayerFlag.DisplayChampionTitle ); }
-			set { SetFlag( PlayerFlag.DisplayChampionTitle, value ); }
-		}
-
-		private ChampionTitleInfo m_ChampionTitles;
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public ChampionTitleInfo ChampionTitles { get { return m_ChampionTitles; } set { } }
-
-		private void ToggleChampionTitleDisplay()
-		{
-			if( !CheckAlive() )
-				return;
-
-			if( DisplayChampionTitle )
-				SendLocalizedMessage( 1062419, "", 0x23 ); // You have chosen to hide your monster kill title.
-			else
-				SendLocalizedMessage( 1062418, "", 0x23 ); // You have chosen to display your monster kill title.
-
-			DisplayChampionTitle = !DisplayChampionTitle;
-		}
-
-		[PropertyObject]
-		public class ChampionTitleInfo
-		{
-			public static TimeSpan LossDelay = TimeSpan.FromDays( 1.0 );
-			public const int LossAmount = 90;
-
-			private class TitleInfo
-			{
-				private int m_Value;
-				private DateTime m_LastDecay;
-
-				public int Value { get { return m_Value; } set { m_Value = value; } }
-				public DateTime LastDecay { get { return m_LastDecay; } set { m_LastDecay = value; } }
-
-				public TitleInfo()
-				{
-				}
-
-				public TitleInfo( GenericReader reader )
-				{
-					int version = reader.ReadEncodedInt();
-
-					switch( version )
-					{
-						case 0:
-						{
-							m_Value = reader.ReadEncodedInt();
-							m_LastDecay = reader.ReadDateTime();
-							break;
-						}
-					}
-				}
-
-				public static void Serialize( GenericWriter writer, TitleInfo info )
-				{
-					writer.WriteEncodedInt( (int)0 ); // version
-
-					writer.WriteEncodedInt( info.m_Value );
-					writer.Write( info.m_LastDecay );
-				}
-			}
-
-			private TitleInfo[] m_Values;
-
-			private int m_Harrower;	//Harrower titles do NOT decay
-
-			public int GetValue( ChampionSpawnType type )
-			{
-				return GetValue( (int)type );
-			}
-
-			public void SetValue( ChampionSpawnType type, int value )
-			{
-				SetValue( (int)type, value );
-			}
-
-			public void Award( ChampionSpawnType type, int value )
-			{
-				Award( (int)type, value );
-			}
-
-			public int GetValue( int index )
-			{
-				if( m_Values == null || index < 0 || index >= m_Values.Length )
-					return 0;
-
-				if( m_Values[index] == null )
-					m_Values[index] = new TitleInfo();
-
-				return m_Values[index].Value;
-			}
-
-			public DateTime GetLastDecay( int index )
-			{
-				if( m_Values == null || index < 0 || index >= m_Values.Length )
-					return DateTime.MinValue;
-
-				if( m_Values[index] == null )
-					m_Values[index] = new TitleInfo();
-
-				return m_Values[index].LastDecay;
-			}
-
-			public void SetValue( int index, int value )
-			{
-				if( m_Values == null )
-					m_Values = new TitleInfo[ChampionSpawnInfo.Table.Length];
-
-				if( value < 0 )
-					value = 0;
-
-				if( index < 0 || index >= m_Values.Length )
-					return;
-
-				if( m_Values[index] == null )
-					m_Values[index] = new TitleInfo();
-
-				m_Values[index].Value = value;
-			}
-
-			public void Award( int index, int value )
-			{
-				if( m_Values == null )
-					m_Values = new TitleInfo[ChampionSpawnInfo.Table.Length];
-
-				if( index < 0 || index >= m_Values.Length || value <= 0 )
-					return;
-
-				if( m_Values[index] == null )
-					m_Values[index] = new TitleInfo();
-
-				m_Values[index].Value += value;
-			}
-
-			public void Atrophy( int index, int value )
-			{
-				if( m_Values == null )
-					m_Values = new TitleInfo[ChampionSpawnInfo.Table.Length];
-
-				if( index < 0 || index >= m_Values.Length || value <= 0 )
-					return;
-
-				if( m_Values[index] == null )
-					m_Values[index] = new TitleInfo();
-
-				int before = m_Values[index].Value;
-
-				if( (m_Values[index].Value - value) < 0 )
-					m_Values[index].Value = 0;
-				else
-					m_Values[index].Value -= value;
-
-				if( before != m_Values[index].Value )
-					m_Values[index].LastDecay = DateTime.Now;
-			}
-
-			public override string ToString()
-			{
-				return "...";
-			}
-
-			[CommandProperty(AccessLevel.Batisseur)]
-			public int Pestilence { get { return GetValue(ChampionSpawnType.Pestilence); } set { SetValue(ChampionSpawnType.Pestilence, value); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int Abyss { get { return GetValue( ChampionSpawnType.Abyss ); } set { SetValue( ChampionSpawnType.Abyss, value ); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int Arachnid { get { return GetValue( ChampionSpawnType.Arachnid ); } set { SetValue( ChampionSpawnType.Arachnid, value ); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int ColdBlood { get { return GetValue( ChampionSpawnType.ColdBlood ); } set { SetValue( ChampionSpawnType.ColdBlood, value ); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int ForestLord { get { return GetValue( ChampionSpawnType.ForestLord ); } set { SetValue( ChampionSpawnType.ForestLord, value ); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int SleepingDragon { get { return GetValue( ChampionSpawnType.SleepingDragon ); } set { SetValue( ChampionSpawnType.SleepingDragon, value ); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int UnholyTerror { get { return GetValue( ChampionSpawnType.UnholyTerror ); } set { SetValue( ChampionSpawnType.UnholyTerror, value ); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int VerminHorde { get { return GetValue( ChampionSpawnType.VerminHorde ); } set { SetValue( ChampionSpawnType.VerminHorde, value ); } }
-
-			[CommandProperty( AccessLevel.Batisseur )]
-			public int Harrower { get { return m_Harrower; } set { m_Harrower = value; } }
-
-			public ChampionTitleInfo()
-			{
-			}
-
-			public ChampionTitleInfo( GenericReader reader )
-			{
-				int version = reader.ReadEncodedInt();
-
-				switch( version )
-				{
-					case 0:
-					{
-						m_Harrower = reader.ReadEncodedInt();
-
-						int length = reader.ReadEncodedInt();
-						m_Values = new TitleInfo[length];
-
-						for( int i = 0; i < length; i++ )
-						{
-							m_Values[i] = new TitleInfo( reader );
-						}
-
-						if( m_Values.Length != ChampionSpawnInfo.Table.Length )
-						{
-							TitleInfo[] oldValues = m_Values;
-							m_Values = new TitleInfo[ChampionSpawnInfo.Table.Length];
-
-							for( int i = 0; i < m_Values.Length && i < oldValues.Length; i++ )
-							{
-								m_Values[i] = oldValues[i];
-							}
-						}
-						break;
-					}
-				}
-			}
-
-			public static void Serialize( GenericWriter writer, ChampionTitleInfo titles )
-			{
-				writer.WriteEncodedInt( (int)0 ); // version
-
-				writer.WriteEncodedInt( titles.m_Harrower );
-
-				int length = titles.m_Values.Length;
-				writer.WriteEncodedInt( length );
-
-				for( int i = 0; i < length; i++ )
-				{
-					if( titles.m_Values[i] == null )
-						titles.m_Values[i] = new TitleInfo();
-
-					TitleInfo.Serialize( writer, titles.m_Values[i] );
-				}
-			}
-
-			public static void CheckAtrophy( PlayerMobile pm )
-			{
-				ChampionTitleInfo t = pm.m_ChampionTitles;
-				if( t == null )
-					return;
-
-				if( t.m_Values == null )
-					t.m_Values = new TitleInfo[ChampionSpawnInfo.Table.Length];
-
-				for( int i = 0; i < t.m_Values.Length; i++ )
-				{
-					if( (t.GetLastDecay( i ) + LossDelay) < DateTime.Now )
-					{
-						t.Atrophy( i, LossAmount );
-					}
-				}
-			}
-
-			public static void AwardHarrowerTitle( PlayerMobile pm )	//Called when killing a harrower.  Will give a minimum of 1 point.
-			{
-				ChampionTitleInfo t = pm.m_ChampionTitles;
-				if( t == null )
-					return;
-
-				if( t.m_Values == null )
-					t.m_Values = new TitleInfo[ChampionSpawnInfo.Table.Length];
-
-				int count = 1;
-
-				for( int i = 0; i < t.m_Values.Length; i++ )
-				{
-					if( t.m_Values[i].Value > 900 )
-						count++;
-				}
-
-				t.m_Harrower = Math.Max( count, t.m_Harrower );	//Harrower titles never decay.
 			}
 		}
 

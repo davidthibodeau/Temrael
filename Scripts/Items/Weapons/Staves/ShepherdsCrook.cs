@@ -3,7 +3,6 @@ using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
-using Server.Engines.CannedEvil;
 
 namespace Server.Items
 {
@@ -102,28 +101,8 @@ namespace Server.Items
 
 			private bool IsHerdable( BaseCreature bc )
 			{
-
 				if ( bc.Tamable )
 					return true;
-
-				Map map = bc.Map;
-
-				ChampionSpawnRegion region = Region.Find( bc.Home, map ) as ChampionSpawnRegion;
-
-				if ( region != null )
-				{
-					ChampionSpawn spawn = region.ChampionSpawn;
-
-					if ( spawn != null && spawn.IsChampionSpawn( bc ) )
-					{
-						Type t = bc.GetType();
-
-						foreach ( Type type in m_ChampTamables )
-							if ( type == t )
-								return true;
-					}
-				}
-
 				return false;
 			}
 
