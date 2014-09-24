@@ -8,7 +8,7 @@ using Server.Network;
 using Server.DataStructures;
 
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     /* Plan: 
      *  - Gump pour ajouter des fonds et des employes (accessible par les gms)

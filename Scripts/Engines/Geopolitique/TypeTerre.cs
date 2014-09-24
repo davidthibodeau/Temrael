@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     //Wrapper pour la normalisation des types de terres et de leurs rentes
     public class TypeTerre

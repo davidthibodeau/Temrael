@@ -4,7 +4,7 @@ using System.Text;
 using System.Xml;
 using System.Timers;
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     public class Terre
     {

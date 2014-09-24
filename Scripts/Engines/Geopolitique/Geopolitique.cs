@@ -5,10 +5,10 @@ using System.IO;
 using System.Xml;
 using Server;
 using Server.Commands;
-using Server.Systemes.Geopolitique.Log;
+using Server.Engines.Geopolitique.Log;
 using System.Globalization;
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     public class Geopolitique
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
-using Server.Systemes.Geopolitique;
+using Server.Engines.Geopolitique;
 
-namespace Server.Systemes.Geopolitique.Log
+namespace Server.Engines.Geopolitique.Log
 {
 
     public enum EntryType

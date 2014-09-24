@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     public class EmployeGump : Gump
     {

@@ -5,10 +5,10 @@ using Server;
 using Server.Network;
 using Server.Gumps;
 using Server.Prompts;
-using Server.Systemes.Geopolitique.Log;
+using Server.Engines.Geopolitique.Log;
 using Server.Targeting;
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     // Généré avec GumpStudio.
     public class GeopolGump : Gump

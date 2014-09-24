@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Items;
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     //Wrapper class pour les listes d'employes dans les tresoriers.
     public class Employe

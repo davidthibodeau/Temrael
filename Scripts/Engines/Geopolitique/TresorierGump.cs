@@ -7,7 +7,7 @@ using Server.Mobiles;
 using Server.Targeting;
 
 
-namespace Server.Systemes.Geopolitique
+namespace Server.Engines.Geopolitique
 {
     public class TresorierGump : Gump
     {

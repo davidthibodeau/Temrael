@@ -6,7 +6,6 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Items;
 using Server.Gumps;
-using Server.Systemes;
 using Server.Accounting;
 using Server.Regions;
 using Server.Commands;
@@ -127,7 +126,7 @@ namespace Server
                 }
             }
 
-            foreach (CompensationGump.MJ mj in Systemes.CompensationGump.GetMJs())
+            foreach (CompensationGump.MJ mj in CompensationGump.GetMJs())
             {
                 CompensationGump.WriteLine(String.Format(
                     "Verification de paiement pour {0}. Son prochain paiement est le {1}.", 

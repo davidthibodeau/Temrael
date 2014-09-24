@@ -10,7 +10,7 @@ using Server.Mobiles;
 using Server.Prompts;
 
 
-namespace Server.Systemes
+namespace Server.Gumps
 {
     public class CompensationGump : Gump
     {

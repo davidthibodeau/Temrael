@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
-namespace Server.Systemes.Geopolitique.Log
+namespace Server.Engines.Geopolitique.Log
 {
     public class Journal
     {
