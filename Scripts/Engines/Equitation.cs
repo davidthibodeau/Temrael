@@ -40,8 +40,6 @@ namespace Server.Engines.Equitation
 
         static public bool CheckEquitation(Mobile m, EquitationType type)
         {
-            //true s'il ne tombe pas, false si il tombe
-
             if (m.AccessLevel >= AccessLevel.Batisseur)
                 return true;
 
@@ -60,7 +58,6 @@ namespace Server.Engines.Equitation
             if (equitation < 0)
                 equitation = 0;
 
-
             double chance = 0;
             switch (type)
             {
@@ -71,19 +68,34 @@ namespace Server.Engines.Equitation
                 case EquitationType.Ranged: chance = m_RangedAttackTable[equitation]; break;
             }
 
+            double fall = Utility.RandomDouble();
+
+            TileType tile = Deplacement.GetTileType((Mobile)m);
+            // Si le personnage courre sur une case de terrain difficile
+            if (tile != TileType.Other && tile != TileType.Dirt && type == EquitationType.Running)
+            {
+                Fall(m, (BaseMount)m.Mount);
+                return false;
+            }
 
             // Si le personnage rate son jet.
             if (chance >= Utility.RandomDouble())
             {
-                TileType tile = Deplacement.GetTileType((Mobile)m);
-
-               // Si le personnage courre sur une case de terrain difficile
-                if (tile != TileType.Other && tile != TileType.Dirt && type == EquitationType.Running)
+                // Si on ne veut pas tester la course, plante.
+                if (type != EquitationType.Running)
                 {
                     Fall(m, (BaseMount)m.Mount);
                     return false;
                 }
+                // Si on veut tester la course, on vérifie la case, puis plante si ce n'est pas quelque chose de normal.
+                else if (tile != TileType.Other && tile != TileType.Dirt)
+                {
+                    Fall(m, (BaseMount)m.Mount);
+                    return false;
+                }
+
             }
+
 
             return true;
         }
@@ -102,6 +114,7 @@ namespace Server.Engines.Equitation
             m.EndAction(typeof(BaseMount));
 
             mount.NextMountAbility = DateTime.Now.AddSeconds(12 - m.Skills.Equitation.Value / 10);
+            mount.ControlOrder = OrderType.Stop;
         }
     }
 }
