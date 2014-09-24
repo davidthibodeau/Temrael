@@ -7,6 +7,7 @@ using Server.Spells;
 using System.Collections;
 using Server.Custom;
 using Server.Scripts.Commands;
+using Server.Engines.Equitation;
 
 //Adjuration
 
@@ -740,7 +741,7 @@ namespace Server.Spells
             {
                 TMobile pm = (TMobile)m_Caster;
 
-                pm.CheckEquitation(EquitationType.Cast);
+                Equitation.CheckEquitation(pm,EquitationType.Cast);
 
                 return true;
             }
@@ -767,9 +768,6 @@ namespace Server.Spells
 
 			return Caster.CheckSkill( CastSkill, minSkill, maxSkill );
 		}
-
-        private static double[] m_CastingTable = new double[] { 0.501, 0.161, 0.051, 0.021,
-            0.011, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 };
 
 		public virtual int GetMana()
 		{
@@ -929,7 +927,7 @@ namespace Server.Spells
 			{
 				m_Caster.LocalOverheadMessage( MessageType.Regular, 0x22, 502625 ); // Insufficient mana for this spell.
             }
-            else if (pm != null && !pm.CheckEquitation(EquitationType.Attacking))
+            else if (pm != null && !Equitation.CheckEquitation(pm,EquitationType.Attacking))
             {
                 DoFizzle();
             }

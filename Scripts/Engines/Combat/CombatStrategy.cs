@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Engines.Equitation;
 
 namespace Server.Engines.Combat
 {
@@ -29,6 +30,9 @@ namespace Server.Engines.Combat
                 OnHit(atk, def);
             else
                 OnMiss(atk, def);
+
+            CheckEquitationAttaque(atk);
+            
             return ProchaineAttaque(atk);
         }
 
@@ -36,6 +40,9 @@ namespace Server.Engines.Combat
         {
             AttaqueAnimation(atk);
             DegatsAnimation(def);
+
+
+            CheckEquitation(def, EquitationType.BeingAttacked);
 
             atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));
             def.PlaySound(Weapon(def).GetHitDefendSound(atk, def));
@@ -74,7 +81,23 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Equitation Check
-        // TODO : Add Equitation checks.
+
+        void CheckEquitationAttaque(Mobile m)
+        {
+            if (BaseRange != 1)
+            {
+                CheckEquitation(m, EquitationType.Ranged);
+            }
+            else if (BaseRange == 1)
+            {
+                CheckEquitation(m, EquitationType.Attacking);
+            }
+        }
+
+        void CheckEquitation(Mobile m, EquitationType type)
+        {
+            Equitation.Equitation.CheckEquitation(m, type);
+        }
         #endregion
 
         #region Range

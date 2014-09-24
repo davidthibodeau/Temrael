@@ -95,6 +95,7 @@
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
     <Compile Include="Engines\Combat\Combat.cs" />
+    <Compile Include="Engines\Equitation.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpell.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpellInfo.cs" />
     <Compile Include="Spells\CustomSpell\Exemples.cs" />

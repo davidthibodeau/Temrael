@@ -17,19 +17,10 @@ using Server.ContextMenus;
 using Server.Prompts;
 using Server.Engines.Langues;
 using Server.Engines.Identities;
+using Server.Engines.Equitation;
 
 namespace Server.Mobiles
 {
-
-
-    public enum EquitationType
-    {
-        Attacking,
-        Running,
-        BeingAttacked,
-        Cast,
-        Ranged
-    }
 
     public enum MortState
     {
@@ -138,7 +129,6 @@ namespace Server.Mobiles
         private List<int> m_ListCote = new List<int>(5);
         private DateTime m_LastCotation;
 
-        private int m_TileToDontFall;
         private int m_Niveau;
         private int m_AptitudesLibres;
         private int m_CompetencesLibres;
@@ -214,20 +204,6 @@ namespace Server.Mobiles
         }
         #endregion
 
-        private static double[] m_AttackingTable = new double[] { 0.501, 0.161, 0.051, 0.021,
-            0.011, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 };
-
-        private static double[] m_RunningTable = new double[] { 0.251, 0.161, 0.081, 0.041,
-            0.021, 0.011, 0.011, 0.001, 0.000, 0.000, 0.000 };
-
-        private static double[] m_BeingAttackedTable = new double[] { 0.501, 0.501, 0.501, 0.501,
-            0.501, 0.501, 0.121, 0.051, 0.021, 0.011, 0.001 };
-
-        private static double[] m_RangedAttackTable = new double[] { 0.501, 0.501, 0.501, 0.501,
-            0.501, 0.501, 0.121, 0.051, 0.021, 0.011, 0.001 };
-
-        private static double[] m_CastingTable = new double[] { 0.501, 0.501, 0.501, 0.501,
-            0.501, 0.501, 0.121, 0.051, 0.021, 0.011, 0.001 };
 
         #endregion
 
@@ -1486,20 +1462,9 @@ namespace Server.Mobiles
             Delta(MobileDelta.Followers);
         }
 
-        public virtual bool CheckEquitation(EquitationType type)
-        {
-            return CheckEquitation(type, Location);
-        }
-
         public override bool Move(Direction d)
         {
-            if (Mounted)
-            {
-                if (m_TileToDontFall > 0)
-                    m_TileToDontFall--;
-            }
-
-            CheckEquitation(EquitationType.Running, Location);
+            Equitation.CheckEquitation(this, EquitationType.Running);
 
             if (Hidden && CheckRevealStealth() && AccessLevel == AccessLevel.Player)
             {
@@ -1597,91 +1562,6 @@ namespace Server.Mobiles
 
             return false;
         }
-
-        #region equitation
-        public virtual bool CheckEquitation(EquitationType type, Point3D oldLocation)
-        {
-            //true s'il ne tombe pas, false s'il tombe
-
-            if (AccessLevel >= AccessLevel.Batisseur)
-                return true;
-
-            if (!Mounted)
-                return true;
-
-            //if (MutationMod || SubterfugeMod || ChimereMod || TransmutationMod || AlterationMod || IncognitoMod || MetamorphoseMod || InstinctCharnelMod)
-            //    return false;
-
-            if (type == EquitationType.Running && (Direction & Direction.Running) == 0)
-                return true;
-
-            if (Map == null)
-                return true;
-
-            double chance = 0.0;
-            int equitation = ((int)this.Skills.Equitation.Value / 10);
-
-            //int equitation = GetAptitudeValue(NAptitude.Equitation);
-
-            if (equitation < 0)
-                equitation = 0;
-
-            switch (type)
-            {
-                case EquitationType.Attacking: chance = m_AttackingTable[equitation]; break;
-                case EquitationType.Running: chance = m_RunningTable[equitation]; break;
-                case EquitationType.BeingAttacked: chance = m_BeingAttackedTable[equitation]; break;
-            }
-
-            double fall = Utility.RandomDouble();
-
-            if (chance < fall)
-                return true;
-
-            if (type == EquitationType.Running)
-            {
-                if (m_TileToDontFall > 0)
-                    return true;
-
-                TileType tile = Deplacement.GetTileType(this);
-
-                if (tile == TileType.Other || tile == TileType.Dirt)
-                    return true;
-            }
-
-            BaseMount mount = (BaseMount)Mount;
-
-            mount.Rider = null;
-            mount.Location = oldLocation;
-
-            m_TileToDontFall = 3;
-
-            Timer.DelayCall(TimeSpan.FromSeconds(0.3), new TimerStateCallback(Equitation_Callback), mount);
-
-            BeginAction(typeof(BaseMount));
-            //double seconds = 10.0 - GetAptitudeValue(NAptitude.Equitation);
-            double seconds = 100.0 - (int)this.Skills.Equitation.Value;
-            Timer.DelayCall(TimeSpan.FromSeconds(seconds), new TimerCallback(CantMount_Callback));
-            mount.NextMountAbility = DateTime.Now.AddSeconds(12 - this.Skills.Equitation.Value / 10);
-
-            return false;
-        }
-
-        public void Equitation_Callback(object state)
-        {
-            BaseMount mount = (BaseMount)state;
-
-            mount.Animate(5, 5, 1, true, false, 0);
-            Animate(22, 5, 1, true, false, 0);
-
-            Damage(Utility.RandomMinMax(2, 6));
-        }
-
-        public void CantMount_Callback()
-        {
-            EndAction(typeof(BaseMount));
-        }
-        #endregion
 
         public void Aphonier(TimeSpan duration)
         {
@@ -2407,8 +2287,6 @@ namespace Server.Mobiles
                 writer.Write((int)m_QuickSpells[i]);
 
             writer.Write((DateTime) m_LastCotation);
-            
-            writer.Write((int) m_TileToDontFall);
 
             writer.Write((int)m_Niveau);
             writer.Write((int)m_AptitudesLibres);
@@ -2548,8 +2426,6 @@ namespace Server.Mobiles
                     }
 
                     m_LastCotation = reader.ReadDateTime();
-
-                    m_TileToDontFall = reader.ReadInt();
 
                     if (version < 9)
                     {
