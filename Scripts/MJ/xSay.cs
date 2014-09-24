@@ -30,7 +30,7 @@ namespace Server.Scripts.Commands
         {
             private string m_ToSay;
 
-            public xSayTarget(string toSay) : base(12, false, TargetFlags.None)
+            public xSayTarget(string toSay) : base(12, true, TargetFlags.None)
             {
                 m_ToSay = toSay;
             }
@@ -61,8 +61,61 @@ namespace Server.Scripts.Commands
                 }
                 else
                 {
-                    from.SendMessage("Vous devez choisir un mobile ou un item.");
+                    new ItemInvisibleTimer(from, (IPoint3D)targeted, m_ToSay);
                 }
+            }
+        }
+
+
+        private class ItemInvisibleTimer : Timer
+        {
+            ItemInvisible item_;
+
+            public ItemInvisibleTimer(Mobile from, IPoint3D location, string Message)
+                : base(TimeSpan.FromSeconds(10))
+            {
+                item_ = new ItemInvisible();
+                from.Backpack.AddItem(item_);
+                item_.DropToWorld(from, new Point3D(location.X, location.Y, location.Z));
+                item_.Visible = true;
+                item_.PublicOverheadMessage(MessageType.Regular, 0, false, Message);
+                Start();
+            }
+
+            protected override void OnTick()
+            {
+                item_.Delete();
+            }
+        }
+
+        private class ItemInvisible : Item
+        {
+            public ItemInvisible(Serial serial)
+                : base(serial)
+            { }
+
+            public ItemInvisible()
+                : base(0x0001)
+            { }
+
+            public override int GetDropSound()
+            {
+                return -2;
+            }
+
+            public override void Serialize(GenericWriter writer)
+            {
+                base.Serialize(writer);
+
+                writer.Write((int)0); // version
+            }
+
+            public override void Deserialize(GenericReader reader)
+            {
+                base.Deserialize(reader);
+
+                int version = reader.ReadInt();
+
             }
         }
     }

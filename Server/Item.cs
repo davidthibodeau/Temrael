@@ -4108,7 +4108,7 @@ namespace Server
 		{
 			if ( Deleted || from.Deleted || from.Map == null )
 				return false;
-			else if ( !from.InRange( p, 2 ) )
+			else if ( !from.InRange( p, 2 ) && from.AccessLevel == AccessLevel.Player )
 				return false;
 
 			Map map = from.Map;
