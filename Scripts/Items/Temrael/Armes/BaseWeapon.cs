@@ -952,19 +952,8 @@ namespace Server.Items
 			return false;
 		}
 
-		public override bool AllowSecureTrade( Mobile from, Mobile to, Mobile newOwner, bool accepted )
-		{
-			if ( !Ethics.Ethic.CheckTrade( from, to, newOwner, this ) )
-				return false;
-
-			return base.AllowSecureTrade( from, to, newOwner, accepted );
-		}
-
 		public override bool CanEquip( Mobile from )
 		{
-			if ( !Ethics.Ethic.CheckEquip( from, this ) )
-				return false;
-            
             if (from.RawDex < DexRequirement)
 			{
 				from.SendMessage( "You are not nimble enough to equip that." );

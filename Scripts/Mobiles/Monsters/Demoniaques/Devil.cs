@@ -12,7 +12,6 @@ namespace Server.Mobiles
         public override double DispelFocus { get { return 45.0; } }
 
         public override Faction FactionAllegiance { get { return Shadowlords.Instance; } }
-        public override Ethics.Ethic EthicAllegiance { get { return Ethics.Ethic.Evil; } }
 
         [Constructable]
         public Devil()

@@ -10,7 +10,6 @@ namespace Server.Mobiles
 	public class OgreLord : BaseCreature
 	{
 		public override Faction FactionAllegiance { get { return Minax.Instance; } }
-		public override Ethics.Ethic EthicAllegiance { get { return Ethics.Ethic.Evil; } }
 
 		[Constructable]
 		public OgreLord () : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )

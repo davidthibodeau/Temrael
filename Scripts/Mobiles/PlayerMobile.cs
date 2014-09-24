@@ -753,45 +753,12 @@ namespace Server.Mobiles
 
 				Mobile from = this;
 
-				#region Ethics
-				Ethics.Ethic ethic = Ethics.Ethic.Find( from );
-				#endregion
-
 				for ( int i = items.Count - 1; i >= 0; --i )
 				{
 					if ( i >= items.Count )
 						continue;
 
 					Item item = items[i];
-
-					#region Ethics
-					if ( ( item.SavedFlags & 0x100 ) != 0 )
-					{
-						if ( item.Hue != Ethics.Ethic.Hero.Definition.PrimaryHue )
-						{
-							item.SavedFlags &= ~0x100;
-						}
-						else if ( ethic != Ethics.Ethic.Hero )
-						{
-							from.AddToBackpack( item );
-							moved = true;
-							continue;
-						}
-					}
-					else if ( ( item.SavedFlags & 0x200 ) != 0 )
-					{
-						if ( item.Hue != Ethics.Ethic.Evil.Definition.PrimaryHue )
-						{
-							item.SavedFlags &= ~0x200;
-						}
-						else if ( ethic != Ethics.Ethic.Evil )
-						{
-							from.AddToBackpack( item );
-							moved = true;
-							continue;
-						}
-					}
-					#endregion
 
 					if ( item is BaseWeapon )
 					{
@@ -3175,17 +3142,6 @@ namespace Server.Mobiles
 			}
 		}
 
-		#region Ethics
-		private Ethics.Player m_EthicPlayer;
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public Ethics.Player EthicPlayer
-		{
-			get { return m_EthicPlayer; }
-			set { m_EthicPlayer = value; }
-		}
-		#endregion
-
 		#region Factions
 		private PlayerState m_FactionPlayerState;
 
@@ -3530,16 +3486,6 @@ namespace Server.Mobiles
 				else
 					suffix = String.Concat( suffix, " (Young)" );
 			}
-
-			#region Ethics
-			if ( m_EthicPlayer != null )
-			{
-				if ( suffix.Length == 0 )
-					suffix = m_EthicPlayer.Ethic.Definition.Adjunct.String;
-				else
-					suffix = String.Concat( suffix, " ", m_EthicPlayer.Ethic.Definition.Adjunct.String );
-			}
-			#endregion
 
 			if ( Core.ML && this.Map == Faction.Facet )
 			{

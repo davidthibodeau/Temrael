@@ -12,7 +12,6 @@ namespace Server.Mobiles
 		public override double DispelFocus{ get{ return 45.0; } }
 
 		public override Faction FactionAllegiance { get { return Shadowlords.Instance; } }
-		public override Ethics.Ethic EthicAllegiance { get { return Ethics.Ethic.Evil; } }
 
 		[Constructable]
 		public GolemArcanique () : base( AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4 )

@@ -10,9 +10,6 @@ namespace Server.Mobiles
 	public class DarkWisp : BaseCreature
 	{
 		public override InhumanSpeech SpeechType{ get{ return InhumanSpeech.Wisp; } }
-
-		public override Ethics.Ethic EthicAllegiance { get { return Ethics.Ethic.Evil; } }
-
 		public override TimeSpan ReacquireDelay { get { return TimeSpan.FromSeconds( 1.0 ); } }
 
 		[Constructable]
