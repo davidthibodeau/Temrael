@@ -9,9 +9,6 @@ namespace Server.Items
 		public override int LabelNumber{ get{ return 1075041; } } // Fey Leggings
 
 		public override int BasePhysicalResistance{ get{ return 12; } }
-		public override int BaseContondantResistance{ get{ return 8; } }
-		public override int BaseTranchantResistance{ get{ return 7; } }
-		public override int BasePerforantResistance{ get{ return 4; } }
 		public override int BaseMagieResistance{ get{ return 19; } }
 
 		public override int InitMinHits{ get{ return 255; } }

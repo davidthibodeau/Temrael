@@ -108,36 +108,7 @@ namespace Server.Engines.Quests.Ambitious
 
 		public static void GiveRewardTo( PlayerMobile player, ref bool bagOfSending, ref bool powderOfTranslocation, ref bool gold )
 		{
-			if ( bagOfSending )
-			{
-				Item reward = new BagOfSending();
-
-				if ( player.PlaceInBackpack( reward ) )
-				{
-					player.SendLocalizedMessage( 1054074, "", 0x59 ); // You have been given a bag of sending.
-					bagOfSending = false;
-				}
-				else
-				{
-					reward.Delete();
-				}
-			}
-
-			if ( powderOfTranslocation )
-			{
-				Item reward = new PowderOfTranslocation( Utility.RandomMinMax( 10, 12 ) );
-
-				if ( player.PlaceInBackpack( reward ) )
-				{
-					player.SendLocalizedMessage( 1054075, "", 0x59 ); // You have been given some powder of translocation.
-					powderOfTranslocation = false;
-				}
-				else
-				{
-					reward.Delete();
-				}
-			}
-
+			
 			if ( gold )
 			{
 				Item reward = new Gold( Utility.RandomMinMax( 250, 350 ) );

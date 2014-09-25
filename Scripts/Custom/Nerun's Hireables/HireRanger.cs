@@ -68,12 +68,6 @@ namespace Server.Mobiles
                 case 1: AddItem(new VikingSword()); break;
             }
 
-            AddItem(new RangerChest());
-            AddItem(new RangerArms());
-            AddItem(new RangerGloves());
-            AddItem(new RangerGorget());
-            AddItem(new RangerLegs());
-
             PackItem(new Arrow(20));
             PackGold(10, 75);
         }

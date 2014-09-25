@@ -17,7 +17,7 @@ namespace Server.Items
 
 		private static Type[] m_Artifacts = new Type[]
 		{
-			typeof( CandelabraOfSouls ), typeof( GoldBricks ), typeof( PhillipsWoodenSteed ),
+			typeof( CandelabraOfSouls ), typeof( GoldBricks ),
 			typeof( BurglarsBandana ), typeof( DreadPirateHat ),typeof( GwennosHarp ), typeof( IolosLute ),
             typeof( PolarBearMask ), typeof( VioletCourage ), typeof( HeartOfTheLion ),typeof( AlchemistsBauble )
 		};

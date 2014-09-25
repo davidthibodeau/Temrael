@@ -65,13 +65,6 @@ namespace Server.Mobiles
 
             AddItem(new Bow());
 
-
-            AddItem(new RangerChest());
-            AddItem(new RangerArms());
-            AddItem(new RangerGloves());
-            AddItem(new RangerGorget());
-            AddItem(new RangerLegs());
-
             PackItem(new Arrow(20));
             PackGold(10, 75);
         }

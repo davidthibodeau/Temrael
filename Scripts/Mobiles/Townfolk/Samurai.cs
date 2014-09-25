@@ -36,23 +36,6 @@ namespace Server.Mobiles
 				Name = NameList.RandomName( "male" );
 			}
 
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0:	AddItem( new LeatherSuneate() );	break;
-				case 1:	AddItem( new PlateSuneate() );		break;
-				case 2:	AddItem( new StuddedHaidate() );	break;
-			}
-
-			switch ( Utility.Random( 4 ) )
-			{
-				case 0:	AddItem( new LeatherJingasa() );		break;
-				case 1:	AddItem( new ChainHatsuburi() );		break;
-				case 2:	AddItem( new HeavyPlateJingasa() );		break;
-				case 3:	AddItem( new DecorativePlateKabuto() );	break;
-			}
-
-			AddItem( new LeatherDo() );
-			AddItem( new LeatherHiroSode() );
 			AddItem( new SamuraiTabi( Utility.RandomNondyedHue() ) ); // TODO: Hue
 
 			int hairHue = Utility.RandomNondyedHue();

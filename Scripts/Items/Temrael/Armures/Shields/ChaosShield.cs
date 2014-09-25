@@ -9,9 +9,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 2; } }
 
         public override int BasePhysicalResistance { get { return ShldChaos.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ShldChaos.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ShldChaos.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ShldChaos.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ShldChaos.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldChaos. min_Durabilite; } }
@@ -19,8 +16,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ShldChaos.force_Requise; } }
         public override int AosDexBonus { get { return ShldChaos.malus_Dex; } }
-
-		public override int ArmorBase{ get{ return 32; } }
 
 		[Constructable]
 		public ChaosShield() : base( 0x1BC3 )

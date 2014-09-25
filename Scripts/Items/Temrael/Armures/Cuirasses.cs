@@ -8,9 +8,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorDivers4.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorDivers4.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorDivers4.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers4.min_Durabilite; } }
@@ -18,9 +15,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorDivers4.force_Requise; } }
         public override int AosDexBonus { get { return ArmorDivers4.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -55,9 +49,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 3; } }
 
         public override int BasePhysicalResistance { get { return ArmorDivers3.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorDivers3.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorDivers3.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorDivers3.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorDivers3.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers3.min_Durabilite; } }
@@ -65,9 +56,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorDivers3.force_Requise; } }
         public override int AosDexBonus { get { return ArmorDivers3.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -102,9 +90,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return ArmorDivers5.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorDivers5.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorDivers5.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorDivers5.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorDivers5.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers5.min_Durabilite; } }
@@ -112,9 +97,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorDivers5.force_Requise; } }
         public override int AosDexBonus { get { return ArmorDivers5.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -149,9 +131,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 6; } }
 
         public override int BasePhysicalResistance { get { return ArmorDivers6.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorDivers6.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorDivers6.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorDivers6.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorDivers6.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers6.min_Durabilite; } }
@@ -159,9 +138,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorDivers6.force_Requise; } }
         public override int AosDexBonus { get { return ArmorDivers6.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -196,9 +172,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorDivers4.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorDivers4.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorDivers4.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers4.min_Durabilite; } }
@@ -206,9 +179,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorDivers4.force_Requise; } }
         public override int AosDexBonus { get { return ArmorDivers4.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -243,9 +213,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 5; } }
 
         public override int BasePhysicalResistance { get { return ArmorDivers5.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorDivers5.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorDivers5.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorDivers5.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorDivers5.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers5.min_Durabilite; } }
@@ -253,9 +220,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorDivers5.force_Requise; } }
         public override int AosDexBonus { get { return ArmorDivers5.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }

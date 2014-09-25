@@ -22,9 +22,6 @@ namespace Server.Engines.Quests.Samurai
 			Utility.AssignRandomFacialHair( this );
 
 			AddItem( new NinjaTabi() );
-			AddItem( new LeatherNinjaPants() );
-			AddItem( new LeatherNinjaJacket() );
-			//AddItem( new LeatherNinjaBelt() );
 
 			AddItem( new Bandana( Utility.RandomNondyedHue() ) );
 

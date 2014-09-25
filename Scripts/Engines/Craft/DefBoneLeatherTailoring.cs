@@ -52,21 +52,8 @@ namespace Server.Engines.Craft
 
         public static bool IsNonColorable(Type type)
         {
-            for (int i = 0; i < m_TailorNonColorables.Length; ++i)
-            {
-                if (m_TailorNonColorables[i] == type)
-                {
-                    return true;
-                }
-            }
-
             return false;
         }
-
-        private static Type[] m_TailorNonColorables = new Type[]
-			{
-				typeof( OrcHelm )
-			};
 
         private static Type[] m_TailorColorables = new Type[]
 			{

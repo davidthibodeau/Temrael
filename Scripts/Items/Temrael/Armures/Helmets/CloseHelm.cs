@@ -16,8 +16,6 @@ namespace Server.Items
         public override int AosStrReq { get { return ArmorPlaque.force_Requise; } }
         public override int AosDexBonus { get { return ArmorPlaque.malus_Dex; } }
 
-		public override int ArmorBase{ get{ return 30; } }
-
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Plate; } }
 
 		[Constructable]

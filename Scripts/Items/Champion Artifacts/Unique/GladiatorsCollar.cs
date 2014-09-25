@@ -8,9 +8,6 @@ namespace Server.Items
 		public override int LabelNumber{ get{ return 1094917; } } // Gladiator's Collar [Replica]
 
 		public override int BasePhysicalResistance{ get{ return 18; } }
-		public override int BaseContondantResistance{ get{ return 18; } }
-		public override int BaseTranchantResistance{ get{ return 17; } }
-		public override int BasePerforantResistance{ get{ return 18; } }
 		public override int BaseMagieResistance{ get{ return 16; } }
 
 		public override int InitMinHits{ get{ return 150; } }

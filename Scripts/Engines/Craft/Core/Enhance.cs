@@ -75,17 +75,6 @@ namespace Server.Engines.Craft
 			if ( !craftItem.ConsumeRes( from, resType, craftSystem, ref resHue, ref maxAmount, ConsumeType.None, ref resMessage ) )
 				return EnhanceResult.NoResources;
 
-			if ( craftSystem is DefBlacksmithy )
-			{
-				AncientSmithyHammer hammer = from.FindItemOnLayer( Layer.OneHanded ) as AncientSmithyHammer;
-				if ( hammer != null )
-				{
-					hammer.UsesRemaining--;
-					if ( hammer.UsesRemaining < 1 )
-						hammer.Delete();
-				}
-			}
-
 			int phys = 0, contondant = 0, tranchant = 0, perforant = 0, magie = 0;
 			int dura = 0, luck = 0, lreq = 0, dinc = 0;
 			int baseChance = 0;

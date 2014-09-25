@@ -8,9 +8,6 @@ namespace Server.Items
 	{
 
         public override int BasePhysicalResistance { get { return ArmorBone.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorBone.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorBone.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorBone.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorBone.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBone.min_Durabilite; } }
@@ -18,9 +15,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorBone.force_Requise; } }
         public override int AosDexBonus { get { return ArmorBone.malus_Dex; } }
-
-		public override int ArmorBase{ get{ return 30; } }
-		public override int RevertArmorBase{ get{ return 7; } }
 
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Bone; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularBones; } }

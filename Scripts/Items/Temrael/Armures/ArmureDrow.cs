@@ -20,9 +20,6 @@ namespace Server.Items
         }
 
         public override int BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorChainNoir.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorChainNoir.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorChainNoir.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
@@ -30,9 +27,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
         public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -79,9 +73,6 @@ namespace Server.Items
         }
 
         public override int BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorChainNoir.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorChainNoir.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorChainNoir.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
@@ -89,10 +80,7 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
         public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
-
+        
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
 
@@ -138,9 +126,6 @@ namespace Server.Items
         }
 
         public override int BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorChainNoir.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorChainNoir.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorChainNoir.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
@@ -148,9 +133,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
         public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -197,9 +179,6 @@ namespace Server.Items
         }
 
         public override int BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorChainNoir.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorChainNoir.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorChainNoir.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
@@ -207,9 +186,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
         public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -256,9 +232,6 @@ namespace Server.Items
         }
 
         public override int BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorChainNoir.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorChainNoir.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorChainNoir.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
@@ -266,9 +239,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
         public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }

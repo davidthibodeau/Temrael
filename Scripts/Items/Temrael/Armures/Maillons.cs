@@ -8,9 +8,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
         public override int BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorMaillons.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorMaillons.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorMaillons.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillons.min_Durabilite; } }
@@ -18,9 +15,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorMaillons.force_Requise; } }
         public override int AosDexBonus { get { return ArmorMaillons.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -55,9 +49,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
         public override int BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorMaillons.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorMaillons.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorMaillons.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillons.min_Durabilite; } }
@@ -65,9 +56,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorMaillons.force_Requise; } }
         public override int AosDexBonus { get { return ArmorMailles.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -102,9 +90,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
         public override int BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorMaillons.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorMaillons.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorMaillons.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillons.min_Durabilite; } }
@@ -112,9 +97,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorMaillons.force_Requise; } }
         public override int AosDexBonus { get { return ArmorMailles.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }

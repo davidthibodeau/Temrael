@@ -8,9 +8,6 @@ namespace Server.Items
 		public override int LabelNumber{ get{ return 1070817; } } // Heart of the Lion
 
 		public override int BasePhysicalResistance{ get{ return 15; } }
-		public override int BaseContondantResistance{ get{ return 10; } }
-		public override int BaseTranchantResistance{ get{ return 10; } }
-		public override int BasePerforantResistance{ get{ return 10; } }
 		public override int BaseMagieResistance{ get{ return 10; } }
 
 		public override int InitMinHits{ get{ return 255; } }

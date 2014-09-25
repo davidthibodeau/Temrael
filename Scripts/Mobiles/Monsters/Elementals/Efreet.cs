@@ -42,18 +42,6 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Rich );
 			AddLoot( LootPack.Average );
 			AddLoot( LootPack.Gems );
-
-			if ( 0.02 > Utility.RandomDouble() )
-			{
-				switch ( Utility.Random( 5 ) )
-				{
-					case 0:	PackItem( new DaemonArms() );	break;
-					case 1:	PackItem( new DaemonChest() );	break;
-					case 2:	PackItem( new DaemonGloves() );	break;
-					case 3:	PackItem( new DaemonLegs() );	break;
-					case 4:	PackItem( new DaemonHelm() );	break;
-				}
-			}
 		}
 
 		public override int TreasureMapLevel{ get{ return Core.AOS ? 4 : 5; } }

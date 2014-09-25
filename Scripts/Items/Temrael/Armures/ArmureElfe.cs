@@ -7,9 +7,6 @@ namespace Server.Items
     {
 
         public override int BasePhysicalResistance { get { return ArmorFeuilles.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorFeuilles.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorFeuilles.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorFeuilles.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorFeuilles.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
@@ -17,9 +14,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
         public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -53,9 +47,6 @@ namespace Server.Items
     {
 
         public override int BasePhysicalResistance { get { return ArmorFeuilles.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorFeuilles.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorFeuilles.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorFeuilles.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorFeuilles.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
@@ -63,9 +54,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
         public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -99,9 +87,6 @@ namespace Server.Items
     {
 
         public override int BasePhysicalResistance { get { return ArmorFeuilles.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorFeuilles.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorFeuilles.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorFeuilles.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorFeuilles.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
@@ -109,9 +94,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
         public override int AosDexReq { get { return ArmorFeuilles.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -145,9 +127,6 @@ namespace Server.Items
     {
 
         public override int BasePhysicalResistance { get { return ArmorFeuilles.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorFeuilles.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorFeuilles.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorFeuilles.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorFeuilles.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
@@ -155,9 +134,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
         public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -191,9 +167,6 @@ namespace Server.Items
     {
 
         public override int BasePhysicalResistance { get { return ArmorFeuilles.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorFeuilles.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorFeuilles.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorFeuilles.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorFeuilles.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
@@ -201,9 +174,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
         public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
-
-        public override int ArmorBase { get { return 30; } }
-        public override int RevertArmorBase { get { return 4; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }

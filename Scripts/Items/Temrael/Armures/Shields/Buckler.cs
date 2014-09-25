@@ -8,9 +8,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 1; } }
 
         public override int BasePhysicalResistance { get { return ShldBuckler.resistance_Physique ; } }
-        public override int BaseContondantResistance { get { return ShldBuckler.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ShldBuckler.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ShldBuckler.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ShldBuckler.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldBuckler.min_Durabilite; } }
@@ -18,8 +15,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ShldBuckler.force_Requise; } }
         public override int AosDexBonus { get { return ShldBuckler.malus_Dex; } }
-
-		public override int ArmorBase{ get{ return 7; } }
 
 		[Constructable]
 		public Buckler() : base( 0x1B73 )

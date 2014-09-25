@@ -8,17 +8,12 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 3; } }
 
         public override int BasePhysicalResistance { get { return ShldWoodnKite.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ShldWoodnKite.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ShldWoodnKite.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ShldWoodnKite.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ShldWoodnKite.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldWoodnKite.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldWoodnKite.max_Durabilite; } }
 
         public override int AosStrReq { get { return ShldWoodnKite.force_Requise; } }
-
-		public override int ArmorBase{ get{ return 12; } }
 
 		[Constructable]
 		public WoodenKiteShield() : base( 0x1B79 )

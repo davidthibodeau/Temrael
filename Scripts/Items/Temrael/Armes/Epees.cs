@@ -2315,4 +2315,47 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
+
+    public class EpeeTest : BaseSword
+    {
+        public override int AosStrengthReq { get { return 0;; } }
+        public override int AosMinDamage { get { return 10; } }
+        public override int AosMaxDamage { get { return 10; } }
+        public override int DefSpeed { get { return LourdeLame_Vitesse; } }
+
+        public override int DefHitSound { get { return 0x237; } }
+        public override int DefMissSound { get { return 0x23A; } }
+
+        public override int InitMinHits { get { return 31; } }
+        public override int InitMaxHits { get { return 100; } }
+
+        [Constructable]
+        public EpeeTest()
+            : base(0x315F)
+        {
+            Weight = 6.0;
+            Name = "EpeeTest";
+            Layer = Layer.TwoHanded;
+        }
+
+        public EpeeTest(Serial serial)
+            : base(serial)
+        {
+            Layer = Layer.TwoHanded;
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
 }

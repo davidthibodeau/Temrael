@@ -698,8 +698,6 @@ namespace Server.Factions
 
 			foreach ( Item item in World.Items.Values )
 			{
-				if ( item is IFactionItem && !(item is HoodedShroudOfShadows) )
-					pots.Add( item );
 			}
 
 			int[] hues = new int[Factions.Count * 2];

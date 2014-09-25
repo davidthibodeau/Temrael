@@ -22,7 +22,6 @@ namespace Server.Engines.Quests
 				typeof( Collector.CollectorQuest ),
 				typeof( Hag.WitchApprenticeQuest ),
 				typeof( Naturalist.StudyOfSolenQuest ),
-				typeof( Matriarch.SolenMatriarchQuest ),
 				typeof( Ambitious.AmbitiousQueenQuest ),
 				typeof( Ninja.EminosUndertakingQuest ),
 				typeof( Samurai.HaochisTrialsQuest ),

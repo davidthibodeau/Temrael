@@ -1529,17 +1529,6 @@ namespace Server.Engines.Craft
 
 				tool.UsesRemaining--;
 
-				if ( craftSystem is DefBlacksmithy )
-				{
-					AncientSmithyHammer hammer = from.FindItemOnLayer( Layer.OneHanded ) as AncientSmithyHammer;
-					if ( hammer != null && hammer != tool )
-					{
-						hammer.UsesRemaining--;
-						if ( hammer.UsesRemaining < 1 )
-							hammer.Delete();
-					}
-				}
-
 				if ( tool.UsesRemaining < 1 )
 					toolBroken = true;
 

@@ -8,9 +8,6 @@ namespace Server.Items
 		public override int LabelNumber{ get{ return 1094902; } } // Gauntlets of Anger [Replica]
 
 		public override int BasePhysicalResistance{ get{ return 4; } }
-		public override int BaseContondantResistance{ get{ return 4; } }
-		public override int BaseTranchantResistance{ get{ return 5; } }
-		public override int BasePerforantResistance{ get{ return 6; } }
 		public override int BaseMagieResistance{ get{ return 5; } }
 
 		public override int InitMinHits{ get{ return 150; } }

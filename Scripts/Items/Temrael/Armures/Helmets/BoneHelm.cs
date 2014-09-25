@@ -8,9 +8,6 @@ namespace Server.Items
 	{
 
         public override int BasePhysicalResistance { get { return ArmorBone.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorBone.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorBone.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorBone.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorBone.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBone.min_Durabilite; } }

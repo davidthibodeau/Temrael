@@ -21,9 +21,6 @@ namespace Server.Items
         }
 
         public override int BasePhysicalResistance { get { return ArmorPlaque.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ArmorPlaque.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ArmorPlaque.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ArmorPlaque.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ArmorPlaque.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaque.min_Durabilite; } }
@@ -33,8 +30,6 @@ namespace Server.Items
         public override int AosDexBonus { get { return ArmorPlaque.malus_Dex; } }
 
 		public override bool AllowMaleWearer{ get{ return false; } }
-
-		public override int ArmorBase{ get{ return 30; } }
 
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Plate; } }
 

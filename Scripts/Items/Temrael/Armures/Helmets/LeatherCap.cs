@@ -16,11 +16,6 @@ namespace Server.Items
         public override int AosStrReq { get { return ArmorLeather.force_Requise; } }
         public override int AosDexBonus { get { return ArmorLeather.malus_Dex; } }
 
-
-		public override int OldStrReq{ get{ return 15; } }
-
-		public override int ArmorBase{ get{ return 13; } }
-
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Leather; } }
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
 

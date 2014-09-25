@@ -111,8 +111,6 @@ namespace Server.Mobiles
 			typeof( CandelabraOfSouls ),
 			typeof( GhostShipAnchor ),
 			typeof( GoldBricks ),
-			typeof( PhillipsWoodenSteed ),
-			typeof( SeahorseStatuette ),
 			typeof( ShipModelOfTheHMSCape ),
 			typeof( AdmiralsHeartyRum ),
 

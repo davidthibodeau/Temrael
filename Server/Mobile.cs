@@ -167,7 +167,8 @@ namespace Server
 	public enum ResistanceType
 	{
 		Physical,
-		Magie
+		Magie,
+        Naturelle
 	}
 
 	public enum ApplyPoisonResult
@@ -485,6 +486,13 @@ namespace Server
 			get { return GetResistance( ResistanceType.Magie ); }
 		}
 
+        [CommandProperty(AccessLevel.Counselor)]
+        public virtual int ArmureNaturelle
+        {
+            get { return GetResistance(ResistanceType.Naturelle); }
+        }
+
+
 		public virtual void UpdateResistances()
 		{
 			if( m_Resistances == null )
@@ -568,10 +576,7 @@ namespace Server
 				m_Resistances[i] = 0;
 
 			m_Resistances[0] += this.BasePhysicalResistance;
-			m_Resistances[1] += this.BaseContondantResistance;
-			m_Resistances[2] += this.BaseTranchantResistance;
-			m_Resistances[3] += this.BasePerforantResistance;
-			m_Resistances[4] += this.BaseMagieResistance;
+			m_Resistances[1] += this.BaseMagieResistance;
 
 			for( int i = 0; m_ResistMods != null && i < m_ResistMods.Count; ++i )
 			{

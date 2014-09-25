@@ -115,32 +115,7 @@ namespace Server.Engines.Quests.Ambitious
 
 					if ( obj != null && !obj.Completed )
 					{
-						if ( dropped is ZoogiFungus )
-						{
-							ZoogiFungus fungi = (ZoogiFungus)dropped;
-
-							if ( fungi.Amount >= 50 )
-							{
-								obj.Complete();
-
-								fungi.Amount -= 50;
-
-								if ( fungi.Amount == 0 )
-								{
-									fungi.Delete();
-									return true;
-								}
-								else
-								{
-									return false;
-								}
-							}
-							else
-							{
-								SayTo( player, 1054072 ); // Our arrangement was for 50 of the zoogi fungus. Please return to me when you have that amount.
-								return false;
-							}
-						}
+						
 					}
 				}
 			}

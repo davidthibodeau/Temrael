@@ -21,17 +21,6 @@ namespace Server.Engines.Quests.Samurai
 			Utility.AssignRandomHair( this );
 			Utility.AssignRandomFacialHair( this );
 
-			AddItem( new LeatherDo() );
-			AddItem( new LeatherHiroSode() );
-			AddItem( new SamuraiTabi() );
-
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0: AddItem( new StuddedHaidate() ); break;
-				case 1: AddItem( new PlateSuneate() ); break;
-				default: AddItem( new LeatherSuneate() ); break;
-			}
-
 			AddItem( new Bandana( Utility.RandomNondyedHue() ) );
 
 

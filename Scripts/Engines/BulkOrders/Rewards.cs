@@ -180,10 +180,8 @@ namespace Server.Engines.BulkOrders
 		private static readonly ConstructCallback SturdyShovel = new ConstructCallback( CreateSturdyShovel );
 		private static readonly ConstructCallback MiningGloves = new ConstructCallback( CreateMiningGloves );
 		private static readonly ConstructCallback ProspectorsTool = new ConstructCallback( CreateProspectorsTool );
-		private static readonly ConstructCallback PowderOfTemperament = new ConstructCallback( CreatePowderOfTemperament );
 		private static readonly ConstructCallback RunicHammer = new ConstructCallback( CreateRunicHammer );
 		private static readonly ConstructCallback PowerScroll = new ConstructCallback( CreatePowerScroll );
-		private static readonly ConstructCallback ColoredAnvil = new ConstructCallback( CreateColoredAnvil );
 		private static readonly ConstructCallback AncientHammer = new ConstructCallback( CreateAncientHammer );
 
 		private static Item CreateSturdyShovel( int type )
@@ -194,12 +192,7 @@ namespace Server.Engines.BulkOrders
 
 		private static Item CreateMiningGloves( int type )
 		{
-			if ( type == 1 )
-				return new LeatherGlovesOfMining( 1 );
-			else if ( type == 3 )
-				return new StuddedGlovesOfMining( 3 );
-			else if ( type == 5 )
-				return new RingmailGlovesOfMining( 5 );
+
 
 			throw new InvalidOperationException();
 		}
@@ -209,10 +202,6 @@ namespace Server.Engines.BulkOrders
 			return new ProspectorsTool();
 		}
 
-		private static Item CreatePowderOfTemperament( int type )
-		{
-			return new PowderOfTemperament();
-		}
 
 		private static Item CreateRunicHammer( int type )
 		{
@@ -224,24 +213,13 @@ namespace Server.Engines.BulkOrders
 
 		private static Item CreatePowerScroll( int type )
 		{
-			if ( type == 5 || type == 10 || type == 15 || type == 20 )
-				return new PowerScroll( SkillName.Forge, 100 + type );
 
 			throw new InvalidOperationException();
 		}
 
-		private static Item CreateColoredAnvil( int type )
-		{
-			// Generate an anvil deed, not an actual anvil.
-			//return new ColoredAnvilDeed();
-
-			return new ColoredAnvil();
-		}
-
 		private static Item CreateAncientHammer( int type )
 		{
-			if ( type == 10 || type == 15 || type == 30 || type == 60 )
-				return new AncientSmithyHammer( type );
+
 
 			throw new InvalidOperationException();
 		}
@@ -424,14 +402,10 @@ namespace Server.Engines.BulkOrders
 
 					new RewardGroup(   50, new RewardItem( 45, SturdyShovel ),  new RewardItem( 10, MiningGloves, 1 ) ),
 					new RewardGroup(  200, new RewardItem( 45, ProspectorsTool ), new RewardItem( 10, MiningGloves, 3 ) ),
-					new RewardGroup(  400, new RewardItem( 2, ProspectorsTool ), new RewardItem( 1, PowderOfTemperament ) ),
-					new RewardGroup(  450, new RewardItem( 9, PowderOfTemperament ), new RewardItem( 1, MiningGloves, 5 ) ),
 					new RewardGroup(  500, new RewardItem( 1, RunicHammer, 1 ) ),
 					new RewardGroup(  550, new RewardItem( 3, RunicHammer, 1 ), new RewardItem( 2, RunicHammer, 2 ) ),
 					new RewardGroup(  600, new RewardItem( 1, RunicHammer, 2 ) ),
-					new RewardGroup(  625, new RewardItem( 3, RunicHammer, 2 ), new RewardItem( 6, PowerScroll, 5 ), new RewardItem( 1, ColoredAnvil ) ),
 					new RewardGroup(  650, new RewardItem( 1, RunicHammer, 3 ) ),
-					new RewardGroup(  675, new RewardItem( 1, ColoredAnvil ), new RewardItem( 6, PowerScroll, 10 ), new RewardItem( 3, RunicHammer, 3 ) ),
 					new RewardGroup(  700, new RewardItem( 1, RunicHammer, 4 ) ),
 					new RewardGroup(  750, new RewardItem( 1, AncientHammer, 10 ) ),
 					new RewardGroup(  800, new RewardItem( 1, PowerScroll, 15 ) ),
@@ -538,8 +512,6 @@ namespace Server.Engines.BulkOrders
 
 		private static Item CreatePowerScroll( int type )
 		{
-			if ( type == 5 || type == 10 || type == 15 || type == 20 )
-				return new PowerScroll( SkillName.Couture, 100 + type );
 
 			throw new InvalidOperationException();
 		}

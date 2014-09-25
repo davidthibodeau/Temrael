@@ -19,8 +19,6 @@ namespace Server.Engines.Quests.Ninja
 			Utility.AssignRandomHair( this );
 			Utility.AssignRandomFacialHair( this );
 
-			AddItem( new LeatherNinjaJacket() );
-			AddItem( new LeatherNinjaPants() );
 			AddItem( new NinjaTabi() );
 
 			SetSkill( SkillName.ArmeTranchante, 50.0 );

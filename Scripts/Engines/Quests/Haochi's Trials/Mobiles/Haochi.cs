@@ -31,12 +31,6 @@ namespace Server.Engines.Quests.Samurai
 
 			AddItem( new SamuraiTabi() );
 			AddItem( new JinBaori() );
-
-			AddItem( new PlateHaidate() );
-			AddItem( new StandardPlateKabuto() );
-			AddItem( new PlateMempo() );
-			AddItem( new PlateDo() );
-			AddItem( new PlateHiroSode() );
 		}
 
 		public override int GetAutoTalkRange( PlayerMobile pm )
@@ -70,7 +64,6 @@ namespace Server.Engines.Quests.Samurai
 
 				if ( obj != null && !obj.Completed )
 				{
-					player.AddToBackpack( new LeatherDo() );
 					obj.Complete();
 					return;
 				}
@@ -79,8 +72,6 @@ namespace Server.Engines.Quests.Samurai
 
 				if ( obj != null && !obj.Completed )
 				{
-					if ( ((SecondTrialReturnObjective)obj).Dragon )
-						player.AddToBackpack( new LeatherSuneate() );
 
 					obj.Complete();
 					return;
@@ -90,7 +81,6 @@ namespace Server.Engines.Quests.Samurai
 
 				if ( obj != null && !obj.Completed )
 				{
-					player.AddToBackpack( new LeatherHiroSode() );
 					obj.Complete();
 					return;
 				}
@@ -102,7 +92,6 @@ namespace Server.Engines.Quests.Samurai
 					if ( !((FourthTrialReturnObjective)obj).KilledCat )
 					{
 						Container cont = GetNewContainer();
-						cont.DropItem( new LeatherHiroSode() );
 						cont.DropItem( new JinBaori() );
 						player.AddToBackpack( cont );
 					}
@@ -147,9 +136,6 @@ namespace Server.Engines.Quests.Samurai
 
 				if ( obj != null && !obj.Completed )
 				{
-					BaseArmor armor = new LeatherDo();
-					BaseRunicTool.ApplyAttributesTo( armor, Utility.Random( 1,3 ), 10, 20 );
-					player.AddToBackpack( armor );
 
 					obj.Complete();
 					return;

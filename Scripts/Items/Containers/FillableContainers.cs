@@ -793,7 +793,6 @@ namespace Server.Items
 				new FillableEntry( 1, typeof( BustSouth ) ),
 				new FillableEntry( 1, typeof( BearMask ) ),
 				new FillableEntry( 1, typeof( DeerMask ) ),
-				new FillableEntry( 4, typeof( OrcHelm ) ),
 				new FillableEntry( 1, typeof( TribalMask ) ),
 				new FillableEntry( 1, typeof( HornedTribalMask ) )
 			} );
@@ -1384,7 +1383,6 @@ namespace Server.Items
 				new FillableEntry( 1, typeof( DeerMask ) ),
 				new FillableEntry( 1, typeof( TribalMask ) ),
 				new FillableEntry( 1, typeof( HornedTribalMask ) ),
-				new FillableEntry( 4, typeof( OrcHelm ) )
 			} );
 
 		public static FillableContent Tinker = new FillableContent(
@@ -1409,9 +1407,6 @@ namespace Server.Items
 				new FillableEntry( 2, typeof( Springs ) ),
 				new FillableEntry( 5, typeof( TinkerTools ) ),
 				new FillableEntry( 4, typeof( Key ) ),
-				new FillableEntry( 1, typeof( DecoArrowShafts )),
-				new FillableEntry( 1, typeof( Lockpicks )),
-				new FillableEntry( 1, typeof( ToolKit ))
 			} );
 
 		public static FillableContent Veterinarian = new FillableContent(

@@ -112,29 +112,13 @@ namespace Server
 
         public static Type[] TemraelRangedWeaponTypes { get { return m_TemraelRangedWeaponTypes; } }
 
-		private static Type[] m_SEArmorTypes = new Type[]
-			{
-				typeof( ChainHatsuburi ),		typeof( LeatherDo ),			typeof( LeatherHaidate ),
-				typeof( LeatherHiroSode ),		typeof( LeatherJingasa ),		typeof( LeatherMempo ),
-				typeof( LeatherNinjaHood ),		typeof( LeatherNinjaJacket ),	typeof( LeatherNinjaMitts ),
-				typeof( LeatherNinjaPants ),	typeof( LeatherSuneate ),		typeof( DecorativePlateKabuto ),
-				typeof( HeavyPlateJingasa ),	typeof( LightPlateJingasa ),	typeof( PlateBattleKabuto ),
-				typeof( PlateDo ),				typeof( PlateHaidate ),			typeof( PlateHatsuburi ),
-				typeof( PlateHiroSode ),		typeof( PlateMempo ),			typeof( PlateSuneate ),
-				typeof( SmallPlateJingasa ),	typeof( StandardPlateKabuto ),	typeof( StuddedDo ),
-				typeof( StuddedHaidate ),		typeof( StuddedHiroSode ),		typeof( StuddedMempo ),
-				typeof( StuddedSuneate )
-			};
-
-		public static Type[] SEArmorTypes{ get{ return m_SEArmorTypes; } }
-
 		private static Type[] m_ArmorTypes = new Type[]
 			{
 				typeof( BoneArms ),				typeof( BoneChest ),			typeof( BoneGloves ),
 				typeof( BoneLegs ),				typeof( BoneHelm ),				typeof( ChainChest ),
 				typeof( ChainLegs ),			typeof( ChainCoif ),			typeof( Bascinet ),
 				typeof( CloseHelm ),			typeof( Helmet ),				typeof( NorseHelm ),
-				typeof( OrcHelm ),				typeof( FemaleLeatherChest ),	typeof( LeatherArms ),
+                typeof( FemaleLeatherChest ),	typeof( LeatherArms ),
 				typeof( LeatherBustierArms ),	typeof( LeatherChest ),			typeof( LeatherGloves ),
 				typeof( LeatherGorget ),		typeof( LeatherLegs ),			typeof( LeatherShorts ),
 				typeof( LeatherSkirt ),			typeof( LeatherCap ),			typeof( FemalePlateChest ),
@@ -668,9 +652,6 @@ namespace Server
 
 		public static BaseArmor RandomArmor( bool inTokuno )
 		{
-			if ( Core.SE && inTokuno )
-				return Construct( m_SEArmorTypes, m_ArmorTypes ) as BaseArmor;
-
 			return Construct( m_ArmorTypes, m_TemraelArmorTypes ) as BaseArmor;
 		}
 
@@ -697,9 +678,6 @@ namespace Server
 
 		public static Item RandomArmorOrHat( bool inTokuno )
 		{
-			if ( Core.SE && inTokuno )
-				return Construct( m_SEArmorTypes, m_ArmorTypes, m_SEHatTypes, m_AosHatTypes, m_HatTypes );
-
 			if ( Core.AOS )
 				return Construct( m_ArmorTypes, m_AosHatTypes, m_HatTypes );
 
@@ -721,9 +699,6 @@ namespace Server
 
 		public static BaseArmor RandomArmorOrShield( bool inTokuno )
 		{
-			if ( Core.SE && inTokuno )
-				return Construct( m_SEArmorTypes, m_ArmorTypes, m_AosShieldTypes, m_ShieldTypes ) as BaseArmor;
-
 			if ( Core.AOS )
 				return Construct( m_ArmorTypes, m_AosShieldTypes, m_ShieldTypes ) as BaseArmor;
 
@@ -737,9 +712,6 @@ namespace Server
 
 		public static Item RandomArmorOrShieldOrJewelry( bool inTokuno )
 		{
-			if ( Core.SE && inTokuno )
-				return Construct( m_SEArmorTypes, m_ArmorTypes, m_SEHatTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes, m_JewelryTypes );
-
 			if ( Core.AOS )
 				return Construct( m_ArmorTypes, m_AosHatTypes, m_HatTypes, m_AosShieldTypes, m_ShieldTypes, m_JewelryTypes );
 
@@ -772,13 +744,6 @@ namespace Server
 
 			return Construct( m_WeaponTypes, m_RangedWeaponTypes, m_ArmorTypes, m_HatTypes, m_ShieldTypes, m_JewelryTypes );
 		}
-		
-		#region Chest of Heirlooms
-		public static Item ChestOfHeirloomsContains()
-		{
-			return Construct( m_SEArmorTypes, m_SEHatTypes, m_JewelryTypes );
-		}
-		#endregion
 
 		public static Item RandomGem()
 		{

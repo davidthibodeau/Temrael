@@ -53,15 +53,6 @@ namespace Server.Mobiles
 		public override void OnDeath( Container c )
 		{
 			base.OnDeath( c );
-
-			if ( 0.05 > Utility.RandomDouble() )
-			{
-                if (0.75 > Utility.RandomDouble())
-                    c.DropItem(DawnsMusicGear.RandomCommon);
-                else
-                    c.DropItem(DawnsMusicGear.RandomUncommon);
-
-			}
 		}
 
 		public override int GetDeathSound()

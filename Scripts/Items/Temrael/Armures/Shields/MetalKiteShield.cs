@@ -8,9 +8,6 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 4; } }
 
         public override int BasePhysicalResistance { get { return ShldMetalKite.resistance_Physique; } }
-        public override int BaseContondantResistance { get { return ShldMetalKite.resistance_Contondant; } }
-        public override int BaseTranchantResistance { get { return ShldMetalKite.resistance_Tranchant; } }
-        public override int BasePerforantResistance { get { return ShldMetalKite.resistance_Perforant; } }
         public override int BaseMagieResistance { get { return ShldMetalKite.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldMetalKite.min_Durabilite; } }
@@ -18,8 +15,6 @@ namespace Server.Items
 
         public override int AosStrReq { get { return ShldMetalKite.force_Requise; } }
         public override int AosDexBonus { get { return ShldMetalKite.malus_Dex; } }
-
-		public override int ArmorBase{ get{ return 16; } }
 
 		[Constructable]
 		public MetalKiteShield() : base( 0x1B74 )

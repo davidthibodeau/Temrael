@@ -32,10 +32,6 @@ namespace Server.Engines.Quests.Ninja
 			AddItem( new MaleKimono() );
 			AddItem( new SamuraiTabi() );
 			AddItem( new Bandana() );
-
-			AddItem( new PlateHaidate() );
-			AddItem( new PlateDo() );
-			AddItem( new PlateHiroSode() );
 		}
 
 		public override int GetAutoTalkRange( PlayerMobile pm )
@@ -88,9 +84,6 @@ namespace Server.Engines.Quests.Ninja
 							if ( player.PlaceInBackpack( note ) )
 							{
 								obj.Complete();
-
-								player.AddToBackpack( new LeatherNinjaPants() );
-								player.AddToBackpack( new LeatherNinjaMitts() );
 							}
 							else
 							{
@@ -108,9 +101,6 @@ namespace Server.Engines.Quests.Ninja
 
 								for ( int i = 0; i < 10; i++ )
 									cont.DropItem( new LesserHealPotion() );
-
-								cont.DropItem( new LeatherNinjaHood() );
-								cont.DropItem( new LeatherNinjaJacket() );
 
 								if ( player.PlaceInBackpack( cont ) )
 								{

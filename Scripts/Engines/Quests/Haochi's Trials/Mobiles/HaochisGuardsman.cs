@@ -25,26 +25,6 @@ namespace Server.Engines.Quests.Samurai
 		public override void InitOutfit()
 		{
 			Utility.AssignRandomHair( this );
-
-			AddItem( new LeatherDo() );
-			AddItem( new LeatherHiroSode() );
-			AddItem( new SamuraiTabi( Utility.RandomNondyedHue() ) );
-
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0: AddItem( new StuddedHaidate() ); break;
-				case 1: AddItem( new PlateSuneate() ); break;
-				default: AddItem( new LeatherSuneate() ); break;
-			}
-
-			switch ( Utility.Random( 4 ) )
-			{
-				case 0: AddItem( new DecorativePlateKabuto() ); break;
-				case 1: AddItem( new ChainHatsuburi() ); break;
-				case 2: AddItem( new LightPlateJingasa() ); break;
-				default: AddItem( new LeatherJingasa() ); break;
-			}
-
 		}
 
 		public override int TalkNumber{ get	{ return -1; } }

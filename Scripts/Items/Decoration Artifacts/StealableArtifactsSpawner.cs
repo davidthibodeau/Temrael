@@ -82,8 +82,6 @@ namespace Server.Items
 				// Doom - Artifact rarity 9
 				new StealableEntry( Map.Malas, new Point3D( 433,  11, -1 ), 18432, 27648, typeof( SaddleArtifact ) ),
 				new StealableEntry( Map.Malas, new Point3D( 403,  31,  4 ), 18432, 27648, typeof( LeatherTunicArtifact ) ),
-				// Doom - Artifact rarity 10
-				new StealableEntry( Map.Malas, new Point3D( 467,  92,  4 ), 36864, 55296, typeof( InquisitorsResolution ) ),
 				// Doom - Artifact rarity 12
 				new StealableEntry( Map.Malas, new Point3D( 487, 364, -1 ), 147456, 221184, typeof( RuinedPaintingArtifact ) ),
 

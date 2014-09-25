@@ -45,11 +45,6 @@ namespace Server.Mobiles
 
 
 			AddItem( new NinjaTabi() );
-			AddItem( new LeatherNinjaJacket());
-			AddItem( new LeatherNinjaHood());
-			AddItem( new LeatherNinjaPants());
-			AddItem( new LeatherNinjaMitts());
-		   
 
 			Utility.AssignRandomHair( this );
 		}
