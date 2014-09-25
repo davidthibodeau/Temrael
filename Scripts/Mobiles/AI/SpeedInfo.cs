@@ -104,7 +104,7 @@ namespace Server
 				new SpeedInfo( 0.2, 0.4, new Type[]
 				{
                     //Ancien slow
-                    typeof( AntLion ),			typeof( ArcticOgreLord ),	typeof( BogThing ),
+                    typeof( ArcticOgreLord ),	typeof( BogThing ),
 					typeof( Bogle ),			typeof( BoneKnight ),		typeof( EarthElemental ),
 					typeof( Ettin ),			typeof( FrostOoze ),		typeof( FrostTroll ),
 					typeof( GazerLarva ),		typeof( Ghoul ),			typeof( Golem ),
@@ -119,8 +119,7 @@ namespace Server
                     //Ancien medium
                     typeof( ToxicElemental ),	typeof( AgapiteElemental ),	typeof( Alligator ),
 					typeof( AncientLich ),		typeof( Betrayer ),			typeof( Bird ),
-					typeof( BlackBear ),		typeof( BlackSolenInfiltratorQueen ), typeof( BlackSolenInfiltratorWarrior ),
-					typeof( BlackSolenQueen ),	typeof( BlackSolenWarrior ), typeof( BlackSolenWorker ),
+					typeof( BlackBear ),
 					typeof( BloodElemental ),	typeof( Boar ),				typeof( Bogling ),
 					typeof( BoneMagi ),			typeof( Brigand ),			typeof( BronzeElemental ),
 					typeof( BrownBear ),		typeof( Bull ),				typeof( BullFrog ),
@@ -152,8 +151,7 @@ namespace Server
 					typeof( Panther ),			typeof( Pig ),
 					typeof( PlagueSpawn ),		typeof( PolarBear ),		typeof( Rabbit ),
 					typeof( Ratman ),			typeof( RatmanArcher ),		typeof( RatmanMage ),
-					typeof( RedSolenInfiltratorQueen ), typeof( RedSolenInfiltratorWarrior ), typeof( RedSolenQueen ),
-					typeof( RedSolenWarrior ),	typeof( RedSolenWorker ),	typeof( Bouc ),
+					typeof( Bouc ),
 					typeof( Chocobo ),		typeof( Scorpion ),			typeof( SeaSerpent ),
 					typeof( SerpentineDragon ),	typeof( Shade ),			typeof( ShadowIronElemental ),
 					typeof( ShadowWisp ),		typeof( ShadowWyrm ),		typeof( Sheep ),

@@ -8,8 +8,6 @@ using Server.Targets;
 using Server.Network;
 using Server.Regions;
 using Server.ContextMenus;
-using Server.Engines.Quests;
-using Server.Engines.Quests.Necro;
 using MoveImpl=Server.Movement.MovementImpl;
 using Server.Spells;
 using Server.PathAlgorithms;
@@ -264,23 +262,6 @@ namespace Server.Mobiles
 				if( target is BaseCreature && ((BaseCreature)target).IsScaryToPets && m_Mobile.IsScaredOfScaryThings )
 				{
 					m_Mobile.SayTo( from, "Your pet refuses to attack this creature!" );
-					return;
-				}
-
-				if( (SolenHelper.CheckRedFriendship( from ) &&
-							(target is RedSolenInfiltratorQueen
-							|| target is RedSolenInfiltratorWarrior
-							|| target is RedSolenQueen
-							|| target is RedSolenWarrior
-							|| target is RedSolenWorker))
-					|| (SolenHelper.CheckBlackFriendship( from ) &&
-							(target is BlackSolenInfiltratorQueen
-							|| target is BlackSolenInfiltratorWarrior
-							|| target is BlackSolenQueen
-							|| target is BlackSolenWarrior
-							|| target is BlackSolenWorker)) )
-				{
-					from.SendAsciiMessage( "You can not force your pet to attack a creature you are protected from." );
 					return;
 				}
 
@@ -1261,27 +1242,6 @@ namespace Server.Mobiles
 
 			if( distance < 1 || distance > 15 )
 			{
-				if( distance < 1 && target.X == 1076 && target.Y == 450 && (m_Mobile is HordeMinionFamiliar) )
-				{
-					PlayerMobile pm = m_Mobile.ControlMaster as PlayerMobile;
-
-					if( pm != null )
-					{
-						QuestSystem qs = pm.Quest;
-
-						if( qs is DarkTidesQuest )
-						{
-							QuestObjective obj = qs.FindObjective( typeof( FetchAbraxusScrollObjective ) );
-
-							if( obj != null && !obj.Completed )
-							{
-								m_Mobile.AddToBackpack( new ScrollOfAbraxus() );
-								obj.Complete();
-							}
-						}
-					}
-				}
-
 				m_Mobile.TargetLocation = null;
 				return false; // At the target or too far away
 			}

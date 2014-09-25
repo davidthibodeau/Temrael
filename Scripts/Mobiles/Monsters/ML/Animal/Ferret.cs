@@ -1,6 +1,5 @@
 using System;
 using Server;
-using Server.Engines.Quests;
 
 namespace Server.Mobiles
 {
@@ -68,8 +67,6 @@ namespace Server.Mobiles
 		{
 			if ( m_CanTalk )
 			{
-				if ( to != null )
-					QuestSystem.FocusTo( this, to );
 
 				Say( m_Vocabulary[ Utility.Random( m_Vocabulary.Length ) ] );
 			

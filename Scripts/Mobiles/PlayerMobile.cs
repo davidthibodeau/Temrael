@@ -10,7 +10,6 @@ using Server.ContextMenus;
 using Server.Network;
 using Server.Spells;
 using Server.Targeting;
-using Server.Engines.Quests;
 using Server.Factions;
 using Server.Regions;
 using Server.Accounting;
@@ -926,9 +925,6 @@ namespace Server.Mobiles
 			{
 				pm.m_SessionStart = DateTime.Now;
 
-				if ( pm.m_Quest != null )
-					pm.m_Quest.StartTimer();
-
 				pm.BedrollLogout = false;
 				pm.LastOnline = DateTime.Now;
 			}
@@ -979,9 +975,6 @@ namespace Server.Mobiles
 			if ( pm != null )
 			{
 				pm.m_GameTime += (DateTime.Now - pm.m_SessionStart);
-
-				if ( pm.m_Quest != null )
-					pm.m_Quest.StopTimer();
 
 				pm.m_SpeechLog = null;
 				pm.LastOnline = DateTime.Now;
@@ -1325,9 +1318,6 @@ namespace Server.Mobiles
 
 			if ( from == this )
 			{
-				if ( m_Quest != null )
-					m_Quest.GetContextMenuEntries( list );
-
 				if ( Alive && InsuranceEnabled )
 				{
 					list.Add( new CallbackEntry( 6201, new ContextCallback( ToggleItemInsurance ) ) );
@@ -2597,38 +2587,11 @@ namespace Server.Mobiles
 				}
 				case 18:
 				{
-					m_SolenFriendship = (SolenFriendship) reader.ReadEncodedInt();
-
 					goto case 17;
 				}
 				case 17: // changed how DoneQuests is serialized
 				case 16:
 				{
-					m_Quest = QuestSerializer.DeserializeQuest( reader );
-
-					if ( m_Quest != null )
-						m_Quest.From = this;
-
-					int count = reader.ReadEncodedInt();
-
-					if ( count > 0 )
-					{
-						m_DoneQuests = new List<QuestRestartInfo>();
-
-						for ( int i = 0; i < count; ++i )
-						{
-							Type questType = QuestSerializer.ReadType( QuestSystem.QuestTypes, reader );
-							DateTime restartTime;
-
-							if ( version < 17 )
-								restartTime = DateTime.MaxValue;
-							else
-								restartTime = reader.ReadDateTime();
-
-							m_DoneQuests.Add( new QuestRestartInfo( questType, restartTime ) );
-						}
-					}
-
 					m_Profession = reader.ReadEncodedInt();
 					goto case 15;
 				}
@@ -2847,27 +2810,6 @@ namespace Server.Mobiles
 
 			writer.WriteEncodedInt( m_GuildRank.Rank );
 			writer.Write( m_LastOnline );
-
-			writer.WriteEncodedInt( (int) m_SolenFriendship );
-
-			QuestSerializer.Serialize( m_Quest, writer );
-
-			if ( m_DoneQuests == null )
-			{
-				writer.WriteEncodedInt( (int) 0 );
-			}
-			else
-			{
-				writer.WriteEncodedInt( (int) m_DoneQuests.Count );
-
-				for ( int i = 0; i < m_DoneQuests.Count; ++i )
-				{
-					QuestRestartInfo restartInfo = m_DoneQuests[i];
-
-					QuestSerializer.Write( (Type) restartInfo.QuestType, QuestSystem.QuestTypes, writer );
-					writer.Write( (DateTime) restartInfo.RestartTime );
-				}
-			}
 
 			writer.WriteEncodedInt( (int) m_Profession );
 
@@ -3122,31 +3064,6 @@ namespace Server.Mobiles
 		{
 			get{ return m_FactionPlayerState; }
 			set{ m_FactionPlayerState = value; }
-		}
-		#endregion
-
-		#region Quests
-		private QuestSystem m_Quest;
-		private List<QuestRestartInfo> m_DoneQuests;
-		private SolenFriendship m_SolenFriendship;
-
-		public QuestSystem Quest
-		{
-			get{ return m_Quest; }
-			set{ m_Quest = value; }
-		}
-
-		public List<QuestRestartInfo> DoneQuests
-		{
-			get{ return m_DoneQuests; }
-			set{ m_DoneQuests = value; }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public SolenFriendship SolenFriendship
-		{
-			get{ return m_SolenFriendship; }
-			set{ m_SolenFriendship = value; }
 		}
 		#endregion
 
@@ -3498,9 +3415,6 @@ namespace Server.Mobiles
 				return false;
 
 			if( from is BaseCreature && ((BaseCreature)from).IgnoreYoungProtection )
-				return false;
-
-			if ( this.Quest != null && this.Quest.IgnoreYoungProtection( from ) )
 				return false;
 
 			if ( DateTime.Now - m_LastYoungMessage > TimeSpan.FromMinutes( 1.0 ) )

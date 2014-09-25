@@ -8,7 +8,6 @@ using Server.Spells;
 using Server.Misc;
 using Server.Items;
 using Server.ContextMenus;
-using Server.Engines.Quests;
 using Server.Engines.PartySystem;
 using Server.Factions;
 
@@ -1225,12 +1224,6 @@ namespace Server.Mobiles
 
 			if ( GetFactionAllegiance( m ) == Allegiance.Ally )
 				return false;
-
-			if ( !(m is BaseCreature) || m is Server.Engines.Quests.Haven.MilitiaFighter )
-				return true;
-
-			//if( TransformationSpellHelper.UnderTransformation( m, typeof( EtherealVoyageSpell ) ) )
-			//	return false;
 
 			if ( m is PlayerMobile && ( (PlayerMobile)m ).HonorActive )
 				return false;
@@ -4646,14 +4639,6 @@ namespace Server.Mobiles
 			{
 				m_HasGeneratedLoot = true;
 				GenerateLoot( false );
-			}
-
-			if ( !NoKillAwards && Region.IsPartOf( "Doom" ) )
-			{
-				int bones = Engines.Quests.Doom.TheSummoningQuest.GetDaemonBonesFor( this );
-
-				if ( bones > 0 )
-					PackItem( new DaemonBone( bones ) );
 			}
 
 			if ( IsAnimatedDead )

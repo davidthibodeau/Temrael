@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Server.Items;
 using Server.Targeting;
-using Server.Engines.Quests;
-using Server.Engines.Quests.Haven;
 using Server.ContextMenus;
 
 namespace Server.Mobiles
@@ -76,23 +74,6 @@ namespace Server.Mobiles
 		public override int GetDeathSound()
 		{
 			return 0xFD;
-		}
-
-		public override bool IsEnemy( Mobile m )
-		{
-			PlayerMobile player = m as PlayerMobile;
-
-			if ( player != null && Map == Map.Trammel && X >= 5199 && X <= 5271 && Y >= 1812 && Y <= 1865 ) // Schmendrick's cave
-			{
-				QuestSystem qs = player.Quest;
-
-				if ( qs is UzeraanTurmoilQuest && qs.IsObjectiveInProgress( typeof( FindSchmendrickObjective ) ) )
-				{
-					return false;
-				}
-			}
-
-			return base.IsEnemy( m );
 		}
 
 		public RestlessSoul( Serial serial ) : base( serial )
