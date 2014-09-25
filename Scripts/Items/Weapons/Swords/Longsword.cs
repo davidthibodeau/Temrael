@@ -10,9 +10,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ConcussionBlow; } }
 
-		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 16; } }
+		public override int DefStrengthReq{ get{ return 35; } }
+		public override int DefMinDamage{ get{ return 15; } }
+		public override int DefMaxDamage{ get{ return 16; } }
 		public override int DefSpeed{ get{ return 30; } }
 
 		public override int DefHitSound{ get{ return 0x237; } }

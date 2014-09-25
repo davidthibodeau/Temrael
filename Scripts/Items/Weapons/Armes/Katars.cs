@@ -9,9 +9,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return LourdeLame_Force1; } }
-        public override int AosMinDamage { get { return LourdeLame_MinDam1; } }
-        public override int AosMaxDamage { get { return LourdeLame_MaxDam1; } }
+        public override int DefStrengthReq { get { return LourdeLame_Force1; } }
+        public override int DefMinDamage { get { return LourdeLame_MinDam1; } }
+        public override int DefMaxDamage { get { return LourdeLame_MaxDam1; } }
         public override int DefSpeed { get { return LourdeLame_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -49,9 +49,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return LourdeLame_Force3; } }
-        public override int AosMinDamage { get { return LourdeLame_MinDam3; } }
-        public override int AosMaxDamage { get { return LourdeLame_MaxDam3; } }
+        public override int DefStrengthReq { get { return LourdeLame_Force3; } }
+        public override int DefMinDamage { get { return LourdeLame_MinDam3; } }
+        public override int DefMaxDamage { get { return LourdeLame_MaxDam3; } }
         public override int DefSpeed { get { return LourdeLame_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -89,9 +89,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return LourdeLame_Force6; } }
-        public override int AosMinDamage { get { return LourdeLame_MinDam6; } }
-        public override int AosMaxDamage { get { return LourdeLame_MaxDam6; } }
+        public override int DefStrengthReq { get { return LourdeLame_Force6; } }
+        public override int DefMinDamage { get { return LourdeLame_MinDam6; } }
+        public override int DefMaxDamage { get { return LourdeLame_MaxDam6; } }
         public override int DefSpeed { get { return LourdeLame_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }

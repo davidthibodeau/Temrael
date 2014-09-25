@@ -650,20 +650,6 @@
     <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureDebutant.cs" />
     <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureExpert.cs" />
     <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureIntermediaire.cs" />
-    <Compile Include="Items\Temrael\Armes\Arbaletes.cs" />
-    <Compile Include="Items\Temrael\Armes\Arcs.cs" />
-    <Compile Include="Items\Temrael\Armes\BaseKatar.cs" />
-    <Compile Include="Items\Temrael\Armes\BaseMeleeWeapon.cs" />
-    <Compile Include="Items\Temrael\Armes\BaseWeapon.cs" />
-    <Compile Include="Items\Temrael\Armes\Batons.cs" />
-    <Compile Include="Items\Temrael\Armes\Dagues.cs" />
-    <Compile Include="Items\Temrael\Armes\Epees.cs" />
-    <Compile Include="Items\Temrael\Armes\Estocs.cs" />
-    <Compile Include="Items\Temrael\Armes\Haches.cs" />
-    <Compile Include="Items\Temrael\Armes\Hastes.cs" />
-    <Compile Include="Items\Temrael\Armes\Katars.cs" />
-    <Compile Include="Items\Temrael\Armes\Lances.cs" />
-    <Compile Include="Items\Temrael\Armes\Masses.cs" />
     <Compile Include="Items\Temrael\Armures\ArmureBarbare.cs" />
     <Compile Include="Items\Temrael\Armures\ArmureDaedric.cs" />
     <Compile Include="Items\Temrael\Armures\ArmureDrow.cs" />
@@ -1672,10 +1658,6 @@
     <Compile Include="Engines\Chat\Chatold.cs" />
     <Compile Include="Engines\Chat\ChatUser.cs" />
     <Compile Include="Engines\Chat\Packets.cs" />
-    <Compile Include="Engines\Doom\GauntletSpawner.cs" />
-    <Compile Include="Engines\Doom\LeverPuzzle\LeverPuzzleController.cs" />
-    <Compile Include="Engines\Doom\LeverPuzzle\LeverPuzzleItems.cs" />
-    <Compile Include="Engines\Doom\LeverPuzzle\LeverPuzzleRegions.cs" />
     <Compile Include="Engines\Factions\Core\Election.cs" />
     <Compile Include="Engines\Factions\Core\Faction.cs" />
     <Compile Include="Engines\Factions\Core\FactionItem.cs" />
@@ -2580,7 +2562,6 @@
     <Compile Include="Items\Weapons\Staves\QuarterStaff.cs" />
     <Compile Include="Items\Weapons\Staves\ShepherdsCrook.cs" />
     <Compile Include="Items\Weapons\Swords\BaseSword.cs" />
-    <Compile Include="Items\Weapons\Swords\Cutlass.cs" />
     <Compile Include="Items\Weapons\Swords\Lance.cs" />
     <Compile Include="Items\Weapons\Swords\Longsword.cs" />
     <Compile Include="Items\Weapons\Swords\Scimitar.cs" />
@@ -2828,6 +2809,21 @@
     <Compile Include="Engines\Identities\DeguisementGump.cs" />
     <Compile Include="Engines\Identities\KitdeDeguisement.cs" />
     <Compile Include="Engines\Combat\StrategyPoings.cs" />
+    <Compile Include="Items\Weapons\Armes\Arbaletes.cs" />
+    <Compile Include="Items\Weapons\Armes\Arcs.cs" />
+    <Compile Include="Items\Weapons\Armes\Batons.cs" />
+    <Compile Include="Items\Weapons\Armes\Dagues.cs" />
+    <Compile Include="Items\Weapons\Armes\Epees.cs" />
+    <Compile Include="Items\Weapons\Armes\Estocs.cs" />
+    <Compile Include="Items\Weapons\Armes\Haches.cs" />
+    <Compile Include="Items\Weapons\Armes\Hastes.cs" />
+    <Compile Include="Items\Weapons\Armes\Katars.cs" />
+    <Compile Include="Items\Weapons\Armes\Lances.cs" />
+    <Compile Include="Items\Weapons\Armes\Masses.cs" />
+    <Compile Include="Items\Weapons\BaseKatar.cs" />
+    <Compile Include="Items\Weapons\BaseMeleeWeapon.cs" />
+    <Compile Include="Items\Weapons\BaseWeapon.cs" />
+    <Compile Include="Items\Weapons\Swords\Cutlass.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">

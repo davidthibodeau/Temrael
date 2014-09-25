@@ -14,7 +14,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Bashing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Bash1H; } }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyContondante.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyContondante.Strategy; } }
 
 		public BaseBashing( int itemID ) : base( itemID )
 		{

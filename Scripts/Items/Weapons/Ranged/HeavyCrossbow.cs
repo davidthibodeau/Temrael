@@ -14,9 +14,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.MovingShot; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force3; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam3; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam3; } }
+        public override int DefStrengthReq { get { return Arbalete_Force3; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam3; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam3; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
 		public override int DefMaxRange{ get{ return 8; } }

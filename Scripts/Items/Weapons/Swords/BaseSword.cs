@@ -12,7 +12,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Slashing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyTranchante.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyTranchante.Strategy; } }
 
 		public BaseSword( int itemID ) : base( itemID )
 		{

@@ -89,7 +89,7 @@ namespace Server.Items
 			BeginSwing();
 
 			from.Direction = from.GetDirectionTo( GetWorldLocation() );
-            weapon.CombatStrategy.AttaqueAnimation(from);
+            weapon.Strategy.AttaqueAnimation(from);
 
             Random rand = new Random();
 

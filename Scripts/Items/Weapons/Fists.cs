@@ -18,9 +18,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-		public override int AosStrengthReq{ get{ return 0; } }
-		public override int AosMinDamage{ get{ return 1; } }
-		public override int AosMaxDamage{ get{ return 4; } }
+		public override int DefStrengthReq{ get{ return 0; } }
+		public override int DefMinDamage{ get{ return 1; } }
+		public override int DefMaxDamage{ get{ return 4; } }
 		public override int DefSpeed{ get{ return 40; } }
 
 		public override int DefHitSound{ get{ return -1; } }
@@ -30,7 +30,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Fists; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Wrestle; } }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyPoings.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyPoings.Strategy; } }
 
 		public Fists() : base( 0 )
 		{

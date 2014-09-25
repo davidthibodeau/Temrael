@@ -78,7 +78,7 @@ namespace Server.Items
 
 					if ( OnFired( attacker, defender ) )
 					{
-                        delay = CombatStrategy.Sequence(attacker, defender);
+                        delay = Strategy.Sequence(attacker, defender);
 					}
 				}
 
@@ -207,7 +207,7 @@ namespace Server.Items
         {
         }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyArc.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyArc.Strategy; } }
 
 		public override void Serialize( GenericWriter writer )
 		{
@@ -237,7 +237,7 @@ namespace Server.Items
         {
         }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyArbalette.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyArbalette.Strategy; } }
 
 		public override void Serialize( GenericWriter writer )
 		{

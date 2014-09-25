@@ -18,7 +18,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Polearm; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash2H; } }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyHaste.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyHaste.Strategy; } }
 
 		public virtual HarvestSystem HarvestSystem{ get{ return Lumberjacking.System; } }
 

@@ -5,12 +5,9 @@ using Server.Network;
 using Server.Targeting;
 using Server.Mobiles;
 using Server.Spells;
-//using Server.Spells.Bushido;
-//using Server.Spells.Ninjitsu;
 using Server.Engines.Craft;
 using System.Collections.Generic;
 using Server.ContextMenus;
-//using Server.Spells.Spellweaving;
 using Server.Engines.Combat;
 using System.Text.RegularExpressions;
 
@@ -544,11 +541,9 @@ namespace Server.Items
 		public virtual WeaponType DefType{ get{ return WeaponType.Slashing; } }
 		public virtual WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
-		public virtual int AosStrengthReq{ get{ return 0; } }
-		public virtual int AosDexterityReq{ get{ return 0; } }
-		public virtual int AosIntelligenceReq{ get{ return 0; } }
-		public virtual int AosMinDamage{ get{ return 0; } }
-		public virtual int AosMaxDamage{ get{ return 0; } }
+		public virtual int DefStrengthReq{ get{ return 0; } }
+		public virtual int DefMinDamage{ get{ return 0; } }
+		public virtual int DefMaxDamage{ get{ return 0; } }
 		public virtual int DefSpeed{ get{ return 0; } }
 
 		public virtual int InitMinHits{ get{ return 0; } }
@@ -692,7 +687,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Batisseur)]
         public int MaxRange
         {
-            get { return (m_MaxRange == -1 ? RootParent is Mobile ? CombatStrategy.Range(RootParent as Mobile) : CombatStrategy.BaseRange : m_MaxRange); }
+            get { return (m_MaxRange == -1 ? RootParent is Mobile ? Strategy.Range(RootParent as Mobile) : Strategy.BaseRange : m_MaxRange); }
             set { m_MaxRange = value; InvalidateProperties(); }
         }
 
@@ -734,14 +729,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? AosMinDamage : m_MinDamage ); }
+			get{ return ( m_MinDamage == -1 ? DefMinDamage : m_MinDamage ); }
 			set{ m_MinDamage = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? AosMaxDamage : m_MaxDamage ); }
+			get{ return ( m_MaxDamage == -1 ? DefMaxDamage : m_MaxDamage ); }
 			set{ m_MaxDamage = value; InvalidateProperties(); }
 		}
 
@@ -763,22 +758,8 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int StrRequirement
 		{
-			get{ return ( m_StrReq == -1 ? AosStrengthReq : m_StrReq ); }
+			get{ return ( m_StrReq == -1 ? DefStrengthReq : m_StrReq ); }
 			set{ m_StrReq = value; InvalidateProperties(); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int DexRequirement
-		{
-			get{ return ( m_DexReq == -1 ? AosDexterityReq : m_DexReq ); }
-			set{ m_DexReq = value; }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int IntRequirement
-		{
-			get{ return ( m_IntReq == -1 ? AosIntelligenceReq  : m_IntReq ); }
-			set{ m_IntReq = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -820,7 +801,7 @@ namespace Server.Items
 		}
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public abstract CombatStrategy CombatStrategy
+        public abstract CombatStrategy Strategy
         {
             get;
         }
@@ -954,19 +935,9 @@ namespace Server.Items
 
 		public override bool CanEquip( Mobile from )
 		{
-            if (from.RawDex < DexRequirement)
-			{
-				from.SendMessage( "You are not nimble enough to equip that." );
-				return false;
-			}
-            else if (from.RawStr < AOS.Scale(StrRequirement, 100 - GetLowerStatReq()))
+            if (from.RawStr < AOS.Scale(StrRequirement, 100 - GetLowerStatReq()))
 			{
 				from.SendLocalizedMessage( 500213 ); // You are not strong enough to equip that.
-				return false;
-			}
-            else if (from.RawInt < IntRequirement)
-			{
-				from.SendMessage( "You are not smart enough to equip that." );
 				return false;
 			}
 			else if ( !from.CanBeginAction( typeof( BaseWeapon ) ) )
@@ -1335,10 +1306,10 @@ namespace Server.Items
 							WeaponAbility.ClearCurrentAbility( bc );
 					}
 				}
-                return CombatStrategy.Sequence(attacker, defender);
+                return Strategy.Sequence(attacker, defender);
 			}
 
-            return CombatStrategy.ProchaineAttaque(attacker);
+            return Strategy.ProchaineAttaque(attacker);
 		}
 
 
@@ -1502,7 +1473,7 @@ namespace Server.Items
                     //Console.WriteLine("Percent Before : " + percent);
                     //Console.WriteLine("Dmg Before : " + damage);
                     
-                    /* FLUSHÉ DANS LE NOUVEAU SYSTÈME ANYWAY
+                    /* FLUSHÈßDANS LE NOUVEAU SYSTÈME ANYWAY
                      * 
                     if (defender is TMobile)
                         percent -= (double)(((TMobile)defender).GetAptitudeValue(Aptitude.Robustesse) * 0.02);
@@ -1712,8 +1683,8 @@ namespace Server.Items
 
 		public virtual void GetStatusDamage( Mobile from, out int min, out int max )
 		{
-            min = CombatStrategy.MinDegats(from);
-            max = CombatStrategy.MaxDegats(from);
+            min = Strategy.MinDegats(from);
+            max = Strategy.MaxDegats(from);
 		}
 
 

@@ -9,9 +9,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force6; } }
-        public override int AosMinDamage { get { return Hache_MinDam6; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam6; } }
+        public override int DefStrengthReq { get { return Hache_Force6; } }
+        public override int DefMinDamage { get { return Hache_MinDam6; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam6; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -53,9 +53,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force6; } }
-        public override int AosMinDamage { get { return Hachette_MinDam6; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam6; } }
+        public override int DefStrengthReq { get { return Hachette_Force6; } }
+        public override int DefMinDamage { get { return Hachette_MinDam6; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam6; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -93,9 +93,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force6; } }
-        public override int AosMinDamage { get { return Hachette_MinDam6; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam6; } }
+        public override int DefStrengthReq { get { return Hachette_Force6; } }
+        public override int DefMinDamage { get { return Hachette_MinDam6; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam6; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -135,9 +135,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force6; } }
-        public override int AosMinDamage { get { return Hache_MinDam6; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam6; } }
+        public override int DefStrengthReq { get { return Hache_Force6; } }
+        public override int DefMinDamage { get { return Hache_MinDam6; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam6; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -177,9 +177,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force2; } }
-        public override int AosMinDamage { get { return Hache_MinDam2; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam2; } }
+        public override int DefStrengthReq { get { return Hache_Force2; } }
+        public override int DefMinDamage { get { return Hache_MinDam2; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam2; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -219,9 +219,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force1; } }
-        public override int AosMinDamage { get { return Hachette_MinDam1; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam1; } }
+        public override int DefStrengthReq { get { return Hachette_Force1; } }
+        public override int DefMinDamage { get { return Hachette_MinDam1; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam1; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -261,9 +261,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force2; } }
-        public override int AosMinDamage { get { return Hachette_MinDam2; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam2; } }
+        public override int DefStrengthReq { get { return Hachette_Force2; } }
+        public override int DefMinDamage { get { return Hachette_MinDam2; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam2; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -302,9 +302,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force5; } }
-        public override int AosMinDamage { get { return Hache_MinDam5; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam5; } }
+        public override int DefStrengthReq { get { return Hache_Force5; } }
+        public override int DefMinDamage { get { return Hache_MinDam5; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam5; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -344,9 +344,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force3; } }
-        public override int AosMinDamage { get { return Hachette_MinDam3; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam3; } }
+        public override int DefStrengthReq { get { return Hachette_Force3; } }
+        public override int DefMinDamage { get { return Hachette_MinDam3; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam3; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -387,9 +387,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force1; } }
-        public override int AosMinDamage { get { return Hache_MinDam1; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam1; } }
+        public override int DefStrengthReq { get { return Hache_Force1; } }
+        public override int DefMinDamage { get { return Hache_MinDam1; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam1; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -431,9 +431,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force5; } }
-        public override int AosMinDamage { get { return Hache_MinDam5; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam5; } }
+        public override int DefStrengthReq { get { return Hache_Force5; } }
+        public override int DefMinDamage { get { return Hache_MinDam5; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam5; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -473,9 +473,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force6; } }
-        public override int AosMinDamage { get { return Hachette_MinDam6; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam6; } }
+        public override int DefStrengthReq { get { return Hachette_Force6; } }
+        public override int DefMinDamage { get { return Hachette_MinDam6; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam6; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -515,9 +515,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force2; } }
-        public override int AosMinDamage { get { return Hachette_MinDam2; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam2; } }
+        public override int DefStrengthReq { get { return Hachette_Force2; } }
+        public override int DefMinDamage { get { return Hachette_MinDam2; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam2; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -557,9 +557,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force5; } }
-        public override int AosMinDamage { get { return Hachette_MinDam5; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam5; } }
+        public override int DefStrengthReq { get { return Hachette_Force5; } }
+        public override int DefMinDamage { get { return Hachette_MinDam5; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam5; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -599,9 +599,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force3; } }
-        public override int AosMinDamage { get { return Hachette_MinDam3; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam3; } }
+        public override int DefStrengthReq { get { return Hachette_Force3; } }
+        public override int DefMinDamage { get { return Hachette_MinDam3; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam3; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -641,9 +641,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force5; } }
-        public override int AosMinDamage { get { return Hachette_MinDam5; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam5; } }
+        public override int DefStrengthReq { get { return Hachette_Force5; } }
+        public override int DefMinDamage { get { return Hachette_MinDam5; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam5; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -681,9 +681,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force5; } }
-        public override int AosMinDamage { get { return Hache_MinDam5; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam5; } }
+        public override int DefStrengthReq { get { return Hache_Force5; } }
+        public override int DefMinDamage { get { return Hache_MinDam5; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam5; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -723,9 +723,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hache_Force1; } }
-        public override int AosMinDamage { get { return Hache_MinDam1; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam1; } }
+        public override int DefStrengthReq { get { return Hache_Force1; } }
+        public override int DefMinDamage { get { return Hache_MinDam1; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam1; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -767,9 +767,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force1; } }
-        public override int AosMinDamage { get { return Hachette_MinDam1; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam1; } }
+        public override int DefStrengthReq { get { return Hachette_Force1; } }
+        public override int DefMinDamage { get { return Hachette_MinDam1; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam1; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -809,9 +809,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force0; } }
-        public override int AosMinDamage { get { return Hachette_MinDam0; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam0; } }
+        public override int DefStrengthReq { get { return Hachette_Force0; } }
+        public override int DefMinDamage { get { return Hachette_MinDam0; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam0; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }

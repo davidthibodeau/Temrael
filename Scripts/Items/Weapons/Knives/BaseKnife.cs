@@ -15,7 +15,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Piercing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyPerforante.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyPerforante.Strategy; } }
 
 		public BaseKnife( int itemID ) : base( itemID )
 		{

@@ -10,9 +10,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force1; } }
-        public override int AosMinDamage { get { return Hachette_MinDam1; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam1; } }
+        public override int DefStrengthReq { get { return Hachette_Force1; } }
+        public override int DefMinDamage { get { return Hachette_MinDam1; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam1; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
         public override int InitMinHits { get { return Armes_MinDurabilite0; } }

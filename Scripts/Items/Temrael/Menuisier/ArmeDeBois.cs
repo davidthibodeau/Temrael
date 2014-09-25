@@ -6,9 +6,9 @@ namespace Server.Items
 {
     public class DagueEntrainement : BaseSword
     {
-        public override int AosStrengthReq { get { return Dague_Force0; } }
-        public override int AosMinDamage { get { return Dague_MinDam0; } }
-        public override int AosMaxDamage { get { return Dague_MaxDam0; } }
+        public override int DefStrengthReq { get { return Dague_Force0; } }
+        public override int DefMinDamage { get { return Dague_MinDam0; } }
+        public override int DefMaxDamage { get { return Dague_MaxDam0; } }
         public override int DefSpeed { get { return Dague_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -43,9 +43,9 @@ namespace Server.Items
     }
     public class LanceEntrainement : BaseSpear
     {
-        public override int AosStrengthReq { get { return Lance_Force0; } }
-        public override int AosMinDamage { get { return Lance_MinDam0; } }
-        public override int AosMaxDamage { get { return Lance_MaxDam0; } }
+        public override int DefStrengthReq { get { return Lance_Force0; } }
+        public override int DefMinDamage { get { return Lance_MinDam0; } }
+        public override int DefMaxDamage { get { return Lance_MaxDam0; } }
         public override int DefSpeed { get { return Lance_Vitesse; } }
 
         public override int DefHitSound { get { return 0x237; } }
@@ -83,9 +83,9 @@ namespace Server.Items
     }
     public class MasseEntrainement : BaseBashing
     {
-        public override int AosStrengthReq { get { return Masse_Force0; } }
-        public override int AosMinDamage { get { return Masse_MinDam0; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam0; } }
+        public override int DefStrengthReq { get { return Masse_Force0; } }
+        public override int DefMinDamage { get { return Masse_MinDam0; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam0; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -120,9 +120,9 @@ namespace Server.Items
     }
     public class BatonEntrainement : BaseStaff
     {
-        public override int AosStrengthReq { get { return Baton_Force0; } }
-        public override int AosMinDamage { get { return Baton_MinDam0; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam0; } }
+        public override int DefStrengthReq { get { return Baton_Force0; } }
+        public override int DefMinDamage { get { return Baton_MinDam0; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam0; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int DefHitSound { get { return 0x237; } }
@@ -160,9 +160,9 @@ namespace Server.Items
     }
     public class EpeeEntrainement : BaseSword
     {
-        public override int AosStrengthReq { get { return Lame_Force0; } }
-        public override int AosMinDamage { get { return Lame_MinDam0; } }
-        public override int AosMaxDamage { get { return Lame_MaxDam0; } }
+        public override int DefStrengthReq { get { return Lame_Force0; } }
+        public override int DefMinDamage { get { return Lame_MinDam0; } }
+        public override int DefMaxDamage { get { return Lame_MaxDam0; } }
         public override int DefSpeed { get { return Lame_Vitesse; } }
 
         public override int DefHitSound { get { return 0x237; } }

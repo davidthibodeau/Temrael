@@ -10,9 +10,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Claymore_Force3; } }
-        public override int AosMinDamage { get { return Claymore_MinDam3; } }
-        public override int AosMaxDamage { get { return Claymore_MaxDam3; } }
+        public override int DefStrengthReq { get { return Claymore_Force3; } }
+        public override int DefMinDamage { get { return Claymore_MinDam3; } }
+        public override int DefMaxDamage { get { return Claymore_MaxDam3; } }
         public override int DefSpeed { get { return Claymore_Vitesse; } }
 
 		public override int DefHitSound{ get{ return 0x237; } }

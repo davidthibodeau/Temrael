@@ -23,7 +23,7 @@ namespace Server.Items
 		public override WeaponType DefType{ get{ return WeaponType.Axe; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash2H; } }
 
-        public override CombatStrategy CombatStrategy { get { return StrategyTranchante.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyTranchante.Strategy; } }
 
 		public virtual HarvestSystem HarvestSystem{ get{ return Lumberjacking.System; } }
 

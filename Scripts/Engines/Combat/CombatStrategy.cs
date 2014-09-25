@@ -125,7 +125,7 @@ namespace Server.Engines.Combat
         protected virtual double ToucherChance(Mobile atk, Mobile def)
         {
             double atkvalue = atk.Skills[ToucherSkill].Value;
-            double defvalue = def.Skills[(def.Weapon as BaseWeapon).CombatStrategy.ToucherSkill].Value;
+            double defvalue = def.Skills[(def.Weapon as BaseWeapon).Strategy.ToucherSkill].Value;
 
             double chance = (atkvalue + 20.0) * 100 / ((defvalue + 20.0) * 200);
 
@@ -275,7 +275,7 @@ namespace Server.Engines.Combat
 
         protected CombatStrategy DefStrategy(Mobile def)
         {
-            return (def.Weapon as BaseWeapon).CombatStrategy;
+            return (def.Weapon as BaseWeapon).Strategy;
         }
 
         protected BaseWeapon Weapon(Mobile m)

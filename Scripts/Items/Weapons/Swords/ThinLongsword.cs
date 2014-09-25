@@ -7,9 +7,9 @@ namespace Server.Items
 	[FlipableAttribute( 0x13B8, 0x13B7 )]
 	public class ThinLongsword : BaseSword
 	{
-		public override int AosStrengthReq{ get{ return 35; } }
-		public override int AosMinDamage{ get{ return 15; } }
-		public override int AosMaxDamage{ get{ return 16; } }
+		public override int DefStrengthReq{ get{ return 35; } }
+		public override int DefMinDamage{ get{ return 15; } }
+		public override int DefMaxDamage{ get{ return 16; } }
 		public override int DefSpeed{ get{ return 30; } }
 
 		public override int DefHitSound{ get{ return 0x237; } }

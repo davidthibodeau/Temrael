@@ -10,9 +10,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 
-        public override int AosStrengthReq { get { return Sabre_Force5; } }
-        public override int AosMinDamage { get { return Sabre_MinDam5; } }
-        public override int AosMaxDamage { get { return Sabre_MaxDam5; } }
+        public override int DefStrengthReq { get { return Sabre_Force5; } }
+        public override int DefMinDamage { get { return Sabre_MinDam5; } }
+        public override int DefMaxDamage { get { return Sabre_MaxDam5; } }
         public override int DefSpeed { get { return Sabre_Vitesse; } }
 
 		public override int DefHitSound{ get{ return 0x23B; } }

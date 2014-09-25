@@ -12,9 +12,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.DoubleStrike; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 
-        public override int AosStrengthReq { get { return Hache_Force3; } }
-        public override int AosMinDamage { get { return Hache_MinDam3; } }
-        public override int AosMaxDamage { get { return Hache_MaxDam3; } }
+        public override int DefStrengthReq { get { return Hache_Force3; } }
+        public override int DefMinDamage { get { return Hache_MinDam3; } }
+        public override int DefMaxDamage { get { return Hache_MaxDam3; } }
         public override int DefSpeed { get { return Hache_Vitesse; } }
 
 		public override int InitMinHits{ get{ return 31; } }

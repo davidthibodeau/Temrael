@@ -13,9 +13,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ConcussionBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force4; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam4; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam4; } }
+        public override int DefStrengthReq { get { return Arbalete_Force4; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam4; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam4; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
@@ -60,9 +60,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ConcussionBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force5; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam5; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam5; } }
+        public override int DefStrengthReq { get { return Arbalete_Force5; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam5; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam5; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
@@ -107,9 +107,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ConcussionBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force6; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam6; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam6; } }
+        public override int DefStrengthReq { get { return Arbalete_Force6; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam6; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam6; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
@@ -154,9 +154,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ConcussionBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force0; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam0; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam0; } }
+        public override int DefStrengthReq { get { return Arbalete_Force0; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam0; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam0; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
@@ -201,9 +201,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ConcussionBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force1; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam1; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam1; } }
+        public override int DefStrengthReq { get { return Arbalete_Force1; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam1; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam1; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
@@ -248,9 +248,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ConcussionBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force3; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam3; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam3; } }
+        public override int DefStrengthReq { get { return Arbalete_Force3; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam3; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam3; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }
@@ -295,9 +295,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ConcussionBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arbalete_Force5; } }
-        public override int AosMinDamage { get { return Arbalete_MinDam5; } }
-        public override int AosMaxDamage { get { return Arbalete_MaxDam5; } }
+        public override int DefStrengthReq { get { return Arbalete_Force5; } }
+        public override int DefMinDamage { get { return Arbalete_MinDam5; } }
+        public override int DefMaxDamage { get { return Arbalete_MaxDam5; } }
         public override int DefSpeed { get { return Arbalete_Vitesse; } }
 
         public override int DefMaxRange { get { return 8; } }

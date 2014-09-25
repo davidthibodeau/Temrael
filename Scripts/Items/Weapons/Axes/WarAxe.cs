@@ -11,9 +11,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ArmorIgnore; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 
-        public override int AosStrengthReq { get { return Hachette_Force4; } }
-        public override int AosMinDamage { get { return Hachette_MinDam4; } }
-        public override int AosMaxDamage { get { return Hachette_MaxDam4; } }
+        public override int DefStrengthReq { get { return Hachette_Force4; } }
+        public override int DefMinDamage { get { return Hachette_MinDam4; } }
+        public override int DefMaxDamage { get { return Hachette_MaxDam4; } }
         public override int DefSpeed { get { return Hachette_Vitesse; } }
 
 		public override int DefHitSound{ get{ return 0x233; } }

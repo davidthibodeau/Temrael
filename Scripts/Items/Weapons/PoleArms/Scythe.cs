@@ -13,9 +13,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.BleedAttack; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Bardiche_Force2; } }
-        public override int AosMinDamage { get { return Bardiche_MinDam2; } }
-        public override int AosMaxDamage { get { return Bardiche_MaxDam2; } }
+        public override int DefStrengthReq { get { return Bardiche_Force2; } }
+        public override int DefMinDamage { get { return Bardiche_MinDam2; } }
+        public override int DefMaxDamage { get { return Bardiche_MaxDam2; } }
         public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
 		public override int InitMinHits{ get{ return 31; } }

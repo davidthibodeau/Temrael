@@ -9,9 +9,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force5; } }
-        public override int AosMinDamage { get { return Masse_MinDam5; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam5; } }
+        public override int DefStrengthReq { get { return Masse_Force5; } }
+        public override int DefMinDamage { get { return Masse_MinDam5; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam5; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -51,9 +51,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force4; } }
-        public override int AosMinDamage { get { return Masse_MinDam4; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam4; } }
+        public override int DefStrengthReq { get { return Masse_Force4; } }
+        public override int DefMinDamage { get { return Masse_MinDam4; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam4; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -91,9 +91,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return 40; } }
-        public override int AosMinDamage { get { return 11; } }
-        public override int AosMaxDamage { get { return 13; } }
+        public override int DefStrengthReq { get { return 40; } }
+        public override int DefMinDamage { get { return 11; } }
+        public override int DefMaxDamage { get { return 13; } }
         public override int DefSpeed { get { return 44; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -131,9 +131,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force3; } }
-        public override int AosMinDamage { get { return Masse_MinDam3; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam3; } }
+        public override int DefStrengthReq { get { return Masse_Force3; } }
+        public override int DefMinDamage { get { return Masse_MinDam3; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam3; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -171,9 +171,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force6; } }
-        public override int AosMinDamage { get { return Masse_MinDam6; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam6; } }
+        public override int DefStrengthReq { get { return Masse_Force6; } }
+        public override int DefMinDamage { get { return Masse_MinDam6; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam6; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -213,9 +213,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force5; } }
-        public override int AosMinDamage { get { return Masse_MinDam5; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam5; } }
+        public override int DefStrengthReq { get { return Masse_Force5; } }
+        public override int DefMinDamage { get { return Masse_MinDam5; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam5; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -253,9 +253,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return 40; } }
-        public override int AosMinDamage { get { return 11; } }
-        public override int AosMaxDamage { get { return 13; } }
+        public override int DefStrengthReq { get { return 40; } }
+        public override int DefMinDamage { get { return 11; } }
+        public override int DefMaxDamage { get { return 13; } }
         public override int DefSpeed { get { return 44; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -293,9 +293,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return 40; } }
-        public override int AosMinDamage { get { return 11; } }
-        public override int AosMaxDamage { get { return 13; } }
+        public override int DefStrengthReq { get { return 40; } }
+        public override int DefMinDamage { get { return 11; } }
+        public override int DefMaxDamage { get { return 13; } }
         public override int DefSpeed { get { return 44; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -335,9 +335,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Marteau_Force6; } }
-        public override int AosMinDamage { get { return Marteau_MinDam6; } }
-        public override int AosMaxDamage { get { return Marteau_MaxDam6; } }
+        public override int DefStrengthReq { get { return Marteau_Force6; } }
+        public override int DefMinDamage { get { return Marteau_MinDam6; } }
+        public override int DefMaxDamage { get { return Marteau_MaxDam6; } }
         public override int DefSpeed { get { return Marteau_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -379,9 +379,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force4; } }
-        public override int AosMinDamage { get { return Masse_MinDam4; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam4; } }
+        public override int DefStrengthReq { get { return Masse_Force4; } }
+        public override int DefMinDamage { get { return Masse_MinDam4; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam4; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -419,9 +419,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force5; } }
-        public override int AosMinDamage { get { return Masse_MinDam5; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam5; } }
+        public override int DefStrengthReq { get { return Masse_Force5; } }
+        public override int DefMinDamage { get { return Masse_MinDam5; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam5; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -461,9 +461,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Marteau_Force5; } }
-        public override int AosMinDamage { get { return Marteau_MinDam5; } }
-        public override int AosMaxDamage { get { return Marteau_MaxDam5; } }
+        public override int DefStrengthReq { get { return Marteau_Force5; } }
+        public override int DefMinDamage { get { return Marteau_MinDam5; } }
+        public override int DefMaxDamage { get { return Marteau_MaxDam5; } }
         public override int DefSpeed { get { return Marteau_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -503,9 +503,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ShadowStrike; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Masse_Force6; } }
-        public override int AosMinDamage { get { return Masse_MinDam6; } }
-        public override int AosMaxDamage { get { return Masse_MaxDam6; } }
+        public override int DefStrengthReq { get { return Masse_Force6; } }
+        public override int DefMinDamage { get { return Masse_MinDam6; } }
+        public override int DefMaxDamage { get { return Masse_MaxDam6; } }
         public override int DefSpeed { get { return Masse_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }

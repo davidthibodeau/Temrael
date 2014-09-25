@@ -9,9 +9,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -49,9 +49,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force0; } }
-        public override int AosMinDamage { get { return Baton_MinDam0; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam0; } }
+        public override int DefStrengthReq { get { return Baton_Force0; } }
+        public override int DefMinDamage { get { return Baton_MinDam0; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam0; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -89,9 +89,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -131,9 +131,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -171,9 +171,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -211,9 +211,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 70; } }
@@ -250,9 +250,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -290,9 +290,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -330,9 +330,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -370,9 +370,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -412,9 +412,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -452,9 +452,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -492,9 +492,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -532,9 +532,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -572,9 +572,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.WhirlwindAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
 
-        public override int AosStrengthReq { get { return Baton_Force1; } }
-        public override int AosMinDamage { get { return Baton_MinDam1; } }
-        public override int AosMaxDamage { get { return Baton_MaxDam1; } }
+        public override int DefStrengthReq { get { return Baton_Force1; } }
+        public override int DefMinDamage { get { return Baton_MinDam1; } }
+        public override int DefMaxDamage { get { return Baton_MaxDam1; } }
         public override int DefSpeed { get { return Baton_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }

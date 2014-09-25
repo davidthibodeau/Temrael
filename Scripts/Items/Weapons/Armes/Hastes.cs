@@ -9,9 +9,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hallebarde_Force6; } }
-        public override int AosMinDamage { get { return Hallebarde_MinDam6; } }
-        public override int AosMaxDamage { get { return Hallebarde_MaxDam6; } }
+        public override int DefStrengthReq { get { return Hallebarde_Force6; } }
+        public override int DefMinDamage { get { return Hallebarde_MinDam6; } }
+        public override int DefMaxDamage { get { return Hallebarde_MaxDam6; } }
         public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -49,9 +49,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Bardiche_Force6; } }
-        public override int AosMinDamage { get { return Bardiche_MinDam6; } }
-        public override int AosMaxDamage { get { return Bardiche_MaxDam6; } }
+        public override int DefStrengthReq { get { return Bardiche_Force6; } }
+        public override int DefMinDamage { get { return Bardiche_MinDam6; } }
+        public override int DefMaxDamage { get { return Bardiche_MaxDam6; } }
         public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -89,9 +89,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hallebarde_Force3; } }
-        public override int AosMinDamage { get { return Hallebarde_MinDam3; } }
-        public override int AosMaxDamage { get { return Hallebarde_MaxDam3; } }
+        public override int DefStrengthReq { get { return Hallebarde_Force3; } }
+        public override int DefMinDamage { get { return Hallebarde_MinDam3; } }
+        public override int DefMaxDamage { get { return Hallebarde_MaxDam3; } }
         public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -129,9 +129,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Bardiche_Force3; } }
-        public override int AosMinDamage { get { return Bardiche_MinDam3; } }
-        public override int AosMaxDamage { get { return Bardiche_MaxDam3; } }
+        public override int DefStrengthReq { get { return Bardiche_Force3; } }
+        public override int DefMinDamage { get { return Bardiche_MinDam3; } }
+        public override int DefMaxDamage { get { return Bardiche_MaxDam3; } }
         public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -171,9 +171,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hallebarde_Force4; } }
-        public override int AosMinDamage { get { return Hallebarde_MinDam4; } }
-        public override int AosMaxDamage { get { return Hallebarde_MaxDam4; } }
+        public override int DefStrengthReq { get { return Hallebarde_Force4; } }
+        public override int DefMinDamage { get { return Hallebarde_MinDam4; } }
+        public override int DefMaxDamage { get { return Hallebarde_MaxDam4; } }
         public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -213,9 +213,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Hallebarde_Force5; } }
-        public override int AosMinDamage { get { return Hallebarde_MinDam5; } }
-        public override int AosMaxDamage { get { return Hallebarde_MaxDam5; } }
+        public override int DefStrengthReq { get { return Hallebarde_Force5; } }
+        public override int DefMinDamage { get { return Hallebarde_MinDam5; } }
+        public override int DefMaxDamage { get { return Hallebarde_MaxDam5; } }
         public override int DefSpeed { get { return Hallebarde_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -253,9 +253,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Bardiche_Force5; } }
-        public override int AosMinDamage { get { return Bardiche_MinDam5; } }
-        public override int AosMaxDamage { get { return Bardiche_MaxDam5; } }
+        public override int DefStrengthReq { get { return Bardiche_Force5; } }
+        public override int DefMinDamage { get { return Bardiche_MinDam5; } }
+        public override int DefMaxDamage { get { return Bardiche_MaxDam5; } }
         public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }

@@ -10,9 +10,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.CrushingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Bardiche_Force4; } }
-        public override int AosMinDamage { get { return Bardiche_MinDam4; } }
-        public override int AosMaxDamage { get { return Bardiche_MaxDam4; } }
+        public override int DefStrengthReq { get { return Bardiche_Force4; } }
+        public override int DefMinDamage { get { return Bardiche_MinDam4; } }
+        public override int DefMaxDamage { get { return Bardiche_MaxDam4; } }
         public override int DefSpeed { get { return Bardiche_Vitesse; } }
 
 		public override int InitMinHits{ get{ return 31; } }

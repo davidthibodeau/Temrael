@@ -12,9 +12,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.BleedAttack; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.Dismount; } }
 
-        public override int AosStrengthReq { get { return Trident_Force1; } }
-        public override int AosMinDamage { get { return Trident_MinDam1; } }
-        public override int AosMaxDamage { get { return Trident_MaxDam1; } }
+        public override int DefStrengthReq { get { return Trident_Force1; } }
+        public override int DefMinDamage { get { return Trident_MinDam1; } }
+        public override int DefMaxDamage { get { return Trident_MaxDam1; } }
         public override int DefSpeed { get { return Trident_Vitesse; } }
 
         public override int InitMinHits { get { return 31; } }

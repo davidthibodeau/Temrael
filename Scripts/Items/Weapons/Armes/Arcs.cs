@@ -15,9 +15,9 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force1; } }
-        public override int AosMinDamage { get { return Arc_MinDam1; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam1; } }
+        public override int DefStrengthReq { get { return Arc_Force1; } }
+        public override int DefMinDamage { get { return Arc_MinDam1; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam1; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
 		public override int DefMaxRange{ get{ return 10; } }
@@ -65,9 +65,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force1; } }
-        public override int AosMinDamage { get { return Arc_MinDam1; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam1; } }
+        public override int DefStrengthReq { get { return Arc_Force1; } }
+        public override int DefMinDamage { get { return Arc_MinDam1; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam1; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -116,9 +116,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force3; } }
-        public override int AosMinDamage { get { return Arc_MinDam3; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam3; } }
+        public override int DefStrengthReq { get { return Arc_Force3; } }
+        public override int DefMinDamage { get { return Arc_MinDam3; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam3; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -167,9 +167,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force4; } }
-        public override int AosMinDamage { get { return Arc_MinDam4; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam4; } }
+        public override int DefStrengthReq { get { return Arc_Force4; } }
+        public override int DefMinDamage { get { return Arc_MinDam4; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam4; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -218,9 +218,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force5; } }
-        public override int AosMinDamage { get { return Arc_MinDam5; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam5; } }
+        public override int DefStrengthReq { get { return Arc_Force5; } }
+        public override int DefMinDamage { get { return Arc_MinDam5; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam5; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -267,9 +267,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force6; } }
-        public override int AosMinDamage { get { return Arc_MinDam6; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam6; } }
+        public override int DefStrengthReq { get { return Arc_Force6; } }
+        public override int DefMinDamage { get { return Arc_MinDam6; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam6; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -316,9 +316,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force4; } }
-        public override int AosMinDamage { get { return Arc_MinDam4; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam4; } }
+        public override int DefStrengthReq { get { return Arc_Force4; } }
+        public override int DefMinDamage { get { return Arc_MinDam4; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam4; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -365,9 +365,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force3; } }
-        public override int AosMinDamage { get { return Arc_MinDam3; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam3; } }
+        public override int DefStrengthReq { get { return Arc_Force3; } }
+        public override int DefMinDamage { get { return Arc_MinDam3; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam3; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -414,9 +414,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force3; } }
-        public override int AosMinDamage { get { return Arc_MinDam3; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam3; } }
+        public override int DefStrengthReq { get { return Arc_Force3; } }
+        public override int DefMinDamage { get { return Arc_MinDam3; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam3; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -463,9 +463,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force0; } }
-        public override int AosMinDamage { get { return Arc_MinDam0; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam0; } }
+        public override int DefStrengthReq { get { return Arc_Force0; } }
+        public override int DefMinDamage { get { return Arc_MinDam0; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam0; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -512,9 +512,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force5; } }
-        public override int AosMinDamage { get { return Arc_MinDam5; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam5; } }
+        public override int DefStrengthReq { get { return Arc_Force5; } }
+        public override int DefMinDamage { get { return Arc_MinDam5; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam5; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -563,9 +563,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force6; } }
-        public override int AosMinDamage { get { return Arc_MinDam6; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam6; } }
+        public override int DefStrengthReq { get { return Arc_Force6; } }
+        public override int DefMinDamage { get { return Arc_MinDam6; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam6; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -612,9 +612,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force2; } }
-        public override int AosMinDamage { get { return Arc_MinDam2; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam2; } }
+        public override int DefStrengthReq { get { return Arc_Force2; } }
+        public override int DefMinDamage { get { return Arc_MinDam2; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam2; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -661,9 +661,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force4; } }
-        public override int AosMinDamage { get { return Arc_MinDam4; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam4; } }
+        public override int DefStrengthReq { get { return Arc_Force4; } }
+        public override int DefMinDamage { get { return Arc_MinDam4; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam4; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -710,9 +710,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force5; } }
-        public override int AosMinDamage { get { return Arc_MinDam5; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam5; } }
+        public override int DefStrengthReq { get { return Arc_Force5; } }
+        public override int DefMinDamage { get { return Arc_MinDam5; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam5; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -759,9 +759,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force4; } }
-        public override int AosMinDamage { get { return Arc_MinDam4; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam4; } }
+        public override int DefStrengthReq { get { return Arc_Force4; } }
+        public override int DefMinDamage { get { return Arc_MinDam4; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam4; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -810,9 +810,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force3; } }
-        public override int AosMinDamage { get { return Arc_MinDam3; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam3; } }
+        public override int DefStrengthReq { get { return Arc_Force3; } }
+        public override int DefMinDamage { get { return Arc_MinDam3; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam3; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -859,9 +859,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force2; } }
-        public override int AosMinDamage { get { return Arc_MinDam2; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam2; } }
+        public override int DefStrengthReq { get { return Arc_Force2; } }
+        public override int DefMinDamage { get { return Arc_MinDam2; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam2; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
@@ -910,9 +910,9 @@ namespace Server.Items
         public override WeaponAbility PrimaryAbility { get { return WeaponAbility.ParalyzingBlow; } }
         public override WeaponAbility SecondaryAbility { get { return WeaponAbility.MortalStrike; } }
 
-        public override int AosStrengthReq { get { return Arc_Force6; } }
-        public override int AosMinDamage { get { return Arc_MinDam6; } }
-        public override int AosMaxDamage { get { return Arc_MaxDam6; } }
+        public override int DefStrengthReq { get { return Arc_Force6; } }
+        public override int DefMinDamage { get { return Arc_MinDam6; } }
+        public override int DefMaxDamage { get { return Arc_MaxDam6; } }
         public override int DefSpeed { get { return Arc_Vitesse; } }
 
         public override int DefMaxRange { get { return 10; } }
