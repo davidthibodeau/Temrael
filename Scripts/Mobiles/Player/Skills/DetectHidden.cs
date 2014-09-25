@@ -23,7 +23,7 @@ namespace Server.SkillHandlers
         /* 7  case de distance*/    30,
         /* 8  case de distance*/    10,
         /* 9  case de distance*/    10,
-        /* 10 case de distance*/    -1
+        /* 10 case de distance*/    0 // Important de laisser à 0.
                                         };
 
         public static void Initialize()
@@ -57,7 +57,6 @@ namespace Server.SkillHandlers
             double srcSkill = src.Skills[SkillName.Detection].Value + src.Skills[SkillName.Detection].Value;
             double trgSkill = src.Skills[SkillName.Discretion].Value + src.Skills[SkillName.Infiltration].Value;
 
-            src.SendMessage("Test");
             if (trg.Hidden && src != trg && (srcSkill >= trgSkill) && (src.AccessLevel >= trg.AccessLevel))
             {
                 if ((range < 10) && (Utility.Random(100) <= chancesReussite[range]))
@@ -108,8 +107,7 @@ namespace Server.SkillHandlers
 
                 if (Utility.InUpdateRange(source, target))
                 {
-                    if (source.CanSee(target))
-                        source.Send(target.RemovePacket);
+                    source.Send(target.RemovePacket); // Obviously he can't see target, why does this if exist ffs.
                 }
             }
             catch
