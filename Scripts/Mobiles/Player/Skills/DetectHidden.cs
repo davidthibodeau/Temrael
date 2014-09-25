@@ -59,7 +59,7 @@ namespace Server.SkillHandlers
 
             if (trg.Hidden && src != trg && (srcSkill >= trgSkill) && (src.AccessLevel >= trg.AccessLevel))
             {
-                if ((range < 10) && (Utility.Random(100) <= chancesReussite[range]))
+                if ((range < 10) && (Utility.Random(100) < chancesReussite[range]))
                 {
                     AddToVisList(src, trg);
                     foundAnyone = true;
