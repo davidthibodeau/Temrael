@@ -19,13 +19,6 @@ namespace Server
 
         private const int ExpGain = 750;
 
-        private static int[] m_ExpReqTable = new int[] { 0, 0, 1000, 3000,
-            6000, 10000, 15000, 21000, 28000, 36000, 45000, 55000, 66000,
-            78000, 91000, 105000, 120000, 136000, 153000, 171000, 190000,
-            210000, 231000, 253000, 276000, 300000, 325000, 351000, 378000,
-            405000, 435000
-            };
-
         public static void Initialize()
         {
             CommandSystem.Register("manualxpreset", AccessLevel.Owner, new CommandEventHandler(ManualXPReset_OnCommand));
@@ -233,36 +226,25 @@ namespace Server
             from.StatistiquesLibres += statsEnAttente;
         }
 
+        private static int RequiredXP(int niveau)
+        {
+            if (niveau == 0) return 500;
+            if (niveau == 1) return 1000;
+
+            int xp = 1000;
+            for (int i = niveau; i > 1; i--)
+            {
+                xp += niveau * 1000;
+            }
+            return xp;
+        }
 
         public static int GetNeededXP(TMobile pm)
         {
             if (pm == null)
                 return 1000;
 
-            int neededXP = 0;
-
-            if (pm.Niveau >= 30)
-                neededXP = 435000 + (30000 * (pm.Niveau - 29));
-            else
-                neededXP = m_ExpReqTable[pm.Niveau + 1];
-
-            return neededXP;
-        }
-
-        public static int GetNiveauXP(TMobile pm)
-        {
-            if (pm == null)
-                return 1000;
-
-            int neededXP = 0;
-
-            if (pm.Niveau > 19)
-                neededXP = 190000 + (20000 * (pm.Niveau - 20));
-            else
-                neededXP = m_ExpReqTable[pm.Niveau];
-
-            return neededXP;
-
+            return RequiredXP(pm.Niveau);
         }
 
         public static bool CanEvolve(Mobile from)
