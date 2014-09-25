@@ -1019,19 +1019,6 @@ namespace Server.Items
 				new FillableEntry(  1, typeof( Arrow ) )
 			} );
 
-		public static FillableContent Healer = new FillableContent(
-			1,
-			new Type[]
-			{
-				typeof( Healer )
-			},
-			new FillableEntry[]
-			{
-				new FillableEntry( 1, typeof( Bandage ) ),
-				new FillableEntry( 1, typeof( MortarPestle ) ),
-				new FillableEntry( 1, typeof( LesserHealPotion ) )
-			} );
-
 		public static FillableContent Herbalist = new FillableContent(
 			1,
 			new Type[]
@@ -1464,7 +1451,7 @@ namespace Server.Items
 				Bowyer,			Butcher,		Carpenter,
 				Clothier,		Cobbler,		Docks,
 				Farm,			FighterGuild,	Guard,
-				Healer,			Herbalist,		Inn,
+                Herbalist,		Inn,
 				Jeweler,		Library,		Merchant,
 				Mill,			Mine,			Observatory,
 				Painter,		Ranger,			Stables,

@@ -532,16 +532,6 @@ namespace Server.Engines.Doom
 			return spawner;
 		}
 
-		public static void CreatePricedHealer( int price, int x, int y )
-		{
-			PricedHealer healer = new PricedHealer( price );
-
-			healer.MoveToWorld( new Point3D( x, y, -1 ), Map.Malas );
-
-			healer.Home = healer.Location;
-			healer.RangeHome = 5;
-		}
-
 		public static void CreateMorphItem( int x, int y, int inactiveItemID, int activeItemID, int range, int hue )
 		{
 			MorphItem item = new MorphItem( inactiveItemID, activeItemID, range );
@@ -594,8 +584,6 @@ namespace Server.Engines.Doom
 
 		public static void GenGauntlet_OnCommand( CommandEventArgs e )
 		{
-			/* Begin healer room */
-			CreatePricedHealer( 5000, 387, 400 );
 			CreateTeleporter( 390, 407, 394, 405 );
 
 			BaseDoor healerDoor = CreateDoorSet( 393, 404, true, 0x44E );

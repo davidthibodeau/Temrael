@@ -186,7 +186,7 @@ namespace Server
 					typeof( YomotsuWarrior ),	typeof( RevenantLion ),		typeof( Oni ),
 					typeof( Scarabee ),
 
-					typeof( Silvani ),			typeof( AirElemental ),
+					typeof( AirElemental ),
 					typeof( AncientWyrm ),		typeof( Balron ),			typeof( BladeSpirits ),
 					typeof( DreadSpider ),		typeof( Efreet ),			typeof( EtherealWarrior ),
 					typeof( Lich ),				typeof( Cauchemar ),		typeof( OphidianArchmage ),

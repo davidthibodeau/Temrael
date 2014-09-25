@@ -102,7 +102,6 @@ namespace Server
 					typeof( EtherealWarrior ),
 					typeof( Kirin ),
 					typeof( Pixie ),
-					typeof( Silvani ),
 					typeof( Licorne ),
 					typeof( Wisp ),
 					typeof( Treefellow ),
