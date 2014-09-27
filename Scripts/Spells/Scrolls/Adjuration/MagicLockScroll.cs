@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicLockScroll( int amount ) : base( MagicLockSpell.spellID, 0x1F3F, amount )
+		public MagicLockScroll( int amount ) : base( MagicLockSpell.m_SpellID, 0x1F3F, amount )
 		{
             Name = "Adjuration: Ouverture Magique";
 		}

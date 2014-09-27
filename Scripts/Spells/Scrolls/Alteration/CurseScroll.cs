@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CurseScroll( int amount ) : base( CurseSpell.spellID, 0x1F47, amount )
+		public CurseScroll( int amount ) : base( CurseSpell.m_SpellID, 0x1F47, amount )
 		{
             Name = "Altération: Malédiction";
 		}

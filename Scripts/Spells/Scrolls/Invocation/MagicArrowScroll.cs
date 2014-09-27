@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicArrowScroll( int amount ) : base( MagicArrowSpell.spellID, 0x1F32, amount )
+		public MagicArrowScroll( int amount ) : base( MagicArrowSpell.m_SpellID, 0x1F32, amount )
 		{
             Name = "Invocation: Flèche Magique";
 		}

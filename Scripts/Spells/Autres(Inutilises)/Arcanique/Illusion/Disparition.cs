@@ -8,7 +8,9 @@ using Server.Engines.PartySystem;
 namespace Server.Spells
 {
 	public class DisparitionSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Disparition", "Vas An Lor Xen",
 				SpellCircle.Seventh,

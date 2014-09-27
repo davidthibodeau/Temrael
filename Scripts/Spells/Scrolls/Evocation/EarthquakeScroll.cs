@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public EarthquakeScroll( int amount ) : base( EarthquakeSpell.spellID, 0x1F65, amount )
+		public EarthquakeScroll( int amount ) : base( EarthquakeSpell.m_SpellID, 0x1F65, amount )
 		{
             Name = "Évocation: Tremblement";
 		}

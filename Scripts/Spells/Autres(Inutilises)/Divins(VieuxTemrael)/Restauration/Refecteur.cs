@@ -10,6 +10,8 @@ namespace Server.Spells
 {
 	public class RefecteurSpell : ReligiousSpell
 	{
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Réfecteur", "Gebo Otil Algi",
 				SpellCircle.Seventh,

@@ -8,6 +8,8 @@ namespace Server.Spells
 {
     public class IntrinsequeSpell : ReligiousSpell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static ArrayList m_IntrinsequeTable = new ArrayList();
         public static Hashtable m_Timers = new Hashtable();
 

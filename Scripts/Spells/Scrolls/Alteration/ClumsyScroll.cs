@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ClumsyScroll( int amount ) : base( ClumsySpell.spellID, 0x1F2E, amount )
+		public ClumsyScroll( int amount ) : base( ClumsySpell.m_SpellID, 0x1F2E, amount )
 		{
             Name = "Altération: Maladroit";
 		}

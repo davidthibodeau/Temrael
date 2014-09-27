@@ -8,6 +8,8 @@ namespace Server.Spells
 {
 	public class BetesSpell : Spell
 	{
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Betes", "Haga Maga Impa",
 				SpellCircle.Fourth,

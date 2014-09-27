@@ -8,7 +8,7 @@ namespace Server.Spells
 {
     public class GuerisonCelesteMiracle : ReligiousSpell
     {
-        public static int spellID { get { return 0; } } // TOCHANGE
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         private static SpellInfo m_Info = new SpellInfo(
                 "Guerison Celeste", "",

@@ -9,7 +9,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class MurDePoisonSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Mur De Poison", "In Nox Grav",
 				SpellCircle.Sixth,

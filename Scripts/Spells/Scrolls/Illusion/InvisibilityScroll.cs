@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public InvisibilityScroll( int amount ) : base( InvisibilitySpell.spellID, 0x1F58, amount )
+		public InvisibilityScroll( int amount ) : base( InvisibilitySpell.m_SpellID, 0x1F58, amount )
 		{
             Name = "Illusion: Invisibilité";
 		}

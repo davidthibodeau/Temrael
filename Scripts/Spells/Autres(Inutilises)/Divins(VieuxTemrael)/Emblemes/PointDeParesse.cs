@@ -9,7 +9,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class PointDeParesseSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Point de paresse", "Gebo Toki Hiro",
 				SpellCircle.Fourth,

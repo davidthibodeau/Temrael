@@ -6,7 +6,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class EternelleJeunesseSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Éternelle jeunesse", "Ota Tyros Toki",
 				SpellCircle.Seventh,

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CunningScroll( int amount ) : base( CunningSpell.spellID, 0x1F36, amount )
+		public CunningScroll( int amount ) : base( CunningSpell.m_SpellID, 0x1F36, amount )
 		{
             Name = "Thaumaturgie: Ruse";
 		}

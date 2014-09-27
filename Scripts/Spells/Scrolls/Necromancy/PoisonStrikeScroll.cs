@@ -13,7 +13,8 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PoisonStrikeScroll( int amount ) : base( PoisonStrikeSpell.spellID, 0x2269, amount )
+        public PoisonStrikeScroll(int amount)
+            : base(PoisonStrikeSpell.m_SpellID, 0x2269, amount)
 		{
             Name = "Nécromancie: Venin";
 		}

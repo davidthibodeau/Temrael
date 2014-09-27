@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MassCurseScroll( int amount ) : base( MassCurseSpell.spellID, 0x1F5A, amount )
+		public MassCurseScroll( int amount ) : base( MassCurseSpell.m_SpellID, 0x1F5A, amount )
 		{
             Name = "Altération: Fléau";
 		}

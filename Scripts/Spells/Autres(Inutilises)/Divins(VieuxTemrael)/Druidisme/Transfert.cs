@@ -11,6 +11,8 @@ namespace Server.Spells
 {
     public class TransfertSpell : ReligiousSpell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_Timers = new Hashtable();
 
         private static SpellInfo m_Info = new SpellInfo(

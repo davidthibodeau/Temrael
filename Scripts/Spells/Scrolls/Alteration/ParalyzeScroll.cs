@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ParalyzeScroll( int amount ) : base( ParalyzeSpell.spellID, 0x1F52, amount )
+		public ParalyzeScroll( int amount ) : base( ParalyzeSpell.m_SpellID, 0x1F52, amount )
 		{
             Name = "Altération: Paralysie";
 		}

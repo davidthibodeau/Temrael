@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MindBlastScroll( int amount ) : base( MindBlastSpell.spellID, 0x1F51, amount )
+		public MindBlastScroll( int amount ) : base( MindBlastSpell.m_SpellID, 0x1F51, amount )
 		{
             Name = "Illusion: Lobotomie";
 		}

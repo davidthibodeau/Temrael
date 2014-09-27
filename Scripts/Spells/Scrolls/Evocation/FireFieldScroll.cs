@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public FireFieldScroll( int amount ) : base( FireFieldSpell.spellID, 0x1F48, amount )
+		public FireFieldScroll( int amount ) : base( FireFieldSpell.m_SpellID, 0x1F48, amount )
 		{
             Name = "Évocation: Mur de Feu";
 		}

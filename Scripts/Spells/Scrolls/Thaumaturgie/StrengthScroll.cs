@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public StrengthScroll( int amount ) : base( StrengthSpell.spellID, 0x1F3C, amount )
+		public StrengthScroll( int amount ) : base( StrengthSpell.m_SpellID, 0x1F3C, amount )
 		{
             Name = "Thaumaturgie: Force";
 		}

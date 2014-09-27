@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public EnergyFieldScroll( int amount ) : base( EnergyFieldSpell.spellID, 0x1F5E, amount )
+		public EnergyFieldScroll( int amount ) : base( EnergyFieldSpell.m_SpellID, 0x1F5E, amount )
 		{
             Name = "Évocation: Énergie de Masse";
 		}

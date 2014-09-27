@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonAirElementalScroll( int amount ) : base( AirElementalSpell.spellID, 0x1F68, amount )
+		public SummonAirElementalScroll( int amount ) : base( AirElementalSpell.m_SpellID, 0x1F68, amount )
 		{
             Name = "Invocation: Élémental d'Air";
 		}

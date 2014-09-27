@@ -14,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public FlamecheScroll(int amount) : base(Flameche.spellID, 0x1F65, amount)
+        public FlamecheScroll(int amount) : base(Flameche.m_SpellID, 0x1F65, amount)
         {
             Name = "Évocation: Flamèche";
         }

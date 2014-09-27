@@ -8,6 +8,8 @@ namespace Server.Spells
 {
     public class DerobadeSpell : Spell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_DerobadeTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 

@@ -10,7 +10,7 @@ namespace Server.Spells
 {
 	public class ArchProtectionSpell : Spell
 	{
-        public static int spellID { get { return 0; } } // TOCHANGE
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         private static int s_ManaCost = 50;
         private static SkillName s_SkillForCast = SkillName.ArtMagique;

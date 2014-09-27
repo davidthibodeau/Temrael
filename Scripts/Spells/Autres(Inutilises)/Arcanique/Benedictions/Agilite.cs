@@ -5,7 +5,9 @@ using Server.Network;
 namespace Server.Spells
 {
 	public class AgiliteSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Agilite", "Ex Uus",
 				SpellCircle.First,

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public AnimateDeadScroll( int amount ) : base( AnimateDeadSpell.spellID, 0x2260, amount )
+		public AnimateDeadScroll( int amount ) : base( AnimateDeadSpell.m_SpellID, 0x2260, amount )
 		{
             Name = "Nécromancie: Animation";
 		}

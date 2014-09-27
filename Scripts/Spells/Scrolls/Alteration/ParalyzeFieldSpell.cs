@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ParalyzeFieldScroll( int amount ) : base( ParalyzeFieldSpell.spellID, 0x1F5B, amount )
+		public ParalyzeFieldScroll( int amount ) : base( ParalyzeFieldSpell.m_SpellID, 0x1F5B, amount )
 		{
             Name = "Altération: Pétrification";
 		}

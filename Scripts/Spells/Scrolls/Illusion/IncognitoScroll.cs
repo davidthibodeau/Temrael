@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public IncognitoScroll( int amount ) : base( IncognitoSpell.spellID, 0x1F4F, amount )
+		public IncognitoScroll( int amount ) : base( IncognitoSpell.m_SpellID, 0x1F4F, amount )
 		{
             Name = "Illusion: Incognito";
 		}

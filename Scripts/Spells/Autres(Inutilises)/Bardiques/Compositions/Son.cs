@@ -11,6 +11,8 @@ namespace Server.Spells
 {
     public class SonSpell : BardeSpell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_SonTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 

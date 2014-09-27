@@ -8,7 +8,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class JetDeDouleurSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Jet de douleur", "In Sar",
 				SpellCircle.Eighth,

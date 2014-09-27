@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ChainLightningScroll( int amount ) : base( ChainLightningSpell.spellID, 0x1F5D, amount )
+		public ChainLightningScroll( int amount ) : base( ChainLightningSpell.m_SpellID, 0x1F5D, amount )
 		{
             Name = "Évocation: Chaîne d'Éclairs";
 		}

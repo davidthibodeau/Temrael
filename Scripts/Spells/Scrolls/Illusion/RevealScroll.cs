@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public RevealScroll( int amount ) : base( RevealSpell.spellID, 0x1F5C, amount )
+		public RevealScroll( int amount ) : base( RevealSpell.m_SpellID, 0x1F5C, amount )
 		{
             Name = "Illusion: Révélation";
 		}

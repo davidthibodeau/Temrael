@@ -13,7 +13,8 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public WitherScroll( int amount ) : base( WitherSpell.spellID, 0x226E, amount )
+        public WitherScroll(int amount)
+            : base(WitherSpell.m_SpellID, 0x226E, amount)
 		{
             Name = "Nécromancie: Flétrir";
 		}

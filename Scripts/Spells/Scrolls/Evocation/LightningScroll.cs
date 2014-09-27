@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public LightningScroll( int amount ) : base( LightningSpell.spellID, 0x1F4A, amount )
+		public LightningScroll( int amount ) : base( LightningSpell.m_SpellID, 0x1F4A, amount )
 		{
             Name = "Évocation: Éclair";
 		}

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public EnergyVortexScroll( int amount ) : base( EnergyVortexSpell.spellID, 0x1F66, amount )
+		public EnergyVortexScroll( int amount ) : base( EnergyVortexSpell.m_SpellID, 0x1F66, amount )
 		{
             Name = "Évocation: Vortex";
 		}

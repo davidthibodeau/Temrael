@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public GateTravelScroll( int amount ) : base( GateTravelSpell.spellID, 0x1F60, amount )
+		public GateTravelScroll( int amount ) : base( GateTravelSpell.m_SpellID, 0x1F60, amount )
 		{
             Name = "Illusion: Voyagement";
 		}

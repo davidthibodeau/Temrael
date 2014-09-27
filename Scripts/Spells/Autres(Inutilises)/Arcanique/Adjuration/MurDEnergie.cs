@@ -8,7 +8,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class MurDEnergieSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Mur D'Energie", "In Sanct Grav",
 				SpellCircle.Sixth,

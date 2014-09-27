@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ArchProtectionScroll( int amount ) : base( ArchProtectionSpell.spellID, 0x1F46, amount )
+		public ArchProtectionScroll( int amount ) : base( ArchProtectionSpell.m_SpellID, 0x1F46, amount )
 		{
             Name = "Thaumaturgie: Protection Magique";
 		}

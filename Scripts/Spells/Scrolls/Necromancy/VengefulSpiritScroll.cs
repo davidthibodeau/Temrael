@@ -13,7 +13,8 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public VengefulSpiritScroll( int amount ) : base( VengefulSpiritSpell.spellID, 0x226D, amount )
+        public VengefulSpiritScroll(int amount)
+            : base(VengefulSpiritSpell.m_SpellID, 0x226D, amount)
 		{
             Name = "Nécromancie: Esprit Vengeur";
 		}

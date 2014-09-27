@@ -9,7 +9,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class CouvertureSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Couverture", "Gebo Algi Fehu",
 				SpellCircle.Eighth,

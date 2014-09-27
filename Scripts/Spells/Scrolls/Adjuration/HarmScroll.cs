@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public HarmScroll( int amount ) : base( HarmSpell.spellID, 0x1F38, amount )
+		public HarmScroll( int amount ) : base( HarmSpell.m_SpellID, 0x1F38, amount )
 		{
             Name = "Adjuration: Nuissance";
 		}

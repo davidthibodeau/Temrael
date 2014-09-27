@@ -8,7 +8,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class PluieAcideSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Pluie Acide", "Kal Nox Corp Grav",
 				SpellCircle.Seventh,

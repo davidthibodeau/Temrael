@@ -14,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public FroidScroll(int amount) : base(Froid.spellID, 0x1F65, amount)
+        public FroidScroll(int amount) : base(Froid.m_SpellID, 0x1F65, amount)
         {
             Name = "Évocation: Froid";
         }

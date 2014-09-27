@@ -1321,8 +1321,8 @@ namespace Server.Items
 
 			if ( defender.Player || defender.Body.IsHuman )
 			{
-                Combat combat = new Combat(attacker, defender);
-				blocked = combat.CheckParer();
+                //Combat combat = new Combat(attacker, defender);
+				//blocked = combat.CheckParer();
 
 				if ( blocked )
 				{

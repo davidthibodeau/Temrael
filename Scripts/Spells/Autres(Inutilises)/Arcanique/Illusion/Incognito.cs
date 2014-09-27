@@ -14,7 +14,9 @@ using Server.Scripts.Commands;
 namespace Server.Spells
 {
 	public class OmbreSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Incognito", "Kal In Ex",
 				SpellCircle.Fourth,

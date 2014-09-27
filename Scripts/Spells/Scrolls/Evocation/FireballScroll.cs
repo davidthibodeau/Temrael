@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public FireballScroll( int amount ) : base( FireballSpell.spellID, 0x1F3E, amount )
+		public FireballScroll( int amount ) : base( FireballSpell.m_SpellID, 0x1F3E, amount )
 		{
             Name = "Évocation: Boule de Feu";
 		}

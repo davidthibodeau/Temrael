@@ -8,7 +8,9 @@ using Server.Engines.Craft;
 namespace Server.Spells
 {
 	public class GriffesSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Griffes", "Haga Fehu",
 				SpellCircle.Sixth,

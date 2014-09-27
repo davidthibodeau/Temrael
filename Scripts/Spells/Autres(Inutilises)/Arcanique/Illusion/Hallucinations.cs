@@ -8,7 +8,9 @@ using Server.Engines.PartySystem;
 namespace Server.Spells
 {
 	public class HallucinationsSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Hallucinations", "Vas Kal In Ex",
 				SpellCircle.Sixth,

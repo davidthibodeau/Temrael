@@ -8,7 +8,7 @@ namespace Server.Spells
 {
     public class VehemenceMiracle : ReligiousSpell
     {
-        public static int spellID { get { return 0; } } // TOCHANGE
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         public static Hashtable m_VehemencetTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();

@@ -9,7 +9,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class AmuletteSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Amulette", "Gebo Otil Kano",
 				SpellCircle.Fifth,

@@ -8,7 +8,9 @@ using System.Collections;
 namespace Server.Spells
 {
     public class MalaiseSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Malaise", "Des Ex Sanct",
 				SpellCircle.Fourth,

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ProtectionScroll( int amount ) : base( ProtectionSpell.spellID, 0x1F3B, amount )
+		public ProtectionScroll( int amount ) : base( ProtectionSpell.m_SpellID, 0x1F3B, amount )
 		{
             Name = "Thaumaturgie: Protection";
 		}

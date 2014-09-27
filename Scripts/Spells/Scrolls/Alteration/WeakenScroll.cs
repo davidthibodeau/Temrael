@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public WeakenScroll( int amount ) : base( WeakenSpell.spellID, 0x1F34, amount )
+		public WeakenScroll( int amount ) : base( WeakenSpell.m_SpellID, 0x1F34, amount )
 		{
             Name = "Altération: Faiblesse";
 		}

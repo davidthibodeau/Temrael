@@ -13,7 +13,8 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PainSpikeScroll( int amount ) : base( PainSpikeSpell.spellID, 0x2268, amount )
+        public PainSpikeScroll(int amount)
+            : base(PainSpikeSpell.m_SpellID, 0x2268, amount)
 		{
             Name = "Nécromancie: Corruption";
 		}

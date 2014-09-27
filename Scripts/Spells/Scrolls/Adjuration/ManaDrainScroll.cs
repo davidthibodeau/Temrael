@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ManaDrainScroll( int amount ) : base( ManaDrainSpell.spellID, 0x1F4B, amount )
+		public ManaDrainScroll( int amount ) : base( ManaDrainSpell.m_SpellID, 0x1F4B, amount )
 		{
             Name = "Adjuration: Drain de Mana";
 		}

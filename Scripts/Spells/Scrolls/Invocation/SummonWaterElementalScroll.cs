@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonWaterElementalScroll( int amount ) : base( WaterElementalSpell.spellID, 0x1F6C, amount )
+		public SummonWaterElementalScroll( int amount ) : base( WaterElementalSpell.m_SpellID, 0x1F6C, amount )
 		{
             Name = "Invocation: Élémental d'Eau";
 		}

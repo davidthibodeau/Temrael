@@ -8,6 +8,6 @@ namespace Server.Spells
 {
     class DefenseDivineMiracle
     {
-        public static int spellID { get { return 0; } } // TOCHANGE
+        
     }
 }

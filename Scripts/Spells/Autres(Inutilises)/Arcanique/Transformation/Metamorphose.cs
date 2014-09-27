@@ -13,7 +13,9 @@ using Server.Scripts.Commands;
 namespace Server.Spells
 {
     public class MetamorphoseSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Metamorphose", "Vas Ylem Rel",
 				SpellCircle.Seventh,

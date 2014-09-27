@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MarkScroll( int amount ) : base( MarkSpell.spellID, 0x1F59, amount )
+		public MarkScroll( int amount ) : base( MarkSpell.m_SpellID, 0x1F59, amount )
 		{
             Name = "Illusion: Marque";
 		}

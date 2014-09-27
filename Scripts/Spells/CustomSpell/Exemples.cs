@@ -13,6 +13,7 @@ namespace Server.Custom.CustomSpell
 
     class ExempleTargeted : CustomSpell.CSpellTargeted
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         Mobile m_caster = null;
         Mobile m_target = null;
@@ -80,6 +81,7 @@ namespace Server.Custom.CustomSpell
 
     class ExempleTargetedTimer : CustomSpell.CSpellTargetedTimer
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         Mobile m_caster = null;
         Mobile m_target = null;
@@ -154,6 +156,8 @@ namespace Server.Custom.CustomSpell
 
     class ExempleAoE : CustomSpell.CSpellAoE
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         Mobile m_caster;
 
         static private InfoSpell.AoE m_info = new InfoSpell.AoE(
@@ -199,6 +203,8 @@ namespace Server.Custom.CustomSpell
 
     class ExempleAoETimer : CustomSpell.CSpellAoETimer
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         Mobile m_caster;
 
         static private InfoSpell.AoETimer m_info = new InfoSpell.AoETimer(
@@ -256,6 +262,8 @@ namespace Server.Custom.CustomSpell
 
     class ExempleSelf : CustomSpell.CSpellSelf
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         static private InfoSpell.Self m_info = new InfoSpell.Self(
 
         /*---------- SPELL INFO ----------*/
@@ -285,6 +293,9 @@ namespace Server.Custom.CustomSpell
 
     class ExempleSelfTimer : CustomSpell.CSpellSelfTimer
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
+
         static private InfoSpell.SelfTimer m_info = new InfoSpell.SelfTimer(
 
         /*---------- SPELL INFO ----------*/

@@ -953,8 +953,8 @@ namespace Server.Commands
 			}
 		}
 
-		[Usage( "Cast <name>" )]
-		[Description( "Casts a spell by name." )]
+		[Usage( "Cast <ID>" )]
+		[Description( "Casts a spell by ID." )]
 		public static void Cast_OnCommand( CommandEventArgs e )
 		{
 			if ( e.Length == 1 )
@@ -962,7 +962,7 @@ namespace Server.Commands
 				if ( !Multis.DesignContext.Check( e.Mobile ) )
 					return; // They are customizing
 
-				Spell spell = SpellRegistry.NewSpell( e.GetString( 0 ), e.Mobile, null );
+				Spell spell = SpellRegistry.NewSpell( e.GetInt32(0), e.Mobile, null );
 
 				if ( spell != null )
 					spell.Cast();
@@ -971,7 +971,7 @@ namespace Server.Commands
 			}
 			else
 			{
-				e.Mobile.SendMessage( "Format: Cast <name>" );
+				e.Mobile.SendMessage( "Format: Cast <ID>" );
 			}
 		}
 

@@ -7,7 +7,9 @@ using Server;
 namespace Server.Spells
 {
 	public class PieuxDeTerreSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Pieux De Terre", "Evo Ylem",
 				SpellCircle.Second,

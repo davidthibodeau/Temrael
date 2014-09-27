@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public LichFormScroll( int amount ) : base( LichFormSpell.spellID , 0x2266, amount )
+		public LichFormScroll( int amount ) : base( LichFormSpell.m_SpellID , 0x2266, amount )
 		{
             Name = "Nécromancie: Liche";
 		}

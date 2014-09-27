@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicReflectScroll( int amount ) : base( MagicReflectSpell.spellID, 0x1F50, amount )
+		public MagicReflectScroll( int amount ) : base( MagicReflectSpell.m_SpellID, 0x1F50, amount )
 		{
             Name = "Altération: Reflet";
 		}

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PolymorphScroll( int amount ) : base( PolymorphSpell.spellID, 0x1F64, amount )
+		public PolymorphScroll( int amount ) : base( PolymorphSpell.m_SpellID, 0x1F64, amount )
 		{
             Name = "Illusion: Polymorph";
 		}

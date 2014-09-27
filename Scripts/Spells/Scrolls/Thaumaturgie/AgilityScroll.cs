@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public AgilityScroll( int amount ) : base( AgilitySpell.spellID, 0x1F35, amount )
+		public AgilityScroll( int amount ) : base( AgilitySpell.m_SpellID, 0x1F35, amount )
 		{
             Name = "Thaumaturgie: Agilité";
 		}

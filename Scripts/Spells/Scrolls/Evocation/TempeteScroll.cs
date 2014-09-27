@@ -14,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public TempeteScroll(int amount) : base(Tempete.spellID, 0x1F65, amount)
+        public TempeteScroll(int amount) : base(Tempete.m_SpellID, 0x1F65, amount)
         {
             Name = "Évocation: Tempête";
         }

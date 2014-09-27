@@ -6,7 +6,9 @@ using Server.Targeting;
 namespace Server.Spells
 {
 	public class StrangulaireSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Insurection", "Kal Vas Xen An Hur",
 				SpellCircle.Fifth,

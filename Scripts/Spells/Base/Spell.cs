@@ -541,93 +541,102 @@ namespace Server.Spells
 
 		public virtual bool CheckNextSpellTime{ get{ return true; } }
 
+        public bool canCast()
+        {
+            TMobile pm = m_Caster as TMobile;
+
+            if (m_Caster.AccessLevel != AccessLevel.Player)
+            {
+                return true;
+            }
+            else
+            {
+                if (!m_Caster.CheckAlive())
+                {
+                }
+                else if (m_Caster.Spell != null && m_Caster.Spell.IsCasting)
+                {
+                    m_Caster.SendLocalizedMessage(502642); // You are already casting a spell.
+                }
+                else if (BlockedByHorrificBeast && TransformationSpell.UnderTransformation(m_Caster, typeof(HorrificBeastSpell)))
+                {
+                    m_Caster.SendLocalizedMessage(1061091); // You cannot cast that spell in this form.
+                }
+                else if (m_Caster.Frozen)
+                {
+                    m_Caster.SendLocalizedMessage(502643); // You can not cast a spell while frozen.
+                }
+                else if (CheckNextSpellTime && Core.TickCount < m_Caster.NextSpellTime)
+                {
+                    m_Caster.SendLocalizedMessage(502644); // You must wait for that spell to have an effect.
+                }
+                else if (m_Caster.Skills[m_Info.skillForCasting].Value < m_Info.minSkillForCasting)
+                {
+                    m_Caster.SendMessage("Vous n'êtes pas assez doué dans votre école de magie pour lancer ce sort.");
+                }
+                else if (m_Caster.Mana >= GetMana())
+                {
+                    if (m_Caster.Spell == null && m_Caster.CheckSpellCast(this) && CheckCast() && m_Caster.Region.OnBeginSpellCast(m_Caster, this))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
 		public virtual bool Cast()
         {
             TMobile pm = m_Caster as TMobile;
 			m_StartCastTime = DateTime.Now;
 
-			if ( !m_Caster.CheckAlive() )
-			{
-				return false;
-			}
-			else if ( m_Caster.Spell != null && m_Caster.Spell.IsCasting )
-			{
-				m_Caster.SendLocalizedMessage( 502642 ); // You are already casting a spell.
-			}
-			else if ( BlockedByHorrificBeast && TransformationSpell.UnderTransformation( m_Caster, typeof( HorrificBeastSpell ) ) )
-			{
-				m_Caster.SendLocalizedMessage( 1061091 ); // You cannot cast that spell in this form.
-			}
-			else if ( m_Caster.Frozen )
-			{
-				m_Caster.SendLocalizedMessage( 502643 ); // You can not cast a spell while frozen.
-			}
-			else if ( CheckNextSpellTime && Core.TickCount < m_Caster.NextSpellTime )
-			{
-				m_Caster.SendLocalizedMessage( 502644 ); // You must wait for that spell to have an effect.
-            }
-            else if (m_Caster.Skills[m_Info.skillForCasting].Value < m_Info.minSkillForCasting)
+            if ( canCast() )
             {
-                m_Caster.SendMessage("Vous n'êtes pas assez doué dans votre école de magie pour lancer ce sort.");
-            }
-            else if (m_Caster.Mana >= GetMana())
-            {
-                if (m_Caster.Spell == null && m_Caster.CheckSpellCast(this) && CheckCast() && m_Caster.Region.OnBeginSpellCast(m_Caster, this))
+                m_State = SpellState.Casting;
+                m_Caster.Spell = this;
+
+                if (RevealOnCast)
+                    m_Caster.RevealingAction();
+
+                SayMantra();
+
+                TimeSpan castTime;
+                if (this is Custom.CustomSpell.CustomSpell)
                 {
-                    m_State = SpellState.Casting;
-                    m_Caster.Spell = this;
-
-                    if (RevealOnCast)
-                        m_Caster.RevealingAction();
-
-                    SayMantra();
-
-                    TimeSpan castTime;
-                    if (this is Custom.CustomSpell.CustomSpell)
-                    {
-                        castTime = (this as Custom.CustomSpell.CustomSpell).m_info.castTime;
-                    }
-                    else
-                    {
-                        castTime = this.GetCastDelay();
-                    }
-
-                    if (m_Caster.Body.IsHuman)
-                    {
-                        int count = (int)Math.Ceiling(castTime.TotalSeconds / AnimateDelay.TotalSeconds);
-
-                        if (count != 0 && AnimateOnCast)
-                        {
-                            m_AnimTimer = new AnimTimer(this, count);
-                            m_AnimTimer.Start();
-                        }
-
-                        if (m_Info.LeftHandEffect > 0)
-                            Caster.FixedParticles(0, 10, 5, m_Info.LeftHandEffect, EffectLayer.LeftHand);
-
-                        if (m_Info.RightHandEffect > 0)
-                            Caster.FixedParticles(0, 10, 5, m_Info.RightHandEffect, EffectLayer.RightHand);
-                    }
-
-                    if (CheckHands())
-                        m_Caster.ClearHands();
-
-                    m_CastTimer = new CastTimer(this, castTime);
-                    m_CastTimer.Start();
-
-                    OnBeginCast();
-
-                    return true;
+                    castTime = (this as Custom.CustomSpell.CustomSpell).m_info.castTime;
                 }
                 else
                 {
-                    m_Caster.SendMessage("Vous ne pouvez pas lancer ce sort !");
-                    return false;
+                    castTime = this.GetCastDelay();
                 }
-            }
-            else
-            {
-                m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, 502625); // Insufficient mana
+
+                if (m_Caster.Body.IsHuman)
+                {
+                    int count = (int)Math.Ceiling(castTime.TotalSeconds / AnimateDelay.TotalSeconds);
+
+                    if (count != 0 && AnimateOnCast)
+                    {
+                        m_AnimTimer = new AnimTimer(this, count);
+                        m_AnimTimer.Start();
+                    }
+
+                    if (m_Info.LeftHandEffect > 0)
+                        Caster.FixedParticles(0, 10, 5, m_Info.LeftHandEffect, EffectLayer.LeftHand);
+
+                    if (m_Info.RightHandEffect > 0)
+                        Caster.FixedParticles(0, 10, 5, m_Info.RightHandEffect, EffectLayer.RightHand);
+                }
+
+                if (CheckHands())
+                    m_Caster.ClearHands();
+
+                m_CastTimer = new CastTimer(this, castTime);
+                m_CastTimer.Start();
+
+                OnBeginCast();
+
+                return true;
             }
 
 			return false;
@@ -907,46 +916,49 @@ namespace Server.Spells
 
             TMobile pm = m_Caster as TMobile;
             
-            if (pm != null)
+            if ( m_Caster.AccessLevel != AccessLevel.Player )
             {
+                return true;
             }
+            else
+            {
+			    if ( m_Caster.Deleted || !m_Caster.Alive || m_Caster.Spell != this || m_State != SpellState.Sequencing )
+                {
+				    DoFizzle();
+			    }
+			    else if ( m_Scroll != null && !(m_Scroll is Runebook) && (m_Scroll.Amount <= 0 || m_Scroll.Deleted || m_Scroll.RootParent != m_Caster) )
+			    {
+				    DoFizzle();
+                }
+                else if (!ConsumeReagents() && m_Caster.AccessLevel < AccessLevel.Batisseur)
+                {
+                    m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, 502630); // More reagents are needed for this spell.
+                }
+			    else if ( m_Caster.Mana < mana )
+			    {
+				    m_Caster.LocalOverheadMessage( MessageType.Regular, 0x22, 502625 ); // Insufficient mana for this spell.
+                }
+                else if (pm != null && !Equitation.CheckEquitation(pm,EquitationType.Attacking))
+                {
+                    DoFizzle();
+                }
+			    else if ( CheckFizzle() )
+			    {
+                    m_Caster.Mana -= mana;
 
-			if ( m_Caster.Deleted || !m_Caster.Alive || m_Caster.Spell != this || m_State != SpellState.Sequencing )
-            {
-				DoFizzle();
-			}
-			else if ( m_Scroll != null && !(m_Scroll is Runebook) && (m_Scroll.Amount <= 0 || m_Scroll.Deleted || m_Scroll.RootParent != m_Caster) )
-			{
-				DoFizzle();
-            }
-            else if (!ConsumeReagents() && m_Caster.AccessLevel < AccessLevel.Batisseur)
-            {
-                m_Caster.LocalOverheadMessage(MessageType.Regular, 0x22, 502630); // More reagents are needed for this spell.
-            }
-			else if ( m_Caster.Mana < mana )
-			{
-				m_Caster.LocalOverheadMessage( MessageType.Regular, 0x22, 502625 ); // Insufficient mana for this spell.
-            }
-            else if (pm != null && !Equitation.CheckEquitation(pm,EquitationType.Attacking))
-            {
-                DoFizzle();
-            }
-			else if ( CheckFizzle() )
-			{
-                m_Caster.Mana -= mana;
+				    if ( m_Scroll is SpellScroll )
+					    m_Scroll.Consume();
 
-				if ( m_Scroll is SpellScroll )
-					m_Scroll.Consume();
+				    if ( CheckHands() )
+					    m_Caster.ClearHands();
 
-				if ( CheckHands() )
-					m_Caster.ClearHands();
-
-				return true;
-			}
-			else
-            {
-				DoFizzle();
-			}
+				    return true;
+			    }
+			    else
+                {
+				    DoFizzle();
+			    }
+            }
 
 			return false;
 		}

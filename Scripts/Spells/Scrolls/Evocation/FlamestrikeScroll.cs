@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public FlamestrikeScroll( int amount ) : base( FlameStrikeSpell.spellID, 0x1F5F, amount )
+		public FlamestrikeScroll( int amount ) : base( FlameStrikeSpell.m_SpellID, 0x1F5F, amount )
 		{
             Name = "Évocation: Jeu de Flamme";
 		}

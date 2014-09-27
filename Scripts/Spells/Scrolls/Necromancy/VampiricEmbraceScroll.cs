@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public VampiricEmbraceScroll( int amount ) : base( VampiricEmbraceSpell.spellID, 0x226C, amount )
+		public VampiricEmbraceScroll( int amount ) : base( VampiricEmbraceSpell.m_SpellID, 0x226C, amount )
 		{
             Name = "Nécromancie: Vampirisme";
 		}

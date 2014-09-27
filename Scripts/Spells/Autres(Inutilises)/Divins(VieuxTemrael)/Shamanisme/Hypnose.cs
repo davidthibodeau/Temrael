@@ -8,6 +8,8 @@ namespace Server.Spells
 {
     public class HypnoseSpell : ReligiousSpell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_HypnoseTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 

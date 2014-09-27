@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonEarthElementalScroll( int amount ) : base( EarthElementalSpell.spellID, 0x1F6A, amount )
+		public SummonEarthElementalScroll( int amount ) : base( EarthElementalSpell.m_SpellID, 0x1F6A, amount )
 		{
             Name = "Invocation: Élémental de Terre";
 		}

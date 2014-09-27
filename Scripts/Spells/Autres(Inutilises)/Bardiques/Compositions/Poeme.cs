@@ -11,6 +11,8 @@ namespace Server.Spells
 {
     public class PoemeSpell : BardeSpell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_PoemeTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 

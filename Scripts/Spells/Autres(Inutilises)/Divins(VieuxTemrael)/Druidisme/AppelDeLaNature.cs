@@ -9,7 +9,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class AppelDeLaNatureSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Appel De La Nature", "Impa Desi Marc",
 				SpellCircle.Second,

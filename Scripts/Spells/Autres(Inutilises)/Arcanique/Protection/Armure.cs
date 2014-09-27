@@ -7,7 +7,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class ArmureSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Armure", "Flam Sanct",
 				SpellCircle.Eighth,

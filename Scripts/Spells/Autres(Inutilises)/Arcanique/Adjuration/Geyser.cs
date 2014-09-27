@@ -8,7 +8,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class GeyserSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Geyser", "Evo Aqua An Por Grav",
 				SpellCircle.Third,

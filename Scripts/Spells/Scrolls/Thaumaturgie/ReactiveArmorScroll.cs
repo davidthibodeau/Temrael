@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ReactiveArmorScroll( int amount ) : base( ReactiveArmorSpell.spellID, 0x1F2D, amount )
+		public ReactiveArmorScroll( int amount ) : base( ReactiveArmorSpell.m_SpellID, 0x1F2D, amount )
 		{
             Name = "Thaumaturgie: Armure Magique";
 		}

@@ -13,7 +13,9 @@ using Server.Scripts.Commands;
 namespace Server.Spells
 {
     public class AlterationSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         private static SpellInfo m_Info = new SpellInfo(
                 "Altération", "Kal Xen Corp",
                 SpellCircle.First,

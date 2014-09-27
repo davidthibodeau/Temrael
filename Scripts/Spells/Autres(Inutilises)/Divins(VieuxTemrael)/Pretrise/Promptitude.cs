@@ -8,6 +8,8 @@ namespace Server.Spells
 {
     public class PromptitudeSpell : ReligiousSpell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_PromptitudeTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 

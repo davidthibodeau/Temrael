@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MassDispelScroll( int amount ) : base( MassDispelSpell.spellID, 0x1F62, amount )
+		public MassDispelScroll( int amount ) : base( MassDispelSpell.m_SpellID, 0x1F62, amount )
 		{
             Name = "Adjuration: Dissipation de Masse";
 		}

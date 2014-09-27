@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ResurrectionScroll( int amount ) : base( ResurrectionSpell.spellID, 0x1F67, amount )
+		public ResurrectionScroll( int amount ) : base( ResurrectionSpell.m_SpellID, 0x1F67, amount )
 		{
             Name = "Thaumaturgie: Résurrection";
 		}

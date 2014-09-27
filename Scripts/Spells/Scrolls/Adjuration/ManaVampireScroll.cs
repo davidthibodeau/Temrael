@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ManaVampireScroll( int amount ) : base( ManaVampireSpell.spellID, 0x1F61, amount )
+		public ManaVampireScroll( int amount ) : base( ManaVampireSpell.m_SpellID, 0x1F61, amount )
 		{
             Name = "Adjuration: Drain Vampirique";
 		}

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public NightSightScroll( int amount ) : base( NightSightSpell.spellID, 0x1F33, amount )
+		public NightSightScroll( int amount ) : base( NightSightSpell.m_SpellID, 0x1F33, amount )
 		{
             Name = "Illusion: Vision Nocturne";
 		}

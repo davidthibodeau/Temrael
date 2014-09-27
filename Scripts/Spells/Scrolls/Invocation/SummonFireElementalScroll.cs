@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonFireElementalScroll( int amount ) : base( FireElementalSpell.spellID, 0x1F6B, amount )
+		public SummonFireElementalScroll( int amount ) : base( FireElementalSpell.m_SpellID, 0x1F6B, amount )
 		{
             Name = "Invocation: Élémental de Feu";
 		}

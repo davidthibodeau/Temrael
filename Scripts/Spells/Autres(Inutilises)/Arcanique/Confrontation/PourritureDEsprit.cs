@@ -7,7 +7,9 @@ using Server.Targeting;
 namespace Server.Spells
 {
 	public class PourritureDEspritSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Pourriture D'esprit", "Wis An Ben",
 				SpellCircle.First,

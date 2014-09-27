@@ -8,6 +8,8 @@ namespace Server.Spells
 {
     public class EssouflementSpell : ReligiousSpell
     {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         private static SpellInfo m_Info = new SpellInfo(
                 "Essouflement", "Fehu Ehwa",
                 SpellCircle.Third,

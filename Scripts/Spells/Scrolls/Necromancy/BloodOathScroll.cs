@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BloodOathScroll( int amount ) : base( BloodOathSpell.spellID, 0x2261, amount )
+		public BloodOathScroll( int amount ) : base( BloodOathSpell.m_SpellID, 0x2261, amount )
 		{
             Name = "Nécromancie: Sermant";
 		}

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public HorrificBeastScroll( int amount ) : base( HorrificBeastSpell.spellID, 0x2265, amount )
+		public HorrificBeastScroll( int amount ) : base( HorrificBeastSpell.m_SpellID, 0x2265, amount )
 		{
             Name = "Nécromancie: Bête Horrifique";
 		}

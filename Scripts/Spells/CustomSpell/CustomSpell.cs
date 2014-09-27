@@ -22,7 +22,7 @@ namespace Server.Custom.CustomSpell
     }
 
     // Classe de base pour les autres sortes de spell. Non-instanciable.
-    public class CustomSpell : Server.Spells.Spell
+    public abstract class CustomSpell : Server.Spells.Spell
     {
         public InfoSpell m_info;
 

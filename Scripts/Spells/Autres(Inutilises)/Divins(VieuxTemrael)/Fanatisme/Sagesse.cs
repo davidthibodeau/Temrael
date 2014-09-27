@@ -8,7 +8,9 @@ using Server.Targeting;
 namespace Server.Spells
 {
 	public class SagesseSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Sagesse", "Reta Toki",
 				SpellCircle.Third,

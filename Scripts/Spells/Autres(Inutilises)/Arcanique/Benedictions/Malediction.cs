@@ -6,7 +6,9 @@ using Server.Network;
 namespace Server.Spells
 {
 	public class MaledictionSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         private static Hashtable m_Registry = new Hashtable();
         public static Hashtable Registry { get { return m_Registry; } }
         public static Hashtable m_Table = new Hashtable();

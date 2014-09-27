@@ -7,7 +7,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class PiegeSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Piège", "In Jux",
 				SpellCircle.Second,

@@ -8,7 +8,7 @@ namespace Server.Spells
 {
     public class FerveurDivineMiracle : ReligiousSpell
     {
-        public static int spellID { get { return 0; } } // TOCHANGE
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         public static Hashtable m_FerveurDivineTable = new Hashtable();
         public static Hashtable m_FerveurDivineRegistry = new Hashtable();

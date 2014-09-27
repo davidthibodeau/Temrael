@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public PoisonScroll( int amount ) : base( PoisonSpell.spellID, 0x1F40, amount )
+		public PoisonScroll( int amount ) : base( PoisonSpell.m_SpellID, 0x1F40, amount )
 		{
             Name = "Adjuration: Poison";
 		}

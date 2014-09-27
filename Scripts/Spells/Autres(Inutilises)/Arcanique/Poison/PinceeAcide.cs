@@ -6,7 +6,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class PinceeAcideSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         //NB Fast cast
 		private static SpellInfo m_Info = new SpellInfo(
 				"Pincee Acide", "Bet Nox",

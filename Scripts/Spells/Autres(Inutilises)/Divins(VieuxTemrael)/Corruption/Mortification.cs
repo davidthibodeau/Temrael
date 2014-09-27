@@ -7,7 +7,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class MortificationSpell : ReligiousSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_Timers = new Hashtable();
         public static Hashtable m_MortificationTable = new Hashtable();
 

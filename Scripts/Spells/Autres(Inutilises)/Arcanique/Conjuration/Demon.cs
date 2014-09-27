@@ -6,7 +6,9 @@ using Server.Targeting;
 namespace Server.Spells
 {
     public class DemonSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Démon", "Kal Vas Xen Corp",
 				SpellCircle.Eighth,

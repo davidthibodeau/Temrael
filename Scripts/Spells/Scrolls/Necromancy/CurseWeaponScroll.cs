@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CurseWeaponScroll( int amount ) : base( CurseWeaponSpell.spellID, 0x2263, amount )
+		public CurseWeaponScroll( int amount ) : base( CurseWeaponSpell.m_SpellID, 0x2263, amount )
 		{
             Name = "Nécromancie: Maudire";
 		}

@@ -10,7 +10,9 @@ using Server.Engines.PartySystem;
 namespace Server.Spells
 {
 	public class SonnetteSpell : BardeSpell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
         public static Hashtable m_SonnetteTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 

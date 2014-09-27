@@ -7,7 +7,9 @@ using Server.Misc;
 namespace Server.Spells
 {
 	public class DissipationDeMurSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Dissipation De Mur", "An Grav",
 				SpellCircle.Fourth,

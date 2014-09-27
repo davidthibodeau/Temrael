@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public ArchCureScroll( int amount ) : base( ArchCureSpell.spellID, 0x1F45, amount )
+		public ArchCureScroll( int amount ) : base( ArchCureSpell.m_SpellID, 0x1F45, amount )
 		{
             Name = "Thaumaturgie: Remède";
 		}

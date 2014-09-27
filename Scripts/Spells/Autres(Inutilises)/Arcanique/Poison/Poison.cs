@@ -6,7 +6,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class PoisonNewSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Poison", "In Nox",
 				SpellCircle.Third,

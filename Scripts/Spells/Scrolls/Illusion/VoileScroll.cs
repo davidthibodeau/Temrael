@@ -14,7 +14,7 @@ namespace Server.Items
         }
 
         [Constructable]
-        public VoileScroll(int amount) : base(Spells.Voile.spellID, 0x1F65, amount)
+        public VoileScroll(int amount) : base(Spells.Voile.m_SpellID, 0x1F65, amount)
         {
             Name = "Illusion: Voile";
         }

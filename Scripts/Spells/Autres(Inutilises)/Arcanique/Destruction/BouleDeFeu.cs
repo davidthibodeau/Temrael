@@ -6,7 +6,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class BouleDeFeuSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Boule De Feu", "Vas Flam",
 				SpellCircle.Second,

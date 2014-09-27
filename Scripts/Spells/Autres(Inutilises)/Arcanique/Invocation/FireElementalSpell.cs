@@ -6,7 +6,9 @@ using Server.Targeting;
 namespace Server.Spells
 {
 	public class ElementaireFeuSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Elementaire de feu", "Kal Vas Xen Flam",
 				SpellCircle.Sixth,

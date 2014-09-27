@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonCreatureScroll( int amount ) : base( SummonCreatureSpell.spellID, 0x1F54, amount )
+		public SummonCreatureScroll( int amount ) : base( SummonCreatureSpell.m_SpellID, 0x1F54, amount )
 		{
             Name = "Invocation: Convocation";
 		}

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BlessScroll( int amount ) : base( BlessSpell.spellID, 0x1F3D, amount )
+		public BlessScroll( int amount ) : base( BlessSpell.m_SpellID, 0x1F3D, amount )
 		{
             Name = "Thaumaturgie: Puissance";
 		}

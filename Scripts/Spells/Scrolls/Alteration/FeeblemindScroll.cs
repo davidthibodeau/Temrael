@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public FeeblemindScroll( int amount ) : base( FeeblemindSpell.spellID, 0x1F30, amount )
+		public FeeblemindScroll( int amount ) : base( FeeblemindSpell.m_SpellID, 0x1F30, amount )
 		{
             Name = "Altération: Débilité";
 		}

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MindRotScroll( int amount ) : base( MindRotSpell.spellID, 0x2267, amount )
+		public MindRotScroll( int amount ) : base( MindRotSpell.m_SpellID, 0x2267, amount )
 		{
             Name = "Nécromancie: Pourriture";
 		}

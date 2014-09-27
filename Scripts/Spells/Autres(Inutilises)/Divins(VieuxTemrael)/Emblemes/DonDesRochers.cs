@@ -10,6 +10,8 @@ namespace Server.Spells
 {
 	public class DonDesRochersSpell : ReligiousSpell
 	{
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Don des rochers", "Gebo Tiwa Algi",
 				SpellCircle.Seventh,

@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public TeleportScroll( int amount ) : base( TeleportSpell.spellID, 0x1F42, amount )
+		public TeleportScroll( int amount ) : base( TeleportSpell.m_SpellID, 0x1F42, amount )
 		{
             Name = "Illusion: Téléportation";
 		}

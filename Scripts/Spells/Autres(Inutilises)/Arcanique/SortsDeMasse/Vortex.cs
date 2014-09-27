@@ -8,7 +8,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class VortexSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Vortex", "Vas Hur Corp Por",
 				SpellCircle.Eighth,

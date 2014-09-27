@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public BladeSpiritsScroll( int amount ) : base(BladeSpiritsSpell.spellID, 0x1F4D, amount )
+		public BladeSpiritsScroll( int amount ) : base(BladeSpiritsSpell.m_SpellID, 0x1F4D, amount )
 		{
             Name = "Invocation: Esprit des Lames";
 		}

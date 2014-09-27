@@ -6,7 +6,9 @@ using Server.Targeting;
 namespace Server.Spells
 {
 	public class EspritAnimalSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Esprit animal", "Kal Xen Ort",
 				SpellCircle.Third,

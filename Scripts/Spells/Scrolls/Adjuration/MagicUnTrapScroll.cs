@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public MagicUnTrapScroll( int amount ) : base( RemoveTrapSpell.spellID, 0x1F3A, amount )
+		public MagicUnTrapScroll( int amount ) : base( RemoveTrapSpell.m_SpellID, 0x1F3A, amount )
 		{
             Name = "Adjuration: Supression de Piège";
 		}

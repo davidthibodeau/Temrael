@@ -5,7 +5,9 @@ using Server.Network;
 namespace Server.Spells
 {
 	public class JetDEpinesSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Jet D'épines", "In Vas Dras Ylem",
 				SpellCircle.Seventh,

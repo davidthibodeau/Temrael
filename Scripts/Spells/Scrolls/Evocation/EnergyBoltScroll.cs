@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public EnergyBoltScroll( int amount ) : base( EnergyBoltSpell.spellID, 0x1F56, amount )
+		public EnergyBoltScroll( int amount ) : base( EnergyBoltSpell.m_SpellID, 0x1F56, amount )
 		{
             Name = "Évocation: Énergie";
 		}

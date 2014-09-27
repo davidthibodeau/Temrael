@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-        public DispelScroll(int amount) : base(DispelSpell.spellID, 0x1F55, amount)
+        public DispelScroll(int amount) : base(DispelSpell.m_SpellID, 0x1F55, amount)
 		{
             Name = "Adjuration: Dissipation";
 		}

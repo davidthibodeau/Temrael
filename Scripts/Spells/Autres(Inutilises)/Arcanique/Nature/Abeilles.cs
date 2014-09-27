@@ -5,7 +5,9 @@ using Server.Network;
 namespace Server.Spells
 {
 	public class AbeillesSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Abeilles", "Bal Corp Hur Xen",
 				SpellCircle.Second,

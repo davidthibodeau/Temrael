@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public TelekinisisScroll( int amount ) : base( TelekinesisSpell.spellID, 0x1F41, amount )
+		public TelekinisisScroll( int amount ) : base( TelekinesisSpell.m_SpellID, 0x1F41, amount )
 		{
             Name = "Altération: Télékinesis";
 		}

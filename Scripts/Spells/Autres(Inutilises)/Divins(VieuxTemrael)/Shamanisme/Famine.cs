@@ -7,6 +7,8 @@ namespace Server.Spells
 {
 	public class FamineSpell : ReligiousSpell
 	{
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Famine", "Desi Thur",
 				SpellCircle.Second,

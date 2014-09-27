@@ -6,7 +6,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class FulgurationSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Fulguration", "Por Ort Grav Vas Flam",
 				SpellCircle.Eighth,

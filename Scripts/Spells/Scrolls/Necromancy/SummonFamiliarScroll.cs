@@ -13,7 +13,8 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonFamiliarScroll( int amount ) : base( SummonFamiliarSpell.spellID, 0x226B, amount )
+        public SummonFamiliarScroll(int amount)
+            : base(SummonFamiliarSpell.m_SpellID, 0x226B, amount)
 		{
             Name = "Nécromancie: Minion";
 		}

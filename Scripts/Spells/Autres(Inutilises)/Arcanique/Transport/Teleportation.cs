@@ -7,7 +7,9 @@ using Server.Items;
 namespace Server.Spells
 {
 	public class TeleportationSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Teleportation", "Rel Por",
 				SpellCircle.Third,

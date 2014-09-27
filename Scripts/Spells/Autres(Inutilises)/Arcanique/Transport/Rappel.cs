@@ -10,7 +10,9 @@ using Server.Spells;
 namespace Server.Spells
 {
 	public class RappelSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Rappel", "Kal Ort Por",
 				SpellCircle.Fifth,

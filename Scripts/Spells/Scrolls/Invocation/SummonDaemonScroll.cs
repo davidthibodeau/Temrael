@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public SummonDaemonScroll( int amount ) : base( SummonCreatureSpell.spellID, 0x1F69, amount )
+		public SummonDaemonScroll( int amount ) : base( SummonCreatureSpell.m_SpellID, 0x1F69, amount )
 		{
             Name = "Invocation: Conjuration";
 		}

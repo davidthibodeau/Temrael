@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CorpseSkinScroll( int amount ) : base( CorpseSkinSpell.spellID, 0x2262, amount )
+		public CorpseSkinScroll( int amount ) : base( CorpseSkinSpell.m_SpellID, 0x2262, amount )
 		{
             Name = "Nécromancie: Corps Mortifié";
 		}

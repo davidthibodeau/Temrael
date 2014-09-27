@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public GreaterHealScroll( int amount ) : base( GreaterHealSpell.spellID, 0x1F49, amount )
+		public GreaterHealScroll( int amount ) : base( GreaterHealSpell.m_SpellID, 0x1F49, amount )
 		{
             Name = "Thaumaturgie: Soins Magiques";
 		}

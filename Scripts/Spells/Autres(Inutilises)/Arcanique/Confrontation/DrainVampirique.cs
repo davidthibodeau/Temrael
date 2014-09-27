@@ -5,7 +5,9 @@ using Server.Network;
 namespace Server.Spells
 {
 	public class DrainVampiriqueSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
                 "Drain Vampirique", "Ort Sanct",
 				SpellCircle.Sixth,

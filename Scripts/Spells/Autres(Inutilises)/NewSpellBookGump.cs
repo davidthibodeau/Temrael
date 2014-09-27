@@ -63,7 +63,7 @@ namespace Server.Gumps
             //TOCHECK SPELLLIST
 
             //Evocation
-            new SpellBookEntry( 1, SkillName.Evocation, "Fleche Mag.", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            new SpellBookEntry( 1, SkillName.Evocation, "Fleche Mag.", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, MagicArrowSpell.m_SpellID),
             new SpellBookEntry( 2, SkillName.Evocation, "Boule de Feu", new Type[] { typeof(BlackPearl) }, 0x8D1, 3, 18),
             new SpellBookEntry( 6, SkillName.Evocation, "Explosion", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8EA, 6, 43),
             new SpellBookEntry( 3, SkillName.Evocation, "Mur de Feu", new Type[] { typeof(BlackPearl), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8DB, 4, 28),

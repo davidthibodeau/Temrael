@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public CreateFoodScroll( int amount ) : base( CreateFoodSpell.spellID, 0x1F2F, amount )
+		public CreateFoodScroll( int amount ) : base( CreateFoodSpell.m_SpellID, 0x1F2F, amount )
 		{
             Name = "Invocation: Nourriture";
 		}

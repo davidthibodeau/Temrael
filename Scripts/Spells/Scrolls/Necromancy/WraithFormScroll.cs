@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public WraithFormScroll( int amount ) : base( WraithFormSpell.spellID, 0x226F, amount )
+		public WraithFormScroll( int amount ) : base( WraithFormSpell.m_SpellID, 0x226F, amount )
 		{
             Name = "Nécromancie: Spectre";
 		}

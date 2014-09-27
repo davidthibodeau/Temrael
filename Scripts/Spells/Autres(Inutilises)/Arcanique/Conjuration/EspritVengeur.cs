@@ -8,7 +8,9 @@ using Server.Mobiles;
 namespace Server.Spells
 {
 	public class EspritVengeurSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Esprit vengeur", "Kal Xen Bal Beh",
 				SpellCircle.Eighth,

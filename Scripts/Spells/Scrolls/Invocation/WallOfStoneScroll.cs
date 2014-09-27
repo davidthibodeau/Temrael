@@ -13,7 +13,7 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public WallOfStoneScroll( int amount ) : base( WallOfStoneSpell.spellID, 0x1F44, amount )
+		public WallOfStoneScroll( int amount ) : base( WallOfStoneSpell.m_SpellID, 0x1F44, amount )
 		{
             Name = "Invocation: Mur de Pierre";
 		}

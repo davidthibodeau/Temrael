@@ -5,7 +5,9 @@ using Server.Network;
 namespace Server.Spells
 {
 	public class StupiditeSpell : Spell
-	{
+    {
+        public static int m_SpellID { get { return 0; } } // TOCHANGE
+
 		private static SpellInfo m_Info = new SpellInfo(
 				"Stupidite", "Rel Wis",
 				SpellCircle.Second,
