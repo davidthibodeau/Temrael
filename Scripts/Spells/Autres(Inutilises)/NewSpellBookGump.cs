@@ -78,7 +78,7 @@ namespace Server.Gumps
             // Immuabilite
             new SpellBookEntry( 1, SkillName.Immuabilite, "Mur de Pierre", WallOfStoneSpell.m_Info.Reagents, 0x8D7, 3, WallOfStoneSpell.m_SpellID),
             new SpellBookEntry( 2, SkillName.Immuabilite, "Mur d'Energie", EnergyFieldSpell.m_Info.Reagents, 0x8D7, 3, EnergyFieldSpell.m_SpellID),
-            new SpellBookEntry( 3, SkillName.Immuabilite, "Mur de Paralysie", ParalyzeFieldSpell.m_Info.Reagents, 0x8D7, 3, ParalyzeFieldSpell.m_SpellID),
+            new SpellBookEntry( 3, SkillName.Immuabilite, "Mur Paralysie", ParalyzeFieldSpell.m_Info.Reagents, 0x8D7, 3, ParalyzeFieldSpell.m_SpellID),
             new SpellBookEntry( 4, SkillName.Immuabilite, "Paralysie", ParalyzeSpell.m_Info.Reagents, 0x8E5, 5, ParalyzeSpell.m_SpellID),
             //new SpellBookEntry( 5, SkillName.Immuabilite, "Etouffement", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
             //new SpellBookEntry( 6, SkillName.Immuabilite, "Lenteur", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
@@ -87,26 +87,26 @@ namespace Server.Gumps
             //new SpellBookEntry( 9, SkillName.Immuabilite, "Pétrification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
 
             // Alteration
-            new SpellBookEntry( 1, SkillName.Alteration, "Pourriture d'esprit", MindRotSpell.m_Info.Reagents, 0x8D2, 3, MindRotSpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Alteration, "Pourriture", MindRotSpell.m_Info.Reagents, 0x8D2, 3, MindRotSpell.m_SpellID),
             new SpellBookEntry( 2, SkillName.Alteration, "Arme maudite", CurseWeaponSpell.m_Info.Reagents, 0x8D2, 3, CurseWeaponSpell.m_SpellID),
             new SpellBookEntry( 3, SkillName.Alteration, "Pacte de sang", BloodOathSpell.m_Info.Reagents, 0x8D2, 3, BloodOathSpell.m_SpellID),
-            new SpellBookEntry( 4, SkillName.Alteration, "Présage maléfique", EvilOmenSpell.m_Info.Reagents, 0x8D2, 3, EvilOmenSpell.m_SpellID),
+            new SpellBookEntry( 4, SkillName.Alteration, "Présage maléf.", EvilOmenSpell.m_Info.Reagents, 0x8D2, 3, EvilOmenSpell.m_SpellID),
             new SpellBookEntry( 5, SkillName.Alteration, "Douleur", PainSpikeSpell.m_Info.Reagents, 0x8D2, 3, PainSpikeSpell.m_SpellID),
             new SpellBookEntry( 6, SkillName.Alteration, "Étranglement", StrangleSpell.m_Info.Reagents, 0x8D2, 3, StrangleSpell.m_SpellID),
-            new SpellBookEntry( 7, SkillName.Alteration, "Peau de cadavre", CorpseSkinSpell.m_Info.Reagents, 0x8D2, 3, CorpseSkinSpell.m_SpellID),
+            new SpellBookEntry( 7, SkillName.Alteration, "Peau de cadav.", CorpseSkinSpell.m_Info.Reagents, 0x8D2, 3, CorpseSkinSpell.m_SpellID),
             new SpellBookEntry( 8, SkillName.Alteration, "Monstre", HorrificBeastSpell.m_Info.Reagents, 0x8D2, 3, HorrificBeastSpell.m_SpellID),
 
 
 
 
             //Providence
-            new SpellBookEntry( 1, SkillName.Providence, "Armure du mage", ReactiveArmorSpell.m_Info.Reagents, 0x8D2, 3, ReactiveArmorSpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Providence, "Armure mage", ReactiveArmorSpell.m_Info.Reagents, 0x8D2, 3, ReactiveArmorSpell.m_SpellID),
             new SpellBookEntry( 2, SkillName.Providence, "Protection", ProtectionSpell.m_Info.Reagents, 0x8D2, 3, ProtectionSpell.m_SpellID),
             new SpellBookEntry( 3, SkillName.Providence, "Bénédiction", BlessSpell.m_Info.Reagents, 0x8D2, 3, BlessSpell.m_SpellID),
             new SpellBookEntry( 4, SkillName.Providence, "Force", StrengthSpell.m_Info.Reagents, 0x8D2, 3, StrengthSpell.m_SpellID),
             new SpellBookEntry( 5, SkillName.Providence, "Agilité", AgilitySpell.m_Info.Reagents, 0x8D2, 3, AgilitySpell.m_SpellID),
             new SpellBookEntry( 6, SkillName.Providence, "Astuce", CunningSpell.m_Info.Reagents, 0x8D2, 3, CunningSpell.m_SpellID),
-            new SpellBookEntry( 7, SkillName.Providence, "Reflection magique", MagicReflectSpell.m_Info.Reagents, 0x8D2, 3, MagicReflectSpell.m_SpellID),
+            new SpellBookEntry( 7, SkillName.Providence, "Reflection", MagicReflectSpell.m_Info.Reagents, 0x8D2, 3, MagicReflectSpell.m_SpellID),
             //new SpellBookEntry( 1, SkillName.Providence, "Sacrifice", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Providence, "Peau de pierre", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Providence, "Champ entropique", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
@@ -149,10 +149,10 @@ namespace Server.Gumps
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Malédiction", CurseSpell.m_Info.Reagents, 0x8D2, 3, CurseSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Douleur", HarmSpell.m_Info.Reagents, 0x8D2, 3, HarmSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Drain de mana", ManaDrainSpell.m_Info.Reagents, 0x8D2, 3, ManaDrainSpell.m_SpellID),
-            new SpellBookEntry( 1, SkillName.Ensorcellement, "Drain vampirique", ManaVampireSpell.m_Info.Reagents, 0x8D2, 3, ManaVampireSpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Ensorcellement, "Drain vampiriq.", ManaVampireSpell.m_Info.Reagents, 0x8D2, 3, ManaVampireSpell.m_SpellID),
             //new SpellBookEntry( 1, SkillName.Ensorcellement, "Affaiblissement", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Ensorcellement, "Discordance", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            new SpellBookEntry( 1, SkillName.Ensorcellement, "Malediction suprême", MassCurseSpell.m_Info.Reagents, 0x8D2, 3, MassCurseSpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Ensorcellement, "Malediction su.", MassCurseSpell.m_Info.Reagents, 0x8D2, 3, MassCurseSpell.m_SpellID),
 
             //Necromancie
             new SpellBookEntry( 1, SkillName.Necromancie, "Poison", PoisonSpell.m_Info.Reagents, 0x8D2, 3, PoisonSpell.m_SpellID),
@@ -160,8 +160,8 @@ namespace Server.Gumps
             new SpellBookEntry( 1, SkillName.Necromancie, "Wraith form", WraithFormSpell.m_Info.Reagents, 0x8D2, 3, WraithFormSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Necromancie, "Lich form", LichFormSpell.m_Info.Reagents, 0x8D2, 3, LichFormSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Necromancie, "Animate Dead", AnimateDeadSpell.m_Info.Reagents, 0x8D2, 3, AnimateDeadSpell.m_SpellID),
-            new SpellBookEntry( 1, SkillName.Necromancie, "Vengeful spirit", VengefulSpiritSpell.m_Info.Reagents, 0x8D2, 3, VengefulSpiritSpell.m_SpellID),
-            new SpellBookEntry( 1, SkillName.Necromancie, "Summon Familiar", SummonFamiliarSpell.m_Info.Reagents, 0x8D2, 3, SummonFamiliarSpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Necromancie, "Vengeful spir.", VengefulSpiritSpell.m_Info.Reagents, 0x8D2, 3, VengefulSpiritSpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Necromancie, "Summon Famil.", SummonFamiliarSpell.m_Info.Reagents, 0x8D2, 3, SummonFamiliarSpell.m_SpellID),
 
 
 
@@ -301,15 +301,15 @@ namespace Server.Gumps
             m_NameColors[NAptitude.Thaumaturgie] = 554;
             m_NameColors[NAptitude.Necromancie] = 12;*/
 
-            m_Names[0] = "Evocation";
-            m_Names[1] = "Immuabilite";
-            m_Names[2] = "Alteration";
-            m_Names[3] = "Providence";
-            m_Names[4] = "Transmutation";
-            m_Names[5] = "Thaumaturgie";
-            m_Names[6] = "Hallucination";
-            m_Names[7] = "Ensorcellement";
-            m_Names[8] = "Necromancie";
+            m_Names[SkillName.Evocation] = "Evocation";
+            m_Names[SkillName.Immuabilite] = "Immuabilite";
+            m_Names[SkillName.Alteration] = "Alteration";
+            m_Names[SkillName.Providence] = "Providence";
+            m_Names[SkillName.Transmutation] = "Transmutation";
+            m_Names[SkillName.Thaumaturgie] = "Thaumaturgie";
+            m_Names[SkillName.Hallucination] = "Hallucination";
+            m_Names[SkillName.Ensorcellement] = "Ensorcellement";
+            m_Names[SkillName.Necromancie] = "Necromancie";
         }
         #endregion
 
@@ -333,8 +333,8 @@ namespace Server.Gumps
             AddPage(0);
             AddImage(100, 10, 2201);
 
-            int oldconnaissance = -1;
-            int newconnaissance = -1;
+            int oldReqSkill = -1;
+            int newReqSkill = -1;
 
             int value = 0;
             int addition = 0;
@@ -344,16 +344,15 @@ namespace Server.Gumps
             {
                 SpellBookEntry info = (SpellBookEntry)m_SpellBookEntry[i];
 
-                //on assigne la nouvelle connaissance
-                newconnaissance = (int)info.SkillLevel;
+                newReqSkill = (int)info.Skill;
 
-                if (newconnaissance == oldconnaissance)
+                if (newReqSkill == oldReqSkill)
                     addition += 1;
                 else
                     addition = 0;
 
-                //on fait la comparaison des connaissances pour savoir si on a changé de connaissance
-                if ((newconnaissance != -1 && newconnaissance != oldconnaissance) || (addition == 9) || (addition == 18))
+                //on fait la comparaison des skills pour savoir si on a changé de skills
+                if ((newReqSkill != -1 && newReqSkill != oldReqSkill) || (addition == 9) || (addition == 18))
                 {
                     value++;
 
@@ -366,8 +365,7 @@ namespace Server.Gumps
                     else
                         hindex = 1;
 
-                    //On ajoute le nom de la connaissance
-                    //AddLabel(160 + hindex * 145, 25, (int)m_NameColors[info.Connaissance], (string)m_Names[info.Connaissance]);
+                    // On ajoute le nom du skill en haut de page
                     AddHtml(160 + hindex * 145, 32, 200, 20, "<h3><basefont color=#025a>" + (string)m_Names[info.Skill] + "<basefont></h3>", false, false);
 
                     // Séparateurs
@@ -390,7 +388,6 @@ namespace Server.Gumps
                         buttonID = 2223;
 
                     //On ajoute l'information et les boutons
-                    //AddLabel(162 + hindex * 160, 54 + (vindex * 17), 0, info.Nom);
                     AddHtml(162 + hindex * 160, 54 + (vindex * 17), 200, 20, "<h3><basefont color=#5A4A31>" + info.Nom + "<basefont></h3>", false, false);
 
                     AddButton(127 + hindex * 160, 59 + (vindex * 17), 2103, 2104, info.SpellID, GumpButtonType.Reply, 0);
@@ -398,7 +395,7 @@ namespace Server.Gumps
                     vindex++;
                 }
 
-                oldconnaissance = (int)info.Skill;
+                oldReqSkill = (int)info.Skill;
              }
 
             value = 0;
@@ -429,38 +426,31 @@ namespace Server.Gumps
                     //int namecolor = 0;
                     string name = "...";
 
-                    /*if (m_NameColors.Contains(info.Connaissance))
-                        namecolor = (int)m_NameColors[info.Connaissance];*/
-
                     if (m_Names.Contains(info.Skill))
                         name = (string)m_Names[info.Skill];
 
                     //On ajoute le nom
-                    //AddLabel(130 + hindex * 165, 45, namecolor, info.Nom);
                     AddHtml(158 + hindex * 145, 32, 200, 20, "<h3><basefont color=#025a>" + info.Nom + "<basefont></h3>", false, false);
 
                     //On ajoute les séparateurs
-                    //AddImageTiled(130 + hindex * 165, 60, 130, 10, 0x3A);
                     AddImageTiled(130 + hindex * 165, 40, 130, 10, 0x3A);
 
                     //On ajoute l'icone en tant que bouton pour lancer le sort
                     AddButton(140 + hindex * 165, 60, info.ImageID, info.ImageID, info.SpellID, GumpButtonType.Reply, 0);
-                    //AddLabel(190 + hindex * 165, 63, namecolor, "Cercle : " + info.Cercle.ToString());
-                    AddHtml(190 + hindex * 165, 63, 200, 20, "<h3><basefont color=#5A4A31>Cercle:" + info.Cercle.ToString() + "<basefont></h3>", false, false);
+
+                    AddHtml(190 + hindex * 165, 63, 200, 20, "<h3><basefont color=#5A4A31>" + name.Substring(0, 5) + ". " + info.SkillLevel + "<basefont></h3>", false, false);
 
                     int buttonID = 2224;
 
                     if (m.QuickSpells.Contains(info.SpellID))
                         buttonID = 2223;
 
-                    //On ajoute les boutons pour le lancement rapide
-                    //AddLabel(210 + hindex * 165, 83, 0, "Rapide");
+                    // Boutons pour le lancement rapide
                     AddHtml(210 + hindex * 165, 83, 200, 20, "<h3><basefont color=#5A4A31>Rapide<basefont></h3>", false, false);
                     AddButton(190 + hindex * 165, 84, buttonID, buttonID, info.SpellID + 1000, GumpButtonType.Reply, 0);
 
-                    //On ajoute les infos diverses
-                    //AddLabel(130 + hindex * 165, 105, 567, "Ingrédiants:");
-                    AddHtml(130 + hindex * 165, 105, 200, 20, "<h3><basefont color=#025a>Ingrédiants<basefont></h3>", false, false);
+                    // Ingrédients
+                    AddHtml(130 + hindex * 165, 105, 200, 20, "<h3><basefont color=#025a>Ingrédients<basefont></h3>", false, false);
                     for (int j = 0; j < info.Reagents.Length; j++)
                     {
                         Type type = (Type)info.Reagents[j];
@@ -468,13 +458,6 @@ namespace Server.Gumps
                         AddHtml(130 + hindex * 165, 123 + j * 18, 200, 20, "<h3><basefont color=#5A4A31>" + type.Name + "<basefont></h3>", false, false);
 
                     }
-
-                    //AddLabel(130 + hindex * 165, 172, 567, "Aptitude:");
-                    //AddLabel(130 + hindex * 165, 192, namecolor, name + " " + info.ConnaissanceLevel);
-
-                    AddHtml(130 + hindex * 165, 175, 200, 20, "<h3><basefont color=#025a>Aptitude<basefont></h3>", false, false);
-                    AddHtml(130 + hindex * 165, 192, 200, 20, "<h3><basefont color=#5A4A31>" + name + " " + info.SkillLevel + "<basefont></h3>", false, false);
-
 
                     //On augmente le nombre de sort de 1 pour le prochain sort.
                     value++;

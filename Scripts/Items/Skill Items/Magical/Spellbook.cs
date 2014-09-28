@@ -42,22 +42,31 @@ namespace Server.Items
 		{
 			if ( obj is Spellbook )
 			{
-				Spellbook book = (Spellbook)obj;
+                Spellbook book = (Spellbook)obj;
 
-				if ( book.BookCount == 64 )
-					book.Content = ulong.MaxValue;
-				else
-					book.Content = (1ul << book.BookCount) - 1;
+                //if ( book.BookCount == 64 )
+                //    book.Content = ulong.MaxValue;
+                //else
+                //    book.Content = (1ul << book.BookCount) - 1;
 
-				from.SendMessage( "The spellbook has been filled." );
+                //from.SendMessage( "The spellbook has been filled." );
 
-				CommandLogging.WriteLine( from, "{0} {1} filling spellbook {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( book ) );
+                //CommandLogging.WriteLine( from, "{0} {1} filling spellbook {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( book ) );
+
+                for (int i = 0; i <= 1000; i++)
+                {
+                    book.OnDragDrop(from, new SpellScroll(i, 0));
+                }
+
+                from.SendMessage( "The spellbook has been filled." );
 			}
 			else
 			{
 				from.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( AllSpells_OnTarget ) );
 				from.SendMessage( "That is not a spellbook. Try again." );
 			}
+
+
 		}
 
 		private static void EventSink_OpenSpellbookRequest( OpenSpellbookRequestEventArgs e )
