@@ -10,7 +10,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
 				"Fleche Magique", "In Por Ylem",
 				SpellCircle.First,
 				212,

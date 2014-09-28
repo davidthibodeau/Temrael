@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_PourrissementRegistry = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Pourrissement", "Thur Ghua Desu",
                 SpellCircle.Eighth,
                 212,

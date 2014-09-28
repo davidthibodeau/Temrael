@@ -17,7 +17,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Mur de Poison", "In Nox Grav", 
                 SpellCircle.Sixth, 
                 230, 

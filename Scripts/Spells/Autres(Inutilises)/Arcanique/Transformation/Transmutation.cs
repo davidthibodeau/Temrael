@@ -16,7 +16,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Transmutation", "Quas Rel Vas Xen An Mani",
                 SpellCircle.Fifth,
                 221,

@@ -10,7 +10,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         //NB Fast cast
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
 				"Pincee Acide", "Bet Nox",
 				SpellCircle.Eighth,
 				203,

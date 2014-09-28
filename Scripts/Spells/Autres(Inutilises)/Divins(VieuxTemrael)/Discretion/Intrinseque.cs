@@ -13,7 +13,7 @@ namespace Server.Spells
         public static ArrayList m_IntrinsequeTable = new ArrayList();
         public static Hashtable m_Timers = new Hashtable();
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Intrinseque", "Desu Mann",
                 SpellCircle.Third,
                 212,

@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_LinkTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Passion", "Toki Kano",
                 SpellCircle.Seventh,
                 212,

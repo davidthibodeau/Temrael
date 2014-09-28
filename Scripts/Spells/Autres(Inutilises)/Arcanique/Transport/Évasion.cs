@@ -26,7 +26,7 @@ namespace Server.Spells
 		public override int CastRecoveryPerSecond{ get{ return 1; } }
 		public override int CastRecoveryMinimum{ get{ return 0; } }
 
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
 				"Évasion", "In Por Ort Jux",
 				SpellCircle.First,
 				236,

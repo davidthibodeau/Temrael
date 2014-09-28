@@ -14,7 +14,7 @@ namespace Server.Spells
         public static ArrayList m_VisionReelleRegistry = new ArrayList();
         public static Hashtable m_Timers = new Hashtable();
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Vision Réelle", "Kena Mann",
                 SpellCircle.Fifth,
                 212,

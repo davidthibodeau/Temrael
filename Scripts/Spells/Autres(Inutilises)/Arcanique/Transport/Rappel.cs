@@ -13,7 +13,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
 				"Rappel", "Kal Ort Por",
 				SpellCircle.Fifth,
 				239,

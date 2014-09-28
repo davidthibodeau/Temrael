@@ -20,7 +20,7 @@ namespace Server.Spells
         private const double bonus_donne = 0.0;
         private const int portee = 8;
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Son", "",
                 SpellCircle.First,
                 215,

@@ -11,7 +11,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
                 "Disparition", "Vas An Lor Xen",
 				SpellCircle.Seventh,
 				Core.AOS ? 239 : 215,

@@ -21,7 +21,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
 				"Reanimation", "Uus Corp",
 				SpellCircle.Seventh,
 				203,

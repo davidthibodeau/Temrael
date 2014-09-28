@@ -13,7 +13,7 @@ namespace Server.Spells
         private static Hashtable m_Registry = new Hashtable();
         public static Hashtable Registry { get { return m_Registry; } }
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Reflection", "Por Tym Sanct",
                 SpellCircle.Fourth,
                 242,

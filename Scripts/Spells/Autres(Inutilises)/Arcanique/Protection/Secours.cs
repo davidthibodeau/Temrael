@@ -13,7 +13,7 @@ namespace Server.Spells
         private static ArrayList m_Registry = new ArrayList();
         public static ArrayList Registry { get { return m_Registry; } }
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Secours", "Por Tym",
                 SpellCircle.Fifth,
                 242,

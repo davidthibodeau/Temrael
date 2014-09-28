@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
         private static Hashtable m_Table = new Hashtable();
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Bastion Celeste", "",
                 SpellCircle.Fifth,
                 17,

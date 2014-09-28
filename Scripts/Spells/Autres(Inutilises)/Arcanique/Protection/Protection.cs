@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
         public static Hashtable m_Values = new Hashtable();
 
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
 				"Protection", "Uus Sanct",
 				SpellCircle.Second,
 				236,

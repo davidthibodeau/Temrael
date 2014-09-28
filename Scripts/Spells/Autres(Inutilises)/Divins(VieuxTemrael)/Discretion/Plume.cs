@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_PlumeTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Plume", "Toki Marc",
                 SpellCircle.Second,
                 212,

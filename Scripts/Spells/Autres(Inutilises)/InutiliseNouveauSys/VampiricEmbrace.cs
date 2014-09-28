@@ -15,7 +15,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
 
-		private static SpellInfo m_Info = new SpellInfo(
+		public static readonly SpellInfo m_Info = new SpellInfo(
 				"Vampirisme", "Rel Xen An Sanct",
 				SpellCircle.Fifth,
 				203,

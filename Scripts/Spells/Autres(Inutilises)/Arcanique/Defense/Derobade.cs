@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_DerobadeTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        private static SpellInfo m_Info = new SpellInfo(
+        public static readonly SpellInfo m_Info = new SpellInfo(
                 "Derobade", "An Tyr Mani",
                 SpellCircle.Eighth,
                 212,
