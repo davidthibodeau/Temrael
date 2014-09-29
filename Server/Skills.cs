@@ -778,6 +778,9 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Alchimie{ get{ return this[SkillName.Alchimie]; } set{} }
 
+        [CommandProperty(AccessLevel.Counselor)]
+        public Skill ArmureNaturelle { get { return this[SkillName.ArmureNaturelle]; } set { } }
+
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill ArmeHaste{ get{ return this[SkillName.ArmeHaste]; } set{} }
 

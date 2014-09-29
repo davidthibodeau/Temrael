@@ -143,7 +143,7 @@ namespace Server.Engines.Combat
                 dmg = CritiqueDegats(atk, dmg);
             double resist = ReducedArmor(atk, def.PhysicalResistance);
 
-            // TODO: Insérer valeur de résistance naturelle dans le calcul
+            resist += ResistanceNatBonus(resist, def);
 
             dmg = dmg * (1 - resist);
 
@@ -271,6 +271,27 @@ namespace Server.Engines.Combat
         }
 
         protected abstract double ParerChance(Mobile def);
+        #endregion
+
+        #region Resistance naturelle
+
+        private const double resistanceMax = 75;          // Valeur maximale de resistance overall
+
+        private const double resistanceNaturelleMin = 5;
+        private const double resistanceNaturelleMax = 20; // Le bonus de résistance naturelle peut aller de 5 à 20 [].
+
+        private const double resistancePhysiqueMax = resistanceMax - resistanceNaturelleMin; // 70.
+
+        // Retourne le bonus de resistance lié à l'armure naturelle.
+        private double ResistanceNatBonus(double resist, Mobile m)
+        {
+            // Calcul du bonus de résistance naturelle dépendant des constantes établies plus haut.
+            double resistanceNaturelle = (((1 - (resist / resistancePhysiqueMax)) * (resistanceNaturelleMax - resistanceNaturelleMin)) + resistanceNaturelleMin);
+
+            // Scaling de 0 à 100% dépendant du skill en armure naturelle du défenseur.
+            return resistanceNaturelle * (m.Skills[SkillName.ArmureNaturelle].Value / 100);
+        }
+
         #endregion
 
         protected CombatStrategy DefStrategy(Mobile def)
