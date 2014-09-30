@@ -170,7 +170,7 @@ namespace Server.Mobiles
 				else
 					defender.SendLocalizedMessage( 1070836 ); // The blow from the creature's claws has made you more susceptible to physical attacks.
 
-				int effect = -(defender.PhysicalResistance * 15 / 100);
+				int effect = -((int)defender.PhysicalResistance * 15 / 100);
 
 				ResistanceMod mod = new ResistanceMod( ResistanceType.Physical, effect );
 

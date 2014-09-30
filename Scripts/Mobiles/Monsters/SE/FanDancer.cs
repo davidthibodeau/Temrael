@@ -104,7 +104,7 @@ namespace Server.Mobiles
 
 				defender.SendLocalizedMessage( 1070833 ); // The creature fans you with fire, reducing your resistance to fire attacks.
 
-				int effect = -(defender.MagieResistance / 10);
+				int effect = -((int)defender.MagieResistance / 10);
 				defender.FixedParticles( 0x37B9, 10, 30, 0x34, EffectLayer.RightFoot );
 				defender.PlaySound( 0x208 );
 

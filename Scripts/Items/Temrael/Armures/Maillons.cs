@@ -7,8 +7,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillons.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillons.max_Durabilite; } }
@@ -48,8 +48,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillons.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillons.max_Durabilite; } }
@@ -89,8 +89,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return Maillons_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorMaillons.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorMaillons.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillons.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillons.max_Durabilite; } }

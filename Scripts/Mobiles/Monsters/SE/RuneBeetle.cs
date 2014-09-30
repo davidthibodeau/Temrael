@@ -128,18 +128,18 @@ namespace Server.Mobiles
 				if ( Core.ML )
 				{
 					if ( defender.PhysicalResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Physical, -(defender.PhysicalResistance / 2) ) );
+                        mods.Add(new ResistanceMod(ResistanceType.Physical, -((int)defender.PhysicalResistance / 2)));
 
 					if ( defender.MagieResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Magie, -(defender.MagieResistance / 2) ) );
+                        mods.Add(new ResistanceMod(ResistanceType.Magie, -((int)defender.MagieResistance / 2)));
 				}
 				else
 				{
 					if ( defender.PhysicalResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Physical, (defender.PhysicalResistance > 70) ? -70 : -defender.PhysicalResistance ) );
+                        mods.Add(new ResistanceMod(ResistanceType.Physical, ((int)defender.PhysicalResistance > 70.0) ? -70 : -(int)defender.PhysicalResistance));
 
 					if ( defender.MagieResistance > 0 )
-						mods.Add( new ResistanceMod( ResistanceType.Magie, (defender.MagieResistance > 70) ? -70 : -defender.MagieResistance ) );
+                        mods.Add(new ResistanceMod(ResistanceType.Magie, ((int)defender.MagieResistance > 70.0) ? -70 : -(int)defender.MagieResistance));
 				}
 
 				for ( int i = 0; i < mods.Count; ++i )

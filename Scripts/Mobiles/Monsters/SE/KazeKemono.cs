@@ -69,7 +69,7 @@ namespace Server.Mobiles
 				else
 					defender.SendLocalizedMessage( 1070850 ); // The creature's flurry of twigs has made you more susceptible to physical attacks!
 
-				int effect = -(defender.PhysicalResistance * 15 / 100);
+				int effect = -((int)defender.PhysicalResistance * 15 / 100);
 
 				ResistanceMod mod = new ResistanceMod( ResistanceType.Physical, effect );
 
@@ -99,7 +99,7 @@ namespace Server.Mobiles
 				else
 					defender.SendLocalizedMessage( 1070827 ); // The creature's attack has made you more susceptible to energy attacks!
 
-				int effect = -(defender.MagieResistance / 2);
+                int effect = -((int)defender.MagieResistance / 2);
 
 				ResistanceMod mod = new ResistanceMod( ResistanceType.Magie, effect );
 

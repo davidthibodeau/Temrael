@@ -7,8 +7,8 @@ namespace Server.Items
 	public class BoneLegs : BaseArmor
 	{
 
-        public override int BasePhysicalResistance { get { return ArmorBone.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorBone.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorBone.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorBone.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBone.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBone.max_Durabilite; } }

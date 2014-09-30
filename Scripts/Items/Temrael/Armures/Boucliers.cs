@@ -9,8 +9,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 6; } }
 
-        public override int BasePhysicalResistance { get { return ShldDecorer.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldDecorer.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldDecorer.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldDecorer.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldDecorer.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldDecorer.max_Durabilite; } }
@@ -48,8 +48,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return ShldElfique.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldElfique.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldElfique.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldElfique.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldElfique.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldElfique.max_Durabilite; } }
@@ -88,8 +88,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 1; } }
 
-        public override int BasePhysicalResistance { get { return ShldCuir.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldCuir.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldCuir.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldCuir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldCuir.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldCuir.max_Durabilite; } }
@@ -128,8 +128,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return ShldNordique.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldNordique.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldNordique.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldNordique.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldNordique.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldNordique.max_Durabilite; } }
@@ -168,8 +168,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return ShldChevalier.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldChevalier.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldChevalier.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldChevalier.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldChevalier.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldChevalier.max_Durabilite; } }
@@ -208,8 +208,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 6; } }
 
-        public override int BasePhysicalResistance { get { return ShldVieux.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldVieux.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldVieux.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldVieux.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldVieux.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldVieux.max_Durabilite; } }
@@ -248,8 +248,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return ShldComte.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldComte.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldComte.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldComte.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldComte.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldComte.max_Durabilite; } }
@@ -288,8 +288,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return ShldMarquis.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldMarquis.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldMarquis.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldMarquis.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldMarquis.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldMarquis.max_Durabilite; } }
@@ -328,8 +328,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return ShldDuc.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldDuc.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldDuc.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldDuc.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldDuc.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldDuc.max_Durabilite; } }
@@ -368,8 +368,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 6; } }
 
-        public override int BasePhysicalResistance { get { return ShldPavoisBlk.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldPavoisBlk.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldPavoisBlk.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldPavoisBlk.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldPavoisBlk.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldPavoisBlk.max_Durabilite; } }
@@ -408,8 +408,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 3; } }
 
-        public override int BasePhysicalResistance { get { return ShldGarde.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldGarde.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldGarde.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldGarde.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldGarde.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldGarde.max_Durabilite; } }

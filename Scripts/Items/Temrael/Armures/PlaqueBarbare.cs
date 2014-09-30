@@ -7,8 +7,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
@@ -48,8 +48,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
@@ -89,8 +89,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
@@ -130,8 +130,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueBarbare_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueBarb.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueBarb.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }

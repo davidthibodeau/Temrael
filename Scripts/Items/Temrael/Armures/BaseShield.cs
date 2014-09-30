@@ -34,27 +34,6 @@ namespace Server.Items
 			{
 				if ( this is Aegis )
 					return;
-
-				// The 15 bonus points to resistances are not applied to shields on OSI.
-				PhysicalBonus = 0;
-				ContondantBonus = 0;
-				TranchantBonus = 0;
-				PerforantBonus = 0;
-				MagieBonus = 0;
-			}
-		}
-
-		public override double ArmorRating
-		{
-			get
-			{
-				Mobile m = this.Parent as Mobile;
-				double ar = base.ArmorRating;
-
-				if ( m != null )
-					return ( ( m.Skills[SkillName.Parer].Value * ar ) / 200.0 ) + 1.0;
-				else
-					return ar;
 			}
 		}
 
@@ -68,7 +47,7 @@ namespace Server.Items
 				}
 				else
 				{
-					double halfArmor = ArmorRating / 2.0;
+                    double halfArmor = ResistanceBonus(BasePhysicalResistance) / 2.0;
 					int absorbed = (int)(halfArmor + (halfArmor*Utility.RandomDouble()));
 
 					if( absorbed < 2 )
@@ -119,7 +98,7 @@ namespace Server.Items
 				if( owner == null )
 					return damage;
 
-				double ar = this.ArmorRating;
+                double ar = this.ResistanceBonus(BasePhysicalResistance);
 				double chance = (owner.Skills[SkillName.Parer].Value - (ar * 2.0)) / 100.0;
 
 				if( chance < 0.01 )

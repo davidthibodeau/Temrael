@@ -7,8 +7,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 3; } }
 
-        public override int BasePhysicalResistance { get { return ArmorDivers3.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorDivers3.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorDivers3.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorDivers3.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers3.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorDivers3.max_Durabilite; } }
@@ -48,8 +48,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers4.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorDivers4.max_Durabilite; } }
@@ -89,8 +89,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 5; } }
 
-        public override int BasePhysicalResistance { get { return ArmorDivers5.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorDivers5.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorDivers5.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorDivers5.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers5.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorDivers5.max_Durabilite; } }
@@ -130,8 +130,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return 4; } }
 
-        public override int BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorDivers4.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorDivers4.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorDivers4.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorDivers4.max_Durabilite; } }

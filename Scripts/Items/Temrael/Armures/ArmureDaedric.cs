@@ -7,8 +7,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
@@ -48,8 +48,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
@@ -89,8 +89,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
@@ -130,8 +130,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
@@ -171,8 +171,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueDaedric_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }
@@ -210,8 +210,8 @@ namespace Server.Items
     }
     public class ArmureDaedricLeggings : BaseArmor
     {
-        public override int BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueDaed.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueDaed.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueDaed.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueDaed.max_Durabilite; } }

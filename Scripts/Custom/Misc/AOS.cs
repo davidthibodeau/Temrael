@@ -87,8 +87,8 @@ namespace Server
             if (!ignoreArmor)
             {
                 // Armor Ignore on OSI ignores all defenses, not just physical.
-                int resPhys = m.PhysicalResistance;
-                int resMagie = m.MagieResistance;
+                int resPhys = (int)m.PhysicalResistance;
+                int resMagie = (int)m.MagieResistance;
 
                 totalDamage = damage * phys * (150 - resPhys);
                 totalDamage += damage * magie * (150 - resMagie);
@@ -168,7 +168,7 @@ namespace Server
                     }
                     else
                     {
-                        from.Damage(Scale((damage * phys * (100 - (ignoreArmor ? 0 : m.PhysicalResistance))) / 10000, reflectPhys), m);
+                        from.Damage(Scale((damage * phys * (100 - (ignoreArmor ? 0 : (int)m.PhysicalResistance))) / 10000, reflectPhys), m);
                     }
                 }
             }

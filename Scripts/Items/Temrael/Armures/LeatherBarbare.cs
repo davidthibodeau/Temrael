@@ -6,8 +6,8 @@ namespace Server.Items
     public class LeatherBarbareLeggings : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }
@@ -46,8 +46,8 @@ namespace Server.Items
     public class LeatherBarbareTunic : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }

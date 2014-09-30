@@ -6,7 +6,7 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1072933; } } // Resillient Bracer
 
-		public override int PhysicalResistance{ get { return 20; } }
+		public override double PhysicalResistance{ get { return 20; } }
 
 		[Constructable]
 		public ResilientBracer()

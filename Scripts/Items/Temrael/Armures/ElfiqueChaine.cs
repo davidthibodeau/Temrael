@@ -7,8 +7,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorChainElf.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorChainElf.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorChainElf.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorChainElf.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainElf.max_Durabilite; } }
@@ -48,8 +48,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return ChainElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorChainElf.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorChainElf.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorChainElf.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorChainElf.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainElf.max_Durabilite; } }

@@ -8,8 +8,8 @@ namespace Server.Items
 	{
         //public override int NiveauAttirail { get { return 3; } }
 
-        public override int BasePhysicalResistance { get { return ShldOrder.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ShldOrder.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ShldOrder.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ShldOrder.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldOrder.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldOrder.max_Durabilite; } }

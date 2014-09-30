@@ -7,8 +7,8 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1094914; } } // Shroud of Deceit [Replica]
 
-		public override int BasePhysicalResistance{ get{ return 11; } }
-		public override int BaseMagieResistance{ get{ return 13; } }
+		public override double BasePhysicalResistance{ get{ return 11; } }
+		public override double BaseMagieResistance{ get{ return 13; } }
 
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }

@@ -7,8 +7,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueElf.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueElf.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueElf.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueElf.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueElf.max_Durabilite; } }
@@ -48,8 +48,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueElf.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueElf.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueElf.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueElf.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueElf.max_Durabilite; } }
@@ -89,8 +89,8 @@ namespace Server.Items
     {
         //public override int NiveauAttirail { get { return PlaqueElfique_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaqueElf.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaqueElf.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaqueElf.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaqueElf.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueElf.max_Durabilite; } }

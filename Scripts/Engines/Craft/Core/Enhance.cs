@@ -75,7 +75,7 @@ namespace Server.Engines.Craft
 			if ( !craftItem.ConsumeRes( from, resType, craftSystem, ref resHue, ref maxAmount, ConsumeType.None, ref resMessage ) )
 				return EnhanceResult.NoResources;
 
-			int phys = 0, contondant = 0, tranchant = 0, perforant = 0, magie = 0;
+			double phys = 0,  magie = 0;
 			int dura = 0, luck = 0, lreq = 0, dinc = 0;
 			int baseChance = 0;
 
@@ -123,9 +123,6 @@ namespace Server.Engines.Craft
 				baseChance = 20;
 
 				phys = armor.PhysicalResistance;
-				contondant = armor.ContondantResistance;
-				tranchant = armor.TranchantResistance;
-				perforant = armor.PerforantResistance;
 				magie = armor.MagieResistance;
 
 				dura = armor.MaxHitPoints;
@@ -152,19 +149,10 @@ namespace Server.Engines.Craft
 			EnhanceResult res = EnhanceResult.Success;
 
 			if ( physBonus )
-				CheckResult( ref res, baseChance + phys );
-
-			if ( contondantBonus )
-				CheckResult( ref res, baseChance + contondant );
-
-			if ( tranchantBonus )
-				CheckResult( ref res, baseChance + tranchant );
+				CheckResult( ref res, baseChance + (int)phys );
 
 			if ( magieBonus )
-				CheckResult( ref res, baseChance + magie );
-
-			if ( perforantBonus )
-				CheckResult( ref res, baseChance + perforant );
+				CheckResult( ref res, baseChance + (int)magie );
 
 			if ( duraBonus )
 				CheckResult( ref res, baseChance + (dura / 40) );

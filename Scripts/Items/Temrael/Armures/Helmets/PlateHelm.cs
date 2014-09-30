@@ -7,8 +7,8 @@ namespace Server.Items
 	{
         //public override int NiveauAttirail { get { return Plaque_Niveau; } }
 
-        public override int BasePhysicalResistance { get { return ArmorPlaque.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorPlaque.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorPlaque.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorPlaque.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaque.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaque.max_Durabilite; } }

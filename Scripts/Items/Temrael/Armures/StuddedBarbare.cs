@@ -6,8 +6,8 @@ namespace Server.Items
     public class StuddedBarbareGreaves : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
@@ -46,8 +46,8 @@ namespace Server.Items
     public class StuddedBarbareGorget : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
@@ -86,8 +86,8 @@ namespace Server.Items
     public class StuddedBarbareLeggings : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
@@ -126,8 +126,8 @@ namespace Server.Items
     public class StuddedBarbareTunic : BaseArmor
     {
 
-        public override int BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
-        public override int BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
+        public override double BasePhysicalResistance { get { return ArmorStudded.resistance_Physique; } }
+        public override double BaseMagieResistance { get { return ArmorStudded.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }

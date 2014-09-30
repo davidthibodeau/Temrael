@@ -446,9 +446,9 @@ namespace Server
 
 		private List<ResistanceMod> m_ResistMods;
 
-		private int[] m_Resistances;
+		private double[] m_Resistances;
 
-		public int[] Resistances { get { return m_Resistances; } }
+        public double[] Resistances { get { return m_Resistances; } }
 
 		public virtual int BasePhysicalResistance { get { return 0; } }
 		public virtual int BaseContondantResistance { get { return 0; } }
@@ -475,19 +475,19 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public virtual int PhysicalResistance
+        public virtual double PhysicalResistance
 		{
 			get { return GetResistance( ResistanceType.Physical ); }
 		}
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public virtual int MagieResistance
+		public virtual double MagieResistance
 		{
 			get { return GetResistance( ResistanceType.Magie ); }
 		}
 
         [CommandProperty(AccessLevel.Counselor)]
-        public virtual int ArmureNaturelle
+        public virtual double ArmureNaturelle
         {
             get { return GetResistance(ResistanceType.Naturelle); }
         }
@@ -496,15 +496,15 @@ namespace Server
 		public virtual void UpdateResistances()
 		{
 			if( m_Resistances == null )
-				m_Resistances = new int[5] { int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue };
+				m_Resistances = new double[2] { double.MinValue, double.MinValue };
 
 			bool delta = false;
 
 			for( int i = 0; i < m_Resistances.Length; ++i )
 			{
-				if( m_Resistances[i] != int.MinValue )
+                if (m_Resistances[i] != double.MinValue)
 				{
-					m_Resistances[i] = int.MinValue;
+                    m_Resistances[i] = double.MinValue;
 					delta = true;
 				}
 			}
@@ -513,19 +513,19 @@ namespace Server
 				Delta( MobileDelta.Resistances );
 		}
 
-		public virtual int GetResistance( ResistanceType type )
+		public virtual double GetResistance( ResistanceType type )
 		{
 			if( m_Resistances == null )
-				m_Resistances = new int[5] { int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue };
+                m_Resistances = new double[2] { double.MinValue, double.MinValue };
 
 			int v = (int)type;
 
 			if( v < 0 || v >= m_Resistances.Length )
 				return 0;
 
-			int res = m_Resistances[v];
+			double res = m_Resistances[v];
 
-			if( res == int.MinValue )
+			if( res == double.MinValue )
 			{
 				ComputeResistances();
 				res = m_Resistances[v];
@@ -570,7 +570,7 @@ namespace Server
 		public virtual void ComputeResistances()
 		{
 			if( m_Resistances == null )
-				m_Resistances = new int[5] { int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue };
+                m_Resistances = new double[2] { double.MinValue, double.MinValue };
 
 			for( int i = 0; i < m_Resistances.Length; ++i )
 				m_Resistances[i] = 0;
@@ -595,10 +595,7 @@ namespace Server
 					continue;
 
 				m_Resistances[0] += item.PhysicalResistance;
-				m_Resistances[1] += item.ContondantResistance;
-				m_Resistances[2] += item.TranchantResistance;
-				m_Resistances[3] += item.PerforantResistance;
-				m_Resistances[4] += item.MagieResistance;
+				m_Resistances[1] += item.MagieResistance;
 			}
 
 			for( int i = 0; i < m_Resistances.Length; ++i )
@@ -5343,8 +5340,7 @@ namespace Server
 			item.OnAdded( this );
 			OnItemAdded( item );
 
-			if( item.PhysicalResistance != 0 || item.ContondantResistance != 0 || item.TranchantResistance != 0 ||
-				item.PerforantResistance != 0 || item.MagieResistance != 0 )
+			if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
 				UpdateResistances();
 		}
 
@@ -5387,8 +5383,7 @@ namespace Server
 				item.OnRemoved( this );
 				OnItemRemoved( item );
 
-				if( item.PhysicalResistance != 0 || item.ContondantResistance != 0 || item.TranchantResistance != 0 ||
-					item.PerforantResistance != 0 || item.MagieResistance != 0 )
+				if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
 					UpdateResistances();
 			}
 		}

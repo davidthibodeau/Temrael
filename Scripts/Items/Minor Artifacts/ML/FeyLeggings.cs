@@ -8,8 +8,8 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1075041; } } // Fey Leggings
 
-		public override int BasePhysicalResistance{ get{ return 12; } }
-		public override int BaseMagieResistance{ get{ return 19; } }
+		public override double BasePhysicalResistance{ get{ return 12; } }
+		public override double BaseMagieResistance{ get{ return 19; } }
 
 		public override int InitMinHits{ get{ return 255; } }
 		public override int InitMaxHits{ get { return 255; } }

@@ -7,8 +7,8 @@ namespace Server.Items
 	{
 		public override int LabelNumber{ get{ return 1070817; } } // Heart of the Lion
 
-		public override int BasePhysicalResistance{ get{ return 15; } }
-		public override int BaseMagieResistance{ get{ return 10; } }
+		public override double BasePhysicalResistance{ get{ return 15; } }
+		public override double BaseMagieResistance{ get{ return 10; } }
 
 		public override int InitMinHits{ get{ return 255; } }
 		public override int InitMaxHits{ get{ return 255; } }

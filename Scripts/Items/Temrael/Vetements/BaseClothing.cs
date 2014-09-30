@@ -639,25 +639,10 @@ namespace Server.Items
 
         public void AddARProperties(ObjectPropertyList list, string couleur)
         {
-            int v = PhysicalResistance;
+            double v = PhysicalResistance;
 
             if (v != 0)
                 list.Add(1060448, "{0}t{1}", couleur, v.ToString()); // physical resist ~1_val~%
-
-            v = ContondantResistance;
-
-            if (v != 0)
-                list.Add(1060447, "{0}t{1}", couleur, v.ToString()); // fire resist ~1_val~%
-
-            v = TranchantResistance;
-
-            if (v != 0)
-                list.Add(1060445, "{0}t{1}", couleur, v.ToString()); // cold resist ~1_val~%
-
-            v = PerforantResistance;
-
-            if (v != 0)
-                list.Add(1060449, "{0}t{1}", couleur, v.ToString()); // poison resist ~1_val~%
 
             v = MagieResistance;
 

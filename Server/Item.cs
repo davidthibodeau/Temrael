@@ -993,25 +993,10 @@ namespace Server
 		/// </summary>
 		public virtual void AddResistanceProperties( ObjectPropertyList list )
 		{
-			int v = PhysicalResistance;
+			double v = PhysicalResistance;
 
 			if ( v != 0 )
 				list.Add( 1060448, v.ToString() ); // physical resist ~1_val~%
-
-			v = ContondantResistance;
-
-			if ( v != 0 )
-				list.Add( 1060447, v.ToString() ); // fire resist ~1_val~%
-
-			v = TranchantResistance;
-
-			if ( v != 0 )
-				list.Add( 1060445, v.ToString() ); // cold resist ~1_val~%
-
-			v = PerforantResistance;
-
-			if ( v != 0 )
-				list.Add( 1060449, v.ToString() ); // poison resist ~1_val~%
 
 			v = MagieResistance;
 
@@ -3707,11 +3692,8 @@ namespace Server
 		{
 		}
 
-		public virtual int PhysicalResistance{ get{ return 0; } }
-		public virtual int ContondantResistance{ get{ return 0; } }
-		public virtual int TranchantResistance{ get{ return 0; } }
-		public virtual int PerforantResistance{ get{ return 0; } }
-		public virtual int MagieResistance{ get{ return 0; } }
+		public virtual double PhysicalResistance{ get{ return 0.0; } }
+        public virtual double MagieResistance { get { return 0.0; } }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Serial Serial
