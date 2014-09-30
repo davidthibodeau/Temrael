@@ -275,10 +275,10 @@ namespace Server.Engines.Combat
 
         #region Resistance naturelle
 
-        private const double resistanceMax = 75;          // Valeur maximale de resistance overall
+        private const double resistanceMax = 0.75;          // Valeur maximale de resistance overall
 
-        private const double resistanceNaturelleMin = 5;
-        private const double resistanceNaturelleMax = 20; // Le bonus de résistance naturelle peut aller de 5 à 20 [].
+        private const double resistanceNaturelleMin = 0.5;
+        private const double resistanceNaturelleMax = 0.20; // Le bonus de résistance naturelle peut aller de 5 à 20 [].
 
         private const double resistancePhysiqueMax = resistanceMax - resistanceNaturelleMin; // 70.
 

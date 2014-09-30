@@ -42,26 +42,26 @@ namespace Server.Items
         public ShieldValues ShldWoodn = new ShieldValues    (2,         2,          10,         -4,          100,        125);
         public ShieldValues ShldCuir = new ShieldValues     (2,         2,          10,         -4,          100,        125);
 
-        public ShieldValues ShldChaos = new ShieldValues    (4,         4,          20,         -5,          125,        150);
-        public ShieldValues ShldMetal = new ShieldValues    (4,         4,          20,         -5,          125,        150);
+        public ShieldValues ShldChaos = new ShieldValues    (3,         3,          20,         -5,          125,        150);
+        public ShieldValues ShldMetal = new ShieldValues    (3,         3,          20,         -5,          125,        150);
 
-        public ShieldValues ShldHeater = new ShieldValues   (6,         6,          30,         -6,          150,        175);
-        public ShieldValues ShldOrder = new ShieldValues    (6,         6,          30,         -6,          150,        175);
-        public ShieldValues ShldWoodnKite = new ShieldValues(6,         6,          30,         -6,          150,        175);
-        public ShieldValues ShldDecorer = new ShieldValues  (6,         6,          30,         -6,          150,        175);
-        public ShieldValues ShldGarde = new ShieldValues    (6,         6,          30,         -6,          150,        175);
+        public ShieldValues ShldHeater = new ShieldValues   (4,         4,          30,         -6,          150,        175);
+        public ShieldValues ShldOrder = new ShieldValues    (4,         4,          30,         -6,          150,        175);
+        public ShieldValues ShldWoodnKite = new ShieldValues(4,         4,          30,         -6,          150,        175);
+        public ShieldValues ShldDecorer = new ShieldValues  (4,         4,          30,         -6,          150,        175);
+        public ShieldValues ShldGarde = new ShieldValues    (4,         4,          30,         -6,          150,        175);
 
-        public ShieldValues ShldMetalKite = new ShieldValues(8,         8,          40,         -7,          175,        200);
-        public ShieldValues ShldElfique = new ShieldValues  (8,         8,          40,         -7,          175,        200);
-        public ShieldValues ShldComte = new ShieldValues    (8,         8,          40,         -7,          175,        200);
-        public ShieldValues ShldMarquis = new ShieldValues  (8,         8,          40,         -7,          175,        200);
-        public ShieldValues ShldDuc = new ShieldValues      (8,         8,          40,         -7,          175,        200);
+        public ShieldValues ShldMetalKite = new ShieldValues(5,         5,          40,         -7,          175,        200);
+        public ShieldValues ShldElfique = new ShieldValues  (5,         5,          40,         -7,          175,        200);
+        public ShieldValues ShldComte = new ShieldValues    (5,         5,          40,         -7,          175,        200);
+        public ShieldValues ShldMarquis = new ShieldValues  (5,         5,          40,         -7,          175,        200);
+        public ShieldValues ShldDuc = new ShieldValues      (5,         5,          40,         -7,          175,        200);
 
-        public ShieldValues ShldNordique = new ShieldValues (10,        10,         50,         -8,          200,        225);
-        public ShieldValues ShldChevalier = new ShieldValues(10,        10,         50,         -8,          200,        225);
+        public ShieldValues ShldNordique = new ShieldValues (6,         6,         50,          -8,          200,        225);
+        public ShieldValues ShldChevalier = new ShieldValues(6,         6,         50,          -8,          200,        225);
 
-        public ShieldValues ShldPavoisBlk = new ShieldValues(12,        12,         60,         -9,          225,        250);
-        public ShieldValues ShldVieux = new ShieldValues    (12,        12,         60,         -9,          225,        250);
+        public ShieldValues ShldPavoisBlk = new ShieldValues(7,         7,         60,          -9,          225,        250);
+        public ShieldValues ShldVieux = new ShieldValues    (7,         7,         60,          -9,          225,        250);
 
 
 
@@ -77,26 +77,26 @@ namespace Server.Items
         public ArmorValues ArmorRingmail = new ArmorValues( 2,          2,          10,         -4,          100,        125);
         public ArmorValues ArmorBourgeon = new ArmorValues( 2,          2,          10,         -4,          100,        125);
         // Cap 2
-        public ArmorValues ArmorMaillons = new ArmorValues( 4,          4,          20,         -5,          125,        150);
-        public ArmorValues ArmorMaillures = new ArmorValues(4,          4,          20,         -5,          125,        150);
-        public ArmorValues ArmorStudded = new ArmorValues(  4,          4,          20,         -5,          125,        150);
+        public ArmorValues ArmorMaillons = new ArmorValues( 3,          3,          20,         -5,          125,        150);
+        public ArmorValues ArmorMaillures = new ArmorValues(3,          3,          20,         -5,          125,        150);
+        public ArmorValues ArmorStudded = new ArmorValues(  3,          3,          20,         -5,          125,        150);
         // Cap 3
-        public ArmorValues ArmorChain = new ArmorValues(    6,          6,          30,         -6,          150,        175);
-        public ArmorValues ArmorBarbare = new ArmorValues(  6,          6,          30,         -6,          150,        175);
-        public ArmorValues ArmorChainElf = new ArmorValues( 6,          6,          30,         -6,          150,        175);
-        public ArmorValues ArmorChainNoir = new ArmorValues(6,          6,          30,         -6,          150,        175);
+        public ArmorValues ArmorChain = new ArmorValues(    4,          4,          30,         -6,          150,        175);
+        public ArmorValues ArmorBarbare = new ArmorValues(  4,          4,          30,         -6,          150,        175);
+        public ArmorValues ArmorChainElf = new ArmorValues( 4,          4,          30,         -6,          150,        175);
+        public ArmorValues ArmorChainNoir = new ArmorValues(4,          4,          30,         -6,          150,        175);
         // Cap 4
-        public ArmorValues ArmorMailles = new ArmorValues(  8,          8,          40,         -7,          175,        200);
-        public ArmorValues ArmorPlaque = new ArmorValues(   8,          8,          40,         -7,          175,        200);
+        public ArmorValues ArmorMailles = new ArmorValues(  5,          5,          40,         -7,          175,        200);
+        public ArmorValues ArmorPlaque = new ArmorValues(   5,          5,          40,         -7,          175,        200);
         // Cap 5
-        public ArmorValues ArmorPlaqueElf = new ArmorValues(10,         10,         50,         -8,          200,        225);
-        public ArmorValues ArmorPlaqueGoth= new ArmorValues(10,         10,         50,         -8,          200,        225);
-        public ArmorValues ArmorPlaqueBarb= new ArmorValues(10,         10,         50,         -8,          200,        225);
+        public ArmorValues ArmorPlaqueElf = new ArmorValues(6,          6,          50,         -8,          200,        225);
+        public ArmorValues ArmorPlaqueGoth= new ArmorValues(6,          6,          50,         -8,          200,        225);
+        public ArmorValues ArmorPlaqueBarb= new ArmorValues(6,          6,          50,         -8,          200,        225);
         // Cap 6
-        public ArmorValues ArmorPlaqueOrne= new ArmorValues(12,         12,         60,         -9,          225,        250);
-        public ArmorValues ArmorPlaqueDeco= new ArmorValues(12,         12,         60,         -9,          225,        250);
-        public ArmorValues ArmorPlaqueNobl= new ArmorValues(12,         12,         60,         -9,          225,        250);
-        public ArmorValues ArmorPlaqueDaed= new ArmorValues(12,         12,         60,         -9,          225,        250);
+        public ArmorValues ArmorPlaqueOrne= new ArmorValues(7,          7,          60,         -9,          225,        250);
+        public ArmorValues ArmorPlaqueDeco= new ArmorValues(7,          7,          60,         -9,          225,        250);
+        public ArmorValues ArmorPlaqueNobl= new ArmorValues(7,          7,          60,         -9,          225,        250);
+        public ArmorValues ArmorPlaqueDaed= new ArmorValues(7,          7,          60,         -9,          225,        250);
 
 
 
@@ -104,12 +104,12 @@ namespace Server.Items
         //ARMURES DIVERS                                                                                       Mettre valeur negative pour les dex malus.
 
         //                                               Physique    Magique    Force_req   Dex_malus     Min_Dura     Max_Dura
-        public ArmorValues ArmorDivers1 = new ArmorValues(  2,          2,          10,         -4,          100,        125);
+        public ArmorValues ArmorDivers1 = new ArmorValues(  3,          3,          10,         -4,          100,        125);
         public ArmorValues ArmorDivers2 = new ArmorValues(  4,          4,          20,         -5,          125,        150);
-        public ArmorValues ArmorDivers3 = new ArmorValues(  6,          6,          30,         -6,          150,        175);
-        public ArmorValues ArmorDivers4 = new ArmorValues(  8,          8,          40,         -7,          175,        200);
-        public ArmorValues ArmorDivers5 = new ArmorValues(  10,         10,         50,         -8,          200,        225);
-        public ArmorValues ArmorDivers6 = new ArmorValues(  12,         12,         60,         -9,          225,        250);
+        public ArmorValues ArmorDivers3 = new ArmorValues(  5,          5,          30,         -6,          150,        175);
+        public ArmorValues ArmorDivers4 = new ArmorValues(  6,          6,          40,         -7,          175,        200);
+        public ArmorValues ArmorDivers5 = new ArmorValues(  7,          7,          50,         -8,          200,        225);
+        public ArmorValues ArmorDivers6 = new ArmorValues(  8,          8,          60,         -9,          225,        250);
 
 
         #endregion
@@ -222,55 +222,52 @@ namespace Server.Items
         {
             get
             {
-                int ar = BaseArmorRating;
+                double ar = BasePhysicalResistance;
 
-                if (m_Protection != ArmorProtectionLevel.Regular)
-                    ar += 10 + (5 * (int)m_Protection);
-
+                // Les bonus vont de 0% à 30% de bonus d'AR.
                 switch (m_Resource)
                 {
-                    case CraftResource.Cuivre: ar += 1; break;
-                    case CraftResource.Bronze: ar += 1; break;
-                    case CraftResource.Acier: ar += 2; break;
-                    case CraftResource.Argent: ar += 2; break;
-                    case CraftResource.Or: ar += 2; break;
-                    case CraftResource.Mytheril: ar += 3; break;
-                    case CraftResource.Luminium: ar += 3; break;
-                    case CraftResource.Obscurium: ar += 3; break;
-                    case CraftResource.Mystirium: ar += 4; break;
-                    case CraftResource.Dominium: ar += 4; break;
-                    case CraftResource.Venarium: ar += 4; break;
-                    case CraftResource.Eclarium: ar += 5; break;
-                    case CraftResource.Athenium: ar += 5; break;
-                    case CraftResource.Umbrarium: ar += 5; break;
+                    case CraftResource.Cuivre:      ar *= 1.06; break;
+                    case CraftResource.Bronze:      ar *= 1.06; break;
+                    case CraftResource.Acier:       ar *= 1.12; break;
+                    case CraftResource.Argent:      ar *= 1.12; break;
+                    case CraftResource.Or:          ar *= 1.12; break;
+                    case CraftResource.Mytheril:    ar *= 1.18; break;
+                    case CraftResource.Luminium:    ar *= 1.18; break;
+                    case CraftResource.Obscurium:   ar *= 1.18; break;
+                    case CraftResource.Mystirium:   ar *= 1.24; break;
+                    case CraftResource.Dominium:    ar *= 1.24; break;
+                    case CraftResource.Venarium:    ar *= 1.24; break;
+                    case CraftResource.Eclarium:    ar *= 1.3; break;
+                    case CraftResource.Athenium:    ar *= 1.3; break;
+                    case CraftResource.Umbrarium:   ar *= 1.3; break;
 
-                    case CraftResource.NordiqueLeather: ar += 2; break;
-                    case CraftResource.DesertiqueLeather: ar += 2; break;
-                    case CraftResource.MaritimeLeather: ar += 4; break;
-                    case CraftResource.VolcaniqueLeather: ar += 4; break;
-                    case CraftResource.GeantLeather: ar += 6; break;
-                    case CraftResource.OphidienLeather: ar += 6; break;
-                    case CraftResource.ArachnideLeather: ar += 6; break;
-                    case CraftResource.AncienLeather: ar += 10; break;
-                    case CraftResource.DemoniaqueLeather: ar += 10; break;
-                    case CraftResource.DragoniqueLeather: ar += 12; break;
-                    case CraftResource.LupusLeather: ar += 12; break;
+                    case CraftResource.NordiqueLeather:     ar *= 1.06; break;
+                    case CraftResource.DesertiqueLeather:   ar *= 1.06; break;
+                    case CraftResource.MaritimeLeather:     ar *= 1.12; break;
+                    case CraftResource.VolcaniqueLeather:   ar *= 1.12; break;
+                    case CraftResource.GeantLeather:        ar *= 1.18; break;
+                    case CraftResource.OphidienLeather:     ar *= 1.18; break;
+                    case CraftResource.ArachnideLeather:    ar *= 1.18; break;
+                    case CraftResource.AncienLeather:       ar *= 1.24; break;
+                    case CraftResource.DemoniaqueLeather:   ar *= 1.24; break;
+                    case CraftResource.DragoniqueLeather:   ar *= 1.3; break;
+                    case CraftResource.LupusLeather:        ar *= 1.3; break;
 
-                    case CraftResource.NordiqueBones: ar += 2; break;
-                    case CraftResource.DesertiqueBones: ar += 2; break;
-                    case CraftResource.MaritimeBones: ar += 4; break;
-                    case CraftResource.VolcaniqueBones: ar += 4; break;
-                    case CraftResource.GeantBones: ar += 6; break;
-                    case CraftResource.OphidienBones: ar += 6; break;
-                    case CraftResource.ArachnideBones: ar += 6; break;
-                    case CraftResource.AncienBones: ar += 10; break;
-                    case CraftResource.DemonBones: ar += 10; break;
-                    case CraftResource.DragonBones: ar += 10; break;
-                    case CraftResource.BalronBones: ar += 12; break;
-                    case CraftResource.WyrmBones: ar += 12; break;
+                    case CraftResource.NordiqueBones:       ar *= 1.06; break;
+                    case CraftResource.DesertiqueBones:     ar *= 1.06; break;
+                    case CraftResource.MaritimeBones:       ar *= 1.12; break;
+                    case CraftResource.VolcaniqueBones:     ar *= 1.12; break;
+                    case CraftResource.GeantBones:          ar *= 1.18; break;
+                    case CraftResource.OphidienBones:       ar *= 1.18; break;
+                    case CraftResource.ArachnideBones:      ar *= 1.18; break;
+                    case CraftResource.AncienBones:         ar *= 1.24; break;
+                    case CraftResource.DemonBones:          ar *= 1.24; break;
+                    case CraftResource.DragonBones:         ar *= 1.24; break;
+                    case CraftResource.BalronBones:         ar *= 1.3; break;
+                    case CraftResource.WyrmBones:           ar *= 1.3; break;
                 }
 
-                ar += -8 + (8 * (int)m_Quality);
                 return ScaleArmorByDurability(ar);
             }
         }
@@ -525,8 +522,8 @@ namespace Server.Items
         public virtual int BasePhysicalResistance { get { return 0; } }
         public virtual int BaseMagieResistance { get { return 0; } }
 
-        public override int PhysicalResistance { get { return BasePhysicalResistance + GetProtOffset() + GetResourceAttrs().ArmorPhysicalResist + m_PhysicalBonus; } }
-        public override int MagieResistance { get { return (int)(0.25*(BaseMagieResistance + GetProtOffset() + GetResourceAttrs().ArmorMagieResist)) + m_MagieBonus; } }
+        public override int PhysicalResistance { get { return (int)(ArmorRating + m_PhysicalBonus); } }
+        public override int MagieResistance { get { return (int)(0.25*(BaseMagieResistance + GetResourceAttrs().ArmorMagieResist)) + m_MagieBonus; } }
 
         public virtual int InitMinHits { get { return 0; } }
         public virtual int InitMaxHits { get { return 0; } }
@@ -556,23 +553,6 @@ namespace Server.Items
             }
         }
 
-        public void DistributeBonuses(int amount)
-        {
-            for (int i = 0; i < amount; ++i)
-            {
-                switch (Utility.Random(5))
-                {
-                    case 0: ++m_PhysicalBonus; break;
-                    case 1: ++m_ContondantBonus; break;
-                    case 2: ++m_TranchantBonus; break;
-                    case 3: ++m_PerforantBonus; break;
-                    case 4: ++m_MagieBonus; break;
-                }
-            }
-
-            InvalidateProperties();
-        }
-
         public CraftAttributeInfo GetResourceAttrs()
         {
             CraftResourceInfo info = CraftResources.GetInfo(m_Resource);
@@ -581,19 +561,6 @@ namespace Server.Items
                 return CraftAttributeInfo.Blank;
 
             return info.AttributeInfo;
-        }
-
-        public int GetProtOffset()
-        {
-            switch (m_Protection)
-            {
-                case ArmorProtectionLevel.Guarding: return 1;
-                case ArmorProtectionLevel.Hardening: return 2;
-                case ArmorProtectionLevel.Fortification: return 3;
-                case ArmorProtectionLevel.Invulnerability: return 4;
-            }
-
-            return 0;
         }
 
         public void UnscaleDurability()
@@ -1641,44 +1608,19 @@ namespace Server.Items
 
             if (Quality == ArmorQuality.Exceptional)
             {
-                int bonus = (int)(from.Skills.Forge.Value / 20);
-
-                for (int i = 0; i < bonus; i++)
+                switch (Utility.Random(2))
                 {
-                    switch (Utility.Random(5))
-                    {
-                        case 0: m_PhysicalBonus++; break;
-                        case 1: m_ContondantBonus++; break;
-                        case 2: m_TranchantBonus++; break;
-                        case 3: m_PerforantBonus++; break;
-                        case 4: m_MagieBonus++; break;
-                    }
+                    case 0: m_PhysicalBonus++; break;
+                    case 1: m_MagieBonus++; break;
                 }
-                //if ( !( Core.ML && this is BaseShield ))		// Guessed Core.ML removed exceptional resist bonuses from crafted shields
-                //	DistributeBonuses( (tool is BaseRunicTool ? 6 : Core.SE ? 15 : 14) ); // Not sure since when, but right now 15 points are added, not 14.
-
-                /*if( Core.ML && !(this is BaseShield) )
-                {
-                    int bonus = (int)(from.Skills.Forge.Value / 20);
-
-                    for( int i = 0; i < bonus; i++ )
-                    {
-                        switch( Utility.Random( 5 ) )
-                        {
-                            case 0: m_PhysicalBonus++;	break;
-                            case 1: m_FireBonus++;		break;
-                            case 2: m_ColdBonus++;		break;
-                            case 3: m_EnergyBonus++;	break;
-                            case 4: m_PoisonBonus++;	break;
-                        }
-                    }
-
-                    from.CheckSkill( SkillName.Forge, 0, 100 );
-                }*/
             }
             else if (Quality == ArmorQuality.Low)
             {
-
+                switch (Utility.Random(2))
+                {
+                    case 0: m_PhysicalBonus--; break;
+                    case 1: m_MagieBonus--; break;
+                }
             }
 
             if (Core.AOS && tool is BaseRunicTool)
