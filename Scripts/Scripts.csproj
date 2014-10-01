@@ -95,6 +95,7 @@
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
     <Compile Include="Engines\Equitation.cs" />
+    <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />
     <Compile Include="Items\Temrael\Armures\ArmorEnums.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />

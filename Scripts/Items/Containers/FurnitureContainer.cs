@@ -176,7 +176,7 @@ namespace Server.Items
 
 	[Furniture]
 	[Flipable( 0xa97, 0xa99, 0xa98, 0xa9a, 0xa9b, 0xa9c )]
-	public class FullBookcase : BaseContainer
+    public class FullBookcase : BookCaseContainer
 	{
 		[Constructable]
 		public FullBookcase() : base( 0xA97 )
@@ -203,7 +203,7 @@ namespace Server.Items
 
     [Furniture]
     [Flipable( 0xa97, 0xa99 )]
-    public class FullBookcaseA : BaseContainer
+    public class FullBookcaseA : BookCaseContainer
     {
         [Constructable]
         public FullBookcaseA()
@@ -232,7 +232,7 @@ namespace Server.Items
 
     [Furniture]
     [Flipable( 0xa98, 0xa9a )]
-    public class FullBookcaseB : BaseContainer
+    public class FullBookcaseB : BookCaseContainer
     {
         [Constructable]
         public FullBookcaseB()
@@ -261,7 +261,7 @@ namespace Server.Items
 
     [Furniture]
     [Flipable( 0xa9b, 0xa9c )]
-    public class FullBookcaseC : BaseContainer
+    public class FullBookcaseC : BookCaseContainer
     {
         [Constructable]
         public FullBookcaseC()
@@ -290,7 +290,7 @@ namespace Server.Items
 
 	[Furniture]
 	[Flipable( 0xa9d, 0xa9e )]
-	public class EmptyBookcase : BaseContainer
+	public class EmptyBookcase : BookCaseContainer
 	{
 		[Constructable]
 		public EmptyBookcase() : base( 0xA9D )
