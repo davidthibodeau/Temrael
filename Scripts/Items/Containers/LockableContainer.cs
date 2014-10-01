@@ -13,6 +13,7 @@ namespace Server.Items
 		private Mobile m_Picker;
 		private bool m_TrapOnLockpick;
         private bool m_CanDropInWhenLocked;
+        private bool m_CanSeeInWhenLocked;
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Picker
@@ -131,6 +132,19 @@ namespace Server.Items
             }
         }
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool CanSeeInWhenLocked
+        {
+            get
+            {
+                return m_CanSeeInWhenLocked;
+            }
+            set
+            {
+                m_CanSeeInWhenLocked = value;
+            }
+        }
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
@@ -224,17 +238,19 @@ namespace Server.Items
 		{
 			m_MaxLockLevel = 100;
             m_CanDropInWhenLocked = false;
+            m_CanSeeInWhenLocked = false;
 		}
 
 		public LockableContainer( Serial serial ) : base( serial )
 		{
             m_MaxLockLevel = 100;
             m_CanDropInWhenLocked = false;
+            m_CanSeeInWhenLocked = false;
 		}
 
 		public override bool CheckContentDisplay( Mobile from )
 		{
-			return !m_Locked && base.CheckContentDisplay( from );
+			return (!m_Locked || CanSeeInWhenLocked) && base.CheckContentDisplay( from );
 		}
 
 		public override bool TryDropItem( Mobile from, Item dropped, bool sendFullMessage )
@@ -275,6 +291,7 @@ namespace Server.Items
 			if ( !base.CheckItemUse( from, item ) )
 				return false;
 
+            if ( item != this )
 			if ( item != this && from.AccessLevel < AccessLevel.Batisseur && m_Locked )
 			{
 				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
@@ -332,10 +349,14 @@ namespace Server.Items
 
 		public override void Open( Mobile from )
 		{
-			if ( CheckLocked( from ) )
-				return;
-
-			base.Open( from );
+            if ( CanSeeInWhenLocked )
+            {
+                base.Open(from);
+            }
+            else if (! CheckLocked(from))
+            {
+                base.Open(from);
+            }
 		}
 
 		public override void OnSnoop( Mobile from )
