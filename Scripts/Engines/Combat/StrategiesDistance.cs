@@ -30,9 +30,9 @@ namespace Server.Engines.Combat
         public override int BaseRange { get { return 10; } }
     }
 
-    public class StrategyArbalette : StrategyDistance
+    public class StrategyArbalete : StrategyDistance
     {
-        public readonly static CombatStrategy Strategy = new StrategyArbalette();
+        public readonly static CombatStrategy Strategy = new StrategyArbalete();
         
         public override int BaseRange { get { return 8; } }
     }

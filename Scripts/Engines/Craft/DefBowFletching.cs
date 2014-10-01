@@ -112,7 +112,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Arc), "Arc", "Arc", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
             index = AddCraft(typeof(Tarkarc), "Arc", "Tarkarc", 20.0, 50.0, typeof(Log), 1044041, 5, 1044351);
             index = AddCraft(typeof(Legarc), "Arc", "Legarc", 20.0, 50.0, typeof(Log), 1044041, 7, 1044351);
-            index = AddCraft(typeof(Bow), "Arc", "Arc Long", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
+            index = AddCraft(typeof(GrandArc), "Arc", "Arc Long", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
             index = AddCraft(typeof(Blancorde), "Arc", "Blancorde", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
             index = AddCraft(typeof(Glaciale), "Arc", "Glaciale", 30.0, 60.0, typeof(Log), 1044041, 10, 1044351);
             index = AddCraft(typeof(Souplecorde), "Arc", "Souplecorde", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
@@ -132,7 +132,7 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Crossbow
-            index = AddCraft(typeof(Arbalette), "Arbalète", "Arbalète", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
+            index = AddCraft(typeof(Arbalete), "Arbalète", "Arbalète", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
             index = AddCraft(typeof(ArbaletteLourde), "Arbalète", "Arbalète Lourde", 20.0, 50.0, typeof(Log), 1044041, 8, 1044351);
             index = AddCraft(typeof(Crossbow), "Arbalète", "Arbalète à Méchanisme", 30.0, 60.0, typeof(Log), 1044041, 7, 1044351);
             index = AddCraft(typeof(HeavyCrossbow), "Arbalète", "Arbalète Décoré", 30.0, 60.0, typeof(Log), 1044041, 8, 1044351);

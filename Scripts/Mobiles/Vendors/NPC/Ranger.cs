@@ -31,7 +31,7 @@ namespace Server.Mobiles
 
 			AddItem( new Server.Items.Shirt( Utility.RandomNeutralHue() ) );
 			AddItem( new Server.Items.LongPants( Utility.RandomNeutralHue() ) );
-			AddItem( new Server.Items.Bow() );
+			AddItem( new Server.Items.GrandArc() );
 			AddItem( new Server.Items.ThighBoots( Utility.RandomNeutralHue() ) );
 		}
 

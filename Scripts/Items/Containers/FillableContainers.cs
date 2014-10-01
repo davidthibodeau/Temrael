@@ -855,7 +855,7 @@ namespace Server.Items
 			},
 			new FillableEntry[]
 			{
-				new FillableEntry( 2, typeof( Bow ) ),
+				new FillableEntry( 2, typeof( GrandArc ) ),
 				new FillableEntry( 2, typeof( Crossbow ) ),
 				new FillableEntry( 1, typeof( Arrow ) )
 			} );
@@ -1302,7 +1302,7 @@ namespace Server.Items
 				new FillableEntry( 2, typeof( GnarledStaff ) ),
 				new FillableEntry( 1, typeof( Whip ) ),
 
-				new FillableEntry( 2, typeof( Bow ) ),
+				new FillableEntry( 2, typeof( GrandArc ) ),
 				new FillableEntry( 2, typeof( Crossbow ) ),
 				new FillableEntry( 2, typeof( HeavyCrossbow ) ),
 				new FillableEntry( 4, typeof( Arrow ) )

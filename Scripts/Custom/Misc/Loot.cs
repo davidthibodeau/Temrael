@@ -97,14 +97,14 @@ namespace Server
 
 		private static Type[] m_RangedWeaponTypes = new Type[]
 			{
-				typeof( Bow ),					typeof( Crossbow ),				typeof( HeavyCrossbow )
+				typeof( GrandArc ),					typeof( Crossbow ),				typeof( HeavyCrossbow )
 			};
 
 		public static Type[] RangedWeaponTypes{ get{ return m_RangedWeaponTypes; } }
 
         private static Type[] m_TemraelRangedWeaponTypes = new Type[]
 			{
-				typeof( Tarkarc ),   typeof( Legarc ),   typeof( Bow ),   typeof( Souplecorde ),   typeof( Sombrevent ),
+				typeof( Tarkarc ),   typeof( Legarc ),   typeof( GrandArc ),   typeof( Souplecorde ),   typeof( Sombrevent ),
                 typeof( Sifflecrin ),   typeof( Chantefleche ),
 
                 typeof( Crossbow ),   typeof( HeavyCrossbow ),   typeof( Percemurs ),   typeof( Arbavive ),   typeof( Lumitrait )
