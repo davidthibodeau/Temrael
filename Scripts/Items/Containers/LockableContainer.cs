@@ -12,6 +12,7 @@ namespace Server.Items
 		private uint m_KeyValue;
 		private Mobile m_Picker;
 		private bool m_TrapOnLockpick;
+        private bool m_CanDropInWhenLocked;
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Picker
@@ -117,6 +118,19 @@ namespace Server.Items
 			}
 		}
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool CanDropInWhenLocked
+        {
+            get
+            {
+                return m_CanDropInWhenLocked;
+            }
+            set
+            {
+                m_CanDropInWhenLocked = value;
+            }
+        }
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
@@ -209,10 +223,13 @@ namespace Server.Items
 		public LockableContainer( int itemID ) : base( itemID )
 		{
 			m_MaxLockLevel = 100;
+            m_CanDropInWhenLocked = false;
 		}
 
 		public LockableContainer( Serial serial ) : base( serial )
 		{
+            m_MaxLockLevel = 100;
+            m_CanDropInWhenLocked = false;
 		}
 
 		public override bool CheckContentDisplay( Mobile from )
@@ -222,13 +239,13 @@ namespace Server.Items
 
 		public override bool TryDropItem( Mobile from, Item dropped, bool sendFullMessage )
 		{
-			if ( from.AccessLevel < AccessLevel.Batisseur && m_Locked )
+            if (from.AccessLevel > AccessLevel.Player || !m_Locked || CanDropInWhenLocked)
 			{
-				from.SendLocalizedMessage( 501747 ); // It appears to be locked.
-				return false;
+                return base.TryDropItem(from, dropped, sendFullMessage);
 			}
 
-			return base.TryDropItem( from, dropped, sendFullMessage );
+            from.SendLocalizedMessage(501747); // It appears to be locked.
+            return false;
 		}
 
 		public override bool OnDragDropInto( Mobile from, Item item, Point3D p )
