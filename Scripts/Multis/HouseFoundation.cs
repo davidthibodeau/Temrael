@@ -204,7 +204,7 @@ namespace Server.Multis
 			if( m_Fixtures == null )
 				m_Fixtures = new List<Item>();
 
-			uint keyValue = 0;
+			long keyValue = 0;
 
 			for( int i = 0; i < list.Length; ++i )
 			{

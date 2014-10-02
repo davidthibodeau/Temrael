@@ -12,11 +12,11 @@ namespace Server.Items
 		private BaseBoat m_Boat;
 		private PlankSide m_Side;
 		private bool m_Locked;
-		private uint m_KeyValue;
+		private long m_KeyValue;
 
 		private Timer m_CloseTimer;
 
-		public Plank( BaseBoat boat, PlankSide side, uint keyValue ) : base( 0x3EB1 + (int)side )
+		public Plank( BaseBoat boat, PlankSide side, long keyValue ) : base( 0x3EB1 + (int)side )
 		{
 			m_Boat = boat;
 			m_Side = side;
@@ -81,7 +81,7 @@ namespace Server.Items
 		public bool Locked{ get{ return m_Locked; } set{ m_Locked = value; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public uint KeyValue{ get{ return m_KeyValue; } set{ m_KeyValue = value; } }
+        public long KeyValue { get { return m_KeyValue; } set { m_KeyValue = value; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsOpen{ get{ return ( ItemID == 0x3ED5 || ItemID == 0x3ED4 || ItemID == 0x3E84 || ItemID == 0x3E89 ); } }

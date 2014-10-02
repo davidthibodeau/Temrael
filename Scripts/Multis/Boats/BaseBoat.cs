@@ -301,7 +301,7 @@ namespace Server.Multis
 
 		public void RemoveKeys( Mobile m )
 		{
-			uint keyValue = 0;
+			long keyValue = 0;
 
 			if ( m_PPlank != null )
 				keyValue = m_PPlank.KeyValue;
@@ -312,9 +312,9 @@ namespace Server.Multis
 			Key.RemoveKeys( m, keyValue );
 		}
 
-		public uint CreateKeys( Mobile m )
+		public long CreateKeys( Mobile m )
 		{
-			uint value = Key.RandomValue();
+			long value = Key.RandomValue();
 
 			Key packKey = new Key( KeyType.Gold, value, this );
 			Key bankKey = new Key( KeyType.Gold, value, this );
@@ -405,7 +405,7 @@ namespace Server.Multis
 			return Rotate( p, (int)m_Facing / 2 );
 		}
 
-		public bool CheckKey( uint keyValue )
+		public bool CheckKey( long keyValue )
 		{
 			if ( m_SPlank != null && m_SPlank.KeyValue == keyValue )
 				return true;

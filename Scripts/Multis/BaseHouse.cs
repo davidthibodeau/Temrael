@@ -1255,12 +1255,12 @@ namespace Server.Multis
 			return door;
 		}
 
-		public BaseDoor AddEastDoor( int x, int y, int z, uint k )
+        public BaseDoor AddEastDoor(int x, int y, int z, long k)
 		{
 			return AddEastDoor( true, x, y, z, k );
 		}
 
-		public BaseDoor AddEastDoor( bool wood, int x, int y, int z, uint k )
+        public BaseDoor AddEastDoor(bool wood, int x, int y, int z, long k)
 		{
 			BaseDoor door = MakeDoor( wood, DoorFacing.SouthCW );
 
@@ -1272,12 +1272,12 @@ namespace Server.Multis
 			return door;
 		}
 
-		public BaseDoor AddSouthDoor( int x, int y, int z, uint k )
+        public BaseDoor AddSouthDoor(int x, int y, int z, long k)
 		{
 			return AddSouthDoor( true, x, y, z, k );
 		}
 
-		public BaseDoor AddSouthDoor( bool wood, int x, int y, int z, uint k )
+        public BaseDoor AddSouthDoor(bool wood, int x, int y, int z, long k)
 		{
 			BaseDoor door = MakeDoor( wood, DoorFacing.WestCW );
 
@@ -1289,12 +1289,12 @@ namespace Server.Multis
 			return door;
 		}
 
-		public BaseDoor[] AddSouthDoors( int x, int y, int z, uint k )
+		public BaseDoor[] AddSouthDoors( int x, int y, int z, long k )
 		{
 			return AddSouthDoors( true, x, y, z, k );
 		}
 
-		public BaseDoor[] AddSouthDoors( bool wood, int x, int y, int z, uint k )
+        public BaseDoor[] AddSouthDoors(bool wood, int x, int y, int z, long k)
 		{
 			BaseDoor westDoor = MakeDoor( wood, DoorFacing.WestCW );
 			BaseDoor eastDoor = MakeDoor( wood, DoorFacing.EastCCW );
@@ -1314,9 +1314,9 @@ namespace Server.Multis
 			return new BaseDoor[2]{ westDoor, eastDoor };
 		}
 
-		public uint CreateKeys( Mobile m )
+		public long CreateKeys( Mobile m )
 		{
-			uint value = Key.RandomValue();
+            long value = Key.RandomValue();
 
 			if ( !IsAosRules )
 			{
@@ -3142,7 +3142,7 @@ namespace Server.Multis
 		{
 			if ( m_Doors != null )
 			{
-				uint keyValue = 0;
+				long keyValue = 0;
 
 				for ( int i = 0; keyValue == 0 && i < m_Doors.Count; ++i )
 				{
@@ -3158,7 +3158,7 @@ namespace Server.Multis
 
 		public void ChangeLocks( Mobile m )
 		{
-			uint keyValue = CreateKeys( m );
+			long keyValue = CreateKeys( m );
 
 			if ( m_Doors != null )
 			{

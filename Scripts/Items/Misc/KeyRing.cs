@@ -143,7 +143,7 @@ namespace Server.Items
 			UpdateItemID();
 		}
 
-		public void RemoveKeys( uint keyValue )
+		public void RemoveKeys( long keyValue )
 		{
 			for ( int i = m_Keys.Count - 1; i >= 0; i-- )
 			{
@@ -159,7 +159,7 @@ namespace Server.Items
 			UpdateItemID();
 		}
 
-		public bool ContainsKey( uint keyValue )
+        public bool ContainsKey( long keyValue)
 		{
 			foreach ( Key key in m_Keys )
 			{

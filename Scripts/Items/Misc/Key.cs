@@ -17,22 +17,22 @@ namespace Server.Items
 	public interface ILockable
 	{
 		bool Locked{ get; set; }
-		uint KeyValue{ get; set; }
+		long KeyValue{ get; set; }
 	}
 
 	public class Key : Item
 	{
 		private string m_Description;
-		private uint m_KeyVal;
+		private long m_KeyVal;
 		private Item m_Link;
 		private int m_MaxRange;
 
-		public static uint RandomValue()
+        public static long RandomValue()
 		{
-			return (uint)(0xFFFFFFFE * Utility.RandomDouble()) + 1;
+			return (long)Utility.RandomDouble()+ 1;
 		}
 
-		public static void RemoveKeys( Mobile m, uint keyValue )
+		public static void RemoveKeys( Mobile m, long keyValue )
 		{
 			if ( keyValue == 0 )
 				return;
@@ -41,7 +41,7 @@ namespace Server.Items
 			RemoveKeys( m.BankBox, keyValue );
 		}
 
-		public static void RemoveKeys( Container cont, uint keyValue )
+        public static void RemoveKeys(Container cont, long keyValue)
 		{
 			if ( cont == null || keyValue == 0 )
 				return;
@@ -66,7 +66,7 @@ namespace Server.Items
 			}
 		}
 
-		public static bool ContainsKey( Container cont, uint keyValue )
+        public static bool ContainsKey(Container cont, long keyValue)
 		{
 			if ( cont == null )
 				return false;
@@ -123,7 +123,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public uint KeyValue
+        public long KeyValue
 		{
 			get
 			{
@@ -211,16 +211,18 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public Key( uint val ) : this ( KeyType.Iron, val )
+		public Key( long val ) : this ( KeyType.Iron, val )
 		{
 		}
 
 		[Constructable]
-		public Key( KeyType type, uint LockVal ) : this( type, LockVal, null )
+        public Key(KeyType type, long LockVal)
+            : this(type, LockVal, null)
 		{
 		}
 
-		public Key( KeyType type, uint LockVal, Item link ) : base( (int)type )
+        public Key(KeyType type, long LockVal, Item link)
+            : base((int)type)
 		{
 			Weight = 1.0;
 

@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commandes\Temrael\GenerateKey.cs" />
     <Compile Include="Commandes\Temrael\Reveler.cs" />
     <Compile Include="Commandes\Temrael\TechniqueCombat.cs" />
     <Compile Include="Custom\Army System\ArmyAI.cs" />

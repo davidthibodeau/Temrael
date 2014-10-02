@@ -139,7 +139,7 @@ namespace Server.Multis
 					boat.Anchored = true;
 					boat.ShipName = m_ShipName;
 
-					uint keyValue = boat.CreateKeys( from );
+                    long keyValue = boat.CreateKeys(from);
 
 					if ( boat.PPlank != null )
 						boat.PPlank.KeyValue = keyValue;

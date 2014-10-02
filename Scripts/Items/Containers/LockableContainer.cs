@@ -9,7 +9,7 @@ namespace Server.Items
 	{
 		private bool m_Locked;
 		private int m_LockLevel, m_MaxLockLevel, m_RequiredSkill;
-		private uint m_KeyValue;
+		private long m_KeyValue;
 		private Mobile m_Picker;
 		private bool m_TrapOnLockpick;
         private bool m_CanDropInWhenLocked;
@@ -86,7 +86,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public uint KeyValue
+		public long KeyValue
 		{
 			get
 			{

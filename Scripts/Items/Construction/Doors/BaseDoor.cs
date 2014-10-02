@@ -13,7 +13,7 @@ namespace Server.Items
 		private int m_ClosedID, m_ClosedSound;
 		private Point3D m_Offset;
 		private BaseDoor m_Link;
-		private uint m_KeyValue;
+		private long m_KeyValue;
 
         public override bool CanBeAltered { get { return false; } }
 
@@ -216,7 +216,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public uint KeyValue
+        public long KeyValue
 		{
 			get
 			{
