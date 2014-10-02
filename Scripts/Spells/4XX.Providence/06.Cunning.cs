@@ -13,7 +13,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Ruse", "Uus Wis",
 				SpellCircle.Second,
 				212,
@@ -26,7 +26,7 @@ namespace Server.Spells
 				Reagent.MandrakeRoot,
 				Reagent.Nightshade);
 
-		public CunningSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public CunningSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

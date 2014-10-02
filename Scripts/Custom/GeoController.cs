@@ -16,10 +16,10 @@ namespace Server.Items
     {
         private Mobile m_mob;
         private int m_salaire;
-        private bool m_accessMil;
-        private bool m_accessTaxes;
-        private bool m_accessPop;
-        private bool m_accessRel;
+        //private bool m_accessMil;
+        //private bool m_accessTaxes;
+        //private bool m_accessPop;
+        //private bool m_accessRel;
 
         [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Mob { get { return m_mob; } set { m_mob = value; } }

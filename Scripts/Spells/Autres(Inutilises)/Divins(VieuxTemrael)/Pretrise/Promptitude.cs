@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_PromptitudeTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Promptitude", "Toki Algi",
                 SpellCircle.Sixth,
                 212,
@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public PromptitudeSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

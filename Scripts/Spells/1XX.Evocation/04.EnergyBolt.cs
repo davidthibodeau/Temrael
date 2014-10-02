@@ -14,7 +14,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Énergie", "Corp Por",
 				SpellCircle.Sixth,
 				230,
@@ -28,7 +28,7 @@ namespace Server.Spells
 				Reagent.Nightshade
             );
 
-		public EnergyBoltSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public EnergyBoltSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

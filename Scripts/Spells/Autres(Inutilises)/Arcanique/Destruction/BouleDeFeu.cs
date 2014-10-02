@@ -9,7 +9,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Boule De Feu", "Vas Flam",
 				SpellCircle.Second,
 				203,
@@ -20,7 +20,7 @@ namespace Server.Spells
             );
 
         public BouleDeFeuSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

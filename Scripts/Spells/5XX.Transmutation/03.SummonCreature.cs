@@ -15,7 +15,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
                 "Convocation", "Kal Xen",
 				SpellCircle.Fourth,
 				266,
@@ -30,14 +30,14 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-		public SummonCreatureSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public SummonCreatureSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
         }
 
         public Type m_Creature;
         public int m_ControlSlots;
 
-        public SummonCreatureSpell(Mobile caster, Item scroll, Type type, int controlSlot) : base(caster, scroll, m_Info)
+        public SummonCreatureSpell(Mobile caster, Item scroll, Type type, int controlSlot) : base(caster, scroll, Info)
 		{
             m_Creature = type;
             m_ControlSlots = controlSlot;

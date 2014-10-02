@@ -13,7 +13,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Rappel", "Kal Ort Por",
 				SpellCircle.Fifth,
 				239,
@@ -31,7 +31,7 @@ namespace Server.Spells
 		}
 
         public RappelSpell(Mobile caster, Item scroll, RunebookEntry entry, Runebook book)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 			m_Entry = entry;
 			m_Book = book;

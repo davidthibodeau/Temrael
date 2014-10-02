@@ -214,7 +214,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Copie", "Quas Sanct Ort",
                 SpellCircle.Sixth,
                 269,
@@ -226,7 +226,7 @@ namespace Server.Spells
             );
 
         public CopieSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

@@ -77,12 +77,10 @@ namespace Server.Mobiles
 		private bool m_IsStealthing; // IsStealthing should be moved to Server.Mobiles
 		private bool m_IgnoreMobiles; // IgnoreMobiles should be moved to Server.Mobiles
 		private int m_NonAutoreinsuredItems; // number of items that could not be automaitically reinsured because gold in bank was not enough
-		private bool m_NinjaWepCooldown;
 		/*
 		 * a value of zero means, that the mobile is not executing the spell. Otherwise,
 		 * the value should match the BaseMana required
 		*/
-		private int m_ExecutesLightningStrike; // move to Server.Mobiles??
 
 		private DateTime m_LastOnline;
 		private Server.Guilds.RankDefinition m_GuildRank;
@@ -2060,7 +2058,7 @@ namespace Server.Mobiles
 					Criminal = true;
 			}
 
-			if ( this.Kills >= 5 && DateTime.Now >= m_NextJustAward )
+			if ( this.Kills >= 5 )
 			{
 				Mobile m = FindMostRecentDamager( false );
 
@@ -3326,7 +3324,6 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int AvailableResurrects{ get{ return m_AvailableResurrects; } set{ m_AvailableResurrects = value; } }
 
-		private DateTime m_NextJustAward;
 		private DateTime m_LastJusticeLoss;
 		private List<Mobile> m_JusticeProtectors;
 

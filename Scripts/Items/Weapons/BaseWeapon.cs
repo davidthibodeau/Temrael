@@ -1115,115 +1115,49 @@ namespace Server.Items
 
 			double delayInSeconds;
 
-            if ( false /*Core.SE*/)
-			{
-				/*
-				 * This is likely true for Core.AOS as well... both guides report the same
-				 * formula, and both are wrong.
-				 * The old formula left in for AOS for legacy & because we aren't quite 100%
-				 * Sure that AOS has THIS formula
-				 */
-				int bonus = AosAttributes.GetValue( m, AosAttribute.WeaponSpeed );
+            delayInSeconds = speed - ( ( (m.Dex-70) / 100) * 1.5 );
 
-				//if ( Spells.Chivalry.DivineFurySpell.UnderEffect( m ) )
-				//	bonus += 10;
+			int bonus = AosAttributes.GetValue( m, AosAttribute.WeaponSpeed );
 
-				// Bonus granted by successful use of Honorable Execution.
-				//bonus += HonorableExecution.GetSwingBonus( m );
+            if (SymphonieSpell.m_SymphonieTable.Contains(m))
+            {
+                int symphonie = (int)SymphonieSpell.m_SymphonieTable[m];
+                bonus -= symphonie;
+            }
 
-				if( DualWield.Registry.Contains( m ) )
-					bonus += ((DualWield.DualWieldTimer)DualWield.Registry[m]).BonusSwingSpeed;
+            if (FougueCelesteMiracle.m_FougueCelesteTable.Contains(m))
+            {
+                bonus -= (int)FougueCelesteMiracle.m_FougueCelesteTable[m] * SpellHelper.GetTotalMobilesInRange(m, 5);
 
-				if( Feint.Registry.Contains( m ) )
-					bonus -= ((Feint.FeintTimer)Feint.Registry[m]).SwingSpeedReduction;
+                ReligiousSpell.MiracleEffet(m, m, 14154, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
 
-				//TransformContext context = TransformationSpellHelper.GetContext( m );
+                //m.FixedParticles(14170, 10, 15, 5013, 1942, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                //m.PlaySound(490);
+            }
 
-				//if( context != null && context.Spell is ReaperFormSpell )
-				//	bonus += ((ReaperFormSpell)context.Spell).SwingSpeedBonus;
+            delayInSeconds -= bonus / 100;
 
-				//int discordanceEffect = 0;
+			//if ( Spells.Chivalry.DivineFurySpell.UnderEffect( m ) )
+			//	bonus += 10;
 
-				// Discordance gives a malus of -0/-28% to swing speed.
-				//if ( SkillHandlers.Discordance.GetEffect( m, ref discordanceEffect ) )
-				//	bonus -= discordanceEffect;
+			//int discordanceEffect = 0;
 
-				//if( EssenceOfWindSpell.IsDebuffed( m ) )
-				//	bonus -= EssenceOfWindSpell.GetSSIMalus( m );
+			// Discordance gives a malus of -0/-28% to swing speed.
+			//if ( SkillHandlers.Discordance.GetEffect( m, ref discordanceEffect ) )
+			//	bonus -= discordanceEffect;
 
-				if ( bonus > 60 )
-					bonus = 60;
-				
-				double ticks;
+			/*v += AOS.Scale( v, bonus );
 
-				if ( Core.ML )
-				{
-					int stamTicks = m.Stam / 30;
+			if ( v <= 0 )
+				v = 1;
 
-					ticks = speed * 4;
-					ticks = Math.Floor( ( ticks - stamTicks ) * ( 100.0 / ( 100 + bonus ) ) );
-				}
-				else
-				{
-					speed = Math.Floor( speed * ( bonus + 100.0 ) / 100.0 );
+			delayInSeconds = Math.Floor( 40000.0 / v ) * 0.5;
 
-					if ( speed <= 0 )
-						speed = 1;
+			// Maximum swing rate capped at one swing per second 
+			// OSI dev said that it has and is supposed to be 1.25
+			if ( delayInSeconds < 1.25 )
+				delayInSeconds = 1.25;*/
 
-					ticks = Math.Floor( ( 80000.0 / ( ( m.Stam + 100 ) * speed ) ) - 2 );
-				}
-				
-				// Swing speed currently capped at one swing every 1.25 seconds (5 ticks).
-				if ( ticks < 5 )
-					ticks = 5;
-
-				delayInSeconds = ticks * 0.25;
-			}
-            //else if ( Core.AOS )
-			{
-                delayInSeconds = speed - ( ( (m.Dex-70) / 100) * 1.5 );
-
-				int bonus = AosAttributes.GetValue( m, AosAttribute.WeaponSpeed );
-
-                if (SymphonieSpell.m_SymphonieTable.Contains(m))
-                {
-                    int symphonie = (int)SymphonieSpell.m_SymphonieTable[m];
-                    bonus -= symphonie;
-                }
-
-                if (FougueCelesteMiracle.m_FougueCelesteTable.Contains(m))
-                {
-                    bonus -= (int)FougueCelesteMiracle.m_FougueCelesteTable[m] * SpellHelper.GetTotalMobilesInRange(m, 5);
-
-                    ReligiousSpell.MiracleEffet(m, m, 14154, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
-
-                    //m.FixedParticles(14170, 10, 15, 5013, 1942, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
-                    //m.PlaySound(490);
-                }
-
-                delayInSeconds -= bonus / 100;
-
-				//if ( Spells.Chivalry.DivineFurySpell.UnderEffect( m ) )
-				//	bonus += 10;
-
-				//int discordanceEffect = 0;
-
-				// Discordance gives a malus of -0/-28% to swing speed.
-				//if ( SkillHandlers.Discordance.GetEffect( m, ref discordanceEffect ) )
-				//	bonus -= discordanceEffect;
-
-				/*v += AOS.Scale( v, bonus );
-
-				if ( v <= 0 )
-					v = 1;
-
-				delayInSeconds = Math.Floor( 40000.0 / v ) * 0.5;
-
-				// Maximum swing rate capped at one swing per second 
-				// OSI dev said that it has and is supposed to be 1.25
-				if ( delayInSeconds < 1.25 )
-					delayInSeconds = 1.25;*/
-			}
 
             if (m is BaseCreature)
             {

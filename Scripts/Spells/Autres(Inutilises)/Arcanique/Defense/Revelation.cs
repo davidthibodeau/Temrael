@@ -11,7 +11,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Reveal", "Wis Quas",
 				SpellCircle.First,
 				206,
@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public RevelationSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

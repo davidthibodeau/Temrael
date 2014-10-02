@@ -8,7 +8,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Racines", "An Por Choma",
 				SpellCircle.Fifth,
 				218,
@@ -19,7 +19,7 @@ namespace Server.Spells
 			);
 
         public RacinesSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

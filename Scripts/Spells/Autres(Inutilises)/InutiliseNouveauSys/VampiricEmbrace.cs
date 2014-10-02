@@ -15,7 +15,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Vampirisme", "Rel Xen An Sanct",
 				SpellCircle.Fifth,
 				203,
@@ -35,7 +35,7 @@ namespace Server.Spells
         public override int Body { get { return 100; } }
         public override int IntOffset { get { return 50; } }
 
-		public VampiricEmbraceSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public VampiricEmbraceSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

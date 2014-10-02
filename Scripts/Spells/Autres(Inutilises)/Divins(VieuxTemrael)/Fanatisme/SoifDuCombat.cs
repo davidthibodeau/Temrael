@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_SoifDuCombatRegistry = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Soif Du Combat", "Perth Sowi Toki",
                 SpellCircle.Eighth,
                 212,
@@ -22,7 +22,7 @@ namespace Server.Spells
             );
 
         public SoifDuCombatSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

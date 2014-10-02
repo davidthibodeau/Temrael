@@ -18,7 +18,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Rappel", "Kal Ort Por",
 				SpellCircle.Fourth,
 				239,
@@ -40,7 +40,7 @@ namespace Server.Spells
 		{
 		}
 
-		public RecallSpell( Mobile caster, Item scroll, RunebookEntry entry, Runebook book ) : base( caster, scroll, m_Info )
+		public RecallSpell( Mobile caster, Item scroll, RunebookEntry entry, Runebook book ) : base( caster, scroll, Info )
 		{
 			m_Entry = entry;
 			m_Book = book;

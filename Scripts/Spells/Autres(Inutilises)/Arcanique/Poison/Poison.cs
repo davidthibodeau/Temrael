@@ -9,7 +9,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Poison", "In Nox",
 				SpellCircle.Third,
 				203,
@@ -19,7 +19,7 @@ namespace Server.Spells
                 Reagent.NoxCrystal
             );
 
-		public PoisonNewSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public PoisonNewSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

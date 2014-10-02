@@ -14,7 +14,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Jet de Flamme", "Kal Vas Flam",
 				SpellCircle.Eighth,
 				245,
@@ -28,7 +28,7 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
-		public FlameStrikeSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public FlameStrikeSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

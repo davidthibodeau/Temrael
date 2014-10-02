@@ -15,7 +15,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Bête Horrifique", "Rel Xen Vas Bal",
 				SpellCircle.Fifth,
 				203,
@@ -33,7 +33,7 @@ namespace Server.Spells
         public override int StrOffset { get { return 10; } }
         public override int DexOffset { get { return 20; } }
 
-		public HorrificBeastSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public HorrificBeastSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

@@ -12,7 +12,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur De Poison", "In Nox Grav",
 				SpellCircle.Sixth,
 				230,
@@ -24,7 +24,7 @@ namespace Server.Spells
             );
 
         public MurDePoisonSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

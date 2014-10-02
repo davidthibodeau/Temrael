@@ -16,7 +16,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
                 "Mutation", "Quas Rel Sar Beh Bal",
                 SpellCircle.Eighth,
 				221,
@@ -32,7 +32,7 @@ namespace Server.Spells
 
         public static Hashtable m_Mods = new Hashtable();
 
-		public MutationSpell( Mobile caster, Item scroll, string name, int body, int hue) : base( caster, scroll, m_Info )
+		public MutationSpell( Mobile caster, Item scroll, string name, int body, int hue) : base( caster, scroll, Info )
 		{
 			m_NewBody = body;
             m_NameMod = name;

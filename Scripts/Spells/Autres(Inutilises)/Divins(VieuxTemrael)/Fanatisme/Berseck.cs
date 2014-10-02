@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_BerseckRegistry = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Berseck", "Marc Reta Fehu",
                 SpellCircle.Fourth,
                 212,
@@ -22,7 +22,7 @@ namespace Server.Spells
             );
 
         public BerseckSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

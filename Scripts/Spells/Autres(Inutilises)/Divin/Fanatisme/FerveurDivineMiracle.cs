@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_FerveurDivineRegistry = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Ferveur Divine", "",
                 SpellCircle.Third,
                 17,
@@ -22,7 +22,7 @@ namespace Server.Spells
             );
 
         public FerveurDivineMiracle(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

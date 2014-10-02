@@ -17,7 +17,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Minion", "Kal Xen Bal",
 				SpellCircle.Eighth,
 				203,
@@ -32,7 +32,7 @@ namespace Server.Spells
 				Reagent.DaemonBlood
             );
 
-		public SummonFamiliarSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public SummonFamiliarSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

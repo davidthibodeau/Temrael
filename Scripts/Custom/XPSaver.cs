@@ -10,21 +10,14 @@ namespace Server.Commands
 {
     public class CommandesCombat
     {
-        private class SaveXPMobileEntry
-        {
-            public string Name;
-            public int XP;
-            public int TotalGold;
-        }
+
         private class SaveXPEntry
         {
             public string Account;
-            public List<SaveXPMobileEntry> Mobiles = new List<SaveXPMobileEntry>();
 
             public SaveXPEntry(string acc)
             {
                 Account = acc;
-				Mobiles = new List<SaveXPMobileEntry>();
             }
         }
         public static void Initialize()

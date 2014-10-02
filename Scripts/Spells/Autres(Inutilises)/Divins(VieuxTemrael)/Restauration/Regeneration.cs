@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_RegenerationTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
                 "Régénération", "Tyr Kano",
 				SpellCircle.Second,
 				212,
@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public RegenerationSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

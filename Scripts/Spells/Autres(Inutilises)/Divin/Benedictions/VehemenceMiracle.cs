@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_VehemencetTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Vehemence", "",
                 SpellCircle.Third,
                 17,
@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public VehemenceMiracle(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

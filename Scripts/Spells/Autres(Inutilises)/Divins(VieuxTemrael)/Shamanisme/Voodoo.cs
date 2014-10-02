@@ -10,7 +10,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Voodoo", "Ota Desi Maga",
                 SpellCircle.Eighth,
                 212,
@@ -18,7 +18,7 @@ namespace Server.Spells
             );
 
         public VoodooSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

@@ -10,7 +10,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Peau De Mort", "In Agle Corp Ylem",
 				SpellCircle.Fourth,
 				203,
@@ -23,7 +23,7 @@ namespace Server.Spells
         public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
 
         public PeauDeMortSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
         }
 

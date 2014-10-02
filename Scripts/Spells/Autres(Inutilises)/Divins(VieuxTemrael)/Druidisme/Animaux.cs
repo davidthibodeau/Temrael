@@ -10,7 +10,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
                 "Animaux", "Haga Maga",
 				SpellCircle.Third,
 				266,
@@ -19,7 +19,7 @@ namespace Server.Spells
 
         public override bool Invocation { get { return true; } }
 
-		public AnimauxSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public AnimauxSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
         }
 
@@ -27,7 +27,7 @@ namespace Server.Spells
         public int m_ControlSlots;
 
         public AnimauxSpell(Mobile caster, Item scroll, Type type, int controlSlot)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
             m_Creature = type;
             m_ControlSlots = controlSlot;

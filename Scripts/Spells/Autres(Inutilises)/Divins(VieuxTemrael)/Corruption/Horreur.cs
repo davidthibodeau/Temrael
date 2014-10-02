@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_HorreurTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Horreur", "Desu Algi Maga",
                 SpellCircle.Seventh,
                 212,
@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public HorreurSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

@@ -26,7 +26,7 @@ namespace Server.Spells
 		public override int CastRecoveryPerSecond{ get{ return 1; } }
 		public override int CastRecoveryMinimum{ get{ return 0; } }
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Évasion", "In Por Ort Jux",
 				SpellCircle.First,
 				236,
@@ -34,7 +34,7 @@ namespace Server.Spells
 				Reagent.BlackPearl
 			);
 
-		public EvasionSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public EvasionSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

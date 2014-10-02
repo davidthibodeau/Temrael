@@ -8,7 +8,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Bénir", "",
                 SpellCircle.Eighth,
                 17,
@@ -16,7 +16,7 @@ namespace Server.Spells
             );
 
         public BenirMiracle(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

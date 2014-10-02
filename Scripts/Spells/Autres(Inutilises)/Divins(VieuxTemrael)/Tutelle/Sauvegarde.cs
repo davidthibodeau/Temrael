@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_SauvegardeTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Sauvegarde", "Furo Reta",
                 SpellCircle.Second,
                 212,
@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public SauvegardeSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

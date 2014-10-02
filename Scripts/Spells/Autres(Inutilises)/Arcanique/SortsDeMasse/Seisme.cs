@@ -11,7 +11,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
                 "Seisme", "In Vas Por Choma An Por",
 				SpellCircle.Fifth,
 				233,
@@ -23,7 +23,7 @@ namespace Server.Spells
 			);
 
         public SeismeSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
       

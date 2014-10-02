@@ -15,7 +15,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Liche", "Rel Xen Corp Ort",
 				SpellCircle.Fifth,
 				203,
@@ -33,7 +33,7 @@ namespace Server.Spells
         public override int Body { get { return 24; } }
         public override int IntOffset { get { return 30; } }
 
-		public LichFormSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public LichFormSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

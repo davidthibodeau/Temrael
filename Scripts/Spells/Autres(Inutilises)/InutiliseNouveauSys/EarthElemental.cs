@@ -14,7 +14,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Elemental de Terre", "Kal Vas Xen Ylem",
                 SpellCircle.Sixth,
 				269,
@@ -29,7 +29,7 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-		public EarthElementalSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public EarthElementalSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

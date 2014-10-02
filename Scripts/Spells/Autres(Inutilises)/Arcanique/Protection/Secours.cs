@@ -13,7 +13,7 @@ namespace Server.Spells
         private static ArrayList m_Registry = new ArrayList();
         public static ArrayList Registry { get { return m_Registry; } }
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Secours", "Por Tym",
                 SpellCircle.Fifth,
                 242,
@@ -24,7 +24,7 @@ namespace Server.Spells
             );
 
         public SecoursSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

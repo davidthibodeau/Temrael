@@ -11,7 +11,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Invisibility", "An Lor Xen",
 				SpellCircle.Fifth,
 				206,
@@ -22,7 +22,7 @@ namespace Server.Spells
             );
 
         public InvisibiliteSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

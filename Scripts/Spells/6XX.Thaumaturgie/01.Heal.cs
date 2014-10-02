@@ -15,7 +15,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Soins", "In Mani",
 				SpellCircle.Third,
 				224,
@@ -30,7 +30,7 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-		public HealSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public HealSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

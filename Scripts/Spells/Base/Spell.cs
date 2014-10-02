@@ -247,7 +247,7 @@ namespace Server.Spells
             {
                 TMobile tmob = (TMobile)m_Caster;
 
-                if (pack.ConsumeTotal(m_Info.Reagents, m_Info.Amounts) == -1)
+                if (pack.ConsumeTotal(m_Info.Reagents, Info.Amounts) == -1)
                     return true;
 
             }
@@ -533,7 +533,7 @@ namespace Server.Spells
 		public virtual void SayMantra()
 		{
 			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && m_Caster.Player )
-				m_Caster.PublicOverheadMessage( MessageType.Spell, m_Caster.SpeechHue, true, m_Info.Mantra, false );
+				m_Caster.PublicOverheadMessage( MessageType.Spell, m_Caster.SpeechHue, true, Info.Mantra, false );
 		}
 
 		public virtual bool BlockedByHorrificBeast{ get{ return false; } }
@@ -622,10 +622,10 @@ namespace Server.Spells
                     }
 
                     if (m_Info.LeftHandEffect > 0)
-                        Caster.FixedParticles(0, 10, 5, m_Info.LeftHandEffect, EffectLayer.LeftHand);
+                        Caster.FixedParticles(0, 10, 5, Info.LeftHandEffect, EffectLayer.LeftHand);
 
                     if (m_Info.RightHandEffect > 0)
-                        Caster.FixedParticles(0, 10, 5, m_Info.RightHandEffect, EffectLayer.RightHand);
+                        Caster.FixedParticles(0, 10, 5, Info.RightHandEffect, EffectLayer.RightHand);
                 }
 
                 if (CheckHands())

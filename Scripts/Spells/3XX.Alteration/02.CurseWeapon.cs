@@ -16,7 +16,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Maudire", "An Sanct Gra Char",
 				SpellCircle.Third,
 				203,
@@ -32,7 +32,7 @@ namespace Server.Spells
         public override double CastDelayBase { get { return 0.5; } }
         public override int CastDelayMinimum { get { return 0; } }
 
-		public CurseWeaponSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public CurseWeaponSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

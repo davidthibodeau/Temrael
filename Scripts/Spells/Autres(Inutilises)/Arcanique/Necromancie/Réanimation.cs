@@ -21,7 +21,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Reanimation", "Uus Corp",
 				SpellCircle.Seventh,
 				203,
@@ -36,12 +36,12 @@ namespace Server.Spells
 
         public override bool Invocation { get { return true; } }
 
-		public ReanimationSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public ReanimationSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
         }
 
         public ReanimationSpell(Mobile caster, Item scroll, Corpse corpse, Point3D location, int summon)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
             m_Corpse = corpse;
             m_Location = location;

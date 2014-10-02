@@ -61,7 +61,6 @@ namespace Server.Misc
 
         private class ChutTarget : Target
         {
-            private static int range;
             public ChutTarget(string Msg, int range) : base(range, false, TargetFlags.None)
             {
 

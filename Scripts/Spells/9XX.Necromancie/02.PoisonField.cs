@@ -17,7 +17,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Mur de Poison", "In Nox Grav", 
                 SpellCircle.Sixth, 
                 230, 
@@ -33,7 +33,7 @@ namespace Server.Spells
                 Reagent.SpidersSilk
             );
 
-		public PoisonFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public PoisonFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

@@ -21,7 +21,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Incognito", "Kal In Ex",
 				SpellCircle.Fifth,
 				206,
@@ -36,13 +36,13 @@ namespace Server.Spells
 				Reagent.Nightshade
             );
 
-		public IncognitoSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public IncognitoSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 
         private string m_Name;
 
-        public IncognitoSpell(Mobile caster, Item scroll, string name) : base(caster, scroll, m_Info)
+        public IncognitoSpell(Mobile caster, Item scroll, string name) : base(caster, scroll, Info)
 		{
             m_Name = name;
 		}

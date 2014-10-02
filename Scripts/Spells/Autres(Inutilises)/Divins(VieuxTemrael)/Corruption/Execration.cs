@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_ExecrationTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Exécration", "Desu Sowi",
                 SpellCircle.Fourth,
                 212,
@@ -21,7 +21,7 @@ namespace Server.Spells
             );
 
         public ExecrationSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

@@ -20,7 +20,7 @@ namespace Server.Spells
         private const double bonus_donne = 0.2;
         private const int portee = 8;
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Sona", "",
                 SpellCircle.First,
                 215,
@@ -29,7 +29,7 @@ namespace Server.Spells
             );
 
         public SonaSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

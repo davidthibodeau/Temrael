@@ -9,7 +9,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Elementaire de cristal", "Kal Vas Xen Flam Aqua Hur Choma",
 				SpellCircle.Eighth,
 				269,
@@ -23,7 +23,7 @@ namespace Server.Spells
         public override bool Invocation { get { return true; } }
 
         public ElementaireCristalSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

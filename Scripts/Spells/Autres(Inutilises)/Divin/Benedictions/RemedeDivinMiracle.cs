@@ -12,7 +12,7 @@ namespace Server.Spells
 
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Remede Divin", "",
                 SpellCircle.Eighth,
                 17,
@@ -20,7 +20,7 @@ namespace Server.Spells
             );
 
         public RemedeDivinMiracle(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

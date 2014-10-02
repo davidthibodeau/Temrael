@@ -11,7 +11,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Eclair en Chaîne", "Vas Ort Grav",
 				SpellCircle.Seventh,
 				209,
@@ -22,7 +22,7 @@ namespace Server.Spells
 				Reagent.MandrakeRoot
             );
 
-		public EclairEnChaineSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public EclairEnChaineSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

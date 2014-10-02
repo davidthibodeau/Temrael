@@ -18,7 +18,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
             "Flameche", "In Flam",
             SpellCircle.Fourth,
             215,
@@ -32,7 +32,7 @@ namespace Server.Spells
         );
 
         public Flameche(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

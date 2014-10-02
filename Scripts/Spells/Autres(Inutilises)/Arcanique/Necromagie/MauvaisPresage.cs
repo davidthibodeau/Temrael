@@ -11,7 +11,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Evil Omen", "Pas Tym An Sanct",
 				SpellCircle.Fifth,
 				203,
@@ -23,7 +23,7 @@ namespace Server.Spells
         public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
         public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
 
-		public MauvaisPresageSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public MauvaisPresageSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

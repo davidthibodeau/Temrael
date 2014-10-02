@@ -16,7 +16,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Fléau", "Vas Des Sanct",
 				SpellCircle.Seventh,
 				218,
@@ -32,7 +32,7 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
-		public MassCurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public MassCurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

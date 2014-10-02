@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable Registry { get { return m_Registry; } }
         public static Hashtable m_Table = new Hashtable();
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Malediction", "Des Sanct",
 				SpellCircle.Fifth,
 				227,
@@ -24,7 +24,7 @@ namespace Server.Spells
             );
 
         public MaledictionSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 

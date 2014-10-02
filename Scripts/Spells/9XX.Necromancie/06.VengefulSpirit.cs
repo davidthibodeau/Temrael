@@ -16,7 +16,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Esprit Vengeur", "Kal Xen Bal Beh",
 				SpellCircle.Eighth,
 				203,
@@ -31,7 +31,7 @@ namespace Server.Spells
 				Reagent.PigIron
             );
 
-		public VengefulSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public VengefulSpiritSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

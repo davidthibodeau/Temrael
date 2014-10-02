@@ -11,7 +11,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Malaise", "Des Ex Sanct",
 				SpellCircle.Fourth,
 				224,
@@ -21,7 +21,7 @@ namespace Server.Spells
                 Reagent.Ginseng
 			);
 
-		public MalaiseSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public MalaiseSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

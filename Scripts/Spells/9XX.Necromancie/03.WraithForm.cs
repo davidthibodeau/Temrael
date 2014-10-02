@@ -15,7 +15,7 @@ namespace Server.Spells
         private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Spectre", "Rel Xen Um",
 				SpellCircle.First,
 				203,
@@ -33,7 +33,7 @@ namespace Server.Spells
         public override int Hue { get { return 0; } }
         public override int IntOffset { get { return 5; } }
 
-		public WraithFormSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public WraithFormSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

@@ -234,7 +234,7 @@ namespace Server.Custom.CustomSpell
         // FONCTIONNEL !
         public abstract class CSpellTargetedTimer : CustomSpell
         {
-            private new InfoSpell.TargetedTimer m_info;
+            private InfoSpell.TargetedTimer info;
 
             private EffectTimer effectTimer;
 
@@ -250,7 +250,7 @@ namespace Server.Custom.CustomSpell
             public CSpellTargetedTimer(Mobile caster, Item scroll, InfoSpell.TargetedTimer info)
                 : base(caster, scroll, (InfoSpell)info)
             {
-                m_info = info;
+                this.info = info;
             }
 
             public override void OnCast()
@@ -279,18 +279,18 @@ namespace Server.Custom.CustomSpell
                 if (target1 != null) // Si le player a cancellé.
                 {
 
-                    if (target1rdy && (target2rdy || m_info.nbTarget <= 1) && (target3rdy || m_info.nbTarget <= 2))
+                    if (target1rdy && (target2rdy || info.nbTarget <= 1) && (target3rdy || info.nbTarget <= 2))
                     {
                         // CREATION DU TIMER.
-                        effectTimer = new EffectTimer(this, m_info.duree, m_info.intervale);
+                        effectTimer = new EffectTimer(this, info.duree, info.intervale);
                     }
 
                     // Si on veut plus de targets, on en créée un nouveau.
-                    if (target2 == null && m_info.nbTarget >= 2)
+                    if (target2 == null && info.nbTarget >= 2)
                     {
                         Caster.Target = new InternalTarget(this, 2);
                     }
-                    else if (target3 == null && m_info.nbTarget >= 3)
+                    else if (target3 == null && info.nbTarget >= 3)
                     {
                         Caster.Target = new InternalTarget(this, 3);
                     }
@@ -364,7 +364,7 @@ namespace Server.Custom.CustomSpell
                 private int numeroTarget { get { return m_numeroTarget; } set { if (value <= 3 && value >= 1) m_numeroTarget = numeroTarget; } }
 
                 public InternalTarget(CSpellTargetedTimer owner, int NumeroTarget)
-                    : base(owner.m_info.range, true, TargetFlags.None)
+                    : base(owner.info.range, true, TargetFlags.None)
                 {
                     numeroTarget = NumeroTarget;
                     m_Owner = owner;
@@ -414,12 +414,12 @@ namespace Server.Custom.CustomSpell
         // FONCTIONNEL !
         public abstract class CSpellAoE : CustomSpell
         {
-            private InfoSpell.AoE m_info;
+            private InfoSpell.AoE info;
 
             public CSpellAoE(Mobile caster, Item scroll, InfoSpell.AoE info)
                 : base(caster, scroll, (InfoSpell)info)
             {
-                m_info = info;
+                this.info = info;
             }
 
             public override void OnCast()
@@ -432,7 +432,7 @@ namespace Server.Custom.CustomSpell
                 if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
                 {
                     UniqueEffect();
-                    foreach(Mobile target in Caster.GetMobilesInRange(m_info.range))
+                    foreach(Mobile target in Caster.GetMobilesInRange(info.range))
                     {
                         TargetEffect(target);
                     }
@@ -449,7 +449,7 @@ namespace Server.Custom.CustomSpell
         // FONCTIONNEL !
         public abstract class CSpellAoETimer : CustomSpell
         {
-            private InfoSpell.AoETimer m_info;
+            private InfoSpell.AoETimer info;
 
             private EffectTimer effectTimer;
 
@@ -458,7 +458,7 @@ namespace Server.Custom.CustomSpell
             public CSpellAoETimer(Mobile caster, Item scroll, InfoSpell.AoETimer info)
                 : base(caster, scroll, (InfoSpell)info)
             {
-                m_info = info;
+                this.info = info;
             }
 
             public override void UseSpellAoETimer()
@@ -466,7 +466,7 @@ namespace Server.Custom.CustomSpell
                 if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
                 {
                     // CREATION DU TIMER.
-                    effectTimer = new EffectTimer(this, m_info.duree, m_info.intervale);
+                    effectTimer = new EffectTimer(this, info.duree, info.intervale);
                 }
                 else
                 {
@@ -502,7 +502,7 @@ namespace Server.Custom.CustomSpell
 
                     Priority = intervale;
 
-                    m_owner.targetsList = m_owner.m_Caster.GetMobilesInRange(m_owner.m_info.range);
+                    m_owner.targetsList = m_owner.m_Caster.GetMobilesInRange(m_owner.info.range);
 
                     m_owner.UniqueEffect();
 
@@ -510,7 +510,7 @@ namespace Server.Custom.CustomSpell
 
                     Start();
 
-                    if (!m_owner.m_info.continueCastDuringTimer)
+                    if (!m_owner.info.continueCastDuringTimer)
                     {
                         m_owner.FinishSequence();
                     }
@@ -528,7 +528,7 @@ namespace Server.Custom.CustomSpell
                     {
                         ChoixTarget(m_owner.OnEnd);
 
-                        if (m_owner.m_info.continueCastDuringTimer)
+                        if (m_owner.info.continueCastDuringTimer)
                         {
                             m_owner.FinishSequence();
                         }
@@ -540,7 +540,7 @@ namespace Server.Custom.CustomSpell
                 // Décide si on doit utiliser la targetlist settée au début, ou si on doit se mettre à jour sur les nouveaux personnages en range.
                 private void ChoixTarget(Action<Mobile> Fonction)
                 {
-                    if (m_owner.m_info.targetsDebutCast)
+                    if (m_owner.info.targetsDebutCast)
                     {
                         foreach (Mobile target in m_owner.targetsList)
                         {
@@ -549,7 +549,7 @@ namespace Server.Custom.CustomSpell
                     }
                     else
                     {
-                        foreach (Mobile target in m_owner.Caster.GetMobilesInRange(m_owner.m_info.range))
+                        foreach (Mobile target in m_owner.Caster.GetMobilesInRange(m_owner.info.range))
                         {
                             Fonction(target);
                         }
@@ -575,12 +575,12 @@ namespace Server.Custom.CustomSpell
         // FONCTIONNEL !
         public abstract class CSpellSelf : CustomSpell
         {
-            private InfoSpell.Self m_info;
+            private InfoSpell.Self info;
 
             public CSpellSelf(Mobile caster, Item scroll, InfoSpell.Self info)
                 : base(caster, scroll, (InfoSpell)info)
             {
-                m_info = info;
+                this.info = info;
             }
 
             public override void UseSpellSelf()
@@ -598,14 +598,14 @@ namespace Server.Custom.CustomSpell
         // FONCTIONNEL !
         public abstract class CSpellSelfTimer : CustomSpell
         {
-            private InfoSpell.SelfTimer m_info;
+            private InfoSpell.SelfTimer info;
 
             private EffectTimer effectTimer;
 
             public CSpellSelfTimer(Mobile caster, Item scroll, InfoSpell.SelfTimer info)
                 : base(caster, scroll, (InfoSpell)info)
             {
-                m_info = info;
+                this.info = info;
             }
 
             public override void UseSpellSelfTimer()
@@ -613,7 +613,7 @@ namespace Server.Custom.CustomSpell
                 if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
                 {
                     // CREATION DU TIMER.
-                    effectTimer = new EffectTimer(this, m_info.duree, m_info.intervale);
+                    effectTimer = new EffectTimer(this, info.duree, info.intervale);
                 }
                 else
                 {

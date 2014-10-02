@@ -49,8 +49,8 @@ namespace Server.Items
                 TMobile m = (TMobile)from;
 
                 //TOCHECK BOTANIQUE
-                if (false)
-                    LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType)));
+                //if (false)
+                //    LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType)));
             }
         }
 

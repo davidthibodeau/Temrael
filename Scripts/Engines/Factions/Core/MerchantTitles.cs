@@ -64,7 +64,7 @@ namespace Server.Factions
 		{
 			for ( int i = 0; i < m_Info.Length; ++i )
 			{
-				if ( IsQualified( mob, m_Info[i] ) )
+				if ( IsQualified( mob, Info[i] ) )
 					return true;
 			}
 

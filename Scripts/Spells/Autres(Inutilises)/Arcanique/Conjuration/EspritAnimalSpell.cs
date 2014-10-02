@@ -9,7 +9,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Esprit animal", "Kal Xen Ort",
 				SpellCircle.Third,
 				269,
@@ -21,7 +21,7 @@ namespace Server.Spells
 
         public override bool Invocation { get { return true; } }
 
-		public EspritAnimalSpell( Mobile caster, Item scroll ) : base( caster, scroll, m_Info )
+		public EspritAnimalSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 

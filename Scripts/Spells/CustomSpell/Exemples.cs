@@ -20,7 +20,7 @@ namespace Server.Custom.CustomSpell
 
         const double scalingSkill = 0.1;
 
-        static private InfoSpell.Targeted m_info = new InfoSpell.Targeted(
+        static private InfoSpell.Targeted info = new InfoSpell.Targeted(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
@@ -44,7 +44,7 @@ namespace Server.Custom.CustomSpell
 
 
         public ExempleTargeted(Mobile caster, Item scroll)
-            : base(caster, scroll, m_info)
+            : base(caster, scroll, info)
         {
             m_caster = caster;
         }
@@ -88,7 +88,7 @@ namespace Server.Custom.CustomSpell
 
         const double scalingSkill = 0.1;
 
-        static private InfoSpell.TargetedTimer m_info = new InfoSpell.TargetedTimer(
+        static private InfoSpell.TargetedTimer info = new InfoSpell.TargetedTimer(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
@@ -113,7 +113,7 @@ namespace Server.Custom.CustomSpell
 
 
         public ExempleTargetedTimer(Mobile caster, Item scroll)
-            : base(caster, scroll, m_info)
+            : base(caster, scroll, info)
         {
             m_caster = caster;
         }
@@ -160,7 +160,7 @@ namespace Server.Custom.CustomSpell
 
         Mobile m_caster;
 
-        static private InfoSpell.AoE m_info = new InfoSpell.AoE(
+        static private InfoSpell.AoE info = new InfoSpell.AoE(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Tremblement de terre",
@@ -180,7 +180,7 @@ namespace Server.Custom.CustomSpell
         Reagent.Garlic);
 
         public ExempleAoE(Mobile caster, Item scroll)
-            : base(caster, scroll, m_info)
+            : base(caster, scroll, info)
         {
             m_caster = caster;
         }
@@ -207,7 +207,7 @@ namespace Server.Custom.CustomSpell
 
         Mobile m_caster;
 
-        static private InfoSpell.AoETimer m_info = new InfoSpell.AoETimer(
+        static private InfoSpell.AoETimer info = new InfoSpell.AoETimer(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Tremblement de terre",
@@ -232,7 +232,7 @@ namespace Server.Custom.CustomSpell
 
 
         public ExempleAoETimer(Mobile caster, Item scroll)
-            : base(caster, scroll, m_info)
+            : base(caster, scroll, info)
         {
             m_caster = caster;
         }
@@ -264,7 +264,7 @@ namespace Server.Custom.CustomSpell
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        static private InfoSpell.Self m_info = new InfoSpell.Self(
+        static private InfoSpell.Self info = new InfoSpell.Self(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
@@ -281,7 +281,7 @@ namespace Server.Custom.CustomSpell
         Reagent.Garlic);
 
         public ExempleSelf(Mobile caster, Item scroll)
-            : base(caster, scroll, m_info)
+            : base(caster, scroll, info)
         {
         }
 
@@ -296,7 +296,7 @@ namespace Server.Custom.CustomSpell
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 
-        static private InfoSpell.SelfTimer m_info = new InfoSpell.SelfTimer(
+        static private InfoSpell.SelfTimer info = new InfoSpell.SelfTimer(
 
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
@@ -316,7 +316,7 @@ namespace Server.Custom.CustomSpell
         Reagent.Garlic);
 
         public ExempleSelfTimer(Mobile caster, Item scroll)
-            : base(caster, scroll, m_info)
+            : base(caster, scroll, info)
         {
         }
 

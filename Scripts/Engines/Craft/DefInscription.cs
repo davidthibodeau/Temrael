@@ -112,7 +112,7 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		private int m_Circle, m_Mana;
+		private int m_Circle, m_Mana; // Celà veut dire que l'inscription n'a jamais réellement fonctionné..... ? À tester.
 
 		private enum Reg { BlackPearl, Bloodmoss, Garlic, Ginseng, MandrakeRoot, Nightshade, SulfurousAsh, SpidersSilk }
 

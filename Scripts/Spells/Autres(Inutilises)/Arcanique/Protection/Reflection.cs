@@ -13,7 +13,7 @@ namespace Server.Spells
         private static Hashtable m_Registry = new Hashtable();
         public static Hashtable Registry { get { return m_Registry; } }
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Reflection", "Por Tym Sanct",
                 SpellCircle.Fourth,
                 242,
@@ -24,7 +24,7 @@ namespace Server.Spells
             );
 
         public ReflectionSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

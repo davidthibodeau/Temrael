@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_LinkTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        public static readonly SpellInfo m_Info = new SpellInfo(
+        public static readonly new SpellInfo Info = new SpellInfo(
                 "Passion", "Toki Kano",
                 SpellCircle.Seventh,
                 212,
@@ -22,7 +22,7 @@ namespace Server.Spells
             );
 
         public PassionSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
         {
         }
 

@@ -12,7 +12,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-		public static readonly SpellInfo m_Info = new SpellInfo(
+		public static readonly new SpellInfo Info = new SpellInfo(
 				"Familier", "Kal Xen Bal",
 				SpellCircle.First,
 				203,
@@ -28,7 +28,7 @@ namespace Server.Spells
         public override bool Invocation { get { return true; } }
 
         public FamilierSpell(Mobile caster, Item scroll)
-            : base(caster, scroll, m_Info)
+            : base(caster, scroll, Info)
 		{
 		}
 
