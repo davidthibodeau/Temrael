@@ -114,34 +114,31 @@ namespace Server.Commandes.Temrael
             private static void AddObjects(Values v, IPoint3D point1, IPoint3D point2)
             {
                 Point3D point = new Point3D();
+                object o;
                 for (int i = 0; i < v.amount; i++)
                 {
                     point.X = Utility.RandomMinMax(point1.X, point2.X);
                     point.Y = Utility.RandomMinMax(point1.Y, point2.Y);
+                    point.Z = v.from.Location.Z + 5;
 
-                    point.Z = GetSurfaceTop(point1);
+                    o = v.from.Map.GetTopSurface(point);
+
+                    if (o == null)
+                        return;
+
+                    if (o is LandTile)
+                    {
+                        point.Z = ((LandTile)o).Z;
+                    }
+                    else if (o is StaticTile)
+                    {
+                        point.Z = ((StaticTile)o).Z;
+                    }
 
                     String[] s = new String[1];
                     s[0] = v.cmdArgs.GetString(0);
                     Add.Invoke(v.from, point, point, s);
                 }
-            }
-
-
-            private static int GetSurfaceTop(IPoint3D p)
-            {
-                int z = 0;
-
-                if (p is StaticTarget)
-                {
-                    StaticTarget t = (StaticTarget)p;
-                    z = t.Z;
-
-                    if ((t.Flags & TileFlag.Surface) == 0)
-                        z -= TileData.ItemTable[t.ItemID & 0x3FFF].CalcHeight;
-                }
-
-                return z;
             }
 
 
