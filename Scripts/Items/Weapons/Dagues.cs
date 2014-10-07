@@ -600,38 +600,38 @@ namespace Server.Items
         }
     }
 
-    //public class SkinningKnife : BaseKnife
-    //{
-    //    public override int DefMinDamage { get { return 2; } }
-    //    public override int DefMaxDamage { get { return 5; } }
-    //    public override int DefSpeed { get { return 20; } }
+    public class SkinningKnife : BaseKnife
+    {
+        public override int DefMinDamage { get { return 2; } }
+        public override int DefMaxDamage { get { return 5; } }
+        public override int DefSpeed { get { return 20; } }
 
-    //    [Constructable]
-    //    public SkinningKnife()
-    //        : base(0xec4)
-    //    {
-    //        Weight = 3.0;
-    //        Layer = Layer.OneHanded;
-    //        Name = "Couteau à écorcher";
-    //    }
+        [Constructable]
+        public SkinningKnife()
+            : base(0xec4)
+        {
+            Weight = 3.0;
+            Layer = Layer.OneHanded;
+            Name = "Couteau à écorcher";
+        }
 
-    //    public SkinningKnife(Serial serial)
-    //        : base(serial)
-    //    {
-    //    }
+        public SkinningKnife(Serial serial)
+            : base(serial)
+        {
+        }
 
-    //    public override void Serialize(GenericWriter writer)
-    //    {
-    //        base.Serialize(writer);
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
 
-    //        writer.Write((int)0); // version
-    //    }
+            writer.Write((int)0); // version
+        }
 
-    //    public override void Deserialize(GenericReader reader)
-    //    {
-    //        base.Deserialize(reader);
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-    //        int version = reader.ReadInt();
-    //    }
-    //}
+            int version = reader.ReadInt();
+        }
+    }
 }

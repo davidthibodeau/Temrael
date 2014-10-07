@@ -424,14 +424,14 @@ namespace Server.Items
         }
     }
 
-    public class BatonLourd : BaseStaff
+    public class Batonlourd : BaseStaff
     {
         public override int DefMinDamage { get { return 13; } }
         public override int DefMaxDamage { get { return 18; } }
         public override int DefSpeed { get { return 45; } }
 
         [Constructable]
-        public BatonLourd()
+        public Batonlourd()
             : base(0x29cc)
         {
             Weight = 8.0;
@@ -439,7 +439,7 @@ namespace Server.Items
             Name = "Baton lourd";
         }
 
-        public BatonLourd(Serial serial)
+        public Batonlourd(Serial serial)
             : base(serial)
         {
         }

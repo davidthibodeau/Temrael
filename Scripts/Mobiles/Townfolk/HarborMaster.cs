@@ -38,7 +38,7 @@ namespace Server.Mobiles
 			AddItem( new Shirt( Utility.RandomDyedHue() ) );
 			AddItem( new Boots() );
 			AddItem( new LongPants( Utility.RandomNeutralHue() ) );
-			AddItem( new QuarterStaff() );
+			AddItem( new Quarterstaff() );
 
 			Utility.AssignRandomHair( this );
 
