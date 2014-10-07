@@ -97,6 +97,7 @@
     <Compile Include="Engines\Equitation.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />
     <Compile Include="Items\Temrael\Armures\ArmorEnums.cs" />
+    <Compile Include="Items\Weapons\Core\BaseEstoc.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpell.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpellInfo.cs" />
     <Compile Include="Spells\CustomSpell\Exemples.cs" />

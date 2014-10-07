@@ -4,7 +4,7 @@ using Server.Network;
 
 namespace Server.Items
 {
-    public class DagueEntrainement : BaseSword
+    public class DagueEntrainement : BaseKnife
     {
         public override int DefMinDamage { get { return 1; } }
         public override int DefMaxDamage { get { return 4; } }
