@@ -605,7 +605,7 @@ namespace Server.Items
 
     public class Myrilon : BaseSword
     {
-        public override int DefMinDamage { get { return 4; } }
+        public override int DefMinDamage { get { return 5; } }
         public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
