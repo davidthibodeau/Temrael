@@ -603,22 +603,22 @@ namespace Server.Items
         }
     }
 
-    public class Myrilon : BaseSword
+    public class Myliron : BaseSword
     {
         public override int DefMinDamage { get { return 5; } }
         public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
-        public Myrilon()
+        public Myliron()
             : base(0x2a0b)
         {
             Weight = 5.0;
             Layer = Layer.OneHanded;
-            Name = "Myrilon";
+            Name = "Myliron";
         }
 
-        public Myrilon(Serial serial)
+        public Myliron(Serial serial)
             : base(serial)
         {
         }
@@ -815,13 +815,13 @@ namespace Server.Items
 
     public class Sabre : BaseSword
     {
-        public override int DefMinDamage { get { return 7; } }
-        public override int DefMaxDamage { get { return 11; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefMinDamage { get { return 3; } }
+        public override int DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 25; } }
 
         [Constructable]
         public Sabre()
-            : base(0x13b6)
+            : base(0x2a1c)
         {
             Weight = 5.0;
             Layer = Layer.OneHanded;
@@ -829,6 +829,41 @@ namespace Server.Items
         }
 
         public Sabre(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class Scimitar : BaseSword
+    {
+        public override int DefMinDamage { get { return 7; } }
+        public override int DefMaxDamage { get { return 11; } }
+        public override int DefSpeed { get { return 35; } }
+
+        [Constructable]
+        public Scimitar()
+            : base(0x13b6)
+        {
+            Weight = 5.0;
+            Layer = Layer.OneHanded;
+            Name = "Cimeterre";
+        }
+
+        public Scimitar(Serial serial)
             : base(serial)
         {
         }

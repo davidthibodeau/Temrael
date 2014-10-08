@@ -1438,42 +1438,42 @@ namespace Server.Gumps
 				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
 				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
                 new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Hachette ),	    "Hachette", 0x2B14, 0 )
+                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Barbare, new CustomItem[]{//Held items
 				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
 				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
                 new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Hachette ),	    "Hachette", 0x2B14, 0 )
+                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Archer, new CustomItem[]{//Held items
 				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
 				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
                 new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Hachette ),	    "Hachette", 0x2B14, 0 )
+                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Cavalier, new CustomItem[]{//Held items
 				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
 				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
                 new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Hachette ),	    "Hachette", 0x2B14, 0 )
+                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Duelliste, new CustomItem[]{//Held items
 				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
 				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
                 new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Hachette ),	    "Hachette", 0x2B14, 0 )
+                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
 			} ),
 
             new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Protecteur, new CustomItem[]{//Held items
 				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
 				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
                 new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Hachette ),	    "Hachette", 0x2B14, 0 ),
+                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 ),
                 new CustomItem( typeof( MetalShield ),	"Bouclier", 0x1B7B, 0 )
 			} ),
 

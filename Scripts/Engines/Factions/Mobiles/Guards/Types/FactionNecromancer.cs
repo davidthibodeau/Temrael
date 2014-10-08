@@ -38,7 +38,7 @@ namespace Server.Factions
 			shroud.Layer = Layer.OuterTorso;
 
 			AddItem( Immovable( Rehued( shroud, 1109 ) ) );
-			AddItem( Newbied( Rehued( new Batonvoyage(), 2211 ) ) );
+			AddItem( Newbied( Rehued( new GnarledStaff(), 2211 ) ) );
 
 			PackItem( new Bandage( Utility.RandomMinMax( 30, 40 ) ) );
 			PackStrongPotions( 6, 12 );

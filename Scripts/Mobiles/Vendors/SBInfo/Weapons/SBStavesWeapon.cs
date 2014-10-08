@@ -20,10 +20,10 @@ namespace Server.Mobiles
 		{
 			public InternalBuyInfo()
 			{
-				Add( new GenericBuyInfo( typeof( Blackstaff ), 22, 20, 0xDF1, 0 ) );
-				Add( new GenericBuyInfo( typeof( Batonvoyage ), 16, 20, 0x13F8, 0 ) );
-				Add( new GenericBuyInfo( typeof( Quarterstaff ), 19, 20, 0xE89, 0 ) );
-				Add( new GenericBuyInfo( typeof( Shepherdscrook ), 20, 20, 0xE81, 0 ) );
+				Add( new GenericBuyInfo( typeof( BlackStaff ), 22, 20, 0xDF1, 0 ) );
+				Add( new GenericBuyInfo( typeof( GnarledStaff ), 16, 20, 0x13F8, 0 ) );
+				Add( new GenericBuyInfo( typeof( QuarterStaff ), 19, 20, 0xE89, 0 ) );
+				Add( new GenericBuyInfo( typeof( ShepherdsCrook ), 20, 20, 0xE81, 0 ) );
 			}
 		}
 

@@ -4,14 +4,14 @@ using Server.Items;
 
 namespace Server.Items
 {
-    public class Batondruide : BaseStaff
+    public class BatonDruide : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batondruide()
+        public BatonDruide()
             : base(0x29c9)
         {
             Weight = 8.0;
@@ -19,7 +19,7 @@ namespace Server.Items
             Name = "Baton de druide";
         }
 
-        public Batondruide(Serial serial)
+        public BatonDruide(Serial serial)
             : base(serial)
         {
         }
@@ -39,14 +39,14 @@ namespace Server.Items
         }
     }
 
-    public class Batonelement : BaseStaff
+    public class BatonElement : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batonelement()
+        public BatonElement()
             : base(0x317d)
         {
             Weight = 8.0;
@@ -54,7 +54,7 @@ namespace Server.Items
             Name = "Baton des éléments";
         }
 
-        public Batonelement(Serial serial)
+        public BatonElement(Serial serial)
             : base(serial)
         {
         }
@@ -74,14 +74,14 @@ namespace Server.Items
         }
     }
 
-    public class Batonelfique : BaseStaff
+    public class BatonElfique : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batonelfique()
+        public BatonElfique()
             : base(0x2894)
         {
             Weight = 8.0;
@@ -89,7 +89,7 @@ namespace Server.Items
             Name = "Baton elfique";
         }
 
-        public Batonelfique(Serial serial)
+        public BatonElfique(Serial serial)
             : base(serial)
         {
         }
@@ -144,14 +144,14 @@ namespace Server.Items
         }
     }
 
-    public class Batonosseux : BaseStaff
+    public class BatonOsseux : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batonosseux()
+        public BatonOsseux()
             : base(0x29c8)
         {
             Weight = 8.0;
@@ -159,7 +159,7 @@ namespace Server.Items
             Name = "Baton osseux";
         }
 
-        public Batonosseux(Serial serial)
+        public BatonOsseux(Serial serial)
             : base(serial)
         {
         }
@@ -179,14 +179,14 @@ namespace Server.Items
         }
     }
 
-    public class Batonsoleil : BaseStaff
+    public class BatonSoleil : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batonsoleil()
+        public BatonSoleil()
             : base(0x29c6)
         {
             Weight = 8.0;
@@ -194,7 +194,7 @@ namespace Server.Items
             Name = "Baton du soleil";
         }
 
-        public Batonsoleil(Serial serial)
+        public BatonSoleil(Serial serial)
             : base(serial)
         {
         }
@@ -214,14 +214,14 @@ namespace Server.Items
         }
     }
 
-    public class Batonsorcier : BaseStaff
+    public class BatonSorcier : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batonsorcier()
+        public BatonSorcier()
             : base(0x317e)
         {
             Weight = 8.0;
@@ -229,7 +229,7 @@ namespace Server.Items
             Name = "Baton du sorcier";
         }
 
-        public Batonsorcier(Serial serial)
+        public BatonSorcier(Serial serial)
             : base(serial)
         {
         }
@@ -249,14 +249,14 @@ namespace Server.Items
         }
     }
 
-    public class Batontenebreux : BaseStaff
+    public class BatonTenebreux : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batontenebreux()
+        public BatonTenebreux()
             : base(0x29c5)
         {
             Weight = 8.0;
@@ -264,7 +264,7 @@ namespace Server.Items
             Name = "Baton ténébreux";
         }
 
-        public Batontenebreux(Serial serial)
+        public BatonTenebreux(Serial serial)
             : base(serial)
         {
         }
@@ -319,14 +319,14 @@ namespace Server.Items
         }
     }
 
-    public class Batonvoyage: BaseStaff
+    public class GnarledStaff: BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Batonvoyage()
+        public GnarledStaff()
             : base(0x29cb)
         {
             Weight = 8.0;
@@ -334,7 +334,7 @@ namespace Server.Items
             Name = "Baton de voyage";
         }
 
-        public Batonvoyage(Serial serial)
+        public GnarledStaff(Serial serial)
             : base(serial)
         {
         }
@@ -424,14 +424,14 @@ namespace Server.Items
         }
     }
 
-    public class Batonlourd : BaseStaff
+    public class BatonLourd : BaseStaff
     {
         public override int DefMinDamage { get { return 13; } }
         public override int DefMaxDamage { get { return 18; } }
         public override int DefSpeed { get { return 45; } }
 
         [Constructable]
-        public Batonlourd()
+        public BatonLourd()
             : base(0x29cc)
         {
             Weight = 8.0;
@@ -439,7 +439,7 @@ namespace Server.Items
             Name = "Baton lourd";
         }
 
-        public Batonlourd(Serial serial)
+        public BatonLourd(Serial serial)
             : base(serial)
         {
         }
@@ -529,14 +529,14 @@ namespace Server.Items
         }
     }
 
-    public class Canneosseuse : BaseStaff
+    public class CanneOsseuse : BaseStaff
     {
         public override int DefMinDamage { get { return 7; } }
         public override int DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
-        public Canneosseuse()
+        public CanneOsseuse()
             : base(0x13f8)
         {
             Weight = 8.0;
@@ -544,7 +544,7 @@ namespace Server.Items
             Name = "Canne osseuse";
         }
 
-        public Canneosseuse(Serial serial)
+        public CanneOsseuse(Serial serial)
             : base(serial)
         {
         }
@@ -564,14 +564,14 @@ namespace Server.Items
         }
     }
 
-    public class Blackstaff : BaseStaff
+    public class BlackStaff : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Blackstaff()
+        public BlackStaff()
             : base(0xdf0)
         {
             Weight = 8.0;
@@ -579,7 +579,7 @@ namespace Server.Items
             Name = "Baton noir";
         }
 
-        public Blackstaff(Serial serial)
+        public BlackStaff(Serial serial)
             : base(serial)
         {
         }
@@ -599,14 +599,14 @@ namespace Server.Items
         }
     }
 
-    public class Shepherdscrook : BaseStaff
+    public class ShepherdsCrook : BaseStaff
     {
         public override int DefMinDamage { get { return 11; } }
         public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
-        public Shepherdscrook()
+        public ShepherdsCrook()
             : base(0xe81)
         {
             Weight = 8.0;
@@ -614,7 +614,7 @@ namespace Server.Items
             Name = "Houlette du berger";
         }
 
-        public Shepherdscrook(Serial serial)
+        public ShepherdsCrook(Serial serial)
             : base(serial)
         {
         }
@@ -634,14 +634,14 @@ namespace Server.Items
         }
     }
 
-    public class Quarterstaff : BaseStaff
+    public class QuarterStaff : BaseStaff
     {
         public override int DefMinDamage { get { return 5; } }
         public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
-        public Quarterstaff()
+        public QuarterStaff()
             : base(0xe89)
         {
             Weight = 8.0;
@@ -649,7 +649,7 @@ namespace Server.Items
             Name = "Baton de combat";
         }
 
-        public Quarterstaff(Serial serial)
+        public QuarterStaff(Serial serial)
             : base(serial)
         {
         }

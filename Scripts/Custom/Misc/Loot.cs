@@ -42,8 +42,8 @@ namespace Server
                 typeof( Dravene ),   typeof( Vifcoupe ),   typeof( Draglast ),   typeof( Auderre ),   typeof( Batarde ),
                 typeof( Tranchevil ),   typeof( Ventmore ),   typeof( Excalior ),   typeof( Conquise ),   typeof( Runire ),
                 typeof( Nerfille ),   typeof( Myliron ),   typeof( Nhilarte ),   typeof( Abysse ),   typeof( Atargne ),
-                typeof( Querquoise ),   typeof( Merlarme ),   typeof( Dorleane ),   typeof( Couliere ),   typeof( Dawn ),
-                typeof( Lerise ),   typeof( Luminera ),   typeof( Gerumir ),   typeof( Narvegne ),   typeof( Hectmore ),
+                typeof( Querquoise ),   typeof( Merlame ),   typeof( Dorleane ),   typeof( Couliere ),   typeof( Dawn ),
+                typeof( Lerise ),   typeof( Gerumir ),   typeof( Narvegne ),   typeof( Hectmore ),
 
                 typeof( Sabre ),   typeof( Mersang ),   typeof( Raghash ),   typeof( Prisienne ),   typeof( Cutlass ),
                 typeof( Scimitar ),
@@ -65,7 +65,8 @@ namespace Server
                 typeof( Dagger ),   typeof( Safrine ),   typeof( Dentsombre ),   typeof( Lozure ),   typeof( Serpentine ),
                 typeof( Brillaume ),   typeof( Dracourbe ),   typeof( Ecorchette ),
 
-                typeof( Poignard ),   typeof( Eblame ),   typeof( Imperlame ),
+                // Main gauche.
+                // typeof( Poignard ),   typeof( Eblame ),   typeof( Imperlame ),
 
                 typeof( Fleuret ),   typeof( Percille ),   typeof( Rapiere ),   typeof( Cuivardise ),   typeof( Lyzardese ),
                 typeof( Estoc ),   typeof( Musareche ),   typeof( Brette ),
@@ -74,8 +75,8 @@ namespace Server
                 
                 typeof( Halberd ),   typeof( Bardine ),   typeof( Hastiche ),   typeof( Granbarde ),
 
-                typeof( Lancel ),   typeof( Spear ),   typeof( Terricharde ),   typeof( Percetronc ),   typeof( ShortSpear ),
-                typeof( WarFork ),   typeof( Lance ),   typeof( DoubleLance ),   typeof( Piculame ),   typeof( Percecoeur ),
+                typeof( Lancel ),   typeof( Spear ),   typeof( Terricharde ),   typeof( PerceTronc ),   typeof( ShortSpear ),
+                typeof( WarFork ),   typeof( Lance ),   typeof( DoubleLance ),   typeof( Piculame ),   typeof( PerceCoeur ),
 
                 typeof( Pique ),   typeof( Trident ),   typeof( Racuris ),   typeof( Transpercille ),   typeof( Mascarate ),
                 typeof( Turione ),
@@ -87,9 +88,9 @@ namespace Server
 
                 typeof( Club ),   typeof( Gourpic ),   typeof( Gourdin ),   typeof( Batonmace ),
 
-                typeof( ShepherdsCrook ),   typeof( QuarterStaff ),   typeof( GnarledStaff ),   typeof( Canne ),   typeof( CanneOsseux ),
-                typeof( BatonVoyage ),   typeof( BatonElfique ),   typeof( Eteurfer ),   typeof( Crochire ),   typeof( Seliphore ),
-                typeof( BatonSoleil ),   typeof( BatonTenebrea ),   typeof( Boulnar ),   typeof( BatonSorcier ),   typeof( BatonElement ),
+                typeof( ShepherdsCrook ),   typeof( QuarterStaff ),   typeof( GnarledStaff ),   typeof( Canne ),   typeof( CanneOsseuse ),
+                typeof( GnarledStaff ),   typeof( BatonElfique ),   typeof( BatonLourd ),   typeof( Crochire ),   typeof( Seliphore ),
+                typeof( BatonSoleil ),   typeof( BatonTenebreux ),   typeof( Boulnar ),   typeof( BatonSorcier ),   typeof( BatonElement ),
                 typeof( BatonDruide ),   typeof( BatonOsseux )
 			};
 
@@ -104,7 +105,7 @@ namespace Server
 
         private static Type[] m_TemraelRangedWeaponTypes = new Type[]
 			{
-				typeof( Tarkarc ),   typeof( Legarc ),   typeof( GrandArc ),   typeof( Souplecorde ),   typeof( Sombrevent ),
+				/*typeof( Tarkarc ),*/   typeof( Legarc ),   typeof( GrandArc ),   typeof( Souplecorde ),   typeof( Sombrevent ),
                 typeof( Sifflecrin ),   typeof( Chantefleche ),
 
                 typeof( Crossbow ),   typeof( HeavyCrossbow ),   typeof( Percemurs ),   typeof( Arbavive ),   typeof( Lumitrait )

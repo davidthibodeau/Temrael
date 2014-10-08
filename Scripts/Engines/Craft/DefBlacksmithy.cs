@@ -391,7 +391,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Rodere), "Épées", "Rodère", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Dravene), "Épées", "Dravène", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Draglast), "Épées", "Draglast", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Merlarme), "Épées", "Merlarme", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            index = AddCraft(typeof(Merlame), "Épées", "Merlarme", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Narvegne), "Épées", "Narvègne", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
             index = AddCraft(typeof(Hectmore), "Épées", "Hectmore", 70.0, 100.0, typeof(FerIngot), "Lingots", 10, 1044037);
 
@@ -419,7 +419,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Nhilarte), "Épées", "Nhilarte", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Abysse), "Épées", "Abysse", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
             index = AddCraft(typeof(Dorleane), "Épées", "Dorleane", 60.0, 90.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Luminera), "Épées", "Luminera", 70.0, 100.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Couliere), "Épées", "Coulière", 70.0, 100.0, typeof(FerIngot), "Lingots", 12, 1044037);
 
             //Claymore
@@ -453,12 +452,12 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Axes
-            index = AddCraft(typeof(Hachette), "Haches", "Hachette", 0.0, 30.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            //index = AddCraft(typeof(Hachette), "Haches", "Hachette", 0.0, 30.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //AddRes(index, typeof(Log), "Bûches", 2, 1044351);
             index = AddCraft(typeof(Axe), "Haches", "Hache", 10.0, 40.0, typeof(FerIngot), "Lingots", 10, 1044037);
             AddRes(index, typeof(Log), "Bûches", 2, 1044351);
-            index = AddCraft(typeof(HachetteDouble), "Haches", "Hachette Double", 20.0, 50.0, typeof(FerIngot), "Lingots", 8, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            //index = AddCraft(typeof(HachetteDouble), "Haches", "Hachette Double", 20.0, 50.0, typeof(FerIngot), "Lingots", 8, 1044037);
+            //AddRes(index, typeof(Log), "Bûches", 2, 1044351);
             index = AddCraft(typeof(Luminar), "Haches", "Luminar", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
             AddRes(index, typeof(Log), "Bûches", 2, 1044351);
             index = AddCraft(typeof(Loragne), "Haches", "Loragne", 30.0, 60.0, typeof(FerIngot), "Lingots", 12, 1044037);
@@ -521,9 +520,9 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Dracourbe), "Armes Perforantes", "Dracourbe", 70.0, 100.0, typeof(FerIngot), "Lingots", 3, 1044037);
             index = AddCraft(typeof(Spadasine), "Armes Perforantes", "Spadasine", 70.0, 100.0, typeof(FerIngot), "Lingots", 3, 1044037);
             index = AddCraft(typeof(Ecorchette), "Armes Perforantes", "Écorchette", 70.0, 100.0, typeof(FerIngot), "Lingots", 3, 1044037);
-            index = AddCraft(typeof(Poignard), "Armes Perforantes", "Poignard", 30.0, 50.0, typeof(FerIngot), "Lingots", 3, 1044037);
-            index = AddCraft(typeof(Eblame), "Armes Perforantes", "Eblame", 50.0, 80.0, typeof(FerIngot), "Lingots", 4, 1044037);
-            index = AddCraft(typeof(Imperlame), "Armes Perforantes", "Imperlame", 70.0, 100.0, typeof(FerIngot), "Lingots", 3, 1044037);
+            //index = AddCraft(typeof(Poignard), "Armes Perforantes", "Poignard", 30.0, 50.0, typeof(FerIngot), "Lingots", 3, 1044037);
+            //index = AddCraft(typeof(Eblame), "Armes Perforantes", "Eblame", 50.0, 80.0, typeof(FerIngot), "Lingots", 4, 1044037);
+            //index = AddCraft(typeof(Imperlame), "Armes Perforantes", "Imperlame", 70.0, 100.0, typeof(FerIngot), "Lingots", 3, 1044037);
             index = AddCraft(typeof(Fleuret), "Armes Perforantes", "Fleuret", 10.0, 40.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Percille), "Armes Perforantes", "Percille", 20.0, 50.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Rapiere), "Armes Perforantes", "Rapiere", 30.0, 60.0, typeof(FerIngot), "Lingots", 8, 1044037);
@@ -571,7 +570,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);
             index = AddCraft(typeof(Terricharde), "Lances", "Terricharde", 30.0, 60.0, typeof(FerIngot), "Lingots", 12, 1044037);
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);
-            index = AddCraft(typeof(Percetronc), "Lances", "Percetronc", 40.0, 70.0, typeof(FerIngot), "Lingots", 12, 1044037);
+            index = AddCraft(typeof(PerceTronc), "Lances", "PerceTronc", 40.0, 70.0, typeof(FerIngot), "Lingots", 12, 1044037);
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);
             index = AddCraft(typeof(ShortSpear), "Lances", "Hastone", 50.0, 80.0, typeof(FerIngot), "Lingots", 12, 1044037);
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);
@@ -583,7 +582,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);
             index = AddCraft(typeof(Piculame), "Lances", "Piculame", 70.0, 100.0, typeof(FerIngot), "Lingots", 12, 1044037);
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);
-            index = AddCraft(typeof(Percecoeur), "Lances", "Percecoeur", 70.0, 100.0, typeof(FerIngot), "Lingots", 12, 1044037);
+            index = AddCraft(typeof(PerceCoeur), "Lances", "PerceCoeur", 70.0, 100.0, typeof(FerIngot), "Lingots", 12, 1044037);
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);
             index = AddCraft(typeof(Pitchfork), "Lances", "Fourche", 20.0, 50.0, typeof(FerIngot), "Lingots", 12, 1044037);
             AddRes(index, typeof(Log), "Bûches", 4, 1044351);

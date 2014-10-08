@@ -109,7 +109,6 @@ namespace Server.Items
         }
     }
 
-
     public class GrandArc : BaseArc
     {
         public override int DefMinDamage { get { return 14; } }
@@ -266,6 +265,41 @@ namespace Server.Items
         }
 
         public Foliere(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class Sifflecrin : BaseArc
+    {
+        public override int DefMinDamage { get { return 4; } }
+        public override int DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 20; } }
+
+        [Constructable]
+        public Sifflecrin()
+            : base(0x299b)
+        {
+            Weight = 8.0;
+            Layer = Layer.TwoHanded;
+            Name = "Sifflecrin";
+        }
+
+        public Sifflecrin(Serial serial)
             : base(serial)
         {
         }

@@ -437,7 +437,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( Torch ),		1011410, 3940 ),
 				new CustomItem( typeof( Hammer ),		1011411, 4020 ),
 				new CustomItem( typeof( Longsword ),	1011412, 3936 ),
-				new CustomItem( typeof( Batonvoyage ), 1011413, 5113 )
+				new CustomItem( typeof( GnarledStaff ), 1011413, 5113 )
 			} ),
 
 			new CustomCategory( Layer.FirstValid, 1015325, false, new CustomItem[]{//More held items

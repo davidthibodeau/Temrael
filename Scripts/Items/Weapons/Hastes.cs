@@ -75,22 +75,22 @@ namespace Server.Items
         }
     }
 
-    public class Percetronc : BaseSpear
+    public class PerceTronc : BaseSpear
     {
         public override int DefMinDamage { get { return 7; } }
         public override int DefMaxDamage { get { return 11; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
-        public Percetronc()
+        public PerceTronc()
             : base(0x297d)
         {
             Weight = 4.0;
             Layer = Layer.OneHanded;
-            Name = "Percetronc";
+            Name = "PerceTronc";
         }
 
-        public Percetronc(Serial serial)
+        public PerceTronc(Serial serial)
             : base(serial)
         {
         }
@@ -356,14 +356,14 @@ namespace Server.Items
         }
     }
 
-    public class Doublelance : BaseSpear
+    public class DoubleLance : BaseSpear
     {
         public override int DefMinDamage { get { return 9; } }
         public override int DefMaxDamage { get { return 14; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
-        public Doublelance()
+        public DoubleLance()
             : base(0x297c)
         {
             Weight = 8.0;
@@ -371,7 +371,7 @@ namespace Server.Items
             Name = "Double lance";
         }
 
-        public Doublelance(Serial serial)
+        public DoubleLance(Serial serial)
             : base(serial)
         {
         }
@@ -391,14 +391,14 @@ namespace Server.Items
         }
     }
 
-    public class Shortspear : BaseSpear
+    public class ShortSpear : BaseSpear
     {
         public override int DefMinDamage { get { return 7; } }
         public override int DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
-        public Shortspear()
+        public ShortSpear()
             : base(0x1403)
         {
             Weight = 8.0;
@@ -406,7 +406,7 @@ namespace Server.Items
             Name = "Lance courte";
         }
 
-        public Shortspear(Serial serial)
+        public ShortSpear(Serial serial)
             : base(serial)
         {
         }
@@ -496,14 +496,14 @@ namespace Server.Items
         }
     }
 
-    public class Warfork : BaseSpear
+    public class WarFork : BaseSpear
     {
         public override int DefMinDamage { get { return 6; } }
         public override int DefMaxDamage { get { return 10; } }
         public override int DefSpeed { get { return 25; } }
 
         [Constructable]
-        public Warfork()
+        public WarFork()
             : base(0x1405)
         {
             Weight = 8.0;
@@ -511,7 +511,7 @@ namespace Server.Items
             Name = "Pique de guerre";
         }
 
-        public Warfork(Serial serial)
+        public WarFork(Serial serial)
             : base(serial)
         {
         }

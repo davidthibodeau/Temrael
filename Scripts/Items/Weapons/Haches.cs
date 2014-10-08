@@ -322,22 +322,22 @@ namespace Server.Items
         }
     }
 
-    public class Ocarina : BaseAxe
+    public class Orcarinia : BaseAxe
     {
         public override int DefMinDamage { get { return 5; } }
         public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
-        public Ocarina()
+        public Orcarinia()
             : base(0x2967)
         {
             Weight = 4.0;
             Layer = Layer.OneHanded;
-            Name = "Ocarina";
+            Name = "Orcarinia";
         }
 
-        public Ocarina(Serial serial)
+        public Orcarinia(Serial serial)
             : base(serial)
         {
         }
@@ -357,14 +357,14 @@ namespace Server.Items
         }
     }
 
-    public class Waraxe : BaseAxe
+    public class WarAxe : BaseAxe
     {
         public override int DefMinDamage { get { return 5; } }
         public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
-        public Waraxe()
+        public WarAxe()
             : base(0x2967)
         {
             Weight = 4.0;
@@ -372,7 +372,7 @@ namespace Server.Items
             Name = "Hache de guerre";
         }
 
-        public Waraxe(Serial serial)
+        public WarAxe(Serial serial)
             : base(serial)
         {
         }
@@ -568,14 +568,14 @@ namespace Server.Items
         }
     }
 
-    public class Largebattleaxe : BaseAxe
+    public class LargeBattleAxe : BaseAxe
     {
         public override int DefMinDamage { get { return 13; } }
         public override int DefMaxDamage { get { return 18; } }
         public override int DefSpeed { get { return 45; } }
 
         [Constructable]
-        public Largebattleaxe()
+        public LargeBattleAxe()
             : base(0x13fb)
         {
             Weight = 4.0;
@@ -583,7 +583,7 @@ namespace Server.Items
             Name = "Grande hache de guerre";
         }
 
-        public Largebattleaxe(Serial serial)
+        public LargeBattleAxe(Serial serial)
             : base(serial)
         {
         }
@@ -673,14 +673,14 @@ namespace Server.Items
         }
     }
 
-    public class Twohandedaxe : BaseAxe
+    public class TwoHandedAxe : BaseAxe
     {
         public override int DefMinDamage { get { return 9; } }
         public override int DefMaxDamage { get { return 14; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
-        public Twohandedaxe()
+        public TwoHandedAxe()
             : base(0x1443)
         {
             Weight = 4.0;
@@ -688,7 +688,7 @@ namespace Server.Items
             Name = "Matar"; // Because why not.
         }
 
-        public Twohandedaxe(Serial serial)
+        public TwoHandedAxe(Serial serial)
             : base(serial)
         {
         }
@@ -813,14 +813,14 @@ namespace Server.Items
         }
     }
 
-    public class Doubleaxe : BaseAxe
+    public class DoubleAxe : BaseAxe
     {
         public override int DefMinDamage { get { return 4; } }
         public override int DefMaxDamage { get { return 7; } }
         public override int DefSpeed { get { return 20; } }
 
         [Constructable]
-        public Doubleaxe()
+        public DoubleAxe()
             : base(0x296c)
         {
             Weight = 4.0;
@@ -828,7 +828,7 @@ namespace Server.Items
             Name = "Doublache"; // Because why not.
         }
 
-        public Doubleaxe(Serial serial)
+        public DoubleAxe(Serial serial)
             : base(serial)
         {
         }
