@@ -285,6 +285,40 @@ namespace Server.Items
         }
     }
 
+    public class Lance : BaseSpear
+    {
+        public override int DefMinDamage { get { return 12; } }
+        public override int DefMaxDamage { get { return 17; } }
+        public override int DefSpeed { get { return 50; } }
+
+        [Constructable]
+        public Lance()
+            : base(0x26c0)
+        {
+            Weight = 4.0;
+            Layer = Layer.OneHanded;
+            Name = "Lance";
+        }
+
+        public Lance(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
 
     // Deux mains.
     public class Cythe : BaseSpear
@@ -951,5 +985,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
+
+
 
 }

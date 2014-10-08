@@ -2781,7 +2781,6 @@
     <Compile Include="Items\Weapons\Haches.cs" />
     <Compile Include="Items\Weapons\Hastes.cs" />
     <Compile Include="Items\Weapons\Katars.cs" />
-    <Compile Include="Items\Weapons\Lances.cs" />
     <Compile Include="Items\Weapons\Masses.cs" />
     <Compile Include="Items\Weapons\Core\BaseKatar.cs" />
     <Compile Include="Items\Weapons\Core\BaseMeleeWeapon.cs" />
