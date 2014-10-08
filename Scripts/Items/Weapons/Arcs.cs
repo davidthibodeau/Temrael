@@ -563,4 +563,144 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
+
+    public class Maegie : BaseArc
+    {
+        public override int DefMinDamage { get { return 13; } }
+        public override int DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 45; } }
+
+        [Constructable]
+        public Maegie()
+            : base(0x2d26)
+        {
+            Weight = 8.0;
+            Layer = Layer.TwoHanded;
+            Name = "Maegie";
+        }
+
+        public Maegie(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class Foudre : BaseArc
+    {
+        public override int DefMinDamage { get { return 9; } }
+        public override int DefMaxDamage { get { return 14; } }
+        public override int DefSpeed { get { return 35; } }
+
+        [Constructable]
+        public Foudre()
+            : base(0x2ff0)
+        {
+            Weight = 8.0;
+            Layer = Layer.TwoHanded;
+            Name = "Foudre";
+        }
+
+        public Foudre(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class Tarkarc : BaseArc
+    {
+        public override int DefMinDamage { get { return 6; } }
+        public override int DefMaxDamage { get { return 10; } }
+        public override int DefSpeed { get { return 25; } }
+
+        [Constructable]
+        public Tarkarc()
+            : base(0x299e)
+        {
+            Weight = 8.0;
+            Layer = Layer.TwoHanded;
+            Name = "Tarkarc";
+        }
+
+        public Tarkarc(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class Pieuse : BaseArc
+    {
+        public override int DefMinDamage { get { return 13; } }
+        public override int DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 45; } }
+
+        [Constructable]
+        public Pieuse()
+            : base(0x2fef)
+        {
+            Weight = 8.0;
+            Layer = Layer.TwoHanded;
+            Name = "Pieuse";
+        }
+
+        public Pieuse(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
 }
