@@ -39,7 +39,7 @@ namespace Server.Factions
 			AddItem( Immovable( Rehued( new Sandals(), 1325 ) ) );
 			AddItem( Immovable( Rehued( new Robe(), 1310 ) ) );
 			AddItem( Immovable( Rehued( new LeatherGloves(), 1325 ) ) );
-			AddItem( Newbied( Rehued( new GnarledStaff(), 1310 ) ) );
+            AddItem(Newbied(Rehued(new GnarledStaff(), 1310)));
 
 			PackItem( new Bandage( Utility.RandomMinMax( 30, 40 ) ) );
 			PackStrongPotions( 6, 12 );

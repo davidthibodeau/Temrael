@@ -534,18 +534,18 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(QuarterStaff), "Équipement", "Baton", 30.0, 50.0, typeof(Board), "Planches", 6, 1044351);
             index = AddCraft(typeof(GnarledStaff), "Équipement", "Bâton Noué", 30.0, 50.0, typeof(Board), "Planches", 7, 1044351);
             index = AddCraft(typeof(Canne), "Équipement", "Canne", 40.0, 60.0, typeof(Board), "Planches", 5, 1044351);
-            index = AddCraft(typeof(CanneOsseux), "Équipement", "Canne Osseuse", 45.0, 65.0, typeof(Board), "Planches", 5, 1044351);
+            index = AddCraft(typeof(CanneOsseuse), "Équipement", "Canne Osseuse", 45.0, 65.0, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(Bone), "Os", 3, 1044287);
 
-            index = AddCraft(typeof(BatonVoyage), "Équipement", "Baton de Voyage", 45.0, 65.0, typeof(Board), "Planches", 6, 1044351);
+            index = AddCraft(typeof(GnarledStaff), "Équipement", "Baton de Voyage", 45.0, 65.0, typeof(Board), "Planches", 6, 1044351);
             index = AddCraft(typeof(BatonElfique), "Équipement", "Baton Elfique", 45.0, 65.0, typeof(Board), "Planches", 6, 1044351);
-            index = AddCraft(typeof(Eteurfer), "Équipement", "Eteurfer", 50.0, 70.0, typeof(Board), "Planches", 4, 1044351);
+            index = AddCraft(typeof(BatonLourd), "Équipement", "Eteurfer", 50.0, 70.0, typeof(Board), "Planches", 4, 1044351);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 6, 1044287);
 
             index = AddCraft(typeof(Crochire), "Équipement", "Crochire", 55.0, 75.0, typeof(Board), "Planches", 8, 1044351);
             index = AddCraft(typeof(Seliphore), "Équipement", "Seliphore", 60.0, 80.0, typeof(Board), "Planches", 8, 1044351);
             index = AddCraft(typeof(BatonSoleil), "Équipement", "Baton Religieux Nomade", 65.0, 85.0, typeof(Board), "Planches", 8, 1044351);
-            index = AddCraft(typeof(BatonTenebrea), "Équipement", "Baton Tenebrea", 65.0, 85.0, typeof(Board), "Planches", 8, 1044351);
+            index = AddCraft(typeof(BatonTenebreux), "Équipement", "Baton Tenebrea", 65.0, 85.0, typeof(Board), "Planches", 8, 1044351);
             index = AddCraft(typeof(Boulnar), "Équipement", "Boulnar", 65.0, 85.0, typeof(Board), "Planches", 7, 1044351);
             AddRes(index, typeof(FerIngot), "Lingot de Fer", 2, 1044287);
 

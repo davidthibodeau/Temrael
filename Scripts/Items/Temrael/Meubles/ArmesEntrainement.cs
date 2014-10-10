@@ -3,7 +3,7 @@ using System;
 namespace Server.Items
 {
 	[Furniture]
-	public class DagueBois : Dagger
+	public class DagueBois : Item
 	{
 		[Constructable]
 		public DagueBois() : base( 0x1494 )
@@ -34,7 +34,7 @@ namespace Server.Items
 	}
 
     [Furniture]
-    public class LanceBois : BaseSpear
+    public class LanceBois : Item
     {
         [Constructable]
         public LanceBois()
@@ -66,7 +66,7 @@ namespace Server.Items
     }
 
     [Furniture]
-    public class MasseBois : BaseBashing
+    public class MasseBois : Item
     {
         [Constructable]
         public MasseBois()
@@ -98,7 +98,7 @@ namespace Server.Items
     }
 
     [Furniture]
-    public class BatonBois : BaseStaff
+    public class BatonBois : Item
     {
         [Constructable]
         public BatonBois()
@@ -130,7 +130,7 @@ namespace Server.Items
     }
 
     [Furniture]
-    public class EpeeBois : BaseSword
+    public class EpeeBois : Item
     {
         [Constructable]
         public EpeeBois()

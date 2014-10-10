@@ -63,7 +63,7 @@ namespace Server.Mobiles
             AddItem(new Shirt());
 
 
-            AddItem(new Bow());
+            AddItem(new GrandArc());
 
             PackItem(new Arrow(20));
             PackGold(10, 75);

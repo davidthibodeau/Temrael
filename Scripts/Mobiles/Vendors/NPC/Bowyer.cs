@@ -34,7 +34,7 @@ namespace Server.Mobiles
 		{
 			base.InitOutfit();
 
-			AddItem( new Server.Items.Bow() );
+			AddItem( new Server.Items.GrandArc() );
 			AddItem( new Server.Items.LeatherGorget() );
 		}
 

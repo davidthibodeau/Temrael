@@ -751,7 +751,7 @@ namespace Server.Mobiles
 
 					Item item = items[i];
 
-					if ( item is BaseWeapon )
+					/*if ( item is BaseWeapon )
 					{
 						BaseWeapon weapon = (BaseWeapon)item;
 
@@ -772,7 +772,7 @@ namespace Server.Mobiles
 							moved = true;
 						}
 					}
-					else if ( item is BaseArmor )
+					else */if ( item is BaseArmor )
 					{
 						BaseArmor armor = (BaseArmor)item;
 

@@ -33,7 +33,7 @@ namespace Server.Factions
 			base.InitOutfit();
 
 			AddItem( new Robe( Utility.RandomBlueHue() ) );
-			AddItem( new GnarledStaff() );
+            AddItem(new GnarledStaff());
 		}
 
 		public FactionReagentVendor( Serial serial ) : base( serial )

@@ -47,7 +47,7 @@ namespace Server.Mobiles
 			AddItem( new Boots() );
 			AddItem( new SkullCap() );
 
-			Bow bow = new Bow();
+			GrandArc bow = new GrandArc();
 
 			bow.Movable = false;
 			bow.Crafter = this;

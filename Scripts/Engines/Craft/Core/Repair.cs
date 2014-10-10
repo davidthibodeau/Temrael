@@ -126,8 +126,7 @@ namespace Server.Engines.Craft
 				else if ( m_CraftSystem is DefCarpentry )
 				{
 					return ( weapon is Club )
-						|| ( weapon is BlackStaff )
-						|| ( weapon is MagicWand );
+						|| ( weapon is BlackStaff );
 				}
 				else if ( m_CraftSystem is DefBlacksmithy )
 				{

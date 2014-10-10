@@ -22,7 +22,7 @@ namespace Server.Mobiles
 			{ 	
 				Add( new GenericBuyInfo( typeof( FerIngot ), 10, 16, 0x1BF2, 0 ) );
 				Add( new GenericBuyInfo( typeof( Tongs ), 20, 14, 0xFBB, 0 ) );
-                Add(new GenericBuyInfo(typeof(Hachette), 5, 15, 0xF49, 0)); 
+                Add(new GenericBuyInfo(typeof(Axe), 5, 15, 0xF49, 0)); 
 			} 
 		} 
 

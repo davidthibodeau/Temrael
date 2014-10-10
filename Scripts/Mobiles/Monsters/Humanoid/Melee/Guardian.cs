@@ -51,7 +51,7 @@ namespace Server.Mobiles
 			AddItem( helm ); 
 
 
-			Bow bow = new Bow(); 
+			GrandArc bow = new GrandArc(); 
 
 			bow.Movable = false; 
 			bow.Crafter = this; 

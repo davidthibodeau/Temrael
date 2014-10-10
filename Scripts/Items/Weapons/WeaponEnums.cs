@@ -15,7 +15,7 @@ namespace Server.Items
 		Slashing,	// Katana, Broadsword, Longsword, etc. Slashing weapons are poisonable
 		Staff,		// Staves
 		Bashing,	// War Hammers, Maces, Mauls, etc. Two-handed bashing delivers crushing blows
-		Piercing,	// Spears, Warforks, Daggers, etc. Two-handed piercing delivers paralyzing blows
+		Piercing,	// Spears, WarForks, Daggers, etc. Two-handed piercing delivers paralyzing blows
 		Polearm,	// Halberd, Bardiche
 		Ranged,		// Bow, Crossbows
 		Fists		// Fists
