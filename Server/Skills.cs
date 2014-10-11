@@ -630,7 +630,6 @@ namespace Server
 				new SkillInfo( SkillName.Menuiserie,      "Menuiserie",		SkillCategory.Artisanat,	20.0,	5.0,	0.0,	null,	2.0,	0.5,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Cuisine,         "Cuisine",		SkillCategory.Artisanat,	0.0,	20.0,	30.0,	null,	0.0,	2.0,	3.0,	1.0 ),
 				new SkillInfo( SkillName.Couture,         "Couture",		SkillCategory.Artisanat,	3.75,	16.25,	5.0,	null,	0.38,	1.63,	0.5,	1.0 ),
-				new SkillInfo( SkillName.Hache,		     	"Hache",		SkillCategory.Artisanat,    20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Excavation,      "Excavation",		SkillCategory.Artisanat,	20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
                 new SkillInfo( SkillName.Polissage,       "Polissage",		SkillCategory.Artisanat,	0.0,	0.0,	0.0,	null,	0.0,	1.0,	2.0,	1.0 ),
 
@@ -643,7 +642,8 @@ namespace Server
 				new SkillInfo( SkillName.Epee,            "Epee",               SkillCategory.Combat,	7.5,	2.5,	0.0,	null,	0.75,	0.25,	0.0,	1.0 ),
 				new SkillInfo( SkillName.ArmeContondante, "Armes Contondantes",	SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	0.9,	0.1,	0.0,	1.0 ),
 				new SkillInfo( SkillName.ArmePerforante,  "Armes Perforantes",	SkillCategory.Combat,	4.5,	5.5,	0.0,	null,	0.45,	0.55,	0.0,	1.0 ),
-				new SkillInfo( SkillName.Anatomie,        "Anatomie",			SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	0.0,	0.1,	1.0,	1.0 ),
+                new SkillInfo( SkillName.Hache,		     	"Hache",		    SkillCategory.Combat,    20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
+                new SkillInfo( SkillName.Anatomie,        "Anatomie",			SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	0.0,	0.1,	1.0,	1.0 ),
 				new SkillInfo( SkillName.Concentration,   "Concentration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
                 new SkillInfo( SkillName.Penetration,     "Penetration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.5,	0.0,	1.0 ),
                 new SkillInfo( SkillName.CoupCritique,    "Coup Critique",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
