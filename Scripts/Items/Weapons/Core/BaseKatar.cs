@@ -11,11 +11,10 @@ namespace Server.Items
         public override int DefHitSound { get { return 0x23B; } }
         public override int DefMissSound { get { return 0x238; } }
 
-        public override SkillName DefSkill { get { return SkillName.Anatomie; } }
         public override WeaponType DefType { get { return WeaponType.Slashing; } }
         public override WeaponAnimation DefAnimation { get { return WeaponAnimation.Slash1H; } }
 
-        public override CombatStrategy Strategy { get { return StrategyContondante.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyPerforante.Strategy; } }
 
 		public BaseKatar( int itemID ) : base( itemID )
 		{

@@ -130,13 +130,6 @@ namespace Server
             switch ( reader.ReadByte() )
             {
                 case 1: return GetPoison( reader.ReadByte() );
-                case 2:
-                    //no longer used, safe to remove?
-                    reader.ReadInt();
-                    reader.ReadDouble();
-                    reader.ReadInt();
-                    reader.ReadTimeSpan();
-                    break;
             }
             return null;
         }

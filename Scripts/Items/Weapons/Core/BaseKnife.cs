@@ -11,7 +11,6 @@ namespace Server.Items
 		public override int DefHitSound{ get{ return 0x23B; } }
 		public override int DefMissSound{ get{ return 0x238; } }
 
-		public override SkillName DefSkill{ get{ return SkillName.ArmePerforante; } }
 		public override WeaponType DefType{ get{ return WeaponType.Piercing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
@@ -44,19 +43,6 @@ namespace Server.Items
 			from.SendLocalizedMessage( 1010018 ); // What do you want to use this item on?
 
 			from.Target = new BladedItemTarget( this );
-		}
-
-		public override void OnHit( Mobile attacker, Mobile defender, double damageBonus )
-		{
-			base.OnHit( attacker, defender, damageBonus );
-
-			if ( !Core.AOS && Poison != null && PoisonCharges > 0 )
-			{
-				--PoisonCharges;
-
-				if ( Utility.RandomDouble() >= 0.5 ) // 50% chance to poison
-					defender.ApplyPoison( attacker, Poison );
-			}
 		}
 	}
 }

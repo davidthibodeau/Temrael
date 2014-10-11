@@ -73,7 +73,6 @@ namespace Server.Items
 
 		public virtual int DefHitSound{ get{ return 0; } }
 		public virtual int DefMissSound{ get{ return 0; } }
-		public virtual SkillName DefSkill{ get{ return SkillName.ArmeTranchante; } }
 		public virtual WeaponType DefType{ get{ return WeaponType.Slashing; } }
 		public virtual WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
@@ -89,8 +88,6 @@ namespace Server.Items
 
         public override double PhysicalResistance { get { return (double)m_AosWeaponAttributes.ResistPhysicalBonus; } }
         public override double MagieResistance { get { return (double)m_AosWeaponAttributes.ResistMagieBonus; } }
-
-		public virtual SkillName AccuracySkill { get { return SkillName.Tactiques; } }
 		#endregion
 
 		#region Getters & Setters
@@ -241,7 +238,7 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public SkillName Skill
 		{
-			get{ return ( m_Skill == (SkillName)(-1) ? DefSkill : m_Skill ); }
+			get{ return ( m_Skill == (SkillName)(-1) ? Strategy.ToucherSkill : m_Skill ); }
 			set{ m_Skill = value; InvalidateProperties(); }
 		}
 
@@ -316,11 +313,6 @@ namespace Server.Items
 								m_SkillMod.Remove();
 
 							m_SkillMod = null;
-						}
-						else if ( m_SkillMod == null && Parent is Mobile )
-						{
-							m_SkillMod = new DefaultSkillMod( AccuracySkill, true, (int)m_AccuracyLevel * 5 );
-							((Mobile)Parent).AddSkillMod( m_SkillMod );
 						}
 						else if ( m_SkillMod != null )
 						{
@@ -511,15 +503,6 @@ namespace Server.Items
 
             from.NextCombatTime = Core.TickCount + Core.GetTicks(GetDelay(from));
 
-			if ( UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular )
-			{
-				if ( m_SkillMod != null )
-					m_SkillMod.Remove();
-
-				m_SkillMod = new DefaultSkillMod( AccuracySkill, true, (int)m_AccuracyLevel * 5 );
-				from.AddSkillMod( m_SkillMod );
-			}
-
 			if ( Core.AOS && m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 )
 			{
 				if ( m_MageMod != null )
@@ -638,84 +621,9 @@ namespace Server.Items
 			return defender.Skills[GetUsedSkill( defender, true )].Value;
 		}
 
-		//private static bool CheckAnimal( Mobile m, Type type )
-		//{
-		//	return AnimalForm.UnderTransformation( m, type );
-		//}
-
 		public virtual TimeSpan GetDelay( Mobile m )
 		{          
-			double speed = this.Speed;
-
-			if ( speed == 0 )
-				return TimeSpan.FromSeconds( 1.0 );
-
-			double delayInSeconds;
-
-            delayInSeconds = speed - ( ( (m.Dex-70) / 100) * 1.5 );
-
-			int bonus = AosAttributes.GetValue( m, AosAttribute.WeaponSpeed );
-
-            if (SymphonieSpell.m_SymphonieTable.Contains(m))
-            {
-                int symphonie = (int)SymphonieSpell.m_SymphonieTable[m];
-                bonus -= symphonie;
-            }
-
-            if (FougueCelesteMiracle.m_FougueCelesteTable.Contains(m))
-            {
-                bonus -= (int)FougueCelesteMiracle.m_FougueCelesteTable[m] * SpellHelper.GetTotalMobilesInRange(m, 5);
-
-                ReligiousSpell.MiracleEffet(m, m, 14154, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
-
-                //m.FixedParticles(14170, 10, 15, 5013, 1942, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
-                //m.PlaySound(490);
-            }
-
-            delayInSeconds -= bonus / 100;
-
-			//if ( Spells.Chivalry.DivineFurySpell.UnderEffect( m ) )
-			//	bonus += 10;
-
-			//int discordanceEffect = 0;
-
-			// Discordance gives a malus of -0/-28% to swing speed.
-			//if ( SkillHandlers.Discordance.GetEffect( m, ref discordanceEffect ) )
-			//	bonus -= discordanceEffect;
-
-			/*v += AOS.Scale( v, bonus );
-
-			if ( v <= 0 )
-				v = 1;
-
-			delayInSeconds = Math.Floor( 40000.0 / v ) * 0.5;
-
-			// Maximum swing rate capped at one swing per second 
-			// OSI dev said that it has and is supposed to be 1.25
-			if ( delayInSeconds < 1.25 )
-				delayInSeconds = 1.25;*/
-
-
-            if (m is BaseCreature)
-            {
-                delayInSeconds = ((BaseCreature)m).AttackSpeed;
-            }
-
-            //bonus pour une arme a une main sans bouclier
-            if (Layer == Layer.OneHanded)
-            {
-                Item b = m.FindItemOnLayer(Layer.TwoHanded);
-                if (!(b is BaseShield))
-                    delayInSeconds *= 0.85; // +15% de vitesse avec arme a une main sans bouclier
-            }
-
-            if (delayInSeconds < 1.0)
-                delayInSeconds = 1.0;
-
-            // Modificateur de la technique AttackSpeed.
-            delayInSeconds = TechniquesCombat.AttackSpeed.Bonus(m, delayInSeconds);
-
-			return TimeSpan.FromSeconds( delayInSeconds );
+			return TimeSpan.FromMilliseconds(Strategy.ProchaineAttaque(m));
 		}
 
 		public virtual void OnBeforeSwing( Mobile attacker, Mobile defender )
@@ -724,11 +632,6 @@ namespace Server.Items
 
 			if( a != null && !a.OnBeforeSwing( attacker, defender ) )
 				WeaponAbility.ClearCurrentAbility( attacker );
-
-			//SpecialMove move = SpecialMove.GetCurrentMove( attacker );
-
-			//if( move != null && !move.OnBeforeSwing( attacker, defender ) )
-			//	SpecialMove.ClearCurrentMove( attacker );
 		}
 
 		public virtual int OnSwing( Mobile attacker, Mobile defender )
@@ -1378,12 +1281,6 @@ namespace Server.Items
             }
             else
                 m_AosWeaponAttributes = new AosWeaponAttributes(this);
-
-            if (UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular && Parent is Mobile)
-            {
-                m_SkillMod = new DefaultSkillMod(AccuracySkill, true, (int)m_AccuracyLevel * 5);
-                ((Mobile)Parent).AddSkillMod(m_SkillMod);
-            }
 
             if (Core.AOS && m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 && Parent is Mobile)
             {

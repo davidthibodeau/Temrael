@@ -8,7 +8,6 @@ namespace Server.Items
 {
 	public abstract class BaseSword : BaseMeleeWeapon
 	{
-		public override SkillName DefSkill{ get{ return SkillName.ArmeTranchante; } }
 		public override WeaponType DefType{ get{ return WeaponType.Slashing; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
@@ -41,19 +40,6 @@ namespace Server.Items
 			from.SendLocalizedMessage( 1010018 ); // What do you want to use this item on?
 
 			from.Target = new BladedItemTarget( this );
-		}
-
-		public override void OnHit( Mobile attacker, Mobile defender, double damageBonus )
-		{
-			base.OnHit( attacker, defender, damageBonus );
-
-			if ( !Core.AOS && Poison != null && PoisonCharges > 0 )
-			{
-				--PoisonCharges;
-
-				if ( Utility.RandomDouble() >= 0.5 ) // 50% chance to poison
-					defender.ApplyPoison( attacker, Poison );
-			}
 		}
 	}
 }

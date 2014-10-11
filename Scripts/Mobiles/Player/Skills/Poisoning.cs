@@ -84,17 +84,11 @@ namespace Server.SkillHandlers
 
 					bool startTimer = false;
 
-					if ( targeted is BaseWeapon )
-					{
-						BaseWeapon weapon = (BaseWeapon)targeted;
-
-						if ( weapon.Layer == Layer.OneHanded )
-						{
-							// Only Bladed or Piercing weapon can be poisoned
-							startTimer = ( /*weapon.Type == WeaponType.Slashing ||*/ weapon.Type == WeaponType.Piercing );
-						}
-					}
-                    else if ( targeted is Food)
+                    if (targeted is BaseWeapon)
+                    {
+                        startTimer = true;
+                    }
+                    else if (targeted is Food)
                     {
                         startTimer = true;
                     }
@@ -111,7 +105,7 @@ namespace Server.SkillHandlers
 					}
 					else // Target can't be poisoned
 					{
-                        from.SendMessage("Vous ne pouvez pas empoisonner celà ! Vous pouvez seulement empoisonner les dagues ou la nourriture.");
+                        from.SendMessage("Vous ne pouvez pas empoisonner celà ! Vous pouvez seulement empoisonner les armes ou la nourriture.");
 					}
 				}
 
@@ -162,10 +156,7 @@ namespace Server.SkillHandlers
 								{
 									BaseWeapon weapon = (BaseWeapon)m_Target;
 
-									if ( weapon.Type == WeaponType.Slashing )
-										m_From.SendLocalizedMessage( 1010516 ); // You fail to apply a sufficient dose of poison on the blade
-									else
-										m_From.SendLocalizedMessage( 1010518 ); // You fail to apply a sufficient dose of poison
+                                    m_From.SendLocalizedMessage(1010518); // You fail to apply a sufficient dose of poison
 								}
 								else
 								{

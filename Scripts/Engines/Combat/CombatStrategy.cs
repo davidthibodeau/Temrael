@@ -1,10 +1,10 @@
-﻿using Server.Items;
+﻿using Server.Engines.Equitation;
+using Server.Items;
 using Server.Mobiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Server.Engines.Equitation;
 
 namespace Server.Engines.Combat
 {
@@ -41,7 +41,6 @@ namespace Server.Engines.Combat
             AttaqueAnimation(atk);
             DegatsAnimation(def);
 
-
             CheckEquitation(def, EquitationType.BeingAttacked);
 
             atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));
@@ -53,6 +52,8 @@ namespace Server.Engines.Combat
                 def.FixedEffect(0x37B9, 10, 16);
                 degats = 0;
             }
+
+            AppliquerPoison(atk, def);
 
             def.Damage(degats,atk);
         }
@@ -82,19 +83,9 @@ namespace Server.Engines.Combat
 
         #region Equitation Check
 
-        void CheckEquitationAttaque(Mobile m)
-        {
-            if (BaseRange != 1)
-            {
-                CheckEquitation(m, EquitationType.Ranged);
-            }
-            else if (BaseRange == 1)
-            {
-                CheckEquitation(m, EquitationType.Attacking);
-            }
-        }
+        protected abstract void CheckEquitationAttaque(Mobile atk);
 
-        void CheckEquitation(Mobile m, EquitationType type)
+        public void CheckEquitation(Mobile m, EquitationType type)
         {
             Equitation.Equitation.CheckEquitation(m, type);
         }
@@ -207,6 +198,8 @@ namespace Server.Engines.Combat
             return value * (1 + factor);
         }
         #endregion
+
+        protected abstract void AppliquerPoison(Mobile atk, Mobile def);
 
         #region Coup Critique
         public bool Critique(Mobile atk)

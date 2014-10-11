@@ -25,7 +25,6 @@ namespace Server.Items
 		public override int DefHitSound{ get{ return -1; } }
 		public override int DefMissSound{ get{ return -1; } }
 
-		public override SkillName DefSkill{ get{ return SkillName.Anatomie; } }
 		public override WeaponType DefType{ get{ return WeaponType.Fists; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Wrestle; } }
 
@@ -59,114 +58,6 @@ namespace Server.Items
 			//else
 			//	return incrValue;
 		}
-
-		public override int OnSwing( Mobile attacker, Mobile defender )
-		{
-			if ( attacker.StunReady )
-			{
-				if ( attacker.CanBeginAction( typeof( Fists ) ) )
-				{
-					if ( attacker.Skills[SkillName.Anatomie].Value >= 80.0 )
-					{
-						if ( attacker.Stam >= 15 )
-						{
-							attacker.Stam -= 15;
-
-							if ( CheckMove( attacker, SkillName.Tactiques ) )
-							{
-								StartMoveDelay( attacker );
-
-								attacker.StunReady = false;
-
-								attacker.SendLocalizedMessage( 1004013 ); // You successfully stun your opponent!
-								defender.SendLocalizedMessage( 1004014 ); // You have been stunned!
-
-								defender.Freeze( TimeSpan.FromSeconds( 4.0 ) );
-							}
-							else
-							{
-								attacker.SendLocalizedMessage( 1004010 ); // You failed in your attempt to stun.
-								defender.SendLocalizedMessage( 1004011 ); // Your opponent tried to stun you and failed.
-							}
-						}
-						else
-						{
-							attacker.SendLocalizedMessage( 1004009 ); // You are too fatigued to attempt anything.
-						}
-					}
-					else
-					{
-						attacker.SendLocalizedMessage( 1004008 ); // You are not skilled enough to stun your opponent.
-						attacker.StunReady = false;
-					}
-				}
-			}
-			else if ( attacker.DisarmReady )
-			{
-				if ( attacker.CanBeginAction( typeof( Fists ) ) )
-				{
-					if ( defender.Player || defender.Body.IsHuman )
-					{
-						if ( attacker.Skills[SkillName.Anatomie].Value >= 80.0 )
-						{
-							if ( attacker.Stam >= 15 )
-							{
-								Item toDisarm = defender.FindItemOnLayer( Layer.OneHanded );
-
-								if ( toDisarm == null || !toDisarm.Movable )
-									toDisarm = defender.FindItemOnLayer( Layer.TwoHanded );
-
-								Container pack = defender.Backpack;
-
-								if ( pack == null || toDisarm == null || !toDisarm.Movable )
-								{
-									attacker.SendLocalizedMessage( 1004001 ); // You cannot disarm your opponent.
-								}
-								else if ( CheckMove( attacker, SkillName.Tactiques ) )
-								{
-									StartMoveDelay( attacker );
-
-									attacker.Stam -= 15;
-									attacker.DisarmReady = false;
-
-									attacker.SendLocalizedMessage( 1004006 ); // You successfully disarm your opponent!
-									defender.SendLocalizedMessage( 1004007 ); // You have been disarmed!
-
-									pack.DropItem( toDisarm );
-								}
-								else
-								{
-									attacker.Stam -= 15;
-
-									attacker.SendLocalizedMessage( 1004004 ); // You failed in your attempt to disarm.
-									defender.SendLocalizedMessage( 1004005 ); // Your opponent tried to disarm you but failed.
-								}
-							}
-							else
-							{
-								attacker.SendLocalizedMessage( 1004003 ); // You are too fatigued to attempt anything.
-							}
-						}
-						else
-						{
-							attacker.SendLocalizedMessage( 1004002 ); // You are not skilled enough to disarm your opponent.
-							attacker.DisarmReady = false;
-						}
-					}
-					else
-					{
-						attacker.SendLocalizedMessage( 1004001 ); // You cannot disarm your opponent.
-					}
-				}
-			}
-
-			return base.OnSwing( attacker, defender );
-		}
-
-		/*public override void OnMiss( Mobile attacker, Mobile defender )
-		{
-			base.PlaySwingAnimation( attacker );
-		}*/
 
 		public override void Serialize( GenericWriter writer )
 		{

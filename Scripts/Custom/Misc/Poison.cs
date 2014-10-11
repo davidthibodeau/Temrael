@@ -9,26 +9,15 @@ namespace Server
 {
 	public class PoisonImpl : Poison
 	{
-		[CallPriority( 10 )]
-		public static void Configure()
-		{
-			if ( Core.AOS )
-			{
-				Register( new PoisonImpl( "Lesser",		0,  1, 10,  7.5, 3.0, 2.25, 2, 4 ) );
-				Register( new PoisonImpl( "Regular",	1,  5, 15, 10.0, 3.0, 3.25, 4, 3 ) );
-				Register( new PoisonImpl( "Greater",	2, 8, 20, 15.0, 3.0, 4.25, 6, 2 ) );
-				Register( new PoisonImpl( "Deadly",		3, 12, 30, 30.0, 3.0, 5.25, 8, 2 ) );
-				Register( new PoisonImpl( "Lethal",		4, 15, 40, 35.0, 3.0, 5.25, 12, 2 ) );
-			}
-			else
-			{
-				Register( new PoisonImpl( "Lesser",		0, 4, 26,  2.500, 3.5, 3.0, 10, 2 ) );
-				Register( new PoisonImpl( "Regular",	1, 5, 26,  3.125, 3.5, 3.0, 10, 2 ) );
-				Register( new PoisonImpl( "Greater",	2, 6, 26,  6.250, 3.5, 3.0, 10, 2 ) );
-				Register( new PoisonImpl( "Deadly",		3, 7, 26, 12.500, 3.5, 4.0, 10, 2 ) );
-				Register( new PoisonImpl( "Lethal",		4, 9, 26, 25.000, 3.5, 5.0, 10, 2 ) );
-			}
-		}
+        [CallPriority(10)]
+        public static void Configure()
+        {
+            Register(new PoisonImpl("Lesser", 0, 1, 10, 7.5, 3.0, 2.25, 2, 4));
+            Register(new PoisonImpl("Regular", 1, 5, 15, 10.0, 3.0, 3.25, 4, 3));
+            Register(new PoisonImpl("Greater", 2, 8, 20, 15.0, 3.0, 4.25, 6, 2));
+            Register(new PoisonImpl("Deadly", 3, 12, 30, 30.0, 3.0, 5.25, 8, 2));
+            Register(new PoisonImpl("Lethal", 4, 15, 40, 35.0, 3.0, 5.25, 12, 2));
+        }
 
 		public static Poison IncreaseLevel( Poison oldPoison )
 		{

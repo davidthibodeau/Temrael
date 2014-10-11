@@ -19,11 +19,10 @@ namespace Server.Items
 		public override int DefHitSound{ get{ return 0x232; } }
 		public override int DefMissSound{ get{ return 0x23A; } }
 
-		public override SkillName DefSkill{ get{ return SkillName.ArmeTranchante; } }
 		public override WeaponType DefType{ get{ return WeaponType.Axe; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash2H; } }
 
-        public override CombatStrategy Strategy { get { return StrategyTranchante.Strategy; } }
+        public override CombatStrategy Strategy { get { return StrategyHache.Strategy; } }
 
 		public virtual HarvestSystem HarvestSystem{ get{ return Lumberjacking.System; } }
 
@@ -148,25 +147,6 @@ namespace Server.Items
 						m_UsesRemaining = 150;
 
 					break;
-				}
-			}
-		}
-
-		public override void OnHit( Mobile attacker, Mobile defender, double damageBonus )
-		{
-			base.OnHit( attacker, defender, damageBonus );
-
-			if ( !Core.AOS && (attacker.Player || attacker.Body.IsHuman) && Layer == Layer.TwoHanded && (attacker.Skills[SkillName.Tactiques].Value / 400.0) >= Utility.RandomDouble() )
-			{
-				StatMod mod = defender.GetStatMod( "Concussion" );
-
-				if ( mod == null )
-				{
-					defender.SendMessage( "You receive a concussion blow!" );
-					defender.AddStatMod( new StatMod( StatType.Int, "Concussion", -(defender.RawInt / 2), TimeSpan.FromSeconds( 30.0 ) ) );
-
-					attacker.SendMessage( "You deliver a concussion blow!" );
-					attacker.PlaySound( 0x308 );
 				}
 			}
 		}

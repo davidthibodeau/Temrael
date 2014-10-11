@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Engines.Equitation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,16 @@ namespace Server.Engines.Combat
         protected override double ParerChance(Mobile def)
         {
             return 0.0;
+        }
+
+        protected override void AppliquerPoison(Mobile atk, Mobile def)
+        {
+            //Un arc n'applique pas le poison.
+        }
+
+        protected override void CheckEquitationAttaque(Mobile atk)
+        {
+            CheckEquitation(atk, EquitationType.Ranged);
         }
     }
 
