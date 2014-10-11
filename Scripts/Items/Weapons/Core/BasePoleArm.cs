@@ -72,39 +72,25 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( (bool) m_ShowUsesRemaining );
 
 			writer.Write( (int) m_UsesRemaining );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2:
-				{
-					m_ShowUsesRemaining = reader.ReadBool();
-					goto case 1;
-				}
-				case 1:
-				{
-					m_UsesRemaining = reader.ReadInt();
-					goto case 0;
-				}
-				case 0:
-				{
-					if ( m_UsesRemaining < 1 )
-						m_UsesRemaining = 150;
+            m_ShowUsesRemaining = reader.ReadBool();
 
-					break;
-				}
-			}
-		}
+            m_UsesRemaining = reader.ReadInt();
+
+            if (m_UsesRemaining < 1)
+                m_UsesRemaining = 150;
+        }
 	}
 }
