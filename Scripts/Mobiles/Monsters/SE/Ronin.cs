@@ -40,7 +40,7 @@ namespace Server.Mobiles
 
 			SetSkill( SkillName.ArmePerforante, 92.6, 107.5 );
 			SetSkill( SkillName.ArmeContondante, 92.6, 107.5 );
-			SetSkill( SkillName.ArmeTranchante, 92.6, 107.5 );
+			SetSkill( SkillName.Epee, 92.6, 107.5 );
 
 			AddItem( new SamuraiTabi() );
 

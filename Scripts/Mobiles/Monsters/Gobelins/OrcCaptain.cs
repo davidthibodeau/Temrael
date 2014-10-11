@@ -35,7 +35,7 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Magie, 20, 40);
 
 			SetSkill( SkillName.Concentration, 70.1, 85.0 );
-			SetSkill( SkillName.ArmeTranchante, 70.1, 95.0 );
+			SetSkill( SkillName.Epee, 70.1, 95.0 );
 			SetSkill( SkillName.Tactiques, 85.1, 100.0 );
 
 		}

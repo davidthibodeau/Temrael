@@ -34,7 +34,7 @@ namespace Server.Mobiles
 			SetResistance( ResistanceType.Magie, 25, 35 );
 
 			SetSkill( SkillName.Anatomie, 70.1, 80.0 );
-			SetSkill( SkillName.ArmeTranchante, 120.1, 130.0 );
+			SetSkill( SkillName.Epee, 120.1, 130.0 );
 			//SetSkill( SkillName.Anatomy, 120.1, 130.0 );
 			SetSkill( SkillName.Concentration, 90.1, 100.0 );
 			SetSkill( SkillName.Tactiques, 90.1, 100.0 );

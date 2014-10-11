@@ -45,9 +45,9 @@ namespace Server.Mobiles
 			SetSkill( SkillName.ArmeContondante, 35.0, 57.5 );
 			SetSkill( SkillName.Empoisonnement, 60.0, 82.5 );
 			SetSkill( SkillName.Concentration, 83.5, 92.5 );
-			SetSkill( SkillName.ArmeTranchante, 125.0 );
+			SetSkill( SkillName.Epee, 125.0 );
 			SetSkill( SkillName.Tactiques, 125.0 );
-			SetSkill( SkillName.Foresterie, 125.0 );
+			SetSkill( SkillName.Hache, 125.0 );
 
 			VirtualArmor = 40;
 

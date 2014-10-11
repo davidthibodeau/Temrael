@@ -295,7 +295,7 @@ namespace Server.Mobiles
                 // Combat
                 SkillName.Tactiques,
                 SkillName.Parer,
-                SkillName.ArmeTranchante,
+                SkillName.Epee,
                 SkillName.ArmeContondante,
                 SkillName.ArmePerforante,
                 SkillName.ArmeHaste,
@@ -334,7 +334,7 @@ namespace Server.Mobiles
                 SkillName.Fignolage,
                 SkillName.Polissage,
                 SkillName.Excavation,
-                SkillName.Foresterie,
+                SkillName.Hache,
                 SkillName.Forge,
                 SkillName.Couture,
                 SkillName.Menuiserie,

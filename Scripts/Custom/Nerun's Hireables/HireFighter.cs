@@ -52,7 +52,7 @@ namespace Server.Mobiles
 
             SetSkill(SkillName.Tactiques, 36, 67);
             SetSkill(SkillName.ArtMagique, 22, 22);
-            SetSkill(SkillName.ArmeTranchante, 64, 100);
+            SetSkill(SkillName.Epee, 64, 100);
             SetSkill(SkillName.Parer, 60, 82);
             SetSkill(SkillName.ArmeContondante, 36, 67);
             //SetSkill(SkillName.Focus, 36, 67);

@@ -43,7 +43,7 @@ namespace Server.Mobiles
 
             SetSkill(SkillName.Tactiques, 110.0, 160.0);
             SetSkill(SkillName.Anatomie, 120.0, 150.0);
-            SetSkill(SkillName.ArmeTranchante, 80.1, 90.0);
+            SetSkill(SkillName.Epee, 80.1, 90.0);
             //SetSkill( SkillName.Anatomy, 70.1, 80.0 );
             SetSkill(SkillName.ArtMagique, 100.0, 120.0);
             //SetSkill( SkillName.EvalInt, 70.3, 100.0 );

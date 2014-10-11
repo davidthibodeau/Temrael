@@ -13,7 +13,7 @@ namespace Server.Mobiles
 			Title = "the noble";
 
 			SetSkill( SkillName.Parer, 80.0, 100.0 );
-			SetSkill( SkillName.ArmeTranchante, 80.0, 100.0 );
+			SetSkill( SkillName.Epee, 80.0, 100.0 );
 			SetSkill( SkillName.Tactiques, 80.0, 100.0 );
 		}
 

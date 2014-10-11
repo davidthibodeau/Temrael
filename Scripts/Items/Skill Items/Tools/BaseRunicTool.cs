@@ -130,7 +130,7 @@ namespace Server.Items
 
 		private static SkillName[] m_PossibleBonusSkills = new SkillName[]
 			{
-				SkillName.ArmeTranchante,
+				SkillName.Epee,
 				SkillName.ArmePerforante,
 				SkillName.ArmeContondante,
 				SkillName.ArmeDistance,

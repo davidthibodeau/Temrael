@@ -17,7 +17,7 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.Peacemaking, 65.0, 88.0 );
 			//SetSkill( SkillName.Provocation, 60.0, 83.0 );
 			SetSkill( SkillName.ArmeDistance, 36.0, 68.0 );
-			SetSkill( SkillName.ArmeTranchante, 36.0, 68.0 );
+			SetSkill( SkillName.Epee, 36.0, 68.0 );
 		}
 
 		public override void InitSBInfo()

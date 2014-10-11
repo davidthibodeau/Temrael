@@ -44,7 +44,6 @@ namespace Server
 		Menuiserie,
 		Cuisine,
 		Couture,
-		Foresterie,
 		Excavation,
         Polissage,
 
@@ -55,9 +54,10 @@ namespace Server
 		Soins,
 		Tactiques,
 		ArmeDistance,
-		ArmeTranchante,
+		Epee,
 		ArmeContondante,
 		ArmePerforante,
+		Hache,
 		Anatomie,
 		Concentration,
         Penetration,
@@ -67,7 +67,6 @@ namespace Server
 
         // Magie
         ArtMagique,
-        // Nouvelles branches.
         Evocation,
         Immuabilite,
         Alteration,
@@ -77,7 +76,6 @@ namespace Server
         Hallucination,
         Ensorcellement,
         Necromancie,
-        /////////////////////
         Meditation,
         Inscription,
         MagieDeGuerre,
@@ -632,7 +630,7 @@ namespace Server
 				new SkillInfo( SkillName.Menuiserie,      "Menuiserie",		SkillCategory.Artisanat,	20.0,	5.0,	0.0,	null,	2.0,	0.5,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Cuisine,         "Cuisine",		SkillCategory.Artisanat,	0.0,	20.0,	30.0,	null,	0.0,	2.0,	3.0,	1.0 ),
 				new SkillInfo( SkillName.Couture,         "Couture",		SkillCategory.Artisanat,	3.75,	16.25,	5.0,	null,	0.38,	1.63,	0.5,	1.0 ),
-				new SkillInfo( SkillName.Foresterie,      "Foresterie",		SkillCategory.Artisanat,    20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
+				new SkillInfo( SkillName.Hache,		     	"Hache",		SkillCategory.Artisanat,    20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Excavation,      "Excavation",		SkillCategory.Artisanat,	20.0,	0.0,	0.0,	null,	2.0,	0.0,	0.0,	1.0 ),
                 new SkillInfo( SkillName.Polissage,       "Polissage",		SkillCategory.Artisanat,	0.0,	0.0,	0.0,	null,	0.0,	1.0,	2.0,	1.0 ),
 
@@ -642,14 +640,14 @@ namespace Server
 				new SkillInfo( SkillName.Soins,           "Soins",				SkillCategory.Combat,	6.0,	6.0,	8.0,	null,	0.6,	0.6,	0.8,	1.0 ),
 				new SkillInfo( SkillName.Tactiques,       "Tactiques",			SkillCategory.Combat,  	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
 				new SkillInfo( SkillName.ArmeDistance,    "Arme de Distance",	SkillCategory.Combat,  	2.5,	7.5,	0.0,	null,	0.25,	0.75,	0.0,	1.0 ),
-				new SkillInfo( SkillName.ArmeTranchante,  "Armes Tranchantes",	SkillCategory.Combat,	7.5,	2.5,	0.0,	null,	0.75,	0.25,	0.0,	1.0 ),
+				new SkillInfo( SkillName.Epee,            "Epee",               SkillCategory.Combat,	7.5,	2.5,	0.0,	null,	0.75,	0.25,	0.0,	1.0 ),
 				new SkillInfo( SkillName.ArmeContondante, "Armes Contondantes",	SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	0.9,	0.1,	0.0,	1.0 ),
 				new SkillInfo( SkillName.ArmePerforante,  "Armes Perforantes",	SkillCategory.Combat,	4.5,	5.5,	0.0,	null,	0.45,	0.55,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Anatomie,        "Anatomie",			SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	0.0,	0.1,	1.0,	1.0 ),
 				new SkillInfo( SkillName.Concentration,   "Concentration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
                 new SkillInfo( SkillName.Penetration,     "Penetration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.5,	0.0,	1.0 ),
                 new SkillInfo( SkillName.CoupCritique,    "Coup Critique",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
-                new SkillInfo( SkillName.ResistanceMagique,"Résistance Magique",SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
+                new SkillInfo( SkillName.ResistanceMagique,"Resistance Magique",SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
                 new SkillInfo( SkillName.ArmureNaturelle, "Armure Naturelle",   SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
                 
                 new SkillInfo( SkillName.ArtMagique,        "Art de la Magie",  SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
@@ -897,7 +895,7 @@ namespace Server
 		public Skill Poursuite{ get{ return this[SkillName.Poursuite]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public Skill ArmeTranchante{ get{ return this[SkillName.ArmeTranchante]; } set{} }
+		public Skill ArmeTranchante{ get{ return this[SkillName.Epee]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill ArmeContondante{ get{ return this[SkillName.ArmeContondante]; } set{} }
@@ -909,7 +907,7 @@ namespace Server
 		public Skill Polissage{ get{ return this[SkillName.Polissage]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public Skill Foresterie{ get{ return this[SkillName.Foresterie]; } set{} }
+		public Skill Foresterie{ get{ return this[SkillName.Hache]; } set{} }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Skill Excavation{ get{ return this[SkillName.Excavation]; } set{} }

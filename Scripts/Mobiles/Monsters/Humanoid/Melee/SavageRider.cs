@@ -31,7 +31,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.ArmeContondante, 72.5, 95.0 );
 			SetSkill( SkillName.Empoisonnement, 60.0, 82.5 );
 			SetSkill( SkillName.Concentration, 72.5, 95.0 );
-			SetSkill( SkillName.ArmeTranchante, 72.5, 95.0 );
+			SetSkill( SkillName.Epee, 72.5, 95.0 );
 			SetSkill( SkillName.Tactiques, 72.5, 95.0 );
 
 			PackItem( new Bandage( Utility.RandomMinMax( 1, 15 ) ) );

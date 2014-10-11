@@ -58,7 +58,7 @@ namespace Server.Mobiles
 
             SetSkill(SkillName.Tactiques, 35, 57);
             SetSkill(SkillName.ArtMagique, 22, 22);
-            SetSkill(SkillName.ArmeTranchante, 45, 67);
+            SetSkill(SkillName.Epee, 45, 67);
             SetSkill(SkillName.ArmeDistance, 36, 67);
             SetSkill(SkillName.Parer, 45, 60);
             SetSkill(SkillName.Musique, 66.0, 97.5);

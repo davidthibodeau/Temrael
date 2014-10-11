@@ -40,7 +40,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Anatomie, 95.0, 120.0 );
 			SetSkill( SkillName.ArmePerforante, 95.0, 120.0 );
 			SetSkill( SkillName.ArmeContondante, 95.0, 120.0 );
-			SetSkill( SkillName.ArmeTranchante, 95.0, 120.0 );
+			SetSkill( SkillName.Epee, 95.0, 120.0 );
 			//SetSkill( SkillName.Ninjitsu, 95.0, 120.0 );
 
 

@@ -136,12 +136,12 @@ namespace Server.Engines.Combat
     {
         public readonly static CombatStrategy Strategy = new StrategyTranchante();
         
-        public override SkillName ToucherSkill { get { return SkillName.ArmeTranchante; } }
+        public override SkillName ToucherSkill { get { return SkillName.Epee; } }
 
         protected override double ToucherChance(Mobile atk, Mobile def)
         {
             double chance = base.ToucherChance(atk, def);
-            double incChance = GetBonus(atk.Skills[SkillName.ArmeTranchante].Value, 0.05, 5);
+            double incChance = GetBonus(atk.Skills[SkillName.Epee].Value, 0.05, 5);
             return IncreasedValue(chance, incChance);
         }
     }
@@ -176,14 +176,16 @@ namespace Server.Engines.Combat
         }
     }
 
-    public class StrategyHache : StrategyTranchante
+    public class StrategyHache : StrategyMelee
     {
         public readonly new static CombatStrategy Strategy = new StrategyHache();
         
+        public override SkillName ToucherSkill { get { return SkillName.Hache; } }
+
         protected override double ComputerDegats(Mobile atk, int basedmg)
         {
             double dmg = base.ComputerDegats(atk, basedmg);
-            double foresterieBonus = GetBonus(atk.Skills[SkillName.Foresterie].Value, 0.2, 10);
+            double foresterieBonus = GetBonus(atk.Skills[SkillName.Hache].Value, 0.2, 10);
 
             return dmg + basedmg * foresterieBonus;
         }

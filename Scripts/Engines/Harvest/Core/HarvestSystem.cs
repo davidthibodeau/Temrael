@@ -523,7 +523,7 @@ namespace Server.Engines.Harvest
             if (!CheckRange(from, tool, def, map, loc, false))
                 return;
 
-            if (def.Skill == SkillName.Foresterie)
+            if (def.Skill == SkillName.Hache)
             {
                 HarvestBank bank = def.GetBank(from, map, loc.X, loc.Y, tool, tileID);
 
