@@ -91,7 +91,7 @@ namespace Server.Spells
             {
                 DateTime endtime = (DateTime)m_SoifDuCombatRegistry[m_target];
 
-                if (endtime == null || DateTime.Now >= endtime || m_target == null || m_target.Deleted || !m_target.Alive)
+                if (DateTime.Now >= endtime || m_target == null || m_target.Deleted || !m_target.Alive)
                 {
                     SoifDuCombatSpell.m_SoifDuCombatTable.Remove(m_target);
                     SoifDuCombatSpell.m_Timers.Remove(m_target);

@@ -80,7 +80,7 @@ namespace Server.Spells
             {
                 DateTime endtime = (DateTime)m_FerveurDivineRegistry[m_target];
 
-                if (endtime == null || DateTime.Now >= endtime || m_target == null || m_target.Deleted || !m_target.Alive)
+                if (DateTime.Now >= endtime || m_target == null || m_target.Deleted || !m_target.Alive)
                 {
                     FerveurDivineMiracle.m_FerveurDivineTable.Remove(m_target);
                     FerveurDivineMiracle.m_Timers.Remove(m_target);
