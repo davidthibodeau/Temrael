@@ -2788,6 +2788,7 @@
     <Compile Include="Items\Weapons\Core\BaseKatar.cs" />
     <Compile Include="Items\Weapons\Core\BaseMeleeWeapon.cs" />
     <Compile Include="Items\Weapons\Core\BaseWeapon.cs" />
+    <Compile Include="Misc\PhpBB.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">
