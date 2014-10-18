@@ -931,65 +931,6 @@ namespace Server.Items
             }
         }
 
-        private class AcheverEntry : ContextMenuEntry
-        {
-            private TMobile m_from;
-            private Corpse m_corpse;
-
-            public AcheverEntry(TMobile from, Corpse corpse)
-                : base(6289, 2)
-            {
-                m_from = from;
-                m_corpse = corpse;
-            }
-
-            public override void OnClick()
-            {
-                if (!m_from.Achever)
-                {
-                    m_from.SendMessage("Vous devez avoir l'autorisation de l'équipe pour achever quelqu'un.");
-                    return;
-                }
-                if (m_from.LastAchever.AddHours(3) < DateTime.Now)
-                {
-                    if (((TMobile)m_corpse.Owner).MortCurrentState == MortState.Assomage)
-                    {
-                        ((TMobile)m_corpse.Owner).Mort = true;
-                        ((TMobile)m_corpse.Owner).MortCurrentState = MortState.Mourir;
-
-                        //if (!((TMobile)m_corpse.Owner).Suicide)
-                        //{
-                        //    m_from.XP = (int)(m_from.XP * 0.60);
-                        //}
-                        m_from.NextKillAllowed = DateTime.Now.AddHours(24);
-
-                        m_from.LastAchever = DateTime.Now;
-                        m_from.Frozen = true;
-                        m_from.SendMessage("Vous achevez le personnage et êtes pris sur place pour 5 secondes.");
-                        m_from.Achever = false;
-                        if (m_from.AccessLevel == AccessLevel.Player)
-                            m_from.Say("*Achève le personnage au sol.*");
-                        Timer.DelayCall(TimeSpan.FromSeconds(5), new TimerStateCallback(Achever_Callback), m_from);
-                        if (m_from.FindItemOnLayer(Layer.OneHanded) is BaseWeapon)
-                        {
-                            m_corpse.Carve(m_from, m_from.FindItemOnLayer(Layer.OneHanded));
-                        }
-                    }
-                }
-                else
-                {
-                    m_from.SendMessage("Il est trop tot encore pour achever un autre joueur.");
-                }
-            }
-
-            public void Achever_Callback(object state)
-            {
-                TMobile from = (TMobile)state;
-
-                from.Frozen = false;
-            }
-        }
-
 		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
 		{
 			base.GetContextMenuEntries( from, list );
@@ -1001,9 +942,6 @@ namespace Server.Items
 
                 if (player.MortVivant)
                     list.Add(new AmeEatingEntry(player, this));
-                /*if (owner.MortCurrentState == MortState.Assomage)*/
-                    if (player.Niveau >= 10)
-                        list.Add(new AcheverEntry(player, this));
             }
 
 			//if ( Core.AOS && m_Owner == from && from.Alive )

@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Commands;
 using Server.Targeting;
 using Server.Items;
+using Server.Engines.Mort;
 
 namespace Server.Scripts.Commands
 {
@@ -23,26 +24,15 @@ namespace Server.Scripts.Commands
 
             if (from is TMobile)
             {
-                if (((TMobile)from).Achever)
-                {
-                    if (((TMobile)from).Niveau >= 10)
-                    {
-                        from.Target = new AcheverTarget();
-                    }
-                    else
-                    {
-                        from.SendMessage("Vous devez etre niveau 10 !");
-                    }
-                }
-                else
-                {
-                    from.SendMessage("Vous devez avoir l'autorisation de l'équipe pour achever quelqu'un.");
-                }
+                from.Target = new AcheverTarget();
             }
         }
 
         private class AcheverTarget : Target
         {
+            int startingHits = 0;
+            TMobile m_corpseOwner;
+
             public AcheverTarget()
                 : base(3, true, TargetFlags.None)
             {
@@ -57,54 +47,38 @@ namespace Server.Scripts.Commands
 
                     if (corps.Owner is TMobile)
                     {
+                        m_corpseOwner = (TMobile)corps.Owner;
+
                         if (from is TMobile)
                         {
                             TMobile tmob = from as TMobile;
 
-                            if (DateTime.Now >= tmob.NextKillAllowed)
+                            if (m_corpseOwner != from)
                             {
-                                if (!(corps.Owner == from))
+                                if ((tmob.GetDistanceToSqrt(corps.Location) <= 3) && (tmob.InLOS(corps)))
                                 {
-                                    if ((tmob.GetDistanceToSqrt(corps.Location) <= 3) && (tmob.InLOS(corps)))
+                                    if (m_corpseOwner.MortCurrentState == MortState.Assomage)
                                     {
-                                        if (((TMobile)corps.Owner).MortCurrentState == MortState.Assomage)
-                                        {
-                                            ((TMobile)corps.Owner).Mort = true;
-                                            ((TMobile)corps.Owner).MortCurrentState = MortState.Mourir;
+                                        tmob.LastAchever = DateTime.Now;
+                                        tmob.Frozen = true;
+                                        tmob.SendMessage("Vous achevez le personnage et êtes pris sur place pour 5 secondes.");
+                                        tmob.Achever = false;
 
-                                            //if (!((TMobile)corps.Owner).Suicide)
-                                            //{
-                                            //    tmob.XP = (int)(tmob.XP * 0.60);
-                                            //}
-                                            tmob.NextKillAllowed = DateTime.Now.AddHours(24);
+                                        startingHits = tmob.Hits;
 
-                                            tmob.LastAchever = DateTime.Now;
-                                            tmob.Frozen = true;
-                                            tmob.SendMessage("Vous achevez le personnage et êtes pris sur place pour 5 secondes.");
-                                            tmob.Achever = false;
-                                            /*if (tmob.AccessLevel == AccessLevel.Player)
-                                                tmob.Say("*Achève le personnage au sol.*");*/
-                                            ((TMobile)corps.Owner).SendMessage("Vous avez ete acheve !");
-                                            Timer.DelayCall(TimeSpan.FromSeconds(5), new TimerStateCallback(Achever_Callback), tmob);
-                                            if (tmob.FindItemOnLayer(Layer.OneHanded) is BaseWeapon)
-                                            {
-                                                corps.Carve(tmob, tmob.FindItemOnLayer(Layer.OneHanded));
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        tmob.SendMessage("Vous n'etes pas assez proche du cadavre.");
+                                        tmob.Emote( "Essaie d'achever le personnage au sol !");
+
+                                        Timer.DelayCall(TimeSpan.FromSeconds(5), new TimerStateCallback(Achever_Callback), tmob);
                                     }
                                 }
                                 else
                                 {
-                                    tmob.SendMessage("Vous ne pouvez pas vous achever vous meme !");
+                                    tmob.SendMessage("Vous n'etes pas assez proche du cadavre.");
                                 }
                             }
                             else
                             {
-                                tmob.SendMessage("Vous ne pouvez pas assassinez avant " + tmob.NextKillAllowed.ToString());
+                                tmob.SendMessage("Vous ne pouvez pas vous achever vous meme !");
                             }
                         }
                     }
@@ -124,6 +98,34 @@ namespace Server.Scripts.Commands
                 TMobile from = (TMobile)state;
 
                 from.Frozen = false;
+
+                if (startingHits <= from.Hits) // Si le joueur n'a pas perdu d'HP pendant l'achèvement..
+                {
+                    ContratAssassinat cs = null;
+                    for (int i = 0; cs == null && i < from.m_contratListe.Count; i++)
+                    {
+                        if (from.m_contratListe[i].Cible == m_corpseOwner)
+                        {
+                            cs = from.m_contratListe[i];
+                        }
+                    }
+
+                    if (cs == null)
+                    {
+                        cs = new ContratAssassinat(from, from, m_corpseOwner, "Aucune explication");
+                    }
+
+                    // Fais comme si il était mort pour éviter qu'il respawn avant d'avoir répondu au gump de mort.
+                    ((TMobile)m_corpseOwner).Mort = true;
+                    ((TMobile)m_corpseOwner).MortCurrentState = MortState.Mourir;
+
+                    m_corpseOwner.SendGump(new MortGump((Mobile)from, cs));
+
+                }
+                else
+                {
+                    from.SendMessage("Vous ne pouvez pas achever quelqu'un en étant en combat !");
+                }
             }
         }
     }

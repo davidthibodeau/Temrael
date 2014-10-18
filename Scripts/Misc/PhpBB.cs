@@ -20,7 +20,7 @@ namespace Server.Misc
             if (loginUrl.Length == 0 || username.Length == 0 || password.Length == 0)
             {
                 Console.WriteLine("Information missing");
-                return null;
+                return;
             }
 
             CookieContainer myContainer = new CookieContainer();
@@ -53,7 +53,7 @@ namespace Server.Misc
             catch (Exception e)
             {
                 Console.WriteLine("Login - " + e.Message.ToString() + " (GRS)");
-                return null;
+                return;
             }
 
             // Write data
@@ -67,7 +67,7 @@ namespace Server.Misc
             catch (Exception e)
             {
                 Console.WriteLine("Login - " + e.Message.ToString() + " (GR)");
-                return null;
+                return;
             }
 
             bool isLoggedIn = false;

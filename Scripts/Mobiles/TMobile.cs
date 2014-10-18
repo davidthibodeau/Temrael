@@ -18,6 +18,7 @@ using Server.Prompts;
 using Server.Engines.Langues;
 using Server.Engines.Identities;
 using Server.Engines.Equitation;
+using Server.Engines.Mort;
 
 namespace Server.Mobiles
 {
@@ -142,6 +143,7 @@ namespace Server.Mobiles
         public static Hashtable m_SpellName = new Hashtable();
         public static Hashtable m_SpellHue = new Hashtable();
 
+        public List<ContratAssassinat> m_contratListe = new List<ContratAssassinat>();
         private Container m_Corps;
         private bool m_RisqueDeMort;
         private Timer m_TimerEvanouie;
@@ -185,7 +187,6 @@ namespace Server.Mobiles
 
         private ClasseType m_ClasseType = ClasseType.None;
         private bool m_Suicide;
-        private DateTime m_NextKillAllowed;
         private Race m_RaceSecrete;
         private bool m_RevealTitle = true;
         private bool m_FreeReset = false;
@@ -561,13 +562,6 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime NextKillAllowed
-        {
-            get { return m_NextKillAllowed; }
-            set { m_NextKillAllowed = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
         public bool Achever { get { return m_Achever; } set { m_Achever = value; } }
 
         public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
@@ -610,7 +604,6 @@ namespace Server.Mobiles
             this.FollowersMax = 2;
             Mana = 0;
             m_creation = new Creation();
-            
 
             //new TourTimer(this).Start();
         }
@@ -2249,7 +2242,6 @@ namespace Server.Mobiles
 
             writer.Write((int)m_RaceSecrete);
 
-            writer.Write((DateTime)(m_NextKillAllowed));
             writer.Write((bool)m_Suicide);
             writer.Write((int)m_ClasseType);
 
@@ -2356,7 +2348,6 @@ namespace Server.Mobiles
                     m_RaceSecrete = (Mobiles.Race)reader.ReadInt();
                     goto case 1;
                 case 1:
-                    m_NextKillAllowed = reader.ReadDateTime();
                     m_Suicide = reader.ReadBool();
                     if (version < 9)
                     {

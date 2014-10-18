@@ -96,7 +96,10 @@
     <Compile Include="Custom\Army System\ArmyAI.cs" />
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
+    <Compile Include="Engines\ContratAssassinat.cs" />
     <Compile Include="Engines\Equitation.cs" />
+    <Compile Include="Gumps\Temrael\ContratAssassinat\Contrat.cs" />
+    <Compile Include="Gumps\Temrael\ContratAssassinat\Mort.cs" />
     <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />
     <Compile Include="Items\Temrael\Armures\ArmorEnums.cs" />
