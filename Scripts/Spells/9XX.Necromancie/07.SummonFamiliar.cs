@@ -71,16 +71,16 @@ namespace Server.Spells
 				new SummonFamiliarEntry( typeof( DarkWolfFamiliar ), 1060143,  60.0,  60.0 ), // Dark Wolf
 				new SummonFamiliarEntry( typeof( DeathAdder ), 1060145,  70.0,  70.0 ), // Death Adder
 				new SummonFamiliarEntry( typeof( VampireBatFamiliar ), 1060144, 80.0, 80.0 ),  // Vampire Bat */
-                new SummonFamiliarEntry( typeof( Zombie ), "Zombie", 30.0, 30.0 ),
-                new SummonFamiliarEntry( typeof( Skeleton ), "Squelette", 40.0, 40.0 ),
-                new SummonFamiliarEntry( typeof( SkeletonArcher ), "Squelette Archer", 50.0, 50.0 ),
-                new SummonFamiliarEntry( typeof( SkeletalKnight ), "Squelette Guerrier", 50.0, 50.0 ),
-                new SummonFamiliarEntry( typeof( Ghoul ), "Ghoul", 60.0, 60.0 ),
-                new SummonFamiliarEntry( typeof( Spectre ), "Spectre", 70.0, 70.0 ),
-                new SummonFamiliarEntry( typeof( SkeletalMage ), "Squelette Mage", 80.0, 80.0 ),
-                new SummonFamiliarEntry( typeof( Mummy ), "Momie", 90.0, 90.0 ),
-                new SummonFamiliarEntry( typeof( Lich ), "Liche", 100.0, 100.0 ),
-                new SummonFamiliarEntry( typeof( Reaper ), "Faucheur", 100.0, 100.0 ),
+                //new SummonFamiliarEntry( typeof( Zombie ), "Zombie", 30.0, 30.0 ),
+                //new SummonFamiliarEntry( typeof( Skeleton ), "Squelette", 40.0, 40.0 ),
+                //new SummonFamiliarEntry( typeof( SkeletonArcher ), "Squelette Archer", 50.0, 50.0 ),
+                //new SummonFamiliarEntry( typeof( SkeletalKnight ), "Squelette Guerrier", 50.0, 50.0 ),
+                //new SummonFamiliarEntry( typeof( Ghoul ), "Ghoul", 60.0, 60.0 ),
+                //new SummonFamiliarEntry( typeof( Spectre ), "Spectre", 70.0, 70.0 ),
+                //new SummonFamiliarEntry( typeof( SkeletalMage ), "Squelette Mage", 80.0, 80.0 ),
+                //new SummonFamiliarEntry( typeof( Mummy ), "Momie", 90.0, 90.0 ),
+                //new SummonFamiliarEntry( typeof( Lich ), "Liche", 100.0, 100.0 ),
+                //new SummonFamiliarEntry( typeof( Reaper ), "Faucheur", 100.0, 100.0 ),
 			};
 
 		public static SummonFamiliarEntry[] Entries{ get{ return m_Entries; } }

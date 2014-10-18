@@ -230,8 +230,8 @@ namespace Server.Items
 
 			spawn.MoveToWorld( new Point3D( x, y, p.Z ), map );
 
-			if ( spawn is Kraken && 0.2 > Utility.RandomDouble() )
-				spawn.PackItem( new MessageInABottle( map == Map.Felucca ? Map.Felucca : Map.Trammel ) );
+            //if ( spawn is Kraken && 0.2 > Utility.RandomDouble() )
+            //    spawn.PackItem( new MessageInABottle( map == Map.Felucca ? Map.Felucca : Map.Trammel ) );
 		}
 
 		protected virtual void FinishEffect( Point3D p, Map map, Mobile from )
@@ -242,20 +242,20 @@ namespace Server.Items
 
 			for ( int i = 0; map != null && i < count; ++i )
 			{
-				BaseCreature spawn;
+                //BaseCreature spawn;
 
-				switch ( Utility.Random( 4 ) )
-				{
-					default:
-					case 0: spawn = new SeaSerpent(); break;
-					case 1: spawn = new DeepSeaSerpent(); break;
-					case 2: spawn = new WaterElemental(); break;
-					case 3: spawn = new Kraken(); break;
-				}
+                //switch ( Utility.Random( 4 ) )
+                //{
+                //    default:
+                //    case 0: spawn = new SeaSerpent(); break;
+                //    case 1: spawn = new DeepSeaSerpent(); break;
+                //    case 2: spawn = new WaterElemental(); break;
+                //    case 3: spawn = new Kraken(); break;
+                //}
 
-				Spawn( p, map, spawn );
+                //Spawn( p, map, spawn );
 
-				spawn.Combatant = from;
+                //spawn.Combatant = from;
 			}
 
 			Delete();
@@ -315,7 +315,7 @@ namespace Server.Items
 
 		protected override void FinishEffect( Point3D p, Map map, Mobile from )
 		{
-			Spawn( p, map, new Leviathan( from ) );
+			//Spawn( p, map, new Leviathan( from ) );
 
 			base.FinishEffect( p, map, from );
 		}

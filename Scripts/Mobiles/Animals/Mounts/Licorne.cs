@@ -94,11 +94,6 @@ namespace Server.Mobiles
 			AddLoot( LootPack.Potions );
 		}
 
-		public override OppositionGroup OppositionGroup
-		{
-			get{ return OppositionGroup.FeyAndUndead; }
-		}
-
 		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
 		public override int Meat{ get{ return 3; } }
 		public override int Hides{ get{ return 10; } }

@@ -44,11 +44,11 @@ namespace Server.SkillHandlers
 		{
 			BaseCreature familiar = (BaseCreature)Spells.SummonFamiliarSpell.Table[tamer];
 
-			if ( familiar != null && !familiar.Deleted && familiar is DarkWolfFamiliar )
-			{
-				if ( creature is DireWolf || creature is GreyWolf || creature is TimberWolf || creature is WhiteWolf || creature is BakeKitsune )
-					return true;
-			}
+            //if ( familiar != null && !familiar.Deleted && familiar is DarkWolfFamiliar )
+            //{
+            //    if ( creature is DireWolf || creature is GreyWolf || creature is TimberWolf || creature is WhiteWolf || creature is BakeKitsune )
+            //        return true;
+            //}
 
 			return false;
 		}
@@ -359,12 +359,7 @@ namespace Server.SkillHandlers
 						{
 							if ( m_Creature.Owners.Count == 0 ) // First tame
 							{
-								if ( m_Creature is GreaterDragon )
-								{
-									ScaleSkills( m_Creature, 0.72, 0.90 ); // 72% of original skills trainable to 90%
-									m_Creature.Skills[SkillName.ArtMagique].Base = m_Creature.Skills[SkillName.ArtMagique].Cap; // Greater dragons have a 90% cap reduction and 90% skill reduction on magery
-								}
-								else if ( m_Paralyzed )
+								if ( m_Paralyzed )
 									ScaleSkills( m_Creature, 0.86 ); // 86% of original skills if they were paralyzed during the taming
 								else
 									ScaleSkills( m_Creature, 0.90 ); // 90% of original skills

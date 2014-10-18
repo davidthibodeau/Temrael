@@ -159,12 +159,12 @@ namespace Server.Spells
             }
 
             public static AnimateDeadEntry[] m_Entries = new AnimateDeadEntry[]
-			{
-				new AnimateDeadEntry( typeof(Zombie), "Zombie", 1, 50.0, 75.0 ),
-				new AnimateDeadEntry( typeof(Skeleton), "Squelette", 1, 60.0, 85.0 ),
-				new AnimateDeadEntry( typeof(Spectre), "Spectre", 3, 70.0, 95.0 ),
-				new AnimateDeadEntry( typeof(Mummy), "Momie", 5, 80.0, 105.0 ),
-				new AnimateDeadEntry( typeof(Lich), "Liche", 8, 90.0, 115.0 )
+            {
+            //    new AnimateDeadEntry( typeof(Zombie), "Zombie", 1, 50.0, 75.0 ),
+            //    new AnimateDeadEntry( typeof(Skeleton), "Squelette", 1, 60.0, 85.0 ),
+            //    new AnimateDeadEntry( typeof(Spectre), "Spectre", 3, 70.0, 95.0 ),
+            //    new AnimateDeadEntry( typeof(Mummy), "Momie", 5, 80.0, 105.0 ),
+            //    new AnimateDeadEntry( typeof(Lich), "Liche", 8, 90.0, 115.0 )
 			};
 
             private Mobile m_Caster;

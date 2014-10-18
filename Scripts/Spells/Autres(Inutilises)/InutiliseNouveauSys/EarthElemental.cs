@@ -53,7 +53,7 @@ namespace Server.Spells
             {
                 double duration = (2 * Caster.Skills.Immuabilite.Fixed) / 5;
 
-                SpellHelper.Summon(new EarthElemental(), Caster, 0x217, TimeSpan.FromSeconds(duration), true, true);
+                //SpellHelper.Summon(new EarthElemental(), Caster, 0x217, TimeSpan.FromSeconds(duration), true, true);
 			}
 
 			FinishSequence();

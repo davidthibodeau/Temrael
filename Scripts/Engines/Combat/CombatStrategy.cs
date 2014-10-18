@@ -64,6 +64,9 @@ namespace Server.Engines.Combat
             atk.PlaySound(Weapon(atk).GetMissAttackSound(atk, def));
         }
 
+        // Utilise seulement pour les armes a distance.
+        public abstract bool OnFired(Mobile atk, Mobile def);
+
         public virtual void AttaqueAnimation(Mobile atk)
         {
             int action = Weapon(atk).SwingAnimation(atk);

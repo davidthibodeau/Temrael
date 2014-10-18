@@ -290,7 +290,7 @@ namespace Server.Spells
 			protected override void OnTarget( Mobile from, object o )
 			{
 				if ( o is IPoint3D )
-					m_Owner.Target( (IPoint3D)o );
+					m_Owner.Target(o as IPoint3D);
 			}
 
 			protected override void OnTargetFinish( Mobile from )

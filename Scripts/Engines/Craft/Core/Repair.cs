@@ -42,10 +42,10 @@ namespace Server.Engines.Craft
 				m_Deed = deed;
 			}
 
-			private static void EndGolemRepair( object state )
-			{
-				((Mobile)state).EndAction( typeof( Golem ) );
-			}
+            //private static void EndGolemRepair( object state )
+            //{
+            //    ((Mobile)state).EndAction( typeof( Golem ) );
+            //}
 
 			private int GetWeakenChance( Mobile mob, SkillName skill, int curHits, int maxHits )
 			{
@@ -153,69 +153,69 @@ namespace Server.Engines.Craft
 				{
 					number = 1044282; // You must be near a forge and and anvil to repair items. * Yes, there are two and's *
 				}
-				else if ( m_CraftSystem is DefTinkering && targeted is Golem )
-				{
-					Golem g = (Golem)targeted;
-					int damage = g.HitsMax - g.Hits;
+                //else if ( m_CraftSystem is DefTinkering && targeted is Golem )
+                //{
+                //    Golem g = (Golem)targeted;
+                //    int damage = g.HitsMax - g.Hits;
 
-					if ( g.IsDeadBondedPet )
-					{
-						number = 500426; // You can't repair that.
-					}
-					else if ( damage <= 0 )
-					{
-						number = 500423; // That is already in full repair.
-					}
-					else
-					{
-						double skillValue = (usingDeed)? m_Deed.SkillLevel : from.Skills[SkillName.Menuiserie].Value;
+                //    if ( g.IsDeadBondedPet )
+                //    {
+                //        number = 500426; // You can't repair that.
+                //    }
+                //    else if ( damage <= 0 )
+                //    {
+                //        number = 500423; // That is already in full repair.
+                //    }
+                //    else
+                //    {
+                //        double skillValue = (usingDeed)? m_Deed.SkillLevel : from.Skills[SkillName.Menuiserie].Value;
 
-						if ( skillValue < 60.0 )
-						{
-							number = 1044153; // You don't have the required skills to attempt this item.	//TODO: How does OSI handle this with deeds with golems?
-						}
-						else if ( !from.CanBeginAction( typeof( Golem ) ) )
-						{
-							number = 501789; // You must wait before trying again.
-						}
-						else
-						{
-							if ( damage > (int)(skillValue * 0.3) )
-								damage = (int)(skillValue * 0.3);
+                //        if ( skillValue < 60.0 )
+                //        {
+                //            number = 1044153; // You don't have the required skills to attempt this item.	//TODO: How does OSI handle this with deeds with golems?
+                //        }
+                //        else if ( !from.CanBeginAction( typeof( Golem ) ) )
+                //        {
+                //            number = 501789; // You must wait before trying again.
+                //        }
+                //        else
+                //        {
+                //            if ( damage > (int)(skillValue * 0.3) )
+                //                damage = (int)(skillValue * 0.3);
 
-							damage += 30;
+                //            damage += 30;
 
-							if ( !from.CheckSkill( SkillName.Menuiserie, 0.0, 100.0 ) )
-								damage /= 2;
+                //            if ( !from.CheckSkill( SkillName.Menuiserie, 0.0, 100.0 ) )
+                //                damage /= 2;
 
-							Container pack = from.Backpack;
+                //            Container pack = from.Backpack;
 
-							if ( pack != null )
-							{
-								int v = pack.ConsumeUpTo( typeof( FerIngot ), (damage+4)/5 );
+                //            if ( pack != null )
+                //            {
+                //                int v = pack.ConsumeUpTo( typeof( FerIngot ), (damage+4)/5 );
 
-								if ( v > 0 )
-								{
-									g.Hits += v*5;
+                //                if ( v > 0 )
+                //                {
+                //                    g.Hits += v*5;
 
-									number = 1044279; // You repair the item.
-									toDelete = true;
+                //                    number = 1044279; // You repair the item.
+                //                    toDelete = true;
 
-									from.BeginAction( typeof( Golem ) );
-									Timer.DelayCall( TimeSpan.FromSeconds( 12.0 ), new TimerStateCallback( EndGolemRepair ), from );
-								}
-								else
-								{
-									number = 1044037; // You do not have sufficient metal to make that.
-								}
-							}
-							else
-							{
-								number = 1044037; // You do not have sufficient metal to make that.
-							}
-						}
-					}
-				}
+                //                    from.BeginAction( typeof( Golem ) );
+                //                    Timer.DelayCall( TimeSpan.FromSeconds( 12.0 ), new TimerStateCallback( EndGolemRepair ), from );
+                //                }
+                //                else
+                //                {
+                //                    number = 1044037; // You do not have sufficient metal to make that.
+                //                }
+                //            }
+                //            else
+                //            {
+                //                number = 1044037; // You do not have sufficient metal to make that.
+                //            }
+                //        }
+                //    }
+                //}
 				else if ( targeted is BaseWeapon )
 				{
 					BaseWeapon weapon = (BaseWeapon)targeted;

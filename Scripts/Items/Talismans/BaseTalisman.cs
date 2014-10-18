@@ -833,20 +833,20 @@ namespace Server.Items
 
 		private static Type[] m_Killers = new Type[]
 		{
-			typeof( OrcBomber ), 	typeof( OrcBrute ), 				typeof( Rat ), 				typeof( GiantRat ),
-			typeof( Ratman ), 		typeof( RatmanArcher ), 			typeof( GiantSpider ), 		typeof( FrostSpider ), 		typeof( GiantBlackWidow ),
-			//typeof( DreadSpider ), 	typeof( SilverSerpent ), 			typeof( DeepSeaSerpent ), 	typeof( GiantSerpent ), 	typeof( Snake ),
-			//typeof( IceSnake ), 	typeof( IceSerpent ), 				typeof( LavaSerpent ), 		typeof( LavaSnake ),		typeof( Yamandon ),
-			typeof( StrongMongbat ),typeof( Mongbat ), 					typeof( VampireBat ), 		typeof( Lich ),				typeof( EvilMage ),
-			typeof( LichLord ),		typeof( EvilMageLord ), 			typeof( SkeletalMage ), 	typeof( KhaldunZealot ), 	typeof( AncientLich ),
-			typeof( JukaMage ), 	typeof( MeerMage ), 				typeof( Scarabee ), 			typeof( DeathwatchScarabee ), typeof( RuneScarabee ),
-			typeof( FireScarabee ),	typeof( DeathwatchScarabeeHatchling), typeof( Bird ), 			typeof( Chicken ), 			typeof( Eagle ),
-			typeof( TropicalBird ), typeof( DinosaureDesert ), 	typeof( DinosaureVolcan ), 	typeof( DinosaureForet ),
-			//typeof( Crane ),		typeof( SnowLeopard ), 				typeof( IceFiend ), 		typeof( FrostOoze ), 		typeof( FrostTroll ),
-			typeof( IceElemental ),	typeof( SnowElemental ), 			typeof( GiantIceWorm ), 	typeof( LadyOfTheSnow ), 	typeof( FireElemental ),
-			//typeof( FireSteed ), 	typeof( HellHound ), 				typeof( HellCat ), 			typeof( PredatorHellCat ), 	typeof( LavaLizard ),
-			typeof( FireScarabee ), 	typeof( Cow ), 						typeof( Bull ), 		//,			typeof( Minotaur)
-			// TODO Meraktus, Tormented Minotaur, Minotaur
+            //typeof( OrcBomber ), 	typeof( OrcBrute ), 				typeof( Rat ), 				typeof( GiantRat ),
+            //typeof( Ratman ), 		typeof( RatmanArcher ), 			typeof( GiantSpider ), 		typeof( FrostSpider ), 		typeof( GiantBlackWidow ),
+            ////typeof( DreadSpider ), 	typeof( SilverSerpent ), 			typeof( DeepSeaSerpent ), 	typeof( GiantSerpent ), 	typeof( Snake ),
+            ////typeof( IceSnake ), 	typeof( IceSerpent ), 				typeof( LavaSerpent ), 		typeof( LavaSnake ),		typeof( Yamandon ),
+            //typeof( StrongMongbat ),typeof( Mongbat ), 					typeof( VampireBat ), 		typeof( Lich ),				typeof( EvilMage ),
+            //typeof( LichLord ),		typeof( EvilMageLord ), 			typeof( SkeletalMage ), 	typeof( KhaldunZealot ), 	typeof( AncientLich ),
+            //typeof( JukaMage ), 	typeof( MeerMage ), 				typeof( Scarabee ), 			typeof( DeathwatchScarabee ), typeof( RuneScarabee ),
+            //typeof( FireScarabee ),	typeof( DeathwatchScarabeeHatchling), typeof( Bird ), 			typeof( Chicken ), 			typeof( Eagle ),
+            //typeof( TropicalBird ), typeof( DinosaureDesert ), 	typeof( DinosaureVolcan ), 	typeof( DinosaureForet ),
+            ////typeof( Crane ),		typeof( SnowLeopard ), 				typeof( IceFiend ), 		typeof( FrostOoze ), 		typeof( FrostTroll ),
+            //typeof( IceElemental ),	typeof( SnowElemental ), 			typeof( GiantIceWorm ), 	typeof( LadyOfTheSnow ), 	typeof( FireElemental ),
+            ////typeof( FireSteed ), 	typeof( HellHound ), 				typeof( HellCat ), 			typeof( PredatorHellCat ), 	typeof( LavaLizard ),
+            //typeof( FireScarabee ), 	typeof( Cow ), 						typeof( Bull ), 		//,			typeof( Minotaur)
+            //// TODO Meraktus, Tormented Minotaur, Minotaur
 		};
 
 		private static int[] m_KillerLabels = new int[]

@@ -58,9 +58,9 @@ namespace Server.Items
 			new TrophyInfo( typeof( GreatHart ),	0x1E61,		1041095, 1041109 ),
 			new TrophyInfo( typeof( BigFish ),		0x1E62,		1041096, 1041110 ),
 			new TrophyInfo( typeof( Gorilla ),		0x1E63,		1041091, 1041105 ),
-			new TrophyInfo( typeof( Orc ),			0x1E64,		1041090, 1041104 ),
+			//new TrophyInfo( typeof( Orc ),			0x1E64,		1041090, 1041104 ),
 			new TrophyInfo( typeof( PolarBear ),	0x1E65,		1041094, 1041108 ),
-			new TrophyInfo( typeof( Troll ),		0x1E66,		1041092, 1041106 )
+			//new TrophyInfo( typeof( Troll ),		0x1E66,		1041092, 1041106 )
         };
 
         public class TrophyInfo

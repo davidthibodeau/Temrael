@@ -1,4 +1,5 @@
-﻿using Server.Items;
+﻿using Server.Engines.Equitation;
+using Server.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -113,7 +114,12 @@ namespace Server.Engines.Combat
 
         protected override void CheckEquitationAttaque(Mobile atk)
         {
-            
+            CheckEquitation(atk, EquitationType.Attacking);
+        }
+
+        public override bool OnFired(Mobile atk, Mobile def)
+        {
+            return false;
         }
     }
 
@@ -178,7 +184,7 @@ namespace Server.Engines.Combat
 
     public class StrategyHache : StrategyMelee
     {
-        public readonly new static CombatStrategy Strategy = new StrategyHache();
+        public readonly static CombatStrategy Strategy = new StrategyHache();
         
         public override SkillName ToucherSkill { get { return SkillName.Hache; } }
 

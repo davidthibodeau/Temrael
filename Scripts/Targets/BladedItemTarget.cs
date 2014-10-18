@@ -18,10 +18,7 @@ namespace Server.Targets
 
 		protected override void OnTargetOutOfRange( Mobile from, object targeted )
 		{
-			if ( targeted is UnholyBone && from.InRange( ((UnholyBone)targeted), 12 ) )
-				((UnholyBone)targeted).Carve( from, m_Item );
-			else
-				base.OnTargetOutOfRange (from, targeted);
+            base.OnTargetOutOfRange(from, targeted);
 		}
 
 		protected override void OnTarget( Mobile from, object targeted )

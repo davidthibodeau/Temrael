@@ -127,13 +127,13 @@ namespace Server.Spells
 			new SummonCreatureEntry( 0x2118, 60.0, typeof(BlackBear), 7, -6 ),
 			new SummonCreatureEntry( 0x20DA, 70.0, typeof(Alligator), 0, 0 ),
 			new SummonCreatureEntry( 0x2119, 80.0, typeof(Panther), 1, 6 ),
-			new SummonCreatureEntry( 0x20FC, 85.0, typeof(GiantSerpent), 3, -15 ),
-			new SummonCreatureEntry( 0x20DC, 90.0, typeof(Harpy), -52, -23 ),
-			new SummonCreatureEntry( 0x20E0, 92.0, typeof(Orc), 6, -5 ),
-			new SummonCreatureEntry( 0x20E3, 94.0, typeof(Ratman), -3, 0 ),
-			new SummonCreatureEntry( 0x20DE, 96.0, typeof(Lizardman), -28, -30 ),
-			new SummonCreatureEntry( 0x20E9, 98.0, typeof(Troll), 5, -29 ),
-			new SummonCreatureEntry( 0x2133, 100.0, typeof(OphidianWarrior), -16, -54 ),
+            //new SummonCreatureEntry( 0x20FC, 85.0, typeof(GiantSerpent), 3, -15 ),
+            //new SummonCreatureEntry( 0x20DC, 90.0, typeof(Harpy), -52, -23 ),
+            //new SummonCreatureEntry( 0x20E0, 92.0, typeof(Orc), 6, -5 ),
+            //new SummonCreatureEntry( 0x20E3, 94.0, typeof(Ratman), -3, 0 ),
+            //new SummonCreatureEntry( 0x20DE, 96.0, typeof(Lizardman), -28, -30 ),
+            //new SummonCreatureEntry( 0x20E9, 98.0, typeof(Troll), 5, -29 ),
+            //new SummonCreatureEntry( 0x2133, 100.0, typeof(OphidianWarrior), -16, -54 ),
 		};
 
         public class SummonCreatureGump : Gump

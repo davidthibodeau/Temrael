@@ -49,11 +49,11 @@ namespace Server.Spells
 
 		private static FamilierEntry[] m_Entries = new FamilierEntry[]
 			{
-				new FamilierEntry( typeof( HordeMinionFamiliar ), 1060146,  0,  0 ), // Horde Minion
-				new FamilierEntry( typeof( ShadowWispFamiliar ), 1060142,  15.0,  0 ), // Shadow Wisp
-				new FamilierEntry( typeof( DarkWolfFamiliar ), 1060143,  20.0,  0 ), // Dark Wolf
-				new FamilierEntry( typeof( DeathAdder ), 1060145,  25.0,  0 ), // Death Adder
-				new FamilierEntry( typeof( VampireBatFamiliar ), 1060144, 30.0, 0 )  // Vampire Bat
+                //new FamilierEntry( typeof( HordeMinionFamiliar ), 1060146,  0,  0 ), // Horde Minion
+                //new FamilierEntry( typeof( ShadowWispFamiliar ), 1060142,  15.0,  0 ), // Shadow Wisp
+                //new FamilierEntry( typeof( DarkWolfFamiliar ), 1060143,  20.0,  0 ), // Dark Wolf
+                //new FamilierEntry( typeof( DeathAdder ), 1060145,  25.0,  0 ), // Death Adder
+                //new FamilierEntry( typeof( VampireBatFamiliar ), 1060144, 30.0, 0 )  // Vampire Bat
 			};
 
 		public static FamilierEntry[] Entries{ get{ return m_Entries; } }

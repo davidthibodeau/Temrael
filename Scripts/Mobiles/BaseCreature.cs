@@ -1036,7 +1036,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				AOS.Damage( target, this, BreathComputeDamage(), physDamage, fireDamage, coldDamage, poisDamage, nrgyDamage );
+				//AOS.Damage( target, this, BreathComputeDamage(), physDamage, fireDamage, coldDamage, poisDamage, nrgyDamage );
 			}
 		}
 
@@ -1140,11 +1140,6 @@ namespace Server.Mobiles
 
 		public const int MaxOwners = 5;
 
-		public virtual OppositionGroup OppositionGroup
-		{
-			get{ return null; }
-		}
-
 		#region Friends
 		public List<Mobile> Friends { get { return m_Friends; } }
 
@@ -1174,11 +1169,6 @@ namespace Server.Mobiles
 
 		public virtual bool IsFriend( Mobile m )
 		{
-			OppositionGroup g = this.OppositionGroup;
-
-			if ( g != null && g.IsEnemy( this, m ) )
-				return false;
-
 			if ( !(m is BaseCreature) )
 				return false;
 
@@ -1214,11 +1204,6 @@ namespace Server.Mobiles
 
 		public virtual bool IsEnemy( Mobile m )
 		{
-			OppositionGroup g = this.OppositionGroup;
-
-			if ( g != null && g.IsEnemy( this, m ) )
-				return true;
-
 			if ( m is BaseGuard )
 				return false;
 
@@ -1320,11 +1305,11 @@ namespace Server.Mobiles
 
 		private static Type[] m_AnimateDeadTypes = new Type[]
 			{
-				typeof( MoundOfMaggots ), typeof( MontureMortVivante ),
-				typeof( WailingBanshee ), typeof( Wraith ), typeof( SkeletalDragon ),
-				typeof( LichLord ), typeof( FleshGolem ), typeof( Lich ),
-				typeof( SkeletalKnight ), typeof( BoneKnight ), typeof( Mummy ),
-				typeof( SkeletalMage ), typeof( BoneMagi ), typeof( PatchworkSkeleton )
+                //typeof( MoundOfMaggots ), typeof( MontureMortVivante ),
+                //typeof( WailingBanshee ), typeof( Wraith ), typeof( SkeletalDragon ),
+                //typeof( LichLord ), typeof( FleshGolem ), typeof( Lich ),
+                //typeof( SkeletalKnight ), typeof( BoneKnight ), typeof( Mummy ),
+                //typeof( SkeletalMage ), typeof( BoneMagi ), typeof( PatchworkSkeleton )
 			};
 
 		public virtual bool IsAnimatedDead
@@ -1932,8 +1917,6 @@ namespace Server.Mobiles
 
 				corpse.Carved = true;
 
-				if ( corpse.IsCriminalAction( from ) )
-					from.CriminalAction( true );
 			}
 		}
 
@@ -3577,9 +3560,9 @@ namespace Server.Mobiles
 		{
 			base.AggressiveAction( aggressor, criminal );
 
-			if ( this.ControlMaster != null )
-				if ( NotorietyHandlers.CheckAggressor( this.ControlMaster.Aggressors, aggressor ) )
-					aggressor.Aggressors.Add( AggressorInfo.Create( this, aggressor, true ) );
+            //if ( this.ControlMaster != null )
+            //    if ( NotorietyHandlers.CheckAggressor( this.ControlMaster.Aggressors, aggressor ) )
+            //        aggressor.Aggressors.Add( AggressorInfo.Create( this, aggressor, true ) );
 
 			OrderType ct = m_ControlOrder;
 
@@ -4512,58 +4495,15 @@ namespace Server.Mobiles
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.Batisseur && !Body.IsHuman )
-			{
-				Container pack = this.Backpack;
+            if (from.AccessLevel >= AccessLevel.Batisseur && !Body.IsHuman)
+            {
+                Container pack = this.Backpack;
 
-				if ( pack != null )
-					pack.DisplayTo( from );
-			}
-
-			if ( this.DeathAdderCharmable && from.CanBeHarmful( this, false ) )
-			{
-				DeathAdder da = Spells.SummonFamiliarSpell.Table[from] as DeathAdder;
-
-				if ( da != null && !da.Deleted )
-				{
-					from.SendAsciiMessage( "You charm the snake.  Select a target to attack." );
-					from.Target = new DeathAdderCharmTarget( this );
-				}
-			}
+                if (pack != null)
+                    pack.DisplayTo(from);
+            }
 
 			base.OnDoubleClick( from );
-		}
-
-		private class DeathAdderCharmTarget : Target
-		{
-			private BaseCreature m_Charmed;
-
-			public DeathAdderCharmTarget( BaseCreature charmed ) : base( -1, false, TargetFlags.Harmful )
-			{
-				m_Charmed = charmed;
-			}
-
-			protected override void OnTarget( Mobile from, object targeted )
-			{
-				if ( !m_Charmed.DeathAdderCharmable || m_Charmed.Combatant != null || !from.CanBeHarmful( m_Charmed, false ) )
-					return;
-
-				DeathAdder da = Spells.SummonFamiliarSpell.Table[from] as DeathAdder;
-				if ( da == null || da.Deleted )
-					return;
-
-				Mobile targ = targeted as Mobile;
-				if ( targ == null || !from.CanBeHarmful( targ, false ) )
-					return;
-
-				from.RevealingAction();
-				from.DoHarmful( targ, true );
-
-				m_Charmed.Combatant = targ;
-
-				if ( m_Charmed.AIObject != null )
-					m_Charmed.AIObject.Action = ActionType.Combat;
-			}
 		}
 
 		public override void AddNameProperties( ObjectPropertyList list )
@@ -4822,11 +4762,10 @@ namespace Server.Mobiles
 		}
 
 		public override void OnDeath( Container c )
-		{
-			MeerMage.StopEffect( this, false );
-
-			if ( IsBonded )
-			{
+		{	
+			
+            if(IsBonded)
+            {
 				int sound = this.GetDeathSound();
 
 				if ( sound >= 0 )

@@ -160,16 +160,7 @@ namespace Server
 
                 if (reflectPhys != 0)
                 {
-                    if (from is ExodusMinion && ((ExodusMinion)from).FieldActive || from is ExodusOverseer && ((ExodusOverseer)from).FieldActive)
-                    {
-                        from.FixedParticles(0x376A, 20, 10, 0x2530, EffectLayer.Waist);
-                        from.PlaySound(0x2F4);
-                        m.SendAsciiMessage("Your weapon cannot penetrate the creature's magical barrier");
-                    }
-                    else
-                    {
-                        from.Damage(Scale((damage * phys * (100 - (ignoreArmor ? 0 : (int)m.PhysicalResistance))) / 10000, reflectPhys), m);
-                    }
+                    from.Damage(Scale((damage * phys * (100 - (ignoreArmor ? 0 : (int)m.PhysicalResistance))) / 10000, reflectPhys), m);
                 }
             }
 

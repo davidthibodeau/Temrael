@@ -324,10 +324,10 @@ namespace Server.SkillHandlers
 					{
 						m_Thief.CriminalAction( false );
 					}
-					else if ( root is Corpse && ((Corpse)root).IsCriminalAction( m_Thief ) )
-					{
-						m_Thief.CriminalAction( false );
-					}
+                    //else if ( root is Corpse && ((Corpse)root).IsCriminalAction( m_Thief ) )
+                    //{
+                    //    m_Thief.CriminalAction( false );
+                    //}
 					else if ( root is Mobile )
 					{
 						Mobile mobRoot = (Mobile)root;
@@ -344,18 +344,6 @@ namespace Server.SkillHandlers
 								ns.Mobile.SendMessage( message );
 						}*/
 					}
-				}
-				else if ( root is Corpse && ((Corpse)root).IsCriminalAction( m_Thief ) )
-				{
-					m_Thief.CriminalAction( false );
-				}
-
-				if ( root is Mobile && ((Mobile)root).Player && m_Thief is PlayerMobile && IsInnocentTo( m_Thief, (Mobile)root ))
-				{
-					PlayerMobile pm = (PlayerMobile)m_Thief;
-
-					pm.PermaFlags.Add( (Mobile)root );
-					pm.Delta( MobileDelta.Noto );
 				}
 			}
 		}

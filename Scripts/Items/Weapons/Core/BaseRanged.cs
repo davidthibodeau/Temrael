@@ -73,7 +73,7 @@ namespace Server.Items
 					attacker.DisruptiveAction();
 					attacker.Send( new Swing( 0, attacker, defender ) );
 
-					if ( OnFired( attacker, defender ) )
+					if ( Strategy.OnFired( attacker, defender ) )
 					{
                         delay = Strategy.Sequence(attacker, defender);
 					}
@@ -102,7 +102,7 @@ namespace Server.Items
 
 				if ( bonus > 0 && m_Velocity > Utility.Random( 100 ) )
 				{
-					AOS.Damage( defender, attacker, bonus * 3, 100, 0, 0, 0, 0 );
+					
 
 					if ( attacker.Player )
 						attacker.SendLocalizedMessage( 1072794 ); // Your arrow hits its mark with velocity!

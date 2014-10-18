@@ -73,7 +73,7 @@ namespace Server.Spells
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 
-				BaseCreature.Summon( new BladeSpirits(), false, Caster, new Point3D( p ), 0x212, TimeSpan.FromSeconds(duration) );
+				//BaseCreature.Summon( new BladeSpirits(), false, Caster, new Point3D( p ), 0x212, TimeSpan.FromSeconds(duration) );
 			}
 
 			FinishSequence();

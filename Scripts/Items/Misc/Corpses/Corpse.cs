@@ -826,24 +826,6 @@ namespace Server.Items
 			}
 		}
 
-		public bool IsCriminalAction( Mobile from )
-		{
-			if ( from == m_Owner || from.AccessLevel >= AccessLevel.Batisseur )
-				return false;
-
-			Party p = Party.Get( m_Owner );
-
-			if ( p != null && p.Contains( from ) )
-			{
-				PartyMemberInfo pmi = p[m_Owner];
-
-				if ( pmi != null && pmi.CanLoot )
-					return false;
-			}
-
-			return ( NotorietyHandlers.CorpseNotoriety( from, this ) == Notoriety.Innocent );
-		}
-
 		public override bool CheckItemUse( Mobile from, Item item )
 		{
 			if ( !base.CheckItemUse( from, item ) )
@@ -870,9 +852,6 @@ namespace Server.Items
 			if ( item is Food )
 				from.RevealingAction();
 
-			if ( item != this && IsCriminalAction( from ) )
-				from.CriminalAction( true );
-
 			if ( !m_Looters.Contains( from ) )
 				m_Looters.Add( from );
 
@@ -886,9 +865,6 @@ namespace Server.Items
 
 			if ( item != this && from != m_Owner )
 				from.RevealingAction();
-
-			if ( item != this && IsCriminalAction( from ) )
-				from.CriminalAction( true );
 
 			if ( !m_Looters.Contains( from ) )
 				m_Looters.Add( from );
@@ -1150,28 +1126,25 @@ namespace Server.Items
 		}
 
 		public override void OnAosSingleClick( Mobile from )
-		{
-			int hue = Notoriety.GetHue( NotorietyHandlers.CorpseNotoriety( from, this ) );
+		{            			
 			ObjectPropertyList opl = this.PropertyList;
 
 			if ( opl.Header > 0 )
-				from.Send( new MessageLocalized( Serial, ItemID, MessageType.Label, hue, 3, opl.Header, Name, opl.HeaderArgs ) );
+				from.Send( new MessageLocalized( Serial, ItemID, MessageType.Label, 0, 3, opl.Header, Name, opl.HeaderArgs ) );
 		}
 
 		public override void OnSingleClick( Mobile from )
 		{
-			int hue = Notoriety.GetHue( NotorietyHandlers.CorpseNotoriety( from, this ) );
-
 			if ( ItemID == 0x2006 ) // Corpse form
 			{
 				if ( m_CorpseName != null )
-					from.Send( new AsciiMessage( Serial, ItemID, MessageType.Label, hue, 3, "", m_CorpseName ) );
+					from.Send( new AsciiMessage( Serial, ItemID, MessageType.Label, 0, 3, "", m_CorpseName ) );
 				else
-					from.Send( new MessageLocalized( Serial, ItemID, MessageType.Label, hue, 3, 1046414, "", Name ) );
+					from.Send( new MessageLocalized( Serial, ItemID, MessageType.Label, 0, 3, 1046414, "", Name ) );
 			}
 			else // Bone form
 			{
-				from.Send( new MessageLocalized( Serial, ItemID, MessageType.Label, hue, 3, 1046414, "", Name ) );
+				from.Send( new MessageLocalized( Serial, ItemID, MessageType.Label, 0, 3, 1046414, "", Name ) );
 			}
 		}
 
@@ -1212,8 +1185,6 @@ namespace Server.Items
 				Hue = 0;
 				ProcessDelta();
 
-				if ( IsCriminalAction( from ) )
-					from.CriminalAction( true );
 			}
 			else if ( dead is BaseCreature )
 			{
@@ -1254,8 +1225,6 @@ namespace Server.Items
                 Hue = 0;
                 ProcessDelta();
 
-                if (IsCriminalAction(from))
-                    from.CriminalAction(true);
             }
             else
             {

@@ -5,8 +5,6 @@ using Server.ContextMenus;
 using Server.Regions;
 using Server.Items;
 
-using BunnyHole = Server.Mobiles.VorpalBunny.BunnyHole;
-
 namespace Server.Mobiles
 {
 	public class BaseTalismanSummon : BaseCreature
@@ -398,7 +396,7 @@ namespace Server.Mobiles
 				{
 					if ( mob.AccessLevel != AccessLevel.Player )
 					{
-						AOS.Damage( mob, Utility.Random( 2, 3 ), 0, 100, 0, 0, 0 );
+						//AOS.Damage( mob, Utility.Random( 2, 3 ), 0, 100, 0, 0, 0 );
 						mob.SendLocalizedMessage( 1008112 ); // The intense heat is damaging you!
 					}
 				}
@@ -559,7 +557,7 @@ namespace Server.Mobiles
 			if ( Deleted )
 				return;
 
-			new BunnyHole().MoveToWorld( Location, Map );
+			//new BunnyHole().MoveToWorld( Location, Map );
 
 			Frozen = true;
 			Say( "* The bunny begins to dig a tunnel back to its underground lair *" );

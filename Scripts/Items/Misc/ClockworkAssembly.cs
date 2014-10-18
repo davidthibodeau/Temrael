@@ -102,15 +102,15 @@ namespace Server.Items
 				}
 				default:
 				{
-					Golem g = new Golem( true, scalar );
+                    //Golem g = new Golem( true, scalar );
 
-					if ( g.SetControlMaster( from ) )
-					{
-						Delete();
+                    //if ( g.SetControlMaster( from ) )
+                    //{
+                    //    Delete();
 
-						g.MoveToWorld( from.Location, from.Map );
-						from.PlaySound( 0x241 );
-					}
+                    //    g.MoveToWorld( from.Location, from.Map );
+                    //    from.PlaySound( 0x241 );
+                    //}
 
 					break;
 				}

@@ -68,10 +68,10 @@ namespace Server.Spells
 
                 TimeSpan t = TimeSpan.FromSeconds(duration);
 
-				Revenant rev = new Revenant( Caster, m, t );
+                //Revenant rev = new Revenant( Caster, m, t );
 
-				if ( BaseCreature.Summon( rev, false, Caster, m.Location, 0x81, TimeSpan.FromSeconds( t.TotalSeconds + 2.0 ) ) )
-					rev.FixedParticles( 0x373A, 1, 15, 9909, EffectLayer.Waist );
+                //if ( BaseCreature.Summon( rev, false, Caster, m.Location, 0x81, TimeSpan.FromSeconds( t.TotalSeconds + 2.0 ) ) )
+                //    rev.FixedParticles( 0x373A, 1, 15, 9909, EffectLayer.Waist );
 			}
 
 			FinishSequence();

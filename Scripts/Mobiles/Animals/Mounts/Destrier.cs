@@ -57,11 +57,6 @@ namespace Server.Mobiles
             MinTameSkill = 75.0;
         }
 
-        public override OppositionGroup OppositionGroup
-        {
-            get { return OppositionGroup.FeyAndUndead; }
-        }
-
         public override int Meat { get { return 3; } }
         public override int Hides { get { return 10; } }
         public override HideType HideType { get { return HideType.Regular; } }

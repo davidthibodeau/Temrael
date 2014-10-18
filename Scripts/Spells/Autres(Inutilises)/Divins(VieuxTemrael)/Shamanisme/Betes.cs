@@ -109,10 +109,10 @@ namespace Server.Spells
 		    new SummonBetesEntry( 8448, 10.0, typeof(WispBete), 0, 8 ),
 			//new SummonBetesEntry( 8477, 12.0, typeof(Corbeau), 0, 8 ),
 			new SummonBetesEntry( 8424, 14.0, typeof(Slime), 0, 8 ),
-			new SummonBetesEntry( 8412, 17.0, typeof(Harpy), 0, -3 ),
+            //new SummonBetesEntry( 8412, 17.0, typeof(Harpy), 0, -3 ),
 			new SummonBetesEntry( 8420, 20.0, typeof(Scorpion), 4, 5 ),
-            new SummonBetesEntry( 9669, 45.0, typeof(FrostSpider), 0, -15 ),
-			new SummonBetesEntry( 9667, 55.0, typeof(GiantBlackWidow), 7, 0 ),
+            //new SummonBetesEntry( 9669, 45.0, typeof(FrostSpider), 0, -15 ),
+            //new SummonBetesEntry( 9667, 55.0, typeof(GiantBlackWidow), 7, 0 ),
 			new SummonBetesEntry( 9680, 75.0, typeof(DireWolf), 7, -6 )
 		};
 

@@ -1,4 +1,5 @@
 ﻿using Server.Engines.Equitation;
+using Server.Items;
 using System;
 
 namespace Server.Engines.Combat
@@ -11,7 +12,16 @@ namespace Server.Engines.Combat
 
         protected override double ParerChance(Mobile def)
         {
-            return 0;
+            double parry = def.Skills[SkillName.Parer].Value;
+            double chance = 0;
+
+            if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
+                chance = GetBonus(parry, 0.125, 5);
+
+            if (def.Int < 80)
+                chance = chance * (20 + def.Int) / 100;
+
+            return chance;
         }
 
         protected override void AppliquerPoison(Mobile atk, Mobile def)
@@ -22,6 +32,11 @@ namespace Server.Engines.Combat
         protected override void CheckEquitationAttaque(Mobile atk)
         {
             CheckEquitation(atk, EquitationType.Attacking);
+        }
+
+        public override bool OnFired(Mobile atk, Mobile def)
+        {
+            return false;
         }
     }
 }

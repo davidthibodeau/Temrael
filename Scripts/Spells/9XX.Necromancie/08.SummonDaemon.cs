@@ -58,7 +58,7 @@ namespace Server.Spells
             {
                 double duration = (2 * Caster.Skills.Immuabilite.Fixed) / 5;
 
-                SpellHelper.Summon(new GolemArcanique(), Caster, 0x216, TimeSpan.FromSeconds(duration), true, true);
+                //SpellHelper.Summon(new GolemArcanique(), Caster, 0x216, TimeSpan.FromSeconds(duration), true, true);
 			}
 
 			FinishSequence();
