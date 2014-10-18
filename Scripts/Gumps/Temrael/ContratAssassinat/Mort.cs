@@ -5,6 +5,8 @@ using Server.Mobiles;
 using Server.Items;
 using Server.Network;
 using Server.Engines.Mort;
+using System.Collections.Generic;
+using Server.Misc;
 
 namespace Server.Gumps
 {
@@ -12,12 +14,20 @@ namespace Server.Gumps
     {
         private Mobile m_From;
         private ContratAssassinat m_cs;
+        private List<Mobile> m_listePersoPresent = new List<Mobile>();
 
         public MortGump(Mobile from, ContratAssassinat cs)
             : base(0, 0)
         {
             m_From = from;
             m_cs = cs;
+
+            // Prise en mémoire des personnes autour du corps, lorsque le personnage a été achevé.
+            List<Mobile> listePersoPresent = new List<Mobile>();
+            foreach (Mobile m in m_cs.Cible.Corpse.GetMobilesInRange(20))
+            {
+                m_listePersoPresent.Add(m);
+            }
 
             Closable = false;
             Disposable = true;
@@ -27,30 +37,19 @@ namespace Server.Gumps
             AddPage(0);
 
             //BG
-            AddBackground(80, 72, 420, 397, 3600);
-            AddBackground(90, 82, 400, 377, 9200);
-            AddBackground(100, 92, 380, 350, 3500);
-
-            //Dragons
-            AddImage(39, 53, 10440);
-            AddImage(459, 53, 10441);
+            AddBackground(80, 72, 390, 185, 3600);
+            AddBackground(90, 82, 370, 165, 9200);
+            AddBackground(100, 92, 350, 140, 3500);
 
             AddHtml(140, 115, 200, 20, "<h1><basefont color=#025a>Vous avez été achevé !<basefont></h1>", false, false);
 
-            AddHtml(140, 155, 200, 20, "Commanditaire : " + from.GetNameUseBy(cs.Commanditaire), false, false);
+            AddHtml(140, 155, 300, 20, "Souhaitez-vous contester votre mort ? ", false, false);
 
-            AddHtml(140, 195, 200, 20, "Explication : ", false, false);
-            AddBackground(140, 225, 300, 120, 0x23F0);
+            AddHtml(190, 180, 100, 20, "Oui", false, false);
+            AddButton(220, 180, 0x481, 0x483, 1, GumpButtonType.Reply, 0);
 
-            AddHtml(145, 235, 290, 100, cs.Explication, false, true);
-
-            AddHtml(140, 350, 300, 20, "Souhaitez-vous contester votre mort ? ", false, false);
-
-            AddHtml(190, 375, 100, 20, "Oui", false, false);
-            AddButton(220, 375, 0x481, 0x483, 1, GumpButtonType.Reply, 0);
-
-            AddHtml(320, 375, 100, 20, "Non", false, false);
-            AddButton(350, 375, 0x47E, 0x480, 2, GumpButtonType.Reply, 0);
+            AddHtml(320, 180, 100, 20, "Non", false, false);
+            AddButton(350, 180, 0x47E, 0x480, 2, GumpButtonType.Reply, 0);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -64,17 +63,20 @@ namespace Server.Gumps
             {
                 case 1:
                     m_cs.Cible.Corpse.PublicOverheadMessage(MessageType.Regular, 0x0, false, "La mort a été contestée.");
-                    
-                    // Resurect corpse ( Pour éviter que le cadavre decay, peut-être ? )
+
+                    m_cs.Cible.Resurrect(); // Resurect corpse ( Pour éviter que le cadavre decay )
 
                     // Teleport to jail.
 
-                    //((TMobile)m_cs.Cible).Mort = false;
-                    //((TMobile)m_cs.Cible).MortCurrentState = MortState.Aucun;
+                    ((TMobile)m_cs.Cible).Mort = false;
+                    ((TMobile)m_cs.Cible).MortCurrentState = MortState.Aucun;
 
                     // Make forum ticket.
+                    PhpBB forumPost = new PhpBB("LEUSERNAME", "LEPASSWORD");
 
-                    // Message explicatif pour le joueur achevé, lui disant que la demande a été envoyée et sera traitée.
+                    //
+
+                    m_cs.Cible.SendMessage("Une demande de contestation a été envoyée à l'équipe, et sera traitée dans les plus brefs délais !");
 
                     break;
                 case 2:
@@ -84,6 +86,7 @@ namespace Server.Gumps
                     // Teleport to cemetary.
 
                     // Write sad message. RIP.
+                    m_cs.Cible.SendMessage("C'est ainsi que se termine l'histoire de " + m_cs.Cible.Name + ". RIP.");
 
                     break;
 
