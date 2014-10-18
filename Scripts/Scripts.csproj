@@ -2483,9 +2483,9 @@
     <Compile Include="Targets\BladedItemTarget.cs" />
     <Compile Include="Targets\MoveTarget.cs" />
     <Compile Include="Targets\PickMoveTarget.cs" />
-    <Compile Include="Vendor\PlayerVendor.cs" />
-    <Compile Include="Vendor\PlayerVendorDeed.cs" />
-    <Compile Include="Vendor\PlayerVendorGumps.cs" />
+    <Compile Include="Mobiles\Vendors\PlayerVendor\PlayerVendor.cs" />
+    <Compile Include="Mobiles\Vendors\PlayerVendor\PlayerVendorDeed.cs" />
+    <Compile Include="Mobiles\Vendors\PlayerVendor\PlayerVendorGumps.cs" />
     <Compile Include="Engines\Identities\Identities.cs" />
     <Compile Include="Engines\Identities\Identity.cs" />
     <Compile Include="Engines\Identities\RevealIdentity.cs" />

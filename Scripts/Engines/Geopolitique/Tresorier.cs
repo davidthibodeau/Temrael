@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Server.DataStructures;
+using Server.Items;
+using Server.Mobiles;
+using Server.Network;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
-using System.Timers;
-using Server.Items;
-using Server.Network;
-using Server.DataStructures;
 
 
 namespace Server.Engines.Geopolitique
@@ -21,7 +20,7 @@ namespace Server.Engines.Geopolitique
      *  S'assurer que les joueurs ne voient que les noms qu'ils connaissent.
      */
 
-    public class Tresorier : Mobile, IEnumerable<Employe>
+    public class Tresorier : Townsperson, IEnumerable<Employe>
     {
         private Mobile m_Gestionnaire; // Joueur qui controle la tresorerie
         private string m_NomGestionnaire; // Nom utilise par le tresorier pour le personnage

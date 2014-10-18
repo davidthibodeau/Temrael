@@ -267,7 +267,7 @@ namespace Server.Mobiles
 		}
 	}
 
-	public class PlayerVendor : Mobile
+	public class PlayerVendor : Townsperson
 	{
 		private Hashtable m_SellItems;
 
