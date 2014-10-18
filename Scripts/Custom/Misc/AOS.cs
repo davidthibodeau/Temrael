@@ -323,13 +323,6 @@ namespace Server
                     if (attrs != null)
                         value += attrs[attribute];
                 }
-                else if (obj is BaseTalisman)
-                {
-                    AosAttributes attrs = ((BaseTalisman)obj).Attributes;
-
-                    if (attrs != null)
-                        value += attrs[attribute];
-                }
             }
 
             return value;

@@ -820,12 +820,6 @@ namespace Server.Mobiles
 
 		public void BeginDeleteTimer()
 		{
-			if ( !(this is BaseEscortable) && !Summoned && !Deleted && !IsStabled )
-			{
-				StopDeleteTimer();
-				m_DeleteTimer = new DeleteTimer( this, TimeSpan.FromDays( 3.0 ) );
-				m_DeleteTimer.Start();
-			}
 		}
 
 		public void StopDeleteTimer()
