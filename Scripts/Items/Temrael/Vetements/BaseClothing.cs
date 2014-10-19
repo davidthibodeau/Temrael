@@ -518,14 +518,14 @@ namespace Server.Items
                 string[] s = Regex.Split(GetType().ToString(),@".");
                 string t = s[s.Length - 1];
                 if (Name == null)
-                    list.Add(1060393, "{0}t{1}", couleur, t);
+                    list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
-                    list.Add(1060393, "{0}t{1}", couleur, Name);
-                //list.Add(1060394, "{0}t{1}", couleur, rarete.ToString());
-                list.Add(1060394, "{0}t{1}", couleur, Quality.ToString());
+                    list.Add(1060393, "{0}\t{1}", couleur, Name);
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
+                list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
                 if (m_CrafterName != null)
-                    list.Add(1060394, "{0}t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
+                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
 
                 if (m_AosSkillBonuses != null)
                     m_AosSkillBonuses.GetProperties(list, couleur);
@@ -536,61 +536,61 @@ namespace Server.Items
                 //  list.Add(1061078, prop.ToString()); // artifact rarity ~1_val~
 
                 if ((prop = m_AosAttributes.AttackChance) != 0)
-                    list.Add(1060401, "{0}t{1}", couleur, prop.ToString()); // hit chance increase ~1_val~%
+                    list.Add(1060401, "{0}\t{1}", couleur, prop.ToString()); // hit chance increase ~1_val~%
 
                 if ((prop = m_AosAttributes.WeaponDamage) != 0)
-                    list.Add(1060402, "{0}t{1}", couleur, prop.ToString()); // damage increase ~1_val~%
+                    list.Add(1060402, "{0}\t{1}", couleur, prop.ToString()); // damage increase ~1_val~%
 
                 if ((prop = m_AosAttributes.DefendChance) != 0)
-                    list.Add(1060408, "{0}t{1}", couleur, prop.ToString()); // defense chance increase ~1_val~%
+                    list.Add(1060408, "{0}\t{1}", couleur, prop.ToString()); // defense chance increase ~1_val~%
 
                 if ((prop = m_AosAttributes.WeaponSpeed) != 0)
-                    list.Add(1060486, "{0}t{1}", couleur, prop.ToString()); // swing speed increase ~1_val~%
+                    list.Add(1060486, "{0}\t{1}", couleur, prop.ToString()); // swing speed increase ~1_val~%
 
                 if ((prop = m_AosAttributes.ReflectPhysical) != 0)
-                    list.Add(1060442, "{0}t{1}", couleur, prop.ToString()); // reflect physical damage ~1_val~%
+                    list.Add(1060442, "{0}\t{1}", couleur, prop.ToString()); // reflect physical damage ~1_val~%
 
                 if ((prop = m_AosAttributes.BonusStr) != 0)
-                    list.Add(1060485, "{0}t{1}", couleur, prop.ToString()); // strength bonus ~1_val~
+                    list.Add(1060485, "{0}\t{1}", couleur, prop.ToString()); // strength bonus ~1_val~
 
                 if ((prop = m_AosAttributes.BonusDex) != 0)
-                    list.Add(1060409, "{0}t{1}", couleur, prop.ToString()); // dexterity bonus ~1_val~
+                    list.Add(1060409, "{0}\t{1}", couleur, prop.ToString()); // dexterity bonus ~1_val~
 
                 if ((prop = m_AosAttributes.BonusInt) != 0)
-                    list.Add(1060432, "{0}t{1}", couleur, prop.ToString()); // intelligence bonus ~1_val~
+                    list.Add(1060432, "{0}\t{1}", couleur, prop.ToString()); // intelligence bonus ~1_val~
 
                 if ((prop = m_AosAttributes.BonusHits) != 0)
-                    list.Add(1060431, "{0}t{1}", couleur, prop.ToString()); // hit point increase ~1_val~
+                    list.Add(1060431, "{0}\t{1}", couleur, prop.ToString()); // hit point increase ~1_val~
 
                 if ((prop = m_AosAttributes.BonusStam) != 0)
-                    list.Add(1060484, "{0}t{1}", couleur, prop.ToString()); // stamina increase ~1_val~
+                    list.Add(1060484, "{0}\t{1}", couleur, prop.ToString()); // stamina increase ~1_val~
 
                 if ((prop = m_AosAttributes.BonusMana) != 0)
-                    list.Add(1060439, "{0}t{1}", couleur, prop.ToString()); // mana increase ~1_val~
+                    list.Add(1060439, "{0}\t{1}", couleur, prop.ToString()); // mana increase ~1_val~
 
                 if ((prop = m_AosAttributes.RegenHits) != 0)
-                    list.Add(1060444, "{0}t{1}", couleur, prop.ToString()); // hit point regeneration ~1_val~
+                    list.Add(1060444, "{0}\t{1}", couleur, prop.ToString()); // hit point regeneration ~1_val~
 
                 if ((prop = m_AosAttributes.RegenStam) != 0)
-                    list.Add(1060443, "{0}t{1}", couleur, prop.ToString()); // stamina regeneration ~1_val~
+                    list.Add(1060443, "{0}\t{1}", couleur, prop.ToString()); // stamina regeneration ~1_val~
 
                 if ((prop = m_AosAttributes.RegenMana) != 0)
-                    list.Add(1060440, "{0}t{1}", couleur, prop.ToString()); // mana regeneration ~1_val~
+                    list.Add(1060440, "{0}\t{1}", couleur, prop.ToString()); // mana regeneration ~1_val~
 
                 if ((prop = m_AosAttributes.EnhancePotions) != 0)
-                    list.Add(1060411, "{0}t{1}", couleur, prop.ToString()); // enhance potions ~1_val~%
+                    list.Add(1060411, "{0}\t{1}", couleur, prop.ToString()); // enhance potions ~1_val~%
 
                 if ((prop = m_AosAttributes.CastRecovery) != 0)
-                    list.Add(1060412, "{0}t{1}", couleur, prop.ToString()); // faster cast recovery ~1_val~
+                    list.Add(1060412, "{0}\t{1}", couleur, prop.ToString()); // faster cast recovery ~1_val~
 
                 if ((prop = m_AosAttributes.CastSpeed) != 0)
-                    list.Add(1060413, "{0}t{1}", couleur, prop.ToString()); // faster casting ~1_val~
+                    list.Add(1060413, "{0}\t{1}", couleur, prop.ToString()); // faster casting ~1_val~
 
                 if ((prop = m_AosAttributes.LowerManaCost) != 0)
-                    list.Add(1060433, "{0}t{1}", couleur, prop.ToString()); // lower mana cost ~1_val~%
+                    list.Add(1060433, "{0}\t{1}", couleur, prop.ToString()); // lower mana cost ~1_val~%
 
                 if ((prop = m_AosAttributes.LowerRegCost) != 0)
-                    list.Add(1060434, "{0}t{1}", couleur, prop.ToString()); // lower reagent cost ~1_val~%
+                    list.Add(1060434, "{0}\t{1}", couleur, prop.ToString()); // lower reagent cost ~1_val~%
 
                 //if ((prop = m_AosAttributes.Luck) != 0)
                 //    list.Add("<h3><basefont color=#" + couleur + ">Chance:" + prop.ToString() + "<basefont></h3>"); // luck ~1_val~
@@ -599,7 +599,7 @@ namespace Server.Items
                 //    list.Add(1060482); // spell channeling
 
                 if ((prop = m_AosAttributes.SpellDamage) != 0)
-                    list.Add(1060483, "{0}t{1}", couleur, prop.ToString()); // spell damage increase ~1_val~%
+                    list.Add(1060483, "{0}\t{1}", couleur, prop.ToString()); // spell damage increase ~1_val~%
 
                 if ((prop = m_AosAttributes.NightSight) != 0)
                     list.Add(1060434, couleur); // night sight
@@ -610,16 +610,16 @@ namespace Server.Items
                 AddARProperties(list, couleur);
 
                 if ((prop = m_AosClothingAttributes.LowerStatReq) != 0)
-                    list.Add(1060435, "{0}t{1}", couleur, prop.ToString()); // lower requirements ~1_val~%
+                    list.Add(1060435, "{0}\t{1}", couleur, prop.ToString()); // lower requirements ~1_val~%
 
                 if ((prop = ComputeStatReq(StatType.Str)) > 0)
-                    list.Add(1061170, "{0}t{1}", couleur, prop.ToString()); // strength requirement ~1_val~
+                    list.Add(1061170, "{0}\t{1}", couleur, prop.ToString()); // strength requirement ~1_val~
 
                 if ((prop = m_AosClothingAttributes.SelfRepair) != 0)
-                    list.Add(1060450, "{0}t{1}", couleur, prop.ToString()); // self repair ~1_val~
+                    list.Add(1060450, "{0}\t{1}", couleur, prop.ToString()); // self repair ~1_val~
 
                 if ((prop = m_AosClothingAttributes.DurabilityBonus) > 0)
-                    list.Add(1060410, "{0}t{1}", couleur, prop.ToString()); // durability ~1_val~%
+                    list.Add(1060410, "{0}\t{1}", couleur, prop.ToString()); // durability ~1_val~%
 
                 if (m_HitPoints >= 0 && m_MaxHitPoints > 0)
                     list.Add(1060639, "{0}t{1}t{2}", couleur, m_HitPoints, m_MaxHitPoints); // durability ~1_val~ / ~2_val~
@@ -629,10 +629,10 @@ namespace Server.Items
                 string[] s = Regex.Split(GetType().ToString(),@".");
                 string t = s[s.Length - 1];
                 if (Name == null)
-                    list.Add(1060393, "{0}t{1}", couleur, t);
+                    list.Add(1060393, "{0}\t{1}", couleur, t);
                 else
-                    list.Add(1060393, "{0}t{1}", couleur, Name);
-                //list.Add(1060394, "{0}t{1}", couleur, rarete.ToString());
+                    list.Add(1060393, "{0}\t{1}", couleur, Name);
+                //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
                 list.Add(1060395, couleur);
             }
 		}
@@ -642,12 +642,12 @@ namespace Server.Items
             double v = PhysicalResistance;
 
             if (v != 0)
-                list.Add(1060448, "{0}t{1}", couleur, v.ToString()); // physical resist ~1_val~%
+                list.Add(1060448, "{0}\t{1}", couleur, v.ToString()); // physical resist ~1_val~%
 
             v = MagieResistance;
 
             if (v != 0)
-                list.Add(1060446, "{0}t{1}", couleur, v.ToString()); // energy resist ~1_val~%
+                list.Add(1060446, "{0}\t{1}", couleur, v.ToString()); // energy resist ~1_val~%
         }
 
 		public override void OnSingleClick( Mobile from )
