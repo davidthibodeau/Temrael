@@ -1,6 +1,7 @@
 ﻿using System;
 using Server.Items;
 using Server.Network;
+using Server.Engines.Harvest;
 
 namespace Server.Items
 {
@@ -396,6 +397,8 @@ namespace Server.Items
         public override int DefMaxDamage { get { return 11; } }
         public override int DefSpeed { get { return 35; } }
 
+        public virtual HarvestSystem HarvestSystem { get { return Mining.System; } }
+
         [Constructable]
         public Pickaxe()
             : base(0xe86)
@@ -403,6 +406,30 @@ namespace Server.Items
             Weight = 4.0;
             Layer = Layer.OneHanded;
             Name = "Pioche";
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            if (HarvestSystem == null || Deleted)
+                return;
+
+            Point3D loc = this.GetWorldLocation();
+
+            if (!from.InLOS(loc) || !from.InRange(loc, 2))
+            {
+                from.LocalOverheadMessage(Server.Network.MessageType.Regular, 0x3E9, 1019045); // I can't reach that
+                return;
+            }
+            else if (!this.IsAccessibleTo(from))
+            {
+                this.PublicOverheadMessage(Server.Network.MessageType.Regular, 0x3E9, 1061637); // You are not allowed to access this.
+                return;
+            }
+
+            if (!(this.HarvestSystem is Mining))
+                from.SendLocalizedMessage(1010018); // What do you want to use this item on?
+
+            HarvestSystem.BeginHarvesting(from, this);
         }
 
         public Pickaxe(Serial serial)
