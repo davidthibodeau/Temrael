@@ -4,6 +4,42 @@ using Server.Network;
 
 namespace Server.Items
 {
+    public class EpeeTest : BaseSword
+    {
+        public override int DefMinDamage { get { return 10; } }
+        public override int DefMaxDamage { get { return 10; } }
+        public override int DefSpeed { get { return 30; } }
+
+        [Constructable]
+        public EpeeTest()
+            : base(0x2a14)
+        {
+            Weight = 5.0;
+            Layer = Layer.OneHanded;
+            Name = "EpeeTest - 10";
+        }
+
+        public EpeeTest(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+
     // Une main - Vitesse de 25 à 40
     // Main gauche.
     public class Ferel : BaseSword
