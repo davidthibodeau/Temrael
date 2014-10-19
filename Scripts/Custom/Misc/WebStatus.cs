@@ -6,7 +6,6 @@ using Server;
 using Server.Network;
 using Server.Guilds;
 using Server.Mobiles;
-using Server.Territories;
 using Server.Regions;
 
 namespace Server.Misc
@@ -48,10 +47,13 @@ namespace Server.Misc
         {
             try
             {
-                if (!Directory.Exists("web"))
-                    Directory.CreateDirectory("web");
+#if SERVEUR
+                string path = @"/var/www/localhost/htdocs/Temrael/status.html";
+#else
+                string path = @"Logging/status.html";
+#endif
 
-                using (StreamWriter op = new StreamWriter(@"C:\Status\status.html"))
+                using (StreamWriter op = new StreamWriter(path))
                 {
                     int totaljoueurs = 0;
                     int nbHumain = 0;
@@ -175,11 +177,6 @@ namespace Server.Misc
 
                                     Race race = Race.Aucun;
 
-                                    if (tm.Region is TerritoryRegion)
-                                        race = ((TerritoryRegion)tm.Region).RaceType;
-                                    else if (tm.Region is TavernRegion)
-                                        race = ((TavernRegion)tm.Region).RaceType;
-
                                     switch (race)
                                     {
                                         case Race.Elfe: cElfe++;
@@ -217,9 +214,10 @@ namespace Server.Misc
                     int year = 0;
                     int hour = 0;
                     int minute = 0;
-                    if (!File.Exists(@"C:\Status\record.rec"))
+                    string recpath = @"Logging/record.rec";
+                    if (!File.Exists(recpath))
                     {
-                        Stream s = new FileStream(@"C:\Status\record.rec", FileMode.CreateNew);
+                        Stream s = new FileStream(recpath, FileMode.CreateNew);
                         BinaryWriter bw = new BinaryWriter(s);
                         bw.Write(version);
                         bw.Write(totaljoueurs);
@@ -239,7 +237,7 @@ namespace Server.Misc
                     }
                     else
                     {
-                        Stream s = new FileStream(@"C:\Status\record.rec", FileMode.Open);
+                        Stream s = new FileStream(recpath, FileMode.Open);
                         BinaryReader br = new BinaryReader(s);
                         int versionlu = br.ReadInt32();
                         maxjoueurs = br.ReadInt32();
@@ -253,7 +251,7 @@ namespace Server.Misc
 
                         if (maxjoueurs < totaljoueurs)
                         {
-                            s = new FileStream(@"C:\Status\record.rec", FileMode.Create);
+                            s = new FileStream(recpath, FileMode.Create);
                             BinaryWriter bw = new BinaryWriter(s);
                             bw.Write(version);
                             bw.Write(totaljoueurs);
