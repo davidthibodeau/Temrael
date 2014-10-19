@@ -710,18 +710,18 @@ namespace Server.Engines.Craft
 			AddCraft( typeof( WaterTroughSouthDeed ), 1044299, 1044350, 94.7, 119.7, typeof( Log ), 1044041, 150, 1044351 );*/
             #endregion
 
-			SetSubRes( typeof( Board ), "Érable" );
+            SetSubRes(typeof(Board), "Planche d'Érable");
 
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material	TODO: Verify the required skill amount
-            AddSubRes(typeof(Board), "Érable", 00.0, 1072652);
-            AddSubRes(typeof(PinBoard), "Pin", 20.0, 1072652);
-            AddSubRes(typeof(CypresBoard), "Cyprès", 30.0, 1072652);
-            AddSubRes(typeof(CedreBoard), "Cèdre", 40.0, 1072652);
-            AddSubRes(typeof(SauleBoard), "Saule", 50.0, 1072652);
-            AddSubRes(typeof(CheneBoard), "Chêne", 60.0, 1072652);
-            AddSubRes(typeof(EbeneBoard), "Ébène", 70.0, 1072652);
-            AddSubRes(typeof(AcajouBoard), "Acajou", 80.0, 1072652);
+            AddSubRes(typeof(Board), "Planche d'Érable", 00.0, 1072652);
+            AddSubRes(typeof(PinBoard), "Planche de Pin", 20.0, 1072652);
+            AddSubRes(typeof(CypresBoard), "Planche de Cyprès", 30.0, 1072652);
+            AddSubRes(typeof(CedreBoard), "Planche de Cèdre", 40.0, 1072652);
+            AddSubRes(typeof(SauleBoard), "Planche de Saule", 50.0, 1072652);
+            AddSubRes(typeof(CheneBoard), "Planche de Chêne", 60.0, 1072652);
+            AddSubRes(typeof(EbeneBoard), "Planche d'Ébène", 70.0, 1072652);
+            AddSubRes(typeof(AcajouBoard), "Planche d'Acajou", 80.0, 1072652);
 
             SetSubRes2(typeof(Log), "Bûche d'Érable");
 

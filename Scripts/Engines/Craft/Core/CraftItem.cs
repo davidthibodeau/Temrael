@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server;
 using Server.Items;
+using Server.Misc;
 using Server.Factions;
 using Server.Mobiles;
 using Server.Commands;
@@ -815,48 +816,8 @@ namespace Server.Engines.Craft
 			return b.Hue.CompareTo( a.Hue );
 		}
 
-		public double GetExceptionalChance( CraftSystem system, double chance, Mobile from )
+		public double GetExceptionalChance( double chance, Mobile from )
 		{
-			/*if( m_ForceNonExceptional )
-				return 0.0;
-
-			double bonus = 0.0;
-
-			if ( from.Talisman is BaseTalisman )
-			{
-				BaseTalisman talisman = (BaseTalisman) from.Talisman;
-				
-				if ( talisman.Skill == system.MainSkill )
-				{
-					chance -= talisman.SuccessBonus / 100.0;
-					bonus = talisman.ExceptionalBonus / 100.0;
-				}
-			}
-
-			switch ( system.ECA )
-			{
-				default:
-				case CraftECA.ChanceMinusSixty: chance -= 0.6; break;
-				case CraftECA.FiftyPercentChanceMinusTenPercent: chance = chance * 0.5 - 0.1; break;
-				case CraftECA.ChanceMinusSixtyToFourtyFive:
-				{
-					double offset = 0.60 - ((from.Skills[system.MainSkill].Value - 95.0) * 0.03);
-
-					if ( offset < 0.45 )
-						offset = 0.45;
-					else if ( offset > 0.60 )
-						offset = 0.60;
-
-					chance -= offset;
-					break;
-				}
-			}
-
-			if ( chance > 0 )
-				return chance + bonus;
-
-			return chance;*/
-
             double bonus = 0;
 
             if (from is TMobile)
@@ -1050,13 +1011,6 @@ namespace Server.Engines.Craft
 
 		public bool CheckSkills( Mobile from, Type typeRes, CraftSystem craftSystem, ref int quality, ref bool allRequiredSkills, bool gainSkills )
 		{
-			/*double chance = GetSuccessChance( from, typeRes, craftSystem, gainSkills, ref allRequiredSkills );
-
-			if ( GetExceptionalChance( craftSystem, chance, from ) > Utility.RandomDouble() )
-				quality = 2;
-
-			return ( chance > Utility.RandomDouble() );*/
-
             if (from is TMobile)
             {
                 TMobile pm = (TMobile)from;
@@ -1065,10 +1019,8 @@ namespace Server.Engines.Craft
                     return false;
             }
 
-            bool allRequiredAptitudes = true;
-            double chance = GetSuccessChance(from, typeRes, craftSystem, gainSkills, ref allRequiredSkills, ref allRequiredAptitudes);
-            double excepchance = GetExceptionalChance(craftSystem, chance, from);
-            double random = Utility.RandomDouble();
+            double chance = GetSuccessChance(from, typeRes, craftSystem, gainSkills, ref allRequiredSkills);
+            double excepchance = GetExceptionalChance(chance, from);
 
             if (excepchance > chance)
                 excepchance = chance;
@@ -1076,15 +1028,10 @@ namespace Server.Engines.Craft
             if (excepchance >= Utility.RandomDouble())
                 quality = 2;
 
-            //return (chance >= Utility.RandomDouble());
-            return (chance >= random);
+            return (chance >= Utility.RandomDouble());
 		}
 
-        public static double[] m_AptitudesTable = new double[] { 40.0, 50.0, 55.0, 60.0, 65.0,
-            70.0, 75.0, 80.0, 85.0, 90.0, 95.0, 100.0, 105.0 };
-
-        //REPLIQUE DANS CRAFTGUMPITEM
-        public double AdjustSkill(double skill, Mobile from, CraftSystem craftSystem)
+        public double ScaleWithRessource(double skill, Mobile from, CraftSystem craftSystem)
         {
             CraftSubResCol res = craftSystem.CraftSubRes;
             CraftContext context = craftSystem.GetContext(from);
@@ -1196,116 +1143,20 @@ namespace Server.Engines.Craft
             return skill;
         }
 
-        public double ScaleChance(Mobile from, CraftSystem craftSystem, double chance)
-        {
-            if (chance <= 0.0)
-                return chance;
-
-            /*chance *= TMobile.PenaliteStatistique(from, from.Dex);
-            chance *= TMobile.PenaliteStatistique(from, from.Int);*/
-
-            for (int i = 0; i < m_arCraftSkill.Count; i++)
-            {
-                CraftSkill craftSkill = m_arCraftSkill.GetAt(i);
-
-                double minSkill = AdjustSkill(craftSkill.MinSkill, from, craftSystem);
-                int value = 0;
-
-                if (from is TMobile)
-                {
-                    TMobile pm = (TMobile)from;
-
-                    switch (craftSystem.MainSkill)
-                    {
-                        //TOCHECK CRAFT
-                        case SkillName.Alchimie: value = (int)(pm.Skills.Alchimie.Value / 10); break;
-                        case SkillName.Forge: value = (int)(pm.Skills.Forge.Value / 10); break;
-                        case SkillName.Couture: value = (int)(pm.Skills.Couture.Value / 10); break;
-                        //case SkillName.Fletching: value = pm.GetAptitudeValue(NAptitude.FabricationArc); break;
-                        case SkillName.Menuiserie: value = (int)(pm.Skills.Menuiserie.Value / 10); break;
-                        case SkillName.Inscription: value = (int)(pm.Skills.Inscription.Value / 10); break;
-                        //case SkillName.RemoveTrap: value = pm.GetAptitudeValue(NAptitude.Piegeage); break;
-                        case SkillName.Cuisine: value = (int)(pm.Skills.Cuisine.Value / 10); break;
-                        default: value = 10; break;
-                    }
-                }
-
-                if (value < 0)
-                    value = 0;
-
-                if (value > 12)
-                    value = 12;
-
-                if (minSkill >= m_AptitudesTable[value])
-                    chance = -1;
-            }
-
-            return chance;
-        }
-
-        public double GetSuccessChance(Mobile from, Type typeRes, CraftSystem craftSystem, bool gainSkills, ref bool allRequiredSkills, ref bool allRequiredAptitudes )
+        public double GetSuccessChance(Mobile from, Type typeRes, CraftSystem craftSystem, bool gainSkills, ref bool allRequiredSkills )
 		{
-			/*double minMainSkill = 0.0;
-			double maxMainSkill = 0.0;
-			double valMainSkill = 0.0;
-
-			allRequiredSkills = true;
-
-			for ( int i = 0; i < m_arCraftSkill.Count; i++)
-			{
-				CraftSkill craftSkill = m_arCraftSkill.GetAt(i);
-
-				double minSkill = craftSkill.MinSkill;
-				double maxSkill = craftSkill.MaxSkill;
-				double valSkill = from.Skills[craftSkill.SkillToMake].Value;
-
-				if ( valSkill < minSkill )
-					allRequiredSkills = false;
-
-				if ( craftSkill.SkillToMake == craftSystem.MainSkill )
-				{
-					minMainSkill = minSkill;
-					maxMainSkill = maxSkill;
-					valMainSkill = valSkill;
-				}
-
-				if ( gainSkills ) // This is a passive check. Success chance is entirely dependant on the main skill
-					from.CheckSkill( craftSkill.SkillToMake, minSkill, maxSkill );
-			}
-
-			double chance;
-
-			if ( allRequiredSkills )
-				chance = craftSystem.GetChanceAtMin( this ) + ((valMainSkill - minMainSkill) / (maxMainSkill - minMainSkill) * (1.0 - craftSystem.GetChanceAtMin( this )));
-			else
-				chance = 0.0;
-
-			if ( allRequiredSkills && from.Talisman is BaseTalisman )
-			{
-				BaseTalisman talisman = (BaseTalisman) from.Talisman;
-				
-				if ( talisman.Skill == craftSystem.MainSkill )
-					chance += talisman.SuccessBonus / 100.0;
-			}
-
-			if ( allRequiredSkills && valMainSkill == maxMainSkill )
-				chance = 1.0;
-
-			return chance;*/
-
             double minMainSkill = 0.0;
             double maxMainSkill = 0.0;
             double valMainSkill = 0.0;
 
             allRequiredSkills = true;
-            allRequiredAptitudes = true;
 
             for (int i = 0; i < m_arCraftSkill.Count; i++)
             {
                 CraftSkill craftSkill = m_arCraftSkill.GetAt(i);
 
-                double minSkill = AdjustSkill(craftSkill.MinSkill, from, craftSystem);
-                double maxSkill = AdjustSkill(craftSkill.MaxSkill, from, craftSystem);
+                double minSkill = ScaleWithRessource(craftSkill.MinSkill, from, craftSystem);
+                double maxSkill = ScaleWithRessource(craftSkill.MaxSkill, from, craftSystem);
                 double valSkill = from.Skills[craftSkill.SkillToMake].Value;
 
                 if (valSkill < minSkill)
@@ -1322,24 +1173,15 @@ namespace Server.Engines.Craft
                     from.CheckSkill(craftSkill.SkillToMake, minSkill, maxSkill);
             }
 
-            //if (craftSystem is DefWriting && allRequiredAptitudes && allRequiredConnaissances)
-            //    return 1.0;
-
             double chance = 0.0;
 
-            if (allRequiredSkills && allRequiredAptitudes)
+            if (allRequiredSkills)
+            {
                 chance = (valMainSkill - minMainSkill) / (maxMainSkill - minMainSkill);
+                chance += (((TMobile)from).Skills.Fignolage.Value / 200);
+            }
 
-            //Console.WriteLine("ValMainSKill :" + valMainSkill.ToString());
-            //Console.WriteLine("minMainSkill :" + minMainSkill.ToString());
-            //Console.WriteLine("maxMainSkill :" + minMainSkill.ToString());
-            //Console.WriteLine("chance :" + chance.ToString());
-
-            // TOCHECK FIGNOLAGE
-            if (from is TMobile)
-                chance += (int)(((TMobile)from).Skills.Fignolage.Value / 200);
-
-            return ScaleChance(from, craftSystem, chance);
+            return chance;
 		}
 
 		public void Craft( Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool )
@@ -1349,48 +1191,36 @@ namespace Server.Engines.Craft
 				if( RequiredExpansion == Expansion.None || ( from.NetState != null && from.NetState.SupportsExpansion( RequiredExpansion ) ) )
 				{
 					bool allRequiredSkills = true;
-                    bool allRequiredAptitudes = true;
-                    double chance = GetSuccessChance(from, typeRes, craftSystem, false, ref allRequiredSkills, ref allRequiredAptitudes);
+                    double chance = GetSuccessChance(from, typeRes, craftSystem, false, ref allRequiredSkills );
 
-                    if (allRequiredAptitudes)
+                    if (allRequiredSkills && chance >= 0.0)
                     {
-                        //Console.WriteLine(allRequiredSkills.ToString());
-                        //Console.WriteLine(chance);
-
-                        if (allRequiredSkills && chance >= 0.0)
+                        if (this.Recipe == null || !(from is PlayerMobile) || ((PlayerMobile)from).HasRecipe(this.Recipe))
                         {
-                            if (this.Recipe == null || !(from is PlayerMobile) || ((PlayerMobile)from).HasRecipe(this.Recipe))
+                            int badCraft = craftSystem.CanCraft(from, tool, m_Type);
+
+                            if (badCraft <= 0)
                             {
-                                int badCraft = craftSystem.CanCraft(from, tool, m_Type);
+                                int resHue = 0;
+                                int maxAmount = 0;
+                                object message = null;
 
-                                if (badCraft <= 0)
+                                if (ConsumeRes(from, typeRes, craftSystem, ref resHue, ref maxAmount, ConsumeType.None, ref message))
                                 {
-                                    int resHue = 0;
-                                    int maxAmount = 0;
-                                    object message = null;
+                                    message = null;
 
-                                    if (ConsumeRes(from, typeRes, craftSystem, ref resHue, ref maxAmount, ConsumeType.None, ref message))
+                                    if (ConsumeAttributes(from, ref message, false))
                                     {
-                                        message = null;
+                                        CraftContext context = craftSystem.GetContext(from);
 
-                                        if (ConsumeAttributes(from, ref message, false))
-                                        {
-                                            CraftContext context = craftSystem.GetContext(from);
+                                        if (context != null)
+                                            context.OnMade(this);
 
-                                            if (context != null)
-                                                context.OnMade(this);
-
-                                            int iMin = craftSystem.MinCraftEffect;
-                                            int iMax = (craftSystem.MaxCraftEffect - iMin) + 1;
-                                            int iRandom = Utility.Random(iMax);
-                                            iRandom += iMin + 1;
-                                            new InternalTimer(from, craftSystem, this, typeRes, tool, iRandom).Start();
-                                        }
-                                        else
-                                        {
-                                            from.EndAction(typeof(CraftSystem));
-                                            from.SendGump(new CraftGump(from, craftSystem, tool, message));
-                                        }
+                                        int iMin = craftSystem.MinCraftEffect;
+                                        int iMax = (craftSystem.MaxCraftEffect - iMin) + 1;
+                                        int iRandom = Utility.Random(iMax);
+                                        iRandom += iMin + 1;
+                                        new InternalTimer(from, craftSystem, this, typeRes, tool, iRandom).Start();
                                     }
                                     else
                                     {
@@ -1401,25 +1231,25 @@ namespace Server.Engines.Craft
                                 else
                                 {
                                     from.EndAction(typeof(CraftSystem));
-                                    from.SendGump(new CraftGump(from, craftSystem, tool, badCraft));
+                                    from.SendGump(new CraftGump(from, craftSystem, tool, message));
                                 }
                             }
                             else
                             {
                                 from.EndAction(typeof(CraftSystem));
-                                from.SendGump(new CraftGump(from, craftSystem, tool, 1072847)); // You must learn that recipe from a scroll.
+                                from.SendGump(new CraftGump(from, craftSystem, tool, badCraft));
                             }
                         }
                         else
                         {
                             from.EndAction(typeof(CraftSystem));
-                            from.SendGump(new CraftGump(from, craftSystem, tool, 1044153)); // You don't have the required skills to attempt this item.
+                            from.SendGump(new CraftGump(from, craftSystem, tool, 1072847)); // You must learn that recipe from a scroll.
                         }
                     }
                     else
                     {
                         from.EndAction(typeof(CraftSystem));
-                        from.SendGump(new CraftGump(from, craftSystem, tool, "Vous n'avez pas les aptitudes nécessaires pour fabriquer cet objet."));
+                        from.SendGump(new CraftGump(from, craftSystem, tool, 1044153)); // You don't have the required skills to attempt this item.
                     }
 				}
 				else

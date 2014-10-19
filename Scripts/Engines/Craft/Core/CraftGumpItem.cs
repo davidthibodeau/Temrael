@@ -54,19 +54,12 @@ namespace Server.Engines.Craft
             AddHtml(10, 277, 150, 22, "<h3><basefont color=#FFFFFF><center>Matériaux</center><basefont></h3>", false, false);
             AddHtml(10, 362, 150, 22, "<h3><basefont color=#FFFFFF><center>Autre</center><basefont></h3>", false, false);
 
-			//AddHtmlLocalized( 170, 40, 150, 20, 1044053, LabelColor, false, false ); // ITEM
-			//AddHtmlLocalized( 10, 192, 150, 22, 1044054, LabelColor, false, false ); // <CENTER>SKILLS</CENTER>
-			//AddHtmlLocalized( 10, 277, 150, 22, 1044055, LabelColor, false, false ); // <CENTER>MATERIALS</CENTER>
-			//AddHtmlLocalized( 10, 362, 150, 22, 1044056, LabelColor, false, false ); // <CENTER>OTHER</CENTER>
-
 			if ( craftSystem.GumpTitleNumber > 0 )
 				AddHtmlLocalized( 10, 12, 510, 20, craftSystem.GumpTitleNumber, LabelColor, false, false );
 			else
-				//AddHtml( 10, 12, 510, 20, craftSystem.GumpTitleString, false, false );
                 AddHtml(10, 12, 510, 20, "<h3><basefont color=#FFFFFF><center>" + craftSystem.GumpTitleString + "</center><basefont></h3>", false, false);
 
 			AddButton( 15, 387, 4014, 4016, 0, GumpButtonType.Reply, 0 );
-			//AddHtmlLocalized( 50, 390, 150, 18, 1044150, LabelColor, false, false ); // BACK
             AddHtml(50, 390, 150, 20, "<h3><basefont color=#FFFFFF>Retour<basefont></h3>", false, false);
 
 			bool needsRecipe = ( craftItem.Recipe != null && from is PlayerMobile && !((PlayerMobile)from).HasRecipe( craftItem.Recipe ) );
@@ -74,60 +67,30 @@ namespace Server.Engines.Craft
 			if( needsRecipe )
 			{
 				AddButton( 270, 387, 4005, 4007, 0, GumpButtonType.Page, 0 );
-				//AddHtmlLocalized( 305, 390, 150, 18, 1044151, GreyLabelColor, false, false ); // MAKE NOW
                 AddHtml(305, 390, 150, 20, "<h3><basefont color=#FFFFFF>Fabriquer<basefont></h3>", false, false);
 			}
 			else
 			{
 				AddButton( 270, 387, 4005, 4007, 1, GumpButtonType.Reply, 0 );
-				//AddHtmlLocalized( 305, 390, 150, 18, 1044151, LabelColor, false, false ); // MAKE NOW
                 AddHtml(305, 390, 150, 20, "<h3><basefont color=#FFFFFF>Fabriquer<basefont></h3>", false, false);
 			}
 
 			if ( craftItem.NameNumber > 0 )
 				AddHtmlLocalized( 330, 40, 180, 18, craftItem.NameNumber, LabelColor, false, false );
 			else
-				//AddLabel( 330, 40, LabelHue, craftItem.NameString );
                 AddHtml(330, 40, 150, 20, "<h3><basefont color=#FFFFFF><center>" + craftItem.NameString + "</center><basefont></h3>", false, false);
 
 			if ( craftItem.UseAllRes )
-				//AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1048176, LabelColor, false, false ); // Makes as many as possible at once
                 AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Fabriquer le plus possible</center><basefont></h3>", false, false);
 
 			DrawItem();
 			DrawSkill();
 			DrawResource();
 
-			/*
-			if( craftItem.RequiresSE )
-				AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1063363, LabelColor, false, false ); //* Requires the "Samurai Empire" expansion
-			 * */
-
-			if( craftItem.RequiredExpansion != Expansion.None )
-			{
-				bool supportsEx = (from.NetState != null && from.NetState.SupportsExpansion( craftItem.RequiredExpansion ));
-				TextDefinition.AddHtmlText( this, 170, 302 + (m_OtherCount++ * 20), 310, 18, RequiredExpansionMessage( craftItem.RequiredExpansion ), false, false, supportsEx ? LabelColor : RedLabelColor, supportsEx ? LabelHue : RedLabelHue );
-			}
-
 			if( needsRecipe )
 				//AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1073620, RedLabelColor, false, false ); // You have not learned this recipe.
                 AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Vous n'avez pas la recette</center><basefont></h3>", false, false);
 		}
-
-		private TextDefinition RequiredExpansionMessage( Expansion expansion )
-		{
-			switch( expansion )
-			{
-				case Expansion.SE:
-					return 1063363; // * Requires the "Samurai Empire" expansion
-				case Expansion.ML:
-					return 1072651; // * Requires the "Mondain's Legacy" expansion
-				default:
-					return String.Format( "* Requires the \"{0}\" expansion", ExpansionInfo.GetInfo( expansion ).Name );
-			}
-		}
-
-		private bool m_ShowExceptionalChance;
 
 		public void DrawItem()
 		{
@@ -135,167 +98,12 @@ namespace Server.Engines.Craft
             {
 			    Type type = m_CraftItem.ItemType;
 
-                Item item = (Item)Activator.CreateInstance(m_CraftItem.ItemType);
-
-                if (item is BaseArmor)
-                {
-                    string nameEnd = String.Empty;
-                    Type typeRes = null;
-                    string nameString = String.Empty;
-                    int nameNumber = 0;
-
-                    CraftContext context = m_CraftSystem.GetContext(m_From);
-
-                    CraftSubResCol res = (m_CraftItem.UseSubRes2 ? m_CraftSystem.CraftSubRes2 : m_CraftSystem.CraftSubRes);
-                    int resIndex = -1;
-
-                    if (context != null)
-                        resIndex = (m_CraftItem.UseSubRes2 ? context.LastResourceIndex2 : context.LastResourceIndex);
-
-                    for (int i = 0; i < m_CraftItem.Resources.Count; i++)
-                    {
-                        CraftRes craftResource = m_CraftItem.Resources.GetAt(i);
-
-                        typeRes = craftResource.ItemType;
-                        nameString = craftResource.NameString;
-                        nameNumber = craftResource.NameNumber;
-
-                        if (typeRes == res.ResType && resIndex > -1)
-                        {
-                            CraftSubRes subResource = res.GetAt(resIndex);
-
-                            typeRes = subResource.ItemType;
-
-                            nameString = subResource.NameString;
-                            nameNumber = subResource.GenericNameNumber;
-
-                            if (nameNumber <= 0)
-                                nameNumber = subResource.NameNumber;
-                        }
-
-                        if ((craftResource.ItemType.ToString() == "Server.Items.Leather" || craftResource.ItemType.ToString() == "Server.Items.Bone") && nameEnd == String.Empty)
-                        {
-                            nameEnd = nameString;
-                        }
-
-                        //Console.WriteLine(craftResource.ItemType.ToString());
-                        //Console.WriteLine(nameString.ToString());
-                    }
-
-                    BaseArmor armor = (BaseArmor)item;
-                    int req = armor.NiveauAttirail;
-
-                    if (armor.MaterialType == ArmorMaterialType.Bone)
-                    {
-                        switch (nameEnd)
-                        {
-                            case "Os":
-                            case "Os Gobelin":
-                            case "Os Reptilien":
-                            case "Os Nordique":
-                            case "Os Désertique":
-                                req = 2;
-                                break;
-                            case "Os Maritime":
-                            case "Os Volcanique":
-                            case "Os Géant":
-                                req = 3;
-                                break;
-                            case "Os Minotaure":
-                            case "Os Arachnide":
-                            case "Os Ophidien":
-                                req = 4;
-                                break;
-                            case "Os Magique":
-                            case "Os Ancien":
-                            case "Os Demoniaque":
-                                req = 5;
-                                break;
-                            case "Os Dragonique":
-                            case "Os Balron":
-                            case "Os Wyrmique":
-                                req = 6;
-                                break;
-                        }
-                    }
-                    
-                    else if (armor.MaterialType == ArmorMaterialType.Leather)
-                    {
-                        switch (nameEnd)
-                        {
-                            case "Cuir":
-                            case "Cuir Reptilien":
-                            case "Cuir Nordique":
-                            case "Cuir Désertique":
-                                req = 1;
-                                break;
-                            case "Cuir Maritime":
-                            case "Cuir Volcanique":
-                            case "Cuir Géant":
-                                req = 2;
-                                break;
-                            case "Cuir Minotaure":
-                            case "Cuir Ophidien":
-                            case "Cuir Arachnide":
-                                req = 3;
-                                break;
-                            case "Cuir Magique":
-                            case "Cuir Ancien":
-                            case "Cuir Demoniaque":
-                                req = 4;
-                                break;
-                            case "Cuir Dragonique":
-                            case "Cuir Lupus":
-                                req = 5;
-                                break;
-                        }
-                    }
-
-                    else if (armor.MaterialType == ArmorMaterialType.Studded)
-                    {
-                        switch (nameEnd)
-                        {
-                            case "Cuir":
-                            case "Cuir Reptilien":
-                            case "Cuir Nordique":
-                            case "Cuir Désertique":
-                                req = 2;
-                                break;
-                            case "Cuir Maritime":
-                            case "Cuir Volcanique":
-                            case "Cuir Géant":
-                                req = 3;
-                                break;
-                            case "Cuir Minotaure":
-                            case "Cuir Ophidien":
-                            case "Cuir Arachnide":
-                                req = 4;
-                                break;
-                            case "Cuir Magique":
-                            case "Cuir Ancien":
-                            case "Cuir Demoniaque":
-                                req = 5;
-                                break;
-                            case "Cuir Dragonique":
-                            case "Cuir Lupus":
-                                req = 6;
-                                break;
-                        }
-                    }
-
-                    AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Niveau d'Attirail : " + req.ToString() + "</center><basefont></h3>", false, false);
-                }
-
-
 			    AddItem( 20, 50, CraftItem.ItemIDOf( type ) );
 
 			    if ( m_CraftItem.IsMarkable( type ) )
 			    {
                     AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF><center>Cet objet prendra la marque de son createur.</center><basefont></h3>", false, false);
-				    //AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1044059, LabelColor, false, false ); // This item may hold its maker's mark
-				    m_ShowExceptionalChance = true;
 			    }
-                item.Delete();
             }
             catch (Exception e)
             {
@@ -311,17 +119,13 @@ namespace Server.Engines.Craft
 			for ( int i = 0; i < m_CraftItem.Skills.Count; i++ )
 			{
 				CraftSkill skill = m_CraftItem.Skills.GetAt( i );
-				//double minSkill = skill.MinSkill, maxSkill = skill.MaxSkill;
-                double minSkill = AdjustSkill(skill.MinSkill, m_From);
-                double maxSkill = AdjustSkill(skill.MaxSkill, m_From);
+                double minSkill = m_CraftItem.ScaleWithRessource(skill.MinSkill, m_From, m_CraftSystem);
 
 				if ( minSkill < 0 )
 					minSkill = 0;
 
                 AddHtml(170, 132 + (i * 20), 300, 20, "<h3><basefont color=#FFFFFF>" + skill.SkillToMake.ToString() +  "<basefont></h3>", false, false);
                 AddHtml(480, 132 + (i * 20), 300, 20, "<h3><basefont color=#FFFFFF>" + Convert.ToInt32(minSkill) + "%<basefont></h3>", false, false);
-				//AddHtmlLocalized( 170, 132 + (i * 20), 200, 18, 1044060 + (int)skill.SkillToMake, LabelColor, false, false );
-				//AddLabel( 430, 132 + (i * 20), LabelHue, String.Format( "{0:F1}", minSkill ) );
 			}
 
 			CraftContext context = m_CraftSystem.GetContext( m_From );
@@ -330,12 +134,8 @@ namespace Server.Engines.Craft
 				resIndex = ( m_CraftItem.UseSubRes2 ? context.LastResourceIndex2 : context.LastResourceIndex );
 
 			bool allRequiredSkills = true;
-            bool allRequiredAptitudes = true;
-			double chance = m_CraftItem.GetSuccessChance( m_From, resIndex > -1 ? res.GetAt( resIndex ).ItemType : null, m_CraftSystem, false, ref allRequiredSkills, ref allRequiredAptitudes );
-			double excepChance = m_CraftItem.GetExceptionalChance( m_CraftSystem, chance, m_From );
-
-            if (!(allRequiredAptitudes))
-                AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF>Vous n'avez pas l'aptitude nécessaire.<basefont></h3>", false, false);
+			double chance = m_CraftItem.GetSuccessChance( m_From, resIndex > -1 ? res.GetAt( resIndex ).ItemType : null, m_CraftSystem, false, ref allRequiredSkills );
+			double excepChance = m_CraftItem.GetExceptionalChance( chance, m_From );
 
 			if ( chance < 0.0 )
 				chance = 0.0;
@@ -347,8 +147,6 @@ namespace Server.Engines.Craft
 
                 AddHtml(170, 80, 300, 20, "<h3><basefont color=#FFFFFF>Chance de Succès :<basefont></h3>", false, false);
                 AddHtml(480, 80, 300, 20, "<h3><basefont color=#FFFFFF>" + chan.ToString() + "%<basefont></h3>", false, false);
-                //AddHtmlLocalized( 170, 80, 250, 18, 1044057, LabelColor, false, false ); // Success Chance:
-                //AddLabel( 430, 80, LabelHue, String.Format( "{0:F1}%", chance * 100 ) );
             }
             catch (OverflowException e)
             {
@@ -357,27 +155,22 @@ namespace Server.Engines.Craft
    
             }
 
-			if ( m_ShowExceptionalChance )
-			{
-				if( excepChance < 0.0 )
-					excepChance = 0.0;
-				else if( excepChance > 1.0 )
-					excepChance = 1.0;
-                try
-                {
-                    int exept = Convert.ToInt32(excepChance * 100);
+			if( excepChance < 0.0 )
+				excepChance = 0.0;
+			else if( excepChance > 1.0 )
+				excepChance = 1.0;
+            try
+            {
+                int exept = Convert.ToInt32(excepChance * 100);
 
-                    AddHtml(170, 100, 300, 20, "<h3><basefont color=#FFFFFF>Chance d'Object Exceptionel:<basefont></h3>", false, false);
-                    AddHtml(480, 100, 300, 20, "<h3><basefont color=#FFFFFF>" + exept.ToString() + "%<basefont></h3>", false, false);
-                    //AddHtmlLocalized( 170, 100, 250, 18, 1044058, 32767, false, false ); // Exceptional Chance:
-                    //AddLabel( 430, 100, LabelHue, String.Format( "{0:F1}%", excepChance * 100 ) );
-                }
-                catch (OverflowException e)
-                {
-                    Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0} * 100. The original chance value was : {1}. L'item était {2}", 
-                        excepChance, chance, m_CraftItem.ItemType.ToString());
-                }
-			}
+                AddHtml(170, 100, 300, 20, "<h3><basefont color=#FFFFFF>Chance d'Objet Exceptionel:<basefont></h3>", false, false);
+                AddHtml(480, 100, 300, 20, "<h3><basefont color=#FFFFFF>" + exept.ToString() + "%<basefont></h3>", false, false);
+            }
+            catch (OverflowException e)
+            {
+                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0} * 100. The original chance value was : {1}. L'item était {2}",
+                    excepChance, chance, m_CraftItem.ItemType.ToString());
+            }
 		}
 
 		private static Type typeofBlankScroll = typeof( BlankScroll );
@@ -491,303 +284,5 @@ namespace Server.Engines.Craft
 				}
 			}
 		}
-
-        private static Type[] m_UseLeathers = new Type[]
-			{
-				typeof(FemaleLeatherChest),
-				typeof(LeatherArms),
-				typeof(LeatherBustierArms),
-				typeof(LeatherCap),
-				typeof(LeatherChest),
-				typeof(LeatherGloves),
-				typeof(LeatherGorget),
-				typeof(LeatherLegs),
-				typeof(LeatherShorts),
-				typeof(LeatherSkirt),
-
-				typeof(FemaleStuddedChest),
-				typeof(StuddedArms),
-				typeof(StuddedBustierArms),
-				typeof(StuddedChest),
-				typeof(StuddedGloves),
-				typeof(StuddedGorget),
-				typeof(StuddedLegs),
-
-                typeof(LeatherBarbareLeggings),
-                typeof(LeatherBarbareTunic),
-                typeof(RoublardLeggings),
-                typeof(RoublardTunic),
-                typeof(ElfiqueCuirTunic),
-                typeof(ElfiqueCuirRobe),
-                
-                typeof(ElfeHelm),
-                typeof(ElfeGorget),
-                typeof(ElfeArms),
-                typeof(ElfeLeggings),
-                typeof(ElfeTunic),
-                typeof(StuddedBarbareGreaves),
-                typeof(StuddedBarbareGorget),
-                typeof(StuddedBarbareLeggings),
-                typeof(StuddedBarbareTunic)
-			};
-
-        private static Type[] m_UseBones = new Type[]
-			{
-				typeof(BoneArms),
-				typeof(BoneChest),
-				typeof(BoneGloves),
-				typeof(BoneHelm),
-				typeof(BoneLegs)
-			};
-
-        private static Type[] m_UseIngots = new Type[]
-			{
-				typeof(RingmailArms),
-				typeof(RingmailChest),
-				typeof(RingmailGloves),
-				typeof(RingmailLegs),
-
-				typeof(ChainChest),
-				typeof(ChainLegs),
-
-				typeof(FemalePlateChest),
-				typeof(PlateArms),
-				typeof(PlateChest),
-				typeof(PlateGloves),
-				typeof(PlateGorget),
-				typeof(PlateLegs),
-
-				typeof(Bascinet),
-				typeof(ChainCoif),
-				typeof(CloseHelm),
-				typeof(Helmet),
-				typeof(NorseHelm),
-				typeof(PlateHelm),
-
-                typeof(DrowHelm),
-                typeof(DrowGorget),
-                typeof(DrowArms),
-                typeof(DrowLeggings),
-                typeof(DrowTunic),
-
-                typeof(BourgeonLeggings),
-                typeof(BourgeonGreaves),
-                typeof(BourgeonTunic),
-                
-                typeof(MaillonsLeggings),
-                typeof(MaillonsGreaves),
-                typeof(MaillonsTunic),
-
-                typeof(MailluresLeggings),
-                typeof(MailluresGreaves),
-                typeof(MailluresTunic),
-
-                typeof(ElfiqueChaineLeggings),
-                typeof(ElfiqueChaineTunic),
-
-                typeof(MaillesHelm),
-                typeof(MaillesLeggings),
-                typeof(MaillesTunic),
-
-                typeof(ElfiquePlaqueGorget),
-                typeof(ElfiquePlaqueLeggings),
-                typeof(ElfiquePlaqueTunic),
-
-                typeof(BrassardsGothique),
-                typeof(CuirasseGothique),
-                typeof(CasqueGothique),
-
-                typeof(PlaqueBarbareGreaves),
-                typeof(PlaqueBarbareGorget),
-                typeof(PlaqueBarbareLeggings),
-                typeof(PlaqueBarbareTunic),
-
-                typeof(BrassardsOrne),
-                typeof(CuirasseOrne),
-
-                typeof(BrassardsDecorer),
-                typeof(GantsDecorer),
-                typeof(GorgetDecorer),
-                typeof(JambieresDecorer),
-                typeof(CuirasseDecorer),
-                typeof(CasqueDecorer),
-                typeof(CasqueClosDecorer),
-
-                typeof(PlaqueChevalierGreaves),
-                typeof(PlaqueChevalierGloves),
-                typeof(PlaqueChevalierGorget),
-                typeof(PlaqueChevalierLeggings),
-                typeof(PlaqueChevalierTunic),
-                typeof(PlaqueChevalierHelm),
-
-                typeof(ArmureDaedricGreaves),
-                typeof(ArmureDaedricGloves),
-                typeof(ArmureDaedricGorget),
-                typeof(ArmureDaedricLeggings),
-                typeof(ArmureDaedricTunic),
-                typeof(ArmureDaedricHelm),
-
-                typeof(LeggingsBarbare),
-                typeof(TunicBarbare),
-
-                typeof(TuniqueChaine),
-                typeof(CuirasseReligieuse),
-                typeof(Cuirasse),
-                typeof(CuirasseBarbare),
-                typeof(CuirasseNordique),
-                typeof(CuirasseDraconique),
-                typeof(CasqueNordique),
-                typeof(CasqueSudiste),
-                typeof(CasqueCorne),
-                typeof(Brassards),
-                typeof(BrassardsChaotique),
-
-                typeof(Buckler),
-                typeof(BronzeShield),
-                typeof(MetalShield),
-                typeof(WoodenKiteShield),
-                typeof(BouclierGarde),
-                typeof(MetalKiteShield),
-                typeof(ChaosShield),
-                typeof(OrderShield),
-                typeof(BouclierComte),
-                typeof(BouclierMarquis),
-                typeof(BouclierDuc),
-                typeof(BouclierNordique),
-                typeof(BouclierElfique),
-                typeof(BouclierChevaleresque),
-                typeof(BouclierVieux),
-                typeof(HeaterShield),
-                typeof(BouclierDecorer),
-                typeof(BouclierPavoisNoir)
-			};
-
-        private static Type[] m_UseIngotsJewels = new Type[]
-			{
-				//typeof(Ring),
-				typeof(Necklace),
-				//typeof(Bracelet),
-				//typeof(Earrings),
-			};
-        //PAREIL DANS CRAFTITEM
-        public double AdjustSkill(double skill, Mobile from)
-        {
-            CraftSubResCol res = m_CraftSystem.CraftSubRes;
-            CraftContext context = m_CraftSystem.GetContext(from);
-            Type ItemType = m_CraftItem.ItemType;
-            int resIndex = (context == null ? -1 : context.LastResourceIndex);
-            string name = "";
-
-            if (resIndex > -1)
-            {
-                CraftSubRes subResource = res.GetAt(resIndex);
-
-                name = subResource.ItemType.Name;
-            }
-
-            bool contains = false;
-
-            for (int i = 0; !contains && i < m_UseLeathers.Length; ++i)
-                contains = (ItemType == m_UseLeathers[i]);
-
-            if (contains)
-            {
-                switch (name)
-                {
-                    case "ReptilienLeather": skill += 10.0; break;
-                    case "NordiqueLeather": skill += 10.0; break;
-                    case "DesertiqueLeather": skill += 10.0; break;
-                    case "MaritimeLeather": skill += 20.0; break;
-                    case "VolcaniqueLeather": skill += 20.0; break;
-                    case "GeantLeather": skill += 20.0; break;
-                    case "MinotaureLeather": skill += 30.0; break;
-                    case "OphidienLeather": skill += 30.0; break;
-                    case "ArachnideLeather": skill += 30.0; break;
-                    case "MagiqueLeather": skill += 40.0; break;
-                    case "AncienLeather": skill += 40.0; break;
-                    case "DemoniaqueLeather": skill += 40.0; break;
-                    case "DragoniqueLeather": skill += 50.0; break;
-                    case "LupusLeather": skill += 50.0; break;
-                }
-
-                return skill;
-            }
-
-            contains = false;
-
-            for (int i = 0; !contains && i < m_UseBones.Length; ++i)
-                contains = (ItemType == m_UseBones[i]);
-
-            if (contains)
-            {
-                switch (name)
-                {
-                    case "GobelinBone": skill += 10.0; break;
-                    case "ReptilienBone": skill += 10.0; break;
-                    case "NordiqueBone": skill += 10.0; break;
-                    case "DesertiqueBone": skill += 10.0; break;
-                    case "MaritimeBone": skill += 20.0; break;
-                    case "VolcaniqueBone": skill += 20.0; break;
-                    case "GeantBone": skill += 20.0; break;
-                    case "MinotaureBone": skill += 30.0; break;
-                    case "OphidienBone": skill += 30.0; break;
-                    case "ArachnideBone": skill += 30.0; break;
-                    case "MagiqueBone": skill += 40.0; break;
-                    case "AncienBone": skill += 40.0; break;
-                    case "DemonBone": skill += 40.0; break;
-                    case "DragonBone": skill += 50.0; break;
-                    case "BalronBone": skill += 50.0; break;
-                    case "WyrmBone": skill += 50.0; break;
-                }
-
-                return skill;
-            }
-
-            contains = false;
-
-            for (int i = 0; !contains && i < m_UseIngots.Length; ++i)
-                contains = (ItemType == m_UseIngots[i]);
-
-            if (contains)
-            {
-                switch (name)
-                {
-                    case "CuivreIngot": skill += 5.0; break;
-                    case "BronzeIngot": skill += 5.0; break;
-                    case "AcierIngot": skill += 10.0; break;
-                    case "ArgentIngot": skill += 10.0; break;
-                    case "OrIngot": skill += 10.0; break;
-                    case "MytherilIngot": skill += 15.0; break;
-                    case "LuminiumIngot": skill += 15.0; break;
-                    case "ObscuriumIngot": skill += 15.0; break;
-                    case "MystiriumIngot": skill += 20.0; break;
-                    case "DominiumIngot": skill += 20.0; break;
-                    case "VenariumIngot": skill += 20.0; break;
-                    case "EclariumIngot": skill += 25.0; break;
-                    case "AtheniumIngot": skill += 25.0; break;
-                    case "UmbrariumIngot": skill += 25.0; break;
-                }
-
-                return skill;
-            }
-
-            contains = false;
-
-            for (int i = 0; !contains && i < m_UseIngotsJewels.Length; ++i)
-                contains = (ItemType == m_UseIngotsJewels[i]);
-
-            if (contains)
-            {
-                switch (name)
-                {
-                    case "ArgentIngot": skill += 10.0; break;
-                    case "GoldIngot": skill += 20.0; break;
-                }
-
-                return skill;
-            }
-
-            return skill;
-        }
 	}
 }
