@@ -12,7 +12,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public Farmer() : base( "Fermier" )
 		{
-			SetSkill( SkillName.Hache, 36.0, 68.0 );
+			SetSkill( SkillName.Foresterie, 36.0, 68.0 );
 			SetSkill( SkillName.Empoisonnement, 36.0, 68.0 );
 			SetSkill( SkillName.Cuisine, 36.0, 68.0 );
 		}

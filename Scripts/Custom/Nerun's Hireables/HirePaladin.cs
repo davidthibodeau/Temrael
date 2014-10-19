@@ -59,7 +59,7 @@ namespace Server.Mobiles
 
             SetDamage(10, 23);
 
-            SetSkill(SkillName.Epee, 66.0, 97.5);
+            SetSkill(SkillName.ArmeTranchante, 66.0, 97.5);
             //SetSkill(SkillName.Anatomy, 65.0, 87.5);
             SetSkill(SkillName.Concentration, 25.0, 47.5);
             SetSkill(SkillName.Soins, 65.0, 87.5);

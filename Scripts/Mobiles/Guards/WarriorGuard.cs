@@ -86,7 +86,7 @@ namespace Server.Mobiles
 
 			//Skills[SkillName.Anatomy].Base = 120.0;
 			Skills[SkillName.Tactiques].Base = 120.0;
-			Skills[SkillName.Epee].Base = 120.0;
+			Skills[SkillName.ArmeTranchante].Base = 120.0;
 			Skills[SkillName.Concentration].Base = 120.0;
 			Skills[SkillName.Detection].Base = 100.0;
 

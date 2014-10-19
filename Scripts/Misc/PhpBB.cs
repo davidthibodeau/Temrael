@@ -122,7 +122,7 @@ namespace Server.Misc
                 {
                     response = (HttpWebResponse)webRequest.GetResponse();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     continue;
                 }

@@ -11,7 +11,7 @@ namespace Server.Factions
 		public FactionBoardVendor( Town town, Faction faction ) : base( town, faction, "the LumberMan" ) // NOTE: title inconsistant, as OSI
 		{
 			SetSkill( SkillName.Menuiserie, 85.0, 100.0 );
-			SetSkill( SkillName.Hache, 60.0, 83.0 );
+			SetSkill( SkillName.Foresterie, 60.0, 83.0 );
 		}
 
 		public override void InitSBInfo()

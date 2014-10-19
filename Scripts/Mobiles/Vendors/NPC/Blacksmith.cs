@@ -20,7 +20,7 @@ namespace Server.Mobiles
 			SetSkill( SkillName.Forge, 65.0, 88.0 );
 			SetSkill( SkillName.ArmePerforante, 60.0, 83.0 );
 			SetSkill( SkillName.ArmeContondante, 61.0, 93.0 );
-			SetSkill( SkillName.Epee, 60.0, 83.0 );
+			SetSkill( SkillName.ArmeTranchante, 60.0, 83.0 );
 			SetSkill( SkillName.Tactiques, 60.0, 83.0 );
 			SetSkill( SkillName.Parer, 61.0, 93.0 );
 		}

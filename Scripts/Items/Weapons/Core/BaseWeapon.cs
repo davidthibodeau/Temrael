@@ -582,12 +582,12 @@ namespace Server.Items
 
 			if ( checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0 )
 			{
-				double swrd = m.Skills[SkillName.Epee].Value;
+				double swrd = m.Skills[SkillName.ArmeTranchante].Value;
 				double fenc = m.Skills[SkillName.ArmePerforante].Value;
 				double mcng = m.Skills[SkillName.ArmeContondante].Value;
 				double val;
 
-				sk = SkillName.Epee;
+				sk = SkillName.ArmeTranchante;
 				val = swrd;
 
 				if ( fenc > val ){ sk = SkillName.ArmePerforante; val = fenc; }
@@ -1653,7 +1653,7 @@ namespace Server.Items
                     switch (Skill)
                     {
                         case SkillName.ArmeHaste: list.Add(1061165, couleur); break;
-                        case SkillName.Epee: list.Add(1061172, couleur); break; // skill required: swordsmanship
+                        case SkillName.ArmeTranchante: list.Add(1061172, couleur); break; // skill required: swordsmanship
                         case SkillName.ArmeContondante: list.Add(1061173, couleur); break; // skill required: mace fighting
                         case SkillName.ArmePerforante: list.Add(1061174, couleur); break; // skill required: fencing
                         case SkillName.ArmeDistance: list.Add(1061175, couleur); break; // skill required: archery

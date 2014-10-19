@@ -181,7 +181,7 @@ namespace Server.Mobiles
 
 			// Skills and Stats
 			this.InitStats( 125, 125, 90 );
-			this.Skills[SkillName.Epee].Base = 120;
+			this.Skills[SkillName.ArmeTranchante].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 120;
 			this.Skills[SkillName.Soins].Base = 120;
 			this.Skills[SkillName.Tactiques].Base = 120;
@@ -607,7 +607,7 @@ namespace Server.Mobiles
 			this.InitStats( 105, 105, 105 );
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
-			this.Skills[SkillName.Epee].Base = 120;
+			this.Skills[SkillName.ArmeTranchante].Base = 120;
 			this.Skills[SkillName.Tactiques].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
 			this.Skills[SkillName.Empoisonnement].Base = 100;

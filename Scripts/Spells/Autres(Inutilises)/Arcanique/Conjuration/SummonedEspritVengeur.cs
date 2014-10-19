@@ -39,7 +39,7 @@ namespace Server.Mobiles
 
 			//SetSkill( SkillName.MagicResist, 100.0 ); // magic resist is absolute value of spiritspeak
 			SetSkill( SkillName.Tactiques, 100.0 ); // always 100
-			SetSkill( SkillName.Epee, 100.0 ); // not displayed in animal lore but tests clearly show this is influenced
+			SetSkill( SkillName.ArmeTranchante, 100.0 ); // not displayed in animal lore but tests clearly show this is influenced
             SetSkill(SkillName.Anatomie, 100.0); // not displayed in animal lore but tests clearly show this is influenced
 			SetSkill( SkillName.Detection, 100 );
 

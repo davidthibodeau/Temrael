@@ -15,7 +15,7 @@ namespace Server.Mobiles
 		{
 			SetSkill( SkillName.ArmePerforante, 75.0, 85.0 );
 			SetSkill( SkillName.ArmeContondante, 75.0, 85.0 );
-			SetSkill( SkillName.Epee, 75.0, 85.0 );
+			SetSkill( SkillName.ArmeTranchante, 75.0, 85.0 );
 			SetSkill( SkillName.ArtMagique, 100.0 );
 		}
 

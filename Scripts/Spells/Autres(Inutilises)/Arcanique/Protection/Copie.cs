@@ -81,7 +81,7 @@ namespace Server.Mobiles
             //SetSkill(SkillName.MagicResist, lacopie.Skills[SkillName.MagicResist].Value);
             SetSkill(SkillName.Tactiques, lacopie.Skills[SkillName.Tactiques].Value);
             SetSkill(SkillName.Anatomie, lacopie.Skills[SkillName.Anatomie].Value);
-            SetSkill(SkillName.Epee, lacopie.Skills[SkillName.Epee].Value);
+            SetSkill(SkillName.ArmeTranchante, lacopie.Skills[SkillName.ArmeTranchante].Value);
             SetSkill(SkillName.ArmeContondante, lacopie.Skills[SkillName.ArmeContondante].Value);
             SetSkill(SkillName.ArmeDistance, lacopie.Skills[SkillName.ArmeDistance].Value);
             SetSkill(SkillName.ArmePerforante, lacopie.Skills[SkillName.ArmePerforante].Value);
