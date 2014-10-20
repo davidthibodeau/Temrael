@@ -21,7 +21,7 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.Ninjitsu, 60.0, 80.0 );
 			SetSkill( SkillName.Parer, 64.0, 80.0 );
 			SetSkill( SkillName.Tactiques, 64.0, 85.0 );
-			SetSkill( SkillName.ArmeTranchante, 64.0, 85.0 );
+			SetSkill( SkillName.Epee, 64.0, 85.0 );
 
 			SpeechHue = Utility.RandomDyedHue();
 

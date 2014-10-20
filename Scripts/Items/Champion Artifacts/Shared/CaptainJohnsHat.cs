@@ -21,7 +21,7 @@ namespace Server.Items
 			Attributes.NightSight = 1;
 			Attributes.AttackChance = 15;
 
-			SkillBonuses.Skill_1_Name = SkillName.ArmeTranchante;
+			SkillBonuses.Skill_1_Name = SkillName.Epee;
 			SkillBonuses.Skill_1_Value = 20;
 		}
 

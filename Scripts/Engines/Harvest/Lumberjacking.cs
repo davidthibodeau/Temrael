@@ -47,7 +47,7 @@ namespace Server.Engines.Harvest
             lumber.MaxRespawn = TimeSpan.FromMinutes(25.0);
 
             // Skill checking is done on the Lumberjacking skill
-            lumber.Skill = SkillName.Foresterie;
+            lumber.Skill = SkillName.Hache;
 
             // Set the list of harvestable tiles
             lumber.Tiles = m_TreeTiles;

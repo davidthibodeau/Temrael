@@ -50,7 +50,7 @@ namespace Server.Spells
                     {
                         new DefaultSkillMod( SkillName.Tactiques, false, m.Skills[SkillName.Tactiques].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.Parer, false, m.Skills[SkillName.Parer].Base + (Caster.Skills[CastSkill].Value / 2) ),
-                        new DefaultSkillMod( SkillName.ArmeTranchante, false, m.Skills[SkillName.ArmeTranchante].Base + (Caster.Skills[CastSkill].Value / 2) ),
+                        new DefaultSkillMod( SkillName.Epee, false, m.Skills[SkillName.Epee].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.ArmeHaste, false, m.Skills[SkillName.ArmeHaste].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.ArmeDistance, false, m.Skills[SkillName.ArmeDistance].Base + (Caster.Skills[CastSkill].Value / 2) ),
                         new DefaultSkillMod( SkillName.ArmePerforante, false, m.Skills[SkillName.ArmePerforante].Base + (Caster.Skills[CastSkill].Value / 2) ),

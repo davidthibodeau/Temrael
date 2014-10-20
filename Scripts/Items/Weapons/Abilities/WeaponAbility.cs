@@ -56,9 +56,9 @@ namespace Server.Items
 		{
 			int mana = BaseMana;
 
-			double skillTotal = GetSkill( from, SkillName.ArmeTranchante ) + GetSkill( from, SkillName.ArmeContondante )
+			double skillTotal = GetSkill( from, SkillName.Epee ) + GetSkill( from, SkillName.ArmeContondante )
 				+ GetSkill( from, SkillName.ArmePerforante ) + GetSkill( from, SkillName.ArmeDistance ) + GetSkill( from, SkillName.Parer )
-				+ GetSkill( from, SkillName.Foresterie ) + GetSkill( from, SkillName.Infiltration )
+				+ GetSkill( from, SkillName.Hache ) + GetSkill( from, SkillName.Infiltration )
 				+ GetSkill( from, SkillName.Empoisonnement ) + GetSkill( from, SkillName.Tactiques );
 
 			if ( skillTotal >= 300.0 )
@@ -104,7 +104,7 @@ namespace Server.Items
 				return true;
 
 			/* <UBWS> */
-			if ( weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.ArmeTranchante].Base >= reqSkill || from.Skills[SkillName.ArmeContondante].Base >= reqSkill || from.Skills[SkillName.ArmePerforante].Base >= reqSkill) )
+			if ( weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.Epee].Base >= reqSkill || from.Skills[SkillName.ArmeContondante].Base >= reqSkill || from.Skills[SkillName.ArmePerforante].Base >= reqSkill) )
 				return true;
 			/* </UBWS> */
 

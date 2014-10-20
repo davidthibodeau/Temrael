@@ -188,7 +188,7 @@ namespace Server.Engines.Harvest
                     randomValue -= veins[i].VeinChance;
                 }
             }
-            else if (Skill == SkillName.Foresterie)
+            else if (Skill == SkillName.Hache)
             {
                 int dist = -1;
 

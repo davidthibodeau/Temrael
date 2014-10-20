@@ -544,7 +544,7 @@ namespace Server.Engines.Craft
                             }
                             else if (m_CraftSystem.MainSkill == SkillName.Menuiserie)
                             {
-                                skill = SkillName.Foresterie;
+                                skill = SkillName.Hache;
                             }
 
 
