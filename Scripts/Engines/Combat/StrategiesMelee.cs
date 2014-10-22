@@ -134,7 +134,7 @@ namespace Server.Engines.Combat
         {
             double chance = base.CritiqueChance(atk);
             double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.05, 5);
-            return IncreasedValue(chance, incChance);
+            return IncValueDimReturn(chance, incChance);
         }
     }
 

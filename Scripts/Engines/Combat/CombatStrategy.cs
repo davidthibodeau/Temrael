@@ -200,6 +200,14 @@ namespace Server.Engines.Combat
         {
             return value * (1 + factor);
         }
+
+        protected double IncValueDimReturn(double value, double factor)
+        {
+            if (value >= 1) return 1;
+            if (value < 0) value = 0;
+
+            return (1 - value) * factor + value;
+        }
         #endregion
 
         protected abstract void AppliquerPoison(Mobile atk, Mobile def);

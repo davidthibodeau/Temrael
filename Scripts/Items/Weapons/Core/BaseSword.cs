@@ -13,6 +13,9 @@ namespace Server.Items
 
         public override CombatStrategy Strategy { get { return StrategyTranchante.Strategy; } }
 
+        public override int DefHitSound{ get{ return 0x237; } }
+		public override int DefMissSound{ get{ return 0x23A; } }
+
 		public BaseSword( int itemID ) : base( itemID )
 		{
 		}
