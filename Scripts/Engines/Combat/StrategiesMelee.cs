@@ -31,7 +31,7 @@ namespace Server.Engines.Combat
             Poison poison = weapon.Poison;
             if (poison != null && weapon.PoisonCharges > 0)
 			{
-                if (def.Poisoned && poison.Level > def.Poison.Level)
+                if (!def.Poisoned || poison.Level > def.Poison.Level)
                 {
                     --weapon.PoisonCharges;
 
@@ -102,11 +102,11 @@ namespace Server.Engines.Combat
                     chance = chance/100;
                     if (selfdmg)
                     {
-                        if (Utility.RandomDouble() >= chance)
+                        if (Utility.RandomDouble() > chance)
                             atk.ApplyPoison(atk, poison);
                     }
                     else
-                        if (Utility.RandomDouble() >= chance)
+                        if (Utility.RandomDouble() > chance)
                             def.ApplyPoison(atk, poison);
                 }
 			}
