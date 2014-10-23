@@ -5,7 +5,7 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class SpectreGump : BaseMortGumps
+    public class SpectreGump : MortRaceGump
     {
         //public override int BodyMod { get { return 26; } }
         public override int HueMod { get { return 2039; } }

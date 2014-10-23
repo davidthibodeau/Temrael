@@ -5,7 +5,7 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class AilesTieffelin : BaseRaceGumps
+    public class AilesTieffelin : RaceGump
     {
         [Constructable]
         public AilesTieffelin()
@@ -41,7 +41,7 @@ namespace Server.Items
             Name = "Ailes";
         }
     }
-    public class CorpsTieffelin : BaseRaceGumps
+    public class CorpsTieffelin : RaceGump
     {
         [Constructable]
         public CorpsTieffelin()
@@ -77,7 +77,7 @@ namespace Server.Items
             Name = "Tieffelin";
         }
     }
-    public class CornesTieffelin : BaseRaceGumps
+    public class CornesTieffelin : RaceGump
     {
         [Constructable]
         public CornesTieffelin()

@@ -149,7 +149,7 @@ namespace Server.Spells
                                         if (item.Layer == Layer.Hair || item.Layer == Layer.FacialHair)
                                             item.Delete();
 
-                                        if (item is BaseRaceGumps || c.EquipItems.Contains(item))
+                                        if (item is RaceGump || c.EquipItems.Contains(item))
                                         {
                                             if (!pm.EquipItem(item))
                                                 pm.AddToBackpack(item);

@@ -5,7 +5,7 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class CorpsNordique : BaseRaceGumps
+    public class CorpsNordique : RaceGump
     {
         [Constructable]
         public CorpsNordique()

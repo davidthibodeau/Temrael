@@ -6,17 +6,17 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public abstract class BaseRaceGumps : Item
+    public abstract class RaceGump : GMItem
     {
         public virtual int BodyMod { get { return -1; } }
         public virtual int HueMod { get { return -1; } }
 
-        public BaseRaceGumps(int itemID)
+        public RaceGump(int itemID)
             : this(itemID, 0)
         {
         }
 
-        public BaseRaceGumps(int itemID, int hue)
+        public RaceGump(int itemID, int hue)
             : base(itemID)
         {
             Movable = false;
@@ -24,7 +24,7 @@ namespace Server.Items
             Layer = Layer.Shirt; //(Layer)ItemData.Quality;
         }
 
-        public BaseRaceGumps(Serial serial)
+        public RaceGump(Serial serial)
             : base(serial)
         {
         }

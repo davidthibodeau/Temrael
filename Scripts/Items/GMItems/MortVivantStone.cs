@@ -7,15 +7,8 @@ using Server.Accounting;
 
 namespace Server.Items
 {
-    public class MortVivantStone : Item
+    public class MortVivantStone : GMItem
     {
-        public override bool CanBeAltered
-        {
-            get
-            {
-                return false;
-            }
-        }
 
         [Constructable]
         public MortVivantStone()

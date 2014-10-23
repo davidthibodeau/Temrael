@@ -5,22 +5,25 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class CorpsNain : BaseRaceGumps
+    public class SqueletteGump : MortRaceGump
     {
+        //public override int BodyMod { get { return 50; } }
+        public override int HueMod { get { return 0; } }
+        public override MortEvo EMort { get { return MortEvo.Squelette; } }
+
         [Constructable]
-        public CorpsNain()
+        public SqueletteGump()
             : this(0)
         {
         }
 
         [Constructable]
-        public CorpsNain(int hue)
-            : base(0x27F6, hue)
+        public SqueletteGump(int hue)
+            : base(0x1471, hue)
         {
-            Name = "Nain";
         }
 
-        public CorpsNain(Serial serial)
+        public SqueletteGump(Serial serial)
             : base(serial)
         {
         }
@@ -37,7 +40,6 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-            Name = "Nain";
         }
     }
 }

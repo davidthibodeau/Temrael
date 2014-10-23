@@ -65,7 +65,7 @@ namespace Server.Gumps
                         m_From.MortVivant = true;
                         m_From.MortCurrentState = MortState.MortVivant;
 
-                        Server.Mobiles.TMobile.MortVivantEvoTimer timer = new Server.Mobiles.TMobile.MortVivantEvoTimer(m_From);
+                        TMobile.MortVivantEvoTimer timer = new TMobile.MortVivantEvoTimer(m_From);
                         m_From.MortVivantTimer = timer;
                         timer.Start();
 
@@ -92,7 +92,7 @@ namespace Server.Gumps
                                 if (item.Layer == Layer.Hair || item.Layer == Layer.FacialHair)
                                     item.Delete();
 
-                                if (item is BaseRaceGumps || (m_From.Corpse is Corpse && ((Corpse)m_From.Corpse).EquipItems.Contains(item)))
+                                if (item is RaceGump || (m_From.Corpse is Corpse && ((Corpse)m_From.Corpse).EquipItems.Contains(item)))
                                 {
                                     if (!m_From.EquipItem(item))
                                         m_From.AddToBackpack(item);

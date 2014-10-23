@@ -7,21 +7,21 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class BaseMortGumps : BaseRaceGumps
+    public class MortRaceGump : RaceGump
     {
         public virtual MortEvo EMort { get { return MortEvo.Aucune; } }
 
-        public BaseMortGumps(int itemID)
+        public MortRaceGump(int itemID)
             : this(itemID, 0)
         {
         }
 
-        public BaseMortGumps(int itemID, int hue)
+        public MortRaceGump(int itemID, int hue)
             : base(itemID, hue)
         {
         }
 
-        public BaseMortGumps(Serial serial)
+        public MortRaceGump(Serial serial)
             : base(serial)
         {
         }

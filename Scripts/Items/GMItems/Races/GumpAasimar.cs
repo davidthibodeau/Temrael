@@ -5,25 +5,23 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class ZombieGump : BaseMortGumps
+    public class CorpsAasimar : RaceGump
     {
-        /*public override int BodyMod { get { return 3; } }
-        public override int HueMod { get { return 0; } }*/
-        public override MortEvo EMort { get { return MortEvo.Zombie; } }
-
         [Constructable]
-        public ZombieGump()
+        public CorpsAasimar()
             : this(0)
         {
         }
 
         [Constructable]
-        public ZombieGump(int hue)
-            : base(0x1474, hue)
+        public CorpsAasimar(int hue)
+            : base(0x2FC7, hue)
         {
+            Name = "Aasimar";
+            Layer = Layer.Shirt;
         }
 
-        public ZombieGump(Serial serial)
+        public CorpsAasimar(Serial serial)
             : base(serial)
         {
         }
@@ -40,6 +38,7 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+            Name = "Tieffelin";
         }
     }
 }

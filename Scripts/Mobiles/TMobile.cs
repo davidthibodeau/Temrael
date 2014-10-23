@@ -589,7 +589,7 @@ namespace Server.Mobiles
             {
                 m_MortEvo = MortEvo.Aucune;
                 m_race = m_trueRace;
-                if (this.FindItemOnLayer(Layer.Shirt) is BaseMortGumps)
+                if (this.FindItemOnLayer(Layer.Shirt) is MortGump)
                 {
                     FindItemOnLayer(Layer.Shirt).Delete();
                 }
@@ -1153,7 +1153,7 @@ namespace Server.Mobiles
 
                 if (m_from.FindItemOnLayer(Layer.Shirt) != null)
                 {
-                    if (!(m_from.FindItemOnLayer(Layer.Shirt) is BaseRaceGumps))
+                    if (!(m_from.FindItemOnLayer(Layer.Shirt) is RaceGump))
                     {
                         m_from.AddToBackpack(m_from.FindItemOnLayer(Layer.Shirt));
                     }
@@ -1233,7 +1233,7 @@ namespace Server.Mobiles
             {
                 if (m_from.FindItemOnLayer(Layer.Shirt) != null)
                 {
-                    if (!(m_from.FindItemOnLayer(Layer.Shirt) is BaseRaceGumps))
+                    if (!(m_from.FindItemOnLayer(Layer.Shirt) is RaceGump))
                     {
                         m_from.AddToBackpack(m_from.FindItemOnLayer(Layer.Shirt));
                     }
@@ -1771,8 +1771,8 @@ namespace Server.Mobiles
         {
             Item racegump = FindItemOnLayer(Layer.Shirt);
 
-            if (racegump != null && racegump is BaseRaceGumps)
-                ((BaseRaceGumps)racegump).AddProperties(this);
+            if (racegump != null && racegump is RaceGump)
+                ((RaceGump)racegump).AddProperties(this);
         }
 
         public void DispelAllTransformations()
@@ -2060,7 +2060,7 @@ namespace Server.Mobiles
                             if (item.Layer == Layer.Hair || item.Layer == Layer.FacialHair)
                                 item.Delete();
 
-                            if (item is BaseRaceGumps || (m_Corpse is Corpse && ((Corpse)m_Corpse).EquipItems.Contains(item)))
+                            if (item is RaceGump || (m_Corpse is Corpse && ((Corpse)m_Corpse).EquipItems.Contains(item)))
                             {
                                 if (!m.EquipItem(item))
                                     m.AddToBackpack(item);
@@ -2141,10 +2141,10 @@ namespace Server.Mobiles
                     switch (pm.MortEvo)
                     {
                         case MortEvo.Aucune:
-                            if ((pm.AmeLastFed.AddSeconds(30) < DateTime.Now))
+                            if (pm.AmeLastFed.AddDays(7) < DateTime.Now)
                             {
                                 pm.AmeLastFed = DateTime.Now;
-                                if (item is BaseRaceGumps)
+                                if (item is RaceGump)
                                     item.Hue = 0;
                                 pm.HueMod = 0;
                                 pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
@@ -2156,10 +2156,10 @@ namespace Server.Mobiles
                             }
                             break;
                         case MortEvo.Decomposition:
-                            if ((pm.AmeLastFed.AddSeconds(60) < DateTime.Now))
+                            if (pm.AmeLastFed.AddDays(14) < DateTime.Now)
                             {
                                 pm.AmeLastFed = DateTime.Now;
-                                if (item is BaseRaceGumps)
+                                if (item is RaceGump)
                                     item.Delete();
                                 pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 14 jours, votre corps se déteriore à nouveau.");
                                 pm.MortEvo = MortEvo.Zombie;
@@ -2168,10 +2168,10 @@ namespace Server.Mobiles
                             }
                             break;
                         case MortEvo.Zombie:
-                            if ((pm.AmeLastFed.AddSeconds(90) < DateTime.Now))
+                            if (pm.AmeLastFed.AddDays(28) < DateTime.Now)
                             {
                                 pm.AmeLastFed = DateTime.Now;
-                                if (item is BaseMortGumps)
+                                if (item is MortRaceGump)
                                     item.Delete();
                                 if (hair != null)
                                     hair.Delete();
@@ -2185,10 +2185,10 @@ namespace Server.Mobiles
                             }
                             break;
                         case MortEvo.Squelette:
-                            if ((pm.AmeLastFed.AddSeconds(120) < DateTime.Now))
+                            if (pm.AmeLastFed.AddDays(56) < DateTime.Now)
                             {
                                 pm.AmeLastFed = DateTime.Now;
-                                if (item is BaseMortGumps)
+                                if (item is MortRaceGump)
                                     item.Delete();
                                 if (hair != null)
                                     hair.Delete();

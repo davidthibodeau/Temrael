@@ -5,25 +5,22 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class OmbreGump : BaseMortGumps
+    public class CorpsElfe : RaceGump
     {
-        //public override int BodyMod { get { return 100; } }
-        public override int HueMod { get { return 0; } }
-        public override MortEvo EMort { get { return MortEvo.Ombre; } }
-
         [Constructable]
-        public OmbreGump()
+        public CorpsElfe()
             : this(0)
         {
         }
 
         [Constructable]
-        public OmbreGump(int hue)
-            : base(0x146E, hue)
+        public CorpsElfe(int hue)
+            : base(0x27F8, hue)
         {
+            Name = "Elfe";
         }
 
-        public OmbreGump(Serial serial)
+        public CorpsElfe(Serial serial)
             : base(serial)
         {
         }
@@ -40,6 +37,7 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+            Name = "Elfe";
         }
     }
 }

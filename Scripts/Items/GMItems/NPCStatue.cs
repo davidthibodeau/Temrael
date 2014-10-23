@@ -8,11 +8,12 @@ using Server;
 using Server.Items;
 using System.Collections.Generic;
 using Server.Commands;
+using Server.Misc;
 
 
 namespace Server.Items
 {
-    public class NPCstatue : Item
+    public class NPCstatue : GMItem
     {
         private Mobile m_Store;
         private int m_activate;
@@ -109,7 +110,7 @@ namespace Server.Items
             if (from.AccessLevel < AccessLevel.Batisseur)
             {
                 from.SendMessage("Vous ne pouvez utiliser cela. Veuillez contacter un maitre du jeu.");
-                Misc.AbuseLogging.WriteLine(from, 
+                AbuseLogging.WriteLine(from, 
                     String.Format("Ce joueur utilise la npcstatue au serial {0}.", this.Serial));
                 return;
             }

@@ -3,7 +3,7 @@ using Server;
 
 namespace Server.Items
 {
-	public abstract class BaseSuit : Item
+	public abstract class BaseSuit : GMItem
 	{
 		private AccessLevel m_AccessLevel;
 

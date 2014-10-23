@@ -5,22 +5,22 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class CorpsElfe : BaseRaceGumps
+    public class CorpsNain : RaceGump
     {
         [Constructable]
-        public CorpsElfe()
+        public CorpsNain()
             : this(0)
         {
         }
 
         [Constructable]
-        public CorpsElfe(int hue)
-            : base(0x27F8, hue)
+        public CorpsNain(int hue)
+            : base(0x27F6, hue)
         {
-            Name = "Elfe";
+            Name = "Nain";
         }
 
-        public CorpsElfe(Serial serial)
+        public CorpsNain(Serial serial)
             : base(serial)
         {
         }
@@ -37,7 +37,7 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-            Name = "Elfe";
+            Name = "Nain";
         }
     }
 }
