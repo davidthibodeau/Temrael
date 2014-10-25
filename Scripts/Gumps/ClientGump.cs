@@ -347,8 +347,8 @@ namespace Server.Gumps
 
         private static string GetNameFor(Mobile m, Mobile m_Owner)
         {
-            return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), 
-                m is PlayerMobile ? (m.Female ? ((PlayerMobile)m).Race.NameF : ((PlayerMobile)m).Race.Name) : "");
+            return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner),
+                             m is PlayerMobile && ((PlayerMobile)m).Race != null ? (m.Female ? ((PlayerMobile)m).Race.NameF : ((PlayerMobile)m).Race.Name) : "");
         }
     }
 }
