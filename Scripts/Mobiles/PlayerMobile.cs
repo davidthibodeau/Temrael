@@ -1120,7 +1120,7 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.Batisseur )]
 		public override int HitsMax
 		{
-            get { return Str + (RawStr >= 100 ? 125 : 100; }
+            get { return Str + (RawStr >= 100 ? 125 : 100); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
