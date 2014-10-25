@@ -38,13 +38,14 @@ namespace TheBox.BoxServer
 		/// </summary>
 		private static void StartServer( object obj )
 		{
+
             bool bound = false;
             while (!bound)
             {
                 try
                 {
                     TcpServerChannel channel = new TcpServerChannel("boxserver", BoxConfig.Port);
-                    ChannelServices.RegisterChannel(channel, true);
+                    ChannelServices.RegisterChannel(channel, false);
                     bound = true;
                 }
                 catch (SocketException)
@@ -52,7 +53,6 @@ namespace TheBox.BoxServer
                     Thread.Sleep(1000);
                 }
             }
-
 			RemotingConfiguration.RegisterWellKnownServiceType( typeof( BoxRemote ), "BoxRemote", WellKnownObjectMode.Singleton );
 
 			Console.WriteLine( "Pandora is listening on port {0} - BoxServer version {1}", BoxConfig.Port, m_Version );
