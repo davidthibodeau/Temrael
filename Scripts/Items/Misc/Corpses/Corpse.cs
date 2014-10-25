@@ -420,7 +420,7 @@ namespace Server.Items
 			Type t = m.GetType();
 
             PlayerMobile tmob = m as PlayerMobile;
-            if (tmob != null)
+            if (tmob != null && tmob.Race != null)
             {
                 if (tmob.Female)
                     return tmob.Race.NameF;
