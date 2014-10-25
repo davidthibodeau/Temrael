@@ -5,6 +5,7 @@ using System.Runtime.Remoting.Channels.Tcp;
 using Server;
 using Server.Accounting;
 using System.Runtime.Remoting.Channels;
+using System.Net.Sockets;
 
 namespace TheBox.BoxServer
 {
@@ -37,8 +38,20 @@ namespace TheBox.BoxServer
 		/// </summary>
 		private static void StartServer( object obj )
 		{
-			TcpServerChannel channel = new TcpServerChannel( "boxserver", BoxConfig.Port );
-            ChannelServices.RegisterChannel(channel, true);
+            bool bound = false;
+            while (!bound)
+            {
+                try
+                {
+                    TcpServerChannel channel = new TcpServerChannel("boxserver", BoxConfig.Port);
+                    ChannelServices.RegisterChannel(channel, true);
+                    bound = true;
+                }
+                catch (SocketException)
+                {
+                    Thread.Sleep(1000);
+                }
+            }
 
 			RemotingConfiguration.RegisterWellKnownServiceType( typeof( BoxRemote ), "BoxRemote", WellKnownObjectMode.Singleton );
 
