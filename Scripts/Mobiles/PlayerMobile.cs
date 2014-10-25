@@ -1120,19 +1120,19 @@ namespace Server.Mobiles
 		[CommandProperty( AccessLevel.Batisseur )]
 		public override int HitsMax
 		{
-            get { return (Str >= 100 ? (125 + RawStr) : (100 + RawStr)); }
+            get { return Str + (RawStr >= 100 ? 125 : 100; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public override int StamMax
 		{
-            get { return (RawDex >= 100 ? (25 + RawDex) : RawDex); }
+            get { return 2 * Dex + (RawDex >= 100 ? 25 : 0); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ManaMax
 		{
-			get { return (RawInt >= 100 ? (25 + RawInt) : RawInt); }
+			get { return 2 * Int + (RawInt >= 100 ? 25 : 0); }
 		}
 		#endregion
 
