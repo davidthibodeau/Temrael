@@ -49,7 +49,7 @@ namespace Server.Engines.Identities
                 {
                     from.SendMessage("L'objet doit etre dans votre sac.");
                 }
-                else if (from.Identities.CurrentIdentity == 13)
+                else if (from.Race.Transformed)
                 {
                     from.SendMessage("Vous ne pouvez pas vous déguisez en forme Aasimar ou Tieffeline !");
                 }

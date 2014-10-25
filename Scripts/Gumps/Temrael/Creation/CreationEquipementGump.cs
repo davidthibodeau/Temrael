@@ -7,6 +7,7 @@ using Server.Network;
 using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
+using Server.Engines.Races;
 
 namespace Server.Gumps
 {
@@ -14,9 +15,13 @@ namespace Server.Gumps
     {
         private static List<PaperPreviewItem> m_gumpList = new List<PaperPreviewItem>();
 
-        public CreationEquipementGump(TMobile from)
+        private CreationInfos m_infos;
+
+        public CreationEquipementGump(PlayerMobile from, CreationInfos infos)
             : base("Équipement", 560, 622)
         {
+            m_infos = infos;
+
             int x = XBase;
             int y = YBase;
             int line = 2;
@@ -41,145 +46,150 @@ namespace Server.Gumps
 
             AddBackground(100, 150, 180, 200, 2620);
 
-            if (from is TMobile)
+            Race race = from.Race;
+
+            if (race is Capiceen)
             {
-                switch (from.Creation.race)
+                if (m_infos.Hue == 0)
+                    m_infos.Hue = 1023;
+
+                if (from.Female)
+                    AddImage(95, 110, 13, m_infos.Hue);
+                else
+                    AddImage(95, 110, 12, m_infos.Hue);
+                AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
+            }
+            else if (race is Orcish)
+            {
+                if (m_infos.Hue == 0)
+                    m_infos.Hue = 1446;
+
+                if (from.Female)
+                    AddImage(95, 110, 60908, m_infos.Hue);
+                else
+                    AddImage(95, 110, 50908, m_infos.Hue);
+                AddButton(x + 55, y - 1, 458, 458, 12, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 29, y - 1, 459, 459, 13, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 48, y - 1, 460, 460, 14, GumpButtonType.Reply, 0);
+            }
+            else if (race is Elfe)
+            {
+                if (m_infos.Hue == 0)
+                    m_infos.Hue = 1023;
+
+                if (from.Female)
+                    AddImage(95, 110, 61027, m_infos.Hue);
+                else
+                    AddImage(95, 110, 51027, m_infos.Hue);
+                AddButton(x + 55, y - 1, 449, 449, 15, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 29, y - 1, 450, 450, 16, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 48, y - 1, 451, 451, 17, GumpButtonType.Reply, 0);
+            }
+            else if (race is Nordique)
+            {
+                if (m_infos.Hue == 0)
+                    m_infos.Hue = 1023;
+
+                if (from.Female)
+                    AddImage(95, 110, 61106, m_infos.Hue);
+                else
+                    AddImage(95, 110, 51106, m_infos.Hue);
+                AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
+            }
+            else if (race is Alfar)
+            {
+                if (m_infos.Hue == 0)
+                    m_infos.Hue = 2410;
+
+                if (from.Female)
                 {
-                    case Race.Capiceen:
-                        if (from.Creation.hue == 0)
-                            from.Creation.hue = 1023;
-
-                        if (from.Female)
-                            AddImage(95, 110, 13, from.Creation.hue);
-                        else
-                            AddImage(95, 110, 12, from.Creation.hue);
-                        AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
-                        break;
-                    case Race.Orcish:
-                        if (from.Creation.hue == 0)
-                            from.Creation.hue = 1446;
-
-                        if (from.Female)
-                            AddImage(95, 110, 60908, from.Creation.hue);
-                        else
-                            AddImage(95, 110, 50908, from.Creation.hue);
-                        AddButton(x + 55, y - 1, 458, 458, 12, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 29, y - 1, 459, 459, 13, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 48, y - 1, 460, 460, 14, GumpButtonType.Reply, 0);
-                        break;
-                    case Race.Elfe:
-                        if (from.Creation.hue == 0)
-                            from.Creation.hue = 1023;
-
-                        if (from.Female)
-                            AddImage(95, 110, 61027, from.Creation.hue);
-                        else
-                            AddImage(95, 110, 51027, from.Creation.hue);
-                        AddButton(x + 55, y - 1, 449, 449, 15, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 29, y - 1, 450, 450, 16, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 48, y - 1, 451, 451, 17, GumpButtonType.Reply, 0);
-                        break;
-                    case Race.Nordique:
-                        if (from.Creation.hue == 0)
-                            from.Creation.hue = 1023;
-
-                        if (from.Female)
-                            AddImage(95, 110, 61106, from.Creation.hue);
-                        else
-                            AddImage(95, 110, 51106, from.Creation.hue);
-                        AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
-                        break;
-                    case Race.ElfeNoir:
-                        if (from.Creation.hue == 0)
-                            from.Creation.hue = 2410;
-
-                        if (from.Female)
-                        {
-                            AddImage(95, 110, 13, from.Creation.hue);
-                            AddImage(95, 110, 61029, from.Creation.hue);
-                        }
-                        else
-                        {
-                            AddImage(95, 110, 12, from.Creation.hue);
-                            AddImage(95, 110, 51029, from.Creation.hue);
-                        }
-                        AddButton(x + 55, y - 1, 455, 455, 18, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 29, y - 1, 456, 456, 19, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 48, y - 1, 457, 457, 20, GumpButtonType.Reply, 0);
-                        break;
-                    case Race.Nain:
-                        if (from.Creation.hue == 0)
-                            from.Creation.hue = 1054;
-
-                        if (from.Female)
-                            AddImage(95, 110, 61033, from.Creation.hue);
-                        else
-                            AddImage(95, 110, 51033, from.Creation.hue);
-                        AddButton(x + 55, y - 1, 461, 461, 21, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 29, y - 1, 462, 462, 22, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 48, y - 1, 463, 463, 23, GumpButtonType.Reply, 0);
-                        break;
-                    case Race.Nomade:
-                        if (from.Creation.hue == 0)
-                            from.Creation.hue = 1044;
-
-                        if (from.Female)
-                            AddImage(95, 110, 13, from.Creation.hue);
-                        else
-                            AddImage(95, 110, 12, from.Creation.hue);
-                        AddButton(x + 55, y - 1, 452, 452, 24, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 29, y - 1, 453, 453, 25, GumpButtonType.Reply, 0);
-                        AddButton(x + 55 + 48, y - 1, 454, 454, 26, GumpButtonType.Reply, 0);
-                        break;
-                    case Race.Tieffelin:
-                        if (from.Female)
-                        {
-                            AddImage(95, 110, 60681, 0);
-                            AddImage(95, 110, 61001, 0);
-                            AddImage(95, 110, 61000, 0);
-                        }
-                        else
-                        {
-                            AddImage(95, 110, 50681, 0);
-                            AddImage(95, 110, 51001, 0);
-                            AddImage(95, 110, 51000, 0);
-                        }
-                        break;
-                    case Race.Aasimar:
-                        if (from.Female)
-                        {
-                            AddImage(95, 110, 60997, 0);
-                        }
-                        else
-                        {
-                            AddImage(95, 110, 50997, 0);
-                        }
-                        break;
-                    case Race.Aucun:
-                        break;
+                    AddImage(95, 110, 13, m_infos.Hue);
+                    AddImage(95, 110, 61029, m_infos.Hue);
                 }
+                else
+                {
+                    AddImage(95, 110, 12, m_infos.Hue);
+                    AddImage(95, 110, 51029, m_infos.Hue);
+                }
+                AddButton(x + 55, y - 1, 455, 455, 18, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 29, y - 1, 456, 456, 19, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 48, y - 1, 457, 457, 20, GumpButtonType.Reply, 0);
             }
-
-            if (from.Creation.race == Race.Tieffelin || from.Creation.race == Race.Aasimar)
+            else if (race is Nain)
             {
-                AddSection(x + 300, y + line * scale, 200, 120, "Race Secrète");
-                ++line;
-                ++line;
+                if (m_infos.Hue == 0)
+                    m_infos.Hue = 1054;
 
-                AddButton(x + 320, y + line * scale, 0x4b9, 0x4bA, 27, GumpButtonType.Reply, 0);
-                AddHtmlTexte(x + 335, y + line * scale, DefaultHtmlLength, "Capicéen");
-                ++line;
-                AddButton(x + 320, y + line * scale, 0x4b9, 0x4bA, 28, GumpButtonType.Reply, 0);
-                AddHtmlTexte(x + 335, y + line * scale, DefaultHtmlLength, "Nomade");
-                ++line;
-                AddButton(x + 320, y + line * scale, 0x4b9, 0x4bA, 29, GumpButtonType.Reply, 0);
-                AddHtmlTexte(x + 335, y + line * scale, DefaultHtmlLength, "Nordique");
-                ++line;
+                if (from.Female)
+                    AddImage(95, 110, 61033, m_infos.Hue);
+                else
+                    AddImage(95, 110, 51033, m_infos.Hue);
+                AddButton(x + 55, y - 1, 461, 461, 21, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 29, y - 1, 462, 462, 22, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 48, y - 1, 463, 463, 23, GumpButtonType.Reply, 0);
             }
+            else if (race is Nomade)
+            {
+                if (m_infos.Hue == 0)
+                    m_infos.Hue = 1044;
+
+                if (from.Female)
+                    AddImage(95, 110, 13, m_infos.Hue);
+                else
+                    AddImage(95, 110, 12, m_infos.Hue);
+                AddButton(x + 55, y - 1, 452, 452, 24, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 29, y - 1, 453, 453, 25, GumpButtonType.Reply, 0);
+                AddButton(x + 55 + 48, y - 1, 454, 454, 26, GumpButtonType.Reply, 0);
+
+                //case Race.Tieffelin:
+                //    if (from.Female)
+                //    {
+                //        AddImage(95, 110, 60681, 0);
+                //        AddImage(95, 110, 61001, 0);
+                //        AddImage(95, 110, 61000, 0);
+                //    }
+                //    else
+                //    {
+                //        AddImage(95, 110, 50681, 0);
+                //        AddImage(95, 110, 51001, 0);
+                //        AddImage(95, 110, 51000, 0);
+                //    }
+                //    break;
+                //case Race.Aasimar:
+                //    if (from.Female)
+                //    {
+                //        AddImage(95, 110, 60997, 0);
+                //    }
+                //    else
+                //    {
+                //        AddImage(95, 110, 50997, 0);
+                //    }
+                //    break;
+                //case Race.Aucun:
+                //    break;
+            }
+            
+
+            //if (from.Creation.race == Race.Tieffelin || from.Creation.race == Race.Aasimar)
+            //{
+            //    AddSection(x + 300, y + line * scale, 200, 120, "Race Secrète");
+            //    ++line;
+            //    ++line;
+
+            //    AddButton(x + 320, y + line * scale, 0x4b9, 0x4bA, 27, GumpButtonType.Reply, 0);
+            //    AddHtmlTexte(x + 335, y + line * scale, DefaultHtmlLength, "Capicéen");
+            //    ++line;
+            //    AddButton(x + 320, y + line * scale, 0x4b9, 0x4bA, 28, GumpButtonType.Reply, 0);
+            //    AddHtmlTexte(x + 335, y + line * scale, DefaultHtmlLength, "Nomade");
+            //    ++line;
+            //    AddButton(x + 320, y + line * scale, 0x4b9, 0x4bA, 29, GumpButtonType.Reply, 0);
+            //    AddHtmlTexte(x + 335, y + line * scale, DefaultHtmlLength, "Nordique");
+            //    ++line;
+            //}
 
             AddBackground(100, 350, 545, 298, 3500);
             AddBackground(295, 386, 337, 225, 3000);
@@ -191,16 +201,12 @@ namespace Server.Gumps
             AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Terminer<basefont></h3>", false, false);
 
             y = 385;
-            Race race = Race.Aucun;
-            if (from.Creation.race == Race.Tieffelin || from.Creation.race == Race.Aasimar)
-                race = from.Creation.secrete;
-            else
-                race = from.Creation.race;
+
             for (int i = 0; i < Categories.Length; i++)
             {
                 CustomCategory cat = (CustomCategory)Categories[i];
 
-                if (((cat.Race == race) || cat.Race == Race.Aucun) && (cat.Archetype == from.Creation.classe || cat.Archetype == ClasseType.None))
+                if (race.GetType().IsAssignableFrom(cat.Race))
                 {
                     AddHtml(110, y, 150, 25, "<h3><basefont color=#025a>" + cat.Name + "<basefont></h3>", true, false);
                     AddButton(260, y, 4005, 4007, 0, GumpButtonType.Page, i + 1);
@@ -215,7 +221,7 @@ namespace Server.Gumps
                 CustomCategory cat = (CustomCategory)Categories[i];
                 AddPage(i + 1);
 
-                if (((cat.Race == race) || cat.Race == Race.Aucun) && (cat.Archetype == from.Creation.classe || cat.Archetype == ClasseType.None))
+                if (race.GetType().IsAssignableFrom(cat.Race))
                 {
                     for (int c = 0; c < cat.Entries.Length; c++)
                     {
@@ -243,33 +249,13 @@ namespace Server.Gumps
             switch (info.ButtonID)
             {
                 case 2:
-                    from.SendGump(new CreationRaceGump(from));
-                    break;
-                case 3:
-                    if (from.Creation.race != Race.Aucun)
-                    {
-                        from.SendGump(new CreationClasseGump(from));
-                    }
-                    else
-                    {
-                        goto case 2;
-                    }
+                    from.SendGump(new CreationRaceGump(from, m_infos));
                     break;
                 case 4:
-                    if (from.Creation.classe != ClasseType.None)
-                    {
-                        from.SendGump(new CreationEquipementGump(from));
-                    }
-                    else
-                    {
-                        goto case 3;
-                    }
-                    break;
-                case 6:
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationEquipementGump(from, m_infos));
                     break;
                 case 7:
-                    from.SendGump(new CreationOverviewGump(from));
+                    from.SendGump(new CreationOverviewGump(from, m_infos));
                     break;
                 case 8:
                     if (info.Switches.Length > 0)
@@ -335,7 +321,7 @@ namespace Server.Gumps
                                         }
                                     }
                                 }
-                                from.SendGump(new CreationEquipementGump(from));
+                                from.SendGump(new CreationEquipementGump(from, m_infos));
                             }
                         }
                         else
@@ -370,7 +356,7 @@ namespace Server.Gumps
                                             previewItem = m_gumpList[i];
                                     }
 
-                                    from.SendGump(new CreationEquipementGump(from));
+                                    from.SendGump(new CreationEquipementGump(from, m_infos));
                                 }
                             }
                             else
@@ -405,99 +391,99 @@ namespace Server.Gumps
                                     if (item != null)
                                         item.Delete();
 
-                                    from.SendGump(new CreationEquipementGump(from));
+                                    from.SendGump(new CreationEquipementGump(from, m_infos));
                                 }
                             }
                         }
                     }
                     break;
-                    case 9:
-                        from.Creation.hue = 1023;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 10:
-                        from.Creation.hue = 1002;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 11:
-                        from.Creation.hue = 1013;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 12:
-                        from.Creation.hue = 1446;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 13:
-                        from.Creation.hue = 2207;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 14:
-                        from.Creation.hue = 1437;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 15:
-                        from.Creation.hue = 1023;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 16:
-                        from.Creation.hue = 1011;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 17:
-                        from.Creation.hue = 1002;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 18:
-                        from.Creation.hue = 2410;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 19:
-                        from.Creation.hue = 2412;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 20:
-                        from.Creation.hue = 1908;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 21:
-                        from.Creation.hue = 1054;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 22:
-                        from.Creation.hue = 1052;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 23:
-                        from.Creation.hue = 1057;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 24:
-                        from.Creation.hue = 1044;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 25:
-                        from.Creation.hue = 1142;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 26:
-                        from.Creation.hue = 1881;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 27:
-                        from.Creation.secrete = Race.Capiceen;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 28:
-                        from.Creation.secrete = Race.Nomade;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 29:
-                        from.Creation.secrete = Race.Nordique;
-                        from.SendGump(new CreationEquipementGump(from));
-                        break;
-                    case 30:
-                        from.SendGump(new CreationCarteGump(from));
-                        break;
+                    //case 9:
+                    //    m_infos.Hue = 1023;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 10:
+                    //    from.Creation.hue = 1002;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 11:
+                    //    from.Creation.hue = 1013;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 12:
+                    //    from.Creation.hue = 1446;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 13:
+                    //    from.Creation.hue = 2207;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 14:
+                    //    from.Creation.hue = 1437;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 15:
+                    //    from.Creation.hue = 1023;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 16:
+                    //    from.Creation.hue = 1011;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 17:
+                    //    from.Creation.hue = 1002;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 18:
+                    //    from.Creation.hue = 2410;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 19:
+                    //    from.Creation.hue = 2412;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 20:
+                    //    from.Creation.hue = 1908;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 21:
+                    //    from.Creation.hue = 1054;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 22:
+                    //    from.Creation.hue = 1052;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 23:
+                    //    from.Creation.hue = 1057;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 24:
+                    //    from.Creation.hue = 1044;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 25:
+                    //    from.Creation.hue = 1142;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 26:
+                    //    from.Creation.hue = 1881;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 27:
+                    //    from.Creation.secrete = Race.Capiceen;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 28:
+                    //    from.Creation.secrete = Race.Nomade;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 29:
+                    //    from.Creation.secrete = Race.Nordique;
+                    //    from.SendGump(new CreationEquipementGump(from));
+                    //    break;
+                    //case 30:
+                    //    from.SendGump(new CreationCarteGump(from));
+                    //    break;
             }
         }
 
@@ -573,10 +559,10 @@ namespace Server.Gumps
             private Layer m_Layer;
             private bool m_CanDye;
             private string m_Name;
-            private Race m_Race;
+            private Type m_Race;
             private ClasseType m_Archetype;
 
-            public CustomCategory(Layer layer, string name, bool canDye, Race race, ClasseType archetype, CustomItem[] items)
+            public CustomCategory(Layer layer, string name, bool canDye, Type race, ClasseType archetype, CustomItem[] items)
             {
                 m_Entries = items;
                 m_CanDye = canDye;
@@ -590,7 +576,7 @@ namespace Server.Gumps
             public CustomItem[] Entries { get { return m_Entries; } }
             public Layer Layer { get { return m_Layer; } }
             public string Name { get { return m_Name; } }
-            public Race Race { get { return m_Race; } }
+            public Type Race { get { return m_Race; } }
             public ClasseType Archetype { get { return m_Archetype; } }
         }
         public class PaperPreviewItem
@@ -623,7 +609,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Capiceen, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeOrdinaire ), 		"Robe", 0x27D3, 0 ),
                 new CustomItem( typeof( RobeDomestique ), 		"Robe Domestique", 0x27A5, 0 ),
                 new CustomItem( typeof( RobeACeinture ), 		"Robe à Ceinture", 0x3156, 0 ),
@@ -635,7 +621,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( Robetrainante ), 		"Robe Trainante", 0x27A9, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Capiceen, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Chandail ), 		"Chandail", 0x277E, 0 ),
 				new CustomItem( typeof( FancyShirt ),		"Chandail", 0x1EFD, 0 ),
 				new CustomItem( typeof( ChandailNoble ), 	"Chandail Noble", 0x2775, 0 ),
@@ -651,7 +637,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( TabarLong ),		"Tabar Long", 0x2777, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Capiceen, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		"Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( TogeSoutane ),	"Toge Soutane", 0x278F, 0 ),
 				new CustomItem( typeof( TogePelerin ), 	"Toge de Pèlerin", 0x2797, 0 ),
@@ -661,7 +647,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( Veste ),	    "Veste", 0x277A, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Capiceen, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
                 new CustomItem( typeof( SouliersBoucles ),	"Souliers Bouclés", 0x2733, 0 ),
 				new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
@@ -670,7 +656,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( BottesNoble ),      "Bottes Noble", 0x2731, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Capiceen, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
 				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
 				new CustomItem( typeof( Bonnet ),	    "Bonnet", 0x1719, 0 ),
@@ -680,7 +666,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( ChapeauCourt ),	"Chapeau Noble", 0x272C, 0 )
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Capiceen, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
 				new CustomItem( typeof( Pantalons ), 	    "Pantalons", 0x273B, 0 ),
 				new CustomItem( typeof( PantalonsLongs ),	"Pantalons Larges", 0x273E, 0 ),
@@ -693,7 +679,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeNoble ),	"Jupe Noble", 0x3176, 0 )
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Capiceen, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( CapeCourte ),		"Cape Courte", 0x271D, 0 ),
                 new CustomItem( typeof( Cloak ),		    "Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeDecore ),		"Cape Décoré", 0x2716, 0 ),
@@ -701,7 +687,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( CapeNoble ),		"Cape Noble", 0x2712, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Capiceen, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, typeof(Capiceen), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
                 new CustomItem( typeof( FullApron ),		        "Tablier", 0x153d, 0 ),
                 new CustomItem( typeof( CeintureBoucle ),		    "Ceinture", 0x2663, 0 ),
@@ -719,7 +705,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Nordique, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, typeof(Nordique), ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeSoubrette ), 		"Robe Simple", 0x27CB, 0 ),
                 new CustomItem( typeof( RobeBohemienne ), 		"Robe Bohémienne", 0x27BF, 0 ),
                 new CustomItem( typeof( RobeServeuse ), 		"Robe Serveuse", 0x27A3, 0 ),
@@ -729,7 +715,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( RobeDore ), 		    "Robe Doré", 0x2BDC, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Nordique, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, typeof(Nordique), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Chandail ), 		    "Chandail", 0x277E, 0 ),
 				new CustomItem( typeof( ChandailSoutienGorge ),	"Soutien Gorge", 0x2774, 0 ),
 				new CustomItem( typeof( ChandailCombat ), 	    "Chandail de Combat", 0x317F, 0 ),
@@ -745,7 +731,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( TabarCourt ),	    "Tabar", 0x2752, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Nordique, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, typeof(Nordique), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( TogeSoutane ),	    "Soutane", 0x278F, 0 ),
 				new CustomItem( typeof( TogeVoyage ), 	    "Toge de Voyage", 0x278E, 0 ),
@@ -755,7 +741,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( VesteCuir ),	    "Veste de Cuir", 0x317B, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Nordique, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, typeof(Nordique), ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
 				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
 				new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
@@ -764,13 +750,13 @@ namespace Server.Gumps
                 new CustomItem( typeof( BottesFourrure ),   "Bottes Fourrure", 0x2734, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Nordique, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, typeof(Nordique), ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
 				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
 				new CustomItem( typeof( ChapeauLoup ),	"Tete de Loup", 0x2730, 0 ),
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Nordique, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, typeof(Nordique), ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( LongPants ),	        "Pantalons Longs", 0x1539, 0 ),
                 new CustomItem( typeof( PantalonsNordique ),    "Pantalons Nordique", 0x273A, 0 ),
                 new CustomItem( typeof( PantalonsLongs ),       "Pantalons Amples", 0x273E, 0 ),
@@ -784,7 +770,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeGrande ),	"Grande Jupe", 0x315C, 0 )
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Nordique, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, typeof(Nordique), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( Cloak ),		    "Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeVoyage ),		"Cape Voyage", 0x2713, 0 ),
                 new CustomItem( typeof( CapeBarbare ),		"Cape Barbare", 0x2717, 0 ),
@@ -792,7 +778,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( CapeEpauliere ),	"Cape Epaule", 0x271C, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Nordique, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, typeof(Nordique), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( CeintureTorseGrande ),		"Ceinture de Torse", 0x264D, 0 ),
                 new CustomItem( typeof( TablierBarbare ),		    "Tablier", 0x275B, 0 ),
                 new CustomItem( typeof( CeinturePendante ),		    "Ceinture", 0x2660, 0 ),
@@ -810,7 +796,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Nomade, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, typeof(Nomade), ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeBohemienne ), 		"Robe Bohémienne", 0x27BF, 0 ),
                 new CustomItem( typeof( RobeGitane ), 		    "Robe Gitane", 0x27C6, 0 ),
                 new CustomItem( typeof( RobeFleurit ), 		    "Robe Fleurit", 0x2799, 0 ),
@@ -821,7 +807,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( RobeCourte ), 		    "Robe Courte", 0x27D0, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Nomade, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, typeof(Nomade), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( SoutienGorge ), 	"Soutien Gorge", 0x312C, 0 ),
 				new CustomItem( typeof( Chandail ),		    "Chandail", 0x277E, 0 ),
 				new CustomItem( typeof( ChandailMarin ), 	"Chandail de Marin", 0x2759, 0 ),
@@ -836,7 +822,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( TuniquePirate ),	"Tunique Corsaire", 0x2BE1, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Nomade, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, typeof(Nomade), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( TogeOrient ),	    "Toge d'Orient", 0x2BE0, 0 ),
 				new CustomItem( typeof( TogeNomade ), 	    "Toge de Nomade", 0x3165, 0 ),
@@ -845,7 +831,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( VesteLourde ),	    "Veste", 0x277B, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Nomade, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, typeof(Nomade), ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
 				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
 				new CustomItem( typeof( Geta ),		        "Geta", 0x2682, 0 ),
@@ -854,7 +840,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Nomade, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, typeof(Nomade), ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( SkullCap ),		    "Cap", 0x1544, 0 ),
 				new CustomItem( typeof( Turban ), 		    "Turban", 0x26AF, 0 ),
 				new CustomItem( typeof( TurbanLong ),	    "Long Turban", 0x26B0, 0 ),
@@ -863,7 +849,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( TurbanVoile ),	    "Turban Voilé", 0x2BE4, 0 )
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Nomade, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, typeof(Nomade), ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
                 new CustomItem( typeof( PantalonsOrient ),	"Pantalons d'Orient", 0x3179, 0 ),
                 new CustomItem( typeof( PantalonsNomade ),	"Pantalons de Nomade", 0x2BDF, 0 ),
@@ -876,7 +862,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeOuverte ),		"Jupe Ouverte", 0x3173, 0 )
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Nomade, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, typeof(Nomade), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeVoyage ),	"Cape Voyage", 0x2713, 0 ),
                 new CustomItem( typeof( CapeCapuche ),	"Cape Capuche", 0x2714, 0 ),
@@ -885,7 +871,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( CapeFeminine ),	"Cape Femme", 0x2721, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Nomade, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, typeof(Nomade), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
                 new CustomItem( typeof( HalfApron ),		        "Tablier", 0x153b, 0 ),
                 new CustomItem( typeof( Ceinture ),		            "Ceinture", 0x2666, 0 ),
@@ -903,7 +889,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Nain, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, typeof(Nain), ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobePetite ), 		"Petite Robe", 0x27CC, 0 ),
                 new CustomItem( typeof( RobeGamine ), 		"Robe de Gamine", 0x27D4, 0 ),
                 new CustomItem( typeof( RobeEnfantine ), 	"Robe Enfantine", 0x27CD, 0 ),
@@ -914,7 +900,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( RobeAmple ), 		"Robe Ample", 0x27A7, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Nain, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, typeof(Nain), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Shirt ), 	        "Chandail Court", 0x1517, 0 ),
 				new CustomItem( typeof( FancyShirt ),		"Chandail", 0x1EFD, 0 ),
 				new CustomItem( typeof( ChandailFeminin ), 	"Chandail", 0x2761, 0 ),
@@ -930,7 +916,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( TuniqueBourgeoise ),"Tunique Ample", 0x2779, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Nain, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, typeof(Nain), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( TogeDecore ),	    "Toge Décoré", 0x2791, 0 ),
 				new CustomItem( typeof( TogeAmple ), 	    "Toge Ample", 0x278C, 0 ),
@@ -939,7 +925,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( Veston ),	        "Veston", 0x275F, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Nain, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, typeof(Nain), ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
 				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
                 new CustomItem( typeof( SouliersBoucles ),  "Souliers Bouclés", 0x2733, 0 ),
@@ -949,7 +935,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Nain, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, typeof(Nain), ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( FloppyHat ),	"Chapeau", 0x1713, 0 ),
 				new CustomItem( typeof( WideBrimHat ),	"Chapeau", 0x1714, 0 ),
 				new CustomItem( typeof( Cap ),			"Cap", 0x1715, 0 ),
@@ -959,7 +945,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( TallStrawHat ),	"Chapeau", 0x1716, 0 )
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Nain, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, typeof(Nain), ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( ShortPants ),	    "Pantalons Courts", 0x152E, 0 ),
                 new CustomItem( typeof( Pantalons ),	    "Pantalons Simples", 0x273B, 0 ),
                 new CustomItem( typeof( PantalonsCourts ),	"Pantalons Amples", 0x273D, 0 ),
@@ -971,14 +957,14 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeAmple ),    "Jupe Ample", 0x2744, 0 )
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Nain, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, typeof(Nain), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( CapeCourte ),	"Cape Courte", 0x271D, 0 ),
                 new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeVoyage ),	"Cape Voyage", 0x2713, 0 ),
                 new CustomItem( typeof( CapeSolide ),	"Cape Attaché", 0x271B, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Nain, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, typeof(Nain), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( Cocarde ),		            "Ceinture de Torse", 0x267C, 0 ),
                 new CustomItem( typeof( FullApron ),		        "Tablier", 0x153d, 0 ),
                 new CustomItem( typeof( Bourse ),		            "Bourse", 0x2665, 0 ),
@@ -996,7 +982,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Elfe, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, typeof(Elfe), ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeDemoiselle ), 		"Robe de Demoiselle", 0x2798, 0 ),
                 new CustomItem( typeof( RobeAttrayante ), 		"Robe Attrayante", 0x27CF, 0 ),
                 new CustomItem( typeof( RobeNymph ), 		    "Robe de Nymph", 0x2BDE, 0 ),
@@ -1006,7 +992,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( RobeDentelle ), 		"Robe de Dentelle", 0x27A6, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Elfe, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, typeof(Elfe), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Chandail ), 	    "Chandail", 0x277E, 0 ),
 				new CustomItem( typeof( FancyShirt ),		"Chandail", 0x1EFD, 0 ),
 
@@ -1019,7 +1005,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( Tunic ),	        "Tunique", 0x1FA1, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Elfe, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, typeof(Elfe), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( TogeElfique ),		"Toge Elfe", 0x2895, 0 ),
 				new CustomItem( typeof( TogeHautElfe ), 	"Toge Haut Elfe", 0x2BD9, 0 ),
@@ -1029,7 +1015,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( Veste ),	        "Veste", 0x277A, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Elfe, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, typeof(Elfe), ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
 				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
 				new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
@@ -1038,7 +1024,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Elfe, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, typeof(Elfe), ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
 				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
 				new CustomItem( typeof( FeatheredHat ),	"Chapeau a Plume", 0x171A, 0 ),
@@ -1047,7 +1033,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( TallStrawHat ),	"Chapeau", 5910, 0 )
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Elfe, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, typeof(Elfe), ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
                 new CustomItem( typeof( Pantalons ),	    "Pantalons Simples", 0x273B, 0 ),
                 new CustomItem( typeof( PantalonsLongs ),	"Pantalons Amples", 0x273E, 0 ),
@@ -1058,7 +1044,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeAmple ),	"Jupe Ample", 0x2744, 0 ),
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Elfe, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, typeof(Elfe), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeCol ),		"Cape a Col", 0x271F, 0 ),
                 new CustomItem( typeof( CapeDecore ),	"Cape Decoré", 0x2716, 0 ),
@@ -1067,7 +1053,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( CapeFeminine ),	"Cape Feminine", 0x2721, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Elfe, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, typeof(Elfe), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
                 new CustomItem( typeof( FullApron ),		        "Tablier", 0x153d, 0 ),
                 new CustomItem( typeof( CeinturePendante ),		    "Ceinture", 0x2660, 0 ),
@@ -1085,7 +1071,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, typeof(Alfar), ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeElfeNoir ), 		    "Robe Antique", 0x2BE7, 0 ),
                 new CustomItem( typeof( RobeSoubrette ), 		"Robe", 0x27CB, 0 ),
                 new CustomItem( typeof( RobeBohemienne ), 		"Robe Bohémienne", 0x27BF, 0 ),
@@ -1096,7 +1082,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( RobeSombre ), 		    "Robe Sombre", 0x27A4, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, typeof(Alfar), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Chandail ), 	    "Chandail", 0x277E, 0 ),
 
 				new CustomItem( typeof( ChemiseElfique ),   "Chemise Elfique", 0x275D, 0 ),
@@ -1109,7 +1095,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( TuniquePaysanne ),	"Tunique Simple", 0x274E, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, typeof(Alfar), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( TogeVoyage ),	    "Tunique", 0x278E, 0 ),
 				new CustomItem( typeof( TogeDrow ), 	    "Tunique de Fol", 0x2896, 0 ),
@@ -1118,7 +1104,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( Veste ),	        "Veste", 0x277A, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, typeof(Alfar), ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
 				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
                 new CustomItem( typeof( SouliersBoucles ),	"Souliers Bouclés", 0x2733, 0 ),
@@ -1127,13 +1113,13 @@ namespace Server.Gumps
 				new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, typeof(Alfar), ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
 				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
 				new CustomItem( typeof( Cap ),			"Cap", 5909, 0 )
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, typeof(Alfar), ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( PantalonsDechires ),    "Pantalons Déchirés", 0x2738, 0 ),
                 new CustomItem( typeof( LongPants ),	        "Pantalons Longs", 0x1539, 0 ),
                 new CustomItem( typeof( Pantalons ),	        "Pantalons Simples", 0x273B, 0 ),
@@ -1145,7 +1131,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeLongue ),		"Jupe Longue", 0x2743, 0 )
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, typeof(Alfar), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeVoyage ),	"Cape Voyage", 0x2713, 0 ),
                 new CustomItem( typeof( CapeCapuche ),	"Cape Capuche", 0x2714, 0 ),
@@ -1153,7 +1139,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( CapeCagoule ),	"Cape Cagoule", 0x2715, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.ElfeNoir, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, typeof(Alfar), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
                 new CustomItem( typeof( HalfApron ),		        "Tablier", 0x153b, 0 ),
                 new CustomItem( typeof( CeintureCuir ),		        "Ceinture", 0x2661, 0 ),
@@ -1171,7 +1157,7 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Orcish, ClasseType.None, new CustomItem[]{// Upper Torso
+			new CustomCategory( Layer.InnerTorso, "Robes", true, typeof(Orcish), ClasseType.None, new CustomItem[]{// Upper Torso
 				new CustomItem( typeof( RobeDechire ), 		"Robe Déchiré", 0x27D2, 0 ),
                 new CustomItem( typeof( RobeDomestique ), 	"Robe de Domestique", 0x27A5, 0 ),
                 new CustomItem( typeof( RobeBohemienne ), 	"Robe Bohémienne", 0x27BF, 0 ),
@@ -1180,7 +1166,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( RobeSobre ), 		"Robe Sobre", 0x27AB, 0 )
 			} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Orcish, ClasseType.None, new CustomItem[]{//Over chest
+			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, typeof(Orcish), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Chandail ), 	    "Chandail", 0x277E, 0 ),
 				new CustomItem( typeof( ChandailCombat ),   "Chandail de Combat", 0x317F, 0 ),
 
@@ -1196,7 +1182,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( Surcoat ),	        "Surcot", 0x1FFD, 0 )
 			} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Orcish, ClasseType.None, new CustomItem[]{//Over chest
+            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, typeof(Orcish), ClasseType.None, new CustomItem[]{//Over chest
 				new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
 				new CustomItem( typeof( Toge ),		        "Toge Mage", 0x2792, 0 ),
 				new CustomItem( typeof( TogeVoyage ), 	    "Toge de Voyage", 0x278E, 0 ),
@@ -1205,7 +1191,7 @@ namespace Server.Gumps
 				new CustomItem( typeof( VesteLourde ),	    "Veste", 0x277B, 0 )
 			} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Orcish, ClasseType.None, new CustomItem[]{//Footwear
+			new CustomCategory( Layer.Shoes, "Chaussures", true, typeof(Orcish), ClasseType.None, new CustomItem[]{//Footwear
 				new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
 				new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
                 new CustomItem( typeof( Bottes ),		    "Bottes Simples", 0x2732, 0 ),
@@ -1213,13 +1199,13 @@ namespace Server.Gumps
 				new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
 			} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Orcish, ClasseType.None, new CustomItem[]{//Hats
+			new CustomCategory( Layer.Helm, "Feutres", true, typeof(Orcish), ClasseType.None, new CustomItem[]{//Hats
 				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
 				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
 				new CustomItem( typeof( ChapeauLoup ),	"Tete de Loup", 0x2730, 0 )
 			} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Orcish, ClasseType.None, new CustomItem[]{ //Lower Torso
+			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, typeof(Orcish), ClasseType.None, new CustomItem[]{ //Lower Torso
 				new CustomItem( typeof( PantalonsPauvre ),	"Pantalons Pauvre", 0x2739, 0 ),
                 new CustomItem( typeof( PantalonsLongs ),	"Pantalons Long", 0x273E, 0 ),
                 new CustomItem( typeof( PantalonsCuir ),	"Pantalons de Cuir", 0x3177, 0 ),
@@ -1232,7 +1218,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( JupeOrcish ),	        "Jupe Orcish", 0x315D, 0 )
 			} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Orcish, ClasseType.None, new CustomItem[]{ // Back
+			new CustomCategory( Layer.Cloak, "Capes", true, typeof(Orcish), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
                 new CustomItem( typeof( CapeVoyage ),	"Cape de Voyage", 0x2713, 0 ),
                 new CustomItem( typeof( CapeBarbare ),	"Cape Barbare", 0x2717, 0 ),
@@ -1241,7 +1227,7 @@ namespace Server.Gumps
                 new CustomItem( typeof( CapePoil ),		"Cape de Poil", 0x3180, 0 )
 			} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Orcish, ClasseType.None, new CustomItem[]{ // Back
+            new CustomCategory( Layer.Waist, "Accessoires", true, typeof(Orcish), ClasseType.None, new CustomItem[]{ // Back
 				new CustomItem( typeof( CeintureTorseGrande ),		"Ceinture de Torse", 0x264D, 0 ),
                 new CustomItem( typeof( TablierBarbare ),		    "Tablier", 0x275B, 0 ),
                 new CustomItem( typeof( CeinturePauvre ),		    "Ceinture", 0x265F, 0 ),
@@ -1259,313 +1245,313 @@ namespace Server.Gumps
              * 
              */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{// Upper Torso
-				new CustomItem( typeof( RobeOrdinaire ), 		"Robe Ordinaire", 0x27D3, 0 ),
-                new CustomItem( typeof( RobeDomestique ), 		"Robe de Domestique", 0x27A5, 0 ),
-                new CustomItem( typeof( RobeACeinture ), 		"Robe à Ceinture", 0x3156, 0 ),
-                new CustomItem( typeof( RobeSobre ), 		    "Robe Sobre", 0x27AB, 0 ),
-                new CustomItem( typeof( RobeAraignee ), 		"Robe Araignée", 0x27C5, 0 ),
-                new CustomItem( typeof( RobeAraneide ), 		"Robe Aranéide", 0x27AE, 0 )
-			} ),
+            //new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{// Upper Torso
+            //    new CustomItem( typeof( RobeOrdinaire ), 		"Robe Ordinaire", 0x27D3, 0 ),
+            //    new CustomItem( typeof( RobeDomestique ), 		"Robe de Domestique", 0x27A5, 0 ),
+            //    new CustomItem( typeof( RobeACeinture ), 		"Robe à Ceinture", 0x3156, 0 ),
+            //    new CustomItem( typeof( RobeSobre ), 		    "Robe Sobre", 0x27AB, 0 ),
+            //    new CustomItem( typeof( RobeAraignee ), 		"Robe Araignée", 0x27C5, 0 ),
+            //    new CustomItem( typeof( RobeAraneide ), 		"Robe Aranéide", 0x27AE, 0 )
+            //} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Over chest
-				new CustomItem( typeof( Chandail ), 	    "Chandail", 0x277E, 0 ),
+            //new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Over chest
+            //    new CustomItem( typeof( Chandail ), 	    "Chandail", 0x277E, 0 ),
 
-                new CustomItem( typeof( ChemiseReligieuse ),"Chemise Religieuse", 0x275C, 0 ),
-                new CustomItem( typeof( Chemiselacee ), 	"Chemise Lacée", 0x2751, 0 ),
+            //    new CustomItem( typeof( ChemiseReligieuse ),"Chemise Religieuse", 0x275C, 0 ),
+            //    new CustomItem( typeof( Chemiselacee ), 	"Chemise Lacée", 0x2751, 0 ),
 
-                new CustomItem( typeof( CorsetAmple ),	    "Corset Ample", 0x2784, 0 ),
+            //    new CustomItem( typeof( CorsetAmple ),	    "Corset Ample", 0x2784, 0 ),
 
-				new CustomItem( typeof( Doublet ),          "Doublet", 0x1F7B, 0 ),
-                new CustomItem( typeof( DoubletFeminin ),	"Doublet Sombre", 0x2748, 0 ),
+            //    new CustomItem( typeof( Doublet ),          "Doublet", 0x1F7B, 0 ),
+            //    new CustomItem( typeof( DoubletFeminin ),	"Doublet Sombre", 0x2748, 0 ),
 
-                new CustomItem( typeof( Tunic ),	        "Tunique", 0x1FA1, 0 ),
-                new CustomItem( typeof( TuniquePaysanne ),	"Tunique Simple", 0x274E, 0 )
-			} ),
+            //    new CustomItem( typeof( Tunic ),	        "Tunique", 0x1FA1, 0 ),
+            //    new CustomItem( typeof( TuniquePaysanne ),	"Tunique Simple", 0x274E, 0 )
+            //} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Over chest
-				new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
-				new CustomItem( typeof( Toge ),		        "Toge Mage", 0x2792, 0 ),
-				new CustomItem( typeof( TogeGoetie ), 	    "Toge Necro", 0x2794, 0 ),
-				new CustomItem( typeof( TogeDrow ),		    "Toge ElfeNoir", 0x2896, 0 ),
-				new CustomItem( typeof( TogeMystique ),	    "Toge Mystique", 0x278D, 0 ),
-				new CustomItem( typeof( TogeArchiMage ),    "Toge Arch", 0x2B78, 0 ),
-				new CustomItem( typeof( ManteauPardessus ),	"Manteau", 0x2786, 0 )
-			} ),
+            //new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Over chest
+            //    new CustomItem( typeof( Robe ), 		    "Toge", 0x1F03, 0 ),
+            //    new CustomItem( typeof( Toge ),		        "Toge Mage", 0x2792, 0 ),
+            //    new CustomItem( typeof( TogeGoetie ), 	    "Toge Necro", 0x2794, 0 ),
+            //    new CustomItem( typeof( TogeDrow ),		    "Toge ElfeNoir", 0x2896, 0 ),
+            //    new CustomItem( typeof( TogeMystique ),	    "Toge Mystique", 0x278D, 0 ),
+            //    new CustomItem( typeof( TogeArchiMage ),    "Toge Arch", 0x2B78, 0 ),
+            //    new CustomItem( typeof( ManteauPardessus ),	"Manteau", 0x2786, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Footwear
-				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
-                new CustomItem( typeof( SouliersBoucles ),	"Souliers Bouclés", 0x2733, 0 ),
-				new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
-                new CustomItem( typeof( BottesBoucles ),	"Bottes Bouclés", 0x2731, 0 ),
-				new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
-			} ),
+            //new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Footwear
+            //    new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
+            //    new CustomItem( typeof( SouliersBoucles ),	"Souliers Bouclés", 0x2733, 0 ),
+            //    new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
+            //    new CustomItem( typeof( BottesBoucles ),	"Bottes Bouclés", 0x2731, 0 ),
+            //    new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Hats
-				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
-				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
-				new CustomItem( typeof( FloppyHat ),	"Chapeau", 5907, 0 ),
-				new CustomItem( typeof( WideBrimHat ),	"Chapeau", 5908, 0 ),
-				new CustomItem( typeof( Cap ),			"Cap", 5909, 0 ),
-                new CustomItem( typeof( FeatheredHat ), "Chapeau a Plumes", 0x171A, 0 )
-			} ),
+            //new CustomCategory( Layer.Helm, "Feutres", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{//Hats
+            //    new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
+            //    new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
+            //    new CustomItem( typeof( FloppyHat ),	"Chapeau", 5907, 0 ),
+            //    new CustomItem( typeof( WideBrimHat ),	"Chapeau", 5908, 0 ),
+            //    new CustomItem( typeof( Cap ),			"Cap", 5909, 0 ),
+            //    new CustomItem( typeof( FeatheredHat ), "Chapeau a Plumes", 0x171A, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{ //Lower Torso
-				new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
-                new CustomItem( typeof( Pantalons ),	    "Pantalons", 0x273B, 0 ),
-                new CustomItem( typeof( PantalonsArmure ),	"Pantalons Armuré", 0x273C, 0 ),
+            //new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{ //Lower Torso
+            //    new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
+            //    new CustomItem( typeof( Pantalons ),	    "Pantalons", 0x273B, 0 ),
+            //    new CustomItem( typeof( PantalonsArmure ),	"Pantalons Armuré", 0x273C, 0 ),
 
-				new CustomItem( typeof( Skirt ),		    "Jupe", 0x1516, 0 ),
-                new CustomItem( typeof( JupeOuverte ),		"Jupe Ouverte", 0x3173, 0 ),
-                new CustomItem( typeof( JupeAmple ),		"Jupe Ample", 0x2744, 0 ),
-                new CustomItem( typeof( JupeLongue ),		"Jupe Longue", 0x2743, 0 )
-			} ),
+            //    new CustomItem( typeof( Skirt ),		    "Jupe", 0x1516, 0 ),
+            //    new CustomItem( typeof( JupeOuverte ),		"Jupe Ouverte", 0x3173, 0 ),
+            //    new CustomItem( typeof( JupeAmple ),		"Jupe Ample", 0x2744, 0 ),
+            //    new CustomItem( typeof( JupeLongue ),		"Jupe Longue", 0x2743, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{ // Back
-				new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
-                new CustomItem( typeof( CapeCapuche ),	"Cape à Capuche", 0x2714, 0 ),
-                new CustomItem( typeof( CapeCol ),		"Cape à Col", 0x271F, 0 ),
-                new CustomItem( typeof( CapeColLong ),	"Cape à Col Long", 0x2718, 0 ),
-                new CustomItem( typeof( CapeEpauliere ),"Cape Épaulière", 0x271C, 0 ),
-                new CustomItem( typeof( CapeCagoule ),	"Cape à Cagoule", 0x2715, 0 )
-			} ),
+            //new CustomCategory( Layer.Cloak, "Capes", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{ // Back
+            //    new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
+            //    new CustomItem( typeof( CapeCapuche ),	"Cape à Capuche", 0x2714, 0 ),
+            //    new CustomItem( typeof( CapeCol ),		"Cape à Col", 0x271F, 0 ),
+            //    new CustomItem( typeof( CapeColLong ),	"Cape à Col Long", 0x2718, 0 ),
+            //    new CustomItem( typeof( CapeEpauliere ),"Cape Épaulière", 0x271C, 0 ),
+            //    new CustomItem( typeof( CapeCagoule ),	"Cape à Cagoule", 0x2715, 0 )
+            //} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{ // Back
-				new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
-                new CustomItem( typeof( HalfApron ),		        "Tablier", 0x153b, 0 ),
-                new CustomItem( typeof( CeintureBoucle ),		    "Ceinture", 0x2663, 0 ),
-                new CustomItem( typeof( CeintureLongue ),		    "Ceinture", 0x264A, 0 ),
-                new CustomItem( typeof( Fourreau ),		            "Fourreau", 0x2667, 0 ),
-                new CustomItem( typeof( FourreauDague ),		    "Fourreau", 0x266C, 0 ),
-                new CustomItem( typeof( SacocheRoublard ),		    "Sacoche", 0x267A, 0 ),
-                new CustomItem( typeof( Foulard ),		            "Foulard", 0x2689, 0 ),
-                new CustomItem( typeof( FoulardProtecteur ),	    "Foulard", 0x268B, 0 )
-			} ),
+            //new CustomCategory( Layer.Waist, "Accessoires", true, Race.Tieffelin, ClasseType.None, new CustomItem[]{ // Back
+            //    new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
+            //    new CustomItem( typeof( HalfApron ),		        "Tablier", 0x153b, 0 ),
+            //    new CustomItem( typeof( CeintureBoucle ),		    "Ceinture", 0x2663, 0 ),
+            //    new CustomItem( typeof( CeintureLongue ),		    "Ceinture", 0x264A, 0 ),
+            //    new CustomItem( typeof( Fourreau ),		            "Fourreau", 0x2667, 0 ),
+            //    new CustomItem( typeof( FourreauDague ),		    "Fourreau", 0x266C, 0 ),
+            //    new CustomItem( typeof( SacocheRoublard ),		    "Sacoche", 0x267A, 0 ),
+            //    new CustomItem( typeof( Foulard ),		            "Foulard", 0x2689, 0 ),
+            //    new CustomItem( typeof( FoulardProtecteur ),	    "Foulard", 0x268B, 0 )
+            //} ),
 
-             /*
-             * 
-             * Aasimar
-             * 
-             */
+            // /*
+            // * 
+            // * Aasimar
+            // * 
+            // */
 
-			new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Aasimar, ClasseType.None, new CustomItem[]{// Upper Torso
-				new CustomItem( typeof( RobeSimple ), 		"Robe Simple", 0x27CA, 0 ),
-                new CustomItem( typeof( RobeSansManches ), 	"Robe Sans Manches", 0x279A, 0 ),
-                new CustomItem( typeof( RobeAubergiste ), 	"Robe d'Aubergiste", 0x27C8, 0 ),
-                new CustomItem( typeof( RobeOrne ), 		"Robe Orné", 0x3164, 0 ),
-                new CustomItem( typeof( RobeGrande ), 		"Grande Robe", 0x3158, 0 ),
-                new CustomItem( typeof( RobeDore ), 		"Robe Doré", 0x2BDC, 0 )
-			} ),
+            //new CustomCategory( Layer.InnerTorso, "Robes", true, Race.Aasimar, ClasseType.None, new CustomItem[]{// Upper Torso
+            //    new CustomItem( typeof( RobeSimple ), 		"Robe Simple", 0x27CA, 0 ),
+            //    new CustomItem( typeof( RobeSansManches ), 	"Robe Sans Manches", 0x279A, 0 ),
+            //    new CustomItem( typeof( RobeAubergiste ), 	"Robe d'Aubergiste", 0x27C8, 0 ),
+            //    new CustomItem( typeof( RobeOrne ), 		"Robe Orné", 0x3164, 0 ),
+            //    new CustomItem( typeof( RobeGrande ), 		"Grande Robe", 0x3158, 0 ),
+            //    new CustomItem( typeof( RobeDore ), 		"Robe Doré", 0x2BDC, 0 )
+            //} ),
 
-			new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Over chest
-				new CustomItem( typeof( Chandail ), 	    "Chandail", 0x277E, 0 ),
+            //new CustomCategory( Layer.MiddleTorso, "Tuniques", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Over chest
+            //    new CustomItem( typeof( Chandail ), 	    "Chandail", 0x277E, 0 ),
 
-                new CustomItem( typeof( ChemiseCol ), 	    "Chemise à Col", 0x2747, 0 ),
-                new CustomItem( typeof( ChemiseReligieuse ),"Chemise Religieuse", 0x275C, 0 ),
+            //    new CustomItem( typeof( ChemiseCol ), 	    "Chemise à Col", 0x2747, 0 ),
+            //    new CustomItem( typeof( ChemiseReligieuse ),"Chemise Religieuse", 0x275C, 0 ),
 
-				new CustomItem( typeof( Doublet ),          "Doublet", 0x1F7B, 0 ),
-                new CustomItem( typeof( DoubletArmure ),	"Doublet Armuré", 0x2756, 0 ),
+            //    new CustomItem( typeof( Doublet ),          "Doublet", 0x1F7B, 0 ),
+            //    new CustomItem( typeof( DoubletArmure ),	"Doublet Armuré", 0x2756, 0 ),
 
-                new CustomItem( typeof( Tunic ),	        "Tunique", 0x1FA1, 0 ),
-                new CustomItem( typeof( TuniquePaysanne ),	"Tunique Simple", 0x274E, 0 )
-			} ),
+            //    new CustomItem( typeof( Tunic ),	        "Tunique", 0x1FA1, 0 ),
+            //    new CustomItem( typeof( TuniquePaysanne ),	"Tunique Simple", 0x274E, 0 )
+            //} ),
 
-            new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Over chest
-				new CustomItem( typeof( Robe ), 		    "Doublet", 0x1F03, 0 ),
-				new CustomItem( typeof( TogeArchiMage ),	"Toge Mage", 0x2B78, 0 ),
-				new CustomItem( typeof( TogeFeminine ), 	"Toge Pretre", 0x2793, 0 ),
-				new CustomItem( typeof( ManteauPardessus ),	"Manteau", 0x2786, 0 ),
-				new CustomItem( typeof( ManteauRaye ),		"Manteau", 0x2785, 0 ),
-				new CustomItem( typeof( Veston ),	        "Veston", 0x275F, 0 ),
-				new CustomItem( typeof( Veste ),	        "Veste", 0x277A, 0 )
-			} ),
+            //new CustomCategory( Layer.OuterTorso, "Manteau & Toges", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Over chest
+            //    new CustomItem( typeof( Robe ), 		    "Doublet", 0x1F03, 0 ),
+            //    new CustomItem( typeof( TogeArchiMage ),	"Toge Mage", 0x2B78, 0 ),
+            //    new CustomItem( typeof( TogeFeminine ), 	"Toge Pretre", 0x2793, 0 ),
+            //    new CustomItem( typeof( ManteauPardessus ),	"Manteau", 0x2786, 0 ),
+            //    new CustomItem( typeof( ManteauRaye ),		"Manteau", 0x2785, 0 ),
+            //    new CustomItem( typeof( Veston ),	        "Veston", 0x275F, 0 ),
+            //    new CustomItem( typeof( Veste ),	        "Veste", 0x277A, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Footwear
-				new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
-				new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
-				new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
-                new CustomItem( typeof( Bottes ),		    "Bottes Simples", 0x2732, 0 ),
-                new CustomItem( typeof( BottesBoucles ),	"Bottes Bouclés", 0x2731, 0 ),
-				new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
-			} ),
+            //new CustomCategory( Layer.Shoes, "Chaussures", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Footwear
+            //    new CustomItem( typeof( Sandals ),		    "Sandales", 0x170D, 0 ),
+            //    new CustomItem( typeof( Shoes ),		    "Souliers", 0x170F, 0 ),
+            //    new CustomItem( typeof( Boots ),		    "Bottes", 0x170B, 0 ),
+            //    new CustomItem( typeof( Bottes ),		    "Bottes Simples", 0x2732, 0 ),
+            //    new CustomItem( typeof( BottesBoucles ),	"Bottes Bouclés", 0x2731, 0 ),
+            //    new CustomItem( typeof( ThighBoots ),	    "Longues Bottes", 0x1711, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Helm, "Feutres", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Hats
-				new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
-				new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
-				new CustomItem( typeof( Cap ),			"Cap", 5909, 0 )
-			} ),
+            //new CustomCategory( Layer.Helm, "Feutres", true, Race.Aasimar, ClasseType.None, new CustomItem[]{//Hats
+            //    new CustomItem( typeof( SkullCap ),		"Cap", 5444, 0 ),
+            //    new CustomItem( typeof( Bandana ), 		"Bandeau", 5440, 0 ),
+            //    new CustomItem( typeof( Cap ),			"Cap", 5909, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Aasimar, ClasseType.None, new CustomItem[]{ //Lower Torso
-				new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
-                new CustomItem( typeof( Pantalons ),	    "Pantalons Simples", 0x273B, 0 ),
-                new CustomItem( typeof( PantalonsLongs ),	"Pantalons Amples", 0x273E, 0 ),
-                new CustomItem( typeof( PantalonsArmure ),	"Pantalons Armuré", 0x273C, 0 ),
+            //new CustomCategory( Layer.Pants, "Pantalons & Jupes", true, Race.Aasimar, ClasseType.None, new CustomItem[]{ //Lower Torso
+            //    new CustomItem( typeof( LongPants ),	    "Pantalons Longs", 0x1539, 0 ),
+            //    new CustomItem( typeof( Pantalons ),	    "Pantalons Simples", 0x273B, 0 ),
+            //    new CustomItem( typeof( PantalonsLongs ),	"Pantalons Amples", 0x273E, 0 ),
+            //    new CustomItem( typeof( PantalonsArmure ),	"Pantalons Armuré", 0x273C, 0 ),
 
-				new CustomItem( typeof( Hakama ),		"Hakama", 0x279A, 0 ),
-                new CustomItem( typeof( JupeOuverte ),	"Jupe Ouverte", 0x3173, 0 ),
-                new CustomItem( typeof( JupeDecore ),	"Jupe Décoré", 0x3174, 0 ),
-                new CustomItem( typeof( JupeAPans ),	"Jupe à Pans", 0x3175, 0 )
-			} ),
+            //    new CustomItem( typeof( Hakama ),		"Hakama", 0x279A, 0 ),
+            //    new CustomItem( typeof( JupeOuverte ),	"Jupe Ouverte", 0x3173, 0 ),
+            //    new CustomItem( typeof( JupeDecore ),	"Jupe Décoré", 0x3174, 0 ),
+            //    new CustomItem( typeof( JupeAPans ),	"Jupe à Pans", 0x3175, 0 )
+            //} ),
 
-			new CustomCategory( Layer.Cloak, "Capes", true, Race.Aasimar, ClasseType.None, new CustomItem[]{ // Back
-				new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
-                new CustomItem( typeof( CapeSolide ),	"Cape Solide", 0x271B, 0 ),
-                new CustomItem( typeof( CapeEpauliere ),"Cape Épaulière", 0x271C, 0 ),
-                new CustomItem( typeof( CapeLongue ),	"Cape Longue", 0x2719, 0 ),
-                new CustomItem( typeof( CapeNoble ),	"Cape Noble", 0x2712, 0 ),
-                new CustomItem( typeof( Voile ),		"Voile", 0x2681, 0 )
-			} ),
+            //new CustomCategory( Layer.Cloak, "Capes", true, Race.Aasimar, ClasseType.None, new CustomItem[]{ // Back
+            //    new CustomItem( typeof( Cloak ),		"Cape", 5397, 0 ),
+            //    new CustomItem( typeof( CapeSolide ),	"Cape Solide", 0x271B, 0 ),
+            //    new CustomItem( typeof( CapeEpauliere ),"Cape Épaulière", 0x271C, 0 ),
+            //    new CustomItem( typeof( CapeLongue ),	"Cape Longue", 0x2719, 0 ),
+            //    new CustomItem( typeof( CapeNoble ),	"Cape Noble", 0x2712, 0 ),
+            //    new CustomItem( typeof( Voile ),		"Voile", 0x2681, 0 )
+            //} ),
 
-            new CustomCategory( Layer.Waist, "Accessoires", true, Race.Aasimar, ClasseType.None, new CustomItem[]{ // Back
-			    new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
-                new CustomItem( typeof( HalfApron ),		        "Tablier", 0x153b, 0 ),
-                new CustomItem( typeof( CeintureBoucle ),		    "Ceinture", 0x2663, 0 ),
-                new CustomItem( typeof( CeintureNordique ),		    "Ceinture", 0x2662, 0 ),
-                new CustomItem( typeof( Fourreau ),		            "Fourreau", 0x2667, 0 ),
-                new CustomItem( typeof( FourreauSabre ),		    "Fourreau", 0x2672, 0 ),
-                new CustomItem( typeof( SacocheHerboriste ),		"Sacoche", 0x2679, 0 ),
-                new CustomItem( typeof( BandeauAveugle ),		    "Bandeau", 0x2674, 0 ),
-                new CustomItem( typeof( FoulardNoble ),	            "Foulard", 0x268A, 0 )
-			} ),
+            //new CustomCategory( Layer.Waist, "Accessoires", true, Race.Aasimar, ClasseType.None, new CustomItem[]{ // Back
+            //    new CustomItem( typeof( BodySash ),		            "Ceinture de Torse", 0x1541, 0 ),
+            //    new CustomItem( typeof( HalfApron ),		        "Tablier", 0x153b, 0 ),
+            //    new CustomItem( typeof( CeintureBoucle ),		    "Ceinture", 0x2663, 0 ),
+            //    new CustomItem( typeof( CeintureNordique ),		    "Ceinture", 0x2662, 0 ),
+            //    new CustomItem( typeof( Fourreau ),		            "Fourreau", 0x2667, 0 ),
+            //    new CustomItem( typeof( FourreauSabre ),		    "Fourreau", 0x2672, 0 ),
+            //    new CustomItem( typeof( SacocheHerboriste ),		"Sacoche", 0x2679, 0 ),
+            //    new CustomItem( typeof( BandeauAveugle ),		    "Bandeau", 0x2674, 0 ),
+            //    new CustomItem( typeof( FoulardNoble ),	            "Foulard", 0x268A, 0 )
+            //} ),
 
-            /*
-             * 
-             * Armes & Outils
-             * 
-             */
+            ///*
+            // * 
+            // * Armes & Outils
+            // * 
+            // */
 
-			new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Guerrier, new CustomItem[]{//Held items
-				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
-				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
-                new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Guerrier, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
+            //    new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
+            //    new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
+            //    new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Barbare, new CustomItem[]{//Held items
-				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
-				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
-                new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Barbare, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
+            //    new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
+            //    new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
+            //    new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Archer, new CustomItem[]{//Held items
-				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
-				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
-                new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Archer, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
+            //    new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
+            //    new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
+            //    new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Cavalier, new CustomItem[]{//Held items
-				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
-				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
-                new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Cavalier, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
+            //    new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
+            //    new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
+            //    new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Duelliste, new CustomItem[]{//Held items
-				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
-				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
-                new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Duelliste, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
+            //    new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
+            //    new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
+            //    new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Protecteur, new CustomItem[]{//Held items
-				new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
-				new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
-                new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
-                new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 ),
-                new CustomItem( typeof( MetalShield ),	"Bouclier", 0x1B7B, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Armes", false, Race.Aucun, ClasseType.Protecteur, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Torch ),		"Torche", 3940, 0 ),
+            //    new CustomItem( typeof( Batarde ),	"Épée", 3936, 0 ),
+            //    new CustomItem( typeof( Arc ),	        "Arc", 0x2D24, 0 ),
+            //    new CustomItem( typeof( Axe ),	    "Hachette", 0x2B14, 0 ),
+            //    new CustomItem( typeof( MetalShield ),	"Bouclier", 0x1B7B, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Espion, new CustomItem[]{//Held items
-                new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
-                new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
-                new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
-                new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Espion, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
+            //    new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
+            //    new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
+            //    new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Rodeur, new CustomItem[]{//Held items
-                new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
-                new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
-                new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
-                new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Rodeur, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
+            //    new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
+            //    new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
+            //    new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Assassin, new CustomItem[]{//Held items
-                new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
-                new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
-                new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
-                new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Assassin, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
+            //    new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
+            //    new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
+            //    new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Voleur, new CustomItem[]{//Held items
-                new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
-                new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
-                new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
-                new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Voleur, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
+            //    new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
+            //    new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
+            //    new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Barde, new CustomItem[]{//Held items
-                new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
-                new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
-                new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
-                new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Instruments", false, Race.Aucun, ClasseType.Barde, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( Lute ),		    "Lute", 0xEB3, 0 ),
+            //    new CustomItem( typeof( Tambourine ),   "Tambourine", 0xE9D, 0 ),
+            //    new CustomItem( typeof( Fleuret ),      "Fleuret", 0x2994, 0 ),
+            //    new CustomItem( typeof( Buckler ),      "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Magicien, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Magicien, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Sorcier, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Sorcier, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Necromancien, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Necromancien, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Illusioniste, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Illusioniste, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Conjurateur, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Grimoire", false, Race.Aucun, ClasseType.Conjurateur, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ), "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( GnarledStaff ), "Baton", 5113, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Équipement", false, Race.Aucun, ClasseType.Pretre, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ),       "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( Astoria ),	          "Épée", 0x315E, 0 ),
-                new CustomItem( typeof( Buckler ),            "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Équipement", false, Race.Aucun, ClasseType.Pretre, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ),       "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( Astoria ),	          "Épée", 0x315E, 0 ),
+            //    new CustomItem( typeof( Buckler ),            "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Équipement", false, Race.Aucun, ClasseType.Paladin, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ),       "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( Astoria ),	          "Épée", 0x315E, 0 ),
-                new CustomItem( typeof( Buckler ),            "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Équipement", false, Race.Aucun, ClasseType.Paladin, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ),       "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( Astoria ),	          "Épée", 0x315E, 0 ),
+            //    new CustomItem( typeof( Buckler ),            "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Équipement", false, Race.Aucun, ClasseType.PaladinDechu, new CustomItem[]{//Held items
-				new CustomItem( typeof( NewSpellbook ),       "Grimoire", 3643, 0 ),
-                new CustomItem( typeof( Astoria ),	          "Épée", 0x315E, 0 ),
-                new CustomItem( typeof( Buckler ),            "Bouclier", 0x1B73, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Équipement", false, Race.Aucun, ClasseType.PaladinDechu, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( NewSpellbook ),       "Grimoire", 3643, 0 ),
+            //    new CustomItem( typeof( Astoria ),	          "Épée", 0x315E, 0 ),
+            //    new CustomItem( typeof( Buckler ),            "Bouclier", 0x1B73, 0 )
+            //} ),
 
-            new CustomCategory( Layer.FirstValid, "Outils", false, Race.Aucun, ClasseType.Artisan, new CustomItem[]{//Held items
-				new CustomItem( typeof( FishingPole ), 	"Canne à Peche", 3520, 0 ),
-				new CustomItem( typeof( Pickaxe ),		"Pioche", 3717, 0 ),
-				new CustomItem( typeof( Pitchfork ),	"Fourche", 3720, 0 ),
-				new CustomItem( typeof( Cleaver ),		"Couteau", 3778, 0 ),
-				new CustomItem( typeof( SmithHammer ),	"Marteau", 5091, 0 ),
-				new CustomItem( typeof( Saw ),          "Scie", 4148, 0 ),
-                new CustomItem( typeof( SewingKit ),    "Kit de Couture", 0xF9D, 0 ),
-                new CustomItem( typeof( Shovel ),       "Pelle", 0xF39, 0 ),
-                new CustomItem( typeof( MortarPestle ), "Mortar", 0xE9B, 0 )
-			} ),
+            //new CustomCategory( Layer.FirstValid, "Outils", false, Race.Aucun, ClasseType.Artisan, new CustomItem[]{//Held items
+            //    new CustomItem( typeof( FishingPole ), 	"Canne à Peche", 3520, 0 ),
+            //    new CustomItem( typeof( Pickaxe ),		"Pioche", 3717, 0 ),
+            //    new CustomItem( typeof( Pitchfork ),	"Fourche", 3720, 0 ),
+            //    new CustomItem( typeof( Cleaver ),		"Couteau", 3778, 0 ),
+            //    new CustomItem( typeof( SmithHammer ),	"Marteau", 5091, 0 ),
+            //    new CustomItem( typeof( Saw ),          "Scie", 4148, 0 ),
+            //    new CustomItem( typeof( SewingKit ),    "Kit de Couture", 0xF9D, 0 ),
+            //    new CustomItem( typeof( Shovel ),       "Pelle", 0xF39, 0 ),
+            //    new CustomItem( typeof( MortarPestle ), "Mortar", 0xE9B, 0 )
+            //} ),
 		};
 
         private class PVHuePicker : HuePicker

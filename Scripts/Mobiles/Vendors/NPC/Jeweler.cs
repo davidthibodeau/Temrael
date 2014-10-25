@@ -8,9 +8,6 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Race races = Race.Capiceen;
-
-        public Race Races { get { return races; } set { races = value; InitSBInfo(); } }
 
 		[Constructable]
 		public Jeweler() : base( "Bijoutier" )
@@ -21,19 +18,19 @@ namespace Server.Mobiles
 		public override void InitSBInfo()
 		{
             m_SBInfos.Clear();
-            switch (races)
-            {
-                case Race.Aasimar: m_SBInfos.Add(new SBJewelAasimar()); break;
-                case Race.Elfe: m_SBInfos.Add(new SBJewelElfe()); break;
-                case Race.ElfeNoir: m_SBInfos.Add(new SBJewelDrow()); break;
-                case Race.Capiceen: m_SBInfos.Add(new SBJewel()); break;
-                case Race.Nain: m_SBInfos.Add(new SBJewelNain()); break;
-                case Race.Nomade: m_SBInfos.Add(new SBJewelNomade()); break;
-                case Race.Nordique: m_SBInfos.Add(new SBJewelNordique()); break;
-                case Race.Orcish: m_SBInfos.Add(new SBJewelOrcish()); break;
-                case Race.Tieffelin: m_SBInfos.Add(new SBJewelTieffelin()); break;
-                default: m_SBInfos.Add(new SBJewel()); break;
-            }
+            //switch (races)
+            //{
+            //    case Race.Aasimar: m_SBInfos.Add(new SBJewelAasimar()); break;
+            //    case Race.Elfe: m_SBInfos.Add(new SBJewelElfe()); break;
+            //    case Race.ElfeNoir: m_SBInfos.Add(new SBJewelDrow()); break;
+            //    case Race.Capiceen: m_SBInfos.Add(new SBJewel()); break;
+            //    case Race.Nain: m_SBInfos.Add(new SBJewelNain()); break;
+            //    case Race.Nomade: m_SBInfos.Add(new SBJewelNomade()); break;
+            //    case Race.Nordique: m_SBInfos.Add(new SBJewelNordique()); break;
+            //    case Race.Orcish: m_SBInfos.Add(new SBJewelOrcish()); break;
+            //    case Race.Tieffelin: m_SBInfos.Add(new SBJewelTieffelin()); break;
+            //    default: m_SBInfos.Add(new SBJewel()); break;
+            //}
 
 			//m_SBInfos.Add( new SBJewel() );
 		}
@@ -46,9 +43,7 @@ namespace Server.Mobiles
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
-
-            writer.Write((int)races);
+            writer.Write((int)0); // version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -56,12 +51,6 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            switch (version)
-            {
-                case 1: reader.ReadInt(); goto case 0;
-                case 0: break;
-            }
         }
 	}
 }

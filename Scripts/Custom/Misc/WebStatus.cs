@@ -7,6 +7,7 @@ using Server.Network;
 using Server.Guilds;
 using Server.Mobiles;
 using Server.Regions;
+using Server.Engines.Races;
 
 namespace Server.Misc
 {
@@ -91,116 +92,25 @@ namespace Server.Misc
                                 {
                                     totaljoueurs++;
 
-                                    if (tm.Races == Race.MortVivant)
-                                    {
-                                        if (tm.MortVivant)
-                                        {
-                                            nbMortVivant++;
-                                        }
-                                        else
-                                        {
-                                            switch (tm.MortRace)
-                                            {
-                                                case Race.Elfe: nbElfe++;
-                                                    break;
-                                                case Race.ElfeNoir: nbElfeNoir++;
-                                                    break;
-                                                case Race.Capiceen: nbHumain++;
-                                                    break;
-                                                case Race.Nain: nbNain++;
-                                                    break;
-                                                case Race.Nomade: nbNomade++;
-                                                    break;
-                                                case Race.Nordique: nbNordique++;
-                                                    break;
-                                                case Race.Orcish: nbOrcish++;
-                                                    break;
-                                                case Race.Tieffelin:
-                                                    if (tm.RaceSecrete == Race.Nomade)
-                                                        nbNomade++;
-                                                    else if (tm.RaceSecrete == Race.Nordique)
-                                                        nbNordique++;
-                                                    else
-                                                        nbHumain++;
-                                                    break;
-                                                case Race.Aasimar:
-                                                    if (tm.RaceSecrete == Race.Nomade)
-                                                        nbNomade++;
-                                                    else if (tm.RaceSecrete == Race.Nordique)
-                                                        nbNordique++;
-                                                    else
-                                                        nbHumain++;
-                                                    break;
-                                                case Race.MJ: if (!(tm.Hidden)) nbMJ++;
-                                                    break;
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        switch (tm.Races)
-                                        {
-                                            case Race.Elfe: nbElfe++;
-                                                break;
-                                            case Race.ElfeNoir: nbElfeNoir++;
-                                                break;
-                                            case Race.Capiceen: nbHumain++;
-                                                break;
-                                            case Race.Nain: nbNain++;
-                                                break;
-                                            case Race.Nomade: nbNomade++;
-                                                break;
-                                            case Race.Nordique: nbNordique++;
-                                                break;
-                                            case Race.Orcish: nbOrcish++;
-                                                break;
-                                            case Race.Tieffelin:
-                                                if (tm.RaceSecrete == Race.Nomade)
-                                                    nbNomade++;
-                                                else if (tm.RaceSecrete == Race.Nordique)
-                                                    nbNordique++;
-                                                else
-                                                    nbHumain++;
-                                                break;
-                                            case Race.Aasimar:
-                                                if (tm.RaceSecrete == Race.Nomade)
-                                                    nbNomade++;
-                                                else if (tm.RaceSecrete == Race.Nordique)
-                                                    nbNordique++;
-                                                else
-                                                    nbHumain++;
-                                                break;
-                                            case Race.MJ: if(!(tm.Hidden)) nbMJ++;
-                                                break;
-                                        }
-                                    }
+                                    Race race = tm.Race;
 
-                                    Race race = Race.Aucun;
+                                    if(race.Transformed)
+                                        continue;
 
-                                    switch (race)
-                                    {
-                                        case Race.Elfe: cElfe++;
-                                            break;
-                                        case Race.ElfeNoir: cElfeNoir++;
-                                            break;
-                                        case Race.Capiceen: cHumain++;
-                                            break;
-                                        case Race.MortVivant: cMortVivant++;
-                                            break;
-                                        case Race.Nain: cNain++;
-                                            break;
-                                        case Race.Nomade: cNomade++;
-                                            break;
-                                        case Race.Nordique: cNordique++;
-                                            break;
-                                        case Race.Orcish: cOrcish++;
-                                            break;
-                                        case Race.Tieffelin: cTieffelin++;
-                                            break;
-                                        default: 
-                                            Landes++;
-                                            break;
-                                    }
+                                    if (race is Elfe)
+                                        nbElfe++;
+                                    else if (race is Alfar)
+                                        nbElfeNoir++;
+                                    else if (race is Orcish)
+                                        nbOrcish++;
+                                    else if (race is Capiceen)
+                                        nbHumain++;
+                                    else if (race is Nomade)
+                                        nbNomade++;
+                                    else if (race is Nordique)
+                                        nbNordique++;
+                                    else if (race is Nain)
+                                        nbNain++;
                                 }
                             }
                         }
@@ -577,10 +487,10 @@ namespace Server.Misc
                 TMobile c1 = (TMobile)a;
                 TMobile c2 = (TMobile)b;
 
-                if ((int)c1.Races > (int)c2.Races)
+                if ((int)c1.Race.Id > (int)c2.Race.Id)
                     return 1;
 
-                if ((int)c1.Races < (int)c2.Races)
+                if ((int)c1.Race.Id < (int)c2.Race.Id)
                     return -1;
 
                 else

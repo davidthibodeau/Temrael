@@ -24,12 +24,12 @@ namespace Server.Engines.Identities
                 if (from.Identities.RevealIdentity == true)
                 {
                     from.Identities.RevealIdentity = false;
-                    from.SendMessage("Vous cachez votre identité avec le foulard.");
+                    //from.SendMessage("Vous cachez votre identité avec le foulard.");
                 }
                 else
                 {
                     from.Identities.RevealIdentity = true;
-                    from.SendMessage("Vous révélez votre identité avec le foulard.");
+                    //from.SendMessage("Vous révélez votre identité avec le foulard.");
                 }
             }
         }

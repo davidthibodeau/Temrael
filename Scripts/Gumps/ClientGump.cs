@@ -347,17 +347,8 @@ namespace Server.Gumps
 
         private static string GetNameFor(Mobile m, Mobile m_Owner)
         {
-            if (m is TMobile)
-            {
-                if (((TMobile)m).Races == Race.Tieffelin || ((TMobile)m).Races == Race.Aasimar)
-                    return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).RaceSecrete.ToString());
-                else
-                    return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).Races.ToString());
-            }
-            else
-            {
-                return m.Name;
-            }
+            return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), 
+                m is PlayerMobile ? (m.Female ? ((PlayerMobile)m).Race.NameF : ((PlayerMobile)m).Race.Name) : "");
         }
     }
 }

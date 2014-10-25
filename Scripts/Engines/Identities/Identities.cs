@@ -6,44 +6,56 @@ using System.Collections;
 namespace Server.Engines.Identities
 {
     [PropertyObject]
-    public class Identities : IEnumerable
+    public class Identities
     {
+        [Flags]
+        private enum StatutCachee
+        {
+            Revealed = 0x00,
+            Foulard = 0x01,
+            DesireCacher = 0x10,
+            Cache = 0x11
+        }
+
         private readonly Mobile m_Mobile;
-    
-        //14 Avec Tief + 0 based
-        private string[] m_Identity = new string[]{
-            "", //1,
-            "", //2,
-            "", //3,
-            "", //4,
-            "", //5,
-            "", //6,
-            "", //7,
-            "", //8
-            "", //9
-            "", //10
-            "", //11
-            "", //12
-            "", //13
-            "" //14
-        };
 
-        private List<Identity> KnewIdentity = new List<Identity>();
+        private Identity idCachee;
+        private StatutCachee etatCachee;
 
-        private int m_currentIdentity = 0;
+        private Identity m_currentIdentity;
+        private Identity couranteNonCachee;
+
+        private Identity baseIdentity;
+        private Identity transformationIdentity;
+        private Identity[] deguisements;
+        private Identity deguisementUnique;
+
+
         private bool m_Disguised = false;
-        private bool m_DisguiseHidden = false;
-        private bool m_RevealIdentity = true;
 
         [CommandProperty(AccessLevel.Batisseur)]
         public bool RevealIdentity
         {
-            get { return m_RevealIdentity; }
-            set { m_RevealIdentity = value; }
+            get { return (((int)etatCachee) & 0x10) == 0x00; }
+            set
+            {
+                if (!value)
+                {
+                    etatCachee = (StatutCachee)(0x10 | (int)etatCachee);
+                    if (etatCachee == StatutCachee.Cache)
+                        CacherIdentite();
+                }
+                else
+                {
+                    if (etatCachee == StatutCachee.Cache)
+                        RevelerIdentite();
+                    etatCachee = (StatutCachee)(0x01 & (int)etatCachee);
+                }
+            }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int CurrentIdentity
+        public Identity CurrentIdentity
         {
             get { return m_currentIdentity; }
             set { m_currentIdentity = value; }
@@ -59,24 +71,36 @@ namespace Server.Engines.Identities
         [CommandProperty(AccessLevel.Batisseur)]
         public bool DisguiseHidden
         {
-            get { return m_DisguiseHidden; }
-            set { m_DisguiseHidden = value; }
+            get { return (((int)etatCachee) & 0x01) == 0x00; }
+            set
+            {
+                if (value)
+                {
+                    etatCachee = (StatutCachee)(0x01 | (int)etatCachee);
+                    if (etatCachee == StatutCachee.Cache)
+                        CacherIdentite();
+                }
+                else
+                {
+                    if (etatCachee == StatutCachee.Cache)
+                        RevelerIdentite();
+                    etatCachee = (StatutCachee)(0x10 & (int)etatCachee);
+                }
+            }
         }
 
-        public string this[int i]
+        public Identity IdCachee
         {
-            get
-            {
-                if (i == 0 && (m_Identity[0] == "" || m_Identity[0] == null))
-                    m_Identity[0] = m_Mobile.Name;
-                return m_Identity[i];
-            }
-            set { m_Identity[i] = value; }
+            get { return idCachee; }
         }
 
         public Identities(Mobile mobile)
         {
             m_Mobile = mobile;
+            baseIdentity = new Identity();
+            baseIdentity[mobile] = mobile.Name;
+            transformationIdentity = new Identity();
+            idCachee = new IdentiteCachee();
         }
 
         public Identities(GenericReader reader)
@@ -85,23 +109,10 @@ namespace Server.Engines.Identities
 
             m_Mobile = reader.ReadMobile();
 
-            int count = reader.ReadInt();
-            m_Identity = new string[count];
-            for (int i = 0; i < count; i++)
-            {
-                m_Identity[i] = reader.ReadString();
-            }
+            baseIdentity = new Identity(reader);
+            transformationIdentity = new Identity(reader);
+            idCachee = new IdentiteCachee(); //On ne sauvegarde pas idcache parce qu'il n'accumule pas d'informations.
 
-            count = reader.ReadInt();
-            for (int i = 0; i < count; i++)
-            {
-                KnewIdentity.Add(new Identity(reader));
-            }
-
-            m_currentIdentity = reader.ReadInt();
-            m_Disguised = reader.ReadBool();
-            m_DisguiseHidden = reader.ReadBool();
-            m_RevealIdentity = reader.ReadBool();
         }
 
         public void Serialize(GenericWriter writer)
@@ -110,102 +121,72 @@ namespace Server.Engines.Identities
 
             writer.Write(m_Mobile);
 
-            writer.Write(m_Identity.Length);
-            foreach(string s in m_Identity)
-            {
-                writer.Write(s);
-            }
-
-            writer.Write(KnewIdentity.Count);
-            foreach(Identity i in KnewIdentity)
-            {
-                i.Serialize(writer);
-            }
-
-            writer.Write(m_currentIdentity);
-            writer.Write(m_Disguised);
-            writer.Write(m_DisguiseHidden);
-            writer.Write(m_RevealIdentity);
+            baseIdentity.Serialize(writer);
+            transformationIdentity.Serialize(writer);
         }
 
-        public void ConvertPre9Ident(GenericReader reader)
+        public void CacherIdentite()
         {
-            int IdentityCount = reader.ReadInt();
-            m_Identity = new string[IdentityCount];
-            for (int i = 0; i < IdentityCount; i++)
-            {
-                m_Identity[i] = reader.ReadString();
-            }
+            if (m_currentIdentity == idCachee)
+                return;
+
+            couranteNonCachee = m_currentIdentity;
+            m_currentIdentity = idCachee;
+            m_Mobile.SendMessage("Votre identité est maintenant cachée.");
         }
 
-        public void ConvertPre9Knew(GenericReader reader)
+        public void RevelerIdentite()
         {
-            int count = reader.ReadInt();
-            for (int i = 0; i < count; i++)
-            {
-                KnewIdentity.Add(new Identity(reader.ReadInt(), reader.ReadString(), reader.ReadInt()));
-            }
+            if (m_currentIdentity != idCachee)
+                return;
+
+            m_currentIdentity = couranteNonCachee;
+            m_Mobile.SendMessage("Votre identité est maintenant révélée.");
+        }
+
+        public void Transformer()
+        {
+            if (m_currentIdentity == transformationIdentity)
+                return;
+
+            m_currentIdentity = transformationIdentity;
+            m_Mobile.SendMessage("Vous êtes maintenant transformé.");
+        }
+
+        public void Detransformer()
+        {
+            if (m_currentIdentity != transformationIdentity)
+                return;
+
+            m_currentIdentity = baseIdentity;
+            m_Mobile.SendMessage("Vous reprenez votre forme originelle.");
         }
 
         public void NewName(string name, Mobile m)
         {
-            PlayerMobile mob = m as PlayerMobile;
-            if (mob == null)
-                return;
-
-            if (m_DisguiseHidden && !m_RevealIdentity)
+            if (etatCachee == StatutCachee.Cache)
             {
                 m_Mobile.SendMessage("Vous n'etes pas apte a identifier ce personnage.");
                 return;
             }
 
-            Identity self = new Identity(m_Mobile.Serial, name, CurrentIdentity);
-
-            Identity ident = mob.Identities.KnewIdentity.Find(x => x == self);
-            if (ident == null)
-                mob.Identities.KnewIdentity.Add(self);
-            else
-                ident.name = name;
+            m_currentIdentity[m] = name;
         }
 
         public string GetNameUseBy(Mobile from)
-        {           
-            if (from == m_Mobile)
-                return this[CurrentIdentity];
+        {          
+            if ((m_Mobile.Account != null && m_Mobile.Account.AccessLevel > AccessLevel.Player))
+                return m_Mobile.Name;
 
-            if ((m_Mobile.Account != null && m_Mobile.Account.AccessLevel > AccessLevel.Player) || (from.Account != null && from.Account.AccessLevel > AccessLevel.Player))
-                return (CurrentIdentity == 0 ? this[CurrentIdentity] : this[0] + " (" + this[CurrentIdentity] + ")");
+            if (from.Account != null && from.Account.AccessLevel > AccessLevel.Player)
+                return (m_currentIdentity == baseIdentity ? m_Mobile.Name : m_Mobile.Name + " (" + m_currentIdentity[m_Mobile] + ")");
 
-            if (m_DisguiseHidden && !m_RevealIdentity)
-                return "Identite Cachee";
-
-            if (from is PlayerMobile)
-            {
-                Identities idfrom = ((PlayerMobile)from).Identities;
-
-                Identity self = new Identity(m_Mobile.Serial, "", CurrentIdentity);
-
-                Identity ident = idfrom.KnewIdentity.Find(x => x == self);
-                if (ident != null)
-                    return ident.name;
-            }
-
-            return DefaultName(from);
-        }
-
-        private string DefaultName(Mobile from)
-        {
-            return "Anonyme";
+            return m_currentIdentity[from];
         }
 
         public override string ToString()
         {
             return "...";
-        }
-
-        public IEnumerator GetEnumerator()
-        {
-            return m_Identity.GetEnumerator();
         }
     }
 }

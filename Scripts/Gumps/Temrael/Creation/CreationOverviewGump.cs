@@ -8,17 +8,30 @@ using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
 using Server.Engines.Langues;
+using Server.Engines.Races;
 
 namespace Server.Gumps
 {
+    public class CreationInfos
+    {
+        public int Hue { get; set; }
+        public Race Race { get; set; }
+
+        public CreationInfos()
+        {
+        }
+    }
+
     public class CreationOverviewGump : GumpTemrael
     {
         private TMobile m_from;
+        private CreationInfos m_infos;
 
-        public CreationOverviewGump(TMobile from)
+        public CreationOverviewGump(TMobile from, CreationInfos infos)
             : base("Résumé", 560, 622)
         {
             m_from = from;
+            m_infos = infos;
             int x = XBase;
             int y = YBase;
             int line = 2;
@@ -51,15 +64,20 @@ namespace Server.Gumps
             AddSection(x, y, 400, 160, "<h3><basefont color=#025a>Informations<basefont></h3>");
             x = 130;
             y = 310;
-            AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race: " + from.Creation.race + "<basefont></h3>");
+            AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race: " + from.Race.Name + "<basefont></h3>");
             line++;
-            AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Classe: " + from.Creation.classe.ToString() + "<basefont></h3>");
-            line++;
-            AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Destination: " + from.Creation.destination.ToString() + "<basefont></h3>");
-            line++;
-            if (m_from.Creation.race == Race.Aasimar || m_from.Creation.race == Race.Tieffelin)
+            //AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Classe: " + from.Creation.classe.ToString() + "<basefont></h3>");
+            //line++;
+            //AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Destination: " + from.Creation.destination.ToString() + "<basefont></h3>");
+            //line++;
+            if (m_from.Race.isAasimaar)
             {
-                AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: " + from.Creation.secrete.ToString() + "<basefont></h3>");
+                AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: Aasimar<basefont></h3>");
+                line++;
+            }
+            else if (m_from.Race.isTieffelin)
+            {
+                AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: Tieffelin<basefont></h3>");
                 line++;
             }
         }
@@ -73,92 +91,78 @@ namespace Server.Gumps
             switch (info.ButtonID)
             {
                 case 2:
-                    from.SendGump(new CreationRaceGump(from));
+                    from.SendGump(new CreationRaceGump(from, m_infos));
                     break;
                 case 3:
-                    if (from.Creation.race != Race.Aucun)
+                    if (from.Race != null)
                     {
-                        from.SendGump(new CreationClasseGump(from));
-                    }
-                    else
-                    {
-                        goto case 2;
-                    }
-                    break;
-                case 4:
-                    if (from.Creation.classe != ClasseType.None)
-                    {
-                        from.SendGump(new CreationEquipementGump(from));
+                        from.SendGump(new CreationEquipementGump(from, m_infos));
                     }
                     else
                     {
                         goto case 3;
                     }
                     break;
-                case 6:
-                    from.SendGump(new CreationCarteGump(from));
-                    break;
                 case 7:
-                    from.SendGump(new CreationOverviewGump(from));
+                    from.SendGump(new CreationOverviewGump(from, m_infos));
                     break;
                 case 8:
                     bool complete = true;
 
-                    if (m_from.Creation.race != Race.Aucun)
-                        m_from.Races = m_from.Creation.race;
-                    else
-                        complete = false;
+                    //if (m_from.Creation.race != Race.Aucun)
+                    //    m_from.Races = m_from.Creation.race;
+                    //else
+                    //    complete = false;
 
-                    if (m_from.Creation.classe != ClasseType.None)
-                        m_from.ClasseType = m_from.Creation.classe;
+                    //if (m_from.Creation.classe != ClasseType.None)
+                    //    m_from.ClasseType = m_from.Creation.classe;
 
-                    if (m_from.Creation.destination == CreationCarteGump.DestinationsDepart.Aucune)
-                        complete = false;
-
-                    if ((m_from.Creation.race == Race.Tieffelin || m_from.Creation.race == Race.Aasimar) && m_from.Creation.secrete == Race.Aucun)
-                        m_from.Creation.secrete = Race.Capiceen;
+                    //if (m_from.Creation.destination == CreationCarteGump.DestinationsDepart.Aucune)
+                    //    complete = false;
 
                     if (complete)
                     {
-                        m_from.Identities[0] = m_from.Name;
-                        switch (m_from.Creation.destination)
-                        {
-                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Hasteindale:
-                                InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(861, 594, 0), Map.Ilshenar);
-                                break;
-                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Brandheim:
-                                InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(2402, 1005, -80), Map.Felucca);
-                                break;
-                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Elamsham:
-                                InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(2549, 1333, -81), Map.Felucca);
-                                break;
-                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Citarel:
-                                InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(3388, 1996, -80), Map.Felucca);
-                                break;
-                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Serenite:
-                                InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(2628, 2099, -6), Map.Felucca);
-                                break;
-                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Melandre:
-                                InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(3088, 2809, -52), Map.Felucca);
-                                break;
-                            case Server.Gumps.CreationCarteGump.DestinationsDepart.Tartarus:
-                                InitializeCreation(m_from);
-                                m_from.MoveToWorld(new Point3D(1859, 3359, -79), Map.Felucca);
-                                break;
-                            default: break;
-                        }
+
+                        InitializeCreation(m_from, m_infos.Hue);
+                        //switch (m_from.Creation.destination)
+                        //{
+                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Hasteindale:
+                        //        InitializeCreation(m_from);
+                        //        m_from.MoveToWorld(new Point3D(861, 594, 0), Map.Ilshenar);
+                        //        break;
+                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Brandheim:
+                        //        InitializeCreation(m_from);
+                        //        m_from.MoveToWorld(new Point3D(2402, 1005, -80), Map.Felucca);
+                        //        break;
+                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Elamsham:
+                        //        InitializeCreation(m_from);
+                        //        m_from.MoveToWorld(new Point3D(2549, 1333, -81), Map.Felucca);
+                        //        break;
+                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Citarel:
+                        //        InitializeCreation(m_from);
+                        //        m_from.MoveToWorld(new Point3D(3388, 1996, -80), Map.Felucca);
+                        //        break;
+                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Serenite:
+                        //        InitializeCreation(m_from);
+                        //        m_from.MoveToWorld(new Point3D(2628, 2099, -6), Map.Felucca);
+                        //        break;
+                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Melandre:
+                        //        InitializeCreation(m_from);
+                        //        m_from.MoveToWorld(new Point3D(3088, 2809, -52), Map.Felucca);
+                        //        break;
+                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Tartarus:
+                        //        InitializeCreation(m_from);
+                        //        m_from.MoveToWorld(new Point3D(1859, 3359, -79), Map.Felucca);
+                        //        break;
+                        //    default: break;
+                        //}
+                        m_from.MoveToWorld(new Point3D(1806, 1338, -80), Map.Felucca);
                         m_from.SendMessage("Vous avez le droit d'apprendre une seconde langue.");
                         m_from.SendGump(new GumpLanguage(m_from, true));
                     }
                     else
                     {
-                        from.SendGump(new CreationOverviewGump(from));
+                        from.SendGump(new CreationOverviewGump(from, m_infos));
                         from.SendMessage("Vous devez complete tout les champs !");
                     }
 
@@ -168,15 +172,15 @@ namespace Server.Gumps
 
         private static void SetSkills(TMobile from)
         {
-            from.SkillsCap = 350 * 10;
+            from.SkillsCap = 200 * 10;
 
             for (int i = 0; i < from.Skills.Length; ++i)
             {
                 from.Skills[i].Base = 0.0;
-                from.Skills[i].Cap = 40.0;
+                from.Skills[i].Cap = 100.0;
             }
 
-            from.CompetencesLibres = 350;
+            from.CompetencesLibres = 200;
         }
 
         private static void SetCaract(TMobile from)
@@ -203,91 +207,79 @@ namespace Server.Gumps
                 item.Delete();
         }
 
-        private static void InitializeCreation(TMobile from)
+        private static void InitializeCreation(TMobile from, int hue)
         {
             from.Niveau = 0;
             SetSkills(from);
             SetCaract(from);
+
+            if (from.Backpack != null)
+            {
+                while (from.Backpack.Items.Count > 0)
+                    ((Item)from.Backpack.Items[0]).Delete();
+            }
+
             PackItem(from, new RedBook("a book", from.Name, 20, true));
-            PackItem(from, new Gold(2000)); //
+            PackItem(from, new Gold(200)); //
             PackItem(from, new Dagger());
             PackItem(from, new Candle());
-            /*if (from.Metier == Metier.Noble || from.MetierSecondaire == Metier.Noble)
-                from.PointDestin = 1;
-            else if (from.Races == Races.Tieffelin)
-                from.PointDestin = 1;
-            else
-                from.PointDestin = 3;*/
 
-            switch (from.Races)
+            Race race = from.Race;
+            from.Hue = hue;
+
+            if (race is Elfe)
             {
-                case Race.Elfe:
-                    //from.Hue = 2425;
-                    from.Hue = from.Creation.hue;
-                    EquipItem(from, new CorpsElfe(from.Hue));
-                    break;
-                case Race.ElfeNoir:
-                    //from.Hue = 1900;
-                    from.Hue = from.Creation.hue;
-                    EquipItem(from, new CorpsElfe(from.Hue));
-                    break;
-                case Race.Capiceen:
-                    //from.Hue = 1024;
-                    from.Hue = from.Creation.hue;
-                    break;
-                case Race.Nain:
-                    //from.Hue = 1867;
-                    from.Hue = from.Creation.hue;
-                    EquipItem(from, new CorpsNain(from.Hue));
-                    break;
-                case Race.Nomade:
-                    //from.Hue = 1816;
-                    from.Hue = from.Creation.hue;
-                    break;
-                case Race.Nordique:
-                    //from.Hue = 1048;
-                    from.Hue = from.Creation.hue;
-                    EquipItem(from, new CorpsNordique(from.Hue));
-                    break;
-                case Race.Orcish:
-                    //from.Hue = 1437;
-                    from.Hue = from.Creation.hue;
-                    EquipItem(from, new CorpsOrcish(from.Hue));
-                    break;
-                case Race.Tieffelin:
-                    from.RaceSecrete = from.Creation.secrete;
-                    switch (from.RaceSecrete)
-                    {
-                        case Race.Nordique:
-                            from.Hue = 1023;
-                            from.EquipItem(new CorpsNordique(from.Hue));
-                            break;
-                        case Race.Nomade:
-                            from.Hue = 1044;
-                            break;
-                        case Race.Capiceen:
-                            from.Hue = 1023;
-                            break;
-                    }
-                    break;
-                case Race.Aasimar:
-                    from.RaceSecrete = from.Creation.secrete;
-                    switch (from.RaceSecrete)
-                    {
-                        case Race.Nordique:
-                            from.Hue = 1023;
-                            from.EquipItem(new CorpsNordique(from.Hue));
-                            break;
-                        case Race.Nomade:
-                            from.Hue = 1044;
-                            break;
-                        case Race.Capiceen:
-                            from.Hue = 1023;
-                            break;
-                    }
-                    break;
-                default: break;
+                EquipItem(from, new CorpsElfe(from.Hue));
             }
+            else if (race is Alfar)
+            {
+                EquipItem(from, new CorpsElfe(from.Hue));
+            }
+            else if (race is Nain)
+            {
+                EquipItem(from, new CorpsNain(from.Hue));
+            }
+            else if (race is Nordique)
+            {
+                EquipItem(from, new CorpsNordique(from.Hue));
+            }
+            else if (race is Orcish)
+            {
+                EquipItem(from, new CorpsOrcish(from.Hue));
+            }
+            //case Race.Tieffelin:
+            //    from.RaceSecrete = from.Creation.secrete;
+            //    switch (from.RaceSecrete)
+            //    {
+            //        case Race.Nordique:
+            //            from.Hue = 1023;
+            //            from.EquipItem(new CorpsNordique(from.Hue));
+            //            break;
+            //        case Race.Nomade:
+            //            from.Hue = 1044;
+            //            break;
+            //        case Race.Capiceen:
+            //            from.Hue = 1023;
+            //            break;
+            //    }
+            //    break;
+            //case Race.Aasimar:
+            //    from.RaceSecrete = from.Creation.secrete;
+            //    switch (from.RaceSecrete)
+            //    {
+            //        case Race.Nordique:
+            //            from.Hue = 1023;
+            //            from.EquipItem(new CorpsNordique(from.Hue));
+            //            break;
+            //        case Race.Nomade:
+            //            from.Hue = 1044;
+            //            break;
+            //        case Race.Capiceen:
+            //            from.Hue = 1023;
+            //            break;
+            //    }
+            //    break;
+
         }
     }
 }

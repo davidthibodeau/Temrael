@@ -419,13 +419,13 @@ namespace Server.Items
 		{
 			Type t = m.GetType();
 
-            if (m is TMobile)
+            PlayerMobile tmob = m as PlayerMobile;
+            if (tmob != null)
             {
-                TMobile tmob = m as TMobile;
-                if (tmob.Races == Race.Tieffelin || tmob.Races == Race.Aasimar)
-                    return tmob.RaceSecrete.ToString();
+                if (tmob.Female)
+                    return tmob.Race.NameF;
                 else
-                    return tmob.Races.ToString();
+                    return tmob.Race.Name;
             }
 
 

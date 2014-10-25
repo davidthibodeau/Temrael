@@ -487,7 +487,7 @@ namespace Server.Engines.Geopolitique
 
         // Fonctions prisent des PlayerVendors. Ce pourrait etre une
         // bonne idee de les installer dans une classe commune.
-        public void InitBody()
+        public override void InitBody()
 		{
 			Hue = Utility.RandomSkinHue();
 			SpeechHue = 0x3B2;
@@ -507,7 +507,7 @@ namespace Server.Engines.Geopolitique
 			}
 		}
 
-		public virtual void InitOutfit()
+		public override void InitOutfit()
 		{
 			Item item = new FancyShirt( Utility.RandomNeutralHue() );
 			item.Layer = Layer.InnerTorso;

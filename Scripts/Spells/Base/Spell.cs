@@ -728,17 +728,6 @@ namespace Server.Spells
                 TMobile tmob = (TMobile)m_Caster;
                 int count = 0;
 
-                foreach (Item item in tmob.Items)
-                {
-                    if (item is BaseArmor)
-                    {
-                        BaseArmor armor = (BaseArmor)item;
-
-                        int req = tmob.GetArmorLevel(armor);
-                    }
-
-                }
-
                 if (Utility.Random(1, 100) < count)
                 {
                     tmob.SendMessage("Vous portez une trop grande charge d'armure et d'arme pour lancer un sort !");

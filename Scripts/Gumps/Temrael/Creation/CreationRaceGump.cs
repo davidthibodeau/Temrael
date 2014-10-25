@@ -7,24 +7,27 @@ using Server.Network;
 using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
+using Server.Engines.Races;
 
 namespace Server.Gumps
 {
     public class CreationRaceGump : GumpTemrael
     {
-        private TMobile m_from;
-        private Race m_Races;
+        private PlayerMobile m_from;
+        private Race m_Race;
+        private CreationInfos m_infos;
 
-        public CreationRaceGump(TMobile from)
-            : this(from, from.Creation.race)
+        public CreationRaceGump(PlayerMobile from, CreationInfos infos)
+            : this(from, from.Race, infos)
         {
         }
 
-        public CreationRaceGump(TMobile from, Race Races)
+        public CreationRaceGump(PlayerMobile from, Race race, CreationInfos infos)
             : base("Race", 560, 622)
         {
             m_from = from;
-            m_Races = Races;
+            m_Race = race;
+            m_infos = infos;
 
             int x = XBase;
             int y = YBase;
@@ -50,21 +53,16 @@ namespace Server.Gumps
 
             AddTitre(x + 360, y + line * scale, 190, "Races");
             ++line;
-            for (int i = 0; i < (int)Race.Maximum; i++)
+            for (int i = 1; i < 8; i++)
             {
-                if ((Race)(i) != Race.MortVivant)
-                {
-                    AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Race)i).ToString());
-                    ++line;
-                }
+                AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
+                AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, Race.GetRaceInstance(i).Name);
+                ++line;
             }
 
 
-            if (Races != Race.Aucun)
+            if (race != null)
             {
-                BaseRace race = RaceManager.getRace(Races);
-
                 int linetmp = line;
 
                 line = 0;
@@ -79,9 +77,7 @@ namespace Server.Gumps
 
                 line = 12;
 
-                string bonus = race.BonusDescr;
 
-                AddSection(x, y + line * scale, 250, 160, "Bonus Raciaux", bonus);
             }
         }
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -94,76 +90,24 @@ namespace Server.Gumps
             switch (info.ButtonID)
             {
                 case 2:
-                    from.SendGump(new CreationRaceGump(from));
-                    break;
-                case 3:
-                    if (from.Creation.race != Race.Aucun)
-                    {
-                        from.SendGump(new CreationClasseGump(from));
-                    }
-                    else
-                    {
-                        goto case 2;
-                    }
+                    from.SendGump(new CreationRaceGump(from, m_infos));
                     break;
                 case 4:
-                    if (from.Creation.classe != ClasseType.None)
-                    {
-                        from.SendGump(new CreationEquipementGump(from));
-                    }
-                    else
-                    {
-                        goto case 3;
-                    }
-                    break;
-                case 6:
-                    from.SendGump(new CreationCarteGump(from));
+                    from.SendGump(new CreationEquipementGump(from, m_infos));
                     break;
                 case 7:
-                    from.SendGump(new CreationOverviewGump(from));
+                    from.SendGump(new CreationOverviewGump(from, m_infos));
                     break;
                 case 8:
                     DeleteItemsOnChar(from);
-                    from.Creation.race = m_Races;
-                    switch (from.Creation.race)
-                    {
-                        case Race.Capiceen:
-                            from.Creation.hue = 1023;
-                            break;
-                        case Race.Orcish:
-                            from.Creation.hue = 1446;
-                            break;
-                        case Race.Elfe:
-                            from.Creation.hue = 1023;
-                            break;
-                        case Race.Nordique:
-                            from.Creation.hue = 1023;
-                            break;
-                        case Race.ElfeNoir:
-                            from.Creation.hue = 2410;
-                            break;
-                        case Race.Nain:
-                            from.Creation.hue = 1054;
-                            break;
-                        case Race.Nomade:
-                            from.Creation.hue = 1044;
-                            break;
-                        case Race.Tieffelin:
-                            from.Creation.hue = 0;
-                            break;
-                        case Race.Aasimar:
-                            from.Creation.hue = 0;
-                            break;
-                        case Race.Aucun:
-                            break;
-                    }
-                    from.SendGump(new CreationClasseGump(from));
+                    from.Race = m_Race;
+                    //from.Hue = m_Race.Hues[0];
                     break;
             }
 
             if (info.ButtonID >= 50)
             {
-                from.SendGump(new CreationRaceGump(from, (Race)(info.ButtonID - 50)));
+                from.SendGump(new CreationRaceGump(from, Race.GetRaceInstance(info.ButtonID - 50), m_infos));
             }
         }
         public void DeleteItemsOnChar(TMobile from)

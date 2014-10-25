@@ -9,9 +9,6 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Race races = Race.Capiceen;
-
-        public Race Races { get { return races; } set { races = value; InitSBInfo(); } }
 
 		[Constructable]
 		public Blacksmith() : base( "Forgeron" )
@@ -47,19 +44,19 @@ namespace Server.Mobiles
 			m_SBInfos.Add( new SBSwordWeapon() );*/
 
             m_SBInfos.Clear();
-            switch (races)
-            {
-                case Race.Aasimar: m_SBInfos.Add(new SBBlacksmithAasimar()); break;
-                case Race.Elfe: m_SBInfos.Add(new SBBlacksmithElfe()); break;
-                case Race.ElfeNoir: m_SBInfos.Add(new SBBlacksmithDrow()); break;
-                case Race.Capiceen: m_SBInfos.Add(new SBBlacksmith()); break;
-                case Race.Nain: m_SBInfos.Add(new SBBlacksmithNain()); break;
-                case Race.Nomade: m_SBInfos.Add(new SBBlacksmithNomade()); break;
-                case Race.Nordique: m_SBInfos.Add(new SBBlacksmithNordique()); break;
-                case Race.Orcish: m_SBInfos.Add(new SBBlacksmithOrcish()); break;
-                case Race.Tieffelin: m_SBInfos.Add(new SBBlacksmithTieffelin()); break;
-                default: m_SBInfos.Add(new SBBlacksmith()); break;
-            }
+            //switch (races)
+            //{
+            //    case Race.Aasimar: m_SBInfos.Add(new SBBlacksmithAasimar()); break;
+            //    case Race.Elfe: m_SBInfos.Add(new SBBlacksmithElfe()); break;
+            //    case Race.ElfeNoir: m_SBInfos.Add(new SBBlacksmithDrow()); break;
+            //    case Race.Capiceen: m_SBInfos.Add(new SBBlacksmith()); break;
+            //    case Race.Nain: m_SBInfos.Add(new SBBlacksmithNain()); break;
+            //    case Race.Nomade: m_SBInfos.Add(new SBBlacksmithNomade()); break;
+            //    case Race.Nordique: m_SBInfos.Add(new SBBlacksmithNordique()); break;
+            //    case Race.Orcish: m_SBInfos.Add(new SBBlacksmithOrcish()); break;
+            //    case Race.Tieffelin: m_SBInfos.Add(new SBBlacksmithTieffelin()); break;
+            //    default: m_SBInfos.Add(new SBBlacksmith()); break;
+            //}
 
 			/*m_SBInfos.Add( new SBBlacksmith() );
 			if ( IsTokunoVendor )
@@ -151,9 +148,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 1 ); // version
-
-            writer.Write((int)races);
+            writer.Write((int)0); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -161,12 +156,6 @@ namespace Server.Mobiles
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
-
-            switch (version)
-            {
-                case 1: reader.ReadInt(); goto case 0;
-                case 0: break;
-            }
 		}
 	}
 }

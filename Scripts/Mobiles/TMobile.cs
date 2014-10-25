@@ -4,6 +4,7 @@ using Server.Engines.Equitation;
 using Server.Engines.Identities;
 using Server.Engines.Langues;
 using Server.Engines.Mort;
+using Server.Engines.Races;
 using Server.Gumps;
 using Server.Items;
 using Server.Misc;
@@ -59,49 +60,6 @@ namespace Server.Mobiles
         Jambes
     }
 
-    public class Creation
-    {
-        #region Constructeur
-        public Creation()
-        {
-            m_race = Race.Aucun;
-            m_classe = ClasseType.None;
-            m_destination = CreationCarteGump.DestinationsDepart.Aucune;
-            //m_gumps = new List<CreationGump.PaperPreviewItem>();
-            m_hue = 0;
-            m_secrete = Race.Aucun;
-        }
-        #endregion
-
-        #region Méthodes
-        public void Reboot()
-        {
-            m_race = Race.Aucun;
-            m_classe = ClasseType.None;
-            m_hue = 0;
-            m_secrete = Race.Aucun;
-        }
-        #endregion
-
-        #region Variables
-        //private List<Server.Gumps.CreationGump.PaperPreviewItem> m_gumps;
-        private Race m_race;
-        private ClasseType m_classe;
-        private Server.Gumps.CreationCarteGump.DestinationsDepart m_destination;
-        private int m_hue;
-        private Race m_secrete;
-        #endregion
-
-        #region Accessors
-        //public List<Server.Gumps.CreationGump.PaperPreviewItem> gumps { get { return m_gumps; } set { m_gumps = value; } }
-        public Race race { get { return m_race; } set { m_race = value; } }
-        public ClasseType classe { get { return m_classe; } set { m_classe = value; } }
-        public Server.Gumps.CreationCarteGump.DestinationsDepart destination { get { return m_destination; } set { m_destination = value; } }
-        public int hue { get { return m_hue; } set { m_hue = value; } }
-        public Race secrete { get { return m_secrete; } set { m_secrete = value; } }
-        #endregion
-    }
-
     public class TMobile : PlayerMobile
     {
 
@@ -146,7 +104,6 @@ namespace Server.Mobiles
         private bool m_Mort;
         private MortState m_MortState;
         private MortEvo m_MortEvo;
-        private Race m_race;
 
         private DateTime m_BrulerPlanteLast;
         private int m_LastTeinture = 0;
@@ -155,16 +112,13 @@ namespace Server.Mobiles
         private bool m_MortVivant;
 
         private int m_StatistiquesLibres;
-        private bool m_transformer;
         private Timer m_MortVivantTimer;
         private DateTime m_lastAchever;
-        private Race m_trueRace;
         private DateTime m_lastAssassinat;
         private DateTime m_lastDeguisement;
         private DateTime m_NextCraftTime;
         private DateTime m_NextClasseChange;
 
-        private Creation m_creation = new Creation();
 
         private int m_BonusMana;
         private int m_BonusStam;
@@ -181,7 +135,6 @@ namespace Server.Mobiles
 
         private ClasseType m_ClasseType = ClasseType.None;
         private bool m_Suicide;
-        private Race m_RaceSecrete;
         private bool m_RevealTitle = true;
         private bool m_FreeReset = false;
         private bool m_Achever = false;
@@ -228,13 +181,6 @@ namespace Server.Mobiles
         {
             get { return m_RevealTitle; }
             set { m_RevealTitle = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Race RaceSecrete
-        {
-            get { return m_RaceSecrete; }
-            set { m_RaceSecrete = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -382,13 +328,6 @@ namespace Server.Mobiles
             set { m_MortEvo = value; }
         }
 
-        [CommandProperty(AccessLevel.Coordinateur)]
-        public Race Races
-        {
-            get { return m_race; }
-            set { m_race = value; SendPropertiesTo(this); }
-        }
-
         [CommandProperty(AccessLevel.Batisseur)]
         public DateTime LastFeuPlante
         {
@@ -417,13 +356,6 @@ namespace Server.Mobiles
             set { m_StatistiquesLibres = value; }
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Transformer
-        {
-            get { return m_transformer; }
-            set { m_transformer = value; }
-        }
-
         public Timer MortVivantTimer
         {
             get { return m_MortVivantTimer; }
@@ -435,13 +367,6 @@ namespace Server.Mobiles
         {
             get { return m_lastAchever; }
             set { m_lastAchever = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Race MortRace
-        {
-            get { return m_trueRace; }
-            set { m_trueRace = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -464,14 +389,6 @@ namespace Server.Mobiles
             get { return m_NextCraftTime; }
             set { m_NextCraftTime = value; }
         }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Creation Creation
-        {
-            get { return m_creation; }
-            set { m_creation = value; }
-        }
-            
 
         [CommandProperty(AccessLevel.Batisseur)]
         public DateTime NextClasseChange
@@ -582,12 +499,11 @@ namespace Server.Mobiles
             if ((m_MortEvo == MortEvo.Decomposition) || (m_MortEvo == MortEvo.Zombie) || (m_MortEvo == MortEvo.Squelette))
             {
                 m_MortEvo = MortEvo.Aucune;
-                m_race = m_trueRace;
-                if (this.FindItemOnLayer(Layer.Shirt) is MortGump)
+
+                if (this.FindItemOnLayer(Layer.Shirt) is MortRaceGump)
                 {
                     FindItemOnLayer(Layer.Shirt).Delete();
                 }
-                CheckRaceGump();
             }
         }
 
@@ -595,9 +511,8 @@ namespace Server.Mobiles
         public TMobile()
         {
             //m_classe = new ClasseGuerrier(this);
-            this.FollowersMax = 2;
+            this.FollowersMax = 5;
             Mana = 0;
-            m_creation = new Creation();
 
             //new TourTimer(this).Start();
         }
@@ -1018,162 +933,6 @@ namespace Server.Mobiles
             
         }
 
-        private class TransformerTieffelinEntry : ContextMenuEntry
-        {
-            private TMobile m_from;
-
-            public TransformerTieffelinEntry(TMobile from)
-                : base(6285, -1)
-            {
-                m_from = from;
-            }
-
-            public override void OnClick()
-            {
-                if (m_from.FindItemOnLayer(Layer.Cloak) != null)
-                    m_from.AddToBackpack(m_from.FindItemOnLayer(Layer.Cloak));
-
-                m_from.AddItem(new AilesTieffelin());
-
-                if (m_from.FindItemOnLayer(Layer.Shirt) != null)
-                {
-                    if (!(m_from.FindItemOnLayer(Layer.Shirt) is RaceGump))
-                    {
-                        m_from.AddToBackpack(m_from.FindItemOnLayer(Layer.Shirt));
-                    }
-                    else
-                    {
-                        m_from.FindItemOnLayer(Layer.Shirt).Delete();
-                    }
-                }
-
-                m_from.AddItem(new CorpsTieffelin());
-
-                if (m_from.FindItemOnLayer(Layer.Helm) != null)
-                    m_from.AddToBackpack(m_from.FindItemOnLayer(Layer.Helm));
-
-                m_from.AddItem(new CornesTieffelin());
-
-                if (m_from.Identities[0] == "")
-                    m_from.Identities[0] = m_from.Name;
-                m_from.Identities.CurrentIdentity = 13;
-
-                m_from.Transformer = true;
-            }
-        }
-
-        private class FinTransformerTieffelinEntry : ContextMenuEntry
-        {
-            private TMobile m_from;
-
-            public FinTransformerTieffelinEntry(TMobile from)
-                : base(6285, -1)
-            {
-                m_from = from;
-            }
-
-            public override void OnClick()
-            {
-                if (m_from.FindItemOnLayer(Layer.Cloak) is AilesTieffelin)
-                    m_from.FindItemOnLayer(Layer.Cloak).Delete();
-                if (m_from.FindItemOnLayer(Layer.Shirt) is CorpsTieffelin)
-                    m_from.FindItemOnLayer(Layer.Shirt).Delete();
-                if (m_from.FindItemOnLayer(Layer.Helm) is CornesTieffelin)
-                    m_from.FindItemOnLayer(Layer.Helm).Delete();
-
-                switch (m_from.RaceSecrete)
-                {
-                    case Race.Nordique:
-                        m_from.Hue = 1023;
-                        m_from.EquipItem(new CorpsNordique(m_from.Hue));
-                        break;
-                    case Race.Nomade:
-                        m_from.Hue = 1044;
-                        break;
-                    case Race.Capiceen:
-                        m_from.Hue = 1023;
-                        break;
-                }
-
-                if (m_from.Identities[0] == "")
-                    m_from.Identities[0] = m_from.Name;
-                m_from.Identities.CurrentIdentity = 0;
-
-                m_from.Transformer = false;
-            }
-        }
-
-        private class TransformerAasimarEntry : ContextMenuEntry
-        {
-            private TMobile m_from;
-
-            public TransformerAasimarEntry(TMobile from)
-                : base(6285, -1)
-            {
-                m_from = from;
-            }
-
-            public override void OnClick()
-            {
-                if (m_from.FindItemOnLayer(Layer.Shirt) != null)
-                {
-                    if (!(m_from.FindItemOnLayer(Layer.Shirt) is RaceGump))
-                    {
-                        m_from.AddToBackpack(m_from.FindItemOnLayer(Layer.Shirt));
-                    }
-                    else
-                    {
-                        m_from.FindItemOnLayer(Layer.Shirt).Delete();
-                    }
-                }
-
-                m_from.AddItem(new CorpsAasimar());
-
-                if (m_from.Identities[0] == "")
-                    m_from.Identities[0] = m_from.Name;
-                m_from.Identities.CurrentIdentity = 13;
-
-                m_from.Transformer = true;
-            }
-        }
-
-        private class FinTransformerAasimarEntry : ContextMenuEntry
-        {
-            private TMobile m_from;
-
-            public FinTransformerAasimarEntry(TMobile from)
-                : base(6285, -1)
-            {
-                m_from = from;
-            }
-
-            public override void OnClick()
-            {
-                if (m_from.FindItemOnLayer(Layer.Shirt) is CorpsAasimar)
-                    m_from.FindItemOnLayer(Layer.Shirt).Delete();
-
-                switch (m_from.RaceSecrete)
-                {
-                    case Race.Nordique:
-                        m_from.Hue = 1023;
-                        m_from.EquipItem(new CorpsNordique(m_from.Hue));
-                        break;
-                    case Race.Nomade:
-                        m_from.Hue = 1044;
-                        break;
-                    case Race.Capiceen:
-                        m_from.Hue = 1023;
-                        break;
-                }
-
-                if (m_from.Identities[0] == "")
-                    m_from.Identities[0] = m_from.Name;
-                m_from.Identities.CurrentIdentity = 0;
-
-                m_from.Transformer = false;
-            }
-        }
-
         public override void GetContextMenuEntries(Mobile m_from, List<ContextMenuEntry> list)
         {
             base.GetContextMenuEntries(m_from, list);
@@ -1188,15 +947,44 @@ namespace Server.Mobiles
             else
             {
                 list.Add(new CallbackEntry(6098, new ContextCallback(LaunchFicheGump)));
-                if (this.Races == Race.Tieffelin && !(this.m_transformer))
-                    list.Add(new TransformerTieffelinEntry(this));
-                else if (this.Races == Race.Tieffelin && this.m_transformer)
-                    list.Add(new FinTransformerTieffelinEntry(this));
-                if (this.Races == Race.Aasimar && !(this.m_transformer))
-                    list.Add(new TransformerAasimarEntry(this));
-                else if (this.Races == Race.Aasimar && this.m_transformer)
-                    list.Add(new FinTransformerAasimarEntry(this));
+                if (Race != null && (Race.isAasimaar || Race.isTieffelin))
+                {
+                    if (!Race.Transformed)
+                        list.Add(new TransformerEntry(this));
+                    else
+                        list.Add(new DetransformerEntry(this));
+                }
             }
+        }
+
+        private class TransformerEntry : ContextMenuEntry
+        {
+            private PlayerMobile from;
+
+            public TransformerEntry(PlayerMobile f) : base(6285)
+            {
+                from = f;
+            }
+
+            public override void OnClick()
+            {
+                from.Race.Transformer(from);
+            } 
+        }
+
+        private class DetransformerEntry : ContextMenuEntry
+        {
+            private PlayerMobile from;
+
+            public DetransformerEntry(PlayerMobile f) : base(6285)
+            {
+                from = f;
+            }
+
+            public override void OnClick()
+            {
+                from.Race.Detransformer(from);
+            } 
         }
 
         private void LaunchFicheGump()
@@ -1792,23 +1580,6 @@ namespace Server.Mobiles
             }
         }
 
-        public void OnRaceModChange(Race newrace, Race oldrace)
-        {
-            /*if (newrace == Races.Aucun)
-            {
-                Deguisements.RemoveRaceGump(this);
-                Deguisements.AddRaceGump(this, oldrace, true);
-            }
-            else
-            {
-                Deguisements.RemoveRaceGump(this);
-                Deguisements.AddRaceGump(this, newrace, false);
-            }*/
-
-            CheckRaceGump();
-            InvalidateProperties();
-        }
-
         public virtual void Tip(Mobile m, string tip)
         {
             SendGump(new TipGump(this, m, tip, true));
@@ -2032,8 +1803,8 @@ namespace Server.Mobiles
                                     item.Hue = 0;
                                 pm.HueMod = 0;
                                 pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
-                                pm.MortRace = pm.Races;
-                                pm.Races = Race.MortVivant;
+                                //pm.MortRace = pm.Races;
+                                //pm.Races = Race.MortVivant;
                                 pm.MortEvo = MortEvo.Decomposition;
                                 Competences.Reset(pm);
                                 Statistiques.Reset(pm);
@@ -2124,7 +1895,6 @@ namespace Server.Mobiles
             writer.Write((bool)m_FreeReset);
             writer.Write((bool)m_RevealTitle);
 
-            writer.Write((int)m_RaceSecrete);
 
             writer.Write((bool)m_Suicide);
             writer.Write((int)m_ClasseType);
@@ -2151,9 +1921,7 @@ namespace Server.Mobiles
                 writer.Write((int)m_ListCote[i]);
 
             writer.Write((int)m_StatistiquesLibres);
-            writer.Write((bool)m_transformer);
             writer.Write((DateTime)m_lastAchever);
-            writer.Write((int)m_trueRace);
             writer.Write((DateTime)m_lastAssassinat);
             writer.Write((DateTime)m_lastDeguisement);
             writer.Write((DateTime)m_NextCraftTime);
@@ -2179,7 +1947,6 @@ namespace Server.Mobiles
 
             writer.Write((int)m_MortState);
             writer.Write((int)m_MortEvo);
-            writer.Write((int)m_race);
 
             writer.Write((DateTime)m_BrulerPlanteLast);
             writer.Write((int)m_LastTeinture);
@@ -2203,10 +1970,6 @@ namespace Server.Mobiles
                     for (int i = 0; i < 7; i++)
                         for (int j = 0; j < 9; j++)
                             m_Ticks[i, j] = reader.ReadBool();
-                    goto case 7;
-                case 7:
-                    if(version < 9)
-                        Identities.CurrentIdentity = reader.ReadInt();
                     goto case 6;
                 case 6:
                     if (version < 9)
@@ -2227,9 +1990,6 @@ namespace Server.Mobiles
                 case 3:
                     if(version < 9)
                         Identities.RevealIdentity = reader.ReadBool();
-                    goto case 2;
-                case 2:
-                    m_RaceSecrete = (Mobiles.Race)reader.ReadInt();
                     goto case 1;
                 case 1:
                     m_Suicide = reader.ReadBool();
@@ -2253,8 +2013,6 @@ namespace Server.Mobiles
                         Identities.DisguiseHidden = reader.ReadBool();
                     m_Incognito = reader.ReadBool();
 
-                    if (version < 9)
-                        Identities.ConvertPre9Ident(reader);
 
                     m_Possess = reader.ReadMobile();
                     m_PossessStorage = reader.ReadMobile();
@@ -2277,9 +2035,7 @@ namespace Server.Mobiles
                     }
 
                     m_StatistiquesLibres = reader.ReadInt();
-                    m_transformer = reader.ReadBool();
                     m_lastAchever = reader.ReadDateTime();
-                    m_trueRace = (Race)reader.ReadInt();
                     m_lastAssassinat = reader.ReadDateTime();
                     m_lastDeguisement = reader.ReadDateTime();
                     m_NextCraftTime = reader.ReadDateTime();
@@ -2341,7 +2097,6 @@ namespace Server.Mobiles
 
                     m_MortState = (MortState)reader.ReadInt();
                     m_MortEvo = (MortEvo)reader.ReadInt();
-                    m_race = (Race)reader.ReadInt();
 
                     m_BrulerPlanteLast = reader.ReadDateTime();
                     m_LastTeinture = reader.ReadInt();
@@ -2349,10 +2104,6 @@ namespace Server.Mobiles
                     m_AmeLastFed = reader.ReadDateTime();
                     m_MortVivant = reader.ReadBool();
 
-                    goto case 0;
-                case 0:
-                    if(version < 9)
-                        Identities.ConvertPre9Knew(reader);
                     break;
                 default: break;
             }
@@ -2395,7 +2146,6 @@ namespace Server.Mobiles
             if (m_Aphonie)
                 m_Aphonie = false;
 
-            m_creation = new Creation();
 
             CagouleFix();
 

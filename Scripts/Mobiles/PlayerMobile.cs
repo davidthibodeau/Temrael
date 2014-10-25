@@ -17,6 +17,7 @@ using Server.Engines.Craft;
 using Server.Engines.PartySystem;
 using Server.Engines.Langues;
 using Server.Engines.Identities;
+using Server.Engines.Races;
 
 namespace Server.Mobiles
 {
@@ -221,6 +222,13 @@ namespace Server.Mobiles
 
         [CommandProperty(AccessLevel.Batisseur)]
         public Identities Identities
+        {
+            get;
+            set;
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Race Race
         {
             get;
             set;

@@ -1,85 +1,68 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Server.Engines.Identities
 {
-    public class Identity : IEquatable<Identity>
+    [PropertyObject]
+    public class Identity
     {
-        private Serial m_serial;
-        private string m_name;
-        private int m_identity;
+        private Dictionary<Mobile, string> names;
 
-        public Serial serial { get { return m_serial; } set { m_serial = value; } }
-        public string name { get { return m_name; } set { m_name = value; } }
-        public int identity { get { return m_identity; } set { m_identity = value; } }
+        public virtual string this[Mobile m]
+        {
+            get
+            {
+                try
+                {
+                    return names[m];
+                }
+                catch
+                {
+                    return "Anonyme";
+                }
+            }
+            set { names[m] = value; }
+        }
 
         public Identity()
         {
-            m_serial = new Serial();
-            m_name = "";
-            m_identity = 0;
-        }
-
-        public Identity(Serial serial, string name, int identity)
-        {
-            m_serial = serial;
-            m_name = name;
-            m_identity = identity;
+            names = new Dictionary<Mobile, string>();
         }
 
         public Identity(GenericReader reader)
         {
             int version = reader.ReadInt();
 
-            m_serial = reader.ReadInt();
-            m_name = reader.ReadString();
-            m_identity = reader.ReadInt();
+            names = new Dictionary<Mobile,string>();
+            int count = reader.ReadInt();
+            for (int i = 0; i < count; i++)
+            {
+                Mobile m = reader.ReadMobile();
+                string s = reader.ReadString();
+
+                names.Add(m, s);
+            }
         }
 
         public void Serialize(GenericWriter writer)
         {
             writer.Write(0); //version
 
-            writer.Write(m_serial);
-            writer.Write(m_name);
-            writer.Write(m_identity);
+            writer.Write(names.Count);
+            foreach (Mobile m in names.Keys)
+            {
+                writer.Write(m);
+                writer.Write(names[m]);
+            }
         }
+    }
 
-        public bool Equals(Identity other)
+    public class IdentiteCachee : Identity
+    {
+        public override string this[Mobile m]
         {
-            if ((object)other == null)
-                return false;
-
-            if (m_serial == other.m_serial && m_identity == other.m_identity)
-                return true;
-
-            return false;
-        }
-
-        public override bool Equals(Object obj)
-        {
-            Identity idObj = obj as Identity;
-            if (obj == null)
-                return false;
-            else
-                return Equals(idObj);
-        }
-
-        public override int GetHashCode()
-        {
-            return m_serial.GetHashCode() ^ m_identity.GetHashCode();
-        }
-
-        public static bool operator == (Identity id1, Identity id2)
-        {
-            if ((object)id1 == null || (object)id2 == null)
-                return Object.Equals(id1, id2);
-
-            return id1.Equals(id2);
-        }
-
-        public static bool operator != (Identity id1, Identity id2)
-        {
-            return !(id1 == id2);
+            get { return "Identite Cachee"; }
+            set { }
         }
     }
 }

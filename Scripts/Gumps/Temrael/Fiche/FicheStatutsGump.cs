@@ -7,6 +7,7 @@ using Server.Network;
 using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
+using Server.Engines.Races;
 
 namespace Server.Gumps
 {
@@ -47,104 +48,111 @@ namespace Server.Gumps
 
             AddBackground(x, y + line * scale, 180, 200, 2620);
 
-            switch (from.Races)
+            Race race = from.Race;
+
+
+            if (race is Capiceen)
             {
-                case Race.Capiceen:
-                    if (from.Female)
-                        AddImage(x - 5, (y + line * scale) - 40, 13);
-                    else
-                        AddImage(x - 5, (y + line * scale) - 40, 12);
-                    break;
-                case Race.Orcish:
-                    if (from.Female)
-                        AddImage(x - 5, (y + line * scale) - 40, 60908);
-                    else
-                        AddImage(x - 5, (y + line * scale) - 40, 50908);
-                    break;
-                case Race.Elfe:
-                    if (from.Female)
-                        AddImage(x - 5, (y + line * scale) - 40, 61027);
-                    else
-                        AddImage(x - 5, (y + line * scale) - 40, 51027);
-                    break;
-                case Race.Nordique:
-                    if (from.Female)
-                        AddImage(x - 5, (y + line * scale) - 40, 61106);
-                    else
-                        AddImage(x - 5, (y + line * scale) - 40, 51106);
-                    break;
-                case Race.ElfeNoir:
-                    if (from.Female)
-                    {
-                        AddImage(x - 5, (y + line * scale) - 40, 13, 1900);
-                        AddImage(x - 5, (y + line * scale) - 40, 61029, 1900);
-                    }
-                    else
-                    {
-                        AddImage(x - 5, (y + line * scale) - 40, 12, 1900);
-                        AddImage(x - 5, (y + line * scale) - 40, 51029, 1900);
-                    }
-                    break;
-                case Race.MortVivant:
-                    /*switch (from.MortEvo)
-                    {
-                        case MortEvo.Zombie:
-                            AddImage(155, 110, 51107);
-                            break;
-                        case MortEvo.Squelette:
-                            AddImage(155, 110, 51108);
-                            break;
-                        case MortEvo.Spectre:
-                            AddImage(155, 110, 51110);
-                            break;
-                        case MortEvo.Esprit:
-                            AddImage(155, 110, 51113);
-                            break;
-                        case MortEvo.Ombre:
-                            AddImage(155, 110, 51111);
-                            break;
-                        case MortEvo.Aucune:
-                            AddImage(155, 110, 51107);
-                            break;
-                    }*/
-                    break;
-                case Race.Nain:
-                    if (from.Female)
-                        AddImage(x - 5, (y + line * scale) - 40, 61033);
-                    else
-                        AddImage(x - 5, (y + line * scale) - 40, 51033);
-                    break;
-                case Race.Nomade:
-                    if (from.Female)
-                        AddImage(x - 5, (y + line * scale) - 40, 13, 2416);
-                    else
-                        AddImage(x - 5, (y + line * scale) - 40, 12, 2416);
-                    break;
-                case Race.Tieffelin:
-                    if (from.Female)
-                    {
-                        AddImage(x - 5, (y + line * scale) - 40, 60681);
-                        AddImage(x - 5, (y + line * scale) - 40, 61001);
-                        AddImage(x - 5, (y + line * scale) - 40, 61000);
-                    }
-                    else
-                    {
-                        AddImage(x - 5, (y + line * scale) - 40, 50681);
-                        AddImage(x - 5, (y + line * scale) - 40, 51001);
-                        AddImage(x - 5, (y + line * scale) - 40, 51000);
-                    }
-                    break;
-                case Race.Aasimar:
-                    if (from.Female)
-                    {
-                        AddImage(x - 5, (y + line * scale) - 40, 60997);
-                    }
-                    else
-                    {
-                        AddImage(x - 5, (y + line * scale) - 40, 50997);
-                    }
-                    break;
+                if (from.Female)
+                    AddImage(x - 5, (y + line * scale) - 40, 13);
+                else
+                    AddImage(x - 5, (y + line * scale) - 40, 12);
             }
+            else if (race is Orcish)
+            {
+                if (from.Female)
+                    AddImage(x - 5, (y + line * scale) - 40, 60908);
+                else
+                    AddImage(x - 5, (y + line * scale) - 40, 50908);
+            }
+            else if (race is Elfe)
+            {
+                if (from.Female)
+                    AddImage(x - 5, (y + line * scale) - 40, 61027);
+                else
+                    AddImage(x - 5, (y + line * scale) - 40, 51027);
+            }
+            else if (race is Nordique)
+            {
+                if (from.Female)
+                    AddImage(x - 5, (y + line * scale) - 40, 61106);
+                else
+                    AddImage(x - 5, (y + line * scale) - 40, 51106);
+            }
+            else if (race is Alfar)
+            {
+                if (from.Female)
+                {
+                    AddImage(x - 5, (y + line * scale) - 40, 13, 1900);
+                    AddImage(x - 5, (y + line * scale) - 40, 61029, 1900);
+                }
+                else
+                {
+                    AddImage(x - 5, (y + line * scale) - 40, 12, 1900);
+                    AddImage(x - 5, (y + line * scale) - 40, 51029, 1900);
+                }
+            }
+            //case Race.MortVivant:
+            //    /*switch (from.MortEvo)
+            //    {
+            //        case MortEvo.Zombie:
+            //            AddImage(155, 110, 51107);
+            //            break;
+            //        case MortEvo.Squelette:
+            //            AddImage(155, 110, 51108);
+            //            break;
+            //        case MortEvo.Spectre:
+            //            AddImage(155, 110, 51110);
+            //            break;
+            //        case MortEvo.Esprit:
+            //            AddImage(155, 110, 51113);
+            //            break;
+            //        case MortEvo.Ombre:
+            //            AddImage(155, 110, 51111);
+            //            break;
+            //        case MortEvo.Aucune:
+            //            AddImage(155, 110, 51107);
+            //            break;
+            //    }*/
+            //    break;
+            else if (race is Nain)
+            {
+                if (from.Female)
+                    AddImage(x - 5, (y + line * scale) - 40, 61033);
+                else
+                    AddImage(x - 5, (y + line * scale) - 40, 51033);
+            }
+            else if (race is Nomade)
+            {
+                if (from.Female)
+                    AddImage(x - 5, (y + line * scale) - 40, 13, 2416);
+                else
+                    AddImage(x - 5, (y + line * scale) - 40, 12, 2416);
+            }
+            //case Race.Tieffelin:
+            //    if (from.Female)
+            //    {
+            //        AddImage(x - 5, (y + line * scale) - 40, 60681);
+            //        AddImage(x - 5, (y + line * scale) - 40, 61001);
+            //        AddImage(x - 5, (y + line * scale) - 40, 61000);
+            //    }
+            //    else
+            //    {
+            //        AddImage(x - 5, (y + line * scale) - 40, 50681);
+            //        AddImage(x - 5, (y + line * scale) - 40, 51001);
+            //        AddImage(x - 5, (y + line * scale) - 40, 51000);
+            //    }
+            //    break;
+            //case Race.Aasimar:
+            //    if (from.Female)
+            //    {
+            //        AddImage(x - 5, (y + line * scale) - 40, 60997);
+            //    }
+            //    else
+            //    {
+            //        AddImage(x - 5, (y + line * scale) - 40, 50997);
+            //    }
+
 
             /*//Bras
             AddHtml(181, 195, 200, 20, "<h3><basefont color=#5A4A31>Bras<basefont></h3>", false, false);

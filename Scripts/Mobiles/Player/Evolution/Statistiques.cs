@@ -23,8 +23,6 @@ namespace Server
             if (from.StatistiquesLibres < 1)
                 return false;
 
-            BaseRace race = RaceManager.getRace(from.Races);
-
             switch (stat)
             {
                 case StatType.Str:

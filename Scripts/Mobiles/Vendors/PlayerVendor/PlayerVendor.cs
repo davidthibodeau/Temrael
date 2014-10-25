@@ -464,7 +464,7 @@ namespace Server.Mobiles
 				Destroy( false );
 		}
 
-		public void InitBody()
+		public override  void InitBody()
 		{
 			Hue = Utility.RandomSkinHue();
 			SpeechHue = 0x3B2;
@@ -484,7 +484,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public virtual void InitOutfit()
+		public override void InitOutfit()
 		{
 			Item item = new FancyShirt( Utility.RandomNeutralHue() );
 			item.Layer = Layer.InnerTorso;

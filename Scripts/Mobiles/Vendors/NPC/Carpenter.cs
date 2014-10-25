@@ -8,9 +8,6 @@ namespace Server.Mobiles
 	{
 		private List<SBInfo> m_SBInfos = new List<SBInfo>();
 		protected override List<SBInfo> SBInfos{ get { return m_SBInfos; } }
-        private Race races = Race.Capiceen;
-
-        public Race Races { get { return races; } set { races = value; InitSBInfo(); } }
 
 		[Constructable]
 		public Carpenter() : base( "Charpentier" )
@@ -22,19 +19,19 @@ namespace Server.Mobiles
 		public override void InitSBInfo()
 		{
             m_SBInfos.Clear();
-            switch (races)
-            {
-                case Race.Aasimar: m_SBInfos.Add(new SBCarpenter()); break;
-                case Race.Elfe: m_SBInfos.Add(new SBCarpenterElfe()); break;
-                case Race.ElfeNoir: m_SBInfos.Add(new SBCarpenterDrow()); break;
-                case Race.Capiceen: m_SBInfos.Add(new SBCarpenter()); break;
-                case Race.Nain: m_SBInfos.Add(new SBCarpenterNain()); break;
-                case Race.Nomade: m_SBInfos.Add(new SBCarpenterNomade()); break;
-                case Race.Nordique: m_SBInfos.Add(new SBCarpenterNordique()); break;
-                case Race.Orcish: m_SBInfos.Add(new SBCarpenterOrcish()); break;
-                case Race.Tieffelin: m_SBInfos.Add(new SBCarpenterTieffelin()); break;
-                default: m_SBInfos.Add(new SBCarpenter()); break;
-            }
+            //switch (races)
+            //{
+            //    case Race.Aasimar: m_SBInfos.Add(new SBCarpenter()); break;
+            //    case Race.Elfe: m_SBInfos.Add(new SBCarpenterElfe()); break;
+            //    case Race.ElfeNoir: m_SBInfos.Add(new SBCarpenterDrow()); break;
+            //    case Race.Capiceen: m_SBInfos.Add(new SBCarpenter()); break;
+            //    case Race.Nain: m_SBInfos.Add(new SBCarpenterNain()); break;
+            //    case Race.Nomade: m_SBInfos.Add(new SBCarpenterNomade()); break;
+            //    case Race.Nordique: m_SBInfos.Add(new SBCarpenterNordique()); break;
+            //    case Race.Orcish: m_SBInfos.Add(new SBCarpenterOrcish()); break;
+            //    case Race.Tieffelin: m_SBInfos.Add(new SBCarpenterTieffelin()); break;
+            //    default: m_SBInfos.Add(new SBCarpenter()); break;
+            //}
 
 			/*m_SBInfos.Add( new SBStavesWeapon() );
 			m_SBInfos.Add( new SBCarpenter() );
@@ -59,9 +56,7 @@ namespace Server.Mobiles
         {
             base.Serialize(writer);
 
-            writer.Write((int)1); // version
-
-            writer.Write((int)races);
+            writer.Write((int)0); // version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -69,12 +64,6 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
-            switch (version)
-            {
-                case 1: reader.ReadInt(); goto case 0;
-                case 0: break;
-            }
         }
 	}
 }

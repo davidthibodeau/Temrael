@@ -7,6 +7,7 @@ using Server.Network;
 using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
+using Server.Engines.Races;
 
 namespace Server.Gumps
 {
@@ -46,9 +47,9 @@ namespace Server.Gumps
             y = YBase;
 
             /*Race*/
-            if (from.Races != Race.Aucun && from.Races != Race.Maximum)
+            if (from.Race != null)
             {
-                BaseRace race = RaceManager.getRace(from.Races);
+                Race race = from.Race;
                 AddButton(x, y + line * scale, 8, race.Image);
                 //AddTooltip(race.Tooltip);
                 
@@ -60,11 +61,7 @@ namespace Server.Gumps
                 AddSection(x + 220, y + line * scale, 300, 100, "Description", race.Description);
 
                 line += 7;
-                /*Bonus Raciaux*/
-                string bonus = race.BonusDescr;
-                AddSection(x + 220, y + line * scale, 300, 100, "Bonus Raciaux", bonus);
 
-                line += 7;
                 AddSection(x + 220, y + line * scale, 300, 80, "Évolution");
                 line += 2;
                 AddHtmlTexte(x + 255, y + line * scale, DefaultHtmlLength, String.Concat("Expérience : ", from.XP));

@@ -7,24 +7,25 @@ using Server.Network;
 using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
+using Server.Engines.Races;
 
 namespace Server.Gumps
 {
     public class FicheRacesInfoGump : GumpTemrael
     {
         private TMobile m_from;
-        private Race m_Races;
+        private Race m_Race;
 
         public FicheRacesInfoGump(TMobile from)
-            : this(from, from.Races)
+            : this(from, from.Race)
         {
         }
 
-        public FicheRacesInfoGump(TMobile from, Race Races)
+        public FicheRacesInfoGump(TMobile from, Race race)
             : base("Race & Alignement", 560, 622)
         {
             m_from = from;
-            m_Races = Races;
+            m_Race = race;
 
             int x = XBase;
             int y = YBase;
@@ -54,20 +55,15 @@ namespace Server.Gumps
 
             AddTitre(x + 360, y + line * scale, 190, "Races");
             ++line;
-            for (int i = 0; i < (int)Race.Maximum; i++)
+            for (int i = 1; i < 8; i++)
             {
-                if ((Race)(i) != Race.MortVivant)
-                {
-                    AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
-                    AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, ((Race)i).ToString());
-                    ++line;
-                }
+                AddButton(x + 360, y + line * scale, 0x4b9, 0x4bA, i + 50, GumpButtonType.Reply, 0);
+                AddHtmlTexte(x + 375, y + line * scale, DefaultHtmlLength, Race.GetRaceInstance(i).Name);
+                ++line;
             }
 
-            if (Races != Race.Aucun)
+            if (race != null)
             {
-                BaseRace race = RaceManager.getRace(Races);
-
                 int linetmp = line;
 
                 line = 0;
@@ -78,10 +74,6 @@ namespace Server.Gumps
                 AddSection(x + 260, y + line * scale, 275, 170, race.Name, race.Description);
 
                 line = 12;
-
-                string bonus = race.BonusDescr;
-
-                AddSection(x, y + line * scale, 250, 160, "Bonus Raciaux", bonus);
             }
         }
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -118,7 +110,7 @@ namespace Server.Gumps
 
             if (info.ButtonID >= 50)
             {
-                from.SendGump(new FicheRacesInfoGump(from, (Race)(info.ButtonID - 50)));
+                from.SendGump(new FicheRacesInfoGump(from, Race.GetRaceInstance(info.ButtonID - 50)));
             }
         }
     }

@@ -54,14 +54,13 @@ namespace Server.Items
                     act.SetTag("XPBeta", "True");
                 }
 
-                tMob.Races = Race.Aucun;
                 tMob.ClasseType = ClasseType.None;
                 tMob.Title = "";
                 tMob.MortEvo = MortEvo.Aucune;
 
                 tMob.CloseGump(typeof(CreationRaceGump));
 
-                tMob.SendGump(new CreationRaceGump(tMob));
+                tMob.SendGump(new CreationRaceGump(tMob, new CreationInfos()));
             }
             else
             {

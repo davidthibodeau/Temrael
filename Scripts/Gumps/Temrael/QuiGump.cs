@@ -224,17 +224,9 @@ namespace Server.Gumps
 
         private static string GetNameFor(Mobile m, Mobile m_Owner)
         {
-            if (m is TMobile)
-            {
-                if (((TMobile)m).Races == Race.Tieffelin || ((TMobile)m).Races == Race.Aasimar)
-                    return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).RaceSecrete.ToString());
-                else
-                    return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner), ((TMobile)m).Races.ToString());
-            }
-            else
-            {
-                return m.Name;
-            }
+            return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner),
+                 m is PlayerMobile ? (m.Female ? ((PlayerMobile)m).Race.NameF : ((PlayerMobile)m).Race.Name) : "");
+
         }
 
         private static int GetHueFor(Mobile m)
@@ -247,14 +239,7 @@ namespace Server.Gumps
                 case AccessLevel.Counselor: return 0x2;
                 case AccessLevel.Player:
                 default:
-                    {
-                        /*if ( m.Kills >= 5 )
-                            return 0x21;
-                        else if ( m.Criminal )
-                            return 0x3B1;*/
-
-                        return 0x58;
-                    }
+                    return 0x58;
             }
         }
 
