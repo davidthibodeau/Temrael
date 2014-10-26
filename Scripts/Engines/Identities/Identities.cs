@@ -99,6 +99,7 @@ namespace Server.Engines.Identities
             m_Mobile = mobile;
             baseIdentity = new Identity();
             baseIdentity[mobile] = mobile.Name;
+            m_currentIdentity = baseIdentity;
             transformationIdentity = new Identity();
             idCachee = new IdentiteCachee();
         }
@@ -110,6 +111,7 @@ namespace Server.Engines.Identities
             m_Mobile = reader.ReadMobile();
 
             baseIdentity = new Identity(reader);
+            m_currentIdentity = baseIdentity;
             transformationIdentity = new Identity(reader);
             idCachee = new IdentiteCachee(); //On ne sauvegarde pas idcache parce qu'il n'accumule pas d'informations.
 
