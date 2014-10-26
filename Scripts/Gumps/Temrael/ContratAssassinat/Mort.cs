@@ -151,11 +151,9 @@ namespace Server.Gumps
 
                         m_cs.Cible.SendMessage("Envoi de la demande...");
 
-                        forumPost.Post("137", "Demandes de contestation de mort.",
+                        forumPost.Post("117", "PERSONNAGE ACHEVÉ : " + m_From.Name,
                         "\n" +
-                        " NOM DU PERSONNAGE ACHEVÉ : " + m_cs.Cible.Name + "\n" +
                         " DATE DE L'ACHÈVEMENT : " + DateTime.Now.ToString() + "\n" +
-                        "\n" +
                         "\n" +
                         " INFORMATIONS RELATIVES AU CONTRAT \n" +
                         " ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n" +
