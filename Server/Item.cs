@@ -2578,6 +2578,23 @@ namespace Server
                     AcquireCompactInfo().m_Items = items;
             }
 
+            if (!GetSaveFlag(flags, SaveFlag.NullWeight))
+            {
+                double weight;
+
+                if (GetSaveFlag(flags, SaveFlag.IntWeight))
+                    weight = reader.ReadEncodedInt();
+                else if (GetSaveFlag(flags, SaveFlag.WeightNot1or0))
+                    weight = reader.ReadDouble();
+                else if (GetSaveFlag(flags, SaveFlag.WeightIs0))
+                    weight = 0.0;
+                else
+                    weight = 1.0;
+
+                if (weight != DefaultWeight)
+                    AcquireCompactInfo().m_Weight = weight;
+            }
+
             if (GetSaveFlag(flags, SaveFlag.Map))
                 m_Map = reader.ReadMap();
             else
