@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Gumps;
@@ -72,8 +72,8 @@ namespace Server.Engines.Craft
             //AddHtmlLocalized( 215, 37, 305, 22, 1044011, LabelColor, false, false ); // <CENTER>SELECTIONS</CENTER>
             //AddHtmlLocalized( 10, 302, 150, 25, 1044012, LabelColor, false, false ); // <CENTER>NOTICES</CENTER>
 
-            AddHtml(13, 37, 200, 20, "<h3><basefont color=#FFFFFF>Catégories<basefont></h3>", false, false);
-            AddHtml(218, 37, 200, 20, "<h3><basefont color=#FFFFFF>Sélections<basefont></h3>", false, false);
+            AddHtml(13, 37, 200, 20, "<h3><basefont color=#FFFFFF>CatÃ©gories<basefont></h3>", false, false);
+            AddHtml(218, 37, 200, 20, "<h3><basefont color=#FFFFFF>SÃ©lections<basefont></h3>", false, false);
             AddHtml(13, 402, 200, 20, "<h3><basefont color=#FFFFFF>Message<basefont></h3>", false, false);
 
             AddButton(15, 502, 4017, 4019, 0, GumpButtonType.Reply, 0);
@@ -110,7 +110,7 @@ namespace Server.Engines.Craft
             {
                 AddButton(650, 442, 4005, 4007, GetButtonID(6, 5), GumpButtonType.Reply, 0);
                 //AddHtmlLocalized( 305, 345, 150, 18, 1044260, LabelColor, false, false ); // REPAIR ITEM
-                AddHtml(685, 445, 200, 20, "<h3><basefont color=#FFFFFF>Réparer<basefont></h3>", false, false);
+                AddHtml(685, 445, 200, 20, "<h3><basefont color=#FFFFFF>RÃ©parer<basefont></h3>", false, false);
             }
             // ****************************************
 
@@ -294,7 +294,7 @@ namespace Server.Engines.Craft
                         {
                             AddButton(220, 360, 4014, 4015, 0, GumpButtonType.Page, (i / maxItemPerPage));
                             //AddHtmlLocalized( 255, 263, 100, 18, 1044044, LabelColor, false, false ); // PREV PAGE
-                            AddHtml(255, 363, 200, 20, "<h3><basefont color=#FFFFFF>Page Précédante<basefont></h3>", false, false);
+                            AddHtml(255, 363, 200, 20, "<h3><basefont color=#FFFFFF>Page PrÃ©cÃ©dante<basefont></h3>", false, false);
                         }
                     }
 
@@ -355,7 +355,7 @@ namespace Server.Engines.Craft
                     {
                         AddButton(220, 360, 4014, 4015, 0, GumpButtonType.Page, (i / maxItemPerPage));
                         //AddHtmlLocalized( 255, 263, 100, 18, 1044044, LabelColor, false, false ); // PREV PAGE
-                        AddHtml(255, 363, 200, 20, "<h3><basefont color=#FFFFFF>Page Précédante<basefont></h3>", false, false);
+                        AddHtml(255, 363, 200, 20, "<h3><basefont color=#FFFFFF>Page PrÃ©cÃ©dante<basefont></h3>", false, false);
                     }
                 }
 
