@@ -1049,20 +1049,20 @@ namespace Server.Mobiles
             //Name = oldname;
         }
 
-        public override void OnSkillsQuery(Mobile from)
-        {
-            if (from == this)
-            {
-                //Console.WriteLine("Skills test");
-                if ((this.SessionStart + TimeSpan.FromSeconds(2.0)) > DateTime.Now) return;
-                //from.CloseAllGumps();//optional
-                if (from is TMobile)
-                    from.SendGump(new CompetenceGump(((TMobile)from), SkillCategory.Aucun, false));//replace with your gump
-                //base.OnSkillsQuery(from);
-            }
-            else
-                base.OnSkillsQuery(from);
-        }
+        //public override void OnSkillsQuery(Mobile from)
+        //{
+        //    if (from == this)
+        //    {
+        //        //Console.WriteLine("Skills test");
+        //        if ((this.SessionStart + TimeSpan.FromSeconds(2.0)) > DateTime.Now) return;
+        //        //from.CloseAllGumps();//optional
+        //        if (from is TMobile)
+        //            from.SendGump(new CompetenceGump(((TMobile)from), SkillCategory.Aucun, false));//replace with your gump
+        //        //base.OnSkillsQuery(from);
+        //    }
+        //    else
+        //        base.OnSkillsQuery(from);
+        //}
 
         public override void OnSkillChange(SkillName skill, double oldBase)
 		{
