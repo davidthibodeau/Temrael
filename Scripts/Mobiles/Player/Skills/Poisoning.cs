@@ -16,7 +16,7 @@ namespace Server.SkillHandlers
 		{
 			m.Target = new InternalTargetPoison();
 
-			m.SendMessage("SÈlectionnez votre poison, ou la nourriture ‡ identifier.");
+			m.SendMessage("S√©lectionnez votre poison, ou la nourriture √† identifier.");
 
 			return TimeSpan.FromSeconds( 10.0 ); // 10 second delay before beign able to re-use a skill
 		}
@@ -29,7 +29,7 @@ namespace Server.SkillHandlers
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
-                // Application de poison ‡ un item.
+                // Application de poison √† un item.
 				if ( targeted is BasePoisonPotion )
 				{
 					from.SendMessage("Quel objet voulez vous empoisonner?");
@@ -105,7 +105,7 @@ namespace Server.SkillHandlers
 					}
 					else // Target can't be poisoned
 					{
-                        from.SendMessage("Vous ne pouvez pas empoisonner cel‡ ! Vous pouvez seulement empoisonner les armes ou la nourriture.");
+                        from.SendMessage("Vous ne pouvez pas empoisonner cel√† ! Vous pouvez seulement empoisonner les armes ou la nourriture.");
 					}
 				}
 

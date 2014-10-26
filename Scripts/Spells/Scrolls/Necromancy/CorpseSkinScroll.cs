@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public CorpseSkinScroll( int amount ) : base( CorpseSkinSpell.m_SpellID, 0x2262, amount )
 		{
-            Name = "Nécromancie: Corps Mortifié";
+            Name = "NÃ©cromancie: Corps MortifiÃ©";
 		}
 
 		public CorpseSkinScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Corps Mortifié";
+            Name = "NÃ©cromancie: Corps MortifiÃ©";
 		}
 
 		/*public override Item Dupe( int amount )

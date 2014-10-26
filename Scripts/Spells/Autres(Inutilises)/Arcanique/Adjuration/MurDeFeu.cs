@@ -144,7 +144,7 @@ namespace Server.Spells
 
                     if (item != null && (item is MurDeFeuSpell.InternalItem || item is GeyserSpell.InternalItem || item is MurDeHaieSpell.InternalItem || item is MurDeParalysieSpell.InternalItem || item is MurDePierreSpell.InternalItem || item is MurDEnergieSpell.InternalItem))
                     {
-                        caster.SendMessage("Vous ne pouvez pas lancer un mur de feu au même endroit qu'un autre mur.");
+                        caster.SendMessage("Vous ne pouvez pas lancer un mur de feu au mÃªme endroit qu'un autre mur.");
                         test = true;
                     }
                 }

@@ -109,7 +109,7 @@ namespace Server.Gumps
         private ArrayList m_Entries;
         private int m_Owner;
 
-        public MetamorphoseGump(Mobile caster, Item scroll, ArrayList entries, int owner)//Owner == niveau du sort de métamorphose...
+        public MetamorphoseGump(Mobile caster, Item scroll, ArrayList entries, int owner)//Owner == niveau du sort de mÃ©tamorphose...
             : base(50, 50)
         {
             m_Caster = caster;

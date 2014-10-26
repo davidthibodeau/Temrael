@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Répartition", "Fehu Kano",
+                "RÃ©partition", "Fehu Kano",
 				SpellCircle.First,
 				212,
 				9041
@@ -40,7 +40,7 @@ namespace Server.Spells
             }
             else if (Caster == m)
             {
-                Caster.SendMessage("Vous ne pouvez sûrement pas vous répartir !");
+                Caster.SendMessage("Vous ne pouvez sÃ»rement pas vous rÃ©partir !");
             }
             else if (CheckSequence())
             {

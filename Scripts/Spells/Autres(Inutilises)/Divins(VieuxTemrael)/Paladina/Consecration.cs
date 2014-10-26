@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Agglomération", "Sowi Toki",
+                "AgglomÃ©ration", "Sowi Toki",
                 SpellCircle.Fifth,
                 212,
                 9041
@@ -120,7 +120,7 @@ namespace Server.Spells
                     m_Owner.Target((Mobile)o);
                 }
                 else
-                    from.SendMessage("Vous ne pouvez cibler que vous-même!");
+                    from.SendMessage("Vous ne pouvez cibler que vous-mÃªme!");
             }
 
             protected override void OnTargetFinish(Mobile from)

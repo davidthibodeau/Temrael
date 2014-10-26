@@ -119,7 +119,7 @@ namespace Server
                 else if (hours < 24)
                     level = NightLevel;
             }
-            else if (season == 1) // Été
+            else if (season == 1) // Ã‰tÃ©
             {
                 if (hours < 5)
                     level = NightLevel;

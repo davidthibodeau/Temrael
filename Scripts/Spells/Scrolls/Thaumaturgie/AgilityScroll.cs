@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public AgilityScroll( int amount ) : base( AgilitySpell.m_SpellID, 0x1F35, amount )
 		{
-            Name = "Thaumaturgie: Agilité";
+            Name = "Thaumaturgie: AgilitÃ©";
 		}
 
 		public AgilityScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Thaumaturgie: Agilité";
+            Name = "Thaumaturgie: AgilitÃ©";
 		}
 
 		/*public override Item Dupe( int amount )

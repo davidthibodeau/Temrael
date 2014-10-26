@@ -16,7 +16,7 @@ namespace Server.Items
         public PoisonStrikeScroll(int amount)
             : base(PoisonStrikeSpell.m_SpellID, 0x2269, amount)
 		{
-            Name = "Nécromancie: Venin";
+            Name = "NÃ©cromancie: Venin";
 		}
 
 		public PoisonStrikeScroll( Serial serial ) : base( serial )
@@ -36,7 +36,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Venin";
+            Name = "NÃ©cromancie: Venin";
 		}
 
 		/*public override Item Dupe( int amount )

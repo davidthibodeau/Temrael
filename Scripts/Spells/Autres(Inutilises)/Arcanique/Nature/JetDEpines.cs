@@ -9,7 +9,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Jet D'épines", "In Vas Dras Ylem",
+                "Jet D'Ã©pines", "In Vas Dras Ylem",
 				SpellCircle.Seventh,
 				212,
 				9041,
@@ -55,11 +55,11 @@ namespace Server.Spells
                         item.MoveToWorld(m.Location, m.Map);
 
                     m.PlaySound(0x21C);
-                    m.SendMessage("Des épines vous piquent le bout des doigts et vous désarment !");
+                    m.SendMessage("Des Ã©pines vous piquent le bout des doigts et vous dÃ©sarment !");
                 }
                 else
                 {
-                    Caster.SendMessage("Vous ratez les mains de votre adversaire, mais vous le blessez quand même légèrement !");
+                    Caster.SendMessage("Vous ratez les mains de votre adversaire, mais vous le blessez quand mÃªme lÃ©gÃ¨rement !");
                     AOS.Damage(Caster, m, Utility.Random(1, 10), 0, 0, 0, 0, 100);
                 }
 			}

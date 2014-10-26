@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public EarthquakeScroll( int amount ) : base( EarthquakeSpell.m_SpellID, 0x1F65, amount )
 		{
-            Name = "Évocation: Tremblement";
+            Name = "Ã‰vocation: Tremblement";
 		}
 
 		public EarthquakeScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Tremblement";
+            Name = "Ã‰vocation: Tremblement";
 		}
 
 		/*public override Item Dupe( int amount )

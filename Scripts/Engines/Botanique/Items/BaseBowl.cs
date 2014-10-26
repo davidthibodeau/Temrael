@@ -28,11 +28,11 @@ namespace Server.ContextMenus
 
             if (m_Bowl.HasPlant)
             {
-                m_From.SendMessage("Il y a déja une graine dans ce pot.");
+                m_From.SendMessage("Il y a dÃ©ja une graine dans ce pot.");
             }
             else
             {
-                m_From.SendMessage("Choissisez la graine à planter dans le pot.");
+                m_From.SendMessage("Choissisez la graine Ã  planter dans le pot.");
                 m_From.BeginTarget(1, false, TargetFlags.None, new TargetCallback(m_Bowl.ChooseSeed_OnTarget));
             }
         }
@@ -104,7 +104,7 @@ namespace Server.Items
             }
             else if (HasPlant)
             {
-                from.SendMessage("Il y a déja une graine dans ce pot.");
+                from.SendMessage("Il y a dÃ©ja une graine dans ce pot.");
             }
             else if (targeted is BaseSeed)
             {

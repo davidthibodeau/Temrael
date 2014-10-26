@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonWaterElementalScroll( int amount ) : base( WaterElementalSpell.m_SpellID, 0x1F6C, amount )
 		{
-            Name = "Invocation: Élémental d'Eau";
+            Name = "Invocation: Ã‰lÃ©mental d'Eau";
 		}
 
 		public SummonWaterElementalScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Invocation: Élémental d'Eau";
+            Name = "Invocation: Ã‰lÃ©mental d'Eau";
 		}
 
 		/*public override Item Dupe( int amount )

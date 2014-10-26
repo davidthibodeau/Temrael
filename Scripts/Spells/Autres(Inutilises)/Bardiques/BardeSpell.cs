@@ -64,7 +64,7 @@ namespace Server.Spells
             }
             else if (!(this is BardeSpell) || m_Instrument == null || (!(item is BaseInstrument) && !(item == null)))
             {
-                m_Caster.SendMessage("Vous devez avoir un instrument dans les mains pour utiliser cette faculté.");
+                m_Caster.SendMessage("Vous devez avoir un instrument dans les mains pour utiliser cette facultÃ©.");
             }
             else if (CheckFizzle())
             {
@@ -111,7 +111,7 @@ namespace Server.Spells
 
             /*if (AOS.Testing)
             {
-                Caster.SendMessage("Délais : " + value.ToString());
+                Caster.SendMessage("DÃ©lais : " + value.ToString());
             }*/
 
             return TimeSpan.FromSeconds(value);

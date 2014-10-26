@@ -112,10 +112,10 @@ namespace Server.Gumps
 
             AddLabel(196, 55, 2101, BotaniqueSystem.GetPlantName(m_Bowl.Plant.PlantType));
 
-            AddLabel(80, 166, 2101, "Pétales");
+            AddLabel(80, 166, 2101, "PÃ©tales");
             AddLabel(80, 190, 2101, "Graines");
             AddLabel(80, 214, 2101, "Terre");
-            AddLabel(80, 238, 2101, "État de croissance");
+            AddLabel(80, 238, 2101, "Ã‰tat de croissance");
             AddLabel(80, 262, 2101, "Hydratation");
             AddLabel(80, 286, 2101, "Insectes");
             AddLabel(80, 310, 2101, "Maladie");
@@ -173,7 +173,7 @@ namespace Server.Gumps
                     }
                     else
                     {
-                        from.SendMessage("Il est trop tôt pour cueillir la fleur.");
+                        from.SendMessage("Il est trop tÃ´t pour cueillir la fleur.");
                         from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
                     }
                     break;
@@ -389,7 +389,7 @@ namespace Server.Gumps
                     }
                     else
                     {
-                        m_From.SendMessage("Vous décidez de ne pas cueillir de graine.");
+                        m_From.SendMessage("Vous dÃ©cidez de ne pas cueillir de graine.");
                         m_From.SendGump(new BotaniqueGump(m_From, m_Bowl));
                     }
                 }
@@ -418,19 +418,19 @@ namespace Server.Gumps
                 if (m_Bowl.Plant.StateOfGrowth == StateOfGrowth.Seed)
                 {
                     AddLabel(98, 64, 2101, "Si vous videz la terre de ce pot, vous");
-                    AddLabel(98, 86, 2101, "récupererez la graine.");
+                    AddLabel(98, 86, 2101, "rÃ©cupererez la graine.");
                 }
                 else if (m_Bowl.Plant.StateOfGrowth == StateOfGrowth.Germ)
                 {
                     AddLabel(98, 64, 2101, "Si vous videz la terre de ce pot, vous");
                     AddLabel(98, 86, 2101, "perdrez votre plante puisqu'elle n'est pas");
-                    AddLabel(98, 108, 2101, "assez développée.");
+                    AddLabel(98, 108, 2101, "assez dÃ©veloppÃ©e.");
                 }
                 else if (m_Bowl.Plant.StateOfGrowth == StateOfGrowth.Young)
                 {
                     AddLabel(98, 64, 2101, "Si vous videz la terre de ce pot, vous");
                     AddLabel(98, 86, 2101, "perdrez votre plante puisqu'elle n'est pas");
-                    AddLabel(98, 108, 2101, "assez développée.");
+                    AddLabel(98, 108, 2101, "assez dÃ©veloppÃ©e.");
                 }
                 else if (m_Bowl.Plant.StateOfGrowth >= StateOfGrowth.Mature)
                 {
@@ -478,7 +478,7 @@ namespace Server.Gumps
                     }
                     else
                     {
-                        m_From.SendMessage("Vous décidez de ne pas vider le pot.");
+                        m_From.SendMessage("Vous dÃ©cidez de ne pas vider le pot.");
                         m_From.SendGump(new BotaniqueGump(m_From, m_Bowl));
                     }
                 }

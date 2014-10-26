@@ -11,7 +11,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Étouffements", "Bet Grav Corp",
+                "Ã‰touffements", "Bet Grav Corp",
                 SpellCircle.Seventh,
                 236,
                 9031,

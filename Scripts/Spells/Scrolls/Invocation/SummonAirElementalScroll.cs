@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonAirElementalScroll( int amount ) : base( AirElementalSpell.m_SpellID, 0x1F68, amount )
 		{
-            Name = "Invocation: Élémental d'Air";
+            Name = "Invocation: Ã‰lÃ©mental d'Air";
 		}
 
 		public SummonAirElementalScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Invocation: Élémental d'Air";
+            Name = "Invocation: Ã‰lÃ©mental d'Air";
 		}
 
 		/*public override Item Dupe( int amount )

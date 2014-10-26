@@ -43,7 +43,7 @@ namespace Server.Commands
 
                         Account act = player.Account as Account;
 
-                        if ((!(player.Name.ToLower().Contains("[transfer]"))) && (!(player.Name.ToLower().Contains("[transféré]"))) && (!(player.Name.ToLower().Contains("(Transferer)"))) && (!(player.Name.ToLower().Contains("[Mort]"))))
+                        if ((!(player.Name.ToLower().Contains("[transfer]"))) && (!(player.Name.ToLower().Contains("[transfÃ©rÃ©]"))) && (!(player.Name.ToLower().Contains("(Transferer)"))) && (!(player.Name.ToLower().Contains("[Mort]"))))
                         {
                             if (player.MortCurrentState != MortState.Mourir && player.MortCurrentState != MortState.MortDefinitive && player.MortCurrentState != MortState.Delete)
                             {

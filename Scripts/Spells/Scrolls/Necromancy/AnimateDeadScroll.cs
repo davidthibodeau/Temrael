@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public AnimateDeadScroll( int amount ) : base( AnimateDeadSpell.m_SpellID, 0x2260, amount )
 		{
-            Name = "Nécromancie: Animation";
+            Name = "NÃ©cromancie: Animation";
 		}
 
 		public AnimateDeadScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Animation";
+            Name = "NÃ©cromancie: Animation";
 		}
 
 		/*public override Item Dupe( int amount )

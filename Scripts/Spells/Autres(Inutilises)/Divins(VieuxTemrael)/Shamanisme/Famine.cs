@@ -44,7 +44,7 @@ namespace Server.Spells
                 {
                     /*if (DateTime.Now < ((TMobile)m).NextFamine)
                     {
-                        Caster.SendMessage("Vous ne pouvez pas exécuter une autre famine sur ce personnage dès maintenant.");
+                        Caster.SendMessage("Vous ne pouvez pas exÃ©cuter une autre famine sur ce personnage dÃ¨s maintenant.");
                         return;
                     }
                     else

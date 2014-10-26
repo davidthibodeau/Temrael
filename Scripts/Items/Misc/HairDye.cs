@@ -115,7 +115,7 @@ namespace Server.Items
 			AddBackground( 100, 10, 350, 355, 2600 );
 			AddBackground( 120, 54, 110, 270, 5100 );
 
-			AddHtml( 70, 25, 400, 35, "<center>Menu de la sélection de la couleur des cheveux</center>", false, false ); // <center>Hair Color Selection Menu</center>
+			AddHtml( 70, 25, 400, 35, "<center>Menu de la sÃ©lection de la couleur des cheveux</center>", false, false ); // <center>Hair Color Selection Menu</center>
 
 			AddButton( 149, 328, 4005, 4007, 1, GumpButtonType.Reply, 0 );
             AddHtml(185, 329, 250, 35, "Teindre mes cheveux !", false, false);
@@ -187,7 +187,7 @@ namespace Server.Items
 			}
 			else
 			{
-                m.SendMessage("Vous décidez de ne pas teindre vos cheveux."); // You decide not to dye your hair
+                m.SendMessage("Vous dÃ©cidez de ne pas teindre vos cheveux."); // You decide not to dye your hair
 			}
 		}
 	}

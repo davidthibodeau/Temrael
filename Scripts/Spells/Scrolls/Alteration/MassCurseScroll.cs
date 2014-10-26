@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public MassCurseScroll( int amount ) : base( MassCurseSpell.m_SpellID, 0x1F5A, amount )
 		{
-            Name = "Altération: Fléau";
+            Name = "AltÃ©ration: FlÃ©au";
 		}
 
 		public MassCurseScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Altération: Fléau";
+            Name = "AltÃ©ration: FlÃ©au";
 		}
 
 		/*public override Item Dupe( int amount )

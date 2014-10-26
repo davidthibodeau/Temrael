@@ -35,7 +35,7 @@ namespace Server.Mobiles
 				//Add( new GenericBuyInfo( typeof( EarOfCorn ), 3, 20, XXXXXX, 0 ) );
 				Add( new GenericBuyInfo( "Oeufs", typeof( Eggs ), 3, 20, 0x9B5, 0 ) );
 				Add( new BeverageBuyInfo( "Pichet", typeof( Pitcher ), BeverageType.Milk, 7, 20, 0x9AD, 0 ) );
-				Add( new GenericBuyInfo( "Pêche", typeof( Peach ), 3, 20, 0x9D2, 0 ) );
+				Add( new GenericBuyInfo( "PÃªche", typeof( Peach ), 3, 20, 0x9D2, 0 ) );
 				Add( new GenericBuyInfo( "Poire", typeof( Pear ), 3, 20, 0x994, 0 ) );
 				Add( new GenericBuyInfo( "Citron", typeof( Lemon ), 3, 20, 0x1728, 0 ) );
 				Add( new GenericBuyInfo( "Line", typeof( Lime ), 3, 20, 0x172A, 0 ) );

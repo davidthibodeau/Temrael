@@ -44,13 +44,13 @@ namespace Server.Spells
 				SpellHelper.GetSurfaceTop( ref p );
 
                 int ItemID = 3703;
-                string name = "Baril de Bière";
+                string name = "Baril de BiÃ¨re";
                 int hue = 0;
 
                 TotemType type = TotemType.BarilDeBiere;
                 DateTime delete = DateTime.Now + GetDurationForSpell(0.5);
                 int range = 1 + (int)(Caster.Skills[CastSkill].Value / 10);
-                double bonus = 0.05 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800);//5 à 30%
+                double bonus = 0.05 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800);//5 Ã  30%
 
                 int effectid = 14154;
                 int effectspeed = 10;

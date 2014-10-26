@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Régénération", "Tyr Kano",
+                "RÃ©gÃ©nÃ©ration", "Tyr Kano",
 				SpellCircle.Second,
 				212,
 				9041

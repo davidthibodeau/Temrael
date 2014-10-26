@@ -162,7 +162,7 @@ namespace Server.Engines.Harvest
         public override void SendSuccessTo(Mobile from, Item item, HarvestResource resource)
         {
             if (item is BaseAlga)
-                from.SendMessage("Vous pêchez une algue et la déposez dans votre sac.");
+                from.SendMessage("Vous pÃªchez une algue et la dÃ©posez dans votre sac.");
             else
                 base.SendSuccessTo(from, item, resource);
         }*/
@@ -228,7 +228,7 @@ namespace Server.Engines.Harvest
                     if (pole.Charge <= 0)
                     {
                         pole.Bait = Bait.Aucun;
-                        from.SendMessage("Votre appât s'est détruit.");
+                        from.SendMessage("Votre appÃ¢t s'est dÃ©truit.");
                     }
                 }
             }

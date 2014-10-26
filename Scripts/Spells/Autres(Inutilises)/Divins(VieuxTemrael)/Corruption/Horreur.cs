@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.3);
 
-                m_HorreurTable[m] = 1.05 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800); // 5 à 30%
+                m_HorreurTable[m] = 1.05 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800); // 5 Ã  30%
 
                 Timer t = new HorreurTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

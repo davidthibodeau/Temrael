@@ -20,7 +20,7 @@ namespace Server.Items
 		public MetalKiteShield() : base( 0x1B74 )
 		{
 			Weight = 7.0;
-            Name = "Bouclier Croisé";
+            Name = "Bouclier CroisÃ©";
 		}
 
 		public MetalKiteShield( Serial serial ) : base(serial)

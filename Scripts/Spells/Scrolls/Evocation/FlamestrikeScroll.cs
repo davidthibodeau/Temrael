@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public FlamestrikeScroll( int amount ) : base( FlameStrikeSpell.m_SpellID, 0x1F5F, amount )
 		{
-            Name = "Évocation: Jeu de Flamme";
+            Name = "Ã‰vocation: Jeu de Flamme";
 		}
 
 		public FlamestrikeScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Jeu de Flamme";
+            Name = "Ã‰vocation: Jeu de Flamme";
 		}
 
 		/*public override Item Dupe( int amount )

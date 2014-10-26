@@ -525,7 +525,7 @@ namespace Server.Items
                 list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
                 if (m_CrafterName != null)
-                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
+                    list.Add(1060394, "{0}\t{1}", couleur, "FabriquÃ© par: " + m_CrafterName); // FabriquÃ© par: ~1_NAME~
 
                 if (m_AosSkillBonuses != null)
                     m_AosSkillBonuses.GetProperties(list, couleur);

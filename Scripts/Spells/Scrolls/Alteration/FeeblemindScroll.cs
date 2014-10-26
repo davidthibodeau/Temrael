@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public FeeblemindScroll( int amount ) : base( FeeblemindSpell.m_SpellID, 0x1F30, amount )
 		{
-            Name = "Altération: Débilité";
+            Name = "AltÃ©ration: DÃ©bilitÃ©";
 		}
 
 		public FeeblemindScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Altération: Débilité";
+            Name = "AltÃ©ration: DÃ©bilitÃ©";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -10,9 +10,9 @@ using Server.Spells;
 using Server.Commands;
 
 /* Fichier : Copie.cs
- * Description : Sort de copie. Crée un sosie d'un créature ciblée
+ * Description : Sort de copie. CrÃ©e un sosie d'un crÃ©ature ciblÃ©e
  * Derniere MAJ : 20 janvier 2010
- *  - Copie ne peut maintenant plus être
+ *  - Copie ne peut maintenant plus Ãªtre
  * 
  * */
 
@@ -21,7 +21,7 @@ namespace Server.Mobiles
     [CorpseName("un corps de copie")]
     public class Copie : BaseCreature
     {
-        //Liste de toutes les "copies" créées par les joueurs
+        //Liste de toutes les "copies" crÃ©Ã©es par les joueurs
         public static Hashtable m_CopieTable = new Hashtable();
 
         private Mobile m_Caster;
@@ -245,11 +245,11 @@ namespace Server.Spells
             }
             else if (Copie.m_CopieTable.Contains(Caster))
             {
-                Caster.SendMessage("Vous ne pouvez conjurer qu'une Copie à la fois !");
+                Caster.SendMessage("Vous ne pouvez conjurer qu'une Copie Ã  la fois !");
             }
             else if (m.Blessed)
             {
-                Caster.SendMessage("Vous ne pouvez pas copier des créatures invulnérables !");
+                Caster.SendMessage("Vous ne pouvez pas copier des crÃ©atures invulnÃ©rables !");
             }
             else if (CheckSequence())
             {
@@ -264,7 +264,7 @@ namespace Server.Spells
             FinishSequence();
         }
 
-        //Création d'une copie
+        //CrÃ©ation d'une copie
         public static void ToogleCopie(Spell spell, Mobile Caster, Mobile from)
         {
             TimeSpan duration = spell.GetDurationForSpell(30, 1);

@@ -72,7 +72,7 @@ namespace Server.Commands
 			{
 				m_Output.WriteLine( "{0}: {1}: {2}", DateTime.Now.ToShortTimeString(), TownspersonLogging.Format( from ), text );
 
-                // Crée un double des logs sans réelle raison ?
+                // CrÃ©e un double des logs sans rÃ©elle raison ?
                 //string path = Directories.AppendPath(Directories.logs, "Townsperson" );
                 //path = Path.Combine(path, String.Format("{0}.log", Directories.Today));
 

@@ -14,7 +14,7 @@ namespace Server.Items
 		public ArmoireA() : base( 0x188E)
 		{
 			Weight = 5.0;
-            Name = "Armoire ‡ portes vitrÈes";
+            Name = "Armoire √† portes vitr√©es";
 		}
 
 		public ArmoireA( Serial serial ) : base( serial )
@@ -42,7 +42,7 @@ namespace Server.Items
 		public ArmoireB() : base( 0x1892)
 		{
 			Weight = 5.0;
-            Name = "Commode ‡ pieds";
+            Name = "Commode √† pieds";
 		}
 
 		public ArmoireB( Serial serial ) : base( serial )
@@ -71,7 +71,7 @@ namespace Server.Items
             : base(0x2342)
         {
             Weight = 5.0;
-            Name = "SecrÈtaire foncÈ";
+            Name = "Secr√©taire fonc√©";
         }
 
         public SecretaireFonce(Serial serial)
@@ -101,7 +101,7 @@ namespace Server.Items
             : base(0x2344)
         {
             Weight = 5.0;
-            Name = "SecrÈtaire p‚le";
+            Name = "Secr√©taire p√¢le";
         }
 
         public SecretairePale(Serial serial)
@@ -131,7 +131,7 @@ namespace Server.Items
             : base(0x2346)
         {
             Weight = 5.0;
-            Name = "SecrÈtaire bourgogne";
+            Name = "Secr√©taire bourgogne";
         }
 
         public SecretaireBourgogne(Serial serial)

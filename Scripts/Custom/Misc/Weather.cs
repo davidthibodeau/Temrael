@@ -59,7 +59,7 @@ namespace Server.Misc
             //hildrim quartier de l'hiver
             //AddWeather(Temperature.Glacial, DensityOfCloud.PassageNuageux, QuantityOfWind.Faible, true, new Rectangle2D(new Point2D(1757, 1892), new Point2D(1781, 1906)), new Rectangle2D(new Point2D(1748, 1906), new Point2D(1788, 1922)), new Rectangle2D(new Point2D(1737, 1922), new Point2D(1791, 1942)), new Rectangle2D(new Point2D(1729, 1942), new Point2D(1773, 1958)), new Rectangle2D(new Point2D(1650, 1958), new Point2D(1770, 1985)), new Rectangle2D(new Point2D(1665, 1985), new Point2D(1769, 1998)), new Rectangle2D(new Point2D(1677, 1998), new Point2D(1757, 2009)), new Rectangle2D(new Point2D(1688, 2009), new Point2D(1745, 2022)), new Rectangle2D(new Point2D(1697, 2022), new Point2D(1731, 2031)));
 
-            //déserts
+            //dÃ©serts
             //AddWeather(Temperature.Torride, DensityOfCloud.PassageNuageux, QuantityOfWind.Faible, true, new Rectangle2D(new Point2D(384, 1488), new Point2D(611, 1664)), new Rectangle2D(new Point2D(1840, 2288), new Point2D(2038, 2826)), new Rectangle2D(new Point2D(2038, 2250), new Point2D(2272, 2906)), new Rectangle2D(new Point2D(2272, 2270), new Point2D(2526, 2906)), new Rectangle2D(new Point2D(3385, 1759), new Point2D(4053, 2140)), new Rectangle2D(new Point2D(4614, 3580), new Point2D(4690, 3622)), new Rectangle2D(new Point2D(4614, 3622), new Point2D(4708, 3708)), new Rectangle2D(new Point2D(4589, 3680), new Point2D(4690, 3760)));
 
             //donjons
@@ -168,8 +168,8 @@ namespace Server.Misc
                 }
                 else
                 {
-                    Misc.ExceptionLogging.WriteLine(e, "Le length de entry est de {0} alors que l'index de température" +
-                        " était {1} ce qui donne un chiffre de {2}. La saison était {3}.", entry.Length, t, (int)t, season);
+                    Misc.ExceptionLogging.WriteLine(e, "Le length de entry est de {0} alors que l'index de tempÃ©rature" +
+                        " Ã©tait {1} ce qui donne un chiffre de {2}. La saison Ã©tait {3}.", entry.Length, t, (int)t, season);
                     return entry[entry.Length - 1];
                 }
             }

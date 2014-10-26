@@ -11,7 +11,7 @@ namespace Server.Items
             : base(0x0908)
 		{
 			Weight = 10.0;
-            Name = "Lit à deux étages";
+            Name = "Lit Ã  deux Ã©tages";
 		}
 
         public LitDeuxEtages(Serial serial)

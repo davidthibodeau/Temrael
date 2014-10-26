@@ -16,7 +16,7 @@ namespace Server.Items
         public PainSpikeScroll(int amount)
             : base(PainSpikeSpell.m_SpellID, 0x2268, amount)
 		{
-            Name = "Nécromancie: Corruption";
+            Name = "NÃ©cromancie: Corruption";
 		}
 
 		public PainSpikeScroll( Serial serial ) : base( serial )
@@ -36,7 +36,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Corruption";
+            Name = "NÃ©cromancie: Corruption";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public ArchCureScroll( int amount ) : base( ArchCureSpell.m_SpellID, 0x1F45, amount )
 		{
-            Name = "Thaumaturgie: Remède";
+            Name = "Thaumaturgie: RemÃ¨de";
 		}
 
 		public ArchCureScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Thaumaturgie: Remède";
+            Name = "Thaumaturgie: RemÃ¨de";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -44,7 +44,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendMessage("Vous ne pouvez pas teindre plus d'un tissus à la fois");
+                from.SendMessage("Vous ne pouvez pas teindre plus d'un tissus Ã  la fois");
                 return false;
             }
 		}*/

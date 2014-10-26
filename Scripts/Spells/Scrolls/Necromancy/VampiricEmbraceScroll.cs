@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public VampiricEmbraceScroll( int amount ) : base( VampiricEmbraceSpell.m_SpellID, 0x226C, amount )
 		{
-            Name = "Nécromancie: Vampirisme";
+            Name = "NÃ©cromancie: Vampirisme";
 		}
 
 		public VampiricEmbraceScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Vampirisme";
+            Name = "NÃ©cromancie: Vampirisme";
 		}
 
 		/*public override Item Dupe( int amount )

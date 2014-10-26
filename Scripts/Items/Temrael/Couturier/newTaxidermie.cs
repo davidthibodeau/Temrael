@@ -10,7 +10,7 @@ namespace Server.Items
             : base(0x1E60)
 		{
 			Weight = 1.0;
-            Name = "Tête d'ours";
+            Name = "TÃªte d'ours";
 		}
 
         public TeteOurs(Serial serial)
@@ -53,7 +53,7 @@ namespace Server.Items
             : base(0x1E61)
         {
             Weight = 1.0;
-            Name = "Tête de cerf";
+            Name = "TÃªte de cerf";
         }
 
         public TeteCerf(Serial serial)
@@ -136,7 +136,7 @@ namespace Server.Items
             : base(0x1E63)
         {
             Weight = 1.0;
-            Name = "Tête d'ogre";
+            Name = "TÃªte d'ogre";
         }
 
         public TeteOgre(Serial serial)
@@ -178,7 +178,7 @@ namespace Server.Items
             : base(0x1E64)
         {
             Weight = 1.0;
-            Name = "Tête d'orc";
+            Name = "TÃªte d'orc";
         }
 
         public TeteOrc(Serial serial)
@@ -220,7 +220,7 @@ namespace Server.Items
             : base(0x1E65)
         {
             Weight = 1.0;
-            Name = "Tête d'ours polaire";
+            Name = "TÃªte d'ours polaire";
         }
 
         public TeteOursPolaire(Serial serial)
@@ -262,7 +262,7 @@ namespace Server.Items
             : base(0x1E66)
         {
             Weight = 1.0;
-            Name = "Tête de troll";
+            Name = "TÃªte de troll";
         }
 
         public TeteTroll(Serial serial)

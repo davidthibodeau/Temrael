@@ -39,7 +39,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendMessage("Vous ne pouvez pas teindre plus d'un rouleau à la fois.");
+                from.SendMessage("Vous ne pouvez pas teindre plus d'un rouleau Ã  la fois.");
                 return false;
             }
 		}*/

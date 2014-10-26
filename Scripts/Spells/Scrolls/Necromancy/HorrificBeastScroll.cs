@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public HorrificBeastScroll( int amount ) : base( HorrificBeastSpell.m_SpellID, 0x2265, amount )
 		{
-            Name = "Nécromancie: Bête Horrifique";
+            Name = "NÃ©cromancie: BÃªte Horrifique";
 		}
 
 		public HorrificBeastScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Bête Horrifique";
+            Name = "NÃ©cromancie: BÃªte Horrifique";
 		}
 
 		/*public override Item Dupe( int amount )

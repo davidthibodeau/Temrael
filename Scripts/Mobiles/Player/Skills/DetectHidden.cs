@@ -23,7 +23,7 @@ namespace Server.SkillHandlers
         /* 7  case de distance*/    30,
         /* 8  case de distance*/    10,
         /* 9  case de distance*/    10,
-        /* 10 case de distance*/    0 // Important de laisser à 0.
+        /* 10 case de distance*/    0 // Important de laisser Ã  0.
                                         };
 
         public static void Initialize()

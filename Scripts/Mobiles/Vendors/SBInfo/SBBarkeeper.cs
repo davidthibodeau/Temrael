@@ -20,13 +20,13 @@ namespace Server.Mobiles
 		{
 			public InternalBuyInfo()
 			{
-				Add( new BeverageBuyInfo( "Verre de Bière", typeof( BeverageBottle ), BeverageType.Ale, 6, 20, 0x99F, 0 ) );
+				Add( new BeverageBuyInfo( "Verre de BiÃ¨re", typeof( BeverageBottle ), BeverageType.Ale, 6, 20, 0x99F, 0 ) );
 				Add( new BeverageBuyInfo( "Verre de Vin", typeof( BeverageBottle ), BeverageType.Wine, 12, 20, 0x9C7, 0 ) );
 				Add( new BeverageBuyInfo( "Verre de Liqueur", typeof( BeverageBottle ), BeverageType.Liquor, 8, 20, 0x99B, 0 ) );
 
 				Add( new BeverageBuyInfo( "Cruche", typeof( Jug ), BeverageType.Cider, 13, 20, 0x9C8, 0 ) );
 				Add( new BeverageBuyInfo( "Pichet de Lait", typeof( Pitcher ), BeverageType.Milk, 10, 20, 0x9F0, 0 ) );
-				Add( new BeverageBuyInfo( "Pichet de Bière", typeof( Pitcher ), BeverageType.Ale, 12, 20, 0x1F95, 0 ) );
+				Add( new BeverageBuyInfo( "Pichet de BiÃ¨re", typeof( Pitcher ), BeverageType.Ale, 12, 20, 0x1F95, 0 ) );
 				Add( new BeverageBuyInfo( "Piche de Fort", typeof( Pitcher ), BeverageType.Cider, 15, 20, 0x1F97, 0 ) );
 				Add( new BeverageBuyInfo( "Pichet de Liqueur", typeof( Pitcher ), BeverageType.Liquor, 13, 20, 0x1F99, 0 ) );
 				Add( new BeverageBuyInfo( "Pichet de Vin", typeof( Pitcher ), BeverageType.Wine, 20, 20, 0x1F9B, 0 ) );
@@ -55,7 +55,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Jeu d'Echecs", typeof( Chessboard ), 2, 20, 0xFA6, 0 ) );
 				Add( new GenericBuyInfo( "Damier", typeof( CheckerBoard ), 2, 20, 0xFA6, 0 ) );
 				Add( new GenericBuyInfo( "Backgammon", typeof( Backgammon ), 2, 20, 0xE1C, 0 ) );
-				Add( new GenericBuyInfo( "Dés", typeof( Dices ), 2, 20, 0xFA7, 0 ) );
+				Add( new GenericBuyInfo( "DÃ©s", typeof( Dices ), 2, 20, 0xFA7, 0 ) );
 				Add( new GenericBuyInfo( "Contrat d'Emploi", typeof( ContractOfEmployment ), 2500, 20, 0x14F0, 0 ) );
 				//Add( new GenericBuyInfo( "a barkeep contract", typeof( BarkeepContract ), 1252, 20, 0x14F0, 0 ) );
 				//if ( Multis.BaseHouse.NewVendorSystem )

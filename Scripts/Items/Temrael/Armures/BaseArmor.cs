@@ -10,9 +10,9 @@ using Server.ContextMenus;
 using Server.Mobiles;
 using System.Text.RegularExpressions;
 /* Modification des armures et du AR qui vas avec :
- * la formule : Capacité*2*6(car 6 pieces d'armure hors bouclier)
- * passé la capacité 4 la formule change pour du cas par cas
- * Cette formule est calculé avec le matériel de base (Fer, Bones simple, Regular leather)
+ * la formule : CapacitÃ©*2*6(car 6 pieces d'armure hors bouclier)
+ * passÃ© la capacitÃ© 4 la formule change pour du cas par cas
+ * Cette formule est calculÃ© avec le matÃ©riel de base (Fer, Bones simple, Regular leather)
  * Set d'armure aura donc :
  * Capa 1 : 12 de Ar
  * Capa 2 : 24 de Ar
@@ -21,11 +21,11 @@ using System.Text.RegularExpressions;
  * Capa 5 : 54 de Ar
  * Capa 6 : 60 de Ar 
  * 
- * Pour les lingots (Trop de fer pour équilibré proprement ) : on gagne de +0 à +4 Ar Par piece, soit Top Metal capa 6 =  84 de Ar sans shield
+ * Pour les lingots (Trop de fer pour Ã©quilibrÃ© proprement ) : on gagne de +0 Ã  +4 Ar Par piece, soit Top Metal capa 6 =  84 de Ar sans shield
  * Pour les OS en capa 6 : (12+2)*6 = 84 de Ar sans shield
- * idem pour les peaux .(j'ignore si la qualité du cuire dépend de la capacité ou pas donc j'ai fais comme les os .
+ * idem pour les peaux .(j'ignore si la qualitÃ© du cuire dÃ©pend de la capacitÃ© ou pas donc j'ai fais comme les os .
  * 
- * J'ai aussi mis les Resistance contendant etc = au AR des item, donc 60 de Resist Magic etc, j'ai pensé que si tu devais le modifié plus tard c'était plus facile d'avoir une base facile pour le calcule .
+ * J'ai aussi mis les Resistance contendant etc = au AR des item, donc 60 de Resist Magic etc, j'ai pensÃ© que si tu devais le modifiÃ© plus tard c'Ã©tait plus facile d'avoir une base facile pour le calcule .
  */
 namespace Server.Items
 {
@@ -220,7 +220,7 @@ namespace Server.Items
         {
                 double ar = BaseResistance;
 
-                // Les bonus vont de 0% à 30% de bonus d'AR.
+                // Les bonus vont de 0% Ã  30% de bonus d'AR.
                 switch (m_Resource)
                 {
                     case CraftResource.Cuivre:      ar *= 1.06; break;
@@ -1386,7 +1386,7 @@ namespace Server.Items
                 list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
                 if (m_CrafterName != null)
-                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
+                    list.Add(1060394, "{0}\t{1}", couleur, "FabriquÃ© par: " + m_CrafterName); // FabriquÃ© par: ~1_NAME~
 
                 #region Factions
                 if (FactionItemState != null)
@@ -1621,7 +1621,7 @@ namespace Server.Items
         #endregion
     }
 
-    // Sert à contenir les informations sur les différentes armures.
+    // Sert Ã  contenir les informations sur les diffÃ©rentes armures.
     public class ArmorValues
     {
         public double resistance_Physique = 0;

@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public MeteorSwarmScroll( int amount ) : base( MeteorSwarmSpell.m_SpellID, 0x1F63, amount )
 		{
-            Name = "Évocation: Météores";
+            Name = "Ã‰vocation: MÃ©tÃ©ores";
 		}
 
 		public MeteorSwarmScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Météores";
+            Name = "Ã‰vocation: MÃ©tÃ©ores";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -10,7 +10,7 @@ namespace Server.SkillHandlers
     public class Hiding
     {
         private const double TempsJetReussit = 0.0; // Si le jet reussit, jet automatique de stealth.
-        private const double TempsJetRate = 10.0;   // Si le jet a raté.
+        private const double TempsJetRate = 10.0;   // Si le jet a ratÃ©.
         private const double TempsJetImposs = 0.0;
 
         private static bool m_CombatOverride;
@@ -80,7 +80,7 @@ namespace Server.SkillHandlers
                 bool badCombat = (!m_CombatOverride && m.Combatant != null && m.InRange(m.Combatant.Location, range) && m.Combatant.InLOS(m));
                 bool ok = (!badCombat && (!m.Mounted) /*&& m.CheckSkill( SkillName.Discretion, 0.0 - bonus, 100.0 - bonus )*/ );
 
-                #region Malus de dex, dépendant des bonus/malus de dex comparé à la dex normale.
+                #region Malus de dex, dÃ©pendant des bonus/malus de dex comparÃ© Ã  la dex normale.
 
                 int dexDiff = (m.Dex - m.RawDex);
 

@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public WraithFormScroll( int amount ) : base( WraithFormSpell.m_SpellID, 0x226F, amount )
 		{
-            Name = "Nécromancie: Spectre";
+            Name = "NÃ©cromancie: Spectre";
 		}
 
 		public WraithFormScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Spectre";
+            Name = "NÃ©cromancie: Spectre";
 		}
 
 		/*public override Item Dupe( int amount )

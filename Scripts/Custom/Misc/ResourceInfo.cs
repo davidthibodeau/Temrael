@@ -842,11 +842,11 @@ namespace Server.Items
 			{
 				new CraftResourceInfo( 0x000, 1011542, "Erable",    CraftAttributeInfo.Blank,		CraftResource.RegularWood,	typeof( Log ),			typeof( Board ) ),
 				new CraftResourceInfo( 2059, 1072533, "Pin",		CraftAttributeInfo.PinWood,		CraftResource.PinWood,		typeof( PinLog ),		typeof( PinBoard ) ),
-				new CraftResourceInfo( 2129, 1072534, "Cyprès",	    CraftAttributeInfo.CypresWood,  CraftResource.CypresWood,	typeof( CypresLog ),	typeof( CypresBoard ) ),
-				new CraftResourceInfo( 2164, 1072535, "Cèdre",	    CraftAttributeInfo.CedreWood,	CraftResource.CedreWood,	typeof( CedreLog ),		typeof( CedreBoard ) ),
+				new CraftResourceInfo( 2129, 1072534, "CyprÃ¨s",	    CraftAttributeInfo.CypresWood,  CraftResource.CypresWood,	typeof( CypresLog ),	typeof( CypresBoard ) ),
+				new CraftResourceInfo( 2164, 1072535, "CÃ¨dre",	    CraftAttributeInfo.CedreWood,	CraftResource.CedreWood,	typeof( CedreLog ),		typeof( CedreBoard ) ),
 				new CraftResourceInfo( 2170, 1072536, "Saule",		CraftAttributeInfo.SauleWood,	CraftResource.SauleWood,	typeof( SauleLog ),	    typeof( SauleBoard ) ),
-				new CraftResourceInfo( 2360, 1072538, "Chêne",		CraftAttributeInfo.CheneWood,	CraftResource.CheneWood,	typeof( CheneLog ),	    typeof( CheneBoard ) ),
-				new CraftResourceInfo( 2055, 1072539, "Ébène",		CraftAttributeInfo.EbeneWood,	CraftResource.EbeneWood,	typeof( EbeneLog ),	    typeof( EbeneBoard ) ),
+				new CraftResourceInfo( 2360, 1072538, "ChÃªne",		CraftAttributeInfo.CheneWood,	CraftResource.CheneWood,	typeof( CheneLog ),	    typeof( CheneBoard ) ),
+				new CraftResourceInfo( 2055, 1072539, "Ã‰bÃ¨ne",		CraftAttributeInfo.EbeneWood,	CraftResource.EbeneWood,	typeof( EbeneLog ),	    typeof( EbeneBoard ) ),
                 new CraftResourceInfo( 2373, 1072539, "Acajou",		CraftAttributeInfo.AcajouWood,	CraftResource.AcajouWood,	typeof( AcajouLog ),	typeof( AcajouBoard ) )
 			};
 

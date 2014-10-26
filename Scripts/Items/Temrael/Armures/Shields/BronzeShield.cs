@@ -20,7 +20,7 @@ namespace Server.Items
 		public BronzeShield() : base( 0x1B72 )
 		{
 			Weight = 6.0;
-            Name = "Bouclier Orné";
+            Name = "Bouclier OrnÃ©";
 		}
 
 		public BronzeShield( Serial serial ) : base(serial)

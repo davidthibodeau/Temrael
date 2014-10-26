@@ -15,7 +15,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Vision Réelle", "Kena Mann",
+                "Vision RÃ©elle", "Kena Mann",
                 SpellCircle.Fifth,
                 212,
                 9041

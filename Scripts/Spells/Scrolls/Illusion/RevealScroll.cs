@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public RevealScroll( int amount ) : base( RevealSpell.m_SpellID, 0x1F5C, amount )
 		{
-            Name = "Illusion: Révélation";
+            Name = "Illusion: RÃ©vÃ©lation";
 		}
 
 		public RevealScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Illusion: Révélation";
+            Name = "Illusion: RÃ©vÃ©lation";
 		}
 
 		/*public override Item Dupe( int amount )

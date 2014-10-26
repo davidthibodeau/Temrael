@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public TeleportScroll( int amount ) : base( TeleportSpell.m_SpellID, 0x1F42, amount )
 		{
-            Name = "Illusion: Téléportation";
+            Name = "Illusion: TÃ©lÃ©portation";
 		}
 
 		public TeleportScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Illusion: Téléportation";
+            Name = "Illusion: TÃ©lÃ©portation";
 		}
 
 		/*public override Item Dupe( int amount )

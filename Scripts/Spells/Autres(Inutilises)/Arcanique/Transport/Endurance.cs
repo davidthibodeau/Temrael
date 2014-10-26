@@ -42,7 +42,7 @@ namespace Server.Spells
             }
             else if (!(m is TMobile))
             {
-                Caster.SendMessage("Ce sort ne peut être qu'utilisé sur les joueurs.");
+                Caster.SendMessage("Ce sort ne peut Ãªtre qu'utilisÃ© sur les joueurs.");
             }
             else if (CheckBSequence(m))
             {

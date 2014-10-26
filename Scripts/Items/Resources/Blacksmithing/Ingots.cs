@@ -541,7 +541,7 @@ namespace Server.Items
         public EclariumIngot(int amount)
             : base(CraftResource.Eclarium, amount)
         {
-            Name = "Lingot d'Éclarium";
+            Name = "Lingot d'Ã‰clarium";
         }
 
         public EclariumIngot(Serial serial)
@@ -617,7 +617,7 @@ namespace Server.Items
         public AtheniumIngot(int amount)
             : base(CraftResource.Athenium, amount)
         {
-            Name = "Lingot d'Athénium";
+            Name = "Lingot d'AthÃ©nium";
         }
 
         public AtheniumIngot(Serial serial)

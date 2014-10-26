@@ -17,7 +17,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Invisibilité", "An Lor Xen",
+				"InvisibilitÃ©", "An Lor Xen",
 				SpellCircle.Eighth,
 				206,
 				9002,

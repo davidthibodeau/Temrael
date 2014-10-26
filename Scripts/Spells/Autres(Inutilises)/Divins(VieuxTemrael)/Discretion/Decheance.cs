@@ -10,7 +10,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Déchéance", "Mann Dowu",
+                "DÃ©chÃ©ance", "Mann Dowu",
 				SpellCircle.Eighth,
 				212,
 				9041

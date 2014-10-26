@@ -163,7 +163,7 @@ namespace Server.Items
             : base(0x1C10)
         {
             Weight = 2;
-            Name = "Sculpture D'Étoile de Mer";
+            Name = "Sculpture D'Ã‰toile de Mer";
         }
 
         public sculptureEtoileDeMer(Serial serial)
@@ -224,7 +224,7 @@ namespace Server.Items
             : base(0x147E)
         {
             Weight = 2;
-            Name = "Statut du Culte D'Hélion (Soleil)";
+            Name = "Statut du Culte D'HÃ©lion (Soleil)";
         }
 
         public statutCulteHelionSoleil(Serial serial)
@@ -255,7 +255,7 @@ namespace Server.Items
             : base(0x1482)
         {
             Weight = 2;
-            Name = "Statut du Culte D'Hélion (Lune)";
+            Name = "Statut du Culte D'HÃ©lion (Lune)";
         }
 
         public statutCulteHelionLune(Serial serial)
@@ -286,7 +286,7 @@ namespace Server.Items
             : base(0x1488)
         {
             Weight = 2;
-            Name = "Statut du Croisé";
+            Name = "Statut du CroisÃ©";
         }
 
         public statutDuCroise(Serial serial)
@@ -503,7 +503,7 @@ namespace Server.Items
             : base(0x14A1)
         {
             Weight = 2;
-            Name = "Sigle Mural Divin du Bâtisseur";
+            Name = "Sigle Mural Divin du BÃ¢tisseur";
         }
 
         public sigleMuralDivinBatisseur(Serial serial)
@@ -596,7 +596,7 @@ namespace Server.Items
             : base(0x14A7)
         {
             Weight = 2;
-            Name = "Sigle Mural Divin du Croisé";
+            Name = "Sigle Mural Divin du CroisÃ©";
         }
 
         public sigleMuralDivinCroise(Serial serial)
@@ -627,7 +627,7 @@ namespace Server.Items
             : base(0x14A9)
         {
             Weight = 2;
-            Name = "Sigle Mural Divin du Général";
+            Name = "Sigle Mural Divin du GÃ©nÃ©ral";
         }
 
         public sigleMuralDivinGeneral(Serial serial)
@@ -689,7 +689,7 @@ namespace Server.Items
             : base(0x14AD)
         {
             Weight = 2;
-            Name = "Sigle Mural Divin de Méphis";
+            Name = "Sigle Mural Divin de MÃ©phis";
         }
 
         public sigleMuralDivinMephis(Serial serial)
@@ -720,7 +720,7 @@ namespace Server.Items
             : base(0x14AF)
         {
             Weight = 2;
-            Name = "Sigle Mural Divin de la Mère";
+            Name = "Sigle Mural Divin de la MÃ¨re";
         }
 
         public sigleMuralDivinMere(Serial serial)
@@ -782,7 +782,7 @@ namespace Server.Items
             : base(0x14B3)
         {
             Weight = 2;
-            Name = "Sigle Mural Divin de la Sorcière";
+            Name = "Sigle Mural Divin de la SorciÃ¨re";
         }
 
         public sigleMuralDivinSorciere(Serial serial)

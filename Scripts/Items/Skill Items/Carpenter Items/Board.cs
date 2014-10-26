@@ -86,13 +86,13 @@ namespace Server.Items
 
         public static string[] m_Material = new string[]
             {
-		        "Érable",
+		        "Ã‰rable",
 		        "Pin",
-                "Cyprès",
-                "Cèdre",
+                "CyprÃ¨s",
+                "CÃ¨dre",
                 "Saule",
-                "Chêne",
-                "Ébène",
+                "ChÃªne",
+                "Ã‰bÃ¨ne",
                 "Acajou",
             };
 

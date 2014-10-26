@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.4);
 
-                m_RobustesseTable[m] = (int)(10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 4)); //10 à 110
+                m_RobustesseTable[m] = (int)(10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 4)); //10 Ã  110
 
                 Timer t = new RobustesseTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

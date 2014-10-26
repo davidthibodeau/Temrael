@@ -34,7 +34,7 @@ namespace Server.ContextMenus
             m_Pole.Bait = Bait.Aucun;
             m_Pole.Charge = 0;
 
-            m_From.SendMessage("Vous enlevez l'appât.");
+            m_From.SendMessage("Vous enlevez l'appÃ¢t.");
         }
     }
 }
@@ -63,7 +63,7 @@ namespace Server.Items
 		[Constructable]
 		public FishingPole() : base( 0x0DC0 )
         {
-            Name = "canne à pêche";
+            Name = "canne Ã  pÃªche";
 			Layer = Layer.OneHanded;
 			Weight = 8.0;
 		}
@@ -132,7 +132,7 @@ namespace Server.Items
                     }
             }
 
-            Name = "canne à pêche";
+            Name = "canne Ã  pÃªche";
 		}
 	}
 }

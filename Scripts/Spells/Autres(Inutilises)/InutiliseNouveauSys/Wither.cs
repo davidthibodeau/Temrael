@@ -18,7 +18,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Flétrir", "Kal Vas An Flam",
+                "FlÃ©trir", "Kal Vas An Flam",
 				SpellCircle.Sixth,
 				203,
 				9031,

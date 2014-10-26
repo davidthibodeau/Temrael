@@ -50,7 +50,7 @@ namespace Server.Spells
                 TotemType type = TotemType.Talisman;
                 DateTime delete = DateTime.Now + GetDurationForSpell(0.5);
                 int range = 1 + (int)(Caster.Skills[CastSkill].Value / 10);
-                double bonus = 0.05 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800);//5 à 30%
+                double bonus = 0.05 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800);//5 Ã  30%
 
                 int effectid = 14201;
                 int effectspeed = 10;

@@ -26,7 +26,7 @@ namespace Server.Engines.Races
 
         public override int Image { get { return 342; } }
         public override int Tooltip { get { return 3006423; } }
-        public override string Description { get { return "Vous êtes partout. Après quelques siècles de guerres et conquêtes, vous voilà les maîtres du monde. Ou presque. Certains obstacles se dressent toujours sur la route de l'humanité et il sera votre devoir en tant que citoyen du royaume de Temrael de les décimer. La route de la conquête fut longue et difficile et il est parfois aisé pour certains d'entres vous de regarder les autres peuples de haut. Par contre, certains d'entre vous adoptent une idée plus libertine. Une idée nouvelle de cohabitation avec les autres peuples soumis au royaume."; } }
+        public override string Description { get { return "Vous Ãªtes partout. AprÃ¨s quelques siÃ¨cles de guerres et conquÃªtes, vous voilÃ  les maÃ®tres du monde. Ou presque. Certains obstacles se dressent toujours sur la route de l'humanitÃ© et il sera votre devoir en tant que citoyen du royaume de Temrael de les dÃ©cimer. La route de la conquÃªte fut longue et difficile et il est parfois aisÃ© pour certains d'entres vous de regarder les autres peuples de haut. Par contre, certains d'entre vous adoptent une idÃ©e plus libertine. Une idÃ©e nouvelle de cohabitation avec les autres peuples soumis au royaume."; } }
 
         public Capiceen(RaceSecrete r, int regHue, int secHue)
             : base(r, regHue, secHue)

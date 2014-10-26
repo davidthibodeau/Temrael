@@ -87,7 +87,7 @@ namespace Server.Items
                 "riche",
                 "humide",
                 "sabloneuse",
-                "enneigée",
+                "enneigÃ©e",
                 "compacte",
                 "acide"
             };
@@ -98,7 +98,7 @@ namespace Server.Items
                 "Riche",
                 "Humide",
                 "Sabloneuse",
-                "Enneigée",
+                "EnneigÃ©e",
                 "Compacte",
                 "Acide"
             };
@@ -109,8 +109,8 @@ namespace Server.Items
                 "Graine",
                 "Germe",
                 "Jeune pousse",
-                "Maturité",
-                "Dépérissement"
+                "MaturitÃ©",
+                "DÃ©pÃ©rissement"
             };
 
         private static string[] m_StateOfPollination = new string[]
@@ -120,17 +120,17 @@ namespace Server.Items
                 "Transmission du pollen",
                 "Chute florale",
                 "Formation du fruit",
-                "Mûrissement du fruit",
+                "MÃ»rissement du fruit",
                 "Chute du fruit"
             };
 
         private static string[] m_StateOfHydration = new string[]
             {
-                "Assoifée",
+                "AssoifÃ©e",
                 "Moyen",
                 "Acceptable",
                 "Bon",
-                "Noyée"
+                "NoyÃ©e"
             };
 
         private static string[] m_Insects = new string[]
@@ -149,10 +149,10 @@ namespace Server.Items
                 "Aucun",
                 "Aleurodes",
                 "Armillaire",
-                "Cécidomyie",
+                "CÃ©cidomyie",
                 "Chancre",
                 "Fumagine",
-                "Nématode",
+                "NÃ©matode",
                 "Noctuelle",
                 "Psylle",
                 "Rouille",
@@ -170,18 +170,18 @@ namespace Server.Items
         private static string[] m_Poison = new string[]
             {
                 "Aucun",
-                "Empoisonnée"
+                "EmpoisonnÃ©e"
             };
 
         private static string[] m_Fungi = new string[]
             {
                 "Aucun",
-                "Champignon à Lamelle",
+                "Champignon Ã  Lamelle",
                 "Bolet",
                 "Polyphores",
                 "Phalles",
                 "Vesses",
-                "Gésastres"
+                "GÃ©sastres"
             };
         #endregion
 

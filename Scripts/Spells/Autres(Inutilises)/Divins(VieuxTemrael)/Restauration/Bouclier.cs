@@ -120,7 +120,7 @@ namespace Server.Spells
                     m_Owner.Target((Mobile)o);
                 }
                 else
-                    from.SendMessage("Vous ne pouvez cibler que vous-même avec ce sort.");
+                    from.SendMessage("Vous ne pouvez cibler que vous-mÃªme avec ce sort.");
 			}
 
 			protected override void OnTargetFinish( Mobile from )

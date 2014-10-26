@@ -26,7 +26,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Parties d'Horloge", typeof( ClockParts ), 8, 20, 0x104F, 0 ) );
 				Add( new GenericBuyInfo( "Engrenade d'Axes", typeof( AxleGears ), 5, 20, 0x1051, 0 ) );
 				Add( new GenericBuyInfo( "Engrenage", typeof( Gears ), 4, 20, 0x1053, 0 ) );
-				Add( new GenericBuyInfo( "Charnière", typeof( Hinge ), 3, 20, 0x1055, 0 ) );
+				Add( new GenericBuyInfo( "CharniÃ¨re", typeof( Hinge ), 3, 20, 0x1055, 0 ) );
 
 				Add( new GenericBuyInfo( "Sextant", typeof( Sextant ), 12, 20, 0x1057, 0 ) );
 				Add( new GenericBuyInfo( "Parties de Sextant", typeof( SextantParts ), 5, 20, 0x1059, 0 ) );
@@ -56,7 +56,7 @@ namespace Server.Mobiles
 
 				Add( new GenericBuyInfo( "Pinces", typeof( Tongs ), 20, 14, 0xFBB, 0 ) );
 
-                Add(new GenericBuyInfo( "Scie à queue d'aronde", typeof(DovetailSaw), 20, 20, 0x1028, 0) );
+                Add(new GenericBuyInfo( "Scie Ã  queue d'aronde", typeof(DovetailSaw), 20, 20, 0x1028, 0) );
 				Add( new GenericBuyInfo( "Scie", typeof( Saw ), 20, 20, 0x1034, 0 ) );
 
 				Add( new GenericBuyInfo( "Marteau", typeof( Hammer ), 20, 20, 0x102A, 0 ) );
@@ -76,7 +76,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Tambourine", typeof( Tambourine ), 10, 20, 0x0E9E, 0 ) );
 				Add( new GenericBuyInfo( "Harpe", typeof( LapHarp ), 75, 20, 0x0EB2, 0 ) );
 				Add( new GenericBuyInfo( "Lute", typeof( Lute ), 50, 20, 0x0EB3, 0 ) );
-                Add(new GenericBuyInfo("Kit de Déguisement", typeof(DeguisementKit), 50, 20, 0x1EBA, 0));
+                Add(new GenericBuyInfo("Kit de DÃ©guisement", typeof(DeguisementKit), 50, 20, 0x1EBA, 0));
                 Add(new GenericBuyInfo("Outil de Coagulation", typeof(OutilCoagulation), 100, 20, 0x1EBA, 0));
                 //Add(new GenericBuyInfo("Outil de Fermentation", typeof(OutilFermentation), 50, 20, 0x1EBA, 0));
 			} 

@@ -50,8 +50,8 @@ namespace Server.Engines.Craft
 			AddAlphaRegion( 10, 10, 510, 399 );
 
             AddHtml(170, 40, 150, 20, "<h3><basefont color=#FFFFFF>Objet<basefont></h3>", false, false);
-            AddHtml(10, 192, 150, 22, "<h3><basefont color=#FFFFFF><center>Compétences</center><basefont></h3>", false, false);
-            AddHtml(10, 277, 150, 22, "<h3><basefont color=#FFFFFF><center>Matériaux</center><basefont></h3>", false, false);
+            AddHtml(10, 192, 150, 22, "<h3><basefont color=#FFFFFF><center>CompÃ©tences</center><basefont></h3>", false, false);
+            AddHtml(10, 277, 150, 22, "<h3><basefont color=#FFFFFF><center>MatÃ©riaux</center><basefont></h3>", false, false);
             AddHtml(10, 362, 150, 22, "<h3><basefont color=#FFFFFF><center>Autre</center><basefont></h3>", false, false);
 
 			if ( craftSystem.GumpTitleNumber > 0 )
@@ -145,12 +145,12 @@ namespace Server.Engines.Craft
             {
                 int chan = Convert.ToInt32(chance * 100);
 
-                AddHtml(170, 80, 300, 20, "<h3><basefont color=#FFFFFF>Chance de Succès :<basefont></h3>", false, false);
+                AddHtml(170, 80, 300, 20, "<h3><basefont color=#FFFFFF>Chance de SuccÃ¨s :<basefont></h3>", false, false);
                 AddHtml(480, 80, 300, 20, "<h3><basefont color=#FFFFFF>" + chan.ToString() + "%<basefont></h3>", false, false);
             }
             catch (OverflowException e)
             {
-                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0} * 100. L'item était {1}",
+                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int Ã©tait {0} * 100. L'item Ã©tait {1}",
                     chance, m_CraftItem.ItemType.ToString());
    
             }
@@ -168,7 +168,7 @@ namespace Server.Engines.Craft
             }
             catch (OverflowException e)
             {
-                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int était {0} * 100. The original chance value was : {1}. L'item était {2}",
+                Misc.ExceptionLogging.WriteLine(e, "La valeur convertie en int Ã©tait {0} * 100. The original chance value was : {1}. L'item Ã©tait {2}",
                     excepChance, chance, m_CraftItem.ItemType.ToString());
             }
 		}
@@ -222,7 +222,7 @@ namespace Server.Engines.Craft
 				if ( !retainedColor && m_CraftItem.RetainsColorFrom( m_CraftSystem, type ) )
 				{
 					retainedColor = true;
-                    AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF>*  L'objet retient la couleur de ce matériel<basefont></h3>", false, false);
+                    AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF>*  L'objet retient la couleur de ce matÃ©riel<basefont></h3>", false, false);
                     AddHtml(500, 219 + (i * 20), 20, 20, "<h3><basefont color=#FFFFFF>*<basefont></h3>", false, false);
                     //AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 310, 18, 1044152, LabelColor, false, false ); // * The item retains the color of this material
 					//AddLabel( 500, 219 + (i * 20), LabelHue, "*" );
@@ -245,7 +245,7 @@ namespace Server.Engines.Craft
 			}
 
 			if ( cropScroll )
-                AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF>Les parchemins magiques nécessitent de la mana et un parchemin vierge.<basefont></h3>", false, false);
+                AddHtml(170, 302 + (m_OtherCount++ * 20), 300, 20, "<h3><basefont color=#FFFFFF>Les parchemins magiques nÃ©cessitent de la mana et un parchemin vierge.<basefont></h3>", false, false);
 				//AddHtmlLocalized( 170, 302 + (m_OtherCount++ * 20), 360, 18, 1044379, LabelColor, false, false ); // Inscribing scrolls also requires a blank scroll and mana.
 		}
 

@@ -95,7 +95,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_PassionTable.Remove(m);
 
-                //Si on a un caster ou un target qui possède la modification, on le retire aussi.
+                //Si on a un caster ou un target qui possÃ¨de la modification, on le retire aussi.
                 if (m_LinkTable.Contains(m))
                 {
                     StopTimer((Mobile)m_LinkTable[m]);
@@ -134,7 +134,7 @@ namespace Server.Spells
                     PassionSpell.m_PassionTable.Remove(m_target);
                     PassionSpell.m_Timers.Remove(m_target);
 
-                    //Si on a un caster ou un target qui possède la modification, on le retire aussi.
+                    //Si on a un caster ou un target qui possÃ¨de la modification, on le retire aussi.
                     if (PassionSpell.m_LinkTable.Contains(m_target))
                     {
                         PassionSpell.StopTimer((Mobile)m_LinkTable[m_target]);

@@ -1583,7 +1583,7 @@ namespace Server
 
             set 
             { 
-                if (value != 0) m_NextSkillTime = value; // Pour empêcher que l'écriture d'un NextSkillTime = 0 override un ancien timer.
+                if (value != 0) m_NextSkillTime = value; // Pour empÃªcher que l'Ã©criture d'un NextSkillTime = 0 override un ancien timer.
             }
 
 		}

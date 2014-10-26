@@ -24,7 +24,7 @@ namespace Server.Mobiles
         private static void GenSpawnerDocs_OnCommand(CommandEventArgs e)
         {
             World.Broadcast( 0x35, true, "La documentation des spawners est en cours de generation. Veuillez patienter." );
-            Console.WriteLine("La documentation des spawners est générée. Veuillez patienter.");
+            Console.WriteLine("La documentation des spawners est gÃ©nÃ©rÃ©e. Veuillez patienter.");
 
 			Network.NetState.FlushAll();
 			Network.NetState.Pause();
@@ -71,8 +71,8 @@ namespace Server.Mobiles
 
 			Network.NetState.Resume();
 
-            World.Broadcast(0x35, true, "La documentation des spawners a été generee en {0:F1} secondes.", (endTime - startTime).TotalSeconds);
-            Console.WriteLine("Documentation des spawners complétée.");
+            World.Broadcast(0x35, true, "La documentation des spawners a Ã©tÃ© generee en {0:F1} secondes.", (endTime - startTime).TotalSeconds);
+            Console.WriteLine("Documentation des spawners complÃ©tÃ©e.");
 			
         }
 

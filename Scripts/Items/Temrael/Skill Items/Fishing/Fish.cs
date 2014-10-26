@@ -72,7 +72,7 @@ namespace Server.Items
         public static string[] m_Material = new string[]
             {
                 "truite",
-                "doré",
+                "dorÃ©",
                 "carpe",
                 "anguille",
                 "esturgeon",
@@ -81,14 +81,14 @@ namespace Server.Items
                 "anchoie",
                 "morue",
                 "hareng",
-                "flétan",
+                "flÃ©tan",
                 "maquereau",
                 "sole",
                 "thon",
                 "saumon",
                 "grand brochet",
                 "truite sauvage",
-                "grand doré",
+                "grand dorÃ©",
                 "truite de mer",
                 "esturgeon de mer",
                 "grand saumon",
@@ -96,7 +96,7 @@ namespace Server.Items
                 "espadon",
                 "requin gris",
                 "requin blanc",
-                "huître",
+                "huÃ®tre",
                 "calamari",
                 "pieuvre"
             };
@@ -182,7 +182,7 @@ namespace Server.Items
         [Constructable]
         public DoreFishSteak(int amount) : base(CraftResource.Dore, amount)
         {
-            Name = "Filet de Doré";
+            Name = "Filet de DorÃ©";
         }
 
         public DoreFishSteak(Serial serial) : base(serial)
@@ -470,7 +470,7 @@ namespace Server.Items
         [Constructable]
         public FletanFishSteak(int amount) : base(CraftResource.Fletan, amount)
         {
-            Name = "Filet de Flétan";
+            Name = "Filet de FlÃ©tan";
         }
 
         public FletanFishSteak(Serial serial) : base(serial)
@@ -694,7 +694,7 @@ namespace Server.Items
         [Constructable]
         public GrandDoreFishSteak(int amount) : base(CraftResource.GrandDore, amount)
         {
-            Name = "Filet de Grand Doré";
+            Name = "Filet de Grand DorÃ©";
         }
 
         public GrandDoreFishSteak(Serial serial) : base(serial)

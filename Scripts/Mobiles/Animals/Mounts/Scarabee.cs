@@ -8,14 +8,14 @@ using Server.ContextMenus;
 
 namespace Server.Mobiles
 {
-	[CorpseName( "Scarabée Géant" )]
+	[CorpseName( "ScarabÃ©e GÃ©ant" )]
 	public class Scarabee : BaseMount
 	{
 		public virtual double BoostedSpeed{ get{ return 0.1; } }
 
 		[Constructable]
         public Scarabee()
-            : this("Scarabée Géant")
+            : this("ScarabÃ©e GÃ©ant")
 		{
 		}
 

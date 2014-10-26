@@ -17,7 +17,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Chimère", "Quas Rel Vas Xen Corp",
+                "ChimÃ¨re", "Quas Rel Vas Xen Corp",
                 SpellCircle.Fourth,
                 221,
                 9002,

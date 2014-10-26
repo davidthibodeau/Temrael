@@ -19,17 +19,17 @@ namespace Server.Spells
         {
             if (!m.CanBeginAction(typeof(IncognitoSpell)))
             {
-                Caster.SendMessage(m.Name + " est déjà affecté par Incognito.");
+                Caster.SendMessage(m.Name + " est dÃ©jÃ  affectÃ© par Incognito.");
                 return false;
             }
             else if (!m.CanBeginAction(typeof(MetamorphoseSpell)) || !m.CanBeginAction(typeof(MutationSpell)) || !m.CanBeginAction(typeof(AlterationSpell)) || !m.CanBeginAction(typeof(SubterfugeSpell)) || !m.CanBeginAction(typeof(ChimereSpell)) || !m.CanBeginAction(typeof(TransmutationSpell)))
             {
-                Caster.SendMessage(m.Name + " est déjà transformé.");
+                Caster.SendMessage(m.Name + " est dÃ©jÃ  transformÃ©.");
                 return false;
             }
             else if (!m.CanBeginAction(typeof(InstinctCharnelSpell)))
             {
-                Caster.SendMessage(m.Name + " est déjà transformé.");
+                Caster.SendMessage(m.Name + " est dÃ©jÃ  transformÃ©.");
                 return false;
             }
             else if (m.BodyMod == 183 || m.BodyMod == 184)
@@ -39,7 +39,7 @@ namespace Server.Spells
             }
             else if (m.Blessed)
             {
-                Caster.SendMessage(m.Name + " ne peut être la cible de sorts changeant l'apparence.");
+                Caster.SendMessage(m.Name + " ne peut Ãªtre la cible de sorts changeant l'apparence.");
                 return false;
             }
 
@@ -141,7 +141,7 @@ namespace Server.Spells
 
 			damage = AOS.Scale( damage, 100 + damageBonus );
 
-            if (Caster is BaseCreature) //Les créatures ont toutes 12 de magie offensive.
+            if (Caster is BaseCreature) //Les crÃ©atures ont toutes 12 de magie offensive.
                 damage *= 2;
 
             return damage / 100;
@@ -178,11 +178,11 @@ namespace Server.Spells
                 {
                     chance += pm.Skills[SkillName.Concentration].Value / 333;
 
-                    if (this is NecromancerSpell) //La nécro est une école de contact, donc besoin d'un bonus pour ne pas Fizzle
+                    if (this is NecromancerSpell) //La nÃ©cro est une Ã©cole de contact, donc besoin d'un bonus pour ne pas Fizzle
                         chance += pm.Skills[SkillName.Necromancie].Value / 333;
                 }
                 if (chance > Utility.RandomDouble())
-                    m_Caster.SendMessage("Vous réussissez à garder votre concentration.");
+                    m_Caster.SendMessage("Vous rÃ©ussissez Ã  garder votre concentration.");
                 else
                     Disturb(DisturbType.Hurt);
             }
@@ -518,7 +518,7 @@ namespace Server.Spells
 
             if (caster != null && (caster.Squelched || caster.Aphonie))
             {
-                caster.SendMessage("Vous ne pouvez incanter si vous êtes muet.");
+                caster.SendMessage("Vous ne pouvez incanter si vous Ãªtes muet.");
                 return false;
             }
 
@@ -572,7 +572,7 @@ namespace Server.Spells
                 }
                 else if (m_Caster.Skills[m_Info.skillForCasting].Value < m_Info.minSkillForCasting)
                 {
-                    m_Caster.SendMessage("Vous n'êtes pas assez doué dans votre école de magie pour lancer ce sort.");
+                    m_Caster.SendMessage("Vous n'Ãªtes pas assez douÃ© dans votre Ã©cole de magie pour lancer ce sort.");
                 }
                 else if (m_Caster.Mana >= GetMana())
                 {

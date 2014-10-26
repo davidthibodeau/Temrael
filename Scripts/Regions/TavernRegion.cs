@@ -20,7 +20,7 @@ namespace Server.Regions
 
         public override void OnEnter(Mobile m)
         {
-            m.SendMessage("Vous pénétrez une région reposante.");
+            m.SendMessage("Vous pÃ©nÃ©trez une rÃ©gion reposante.");
         }
 
         public override void OnExit(Mobile m)

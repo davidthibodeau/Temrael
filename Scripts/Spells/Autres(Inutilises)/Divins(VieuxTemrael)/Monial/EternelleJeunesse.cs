@@ -10,7 +10,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Éternelle jeunesse", "Ota Tyros Toki",
+                "Ã‰ternelle jeunesse", "Ota Tyros Toki",
 				SpellCircle.Seventh,
 				212,
 				9041
@@ -38,7 +38,7 @@ namespace Server.Spells
             {
                 SpellHelper.Turn(Caster, m);
 
-                m.Fatigue -= 1 + (int)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 2); // 1 à 201
+                m.Fatigue -= 1 + (int)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 2); // 1 Ã  201
 
                 if (m.Fatigue < 0)
                     m.Fatigue = 0;

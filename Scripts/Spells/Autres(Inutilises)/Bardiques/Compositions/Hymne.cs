@@ -16,7 +16,7 @@ namespace Server.Spells
         public static Hashtable m_HymneTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        //Identification des constantes utilisées (pour modification aisée)
+        //Identification des constantes utilisÃ©es (pour modification aisÃ©e)
         private const double bonus_donne = 0.5;
         private const int portee = 8;
 
@@ -48,7 +48,7 @@ namespace Server.Spells
 
                 Party party = Engines.PartySystem.Party.Get(Caster);
 
-                //Définition des cibles du sort
+                //DÃ©finition des cibles du sort
                 m_target.Add(Caster);
 
                 if (map != null)

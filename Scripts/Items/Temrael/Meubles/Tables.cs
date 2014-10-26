@@ -110,7 +110,7 @@ namespace Server.Items
             : base(0x0AFD)
         {
             Weight = 2.0;
-            Name = "Table élégante";
+            Name = "Table Ã©lÃ©gante";
         }
 
         public TableElegante(Serial serial)

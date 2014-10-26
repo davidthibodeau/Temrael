@@ -15,7 +15,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Éclair", "Por Ort Grav",
+				"Ã‰clair", "Por Ort Grav",
 				SpellCircle.Fourth,
 				239,
 				9021,

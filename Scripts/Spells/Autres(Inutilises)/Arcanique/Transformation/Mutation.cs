@@ -76,7 +76,7 @@ namespace Server.Spells
                 entries.Add(new MetamorphoseGump.MetamorphoseEntry("Golem d'os", ShrinkTable.Lookup(308), 308, 1015246, 0, 0, 0, 0, 0));
                 entries.Add(new MetamorphoseGump.MetamorphoseEntry("Golem de chaire", ShrinkTable.Lookup(304), 304, 1015237, 0, 0, 0, 0, 0));
                 entries.Add(new MetamorphoseGump.MetamorphoseEntry("Demonologue", ShrinkTable.Lookup(318), 318, 1015246, 0, 0, 0, 0, 0));
-                entries.Add(new MetamorphoseGump.MetamorphoseEntry("Mangeur d'âmes", ShrinkTable.Lookup(303), 303, 1015246, 0, 0, 0, 0, 0));
+                entries.Add(new MetamorphoseGump.MetamorphoseEntry("Mangeur d'Ã¢mes", ShrinkTable.Lookup(303), 303, 1015246, 0, 0, 0, 0, 0));
 
                 Caster.SendGump(new MetamorphoseGump(Caster, Scroll, entries, 6));
             }

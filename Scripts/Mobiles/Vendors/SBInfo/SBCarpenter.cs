@@ -27,7 +27,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Froe", typeof( Froe ), 20, 20, 0x10E5, 0 ) );
 				Add( new GenericBuyInfo( "Scorp", typeof( Scorp ), 20, 20, 0x10E7, 0 ) );
 				Add( new GenericBuyInfo( "Inshave", typeof( Inshave ), 20, 20, 0x10E6, 0 ) );
-				Add( new GenericBuyInfo( "Scie à queue d'aronde", typeof( DovetailSaw ), 20, 20, 0x1028, 0 ) );
+				Add( new GenericBuyInfo( "Scie Ã  queue d'aronde", typeof( DovetailSaw ), 20, 20, 0x1028, 0 ) );
 				Add( new GenericBuyInfo( "Scie", typeof( Saw ), 20, 20, 0x1034, 0 ) );
 				Add( new GenericBuyInfo( "Marteau", typeof( Hammer ), 20, 20, 0x102A, 0 ) );
 				/*Add( new GenericBuyInfo( typeof( MouldingPlane ), 11, 20, 0x102C, 0 ) );

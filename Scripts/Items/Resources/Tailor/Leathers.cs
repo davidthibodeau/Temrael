@@ -255,7 +255,7 @@ namespace Server.Items
         public DesertiqueLeather(int amount)
             : base(CraftResource.DesertiqueLeather, amount)
 		{
-            Name = "Cuir Désertique";
+            Name = "Cuir DÃ©sertique";
 		}
 
         public DesertiqueLeather(Serial serial)
@@ -362,7 +362,7 @@ namespace Server.Items
         public GeantLeather(int amount)
             : base(CraftResource.GeantLeather, amount)
         {
-            Name = "Cuir Géant";
+            Name = "Cuir GÃ©ant";
         }
 
         public GeantLeather(Serial serial)
@@ -578,7 +578,7 @@ namespace Server.Items
         public DemoniaqueLeather(int amount)
             : base(CraftResource.DemoniaqueLeather, amount)
         {
-            Name = "Cuir Démoniaque";
+            Name = "Cuir DÃ©moniaque";
         }
 
         public DemoniaqueLeather(Serial serial)

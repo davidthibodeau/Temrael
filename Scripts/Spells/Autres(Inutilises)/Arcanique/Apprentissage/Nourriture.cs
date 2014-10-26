@@ -33,7 +33,7 @@ namespace Server.Spells
 				new FoodInfo( typeof( CookedBird ), "un oiseau cuit" ),
 				//new FoodInfo( typeof( PigSausage ), "une saucisse" ),
 				new FoodInfo( typeof( Apple ), "une pomme" ),
-				new FoodInfo( typeof( Peach ), "une pêche" )
+				new FoodInfo( typeof( Peach ), "une pÃªche" )
 			};
 
 		public override void OnCast()

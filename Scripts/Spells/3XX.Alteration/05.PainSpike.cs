@@ -66,7 +66,7 @@ namespace Server.Spells
                 m.FixedParticles(0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head);
                 m.PlaySound(0x210);
 
-                //Le dÈg‚t est ajustÈ sur le % de vie restant de la cible, puisque c'est un sort de type ExÈcution/Finisher
+                //Le d√©g√¢t est ajust√© sur le % de vie restant de la cible, puisque c'est un sort de type Ex√©cution/Finisher
                 double damage = (m.HitsMax / m.Hits) * (GetDamageSkill(Caster) - GetResistSkill(m)) / 20 + (m.Player ? 15 : 27);
 
                 damage = SpellHelper.AdjustValue(Caster, damage);

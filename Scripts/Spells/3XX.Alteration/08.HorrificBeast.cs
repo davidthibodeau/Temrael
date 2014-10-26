@@ -16,7 +16,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Bête Horrifique", "Rel Xen Vas Bal",
+				"BÃªte Horrifique", "Rel Xen Vas Bal",
 				SpellCircle.Fifth,
 				203,
 				9031,

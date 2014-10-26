@@ -10,7 +10,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Démon", "Kal Vas Xen Corp",
+				"DÃ©mon", "Kal Vas Xen Corp",
 				SpellCircle.Eighth,
 				269,
 				9050,

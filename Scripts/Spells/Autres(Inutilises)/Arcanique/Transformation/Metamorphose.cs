@@ -77,11 +77,11 @@ namespace Server.Spells
                         int max = (int)(pm.Skills[SkillName.Hallucination].Base / 5);
 
                         if (pm.MetamorphoseList.Count >= max)
-                            pm.SendMessage("Vous ne pouvez pas avoir plus de " + max.ToString() + " créatures dans votre liste de métamorphoses.");
+                            pm.SendMessage("Vous ne pouvez pas avoir plus de " + max.ToString() + " crÃ©atures dans votre liste de mÃ©tamorphoses.");
                         else
                         {
                             pm.MetamorphoseList.Add((object)entry);
-                            pm.SendMessage("Vous ajoutez avec succès la créature à votre liste de métamorphoses.");
+                            pm.SendMessage("Vous ajoutez avec succÃ¨s la crÃ©ature Ã  votre liste de mÃ©tamorphoses.");
 
                             Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
                             Caster.PlaySound(0x3BD);
@@ -92,7 +92,7 @@ namespace Server.Spells
                     }
                 }
                 else
-                    Caster.SendMessage("Vous ne pouvez pas cibler des créatures transformées.");
+                    Caster.SendMessage("Vous ne pouvez pas cibler des crÃ©atures transformÃ©es.");
             }
 
             FinishSequence();

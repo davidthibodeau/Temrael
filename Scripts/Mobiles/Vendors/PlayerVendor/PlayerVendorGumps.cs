@@ -138,9 +138,9 @@ namespace Server.Gumps
 				int days = goldHeld / perRealWorldDay;
 
 				//AddHtmlLocalized( 40, 35, 260, 20, 1038318, 0x7FFF, false, false ); // # of days Vendor salary is paid for:
-                //AddLabel(40, 35, 0x480, "Le nombre de jour payé:");
+                //AddLabel(40, 35, 0x480, "Le nombre de jour payÃ©:");
 				//AddLabel( 300, 35, 0x480, days.ToString() );
-                AddHtml(40, 35, 200, 20, "<h3><basefont color=#FFFFFF>Le nombre de jour payé:<basefont></h3>", false, false);
+                AddHtml(40, 35, 200, 20, "<h3><basefont color=#FFFFFF>Le nombre de jour payÃ©:<basefont></h3>", false, false);
                 AddHtml(300, 35, 200, 20, "<h3><basefont color=#FFFFFF>" + days.ToString()+ "<basefont></h3>", false, false);
 			}
 
@@ -151,15 +151,15 @@ namespace Server.Gumps
             AddHtml(300, 58, 200, 20, "<h3><basefont color=#FFFFFF>" + perRealWorldDay.ToString()+ "<basefont></h3>", false, false);
             
 			//AddHtmlLocalized( 40, 82, 260, 20, 1038322, 0x7FFF, false, false ); // Gold held in my account: 
-            //AddLabel(40, 82, 0x480, "L'or du propriétaire:");
+            //AddLabel(40, 82, 0x480, "L'or du propriÃ©taire:");
 			//AddLabel( 300, 82, 0x480, goldHeld.ToString() );
-            AddHtml(40, 82, 200, 20, "<h3><basefont color=#FFFFFF>L'or du propriétaire:<basefont></h3>", false, false);
+            AddHtml(40, 82, 200, 20, "<h3><basefont color=#FFFFFF>L'or du propriÃ©taire:<basefont></h3>", false, false);
             AddHtml(300, 82, 200, 20, "<h3><basefont color=#FFFFFF>" + goldHeld.ToString()+ "<basefont></h3>", false, false);
 
 			//AddHtmlLocalized( 40, 108, 260, 20, 1062509, 0x7FFF, false, false ); // Shop Name:
-            //AddLabel(40, 106, 0x66D, "Nom de l'échoppe:");
+            //AddLabel(40, 106, 0x66D, "Nom de l'Ã©choppe:");
 			//AddLabel( 155, 106, 0x66D, vendor.ShopName );
-            AddHtml(40, 106, 200, 20, "<h3><basefont color=#FFFFFF>Nom de l'échoppe:<basefont></h3>", false, false);
+            AddHtml(40, 106, 200, 20, "<h3><basefont color=#FFFFFF>Nom de l'Ã©choppe:<basefont></h3>", false, false);
             AddHtml(160, 106, 200, 20, "<h3><basefont color=#FFFFFF>" + vendor.ShopName + "<basefont></h3>", false, false);
 
 			if ( vendor is RentedVendor )
@@ -181,7 +181,7 @@ namespace Server.Gumps
 			//AddHtmlLocalized( 408, 41, 120, 20, 1019069, 0x7FFF, false, false ); // Customize
 
 			AddButton( 390, 64, 0x15E1, 0x15E5, 3, GumpButtonType.Reply, 0 );
-            AddHtml(408, 61, 200, 20, "<h3><basefont color=#FFFFFF>Nommer l'Échoppe<basefont></h3>", false, false);
+            AddHtml(408, 61, 200, 20, "<h3><basefont color=#FFFFFF>Nommer l'Ã‰choppe<basefont></h3>", false, false);
             //AddLabel(408, 61, 0x480, "Renommer l'echoppe");
 			//AddHtmlLocalized( 408, 61, 120, 20, 1062434, 0x7FFF, false, false ); // Rename Shop
 

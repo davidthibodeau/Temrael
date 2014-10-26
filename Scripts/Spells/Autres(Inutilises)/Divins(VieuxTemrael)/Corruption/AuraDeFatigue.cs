@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.3);
 
-                m_AuraDeFatigueTable[m] = 1.35 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 500); // 35 à 75%
+                m_AuraDeFatigueTable[m] = 1.35 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 500); // 35 Ã  75%
 
                 Timer t = new AuraDeFatigueTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

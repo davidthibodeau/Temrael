@@ -16,7 +16,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Corps Mortifié", "In Agle Corp Ylem",
+				"Corps MortifiÃ©", "In Agle Corp Ylem",
 				SpellCircle.Third,
 				203,
 				9051,

@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public ExplosionScroll( int amount ) : base( ExplosionSpell.m_SpellID, 0x1F57, amount )
 		{
-            Name = "Évocation: Explosion";
+            Name = "Ã‰vocation: Explosion";
 		}
 
 		public ExplosionScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Explosion";
+            Name = "Ã‰vocation: Explosion";
 		}
 
 		/*public override Item Dupe( int amount )

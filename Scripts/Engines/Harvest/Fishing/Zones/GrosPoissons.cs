@@ -26,7 +26,7 @@ namespace Server.Engines.Harvest
             Veins = new HarvestVein[]
                 {
 				    new HarvestVein( 18.0, 0.0, HarvestZone.Resources[38], null ), //Grand Brochet
-				    new HarvestVein( 18.0, 0.0, HarvestZone.Resources[39], null ), //Grand Doré
+				    new HarvestVein( 18.0, 0.0, HarvestZone.Resources[39], null ), //Grand DorÃ©
 				    new HarvestVein( 18.0, 0.0, HarvestZone.Resources[40], null ), //Esturgeon mer
 				    new HarvestVein( 18.0, 0.0, HarvestZone.Resources[41], null ), //Grand Saumon
                     new HarvestVein( 15, 0.0, HarvestZone.Resources[42], null ), //Thon

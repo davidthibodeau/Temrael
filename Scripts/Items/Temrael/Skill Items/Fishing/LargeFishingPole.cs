@@ -29,7 +29,7 @@ namespace Server.Items
 		[Constructable]
 		public LargeFishingPole() : base( 0x0DC0 )
         {
-            Name = "grande canne à pêche";
+            Name = "grande canne Ã  pÃªche";
 			Layer = Layer.OneHanded;
 			Weight = 8.0;
         }
@@ -49,7 +49,7 @@ namespace Server.Items
             if (from.Skills[SkillName.Cuisine].Value >= 60.0)
                 Fishing.System.BeginHarvesting(from, this);
             else
-                from.SendMessage("Vous n'êtes pas assez compétent pour utiliser cet objet.");
+                from.SendMessage("Vous n'Ãªtes pas assez compÃ©tent pour utiliser cet objet.");
         }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)

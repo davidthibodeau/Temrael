@@ -15,7 +15,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Destruction Cérébrale", "Por Corp Wis",
+				"Destruction CÃ©rÃ©brale", "Por Corp Wis",
 				SpellCircle.Fifth,
 				218,
 				9032,

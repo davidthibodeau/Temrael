@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public InvisibilityScroll( int amount ) : base( InvisibilitySpell.m_SpellID, 0x1F58, amount )
 		{
-            Name = "Illusion: Invisibilité";
+            Name = "Illusion: InvisibilitÃ©";
 		}
 
 		public InvisibilityScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Illusion: Invisibilité";
+            Name = "Illusion: InvisibilitÃ©";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -78,7 +78,7 @@ namespace Server.Spells
             }
             else
             {
-                caster.SendMessage(0, "Le sort est déjà effectif sur : " + target.Name);
+                caster.SendMessage(0, "Le sort est dÃ©jÃ  effectif sur : " + target.Name);
             }
         }
 

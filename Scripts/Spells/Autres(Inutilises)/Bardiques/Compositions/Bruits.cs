@@ -16,7 +16,7 @@ namespace Server.Spells
         public static Hashtable m_BruitTable = new Hashtable();
         public static Hashtable m_Timers = new Hashtable();
 
-        //Identification des constantes utilisées (pour modification aisée)
+        //Identification des constantes utilisÃ©es (pour modification aisÃ©e)
         private const double bonus_donne = 0.0;
         private const int portee = 8;
 
@@ -40,7 +40,7 @@ namespace Server.Spells
                 TimeSpan duration = GetDurationForSpell(20, 1.5);
                 double amount = 1;
 
-                //Calcul du bonus donné par le sort (niveau * bonus_donne)
+                //Calcul du bonus donnÃ© par le sort (niveau * bonus_donne)
                 if (Caster is TMobile)
                 {
                     //amount += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
@@ -54,7 +54,7 @@ namespace Server.Spells
 
                 Party party = Engines.PartySystem.Party.Get(Caster);
 
-                //Définition des cibles du sort
+                //DÃ©finition des cibles du sort
                 m_target.Add(Caster);
 
                 if (map != null)

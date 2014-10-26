@@ -18,7 +18,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Éclair en Chaine", "Vas Ort Grav",
+				"Ã‰clair en Chaine", "Vas Ort Grav",
 				SpellCircle.Seventh,
 				209,
 				9022,

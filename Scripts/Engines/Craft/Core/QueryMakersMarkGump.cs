@@ -30,7 +30,7 @@ namespace Server.Engines.Craft
 			AddBackground( 0, 0, 220, 170, 5054 );
 			AddBackground( 10, 10, 200, 150, 3000 );
 
-            AddHtml(20, 20, 180, 80, "Voulez-vous graver votre nom sur l'objet que vous avez fabriqué ?", false, false);
+            AddHtml(20, 20, 180, 80, "Voulez-vous graver votre nom sur l'objet que vous avez fabriquÃ© ?", false, false);
 			//AddHtmlLocalized( 20, 20, 180, 80, 1018317, false, false ); // Do you wish to place your maker's mark on this item?
 
             AddHtml(55, 100, 140, 25, "Oui", false, false);
@@ -52,7 +52,7 @@ namespace Server.Engines.Craft
                 //m_From.SendLocalizedMessage( 501808 ); // You mark the item.
                 m_From.SendMessage("Vous gravez votre nom sur l'objet");
             else
-                m_From.SendMessage("Vous renoncez à graver l'objet");
+                m_From.SendMessage("Vous renoncez Ã  graver l'objet");
                 //m_From.SendLocalizedMessage(501809); // Cancelled mark.
 
 			m_CraftItem.CompleteCraft( m_Quality, makersMark, m_From, m_CraftSystem, m_TypeRes, m_Tool, null );

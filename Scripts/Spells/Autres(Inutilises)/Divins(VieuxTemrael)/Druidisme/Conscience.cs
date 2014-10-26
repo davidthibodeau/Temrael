@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.4);
 
-                m_ConscienceTable[m] = 0.02 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 4000); //2 à 7% par joueur.
+                m_ConscienceTable[m] = 0.02 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 4000); //2 Ã  7% par joueur.
 
                 Timer t = new ConscienceTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;
@@ -120,7 +120,7 @@ namespace Server.Spells
                     m_Owner.Target((Mobile)o);
                 }
                 else
-                    from.SendMessage("Vous ne pouvez cibler que vous-même !");
+                    from.SendMessage("Vous ne pouvez cibler que vous-mÃªme !");
             }
 
             protected override void OnTargetFinish(Mobile from)

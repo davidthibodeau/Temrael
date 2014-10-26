@@ -69,13 +69,13 @@ namespace Server.Misc
             }
             else if (Enabled)
             {
-                e.Mobile.SendMessage("Vous avez annulé l'arrêt serveur.");
+                e.Mobile.SendMessage("Vous avez annulÃ© l'arrÃªt serveur.");
                 World.Broadcast(0x22, true, "La sequence de redemarrage a ete annule.");
                 Enabled = false;
             }
             else
             {
-                e.Mobile.SendMessage("L'arrêt serveur n'était pas programmé.");
+                e.Mobile.SendMessage("L'arrÃªt serveur n'Ã©tait pas programmÃ©.");
             }
 		}
 

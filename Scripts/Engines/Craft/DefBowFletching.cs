@@ -88,22 +88,22 @@ namespace Server.Engines.Craft
 			int index = -1;
 
             #region Materials
-            /*index = AddCraft(typeof(Board), "Matériaux", "Planche", 0.0, 0.0, typeof(Log), 1044466, 1, 1044465);
+            /*index = AddCraft(typeof(Board), "MatÃ©riaux", "Planche", 0.0, 0.0, typeof(Log), 1044466, 1, 1044465);
             SetUseAllRes(index, true);*/
 
-            //AddCraft(typeof(Kindling), "Matériaux", "Branchette", 0.0, 00.0, typeof(Log), 1044041, 1, 1044351);
+            //AddCraft(typeof(Kindling), "MatÃ©riaux", "Branchette", 0.0, 00.0, typeof(Log), 1044041, 1, 1044351);
 
-            index = AddCraft(typeof(Shaft), "Matériaux", "Manche", 0.0, 5.0, typeof(Kindling), "Brindille", 1, 1044351);
+            index = AddCraft(typeof(Shaft), "MatÃ©riaux", "Manche", 0.0, 5.0, typeof(Kindling), "Brindille", 1, 1044351);
             SetUseAllRes(index, true);
             #endregion
 
             #region Ammunition
             // Ammunition
-            index = AddCraft(typeof(Arrow), "Munitions", "Flèche", 0.0, 10.0, typeof(Shaft), "Manche", 1, 1044561);
+            index = AddCraft(typeof(Arrow), "Munitions", "FlÃ¨che", 0.0, 10.0, typeof(Shaft), "Manche", 1, 1044561);
 			AddRes( index, typeof( Feather ), "Plume", 1, 1044563 );
 			SetUseAllRes( index, true );
 
-            index = AddCraft(typeof(Bolt), "Munitions", "Courte Flèche", 0.0, 10.0, typeof(Shaft), "Manche", 1, 1044561);
+            index = AddCraft(typeof(Bolt), "Munitions", "Courte FlÃ¨che", 0.0, 10.0, typeof(Shaft), "Manche", 1, 1044561);
 			AddRes( index, typeof( Feather ), "Plume", 1, 1044563 );
 			SetUseAllRes( index, true );
             #endregion
@@ -121,7 +121,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Mirielle), "Arc", "Mirielle", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
             index = AddCraft(typeof(Composite), "Arc", "Composite", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
             index = AddCraft(typeof(Sombrevent), "Arc", "Sombrevent", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
-            index = AddCraft(typeof(Flamfleche), "Arc", "Flamflèche", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Flamfleche), "Arc", "FlamflÃ¨che", 50.0, 80.0, typeof(Log), 1044041, 8, 1044351);
             index = AddCraft(typeof(Foudre), "Arc", "Foudre", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
             index = AddCraft(typeof(Sifflecrin), "Arc", "Sifflecrin", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
             index = AddCraft(typeof(Foliere), "Arc", "Foliere", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
@@ -132,15 +132,15 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Crossbow
-            index = AddCraft(typeof(Arbalete), "Arbalète", "Arbalète", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
-            index = AddCraft(typeof(ArbaleteLourde), "Arbalète", "Arbalète Lourde", 20.0, 50.0, typeof(Log), 1044041, 8, 1044351);
-            index = AddCraft(typeof(Crossbow), "Arbalète", "Arbalète à Méchanisme", 30.0, 60.0, typeof(Log), 1044041, 7, 1044351);
-            index = AddCraft(typeof(HeavyCrossbow), "Arbalète", "Arbalète Décoré", 30.0, 60.0, typeof(Log), 1044041, 8, 1044351);
-            index = AddCraft(typeof(ArbaleteRepetition), "Arbalète", "Arbalète à Répétition", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
-            index = AddCraft(typeof(Percemurs), "Arbalète", "Percemurs", 50.0, 80.0, typeof(Log), 1044041, 6, 1044351);
-            index = AddCraft(typeof(ArbaletePistolet), "Arbalète", "Arbalète à Main", 60.0, 90.0, typeof(Log), 1044041, 7, 1044351);
-            index = AddCraft(typeof(Arbavive), "Arbalète", "Arbavive", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
-            index = AddCraft(typeof(Lumitrait), "Arbalète", "Lumitrait", 70.0, 100.0, typeof(Log), 1044041, 7, 1044351);
+            index = AddCraft(typeof(Arbalete), "ArbalÃ¨te", "ArbalÃ¨te", 10.0, 40.0, typeof(Log), 1044041, 6, 1044351);
+            index = AddCraft(typeof(ArbaleteLourde), "ArbalÃ¨te", "ArbalÃ¨te Lourde", 20.0, 50.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Crossbow), "ArbalÃ¨te", "ArbalÃ¨te Ã  MÃ©chanisme", 30.0, 60.0, typeof(Log), 1044041, 7, 1044351);
+            index = AddCraft(typeof(HeavyCrossbow), "ArbalÃ¨te", "ArbalÃ¨te DÃ©corÃ©", 30.0, 60.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(ArbaleteRepetition), "ArbalÃ¨te", "ArbalÃ¨te Ã  RÃ©pÃ©tition", 40.0, 70.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Percemurs), "ArbalÃ¨te", "Percemurs", 50.0, 80.0, typeof(Log), 1044041, 6, 1044351);
+            index = AddCraft(typeof(ArbaletePistolet), "ArbalÃ¨te", "ArbalÃ¨te Ã  Main", 60.0, 90.0, typeof(Log), 1044041, 7, 1044351);
+            index = AddCraft(typeof(Arbavive), "ArbalÃ¨te", "Arbavive", 60.0, 90.0, typeof(Log), 1044041, 8, 1044351);
+            index = AddCraft(typeof(Lumitrait), "ArbalÃ¨te", "Lumitrait", 70.0, 100.0, typeof(Log), 1044041, 7, 1044351);
             #endregion
 
             #region Weapons
@@ -159,17 +159,17 @@ namespace Server.Engines.Craft
             }*/
             #endregion
 
-            SetSubRes(typeof(Log), "Érable");
+            SetSubRes(typeof(Log), "Ã‰rable");
 
             // Add every material you want the player to be able to choose from
             // This will override the overridable material	TODO: Verify the required skill amount
-            AddSubRes(typeof(Log), "Érable", 00.0, 1072652);
+            AddSubRes(typeof(Log), "Ã‰rable", 00.0, 1072652);
             AddSubRes(typeof(PinLog), "Pin", 10.0, 1072652);
-            AddSubRes(typeof(CypresLog), "Cyprès", 20.0, 1072652);
-            AddSubRes(typeof(CedreLog), "Cèdre", 30.0, 1072652);
+            AddSubRes(typeof(CypresLog), "CyprÃ¨s", 20.0, 1072652);
+            AddSubRes(typeof(CedreLog), "CÃ¨dre", 30.0, 1072652);
             AddSubRes(typeof(SauleLog), "Saule", 40.0, 1072652);
-            AddSubRes(typeof(CheneLog), "Chêne", 50.0, 1072652);
-            AddSubRes(typeof(EbeneLog), "Ébène", 60.0, 1072652);
+            AddSubRes(typeof(CheneLog), "ChÃªne", 50.0, 1072652);
+            AddSubRes(typeof(EbeneLog), "Ã‰bÃ¨ne", 60.0, 1072652);
             AddSubRes(typeof(AcajouLog), "Acajou", 70.0, 1072652);
 
             MarkOption = true;

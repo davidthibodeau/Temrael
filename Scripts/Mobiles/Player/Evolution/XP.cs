@@ -35,7 +35,7 @@ namespace Server
             // Comme en haut. A supprimer apres la date
             if (LastReset.AddDays(now < new DateTime(2014, 5, 11, 3, 0, 0) ? 8 : 7) < now)
             {
-                Console.WriteLine("Le dernier reset de gain d'xp hebdomadaire était le {0}. Un reset est maintenant fait.", LastReset.ToString());
+                Console.WriteLine("Le dernier reset de gain d'xp hebdomadaire Ã©tait le {0}. Un reset est maintenant fait.", LastReset.ToString());
                 ResetEndOfDay();
             }
 
@@ -53,7 +53,7 @@ namespace Server
             {
                 TMobile m = e.Mobile as TMobile;
                 m.XPMode = !m.XPMode;
-                m.SendMessage("Vous avez choisi le mode d'expérience " + (!m.XPMode ? "journalier." : "hebdomadaire."));
+                m.SendMessage("Vous avez choisi le mode d'expÃ©rience " + (!m.XPMode ? "journalier." : "hebdomadaire."));
             }
         }
 

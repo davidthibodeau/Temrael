@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public MindRotScroll( int amount ) : base( MindRotSpell.m_SpellID, 0x2267, amount )
 		{
-            Name = "Nécromancie: Pourriture";
+            Name = "NÃ©cromancie: Pourriture";
 		}
 
 		public MindRotScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Pourriture";
+            Name = "NÃ©cromancie: Pourriture";
 		}
 
 		/*public override Item Dupe( int amount )

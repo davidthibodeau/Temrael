@@ -96,7 +96,7 @@ namespace Server.Items
                 }
                 else if (bowl.HasPlant)
                 {
-                    from.SendMessage("Il y a déja une graine dans ce pot.");
+                    from.SendMessage("Il y a dÃ©ja une graine dans ce pot.");
                 }
                 else
                 {
@@ -509,7 +509,7 @@ namespace Server.Items
     public class ImmortelleSeed : BaseSeed
     {
         public override PlantType PlantType { get { return PlantType.Immortelle; } }
-        public override string SeedName { get { return "Immortelle à bractées"; } }
+        public override string SeedName { get { return "Immortelle Ã  bractÃ©es"; } }
 
         [Constructable]
         public ImmortelleSeed() : base()
@@ -826,7 +826,7 @@ namespace Server.Items
     public class ChicoreSeed : BaseSeed
     {
         public override PlantType PlantType { get { return PlantType.Chicore; } }
-        public override string SeedName { get { return "Chicorée"; } }
+        public override string SeedName { get { return "ChicorÃ©e"; } }
 
         [Constructable]
         public ChicoreSeed()
@@ -862,7 +862,7 @@ namespace Server.Items
     public class AchilleeSeed : BaseSeed
     {
         public override PlantType PlantType { get { return PlantType.Achillee; } }
-        public override string SeedName { get { return "Achillée"; } }
+        public override string SeedName { get { return "AchillÃ©e"; } }
 
         [Constructable]
         public AchilleeSeed()
@@ -1006,7 +1006,7 @@ namespace Server.Items
     public class BuplevreSeed : BaseSeed
     {
         public override PlantType PlantType { get { return PlantType.Buplevre; } }
-        public override string SeedName { get { return "Buplèvre"; } }
+        public override string SeedName { get { return "BuplÃ¨vre"; } }
 
         [Constructable]
         public BuplevreSeed()
@@ -1186,7 +1186,7 @@ namespace Server.Items
     public class BetoineSeed : BaseSeed
     {
         public override PlantType PlantType { get { return PlantType.Betoine; } }
-        public override string SeedName { get { return "Bétoine"; } }
+        public override string SeedName { get { return "BÃ©toine"; } }
 
         [Constructable]
         public BetoineSeed()

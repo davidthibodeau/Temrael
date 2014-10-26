@@ -93,7 +93,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Backgammon", typeof( Backgammon ), 5, 20, 0xE1C, 0 ) );
 				if ( Core.AOS )
 					Add( new GenericBuyInfo( "Mahjong", typeof( Engines.Mahjong.MahjongGame ), 10, 20, 0xFAA, 0 ) );
-				Add( new GenericBuyInfo( "Dés", typeof( Dices ), 2, 20, 0xFA7, 0 ) );
+				Add( new GenericBuyInfo( "DÃ©s", typeof( Dices ), 2, 20, 0xFA7, 0 ) );
 
 				/*if ( Core.AOS )
 				{

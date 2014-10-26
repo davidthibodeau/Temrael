@@ -277,7 +277,7 @@ namespace Server.Items
         public DesertiqueBone(int amount)
             : base(CraftResource.DesertiqueBones, amount)
         {
-            Name = "Os Désertique";
+            Name = "Os DÃ©sertique";
         }
 
         public DesertiqueBone(Serial serial)
@@ -382,7 +382,7 @@ namespace Server.Items
         public GeantBone(int amount)
             : base(CraftResource.GeantBones, amount)
         {
-            Name = "Os Géant";
+            Name = "Os GÃ©ant";
         }
 
         public GeantBone(Serial serial)
@@ -592,7 +592,7 @@ namespace Server.Items
         public DemonBone(int amount)
             : base(CraftResource.DemonBones, amount)
         {
-            Name = "Os Démoniaque";
+            Name = "Os DÃ©moniaque";
         }
 
         public DemonBone(Serial serial)

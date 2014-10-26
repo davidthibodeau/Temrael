@@ -16,7 +16,7 @@ namespace Server.Items
         public StrangleScroll(int amount)
             : base(StrangleSpell.m_SpellID, 0x226A, amount)
 		{
-            Name = "Nécromancie: Étranglement";
+            Name = "NÃ©cromancie: Ã‰tranglement";
 		}
 
 		public StrangleScroll( Serial serial ) : base( serial )
@@ -36,7 +36,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Étranglement";
+            Name = "NÃ©cromancie: Ã‰tranglement";
 		}
 
 		/*public override Item Dupe( int amount )

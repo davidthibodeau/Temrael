@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public FireFieldScroll( int amount ) : base( FireFieldSpell.m_SpellID, 0x1F48, amount )
 		{
-            Name = "Évocation: Mur de Feu";
+            Name = "Ã‰vocation: Mur de Feu";
 		}
 
 		public FireFieldScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Mur de Feu";
+            Name = "Ã‰vocation: Mur de Feu";
 		}
 
 		/*public override Item Dupe( int amount )

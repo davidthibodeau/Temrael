@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Exécration", "Desu Sowi",
+                "ExÃ©cration", "Desu Sowi",
                 SpellCircle.Fourth,
                 212,
                 9041
@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.3);
 
-                m_ExecrationTable[m] = 0.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 500); // 10 à 50%
+                m_ExecrationTable[m] = 0.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 500); // 10 Ã  50%
 
                 Timer t = new ExecrationTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

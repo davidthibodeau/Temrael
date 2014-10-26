@@ -86,7 +86,7 @@ namespace Server.Spells
                                 }
                                 /*else if (m_Corpse != null && m_Corpse.InBones)
                                 {
-                                    Caster.SendMessage("Vous ne pouvez animer la mort à partir de ce corps.");
+                                    Caster.SendMessage("Vous ne pouvez animer la mort Ã  partir de ce corps.");
                                 }*/
                                 else
                                 {
@@ -190,7 +190,7 @@ namespace Server.Spells
                 AddBackground(30, 19, 231, 190, 9270);
                 AddBackground(46, 33, 200, 31, 9400);
 
-                AddLabel(52, 39, 2101, "Choisissez le type de créature");
+                AddLabel(52, 39, 2101, "Choisissez le type de crÃ©ature");
 
                 for (int i = 0; i < m_Entries.Length; ++i)
                 {
@@ -233,7 +233,7 @@ namespace Server.Spells
                     //if (!corpse.InBones)
                         m_Caster.SendGump(new AnimateDeadGump(m_Caster, m_Scroll, corpse, corpse.Location));
                     //else
-                    //    m_Caster.SendMessage("Vous ne pouvez animer la mort à partir de ce corps.");
+                    //    m_Caster.SendMessage("Vous ne pouvez animer la mort Ã  partir de ce corps.");
                 }
 			}
 		}

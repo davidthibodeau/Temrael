@@ -146,7 +146,7 @@ namespace Server.Mobiles
 
             if (m_NextMountAbility > DateTime.Now)
             {
-                from.SendMessage("Vous ne pouvez pas remontez si tôt à cheval !");
+                from.SendMessage("Vous ne pouvez pas remontez si tÃ´t Ã  cheval !");
                 return;
             }
 

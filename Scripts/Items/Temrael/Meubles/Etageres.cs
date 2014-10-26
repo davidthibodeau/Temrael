@@ -104,7 +104,7 @@ namespace Server.Items
 		public EtagereD() : base( 0x2320 )
 		{
 			Weight = 5.0;
-            Name = "Etagère sur trois niveaux claire";
+            Name = "EtagÃ¨re sur trois niveaux claire";
 		}
 
 		public EtagereD(Serial serial) : base(serial)
@@ -136,7 +136,7 @@ namespace Server.Items
 		public EtagereE() : base( 0x2322 )
 		{
 			Weight = 5.0;
-            Name = "Etagère sur trois niveaux bourgogne";
+            Name = "EtagÃ¨re sur trois niveaux bourgogne";
 		}
 
 		public EtagereE(Serial serial) : base(serial)
@@ -167,7 +167,7 @@ namespace Server.Items
 		public EtagereF() : base( 0x2340 )
 		{
 			Weight = 5.0;
-            Name = "Etagère sur trois niveaux sombre";
+            Name = "EtagÃ¨re sur trois niveaux sombre";
 		}
 
 		public EtagereF(Serial serial) : base(serial)

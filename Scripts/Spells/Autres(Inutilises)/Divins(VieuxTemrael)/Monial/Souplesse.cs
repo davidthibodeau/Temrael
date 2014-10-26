@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.4);
 
-                m_SouplesseTable[m] = 1.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 400); // 10 à 60%
+                m_SouplesseTable[m] = 1.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 400); // 10 Ã  60%
 
                 Timer t = new SouplesseTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

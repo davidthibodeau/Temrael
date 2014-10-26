@@ -82,7 +82,7 @@ namespace Server.Spells
                     m_Owner.Target((BaseCreature)o);
                 }
                 else
-                    from.SendMessage("Vous ne pouvez contrôler que les créatures!");
+                    from.SendMessage("Vous ne pouvez contrÃ´ler que les crÃ©atures!");
 			}
 
 			protected override void OnTargetFinish( Mobile from )

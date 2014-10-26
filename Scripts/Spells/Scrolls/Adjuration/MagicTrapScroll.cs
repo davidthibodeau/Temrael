@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public MagicTrapScroll( int amount ) : base( MagicTrapSpell.m_SpellID, 0x1F39, amount )
 		{
-            Name = "Adjuration: Piège Magique";
+            Name = "Adjuration: PiÃ¨ge Magique";
 		}
 
 		public MagicTrapScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Adjuration: Piège Magique";
+            Name = "Adjuration: PiÃ¨ge Magique";
 		}
 
 		/*public override Item Dupe( int amount )

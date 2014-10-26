@@ -318,7 +318,7 @@ namespace Server.Engines.Harvest
         public virtual void SendSuccessTo(Mobile from, Item item, HarvestResource resource)
         {
             /*if (item is BaseTreasureMapPart)
-                from.SendMessage("Vous trouvez un morceau de carte au trésor et le placez dans votre sac !");
+                from.SendMessage("Vous trouvez un morceau de carte au trÃ©sor et le placez dans votre sac !");
             else
                 resource.SendSuccessTo(from);*/
         }
@@ -425,7 +425,7 @@ namespace Server.Engines.Harvest
             if (from.Frozen || from.Paralyzed || !from.Alive)
             {
                 from.EndAction(locked);
-                from.SendMessage("Assez dur de récolter lorsque vous ne pouvez pas bouger.");
+                from.SendMessage("Assez dur de rÃ©colter lorsque vous ne pouvez pas bouger.");
                 return false;
             }
 
@@ -529,7 +529,7 @@ namespace Server.Engines.Harvest
 
                 if (bank != null && bank.Vein.PrimaryResource.ReqSkill > from.Skills[def.Skill].Value)
                 {
-                    from.SendMessage("Vous n'êtes pas assez compétent pour bûcher cet arbre.");
+                    from.SendMessage("Vous n'Ãªtes pas assez compÃ©tent pour bÃ»cher cet arbre.");
                     return;
                 }
             }

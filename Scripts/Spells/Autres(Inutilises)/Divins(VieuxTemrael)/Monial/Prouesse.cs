@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.3);
 
-                m_ProuesseTable[m] = 1.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 1000); // 10 à 30%
+                m_ProuesseTable[m] = 1.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 1000); // 10 Ã  30%
 
                 Timer t = new ProuesseTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

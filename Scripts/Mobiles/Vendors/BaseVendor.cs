@@ -1129,10 +1129,10 @@ namespace Server.Mobiles
                     SayTo(buyer, "Vous etes notre dieu vous n'avez pas a payer.");
 					//SayTo( buyer, true, "I would not presume to charge thee anything.  Here are the goods you requested." );
 				else if ( fromBank )
-                    SayTo(buyer, "L'achat total s'élève à {0} écus, qui ont été pris de votre banque.", totalCost);
+                    SayTo(buyer, "L'achat total s'Ã©lÃ¨ve Ã  {0} Ã©cus, qui ont Ã©tÃ© pris de votre banque.", totalCost);
 					//SayTo( buyer, true, "The total of thy purchase is {0} gold, which has been withdrawn from your bank account.  My thanks for the patronage.", totalCost );
 				else
-                    SayTo(buyer,  "L'achat total s'élève à {0} écus.", totalCost);
+                    SayTo(buyer,  "L'achat total s'Ã©lÃ¨ve Ã  {0} Ã©cus.", totalCost);
 					//SayTo( buyer, true, "The total of thy purchase is {0} gold.  My thanks for the patronage.", totalCost );
 			}
 			else
@@ -1141,10 +1141,10 @@ namespace Server.Mobiles
                     SayTo(buyer, "Vous etes notre dieu vous n'avez pas a payer.");
 					//SayTo( buyer, true, "I would not presume to charge thee anything.  Unfortunately, I could not sell you all the goods you requested." );
 				else if ( fromBank )
-                    SayTo(buyer, "L'achat total s'élève à {0} écus, qui ont été pris de votre banque. Malheureusement je n'ai pas pu tout vous vendre à ce prix.", totalCost);
+                    SayTo(buyer, "L'achat total s'Ã©lÃ¨ve Ã  {0} Ã©cus, qui ont Ã©tÃ© pris de votre banque. Malheureusement je n'ai pas pu tout vous vendre Ã  ce prix.", totalCost);
 					//SayTo( buyer, true, "The total of thy purchase is {0} gold, which has been withdrawn from your bank account.  My thanks for the patronage.  Unfortunately, I could not sell you all the goods you requested.", totalCost );
 				else
-                    SayTo(buyer, "L'achat total s'élève à {0} écus. Malheureusement je n'ai pas pu tout vous vendre à ce prix.", totalCost);
+                    SayTo(buyer, "L'achat total s'Ã©lÃ¨ve Ã  {0} Ã©cus. Malheureusement je n'ai pas pu tout vous vendre Ã  ce prix.", totalCost);
 					//SayTo( buyer, true, "The total of thy purchase is {0} gold.  My thanks for the patronage.  Unfortunately, I could not sell you all the goods you requested.", totalCost );
 			}
 

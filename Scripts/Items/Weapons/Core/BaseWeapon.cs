@@ -1482,7 +1482,7 @@ namespace Server.Items
                 list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
                 if (m_CrafterName != null)
-                    list.Add(1060394, "{0}\t{1}", couleur, "FabriquËﬂpar: " + m_CrafterName); // FabriquËﬂpar: ~1_NAME~
+                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqu√®√üpar: " + m_CrafterName); // Fabriqu√®√üpar: ~1_NAME~
 
                 #region Factions
                 if (FactionItemState != null)

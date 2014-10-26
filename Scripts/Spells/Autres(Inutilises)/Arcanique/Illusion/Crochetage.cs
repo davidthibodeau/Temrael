@@ -61,7 +61,7 @@ namespace Server.Spells
 					}
 					else
 					{
-                        Caster.SendMessage("Vous n'êtes pas assez compétent pour ouvrir ce coffre !");
+                        Caster.SendMessage("Vous n'Ãªtes pas assez compÃ©tent pour ouvrir ce coffre !");
 					}
 				}
 				else

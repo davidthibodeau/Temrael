@@ -79,7 +79,7 @@ namespace Server.Items
 		public StatueBoisEcureuil() : base( 0x24D0 )
 		{
 			Weight = 10.0;
-            Name = "Statue d'écureuil";
+            Name = "Statue d'Ã©cureuil";
 		}
 
         public StatueBoisEcureuil(Serial serial)

@@ -17,7 +17,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Présage Malsain", "Pas Tym An Sanct",
+				"PrÃ©sage Malsain", "Pas Tym An Sanct",
 				SpellCircle.Second,
 				203,
 				9031,

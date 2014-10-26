@@ -66,11 +66,11 @@ namespace Server.Gumps
             new SpellBookEntry( 1, SkillName.Evocation, "Fleche Mag.", MagicArrowSpell.Info.Reagents, 0x8D2, 3, MagicArrowSpell.m_SpellID),
             new SpellBookEntry( 2, SkillName.Evocation, "Boule de Feu", FireballSpell.Info.Reagents, 0x8D1, 3, FireballSpell.m_SpellID),
             new SpellBookEntry( 3, SkillName.Evocation, "Explosion", ExplosionSpell.Info.Reagents, 0x8EA, 6, ExplosionSpell.m_SpellID),
-            new SpellBookEntry( 4, SkillName.Evocation, "Énergie", EnergyBoltSpell.Info.Reagents, 0x8E9, 6, EnergyBoltSpell.m_SpellID),
-            new SpellBookEntry( 5, SkillName.Evocation,"Éclair", LightningSpell.Info.Reagents, 0x8DD, 4, LightningSpell.m_SpellID),
+            new SpellBookEntry( 4, SkillName.Evocation, "Ã‰nergie", EnergyBoltSpell.Info.Reagents, 0x8E9, 6, EnergyBoltSpell.m_SpellID),
+            new SpellBookEntry( 5, SkillName.Evocation,"Ã‰clair", LightningSpell.Info.Reagents, 0x8DD, 4, LightningSpell.m_SpellID),
             //new SpellBookEntry( 6, SkillName.Evocation, "Vortex", new Type[] { typeof(Bloodmoss), typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade) }, 0x8F9, 8, 58),
             new SpellBookEntry( 7, SkillName.Evocation, "Tremblement", EarthquakeSpell.Info.Reagents, 0x8F8, 8, EarthquakeSpell.m_SpellID),
-            new SpellBookEntry( 8, SkillName.Evocation, "Chaine d'Éclair", ChainLightningSpell.Info.Reagents, 0x8F0, 7, ChainLightningSpell.m_SpellID),
+            new SpellBookEntry( 8, SkillName.Evocation, "Chaine d'Ã‰clair", ChainLightningSpell.Info.Reagents, 0x8F0, 7, ChainLightningSpell.m_SpellID),
             new SpellBookEntry( 9, SkillName.Evocation, "Mur de Feu", FireFieldSpell.Info.Reagents, 0x8DB, 4, FireFieldSpell.m_SpellID),
             new SpellBookEntry( 10, SkillName.Evocation, "Jet de Flamme", FlameStrikeSpell.Info.Reagents, 0x8F2, 7, FlameStrikeSpell.m_SpellID),
 
@@ -84,15 +84,15 @@ namespace Server.Gumps
             //new SpellBookEntry( 6, SkillName.Immuabilite, "Lenteur", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
             //new SpellBookEntry( 7, SkillName.Immuabilite, "Champs de stase", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
             //new SpellBookEntry( 8, SkillName.Immuabilite, "Golem", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
-            //new SpellBookEntry( 9, SkillName.Immuabilite, "Pétrification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
+            //new SpellBookEntry( 9, SkillName.Immuabilite, "PÃ©trification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
 
             // Alteration
             new SpellBookEntry( 1, SkillName.Alteration, "Pourriture", MindRotSpell.Info.Reagents, 0x8D2, 3, MindRotSpell.m_SpellID),
             new SpellBookEntry( 2, SkillName.Alteration, "Arme maudite", CurseWeaponSpell.Info.Reagents, 0x8D2, 3, CurseWeaponSpell.m_SpellID),
             new SpellBookEntry( 3, SkillName.Alteration, "Pacte de sang", BloodOathSpell.Info.Reagents, 0x8D2, 3, BloodOathSpell.m_SpellID),
-            new SpellBookEntry( 4, SkillName.Alteration, "Présage maléf.", EvilOmenSpell.Info.Reagents, 0x8D2, 3, EvilOmenSpell.m_SpellID),
+            new SpellBookEntry( 4, SkillName.Alteration, "PrÃ©sage malÃ©f.", EvilOmenSpell.Info.Reagents, 0x8D2, 3, EvilOmenSpell.m_SpellID),
             new SpellBookEntry( 5, SkillName.Alteration, "Douleur", PainSpikeSpell.Info.Reagents, 0x8D2, 3, PainSpikeSpell.m_SpellID),
-            new SpellBookEntry( 6, SkillName.Alteration, "Étranglement", StrangleSpell.Info.Reagents, 0x8D2, 3, StrangleSpell.m_SpellID),
+            new SpellBookEntry( 6, SkillName.Alteration, "Ã‰tranglement", StrangleSpell.Info.Reagents, 0x8D2, 3, StrangleSpell.m_SpellID),
             new SpellBookEntry( 7, SkillName.Alteration, "Peau de cadav.", CorpseSkinSpell.Info.Reagents, 0x8D2, 3, CorpseSkinSpell.m_SpellID),
             new SpellBookEntry( 8, SkillName.Alteration, "Monstre", HorrificBeastSpell.Info.Reagents, 0x8D2, 3, HorrificBeastSpell.m_SpellID),
 
@@ -102,19 +102,19 @@ namespace Server.Gumps
             //Providence
             new SpellBookEntry( 1, SkillName.Providence, "Armure mage", ReactiveArmorSpell.Info.Reagents, 0x8D2, 3, ReactiveArmorSpell.m_SpellID),
             new SpellBookEntry( 2, SkillName.Providence, "Protection", ProtectionSpell.Info.Reagents, 0x8D2, 3, ProtectionSpell.m_SpellID),
-            new SpellBookEntry( 3, SkillName.Providence, "Bénédiction", BlessSpell.Info.Reagents, 0x8D2, 3, BlessSpell.m_SpellID),
+            new SpellBookEntry( 3, SkillName.Providence, "BÃ©nÃ©diction", BlessSpell.Info.Reagents, 0x8D2, 3, BlessSpell.m_SpellID),
             new SpellBookEntry( 4, SkillName.Providence, "Force", StrengthSpell.Info.Reagents, 0x8D2, 3, StrengthSpell.m_SpellID),
-            new SpellBookEntry( 5, SkillName.Providence, "Agilité", AgilitySpell.Info.Reagents, 0x8D2, 3, AgilitySpell.m_SpellID),
+            new SpellBookEntry( 5, SkillName.Providence, "AgilitÃ©", AgilitySpell.Info.Reagents, 0x8D2, 3, AgilitySpell.m_SpellID),
             new SpellBookEntry( 6, SkillName.Providence, "Astuce", CunningSpell.Info.Reagents, 0x8D2, 3, CunningSpell.m_SpellID),
             new SpellBookEntry( 7, SkillName.Providence, "Reflection", MagicReflectSpell.Info.Reagents, 0x8D2, 3, MagicReflectSpell.m_SpellID),
             //new SpellBookEntry( 1, SkillName.Providence, "Sacrifice", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Providence, "Peau de pierre", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Providence, "Champ entropique", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            //new SpellBookEntry( 1, SkillName.Providence, "Bénédiction de masse", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            //new SpellBookEntry( 1, SkillName.Providence, "BÃ©nÃ©diction de masse", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
 
             //Transmutation
-            //new SpellBookEntry( 1, SkillName.Transmutation, "Évasion", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            new SpellBookEntry( 2, SkillName.Transmutation, "Téléportation", TeleportSpell.Info.Reagents, 0x8D2, 3, TeleportSpell.m_SpellID),
+            //new SpellBookEntry( 1, SkillName.Transmutation, "Ã‰vasion", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            new SpellBookEntry( 2, SkillName.Transmutation, "TÃ©lÃ©portation", TeleportSpell.Info.Reagents, 0x8D2, 3, TeleportSpell.m_SpellID),
             new SpellBookEntry( 3, SkillName.Transmutation, "Convocation", SummonCreatureSpell.Info.Reagents, 0x8D2, 3, SummonCreatureSpell.m_SpellID),
             //new SpellBookEntry( 4, SkillName.Transmutation, "Supression mag.", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             new SpellBookEntry( 5, SkillName.Transmutation, "Renvoi", DispelSpell.Info.Reagents, 0x8D2, 3, DispelSpell.m_SpellID),
@@ -126,16 +126,16 @@ namespace Server.Gumps
             new SpellBookEntry( 1, SkillName.Thaumaturgie, "Soins", HealSpell.Info.Reagents, 0x8D2, 3, HealSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Thaumaturgie, "Antidote", CureSpell.Info.Reagents, 0x8D2, 3, CureSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Thaumaturgie, "Soins majeurs", GreaterHealSpell.Info.Reagents, 0x8D2, 3, GreaterHealSpell.m_SpellID),
-            //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Totem de guérison", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Totem de guÃ©rison", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Pacification", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Dernier souffle", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Adrénaline", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            //new SpellBookEntry( 1, SkillName.Thaumaturgie, "AdrÃ©naline", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
 
             //Hallucination
-            new SpellBookEntry( 1, SkillName.Hallucination, "Invisibilité", InvisibilitySpell.Info.Reagents, 0x8D2, 3, InvisibilitySpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Hallucination, "InvisibilitÃ©", InvisibilitySpell.Info.Reagents, 0x8D2, 3, InvisibilitySpell.m_SpellID),
             //new SpellBookEntry( 1, SkillName.Hallucination, "Confusion", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Hallucination, "Ventriloquie", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            //new SpellBookEntry( 1, SkillName.Hallucination, "Schizophrénie", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            //new SpellBookEntry( 1, SkillName.Hallucination, "SchizophrÃ©nie", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Hallucination, "Dissimulation", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Hallucination, "Copie", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Hallucination, "Clone", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
@@ -146,7 +146,7 @@ namespace Server.Gumps
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Faiblesse", WeakenSpell.Info.Reagents, 0x8D2, 3, WeakenSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Maladresse", ClumsySpell.Info.Reagents, 0x8D2, 3, ClumsySpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Abrutissement", FeeblemindSpell.Info.Reagents, 0x8D2, 3, FeeblemindSpell.m_SpellID),
-            new SpellBookEntry( 1, SkillName.Ensorcellement, "Malédiction", CurseSpell.Info.Reagents, 0x8D2, 3, CurseSpell.m_SpellID),
+            new SpellBookEntry( 1, SkillName.Ensorcellement, "MalÃ©diction", CurseSpell.Info.Reagents, 0x8D2, 3, CurseSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Douleur", HarmSpell.Info.Reagents, 0x8D2, 3, HarmSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Drain de mana", ManaDrainSpell.Info.Reagents, 0x8D2, 3, ManaDrainSpell.m_SpellID),
             new SpellBookEntry( 1, SkillName.Ensorcellement, "Drain vampiriq.", ManaVampireSpell.Info.Reagents, 0x8D2, 3, ManaVampireSpell.m_SpellID),
@@ -168,9 +168,9 @@ namespace Server.Gumps
 
             ////Adjuration
             //new SpellBookEntry( 1, "Fermeture Mag.", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            //new SpellBookEntry( 1, "Piège Magique", new Type[] { typeof(Nightshade), typeof(SpidersSilk) }, 0x8cC, 2, 13),
+            //new SpellBookEntry( 1, "PiÃ¨ge Magique", new Type[] { typeof(Nightshade), typeof(SpidersSilk) }, 0x8cC, 2, 13),
             //new SpellBookEntry( 2, "Ouverture Mag.", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D6, 3, 23),
-            //new SpellBookEntry( 2, "Sup. De Piège", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8cD, 2, 14),
+            //new SpellBookEntry( 2, "Sup. De PiÃ¨ge", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8cD, 2, 14),
             //new SpellBookEntry( 3, "Nuisance", new Type[] { typeof(Nightshade), typeof(SpidersSilk) }, 0x8cB, 2, 12),
             //new SpellBookEntry( 4, "Champ de Dissi.", new Type[] { typeof(BlackPearl), typeof(SpidersSilk), typeof(SulfurousAsh), typeof(Garlic) }, 0x8E1, 5, 34),
             //new SpellBookEntry( 5, "Dissipation", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8E8, 6, 41),
@@ -183,31 +183,31 @@ namespace Server.Gumps
             ////Alteration
             //new SpellBookEntry( 1, "Faiblesse", new Type[] { typeof(Garlic), typeof(Nightshade) }, 0x8c7, 1, 8),
             //new SpellBookEntry( 2, "Maladroit", new Type[] { typeof(Bloodmoss), typeof(Nightshade) }, 0x8c0, 1, 1),
-            //new SpellBookEntry( 3, "Débilité", new Type[] { typeof(Ginseng), typeof(Nightshade) }, 0x8c2, 1, 3),
+            //new SpellBookEntry( 3, "DÃ©bilitÃ©", new Type[] { typeof(Ginseng), typeof(Nightshade) }, 0x8c2, 1, 3),
             //new SpellBookEntry( 4, "Telekinesis", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8D4, 3, 21),
             //new SpellBookEntry( 5, "Reflet", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E3, 5, 36),
             //new SpellBookEntry( 8, "Malediction", new Type[] { typeof(Nightshade), typeof(Garlic), typeof(SulfurousAsh) }, 0x8DA, 4, 27),
             //new SpellBookEntry( 10, "Paralysie", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
-            //new SpellBookEntry( 11, "Fléau", new Type[] { typeof(Garlic), typeof(Nightshade), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8ED, 6, 46),
-            //new SpellBookEntry( 12, "Pétrification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
+            //new SpellBookEntry( 11, "FlÃ©au", new Type[] { typeof(Garlic), typeof(Nightshade), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8ED, 6, 46),
+            //new SpellBookEntry( 12, "PÃ©trification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
 
             ////Evocation
             //new SpellBookEntry( 1, "Bourrasque", new Type[] { typeof(MandrakeRoot) }, 0x5D7, 1, 201),
-            //new SpellBookEntry( 1, "Flamèche", new Type[] { typeof(BlackPearl) }, 0x5BE, 1, 202),
+            //new SpellBookEntry( 1, "FlamÃ¨che", new Type[] { typeof(BlackPearl) }, 0x5BE, 1, 202),
             //new SpellBookEntry( 1, "Froid", new Type[] { typeof(Bloodmoss) }, 0x5CA, 1, 203),
-            //new SpellBookEntry( 1, "Tempête", new Type[] { typeof(SulfurousAsh) }, 0x5C3, 1, 204),
+            //new SpellBookEntry( 1, "TempÃªte", new Type[] { typeof(SulfurousAsh) }, 0x5C3, 1, 204),
 
             //new SpellBookEntry( 2, "Boule de Feu", new Type[] { typeof(BlackPearl) }, 0x8D1, 3, 18),
             //new SpellBookEntry( 3, "Mur de Feu", new Type[] { typeof(BlackPearl), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8DB, 4, 28),
-            //new SpellBookEntry( 4, "Énergie", new Type[] { typeof(BlackPearl), typeof(Nightshade) }, 0x8E9, 6, 42),
-            //new SpellBookEntry( 5, "Éclair", new Type[] { typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8DD, 4, 30),
+            //new SpellBookEntry( 4, "Ã‰nergie", new Type[] { typeof(BlackPearl), typeof(Nightshade) }, 0x8E9, 6, 42),
+            //new SpellBookEntry( 5, "Ã‰clair", new Type[] { typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8DD, 4, 30),
             //new SpellBookEntry( 6, "Explosion", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8EA, 6, 43),
-            //new SpellBookEntry( 7, "Éner. de Masse", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8F1, 7, 50),
+            //new SpellBookEntry( 7, "Ã‰ner. de Masse", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8F1, 7, 50),
             //new SpellBookEntry( 8, "Jet de Flamme", new Type[] { typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8F2, 7, 51),
-            //new SpellBookEntry( 9, "Météores", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8F6, 7, 55),
+            //new SpellBookEntry( 9, "MÃ©tÃ©ores", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8F6, 7, 55),
             //new SpellBookEntry( 10, "Tremblement", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(Ginseng), typeof(SulfurousAsh) }, 0x8F8, 8, 57),
             //new SpellBookEntry( 11, "Vortex", new Type[] { typeof(Bloodmoss), typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade) }, 0x8F9, 8, 58),
-            //new SpellBookEntry( 12, "Chaine d'Éclair", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8F0, 7, 49),
+            //new SpellBookEntry( 12, "Chaine d'Ã‰clair", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8F0, 7, 49),
 
             ////Illusion
             //new SpellBookEntry( 1, "Vision Noct.", new Type[] { typeof(SulfurousAsh), typeof(SpidersSilk) }, 0x8c5, 1, 6),
@@ -218,13 +218,13 @@ namespace Server.Gumps
             //new SpellBookEntry( 6, "Lobotomie", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade), typeof(SulfurousAsh) }, 0x8E4, 5, 37),
             //new SpellBookEntry( 7, "Marque", new Type[] { typeof(BlackPearl), typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8EC, 6, 45),
             //new SpellBookEntry( 8, "Polymorph", new Type[] { typeof(Bloodmoss), typeof(SpidersSilk), typeof(MandrakeRoot) }, 0x8F7, 7, 56),
-            //new SpellBookEntry( 9, "Révélation", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8EF, 6, 48),
-            //new SpellBookEntry( 10, "Invisibilité", new Type[] { typeof(Bloodmoss), typeof(Nightshade) }, 0x8EB, 6, 44),
+            //new SpellBookEntry( 9, "RÃ©vÃ©lation", new Type[] { typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8EF, 6, 48),
+            //new SpellBookEntry( 10, "InvisibilitÃ©", new Type[] { typeof(Bloodmoss), typeof(Nightshade) }, 0x8EB, 6, 44),
             //new SpellBookEntry( 12, "Voyagement", new Type[] { typeof(BlackPearl), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8F3, 7, 52),
 
             ////Invocation
             //new SpellBookEntry( 1, "Nourriture", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8c1, 1, 2),
-            //new SpellBookEntry( 2, "Flèche Mag.", new Type[] { typeof(SulfurousAsh) }, 0x8c4, 1, 5),
+            //new SpellBookEntry( 2, "FlÃ¨che Mag.", new Type[] { typeof(SulfurousAsh) }, 0x8c4, 1, 5),
             //new SpellBookEntry( 3, "Mur de Pierre", new Type[] { typeof(Bloodmoss), typeof(Garlic) }, 0x8D7, 3, 24),
             //new SpellBookEntry( 4, "Convocation", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E7, 5, 40),
             //new SpellBookEntry( 5, "Elem. de Terre", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8FD, 8, 62),
@@ -237,15 +237,15 @@ namespace Server.Gumps
             ////Necromancy            
             //new SpellBookEntry( 1, "Spectre", new Type[] { typeof(NoxCrystal), typeof(PigIron) }, 0x500F, 9, 115),
             //new SpellBookEntry( 2, "Corruption", new Type[] { typeof(GraveDust), typeof(PigIron) }, 0x5008, 9, 108),
-            //new SpellBookEntry( 2, "Présage", new Type[] { typeof(BatWing), typeof(NoxCrystal) }, 0x5004, 9, 104),
+            //new SpellBookEntry( 2, "PrÃ©sage", new Type[] { typeof(BatWing), typeof(NoxCrystal) }, 0x5004, 9, 104),
             //new SpellBookEntry( 3, "Sermant", new Type[] { typeof(DaemonBlood) }, 0x5001, 9, 101),
-            //new SpellBookEntry( 3, "Corps Mortifié", new Type[] { typeof(BatWing), typeof(GraveDust) }, 0x5002, 9, 102),
+            //new SpellBookEntry( 3, "Corps MortifiÃ©", new Type[] { typeof(BatWing), typeof(GraveDust) }, 0x5002, 9, 102),
             //new SpellBookEntry( 4, "Minion", new Type[] { typeof(BatWing), typeof(GraveDust), typeof(DaemonBlood) }, 0x500B, 9, 111),
             //new SpellBookEntry( 5, "Pourriture", new Type[] { typeof(BatWing), typeof(PigIron), typeof(DaemonBlood) }, 0x5007, 9, 107),
-            //new SpellBookEntry( 5, "Bête Horrifique", new Type[] { typeof(BatWing), typeof(DaemonBlood) }, 0x5005, 9, 105),
+            //new SpellBookEntry( 5, "BÃªte Horrifique", new Type[] { typeof(BatWing), typeof(DaemonBlood) }, 0x5005, 9, 105),
             //new SpellBookEntry( 6, "Venin", new Type[] { typeof(NoxCrystal) }, 0x5009, 9, 109),
-            //new SpellBookEntry( 7, "Flétrir", new Type[] { typeof(NoxCrystal), typeof(GraveDust), typeof(PigIron) }, 0x500E, 9, 114),
-            //new SpellBookEntry( 8, "Étranglement", new Type[] { typeof(DaemonBlood), typeof(NoxCrystal) }, 0x500A, 9, 110),
+            //new SpellBookEntry( 7, "FlÃ©trir", new Type[] { typeof(NoxCrystal), typeof(GraveDust), typeof(PigIron) }, 0x500E, 9, 114),
+            //new SpellBookEntry( 8, "Ã‰tranglement", new Type[] { typeof(DaemonBlood), typeof(NoxCrystal) }, 0x500A, 9, 110),
             //new SpellBookEntry( 9, "Liche", new Type[] { typeof(GraveDust), typeof(DaemonBlood), typeof(NoxCrystal) }, 0x5006, 9, 106),
             //new SpellBookEntry( 10, "Maudire", new Type[] { typeof(PigIron) }, 0x5003, 9, 103),
             //new SpellBookEntry( 11, "Esprit Vengeur", new Type[] { typeof(BatWing), typeof(GraveDust), typeof(PigIron) }, 0x500D, 9, 113),
@@ -254,17 +254,17 @@ namespace Server.Gumps
 
             ////Thaumaturgie
             //new SpellBookEntry( 1, "Force", new Type[] { typeof(MandrakeRoot), typeof(Nightshade) }, 0x8cF, 2, 16),
-            //new SpellBookEntry( 2, "Agilité", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8c8, 2, 9),
+            //new SpellBookEntry( 2, "AgilitÃ©", new Type[] { typeof(Bloodmoss), typeof(MandrakeRoot) }, 0x8c8, 2, 9),
             //new SpellBookEntry( 3, "Ruse", new Type[] { typeof(MandrakeRoot), typeof(Nightshade) }, 0x8c9, 2, 10),
             //new SpellBookEntry( 4, "Armure Mag.", new Type[] { typeof(Garlic), typeof(SpidersSilk), typeof(SulfurousAsh) }, 0x8c6, 1, 7),
             //new SpellBookEntry( 5, "Protection", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(SulfurousAsh) }, 0x8cE, 2, 15),
             //new SpellBookEntry( 6, "Antidote", new Type[] { typeof(Garlic), typeof(Ginseng) }, 0x8cA, 2, 11),
             //new SpellBookEntry( 7, "Soins", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(SpidersSilk) }, 0x8c3, 1, 4),
             //new SpellBookEntry( 8, "Puissance", new Type[] { typeof(Garlic), typeof(MandrakeRoot) }, 0x8D0, 3, 17),
-            //new SpellBookEntry( 9, "Remède", new Type[] { typeof(Bloodmoss), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8D8, 4, 25),
+            //new SpellBookEntry( 9, "RemÃ¨de", new Type[] { typeof(Bloodmoss), typeof(Ginseng), typeof(MandrakeRoot) }, 0x8D8, 4, 25),
             //new SpellBookEntry( 10, "Protection Mag.", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot), typeof(SulfurousAsh) }, 0x8D9, 4, 26),
             //new SpellBookEntry( 11, "Soins Magiques", new Type[] { typeof(Garlic), typeof(Ginseng), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8DC, 4, 29),
-            //new SpellBookEntry( 12, "Résurrection", new Type[] { typeof(Bloodmoss), typeof(Garlic), typeof(Ginseng) }, 0x8FA, 8, 59),
+            //new SpellBookEntry( 12, "RÃ©surrection", new Type[] { typeof(Bloodmoss), typeof(Garlic), typeof(Ginseng) }, 0x8FA, 8, 59),
 
         };
 
@@ -351,7 +351,7 @@ namespace Server.Gumps
                 else
                     addition = 0;
 
-                //on fait la comparaison des skills pour savoir si on a changé de skills
+                //on fait la comparaison des skills pour savoir si on a changÃ© de skills
                 if ((newReqSkill != -1 && newReqSkill != oldReqSkill) || (addition == 9) || (addition == 18))
                 {
                     value++;
@@ -368,10 +368,10 @@ namespace Server.Gumps
                     // On ajoute le nom du skill en haut de page
                     AddHtml(160 + hindex * 145, 32, 200, 20, "<h3><basefont color=#025a>" + (string)m_Names[info.Skill] + "<basefont></h3>", false, false);
 
-                    // Séparateurs
+                    // SÃ©parateurs
                     AddImageTiled(130 + hindex * 165, 40, 130, 10, 0x3A);
 
-                    //On remet à 0 pour la nouvelle page
+                    //On remet Ã  0 pour la nouvelle page
                     vindex = 0;
 
                     //On ajoute les boutons de changement de page
@@ -379,7 +379,7 @@ namespace Server.Gumps
                     AddButton(123, 15, 0x89D, 0x89D, 19, GumpButtonType.Page, totpage - 1);
                 }
 
-                //Si le livre possède le sort
+                //Si le livre possÃ¨de le sort
                 if (this.HasSpell(from, info.SpellID))
                 {
                     int buttonID = 2224;
@@ -405,7 +405,7 @@ namespace Server.Gumps
             {
                 SpellBookEntry info = (SpellBookEntry)m_SpellBookEntry[i];
 
-                //Si le livre possède le sort
+                //Si le livre possÃ¨de le sort
                 if (this.HasSpell(from, info.SpellID))
                 {
                     //Si le # du sort est pair...
@@ -432,7 +432,7 @@ namespace Server.Gumps
                     //On ajoute le nom
                     AddHtml(158 + hindex * 145, 32, 200, 20, "<h3><basefont color=#025a>" + info.Nom + "<basefont></h3>", false, false);
 
-                    //On ajoute les séparateurs
+                    //On ajoute les sÃ©parateurs
                     AddImageTiled(130 + hindex * 165, 40, 130, 10, 0x3A);
 
                     //On ajoute l'icone en tant que bouton pour lancer le sort
@@ -449,8 +449,8 @@ namespace Server.Gumps
                     AddHtml(210 + hindex * 165, 83, 200, 20, "<h3><basefont color=#5A4A31>Rapide<basefont></h3>", false, false);
                     AddButton(190 + hindex * 165, 84, buttonID, buttonID, info.SpellID + 1000, GumpButtonType.Reply, 0);
 
-                    // Ingrédients
-                    AddHtml(130 + hindex * 165, 105, 200, 20, "<h3><basefont color=#025a>Ingrédients<basefont></h3>", false, false);
+                    // IngrÃ©dients
+                    AddHtml(130 + hindex * 165, 105, 200, 20, "<h3><basefont color=#025a>IngrÃ©dients<basefont></h3>", false, false);
                     for (int j = 0; j < info.Reagents.Length; j++)
                     {
                         Type type = (Type)info.Reagents[j];
@@ -517,12 +517,12 @@ namespace Server.Gumps
 
                     if (m.QuickSpells.Contains((int)(info.ButtonID - 1000)))
                     {
-                        m.SendMessage("Le sort a été retiré de votre liste de lancement rapide.");
+                        m.SendMessage("Le sort a Ã©tÃ© retirÃ© de votre liste de lancement rapide.");
                         m.QuickSpells.Remove((int)(info.ButtonID - 1000));
                     }
                     else
                     {
-                        m.SendMessage("Le sort a été ajouté à votre liste de lancement rapide.");
+                        m.SendMessage("Le sort a Ã©tÃ© ajoutÃ© Ã  votre liste de lancement rapide.");
                         m.QuickSpells.Add((int)(info.ButtonID - 1000));
                     }
 

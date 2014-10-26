@@ -302,7 +302,7 @@ namespace Server.Mobiles
 				m_HoldGold = 0;
 			}
 
-			ShopName = "Échoppe";
+			ShopName = "Ã‰choppe";
 
 			m_SellItems = new Hashtable();
 
@@ -870,7 +870,7 @@ namespace Server.Mobiles
 		{
 			if ( !IsOwner( from ) )
 			{
-                SayTo(from, "Je peux seulement prendre des objets du propriétaire.");
+                SayTo(from, "Je peux seulement prendre des objets du propriÃ©taire.");
 				//SayTo( from, 503209 ); // I can only take item from the shop owner.
 				return false;
 			}
@@ -891,7 +891,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-                        from.SendMessage("Le vendeur a assez de pièces et n'a pas besoin de plus.");
+                        from.SendMessage("Le vendeur a assez de piÃ¨ces et n'a pas besoin de plus.");
 						//from.SendLocalizedMessage( 1062493 ); // Your vendor has sufficient funds for operation and cannot accept this gold.
 
 						return false;
@@ -901,7 +901,7 @@ namespace Server.Mobiles
 				{
 					if ( this.BankAccount < 1000000 )
 					{
-                        SayTo(from,"Je prendrai ces pièces pour payer mes services.");
+                        SayTo(from,"Je prendrai ces piÃ¨ces pour payer mes services.");
 						//SayTo( from, 503210 ); // I'll take that to fund my services.
 
 						this.BankAccount += item.Amount;
@@ -911,7 +911,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-                        from.SendMessage("Le vendeur a assez de pièces et n'a pas besoin de plus.");
+                        from.SendMessage("Le vendeur a assez de piÃ¨ces et n'a pas besoin de plus.");
 						//from.SendLocalizedMessage( 1062493 ); // Your vendor has sufficient funds for operation and cannot accept this gold.
 
 						return false;
@@ -952,7 +952,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-                SayTo(from, "Je peux seulement vendre les objets de mon propriétaire.");
+                SayTo(from, "Je peux seulement vendre les objets de mon propriÃ©taire.");
 				//SayTo( from, 503209 ); // I can only take item from the shop owner.
 				return false;
 			}
@@ -1096,7 +1096,7 @@ namespace Server.Mobiles
 
 			if ( vendor.IsOwner( from ) )
 			{
-                vendor.SayTo(from, "Vous êtes le propriétaire, prenez ce que vous voulez.");
+                vendor.SayTo(from, "Vous Ãªtes le propriÃ©taire, prenez ce que vous voulez.");
 				//vendor.SayTo( from, 503212 ); // You own this shop, just take what you want.
 				return;
 			}
@@ -1115,7 +1115,7 @@ namespace Server.Mobiles
 			}
 			else if ( vi.Created + TimeSpan.FromMinutes( 1.0 ) > DateTime.Now )
 			{
-                from.SendMessage("Vous ne pouvez pas acheter cet objet encore. Patientez une minute et réessayez.");
+                from.SendMessage("Vous ne pouvez pas acheter cet objet encore. Patientez une minute et rÃ©essayez.");
 				//from.SendMessage( "You cannot buy this item right now.  Please wait one minute and try again." );
 			}
 			else
@@ -1129,8 +1129,8 @@ namespace Server.Mobiles
 		{
 			if ( HoldGold > 0 )
 			{
-                SayTo(to, "Combien des {0} pièces souhaitez-vous prendre ?", HoldGold.ToString());
-                to.SendMessage("Entrez le nombre de pièces que vous souhaitez prendre.");
+                SayTo(to, "Combien des {0} piÃ¨ces souhaitez-vous prendre ?", HoldGold.ToString());
+                to.SendMessage("Entrez le nombre de piÃ¨ces que vous souhaitez prendre.");
 				//SayTo( to, "How much of the {0} that I'm holding would you like?", HoldGold.ToString() );
 				//to.SendMessage( "Enter the amount of gold you wish to withdraw (ESC = CANCEL):" );
 
@@ -1150,7 +1150,7 @@ namespace Server.Mobiles
 
 			if ( amount > HoldGold )
 			{
-                SayTo(to, "Je suis désolé, mais j'ai seulement {0} pièces pour vous.", HoldGold.ToString());
+                SayTo(to, "Je suis dÃ©solÃ©, mais j'ai seulement {0} piÃ¨ces pour vous.", HoldGold.ToString());
 				//SayTo( to, "I'm sorry, but I'm only holding {0} gold for you.", HoldGold.ToString() );
 				return 0;
 			}
@@ -1160,28 +1160,28 @@ namespace Server.Mobiles
 
 			if ( amountGiven > 0 )
 			{
-                to.SendMessage("L'or fut déposé dans votre coffre de banque.");
+                to.SendMessage("L'or fut dÃ©posÃ© dans votre coffre de banque.");
 				//to.SendLocalizedMessage( 1060397, amountGiven.ToString() ); // ~1_AMOUNT~ gold has been deposited into your bank box.
 			}
 
 			if ( amountGiven == 0 )
 			{
-                SayTo(to, "Votre banque ne peut pas contenir autant de pièces ! Je vais garder l'or jusqu'à ce que ce soit le cas.");
+                SayTo(to, "Votre banque ne peut pas contenir autant de piÃ¨ces ! Je vais garder l'or jusqu'Ã  ce que ce soit le cas.");
 				//SayTo( to, 1070755 ); // Your bank box cannot hold the gold you are requesting.  I will keep the gold until you can take it.
 			}
 			else if ( amount > amountGiven )
 			{
-                SayTo(to,"Je ne peux que vous donnez une partie des pièces puisque votre banque est ne supporteras pas tout le poids.");
+                SayTo(to,"Je ne peux que vous donnez une partie des piÃ¨ces puisque votre banque est ne supporteras pas tout le poids.");
 				//SayTo( to, 1070756 ); // I can only give you part of the gold now, as your bank box is too full to hold the full amount.
 			}
 			else if ( HoldGold > 0 )
 			{
-                SayTo(to, "Les pièces furent transférés.");
+                SayTo(to, "Les piÃ¨ces furent transfÃ©rÃ©s.");
 				//SayTo( to, 1042639 ); // Your gold has been transferred.
 			}
 			else
 			{
-                SayTo(to, "Toutes les pièces que j'avais pour vous ont été mises dans votre coffre.");
+                SayTo(to, "Toutes les piÃ¨ces que j'avais pour vous ont Ã©tÃ© mises dans votre coffre.");
 				//SayTo( to, 503234 ); // All the gold I have been carrying for you has been deposited into your bank account.
 			}
 
@@ -1194,7 +1194,7 @@ namespace Server.Mobiles
 
 			if ( pack != null && pack.Items.Count > 0 )
 			{
-                SayTo(from, "Vous ne pouvez pas me renvoyer alors que je possèdes encore de vos biens !");
+                SayTo(from, "Vous ne pouvez pas me renvoyer alors que je possÃ¨des encore de vos biens !");
 				//SayTo( from, 1038325 ); // You cannot dismiss me while I am holding your goods.
 				return;
 			}
@@ -1220,7 +1220,7 @@ namespace Server.Mobiles
 		public void RenameShop( Mobile from )
 		{
 			//from.SendLocalizedMessage( 1062433 ); // Enter a new name for your shop (20 chars max):
-            from.SendMessage("Entrez un nouveau nom pour votre échoppe.");
+            from.SendMessage("Entrez un nouveau nom pour votre Ã©choppe.");
 			from.Prompt = new ShopNamePrompt( this );
 		}
 
@@ -1339,12 +1339,12 @@ namespace Server.Mobiles
 			{
 				if ( IsOwner( from ) )
 				{
-                    SayTo(from,"Vous êtes le propriétaire, prenez ce qu'il vous plait.");
+                    SayTo(from,"Vous Ãªtes le propriÃ©taire, prenez ce qu'il vous plait.");
 					//SayTo( from, 503212 ); // You own this shop, just take what you want.
 				}
 				else if ( House == null || !House.IsBanned( from ) )
 				{
-                    from.SendMessage("Sélectionnez l'objet que vous souhaitez acheter.");
+                    from.SendMessage("SÃ©lectionnez l'objet que vous souhaitez acheter.");
 					//from.SendLocalizedMessage( 503213 ); // Select the item you wish to buy.
 					from.Target = new PVBuyTarget();
 
@@ -1355,7 +1355,7 @@ namespace Server.Mobiles
 			{
 				if ( House != null && House.IsBanned( from ) && !IsOwner( from ) )
 				{
-                    SayTo(from, "Vous ne pouvez pas acheter ici : vous avez été banni !");
+                    SayTo(from, "Vous ne pouvez pas acheter ici : vous avez Ã©tÃ© banni !");
 					//SayTo( from, 1062674 ); // You can't shop from this home as you have been banned from this establishment.
 				}
 				else
@@ -1395,7 +1395,7 @@ namespace Server.Mobiles
 				}
 				else
 				{
-                    SayTo(from,"Pourquoi me demandez cela ? Vous n'êtes pas le propriétaire.");
+                    SayTo(from,"Pourquoi me demandez cela ? Vous n'Ãªtes pas le propriÃ©taire.");
 					//SayTo( from, 503226 ); // What do you care? You don't run this shop.	
 				}
 			}
@@ -1561,10 +1561,10 @@ namespace Server.Mobiles
 					if ( item is Container )
 					{
                         if (item is LockableContainer && ((LockableContainer)item).Locked)
-                            m_Vendor.SayTo(from, "Les objets barrés ne peuvent pas être vendus !");
+                            m_Vendor.SayTo(from, "Les objets barrÃ©s ne peuvent pas Ãªtre vendus !");
                         //m_Vendor.SayTo( from, 1043298 ); // Locked items may not be made not-for-sale.
                         else if (item.Items.Count > 0)
-                            m_Vendor.SayTo(from, "Tout les objets dans le coffre doivent être en vente.");
+                            m_Vendor.SayTo(from, "Tout les objets dans le coffre doivent Ãªtre en vente.");
                             //m_Vendor.SayTo(from, 1043299); // To be not for sale, all items in a container must be for sale.
                         else
                             setPrice = true;
@@ -1575,7 +1575,7 @@ namespace Server.Mobiles
 					}
 					else
 					{
-                        m_Vendor.SayTo(from, "Seulement les objets suivant ne peuvent pas être mis en vente : les livres, coffres et clefs.");
+                        m_Vendor.SayTo(from, "Seulement les objets suivant ne peuvent pas Ãªtre mis en vente : les livres, coffres et clefs.");
 						//m_Vendor.SayTo( from, 1043301 ); // Only the following may be made not-for-sale: books, containers, keyrings, and items in for-sale containers.
 					}
 				}
@@ -1584,7 +1584,7 @@ namespace Server.Mobiles
 					if ( price > 100000000 )
 					{
 						price = 100000000;
-                        from.SendMessage("Vous ne pouvez pas demandez plus de 100,000,000 de pièces !");
+                        from.SendMessage("Vous ne pouvez pas demandez plus de 100,000,000 de piÃ¨ces !");
 						//from.SendMessage( "You cannot price items above 100,000,000 gold.  The price has been adjusted." );
 					}
 
@@ -1638,7 +1638,7 @@ namespace Server.Mobiles
 			{
 				if ( amount <= 0 )
 				{
-                    m_Vendor.SayTo(to, "Je vais garder un oeil sur les pièces pour l'instant alors.");
+                    m_Vendor.SayTo(to, "Je vais garder un oeil sur les piÃ¨ces pour l'instant alors.");
 					//m_Vendor.SayTo( to, "Very well. I will hold on to the money for now then." );
 				}
 				else
@@ -1673,7 +1673,7 @@ namespace Server.Mobiles
 				m_Vendor.Name = Utility.FixHtml( name );
 
 				//from.SendLocalizedMessage( 1062496 ); // Your vendor has been renamed.
-                from.SendMessage("Le vendeur fut renommé.");
+                from.SendMessage("Le vendeur fut renommÃ©.");
 
 				from.SendGump( new PlayerVendorOwnerGump( m_Vendor ) );
 			}

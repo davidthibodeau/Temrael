@@ -11,7 +11,7 @@ namespace Server.Items
             : base(0x0646)
 		{
 			Weight = 5.0;
-            Name = "Clôture";
+            Name = "ClÃ´ture";
 		}
 
         public ClotureTroisPlanchesHorizontales(Serial serial)
@@ -43,7 +43,7 @@ namespace Server.Items
             : base(0x0646)
 		{
 			Weight = 5.0;
-            Name = "Clôture";
+            Name = "ClÃ´ture";
 		}
 
         public ClotureTroisPlanchesVerticales(Serial serial)
@@ -74,7 +74,7 @@ namespace Server.Items
             : base(0x0720)
         {
             Weight = 5.0;
-            Name = "Clôture";
+            Name = "ClÃ´ture";
         }
 
         public CloturePlanchesCroisees(Serial serial)

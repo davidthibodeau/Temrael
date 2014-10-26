@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(1);
 
-                m_CorpsPurTable[m] = 1.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800); //10 à 35%
+                m_CorpsPurTable[m] = 1.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800); //10 Ã  35%
 
                 Timer t = new CorpsPurTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

@@ -349,7 +349,7 @@ namespace Server.Items
             {
                 case CauseOfDie.TooOld: PublicOverheadMessage(Server.Network.MessageType.Regular, 0, false, "La plante meurt par vieillesse."); break;
                 case CauseOfDie.NotHydrated: PublicOverheadMessage(Server.Network.MessageType.Regular, 0, false, "La plante meurt de soif."); break;
-                case CauseOfDie.TooHydrated: PublicOverheadMessage(Server.Network.MessageType.Regular, 0, false, "La plante meurt noyée."); break;
+                case CauseOfDie.TooHydrated: PublicOverheadMessage(Server.Network.MessageType.Regular, 0, false, "La plante meurt noyÃ©e."); break;
                 case CauseOfDie.Insects: PublicOverheadMessage(Server.Network.MessageType.Regular, 0, false, "La plante meurt par les insectes."); break;
                 case CauseOfDie.Disease: PublicOverheadMessage(Server.Network.MessageType.Regular, 0, false, "La plante meurt par les maladies."); break;
                 case CauseOfDie.Fungi: PublicOverheadMessage(Server.Network.MessageType.Regular, 0, false, "La plante meurt par les champignons."); break;
@@ -429,7 +429,7 @@ namespace Server.Items
                 reagent.Amount = MaxReagent > 2 ? Utility.RandomMinMax(MaxReagent - 2, MaxReagent + 2) : MaxReagent;
 
                 from.AddToBackpack(reagent);
-                from.SendMessage("Vous extrayez la composante avec succès.");
+                from.SendMessage("Vous extrayez la composante avec succÃ¨s.");
 
                 Delete();
             }
@@ -440,7 +440,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendMessage("Aucune composante ou teinture ne peut être extraite de cette plante.");
+                from.SendMessage("Aucune composante ou teinture ne peut Ãªtre extraite de cette plante.");
             }
         }
 
@@ -639,7 +639,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "L'Inule infusée dans de l'eau chaude aide à soigner les hallucinations. Il est utilisé entre autre pour aider à calmer toutes concoctions hallucinogène et est prescrit pour soigner les dépendances au Gomphrena."; } }
+        public override string Description { get { return "L'Inule infusÃ©e dans de l'eau chaude aide Ã  soigner les hallucinations. Il est utilisÃ© entre autre pour aider Ã  calmer toutes concoctions hallucinogÃ¨ne et est prescrit pour soigner les dÃ©pendances au Gomphrena."; } }
         public override string Latin { get { return "HELENIUM"; } }
 
         [Constructable]
@@ -696,7 +696,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "En infusion, la Benoite aide à baisser la fièvre."; } }
+        public override string Description { get { return "En infusion, la Benoite aide Ã  baisser la fiÃ¨vre."; } }
         public override string Latin { get { return "GEUM URBANUM"; } }
 
         [Constructable]
@@ -753,7 +753,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "La mixture péteuse contenue dans les tiges soigne les brûlures en raffermissant la peau."; } }
+        public override string Description { get { return "La mixture pÃ©teuse contenue dans les tiges soigne les brÃ»lures en raffermissant la peau."; } }
         public override string Latin { get { return "SOLIDAGO CANADENSIS"; } }
 
         [Constructable]
@@ -810,7 +810,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Les feuilles de cette plante sont toxiques, mais aucunement mortelle en petite quantité. Elle agit sur la nervosité, sur les problèmes nerveux et aide à la détente. Il faut émincer les feuilles pour pouvoir les fumer à l'aide d'une pipe ou boire les tiges en infusion. Peut créer une très forte dépendance."; } }
+        public override string Description { get { return "Les feuilles de cette plante sont toxiques, mais aucunement mortelle en petite quantitÃ©. Elle agit sur la nervositÃ©, sur les problÃ¨mes nerveux et aide Ã  la dÃ©tente. Il faut Ã©mincer les feuilles pour pouvoir les fumer Ã  l'aide d'une pipe ou boire les tiges en infusion. Peut crÃ©er une trÃ¨s forte dÃ©pendance."; } }
         public override string Latin { get { return "GOMPHRENA HAAGEANA"; } }
 
         [Constructable]
@@ -866,7 +866,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Les fleurs ainsi que les feuilles de cette plante servent, une fois infusée ou mélangé dans du liquide en créant une mixture légèrement péteuse, à nettoyer l'intérieur. On l'utilise entre autre pour éliminer le poison du système. Cause de très forts vomissements."; } }
+        public override string Description { get { return "Les fleurs ainsi que les feuilles de cette plante servent, une fois infusÃ©e ou mÃ©langÃ© dans du liquide en crÃ©ant une mixture lÃ©gÃ¨rement pÃ©teuse, Ã  nettoyer l'intÃ©rieur. On l'utilise entre autre pour Ã©liminer le poison du systÃ¨me. Cause de trÃ¨s forts vomissements."; } }
         public override string Latin { get { return "LAVATERA"; } }
 
         [Constructable]
@@ -924,7 +924,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le Passiflore est une fleur toxique mais ne peut causer la mort que si on en abuse à outrance. Elle est hallucinogène et doit être inhalé par le nez en fumée. On utilise parfois ses tiges en encens dans les maisons car son odeur est très alléchante. Ce n'est que récemment qu'on a découvert ses propriétés hallucinogènes. Peut causer une très forte dépendance."; } }
+        public override string Description { get { return "Le Passiflore est une fleur toxique mais ne peut causer la mort que si on en abuse Ã  outrance. Elle est hallucinogÃ¨ne et doit Ãªtre inhalÃ© par le nez en fumÃ©e. On utilise parfois ses tiges en encens dans les maisons car son odeur est trÃ¨s allÃ©chante. Ce n'est que rÃ©cemment qu'on a dÃ©couvert ses propriÃ©tÃ©s hallucinogÃ¨nes. Peut causer une trÃ¨s forte dÃ©pendance."; } }
         public override string Latin { get { return "PASSIFLORA CAERULEA"; } }
 
         [Constructable]
@@ -981,7 +981,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le Millepertuis est utilisé pour soigner la dépression. Il peut être fumé à l'aide d'une pipe ou mangé en salade. Le Millepertuis redonne de l'énergie et aide, pour une durée limité, à voir la vie plus belle qu'elle ne l'est. Peut causer une forte dépendance."; } }
+        public override string Description { get { return "Le Millepertuis est utilisÃ© pour soigner la dÃ©pression. Il peut Ãªtre fumÃ© Ã  l'aide d'une pipe ou mangÃ© en salade. Le Millepertuis redonne de l'Ã©nergie et aide, pour une durÃ©e limitÃ©, Ã  voir la vie plus belle qu'elle ne l'est. Peut causer une forte dÃ©pendance."; } }
         public override string Latin { get { return "HYPERICUM CALCYNUM"; } }
 
         [Constructable]
@@ -1038,7 +1038,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "En mangeant les tiges de l'artichaut crues, nous pouvons contrôler les troubles du foie."; } }
+        public override string Description { get { return "En mangeant les tiges de l'artichaut crues, nous pouvons contrÃ´ler les troubles du foie."; } }
         public override string Latin { get { return "CYNARA CARDUNCULUS"; } }
 
         [Constructable]
@@ -1095,7 +1095,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "L'Immortelle à Bractèes est une fleur qu'on utilise pour créer de la teinture."; } }
+        public override string Description { get { return "L'Immortelle Ã  BractÃ¨es est une fleur qu'on utilise pour crÃ©er de la teinture."; } }
         public override string Latin { get { return "XEROCHRYSUM BRACTEATUM"; } }
 
         [Constructable]
@@ -1152,7 +1152,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le Melaleuca est une plante qu'on utilise pour créer de la teinture."; } }
+        public override string Description { get { return "Le Melaleuca est une plante qu'on utilise pour crÃ©er de la teinture."; } }
         public override string Latin { get { return "MELALEUCA ARMILLARIS "; } }
 
         [Constructable]
@@ -1209,7 +1209,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "En crème, elle aide à lutter contre la peau sensible. Elle permet, entre autre, de redonner une couleur de base à une peau attaquée par la maladie. ( ex. La Neurodermatite )"; } }
+        public override string Description { get { return "En crÃ¨me, elle aide Ã  lutter contre la peau sensible. Elle permet, entre autre, de redonner une couleur de base Ã  une peau attaquÃ©e par la maladie. ( ex. La Neurodermatite )"; } }
         public override string Latin { get { return "BORAGO OFFICINALIS"; } }
 
         [Constructable]
@@ -1266,7 +1266,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "La Kalmia est une fleur qu'on utilise pour créer de la teinture."; } }
+        public override string Description { get { return "La Kalmia est une fleur qu'on utilise pour crÃ©er de la teinture."; } }
         public override string Latin { get { return "KALMIA LATIFOLIA"; } }
 
         [Constructable]
@@ -1323,7 +1323,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Transformée en poudre et mélangé avec du gras, la Paquerette peut être colorée pour servir mesdames. On l'utilise comme fard à paupière ou comme teinture pour les lèvres."; } }
+        public override string Description { get { return "TransformÃ©e en poudre et mÃ©langÃ© avec du gras, la Paquerette peut Ãªtre colorÃ©e pour servir mesdames. On l'utilise comme fard Ã  paupiÃ¨re ou comme teinture pour les lÃ¨vres."; } }
         public override string Latin { get { return "BELLIS PERENNIS"; } }
 
         [Constructable]
@@ -1380,7 +1380,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "En crème, l'Asphodeline guérit les problèmes de la peau en diminuant les rougeurs, les plaques d'eczéma et l'acné."; } }
+        public override string Description { get { return "En crÃ¨me, l'Asphodeline guÃ©rit les problÃ¨mes de la peau en diminuant les rougeurs, les plaques d'eczÃ©ma et l'acnÃ©."; } }
         public override string Latin { get { return "ASPHODELUS LUTEA"; } }
 
         [Constructable]
@@ -1494,7 +1494,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le liseron infusé agit sur les troubles du sommeil. Aide ceux qui font beaucoup de cauchemars ou ceux souffrant d'insomnie."; } }
+        public override string Description { get { return "Le liseron infusÃ© agit sur les troubles du sommeil. Aide ceux qui font beaucoup de cauchemars ou ceux souffrant d'insomnie."; } }
         public override string Latin { get { return "CONVOLVULUS SEPIUM"; } }
 
         [Constructable]
@@ -1552,7 +1552,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "L'Agastache est une fleur qu'on utilise pour créer de la teinture."; } }
+        public override string Description { get { return "L'Agastache est une fleur qu'on utilise pour crÃ©er de la teinture."; } }
         public override string Latin { get { return "AGASTACHE URTICIFOLIA"; } }
 
         [Constructable]
@@ -1610,7 +1610,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Mis en poudre à l'aide d'un mortier et dilué dans une boisson chaude, la Chicorée aide la digestion."; } }
+        public override string Description { get { return "Mis en poudre Ã  l'aide d'un mortier et diluÃ© dans une boisson chaude, la ChicorÃ©e aide la digestion."; } }
         public override string Latin { get { return "CICHORIUM ENDIVIA"; } }
 
         [Constructable]
@@ -1668,7 +1668,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "L'Achillée est une plante qu'on utilise dans les teintures. Nous coupons les branches pour ne garder que les fleurs et, à l'aide des pétales de la plante, on créer la teinture."; } }
+        public override string Description { get { return "L'AchillÃ©e est une plante qu'on utilise dans les teintures. Nous coupons les branches pour ne garder que les fleurs et, Ã  l'aide des pÃ©tales de la plante, on crÃ©er la teinture."; } }
         public override string Latin { get { return "ACHILEA FILIPENDULA"; } }
 
         [Constructable]
@@ -1726,7 +1726,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le Ciste est une fleur qu'on utilise pour créer de la teinture."; } }
+        public override string Description { get { return "Le Ciste est une fleur qu'on utilise pour crÃ©er de la teinture."; } }
         public override string Latin { get { return "CISTUS"; } }
 
         [Constructable]
@@ -1784,7 +1784,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "À l'aide des bulbes du coeur ainsi que des tiges de la fleur, nous créons des mixtures toxique. L'Aconit est utilisée dans un bon nombre de poison une fois réduite en jus."; } }
+        public override string Description { get { return "Ã€ l'aide des bulbes du coeur ainsi que des tiges de la fleur, nous crÃ©ons des mixtures toxique. L'Aconit est utilisÃ©e dans un bon nombre de poison une fois rÃ©duite en jus."; } }
         public override string Latin { get { return "ACONITUM NAPELLUS"; } }
 
         [Constructable]
@@ -1842,7 +1842,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "L'Adonis, une fois réduite en poudre et diluée dans de l'eau est souvent utilisée en médecine pour régulariser le rythme cardiaque et guérir les problèmes du coeur."; } }
+        public override string Description { get { return "L'Adonis, une fois rÃ©duite en poudre et diluÃ©e dans de l'eau est souvent utilisÃ©e en mÃ©decine pour rÃ©gulariser le rythme cardiaque et guÃ©rir les problÃ¨mes du coeur."; } }
         public override string Latin { get { return "L'ADONIS ANNUA"; } }
 
         [Constructable]
@@ -1958,7 +1958,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le Souci est une plante qu'on utilise pour créer de la teinture."; } }
+        public override string Description { get { return "Le Souci est une plante qu'on utilise pour crÃ©er de la teinture."; } }
         public override string Latin { get { return "CALENDULS OFFICINALIS"; } }
 
         [Constructable]
@@ -2016,7 +2016,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "La sauge est un antidouleur utilisé comme antiseptique en médecine. Peut créer une forte dépendance."; } }
+        public override string Description { get { return "La sauge est un antidouleur utilisÃ© comme antiseptique en mÃ©decine. Peut crÃ©er une forte dÃ©pendance."; } }
         public override string Latin { get { return "SALVIA GRAGAMII"; } }
 
         [Constructable]
@@ -2074,7 +2074,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le jus des fruits du Zanthoxylum aident à calmer les vomissements."; } }
+        public override string Description { get { return "Le jus des fruits du Zanthoxylum aident Ã  calmer les vomissements."; } }
         public override string Latin { get { return "ZANTHOXYLUM PLANISPINUM"; } }
 
         [Constructable]
@@ -2190,7 +2190,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "En infusion, la Béttoine agit sur les voies respiratoire pour les débloquer et calme les nerfs. C'est un aphrodisiaque."; } }
+        public override string Description { get { return "En infusion, la BÃ©ttoine agit sur les voies respiratoire pour les dÃ©bloquer et calme les nerfs. C'est un aphrodisiaque."; } }
         public override string Latin { get { return "STACHYS OFFICINALIS"; } }
 
         [Constructable]
@@ -2248,7 +2248,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "En infusin, la Tanaisie est un remède contre les vers."; } }
+        public override string Description { get { return "En infusin, la Tanaisie est un remÃ¨de contre les vers."; } }
         public override string Latin { get { return "TANACETUM VULGARE"; } }
 
         [Constructable]
@@ -2306,7 +2306,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "La fleur de lin est utilisée pour créer le lin, matériel nécessaire pour les couturiers."; } }
+        public override string Description { get { return "La fleur de lin est utilisÃ©e pour crÃ©er le lin, matÃ©riel nÃ©cessaire pour les couturiers."; } }
         public override string Latin { get { return "LINUM ASTRIACUM"; } }
 
         [Constructable]
@@ -2364,7 +2364,7 @@ namespace Server.Items
         public override Item RegeantType { get { return null; } }
         public override int MaxReagent { get { return 0; } }
         public override int MaxSeed { get { return 4; } }
-        public override string Description { get { return "Le coton est une fibre végétale qui entoure les graines des cotonniers. Il est très utilisé par les couturiers."; } }
+        public override string Description { get { return "Le coton est une fibre vÃ©gÃ©tale qui entoure les graines des cotonniers. Il est trÃ¨s utilisÃ© par les couturiers."; } }
         public override string Latin { get { return String.Empty; } }
 
         [Constructable]

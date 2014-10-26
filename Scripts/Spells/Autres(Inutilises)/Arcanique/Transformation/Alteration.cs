@@ -17,7 +17,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Altération", "Kal Xen Corp",
+                "AltÃ©ration", "Kal Xen Corp",
                 SpellCircle.First,
                 221,
                 9002,

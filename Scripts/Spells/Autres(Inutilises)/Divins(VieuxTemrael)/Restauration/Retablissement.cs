@@ -13,7 +13,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Rétablissement", "Tyr Otil",
+                "RÃ©tablissement", "Tyr Otil",
 				SpellCircle.First,
 				212,
 				9041

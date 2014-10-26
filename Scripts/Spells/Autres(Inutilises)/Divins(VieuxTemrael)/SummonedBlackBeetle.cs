@@ -3,7 +3,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-    [CorpseName("un corps de scarabé")]
+    [CorpseName("un corps de scarabÃ©")]
     public class SummonedBlackScarabee : BaseMount
     {
         public override double DispelDifficulty { get { return 80.0; } }

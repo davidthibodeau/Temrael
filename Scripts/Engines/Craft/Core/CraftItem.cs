@@ -1536,7 +1536,7 @@ namespace Server.Engines.Craft
                         }
                     }
 
-                    //Pièges
+                    //PiÃ¨ges
                     if (item is ChestTrap && m_TrapType != TrapType.None)
                     {
                         ChestTrap trap = (ChestTrap)item;

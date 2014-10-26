@@ -92,7 +92,7 @@ namespace Server.Items
 
         public override void AddNameProperty(ObjectPropertyList list)
         {
-            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "Écaille(s) [", GetMaterial(), "]", Amount);
+            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "Ã‰caille(s) [", GetMaterial(), "]", Amount);
             /*if (Amount > 1)
                 list.Add(1060532, String.Format("{3} {0}{1}{2}", "Os [", GetMaterial(), "]", Amount)); // ~1_NUMBER~ ~2_ITEMNAME~
             else

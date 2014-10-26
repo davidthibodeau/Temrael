@@ -12,7 +12,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Météores", "Flam Kal Des Ylem",
+				"MÃ©tÃ©ores", "Flam Kal Des Ylem",
 				SpellCircle.Eighth,
 				233,
 				9042,

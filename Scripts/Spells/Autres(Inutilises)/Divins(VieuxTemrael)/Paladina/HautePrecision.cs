@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Haute Précision", "Ansu Sowi",
+                "Haute PrÃ©cision", "Ansu Sowi",
                 SpellCircle.First,
                 212,
                 9041
@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.4);
 
-                m_HautePrecisionTable[m] = 0.02 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 4000); //2 à 7% par joueur.
+                m_HautePrecisionTable[m] = 0.02 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 4000); //2 Ã  7% par joueur.
 
                 Timer t = new HautePrecisionTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;
@@ -120,7 +120,7 @@ namespace Server.Spells
                     m_Owner.Target((Mobile)o);
                 }
                 else
-                    from.SendMessage("Vous pouvez être la seule cible de ce sort !");
+                    from.SendMessage("Vous pouvez Ãªtre la seule cible de ce sort !");
             }
 
             protected override void OnTargetFinish(Mobile from)

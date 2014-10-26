@@ -16,7 +16,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Piège Magique", "In Jux",
+				"PiÃ¨ge Magique", "In Jux",
 				SpellCircle.First,
 				212,
 				9001,

@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Écho", "Tyros Desu",
+                "Ã‰cho", "Tyros Desu",
                 SpellCircle.Fifth,
                 212,
                 9041

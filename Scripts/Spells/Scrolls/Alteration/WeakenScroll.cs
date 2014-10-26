@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public WeakenScroll( int amount ) : base( WeakenSpell.m_SpellID, 0x1F34, amount )
 		{
-            Name = "Altération: Faiblesse";
+            Name = "AltÃ©ration: Faiblesse";
 		}
 
 		public WeakenScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Altération: Faiblesse";
+            Name = "AltÃ©ration: Faiblesse";
 		}
 
 		/*public override Item Dupe( int amount )

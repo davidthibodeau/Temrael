@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonEarthElementalScroll( int amount ) : base( EarthElementalSpell.m_SpellID, 0x1F6A, amount )
 		{
-            Name = "Invocation: Élémental de Terre";
+            Name = "Invocation: Ã‰lÃ©mental de Terre";
 		}
 
 		public SummonEarthElementalScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Invocation: Élémental de Terre";
+            Name = "Invocation: Ã‰lÃ©mental de Terre";
 		}
 
 		/*public override Item Dupe( int amount )

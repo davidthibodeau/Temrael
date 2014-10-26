@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.3);
 
-                m_HalenePutrideTable[m] = 0.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 400); // 10 à 55%
+                m_HalenePutrideTable[m] = 0.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 400); // 10 Ã  55%
 
                 Timer t = new HalenePutrideTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

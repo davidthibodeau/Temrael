@@ -72,7 +72,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Lumière divine", "Haga Kena",
+                "LumiÃ¨re divine", "Haga Kena",
                 SpellCircle.Fourth,
                 269,
                 9032,

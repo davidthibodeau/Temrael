@@ -112,7 +112,7 @@ namespace Server.Engines.Craft
 			}
 		}
 
-		private int m_Circle, m_Mana; // Celà veut dire que l'inscription n'a jamais réellement fonctionné..... ? À tester.
+		private int m_Circle, m_Mana; // CelÃ  veut dire que l'inscription n'a jamais rÃ©ellement fonctionnÃ©..... ? Ã€ tester.
 
 		private enum Reg { BlackPearl, Bloodmoss, Garlic, Ginseng, MandrakeRoot, Nightshade, SulfurousAsh, SpidersSilk }
 
@@ -194,7 +194,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
 
             index = AddCraft(typeof(MagicLockScroll), "Adjuration", "Fermeture Magique", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(MagicTrapScroll), "Adjuration", "Piège Magique", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MagicTrapScroll), "Adjuration", "PiÃ¨ge Magique", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(UnlockScroll), "Adjuration", "Ouverture Magique", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(MagicUnTrapScroll), "Adjuration", "Suppression Magique", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(HarmScroll), "Adjuration", "Nuisance", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
@@ -206,84 +206,84 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ManaVampireScroll), "Adjuration", "Drain Vampirique", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(PoisonFieldScroll), "Adjuration", "Mur de Poison", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
 
-            index = AddCraft(typeof(WeakenScroll), "Altération", "Faiblesse", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(ClumsyScroll), "Altération", "Maladroit", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(FeeblemindScroll), "Altération", "Débilité", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(TelekinisisScroll), "Altération", "Télékinésis", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(MagicReflectScroll), "Altération", "Reflet", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(CurseScroll), "Altération", "Malédiction", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(ParalyzeScroll), "Altération", "Paralysie", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(MassCurseScroll), "Altération", "Fléau", 75.0, 105.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(ParalyzeFieldScroll), "Altération", "Pétrification", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(WeakenScroll), "AltÃ©ration", "Faiblesse", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ClumsyScroll), "AltÃ©ration", "Maladroit", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FeeblemindScroll), "AltÃ©ration", "DÃ©bilitÃ©", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(TelekinisisScroll), "AltÃ©ration", "TÃ©lÃ©kinÃ©sis", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MagicReflectScroll), "AltÃ©ration", "Reflet", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(CurseScroll), "AltÃ©ration", "MalÃ©diction", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ParalyzeScroll), "AltÃ©ration", "Paralysie", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MassCurseScroll), "AltÃ©ration", "FlÃ©au", 75.0, 105.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ParalyzeFieldScroll), "AltÃ©ration", "PÃ©trification", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
 
-            index = AddCraft(typeof(BourrasqueScroll), "Évocation", "Bourrasque", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(FlamecheScroll), "Évocation", "Flamèche", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(FroidScroll), "Évocation", "Froid", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(TempeteScroll), "Évocation", "Tempête", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(FireballScroll), "Évocation", "Boule de Feu", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(FireFieldScroll), "Évocation", "Mur de Feu", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(EnergyBoltScroll), "Évocation", "Énergie", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(LightningScroll), "Évocation", "Éclair", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(ExplosionScroll), "Évocation", "Explosion", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(EnergyFieldScroll), "Évocation", "Énergie de Masse", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(FlamestrikeScroll), "Évocation", "Jet de Flamme", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(MeteorSwarmScroll), "Évocation", "Météores", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(EarthquakeScroll), "Évocation", "Tremblement", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(EnergyVortexScroll), "Évocation", "Vortex", 75.0, 105.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(ChainLightningScroll), "Évocation", "Chaine d'Éclairs", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(BourrasqueScroll), "Ã‰vocation", "Bourrasque", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FlamecheScroll), "Ã‰vocation", "FlamÃ¨che", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FroidScroll), "Ã‰vocation", "Froid", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(TempeteScroll), "Ã‰vocation", "TempÃªte", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FireballScroll), "Ã‰vocation", "Boule de Feu", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FireFieldScroll), "Ã‰vocation", "Mur de Feu", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EnergyBoltScroll), "Ã‰vocation", "Ã‰nergie", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(LightningScroll), "Ã‰vocation", "Ã‰clair", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ExplosionScroll), "Ã‰vocation", "Explosion", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EnergyFieldScroll), "Ã‰vocation", "Ã‰nergie de Masse", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FlamestrikeScroll), "Ã‰vocation", "Jet de Flamme", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MeteorSwarmScroll), "Ã‰vocation", "MÃ©tÃ©ores", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EarthquakeScroll), "Ã‰vocation", "Tremblement", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EnergyVortexScroll), "Ã‰vocation", "Vortex", 75.0, 105.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ChainLightningScroll), "Ã‰vocation", "Chaine d'Ã‰clairs", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
 
             index = AddCraft(typeof(VoileScroll), "Illusion", "Voile", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(NightSightScroll), "Illusion", "Vision Nocturne", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(TeleportScroll), "Illusion", "Téléportation", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(TeleportScroll), "Illusion", "TÃ©lÃ©portation", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(IncognitoScroll), "Illusion", "Incognito", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(RecallScroll), "Illusion", "Rappel", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(MindBlastScroll), "Illusion", "Lobotomie", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(MarkScroll), "Illusion", "Marque", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(PolymorphScroll), "Illusion", "Polymorph", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(RevealScroll), "Illusion", "Révélation", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(InvisibilityScroll), "Illusion", "Invisibilité", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(RevealScroll), "Illusion", "RÃ©vÃ©lation", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(InvisibilityScroll), "Illusion", "InvisibilitÃ©", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(GateTravelScroll), "Illusion", "Voyagement", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
 
             index = AddCraft(typeof(CreateFoodScroll), "Invocation", "Nourriture", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(MagicArrowScroll), "Invocation", "Flèche Magique", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MagicArrowScroll), "Invocation", "FlÃ¨che Magique", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(WallOfStoneScroll), "Invocation", "Mur de Pierre", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(SummonCreatureScroll), "Invocation", "Convocation", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(SummonEarthElementalScroll), "Invocation", "Élémental de Terre", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(SummonEarthElementalScroll), "Invocation", "Ã‰lÃ©mental de Terre", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(BladeSpiritsScroll), "Invocation", "Esprit de Lames", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(SummonAirElementalScroll), "Invocation", "Élémental d'Air", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(SummonFireElementalScroll), "Invocation", "Élémental de Feu", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(SummonWaterElementalScroll), "Invocation", "Élémental d'Eau", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(SummonAirElementalScroll), "Invocation", "Ã‰lÃ©mental d'Air", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(SummonFireElementalScroll), "Invocation", "Ã‰lÃ©mental de Feu", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(SummonWaterElementalScroll), "Invocation", "Ã‰lÃ©mental d'Eau", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(SummonDaemonScroll), "Invocation", "Conjuration", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
 
             index = AddCraft(typeof(StrengthScroll), "Thaumaturgie", "Force", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(AgilityScroll), "Thaumaturgie", "Agilité", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(AgilityScroll), "Thaumaturgie", "AgilitÃ©", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(CunningScroll), "Thaumaturgie", "Ruse", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(ReactiveArmorScroll), "Thaumaturgie", "Armure Magique", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(ProtectionScroll), "Thaumaturgie", "Protection", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(CureScroll), "Thaumaturgie", "Antidote", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(HealScroll), "Thaumaturgie", "Soins", 55.0, 85.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(BlessScroll), "Thaumaturgie", "Puissance", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(ArchCureScroll), "Thaumaturgie", "Remède", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ArchCureScroll), "Thaumaturgie", "RemÃ¨de", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(ArchProtectionScroll), "Thaumaturgie", "Protection Magique", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
             index = AddCraft(typeof(GreaterHealScroll), "Thaumaturgie", "Soins Magiques", 75.0, 105.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(ResurrectionScroll), "Thaumaturgie", "Résurrection", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ResurrectionScroll), "Thaumaturgie", "RÃ©surrection", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
 
-            index = AddCraft(typeof(WraithFormScroll), "Nécromancie", "Spectre", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(PainSpikeScroll), "Nécromancie", "Corruption", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(EvilOmenScroll), "Nécromancie", "Sermant", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(CorpseSkinScroll), "Nécromancie", "Corps Mortifié", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(SummonFamiliarScroll), "Nécromancie", "Minion", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(MindRotScroll), "Nécromancie", "Pourriture", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(HorrificBeastScroll), "Nécromancie", "Bête Horrifique", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(PoisonStrikeScroll), "Nécromancie", "Venin", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(StrangleScroll), "Nécromancie", "Étranglement", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(LichFormScroll), "Nécromancie", "Liche", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(WitherScroll), "Nécromancie", "Flétrir", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(BloodOathScroll), "Nécromancie", "Présage", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(CurseWeaponScroll), "Nécromancie", "Maudire", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(VengefulSpiritScroll), "Nécromancie", "Esprit Vengeur", 75.0, 105.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(AnimateDeadScroll), "Nécromancie", "Animation des Morts", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
-            index = AddCraft(typeof(VampiricEmbraceScroll), "Nécromancie", "Vampirisime", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(WraithFormScroll), "NÃ©cromancie", "Spectre", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(PainSpikeScroll), "NÃ©cromancie", "Corruption", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EvilOmenScroll), "NÃ©cromancie", "Sermant", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(CorpseSkinScroll), "NÃ©cromancie", "Corps MortifiÃ©", 35.0, 65.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(SummonFamiliarScroll), "NÃ©cromancie", "Minion", 40.0, 70.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MindRotScroll), "NÃ©cromancie", "Pourriture", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(HorrificBeastScroll), "NÃ©cromancie", "BÃªte Horrifique", 45.0, 75.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(PoisonStrikeScroll), "NÃ©cromancie", "Venin", 50.0, 80.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(StrangleScroll), "NÃ©cromancie", "Ã‰tranglement", 60.0, 90.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(LichFormScroll), "NÃ©cromancie", "Liche", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(WitherScroll), "NÃ©cromancie", "FlÃ©trir", 65.0, 95.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(BloodOathScroll), "NÃ©cromancie", "PrÃ©sage", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(CurseWeaponScroll), "NÃ©cromancie", "Maudire", 70.0, 100.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(VengefulSpiritScroll), "NÃ©cromancie", "Esprit Vengeur", 75.0, 105.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(AnimateDeadScroll), "NÃ©cromancie", "Animation des Morts", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(VampiricEmbraceScroll), "NÃ©cromancie", "Vampirisime", 80.0, 110.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
       
 			MarkOption = true;
 		}

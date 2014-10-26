@@ -392,7 +392,7 @@ namespace Server.Spells
 		public static bool AddStatBonus( Mobile caster, Mobile target, StatType type, int bonus, TimeSpan duration )
 		{
 			int offset = bonus;
-			string name = String.Format( "Bénédiction : {0}", type );
+			string name = String.Format( "BÃ©nÃ©diction : {0}", type );
 
 			StatMod mod = target.GetStatMod( name );
 
@@ -423,7 +423,7 @@ namespace Server.Spells
 		public static bool AddStatCurse( Mobile caster, Mobile target, StatType type, int curse, TimeSpan duration )
 		{
 			int offset = -curse;
-			string name = String.Format( "Malédiction : {0}", type );
+			string name = String.Format( "MalÃ©diction : {0}", type );
 
 			StatMod mod = target.GetStatMod( name );
 
@@ -625,7 +625,7 @@ namespace Server.Spells
 
                 if (pm != null)
                 {
-                    //Bonus (Magie Prolongée)
+                    //Bonus (Magie ProlongÃ©e)
                     double scale = (pm.GetAptitudeValue(Aptitude.Spiritisme) * 0.04) + 1;
                     duration = TimeSpan.FromSeconds(duration.TotalSeconds * scale);
                 }

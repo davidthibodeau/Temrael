@@ -48,7 +48,7 @@ namespace Server.Items
         {
             if (BotaniqueSystem.Enabled)
             {
-                from.SendMessage("Où voulez-vous pelleter?");
+                from.SendMessage("OÃ¹ voulez-vous pelleter?");
                 from.BeginTarget(1, true, TargetFlags.None, new TargetCallback(ChooseLand_OnTarget));
             }
         }
@@ -68,7 +68,7 @@ namespace Server.Items
                 }*/
                 if (from.Mounted)
                 {
-                    from.SendMessage("Vous ne pouvez pelleter en étant sur une monture.");
+                    from.SendMessage("Vous ne pouvez pelleter en Ã©tant sur une monture.");
                 }
                 else if (ContainsPoint(p))
                 {
@@ -86,7 +86,7 @@ namespace Server.Items
                     }
                     else
                     {
-                        from.SendMessage("Ce type de terre ne peut être pelleté.");
+                        from.SendMessage("Ce type de terre ne peut Ãªtre pelletÃ©.");
                     }
                 }
             }
@@ -108,7 +108,7 @@ namespace Server.Items
             
             if (from.Mounted)
             {
-                from.SendMessage("Vous ne pouvez pelleter en étant sur une monture.");
+                from.SendMessage("Vous ne pouvez pelleter en Ã©tant sur une monture.");
             }
             else
             {
@@ -137,15 +137,15 @@ namespace Server.Items
                 
                 if (from.Mounted)
                 {
-                    from.SendMessage("Vous ne pouvez verser la terre en étant sur une monture.");
+                    from.SendMessage("Vous ne pouvez verser la terre en Ã©tant sur une monture.");
                 }
                 else if (!bowl.IsChildOf(from.Backpack))
                 {
-                    from.SendMessage("{0} doit être dans votre sac.", bowl is EarthBag ? "La poche" : "Le pot");
+                    from.SendMessage("{0} doit Ãªtre dans votre sac.", bowl is EarthBag ? "La poche" : "Le pot");
                 }
                 else if (!bowl.IsEmpty)
                 {
-                    from.SendMessage("{0} doit être vide.", bowl is EarthBag ? "La poche" : "Le pot");
+                    from.SendMessage("{0} doit Ãªtre vide.", bowl is EarthBag ? "La poche" : "Le pot");
                 }
                 else
                 {

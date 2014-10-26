@@ -148,7 +148,7 @@ namespace Server.Items
                     }
                     else if (targeted is TMobile && ((TMobile)targeted).RisqueDeMort)
                     {
-                        from.SendMessage("Cette personne est trop affaiblie pour être soignée.");
+                        from.SendMessage("Cette personne est trop affaiblie pour Ãªtre soignÃ©e.");
                     }
                     else if (HasChestArmor((Mobile)targeted))
                     {
@@ -160,7 +160,7 @@ namespace Server.Items
 
                         if (context != null)
                         {
-                            from.SendMessage("Vous devez attendre avant de soigner à nouveau cette personne.");
+                            from.SendMessage("Vous devez attendre avant de soigner Ã  nouveau cette personne.");
                         }
                         else if (BandageContext.BeginHeal(from, (Mobile)targeted) != null)
                         {
@@ -277,7 +277,7 @@ namespace Server.Items
             }
             else if (m_Patient is TMobile && ((TMobile)m_Patient).RisqueDeMort)
             {
-                m_Healer.SendMessage("Cette personne est trop affaiblie pour être soignée.");
+                m_Healer.SendMessage("Cette personne est trop affaiblie pour Ãªtre soignÃ©e.");
             }
             else if (Bandage.HasChestArmor(m_Patient))
             {

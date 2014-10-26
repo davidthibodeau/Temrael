@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public MagicUnTrapScroll( int amount ) : base( RemoveTrapSpell.m_SpellID, 0x1F3A, amount )
 		{
-            Name = "Adjuration: Supression de Piège";
+            Name = "Adjuration: Supression de PiÃ¨ge";
 		}
 
 		public MagicUnTrapScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Adjuration: Supression de Piège";
+            Name = "Adjuration: Supression de PiÃ¨ge";
 		}
 
 		/*public override Item Dupe( int amount )

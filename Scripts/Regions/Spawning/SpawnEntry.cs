@@ -449,7 +449,7 @@ namespace Server.Regions
 		}
 
         [Usage("ResetSpawnTime")]
-        [Description("Remet une valeur par défaut (30 à 45 min) pour tous les spawns du serveur.")]
+        [Description("Remet une valeur par dÃ©faut (30 Ã  45 min) pour tous les spawns du serveur.")]
         private static void ResetSpawnTime_OnCommand(CommandEventArgs args)
         {
             foreach (SpawnEntry entry in m_Table.Values)

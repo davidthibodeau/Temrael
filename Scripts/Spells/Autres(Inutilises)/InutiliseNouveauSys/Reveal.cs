@@ -17,7 +17,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Révélation", "Wis Quas",
+				"RÃ©vÃ©lation", "Wis Quas",
 				SpellCircle.Sixth,
 				206,
 				9002,

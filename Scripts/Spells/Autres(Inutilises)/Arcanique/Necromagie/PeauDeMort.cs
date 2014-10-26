@@ -51,7 +51,7 @@ namespace Server.Spells
                 double ss = Caster.Skills[CastSkill].Value;
                 double mr = Caster.Skills[DamageSkill].Value;
 
-                double value = 3 + 10 * ((ss + mr) / 225);//5 à 18
+                double value = 3 + 10 * ((ss + mr) / 225);//5 Ã  18
 
                 value = SpellHelper.AdjustValue(Caster, value);
 

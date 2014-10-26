@@ -57,7 +57,7 @@ namespace Server.Spells
 
                 //Caster.SendMessage("Force : " + m.Str);
                 //Caster.SendMessage("Intelligence : " + m.Int);
-                //Caster.SendMessage("Dextérité : " + m.Dex);
+                //Caster.SendMessage("DextÃ©ritÃ© : " + m.Dex);
 
                 m.FixedParticles(14265, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(509);

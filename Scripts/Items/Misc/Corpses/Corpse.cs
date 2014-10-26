@@ -1215,7 +1215,7 @@ namespace Server.Items
                 new RightArm().MoveToWorld(Location, Map);
                 new Head(null).MoveToWorld(Location, Map);*/
 
-                from.SendMessage("Vous vous nourrissez de l'âme de ce corps");
+                from.SendMessage("Vous vous nourrissez de l'Ã¢me de ce corps");
 
                 SetFlag(CorpseFlag.Carved, true);
 

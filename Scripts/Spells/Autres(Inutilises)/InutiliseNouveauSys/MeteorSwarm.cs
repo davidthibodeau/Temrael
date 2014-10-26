@@ -18,7 +18,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Météores", "Flam Kal Des Ylem",
+				"MÃ©tÃ©ores", "Flam Kal Des Ylem",
 				SpellCircle.Eighth,
 				233,
 				9042,

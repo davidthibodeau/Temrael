@@ -39,7 +39,7 @@ namespace Server.Items
             if (from.Skills[SkillName.Cuisine].Value >= 90.0)
                 Fishing.System.BeginHarvesting(from, this);
             else
-                from.SendMessage("Vous n'êtes pas assez compétent pour utiliser cet objet.");
+                from.SendMessage("Vous n'Ãªtes pas assez compÃ©tent pour utiliser cet objet.");
 		}
 
 		public Harpoon( Serial serial ) : base( serial )

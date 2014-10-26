@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.4);
 
-                m_TranscendanceTable[m] = 0.02 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 5000); //2 à 5% par tile à partir de 12 tiles
+                m_TranscendanceTable[m] = 0.02 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 5000); //2 Ã  5% par tile Ã  partir de 12 tiles
 
                 Timer t = new TranscendanceTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

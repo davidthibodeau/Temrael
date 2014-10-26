@@ -45,7 +45,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                m_SoifDuCombatTable[m] = 1.60 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 1000); //60 à 110%
+                m_SoifDuCombatTable[m] = 1.60 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 1000); //60 Ã  110%
                 m_SoifDuCombatRegistry[m] = DateTime.Now + TimeSpan.FromSeconds(20);
 
                 Timer t = new SoifDuCombatTimer(m);

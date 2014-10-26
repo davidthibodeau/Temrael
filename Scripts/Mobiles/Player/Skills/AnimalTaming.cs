@@ -321,7 +321,7 @@ namespace Server.SkillHandlers
                         //switch ( Utility.Random( 5 ) )
                         //{
                         //    /*case 0: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "J'ai toujours voulu d'un compagnon comme toi."); break;
-                        //    case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Prêt a partir à l'aventure l'ami ?"); break;
+                        //    case 1: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "PrÃªt a partir Ã  l'aventure l'ami ?"); break;
                         //    case 2: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Je peux t'offrir dequoi te nourrir."); break;
                         //    case 3: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Allez viens par ici."); break;
                         //    case 4: m_Tamer.PublicOverheadMessage(MessageType.Regular, m_Tamer.SpeechHue, true, "Suis moi le copain."); break;*/

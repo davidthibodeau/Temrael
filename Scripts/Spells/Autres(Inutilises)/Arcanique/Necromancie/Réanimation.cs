@@ -9,10 +9,10 @@ using Server.Gumps;
 /*Reanimation.cs
  * 
  * Description : 
- * - Sort de nécromancie Réanimation. Relève un mort vivant avec les statistiques d'un cadavre
+ * - Sort de nÃ©cromancie RÃ©animation. RelÃ¨ve un mort vivant avec les statistiques d'un cadavre
  * 
  * MAJ:
- * - 2010-02-08 : Diminution des statistiques de la créatures pour ne correspondre qu'à 33% de ceux de la créature originelle 
+ * - 2010-02-08 : Diminution des statistiques de la crÃ©atures pour ne correspondre qu'Ã  33% de ceux de la crÃ©ature originelle 
  * 
 */
 namespace Server.Spells
@@ -71,7 +71,7 @@ namespace Server.Spells
             {
                 try
                 {
-                    //Choix du type de créature à ramener (Va définir des statistiques de base)
+                    //Choix du type de crÃ©ature Ã  ramener (Va dÃ©finir des statistiques de base)
                     BaseCreature bc = Activator.CreateInstance(ReanimationGump.m_Entries[m_Summon].Creature) as BaseCreature;
 
                     if (bc != null)
@@ -88,7 +88,7 @@ namespace Server.Spells
                             }
                             /*else if (m_Corpse != null && m_Corpse.InBones)
                             {
-                                Caster.SendMessage("Vous ne pouvez animer la mort à partir de ce corps.");
+                                Caster.SendMessage("Vous ne pouvez animer la mort Ã  partir de ce corps.");
                             }*/
                             else if (m_Corpse != null && m_Corpse.Owner != null)
                             {
@@ -99,20 +99,20 @@ namespace Server.Spells
                                     int mindam = 0;
                                     int maxdam = 0;
 
-                                    //Si on réanime le cadavre d'un joueur ou d'un npc, met les dégâts au minimum
+                                    //Si on rÃ©anime le cadavre d'un joueur ou d'un npc, met les dÃ©gÃ¢ts au minimum
                                     if (m_Corpse.Owner is TMobile)
                                     {
                                         mindam = 10;
                                         maxdam = 15;
                                     }
-                                    //Si on réanime une créature, met les dégâts à ceux de la créature
+                                    //Si on rÃ©anime une crÃ©ature, met les dÃ©gÃ¢ts Ã  ceux de la crÃ©ature
                                     else if (m_Corpse.Owner is BaseCreature)
                                     {
                                         mindam = ((int)(((BaseCreature)m_Corpse.Owner).DamageMin/3));
                                         maxdam = ((int)(((BaseCreature)m_Corpse.Owner).DamageMax/3));
                                     }
 
-                                    //On assigne les statistiques du mort au monstre réanimé
+                                    //On assigne les statistiques du mort au monstre rÃ©animÃ©
                                     bc.SetStr((int)(m_Corpse.Owner.Str/3));
                                     bc.SetDex((int)(m_Corpse.Owner.Dex/3));
                                     bc.SetInt((int)(m_Corpse.Owner.Int/3));
@@ -128,7 +128,7 @@ namespace Server.Spells
                                 }
                             }
                             else
-                                Caster.SendMessage("Le corps que vous ciblez ne peut être réanimé !");
+                                Caster.SendMessage("Le corps que vous ciblez ne peut Ãªtre rÃ©animÃ© !");
                         }
                     }
                 }
@@ -205,7 +205,7 @@ namespace Server.Spells
                 AddBackground(30, 19, 231, 190, 9270);
                 AddBackground(46, 33, 200, 31, 9400);
 
-                AddLabel(52, 39, 2101, "Choisissez le type de créature");
+                AddLabel(52, 39, 2101, "Choisissez le type de crÃ©ature");
 
                 for (int i = 0; i < m_Entries.Length; ++i)
                 {
@@ -248,7 +248,7 @@ namespace Server.Spells
                     /*if (!corpse.InBones)*/
                         m_Caster.SendGump(new ReanimationGump(m_Caster, m_Scroll, corpse, corpse.Location));
                     /*else
-                        m_Caster.SendMessage("Vous ne pouvez animer la mort à partir de ce corps.");*/
+                        m_Caster.SendMessage("Vous ne pouvez animer la mort Ã  partir de ce corps.");*/
                 }
 			}
 		}

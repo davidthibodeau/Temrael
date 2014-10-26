@@ -48,7 +48,7 @@ namespace Server.Spells
 
                             if (from.Skills[SkillName.ArtMagique].Value < master.Skills[SkillName.Dressage].Value)
                             {
-                                from.SendMessage("Vous devez avoir un niveau plus élevé de Spirit Speak que celui d'Animal Taming du maître de la créature.");
+                                from.SendMessage("Vous devez avoir un niveau plus Ã©levÃ© de Spirit Speak que celui d'Animal Taming du maÃ®tre de la crÃ©ature.");
                             }
                             else
                             {

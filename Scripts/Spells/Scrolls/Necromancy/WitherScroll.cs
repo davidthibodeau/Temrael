@@ -16,7 +16,7 @@ namespace Server.Items
         public WitherScroll(int amount)
             : base(WitherSpell.m_SpellID, 0x226E, amount)
 		{
-            Name = "Nécromancie: Flétrir";
+            Name = "NÃ©cromancie: FlÃ©trir";
 		}
 
 		public WitherScroll( Serial serial ) : base( serial )
@@ -36,7 +36,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Flétrir";
+            Name = "NÃ©cromancie: FlÃ©trir";
 		}
 
 		/*public override Item Dupe( int amount )

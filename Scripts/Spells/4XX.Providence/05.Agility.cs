@@ -14,7 +14,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Agilité", "Ex Uus",
+				"AgilitÃ©", "Ex Uus",
 				SpellCircle.First,
 				212,
 				9061,

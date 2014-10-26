@@ -39,7 +39,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.3);
 
-                m_MortificationTable[m] = (int)(5 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 8)); // 10 à 50%
+                m_MortificationTable[m] = (int)(5 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 8)); // 10 Ã  50%
 
                 Timer t = new MortificationTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

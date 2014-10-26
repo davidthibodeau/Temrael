@@ -1100,7 +1100,7 @@ namespace Server
 
             int count = reader.ReadInt();
             if (count != info.Length)
-                Console.WriteLine("Warning: SkillInfo.Table a size {0} alors que m_Skills a size {1}. Si vous n'avez pas ajouté de skill, il y a un probleme.",
+                Console.WriteLine("Warning: SkillInfo.Table a size {0} alors que m_Skills a size {1}. Si vous n'avez pas ajoutÃ© de skill, il y a un probleme.",
                     info.Length, count);
 
             for (int i = 0; i < count; ++i)

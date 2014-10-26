@@ -24,30 +24,30 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( "Casque de Cuir", typeof( LeatherCap ), 15, 20, 0x1DB9, 0 ) );
 				Add( new GenericBuyInfo( "Brassards de Cuir", typeof( LeatherArms ), 30, 20, 0x13CD, 0 ) );
 				Add( new GenericBuyInfo( "Plastron de Cuir", typeof( LeatherChest ), 45, 20, 0x13CC, 0 ) );
-				Add( new GenericBuyInfo( "Jambières de Cuir", typeof( LeatherLegs ), 38, 20, 0x13CB, 0 ) );
+				Add( new GenericBuyInfo( "JambiÃ¨res de Cuir", typeof( LeatherLegs ), 38, 20, 0x13CB, 0 ) );
 				Add( new GenericBuyInfo( "Gants de Cuir", typeof( LeatherGloves ), 18, 20, 0x13C6, 0 ) );
 
-				Add( new GenericBuyInfo( "Gorget de Cuir Clouté", typeof( StuddedGorget ), 40, 20, 0x13D6, 0 ) );
-				Add( new GenericBuyInfo( "Brassards de Cuir Clouté", typeof( StuddedArms ), 50, 20, 0x13DC, 0 ) );
-				Add( new GenericBuyInfo( "Plastron de Cuir Clouté", typeof( StuddedChest ), 75, 20, 0x13DB, 0 ) );
-				Add( new GenericBuyInfo( "Jambières de Cuir Clouté", typeof( StuddedLegs ), 65, 20, 0x13DA, 0 ) );
-				Add( new GenericBuyInfo( "Gants de Cuir Clouté", typeof( StuddedGloves ), 35, 20, 0x13D5, 0 ) );
+				Add( new GenericBuyInfo( "Gorget de Cuir CloutÃ©", typeof( StuddedGorget ), 40, 20, 0x13D6, 0 ) );
+				Add( new GenericBuyInfo( "Brassards de Cuir CloutÃ©", typeof( StuddedArms ), 50, 20, 0x13DC, 0 ) );
+				Add( new GenericBuyInfo( "Plastron de Cuir CloutÃ©", typeof( StuddedChest ), 75, 20, 0x13DB, 0 ) );
+				Add( new GenericBuyInfo( "JambiÃ¨res de Cuir CloutÃ©", typeof( StuddedLegs ), 65, 20, 0x13DA, 0 ) );
+				Add( new GenericBuyInfo( "Gants de Cuir CloutÃ©", typeof( StuddedGloves ), 35, 20, 0x13D5, 0 ) );
 
-				Add( new GenericBuyInfo( "Plastron Féminin de Cuir Clouté", typeof( FemaleStuddedChest ), 60, 20, 0x1C02, 0 ) );
+				Add( new GenericBuyInfo( "Plastron FÃ©minin de Cuir CloutÃ©", typeof( FemaleStuddedChest ), 60, 20, 0x1C02, 0 ) );
 				//Add( new GenericBuyInfo( typeof( FemalePlateChest ), 207, 20, 0x1C04, 0 ) );
-				Add( new GenericBuyInfo( "Plastron Féminin de Cuir", typeof( FemaleLeatherChest ), 35, 20, 0x1C06, 0 ) );
-				Add( new GenericBuyInfo( "Jupe de Cuir Clouté", typeof( LeatherShorts ), 28, 20, 0x1C00, 0 ) );
+				Add( new GenericBuyInfo( "Plastron FÃ©minin de Cuir", typeof( FemaleLeatherChest ), 35, 20, 0x1C06, 0 ) );
+				Add( new GenericBuyInfo( "Jupe de Cuir CloutÃ©", typeof( LeatherShorts ), 28, 20, 0x1C00, 0 ) );
 				Add( new GenericBuyInfo( "Jupe de Cuir", typeof( LeatherSkirt ), 25, 20, 0x1C08, 0 ) );
 				Add( new GenericBuyInfo( "Buste de Cuir", typeof( LeatherBustierArms ), 25, 20, 0x1C0A, 0 ) );
 				Add( new GenericBuyInfo( "Cuirasse de Cuir", typeof( LeatherBustierArms ), 30, 20, 0x1C0B, 0 ) );
-				Add( new GenericBuyInfo( "Buste de Cuir Clouté", typeof( StuddedBustierArms ), 40, 20, 0x1C0C, 0 ) );
-				Add( new GenericBuyInfo( "Cuirasse de Cuir Clouté", typeof( StuddedBustierArms ), 45, 20, 0x1C0D, 0 ) );*/
+				Add( new GenericBuyInfo( "Buste de Cuir CloutÃ©", typeof( StuddedBustierArms ), 40, 20, 0x1C0C, 0 ) );
+				Add( new GenericBuyInfo( "Cuirasse de Cuir CloutÃ©", typeof( StuddedBustierArms ), 45, 20, 0x1C0D, 0 ) );*/
 
                 Add(new GenericBuyInfo("Bouclier de Cuir", typeof(BouclierCuir), 20, 20, 0x2A41, 0));
 
 				Add( new GenericBuyInfo( "Sac", typeof( Bag ), 6, 20, 0xE76, 0 ) );
 				Add( new GenericBuyInfo( "Bourse", typeof( Pouch ), 8, 20, 0xE79, 0 ) );
-				Add( new GenericBuyInfo( "Sac à dos", typeof( Backpack ), 15, 20, 0x9B2, 0 ) );
+				Add( new GenericBuyInfo( "Sac Ã  dos", typeof( Backpack ), 15, 20, 0x9B2, 0 ) );
 
 				Add( new GenericBuyInfo( "Cuir", typeof( Leather ), 12, 20, 0x1081, 0 ) );
                 Add( new GenericBuyInfo( "Kit de couture (Cuir/Os)", typeof(BoneLeatherSewingKit), 12, 20, 0xF9D, 0));

@@ -27,7 +27,7 @@ namespace Server.Spells
 		public override int CastRecoveryMinimum{ get{ return 0; } }
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Évasion", "In Por Ort Jux",
+				"Ã‰vasion", "In Por Ort Jux",
 				SpellCircle.First,
 				236,
 				9011,
@@ -109,7 +109,7 @@ namespace Server.Spells
 
                 if (!Check)
                 {
-                    Caster.SendMessage("Vous ne pouvez pas vous téléporter dans les environs.");
+                    Caster.SendMessage("Vous ne pouvez pas vous tÃ©lÃ©porter dans les environs.");
                 }
                 else
                 {

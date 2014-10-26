@@ -12,7 +12,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Eclair en Chaîne", "Vas Ort Grav",
+				"Eclair en ChaÃ®ne", "Vas Ort Grav",
 				SpellCircle.Seventh,
 				209,
 				9022,

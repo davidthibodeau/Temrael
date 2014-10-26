@@ -42,7 +42,7 @@ namespace Server.Spells
 			}
             else if (m.Blessed)
             {
-                Caster.SendMessage("Vous ne pouvez pas cibler une créature invulnérable !");
+                Caster.SendMessage("Vous ne pouvez pas cibler une crÃ©ature invulnÃ©rable !");
             }
             else if (CheckSequence())
             {
@@ -67,7 +67,7 @@ namespace Server.Spells
                     t.Start();
                 }
                 else
-                    Caster.SendMessage("Vous ne pouvez pas vous cibler vous-même !");
+                    Caster.SendMessage("Vous ne pouvez pas vous cibler vous-mÃªme !");
             }
 
 			FinishSequence();

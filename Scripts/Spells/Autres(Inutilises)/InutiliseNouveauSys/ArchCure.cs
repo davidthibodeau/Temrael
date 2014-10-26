@@ -17,7 +17,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Remède", "Vas An Nox",
+				"RemÃ¨de", "Vas An Nox",
 				SpellCircle.Sixth,
 				215,
 				9061,

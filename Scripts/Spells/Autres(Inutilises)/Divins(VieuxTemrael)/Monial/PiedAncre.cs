@@ -14,7 +14,7 @@ namespace Server.Spells
         public static Hashtable m_Timers = new Hashtable();
 
         public static readonly new SpellInfo Info = new SpellInfo(
-                "Pied Ancré", "Tyros Sowi",
+                "Pied AncrÃ©", "Tyros Sowi",
                 SpellCircle.First,
                 212,
                 9041
@@ -46,7 +46,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(0.4);
 
-                m_PiedAncreTable[m] = (int)(5 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 10)); //5 à 25%
+                m_PiedAncreTable[m] = (int)(5 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 10)); //5 Ã  25%
 
                 Timer t = new PiedAncreTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;

@@ -10,7 +10,7 @@ namespace Server.Items
             : base(0x09FC)
 		{
 			Weight = 2;
-            Name = "Socle à chandelle mural";
+            Name = "Socle Ã  chandelle mural";
 		}
 
         public SocleChandelleMural(Serial serial)
@@ -72,7 +72,7 @@ namespace Server.Items
             : base(0x0A06)
 		{
 			Weight = 2;
-            Name = "Socle à torche mural";
+            Name = "Socle Ã  torche mural";
 		}
 
         public SocleTorche(Serial serial)
@@ -284,7 +284,7 @@ namespace Server.Items
             : base(0x0B25)
         {
             Weight = 2;
-            Name = "Lanterne Sur Pied Orné";
+            Name = "Lanterne Sur Pied OrnÃ©";
         }
 
         public lanterneSurPiedOrne(Serial serial)

@@ -46,13 +46,13 @@ namespace Server.Items
 
         public static string[] m_Material = new string[]
             {
-		        "Érable",
+		        "Ã‰rable",
 		        "Pin",
-                "Cyprès",
-                "Cèdre",
+                "CyprÃ¨s",
+                "CÃ¨dre",
                 "Saule",
-                "Chêne",
-                "Ébène",
+                "ChÃªne",
+                "Ã‰bÃ¨ne",
                 "Acajou",
             };
 
@@ -74,7 +74,7 @@ namespace Server.Items
 
         public override void AddNameProperty(ObjectPropertyList list)
         {
-            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "Bûche(s) [", GetMaterial(), "]", Amount);
+            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "BÃ»che(s) [", GetMaterial(), "]", Amount);
         }
 
 		public override void GetProperties( ObjectPropertyList list )

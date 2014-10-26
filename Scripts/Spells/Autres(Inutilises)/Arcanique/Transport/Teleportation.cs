@@ -38,7 +38,7 @@ namespace Server.Spells
 		public override void OnCast()
 		{
 			//Caster.Target = new InternalTarget( this );
-            Caster.SendMessage("Sort temporairement désactivé en raison de bug abuse.");
+            Caster.SendMessage("Sort temporairement dÃ©sactivÃ© en raison de bug abuse.");
 		}
 
 		public void Target( IPoint3D p )
@@ -68,7 +68,7 @@ namespace Server.Spells
 			}
             else if (!Caster.CanSee(p))
             {
-                Caster.SendMessage("Vous ne pouvez pas  voir l'endroit où vous désirez vous téléporter.");
+                Caster.SendMessage("Vous ne pouvez pas  voir l'endroit oÃ¹ vous dÃ©sirez vous tÃ©lÃ©porter.");
             }
             else if (CheckSequence())
             {

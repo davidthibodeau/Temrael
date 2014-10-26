@@ -13,7 +13,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Réfecteur", "Gebo Otil Algi",
+                "RÃ©fecteur", "Gebo Otil Algi",
 				SpellCircle.Seventh,
 				212,
 				9041
@@ -44,7 +44,7 @@ namespace Server.Spells
 				SpellHelper.GetSurfaceTop( ref p );
 
                 int ItemID = 9328;
-                string name = "Réfecteur";
+                string name = "RÃ©fecteur";
                 int hue = 1942;
 
                 TotemType type = TotemType.Refecteur;

@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public CurseWeaponScroll( int amount ) : base( CurseWeaponSpell.m_SpellID, 0x2263, amount )
 		{
-            Name = "Nécromancie: Maudire";
+            Name = "NÃ©cromancie: Maudire";
 		}
 
 		public CurseWeaponScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Maudire";
+            Name = "NÃ©cromancie: Maudire";
 		}
 
 		/*public override Item Dupe( int amount )

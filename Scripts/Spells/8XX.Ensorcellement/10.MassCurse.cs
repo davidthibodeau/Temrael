@@ -17,7 +17,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Fléau", "Vas Des Sanct",
+				"FlÃ©au", "Vas Des Sanct",
 				SpellCircle.Seventh,
 				218,
 				9031,

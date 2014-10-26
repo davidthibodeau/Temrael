@@ -17,7 +17,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Pétrification", "In Ex Grav",
+                "PÃ©trification", "In Ex Grav",
 				SpellCircle.Eighth,
 				230,
 				9012,

@@ -10,7 +10,7 @@ namespace Server.Items
             : base(0x03A1)
         {
             Weight = 5.0;
-            Name = "Trône";
+            Name = "TrÃ´ne";
         }
 
         public TroneBois(Serial serial)

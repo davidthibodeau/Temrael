@@ -62,7 +62,7 @@ namespace Server.Items
 		}
 	}
 
-    //Super Buggé.
+    //Super BuggÃ©.
 	[Furniture]
 	[Flipable( 0x2857, 0x2858 )]
 	public class RedArmoire : BaseContainer
@@ -90,7 +90,7 @@ namespace Server.Items
 		}
 	}
 
-    //Super Buggé.
+    //Super BuggÃ©.
 	[Furniture]
 	[Flipable( 0x285D, 0x285E )]
 	public class CherryArmoire : BaseContainer
@@ -118,7 +118,7 @@ namespace Server.Items
 		}
 	}
 
-    //Super Buggé.
+    //Super BuggÃ©.
 	[Furniture]
 	[Flipable( 0x285B, 0x285C )]
 	public class MapleArmoire : BaseContainer
@@ -146,7 +146,7 @@ namespace Server.Items
 		}
 	}
     
-    //Super Buggé.
+    //Super BuggÃ©.
 	[Furniture]
 	[Flipable( 0x2859, 0x285A )]
 	public class ElegantArmoire : BaseContainer

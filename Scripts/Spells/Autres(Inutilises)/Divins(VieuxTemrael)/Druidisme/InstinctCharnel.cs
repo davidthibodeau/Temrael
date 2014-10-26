@@ -40,7 +40,7 @@ namespace Server.Spells
             }
             else if (!m.Summoned && !m.Controlled && m.ControlMaster != Caster && m.SummonMaster != Caster)
             {
-                Caster.SendMessage("Vous ne pouvez cibler que les créatures que vous contrôlez.");
+                Caster.SendMessage("Vous ne pouvez cibler que les crÃ©atures que vous contrÃ´lez.");
             }
             else if (CheckSequence())
             {
@@ -50,7 +50,7 @@ namespace Server.Spells
 
                 TimeSpan duration = GetDurationForSpell(1);
 
-                m_InstinctCharnelTable[m] = 0.05 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800); //5 à 30% 
+                m_InstinctCharnelTable[m] = 0.05 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800); //5 Ã  30% 
 
                 Timer t = new InstinctCharnelTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;
@@ -127,7 +127,7 @@ namespace Server.Spells
                     m_Owner.Target((BaseCreature)o);
                 }
                 else
-                    from.SendMessage("Vous ne pouvez cibler que des créatures !");
+                    from.SendMessage("Vous ne pouvez cibler que des crÃ©atures !");
             }
 
             protected override void OnTargetFinish(Mobile from)

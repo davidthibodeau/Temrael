@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public EvilOmenScroll( int amount ) : base( EvilOmenSpell.m_SpellID, 0x2264, amount )
 		{
-            Name = "Nécromancie: Présage";
+            Name = "NÃ©cromancie: PrÃ©sage";
 		}
 
 		public EvilOmenScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Présage";
+            Name = "NÃ©cromancie: PrÃ©sage";
 		}
 
 		/*public override Item Dupe( int amount )

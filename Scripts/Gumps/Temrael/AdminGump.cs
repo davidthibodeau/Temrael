@@ -2801,7 +2801,7 @@ namespace Server.Gumps
                 if (m_SelectedPlayer.ListCote.Count > 5)
                     m_SelectedPlayer.ListCote.RemoveAt(0);
                 m_SelectedPlayer.LastCotation = DateTime.Now;
-                CommandLogging.WriteLine(from, "{0} a attribué une cote de {1} à {2}.", 
+                CommandLogging.WriteLine(from, "{0} a attribuÃ© une cote de {1} Ã  {2}.", 
                     CommandLogging.Format(from), cote, CommandLogging.Format(m_SelectedPlayer));
                 from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
             }
@@ -2815,7 +2815,7 @@ namespace Server.Gumps
                 {
                     m_SelectedPlayer.Backpack.AddItem(fiole);
                     m_SelectedPlayer.NextFiole = DateTime.Now.AddDays(1);
-                    CommandLogging.WriteLine(from, "{0} a donné une fiole de {1} exp à {2}.", 
+                    CommandLogging.WriteLine(from, "{0} a donnÃ© une fiole de {1} exp Ã  {2}.", 
                         CommandLogging.Format(from), fiole.Exp,CommandLogging.Format(m_SelectedPlayer));
                     from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
                 }

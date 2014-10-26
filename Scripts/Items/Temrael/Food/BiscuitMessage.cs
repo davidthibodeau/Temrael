@@ -79,7 +79,7 @@ namespace Server.Items
             if (this.IsChildOf(from.Backpack))
                 from.Prompt = new BiscuitMessagePrompt(from, this);
             else
-                from.SendMessage("Ceci doit être dans votre sac pour l'utiliser");
+                from.SendMessage("Ceci doit Ãªtre dans votre sac pour l'utiliser");
         }
 
         public override void Serialize(GenericWriter writer)
@@ -138,7 +138,7 @@ namespace Server.Items
 
         public BiscuitMessagePrompt(Mobile from, BiscuitMessageVide item)
         {
-            from.SendMessage("Entrez le message à mettre dans le biscuit. ESC pour annuler.");
+            from.SendMessage("Entrez le message Ã  mettre dans le biscuit. ESC pour annuler.");
             m_Item = item;
             m_From = from;
         }

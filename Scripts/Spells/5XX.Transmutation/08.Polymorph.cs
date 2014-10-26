@@ -54,7 +54,7 @@ namespace Server.Spells
             }
             else if (!Caster.CanBeginAction(typeof(IncognitoSpell)))
             {
-                Caster.SendMessage("Vous ne pouvez faire ce sort en étant sous l'effet de l'incognito.");
+                Caster.SendMessage("Vous ne pouvez faire ce sort en Ã©tant sous l'effet de l'incognito.");
                 return false;
             }
             else if (!Caster.CanBeginAction(typeof(PolymorphSpell)))
@@ -69,12 +69,12 @@ namespace Server.Spells
             }
             else if (TransformationSpell.UnderTransformation(Caster))
             {
-                Caster.SendMessage("Vous ne pouvez faire ce sort en étant transformé.");
+                Caster.SendMessage("Vous ne pouvez faire ce sort en Ã©tant transformÃ©.");
                 return false;
             }
             /*else if (!Caster.CanBeginAction(typeof(ChauveSouris)))
             {
-                Caster.SendMessage("Vous ne pouvez vous transformer en étant sous la forme d'une chauve-souris.");
+                Caster.SendMessage("Vous ne pouvez vous transformer en Ã©tant sous la forme d'une chauve-souris.");
                 return false;
             }*/
             else if (m_NewBody == 0)
@@ -94,19 +94,19 @@ namespace Server.Spells
             }
             else if (!Caster.CanBeginAction(typeof(IncognitoSpell)))
             {
-                Caster.SendMessage("Vous ne pouvez faire ce sort en étant sous l'effet de l'incognito.");
+                Caster.SendMessage("Vous ne pouvez faire ce sort en Ã©tant sous l'effet de l'incognito.");
             }
             /*else if (Caster is TMobile && ((TMobile)Caster).Disguised)
             {
-                Caster.SendMessage("Vous ne pouvez faire ce sort en étant déguisé.");
+                Caster.SendMessage("Vous ne pouvez faire ce sort en Ã©tant dÃ©guisÃ©.");
             }*/
             else if (TransformationSpell.UnderTransformation(Caster))
             {
-                Caster.SendMessage("Vous ne pouvez faire ce sort en étant transformé.");
+                Caster.SendMessage("Vous ne pouvez faire ce sort en Ã©tant transformÃ©.");
             }
             /*else if (!Caster.CanBeginAction(typeof(ChauveSouris)))
             {
-                Caster.SendMessage("Vous ne pouvez vous transformer en étant sous la forme d'une chauve-souris.");
+                Caster.SendMessage("Vous ne pouvez vous transformer en Ã©tant sous la forme d'une chauve-souris.");
             }*/
 			else if ( CheckSequence() )
 			{

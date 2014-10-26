@@ -1247,7 +1247,7 @@ namespace Server
                 }
                 if (!m_From.InRange(m_Item, 1) && !found)
                 {
-                    m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir décrire un objet.");
+                    m_From.SendMessage("Vous devez Ãªtre Ã  un maximum d'une case pour pouvoir dÃ©crire un objet.");
                     return;
                 }
                 if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
@@ -1318,7 +1318,7 @@ namespace Server
             {
                 if (!m_From.InRange(m_Item, 1))
                 {
-                    m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir déstatiquer un objet.");
+                    m_From.SendMessage("Vous devez Ãªtre Ã  un maximum d'une case pour pouvoir dÃ©statiquer un objet.");
                     return;
                 }
 

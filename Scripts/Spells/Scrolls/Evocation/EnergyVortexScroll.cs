@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public EnergyVortexScroll( int amount ) : base( EnergyVortexSpell.m_SpellID, 0x1F66, amount )
 		{
-            Name = "Évocation: Vortex";
+            Name = "Ã‰vocation: Vortex";
 		}
 
 		public EnergyVortexScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Vortex";
+            Name = "Ã‰vocation: Vortex";
 		}
 
 		/*public override Item Dupe( int amount )

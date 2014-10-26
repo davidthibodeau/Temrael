@@ -137,7 +137,7 @@ namespace Server.Items
             : base(0x1495)
         {
             Weight = 5.0;
-            Name = "Epée d'entrainement";
+            Name = "EpÃ©e d'entrainement";
         }
 
         public EpeeBois(Serial serial)

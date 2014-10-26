@@ -11,7 +11,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Piège", "In Jux",
+				"PiÃ¨ge", "In Jux",
 				SpellCircle.Second,
 				212,
 				9001,

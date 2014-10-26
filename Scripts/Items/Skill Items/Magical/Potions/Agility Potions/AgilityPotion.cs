@@ -11,7 +11,7 @@ namespace Server.Items
 		[Constructable]
 		public AgilityPotion() : base( PotionEffect.Agility )
 		{
-            Name = "Potion d'agilité";
+            Name = "Potion d'agilitÃ©";
 		}
 
 		public AgilityPotion( Serial serial ) : base( serial )

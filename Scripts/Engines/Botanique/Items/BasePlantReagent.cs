@@ -263,7 +263,7 @@ namespace Server.Items
         public EclatDeVolcan(int amount)
             : base(0x345A)
         {
-            Name = "…clat de Volcan";
+            Name = "√âclat de Volcan";
             Amount = amount;
         }
 
@@ -445,7 +445,7 @@ namespace Server.Items
             if ( from.Backpack != null ){
                 if (IsChildOf(from.Backpack))
                 {
-                    from.SendMessage("Ciblez une crÈature morte.");
+                    from.SendMessage("Ciblez une cr√©ature morte.");
                     from.Target = new PickCorpseTarget(this);
                 }
                 else
@@ -475,22 +475,22 @@ namespace Server.Items
 
                 if (m != null && m is Corpse)
                 {
-                    if (!m.Name.Contains("SaignÈ"))
+                    if (!m.Name.Contains("Saign√©"))
                     {
                         if (from.Backpack.ConsumeTotal(typeof(Bottle), 1))
                         {
                             from.AddToBackpack(new FioleDeSang(1));
-                            from.SendMessage("Vous remplissez une fiole avec le sang de la crÈature.");
-                            m.Name = m.Name + " SaignÈ";
+                            from.SendMessage("Vous remplissez une fiole avec le sang de la cr√©ature.");
+                            m.Name = m.Name + " Saign√©";
                         }
                         else
-                            from.SendMessage("Vous devez avoir une bouteille vide dans votre sac pour utiliser Áa.");
+                            from.SendMessage("Vous devez avoir une bouteille vide dans votre sac pour utiliser √ßa.");
                     }
                     else
-                        from.SendMessage("Le sang de cette crÈature a dÈj‡ ÈtÈ recueilli.");
+                        from.SendMessage("Le sang de cette cr√©ature a d√©j√† √©t√© recueilli.");
                 }
                 else
-                    from.SendMessage("Vous devez cibler une crÈature morte !");
+                    from.SendMessage("Vous devez cibler une cr√©ature morte !");
             }
         }
     }
@@ -509,7 +509,7 @@ namespace Server.Items
         public ResineAmbreBleue(int amount)
             : base(0xF8B)
         {
-            Name = "RÈsine d'Ambre Bleue";
+            Name = "R√©sine d'Ambre Bleue";
             Amount = amount;
 
             Hue = 2045;
@@ -746,7 +746,7 @@ namespace Server.Items
             item.Hue = hue;
 
             from.AddToBackpack(item);
-            from.SendMessage("Vous utilisez l'outil pour rÈcupperez le lin de la fleur."); // You put the spools of thread in your backpack.
+            from.SendMessage("Vous utilisez l'outil pour r√©cupperez le lin de la fleur."); // You put the spools of thread in your backpack.
         }
 
         private class PickWheelTarget : Target

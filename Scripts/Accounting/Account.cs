@@ -667,7 +667,7 @@ namespace Server.Accounting
                     case "Seer": m_AccessLevel = AccessLevel.Chroniqueur; break;
                     case "Administrator": m_AccessLevel = AccessLevel.Chroniqueur; break;
                     default:
-                        Console.WriteLine("ERROR: Incapable d'identifier le accesslevel d'un compte (accesslevel: {0}). Avez-vous changé leurs noms?",
+                        Console.WriteLine("ERROR: Incapable d'identifier le accesslevel d'un compte (accesslevel: {0}). Avez-vous changÃ© leurs noms?",
                             Utility.GetText(node["accessLevel"], "Player"));
                         break;
                 }

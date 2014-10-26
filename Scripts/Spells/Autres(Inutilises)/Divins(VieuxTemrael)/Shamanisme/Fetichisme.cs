@@ -13,7 +13,7 @@ namespace Server.Spells
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-                "Fétichisme", "Desi Haga Impa",
+                "FÃ©tichisme", "Desi Haga Impa",
 				SpellCircle.Seventh,
 				212,
 				9041
@@ -39,7 +39,7 @@ namespace Server.Spells
             }
             else if (m.Blessed)
             {
-                Caster.SendMessage("Vous ne pouvez pas copier des créatures invulnérables !");
+                Caster.SendMessage("Vous ne pouvez pas copier des crÃ©atures invulnÃ©rables !");
             }
             else if (CheckSequence())
             {

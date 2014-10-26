@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public ClumsyScroll( int amount ) : base( ClumsySpell.m_SpellID, 0x1F2E, amount )
 		{
-            Name = "Altération: Maladroit";
+            Name = "AltÃ©ration: Maladroit";
 		}
 
 		public ClumsyScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Altération: Maladroit";
+            Name = "AltÃ©ration: Maladroit";
 		}
 
 		/*public override Item Dupe( int amount )

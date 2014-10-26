@@ -75,7 +75,7 @@ namespace Server.Items
         public static string[] m_Material = new string[]
             {
                 "truite",
-                "doré",
+                "dorÃ©",
                 "carpe",
                 "anguille",
                 "esturgeon",
@@ -84,14 +84,14 @@ namespace Server.Items
                 "anchoie",
                 "morue",
                 "hareng",
-                "flétan",
+                "flÃ©tan",
                 "maquereau",
                 "sole",
                 "thon",
                 "saumon",
                 "grand brochet",
                 "truite sauvage",
-                "grand doré",
+                "grand dorÃ©",
                 "truite de mer",
                 "esturgeon de mer",
                 "grand saumon",
@@ -99,7 +99,7 @@ namespace Server.Items
                 "espadon",
                 "requin gris",
                 "requin blanc",
-                "huître crue",
+                "huÃ®tre crue",
                 "calamari cru",
                 "pieuvre crue"
             };
@@ -190,7 +190,7 @@ namespace Server.Items
         [Constructable]
         public RawDoreFishSteak(int amount) : base(CraftResource.Dore, amount)
         {
-            Name = "filet de Doré Cru";
+            Name = "filet de DorÃ© Cru";
         }
 
         public RawDoreFishSteak(Serial serial) : base(serial)
@@ -523,7 +523,7 @@ namespace Server.Items
         [Constructable]
         public RawFletanFishSteak(int amount) : base(CraftResource.Fletan, amount)
         {
-            Name = "filet de Flétan Cru";
+            Name = "filet de FlÃ©tan Cru";
         }
 
         public RawFletanFishSteak(Serial serial) : base(serial)
@@ -782,7 +782,7 @@ namespace Server.Items
         [Constructable]
         public RawGrandDoreFishSteak(int amount) : base(CraftResource.GrandDore, amount)
         {
-            Name = "filet de Grand Doré Cru";
+            Name = "filet de Grand DorÃ© Cru";
         }
 
         public RawGrandDoreFishSteak(Serial serial) : base(serial)

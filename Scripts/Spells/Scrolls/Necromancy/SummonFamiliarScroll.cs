@@ -16,7 +16,7 @@ namespace Server.Items
         public SummonFamiliarScroll(int amount)
             : base(SummonFamiliarSpell.m_SpellID, 0x226B, amount)
 		{
-            Name = "Nécromancie: Minion";
+            Name = "NÃ©cromancie: Minion";
 		}
 
 		public SummonFamiliarScroll( Serial serial ) : base( serial )
@@ -36,7 +36,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Minion";
+            Name = "NÃ©cromancie: Minion";
 		}
 
 		/*public override Item Dupe( int amount )

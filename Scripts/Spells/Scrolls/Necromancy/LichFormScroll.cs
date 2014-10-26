@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public LichFormScroll( int amount ) : base( LichFormSpell.m_SpellID , 0x2266, amount )
 		{
-            Name = "Nécromancie: Liche";
+            Name = "NÃ©cromancie: Liche";
 		}
 
 		public LichFormScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Nécromancie: Liche";
+            Name = "NÃ©cromancie: Liche";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public EnergyFieldScroll( int amount ) : base( EnergyFieldSpell.m_SpellID, 0x1F5E, amount )
 		{
-            Name = "Évocation: Énergie de Masse";
+            Name = "Ã‰vocation: Ã‰nergie de Masse";
 		}
 
 		public EnergyFieldScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Énergie de Masse";
+            Name = "Ã‰vocation: Ã‰nergie de Masse";
 		}
 
 		/*public override Item Dupe( int amount )

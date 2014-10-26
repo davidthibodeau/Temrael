@@ -8,7 +8,7 @@ namespace Server.Items
 		public GrandVaseBec() : base(0x0B45)
 		{
 			Weight = 2;
-            Name = "Grand vase à bec";
+            Name = "Grand vase Ã  bec";
 		}
 
 		public GrandVaseBec(Serial serial) : base(serial)
@@ -36,7 +36,7 @@ namespace Server.Items
 		public PetitVaseBec() : base(0x0B46)
 		{
 			Weight = 2;
-            Name = "Petit vase à bec";
+            Name = "Petit vase Ã  bec";
 		}
 
 		public PetitVaseBec(Serial serial) : base(serial)

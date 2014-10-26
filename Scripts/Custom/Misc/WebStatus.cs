@@ -33,13 +33,13 @@ namespace Server.Misc
             sb.Replace(">", "&gt;");
             sb.Replace("\"", "&quot;");
             sb.Replace("'", "&#39;");
-            sb.Replace("é", "&eacute;");
-            sb.Replace("É", "&Eacute;");
-            sb.Replace("è", "&egrave;");
-            sb.Replace("È", "&Egrave;");
-            sb.Replace("à", "&agrave;");
-            sb.Replace("À", "&Agrave;");
-            sb.Replace("©", "&copy;");
+            sb.Replace("Ã©", "&eacute;");
+            sb.Replace("Ã‰", "&Eacute;");
+            sb.Replace("Ã¨", "&egrave;");
+            sb.Replace("Ãˆ", "&Egrave;");
+            sb.Replace("Ã ", "&agrave;");
+            sb.Replace("Ã€", "&Agrave;");
+            sb.Replace("Â©", "&copy;");
 
             return sb.ToString();
         }
@@ -434,7 +434,7 @@ namespace Server.Misc
                                 //    break;
                                 case Races.Nain: location = Encode("Mineroc");
                                     break;
-                                case Races.Nomade: location = Encode("Mirage & Mélandre");
+                                case Races.Nomade: location = Encode("Mirage & MÃ©landre");
                                     break;
                                 case Races.Nordique: location = Encode("Golfrund");
                                     break;

@@ -82,7 +82,7 @@ namespace Server.Engines.Harvest
             if (map == null || map == Map.Internal)
                 return null;
 
-            ////Changement de location des minerais à chaque 2 heures.
+            ////Changement de location des minerais Ã  chaque 2 heures.
             //if (DateTime.Now >= HarvestSystem.m_BankClear)
             //{
             //    m_BanksByMap[map] = new Hashtable();

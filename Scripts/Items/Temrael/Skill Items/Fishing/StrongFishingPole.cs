@@ -29,7 +29,7 @@ namespace Server.Items
 		[Constructable]
 		public StrongFishingPole() : base( 0x0DC0 )
 		{
-            Name = "canne à pêche renforcée";
+            Name = "canne Ã  pÃªche renforcÃ©e";
 			Layer = Layer.OneHanded;
             Hue = 1103;
 			Weight = 8.0;
@@ -50,7 +50,7 @@ namespace Server.Items
             if (from.Skills[SkillName.Cuisine].Value >= 35.0)
                 Fishing.System.BeginHarvesting(from, this);
             else
-                from.SendMessage("Vous n'êtes pas assez compétent pour utiliser cet objet.");
+                from.SendMessage("Vous n'Ãªtes pas assez compÃ©tent pour utiliser cet objet.");
         }
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)

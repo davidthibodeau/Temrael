@@ -18,7 +18,7 @@ namespace Server.Items
 		[Constructable]
 		public Amethyst( int amount ) : base( 0xF16 )
 		{
-            Name = "Améthyste";
+            Name = "AmÃ©thyste";
 			Stackable = true;
 			Amount = amount;
 		}

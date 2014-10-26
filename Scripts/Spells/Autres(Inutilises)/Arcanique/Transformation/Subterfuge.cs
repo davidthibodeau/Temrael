@@ -71,7 +71,7 @@ namespace Server.Spells
             else if (m_NewBody == 0)
             {
                 ArrayList entries = new ArrayList();
-                entries.Add(new MetamorphoseGump.MetamorphoseEntry("Panthère", ShrinkTable.Lookup(0xD6), 0xD6, 1015237, 0, 0, 0, 0, 0));
+                entries.Add(new MetamorphoseGump.MetamorphoseEntry("PanthÃ¨re", ShrinkTable.Lookup(0xD6), 0xD6, 1015237, 0, 0, 0, 0, 0));
                 entries.Add(new MetamorphoseGump.MetamorphoseEntry("Spectre", ShrinkTable.Lookup(0x1A), 0x1A, 1015246, 0, 0, 0, 0, 999999));
                 entries.Add(new MetamorphoseGump.MetamorphoseEntry("Wisp", ShrinkTable.Lookup(0x3A), 0x3A, 1015246, 0, 0, 0, 0, 0));
 

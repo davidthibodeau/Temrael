@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public SummonFireElementalScroll( int amount ) : base( FireElementalSpell.m_SpellID, 0x1F6B, amount )
 		{
-            Name = "Invocation: Élémental de Feu";
+            Name = "Invocation: Ã‰lÃ©mental de Feu";
 		}
 
 		public SummonFireElementalScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Invocation: Élémental de Feu";
+            Name = "Invocation: Ã‰lÃ©mental de Feu";
 		}
 
 		/*public override Item Dupe( int amount )

@@ -545,7 +545,7 @@ namespace Server.Scripts.Commands
 
 	public class ToolbarEdit : Gump
 	{
-		public static string HTML = String.Format( "Script fait par Joeku.<br><br>Pour ajouter des commandes, utiliser la navigation à droite puis remplacez le texte dans le tableau ci-bas." );
+		public static string HTML = String.Format( "Script fait par Joeku.<br><br>Pour ajouter des commandes, utiliser la navigation Ã  droite puis remplacez le texte dans le tableau ci-bas." );
 		private bool p_Expanded;
 		private int p_ExpandedInt;
 	

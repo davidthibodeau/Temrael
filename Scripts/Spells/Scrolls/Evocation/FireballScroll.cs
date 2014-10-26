@@ -15,7 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public FireballScroll( int amount ) : base( FireballSpell.m_SpellID, 0x1F3E, amount )
 		{
-            Name = "Évocation: Boule de Feu";
+            Name = "Ã‰vocation: Boule de Feu";
 		}
 
 		public FireballScroll( Serial serial ) : base( serial )
@@ -35,7 +35,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            Name = "Évocation: Boule de Feu";
+            Name = "Ã‰vocation: Boule de Feu";
 		}
 
 		/*public override Item Dupe( int amount )

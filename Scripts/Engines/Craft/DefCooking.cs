@@ -83,81 +83,81 @@ namespace Server.Engines.Craft
 			int index = -1;
 
 			/* Begin Ingredients */
-			index = AddCraft( typeof( SackFlour ), "Ingrédients", "Sac de farine", 0.0, 30.0, typeof( WheatSheaf ), "Blé", 2, 1044490 );
+			index = AddCraft( typeof( SackFlour ), "IngrÃ©dients", "Sac de farine", 0.0, 30.0, typeof( WheatSheaf ), "BlÃ©", 2, 1044490 );
 
-            index = AddCraft(typeof(Dough), "Ingrédients", "Pâte", 0.0, 30.0, typeof(SackFlour), "Sac de farine", 1, 1044253);
+            index = AddCraft(typeof(Dough), "IngrÃ©dients", "PÃ¢te", 0.0, 30.0, typeof(SackFlour), "Sac de farine", 1, 1044253);
 			AddRes( index, typeof( BaseBeverage ), "Eau", 1, 1044253 );
 
-            index = AddCraft(typeof(SweetDough), "Ingrédients", "Pâte sucrée", 0.0, 50.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(SweetDough), "IngrÃ©dients", "PÃ¢te sucrÃ©e", 0.0, 50.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( JarHoney ), "Pot de miel", 1, 1044253 );
 
-            index = AddCraft(typeof(CakeMix), "Ingrédients", "Mélange à gâteau", 20.0, 70.0, typeof(SackFlour), "Sac de farine", 1, 1044253);
-			AddRes( index, typeof( SweetDough ), "Pâte sucrée", 1, 1044253 );
+            index = AddCraft(typeof(CakeMix), "IngrÃ©dients", "MÃ©lange Ã  gÃ¢teau", 20.0, 70.0, typeof(SackFlour), "Sac de farine", 1, 1044253);
+			AddRes( index, typeof( SweetDough ), "PÃ¢te sucrÃ©e", 1, 1044253 );
 
-            index = AddCraft(typeof(CookieMix), "Ingrédients", "Mélange à biscuit", 30.0, 80.0, typeof(JarHoney), "Pot de miel", 1, 1044253);
+            index = AddCraft(typeof(CookieMix), "IngrÃ©dients", "MÃ©lange Ã  biscuit", 30.0, 80.0, typeof(JarHoney), "Pot de miel", 1, 1044253);
 			AddRes( index, typeof( SweetDough ), 1044475, 1, 1044253 );
 			/* End Ingredients */
 
 			/* Begin Preparations */
-            index = AddCraft(typeof(UnbakedQuiche), "Préparations", "Quiche", 0.0, 100.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UnbakedQuiche), "PrÃ©parations", "Quiche", 0.0, 100.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( Eggs ), 1044477, 1, 1044253 );
 
-            index = AddCraft(typeof(UnbakedMeatPie), "Préparations", "Pain de viande", 10.0, 70.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UnbakedMeatPie), "PrÃ©parations", "Pain de viande", 10.0, 70.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( RawRibs ), 1044482, 1, 1044253 );
 
-            index = AddCraft(typeof(UncookedSausagePizza), "Préparations", "Pizza à la saucisse", 20.0, 70.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UncookedSausagePizza), "PrÃ©parations", "Pizza Ã  la saucisse", 20.0, 70.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( Sausage ), 1044483, 1, 1044253 );
 
-            index = AddCraft(typeof(UncookedCheesePizza), "Préparations", "Pizza au fromage", 25.0, 75.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UncookedCheesePizza), "PrÃ©parations", "Pizza au fromage", 25.0, 75.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( CheeseWheel ), 1044486, 1, 1044253 );
 
-            index = AddCraft(typeof(UnbakedFruitPie), "Préparations", "Tarte aux poires", 30.0, 80.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UnbakedFruitPie), "PrÃ©parations", "Tarte aux poires", 30.0, 80.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( Pear ), 1044481, 1, 1044253 );
 
-            index = AddCraft(typeof(UnbakedPeachCobbler), "Préparations", "Tarte tatin aux pêches", 35.0, 80.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UnbakedPeachCobbler), "PrÃ©parations", "Tarte tatin aux pÃªches", 35.0, 80.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( Peach ), 1044480, 1, 1044253 );
 
-            index = AddCraft(typeof(UnbakedApplePie), "Préparations", "Tarte aux pommes", 40.0, 80.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UnbakedApplePie), "PrÃ©parations", "Tarte aux pommes", 40.0, 80.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( Apple ), 1044479, 1, 1044253 );
 
-            index = AddCraft(typeof(UnbakedPumpkinPie), "Préparations", "Tarte à la citrouille", 40.0, 80.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(UnbakedPumpkinPie), "PrÃ©parations", "Tarte Ã  la citrouille", 40.0, 80.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			AddRes( index, typeof( Pumpkin ), 1044484, 1, 1044253 );
 
 			/* Begin Baking */
-            index = AddCraft(typeof(BreadLoaf), "Cuisson", "Miche de pain", 10.0, 60.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(BreadLoaf), "Cuisson", "Miche de pain", 10.0, 60.0, typeof(Dough), "PÃ¢te", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(Cookies), "Cuisson", "Biscuits", 10.0, 60.0, typeof(CookieMix), "Mélange à biscuit", 1, 1044253);
+            index = AddCraft(typeof(Cookies), "Cuisson", "Biscuits", 10.0, 60.0, typeof(CookieMix), "MÃ©lange Ã  biscuit", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(Cake), "Cuisson", "Gâteau", 30.0, 80.0, typeof(CakeMix), "Mélange à gâteau", 1, 1044253);
+            index = AddCraft(typeof(Cake), "Cuisson", "GÃ¢teau", 30.0, 80.0, typeof(CakeMix), "MÃ©lange Ã  gÃ¢teau", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(Muffins), "Cuisson", "Muffins", 30.0, 80.0, typeof(SweetDough), "Pâte sucrée", 1, 1044253);
+            index = AddCraft(typeof(Muffins), "Cuisson", "Muffins", 30.0, 80.0, typeof(SweetDough), "PÃ¢te sucrÃ©e", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(Quiche), "Cuisson", "Quiche", 35.0, 85.0, typeof(UnbakedQuiche), "Préparation de quiche", 1, 1044253);
+            index = AddCraft(typeof(Quiche), "Cuisson", "Quiche", 35.0, 85.0, typeof(UnbakedQuiche), "PrÃ©paration de quiche", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(MeatPie), "Cuisson", "Pain de viande", 40.0, 90.0, typeof(UnbakedMeatPie), "Préparation de pain de viande", 1, 1044253);
+            index = AddCraft(typeof(MeatPie), "Cuisson", "Pain de viande", 40.0, 90.0, typeof(UnbakedMeatPie), "PrÃ©paration de pain de viande", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(SausagePizza), "Cuisson", "Pizza aux saucisses", 40.0, 90.0, typeof(UncookedSausagePizza), "Préparation de pizza aux saucisses", 1, 1044253);
+            index = AddCraft(typeof(SausagePizza), "Cuisson", "Pizza aux saucisses", 40.0, 90.0, typeof(UncookedSausagePizza), "PrÃ©paration de pizza aux saucisses", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(CheesePizza), "Cuisson", "Pizza au fromage", 40.0, 90.0, typeof(UncookedCheesePizza), "Préparation de pizza au fromage", 1, 1044253);
+            index = AddCraft(typeof(CheesePizza), "Cuisson", "Pizza au fromage", 40.0, 90.0, typeof(UncookedCheesePizza), "PrÃ©paration de pizza au fromage", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(FruitPie), "Cuisson", "Tarte aux poires", 50.0, 100.0, typeof(UnbakedFruitPie), "Préparation de tarte aux poires", 1, 1044253);
+            index = AddCraft(typeof(FruitPie), "Cuisson", "Tarte aux poires", 50.0, 100.0, typeof(UnbakedFruitPie), "PrÃ©paration de tarte aux poires", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(PeachCobbler), "Cuisson", "Tarte tatin aux pêches", 50.0, 100.0, typeof(UnbakedPeachCobbler), "Préparation de tarte tatin aux pêches", 1, 1044253);
+            index = AddCraft(typeof(PeachCobbler), "Cuisson", "Tarte tatin aux pÃªches", 50.0, 100.0, typeof(UnbakedPeachCobbler), "PrÃ©paration de tarte tatin aux pÃªches", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(ApplePie), "Cuisson", "Tarte aux pommes", 60.0, 120.0, typeof(UnbakedApplePie), "Préparation de tarte aux pommes", 1, 1044253);
+            index = AddCraft(typeof(ApplePie), "Cuisson", "Tarte aux pommes", 60.0, 120.0, typeof(UnbakedApplePie), "PrÃ©paration de tarte aux pommes", 1, 1044253);
 			SetNeedOven( index, true );
 
-            index = AddCraft(typeof(PumpkinPie), "Cuisson", "Tarte à la citrouille", 60.0, 120.0, typeof(UnbakedPumpkinPie), "Préparation de tarte à la citrouille", 1, 1044253);
+            index = AddCraft(typeof(PumpkinPie), "Cuisson", "Tarte Ã  la citrouille", 60.0, 120.0, typeof(UnbakedPumpkinPie), "PrÃ©paration de tarte Ã  la citrouille", 1, 1044253);
 			SetNeedOven( index, true );
 			/* End Baking */
 
@@ -178,7 +178,7 @@ namespace Server.Engines.Craft
 			SetNeedHeat( index, true );
 			SetUseAllRes( index, true );
 
-            index = AddCraft(typeof(Ribs), "Grillade de viandes", "Entrecôte", 40.0, 90.0, typeof(RawRibs), "Entrecôte crue", 1, 1044253);
+            index = AddCraft(typeof(Ribs), "Grillade de viandes", "EntrecÃ´te", 40.0, 90.0, typeof(RawRibs), "EntrecÃ´te crue", 1, 1044253);
 			SetNeedHeat( index, true );
 			SetUseAllRes( index, true );
 			/* End Barbecue */
@@ -192,7 +192,7 @@ namespace Server.Engines.Craft
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(DoreFishSteak), "Grillade de poissons", "Doré", 10.0, 60.0, typeof(RawDoreFishSteak), "Filet de doré cru", 1, 1044253);
+            index = AddCraft(typeof(DoreFishSteak), "Grillade de poissons", "DorÃ©", 10.0, 60.0, typeof(RawDoreFishSteak), "Filet de dorÃ© cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
@@ -228,7 +228,7 @@ namespace Server.Engines.Craft
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(FletanFishSteak), "Grillade de poissons", "Flétan", 10.0, 60.0, typeof(RawFletanFishSteak), "Filet de flétan cru", 1, 1044253);
+            index = AddCraft(typeof(FletanFishSteak), "Grillade de poissons", "FlÃ©tan", 10.0, 60.0, typeof(RawFletanFishSteak), "Filet de flÃ©tan cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
@@ -256,7 +256,7 @@ namespace Server.Engines.Craft
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(GrandDoreFishSteak), "Grillade de poissons", "Grand doré", 10.0, 60.0, typeof(RawGrandDoreFishSteak), "Filet de grand doré cru", 1, 1044253);
+            index = AddCraft(typeof(GrandDoreFishSteak), "Grillade de poissons", "Grand dorÃ©", 10.0, 60.0, typeof(RawGrandDoreFishSteak), "Filet de grand dorÃ© cru", 1, 1044253);
             SetNeedHeat(index, true);
             SetUseAllRes(index, true);
 
@@ -301,7 +301,7 @@ namespace Server.Engines.Craft
             /* End Grillade de poissons */
 
             /* Begin Autres */
-            index = AddCraft(typeof(BiscuitMessageVide), "Autres", "Biscuit Message", 00.0, 30.0, typeof(Dough), "Pâte", 1, 1044253);
+            index = AddCraft(typeof(BiscuitMessageVide), "Autres", "Biscuit Message", 00.0, 30.0, typeof(Dough), "PÃ¢te", 1, 1044253);
             SetNeedOven(index, true);
             /* End Autres */
 		}

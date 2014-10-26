@@ -15,7 +15,7 @@ namespace Server.Spells
         private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Élemental d'Air", "Kal Vas Xen Hur",
+				"Ã‰lemental d'Air", "Kal Vas Xen Hur",
 				SpellCircle.Sixth,
 				269,
 				9010,
