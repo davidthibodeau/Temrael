@@ -176,7 +176,7 @@ namespace Server.Spells
 
                 if (pm != null)
                 {
-                    chance += pm.Skills[SkillName.Concentration].Value / 333;
+                    chance += pm.Skills[SkillName.Meditation].Value / 333;
 
                     if (this is NecromancerSpell) //La nécro est une école de contact, donc besoin d'un bonus pour ne pas Fizzle
                         chance += pm.Skills[SkillName.Necromancie].Value / 333;
@@ -272,7 +272,7 @@ namespace Server.Spells
 
             n /= 100.0;
 
-            n += target.MagieResistance / 10;
+            n += target.MagicResistance / 10;
 
             if ( n <= 0.0 )
             	return false;
@@ -283,8 +283,8 @@ namespace Server.Spells
             int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
             maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
 
-            if ( target.Skills[SkillName.Concentration].Value < maxSkill )
-                target.CheckSkill( SkillName.Concentration, 0.0, 120.0 );
+            if ( target.Skills[SkillName.Meditation].Value < maxSkill )
+                target.CheckSkill( SkillName.Meditation, 0.0, 120.0 );
 
             return ( n >= Utility.RandomDouble() );
 		}
@@ -318,8 +318,8 @@ namespace Server.Spells
             int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
             maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
 
-			if ( m.Skills[SkillName.Concentration].Value < maxSkill )
-				m.CheckSkill( SkillName.Concentration, 0.0, 120.0 );
+			if ( m.Skills[SkillName.Meditation].Value < maxSkill )
+				m.CheckSkill( SkillName.Meditation, 0.0, 120.0 );
 
             return 0;
 			//return m.Skills[SkillName.Concentration].Fixed;
@@ -330,8 +330,8 @@ namespace Server.Spells
             int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
             maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
 
-			if ( m.Skills[SkillName.Concentration].Value < maxSkill )
-				m.CheckSkill( SkillName.Concentration, 0.0, 120.0 );
+			if ( m.Skills[SkillName.Meditation].Value < maxSkill )
+				m.CheckSkill( SkillName.Meditation, 0.0, 120.0 );
 
             return 0;
 			//return m.Skills[SkillName.Concentration].Value;
@@ -339,8 +339,8 @@ namespace Server.Spells
 
 		public virtual double GetResistPercentForCircle( Mobile target, SpellCircle circle )
 		{
-			double firstPercent = target.Skills[SkillName.Concentration].Value / 5.0;
-			double secondPercent = target.Skills[SkillName.Concentration].Value - (((m_Caster.Skills[CastSkill].Value - 20.0) / 5.0) + (1 + (int)circle) * 5.0);
+			double firstPercent = target.Skills[SkillName.Meditation].Value / 5.0;
+			double secondPercent = target.Skills[SkillName.Meditation].Value - (((m_Caster.Skills[CastSkill].Value - 20.0) / 5.0) + (1 + (int)circle) * 5.0);
 
             return 0;
 			//return ( firstPercent > secondPercent ? firstPercent : secondPercent ) / 2.0; // Seems should be about half of what stratics says.
@@ -348,8 +348,8 @@ namespace Server.Spells
 
         public virtual double GetResistPercentForAptitude(Mobile target, int aptitude)
         {
-            double firstPercent = target.Skills[SkillName.Concentration].Value / 5.0;
-            double secondPercent = target.Skills[SkillName.Concentration].Value - (((m_Caster.Skills[CastSkill].Value - 20.0) / 5.0) + (1 + (int)aptitude) * 5.0);
+            double firstPercent = target.Skills[SkillName.Meditation].Value / 5.0;
+            double secondPercent = target.Skills[SkillName.Meditation].Value - (((m_Caster.Skills[CastSkill].Value - 20.0) / 5.0) + (1 + (int)aptitude) * 5.0);
 
             return 0;
             //return ( firstPercent > secondPercent ? firstPercent : secondPercent ) / 2.0; // Seems should be about half of what stratics says.
@@ -363,7 +363,7 @@ namespace Server.Spells
 		public virtual double GetDamageScalar( Mobile target )
 		{
 			double casterEI = m_Caster.Skills[DamageSkill].Value;
-			double targetRS = target.Skills[SkillName.Concentration].Value;
+			double targetRS = target.Skills[SkillName.Meditation].Value;
 			double scalar;
 
 			m_Caster.CheckSkill( DamageSkill, 0.0, 120.0 );

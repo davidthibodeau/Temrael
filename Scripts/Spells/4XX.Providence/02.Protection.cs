@@ -61,7 +61,7 @@ namespace Server.Spells
                 {
                     if (Caster.BeginAction(typeof(DefensiveSpell)))
                     {
-                        double value = (int)(Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value);
+                        double value = (int)(Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Meditation].Value);
                         value /= 9;
 
                         value = SpellHelper.AdjustValue(Caster, value);
@@ -100,7 +100,7 @@ namespace Server.Spells
             }
             else if (CheckSequence())
             {
-                double value = (int)(Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value);
+                double value = (int)(Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Meditation].Value);
                 value /= 9;
 
                 value = SpellHelper.AdjustValue(Caster, value);

@@ -88,7 +88,7 @@ namespace Server
             {
                 // Armor Ignore on OSI ignores all defenses, not just physical.
                 int resPhys = (int)m.PhysicalResistance;
-                int resMagie = (int)m.MagieResistance;
+                int resMagie = (int)m.MagicResistance;
 
                 totalDamage = damage * phys * (150 - resPhys);
                 totalDamage += damage * magie * (150 - resMagie);

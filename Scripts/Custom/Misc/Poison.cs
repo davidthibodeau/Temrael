@@ -4,6 +4,7 @@ using Server.Items;
 using Server.Network;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Engines.Combat;
 
 namespace Server
 {
@@ -120,7 +121,7 @@ namespace Server
 				if ( m_From != null )
 					m_From.DoHarmful( m_Mobile, true );
 
-				AOS.Damage( m_Mobile, m_From, damage, 100, 0, 0, 0, 0 );
+                Damage.instance.AppliquerDegatsMagiques(m_Mobile, damage);
 
 				if ( 0.60 <= Utility.RandomDouble() ) // OSI: randomly revealed between first and third damage tick, guessing 60% chance
 						m_Mobile.RevealingAction();

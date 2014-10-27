@@ -589,7 +589,7 @@ namespace Server.Mobiles
 
 		public override void OnSkillInvalidated( Skill skill )
 		{
-			if ( Core.AOS && skill.SkillName == SkillName.Concentration )
+			if ( Core.AOS && skill.SkillName == SkillName.Meditation )
 				UpdateResistances();
 		}
 

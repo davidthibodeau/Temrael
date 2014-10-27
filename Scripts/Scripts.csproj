@@ -96,6 +96,7 @@
     <Compile Include="Custom\Army System\ArmyAI.cs" />
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
+    <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\ContratAssassinat.cs" />
     <Compile Include="Engines\Equitation.cs" />
     <Compile Include="Engines\Races\Humain.cs" />

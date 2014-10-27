@@ -6,6 +6,8 @@ namespace Server.Engines.Combat
 {
     public class StrategyPoings : CombatStrategy
     {
+        protected StrategyPoings() { }
+
         public readonly static CombatStrategy Strategy = new StrategyPoings();
 
         public override SkillName ToucherSkill { get { return SkillName.Anatomie; } }
@@ -18,8 +20,8 @@ namespace Server.Engines.Combat
             if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
                 chance = GetBonus(parry, 0.125, 5);
 
-            if (def.Int < 80)
-                chance = chance * (20 + def.Int) / 100;
+            if (def.Dex < 80)
+                chance = chance * (20 + def.Dex) / 100;
 
             return chance;
         }

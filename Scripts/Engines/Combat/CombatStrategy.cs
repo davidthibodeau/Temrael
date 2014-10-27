@@ -46,11 +46,19 @@ namespace Server.Engines.Combat
             atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));
             def.PlaySound(Weapon(def).GetHitDefendSound(atk, def));
 
-            int degats = Degats(atk, def);
+            bool crit;
+            int degats = Degats(atk, def, out crit);
             if (DefStrategy(def).Parer(def))
             {
                 def.FixedEffect(0x37B9, 10, 16);
+                def.Mana -= 5;
                 degats = 0;
+            }
+            else if(crit)
+            {
+                atk.Mana -= 10;
+                atk.SendMessage("Vous effectuez un coup critique.");
+                def.SendMessage("Vous recevez un coup critique.");
             }
 
             AppliquerPoison(atk, def);
@@ -128,20 +136,18 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Degats
-        public int Degats(Mobile atk, Mobile def)
+        public int Degats(Mobile atk, Mobile def, out bool critique)
         {
             int basedmg = Utility.RandomMinMax((atk.Weapon as BaseWeapon).MinDamage, (atk.Weapon as BaseWeapon).MaxDamage);
-
+            critique = false;
             double dmg = ComputerDegats(atk, basedmg);
-            if (Critique(atk))
+            if (Critique(atk) && atk.Mana > 10)
+            {
+                critique = true;
                 dmg = CritiqueDegats(atk, dmg);
-            double resist = ReducedArmor(atk, def.PhysicalResistance);
+            }
 
-            resist += ResistanceNatBonus(resist, def);
-
-            dmg = dmg * (1 - resist);
-
-            return (int)dmg;
+            return (int)DegatsReduits(atk, def, dmg);
         }
 
         public int MinDegats(Mobile atk)
@@ -174,11 +180,9 @@ namespace Server.Engines.Combat
             return basedmg * (1 + strBonus + tactiqueBonus + anatomyBonus + exceptBonus);
         }
 
-        protected virtual double ReducedArmor(Mobile atk, double baseArmor)
+        public virtual double DegatsReduits(Mobile atk, Mobile def, double dmg)
         {
-            double pen = GetBonus(atk.Skills[SkillName.Penetration].Value, 0.3, 5);
-            double resist = ReduceValue(baseArmor, pen);
-            return resist / 100;
+            return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg);
         }
 
         protected double GetBonus(double value, double scalar, double offset)
@@ -219,16 +223,16 @@ namespace Server.Engines.Combat
             return chance >= Utility.RandomDouble();
         }
 
-        protected virtual double CritiqueChance(Mobile atk)
+        public virtual double CritiqueChance(Mobile atk)
         {
             double chance = GetBonus(atk.Skills[SkillName.CoupCritique].Value, 0.2, 5);
             return chance;
         }
 
-        protected virtual double CritiqueDegats(Mobile atk, double dmg)
+        public virtual double CritiqueDegats(Mobile atk, double dmg)
         {
-            double intvalue = GetBonus(atk.Int, 0.25, 10);
-            return dmg * (1 + intvalue);
+            // Tentative de dégâts % constants.
+            return IncreasedValue(dmg, 0.35);
         }
         #endregion
 
@@ -253,7 +257,7 @@ namespace Server.Engines.Combat
             //Par tranche de 50 de stam, on retire 0.25 secondes (ou 0.1 secondes tous les 20 de stam)
             double s = Weapon(atk).Speed - atk.Stam/20;
 
-            //Le délai minimal est de 1.25 secondes entre deux attaques.
+            //Le délai minimal est de 1 secondes entre deux attaques.
             if (s < 10)
                 s = 10;
 
@@ -270,32 +274,14 @@ namespace Server.Engines.Combat
         /// <returns>true si le défendeur a paré le coup.</returns>
         public bool Parer(Mobile def)
         {
+            if (def.Mana <= 5)
+                return false;
+
             double chance = ParerChance(def);
             return chance >= Utility.RandomDouble();
         }
 
         protected abstract double ParerChance(Mobile def);
-        #endregion
-
-        #region Resistance naturelle
-
-        private const double resistanceMax = 0.75;          // Valeur maximale de resistance overall
-
-        private const double resistanceNaturelleMin = 0.5;
-        private const double resistanceNaturelleMax = 0.20; // Le bonus de résistance naturelle peut aller de 5 à 20 [].
-
-        private const double resistancePhysiqueMax = resistanceMax - resistanceNaturelleMin; // 70.
-
-        // Retourne le bonus de resistance lié à l'armure naturelle.
-        private double ResistanceNatBonus(double resist, Mobile m)
-        {
-            // Calcul du bonus de résistance naturelle dépendant des constantes établies plus haut.
-            double resistanceNaturelle = (((1 - (resist / resistancePhysiqueMax)) * (resistanceNaturelleMax - resistanceNaturelleMin)) + resistanceNaturelleMin);
-
-            // Scaling de 0 à 100% dépendant du skill en armure naturelle du défenseur.
-            return resistanceNaturelle * (m.Skills[SkillName.ArmureNaturelle].Value / 100);
-        }
-
         #endregion
 
         protected CombatStrategy DefStrategy(Mobile def)

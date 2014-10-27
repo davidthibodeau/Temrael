@@ -481,15 +481,34 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public virtual double MagieResistance
+		public virtual double MagicResistance
 		{
-			get { return GetResistance( ResistanceType.Magie ); }
+            get
+            {
+                double sk = Skills[SkillName.ResistanceMagique].Value;
+                double resist = sk * 0.40;
+                if (sk >= 100)
+                    resist += 5;
+                return resist;
+            }
 		}
 
         [CommandProperty(AccessLevel.Counselor)]
         public virtual double ArmureNaturelle
         {
-            get { return GetResistance(ResistanceType.Naturelle); }
+            get
+            {
+                double ArNatSkill = Skills[SkillName.ArmureNaturelle].Value;
+
+                double baseArNat = ArNatSkill * 0.25 + (ArNatSkill >= 100 ? 5 : 0);
+                double reducedAr = (75 - PhysicalResistance * 5 / 4) / 75 * baseArNat;
+
+                if (reducedAr < 0)
+                    return 0;
+                else
+                    return reducedAr;
+
+            }
         }
 
 
@@ -1500,8 +1519,7 @@ namespace Server
 
 					if( m_Mobile.InLOS( combatant ) )
 					{
-						weapon.OnBeforeSwing( m_Mobile, combatant );	//OnBeforeSwing for checking in regards to being hidden and whatnot
-						m_Mobile.RevealingAction();
+						weapon.OnBeforeSwing( m_Mobile, combatant );	
 						m_Mobile.m_NextCombatTime = Core.TickCount + weapon.OnSwing(m_Mobile, combatant);
 					}
 				}

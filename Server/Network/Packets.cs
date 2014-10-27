@@ -3172,7 +3172,7 @@ namespace Server.Network
                 m_Stream.Write((short)0); // Fire
                 m_Stream.Write((short)0); // Cold
                 m_Stream.Write((short)0); // Poison
-                m_Stream.Write((short)m.MagieResistance); // Energy
+                m_Stream.Write((short)m.MagicResistance); // Energy
                 m_Stream.Write((short)0); // Luck
 
                 IWeapon weapon = m.Weapon;
@@ -3293,7 +3293,7 @@ namespace Server.Network
                     m_Stream.Write((short)0); // Fire
                     m_Stream.Write((short)0); // Cold
                     m_Stream.Write((short)0); // Poison
-                    m_Stream.Write((short)beheld.MagieResistance); // Energy
+                    m_Stream.Write((short)beheld.MagicResistance); // Energy
                     m_Stream.Write((short)0); // Luck or Cha
 
                     IWeapon weapon = beheld.Weapon;

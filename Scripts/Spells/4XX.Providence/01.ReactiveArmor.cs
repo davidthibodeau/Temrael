@@ -72,7 +72,7 @@ namespace Server.Spells
                 {
                     // if (Caster.BeginAction(typeof(DefensiveSpell)))
                     //{
-                        double value = Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value;
+                        double value = Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Meditation].Value;
                         value /= 3;
 
                         if (value < 0)
@@ -109,7 +109,7 @@ namespace Server.Spells
             }
             else if (CheckSequence())
             {
-                double value = Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Concentration].Value;
+                double value = Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Meditation].Value;
                 value /= 3;
 
                 if (value < 0)

@@ -515,7 +515,7 @@ namespace Server.Spells
 
             if (curse)
             {
-                double mr = target.Skills[SkillName.Concentration].Value;
+                double mr = target.Skills[SkillName.Meditation].Value;
                 value *= 1 - (mr * 0.005);
             }
 

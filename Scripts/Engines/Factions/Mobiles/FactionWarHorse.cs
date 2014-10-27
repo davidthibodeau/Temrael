@@ -48,7 +48,7 @@ namespace Server.Factions
 			SetResistance( ResistanceType.Physical, 40, 50 );
 			SetResistance( ResistanceType.Magie, 30, 40 );
 
-			SetSkill( SkillName.Concentration, 25.1, 30.0 );
+			SetSkill( SkillName.Meditation, 25.1, 30.0 );
 			SetSkill( SkillName.Tactiques, 29.3, 44.0 );
 			SetSkill( SkillName.Anatomie, 29.3, 44.0 );
 

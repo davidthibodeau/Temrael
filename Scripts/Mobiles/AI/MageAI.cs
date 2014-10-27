@@ -56,7 +56,7 @@ namespace Server.Mobiles
 			{
 				m_Mobile.DebugSay( "I am going to meditate" );
 
-				m_Mobile.UseSkill( SkillName.Concentration );
+				m_Mobile.UseSkill( SkillName.Meditation );
 			}
 			else
 			{
@@ -336,7 +336,7 @@ namespace Server.Mobiles
 
 		public virtual double myMagery { get { return m_Mobile.Skills[ SkillName.ArtMagique ].Value; } }
 
-		public virtual double mySpiritSpeak { get { return m_Mobile.Skills[ SkillName.Concentration ].Value; } }
+		public virtual double mySpiritSpeak { get { return m_Mobile.Skills[ SkillName.Meditation ].Value; } }
 
 		public virtual Spell ChooseSpell( Mobile c )
 		{
@@ -445,7 +445,7 @@ namespace Server.Mobiles
 							{
 								m_Mobile.DebugSay( "I am going to meditate" );
 
-								m_Mobile.UseSkill( SkillName.Concentration );
+								m_Mobile.UseSkill( SkillName.Meditation );
 							}
 							else if( !c.Poisoned )
 							{

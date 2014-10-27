@@ -22,14 +22,14 @@ namespace Server.Misc
 
 		private static TimeSpan Mobile_HitsRegenRate( Mobile from )
 		{
-            double points = from.HitsMax / 30;
+            double points = from.Str / 20;
 
             return TimeSpan.FromSeconds(1.0 / (0.1 * (1 + points)));
 		}
 
 		private static TimeSpan Mobile_StamRegenRate( Mobile from )
 		{
-            double points = (from.StamMax / 20);
+            double points = (from.Dex / 20) + (from.Skills[SkillName.Concentration].Value / 10);
 
             return TimeSpan.FromSeconds(1.0 / (0.1 * (1 + points)));
 		}
@@ -37,8 +37,13 @@ namespace Server.Misc
 		private static TimeSpan Mobile_ManaRegenRate( Mobile from )
 		{
 			double armorPenalty = GetArmorOffset( from );
+            double med = from.Skills[SkillName.Meditation].Value;
 
-            double points = (from.ManaMax / 20) + (from.Skills[SkillName.Concentration].Value / 10);
+            double points = (from.Int / 20) + med / 8;
+            if(med >= 100)
+                points *= 1.1;
+
+            points += (from.Skills[SkillName.Concentration].Value / 20);
 
             if (armorPenalty > 0)
                 points /= armorPenalty;

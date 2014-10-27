@@ -677,9 +677,11 @@ namespace Server.Items
 							WeaponAbility.ClearCurrentAbility( bc );
 					}
 				}
-                return Strategy.Sequence(attacker, defender);
+                int delay = Strategy.Sequence(attacker, defender);
+                attacker.RevealingAction();
+                return delay;
 			}
-
+            attacker.RevealingAction();
             return Strategy.ProchaineAttaque(attacker);
 		}
 

@@ -63,9 +63,9 @@ namespace Server.Spells
 
 				if ( !m_Table.Contains( m ) )
 				{
-					SkillMod mod = new DefaultSkillMod( SkillName.Concentration, false, 50.0 );
+					SkillMod mod = new DefaultSkillMod( SkillName.Meditation, false, 50.0 );
 
-					if ( m.Skills[SkillName.Concentration].Base > 50.0 )
+					if ( m.Skills[SkillName.Meditation].Base > 50.0 )
 						m.AddSkillMod( mod );
 
 					m_Table[m] = mod;

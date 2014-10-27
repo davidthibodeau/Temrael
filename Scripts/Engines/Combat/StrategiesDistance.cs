@@ -70,8 +70,8 @@ namespace Server.Engines.Combat
             if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
                 chance = GetBonus(parry, 0.125, 5);
 
-            if (def.Int < 80)
-                chance = chance * (20 + def.Int) / 100;
+            if (def.Dex < 80)
+                chance = chance * (20 + def.Dex) / 100;
 
             return chance;
         }
@@ -89,6 +89,8 @@ namespace Server.Engines.Combat
 
     public class StrategyArc : StrategyDistance
     {
+        protected StrategyArc() { }
+
         public override int EffectID{ get{ return 0xF42; } }
 		public override Type AmmoType{ get{ return typeof( Arrow ); } }
 		public override Item Ammo{ get{ return new Arrow(); } }
@@ -100,6 +102,8 @@ namespace Server.Engines.Combat
 
     public class StrategyArbalete : StrategyDistance
     {
+        protected StrategyArbalete() { }
+
         public override int EffectID { get { return 0x1BFE; } }
         public override Type AmmoType { get { return typeof(Bolt); } }
         public override Item Ammo { get { return new Bolt(); } }

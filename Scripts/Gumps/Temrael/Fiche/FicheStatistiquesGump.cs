@@ -53,7 +53,7 @@ namespace Server.Gumps
 
             Hashtable table = new Hashtable();
 
-            String[] list= new String[18];
+            String[] list= new String[28];
             int i = 0;
 
             list[i++] = "Régénération de vie:";
@@ -64,6 +64,24 @@ namespace Server.Gumps
 
             list[i++] = "Régénération de stamina:";
             list[i++] = ((1 / (Mobile.GetStamRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
+
+            list[i++] = "Armure:";
+            list[i++] = m.PhysicalResistance.ToString();
+
+            list[i++] = "Armure naturelle:";
+            list[i++] = m.ArmureNaturelle.ToString();
+
+            list[i++] = "Résistance physique:";
+            list[i++] = (m.PhysicalResistance + m.ArmureNaturelle).ToString();
+
+            list[i++] = "Résistance magique:";
+            list[i++] = m.MagicResistance.ToString();
+
+            list[i++] = "Vitesse d'attaque:";
+            list[i++] =  ((m.Weapon as BaseWeapon).Strategy.Vitesse(m) / 10).ToString("0.00") + " secondes / attaque";
+
+            list[i++] = "Chances de Critique:";
+            list[i++] = ((int)((m.Weapon as BaseWeapon).Strategy.CritiqueChance(m) * 100)).ToString() + " %";
 
             list[i++] = "Langue courante:";
             list[i++] = from.Langues.CurrentLangue.ToString();

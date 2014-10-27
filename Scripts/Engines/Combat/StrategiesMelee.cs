@@ -19,8 +19,8 @@ namespace Server.Engines.Combat
             else
                 chance = GetBonus(parry, 0.125, 5);
 
-            if (def.Int < 80)
-                chance = chance * (20 + def.Int) / 100;
+            if (def.Dex < 80)
+                chance = chance * (20 + def.Dex) / 100;
 
             return chance;
         }
@@ -125,12 +125,14 @@ namespace Server.Engines.Combat
 
     public class StrategyPerforante : StrategyMelee
     {
+        protected StrategyPerforante() { }
+
         private static CombatStrategy m_Strategy = new StrategyPerforante();
         public static CombatStrategy Strategy { get { return m_Strategy; } }
 
         public override SkillName ToucherSkill { get { return SkillName.ArmePerforante; } }
 
-        protected override double CritiqueChance(Mobile atk)
+        public override double CritiqueChance(Mobile atk)
         {
             double chance = base.CritiqueChance(atk);
             double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.05, 5);
@@ -140,6 +142,8 @@ namespace Server.Engines.Combat
 
     public class StrategyTranchante : StrategyMelee
     {
+        protected StrategyTranchante() { }
+
         public readonly static CombatStrategy Strategy = new StrategyTranchante();
         
         public override SkillName ToucherSkill { get { return SkillName.Epee; } }
@@ -154,20 +158,23 @@ namespace Server.Engines.Combat
 
     public class StrategyContondante : StrategyMelee
     {
+        protected StrategyContondante() { }
+
         public readonly static CombatStrategy Strategy = new StrategyContondante();
         
         public override SkillName ToucherSkill { get { return SkillName.ArmeContondante; } }
 
-        protected override double ReducedArmor(Mobile atk, double baseArmor)
+        public override double DegatsReduits(Mobile atk, Mobile def, double dmg)
         {
-            double resist = base.ReducedArmor(atk, baseArmor);
             double contpen = GetBonus(atk.Skills[SkillName.ArmeContondante].Value, 0.05, 5);
-            return ReduceValue(resist, contpen);
+            return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg, contpen);
         }
     }
 
     public class StrategyHaste : StrategyMelee
     {
+        protected StrategyHaste() { }
+
         public readonly static CombatStrategy Strategy = new StrategyHaste();
         
         public override SkillName ToucherSkill { get { return SkillName.ArmeHaste; } }
@@ -184,6 +191,8 @@ namespace Server.Engines.Combat
 
     public class StrategyHache : StrategyMelee
     {
+        protected StrategyHache() { }
+
         public readonly static CombatStrategy Strategy = new StrategyHache();
         
         public override SkillName ToucherSkill { get { return SkillName.Hache; } }
