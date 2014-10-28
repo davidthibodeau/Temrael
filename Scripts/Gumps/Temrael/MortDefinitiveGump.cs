@@ -111,7 +111,7 @@ namespace Server.Gumps
 
                     if (!(m_From.MortCurrentState == MortState.Delete))
                     {
-                        exp = (int) (m_From.XP * 0.95);
+                        exp = (int) (m_From.Experience.XP * 0.95);
 
                         act.SetTag("XP",exp.ToString());
                         m_From.MortCurrentState = MortState.Delete;

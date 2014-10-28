@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -92,9 +93,12 @@ namespace Server.Items
             weapon.Strategy.AttaqueAnimation(from);
 
             Random rand = new Random();
-
-            if (from.XP < m_MaxExpReq)
-                from.XP += rand.Next(1, 5);
+            PlayerMobile pm = from as PlayerMobile;
+            if (pm != null)
+            {
+                if (pm.Experience.XP < m_MaxExpReq)
+                    pm.Experience.XP += rand.Next(1, 5);
+            }
 
 			from.CheckSkill( weapon.Skill, m_MinSkill, m_MaxSkill );
 		}

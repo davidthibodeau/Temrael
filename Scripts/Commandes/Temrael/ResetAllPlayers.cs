@@ -26,7 +26,7 @@ namespace Server.Scripts.Commands
                 {
                     TMobile player = m as TMobile;
 
-                    player.FreeReset = true;
+                    //player.FreeReset = true;
                  
                 }
             }

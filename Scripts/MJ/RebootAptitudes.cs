@@ -39,7 +39,7 @@ namespace Server
                     TMobile tm = targeted as TMobile;
                     if (from.AccessLevel > tm.AccessLevel)
                     {
-                        tm.Reset(true);
+                        //tm.Reset(true);
                     }
                     else
                     {

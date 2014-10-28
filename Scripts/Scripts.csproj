@@ -99,6 +99,9 @@
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\ContratAssassinat.cs" />
     <Compile Include="Engines\Equitation.cs" />
+    <Compile Include="Engines\Evolution\Cote.cs" />
+    <Compile Include="Engines\Evolution\Cotes.cs" />
+    <Compile Include="Engines\Evolution\Experience.cs" />
     <Compile Include="Engines\Races\Humain.cs" />
     <Compile Include="Gumps\Temrael\ContratAssassinat\Contrat.cs" />
     <Compile Include="Gumps\Temrael\ContratAssassinat\Mort.cs" />
@@ -602,9 +605,9 @@
     <Compile Include="Mobiles\Player\Evolution\Classes\Roublard\ClasseVoleur.cs" />
     <Compile Include="Mobiles\Player\Evolution\Competences.cs" />
     <Compile Include="Mobiles\Player\Evolution\Deplacement.cs" />
-    <Compile Include="Mobiles\Player\Evolution\Fioles.cs" />
+    <Compile Include="Engines\Evolution\Fioles.cs" />
     <Compile Include="Mobiles\Player\Evolution\Statistiques.cs" />
-    <Compile Include="Mobiles\Player\Evolution\XP.cs" />
+    <Compile Include="Engines\Evolution\XP.cs" />
     <Compile Include="Mobiles\Player\Evolution\XPLogin.cs" />
     <Compile Include="Custom\GeoController.cs" />
     <Compile Include="Gumps\Temrael\AdminGump.cs" />

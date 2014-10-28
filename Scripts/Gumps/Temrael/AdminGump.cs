@@ -640,22 +640,18 @@ namespace Server.Gumps
 
 					AddButtonLabeled(  20, y, GetButtonID( 7, 2 ), "Kick" );
 					AddButtonLabeled( 150, y, GetButtonID( 7, 3 ), "Ban" );
-                    AddButtonLabeled(280, y, 427, "Fiole (200 xp)");
 					y += 20;
 
 					AddButtonLabeled(  20, y, GetButtonID( 7, 4 ), "Properties" );
 					AddButtonLabeled( 150, y, GetButtonID( 7, 5 ), "Skills" );
-                    AddButtonLabeled(280, y, 428, "Fiole (400 xp)");
 					y += 20;
 
 					AddButtonLabeled(  20, y, GetButtonID( 7, 6 ), "Mortal" );
 					AddButtonLabeled( 150, y, GetButtonID( 7, 7 ), "Immortal" );
-                    AddButtonLabeled(280, y, 429, "Fiole (800 xp)");
 					y += 20;
 
 					AddButtonLabeled(  20, y, GetButtonID( 7, 8 ), "Squelch" );
 					AddButtonLabeled( 150, y, GetButtonID( 7, 9 ), "Unsquelch" );
-                    AddButtonLabeled(280, y, 430, "Fiole (1200 xp)");
 					y += 20;
 
 					/*AddButtonLabeled(  20, y, GetButtonID( 7, 10 ), "Hide" );
@@ -1644,22 +1640,6 @@ namespace Server.Gumps
 					}
 				}
 			}
-
-            switch (info.ButtonID)
-            {
-                case 427:
-                    DonnerFiole(from, new FioleNoir());
-                    break;
-                case 428:
-                    DonnerFiole(from, new FioleRouge());
-                    break;
-                case 429:
-                    DonnerFiole(from, new FioleVerte());
-                    break;
-                case 430:
-                    DonnerFiole(from, new FioleBleue());
-                    break;
-            }
 
 			int type = val % 10;
 			int index = val / 10;
@@ -2792,39 +2772,6 @@ namespace Server.Gumps
 					online = true;
 			}
 		}
-
-        private void AttribuerCote(Mobile from, int cote)
-        {
-            if (!(m_SelectedPlayer == null))
-            {
-                m_SelectedPlayer.ListCote.Add(cote);
-                if (m_SelectedPlayer.ListCote.Count > 5)
-                    m_SelectedPlayer.ListCote.RemoveAt(0);
-                m_SelectedPlayer.LastCotation = DateTime.Now;
-                CommandLogging.WriteLine(from, "{0} a attribué une cote de {1} à {2}.", 
-                    CommandLogging.Format(from), cote, CommandLogging.Format(m_SelectedPlayer));
-                from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-            }
-        }
-
-        private void DonnerFiole(Mobile from, BaseFiole fiole)
-        {
-            if (!(m_SelectedPlayer == null))
-            {
-                if (m_SelectedPlayer.NextFiole < DateTime.Now)
-                {
-                    m_SelectedPlayer.Backpack.AddItem(fiole);
-                    m_SelectedPlayer.NextFiole = DateTime.Now.AddDays(1);
-                    CommandLogging.WriteLine(from, "{0} a donné une fiole de {1} exp à {2}.", 
-                        CommandLogging.Format(from), fiole.Exp,CommandLogging.Format(m_SelectedPlayer));
-                    from.SendGump(new AdminGump(from, AdminGumpPage.Clients, 0, null, "", null));
-                }
-                else
-                {
-                    m_SelectedPlayer.SendMessage("Le joueur a recus une fiole dans les dernieres 24 heures.");
-                }
-            }
-        }
 
 		private class AddCommentPrompt : Prompt
 		{

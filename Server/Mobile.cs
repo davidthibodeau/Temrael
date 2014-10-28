@@ -349,15 +349,6 @@ namespace Server
 		}
 
 		#region Var declarations
-        //TEMRAEL
-        private int m_XP;
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int XP
-        {
-            get { return m_XP; }
-            set { m_XP = value; }
-        }
-
 		private Serial m_Serial;
 		private Map m_Map;
 		private Point3D m_Location;
@@ -4841,7 +4832,7 @@ namespace Server
         {
             int version = reader.ReadInt();
 
-            m_XP = reader.ReadInt();
+            //m_XP = reader.ReadInt();
 
             m_LastStrGain = reader.ReadDeltaTime();
             m_LastIntGain = reader.ReadDeltaTime();
@@ -5038,7 +5029,7 @@ namespace Server
 		{
 			writer.Write( (int)0 ); // version
 
-            writer.Write(m_XP);
+            //writer.Write(m_XP);
 
 			writer.WriteDeltaTime( m_LastStrGain );
 			writer.WriteDeltaTime( m_LastIntGain );

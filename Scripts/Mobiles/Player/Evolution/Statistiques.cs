@@ -15,13 +15,13 @@ namespace Server
             from.RawDex = 10;
             from.RawInt = 10;
 
-            from.StatistiquesLibres = 225;
+            //from.StatistiquesLibres = 225;
         }
 
         public static bool CanRaise(TMobile from, StatType stat)
         {
-            if (from.StatistiquesLibres < 1)
-                return false;
+            //if (from.StatistiquesLibres < 1)
+            //    return false;
 
             switch (stat)
             {
@@ -69,7 +69,7 @@ namespace Server
 
         public static int GetDisponibleStats(TMobile from)
         {
-            return from.StatistiquesLibres;
+            return 0; //from.StatistiquesLibres;
         }
 
         public static int GetRemainingStats(TMobile from)

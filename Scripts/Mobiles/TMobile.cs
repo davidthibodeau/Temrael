@@ -79,13 +79,6 @@ namespace Server.Mobiles
         //}
         #region Variables
 
-        private List<int> m_ListCote = new List<int>(5);
-        private DateTime m_LastCotation;
-
-        private int m_Niveau;
-        private int m_AptitudesLibres;
-        private int m_CompetencesLibres;
-
         private int m_Fatigue;
 
         private bool m_Aphonie;
@@ -111,7 +104,6 @@ namespace Server.Mobiles
         private DateTime m_AmeLastFed;
         private bool m_MortVivant;
 
-        private int m_StatistiquesLibres;
         private Timer m_MortVivantTimer;
         private DateTime m_lastAchever;
         private DateTime m_lastAssassinat;
@@ -124,9 +116,7 @@ namespace Server.Mobiles
         private int m_BonusStam;
         private int m_BonusHits;
 
-        private DateTime m_NextFiole;
         private DateTime m_NextSnoop;
-        private DateTime m_NextExp;
 
         private Mobile m_Possess;
         private Mobile m_PossessStorage;
@@ -136,10 +126,8 @@ namespace Server.Mobiles
         private ClasseType m_ClasseType = ClasseType.None;
         private bool m_Suicide;
         private bool m_RevealTitle = true;
-        private bool m_FreeReset = false;
         private bool m_Achever = false;
         private bool[,] m_Ticks = new bool[7,9];
-        private bool m_XPMode = false;
 
         private Point3D m_OldLocation;
 
@@ -170,52 +158,10 @@ namespace Server.Mobiles
         #region Accessors
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public bool FreeReset
-        {
-            get { return m_FreeReset; }
-            set { m_FreeReset = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
         public bool RevealTitle
         {
             get { return m_RevealTitle; }
             set { m_RevealTitle = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime LastCotation
-        {
-            get { return m_LastCotation; }
-            set { m_LastCotation = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public List<int> ListCote
-        {
-            get { return m_ListCote; }
-            set { m_ListCote = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Niveau
-        {
-            get { return m_Niveau; }
-            set { m_Niveau = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int AptitudesLibres
-        {
-            get { return m_AptitudesLibres; }
-            set { m_AptitudesLibres = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int CompetencesLibres
-        {
-            get { return m_CompetencesLibres; }
-            set { m_CompetencesLibres = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -349,13 +295,6 @@ namespace Server.Mobiles
             set { m_AmeLastFed = value; }
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int StatistiquesLibres
-        {
-            get { return m_StatistiquesLibres; }
-            set { m_StatistiquesLibres = value; }
-        }
-
         public Timer MortVivantTimer
         {
             get { return m_MortVivantTimer; }
@@ -419,24 +358,10 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime NextFiole
-        {
-            get { return m_NextFiole; }
-            set { m_NextFiole = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime NextSnoop
         {
             get { return m_NextSnoop; }
             set { m_NextSnoop = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime NextExp
-        {
-            get { return m_NextExp; }
-            set { m_NextExp = value; }
         }
 
         public Mobile Possess
@@ -477,17 +402,10 @@ namespace Server.Mobiles
 
         public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        //false = daily. true = hebdo
-        public bool XPMode { get { return m_XPMode; } set { m_XPMode = value; } }
+        
+        
 
-        public bool[,] Ticks
-        {
-            get
-            {
-                return m_Ticks;
-            }
-        }
+
         #endregion
 
         public override bool RetainPackLocsOnDeath { get { return true; } }
@@ -526,22 +444,6 @@ namespace Server.Mobiles
         #endregion
 
         #region languages
-        
-
-        public void Reset(bool free)
-        {
-            if (!FreeReset && !free)
-                XP = (int)(XP * 0.95);
-            else if (!free)
-                FreeReset = false;
-
-            Statistiques.Reset(this);
-            Competences.Reset(this);
-
-            ClasseType = ClasseType.None;
-            FamilierCheck();
-
-        }
 
 
 
@@ -1806,7 +1708,7 @@ namespace Server.Mobiles
                                 //pm.MortRace = pm.Races;
                                 //pm.Races = Race.MortVivant;
                                 pm.MortEvo = MortEvo.Decomposition;
-                                Competences.Reset(pm);
+                                //Competences.Reset(pm);
                                 Statistiques.Reset(pm);
                             }
                             break;
@@ -1886,13 +1788,11 @@ namespace Server.Mobiles
             base.Serialize(writer);
             writer.Write((int)9);
 
-            writer.Write(m_XPMode);
-            for (int i = 0; i < 7; i++)
-                for (int j = 0; j < 9; j++)
-                    writer.Write(m_Ticks[i, j]);
+            //for (int i = 0; i < 7; i++)
+            //    for (int j = 0; j < 9; j++)
+            //        writer.Write(m_Ticks[i, j]);
 
             writer.Write((bool)m_Achever);
-            writer.Write((bool)m_FreeReset);
             writer.Write((bool)m_RevealTitle);
 
 
@@ -1904,11 +1804,11 @@ namespace Server.Mobiles
             writer.Write((Mobile)m_Possess);
             writer.Write((Mobile)m_PossessStorage);
 
-            writer.Write((DateTime)m_NextExp);
+            //writer.Write((DateTime)m_NextExp);
 
             writer.Write((DateTime)m_NextSnoop);
 
-            writer.Write((DateTime)m_NextFiole);
+            //writer.Write((DateTime)m_NextFiole);
 
             writer.Write((int)m_BonusMana);
             writer.Write((int)m_BonusStam);
@@ -1916,11 +1816,10 @@ namespace Server.Mobiles
 
             writer.Write((DateTime)m_NextClasseChange);
 
-            writer.Write(m_ListCote.Count);
-            for (int i = 0; i < m_ListCote.Count; i++)
-                writer.Write((int)m_ListCote[i]);
+            //writer.Write(m_ListCote.Count);
+            //for (int i = 0; i < m_ListCote.Count; i++)
+            //    writer.Write((int)m_ListCote[i]);
 
-            writer.Write((int)m_StatistiquesLibres);
             writer.Write((DateTime)m_lastAchever);
             writer.Write((DateTime)m_lastAssassinat);
             writer.Write((DateTime)m_lastDeguisement);
@@ -1930,11 +1829,11 @@ namespace Server.Mobiles
             for (int i = 0; i < m_QuickSpells.Count; i++)
                 writer.Write((int)m_QuickSpells[i]);
 
-            writer.Write((DateTime) m_LastCotation);
+            //writer.Write((DateTime) m_LastCotation);
 
-            writer.Write((int)m_Niveau);
-            writer.Write((int)m_AptitudesLibres);
-            writer.Write((int)m_CompetencesLibres);
+            //writer.Write((int)m_Niveau);
+            //writer.Write((int)m_AptitudesLibres);
+            //writer.Write((int)m_CompetencesLibres);
 
             writer.Write((int)m_Fatigue);
 
@@ -1966,10 +1865,10 @@ namespace Server.Mobiles
             {
                 case 9:
                 case 8:
-                    m_XPMode = reader.ReadBool();
-                    for (int i = 0; i < 7; i++)
-                        for (int j = 0; j < 9; j++)
-                            m_Ticks[i, j] = reader.ReadBool();
+                    //m_XPMode = reader.ReadBool();
+                    //for (int i = 0; i < 7; i++)
+                    //    for (int j = 0; j < 9; j++)
+                    //        m_Ticks[i, j] = reader.ReadBool();
                     goto case 6;
                 case 6:
                     if (version < 9)
@@ -1983,7 +1882,7 @@ namespace Server.Mobiles
                     m_Achever = reader.ReadBool();
                     goto case 4;
                 case 4:
-                    m_FreeReset = reader.ReadBool();
+                    //m_FreeReset = reader.ReadBool();
                     m_RevealTitle = reader.ReadBool();
 
                     goto case 3;
@@ -2017,9 +1916,9 @@ namespace Server.Mobiles
                     m_Possess = reader.ReadMobile();
                     m_PossessStorage = reader.ReadMobile();
 
-                    m_NextExp = reader.ReadDateTime();
+                    //m_NextExp = reader.ReadDateTime();
                     m_NextSnoop = reader.ReadDateTime();
-                    m_NextFiole = reader.ReadDateTime();
+                    //m_NextFiole = reader.ReadDateTime();
 
                     m_BonusMana = reader.ReadInt();
                     m_BonusStam = reader.ReadInt();
@@ -2027,14 +1926,14 @@ namespace Server.Mobiles
 
                     m_NextClasseChange = reader.ReadDateTime();
 
-                    m_ListCote = new List<int>(5);
-                    count = reader.ReadInt();
-                    for (int i = 0; i < count; i++)
-                    {
-                        m_ListCote.Add((int)reader.ReadInt());
-                    }
+                    //m_ListCote = new List<int>(5);
+                    //count = reader.ReadInt();
+                    //for (int i = 0; i < count; i++)
+                    //{
+                    //    m_ListCote.Add((int)reader.ReadInt());
+                    //}
 
-                    m_StatistiquesLibres = reader.ReadInt();
+                    //m_StatistiquesLibres = reader.ReadInt();
                     m_lastAchever = reader.ReadDateTime();
                     m_lastAssassinat = reader.ReadDateTime();
                     m_lastDeguisement = reader.ReadDateTime();
@@ -2056,7 +1955,7 @@ namespace Server.Mobiles
                         m_QuickSpells.Add((int)reader.ReadInt());
                     }
 
-                    m_LastCotation = reader.ReadDateTime();
+                    //m_LastCotation = reader.ReadDateTime();
 
                     if (version < 9)
                     {
@@ -2066,9 +1965,9 @@ namespace Server.Mobiles
                             reader.ReadInt();
                     }
 
-                    m_Niveau = reader.ReadInt();
-                    m_AptitudesLibres = reader.ReadInt();
-                    m_CompetencesLibres = reader.ReadInt();
+                    //m_Niveau = reader.ReadInt();
+                    //m_AptitudesLibres = reader.ReadInt();
+                    //m_CompetencesLibres = reader.ReadInt();
                     if (version < 8)
                     {
                         reader.ReadInt();

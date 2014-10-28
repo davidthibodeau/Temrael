@@ -180,7 +180,7 @@ namespace Server.Gumps
                 from.Skills[i].Cap = 100.0;
             }
 
-            from.CompetencesLibres = 200;
+            //from.CompetencesLibres = 200;
         }
 
         private static void SetCaract(TMobile from)
@@ -209,7 +209,7 @@ namespace Server.Gumps
 
         private static void InitializeCreation(TMobile from, int hue)
         {
-            from.Niveau = 0;
+            from.Experience.Niveau = 0;
             SetSkills(from);
             SetCaract(from);
 

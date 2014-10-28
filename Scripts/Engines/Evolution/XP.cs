@@ -10,7 +10,7 @@ using Server.Accounting;
 using Server.Regions;
 using Server.Commands;
 
-namespace Server
+namespace Server.Engines.Evolution
 {
     public class XP
     {
@@ -51,9 +51,9 @@ namespace Server
         {
             if (e.Mobile is TMobile)
             {
-                TMobile m = e.Mobile as TMobile;
+                Experience m = (e.Mobile as PlayerMobile).Experience;
                 m.XPMode = !m.XPMode;
-                m.SendMessage("Vous avez choisi le mode d'expérience " + (!m.XPMode ? "journalier." : "hebdomadaire."));
+                e.Mobile.SendMessage("Vous avez choisi le mode d'expérience " + (!m.XPMode ? "journalier." : "hebdomadaire."));
             }
         }
 
@@ -76,10 +76,10 @@ namespace Server
                     {
                         TMobile pm = (TMobile)m;
 
-                        if (pm.NextExp < DateTime.Now)
+                        if (pm.Experience.NextExp < DateTime.Now)
                         {
                             CheckXP(pm);
-                            pm.NextExp = DateTime.Now.AddMinutes(20);
+                            pm.Experience.NextExp = DateTime.Now.AddMinutes(20);
                         }
                     }
                 }
@@ -108,7 +108,7 @@ namespace Server
             {
                 if (m is TMobile)
                 {
-                    bool[,] ticks = (m as TMobile).Ticks;
+                    bool[,] ticks = (m as TMobile).Experience.Ticks;
                     for (int i = 0; i < 7; i++)
                     {
                         for (int j = 0; j < 9; j++)
@@ -140,8 +140,8 @@ namespace Server
             if (pm.Region is Jail) // Pas d'xp quand le joueur est en jail.
                 return;
 
-            int XPgain = (int)(ExpGain * XPparCount(GetNextTick(pm)));
-            pm.XP += XPgain;
+            int XPgain = (int)(ExpGain * XPparCount(GetNextTick(pm.Experience)));
+            pm.Experience.XP += XPgain;
 
             CompensationGump.MJ mj = CompensationGump.GetMJ((Account)pm.Account);
             if (mj != null)
@@ -152,7 +152,7 @@ namespace Server
             }
         }
 
-        public static int GetNextTick(TMobile pm)
+        public static int GetNextTick(Experience pm)
         {
             DateTime now = DateTime.Now;
             bool[,] ticks = pm.Ticks;
@@ -202,29 +202,29 @@ namespace Server
             //from.SkillsPlace += (double)3.0;
         }
 
-        public static void SetPCs(TMobile from)
-        {
-            from.CompetencesLibres += 25;
+        //public static void SetPCs(TMobile from)
+        //{
+        //    from.CompetencesLibres += 25;
 
-            int compEnAttente = Competences.GetRemainingComp(from) - Competences.GetDisponibleComp(from);
+        //    int compEnAttente = Competences.GetRemainingComp(from) - Competences.GetDisponibleComp(from);
 
-            //if (paEnAttente > 15)
-            //    paEnAttente = 15;
+        //    //if (paEnAttente > 15)
+        //    //    paEnAttente = 15;
 
-            from.CompetencesLibres += compEnAttente;
-        }
+        //    from.CompetencesLibres += compEnAttente;
+        //}
 
-        public static void SetPSs(TMobile from)
-        {
-            //from.StatistiquesLibres += 5;
+        //public static void SetPSs(TMobile from)
+        //{
+        //    //from.StatistiquesLibres += 5;
 
-            int statsEnAttente = Statistiques.GetRemainingStats(from) - Statistiques.GetDisponibleStats(from);
+        //    int statsEnAttente = Statistiques.GetRemainingStats(from) - Statistiques.GetDisponibleStats(from);
 
-            //if (paEnAttente > 15)
-            //    paEnAttente = 15;
+        //    //if (paEnAttente > 15)
+        //    //    paEnAttente = 15;
 
-            from.StatistiquesLibres += statsEnAttente;
-        }
+        //    from.StatistiquesLibres += statsEnAttente;
+        //}
 
         private static int RequiredXP(int niveau)
         {
@@ -239,12 +239,12 @@ namespace Server
             return xp;
         }
 
-        public static int GetNeededXP(TMobile pm)
+        public static int GetNeededXP(Experience exp)
         {
-            if (pm == null)
+            if (exp == null)
                 return 1000;
 
-            return RequiredXP(pm.Niveau);
+            return RequiredXP(exp.Niveau);
         }
 
         public static bool CanEvolve(Mobile from)
@@ -254,8 +254,8 @@ namespace Server
                 TMobile pm = from as TMobile;
                 try
                 {
-                    int currentXP = pm.XP;
-                    int neededXP = GetNeededXP(pm);
+                    int currentXP = pm.Experience.XP;
+                    int neededXP = GetNeededXP(pm.Experience);
 
                     if (currentXP > neededXP)
                     {
@@ -264,7 +264,7 @@ namespace Server
                 }
                 catch (Exception ex)
                 {
-                    Misc.ExceptionLogging.WriteLine(ex, "{0} est niveau {1}.", pm, pm.Niveau);
+                    Misc.ExceptionLogging.WriteLine(ex, "{0} est niveau {1}.", pm, pm.Experience.Niveau);
                 }
             }
             
@@ -278,15 +278,17 @@ namespace Server
             {
                 TMobile pm = from as TMobile;
 
-                int currentXP = pm.XP;
-                int neededXP = GetNeededXP(pm);
+                Experience exp = pm.Experience;
+
+                int currentXP = exp.XP;
+                int neededXP = GetNeededXP(pm.Experience);
 
                 if (currentXP > neededXP)
                 {
-                    pm.Niveau++;
+                    exp.Niveau++;
 
-                    int SkillsCaps = 350 + pm.Niveau * 15;
-                    double SkillsInd = 40 + pm.Niveau * 2.0;
+                    int SkillsCaps = 350 + exp.Niveau * 15;
+                    double SkillsInd = 40 + exp.Niveau * 2.0;
 
                     if (SkillsInd > 100)
                         SkillsInd = 100;
@@ -295,8 +297,8 @@ namespace Server
                         SkillsCaps = 800;
 
                     SetSkills(pm, SkillsCaps, SkillsInd);
-                    SetPCs(pm);
-                    SetPSs(pm);
+                    //SetPCs(pm);
+                    //SetPSs(pm);
 
                     pm.SendMessage("Vous gagnez un niveau !");
                 }

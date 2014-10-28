@@ -8,32 +8,27 @@ namespace Server
 {
     public sealed class Competences
     {
-        public static void Reset(TMobile from)
-        {
-            int niveau = from.Niveau;
+        //public static void Reset(TMobile from)
+        //{
+        //    int niveau = from.Niveau;
 
-            if (niveau > 30)
-                niveau = 30;
+        //    if (niveau > 30)
+        //        niveau = 30;
 
-            from.SkillsCap = 350 * 10 + (niveau * 15);
+        //    from.SkillsCap = 350 * 10 + (niveau * 15);
 
-            for (int i = 0; i < from.Skills.Length; ++i)
-            {
-                from.Skills[i].Base = 0.0;
-                from.Skills[i].Cap = 40.0 + (niveau * 2.0);
-            }
+        //    for (int i = 0; i < from.Skills.Length; ++i)
+        //    {
+        //        from.Skills[i].Base = 0.0;
+        //        from.Skills[i].Cap = 40.0 + (niveau * 2.0);
+        //    }
 
-            from.CompetencesLibres = 350 + (niveau * 15);
-        }
-
-        public static int GetDisponibleComp(TMobile from)
-        {
-            return from.CompetencesLibres;
-        }
+        //    from.CompetencesLibres = 350 + (niveau * 15);
+        //}
 
         public static int GetRemainingComp(TMobile from)
         {
-            int niveau = from.Niveau;
+            int niveau = 0;//from.Niveau;
 
             if (niveau > 30)
                 niveau = 30;
@@ -83,10 +78,10 @@ namespace Server
             {
                 return false;
             }
-            else if (from.CompetencesLibres < 1)
-            {
-                return false;
-            }
+            //else if (from.CompetencesLibres < 1)
+            //{
+            //    return false;
+            //}
             else
             {
                 return true;
@@ -129,10 +124,6 @@ namespace Server
             int value = Convert.ToInt32(comp.Value);
 
             if (comp.Cap <= comp.Value)
-            {
-                return false;
-            }
-            else if (from.CompetencesLibres < 1)
             {
                 return false;
             }

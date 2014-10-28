@@ -90,10 +90,10 @@ namespace Server.Gumps
             list[i++] = from.Location.ToString();
 
             list[i++] = "Prochain gain d'expérience:";
-            list[i++] = from.NextExp.ToString();
+            list[i++] = from.Experience.NextExp.ToString();
 
             list[i++] = "Mode Expérience:";
-            list[i++] = from.XPMode ? "Hebdomadaire" : "Quotidien";
+            list[i++] = from.Experience.XPMode ? "Hebdomadaire" : "Quotidien";
 
             list[i++] = "Mode Suicide:";
             list[i++] = from.Suicide ? "Activé" : "Désactivé";

@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Accounting;
 using Server.Mobiles;
 using Server.Prompts;
+using Server.Engines.Evolution;
 
 
 namespace Server.Gumps
@@ -238,9 +239,9 @@ namespace Server.Gumps
 
                 int diff = maxXP - m_XpGainedThisWeek;
                 if (diff > 15000)
-                    pj.XP += 15000;
+                    pj.Experience.XP += 15000;
                 else if (diff > 0)
-                    pj.XP += diff;
+                    pj.Experience.XP += diff;
                 WriteLine(String.Format("{0} a accumule la somme de {1} xp cette semaine. Il sera donc paye {2} xp.",
                     pj.Name, m_XpGainedThisWeek, Math.Min(Math.Max(diff,0), 10000)));
                 m_NextCompensation = DateTime.Now.AddDays(6.3);

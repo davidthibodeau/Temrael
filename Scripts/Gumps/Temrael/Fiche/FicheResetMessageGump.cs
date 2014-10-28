@@ -67,7 +67,7 @@ namespace Server.Gumps
                     from.SendGump(new FicheCommandesGump(from));
                     break;
                 case 8:
-                    from.Reset(false);
+                    //from.Reset(false);
 
                     from.SendMessage("Votre personnage a reset ses informations.");
                     from.SendGump(new FicheRaceGump(from));

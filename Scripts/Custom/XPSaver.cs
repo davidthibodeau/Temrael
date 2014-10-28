@@ -53,14 +53,14 @@ namespace Server.Commands
                                     if (act.GetTag("LegacyXP" + i.ToString()) == "")
                                     {
                                         act.RemoveTag("LegacyXP" + i.ToString());
-                                        act.SetTag("LegacyXP" + i.ToString(), (player.XP * 4.4).ToString());
+                                        act.SetTag("LegacyXP" + i.ToString(), (player.Experience.XP * 4.4).ToString());
                                         //Console.WriteLine("LegacyXP" + i.ToString() + " : " + "LegacyXP" + i.ToString());
                                         break;
                                     }
                                     else if (!(Int32.TryParse(act.GetTag("LegacyXP" + i.ToString()), out num)))
                                     {
                                         act.RemoveTag("LegacyXP" + i.ToString());
-                                        act.SetTag("LegacyXP" + i.ToString(), (player.XP * 2).ToString());
+                                        act.SetTag("LegacyXP" + i.ToString(), (player.Experience.XP * 2).ToString());
                                         //Console.WriteLine("LegacyXP" + i.ToString() + " : " + act.GetTag("LegacyXP" + i.ToString()));
                                         break;
                                     }

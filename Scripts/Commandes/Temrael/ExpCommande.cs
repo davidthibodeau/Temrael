@@ -18,9 +18,11 @@ namespace Server.Scripts.Commands
         [Description("Permet de connaître son nombre de points d'expériences.")]
         public static void Exp_OnCommand(CommandEventArgs e)
         {
-            Mobile from = e.Mobile;
+            PlayerMobile from = e.Mobile as PlayerMobile;
+            if (from == null)
+                return;
 
-            from.SendMessage("Vous avez présentement : " + from.XP + " points d'expériences.");
+            from.SendMessage("Vous avez présentement : " + from.Experience.XP + " points d'expériences.");
         }
     }
 }

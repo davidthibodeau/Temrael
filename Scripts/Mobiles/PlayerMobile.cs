@@ -18,6 +18,7 @@ using Server.Engines.PartySystem;
 using Server.Engines.Langues;
 using Server.Engines.Identities;
 using Server.Engines.Races;
+using Server.Engines.Evolution;
 
 namespace Server.Mobiles
 {
@@ -236,6 +237,13 @@ namespace Server.Mobiles
 
         [CommandProperty(AccessLevel.Batisseur)]
         public QuiOptions QuiOptions
+        {
+            get;
+            set;
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Experience Experience
         {
             get;
             set;
@@ -2241,6 +2249,7 @@ namespace Server.Mobiles
 
             Langues = new Langues(this);
             Identities = new Identities(this);
+            Experience = new Experience();
 
 			InvalidateMyRunUO();
 		}

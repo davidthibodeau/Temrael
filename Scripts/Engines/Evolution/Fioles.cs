@@ -6,7 +6,7 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public abstract class BaseFiole : Item
+    public abstract class BaseFiole : GMItem
     {
         public virtual int Couleur { get { return 0; } }
         public virtual int Exp { get { return 0; } }
@@ -15,7 +15,9 @@ namespace Server.Items
         {
             //base.OnDoubleClick(from);
             from.SendMessage("Vous reçevez " + Exp + " points d'expériences !");
-            from.XP += Exp;
+            PlayerMobile pm = from as PlayerMobile;
+            if (pm != null)
+                pm.Experience.XP += Exp;
             this.Delete();
         }
 

@@ -50,7 +50,7 @@ namespace Server.Gumps
             int StatTotal = from.RawStr + from.RawDex + from.RawInt;
             int attente = from.StatCap - StatTotal;
 
-            AddSection(x, y + line * scale, 539, 60, "Caractéristiques", "Les caractéristiques influencent les attributs (vitalité, stamina & mana) ainsi que le système de combat et de magie. Un bonus est appliqué lorsqu'une caractéristique atteint le chiffre de 100. Vous regagnez les points indisponibles à chaque niveau.", new string[] { "<basefont color=#5A4A31>Disponible: " + from.StatistiquesLibres.ToString() + "| Indisponible: " + attente.ToString() + "<basefont>" });
+            AddSection(x, y + line * scale, 539, 60, "Caractéristiques", "Les caractéristiques influencent les attributs (vitalité, stamina & mana) ainsi que le système de combat et de magie. Un bonus est appliqué lorsqu'une caractéristique atteint le chiffre de 100. Vous regagnez les points indisponibles à chaque niveau.", new string[] { "<basefont color=#5A4A31>Disponible: | Indisponible: " + attente.ToString() + "<basefont>" });
             line += 6;
 
             AddButton(x, (y + line * scale) + 20, 1436, 1436, 3, GumpButtonType.Reply, 0);
@@ -114,7 +114,7 @@ namespace Server.Gumps
                     if (Statistiques.CanRaise(from, StatType.Str))
                     {
                         from.RawStr += 5;
-                        from.StatistiquesLibres -= 5;
+                        //from.StatistiquesLibres -= 5;
                     }
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
@@ -129,7 +129,7 @@ namespace Server.Gumps
                     if (Statistiques.CanRaise(from, StatType.Dex))
                     {
                         from.RawDex += 5;
-                        from.StatistiquesLibres -= 5;
+                        //from.StatistiquesLibres -= 5;
                     }
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;
@@ -144,7 +144,7 @@ namespace Server.Gumps
                     if (Statistiques.CanRaise(from, StatType.Int))
                     {
                         from.RawInt += 5;
-                        from.StatistiquesLibres -= 5;
+                        //from.StatistiquesLibres -= 5;
                     }
                     from.SendGump(new FicheCaracteristiqueGump(from));
                     break;

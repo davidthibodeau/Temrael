@@ -20,7 +20,7 @@ namespace Server
                 if (e.Mobile is TMobile)
                 {
                     //if (((TMobile)e.Mobile).NextExp < DateTime.Now)
-                        ((TMobile)e.Mobile).NextExp = DateTime.Now.AddMinutes(10);
+                        ((TMobile)e.Mobile).Experience.NextExp = DateTime.Now.AddMinutes(10);
                 }
             }
         }

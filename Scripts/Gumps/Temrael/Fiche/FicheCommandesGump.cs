@@ -8,6 +8,7 @@ using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
 using Server.Engines.Langues;
+using Server.Engines.Evolution;
 
 namespace Server.Gumps
 {
@@ -242,7 +243,7 @@ namespace Server.Gumps
                     from.SendGump(new GumpLanguage(from, true));
                     break;
                 case 11:
-                    from.SendMessage(from.XP.ToString() + " points d'experiences");
+                    from.SendMessage(from.Experience.XP.ToString() + " points d'experiences");
                     break;
                 case 12:
                     //Titre

@@ -31,9 +31,9 @@ namespace Server.Items
             {
                 TMobile tMob = from as TMobile;
 
-                tMob.StatistiquesLibres = 0;
-                tMob.AptitudesLibres = 0;
-                tMob.CompetencesLibres = 0;
+                //tMob.StatistiquesLibres = 0;
+                //tMob.AptitudesLibres = 0;
+                //tMob.CompetencesLibres = 0;
                 tMob.StatCap = 255;
 
                 tMob.RawStr = 10;
@@ -44,13 +44,13 @@ namespace Server.Items
 
                 if (act.GetTag("XP") != "")
                 {
-                    tMob.XP = Convert.ToInt32(act.GetTag("XP"));
+                    tMob.Experience.XP = Convert.ToInt32(act.GetTag("XP"));
                     act.SetTag("XP", "");
                 }
 
                 if (act.Created < new DateTime(2013, 6, 11) && act.GetTag("XPBeta") != "True")
                 {
-                    tMob.XP = 10000;
+                    tMob.Experience.XP = 10000;
                     act.SetTag("XPBeta", "True");
                 }
 

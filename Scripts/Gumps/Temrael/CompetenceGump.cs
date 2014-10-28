@@ -114,7 +114,7 @@ namespace Server.Gumps
             {
                 AddImage(105, (ybase + ypos + 20), 5411);
                 AddTooltip(3006366);
-                AddHtml(128, (ybase + ypos + 20), 200, 20, "<h3><basefont color=#025a>" + Competences.GetDisponibleComp(((TMobile)m_From)) + " | " + (Competences.GetRemainingComp(((TMobile)m_From)) - Competences.GetDisponibleComp(((TMobile)m_From))) + "<basefont></h3>", false, false);
+                //AddHtml(128, (ybase + ypos + 20), 200, 20, "<h3><basefont color=#025a>" + Competences.GetDisponibleComp(((TMobile)m_From)) + " | " + (Competences.GetRemainingComp(((TMobile)m_From)) - Competences.GetDisponibleComp(((TMobile)m_From))) + "<basefont></h3>", false, false);
             }
 
             //Cap Total
@@ -233,7 +233,7 @@ namespace Server.Gumps
 
                             if (Competences.CanRaise(m_From, comp))
                             {
-                                m_From.CompetencesLibres -= 1;
+                                //m_From.CompetencesLibres -= 1;
                                 Competences.Raise(m_From, comp, oldValue + 1);
                             }
                             from.SendGump(new CompetenceGump(m_From, m_Comp, m_ShowCaps));

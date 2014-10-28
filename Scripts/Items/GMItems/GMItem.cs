@@ -14,6 +14,8 @@ namespace Server.Items
         {
             // Ces items peuvent pas etre statiqués/déstatiqués.
             CanBeAltered = false;
+            // Les GMItems peuvent pas etre voles.
+            LootType = LootType.Blessed;
         }
 
         public GMItem(Serial serial)
