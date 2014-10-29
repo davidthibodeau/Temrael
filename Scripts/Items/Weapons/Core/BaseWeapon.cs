@@ -259,14 +259,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? DefMinDamage : m_MinDamage ); }
+			get{ return ( m_MinDamage == -1 ? RessourceBonus(DefMinDamage) : RessourceBonus(m_MinDamage) ); }
 			set{ m_MinDamage = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? DefMaxDamage : m_MaxDamage ); }
+			get{ return ( m_MaxDamage == -1 ? RessourceBonus(DefMaxDamage) : RessourceBonus(m_MaxDamage) ); }
 			set{ m_MaxDamage = value; InvalidateProperties(); }
 		}
 
@@ -331,6 +331,41 @@ namespace Server.Items
             get;
         }
 		#endregion
+
+        public int RessourceBonus(int BaseDamage)
+        {
+            double dmg = BaseDamage;
+
+            // Les bonus vont de 0% à 30% de bonus d'AR.
+            switch (m_Resource)
+            {
+                case CraftResource.Cuivre: dmg *= 1.06; break;
+                case CraftResource.Bronze: dmg *= 1.06; break;
+                case CraftResource.Acier: dmg *= 1.12; break;
+                case CraftResource.Argent: dmg *= 1.12; break;
+                case CraftResource.Or: dmg *= 1.12; break;
+                case CraftResource.Mytheril: dmg *= 1.18; break;
+                case CraftResource.Luminium: dmg *= 1.18; break;
+                case CraftResource.Obscurium: dmg *= 1.18; break;
+                case CraftResource.Mystirium: dmg *= 1.24; break;
+                case CraftResource.Dominium: dmg *= 1.24; break;
+                case CraftResource.Venarium: dmg *= 1.24; break;
+                case CraftResource.Eclarium: dmg *= 1.3; break;
+                case CraftResource.Athenium: dmg *= 1.3; break;
+                case CraftResource.Umbrarium: dmg *= 1.3; break;
+
+                case CraftResource.RegularWood: dmg *= 1.06; break;
+		        case CraftResource.PinWood: dmg *= 1.06; break;
+                case CraftResource.CypresWood: dmg *= 1.12; break;
+                case CraftResource.CedreWood: dmg *= 1.18; break;
+                case CraftResource.SauleWood: dmg *= 1.18; break;
+                case CraftResource.CheneWood: dmg *= 1.24; break;
+                case CraftResource.EbeneWood: dmg *= 1.3; break;
+                case CraftResource.AcajouWood: dmg *= 1.3; break;
+            }
+
+            return (int)dmg;
+        }
 
 		public override void OnAfterDuped( Item newItem )
 		{
