@@ -3,17 +3,17 @@ using System;
 namespace Server.Items
 {
     [Flipable(0x3C94, 0x3C95)]
-	public class ChandailSurpendu : Item, IDyable
+	public class ChandailSuspendu : Item, IDyable
 	{
 		[Constructable]
-        public ChandailSurpendu()
+        public ChandailSuspendu()
             : base(0x3C94)
 		{
 			Weight = 1.0;
             Name = "Chandail suspendu";
 		}
 
-        public ChandailSurpendu(Serial serial)
+        public ChandailSuspendu(Serial serial)
             : base(serial)
 		{
 		}
@@ -45,17 +45,17 @@ namespace Server.Items
 	}
 
     [Flipable(0x3C98, 0x3C99)]
-    public class PantalonSurpendu : Item, IDyable
+    public class PantalonSuspendu : Item, IDyable
     {
         [Constructable]
-        public PantalonSurpendu()
+        public PantalonSuspendu()
             : base(0x3C98)
         {
             Weight = 1.0;
             Name = "Pantalon suspendu";
         }
 
-        public PantalonSurpendu(Serial serial)
+        public PantalonSuspendu(Serial serial)
             : base(serial)
         {
         }
@@ -87,17 +87,17 @@ namespace Server.Items
     }
 
     [Flipable(0x3C9C, 0x3C9D)]
-    public class DrapSurpendu : Item, IDyable
+    public class DrapSuspendu : Item, IDyable
     {
         [Constructable]
-        public DrapSurpendu()
+        public DrapSuspendu()
             : base(0x3C9C)
         {
             Weight = 1.0;
             Name = "Drap suspendu";
         }
 
-        public DrapSurpendu(Serial serial)
+        public DrapSuspendu(Serial serial)
             : base(serial)
         {
         }
@@ -129,17 +129,17 @@ namespace Server.Items
     }
 
     [Flipable(0x3C9E, 0x3C9F)]
-    public class JupeSurpendu : Item, IDyable
+    public class JupeSuspendu : Item, IDyable
     {
         [Constructable]
-        public JupeSurpendu()
+        public JupeSuspendu()
             : base(0x3C9E)
         {
             Weight = 1.0;
             Name = "Jupe suspendue";
         }
 
-        public JupeSurpendu(Serial serial)
+        public JupeSuspendu(Serial serial)
             : base(serial)
         {
         }
@@ -171,17 +171,17 @@ namespace Server.Items
     }
 
     [Flipable(0x3CA0, 0x3CA1)]
-    public class HaillonSurpendu : Item, IDyable
+    public class HaillonSuspendu : Item, IDyable
     {
         [Constructable]
-        public HaillonSurpendu()
+        public HaillonSuspendu()
             : base(0x3CA0)
         {
             Weight = 1.0;
             Name = "Haillon suspendu";
         }
 
-        public HaillonSurpendu(Serial serial)
+        public HaillonSuspendu(Serial serial)
             : base(serial)
         {
         }
@@ -213,17 +213,17 @@ namespace Server.Items
     }
 
     [Flipable(0x3CA0, 0x3CA1)]
-    public class RideauSurpendu : Item, IDyable
+    public class RideauSuspendu : Item, IDyable
     {
         [Constructable]
-        public RideauSurpendu()
+        public RideauSuspendu()
             : base(0x3CA0)
         {
             Weight = 1.0;
             Name = "Rideau suspendu";
         }
 
-        public RideauSurpendu(Serial serial)
+        public RideauSuspendu(Serial serial)
             : base(serial)
         {
         }

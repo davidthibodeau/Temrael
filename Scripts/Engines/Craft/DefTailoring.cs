@@ -423,82 +423,82 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(LitDeCamp), "Accessoires", "Lit De Camp", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(OreillerDePaille), "Accessoires", "Oreiller De Paille", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             AddRes(index, typeof(SheafOfHay), "Paille (Sheaf of Hay)", 5, 1044563);
-            index = AddCraft(typeof(ChandailSurpendu), "Accessoires", "Chandail Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(PantalonSurpendu), "Accessoires", "Pantalon Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(JupeSurpendu), "Accessoires", "Jupe Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(HaillonSurpendu), "Accessoires", "Haillon Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(RideauSurpendu), "Accessoires", "Rideau Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(ChandailSuspendu), "Accessoires", "Chandail Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(PantalonSuspendu), "Accessoires", "Pantalon Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(JupeSuspendu), "Accessoires", "Jupe Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(HaillonSuspendu), "Accessoires", "Haillon Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(RideauSuspendu), "Accessoires", "Rideau Surpendu", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             #endregion
 
             #region Rideaux & Tapis
+            // Rideaux
             index = AddCraft(typeof(RideauSurSocle), "Rideaux & Tapis", "Rideau Sur Socle", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(RideauDroit), "Rideaux & Tapis", "Rideau Droit", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(RideauBlanc), "Rideaux & Tapis", "Rideau Blanc", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(RideauBlancSimple), "Rideaux & Tapis", "Rideau Blanc Simple", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(RideauDessus), "Rideaux & Tapis", "Rideau Dessus", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            // Tapis
             index = AddCraft(typeof(TapisBrun), "Rideaux & Tapis", "Tapis Brun", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(TapisVert), "Rideaux & Tapis", "Tapis Vert", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(TapisBleuFleuri), "Rideaux & Tapis", "Tapis Bleu Fleuri", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(TapisRougeDeLys), "Rideaux & Tapis", "Tapis Rouge De Lys", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TapisBleuAvecMotifs), "Rideaux & Tapis", "Tapis Bleu Avec Motifs", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TapisJauneAvecMotifs), "Rideaux & Tapis", "Tapis Jaune Avec Motifs", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisBleuAvecMotifs), "Rideaux & Tapis", "Tapis Bleu À Motifs", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TapisJauneAvecMotifs), "Rideaux & Tapis", "Tapis Jaune À Motifs", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(TapisBleuBourgogne), "Rideaux & Tapis", "Tapis Bleu Bourgogne", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Rideaux & Tapis", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
             #endregion
 
-            #region Draperie
-            index = AddCraft(typeof(DrapGris), "Draperie", "Drap Gris", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(DrapBlanc), "Draperie", "Drap Blanc", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            #region Draperie & Corde a linge
+            // Draperie
+            index = AddCraft(typeof(DrapGris), "Drap & Corde a linge", "Drap Gris", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(DrapBlanc), "Drap & Corde a linge", "Drap Blanc", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
+            // Corde a linge
+            index = AddCraft(typeof(ChandailSuspendu), "Drap & Corde a linge", "Chandail Suspendu", 60, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(PantalonSuspendu), "Drap & Corde a linge", "Pantalon Suspendu", 60, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(DrapSuspendu), "Drap & Corde a linge", "Drap Suspendu", 60, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(JupeSuspendu), "Drap & Corde a linge", "Jupe Suspendue", 60, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(HaillonSuspendu), "Drap & Corde a linge", "Haillon Suspendu", 60, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(RideauSuspendu), "Drap & Corde a linge", "Rideau Suspendu", 60, 90, typeof(Cloth), "Tissu", 10, 1044287);
             #endregion
 
-            #region Coussins
-            index = AddCraft(typeof(CoussinB), "Coussins", "Petit coussin carré", 20.0, 40.0, typeof(Cloth), "Tissu", 3, 1044287);
+            #region Coussins & Lits
+            // Coussins
+            index = AddCraft(typeof(CoussinB), "Coussins & Lits", "Petit coussin carré", 20.0, 40.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinA), "Coussins", "Gros oreiller", 40.0, 60.0, typeof(Cloth), "Tissu", 4, 1044287);
+            index = AddCraft(typeof(CoussinA), "Coussins & Lits", "Gros oreiller", 40.0, 60.0, typeof(Cloth), "Tissu", 4, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinC), "Coussins", "Gros oreiller de velours", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
+            index = AddCraft(typeof(CoussinC), "Coussins & Lits", "Gros oreiller de velours", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinD), "Coussins", "Gros oreiller carré", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
+            index = AddCraft(typeof(CoussinD), "Coussins & Lits", "Gros oreiller carré", 50.0, 70.0, typeof(Cloth), "Tissu", 4, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinE), "Coussins", "Petit coussin rond clair", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(CoussinE), "Coussins & Lits", "Petit coussin rond clair", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinF), "Coussins", "petit coussin rond sombre", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(CoussinF), "Coussins & Lits", "petit coussin rond sombre", 0.0, 30.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinG), "Coussins", "Petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(CoussinG), "Coussins & Lits", "Petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinH), "Coussins", "Autre petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(CoussinH), "Coussins & Lits", "Autre petit coussin carré à pompon", 30.0, 50.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinI), "Coussins", "Gros coussin carré", 40.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(CoussinI), "Coussins & Lits", "Gros coussin carré", 40.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
-            index = AddCraft(typeof(CoussinJ), "Coussins", "Gros coussin carré droit", 0.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(CoussinJ), "Coussins & Lits", "Gros coussin carré droit", 40.0, 60.0, typeof(Cloth), "Tissu", 3, 1044287);
             AddRes(index, typeof(Feather), "Plumes", 5, 1044563);
+            // Lits
+            index = AddCraft(typeof(OreillerDePaille), "Coussins & Lits", "Oreiller de paille", 20.0, 40.0, typeof(Cloth), "Tissu", 3, 1044287);
+            index = AddCraft(typeof(Hamac), "Coussins & Lits", "Hamac", 40.0, 60.0, typeof(Leather), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(LitDeCamp), "Coussins & Lits", "Lit De Camp", 50.0, 70.0, typeof(Cloth), "Tissu", 10, 1044287);
+            AddRes(index, typeof(Feather), "Plumes", 50, 1044563);
+            
             #endregion
 
-            /*#region Taxidermie
-            index = AddCraft(typeof(TeteOurs), "Draperie", "Tete d'Ours", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TeteCerf), "Draperie", "Tete de Cerf", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(PoissonPlanche), "Draperie", "Poisson sur Planche", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TeteOgre), "Draperie", "Tete d'Ogre", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TeteOrc), "Draperie", "Tete d'Orc", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TeteOursPolaire), "Draperie", "Tete d'Ours Polaire", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(TeteTroll), "Draperie", "Tete de Troll", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            index = AddCraft(typeof(Hamac), "Draperie", "Hamac", 50, 80, typeof(Cloth), "Tissu", 10, 1044287);
-            #endregion*/
+            #region Taxidermie
+            index = AddCraft(typeof(TeteOurs), "Taxidermie", "Tete d'Ours", 70, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteCerf), "Taxidermie", "Tete de Cerf", 70, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(PoissonPlanche), "Taxidermie", "Poisson sur Planche", 70, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteOgre), "Taxidermie", "Tete d'Ogre", 70, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteOrc), "Taxidermie", "Tete d'Orc", 70, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteOursPolaire), "Taxidermie", "Tete d'Ours Polaire", 70, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            index = AddCraft(typeof(TeteTroll), "Taxidermie", "Tete de Troll", 70, 90, typeof(Cloth), "Tissu", 10, 1044287);
+            #endregion
 
 
 			// Set the overridable material
