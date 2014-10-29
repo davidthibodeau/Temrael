@@ -4,8 +4,19 @@ using Server.Network;
 
 namespace Server.Items
 {
-	public abstract class BaseScales : Item, ICommodity
+	public abstract class BaseScales : Item, ICommodity, IExtractable
 	{
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        #endregion
+
 		public override int LabelNumber{ get{ return 1053139; } } // dragon scales
 
 		private CraftResource m_Resource;

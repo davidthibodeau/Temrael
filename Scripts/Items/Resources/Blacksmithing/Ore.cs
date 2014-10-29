@@ -7,8 +7,19 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-	public abstract class BaseOre : Item, ICommodity
+	public abstract class BaseOre : Item, ICommodity, IExtractable
 	{
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        #endregion
+
 		private CraftResource m_Resource;
 
 		[CommandProperty( AccessLevel.Batisseur )]

@@ -108,6 +108,9 @@
     <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\GMItems\GMItem.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />
+    <Compile Include="Items\Temrael\Alchimie\Teintures\ExtracteurCouleur.cs" />
+    <Compile Include="Items\Temrael\Alchimie\Teintures\IExtractable.cs" />
+    <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureModif.cs" />
     <Compile Include="Items\Temrael\Armures\ArmorEnums.cs" />
     <Compile Include="Engines\Races\Race.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />
@@ -646,10 +649,6 @@
     <Compile Include="Gumps\Temrael\TeintureGump.cs" />
     <Compile Include="Items\Temrael\Addons\TrainingDummies.cs" />
     <Compile Include="Items\Temrael\Alchimie\Teintures\BaseTeinture.cs" />
-    <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureAvance.cs" />
-    <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureDebutant.cs" />
-    <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureExpert.cs" />
-    <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureIntermediaire.cs" />
     <Compile Include="Items\Temrael\Armures\ArmureBarbare.cs" />
     <Compile Include="Items\Temrael\Armures\ArmureDaedric.cs" />
     <Compile Include="Items\Temrael\Armures\ArmureDrow.cs" />

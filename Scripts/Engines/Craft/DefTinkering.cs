@@ -191,6 +191,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(DeguisementKit), "Outils", "Kit de Déguisement", 50.0, 80.0, typeof(Log), "Bûche", 3, 1044037);
             index = AddCraft(typeof(OutilCoagulation), "Outils", "Outil de Coagulation", 60.0, 80.0, typeof(FerIngot), "Fer", 5, 1044037);
             //index = AddCraft(typeof(OutilFermentation), "Outils", "Outil de Fermentation", 60.0, 80.0, typeof(FerIngot), "Fer", 5, 1044037);
+            index = AddCraft(typeof(ExtracteurCouleur), "Outils", "Extracteur de couleurs", 50.0, 70.0, typeof(FerIngot), "Lingots De Fer", 10, 1044367);
 			#endregion
 
 			#region Parts

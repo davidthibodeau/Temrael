@@ -4,8 +4,19 @@ namespace Server.Items
 {
 	[Furniture]
 	[FlipableAttribute( 0x1BD7, 0x1BDA )]
-	public abstract class BaseTBoard : Item, ICommodity
+    public abstract class BaseTBoard : Item, ICommodity, IExtractable
 	{
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        #endregion
+
 		private CraftResource m_Resource;
 
 		[CommandProperty( AccessLevel.Batisseur )]

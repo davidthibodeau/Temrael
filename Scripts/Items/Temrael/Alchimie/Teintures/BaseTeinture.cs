@@ -29,7 +29,19 @@ namespace Server.Items
 
         public void ChooseTarget_OnTarget(Mobile from, object targeted)
         {
-            if (targeted is DyeTub)
+            if (targeted is BaseArmor)
+            {
+                ((BaseArmor)targeted).Hue = Couleur;
+                from.SendMessage("Teinture appliquée.");
+                this.Delete();
+            }
+            else if (targeted is BaseWeapon)
+            {
+                ((BaseWeapon)targeted).Hue = Couleur;
+                from.SendMessage("Teinture appliquée.");
+                this.Delete();
+            }
+            else if (targeted is DyeTub)
             {
                 ((DyeTub)targeted).Hue = Couleur;
                 from.SendMessage("Teinture appliquée.");

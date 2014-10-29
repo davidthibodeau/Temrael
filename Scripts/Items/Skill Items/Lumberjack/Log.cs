@@ -4,8 +4,16 @@ using Server.Items;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x1bdd, 0x1be0 )]
-	public abstract class BaseLog : Item, ICommodity, IAxe
+    public abstract class BaseLog : Item, ICommodity, IAxe, IExtractable
 	{
+        public string getName
+        {
+            get{ return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
 		private CraftResource m_Resource;
 
 		[CommandProperty( AccessLevel.Batisseur )]
