@@ -70,31 +70,31 @@ namespace Server.Items
 
         //                                               Physique     Magique    Force_req   Dex_malus     Min_Dura     Max_Dura
         // Cap 1
-        public ArmorValues ArmorLeather = new ArmorValues(  3,          3,          10,         -4,          100,        125);
-        public ArmorValues ArmorFeuilles = new ArmorValues( 3,          3,          10,         -4,          100,        125);
-        public ArmorValues ArmorRingmail = new ArmorValues( 3,          3,          10,         -4,          100,        125);
-        public ArmorValues ArmorBourgeon = new ArmorValues( 3,          3,          10,         -4,          100,        125);
+        public ArmorValues ArmorLeather = new ArmorValues(  3,          0,          10,         -3,          100,        125);
+        public ArmorValues ArmorFeuilles = new ArmorValues( 3,          0,          10,         -3,          100,        125);
+        public ArmorValues ArmorRingmail = new ArmorValues( 3,          0,          10,         -3,          100,        125);
+        public ArmorValues ArmorBourgeon = new ArmorValues( 3,          0,          10,         -3,          100,        125);
         // Cap 2
-        public ArmorValues ArmorMaillons = new ArmorValues( 4,          4,          20,         -5,          125,        150);
-        public ArmorValues ArmorMaillures = new ArmorValues(4,          4,          20,         -5,          125,        150);
-        public ArmorValues ArmorStudded = new ArmorValues(  4,          4,          20,         -5,          125,        150);
-        public ArmorValues ArmorMailles = new ArmorValues(  4,          4,          20,         -5,          125,        150);
+        public ArmorValues ArmorMaillons = new ArmorValues( 4,          0,          20,         -4,          125,        150);
+        public ArmorValues ArmorMaillures = new ArmorValues(4,          0,          20,         -4,          125,        150);
+        public ArmorValues ArmorStudded = new ArmorValues(  4,          0,          20,         -4,          125,        150);
+        public ArmorValues ArmorMailles = new ArmorValues(  4,          0,          20,         -4,          125,        150);
         // Cap 3
-        public ArmorValues ArmorChain = new ArmorValues(    5,          5,          30,         -6,          150,        175);
-        public ArmorValues ArmorBarbare = new ArmorValues(  5,          5,          30,         -6,          150,        175);
-        public ArmorValues ArmorBone = new ArmorValues(     5,          5,          30,         -6,          150,        175);
-        public ArmorValues ArmorChainElf = new ArmorValues( 5,          5,          30,         -6,          150,        175);
-        public ArmorValues ArmorChainNoir = new ArmorValues(5,          5,          30,         -6,          150,        175);
+        public ArmorValues ArmorChain = new ArmorValues(    5,          1,          30,         -5,          150,        175);
+        public ArmorValues ArmorBarbare = new ArmorValues(  5,          1,          30,         -5,          150,        175);
+        public ArmorValues ArmorBone = new ArmorValues(     5,          1,          30,         -5,          150,        175);
+        public ArmorValues ArmorChainElf = new ArmorValues( 5,          1,          30,         -5,          150,        175);
+        public ArmorValues ArmorChainNoir = new ArmorValues(5,          1,          30,         -5,          150,        175);
         // Cap 4
-        public ArmorValues ArmorPlaque = new ArmorValues(   6,          6,          40,         -7,          175,        200);
-        public ArmorValues ArmorPlaqueElf = new ArmorValues(6,          6,          40,         -7,          175,        200);
-        public ArmorValues ArmorPlaqueGoth= new ArmorValues(6,          6,          40,         -7,          175,        200);
-        public ArmorValues ArmorPlaqueBarb= new ArmorValues(6,          6,          40,         -7,          175,        200);
+        public ArmorValues ArmorPlaque = new ArmorValues(   6,          2,          40,         -6,          175,        200);
+        public ArmorValues ArmorPlaqueElf = new ArmorValues(6,          2,          40,         -6,          175,        200);
+        public ArmorValues ArmorPlaqueGoth= new ArmorValues(6,          2,          40,         -6,          175,        200);
+        public ArmorValues ArmorPlaqueBarb= new ArmorValues(6,          2,          40,         -6,          175,        200);
         // Cap 5
-        public ArmorValues ArmorPlaqueOrne= new ArmorValues(7,          7,          50,         -8,          200,        225);
-        public ArmorValues ArmorPlaqueDeco= new ArmorValues(7,          7,          50,         -8,          200,        225);
-        public ArmorValues ArmorPlaqueNobl= new ArmorValues(7,          7,          50,         -8,          200,        225);
-        public ArmorValues ArmorPlaqueDaed= new ArmorValues(7,          7,          50,         -8,          200,        225);
+        public ArmorValues ArmorPlaqueOrne= new ArmorValues(7,          3,          50,         -7,          200,        225);
+        public ArmorValues ArmorPlaqueDeco= new ArmorValues(7,          3,          50,         -7,          200,        225);
+        public ArmorValues ArmorPlaqueNobl= new ArmorValues(7,          3,          50,         -7,          200,        225);
+        public ArmorValues ArmorPlaqueDaed= new ArmorValues(7,          3,          50,         -7,          200,        225);
 
 
 
