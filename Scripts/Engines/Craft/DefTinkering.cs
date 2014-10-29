@@ -361,15 +361,14 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(GamelleR), "Gamelles", "Chaudron", 65.0, 75.0, typeof(FerIngot), "Fer", 15, 1044037);
 			index = AddCraft(typeof(GamelleQ), "Gamelles", "Chaudron avec support", 70.0, 80.0, typeof(FerIngot), "Fer", 20, 1044037);
 			
-			#endregion
-			
+			#endregion	
 
 			#region Multi-Component Items
 
-            index = AddCraft(typeof(ClockParts), "Ensembles", "Parties d'Horloges", 0.0, 0.0, typeof(AxleGears), 1044170, 1, 1044253);
+            index = AddCraft(typeof(Clock), "Ensembles", "Horloge", 90.0, 100.0, typeof(ClockParts), 1044170, 2, 1044253);
             AddRes(index, typeof(Springs), "Ressorts", 1, 1044253);
 
-            index = AddCraft(typeof(SextantParts), "Ensembles", "Parties de Sextant", 0.0, 0.0, typeof(AxleGears), 1044170, 1, 1044253);
+            index = AddCraft(typeof(Sextant), "Ensembles", "Sextant", 75.0, 100.0, typeof(SextantParts), 1044170, 2, 1044253);
             AddRes(index, typeof(Hinge), "Charnière", 1, 1044253);
 
             index = AddCraft(typeof(PotionKeg), "Ensembles", "Tonnelet de Potions", 75.0, 100.0, typeof(Keg), 1044255, 1, 1044253);
