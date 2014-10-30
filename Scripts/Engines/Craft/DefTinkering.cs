@@ -197,7 +197,7 @@ namespace Server.Engines.Craft
 			#region Parts
             index = AddCraft(typeof(Gears), "Pièces", "Engrenage", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
             index = AddCraft(typeof(ClockParts), "Pièces", "Parties d'Horloges", 25.0, 75.0, typeof(FerIngot), 1044036, 1, 1044037);
-            index = AddCraft(typeof(BarrelTap), "Pièces", "Couvercle de Baril", 35.0, 85.0, typeof(FerIngot), 1044036, 2, 1044037);
+            index = AddCraft(typeof(BarrelTap), "Pièces", "Embout de Baril", 35.0, 85.0, typeof(FerIngot), 1044036, 2, 1044037);
             index = AddCraft(typeof(Springs), "Pièces", "Ressorts", 5.0, 55.0, typeof(FerIngot), 1044036, 2, 1044037);
             index = AddCraft(typeof(SextantParts), "Pièces", "Pièces de Sextant", 30.0, 80.0, typeof(FerIngot), 1044036, 4, 1044037);
             index = AddCraft(typeof(BarrelHoops), "Pièces", "Cercles de Baril", -15.0, 35.0, typeof(FerIngot), 1044036, 5, 1044037);
@@ -372,9 +372,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Hinge), "Charnière", 1, 1044253);
 
             index = AddCraft(typeof(PotionKeg), "Ensembles", "Tonnelet de Potions", 75.0, 100.0, typeof(Keg), 1044255, 1, 1044253);
-			AddRes( index, typeof( Bottle ), "Bouteilles", 10, 1044253 );
-			AddRes( index, typeof( BarrelLid ), "Couvercle de Baril", 1, 1044253 );
-            AddRes(index, typeof(BarrelHoops), "Cercles de Baril", 1, 1044253);
+            AddRes(index, typeof(BarrelTap), "Embout de baril", 1, 1044253);
 			
 			
 			#endregion

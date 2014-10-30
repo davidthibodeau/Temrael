@@ -339,9 +339,9 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(FullBookcaseC), "Conteneurs", "Bibliothèque", 47.5, 72.5, typeof(Board), "Planches", 30, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Barrel), "Conteneurs", "Tonneau", 47.5, 72.5, typeof(BarrelStaves), 1044288, 4, 1044253);
-            AddRes(index, typeof(BarrelHoops), 1044289, 1, 1044253);
-            AddRes(index, typeof(BarrelLid), 1044251, 1, 1044253);
+            index = AddCraft(typeof(Barrel), "Conteneurs", "Tonneau", 47.5, 72.5, typeof(BarrelStaves), "Douves de Tonneau", 4, 1044253);
+            AddRes(index, typeof(BarrelHoops), "Cercles de tonneau", 1, 1044253);
+            AddRes(index, typeof(BarrelLid), "Couvercle de tonneau", 1, 1044253);
 
             index = AddCraft(typeof(LargeCrate), "Conteneurs", "Grande Caisse", 47.3, 72.3, typeof(Board), "Planches", 20, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
@@ -361,9 +361,9 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(FancyDrawer), "Conteneurs", "Commode de luxe", 84.2, 109.2, typeof(Board), "Planches", 40, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Keg), "Conteneurs", "Tonnelet", 57.8, 82.8, typeof(BarrelStaves), 1044288, 2, 1044253);
-			AddRes( index, typeof( BarrelHoops ), 1044289, 1, 1044253 );
-			AddRes( index, typeof( BarrelLid ), 1044251, 1, 1044253 );
+            index = AddCraft(typeof(Keg), "Conteneurs", "Tonnelet", 57.8, 82.8, typeof(BarrelStaves), "Douves de tonneau", 2, 1044253);
+            AddRes(index, typeof(BarrelHoops), "Cercles de tonneau", 1, 1044253);
+            AddRes(index, typeof(BarrelLid), "Couvercle de tonneau", 1, 1044253);
 
             index = AddCraft(typeof(BacDeau), "Conteneurs", "Bac d'eau", 22.0, 52.0, typeof(Board), "Planches", 7, 1044351);
             AddRes(index, typeof(Nails), "Clous", 3, 1044563);
