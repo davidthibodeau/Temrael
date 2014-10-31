@@ -20,6 +20,22 @@ namespace Server.Misc
 			Mobile.HitsRegenRateHandler = new RegenRateHandler( Mobile_HitsRegenRate );
 		}
 
+        //Test de skill ayant pour but de verifier s'il y a un gain
+        private static void CheckBonusSkill(Mobile m, int cur, int max, SkillName skill)
+        {
+            if (!m.Alive)
+                return;
+
+            double n = (double)cur / max;
+            double v = Math.Sqrt(m.Skills[skill].Value * 0.005);
+
+            n *= (1.0 - v);
+            n += v;
+
+            m.CheckSkill(skill, n);
+        }
+
+
 		private static TimeSpan Mobile_HitsRegenRate( Mobile from )
 		{
             double points = from.Str / 20;
@@ -29,13 +45,18 @@ namespace Server.Misc
 
 		private static TimeSpan Mobile_StamRegenRate( Mobile from )
 		{
-            double points = (from.Dex / 20) + (from.Skills[SkillName.Concentration].Value / 10);
+            CheckBonusSkill(from, from.Stam, from.StamMax, SkillName.Concentration);
 
+            double points = (from.Dex / 20) + (from.Skills[SkillName.Concentration].Value / 10);
             return TimeSpan.FromSeconds(1.0 / (0.1 * (1 + points)));
 		}
 
 		private static TimeSpan Mobile_ManaRegenRate( Mobile from )
 		{
+            if (!from.Meditating)
+                CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Meditation);
+            CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Concentration);
+
 			double armorPenalty = GetArmorOffset( from );
             double med = from.Skills[SkillName.Meditation].Value;
 

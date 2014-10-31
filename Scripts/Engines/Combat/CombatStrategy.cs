@@ -121,7 +121,7 @@ namespace Server.Engines.Combat
             if (chance < 0.02)
                 chance = 0.02;
 
-            return chance >= Utility.RandomDouble();
+            return atk.CheckSkill(ToucherSkill, chance);
         }
 
         protected virtual double ToucherChance(Mobile atk, Mobile def)
@@ -140,7 +140,7 @@ namespace Server.Engines.Combat
         {
             int basedmg = Utility.RandomMinMax((atk.Weapon as BaseWeapon).MinDamage, (atk.Weapon as BaseWeapon).MaxDamage);
             critique = false;
-            double dmg = ComputerDegats(atk, basedmg);
+            double dmg = ComputerDegats(atk, basedmg, true);
             if (Critique(atk) && atk.Mana > 10)
             {
                 critique = true;
@@ -152,16 +152,22 @@ namespace Server.Engines.Combat
 
         public int MinDegats(Mobile atk)
         {
-            return (int)ComputerDegats(atk, (atk.Weapon as BaseWeapon).MinDamage);
+            return (int)ComputerDegats(atk, (atk.Weapon as BaseWeapon).MinDamage, false);
         }
 
         public int MaxDegats(Mobile atk)
         {
-            return (int)ComputerDegats(atk, (atk.Weapon as BaseWeapon).MaxDamage);
+            return (int)ComputerDegats(atk, (atk.Weapon as BaseWeapon).MaxDamage, false);
         }
 
-        protected virtual double ComputerDegats(Mobile atk, int basedmg)
+        protected virtual double ComputerDegats(Mobile atk, int basedmg, bool skillup)
         {
+            if (skillup)
+            {
+                CheckSkillGain(atk, SkillName.Tactiques);
+                CheckSkillGain(atk, SkillName.Anatomie);
+            }
+
             double strBonus = GetBonus(atk.Str, 0.3, 5);
             double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.625, 6.25);
             double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.5, 5);
@@ -172,6 +178,8 @@ namespace Server.Engines.Combat
                 case WeaponQuality.Regular: exceptBonus = 0; break;
                 case WeaponQuality.Exceptional:
                     exceptBonus = 0.20;
+                    if (skillup)
+                        CheckSkillGain(atk, SkillName.Polissage);
                     exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.2, 10);
                     break;
             }
@@ -219,8 +227,7 @@ namespace Server.Engines.Combat
         #region Coup Critique
         public bool Critique(Mobile atk)
         {
-            double chance = CritiqueChance(atk);
-            return chance >= Utility.RandomDouble();
+            return atk.CheckSkill(SkillName.CoupCritique, CritiqueChance(atk));
         }
 
         public virtual double CritiqueChance(Mobile atk)
@@ -278,7 +285,12 @@ namespace Server.Engines.Combat
                 return false;
 
             double chance = ParerChance(def);
-            return chance >= Utility.RandomDouble();
+            
+            // On donne la possibilite d'augmenter Parer seulement s'il y a chance de parer
+            // Cela exclue donc a mains nues ou a distance
+            if (chance > 0 || (def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
+                return def.CheckSkill(SkillName.Parer, ParerChance(def));
+            return false;
         }
 
         protected abstract double ParerChance(Mobile def);
@@ -292,6 +304,12 @@ namespace Server.Engines.Combat
         protected BaseWeapon Weapon(Mobile m)
         {
             return m.Weapon as BaseWeapon;
+        }
+
+        // Test passif pour un gain de skill
+        protected void CheckSkillGain(Mobile m, SkillName skill)
+        {
+            m.CheckSkill(skill, 0.0, m.Skills[skill].Cap);
         }
     }
 }

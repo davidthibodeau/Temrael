@@ -54,9 +54,12 @@ namespace Server.Engines.Combat
 
         public override SkillName ToucherSkill { get { return SkillName.ArmeDistance; } }
 
-        protected override double ComputerDegats(Mobile atk, int basedmg)
+        protected override double ComputerDegats(Mobile atk, int basedmg, bool skillup)
         {
-            double dmg = base.ComputerDegats(atk, basedmg);
+            if (skillup)
+                CheckSkillGain(atk, SkillName.Anatomie);
+
+            double dmg = base.ComputerDegats(atk, basedmg, skillup);
             double menuiserieBonus = GetBonus(atk.Skills[SkillName.Menuiserie].Value, 0.2, 10);
 
             return dmg + basedmg * menuiserieBonus;

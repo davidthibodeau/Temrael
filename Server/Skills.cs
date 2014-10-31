@@ -141,7 +141,7 @@ namespace Server
 				{
 					m_Base = 0;
 					m_Cap = 1000;
-					m_Lock = SkillLock.Up;
+					m_Lock = SkillLock.Locked;
 
 					break;
 				}
@@ -168,7 +168,7 @@ namespace Server
 			if ( m_Lock < SkillLock.Up || m_Lock > SkillLock.Locked )
 			{
 				Console.WriteLine( "Bad skill lock -> {0}.{1}", owner.Owner, m_Lock );
-				m_Lock = SkillLock.Up;
+				m_Lock = SkillLock.Locked;
 			}
 		}
 
@@ -191,7 +191,7 @@ namespace Server
 
 		public void Serialize( GenericWriter writer )
 		{
-			if ( m_Base == 0 && m_Cap == 1000 && m_Lock == SkillLock.Up )
+			if ( m_Base == 0 && m_Cap == 1000 && m_Lock == SkillLock.Locked )
 			{
 				writer.Write( (byte) 0xFF ); // default
 			}
@@ -205,7 +205,7 @@ namespace Server
 				if ( m_Cap != 1000 )
 					flags |= 0x2;
 
-				if ( m_Lock != SkillLock.Up )
+				if ( m_Lock != SkillLock.Locked )
 					flags |= 0x4;
 
 				writer.Write( (byte) flags ); // version
@@ -675,10 +675,10 @@ namespace Server
 				new SkillInfo( SkillName.Vol,             "Vol",				SkillCategory.Roublardise,	0.0,	10.0,	0.0,	null,	0.0,	1.0,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Dressage,        "Dressage",			SkillCategory.Roublardise,	14.0,	2.0,	4.0, 	null,	1.4,	0.2,	0.4,	1.0 ),
 				new SkillInfo( SkillName.Poursuite,       "Poursuite",			SkillCategory.Roublardise,	0.0,	12.5,	12.5, 	null,	0.0,	1.25,	1.25,	1.0 ),
-				new SkillInfo( SkillName.Infiltration,    "Infiltration",		SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
-				new SkillInfo( SkillName.Pieges,          "Maitrise des Pieges",SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
-				new SkillInfo( SkillName.Langues,         "Langues",			SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
-                new SkillInfo( SkillName.Deguisement,     "Deguisement",		SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
+				new SkillInfo( SkillName.Infiltration,    "Infiltration",		SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	2.4,	0.0,	1.0 ),
+				new SkillInfo( SkillName.Pieges,          "Maitrise des Pieges",SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	2.0,	0.4,	1.0 ),
+				new SkillInfo( SkillName.Langues,         "Langues",			SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	1.0,	1.0 ),
+                new SkillInfo( SkillName.Deguisement,     "Deguisement",		SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	2.0,	1.0,	1.0 ),
                 new SkillInfo( SkillName.Musique,         "Musique",            SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
 
 			};
@@ -965,7 +965,7 @@ namespace Server
                 Skill sk = m_Skills[skillID];
 
                 if (sk == null)
-                    m_Skills[skillID] = sk = new Skill(this, SkillInfo.Table[skillID], 0, 1000, SkillLock.Up);
+                    m_Skills[skillID] = sk = new Skill(this, SkillInfo.Table[skillID], 0, 1000, SkillLock.Locked);
 
                 return sk;
             }
@@ -1083,7 +1083,7 @@ namespace Server
 			m_Skills = new Skill[info.Length];
 
             for (int i = 0; i < info.Length; ++i)
-                m_Skills[i] = new Skill(this, info[i], 0, 1000, SkillLock.Up);
+                m_Skills[i] = new Skill(this, info[i], 0, 1000, SkillLock.Locked);
 		}
 
         public Skills(Mobile owner, GenericReader reader)

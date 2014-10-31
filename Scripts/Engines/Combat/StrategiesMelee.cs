@@ -106,7 +106,7 @@ namespace Server.Engines.Combat
                             atk.ApplyPoison(atk, poison);
                     }
                     else
-                        if (Utility.RandomDouble() > chance)
+                        if (atk.CheckSkill(SkillName.Empoisonnement, chance))
                             def.ApplyPoison(atk, poison);
                 }
 			}
@@ -197,9 +197,9 @@ namespace Server.Engines.Combat
         
         public override SkillName ToucherSkill { get { return SkillName.Hache; } }
 
-        protected override double ComputerDegats(Mobile atk, int basedmg)
+        protected override double ComputerDegats(Mobile atk, int basedmg, bool skillup)
         {
-            double dmg = base.ComputerDegats(atk, basedmg);
+            double dmg = base.ComputerDegats(atk, basedmg, skillup);
             double foresterieBonus = GetBonus(atk.Skills[SkillName.Hache].Value, 0.2, 10);
 
             return dmg + basedmg * foresterieBonus;

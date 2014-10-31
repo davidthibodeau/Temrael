@@ -180,9 +180,9 @@ namespace Server.Misc
 			FixStat( ref vDex, (vStr + vDex + vInt) - vMax, vMax );
 			FixStat( ref vInt, (vStr + vDex + vInt) - vMax, vMax );
 
-			str = vStr + 10;
-			dex = vDex + 10;
-			intel = vInt + 10;
+			str = vStr + 25;
+			dex = vDex + 25;
+			intel = vInt + 25;
 		}
 
 		private static void FixStat( ref int stat, int diff, int max )
@@ -203,9 +203,9 @@ namespace Server.Misc
 
 			if ( str < 10 || str > 60 || dex < 10 || dex > 60 || intel < 10 || intel > 60 || (str + dex + intel) != max )
 			{
-				str = 10;
-				dex = 10;
-				intel = 10;
+				str = 25;
+				dex = 25;
+				intel = 25;
 			}
 
 			m.InitStats( str, dex, intel );

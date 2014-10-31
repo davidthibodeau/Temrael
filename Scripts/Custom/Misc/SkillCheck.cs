@@ -81,6 +81,8 @@ namespace Server.Misc
 
 			Mobile.SkillCheckTargetHandler = new SkillCheckTargetHandler( Mobile_SkillCheckTarget );
 			Mobile.SkillCheckDirectTargetHandler = new SkillCheckDirectTargetHandler( Mobile_SkillCheckDirectTarget );
+
+            new SkillGainTimer().Start();
 		}
 
         public class SkillGainTimer : Timer
@@ -88,7 +90,7 @@ namespace Server.Misc
             public SkillGainTimer()
                 : base(TimeSpan.FromSeconds(20), TimeSpan.FromSeconds(20))
             {
-                Priority = TimerPriority.FiftyMS;
+                Priority = TimerPriority.TwoFiftyMS;
             }
 
             protected override void OnTick()
@@ -140,6 +142,8 @@ namespace Server.Misc
 
         public static void IncreaseRandomUpSkill(Mobile from)
         {
+            if (from == null)
+                return;
             Skills sks = from.Skills;
             List<Skill> l = new List<Skill>();
             foreach (Skill sk in sks)
@@ -147,7 +151,8 @@ namespace Server.Misc
                 if (sk.Lock == SkillLock.Up && sk.Base < sk.Cap)
                     l.Add(sk);
             }
-            Gain(from, l[Utility.Random(l.Count)]);
+            if (l.Count > 0)
+                Gain(from, l[Utility.Random(l.Count)], true);
         }
 
 		public static bool CheckSkill( Mobile from, Skill skill, object amObj, double chance )
@@ -184,8 +189,8 @@ namespace Server.Misc
 			if ( from is BaseCreature && ((BaseCreature)from).Controlled )
 				gc *= 2;
 
-			if ( from.Alive && ( ( gc >= Utility.RandomDouble() && AllowGain( from, skill, amObj ) ) || skill.Base < 10.0 ) )
-				Gain( from, skill );
+            if (from.Alive && ((gc >= Utility.RandomDouble() && AllowGain(from, skill, amObj)) || skill.Base < 10.0))
+                Gain(from, skill, false);
 
           //  Console.WriteLine("Checkckill {0}: {1}", skill, success);
 
@@ -239,7 +244,7 @@ namespace Server.Misc
 
 		public enum Stat { Str, Dex, Int }
 
-		public static void Gain( Mobile from, Skill skill )
+		public static void Gain(Mobile from, Skill skill, bool onlyOne)
 		{
 			if ( from.Region.IsPartOf( typeof( Regions.Jail ) ) )
 				return;
@@ -254,7 +259,7 @@ namespace Server.Misc
 			{
 				int toGain = 1;
 
-				if ( skill.Base <= 10.0 )
+				if ( skill.Base <= 10.0 && !onlyOne)
 					toGain = Utility.Random( 4 ) + 1;
 
 				Skills skills = from.Skills;
@@ -295,9 +300,9 @@ namespace Server.Misc
 		{
 			switch ( stat )
 			{
-				case Stat.Str: return ( from.StrLock == StatLockType.Down && from.RawStr > 10 );
-				case Stat.Dex: return ( from.DexLock == StatLockType.Down && from.RawDex > 10 );
-				case Stat.Int: return ( from.IntLock == StatLockType.Down && from.RawInt > 10 );
+				case Stat.Str: return ( from.StrLock == StatLockType.Down && from.RawStr > 25 );
+				case Stat.Dex: return ( from.DexLock == StatLockType.Down && from.RawDex > 25 );
+				case Stat.Int: return ( from.IntLock == StatLockType.Down && from.RawInt > 25 );
 			}
 
 			return false;
