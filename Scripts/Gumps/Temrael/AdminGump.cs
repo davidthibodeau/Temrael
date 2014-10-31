@@ -153,15 +153,7 @@ namespace Server.Gumps
 				case AccessLevel.Chroniqueur: return 0x144;
 				case AccessLevel.Batisseur: return 0x21;
 				case AccessLevel.Counselor: return 0x2;
-				case AccessLevel.Player: default:
-				{
-					if ( m.Kills >= 5 )
-						return 0x21;
-					else if ( m.Criminal )
-						return 0x3B1;
-
-					return 0x58;
-				}
+				case AccessLevel.Player: default: return 0x58;
 			}
 		}
 
@@ -173,7 +165,7 @@ namespace Server.Gumps
 				"Chroniqueur",
 				"Coordinateur",
 				"Developer",
-				"Owner"
+				"Administrateur"
 			};
 
 		public static string FormatAccessLevel( AccessLevel level )

@@ -234,13 +234,6 @@ namespace Server.Mobiles
 						case 0x0000: // *withdraw*
 						{
 							e.Handled = true;
-
-							if ( e.Mobile.Criminal )
-							{
-								this.Say( 500389 ); // I will not do business with a criminal!
-								break;
-							}
-
 							string[] split = e.Speech.Split( ' ' );
 
 							if ( split.Length >= 2 )
@@ -283,12 +276,6 @@ namespace Server.Mobiles
 						{
 							e.Handled = true;
 
-							if ( e.Mobile.Criminal )
-							{
-								this.Say( 500389 ); // I will not do business with a criminal!
-								break;
-							}
-
 							BankBox box = e.Mobile.FindBankNoCreate();
 
 							if ( box != null )
@@ -302,12 +289,6 @@ namespace Server.Mobiles
 						{
 							e.Handled = true;
 
-							if ( e.Mobile.Criminal )
-							{
-								this.Say( 500378 ); // Thou art a criminal and cannot access thy bank box.
-								break;
-							}
-
 							e.Mobile.BankBox.Open();
 
 							break;
@@ -315,12 +296,6 @@ namespace Server.Mobiles
 						case 0x0003: // *check*
 						{
 							e.Handled = true;
-
-							if ( e.Mobile.Criminal )
-							{
-								this.Say( 500389 ); // I will not do business with a criminal!
-								break;
-							}
 
 							string[] split = e.Speech.Split( ' ' );
 

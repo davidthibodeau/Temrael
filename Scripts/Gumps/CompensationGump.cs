@@ -18,6 +18,7 @@ namespace Server.Gumps
 
         private static Dictionary<Account, MJ> compensations;
         private static List<MJ> compensationsIndexed;
+        private static readonly string SavePath = Path.Combine(Directories.AppendPath(Directories.saves, "Misc"), "compensations.xml");
 
         public static void Configure()
 		{
@@ -95,11 +96,7 @@ namespace Server.Gumps
 
         private static void Save(WorldSaveEventArgs e)
         {
-            string path = Directories.AppendPath(Directories.saves, "Compensations");
-
-			string filePath = Path.Combine( path, "compensations.xml" );
-
-            using (StreamWriter op = new StreamWriter(filePath))
+            using (StreamWriter op = new StreamWriter(SavePath))
             {
                 XmlTextWriter xml = new XmlTextWriter(op);
 
@@ -129,14 +126,13 @@ namespace Server.Gumps
             compensations = new Dictionary<Account, MJ>();
             compensationsIndexed = new List<MJ>();
 
-            string path = Directories.AppendPath(Directories.saves, "Compensations");
-            string filePath = Path.Combine(path, "compensations.xml");
 
-			if ( !File.Exists( filePath ) )
+
+			if ( !File.Exists( SavePath ) )
 				return;
 
 			XmlDocument doc = new XmlDocument();
-			doc.Load( filePath );
+			doc.Load( SavePath );
 
             XmlElement root = doc["compensations"];
 

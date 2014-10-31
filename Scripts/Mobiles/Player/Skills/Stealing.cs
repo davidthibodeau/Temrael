@@ -18,9 +18,6 @@ namespace Server.SkillHandlers
 			SkillInfo.Table[(int)SkillName.Vol].Callback = new SkillUseCallback( OnUse );
 		}
 
-		public static readonly bool ClassicMode = false;
-		public static readonly bool SuspendOnMurder = false;
-
 		public static bool IsInnocentTo( Mobile from, Mobile to )
 		{
 			return ( Notoriety.Compute( from, (Mobile)to ) == Notoriety.Innocent );
@@ -165,7 +162,7 @@ namespace Server.SkillHandlers
 				{
 					m_Thief.SendLocalizedMessage( 502710 ); // You can't steal that!
 				}
-				else if ( toSteal.LootType == LootType.Newbied || toSteal.CheckBlessed( root ) )
+				else if (toSteal.CheckBlessed( root ))
 				{
 					m_Thief.SendLocalizedMessage( 502710 ); // You can't steal that!
 				}
@@ -320,15 +317,7 @@ namespace Server.SkillHandlers
 
 				if ( caught )
 				{
-					if ( root == null )
-					{
-						m_Thief.CriminalAction( false );
-					}
-                    //else if ( root is Corpse && ((Corpse)root).IsCriminalAction( m_Thief ) )
-                    //{
-                    //    m_Thief.CriminalAction( false );
-                    //}
-					else if ( root is Mobile )
+                    if (root is Mobile)
 					{
 						Mobile mobRoot = (Mobile)root;
 

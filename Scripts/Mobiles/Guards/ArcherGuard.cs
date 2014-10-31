@@ -61,7 +61,7 @@ namespace Server.Mobiles
 
 			Arrow arrows = new Arrow( 250 );
 
-			arrows.LootType = LootType.Newbied;
+			arrows.LootType = LootType.Blessed;
 
 			pack.DropItem( arrows );
 			pack.DropItem( new Gold( 10, 25 ) );
@@ -242,9 +242,6 @@ namespace Server.Mobiles
 					Stop();
 					return;
 				}
-
-				m_Owner.Criminal = false;
-				m_Owner.Kills = 0;
 				m_Owner.Stam = m_Owner.StamMax;
 
 				Mobile target = m_Owner.Focus;

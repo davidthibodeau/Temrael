@@ -28,9 +28,6 @@ namespace Server.Items
 
 		public override void CheckGate( Mobile m, int range )
 		{
-			if ( m.Kills >= 5 )
-				return;
-
 			Party casterParty = Party.Get( m_Caster );
 			Party userParty = Party.Get( m );
 
@@ -40,9 +37,6 @@ namespace Server.Items
 
 		public override void UseGate( Mobile m )
 		{
-			if ( m.Kills >= 5 )
-				return;
-
 			Party casterParty = Party.Get( m_Caster );
 			Party userParty = Party.Get( m );
 

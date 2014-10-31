@@ -38,7 +38,7 @@ namespace Server.Mobiles
 
 			LeatherGloves glv = new LeatherGloves();
 			glv.Hue = iHue;
-			glv.LootType = LootType.Newbied;
+			glv.LootType = LootType.Blessed;
 			AddItem(glv);
 
 			Container pack = new Backpack();

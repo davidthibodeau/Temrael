@@ -523,8 +523,6 @@ namespace Server.Items
 
 			m_AccessLevel = owner.AccessLevel;
 			m_Guild = owner.Guild as Guild;
-			m_Kills = owner.Kills;
-			SetFlag( CorpseFlag.Criminal, owner.Criminal );
 
 			m_Hair = hair;
 			m_FacialHair = facialhair;

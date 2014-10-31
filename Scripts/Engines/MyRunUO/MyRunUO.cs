@@ -375,7 +375,6 @@ namespace Server.Engines.MyRunUO
 				m_OpMobiles.Write( EntrySep );
 				m_OpMobiles.Write( female );
 				m_OpMobiles.Write( EntrySep );
-				m_OpMobiles.Write( mob.Kills );
 				m_OpMobiles.Write( EntrySep );
 				m_OpMobiles.Write( guildId );
 				m_OpMobiles.Write( EntrySep );
@@ -390,7 +389,8 @@ namespace Server.Engines.MyRunUO
 			}
 			else
 			{
-				ExecuteNonQuery( "INSERT INTO myrunuo_characters (char_id, char_name, char_str, char_dex, char_int, char_female, char_counts, char_guild, char_guildtitle, char_nototitle, char_bodyhue, char_public ) VALUES ({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7}, {8}, '{9}', {10}, {11})", mob.Serial.Value.ToString(), SafeString( mob.Name ), mob.RawStr.ToString(), mob.RawDex.ToString(), mob.RawInt.ToString(), female, mob.Kills.ToString(), guildId, guildTitle, notoTitle, mob.Hue.ToString(), pubString );
+				ExecuteNonQuery( "INSERT INTO myrunuo_characters (char_id, char_name, char_str, char_dex, char_int, char_female, char_counts, char_guild, char_guildtitle, char_nototitle, char_bodyhue, char_public ) VALUES ({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7}, {8}, '{9}', {10}, {11})", 
+                    mob.Serial.Value.ToString(), SafeString( mob.Name ), mob.RawStr.ToString(), mob.RawDex.ToString(), mob.RawInt.ToString(), "", guildId, guildTitle, notoTitle, mob.Hue.ToString(), pubString );
 			}
 		}
 

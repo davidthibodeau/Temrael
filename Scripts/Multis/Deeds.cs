@@ -73,7 +73,7 @@ namespace Server.Multis.Deeds
 		public HouseDeed( int id, Point3D offset ) : base( 0x14F0 )
 		{
 			Weight = 1.0;
-			LootType = LootType.Newbied;
+			LootType = LootType.Blessed;
 
 			m_MultiID = id;
 			m_Offset = offset;

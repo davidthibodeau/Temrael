@@ -266,16 +266,6 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 503028 ); // The treasure for this map has already been found.
 			}
-			else if ( m_Level == 0 && !CheckYoung( from ) )
-			{
-				from.SendLocalizedMessage( 1046447 ); // Only a young player may use this treasure map.
-			}
-			/*
-			else if ( from != m_Decoder )
-			{
-				from.SendLocalizedMessage( 503016 ); // Only the person who decoded this map may actually dig up the treasure.
-			}
-			*/
 			else if ( m_Decoder != from && !HasRequiredSkill( from ) )
 			{
 				from.SendLocalizedMessage( 503031 ); // You did not decode this map and have no clue where to look for the treasure.
@@ -616,24 +606,6 @@ namespace Server.Items
 				DisplayTo( from );
 		}
 
-		private bool CheckYoung( Mobile from )
-		{
-			if ( from.AccessLevel >= AccessLevel.Batisseur )
-				return true;
-
-			if ( from is PlayerMobile && ((PlayerMobile)from).Young )
-				return true;
-
-			if ( from == this.Decoder )
-			{
-				this.Level = 1;
-				from.SendLocalizedMessage( 1046446 ); // This is now a level one treasure map.
-				return true;
-			}
-
-			return false;
-		}
-
 		private double GetMinSkillLevel()
 		{
 			switch ( m_Level )
@@ -661,11 +633,6 @@ namespace Server.Items
 
 			if ( m_Level == 0 )
 			{
-				if ( !CheckYoung( from ) )
-				{
-					from.SendLocalizedMessage( 1046447 ); // Only a young player may use this treasure map.
-					return;
-				}
 			}
 			else
 			{
@@ -694,11 +661,6 @@ namespace Server.Items
 			if ( m_Completed )
 			{
 				SendLocalizedMessageTo( from, 503014 ); // This treasure hunt has already been completed.
-			}
-			else if ( m_Level == 0 && !CheckYoung( from ) )
-			{
-				from.SendLocalizedMessage( 1046447 ); // Only a young player may use this treasure map.
-				return;
 			}
 			else if ( m_Decoder != from && !HasRequiredSkill( from ) )
 			{

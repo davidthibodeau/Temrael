@@ -222,26 +222,5 @@ namespace Server.Misc
 		}
 
 		private static Mobile m_Mobile;
-
-		private static void EquipItem( Item item )
-		{
-			EquipItem( item, false );
-		}
-
-		private static void EquipItem( Item item, bool mustEquip )
-		{
-			if ( !Core.AOS )
-				item.LootType = LootType.Newbied;
-
-			if ( m_Mobile != null && m_Mobile.EquipItem( item ) )
-				return;
-
-			Container pack = m_Mobile.Backpack;
-
-			if ( !mustEquip && pack != null )
-				pack.DropItem( item );
-			else
-				item.Delete();
-		}
 	}
 }

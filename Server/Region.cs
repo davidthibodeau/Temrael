@@ -658,14 +658,6 @@ namespace Server
 			return true;
 		}
 
-		public virtual void OnCriminalAction( Mobile m, bool message )
-		{
-			if ( m_Parent != null )
-				m_Parent.OnCriminalAction( m, message );
-			else if ( message )
-				m.SendLocalizedMessage( 1005040 ); // You've committed a criminal act!!
-		}
-
 		public virtual bool AllowBeneficial( Mobile from, Mobile target )
 		{
 			if ( m_Parent != null )

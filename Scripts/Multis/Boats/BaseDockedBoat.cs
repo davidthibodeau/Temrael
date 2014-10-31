@@ -68,7 +68,7 @@ namespace Server.Multis
 				}
 			}
 
-			if ( LootType == LootType.Newbied )
+			if ( LootType == LootType.Blessed )
 				LootType = LootType.Blessed;
 
 			if ( Weight == 0.0 )

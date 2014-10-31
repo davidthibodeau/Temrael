@@ -616,9 +616,7 @@ namespace Server.Guilds
 			{
 				string name = Utility.FixHtml( text.Trim() );
 
-				if( !BaseGuildGump.CheckProfanity( name ) )
-					pm.SendLocalizedMessage( 1070886 ); // That alliance name is not allowed.
-				else if( name.Length > Guild.NameLimit )
+                if (name.Length > Guild.NameLimit)
 					pm.SendLocalizedMessage( 1070887, Guild.NameLimit.ToString() ); // An alliance name cannot exceed ~1_val~ characters in length.
 				else if( AllianceInfo.Alliances.ContainsKey( name.ToLower() ) )
 					pm.SendLocalizedMessage( 1063428 ); // That alliance name is not available.

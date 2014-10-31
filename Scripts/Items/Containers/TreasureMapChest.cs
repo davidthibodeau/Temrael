@@ -340,11 +340,6 @@ namespace Server.Items
 
 			if ( map != null && (map.Rules & MapRules.HarmfulRestrictions) == 0 )
 			{
-				if ( criminalAction )
-					m.CriminalAction( true );
-				else
-					m.SendLocalizedMessage( 1010630 ); // Taking someone else's treasure is a criminal offense!
-
 				return true;
 			}
 

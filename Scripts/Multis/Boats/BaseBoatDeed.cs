@@ -22,7 +22,7 @@ namespace Server.Multis
 			Weight = 1.0;
 
 			if ( !Core.AOS )
-				LootType = LootType.Newbied;
+				LootType = LootType.Blessed;
 
 			m_MultiID = id;
 			m_Offset = offset;

@@ -455,17 +455,13 @@ namespace Server
 		/// </summary>
 		Regular = 0,
 		/// <summary>
-		/// Unstealable. Unlootable, unless owned by a murderer.
-		/// </summary>
-		Newbied = 1,
-		/// <summary>
 		/// Unstealable. Unlootable, always.
 		/// </summary>
-		Blessed = 2,
+		Blessed = 1,
 		/// <summary>
 		/// Stealable. Lootable, always.
 		/// </summary>
-		Cursed  = 3
+		Cursed  = 2
 	}
 
 	public class BounceInfo
@@ -1403,8 +1399,6 @@ namespace Server
 				return DeathMoveResult.MoveToBackpack;
 			else if ( CheckBlessed( parent ) )
 				return DeathMoveResult.MoveToBackpack;
-			else if ( CheckNewbied() && parent.Kills < 5 )
-				return DeathMoveResult.MoveToBackpack;
 			else if( parent.Player && Nontransferable )
 				return DeathMoveResult.MoveToBackpack;
 			else
@@ -1418,8 +1412,6 @@ namespace Server
 			else if ( parent.KeepsItemsOnDeath )
 				return DeathMoveResult.MoveToBackpack;
 			else if ( CheckBlessed( parent ) )
-				return DeathMoveResult.MoveToBackpack;
-			else if ( CheckNewbied() && parent.Kills < 5 )
 				return DeathMoveResult.MoveToBackpack;
 			else if( parent.Player && Nontransferable )
 				return DeathMoveResult.MoveToBackpack;
@@ -4578,11 +4570,6 @@ namespace Server
 				return true;
 
 			return ( m != null && m == this.BlessedFor );
-		}
-
-		public virtual bool CheckNewbied()
-		{
-			return ( m_LootType == LootType.Newbied );
 		}
 
 		public virtual bool IsStandardLoot()

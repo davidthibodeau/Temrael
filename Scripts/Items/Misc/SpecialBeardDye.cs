@@ -13,7 +13,7 @@ namespace Server.Items
 		public SpecialBeardDye() : base( 0xE26 )
 		{
 			Weight = 1.0;
-			LootType = LootType.Newbied;
+			LootType = LootType.Blessed;
 		}
 
 		public SpecialBeardDye( Serial serial ) : base( serial )

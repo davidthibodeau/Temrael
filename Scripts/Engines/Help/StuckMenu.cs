@@ -273,13 +273,7 @@ namespace Server.Menus.Questions
 					int idx = Utility.Random( m_Destination.Locations.Length );
 					Point3D dest = m_Destination.Locations[idx];
 
-					Map destMap;
-					if ( m_Mobile.Map == Map.Trammel )
-						destMap = Map.Trammel;
-					else if ( m_Mobile.Map == Map.Felucca )
-						destMap = Map.Felucca;
-					else
-						destMap = m_Mobile.Kills >= 5 ? Map.Felucca : Map.Trammel;
+					Map destMap = Map.Felucca;
 
 					Mobiles.BaseCreature.TeleportPets( m_Mobile, dest, destMap );
 					m_Mobile.MoveToWorld( dest, destMap );

@@ -410,12 +410,7 @@ namespace Server.Factions
 
 		public void JoinGuilded( PlayerMobile mob, Guild guild )
 		{
-			if ( mob.Young )
-			{
-				guild.RemoveMember( mob );
-				mob.SendLocalizedMessage( 1042283 ); // You have been kicked out of your guild!  Young players may not remain in a guild which is allied with a faction.
-			}
-			else if ( AlreadyHasCharInFaction( mob ) )
+			if ( AlreadyHasCharInFaction( mob ) )
 			{
 				guild.RemoveMember( mob );
 				mob.SendLocalizedMessage( 1005281 ); // You have been kicked out of your guild due to factional overlap
@@ -475,9 +470,7 @@ namespace Server.Factions
 
 			PlayerState pl = PlayerState.Find( pm );
 
-			if ( pm.Young )
-				pm.SendLocalizedMessage( 1010104 ); // You cannot join a faction as a young player
-			else if ( pl != null && pl.IsLeaving )
+            if ( pl != null && pl.IsLeaving )
 				pm.SendLocalizedMessage( 1005051 ); // You cannot use the faction stone until you have finished quitting your current faction
 			else if ( AlreadyHasCharInFaction( pm ) )
 				pm.SendLocalizedMessage( 1005059 ); // You cannot join a faction because you already declared your allegiance with another character

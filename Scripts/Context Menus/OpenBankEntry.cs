@@ -17,14 +17,7 @@ namespace Server.ContextMenus
 			if ( !Owner.From.CheckAlive() )
 				return;
 
-			if ( Owner.From.Criminal )
-			{
-				m_Banker.Say( 500378 ); // Thou art a criminal and cannot access thy bank box.
-			}
-			else
-			{
-				this.Owner.From.BankBox.Open();
-			}
+				Owner.From.BankBox.Open();
 		}
 	}
 }

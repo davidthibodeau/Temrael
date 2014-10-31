@@ -258,8 +258,6 @@ namespace Server.Mobiles
 					return;
 				}
 
-				m_Owner.Criminal = false;
-				m_Owner.Kills = 0;
 				m_Owner.Stam = m_Owner.StamMax;
 
 				Mobile target = m_Owner.Focus;

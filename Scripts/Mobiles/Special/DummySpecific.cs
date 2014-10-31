@@ -51,21 +51,21 @@ namespace Server.Mobiles
 
 			ChainChest cht = new ChainChest();
 			cht.Movable = false;
-			cht.LootType = LootType.Newbied;
+			cht.LootType = LootType.Blessed;
 			cht.Crafter = this;
 			cht.Quality = ArmorQuality.Regular;
 			AddItem( cht );
 
 			ChainLegs chl = new ChainLegs();
 			chl.Movable = false;
-			chl.LootType = LootType.Newbied;
+			chl.LootType = LootType.Blessed;
 			chl.Crafter = this;
 			chl.Quality = ArmorQuality.Regular;
 			AddItem( chl );
 
 			PlateArms pla = new PlateArms();
 			pla.Movable = false;
-			pla.LootType = LootType.Newbied;
+			pla.LootType = LootType.Blessed;
 			pla.Crafter = this;
 			pla.Quality = ArmorQuality.Regular;
 			AddItem( pla );
@@ -122,26 +122,26 @@ namespace Server.Mobiles
 
 			Boots snd = new Boots();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			ChainChest cht = new ChainChest();
 			cht.Movable = false;
-			cht.LootType = LootType.Newbied;
+			cht.LootType = LootType.Blessed;
 			cht.Crafter = this;
 			cht.Quality = ArmorQuality.Regular;
 			AddItem( cht );
 
 			ChainLegs chl = new ChainLegs();
 			chl.Movable = false;
-			chl.LootType = LootType.Newbied;
+			chl.LootType = LootType.Blessed;
 			chl.Crafter = this;
 			chl.Quality = ArmorQuality.Regular;
 			AddItem( chl );
 
 			PlateArms pla = new PlateArms();
 			pla.Movable = false;
-			pla.LootType = LootType.Newbied;
+			pla.LootType = LootType.Blessed;
 			pla.Crafter = this;
 			pla.Quality = ArmorQuality.Regular;
 			AddItem( pla );
@@ -197,21 +197,21 @@ namespace Server.Mobiles
 
 			ChainChest cht = new ChainChest();
 			cht.Movable = false;
-			cht.LootType = LootType.Newbied;
+			cht.LootType = LootType.Blessed;
 			cht.Crafter = this;
 			cht.Quality = ArmorQuality.Regular;
 			AddItem( cht );
 
 			ChainLegs chl = new ChainLegs();
 			chl.Movable = false;
-			chl.LootType = LootType.Newbied;
+			chl.LootType = LootType.Blessed;
 			chl.Crafter = this;
 			chl.Quality = ArmorQuality.Regular;
 			AddItem( chl );
 
 			PlateArms pla = new PlateArms();
 			pla.Movable = false;
-			pla.LootType = LootType.Newbied;
+			pla.LootType = LootType.Blessed;
 			pla.Crafter = this;
 			pla.Quality = ArmorQuality.Regular;
 			AddItem( pla );
@@ -266,7 +266,7 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
@@ -276,7 +276,7 @@ namespace Server.Mobiles
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			SkullCap skc = new SkullCap();
@@ -337,34 +337,34 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
@@ -430,41 +430,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			JesterHat jhat = new JesterHat();
@@ -527,41 +527,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			Cap cap = new Cap();
@@ -618,41 +618,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddToBackpack( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			Cap cap = new Cap();
@@ -664,19 +664,19 @@ namespace Server.Mobiles
 			AddItem( robe );
 
 			DeadlyPoisonPotion pota = new DeadlyPoisonPotion();
-			pota.LootType = LootType.Newbied;
+			pota.LootType = LootType.Blessed;
 			AddToBackpack( pota );
 
 			DeadlyPoisonPotion potb = new DeadlyPoisonPotion();
-			potb.LootType = LootType.Newbied;
+			potb.LootType = LootType.Blessed;
 			AddToBackpack( potb );
 
 			DeadlyPoisonPotion potc = new DeadlyPoisonPotion();
-			potc.LootType = LootType.Newbied;
+			potc.LootType = LootType.Blessed;
 			AddToBackpack( potc );
 
 			DeadlyPoisonPotion potd = new DeadlyPoisonPotion();
-			potd.LootType = LootType.Newbied;
+			potd.LootType = LootType.Blessed;
 			AddToBackpack( potd );
 
 			Bandage band = new Bandage( 50 );
@@ -728,41 +728,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			Cap cap = new Cap();

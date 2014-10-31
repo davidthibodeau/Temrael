@@ -37,7 +37,6 @@ namespace Server.Mobiles
 		UseOwnFilter			= 0x00000080,
 		PublicMyRunUO			= 0x00000100,
 		PagingSquelched			= 0x00000200,
-		Young					= 0x00000400,
 		AcceptGuildInvites		= 0x00000800,
 		DisplayChampionTitle	= 0x00001000,
 		HasStatReward			= 0x00002000
@@ -1348,9 +1347,6 @@ namespace Server.Mobiles
 					if ( house.IsAosRules )
 						list.Add( new CallbackEntry( 6207, new ContextCallback( LeaveHouse ) ) );
 				}
-
-				if ( m_JusticeProtectors.Count > 0 )
-					list.Add( new CallbackEntry( 6157, new ContextCallback( CancelProtection ) ) );
 			}
 			if ( from != this )
 			{
@@ -1378,21 +1374,6 @@ namespace Server.Mobiles
 						list.Add( new EjectPlayerEntry( from, this ) );
 				}
 			}
-		}
-
-		private void CancelProtection()
-		{
-			for ( int i = 0; i < m_JusticeProtectors.Count; ++i )
-			{
-				Mobile prot = m_JusticeProtectors[i];
-
-				string args = String.Format( "{0}t{1}", this.Name, prot.Name );
-
-				prot.SendLocalizedMessage( 1049371, args ); // The protective relationship between ~1_PLAYER1~ and ~2_PLAYER2~ has been ended.
-				this.SendLocalizedMessage( 1049371, args ); // The protective relationship between ~1_PLAYER1~ and ~2_PLAYER2~ has been ended.
-			}
-
-			m_JusticeProtectors.Clear();
 		}
 
 		#region Insurance
@@ -1452,7 +1433,7 @@ namespace Server.Mobiles
 				BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
 				SendLocalizedMessage( 1060869, "", 0x23 ); // You cannot insure that
 			}
-			else if ( item.LootType == LootType.Blessed || item.LootType == LootType.Newbied || item.BlessedFor == from )
+			else if ( item.LootType == LootType.Blessed || item.BlessedFor == from )
 			{
 				BeginTarget( -1, false, TargetFlags.None, new TargetCallback( ToggleItemInsurance_Callback ) );
 				SendLocalizedMessage( 1060870, "", 0x23 ); // That item is blessed and does not need to be insured
@@ -2018,9 +1999,6 @@ namespace Server.Mobiles
 
 			DeathMoveResult res = base.GetParentMoveResultFor( item );
 
-			if ( res == DeathMoveResult.MoveToCorpse && item.Movable && this.Young )
-				res = DeathMoveResult.MoveToBackpack;
-
 			return res;
 		}
 
@@ -2030,9 +2008,6 @@ namespace Server.Mobiles
 				return DeathMoveResult.MoveToBackpack;
 
 			DeathMoveResult res = base.GetInventoryMoveResultFor( item );
-
-			if ( res == DeathMoveResult.MoveToCorpse && item.Movable && this.Young )
-				res = DeathMoveResult.MoveToBackpack;
 
 			return res;
 		}
@@ -2048,7 +2023,6 @@ namespace Server.Mobiles
 
 			HueMod = -1;
 			NameMod = null;
-			SavagePaintExpiration = TimeSpan.Zero;
 
 			SetHairMods( -1, -1 );
 
@@ -2067,28 +2041,6 @@ namespace Server.Mobiles
 
 				if ( c is Corpse )
 					((Corpse)c).Criminal = true;
-
-				if ( SkillHandlers.Stealing.ClassicMode )
-					Criminal = true;
-			}
-
-			if ( this.Kills >= 5 )
-			{
-				Mobile m = FindMostRecentDamager( false );
-
-				if( m is BaseCreature )
-					m = ((BaseCreature)m).GetMaster();
-
-				if ( m != null && m is PlayerMobile && m != this )
-				{
-					bool gainedPath = false;
-
-					int pointsToGain = 0;
-
-					pointsToGain += (int) Math.Sqrt( this.GameTime.TotalSeconds * 4 );
-					pointsToGain *= 5;
-					pointsToGain += (int) Math.Pow( this.Skills.Total / 250, 2 );
-				}
 			}
 
 			if ( m_InsuranceAward is PlayerMobile )
@@ -2108,12 +2060,6 @@ namespace Server.Mobiles
 				Mobile master = bc.GetMaster();
 				if( master != null )
 					killer = master;
-			}
-
-			if ( this.Young )
-			{
-				if ( YoungDeathTeleport() )
-					Timer.DelayCall( TimeSpan.FromSeconds( 2.5 ), new TimerCallback( SendYoungDeathNotice ) );
 			}
 
 			Faction.HandleDeath( this, killer );
@@ -2146,35 +2092,14 @@ namespace Server.Mobiles
 		private TimeSpan m_ShortTermElapse;
 		private TimeSpan m_LongTermElapse;
 		private DateTime m_SessionStart;
-		private DateTime m_LastEscortTime;
-		private DateTime m_LastPetBallTime;
 		private DateTime m_NextSmithBulkOrder;
 		private DateTime m_NextTailorBulkOrder;
-		private DateTime m_SavagePaintExpiration;
 		private SkillName m_Learning = (SkillName)(-1);
 
 		public SkillName Learning
 		{
 			get{ return m_Learning; }
 			set{ m_Learning = value; }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public TimeSpan SavagePaintExpiration
-		{
-			get
-			{
-				TimeSpan ts = m_SavagePaintExpiration - DateTime.Now;
-
-				if ( ts < TimeSpan.Zero )
-					ts = TimeSpan.Zero;
-
-				return ts;
-			}
-			set
-			{
-				m_SavagePaintExpiration = DateTime.Now + value;
-			}
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -2215,20 +2140,6 @@ namespace Server.Mobiles
 			}
 		}
 
-		[CommandProperty( AccessLevel.Batisseur )]
-		public DateTime LastEscortTime
-		{
-			get{ return m_LastEscortTime; }
-			set{ m_LastEscortTime = value; }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public DateTime LastPetBallTime
-		{
-			get{ return m_LastPetBallTime; }
-			set{ m_LastPetBallTime = value; }
-		}
-
 		public PlayerMobile()
 		{
 			m_AutoStabled = new List<Mobile>();
@@ -2243,8 +2154,6 @@ namespace Server.Mobiles
 			m_GameTime = TimeSpan.Zero;
 			m_ShortTermElapse = TimeSpan.FromHours( 8.0 );
 			m_LongTermElapse = TimeSpan.FromHours( 40.0 );
-
-			m_JusticeProtectors = new List<Mobile>();
 			m_GuildRank = Guilds.RankDefinition.Lowest;
 
             Langues = new Langues(this);
@@ -2393,23 +2302,6 @@ namespace Server.Mobiles
 
 			return result;
 		}
-
-		public override bool CheckPoisonImmunity( Mobile from, Poison poison )
-		{
-			if ( this.Young )
-				return true;
-
-			return base.CheckPoisonImmunity( from, poison );
-		}
-
-		public override void OnPoisonImmunity( Mobile from, Poison poison )
-		{
-			if ( this.Young )
-				SendLocalizedMessage( 502808 ); // You would have been poisoned, were you not new to the land of Britannia. Be careful in the future.
-			else
-				base.OnPoisonImmunity( from, poison );
-		}
-
 		#endregion
 
 		public PlayerMobile( Serial s ) : base( s )
@@ -2430,27 +2322,6 @@ namespace Server.Mobiles
 		}
 
 		public override int Luck{ get{ return AosAttributes.GetValue( this, AosAttribute.Luck ); } }
-
-		public override bool IsHarmfulCriminal( Mobile target )
-		{
-			if ( SkillHandlers.Stealing.ClassicMode && target is PlayerMobile && ((PlayerMobile)target).m_PermaFlags.Count > 0 )
-			{
-				int noto = Notoriety.Compute( this, target );
-
-				if ( noto == Notoriety.Innocent )
-					target.Delta( MobileDelta.Noto );
-
-				return false;
-			}
-
-			if ( target is BaseCreature && ((BaseCreature)target).InitialInnocent && !((BaseCreature)target).Controlled )
-				return false;
-
-			if ( Core.ML && target is BaseCreature && ((BaseCreature)target).Controlled && this == ((BaseCreature)target).ControlMaster )
-				return false;
-
-			return base.IsHarmfulCriminal( target );
-		}
 
 		public bool AntiMacroCheck( Skill skill, object obj )
 		{
@@ -2527,10 +2398,6 @@ namespace Server.Mobiles
                 }
             }
 
-            m_LastHonorLoss = reader.ReadDeltaTime();
-
-            m_LastValorLoss = reader.ReadDateTime();
-
             m_ToTItemsTurnedIn = reader.ReadEncodedInt();
             m_ToTTotalMonsterFame = reader.ReadInt();
 
@@ -2548,13 +2415,6 @@ namespace Server.Mobiles
 
             m_Profession = reader.ReadEncodedInt();
 
-            m_LastCompassionLoss = reader.ReadDeltaTime();
-
-            m_CompassionGains = reader.ReadEncodedInt();
-
-            if (m_CompassionGains > 0)
-                m_NextCompassionDay = reader.ReadDeltaTime();
-
             m_BOBFilter = new Engines.BulkOrders.BOBFilter(reader);
 
             if (reader.ReadBool())
@@ -2565,26 +2425,11 @@ namespace Server.Mobiles
                 m_BeardModHue = reader.ReadInt();
             }
 
-            SavagePaintExpiration = reader.ReadTimeSpan();
-
-            if (SavagePaintExpiration > TimeSpan.Zero)
-            {
-                BodyMod = (Female ? 184 : 183);
-                HueMod = 0;
-            }
-
             m_PermaFlags = reader.ReadStrongMobileList();
 
             NextTailorBulkOrder = reader.ReadTimeSpan();
 
             NextSmithBulkOrder = reader.ReadTimeSpan();
-
-            m_LastJusticeLoss = reader.ReadDeltaTime();
-            m_JusticeProtectors = reader.ReadStrongMobileList();
-
-            m_LastSacrificeGain = reader.ReadDeltaTime();
-            m_LastSacrificeLoss = reader.ReadDeltaTime();
-            m_AvailableResurrects = reader.ReadInt();
 
             m_Flags = (PlayerFlag)reader.ReadInt();
 
@@ -2601,9 +2446,6 @@ namespace Server.Mobiles
 
 			if ( m_PermaFlags == null )
 				m_PermaFlags = new List<Mobile>();
-
-			if ( m_JusticeProtectors == null )
-				m_JusticeProtectors = new List<Mobile>();
 
 			if ( m_BOBFilter == null )
 				m_BOBFilter = new Engines.BulkOrders.BOBFilter();
@@ -2647,8 +2489,6 @@ namespace Server.Mobiles
 					t.Remove( remove[i] );
 			}
 
-			CheckKillDecay();
-
 			base.Serialize( writer );
 
             writer.Write((int)0); // version
@@ -2677,9 +2517,6 @@ namespace Server.Mobiles
 				}
 			}
 
-			writer.WriteDeltaTime( m_LastHonorLoss );
-
-			writer.Write( m_LastValorLoss );
 			writer.WriteEncodedInt( m_ToTItemsTurnedIn );
 			writer.Write( m_ToTTotalMonsterFame );	//This ain't going to be a small #.
 
@@ -2690,13 +2527,6 @@ namespace Server.Mobiles
 			writer.Write( m_LastOnline );
 
 			writer.WriteEncodedInt( (int) m_Profession );
-
-			writer.WriteDeltaTime( m_LastCompassionLoss );
-
-			writer.WriteEncodedInt( m_CompassionGains );
-
-			if ( m_CompassionGains > 0 )
-				writer.WriteDeltaTime( m_NextCompassionDay );
 
 			m_BOBFilter.Serialize( writer );
 
@@ -2712,49 +2542,17 @@ namespace Server.Mobiles
 				writer.Write( (int) m_BeardModHue );
 			}
 
-			writer.Write( SavagePaintExpiration );
-
 			writer.Write( m_PermaFlags, true );
 
 			writer.Write( NextTailorBulkOrder );
 
 			writer.Write( NextSmithBulkOrder );
 
-			writer.WriteDeltaTime( m_LastJusticeLoss );
-			writer.Write( m_JusticeProtectors, true );
-
-			writer.WriteDeltaTime( m_LastSacrificeGain );
-			writer.WriteDeltaTime( m_LastSacrificeLoss );
-			writer.Write( m_AvailableResurrects );
-
 			writer.Write( (int) m_Flags );
 
 			writer.Write( m_LongTermElapse );
 			writer.Write( m_ShortTermElapse );
 			writer.Write( this.GameTime );
-		}
-
-		public void CheckKillDecay()
-		{
-			if ( m_ShortTermElapse < this.GameTime )
-			{
-				m_ShortTermElapse += TimeSpan.FromHours( 8 );
-				if ( ShortTermMurders > 0 )
-					--ShortTermMurders;
-			}
-
-			if ( m_LongTermElapse < this.GameTime )
-			{
-				m_LongTermElapse += TimeSpan.FromHours( 40 );
-				if ( Kills > 0 )
-					--Kills;
-			}
-		}
-
-		public void ResetKillTime()
-		{
-			m_ShortTermElapse = this.GameTime + TimeSpan.FromHours( 8 );
-			m_LongTermElapse = this.GameTime + TimeSpan.FromHours( 40 );
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -2963,19 +2761,6 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnKillsChange( int oldValue )
-		{
-			if ( this.Young && this.Kills > oldValue )
-			{
-				Account acc = this.Account as Account;
-
-				if ( acc != null )
-					acc.RemoveYoungStatus( 0 );
-			}
-
-			InvalidateMyRunUO();
-		}
-
 		public override void OnGenderChanged( bool oldFemale )
 		{
 			InvalidateMyRunUO();
@@ -2994,14 +2779,6 @@ namespace Server.Mobiles
 
 		public override void OnSkillChange( SkillName skill, double oldBase )
 		{
-			if ( this.Young && this.SkillsTotal >= 4500 )
-			{
-				Account acc = this.Account as Account;
-
-				if ( acc != null )
-					acc.RemoveYoungStatus( 1019036 ); // You have successfully obtained a respectable skill level, and have outgrown your status as a young player!
-			}
-
 			InvalidateMyRunUO();
 		}
 
@@ -3193,235 +2970,6 @@ namespace Server.Mobiles
 				storeHue = hair ? HairHue : FacialHairHue;
 			}
 			CreateHair( hair, id, 0 );
-		}
-
-		#endregion
-
-		#region Virtues
-		private DateTime m_LastSacrificeGain;
-		private DateTime m_LastSacrificeLoss;
-		private int m_AvailableResurrects;
-
-		public DateTime LastSacrificeGain{ get{ return m_LastSacrificeGain; } set{ m_LastSacrificeGain = value; } }
-		public DateTime LastSacrificeLoss{ get{ return m_LastSacrificeLoss; } set{ m_LastSacrificeLoss = value; } }
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int AvailableResurrects{ get{ return m_AvailableResurrects; } set{ m_AvailableResurrects = value; } }
-
-		private DateTime m_LastJusticeLoss;
-		private List<Mobile> m_JusticeProtectors;
-
-		public DateTime LastJusticeLoss{ get{ return m_LastJusticeLoss; } set{ m_LastJusticeLoss = value; } }
-		public List<Mobile> JusticeProtectors { get { return m_JusticeProtectors; } set { m_JusticeProtectors = value; } }
-
-		private DateTime m_LastCompassionLoss;
-		private DateTime m_NextCompassionDay;
-		private int m_CompassionGains;
-
-		public DateTime LastCompassionLoss{ get{ return m_LastCompassionLoss; } set{ m_LastCompassionLoss = value; } }
-		public DateTime NextCompassionDay{ get{ return m_NextCompassionDay; } set{ m_NextCompassionDay = value; } }
-		public int CompassionGains{ get{ return m_CompassionGains; } set{ m_CompassionGains = value; } }
-
-		private DateTime m_LastValorLoss;
-
-		public DateTime LastValorLoss { get { return m_LastValorLoss; } set { m_LastValorLoss = value; } }
-
-		private DateTime m_LastHonorLoss;
-		private DateTime m_LastHonorUse;
-		private bool m_HonorActive;
-		public DateTime m_hontime;
-
-		public DateTime LastHonorLoss{ get{ return m_LastHonorLoss; } set{ m_LastHonorLoss = value; } }
-		public DateTime LastHonorUse{ get{ return m_LastHonorUse; } set{ m_LastHonorUse = value; } }
-		public bool HonorActive{ get{ return m_HonorActive; } set{ m_HonorActive = value; } }
-		#endregion
-
-		#region Young system
-		[CommandProperty( AccessLevel.Batisseur )]
-		public bool Young
-		{
-			get{ return GetFlag( PlayerFlag.Young ); }
-			set{ SetFlag( PlayerFlag.Young, value ); InvalidateProperties(); }
-		}
-
-		public override string ApplyNameSuffix( string suffix )
-		{
-			if ( Young )
-			{
-				if ( suffix.Length == 0 )
-					suffix = "(Young)";
-				else
-					suffix = String.Concat( suffix, " (Young)" );
-			}
-
-			if ( Core.ML && this.Map == Faction.Facet )
-			{
-				Faction faction = Faction.Find( this );
-
-				if ( faction != null )
-				{
-					string adjunct = String.Format( "[{0}]", faction.Definition.Abbreviation );
-					if ( suffix.Length == 0 )
-						suffix = adjunct;
-					else
-						suffix = String.Concat( suffix, " ", adjunct );
-				}
-			}
-
-			return base.ApplyNameSuffix( suffix );
-		}
-
-		public override TimeSpan GetLogoutDelay()
-		{
-			if ( Young || BedrollLogout || TestCenter.Enabled )
-				return TimeSpan.Zero;
-
-            return TimeSpan.FromSeconds(5);
-
-			//return base.GetLogoutDelay();
-		}
-
-		private DateTime m_LastYoungMessage = DateTime.MinValue;
-
-		public bool CheckYoungProtection( Mobile from )
-		{
-            if ( !this.Young )
-				return false;
-
-			if ( Region is BaseRegion && !((BaseRegion)Region).YoungProtected )
-				return false;
-
-			if( from is BaseCreature && ((BaseCreature)from).IgnoreYoungProtection )
-				return false;
-
-			if ( DateTime.Now - m_LastYoungMessage > TimeSpan.FromMinutes( 1.0 ) )
-			{
-				m_LastYoungMessage = DateTime.Now;
-				SendLocalizedMessage( 1019067 ); // A monster looks at you menacingly but does not attack.  You would be under attack now if not for your status as a new citizen of Britannia.
-			}
-
-			return true;
-		}
-
-		private DateTime m_LastYoungHeal = DateTime.MinValue;
-
-		public bool CheckYoungHealTime()
-		{
-			if ( DateTime.Now - m_LastYoungHeal > TimeSpan.FromMinutes( 5.0 ) )
-			{
-				m_LastYoungHeal = DateTime.Now;
-				return true;
-			}
-
-			return false;
-		}
-
-		private static Point3D[] m_TrammelDeathDestinations = new Point3D[]
-			{
-				new Point3D( 1481, 1612, 20 ),
-				new Point3D( 2708, 2153,  0 ),
-				new Point3D( 2249, 1230,  0 ),
-				new Point3D( 5197, 3994, 37 ),
-				new Point3D( 1412, 3793,  0 ),
-				new Point3D( 3688, 2232, 20 ),
-				new Point3D( 2578,  604,  0 ),
-				new Point3D( 4397, 1089,  0 ),
-				new Point3D( 5741, 3218, -2 ),
-				new Point3D( 2996, 3441, 15 ),
-				new Point3D(  624, 2225,  0 ),
-				new Point3D( 1916, 2814,  0 ),
-				new Point3D( 2929,  854,  0 ),
-				new Point3D(  545,  967,  0 ),
-				new Point3D( 3665, 2587,  0 )
-			};
-
-		private static Point3D[] m_IlshenarDeathDestinations = new Point3D[]
-			{
-				new Point3D( 1216,  468, -13 ),
-				new Point3D(  723, 1367, -60 ),
-				new Point3D(  745,  725, -28 ),
-				new Point3D(  281, 1017,   0 ),
-				new Point3D(  986, 1011, -32 ),
-				new Point3D( 1175, 1287, -30 ),
-				new Point3D( 1533, 1341,  -3 ),
-				new Point3D(  529,  217, -44 ),
-				new Point3D( 1722,  219,  96 )
-			};
-
-		private static Point3D[] m_MalasDeathDestinations = new Point3D[]
-			{
-				new Point3D( 2079, 1376, -70 ),
-				new Point3D(  944,  519, -71 )
-			};
-
-		private static Point3D[] m_TokunoDeathDestinations = new Point3D[]
-			{
-				new Point3D( 1166,  801, 27 ),
-				new Point3D(  782, 1228, 25 ),
-				new Point3D(  268,  624, 15 )
-			};
-
-		public bool YoungDeathTeleport()
-		{
-			if ( this.Region.IsPartOf( typeof( Jail ) )
-				|| this.Region.IsPartOf( "Samurai start location" )
-				|| this.Region.IsPartOf( "Ninja start location" )
-				|| this.Region.IsPartOf( "Ninja cave" ) )
-				return false;
-
-			Point3D loc;
-			Map map;
-
-			DungeonRegion dungeon = (DungeonRegion) this.Region.GetRegion( typeof( DungeonRegion ) );
-			if ( dungeon != null && dungeon.EntranceLocation != Point3D.Zero )
-			{
-				loc = dungeon.EntranceLocation;
-				map = dungeon.EntranceMap;
-			}
-			else
-			{
-				loc = this.Location;
-				map = this.Map;
-			}
-
-			Point3D[] list;
-
-			if ( map == Map.Trammel )
-				list = m_TrammelDeathDestinations;
-			else if ( map == Map.Ilshenar )
-				list = m_IlshenarDeathDestinations;
-			else if ( map == Map.Malas )
-				list = m_MalasDeathDestinations;
-			else if ( map == Map.Tokuno )
-				list = m_TokunoDeathDestinations;
-			else
-				return false;
-
-			Point3D dest = Point3D.Zero;
-			int sqDistance = int.MaxValue;
-
-			for ( int i = 0; i < list.Length; i++ )
-			{
-				Point3D curDest = list[i];
-
-				int width = loc.X - curDest.X;
-				int height = loc.Y - curDest.Y;
-				int curSqDistance = width * width + height * height;
-
-				if ( curSqDistance < sqDistance )
-				{
-					dest = curDest;
-					sqDistance = curSqDistance;
-				}
-			}
-
-			this.MoveToWorld( dest, map );
-			return true;
-		}
-
-		private void SendYoungDeathNotice()
-		{
-			this.SendGump( new YoungDeathNotice() );
 		}
 
 		#endregion

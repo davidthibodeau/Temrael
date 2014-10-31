@@ -197,7 +197,7 @@ namespace Server.Gumps
         private static void PackItem(TMobile from, Item item)
         {
             if (!Core.AOS)
-                item.LootType = LootType.Newbied;
+                item.LootType = LootType.Blessed;
 
             Container pack = from.Backpack;
 

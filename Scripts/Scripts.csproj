@@ -1716,7 +1716,6 @@
     <Compile Include="Gumps\Properties\SetPoint3DGump.cs" />
     <Compile Include="Gumps\Properties\SetTimeSpanGump.cs" />
     <Compile Include="Gumps\ReclaimVendorGump.cs" />
-    <Compile Include="Gumps\ReportMurderer.cs" />
     <Compile Include="Gumps\ResurrectGump.cs" />
     <Compile Include="Gumps\SetSecureLevelGump.cs" />
     <Compile Include="Gumps\SkillsGump.cs" />
@@ -1726,7 +1725,6 @@
     <Compile Include="Gumps\ViewHousesGump.cs" />
     <Compile Include="Gumps\WarningGump.cs" />
     <Compile Include="Gumps\WhoGump.cs" />
-    <Compile Include="Gumps\YoungGumps.cs" />
     <Compile Include="Items\Addons\AbbatoirAddon.cs" />
     <Compile Include="Items\Addons\AddonComponent.cs" />
     <Compile Include="Items\Addons\AddonContainerComponent.cs" />
@@ -2085,17 +2083,14 @@
     <Compile Include="Items\Misc\Key.cs" />
     <Compile Include="Items\Misc\KeyRing.cs" />
     <Compile Include="Items\Misc\LOSBlocker.cs" />
-    <Compile Include="Items\Misc\Moonstone.cs" />
     <Compile Include="Items\Misc\MoonstoneGate.cs" />
     <Compile Include="Items\Misc\MorphItem.cs" />
     <Compile Include="Items\Misc\OilCloth.cs" />
-    <Compile Include="Items\Misc\Origami.cs" />
     <Compile Include="Items\Misc\PlayerBulletinBoards.cs" />
     <Compile Include="Items\Misc\PoolOfAcid.cs" />
     <Compile Include="Items\Misc\PowerCrystal.cs" />
     <Compile Include="Items\Misc\PowerGenerator.cs" />
     <Compile Include="Items\Misc\PromotionalToken.cs" />
-    <Compile Include="Items\Misc\PublicMoongate.cs" />
     <Compile Include="Items\Misc\Rares.cs" />
     <Compile Include="Items\Misc\Scales.cs" />
     <Compile Include="Items\Misc\SerpentPillar.cs" />
@@ -2107,7 +2102,6 @@
     <Compile Include="Items\Misc\TrashBarrel.cs" />
     <Compile Include="Items\Misc\TrashChest.cs" />
     <Compile Include="Items\Misc\TribalBerry.cs" />
-    <Compile Include="Items\Misc\TribalPaint.cs" />
     <Compile Include="Items\Misc\WarningItem.cs" />
     <Compile Include="Items\Misc\WindChimes.cs" />
     <Compile Include="Items\PlantsFlowers\Potted\EmptyPots.cs" />
@@ -2371,7 +2365,6 @@
     <Compile Include="Misc\MapDefinitions.cs" />
     <Compile Include="Misc\NameList.cs" />
     <Compile Include="Misc\NameVerification.cs" />
-    <Compile Include="Misc\ProfanityProtection.cs" />
     <Compile Include="Misc\ProtocolExtensions.cs" />
     <Compile Include="Misc\RenameRequests.cs" />
     <Compile Include="Misc\ShardPoller.cs" />

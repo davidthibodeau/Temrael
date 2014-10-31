@@ -382,16 +382,6 @@ namespace Server.Mobiles
             get { return m_tagText; }
             set { m_tagText = value; }
         }
-
-        // Does the Attacker become Criminal?
-        private bool m_criminalAction = false; //default
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool AttackIsCriminal
-        {
-            get { return m_criminalAction; }
-            set { m_criminalAction = value; }
-        }
         #endregion
 
         # region Constructors
@@ -994,9 +984,9 @@ namespace Server.Mobiles
             PackItem(m_weapon);
         }
 
-        public override void AggressiveAction(Mobile aggressor, bool criminal)
+        public override void AggressiveAction(Mobile aggressor)
         {
-            base.AggressiveAction(aggressor, m_criminalAction);
+            base.AggressiveAction(aggressor);
 
             if (m_combattimer != null)
                 return;
@@ -1294,7 +1284,6 @@ namespace Server.Mobiles
             writer.Write((string)m_tagText);
             writer.Write((Item)m_weapon);
             writer.Write((Item)m_staff);
-            writer.Write((bool)m_criminalAction);
             writer.Write((int)m_attitude);
             writer.Write((int)m_wealth);
         }
@@ -1328,7 +1317,6 @@ namespace Server.Mobiles
                     {
                         i1 = reader.ReadItem();
                         i2 = reader.ReadItem();
-                        m_criminalAction = reader.ReadBool();
                         goto case 1;
                     }
                 case 1:
@@ -1383,7 +1371,6 @@ namespace Server.Mobiles
             {
                 default: return;
                 case 1: // Attack
-                    AttackIsCriminal = false;
                     Combatant = speaker;
                     AddGreetTime(TimeSpan.FromSeconds(60));
                     break;
@@ -1391,10 +1378,6 @@ namespace Server.Mobiles
                     FocusMob = speaker;
                     BeginFlee(TimeSpan.FromSeconds(18));
                     AddGreetTime(TimeSpan.FromSeconds(18));
-                    break;
-                case 3: // Criminal
-                    AttackIsCriminal = false;
-                    Criminal = true;
                     break;
                 case 4: // Hide
                     //set to GM and allow to roam

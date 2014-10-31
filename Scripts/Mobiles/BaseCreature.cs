@@ -1204,9 +1204,6 @@ namespace Server.Mobiles
 			if ( GetFactionAllegiance( m ) == Allegiance.Ally )
 				return false;
 
-			if ( m is PlayerMobile && ( (PlayerMobile)m ).HonorActive )
-				return false;
-
 			BaseCreature c = (BaseCreature)m;
 
 			return ( m_iTeam != c.m_iTeam || ( (m_bSummoned || m_bControlled) != (c.m_bSummoned || c.m_bControlled) )/* || c.Combatant == this*/ );
@@ -3665,33 +3662,6 @@ namespace Server.Mobiles
 				m_AI.OnSpeech( e );
 		}
 
-		public override bool IsHarmfulCriminal( Mobile target )
-		{
-			if ( (Controlled && target == m_ControlMaster) || (Summoned && target == m_SummonMaster) )
-				return false;
-
-			if ( target is BaseCreature && ((BaseCreature)target).InitialInnocent && !((BaseCreature)target).Controlled )
-				return false;
-
-			if ( target is PlayerMobile && ((PlayerMobile)target).PermaFlags.Count > 0 )
-				return false;
-
-			return base.IsHarmfulCriminal( target );
-		}
-
-		public override void CriminalAction( bool message )
-		{
-			base.CriminalAction( message );
-
-			if ( Controlled || Summoned )
-			{
-				if ( m_ControlMaster != null && m_ControlMaster.Player )
-					m_ControlMaster.CriminalAction( false );
-				else if ( m_SummonMaster != null && m_SummonMaster.Player )
-					m_SummonMaster.CriminalAction( false );
-			}
-		}
-
 		public override void DoHarmful( Mobile target, bool indirect )
 		{
 			base.DoHarmful( target, indirect );
@@ -3840,7 +3810,7 @@ namespace Server.Mobiles
 			if ( m_NoDupeGuards == m )
 				return;
 
-			if ( !Body.IsHuman || Kills >= 5 || AlwaysMurderer || AlwaysAttackable || m.Kills < 5 || !m.InRange( Location, 12 ) || !m.Alive )
+			if ( !Body.IsHuman || AlwaysMurderer || AlwaysAttackable || !m.InRange( Location, 12 ) || !m.Alive )
 				return;
 
 			GuardedRegion guardedRegion = (GuardedRegion) this.Region.GetRegion( typeof( GuardedRegion ) );
@@ -4558,9 +4528,6 @@ namespace Server.Mobiles
 
 				if ( killer is BaseCreature )
 					killer = ((BaseCreature)killer).GetMaster();
-
-				if ( killer is PlayerMobile && ((PlayerMobile)killer).Young )
-					treasureLevel = 0;
 			}
 
 			if ( !Summoned && !NoKillAwards && !IsBonded && treasureLevel >= 0 )

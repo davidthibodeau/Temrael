@@ -1318,18 +1318,7 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				bool youngFrom = from is PlayerMobile ? ((PlayerMobile)from).Young : false;
-				bool youngTo = to is PlayerMobile ? ((PlayerMobile)to).Young : false;
-
-				if( youngFrom && !youngTo )
-				{
-					from.SendLocalizedMessage( 502040 ); // As a young player, you may not friend pets to older players.
-				}
-				else if( !youngFrom && youngTo )
-				{
-					from.SendLocalizedMessage( 502041 ); // As an older player, you may not friend pets to young players.
-				}
-				else if( from.CanBeBeneficial( to, true ) )
+                if (from.CanBeBeneficial(to, true))
 				{
 					NetState fromState = from.NetState, toState = to.NetState;
 
@@ -1663,28 +1652,8 @@ namespace Server.Mobiles
 
 				if( from.Map != m_Creature.Map || !from.InRange( m_Creature, 14 ) )
 					return false;
-
-				bool youngFrom = from is PlayerMobile ? ((PlayerMobile)from).Young : false;
-				bool youngTo = to is PlayerMobile ? ((PlayerMobile)to).Young : false;
-
-				if( accepted && youngFrom && !youngTo )
-				{
-					from.SendLocalizedMessage( 502051 ); // As a young player, you may not transfer pets to older players.
-				}
-				else if( accepted && !youngFrom && youngTo )
-				{
-					from.SendLocalizedMessage( 502052 ); // As an older player, you may not transfer pets to young players.
-				}
-				/*else if( accepted && !m_Creature.CanBeControlledBy( to ) )
-				{
-					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );
-
-					from.SendLocalizedMessage( 1043248, args ); // The pet refuses to be transferred because it will not obey ~1_NAME~.~3_BLANK~
-					to.SendLocalizedMessage( 1043249, args ); // The pet will not accept you as a master because it does not trust you.~3_BLANK~
-
-					return false;
-				}*/
-				else if( accepted && !m_Creature.CanBeControlledBy( from ) )
+                
+                if (accepted && !m_Creature.CanBeControlledBy(from))
 				{
 					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );
 
@@ -1760,25 +1729,7 @@ namespace Server.Mobiles
 			{
 				m_Mobile.DebugSay( "Begin transfer with {0}", to.Name );
 
-				bool youngFrom = from is PlayerMobile ? ((PlayerMobile)from).Young : false;
-				bool youngTo = to is PlayerMobile ? ((PlayerMobile)to).Young : false;
-
-				if( youngFrom && !youngTo )
-				{
-					from.SendLocalizedMessage( 502051 ); // As a young player, you may not transfer pets to older players.
-				}
-				else if( !youngFrom && youngTo )
-				{
-					from.SendLocalizedMessage( 502052 ); // As an older player, you may not transfer pets to young players.
-				}
-				/*else if( !m_Mobile.CanBeControlledBy( to ) )
-				{
-					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );
-
-					from.SendLocalizedMessage( 1043248, args ); // The pet refuses to be transferred because it will not obey ~1_NAME~.~3_BLANK~
-					to.SendLocalizedMessage( 1043249, args ); // The pet will not accept you as a master because it does not trust you.~3_BLANK~
-				}*/
-				else if( !m_Mobile.CanBeControlledBy( from ) )
+				if( !m_Mobile.CanBeControlledBy( from ) )
 				{
 					string args = String.Format( "{0}\t{1}\t ", to.Name, from.Name );
 
@@ -2736,14 +2687,6 @@ namespace Server.Mobiles
 
 					// If we only want faction friends, make sure it's one.
 					if ( bFacFriend && !m_Mobile.IsFriend( m ) )
-						continue;
-
-					//Ignore anyone under EtherealVoyage
-					//if( TransformationSpellHelper.UnderTransformation( m, typeof( EtherealVoyageSpell ) ) )
-					//	continue;
-
-					// Ignore players with activated honor
-					if ( m is PlayerMobile && ( (PlayerMobile)m ).HonorActive && !( m_Mobile.Combatant == m ))
 						continue;
 					
 					if( acqType == FightMode.Aggressor || acqType == FightMode.Evil )

@@ -359,9 +359,7 @@ namespace Server
 		private Timer m_PoisonTimer;
 		private BaseGuild m_Guild;
 		private string m_GuildTitle;
-		private bool m_Criminal;
 		private string m_Name;
-		private int m_Kills, m_ShortTermMurders;
 		private int m_SpeechHue, m_EmoteHue, m_WhisperHue, m_YellHue;
 		private string m_Language;
 		private NetState m_NetState;
@@ -391,7 +389,6 @@ namespace Server
 		private Mobile m_GuildFealty;
 		private long m_NextSpellTime;
 		private Timer m_ExpireCombatant;
-		private Timer m_ExpireCriminal;
 		private Timer m_ExpireAggrTimer;
 		private Timer m_LogoutTimer;
 		private Timer m_CombatTimer;
@@ -1531,31 +1528,6 @@ namespace Server
 			protected override void OnTick()
 			{
 				m_Mobile.Combatant = null;
-			}
-		}
-
-		private static TimeSpan m_ExpireCriminalDelay = TimeSpan.FromMinutes( 2.0 );
-
-		public static TimeSpan ExpireCriminalDelay
-		{
-			get { return m_ExpireCriminalDelay; }
-			set { m_ExpireCriminalDelay = value; }
-		}
-
-		private class ExpireCriminalTimer : Timer
-		{
-			private Mobile m_Mobile;
-
-			public ExpireCriminalTimer( Mobile m )
-				: base( m_ExpireCriminalDelay )
-			{
-				this.Priority = TimerPriority.FiveSeconds;
-				m_Mobile = m;
-			}
-
-			protected override void OnTick()
-			{
-				m_Mobile.Criminal = false;
 			}
 		}
 
@@ -2924,16 +2896,6 @@ namespace Server
 			}
 		}
 
-		public virtual void CriminalAction( bool message )
-		{
-			if( m_Deleted )
-				return;
-
-			Criminal = true;
-
-			this.Region.OnCriminalAction( this, message );
-		}
-
 		public virtual bool IsSnoop( Mobile from )
 		{
 			return (from != this);
@@ -3215,9 +3177,6 @@ namespace Server
 
 			if( m_LogoutTimer != null )
 				m_LogoutTimer.Stop();
-
-			if( m_ExpireCriminal != null )
-				m_ExpireCriminal.Stop();
 
 			if( m_WarmodeTimer != null )
 				m_WarmodeTimer.Stop();
@@ -4858,8 +4817,6 @@ namespace Server
 
             m_BAC = reader.ReadInt();
 
-            m_ShortTermMurders = reader.ReadInt();
-
             m_FollowersMax = reader.ReadInt();
 
             m_MagicDamageAbsorb = reader.ReadInt();
@@ -4893,8 +4850,6 @@ namespace Server
             m_Body = new Body(reader.ReadInt());
             m_Name = reader.ReadString();
             m_GuildTitle = reader.ReadString();
-            m_Criminal = reader.ReadBool();
-            m_Kills = reader.ReadInt();
             m_SpeechHue = reader.ReadInt();
             m_EmoteHue = reader.ReadInt();
             m_WhisperHue = reader.ReadInt();
@@ -4948,14 +4903,6 @@ namespace Server
 
             if (m_Map != null)
                 m_Map.OnEnter(this);
-
-            if (m_Criminal)
-            {
-                if (m_ExpireCriminal == null)
-                    m_ExpireCriminal = new ExpireCriminalTimer(this);
-
-                m_ExpireCriminal.Start();
-            }
 
             if (ShouldCheckStatTimers)
                 CheckStatTimers();
@@ -5061,11 +5008,6 @@ namespace Server
 
 			writer.Write( m_BAC );
 
-			writer.Write( m_ShortTermMurders );
-			//writer.Write( m_ShortTermElapse );
-			//writer.Write( m_LongTermElapse );
-
-			//writer.Write( m_Followers );
 			writer.Write( m_FollowersMax );
 
 			writer.Write( m_MagicDamageAbsorb );
@@ -5099,8 +5041,6 @@ namespace Server
 			writer.Write( (int)m_Body );
 			writer.Write( m_Name );
 			writer.Write( m_GuildTitle );
-			writer.Write( m_Criminal );
-			writer.Write( m_Kills );
 			writer.Write( m_SpeechHue );
 			writer.Write( m_EmoteHue );
 			writer.Write( m_WhisperHue );
@@ -6162,8 +6102,6 @@ namespace Server
 		/// </summary>
 		public virtual void OnBeneficialAction( Mobile target, bool isCriminal )
 		{
-			if( isCriminal )
-				CriminalAction( false );
 		}
 
 		public virtual void DoBeneficial( Mobile target )
@@ -6230,22 +6168,12 @@ namespace Server
 			return true;
 		}
 
-		public virtual bool IsHarmfulCriminal( Mobile target )
-		{
-			if( this == target )
-				return false;
-
-			return (Notoriety.Compute( this, target ) == Notoriety.Innocent);
-		}
-
 		/// <summary>
 		/// Overridable. Event invoked when the Mobile <see cref="DoHarmful">does a harmful action</see>.
 		/// </summary>
-		public virtual void OnHarmfulAction( Mobile target, bool isCriminal )
-		{
-			if( isCriminal )
-				CriminalAction( false );
-		}
+        public virtual void OnHarmfulAction(Mobile target)
+        {
+        }
 
 		public virtual void DoHarmful( Mobile target )
 		{
@@ -6257,10 +6185,8 @@ namespace Server
 			if( target == null || m_Deleted )
 				return;
 
-			bool isCriminal = IsHarmfulCriminal( target );
-
-			OnHarmfulAction( target, isCriminal );
-			target.AggressiveAction( this, isCriminal );
+            OnHarmfulAction(target);
+			target.AggressiveAction(this);
 
 			this.Region.OnDidHarmful( this, target );
 			target.Region.OnGotHarmful( this, target );
@@ -8877,89 +8803,8 @@ namespace Server
 			while (m_DeltaQueueR.Count > 0) m_DeltaQueueR.Dequeue().ProcessDelta();
 		}
 
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
-		public int Kills
-		{
-			get
-			{
-				return m_Kills;
-			}
-			set
-			{
-				int oldValue = m_Kills;
-
-				if( m_Kills != value )
-				{
-					m_Kills = value;
-
-					if( m_Kills < 0 )
-						m_Kills = 0;
-
-					if( (oldValue >= 5) != (m_Kills >= 5) )
-					{
-						Delta( MobileDelta.Noto );
-						InvalidateProperties();
-					}
-
-					OnKillsChange( oldValue );
-				}
-			}
-		}
-
 		public virtual void OnKillsChange( int oldValue )
 		{
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int ShortTermMurders
-		{
-			get
-			{
-				return m_ShortTermMurders;
-			}
-			set
-			{
-				if( m_ShortTermMurders != value )
-				{
-					m_ShortTermMurders = value;
-
-					if( m_ShortTermMurders < 0 )
-						m_ShortTermMurders = 0;
-				}
-			}
-		}
-
-		[CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
-		public bool Criminal
-		{
-			get
-			{
-				return m_Criminal;
-			}
-			set
-			{
-				if( m_Criminal != value )
-				{
-					m_Criminal = value;
-					Delta( MobileDelta.Noto );
-					InvalidateProperties();
-				}
-
-				if( m_Criminal )
-				{
-					if( m_ExpireCriminal == null )
-						m_ExpireCriminal = new ExpireCriminalTimer( this );
-					else
-						m_ExpireCriminal.Stop();
-
-					m_ExpireCriminal.Start();
-				}
-				else if( m_ExpireCriminal != null )
-				{
-					m_ExpireCriminal.Stop();
-					m_ExpireCriminal = null;
-				}
-			}
 		}
 
 		public bool CheckAlive()

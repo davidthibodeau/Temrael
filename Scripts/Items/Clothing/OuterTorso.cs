@@ -114,7 +114,7 @@ namespace Server.Items
 		[Constructable]
 		public DeathRobe()
 		{
-			LootType = LootType.Newbied;
+			LootType = LootType.Blessed;
 			Hue = 2301;
 			BeginDecay( m_DefaultDecayTime );
 		}

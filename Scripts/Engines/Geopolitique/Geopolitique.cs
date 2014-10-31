@@ -15,6 +15,7 @@ namespace Server.Engines.Geopolitique
         public static Categorie geopolitique;
         public static Journal journal;
         public static List<TypeTerre> types;
+        private static readonly string SavePath = Directories.AppendPath(Directories.saves, "Misc");
 
         public static void Configure()
         {
@@ -64,7 +65,7 @@ namespace Server.Engines.Geopolitique
 
         public static void Load()
         {
-            string filePath = Path.Combine("Saves/Geopolitique", "terres.xml");
+            string filePath = Path.Combine(SavePath, "terres.xml");
 
             XmlDocument doc;
             XmlElement root;
@@ -85,7 +86,7 @@ namespace Server.Engines.Geopolitique
                     Console.WriteLine("ERREUR: Impossible de loader la categorie principale du systeme de Geopolitique.");
                 }
 
-                foreach (XmlElement ele in root.ChildNodes)//ElementsByTagName("type"))
+                foreach (XmlElement ele in root.ChildNodes)
                 {
                     if(ele.Name == "type")
                         types.Add(new TypeTerre(ele));
@@ -96,7 +97,7 @@ namespace Server.Engines.Geopolitique
                 
 
             }
-            string journalPath = Path.Combine("Saves/Geopolitique", "geopollogs.xml");
+            string journalPath = Path.Combine(SavePath, "geopollogs.xml");
             
             if (!File.Exists(journalPath))
             {
@@ -119,10 +120,7 @@ namespace Server.Engines.Geopolitique
 
         public static void Save(WorldSaveEventArgs e)
         {
-            if (!Directory.Exists("Saves/Geopolitique"))
-                Directory.CreateDirectory("Saves/Geopolitique");
-
-            string filePath = Path.Combine("Saves/Geopolitique", "terres.xml");
+            string filePath = Path.Combine(SavePath, "terres.xml");
 
             using (StreamWriter op = new StreamWriter(filePath))
             {

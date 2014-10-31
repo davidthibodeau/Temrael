@@ -88,23 +88,7 @@ namespace Server.Items
 			}
 			else if ( obj == from && obj is PlayerMobile )
 			{
-				PlayerMobile pm = (PlayerMobile)obj;
-
-				if ( pm.BodyMod == 183 || pm.BodyMod == 184 )
-				{
-					pm.SavagePaintExpiration = TimeSpan.Zero;
-
-					pm.BodyMod = 0;
-					pm.HueMod = -1;
-
-					from.SendLocalizedMessage( 1040006 ); // You wipe away all of your body paint.
-
-					Consume();
-				}
-				else
-				{
-					from.LocalOverheadMessage( Network.MessageType.Regular, 0x3B2, 1005422 ); // Hmmmm... this does not need to be cleaned.
-				}
+                from.LocalOverheadMessage(Network.MessageType.Regular, 0x3B2, 1005422); // Hmmmm... this does not need to be cleaned.
 			}
 //Added for Firebomb
 			else if ( obj is BaseBeverage )

@@ -344,7 +344,7 @@ namespace Server.Factions
 
 		public Item Newbied( Item item )
 		{
-			item.LootType = LootType.Newbied;
+			item.LootType = LootType.Blessed;
 			return item;
 		}
 

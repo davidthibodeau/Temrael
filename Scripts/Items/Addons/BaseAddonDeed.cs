@@ -16,7 +16,7 @@ namespace Server.Items
 			Weight = 1.0;
 
 			if ( !Core.AOS )
-				LootType = LootType.Newbied;
+				LootType = LootType.Blessed;
 		}
 
 		public BaseAddonDeed( Serial serial ) : base( serial )

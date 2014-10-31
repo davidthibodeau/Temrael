@@ -8,8 +8,6 @@ namespace Server.Regions
 {
 	public class DungeonRegion : BaseRegion
 	{
-		public override bool YoungProtected { get { return false; } }
-
 		private Point3D m_EntranceLocation;
 		private Map m_EntranceMap;
 
