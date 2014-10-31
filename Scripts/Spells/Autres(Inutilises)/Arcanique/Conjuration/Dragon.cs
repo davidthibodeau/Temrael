@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Dragon", "Kal Vas Xen Grav",
-				SpellCircle.Seventh,
+				7,
 				269,
 				9050,
 				false,

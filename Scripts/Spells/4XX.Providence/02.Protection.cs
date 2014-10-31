@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Protection", "Uus Sanct",
-				SpellCircle.Fifth,
+				5,
 				236,
 				9011,
                 s_ManaCost,

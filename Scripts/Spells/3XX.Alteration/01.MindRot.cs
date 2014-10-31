@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Pourriture", "Wis An Ben",
-				SpellCircle.Fourth,
+				4,
 				203,
 				9031,
                 s_ManaCost,

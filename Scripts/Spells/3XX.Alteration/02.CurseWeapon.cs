@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Maudire", "An Sanct Gra Char",
-				SpellCircle.Third,
+				3,
 				203,
 				9031,
                 s_ManaCost,

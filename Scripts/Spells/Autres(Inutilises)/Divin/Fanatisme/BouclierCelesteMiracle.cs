@@ -14,7 +14,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Bouclier Celeste", "",
-                SpellCircle.Fourth,
+                4,
                 17,
                 9041
             );

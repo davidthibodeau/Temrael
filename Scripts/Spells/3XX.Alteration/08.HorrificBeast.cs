@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Bête Horrifique", "Rel Xen Vas Bal",
-				SpellCircle.Fifth,
+				5,
 				203,
 				9031,
                 s_ManaCost,

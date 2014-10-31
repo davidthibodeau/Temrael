@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Seisme", "In Vas Por Choma An Por",
-				SpellCircle.Fifth,
+				5,
 				233,
 				9012,
 				false,

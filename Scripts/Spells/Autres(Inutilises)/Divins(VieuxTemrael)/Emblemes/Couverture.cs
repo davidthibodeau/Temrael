@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Couverture", "Gebo Algi Fehu",
-				SpellCircle.Eighth,
+				8,
 				212,
 				9041
             );

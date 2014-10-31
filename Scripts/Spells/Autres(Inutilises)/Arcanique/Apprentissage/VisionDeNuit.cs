@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Vision De Nuit", "In Lor",
-				SpellCircle.First,
+				1,
 				236,
 				9031,
 				Reagent.SulfurousAsh,

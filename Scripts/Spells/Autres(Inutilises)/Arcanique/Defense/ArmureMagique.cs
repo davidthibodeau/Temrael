@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Armure Magique", "In Jux Sanct",
-				SpellCircle.Seventh,
+				7,
 				242,
 				9012,
 				Reagent.Garlic,

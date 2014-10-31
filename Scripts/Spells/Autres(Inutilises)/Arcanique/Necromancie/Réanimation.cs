@@ -23,7 +23,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Reanimation", "Uus Corp",
-				SpellCircle.Seventh,
+				7,
 				203,
 				9031,
 				Reagent.GraveDust,

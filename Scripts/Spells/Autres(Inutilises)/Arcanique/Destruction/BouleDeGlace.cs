@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Boule De Glace", "Vas Aqua",
-				SpellCircle.Fifth,
+				5,
 				203,
 				9041,
 				Reagent.BlackPearl,

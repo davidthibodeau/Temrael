@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Jet de feu", "Kal Vas Flam",
-				SpellCircle.Seventh,
+				7,
 				245,
 				9042,
 				Reagent.SpidersSilk,

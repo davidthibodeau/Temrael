@@ -12,7 +12,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Poing de valeur", "Otil Grav",
-                SpellCircle.Second,
+                2,
                 212,
                 9041
             );

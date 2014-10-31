@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Champ De Stase", "An Tym",
-				SpellCircle.Seventh,
+				7,
 				Core.AOS ? 239 : 215,
 				9011,
 				Reagent.Garlic,

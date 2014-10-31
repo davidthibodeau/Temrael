@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Fortification Divine", "",
-                SpellCircle.Fifth,
+                5,
                 17,
                 9041
             );

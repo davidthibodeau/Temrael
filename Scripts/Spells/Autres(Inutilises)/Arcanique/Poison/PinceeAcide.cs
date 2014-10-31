@@ -12,7 +12,7 @@ namespace Server.Spells
         //NB Fast cast
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Pincee Acide", "Bet Nox",
-				SpellCircle.Eighth,
+				8,
 				203,
 				9051,
 				Reagent.Nightshade,

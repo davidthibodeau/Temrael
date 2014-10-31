@@ -13,7 +13,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Protection Celeste", "",
-                SpellCircle.Eighth,
+                8,
                 17,
                 9031
             );

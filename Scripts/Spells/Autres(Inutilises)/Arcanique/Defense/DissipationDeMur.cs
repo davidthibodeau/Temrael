@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Dissipation De Mur", "An Grav",
-				SpellCircle.Fourth,
+				4,
 				206,
 				9002,
 				Reagent.BlackPearl,

@@ -11,7 +11,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Stase", "",
-                SpellCircle.Sixth,
+                6,
                 17,
                 9012
             );

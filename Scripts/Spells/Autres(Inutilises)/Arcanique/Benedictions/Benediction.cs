@@ -10,7 +10,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Benediction", "Rel Sanct",
-				SpellCircle.Fourth,
+				4,
 				203,
 				9061,
 				Reagent.Garlic,

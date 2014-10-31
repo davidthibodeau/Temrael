@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Mutation", "Quas Rel Sar Beh Bal",
-                SpellCircle.Eighth,
+                8,
 				221,
 				9002,
                 Reagent.SulfurousAsh,

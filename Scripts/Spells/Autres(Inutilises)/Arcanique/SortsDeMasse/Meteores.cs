@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Météores", "Flam Kal Des Ylem",
-				SpellCircle.Eighth,
+				8,
 				233,
 				9042,
 				false,

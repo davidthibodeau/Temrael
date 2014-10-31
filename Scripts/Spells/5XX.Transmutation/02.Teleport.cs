@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Teleportation", "Rel Por",
-				SpellCircle.Fourth,
+				4,
 				215,
 				9031,
                 s_ManaCost,

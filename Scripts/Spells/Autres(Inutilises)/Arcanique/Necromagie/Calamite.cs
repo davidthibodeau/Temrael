@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Calamite", "An Sanct Gra Char",
-				SpellCircle.Second,
+				2,
 				203,
 				9031,
 				Reagent.PigIron

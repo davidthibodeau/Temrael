@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Plume", "Toki Marc",
-                SpellCircle.Second,
+                2,
                 212,
                 9041
             );

@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Voile", "Mann Berk",
-                SpellCircle.Fourth,
+                4,
                 212,
                 9041
             );

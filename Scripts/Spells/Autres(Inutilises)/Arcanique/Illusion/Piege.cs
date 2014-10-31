@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Piège", "In Jux",
-				SpellCircle.Second,
+				2,
 				212,
 				9001,
 				Reagent.Garlic,

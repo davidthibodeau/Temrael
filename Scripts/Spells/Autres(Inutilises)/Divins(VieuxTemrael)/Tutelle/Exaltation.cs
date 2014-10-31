@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Exaltation", "Maga Otil",
-                SpellCircle.Third,
+                3,
                 212,
                 9041
             );

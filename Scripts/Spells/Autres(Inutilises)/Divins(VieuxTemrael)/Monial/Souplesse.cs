@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Souplesse", "Sowi Toki",
-                SpellCircle.Fourth,
+                4,
                 212,
                 9041
             );

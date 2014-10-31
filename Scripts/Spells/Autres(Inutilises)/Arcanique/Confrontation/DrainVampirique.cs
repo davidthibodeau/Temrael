@@ -10,7 +10,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Drain Vampirique", "Ort Sanct",
-				SpellCircle.Sixth,
+				6,
 				221,
 				9032,
 				Reagent.Bloodmoss,

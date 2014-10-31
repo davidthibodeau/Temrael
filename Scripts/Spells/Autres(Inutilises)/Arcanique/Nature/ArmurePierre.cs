@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Armure de pierre", "Rel Sanct In Ylem",
-				SpellCircle.Sixth,
+				6,
 				236,
 				9031,
                 Reagent.Bloodmoss,

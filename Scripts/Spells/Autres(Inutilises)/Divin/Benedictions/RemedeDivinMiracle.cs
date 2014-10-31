@@ -14,7 +14,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Remede Divin", "",
-                SpellCircle.Eighth,
+                8,
                 17,
                 9041
             );

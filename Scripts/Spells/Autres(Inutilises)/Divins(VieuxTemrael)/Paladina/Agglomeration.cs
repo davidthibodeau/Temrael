@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Agglomération", "Sowi Fehu",
-                SpellCircle.Second,
+                2,
                 212,
                 9041
             );

@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Appel de la liche", "Kal Vas Xen In Corp",
-				SpellCircle.Eighth,
+				8,
 				269,
 				9070,
 				false,

@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Dissipation De Masse", "Vas An Ort",
-				SpellCircle.Sixth,
+				6,
 				263,
 				9002,
 				Reagent.Garlic,

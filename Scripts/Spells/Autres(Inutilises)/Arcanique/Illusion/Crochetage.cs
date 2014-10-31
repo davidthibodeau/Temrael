@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Crochetage", "Ex Por",
-				SpellCircle.Third,
+				3,
 				215,
 				9001,
 				Reagent.Bloodmoss,

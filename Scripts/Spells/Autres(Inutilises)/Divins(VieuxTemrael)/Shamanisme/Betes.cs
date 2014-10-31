@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Betes", "Haga Maga Impa",
-				SpellCircle.Fourth,
+				4,
 				266,
 				9040
             );

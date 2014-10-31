@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Armure", "Flam Sanct",
-				SpellCircle.Eighth,
+				8,
 				236,
 				9011,
 				Reagent.Garlic,

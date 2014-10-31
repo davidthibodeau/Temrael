@@ -16,7 +16,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Ferveur Divine", "",
-                SpellCircle.Third,
+                3,
                 17,
                 9050
             );

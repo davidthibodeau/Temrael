@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Lance d'Os", "Evo Ylem Corp",
-                SpellCircle.Sixth,
+                6,
                 212,
                 9041,
                 Reagent.MandrakeRoot,

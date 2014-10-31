@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Insurection", "Kal Xen In Ylem Corp Sanct",
-				SpellCircle.Eighth,
+				8,
 				269,
 				9070,
 				false,

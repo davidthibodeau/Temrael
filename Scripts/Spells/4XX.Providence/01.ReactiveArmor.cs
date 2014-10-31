@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Armure Magique", "Flam Sanct",
-				SpellCircle.Third,
+				3,
 				236,
 				9011,
                 s_ManaCost,

@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Imbroglio", "Sanct Ghua Hur",
-				SpellCircle.Fifth,
+				5,
 				212,
 				9041
             );

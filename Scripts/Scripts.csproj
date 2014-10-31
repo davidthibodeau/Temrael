@@ -2456,7 +2456,6 @@
     <Compile Include="SpecialSystems\Items\SupplyBags\SmithBag.cs" />
     <Compile Include="SpecialSystems\Items\SupplyBags\TailorBag.cs" />
     <Compile Include="Spells\Base\DisturbType.cs" />
-    <Compile Include="Spells\Base\SpellCircle.cs" />
     <Compile Include="Spells\Base\SpellState.cs" />
     <Compile Include="Spells\Base\Reagent.cs" />
     <Compile Include="Spells\Base\UnsummonTimer.cs" />

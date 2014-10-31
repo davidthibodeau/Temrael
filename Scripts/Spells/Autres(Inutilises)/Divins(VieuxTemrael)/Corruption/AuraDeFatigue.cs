@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Aura De Fatigue", "Desu Hiro",
-                SpellCircle.First,
+                1,
                 212,
                 9041
             );

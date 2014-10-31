@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Révélation", "Wis Quas",
-				SpellCircle.Sixth,
+				6,
 				206,
 				9002,
                 s_ManaCost,

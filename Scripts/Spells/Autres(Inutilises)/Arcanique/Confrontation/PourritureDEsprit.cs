@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Pourriture D'esprit", "Wis An Ben",
-				SpellCircle.First,
+				1,
 				203,
 				9031,
 				Reagent.BlackPearl,

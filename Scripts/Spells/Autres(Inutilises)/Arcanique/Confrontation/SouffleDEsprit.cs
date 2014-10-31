@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Souffle D'esprit", "Por Corp Wis",
-				SpellCircle.Fifth,
+				5,
 				218,
 				9032,
 				Reagent.BlackPearl,

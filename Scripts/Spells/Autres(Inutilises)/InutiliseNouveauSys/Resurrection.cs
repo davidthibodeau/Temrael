@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Résurrection", "An Corp",
-				SpellCircle.Eighth,
+				8,
 				245,
 				9062,
                 s_ManaCost,

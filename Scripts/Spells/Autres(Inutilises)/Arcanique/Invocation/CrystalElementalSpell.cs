@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Elementaire de cristal", "Kal Vas Xen Flam Aqua Hur Choma",
-				SpellCircle.Eighth,
+				8,
 				269,
 				9070,
 				false,

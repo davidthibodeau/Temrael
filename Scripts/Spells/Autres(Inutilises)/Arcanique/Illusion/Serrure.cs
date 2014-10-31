@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Serrure", "An Por",
-                SpellCircle.Third,
+                3,
 				215,
 				9001,
 				Reagent.Garlic,

@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Endurance", "In Vas Ex Beh Bal",
-				SpellCircle.Second,
+				2,
 				233,
 				9012,
 				false,

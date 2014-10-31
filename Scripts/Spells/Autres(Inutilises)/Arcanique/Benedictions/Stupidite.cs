@@ -10,7 +10,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Stupidite", "Rel Wis",
-				SpellCircle.Second,
+				2,
 				212,
 				9031,
 				Reagent.Ginseng,

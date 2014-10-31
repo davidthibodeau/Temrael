@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Jet de douleur", "In Sar",
-				SpellCircle.Eighth,
+				8,
 				203,
 				9031,
 				Reagent.GraveDust,

@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Boule de Feu", "Vas Flam",
-				SpellCircle.Third,
+				3,
 				203,
 				9041,
                 s_ManaCost,

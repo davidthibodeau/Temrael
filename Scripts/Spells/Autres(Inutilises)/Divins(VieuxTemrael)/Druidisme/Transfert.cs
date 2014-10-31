@@ -17,7 +17,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Transfert", "Tyros Otil Wun",
-                SpellCircle.Eighth,
+                8,
                 212,
                 9041
             );

@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Dissipation de Masse", "Vas An Ort",
-				SpellCircle.Seventh,
+				7,
 				263,
 				9002,
                 s_ManaCost,

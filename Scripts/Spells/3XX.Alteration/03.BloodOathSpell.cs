@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Sermant", "In Jux Mani Xen",
-				SpellCircle.Second,
+				2,
 				203,
 				9031,
                 s_ManaCost,

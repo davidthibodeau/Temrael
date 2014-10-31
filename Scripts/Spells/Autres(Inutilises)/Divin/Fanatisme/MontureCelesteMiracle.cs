@@ -12,7 +12,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Monture Celeste", "",
-                SpellCircle.Sixth,
+                6,
                 17,
                 9032,
                 false

@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Animate Dead", "Uus Corp",
-				SpellCircle.Eighth,
+				8,
 				203,
 				9031,
                 s_ManaCost,

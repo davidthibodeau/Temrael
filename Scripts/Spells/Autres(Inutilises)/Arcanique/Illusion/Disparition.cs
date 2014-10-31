@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Disparition", "Vas An Lor Xen",
-				SpellCircle.Seventh,
+				7,
 				Core.AOS ? 239 : 215,
 				9011,
 				Reagent.Garlic,

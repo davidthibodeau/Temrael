@@ -18,7 +18,7 @@ namespace Server.Spells
         
         public static readonly new SpellInfo Info = new SpellInfo(
 				"Dissipation", "An Ort",
-				SpellCircle.Fifth,
+				5,
 				218,
 				9002,
                 s_ManaCost,

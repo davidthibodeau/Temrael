@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Elementaire d'air", "Kal Vas Xen Hur",
-				SpellCircle.Fourth,
+				4,
 				269,
 				9010,
 				false,

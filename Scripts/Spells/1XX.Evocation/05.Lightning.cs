@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Éclair", "Por Ort Grav",
-				SpellCircle.Fourth,
+				4,
 				239,
 				9021,
                 s_ManaCost,

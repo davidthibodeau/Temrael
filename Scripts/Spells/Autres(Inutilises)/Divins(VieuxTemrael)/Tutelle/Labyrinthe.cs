@@ -16,7 +16,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Labyrinthe", "Furo Mann Marc",
-                SpellCircle.Fourth,
+                4,
                 212,
                 9041
             );

@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Corps Mortifié", "In Agle Corp Ylem",
-				SpellCircle.Third,
+				3,
 				203,
 				9051,
                 s_ManaCost,

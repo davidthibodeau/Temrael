@@ -18,7 +18,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Chimère", "Quas Rel Vas Xen Corp",
-                SpellCircle.Fourth,
+                4,
                 221,
                 9002,
                 Reagent.Garlic,

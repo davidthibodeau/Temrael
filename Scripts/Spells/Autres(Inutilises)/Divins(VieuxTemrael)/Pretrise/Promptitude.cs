@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Promptitude", "Toki Algi",
-                SpellCircle.Sixth,
+                6,
                 212,
                 9041
             );

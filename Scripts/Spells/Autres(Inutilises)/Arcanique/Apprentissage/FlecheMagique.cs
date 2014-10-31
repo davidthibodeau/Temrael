@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Fleche Magique", "In Por Ylem",
-				SpellCircle.First,
+				1,
 				212,
 				9041,
 				Reagent.SulfurousAsh

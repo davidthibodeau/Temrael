@@ -15,7 +15,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Agilité", "Ex Uus",
-				SpellCircle.First,
+				1,
 				212,
 				9061,
                 s_ManaCost,

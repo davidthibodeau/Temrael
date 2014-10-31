@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Appui", "Ansu Algi",
-                SpellCircle.Seventh,
+                7,
                 212,
                 9041
             );

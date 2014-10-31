@@ -15,7 +15,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Trou De Ver", "Vas Rel Por",
-				SpellCircle.Seventh,
+				7,
 				263,
 				9032,
 				Reagent.BlackPearl,

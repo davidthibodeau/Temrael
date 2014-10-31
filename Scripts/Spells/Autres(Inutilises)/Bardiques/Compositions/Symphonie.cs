@@ -23,7 +23,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Symphonie", "",
-				SpellCircle.First,
+				1,
 				215,
 				9041,
 				false

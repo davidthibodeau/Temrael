@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Rétablissement", "Tyr Otil",
-				SpellCircle.First,
+				1,
 				212,
 				9041
             );

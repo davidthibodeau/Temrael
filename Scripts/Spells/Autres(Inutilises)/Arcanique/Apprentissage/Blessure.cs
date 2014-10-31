@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Blessure", "An Mani",
-				SpellCircle.Second,
+				2,
 				212,
 				9041,
 				Reagent.Nightshade,

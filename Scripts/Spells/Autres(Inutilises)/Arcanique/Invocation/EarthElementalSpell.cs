@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Elementaire de terre", "Kal Vas Xen Ylem Choma",
-				SpellCircle.Third,
+				3,
 				269,
 				9020,
 				false,

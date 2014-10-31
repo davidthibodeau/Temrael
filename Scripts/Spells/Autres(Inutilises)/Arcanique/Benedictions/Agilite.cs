@@ -10,7 +10,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Agilite", "Ex Uus",
-				SpellCircle.First,
+				1,
 				212,
 				9061,
 				Reagent.Bloodmoss,

@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "BarilDeBiere", "Gebo Sowi Fehu",
-				SpellCircle.Third,
+				3,
 				212,
 				9041
             );

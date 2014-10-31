@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Champ de Dissipation", "An Grav",
-				SpellCircle.Fifth,
+				5,
 				206,
 				9002,
                 s_ManaCost,

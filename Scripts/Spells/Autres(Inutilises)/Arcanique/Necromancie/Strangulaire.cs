@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Insurection", "Kal Vas Xen An Hur",
-				SpellCircle.Fifth,
+				5,
 				269,
 				9070,
 				false,

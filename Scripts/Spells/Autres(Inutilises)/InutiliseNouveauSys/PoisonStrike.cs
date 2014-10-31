@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Venin", "In Vas Nox",
-				SpellCircle.Seventh,
+				7,
 				203,
 				9031,
                 s_ManaCost,

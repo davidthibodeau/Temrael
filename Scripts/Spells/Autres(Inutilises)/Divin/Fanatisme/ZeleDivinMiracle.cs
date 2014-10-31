@@ -13,7 +13,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Zele Divin", "",
-                SpellCircle.Eighth,
+                8,
                 17,
                 9031
             );

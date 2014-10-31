@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Fléau", "Vas Des Sanct",
-				SpellCircle.Seventh,
+				7,
 				218,
 				9031,
                 s_ManaCost,

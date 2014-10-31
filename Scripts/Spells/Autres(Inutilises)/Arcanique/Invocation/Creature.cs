@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Creature", "Kal Xen",
-				SpellCircle.First,
+				1,
 				266,
 				9040,
 				Reagent.Bloodmoss,

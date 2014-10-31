@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Hallucinations", "Vas Kal In Ex",
-				SpellCircle.Sixth,
+				6,
 				Core.AOS ? 239 : 215,
 				9011,
 				Reagent.Garlic,

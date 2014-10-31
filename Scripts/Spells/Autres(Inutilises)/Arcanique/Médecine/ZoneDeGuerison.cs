@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Zone De Guerison", "In Vas Jux Sanct",
-				SpellCircle.Seventh,
+				7,
 				Core.AOS ? 239 : 215,
 				9011,
 				Reagent.Garlic,

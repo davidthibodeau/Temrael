@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Defraicheur", "Kal Vas An Flam",
-                SpellCircle.Third,
+                3,
                 203,
                 9031,
                 Reagent.NoxCrystal,

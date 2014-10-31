@@ -11,7 +11,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Penacée", "",
-                SpellCircle.Third,
+                3,
                 17,
                 9061
             );

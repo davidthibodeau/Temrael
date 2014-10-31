@@ -73,7 +73,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Lumière divine", "Haga Kena",
-                SpellCircle.Fourth,
+                4,
                 269,
                 9032,
                 false

@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Jet De Poison", "In Vas Nox",
-				SpellCircle.Fourth,
+				4,
 				203,
 				9031,
 				Reagent.NoxCrystal,

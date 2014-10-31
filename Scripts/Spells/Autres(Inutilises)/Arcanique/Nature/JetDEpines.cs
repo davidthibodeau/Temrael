@@ -10,7 +10,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Jet D'épines", "In Vas Dras Ylem",
-				SpellCircle.Seventh,
+				7,
 				212,
 				9041,
 				Reagent.SulfurousAsh,

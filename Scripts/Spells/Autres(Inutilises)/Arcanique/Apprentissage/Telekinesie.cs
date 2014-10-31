@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Telekinesie", "Ort Por Ylem",
-				SpellCircle.Second,
+				2,
 				203,
 				9031,
 				Reagent.Bloodmoss,

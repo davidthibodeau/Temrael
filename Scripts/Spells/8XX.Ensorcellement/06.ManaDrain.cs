@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Vampirisme", "Ort Rel",
-				SpellCircle.Fifth,
+				5,
 				215,
 				9031,
                 s_ManaCost,

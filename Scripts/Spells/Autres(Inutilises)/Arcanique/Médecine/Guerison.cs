@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Heal", "In Mani",
-				SpellCircle.Second,
+				2,
 				224,
 				9061,
 				Reagent.Garlic,

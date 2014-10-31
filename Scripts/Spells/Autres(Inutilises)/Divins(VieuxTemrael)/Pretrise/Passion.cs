@@ -16,7 +16,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Passion", "Toki Kano",
-                SpellCircle.Seventh,
+                7,
                 212,
                 9041
             );

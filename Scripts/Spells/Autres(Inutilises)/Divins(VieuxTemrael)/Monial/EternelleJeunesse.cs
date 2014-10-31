@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Éternelle jeunesse", "Ota Tyros Toki",
-				SpellCircle.Seventh,
+				7,
 				212,
 				9041
             );

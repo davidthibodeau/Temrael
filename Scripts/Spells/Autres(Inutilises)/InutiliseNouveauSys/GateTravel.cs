@@ -20,7 +20,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Voyagement", "Vas Rel Por",
-				SpellCircle.Fourth,
+				4,
 				263,
 				9032,
                 s_ManaCost,

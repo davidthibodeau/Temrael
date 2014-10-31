@@ -12,7 +12,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Étouffements", "Bet Grav Corp",
-                SpellCircle.Seventh,
+                7,
                 236,
                 9031,
                 Reagent.SulfurousAsh,

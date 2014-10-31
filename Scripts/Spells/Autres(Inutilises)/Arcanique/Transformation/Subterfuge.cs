@@ -18,7 +18,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Subterfuge", "Quas Rel Xen Corp",
-                SpellCircle.Second,
+                2,
                 221,
                 9002,
                 Reagent.Garlic,

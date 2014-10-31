@@ -17,7 +17,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Voile", "Des Lor",
-                SpellCircle.First,
+                1,
                 236,
                 9031,
                 s_ManaCost,

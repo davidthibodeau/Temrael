@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur D'Energie", "In Sanct Grav",
-				SpellCircle.Sixth,
+				6,
 				221,
 				9022,
 				false,

@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Marque", "Kal Por Ylem",
-				SpellCircle.Sixth,
+				6,
 				218,
 				9002,
                 s_ManaCost,

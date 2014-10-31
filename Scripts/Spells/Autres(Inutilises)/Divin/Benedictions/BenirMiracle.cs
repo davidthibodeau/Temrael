@@ -10,7 +10,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Bénir", "",
-                SpellCircle.Eighth,
+                8,
                 17,
                 9050
             );

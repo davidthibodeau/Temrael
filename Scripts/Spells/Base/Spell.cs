@@ -58,7 +58,7 @@ namespace Server.Spells
 		public string Name{ get{ return m_Info.Name; } }
 		public string Mantra{ get{ return m_Info.Mantra; } }
         public int ManaCost { get { return m_Info.manaCost; } }
-		public SpellCircle Circle{ get{ return m_Info.Circle; } }
+        public short Circle { get { return m_Info.Circle; } }
 		public Type[] Reagents{ get{ return m_Info.Reagents; } }
 		public Item Scroll{ get{ return m_Scroll; } }
 
@@ -337,7 +337,7 @@ namespace Server.Spells
 			//return m.Skills[SkillName.Concentration].Value;
 		}
 
-		public virtual double GetResistPercentForCircle( Mobile target, SpellCircle circle )
+        public virtual double GetResistPercentForCircle(Mobile target, short circle)
 		{
 			double firstPercent = target.Skills[SkillName.Meditation].Value / 5.0;
 			double secondPercent = target.Skills[SkillName.Meditation].Value - (((m_Caster.Skills[CastSkill].Value - 20.0) / 5.0) + (1 + (int)circle) * 5.0);

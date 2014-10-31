@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Haute Précision", "Ansu Sowi",
-                SpellCircle.First,
+                1,
                 212,
                 9041
             );

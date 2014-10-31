@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Incognito", "Kal In Ex",
-				SpellCircle.Fourth,
+				4,
 				206,
 				9002,
 				Reagent.Bloodmoss,

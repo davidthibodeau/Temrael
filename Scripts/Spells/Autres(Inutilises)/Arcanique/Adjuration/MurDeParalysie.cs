@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur De Paralysie", "In Ex Grav",
-				SpellCircle.Seventh,
+				7,
 				230,
 				9012,
 				false,

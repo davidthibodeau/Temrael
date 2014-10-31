@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Teleportation", "Rel Por",
-				SpellCircle.Third,
+				3,
 				215,
 				9031,
 				Reagent.Bloodmoss,

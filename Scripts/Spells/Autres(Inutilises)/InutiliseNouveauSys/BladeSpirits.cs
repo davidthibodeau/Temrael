@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Esprit des Lames", "In Jux Hur Ylem", 
-				SpellCircle.Seventh,
+				7,
 				266,
 				9040,
                 s_ManaCost,

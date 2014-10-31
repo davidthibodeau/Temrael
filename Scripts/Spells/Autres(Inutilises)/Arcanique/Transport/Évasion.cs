@@ -28,7 +28,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Évasion", "In Por Ort Jux",
-				SpellCircle.First,
+				1,
 				236,
 				9011,
 				Reagent.BlackPearl

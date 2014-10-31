@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Vehemence", "",
-                SpellCircle.Third,
+                3,
                 17,
                 9041
             );

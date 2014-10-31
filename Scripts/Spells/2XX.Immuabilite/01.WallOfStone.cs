@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur de Pierre", "In Sanct Ylem",
-				SpellCircle.Fourth,
+				4,
 				227,
 				9011,
                 s_ManaCost,

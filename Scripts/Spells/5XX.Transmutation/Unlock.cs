@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Ouverture Magique", "Ex Por",
-				SpellCircle.First,
+				1,
 				215,
 				9001,
                 s_ManaCost,

@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Conjuration", "Kal Vas Xen Corp",
-				SpellCircle.Eighth,
+				8,
 				269,
 				9050,
                 s_ManaCost,

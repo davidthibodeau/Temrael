@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Étranglement", "In Bal Nox",
-				SpellCircle.Sixth,
+				6,
 				209,
 				9031,
                 s_ManaCost,

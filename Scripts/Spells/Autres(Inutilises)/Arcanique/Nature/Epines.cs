@@ -10,7 +10,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Epines", "Dras Ylem Beh Bal",
-				SpellCircle.Third,
+				3,
 				212,
 				9041,
 				Reagent.BlackPearl,

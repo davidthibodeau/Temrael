@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Guerison Majeure", "In Vas Mani",
-				SpellCircle.Sixth,
+				6,
 				204,
 				9061,
 				Reagent.Garlic,

@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Peau De Mort", "In Agle Corp Ylem",
-				SpellCircle.Fourth,
+				4,
 				203,
 				9051,
 				Reagent.BatWing,

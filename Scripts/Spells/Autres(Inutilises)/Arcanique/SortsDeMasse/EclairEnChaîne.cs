@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Eclair en Chaîne", "Vas Ort Grav",
-				SpellCircle.Seventh,
+				7,
 				209,
 				9022,
 				false,

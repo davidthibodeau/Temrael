@@ -21,7 +21,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Polymorph", "Vas Ylem Rel",
-				SpellCircle.Seventh,
+				7,
 				221,
 				9002,
                 s_ManaCost,

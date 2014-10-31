@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Dissipation", "An Ort",
-				SpellCircle.Third,
+				3,
 				218,
 				9002,
 				Reagent.Garlic,

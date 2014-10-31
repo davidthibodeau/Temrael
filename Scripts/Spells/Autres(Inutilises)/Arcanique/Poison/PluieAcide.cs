@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Pluie Acide", "Kal Nox Corp Grav",
-				SpellCircle.Seventh,
+				7,
 				236,
 				9011,
 				Reagent.Nightshade,

@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Cri d'Ours", "In Vas Ex Beh Bal",
-				SpellCircle.First,
+				1,
 				233,
 				9012,
 				false,

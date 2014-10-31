@@ -11,7 +11,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Repas Celeste", "",
-                SpellCircle.First,
+                1,
                 17,
                 9041
             );

@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Poison", "In Nox",
-				SpellCircle.Sixth,
+				6,
 				203,
 				9051,
                 s_ManaCost,

@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Vortex", "Vas Hur Corp Por",
-				SpellCircle.Eighth,
+				8,
 				233,
 				9042,
 				false,

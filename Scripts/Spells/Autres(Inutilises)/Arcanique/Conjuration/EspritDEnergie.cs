@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Esprit D'energie", "Vas Corp Por",
-				SpellCircle.Sixth,
+				6,
 				260,
 				9032,
 				false,

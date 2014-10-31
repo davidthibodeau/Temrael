@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Vision Divine", "Perth Kena",
-				SpellCircle.First,
+				1,
 				212,
 				9041
             );

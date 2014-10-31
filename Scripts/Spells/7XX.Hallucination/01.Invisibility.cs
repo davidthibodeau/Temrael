@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Invisibilité", "An Lor Xen",
-				SpellCircle.Eighth,
+				8,
 				206,
 				9002,
                 s_ManaCost,

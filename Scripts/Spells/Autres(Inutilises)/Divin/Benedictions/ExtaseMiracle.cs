@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Extase", "",
-                SpellCircle.Second,
+                2,
                 17,
                 9041
             );

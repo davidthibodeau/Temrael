@@ -216,7 +216,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Copie", "Quas Sanct Ort",
-                SpellCircle.Sixth,
+                6,
                 269,
                 9020,
                 false,

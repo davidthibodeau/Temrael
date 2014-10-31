@@ -18,7 +18,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Tempete", "An Flam",
-                SpellCircle.First,
+                1,
                 236,
                 9031,
                 s_ManaCost,

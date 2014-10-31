@@ -16,7 +16,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Pourrissement", "Thur Ghua Desu",
-                SpellCircle.Eighth,
+                8,
                 212,
                 9041
             );

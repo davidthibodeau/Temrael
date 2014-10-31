@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Esprit animal", "Kal Xen Ort",
-				SpellCircle.Third,
+				3,
 				269,
 				9032,
 				false,

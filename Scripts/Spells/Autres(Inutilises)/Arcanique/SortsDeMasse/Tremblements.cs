@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Tremblements", "In Vas Por",
-				SpellCircle.Third,
+				3,
 				233,
 				9012,
 				false,

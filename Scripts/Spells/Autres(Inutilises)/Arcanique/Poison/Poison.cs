@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Poison", "In Nox",
-				SpellCircle.Third,
+				3,
 				203,
 				9051,
 				Reagent.Nightshade,

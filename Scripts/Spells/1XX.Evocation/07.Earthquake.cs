@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Tremblement", "In Vas Por",
-				SpellCircle.Eighth,
+				8,
 				233,
 				9012,
                 s_ManaCost,

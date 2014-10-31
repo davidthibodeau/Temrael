@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Esprit de lames", "In Jux Hur Ylem", 
-				SpellCircle.Fifth,
+				5,
 				266,
 				9040,
 				false,

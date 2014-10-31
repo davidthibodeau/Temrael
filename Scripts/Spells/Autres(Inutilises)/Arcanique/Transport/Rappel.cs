@@ -15,7 +15,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Rappel", "Kal Ort Por",
-				SpellCircle.Fifth,
+				5,
 				239,
 				9031,
 				Reagent.BlackPearl,

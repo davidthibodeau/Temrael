@@ -10,7 +10,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Racines", "An Por Choma",
-				SpellCircle.Fifth,
+				5,
 				218,
 				9012,
 				Reagent.Garlic,

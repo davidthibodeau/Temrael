@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Geyser", "Evo Aqua An Por Grav",
-				SpellCircle.Third,
+				3,
 				215,
 				9041,
 				false,

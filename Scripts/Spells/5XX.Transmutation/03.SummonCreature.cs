@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Convocation", "Kal Xen",
-				SpellCircle.Fourth,
+				4,
 				266,
 				9040,
                 s_ManaCost,

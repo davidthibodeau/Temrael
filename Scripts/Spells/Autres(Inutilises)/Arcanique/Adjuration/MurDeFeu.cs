@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur De Feu", "In Flam Grav",
-				SpellCircle.Fifth,
+				5,
 				215,
 				9041,
 				false,

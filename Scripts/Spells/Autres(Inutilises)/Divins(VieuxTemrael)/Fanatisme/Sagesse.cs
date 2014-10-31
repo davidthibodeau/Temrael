@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Sagesse", "Reta Toki",
-				SpellCircle.Third,
+				3,
 				203,
 				9031
             );

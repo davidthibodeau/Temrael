@@ -20,7 +20,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
             "Flameche", "In Flam",
-            SpellCircle.Fourth,
+            4,
             215,
             9041,
             s_ManaCost,

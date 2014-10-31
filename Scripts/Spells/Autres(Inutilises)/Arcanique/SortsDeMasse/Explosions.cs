@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Explosions", "Vas Ort Flam",
-				SpellCircle.Fourth,
+				4,
 				230,
 				9041,
 				Reagent.Bloodmoss,

@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Invisibility", "An Lor Xen",
-				SpellCircle.Fifth,
+				5,
 				206,
 				9002,
 				Reagent.Bloodmoss,

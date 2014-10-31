@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Nuisance", "An Mani",
-				SpellCircle.Second,
+				2,
 				212,
 				9041,
                 s_ManaCost,

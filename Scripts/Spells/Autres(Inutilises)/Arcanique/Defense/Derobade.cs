@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Derobade", "An Tyr Mani",
-                SpellCircle.Eighth,
+                8,
                 212,
                 9041,
                 Reagent.Garlic,

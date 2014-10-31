@@ -23,7 +23,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Incognito", "Kal In Ex",
-				SpellCircle.Fifth,
+				5,
 				206,
 				9002,
                 s_ManaCost,

@@ -12,7 +12,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Guerison Celeste", "",
-                SpellCircle.Third,
+                3,
                 17,
                 9061
             );

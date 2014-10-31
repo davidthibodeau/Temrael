@@ -18,7 +18,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Altération", "Kal Xen Corp",
-                SpellCircle.First,
+                1,
                 221,
                 9002,
                 Reagent.Garlic,

@@ -23,7 +23,7 @@ namespace Server.Custom.CustomSpell
         }
 
 
-        private InfoSpell(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, StyleSpell Style, params Type[] regs)
+        private InfoSpell(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, StyleSpell Style, params Type[] regs)
             : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, CastTime, SkillUtilise, NiveauSkillReq, true, regs)
         {
             style = Style;
@@ -47,7 +47,7 @@ namespace Server.Custom.CustomSpell
             public bool unEffectParTarget { get { return m_unEffectParTarget; } }
 
 
-            public Targeted(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool UnEffectParTarget, int Range, params Type[] regs)
+            public Targeted(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool UnEffectParTarget, int Range, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.Targeted, regs)
             {
                 if (NbTarget <= 3 && NbTarget >= 1) m_NbTarget = NbTarget;
@@ -75,7 +75,7 @@ namespace Server.Custom.CustomSpell
             public bool unEffectParTarget = false;
 
 
-            public TargetedTimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool unEffectParTarget, int Range, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
+            public TargetedTimer(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int NbTarget, bool unEffectParTarget, int Range, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.TargetedTimer, regs)
             {
                 if (NbTarget <= 3 && NbTarget >= 1) m_NbTarget = NbTarget;
@@ -91,7 +91,7 @@ namespace Server.Custom.CustomSpell
             private int m_Range = 10;
             public int range { get { return m_Range; } }
 
-            public AoE(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int Range, params Type[] regs)
+            public AoE(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, int Range, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.AoE, regs)
             {
                 if (range <= 20 && range >= 1) m_Range = range;
@@ -117,7 +117,7 @@ namespace Server.Custom.CustomSpell
             private TimerPriority m_intervale = TimerPriority.OneSecond;
             public TimerPriority intervale { get { return m_intervale; } }
 
-            public AoETimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, bool TargetsDebutCast, bool ContinueCastDuringTimer, int Range, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
+            public AoETimer(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, bool TargetsDebutCast, bool ContinueCastDuringTimer, int Range, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.AoETimer, regs)
             {
                 m_targetsDebutCast = TargetsDebutCast;
@@ -132,7 +132,7 @@ namespace Server.Custom.CustomSpell
         {
             // Membres aditionnels.
 
-            public Self(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, params Type[] regs)
+            public Self(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.Self, regs)
             {
             }
@@ -148,7 +148,7 @@ namespace Server.Custom.CustomSpell
             public TimerPriority intervale { get { return m_intervale; } }
 
 
-            public SelfTimer(string Name, string Formule, SpellCircle Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
+            public SelfTimer(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, TimeSpan Duree, TimerPriority Intervale, params Type[] regs)
                 : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, SkillUtilise, NiveauSkillReq, CastTime, StyleSpell.SelfTimer, regs)
             {
                 m_duree = Duree;

@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Metamorphose", "Vas Ylem Rel",
-				SpellCircle.Seventh,
+				7,
 				221,
 				9002,
 				Reagent.Bloodmoss,

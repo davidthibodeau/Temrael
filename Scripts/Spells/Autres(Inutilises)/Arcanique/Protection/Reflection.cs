@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Reflection", "Por Tym Sanct",
-                SpellCircle.Fourth,
+                4,
                 242,
                 9012,
                 Reagent.Garlic,

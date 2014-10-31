@@ -15,7 +15,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Malediction", "Des Sanct",
-				SpellCircle.Fifth,
+				5,
 				227,
 				9031,
 				Reagent.Nightshade,

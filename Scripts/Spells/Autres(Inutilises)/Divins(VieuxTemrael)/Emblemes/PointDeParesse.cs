@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Point de paresse", "Gebo Toki Hiro",
-				SpellCircle.Fourth,
+				4,
 				212,
 				9041
             );

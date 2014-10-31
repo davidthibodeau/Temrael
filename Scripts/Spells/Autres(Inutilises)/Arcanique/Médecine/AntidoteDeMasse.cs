@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Antidote De Masse", "Vas An Nox",
-				SpellCircle.Fourth,
+				4,
 				215,
 				9061,
 				Reagent.Garlic,

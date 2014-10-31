@@ -18,7 +18,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Transmutation", "Quas Rel Vas Xen An Mani",
-                SpellCircle.Fifth,
+                5,
                 221,
                 9002,
                 Reagent.BlackPearl,

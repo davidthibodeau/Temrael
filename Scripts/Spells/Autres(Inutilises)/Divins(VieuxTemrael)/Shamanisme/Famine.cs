@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Famine", "Desi Thur",
-				SpellCircle.Second,
+				2,
 				212,
 				9041
             );

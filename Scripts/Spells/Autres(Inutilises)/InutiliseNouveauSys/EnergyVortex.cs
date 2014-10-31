@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Vortex", "Vas Corp Por",
-				SpellCircle.Eighth,
+				8,
 				260,
 				9032,
                 s_ManaCost,

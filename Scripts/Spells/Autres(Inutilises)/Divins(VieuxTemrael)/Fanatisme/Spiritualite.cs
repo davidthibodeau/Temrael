@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Spiritualite", "Ehwa Tyr",
-				SpellCircle.Seventh,
+				7,
 				203,
 				9031
             );

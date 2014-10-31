@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Élemental d'Air", "Kal Vas Xen Hur",
-				SpellCircle.Sixth,
+				6,
 				269,
 				9010,
                 s_ManaCost,

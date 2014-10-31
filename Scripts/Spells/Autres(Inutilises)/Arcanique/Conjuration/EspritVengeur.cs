@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Esprit vengeur", "Kal Xen Bal Beh",
-				SpellCircle.Eighth,
+				8,
 				203,
 				9031,
 				Reagent.BlackPearl,

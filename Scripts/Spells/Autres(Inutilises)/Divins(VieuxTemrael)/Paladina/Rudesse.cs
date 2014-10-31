@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Rudesse", "Perth Sowi",
-                SpellCircle.Fourth,
+                4,
                 212,
                 9041
             );

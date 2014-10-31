@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Animaux", "Haga Maga",
-				SpellCircle.Third,
+				3,
 				266,
 				9040
             );

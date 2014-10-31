@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Marquage", "Kal Por Ylem",
-				SpellCircle.Eighth,
+				8,
 				218,
 				9002,
 				Reagent.BlackPearl,

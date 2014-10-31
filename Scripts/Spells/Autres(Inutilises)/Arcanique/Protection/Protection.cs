@@ -15,7 +15,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Protection", "Uus Sanct",
-				SpellCircle.Second,
+				2,
 				236,
 				9011,
 				Reagent.Garlic,

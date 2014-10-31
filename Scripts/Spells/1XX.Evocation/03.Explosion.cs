@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Explosion", "Vas Ort Flam",
-				SpellCircle.Sixth,
+				6,
 				230,
 				9041,
                 s_ManaCost,

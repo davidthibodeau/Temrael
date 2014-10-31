@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Réfecteur", "Gebo Otil Algi",
-				SpellCircle.Seventh,
+				7,
 				212,
 				9041
             );

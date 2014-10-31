@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Reflet", "In Jux Sanct",
-				SpellCircle.Third,
+				3,
 				242,
 				9012,
                 s_ManaCost,

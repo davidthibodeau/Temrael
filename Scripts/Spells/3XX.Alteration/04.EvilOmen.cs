@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Présage Malsain", "Pas Tym An Sanct",
-				SpellCircle.Second,
+				2,
 				203,
 				9031,
                 s_ManaCost,

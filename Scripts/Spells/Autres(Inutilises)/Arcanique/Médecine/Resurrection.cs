@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Resurrection", "An Corp",
-				SpellCircle.Sixth,
+				6,
 				245,
 				9062,
 				Reagent.Bloodmoss,

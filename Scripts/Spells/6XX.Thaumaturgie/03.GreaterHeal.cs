@@ -17,7 +17,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Soins Magiques", "In Vas Mani",
-				SpellCircle.Eighth,
+				8,
 				204,
 				9061,
                 s_ManaCost,

@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur de Feu", "In Flam Grav",
-				SpellCircle.Eighth,
+				8,
 				215,
 				9041,
                 s_ManaCost,

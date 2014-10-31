@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Fulguration", "Por Ort Grav Vas Flam",
-				SpellCircle.Eighth,
+				8,
 				239,
 				9021,
 				Reagent.MandrakeRoot,

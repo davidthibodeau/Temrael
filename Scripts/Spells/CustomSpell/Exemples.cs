@@ -25,7 +25,7 @@ namespace Server.Custom.CustomSpell
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
             /*       Formule */ "Kal Vas Ayss",
-            /*        Cercle */ Spells.SpellCircle.First,
+            /*        Cercle */ 1,
             /*        Action */ 218,
             /*   Hand Effect */ 9002,
             /*     Mana cost */ 5,
@@ -93,7 +93,7 @@ namespace Server.Custom.CustomSpell
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
             /*       Formule */ "Kal Vas Ayss",
-            /*        Cercle */ Spells.SpellCircle.First,
+            /*        Cercle */ 1,
             /*        Action */ 218,
             /*   Hand Effect */ 9002,
             /*     Mana cost */ 5,
@@ -165,7 +165,7 @@ namespace Server.Custom.CustomSpell
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Tremblement de terre",
             /*       Formule */ "Ooga Ooga Chakalaka",
-            /*        Cercle */ Spells.SpellCircle.First,
+            /*        Cercle */ 1,
             /*        Action */ 218,
             /*   Hand Effect */ 9002,
             /*     Mana cost */ 5,
@@ -212,7 +212,7 @@ namespace Server.Custom.CustomSpell
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Tremblement de terre",
             /*       Formule */ "Ooga Ooga Chakalaka",
-            /*        Cercle */ Spells.SpellCircle.First,
+            /*        Cercle */ 1,
             /*        Action */ 218,
             /*   Hand Effect */ 9002,
             /*     Mana cost */ 5,
@@ -269,7 +269,7 @@ namespace Server.Custom.CustomSpell
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
             /*       Formule */ "Kal Vas Ayss",
-            /*        Cercle */ Spells.SpellCircle.First,
+            /*        Cercle */ 1,
             /*        Action */ 218,
             /*   Hand Effect */ 9002,
             /*     Mana cost */ 5,
@@ -301,7 +301,7 @@ namespace Server.Custom.CustomSpell
         /*---------- SPELL INFO ----------*/
             /*  Nom du spell */ "Boule de Glace",
             /*       Formule */ "Kal Vas Ayss",
-            /*        Cercle */ Spells.SpellCircle.First,
+            /*        Cercle */ 1,
             /*        Action */ 218,
             /*   Hand Effect */ 9002,
             /*     Mana cost */ 5,

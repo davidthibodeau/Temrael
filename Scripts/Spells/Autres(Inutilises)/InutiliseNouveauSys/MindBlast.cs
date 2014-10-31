@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Destruction Cérébrale", "Por Corp Wis",
-				SpellCircle.Fifth,
+				5,
 				218,
 				9032,
                 s_ManaCost,

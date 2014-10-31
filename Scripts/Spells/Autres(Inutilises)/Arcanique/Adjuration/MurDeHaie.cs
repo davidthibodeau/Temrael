@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur De Haie", "Kal Ylem An Por Grav",
-				SpellCircle.First,
+				1,
 				221,
 				9022,
 				false,

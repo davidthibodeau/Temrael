@@ -12,7 +12,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Essouflement", "Fehu Ehwa",
-                SpellCircle.Third,
+                3,
                 236,
                 9031
             );

@@ -15,7 +15,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Maladroit", "Uus Jux",
-				SpellCircle.First,
+				1,
 				212,
 				9031,
                 s_ManaCost,

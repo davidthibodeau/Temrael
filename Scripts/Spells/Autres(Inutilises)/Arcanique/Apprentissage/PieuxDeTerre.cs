@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Pieux De Terre", "Evo Ylem",
-				SpellCircle.Second,
+				2,
 				212,
 				9041,
                 Reagent.BlackPearl,

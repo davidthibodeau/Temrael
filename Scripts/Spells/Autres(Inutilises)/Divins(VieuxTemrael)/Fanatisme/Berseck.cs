@@ -16,7 +16,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Berseck", "Marc Reta Fehu",
-                SpellCircle.Fourth,
+                4,
                 212,
                 9041
             );

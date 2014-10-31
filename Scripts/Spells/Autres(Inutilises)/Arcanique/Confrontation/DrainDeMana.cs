@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Drain De Mana", "Ort Rel",
-				SpellCircle.Second,
+				2,
 				215,
 				9031,
 				Reagent.BlackPearl,

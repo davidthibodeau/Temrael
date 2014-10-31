@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Protection Magique", "Vas Uus Sanct",
-				SpellCircle.Seventh,
+				7,
 				215,
 				9011,
                 s_ManaCost,

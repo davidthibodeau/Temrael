@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Antidote", "An Nox",
-				SpellCircle.First,
+				1,
 				212,
 				9061,
 				Reagent.Garlic,

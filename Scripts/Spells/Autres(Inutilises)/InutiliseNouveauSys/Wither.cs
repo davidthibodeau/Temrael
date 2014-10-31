@@ -19,7 +19,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Flétrir", "Kal Vas An Flam",
-				SpellCircle.Sixth,
+				6,
 				203,
 				9031,
                 s_ManaCost,

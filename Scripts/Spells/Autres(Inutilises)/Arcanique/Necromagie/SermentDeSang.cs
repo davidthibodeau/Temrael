@@ -12,7 +12,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Blood Oath", "In Jux Mani Xen",
-				SpellCircle.Seventh,
+				7,
 				203,
 				9031,
 				Reagent.DaemonBlood,

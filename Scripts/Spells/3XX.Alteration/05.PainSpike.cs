@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Corruption", "In Sar",
-				SpellCircle.Fifth,
+				5,
 				203,
 				9031,
                 s_ManaCost,

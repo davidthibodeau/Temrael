@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Paralysie", "An Ex Por",
-				SpellCircle.Sixth,
+				6,
 				218,
 				9012,
                 s_ManaCost,

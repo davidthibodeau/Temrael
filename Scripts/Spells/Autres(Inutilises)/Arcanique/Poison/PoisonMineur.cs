@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Poison mineur", "Nox",
-				SpellCircle.First,
+				1,
 				203,
 				9051,
 				Reagent.Nightshade

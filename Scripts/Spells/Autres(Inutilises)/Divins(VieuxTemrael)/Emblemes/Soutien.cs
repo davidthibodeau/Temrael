@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Soutien", "Gebo Tiwa",
-				SpellCircle.Fifth,
+				5,
 				212,
 				9041
             );

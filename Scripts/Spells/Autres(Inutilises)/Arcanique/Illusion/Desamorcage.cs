@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Desamorcage", "An Jux",
-                SpellCircle.Second,
+                2,
 				212,
 				9001,
 				Reagent.Bloodmoss,

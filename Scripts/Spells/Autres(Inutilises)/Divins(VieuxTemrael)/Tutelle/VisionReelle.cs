@@ -16,7 +16,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Vision Réelle", "Kena Mann",
-                SpellCircle.Fifth,
+                5,
                 212,
                 9041
             );

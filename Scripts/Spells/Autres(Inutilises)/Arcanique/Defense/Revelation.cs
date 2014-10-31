@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Reveal", "Wis Quas",
-				SpellCircle.First,
+				1,
 				206,
 				9002,
 				Reagent.Bloodmoss,

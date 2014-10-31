@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Suppression de Pièges", "An Jux",
-				SpellCircle.First,
+				1,
 				212,
 				9001,
                 s_ManaCost,

@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Energie de Masse", "In Sanct Grav",
-				SpellCircle.Seventh,
+				7,
 				221,
 				9022,
                 s_ManaCost,

@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Nourriture", "In Mani Ylem",
-				SpellCircle.First,
+				1,
 				224,
 				9011,
                 s_ManaCost,

@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Transcendance", "Marc Sowi Toki",
-                SpellCircle.Fifth,
+                5,
                 212,
                 9041
             );

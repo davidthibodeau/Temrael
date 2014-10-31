@@ -13,7 +13,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Malaise", "Des Ex Sanct",
-				SpellCircle.Fourth,
+				4,
 				224,
 				9061,
 				Reagent.Garlic,

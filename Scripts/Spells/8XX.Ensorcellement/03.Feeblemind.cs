@@ -15,7 +15,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Débilité", "Rel Wis",
-				SpellCircle.Third,
+				3,
 				212,
 				9031,
                 s_ManaCost,

@@ -18,7 +18,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Pétrification", "In Ex Grav",
-				SpellCircle.Eighth,
+				8,
 				230,
 				9012,
                 s_ManaCost,

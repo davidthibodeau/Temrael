@@ -11,7 +11,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Démon", "Kal Vas Xen Corp",
-				SpellCircle.Eighth,
+				8,
 				269,
 				9050,
 				false,

@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Énergie", "Corp Por",
-				SpellCircle.Sixth,
+				6,
 				230,
 				9022,
                 s_ManaCost,

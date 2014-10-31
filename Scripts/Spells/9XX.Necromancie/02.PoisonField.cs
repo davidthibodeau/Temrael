@@ -19,7 +19,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Mur de Poison", "In Nox Grav", 
-                SpellCircle.Sixth, 
+                6, 
                 230, 
                 9052, 
                 9052,

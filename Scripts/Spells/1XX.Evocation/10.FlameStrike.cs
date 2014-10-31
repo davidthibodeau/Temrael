@@ -16,7 +16,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Jet de Flamme", "Kal Vas Flam",
-				SpellCircle.Eighth,
+				8,
 				245,
 				9042,
                 s_ManaCost,

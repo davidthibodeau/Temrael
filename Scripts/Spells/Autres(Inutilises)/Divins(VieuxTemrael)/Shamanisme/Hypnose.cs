@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Hypnose", "Desu Berk",
-                SpellCircle.Fifth,
+                5,
                 212,
                 9041
             );

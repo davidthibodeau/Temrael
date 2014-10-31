@@ -14,7 +14,7 @@ namespace Server.Spells
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Familier", "Kal Xen Bal",
-				SpellCircle.First,
+				1,
 				203,
 				9031,
 				Reagent.BatWing,

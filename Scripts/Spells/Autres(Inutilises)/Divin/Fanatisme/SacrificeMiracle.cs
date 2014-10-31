@@ -15,7 +15,7 @@ namespace Server.Spells
 
         public static readonly new SpellInfo Info = new SpellInfo(
                 "Sacrifice", "",
-                SpellCircle.First,
+                1,
                 17,
                 9062
             );
