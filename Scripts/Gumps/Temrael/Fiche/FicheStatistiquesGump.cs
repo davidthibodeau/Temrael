@@ -96,12 +96,12 @@ namespace Server.Gumps
             list[i++] = from.Experience.XPMode ? "Hebdomadaire" : "Quotidien";
 
             list[i++] = "Mode Suicide:";
-            list[i++] = from.Suicide ? "Activé" : "Désactivé";
+            list[i++] = from.MortEngine.Suicide ? "Activé" : "Désactivé";
 
-            if (from.MortVivant)
+            if (from.MortEngine.MortVivant)
             {
                 list[i++] = "Phase Mort-Vivant";
-                list[i++] = from.MortEvo.ToString(); //17
+                list[i++] = from.MortEngine.MortEvo.ToString(); //17
             }
 
             x = 125;

@@ -8,6 +8,7 @@ using Server.Targeting;
 using Server.Spells;
 using System.Collections;
 using Server.Misc;
+using Server.Engines.Mort;
 
 namespace Server.Gumps
 {
@@ -58,23 +59,23 @@ namespace Server.Gumps
             switch (info.ButtonID)
             {
                 case 1:
-                    if (!(m_From.MortCurrentState == MortState.MortVivant))
+                    if (!(m_From.MortEngine.MortCurrentState == MortState.MortVivant))
                     {
-                        m_From.AmeLastFed = DateTime.Now;
+                        m_From.MortEngine.AmeLastFed = DateTime.Now;
                         
-                        m_From.MortVivant = true;
-                        m_From.MortCurrentState = MortState.MortVivant;
+                        m_From.MortEngine.MortVivant = true;
+                        m_From.MortEngine.MortCurrentState = MortState.MortVivant;
 
-                        TMobile.MortVivantEvoTimer timer = new TMobile.MortVivantEvoTimer(m_From);
-                        m_From.MortVivantTimer = timer;
+                        MortVivantEvoTimer timer = new MortVivantEvoTimer(m_From);
+                        m_From.MortEngine.MortVivantTimer = timer;
                         timer.Start();
 
                         m_From.Hits = (m_From.HitsMax / 2) + Utility.RandomMinMax(-5, 5);
                         m_From.Frozen = true;
                         //if (Temrael.beta)
                         //    m_From.Map = Map.Ilshenar;
-                        m_From.Location = m_From.EndroitMort;
-                        m_From.Mort = false;
+                        m_From.Location = m_From.MortEngine.EndroitMort;
+                        m_From.MortEngine.Mort = false;
                         m_From.Resurrect();
                         m_From.Frozen = false;
 

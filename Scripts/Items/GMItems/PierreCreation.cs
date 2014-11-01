@@ -4,6 +4,7 @@ using Server.Gumps;
 using Server.Mobiles;
 using System.Collections.Generic;
 using Server.Accounting;
+using Server.Engines.Mort;
 
 namespace Server.Items
 {
@@ -56,7 +57,7 @@ namespace Server.Items
 
                 tMob.ClasseType = ClasseType.None;
                 tMob.Title = "";
-                tMob.MortEvo = MortEvo.Aucune;
+                tMob.MortEngine.MortEvo = MortEvo.Aucune;
 
                 tMob.CloseGump(typeof(CreationRaceGump));
 

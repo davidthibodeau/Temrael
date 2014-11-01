@@ -23,12 +23,12 @@ namespace Server.Scripts.Commands
             {
                 TMobile tmob = (TMobile)from;
 
-                if (tmob.Suicide == true)
-                    tmob.Suicide = false;
+                if (tmob.MortEngine.Suicide == true)
+                    tmob.MortEngine.Suicide = false;
                 else
-                    tmob.Suicide = true;
+                    tmob.MortEngine.Suicide = true;
 
-                tmob.SendMessage("Votre mode de suicide est a : " + (tmob.Suicide ? "ON" : "OFF"));
+                tmob.SendMessage("Votre mode de suicide est a : " + (tmob.MortEngine.Suicide ? "ON" : "OFF"));
             }
         }
     }

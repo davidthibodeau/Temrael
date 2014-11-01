@@ -9,6 +9,7 @@ using Server.Spells;
 using System.Collections;
 using Server.Misc;
 using Server.Accounting;
+using Server.Engines.Mort;
 
 namespace Server.Gumps
 {
@@ -64,7 +65,7 @@ namespace Server.Gumps
                     if (Temrael.beta)
                         m_From.Map = Map.Ilshenar;
                     m_From.Location = m_From.EndroitMort;
-                    m_From.MortCurrentState = MortState.Resurrection;
+                    m_From.MortEngine.MortCurrentState = MortState.Resurrection;
                     m_From.Mort = false;
                     m_From.Resurrect();
                     m_From.Frozen = false;
@@ -109,17 +110,17 @@ namespace Server.Gumps
                     if (act.GetTag("XP") == "")
                         act.RemoveTag("XP");
 
-                    if (!(m_From.MortCurrentState == MortState.Delete))
+                    if (!(m_From.MortEngine.MortCurrentState == MortState.Delete))
                     {
                         exp = (int) (m_From.Experience.XP * 0.95);
 
                         act.SetTag("XP",exp.ToString());
-                        m_From.MortCurrentState = MortState.Delete;
+                        m_From.MortEngine.MortCurrentState = MortState.Delete;
                         m_From.SendMessage("Votre prochain personnage débutera avec " + act.GetTag("XP"));
-                        //m_From.MortCurrentState = MortState.MortDefinitive;
+                        //m_From.MortEngine.MortCurrentState = MortState.MortDefinitive;
                         //m_From.Delete();
                     }
-                    else if (m_From.MortCurrentState == MortState.Delete)
+                    else if (m_From.MortEngine.MortCurrentState == MortState.Delete)
                     {
                         m_From.SendMessage("Vous avez déjà transféré votre expérience sur votre compte.");
                     }

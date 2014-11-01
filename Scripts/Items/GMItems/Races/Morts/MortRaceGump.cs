@@ -4,6 +4,7 @@ using System.Text;
 using Server;
 using Server.Items;
 using Server.Mobiles;
+using Server.Engines.Mort;
 
 namespace Server.Items
 {
@@ -36,7 +37,7 @@ namespace Server.Items
 
             if (mob != null)
             {
-                mob.MortEvo = EMort;
+                mob.MortEngine.MortEvo = EMort;
 
                 mob.Delta(MobileDelta.Hits);
                 mob.Delta(MobileDelta.Stam);

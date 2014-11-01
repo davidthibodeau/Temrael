@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Mobiles;
 using Server.Spells;
 using Server.Items;
+using Server.Engines.Mort;
 
 namespace Server.Spells
 {
@@ -102,7 +103,7 @@ namespace Server.Spells
                         {
                             TMobile pm = (TMobile)(c.Owner);
 
-                            if (pm.MortCurrentState == MortState.Assomage || pm.MortCurrentState == MortState.MortDefinitive)
+                            if (pm.MortEngine.MortCurrentState == MortState.Assomage || pm.MortEngine.MortCurrentState == MortState.MortDefinitive)
                             {
                                 //pm.AddFatigue(-100);
 
@@ -111,22 +112,22 @@ namespace Server.Spells
                                 pm.PlaySound(0x214);
                                 pm.FixedEffect(0x376A, 10, 16);
 
-                                if (pm.TimerEvanouie != null)
+                                if (pm.MortEngine.TimerEvanouie != null)
                                 {
-                                    pm.TimerEvanouie.Stop();
-                                    pm.TimerEvanouie = null;
+                                    pm.MortEngine.TimerEvanouie.Stop();
+                                    pm.MortEngine.TimerEvanouie = null;
                                 }
 
-                                if (pm.TimerMort != null)
+                                if (pm.MortEngine.TimerMort != null)
                                 {
-                                    pm.TimerMort.Stop();
-                                    pm.TimerMort = null;
+                                    pm.MortEngine.TimerMort.Stop();
+                                    pm.MortEngine.TimerMort = null;
                                 }
 
                                 pm.Location = c.Location;
-                                pm.EndroitMort = c.Location;
-                                pm.RisqueDeMort = false;
-                                pm.Mort = false;
+                                pm.MortEngine.EndroitMort = c.Location;
+                                pm.MortEngine.RisqueDeMort = false;
+                                pm.MortEngine.Mort = false;
                                 pm.Frozen = false;
 
                                 pm.Direction = c.Direction;
@@ -164,7 +165,7 @@ namespace Server.Spells
                                 pm.CheckRaceGump();
                                 pm.CheckStatTimers();
 
-                                pm.MortCurrentState = MortState.Resurrection;
+                                pm.MortEngine.MortCurrentState = MortState.Resurrection;
                             }
                         }
                     }

@@ -19,6 +19,7 @@ using Server.Engines.Langues;
 using Server.Engines.Identities;
 using Server.Engines.Races;
 using Server.Engines.Evolution;
+using Server.Engines.Mort;
 
 namespace Server.Mobiles
 {
@@ -243,6 +244,13 @@ namespace Server.Mobiles
 
         [CommandProperty(AccessLevel.Batisseur)]
         public Experience Experience
+        {
+            get;
+            set;
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public MortEngine MortEngine
         {
             get;
             set;
@@ -2159,6 +2167,7 @@ namespace Server.Mobiles
             Langues = new Langues(this);
             Identities = new Identities(this);
             Experience = new Experience();
+            MortEngine = new MortEngine(this);
 
             SkillsCap = 200;
 
@@ -2379,6 +2388,7 @@ namespace Server.Mobiles
             Identities = new Identities(reader);
             QuiOptions = (QuiOptions)reader.ReadInt();
             Experience = new Experience(reader);
+            MortEngine = new MortEngine(reader);
 
             m_PeacedUntil = reader.ReadDateTime();
 
@@ -2497,7 +2507,8 @@ namespace Server.Mobiles
             Identities.Serialize(writer);
             writer.Write((int)QuiOptions);
             Experience.Serialize(writer);
-            
+            MortEngine.Serialize(writer);
+
 			writer.Write( (DateTime) m_PeacedUntil );
 
 			writer.Write( m_AutoStabled, true );

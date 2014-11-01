@@ -901,7 +901,7 @@ namespace Server.Items
             public override void OnClick()
             {
                 m_corpse.AmeEat(m_from);
-                m_from.OnAmeEating();
+                m_from.MortEngine.OnAmeEating();
             }
         }
 
@@ -914,7 +914,7 @@ namespace Server.Items
                 TMobile player = (TMobile)from;
                 TMobile owner = (TMobile)Owner;
 
-                if (player.MortVivant)
+                if (player.MortEngine.MortVivant)
                     list.Add(new AmeEatingEntry(player, this));
             }
 

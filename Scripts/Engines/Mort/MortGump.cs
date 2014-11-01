@@ -8,7 +8,7 @@ using Server.Engines.Mort;
 using System.Collections.Generic;
 using Server.Misc;
 
-namespace Server.Gumps
+namespace Server.Engines.Mort
 {
     class MortGump : Gump
     {
@@ -66,8 +66,8 @@ namespace Server.Gumps
 
                     // Teleport to jail.
 
-                    ((TMobile)m_cs.Cible).Mort = false;
-                    ((TMobile)m_cs.Cible).MortCurrentState = MortState.Aucun;
+                    ((TMobile)m_cs.Cible).MortEngine.Mort = false;
+                    ((TMobile)m_cs.Cible).MortEngine.MortCurrentState = MortState.Aucun;
 
                     m_cs.Cible.SendGump(new MortContestGump(m_From, m_cs, m_listePersoPresent));
 

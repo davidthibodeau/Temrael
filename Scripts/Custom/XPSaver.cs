@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Items;
 using System.IO;
 using Server.Accounting;
+using Server.Engines.Mort;
 
 namespace Server.Commands
 {
@@ -45,7 +46,7 @@ namespace Server.Commands
 
                         if ((!(player.Name.ToLower().Contains("[transfer]"))) && (!(player.Name.ToLower().Contains("[transféré]"))) && (!(player.Name.ToLower().Contains("(Transferer)"))) && (!(player.Name.ToLower().Contains("[Mort]"))))
                         {
-                            if (player.MortCurrentState != MortState.Mourir && player.MortCurrentState != MortState.MortDefinitive && player.MortCurrentState != MortState.Delete)
+                            if (player.MortEngine.MortCurrentState != MortState.Mourir && player.MortEngine.MortCurrentState != MortState.MortDefinitive && player.MortEngine.MortCurrentState != MortState.Delete)
                             {
                                 for (int i = 0; i < 5; i++)
                                 {

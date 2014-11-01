@@ -18,29 +18,6 @@ using System.Collections.Generic;
 namespace Server.Mobiles
 {
 
-    public enum MortState
-    {
-        Aucun,
-        Mourir,
-        Assomage,
-        Ebranle,
-        MortDefinitive,
-        MortVivant,
-        Resurrection,
-        Delete
-    }
-
-    public enum MortEvo
-    {
-        Aucune,
-        Decomposition,
-        Zombie,
-        Squelette,
-        Ombre,
-        Spectre,
-        Esprit
-    }
-
     public enum Blessures
     {
         Aucune,
@@ -88,25 +65,9 @@ namespace Server.Mobiles
         public static Hashtable m_SpellName = new Hashtable();
         public static Hashtable m_SpellHue = new Hashtable();
 
-        public List<ContratAssassinat> m_contratListe = new List<ContratAssassinat>();
-        private Container m_Corps;
-        private bool m_RisqueDeMort;
-        private Timer m_TimerEvanouie;
-        private Timer m_TimerMort;
-        private Point3D m_EndroitMort;
-        private bool m_Mort;
-        private MortState m_MortState;
-        private MortEvo m_MortEvo;
-
         private DateTime m_BrulerPlanteLast;
         private int m_LastTeinture = 0;
 
-        private DateTime m_AmeLastFed;
-        private bool m_MortVivant;
-
-        private Timer m_MortVivantTimer;
-        private DateTime m_lastAchever;
-        private DateTime m_lastAssassinat;
         private DateTime m_lastDeguisement;
         private DateTime m_NextCraftTime;
         private DateTime m_NextClasseChange;
@@ -124,9 +85,8 @@ namespace Server.Mobiles
         private bool m_Incognito = false;
 
         private ClasseType m_ClasseType = ClasseType.None;
-        private bool m_Suicide;
         private bool m_RevealTitle = true;
-        private bool m_Achever = false;
+
         private bool[,] m_Ticks = new bool[7,9];
 
         private Point3D m_OldLocation;
@@ -214,66 +174,6 @@ namespace Server.Mobiles
             get { return m_MetamorphoseList; }
             set { m_MetamorphoseList = value; }
         }
-
-        public Container Corps
-        {
-            get { return m_Corps; }
-            set { m_Corps = value; }
-        }
-
-        //[CommandProperty(AccessLevel.GameMaster)]
-        public bool RisqueDeMort
-        {
-            get { return m_RisqueDeMort; }
-            set { m_RisqueDeMort = value; }
-        }
-
-        public Timer TimerEvanouie
-        {
-            get { return m_TimerEvanouie; }
-            set { m_TimerEvanouie = value; }
-        }
-
-        public Timer TimerMort
-        {
-            get { return m_TimerMort; }
-            set { m_TimerMort = value; }
-        }
-
-        public Point3D EndroitMort
-        {
-            get { return m_EndroitMort; }
-            set { m_EndroitMort = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Mort
-        {
-            get { return m_Mort; }
-            set { m_Mort = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool MortVivant
-        {
-            get { return m_MortVivant; }
-            set { m_MortVivant = value; }
-        }
-
-        [CommandProperty(AccessLevel.Coordinateur)]
-        public MortState MortCurrentState
-        {
-            get { return m_MortState; }
-            set { m_MortState = value; }
-        }
-
-        [CommandProperty(AccessLevel.Coordinateur)]
-        public MortEvo MortEvo
-        {
-            get { return m_MortEvo; }
-            set { m_MortEvo = value; }
-        }
-
         [CommandProperty(AccessLevel.Batisseur)]
         public DateTime LastFeuPlante
         {
@@ -288,32 +188,6 @@ namespace Server.Mobiles
             set { m_LastTeinture = value; }
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime AmeLastFed
-        {
-            get { return m_AmeLastFed; }
-            set { m_AmeLastFed = value; }
-        }
-
-        public Timer MortVivantTimer
-        {
-            get { return m_MortVivantTimer; }
-            set { m_MortVivantTimer = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime LastAchever
-        {
-            get { return m_lastAchever; }
-            set { m_lastAchever = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime LastAssassinat
-        {
-            get { return m_lastAssassinat; }
-            set { m_lastAssassinat = value; }
-        }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public DateTime LastDeguisement
@@ -390,40 +264,12 @@ namespace Server.Mobiles
             set { m_ClasseType = value; FamilierCheck(); }
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Suicide
-        {
-            get { return m_Suicide; }
-            set { m_Suicide = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Achever { get { return m_Achever; } set { m_Achever = value; } }
-
         public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
-
-        
-        
-
 
         #endregion
 
         public override bool RetainPackLocsOnDeath { get { return true; } }
         public override bool KeepsItemsOnDeath { get { return false; } }
-
-        public void OnAmeEating()
-        {
-            m_AmeLastFed = DateTime.Now;
-            if ((m_MortEvo == MortEvo.Decomposition) || (m_MortEvo == MortEvo.Zombie) || (m_MortEvo == MortEvo.Squelette))
-            {
-                m_MortEvo = MortEvo.Aucune;
-
-                if (this.FindItemOnLayer(Layer.Shirt) is MortRaceGump)
-                {
-                    FindItemOnLayer(Layer.Shirt).Delete();
-                }
-            }
-        }
 
         #region constructors
         public TMobile()
@@ -1245,34 +1091,19 @@ namespace Server.Mobiles
             DispelAllTransformations();
             //CheckEtude();
 
-            if (m_TimerEvanouie != null)
-            {
-                m_TimerEvanouie.Stop();
-                m_TimerEvanouie = null;
-            }
+            
 
-            if (m_TimerMort != null)
-            {
-                m_TimerMort.Stop();
-                m_TimerMort = null;
-            }
-
-            m_EndroitMort = Location;
-
-            if (m_Suicide && Region.Name != "Jail")
-                m_RisqueDeMort = true;
-
-            if (!m_RisqueDeMort)
+            if (!MortEngine.RisqueDeMort)
             {
                 //AddFatigue(250);
                 m_Fatigue = m_Fatigue + 250;
                 if (m_Fatigue > 1000)
                     m_Fatigue = 1000;
 
-                m_Corps = c;
+                MortEngine.Corps = c;
 
-                EvanouieTimer timer = new EvanouieTimer(this, c, (int)Direction, this.RisqueDeMort);
-                m_TimerEvanouie = timer;
+                EvanouieTimer timer = new EvanouieTimer(this, c, (int)Direction, MortEngine.RisqueDeMort);
+                MortEngine.TimerEvanouie = timer;
                 timer.Start();
 
                 OnTransformationChange(0, null, -1, true); //Retirer spell transformation
@@ -1287,7 +1118,7 @@ namespace Server.Mobiles
                 if (m_Aphonie)
                     m_Aphonie = false;
 
-                m_MortState = MortState.Assomage;
+                MortEngine.MortCurrentState = MortState.Assomage;
 
                 //SendMessage("Vous êtes assommé pour une minute.");
             }
@@ -1313,8 +1144,8 @@ namespace Server.Mobiles
                 if (m_Fatigue > 1000)
                     m_Fatigue = 1000;
 
-                m_RisqueDeMort = false;
-                m_Mort = true;
+                MortEngine.RisqueDeMort = false;
+                MortEngine.Mort = true;
                 Send(PlayMusic.GetInstance(MusicName.Death));
                 Location = Utility.RandomBool() ? new Point3D(5280, 2160, 5) : new Point3D(5283, 2013, 60);
                 Frozen = false;
@@ -1556,7 +1387,6 @@ namespace Server.Mobiles
         }
         #endregion
 
-        #region timers
         private class AphonieTimer : Timer
         {
             private TMobile m_Mobile;
@@ -1574,214 +1404,6 @@ namespace Server.Mobiles
             }
         }
 
-        private class EvanouieTimer : Timer
-        {
-            private Mobile m;
-            private Container m_Corpse;
-            private int m_Direction;
-            private bool m_Mort;
-
-            public EvanouieTimer(Mobile from, Container c, int direction, bool mort)
-                : base(TimeSpan.FromSeconds(60))
-            {
-                m = from;
-                m_Corpse = c;
-                m_Direction = direction;
-                m_Mort = mort;
-                m.Frozen = true;
-            }
-
-            protected override void OnTick()
-            {
-                TMobile pm = m as TMobile;
-
-                Stop();
-                m.Frozen = false;
-
-                if (!pm.Mort)
-                {
-                    //pm.RisqueDeMort = true;
-                    m.Resurrect();
-
-                    if (m_Corpse != null)
-                    {
-                        ArrayList list = new ArrayList();
-
-                        foreach (Item item in m_Corpse.Items)
-                        {
-                            list.Add(item);
-                        }
-
-                        foreach (Item item in list)
-                        {
-                            if (item.Layer == Layer.Hair || item.Layer == Layer.FacialHair)
-                                item.Delete();
-
-                            if (item is RaceGump || (m_Corpse is Corpse && ((Corpse)m_Corpse).EquipItems.Contains(item)))
-                            {
-                                if (!m.EquipItem(item))
-                                    m.AddToBackpack(item);
-                            }
-                            else
-                            {
-                                m.AddToBackpack(item);
-                            }
-                        }
-
-                        m_Corpse.Delete();
-                    }
-
-                    m.Direction = (Direction)m_Direction;
-                    m.Animate(21, 5, 1, false, false, 0);
-
-                    //RisqueDeMortTimer Timer = new RisqueDeMortTimer(m);
-                    pm.TimerMort = this;
-                    //Timer.Start();
-
-                    pm.m_MortState = MortState.Ebranle;
-                }
-                else
-                {
-                    pm.m_MortState = MortState.MortDefinitive;
-                    pm.MoveToWorld(new Point3D(new Point2D(5277, 2159), 5), Map.Felucca);
-                    pm.Resurrect();
-                }
-                /*else
-                {
-                    pm.RisqueDeMort = false;
-                    m.Resurrect();
-                }*/
-
-                pm.CheckRaceGump();
-            }
-        }
-
-        private class RisqueDeMortTimer : Timer
-        {
-            private Mobile m;
-
-            public RisqueDeMortTimer(Mobile from)
-                : base(TimeSpan.FromSeconds(10))
-            {
-                m = from;
-            }
-
-            protected override void OnTick()
-            {
-                TMobile pm = m as TMobile;
-
-                Stop();
-                pm.RisqueDeMort = false;
-                pm.MortCurrentState = MortState.Aucun;
-            }
-        }
-
-        public class MortVivantEvoTimer : Timer
-        {
-            private Mobile m;
-
-            public MortVivantEvoTimer(Mobile from)
-                : base(TimeSpan.FromSeconds(60),TimeSpan.FromSeconds(10))
-            {
-                m = from;
-            }
-
-            protected override void OnTick()
-            {
-                TMobile pm = m as TMobile;
-                Item item = pm.FindItemOnLayer(Layer.Shirt);
-                Item hair = pm.FindItemOnLayer(Layer.Hair);
-                Item facialhair = pm.FindItemOnLayer(Layer.FacialHair);
-
-                if (pm.MortVivant)
-                {
-                    switch (pm.MortEvo)
-                    {
-                        case MortEvo.Aucune:
-                            if (pm.AmeLastFed.AddDays(7) < DateTime.Now)
-                            {
-                                pm.AmeLastFed = DateTime.Now;
-                                if (item is RaceGump)
-                                    item.Hue = 0;
-                                pm.HueMod = 0;
-                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
-                                //pm.MortRace = pm.Races;
-                                //pm.Races = Race.MortVivant;
-                                pm.MortEvo = MortEvo.Decomposition;
-                                //Competences.Reset(pm);
-                                Statistiques.Reset(pm);
-                            }
-                            break;
-                        case MortEvo.Decomposition:
-                            if (pm.AmeLastFed.AddDays(14) < DateTime.Now)
-                            {
-                                pm.AmeLastFed = DateTime.Now;
-                                if (item is RaceGump)
-                                    item.Delete();
-                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 14 jours, votre corps se déteriore à nouveau.");
-                                pm.MortEvo = MortEvo.Zombie;
-                                ZombieGump zombieGump = new ZombieGump();
-                                EquipItem(pm, zombieGump, pm.Hue);
-                            }
-                            break;
-                        case MortEvo.Zombie:
-                            if (pm.AmeLastFed.AddDays(28) < DateTime.Now)
-                            {
-                                pm.AmeLastFed = DateTime.Now;
-                                if (item is MortRaceGump)
-                                    item.Delete();
-                                if (hair != null)
-                                    hair.Delete();
-                                if (facialhair != null)
-                                    facialhair.Delete();
-                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 28 jours, votre corps se déteriore à nouveau.");
-                                pm.SendMessage("Avertissement: La prochaine transformation qui aura lieu dans 28 jours sera définitive. Nourrissez-vous de l'âme d'un vivant d'ici là.");
-                                pm.MortEvo = MortEvo.Squelette;
-                                SqueletteGump squeletteGump = new SqueletteGump();
-                                EquipItem(pm, squeletteGump, 0);
-                            }
-                            break;
-                        case MortEvo.Squelette:
-                            if (pm.AmeLastFed.AddDays(56) < DateTime.Now)
-                            {
-                                pm.AmeLastFed = DateTime.Now;
-                                if (item is MortRaceGump)
-                                    item.Delete();
-                                if (hair != null)
-                                    hair.Delete();
-                                if (facialhair != null)
-                                    facialhair.Delete();
-                                pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 56 jours, votre corps se transforme en cette chose définitivement.");
-                                pm.MortEvo = MortEvo.Ombre;
-                                OmbreGump ombreGump = new OmbreGump();
-                                EquipItem(pm, ombreGump, 0);
-                            }
-                            break;
-                        case MortEvo.Ombre:
-                            Stop();
-                            break;
-                    }
-                }
-            }
-
-            private static void EquipItem(TMobile from, Item item)
-            {
-                if (item != null)
-                    from.EquipItem(item);
-            }
-
-            private static void EquipItem(TMobile from, Item item, int hue)
-            {
-                if (item != null)
-                {
-                    item.Hue = hue;
-
-                    from.EquipItem(item);
-                }
-            }
-        }
-
-        #endregion
 
         public override void Serialize(GenericWriter writer)
         {
@@ -1792,11 +1414,7 @@ namespace Server.Mobiles
             //    for (int j = 0; j < 9; j++)
             //        writer.Write(m_Ticks[i, j]);
 
-            writer.Write((bool)m_Achever);
             writer.Write((bool)m_RevealTitle);
-
-
-            writer.Write((bool)m_Suicide);
             writer.Write((int)m_ClasseType);
 
             writer.Write((bool)m_Incognito);
@@ -1820,8 +1438,6 @@ namespace Server.Mobiles
             //for (int i = 0; i < m_ListCote.Count; i++)
             //    writer.Write((int)m_ListCote[i]);
 
-            writer.Write((DateTime)m_lastAchever);
-            writer.Write((DateTime)m_lastAssassinat);
             writer.Write((DateTime)m_lastDeguisement);
             writer.Write((DateTime)m_NextCraftTime);
 
@@ -1839,19 +1455,10 @@ namespace Server.Mobiles
 
             writer.Write((bool)m_Aphonie);
 
-            writer.Write((Container)m_Corps);
-            writer.Write(m_RisqueDeMort);
-            writer.Write(m_EndroitMort);
-            writer.Write(m_Mort);
-
-            writer.Write((int)m_MortState);
-            writer.Write((int)m_MortEvo);
 
             writer.Write((DateTime)m_BrulerPlanteLast);
             writer.Write((int)m_LastTeinture);
 
-            writer.Write((DateTime)m_AmeLastFed);
-            writer.Write((bool)m_MortVivant);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -1879,7 +1486,6 @@ namespace Server.Mobiles
                     }
                     goto case 5;
                 case 5:
-                    m_Achever = reader.ReadBool();
                     goto case 4;
                 case 4:
                     //m_FreeReset = reader.ReadBool();
@@ -1891,7 +1497,6 @@ namespace Server.Mobiles
                         Identities.RevealIdentity = reader.ReadBool();
                     goto case 1;
                 case 1:
-                    m_Suicide = reader.ReadBool();
                     if (version < 9)
                     {
                         reader.ReadDateTime();
@@ -1934,8 +1539,6 @@ namespace Server.Mobiles
                     //}
 
                     //m_StatistiquesLibres = reader.ReadInt();
-                    m_lastAchever = reader.ReadDateTime();
-                    m_lastAssassinat = reader.ReadDateTime();
                     m_lastDeguisement = reader.ReadDateTime();
                     m_NextCraftTime = reader.ReadDateTime();
 
@@ -1989,45 +1592,16 @@ namespace Server.Mobiles
                     if(version < 9)
                         Identities.Disguised = reader.ReadBool();
 
-                    m_Corps = (Container)reader.ReadItem();
-                    m_RisqueDeMort = reader.ReadBool();
-                    m_EndroitMort = reader.ReadPoint3D();
-                    m_Mort = reader.ReadBool();
-
-                    m_MortState = (MortState)reader.ReadInt();
-                    m_MortEvo = (MortEvo)reader.ReadInt();
+  
 
                     m_BrulerPlanteLast = reader.ReadDateTime();
                     m_LastTeinture = reader.ReadInt();
 
-                    m_AmeLastFed = reader.ReadDateTime();
-                    m_MortVivant = reader.ReadBool();
 
                     break;
                 default: break;
             }
-            if (!Alive && !m_Mort)
-            {
-                m_RisqueDeMort = false;
 
-                EvanouieTimer timer = new EvanouieTimer(this, m_Corps, (int)Direction, this.RisqueDeMort);
-                m_TimerEvanouie = timer;
-                timer.Start();
-            }
-
-            if (m_RisqueDeMort)
-            {
-                RisqueDeMortTimer timer = new RisqueDeMortTimer(this);
-                m_TimerMort = timer;
-                timer.Start();
-            }
-
-            if (m_MortVivant)
-            {
-                MortVivantEvoTimer timer = new MortVivantEvoTimer(this);
-                m_MortVivantTimer = timer;
-                timer.Start();
-            }
 
             if (Female)
             {

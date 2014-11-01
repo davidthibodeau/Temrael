@@ -5,9 +5,8 @@ using Server.Mobiles;
 using Server.Commands;
 using Server.Targeting;
 using Server.Items;
-using Server.Engines.Mort;
 
-namespace Server.Scripts.Commands
+namespace Server.Engines.Mort
 {
     public class Achever
     {
@@ -57,12 +56,12 @@ namespace Server.Scripts.Commands
                             {
                                 if ((tmob.GetDistanceToSqrt(corps.Location) <= 3) && (tmob.InLOS(corps)))
                                 {
-                                    if (m_corpseOwner.MortCurrentState == MortState.Assomage)
+                                    if (m_corpseOwner.MortEngine.MortCurrentState == MortState.Assomage)
                                     {
-                                        tmob.LastAchever = DateTime.Now;
+                                        tmob.MortEngine.LastAchever = DateTime.Now;
                                         tmob.Frozen = true;
                                         tmob.SendMessage("Vous achevez le personnage et êtes pris sur place pour 5 secondes.");
-                                        tmob.Achever = false;
+                                        tmob.MortEngine.Achever = false;
 
                                         startingHits = tmob.Hits;
 
@@ -102,11 +101,11 @@ namespace Server.Scripts.Commands
                 if (startingHits <= from.Hits) // Si le joueur n'a pas perdu d'HP pendant l'achèvement..
                 {
                     ContratAssassinat cs = null;
-                    for (int i = 0; cs == null && i < from.m_contratListe.Count; i++)
+                    for (int i = 0; cs == null && i < from.MortEngine.ContratListe.Count; i++)
                     {
-                        if (from.m_contratListe[i].Cible == m_corpseOwner)
+                        if (from.MortEngine.ContratListe[i].Cible == m_corpseOwner)
                         {
-                            cs = from.m_contratListe[i];
+                            cs = from.MortEngine.ContratListe[i];
                         }
                     }
 
@@ -116,8 +115,8 @@ namespace Server.Scripts.Commands
                     }
 
                     // Fais comme si il était mort pour éviter qu'il respawn avant d'avoir répondu au gump de mort.
-                    ((TMobile)m_corpseOwner).Mort = true;
-                    ((TMobile)m_corpseOwner).MortCurrentState = MortState.Mourir;
+                    ((TMobile)m_corpseOwner).MortEngine.Mort = true;
+                    ((TMobile)m_corpseOwner).MortEngine.MortCurrentState = MortState.Mourir;
 
                     m_corpseOwner.SendGump(new MortGump((Mobile)from, cs));
 
