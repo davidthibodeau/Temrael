@@ -24,8 +24,7 @@ namespace Server.Spells
                 "Sérénade", "",
                 1,
                 215,
-                9041,
-                false
+                9041
             );
 
         public SerenadeSpell(Mobile caster, Item scroll)

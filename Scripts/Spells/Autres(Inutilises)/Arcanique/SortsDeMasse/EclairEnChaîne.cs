@@ -16,7 +16,6 @@ namespace Server.Spells
 				7,
 				209,
 				9022,
-				false,
 				Reagent.BlackPearl,
 				Reagent.Bloodmoss,
 				Reagent.MandrakeRoot

@@ -12,7 +12,6 @@ namespace Server.Spells
 
         private static int s_ManaCost = 50;
         private static SkillName s_SkillForCast = SkillName.ArtMagique;
-        private static int s_MinSkillForCast = 50;
         private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
         
 		public static readonly new SpellInfo Info = new SpellInfo(
@@ -23,8 +22,6 @@ namespace Server.Spells
                 s_ManaCost,
                 s_DureeCastCast,
                 s_SkillForCast,
-                s_MinSkillForCast,
-                false,
 				Reagent.NoxCrystal,
 				Reagent.PigIron
             );

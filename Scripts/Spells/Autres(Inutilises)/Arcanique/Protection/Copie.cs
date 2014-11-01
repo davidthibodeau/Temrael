@@ -219,7 +219,6 @@ namespace Server.Spells
                 6,
                 269,
                 9020,
-                false,
                 Reagent.Garlic,
                 Reagent.MandrakeRoot,
                 Reagent.Ginseng

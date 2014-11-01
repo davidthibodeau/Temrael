@@ -17,7 +17,6 @@ namespace Server.Spells
 				6,
 				230,
 				9052,
-				false,
                 Reagent.Garlic,
 				Reagent.Nightshade,
 				Reagent.NoxCrystal

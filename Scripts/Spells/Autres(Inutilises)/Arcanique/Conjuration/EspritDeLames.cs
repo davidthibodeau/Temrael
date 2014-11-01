@@ -14,7 +14,6 @@ namespace Server.Spells
 				5,
 				266,
 				9040,
-				false,
 				Reagent.BlackPearl,
 				Reagent.MandrakeRoot,
 				Reagent.Nightshade

@@ -24,8 +24,7 @@ namespace Server.Spells
                 "Sona", "",
                 1,
                 215,
-                9041,
-                false
+                9041
             );
 
         public SonaSpell(Mobile caster, Item scroll)

@@ -14,7 +14,6 @@ namespace Server.Spells
 				7,
 				269,
 				9050,
-				false,
 				Reagent.Bloodmoss,
                 Reagent.Bloodmoss,
                 Reagent.Bloodmoss

@@ -24,7 +24,7 @@ namespace Server.Custom.CustomSpell
 
 
         private InfoSpell(string Name, string Formule, short Cercle, int Action, int HandEffect, int ManaCost, SkillName SkillUtilise, int NiveauSkillReq, TimeSpan CastTime, StyleSpell Style, params Type[] regs)
-            : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, CastTime, SkillUtilise, NiveauSkillReq, true, regs)
+            : base(Name, Formule, Cercle, Action, HandEffect, ManaCost, CastTime, SkillUtilise, regs)
         {
             style = Style;
 

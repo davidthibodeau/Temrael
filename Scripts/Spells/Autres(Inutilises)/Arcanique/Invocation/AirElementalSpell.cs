@@ -14,7 +14,6 @@ namespace Server.Spells
 				4,
 				269,
 				9010,
-				false,
 				Reagent.Ginseng,
 				Reagent.MandrakeRoot,
 				Reagent.Nightshade

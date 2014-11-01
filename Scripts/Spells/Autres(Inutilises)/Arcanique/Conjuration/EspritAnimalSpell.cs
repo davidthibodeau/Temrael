@@ -14,7 +14,6 @@ namespace Server.Spells
 				3,
 				269,
 				9032,
-				false,
 				Reagent.Bloodmoss,
 				Reagent.BlackPearl
 			);

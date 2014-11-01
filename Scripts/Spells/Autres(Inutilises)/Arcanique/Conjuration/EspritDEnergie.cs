@@ -14,7 +14,6 @@ namespace Server.Spells
 				6,
 				260,
 				9032,
-				false,
 				Reagent.Bloodmoss,
 				Reagent.BlackPearl,
 				Reagent.Nightshade

@@ -14,7 +14,6 @@ namespace Server.Spells
 				8,
 				269,
 				9050,
-				false,
 				Reagent.Bloodmoss,
 				Reagent.Garlic,
 				Reagent.SpidersSilk

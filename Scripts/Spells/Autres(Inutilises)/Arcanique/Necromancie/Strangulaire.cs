@@ -14,7 +14,6 @@ namespace Server.Spells
 				5,
 				269,
 				9070,
-				false,
 				Reagent.Bloodmoss,
 				Reagent.NoxCrystal,
 				Reagent.GraveDust

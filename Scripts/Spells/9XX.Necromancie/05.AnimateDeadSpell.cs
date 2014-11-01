@@ -12,21 +12,16 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 905; } } // TOCHANGE
 
-        private static int s_ManaCost = 50;
-        private static SkillName s_SkillForCast = SkillName.ArtMagique;
-        private static int s_MinSkillForCast = 50;
-        private static TimeSpan s_DureeCast = TimeSpan.FromSeconds(1);
+        private static short s_Cercle = 5;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Animate Dead", "Uus Corp",
-				8,
-				203,
-				9031,
-                s_ManaCost,
-                s_DureeCast,
-                s_SkillForCast,
-                s_MinSkillForCast,
-                false,
+                s_Cercle,
+                203,
+                9031,
+                GetBaseManaCost(s_Cercle),
+                TimeSpan.FromSeconds(1),
+                SkillName.ArtMagique,
 				Reagent.GraveDust,
 				Reagent.DaemonBlood,
                 Reagent.NoxCrystal,

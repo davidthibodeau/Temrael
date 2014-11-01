@@ -25,8 +25,7 @@ namespace Server.Spells
 				"Symphonie", "",
 				1,
 				215,
-				9041,
-				false
+				9041
 			);
 
         public SymphonieSpell(Mobile caster, Item scroll)

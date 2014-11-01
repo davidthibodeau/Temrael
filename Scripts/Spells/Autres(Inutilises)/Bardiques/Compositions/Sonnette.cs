@@ -24,8 +24,7 @@ namespace Server.Spells
 				"Sonnette", "",
 				1,
 				215,
-				9041,
-				false
+				9041
 			);
 
         public SonnetteSpell(Mobile caster, Item scroll)

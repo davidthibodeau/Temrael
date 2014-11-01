@@ -14,8 +14,7 @@ namespace Server.Spells
                 "Monture Celeste", "",
                 6,
                 17,
-                9032,
-                false
+                9032
             );
 
         public override bool Invocation { get { return true; } }

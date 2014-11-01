@@ -14,7 +14,6 @@ namespace Server.Spells
 				6,
 				269,
 				9050,
-				false,
 				Reagent.SulfurousAsh,
 				Reagent.SpidersSilk,
 				Reagent.SulfurousAsh

@@ -10,21 +10,16 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 101; } } // TOCHANGE
 
-        private static int s_ManaCost = 50;
-        private static SkillName s_SkillForCast = SkillName.ArtMagique;
-        private static int s_MinSkillForCast = 10;
-        private static TimeSpan s_DureeCastCast = TimeSpan.FromSeconds(1);
+        private static short s_Cercle = 1;
 
         public static readonly new SpellInfo Info = new SpellInfo(
 				"Flèche Magique", "In Por Ylem",
-				1,
+                s_Cercle,
 				212,
 				9041,
-                s_ManaCost,
-                s_DureeCastCast,
-                s_SkillForCast,
-                s_MinSkillForCast,
-                false,
+                GetBaseManaCost(s_Cercle),
+                TimeSpan.FromSeconds(1),
+                SkillName.Evocation,
 				Reagent.SulfurousAsh
             );
 

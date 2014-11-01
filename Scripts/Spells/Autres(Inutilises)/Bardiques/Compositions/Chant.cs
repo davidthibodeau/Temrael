@@ -24,8 +24,7 @@ namespace Server.Spells
 				"Chant", "",
 				1,
 				215,
-				9041,
-				false
+				9041
 			);
 
         public ChantSpell(Mobile caster, Item scroll)

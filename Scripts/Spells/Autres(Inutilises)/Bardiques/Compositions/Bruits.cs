@@ -24,8 +24,7 @@ namespace Server.Spells
 				"Bruit", "",
 				1,
 				215,
-				9041,
-				false
+				9041
 			);
 
         public BruitSpell(Mobile caster, Item scroll)

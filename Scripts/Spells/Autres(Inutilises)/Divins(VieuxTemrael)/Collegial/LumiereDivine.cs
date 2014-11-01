@@ -75,8 +75,7 @@ namespace Server.Spells
                 "Lumière divine", "Haga Kena",
                 4,
                 269,
-                9032,
-                false
+                9032
             );
 
         public override bool Invocation { get { return true; } }

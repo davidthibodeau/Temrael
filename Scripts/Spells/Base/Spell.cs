@@ -227,7 +227,7 @@ namespace Server.Spells
 
 		public virtual bool OnCastInTown( Region r )
 		{
-			return m_Info.AllowTown;
+            return true;
 		}
 
 		public virtual bool ConsumeReagents()
@@ -288,6 +288,11 @@ namespace Server.Spells
 
             return ( n >= Utility.RandomDouble() );
 		}
+
+        public static int GetBaseManaCost(short cercle)
+        {
+            return cercle * 10;
+        }
 
 		public virtual double GetInscribeSkill( Mobile m )
 		{

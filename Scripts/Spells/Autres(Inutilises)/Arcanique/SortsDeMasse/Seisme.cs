@@ -16,7 +16,6 @@ namespace Server.Spells
 				5,
 				233,
 				9012,
-				false,
 				Reagent.Bloodmoss,
                 Reagent.Bloodmoss,
 				Reagent.SulfurousAsh

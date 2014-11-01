@@ -27,7 +27,6 @@ namespace Server.Gumps
 
     public class SpellBookEntry
     {
-        private int m_SkillLevel;
         private SkillName m_Skill;
         private string m_Nom;
         private Type[] m_Reagents;

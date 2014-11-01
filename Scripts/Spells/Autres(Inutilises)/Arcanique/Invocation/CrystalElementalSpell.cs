@@ -14,7 +14,6 @@ namespace Server.Spells
 				8,
 				269,
 				9070,
-				false,
 				Reagent.BlackPearl,
                 Reagent.BlackPearl,
 				Reagent.SpidersSilk

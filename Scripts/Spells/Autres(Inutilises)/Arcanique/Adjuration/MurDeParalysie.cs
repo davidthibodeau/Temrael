@@ -16,7 +16,6 @@ namespace Server.Spells
 				7,
 				230,
 				9012,
-				false,
 				Reagent.MandrakeRoot,
 				Reagent.Ginseng,
 				Reagent.SpidersSilk
