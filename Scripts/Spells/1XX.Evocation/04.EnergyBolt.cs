@@ -2,6 +2,7 @@ using System;
 using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
@@ -46,24 +47,10 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-              //  double damage = Utility.RandomMinMax(40, 80);
-                double damage = Utility.RandomMinMax(30, 40);
-
-                damage = SpellHelper.AdjustValue(Caster, damage);
-
-                if (CheckResisted(m))
-                {
-                    damage *= 0.75;
-
-                    m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
-                }
-
-                damage *= GetDamageScalar(m);
-
                 m.FixedParticles(0x36BD, 20, 10, 5044, EffectLayer.Head);
                 m.PlaySound(0x307);
 
-                SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
+                Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
 
 				m.MovingParticles( m, 0x379F, 7, 0, false, true, 3043, 4043, 0x211 );
 				m.PlaySound( 0x20A );

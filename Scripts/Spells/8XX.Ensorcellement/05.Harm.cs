@@ -58,8 +58,6 @@ namespace Server.Spells
                     m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                 }
 
-                damage *= GetDamageScalar(m);
-
                 m.FixedParticles(0x374A, 10, 15, 5013, EffectLayer.Waist);
                 m.PlaySound(0x1F1);
 

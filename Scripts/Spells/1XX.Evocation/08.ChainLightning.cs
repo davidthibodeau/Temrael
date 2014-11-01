@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
 using Server.Engines.PartySystem;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
@@ -94,10 +95,9 @@ namespace Server.Spells
                         eable.Free();
                     }
 
-               //     double damage = Utility.RandomMinMax(60, 120);
-                    double damage = Utility.RandomMinMax(30, 60);
 
-                    damage = SpellHelper.AdjustValue(Caster, damage);
+                    double damage = Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) / 2;
+
 
                     if (targets.Count > 0)
                     {
@@ -105,17 +105,8 @@ namespace Server.Spells
                         {
                             Mobile m = (Mobile)targets[i];
 
-                            if (CheckResisted(m))
-                            {
-                                damage *= 0.75;
-
-                                m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
-                            }
-
-                            damage *= GetDamageScalar(m);
-
                             Caster.DoHarmful(m);
-                            SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
+                            Damage.instance.AppliquerDegatsMagiques(m, damage);
 
                             m.BoltEffect(0);
                         }

@@ -87,8 +87,6 @@ namespace Server.Spells
 
                         double damage = Utility.RandomMinMax(30, 35);
 
-                        damage = SpellHelper.AdjustValue(Caster, damage);
-
                         if (CheckResisted(m))
                         {
                             damage *= 0.75;

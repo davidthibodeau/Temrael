@@ -110,8 +110,6 @@ namespace Server.Spells
 							m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
                         }
 
-                        damage *= GetDamageScalar(m);
-
 						Caster.DoHarmful( m );
                         SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
 

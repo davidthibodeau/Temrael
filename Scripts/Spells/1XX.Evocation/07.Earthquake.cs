@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
 using Server.Engines.PartySystem;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
@@ -79,16 +80,14 @@ namespace Server.Spells
 
                 Caster.PlaySound(0x2F3);
 
-                double damage = Utility.RandomMinMax(50, 100);
-
-                damage = SpellHelper.AdjustValue(Caster, damage);
+                double damage = Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) / 2;
 
 				for ( int i = 0; i < targets.Count; ++i )
 				{
                     Mobile m = (Mobile)targets[i];
 
 					Caster.DoHarmful( m );
-					SpellHelper.Damage( TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100 );
+                    Damage.instance.AppliquerDegatsMagiques(m, damage);
 				}
 			}
 

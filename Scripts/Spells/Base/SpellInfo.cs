@@ -55,6 +55,7 @@ namespace Server.Spells
 			m_Circle = circle;
 			m_Action = action;
             m_ManaCost = manaCost;
+            m_castTime = castTime;
             m_SkillForCasting = skillForCasting;
             m_MinSkillForCasting = GetMinSkill(m_Circle);
             m_Reagents = regs;

@@ -877,21 +877,12 @@ namespace Server.Spells
 
 			if ( delay == TimeSpan.Zero )
 			{
-				if ( from is BaseCreature )
-					((BaseCreature)from).AlterSpellDamageTo( target, ref iDamage );
-
-				if ( target is BaseCreature )
-					((BaseCreature)target).AlterSpellDamageFrom( from, ref iDamage );
-
 				target.Damage( iDamage, from );
 			}
 			else
 			{
 				new SpellDamageTimer( target, from, iDamage, delay ).Start();
 			}
-
-			if ( target is BaseCreature && from != null && delay == TimeSpan.Zero )
-				((BaseCreature)target).OnDamagedBySpell( from );
 		}
 
 		public static void Damage( Spell spell, Mobile target, double damage, int phys, int fire, int cold, int pois, int nrgy )
@@ -925,12 +916,6 @@ namespace Server.Spells
 
 			if ( delay == TimeSpan.Zero )
 			{
-				if ( from is BaseCreature )
-					((BaseCreature)from).AlterSpellDamageTo( target, ref iDamage );
-
-				if ( target is BaseCreature )
-					((BaseCreature)target).AlterSpellDamageFrom( from, ref iDamage );
-
 				WeightOverloading.DFA = dfa;
 				AOS.Damage( target, from, iDamage, phys, fire, cold, pois, nrgy );
 				WeightOverloading.DFA = DFAlgorithm.Standard;
@@ -939,9 +924,6 @@ namespace Server.Spells
 			{
 				new SpellDamageTimerAOS( target, from, iDamage, phys, fire, cold, pois, nrgy, delay, dfa ).Start();
 			}
-
-			if ( target is BaseCreature && from != null && delay == TimeSpan.Zero )
-				((BaseCreature)target).OnDamagedBySpell( from );
 		}
 
 		private class SpellDamageTimer : Timer
@@ -960,12 +942,6 @@ namespace Server.Spells
 
 			protected override void OnTick()
 			{
-				if ( m_From is BaseCreature )
-					((BaseCreature)m_From).AlterSpellDamageTo( m_Target, ref m_Damage );
-
-				if ( m_Target is BaseCreature )
-					((BaseCreature)m_Target).AlterSpellDamageFrom( m_From, ref m_Damage );
-
 				m_Target.Damage( m_Damage );
 			}
 		}
@@ -994,18 +970,10 @@ namespace Server.Spells
 
 			protected override void OnTick()
 			{
-				if ( m_From is BaseCreature && m_Target != null )
-					((BaseCreature)m_From).AlterSpellDamageTo( m_Target, ref m_Damage );
-
-				if ( m_Target is BaseCreature && m_From != null )
-					((BaseCreature)m_Target).AlterSpellDamageFrom( m_From, ref m_Damage );
-
 				WeightOverloading.DFA = m_DFA;
 				AOS.Damage( m_Target, m_From, m_Damage, m_Phys, m_Fire, m_Cold, m_Pois, m_Nrgy );
 				WeightOverloading.DFA = DFAlgorithm.Standard;
 
-				if ( m_Target is BaseCreature && m_From != null )
-					((BaseCreature)m_Target).OnDamagedBySpell( m_From );
 			}
 		}
 	}

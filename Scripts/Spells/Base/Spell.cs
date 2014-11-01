@@ -365,36 +365,6 @@ namespace Server.Spells
             return GetResistPercentForAptitude(target, GetSkillValue()/10);
 		}
 
-		public virtual double GetDamageScalar( Mobile target )
-		{
-			double casterEI = m_Caster.Skills[DamageSkill].Value;
-			double targetRS = target.Skills[SkillName.Meditation].Value;
-			double scalar;
-
-			m_Caster.CheckSkill( DamageSkill, 0.0, 120.0 );
-
-			if ( casterEI > targetRS )
-				scalar = (1.0 + ((casterEI - targetRS) / 500.0));
-			else
-				scalar = (1.0 + ((casterEI - targetRS) / 200.0));
-
-			// magery damage bonus, -25% at 0 skill, +0% at 100 skill, +5% at 120 skill
-			scalar += ( m_Caster.Skills[CastSkill].Value - 100.0 ) / 400.0;
-
-			if ( target is BaseCreature )
-				scalar += 0.5; // Double magery damage to monsters/animals if not AOS
-
-			if ( target is BaseCreature )
-				((BaseCreature)target).AlterDamageScalarFrom( m_Caster, ref scalar );
-
-			if ( m_Caster is BaseCreature )
-				((BaseCreature)m_Caster).AlterDamageScalarTo( target, ref scalar );
-
-			target.Region.SpellDamageScalar( m_Caster, target, ref scalar );
-
-			return scalar;
-		}
-
         public virtual TimeSpan GetDurationForSpell(double scale)
         {
             return GetDurationForSpell(5, scale);

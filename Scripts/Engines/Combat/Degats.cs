@@ -48,13 +48,13 @@ namespace Server.Engines.Combat
             // Les ifs sont gérés à la compilation, donc pas de coût, juste un warning gossant.
             if (ScalingArtMag != 0)
             {
-                TotalDamage += GetBonus(BaseDamage, ScalingArtMag, 0);
+                TotalDamage += (DPSBASE * tempsCast.Seconds * (atk.Skills[SkillName.ArtMagique].Value * ScalingArtMag / 100));
             }
 
             if (ScalMainBranche != 0)
             {
                 // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
-                TotalDamage += GetBonus(BaseDamage, ScalMainBranche - ScalScndBranche, 0) * atk.Skills[branche].Value;
+                TotalDamage += (DPSBASE * tempsCast.Seconds * (atk.Skills[branche].Value * (ScalMainBranche - ScalScndBranche) / 100));
             }
 
             if (ScalScndBranche != 0)
@@ -69,7 +69,7 @@ namespace Server.Engines.Combat
                              + atk.Skills[SkillName.Ensorcellement].Value
                              + atk.Skills[SkillName.Necromancie].Value;
 
-                TotalDamage += GetBonus(BaseDamage, ScalScndBranche, 0) * value;
+                TotalDamage += (DPSBASE * tempsCast.Seconds * (atk.Skills[branche].Value * ScalScndBranche / 100));
             }
 
             return TotalDamage;
@@ -78,7 +78,7 @@ namespace Server.Engines.Combat
         private double BaseDegatsMagiques(short cercle, TimeSpan tempsCast)
         {
             // Calcul de la fiche Excel.
-            return (((((ScalingCategorie / NbTotalCercles) * cercle) + 1) * DPSBASE) * tempsCast.TotalSeconds);
+            return (((((ScalingCategorie / NbTotalCercles) * cercle) + 1) * DPSBASE) * tempsCast.Seconds);
         }
         #endregion
 

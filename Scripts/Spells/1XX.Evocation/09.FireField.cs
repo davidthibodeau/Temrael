@@ -5,6 +5,7 @@ using Server.Network;
 using Server.Misc;
 using Server.Items;
 using Server.Mobiles;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
@@ -183,22 +184,12 @@ namespace Server.Spells
 
 					m_Caster.DoHarmful( m );
 
-                 //   double damage = Utility.RandomMinMax(25, 50);
-                    double damage = Utility.RandomMinMax(10, 20);
-
-                    damage = SpellHelper.AdjustValue(m_Caster, damage);
-
-                    if (m_Spell.CheckResisted(m))
-                    {
-                        damage *= 0.75;
-
-                        m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
-                    }
+                    double damage = Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) / 2;
 
                     if (m == m_Caster)
                         damage /= 2;
 
-					AOS.Damage( m, m_Caster, (int)damage, 0, 100, 0, 0, 0 );
+                    Damage.instance.AppliquerDegatsMagiques(m, damage);
 					m.PlaySound( 0x208 );
 				}
 
