@@ -412,7 +412,7 @@ namespace Server.Items
 
         [Constructable]
         public AcajouBoard(int amount)
-            : base(CraftResource.CedreWood, amount)
+            : base(CraftResource.AcajouWood, amount)
         {
         }
 

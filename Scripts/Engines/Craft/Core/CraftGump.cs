@@ -566,7 +566,19 @@ namespace Server.Engines.Craft
 
                             CraftSubRes res = system.CraftSubRes2.GetAt(index);
 
-                            if (m_From.Skills[system.MainSkill].Base < res.RequiredSkill)
+                            SkillName skill = m_CraftSystem.MainSkill;
+
+                            if (m_CraftSystem.MainSkill == SkillName.Forge)
+                            {
+                                skill = SkillName.Excavation;
+                            }
+                            else if (m_CraftSystem.MainSkill == SkillName.Menuiserie)
+                            {
+                                skill = SkillName.Hache;
+                            }
+
+
+                            if (m_From.Skills[skill].Base < res.RequiredSkill)
                             {
                                 m_From.SendGump(new CraftGump(m_From, system, m_Tool, res.Message));
                             }
