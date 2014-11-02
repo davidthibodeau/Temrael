@@ -177,6 +177,8 @@ namespace Server.Engines.Mort
         public void Serialize(GenericWriter writer)
         {
             writer.Write(mobile);
+            writer.Write(m_Achever);
+            writer.Write(m_Suicide);
             writer.Write((DateTime)m_lastAchever);
             writer.Write((DateTime)m_lastAssassinat);
 
