@@ -778,13 +778,10 @@ namespace Server {
 
 			Stopwatch watch = Stopwatch.StartNew();
 
-			if ( !Directory.Exists( "Saves/Mobiles/" ) )
-				Directory.CreateDirectory( "Saves/Mobiles/" );
-			if ( !Directory.Exists( "Saves/Items/" ) )
-				Directory.CreateDirectory( "Saves/Items/" );
-			if ( !Directory.Exists( "Saves/Guilds/" ) )
-				Directory.CreateDirectory( "Saves/Guilds/" );
-
+            Directories.AppendPath(Directories.saves, "Mobiles");
+            Directories.AppendPath(Directories.saves, "Items");
+            Directories.AppendPath(Directories.saves, "Guilds");
+            Directories.AppendPath(Directories.saves, "Misc");
 
 			/*using ( SaveMetrics metrics = new SaveMetrics() ) {*/
 			strategy.Save( null, permitBackgroundWrite );

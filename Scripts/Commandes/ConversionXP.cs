@@ -5,6 +5,7 @@ using Server;
 using Server.Mobiles;
 using Server.Accounting;
 using System.IO;
+using Server.Engines.Mort;
 
 namespace Server.Commands
 {
@@ -12,8 +13,8 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("savexp", AccessLevel.Owner,
-               new CommandEventHandler(savexp_OnCommand));
+            //CommandSystem.Register("savexp", AccessLevel.Owner,
+            //   new CommandEventHandler(savexp_OnCommand));
         }
 
         public static void savexp_OnCommand(CommandEventArgs e)
@@ -46,24 +47,24 @@ namespace Server.Commands
 
                         if ((!(player.Name.ToLower().Contains("[transfer]"))) && (!(player.Name.ToLower().Contains("[transféré]"))) && (!(player.Name.ToLower().Contains("(Transferer)"))) && (!(player.Name.ToLower().Contains("[Mort]"))))
                         {
-                            if (player.MortCurrentState != MortState.Mourir && player.MortCurrentState != MortState.MortDefinitive && player.MortCurrentState != MortState.Delete)
+                            if (player.MortEngine.MortCurrentState != MortState.Mourir && player.MortEngine.MortCurrentState != MortState.MortDefinitive && player.MortEngine.MortCurrentState != MortState.Delete)
                             {
-                                if (player.XP > firstxp)
+                                if (player.Experience.XP > firstxp)
                                 {
                                     thirdxp = secondxp;
                                     secondxp = firstxp;
-                                    firstxp = player.XP;
+                                    firstxp = player.Experience.XP;
                                 }
-                                else if (player.XP > secondxp)
+                                else if (player.Experience.XP > secondxp)
                                 {
                                     thirdxp = secondxp;
-                                    secondxp = player.XP;
+                                    secondxp = player.Experience.XP;
                                 }
-                                else if (player.XP > thirdxp)
+                                else if (player.Experience.XP > thirdxp)
                                 {
-                                    thirdxp = player.XP;
+                                    thirdxp = player.Experience.XP;
                                 }
-                                w.WriteLine("{0} XPs", player.XP);
+                                w.WriteLine("{0} XPs", player.Experience.XP);
 
                             }
                             else
@@ -79,22 +80,6 @@ namespace Server.Commands
                     act.SetTag("SavedXP1", firstxp.ToString());
                     act.SetTag("SavedXP2", secondxp.ToString());
                     act.SetTag("SavedXP3", thirdxp.ToString());
-
-                    ////Console.WriteLine("Player : " + player.Name);
-                    //if (act.GetTag("LegacyXP" + i.ToString()) == "")
-                    //{
-                    //    act.RemoveTag("LegacyXP" + i.ToString());
-                    //    act.SetTag("LegacyXP" + i.ToString(), (player.XP * 4.4).ToString());
-                    //    //Console.WriteLine("LegacyXP" + i.ToString() + " : " + "LegacyXP" + i.ToString());
-                    //    break;
-                    //}
-                    //else if (!(Int32.TryParse(act.GetTag("LegacyXP"), out num)))
-                    //{
-                    //    act.RemoveTag("LegacyXP" + i.ToString());
-                    //    act.SetTag("LegacyXP" + i.ToString(), (player.XP * 2).ToString());
-                    //    //Console.WriteLine("LegacyXP" + i.ToString() + " : " + act.GetTag("LegacyXP" + i.ToString()));
-                    //    break;
-                    //}
                 }
             }
             Console.WriteLine("Sauvegarde effectuée");

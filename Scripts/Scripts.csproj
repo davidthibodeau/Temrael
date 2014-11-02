@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commandes\ConversionXP.cs" />
     <Compile Include="Commandes\Temrael\AddRandom.cs" />
     <Compile Include="Commandes\Temrael\GenerateKey.cs" />
     <Compile Include="Commandes\Temrael\Reveler.cs" />
@@ -1449,7 +1450,6 @@
     <Compile Include="Mobiles\Townfolk\TownsPeople\Townsperson.cs" />
     <Compile Include="Custom\Waypoint\NetworkPathAlgorithm.cs" />
     <Compile Include="Custom\Waypoint\PathTester.cs" />
-    <Compile Include="Custom\XPSaver.cs" />
     <Compile Include="Encryption\Configuration.cs" />
     <Compile Include="Encryption\Encryption12OCT2009.cs" />
     <Compile Include="Encryption\GameEncryption.cs" />
