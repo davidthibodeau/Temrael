@@ -1204,9 +1204,11 @@ namespace Server.Mobiles
 			if ( GetFactionAllegiance( m ) == Allegiance.Ally )
 				return false;
 
-			BaseCreature c = (BaseCreature)m;
+			BaseCreature c = m as BaseCreature;
 
-			return ( m_iTeam != c.m_iTeam || ( (m_bSummoned || m_bControlled) != (c.m_bSummoned || c.m_bControlled) )/* || c.Combatant == this*/ );
+            if (c != null)
+                return (m_iTeam != c.m_iTeam || ((m_bSummoned || m_bControlled) != (c.m_bSummoned || c.m_bControlled))/* || c.Combatant == this*/ );
+            return false;
 		}
 
 		public override string ApplyNameSuffix( string suffix )
