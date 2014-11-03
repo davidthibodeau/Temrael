@@ -224,6 +224,8 @@ namespace Server.Items
 			writer.Write( m_PlaySoundAtTrigger );
 
             writer.Write(m_PopMessage);
+            writer.Write(m_MessageDelay);
+            writer.Write(m_MessageAtTrigger);
             writer.Write(m_Message);
 
 			writer.WriteEncodedInt( (int) m_EffectType );
@@ -271,6 +273,8 @@ namespace Server.Items
 					m_PlaySoundAtTrigger = reader.ReadBool();
 
                     m_PopMessage = reader.ReadBool();
+                    m_MessageDelay = reader.ReadTimeSpan();
+                    m_MessageAtTrigger = reader.ReadBool();
                     m_Message = reader.ReadString();
 
 					m_EffectType = (ECEffectType)reader.ReadEncodedInt();
