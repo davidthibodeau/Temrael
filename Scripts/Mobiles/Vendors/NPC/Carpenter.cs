@@ -21,7 +21,9 @@ namespace Server.Mobiles
             m_SBInfos.Clear();
             //switch (races)
             //{
-            //    case Race.Aasimar: m_SBInfos.Add(new SBCarpenter()); break;
+            //    case Race.Aasimar: 
+            m_SBInfos.Add(new SBCarpenter()); 
+            //break;
             //    case Race.Elfe: m_SBInfos.Add(new SBCarpenterElfe()); break;
             //    case Race.ElfeNoir: m_SBInfos.Add(new SBCarpenterDrow()); break;
             //    case Race.Capiceen: m_SBInfos.Add(new SBCarpenter()); break;
