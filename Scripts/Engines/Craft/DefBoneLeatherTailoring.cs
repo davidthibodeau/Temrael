@@ -126,96 +126,96 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Armure de Cuir
-            index = AddCraft(typeof(LeatherGorget), "Armure de Cuir", "Gorget de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(LeatherCap), "Armure de Cuir", "Casque de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 2, 1044463);
-            index = AddCraft(typeof(LeatherGloves), "Armure de Cuir", "Gants de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 3, 1044463);
-            index = AddCraft(typeof(LeatherArms), "Armure de Cuir", "Brassards de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(LeatherLegs), "Armure de Cuir", "Jambières de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(LeatherChest), "Armure de Cuir", "Plastron de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(LeatherShorts), "Armure de Cuir", "Jupe de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(LeatherSkirt), "Armure de Cuir", "Jupette de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(LeatherBustierArms), "Armure de Cuir", "Brassards Féminins", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(FemaleLeatherChest), "Armure de Cuir", "Cuirasse Féminine", 30.0, 50.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(LeatherBarbareLeggings), "Armure de Cuir", "Jambière de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(LeatherBarbareTunic), "Armure de Cuir", "Plastron de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(RoublardLeggings), "Armure de Cuir", "Jambières Roublardes", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(RoublardTunic), "Armure de Cuir", "Plastron Roublard", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(ElfiqueCuirTunic), "Armure de Cuir", "Plastron de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(ElfiqueCuirRobe), "Armure de Cuir", "Vetement de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(LeatherGorget), "Armure de Cuir", "Gorget de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463, true);
+            index = AddCraft(typeof(LeatherCap), "Armure de Cuir", "Casque de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 2, 1044463, true);
+            index = AddCraft(typeof(LeatherGloves), "Armure de Cuir", "Gants de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 3, 1044463, true);
+            index = AddCraft(typeof(LeatherArms), "Armure de Cuir", "Brassards de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463, true);
+            index = AddCraft(typeof(LeatherLegs), "Armure de Cuir", "Jambières de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463, true);
+            index = AddCraft(typeof(LeatherChest), "Armure de Cuir", "Plastron de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(LeatherShorts), "Armure de Cuir", "Jupe de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(LeatherSkirt), "Armure de Cuir", "Jupette de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(LeatherBustierArms), "Armure de Cuir", "Brassards Féminins", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(FemaleLeatherChest), "Armure de Cuir", "Cuirasse Féminine", 30.0, 50.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(LeatherBarbareLeggings), "Armure de Cuir", "Jambière de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463, true);
+            index = AddCraft(typeof(LeatherBarbareTunic), "Armure de Cuir", "Plastron de Cuir Barbare", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(RoublardLeggings), "Armure de Cuir", "Jambières Roublardes", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463, true);
+            index = AddCraft(typeof(RoublardTunic), "Armure de Cuir", "Plastron Roublard", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(ElfiqueCuirTunic), "Armure de Cuir", "Plastron de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(ElfiqueCuirRobe), "Armure de Cuir", "Vetement de Cuir Elfique", 40.0, 60.0, typeof(Leather), "Cuir", 14, 1044463, true);
 
             #endregion
 
             #region Armure de Cuir Clouté
-            index = AddCraft(typeof(StuddedGorget), "Armure de Cuir Clouté", "Gorget de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(StuddedGloves), "Armure de Cuir Clouté", "Gants de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(StuddedArms), "Armure de Cuir Clouté", "Brassards de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(StuddedLegs), "Armure de Cuir Clouté", "Jambières de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(StuddedChest), "Armure de Cuir Clouté", "Plastron de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(StuddedBustierArms), "Armure de Cuir Clouté", "Brassards Féminins", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(FemaleStuddedChest), "Armure de Cuir Clouté", "Cuirasse Féminine", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(ElfeHelm), "Armure de Cuir Clouté", "Casque de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(StuddedGorget), "Armure de Cuir Clouté", "Gorget de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(StuddedGloves), "Armure de Cuir Clouté", "Gants de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(StuddedArms), "Armure de Cuir Clouté", "Brassards de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463, true);
+            index = AddCraft(typeof(StuddedLegs), "Armure de Cuir Clouté", "Jambières de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(StuddedChest), "Armure de Cuir Clouté", "Plastron de Cuir Clouté", 35.0, 55.0, typeof(Leather), "Cuir", 14, 1044463, true);
+            index = AddCraft(typeof(StuddedBustierArms), "Armure de Cuir Clouté", "Brassards Féminins", 35.0, 55.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(FemaleStuddedChest), "Armure de Cuir Clouté", "Cuirasse Féminine", 35.0, 55.0, typeof(Leather), "Cuir", 10, 1044463, true);
+            index = AddCraft(typeof(ElfeHelm), "Armure de Cuir Clouté", "Casque de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463, true);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeGorget), "Armure de Cuir Clouté", "Gorget de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeGorget), "Armure de Cuir Clouté", "Gorget de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463, true);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeArms), "Armure de Cuir Clouté", "Brassards de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeArms), "Armure de Cuir Clouté", "Brassards de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463, true);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeLeggings), "Armure de Cuir Clouté", "Jambières de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeLeggings), "Armure de Cuir Clouté", "Jambières de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463, true);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(ElfeTunic), "Armure de Cuir Clouté", "Tunique de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463);
+            index = AddCraft(typeof(ElfeTunic), "Armure de Cuir Clouté", "Tunique de Feuilles", 40.0, 60.0, typeof(Leather), "Cuir", 3, 1044463, true);
             AddRes(index, typeof(Log), "Bûche", 2, 1044351);
-            index = AddCraft(typeof(StuddedBarbareGreaves), "Armure de Cuir Clouté", "Brassards Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(StuddedBarbareGorget), "Armure de Cuir Clouté", "Gorget Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(StuddedBarbareLeggings), "Armure de Cuir Clouté", "Jambières Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Tunique Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 14, 1044463);
+            index = AddCraft(typeof(StuddedBarbareGreaves), "Armure de Cuir Clouté", "Brassards Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 10, 1044463, true);
+            index = AddCraft(typeof(StuddedBarbareGorget), "Armure de Cuir Clouté", "Gorget Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(StuddedBarbareLeggings), "Armure de Cuir Clouté", "Jambières Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(StuddedBarbareTunic), "Armure de Cuir Clouté", "Tunique Clouté Barbare", 45.0, 65.0, typeof(Leather), "Cuir", 14, 1044463, true);
             #endregion
 
             #region Chaussures
-            index = AddCraft(typeof(Sandals), "Chaussures & Bottes", "Sandales", 10.0, 20.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(Geta), "Chaussures & Bottes", "Geta", 20.0, 30.0, typeof(Leather), "Cuir", 5, 1044463);
+            index = AddCraft(typeof(Sandals), "Chaussures & Bottes", "Sandales", 10.0, 20.0, typeof(Leather), "Cuir", 4, 1044463, true);
+            index = AddCraft(typeof(Geta), "Chaussures & Bottes", "Geta", 20.0, 30.0, typeof(Leather), "Cuir", 5, 1044463, true);
 
-            index = AddCraft(typeof(Shoes), "Chaussures & Bottes", "Souliers", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(SouliersFourrure), "Chaussures & Bottes", "Souliers Fourrure", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(SouliersBoucles), "Chaussures & Bottes", "Souliers Bouclés", 50.0, 70.0, typeof(Leather), "Cuir", 7, 1044463);
+            index = AddCraft(typeof(Shoes), "Chaussures & Bottes", "Souliers", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(SouliersFourrure), "Chaussures & Bottes", "Souliers Fourrure", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(SouliersBoucles), "Chaussures & Bottes", "Souliers Bouclés", 50.0, 70.0, typeof(Leather), "Cuir", 7, 1044463, true);
 
-            index = AddCraft(typeof(BottesPetites), "Chaussures & Bottes", "Petites Bottes", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(Boots), "Chaussures & Bottes", "Bottes", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(ThighBoots), "Chaussures & Bottes", "Bottes Longues", 50.0, 70.0, typeof(Leather), "Cuir", 14, 1044463);
-            index = AddCraft(typeof(BottesBoucles), "Chaussures & Bottes", "Bottes Bouclés", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(Bottes), "Chaussures & Bottes", "Bottes Simples", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(BottesVoyage), "Chaussures & Bottes", "Bottes de Voyage", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(BottesLourdes), "Chaussures & Bottes", "Bottes Lourdes", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(BottesNoble), "Chaussures & Bottes", "Bottes Nobles", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463);
-            index = AddCraft(typeof(BottesFourrure), "Chaussures & Bottes", "Bottes Fourrure", 80.0, 100.0, typeof(Leather), "Cuir", 10, 1044463);
-            index = AddCraft(typeof(BottesSombres), "Chaussures & Bottes", "Bottes Sombres", 90.0, 120.0, typeof(Leather), "Cuir", 16, 1044463);
+            index = AddCraft(typeof(BottesPetites), "Chaussures & Bottes", "Petites Bottes", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(Boots), "Chaussures & Bottes", "Bottes", 40.0, 60.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(ThighBoots), "Chaussures & Bottes", "Bottes Longues", 50.0, 70.0, typeof(Leather), "Cuir", 14, 1044463, true);
+            index = AddCraft(typeof(BottesBoucles), "Chaussures & Bottes", "Bottes Bouclés", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(Bottes), "Chaussures & Bottes", "Bottes Simples", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(BottesVoyage), "Chaussures & Bottes", "Bottes de Voyage", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(BottesLourdes), "Chaussures & Bottes", "Bottes Lourdes", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(BottesNoble), "Chaussures & Bottes", "Bottes Nobles", 70.0, 90.0, typeof(Leather), "Cuir", 12, 1044463, true);
+            index = AddCraft(typeof(BottesFourrure), "Chaussures & Bottes", "Bottes Fourrure", 80.0, 100.0, typeof(Leather), "Cuir", 10, 1044463, true);
+            index = AddCraft(typeof(BottesSombres), "Chaussures & Bottes", "Bottes Sombres", 90.0, 120.0, typeof(Leather), "Cuir", 16, 1044463, true);
             #endregion
 
-            index = AddCraft(typeof(CeinturePauvre), "Accessoires", "Ceinture Pauvre", 0.0, 20.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(Bourse), "Accessoires", "Bourse", 10.0, 30.0, typeof(Leather), "Cuir", 2, 1044463);
-            index = AddCraft(typeof(Ceinture), "Accessoires", "Ceinture Simple", 20.0, 40.0, typeof(Leather), "Cuir", 3, 1044463);
-            index = AddCraft(typeof(CeintureBourse), "Accessoires", "Ceinture Bourse", 20.0, 40.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(CeintureBoucle), "Accessoires", "Ceinture Bouclé", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(CeintureCuir), "Accessoires", "Ceinture de Cuir", 40.0, 70.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(CeinturePendante), "Accessoires", "Ceinture Pendante", 50.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(CeintureNordique), "Accessoires", "Ceinture Nordique", 60.0, 90.0, typeof(Leather), "Cuir", 4, 1044463);
-            index = AddCraft(typeof(CeintureLongue), "Accessoires", "Ceinture Longue", 70.0, 100.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(CeinturePauvre), "Accessoires", "Ceinture Pauvre", 0.0, 20.0, typeof(Leather), "Cuir", 4, 1044463, true);
+            index = AddCraft(typeof(Bourse), "Accessoires", "Bourse", 10.0, 30.0, typeof(Leather), "Cuir", 2, 1044463, true);
+            index = AddCraft(typeof(Ceinture), "Accessoires", "Ceinture Simple", 20.0, 40.0, typeof(Leather), "Cuir", 3, 1044463, true);
+            index = AddCraft(typeof(CeintureBourse), "Accessoires", "Ceinture Bourse", 20.0, 40.0, typeof(Leather), "Cuir", 4, 1044463, true);
+            index = AddCraft(typeof(CeintureBoucle), "Accessoires", "Ceinture Bouclé", 30.0, 50.0, typeof(Leather), "Cuir", 4, 1044463, true);
+            index = AddCraft(typeof(CeintureCuir), "Accessoires", "Ceinture de Cuir", 40.0, 70.0, typeof(Leather), "Cuir", 5, 1044463, true);
+            index = AddCraft(typeof(CeinturePendante), "Accessoires", "Ceinture Pendante", 50.0, 80.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(CeintureNordique), "Accessoires", "Ceinture Nordique", 60.0, 90.0, typeof(Leather), "Cuir", 4, 1044463, true);
+            index = AddCraft(typeof(CeintureLongue), "Accessoires", "Ceinture Longue", 70.0, 100.0, typeof(Leather), "Cuir", 8, 1044463, true);
 
-            index = AddCraft(typeof(Carquois), "Accessoires", "Carquois", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(Fourreau), "Accessoires", "Fourreau", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(FourreauDos), "Accessoires", "Fourreau de Dos", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463);
-            index = AddCraft(typeof(FourreauDague), "Accessoires", "Fourreau à Dague", 40.0, 70.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauDecouvert), "Accessoires", "Fourreau à Découvert", 50.0, 80.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauRapiere), "Accessoires", "Fourreau d'Estoc", 60.0, 90.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauEpee), "Accessoires", "Fourreau à Épées", 60.0, 90.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(FourreauSabre), "Accessoires", "Fourreau à Sabres", 70.0, 100.0, typeof(Leather), "Cuir", 5, 1044463);
+            index = AddCraft(typeof(Carquois), "Accessoires", "Carquois", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(Fourreau), "Accessoires", "Fourreau", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(FourreauDos), "Accessoires", "Fourreau de Dos", 30.0, 60.0, typeof(Leather), "Cuir", 8, 1044463, true);
+            index = AddCraft(typeof(FourreauDague), "Accessoires", "Fourreau à Dague", 40.0, 70.0, typeof(Leather), "Cuir", 5, 1044463, true);
+            index = AddCraft(typeof(FourreauDecouvert), "Accessoires", "Fourreau à Découvert", 50.0, 80.0, typeof(Leather), "Cuir", 5, 1044463, true);
+            index = AddCraft(typeof(FourreauRapiere), "Accessoires", "Fourreau d'Estoc", 60.0, 90.0, typeof(Leather), "Cuir", 5, 1044463, true);
+            index = AddCraft(typeof(FourreauEpee), "Accessoires", "Fourreau à Épées", 60.0, 90.0, typeof(Leather), "Cuir", 5, 1044463, true);
+            index = AddCraft(typeof(FourreauSabre), "Accessoires", "Fourreau à Sabres", 70.0, 100.0, typeof(Leather), "Cuir", 5, 1044463, true);
 
-            index = AddCraft(typeof(SacocheCeinture), "Accessoires", "Ceinture Double", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(SacocheHerboriste), "Accessoires", "Sacoche d'Herboriste", 40.0, 60.0, typeof(Leather), "Cuir", 5, 1044463);
-            index = AddCraft(typeof(SacocheRoublard), "Accessoires", "Sacoche de Roublard", 50.0, 70.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(SacocheAventure), "Accessoires", "Sacoche d'Aventurier", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463);
+            index = AddCraft(typeof(SacocheCeinture), "Accessoires", "Ceinture Double", 30.0, 50.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(SacocheHerboriste), "Accessoires", "Sacoche d'Herboriste", 40.0, 60.0, typeof(Leather), "Cuir", 5, 1044463, true);
+            index = AddCraft(typeof(SacocheRoublard), "Accessoires", "Sacoche de Roublard", 50.0, 70.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(SacocheAventure), "Accessoires", "Sacoche d'Aventurier", 60.0, 80.0, typeof(Leather), "Cuir", 6, 1044463, true);
 
-            index = AddCraft(typeof(Pardessus), "Accessoires", "Pardessus", 20.0, 40.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(PardessusBarbare), "Accessoires", "Pardessus Barbare", 40.0, 60.0, typeof(Leather), "Cuir", 6, 1044463);
-            index = AddCraft(typeof(EpauliereBarbare), "Accessoires", "Épaulière Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463);
+            index = AddCraft(typeof(Pardessus), "Accessoires", "Pardessus", 20.0, 40.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(PardessusBarbare), "Accessoires", "Pardessus Barbare", 40.0, 60.0, typeof(Leather), "Cuir", 6, 1044463, true);
+            index = AddCraft(typeof(EpauliereBarbare), "Accessoires", "Épaulière Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463, true);
 
             // Set the overridable material
             SetSubRes(typeof(Bone), "Os");
