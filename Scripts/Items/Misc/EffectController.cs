@@ -1,4 +1,5 @@
 using System;
+using Server.Network;
 
 namespace Server.Items
 {
@@ -31,6 +32,11 @@ namespace Server.Items
 
 		private TimeSpan m_TriggerDelay;
 		private EffectController m_Trigger;
+
+        private bool m_PopMessage;
+        private TimeSpan m_MessageDelay;
+        private bool m_MessageAtTrigger;
+        private string m_Message;
 
 		private int m_ItemID;
 		private int m_Hue;
@@ -72,6 +78,21 @@ namespace Server.Items
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan SoundDelay{ get{ return m_SoundDelay; } set{ m_SoundDelay = value; } }
+
+
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool PopMessage { get { return m_PopMessage; } set { m_PopMessage = value; } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public TimeSpan MessageDelay { get { return m_MessageDelay; } set { m_MessageDelay = value; } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool MessageAtTrigger { get { return m_MessageAtTrigger; } set { m_MessageAtTrigger = value; } }
+         
+        [CommandProperty(AccessLevel.Batisseur)]
+        public string Message { get { return m_Message; } set { m_Message = value; } }
+
 
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -153,6 +174,9 @@ namespace Server.Items
 			Visible = false;
 			m_TriggerType = EffectTriggerType.Sequenced;
 			m_EffectLayer = (EffectLayer)255;
+
+            m_PopMessage = false;
+            m_Message = "";
 		}
 
 		public override void OnDoubleClick( Mobile from )
@@ -199,6 +223,9 @@ namespace Server.Items
 			writer.Write( m_Explodes );
 			writer.Write( m_PlaySoundAtTrigger );
 
+            writer.Write(m_PopMessage);
+            writer.Write(m_Message);
+
 			writer.WriteEncodedInt( (int) m_EffectType );
 			writer.WriteEncodedInt( (int) m_EffectLayer );
 			writer.WriteEncodedInt( (int) m_TriggerType );
@@ -243,6 +270,9 @@ namespace Server.Items
 					m_Explodes = reader.ReadBool();
 					m_PlaySoundAtTrigger = reader.ReadBool();
 
+                    m_PopMessage = reader.ReadBool();
+                    m_Message = reader.ReadString();
+
 					m_EffectType = (ECEffectType)reader.ReadEncodedInt();
 					m_EffectLayer = (EffectLayer)reader.ReadEncodedInt();
 					m_TriggerType = (EffectTriggerType)reader.ReadEncodedInt();
@@ -277,6 +307,27 @@ namespace Server.Items
 			Effects.PlaySound( (ent is Item) ? ((Item)ent).GetWorldLocation() : ent.Location, ent.Map, m_SoundID );
 		}
 
+        public void SendMessage( object trigger )
+        {
+            IEntity ent = null;
+
+            if (m_MessageAtTrigger)
+                ent = trigger as IEntity;
+
+            if (ent == null)
+                ent = this;
+
+            if (ent is Mobile)
+            {
+                ((Mobile)ent).PublicOverheadMessage(Network.MessageType.Regular, 0, true, m_Message);
+            }
+            else if (ent is Item)
+            {
+                new ItemInvisibleTimer((Mobile)trigger, Location, m_Message);
+            }
+        }
+
+
 		public void DoEffect( object trigger )
 		{
 			if ( Deleted || m_TriggerType == EffectTriggerType.None )
@@ -287,6 +338,9 @@ namespace Server.Items
 
 			if ( m_SoundID > 0 )
 				Timer.DelayCall( m_SoundDelay, new TimerStateCallback( PlaySound ), trigger );
+
+            if (m_PopMessage)
+                Timer.DelayCall(m_MessageDelay, new TimerStateCallback(SendMessage), trigger);
 
 			if ( m_Trigger != null )
 				Timer.DelayCall( m_TriggerDelay, new TimerStateCallback( m_Trigger.DoEffect ), trigger );
@@ -335,5 +389,59 @@ namespace Server.Items
 				}
 			}
 		}
+
+
+
+        private class ItemInvisibleTimer : Timer
+        {
+            ItemInvisible item_;
+
+            public ItemInvisibleTimer(Mobile from, IPoint3D location, string Message)
+                : base(TimeSpan.FromSeconds(10))
+            {
+                item_ = new ItemInvisible();
+                from.Backpack.AddItem(item_);
+                item_.DropToWorld(from, new Point3D(location.X, location.Y, location.Z));
+                item_.Visible = true;
+                item_.PublicOverheadMessage(MessageType.Regular, 0, false, Message);
+                Start();
+            }
+
+            protected override void OnTick()
+            {
+                item_.Delete();
+            }
+        }
+
+        private class ItemInvisible : Item
+        {
+            public ItemInvisible(Serial serial)
+                : base(serial)
+            { }
+
+            public ItemInvisible()
+                : base(0x0001)
+            { }
+
+            public override int GetDropSound()
+            {
+                return -2;
+            }
+
+            public override void Serialize(GenericWriter writer)
+            {
+                base.Serialize(writer);
+
+                writer.Write((int)0); // version
+            }
+
+            public override void Deserialize(GenericReader reader)
+            {
+                base.Deserialize(reader);
+
+                int version = reader.ReadInt();
+
+            }
+        }
 	}
 }
