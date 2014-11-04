@@ -185,44 +185,6 @@ namespace Server.Engines.Evolution
             }
         }
 
-        
-        public static void SetSkills(TMobile from, int skillcaptotal, double skillcapind)
-        {
-            from.SkillsCap = skillcaptotal;
-
-            for (int i = 0; i < from.Skills.Length; ++i)
-            {
-                //if (!IsLoreSkill(from.Skills[i]))
-                    from.Skills[i].Cap = (double)skillcapind;
-            }
-            
-            //from.SkillsPlace += (double)3.0;
-        }
-
-        //public static void SetPCs(TMobile from)
-        //{
-        //    from.CompetencesLibres += 25;
-
-        //    int compEnAttente = Competences.GetRemainingComp(from) - Competences.GetDisponibleComp(from);
-
-        //    //if (paEnAttente > 15)
-        //    //    paEnAttente = 15;
-
-        //    from.CompetencesLibres += compEnAttente;
-        //}
-
-        //public static void SetPSs(TMobile from)
-        //{
-        //    //from.StatistiquesLibres += 5;
-
-        //    int statsEnAttente = Statistiques.GetRemainingStats(from) - Statistiques.GetDisponibleStats(from);
-
-        //    //if (paEnAttente > 15)
-        //    //    paEnAttente = 15;
-
-        //    from.StatistiquesLibres += statsEnAttente;
-        //}
-
         private static int RequiredXP(int niveau)
         {
             if (niveau == 0) return 500;
@@ -284,18 +246,18 @@ namespace Server.Engines.Evolution
                 {
                     exp.Niveau++;
 
-                    int SkillsCaps = 350 + exp.Niveau * 15;
-                    double SkillsInd = 40 + exp.Niveau * 2.0;
+                    int SkillsCaps = 1000;
+                    if (exp.Niveau > 50)
+                        SkillsCaps = 9000;
+                    else if (exp.Niveau > 30)
+                        SkillsCaps = 7000 + (exp.Niveau - 30) * 100;
+                    else
+                        SkillsCaps = 1000 + exp.Niveau * 200;
+                    
+                    if (SkillsCaps > 9000)
+                        SkillsCaps = 9000;
 
-                    if (SkillsInd > 100)
-                        SkillsInd = 100;
-
-                    if (SkillsCaps > 800)
-                        SkillsCaps = 800;
-
-                    SetSkills(pm, SkillsCaps, SkillsInd);
-                    //SetPCs(pm);
-                    //SetPSs(pm);
+                    pm.SkillsCap = SkillsCaps;
 
                     pm.SendMessage("Vous gagnez un niveau !");
                 }

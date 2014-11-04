@@ -2169,7 +2169,7 @@ namespace Server.Mobiles
             Experience = new Experience();
             MortEngine = new MortEngine(this);
 
-            SkillsCap = 200;
+            SkillsCap = 1000;
 
 			InvalidateMyRunUO();
 		}

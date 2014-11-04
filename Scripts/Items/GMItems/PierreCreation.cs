@@ -35,11 +35,11 @@ namespace Server.Items
                 //tMob.StatistiquesLibres = 0;
                 //tMob.AptitudesLibres = 0;
                 //tMob.CompetencesLibres = 0;
-                tMob.StatCap = 255;
+                tMob.StatCap = 225;
 
-                tMob.RawStr = 10;
-                tMob.RawDex = 10;
-                tMob.RawInt = 10;
+                tMob.RawStr = 25;
+                tMob.RawDex = 25;
+                tMob.RawInt = 25;
 
                 Account act = tMob.Account as Account;
 

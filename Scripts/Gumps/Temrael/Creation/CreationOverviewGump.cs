@@ -172,7 +172,7 @@ namespace Server.Gumps
 
         private static void SetSkills(TMobile from)
         {
-            from.SkillsCap = 200 * 10;
+            from.SkillsCap = 100 * 10;
 
             for (int i = 0; i < from.Skills.Length; ++i)
             {
