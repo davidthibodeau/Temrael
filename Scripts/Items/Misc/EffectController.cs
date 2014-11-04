@@ -33,6 +33,9 @@ namespace Server.Items
 		private TimeSpan m_TriggerDelay;
 		private EffectController m_Trigger;
 
+        private TimeSpan m_Cooldown;
+        private DateTime m_LastEffect;
+
         private bool m_PopMessage;
         private TimeSpan m_MessageDelay;
         private bool m_MessageAtTrigger;
@@ -79,6 +82,9 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan SoundDelay{ get{ return m_SoundDelay; } set{ m_SoundDelay = value; } }
 
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public TimeSpan Cooldown { get { return m_Cooldown; } set { m_Cooldown = value; } }
 
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -175,6 +181,8 @@ namespace Server.Items
 			m_TriggerType = EffectTriggerType.Sequenced;
 			m_EffectLayer = (EffectLayer)255;
 
+            m_LastEffect = DateTime.Now;
+
             m_PopMessage = false;
             m_Message = "";
 		}
@@ -189,8 +197,15 @@ namespace Server.Items
 
 		public override void OnMovement( Mobile m, Point3D oldLocation )
 		{
-			if ( m.Location != oldLocation && m_TriggerType == EffectTriggerType.InRange && Utility.InRange( GetWorldLocation(), m.Location, m_TriggerRange ) && !Utility.InRange( GetWorldLocation(), oldLocation, m_TriggerRange ) )
-				DoEffect( m );
+            if (m.Location != oldLocation
+              && m_TriggerType == EffectTriggerType.InRange
+              && Utility.InRange(GetWorldLocation(), m.Location, m_TriggerRange)
+              && !Utility.InRange(GetWorldLocation(), oldLocation, m_TriggerRange)
+              && DateTime.Now >= m_LastEffect.Add(m_Cooldown))
+            {
+                m_LastEffect = DateTime.Now;
+                DoEffect(m);
+            }
 		}
 
 		public EffectController( Serial serial ) : base( serial )
