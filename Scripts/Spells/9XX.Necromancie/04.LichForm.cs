@@ -19,7 +19,7 @@ namespace Server.Spells
 				9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(1),
-                SkillName.ArtMagique,
+                SkillName.Necromancie,
 				Reagent.GraveDust,
 				Reagent.DaemonBlood,
 				Reagent.NoxCrystal

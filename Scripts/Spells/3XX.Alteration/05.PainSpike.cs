@@ -20,7 +20,7 @@ namespace Server.Spells
 				9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(1),
-                SkillName.ArtMagique,
+                SkillName.Alteration,
 				Reagent.GraveDust,
 				Reagent.PigIron
             );

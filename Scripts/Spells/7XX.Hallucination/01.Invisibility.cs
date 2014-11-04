@@ -20,7 +20,7 @@ namespace Server.Spells
                 9041,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(1),
-                SkillName.ArtMagique,
+                SkillName.Hallucination,
 				Reagent.Bloodmoss,
 				Reagent.Nightshade
             );
