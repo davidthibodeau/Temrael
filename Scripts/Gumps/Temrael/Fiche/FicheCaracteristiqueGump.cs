@@ -110,51 +110,51 @@ namespace Server.Gumps
                 case 7:
                     from.SendGump(new FicheCommandesGump(from));
                     break;
-                case 13:
-                    if (Statistiques.CanRaise(from, StatType.Str))
-                    {
-                        from.RawStr += 5;
-                        //from.StatistiquesLibres -= 5;
-                    }
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 14:
-                    if (Statistiques.CanLower(from, StatType.Str))
-                    {
-                        from.RawStr -= 5;
-                    }
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 17:
-                    if (Statistiques.CanRaise(from, StatType.Dex))
-                    {
-                        from.RawDex += 5;
-                        //from.StatistiquesLibres -= 5;
-                    }
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 18:
-                    if (Statistiques.CanLower(from, StatType.Dex))
-                    {
-                        from.RawDex -= 5;
-                    }
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 21:
-                    if (Statistiques.CanRaise(from, StatType.Int))
-                    {
-                        from.RawInt += 5;
-                        //from.StatistiquesLibres -= 5;
-                    }
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 22:
-                    if (Statistiques.CanLower(from, StatType.Int))
-                    {
-                        from.RawInt -= 5;
-                    }
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
+                //case 13:
+                //    if (Statistiques.CanRaise(from, StatType.Str))
+                //    {
+                //        from.RawStr += 5;
+                //        //from.StatistiquesLibres -= 5;
+                //    }
+                //    from.SendGump(new FicheCaracteristiqueGump(from));
+                //    break;
+                //case 14:
+                //    if (Statistiques.CanLower(from, StatType.Str))
+                //    {
+                //        from.RawStr -= 5;
+                //    }
+                //    from.SendGump(new FicheCaracteristiqueGump(from));
+                //    break;
+                //case 17:
+                //    if (Statistiques.CanRaise(from, StatType.Dex))
+                //    {
+                //        from.RawDex += 5;
+                //        //from.StatistiquesLibres -= 5;
+                //    }
+                //    from.SendGump(new FicheCaracteristiqueGump(from));
+                //    break;
+                //case 18:
+                //    if (Statistiques.CanLower(from, StatType.Dex))
+                //    {
+                //        from.RawDex -= 5;
+                //    }
+                //    from.SendGump(new FicheCaracteristiqueGump(from));
+                //    break;
+                //case 21:
+                //    if (Statistiques.CanRaise(from, StatType.Int))
+                //    {
+                //        from.RawInt += 5;
+                //        //from.StatistiquesLibres -= 5;
+                //    }
+                //    from.SendGump(new FicheCaracteristiqueGump(from));
+                //    break;
+                //case 22:
+                //    if (Statistiques.CanLower(from, StatType.Int))
+                //    {
+                //        from.RawInt -= 5;
+                //    }
+                //    from.SendGump(new FicheCaracteristiqueGump(from));
+                //    break;
             }
         }
     }
