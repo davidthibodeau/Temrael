@@ -158,7 +158,7 @@ namespace Server.Engines.Evolution
             {
                 for (int i = 0; i <= (pm.XPMode ? 6 : (int)now.DayOfWeek); i++)
                 {
-                    if (!ticks[i, j])
+                    if (ticks != null && !ticks[i, j])
                     {
                         ticks[i, j] = true;
                         return j;
