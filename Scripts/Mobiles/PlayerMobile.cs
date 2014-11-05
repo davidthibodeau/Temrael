@@ -76,7 +76,6 @@ namespace Server.Mobiles
 		private PlayerFlag m_Flags;
 		private int m_StepsTaken;
 		private int m_Profession;
-		private bool m_IsStealthing; // IsStealthing should be moved to Server.Mobiles
 		private bool m_IgnoreMobiles; // IgnoreMobiles should be moved to Server.Mobiles
 		private int m_NonAutoreinsuredItems; // number of items that could not be automaitically reinsured because gold in bank was not enough
 		/*
@@ -156,13 +155,6 @@ namespace Server.Mobiles
 		{
 			get{ return m_StepsTaken; }
 			set{ m_StepsTaken = value; }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public bool IsStealthing // IsStealthing should be moved to Server.Mobiles
-		{
-			get { return m_IsStealthing; }
-			set { m_IsStealthing = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -998,18 +990,6 @@ namespace Server.Mobiles
 			}
 
 			DisguiseTimers.StopTimer( from );
-		}
-
-		public override void RevealingAction()
-		{
-			if ( m_DesignContext != null )
-				return;
-
-			Spells.InvisibilitySpell.RemoveTimer( this );
-
-			base.RevealingAction();
-
-			m_IsStealthing = false; // IsStealthing should be moved to Server.Mobiles
 		}
 
 		public override void OnHiddenChanged()
