@@ -18,7 +18,7 @@ namespace Server.Spells
 				203,
 				9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(3),
                 SkillName.Alteration,
 				Reagent.BatWing,
 				Reagent.PigIron,
@@ -53,11 +53,9 @@ namespace Server.Spells
 				m.PlaySound( 0x258 );
 				m.FixedParticles( 0x373A, 1, 17, 9903, 15, 4, EffectLayer.Head );
 
-				double duration = ((GetDamageSkill( Caster ) - GetResistSkill( m )) / 5.0) + 20.0;
+                double duration = 10;
 
-                duration = SpellHelper.AdjustValue(Caster, duration);
-
-                double scalar = 1 + (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Necromancie].Value) / 8;
+                double scalar = 1 + (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Alteration].Value) / 8;
 
 				if ( m.Player )
                     SetMindRotScalar(Caster, m, scalar, TimeSpan.FromSeconds(duration));

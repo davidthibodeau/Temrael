@@ -549,12 +549,13 @@ namespace Server.Spells
                 {
                     m_Caster.SendMessage("Vous n'êtes pas assez doué dans votre école de magie pour lancer ce sort.");
                 }
-                else if (m_Caster.Mana >= GetMana())
+                else if (m_Caster.Mana < GetMana())
                 {
-                    if (m_Caster.Spell == null && m_Caster.CheckSpellCast(this) && CheckCast() && m_Caster.Region.OnBeginSpellCast(m_Caster, this))
-                    {
-                        return true;
-                    }
+                    m_Caster.LocalOverheadMessage(MessageType.Regular, 0, true, "Vous n'avez pas assez de mana pour lancer ce sort.");
+                }
+                else if (m_Caster.Spell == null && m_Caster.CheckSpellCast(this) && CheckCast() && m_Caster.Region.OnBeginSpellCast(m_Caster, this))
+                {
+                    return true;
                 }
             }
 
@@ -774,6 +775,19 @@ namespace Server.Spells
             return RequiredSkillValue;
         }
 
+        public virtual void SpellManaCost(int mana)
+        {
+            double scalar = 1.0;
+
+            if (PourritureDEspritSpell.HasMindRotScalar(Caster))
+                scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
+
+            if (scalar < 1.0)
+                scalar = 1.0;
+
+            m_Caster.Mana -= (int)(mana * scalar);
+        }
+
         public virtual int ScalePdp(int pdp)
         {
             double scalar = 1.0;
@@ -908,7 +922,7 @@ namespace Server.Spells
                 }
 			    else if ( CheckFizzle() )
 			    {
-                    m_Caster.Mana -= mana;
+                    SpellManaCost(mana);
 
 				    if ( m_Scroll is SpellScroll )
 					    m_Scroll.Consume();
