@@ -216,7 +216,7 @@ namespace Server
 				if ( m_Cap != 1000 )
 					writer.Write( (short) m_Cap );
 
-				if ( m_Lock != SkillLock.Up )
+				if ( m_Lock != SkillLock.Locked )
 					writer.Write( (byte) m_Lock );
 			}
 		}
