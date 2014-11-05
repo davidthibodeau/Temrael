@@ -28,113 +28,63 @@ namespace Server.SkillHandlers
 
         public static TimeSpan OnUse(Mobile m)
         {
-            if (!m.Hidden)
+            if (m.Hidden)
+                m.RevealingAction();
+
+            if (m.Spell != null)
             {
+                m.SendLocalizedMessage(501238); // You are busy doing something else and cannot hide.
+                return TimeSpan.FromSeconds(TempsJetImposs);
+            }
 
-                if (m.Spell != null)
+            //int range = 18 - (int)(m.Skills[SkillName.Discretion].Value / 10);
+            int range = Math.Min((int)((100 - m.Skills[SkillName.Discretion].Value) / 2) + 8, 18);	//Cap of 18 not OSI-exact, intentional difference
+
+            bool badCombat = (!m_CombatOverride && m.Combatant != null && m.InRange(m.Combatant.Location, range) && m.Combatant.InLOS(m));
+            bool ok = !badCombat && (!m.Mounted);
+
+            int dexDiff = (m.Dex - m.RawDex); // Malus de dex avec l'armure ?
+
+            // Pour éviter le hide in the face en combat.
+            if (ok)
+            {
+                if (!m_CombatOverride)
                 {
-                    m.SendLocalizedMessage(501238); // You are busy doing something else and cannot hide.
-                    return TimeSpan.FromSeconds(TempsJetImposs);
-                }
-
-                if (Core.ML && m.Target != null)
-                {
-                    Targeting.Target.Cancel(m);
-                }
-
-                double bonus = 0.0;
-
-                #region Bonus de House (AOS). --- On le garde.. ?
-                BaseHouse house = BaseHouse.FindHouseAt(m);
-
-                if (house != null && house.IsFriend(m))
-                {
-                    bonus = 100.0;
-                }
-                else if (!Core.AOS)
-                {
-                    if (house == null)
-                        house = BaseHouse.FindHouseAt(new Point3D(m.X - 1, m.Y, 127), m.Map, 16);
-
-                    if (house == null)
-                        house = BaseHouse.FindHouseAt(new Point3D(m.X + 1, m.Y, 127), m.Map, 16);
-
-                    if (house == null)
-                        house = BaseHouse.FindHouseAt(new Point3D(m.X, m.Y - 1, 127), m.Map, 16);
-
-                    if (house == null)
-                        house = BaseHouse.FindHouseAt(new Point3D(m.X, m.Y + 1, 127), m.Map, 16);
-
-                    if (house != null)
-                        bonus = 50.0;
-                }
-                #endregion
-
-
-                if (MurmureSpell.m_MurmureTable.Contains(m))
-                    bonus += (double)MurmureSpell.m_MurmureTable[m];
-
-                //int range = 18 - (int)(m.Skills[SkillName.Discretion].Value / 10);
-                int range = Math.Min((int)((100 - m.Skills[SkillName.Discretion].Value) / 2) + 8, 18);	//Cap of 18 not OSI-exact, intentional difference
-
-                bool badCombat = (!m_CombatOverride && m.Combatant != null && m.InRange(m.Combatant.Location, range) && m.Combatant.InLOS(m));
-                bool ok = (!badCombat && (!m.Mounted) /*&& m.CheckSkill( SkillName.Discretion, 0.0 - bonus, 100.0 - bonus )*/ );
-
-                #region Malus de dex, dépendant des bonus/malus de dex comparé à la dex normale.
-
-                int dexDiff = (m.Dex - m.RawDex);
-
-
-                #endregion
-
-
-
-
-                if (ok)
-                {
-                    if (!m_CombatOverride)
+                    foreach (Mobile check in m.GetMobilesInRange(range))
                     {
-                        foreach (Mobile check in m.GetMobilesInRange(range))
+                        if (check.InLOS(m) && check.Combatant == m)
                         {
-                            if (check.InLOS(m) && check.Combatant == m)
-                            {
-                                badCombat = true;
-                                ok = false;
-                                break;
-                            }
+                            badCombat = true;
+                            ok = false;
+                            break;
                         }
                     }
-
-                    ok = (!badCombat && m.CheckSkill(SkillName.Discretion, 0.0 - bonus, 100.0 - bonus));
                 }
 
-                if (badCombat)
-                {
-                    m.RevealingAction();
-                    m.LocalOverheadMessage(MessageType.Regular, 0x22, 501237); // You can't seem to hide right now.
-                }
-                else
-                {
-                    if (ok)
-                    {
-                        m.Hidden = true;
-                        m.Warmode = false;
-                        m.LocalOverheadMessage(MessageType.Regular, 0x1F4, 501240); // You have hidden yourself well.
-                        Stealth.OnUse(m);
-                        return TimeSpan.FromSeconds(TempsJetReussit);
-                    }
-                    else
-                    {
-                        m.RevealingAction();
+                ok = (!badCombat && m.CheckSkill(SkillName.Discretion, 0.0, 100.0));
+            }
 
-                        m.LocalOverheadMessage(MessageType.Regular, 0x22, 501241); // You can't seem to hide here.
-                    }
-                }
+            if (badCombat)
+            {
+                m.LocalOverheadMessage(MessageType.Regular, 0x22, 501237); // You can't seem to hide right now.
             }
             else
             {
-                m.RevealingAction();
+                if (ok)
+                {
+                    m.Hidden = true;
+                    m.Warmode = false;
+                    m.LocalOverheadMessage(MessageType.Regular, 0x1F4, 501240); // You have hidden yourself well.
+                    Stealth.OnUse(m);
+                    return TimeSpan.FromSeconds(TempsJetReussit);
+                }
+                else
+                {
+                    m.LocalOverheadMessage(MessageType.Regular, 0x22, 501241); // You can't seem to hide here.
+                }
             }
+
+            m.RevealingAction();
             return TimeSpan.FromSeconds(TempsJetRate);
         }
     }
