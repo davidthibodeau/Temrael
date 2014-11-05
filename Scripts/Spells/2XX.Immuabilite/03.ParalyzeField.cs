@@ -19,7 +19,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(4),
                 SkillName.Immuabilite,
 				Reagent.BlackPearl,
 				Reagent.Ginseng,

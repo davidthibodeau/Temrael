@@ -18,7 +18,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(8),
                 SkillName.Evocation,
 				Reagent.SpidersSilk,
 				Reagent.SulfurousAsh

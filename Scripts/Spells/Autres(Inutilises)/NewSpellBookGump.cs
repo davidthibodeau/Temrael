@@ -498,7 +498,7 @@ namespace Server.Gumps
             {
                 TMobile m = (TMobile)from;
 
-                if (info.ButtonID >= 1 && info.ButtonID < 300)
+                if (info.ButtonID >= 1 && info.ButtonID < 1000)
                 {
                     Spell spell = SpellRegistry.NewSpell(info.ButtonID, m, null);
 
