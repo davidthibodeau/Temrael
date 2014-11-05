@@ -19,7 +19,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Alteration,
 				Reagent.PigIron
             );
@@ -41,31 +41,18 @@ namespace Server.Spells
 			}
 			else if ( CheckSequence() )
 			{
-				/* Temporarily imbues a weapon with a life draining effect.
-				 * Half the damage that the weapon inflicts is added to the necromancer's health.
-				 * The effects lasts for (Spirit Speak skill level / 75) + 1 seconds.
-				 * 
-				 * NOTE: Above algorithm is fixed point, should be :
-				 * (Spirit Speak skill level / 7.5) + 1
-				 * 
-				 * TODO: What happens if you curse a weapon then give it to someone else? Should they get the drain effect?
-				 */
 
 				Caster.PlaySound( 0x387 );
 				Caster.FixedParticles( 0x3779, 1, 15, 9905, 32, 2, EffectLayer.Head );
 				Caster.FixedParticles( 0x37B9, 1, 14, 9502, 32, 5, (EffectLayer)255 );
 				new SoundEffectTimer( Caster ).Start();
 
-				double duration = Caster.Skills[SkillName.Necromancie].Value + 250.0;
-
-                duration = SpellHelper.AdjustValue(Caster, duration);
+				double duration = Caster.Skills[SkillName.Alteration].Value; // 0 à 100 secondes.
 
 				Timer t = (Timer)m_Table[weapon];
 
 				if ( t != null )
 					t.Stop();
-
-				weapon.Cursed = true;
 
 				m_Table[weapon] = t = new ExpireTimer( weapon, TimeSpan.FromSeconds(duration) );
 
@@ -75,7 +62,7 @@ namespace Server.Spells
 			FinishSequence();
 		}
 
-		private static Hashtable m_Table = new Hashtable();
+		public static Hashtable m_Table = new Hashtable();
 
 		private class ExpireTimer : Timer
 		{
@@ -89,7 +76,6 @@ namespace Server.Spells
 
 			protected override void OnTick()
 			{
-				m_Weapon.Cursed = false;
 				Effects.PlaySound( m_Weapon.GetWorldLocation(), m_Weapon.Map, 0xFA );
 				m_Table.Remove( this );
 			}

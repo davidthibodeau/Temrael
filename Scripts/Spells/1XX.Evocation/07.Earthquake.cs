@@ -48,7 +48,7 @@ namespace Server.Spells
 
 				if ( map != null )
                 {
-                    double tile = GetRadiusForSpell();
+                    double tile = 4;
 
                     if (tile > 12)
                         tile = 12;

@@ -52,7 +52,7 @@ namespace Server.Spells
 
 				if ( map != null )
 				{
-                    double tile = GetRadiusForSpell();
+                    double tile = 4;
 
                     tile = SpellHelper.AdjustValue(Caster, tile);
 

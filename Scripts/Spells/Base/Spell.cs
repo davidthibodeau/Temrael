@@ -280,8 +280,8 @@ namespace Server.Spells
             if ( n >= 1.0 )
                 return true;
 
-            int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
-            maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
+            int maxSkill = (1 + (int)RequiredSkillValue / 10) * 10;
+            maxSkill += (1 + ((int)RequiredSkillValue / 10 / 6)) * 25;
 
             if ( target.Skills[SkillName.Meditation].Value < maxSkill )
                 target.CheckSkill( SkillName.Meditation, 0.0, 120.0 );
@@ -320,8 +320,8 @@ namespace Server.Spells
 
 		public virtual int GetResistFixed( Mobile m )
 		{
-            int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
-            maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
+            int maxSkill = (1 + (int)RequiredSkillValue / 10) * 10;
+            maxSkill += (1 + ((int)RequiredSkillValue / 10 / 6)) * 25;
 
 			if ( m.Skills[SkillName.Meditation].Value < maxSkill )
 				m.CheckSkill( SkillName.Meditation, 0.0, 120.0 );
@@ -332,8 +332,8 @@ namespace Server.Spells
 
 		public virtual double GetResistSkill( Mobile m )
 		{
-            int maxSkill = (1 + (int)GetSkillValue()/10) * 10;
-            maxSkill += (1 + ((int)GetSkillValue()/10 / 6)) * 25;
+            int maxSkill = (1 + (int)RequiredSkillValue / 10) * 10;
+            maxSkill += (1 + ((int)RequiredSkillValue / 10 / 6)) * 25;
 
 			if ( m.Skills[SkillName.Meditation].Value < maxSkill )
 				m.CheckSkill( SkillName.Meditation, 0.0, 120.0 );
@@ -362,7 +362,7 @@ namespace Server.Spells
 
 		public virtual double GetResistPercent( Mobile target )
 		{
-            return GetResistPercentForAptitude(target, GetSkillValue()/10);
+            return GetResistPercentForAptitude(target, RequiredSkillValue / 10);
 		}
 
         public virtual TimeSpan GetDurationForSpell(double scale)
@@ -409,18 +409,6 @@ namespace Server.Spells
             return TimeSpan.FromSeconds(valeur);
         }
 
-        public virtual int GetRadiusForSpell()
-        {
-            return (GetRadiusForSpell(4));
-        }
-
-        public virtual int GetRadiusForSpell(int min)
-        {
-            int bonus = 0;
-
-            return min + bonus;
-        }
-
 		public virtual void DoFizzle()
 		{
 			m_Caster.LocalOverheadMessage( MessageType.Regular, 0x3B2, 502632 ); // The spell fizzles.
@@ -435,22 +423,14 @@ namespace Server.Spells
 		public CastTimer m_CastTimer;
 		public AnimTimer m_AnimTimer;
 
-		public virtual bool CheckDisturb( DisturbType type )
-		{
-			return true;
-		}
-
         public void Disturb(DisturbType type)
         {
-            if (!CheckDisturb(type))
-                return;
-
             if (m_State == SpellState.Casting)
             {
                 m_State = SpellState.None;
                 m_Caster.Spell = null;
 
-                OnDisturb(type, true);
+                m_Caster.SendLocalizedMessage(500641); // Your concentration is disturbed, thus ruining thy spell.
 
                 if (m_CastTimer != null)
                     m_CastTimer.Stop();
@@ -462,17 +442,6 @@ namespace Server.Spells
 
                 m_Caster.NextSpellTime = Core.TickCount + Core.GetTicks(GetDisturbRecovery());
             }
-            /*else if (m_State == SpellState.Sequencing)
-            {
-                m_State = SpellState.None;
-                m_Caster.Spell = null;
-
-                OnDisturb(type, true);
-
-                DoFizzle();
-
-                Targeting.Target.Cancel(m_Caster);
-            }*/
         }
 
 		public virtual void DoHurtFizzle()
@@ -481,11 +450,6 @@ namespace Server.Spells
 			m_Caster.PlaySound( 0x5C );
 		}
 
-		public virtual void OnDisturb( DisturbType type, bool message )
-		{
-			if ( message )
-				m_Caster.SendLocalizedMessage( 500641 ); // Your concentration is disturbed, thus ruining thy spell.
-		}
 
 		public virtual bool CheckCast()
         {
@@ -620,10 +584,7 @@ namespace Server.Spells
 
         public bool CheckHands()
         {
-            bool clear = ClearHandsOnCast;
-
-
-            return clear;
+            return ClearHandsOnCast;
         }
 
 		public abstract void OnCast();
@@ -662,7 +623,7 @@ namespace Server.Spells
 		public virtual void GetCastSkills( out double min, out double max )
 		{
 			//int circle = (int)m_Info.Circle;
-            int circle = GetSkillValue()/10;
+            int circle = RequiredSkillValue / 10;
 
 			if ( m_Scroll != null )
 				circle -= 2;
@@ -748,32 +709,7 @@ namespace Server.Spells
             return ManaCost;
         }
 
-        public static int[] m_PieteTable = new int[] { 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5 };
-
-        public virtual int GetPiete()
-        {
-            if (!(this is ReligiousSpell))
-                return 0;
-
-            try
-            {
-
-                //Console.WriteLine(m_PdPTable[(int)GetPouvoirDivin() - 1]);
-                return m_PieteTable[(int)GetSkillValue()/10];
-            }
-            catch (Exception ex)
-            {
-                Misc.ExceptionLogging.WriteLine(ex);
-                return 10;
-            }
-        }
-
         public virtual int RequiredSkillValue { get { return m_Info.minSkillForCasting; } }
-
-        public virtual int GetSkillValue()
-        {
-            return RequiredSkillValue;
-        }
 
         public virtual void SpellManaCost(int mana)
         {
@@ -788,19 +724,6 @@ namespace Server.Spells
             m_Caster.Mana -= (int)(mana * scalar);
         }
 
-        public virtual int ScalePdp(int pdp)
-        {
-            double scalar = 1.0;
-
-            if (PourritureDEspritSpell.HasMindRotScalar(Caster))
-                scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
-
-            if (scalar < 1.0)
-                scalar = 1.0;
-
-            return (int)(pdp * scalar);
-        }
-
 		public virtual TimeSpan GetDisturbRecovery()
 		{
 			double delay = 1.0 - Math.Sqrt( (DateTime.Now - m_StartCastTime).TotalSeconds / GetCastDelay().TotalSeconds );
@@ -810,6 +733,16 @@ namespace Server.Spells
 
 			return TimeSpan.FromSeconds( delay );
 		}
+
+        public static void OnHitEffects(Mobile atk, Mobile def, int damage)
+        {
+            if (CurseWeaponSpell.m_Table.Contains((BaseWeapon)atk.Weapon))
+            {
+                atk.Heal((int)(atk.Skills[SkillName.Alteration].Value / 200 * damage));
+            }
+
+        }
+
 
         public virtual bool Invocation { get { return false; } }
 
@@ -842,14 +775,11 @@ namespace Server.Spells
 		}
 
 		public virtual double CastDelayBase{ get{ return 1.0; } }
-//		public virtual int CastDelayCircleScalar{ get{ return 1; } }
-	//	public virtual int CastDelayFastScalar{ get{ return 0; } }
-	//	public virtual int CastDelayPerSecond{ get{ return 1; } }
 		public virtual int CastDelayMinimum{ get{ return 1; } }
 
 		public virtual TimeSpan GetCastDelay()
 		{
-            double value = CastDelayBase + (double)GetSkillValue()/10 * .1;
+            double value = CastDelayBase + (double)RequiredSkillValue / 10 * .1;
 
             double bonus = 4;
 

@@ -57,7 +57,7 @@ namespace Server.Spells
 
 				if ( map != null )
 				{
-					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), GetRadiusForSpell() );
+					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), 4 );
 
 					foreach ( Mobile m in eable )
 					{

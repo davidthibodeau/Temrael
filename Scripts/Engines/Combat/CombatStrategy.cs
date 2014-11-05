@@ -1,6 +1,7 @@
 ﻿using Server.Engines.Equitation;
 using Server.Items;
 using Server.Mobiles;
+using Server.Spells;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,8 @@ namespace Server.Engines.Combat
             AppliquerPoison(atk, def);
 
             def.Damage(degats,atk);
+
+            Spell.OnHitEffects(atk,def,degats);
         }
 
         public virtual void OnMiss(Mobile atk, Mobile def)
