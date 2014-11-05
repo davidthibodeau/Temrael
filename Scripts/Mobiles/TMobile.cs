@@ -56,8 +56,6 @@ namespace Server.Mobiles
         //}
         #region Variables
 
-        private int m_Fatigue;
-
         private bool m_Aphonie;
         private AphonieTimer m_AphonieTimer;
         public ArrayList m_MetamorphoseList = new ArrayList();
@@ -86,8 +84,6 @@ namespace Server.Mobiles
 
         private ClasseType m_ClasseType = ClasseType.None;
         private bool m_RevealTitle = true;
-
-        private bool[,] m_Ticks = new bool[7,9];
 
         private Point3D m_OldLocation;
 
@@ -122,19 +118,6 @@ namespace Server.Mobiles
         {
             get { return m_RevealTitle; }
             set { m_RevealTitle = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int Fatigue
-        {
-            get
-            {
-                //if (CroixDesCilias.m_MortsTimer.Contains(this))
-                //    return 1000;
-
-                return m_Fatigue;
-            }
-            set { m_Fatigue = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -755,11 +738,6 @@ namespace Server.Mobiles
             }
         }
 
-        public override string GetNameUseBy(Mobile from)
-        {           
-            return Identities.GetNameUseBy(from);
-        }
-
         public override void OnAosSingleClick(Mobile from)
         {
             ObjectPropertyList opl = new ObjectPropertyList(this);
@@ -861,19 +839,6 @@ namespace Server.Mobiles
             return base.Move(d);
         }
 
-        public static double PenaliteStatistique(Mobile m, double stat)
-        {
-            double penalite = 0;
-
-            /*if (stat < 50)
-                penalite += (stat * 0.02);
-
-            if (stat > 50)
-                penalite += (1 + stat * 0.001);*/
-
-            return penalite;
-        }
-
         public bool CheckRevealStealth()
         {
             double stealth = this.Skills[SkillName.Infiltration].Base;
@@ -912,42 +877,6 @@ namespace Server.Mobiles
             }
 
             return 0;
-        }
-
-        public bool IsDesert(Region reg)
-        {
-            //if (reg is TerritoryKheijan)
-            //{
-                TileType type = Deplacement.GetTileType(this);
-
-                if (type == TileType.Desert)
-                    return true;
-            //}
-
-            return false;
-        }
-
-        public virtual bool IsInDesert()
-        {
-            Region reg = Region;
-
-            if (!reg.IsDefault)
-            {
-                if (IsDesert(reg))
-                    return true;
-
-                reg = reg.Parent;
-
-                while (reg != null)
-                {
-                    if (IsDesert(reg))
-                        return true;
-
-                    reg = reg.Parent;
-                }
-            }
-
-            return false;
         }
 
         public void Aphonier(TimeSpan duration)
@@ -1065,11 +994,6 @@ namespace Server.Mobiles
 
             if (!MortEngine.RisqueDeMort)
             {
-                //AddFatigue(250);
-                m_Fatigue = m_Fatigue + 250;
-                if (m_Fatigue > 1000)
-                    m_Fatigue = 1000;
-
                 MortEngine.Corps = c;
 
                 EvanouieTimer timer = new EvanouieTimer(this, c, (int)Direction, MortEngine.RisqueDeMort);
@@ -1108,11 +1032,6 @@ namespace Server.Mobiles
                 CheckRaceGump();
 
                 BaseArmor.ValidateMobile(this);
-
-                //AddFatigue(500);
-                m_Fatigue = m_Fatigue + 250;
-                if (m_Fatigue > 1000)
-                    m_Fatigue = 1000;
 
                 MortEngine.RisqueDeMort = false;
                 MortEngine.Mort = true;
@@ -1345,8 +1264,6 @@ namespace Server.Mobiles
             //writer.Write((int)m_AptitudesLibres);
             //writer.Write((int)m_CompetencesLibres);
 
-            writer.Write((int)m_Fatigue);
-
             writer.Write((bool)m_Aphonie);
 
 
@@ -1392,8 +1309,6 @@ namespace Server.Mobiles
                     {
                         m_QuickSpells.Add((int)reader.ReadInt());
                     }
-
-                    m_Fatigue = reader.ReadInt();
 
                     m_Aphonie = reader.ReadBool();
 

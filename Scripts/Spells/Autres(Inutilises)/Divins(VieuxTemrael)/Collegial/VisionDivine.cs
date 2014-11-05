@@ -44,12 +44,12 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                Caster.SendMessage(334, "Fatigue de " + m.Name);
-
-                if (m is TMobile)
-                    Caster.SendMessage(334, ((TMobile)m).Fatigue.ToString());
-                else
-                    Caster.SendMessage(m.Stam.ToString() + " / " + m.StamMax.ToString());
+//                Caster.SendMessage(334, "Fatigue de " + m.Name);
+//
+//                if (m is TMobile)
+//                    Caster.SendMessage(334, ((TMobile)m).Fatigue.ToString());
+//                else
+//                    Caster.SendMessage(m.Stam.ToString() + " / " + m.StamMax.ToString());
                   
                 //Caster.SendMessage("Points de vie : " + m.Hits + " / " + m.HitsMax);
                 //Caster.SendMessage("Mana : " + m.Mana + " / " + m.ManaMax);

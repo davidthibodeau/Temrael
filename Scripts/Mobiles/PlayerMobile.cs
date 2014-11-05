@@ -926,6 +926,11 @@ namespace Server.Mobiles
 				((PlayerMobile)e.Mobile).AutoStablePets();
 		}
 
+        public override string GetNameUseBy(Mobile from)
+        {           
+            return Identities.GetNameUseBy(from);
+        }
+
 		private static void EventSink_Connected( ConnectedEventArgs e )
 		{
 			PlayerMobile pm = e.Mobile as PlayerMobile;

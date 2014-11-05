@@ -71,7 +71,7 @@ namespace Server.Misc
 			newChar.Player = true;
 			newChar.AccessLevel = args.Account.AccessLevel;
 			newChar.Female = args.Female;
-			//newChar.Body = newChar.Female ? 0x191 : 0x190;
+			newChar.Body = newChar.Female ? 0x191 : 0x190;
 
             newChar.Hue = Utility.ClipSkinHue( args.Hue & 0x3FFF ) | 0x8000;
 
@@ -83,16 +83,13 @@ namespace Server.Misc
 				PlayerMobile pm = (PlayerMobile) newChar;
 
 				pm.Profession = args.Profession;
-
-				//if ( pm.AccessLevel == AccessLevel.Player && ((Account)pm.Account).Young )
-				//	young = pm.Young = true;
 			}
 
 			SetName( newChar, args.Name );
 
 			AddBackpack( newChar );
 
-			SetStats( newChar, state, args.Str, args.Dex, args.Int );
+            newChar.InitStats(25, 25, 25);
 
             newChar.HairItemID = args.HairID;
             newChar.HairHue = args.HairHue & 0x3FFF;
@@ -145,70 +142,7 @@ namespace Server.Misc
 
 		private static CityInfo GetStartLocation( CharacterCreatedEventArgs args, bool isYoung )
 		{
-            return new CityInfo("Temrael", "Creation", 6066, 4045, 5, Map.Felucca);
-		}
-
-		private static void FixStats( ref int str, ref int dex, ref int intel, int max )
-		{
-			int vMax = max - 30;
-
-			int vStr = str - 10;
-			int vDex = dex - 10;
-			int vInt = intel - 10;
-
-			if ( vStr < 0 )
-				vStr = 0;
-
-			if ( vDex < 0 )
-				vDex = 0;
-
-			if ( vInt < 0 )
-				vInt = 0;
-
-			int total = vStr + vDex + vInt;
-
-			if ( total == 0 || total == vMax )
-				return;
-
-			double scalar = vMax / (double)total;
-
-			vStr = (int)(vStr * scalar);
-			vDex = (int)(vDex * scalar);
-			vInt = (int)(vInt * scalar);
-
-			FixStat( ref vStr, (vStr + vDex + vInt) - vMax, vMax );
-			FixStat( ref vDex, (vStr + vDex + vInt) - vMax, vMax );
-			FixStat( ref vInt, (vStr + vDex + vInt) - vMax, vMax );
-
-			str = vStr + 25;
-			dex = vDex + 25;
-			intel = vInt + 25;
-		}
-
-		private static void FixStat( ref int stat, int diff, int max )
-		{
-			stat += diff;
-
-			if ( stat < 0 )
-				stat = 0;
-			else if ( stat > max )
-				stat = max;
-		}
-
-		private static void SetStats( Mobile m, NetState state, int str, int dex, int intel )
-		{
-			int max = state.NewCharacterCreation ? 90 : 80;
-
-			FixStats( ref str, ref dex, ref intel, max );
-
-			if ( str < 10 || str > 60 || dex < 10 || dex > 60 || intel < 10 || intel > 60 || (str + dex + intel) != max )
-			{
-				str = 25;
-				dex = 25;
-				intel = 25;
-			}
-
-			m.InitStats( str, dex, intel );
+            return new CityInfo("Temrael", "Creation", 6018, 99, 12, Map.Felucca);
 		}
 
 		private static void SetName( Mobile m, string name )

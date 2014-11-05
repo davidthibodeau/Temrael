@@ -568,7 +568,6 @@
     <Compile Include="Commandes\Temrael\QSL.cs" />
     <Compile Include="Commandes\Temrael\ResetAllPlayers.cs" />
     <Compile Include="Commandes\Temrael\RevealTitle.cs" />
-    <Compile Include="Commandes\Temrael\Statut.cs" />
     <Compile Include="Commandes\Temrael\Suicide.cs" />
     <Compile Include="Commandes\Temrael\TempsCommandes.cs" />
     <Compile Include="Commandes\Temrael\Test.cs" />

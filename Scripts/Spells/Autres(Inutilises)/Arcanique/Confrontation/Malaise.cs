@@ -100,9 +100,6 @@ namespace Server.Spells
                     m_target.FixedParticles(0x376A, 9, 32, 5005, EffectLayer.Waist);
                     m_target.PlaySound(22);
                     m_target.Stam -= 2;
-
-                    if(m_target is TMobile)
-                        ((TMobile)m_target).Fatigue += 2;
                 }
             }
         }

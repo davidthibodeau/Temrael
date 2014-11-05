@@ -52,13 +52,13 @@ namespace Server.Misc
 
         public static void Decay()
         {
-            foreach (NetState state in NetState.Instances)
-            {
-                Mobile m = state.Mobile;
-
-                if (m is TMobile && (m.Region is TavernRegion || m.Region is HouseRegion || IsInCampFireRange(m)))
-                    FatigueDecay((TMobile)m);
-            }
+//            foreach (NetState state in NetState.Instances)
+//            {
+//                Mobile m = state.Mobile;
+//
+//                if (m is TMobile && (m.Region is TavernRegion || m.Region is HouseRegion || IsInCampFireRange(m)))
+//                    FatigueDecay((TMobile)m);
+//            }
         }
 
         public static bool IsInCampFireRange(Mobile m)
@@ -70,16 +70,6 @@ namespace Server.Misc
             }
 
             return false;
-        }
-
-        private static void FatigueDecay(TMobile m)
-        {
-            double points = 42;
-
-            m.Fatigue += (-1 * (int)(points / 7));
-
-            if (m.Fatigue < 0)
-                m.Fatigue = 0;
         }
     }
 }

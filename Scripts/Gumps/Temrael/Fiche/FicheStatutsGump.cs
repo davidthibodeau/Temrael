@@ -180,7 +180,7 @@ namespace Server.Gumps
             AddTooltip(3001044);
             line += 6;
 
-            AddSection(x, y + line * scale, 400, 60, "Fatigue", new string[] { String.Format("Fatigue: {0} / 1000", from.Fatigue) + "<basefont></h3>" });
+            //AddSection(x, y + line * scale, 400, 60, "Fatigue", new string[] { String.Format("Fatigue: {0} / 1000", from.Fatigue) + "<basefont></h3>" });
             AddBackground(x + 420, y + line * scale, 95, 132, 2620);
             AddButton(x + 425, (y + line * scale) + 5, 1444, 1444, 0, GumpButtonType.Reply, 0);
             AddTooltip(3001042);
