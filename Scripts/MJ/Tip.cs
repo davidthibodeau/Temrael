@@ -3,6 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Targeting;
 using Server.Commands;
+using Server.Gumps;
 
 namespace Server.Scripts.Commands
 {
@@ -34,8 +35,15 @@ namespace Server.Scripts.Commands
             {
                 string tip = state as string;
 
-                ((TMobile)targeted).Tip(from, tip);
+                SendTip(from, (Mobile) targeted, tip);
             }
+        }
+
+        public static void SendTip(Mobile from, Mobile to, string tip)
+        {
+            to.SendGump(new TipGump(to, from, tip, true));
+
+            to.SendMessage("Un maître de jeu vous a envoyé un message, double cliquez le parchemin pour le lire.");
         }
     }
 }

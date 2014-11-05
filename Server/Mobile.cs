@@ -3556,15 +3556,7 @@ namespace Server
 		{
 			return true;
 		}
-
-		private static bool m_InsuranceEnabled;
-
-		public static bool InsuranceEnabled
-		{
-			get { return m_InsuranceEnabled; }
-			set { m_InsuranceEnabled = value; }
-		}
-
+            
 		public virtual void Use( Item item )
 		{
 			if( item == null || item.Deleted || item.QuestItem || this.Deleted )

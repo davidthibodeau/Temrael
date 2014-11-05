@@ -373,19 +373,6 @@ namespace Server.Items
 
                 if ((checkSkills = (healing >= 60.0 && anatomy >= 60.0)) && chance > Utility.RandomDouble())
                 {
-                    if (m_Healer is TMobile)
-                    {
-                        TMobile pm = (TMobile)m_Healer;
-
-                        if (pm.CheckFatigue(3))
-                        {
-                            healerNumber = 1010060; // You have failed to cure your target!
-                            patientNumber = -1;
-
-                            goto end;
-                        }
-                    }
-
                     if (m_Patient.CurePoison(m_Healer))
                     {
                         healerNumber = (m_Healer == m_Patient) ? -1 : 1010058; // You have cured the target of all poisons.
@@ -419,19 +406,6 @@ namespace Server.Items
 
                 if (chance > Utility.RandomDouble())
                 {
-                    if (m_Healer is TMobile)
-                    {
-                        TMobile pm = (TMobile)m_Healer;
-
-                        if (pm.CheckFatigue(3))
-                        {
-                            healerNumber = 500968; // You apply the bandages, but they barely help.
-                            playSound = false;
-
-                            goto end;
-                        }
-                    }
-
                     healerNumber = 500969; // You finish applying the bandages.
 
                     double min, max;
@@ -458,8 +432,6 @@ namespace Server.Items
                     playSound = false;
                 }
             }
-
-        end:
 
             if (healerNumber != -1)
                 m_Healer.SendLocalizedMessage(healerNumber);

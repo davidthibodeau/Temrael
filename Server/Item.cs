@@ -4566,7 +4566,7 @@ namespace Server
 
 		public virtual bool CheckBlessed( Mobile m )
 		{
-			if ( m_LootType == LootType.Blessed || (Mobile.InsuranceEnabled && Insured) )
+			if ( m_LootType == LootType.Blessed)
 				return true;
 
 			return ( m != null && m == this.BlessedFor );
@@ -4574,9 +4574,6 @@ namespace Server
 
 		public virtual bool IsStandardLoot()
 		{
-			if ( Mobile.InsuranceEnabled && Insured )
-				return false;
-
 			if ( this.BlessedFor != null )
 				return false;
 

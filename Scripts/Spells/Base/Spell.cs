@@ -175,14 +175,6 @@ namespace Server.Spells
             //Modification majeure, voir AOS.cs
             //return false;
 
-            if (target is TMobile)
-            {
-                TMobile pm = (TMobile)target;
-                
-                if (pm.CheckFatigue(4))
-                    return false;
-            }
-
             double n = 0;
 
             n /= 100.0;
@@ -448,14 +440,6 @@ namespace Server.Spells
 
 		public virtual bool CheckFizzle()
 		{
-            if (Caster is TMobile)
-            {
-                TMobile pm = (TMobile)Caster;
-
-                if (pm.CheckFatigue(6))
-                    return false;
-            }
-
 			double minSkill, maxSkill;
 
 			GetCastSkills( out minSkill, out maxSkill );

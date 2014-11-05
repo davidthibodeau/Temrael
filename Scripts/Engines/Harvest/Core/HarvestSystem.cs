@@ -166,19 +166,6 @@ namespace Server.Engines.Harvest
 
             if (skillBase >= resource.ReqSkill && from.CheckSkill(def.Skill, resource.MinSkill - 25, resource.MaxSkill + 25))
             {
-                if (from is TMobile)
-                {
-                    TMobile pm = (TMobile)from;
-
-                    if (pm.CheckFatigue(10))
-                    {
-                        def.SendMessageTo(from, def.FailMessage);
-
-                        OnHarvestFinished(from, tool, def, vein, bank, resource, toHarvest);
-                        return;
-                    }
-                }
-
                 type = GetResourceType(from, tool, def, map, loc, resource);
 
                 if (type != null)

@@ -132,14 +132,6 @@ namespace Server.Spells
 
         public override bool CheckFizzle()
         {
-            if (Caster is TMobile)
-            {
-                TMobile pm = (TMobile)Caster;
-
-                if (pm.CheckFatigue(6))
-                    return false;
-            }
-
             if (Caster is TMobile && Caster.Mounted)
             {
                 TMobile pm = (TMobile)Caster;

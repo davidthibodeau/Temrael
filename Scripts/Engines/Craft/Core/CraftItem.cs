@@ -1011,14 +1011,6 @@ namespace Server.Engines.Craft
 
 		public bool CheckSkills( Mobile from, Type typeRes, CraftSystem craftSystem, ref int quality, ref bool allRequiredSkills, bool gainSkills )
 		{
-            if (from is TMobile)
-            {
-                TMobile pm = (TMobile)from;
-
-                if (pm.CheckFatigue(13))
-                    return false;
-            }
-
             double chance = GetSuccessChance(from, typeRes, craftSystem, gainSkills, ref allRequiredSkills);
             double excepchance = GetExceptionalChance(chance, from);
 

@@ -791,34 +791,8 @@ namespace Server.Mobiles
 
         public override void DisplayPaperdollTo(Mobile to)
         {
-            //string oldname = Name;
-            //Name = GetNameUseBy(to);
             EventSink.InvokePaperdollRequest(new PaperdollRequestEventArgs(to, this));
-            //Name = oldname;
         }
-
-        //public override void OnSkillsQuery(Mobile from)
-        //{
-        //    if (from == this)
-        //    {
-        //        //Console.WriteLine("Skills test");
-        //        if ((this.SessionStart + TimeSpan.FromSeconds(2.0)) > DateTime.Now) return;
-        //        //from.CloseAllGumps();//optional
-        //        if (from is TMobile)
-        //            from.SendGump(new CompetenceGump(((TMobile)from), SkillCategory.Aucun, false));//replace with your gump
-        //        //base.OnSkillsQuery(from);
-        //    }
-        //    else
-        //        base.OnSkillsQuery(from);
-        //}
-
-        public override void OnSkillChange(SkillName skill, double oldBase)
-		{
-            base.OnSkillChange(skill, oldBase);
-
-            if (skill == SkillName.Langues)
-                Langues.FixLangues();
-		}
 
         public override bool OnMoveOver(Mobile m)
         {
@@ -989,10 +963,6 @@ namespace Server.Mobiles
 
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
-            //CheckEtude();
-
-            CheckFatigue(7);
-
             if (willKill && from != null)
             {
                 if (FerveurDivineMiracle.m_FerveurDivineRegistry == null)
@@ -1313,80 +1283,6 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual void Tip(Mobile m, string tip)
-        {
-            SendGump(new TipGump(this, m, tip, true));
-
-            SendMessage("Un maître de jeu vous a envoyé un message, double cliquez le parchemin pour le lire.");
-        }
-
-        #region Fatigue
-        /*public virtual void AddFatigue(int amount)
-        {
-            if (AuraDeFatigueSpell.m_AuraDeFatigueTable.Contains(this))
-            {
-                amount = (int)(amount * (double)AuraDeFatigueSpell.m_AuraDeFatigueTable[this]);
-                FixedParticles(14170, 10, 15, 5013, 139, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-                PlaySound(507);
-            }
-
-            double bonus = (1 - TotemHelper.GetTotemBonus(this, TotemType.Talisman));
-
-            amount = (int)(amount * bonus);
-
-            m_Fatigue += amount;
-
-            if (m_Fatigue < 0)
-                m_Fatigue = 0;
-
-            if (m_Fatigue > 1000)
-                m_Fatigue = 1000;
-        }*/
-
-        public virtual bool CheckFatigue(int difficulty)
-        {
-            //difficulty : 10 combattre 0 : skill genre anatomy
-            //true s'il rate le jet, false s'il ne le rate pas
-
-            //0 = 100%
-            //350 = 25%
-            //650 = 49%
-            //1000 = 90%
-
-            double chanceToFail = 0; //, chanceToGrow = 0;
-
-            /*if (difficulty < 3)
-                chanceToGrow += (difficulty * 0.02);
-            else if (difficulty < 7)
-                chanceToGrow += (difficulty * 0.02) - 0.02;
-            else
-                chanceToGrow += (difficulty * 0.02) - 0.03;
-
-            int total = Hunger + Thirst;
-
-            if (total < 28)
-            {
-                chanceToGrow += (28 - total) * 0.01;
-                chanceToFail += (28 - total) * 0.01;
-            }
-
-            if (chanceToGrow > Utility.RandomDouble())
-                AddFatigue(1);*/
-
-            if (m_Fatigue > 250)
-            {
-                if (m_Fatigue < 350)
-                    chanceToFail += ((m_Fatigue / 4) - 62.5) * 0.01;
-                else if (m_Fatigue < 650)
-                    chanceToFail += ((m_Fatigue / 13) - 1) * 0.01;
-                else
-                    chanceToFail += ((4 * (m_Fatigue / 35)) - 25) * 0.01;
-            }
-
-            return chanceToFail > Utility.RandomDouble();
-        }
-        #endregion
-
         private class AphonieTimer : Timer
         {
             private TMobile m_Mobile;
@@ -1410,9 +1306,7 @@ namespace Server.Mobiles
             base.Serialize(writer);
             writer.Write((int)9);
 
-            //for (int i = 0; i < 7; i++)
-            //    for (int j = 0; j < 9; j++)
-            //        writer.Write(m_Ticks[i, j]);
+
 
             writer.Write((bool)m_RevealTitle);
             writer.Write((int)m_ClasseType);
@@ -1471,86 +1365,27 @@ namespace Server.Mobiles
             switch (version)
             {
                 case 9:
-                case 8:
-                    //m_XPMode = reader.ReadBool();
-                    //for (int i = 0; i < 7; i++)
-                    //    for (int j = 0; j < 9; j++)
-                    //        m_Ticks[i, j] = reader.ReadBool();
-                    goto case 6;
-                case 6:
-                    if (version < 9)
-                    {
-                        count = reader.ReadInt();
-                        for (int i = 0; i < count; i++)
-                            Langues[reader.ReadInt()] = true;
-                    }
-                    goto case 5;
-                case 5:
-                    goto case 4;
-                case 4:
-                    //m_FreeReset = reader.ReadBool();
                     m_RevealTitle = reader.ReadBool();
-
                     goto case 3;
                 case 3:
-                    if(version < 9)
-                        Identities.RevealIdentity = reader.ReadBool();
-                    goto case 1;
                 case 1:
-                    if (version < 9)
-                    {
-                        reader.ReadDateTime();
-                        reader.ReadInt();
-                        reader.ReadInt();
-                    }
-                    if (version < 9)
-                    {
-                        count = reader.ReadInt();
-                        for (int i = 0; i < count; i++)
-                        {
-                            reader.ReadInt();
-                        }
-                    }
                     m_ClasseType = (ClasseType)reader.ReadInt();
-
-                    if(version < 9)
-                        Identities.DisguiseHidden = reader.ReadBool();
                     m_Incognito = reader.ReadBool();
-
 
                     m_Possess = reader.ReadMobile();
                     m_PossessStorage = reader.ReadMobile();
 
-                    //m_NextExp = reader.ReadDateTime();
                     m_NextSnoop = reader.ReadDateTime();
-                    //m_NextFiole = reader.ReadDateTime();
-
+                    
                     m_BonusMana = reader.ReadInt();
                     m_BonusStam = reader.ReadInt();
                     m_BonusHits = reader.ReadInt();
 
                     m_NextClasseChange = reader.ReadDateTime();
 
-                    //m_ListCote = new List<int>(5);
-                    //count = reader.ReadInt();
-                    //for (int i = 0; i < count; i++)
-                    //{
-                    //    m_ListCote.Add((int)reader.ReadInt());
-                    //}
-
-                    //m_StatistiquesLibres = reader.ReadInt();
                     m_lastDeguisement = reader.ReadDateTime();
                     m_NextCraftTime = reader.ReadDateTime();
-
-                    if (version < 9)
-                    {
-                        int langueCount = reader.ReadInt();
-                        for (int i = 0; i < langueCount; i++)
-                        {
-                            reader.ReadBool();
-                        }
-                    }
-
+                    
                     m_QuickSpells = new ArrayList();
                     count = reader.ReadInt();
                     for (int i = 0; i < count; i++)
@@ -1558,45 +1393,12 @@ namespace Server.Mobiles
                         m_QuickSpells.Add((int)reader.ReadInt());
                     }
 
-                    //m_LastCotation = reader.ReadDateTime();
-
-                    if (version < 9)
-                    {
-                        reader.ReadInt();
-                        int oldLength = reader.ReadInt();
-                        for (int i = 0; i < oldLength; ++i)
-                            reader.ReadInt();
-                    }
-
-                    //m_Niveau = reader.ReadInt();
-                    //m_AptitudesLibres = reader.ReadInt();
-                    //m_CompetencesLibres = reader.ReadInt();
-                    if (version < 8)
-                    {
-                        reader.ReadInt();
-                        reader.ReadInt();
-                    }
-                    if(version < 9)
-                        reader.ReadInt();
-
                     m_Fatigue = reader.ReadInt();
-                    if (version < 9)
-                    {
-                        reader.ReadDateTime();
-                        reader.ReadInt();
-                        reader.ReadDateTime();
-                        reader.ReadInt();
-                    }
 
                     m_Aphonie = reader.ReadBool();
-                    if(version < 9)
-                        Identities.Disguised = reader.ReadBool();
-
-  
 
                     m_BrulerPlanteLast = reader.ReadDateTime();
                     m_LastTeinture = reader.ReadInt();
-
 
                     break;
                 default: break;

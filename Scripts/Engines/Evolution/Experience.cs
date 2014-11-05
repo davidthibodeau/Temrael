@@ -36,6 +36,10 @@ namespace Server.Engines.Evolution
             writer.Write(XPMode);
             writer.Write(NextFiole);
             writer.Write(NextExp);
+
+            for (int i = 0; i < 7; i++)
+                for (int j = 0; j < 9; j++)
+                    writer.Write(Ticks[i, j]);
         }
 
         public Experience(GenericReader reader)
@@ -47,6 +51,11 @@ namespace Server.Engines.Evolution
             XPMode = reader.ReadBool();
             NextFiole = reader.ReadDateTime();
             NextExp = reader.ReadDateTime();
+
+            Ticks = new bool[7, 9];
+            for (int i = 0; i < 7; i++)
+                for (int j = 0; j < 9; j++)
+                    Ticks[i, j] = reader.ReadBool();
         }
 
         public Experience()
@@ -54,6 +63,7 @@ namespace Server.Engines.Evolution
             XPMode = true;
             NextFiole = DateTime.Now;
             NextExp = DateTime.Now.AddMinutes(20);
+            Ticks = new bool[7, 9];
         }
     }
 }
