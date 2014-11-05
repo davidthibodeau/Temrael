@@ -6,6 +6,7 @@ using Server.Items;
 using Server.Regions;
 using Server.Mobiles;
 using Server.Spells;
+using Server.Misc;
 
 namespace Server.SkillHandlers
 {
@@ -104,8 +105,9 @@ namespace Server.SkillHandlers
                     }
                 }
             }
-            catch
+            catch(Exception e)
             {
+                ExceptionLogging.WriteLine(e, "Source: {0}, Target: {0}", source, target);
             }
         }
 
@@ -122,8 +124,9 @@ namespace Server.SkillHandlers
                     source.Send(target.RemovePacket);
                 }
             }
-            catch
+            catch(Exception e)
             {
+                ExceptionLogging.WriteLine(e, "Source: {0}, Target: {0}", source, target);
             }
         }
     }
