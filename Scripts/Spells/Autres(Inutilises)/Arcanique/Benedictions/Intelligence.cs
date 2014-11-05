@@ -37,7 +37,7 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-                SpellHelper.AddStatBonus(Caster, m, StatType.Int, GetDurationForSpell(1));
+                SpellHelper.AddStatBonus(Caster, m, StatType.Int, TimeSpan.FromSeconds(0));
 
 				m.FixedParticles( 0x375A, 10, 15, 5011, EffectLayer.Head );
 				m.PlaySound( 0x1EB );

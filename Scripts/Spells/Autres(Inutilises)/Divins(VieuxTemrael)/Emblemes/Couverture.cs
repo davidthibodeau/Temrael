@@ -48,7 +48,7 @@ namespace Server.Spells
                 int hue = 0;
 
                 TotemType type = TotemType.Couverture;
-                DateTime delete = DateTime.Now + GetDurationForSpell(1.0);
+                DateTime delete = DateTime.Now + TimeSpan.FromSeconds(0);
                 int range = 1 + (int)(Caster.Skills[CastSkill].Value / 10);
                 double bonus = 20 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) * 2);//20 à 420
 

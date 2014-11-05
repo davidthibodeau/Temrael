@@ -45,9 +45,9 @@ namespace Server.Spells
         {
             SpellHelper.Turn(Caster, m);
 
-            SpellHelper.AddStatBonus(Caster, m, StatType.Str, spell.GetDurationForSpell(1)); SpellHelper.DisableSkillCheck = true;
-            SpellHelper.AddStatBonus(Caster, m, StatType.Dex, spell.GetDurationForSpell(1));
-            SpellHelper.AddStatBonus(Caster, m, StatType.Int, spell.GetDurationForSpell(1)); SpellHelper.DisableSkillCheck = false;
+            SpellHelper.AddStatBonus(Caster, m, StatType.Str, TimeSpan.FromSeconds(0)); SpellHelper.DisableSkillCheck = true;
+            SpellHelper.AddStatBonus(Caster, m, StatType.Dex, TimeSpan.FromSeconds(0));
+            SpellHelper.AddStatBonus(Caster, m, StatType.Int, TimeSpan.FromSeconds(0)); SpellHelper.DisableSkillCheck = false;
 
             m.FixedParticles(0x373A, 10, 15, 5018, EffectLayer.Waist);
             m.PlaySound(0x1EA);

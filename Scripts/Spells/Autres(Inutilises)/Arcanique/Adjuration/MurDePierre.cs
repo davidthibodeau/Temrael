@@ -68,7 +68,7 @@ namespace Server.Spells
 
 				Effects.PlaySound( p, Caster.Map, 0x1F6 );
 
-                TimeSpan duration = GetDurationForSpell(0.7);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				for ( int i = -2; i <= 2; ++i )
 				{

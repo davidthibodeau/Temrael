@@ -47,11 +47,11 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, ref source, ref m);
 
-                double damage = GetNewAosDamage(25, 1, 4, true);
+                //double damage = GetNewAosDamage(25, 1, 4, true);
 
                 if (CheckResisted(m))
                 {
-                    damage *= 0.75;
+                    //damage *= 0.75;
 
                     m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                 }
@@ -59,7 +59,7 @@ namespace Server.Spells
 				source.MovingParticles( m, 0x36D4, 7, 0, false, true, 1941, 0, 9502, 4019, 0x160, 0 );
 				source.PlaySound( 282 );
 
-				SpellHelper.Damage( this, m, damage, 0, 100, 0, 0, 0 );
+				//SpellHelper.Damage( this, m, damage, 0, 100, 0, 0, 0 );
 			}
 
 			FinishSequence();

@@ -48,7 +48,7 @@ namespace Server.Spells
                 int hue = 1942;
 
                 TotemType type = TotemType.PointDeParesse;
-                DateTime delete = DateTime.Now + GetDurationForSpell(0.5);
+                DateTime delete = DateTime.Now + TimeSpan.FromSeconds(0);
                 int range = 1 + (int)(Caster.Skills[CastSkill].Value / 10);
                 double bonus = 1 + (Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 100;
 

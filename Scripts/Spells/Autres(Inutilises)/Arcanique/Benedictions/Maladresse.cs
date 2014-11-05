@@ -39,7 +39,7 @@ namespace Server.Spells
 
 				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
 
-                SpellHelper.AddStatCurse(Caster, m, StatType.Dex, GetDurationForSpell(1));
+                SpellHelper.AddStatCurse(Caster, m, StatType.Dex, TimeSpan.FromSeconds(0));
 
 				if ( m.Spell != null )
 					m.Spell.OnCasterHurt();

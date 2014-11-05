@@ -50,7 +50,7 @@ namespace Server.Spells
 
                 if (m != Caster && m.BeginAction(typeof(ChampDeStaseSpell)) && m.AccessLevel <= Caster.AccessLevel)
                 {
-                    TimeSpan duration = GetDurationForSpell(0.1);
+                    TimeSpan duration = TimeSpan.FromSeconds(0);
 
                     m.Freeze(duration);
 

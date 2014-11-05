@@ -59,7 +59,7 @@ namespace Server.Spells
 
             RemoveTimer(m);
 
-            TimeSpan duration = spell.GetDurationForSpell(30, 3);
+            TimeSpan duration = TimeSpan.FromSeconds(0);
 
             Timer t = new InternalTimer(m, duration);
 

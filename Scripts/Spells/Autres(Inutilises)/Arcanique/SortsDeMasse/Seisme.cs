@@ -33,9 +33,9 @@ namespace Server.Spells
                ArrayList m_target = new ArrayList();
             if (SpellHelper.CheckTown(Caster, Caster) && CheckSequence())
             {
-                   double damage = GetNewAosDamage(15, 4, 6, true);
+                   //double damage = GetNewAosDamage(15, 4, 6, true);
 
-                   double s_damage = damage;
+                   //double s_damage = damage;
 
                    m_target.Clear();
 
@@ -60,7 +60,7 @@ namespace Server.Spells
 
                             targ.Freeze(TimeSpan.FromSeconds(0.25));
 
-                            AOS.Damage(targ, Caster, (int)s_damage, 100, 0, 0, 0, 0);
+                            //AOS.Damage(targ, Caster, (int)s_damage, 100, 0, 0, 0, 0);
                         }
                     }
        

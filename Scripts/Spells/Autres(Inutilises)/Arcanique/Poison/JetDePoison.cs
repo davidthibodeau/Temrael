@@ -46,7 +46,7 @@ namespace Server.Spells
 				Effects.SendLocationParticles( EffectItem.Create( m.Location, m.Map, EffectItem.DefaultDuration ), 0x36B0, 1, 14, 63, 7, 9915, 0 );
 				Effects.PlaySound( m.Location, m.Map, 0x229 );
 
-                double damage = GetNewAosDamage(7, 1, 3, false);
+                //double damage = GetNewAosDamage(7, 1, 3, false);
 
                 int level;
 
@@ -61,7 +61,7 @@ namespace Server.Spells
 
                 m.ApplyPoison(Caster, Poison.GetPoison(level));
 
-                SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
+                //SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
 
 				Map map = m.Map;
 
@@ -79,7 +79,7 @@ namespace Server.Spells
 					{
 						Mobile targ = (Mobile)targets[i];
 
-                        SpellHelper.Damage(this, targ, damage * 0.33, 0, 0, 0, 0, 100);
+                        //SpellHelper.Damage(this, targ, damage * 0.33, 0, 0, 0, 0, 100);
 
                         m.FixedParticles(0x374A, 10, 15, 5021, EffectLayer.Waist);
                         m.PlaySound(0x474);

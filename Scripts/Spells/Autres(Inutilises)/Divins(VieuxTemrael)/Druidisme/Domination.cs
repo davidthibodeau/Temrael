@@ -53,7 +53,7 @@ namespace Server.Spells
                 {
                     m.PrivateOverheadMessage(MessageType.Regular, 0x3B2, 502799, m.NetState); // It seems to accept you as master.
 
-                    //m.EndDomination = DateTime.Now + GetDurationForSpell(2);
+                    //m.EndDomination = DateTime.Now + TimeSpan.FromSeconds(0);
                     m.SetControlMaster(Caster);
                     m.IsBonded = false;
 

@@ -266,7 +266,7 @@ namespace Server.Spells
         //Création d'une copie
         public static void ToogleCopie(Spell spell, Mobile Caster, Mobile from)
         {
-            TimeSpan duration = spell.GetDurationForSpell(30, 1);
+            TimeSpan duration = TimeSpan.FromSeconds(0);
 
             SpellHelper.Summon(new Copie(Caster,from), Caster, 0x217, duration, false, false);
         }

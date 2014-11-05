@@ -41,7 +41,7 @@ namespace Server.Spells
                 m.FixedParticles(14186, 1, 13, 9912, 2062, 7, EffectLayer.Head);
                 m.FixedParticles(14138, 1, 15, 9502, 1109, 7, EffectLayer.Head);
 
-                TimeSpan duration = GetDurationForSpell(0.4);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
                 TimeSpan delay = TimeSpan.FromSeconds(11 - Caster.Skills[CastSkill].Value / 20);
 
                 int amount = (int)(2 + Caster.Skills[CastSkill].Base / 20);

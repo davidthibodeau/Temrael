@@ -62,7 +62,7 @@ namespace Server.Spells
                 m.PlaySound(0x210);
 
                 //Le dégât est ajusté sur le % de vie restant de la cible, puisque c'est un sort de type Exécution/Finisher
-                double damage = (m.HitsMax / m.Hits) * (GetDamageSkill(Caster) - GetResistSkill(m)) / 20 + (m.Player ? 15 : 27);
+                double damage = (m.HitsMax / m.Hits) * Caster.Skills[DamageSkill].Value / 20 + (m.Player ? 15 : 27);
 
                 damage = SpellHelper.AdjustValue(Caster, damage);
 

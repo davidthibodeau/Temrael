@@ -48,7 +48,7 @@ namespace Server.Spells
 
                     SpellHelper.Turn(m_spell.Caster, targ);
 
-                    TimeSpan duration = m_spell.GetDurationForSpell(0.3);
+                    TimeSpan duration = TimeSpan.FromSeconds(0);
 
                     new ArmurePierreSpell.InternalTimer(targ, duration).Start();
                     //targ.ArmurePierre = true;

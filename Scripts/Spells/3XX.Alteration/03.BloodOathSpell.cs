@@ -72,7 +72,7 @@ namespace Server.Spells
 				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
 				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
-                double duration = ((GetDamageSkill(Caster) - GetResistSkill(m)) / 8) + 8;
+                double duration = ((Caster.Skills[DamageSkill].Value) / 8) + 8;
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 

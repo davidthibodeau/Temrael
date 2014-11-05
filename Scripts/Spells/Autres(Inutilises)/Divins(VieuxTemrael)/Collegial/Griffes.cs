@@ -46,7 +46,7 @@ namespace Server.Spells
                 if (twohanded != null)
                     m.AddToBackpack(twohanded);
 
-                TimeSpan duration = GetDurationForSpell(0.7);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m.FixedParticles(2339, 10, 30, 5013, 1942, 0, EffectLayer.Waist); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(481);

@@ -8,9 +8,6 @@ namespace Server.Spells
 {
 	public abstract class ReligiousSpell : Spell
 	{
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.ArtMagique; } }
-
         public override StatType DamageStat { get { return StatType.Int; } }
 
         public ReligiousSpell(Mobile caster, Item scroll, SpellInfo info) : base(caster, scroll, info)

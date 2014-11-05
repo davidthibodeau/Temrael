@@ -40,7 +40,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                TimeSpan duration = TimeSpan.FromSeconds(0.5) + GetDurationForSpell(0.1);
+                TimeSpan duration = TimeSpan.FromSeconds(0.5) + TimeSpan.FromSeconds(0);
 
                 m.Paralyze(duration);
 

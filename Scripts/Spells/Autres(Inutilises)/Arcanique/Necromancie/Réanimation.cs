@@ -31,9 +31,6 @@ namespace Server.Spells
                 Reagent.DaemonBlood
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
         public override bool Invocation { get { return true; } }
 
 		public ReanimationSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )

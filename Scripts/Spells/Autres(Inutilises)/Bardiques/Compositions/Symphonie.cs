@@ -37,7 +37,7 @@ namespace Server.Spells
         {
             if (CheckSequence())
             {
-                TimeSpan duration = GetDurationForSpell(2, 0.1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
                 double amount = 1;
 
                 //Calcul du bonus donné par le sort (niveau * bonus_donne)

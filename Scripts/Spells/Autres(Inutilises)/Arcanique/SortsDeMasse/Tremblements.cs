@@ -50,7 +50,7 @@ namespace Server.Spells
 
                 Caster.PlaySound(0x2F3);
 
-                double damage = GetNewAosDamage(8, 1, 6, true);
+                //double damage = GetNewAosDamage(8, 1, 6, true);
 
 				for ( int i = 0; i < targets.Count; ++i )
 				{
@@ -59,7 +59,7 @@ namespace Server.Spells
                     Disturb(m);
 
 					Caster.DoHarmful( m );
-					SpellHelper.Damage( TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100 );
+					//SpellHelper.Damage( TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100 );
 				}
 			}
 

@@ -60,7 +60,7 @@ namespace Server.Spells
                         ApplyPoisonTo(m);
                         m.PlaySound(0x474);
 
-                        double damage = GetNewAosDamage(2, 1, 3, false);
+                        //double damage = GetNewAosDamage(2, 1, 3, false);
 
                         //BaseArmor.AcidHit(m, (int)damage);
                     }

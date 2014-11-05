@@ -57,7 +57,7 @@ namespace Server.Spells
 			}
 			else if ( CheckSequence() )
             {
-                TimeSpan duration = GetDurationForSpell(30, 1.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				BaseCreature.Summon( new SummonedEnergyVortex(), false, Caster, new Point3D( p ), 0x212, duration );
 			}

@@ -64,8 +64,8 @@ namespace Server.Spells
 				try
                 {
                     BaseCreature Betes = (BaseCreature)Activator.CreateInstance(m_Betes);
-                    
-                    TimeSpan duration = GetDurationForSpell(20, 1.8);
+
+                    TimeSpan duration = TimeSpan.FromSeconds(0);
 
                     SpellHelper.Summon(Betes, Caster, 0x215, duration, true, true);
 				}

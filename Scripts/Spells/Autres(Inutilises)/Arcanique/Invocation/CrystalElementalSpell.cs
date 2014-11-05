@@ -44,7 +44,7 @@ namespace Server.Spells
 		{
 			if ( CheckSequence() )
 			{
-                TimeSpan duration = GetDurationForSpell(30, 1.8);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 			    SpellHelper.Summon( new SummonedCrystalElemental(), Caster, 0x217, duration, false, false );
 			}

@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(2);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_VoileTable[m] = (int)(5 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 5));
 

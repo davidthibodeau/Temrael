@@ -24,7 +24,7 @@ namespace Server.Engines.Equitation
         private static double[] m_AttackingTable = new double[] { 0.501, 0.161, 0.051, 0.021,
             0.011, 0.001, 0.001, 0.001, 0.001, 0.001, 0.001 };
 
-        private static double[] m_RunningTable = new double[] { 0.251, 0.161, 0.081, 0.041,
+        private static double[] m_RunningTable = new double[] { 0.251, 0.161, 0.081, 0.051,
             0.021, 0.011, 0.011, 0.001, 0.000, 0.000, 0.000 };
 
         private static double[] m_BeingAttackedTable = new double[] { 0.501, 0.501, 0.501, 0.501,

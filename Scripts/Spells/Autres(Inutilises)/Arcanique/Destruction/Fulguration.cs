@@ -41,7 +41,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                double damage = GetNewAosDamage(35, 1, 5, true);
+                //double damage = GetNewAosDamage(35, 1, 5, true);
 
                 m.BoltEffect(0);
 
@@ -49,11 +49,11 @@ namespace Server.Spells
 
                 int itemID = 0x398C;
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 new MurDeFeuSpell.InternalItem(this, itemID, m.Location, Caster, Caster.Map, duration, 0);
 
-                SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
+                //SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
             }
 
 			FinishSequence();

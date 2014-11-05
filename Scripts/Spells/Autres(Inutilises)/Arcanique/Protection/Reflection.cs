@@ -72,7 +72,7 @@ namespace Server.Spells
 
                 m_Registry[target] = (int)(5 + (caster.Skills[spell.CastSkill].Value + caster.Skills[spell.DamageSkill].Value) / 10);
 
-                TimeSpan duration = spell.GetDurationForSpell(1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 new InternalTimer(target, duration).Start();
             }

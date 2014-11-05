@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_PlumeTable[m] = (int)(20 + (Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 2);
 

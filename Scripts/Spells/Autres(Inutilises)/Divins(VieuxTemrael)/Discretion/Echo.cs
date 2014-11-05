@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(2);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_EchoTable[m] = 2 + (Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 25;
 

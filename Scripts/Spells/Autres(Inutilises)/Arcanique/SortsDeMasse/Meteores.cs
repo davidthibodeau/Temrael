@@ -65,7 +65,7 @@ namespace Server.Spells
 					eable.Free();
 				}
 
-                double damage = GetNewAosDamage(25, 1, 6, true);
+                //double damage = GetNewAosDamage(25, 1, 6, true);
 
 				if ( targets.Count > 0 )
 				{
@@ -79,13 +79,13 @@ namespace Server.Spells
 
 						if ( CheckResisted( m ) )
 						{
-							damage *= 0.75;
+							//damage *= 0.75;
 
 							m.SendLocalizedMessage( 501783 ); // You feel yourself resisting magical energy.
                         }
 
 						Caster.DoHarmful( m );
-                        SpellHelper.Damage(this, m, damage, 0, 100, 0, 0, 0);
+                        //SpellHelper.Damage(this, m, damage, 0, 100, 0, 0, 0);
 
 						Caster.MovingParticles( m, 0x36D4, 7, 0, false, true, 9501, 1, 0, 0x100 );
 					}

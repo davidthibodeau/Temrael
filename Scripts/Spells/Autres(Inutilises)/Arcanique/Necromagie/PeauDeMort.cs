@@ -19,9 +19,6 @@ namespace Server.Spells
 				Reagent.GraveDust
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
         public PeauDeMortSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{
@@ -55,7 +52,7 @@ namespace Server.Spells
 
                 value = SpellHelper.AdjustValue(Caster, value);
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m.VirtualArmorMod += (int)value;
 

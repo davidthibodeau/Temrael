@@ -54,7 +54,7 @@ namespace Server.Spells
 
                     SpellHelper.CheckReflect((int)m_spell.Circle, m_spell.Caster, ref targ);
 
-                    DateTime endtime = DateTime.Now + m_spell.GetDurationForSpell(0.3);
+                    DateTime endtime = DateTime.Now + TimeSpan.FromSeconds(0);
 
                     Timer t = new EtouffementsSpell.InternalTimer(targ, endtime);
 

@@ -54,7 +54,7 @@ namespace Server.Spells
                 }
                 else
                 {
-                    TimeSpan duration = GetDurationForSpell(1);
+                    TimeSpan duration = TimeSpan.FromSeconds(0);
 
                     StopTimer(m);
 

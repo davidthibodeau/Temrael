@@ -73,11 +73,11 @@ namespace Server.Spells
                         {
                             Disturb(m);
 
-                            double damage = GetNewAosDamage(15, 1, 5, true);
+                            //double damage = GetNewAosDamage(15, 1, 5, true);
 
                             if (CheckResisted(m))
                             {
-                                damage *= 0.75;
+                                //damage *= 0.75;
 
                                 m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                             }
@@ -85,7 +85,7 @@ namespace Server.Spells
                             m.FixedParticles(0x36BD, 20, 10, 5044, EffectLayer.Head);
                             m.PlaySound(0x307);
 
-                            SpellHelper.Damage(this, m, damage, 0, 100, 0, 0, 0);
+                            //SpellHelper.Damage(this, m, damage, 0, 100, 0, 0, 0);
                         }
                     }
                 }

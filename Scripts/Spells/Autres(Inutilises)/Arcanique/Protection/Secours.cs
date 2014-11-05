@@ -72,7 +72,7 @@ namespace Server.Spells
 
                 m_Registry.Add(target);
 
-                TimeSpan duration = spell.GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 new InternalTimer(target, duration).Start();
             }

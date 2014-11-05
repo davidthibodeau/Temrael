@@ -42,7 +42,7 @@ namespace Server.Spells
         {
             if (CheckSequence())
             {
-                TimeSpan duration = GetDurationForSpell(30, 1.8);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
                 if (Caster is TMobile)
                 {
                     SpellHelper.Summon(new Horse(), Caster, 0x217, duration, false, false);

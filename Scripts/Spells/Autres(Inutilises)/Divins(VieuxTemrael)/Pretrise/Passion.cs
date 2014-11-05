@@ -49,7 +49,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.4);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 int val = (int)(10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 10));
 

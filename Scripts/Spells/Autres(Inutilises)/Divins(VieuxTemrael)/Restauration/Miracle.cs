@@ -49,7 +49,7 @@ namespace Server.Spells
                 int hue = 2041;
 
                 TotemType type = TotemType.Miracle;
-                DateTime delete = DateTime.Now + GetDurationForSpell(0.2);
+                DateTime delete = DateTime.Now;
                 int range = 1 + (int)(Caster.Skills[CastSkill].Value / 10);
                 double bonus = 0.10 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 400);
 

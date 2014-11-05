@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                int damage = GetNewAosDamage(12, 1, 5, true);
+                //int damage = GetNewAosDamage(12, 1, 5, true);
                 
                 if (m == null || m.Deleted || !m.Alive)
                     return;
@@ -58,7 +58,7 @@ namespace Server.Spells
                 Caster.MovingEffect(m, 0x1BFE, 7, 1, false, false, 1043, 0);
                 Caster.PlaySound(903);
 
-                SpellHelper.Damage(TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100);
+                //SpellHelper.Damage(TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100);
 			}
 
 			FinishSequence();

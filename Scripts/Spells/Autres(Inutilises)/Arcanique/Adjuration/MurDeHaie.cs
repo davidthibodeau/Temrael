@@ -67,7 +67,7 @@ namespace Server.Spells
 
 				Effects.PlaySound( p, Caster.Map, 0x20B );
 
-				TimeSpan duration = GetDurationForSpell(0.1);
+				TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				int itemID = 0xDB9;
 

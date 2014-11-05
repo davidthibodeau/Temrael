@@ -36,7 +36,7 @@ namespace Server.Spells
         {
             if (CheckSequence())
             {
-                TimeSpan duration = GetDurationForSpell(20, 1.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
                 double amount = 1;
 
                 DateTime endtime = DateTime.Now + duration;

@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_PatronageTable[m] = Caster;//2% par tile, 24% à 1 tile.
 

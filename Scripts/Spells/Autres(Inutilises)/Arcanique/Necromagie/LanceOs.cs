@@ -23,9 +23,6 @@ namespace Server.Spells
                 Reagent.PigIron
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
         public LanceOsSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
         {
@@ -58,9 +55,9 @@ namespace Server.Spells
 
                         SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                        double damage = GetNewAosDamage(15, 1, 6, true);
+                        //double damage = GetNewAosDamage(15, 1, 6, true);
 
-                        SpellHelper.Damage(TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100);
+                        //SpellHelper.Damage(TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100);
 
                         Caster.MovingParticles(m, 0x36D4, 7, 0, false, false, 2056, 0, 3006, 4006, 0, 0);
                         Caster.PlaySound(903);

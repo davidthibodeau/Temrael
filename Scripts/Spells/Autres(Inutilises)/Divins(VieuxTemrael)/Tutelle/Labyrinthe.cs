@@ -45,7 +45,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_LabyrintheTable[m] = (int)(25 - ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 15));
                 m_LabyrintheRegistry[m] = m.Location;

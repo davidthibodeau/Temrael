@@ -68,7 +68,7 @@ namespace Server.Spells
                 {
                     BaseCreature creature = (BaseCreature)Activator.CreateInstance(m_Creature);
 
-                    TimeSpan duration = GetDurationForSpell(30, 1.8);
+                    TimeSpan duration = TimeSpan.FromSeconds(0);
 
                     SpellHelper.Summon(creature, Caster, 0x215, duration, true, true);
 				}

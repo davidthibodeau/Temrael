@@ -40,7 +40,7 @@ namespace Server.Spells
 			}
 			else if ( CheckHSequence( m ) )
 			{
-                TimeSpan duration = GetDurationForSpell(0.1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
                 DateTime endtime = DateTime.Now + duration;
 
                 SpellHelper.Turn(Caster, m);

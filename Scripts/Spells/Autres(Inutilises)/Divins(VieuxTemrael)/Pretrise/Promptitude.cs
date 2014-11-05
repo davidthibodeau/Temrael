@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.4);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_PromptitudeTable[m] = (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 600);
 

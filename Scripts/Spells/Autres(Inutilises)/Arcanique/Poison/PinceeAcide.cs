@@ -60,13 +60,13 @@ namespace Server.Spells
 				m.FixedParticles( 0x374A, 10, 15, 5021, EffectLayer.Waist );
 				m.PlaySound( 0x474 );
 
-                double damage = GetNewAosDamage(2, 1, 2, false);
+                //double damage = GetNewAosDamage(2, 1, 2, false);
 
                 //BaseArmor.AcidHit(m, (int)damage);
 
-                damage = GetNewAosDamage(12, 1, 4, false);
+                //damage = GetNewAosDamage(12, 1, 4, false);
 
-                SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
+                //SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
 			}
 
 			FinishSequence();

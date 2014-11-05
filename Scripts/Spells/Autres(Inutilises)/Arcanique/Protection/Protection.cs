@@ -34,7 +34,7 @@ namespace Server.Spells
             {
                 StopTimer(m);
 
-                TimeSpan duration = spell.GetDurationForSpell(1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 double value = (int)(Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Thaumaturgie].Value);
                 value /= 15;

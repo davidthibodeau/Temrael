@@ -21,9 +21,6 @@ namespace Server.Spells
                 Reagent.PigIron
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
         public DefraicheurSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{
@@ -91,16 +88,16 @@ namespace Server.Spells
                         Caster.DoHarmful(m);
                         m.FixedParticles(0x374A, 1, 15, 9502, 97, 3, (EffectLayer)255);
 
-                        double damage = GetNewAosDamage(10, 1, 4, true);
+                        //double damage = GetNewAosDamage(10, 1, 4, true);
 
                         if (CheckResisted(m))
                         {
-                            damage *= 0.75;
+                            //damage *= 0.75;
 
                             m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                         }
 
-                        SpellHelper.Damage(this, m, damage, 0, 0, 100, 0, 0);
+                        //SpellHelper.Damage(this, m, damage, 0, 0, 100, 0, 0);
 					}
 				}
 			}

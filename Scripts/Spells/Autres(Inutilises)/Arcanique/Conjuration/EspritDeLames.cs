@@ -62,7 +62,7 @@ namespace Server.Spells
 			}
 			else if ( /*SpellHelper.CheckTown( p, Caster ) && */CheckSequence() )
 			{
-                TimeSpan duration = GetDurationForSpell(30, 1.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 BaseCreature.Summon(new SummonedBladeSpirits(), false, Caster, new Point3D(p), 0x212, duration);
 			}

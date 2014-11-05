@@ -502,7 +502,7 @@ namespace Server.Custom.CustomSpell
 
                     Priority = intervale;
 
-                    m_owner.targetsList = m_owner.m_Caster.GetMobilesInRange(m_owner.info.range);
+                    m_owner.targetsList = m_owner.Caster.GetMobilesInRange(m_owner.info.range);
 
                     m_owner.UniqueEffect();
 

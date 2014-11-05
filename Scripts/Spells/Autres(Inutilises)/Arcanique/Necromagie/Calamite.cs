@@ -19,9 +19,6 @@ namespace Server.Spells
 				Reagent.PigIron
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
         public override bool ClearHandsOnCast { get { return false; } }
 
         public CalamiteSpell(Mobile caster, Item scroll)
@@ -54,7 +51,7 @@ namespace Server.Spells
 				Caster.FixedParticles( 0x37B9, 1, 14, 9502, 32, 5, (EffectLayer)255 );
 				new SoundEffectTimer( Caster ).Start();
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				Timer t = (Timer)m_Table[weapon];
 

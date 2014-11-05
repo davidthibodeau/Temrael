@@ -21,9 +21,6 @@ namespace Server.Spells
                 Reagent.BatWing
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
         public JetDeDouleurSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{
@@ -50,9 +47,9 @@ namespace Server.Spells
                 m.FixedParticles(0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head);
                 m.PlaySound(0x210);
 
-                double damage = GetNewAosDamage(30, 1, 4, true);
+                //double damage = GetNewAosDamage(30, 1, 4, true);
 
-                AOS.Damage(m, Caster, (int)damage, 0, 0, 0, 0, 100);
+                //AOS.Damage(m, Caster, (int)damage, 0, 0, 0, 0, 100);
             }
 
 			FinishSequence();

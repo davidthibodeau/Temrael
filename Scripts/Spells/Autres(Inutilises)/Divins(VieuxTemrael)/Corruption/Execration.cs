@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_ExecrationTable[m] = 0.10 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 500); // 10 à 50%
 

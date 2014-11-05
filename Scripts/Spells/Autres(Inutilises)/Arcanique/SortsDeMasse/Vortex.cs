@@ -47,15 +47,15 @@ namespace Server.Spells
 			}
 			else if ( SpellHelper.CheckTown( p, Caster ) && CheckSequence() )
 			{
-                TimeSpan duration = GetDurationForSpellvortex(0.02);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
-                double damage = GetNewAosDamage(6, 4, 6, true);
+                //double damage = GetNewAosDamage(6, 4, 6, true);
 
                 DateTime endtime = DateTime.Now + duration;
 
                 Effects.SendLocationEffect(new Point3D(p), Caster.Map, 0x37CC, (int)(Caster.Skills[SkillName.Evocation].Value* 1.5));
 
-                m_Timer = new VortexTimer(Caster, damage, endtime, p, m_Timer, this);
+                //m_Timer = new VortexTimer(Caster, damage, endtime, p, m_Timer, this);
                 m_Timer.Start();
 			}
 

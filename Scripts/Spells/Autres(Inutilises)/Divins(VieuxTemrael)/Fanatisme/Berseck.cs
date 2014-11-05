@@ -45,7 +45,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_BerseckTable[m] = 0.05 + (double)((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 4000); //5 à 10% par coup
                 m_BerseckRegistry[m] = (double)0;

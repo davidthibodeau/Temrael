@@ -44,7 +44,7 @@ namespace Server.Spells
 		{
 			if ( CheckSequence() )
 			{
-                TimeSpan duration = GetDurationForSpell(30, 1.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 			    SpellHelper.Summon( new SummonedDaemon(), Caster, 0x216, duration, false, false );
 			}

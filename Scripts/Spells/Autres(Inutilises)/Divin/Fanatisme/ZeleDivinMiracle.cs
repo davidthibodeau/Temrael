@@ -64,7 +64,7 @@ namespace Server.Spells
 
                     m_Table[m] = mods;
 
-                    TimeSpan duration = GetDurationForSpell(0.5);
+                    TimeSpan duration = TimeSpan.FromSeconds(0);
 
                     new ZeleDivinMiracle.InternalTimer(m, duration).Start();
                 }

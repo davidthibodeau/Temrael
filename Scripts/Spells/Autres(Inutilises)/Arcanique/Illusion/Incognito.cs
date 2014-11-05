@@ -66,7 +66,7 @@ namespace Server.Spells
         {
             if (m.BeginAction(typeof(Spell)))
             {
-                TimeSpan duration = spell.GetDurationForSpell(30, 0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 StopTimer(m);
 

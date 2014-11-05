@@ -45,7 +45,7 @@ namespace Server.Spells
             }
             else if (CheckBSequence(m))
             {
-                DateTime endtime = DateTime.Now + GetDurationForSpell(1);
+                DateTime endtime = DateTime.Now + TimeSpan.FromSeconds(0);
 
                 StopTimer((TMobile)m);
 

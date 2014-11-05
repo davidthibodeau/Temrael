@@ -37,7 +37,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_MortificationTable[m] = (int)(5 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 8)); // 10 à 50%
 

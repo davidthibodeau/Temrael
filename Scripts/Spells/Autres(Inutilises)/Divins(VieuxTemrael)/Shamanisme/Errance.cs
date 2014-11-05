@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_ErranceTable[m] = 25 - ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 20); //+1 à 5 HP à chaque 25...15 pas.
 

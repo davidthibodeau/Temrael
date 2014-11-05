@@ -49,10 +49,10 @@ namespace Server.Spells
                 m.FixedParticles(0x373A, 1, 15, 9913, 67, 7, EffectLayer.Head);
                 m.PlaySound(0x1BB);
 
-                double ss = GetDamageSkill(Caster);
-                double mr = (Caster == m ? 0.0 : GetResistSkill(m));
+                double ss = Caster.Skills[DamageSkill].Value;
+                double mr = 0;
 
-                double value = GetDamageSkill(Caster) / 2.5;
+                double value = Caster.Skills[DamageSkill].Value / 2.5;
 
                 value = SpellHelper.AdjustValue(Caster, value);
 

@@ -19,9 +19,6 @@ namespace Server.Spells
                 Reagent.Garlic
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
         public SermentDeSangSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{
@@ -76,7 +73,7 @@ namespace Server.Spells
 				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
 				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
-                TimeSpan duration = GetDurationForSpell(0.2);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				new ExpireTimer( Caster, m, duration ).Start();
 			}

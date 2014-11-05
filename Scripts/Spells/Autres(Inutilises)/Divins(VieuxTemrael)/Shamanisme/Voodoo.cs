@@ -39,7 +39,7 @@ namespace Server.Spells
             {
                 SpellHelper.Turn(Caster, m);
 
-                TimeSpan duration = GetDurationForSpell(0.1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m.Freeze(duration);
 

@@ -20,9 +20,6 @@ namespace Server.Spells
 				Reagent.NoxCrystal
             );
 
-        public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
-
 		public MauvaisPresageSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
@@ -65,7 +62,7 @@ namespace Server.Spells
 					m_Table[m] = mod;
 				}
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				Timer.DelayCall( duration, new TimerStateCallback( EffectExpire_Callback ), m );
 			}

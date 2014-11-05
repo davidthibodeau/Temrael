@@ -57,7 +57,7 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-                TimeSpan duration = GetDurationForSpell(10, 0.2);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 SummonedEspritVengeur rev = new SummonedEspritVengeur(Caster, m, duration);
 

@@ -46,9 +46,9 @@ namespace Server.Spells
 
                 item.TrapType = TrapType.MagicTrap;
 
-                double damage = GetNewAosDamage(50, 1, 5, true);
+                //double damage = GetNewAosDamage(50, 1, 5, true);
 
-				item.TrapPower = (int)damage;
+				//item.TrapPower = (int)damage;
 
 				Point3D loc = item.GetWorldLocation();
 

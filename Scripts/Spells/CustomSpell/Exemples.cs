@@ -15,7 +15,6 @@ namespace Server.Custom.CustomSpell
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        Mobile m_caster = null;
         Mobile m_target = null;
 
         const double scalingSkill = 0.1;
@@ -46,7 +45,7 @@ namespace Server.Custom.CustomSpell
         public ExempleTargeted(Mobile caster, Item scroll)
             : base(caster, scroll, info)
         {
-            m_caster = caster;
+            Caster = caster;
         }
 
         public override void Effect()
@@ -55,25 +54,25 @@ namespace Server.Custom.CustomSpell
             {
                 m_target = (Mobile)target1;
 
-                if (!m_Caster.CanSee(m_target))
+                if (!Caster.CanSee(m_target))
                 {
-                    m_Caster.SendLocalizedMessage(500237); // Target can not be seen.
+                    Caster.SendLocalizedMessage(500237); // Target can not be seen.
                 }
                 else
                 {
-                    SpellHelper.Turn(m_Caster, m_target);
+                    SpellHelper.Turn(Caster, m_target);
 
-                    SpellHelper.CheckReflect((int)this.Circle, ref m_caster, ref m_target);
+                    SpellHelper.CheckReflect((int)this.Circle, ref Caster, ref m_target);
 
                     double damage = Utility.RandomMinMax(10, 20);
 
-                    damage = damage * (scalingSkill * m_Caster.Skills[SkillName.ArtMagique].Value);
+                    damage = damage * (scalingSkill * Caster.Skills[SkillName.ArtMagique].Value);
 
                     // Ici mettre la fonction qui s'occupe de faire du dégâts magique (Probablement une fonction CombatStrategy.)
                     // m_Target.SpellDamage((int)damage);
 
-                    m_Caster.MovingParticles(m_target, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160);
-                    m_Caster.PlaySound(0x44B);
+                    Caster.MovingParticles(m_target, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160);
+                    Caster.PlaySound(0x44B);
                 }
             }
         }
@@ -83,7 +82,7 @@ namespace Server.Custom.CustomSpell
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        Mobile m_caster = null;
+        Mobile Caster = null;
         Mobile m_target = null;
 
         const double scalingSkill = 0.1;
@@ -115,7 +114,7 @@ namespace Server.Custom.CustomSpell
         public ExempleTargetedTimer(Mobile caster, Item scroll)
             : base(caster, scroll, info)
         {
-            m_caster = caster;
+            Caster = caster;
         }
 
 
@@ -158,7 +157,7 @@ namespace Server.Custom.CustomSpell
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        Mobile m_caster;
+        Mobile Caster;
 
         static private InfoSpell.AoE info = new InfoSpell.AoE(
 
@@ -182,7 +181,7 @@ namespace Server.Custom.CustomSpell
         public ExempleAoE(Mobile caster, Item scroll)
             : base(caster, scroll, info)
         {
-            m_caster = caster;
+            Caster = caster;
         }
 
         public override void UniqueEffect()
@@ -205,7 +204,7 @@ namespace Server.Custom.CustomSpell
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        Mobile m_caster;
+        Mobile Caster;
 
         static private InfoSpell.AoETimer info = new InfoSpell.AoETimer(
 
@@ -234,14 +233,14 @@ namespace Server.Custom.CustomSpell
         public ExempleAoETimer(Mobile caster, Item scroll)
             : base(caster, scroll, info)
         {
-            m_caster = caster;
+            Caster = caster;
         }
 
 
         public override void UniqueEffect()
         {
-            m_caster.PlaySound(0x2F3);
-            m_caster.Say("Tremblement de terre!");
+            Caster.PlaySound(0x2F3);
+            Caster.Say("Tremblement de terre!");
         }
 
         public override void OnStart(Mobile target)

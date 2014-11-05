@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.5);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_CourageTable[m] = (int)(5 + (Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 20);
 

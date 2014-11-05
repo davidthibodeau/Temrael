@@ -42,12 +42,12 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                double damage = GetNewAosDamage(8, 1, 3, true); ;
+                //double damage = GetNewAosDamage(8, 1, 3, true); ;
 
                 m.FixedParticles(0x374A, 10, 15, 5013, EffectLayer.Waist);
                 m.PlaySound(0x1F1);
 
-                SpellHelper.Damage(this, m, damage, 0, 0, 100, 0, 0);
+                //SpellHelper.Damage(this, m, damage, 0, 0, 100, 0, 0);
             }
 
             FinishSequence();

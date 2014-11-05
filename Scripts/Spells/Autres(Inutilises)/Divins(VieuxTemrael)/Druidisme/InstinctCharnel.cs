@@ -48,7 +48,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_InstinctCharnelTable[m] = 0.05 + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 800); //5 à 30% 
 

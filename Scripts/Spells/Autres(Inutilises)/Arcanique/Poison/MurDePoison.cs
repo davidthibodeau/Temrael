@@ -71,7 +71,7 @@ namespace Server.Spells
 
                 int itemID = eastToWest ? 0x3915 : 0x3922;
 
-                TimeSpan duration = GetDurationForSpell(0.1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				for ( int i = -3; i <= 3; ++i )
 				{

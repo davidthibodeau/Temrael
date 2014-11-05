@@ -20,7 +20,6 @@ namespace Server.Spells
 			);
 
         public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
-        public override SkillName DamageSkill { get { return SkillName.Necromancie; } }
 
         public override bool Invocation { get { return true; } }
 
@@ -47,7 +46,7 @@ namespace Server.Spells
 		{
 			if ( CheckSequence() )
 			{
-                TimeSpan duration = GetDurationForSpell(30, 1.2);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 			    SpellHelper.Summon( new SummonedStrangulaire(), Caster, 0x217, duration, false, false );
 			}

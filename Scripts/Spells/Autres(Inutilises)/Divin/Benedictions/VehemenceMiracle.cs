@@ -31,7 +31,7 @@ namespace Server.Spells
             {
                 StopTimer(Caster);
 
-                TimeSpan duration = GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_VehemencetTable[Caster] = (int)(Utility.Random(1, 10) + ((Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 20));
 

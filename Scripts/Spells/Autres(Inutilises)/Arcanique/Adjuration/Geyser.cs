@@ -48,7 +48,7 @@ namespace Server.Spells
 
 				int itemID = 0x3709;
 
-                TimeSpan duration = GetDurationForSpell(0.7);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 Point3D loc = new Point3D(p.X, p.Y, p.Z);
                 new InternalItem( itemID, loc, Caster, Caster.Map, duration, 1 );

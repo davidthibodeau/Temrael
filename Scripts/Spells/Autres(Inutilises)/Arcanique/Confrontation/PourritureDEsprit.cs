@@ -51,7 +51,7 @@ namespace Server.Spells
 				m.PlaySound( 0x258 );
 				m.FixedParticles( 0x373A, 1, 17, 9903, 15, 4, EffectLayer.Head );
 
-                TimeSpan duration = GetDurationForSpell(1);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 double scalar = SpellHelper.AdjustValue(Caster, 1 + (Caster.Skills[SkillName.ArtMagique].Value) / 1000);
                 SetMindRotScalar(Caster, m, scalar, duration);

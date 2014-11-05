@@ -49,7 +49,7 @@ namespace Server.Spells
                 Caster.FixedParticles(14276, 10, 20, 5013, 2041, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(21);
 
-                TimeSpan duration = GetDurationForSpell(0.2);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 int Count = 0;
                 int Checkcount = 0;

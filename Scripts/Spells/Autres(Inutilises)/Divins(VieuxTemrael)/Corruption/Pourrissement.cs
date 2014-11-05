@@ -45,7 +45,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_PourrissementTable[m] = (Caster.Skills[CastSkill].Value + Caster.Skills[DamageSkill].Value) / 1.5;
                 m_PourrissementRegistry[m] = Caster;

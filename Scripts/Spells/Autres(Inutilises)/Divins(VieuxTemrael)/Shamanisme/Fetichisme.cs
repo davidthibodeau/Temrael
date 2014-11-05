@@ -58,7 +58,7 @@ namespace Server.Spells
 
         public static void ToogleFetichisme(Spell spell, Mobile Caster, Mobile from)
         {
-            TimeSpan duration = spell.GetDurationForSpell(1);
+            TimeSpan duration = TimeSpan.FromSeconds(0);
 
             SpellHelper.Summon(new Fetichisme(from), Caster, 0x217, duration, false, false);
         }

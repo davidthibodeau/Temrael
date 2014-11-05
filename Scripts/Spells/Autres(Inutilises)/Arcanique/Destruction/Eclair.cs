@@ -43,18 +43,18 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                double damage = GetNewAosDamage(15, 1, 3, true);
+                //double damage = GetNewAosDamage(15, 1, 3, true);
 
                 if (CheckResisted(m))
                 {
-                    damage *= 0.75;
+                    //damage *= 0.75;
 
                     m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                 }
 
 				m.BoltEffect( 0 );
 
-				SpellHelper.Damage( this, m, damage, 0, 0, 0, 0, 100 );
+				//SpellHelper.Damage( this, m, damage, 0, 0, 0, 0, 100 );
 			}
 
 			FinishSequence();

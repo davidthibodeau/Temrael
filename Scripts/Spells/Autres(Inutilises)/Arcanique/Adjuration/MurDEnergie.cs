@@ -69,7 +69,7 @@ namespace Server.Spells
 
                 Effects.PlaySound(p, Caster.Map, 0x20B);
 
-                TimeSpan duration = GetDurationForSpell(0.7);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
 				int itemID = eastToWest ? 0x3946 : 0x3956;
 

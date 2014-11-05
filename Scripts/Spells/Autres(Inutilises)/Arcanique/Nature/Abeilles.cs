@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-				double damage = GetNewAosDamage( 10, 1, 3, true);
+				//double damage = GetNewAosDamage( 10, 1, 3, true);
 
                 m.PlaySound(22);
                 m.FixedEffect(0x923, 3, 30);
@@ -56,7 +56,7 @@ namespace Server.Spells
                     m.SendMessage("Les abeilles vous piquent et vous sentez leur venin parcourir vos veines !");
                 }
 
-				SpellHelper.Damage( TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100 );
+				//SpellHelper.Damage( TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100 );
 			}
 
 			FinishSequence();

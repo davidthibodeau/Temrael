@@ -45,7 +45,7 @@ namespace Server.Spells
 
                 StopTimer(m);
 
-                TimeSpan duration = GetDurationForSpell(0.3);
+                TimeSpan duration = TimeSpan.FromSeconds(0);
 
                 m_VisionReelleTable[m] = Caster;
                 m_VisionReelleRegistry.Add(m);

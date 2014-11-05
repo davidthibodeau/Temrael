@@ -53,11 +53,11 @@ namespace Server.Spells
 
             SpellHelper.CheckReflect((int)spell.Circle, Caster, ref m);
 
-            SpellHelper.AddStatCurse(Caster, m, StatType.Str, spell.GetDurationForSpell(1)); SpellHelper.DisableSkillCheck = true;
-            SpellHelper.AddStatCurse(Caster, m, StatType.Dex, spell.GetDurationForSpell(1));
-            SpellHelper.AddStatCurse(Caster, m, StatType.Int, spell.GetDurationForSpell(1)); SpellHelper.DisableSkillCheck = false;
+            SpellHelper.AddStatCurse(Caster, m, StatType.Str, TimeSpan.FromSeconds(0)); SpellHelper.DisableSkillCheck = true;
+            SpellHelper.AddStatCurse(Caster, m, StatType.Dex, TimeSpan.FromSeconds(0));
+            SpellHelper.AddStatCurse(Caster, m, StatType.Int, TimeSpan.FromSeconds(0)); SpellHelper.DisableSkillCheck = false;
 
-            TimeSpan duration = spell.GetDurationForSpell(1);
+            TimeSpan duration = TimeSpan.FromSeconds(0);
 
             new MaledictionSpell.InternalTimer(m, duration).Start();
 

@@ -59,7 +59,7 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-                double duration = ((GetDamageSkill(Caster) * 80) / 130) + 10;
+                double duration = ((Caster.Skills[DamageSkill].Value * 80) / 130) + 10;
 
                 TimeSpan t = TimeSpan.FromSeconds(duration);
 
