@@ -2669,6 +2669,8 @@ namespace Server.Mobiles
         {
             if (Hidden && DesignContext.Find(this) == null)	//Hidden & NOT customizing a house
             {
+                if (AccessLevel > AccessLevel.Player)
+                    return;
                 // Surtout pour le PvP.
                 foreach (Mobile m in GetMobilesInRange(10))
                 {

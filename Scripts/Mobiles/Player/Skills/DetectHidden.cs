@@ -7,6 +7,7 @@ using Server.Regions;
 using Server.Mobiles;
 using Server.Spells;
 using Server.Misc;
+using Server.Network;
 
 namespace Server.SkillHandlers
 {
@@ -53,12 +54,6 @@ namespace Server.SkillHandlers
 
         public static bool OnUseSingleTarget(Mobile src, Mobile trg, int range)
         {
-            if (src.AccessLevel >= trg.AccessLevel)
-            {
-                AddToVisList(src, trg);
-                return true;
-            }
-
             bool foundAnyone = false;
             double srcSkill = src.Skills[SkillName.Detection].Value * 2;
             double trgSkill = src.Skills[SkillName.Discretion].Value + src.Skills[SkillName.Infiltration].Value;
@@ -95,13 +90,28 @@ namespace Server.SkillHandlers
                     pm.VisibilityList.Add(source);
                 if (Utility.InUpdateRange(source, target))
                 {
-                    if (source.CanSee(target))
+                    NetState ns = source.NetState;
+                    if (ns != null)
                     {
-                        source.Send(new Network.MobileIncoming(source, target));
-                    }
-                    else
-                    {
-                        source.Send(target.RemovePacket);
+
+                        if (source.CanSee(target))
+                        {
+                            if (ns.StygianAbyss)
+                                source.Send(new MobileIncoming(source, target));
+                            else
+                                source.Send(new MobileIncomingOld(source, target));
+                            if (ObjectPropertyList.Enabled)
+                            {
+                                ns.Send(target.OPLPacket);
+
+                                foreach (Item item in target.Items)
+                                    ns.Send(item.OPLPacket);
+                            }
+                        }
+                        else
+                        {
+                            source.Send(target.RemovePacket);
+                        }
                     }
                 }
             }
