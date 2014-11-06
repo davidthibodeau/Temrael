@@ -19,7 +19,7 @@ namespace Server.Spells
 				209,
 				9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Alteration,
 				Reagent.DaemonBlood,
 				Reagent.NoxCrystal
@@ -64,8 +64,6 @@ namespace Server.Spells
                 {
                     TMobile pm = Caster as TMobile;
                     double duration = 10.0;
-
-                    duration = SpellHelper.AdjustValue(Caster, duration);
 
                     ((TMobile)m).Aphonier(TimeSpan.FromSeconds(duration));
                 }

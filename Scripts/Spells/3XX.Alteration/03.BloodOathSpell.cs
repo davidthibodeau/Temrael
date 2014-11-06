@@ -18,7 +18,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(3),
                 SkillName.Alteration,
 				Reagent.DaemonBlood
             );
@@ -72,7 +72,7 @@ namespace Server.Spells
 				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
 				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
-                double duration = ((Caster.Skills[DamageSkill].Value) / 8) + 8;
+                double duration = ((Caster.Skills[SkillName.Alteration].Value) / 8) + 8;
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 

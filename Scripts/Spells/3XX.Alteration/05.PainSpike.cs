@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Items;
 using Server.Targeting;
 using Server.Mobiles;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
@@ -19,7 +20,7 @@ namespace Server.Spells
 				203,
 				9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Alteration,
 				Reagent.GraveDust,
 				Reagent.PigIron
@@ -62,15 +63,7 @@ namespace Server.Spells
                 m.PlaySound(0x210);
 
                 //Le dégât est ajusté sur le % de vie restant de la cible, puisque c'est un sort de type Exécution/Finisher
-                double damage = (m.HitsMax / m.Hits) * Caster.Skills[DamageSkill].Value / 20 + (m.Player ? 15 : 27);
-
-                damage = SpellHelper.AdjustValue(Caster, damage);
-
-                if (damage < 1)
-                    damage = 1;
-
-                if (damage > m.Hits)
-                    damage = m.Hits + 3;
+                double damage = ((m.HitsMax / m.Hits)- 0.25) * Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime);
 
                 if (m_Table.Contains(m))
                     damage /= 10;
@@ -78,10 +71,8 @@ namespace Server.Spells
                     new InternalTimer(m, (int)(damage * 0.5)).Start();
 
                 Misc.WeightOverloading.DFA = Misc.DFAlgorithm.PainSpike;
-                m.Damage((int)damage, Caster);
+                Damage.instance.AppliquerDegatsMagiques(m, damage);
                 Misc.WeightOverloading.DFA = Misc.DFAlgorithm.Standard;
-
-                //SpellHelper.Damage( this, m, damage, 100, 0, 0, 0, 0, Misc.DFAlgorithm.PainSpike );
             }
 
 			FinishSequence();

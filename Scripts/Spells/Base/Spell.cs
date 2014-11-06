@@ -518,13 +518,32 @@ namespace Server.Spells
 			return TimeSpan.FromSeconds( delay );
 		}
 
-        public static void OnHitEffects(Mobile atk, Mobile def, int damage)
+        public static double OnHitEffects(Mobile atk, Mobile def, int damage)
         {
+                // CurseWeapon
             if (CurseWeaponSpell.m_Table.Contains((BaseWeapon)atk.Weapon))
             {
                 atk.Heal((int)(atk.Skills[SkillName.Alteration].Value / 200 * damage));
             }
+                // Protection
+            else if (def.MeleeDamageAbsorb > 0)
+            {
+                m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
 
+                int value = def.MeleeDamageAbsorb;
+                if (value - damage <= 0)
+                {
+                    damage = -(value - damage);
+                }
+                else
+                {
+                    def.MeleeDamageAbsorb -= damage;
+                }
+            }
+
+
+
+            return damage;
         }
 
 

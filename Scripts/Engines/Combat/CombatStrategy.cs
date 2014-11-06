@@ -64,9 +64,9 @@ namespace Server.Engines.Combat
 
             AppliquerPoison(atk, def);
 
-            def.Damage(degats,atk);
+            degats = Spell.OnHitEffects(atk, def, degats);
 
-            Spell.OnHitEffects(atk,def,degats);
+            def.Damage(degats,atk);
         }
 
         public virtual void OnMiss(Mobile atk, Mobile def)
