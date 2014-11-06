@@ -10,9 +10,9 @@ namespace Server.SkillHandlers
         public const int CoutPasMarche = 1;  // Le coût d'un pas lorsque l'on marche en étant stealth.
         public const int CoutPasCourse = 5;  // Le coût d'un pas lorsque l'on courre en étant stealth.
 
-        private const double TempsJetReussit = 0.0;
-        private const double TempsJetRate = 10.0;
-        private const double TempsJetImposs = 0.0; // Si le jet n'a pas pu être fait à cause d'une cause extérieure.
+        private static TimeSpan TempsJetReussit = TimeSpan.FromSeconds(0.0);
+        private static TimeSpan TempsJetRate = TimeSpan.FromSeconds(10.0);
+        private static TimeSpan TempsJetImposs = TimeSpan.FromSeconds(0.0); // Si le jet n'a pas pu être fait à cause d'une cause extérieure.
 
 		public static void Initialize()
 		{
@@ -23,42 +23,58 @@ namespace Server.SkillHandlers
 		{
 			if ( !m.Hidden )
 			{
-				m.SendLocalizedMessage( 502725 ); // You must hide first
+                Hiding.OnUse(m);
+
+                if (!m.Hidden) // Si le jet est raté.
+                    return TempsJetRate;
+                else
+                    return OnUse(m);
 			}
 			else if( !m.CanBeginAction( typeof( Stealth ) ) )
 			{
 				m.SendLocalizedMessage( 1063086 ); // You cannot use this skill right now.
-				m.RevealingAction();
 			}
             else
             {
-                if (m.CheckSkill(SkillName.Infiltration, 0, 100)  /*   BONUS OU MALUS ICI    */)
+
+                // Malus de dex sur les chances de reussite.
+                int malusDex = 0;
+                int dex = m.RawDex - m.Dex; // Malus de dex de toutes les armures.
+                if ((m.Skills[SkillName.Infiltration].Value / 2) - dex < 20)
+                {
+                    malusDex = (int)((m.Skills[SkillName.Infiltration].Value / 2) - dex - 20) * 3; // -15% pour cap 4. -30% pour cap 5.
+                }
+
+
+
+                if (m.CheckSkill((SkillName.Infiltration - malusDex), 0, 100))
 				{
-                    int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 5 steps en courrant.
+                    int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 4 steps en courrant.
 
-					if( steps < 1 )
-						steps = 1;
-
-                    if (m.Dex < 20)
+                    // Malus de dex sur le nombre de pas possible.
+                    if (malusDex != 0)
                     {
-                        m.SendMessage("Vous n'êtes pas assez agile pour vous déplacer efficacement.");
-                        steps = steps / 3;
+                        m.SendMessage("Vous n'êtes pas assez agile pour vous déplacer efficacement avec cette armure.");
+                        steps = steps - steps * (-malusDex) * 4 / 100;
                     }
+
+                    if (steps < 1)
+                        steps = 1;
 
 					m.AllowedStealthSteps = steps;
 
 					m.SendLocalizedMessage( 502730 ); // You begin to move quietly.
-                    return TimeSpan.FromSeconds(TempsJetReussit);
+                    return TempsJetReussit;
 				}
 				else
 				{
 					m.SendLocalizedMessage( 502731 ); // You fail in your attempt to move unnoticed.
 					m.RevealingAction();
-                    return TimeSpan.FromSeconds(TempsJetRate);
+                    return TempsJetRate;
 				}
 			}
 
-            return TimeSpan.FromSeconds(TempsJetImposs);
+            return TempsJetImposs;
 		}
 	}
 }

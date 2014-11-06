@@ -9,9 +9,9 @@ namespace Server.SkillHandlers
 {
     public class Hiding
     {
-        private const double TempsJetReussit = 0.0; // Si le jet reussit, jet automatique de stealth.
-        private const double TempsJetRate = 10.0;   // Si le jet a raté.
-        private const double TempsJetImposs = 0.0;
+        private static TimeSpan TempsJetReussit = TimeSpan.FromSeconds(0);
+        private static TimeSpan TempsJetRate = TimeSpan.FromSeconds(10);
+        private static TimeSpan TempsJetImposs = TimeSpan.FromSeconds(0);  // Si le jet ne peut pas être fait pour une raison extérieure ( Joueur en combat, En train de caster )
 
         private static bool m_CombatOverride;
 
@@ -29,21 +29,22 @@ namespace Server.SkillHandlers
         public static TimeSpan OnUse(Mobile m)
         {
             if (m.Hidden)
-                m.RevealingAction();
+            {
+                m.Hidden = false;
+                return TempsJetRate;
+            }
 
             if (m.Spell != null)
             {
                 m.SendLocalizedMessage(501238); // You are busy doing something else and cannot hide.
-                return TimeSpan.FromSeconds(TempsJetImposs);
+                return TempsJetImposs;
             }
 
-            //int range = 18 - (int)(m.Skills[SkillName.Discretion].Value / 10);
-            int range = Math.Min((int)((100 - m.Skills[SkillName.Discretion].Value) / 2) + 8, 18);	//Cap of 18 not OSI-exact, intentional difference
+            int range = Math.Min((int)((100 - m.Skills[SkillName.Discretion].Value) / 2) + 8, 18);
 
             bool badCombat = (!m_CombatOverride && m.Combatant != null && m.InRange(m.Combatant.Location, range) && m.Combatant.InLOS(m));
             bool ok = !badCombat && (!m.Mounted);
 
-            int dexDiff = (m.Dex - m.RawDex); // Malus de dex avec l'armure ?
 
             // Pour éviter le hide in the face en combat.
             if (ok)
@@ -67,6 +68,7 @@ namespace Server.SkillHandlers
             if (badCombat)
             {
                 m.LocalOverheadMessage(MessageType.Regular, 0x22, 501237); // You can't seem to hide right now.
+                return TempsJetImposs;
             }
             else
             {
@@ -75,17 +77,15 @@ namespace Server.SkillHandlers
                     m.Hidden = true;
                     m.Warmode = false;
                     m.LocalOverheadMessage(MessageType.Regular, 0x1F4, 501240); // You have hidden yourself well.
-                    Stealth.OnUse(m);
-                    return TimeSpan.FromSeconds(TempsJetReussit);
+                    return TempsJetReussit;
                 }
                 else
                 {
                     m.LocalOverheadMessage(MessageType.Regular, 0x22, 501241); // You can't seem to hide here.
+                    m.RevealingAction();
+                    return TempsJetRate;
                 }
             }
-
-            m.RevealingAction();
-            return TimeSpan.FromSeconds(TempsJetRate);
         }
     }
 }
