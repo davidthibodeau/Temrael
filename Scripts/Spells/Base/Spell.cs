@@ -518,7 +518,7 @@ namespace Server.Spells
 			return TimeSpan.FromSeconds( delay );
 		}
 
-        public static double OnHitEffects(Mobile atk, Mobile def, int damage)
+        public static int OnHitEffects(Mobile atk, Mobile def, int damage)
         {
                 // CurseWeapon
             if (CurseWeaponSpell.m_Table.Contains((BaseWeapon)atk.Weapon))
@@ -528,7 +528,7 @@ namespace Server.Spells
                 // Protection
             else if (def.MeleeDamageAbsorb > 0)
             {
-                m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+                def.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
 
                 int value = def.MeleeDamageAbsorb;
                 if (value - damage <= 0)
@@ -540,8 +540,6 @@ namespace Server.Spells
                     def.MeleeDamageAbsorb -= damage;
                 }
             }
-
-
 
             return damage;
         }

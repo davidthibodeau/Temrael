@@ -27,11 +27,32 @@ namespace Server.Items
 
         public void ChooseTarget_OnTarget(Mobile from, object targeted)
         {
+            if (!from.Backpack.AcquireItems().Contains(this))
+            {
+                from.SendMessage("L'extracteur doit se trouver dans votre sac.");
+                return;
+            }
+
             if (targeted is IExtractable)
             {
+                Item item = ((Item)targeted);
+
+                if (!from.Backpack.AcquireItems().Contains(item))
+                {
+                    from.SendMessage("La ressource doit se trouver dans votre sac.");
+                    return;
+                }
+
+                if (item.Amount < 5)
+                {
+                    from.SendMessage("Vous devez avoir au moins 5 morceaux de ce matériau.");
+                    return;
+                }
+
                 if (from.Skills[SkillName.Alchimie].Value >= 50)
                 {
                     from.AddToBackpack(new TeintureModif((IExtractable)targeted));
+                    item.Consume(5);
                     from.SendMessage("La teinture est créée.");
                 }
                 else
