@@ -19,8 +19,6 @@ namespace Server.Spells
                 Reagent.DaemonBlood
 			);
 
-        public override bool Invocation { get { return true; } }
-
         public InsurectionSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

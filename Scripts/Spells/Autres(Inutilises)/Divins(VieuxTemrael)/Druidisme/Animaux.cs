@@ -17,8 +17,6 @@ namespace Server.Spells
 				9040
             );
 
-        public override bool Invocation { get { return true; } }
-
 		public AnimauxSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
         }

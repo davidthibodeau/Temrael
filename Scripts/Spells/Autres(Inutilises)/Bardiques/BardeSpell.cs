@@ -73,8 +73,6 @@ namespace Server.Spells
                     m_CastTimer = new CastTimer(this, castDelay);
                     m_CastTimer.Start();
 
-                    OnBeginCast();
-
                     return true;
                 }
                 else

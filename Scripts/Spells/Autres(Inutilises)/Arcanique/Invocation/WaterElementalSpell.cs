@@ -19,8 +19,6 @@ namespace Server.Spells
 				Reagent.SpidersSilk
 			);
 
-        public override bool Invocation { get { return true; } }
-
         public ElementaireEauSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

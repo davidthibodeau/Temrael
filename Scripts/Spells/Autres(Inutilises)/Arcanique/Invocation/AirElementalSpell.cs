@@ -19,8 +19,6 @@ namespace Server.Spells
 				Reagent.Nightshade
 			);
 
-        public override bool Invocation { get { return true; } }
-
         public ElementaireAirSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

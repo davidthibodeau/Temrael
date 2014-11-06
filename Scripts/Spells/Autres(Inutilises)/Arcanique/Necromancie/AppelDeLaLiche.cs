@@ -19,8 +19,6 @@ namespace Server.Spells
 				Reagent.PigIron
 			);
 
-        public override bool Invocation { get { return true; } }
-
         public AppelDeLaLicheSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

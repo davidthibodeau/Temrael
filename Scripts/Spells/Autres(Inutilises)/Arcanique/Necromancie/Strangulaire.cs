@@ -21,8 +21,6 @@ namespace Server.Spells
 
         public override SkillName CastSkill { get { return SkillName.ArtMagique; } }
 
-        public override bool Invocation { get { return true; } }
-
         public StrangulaireSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

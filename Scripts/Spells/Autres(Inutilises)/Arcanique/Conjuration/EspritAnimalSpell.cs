@@ -18,8 +18,6 @@ namespace Server.Spells
 				Reagent.BlackPearl
 			);
 
-        public override bool Invocation { get { return true; } }
-
 		public EspritAnimalSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}

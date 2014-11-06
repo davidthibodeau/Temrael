@@ -19,8 +19,6 @@ namespace Server.Spells
                 Reagent.Bloodmoss
 			);
 
-        public override bool Invocation { get { return true; } }
-
         public DragonSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

@@ -17,8 +17,6 @@ namespace Server.Spells
                 9032
             );
 
-        public override bool Invocation { get { return true; } }
-
         public MontureCelesteMiracle(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
         {

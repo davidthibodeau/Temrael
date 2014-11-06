@@ -78,8 +78,6 @@ namespace Server.Spells
                 9032
             );
 
-        public override bool Invocation { get { return true; } }
-
         public LumiereDivineSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
         {

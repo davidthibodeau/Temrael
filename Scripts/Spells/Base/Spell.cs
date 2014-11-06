@@ -172,49 +172,30 @@ namespace Server.Spells
 
 		public virtual bool CheckResisted( Mobile target )
         {
-            //Modification majeure, voir AOS.cs
-            //return false;
-
-            double n = 0;
-
-            n /= 100.0;
-
-            n += target.MagicResistance / 10;
-
-            if ( n <= 0.0 )
-            	return false;
-
-            if ( n >= 1.0 )
-                return true;
-
-            int maxSkill = (1 + (int)RequiredSkillValue / 10) * 10;
-            maxSkill += (1 + ((int)RequiredSkillValue / 10 / 6)) * 25;
-
-            if ( target.Skills[SkillName.Meditation].Value < maxSkill )
-                target.CheckSkill( SkillName.Meditation, 0.0, 120.0 );
-
-            return ( n >= Utility.RandomDouble() );
+            return (Caster.Skills[SkillName.ResistanceMagique].Value + Utility.Random(100) >= Caster.Skills[Info.skillForCasting].Value + Utility.Random(100));
 		}
 
+        #region Mana.
         public static int GetBaseManaCost(short cercle)
         {
             return cercle * 10;
         }
 
-		public virtual void DoFizzle()
-		{
-			Caster.LocalOverheadMessage( MessageType.Regular, 0x3B2, 502632 ); // The spell fizzles.
+        public virtual void SpellManaCost(int mana)
+        {
+            double scalar = 1.0;
 
-			if ( Caster.Player )
-			{
-				Caster.FixedEffect( 0x3735, 6, 30 );
-				Caster.PlaySound( 0x5C );
-			}
-		}
+            if (PourritureDEspritSpell.HasMindRotScalar(Caster))
+                scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
 
-		public CastTimer m_CastTimer;
-		public AnimTimer m_AnimTimer;
+            if (scalar < 1.0)
+                scalar = 1.0;
 
+            Caster.Mana -= (int)(mana * scalar);
+        }
+        #endregion
+
+        #region Disturb / Fizzle.
         public void Disturb(DisturbType type)
         {
             if (State == SpellState.Casting)
@@ -236,12 +217,26 @@ namespace Server.Spells
             }
         }
 
-		public virtual void DoHurtFizzle()
+        public virtual void DoFizzle()
 		{
-			Caster.FixedEffect( 0x3735, 6, 30 );
-			Caster.PlaySound( 0x5C );
+			Caster.LocalOverheadMessage( MessageType.Regular, 0x3B2, 502632 ); // The spell fizzles.
+
+			if ( Caster.Player )
+			{
+				Caster.FixedEffect( 0x3735, 6, 30 );
+				Caster.PlaySound( 0x5C );
+			}
 		}
 
+        public virtual void DoHurtFizzle()
+        {
+            Caster.FixedEffect(0x3735, 6, 30);
+            Caster.PlaySound(0x5C);
+        }
+        #endregion
+
+        public CastTimer m_CastTimer;
+		public AnimTimer m_AnimTimer;
 
 		public virtual bool CheckCast()
         {
@@ -305,7 +300,7 @@ namespace Server.Spells
                 {
                     Caster.SendMessage("Vous n'êtes pas assez doué dans votre école de magie pour lancer ce sort.");
                 }
-                else if (Caster.Mana < GetMana())
+                else if (Caster.Mana < ManaCost)
                 {
                     Caster.LocalOverheadMessage(MessageType.Regular, 0, true, "Vous n'avez pas assez de mana pour lancer ce sort.");
                 }
@@ -360,7 +355,7 @@ namespace Server.Spells
                         Caster.FixedParticles(0, 10, 5, Info.RightHandEffect, EffectLayer.RightHand);
                 }
 
-                if (CheckHands())
+                if (ClearHandsOnCast)
                     Caster.ClearHands();
 
                 m_CastTimer = new CastTimer(this, castTime);
@@ -374,17 +369,12 @@ namespace Server.Spells
 			return false;
 		}
 
-        public bool CheckHands()
-        {
-            return ClearHandsOnCast;
-        }
-
 		public abstract void OnCast();
 
-		public virtual void OnBeginCast()
-		{
+        public virtual void OnBeginCast()
+        {
 
-		}
+        }
 
         public virtual void OnEndCast()
         {
@@ -409,33 +399,21 @@ namespace Server.Spells
         }
 
 		private const double ChanceOffsetMin = 50.0, ChanceOffsetMax = 10.0, ChanceLength = 100.0 / 13.0;
-
+                                               //0  1  2   3   4   5   6   7   8   9   10
         private int[] ChanceDeCast = new int[] { 0, 5, 15, 20, 30, 40, 50, 60, 70, 75, 80, 90, 100 };
 
 		public virtual void GetCastSkills( out double min, out double max )
 		{
-			//int circle = (int)m_Info.Circle;
-            int circle = RequiredSkillValue / 10;
-
-			if ( m_Scroll != null )
-				circle -= 2;
+			int circle = (int)m_Info.Circle;
 
             if (circle < 0)
                 circle = 0;
+
 			//double avg = ChanceLength * circle;
             double avg = ChanceDeCast[circle];
 
 			min = avg - ChanceOffsetMin;
             max = avg; // + ChanceOffsetMax;
-
-            /*if (HypnoseSpell.m_HypnoseTable.Contains(Caster))
-            {
-                min += (double)HypnoseSpell.m_HypnoseTable[Caster];
-                max += (double)HypnoseSpell.m_HypnoseTable[Caster];
-
-                Caster.FixedParticles(14170, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet);
-                Caster.PlaySound(516);
-            }*/
 		}
 
 		public virtual bool CheckFizzle()
@@ -443,18 +421,6 @@ namespace Server.Spells
 			double minSkill, maxSkill;
 
 			GetCastSkills( out minSkill, out maxSkill );
-
-            if (Caster is TMobile)
-            {
-                TMobile tmob = (TMobile)Caster;
-                int count = 0;
-
-                if (Utility.Random(1, 100) < count)
-                {
-                    tmob.SendMessage("Vous portez une trop grande charge d'armure et d'arme pour lancer un sort !");
-                    return true;
-                }
-            }
 
             if (Caster is TMobile && Caster.Mounted)
             {
@@ -465,48 +431,10 @@ namespace Server.Spells
                 return true;
             }
 
-            /*if (Caster.Dex < 50)
-            {
-                double chance = TMobile.PenaliteStatistique(Caster, Caster.Dex);
-
-                if (chance < Utility.RandomDouble())
-                    return false;
-            }*/
-
-            if (FanfareSpell.m_FanfareTable.Contains(Caster))
-            {
-                double fanfare = (double)FanfareSpell.m_FanfareTable[Caster];
-                minSkill = (int)(minSkill * (1 - fanfare));
-                maxSkill = (int)(maxSkill * (1 - fanfare));
-            }
-
-            /*minSkill *= (2 - TMobile.PenaliteStatistique(Caster, Caster.Int));
-            maxSkill *= (2 - TMobile.PenaliteStatistique(Caster, Caster.Int));*/
-
-            Caster.CheckSkill(CastSkill, 0, 120);
-
 			return Caster.CheckSkill( CastSkill, minSkill, maxSkill );
 		}
 
-		public virtual int GetMana()
-		{
-            return ManaCost;
-        }
-
         public virtual int RequiredSkillValue { get { return m_Info.minSkillForCasting; } }
-
-        public virtual void SpellManaCost(int mana)
-        {
-            double scalar = 1.0;
-
-            if (PourritureDEspritSpell.HasMindRotScalar(Caster))
-                scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
-
-            if (scalar < 1.0)
-                scalar = 1.0;
-
-            Caster.Mana -= (int)(mana * scalar);
-        }
 
 		public virtual TimeSpan GetDisturbRecovery()
 		{
@@ -518,15 +446,20 @@ namespace Server.Spells
 			return TimeSpan.FromSeconds( delay );
 		}
 
+        // Fonction appellée dans CombatStrategy
+        // Gère les effets liés à la magie lorsqu'un coup est donné, chez l'attaquant et le défenseur.
         public static int OnHitEffects(Mobile atk, Mobile def, int damage)
         {
-                // CurseWeapon
+            // Bonus de dégât.
+            // CurseWeapon
             if (CurseWeaponSpell.m_Table.Contains((BaseWeapon)atk.Weapon))
             {
                 atk.Heal((int)(atk.Skills[SkillName.Alteration].Value / 200 * damage));
             }
-                // Protection
-            else if (def.MeleeDamageAbsorb > 0)
+
+            // Bonus de défense.
+            // Protection
+            if (def.MeleeDamageAbsorb > 0)
             {
                 def.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
 
@@ -545,7 +478,6 @@ namespace Server.Spells
         }
 
 
-        public virtual bool Invocation { get { return false; } }
 
 		public virtual int CastRecoveryBase{ get{ return 2; } }
 		public virtual int CastRecoveryCircleScalar{ get{ return 0; } }
@@ -611,17 +543,10 @@ namespace Server.Spells
             return TimeSpan.FromSeconds(value);
 		}
 
-		public virtual void FinishSequence()
-		{
-			State = SpellState.None;
-
-			if ( Caster.Spell == this )
-				Caster.Spell = null;
-		}
-
+        #region Sequence
         public virtual bool CheckSequence()
 		{
-            int mana = GetMana();
+            int mana = ManaCost;
 
             TMobile pm = Caster as TMobile;
             
@@ -658,7 +583,7 @@ namespace Server.Spells
 				    if ( m_Scroll is SpellScroll )
 					    m_Scroll.Consume();
 
-				    if ( CheckHands() )
+                    if (ClearHandsOnCast)
 					    Caster.ClearHands();
 
 				    return true;
@@ -713,7 +638,17 @@ namespace Server.Spells
 			}
 		}
 
-		public class AnimTimer : Timer
+        public virtual void FinishSequence()
+        {
+            State = SpellState.None;
+
+            if (Caster.Spell == this)
+                Caster.Spell = null;
+        }
+        #endregion
+
+        #region Timers d'animation et de cast.
+        public class AnimTimer : Timer
 		{
 			private Spell m_Spell;
 
@@ -788,6 +723,7 @@ namespace Server.Spells
                         m_Spell.Caster.NextSpellTime = Core.TickCount;
                 }
 			}
-		}
-	}
+        }
+        #endregion
+    }
 }

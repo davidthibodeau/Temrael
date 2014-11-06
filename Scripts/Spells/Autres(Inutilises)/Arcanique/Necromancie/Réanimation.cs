@@ -31,8 +31,6 @@ namespace Server.Spells
                 Reagent.DaemonBlood
             );
 
-        public override bool Invocation { get { return true; } }
-
 		public ReanimationSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
         }

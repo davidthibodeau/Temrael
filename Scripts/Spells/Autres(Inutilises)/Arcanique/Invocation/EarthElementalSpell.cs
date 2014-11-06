@@ -19,8 +19,6 @@ namespace Server.Spells
                 Reagent.BlackPearl
 			);
 
-        public override bool Invocation { get { return true; } }
-
         public ElementaireTerreSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

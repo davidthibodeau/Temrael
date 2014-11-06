@@ -22,8 +22,6 @@ namespace Server.Spells
 				Reagent.DaemonBlood
             );
 
-        public override bool Invocation { get { return true; } }
-
         public FamilierSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

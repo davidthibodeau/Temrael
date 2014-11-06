@@ -19,8 +19,6 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
 			);
 
-        public override bool Invocation { get { return true; } }
-
         public ElementaireFeuSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{

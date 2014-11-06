@@ -21,8 +21,6 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
-        public override bool Invocation { get { return true; } }
-
         public EspritVengeurSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
 		{
