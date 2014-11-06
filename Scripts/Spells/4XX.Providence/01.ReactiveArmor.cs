@@ -8,6 +8,9 @@ namespace Server.Spells
 {
 	public class ReactiveArmorSpell : Spell
 	{
+        private const int AmountBlock = 50; // Quantité de dégâts qui peuvent être bloqués par le spell à 100 prov, 100 artmagique.
+
+
         public static int m_SpellID { get { return 401; } } // TOCHANGE
 
         private static short s_Cercle = 1;
@@ -18,7 +21,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(4),
                 SkillName.Providence,
 				Reagent.Garlic,
 				Reagent.SpidersSilk,
@@ -29,22 +32,6 @@ namespace Server.Spells
 		{
 		}
 
-		public override bool CheckCast()
-		{
-			/*if ( Caster.MeleeDamageAbsorb > 0 )
-			{
-				Caster.SendLocalizedMessage( 1005559 ); // This spell is already in effect.
-				return false;
-			}*/
-			/*else if ( !Caster.CanBeginAction( typeof( DefensiveSpell ) ) )
-			{
-				Caster.SendLocalizedMessage( 1005385 ); // The spell will not adhere to you at this time.
-				return false;
-			}*/
-
-			return true;
-		}
-
 		private static Hashtable m_Table = new Hashtable();
 
         public override void OnCast()
@@ -53,39 +40,15 @@ namespace Server.Spells
             {
                 Caster.Target = new InternalTarget(this);
             }
+            else if (Caster.MeleeDamageAbsorb > 0)
+            {
+                Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
+            }
             else
             {
-                if (Caster.MeleeDamageAbsorb > 0)
+                if (CheckSequence())
                 {
-                    Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
-                }
-                /*    else if (!Caster.CanBeginAction(typeof(DefensiveSpell)))
-                    {
-                        Caster.SendLocalizedMessage(1005385); // The spell will not adhere to you at this time.
-                    }*/
-                else if (CheckSequence())
-                {
-                    // if (Caster.BeginAction(typeof(DefensiveSpell)))
-                    //{
-                        double value = Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Meditation].Value;
-                        value /= 3;
-
-                        if (value < 0)
-                            value = 1;
-                        else if (value > 75)
-                            value = 75;
-
-                        value = SpellHelper.AdjustValue(Caster, value);
-
-                        Caster.MeleeDamageAbsorb = (int)value;
-
-                        Caster.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
-                        Caster.PlaySound(0x1F2);
-                    //}
-                    /*  else
-                      {
-                          Caster.SendLocalizedMessage(1005385); // The spell will not adhere to you at this time.
-                      }*/
+                    DoEffect(Caster);
                 }
 
                 FinishSequence();
@@ -104,23 +67,25 @@ namespace Server.Spells
             }
             else if (CheckSequence())
             {
-                double value = Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Meditation].Value;
-                value /= 3;
-
-                if (value < 0)
-                    value = 1;
-                else if (value > 75)
-                    value = 75;
-
-                value = SpellHelper.AdjustValue(Caster, value);
-
-                m.MeleeDamageAbsorb = (int)value;
-
-                m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
-                m.PlaySound(0x1F2);
+                DoEffect(m);
             }
 
             FinishSequence();
+        }
+
+        private void DoEffect(Mobile m)
+        {
+            double value = Caster.Skills[SkillName.Thaumaturgie].Value + Caster.Skills[SkillName.ArtMagique].Value * AmountBlock / 200;
+
+            if (value < 0)
+                value = 1;
+            else if (value > AmountBlock)
+                value = AmountBlock;
+
+            m.MeleeDamageAbsorb = (int)value;
+
+            m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+            m.PlaySound(0x1F2);
         }
 
         private class InternalTarget : Target
