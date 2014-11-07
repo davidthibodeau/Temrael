@@ -110,7 +110,7 @@ namespace Server.Gumps
             //new SpellBookEntry( 1, SkillName.Providence, "Bénédiction de masse", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
 
             //Transmutation
-            //new SpellBookEntry( 1, SkillName.Transmutation, "Évasion", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            new SpellBookEntry( EvasionSpell.Info.Circle,       EvasionSpell.Info.skillForCasting,  "Évasion", EvasionSpell.Info.Reagents, 0x8D2, EvasionSpell.m_SpellID),
             new SpellBookEntry( TeleportSpell.Info.Circle,      TeleportSpell.Info.skillForCasting, "Téléportation", TeleportSpell.Info.Reagents, 0x8D2, TeleportSpell.m_SpellID),
             new SpellBookEntry( SummonCreatureSpell.Info.Circle, SummonCreatureSpell.Info.skillForCasting, "Convocation", SummonCreatureSpell.Info.Reagents, 0x8D2, SummonCreatureSpell.m_SpellID),
             //new SpellBookEntry( 4, SkillName.Transmutation, "Supression mag.", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),

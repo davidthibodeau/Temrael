@@ -82,7 +82,6 @@ namespace Server.Custom.CustomSpell
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        Mobile Caster = null;
         Mobile m_target = null;
 
         const double scalingSkill = 0.1;
@@ -114,7 +113,6 @@ namespace Server.Custom.CustomSpell
         public ExempleTargetedTimer(Mobile caster, Item scroll)
             : base(caster, scroll, info)
         {
-            Caster = caster;
         }
 
 
@@ -157,8 +155,6 @@ namespace Server.Custom.CustomSpell
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
 
-        Mobile Caster;
-
         static private InfoSpell.AoE info = new InfoSpell.AoE(
 
         /*---------- SPELL INFO ----------*/
@@ -181,7 +177,6 @@ namespace Server.Custom.CustomSpell
         public ExempleAoE(Mobile caster, Item scroll)
             : base(caster, scroll, info)
         {
-            Caster = caster;
         }
 
         public override void UniqueEffect()
@@ -203,8 +198,6 @@ namespace Server.Custom.CustomSpell
     class ExempleAoETimer : CustomSpell.CSpellAoETimer
     {
         public static int m_SpellID { get { return 0; } } // TOCHANGE
-
-        Mobile Caster;
 
         static private InfoSpell.AoETimer info = new InfoSpell.AoETimer(
 
@@ -233,7 +226,6 @@ namespace Server.Custom.CustomSpell
         public ExempleAoETimer(Mobile caster, Item scroll)
             : base(caster, scroll, info)
         {
-            Caster = caster;
         }
 
 

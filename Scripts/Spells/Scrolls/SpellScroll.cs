@@ -43,6 +43,7 @@ namespace Server.Items
 			writer.Write( (int) 0 ); // version
 
 			writer.Write( (int) m_SpellID );
+            writer.Write(Name);
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -56,27 +57,12 @@ namespace Server.Items
 				case 0:
 				{
 					m_SpellID = reader.ReadInt();
+                    Name = reader.ReadString();
 
 					break;
 				}
 			}
-
-            /*if (m_SpellID < 600)
-                Delete();*/
 		}
-
-		/*public override void GetContextMenuEntries( Mobile from, ArrayList list )
-		{
-			base.GetContextMenuEntries( from, list );
-
-			if ( from.Alive && this.Movable )
-				list.Add( new ContextMenus.AddToSpellbookEntry() );
-		}*/
-
-		/*public override Item Dupe( int amount )
-		{
-			return Dupe.DupeItem( new SpellScroll( m_SpellID, ItemID, amount ), amount );
-		}*/
 
 		public override void OnDoubleClick( Mobile from )
 		{
