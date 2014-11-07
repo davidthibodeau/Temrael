@@ -66,7 +66,7 @@ namespace Server.Engines.Combat
 
             degats = Spell.OnHitEffects(atk, def, degats);
 
-            def.Damage(degats,atk);
+            def.Damage(degats, atk);
         }
 
         public virtual void OnMiss(Mobile atk, Mobile def)

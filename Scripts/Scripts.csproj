@@ -98,6 +98,7 @@
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
+    <Compile Include="Engines\Hiding\Detection.cs" />
     <Compile Include="Engines\Mort\Auxiliaires.cs" />
     <Compile Include="Engines\Mort\ContratAssassinat.cs" />
     <Compile Include="Engines\Equitation.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureModif.cs" />
     <Compile Include="Items\Temrael\Armures\ArmorEnums.cs" />
     <Compile Include="Engines\Races\Race.cs" />
+    <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />
     <Compile Include="Items\Weapons\Core\BaseEstoc.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpell.cs" />

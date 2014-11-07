@@ -51,7 +51,7 @@ namespace Server.Mobiles
 	}
 	#endregion
 
-	public class PlayerMobile : Mobile
+	public class PlayerMobile : ScriptMobile
 	{
 		private class CountAndTimeStamp
 		{

@@ -193,7 +193,7 @@ namespace Server.Mobiles
 		}
 	}
 
-	public class BaseCreature : Mobile
+	public class BaseCreature : ScriptMobile
 	{
         #region Elevage
         public virtual bool HasASex { get { return false; } }

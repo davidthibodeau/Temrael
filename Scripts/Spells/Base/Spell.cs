@@ -464,16 +464,15 @@ namespace Server.Spells
                 def.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
 
                 int value = def.MeleeDamageAbsorb;
-                if (value - damage <= 0)
+                if (value <= damage)
                 {
-                    damage = -(value - damage);
+                    damage = damage - value;
                 }
                 else
                 {
-                    def.MeleeDamageAbsorb -= damage;
+                    def.MeleeDamageAbsorb -= (int)damage;
                 }
             }
-
             return damage;
         }
 
