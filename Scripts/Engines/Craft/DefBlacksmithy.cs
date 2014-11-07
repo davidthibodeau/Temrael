@@ -453,54 +453,54 @@ namespace Server.Engines.Craft
 
             #region Axes
             //index = AddCraft(typeof(Hachette), "Haches", "Hachette", 0.0, 30.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            //AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            //AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Axe), "Haches", "Hache", 10.0, 40.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             //index = AddCraft(typeof(HachetteDouble), "Haches", "Hachette Double", 20.0, 50.0, typeof(FerIngot), "Lingots", 8, 1044037);
-            //AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            //AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Luminar), "Haches", "Luminar", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Loragne), "Haches", "Loragne", 30.0, 60.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Montorgne), "Haches", "Montorgne", 40.0, 70.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(WarAxe), "Haches", "Hache de Guerre", 50.0, 80.0, typeof(FerIngot), "Lingots", 14, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Orcarinia), "Haches", "Orcarinia", 50.0, 80.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Minarque), "Haches", "Minarque", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Grochette), "Haches", "Grochette", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Noctame), "Haches", "Noctame", 70.0, 100.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
 
             index = AddCraft(typeof(HacheDouble), "Haches", "Hache Métalique", 20.0, 50.0, typeof(FerIngot), "Lingots", 18, 1044037);
             index = AddCraft(typeof(Morgrove), "Haches", "Morgrove", 20.0, 50.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Venmar), "Haches", "Venmar", 30.0, 60.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(TwoHandedAxe), "Haches", "Hache Double", 40.0, 70.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(LargeBattleAxe), "Haches", "Hache Barbare", 50.0, 80.0, typeof(FerIngot), "Lingots", 14, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Morgate), "Haches", "Morgate", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Coupecrane), "Haches", "Coupecrane", 60.0, 90.0, typeof(FerIngot), "Lingots", 14, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Tranchecorps), "Haches", "Tranchecorps", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Elvetrine), "Haches", "Elvetrine", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Viftranche), "Haches", "Viftranche", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
 
             index = AddCraft(typeof(Furagne), "Haches", "Furagne", 30.0, 60.0, typeof(FerIngot), "Lingots", 4, 1044037);
             AddRes(index, typeof(Log), "Bûche", 1, 1044351);
             index = AddCraft(typeof(Duxtranche), "Haches", "Duxtranche", 50.0, 80.0, typeof(FerIngot), "Lingots", 6, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Biliane), "Haches", "Biliane", 70.0, 100.0, typeof(FerIngot), "Lingots", 6, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
 
 			#endregion
 
@@ -537,67 +537,67 @@ namespace Server.Engines.Craft
             #region Pole Arms
 
             index = AddCraft(typeof(Bardiche), "Armes d'Hastes", "Bardiche", 20.0, 50.0, typeof(FerIngot), "Lingots", 18, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Scythe), "Armes d'Hastes", "Faux", 30.0, 60.0, typeof(FerIngot), "Lingots", 14, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Vougue), "Armes d'Hastes", "Vougue", 40.0, 70.0, typeof(FerIngot), "Lingots", 18, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(ExecutionersAxe), "Armes d'Hastes", "Gardiche", 60.0, 90.0, typeof(FerIngot), "Lingots", 14, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Cythe), "Armes d'Hastes", "Cythe", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Guisarme), "Armes d'Hastes", "Guisarme", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
 
             index = AddCraft(typeof(Halberd), "Armes d'Hastes", "Hallebarde", 30.0, 60.0, typeof(FerIngot), "Lingots", 20, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Bardine), "Armes d'Hastes", "Bardine", 40.0, 70.0, typeof(FerIngot), "Lingots", 20, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Hastiche), "Armes d'Hastes", "Hastiche", 50.0, 80.0, typeof(FerIngot), "Lingots", 20, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Helbarde), "Armes d'Hastes", "Helbarde", 60.0, 90.0, typeof(FerIngot), "Lingots", 20, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Granbarde), "Armes d'Hastes", "Granbarde", 70.0, 100.0, typeof(FerIngot), "Lingots", 20, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
 
             #endregion
 
             #region Spears
 
             index = AddCraft(typeof(Lancel), "Lances", "Lancel", 10.0, 40.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Spear), "Lances", "Lance", 20.0, 50.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Terricharde), "Lances", "Terricharde", 30.0, 60.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(PerceTronc), "Lances", "PerceTronc", 40.0, 70.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(ShortSpear), "Lances", "Hastone", 50.0, 80.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(WarFork), "Lances", "Hastal", 50.0, 80.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Lance), "Lances", "Lance de Joute", 60.0, 90.0, typeof(FerIngot), "Lingots", 20, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(DoubleLance), "Lances", "Double Lance", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Piculame), "Lances", "Piculame", 70.0, 100.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(PerceCoeur), "Lances", "PerceCoeur", 70.0, 100.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Pitchfork), "Lances", "Fourche", 20.0, 50.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Pique), "Lances", "Pique", 20.0, 50.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Trident), "Lances", "Trident", 30.0, 60.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Racuris), "Lances", "Racuris", 40.0, 70.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Transpercille), "Lances", "Transpercille", 50.0, 80.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Mascarate), "Lances", "Mascarate", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Turione), "Lances", "Turione", 70.0, 100.0, typeof(FerIngot), "Lingots", 14, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
 
 			#endregion
 
@@ -607,23 +607,23 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Maul), "Armes Contondantes", "Maul", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Brisecrane), "Armes Contondantes", "Brisecrane", 40.0, 70.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(WarHammer), "Armes Contondantes", "Marteau", 40.0, 70.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 3, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 3, 1044351);
             index = AddCraft(typeof(Massue), "Armes Contondantes", "Massue", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Granmace), "Armes Contondantes", "Granmace", 50.0, 80.0, typeof(FerIngot), "Lingots", 14, 1044037);
             index = AddCraft(typeof(Ecracheur), "Armes Contondantes", "Ecracheur", 50.0, 80.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Ecraseface), "Armes Contondantes", "Écraseface", 60.0, 90.0, typeof(FerIngot), "Lingots", 4, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(MarteauGuerre), "Armes Contondantes", "Marteau de Guerre", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Fleau), "Armes Contondantes", "Fléau", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(Malert), "Armes Contondantes", "Malette", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
             index = AddCraft(typeof(Defonceur), "Armes Contondantes", "Défonceur", 70.0, 100.0, typeof(FerIngot), "Lingots", 8, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Broyeur), "Armes Contondantes", "Broyeur", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            AddRes(index, typeof(Log), "Bûches", 4, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
 
 			#endregion
 
