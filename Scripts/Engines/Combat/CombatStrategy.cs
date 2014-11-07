@@ -9,7 +9,6 @@ using System.Text;
 
 namespace Server.Engines.Combat
 {
-
     /// <summary>
     /// Class servant de base au système de combat.
     /// Chaque type de combat (mêlée, distance, haches, créatures) va override cette class et 
@@ -106,6 +105,7 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Range
+        [CommandProperty(AccessLevel.Batisseur)]
         public virtual int BaseRange { get { return 1; } }
 
         public virtual int Range(Mobile atk)
@@ -115,6 +115,7 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Toucher
+        [CommandProperty(AccessLevel.Batisseur)]
         public abstract SkillName ToucherSkill { get; }
 
         public bool Toucher(Mobile atk, Mobile def)

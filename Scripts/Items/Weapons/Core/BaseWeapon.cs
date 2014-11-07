@@ -611,51 +611,6 @@ namespace Server.Items
 			}
 		}
 
-		public virtual SkillName GetUsedSkill( Mobile m, bool checkSkillAttrs )
-		{
-			SkillName sk;
-
-			if ( checkSkillAttrs && m_AosWeaponAttributes.UseBestSkill != 0 )
-			{
-				double swrd = m.Skills[SkillName.Epee].Value;
-				double fenc = m.Skills[SkillName.ArmePerforante].Value;
-				double mcng = m.Skills[SkillName.ArmeContondante].Value;
-				double val;
-
-				sk = SkillName.Epee;
-				val = swrd;
-
-				if ( fenc > val ){ sk = SkillName.ArmePerforante; val = fenc; }
-				if ( mcng > val ){ sk = SkillName.ArmeContondante; val = mcng; }
-			}
-			else if ( m_AosWeaponAttributes.MageWeapon != 0 )
-			{
-				if ( m.Skills[SkillName.ArtMagique].Value > m.Skills[Skill].Value )
-					sk = SkillName.ArtMagique;
-				else
-					sk = Skill;
-			}
-			else
-			{
-				sk = Skill;
-
-				if ( sk != SkillName.Anatomie && !m.Player && !m.Body.IsHuman && m.Skills[SkillName.Anatomie].Value > m.Skills[sk].Value )
-					sk = SkillName.Anatomie;
-			}
-
-			return sk;
-		}
-
-		public virtual double GetAttackSkillValue( Mobile attacker, Mobile defender )
-		{
-			return attacker.Skills[GetUsedSkill( attacker, true )].Value;
-		}
-
-		public virtual double GetDefendSkillValue( Mobile attacker, Mobile defender )
-		{
-			return defender.Skills[GetUsedSkill( defender, true )].Value;
-		}
-
 		public virtual TimeSpan GetDelay( Mobile m )
 		{          
 			return TimeSpan.FromMilliseconds(Strategy.ProchaineAttaque(m));
@@ -778,7 +733,6 @@ namespace Server.Items
 			get{ return m_InDoubleStrike; }
 			set{ m_InDoubleStrike = value; }
 		}
-
 
 		public void OnHit( Mobile attacker, Mobile defender)
 		{
@@ -1468,11 +1422,6 @@ namespace Server.Items
 				return true;
 
 			return ( m_AosAttributes.SpellChanneling != 0 );
-		}
-
-		public virtual int ArtifactRarity
-		{
-			get{ return 0; }
 		}
 
 		public override void GetProperties( ObjectPropertyList list )

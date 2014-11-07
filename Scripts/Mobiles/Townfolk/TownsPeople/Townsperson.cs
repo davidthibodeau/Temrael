@@ -339,7 +339,6 @@ namespace Server.Mobiles
         public override bool CanOpenDoors { get { return true; } }
         public override bool Unprovokable { get { return true; } }
         public override bool Commandable { get { return false; } }
-        public override bool CanTeach { get { return true; } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public Attitude attitude

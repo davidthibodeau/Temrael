@@ -20,9 +20,6 @@ namespace Server.Mobiles
 		public override void InitSBInfo()
 		{
 			m_SBInfos.Add( new SBProvisioner() );
-
-			if ( IsTokunoVendor )
-				m_SBInfos.Add( new SBSEHats() );
 		}
 
 		public Provisioner( Serial serial ) : base( serial )

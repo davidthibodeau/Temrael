@@ -522,7 +522,6 @@
     <Compile Include="Context Menus\EatEntry.cs" />
     <Compile Include="Context Menus\EjectPlayer.cs" />
     <Compile Include="Context Menus\OpenBankEntry.cs" />
-    <Compile Include="Context Menus\TeachEntry.cs" />
     <Compile Include="Custom\BoxServer\Configuration.cs" />
     <Compile Include="Custom\BoxServer\Core\Authentication.cs" />
     <Compile Include="Custom\BoxServer\Core\BoxServer.cs" />

@@ -19,9 +19,6 @@ namespace Server.Mobiles
 		public override void InitSBInfo()
 		{
 			m_SBInfos.Add( new SBCook() );
-
-			if ( IsTokunoVendor )
-				m_SBInfos.Add( new SBSECook() );
 		}
 
 		public override VendorShoeType ShoeType
