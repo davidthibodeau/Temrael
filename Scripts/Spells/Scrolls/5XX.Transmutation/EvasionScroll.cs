@@ -26,6 +26,16 @@ namespace Server.Spells.Scrolls.Transmutation
                 : base(serial)
             {
             }
+
+            public override void Serialize(GenericWriter writer)
+            {
+                base.Serialize(writer);
+            }
+
+            public override void Deserialize(GenericReader reader)
+            {
+                base.Deserialize(reader);
+            }
         }
     }
 }
