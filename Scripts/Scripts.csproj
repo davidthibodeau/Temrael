@@ -106,6 +106,7 @@
     <Compile Include="Engines\Evolution\Cotes.cs" />
     <Compile Include="Engines\Evolution\Experience.cs" />
     <Compile Include="Engines\Mort\MortEngine.cs" />
+    <Compile Include="Engines\Quetes\MonstreQueteInfo.cs" />
     <Compile Include="Engines\Races\Humain.cs" />
     <Compile Include="Engines\Mort\ContratGump.cs" />
     <Compile Include="Engines\Mort\MortGump.cs" />

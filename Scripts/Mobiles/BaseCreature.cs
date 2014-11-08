@@ -10,6 +10,7 @@ using Server.Items;
 using Server.ContextMenus;
 using Server.Engines.PartySystem;
 using Server.Factions;
+using Server.Engines.Quetes;
 
 
 namespace Server.Mobiles
@@ -263,348 +264,12 @@ namespace Server.Mobiles
         }
         #endregion
 
-        #region Quetes
-
-        private Mobile temp_from = null;
-        private bool m_Quest = false;
-
-        private string m_QuestTitre = "";
-        private string m_QuestDescription = "";
-        private string m_QuestTag = "";
-        private string m_QuestTagCompletion = "";
-        private string m_QuestNextTitre = "";
-        private string m_QuestNextDescription = "";
-
-        private Body m_QuestMobileID = 0;
-        private int m_QuestItemID = 0;
-
-        private int m_QuestExpBonus = 0;
-        private Item m_QuestItemRecompense = null;
-        private Item m_QuestItemCompletion = null;
-        private Mobile m_QuestMobileCompletion = null;
-        private const int m_QuestRangeConst = 10;
-
-        private string m_QuestSpeechStart = "";
-        private string m_QuestSpeechDuring = "";
-        private string m_QuestSpeechComplete = "";
+        [CommandProperty(AccessLevel.Batisseur)]
+        public MonstreQueteInfo Quete { get; set; }
 
         public virtual double AttackSpeed { get { return 5.0; } }
 
         public virtual bool isBoss { get { return false; } }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Quete
-        {
-            get { return m_Quest; }
-            set { m_Quest = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteTitre
-        {
-            get { return m_QuestTitre; }
-            set { m_QuestTitre = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteDescription
-        {
-            get { return m_QuestDescription; }
-            set { m_QuestDescription = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteTag
-        {
-            get { return m_QuestTag; }
-            set { m_QuestTag = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteTagCompletion
-        {
-            get { return m_QuestTagCompletion; }
-            set { m_QuestTagCompletion = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteNextTitre
-        {
-            get { return m_QuestNextTitre; }
-            set { m_QuestNextTitre = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteNextDescription
-        {
-            get { return m_QuestNextDescription; }
-            set { m_QuestNextDescription = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int QueteExp
-        {
-            get { return m_QuestExpBonus; }
-            set { m_QuestExpBonus = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Item QueteObjetRecompense
-        {
-            get { return m_QuestItemRecompense; }
-            set { m_QuestItemRecompense = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Item QueteObjetCompletion
-        {
-            get { return m_QuestItemCompletion; }
-            set { m_QuestItemCompletion = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Mobile QueteNPCCompletion
-        {
-            get { return m_QuestMobileCompletion; }
-            set { m_QuestMobileCompletion = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteSpeechDebut
-        {
-            get { return m_QuestSpeechStart; }
-            set { m_QuestSpeechStart = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteSpeechDurant
-        {
-            get { return m_QuestSpeechDuring; }
-            set { m_QuestSpeechDuring = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public string QueteSpeechFin
-        {
-            get { return m_QuestSpeechComplete; }
-            set { m_QuestSpeechComplete = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Body QueteMobileID
-        {
-            get { return m_QuestMobileID; }
-            set { m_QuestMobileID = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int QueteItemID
-        {
-            get { return m_QuestItemID; }
-            set { m_QuestItemID = value; }
-        }
-
-        private void QuestContext()
-        {
-            if (temp_from == null)
-                return;
-
-            /*if (temp_from is TMobile)
-            {
-                TMobile from = (TMobile)temp_from;
-
-                if (!(m_QuestTag == ""))
-                {
-                    if (from.TagList.Contains(m_QuestTag))
-                    {
-                        from.SendMessage("Vous avez deja complete cette quete !");
-                        SayTo(from, "Je n'ai pas de travail pour vous en ce moment.");
-                    }
-                }
-
-                if (m_QuestTitre == from.QueteTitre)
-                {
-                    //Si un mobile
-                    if (m_QuestMobileID > 0)
-                    {
-                        bool completion = false;
-                        IPooledEnumerable eable = from.GetItemsInRange(m_QuestRangeConst);
-
-                        foreach (Mobile m in eable)
-                        {
-                            if (m.Body == m_QuestMobileID)
-                            {
-                                if (!(m_QuestItemRecompense == null))
-                                    from.Backpack.AddItem(m_QuestItemRecompense);
-
-                                if (m_QuestExpBonus > 0)
-                                    from.XP += m_QuestExpBonus;
-
-                                if (!(m_QuestTag == ""))
-                                    from.TagList.Add(m_QuestTag);
-
-                                SayTo(from, m_QuestSpeechComplete);
-                                //from.Backpack.RemoveItem(m);
-
-                                from.QueteTitre = "";
-                                from.QueteDescription = "";
-
-                                completion = true;
-                            }
-                        }
-                        eable.Free();
-
-                        if (completion == false)
-                        {
-                            SayTo(from, m_QuestSpeechDuring);
-                        }
-                    }
-                    else if (!(m_QuestMobileCompletion == null))
-                    {
-                        bool completion = false;
-                        IPooledEnumerable eable = from.GetItemsInRange(m_QuestRangeConst);
-
-                        foreach (Mobile m in eable)
-                        {
-                            if (m.Equals(m_QuestMobileCompletion))
-                            {
-                                if (!(m_QuestItemRecompense == null))
-                                    from.Backpack.AddItem(m_QuestItemRecompense);
-
-                                if (m_QuestExpBonus > 0)
-                                    from.XP += m_QuestExpBonus;
-
-                                if (!(m_QuestTag == ""))
-                                    from.TagList.Add(m_QuestTag);
-
-                                SayTo(from, m_QuestSpeechComplete);
-                                //from.Backpack.RemoveItem(m);
-
-                                from.QueteTitre = "";
-                                from.QueteDescription = "";
-
-                                completion = true;
-                            }
-                        }
-
-                        eable.Free();
-
-                        if (completion == false)
-                        {
-                            SayTo(from, m_QuestSpeechDuring);
-                        }
-                    }
-                    //Si un item
-                    else if (m_QuestItemID  > 0)
-                    {
-                        bool completion = false;
-                        Item item = null;
-                        foreach (Item i in from.Backpack.Items)
-                        {
-                            if (i.ItemID == m_QuestItemID)
-                            {
-                                if (!(m_QuestItemRecompense == null))
-                                    from.Backpack.AddItem(m_QuestItemRecompense);
-
-                                if (m_QuestExpBonus > 0)
-                                    from.XP += m_QuestExpBonus;
-
-                                if (!(m_QuestTag == ""))
-                                    from.TagList.Add(m_QuestTag);
-
-                                SayTo(from, m_QuestSpeechComplete);
-                                item = i;
-                                //from.Backpack.RemoveItem(i);
-
-                                from.QueteTitre = "";
-                                from.QueteDescription = "";
-
-                                completion = true;
-                            }
-                        }
-                        if (!(item == null))
-                            from.Backpack.RemoveItem(item);
-                        if (completion == false)
-                        {
-                            SayTo(from, m_QuestSpeechDuring);
-                        }
-                    }
-                    else if (!(m_QuestItemCompletion == null))
-                    {
-                        bool completion = false;
-                        Item item = null;
-                        foreach (Item i in from.Backpack.Items)
-                        {
-                            if (i.Equals(m_QuestItemCompletion))
-                            {
-                                if (!(m_QuestItemRecompense == null))
-                                    from.Backpack.AddItem(m_QuestItemRecompense);
-
-                                if (m_QuestExpBonus > 0)
-                                    from.XP += m_QuestExpBonus;
-
-                                if (!(m_QuestTag == ""))
-                                    from.TagList.Add(m_QuestTag);
-
-                                SayTo(from, m_QuestSpeechComplete);
-                                item = i;
-                                //from.Backpack.RemoveItem(i);
-
-                                from.QueteTitre = "";
-                                from.QueteDescription = "";
-
-                                completion = true;
-                            }
-                        }
-                        if (!(item == null))
-                            from.Backpack.RemoveItem(item);
-                        if (completion == false)
-                        {
-                            SayTo(from, m_QuestSpeechDuring);
-                        }
-                    }
-                    //Si un tag
-                    else if (!(m_QuestTagCompletion == null))
-                    {
-                        bool completion = false;
-
-                        foreach (string s in from.TagList)
-                        {
-                            if (s == m_QuestTagCompletion)
-                            {
-                                if (!(m_QuestItemRecompense == null))
-                                    from.Backpack.AddItem(m_QuestItemRecompense);
-
-                                if (m_QuestExpBonus > 0)
-                                    from.XP += m_QuestExpBonus;
-
-                                if (!(m_QuestTag == ""))
-                                    from.TagList.Add(m_QuestTag);
-
-                                SayTo(from, m_QuestSpeechComplete);
-
-                                if (!(m_QuestNextTitre == ""))
-                                    from.QueteTitre = m_QuestNextTitre;
-                                else
-                                    from.QueteTitre = "";
-                                if (!(m_QuestNextDescription == ""))
-                                    from.QueteDescription = m_QuestNextDescription;
-                                else
-                                    from.QueteDescription = "";
-
-                                completion = true;
-                            }
-                        }
-                        if (completion == false)
-                        {
-                            SayTo(from, m_QuestSpeechDuring);
-                        }
-                    }
-                    else
-                    {
-                        SayTo(from, m_QuestSpeechDuring);
-                    }
-                }
-                else
-                {
-                    if (!(m_QuestTitre == ""))
-                        from.QueteTitre = m_QuestTitre;
-                    if (!(m_QuestDescription == ""))
-                        from.QueteDescription = m_QuestDescription;
-
-                    SayTo(from, m_QuestSpeechStart);
-                }
-            }*/
-        }
-
-        #endregion
 
         #region Kill Bonus
         private int m_expKillBonus = 1;
@@ -1939,6 +1604,8 @@ namespace Server.Mobiles
 				speechType.OnConstruct( this );
 
 			GenerateLoot( true );
+
+            Quete = new MonstreQueteInfo();
 		}
 
 		public BaseCreature( Serial serial ) : base( serial )
@@ -1953,7 +1620,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 19 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( (int)m_CurrentAI );
 			writer.Write( (int)m_DefaultAI );
@@ -1971,7 +1638,6 @@ namespace Server.Mobiles
 			writer.Write( (int) m_pHome.Y );
 			writer.Write( (int) m_pHome.Z );
 
-			// Version 1
 			writer.Write( (int) m_iRangeHome );
 
 			int i=0;
@@ -1988,7 +1654,6 @@ namespace Server.Mobiles
 				writer.Write( m_arSpellDefense[i].ToString() );
 			}
 
-			// Version 2
 			writer.Write( (int) m_FightMode );
 
 			writer.Write( (bool) m_bControlled );
@@ -1997,8 +1662,6 @@ namespace Server.Mobiles
 			writer.Write( (Point3D) m_ControlDest );
 			writer.Write( (int) m_ControlOrder );
 			writer.Write( (double) m_dMinTameSkill );
-			// Removed in version 9
-			//writer.Write( (double) m_dMaxTameSkill );
 			writer.Write( (bool) m_bTamable );
 			writer.Write( (bool) m_bSummoned );
 
@@ -2007,79 +1670,48 @@ namespace Server.Mobiles
 
 			writer.Write( (int) m_iControlSlots );
 
-			// Version 3
 			writer.Write( (int)m_Loyalty );
 
-			// Version 4
 			writer.Write( m_CurrentWayPoint );
 
-			// Verison 5
 			writer.Write( m_SummonMaster );
 
-			// Version 6
 			writer.Write( (int) m_HitsMax );
 			writer.Write( (int) m_StamMax );
 			writer.Write( (int) m_ManaMax );
 			writer.Write( (int) m_DamageMin );
 			writer.Write( (int) m_DamageMax );
 
-			// Version 7
 			writer.Write( (int) m_PhysicalResistance );
 			writer.Write( (int) m_PhysicalDamage );
 
 			writer.Write( (int) m_MagieResistance );
 			writer.Write( (int) m_MagieDamage );
 
-			// Version 8
 			writer.Write( m_Owners, true );
 
-			// Version 10
 			writer.Write( (bool) m_IsDeadPet );
 			writer.Write( (bool) m_IsBonded );
 			writer.Write( (DateTime) m_BondingBegin );
 			writer.Write( (DateTime) m_OwnerAbandonTime );
 
-			// Version 11
 			writer.Write( (bool) m_HasGeneratedLoot );
 
-			// Version 13
 			writer.Write( (bool) ( m_Friends != null && m_Friends.Count > 0 ) );
 
 			if ( m_Friends != null && m_Friends.Count > 0 )
 				writer.Write( m_Friends, true );
 
-			// Version 14
+            Quete.Serialize(writer);
+
 			writer.Write( (bool)m_RemoveIfUntamed );
 			writer.Write( (int)m_RemoveStep );
 
-			// Version 17
 			if ( IsStabled || ( Controlled && ControlMaster != null ) )
 				writer.Write( TimeSpan.Zero );
 			else
 				writer.Write( DeleteTimeLeft );
 
-            //Version 18
-            writer.Write((bool) m_Quest);
-            writer.Write((string) m_QuestTitre);
-            writer.Write((string) m_QuestDescription);
-            writer.Write((string) m_QuestTag);
-            writer.Write((string) m_QuestTagCompletion);
-            writer.Write((string) m_QuestNextTitre);
-            writer.Write((string) m_QuestNextDescription);
-
-            writer.Write((Body) m_QuestMobileID);
-            writer.Write((int) m_QuestItemID);
-
-            writer.Write((int) m_QuestExpBonus);
-            writer.Write((Item) m_QuestItemRecompense);
-            writer.Write((Item) m_QuestItemCompletion);
-            writer.Write((Mobile) m_QuestMobileCompletion);
-
-            writer.Write((string) m_QuestSpeechStart);
-            writer.Write((string) m_QuestSpeechDuring);
-            writer.Write((string) m_QuestSpeechComplete);
-
-            //Version 19
             writer.Write((int)m_DetectionRange);
 		}
 
@@ -2093,237 +1725,167 @@ namespace Server.Mobiles
 				0.350, 0.2, 0.4, 0.5, 0.6, 0.8, 1.0, 1.2, 1.6, 2.0
 			};
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			m_CurrentAI = (AIType)reader.ReadInt();
-			m_DefaultAI = (AIType)reader.ReadInt();
+            m_CurrentAI = (AIType)reader.ReadInt();
+            m_DefaultAI = (AIType)reader.ReadInt();
 
-			m_iRangePerception = reader.ReadInt();
-			m_iRangeFight = reader.ReadInt();
+            m_iRangePerception = reader.ReadInt();
+            m_iRangeFight = reader.ReadInt();
 
-			m_iTeam = reader.ReadInt();
+            m_iTeam = reader.ReadInt();
 
-			m_dActiveSpeed = reader.ReadDouble();
-			m_dPassiveSpeed = reader.ReadDouble();
-			m_dCurrentSpeed = reader.ReadDouble();
+            m_dActiveSpeed = reader.ReadDouble();
+            m_dPassiveSpeed = reader.ReadDouble();
+            m_dCurrentSpeed = reader.ReadDouble();
 
-			if ( m_iRangePerception == OldRangePerception )
-				m_iRangePerception = DefaultRangePerception;
+            if (m_iRangePerception == OldRangePerception)
+                m_iRangePerception = DefaultRangePerception;
 
-			m_pHome.X = reader.ReadInt();
-			m_pHome.Y = reader.ReadInt();
-			m_pHome.Z = reader.ReadInt();
+            m_pHome.X = reader.ReadInt();
+            m_pHome.Y = reader.ReadInt();
+            m_pHome.Z = reader.ReadInt();
 
-			if ( version >= 1 )
-			{
-				m_iRangeHome = reader.ReadInt();
 
-				int i, iCount;
+            m_iRangeHome = reader.ReadInt();
 
-				iCount = reader.ReadInt();
-				for ( i=0; i< iCount; i++ )
-				{
-					string str = reader.ReadString();
-					Type type = Type.GetType( str );
+            int i, iCount;
 
-					if ( type != null )
-					{
-						m_arSpellAttack.Add( type );
-					}
-				}
-
-				iCount = reader.ReadInt();
-				for ( i=0; i< iCount; i++ )
-				{
-					string str = reader.ReadString();
-					Type type = Type.GetType( str );
-
-					if ( type != null )
-					{
-						m_arSpellDefense.Add( type );
-					}
-				}
-			}
-			else
-			{
-				m_iRangeHome = 0;
-			}
-
-			if ( version >= 2 )
-			{
-				m_FightMode = ( FightMode )reader.ReadInt();
-
-				m_bControlled = reader.ReadBool();
-				m_ControlMaster = reader.ReadMobile();
-				m_ControlTarget = reader.ReadMobile();
-				m_ControlDest = reader.ReadPoint3D();
-				m_ControlOrder = (OrderType) reader.ReadInt();
-
-				m_dMinTameSkill = reader.ReadDouble();
-
-				if ( version < 9 )
-					reader.ReadDouble();
-
-				m_bTamable = reader.ReadBool();
-				m_bSummoned = reader.ReadBool();
-
-				if ( m_bSummoned )
-				{
-					m_SummonEnd = reader.ReadDeltaTime();
-					new UnsummonTimer( m_ControlMaster, this, m_SummonEnd - DateTime.Now ).Start();
-				}
-
-				m_iControlSlots = reader.ReadInt();
-			}
-			else
-			{
-				m_FightMode = FightMode.Closest;
-
-				m_bControlled = false;
-				m_ControlMaster = null;
-				m_ControlTarget = null;
-				m_ControlOrder = OrderType.None;
-			}
-
-			if ( version >= 3 )
-				m_Loyalty = reader.ReadInt();
-			else
-				m_Loyalty = MaxLoyalty; // Wonderfully Happy
-
-			if ( version >= 4 )
-				m_CurrentWayPoint = reader.ReadItem() as WayPoint;
-
-			if ( version >= 5 )
-				m_SummonMaster = reader.ReadMobile();
-
-			if ( version >= 6 )
-			{
-				m_HitsMax = reader.ReadInt();
-				m_StamMax = reader.ReadInt();
-				m_ManaMax = reader.ReadInt();
-				m_DamageMin = reader.ReadInt();
-				m_DamageMax = reader.ReadInt();
-			}
-
-			if ( version >= 7 )
-			{
-				m_PhysicalResistance = reader.ReadInt();
-				m_PhysicalDamage = reader.ReadInt();
-
-				m_MagieResistance = reader.ReadInt();
-				m_MagieDamage = reader.ReadInt();
-			}
-
-			if ( version >= 8 )
-				m_Owners = reader.ReadStrongMobileList();
-			else
-				m_Owners = new List<Mobile>();
-
-			if ( version >= 10 )
-			{
-				m_IsDeadPet = reader.ReadBool();
-				m_IsBonded = reader.ReadBool();
-				m_BondingBegin = reader.ReadDateTime();
-				m_OwnerAbandonTime = reader.ReadDateTime();
-			}
-
-			if ( version >= 11 )
-				m_HasGeneratedLoot = reader.ReadBool();
-			else
-				m_HasGeneratedLoot = true;
-
-			if ( version >= 13 && reader.ReadBool() )
-				m_Friends = reader.ReadStrongMobileList();
-			else if ( version < 13 && m_ControlOrder >= OrderType.Unfriend )
-				++m_ControlOrder;
-
-			if ( version < 16 && Loyalty != MaxLoyalty )
-				Loyalty *= 10;
-
-			double activeSpeed = m_dActiveSpeed;
-			double passiveSpeed = m_dPassiveSpeed;
-
-			SpeedInfo.GetSpeeds( this, ref activeSpeed, ref passiveSpeed );
-
-			bool isStandardActive = false;
-			for ( int i = 0; !isStandardActive && i < m_StandardActiveSpeeds.Length; ++i )
-				isStandardActive = ( m_dActiveSpeed == m_StandardActiveSpeeds[i] );
-
-			bool isStandardPassive = false;
-			for ( int i = 0; !isStandardPassive && i < m_StandardPassiveSpeeds.Length; ++i )
-				isStandardPassive = ( m_dPassiveSpeed == m_StandardPassiveSpeeds[i] );
-
-			if ( isStandardActive && m_dCurrentSpeed == m_dActiveSpeed )
-				m_dCurrentSpeed = activeSpeed;
-			else if ( isStandardPassive && m_dCurrentSpeed == m_dPassiveSpeed )
-				m_dCurrentSpeed = passiveSpeed;
-
-			if ( isStandardActive)
-				m_dActiveSpeed = activeSpeed;
-
-			if ( isStandardPassive)
-				m_dPassiveSpeed = passiveSpeed;
-
-			if ( version >= 14 )
-			{
-				m_RemoveIfUntamed = reader.ReadBool();
-				m_RemoveStep = reader.ReadInt();
-			}
-
-			TimeSpan deleteTime = TimeSpan.Zero;
-
-			if ( version >= 17 )
-				deleteTime = reader.ReadTimeSpan();
-
-            if (version >= 18)
+            iCount = reader.ReadInt();
+            for (i = 0; i < iCount; i++)
             {
-                m_Quest = reader.ReadBool();
-                m_QuestTitre = reader.ReadString();
-                m_QuestDescription = reader.ReadString();
-                m_QuestTag = reader.ReadString();
-                m_QuestTagCompletion = reader.ReadString();
-                m_QuestNextTitre = reader.ReadString();
-                m_QuestNextDescription = reader.ReadString();
+                string str = reader.ReadString();
+                Type type = Type.GetType(str);
 
-                m_QuestMobileID = (Body)reader.ReadInt();
-                m_QuestItemID = reader.ReadInt();
-
-                m_QuestExpBonus = reader.ReadInt();
-                m_QuestItemRecompense = reader.ReadItem();
-                m_QuestItemCompletion = reader.ReadItem();
-                m_QuestMobileCompletion = reader.ReadMobile();
-
-                m_QuestSpeechStart = reader.ReadString();
-                m_QuestSpeechDuring = reader.ReadString();
-                m_QuestSpeechComplete = reader.ReadString();
+                if (type != null)
+                {
+                    m_arSpellAttack.Add(type);
+                }
             }
 
-            if (version >= 19)
-                m_DetectionRange = reader.ReadInt();
+            iCount = reader.ReadInt();
+            for (i = 0; i < iCount; i++)
+            {
+                string str = reader.ReadString();
+                Type type = Type.GetType(str);
 
-			if ( deleteTime > TimeSpan.Zero || LastOwner != null && !Controlled && !IsStabled )
-			{
-				if ( deleteTime == TimeSpan.Zero )
-					deleteTime = TimeSpan.FromDays( 3.0 );
+                if (type != null)
+                {
+                    m_arSpellDefense.Add(type);
+                }
+            }
 
-				m_DeleteTimer = new DeleteTimer( this, deleteTime );
-				m_DeleteTimer.Start();
-			}
+            m_FightMode = (FightMode)reader.ReadInt();
 
+            m_bControlled = reader.ReadBool();
+            m_ControlMaster = reader.ReadMobile();
+            m_ControlTarget = reader.ReadMobile();
+            m_ControlDest = reader.ReadPoint3D();
+            m_ControlOrder = (OrderType)reader.ReadInt();
 
-			CheckStatTimers();
+            m_dMinTameSkill = reader.ReadDouble();
 
-			ChangeAIType(m_CurrentAI);
+            if (version < 9)
+                reader.ReadDouble();
 
-			AddFollowers();
+            m_bTamable = reader.ReadBool();
+            m_bSummoned = reader.ReadBool();
 
-			if ( IsAnimatedDead )
-				Spells.AnimateDeadSpell.Register( m_SummonMaster, this );
-		}
+            if (m_bSummoned)
+            {
+                m_SummonEnd = reader.ReadDeltaTime();
+                new UnsummonTimer(m_ControlMaster, this, m_SummonEnd - DateTime.Now).Start();
+            }
+
+            m_iControlSlots = reader.ReadInt();
+
+            m_Loyalty = reader.ReadInt();
+
+            m_CurrentWayPoint = reader.ReadItem() as WayPoint;
+
+            m_SummonMaster = reader.ReadMobile();
+
+            m_HitsMax = reader.ReadInt();
+            m_StamMax = reader.ReadInt();
+            m_ManaMax = reader.ReadInt();
+            m_DamageMin = reader.ReadInt();
+            m_DamageMax = reader.ReadInt();
+
+            m_PhysicalResistance = reader.ReadInt();
+            m_PhysicalDamage = reader.ReadInt();
+
+            m_MagieResistance = reader.ReadInt();
+            m_MagieDamage = reader.ReadInt();
+
+            m_Owners = reader.ReadStrongMobileList();
+
+            m_IsDeadPet = reader.ReadBool();
+            m_IsBonded = reader.ReadBool();
+            m_BondingBegin = reader.ReadDateTime();
+            m_OwnerAbandonTime = reader.ReadDateTime();
+
+            m_HasGeneratedLoot = reader.ReadBool();
+
+            m_Friends = reader.ReadStrongMobileList();
+
+            Quete = new MonstreQueteInfo(reader);
+
+            double activeSpeed = m_dActiveSpeed;
+            double passiveSpeed = m_dPassiveSpeed;
+
+            SpeedInfo.GetSpeeds(this, ref activeSpeed, ref passiveSpeed);
+
+            bool isStandardActive = false;
+            for (i = 0; !isStandardActive && i < m_StandardActiveSpeeds.Length; ++i)
+                isStandardActive = (m_dActiveSpeed == m_StandardActiveSpeeds[i]);
+
+            bool isStandardPassive = false;
+            for (i = 0; !isStandardPassive && i < m_StandardPassiveSpeeds.Length; ++i)
+                isStandardPassive = (m_dPassiveSpeed == m_StandardPassiveSpeeds[i]);
+
+            if (isStandardActive && m_dCurrentSpeed == m_dActiveSpeed)
+                m_dCurrentSpeed = activeSpeed;
+            else if (isStandardPassive && m_dCurrentSpeed == m_dPassiveSpeed)
+                m_dCurrentSpeed = passiveSpeed;
+
+            if (isStandardActive)
+                m_dActiveSpeed = activeSpeed;
+
+            if (isStandardPassive)
+                m_dPassiveSpeed = passiveSpeed;
+
+            m_RemoveIfUntamed = reader.ReadBool();
+            m_RemoveStep = reader.ReadInt();
+
+            TimeSpan deleteTime = TimeSpan.Zero;
+
+            deleteTime = reader.ReadTimeSpan();
+
+            m_DetectionRange = reader.ReadInt();
+
+            if (deleteTime > TimeSpan.Zero || LastOwner != null && !Controlled && !IsStabled)
+            {
+                if (deleteTime == TimeSpan.Zero)
+                    deleteTime = TimeSpan.FromDays(3.0);
+
+                m_DeleteTimer = new DeleteTimer(this, deleteTime);
+                m_DeleteTimer.Start();
+            }
+
+            CheckStatTimers();
+
+            ChangeAIType(m_CurrentAI);
+
+            AddFollowers();
+
+            if (IsAnimatedDead)
+                Spells.AnimateDeadSpell.Register(m_SummonMaster, this);
+
+        }
 
 		public virtual bool IsHumanInTown()
 		{
@@ -3381,33 +2943,10 @@ namespace Server.Mobiles
 
 			AddCustomContextEntries( from, list );
 
-            if ((from != this) && (this.m_Quest == true))
+            if (from != this)
             {
-                temp_from = from;
-                list.Add(new Server.Mobiles.PlayerMobile.CallbackEntry(6094, new Server.Mobiles.PlayerMobile.ContextCallback(QuestContext)));
+                Quete.GetContextMenuEntries(from, list);
             }
-
-			/*if ( CanTeach && from.Alive )
-			{
-				Skills ourSkills = this.Skills;
-				Skills theirSkills = from.Skills;
-
-				for ( int i = 0; i < ourSkills.Length && i < theirSkills.Length; ++i )
-				{
-					Skill skill = ourSkills[i];
-					Skill theirSkill = theirSkills[i];
-
-					if ( skill != null && theirSkill != null && skill.Base >= 60.0 && CheckTeach( skill.SkillName, from ) )
-					{
-						double toTeach = skill.Base / 3.0;
-
-						if ( toTeach > 42.0 )
-							toTeach = 42.0;
-
-						list.Add( new TeachEntry( (SkillName)i, this, from, ( toTeach > theirSkill.Base ) ) );
-					}
-				}
-			}*/
 		}
 
 		public override bool HandlesOnSpeech( Mobile from )
