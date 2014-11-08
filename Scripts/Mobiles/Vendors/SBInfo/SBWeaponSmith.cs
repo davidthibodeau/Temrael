@@ -86,7 +86,7 @@ namespace Server.Mobiles
 				Add( typeof( SmithHammer ), 10 );
 
 				Add( typeof( Broadsword ), 17 );
-				Add( typeof( Cutlass ), 12 );
+				Add( typeof( Coutelas ), 12 );
 				Add( typeof( Katana ), 16 );
 				Add( typeof( Kryss ), 16 );
 				Add( typeof( Longsword ), 27 );

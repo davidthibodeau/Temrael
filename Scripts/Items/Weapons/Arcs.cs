@@ -506,7 +506,7 @@ namespace Server.Items
         {
             Weight = 8.0;
             Layer = Layer.TwoHanded;
-            Name = "Arc";
+            Name = "Vigne";
         }
 
         public Vigne(Serial serial)

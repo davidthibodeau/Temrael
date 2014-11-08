@@ -41,7 +41,8 @@ namespace Server.Items
 
 
     // Une main - Vitesse de 25 à 40
-    // Main gauche.
+
+    /* Main gauche.
     public class Ferel : BaseSword
     {
         public override int DefMinDamage { get { return 7; } }
@@ -252,14 +253,14 @@ namespace Server.Items
         }
     }
 
-    public class Cutlass : BaseSword
+    public class Coutelas : BaseSword
     {
         public override int DefMinDamage { get { return 5; } }
         public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
-        public Cutlass()
+        public Coutelas()
             : base(0x1441)
         {
             Weight = 5.0;
@@ -267,7 +268,7 @@ namespace Server.Items
             Name = "Coutelas";
         }
 
-        public Cutlass(Serial serial)
+        public Coutelas(Serial serial)
             : base(serial)
         {
         }
@@ -287,6 +288,40 @@ namespace Server.Items
         }
     }
 
+    public class Dawn : BaseSword
+    {
+        public override int DefMinDamage { get { return 9; } }
+        public override int DefMaxDamage { get { return 13; } }
+        public override int DefSpeed { get { return 40; } }
+
+        [Constructable]
+        public Dawn()
+            : base(0x1441)
+        {
+            Weight = 5.0;
+            Layer = Layer.OneHanded;
+            Name = "Dawn";
+        }
+
+        public Dawn(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }*/
 
     // Main droite.
     public class Astoria : BaseSword
@@ -297,7 +332,7 @@ namespace Server.Items
 
         [Constructable]
         public Astoria()
-            : base(0x315a)
+            : base(0x315e)
         {
             Weight = 5.0;
             Layer = Layer.OneHanded;
@@ -340,41 +375,6 @@ namespace Server.Items
         }
 
         public Biliome(Serial serial)
-            : base(serial)
-        {
-        }
-
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-
-            writer.Write((int)0); // version
-        }
-
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
-
-            int version = reader.ReadInt();
-        }
-    }
-
-    public class Dawn : BaseSword
-    {
-        public override int DefMinDamage { get { return 9; } }
-        public override int DefMaxDamage { get { return 13; } }
-        public override int DefSpeed { get { return 40; } }
-
-        [Constructable]
-        public Dawn()
-            : base(0x1441)
-        {
-            Weight = 5.0;
-            Layer = Layer.OneHanded;
-            Name = "Dawn";
-        }
-
-        public Dawn(Serial serial)
             : base(serial)
         {
         }
@@ -472,7 +472,7 @@ namespace Server.Items
 
         [Constructable]
         public Gerumir()
-            : base(0x2a21)
+            : base(0x2a25)
         {
             Weight = 5.0;
             Layer = Layer.OneHanded;
@@ -647,7 +647,7 @@ namespace Server.Items
 
         [Constructable]
         public Myliron()
-            : base(0x2a0b)
+            : base(0x2a26)
         {
             Weight = 5.0;
             Layer = Layer.OneHanded;
@@ -787,7 +787,7 @@ namespace Server.Items
 
         [Constructable]
         public Rodere()
-            : base(0x2a18)
+            : base(0x2a14)
         {
             Weight = 5.0;
             Layer = Layer.OneHanded;
@@ -927,7 +927,7 @@ namespace Server.Items
 
         [Constructable]
         public Vorlame()
-            : base(0x13b6)
+            : base(0x2a22)
         {
             Weight = 5.0;
             Layer = Layer.OneHanded;
@@ -1524,7 +1524,7 @@ namespace Server.Items
 
         [Constructable]
         public Espadon()
-            : base(0x13b6)
+            : base(0x2a17)
         {
             Weight = 5.0;
             Layer = Layer.TwoHanded;
@@ -1769,7 +1769,7 @@ namespace Server.Items
 
         [Constructable]
         public Sombrimur()
-            : base(0x13b6)
+            : base(0x2a11)
         {
             Weight = 5.0;
             Layer = Layer.TwoHanded;

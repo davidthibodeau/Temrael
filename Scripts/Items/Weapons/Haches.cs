@@ -4,7 +4,7 @@ using Server.Network;
 
 namespace Server.Items
 {
-    // Main gauche
+    /* Main gauche
     public class Furagne : BaseAxe
     {
         public override int DefMinDamage { get { return 2; } }
@@ -110,6 +110,7 @@ namespace Server.Items
             int version = reader.ReadInt();
         }
     }
+    */
 
     // Main Droite
     public class Grochette : BaseAxe
@@ -190,7 +191,7 @@ namespace Server.Items
 
         [Constructable]
         public Luminar()
-            : base(0x296a)
+            : base(0x2973)
         {
             Weight = 4.0;
             Layer = Layer.OneHanded;
@@ -365,7 +366,7 @@ namespace Server.Items
 
         [Constructable]
         public WarAxe()
-            : base(0x2967)
+            : base(0x13b0)
         {
             Weight = 4.0;
             Layer = Layer.OneHanded;

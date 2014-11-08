@@ -156,7 +156,7 @@ namespace Server.Items
         {
             Weight = 8.0;
             Layer = Layer.TwoHanded;
-            Name = "Arbalete Lourde";
+            Name = "Arbavive";
         }
 
         public Arbavive(Serial serial)
@@ -296,7 +296,7 @@ namespace Server.Items
         {
             Weight = 8.0;
             Layer = Layer.TwoHanded;
-            Name = "Lumitrait";
+            Name = "Percemurs";
         }
 
         public Percemurs(Serial serial)

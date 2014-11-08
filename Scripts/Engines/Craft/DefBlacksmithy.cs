@@ -382,7 +382,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Runire), "Épées", "Runire", 30.0, 60.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Myliron), "Épées", "Myliron", 40.0, 70.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Vorlame), "Épées", "Vorlame", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Dawn), "Épées", "Dawn", 60.0, 90.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Dawn), "Épées", "Dawn", 60.0, 90.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Lerise), "Épées", "Lerise", 70.0, 100.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Gerumir), "Épées", "Gerumir", 70.0, 100.0, typeof(FerIngot), "Lingots", 10, 1044037);
 
@@ -401,7 +401,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Mersang), "Épées", "Mersang", 30.0, 60.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Raghash), "Épées", "Raghash", 40.0, 70.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Prisienne), "Épées", "Prisienne", 50.0, 80.0, typeof(FerIngot), "Lingots", 8, 1044037);
-            index = AddCraft(typeof(Cutlass), "Épées", "Cutlass", 60.0, 90.0, typeof(FerIngot), "Lingots", 8, 1044037);
+            //index = AddCraft(typeof(Coutelas), "Épées", "Coutelas", 60.0, 90.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Scimitar), "Épées", "Scimitar", 70.0, 100.0, typeof(FerIngot), "Lingots", 10, 1044037);
 
             //Épées Lourdes
@@ -440,14 +440,14 @@ namespace Server.Engines.Craft
 
             //Doubles
 
-            index = AddCraft(typeof(Mirilione), "Épées", "Mirilione", 30.0, 60.0, typeof(FerIngot), "Lingots", 8, 1044037);
-            index = AddCraft(typeof(Niropie), "Épées", "Niropie", 70.0, 100.0, typeof(FerIngot), "Lingots", 6, 1044037);
+            //index = AddCraft(typeof(Mirilione), "Épées", "Mirilione", 30.0, 60.0, typeof(FerIngot), "Lingots", 8, 1044037);
+            //index = AddCraft(typeof(Niropie), "Épées", "Niropie", 70.0, 100.0, typeof(FerIngot), "Lingots", 6, 1044037);
 
             //Doubles Elfiques
 
-            index = AddCraft(typeof(Zarel), "Épées", "Zarel", 30.0, 60.0, typeof(FerIngot), "Lingots", 6, 1044037);
-            index = AddCraft(typeof(Sefrio), "Épées", "Sefrio", 50.0, 80.0, typeof(FerIngot), "Lingots", 8, 1044037);
-            index = AddCraft(typeof(Ferel), "Épées", "Ferel", 70.0, 100.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Zarel), "Épées", "Zarel", 30.0, 60.0, typeof(FerIngot), "Lingots", 6, 1044037);
+            //index = AddCraft(typeof(Sefrio), "Épées", "Sefrio", 50.0, 80.0, typeof(FerIngot), "Lingots", 8, 1044037);
+            //index = AddCraft(typeof(Ferel), "Épées", "Ferel", 70.0, 100.0, typeof(FerIngot), "Lingots", 10, 1044037);
 
             #endregion
 
@@ -495,12 +495,12 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Viftranche), "Haches", "Viftranche", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
             AddRes(index, typeof(Log), "Bûches d'érable", 4, 1044351);
 
-            index = AddCraft(typeof(Furagne), "Haches", "Furagne", 30.0, 60.0, typeof(FerIngot), "Lingots", 4, 1044037);
+            /*index = AddCraft(typeof(Furagne), "Haches", "Furagne", 30.0, 60.0, typeof(FerIngot), "Lingots", 4, 1044037);
             AddRes(index, typeof(Log), "Bûche", 1, 1044351);
             index = AddCraft(typeof(Duxtranche), "Haches", "Duxtranche", 50.0, 80.0, typeof(FerIngot), "Lingots", 6, 1044037);
             AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
             index = AddCraft(typeof(Biliane), "Haches", "Biliane", 70.0, 100.0, typeof(FerIngot), "Lingots", 6, 1044037);
-            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);
+            AddRes(index, typeof(Log), "Bûches d'érable", 2, 1044351);*/
 
 			#endregion
 

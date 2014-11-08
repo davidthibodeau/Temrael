@@ -65,7 +65,7 @@ namespace Server.Mobiles
             // Pick a random sword
             switch (Utility.Random(3))
             {
-                case 0: AddItem(new Longsword()); break;
+                //case 0: AddItem(new Longsword()); break;
                 case 2: AddItem(new VikingSword()); break;
                 case 1: AddItem(new TwoHandedAxe()); break;
             }

@@ -63,7 +63,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.Fouille, 65, 87);
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));
-            AddItem(new Cutlass());
+            AddItem(new Scimitar());
 
             AddItem(new Shirt(Utility.RandomNeutralHue()));
 

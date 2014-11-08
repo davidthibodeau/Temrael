@@ -28,7 +28,7 @@ namespace Server
 				typeof( WarMace ),				typeof( Bardiche ),				typeof( Halberd ),
 				typeof( Spear ),				typeof( ShortSpear ),			typeof( Pitchfork ),
 				typeof( WarFork ),				typeof( BlackStaff ),			typeof( GnarledStaff ),
-                typeof( QuarterStaff ),			typeof( Cutlass ),              typeof( Longsword ),
+                typeof( QuarterStaff ),			/*typeof( Coutelas ),*/         /*typeof( Longsword ),*/
 				typeof( Scimitar ),				typeof( VikingSword ),			typeof( Pickaxe ),
 				typeof( ButcherKnife ),			typeof( Cleaver ),
 				typeof( Dagger ),				typeof( SkinningKnife ),		typeof( ShepherdsCrook )
@@ -42,17 +42,17 @@ namespace Server
                 typeof( Dravene ),   typeof( Vifcoupe ),   typeof( Draglast ),   typeof( Auderre ),   typeof( Batarde ),
                 typeof( Tranchevil ),   typeof( Ventmore ),   typeof( Excalior ),   typeof( Conquise ),   typeof( Runire ),
                 typeof( Nerfille ),   typeof( Myliron ),   typeof( Nhilarte ),   typeof( Abysse ),   typeof( Atargne ),
-                typeof( Querquoise ),   typeof( Merlame ),   typeof( Dorleane ),   typeof( Couliere ),   typeof( Dawn ),
+                typeof( Querquoise ),   typeof( Merlame ),   typeof( Dorleane ),   typeof( Couliere ),   /*typeof( Dawn ),*/
                 typeof( Lerise ),   typeof( Gerumir ),   typeof( Narvegne ),   typeof( Hectmore ),
 
-                typeof( Sabre ),   typeof( Mersang ),   typeof( Raghash ),   typeof( Prisienne ),   typeof( Cutlass ),
+                typeof( Sabre ),   typeof( Mersang ),   typeof( Raghash ),   typeof( Prisienne ),   /*typeof( Coutelas ),*/
                 typeof( Scimitar ),
 
                 typeof( Rougegorge ),   typeof( Monarque ),   typeof( Claymore ),   typeof( VikingSword ),   typeof( Courbelle ),
                 typeof( Tranchor ),   typeof( Flamberge ),   typeof( Sombrimur ),   typeof( Marquaise ),   typeof( Mortimer ),
                 typeof( Espadon ),   typeof( Zweihander ),   typeof( Morsame ),   typeof( Granlame ),
                 
-                typeof( Mirilione ),   typeof( Niropie ),   typeof( Zarel ),   typeof( Sefrio ),   typeof( Ferel ),
+                //typeof( Mirilione ),   typeof( Niropie ),   typeof( Zarel ),   typeof( Sefrio ),   typeof( Ferel ),
 
                 typeof( Axe ),   typeof( Luminar ),   typeof( Loragne ),   typeof( Montorgne ),   typeof( WarAxe ),
                 typeof( Orcarinia ),   typeof( Minarque ),   typeof( Grochette ),   typeof( Noctame ), 
@@ -60,7 +60,7 @@ namespace Server
                 typeof( Morgrove ),   typeof( Venmar ),   typeof( TwoHandedAxe ),   typeof( LargeBattleAxe ),   typeof( Morgate ),
                 typeof( Tranchecorps ),   typeof( Elvetrine ),   typeof( Viftranche ),
 
-                typeof( Furagne ),   typeof( Duxtranche ),   typeof( Biliane ),
+                //typeof( Furagne ),   typeof( Duxtranche ),   typeof( Biliane ),
 
                 typeof( Dagger ),   typeof( Safrine ),   typeof( Dentsombre ),   typeof( Lozure ),   typeof( Serpentine ),
                 typeof( Brillaume ),   typeof( Dracourbe ),   typeof( Ecorchette ),

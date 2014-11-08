@@ -79,7 +79,7 @@ namespace Server.Mobiles
                 case 3: PackItem(new Tambourine()); break;
             }
 
-            PackItem(new Longsword());
+            //PackItem(new Longsword());
             AddItem(new GrandArc());
             PackItem(new Arrow(100));
             PackGold(10, 50);
