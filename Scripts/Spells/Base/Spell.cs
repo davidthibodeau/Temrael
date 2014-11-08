@@ -422,13 +422,21 @@ namespace Server.Spells
 
 			GetCastSkills( out minSkill, out maxSkill );
 
-            if (Caster is TMobile && Caster.Mounted)
+            if (Caster.Mounted)
             {
-                TMobile pm = (TMobile)Caster;
+                if (!Equitation.CheckEquitation(Caster, EquitationType.Cast))
+                {
+                    return false;
+                }
+            }
 
-                Equitation.CheckEquitation(pm,EquitationType.Cast);
-
-                return true;
+            if (EtouffementSpell.m_Table.Contains(Caster))
+            {
+                if (Utility.Random(100) <= (int)EtouffementSpell.m_Table[Caster])
+                {
+                    Caster.SendMessage("Vous vous étouffez en lancant votre sort !");
+                    return false;
+                }
             }
 
 			return Caster.CheckSkill( CastSkill, minSkill, maxSkill );
