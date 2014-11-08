@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldWoodn.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldWoodn.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldWoodn.force_Requise; } }
-        public override int AosDexBonus { get { return ShldWoodn.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldWoodn.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldWoodn.malus_Dex; } }
 
 		[Constructable]
 		public WoodenShield() : base( 0x1B7A )

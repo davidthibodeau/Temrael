@@ -26,8 +26,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaque.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaque.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaque.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaque.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorPlaque.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaque.malus_Dex; } }
 
 		public override bool AllowMaleWearer{ get{ return false; } }
 

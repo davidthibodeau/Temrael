@@ -12,8 +12,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorFeuilles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorFeuilles.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorFeuilles.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -52,8 +52,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorFeuilles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorFeuilles.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorFeuilles.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -92,8 +92,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorFeuilles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
-        public override int AosDexReq { get { return ArmorFeuilles.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorFeuilles.force_Requise; } }
+        public override int BaseDexReq { get { return ArmorFeuilles.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -132,8 +132,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorFeuilles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorFeuilles.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorFeuilles.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }
@@ -172,8 +172,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorFeuilles.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorFeuilles.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorFeuilles.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorFeuilles.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorFeuilles.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorFeuilles.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Leather; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularWood; } }

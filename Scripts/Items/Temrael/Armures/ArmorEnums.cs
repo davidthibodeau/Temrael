@@ -9,26 +9,6 @@ namespace Server.Items
 		Exceptional
 	}
 
-	public enum ArmorDurabilityLevel
-	{
-		Regular,
-		Durable,
-		Substantial,
-		Massive,
-		Fortified,
-		Indestructible
-	}
-
-	public enum ArmorProtectionLevel
-	{
-		Regular,
-		Defense,
-		Guarding,
-		Hardening,
-		Fortification,
-		Invulnerability,
-	}
-
 	public enum ArmorBodyType
 	{
 		Gorget,

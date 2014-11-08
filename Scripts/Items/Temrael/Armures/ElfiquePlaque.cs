@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaqueElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueElf.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaqueElf.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaqueElf.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorPlaqueElf.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueElf.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -54,8 +54,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaqueElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueElf.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaqueElf.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaqueElf.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorPlaqueElf.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueElf.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -95,8 +95,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaqueElf.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueElf.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaqueElf.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaqueElf.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorPlaqueElf.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueElf.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }

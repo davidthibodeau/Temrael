@@ -127,7 +127,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int HitPoints
+		public int Durability
 		{
 			get{ return m_Hits; }
 			set
@@ -145,7 +145,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int MaxHitPoints
+		public int MaxDurability
 		{
 			get{ return m_MaxHits; }
 			set{ m_MaxHits = value; InvalidateProperties(); }

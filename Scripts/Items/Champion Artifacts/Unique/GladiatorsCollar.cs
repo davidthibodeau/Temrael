@@ -13,8 +13,6 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
 
-		public override bool CanFortify{ get{ return false; } }
-
 		[Constructable]
 		public GladiatorsCollar()
 		{
@@ -22,8 +20,6 @@ namespace Server.Items
 
 			Attributes.BonusHits = 10;
 			Attributes.AttackChance = 10;
-
-			ArmorAttributes.MageArmor = 1;
 		}
 
 		public GladiatorsCollar( Serial serial ) : base( serial )

@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldMetalKite.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldMetalKite.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldMetalKite.force_Requise; } }
-        public override int AosDexBonus { get { return ShldMetalKite.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldMetalKite.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldMetalKite.malus_Dex; } }
 
 		[Constructable]
 		public MetalKiteShield() : base( 0x1B74 )

@@ -13,19 +13,12 @@ namespace Server.Items
 		public override int InitMinHits{ get{ return 150; } }
 		public override int InitMaxHits{ get{ return 150; } }
 
-		public override bool CanFortify{ get{ return false; } }
-
 		[Constructable]
 		public ShroudOfDeciet()
 		{
 			Hue = 0x38F;
 
 			Attributes.RegenHits = 3;
-
-			ArmorAttributes.MageArmor = 1;
-
-			SkillBonuses.Skill_1_Name = SkillName.Concentration;
-			SkillBonuses.Skill_1_Value = 10;
 		}
 
 		public ShroudOfDeciet( Serial serial ) : base( serial )

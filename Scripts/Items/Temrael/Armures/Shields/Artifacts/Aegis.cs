@@ -6,7 +6,6 @@ namespace Server.Items
 	public class Aegis : HeaterShield
 	{
 		public override int LabelNumber{ get{ return 1061602; } } // Ægis
-		public override int ArtifactRarity{ get{ return 11; } }
 
 		public override double BasePhysicalResistance{ get{ return 15; } }
 
@@ -17,7 +16,6 @@ namespace Server.Items
 		public Aegis()
 		{
 			Hue = 0x47E;
-			ArmorAttributes.SelfRepair = 5;
 			Attributes.ReflectPhysical = 15;
 			Attributes.DefendChance = 15;
 			Attributes.LowerManaCost = 8;

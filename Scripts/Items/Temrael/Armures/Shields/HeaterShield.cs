@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldHeater.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldHeater.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldHeater.force_Requise; } }
-        public override int AosDexBonus { get { return ShldHeater.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldHeater.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldHeater.malus_Dex; } }
 
 		[Constructable]
 		public HeaterShield() : base( 0x1B76 )

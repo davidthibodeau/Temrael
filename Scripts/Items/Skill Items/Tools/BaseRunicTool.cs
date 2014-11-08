@@ -356,7 +356,6 @@ namespace Server.Items
 			m_LuckChance = luckChance;
 
 			AosAttributes primary = armor.Attributes;
-			AosArmorAttributes secondary = armor.ArmorAttributes;
 
 			m_Props.SetAll( false );
 
@@ -364,8 +363,6 @@ namespace Server.Items
 			int baseCount = ( isShield ? 7 : 20 );
 			int baseOffset = ( isShield ? 0 : 4 );
 
-			if ( !isShield && armor.MeditationAllowance == ArmorMeditationAllowance.All )
-				m_Props.Set( 3, true ); // remove mage armor from possible properties
 			if ( armor.Resource >= CraftResource.RegularLeather && armor.Resource <= CraftResource.LupusLeather )
 			{
 				m_Props.Set( 0, true ); // remove lower requirements from possible properties for leather armor
@@ -395,24 +392,19 @@ namespace Server.Items
 						break;
 					case  3: ApplyAttribute( primary,	min, max, AosAttribute.CastSpeed,				1, 1 ); break;
 						/* Begin Armor */
-					case  4: ApplyAttribute( secondary,	min, max, AosArmorAttribute.LowerStatReq,		10, 100, 10 ); break;
-					case  5: ApplyAttribute( secondary,	min, max, AosArmorAttribute.SelfRepair,			1, 5 ); break;
-					case  6: ApplyAttribute( secondary,	min, max, AosArmorAttribute.DurabilityBonus,	10, 100, 10 ); break;
-						/* End Shields */
-					case  7: ApplyAttribute( secondary,	min, max, AosArmorAttribute.MageArmor,			1, 1 ); break;
-					case  8: ApplyAttribute( primary,	min, max, AosAttribute.RegenHits,				1, 2 ); break;
-					case  9: ApplyAttribute( primary,	min, max, AosAttribute.RegenStam,				1, 3 ); break;
-					case 10: ApplyAttribute( primary,	min, max, AosAttribute.RegenMana,				1, 2 ); break;
-					case 11: ApplyAttribute( primary,	min, max, AosAttribute.NightSight,				1, 1 ); break;
-					case 12: ApplyAttribute( primary,	min, max, AosAttribute.BonusHits,				1, 5 ); break;
-					case 13: ApplyAttribute( primary,	min, max, AosAttribute.BonusStam,				1, 8 ); break;
-					case 14: ApplyAttribute( primary,	min, max, AosAttribute.BonusMana,				1, 8 ); break;
-					case 15: ApplyAttribute( primary,	min, max, AosAttribute.LowerManaCost,			1, 8 ); break;
-					case 16: ApplyAttribute( primary,	min, max, AosAttribute.LowerRegCost,			1, 20 ); break;
-					case 17: ApplyAttribute( primary,	min, max, AosAttribute.Luck,					1, 100 ); break;
-					case 18: ApplyAttribute( primary,	min, max, AosAttribute.ReflectPhysical,			1, 15 ); break;
-					case 19: ApplyResistance( armor,	min, max, ResistanceType.Physical,				1, 15 ); break;
-					case 20: ApplyResistance( armor,	min, max, ResistanceType.Magie,				1, 15 ); break;
+					case  4: ApplyAttribute( primary,	min, max, AosAttribute.RegenHits,				1, 2 ); break;
+					case  5: ApplyAttribute( primary,	min, max, AosAttribute.RegenStam,				1, 3 ); break;
+					case  6: ApplyAttribute( primary,	min, max, AosAttribute.RegenMana,				1, 2 ); break;
+					case  7: ApplyAttribute( primary,	min, max, AosAttribute.NightSight,				1, 1 ); break;
+					case  8: ApplyAttribute( primary,	min, max, AosAttribute.BonusHits,				1, 5 ); break;
+					case  9: ApplyAttribute( primary,	min, max, AosAttribute.BonusStam,				1, 8 ); break;
+					case 10: ApplyAttribute( primary,	min, max, AosAttribute.BonusMana,				1, 8 ); break;
+					case 11: ApplyAttribute( primary,	min, max, AosAttribute.LowerManaCost,			1, 8 ); break;
+					case 12: ApplyAttribute( primary,	min, max, AosAttribute.LowerRegCost,			1, 20 ); break;
+					case 13: ApplyAttribute( primary,	min, max, AosAttribute.Luck,					1, 100 ); break;
+					case 14: ApplyAttribute( primary,	min, max, AosAttribute.ReflectPhysical,			1, 15 ); break;
+					case 15: ApplyResistance( armor,	min, max, ResistanceType.Physical,				1, 15 ); break;
+					case 16: ApplyResistance( armor,	min, max, ResistanceType.Magie,				    1, 15 ); break;
 					/* End Armor */
 				}
 			}

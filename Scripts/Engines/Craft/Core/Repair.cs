@@ -246,27 +246,27 @@ namespace Server.Engines.Craft
 					{
 						number = 1044275; // The item must be in your backpack to repair it.
 					}
-					else if ( weapon.MaxHitPoints <= 0 || weapon.HitPoints == weapon.MaxHitPoints )
+					else if ( weapon.MaxDurability <= 0 || weapon.Durability == weapon.MaxDurability )
 					{
 						number = 1044281; // That item is in full repair
 					}
-					else if ( weapon.MaxHitPoints <= toWeaken )
+					else if ( weapon.MaxDurability <= toWeaken )
 					{
 						number = 1044278; // That item has been repaired many times, and will break if repairs are attempted again.
 					}
 					else
 					{
-						if ( CheckWeaken( from, skill, weapon.HitPoints, weapon.MaxHitPoints ) )
+						if ( CheckWeaken( from, skill, weapon.Durability, weapon.MaxDurability ) )
 						{
-							weapon.MaxHitPoints -= toWeaken;
-							weapon.HitPoints = Math.Max( 0, weapon.HitPoints - toWeaken );
+							weapon.MaxDurability -= toWeaken;
+							weapon.Durability = Math.Max( 0, weapon.Durability - toWeaken );
 						}
 
-						if ( CheckRepairDifficulty( from, skill, weapon.HitPoints, weapon.MaxHitPoints ) )
+						if ( CheckRepairDifficulty( from, skill, weapon.Durability, weapon.MaxDurability ) )
 						{
 							number = 1044279; // You repair the item.
 							m_CraftSystem.PlayCraftEffect( from );
-							weapon.HitPoints = weapon.MaxHitPoints;
+							weapon.Durability = weapon.MaxDurability;
 						}
 						else
 						{
@@ -307,27 +307,27 @@ namespace Server.Engines.Craft
 					{
 						number = 1044275; // The item must be in your backpack to repair it.
 					}
-					else if ( armor.MaxHitPoints <= 0 || armor.HitPoints == armor.MaxHitPoints )
+					else if ( armor.MaxDurability <= 0 || armor.Durability == armor.MaxDurability )
 					{
 						number = 1044281; // That item is in full repair
 					}
-					else if ( armor.MaxHitPoints <= toWeaken )
+					else if ( armor.MaxDurability <= toWeaken )
 					{
 						number = 1044278; // That item has been repaired many times, and will break if repairs are attempted again.
 					}
 					else
 					{
-						if ( CheckWeaken( from, skill, armor.HitPoints, armor.MaxHitPoints ) )
+						if ( CheckWeaken( from, skill, armor.Durability, armor.MaxDurability ) )
 						{
-							armor.MaxHitPoints -= toWeaken;
-							armor.HitPoints = Math.Max( 0, armor.HitPoints - toWeaken );
+							armor.MaxDurability -= toWeaken;
+							armor.Durability = Math.Max( 0, armor.Durability - toWeaken );
 						}
 
-						if ( CheckRepairDifficulty( from, skill, armor.HitPoints, armor.MaxHitPoints ) )
+						if ( CheckRepairDifficulty( from, skill, armor.Durability, armor.MaxDurability ) )
 						{
 							number = 1044279; // You repair the item.
 							m_CraftSystem.PlayCraftEffect( from );
-							armor.HitPoints = armor.MaxHitPoints;
+							armor.Durability = armor.MaxDurability;
 						}
 						else
 						{
@@ -368,27 +368,27 @@ namespace Server.Engines.Craft
 					{
 						number = 1044275; // The item must be in your backpack to repair it.
 					}
-					else if ( clothing.MaxHitPoints <= 0 || clothing.HitPoints == clothing.MaxHitPoints )
+					else if ( clothing.MaxDurability <= 0 || clothing.Durability == clothing.MaxDurability )
 					{
 						number = 1044281; // That item is in full repair
 					}
-					else if ( clothing.MaxHitPoints <= toWeaken )
+					else if ( clothing.MaxDurability <= toWeaken )
 					{
 						number = 1044278; // That item has been repaired many times, and will break if repairs are attempted again.
 					}
 					else
 					{
-						if ( CheckWeaken( from, skill, clothing.HitPoints, clothing.MaxHitPoints ) )
+						if ( CheckWeaken( from, skill, clothing.Durability, clothing.MaxDurability ) )
 						{
-							clothing.MaxHitPoints -= toWeaken;
-							clothing.HitPoints = Math.Max( 0, clothing.HitPoints - toWeaken );
+							clothing.MaxDurability -= toWeaken;
+							clothing.Durability = Math.Max( 0, clothing.Durability - toWeaken );
 						}
 
-						if ( CheckRepairDifficulty( from, skill, clothing.HitPoints, clothing.MaxHitPoints ) )
+						if ( CheckRepairDifficulty( from, skill, clothing.Durability, clothing.MaxDurability ) )
 						{
 							number = 1044279; // You repair the item.
 							m_CraftSystem.PlayCraftEffect( from );
-							clothing.HitPoints = clothing.MaxHitPoints;
+							clothing.Durability = clothing.MaxDurability;
 						}
 						else
 						{

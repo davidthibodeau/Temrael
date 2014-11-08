@@ -459,23 +459,6 @@ namespace Server.Items
                                         break;
                                 }
                                 break;
-                            case ItemAttributes.SkillsAttributes:
-                                item.SkillBonuses.SetValues(0, (SkillName)rand.Next(0, 52), (double)scale);
-                                break;
-                            case ItemAttributes.ItemAttributes:
-                                switch (rand.Next(0, 2))
-                                {
-                                    case 0:
-                                        item.ArmorAttributes.SetValue(0x00000001, (int)(Crafter.Skills.Fignolage.Fixed / 10));
-                                        break;
-                                    case 1:
-                                        item.ArmorAttributes.SetValue(0x00000002, (int)(Crafter.Skills.Fignolage.Fixed / 10));
-                                        break;
-                                    case 2:
-                                        item.ArmorAttributes.SetValue(0x00000008, (int)(Crafter.Skills.Fignolage.Fixed / 10));
-                                        break;
-                                }
-                                break;
                         }
                     }
                     repeat--;

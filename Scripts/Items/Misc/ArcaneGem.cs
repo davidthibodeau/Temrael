@@ -135,7 +135,7 @@ namespace Server.Items
 						{
 							((BaseArmor)item).Quality = ArmorQuality.Regular;
 							((BaseArmor)item).Crafter = from;
-							((BaseArmor)item).PhysicalBonus = ((BaseArmor)item).ContondantBonus = ((BaseArmor)item).TranchantBonus = ((BaseArmor)item).PerforantBonus = ((BaseArmor)item).MagieBonus = 0; // Is there a method to remove bonuses?
+							((BaseArmor)item).PhysicalBonus = ((BaseArmor)item).MagieBonus = 0; // Is there a method to remove bonuses?
 						}
 						else if ( item is BaseWeapon ) // Sanity, weapons cannot recieve gems...
 						{

@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorBone.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBone.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorBone.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorBone.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorBone.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorBone.malus_Dex; } }
 
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Bone; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularBones; } }

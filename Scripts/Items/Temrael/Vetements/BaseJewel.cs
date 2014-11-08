@@ -24,8 +24,8 @@ namespace Server.Items
 
 	public abstract class BaseJewel : BaseWearable, ICraftable
 	{
-        private int m_MaxHitPoints;
-        private int m_HitPoints;
+        private int m_MaxDurability;
+        private int m_Durability;
 		private AosAttributes m_AosAttributes;
 		private AosSkillBonuses m_AosSkillBonuses;
 		private CraftResource m_Resource;
@@ -33,29 +33,29 @@ namespace Server.Items
 
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int MaxHitPoints
+		public int MaxDurability
 		{
-			get{ return m_MaxHitPoints; }
-			set{ m_MaxHitPoints = value; InvalidateProperties(); }
+			get{ return m_MaxDurability; }
+			set{ m_MaxDurability = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int HitPoints
+		public int Durability
 		{
 			get 
 			{
-				return m_HitPoints;
+				return m_Durability;
 			}
 			set 
 			{
-				if ( value != m_HitPoints && MaxHitPoints > 0 )
+				if ( value != m_Durability && MaxDurability > 0 )
 				{
-					m_HitPoints = value;
+					m_Durability = value;
 
-					if ( m_HitPoints < 0 )
+					if ( m_Durability < 0 )
 						Delete();
-					else if ( m_HitPoints > MaxHitPoints )
-						m_HitPoints = MaxHitPoints;
+					else if ( m_Durability > MaxDurability )
+						m_Durability = MaxDurability;
 
 					InvalidateProperties();
 				}
@@ -128,7 +128,7 @@ namespace Server.Items
 
 			Layer = layer;
 
-			m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax( InitMinHits, InitMaxHits );
+			m_Durability = m_MaxDurability = Utility.RandomMinMax( InitMinHits, InitMaxHits );
 		}
 
 		public override void OnAdded(IEntity parent)
@@ -312,8 +312,8 @@ namespace Server.Items
 
                 AddARProperties(list, couleur);
 
-                if (m_HitPoints >= 0 && m_MaxHitPoints > 0)
-                    list.Add(1060639, "{0}\t{1}\t{2}", couleur, m_HitPoints, m_MaxHitPoints); // durability ~1_val~ / ~2_val~
+                if (m_Durability >= 0 && m_MaxDurability > 0)
+                    list.Add(1060639, "{0}\t{1}\t{2}", couleur, m_Durability, m_MaxDurability); // durability ~1_val~ / ~2_val~
             }
             else
             {
@@ -347,8 +347,8 @@ namespace Server.Items
 
             writer.Write((int)0); // version
 
-			writer.WriteEncodedInt( (int) m_MaxHitPoints );
-			writer.WriteEncodedInt( (int) m_HitPoints );
+			writer.WriteEncodedInt( (int) m_MaxDurability );
+			writer.WriteEncodedInt( (int) m_Durability );
 
 			writer.WriteEncodedInt( (int) m_Resource );
 			writer.WriteEncodedInt( (int) m_GemType );
@@ -363,8 +363,8 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            m_MaxHitPoints = reader.ReadEncodedInt();
-            m_HitPoints = reader.ReadEncodedInt();
+            m_MaxDurability = reader.ReadEncodedInt();
+            m_Durability = reader.ReadEncodedInt();
 
             m_Resource = (CraftResource)reader.ReadEncodedInt();
             m_GemType = (GemType)reader.ReadEncodedInt();

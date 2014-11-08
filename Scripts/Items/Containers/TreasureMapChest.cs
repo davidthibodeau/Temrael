@@ -229,11 +229,6 @@ namespace Server.Items
 
 							BaseRunicTool.ApplyAttributesTo( armor, attributeCount, min, max );
 						}
-						else
-						{
-							armor.ProtectionLevel = (ArmorProtectionLevel)Utility.Random( 6 );
-							armor.Durability = (ArmorDurabilityLevel)Utility.Random( 6 );
-						}
 
 						cont.DropItem( item );
 					}

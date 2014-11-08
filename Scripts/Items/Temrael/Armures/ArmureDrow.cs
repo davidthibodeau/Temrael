@@ -25,8 +25,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorChainNoir.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorChainNoir.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -78,8 +78,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorChainNoir.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorChainNoir.malus_Dex; } }
         
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -131,8 +131,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorChainNoir.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorChainNoir.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -184,8 +184,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorChainNoir.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorChainNoir.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -237,8 +237,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorChainNoir.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorChainNoir.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorChainNoir.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorChainNoir.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Ringmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }

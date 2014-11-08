@@ -13,13 +13,11 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorLeather.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorLeather.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorLeather.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorLeather.malus_Dex; } }
 
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Leather; } }
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
-
-		public override ArmorMeditationAllowance DefMedAllowance{ get{ return ArmorMeditationAllowance.All; } }
 
 		[Constructable]
 		public LeatherArms() : base( 0x13CD )

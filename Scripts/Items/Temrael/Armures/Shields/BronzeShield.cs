@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldBronze.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldBronze.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldBronze.force_Requise; } }
-        public override int AosDexBonus { get { return ShldBronze.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldBronze.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldBronze.malus_Dex; } }
 
 		[Constructable]
 		public BronzeShield() : base( 0x1B72 )

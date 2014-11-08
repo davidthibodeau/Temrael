@@ -19,8 +19,6 @@ namespace Server.Items
 			Hue = 0x501;
 			Attributes.Luck = 95;
 			Attributes.DefendChance = 15;
-			ArmorAttributes.LowerStatReq = 100;
-			ArmorAttributes.MageArmor = 1;
 		}
 
 		public HeartOfTheLion( Serial serial ) : base( serial )

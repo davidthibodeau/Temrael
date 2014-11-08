@@ -4176,9 +4176,6 @@ namespace Server.Mobiles
 				if ( armor == null )
 					return false;
 
-				armor.ProtectionLevel = (ArmorProtectionLevel)RandomMinMaxScaled( minLevel, maxLevel );
-				armor.Durability = (ArmorDurabilityLevel)RandomMinMaxScaled( minLevel, maxLevel );
-
 				PackItem( armor );
 			}
 

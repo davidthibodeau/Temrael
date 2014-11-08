@@ -20,8 +20,6 @@ namespace Server.Items
 		{
 			Attributes.BonusHits = 6;
 			Attributes.DefendChance = 20;
-
-			ArmorAttributes.MageArmor = 1;
 		}
 
 

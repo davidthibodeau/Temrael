@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorRingmail.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorRingmail.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorRingmail.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorRingmail.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorRingmail.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorRingmail.malus_Dex; } }
 
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Plate; } }
 

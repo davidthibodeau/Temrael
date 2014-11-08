@@ -34,8 +34,6 @@ namespace Server.Mobiles
 
 				price += 100 * (int)armor.Durability;
 
-				price += 100 * (int)armor.ProtectionLevel;
-
 				if ( price < 1 )
 					price = 1;
 			}

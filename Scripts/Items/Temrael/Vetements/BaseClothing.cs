@@ -27,8 +27,8 @@ namespace Server.Items
 	{
 		public virtual bool CanFortify{ get{ return true; } }
 
-		private int m_MaxHitPoints;
-		private int m_HitPoints;
+		private int m_MaxDurability;
+		private int m_Durability;
 		private Mobile m_Crafter;
         private string m_CrafterName;
 		private ClothingQuality m_Quality;
@@ -52,29 +52,29 @@ namespace Server.Items
         }
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int MaxHitPoints
+		public int MaxDurability
 		{
-			get{ return m_MaxHitPoints; }
-			set{ m_MaxHitPoints = value; InvalidateProperties(); }
+			get{ return m_MaxDurability; }
+			set{ m_MaxDurability = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int HitPoints
+		public int Durability
 		{
 			get 
 			{
-				return m_HitPoints;
+				return m_Durability;
 			}
 			set 
 			{
-				if ( value != m_HitPoints && MaxHitPoints > 0 )
+				if ( value != m_Durability && MaxDurability > 0 )
 				{
-					m_HitPoints = value;
+					m_Durability = value;
 
-					if ( m_HitPoints < 0 )
+					if ( m_Durability < 0 )
 						Delete();
-					else if ( m_HitPoints > MaxHitPoints )
-						m_HitPoints = MaxHitPoints;
+					else if ( m_Durability > MaxDurability )
+						m_Durability = MaxDurability;
 
 					InvalidateProperties();
 				}
@@ -98,7 +98,7 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int StrRequirement
 		{
-			get{ return ( m_StrReq == -1 ? (Core.AOS ? AosStrReq : OldStrReq) : m_StrReq ); }
+			get{ return ( m_StrReq == -1 ? (Core.AOS ? BaseStrReq : OldStrReq) : m_StrReq ); }
 			set{ m_StrReq = value; InvalidateProperties(); }
 		}
 
@@ -185,7 +185,7 @@ namespace Server.Items
 			return base.CanEquip( from );
 		}
 
-		public virtual int AosStrReq{ get{ return 10; } }
+		public virtual int BaseStrReq{ get{ return 10; } }
 		public virtual int OldStrReq{ get{ return 0; } }
 
 		public virtual int InitMinHits{ get{ return 0; } }
@@ -308,7 +308,7 @@ namespace Server.Items
 			{
 				if ( Core.AOS && m_AosClothingAttributes.SelfRepair > Utility.Random( 10 ) )
 				{
-					HitPoints += 2;
+					Durability += 2;
 				}
 				else
 				{
@@ -319,24 +319,24 @@ namespace Server.Items
 					else
 						wear = Utility.Random( 2 );
 
-					if ( wear > 0 && m_MaxHitPoints > 0 )
+					if ( wear > 0 && m_MaxDurability > 0 )
 					{
-						if ( m_HitPoints >= wear )
+						if ( m_Durability >= wear )
 						{
-							HitPoints -= wear;
+							Durability -= wear;
 							wear = 0;
 						}
 						else
 						{
-							wear -= HitPoints;
-							HitPoints = 0;
+							wear -= Durability;
+							Durability = 0;
 						}
 
 						if ( wear > 0 )
 						{
-							if ( m_MaxHitPoints > wear )
+							if ( m_MaxDurability > wear )
 							{
-								MaxHitPoints -= wear;
+								MaxDurability -= wear;
 
 								if ( Parent is Mobile )
 									((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
@@ -365,7 +365,7 @@ namespace Server.Items
 			m_Resource = DefaultResource;
 			m_Quality = ClothingQuality.Regular;
 
-			m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax( InitMinHits, InitMaxHits );
+			m_Durability = m_MaxDurability = Utility.RandomMinMax( InitMinHits, InitMaxHits );
 
 			m_AosAttributes = new AosAttributes( this );
 			m_AosClothingAttributes = new AosArmorAttributes( this );
@@ -400,8 +400,8 @@ namespace Server.Items
 		{
 			int scale = 100 + m_AosClothingAttributes.DurabilityBonus;
 
-			m_HitPoints = ( ( m_HitPoints * 100 ) + ( scale - 1 ) ) / scale;
-			m_MaxHitPoints = ( ( m_MaxHitPoints * 100 ) + ( scale - 1 ) ) / scale;
+			m_Durability = ( ( m_Durability * 100 ) + ( scale - 1 ) ) / scale;
+			m_MaxDurability = ( ( m_MaxDurability * 100 ) + ( scale - 1 ) ) / scale;
 
 			InvalidateProperties();
 		}
@@ -410,8 +410,8 @@ namespace Server.Items
 		{
 			int scale = 100 + m_AosClothingAttributes.DurabilityBonus;
 
-			m_HitPoints = ( ( m_HitPoints * scale ) + 99 ) / 100;
-			m_MaxHitPoints = ( ( m_MaxHitPoints * scale ) + 99 ) / 100;
+			m_Durability = ( ( m_Durability * scale ) + 99 ) / 100;
+			m_MaxDurability = ( ( m_MaxDurability * scale ) + 99 ) / 100;
 
 			InvalidateProperties();
 		}
@@ -621,8 +621,8 @@ namespace Server.Items
                 if ((prop = m_AosClothingAttributes.DurabilityBonus) > 0)
                     list.Add(1060410, "{0}\t{1}", couleur, prop.ToString()); // durability ~1_val~%
 
-                if (m_HitPoints >= 0 && m_MaxHitPoints > 0)
-                    list.Add(1060639, "{0}t{1}t{2}", couleur, m_HitPoints, m_MaxHitPoints); // durability ~1_val~ / ~2_val~
+                if (m_Durability >= 0 && m_MaxDurability > 0)
+                    list.Add(1060639, "{0}t{1}t{2}", couleur, m_Durability, m_MaxDurability); // durability ~1_val~ / ~2_val~
             }
             else
             {
@@ -716,8 +716,8 @@ namespace Server.Items
 			ClothingAttributes	= 0x00000004,
 			SkillBonuses		= 0x00000008,
 			Resistances			= 0x00000010,
-			MaxHitPoints		= 0x00000020,
-			HitPoints			= 0x00000040,
+			MaxDurability		= 0x00000020,
+			Durability			= 0x00000040,
 			PlayerConstructed	= 0x00000080,
 			Crafter				= 0x00000100,
 			Quality				= 0x00000200,
@@ -740,8 +740,8 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Attributes,		!m_AosAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.ClothingAttributes,!m_AosClothingAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.MaxHitPoints,		m_MaxHitPoints != 0 );
-			SetSaveFlag( ref flags, SaveFlag.HitPoints,			m_HitPoints != 0 );
+			SetSaveFlag( ref flags, SaveFlag.MaxDurability,		m_MaxDurability != 0 );
+			SetSaveFlag( ref flags, SaveFlag.Durability,			m_Durability != 0 );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed,	m_PlayerConstructed != false );
 			SetSaveFlag( ref flags, SaveFlag.Crafter,			m_Crafter != null );
             SetSaveFlag( ref flags, SaveFlag.CrafterName,       m_CrafterName != null);
@@ -763,11 +763,11 @@ namespace Server.Items
 			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
 				m_AosSkillBonuses.Serialize( writer );
 
-			if ( GetSaveFlag( flags, SaveFlag.MaxHitPoints ) )
-				writer.WriteEncodedInt( (int) m_MaxHitPoints );
+			if ( GetSaveFlag( flags, SaveFlag.MaxDurability ) )
+				writer.WriteEncodedInt( (int) m_MaxDurability );
 
-			if ( GetSaveFlag( flags, SaveFlag.HitPoints ) )
-				writer.WriteEncodedInt( (int) m_HitPoints );
+			if ( GetSaveFlag( flags, SaveFlag.Durability ) )
+				writer.WriteEncodedInt( (int) m_Durability );
 
 			if ( GetSaveFlag( flags, SaveFlag.Crafter ) )
 				writer.Write( (Mobile) m_Crafter );
@@ -818,11 +818,11 @@ namespace Server.Items
             else
                 m_AosSkillBonuses = new AosSkillBonuses(this);
 
-            if (GetSaveFlag(flags, SaveFlag.MaxHitPoints))
-                m_MaxHitPoints = reader.ReadEncodedInt();
+            if (GetSaveFlag(flags, SaveFlag.MaxDurability))
+                m_MaxDurability = reader.ReadEncodedInt();
 
-            if (GetSaveFlag(flags, SaveFlag.HitPoints))
-                m_HitPoints = reader.ReadEncodedInt();
+            if (GetSaveFlag(flags, SaveFlag.Durability))
+                m_Durability = reader.ReadEncodedInt();
 
             if (GetSaveFlag(flags, SaveFlag.Crafter))
                 m_Crafter = reader.ReadMobile();
@@ -843,8 +843,8 @@ namespace Server.Items
             if (GetSaveFlag(flags, SaveFlag.PlayerConstructed))
                 m_PlayerConstructed = true;
 
-            if (m_MaxHitPoints == 0 && m_HitPoints == 0)
-                m_HitPoints = m_MaxHitPoints = Utility.RandomMinMax(InitMinHits, InitMaxHits);
+            if (m_MaxDurability == 0 && m_Durability == 0)
+                m_Durability = m_MaxDurability = Utility.RandomMinMax(InitMinHits, InitMaxHits);
 
             Mobile parent = Parent as Mobile;
 

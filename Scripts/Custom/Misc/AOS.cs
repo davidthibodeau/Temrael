@@ -639,14 +639,7 @@ namespace Server
             {
                 Item obj = items[i];
 
-                if (obj is BaseArmor)
-                {
-                    AosArmorAttributes attrs = ((BaseArmor)obj).ArmorAttributes;
-
-                    if (attrs != null)
-                        value += attrs[attribute];
-                }
-                else if (obj is BaseClothing)
+                if (obj is BaseClothing)
                 {
                     AosArmorAttributes attrs = ((BaseClothing)obj).ClothingAttributes;
 

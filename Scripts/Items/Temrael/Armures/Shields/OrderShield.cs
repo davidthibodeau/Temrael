@@ -14,8 +14,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldOrder.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldOrder.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldOrder.force_Requise; } }
-        public override int AosDexBonus { get { return ShldOrder.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldOrder.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldOrder.malus_Dex; } }
 
 		[Constructable]
 		public OrderShield() : base( 0x1BC4 )

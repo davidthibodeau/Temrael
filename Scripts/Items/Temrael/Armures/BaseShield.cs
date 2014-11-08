@@ -41,51 +41,44 @@ namespace Server.Items
 		{
 			if( Core.AOS )
 			{
-				if( ArmorAttributes.SelfRepair > Utility.Random( 10 ) )
-				{
-					HitPoints += 2;
-				}
+                double halfArmor = ResistanceBonus(BasePhysicalResistance) / 2.0;
+				int absorbed = (int)(halfArmor + (halfArmor*Utility.RandomDouble()));
+
+				if( absorbed < 2 )
+					absorbed = 2;
+
+				int wear;
+
+				if( weapon.Type == WeaponType.Bashing )
+					wear = (absorbed / 2);
 				else
+					wear = Utility.Random( 2 );
+
+				if( wear > 0 && MaxDurability > 0 )
 				{
-                    double halfArmor = ResistanceBonus(BasePhysicalResistance) / 2.0;
-					int absorbed = (int)(halfArmor + (halfArmor*Utility.RandomDouble()));
-
-					if( absorbed < 2 )
-						absorbed = 2;
-
-					int wear;
-
-					if( weapon.Type == WeaponType.Bashing )
-						wear = (absorbed / 2);
-					else
-						wear = Utility.Random( 2 );
-
-					if( wear > 0 && MaxHitPoints > 0 )
+					if( Durability >= wear )
 					{
-						if( HitPoints >= wear )
+						Durability -= wear;
+						wear = 0;
+					}
+					else
+					{
+						wear -= Durability;
+						Durability = 0;
+					}
+
+					if( wear > 0 )
+					{
+						if( MaxDurability > wear )
 						{
-							HitPoints -= wear;
-							wear = 0;
+							MaxDurability -= wear;
+
+							if( Parent is Mobile )
+								((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
 						}
 						else
 						{
-							wear -= HitPoints;
-							HitPoints = 0;
-						}
-
-						if( wear > 0 )
-						{
-							if( MaxHitPoints > wear )
-							{
-								MaxHitPoints -= wear;
-
-								if( Parent is Mobile )
-									((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
-							}
-							else
-							{
-								Delete();
-							}
+							Delete();
 						}
 					}
 				}
@@ -124,40 +117,33 @@ namespace Server.Items
 
 					if( 25 > Utility.Random( 100 ) ) // 25% chance to lower durability
 					{
-						if( Core.AOS && ArmorAttributes.SelfRepair > Utility.Random( 10 ) )
-						{
-							HitPoints += 2;
-						}
-						else
-						{
-							int wear = Utility.Random( 2 );
+						int wear = Utility.Random( 2 );
 
-							if( wear > 0 && MaxHitPoints > 0 )
+						if( wear > 0 && MaxDurability > 0 )
+						{
+							if( Durability >= wear )
 							{
-								if( HitPoints >= wear )
+								Durability -= wear;
+								wear = 0;
+							}
+							else
+							{
+								wear -= Durability;
+								Durability = 0;
+							}
+
+							if( wear > 0 )
+							{
+								if( MaxDurability > wear )
 								{
-									HitPoints -= wear;
-									wear = 0;
+									MaxDurability -= wear;
+
+									if( Parent is Mobile )
+										((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
 								}
 								else
 								{
-									wear -= HitPoints;
-									HitPoints = 0;
-								}
-
-								if( wear > 0 )
-								{
-									if( MaxHitPoints > wear )
-									{
-										MaxHitPoints -= wear;
-
-										if( Parent is Mobile )
-											((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
-									}
-									else
-									{
-										Delete();
-									}
+									Delete();
 								}
 							}
 						}

@@ -99,23 +99,7 @@ namespace Server.Misc
 
 		private static double GetArmorMeditationValue( BaseArmor ar )
 		{
-            try
-            {
-                if (ar == null || ar.ArmorAttributes.MageArmor != 0 || ar.Attributes.SpellChanneling != 0)
-                    return 0.0;
-
-                switch (ar.MeditationAllowance)
-                {
-                    default:
-                    case ArmorMeditationAllowance.None: return 2.0; //return ar.BaseArmorRatingScaled;
-                    case ArmorMeditationAllowance.Half: return 1.0; //return ar.BaseArmorRatingScaled / 2.0;
-                    case ArmorMeditationAllowance.All: return 0.0;
-                }
-            }
-            catch
-            {
-                return 0.0;
-            }
+            return 0; // Mettre ici bonus ou malus sur le regénération dépendant du type d'armure.
 		}
 	}
 }

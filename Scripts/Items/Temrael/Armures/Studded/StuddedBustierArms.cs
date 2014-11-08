@@ -13,13 +13,11 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorStudded.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorStudded.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorStudded.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorStudded.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorStudded.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorStudded.malus_Dex; } }
 
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Studded; } }
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
-
-        public override ArmorMeditationAllowance DefMedAllowance { get { return ArmorMeditationAllowance.All; } }
 
 		public override bool AllowMaleWearer{ get{ return false; } }
 

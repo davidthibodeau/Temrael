@@ -15,8 +15,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldDecorer.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldDecorer.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldDecorer.force_Requise; } }
-        public override int AosDexBonus { get { return ShldDecorer.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldDecorer.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldDecorer.malus_Dex; } }
 
         [Constructable]
         public BouclierDecorer()
@@ -54,8 +54,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldElfique.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldElfique.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldElfique.force_Requise; } }
-        public override int AosDexBonus { get { return ShldElfique.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldElfique.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldElfique.malus_Dex; } }
 
         [Constructable]
         public BouclierElfique()
@@ -94,8 +94,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldCuir.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldCuir.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldCuir.force_Requise; } }
-        public override int AosDexBonus { get { return ShldCuir.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldCuir.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldCuir.malus_Dex; } }
 
         [Constructable]
         public BouclierCuir()
@@ -134,8 +134,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldNordique.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldNordique.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldNordique.force_Requise; } }
-        public override int AosDexBonus { get { return ShldNordique.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldNordique.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldNordique.malus_Dex; } }
 
         [Constructable]
         public BouclierNordique()
@@ -174,8 +174,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldChevalier.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldChevalier.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldChevalier.force_Requise; } }
-        public override int AosDexBonus { get { return ShldChevalier.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldChevalier.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldChevalier.malus_Dex; } }
 
         [Constructable]
         public BouclierChevaleresque()
@@ -214,8 +214,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldVieux.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldVieux.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldVieux.force_Requise; } }
-        public override int AosDexBonus { get { return ShldVieux.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldVieux.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldVieux.malus_Dex; } }
 
         [Constructable]
         public BouclierVieux()
@@ -254,8 +254,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldComte.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldComte.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldComte.force_Requise; } }
-        public override int AosDexBonus { get { return ShldComte.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldComte.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldComte.malus_Dex; } }
 
         [Constructable]
         public BouclierComte()
@@ -294,8 +294,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldMarquis.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldMarquis.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldMarquis.force_Requise; } }
-        public override int AosDexBonus { get { return ShldMarquis.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldMarquis.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldMarquis.malus_Dex; } }
 
         [Constructable]
         public BouclierMarquis()
@@ -334,8 +334,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldDuc.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldDuc.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldDuc.force_Requise; } }
-        public override int AosDexBonus { get { return ShldDuc.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldDuc.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldDuc.malus_Dex; } }
 
         [Constructable]
         public BouclierDuc()
@@ -374,8 +374,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldPavoisBlk.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldPavoisBlk.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldPavoisBlk.force_Requise; } }
-        public override int AosDexBonus { get { return ShldPavoisBlk.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldPavoisBlk.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldPavoisBlk.malus_Dex; } }
 
         [Constructable]
         public BouclierPavoisNoir()
@@ -414,8 +414,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldGarde.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldGarde.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldGarde.force_Requise; } }
-        public override int AosDexBonus { get { return ShldGarde.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldGarde.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldGarde.malus_Dex; } }
 
         [Constructable]
         public BouclierGarde()

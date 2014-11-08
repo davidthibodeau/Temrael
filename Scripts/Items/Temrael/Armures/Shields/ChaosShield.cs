@@ -14,8 +14,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldChaos. min_Durabilite; } }
         public override int InitMaxHits { get { return ShldChaos.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldChaos.force_Requise; } }
-        public override int AosDexBonus { get { return ShldChaos.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldChaos.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldChaos.malus_Dex; } }
 
 		[Constructable]
 		public ChaosShield() : base( 0x1BC3 )

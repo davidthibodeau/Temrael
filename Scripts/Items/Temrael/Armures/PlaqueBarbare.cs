@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex ; } }
+        public override int BaseStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueBarb.malus_Dex ; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -54,8 +54,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -95,8 +95,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -136,8 +136,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorPlaqueBarb.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueBarb.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorPlaqueBarb.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueBarb.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }

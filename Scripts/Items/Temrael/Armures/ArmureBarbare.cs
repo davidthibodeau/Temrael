@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorBarbare.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBarbare.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorBarbare.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorBarbare.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorBarbare.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorBarbare.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Studded; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularLeather; } }
@@ -54,8 +54,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorBarbare.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBarbare.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorBarbare.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorBarbare.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorBarbare.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorBarbare.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Studded; } }
         public override CraftResource DefaultResource { get { return CraftResource.RegularLeather; } }

@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldBuckler.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldBuckler.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldBuckler.force_Requise; } }
-        public override int AosDexBonus { get { return ShldBuckler.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldBuckler.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldBuckler.malus_Dex; } }
 
 		[Constructable]
 		public Buckler() : base( 0x1B73 )

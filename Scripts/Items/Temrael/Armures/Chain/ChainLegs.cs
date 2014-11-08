@@ -14,8 +14,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorChain.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChain.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorChain.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorChain.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorChain.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorChain.malus_Dex; } }
 
 		public override ArmorMaterialType MaterialType{ get{ return ArmorMaterialType.Chainmail; } }
 

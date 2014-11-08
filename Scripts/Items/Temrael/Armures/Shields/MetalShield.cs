@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ShldMetal.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldMetal.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ShldMetal.force_Requise; } }
-        public override int AosDexBonus { get { return ShldMetal.malus_Dex; } }
+        public override int BaseStrReq { get { return ShldMetal.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldMetal.malus_Dex; } }
 
 		[Constructable]
 		public MetalShield() : base( 0x1B7B )

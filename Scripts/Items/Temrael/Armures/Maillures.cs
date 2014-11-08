@@ -13,8 +13,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillures.min_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorMaillures.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorMaillures.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorMaillures.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorMaillures.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Chainmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -57,8 +57,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillures.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorMaillures.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorMaillures.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorMaillures.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorMaillures.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Chainmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
@@ -98,8 +98,8 @@ namespace Server.Items
         public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillures.max_Durabilite; } }
 
-        public override int AosStrReq { get { return ArmorMaillures.force_Requise; } }
-        public override int AosDexBonus { get { return ArmorMaillures.malus_Dex; } }
+        public override int BaseStrReq { get { return ArmorMaillures.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorMaillures.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Chainmail; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
