@@ -876,6 +876,9 @@ namespace Server.Mobiles
 		public virtual bool StatLossAfterTame{ get{ return SubdueBeforeTame; } }
 		public virtual bool ReduceSpeedWithDamage{ get{ return true; } }
 		public virtual bool IsSubdued{ get{ return SubdueBeforeTame && ( Hits < ( HitsMax / 10 ) ); } }
+       
+        [CommandProperty(AccessLevel.Batisseur)]
+        public virtual bool PlayersAreEnemies { get; set; }
 
 		public virtual bool Commandable{ get{ return true; } }
 
@@ -1204,6 +1207,9 @@ namespace Server.Mobiles
 			if ( GetFactionAllegiance( m ) == Allegiance.Ally )
 				return false;
 
+            if (m.Player && PlayersAreEnemies)
+                return true;
+
 			BaseCreature c = m as BaseCreature;
 
             if (c != null)
@@ -1504,7 +1510,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( m_HitsMax > 0 ) {
+				if ( m_HitsMax > -1 ) {
 					int value = m_HitsMax + GetStatOffset( StatType.Str );
 
 					if( value < 1 )
@@ -1531,7 +1537,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( m_StamMax > 0 ) {
+				if ( m_StamMax > -1 ) {
 					int value = m_StamMax + GetStatOffset( StatType.Dex );
 
 					if( value < 1 )
@@ -1558,7 +1564,7 @@ namespace Server.Mobiles
 		{
 			get
 			{
-				if ( m_ManaMax > 0 ) {
+				if ( m_ManaMax > -1 ) {
 					int value = m_ManaMax + GetStatOffset( StatType.Int );
 
 					if( value < 1 )
