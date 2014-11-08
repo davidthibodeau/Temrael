@@ -117,6 +117,7 @@
     <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureModif.cs" />
     <Compile Include="Items\Temrael\Armures\ArmorEnums.cs" />
     <Compile Include="Engines\Races\Race.cs" />
+    <Compile Include="Mobiles\Monsters\TestMonstre.cs" />
     <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Spells\2XX.Immuabilite\05.Etouffement.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />
@@ -522,41 +523,41 @@
     <Compile Include="Context Menus\EatEntry.cs" />
     <Compile Include="Context Menus\EjectPlayer.cs" />
     <Compile Include="Context Menus\OpenBankEntry.cs" />
-    <Compile Include="Custom\BoxServer\Configuration.cs" />
-    <Compile Include="Custom\BoxServer\Core\Authentication.cs" />
-    <Compile Include="Custom\BoxServer\Core\BoxServer.cs" />
-    <Compile Include="Custom\BoxServer\Core\BoxSpawn.cs" />
-    <Compile Include="Custom\BoxServer\Core\BuildItem.cs" />
-    <Compile Include="Custom\BoxServer\Core\Errors.cs" />
-    <Compile Include="Custom\BoxServer\Core\GenericNode.cs" />
-    <Compile Include="Custom\BoxServer\Core\Login.cs" />
-    <Compile Include="Custom\BoxServer\Core\SpawnerHelper.cs" />
-    <Compile Include="Custom\BoxServer\Core\Utility.cs" />
-    <Compile Include="Custom\BoxServer\Datafiles\BoxData.cs" />
-    <Compile Include="Custom\BoxServer\Datafiles\Item.cs" />
-    <Compile Include="Custom\BoxServer\Datafiles\PropsData.cs" />
-    <Compile Include="Custom\BoxServer\Datafiles\SpawnData.cs" />
-    <Compile Include="Custom\BoxServer\Modules\Builder\BuilderCore.cs" />
-    <Compile Include="Custom\BoxServer\Modules\Builder\BuilderMessage.cs" />
-    <Compile Include="Custom\BoxServer\Modules\Builder\ControlMessages.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ClientList\ClientCommand.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ClientList\ClientListMessage.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ClientList\ClientListRequest.cs" />
-    <Compile Include="Custom\BoxServer\Modules\RandomTiler\RandomBrushMessage.cs" />
-    <Compile Include="Custom\BoxServer\Modules\RandomTiler\RandomItem.cs" />
-    <Compile Include="Custom\BoxServer\Modules\RandomTiler\RandomTile.cs" />
-    <Compile Include="Custom\BoxServer\Modules\RetrieveDatafiles\GetDatafile.cs" />
-    <Compile Include="Custom\BoxServer\Modules\RetrieveDatafiles\ReturnDatafile.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\Configuration.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\CreateFolder.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\DeleteRequest.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\DownloadRequest.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\ExplorerMessage.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\ExplorerRequest.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\FileTransport.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\FolderInfo.cs" />
-    <Compile Include="Custom\BoxServer\Modules\ScriptExplorer\MoveRequest.cs" />
-    <Compile Include="Custom\BoxServer\Modules\SpawnGroups\SpawnMessage.cs" />
+    <Compile Include="Engines\BoxServer\Configuration.cs" />
+    <Compile Include="Engines\BoxServer\Core\Authentication.cs" />
+    <Compile Include="Engines\BoxServer\Core\BoxServer.cs" />
+    <Compile Include="Engines\BoxServer\Core\BoxSpawn.cs" />
+    <Compile Include="Engines\BoxServer\Core\BuildItem.cs" />
+    <Compile Include="Engines\BoxServer\Core\Errors.cs" />
+    <Compile Include="Engines\BoxServer\Core\GenericNode.cs" />
+    <Compile Include="Engines\BoxServer\Core\Login.cs" />
+    <Compile Include="Engines\BoxServer\Core\SpawnerHelper.cs" />
+    <Compile Include="Engines\BoxServer\Core\Utility.cs" />
+    <Compile Include="Engines\BoxServer\Datafiles\BoxData.cs" />
+    <Compile Include="Engines\BoxServer\Datafiles\Item.cs" />
+    <Compile Include="Engines\BoxServer\Datafiles\PropsData.cs" />
+    <Compile Include="Engines\BoxServer\Datafiles\SpawnData.cs" />
+    <Compile Include="Engines\BoxServer\Modules\Builder\BuilderCore.cs" />
+    <Compile Include="Engines\BoxServer\Modules\Builder\BuilderMessage.cs" />
+    <Compile Include="Engines\BoxServer\Modules\Builder\ControlMessages.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ClientList\ClientCommand.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ClientList\ClientListMessage.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ClientList\ClientListRequest.cs" />
+    <Compile Include="Engines\BoxServer\Modules\RandomTiler\RandomBrushMessage.cs" />
+    <Compile Include="Engines\BoxServer\Modules\RandomTiler\RandomItem.cs" />
+    <Compile Include="Engines\BoxServer\Modules\RandomTiler\RandomTile.cs" />
+    <Compile Include="Engines\BoxServer\Modules\RetrieveDatafiles\GetDatafile.cs" />
+    <Compile Include="Engines\BoxServer\Modules\RetrieveDatafiles\ReturnDatafile.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\Configuration.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\CreateFolder.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\DeleteRequest.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\DownloadRequest.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\ExplorerMessage.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\ExplorerRequest.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\FileTransport.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\FolderInfo.cs" />
+    <Compile Include="Engines\BoxServer\Modules\ScriptExplorer\MoveRequest.cs" />
+    <Compile Include="Engines\BoxServer\Modules\SpawnGroups\SpawnMessage.cs" />
     <Compile Include="Engines\Mort\Achever.cs" />
     <Compile Include="Commandes\Temrael\Decoration.cs" />
     <Compile Include="Commandes\Temrael\Dupe.cs" />
@@ -2515,9 +2516,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Mobiles\Monsters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <ProjectExtensions>
     <VisualStudio AllowExistingFolder="true" />

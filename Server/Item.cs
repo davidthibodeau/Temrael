@@ -698,10 +698,7 @@ namespace Server
 			Movable			= 0x02,
 			Deleted			= 0x04,
 			Stackable		= 0x08,
-			InQueue			= 0x10,
-			Insured			= 0x20,
-			PayedInsurance	= 0x40,
-			QuestItem		= 0x80
+			InQueue			= 0x10
 		}
 
 		private class CompactInfo
@@ -980,8 +977,6 @@ namespace Server
 				list.Add( 1038021 ); // blessed
 			else if ( m_LootType == LootType.Cursed )
 				list.Add( 1049643 ); // cursed
-			else if ( Insured )
-				list.Add( 1061682 ); // <b>insured</b>
 		}
 
 		/// <summary>
@@ -1054,19 +1049,7 @@ namespace Server
 			if ( DisplayWeight )
 				AddWeightProperty( list );
 
-			if( QuestItem )
-				AddQuestItemProperty( list );
-
-
 			AppendChildNameProperties( list );
-		}
-
-		/// <summary>
-		/// Overridable. Adds the "Quest Item" property to the given <see cref="ObjectPropertyList" />.
-		/// </summary>
-		public virtual void AddQuestItemProperty( ObjectPropertyList list )
-		{
-			list.Add( 1072351 ); // Quest Item
 		}
 
 		/// <summary>
@@ -2125,12 +2108,11 @@ namespace Server
 			LocationShortXY = 0x00040000,
 			LocationByteXY	= 0x00080000,
 			ImplFlags		= 0x00100000,
-			InsuredFor		= 0x00200000,
-			BlessedFor		= 0x00400000,
-			HeldBy			= 0x00800000,
-			IntWeight		= 0x01000000,
-			SavedFlags		= 0x02000000,
-			NullWeight		= 0x04000000
+			BlessedFor		= 0x00200000,
+			HeldBy			= 0x00400000,
+			IntWeight		= 0x00800000,
+			SavedFlags		= 0x01000000,
+			NullWeight		= 0x02000000
 		}
 
 		private static void SetSaveFlag( ref SaveFlag flags, SaveFlag toSet, bool setIf )
@@ -2237,7 +2219,7 @@ namespace Server
 				}
 			}
 
-			ImplFlag implFlags = ( m_Flags & ( ImplFlag.Visible | ImplFlag.Movable | ImplFlag.Stackable | ImplFlag.Insured | ImplFlag.PayedInsurance | ImplFlag.QuestItem ) );
+			ImplFlag implFlags = ( m_Flags & ( ImplFlag.Visible | ImplFlag.Movable | ImplFlag.Stackable) );
 
 			if ( implFlags != ( ImplFlag.Visible | ImplFlag.Movable ) )
 				flags |= SaveFlag.ImplFlags;
@@ -2331,9 +2313,6 @@ namespace Server
 
 			if ( GetSaveFlag( flags, SaveFlag.ImplFlags ) )
 				writer.WriteEncodedInt( (int) implFlags );
-
-			if ( GetSaveFlag( flags, SaveFlag.InsuredFor ) )
-				writer.Write( (Mobile) null );
 
 			if ( GetSaveFlag( flags, SaveFlag.BlessedFor ) )
 				writer.Write( info.m_BlessedFor );
@@ -2608,10 +2587,6 @@ namespace Server
             if (GetSaveFlag(flags, SaveFlag.ImplFlags))
                 m_Flags = (ImplFlag)reader.ReadEncodedInt();
 
-            if (GetSaveFlag(flags, SaveFlag.InsuredFor))
-                /*m_InsuredFor = */
-                reader.ReadMobile();
-
             if (GetSaveFlag(flags, SaveFlag.BlessedFor))
                 AcquireCompactInfo().m_BlessedFor = reader.ReadMobile();
 
@@ -2824,14 +2799,11 @@ namespace Server
 
 		public virtual bool Nontransferable
 		{
-			get { return QuestItem; }
+			get { return false; }
 		}
 
 		public virtual void HandleInvalidTransfer( Mobile from )
 		{
-			// OSI sends 1074769, bug!
-			if( QuestItem )
-				from.SendLocalizedMessage( 1049343 ); // You can only drop quest items into the top-most level of your backpack while you still need them for your quest.
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -4505,34 +4477,6 @@ namespace Server
 			}
 
 			Delete();
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public bool QuestItem
-		{
-			get { return GetFlag( ImplFlag.QuestItem ); }
-			set 
-			{ 
-				SetFlag( ImplFlag.QuestItem, value ); 
-
-				InvalidateProperties();
-
-				ReleaseWorldPackets();
-
-				Delta( ItemDelta.Update );
-			}
-		}
-
-		public bool Insured
-		{
-			get{ return GetFlag( ImplFlag.Insured ); }
-			set{ SetFlag( ImplFlag.Insured, value ); InvalidateProperties(); }
-		}
-
-		public bool PayedInsurance
-		{
-			get{ return GetFlag( ImplFlag.PayedInsurance ); }
-			set{ SetFlag( ImplFlag.PayedInsurance, value ); }
 		}
 
 		public Mobile BlessedFor

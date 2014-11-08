@@ -142,7 +142,7 @@ namespace Server.Misc
 
 		private static CityInfo GetStartLocation( CharacterCreatedEventArgs args, bool isYoung )
 		{
-            return new CityInfo("Temrael", "Creation", 6018, 99, 12, Map.Felucca);
+            return new CityInfo("Temrael", "Creation", 6024, 107, 10, Map.Felucca);
 		}
 
 		private static void SetName( Mobile m, string name )

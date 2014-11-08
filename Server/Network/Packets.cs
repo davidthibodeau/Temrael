@@ -1888,7 +1888,7 @@ namespace Server.Network
 			m_Stream.Write( (short) item.X );
 			m_Stream.Write( (short) item.Y );
 			m_Stream.Write( (int) parentSerial );
-			m_Stream.Write( (ushort) ( item.QuestItem ? Item.QuestItemHue : item.Hue ) );
+            m_Stream.Write((ushort)(item.Hue));
 		}
 	}
 
@@ -1916,7 +1916,7 @@ namespace Server.Network
 			m_Stream.Write( (short) item.Y );
 			m_Stream.Write( (byte) 0 ); // Grid Location?
 			m_Stream.Write( (int) parentSerial );
-			m_Stream.Write( (ushort) ( item.QuestItem ? Item.QuestItemHue : item.Hue ) );
+            m_Stream.Write((ushort)(item.Hue));
 		}
 	}
 
@@ -1950,7 +1950,7 @@ namespace Server.Network
 					m_Stream.Write( (short) loc.m_X );
 					m_Stream.Write( (short) loc.m_Y );
 					m_Stream.Write( (int) beheld.Serial );
-					m_Stream.Write( (ushort) ( child.QuestItem ? Item.QuestItemHue : child.Hue ) );
+                    m_Stream.Write((ushort)(child.Hue));
 
 					++written;
 				}
@@ -1992,7 +1992,7 @@ namespace Server.Network
 					m_Stream.Write( (short) loc.m_Y );
 					m_Stream.Write( (byte) 0 ); // Grid Location?
 					m_Stream.Write( (int) beheld.Serial );
-					m_Stream.Write( (ushort) ( child.QuestItem ? Item.QuestItemHue : child.Hue ) );
+                    m_Stream.Write((ushort)(child.Hue));
 
 					++written;
 				}

@@ -1698,13 +1698,9 @@ namespace Server.Mobiles
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( RecoverAmmo ) );
 		}
 
-		private Mobile m_InsuranceAward;
-		private int m_InsuranceCost;
-		private int m_InsuranceBonus;
-
 		private bool FindItems_Callback(Item item)
 		{
-			if (!item.Deleted && (item.LootType == LootType.Blessed || item.Insured == true))
+			if (!item.Deleted && (item.LootType == LootType.Blessed))
 			{
 				if (this.Backpack != item.Parent)
 				{
@@ -1732,24 +1728,6 @@ namespace Server.Mobiles
 					Backpack.AddItem(ilist[i]);
 				}
 			}
-
-			m_NonAutoreinsuredItems = 0;
-			m_InsuranceCost = 0;
-			m_InsuranceAward = base.FindMostRecentDamager( false );
-
-			if ( m_InsuranceAward is BaseCreature )
-			{
-				Mobile master = ((BaseCreature)m_InsuranceAward).GetMaster();
-
-				if ( master != null )
-					m_InsuranceAward = master;
-			}
-
-			if ( m_InsuranceAward != null && (!m_InsuranceAward.Player || m_InsuranceAward == this) )
-				m_InsuranceAward = null;
-
-			if ( m_InsuranceAward is PlayerMobile )
-				((PlayerMobile)m_InsuranceAward).m_InsuranceBonus = 0;
 
 			RecoverAmmo();
 
@@ -1785,14 +1763,6 @@ namespace Server.Mobiles
 
 				if ( c is Corpse )
 					((Corpse)c).Criminal = true;
-			}
-
-			if ( m_InsuranceAward is PlayerMobile )
-			{
-				PlayerMobile pm = (PlayerMobile)m_InsuranceAward;
-
-				if ( pm.m_InsuranceBonus > 0 )
-					pm.SendLocalizedMessage( 1060397, pm.m_InsuranceBonus.ToString() ); // ~1_AMOUNT~ gold has been deposited into your bank box.
 			}
 
 			Mobile killer = this.FindMostRecentDamager( true );
