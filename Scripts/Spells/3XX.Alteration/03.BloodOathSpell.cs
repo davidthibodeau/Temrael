@@ -72,9 +72,9 @@ namespace Server.Spells
 				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
 				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
-                double duration = ((Caster.Skills[SkillName.Alteration].Value) / 8) + 8;
+                double duration = 20;
 
-                duration = SpellHelper.AdjustValue(Caster, duration);
+                duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				new ExpireTimer( Caster, m, TimeSpan.FromSeconds(duration) ).Start();
 			}

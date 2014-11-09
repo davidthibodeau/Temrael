@@ -47,7 +47,9 @@ namespace Server.Spells
 				Caster.FixedParticles( 0x37B9, 1, 14, 9502, 32, 5, (EffectLayer)255 );
 				new SoundEffectTimer( Caster ).Start();
 
-				double duration = Caster.Skills[SkillName.Alteration].Value; // 0 à 100 secondes.
+                double duration = 100;
+
+                duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				Timer t = (Timer)m_Table[weapon];
 

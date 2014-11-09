@@ -67,9 +67,9 @@ namespace Server.Spells
 
                 int itemID = eastToWest ? 0x3967 : 0x3979;
 
-                double duration = 4.0 + (Caster.Skills[SkillName.ArtMagique].Value * 0.4);
+                double duration = 30;
 
-                duration = SpellHelper.AdjustValue(Caster, duration);
+                duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				for ( int i = -3; i <= 3; ++i )
 				{

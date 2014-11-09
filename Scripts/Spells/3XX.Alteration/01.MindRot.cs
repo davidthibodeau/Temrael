@@ -53,14 +53,11 @@ namespace Server.Spells
 				m.PlaySound( 0x258 );
 				m.FixedParticles( 0x373A, 1, 17, 9903, 15, 4, EffectLayer.Head );
 
-                double duration = 10;
+                double duration = 20;
 
-                double scalar = 1 + (Caster.Skills[SkillName.ArtMagique].Value + Caster.Skills[SkillName.Alteration].Value) / 8;
+                double scalar = Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
-				if ( m.Player )
-                    SetMindRotScalar(Caster, m, scalar, TimeSpan.FromSeconds(duration));
-				else
-                    SetMindRotScalar(Caster, m, scalar + 0.75, TimeSpan.FromSeconds(duration));
+                SetMindRotScalar(Caster, m, scalar, TimeSpan.FromSeconds(duration));
 			}
 
 			FinishSequence();

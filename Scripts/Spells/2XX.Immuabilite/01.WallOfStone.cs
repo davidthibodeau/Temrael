@@ -121,7 +121,7 @@ namespace Server.Spells
 
                 double duration = 30.0;
 
-                duration = SpellHelper.AdjustValue(caster, duration);
+                duration *= Spell.GetSpellScaling(caster, Info.skillForCasting);
 
                 m_Timer = new InternalTimer(this, TimeSpan.FromSeconds(duration));
 				m_Timer.Start();

@@ -1,4 +1,5 @@
 using System;
+using Server.Spells;
 
 namespace Server.Engines.Combat
 {
@@ -34,45 +35,13 @@ namespace Server.Engines.Combat
         }
 
         const double DPSBASE = 6.45;
-        const double ScalingArtMag      = 0.5;// Bonus lié au skill ArtMagique.
-        const double ScalingCategorie   = 0.5;// Bonus qui fait la différence entre un spell de cercle 1, et de cercle 10.
-        const double ScalMainBranche    = 0;  // Scaling sur le skill de la branche passée en paramètre.
-        const double ScalScndBranche    = 0;  // Scaling sur les skills des autres branches.
-        const short NbTotalCercles      = 10; // Il y a présentement 10 cercles dans le système de magie.
+        const short NbTotalCercles = 10; // Il y a présentement 10 cercles dans le système de magie.
+        const double ScalingCategorie = 0.5;// Bonus qui fait la différence entre un spell de cercle 1, et de cercle 10, pour les dégâts.
+
 
         public double GetDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
         {
-            double BaseDamage = BaseDegatsMagiques(cercle, tempsCast);
-            double TotalDamage = BaseDamage;
-
-            // Les ifs sont gérés à la compilation, donc pas de coût, juste un warning gossant.
-            if (ScalingArtMag != 0)
-            {
-                TotalDamage += (DPSBASE * tempsCast.Seconds * (atk.Skills[SkillName.ArtMagique].Value * ScalingArtMag / 100));
-            }
-
-            if (ScalMainBranche != 0)
-            {
-                // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
-                TotalDamage += (DPSBASE * tempsCast.Seconds * (atk.Skills[branche].Value * (ScalMainBranche - ScalScndBranche) / 100));
-            }
-
-            if (ScalScndBranche != 0)
-            {
-                double value = atk.Skills[SkillName.Evocation].Value
-                             + atk.Skills[SkillName.Immuabilite].Value
-                             + atk.Skills[SkillName.Alteration].Value
-                             + atk.Skills[SkillName.Providence].Value
-                             + atk.Skills[SkillName.Transmutation].Value
-                             + atk.Skills[SkillName.Thaumaturgie].Value
-                             + atk.Skills[SkillName.Hallucination].Value
-                             + atk.Skills[SkillName.Ensorcellement].Value
-                             + atk.Skills[SkillName.Necromancie].Value;
-
-                TotalDamage += (DPSBASE * tempsCast.Seconds * (atk.Skills[branche].Value * ScalScndBranche / 100));
-            }
-
-            return TotalDamage;
+            return BaseDegatsMagiques(cercle, tempsCast) * (1 + Spell.GetSpellScaling(atk, branche));
         }
 
         private double BaseDegatsMagiques(short cercle, TimeSpan tempsCast)

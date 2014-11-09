@@ -74,9 +74,9 @@ namespace Server.Spells
 
                 Effects.PlaySound(p, Caster.Map, 0x20B);
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Evocation].Value * 0.4);
+                double duration = 30;
 
-                duration = SpellHelper.AdjustValue(Caster, duration);
+                duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				int itemID = eastToWest ? 0x3946 : 0x3956;
 

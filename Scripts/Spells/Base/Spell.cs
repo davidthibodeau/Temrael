@@ -484,6 +484,49 @@ namespace Server.Spells
             return damage;
         }
 
+        const double ScalArtMag      = 0.5;// Bonus lié au skill ArtMagique.
+        const double ScalMainBranche = 0;  // Scaling sur le skill de la branche passée en paramètre.
+        const double ScalScndBranche = 0;  // Scaling sur les skills des autres branches.
+        const double ScalInscription = 0.1;// Bonus lié au skill Inscription.
+
+        public static double GetSpellScaling(Mobile atk, SkillName branche)
+        {
+            double Scaling = 0;
+
+            // Les ifs sont gérés à la compilation, donc pas de coût, juste un warning gossant.
+            if (ScalArtMag != 0)
+            {
+                Scaling += (atk.Skills[SkillName.ArtMagique].Value * ScalArtMag / 100);
+            }
+
+            if (ScalMainBranche != 0)
+            {
+                // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
+                Scaling += (atk.Skills[branche].Value * (ScalMainBranche - ScalScndBranche) / 100);
+            }
+
+            if (ScalScndBranche != 0)
+            {
+                double value = atk.Skills[SkillName.Evocation].Value
+                             + atk.Skills[SkillName.Immuabilite].Value
+                             + atk.Skills[SkillName.Alteration].Value
+                             + atk.Skills[SkillName.Providence].Value
+                             + atk.Skills[SkillName.Transmutation].Value
+                             + atk.Skills[SkillName.Thaumaturgie].Value
+                             + atk.Skills[SkillName.Hallucination].Value
+                             + atk.Skills[SkillName.Ensorcellement].Value
+                             + atk.Skills[SkillName.Necromancie].Value;
+
+                Scaling += (value * ScalScndBranche / 100);
+            }
+
+            if (ScalInscription != 0)
+            {
+                Scaling += (atk.Skills[SkillName.Inscription].Value * ScalInscription / 100);
+            }
+
+            return Scaling;
+        }
 
 
 		public virtual int CastRecoveryBase{ get{ return 2; } }
