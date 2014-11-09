@@ -14,7 +14,7 @@ namespace Server.Engines.Races
         public abstract string Name{get;}
 		public abstract string NameF{get;}
 
-        public abstract int Skin { get; }
+        public abstract Type Skin { get; }
 
         public abstract string Description { get; }
         public abstract int Image { get; }

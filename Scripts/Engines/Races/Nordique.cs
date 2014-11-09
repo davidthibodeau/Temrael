@@ -20,7 +20,7 @@ namespace Server.Engines.Races
                 1013
             };
 
-        public override int Skin { get { return 0x27f7; } }
+        public override Type Skin { get { return typeof(CorpsNordique); } }
 
         public override string Name { get { return "Nordique"; } }
         public override string NameF { get { return "Nordique"; } }

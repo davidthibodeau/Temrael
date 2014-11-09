@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server;
 using Server.Mobiles;
+using Server.Items;
 
 namespace Server.Engines.Races
 {
@@ -19,7 +20,7 @@ namespace Server.Engines.Races
                 1908
             };
 
-        public override int Skin { get { return 0x27f8; } }
+        public override Type Skin { get { return typeof(CorpsElfe); } }
 
         public override string Name { get { return "Elfe Noir"; } }
         public override string NameF { get { return "Elfe Noire"; } }

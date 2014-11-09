@@ -9,6 +9,7 @@ using Server.Misc;
 using Server.Engines.BulkOrders;
 using Server.Regions;
 using Server.Factions;
+using Server.Engines.Races;
 
 namespace Server.Mobiles
 {
@@ -41,6 +42,15 @@ namespace Server.Mobiles
 
 		public virtual bool IsInvulnerable { get { return true; } }
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Race Race { get; set; }
+
+        public virtual void SetRace(Race race)
+        {
+            Race = race;
+            Hue = race.Hue;
+            AddItem((RaceGump)Activator.CreateInstance(race.Skin));
+        }
 
 		public virtual bool IsValidBulkOrder( Item item )
 		{

@@ -91,6 +91,7 @@ namespace Server.Mobiles
 		private List<Mobile> m_AutoStabled;
 		private List<Mobile> m_AllFollowers;
 		private List<Mobile> m_RecentlyReported;
+        private Race race;
 
 		#region Getters & Setters
 
@@ -223,8 +224,14 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.Batisseur)]
         public Race Race
         {
-            get;
-            set;
+            get { return race; }
+            set
+            {
+                race = value;
+                Hue = value.Hue;
+                FindItemOnLayer(Layer.Shirt).Delete();
+                AddItem((RaceGump)Activator.CreateInstance(value.Skin));
+            }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]

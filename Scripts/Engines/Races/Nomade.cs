@@ -19,7 +19,7 @@ namespace Server.Engines.Races
                 1881
             };
 
-        public override int Skin { get { return -1; } }
+        public override Type Skin { get { return null; } }
 
         public override string Name { get { return "Nomade"; } }
         public override string NameF { get { return "Nomade"; } }
