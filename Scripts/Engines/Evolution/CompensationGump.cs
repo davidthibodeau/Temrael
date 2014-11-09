@@ -1,17 +1,16 @@
-﻿using System;
+﻿using Server.Accounting;
+using Server.Commands;
+using Server.Gumps;
+using Server.Mobiles;
+using Server.Network;
+using Server.Prompts;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml;
-using Server.Gumps;
-using Server.Commands;
-using Server.Network;
-using Server.Accounting;
-using Server.Mobiles;
-using Server.Prompts;
-using Server.Engines.Evolution;
 
 
-namespace Server.Gumps
+namespace Server.Engines.Evolution
 {
     public class CompensationGump : Gump
     {

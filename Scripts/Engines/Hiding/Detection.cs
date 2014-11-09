@@ -56,7 +56,8 @@ namespace Server.Engines.Hiding
             foreach (NetState state in NetState.Instances)
             {
                 ScriptMobile m = state.Mobile as ScriptMobile;
-                m.Detection.RetirerJoueurDesAlentours(sm);
+                if (m != null)
+                    m.Detection.RetirerJoueurDesAlentours(sm);
             }
 		}
 

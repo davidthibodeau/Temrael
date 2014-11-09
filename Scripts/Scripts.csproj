@@ -98,6 +98,7 @@
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
+    <Compile Include="Engines\Evolution\Transfert.cs" />
     <Compile Include="Engines\Hiding\Detection.cs" />
     <Compile Include="Engines\Mort\Auxiliaires.cs" />
     <Compile Include="Engines\Mort\ContratAssassinat.cs" />
@@ -2467,7 +2468,7 @@
     <Compile Include="Spells\Base\SpellState.cs" />
     <Compile Include="Spells\Base\Reagent.cs" />
     <Compile Include="Spells\Base\UnsummonTimer.cs" />
-    <Compile Include="Gumps\CompensationGump.cs" />
+    <Compile Include="Engines\Evolution\CompensationGump.cs" />
     <Compile Include="Targets\BladedItemTarget.cs" />
     <Compile Include="Targets\MoveTarget.cs" />
     <Compile Include="Targets\PickMoveTarget.cs" />

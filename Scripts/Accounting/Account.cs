@@ -11,6 +11,7 @@ using Server.Misc;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
+using Server.Engines.Evolution;
 
 namespace Server.Accounting
 {
@@ -31,6 +32,7 @@ namespace Server.Accounting
 		private string[] m_IPRestrictions;
 		private IPAddress[] m_LoginIPs;
 		private HardwareInfo m_HardwareInfo;
+        private Transfert m_Transfert;
 
 		/// <summary>
 		/// Deletes the account, all characters of the account, and all houses of those characters
@@ -229,6 +231,11 @@ namespace Server.Accounting
 				return m_TotalGameTime;
 			}
 		}
+
+        public Transfert Transfert
+        {
+            get { return m_Transfert; }
+        }
 
 		/// <summary>
 		/// Gets the value of a specific flag in the Flags bitfield.
@@ -594,6 +601,7 @@ namespace Server.Accounting
 			m_Tags = LoadTags( node );
 			m_LoginIPs = LoadAddressList( node );
 			m_IPRestrictions = LoadAccessCheck( node );
+            m_Transfert = LoadTransfert(node);
 
 			for ( int i = 0; i < m_Mobiles.Length; ++i )
 			{
@@ -732,6 +740,16 @@ namespace Server.Accounting
 
 			return list;
 		}
+
+        public static Transfert LoadTransfert(XmlElement node)
+        {
+            int serial = Utility.GetXMLInt32(Utility.GetText(node["transfert"], null), -1);
+
+            if (serial == -1)
+                return null;
+            else
+                return World.FindItem(serial) as Transfert;
+        }
 
 		/// <summary>
 		/// Deserializes a list of AccountComment instances from an xml element.
@@ -1012,6 +1030,10 @@ namespace Server.Accounting
 				xml.WriteEndElement();
 			}
 
+            xml.WriteStartElement("transfert");
+            xml.WriteString(m_Transfert.Serial.Value.ToString());
+			xml.WriteEndElement();
+
 			xml.WriteEndElement();
 		}
 
@@ -1039,7 +1061,7 @@ namespace Server.Accounting
 		/// </summary>
 		public int Limit
 		{
-			get { return ( Core.SA ? 7 : Core.AOS ? 6 : 5 ); }
+			get { return 3; }
 		}
 
 		/// <summary>
