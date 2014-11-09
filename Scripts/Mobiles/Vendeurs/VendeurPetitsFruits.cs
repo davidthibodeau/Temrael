@@ -6,6 +6,7 @@ namespace Server.Mobiles.Vendeurs
 {
     public class VendeurPetitsFruits : BaseVendor
     {
+        [Constructable]
         public VendeurPetitsFruits()
             : base("Vendeur de petits fruits")
         {
