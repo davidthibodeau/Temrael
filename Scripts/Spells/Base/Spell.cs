@@ -328,15 +328,7 @@ namespace Server.Spells
 
                 SayMantra();
 
-                TimeSpan castTime;
-                if (this is Custom.CustomSpell.CustomSpell)
-                {
-                    castTime = (this as Custom.CustomSpell.CustomSpell).m_info.castTime;
-                }
-                else
-                {
-                    castTime = this.GetCastDelay();
-                }
+                TimeSpan castTime = Info.castTime;
 
                 if (Caster.Body.IsHuman)
                 {
