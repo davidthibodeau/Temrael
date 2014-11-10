@@ -44,12 +44,11 @@ namespace Server.Items
     [PropertyObject]
 	public abstract class BaseBowl : Item
     {
-        public bool IsEmpty { get { return m_EarthType == EarthType.None; } }
+        public bool HasEarth { get { return m_EarthType != EarthType.None; } }
         public bool HasPlant { get { return m_Plant != null && !m_Plant.Deleted; } }
 
         private EarthType m_EarthType;
         private BasePlant m_Plant;
-        private Manure m_Manure;
 
         [CommandProperty(AccessLevel.Batisseur)]
         public EarthType EarthType
@@ -63,13 +62,6 @@ namespace Server.Items
         {
             get { return m_Plant; }
             set { m_Plant = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Manure Manure
-        {
-            get { return m_Manure; }
-            set { m_Manure = value; }
         }
 
         public BaseBowl(int itemID) : base(itemID)
@@ -89,7 +81,7 @@ namespace Server.Items
         {
             base.GetContextMenuEntries(from, list);
 
-            if (from.Alive && CanPlant && !IsEmpty && !HasPlant)
+            if (from.Alive && CanPlant && HasEarth && !HasPlant)
                 list.Add(new AddSeedEntry(from, this));
         }
 
@@ -98,27 +90,12 @@ namespace Server.Items
             if (Deleted || !from.CheckAlive())
                 return;
 
-            if (IsEmpty)
+            if (targeted is BaseSeed)
             {
-                from.SendMessage("Le pot est vide.");
-            }
-            else if (HasPlant)
-            {
-                from.SendMessage("Il y a déja une graine dans ce pot.");
-            }
-            else if (targeted is BaseSeed)
-            {
-                BaseSeed seed = (BaseSeed)targeted;
-
-                if (seed.PlantType == PlantType.None)
-                {
-                    from.SendMessage("Cette graine n'est pas valide.");
-                }
+                if (((BaseSeed)targeted).PlantType != PlantType.None)
+                    this.AddSeed((BaseSeed)targeted);
                 else
-                {
-                    AddSeed(seed);
-                    from.SendMessage("Vous plantez la graine dans le pot.");
-                }
+                    from.SendMessage("Ceci n'est pas une graine valide..");
             }
             else
             {
@@ -128,7 +105,7 @@ namespace Server.Items
 
         public virtual void AddSeed(BaseSeed seed)
         {
-            if (!IsEmpty && !HasPlant)
+            if (HasEarth && !HasPlant)
             {
                 m_Plant = seed.GetPlant();
                 m_Plant.Bowl = this;
@@ -153,32 +130,63 @@ namespace Server.Items
         {
             base.OnSingleClick(from);
 
-            if (!IsEmpty && from is TMobile)
+            if (!HasEarth && from is TMobile)
             {
                 TMobile m = (TMobile)from;
 
-                //TOCHECK BOTANIQUE
-                //if (false)
-                //    LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType, false)));
+                LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType, false)));
             }
         }
 
+        /*
         public override void OnDoubleClick(Mobile from)
         {
-            if (HasPlant && from is TMobile)
-                from.SendGump(new BotaniqueGump((TMobile)from, this));
+            if (from is TMobile)
+            {
+                if (HasEarth)
+                {
+                    if (HasPlant)
+                    {
+                        from.SendGump(new BotaniqueGump((TMobile)from, this));
+                    }
+                    else
+                    {
+                        from.SendMessage("Choisissez de la graine à mettre dans votre bol.");
+                        from.BeginTarget(1, false, TargetFlags.None, new TargetCallback(this.ChooseSeed_OnTarget));
+                    }
+                }
+                else
+                {
+                    from.SendMessage("Choisissez de la terre à mettre dans votre bol.");
+                    from.BeginTarget(1, false, TargetFlags.None, new TargetCallback(this.ChooseEarth_OnTarget));
+                }
+            }
+        }*/
+
+        public void ChooseEarth_OnTarget(Mobile from, object targeted)
+        {
+            if (Deleted || !from.CheckAlive())
+                return;
+
+            if (targeted is Earth)
+            {
+                m_EarthType = ((Earth)targeted).EarthType;
+            }
+            else
+            {
+                from.SendMessage("Vous devez choisir de la terre.");
+            }
         }
 
         public virtual void AddEarth(EarthType type)
         {
-            if (IsEmpty)
+            if ((!HasEarth))
                 m_EarthType = type;
         }
 
         public virtual void Empty()
         {
             m_EarthType = EarthType.None;
-            m_Manure = Manure.Type01;
         }
 
 		public override void Serialize( GenericWriter writer )
@@ -189,7 +197,6 @@ namespace Server.Items
 
             writer.Write((int)m_EarthType);
             writer.Write((Item)m_Plant);
-            writer.Write((int)m_Manure);
 		}
 
         public override void Deserialize(GenericReader reader)
@@ -204,7 +211,6 @@ namespace Server.Items
                     {
                         m_EarthType = (EarthType)reader.ReadInt();
                         m_Plant = (BasePlant)reader.ReadItem();
-                        m_Manure = (Manure)reader.ReadInt();
                         goto case 0;
                     }
                 case 0:
@@ -219,12 +225,12 @@ namespace Server.Items
     {
         public override int ComputeItemID()
         {
-            return IsEmpty ? 0x11C6 : 0x11C6;
+            return (!HasEarth) ? 0x11C6 : 0x11C6;
         }
 
         public override double ComputeWeight()
         {
-            return IsEmpty ? 5.0 : 15.0;
+            return (!HasEarth) ? 5.0 : 15.0;
         }
 
         [Constructable]
@@ -258,12 +264,12 @@ namespace Server.Items
     {
         public override int ComputeItemID()
         {
-            return IsEmpty ? 0x11C7 : 0x11C7;
+            return (!HasEarth) ? 0x11C7 : 0x11C7;
         }
 
         public override double ComputeWeight()
         {
-            return IsEmpty ? 8.0 : 18.0;
+            return (!HasEarth) ? 8.0 : 18.0;
         }
 
         [Constructable]
@@ -297,12 +303,12 @@ namespace Server.Items
     {
         public override int ComputeItemID()
         {
-            return IsEmpty ? 0x1039 : 0x1039;
+            return (!HasEarth) ? 0x1039 : 0x1039;
         }
 
         public override double ComputeWeight()
         {
-            return IsEmpty ? 0.5 : 10.5;
+            return (!HasEarth) ? 0.5 : 10.5;
         }
 
         public override bool CanPlant { get { return false; } }

@@ -143,7 +143,7 @@ namespace Server.Items
                 {
                     from.SendMessage("{0} doit être dans votre sac.", bowl is EarthBag ? "La poche" : "Le pot");
                 }
-                else if (!bowl.IsEmpty)
+                else if (bowl.HasEarth)
                 {
                     from.SendMessage("{0} doit être vide.", bowl is EarthBag ? "La poche" : "Le pot");
                 }

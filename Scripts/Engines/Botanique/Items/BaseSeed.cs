@@ -90,7 +90,7 @@ namespace Server.Items
             {
                 BaseBowl bowl = targeted as BaseBowl;
 
-                if (bowl.IsEmpty)
+                if (!bowl.HasEarth)
                 {
                     from.SendMessage("Le pot est vide.");
                 }

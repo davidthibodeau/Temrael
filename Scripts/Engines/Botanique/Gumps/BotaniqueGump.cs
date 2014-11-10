@@ -162,14 +162,16 @@ namespace Server.Gumps
             switch (info.ButtonID)
             {
                 case 1:
+                    from.SendMessage("Choisissez un poison pour la plante.");
                     from.Target = new PlantPoisonTarget(m_Bowl);
                     break;
                 case 2:
                     if (m_Bowl.Plant.StateOfGrowth > StateOfGrowth.Seed)
                     {
-                        from.AddItem(m_Bowl.Plant);
+                        m_Bowl.Plant.Movable = true;
+                        from.AddToBackpack(m_Bowl.Plant);
                         m_Bowl.Plant.RemoveItem(m_Bowl.Plant);
-                        from.SendMessage("Vous cuillez la plante.");
+                        from.SendMessage("Vous cueillez la plante.");
                     }
                     else
                     {
@@ -179,25 +181,20 @@ namespace Server.Gumps
                     break;
                 case 3:
                     m_Bowl.Plant.RemoveItem(m_Bowl.Plant);
-                    from.SendMessage("Vous retirez la plante de son pot.");
+                    from.SendMessage("Vous détruisez la plante dans le pot.");
                     break;
                 case 4:
+                    from.SendMessage("Choisissez de l'eau pour la plante.");
                     from.Target = new PlantWaterTarget(m_Bowl);
                     break;
                     //Graines
                 case 5:
-                    BaseSeed seed = BotaniqueSystem.GetSeed(m_Bowl.Plant);
-                    seed.Amount = m_Bowl.Plant.Seed;
-                    from.AddItem(seed);
-                    m_Bowl.Plant.Seed = 0;
+                    m_Bowl.Plant.ExtractSeeds(from);
                     from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
                     break;
                     //Fleurs
                 case 6:
-                    Item regeant = BotaniqueSystem.GetRegeant(m_Bowl.Plant);
-                    regeant.Amount = m_Bowl.Plant.Reagent;
-                    from.AddItem(regeant);
-                    m_Bowl.Plant.Reagent = 0;
+                    m_Bowl.Plant.ExtractReagent(from);
                     from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
                     break;
                 case 7:
