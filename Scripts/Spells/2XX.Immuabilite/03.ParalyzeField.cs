@@ -26,6 +26,8 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
+        private const double durationMax = 30;
+
 		public ParalyzeFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
@@ -67,9 +69,7 @@ namespace Server.Spells
 
                 int itemID = eastToWest ? 0x3967 : 0x3979;
 
-                double duration = 30;
-
-                duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
+                double duration = durationMax * Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				for ( int i = -3; i <= 3; ++i )
 				{

@@ -10,6 +10,9 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 402; } } // TOCHANGE
 
+        private const int maxARbonus = 10;
+        private const double dureeMax = 60;
+
         private static short s_Cercle = 2;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
@@ -59,15 +62,10 @@ namespace Server.Spells
             FinishSequence();
         }
 
-        private const double duree = 60;
         private void DoEffect(Mobile m)
         {
-            double value = (int)(Caster.Skills[SkillName.Providence].Value + Caster.Skills[SkillName.ArtMagique].Value) / 200 * 15;
-
-            if (value > 15)
-                value = 15;
-
-            m.VirtualArmorMod = (int)value;
+            double value = GetSpellScaling(Caster, Info.skillForCasting) * maxARbonus;
+            double duree = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
             new InternalTimer(m, (int)value, duree).Start();
 
@@ -77,24 +75,22 @@ namespace Server.Spells
 
         private class InternalTimer : Timer
         {
+            private ResistanceMod m_resMod;
             private Mobile m_Owner;
-            private int m_Value;
 
             public InternalTimer(Mobile caster, int value, double duree) : base(TimeSpan.FromSeconds(duree))
             {
                 Priority = TimerPriority.OneSecond;
 
                 m_Owner = caster;
-                m_Value = value;
+
+                m_resMod = new ResistanceMod(ResistanceType.Physical, (int)value);
+                m_Owner.AddResistanceMod(m_resMod);
             }
 
             protected override void OnTick()
             {
-                m_Owner.EndAction(typeof(DefensiveSpell));
-                m_Owner.VirtualArmorMod -= m_Value;
-
-                if (m_Owner.VirtualArmorMod < 0)
-                    m_Owner.VirtualArmorMod = 0;
+                m_Owner.RemoveResistanceMod(m_resMod);
 
                 m_Owner.SendMessage("Protection prend fin");
             }

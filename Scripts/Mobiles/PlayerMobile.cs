@@ -1977,33 +1977,6 @@ namespace Server.Mobiles
 			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
 				amount = (int)(amount * 1.25);
 
-			Mobile oath = Spells.BloodOathSpell.GetBloodOath( from );
-
-				/* Per EA's UO Herald Pub48 (ML):
-				 * ((resist spellsx10)/20 + 10=percentage of damage resisted)
-				 */
-
-			if ( oath == this )
-			{
-				amount = (int)(amount * 0.9);
-
-				/*if( amount > 15 && from is PlayerMobile )
-				{
-					amount = 15;
-				}*/
-
-				/*if( Core.ML )
-				{
-					from.Damage( (int)(amount * ( 1 - ((( from.Skills.Concentration.Value * .5 ) + 10) / 100 ))), this );
-				}
-				else
-				{*/
-					from.Damage( amount, this );
-				//}
-			}
-
-			
-
 			base.Damage( amount, from );
 		}
 

@@ -25,6 +25,8 @@ namespace Server.Spells
 				Reagent.Garlic
             );
 
+        private const double durationMax = 30;
+
 		public WallOfStoneSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
@@ -119,9 +121,7 @@ namespace Server.Spells
 				if ( Deleted )
 					return;
 
-                double duration = 30.0;
-
-                duration *= Spell.GetSpellScaling(caster, Info.skillForCasting);
+                double duration = durationMax * Spell.GetSpellScaling(caster, Info.skillForCasting);
 
                 m_Timer = new InternalTimer(this, TimeSpan.FromSeconds(duration));
 				m_Timer.Start();

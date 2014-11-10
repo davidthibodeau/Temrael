@@ -1018,20 +1018,6 @@ namespace Server.Mobiles
 			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
 				amount = (int)(amount * 1.25);
 
-			Mobile oath = Spells.BloodOathSpell.GetBloodOath( from );
-
-			if ( oath == this )
-			{
-				amount = (int)(amount * 0.9);
-
-                /*if (amount > 15) 
-                {
-                    amount = 15;
-                }*/
-
-				from.Damage( amount, from );
-			}
-
 			base.Damage( amount, from );
 
 			if ( SubdueBeforeTame && !Controlled )

@@ -16,10 +16,14 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Providence,
 				Reagent.MandrakeRoot,
-				Reagent.Nightshade);
+				Reagent.Nightshade
+                );
+
+        private static short durationMax = 60;
+        private static short bonusMax = 15;
 
 		public CunningSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
@@ -40,7 +44,10 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.AddStatBonus( Caster, m, StatType.Int );
+                int bonus = (int)(bonusMax * GetSpellScaling(Caster, Info.skillForCasting));
+                TimeSpan duration = TimeSpan.FromSeconds(durationMax * GetSpellScaling(Caster, Info.skillForCasting));
+
+                SpellHelper.AddStatBonus(Caster, m, StatType.Int, bonus, duration); SpellHelper.DisableSkillCheck = true;
 
 				m.FixedParticles( 0x375A, 10, 15, 5011, EffectLayer.Head );
 				m.PlaySound( 0x1EB );

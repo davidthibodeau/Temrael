@@ -17,12 +17,15 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(3),
                 SkillName.Ensorcellement,
 				Reagent.Nightshade,
 				Reagent.Garlic,
 				Reagent.SulfurousAsh
             );
+
+        private static short durationMax = 60;
+        private static short malusMax = 10;
 
 		public CurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
@@ -43,11 +46,12 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
+                int malus = (int)(malusMax * GetSpellScaling(Caster, Info.skillForCasting));
+                TimeSpan duration = TimeSpan.FromSeconds(durationMax * GetSpellScaling(Caster, Info.skillForCasting));
 
-				SpellHelper.AddStatCurse( Caster, m, StatType.Str ); SpellHelper.DisableSkillCheck = true;
-				SpellHelper.AddStatCurse( Caster, m, StatType.Dex );
-				SpellHelper.AddStatCurse( Caster, m, StatType.Int ); SpellHelper.DisableSkillCheck = false;
+                SpellHelper.AddStatCurse(Caster, m, StatType.Str, malus, duration); SpellHelper.DisableSkillCheck = true;
+                SpellHelper.AddStatCurse(Caster, m, StatType.Dex, malus, duration);
+                SpellHelper.AddStatCurse(Caster, m, StatType.Int, malus, duration); SpellHelper.DisableSkillCheck = false;
 
 				if ( m.Spell != null )
 					m.Spell.OnCasterHurt();

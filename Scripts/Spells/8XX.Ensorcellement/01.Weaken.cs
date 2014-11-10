@@ -9,6 +9,8 @@ namespace Server.Spells
         public static int m_SpellID { get { return 801; } } // TOCHANGE
 
         private static short s_Cercle = 1;
+        private static short durationMax = 60;
+        private static short malusMax = 15;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Faiblesse", "Des Mani",
@@ -16,7 +18,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Ensorcellement,
 				Reagent.Garlic,
 				Reagent.Nightshade
@@ -41,9 +43,10 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
+                int malus = (int)(malusMax * GetSpellScaling(Caster, SkillName.Providence));
+                TimeSpan duration = TimeSpan.FromSeconds(durationMax * GetSpellScaling(Caster, SkillName.Providence));
 
-				SpellHelper.AddStatCurse( Caster, m, StatType.Str );
+                SpellHelper.AddStatCurse(Caster, m, StatType.Str, malus, duration); SpellHelper.DisableSkillCheck = true;
 
 				if ( m.Spell != null )
 					m.Spell.OnCasterHurt();

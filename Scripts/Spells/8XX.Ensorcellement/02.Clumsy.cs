@@ -16,11 +16,14 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Ensorcellement,
 				Reagent.Bloodmoss,
 				Reagent.Nightshade
             );
+
+        private static short durationMax = 60;
+        private static short malusMax = 15;
 
 		public ClumsySpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
@@ -41,9 +44,10 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
+                int malus = (int)(malusMax * GetSpellScaling(Caster, Info.skillForCasting));
+                TimeSpan duration = TimeSpan.FromSeconds(durationMax * GetSpellScaling(Caster, Info.skillForCasting));
 
-				SpellHelper.AddStatCurse( Caster, m, StatType.Dex );
+                SpellHelper.AddStatCurse(Caster, m, StatType.Dex, malus, duration); SpellHelper.DisableSkillCheck = true;
 
 				if ( m.Spell != null )
 					m.Spell.OnCasterHurt();

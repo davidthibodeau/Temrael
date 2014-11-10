@@ -82,6 +82,15 @@ namespace Server.Spells
 			FinishSequence();
 		}
 
+        public static void GetOnHitEffect(Mobile atk, Mobile def, ref int damage)
+        {
+            if (GetBloodOath(atk) == def)
+            {
+                def.Damage((int)(damage * 0.25)); // Retourne 25% des dégâts.
+                damage = (int)(damage * 1.25);    // Augmente de 25% tous les dégâts.
+            }
+        }
+
 		private static Hashtable m_OathTable = new Hashtable();
 
 		public static Mobile GetBloodOath( Mobile m )

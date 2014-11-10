@@ -9,6 +9,8 @@ namespace Server.Spells
         public static int m_SpellID { get { return 405; } } // TOCHANGE
 
         private static short s_Cercle = 5;
+        private static short durationMax = 60;
+        private static short bonusMax = 15;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Agilité", "Ex Uus",
@@ -16,7 +18,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Providence,
 				Reagent.Bloodmoss,
 				Reagent.MandrakeRoot
@@ -41,7 +43,10 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.AddStatBonus( Caster, m, StatType.Dex );
+                int bonus = (int)(bonusMax * GetSpellScaling(Caster, Info.skillForCasting));
+                TimeSpan duration = TimeSpan.FromSeconds(durationMax * GetSpellScaling(Caster, Info.skillForCasting));
+
+                SpellHelper.AddStatBonus(Caster, m, StatType.Dex, bonus, duration); SpellHelper.DisableSkillCheck = true;
 
 				m.FixedParticles( 0x375A, 10, 15, 5010, EffectLayer.Waist );
 				m.PlaySound( 0x28E );

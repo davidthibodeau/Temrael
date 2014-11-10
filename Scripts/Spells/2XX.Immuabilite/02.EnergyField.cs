@@ -27,6 +27,8 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
+        private const double durationMax = 30;
+
 		public EnergyFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
@@ -74,9 +76,7 @@ namespace Server.Spells
 
                 Effects.PlaySound(p, Caster.Map, 0x20B);
 
-                double duration = 30;
-
-                duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
+                double duration = durationMax * Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				int itemID = eastToWest ? 0x3946 : 0x3956;
 

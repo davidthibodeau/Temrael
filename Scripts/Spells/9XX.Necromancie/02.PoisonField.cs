@@ -27,6 +27,9 @@ namespace Server.Spells
                 Reagent.SpidersSilk
             );
 
+
+        private const double durationMax = 30;
+
 		public PoisonFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
@@ -76,9 +79,7 @@ namespace Server.Spells
 
                 int itemID = eastToWest ? 0x3915 : 0x3922;
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Necromancie].Value * 0.4);
-
-                duration = SpellHelper.AdjustValue(Caster, duration);
+                double duration = durationMax * Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				for ( int i = -3; i <= 3; ++i )
 				{
@@ -173,7 +174,7 @@ namespace Server.Spells
 
                 Poison p;
 
-                double total = (m_Caster.Skills[SkillName.Necromancie].Value + m_Caster.Skills[SkillName.Necromancie].Value) / 2;
+                double total = m_Caster.Skills[SkillName.Necromancie].Value;
 
                 if (total >= 100)
                     p = Poison.Deadly;

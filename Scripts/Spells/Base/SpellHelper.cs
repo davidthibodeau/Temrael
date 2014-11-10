@@ -396,13 +396,9 @@ namespace Server.Spells
 
 			StatMod mod = target.GetStatMod( name );
 
-			if ( mod != null && mod.Offset < 0 )
+			if ( mod == null || mod.Offset < offset )
 			{
-				target.AddStatMod( new StatMod( type, name, mod.Offset + offset, duration ) );
-				return true;
-			}
-			else if ( mod == null || mod.Offset < offset )
-			{
+                target.RemoveStatMod(name);
 				target.AddStatMod( new StatMod( type, name, offset, duration ) );
 				return true;
 			}

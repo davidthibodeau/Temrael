@@ -450,36 +450,17 @@ namespace Server.Spells
         // Gère les effets liés à la magie lorsqu'un coup est donné, chez l'attaquant et le défenseur.
         public static int OnHitEffects(Mobile atk, Mobile def, int damage)
         {
-            // Bonus de dégât.
-            // CurseWeapon
-            if (CurseWeaponSpell.m_Table.Contains((BaseWeapon)atk.Weapon))
-            {
-                atk.Heal((int)(atk.Skills[SkillName.Alteration].Value / 200 * damage));
-            }
+            CurseWeaponSpell.GetOnHitEffect(atk, damage);
 
-            // Bonus de défense.
-            // Protection
-            if (def.MeleeDamageAbsorb > 0)
-            {
-                def.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
-
-                int value = def.MeleeDamageAbsorb;
-                if (value <= damage)
-                {
-                    damage = damage - value;
-                }
-                else
-                {
-                    def.MeleeDamageAbsorb -= (int)damage;
-                }
-            }
+            BloodOathSpell.GetOnHitEffect(atk, def, ref damage);
+            
             return damage;
         }
 
         const double ScalArtMag      = 0.5;// Bonus lié au skill ArtMagique.
-        const double ScalMainBranche = 0;  // Scaling sur le skill de la branche passée en paramètre.
+        const double ScalMainBranche = 0.3;  // Scaling sur le skill de la branche passée en paramètre.
         const double ScalScndBranche = 0;  // Scaling sur les skills des autres branches.
-        const double ScalInscription = 0.1;// Bonus lié au skill Inscription.
+        const double ScalInscription = 0.2;// Bonus lié au skill Inscription.
 
         public static double GetSpellScaling(Mobile atk, SkillName branche)
         {

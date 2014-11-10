@@ -24,6 +24,8 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
+        private static int durationMax = 10;
+
 		public ParalyzeSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
@@ -45,9 +47,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                double duration = 10;
-
-                duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
+                double duration = durationMax * Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
                 m.Paralyze(TimeSpan.FromSeconds(duration));
 
