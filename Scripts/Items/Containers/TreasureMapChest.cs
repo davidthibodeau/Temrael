@@ -17,9 +17,7 @@ namespace Server.Items
 
 		private static Type[] m_Artifacts = new Type[]
 		{
-			typeof( CandelabraOfSouls ), typeof( GoldBricks ),
-			typeof( BurglarsBandana ), typeof( DreadPirateHat ),typeof( GwennosHarp ), typeof( IolosLute ),
-            typeof( PolarBearMask ), typeof( VioletCourage ), typeof( HeartOfTheLion ),typeof( AlchemistsBauble )
+			
 		};
 
 		private int m_Level;
@@ -204,8 +202,6 @@ namespace Server.Items
 							int min, max;
 
 							GetRandomAOSStats( out attributeCount, out min, out max );
-
-							BaseRunicTool.ApplyAttributesTo( weapon, attributeCount, min, max );
 						}
 						else
 						{
@@ -226,8 +222,6 @@ namespace Server.Items
 							int min, max;
 
 							GetRandomAOSStats( out attributeCount, out min, out max );
-
-							BaseRunicTool.ApplyAttributesTo( armor, attributeCount, min, max );
 						}
 
 						cont.DropItem( item );
@@ -242,8 +236,6 @@ namespace Server.Items
 							int min, max;
 
 							GetRandomAOSStats( out attributeCount, out min, out  max );
-
-							BaseRunicTool.ApplyAttributesTo( hat, attributeCount, min, max );
 						}
 
 						cont.DropItem( item );
@@ -254,8 +246,6 @@ namespace Server.Items
 						int min, max;
 
 						GetRandomAOSStats( out attributeCount, out min, out max );
-
-						BaseRunicTool.ApplyAttributesTo( (BaseJewel)item, attributeCount, min, max );
 
 						cont.DropItem( item );
 					}

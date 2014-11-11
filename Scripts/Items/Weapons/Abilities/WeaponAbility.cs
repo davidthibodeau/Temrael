@@ -70,12 +70,6 @@ namespace Server.Items
 			if ( !Server.Spells.MindRotSpell.GetMindRotScalar( from, ref scalar ) )
 				scalar = 1.0;
 
-			// Lower Mana Cost = 40%
-			int lmc = Math.Min( AosAttributes.GetValue( from, AosAttribute.LowerManaCost ), 40 );
-
-			scalar -= (double)lmc / 100;
-			mana = (int)(mana * scalar);
-
 			// Using a special move within 3 seconds of the previous special move costs double mana 
 			if ( GetContext( from ) != null )
 				mana *= 2;
@@ -102,11 +96,6 @@ namespace Server.Items
 
 			if ( skill != null && skill.Base >= reqSkill )
 				return true;
-
-			/* <UBWS> */
-			if ( weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.Epee].Base >= reqSkill || from.Skills[SkillName.ArmeContondante].Base >= reqSkill || from.Skills[SkillName.ArmePerforante].Base >= reqSkill) )
-				return true;
-			/* </UBWS> */
 
 			if ( reqTactics )
 			{

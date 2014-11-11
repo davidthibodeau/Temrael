@@ -513,10 +513,7 @@ namespace Server.Spells
             //if (!Core.AOS)
             //    return NextSpellDelay;
 
-            int fcr = AosAttributes.GetValue(Caster, AosAttribute.CastRecovery);
-
-            if (fcr > 5)
-                fcr = 5;
+            int fcr = 0;
 
             //fcr -= ThunderstormSpell.GetCastRecoveryMalus(Caster);
 

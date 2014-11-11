@@ -36,10 +36,6 @@ namespace Server.Items
 		protected CraftResource m_Resource;
 		private int m_StrReq = -1;
 
-		private AosAttributes m_AosAttributes;
-		private AosArmorAttributes m_AosClothingAttributes;
-		private AosSkillBonuses m_AosSkillBonuses;
-
         private Layer m_BaseLayer;
 
         public virtual bool Disguise { get { return false; } }
@@ -123,27 +119,6 @@ namespace Server.Items
 		{
 			get{ return m_Resource; }
 			set{ m_Resource = value; Hue = CraftResources.GetHue( m_Resource ); InvalidateProperties(); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosAttributes Attributes
-		{
-			get{ return m_AosAttributes; }
-			set{}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosArmorAttributes ClothingAttributes
-		{
-			get{ return m_AosClothingAttributes; }
-			set{}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosSkillBonuses SkillBonuses
-		{
-			get{ return m_AosSkillBonuses; }
-			set{}
 		}
 
 		public virtual int ArtifactRarity{ get{ return 0; } }
@@ -242,58 +217,20 @@ namespace Server.Items
 
 		public int GetLowerStatReq()
 		{
-			if ( !Core.AOS )
-				return 0;
-
-			return m_AosClothingAttributes.LowerStatReq;
+            return 0;
 		}
 
-		public override void OnAdded(IEntity parent)
-		{
-			Mobile mob = parent as Mobile;
+        public override void OnRemoved(IEntity parent)
+        {
 
-			if ( mob != null )
-			{
-				if ( Core.AOS )
-					m_AosSkillBonuses.AddTo( mob );
+            if (parent is TMobile)
+            {
+                TMobile from = (TMobile)parent;
 
-				mob.CheckStatTimers();
-			}
-
-			base.OnAdded( parent );
-		}
-
-		public override void OnRemoved(IEntity parent)
-		{
-			Mobile mob = parent as Mobile;
-
-			if ( mob != null )
-			{
-				if ( Core.AOS )
-					m_AosSkillBonuses.Remove();
-
-				string modName = this.Serial.ToString();
-
-				mob.RemoveStatMod( modName + "Str" );
-				mob.RemoveStatMod( modName + "Dex" );
-				mob.RemoveStatMod( modName + "Int" );
-
-                if (parent is TMobile)
-                {
-                    TMobile from = (TMobile)parent;
-                    from.BonusHits -= Attributes.BonusHits;
-                    from.BonusStam -= Attributes.BonusStam;
-                    from.BonusMana -= Attributes.BonusMana;
-
-                    if (Disguise)
-                        from.Identities.DisguiseHidden = false;
-                }
-
-				mob.CheckStatTimers();
-			}
-
-			base.OnRemoved( parent );
-		}
+                if (Disguise)
+                    from.Identities.DisguiseHidden = false;
+            }
+        }
 
 		public virtual int OnHit( BaseWeapon weapon, int damageTaken )
 		{
@@ -304,51 +241,44 @@ namespace Server.Items
 			if ( damageTaken < 0 ) 
 				damageTaken = 0;
 
-			if ( 25 > Utility.Random( 100 ) ) // 25% chance to lower durability
-			{
-				if ( Core.AOS && m_AosClothingAttributes.SelfRepair > Utility.Random( 10 ) )
-				{
-					Durability += 2;
-				}
-				else
-				{
-					int wear;
+            if (25 > Utility.Random(100)) // 25% chance to lower durability
+            {
+                int wear;
 
-					if ( weapon.Type == WeaponType.Bashing )
-						wear = Absorbed / 2;
-					else
-						wear = Utility.Random( 2 );
+                if (weapon.Type == WeaponType.Bashing)
+                    wear = Absorbed / 2;
+                else
+                    wear = Utility.Random(2);
 
-					if ( wear > 0 && m_MaxDurability > 0 )
-					{
-						if ( m_Durability >= wear )
-						{
-							Durability -= wear;
-							wear = 0;
-						}
-						else
-						{
-							wear -= Durability;
-							Durability = 0;
-						}
+                if (wear > 0 && m_MaxDurability > 0)
+                {
+                    if (m_Durability >= wear)
+                    {
+                        Durability -= wear;
+                        wear = 0;
+                    }
+                    else
+                    {
+                        wear -= Durability;
+                        Durability = 0;
+                    }
 
-						if ( wear > 0 )
-						{
-							if ( m_MaxDurability > wear )
-							{
-								MaxDurability -= wear;
+                    if (wear > 0)
+                    {
+                        if (m_MaxDurability > wear)
+                        {
+                            MaxDurability -= wear;
 
-								if ( Parent is Mobile )
-									((Mobile)Parent).LocalOverheadMessage( MessageType.Regular, 0x3B2, 1061121 ); // Your equipment is severely damaged.
-							}
-							else
-							{
-								Delete();
-							}
-						}
-					}
-				}
-			}
+                            if (Parent is Mobile)
+                                ((Mobile)Parent).LocalOverheadMessage(MessageType.Regular, 0x3B2, 1061121); // Your equipment is severely damaged.
+                        }
+                        else
+                        {
+                            Delete();
+                        }
+                    }
+                }
+            }
 
 			return damageTaken;
 		}
@@ -366,10 +296,6 @@ namespace Server.Items
 			m_Quality = ClothingQuality.Regular;
 
 			m_Durability = m_MaxDurability = Utility.RandomMinMax( InitMinHits, InitMaxHits );
-
-			m_AosAttributes = new AosAttributes( this );
-			m_AosClothingAttributes = new AosArmorAttributes( this );
-			m_AosSkillBonuses = new AosSkillBonuses( this );
 		}
 
 		public override void OnAfterDuped( Item newItem )
@@ -378,27 +304,15 @@ namespace Server.Items
 
 			if ( clothing == null )
 				return;
-
-			clothing.m_AosAttributes = new AosAttributes( newItem, m_AosAttributes );
-			clothing.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
-			clothing.m_AosClothingAttributes = new AosArmorAttributes( newItem, m_AosClothingAttributes );
 		}
 
 		public BaseClothing( Serial serial ) : base( serial )
 		{
 		}
 
-		public override bool AllowEquipedCast( Mobile from )
-		{
-			if ( base.AllowEquipedCast( from ) )
-				return true;
-
-			return ( m_AosAttributes.SpellChanneling != 0 );
-		}
-
 		public void UnscaleDurability()
 		{
-			int scale = 100 + m_AosClothingAttributes.DurabilityBonus;
+            int scale = 100;
 
 			m_Durability = ( ( m_Durability * 100 ) + ( scale - 1 ) ) / scale;
 			m_MaxDurability = ( ( m_MaxDurability * 100 ) + ( scale - 1 ) ) / scale;
@@ -408,7 +322,7 @@ namespace Server.Items
 
 		public void ScaleDurability()
 		{
-			int scale = 100 + m_AosClothingAttributes.DurabilityBonus;
+            int scale = 100;
 
 			m_Durability = ( ( m_Durability * scale ) + 99 ) / 100;
 			m_MaxDurability = ( ( m_MaxDurability * scale ) + 99 ) / 100;
@@ -527,99 +441,7 @@ namespace Server.Items
                 if (m_CrafterName != null)
                     list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriqué par: ~1_NAME~
 
-                if (m_AosSkillBonuses != null)
-                    m_AosSkillBonuses.GetProperties(list, couleur);
-
-                int prop;
-
-                //if ((prop = ArtifactRarity) > 0)
-                //  list.Add(1061078, prop.ToString()); // artifact rarity ~1_val~
-
-                if ((prop = m_AosAttributes.AttackChance) != 0)
-                    list.Add(1060401, "{0}\t{1}", couleur, prop.ToString()); // hit chance increase ~1_val~%
-
-                if ((prop = m_AosAttributes.WeaponDamage) != 0)
-                    list.Add(1060402, "{0}\t{1}", couleur, prop.ToString()); // damage increase ~1_val~%
-
-                if ((prop = m_AosAttributes.DefendChance) != 0)
-                    list.Add(1060408, "{0}\t{1}", couleur, prop.ToString()); // defense chance increase ~1_val~%
-
-                if ((prop = m_AosAttributes.WeaponSpeed) != 0)
-                    list.Add(1060486, "{0}\t{1}", couleur, prop.ToString()); // swing speed increase ~1_val~%
-
-                if ((prop = m_AosAttributes.ReflectPhysical) != 0)
-                    list.Add(1060442, "{0}\t{1}", couleur, prop.ToString()); // reflect physical damage ~1_val~%
-
-                if ((prop = m_AosAttributes.BonusStr) != 0)
-                    list.Add(1060485, "{0}\t{1}", couleur, prop.ToString()); // strength bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusDex) != 0)
-                    list.Add(1060409, "{0}\t{1}", couleur, prop.ToString()); // dexterity bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusInt) != 0)
-                    list.Add(1060432, "{0}\t{1}", couleur, prop.ToString()); // intelligence bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusHits) != 0)
-                    list.Add(1060431, "{0}\t{1}", couleur, prop.ToString()); // hit point increase ~1_val~
-
-                if ((prop = m_AosAttributes.BonusStam) != 0)
-                    list.Add(1060484, "{0}\t{1}", couleur, prop.ToString()); // stamina increase ~1_val~
-
-                if ((prop = m_AosAttributes.BonusMana) != 0)
-                    list.Add(1060439, "{0}\t{1}", couleur, prop.ToString()); // mana increase ~1_val~
-
-                if ((prop = m_AosAttributes.RegenHits) != 0)
-                    list.Add(1060444, "{0}\t{1}", couleur, prop.ToString()); // hit point regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.RegenStam) != 0)
-                    list.Add(1060443, "{0}\t{1}", couleur, prop.ToString()); // stamina regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.RegenMana) != 0)
-                    list.Add(1060440, "{0}\t{1}", couleur, prop.ToString()); // mana regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.EnhancePotions) != 0)
-                    list.Add(1060411, "{0}\t{1}", couleur, prop.ToString()); // enhance potions ~1_val~%
-
-                if ((prop = m_AosAttributes.CastRecovery) != 0)
-                    list.Add(1060412, "{0}\t{1}", couleur, prop.ToString()); // faster cast recovery ~1_val~
-
-                if ((prop = m_AosAttributes.CastSpeed) != 0)
-                    list.Add(1060413, "{0}\t{1}", couleur, prop.ToString()); // faster casting ~1_val~
-
-                if ((prop = m_AosAttributes.LowerManaCost) != 0)
-                    list.Add(1060433, "{0}\t{1}", couleur, prop.ToString()); // lower mana cost ~1_val~%
-
-                if ((prop = m_AosAttributes.LowerRegCost) != 0)
-                    list.Add(1060434, "{0}\t{1}", couleur, prop.ToString()); // lower reagent cost ~1_val~%
-
-                //if ((prop = m_AosAttributes.Luck) != 0)
-                //    list.Add("<h3><basefont color=#" + couleur + ">Chance:" + prop.ToString() + "<basefont></h3>"); // luck ~1_val~
-
-                //if ((prop = m_AosAttributes.SpellChanneling) != 0)
-                //    list.Add(1060482); // spell channeling
-
-                if ((prop = m_AosAttributes.SpellDamage) != 0)
-                    list.Add(1060483, "{0}\t{1}", couleur, prop.ToString()); // spell damage increase ~1_val~%
-
-                if ((prop = m_AosAttributes.NightSight) != 0)
-                    list.Add(1060434, couleur); // night sight
-
-                if ((prop = m_AosClothingAttributes.MageArmor) != 0)
-                    list.Add(1060437, couleur); // mage armor
-
                 AddARProperties(list, couleur);
-
-                if ((prop = m_AosClothingAttributes.LowerStatReq) != 0)
-                    list.Add(1060435, "{0}\t{1}", couleur, prop.ToString()); // lower requirements ~1_val~%
-
-                if ((prop = ComputeStatReq(StatType.Str)) > 0)
-                    list.Add(1061170, "{0}\t{1}", couleur, prop.ToString()); // strength requirement ~1_val~
-
-                if ((prop = m_AosClothingAttributes.SelfRepair) != 0)
-                    list.Add(1060450, "{0}\t{1}", couleur, prop.ToString()); // self repair ~1_val~
-
-                if ((prop = m_AosClothingAttributes.DurabilityBonus) > 0)
-                    list.Add(1060410, "{0}\t{1}", couleur, prop.ToString()); // durability ~1_val~%
 
                 if (m_Durability >= 0 && m_MaxDurability > 0)
                     list.Add(1060639, "{0}t{1}t{2}", couleur, m_Durability, m_MaxDurability); // durability ~1_val~ / ~2_val~
@@ -712,17 +534,14 @@ namespace Server.Items
 		{
 			None				= 0x00000000,
 			Resource			= 0x00000001,
-			Attributes			= 0x00000002,
-			ClothingAttributes	= 0x00000004,
-			SkillBonuses		= 0x00000008,
-			Resistances			= 0x00000010,
-			MaxDurability		= 0x00000020,
-			Durability			= 0x00000040,
-			PlayerConstructed	= 0x00000080,
-			Crafter				= 0x00000100,
-			Quality				= 0x00000200,
-			StrReq				= 0x00000400,
-            CrafterName         = 0x00000800
+			Resistances			= 0x00000002,
+			MaxDurability		= 0x00000004,
+			Durability			= 0x00000008,
+			PlayerConstructed	= 0x00000010,
+			Crafter				= 0x00000020,
+			Quality				= 0x00000040,
+			StrReq				= 0x00000080,
+            CrafterName         = 0x00000100
 
 		}
 
@@ -737,9 +556,6 @@ namespace Server.Items
 			SaveFlag flags = SaveFlag.None;
 
 			SetSaveFlag( ref flags, SaveFlag.Resource,			m_Resource != DefaultResource );
-			SetSaveFlag( ref flags, SaveFlag.Attributes,		!m_AosAttributes.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.ClothingAttributes,!m_AosClothingAttributes.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.MaxDurability,		m_MaxDurability != 0 );
 			SetSaveFlag( ref flags, SaveFlag.Durability,			m_Durability != 0 );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed,	m_PlayerConstructed != false );
@@ -753,15 +569,6 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.Resource ) )
 				writer.WriteEncodedInt( (int) m_Resource );
-
-			if ( GetSaveFlag( flags, SaveFlag.Attributes ) )
-				m_AosAttributes.Serialize( writer );
-
-			if ( GetSaveFlag( flags, SaveFlag.ClothingAttributes ) )
-				m_AosClothingAttributes.Serialize( writer );
-
-			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
-				m_AosSkillBonuses.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.MaxDurability ) )
 				writer.WriteEncodedInt( (int) m_MaxDurability );
@@ -797,27 +604,6 @@ namespace Server.Items
             else
                 m_Resource = DefaultResource;
 
-            if (GetSaveFlag(flags, SaveFlag.Attributes))
-            {
-                m_AosAttributes = new AosAttributes(this, reader);
-                m_AosAttributes = new AosAttributes(this);
-            }
-            else
-                m_AosAttributes = new AosAttributes(this);
-
-            if (GetSaveFlag(flags, SaveFlag.ClothingAttributes))
-            {
-                m_AosClothingAttributes = new AosArmorAttributes(this, reader);
-                m_AosClothingAttributes = new AosArmorAttributes(this);
-            }
-            else
-                m_AosClothingAttributes = new AosArmorAttributes(this);
-
-            if (GetSaveFlag(flags, SaveFlag.SkillBonuses))
-                m_AosSkillBonuses = new AosSkillBonuses(this, reader);
-            else
-                m_AosSkillBonuses = new AosSkillBonuses(this);
-
             if (GetSaveFlag(flags, SaveFlag.MaxDurability))
                 m_MaxDurability = reader.ReadEncodedInt();
 
@@ -850,9 +636,6 @@ namespace Server.Items
 
             if (parent != null)
             {
-                if (Core.AOS)
-                    m_AosSkillBonuses.AddTo(parent);
-
                 parent.CheckStatTimers();
             }
         }

@@ -3489,11 +3489,6 @@ namespace Server.Mobiles
 				int attributeCount, min, max;
 				GetRandomAOSStats( minLevel, maxLevel, out attributeCount, out min, out max );
 
-				if ( item is BaseArmor )
-					BaseRunicTool.ApplyAttributesTo( (BaseArmor)item, attributeCount, min, max );
-				else if ( item is BaseJewel )
-					BaseRunicTool.ApplyAttributesTo( (BaseJewel)item, attributeCount, min, max );
-
 				PackItem( item );
 			}
 			else
@@ -3610,11 +3605,6 @@ namespace Server.Mobiles
 
 				int attributeCount, min, max;
 				GetRandomAOSStats( minLevel, maxLevel, out attributeCount, out min, out max );
-
-				if ( item is BaseWeapon )
-					BaseRunicTool.ApplyAttributesTo( (BaseWeapon)item, attributeCount, min, max );
-				else if ( item is BaseJewel )
-					BaseRunicTool.ApplyAttributesTo( (BaseJewel)item, attributeCount, min, max );
 
 				PackItem( item );
 			}

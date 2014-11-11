@@ -105,8 +105,6 @@ namespace Server.Items
         private bool m_PlayerConstructed;
         private int m_PhysicalBonus, m_MagieBonus;
 
-        private AosAttributes m_AosAttributes;
-
         // Bonus pouvant être changé IG.
         private int m_StrBonus = -1, m_DexBonus = -1, m_IntBonus = -1;
         private int m_StrReq = -1, m_DexReq = -1, m_IntReq = -1;
@@ -265,13 +263,6 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public AosAttributes Attributes
-        {
-            get { return m_AosAttributes; }
-            set { }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
         public int PhysicalBonus { get { return m_PhysicalBonus; } set { m_PhysicalBonus = value; InvalidateProperties(); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -375,33 +366,28 @@ namespace Server.Items
         [Flags]
         private enum SaveFlag
         {
-            None = 0x00000000,
-            Attributes = 0x00000001,
-            ArmorAttributes = 0x00000002,
-            PhysicalBonus = 0x00000004,
-            ContondantBonus = 0x00000008,
-            TranchantBonus = 0x00000010,
-            PerforantBonus = 0x00000020,
-            MagieBonus = 0x00000040,
-            Identified = 0x00000080,
-            MaxDurability = 0x00000100,
-            Durability = 0x00000200,
-            Crafter = 0x00000400,
-            Quality = 0x00000800,
-            DurabilityLevel = 0x00001000,
-            Protection = 0x00002000,
-            Resource = 0x00004000,
-            BaseArmor = 0x00008000,
-            StrBonus = 0x00010000,
-            DexBonus = 0x00020000,
-            IntBonus = 0x00040000,
-            StrReq = 0x00080000,
-            DexReq = 0x00100000,
-            IntReq = 0x00200000,
-            MedAllowance = 0x00400000,
-            SkillBonuses = 0x00800000,
-            PlayerConstructed = 0x01000000,
-            CrafterName = 0x02000000
+            None              = 0x00000000,
+            PhysicalBonus     = 0x00000001,
+            MagieBonus        = 0x00000002,
+            Identified        = 0x00000004,
+            MaxDurability     = 0x00000008,
+            Durability        = 0x00000010,
+            Crafter           = 0x00000020,
+            Quality           = 0x00000040,
+            DurabilityLevel   = 0x00000080,
+            Protection        = 0x00000100,
+            Resource          = 0x00000200,
+            BaseArmor         = 0x00000400,
+            StrBonus          = 0x00000800,
+            DexBonus          = 0x00001000,
+            IntBonus          = 0x00002000,
+            StrReq            = 0x00004000,
+            DexReq            = 0x00008000,
+            IntReq            = 0x00010000,
+            MedAllowance      = 0x00020000,
+            SkillBonuses      = 0x00040000,
+            PlayerConstructed = 0x00080000,
+            CrafterName       = 0x00100000
         }
 
         public override void Serialize(GenericWriter writer)
@@ -412,7 +398,6 @@ namespace Server.Items
 
             SaveFlag flags = SaveFlag.None;
 
-            SetSaveFlag(ref flags, SaveFlag.Attributes, !m_AosAttributes.IsEmpty);
             SetSaveFlag(ref flags, SaveFlag.PhysicalBonus, m_PhysicalBonus != 0);
             SetSaveFlag(ref flags, SaveFlag.MagieBonus, m_MagieBonus != 0);
             SetSaveFlag(ref flags, SaveFlag.MaxDurability, m_MaxDurability != 0);
@@ -429,9 +414,6 @@ namespace Server.Items
             SetSaveFlag(ref flags, SaveFlag.PlayerConstructed, m_PlayerConstructed != false);
 
             writer.WriteEncodedInt((int)flags);
-
-            if (GetSaveFlag(flags, SaveFlag.Attributes))
-                m_AosAttributes.Serialize(writer);
 
             if (GetSaveFlag(flags, SaveFlag.PhysicalBonus))
                 writer.WriteEncodedInt((int)m_PhysicalBonus);
@@ -483,11 +465,6 @@ namespace Server.Items
             int version = reader.ReadInt();
 
             SaveFlag flags = (SaveFlag)reader.ReadEncodedInt();
-
-            if (GetSaveFlag(flags, SaveFlag.Attributes))
-                m_AosAttributes = new AosAttributes(this, reader);
-            else
-                m_AosAttributes = new AosAttributes(this);
 
             if (GetSaveFlag(flags, SaveFlag.PhysicalBonus))
                 m_PhysicalBonus = reader.ReadEncodedInt();
@@ -549,26 +526,6 @@ namespace Server.Items
 
             if (GetSaveFlag(flags, SaveFlag.PlayerConstructed))
                 m_PlayerConstructed = true;
-
-            int strBonus = ComputeStatBonus(StatType.Str);
-            int dexBonus = ComputeStatBonus(StatType.Dex);
-            int intBonus = ComputeStatBonus(StatType.Int);
-
-            if (Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0))
-            {
-                Mobile m = (Mobile)Parent;
-
-                string modName = Serial.ToString();
-
-                if (strBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Str, modName + "Str", strBonus, TimeSpan.Zero));
-
-                if (dexBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero));
-
-                if (intBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
-            }
 
             if (Parent is Mobile)
                 ((Mobile)Parent).CheckStatTimers();
@@ -658,8 +615,6 @@ namespace Server.Items
             m_Durability = m_MaxDurability = Utility.RandomMinMax(InitMinHits, InitMaxHits);
 
             this.Layer = (Layer)ItemData.Quality;
-
-            m_AosAttributes = new AosAttributes(this);
         }
         #endregion
 
@@ -675,16 +630,6 @@ namespace Server.Items
                 v = IntRequirement;
 
             return v;
-        }
-
-        public int ComputeStatBonus(StatType type)
-        {
-            if (type == StatType.Str)
-                return StrBonus + Attributes.BonusStr;
-            else if (type == StatType.Dex)
-                return DexBonus + Attributes.BonusDex;
-            else
-                return IntBonus + Attributes.BonusInt;
         }
 
         public override bool CanEquip(Mobile from)
@@ -711,21 +656,21 @@ namespace Server.Items
                 }
                 else
                 {
-                    int strBonus = ComputeStatBonus(StatType.Str), strReq = ComputeStatReq(StatType.Str);
-                    int dexBonus = ComputeStatBonus(StatType.Dex), dexReq = ComputeStatReq(StatType.Dex);
-                    int intBonus = ComputeStatBonus(StatType.Int), intReq = ComputeStatReq(StatType.Int);
+                    int strReq = ComputeStatReq(StatType.Str);
+                    int dexReq = ComputeStatReq(StatType.Dex);
+                    int intReq = ComputeStatReq(StatType.Int);
 
-                    if (from.RawDex < dexReq || (from.Dex + dexBonus) < 1)
+                    if (from.RawDex < dexReq || (from.Dex) < 1)
                     {
                         from.SendLocalizedMessage(502077); // You do not have enough dexterity to equip this item.
                         return false;
                     }
-                    else if (from.RawStr < strReq || (from.Str + strBonus) < 1)
+                    else if (from.RawStr < strReq || (from.Str) < 1)
                     {
                         from.SendLocalizedMessage(500213); // You are not strong enough to equip that.
                         return false;
                     }
-                    else if (from.RawInt < intReq || (from.Int + intBonus) < 1)
+                    else if (from.RawInt < intReq || (from.Int) < 1)
                     {
                         from.SendMessage("You are not smart enough to equip that.");
                         return false;
@@ -754,24 +699,6 @@ namespace Server.Items
         {
             from.CheckStatTimers();
 
-            int strBonus = m_AosAttributes.BonusStr;
-            int dexBonus = m_AosAttributes.BonusDex + BaseDexBonus;
-            int intBonus = m_AosAttributes.BonusInt;
-
-            if (strBonus != 0 || dexBonus != 0 || intBonus != 0)
-            {
-                string modName = this.Serial.ToString();
-
-                if (strBonus != 0)
-                    from.AddStatMod(new StatMod(StatType.Str, modName + "Str", strBonus, TimeSpan.Zero));
-
-                if (dexBonus != 0)
-                    from.AddStatMod(new StatMod(StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero));
-
-                if (intBonus != 0)
-                    from.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
-            }
-
             return base.OnEquip(from);
         }
 
@@ -780,21 +707,7 @@ namespace Server.Items
             if (parent is Mobile)
             {
                 Mobile m = (Mobile)parent;
-                string modName = this.Serial.ToString();
-
-                m.RemoveStatMod(modName + "Str");
-                m.RemoveStatMod(modName + "Dex");
-                m.RemoveStatMod(modName + "Int");
-
-                if (parent is TMobile)
-                {
-                    TMobile from = (TMobile)parent;
-                    from.BonusHits -= Attributes.BonusHits;
-                    from.BonusStam -= Attributes.BonusStam;
-                    from.BonusMana -= Attributes.BonusMana;
-                }
-
-                ((Mobile)parent).Delta(MobileDelta.Armor); // Tell them armor rating has changed
+                m.Delta(MobileDelta.Armor); // Tell them armor rating has changed
                 m.CheckStatTimers();
             }
 
@@ -936,16 +849,6 @@ namespace Server.Items
             }
         }
 
-        public override void OnAfterDuped(Item newItem)
-        {
-            BaseArmor armor = newItem as BaseArmor;
-
-            if (armor == null)
-                return;
-
-            armor.m_AosAttributes = new AosAttributes(newItem, m_AosAttributes);
-        }
-
         #region OnClick infos & OnHover
         private string GetNameString()
         {
@@ -1008,81 +911,9 @@ namespace Server.Items
                     list.Add(1041350); // faction item
                 #endregion
 
-                int prop;
-
-                /*if ((prop = ArtifactRarity) > 0)
-                    list.Add(1061078, prop.ToString()); // artifact rarity ~1_val~*/
-
-                if ((prop = m_AosAttributes.AttackChance) != 0)
-                    list.Add(1060401, "{0}\t{1}", couleur, prop.ToString()); // hit chance increase ~1_val~%
-
-                if ((prop = m_AosAttributes.WeaponDamage) != 0)
-                    list.Add(1060402, "{0}\t{1}", couleur, prop.ToString()); // damage increase ~1_val~%
-
-                if ((prop = m_AosAttributes.DefendChance) != 0)
-                    list.Add(1060408, "{0}\t{1}", couleur, prop.ToString()); // defense chance increase ~1_val~%
-
-                if ((prop = m_AosAttributes.WeaponSpeed) != 0)
-                    list.Add(1060486, "{0}\t{1}", couleur, prop.ToString()); // swing speed increase ~1_val~%
-
-                if ((prop = m_AosAttributes.ReflectPhysical) != 0)
-                    list.Add(1060442, "{0}\t{1}", couleur, prop.ToString()); // reflect physical damage ~1_val~%
-
-                if ((prop = m_AosAttributes.BonusStr) != 0)
-                    list.Add(1060485, "{0}\t{1}", couleur, prop.ToString()); // strength bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusDex) != 0)
-                    list.Add(1060409, "{0}\t{1}", couleur, prop.ToString()); // dexterity bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusInt) != 0)
-                    list.Add(1060432, "{0}\t{1}", couleur, prop.ToString()); // intelligence bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusHits) != 0)
-                    list.Add(1060431, "{0}\t{1}", couleur, prop.ToString()); // hit point increase ~1_val~
-
-                if ((prop = m_AosAttributes.BonusStam) != 0)
-                    list.Add(1060484, "{0}\t{1}", couleur, prop.ToString()); // stamina increase ~1_val~
-
-                if ((prop = m_AosAttributes.BonusMana) != 0)
-                    list.Add(1060439, "{0}\t{1}", couleur, prop.ToString()); // mana increase ~1_val~
-
-                if ((prop = m_AosAttributes.RegenHits) != 0)
-                    list.Add(1060444, "{0}\t{1}", couleur, prop.ToString()); // hit point regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.RegenStam) != 0)
-                    list.Add(1060443, "{0}\t{1}", couleur, prop.ToString()); // stamina regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.RegenMana) != 0)
-                    list.Add(1060440, "{0}\t{1}", couleur, prop.ToString()); // mana regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.EnhancePotions) != 0)
-                    list.Add(1060411, "{0}\t{1}", couleur, prop.ToString()); // enhance potions ~1_val~%
-
-                if ((prop = m_AosAttributes.CastRecovery) != 0)
-                    list.Add(1060412, "{0}\t{1}", couleur, prop.ToString()); // faster cast recovery ~1_val~
-
-                if ((prop = m_AosAttributes.CastSpeed) != 0)
-                    list.Add(1060413, "{0}\t{1}", couleur, prop.ToString()); // faster casting ~1_val~
-
-                if ((prop = m_AosAttributes.LowerManaCost) != 0)
-                    list.Add(1060433, "{0}\t{1}", couleur, prop.ToString()); // lower mana cost ~1_val~%
-
-                if ((prop = m_AosAttributes.LowerRegCost) != 0)
-                    list.Add(1060434, "{0}\t{1}", couleur, prop.ToString()); // lower reagent cost ~1_val~%
-
-                //if ((prop = m_AosAttributes.Luck) != 0)
-                //    list.Add("<h3><basefont color=#" + couleur + ">Chance:" + prop.ToString() + "<basefont></h3>"); // luck ~1_val~
-
-                //if ((prop = m_AosAttributes.SpellChanneling) != 0)
-                //    list.Add(1060482); // spell channeling
-
-                if ((prop = m_AosAttributes.SpellDamage) != 0)
-                    list.Add(1060483, "{0}\t{1}", couleur, prop.ToString()); // spell damage increase ~1_val~%
-
-                if ((prop = m_AosAttributes.NightSight) != 0)
-                    list.Add(1060434, couleur); // night sight
-
                 AddARProperties(list, couleur);
+
+                int prop;
 
                 if ((prop = ComputeStatReq(StatType.Str)) > 0)
                     list.Add(1061170, "{0}\t{1}", couleur, prop.ToString()); // strength requirement ~1_val~
@@ -1203,9 +1034,6 @@ namespace Server.Items
                     case 1: m_MagieBonus--; break;
                 }
             }
-
-            if (Core.AOS && tool is BaseRunicTool)
-                ((BaseRunicTool)tool).ApplyAttributesTo(this);
 
             return quality;
         }

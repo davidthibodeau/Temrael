@@ -11,18 +11,10 @@ namespace Server.Items
 		public override int DefaultMaxWeight{ get{ return 50; } }
 		public override double DefaultWeight{ get{ return 2.0; } }
 
-		private AosAttributes m_Attributes;
 		private int m_Capacity;
 		private int m_LowerAmmoCost;
 		private int m_WeightReduction;
 		private int m_DamageIncrease;
-
-		[CommandProperty( AccessLevel.Batisseur)]
-		public AosAttributes Attributes
-		{
-			get{ return m_Attributes; }
-			set{}
-		}
 
 		[CommandProperty( AccessLevel.Batisseur)]
 		public int Capacity
@@ -84,23 +76,11 @@ namespace Server.Items
 			Capacity = 500;
 			Layer = Layer.Cloak;
 
-			m_Attributes = new AosAttributes( this );
-
 			DamageIncrease = 10;
 		}
 
 		public BaseQuiver( Serial serial ) : base( serial )
 		{
-		}
-
-		public override void OnAfterDuped( Item newItem )
-		{
-			BaseQuiver quiver = newItem as BaseQuiver;
-
-			if ( quiver == null )
-				return;
-
-			quiver.m_Attributes = new AosAttributes( newItem, m_Attributes );
 		}
 
 		public override void  UpdateTotal( Item sender, TotalType type, int delta )
@@ -191,26 +171,6 @@ namespace Server.Items
 
 			InvalidateWeight();
 		}
-		
-		public override void OnAdded(IEntity parent)
-		{
-			if ( parent is Mobile )
-			{
-				Mobile mob = (Mobile) parent;
-
-				m_Attributes.AddStatBonuses( mob );
-			}
-		}
-		
-		public override void OnRemoved(IEntity parent)
-		{
-			if ( parent is Mobile )
-			{
-				Mobile mob = (Mobile) parent;
-
-				m_Attributes.RemoveStatBonuses( mob );
-			}
-		}
 
 		public override void GetProperties( ObjectPropertyList list )
 		{
@@ -267,72 +227,6 @@ namespace Server.Items
 
 			list.Add( 1075085 ); // Requirement: Mondain's Legacy
 
-			if ( (prop = m_Attributes.DefendChance) != 0 )
-				list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
-
-			if ( (prop = m_Attributes.BonusDex) != 0 )
-				list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
-
-			if ( (prop = m_Attributes.EnhancePotions) != 0 )
-				list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
-
-			if ( (prop = m_Attributes.CastRecovery) != 0 )
-				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
-
-			if ( (prop = m_Attributes.CastSpeed) != 0 )
-				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
-
-			if ( (prop = m_Attributes.AttackChance) != 0 )
-				list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
-
-			if ( (prop = m_Attributes.BonusHits) != 0 )
-				list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
-
-			if ( (prop = m_Attributes.BonusInt) != 0 )
-				list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
-
-			if ( (prop = m_Attributes.LowerManaCost) != 0 )
-				list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
-
-			if ( (prop = m_Attributes.LowerRegCost) != 0 )
-				list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%	
-
-			if ( (prop = m_Attributes.Luck) != 0 )
-				list.Add( 1060436, prop.ToString() ); // luck ~1_val~
-
-			if ( (prop = m_Attributes.BonusMana) != 0 )
-				list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
-
-			if ( (prop = m_Attributes.RegenMana) != 0 )
-				list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
-
-			if ( (prop = m_Attributes.NightSight) != 0 )
-				list.Add( 1060441 ); // night sight
-
-			if ( (prop = m_Attributes.ReflectPhysical) != 0 )
-				list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
-
-			if ( (prop = m_Attributes.RegenStam) != 0 )
-				list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
-
-			if ( (prop = m_Attributes.RegenHits) != 0 )
-				list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
-
-			if ( (prop = m_Attributes.SpellDamage) != 0 )
-				list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
-
-			if ( (prop = m_Attributes.BonusStam) != 0 )
-				list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
-
-			if ( (prop = m_Attributes.BonusStr) != 0 )
-				list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
-
-			if ( (prop = m_Attributes.WeaponSpeed) != 0 )
-				list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
-
-			if ( (prop = m_LowerAmmoCost) > 0 )
-				list.Add( 1075208, prop.ToString() ); // Lower Ammo Cost ~1_Percentage~%
-
 			double weight = 0;
 
 			if ( ammo != null )
@@ -359,14 +253,13 @@ namespace Server.Items
 		private enum SaveFlag
 		{
 			None				= 0x00000000,
-			Attributes			= 0x00000001,
-			DamageModifier		= 0x00000002,
-			LowerAmmoCost		= 0x00000004,
-			WeightReduction		= 0x00000008,
-			Crafter				= 0x00000010,
-			Quality				= 0x00000020,
-			Capacity			= 0x00000040,
-			DamageIncrease		= 0x00000080
+			DamageModifier		= 0x00000001,
+			LowerAmmoCost		= 0x00000002,
+			WeightReduction		= 0x00000004,
+			Crafter				= 0x00000008,
+			Quality				= 0x00000010,
+			Capacity			= 0x00000020,
+			DamageIncrease		= 0x00000040
 		}
 
 		public override void Serialize( GenericWriter writer )
@@ -377,7 +270,6 @@ namespace Server.Items
 
 			SaveFlag flags = SaveFlag.None;
 
-			SetSaveFlag( ref flags, SaveFlag.Attributes,		!m_Attributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.LowerAmmoCost,		m_LowerAmmoCost != 0 );
 			SetSaveFlag( ref flags, SaveFlag.WeightReduction,	m_WeightReduction != 0 );
 			SetSaveFlag( ref flags, SaveFlag.DamageIncrease,	m_DamageIncrease != 0 );
@@ -386,9 +278,6 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Capacity,			m_Capacity > 0 );
 
 			writer.WriteEncodedInt( (int) flags );
-
-			if ( GetSaveFlag( flags, SaveFlag.Attributes ) )
-				m_Attributes.Serialize( writer );
 
 			if ( GetSaveFlag( flags, SaveFlag.LowerAmmoCost ) )
 				writer.Write( (int) m_LowerAmmoCost );
@@ -416,11 +305,6 @@ namespace Server.Items
 			int version = reader.ReadInt();
 
 			SaveFlag flags = (SaveFlag) reader.ReadEncodedInt();
-
-			if ( GetSaveFlag( flags, SaveFlag.Attributes ) )
-				m_Attributes = new AosAttributes( this, reader );
-			else
-				m_Attributes = new AosAttributes( this );
 
 			if ( GetSaveFlag( flags, SaveFlag.LowerAmmoCost ) )
 				m_LowerAmmoCost = reader.ReadInt();

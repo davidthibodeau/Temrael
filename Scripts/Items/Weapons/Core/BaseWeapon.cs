@@ -52,10 +52,6 @@ namespace Server.Items
 		private bool m_Cursed; // Is this weapon cursed via Curse Weapon necromancer spell? Temporary; not serialized.
 		private bool m_Consecrated; // Is this weapon blessed via Consecrate Weapon paladin ability? Temporary; not serialized.
 
-		private AosAttributes m_AosAttributes;
-		private AosWeaponAttributes m_AosWeaponAttributes;
-		private AosSkillBonuses m_AosSkillBonuses;
-
 		// Overridable values. These values are provided to override the defaults which get defined in the individual weapon scripts.
 		private int m_StrReq, m_DexReq, m_IntReq;
 		private int m_MinDamage, m_MaxDamage;
@@ -85,33 +81,9 @@ namespace Server.Items
 		public virtual int InitMaxHits{ get{ return 0; } }
 
 		public virtual bool CanFortify{ get{ return true; } }
-
-        public override double PhysicalResistance { get { return (double)m_AosWeaponAttributes.ResistPhysicalBonus; } }
-        public override double MagieResistance { get { return (double)m_AosWeaponAttributes.ResistMagieBonus; } }
 		#endregion
 
 		#region Getters & Setters
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosAttributes Attributes
-		{
-			get{ return m_AosAttributes; }
-			set{}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosWeaponAttributes WeaponAttributes
-		{
-			get{ return m_AosWeaponAttributes; }
-			set{}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public AosSkillBonuses SkillBonuses
-		{
-			get{ return m_AosSkillBonuses; }
-			set{}
-		}
-
 		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Cursed
 		{
@@ -367,18 +339,6 @@ namespace Server.Items
             return (int)dmg;
         }
 
-		public override void OnAfterDuped( Item newItem )
-		{
-			BaseWeapon weap = newItem as BaseWeapon;
-
-			if ( weap == null )
-				return;
-
-			weap.m_AosAttributes = new AosAttributes( newItem, m_AosAttributes );
-			weap.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
-			weap.m_AosWeaponAttributes = new AosWeaponAttributes( newItem, m_AosWeaponAttributes );
-		}
-
 		public virtual void UnscaleDurability()
 		{
 			int scale = 100 + GetDurabilityBonus();
@@ -415,8 +375,6 @@ namespace Server.Items
 
 			if ( Core.AOS )
 			{
-				bonus += m_AosWeaponAttributes.DurabilityBonus;
-
 				CraftResourceInfo resInfo = CraftResources.GetInfo( m_Resource );
 				CraftAttributeInfo attrInfo = null;
 
@@ -432,25 +390,7 @@ namespace Server.Items
 
 		public int GetLowerStatReq()
 		{
-			if ( !Core.AOS )
-				return 0;
-
-			int v = m_AosWeaponAttributes.LowerStatReq;
-
-			CraftResourceInfo info = CraftResources.GetInfo( m_Resource );
-
-			if ( info != null )
-			{
-				CraftAttributeInfo attrInfo = info.AttributeInfo;
-
-				if ( attrInfo != null )
-					v += attrInfo.WeaponLowerRequirements;
-			}
-
-			if ( v > 100 )
-				v = 100;
-
-			return v;
+            return 0;
 		}
 
 		public static void BlockEquip( Mobile m, TimeSpan duration )
@@ -515,37 +455,7 @@ namespace Server.Items
 
 		public override bool OnEquip( Mobile from )
 		{
-			int strBonus = m_AosAttributes.BonusStr;
-			int dexBonus = m_AosAttributes.BonusDex;
-			int intBonus = m_AosAttributes.BonusInt;
-
-			if ( (strBonus != 0 || dexBonus != 0 || intBonus != 0) )
-			{
-				Mobile m = from;
-
-				string modName = this.Serial.ToString();
-
-				if ( strBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Str, modName + "Str", strBonus, TimeSpan.Zero ) );
-
-				if ( dexBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero ) );
-
-				if ( intBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
-
-			}
-
             from.NextCombatTime = Core.TickCount + Core.GetTicks(GetDelay(from));
-
-			if ( Core.AOS && m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 )
-			{
-				if ( m_MageMod != null )
-					m_MageMod.Remove();
-
-				m_MageMod = new DefaultSkillMod( SkillName.ArtMagique, true, -30 + m_AosWeaponAttributes.MageWeapon );
-				from.AddSkillMod( m_MageMod );
-			}
 
 			return true;
 		}
@@ -557,9 +467,6 @@ namespace Server.Items
 			if ( parent is Mobile )
 			{
 				Mobile from = (Mobile)parent;
-
-				if ( Core.AOS )
-					m_AosSkillBonuses.AddTo( from );
 
 				from.CheckStatTimers();
 				from.Delta( MobileDelta.WeaponDamage );
@@ -579,14 +486,6 @@ namespace Server.Items
 				m.RemoveStatMod( modName + "Dex" );
 				m.RemoveStatMod( modName + "Int" );
 
-                if (parent is TMobile)
-                {
-                    TMobile from = (TMobile)parent;
-                    from.BonusHits -= Attributes.BonusHits;
-                    from.BonusStam -= Attributes.BonusStam;
-                    from.BonusMana -= Attributes.BonusMana;
-                }
-
                 if (weapon != null)
                     m.NextCombatTime = Core.TickCount + Core.GetTicks(weapon.GetDelay(m));
 
@@ -601,9 +500,6 @@ namespace Server.Items
 					m_MageMod.Remove();
 					m_MageMod = null;
 				}
-
-				if ( Core.AOS )
-					m_AosSkillBonuses.Remove();
 
 				m.CheckStatTimers();
 
@@ -1013,10 +909,7 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Type,				m_Type != (WeaponType)(-1) );
 			SetSaveFlag( ref flags, SaveFlag.Animation,			m_Animation != (WeaponAnimation)(-1) );
 			SetSaveFlag( ref flags, SaveFlag.Resource,			m_Resource != CraftResource.Fer );
-			SetSaveFlag( ref flags, SaveFlag.xAttributes,		!m_AosAttributes.IsEmpty );
-			SetSaveFlag( ref flags, SaveFlag.xWeaponAttributes,	!m_AosWeaponAttributes.IsEmpty );
 			SetSaveFlag( ref flags, SaveFlag.PlayerConstructed,	m_PlayerConstructed );
-			SetSaveFlag( ref flags, SaveFlag.SkillBonuses,		!m_AosSkillBonuses.IsEmpty );
 
 			writer.Write( (int) flags );
 
@@ -1088,16 +981,6 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.Resource ) )
 				writer.Write( (int) m_Resource );
-
-			if ( GetSaveFlag( flags, SaveFlag.xAttributes ) )
-				m_AosAttributes.Serialize( writer );
-
-			if ( GetSaveFlag( flags, SaveFlag.xWeaponAttributes ) )
-				m_AosWeaponAttributes.Serialize( writer );
-
-			if ( GetSaveFlag( flags, SaveFlag.SkillBonuses ) )
-				m_AosSkillBonuses.Serialize( writer );
-
 		}
 
 		[Flags]
@@ -1110,31 +993,26 @@ namespace Server.Items
 			Quality					= 0x00000008,
 			Hits					= 0x00000010,
 			MaxHits					= 0x00000020,
-			//Slayer					= 0x00000040,
-			Poison					= 0x00000080,
-			PoisonCharges			= 0x00000100,
-			Crafter					= 0x00000200,
-			Identified				= 0x00000400,
-			StrReq					= 0x00000800,
-			DexReq					= 0x00001000,
-			IntReq					= 0x00002000,
-			MinDamage				= 0x00004000,
-			MaxDamage				= 0x00008000,
-			HitSound				= 0x00010000,
-			MissSound				= 0x00020000,
-			Speed					= 0x00040000,
-			MaxRange				= 0x00080000,
-			Skill					= 0x00100000,
-			Type					= 0x00200000,
-			Animation				= 0x00400000,
-			Resource				= 0x00800000,
-			xAttributes				= 0x01000000,
-			xWeaponAttributes		= 0x02000000,
-			PlayerConstructed		= 0x04000000,
-			SkillBonuses			= 0x08000000,
-			//Slayer2					= 0x10000000,
-			ElementalDamages		= 0x20000000,
-			CrafterName 			= 0x40000000,
+			Poison					= 0x00000040,
+			PoisonCharges			= 0x00000080,
+			Crafter					= 0x00000100,
+			Identified				= 0x00000200,
+			StrReq					= 0x00000400,
+			DexReq					= 0x00000800,
+			IntReq					= 0x00001000,
+			MinDamage				= 0x00002000,
+			MaxDamage				= 0x00004000,
+			HitSound				= 0x00008000,
+			MissSound				= 0x00010000,
+			Speed					= 0x00020000,
+			MaxRange				= 0x00040000,
+			Skill					= 0x00080000,
+			Type					= 0x00100000,
+			Animation				= 0x00200000,
+			Resource				= 0x00400000,
+			PlayerConstructed		= 0x00800000,
+			ElementalDamages		= 0x01000000,
+			CrafterName 			= 0x02000000,
 		}
 
         public override void Deserialize(GenericReader reader)
@@ -1257,61 +1135,8 @@ namespace Server.Items
             else
                 m_Resource = CraftResource.Fer;
 
-            if (GetSaveFlag(flags, SaveFlag.xAttributes))
-            {
-                m_AosAttributes = new AosAttributes(this, reader);
-                m_AosAttributes = new AosAttributes(this);
-            }
-            else
-                m_AosAttributes = new AosAttributes(this);
-
-            if (GetSaveFlag(flags, SaveFlag.xWeaponAttributes))
-            {
-                m_AosWeaponAttributes = new AosWeaponAttributes(this, reader);
-                m_AosWeaponAttributes = new AosWeaponAttributes(this);
-            }
-            else
-                m_AosWeaponAttributes = new AosWeaponAttributes(this);
-
-            if (Core.AOS && m_AosWeaponAttributes.MageWeapon != 0 && m_AosWeaponAttributes.MageWeapon != 30 && Parent is Mobile)
-            {
-                m_MageMod = new DefaultSkillMod(SkillName.ArtMagique, true, -30 + m_AosWeaponAttributes.MageWeapon);
-                ((Mobile)Parent).AddSkillMod(m_MageMod);
-            }
-
             if (GetSaveFlag(flags, SaveFlag.PlayerConstructed))
                 m_PlayerConstructed = true;
-
-            if (GetSaveFlag(flags, SaveFlag.SkillBonuses))
-            {
-                m_AosSkillBonuses = new AosSkillBonuses(this, reader);
-                m_AosSkillBonuses = new AosSkillBonuses(this);
-            }
-            else
-                m_AosSkillBonuses = new AosSkillBonuses(this);
-
-            if (Core.AOS && Parent is Mobile)
-                m_AosSkillBonuses.AddTo((Mobile)Parent);
-
-            int strBonus = m_AosAttributes.BonusStr;
-            int dexBonus = m_AosAttributes.BonusDex;
-            int intBonus = m_AosAttributes.BonusInt;
-
-            if (this.Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0))
-            {
-                Mobile m = (Mobile)this.Parent;
-
-                string modName = this.Serial.ToString();
-
-                if (strBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Str, modName + "Str", strBonus, TimeSpan.Zero));
-
-                if (dexBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero));
-
-                if (intBonus != 0)
-                    m.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
-            }
 
             if (Parent is Mobile)
                 ((Mobile)Parent).CheckStatTimers();
@@ -1346,11 +1171,6 @@ namespace Server.Items
 			m_Hits = m_MaxHits = Utility.RandomMinMax( InitMinHits, InitMaxHits );
 
 			m_Resource = CraftResource.Fer;
-
-			m_AosAttributes = new AosAttributes( this );
-			m_AosWeaponAttributes = new AosWeaponAttributes( this );
-			m_AosSkillBonuses = new AosSkillBonuses( this );
-
 		}
 
 		public BaseWeapon( Serial serial ) : base( serial )
@@ -1421,7 +1241,8 @@ namespace Server.Items
 			if ( base.AllowEquipedCast( from ) )
 				return true;
 
-			return ( m_AosAttributes.SpellChanneling != 0 );
+			//return ( m_AosAttributes.SpellChanneling != 0 );
+            return false;
 		}
 
 		public override void GetProperties( ObjectPropertyList list )
@@ -1475,84 +1296,7 @@ namespace Server.Items
                     list.Add(1041350); // faction item
                 #endregion
 
-
-                if (m_AosSkillBonuses != null)
-                    m_AosSkillBonuses.GetProperties(list, couleur);
-
                 int prop;
-
-                /*if ((prop = ArtifactRarity) > 0)
-                    list.Add(1061078, prop.ToString()); // artifact rarity ~1_val~*/
-
-                if ((prop = (GetHitChanceBonus() + m_AosAttributes.AttackChance)) != 0)
-                    list.Add(1060401, "{0}\t{1}", couleur, prop.ToString()); // hit chance increase ~1_val~%
-
-                if ((prop = (GetDamageBonus() + m_AosAttributes.WeaponDamage)) != 0)
-                    list.Add(1060402, "{0}\t{1}", couleur, prop.ToString()); // damage increase ~1_val~%
-
-                if ((prop = m_AosAttributes.DefendChance) != 0)
-                    list.Add(1060408, "{0}\t{1}", couleur, prop.ToString()); // defense chance increase ~1_val~%
-
-                if ((prop = m_AosAttributes.WeaponSpeed) != 0)
-                    list.Add(1060486, "{0}\t{1}", couleur, prop.ToString()); // swing speed increase ~1_val~%
-
-                if ((prop = m_AosAttributes.ReflectPhysical) != 0)
-                    list.Add(1060442, "{0}\t{1}", couleur, prop.ToString()); // reflect physical damage ~1_val~%
-
-                if ((prop = m_AosAttributes.BonusStr) != 0)
-                    list.Add(1060485, "{0}\t{1}", couleur, prop.ToString()); // strength bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusDex) != 0)
-                    list.Add(1060409, "{0}\t{1}", couleur, prop.ToString()); // dexterity bonus ~1_val~
-
-                if ((prop = m_AosAttributes.BonusInt) != 0)
-                    list.Add(1060432, "{0}\t{1}", couleur, prop.ToString()); // intelligence bonus ~1_val~
-
-
-                if ((prop = m_AosAttributes.BonusHits) != 0)
-                    list.Add(1060431, "{0}\t{1}", couleur, prop.ToString()); // hit point increase ~1_val~
-
-                if ((prop = m_AosAttributes.BonusStam) != 0)
-                    list.Add(1060484, "{0}\t{1}", couleur, prop.ToString()); // stamina increase ~1_val~
-
-                if ((prop = m_AosAttributes.BonusMana) != 0)
-                    list.Add(1060439, "{0}\t{1}", couleur, prop.ToString()); // mana increase ~1_val~
-
-                if ((prop = m_AosAttributes.RegenHits) != 0)
-                    list.Add(1060444, "{0}\t{1}", couleur, prop.ToString()); // hit point regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.RegenStam) != 0)
-                    list.Add(1060443, "{0}\t{1}", couleur, prop.ToString()); // stamina regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.RegenMana) != 0)
-                    list.Add(1060440, "{0}\t{1}", couleur, prop.ToString()); // mana regeneration ~1_val~
-
-                if ((prop = m_AosAttributes.EnhancePotions) != 0)
-                    list.Add(1060411, "{0}\t{1}", couleur, prop.ToString()); // enhance potions ~1_val~%
-
-                if ((prop = m_AosAttributes.CastRecovery) != 0)
-                    list.Add(1060412, "{0}\t{1}", couleur, prop.ToString()); // faster cast recovery ~1_val~
-
-                if ((prop = m_AosAttributes.CastSpeed) != 0)
-                    list.Add(1060413, "{0}\t{1}", couleur, prop.ToString()); // faster casting ~1_val~
-
-                if ((prop = m_AosAttributes.LowerManaCost) != 0)
-                    list.Add(1060433, "{0}\t{1}", couleur, prop.ToString()); // lower mana cost ~1_val~%
-
-                if ((prop = m_AosAttributes.LowerRegCost) != 0)
-                    list.Add(1060434, "{0}\t{1}", couleur, prop.ToString()); // lower reagent cost ~1_val~%
-
-                //if ((prop = m_AosAttributes.Luck) != 0)
-                //    list.Add("<h3><basefont color=#" + couleur + ">Chance:" + prop.ToString() + "<basefont></h3>"); // luck ~1_val~
-
-                if ((prop = m_AosAttributes.SpellChanneling) != 0)
-                    list.Add(1060482); // spell channeling
-
-                if ((prop = m_AosAttributes.SpellDamage) != 0)
-                    list.Add(1060483, "{0}\t{1}", couleur, prop.ToString()); // spell damage increase ~1_val~%
-
-                if ((prop = m_AosAttributes.NightSight) != 0)
-                    list.Add(1060434, couleur); // night sight
 
                 AddARProperties(list, couleur);
 
@@ -1565,57 +1309,6 @@ namespace Server.Items
                 /*if (Core.ML && this is BaseRanged && ((BaseRanged)this).Balanced)
                     list.Add(1072792); // Balanced*/
 
-                if ((prop = m_AosWeaponAttributes.HitPhysicalArea) != 0)
-                    list.Add(1060428, "{0}\t{1}", couleur, prop.ToString()); // hit physical area ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitTranchantArea) != 0)
-                    list.Add(1060416, "{0}\t{1}", couleur, prop.ToString()); // hit cold area ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitContondantArea) != 0)
-                    list.Add(1060419, "{0}\t{1}", couleur, prop.ToString()); // hit fire area ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitPerforantArea) != 0)
-                    list.Add(1060429,"{0}\t{1}", couleur, prop.ToString()); // hit poison area ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitMagieArea) != 0)
-                    list.Add(1060418, "{0}\t{1}", couleur, prop.ToString()); // hit energy area ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitDispel) != 0)
-                    list.Add(1060417, "{0}\t{1}", couleur, prop.ToString()); // hit dispel ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitFireball) != 0)
-                    list.Add(1060420, "{0}\t{1}", couleur, prop.ToString()); // hit fireball ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitLightning) != 0)
-                    list.Add(1060423, "{0}\t{1}", couleur, prop.ToString()); // hit lightning ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitHarm) != 0)
-                    list.Add(1060421, "{0}\t{1}", couleur, prop.ToString()); // hit harm ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitMagicArrow) != 0)
-                    list.Add(1060426, "{0}\t{1}", couleur, prop.ToString()); // hit magic arrow ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitLowerAttack) != 0)
-                    list.Add(1060424, "{0}\t{1}", couleur, prop.ToString()); // hit lower attack ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitLowerDefend) != 0)
-                    list.Add(1060425, "{0}\t{1}", couleur, prop.ToString()); // hit lower defense ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitLeechHits) != 0)
-                    list.Add(1060422, "{0}\t{1}", couleur, prop.ToString()); // hit life leech ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitLeechStam) != 0)
-                    list.Add(1060430, "{0}\t{1}", couleur, prop.ToString()); // hit stamina leech ~1_val~%
-
-                if ((prop = m_AosWeaponAttributes.HitLeechMana) != 0)
-                    list.Add(1060427, "{0}\t{1}", couleur, prop.ToString()); // hit mana leech ~1_val~%
-
-                /*if (Core.ML && this is BaseRanged && (prop = ((BaseRanged)this).Velocity) != 0)
-                    list.Add(1072793, prop.ToString()); // Velocity ~1_val~%*/
-
-                if ((prop = m_AosWeaponAttributes.MageWeapon) != 0)
-                    list.Add(1060438, "{0}\t{1}", couleur, (30 - prop).ToString()); // mage weapon -~1_val~ skill
-                    
                 list.Add(1061168, "{0}\t{1}\t{2}", couleur, MinDamage.ToString(), MaxDamage.ToString()); // weapon damage ~1_val~ - ~2_val~
 
                 if (Core.ML)
@@ -1631,31 +1324,8 @@ namespace Server.Items
                 else
                     list.Add(1061824, couleur); // one-handed weapon
 
-                if ((prop = m_AosWeaponAttributes.UseBestSkill) != 0)
-                    list.Add(1060400, couleur); // use best weapon skill
-
-                if (m_AosWeaponAttributes.UseBestSkill == 0)
-                {
-                    switch (Skill)
-                    {
-                        case SkillName.ArmeHaste: list.Add(1061165, couleur); break;
-                        case SkillName.Epee: list.Add(1061172, couleur); break; // skill required: swordsmanship
-                        case SkillName.ArmeContondante: list.Add(1061173, couleur); break; // skill required: mace fighting
-                        case SkillName.ArmePerforante: list.Add(1061174, couleur); break; // skill required: fencing
-                        case SkillName.ArmeDistance: list.Add(1061175, couleur); break; // skill required: archery
-                    }
-                }
-
-                //int strReq = AOS.Scale(StrRequirement, 100 - GetLowerStatReq());
-
                 if ((prop = GetLowerStatReq()) != 0)
                     list.Add(1060435, "{0}\t{1}", couleur, prop.ToString()); // lower requirements ~1_val~%
-
-                //if (strReq > 0)
-                //    list.Add(1061170, "{0}\t{1}", couleur, strReq.ToString()); // strength requirement ~1_val~
-
-                if ((prop = m_AosWeaponAttributes.SelfRepair) != 0)
-                    list.Add(1060450, "{0}\t{1}", couleur, prop.ToString()); // self repair ~1_val~
 
                 if ((prop = GetDurabilityBonus()) > 0)
                     list.Add(1060410, "{0}\t{1}", couleur, prop.ToString()); // durability ~1_val~%
@@ -1783,159 +1453,143 @@ namespace Server.Items
 				if ( context != null && context.DoNotColor )
 					Hue = 0;
 
-				if ( tool is BaseRunicTool )
-					((BaseRunicTool)tool).ApplyAttributesTo( this );
-
                 RareteInit.InitItem(this, quality, Crafter);
 
 				if ( Quality == WeaponQuality.Exceptional )
 				{
-					if ( Attributes.WeaponDamage > 35 )
-						Attributes.WeaponDamage -= 20;
-					else
-						Attributes.WeaponDamage = 15;
-
-					if( Core.ML )
-					{
-						Attributes.WeaponDamage += (int)(from.Skills.Forge.Value / 20);
-
-						if ( Attributes.WeaponDamage > 50 )
-							Attributes.WeaponDamage = 50;
-
-						from.CheckSkill( SkillName.Forge, 0, 100 );
-					}
+					
 				}
 			}
-			else if ( tool is BaseRunicTool )
-			{
-				CraftResource thisResource = CraftResources.GetFromType( resourceType );
+            //else if ( tool is BaseRunicTool )
+            //{
+            //    CraftResource thisResource = CraftResources.GetFromType( resourceType );
 
-				if ( thisResource == ((BaseRunicTool)tool).Resource )
-				{
-					Resource = thisResource;
+            //    if ( thisResource == ((BaseRunicTool)tool).Resource )
+            //    {
+            //        Resource = thisResource;
 
-					CraftContext context = craftSystem.GetContext( from );
+            //        CraftContext context = craftSystem.GetContext( from );
 
-					if ( context != null && context.DoNotColor )
-						Hue = 0;
+            //        if ( context != null && context.DoNotColor )
+            //            Hue = 0;
 
-					switch ( thisResource )
-					{
-						case CraftResource.Cuivre:
-						{
-							Identified = true;
-							DurabilityLevel = WeaponDurabilityLevel.Regular;
-                            DamageLevel = WeaponDamageLevel.Regular;
-							AccuracyLevel = WeaponAccuracyLevel.Accurate;
-							break;
-						}
-						case CraftResource.Bronze:
-						{
-							Identified = true;
-							DurabilityLevel = WeaponDurabilityLevel.Regular;
-							DamageLevel = WeaponDamageLevel.Ruin;
-                            AccuracyLevel = WeaponAccuracyLevel.Accurate;
-							break;
-						}
-						case CraftResource.Acier:
-						{
-							Identified = true;
-							DurabilityLevel = WeaponDurabilityLevel.Durable;
-							DamageLevel = WeaponDamageLevel.Ruin;
-							AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
-							break;
-						}
-						case CraftResource.Argent:
-						{
-							Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Regular;
-							DamageLevel = WeaponDamageLevel.Regular;
-							AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
-							break;
-						}
-						case CraftResource.Or:
-						{
-							Identified = true;
-							DurabilityLevel = WeaponDurabilityLevel.Regular;
-							DamageLevel = WeaponDamageLevel.Regular;
-                            AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
-							break;
-						}
-						case CraftResource.Mytheril:
-						{
-							Identified = true;
-							DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-							DamageLevel = WeaponDamageLevel.Ruin;
-                            AccuracyLevel = WeaponAccuracyLevel.Eminently;
-							break;
-						}
-						case CraftResource.Luminium:
-						{
-							Identified = true;
-							DurabilityLevel = WeaponDurabilityLevel.Fortified;
-							DamageLevel = WeaponDamageLevel.Power;
-							AccuracyLevel = WeaponAccuracyLevel.Supremely;
-							break;
-						}
-						case CraftResource.Obscurium:
-						{
-							Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Fortified;
-							DamageLevel = WeaponDamageLevel.Vanq;
-                            AccuracyLevel = WeaponAccuracyLevel.Exceedingly;
-							break;
-						}
-                        case CraftResource.Mystirium:
-                        {
-                            Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Durable;
-                            DamageLevel = WeaponDamageLevel.Vanq;
-                            AccuracyLevel = WeaponAccuracyLevel.Supremely;
-                            break;
-                        }
-                        case CraftResource.Dominium:
-                        {
-                            Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-                            DamageLevel = WeaponDamageLevel.Force;
-                            AccuracyLevel = WeaponAccuracyLevel.Exceedingly;
-                            break;
-                        }
-                        case CraftResource.Eclarium:
-                        {
-                            Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Regular;
-                            DamageLevel = WeaponDamageLevel.Vanq;
-                            AccuracyLevel = WeaponAccuracyLevel.Supremely;
-                            break;
-                        }
-                        case CraftResource.Venarium:
-                        {
-                            Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Massive;
-                            DamageLevel = WeaponDamageLevel.Vanq;
-                            AccuracyLevel = WeaponAccuracyLevel.Eminently;
-                            break;
-                        }
-                        case CraftResource.Athenium:
-                        {
-                            Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Substantial;
-                            DamageLevel = WeaponDamageLevel.Might;
-                            AccuracyLevel = WeaponAccuracyLevel.Supremely;
-                            break;
-                        }
-                        case CraftResource.Umbrarium:
-                        {
-                            Identified = true;
-                            DurabilityLevel = WeaponDurabilityLevel.Fortified;
-                            DamageLevel = WeaponDamageLevel.Vanq;
-                            AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
-                            break;
-                        }
-					}
-				}
-			}
+            //        switch ( thisResource )
+            //        {
+            //            case CraftResource.Cuivre:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Regular;
+            //                DamageLevel = WeaponDamageLevel.Regular;
+            //                AccuracyLevel = WeaponAccuracyLevel.Accurate;
+            //                break;
+            //            }
+            //            case CraftResource.Bronze:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Regular;
+            //                DamageLevel = WeaponDamageLevel.Ruin;
+            //                AccuracyLevel = WeaponAccuracyLevel.Accurate;
+            //                break;
+            //            }
+            //            case CraftResource.Acier:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Durable;
+            //                DamageLevel = WeaponDamageLevel.Ruin;
+            //                AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
+            //                break;
+            //            }
+            //            case CraftResource.Argent:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Regular;
+            //                DamageLevel = WeaponDamageLevel.Regular;
+            //                AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
+            //                break;
+            //            }
+            //            case CraftResource.Or:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Regular;
+            //                DamageLevel = WeaponDamageLevel.Regular;
+            //                AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
+            //                break;
+            //            }
+            //            case CraftResource.Mytheril:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+            //                DamageLevel = WeaponDamageLevel.Ruin;
+            //                AccuracyLevel = WeaponAccuracyLevel.Eminently;
+            //                break;
+            //            }
+            //            case CraftResource.Luminium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Fortified;
+            //                DamageLevel = WeaponDamageLevel.Power;
+            //                AccuracyLevel = WeaponAccuracyLevel.Supremely;
+            //                break;
+            //            }
+            //            case CraftResource.Obscurium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Fortified;
+            //                DamageLevel = WeaponDamageLevel.Vanq;
+            //                AccuracyLevel = WeaponAccuracyLevel.Exceedingly;
+            //                break;
+            //            }
+            //            case CraftResource.Mystirium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Durable;
+            //                DamageLevel = WeaponDamageLevel.Vanq;
+            //                AccuracyLevel = WeaponAccuracyLevel.Supremely;
+            //                break;
+            //            }
+            //            case CraftResource.Dominium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Indestructible;
+            //                DamageLevel = WeaponDamageLevel.Force;
+            //                AccuracyLevel = WeaponAccuracyLevel.Exceedingly;
+            //                break;
+            //            }
+            //            case CraftResource.Eclarium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Regular;
+            //                DamageLevel = WeaponDamageLevel.Vanq;
+            //                AccuracyLevel = WeaponAccuracyLevel.Supremely;
+            //                break;
+            //            }
+            //            case CraftResource.Venarium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Massive;
+            //                DamageLevel = WeaponDamageLevel.Vanq;
+            //                AccuracyLevel = WeaponAccuracyLevel.Eminently;
+            //                break;
+            //            }
+            //            case CraftResource.Athenium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Substantial;
+            //                DamageLevel = WeaponDamageLevel.Might;
+            //                AccuracyLevel = WeaponAccuracyLevel.Supremely;
+            //                break;
+            //            }
+            //            case CraftResource.Umbrarium:
+            //            {
+            //                Identified = true;
+            //                DurabilityLevel = WeaponDurabilityLevel.Fortified;
+            //                DamageLevel = WeaponDamageLevel.Vanq;
+            //                AccuracyLevel = WeaponAccuracyLevel.Surpassingly;
+            //                break;
+            //            }
+            //        }
+			//	  }
+			//}
 
 			return quality;
 		}

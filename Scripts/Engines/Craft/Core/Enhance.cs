@@ -98,9 +98,6 @@ namespace Server.Engines.Craft
 				baseChance = 20;
 
 				dura = weapon.MaxDurability;
-				luck = weapon.Attributes.Luck;
-				lreq = weapon.WeaponAttributes.LowerStatReq;
-				dinc = weapon.Attributes.WeaponDamage;
 
 				contondantBonus = ( attributes.WeaponContondantDamage > 0 );
 				tranchantBonus = ( attributes.WeaponTranchantDamage > 0 );
@@ -125,7 +122,6 @@ namespace Server.Engines.Craft
 				magie = armor.MagieResistance;
 
 				dura = armor.MaxDurability;
-				luck = armor.Attributes.Luck;
 
 				physBonus = ( attributes.ArmorPhysicalResist > 0 );
 				contondantBonus = ( attributes.ArmorContondantResist > 0 );

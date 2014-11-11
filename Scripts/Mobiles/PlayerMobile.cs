@@ -20,6 +20,7 @@ using Server.Engines.Identities;
 using Server.Engines.Races;
 using Server.Engines.Evolution;
 using Server.Engines.Mort;
+using Server.Commands;
 
 namespace Server.Mobiles
 {
@@ -628,11 +629,7 @@ namespace Server.Mobiles
 		public override void ComputeBaseLightLevels( out int global, out int personal )
 		{
 			global = LightCycle.ComputeLevelFor( this );
-
-			if ( this.LightLevel < 21 && AosAttributes.GetValue( this, AosAttribute.NightSight ) > 0)
-				personal = 21;
-			else
-				personal = this.LightLevel;
+            personal = this.LightLevel;
 		}
 
 		public override void CheckLightLevels( bool forceResend )
@@ -810,16 +807,16 @@ namespace Server.Mobiles
 						}
 						else
 						{
-							int strBonus = armor.ComputeStatBonus( StatType.Str ), strReq = armor.ComputeStatReq( StatType.Str );
-							int dexBonus = armor.ComputeStatBonus( StatType.Dex ), dexReq = armor.ComputeStatReq( StatType.Dex );
-							int intBonus = armor.ComputeStatBonus( StatType.Int ), intReq = armor.ComputeStatReq( StatType.Int );
+							int strReq = armor.ComputeStatReq( StatType.Str );
+							int dexReq = armor.ComputeStatReq( StatType.Dex );
+							int intReq = armor.ComputeStatReq( StatType.Int );
 
-							if( dex < dexReq || (dex + dexBonus) < 1 )
-								drop = true;
-							else if( str < strReq || (str + strBonus) < 1 )
-								drop = true;
-							else if( intel < intReq || (intel + intBonus) < 1 )
-								drop = true;
+                            if (dex < dexReq || dex < 1)
+                                drop = true;
+                            else if (str < strReq || str < 1)
+                                drop = true;
+                            else if (intel < intReq || intel < 1)
+                                drop = true;
 						}
 
 						if ( drop )
@@ -1483,6 +1480,9 @@ namespace Server.Mobiles
 				return false;
 			}
 
+            if (((BaseClothing)item).Disguise)
+                Identities.DisguiseHidden = true;
+
 			return true;
 		}
 
@@ -1889,25 +1889,81 @@ namespace Server.Mobiles
 
 		public override bool MutateSpeech( List<Mobile> hears, ref string text, ref object context )
 		{
-			if ( Alive )
-				return false;
+            if (Alive)
+            {
+                for (int h = 0; h < hears.Count; ++h)
+                {
+                    Mobile o = hears[h];
+                    if (o is TMobile)
+                    {
+                        TMobile player = o as TMobile;
 
-			//if ( Core.ML && Skills[SkillName.SpiritSpeak].Value >= 100.0 )
-			//	return false;
+                        bool isEmote = false;
 
-			//if ( Core.AOS )
-			//{
-			//	for ( int i = 0; i < hears.Count; ++i )
-			//	{
-			//		Mobile m = hears[i];
-            //
-			//		if ( m != this && m.Skills[SkillName.SpiritSpeak].Value >= 100.0 )
-			//			return false;
-			//	}
-			//}
+                        char debut = text[0];
+                        char fin = text[text.Length - 1];
+
+                        isEmote = (debut.ToString() == "*" && fin.ToString() == "*");
+
+                        if (isEmote)
+                            return false;
+
+                        return Langues.MutateSpeech(ref text);
+                    }
+                }
+
+            }
 
 			return base.MutateSpeech( hears, ref text, ref context );
 		}
+
+        public override bool CheckHearsMutatedSpeech(Mobile m, object context)
+        {
+            if (m is TMobile)
+            {
+                TMobile player = m as TMobile;
+
+                return Langues.HearsGibberish(player);
+            }
+            return true;
+        }
+
+        public override void OnSaid(SpeechEventArgs e)
+        {
+            ArrayList targets = new ArrayList();
+
+            if (e.Speech.StartsWith("[") || e.Speech.StartsWith("."))
+            {
+                CommandSystem.Handle(this, String.Format("{0}{1}", CommandSystem.Prefix, e.Speech.Substring(1)));
+                e.Blocked = true;
+                base.OnSaid(e);
+                return;
+            }
+
+            if (e.Type == MessageType.Whisper)
+            {
+                foreach (Mobile m in this.GetMobilesInRange(10))
+                {
+                    if (m.AccessLevel >= AccessLevel.Counselor)
+                        targets.Add(m);
+                }
+
+                if (targets.Count > 0)
+                {
+                    for (int i = 0; i < targets.Count; ++i)
+                    {
+                        Mobile m = (Mobile)targets[i];
+                        m.SendMessage(91, "Chuchottement de {0} : {1}", e.Mobile.Name, e.Speech);
+                    }
+                }
+            }
+
+            //PublicOverheadFontMessage(this, MessageType.Regular, SpeechHue, 1, e.Speech, true);
+            //e.Blocked = true;
+
+            //if (!e.Blocked && e.Type != MessageType.Whisper)
+            //   RevealingAction(true);
+        }
 
 		public override void DoSpeech( string text, int[] keywords, MessageType type, int hue )
 		{
@@ -2015,8 +2071,6 @@ namespace Server.Mobiles
 		{
 			get{ return m_PermaFlags; }
 		}
-
-		public override int Luck{ get{ return AosAttributes.GetValue( this, AosAttribute.Luck ); } }
 
 		public bool AntiMacroCheck( Skill skill, object obj )
 		{
