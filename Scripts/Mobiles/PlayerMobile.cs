@@ -35,13 +35,12 @@ namespace Server.Mobiles
 		StoneMining				= 0x00000008,
 		ToggleMiningStone		= 0x00000010,
 		KarmaLocked				= 0x00000020,
-		AutoRenewInsurance		= 0x00000040,
-		UseOwnFilter			= 0x00000080,
-		PublicMyRunUO			= 0x00000100,
-		PagingSquelched			= 0x00000200,
-		AcceptGuildInvites		= 0x00000800,
-		DisplayChampionTitle	= 0x00001000,
-		HasStatReward			= 0x00002000
+		UseOwnFilter			= 0x00000040,
+		PublicMyRunUO			= 0x00000080,
+		PagingSquelched			= 0x00000100,
+		AcceptGuildInvites		= 0x00000200,
+		DisplayChampionTitle	= 0x00000400,
+		HasStatReward			= 0x00000800
 	}
 
 	public enum SolenFriendship
@@ -78,7 +77,6 @@ namespace Server.Mobiles
 		private int m_StepsTaken;
 		private int m_Profession;
 		private bool m_IgnoreMobiles; // IgnoreMobiles should be moved to Server.Mobiles
-		private int m_NonAutoreinsuredItems; // number of items that could not be automaitically reinsured because gold in bank was not enough
 		/*
 		 * a value of zero means, that the mobile is not executing the spell. Otherwise,
 		 * the value should match the BaseMana required
@@ -312,13 +310,6 @@ namespace Server.Mobiles
 		{
 			get{ return GetFlag( PlayerFlag.KarmaLocked ); }
 			set{ SetFlag( PlayerFlag.KarmaLocked, value ); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public bool AutoRenewInsurance
-		{
-			get{ return GetFlag( PlayerFlag.AutoRenewInsurance ); }
-			set{ SetFlag( PlayerFlag.AutoRenewInsurance, value ); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -1743,11 +1734,6 @@ namespace Server.Mobiles
 
         public override void OnDeath( Container c )
 		{
-			if (m_NonAutoreinsuredItems > 0)
-			{
-				SendLocalizedMessage(1061115);
-			}
-
 			base.OnDeath(c);
 
 			HueMod = -1;
