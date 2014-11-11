@@ -123,7 +123,7 @@ namespace Server.Gumps
             new SpellBookEntry( HealSpell.Info.Circle,          HealSpell.Info.skillForCasting, "Soins", HealSpell.Info.Reagents, 0x8D2, HealSpell.m_SpellID),
             new SpellBookEntry( CureSpell.Info.Circle,          CureSpell.Info.skillForCasting, "Antidote", CureSpell.Info.Reagents, 0x8D2, CureSpell.m_SpellID),
             new SpellBookEntry( GreaterHealSpell.Info.Circle,   GreaterHealSpell.Info.skillForCasting, "Soins majeurs", GreaterHealSpell.Info.Reagents, 0x8D2, GreaterHealSpell.m_SpellID),
-            //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Totem de guérison", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
+            new SpellBookEntry( TotemRegenSpell.Info.Circle,    TotemRegenSpell.Info.skillForCasting, "Totem de guérison", TotemRegenSpell.Info.Reagents, 0x8D2, TotemRegenSpell.m_SpellID),
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Pacification", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Dernier souffle", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Adrénaline", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),

@@ -123,6 +123,7 @@
     <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurPetitsFruits.cs" />
     <Compile Include="Spells\2XX.Immuabilite\05.Etouffement.cs" />
+    <Compile Include="Spells\6XX.Thaumaturgie\04.TotemRegeneration.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />
     <Compile Include="Items\Weapons\Core\BaseEstoc.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpell.cs" />

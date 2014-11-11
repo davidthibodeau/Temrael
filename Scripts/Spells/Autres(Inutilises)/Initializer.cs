@@ -56,6 +56,7 @@ namespace Server.Spells
             Register(HealSpell.m_SpellID,           typeof(HealSpell));
             Register(CureSpell.m_SpellID,           typeof(CureSpell));
             Register(GreaterHealSpell.m_SpellID,    typeof(GreaterHealSpell));
+            Register(TotemRegenSpell.m_SpellID, typeof(TotemRegenSpell));
 
             // Hallucination
             Register(InvisibilitySpell.m_SpellID,   typeof(InvisibilitySpell));
