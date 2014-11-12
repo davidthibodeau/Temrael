@@ -298,9 +298,6 @@ namespace Server.SkillHandlers
 
 						root = target;
 						stolen = TryStealItem( pack.Items[randomIndex], ref caught );
-
-                        if (from is TMobile)
-                            ((TMobile)from).NextSnoop = DateTime.Now.AddSeconds(15);
 					}
 				} 
 				else 

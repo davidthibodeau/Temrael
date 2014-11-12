@@ -18,7 +18,7 @@ namespace Server.Gumps
         private int m_pageMetier;
 
         public FicheClasseGump(TMobile from)
-            : this(from, from.ClasseType, 0, 0)
+            : this(from, ClasseType.None, 0, 0)
         {
         }
 

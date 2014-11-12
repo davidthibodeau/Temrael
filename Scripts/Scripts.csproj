@@ -574,7 +574,6 @@
     <Compile Include="Commandes\Temrael\PetSay.cs" />
     <Compile Include="Commandes\Temrael\QSL.cs" />
     <Compile Include="Commandes\Temrael\ResetAllPlayers.cs" />
-    <Compile Include="Commandes\Temrael\RevealTitle.cs" />
     <Compile Include="Commandes\Temrael\Suicide.cs" />
     <Compile Include="Commandes\Temrael\TempsCommandes.cs" />
     <Compile Include="Commandes\Temrael\Test.cs" />
@@ -1030,8 +1029,8 @@
     <Compile Include="Custom\Misc\WebStatus.cs" />
     <Compile Include="Custom\Misc\WeightOverloading.cs" />
     <Compile Include="MJ\FindSerial.cs" />
-    <Compile Include="Items\GMItems\NPCStatue.cs" />
-    <Compile Include="MJ\Possess.cs" />
+    <Compile Include="Engines\Possess\NPCStatue.cs" />
+    <Compile Include="Engines\Possess\Possess.cs" />
     <Compile Include="MJ\RebootAptitudes.cs" />
     <Compile Include="MJ\Tip.cs" />
     <Compile Include="MJ\TipGump.cs" />

@@ -9,10 +9,101 @@ using Server.Commands;
 using System.Collections.Generic;
 using Server.Network;
 
-namespace Server
+namespace Server.Engines.Possess
 {
     public class Possess
     {
+        private Mobile mobile;
+        private Mobile possessed;
+        private Mobile stored;
+
+        public bool OnBeforeDeath()
+        {
+            if (stored == null)
+                return true;
+
+            CopySkills(mobile, possessed);
+            CopyProps(mobile, possessed);
+            MoveItems(mobile, possessed);
+
+            possessed.Location = mobile.Location;
+            possessed.Direction = mobile.Direction;
+            possessed.Map = mobile.Map;
+            possessed.Frozen = false;
+
+            CopySkills(stored, mobile);
+            CopyProps(stored, mobile);
+            MoveItems(stored, mobile);
+
+            stored.Delete();
+            stored = null;
+            possessed.Kill();
+            possessed = null;
+            mobile.Hidden = true;
+            return false;
+        }
+
+        public void PossessMobile(Mobile target)
+        {
+            if (possessed != null)
+            {
+                mobile.SendMessage("Vous posseder deja une creature");
+                return;
+            }
+
+            stored = (Mobile)Activator.CreateInstance(mobile.GetType());
+
+            possessed = target;
+
+            CopySkills(mobile, stored);
+            CopyProps(mobile, stored);
+            MoveItems(mobile, stored);
+
+            mobile.Location = possessed.Location;
+            mobile.Direction = possessed.Direction;
+            mobile.Map = possessed.Map;
+
+            CopySkills(possessed, mobile);
+            CopyProps(possessed, mobile);
+            CopyItems(possessed, mobile);
+
+            mobile.Hits = mobile.HitsMax;
+
+            possessed.Frozen = true;
+            possessed.Map = Map.Internal;
+
+            mobile.Frozen = false;
+            mobile.CantWalk = false;
+        }
+
+        public void UnpossessMobile()
+        {
+            if (stored == null)
+            {
+                mobile.SendMessage("Vous ne possédez aucun mobile.");
+                return;
+            }
+
+            possessed.Location = mobile.Location;
+            possessed.Direction = mobile.Direction;
+            possessed.Map = mobile.Map;
+            possessed.Frozen = false;
+
+            CleanupEquipItems(mobile);
+
+            CopySkills(stored, mobile);
+            CopyProps(stored, mobile);
+            MoveItems(stored, mobile);
+
+            mobile.Hits = mobile.HitsMax;
+            possessed.Hits = possessed.HitsMax;
+
+            stored.Delete();
+            stored = null;
+            possessed = null;
+            mobile.Hidden = true;
+        }
+
         public static Layer[] m_ItemLayers =
             {
                 Layer.FirstValid,
@@ -346,35 +437,7 @@ namespace Server
                             return;
                         }
 
-                        if (from.Possess != null)
-                        {
-                            from.SendMessage("Vous posseder deja une creature");
-                            return;
-                        }
-
-                        from.PossessStorage = (Mobile)Activator.CreateInstance(from.GetType());
-
-                        from.Possess = m;
-
-                        CopySkills(from, from.PossessStorage);
-                        CopyProps(from, from.PossessStorage);
-                        MoveItems(from, from.PossessStorage);
-
-                        from.Location = from.Possess.Location;
-                        from.Direction = from.Possess.Direction;
-                        from.Map = from.Possess.Map;
-
-                        CopySkills(from.Possess, from);
-                        CopyProps(from.Possess, from);
-                        CopyItems(from.Possess, from);
-
-                        from.Hits = from.HitsMax;
-
-                        from.Possess.Frozen = true;
-                        from.Possess.Map = Map.Internal;
-
-                        from.Frozen = false;
-                        from.CantWalk = false;
+                        from.Possess.PossessMobile(m);
                     }
                 }
                 catch (Exception e)
@@ -527,6 +590,8 @@ namespace Server
                     ns.Send(new CurrentTime());
                     ns.Send(SeasonChange.Instantiate(m.GetSeason(), true));
                     ns.Send(new MapChange(m));
+                    from.LogoutLocation = from.Location;
+                    from.Map = Map.Internal;
 
                     //PacketHandlers.DoLogin(ns, origo);
 
@@ -561,30 +626,7 @@ namespace Server
 
                 TMobile from = e.Mobile as TMobile;
 
-                if (from.PossessStorage == null)
-                {
-                    from.SendMessage("Vous ne possédez aucun mobile.");
-                    return;
-                }
-
-                from.Possess.Location = from.Location;
-                from.Possess.Direction = from.Direction;
-                from.Possess.Map = from.Map;
-                from.Possess.Frozen = false;
-
-                CleanupEquipItems(from);
-
-                CopySkills(from.PossessStorage, from);
-                CopyProps(from.PossessStorage, from);
-                MoveItems(from.PossessStorage, from);
-
-                from.Hits = from.HitsMax;
-                from.Possess.Hits = from.Possess.HitsMax;
-
-                from.PossessStorage.Delete();
-                from.PossessStorage = null;
-                from.Possess = null;
-                from.Hidden = true;
+                from.Possess.UnpossessMobile();
             }
             catch (Exception ex)
             {

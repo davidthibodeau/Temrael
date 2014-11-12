@@ -16,7 +16,7 @@ namespace Server.Gumps
         ClasseType m_classeType;
         private int m_page;
 
-        public FicheClassesInfoGump(TMobile from) : this(from, from.ClasseType, 0)
+        public FicheClassesInfoGump(TMobile from) : this(from, ClasseType.None, 0)
         {
         }
 
@@ -80,20 +80,20 @@ namespace Server.Gumps
 
                 line = 0;
 
-                if (from.ClasseType == ClasseType.None)
-                {
-                    AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
-                    AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
-                }
+                //if (from.ClasseType == ClasseType.None)
+                //{
+                //    AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
+                //    AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
+                //}
                 AddButton(x, y + line * scale, 9, info.Image);
                 AddTooltip(info.Tooltip);
 
-                // Apparait en double pour assurer l'affichage correct ainsi que la priorite du bouton. 
-                if (from.ClasseType == ClasseType.None)
-                {
-                    AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
-                    AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
-                }
+                //// Apparait en double pour assurer l'affichage correct ainsi que la priorite du bouton. 
+                //if (from.ClasseType == ClasseType.None)
+                //{
+                //    AddButton(x + 195, y + (line * scale), 52, 52, 8, GumpButtonType.Reply, 0);
+                //    AddHtml(x + 245, y + (line * scale) + 12, 200, 20, "<h3><basefont color=#025a>Choisir<basefont></h3>", false, false);
+                //}
 
                 
 
@@ -148,7 +148,7 @@ namespace Server.Gumps
                     from.SendGump(new FicheCommandesGump(from));
                     break;
                 case 8:
-                    from.ClasseType = m_classeType;
+                    //from.ClasseType = m_classeType;
                     from.SendGump(new FicheClasseGump(from));
                     break;
                 case 9:

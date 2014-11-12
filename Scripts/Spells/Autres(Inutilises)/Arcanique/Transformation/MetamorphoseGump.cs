@@ -170,10 +170,11 @@ namespace Server.Gumps
                     {
                         TMobile pm = (TMobile)state.Mobile;
 
-                        if (pm.MetamorphoseList != null && button < pm.MetamorphoseList.Count && button >= 0)
-                            pm.MetamorphoseList.RemoveAt(button);
+                        // Trickster 2014.11.11: C'etait une arraylist dans TMobile... J'sais pas trop elle servait a quoi.
+                        //if (pm.MetamorphoseList != null && button < pm.MetamorphoseList.Count && button >= 0)
+                        //    pm.MetamorphoseList.RemoveAt(button);
 
-                        pm.SendGump(new MetamorphoseGump(pm, m_Scroll, pm.MetamorphoseList, 5));
+                        //pm.SendGump(new MetamorphoseGump(pm, m_Scroll, pm.MetamorphoseList, 5));
                     }
                 }
             }

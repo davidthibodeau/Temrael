@@ -55,7 +55,6 @@ namespace Server.Items
                     act.SetTag("XPBeta", "True");
                 }
 
-                tMob.ClasseType = ClasseType.None;
                 tMob.Title = "";
                 tMob.MortEngine.MortEvo = MortEvo.Aucune;
 

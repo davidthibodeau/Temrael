@@ -68,7 +68,7 @@ namespace Server.Spells
             {
                 if (Caster is TMobile)
                 {
-                    ((TMobile)Caster).Incognito = true;
+                    //((TMobile)Caster).Incognito = true;
                 }
                 else
                 {

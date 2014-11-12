@@ -29,7 +29,7 @@ namespace Server.Engines.Identities
         private Identity transformationIdentity;
         private Identity[] deguisements;
         private Identity deguisementUnique;
-
+        private DateTime m_lastDeguisement;
 
         private bool m_Disguised = false;
 
@@ -59,6 +59,13 @@ namespace Server.Engines.Identities
         {
             get { return m_currentIdentity; }
             set { m_currentIdentity = value; }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public DateTime LastDeguisement
+        {
+            get { return m_lastDeguisement; }
+            set { m_lastDeguisement = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -115,6 +122,7 @@ namespace Server.Engines.Identities
             transformationIdentity = new Identity(reader);
             idCachee = new IdentiteCachee(); //On ne sauvegarde pas idcache parce qu'il n'accumule pas d'informations.
 
+            m_lastDeguisement = reader.ReadDateTime();
         }
 
         public void Serialize(GenericWriter writer)
@@ -125,6 +133,8 @@ namespace Server.Engines.Identities
 
             baseIdentity.Serialize(writer);
             transformationIdentity.Serialize(writer);
+            
+            writer.Write((DateTime)m_lastDeguisement);
         }
 
         public void CacherIdentite()

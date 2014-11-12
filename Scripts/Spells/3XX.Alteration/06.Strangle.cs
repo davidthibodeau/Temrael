@@ -65,7 +65,7 @@ namespace Server.Spells
                     TMobile pm = Caster as TMobile;
                     double duration = 10.0;
 
-                    ((TMobile)m).Aphonier(TimeSpan.FromSeconds(duration));
+                    //((TMobile)m).Aphonier(TimeSpan.FromSeconds(duration));
                 }
 
                 m.Stam = (int)(m.Stam * 0.15);

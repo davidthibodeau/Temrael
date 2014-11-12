@@ -242,7 +242,7 @@ namespace Server.Spells
         {
             TMobile caster = Caster as TMobile;
 
-            if (caster != null && (caster.Squelched || caster.Aphonie))
+            if (caster != null && caster.Squelched)
             {
                 caster.SendMessage("Vous ne pouvez incanter si vous êtes muet.");
                 return false;

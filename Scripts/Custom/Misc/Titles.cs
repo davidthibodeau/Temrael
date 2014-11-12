@@ -25,7 +25,7 @@ namespace Server.Misc
 
                 //title.Append(((RacePlayerMobile)beheld).PlayerName);
 
-                if (customTitle != null && (customTitle = customTitle.Trim()).Length > 0 && ((TMobile)beheld).RevealTitle == true)
+                if (customTitle != null && (customTitle = customTitle.Trim()).Length > 0)
                 {
                     title.AppendFormat(name + ", {0}", customTitle);
                 }

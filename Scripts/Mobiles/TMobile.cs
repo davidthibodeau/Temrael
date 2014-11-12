@@ -17,26 +17,6 @@ using System.Collections.Generic;
 
 namespace Server.Mobiles
 {
-
-    public enum Blessures
-    {
-        Aucune,
-        Hemorragie,
-        Fracture,
-        Felure,
-        Laceration,
-        Coupure,
-        Contusion,
-        Eraflure
-    }
-
-    public enum Membres
-    {
-        Buste,
-        Bras,
-        Jambes
-    }
-
     public class TMobile : PlayerMobile
     {
 
@@ -56,34 +36,12 @@ namespace Server.Mobiles
         //}
         #region Variables
 
-        private bool m_Aphonie;
-        private AphonieTimer m_AphonieTimer;
         public ArrayList m_MetamorphoseList = new ArrayList();
         public static Hashtable m_SpellTransformation = new Hashtable();
         public static Hashtable m_SpellName = new Hashtable();
         public static Hashtable m_SpellHue = new Hashtable();
 
-        private DateTime m_BrulerPlanteLast;
         private int m_LastTeinture = 0;
-
-        private DateTime m_lastDeguisement;
-        private DateTime m_NextCraftTime;
-        private DateTime m_NextClasseChange;
-
-
-        private int m_BonusMana;
-        private int m_BonusStam;
-        private int m_BonusHits;
-
-        private DateTime m_NextSnoop;
-
-        private Mobile m_Possess;
-        private Mobile m_PossessStorage;
-
-        private bool m_Incognito = false;
-
-        private ClasseType m_ClasseType = ClasseType.None;
-        private bool m_RevealTitle = true;
 
         private Point3D m_OldLocation;
 
@@ -113,117 +71,12 @@ namespace Server.Mobiles
 
         #region Accessors
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool RevealTitle
-        {
-            get { return m_RevealTitle; }
-            set { m_RevealTitle = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Aphonie
-        {
-            get
-            {
-                return m_Aphonie;
-            }
-            set
-            {
-                if (m_Aphonie != value)
-                {
-                    m_Aphonie = value;
-
-                    //SendMessage(m_Aphonie ? "Vous ne pouvez parler!" : "Vous pouvez parler!");
-                    SendMessage(m_Aphonie ? "Vous ne pouvez incanter!" : "Vous pouvez incanter!");
-                    
-
-                    if (m_AphonieTimer != null)
-                    {
-                        m_AphonieTimer.Stop();
-                        m_AphonieTimer = null;
-                    }
-                }
-            }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool MetamorphoseMod
-        {
-            get { return !CanBeginAction(typeof(MetamorphoseSpell)); }
-        }
-
-        public ArrayList MetamorphoseList
-        {
-            get { return m_MetamorphoseList; }
-            set { m_MetamorphoseList = value; }
-        }
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime LastFeuPlante
-        {
-            get { return m_BrulerPlanteLast; }
-            set { m_BrulerPlanteLast = value; }
-        }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public int LastTeinture
         {
             get { return m_LastTeinture; }
             set { m_LastTeinture = value; }
-        }
-
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime LastDeguisement
-        {
-            get { return m_lastDeguisement; }
-            set { m_lastDeguisement = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime NextCraftTime
-        {
-            get { return m_NextCraftTime; }
-            set { m_NextCraftTime = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime NextClasseChange
-        {
-            get { return m_NextClasseChange; }
-            set { m_NextClasseChange = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime NextSnoop
-        {
-            get { return m_NextSnoop; }
-            set { m_NextSnoop = value; }
-        }
-
-        public Mobile Possess
-        {
-            get { return m_Possess; }
-            set { m_Possess = value; }
-        }
-
-        public Mobile PossessStorage
-        {
-            get { return m_PossessStorage; }
-            set { m_PossessStorage = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Incognito
-        {
-            get { return m_Incognito; }
-            set { m_Incognito = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public ClasseType ClasseType
-        {
-            get { return m_ClasseType; }
-            set { m_ClasseType = value; FamilierCheck(); }
         }
 
         public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
@@ -498,17 +351,6 @@ namespace Server.Mobiles
             return 0;
         }
 
-        public void Aphonier(TimeSpan duration)
-        {
-            if (!m_Aphonie)
-            {
-                Aphonie = true;
-
-                m_AphonieTimer = new AphonieTimer(this, duration);
-                m_AphonieTimer.Start();
-            }
-        }
-
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
             if (willKill && from != null)
@@ -530,28 +372,7 @@ namespace Server.Mobiles
 
         public override bool OnBeforeDeath()
         {
-            if (m_PossessStorage != null)
-            {
-                Server.Possess.CopySkills(this, m_Possess);
-                Server.Possess.CopyProps(this, m_Possess);
-                Server.Possess.MoveItems(this, m_Possess);
 
-                m_Possess.Location = Location;
-                m_Possess.Direction = Direction;
-                m_Possess.Map = Map;
-                m_Possess.Frozen = false;
-
-                Server.Possess.CopySkills(m_PossessStorage, this);
-                Server.Possess.CopyProps(m_PossessStorage, this);
-                Server.Possess.MoveItems(m_PossessStorage, this);
-
-                m_PossessStorage.Delete();
-                m_PossessStorage = null;
-                m_Possess.Kill();
-                m_Possess = null;
-                Hidden = true;
-                return false;
-            }
 
             return base.OnBeforeDeath();
         }
@@ -628,9 +449,6 @@ namespace Server.Mobiles
                 if (Blessed && AccessLevel == AccessLevel.Player)
                     Blessed = false;
 
-                if (m_Aphonie)
-                    m_Aphonie = false;
-
                 MortEngine.MortCurrentState = MortState.Assomage;
 
                 //SendMessage("Vous êtes assommé pour une minute.");
@@ -661,23 +479,8 @@ namespace Server.Mobiles
                 if (Blessed && AccessLevel == AccessLevel.Player)
                     Blessed = false;
 
-                if (m_Aphonie)
-                    m_Aphonie = false;
-
                 //m_MortState = MortState.MortDefinitive;
             }
-        }
-
-        public override void OnAfterDelete()
-        {
-            base.OnAfterDelete();
-
-            if (m_AphonieTimer != null)
-                m_AphonieTimer.Stop();
-
-            //if (_HallucineTimer != null)
-            //    _HallucineTimer.Stop();
-
         }
 
         public virtual void CheckRaceGump()
@@ -821,72 +624,14 @@ namespace Server.Mobiles
             }
         }
 
-        private class AphonieTimer : Timer
-        {
-            private TMobile m_Mobile;
-
-            public AphonieTimer(TMobile m, TimeSpan duration)
-                : base(duration)
-            {
-                Priority = TimerPriority.TwentyFiveMS;
-                m_Mobile = m;
-            }
-
-            protected override void OnTick()
-            {
-                m_Mobile.Aphonie = false;
-            }
-        }
-
-
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
             writer.Write((int)9);
 
-
-
-            writer.Write((bool)m_RevealTitle);
-            writer.Write((int)m_ClasseType);
-
-            writer.Write((bool)m_Incognito);
-
-            writer.Write((Mobile)m_Possess);
-            writer.Write((Mobile)m_PossessStorage);
-
-            //writer.Write((DateTime)m_NextExp);
-
-            writer.Write((DateTime)m_NextSnoop);
-
-            //writer.Write((DateTime)m_NextFiole);
-
-            writer.Write((int)m_BonusMana);
-            writer.Write((int)m_BonusStam);
-            writer.Write((int)m_BonusHits);
-
-            writer.Write((DateTime)m_NextClasseChange);
-
-            //writer.Write(m_ListCote.Count);
-            //for (int i = 0; i < m_ListCote.Count; i++)
-            //    writer.Write((int)m_ListCote[i]);
-
-            writer.Write((DateTime)m_lastDeguisement);
-            writer.Write((DateTime)m_NextCraftTime);
-
             writer.Write(m_QuickSpells.Count);
             for (int i = 0; i < m_QuickSpells.Count; i++)
                 writer.Write((int)m_QuickSpells[i]);
-
-            //writer.Write((DateTime) m_LastCotation);
-
-            //writer.Write((int)m_Niveau);
-            //writer.Write((int)m_AptitudesLibres);
-            //writer.Write((int)m_CompetencesLibres);
-
-            writer.Write((bool)m_Aphonie);
-
-
-            writer.Write((DateTime)m_BrulerPlanteLast);
             writer.Write((int)m_LastTeinture);
 
         }
@@ -901,27 +646,7 @@ namespace Server.Mobiles
             switch (version)
             {
                 case 9:
-                    m_RevealTitle = reader.ReadBool();
-                    goto case 3;
-                case 3:
-                case 1:
-                    m_ClasseType = (ClasseType)reader.ReadInt();
-                    m_Incognito = reader.ReadBool();
 
-                    m_Possess = reader.ReadMobile();
-                    m_PossessStorage = reader.ReadMobile();
-
-                    m_NextSnoop = reader.ReadDateTime();
-                    
-                    m_BonusMana = reader.ReadInt();
-                    m_BonusStam = reader.ReadInt();
-                    m_BonusHits = reader.ReadInt();
-
-                    m_NextClasseChange = reader.ReadDateTime();
-
-                    m_lastDeguisement = reader.ReadDateTime();
-                    m_NextCraftTime = reader.ReadDateTime();
-                    
                     m_QuickSpells = new ArrayList();
                     count = reader.ReadInt();
                     for (int i = 0; i < count; i++)
@@ -929,9 +654,6 @@ namespace Server.Mobiles
                         m_QuickSpells.Add((int)reader.ReadInt());
                     }
 
-                    m_Aphonie = reader.ReadBool();
-
-                    m_BrulerPlanteLast = reader.ReadDateTime();
                     m_LastTeinture = reader.ReadInt();
 
                     break;
@@ -951,10 +673,6 @@ namespace Server.Mobiles
 
             if (Blessed && AccessLevel == AccessLevel.Player)
                 Blessed = false;
-
-            if (m_Aphonie)
-                m_Aphonie = false;
-
 
             CagouleFix();
 

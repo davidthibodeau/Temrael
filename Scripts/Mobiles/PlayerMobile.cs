@@ -21,6 +21,7 @@ using Server.Engines.Races;
 using Server.Engines.Evolution;
 using Server.Engines.Mort;
 using Server.Commands;
+using Server.Engines.Possess;
 
 namespace Server.Mobiles
 {
@@ -249,6 +250,12 @@ namespace Server.Mobiles
 
         [CommandProperty(AccessLevel.Batisseur)]
         public MortEngine MortEngine
+        {
+            get;
+            set;
+        }
+
+        public Possess Possess
         {
             get;
             set;
@@ -1710,6 +1717,9 @@ namespace Server.Mobiles
 
 		public override bool OnBeforeDeath()
 		{
+            if (!Possess.OnBeforeDeath())
+                return false;
+            
 			NetState state = NetState;
 
 			if ( state != null )

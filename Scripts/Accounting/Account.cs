@@ -521,6 +521,7 @@ namespace Server.Accounting
 
 			m_IPRestrictions = new string[0];
 			m_LoginIPs = new IPAddress[0];
+            m_Transfert = new Transfert(this);
 
 			Accounts.Add( this );
 		}
@@ -741,12 +742,12 @@ namespace Server.Accounting
 			return list;
 		}
 
-        public static Transfert LoadTransfert(XmlElement node)
+        public Transfert LoadTransfert(XmlElement node)
         {
             int serial = Utility.GetXMLInt32(Utility.GetText(node["transfert"], null), -1);
 
             if (serial == -1)
-                return null;
+                return new Transfert(this);
             else
                 return World.FindItem(serial) as Transfert;
         }

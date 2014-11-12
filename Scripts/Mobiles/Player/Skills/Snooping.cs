@@ -25,20 +25,6 @@ namespace Server.SkillHandlers
 			if ( map != null && (map.Rules & MapRules.HarmfulRestrictions) == 0 )
 				return true; // felucca you can snoop anybody
 
-			GuardedRegion reg = (GuardedRegion) to.Region.GetRegion( typeof( GuardedRegion ) );
-
-			if ( reg == null || reg.IsDisabled() )
-				return true; // not in town? we can snoop any npc
-
-			BaseCreature cret = to as BaseCreature;
-
-			if ( to.Body.IsHuman && (cret == null || (!cret.AlwaysAttackable && !cret.AlwaysMurderer)) )
-				return false; // in town we cannot snoop blue human npcs
-
-            if (from is TMobile)
-                if (((TMobile)from).NextSnoop < DateTime.Now)
-                    return false;
-
 			return true;
 		}
 
@@ -99,12 +85,6 @@ namespace Server.SkillHandlers
                     from.SendLocalizedMessage(500210); // You failed to peek into the container.
 
                     from.RevealingAction();
-					
-					/*if ( from.Skills[SkillName.Discretion].Value / 2 < Utility.Random( 100 ) )
-						from.RevealingAction();*/
-
-                    if (from is TMobile)
-                        ((TMobile)from).NextSnoop = DateTime.Now.AddSeconds(15);
 				}
 			}
 			else

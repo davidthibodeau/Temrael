@@ -139,7 +139,7 @@ namespace Server.Engines.Identities
             if (info.ButtonID == 0 || info.ButtonID > 13)
                 return;
 
-            if (from.LastDeguisement.AddMinutes(10) < DateTime.Now)
+            if (from.Identities.LastDeguisement.AddMinutes(10) < DateTime.Now)
             {
                 if (info.ButtonID == 1)
                 {
@@ -161,7 +161,7 @@ namespace Server.Engines.Identities
                         from.SendMessage("Vous ratez votre déguisement !");
                     }
                 }
-                from.LastDeguisement = DateTime.Now;
+                from.Identities.LastDeguisement = DateTime.Now;
             }
             else
             {

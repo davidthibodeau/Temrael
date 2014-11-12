@@ -71,24 +71,26 @@ namespace Server.Spells
                     {
                         TMobile pm = (TMobile)Caster;
 
-                        if (pm.MetamorphoseList == null)
-                            pm.MetamorphoseList = new ArrayList();
+                        // Trickster 2014.11.11: C'etait une arraylist dans TMobile... J'sais pas trop elle servait a quoi.
+                        //if (pm.MetamorphoseList == null)
+                        //    pm.MetamorphoseList = new ArrayList();
 
                         int max = (int)(pm.Skills[SkillName.Hallucination].Base / 5);
 
-                        if (pm.MetamorphoseList.Count >= max)
-                            pm.SendMessage("Vous ne pouvez pas avoir plus de " + max.ToString() + " créatures dans votre liste de métamorphoses.");
-                        else
-                        {
-                            pm.MetamorphoseList.Add((object)entry);
-                            pm.SendMessage("Vous ajoutez avec succès la créature à votre liste de métamorphoses.");
+                        // Trickster 2014.11.11: C'etait une arraylist dans TMobile... J'sais pas trop elle servait a quoi.
+                        //if (pm.MetamorphoseList.Count >= max)
+                        //    pm.SendMessage("Vous ne pouvez pas avoir plus de " + max.ToString() + " créatures dans votre liste de métamorphoses.");
+                        //else
+                        //{
+                        //    pm.MetamorphoseList.Add((object)entry);
+                        //    pm.SendMessage("Vous ajoutez avec succès la créature à votre liste de métamorphoses.");
 
-                            Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
-                            Caster.PlaySound(0x3BD);
+                        //    Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                        //    Caster.PlaySound(0x3BD);
 
-                            m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
-                            m.PlaySound(0x3BD);
-                        }
+                        //    m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                        //    m.PlaySound(0x3BD);
+                        //}
                     }
                 }
                 else
@@ -146,8 +148,9 @@ namespace Server.Spells
             {
                 ArrayList entries = null;
 
-                if (Caster is TMobile)
-                    entries = ((TMobile)Caster).MetamorphoseList;
+                // Trickster 2014.11.11: C'etait une arraylist dans TMobile... J'sais pas trop elle servait a quoi.
+                //if (Caster is TMobile)
+                //    entries = ((TMobile)Caster).MetamorphoseList;
 
                 if(entries != null)
                     Caster.SendGump(new MetamorphoseGump(Caster, Scroll, entries, 5));
