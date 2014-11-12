@@ -183,6 +183,7 @@ namespace Server.Engines.Identities
             }
 
             m_currentIdentity[m] = name;
+            m_Mobile.SendPropertiesTo(m);
         }
 
         public string GetNameUseBy(Mobile from)

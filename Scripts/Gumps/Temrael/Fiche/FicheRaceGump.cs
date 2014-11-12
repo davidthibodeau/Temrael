@@ -14,9 +14,9 @@ namespace Server.Gumps
 {
     public class FicheRaceGump : GumpTemrael
     {
-        private TMobile m_from;
+        private PlayerMobile m_from;
 
-        public FicheRaceGump(TMobile from)
+        public FicheRaceGump(PlayerMobile from)
             : base("Race", 560, 622)
         {
             m_from = from;

@@ -11,10 +11,10 @@ namespace Server.Engines.Identities
 
     public class RenameEntry : ContextMenuEntry
     {
-        private TMobile m_from;
-        private TMobile m_target;
+        private PlayerMobile m_from;
+        private PlayerMobile m_target;
 
-        public RenameEntry(TMobile from, TMobile target)
+        public RenameEntry(PlayerMobile from, PlayerMobile target)
             : base(6097, -1)
         {
             m_from = from;
@@ -29,10 +29,10 @@ namespace Server.Engines.Identities
 
     public class RenamePrompt : Prompt
     {
-        private TMobile m_target;
-        private TMobile m_from;
+        private PlayerMobile m_target;
+        private PlayerMobile m_from;
 
-        public RenamePrompt(TMobile from, TMobile target)
+        public RenamePrompt(PlayerMobile from, PlayerMobile target)
         {
             from.SendMessage("Entrez le nouveau nom que vous souhaitez attribuer au personnage:");
             m_target = target;

@@ -1295,50 +1295,74 @@ namespace Server.Mobiles
 				RecheckTownProtection();
 		}
 
-		public override void GetContextMenuEntries( Mobile from, List<ContextMenuEntry> list )
-		{
-			base.GetContextMenuEntries( from, list );
+        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
+        {
+            base.GetContextMenuEntries(from, list);
 
-			if ( from == this )
-			{
-				BaseHouse house = BaseHouse.FindHouseAt( this );
+            if (from == this)
+            {
+                BaseHouse house = BaseHouse.FindHouseAt(this);
 
-				if ( house != null )
-				{
-					if ( Alive && house.InternalizedVendors.Count > 0 && house.IsOwner( this ) )
-						list.Add( new CallbackEntry( 6204, new ContextCallback( GetVendor ) ) );
+                if (house != null)
+                {
+                    if (Alive && house.InternalizedVendors.Count > 0 && house.IsOwner(this))
+                        list.Add(new CallbackEntry(6204, new ContextCallback(GetVendor)));
 
-					if ( house.IsAosRules )
-						list.Add( new CallbackEntry( 6207, new ContextCallback( LeaveHouse ) ) );
-				}
-			}
-			if ( from != this )
-			{
-				if ( Alive && Core.Expansion >= Expansion.AOS )
-				{
-					Party theirParty = from.Party as Party;
-					Party ourParty = this.Party as Party;
+                    if (house.IsAosRules)
+                        list.Add(new CallbackEntry(6207, new ContextCallback(LeaveHouse)));
+                }
 
-					if ( theirParty == null && ourParty == null ) {
-						list.Add( new AddToPartyEntry( from, this ) );
-					} else if ( theirParty != null && theirParty.Leader == from ) {
-						if ( ourParty == null ) {
-							list.Add( new AddToPartyEntry( from, this ) );
-						} else if ( ourParty == theirParty ) {
-							list.Add( new RemoveFromPartyEntry( from, this ) );
-						}
-					}
-				}
+                list.Add(new CallbackEntry(6098, new ContextCallback(LaunchFicheGump)));
+                if (Race != null && (Race.isAasimaar || Race.isTieffelin))
+                {
+                    if (!Race.Transformed)
+                        list.Add(new TransformerEntry(this));
+                    else
+                        list.Add(new DetransformerEntry(this));
+                }
+            }
+            if (from != this)
+            {
+                if (Alive && Core.Expansion >= Expansion.AOS)
+                {
+                    Party theirParty = from.Party as Party;
+                    Party ourParty = this.Party as Party;
 
-				BaseHouse curhouse = BaseHouse.FindHouseAt( this );
+                    if (theirParty == null && ourParty == null)
+                    {
+                        list.Add(new AddToPartyEntry(from, this));
+                    }
+                    else if (theirParty != null && theirParty.Leader == from)
+                    {
+                        if (ourParty == null)
+                        {
+                            list.Add(new AddToPartyEntry(from, this));
+                        }
+                        else if (ourParty == theirParty)
+                        {
+                            list.Add(new RemoveFromPartyEntry(from, this));
+                        }
+                    }
+                }
 
-				if( curhouse != null )
-				{
-					if ( Alive && Core.Expansion >= Expansion.AOS && curhouse.IsAosRules && curhouse.IsFriend( from ) )
-						list.Add( new EjectPlayerEntry( from, this ) );
-				}
-			}
-		}
+                BaseHouse curhouse = BaseHouse.FindHouseAt(this);
+
+                if (curhouse != null)
+                {
+                    if (Alive && Core.Expansion >= Expansion.AOS && curhouse.IsAosRules && curhouse.IsFriend(from))
+                        list.Add(new EjectPlayerEntry(from, this));
+                }
+
+                if (from is PlayerMobile)
+                    list.Add(new RenameEntry((PlayerMobile)from, this));
+
+            }
+        }
+
+        private void LaunchFicheGump()
+        {
+            this.SendGump(new FicheRaceGump(this));
+        }
 
 		private void GetVendor()
 		{
@@ -2376,49 +2400,6 @@ namespace Server.Mobiles
 						list.Add( 1060776, "{0}t{1}", pl.Rank.Title, faction.Definition.PropName ); // ~1_val~, ~2_val~
 				}
 			}
-		}
-
-		public override void OnSingleClick( Mobile from )
-		{
-			if ( Map == Faction.Facet )
-			{
-				PlayerState pl = PlayerState.Find( this );
-
-				if ( pl != null )
-				{
-					string text;
-					bool ascii = false;
-
-					Faction faction = pl.Faction;
-
-					if ( faction.Commander == this )
-						text = String.Concat( this.Female ? "(Commanding Lady of the " : "(Commanding Lord of the ", faction.Definition.FriendlyName, ")" );
-					else if ( pl.Sheriff != null )
-						text = String.Concat( "(The Sheriff of ", pl.Sheriff.Definition.FriendlyName, ", ", faction.Definition.FriendlyName, ")" );
-					else if ( pl.Finance != null )
-						text = String.Concat( "(The Finance Minister of ", pl.Finance.Definition.FriendlyName, ", ", faction.Definition.FriendlyName, ")" );
-					else
-					{
-						ascii = true;
-
-						if ( pl.MerchantTitle != MerchantTitle.None )
-							text = String.Concat( "(", MerchantTitles.GetInfo( pl.MerchantTitle ).Title.String, ", ", faction.Definition.FriendlyName, ")" );
-						else
-							text = String.Concat( "(", pl.Rank.Title.String, ", ", faction.Definition.FriendlyName, ")" );
-					}
-
-					int hue = ( Faction.Find( from ) == faction ? 98 : 38 );
-
-					PrivateOverheadMessage( MessageType.Label, hue, ascii, text, from.NetState );
-				}
-			}
-
-			base.OnSingleClick( from );
-		}
-
-		protected override bool OnMove( Direction d )
-		{
-			return true;
 		}
 
         public override void OnAfterMove(Direction d)

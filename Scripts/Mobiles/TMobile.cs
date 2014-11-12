@@ -122,7 +122,7 @@ namespace Server.Mobiles
         {
             string color = "#FFFFFF";
 
-            string displayName = (from == this ? Name : GetNameUseBy(from));
+            string displayName = GetNameUseBy(from);
             if (!CanBeginAction(typeof(IncognitoSpell)))
             {
                 displayName = "Anonyme";
@@ -134,114 +134,6 @@ namespace Server.Mobiles
 
             from.Send(list);
             
-        }
-
-        public override void GetContextMenuEntries(Mobile m_from, List<ContextMenuEntry> list)
-        {
-            base.GetContextMenuEntries(m_from, list);
-
-            if (m_from != this)
-            {
-                if (m_from is TMobile)
-                    list.Add(new RenameEntry((TMobile)m_from, this));
-                //temp_from = m_from;
-                //list.Add(new CallbackEntry(6097, new ContextCallback(LaunchGumpName)));
-            }
-            else
-            {
-                list.Add(new CallbackEntry(6098, new ContextCallback(LaunchFicheGump)));
-                if (Race != null && (Race.isAasimaar || Race.isTieffelin))
-                {
-                    if (!Race.Transformed)
-                        list.Add(new TransformerEntry(this));
-                    else
-                        list.Add(new DetransformerEntry(this));
-                }
-            }
-        }
-
-        private class TransformerEntry : ContextMenuEntry
-        {
-            private PlayerMobile from;
-
-            public TransformerEntry(PlayerMobile f) : base(6285)
-            {
-                from = f;
-            }
-
-            public override void OnClick()
-            {
-                from.Race.Transformer(from);
-            } 
-        }
-
-        private class DetransformerEntry : ContextMenuEntry
-        {
-            private PlayerMobile from;
-
-            public DetransformerEntry(PlayerMobile f) : base(6285)
-            {
-                from = f;
-            }
-
-            public override void OnClick()
-            {
-                from.Race.Detransformer(from);
-            } 
-        }
-
-        private void LaunchFicheGump()
-        {
-            this.SendGump(new FicheRaceGump(this));
-        }
-
-        public void NewName(string entry, Mobile mob)
-        {
-            if (mob is TMobile)
-            {
-                TMobile tmob = (TMobile)mob;
-
-                /*Console.WriteLine("TMOB : " + tmob.Name);
-                Console.WriteLine("THIS : " + Name);*/
-
-                Identities.NewName(entry, tmob);
-
-                SendPropertiesTo(mob);
-            }
-        }
-
-        public override void OnAosSingleClick(Mobile from)
-        {
-            ObjectPropertyList opl = new ObjectPropertyList(this);
-            opl.Add(GetNameUseBy(from));
-
-            if (opl.Header > 0)
-            {
-                int hue = 11;
-                from.Send(new MessageLocalized(this.Serial, Body, MessageType.Label, hue, 3, opl.Header, Name, opl.HeaderArgs));
-            }
-        }
-
-        public override void OnSingleClick(Mobile from)
-        {
-            ObjectPropertyList opl = new ObjectPropertyList(this);
-            opl.Add(GetNameUseBy(from));
-
-
-            if (opl.Header > 0)
-            {
-                this.PrivateOverheadMessage(MessageType.Regular, 0x3B2, true, this.Name + ", ", from.NetState);
-                this.PrivateOverheadMessage(MessageType.Regular, 0x3B2, true, "[" + this.Title + "]", from.NetState);
-            }
-            else
-            {
-
-            }
-        }
-
-        public override void DisplayPaperdollTo(Mobile to)
-        {
-            EventSink.InvokePaperdollRequest(new PaperdollRequestEventArgs(to, this));
         }
 
         public override bool OnMoveOver(Mobile m)
@@ -290,14 +182,6 @@ namespace Server.Mobiles
             
         }
 
-
-        public void FamilierCheck()
-        {
-            // TOCHECK FAMILIER.
-            FollowersMax = 5;
-
-            Delta(MobileDelta.Followers);
-        }
 
         public override bool Move(Direction d)
         {
@@ -368,13 +252,6 @@ namespace Server.Mobiles
                 RevealingAction();
 
             base.OnDamage(amount, from, willKill);
-        }
-
-        public override bool OnBeforeDeath()
-        {
-
-
-            return base.OnBeforeDeath();
         }
 
         public override void OnDeath(Container c)

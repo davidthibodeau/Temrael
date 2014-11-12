@@ -117,4 +117,36 @@ namespace Server.Engines.Races
             from.Race.Transformed = false;
         }
     }
+
+    public class TransformerEntry : ContextMenuEntry
+    {
+        private PlayerMobile from;
+
+        public TransformerEntry(PlayerMobile f)
+            : base(6285)
+        {
+            from = f;
+        }
+
+        public override void OnClick()
+        {
+            from.Race.Transformer(from);
+        }
+    }
+
+    public class DetransformerEntry : ContextMenuEntry
+    {
+        private PlayerMobile from;
+
+        public DetransformerEntry(PlayerMobile f)
+            : base(6285)
+        {
+            from = f;
+        }
+
+        public override void OnClick()
+        {
+            from.Race.Detransformer(from);
+        }
+    }
 }
