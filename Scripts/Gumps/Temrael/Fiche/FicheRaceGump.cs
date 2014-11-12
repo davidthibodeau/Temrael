@@ -78,7 +78,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;
@@ -110,8 +110,8 @@ namespace Server.Gumps
                     from.SendGump(new FicheRacesInfoGump(from));
                     break;
                 case 10:
-                    if (XP.CanEvolve((TMobile)from))
-                        XP.Evolve((TMobile)from);
+                    if (XP.CanEvolve((PlayerMobile)from))
+                        XP.Evolve((PlayerMobile)from);
                     from.SendGump(new FicheRaceGump(from));
                     break;
                 case 11:

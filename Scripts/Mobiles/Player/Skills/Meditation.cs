@@ -28,9 +28,9 @@ namespace Server.SkillHandlers
 
             bool canMedidatePortArme = false;
 
-            if (m is TMobile)
+            if (m is PlayerMobile)
             {
-                TMobile tmob = m as TMobile;
+                PlayerMobile tmob = m as PlayerMobile;
 
                 //TOCHECK MEDITATEARME
                 canMedidatePortArme = true;

@@ -50,7 +50,7 @@ namespace Server.Spells
 
                 if (map != null)
                 {
-                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(p), 3);
+                    IPooledEnumerable eable = map.GePlayerMobilesInRange(new Point3D(p), 3);
 
                     foreach (Mobile m in eable)
                     {

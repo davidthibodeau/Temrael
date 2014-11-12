@@ -30,7 +30,7 @@ namespace Server.Misc
         [Description("Chuchoter tout en restant caché si c'est le cas.")]
         private static void Chuchoter_OnCommand(CommandEventArgs e)
         {
-            TMobile from = ((TMobile)e.Mobile);
+            PlayerMobile from = ((PlayerMobile)e.Mobile);
 
             AlertMessage(from, 1);
             double srcSkill = from.Skills[SkillName.Discretion].Value;
@@ -68,11 +68,11 @@ namespace Server.Misc
 
             protected override void OnTarget(Mobile from, object targ)
             {
-                if (!(targ is TMobile)) 
+                if (!(targ is PlayerMobile)) 
                     AlertMessage(from, 0);
                 else
                 {
-                    TMobile target = ((TMobile)targ);
+                    PlayerMobile target = ((PlayerMobile)targ);
                     if (from.Skills[SkillName.Discretion].Value < Utility.RandomMinMax(1, 100))
                     {
                         AlertMessage(from, 6);
@@ -89,7 +89,7 @@ namespace Server.Misc
 
             protected override void OnTargetOutOfRange(Mobile from, object targ)
             {
-                if (!(targ is TMobile)) 
+                if (!(targ is PlayerMobile)) 
                     AlertMessage(from, 0);
                 else 
                     AlertMessage(from, 7);
@@ -102,12 +102,12 @@ namespace Server.Misc
             foreach (Server.Network.NetState state in clientsInRange)
             {
                 Mobile mobile = state.Mobile;
-                if (mobile is TMobile)
+                if (mobile is PlayerMobile)
                 {
-                    TMobile m = mobile as TMobile;
+                    PlayerMobile m = mobile as PlayerMobile;
                     if (m != null && m.AccessLevel >= AccessLevel.Batisseur && m.AccessLevel > from.AccessLevel)
                     {
-                        //m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, ((TMobile)from).PlayerName, String.Format("[Chuchotte]: {0}", texte)));
+                        //m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, ((PlayerMobile)from).PlayerName, String.Format("[Chuchotte]: {0}", texte)));
                         m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, from.GetNameUseBy(m), String.Format("[Chuchote]: {0}", texte)));
                     }
                     if (m != null && m.Skills[SkillName.Discretion].Value > from.Skills[SkillName.Discretion].Value)

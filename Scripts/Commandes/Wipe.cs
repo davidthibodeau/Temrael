@@ -83,7 +83,7 @@ namespace Server.Commands
 			else if ( items || multis )
 				eable = map.GetItemsInBounds( rect );
 			else if ( mobiles )
-				eable = map.GetMobilesInBounds( rect );
+				eable = map.GePlayerMobilesInBounds( rect );
 			else
 				return;
 

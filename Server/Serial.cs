@@ -26,10 +26,10 @@ namespace Server
 	{
 		private int m_Serial;
 
-		private static Serial m_LastMobile = Zero;
+		private static Serial m_LasPlayerMobile = Zero;
 		private static Serial m_LastItem = 0x40000000;
 
-		public static Serial LastMobile { get { return m_LastMobile; } }
+		public static Serial LasPlayerMobile { get { return m_LasPlayerMobile; } }
 		public static Serial LastItem { get { return m_LastItem; } }
 
 		public static readonly Serial MinusOne = new Serial( -1 );
@@ -39,9 +39,9 @@ namespace Server
 		{
 			get
 			{
-				while ( World.FindMobile( m_LastMobile = (m_LastMobile + 1) ) != null );
+				while ( World.FindMobile( m_LasPlayerMobile = (m_LasPlayerMobile + 1) ) != null );
 
-				return m_LastMobile;
+				return m_LasPlayerMobile;
 			}
 		}
 

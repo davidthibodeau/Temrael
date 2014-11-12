@@ -73,9 +73,9 @@ namespace Server.Spells
 
                 
 
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    TMobile pm = (TMobile)m;
+                    PlayerMobile pm = (PlayerMobile)m;
                     pm.Transformation.OnTransformationChange(Utility.Random(33, 76), "Quelqu'un", 0, true);
                 }
                 else
@@ -108,9 +108,9 @@ namespace Server.Spells
 				t.Stop();
 				m_Timers.Remove( m );
 
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    TMobile pm = (TMobile)m;
+                    PlayerMobile pm = (PlayerMobile)m;
                     pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
@@ -121,8 +121,8 @@ namespace Server.Spells
 
                 m.EndAction(typeof(OmbreSpell));
 
-                if (m is TMobile)
-                    ((TMobile)m).CheckRaceGump();
+                if (m is PlayerMobile)
+                    ((PlayerMobile)m).CheckRaceGump();
 
                 BaseArmor.ValidateMobile(m);
 			}
@@ -148,9 +148,9 @@ namespace Server.Spells
 
 				if ( !m_Owner.CanBeginAction( typeof( OmbreSpell ) ) )
 				{
-                    if (m_Owner is TMobile)
+                    if (m_Owner is PlayerMobile)
                     {
-                        TMobile pm = (TMobile)m_Owner;
+                        PlayerMobile pm = (PlayerMobile)m_Owner;
                         pm.Transformation.OnTransformationChange(0, null, -1, true);
                     }
                     else
@@ -161,8 +161,8 @@ namespace Server.Spells
 
 					m_Owner.EndAction( typeof( OmbreSpell ) );
 
-                    if (m_Owner is TMobile)
-                        ((TMobile)m_Owner).CheckRaceGump();
+                    if (m_Owner is PlayerMobile)
+                        ((PlayerMobile)m_Owner).CheckRaceGump();
 
                     BaseArmor.ValidateMobile(m_Owner);
 				}

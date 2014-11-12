@@ -10,9 +10,9 @@ namespace Server.Engines.Identities
 {
     public class DeguisementGump : Gump
     {
-        private TMobile m_From;
+        private PlayerMobile m_From;
 
-        public DeguisementGump(TMobile from)
+        public DeguisementGump(PlayerMobile from)
             : base(0, 0)
         {
             m_From = from;
@@ -131,7 +131,7 @@ namespace Server.Engines.Identities
 
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;

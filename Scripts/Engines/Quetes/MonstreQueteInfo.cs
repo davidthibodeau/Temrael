@@ -21,13 +21,13 @@ namespace Server.Engines.Quetes
         private string m_QuestNextTitre = "";
         private string m_QuestNextDescription = "";
 
-        private Body m_QuestMobileID = 0;
+        private Body m_QuesPlayerMobileID = 0;
         private int m_QuestItemID = 0;
 
         private int m_QuestExpBonus = 0;
         private Item m_QuestItemRecompense = null;
         private Item m_QuestItemCompletion = null;
-        private Mobile m_QuestMobileCompletion = null;
+        private Mobile m_QuesPlayerMobileCompletion = null;
         private const int m_QuestRangeConst = 10;
 
         private string m_QuestSpeechStart = "";
@@ -100,8 +100,8 @@ namespace Server.Engines.Quetes
         [CommandProperty(AccessLevel.Batisseur)]
         public Mobile QueteNPCCompletion
         {
-            get { return m_QuestMobileCompletion; }
-            set { m_QuestMobileCompletion = value; }
+            get { return m_QuesPlayerMobileCompletion; }
+            set { m_QuesPlayerMobileCompletion = value; }
         }
         [CommandProperty(AccessLevel.Batisseur)]
         public string QueteSpeechDebut
@@ -124,8 +124,8 @@ namespace Server.Engines.Quetes
         [CommandProperty(AccessLevel.Batisseur)]
         public Body QueteMobileID
         {
-            get { return m_QuestMobileID; }
-            set { m_QuestMobileID = value; }
+            get { return m_QuesPlayerMobileID; }
+            set { m_QuesPlayerMobileID = value; }
         }
         [CommandProperty(AccessLevel.Batisseur)]
         public int QueteItemID
@@ -139,9 +139,9 @@ namespace Server.Engines.Quetes
             if (temp_from == null)
                 return;
 
-            /*if (temp_from is TMobile)
+            /*if (temp_from is PlayerMobile)
             {
-                TMobile from = (TMobile)temp_from;
+                PlayerMobile from = (PlayerMobile)temp_from;
 
                 if (!(m_QuestTag == ""))
                 {
@@ -155,14 +155,14 @@ namespace Server.Engines.Quetes
                 if (m_QuestTitre == from.QueteTitre)
                 {
                     //Si un mobile
-                    if (m_QuestMobileID > 0)
+                    if (m_QuesPlayerMobileID > 0)
                     {
                         bool completion = false;
                         IPooledEnumerable eable = from.GetItemsInRange(m_QuestRangeConst);
 
                         foreach (Mobile m in eable)
                         {
-                            if (m.Body == m_QuestMobileID)
+                            if (m.Body == m_QuesPlayerMobileID)
                             {
                                 if (!(m_QuestItemRecompense == null))
                                     from.Backpack.AddItem(m_QuestItemRecompense);
@@ -189,14 +189,14 @@ namespace Server.Engines.Quetes
                             SayTo(from, m_QuestSpeechDuring);
                         }
                     }
-                    else if (!(m_QuestMobileCompletion == null))
+                    else if (!(m_QuesPlayerMobileCompletion == null))
                     {
                         bool completion = false;
                         IPooledEnumerable eable = from.GetItemsInRange(m_QuestRangeConst);
 
                         foreach (Mobile m in eable)
                         {
-                            if (m.Equals(m_QuestMobileCompletion))
+                            if (m.Equals(m_QuesPlayerMobileCompletion))
                             {
                                 if (!(m_QuestItemRecompense == null))
                                     from.Backpack.AddItem(m_QuestItemRecompense);
@@ -361,13 +361,13 @@ namespace Server.Engines.Quetes
             m_QuestNextTitre = reader.ReadString();
             m_QuestNextDescription = reader.ReadString();
 
-            m_QuestMobileID = (Body)reader.ReadInt();
+            m_QuesPlayerMobileID = (Body)reader.ReadInt();
             m_QuestItemID = reader.ReadInt();
 
             m_QuestExpBonus = reader.ReadInt();
             m_QuestItemRecompense = reader.ReadItem();
             m_QuestItemCompletion = reader.ReadItem();
-            m_QuestMobileCompletion = reader.ReadMobile();
+            m_QuesPlayerMobileCompletion = reader.ReadMobile();
 
             m_QuestSpeechStart = reader.ReadString();
             m_QuestSpeechDuring = reader.ReadString();
@@ -384,13 +384,13 @@ namespace Server.Engines.Quetes
             writer.Write((string) m_QuestNextTitre);
             writer.Write((string) m_QuestNextDescription);
 
-            writer.Write((Body) m_QuestMobileID);
+            writer.Write((Body) m_QuesPlayerMobileID);
             writer.Write((int) m_QuestItemID);
 
             writer.Write((int) m_QuestExpBonus);
             writer.Write((Item) m_QuestItemRecompense);
             writer.Write((Item) m_QuestItemCompletion);
-            writer.Write((Mobile) m_QuestMobileCompletion);
+            writer.Write((Mobile) m_QuesPlayerMobileCompletion);
 
             writer.Write((string) m_QuestSpeechStart);
             writer.Write((string) m_QuestSpeechDuring);

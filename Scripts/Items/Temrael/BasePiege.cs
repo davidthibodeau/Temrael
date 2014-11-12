@@ -162,9 +162,9 @@ namespace Server.Items
         public override void OnMovement(Mobile m, Point3D oldLocation)
         {
             //Detection
-            if (m.InRange(m.Location, Math.Max(mRange + 4, 8)) && m is TMobile)
+            if (m.InRange(m.Location, Math.Max(mRange + 4, 8)) && m is PlayerMobile)
             {
-                TMobile player = m as TMobile;
+                PlayerMobile player = m as PlayerMobile;
                 if (player.Skills.Pieges.Value / 100 > Utility.RandomDouble())
                 {
                     //player.PrivateOverheadMessage(MessageType.Regular, Utility.RandomRedHue(), true, "Piege proche !", player.NetState);
@@ -197,9 +197,9 @@ namespace Server.Items
 
         private bool canHear(Mobile m)
         {
-            if (m is TMobile)
+            if (m is PlayerMobile)
             {
-                TMobile mob = m as TMobile;
+                PlayerMobile mob = m as PlayerMobile;
                 int roll = mob.Skills.Pieges.Fixed / 10;
                 if (!mob.Hidden)
                     roll -= Utility.Random(10, 20);
@@ -212,16 +212,16 @@ namespace Server.Items
 
         /*private bool checkReflexe(Mobile m)
         {
-            if (m is TMobile)
+            if (m is PlayerMobile)
             {
-                TMobile mob = m as TMobile;
+                PlayerMobile mob = m as PlayerMobile;
                 int roll = DndHelper.rollDe(De.vingt);
                 roll += mob.getBonusReflexe(MagieEcole.Piege);
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    if (((TMobile)mob).hasDon(DonEnum.SensPieges))
+                    if (((PlayerMobile)mob).hasDon(DonEnum.SensPieges))
                     {
-                        roll += ((TMobile)mob).getDonNiveau(DonEnum.SensPieges);
+                        roll += ((PlayerMobile)mob).getDonNiveau(DonEnum.SensPieges);
                     }
                 }
                 if (roll >= mDD)
@@ -249,16 +249,16 @@ namespace Server.Items
         {
             consumeUtilisation();
             if (mRetardement.TotalSeconds == 0)
-                OnDeclenchement(m as TMobile);
+                OnDeclenchement(m as PlayerMobile);
             else
                 new RetardementTimer(this, m, mRetardement);
             m.SendMessage("Vous declenchez un piege !");
 
         }
-        protected virtual void OnDeclenchement(TMobile m)
+        protected virtual void OnDeclenchement(PlayerMobile m)
         {
             int degats = mDegat;
-            foreach (TMobile mob in this.GetMobilesInRange(mRange))
+            foreach (PlayerMobile mob in this.GePlayerMobilesInRange(mRange))
             {
                 if (mob.Skills.Pieges.Value / 100 > Utility.RandomDouble())
                 {
@@ -273,9 +273,9 @@ namespace Server.Items
         }
         public override void OnDoubleClick(Mobile from)
         {
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                if (!tryDesarmorcer(from as TMobile))
+                if (!tryDesarmorcer(from as PlayerMobile))
                     OnMoveOver(from);
                 else
                 {
@@ -285,7 +285,7 @@ namespace Server.Items
                 }
             }
         }
-        public virtual bool tryDesarmorcer(TMobile m)
+        public virtual bool tryDesarmorcer(PlayerMobile m)
         {
             if (m.Skills.Pieges.Value / 100 > Utility.RandomDouble())
             {
@@ -331,7 +331,7 @@ namespace Server.Items
             {
                 if (piege != null && mobile != null)
                 {
-                    piege.OnDeclenchement(mobile as TMobile);
+                    piege.OnDeclenchement(mobile as PlayerMobile);
                 }
             }
         }

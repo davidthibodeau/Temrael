@@ -102,7 +102,7 @@ namespace Server.Items
 
 		public virtual void TriggerDamage()
 		{
-			foreach ( Mobile mob in GetMobilesInRange( 1 ) )
+			foreach ( Mobile mob in GePlayerMobilesInRange( 1 ) )
 			{
 				if ( mob.Alive && !mob.IsDeadBondedPet && mob.AccessLevel == AccessLevel.Player )
 					Spells.SpellHelper.Damage( TimeSpan.FromTicks( 1 ), mob, mob, Utility.Dice( 3, 15, 0 ) );

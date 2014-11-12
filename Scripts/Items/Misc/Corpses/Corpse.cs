@@ -888,10 +888,10 @@ namespace Server.Items
 
         private class AmeEatingEntry : ContextMenuEntry
         {
-            private TMobile m_from;
+            private PlayerMobile m_from;
             private Corpse m_corpse;
 
-            public AmeEatingEntry(TMobile from, Corpse corpse)
+            public AmeEatingEntry(PlayerMobile from, Corpse corpse)
                 : base(6215, 2)
             {
                 m_from = from;
@@ -909,10 +909,10 @@ namespace Server.Items
 		{
 			base.GetContextMenuEntries( from, list );
 
-            if ((from is TMobile) && (Owner is TMobile) && (!(m_Owner == from)) && (from.GetDistanceToSqrt(this.Location) <= 3) && (from.InLOS(this)))
+            if ((from is PlayerMobile) && (Owner is PlayerMobile) && (!(m_Owner == from)) && (from.GetDistanceToSqrt(this.Location) <= 3) && (from.InLOS(this)))
             {
-                TMobile player = (TMobile)from;
-                TMobile owner = (TMobile)Owner;
+                PlayerMobile player = (PlayerMobile)from;
+                PlayerMobile owner = (PlayerMobile)Owner;
 
                 if (player.MortEngine.MortVivant)
                     list.Add(new AmeEatingEntry(player, this));

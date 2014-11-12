@@ -158,9 +158,9 @@ namespace Server.Misc
 		public static bool CheckSkill( Mobile from, Skill skill, object amObj, double chance )
 		{
             // Check de fatigue...
-            //if (from is TMobile)
+            //if (from is PlayerMobile)
             //{
-            //    TMobile tattacker = from as TMobile;
+            //    PlayerMobile tattacker = from as PlayerMobile;
             //    if (tattacker != null && tattacker.CheckFatigue(4))
             //        return false;
 

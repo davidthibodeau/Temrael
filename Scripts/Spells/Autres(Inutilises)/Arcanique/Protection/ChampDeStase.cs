@@ -83,8 +83,8 @@ namespace Server.Spells
                 m.Blessed = false;
                 m.Hidden = false;
 
-                //if (m is TMobile)
-                //    ((TMobile)m).Aphonie = false;
+                //if (m is PlayerMobile)
+                //    ((PlayerMobile)m).Aphonie = false;
 
                 m.EndAction(typeof(ChampDeStaseSpell));
             }
@@ -111,8 +111,8 @@ namespace Server.Spells
                     player.Blessed = false;
                     player.Hidden = false;
 
-                    //if (player is TMobile)
-                    //    ((TMobile)player).Aphonie = false;
+                    //if (player is PlayerMobile)
+                    //    ((PlayerMobile)player).Aphonie = false;
 
                     player.EndAction(typeof(ChampDeStaseSpell));
                 }

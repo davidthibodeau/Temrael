@@ -22,9 +22,9 @@ namespace Server.Scripts.Commands
         {
             foreach (Mobile m in World.Mobiles.Values)
             {
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    TMobile player = m as TMobile;
+                    PlayerMobile player = m as PlayerMobile;
 
                     for (int i = 0; i < player.Items.Count; i++ )
                     {

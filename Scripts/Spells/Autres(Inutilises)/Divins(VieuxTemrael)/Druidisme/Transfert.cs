@@ -36,7 +36,7 @@ namespace Server.Spells
             {
                 if (spell.CheckSequence())
                 {
-                    TMobile pm = from as TMobile;
+                    PlayerMobile pm = from as PlayerMobile;
 
                     if (o is BaseCreature)
                     {

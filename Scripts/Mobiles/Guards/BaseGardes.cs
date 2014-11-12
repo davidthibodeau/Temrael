@@ -51,7 +51,7 @@ namespace Server.Mobiles
         public void DoGuard()
         {
             ArrayList list = new ArrayList();
-            foreach (Mobile m in this.GetMobilesInRange(8))
+            foreach (Mobile m in this.GePlayerMobilesInRange(8))
             {
                 if (!(m_controller == null))
                 {

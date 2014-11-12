@@ -31,7 +31,7 @@ namespace Server.Scripts.Commands
 
         private static void Tip_OnTarget(Mobile from, object targeted, object state)
         {
-            if (targeted is TMobile)
+            if (targeted is PlayerMobile)
             {
                 string tip = state as string;
 

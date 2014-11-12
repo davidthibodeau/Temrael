@@ -34,9 +34,9 @@ namespace Server
 
             protected override void OnTarget(Mobile from, object targeted)
             {
-                if (targeted is TMobile)
+                if (targeted is PlayerMobile)
                 {
-                    TMobile tm = targeted as TMobile;
+                    PlayerMobile tm = targeted as PlayerMobile;
                     if (from.AccessLevel > tm.AccessLevel)
                     {
                         //tm.Reset(true);

@@ -24,10 +24,10 @@ namespace Server.Gumps
 
     public class CreationOverviewGump : GumpTemrael
     {
-        private TMobile m_from;
+        private PlayerMobile m_from;
         private CreationInfos m_infos;
 
-        public CreationOverviewGump(TMobile from, CreationInfos infos)
+        public CreationOverviewGump(PlayerMobile from, CreationInfos infos)
             : base("Résumé", 560, 622)
         {
             m_from = from;
@@ -83,7 +83,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;
@@ -170,7 +170,7 @@ namespace Server.Gumps
             }
         }
 
-        private static void SetSkills(TMobile from)
+        private static void SetSkills(PlayerMobile from)
         {
             from.SkillsCap = 100 * 10;
 
@@ -183,18 +183,18 @@ namespace Server.Gumps
             //from.CompetencesLibres = 200;
         }
 
-        private static void SetCaract(TMobile from)
+        private static void SetCaract(PlayerMobile from)
         {
             Statistiques.Reset(from);
         }
 
-        public static void EquipItem(TMobile from, Item item)
+        public static void EquipItem(PlayerMobile from, Item item)
         {
             if (item != null)
                 from.EquipItem(item);
         }
 
-        private static void PackItem(TMobile from, Item item)
+        private static void PackItem(PlayerMobile from, Item item)
         {
             if (!Core.AOS)
                 item.LootType = LootType.Blessed;
@@ -207,7 +207,7 @@ namespace Server.Gumps
                 item.Delete();
         }
 
-        private static void InitializeCreation(TMobile from, int hue)
+        private static void InitializeCreation(PlayerMobile from, int hue)
         {
             from.Experience.Niveau = 0;
             SetSkills(from);

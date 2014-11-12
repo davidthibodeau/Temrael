@@ -9,7 +9,7 @@ namespace Server
     class Statistiques
     {
 
-        public static void Reset(TMobile from)
+        public static void Reset(PlayerMobile from)
         {
             from.RawStr = 10;
             from.RawDex = 10;
@@ -18,7 +18,7 @@ namespace Server
             //from.StatistiquesLibres = 225;
         }
 
-        public static bool CanRaise(TMobile from, StatType stat)
+        public static bool CanRaise(PlayerMobile from, StatType stat)
         {
             //if (from.StatistiquesLibres < 1)
             //    return false;
@@ -42,7 +42,7 @@ namespace Server
             return false;
         }
 
-        public static bool CanLower(TMobile from, StatType stat)
+        public static bool CanLower(PlayerMobile from, StatType stat)
         {
             switch (stat)
             {
@@ -67,12 +67,12 @@ namespace Server
             return false;
         }
 
-        public static int GetDisponibleStats(TMobile from)
+        public static int GetDisponibleStats(PlayerMobile from)
         {
             return 0; //from.StatistiquesLibres;
         }
 
-        public static int GetRemainingStats(TMobile from)
+        public static int GetRemainingStats(PlayerMobile from)
         {
             int added = from.RawStr + from.RawDex + from.RawInt;
             int points = 225;

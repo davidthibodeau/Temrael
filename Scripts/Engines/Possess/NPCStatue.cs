@@ -115,7 +115,7 @@ namespace Server.Items
                 return;
             }
 
-            TMobile from2 = from as TMobile;
+            PlayerMobile from2 = from as PlayerMobile;
 
             if (this.activate == 0)
             {

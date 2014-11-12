@@ -67,9 +67,9 @@ namespace Server.Spells
                 {
                     MetamorphoseGump.MetamorphoseEntry entry = new MetamorphoseGump.MetamorphoseEntry(m.Name, ShrinkTable.Lookup(m.Body), m.Body, 0, (int)(Caster.Skills[SkillName.Hallucination].Base / 4), (int)(Caster.Skills[SkillName.Hallucination].Base / 4), (int)(Caster.Skills[SkillName.Hallucination].Base / 4), 0, m.Hue);
 
-                    if (Caster is TMobile)
+                    if (Caster is PlayerMobile)
                     {
-                        TMobile pm = (TMobile)Caster;
+                        PlayerMobile pm = (PlayerMobile)Caster;
 
                         if (pm.Transformation.MetamorphoseList == null)
                             pm.Transformation.MetamorphoseList = new ArrayList();
@@ -102,9 +102,9 @@ namespace Server.Spells
         {
             if (!Caster.CanBeginAction(typeof(MetamorphoseSpell)))
             {
-                if (Caster is TMobile)
+                if (Caster is PlayerMobile)
                 {
-                    TMobile pm = (TMobile)Caster;
+                    PlayerMobile pm = (PlayerMobile)Caster;
                     pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
@@ -116,8 +116,8 @@ namespace Server.Spells
 
                 Caster.EndAction(typeof(MetamorphoseSpell));
 
-                if (Caster is TMobile)
-                    ((TMobile)Caster).CheckRaceGump();
+                if (Caster is PlayerMobile)
+                    ((PlayerMobile)Caster).CheckRaceGump();
 
                 BaseArmor.ValidateMobile(Caster);
 
@@ -146,8 +146,8 @@ namespace Server.Spells
             {
                 ArrayList entries = null;
 
-                if (Caster is TMobile)
-                    entries = ((TMobile)Caster).Transformation.MetamorphoseList;
+                if (Caster is PlayerMobile)
+                    entries = ((PlayerMobile)Caster).Transformation.MetamorphoseList;
 
                 if(entries != null)
                     Caster.SendGump(new MetamorphoseGump(Caster, Scroll, entries, 5));
@@ -174,9 +174,9 @@ namespace Server.Spells
                         Caster.AddStatMod(new StatMod(StatType.Dex, String.Format("[Transformation] {0} Offset", StatType.Dex), m_DexMod, TimeSpan.Zero));
                         Caster.AddStatMod(new StatMod(StatType.Int, String.Format("[Transformation] {0} Offset", StatType.Int), m_IntMod, TimeSpan.Zero));
 
-                        if (Caster is TMobile)
+                        if (Caster is PlayerMobile)
                         {
-                            TMobile pm = (TMobile)Caster;
+                            PlayerMobile pm = (PlayerMobile)Caster;
                             pm.Transformation.OnTransformationChange(m_NewBody, m_NameMod, m_HueMod, true);
                         }
                         else
@@ -199,9 +199,9 @@ namespace Server.Spells
         {
             if (!m.CanBeginAction(typeof(MetamorphoseSpell)))
             {
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    TMobile pm = (TMobile)m;
+                    PlayerMobile pm = (PlayerMobile)m;
                     pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
@@ -213,8 +213,8 @@ namespace Server.Spells
 
                 m.EndAction(typeof(MetamorphoseSpell));
 
-                if (m is TMobile)
-                    ((TMobile)m).CheckRaceGump();
+                if (m is PlayerMobile)
+                    ((PlayerMobile)m).CheckRaceGump();
 
                 BaseArmor.ValidateMobile(m);
 
@@ -255,7 +255,7 @@ namespace Server.Spells
             {
                 if (o is BaseCreature)
                     m_Owner.Target((BaseCreature)o);
-                else if (o is TMobile && from == o)
+                else if (o is PlayerMobile && from == o)
                     m_Owner.ToogleMetamorphose();
             }
 

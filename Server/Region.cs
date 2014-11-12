@@ -456,7 +456,7 @@ namespace Server
 			return count;
 		}
 
-		public List<Mobile> GetMobiles()
+		public List<Mobile> GePlayerMobiles()
 		{
 			List<Mobile> list = new List<Mobile>();
 
@@ -477,7 +477,7 @@ namespace Server
 			return list;
 		}
 
-		public int GetMobileCount()
+		public int GePlayerMobileCount()
 		{
 			int count = 0;
 

@@ -104,7 +104,7 @@ namespace Server.Items
 			Effects.SendLocationEffect( Location, Map, GetBaseID( this.Type ) + 1, 18, 3, GetEffectHue(), 0 );
 			Effects.PlaySound( Location, Map, 0x22C );
 
-			foreach ( Mobile mob in GetMobilesInRange( 0 ) )
+			foreach ( Mobile mob in GePlayerMobilesInRange( 0 ) )
 			{
 				if ( mob.Alive && !mob.IsDeadBondedPet )
 					Spells.SpellHelper.Damage( TimeSpan.FromTicks( 1 ), mob, mob, Utility.RandomMinMax( 1, 6 ) * 6 );

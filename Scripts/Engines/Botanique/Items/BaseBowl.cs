@@ -116,7 +116,7 @@ namespace Server.Items
             }
         }
 
-        public virtual void RemoveSeed(TMobile from)
+        public virtual void RemoveSeed(PlayerMobile from)
         {
             if (HasPlant && m_Plant.StateOfGrowth == StateOfGrowth.Seed)
             {
@@ -130,9 +130,9 @@ namespace Server.Items
         {
             base.OnSingleClick(from);
 
-            if (!HasEarth && from is TMobile)
+            if (!HasEarth && from is PlayerMobile)
             {
-                TMobile m = (TMobile)from;
+                PlayerMobile m = (PlayerMobile)from;
 
                 LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType, false)));
             }
@@ -141,13 +141,13 @@ namespace Server.Items
         /*
         public override void OnDoubleClick(Mobile from)
         {
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
                 if (HasEarth)
                 {
                     if (HasPlant)
                     {
-                        from.SendGump(new BotaniqueGump((TMobile)from, this));
+                        from.SendGump(new BotaniqueGump((PlayerMobile)from, this));
                     }
                     else
                     {

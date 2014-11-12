@@ -2350,7 +2350,7 @@ namespace Server
 			return map.GetItemsInRange( GetWorldLocation(), range );
 		}
 
-		public IPooledEnumerable<Mobile> GetMobilesInRange( int range )
+		public IPooledEnumerable<Mobile> GePlayerMobilesInRange( int range )
 		{
 			Map map = m_Map;
 
@@ -2358,9 +2358,9 @@ namespace Server
 				return Server.Map.NullEnumerable<Mobile>.Instance;
 
 			if ( m_Parent == null )
-				return map.GetMobilesInRange( m_Location, range );
+				return map.GePlayerMobilesInRange( m_Location, range );
 
-			return map.GetMobilesInRange( GetWorldLocation(), range );
+			return map.GePlayerMobilesInRange( GetWorldLocation(), range );
 		}
 
 		public IPooledEnumerable<NetState> GetClientsInRange( int range )

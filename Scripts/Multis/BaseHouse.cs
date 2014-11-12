@@ -800,14 +800,14 @@ namespace Server.Multis
 			return list;
 		}
 
-		public List<Mobile> GetMobiles()
+		public List<Mobile> GePlayerMobiles()
 		{
 			if( this.Map == null || this.Map == Map.Internal )
 				return new List<Mobile>();
 
 			List<Mobile> list = new List<Mobile>();
 
-			foreach ( Mobile mobile in Region.GetMobiles() )
+			foreach ( Mobile mobile in Region.GePlayerMobiles() )
 				if ( IsInside( mobile ) )
 					list.Add( mobile );
 

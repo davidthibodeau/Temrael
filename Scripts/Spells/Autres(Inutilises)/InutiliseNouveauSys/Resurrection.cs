@@ -69,7 +69,7 @@ namespace Server.Spells
 			}
 			else if ( CheckBSequence( m, true ) )
 			{
-                TMobile pm = m as TMobile;
+                PlayerMobile pm = m as PlayerMobile;
 
                 if (pm != null)
                 {
@@ -145,7 +145,7 @@ namespace Server.Spells
 			{
                 Corpse c = o as Corpse;
 
-                if (c != null && c.Owner is TMobile)
+                if (c != null && c.Owner is PlayerMobile)
 				{
 					m_Owner.Target(c);
 				}

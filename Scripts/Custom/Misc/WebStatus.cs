@@ -84,9 +84,9 @@ namespace Server.Misc
 
                         if (m != null)
                         {
-                            if (m is TMobile)
+                            if (m is PlayerMobile)
                             {
-                                TMobile tm = (TMobile)m;
+                                PlayerMobile tm = (PlayerMobile)m;
 
                                 if (!(tm.AccessLevel != AccessLevel.Player && tm.Hidden == true))
                                 {
@@ -394,9 +394,9 @@ namespace Server.Misc
 
                         if (m != null)
                         {
-                            if (m is TMobile)
+                            if (m is PlayerMobile)
                             {
-                                TMobile tm = (TMobile)m;
+                                PlayerMobile tm = (PlayerMobile)m;
 
                                 list.Add(tm);
                             }
@@ -407,7 +407,7 @@ namespace Server.Misc
 
                     for (int i = 0; i < list.Count; i++)
                     {
-                        TMobile tm = (TMobile)list[i];
+                        PlayerMobile tm = (PlayerMobile)list[i];
 
                         if (tm != null)
                         {
@@ -484,8 +484,8 @@ namespace Server.Misc
         {
             int IComparer.Compare(object a, object b)
             {
-                TMobile c1 = (TMobile)a;
-                TMobile c2 = (TMobile)b;
+                PlayerMobile c1 = (PlayerMobile)a;
+                PlayerMobile c2 = (PlayerMobile)b;
 
                 if ((int)c1.Race.Id > (int)c2.Race.Id)
                     return 1;

@@ -41,7 +41,7 @@ namespace Server.Misc
 			for ( int i = 0; i < a.Length; ++i )
 			{
 				if ( a[i] == null )
-					return (a[i] = new TMobile());
+					return (a[i] = new PlayerMobile());
 			}
 
 			return null;

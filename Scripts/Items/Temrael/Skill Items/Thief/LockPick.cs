@@ -142,7 +142,7 @@ namespace Server.Items
 					}
 
                     // TOCHECK CROCHETAGE
-                    if (m_From.Skills[SkillName.Crochetage].Value < m_Item.RequiredSkill /*- (int)((TMobile)m_From).GetAptitudeValue(Aptitude.Cambriolage) * 4*/)
+                    if (m_From.Skills[SkillName.Crochetage].Value < m_Item.RequiredSkill /*- (int)((PlayerMobile)m_From).GetAptitudeValue(Aptitude.Cambriolage) * 4*/)
 					{
 						/*
 						// Do some training to gain skills

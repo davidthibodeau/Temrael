@@ -51,11 +51,11 @@ namespace Server.Spells
                 m_VisionReelleRegistry.Add(m);
                 m_VisionReelleRegistry.Add(Caster);
 
-                if(m is TMobile)
-                    ((TMobile)m).InvalidateMyRunUO();
+                if(m is PlayerMobile)
+                    ((PlayerMobile)m).InvalidateMyRunUO();
                 
-                if(Caster is TMobile)
-                    ((TMobile)Caster).InvalidateMyRunUO();
+                if(Caster is PlayerMobile)
+                    ((PlayerMobile)Caster).InvalidateMyRunUO();
 
                 Timer t = new VisionReelleTimer(m, DateTime.Now + duration);
                 m_Timers[m] = t;
@@ -137,9 +137,9 @@ namespace Server.Spells
 
             protected override void OnTarget(Mobile from, object o)
             {
-                if (o is TMobile)
+                if (o is PlayerMobile)
                 {
-                    m_Owner.Target((TMobile)o);
+                    m_Owner.Target((PlayerMobile)o);
                 }
                 else
                     from.SendMessage("Vous devez cibler un joueur !");

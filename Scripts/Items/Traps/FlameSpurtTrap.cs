@@ -80,7 +80,7 @@ namespace Server.Items
 
 			bool foundPlayer = false;
 
-			foreach ( Mobile mob in GetMobilesInRange( 3 ) )
+			foreach ( Mobile mob in GePlayerMobilesInRange( 3 ) )
 			{
 				if ( !mob.Player || !mob.Alive || mob.AccessLevel > AccessLevel.Player )
 					continue;

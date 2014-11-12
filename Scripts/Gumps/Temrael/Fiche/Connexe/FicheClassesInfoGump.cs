@@ -12,15 +12,15 @@ namespace Server.Gumps
 {
     public class FicheClassesInfoGump : GumpTemrael
     {
-        TMobile m_from;
+        PlayerMobile m_from;
         ClasseType m_classeType;
         private int m_page;
 
-        public FicheClassesInfoGump(TMobile from) : this(from, ClasseType.None, 0)
+        public FicheClassesInfoGump(PlayerMobile from) : this(from, ClasseType.None, 0)
         {
         }
 
-        public FicheClassesInfoGump(TMobile from, ClasseType classeType, int page)
+        public FicheClassesInfoGump(PlayerMobile from, ClasseType classeType, int page)
             : base("Classe & Métier", 560, 622)
         {
             m_from = from;
@@ -119,7 +119,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;

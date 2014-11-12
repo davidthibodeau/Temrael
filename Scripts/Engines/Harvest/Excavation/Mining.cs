@@ -114,7 +114,7 @@ namespace Server.Engines.Harvest
                 from.SendLocalizedMessage(501864); // You can't mine while riding.
                 return false;
             }
-            /*else if (from is TMobile && ((TMobile)from).HasTransformSpell())
+            /*else if (from is PlayerMobile && ((PlayerMobile)from).HasTransformSpell())
             {
                 from.SendLocalizedMessage(501865); // You can't mine while polymorphed.
                 return false;
@@ -133,7 +133,7 @@ namespace Server.Engines.Harvest
                 from.SendLocalizedMessage(501864); // You can't mine while riding.
                 return false;
             }
-            /*else if (from is TMobile && ((TMobile)from).HasTransformSpell())
+            /*else if (from is PlayerMobile && ((PlayerMobile)from).HasTransformSpell())
             {
                 from.SendLocalizedMessage(501865); // You can't mine while polymorphed.
                 return false;

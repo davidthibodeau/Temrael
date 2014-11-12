@@ -60,7 +60,7 @@ namespace Server.Items
 
 				List<Mobile> toDamage = new List<Mobile>();
 
-				foreach( Mobile m in GetMobilesInRange( 0 ) )
+				foreach( Mobile m in GePlayerMobilesInRange( 0 ) )
 				{
 					BaseCreature bc = m as BaseCreature;
 

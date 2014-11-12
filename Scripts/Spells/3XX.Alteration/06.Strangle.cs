@@ -60,12 +60,12 @@ namespace Server.Spells
 				m.FixedParticles( 0x36CB, 1, 9, 9911, 67, 5, EffectLayer.Head );
 				m.FixedParticles( 0x374A, 1, 17, 9502, 1108, 4, (EffectLayer)255 );
 
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    TMobile pm = Caster as TMobile;
+                    PlayerMobile pm = Caster as PlayerMobile;
                     double duration = 10.0;
 
-                    //((TMobile)m).Aphonier(TimeSpan.FromSeconds(duration));
+                    //((PlayerMobile)m).Aphonier(TimeSpan.FromSeconds(duration));
                 }
 
                 m.Stam = (int)(m.Stam * 0.15);

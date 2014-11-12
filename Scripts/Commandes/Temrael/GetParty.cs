@@ -41,7 +41,7 @@ namespace Server.Scripts.Commands
 
 		protected override void OnTarget( Mobile from, object targeted )
 		{
-            if (targeted is TMobile)
+            if (targeted is PlayerMobile)
             {
                 Mobile targ = (Mobile)targeted;
                 Party pm = Party.Get(GM);

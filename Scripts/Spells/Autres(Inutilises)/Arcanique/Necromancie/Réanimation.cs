@@ -95,7 +95,7 @@ namespace Server.Spells
                                     int maxdam = 0;
 
                                     //Si on réanime le cadavre d'un joueur ou d'un npc, met les dégâts au minimum
-                                    if (m_Corpse.Owner is TMobile)
+                                    if (m_Corpse.Owner is PlayerMobile)
                                     {
                                         mindam = 10;
                                         maxdam = 15;

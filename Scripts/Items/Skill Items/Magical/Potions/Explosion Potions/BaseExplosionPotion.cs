@@ -250,7 +250,7 @@ namespace Server.Items
 				alchemyBonus = (int)(from.Skills.Alchimie.Value / (Core.AOS ? 5 : 10));
 
             IPooledEnumerable eable = LeveledExplosion ? (IPooledEnumerable)map.GetObjectsInRange(loc, ExplosionRange)
-                : (IPooledEnumerable) map.GetMobilesInRange(loc, ExplosionRange);
+                : (IPooledEnumerable) map.GePlayerMobilesInRange(loc, ExplosionRange);
 
 			ArrayList toExplode = new ArrayList();
 

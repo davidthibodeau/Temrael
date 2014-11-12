@@ -133,7 +133,7 @@ namespace Server.Gumps
         public override void OnResponse(NetState sender, RelayInfo info)
         {
             Mobile f = sender.Mobile;
-            TMobile from = f as TMobile;
+            PlayerMobile from = f as PlayerMobile;
            
         }
 

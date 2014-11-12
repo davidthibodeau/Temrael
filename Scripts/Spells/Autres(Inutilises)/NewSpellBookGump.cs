@@ -322,10 +322,10 @@ namespace Server.Gumps
             int totpage = 0;
             int hindex = 0;
 
-            if (!(from is TMobile))
+            if (!(from is PlayerMobile))
                 return;
 
-            TMobile m = (TMobile)from;
+            PlayerMobile m = (PlayerMobile)from;
 
             AddPage(0);
             AddImage(100, 10, 2201);
@@ -494,9 +494,9 @@ namespace Server.Gumps
         {
             Mobile from = state.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile m = (TMobile)from;
+                PlayerMobile m = (PlayerMobile)from;
 
                 if (info.ButtonID >= 1 && info.ButtonID < 1000)
                 {

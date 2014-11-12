@@ -79,7 +79,7 @@ namespace Server.RemoteAdmin
 			m_Stream.Write( (int) NetState.Instances.Count );
 
 			m_Stream.Write( (int) World.Mobiles.Count );
-			m_Stream.Write( (int) Core.ScriptMobiles );
+			m_Stream.Write( (int) Core.ScripPlayerMobiles );
 			m_Stream.Write( (int) World.Items.Count );
 			m_Stream.Write( (int) Core.ScriptItems );
 

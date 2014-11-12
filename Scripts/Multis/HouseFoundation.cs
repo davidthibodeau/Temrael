@@ -602,7 +602,7 @@ namespace Server.Multis
 				item.Location = BanLocation;
 			}
 
-			foreach( Mobile mobile in GetMobiles() )
+			foreach( Mobile mobile in GePlayerMobiles() )
 			{
 				if( mobile != m )
 					mobile.Location = BanLocation;
@@ -977,7 +977,7 @@ namespace Server.Multis
 			foreach( Item item in GetItems() )
 				item.Location = BanLocation;
 
-			foreach( Mobile mobile in GetMobiles() )
+			foreach( Mobile mobile in GePlayerMobiles() )
 				mobile.Location = BanLocation;
 
 			// Restore relocated entities
@@ -1543,7 +1543,7 @@ namespace Server.Multis
 				foreach( Item item in context.Foundation.GetItems() )
 					item.Location = context.Foundation.BanLocation;
 
-				foreach( Mobile mobile in context.Foundation.GetMobiles() )
+				foreach( Mobile mobile in context.Foundation.GePlayerMobiles() )
 					mobile.Location = context.Foundation.BanLocation;
 
 				// Restore relocated entities

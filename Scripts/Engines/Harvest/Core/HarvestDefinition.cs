@@ -132,8 +132,8 @@ namespace Server.Engines.Harvest
         {
             double randomValue = Utility.RandomDouble() * 100;
 
-            /*if (from is TMobile)
-                randomValue -= ((TMobile)from).GetAptitudeValue(NAptitude.Exploitation) * 2;
+            /*if (from is PlayerMobile)
+                randomValue -= ((PlayerMobile)from).GetAptitudeValue(NAptitude.Exploitation) * 2;
 
             if (AOS.Testing)
                 from.SendMessage("Chance : " + randomValue.ToString());*/

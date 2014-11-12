@@ -33,7 +33,7 @@ namespace Server.Spells
 
         public override bool DelayedDamage { get { return false; } }
 
-        public void Target(TMobile m)
+        public void Target(PlayerMobile m)
         {
             if (!Caster.CanSee(m))
             {
@@ -119,9 +119,9 @@ namespace Server.Spells
 
             protected override void OnTarget(Mobile from, object o)
             {
-                if (o is TMobile)
+                if (o is PlayerMobile)
                 {
-                    m_Owner.Target((TMobile)o);
+                    m_Owner.Target((PlayerMobile)o);
                 }
                 else
                     from.SendMessage("Vous devez cibler un joueur !");

@@ -224,7 +224,7 @@ namespace Server.Engines.Evolution
             {
                 if (m_AccountJoueur == null)
                     return;
-                TMobile pj = (TMobile)m_AccountJoueur[m_IndexPersonnage];
+                PlayerMobile pj = (PlayerMobile)m_AccountJoueur[m_IndexPersonnage];
                 if (pj == null)
                 {
                     WriteLine(String.Format("{0} n'a pas de personnage valide associé pour y déposer l'expérience.", m_Nom));

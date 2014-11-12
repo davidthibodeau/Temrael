@@ -89,7 +89,7 @@ namespace Server.Spells
         {
             if (CheckHurt)
             {
-                TMobile pm = Caster as TMobile;
+                PlayerMobile pm = Caster as PlayerMobile;
                 double chance = Caster.Skills[SkillName.ArtMagique].Value / 333;
 
                 if (pm != null)
@@ -159,9 +159,9 @@ namespace Server.Spells
 			if ( pack == null )
 				return false;
 
-            if (Caster is TMobile)
+            if (Caster is PlayerMobile)
             {
-                TMobile tmob = (TMobile)Caster;
+                PlayerMobile tmob = (PlayerMobile)Caster;
 
                 if (pack.ConsumeTotal(m_Info.Reagents, Info.Amounts) == -1)
                     return true;
@@ -240,7 +240,7 @@ namespace Server.Spells
 
 		public virtual bool CheckCast()
         {
-            TMobile caster = Caster as TMobile;
+            PlayerMobile caster = Caster as PlayerMobile;
 
             if (caster != null && caster.Squelched)
             {
@@ -269,7 +269,7 @@ namespace Server.Spells
 
         public bool canCast()
         {
-            TMobile pm = Caster as TMobile;
+            PlayerMobile pm = Caster as PlayerMobile;
 
             if (Caster.AccessLevel != AccessLevel.Player)
             {
@@ -315,7 +315,7 @@ namespace Server.Spells
 
 		public virtual bool Cast()
         {
-            TMobile pm = Caster as TMobile;
+            PlayerMobile pm = Caster as PlayerMobile;
 			m_StartCastTime = DateTime.Now;
 
             if ( canCast() )
@@ -568,7 +568,7 @@ namespace Server.Spells
 		{
             int mana = ManaCost;
 
-            TMobile pm = Caster as TMobile;
+            PlayerMobile pm = Caster as PlayerMobile;
             
             if ( Caster.AccessLevel != AccessLevel.Player )
             {

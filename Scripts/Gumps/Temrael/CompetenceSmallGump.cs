@@ -9,11 +9,11 @@ namespace Server.Gumps
 {
     class CompetenceSmallGump : Gump
     {
-        private TMobile m_From;
+        private PlayerMobile m_From;
         private SkillCategory m_Tab;
         private bool m_ShowCaps;
 
-        public CompetenceSmallGump(TMobile from, SkillCategory tab, bool showCaps)
+        public CompetenceSmallGump(PlayerMobile from, SkillCategory tab, bool showCaps)
             : base(0, 0)
         {
             m_From = from;

@@ -211,7 +211,7 @@ namespace Server.Engines.Geopolitique
 
         private void ChangerGestionnaire_OnTarget(Mobile from, object targeted)
         {
-            if (targeted is TMobile)
+            if (targeted is PlayerMobile)
             {
                 tresorier.ReponseAuGump(from, "Quel est le nom de ce nouveau gestionnaire?");
                 from.Prompt = new NomGestionnairePrompt(tresorier, (Mobile)targeted);

@@ -271,7 +271,7 @@ namespace Server
 			return PooledEnumerable<Item>.Instantiate(ItemEnumerator.Instantiate(this, bounds));
 		}
 
-		public IPooledEnumerable<Mobile> GetMobilesInRange(Point3D p)
+		public IPooledEnumerable<Mobile> GePlayerMobilesInRange(Point3D p)
 		{
 			if ( this == Map.Internal )
 				return NullEnumerable<Mobile>.Instance;
@@ -279,7 +279,7 @@ namespace Server
 			return PooledEnumerable<Mobile>.Instantiate(MobileEnumerator.Instantiate(this, new Rectangle2D(p.m_X - 18, p.m_Y - 18, 37, 37)));
 		}
 
-		public IPooledEnumerable<Mobile> GetMobilesInRange(Point3D p, int range)
+		public IPooledEnumerable<Mobile> GePlayerMobilesInRange(Point3D p, int range)
 		{
 			if ( this == Map.Internal )
 				return NullEnumerable<Mobile>.Instance;
@@ -287,7 +287,7 @@ namespace Server
 			return PooledEnumerable<Mobile>.Instantiate(MobileEnumerator.Instantiate(this, new Rectangle2D(p.m_X - range, p.m_Y - range, range * 2 + 1, range * 2 + 1)));
 		}
 
-		public IPooledEnumerable<Mobile> GetMobilesInBounds(Rectangle2D bounds)
+		public IPooledEnumerable<Mobile> GePlayerMobilesInBounds(Rectangle2D bounds)
 		{
 			if ( this == Map.Internal )
 				return NullEnumerable<Mobile>.Instance;

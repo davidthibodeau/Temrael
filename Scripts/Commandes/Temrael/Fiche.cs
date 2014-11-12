@@ -17,11 +17,11 @@ namespace Server.Scripts.Commands
         [Description("Ouvre le menu de fiche qui regrouppe les informations du personnage.")]
         public static void Fiche_OnCommand(CommandEventArgs e)
         {
-            if (e.Mobile is TMobile)
+            if (e.Mobile is PlayerMobile)
             {
-                TMobile from = (TMobile)e.Mobile;
+                PlayerMobile from = (PlayerMobile)e.Mobile;
 
-                if (from is TMobile)
+                if (from is PlayerMobile)
                 {
                     from.SendGump(new FicheRaceGump(from));
                 }

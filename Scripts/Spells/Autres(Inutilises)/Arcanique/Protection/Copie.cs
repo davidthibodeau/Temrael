@@ -131,7 +131,7 @@ namespace Server.Mobiles
 
             if (map != null)
             {
-                IPooledEnumerable eable = map.GetMobilesInRange(this.Location, 12);
+                IPooledEnumerable eable = map.GePlayerMobilesInRange(this.Location, 12);
 
                 foreach (Mobile m in eable)
                 {
@@ -315,9 +315,9 @@ namespace Server.Scripts.Commands
 
         public static void Aggro_OnTarget(Mobile from, object targ)
         {
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile pm = (TMobile)from;
+                PlayerMobile pm = (PlayerMobile)from;
 
                 /*if (pm.GetAptitudeValue(Aptitude.Protection) < 5)
                     from.SendMessage("Vous devez pouvoir utiliser le sort Copie.");*/

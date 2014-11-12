@@ -52,7 +52,7 @@ namespace Server.Spells
 
                 if (map != null)
                 {
-                    foreach (Mobile m in Caster.GetMobilesInRange(portee))
+                    foreach (Mobile m in Caster.GePlayerMobilesInRange(portee))
                     {
                         if (SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false))
                         {

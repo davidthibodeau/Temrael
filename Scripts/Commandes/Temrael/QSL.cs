@@ -22,9 +22,9 @@ namespace Server.Scripts.Commands
         {
             Mobile from = e.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile m = (TMobile)from;
+                PlayerMobile m = (PlayerMobile)from;
 
                 if (m != null)
                 {
@@ -37,9 +37,9 @@ namespace Server.Scripts.Commands
         public static void QSL_OnTarget(Mobile from, object targ)
         {
             if (targ is NewSpellbook && from.Backpack != null && ((Item)targ).Parent == from.Backpack)
-                from.SendGump(new QuickSpellLaunchGump((TMobile)from, (NewSpellbook)targ, null));
+                from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, (NewSpellbook)targ, null));
             else if (targ is BaseInstrument && from.Backpack != null && ((Item)targ).Parent == from.Backpack)
-                from.SendGump(new QuickSpellLaunchGump((TMobile)from, (BaseInstrument)targ, null));
+                from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, (BaseInstrument)targ, null));
         }
     }
 }

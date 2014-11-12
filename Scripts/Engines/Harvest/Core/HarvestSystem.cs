@@ -207,9 +207,9 @@ namespace Server.Engines.Harvest
                             int consumed = Utility.RandomMinMax(def.MinConsumedPerHarvest, def.MaxConsumedPerHarvest);
                             consumed += (int)(from.Skills[def.Skill].Value / 25);
                             
-                            if (from is TMobile)
+                            if (from is PlayerMobile)
                             {
-                                TMobile tmob = (TMobile)from;
+                                PlayerMobile tmob = (PlayerMobile)from;
                                 Random rand = new Random();
 
                                 //TOCHECK HARVESTING

@@ -38,9 +38,9 @@ namespace Server.Engines.Identities
 
         public override void OnDoubleClick(Mobile m)
         {
-            if (m is TMobile)
+            if (m is PlayerMobile)
             {
-                TMobile from = m as TMobile;
+                PlayerMobile from = m as PlayerMobile;
 
                 if (!from.Alive)
                     return;

@@ -40,7 +40,7 @@ namespace Server.Spells
 
                 if (map != null)
                 {
-                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.ArtMagique].Value / 20));
+                    IPooledEnumerable eable = map.GePlayerMobilesInRange(new Point3D(Caster.Location), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[SkillName.ArtMagique].Value / 20));
 
                     foreach (Mobile m in eable)
                     {
@@ -59,9 +59,9 @@ namespace Server.Spells
                     {
                         Mobile m = (Mobile)targets[i];
 
-                        if (m is TMobile)
+                        if (m is PlayerMobile)
                         {
-                            new CriDOursTimer((TMobile)m, endtime).Start();
+                            new CriDOursTimer((PlayerMobile)m, endtime).Start();
                         }
 
                         if (m is BaseCreature)
@@ -79,11 +79,11 @@ namespace Server.Spells
 
         private class CriDOursTimer : Timer
         {
-            private TMobile m_target;
+            private PlayerMobile m_target;
             private DateTime m_end;
             private BaseCreature m_creature;
 
-            public CriDOursTimer(TMobile target, DateTime endtime)
+            public CriDOursTimer(PlayerMobile target, DateTime endtime)
                 : base(TimeSpan.Zero, TimeSpan.FromSeconds(3))
             {
                 m_target = target;

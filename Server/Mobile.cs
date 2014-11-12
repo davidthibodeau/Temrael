@@ -4112,14 +4112,14 @@ namespace Server
 			return map.GetObjectsInRange( m_Location, range );
 		}
 
-		public IPooledEnumerable<Mobile> GetMobilesInRange( int range )
+		public IPooledEnumerable<Mobile> GePlayerMobilesInRange( int range )
 		{
 			Map map = m_Map;
 
 			if( map == null )
 				return Server.Map.NullEnumerable<Mobile>.Instance;
 
-			return map.GetMobilesInRange( m_Location, range );
+			return map.GePlayerMobilesInRange( m_Location, range );
 		}
 
 		public IPooledEnumerable<NetState> GetClientsInRange(int range)
@@ -8268,7 +8268,7 @@ namespace Server
 			m_Region = Map.Internal.DefaultRegion;
 			m_Serial = Server.Serial.NewMobile;
 
-			DefaultMobileInit();
+			DefaulPlayerMobileInit();
 
 			World.AddMobile( this );
 
@@ -8282,7 +8282,7 @@ namespace Server
 			}
 		}
 
-		public void DefaultMobileInit()
+		public void DefaulPlayerMobileInit()
 		{
 			m_StatCap = 225;
 			m_FollowersMax = 5;

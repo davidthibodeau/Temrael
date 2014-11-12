@@ -17,9 +17,9 @@ namespace Server.Engines.Identities
         [Description("Permet de cacher ou non son identite avec un foulard ou une cagoule.")]
         public static void RevealIdentity_OnCommand(CommandEventArgs e)
         {
-            if (e.Mobile is TMobile)
+            if (e.Mobile is PlayerMobile)
             {
-                TMobile from = (TMobile)e.Mobile;
+                PlayerMobile from = (PlayerMobile)e.Mobile;
 
                 if (from.Identities.RevealIdentity == true)
                 {

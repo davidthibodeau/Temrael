@@ -44,9 +44,9 @@ namespace Server.Items
         {
             base.OnSingleClick(from);
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile m = (TMobile)from;
+                PlayerMobile m = (PlayerMobile)from;
 
                 LabelTo(from, String.Format("[{0}]", BotaniqueSystem.GetEarthName(m_EarthType)));
             }

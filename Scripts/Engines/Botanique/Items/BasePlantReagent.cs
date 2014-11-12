@@ -31,9 +31,9 @@ namespace Server.Items
         {
             base.OnSingleClick(from);
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile m = (TMobile)from;
+                PlayerMobile m = (PlayerMobile)from;
 
                 /*if (ReagentName != null && ReagentName != "" && m.GetAptitudeValue(NAptitude.Botanique) > 0)
                     LabelTo(m, String.Format("[{0}]", ReagentName));*/

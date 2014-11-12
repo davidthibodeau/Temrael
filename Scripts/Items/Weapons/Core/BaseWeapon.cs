@@ -591,7 +591,7 @@ namespace Server.Items
 
 			int inPack = 1;
 
-			foreach ( Mobile m in defender.GetMobilesInRange( 1 ) )
+			foreach ( Mobile m in defender.GePlayerMobilesInRange( 1 ) )
 			{
 				if ( m != attacker && m is BaseCreature )
 				{
@@ -641,7 +641,7 @@ namespace Server.Items
 
         public void CantMount_Callback(object state)
         {
-            TMobile mob = (TMobile)state;
+            PlayerMobile mob = (PlayerMobile)state;
             mob.EndAction(typeof(BaseMount));
         }
 

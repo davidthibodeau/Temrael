@@ -194,7 +194,7 @@ namespace Server.Mobiles
 		}
 	}
 
-	public class BaseCreature : ScriptMobile
+	public class BaseCreature : ScripPlayerMobile
 	{
         #region Elevage
         public virtual bool HasASex { get { return false; } }
@@ -904,9 +904,9 @@ namespace Server.Mobiles
 			if ( m_dMinTameSkill <= 29.1 || m_bSummoned || m.AccessLevel >= AccessLevel.Batisseur )
 				return 1.0;
 
-            if (m is TMobile)
+            if (m is PlayerMobile)
             {
-                TMobile tmob = (TMobile)m;
+                PlayerMobile tmob = (PlayerMobile)m;
 
                 if (tmob.FollowersMax - tmob.Followers <= ControlSlots && m_dMinTameSkill <= 50.0)
                     return 1.0;
@@ -1292,9 +1292,9 @@ namespace Server.Mobiles
 			int scales = Scales;
             int bones = Bones;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile tmob = (TMobile)from;
+                PlayerMobile tmob = (PlayerMobile)from;
                // Random rand = new Random();
 
                 // TOCHECK CUISINE
@@ -2786,7 +2786,7 @@ namespace Server.Mobiles
 		{
 			int iCount = 0;
 
-			foreach ( Mobile m in this.GetMobilesInRange( iRange ) )
+			foreach ( Mobile m in this.GePlayerMobilesInRange( iRange ) )
 			{
 				if (m is BaseCreature)
 				{
@@ -4599,7 +4599,7 @@ namespace Server.Mobiles
 		{
 			List<Mobile> move = new List<Mobile>();
 
-			foreach ( Mobile m in master.GetMobilesInRange( 3 ) )
+			foreach ( Mobile m in master.GePlayerMobilesInRange( 3 ) )
 			{
 				if ( m is BaseCreature )
 				{

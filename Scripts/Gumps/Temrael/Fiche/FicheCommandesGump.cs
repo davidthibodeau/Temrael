@@ -14,7 +14,7 @@ namespace Server.Gumps
 {
     public class FicheCommandesGump : GumpTemrael
     {
-        private TMobile m_from;
+        private PlayerMobile m_from;
         private int m_chevelurePage;
         private int m_barbePage;
         private int m_tatooPage;
@@ -22,12 +22,12 @@ namespace Server.Gumps
         private const int BarbesPages = 3;
         private const int TatooPages = 2;
 
-        public FicheCommandesGump(TMobile from)
+        public FicheCommandesGump(PlayerMobile from)
             : this(from, 0, 0, 0)
         {
         }
 
-        public FicheCommandesGump(TMobile from, int chevelurePage, int barbePage, int tatooPage)
+        public FicheCommandesGump(PlayerMobile from, int chevelurePage, int barbePage, int tatooPage)
             : base("Commandes & Accessoires", 560, 622)
         {
 
@@ -205,7 +205,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;
@@ -291,8 +291,8 @@ namespace Server.Gumps
                         from.SendGump(new FicheCommandesGump(from, m_chevelurePage, m_barbePage, m_tatooPage));
                     break;
                 case 21:
-                    if (XP.CanEvolve((TMobile)from))
-                        XP.Evolve((TMobile)from);
+                    if (XP.CanEvolve((PlayerMobile)from))
+                        XP.Evolve((PlayerMobile)from);
                     from.SendGump(new FicheCommandesGump(from, m_chevelurePage, m_barbePage, m_tatooPage));
                     break;
                 case 11025:

@@ -140,9 +140,9 @@ namespace Server.Items
 
         public void Acheter(Mobile from)
         {
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile rpm = (TMobile)from;
+                PlayerMobile rpm = (PlayerMobile)from;
                 if (!Banker.Withdraw(from, this.PrixVente))
                     from.SendMessage("Vous n'avez pas assez d'argent sur votre compte.");
                 else
@@ -223,7 +223,7 @@ namespace Server.Items
 
             int upmargin = 90, num = 0;
 
-            TMobile rpm = (TMobile)from;
+            PlayerMobile rpm = (PlayerMobile)from;
 
             AddBackground(55, 60, 260, 320, 9200);
             AddLabel(140, 70, 0x26, "Gestion de la maison");
@@ -363,7 +363,7 @@ namespace Server.Items
 
         protected override void OnTarget(Mobile from, object targ)
         {
-            if (targ is TMobile)
+            if (targ is PlayerMobile)
             {
                 Mobile target = (Mobile)targ;
                 m_item.AddCoproprio(target, from);
@@ -383,7 +383,7 @@ namespace Server.Items
 
         protected override void OnTarget(Mobile from, object targ)
         {
-            if (targ is TMobile)
+            if (targ is PlayerMobile)
             {
                 Mobile target = (Mobile)targ;
                 m_item.Proprio = target;

@@ -34,7 +34,7 @@ namespace Server.Spells
 
         public override void OnCast()
         {
-            if (Caster is TMobile)
+            if (Caster is PlayerMobile)
             {
                 Caster.Target = new InternalTarget(this);
             }

@@ -17,9 +17,9 @@ namespace Server.Scripts.Commands
         [Description("Dévoiler votre présence.")]
         public static void Devoiler_OnCommand(CommandEventArgs e)
         {
-            if (e.Mobile is TMobile)
+            if (e.Mobile is PlayerMobile)
             {
-                TMobile from = (TMobile)e.Mobile;
+                PlayerMobile from = (PlayerMobile)e.Mobile;
 
                 from.PlaySound(0x228);
                 from.Hidden = false;

@@ -70,15 +70,15 @@ namespace Server.Misc
 
 					if ( rootParent is Mobile )
 					{
-						Mobile rootMobile = (Mobile)rootParent;
-						if ( item.Parent != rootMobile && rootMobile.AccessLevel == AccessLevel.Player )
+						Mobile rooPlayerMobile = (Mobile)rootParent;
+						if ( item.Parent != rooPlayerMobile && rooPlayerMobile.AccessLevel == AccessLevel.Player )
 						{
 							items.Add( item );
 							continue;
 						}
-						else if( item.Parent == rootMobile )
+						else if( item.Parent == rooPlayerMobile )
 						{
-							hairCleanup.Add( rootMobile );
+							hairCleanup.Add( rooPlayerMobile );
 							continue;
 						}
 					}

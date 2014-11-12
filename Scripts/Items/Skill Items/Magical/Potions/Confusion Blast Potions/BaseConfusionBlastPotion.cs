@@ -100,7 +100,7 @@ namespace Server.Items
 
 			Timer.DelayCall( TimeSpan.FromSeconds( 0.3 ), new TimerStateCallback( CircleEffect2 ), new object[] { loc, map } );
 
-			foreach ( Mobile mobile in map.GetMobilesInRange( loc, Radius ) )
+			foreach ( Mobile mobile in map.GePlayerMobilesInRange( loc, Radius ) )
 			{
 				if ( mobile is BaseCreature )
 				{

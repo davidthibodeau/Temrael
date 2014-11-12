@@ -29,7 +29,7 @@ namespace Server.Spells
 
 		public void Target( Mobile m )
 		{
-			if ( !(m is BaseCreature || m is TMobile) )
+			if ( !(m is BaseCreature || m is PlayerMobile) )
 			{
 				Caster.SendLocalizedMessage( 1060508 ); // You can't curse that.
 			}

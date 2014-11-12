@@ -11,11 +11,11 @@ namespace Server.Gumps
     class CompetenceGump : Gump
     {
 
-        private TMobile m_From;
+        private PlayerMobile m_From;
         private SkillCategory m_Comp;
         private bool m_ShowCaps;
 
-        public CompetenceGump(TMobile from, SkillCategory Comp, bool ShowCaps) : base(0, 0)
+        public CompetenceGump(PlayerMobile from, SkillCategory Comp, bool ShowCaps) : base(0, 0)
         {
             m_From = from;
             m_Comp = Comp;
@@ -110,11 +110,11 @@ namespace Server.Gumps
             AddImage(150, (ybase + ypos + 2), 2091);
 
             //PC
-            if (m_From is TMobile)
+            if (m_From is PlayerMobile)
             {
                 AddImage(105, (ybase + ypos + 20), 5411);
                 AddTooltip(3006366);
-                //AddHtml(128, (ybase + ypos + 20), 200, 20, "<h3><basefont color=#025a>" + Competences.GetDisponibleComp(((TMobile)m_From)) + " | " + (Competences.GetRemainingComp(((TMobile)m_From)) - Competences.GetDisponibleComp(((TMobile)m_From))) + "<basefont></h3>", false, false);
+                //AddHtml(128, (ybase + ypos + 20), 200, 20, "<h3><basefont color=#025a>" + Competences.GetDisponibleComp(((PlayerMobile)m_From)) + " | " + (Competences.GetRemainingComp(((PlayerMobile)m_From)) - Competences.GetDisponibleComp(((PlayerMobile)m_From))) + "<basefont></h3>", false, false);
             }
 
             //Cap Total

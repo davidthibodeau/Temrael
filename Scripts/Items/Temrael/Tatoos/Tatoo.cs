@@ -34,9 +34,9 @@ namespace Server.Items
 
         public override bool CanEquip(Mobile m)
         {
-            if (m is TMobile)
+            if (m is PlayerMobile)
             {
-                TMobile pm = (TMobile)m;
+                PlayerMobile pm = (PlayerMobile)m;
             }
 
             return base.CanEquip(m);

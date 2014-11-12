@@ -38,9 +38,9 @@ namespace Server.Spells
                 {
                     Corpse c = (Corpse)itema;
 
-                    if (c != null && c.Owner != null && c.Owner is TMobile)
+                    if (c != null && c.Owner != null && c.Owner is PlayerMobile)
                     {
-                        TMobile pm = (TMobile)(c.Owner);
+                        PlayerMobile pm = (PlayerMobile)(c.Owner);
 
                         if (pm.MortEngine.MortCurrentState == MortState.Assomage)
                         {

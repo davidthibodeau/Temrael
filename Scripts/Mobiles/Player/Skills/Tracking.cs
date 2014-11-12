@@ -181,7 +181,7 @@ namespace Server.SkillHandlers
 
 			List<Mobile> list = new List<Mobile>();
 
-			foreach ( Mobile m in from.GetMobilesInRange( range ) )
+			foreach ( Mobile m in from.GePlayerMobilesInRange( range ) )
 			{
 				// Ghosts can no longer be tracked 
 				if ( m != from && (!Core.AOS || m.Alive) && (!m.Hidden || m.AccessLevel == AccessLevel.Player || from.AccessLevel > m.AccessLevel) && check( m ) && CheckDifficulty( from, m ) )

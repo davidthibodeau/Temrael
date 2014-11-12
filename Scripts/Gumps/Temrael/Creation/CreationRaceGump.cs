@@ -82,7 +82,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;
@@ -110,7 +110,7 @@ namespace Server.Gumps
                 from.SendGump(new CreationRaceGump(from, Race.GetRaceInstance(info.ButtonID - 50), m_infos));
             }
         }
-        public void DeleteItemsOnChar(TMobile from)
+        public void DeleteItemsOnChar(PlayerMobile from)
         {
             if (from.Backpack != null)
             {

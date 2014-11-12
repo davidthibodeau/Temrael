@@ -1469,7 +1469,7 @@ namespace Server.Mobiles
 					Mobile newCombatant = null;
 					double newScore = 0.0;
 
-					foreach( Mobile aggr in m_Mobile.GetMobilesInRange( m_Mobile.RangePerception ) )
+					foreach( Mobile aggr in m_Mobile.GePlayerMobilesInRange( m_Mobile.RangePerception ) )
 					{
 						if( !m_Mobile.CanSee( aggr ) || aggr.Combatant != m_Mobile )
 							continue;
@@ -2637,7 +2637,7 @@ namespace Server.Mobiles
 				double val = double.MinValue;
 				double theirVal;
 
-				IPooledEnumerable eable = map.GetMobilesInRange( m_Mobile.Location, iRange );
+				IPooledEnumerable eable = map.GePlayerMobilesInRange( m_Mobile.Location, iRange );
 
 				foreach( Mobile m in eable )
 				{
@@ -2737,7 +2737,7 @@ namespace Server.Mobiles
 			if( srcSkill <= 0 )
 				return;
 
-			foreach( Mobile trg in m_Mobile.GetMobilesInRange( m_Mobile.DetectionRange ) )
+			foreach( Mobile trg in m_Mobile.GePlayerMobilesInRange( m_Mobile.DetectionRange ) )
 			{
 				if( trg != m_Mobile && trg.Player && trg.Alive && trg.Hidden && trg.AccessLevel == AccessLevel.Player && m_Mobile.InLOS( trg ) )
 				{

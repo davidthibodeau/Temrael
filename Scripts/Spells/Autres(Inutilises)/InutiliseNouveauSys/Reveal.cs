@@ -56,7 +56,7 @@ namespace Server.Spells
 
                     tile = SpellHelper.AdjustValue(Caster, tile);
 
-					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), (int)tile );
+					IPooledEnumerable eable = map.GePlayerMobilesInRange( new Point3D( p ), (int)tile );
 
 					foreach ( Mobile m in eable )
 					{

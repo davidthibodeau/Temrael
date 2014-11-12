@@ -38,10 +38,10 @@ namespace Server.Commands
                     for (int i = 0; i < 6; i++)
                     {
                         Mobile m = act[i];
-                        if (m == null || !(m is TMobile))
+                        if (m == null || !(m is PlayerMobile))
                             continue;
 
-                        TMobile player = m as TMobile;
+                        PlayerMobile player = m as PlayerMobile;
                         w.Write(player.ToString() + "   ...    ");
                         int num = 0;
 

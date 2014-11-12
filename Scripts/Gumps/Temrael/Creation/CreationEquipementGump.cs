@@ -241,7 +241,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;
@@ -1557,9 +1557,9 @@ namespace Server.Gumps
         private class PVHuePicker : HuePicker
         {
             private Item m_Item;
-            private TMobile m_Mob;
+            private PlayerMobile m_Mob;
 
-            public PVHuePicker(Item item, TMobile from)
+            public PVHuePicker(Item item, PlayerMobile from)
                 : base((item.Layer == Layer.Hair || item.Layer == Layer.FacialHair) ? 0xFAB : item.ItemID)
             {
                 m_Item = item;

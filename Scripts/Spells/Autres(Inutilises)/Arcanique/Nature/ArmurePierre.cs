@@ -42,9 +42,9 @@ namespace Server.Spells
 
 			protected override void OnTarget( Mobile from, object targeted )
 			{
-                if (targeted is TMobile && m_spell.CheckBSequence((Mobile)targeted))
+                if (targeted is PlayerMobile && m_spell.CheckBSequence((Mobile)targeted))
 				{
-                    TMobile targ = (TMobile)targeted;
+                    PlayerMobile targ = (PlayerMobile)targeted;
 
                     SpellHelper.Turn(m_spell.Caster, targ);
 
@@ -68,9 +68,9 @@ namespace Server.Spells
 
         private class InternalTimer : Timer
         {
-            private TMobile player;
+            private PlayerMobile player;
 
-            public InternalTimer(TMobile pm, TimeSpan duration)
+            public InternalTimer(PlayerMobile pm, TimeSpan duration)
                 : base(duration)
             {
                 player = pm;

@@ -24,7 +24,7 @@ namespace Server.Engines.Mort
 
             // Prise en mémoire des personnes autour du corps, lorsque le personnage a été achevé.
             List<Mobile> listePersoPresent = new List<Mobile>();
-            foreach (Mobile m in m_cs.Cible.Corpse.GetMobilesInRange(20))
+            foreach (Mobile m in m_cs.Cible.Corpse.GePlayerMobilesInRange(20))
             {
                 m_listePersoPresent.Add(m);
             }
@@ -66,8 +66,8 @@ namespace Server.Engines.Mort
 
                     // Teleport to jail.
 
-                    ((TMobile)m_cs.Cible).MortEngine.Mort = false;
-                    ((TMobile)m_cs.Cible).MortEngine.MortCurrentState = MortState.Aucun;
+                    ((PlayerMobile)m_cs.Cible).MortEngine.Mort = false;
+                    ((PlayerMobile)m_cs.Cible).MortEngine.MortCurrentState = MortState.Aucun;
 
                     m_cs.Cible.SendGump(new MortContestGump(m_From, m_cs, m_listePersoPresent));
 

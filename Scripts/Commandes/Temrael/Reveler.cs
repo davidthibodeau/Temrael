@@ -23,9 +23,9 @@ namespace Server.Scripts.Commands
         {
             Mobile from = e.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile pm = (TMobile)e.Mobile;
+                PlayerMobile pm = (PlayerMobile)e.Mobile;
 
                 from.Target = new RevelerTarget();
             }
@@ -42,11 +42,11 @@ namespace Server.Scripts.Commands
 
             protected override void OnTarget(Mobile from, object targeted)
             {
-                if (from is TMobile)
+                if (from is PlayerMobile)
                 {
-                    if (targeted is TMobile && targeted != from)
+                    if (targeted is PlayerMobile && targeted != from)
                     {
-                        TMobile PersoVise = (TMobile)targeted;
+                        PlayerMobile PersoVise = (PlayerMobile)targeted;
                         if (PersoVise.Hidden) // Si le target est caché.
                         {
                             PersoVise.NextSkillTime = 5; // Empêche le joueur visé d'utiliser un skill pour les 5 prochaines secondes.

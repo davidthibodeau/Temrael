@@ -21,7 +21,7 @@ namespace Server.Engines.Mort
         {
             Mobile from = e.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
                 from.Target = new AcheverTarget();
             }
@@ -30,7 +30,7 @@ namespace Server.Engines.Mort
         private class AcheverTarget : Target
         {
             int startingHits = 0;
-            TMobile m_corpseOwner;
+            PlayerMobile m_corpseOwner;
 
             public AcheverTarget()
                 : base(3, true, TargetFlags.None)
@@ -44,13 +44,13 @@ namespace Server.Engines.Mort
                 {
                     Corpse corps = targeted as Corpse;
 
-                    if (corps.Owner is TMobile)
+                    if (corps.Owner is PlayerMobile)
                     {
-                        m_corpseOwner = (TMobile)corps.Owner;
+                        m_corpseOwner = (PlayerMobile)corps.Owner;
 
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
-                            TMobile tmob = from as TMobile;
+                            PlayerMobile tmob = from as PlayerMobile;
 
                             if (m_corpseOwner != from)
                             {
@@ -94,7 +94,7 @@ namespace Server.Engines.Mort
 
             public void Achever_Callback(object state)
             {
-                TMobile from = (TMobile)state;
+                PlayerMobile from = (PlayerMobile)state;
 
                 from.Frozen = false;
 
@@ -115,8 +115,8 @@ namespace Server.Engines.Mort
                     }
 
                     // Fais comme si il était mort pour éviter qu'il respawn avant d'avoir répondu au gump de mort.
-                    ((TMobile)m_corpseOwner).MortEngine.Mort = true;
-                    ((TMobile)m_corpseOwner).MortEngine.MortCurrentState = MortState.Mourir;
+                    ((PlayerMobile)m_corpseOwner).MortEngine.Mort = true;
+                    ((PlayerMobile)m_corpseOwner).MortEngine.MortCurrentState = MortState.Mourir;
 
                     m_corpseOwner.SendGump(new MortGump((Mobile)from, cs));
 

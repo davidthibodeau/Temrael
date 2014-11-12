@@ -153,7 +153,7 @@ namespace Server
             return table;
         }
 
-        public static bool IsValid(TMobile m, ClasseType classe)
+        public static bool IsValid(PlayerMobile m, ClasseType classe)
         {
             ClasseInfo info = GetInfos(classe);
 

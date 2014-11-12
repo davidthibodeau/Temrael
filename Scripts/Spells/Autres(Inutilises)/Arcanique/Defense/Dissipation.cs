@@ -39,7 +39,7 @@ namespace Server.Spells
 			if ( m is BaseCreature )
 				dispellable = ((BaseCreature)m).Summoned && !((BaseCreature)m).IsAnimatedDead;
 
-            if (m is TMobile)
+            if (m is PlayerMobile)
                 dispellable = true;
 
 			if ( !Caster.CanSee( m ) )
@@ -78,9 +78,9 @@ namespace Server.Spells
                         Caster.SendLocalizedMessage(1010084); // The creature resisted the attempt to dispel it!
                     }
                 }
-                else if (m is TMobile)
+                else if (m is PlayerMobile)
                 {
-                    TMobile pm = m as TMobile;
+                    PlayerMobile pm = m as PlayerMobile;
 
                     double dispelChance = 0;
 

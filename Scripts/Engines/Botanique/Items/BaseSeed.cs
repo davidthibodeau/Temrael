@@ -51,9 +51,9 @@ namespace Server.Items
         {
             base.OnSingleClick(from);
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile m = (TMobile)from;
+                PlayerMobile m = (PlayerMobile)from;
 
                 if (SeedName != null && SeedName != "")
                     LabelTo(m, String.Format("[{0}]", SeedName));
@@ -72,9 +72,9 @@ namespace Server.Items
         {
             base.OnDoubleClick(from);
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile m = (TMobile)from;
+                PlayerMobile m = (PlayerMobile)from;
 
                 m.SendMessage("Choisissez un pot (Botanique) ou le sol (Agriculture).");
                 m.BeginTarget(1, true, TargetFlags.None, new TargetCallback(this.ChooseTarget_OnTarget));

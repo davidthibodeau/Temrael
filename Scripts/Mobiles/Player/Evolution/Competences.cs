@@ -8,7 +8,7 @@ namespace Server
 {
     public sealed class Competences
     {
-        //public static void Reset(TMobile from)
+        //public static void Reset(PlayerMobile from)
         //{
         //    int niveau = from.Niveau;
 
@@ -26,7 +26,7 @@ namespace Server
         //    from.CompetencesLibres = 350 + (niveau * 15);
         //}
 
-        public static int GetRemainingComp(TMobile from)
+        public static int GetRemainingComp(PlayerMobile from)
         {
             int niveau = 0;//from.Niveau;
 
@@ -51,7 +51,7 @@ namespace Server
             return pc - added;
         }
 
-        public static int GetValue(TMobile from, SkillName comp)
+        public static int GetValue(PlayerMobile from, SkillName comp)
         {
             for (int i = 0; i < from.Skills.Length; i++)
                 if (from.Skills[i].SkillID == (int)comp)
@@ -60,7 +60,7 @@ namespace Server
             return -1;
         }
 
-        public static void Raise(TMobile from, SkillName comp, int value)
+        public static void Raise(PlayerMobile from, SkillName comp, int value)
         {
             //int value = Convert.ToInt32(from.Skills[comp].Base);
 
@@ -70,7 +70,7 @@ namespace Server
             }
         }
 
-        public static bool CanRaise(TMobile from, SkillName comp)
+        public static bool CanRaise(PlayerMobile from, SkillName comp)
         {
             int value = Convert.ToInt32(from.Skills[comp].Value);
 
@@ -88,7 +88,7 @@ namespace Server
             }
         }
 
-        public static void Lower(TMobile from, SkillName comp, int value)
+        public static void Lower(PlayerMobile from, SkillName comp, int value)
         {
             //int value = Convert.ToInt32(from.Skills[comp].Base);
 
@@ -98,7 +98,7 @@ namespace Server
             }
         }
 
-        public static bool CanLower(TMobile from, SkillName comp)
+        public static bool CanLower(PlayerMobile from, SkillName comp)
         {
             Skill sk = from.Skills[comp];
             int value = Convert.ToInt32(sk.Value);
@@ -109,7 +109,7 @@ namespace Server
             return false;
         }
 
-        public static bool CanLower(TMobile from, Skill comp)
+        public static bool CanLower(PlayerMobile from, Skill comp)
         {
             int value = Convert.ToInt32(comp.Value);
 
@@ -119,7 +119,7 @@ namespace Server
             return false;
         }
 
-        public static bool CanRaise(TMobile from, Skill comp)
+        public static bool CanRaise(PlayerMobile from, Skill comp)
         {
             int value = Convert.ToInt32(comp.Value);
 

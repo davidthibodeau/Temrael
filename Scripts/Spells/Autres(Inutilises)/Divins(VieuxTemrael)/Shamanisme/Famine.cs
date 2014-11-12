@@ -40,15 +40,15 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    /*if (DateTime.Now < ((TMobile)m).NextFamine)
+                    /*if (DateTime.Now < ((PlayerMobile)m).NextFamine)
                     {
                         Caster.SendMessage("Vous ne pouvez pas exécuter une autre famine sur ce personnage dès maintenant.");
                         return;
                     }
                     else
-                        ((TMobile)m).NextFamine = DateTime.Now + TimeSpan.FromMinutes(5);*/
+                        ((PlayerMobile)m).NextFamine = DateTime.Now + TimeSpan.FromMinutes(5);*/
                 }
 
                 m.FixedParticles(14154, 10, 15, 5013, 0, 0, EffectLayer.Waist);

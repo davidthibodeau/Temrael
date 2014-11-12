@@ -38,7 +38,7 @@ namespace Server.Spells
                     if (tile > 5)
                         tile = 5;
 
-					foreach ( Mobile m in Caster.GetMobilesInRange( (int)tile ) )
+					foreach ( Mobile m in Caster.GePlayerMobilesInRange( (int)tile ) )
 					{
                         if (Caster != m && SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false) && !(Caster.Party == m.Party))
 							targets.Add( m );

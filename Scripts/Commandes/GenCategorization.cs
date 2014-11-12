@@ -10,7 +10,7 @@ namespace Server.Commands
 {
 	public class Categorization
 	{
-		private static CategoryEntry m_RootItems, m_RootMobiles;
+		private static CategoryEntry m_RootItems, m_RooPlayerMobiles;
 
 		public static CategoryEntry Items
 		{
@@ -27,10 +27,10 @@ namespace Server.Commands
 		{
 			get
 			{
-				if ( m_RootMobiles == null )
+				if ( m_RooPlayerMobiles == null )
 					Load();
 
-				return m_RootMobiles;
+				return m_RooPlayerMobiles;
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace Server.Commands
 				AddTypes( ScriptCompiler.Assemblies[i], types );
 
 			m_RootItems = Load( types, "Data/items.cfg" );
-			m_RootMobiles = Load( types, "Data/mobiles.cfg" );
+			m_RooPlayerMobiles = Load( types, "Data/mobiles.cfg" );
 		}
 
 		private static CategoryEntry Load( ArrayList types, string config )

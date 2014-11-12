@@ -811,8 +811,8 @@ namespace Server.Engines.Craft
 		{
             double bonus = 0;
 
-            if (from is TMobile)
-                bonus += (((TMobile)from).Skills.Polissage.Value / 200);
+            if (from is PlayerMobile)
+                bonus += (((PlayerMobile)from).Skills.Polissage.Value / 200);
 
             return chance * 0.20 + bonus;
 		}
@@ -1161,7 +1161,7 @@ namespace Server.Engines.Craft
             if (allRequiredSkills)
             {
                 chance = (valMainSkill - minMainSkill) / (maxMainSkill - minMainSkill);
-                chance += (((TMobile)from).Skills.Fignolage.Value / 200);
+                chance += (((PlayerMobile)from).Skills.Fignolage.Value / 200);
             }
 
             return chance;
@@ -1527,9 +1527,9 @@ namespace Server.Engines.Craft
                         trap.TrapPower = (int)(from.Skills[SkillName.RemoveTrap].Base * 0.75);
                         trap.Tagged = true;
 
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
-                            TMobile pm = (TMobile)from;
+                            PlayerMobile pm = (PlayerMobile)from;
                             double chance = pm.GetConnaissancesValue(NConnaissances.Leure) * 0.05;
 
                             if (chance >= Utility.RandomDouble())
@@ -1562,9 +1562,9 @@ namespace Server.Engines.Craft
 
                     CommandLogging.WriteLine(from, "{0} {1} fabrique {2}, Location {3}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(item), from.Location);
 
-                    /*if (from is TMobile)
+                    /*if (from is PlayerMobile)
                     {
-                        TMobile pm = (TMobile)from;
+                        PlayerMobile pm = (PlayerMobile)from;
 
                         if (m_arCraftSkill.Count > 0 || item is LivreSkills || item is LivreClasse)
                         {

@@ -55,13 +55,13 @@ namespace Server.Spells
 			}
 			else if ( CheckSequence() && m != null)
 			{
-                TMobile pm = m as TMobile;
+                PlayerMobile pm = m as PlayerMobile;
 
-                if (pm != null && Caster is TMobile && (pm.MortEngine.MortCurrentState == MortState.Assomage || pm.MortEngine.MortCurrentState == MortState.MortDefinitive))
+                if (pm != null && Caster is PlayerMobile && (pm.MortEngine.MortCurrentState == MortState.Assomage || pm.MortEngine.MortCurrentState == MortState.MortDefinitive))
                 {
                     SpellHelper.Turn(Caster, pm);
 
-                    /*((TMobile)Caster).AddFatigue(250);
+                    /*((PlayerMobile)Caster).AddFatigue(250);
                     pm.AddFatigue(-250);*/
 
                     pm.PlaySound(0x214);
@@ -142,7 +142,7 @@ namespace Server.Spells
 			{
                 Corpse c = o as Corpse;
 
-                if (c != null && c.Owner is TMobile)
+                if (c != null && c.Owner is PlayerMobile)
 				{
 					m_Owner.Target(c);
 				}

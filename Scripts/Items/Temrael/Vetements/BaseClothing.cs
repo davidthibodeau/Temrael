@@ -223,9 +223,9 @@ namespace Server.Items
         public override void OnRemoved(IEntity parent)
         {
 
-            if (parent is TMobile)
+            if (parent is PlayerMobile)
             {
-                TMobile from = (TMobile)parent;
+                PlayerMobile from = (PlayerMobile)parent;
 
                 if (Disguise)
                     from.Identities.DisguiseHidden = false;

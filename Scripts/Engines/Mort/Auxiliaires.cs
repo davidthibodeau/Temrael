@@ -49,7 +49,7 @@ namespace Server.Engines.Mort
 
         protected override void OnTick()
         {
-            TMobile pm = m as TMobile;
+            PlayerMobile pm = m as PlayerMobile;
 
             Stop();
             m.Frozen = false;
@@ -124,7 +124,7 @@ namespace Server.Engines.Mort
 
         protected override void OnTick()
         {
-            TMobile pm = m as TMobile;
+            PlayerMobile pm = m as PlayerMobile;
 
             Stop();
             pm.MortEngine.RisqueDeMort = false;
@@ -144,7 +144,7 @@ namespace Server.Engines.Mort
 
         protected override void OnTick()
         {
-            TMobile pm = m as TMobile;
+            PlayerMobile pm = m as PlayerMobile;
             Item item = pm.FindItemOnLayer(Layer.Shirt);
             Item hair = pm.FindItemOnLayer(Layer.Hair);
             Item facialhair = pm.FindItemOnLayer(Layer.FacialHair);
@@ -220,13 +220,13 @@ namespace Server.Engines.Mort
             }
         }
 
-        private static void EquipItem(TMobile from, Item item)
+        private static void EquipItem(PlayerMobile from, Item item)
         {
             if (item != null)
                 from.EquipItem(item);
         }
 
-        private static void EquipItem(TMobile from, Item item, int hue)
+        private static void EquipItem(PlayerMobile from, Item item, int hue)
         {
             if (item != null)
             {

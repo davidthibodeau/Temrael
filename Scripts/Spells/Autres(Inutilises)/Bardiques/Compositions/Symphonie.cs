@@ -41,9 +41,9 @@ namespace Server.Spells
                 double amount = 1;
 
                 //Calcul du bonus donné par le sort (niveau * bonus_donne)
-                if (Caster is TMobile)
+                if (Caster is PlayerMobile)
                 {
-                    //amount += (double)(((TMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
+                    //amount += (double)(((PlayerMobile)Caster).GetAptitudeValue(Aptitude.Composition) * bonus_donne);
                 }
 
                 DateTime endtime = DateTime.Now + duration;
@@ -59,7 +59,7 @@ namespace Server.Spells
 
                 if (map != null)
                 {
-                    foreach (Mobile m in Caster.GetMobilesInRange(portee))
+                    foreach (Mobile m in Caster.GePlayerMobilesInRange(portee))
                     {
                         if (SpellHelper.ValidIndirectTarget(Caster, m) && Caster.CanBeHarmful(m, false))
                         {

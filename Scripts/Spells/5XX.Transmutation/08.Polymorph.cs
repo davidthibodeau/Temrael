@@ -57,8 +57,8 @@ namespace Server.Spells
                 Caster.BodyMod = 0;
                 Caster.EndAction(typeof(PolymorphSpell));
 
-                if (Caster is TMobile)
-                    ((TMobile)Caster).CheckRaceGump();
+                if (Caster is PlayerMobile)
+                    ((PlayerMobile)Caster).CheckRaceGump();
                 /*Caster.SendLocalizedMessage(1005559); // This spell is already in effect.*/
                 return false;
             }
@@ -91,7 +91,7 @@ namespace Server.Spells
             {
                 Caster.SendMessage("Vous ne pouvez faire ce sort en étant sous l'effet de l'incognito.");
             }
-            /*else if (Caster is TMobile && ((TMobile)Caster).Disguised)
+            /*else if (Caster is PlayerMobile && ((PlayerMobile)Caster).Disguised)
             {
                 Caster.SendMessage("Vous ne pouvez faire ce sort en étant déguisé.");
             }*/
@@ -188,8 +188,8 @@ namespace Server.Spells
 
                     //BaseArmor.ValidateMobile(m_Owner);
 
-                    if (m_Owner is TMobile)
-                        ((TMobile)m_Owner).CheckRaceGump();
+                    if (m_Owner is PlayerMobile)
+                        ((PlayerMobile)m_Owner).CheckRaceGump();
 				}
 			}
 		}

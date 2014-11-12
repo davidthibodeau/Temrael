@@ -50,7 +50,7 @@ namespace Server.Spells
 				{
                     double tile = SpellHelper.AdjustValue(Caster, 4 + (int)(Caster.Skills[SkillName.ArtMagique].Value / 50.0));
 
-					IPooledEnumerable eable = map.GetMobilesInRange( new Point3D( p ), (int)tile );
+					IPooledEnumerable eable = map.GePlayerMobilesInRange( new Point3D( p ), (int)tile );
 
 					foreach ( Mobile m in eable )
 					{

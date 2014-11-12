@@ -169,7 +169,7 @@ namespace Server.Engines.MyRunUO
 		{
 			switch ( m_Stage )
 			{
-				case Stage.CollectingMobiles: CollectMobiles( endTime ); break;
+				case Stage.CollectingMobiles: CollecPlayerMobiles( endTime ); break;
 				case Stage.DumpingMobiles: DumpMobiles( endTime ); break;
 				case Stage.CollectingGuilds: CollectGuilds( endTime ); break;
 				case Stage.DumpingGuilds: DumpGuilds( endTime ); break;
@@ -188,7 +188,7 @@ namespace Server.Engines.MyRunUO
 			m_MobilesToUpdate.Add( m );
 		}
 
-		public void CollectMobiles( DateTime endTime )
+		public void CollecPlayerMobiles( DateTime endTime )
 		{
 			if ( Config.LoadDataInFile )
 			{
@@ -342,7 +342,7 @@ namespace Server.Engines.MyRunUO
 		public const string EntrySep = "\",\"";
 		public const string LineEnd = "\"\n";
 
-		public void InsertMobile( Mobile mob )
+		public void InserPlayerMobile( Mobile mob )
 		{
 			string guildTitle = mob.GuildTitle;
 
@@ -538,7 +538,7 @@ namespace Server.Engines.MyRunUO
 					if ( !Config.LoadDataInFile )
 						DeleteMobile( mob );
 
-					InsertMobile( mob );
+					InserPlayerMobile( mob );
 					InsertSkills( mob );
 					InsertItems( mob );
 				}

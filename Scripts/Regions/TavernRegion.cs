@@ -56,8 +56,8 @@ namespace Server.Misc
 //            {
 //                Mobile m = state.Mobile;
 //
-//                if (m is TMobile && (m.Region is TavernRegion || m.Region is HouseRegion || IsInCampFireRange(m)))
-//                    FatigueDecay((TMobile)m);
+//                if (m is PlayerMobile && (m.Region is TavernRegion || m.Region is HouseRegion || IsInCampFireRange(m)))
+//                    FatigueDecay((PlayerMobile)m);
 //            }
         }
 

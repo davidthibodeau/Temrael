@@ -19,15 +19,15 @@ namespace Server.Scripts.Commands
         [Description("Permet d'augmenter son niveau.")]
         public static void Niveau_OnCommande(CommandEventArgs e)
         {
-            if (e.Mobile is TMobile)
+            if (e.Mobile is PlayerMobile)
             {
-                TMobile from = (TMobile)e.Mobile;
+                PlayerMobile from = (PlayerMobile)e.Mobile;
 
                 if (XP.CanEvolve(from))
                     XP.Evolve(from);
             }
 
-            /*if (from is TMobile)
+            /*if (from is PlayerMobile)
             {
                 from.Target = new CotationTarget();
             }*/

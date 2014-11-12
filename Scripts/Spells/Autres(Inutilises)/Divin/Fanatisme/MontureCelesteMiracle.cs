@@ -41,7 +41,7 @@ namespace Server.Spells
             if (CheckSequence())
             {
                 TimeSpan duration = TimeSpan.FromSeconds(0);
-                if (Caster is TMobile)
+                if (Caster is PlayerMobile)
                 {
                     SpellHelper.Summon(new Horse(), Caster, 0x217, duration, false, false);
                 }

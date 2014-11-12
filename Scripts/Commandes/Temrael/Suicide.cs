@@ -19,9 +19,9 @@ namespace Server.Scripts.Commands
         {
             Mobile from = e.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile tmob = (TMobile)from;
+                PlayerMobile tmob = (PlayerMobile)from;
 
                 if (tmob.MortEngine.Suicide == true)
                     tmob.MortEngine.Suicide = false;

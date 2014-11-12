@@ -18,7 +18,7 @@ namespace Server.Mobiles
 			if ( target == null || target.Deleted )
 				return;
 
-			foreach ( Mobile m in target.GetMobilesInRange( 15 ) )
+			foreach ( Mobile m in target.GePlayerMobilesInRange( 15 ) )
 			{
 				if ( m is BaseGuard )
 				{

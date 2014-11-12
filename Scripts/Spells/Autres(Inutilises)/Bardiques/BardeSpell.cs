@@ -20,7 +20,7 @@ namespace Server.Spells
 
         public override bool Cast()
         {
-            TMobile pm = Caster as TMobile;
+            PlayerMobile pm = Caster as PlayerMobile;
             m_StartCastTime = DateTime.Now;
 
             Item item = Caster.FindItemOnLayer(Layer.TwoHanded);
@@ -108,7 +108,7 @@ namespace Server.Spells
         public override bool CheckSequence()
         {
 
-            TMobile pm = Caster as TMobile;
+            PlayerMobile pm = Caster as PlayerMobile;
 
             /*if (pm != null)
             {
@@ -130,9 +130,9 @@ namespace Server.Spells
 
         public override bool CheckFizzle()
         {
-            if (Caster is TMobile && Caster.Mounted)
+            if (Caster is PlayerMobile && Caster.Mounted)
             {
-                TMobile pm = (TMobile)Caster;
+                PlayerMobile pm = (PlayerMobile)Caster;
 
                 if (pm.AccessLevel == AccessLevel.Player)
                 {

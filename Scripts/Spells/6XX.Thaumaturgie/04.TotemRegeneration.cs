@@ -93,7 +93,7 @@ namespace Server.Spells
                     if (!m_Totem.Deleted)
                     {
                         Effects.SendLocationParticles(m_Totem, 0x376A, 2, 50, 0);
-                        foreach (Mobile m in m_Totem.GetMobilesInRange(5))
+                        foreach (Mobile m in m_Totem.GePlayerMobilesInRange(5))
                         {
                             m.Heal((int)(MaxHealed * GetSpellScaling(m_Caster, TotemRegenSpell.Info.skillForCasting)));
                             m.FixedParticles(0x376A, 2, 50, 9919, 0x527, 0, EffectLayer.Waist);

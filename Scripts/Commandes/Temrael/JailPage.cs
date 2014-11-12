@@ -50,9 +50,9 @@ namespace Server.Scripts.Commands
         {
             try
             {
-                if (targeted is TMobile)
+                if (targeted is PlayerMobile)
                 {
-                    TMobile m = (TMobile)targeted;
+                    PlayerMobile m = (PlayerMobile)targeted;
 
                     if (m.AccessLevel <= from.AccessLevel && m.OldLocation != Point3D.Zero)
                     {
@@ -86,9 +86,9 @@ namespace Server.Scripts.Commands
             {
                 Point3D p = (Point3D)state;
 
-                if (targeted is TMobile)
+                if (targeted is PlayerMobile)
                 {
-                    TMobile m = (TMobile)targeted;
+                    PlayerMobile m = (PlayerMobile)targeted;
 
                     if (m.AccessLevel <= from.AccessLevel)
                     {

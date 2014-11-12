@@ -166,9 +166,9 @@ namespace Server.Gumps
                 {
                     int button = info.ButtonID - 21;
 
-                    if (state.Mobile is TMobile)
+                    if (state.Mobile is PlayerMobile)
                     {
-                        TMobile pm = (TMobile)state.Mobile;
+                        PlayerMobile pm = (PlayerMobile)state.Mobile;
 
                         if (pm.Transformation.MetamorphoseList != null && button < pm.Transformation.MetamorphoseList.Count && button >= 0)
                             pm.Transformation.MetamorphoseList.RemoveAt(button);

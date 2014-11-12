@@ -12,9 +12,9 @@ namespace Server.Gumps
 {
     public class FicheCaracteristiqueGump : GumpTemrael
     {
-        private TMobile m_from;
+        private PlayerMobile m_from;
 
-        public FicheCaracteristiqueGump(TMobile from)
+        public FicheCaracteristiqueGump(PlayerMobile from)
             : base("Caractéristiques", 560, 622)
         {
             m_from = from;
@@ -82,7 +82,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;

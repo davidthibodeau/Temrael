@@ -40,9 +40,9 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    TMobile pm = (TMobile)m;
+                    PlayerMobile pm = (PlayerMobile)m;
 
                     pm.Transformation.DispelAllTransformations();
 

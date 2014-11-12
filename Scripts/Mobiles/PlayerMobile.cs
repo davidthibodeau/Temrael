@@ -54,7 +54,7 @@ namespace Server.Mobiles
 	}
 	#endregion
 
-	public class PlayerMobile : ScriptMobile
+	public class PlayerMobile : ScripPlayerMobile
 	{
 		private class CountAndTimeStamp
 		{
@@ -490,7 +490,7 @@ namespace Server.Mobiles
 			if ( !base.OnDroppedItemToWorld( item, location ) )
 				return false;
 
-			IPooledEnumerable mobiles = Map.GetMobilesInRange( location, 0 );
+			IPooledEnumerable mobiles = Map.GePlayerMobilesInRange( location, 0 );
 
 			foreach ( Mobile m in mobiles )
 			{
@@ -988,7 +988,7 @@ namespace Server.Mobiles
 				foreach ( Item item in context.Foundation.GetItems() )
 					item.Location = context.Foundation.BanLocation;
 
-				foreach ( Mobile mobile in context.Foundation.GetMobiles() )
+				foreach ( Mobile mobile in context.Foundation.GePlayerMobiles() )
 					mobile.Location = context.Foundation.BanLocation;
 
 				// Restore relocated entities
@@ -1672,9 +1672,9 @@ namespace Server.Mobiles
             {
                 if (m.Stam == m.StamMax)
                 {
-                    if (m is TMobile)
+                    if (m is PlayerMobile)
                     {
-                        TMobile from = (TMobile)m;
+                        PlayerMobile from = (PlayerMobile)m;
                         from.SendMessage("Vous poussez le personnage hors de votre chemin.");
                         from.Stam -= 10;
                         this.SendMessage("Vous etes pousse(e) hors du chemin par " + from.GetNameUseBy(this));
@@ -1873,7 +1873,7 @@ namespace Server.Mobiles
 
             //    if (map != null && Caster != null)
             //    {
-            //        foreach (Mobile m in this.GetMobilesInRange(5))
+            //        foreach (Mobile m in this.GePlayerMobilesInRange(5))
             //        {
             //            if (this != m && SpellHelper.ValidIndirectTarget(this, m) && !(this.Party == m.Party))
             //            {
@@ -2107,9 +2107,9 @@ namespace Server.Mobiles
                 for (int h = 0; h < hears.Count; ++h)
                 {
                     Mobile o = hears[h];
-                    if (o is TMobile)
+                    if (o is PlayerMobile)
                     {
-                        TMobile player = o as TMobile;
+                        PlayerMobile player = o as PlayerMobile;
 
                         bool isEmote = false;
 
@@ -2132,9 +2132,9 @@ namespace Server.Mobiles
 
         public override bool CheckHearsMutatedSpeech(Mobile m, object context)
         {
-            if (m is TMobile)
+            if (m is PlayerMobile)
             {
-                TMobile player = m as TMobile;
+                PlayerMobile player = m as PlayerMobile;
 
                 return Langues.HearsGibberish(player);
             }
@@ -2155,7 +2155,7 @@ namespace Server.Mobiles
 
             if (e.Type == MessageType.Whisper)
             {
-                foreach (Mobile m in this.GetMobilesInRange(10))
+                foreach (Mobile m in this.GePlayerMobilesInRange(10))
                 {
                     if (m.AccessLevel >= AccessLevel.Counselor)
                         targets.Add(m);
@@ -2595,7 +2595,7 @@ namespace Server.Mobiles
                 if (AccessLevel > AccessLevel.Player)
                     return;
                 // Surtout pour le PvP.
-                foreach (Mobile m in GetMobilesInRange(10))
+                foreach (Mobile m in GePlayerMobilesInRange(10))
                 {
                     if (m != this)
                         SkillHandlers.DetectHidden.OnUseSingleTarget(m, this, m.GetStepsBetweenYouAnd(this));
@@ -2802,7 +2802,7 @@ namespace Server.Mobiles
 
 		private void DeltaEnemies( Type oldType, Type newType )
 		{
-			foreach ( Mobile m in this.GetMobilesInRange( 18 ) )
+			foreach ( Mobile m in this.GePlayerMobilesInRange( 18 ) )
 			{
 				Type t = m.GetType();
 

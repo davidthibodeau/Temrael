@@ -50,7 +50,7 @@ namespace Server.Gumps
 		private ArrayList m_List;
 		private int m_ListPage;
 		private object m_State;
-        private TMobile m_SelectedPlayer;
+        private PlayerMobile m_SelectedPlayer;
 
 		private const int LabelColor = 0x7FFF;
 		private const int SelectedColor = 0x421F;
@@ -237,7 +237,7 @@ namespace Server.Gumps
 					AddLabel( 150, 210, LabelHue, World.Mobiles.Count.ToString() );
 
 					AddLabel( 20, 230, LabelHue, "Mobile Scripts:" );
-					AddLabel( 150, 230, LabelHue, Core.ScriptMobiles.ToString() );
+					AddLabel( 150, 230, LabelHue, Core.ScripPlayerMobiles.ToString() );
 
 					AddLabel( 20, 250, LabelHue, "Items:" );
 					AddLabel( 150, 250, LabelHue, World.Items.Count.ToString() );
@@ -574,8 +574,8 @@ namespace Server.Gumps
 				{
 					Mobile m = state as Mobile;
 
-                    if (m is TMobile)
-                        m_SelectedPlayer = (TMobile)m;
+                    if (m is PlayerMobile)
+                        m_SelectedPlayer = (PlayerMobile)m;
 
 					if ( m == null )
 						break;

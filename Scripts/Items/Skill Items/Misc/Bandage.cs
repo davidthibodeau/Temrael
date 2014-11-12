@@ -146,7 +146,7 @@ namespace Server.Items
                     {
                         from.SendMessage("Vous ne pouvez soigner sur une monture.");
                     }
-                    else if (targeted is TMobile && ((TMobile)targeted).MortEngine.RisqueDeMort)
+                    else if (targeted is PlayerMobile && ((PlayerMobile)targeted).MortEngine.RisqueDeMort)
                     {
                         from.SendMessage("Cette personne est trop affaiblie pour être soignée.");
                     }
@@ -275,7 +275,7 @@ namespace Server.Items
                 patientNumber = -1;
                 playSound = false;
             }
-            else if (m_Patient is TMobile && ((TMobile)m_Patient).MortEngine.RisqueDeMort)
+            else if (m_Patient is PlayerMobile && ((PlayerMobile)m_Patient).MortEngine.RisqueDeMort)
             {
                 m_Healer.SendMessage("Cette personne est trop affaiblie pour être soignée.");
             }

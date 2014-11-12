@@ -39,7 +39,7 @@ namespace Server.Spells
             {
                 Caster.SendLocalizedMessage(500237); // Target can not be seen.
             }
-            else if (!(m is TMobile))
+            else if (!(m is PlayerMobile))
             {
                 Caster.SendMessage("Ce sort ne peut être qu'utilisé sur les joueurs.");
             }
@@ -47,11 +47,11 @@ namespace Server.Spells
             {
                 DateTime endtime = DateTime.Now + TimeSpan.FromSeconds(0);
 
-                StopTimer((TMobile)m);
+                StopTimer((PlayerMobile)m);
 
-                Timer t = new EnduranceTimer((TMobile)m, endtime);
+                Timer t = new EnduranceTimer((PlayerMobile)m, endtime);
 
-                m_Timers[(TMobile)m] = t;
+                m_Timers[(PlayerMobile)m] = t;
 
                 t.Start();
             }
@@ -59,7 +59,7 @@ namespace Server.Spells
             FinishSequence();
         }
 
-        public static void StopTimer(TMobile m)
+        public static void StopTimer(PlayerMobile m)
         {
             Timer t = (Timer)m_Timers[m];
 
@@ -99,10 +99,10 @@ namespace Server.Spells
 
         private class EnduranceTimer : Timer
         {
-            private TMobile m_target;
+            private PlayerMobile m_target;
             private DateTime m_end;
 
-            public EnduranceTimer(TMobile target, DateTime endtime)
+            public EnduranceTimer(PlayerMobile target, DateTime endtime)
                 : base(TimeSpan.Zero, TimeSpan.FromSeconds(1))
             {
                 m_target = target;

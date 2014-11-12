@@ -28,9 +28,9 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from is TMobile && from.InRange(Location, 4))
+            if (from is PlayerMobile && from.InRange(Location, 4))
             {
-                TMobile tMob = from as TMobile;
+                PlayerMobile tMob = from as PlayerMobile;
 
                 //tMob.StatistiquesLibres = 0;
                 //tMob.AptitudesLibres = 0;

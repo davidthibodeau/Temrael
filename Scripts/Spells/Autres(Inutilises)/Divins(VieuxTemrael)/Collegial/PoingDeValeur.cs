@@ -39,7 +39,7 @@ namespace Server.Spells
                     if (tile > 12)
                         tile = 12;
 
-                    foreach (Mobile m in Caster.GetMobilesInRange((int)tile))
+                    foreach (Mobile m in Caster.GePlayerMobilesInRange((int)tile))
                     {
                         if (Caster.CanBeBeneficial(m, false))
                             targets.Add(m);

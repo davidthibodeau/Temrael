@@ -11,16 +11,16 @@ namespace Server.Misc
     {
         public static string ComputeTitle(Mobile beholder, Mobile beheld)
         {
-            TMobile pm = beheld as TMobile;
+            PlayerMobile pm = beheld as PlayerMobile;
 
             string customTitle = beheld.Title;
             StringBuilder title = new StringBuilder();
 
             //TROUVER NOM
-            if (beheld is TMobile)
+            if (beheld is PlayerMobile)
             {
                 string name;
-                name = ((TMobile)beheld).GetNameUseBy(((TMobile)beholder));
+                name = ((PlayerMobile)beheld).GetNameUseBy(((PlayerMobile)beholder));
                 //if (name == "-1") { if (beholder.Female) { name = "Inconnue"; } else { name = "Inconnu"; } }
 
                 //title.Append(((RacePlayerMobile)beheld).PlayerName);
@@ -37,7 +37,7 @@ namespace Server.Misc
                 /*Console.WriteLine("*******Paperdoll********");
                 Console.WriteLine("beholder : " + beholder.Name);
                 Console.WriteLine("beheld : " + beheld.Name);
-                Console.WriteLine("Result : " + ((TMobile)beheld).GetNameUseBy(((TMobile)beholder)));*/
+                Console.WriteLine("Result : " + ((PlayerMobile)beheld).GetNameUseBy(((PlayerMobile)beholder)));*/
 
                 return title.ToString();
             }

@@ -19,7 +19,7 @@ namespace Server.Scripts.Commands
         {
             Mobile from = e.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
                 from.SendGump(new ConditionGump((Mobile)from));
             }

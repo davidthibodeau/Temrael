@@ -46,8 +46,8 @@ namespace Server.Spells
 
 //                Caster.SendMessage(334, "Fatigue de " + m.Name);
 //
-//                if (m is TMobile)
-//                    Caster.SendMessage(334, ((TMobile)m).Fatigue.ToString());
+//                if (m is PlayerMobile)
+//                    Caster.SendMessage(334, ((PlayerMobile)m).Fatigue.ToString());
 //                else
 //                    Caster.SendMessage(m.Stam.ToString() + " / " + m.StamMax.ToString());
                   

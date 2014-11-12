@@ -11,12 +11,12 @@ namespace Server.Gumps
 {
     public class QuickSpellLaunchGump : Gump
     {
-        private TMobile m_From;
+        private PlayerMobile m_From;
         private NewSpellbook m_Book;
         private BaseInstrument m_Instrument;
         private ArrayList m_List;
 
-        public static ArrayList GetSpellList(TMobile from, NewSpellbook book)
+        public static ArrayList GetSpellList(PlayerMobile from, NewSpellbook book)
         {
             ArrayList list = new ArrayList();
 
@@ -36,7 +36,7 @@ namespace Server.Gumps
             return list;
         }
 
-        public QuickSpellLaunchGump(TMobile from, NewSpellbook book, ArrayList list)
+        public QuickSpellLaunchGump(PlayerMobile from, NewSpellbook book, ArrayList list)
             : base(150, 200)
         {
             try
@@ -110,7 +110,7 @@ namespace Server.Gumps
             }
         }
 
-        public QuickSpellLaunchGump(TMobile from, BaseInstrument instrument, ArrayList list)
+        public QuickSpellLaunchGump(PlayerMobile from, BaseInstrument instrument, ArrayList list)
             : base(150, 200)
         {
             try
@@ -199,8 +199,8 @@ namespace Server.Gumps
                         Misc.ExceptionLogging.WriteLine(e);
                     }
 
-                    if (from is TMobile)
-                        from.SendGump(new QuickSpellLaunchGump((TMobile)from, m_Book, m_List));
+                    if (from is PlayerMobile)
+                        from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, m_Book, m_List));
                 }
                 else
                     from.SendMessage("L'objet doit rester dans votre sac en tout temps !");
@@ -220,8 +220,8 @@ namespace Server.Gumps
 
                     from.SendMessage(name);
 
-                    if (from is TMobile)
-                        from.SendGump(new QuickSpellLaunchGump((TMobile)from, m_Book, m_List));
+                    if (from is PlayerMobile)
+                        from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, m_Book, m_List));
                 }
                 else
                     from.SendMessage("L'objet doit rester dans votre sac en tout temps !");

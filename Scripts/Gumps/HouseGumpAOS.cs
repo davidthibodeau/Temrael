@@ -777,7 +777,7 @@ namespace Server.Gumps
 						}
 
 						List<Item> items = house.GetItems();
-						List<Mobile> mobiles = house.GetMobiles();
+						List<Mobile> mobiles = house.GePlayerMobiles();
 
 						newHouse.MoveToWorld( new Point3D( house.X + house.ConvertOffsetX, house.Y + house.ConvertOffsetY, house.Z + house.ConvertOffsetZ ), house.Map );
 						house.Delete();
@@ -1050,7 +1050,7 @@ namespace Server.Gumps
 								from.SendGump( new NoticeGump( 1060637, 30720, 501888, 32512, 320, 180, new NoticeGumpCallback( PublicPrivateNotice_Callback ), m_House ) );
 
 								Region r = m_House.Region;
-								List<Mobile> list = r.GetMobiles();
+								List<Mobile> list = r.GePlayerMobiles();
 
 								for ( int i = 0; i < list.Count; ++i )
 								{
@@ -1083,7 +1083,7 @@ namespace Server.Gumps
 								}
 
 								Region r = m_House.Region;
-								List<Mobile> list = r.GetMobiles();
+								List<Mobile> list = r.GePlayerMobiles();
 
 								for ( int i = 0; i < list.Count; ++i )
 								{

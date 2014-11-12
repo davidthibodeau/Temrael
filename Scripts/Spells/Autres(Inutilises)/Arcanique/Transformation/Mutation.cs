@@ -47,9 +47,9 @@ namespace Server.Spells
 		{
             if (!Caster.CanBeginAction(typeof(MutationSpell)))
             {
-                if (Caster is TMobile)
+                if (Caster is PlayerMobile)
                 {
-                    TMobile pm = (TMobile)Caster;
+                    PlayerMobile pm = (PlayerMobile)Caster;
                     pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
@@ -63,8 +63,8 @@ namespace Server.Spells
                 Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
                 Caster.PlaySound(0x3BD);
 
-                if (Caster is TMobile)
-                    ((TMobile)Caster).CheckRaceGump();
+                if (Caster is PlayerMobile)
+                    ((PlayerMobile)Caster).CheckRaceGump();
 
                 BaseArmor.ValidateMobile(Caster);
             }
@@ -98,9 +98,9 @@ namespace Server.Spells
                                 mt.Rider = null;
                         }
 
-                        if (Caster is TMobile)
+                        if (Caster is PlayerMobile)
                         {
-                            TMobile pm = (TMobile)Caster;
+                            PlayerMobile pm = (PlayerMobile)Caster;
                             pm.Transformation.OnTransformationChange(m_NewBody, m_NameMod, m_HueMod, true);
                         }
                         else
@@ -123,9 +123,9 @@ namespace Server.Spells
         {
             if (!m.CanBeginAction(typeof(MutationSpell)))
             {
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    TMobile pm = (TMobile)m;
+                    PlayerMobile pm = (PlayerMobile)m;
                     pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
@@ -140,8 +140,8 @@ namespace Server.Spells
                 m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
                 m.PlaySound(0x3BD);
 
-                if (m is TMobile)
-                    ((TMobile)m).CheckRaceGump();
+                if (m is PlayerMobile)
+                    ((PlayerMobile)m).CheckRaceGump();
 
                 BaseArmor.ValidateMobile(m);
             }

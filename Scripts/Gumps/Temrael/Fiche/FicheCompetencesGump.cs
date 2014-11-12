@@ -13,15 +13,15 @@ namespace Server.Gumps
 {
     public class FicheCompetencesGump : GumpTemrael
     {
-        private TMobile m_from;
+        private PlayerMobile m_from;
         private int m_page;
 
-        public FicheCompetencesGump(TMobile from)
+        public FicheCompetencesGump(PlayerMobile from)
             : this(from, 0)
         {
         }
 
-        public FicheCompetencesGump(TMobile from, int page)
+        public FicheCompetencesGump(PlayerMobile from, int page)
             : base("Compétences", 560, 622)
         {
             m_from = from;
@@ -95,7 +95,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;
@@ -135,13 +135,13 @@ namespace Server.Gumps
             }
         }
 
-        /*public static Hashtable GetAptitudesList(TMobile from)
+        /*public static Hashtable GetAptitudesList(PlayerMobile from)
         {
             Hashtable list = new Hashtable();
             return list;
         }*/
 
-        /*private void CreateAptitudes(TMobile from)
+        /*private void CreateAptitudes(PlayerMobile from)
         {
             Hashtable aptitudes = GetAptitudesList(from);
             int count = 0;

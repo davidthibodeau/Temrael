@@ -38,7 +38,7 @@ namespace Server.Spells
 
                 if (map != null)
                 {
-                    IPooledEnumerable eable = map.GetMobilesInRange(new Point3D(Caster.Location), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[CastSkill].Value / 5, true));
+                    IPooledEnumerable eable = map.GePlayerMobilesInRange(new Point3D(Caster.Location), (int)SpellHelper.AdjustValue(Caster, 1 + Caster.Skills[CastSkill].Value / 5, true));
 
                     foreach (Mobile m in eable)
                     {

@@ -147,10 +147,10 @@ namespace Server.Items
 
         private class QSLEntry : ContextMenuEntry
         {
-            private TMobile m_from;
+            private PlayerMobile m_from;
             private BaseInstrument m_instrument;
 
-            public QSLEntry(TMobile from, BaseInstrument instrument)
+            public QSLEntry(PlayerMobile from, BaseInstrument instrument)
                 : base(6268, -1)
             {
                 m_from = from;
@@ -173,8 +173,8 @@ namespace Server.Items
             if (Parent == m_from || (pack != null && Parent == pack))
             {
                 list.Add(new LivreEntry(m_from, this));
-                if (m_from is TMobile)
-                    list.Add(new QSLEntry(((TMobile)m_from), this));
+                if (m_from is PlayerMobile)
+                    list.Add(new QSLEntry(((PlayerMobile)m_from), this));
             }
         }
 

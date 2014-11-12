@@ -643,7 +643,7 @@ namespace Server
 		private static int m_ItemCount, m_MobileCount;
 
 		public static int ScriptItems { get { return m_ItemCount; } }
-		public static int ScriptMobiles { get { return m_MobileCount; } }
+		public static int ScripPlayerMobiles { get { return m_MobileCount; } }
 
 		public static void VerifySerialization()
 		{

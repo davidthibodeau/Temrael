@@ -100,9 +100,9 @@ namespace Server.Misc
                     from.Stam -= 2;
             }
 
-            if (from is TMobile && (e.Direction & Direction.Running) != 0)
+            if (from is PlayerMobile && (e.Direction & Direction.Running) != 0)
             {
-                TMobile pm = (TMobile)from;
+                PlayerMobile pm = (PlayerMobile)from;
                 TileType type = Deplacement.GetTileType(from);
                 int amt, perte;
                 int value = 0;

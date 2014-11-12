@@ -48,9 +48,9 @@ namespace Server.Items
 			{
 				//from.SendLocalizedMessage( 503248 ); // Your godly powers allow you to place this vendor whereever you wish.
 
-                if (from is TMobile)
+                if (from is PlayerMobile)
                 {
-                    TMobile tmob = from as TMobile;
+                    PlayerMobile tmob = from as PlayerMobile;
 
                     // TOCHECK VENDEURS.
                     from.Target = new PlaceTarget(this);

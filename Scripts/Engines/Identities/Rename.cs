@@ -49,7 +49,7 @@ namespace Server.Engines.Identities
 
     public class RenameGump : Gump
     {
-        public RenameGump(TMobile m)
+        public RenameGump(PlayerMobile m)
             : base(0, 0)
         {
             this.Closable = true;
@@ -64,7 +64,7 @@ namespace Server.Engines.Identities
             to = m;
         }
 
-        public TMobile to;
+        public PlayerMobile to;
 
         public override void OnResponse(NetState sender, RelayInfo info)
         {
@@ -81,7 +81,7 @@ namespace Server.Engines.Identities
                         from.CloseGump(typeof(RenameGump));
                         break;
                     }
-                    //from.SendGump(new RenameGump((TMobile)from));
+                    //from.SendGump(new RenameGump((PlayerMobile)from));
             }
         }
     }

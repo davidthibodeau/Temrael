@@ -14,9 +14,9 @@ namespace Server.Gumps
 {
     class MortVivantGump : Gump
     {
-        private TMobile m_From;
+        private PlayerMobile m_From;
 
-        public MortVivantGump(TMobile from)
+        public MortVivantGump(PlayerMobile from)
             : base(0, 0)
         {
             m_From = from;

@@ -31,7 +31,7 @@ namespace Server.Spells
 
 		public void Target( Mobile m )
 		{
-			if ( Caster == m || !(m is TMobile || m is BaseCreature) ) // only TMobile and BaseCreature implement blood oath checking
+			if ( Caster == m || !(m is PlayerMobile || m is BaseCreature) ) // only PlayerMobile and BaseCreature implement blood oath checking
 			{
 				Caster.SendLocalizedMessage( 1060508 ); // You can't curse that.
 			}

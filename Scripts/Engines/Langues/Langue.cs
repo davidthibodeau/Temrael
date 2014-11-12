@@ -63,7 +63,7 @@ namespace Server.Engines.Langues
         {
             Mobile from = e.Mobile;
 
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
                 from.SendGump(new GumpLanguage((PlayerMobile)from, true));
             }

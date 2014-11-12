@@ -46,7 +46,7 @@ namespace Server.Engines.Evolution
 
         private static void XPMode_OnCommand(CommandEventArgs e)
         {
-            if (e.Mobile is TMobile)
+            if (e.Mobile is PlayerMobile)
             {
                 Experience m = (e.Mobile as PlayerMobile).Experience;
                 m.XPMode = !m.XPMode;
@@ -69,9 +69,9 @@ namespace Server.Engines.Evolution
                 {
                     Mobile m = state.Mobile;
 
-                    if (m != null && m is TMobile)
+                    if (m != null && m is PlayerMobile)
                     {
-                        TMobile pm = (TMobile)m;
+                        PlayerMobile pm = (PlayerMobile)m;
 
                         if (pm.Experience.NextExp < DateTime.Now)
                         {
@@ -103,9 +103,9 @@ namespace Server.Engines.Evolution
             
             foreach (Mobile m in World.Mobiles.Values)
             {
-                if (m is TMobile)
+                if (m is PlayerMobile)
                 {
-                    bool[,] ticks = (m as TMobile).Experience.Ticks;
+                    bool[,] ticks = (m as PlayerMobile).Experience.Ticks;
                     for (int i = 0; i < 7; i++)
                     {
                         for (int j = 0; j < 9; j++)
@@ -130,7 +130,7 @@ namespace Server.Engines.Evolution
             LastReset = DateTime.Now;
         }
 
-        public static void CheckXP(TMobile pm)
+        public static void CheckXP(PlayerMobile pm)
         {
             if (pm == null)
                 return;
@@ -208,9 +208,9 @@ namespace Server.Engines.Evolution
 
         public static bool CanEvolve(Mobile from)
         {
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile pm = from as TMobile;
+                PlayerMobile pm = from as PlayerMobile;
                 try
                 {
                     int currentXP = pm.Experience.XP;
@@ -233,9 +233,9 @@ namespace Server.Engines.Evolution
 
         public static void Evolve(Mobile from)
         {
-            if (from is TMobile)
+            if (from is PlayerMobile)
             {
-                TMobile pm = from as TMobile;
+                PlayerMobile pm = from as PlayerMobile;
 
                 Experience exp = pm.Experience;
 

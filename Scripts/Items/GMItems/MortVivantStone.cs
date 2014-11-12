@@ -20,7 +20,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.SendGump(new MortVivantGump((TMobile)from));
+            from.SendGump(new MortVivantGump((PlayerMobile)from));
         }
 
         public MortVivantStone(Serial serial)

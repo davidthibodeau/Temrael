@@ -1122,7 +1122,6 @@
     <Compile Include="Mobiles\Guards\GardesSimple.cs" />
     <Compile Include="Mobiles\Guards\Nomades\PaysanNomadeGarde.cs" />
     <Compile Include="Mobiles\PlayerMobile.cs" />
-    <Compile Include="Mobiles\TMobile.cs" />
     <Compile Include="Mobiles\Vendors\AnimalBuy.cs" />
     <Compile Include="Mobiles\Vendors\BaseVendor.cs" />
     <Compile Include="Mobiles\Vendors\BeverageBuy.cs" />

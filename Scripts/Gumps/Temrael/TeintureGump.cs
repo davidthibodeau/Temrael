@@ -489,11 +489,11 @@ namespace Server.Gumps
                         from.SendGump(new TeintureGump(from, TeintureTabs.Sable, m_tub));
                         break;
                     case 7:
-                        if (!(from is TMobile))
+                        if (!(from is PlayerMobile))
                             from.SendGump(new TeintureGump(from, TeintureTabs.Baies, m_tub));
                         else if (m_tub.Redyable)
                         {
-                            m_tub.Hue = ((TMobile)from).LastTeinture;
+                            m_tub.Hue = ((PlayerMobile)from).LastTeinture;
 
                             from.SendGump(new TeintureGump(from, TeintureTabs.Baies, m_tub));
                         }
@@ -506,955 +506,955 @@ namespace Server.Gumps
                     case 8:
                         break;
                     case 9:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04DE;
-                            ((TMobile)from).LastTeinture = 0x04DE;
+                            ((PlayerMobile)from).LastTeinture = 0x04DE;
                         }
                         break;
                     case 10:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04E0;
-                            ((TMobile)from).LastTeinture = 0x04E0;
+                            ((PlayerMobile)from).LastTeinture = 0x04E0;
                         }
                         break;
                     case 11:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04E2;
-                            ((TMobile)from).LastTeinture = 0x04E2;
+                            ((PlayerMobile)from).LastTeinture = 0x04E2;
                         }
                         break;
                     case 12:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04E4;
-                            ((TMobile)from).LastTeinture = 0x04E4;
+                            ((PlayerMobile)from).LastTeinture = 0x04E4;
                         }
                         break;
                     case 13:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04E6;
-                            ((TMobile)from).LastTeinture = 0x04E6;
+                            ((PlayerMobile)from).LastTeinture = 0x04E6;
                         }
                         break;
                     case 14:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04D5;
-                            ((TMobile)from).LastTeinture = 0x04D5;
+                            ((PlayerMobile)from).LastTeinture = 0x04D5;
                         }
                         break;
                     case 15:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04D8;
-                            ((TMobile)from).LastTeinture = 0x04D8;
+                            ((PlayerMobile)from).LastTeinture = 0x04D8;
                         }
                         break;
                     case 16:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04DA;
-                            ((TMobile)from).LastTeinture = 0x04DA;
+                            ((PlayerMobile)from).LastTeinture = 0x04DA;
                         }
                         break;
                     case 17:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04DB;
-                            ((TMobile)from).LastTeinture = 0x04DB;
+                            ((PlayerMobile)from).LastTeinture = 0x04DB;
                         }
                         break;
                     case 18:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04DD;
-                            ((TMobile)from).LastTeinture = 0x04DD;
+                            ((PlayerMobile)from).LastTeinture = 0x04DD;
                         }
                         break;
                     case 19:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04CC;
-                            ((TMobile)from).LastTeinture = 0x04CC;
+                            ((PlayerMobile)from).LastTeinture = 0x04CC;
                         }
                         break;
                     case 20:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04CE;
-                            ((TMobile)from).LastTeinture = 0x04CE;
+                            ((PlayerMobile)from).LastTeinture = 0x04CE;
                         }
                         break;
                     case 21:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04CF;
-                            ((TMobile)from).LastTeinture = 0x04CF;
+                            ((PlayerMobile)from).LastTeinture = 0x04CF;
                         }
                         break;
                     case 22:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04D2;
-                            ((TMobile)from).LastTeinture = 0x04D2;
+                            ((PlayerMobile)from).LastTeinture = 0x04D2;
                         }
                         break;
                     case 23:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04D4;
-                            ((TMobile)from).LastTeinture = 0x04D4;
+                            ((PlayerMobile)from).LastTeinture = 0x04D4;
                         }
                         break;
                     case 24:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04C3;
-                            ((TMobile)from).LastTeinture = 0x04C3;
+                            ((PlayerMobile)from).LastTeinture = 0x04C3;
                         }
                         break;
                     case 26:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04C7;
-                            ((TMobile)from).LastTeinture = 0x04C7;
+                            ((PlayerMobile)from).LastTeinture = 0x04C7;
                         }
                         break;
                     case 27:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04C9;
-                            ((TMobile)from).LastTeinture = 0x04C9;
+                            ((PlayerMobile)from).LastTeinture = 0x04C9;
                         }
                         break;
                     case 28:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04CB;
-                            ((TMobile)from).LastTeinture = 0x04CB;
+                            ((PlayerMobile)from).LastTeinture = 0x04CB;
                         }
                         break;
                     case 29:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x076C;
-                            ((TMobile)from).LastTeinture = 0x076C;
+                            ((PlayerMobile)from).LastTeinture = 0x076C;
                         }
                         break;
                     case 30:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x076E;
-                            ((TMobile)from).LastTeinture = 0x076E;
+                            ((PlayerMobile)from).LastTeinture = 0x076E;
                         }
                         break;
                     case 31:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0770;
-                            ((TMobile)from).LastTeinture = 0x0770;
+                            ((PlayerMobile)from).LastTeinture = 0x0770;
                         }
                         break;
                     case 32:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0772;
-                            ((TMobile)from).LastTeinture = 0x0772;
+                            ((PlayerMobile)from).LastTeinture = 0x0772;
                         }
                         break;
                     case 33:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0774;
-                            ((TMobile)from).LastTeinture = 0x0774;
+                            ((PlayerMobile)from).LastTeinture = 0x0774;
                         }
                         break;
                     case 34:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0763;
-                            ((TMobile)from).LastTeinture = 0x0763;
+                            ((PlayerMobile)from).LastTeinture = 0x0763;
                         }
                         break;
                     case 35:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0766;
-                            ((TMobile)from).LastTeinture = 0x0766;
+                            ((PlayerMobile)from).LastTeinture = 0x0766;
                         }
                         break;
                     case 36:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0768;
-                            ((TMobile)from).LastTeinture = 0x0768;
+                            ((PlayerMobile)from).LastTeinture = 0x0768;
                         }
                         break;
                     case 37:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0769;
-                            ((TMobile)from).LastTeinture = 0x0769;
+                            ((PlayerMobile)from).LastTeinture = 0x0769;
                         }
                         break;
                     case 38:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x076B;
-                            ((TMobile)from).LastTeinture = 0x076B;
+                            ((PlayerMobile)from).LastTeinture = 0x076B;
                         }
                         break;
                     case 39:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0967;
-                            ((TMobile)from).LastTeinture = 0x0967;
+                            ((PlayerMobile)from).LastTeinture = 0x0967;
                         }
                         break;
                     case 40:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0968;
-                            ((TMobile)from).LastTeinture = 0x0968;
+                            ((PlayerMobile)from).LastTeinture = 0x0968;
                         }
                         break;
                     case 41:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0969;
-                            ((TMobile)from).LastTeinture = 0x0969;
+                            ((PlayerMobile)from).LastTeinture = 0x0969;
                         }
                         break;
                     case 42:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x096A;
-                            ((TMobile)from).LastTeinture = 0x096A;
+                            ((PlayerMobile)from).LastTeinture = 0x096A;
                         }
                         break;
                     case 43:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x096C;
-                            ((TMobile)from).LastTeinture = 0x096C;
+                            ((PlayerMobile)from).LastTeinture = 0x096C;
                         }
                         break;
                     case 44:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0;
-                            ((TMobile)from).LastTeinture = 0x0;
+                            ((PlayerMobile)from).LastTeinture = 0x0;
                         }
                         break;
                     case 45:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x08FD;
-                            ((TMobile)from).LastTeinture = 0x08FD;
+                            ((PlayerMobile)from).LastTeinture = 0x08FD;
                         }
                         break;
                     case 46:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x08FE;
-                            ((TMobile)from).LastTeinture = 0x08FE;
+                            ((PlayerMobile)from).LastTeinture = 0x08FE;
                         }
                         break;
                     case 47:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0900;
-                            ((TMobile)from).LastTeinture = 0x0900;
+                            ((PlayerMobile)from).LastTeinture = 0x0900;
                         }
                         break;
                     case 48:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0902;
-                            ((TMobile)from).LastTeinture = 0x0902;
+                            ((PlayerMobile)from).LastTeinture = 0x0902;
                         }
                         break;
                     case 49:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x04BA;
-                            ((TMobile)from).LastTeinture = 0x04BA;
+                            ((PlayerMobile)from).LastTeinture = 0x04BA;
                         }
                         break;
                     case 50:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0642;
-                            ((TMobile)from).LastTeinture = 0x0642;
+                            ((PlayerMobile)from).LastTeinture = 0x0642;
                         }
                         break;
                     case 51:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0646;
-                            ((TMobile)from).LastTeinture = 0x0646;
+                            ((PlayerMobile)from).LastTeinture = 0x0646;
                         }
                         break;
                     case 52:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0647;
-                            ((TMobile)from).LastTeinture = 0x0647;
+                            ((PlayerMobile)from).LastTeinture = 0x0647;
                         }
                         break;
                     case 53:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0649;
-                            ((TMobile)from).LastTeinture = 0x0649;
+                            ((PlayerMobile)from).LastTeinture = 0x0649;
                         }
                         break;
                     case 54:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0653;
-                            ((TMobile)from).LastTeinture = 0x0653;
+                            ((PlayerMobile)from).LastTeinture = 0x0653;
                         }
                         break;
                     case 55:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0655;
-                            ((TMobile)from).LastTeinture = 0x0655;
+                            ((PlayerMobile)from).LastTeinture = 0x0655;
                         }
                         break;
                     case 56:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0656;
-                            ((TMobile)from).LastTeinture = 0x0656;
+                            ((PlayerMobile)from).LastTeinture = 0x0656;
                         }
                         break;
                     case 57:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0659;
-                            ((TMobile)from).LastTeinture = 0x0659;
+                            ((PlayerMobile)from).LastTeinture = 0x0659;
                         }
                         break;
                     case 58:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x065B;
-                            ((TMobile)from).LastTeinture = 0x065B;
+                            ((PlayerMobile)from).LastTeinture = 0x065B;
                         }
                         break;
                     case 59:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x065C;
-                            ((TMobile)from).LastTeinture = 0x065C;
+                            ((PlayerMobile)from).LastTeinture = 0x065C;
                         }
                         break;
                     case 60:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x065E;
-                            ((TMobile)from).LastTeinture = 0x065E;
+                            ((PlayerMobile)from).LastTeinture = 0x065E;
                         }
                         break;
                     case 61:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0660;
-                            ((TMobile)from).LastTeinture = 0x0660;
+                            ((PlayerMobile)from).LastTeinture = 0x0660;
                         }
                         break;
                     case 62:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0662;
-                            ((TMobile)from).LastTeinture = 0x0662;
+                            ((PlayerMobile)from).LastTeinture = 0x0662;
                         }
                         break;
                     case 63:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0664;
-                            ((TMobile)from).LastTeinture = 0x0664;
+                            ((PlayerMobile)from).LastTeinture = 0x0664;
                         }
                         break;
                     case 64:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0665;
-                            ((TMobile)from).LastTeinture = 0x0665;
+                            ((PlayerMobile)from).LastTeinture = 0x0665;
                         }
                         break;
                     case 65:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0666;
-                            ((TMobile)from).LastTeinture = 0x0666;
+                            ((PlayerMobile)from).LastTeinture = 0x0666;
                         }
                         break;
                     case 66:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0668;
-                            ((TMobile)from).LastTeinture = 0x0668;
+                            ((PlayerMobile)from).LastTeinture = 0x0668;
                         }
                         break;
                     case 67:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x066B;
-                            ((TMobile)from).LastTeinture = 0x066B;
+                            ((PlayerMobile)from).LastTeinture = 0x066B;
                         }
                         break;
                     case 68:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x066D;
-                            ((TMobile)from).LastTeinture = 0x066D;
+                            ((PlayerMobile)from).LastTeinture = 0x066D;
                         }
                         break;
                     case 69:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0594;
-                            ((TMobile)from).LastTeinture = 0x0594;
+                            ((PlayerMobile)from).LastTeinture = 0x0594;
                         }
                         break;
                     case 70:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0595;
-                            ((TMobile)from).LastTeinture = 0x0595;
+                            ((PlayerMobile)from).LastTeinture = 0x0595;
                         }
                         break;
                     case 71:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0596;
-                            ((TMobile)from).LastTeinture = 0x0596;
+                            ((PlayerMobile)from).LastTeinture = 0x0596;
                         }
                         break;
                     case 72:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0599;
-                            ((TMobile)from).LastTeinture = 0x0599;
+                            ((PlayerMobile)from).LastTeinture = 0x0599;
                         }
                         break;
                     case 73:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x059B;
-                            ((TMobile)from).LastTeinture = 0x059B;
+                            ((PlayerMobile)from).LastTeinture = 0x059B;
                         }
                         break;
                     case 74:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x059D;
-                            ((TMobile)from).LastTeinture = 0x059D;
+                            ((PlayerMobile)from).LastTeinture = 0x059D;
                         }
                         break;
                     case 75:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x059E;
-                            ((TMobile)from).LastTeinture = 0x059E;
+                            ((PlayerMobile)from).LastTeinture = 0x059E;
                         }
                         break;
                     case 76:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x05A0;
-                            ((TMobile)from).LastTeinture = 0x05A0;
+                            ((PlayerMobile)from).LastTeinture = 0x05A0;
                         }
                         break;
                     case 77:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x05A2;
-                            ((TMobile)from).LastTeinture = 0x05A2;
+                            ((PlayerMobile)from).LastTeinture = 0x05A2;
                         }
                         break;
                     case 78:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x05A5;
-                            ((TMobile)from).LastTeinture = 0x05A5;
+                            ((PlayerMobile)from).LastTeinture = 0x05A5;
                         }
                         break;
                     case 79:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x089F;
-                            ((TMobile)from).LastTeinture = 0x089F;
+                            ((PlayerMobile)from).LastTeinture = 0x089F;
                         }
                         break;
                     case 80:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x08A0;
-                            ((TMobile)from).LastTeinture = 0x08A0;
+                            ((PlayerMobile)from).LastTeinture = 0x08A0;
                         }
                         break;
                     case 81:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x08A1;
-                            ((TMobile)from).LastTeinture = 0x08A1;
+                            ((PlayerMobile)from).LastTeinture = 0x08A1;
                         }
                         break;
                     case 82:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x08A3;
-                            ((TMobile)from).LastTeinture = 0x08A3;
+                            ((PlayerMobile)from).LastTeinture = 0x08A3;
                         }
                         break;
                     case 83:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x07D6;
-                            ((TMobile)from).LastTeinture = 0x07D6;
+                            ((PlayerMobile)from).LastTeinture = 0x07D6;
                         }
                         break;
                     case 84:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0582;
-                            ((TMobile)from).LastTeinture = 0x0582;
+                            ((PlayerMobile)from).LastTeinture = 0x0582;
                         }
                         break;
                     case 85:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0585;
-                            ((TMobile)from).LastTeinture = 0x0585;
+                            ((PlayerMobile)from).LastTeinture = 0x0585;
                         }
                         break;
                     case 86:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x058F;
-                            ((TMobile)from).LastTeinture = 0x058F;
+                            ((PlayerMobile)from).LastTeinture = 0x058F;
                         }
                         break;
                     case 87:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0591;
-                            ((TMobile)from).LastTeinture = 0x0591;
+                            ((PlayerMobile)from).LastTeinture = 0x0591;
                         }
                         break;
                     case 88:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0593;
-                            ((TMobile)from).LastTeinture = 0x0593;
+                            ((PlayerMobile)from).LastTeinture = 0x0593;
                         }
                         break;
                     case 89:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0527;
-                            ((TMobile)from).LastTeinture = 0x0527;
+                            ((PlayerMobile)from).LastTeinture = 0x0527;
                         }
                         break;
                     case 90:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0524;
-                            ((TMobile)from).LastTeinture = 0x0524;
+                            ((PlayerMobile)from).LastTeinture = 0x0524;
                         }
                         break;
                     case 91:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x052D;
-                            ((TMobile)from).LastTeinture = 0x052D;
+                            ((PlayerMobile)from).LastTeinture = 0x052D;
                         }
                         break;
                     case 92:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0526;
-                            ((TMobile)from).LastTeinture = 0x0526;
+                            ((PlayerMobile)from).LastTeinture = 0x0526;
                         }
                         break;
                     case 93:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x052F;
-                            ((TMobile)from).LastTeinture = 0x052F;
+                            ((PlayerMobile)from).LastTeinture = 0x052F;
                         }
                         break;
                     case 94:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0530;
-                            ((TMobile)from).LastTeinture = 0x0530;
+                            ((PlayerMobile)from).LastTeinture = 0x0530;
                         }
                         break;
                     case 95:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0531;
-                            ((TMobile)from).LastTeinture = 0x0531;
+                            ((PlayerMobile)from).LastTeinture = 0x0531;
                         }
                         break;
                     case 96:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0533;
-                            ((TMobile)from).LastTeinture = 0x0533;
+                            ((PlayerMobile)from).LastTeinture = 0x0533;
                         }
                         break;
                     case 97:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0536;
-                            ((TMobile)from).LastTeinture = 0x0536;
+                            ((PlayerMobile)from).LastTeinture = 0x0536;
                         }
                         break;
                     case 98:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0538;
-                            ((TMobile)from).LastTeinture = 0x0538;
+                            ((PlayerMobile)from).LastTeinture = 0x0538;
                         }
                         break;
                     case 99:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0539;
-                            ((TMobile)from).LastTeinture = 0x0539;
+                            ((PlayerMobile)from).LastTeinture = 0x0539;
                         }
                         break;
                     case 100:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x053B;
-                            ((TMobile)from).LastTeinture = 0x053B;
+                            ((PlayerMobile)from).LastTeinture = 0x053B;
                         }
                         break;
                     case 101:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x053D;
-                            ((TMobile)from).LastTeinture = 0x053D;
+                            ((PlayerMobile)from).LastTeinture = 0x053D;
                         }
                         break;
                     case 102:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x053F;
-                            ((TMobile)from).LastTeinture = 0x053F;
+                            ((PlayerMobile)from).LastTeinture = 0x053F;
                         }
                         break;
                     case 103:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0541;
-                            ((TMobile)from).LastTeinture = 0x0541;
+                            ((PlayerMobile)from).LastTeinture = 0x0541;
                         }
                         break;
                     case 104:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0542;
-                            ((TMobile)from).LastTeinture = 0x0542;
+                            ((PlayerMobile)from).LastTeinture = 0x0542;
                         }
                         break;
                     case 105:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0543;
-                            ((TMobile)from).LastTeinture = 0x0543;
+                            ((PlayerMobile)from).LastTeinture = 0x0543;
                         }
                         break;
                     case 106:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0545;
-                            ((TMobile)from).LastTeinture = 0x0545;
+                            ((PlayerMobile)from).LastTeinture = 0x0545;
                         }
                         break;
                     case 107:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0548;
-                            ((TMobile)from).LastTeinture = 0x0548;
+                            ((PlayerMobile)from).LastTeinture = 0x0548;
                         }
                         break;
                     case 108:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x054A;
-                            ((TMobile)from).LastTeinture = 0x054A;
+                            ((PlayerMobile)from).LastTeinture = 0x054A;
                         }
                         break;
                     case 109:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0751;
-                            ((TMobile)from).LastTeinture = 0x0751;
+                            ((PlayerMobile)from).LastTeinture = 0x0751;
                         }
                         break;
                     case 110:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0753;
-                            ((TMobile)from).LastTeinture = 0x0753;
+                            ((PlayerMobile)from).LastTeinture = 0x0753;
                         }
                         break;
                     case 111:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0755;
-                            ((TMobile)from).LastTeinture = 0x0755;
+                            ((PlayerMobile)from).LastTeinture = 0x0755;
                         }
                         break;
                     case 112:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0757;
-                            ((TMobile)from).LastTeinture = 0x0757;
+                            ((PlayerMobile)from).LastTeinture = 0x0757;
                         }
                         break;
                     case 113:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0759;
-                            ((TMobile)from).LastTeinture = 0x0759;
+                            ((PlayerMobile)from).LastTeinture = 0x0759;
                         }
                         break;
                     case 114:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x06B7;
-                            ((TMobile)from).LastTeinture = 0x06B7;
+                            ((PlayerMobile)from).LastTeinture = 0x06B7;
                         }
                         break;
                     case 115:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0467;
-                            ((TMobile)from).LastTeinture = 0x0467;
+                            ((PlayerMobile)from).LastTeinture = 0x0467;
                         }
                         break;
                     case 116:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0469;
-                            ((TMobile)from).LastTeinture = 0x0469;
+                            ((PlayerMobile)from).LastTeinture = 0x0469;
                         }
                         break;
                     case 117:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x046B;
-                            ((TMobile)from).LastTeinture = 0x046B;
+                            ((PlayerMobile)from).LastTeinture = 0x046B;
                         }
                         break;
                     case 118:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x046D;
-                            ((TMobile)from).LastTeinture = 0x046D;
+                            ((PlayerMobile)from).LastTeinture = 0x046D;
                         }
                         break;
                     case 119:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x045E;
-                            ((TMobile)from).LastTeinture = 0x045E;
+                            ((PlayerMobile)from).LastTeinture = 0x045E;
                         }
                         break;
                     case 120:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0460;
-                            ((TMobile)from).LastTeinture = 0x0460;
+                            ((PlayerMobile)from).LastTeinture = 0x0460;
                         }
                         break;
                     case 121:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0462;
-                            ((TMobile)from).LastTeinture = 0x0462;
+                            ((PlayerMobile)from).LastTeinture = 0x0462;
                         }
                         break;
                     case 122:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0464;
-                            ((TMobile)from).LastTeinture = 0x0464;
+                            ((PlayerMobile)from).LastTeinture = 0x0464;
                         }
                         break;
                     case 123:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x046A;
-                            ((TMobile)from).LastTeinture = 0x046A;
+                            ((PlayerMobile)from).LastTeinture = 0x046A;
                         }
                         break;
                     case 124:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0903;
-                            ((TMobile)from).LastTeinture = 0x0903;
+                            ((PlayerMobile)from).LastTeinture = 0x0903;
                         }
                         break;
                     case 125:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x096E;
-                            ((TMobile)from).LastTeinture = 0x096E;
+                            ((PlayerMobile)from).LastTeinture = 0x096E;
                         }
                         break;
                     case 126:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0905;
-                            ((TMobile)from).LastTeinture = 0x0905;
+                            ((PlayerMobile)from).LastTeinture = 0x0905;
                         }
                         break;
                     case 127:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0970;
-                            ((TMobile)from).LastTeinture = 0x0970;
+                            ((PlayerMobile)from).LastTeinture = 0x0970;
                         }
                         break;
                     case 128:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             if (m_tub.Redyable)
                                 m_tub.Hue = 0x0972;
-                            ((TMobile)from).LastTeinture = 0x0972;
+                            ((PlayerMobile)from).LastTeinture = 0x0972;
                         }
                         break;
                     default: break;
@@ -1483,12 +1483,12 @@ namespace Server.Gumps
                         from.SendGump(new TeintureGump(from, TeintureTabs.Sable, m_item, m_previewItem, m_gump));
                         break;
                     case 7:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
-                            if (((TMobile)from).LastTeinture != null)
+                            if (((PlayerMobile)from).LastTeinture != null)
                             {
-                                m_item.Hue = ((TMobile)from).LastTeinture;
-                                m_previewItem.Hue = ((TMobile)from).LastTeinture;
+                                m_item.Hue = ((PlayerMobile)from).LastTeinture;
+                                m_previewItem.Hue = ((PlayerMobile)from).LastTeinture;
                                 from.SendGump(m_gump);
                             }
                             else
@@ -1504,1073 +1504,1073 @@ namespace Server.Gumps
                         from.SendGump(m_gump);
                         break;
                     case 9:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04DE;
                             m_previewItem.Hue = 0x04DE;
-                            ((TMobile)from).LastTeinture = 0x04DE;
+                            ((PlayerMobile)from).LastTeinture = 0x04DE;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 10:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04E0;
                             m_previewItem.Hue = 0x04E0;
-                            ((TMobile)from).LastTeinture = 0x04E0;
+                            ((PlayerMobile)from).LastTeinture = 0x04E0;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 11:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04E2;
                             m_previewItem.Hue = 0x04E2;
-                            ((TMobile)from).LastTeinture = 0x04E2;
+                            ((PlayerMobile)from).LastTeinture = 0x04E2;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 12:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04E4;
                             m_previewItem.Hue = 0x04E4;
-                            ((TMobile)from).LastTeinture = 0x04E4;
+                            ((PlayerMobile)from).LastTeinture = 0x04E4;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 13:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04E6;
                             m_previewItem.Hue = 0x04E6;
-                            ((TMobile)from).LastTeinture = 0x04E6;
+                            ((PlayerMobile)from).LastTeinture = 0x04E6;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 14:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04D5;
                             m_previewItem.Hue = 0x04D5;
-                            ((TMobile)from).LastTeinture = 0x04D5;
+                            ((PlayerMobile)from).LastTeinture = 0x04D5;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 15:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04D8;
                             m_previewItem.Hue = 0x04D8;
-                            ((TMobile)from).LastTeinture = 0x04D8;
+                            ((PlayerMobile)from).LastTeinture = 0x04D8;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 16:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04DA;
                             m_previewItem.Hue = 0x04DA;
-                            ((TMobile)from).LastTeinture = 0x04DA;
+                            ((PlayerMobile)from).LastTeinture = 0x04DA;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 17:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04DB;
                             m_previewItem.Hue = 0x04DB;
-                            ((TMobile)from).LastTeinture = 0x04DB;
+                            ((PlayerMobile)from).LastTeinture = 0x04DB;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 18:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04DD;
                             m_previewItem.Hue = 0x04DD;
-                            ((TMobile)from).LastTeinture = 0x04DD;
+                            ((PlayerMobile)from).LastTeinture = 0x04DD;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 19:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04CC;
                             m_previewItem.Hue = 0x04CC;
-                            ((TMobile)from).LastTeinture = 0x04CC;
+                            ((PlayerMobile)from).LastTeinture = 0x04CC;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 20:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04CE;
                             m_previewItem.Hue = 0x04CE;
-                            ((TMobile)from).LastTeinture = 0x04CE;
+                            ((PlayerMobile)from).LastTeinture = 0x04CE;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 21:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04CF;
                             m_previewItem.Hue = 0x04CF;
-                            ((TMobile)from).LastTeinture = 0x04CF;
+                            ((PlayerMobile)from).LastTeinture = 0x04CF;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 22:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04D2;
                             m_previewItem.Hue = 0x04D2;
-                            ((TMobile)from).LastTeinture = 0x04D2;
+                            ((PlayerMobile)from).LastTeinture = 0x04D2;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 23:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04D4;
                             m_previewItem.Hue = 0x04D4;
-                            ((TMobile)from).LastTeinture = 0x04D4;
+                            ((PlayerMobile)from).LastTeinture = 0x04D4;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 24:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04C3;
                             m_previewItem.Hue = 0x04C3;
-                            ((TMobile)from).LastTeinture = 0x04C3;
+                            ((PlayerMobile)from).LastTeinture = 0x04C3;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 26:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04C7;
                             m_previewItem.Hue = 0x04C7;
-                            ((TMobile)from).LastTeinture = 0x04C7;
+                            ((PlayerMobile)from).LastTeinture = 0x04C7;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 27:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04C9;
                             m_previewItem.Hue = 0x04C9;
-                            ((TMobile)from).LastTeinture = 0x04C9;
+                            ((PlayerMobile)from).LastTeinture = 0x04C9;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 28:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04CB;
                             m_previewItem.Hue = 0x04CB;
-                            ((TMobile)from).LastTeinture = 0x04CB;
+                            ((PlayerMobile)from).LastTeinture = 0x04CB;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 29:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x076C;
                             m_previewItem.Hue = 0x076C;
-                            ((TMobile)from).LastTeinture = 0x076C;
+                            ((PlayerMobile)from).LastTeinture = 0x076C;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 30:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x076E;
                             m_previewItem.Hue = 0x076E;
-                            ((TMobile)from).LastTeinture = 0x076E;
+                            ((PlayerMobile)from).LastTeinture = 0x076E;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 31:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0770;
                             m_previewItem.Hue = 0x0770;
-                            ((TMobile)from).LastTeinture = 0x0770;
+                            ((PlayerMobile)from).LastTeinture = 0x0770;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 32:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0772;
                             m_previewItem.Hue = 0x0772;
-                            ((TMobile)from).LastTeinture = 0x0772;
+                            ((PlayerMobile)from).LastTeinture = 0x0772;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 33:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0774;
                             m_previewItem.Hue = 0x0774;
-                            ((TMobile)from).LastTeinture = 0x0774;
+                            ((PlayerMobile)from).LastTeinture = 0x0774;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 34:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0763;
                             m_previewItem.Hue = 0x0763;
-                            ((TMobile)from).LastTeinture = 0x0763;
+                            ((PlayerMobile)from).LastTeinture = 0x0763;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 35:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0766;
                             m_previewItem.Hue = 0x0766;
-                            ((TMobile)from).LastTeinture = 0x0766;
+                            ((PlayerMobile)from).LastTeinture = 0x0766;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 36:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0768;
                             m_previewItem.Hue = 0x0768;
-                            ((TMobile)from).LastTeinture = 0x0768;
+                            ((PlayerMobile)from).LastTeinture = 0x0768;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 37:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0769;
                             m_previewItem.Hue = 0x0769;
-                            ((TMobile)from).LastTeinture = 0x0769;
+                            ((PlayerMobile)from).LastTeinture = 0x0769;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 38:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x076B;
                             m_previewItem.Hue = 0x076B;
-                            ((TMobile)from).LastTeinture = 0x076B;
+                            ((PlayerMobile)from).LastTeinture = 0x076B;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 39:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0967;
                             m_previewItem.Hue = 0x0967;
-                            ((TMobile)from).LastTeinture = 0x0967;
+                            ((PlayerMobile)from).LastTeinture = 0x0967;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 40:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0968;
                             m_previewItem.Hue = 0x0968;
-                            ((TMobile)from).LastTeinture = 0x0968;
+                            ((PlayerMobile)from).LastTeinture = 0x0968;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 41:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0969;
                             m_previewItem.Hue = 0x0969;
-                            ((TMobile)from).LastTeinture = 0x0969;
+                            ((PlayerMobile)from).LastTeinture = 0x0969;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 42:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x096A;
                             m_previewItem.Hue = 0x096A;
-                            ((TMobile)from).LastTeinture = 0x096A;
+                            ((PlayerMobile)from).LastTeinture = 0x096A;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 43:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x096C;
                             m_previewItem.Hue = 0x096C;
-                            ((TMobile)from).LastTeinture = 0x096C;
+                            ((PlayerMobile)from).LastTeinture = 0x096C;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 44:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0;
                             m_previewItem.Hue = 0x0;
-                            ((TMobile)from).LastTeinture = 0x0;
+                            ((PlayerMobile)from).LastTeinture = 0x0;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 45:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x08FD;
                             m_previewItem.Hue = 0x08FD;
-                            ((TMobile)from).LastTeinture = 0x08FD;
+                            ((PlayerMobile)from).LastTeinture = 0x08FD;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 46:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x08FE;
                             m_previewItem.Hue = 0x08FE;
-                            ((TMobile)from).LastTeinture = 0x08FE;
+                            ((PlayerMobile)from).LastTeinture = 0x08FE;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 47:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0900;
                             m_previewItem.Hue = 0x0900;
-                            ((TMobile)from).LastTeinture = 0x0900;
+                            ((PlayerMobile)from).LastTeinture = 0x0900;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 48:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0902;
                             m_previewItem.Hue = 0x0902;
-                            ((TMobile)from).LastTeinture = 0x0902;
+                            ((PlayerMobile)from).LastTeinture = 0x0902;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 49:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x04BA;
                             m_previewItem.Hue = 0x04BA;
-                            ((TMobile)from).LastTeinture = 0x04BA;
+                            ((PlayerMobile)from).LastTeinture = 0x04BA;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 50:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0642;
                             m_previewItem.Hue = 0x0642;
-                            ((TMobile)from).LastTeinture = 0x0642;
+                            ((PlayerMobile)from).LastTeinture = 0x0642;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 51:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0646;
                             m_previewItem.Hue = 0x0646;
-                            ((TMobile)from).LastTeinture = 0x0646;
+                            ((PlayerMobile)from).LastTeinture = 0x0646;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 52:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0647;
                             m_previewItem.Hue = 0x0647;
-                            ((TMobile)from).LastTeinture = 0x0647;
+                            ((PlayerMobile)from).LastTeinture = 0x0647;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 53:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0649;
                             m_previewItem.Hue = 0x0649;
-                            ((TMobile)from).LastTeinture = 0x0649;
+                            ((PlayerMobile)from).LastTeinture = 0x0649;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 54:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0653;
                             m_previewItem.Hue = 0x0653;
-                            ((TMobile)from).LastTeinture = 0x0653;
+                            ((PlayerMobile)from).LastTeinture = 0x0653;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 55:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0655;
                             m_previewItem.Hue = 0x0655;
-                            ((TMobile)from).LastTeinture = 0x0655;
+                            ((PlayerMobile)from).LastTeinture = 0x0655;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 56:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0656;
                             m_previewItem.Hue = 0x0656;
-                            ((TMobile)from).LastTeinture = 0x0656;
+                            ((PlayerMobile)from).LastTeinture = 0x0656;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 57:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0659;
                             m_previewItem.Hue = 0x0659;
-                            ((TMobile)from).LastTeinture = 0x0659;
+                            ((PlayerMobile)from).LastTeinture = 0x0659;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 58:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x065B;
                             m_previewItem.Hue = 0x065B;
-                            ((TMobile)from).LastTeinture = 0x065B;
+                            ((PlayerMobile)from).LastTeinture = 0x065B;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 59:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x065C;
                             m_previewItem.Hue = 0x065C;
-                            ((TMobile)from).LastTeinture = 0x065C;
+                            ((PlayerMobile)from).LastTeinture = 0x065C;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 60:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x065E;
                             m_previewItem.Hue = 0x065E;
-                            ((TMobile)from).LastTeinture = 0x065E;
+                            ((PlayerMobile)from).LastTeinture = 0x065E;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 61:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0660;
                             m_previewItem.Hue = 0x0660;
-                            ((TMobile)from).LastTeinture = 0x0660;
+                            ((PlayerMobile)from).LastTeinture = 0x0660;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 62:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0662;
                             m_previewItem.Hue = 0x0662;
-                            ((TMobile)from).LastTeinture = 0x0662;
+                            ((PlayerMobile)from).LastTeinture = 0x0662;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 63:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0664;
                             m_previewItem.Hue = 0x0664;
-                            ((TMobile)from).LastTeinture = 0x0664;
+                            ((PlayerMobile)from).LastTeinture = 0x0664;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 64:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0665;
                             m_previewItem.Hue = 0x0665;
-                            ((TMobile)from).LastTeinture = 0x0665;
+                            ((PlayerMobile)from).LastTeinture = 0x0665;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 65:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0666;
                             m_previewItem.Hue = 0x0666;
-                            ((TMobile)from).LastTeinture = 0x0666;
+                            ((PlayerMobile)from).LastTeinture = 0x0666;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 66:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0668;
                             m_previewItem.Hue = 0x0668;
-                            ((TMobile)from).LastTeinture = 0x0668;
+                            ((PlayerMobile)from).LastTeinture = 0x0668;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 67:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x066B;
                             m_previewItem.Hue = 0x066B;
-                            ((TMobile)from).LastTeinture = 0x066B;
+                            ((PlayerMobile)from).LastTeinture = 0x066B;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 68:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x066D;
                             m_previewItem.Hue = 0x066D;
-                            ((TMobile)from).LastTeinture = 0x066D;
+                            ((PlayerMobile)from).LastTeinture = 0x066D;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 69:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0594;
                             m_previewItem.Hue = 0x0594;
-                            ((TMobile)from).LastTeinture = 0x0594;
+                            ((PlayerMobile)from).LastTeinture = 0x0594;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 70:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0595;
                             m_previewItem.Hue = 0x0595;
-                            ((TMobile)from).LastTeinture = 0x0595;
+                            ((PlayerMobile)from).LastTeinture = 0x0595;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 71:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0596;
                             m_previewItem.Hue = 0x0596;
-                            ((TMobile)from).LastTeinture = 0x0596;
+                            ((PlayerMobile)from).LastTeinture = 0x0596;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 72:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0599;
                             m_previewItem.Hue = 0x0599;
-                            ((TMobile)from).LastTeinture = 0x0599;
+                            ((PlayerMobile)from).LastTeinture = 0x0599;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 73:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x059B;
                             m_previewItem.Hue = 0x059B;
-                            ((TMobile)from).LastTeinture = 0x059B;
+                            ((PlayerMobile)from).LastTeinture = 0x059B;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 74:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x059D;
                             m_previewItem.Hue = 0x059D;
-                            ((TMobile)from).LastTeinture = 0x059D;
+                            ((PlayerMobile)from).LastTeinture = 0x059D;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 75:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x059E;
                             m_previewItem.Hue = 0x059E;
-                            ((TMobile)from).LastTeinture = 0x059E;
+                            ((PlayerMobile)from).LastTeinture = 0x059E;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 76:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x05A0;
                             m_previewItem.Hue = 0x05A0;
-                            ((TMobile)from).LastTeinture = 0x05A0;
+                            ((PlayerMobile)from).LastTeinture = 0x05A0;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 77:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x05A2;
                             m_previewItem.Hue = 0x05A2;
-                            ((TMobile)from).LastTeinture = 0x05A2;
+                            ((PlayerMobile)from).LastTeinture = 0x05A2;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 78:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x05A5;
                             m_previewItem.Hue = 0x05A5;
-                            ((TMobile)from).LastTeinture = 0x05A5;
+                            ((PlayerMobile)from).LastTeinture = 0x05A5;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 79:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x089F;
                             m_previewItem.Hue = 0x089F;
-                            ((TMobile)from).LastTeinture = 0x089F;
+                            ((PlayerMobile)from).LastTeinture = 0x089F;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 80:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x08A0;
                             m_previewItem.Hue = 0x08A0;
-                            ((TMobile)from).LastTeinture = 0x08A0;
+                            ((PlayerMobile)from).LastTeinture = 0x08A0;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 81:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x08A1;
                             m_previewItem.Hue = 0x08A1;
-                            ((TMobile)from).LastTeinture = 0x08A1;
+                            ((PlayerMobile)from).LastTeinture = 0x08A1;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 82:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x08A3;
                             m_previewItem.Hue = 0x08A3;
-                            ((TMobile)from).LastTeinture = 0x08A3;
+                            ((PlayerMobile)from).LastTeinture = 0x08A3;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 83:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x07D6;
                             m_previewItem.Hue = 0x07D6;
-                            ((TMobile)from).LastTeinture = 0x07D6;
+                            ((PlayerMobile)from).LastTeinture = 0x07D6;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 84:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0582;
                             m_previewItem.Hue = 0x0582;
-                            ((TMobile)from).LastTeinture = 0x0582;
+                            ((PlayerMobile)from).LastTeinture = 0x0582;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 85:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0585;
                             m_previewItem.Hue = 0x0585;
-                            ((TMobile)from).LastTeinture = 0x0585;
+                            ((PlayerMobile)from).LastTeinture = 0x0585;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 86:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x058F;
                             m_previewItem.Hue = 0x058F;
-                            ((TMobile)from).LastTeinture = 0x058F;
+                            ((PlayerMobile)from).LastTeinture = 0x058F;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 87:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0591;
                             m_previewItem.Hue = 0x0591;
-                            ((TMobile)from).LastTeinture = 0x0591;
+                            ((PlayerMobile)from).LastTeinture = 0x0591;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 88:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0593;
                             m_previewItem.Hue = 0x0593;
-                            ((TMobile)from).LastTeinture = 0x0593;
+                            ((PlayerMobile)from).LastTeinture = 0x0593;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 89:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0527;
                             m_previewItem.Hue = 0x0527;
-                            ((TMobile)from).LastTeinture = 0x0527;
+                            ((PlayerMobile)from).LastTeinture = 0x0527;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 90:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0524;
                             m_previewItem.Hue = 0x0524;
-                            ((TMobile)from).LastTeinture = 0x0524;
+                            ((PlayerMobile)from).LastTeinture = 0x0524;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 91:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x052D;
                             m_previewItem.Hue = 0x052D;
-                            ((TMobile)from).LastTeinture = 0x052D;
+                            ((PlayerMobile)from).LastTeinture = 0x052D;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 92:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0526;
                             m_previewItem.Hue = 0x0526;
-                            ((TMobile)from).LastTeinture = 0x0526;
+                            ((PlayerMobile)from).LastTeinture = 0x0526;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 93:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x052F;
                             m_previewItem.Hue = 0x052F;
-                            ((TMobile)from).LastTeinture = 0x052F;
+                            ((PlayerMobile)from).LastTeinture = 0x052F;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 94:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0530;
                             m_previewItem.Hue = 0x0530;
-                            ((TMobile)from).LastTeinture = 0x0530;
+                            ((PlayerMobile)from).LastTeinture = 0x0530;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 95:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0531;
                             m_previewItem.Hue = 0x0531;
-                            ((TMobile)from).LastTeinture = 0x0531;
+                            ((PlayerMobile)from).LastTeinture = 0x0531;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 96:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0533;
                             m_previewItem.Hue = 0x0533;
-                            ((TMobile)from).LastTeinture = 0x0533;
+                            ((PlayerMobile)from).LastTeinture = 0x0533;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 97:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0536;
                             m_previewItem.Hue = 0x0536;
-                            ((TMobile)from).LastTeinture = 0x0536;
+                            ((PlayerMobile)from).LastTeinture = 0x0536;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 98:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0538;
                             m_previewItem.Hue = 0x0538;
-                            ((TMobile)from).LastTeinture = 0x0538;
+                            ((PlayerMobile)from).LastTeinture = 0x0538;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 99:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0539;
                             m_previewItem.Hue = 0x0539;
-                            ((TMobile)from).LastTeinture = 0x0539;
+                            ((PlayerMobile)from).LastTeinture = 0x0539;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 100:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x053B;
                             m_previewItem.Hue = 0x053B;
-                            ((TMobile)from).LastTeinture = 0x053B;
+                            ((PlayerMobile)from).LastTeinture = 0x053B;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 101:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x053D;
                             m_previewItem.Hue = 0x053D;
-                            ((TMobile)from).LastTeinture = 0x053D;
+                            ((PlayerMobile)from).LastTeinture = 0x053D;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 102:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x053F;
                             m_previewItem.Hue = 0x053F;
-                            ((TMobile)from).LastTeinture = 0x053F;
+                            ((PlayerMobile)from).LastTeinture = 0x053F;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 103:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0541;
                             m_previewItem.Hue = 0x0541;
-                            ((TMobile)from).LastTeinture = 0x0541;
+                            ((PlayerMobile)from).LastTeinture = 0x0541;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 104:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0542;
                             m_previewItem.Hue = 0x0542;
-                            ((TMobile)from).LastTeinture = 0x0542;
+                            ((PlayerMobile)from).LastTeinture = 0x0542;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 105:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0543;
                             m_previewItem.Hue = 0x0543;
-                            ((TMobile)from).LastTeinture = 0x0543;
+                            ((PlayerMobile)from).LastTeinture = 0x0543;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 106:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0545;
                             m_previewItem.Hue = 0x0545;
-                            ((TMobile)from).LastTeinture = 0x0545;
+                            ((PlayerMobile)from).LastTeinture = 0x0545;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 107:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0548;
                             m_previewItem.Hue = 0x0548;
-                            ((TMobile)from).LastTeinture = 0x0548;
+                            ((PlayerMobile)from).LastTeinture = 0x0548;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 108:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x054A;
                             m_previewItem.Hue = 0x054A;
-                            ((TMobile)from).LastTeinture = 0x054A;
+                            ((PlayerMobile)from).LastTeinture = 0x054A;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 109:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0751;
                             m_previewItem.Hue = 0x0751;
-                            ((TMobile)from).LastTeinture = 0x0751;
+                            ((PlayerMobile)from).LastTeinture = 0x0751;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 110:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0753;
                             m_previewItem.Hue = 0x0753;
-                            ((TMobile)from).LastTeinture = 0x0753;
+                            ((PlayerMobile)from).LastTeinture = 0x0753;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 111:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0755;
                             m_previewItem.Hue = 0x0755;
-                            ((TMobile)from).LastTeinture = 0x0755;
+                            ((PlayerMobile)from).LastTeinture = 0x0755;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 112:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0757;
                             m_previewItem.Hue = 0x0757;
-                            ((TMobile)from).LastTeinture = 0x0757;
+                            ((PlayerMobile)from).LastTeinture = 0x0757;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 113:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0759;
                             m_previewItem.Hue = 0x0759;
-                            ((TMobile)from).LastTeinture = 0x0759;
+                            ((PlayerMobile)from).LastTeinture = 0x0759;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 114:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x06B7;
                             m_previewItem.Hue = 0x06B7;
-                            ((TMobile)from).LastTeinture = 0x06B7;
+                            ((PlayerMobile)from).LastTeinture = 0x06B7;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 115:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0467;
                             m_previewItem.Hue = 0x0467;
-                            ((TMobile)from).LastTeinture = 0x0467;
+                            ((PlayerMobile)from).LastTeinture = 0x0467;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 116:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0469;
                             m_previewItem.Hue = 0x0469;
-                            ((TMobile)from).LastTeinture = 0x0469;
+                            ((PlayerMobile)from).LastTeinture = 0x0469;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 117:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x046B;
                             m_previewItem.Hue = 0x046B;
-                            ((TMobile)from).LastTeinture = 0x046B;
+                            ((PlayerMobile)from).LastTeinture = 0x046B;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 118:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x046D;
                             m_previewItem.Hue = 0x046D;
-                            ((TMobile)from).LastTeinture = 0x046D;
+                            ((PlayerMobile)from).LastTeinture = 0x046D;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 119:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x045E;
                             m_previewItem.Hue = 0x045E;
-                            ((TMobile)from).LastTeinture = 0x045E;
+                            ((PlayerMobile)from).LastTeinture = 0x045E;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 120:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0460;
                             m_previewItem.Hue = 0x0460;
-                            ((TMobile)from).LastTeinture = 0x0460;
+                            ((PlayerMobile)from).LastTeinture = 0x0460;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 121:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0462;
                             m_previewItem.Hue = 0x0462;
-                            ((TMobile)from).LastTeinture = 0x0462;
+                            ((PlayerMobile)from).LastTeinture = 0x0462;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 122:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0464;
                             m_previewItem.Hue = 0x0464;
-                            ((TMobile)from).LastTeinture = 0x0464;
+                            ((PlayerMobile)from).LastTeinture = 0x0464;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 123:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x046A;
                             m_previewItem.Hue = 0x046A;
-                            ((TMobile)from).LastTeinture = 0x046A;
+                            ((PlayerMobile)from).LastTeinture = 0x046A;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 124:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0903;
                             m_previewItem.Hue = 0x0903;
-                            ((TMobile)from).LastTeinture = 0x0903;
+                            ((PlayerMobile)from).LastTeinture = 0x0903;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 125:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x096E;
                             m_previewItem.Hue = 0x096E;
-                            ((TMobile)from).LastTeinture = 0x096E;
+                            ((PlayerMobile)from).LastTeinture = 0x096E;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 126:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0905;
                             m_previewItem.Hue = 0x0905;
-                            ((TMobile)from).LastTeinture = 0x0905;
+                            ((PlayerMobile)from).LastTeinture = 0x0905;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 127:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0970;
                             m_previewItem.Hue = 0x0970;
-                            ((TMobile)from).LastTeinture = 0x0970;
+                            ((PlayerMobile)from).LastTeinture = 0x0970;
                             from.SendGump(m_gump);
                         }
                         break;
                     case 128:
-                        if (from is TMobile)
+                        if (from is PlayerMobile)
                         {
                             m_item.Hue = 0x0972;
                             m_previewItem.Hue = 0x0972;
-                            ((TMobile)from).LastTeinture = 0x0972;
+                            ((PlayerMobile)from).LastTeinture = 0x0972;
                             from.SendGump(m_gump);
                         }
                         break;

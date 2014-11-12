@@ -17,10 +17,10 @@ namespace Server
         {
             if (e.Mobile.Player)
             {
-                if (e.Mobile is TMobile)
+                if (e.Mobile is PlayerMobile)
                 {
-                    //if (((TMobile)e.Mobile).NextExp < DateTime.Now)
-                        ((TMobile)e.Mobile).Experience.NextExp = DateTime.Now.AddMinutes(10);
+                    //if (((PlayerMobile)e.Mobile).NextExp < DateTime.Now)
+                        ((PlayerMobile)e.Mobile).Experience.NextExp = DateTime.Now.AddMinutes(10);
                 }
             }
         }

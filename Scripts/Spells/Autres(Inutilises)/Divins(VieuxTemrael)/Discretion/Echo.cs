@@ -147,8 +147,8 @@ namespace Server.Spells
                     /*if (mobile is BaseCreature)
                         ((BaseCreature)mobile).m_EchoDelayTimer = null;
 
-                    if (mobile is TMobile)
-                        ((TMobile)mobile).m_EchoDelayTimer = null;*/
+                    if (mobile is PlayerMobile)
+                        ((PlayerMobile)mobile).m_EchoDelayTimer = null;*/
 
                     mobile.RevealingAction();
 

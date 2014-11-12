@@ -1364,7 +1364,7 @@ namespace Server.Mobiles
 						OpenBackpack( from );
 					else
 					{
-						IPooledEnumerable mobiles = e.Mobile.GetMobilesInRange( 2 );
+						IPooledEnumerable mobiles = e.Mobile.GePlayerMobilesInRange( 2 );
 						
 						foreach ( Mobile m in mobiles )
 							if ( m is PlayerVendor && m.CanSee( e.Mobile ) && m.InLOS( e.Mobile ) )

@@ -195,9 +195,9 @@ namespace Server.Spells
 
 						//bc.Skills.Concentration = m_From.Skills.Concentration;
 
-                        if (m_From is TMobile)
+                        if (m_From is PlayerMobile)
                         {
-                            TMobile tmob = (TMobile)m_From;
+                            PlayerMobile tmob = (PlayerMobile)m_From;
 
                             double duration = (2 * m_From.Skills.Necromancie.Fixed) / 5;
 
@@ -206,9 +206,9 @@ namespace Server.Spells
                                 m_From.FixedParticles(0x3728, 1, 10, 9910, EffectLayer.Head);
                                 bc.PlaySound(bc.GetIdleSound());
                                 SummonFamiliarSpell.Table[m_From] = bc;
-                                /*if( m_From is TMobile )
+                                /*if( m_From is PlayerMobile )
                                     CombatManager.get().ConfigureCreature(bc, 
-                                        Math.Max(1, ((TMobile)m_From).Niveau - 3 ));*/
+                                        Math.Max(1, ((PlayerMobile)m_From).Niveau - 3 ));*/
 
                                 //Console.WriteLine("{0} damage {1}:{2} speed:{3}", bc.Name, bc.DamageMin, bc.DamageMax, bc.AttackSpeed);
                             }

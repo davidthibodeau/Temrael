@@ -24,9 +24,9 @@ namespace scripts.Quests
 
         public static void EventSink_GuildGumpRequest(GuildGumpRequestArgs e)
         {
-            if (e.Mobile is TMobile)
+            if (e.Mobile is PlayerMobile)
             {
-                TMobile requester = (TMobile)e.Mobile;
+                PlayerMobile requester = (PlayerMobile)e.Mobile;
                 // etc. Call your own Gump here, etc.   
                 if (!requester.HasGump(typeof(FicheRaceGump)))
                 {

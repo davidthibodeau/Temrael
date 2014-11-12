@@ -13,9 +13,9 @@ namespace Server.Gumps
 {
     public class FicheStatutsGump : GumpTemrael
     {
-        private TMobile m_from;
+        private PlayerMobile m_from;
 
-        public FicheStatutsGump(TMobile from)
+        public FicheStatutsGump(PlayerMobile from)
             : base("Statuts", 560, 622)
         {
             m_from = from;
@@ -187,7 +187,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;

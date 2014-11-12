@@ -66,9 +66,9 @@ namespace Server.Spells
             }*/
             else if (m_Name == null || m_Name == "")
             {
-                if (Caster is TMobile)
+                if (Caster is PlayerMobile)
                 {
-                    //((TMobile)Caster).Incognito = true;
+                    //((PlayerMobile)Caster).Incognito = true;
                 }
                 else
                 {
@@ -114,7 +114,7 @@ namespace Server.Spells
             {
                 Caster.SendMessage("Vous ne pouvez faire ce sort en étant transformé.");
             }
-            /*else if (Caster is TMobile && ((TMobile)Caster).Disguised)
+            /*else if (Caster is PlayerMobile && ((PlayerMobile)Caster).Disguised)
             {
                 Caster.SendMessage("Vous ne pouvez faire ce sort en étant déguisé.");
             }*/
@@ -132,7 +132,7 @@ namespace Server.Spells
 				{
 					Caster.NameMod = m_Name;
                     
-					/*TMobile pm = Caster as TMobile;
+					/*PlayerMobile pm = Caster as PlayerMobile;
 
 					if ( pm != null )
 					{
@@ -230,11 +230,11 @@ namespace Server.Spells
 
                     /*BaseArmor.ValidateMobile(m_Owner);
 
-                    if (m_Owner is TMobile)
+                    if (m_Owner is PlayerMobile)
                     {
-                        ((TMobile)m_Owner).SetHairMods(-1, -1);
+                        ((PlayerMobile)m_Owner).SetHairMods(-1, -1);
 
-                        ((TMobile)m_Owner).CheckRaceGump();
+                        ((PlayerMobile)m_Owner).CheckRaceGump();
                     }*/
 				}
 			}

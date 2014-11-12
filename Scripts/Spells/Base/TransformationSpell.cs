@@ -73,7 +73,7 @@ namespace Server.Spells
             {
                 caster.SendMessage("Vous ne pouvez vous transformer en étant sous la forme d'une chauve-souris.");
             }
-            else if (caster is TMobile && ((TMobile)caster).Disguised)
+            else if (caster is PlayerMobile && ((PlayerMobile)caster).Disguised)
             {
                 caster.SendMessage("Vous ne pouvez faire ce sort en étant déguisé.");
             }*/
@@ -180,8 +180,8 @@ namespace Server.Spells
 
 			context.Timer.Stop();
 
-            if (m is TMobile)
-                ((TMobile)m).CheckRaceGump();
+            if (m is PlayerMobile)
+                ((PlayerMobile)m).CheckRaceGump();
 
 			//if ( context.Type == typeof( HorrificBeastSpell ) )
 			//	m.Delta( MobileDelta.WeaponDamage );

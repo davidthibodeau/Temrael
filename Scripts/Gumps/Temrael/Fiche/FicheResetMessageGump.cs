@@ -12,9 +12,9 @@ namespace Server.Gumps
 {
     public class FicheResetMessageGump : GumpTemrael
     {
-        private TMobile m_from;
+        private PlayerMobile m_from;
 
-        public FicheResetMessageGump(TMobile from)
+        public FicheResetMessageGump(PlayerMobile from)
             : base("Reset", 340, 160)
         {
             m_from = from;
@@ -38,7 +38,7 @@ namespace Server.Gumps
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            TMobile from = (TMobile)sender.Mobile;
+            PlayerMobile from = (PlayerMobile)sender.Mobile;
 
             if (from.Deleted || !from.Alive)
                 return;

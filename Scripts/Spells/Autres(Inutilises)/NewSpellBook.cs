@@ -22,10 +22,10 @@ namespace Server.Items
 
       private class QSLEntry : ContextMenuEntry
       {
-          private TMobile m_from;
+          private PlayerMobile m_from;
           private NewSpellbook m_book;
 
-          public QSLEntry(TMobile from, NewSpellbook book)
+          public QSLEntry(PlayerMobile from, NewSpellbook book)
               : base(6268, -1)
           {
               m_from = from;
@@ -47,8 +47,8 @@ namespace Server.Items
 
           if (Parent == m_from || (pack != null && Parent == pack))
           {
-              if (m_from is TMobile)
-                  list.Add(new QSLEntry(((TMobile)m_from), this));
+              if (m_from is PlayerMobile)
+                  list.Add(new QSLEntry(((PlayerMobile)m_from), this));
           }
       }
 
@@ -136,9 +136,9 @@ namespace Server.Items
 
        public override bool HasSpell(int spellID)
        {
-           if (Parent is TMobile)
+           if (Parent is PlayerMobile)
            {
-               TMobile from = Parent as TMobile;
+               PlayerMobile from = Parent as PlayerMobile;
                if (from.AccessLevel > AccessLevel.Player)
                    return true;
            }

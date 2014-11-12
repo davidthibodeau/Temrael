@@ -9,10 +9,10 @@ namespace Server.Gumps
 {
     public class BotaniqueGump : Gump
     {
-        private TMobile m_From;
+        private PlayerMobile m_From;
         private BaseBowl m_Bowl;
 
-        public BotaniqueGump(TMobile from, BaseBowl bowl) : base(0, 0)
+        public BotaniqueGump(PlayerMobile from, BaseBowl bowl) : base(0, 0)
         {
             m_From = from;
             m_Bowl = bowl;
@@ -176,7 +176,7 @@ namespace Server.Gumps
                     else
                     {
                         from.SendMessage("Il est trop tôt pour cueillir la fleur.");
-                        from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                        from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                     }
                     break;
                 case 3:
@@ -190,12 +190,12 @@ namespace Server.Gumps
                     //Graines
                 case 5:
                     m_Bowl.Plant.ExtractSeeds(from);
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                     break;
                     //Fleurs
                 case 6:
                     m_Bowl.Plant.ExtractReagent(from);
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                     break;
                 case 7:
                     from.Target = new PlantPotionTarget(m_Bowl);
@@ -222,12 +222,12 @@ namespace Server.Gumps
                     m_Bowl.Plant.Poison = PlantPoison.Empoisonnee;
                     ((Item)targeted).Delete();
                     from.SendMessage("Vous empoisonnez la plante !");
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                 }
                 else
                 {
                     from.SendMessage("Vous devez choisir une potion de poison !");
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                 }
             }
         }
@@ -250,12 +250,12 @@ namespace Server.Gumps
                     ((BaseBeverage)targeted).Quantity -= 1;
                     m_Bowl.Plant.Hydrate(1);
                     from.SendMessage("Vous utilisez le beverage pour donner de l'eau a la plante.");
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                 }
                 else
                 {
                     from.SendMessage("Vous devez choisir une boisson !");
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                 }
             }
         }
@@ -278,12 +278,12 @@ namespace Server.Gumps
                     ((Item)targeted).Delete();
                     m_Bowl.Plant.Poison = PlantPoison.None;
                     from.SendMessage("Vous soignez la plante !");
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                 }
                 else
                 {
                     from.SendMessage("Vous devez pointez une potion de soins !");
-                    from.SendGump(new BotaniqueGump((TMobile)from, m_Bowl));
+                    from.SendGump(new BotaniqueGump((PlayerMobile)from, m_Bowl));
                 }
             }
         }
@@ -321,10 +321,10 @@ namespace Server.Gumps
 
         public class ConfirmTakingSeedGump : Gump
         {
-            private TMobile m_From;
+            private PlayerMobile m_From;
             private BaseBowl m_Bowl;
 
-            public ConfirmTakingSeedGump(TMobile from, BaseBowl bowl) : base(0, 0)
+            public ConfirmTakingSeedGump(PlayerMobile from, BaseBowl bowl) : base(0, 0)
             {
                 m_From = from;
                 m_Bowl = bowl;
@@ -395,10 +395,10 @@ namespace Server.Gumps
 
         public class ConfirmEmptyGump : Gump
         {
-            private TMobile m_From;
+            private PlayerMobile m_From;
             private BaseBowl m_Bowl;
 
-            public ConfirmEmptyGump(TMobile from, BaseBowl bowl) : base(0, 0)
+            public ConfirmEmptyGump(PlayerMobile from, BaseBowl bowl) : base(0, 0)
             {
                 m_From = from;
                 m_Bowl = bowl;

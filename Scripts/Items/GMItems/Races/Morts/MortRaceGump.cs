@@ -33,7 +33,7 @@ namespace Server.Items
 
         public override void OnAdded(IEntity parent)
         {
-            TMobile mob = parent as TMobile;
+            PlayerMobile mob = parent as PlayerMobile;
 
             if (mob != null)
             {

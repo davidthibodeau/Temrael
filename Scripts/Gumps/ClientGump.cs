@@ -193,9 +193,9 @@ namespace Server.Gumps
                     {
                         Resend(from, info);
 
-                        /*if (from is TMobile && focus is TMobile && from.AccessLevel > AccessLevel.GameMaster && focus.AccessLevel == AccessLevel.Player)
+                        /*if (from is PlayerMobile && focus is PlayerMobile && from.AccessLevel > AccessLevel.GameMaster && focus.AccessLevel == AccessLevel.Player)
                         {
-                            from.SendGump(new CotationVoirGump((TMobile)from, (TMobile)focus));
+                            from.SendGump(new CotationVoirGump((PlayerMobile)from, (PlayerMobile)focus));
                         }*/
 
                         break;

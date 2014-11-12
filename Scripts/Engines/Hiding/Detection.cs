@@ -43,19 +43,19 @@ namespace Server.Engines.Hiding
 
 		private static void EventSink_Connected( ConnectedEventArgs e )
 		{
-            ScriptMobile sm = e.Mobile as ScriptMobile;
+            ScripPlayerMobile sm = e.Mobile as ScripPlayerMobile;
 
             sm.ActiverTestsDetection();
 		}
 
 		private static void EventSink_Disconnected( DisconnectedEventArgs e )
 		{
-            ScriptMobile sm = e.Mobile as ScriptMobile;
+            ScripPlayerMobile sm = e.Mobile as ScripPlayerMobile;
 
             sm.Detection.ResetAlentours();
             foreach (NetState state in NetState.Instances)
             {
-                ScriptMobile m = state.Mobile as ScriptMobile;
+                ScripPlayerMobile m = state.Mobile as ScripPlayerMobile;
                 if (m != null)
                     m.Detection.RetirerJoueurDesAlentours(sm);
             }
@@ -69,14 +69,14 @@ namespace Server.Engines.Hiding
             mobile = m;
             alentours = new Dictionary<Mobile, DetectionStatus>();
         }
-        // TODO: En ce moment, rien n'est sauve dans les saves. Si ca change. ScriptMobile doit etre modifie.
+        // TODO: En ce moment, rien n'est sauve dans les saves. Si ca change. ScripPlayerMobile doit etre modifie.
 
         public void DetecterAlentours()
         {
-            IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
+            IPooledEnumerable<Mobile> eable = mobile.GePlayerMobilesInRange(5);
             foreach (Mobile mob in eable)
             {
-                ScriptMobile m = mob as ScriptMobile;
+                ScripPlayerMobile m = mob as ScripPlayerMobile;
                 if (!m.Hidden || !mobile.InLOS(m))
                     continue;
                 double chance = 0;
@@ -117,7 +117,7 @@ namespace Server.Engines.Hiding
 
         public void TesterPresenceAlentours()
         {
-            IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
+            IPooledEnumerable<Mobile> eable = mobile.GePlayerMobilesInRange(5);
             foreach (Mobile m in eable)
             {
                 if (!m.InLOS(mobile))

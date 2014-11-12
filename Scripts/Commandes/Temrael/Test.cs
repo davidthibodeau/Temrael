@@ -46,7 +46,7 @@ namespace Server.Scripts.Commands
         [Description("Test de scripts")]
         public static void Test_OnCommand(CommandEventArgs e)
         {
-            TMobile from = (TMobile) e.Mobile;
+            PlayerMobile from = (PlayerMobile) e.Mobile;
 
             Equitation.CheckEquitation(from, EquitationType.BeingAttacked);
 
@@ -59,14 +59,14 @@ namespace Server.Scripts.Commands
 
             //from.SendMessage(XP.MakeXPparNiveau126().ToString());
 
-            //from.SendGump(new MortDefinitiveGump((TMobile)from));
+            //from.SendGump(new MortDefinitiveGump((PlayerMobile)from));
 
-            //from.SendGump(new MortVivantGump((TMobile)from));
+            //from.SendGump(new MortVivantGump((PlayerMobile)from));
 
-            //if (from is TMobile)
-            //    from.SendGump(new CreationGump(((TMobile)from), CreationTabs.Race, new List<Server.Gumps.CreationGump.PaperPreviewItem>(), Races.Aucun, ClasseArbre.Aucun, new Server.Gumps.CreationGump.CreationStatsPreview(), Metier.Aucun, Server.Gumps.CreationGump.DestinationsDepart.Aucune, 0, ClasseSociale.Aucune, Metier.Aucun));
+            //if (from is PlayerMobile)
+            //    from.SendGump(new CreationGump(((PlayerMobile)from), CreationTabs.Race, new List<Server.Gumps.CreationGump.PaperPreviewItem>(), Races.Aucun, ClasseArbre.Aucun, new Server.Gumps.CreationGump.CreationStatsPreview(), Metier.Aucun, Server.Gumps.CreationGump.DestinationsDepart.Aucune, 0, ClasseSociale.Aucune, Metier.Aucun));
 
-            //from.SendGump(new CoteGump(((TMobile)from), ((TMobile)from)));
+            //from.SendGump(new CoteGump(((PlayerMobile)from), ((PlayerMobile)from)));
 
             //from.SendGump(new CompetenceGump(from, Server.Gumps.CompetenceGump.CompDomaines.Aucun, false));
         }

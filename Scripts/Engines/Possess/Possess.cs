@@ -426,7 +426,7 @@ namespace Server.Engines.Possess
             {
                 try
                 {
-                    TMobile from = from_mob as TMobile;
+                    PlayerMobile from = from_mob as PlayerMobile;
                     if (o is Mobile)
                     {
                         Mobile m = o as Mobile;
@@ -460,7 +460,7 @@ namespace Server.Engines.Possess
             {
                 try
                 {
-                    TMobile from = from_mob as TMobile;
+                    PlayerMobile from = from_mob as PlayerMobile;
                     Mobile origo = o as Mobile;
 
                     if (from == null)
@@ -502,7 +502,7 @@ namespace Server.Engines.Possess
             {
                 try
                 {
-                    TMobile from = from_mob as TMobile;
+                    PlayerMobile from = from_mob as PlayerMobile;
                     Mobile origo = o as Mobile;
 
                     if (from == null)
@@ -624,7 +624,7 @@ namespace Server.Engines.Possess
             try
             {
 
-                TMobile from = e.Mobile as TMobile;
+                PlayerMobile from = e.Mobile as PlayerMobile;
 
                 from.Possess.UnpossessMobile();
             }
@@ -640,7 +640,7 @@ namespace Server.Engines.Possess
         {
             try
             {
-                TMobile from = e.Mobile as TMobile;
+                PlayerMobile from = e.Mobile as PlayerMobile;
 
                 if (from == null)
                 {
@@ -648,7 +648,7 @@ namespace Server.Engines.Possess
                     return;
                 }
 
-                TMobile copy = new TMobile();
+                PlayerMobile copy = new PlayerMobile();
 
                 CopySkills(from, copy);
                 CopyProps(from, copy);
