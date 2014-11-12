@@ -201,13 +201,29 @@ namespace Server.Engines.PartySystem
 			if ( !force && ourFaction != null && theirFaction != null && ourFaction != theirFaction )
 				return;
 
-			//  : joined the party.
-			SendToAll( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, "", AffixType.Prepend | AffixType.System, "", "" ) );
+            //  : joined the party.
+            //SendToAll( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, , AffixType.Prepend | AffixType.System, "", "" ) );
+            // Replaces the SendToAll with a specific name added to it. Need to test it.
+            #region SendToAll
+            for (int i = 0; i < m_Members.Count; ++i)
+                m_Members[i].Mobile.Send(new MessageLocalizedAffix(
+                    Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, from.GetNameUseBy(m_Members[i].Mobile),
+                    AffixType.Prepend | AffixType.System, "", ""));
 
-			from.SendLocalizedMessage( 1005445 ); // You have been added to the party.
+            for (int i = 0; i < m_Listeners.Count; ++i)
+            {
+                Mobile mob = m_Listeners[i];
 
-			m_Candidates.Remove( from );
-			Add( from );
+                if (mob.Party != this)
+                    mob.Send(new MessageLocalizedAffix(Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, from.GetNameUseBy(mob),
+                        AffixType.Prepend | AffixType.System, "", ""));
+            }
+            #endregion
+
+            from.SendLocalizedMessage(1005445); // You have been added to the party.
+
+            m_Candidates.Remove(from);
+            Add(from);
 		}
 
 		public void OnDecline( Mobile from, Mobile leader )
@@ -305,7 +321,7 @@ namespace Server.Engines.PartySystem
 				p.Candidates.Add( target );
 
 			//  : You are invited to join the party. Type /accept to join or /decline to decline the offer.
-			target.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008089, "", AffixType.Prepend | AffixType.System, from.Name, "" ) );
+			target.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008089, from.GetNameUseBy(target), AffixType.Prepend | AffixType.System, from.Name, "" ) );
 
 			from.SendLocalizedMessage( 1008090 ); // You have invited them to join the party.
 
