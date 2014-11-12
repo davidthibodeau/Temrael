@@ -111,6 +111,7 @@
     <Compile Include="Engines\Races\Humain.cs" />
     <Compile Include="Engines\Mort\ContratGump.cs" />
     <Compile Include="Engines\Mort\MortGump.cs" />
+    <Compile Include="Engines\Transformations\Transformation.cs" />
     <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\GMItems\GMItem.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />

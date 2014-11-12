@@ -176,7 +176,6 @@ namespace Server.Engines.Mort
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write(mobile);
             writer.Write(m_Achever);
             writer.Write(m_Suicide);
             writer.Write((DateTime)m_lastAchever);
@@ -200,9 +199,9 @@ namespace Server.Engines.Mort
             m_contratListe = new List<ContratAssassinat>();
         }
 
-        public MortEngine(GenericReader reader)
+        public MortEngine(PlayerMobile m, GenericReader reader)
         {
-            mobile = (PlayerMobile)reader.ReadMobile();
+            mobile = m;
             m_Achever = reader.ReadBool();
             m_Suicide = reader.ReadBool();
             m_lastAchever = reader.ReadDateTime();

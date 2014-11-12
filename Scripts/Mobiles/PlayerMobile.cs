@@ -22,6 +22,8 @@ using Server.Engines.Evolution;
 using Server.Engines.Mort;
 using Server.Commands;
 using Server.Engines.Possess;
+using Server.Engines.Equitation;
+using Server.Engines.Transformations;
 
 namespace Server.Mobiles
 {
@@ -78,6 +80,9 @@ namespace Server.Mobiles
 		private int m_StepsTaken;
 		private int m_Profession;
 		private bool m_IgnoreMobiles; // IgnoreMobiles should be moved to Server.Mobiles
+        private int m_LastTeinture = 0;
+
+        private Point3D m_OldLocation;
 		/*
 		 * a value of zero means, that the mobile is not executing the spell. Otherwise,
 		 * the value should match the BaseMana required
@@ -261,6 +266,21 @@ namespace Server.Mobiles
             set;
         }
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Transformation Transformation
+        {
+            get;
+            set;
+        }
+
+        #region QuickSpells
+        private ArrayList m_QuickSpells = new ArrayList();
+
+        public ArrayList QuickSpells
+        {
+            get { return m_QuickSpells; }
+        }
+        #endregion
 		#endregion
 
 		#region PlayerFlags
@@ -346,6 +366,15 @@ namespace Server.Mobiles
 			get{ return GetFlag( PlayerFlag.HasStatReward ); }
 			set{ SetFlag( PlayerFlag.HasStatReward, value ); }
 		}
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int LastTeinture
+        {
+            get { return m_LastTeinture; }
+            set { m_LastTeinture = value; }
+        }
+
+        public Point3D OldLocation { get { return m_OldLocation; } set { m_OldLocation = value; } }
 		#endregion
 
 		#region Auto Arrow Recovery
@@ -1153,6 +1182,13 @@ namespace Server.Mobiles
 
 		public override bool Move( Direction d )
 		{
+            Equitation.CheckEquitation(this, EquitationType.Running);
+
+            if (Hidden && CheckRevealStealth() && AccessLevel == AccessLevel.Player)
+            {
+                RevealingAction();
+            }
+
 			NetState ns = this.NetState;
 
 			if ( ns != null )
@@ -1185,6 +1221,46 @@ namespace Server.Mobiles
 
 			return true;
 		}
+
+        public bool CheckRevealStealth()
+        {
+            double stealth = this.Skills[SkillName.Infiltration].Base;
+
+            if (stealth >= 100)
+                return false;
+
+            double chance = 0.80 * GetBagFilledRatio(this);
+
+            if (chance >= Utility.RandomDouble())
+                return true;
+
+            return false;
+        }
+
+        public static double GetBagFilledRatio(PlayerMobile pm)
+        {
+            Container pack = pm.Backpack;
+
+            if (pm.AccessLevel >= AccessLevel.Batisseur)
+                return 0;
+
+            if (pack != null)
+            {
+                int maxweight = WeightOverloading.GetMaxWeight(pm);
+
+                double value = (pm.TotalWeight / maxweight) - 0.50;
+
+                if (value < 0)
+                    value = 0;
+
+                if (value > 0.50)
+                    value = 0.50;
+
+                return value;
+            }
+
+            return 0;
+        }
 
 		public override bool CheckMovement( Direction d, out int newZ )
 		{
@@ -1578,13 +1654,50 @@ namespace Server.Mobiles
 			m_NoRecursion = false;
 		}
 
-		public override bool OnMoveOver( Mobile m )
-		{
-			if ( m is BaseCreature && !((BaseCreature)m).Controlled )
-				return ( !Alive || !m.Alive || IsDeadBondedPet || m.IsDeadBondedPet ) || ( Hidden && m.AccessLevel > AccessLevel.Player );
-
-			return base.OnMoveOver( m );
-		}
+        public override bool OnMoveOver(Mobile m)
+        {
+            if (m.Hidden && m.AccessLevel > AccessLevel.Player)
+            {
+                return true;
+            }
+            if (Hidden)
+            {
+                return true;
+            }
+            if (m.Hidden)
+            {
+                m.Hidden = false;
+            }
+            if (!Mounted)
+            {
+                if (m.Stam == m.StamMax)
+                {
+                    if (m is TMobile)
+                    {
+                        TMobile from = (TMobile)m;
+                        from.SendMessage("Vous poussez le personnage hors de votre chemin.");
+                        from.Stam -= 10;
+                        this.SendMessage("Vous etes pousse(e) hors du chemin par " + from.GetNameUseBy(this));
+                        return true;
+                    }
+                    else
+                    {
+                        m.SendMessage("Vous poussez le personnage hors de votre chemin.");
+                        m.Stam -= 10;
+                        this.SendMessage("Vous etes pousse(e) hors du chemin");
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
 
 		public override bool CheckShove( Mobile shoved )
 		{
@@ -1593,6 +1706,37 @@ namespace Server.Mobiles
 			//else
 				return base.CheckShove( shoved );
 		}
+
+
+        public override void AddNameProperties(ObjectPropertyList list)
+        {
+            string name = Name;
+
+            if (name == null)
+                name = String.Empty;
+
+            string color = "#FFFFFF";
+
+            list.Add(1060526, String.Format("<h3><BASEFONT COLOR={0}>{1}, {2}</BASEFONT></h3>", color, name, Title)); // ~1_PREFIX~~2_NAME~~3_SUFFIX~
+        }
+
+        public override void SendPropertiesTo(Mobile from)
+        {
+            string color = "#FFFFFF";
+
+            string displayName = GetNameUseBy(from);
+            if (!CanBeginAction(typeof(IncognitoSpell)))
+            {
+                displayName = "Anonyme";
+            }
+
+            ObjectPropertyList list = new ObjectPropertyList(this);
+
+            list.Add("<h3><basefont color=" + color + ">" + displayName + (Title == "" ? "" : (", " + Title)) + "<basefont></h3>");
+
+            from.Send(list);
+
+        }
 
 		protected override void OnMapChange( Map oldMap )
 		{
@@ -1642,6 +1786,9 @@ namespace Server.Mobiles
 
 			if ( willKill && from is PlayerMobile )
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
+
+            if (from != null && Hidden && from.CanSee(this) && from.InLOS(this))
+                RevealingAction();
 
 			base.OnDamage( amount, from, willKill );
 		}
@@ -1706,63 +1853,169 @@ namespace Server.Mobiles
 			return base.OnBeforeDeath();
 		}
 
-        public override void OnDeath( Container c )
-		{
-			base.OnDeath(c);
+        public override void OnDeath(Container c)
+        {
+            if (LastKiller is BaseCreature)
+            {
+                LastKiller.RemoveAggressor(this);
+            }
+            //if (PourrissementSpell.m_PourrissementTable.Contains(this))
+            //{
+            //    FixedParticles(14000, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+            //    PlaySound(1099);
 
-			HueMod = -1;
-			NameMod = null;
+            //    double damage = (double)PourrissementSpell.m_PourrissementTable[this] + Utility.Random(1, 10);
+            //    Mobile Caster = (Mobile)PourrissementSpell.m_PourrissementRegistry[this];
 
-			SetHairMods( -1, -1 );
+            //    ArrayList targets = new ArrayList();
 
-			PolymorphSpell.StopTimer( this );
-			IncognitoSpell.StopTimer( this );
-			DisguiseTimers.RemoveTimer( this );
+            //    Map map = this.Map;
 
-			EndAction( typeof( PolymorphSpell ) );
-			EndAction( typeof( IncognitoSpell ) );
+            //    if (map != null && Caster != null)
+            //    {
+            //        foreach (Mobile m in this.GetMobilesInRange(5))
+            //        {
+            //            if (this != m && SpellHelper.ValidIndirectTarget(this, m) && !(this.Party == m.Party))
+            //            {
+            //                targets.Add(m);
+            //            }
+            //        }
+            //    }
 
-			SkillHandlers.StolenItem.ReturnOnDeath( this, c );
+            //    if (targets.Count > 0 && Caster != null)
+            //    {
+            //        for (int i = 0; i < targets.Count; ++i)
+            //        {
+            //            Mobile m = (Mobile)targets[i];
 
-			if ( m_PermaFlags.Count > 0 )
-			{
-				m_PermaFlags.Clear();
+            //            m.Paralyzed = false;
 
-				if ( c is Corpse )
-					((Corpse)c).Criminal = true;
-			}
+            //            this.DoHarmful(m);
+            //            AOS.Damage(m, Caster, (int)damage, 0, 0, 0, 100, 0);
 
-			Mobile killer = this.FindMostRecentDamager( true );
+            //            m.FixedParticles(14000, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+            //            m.PlaySound(1099);
+            //        }
+            //    }
+            //}
 
-			if ( killer is BaseCreature )
-			{
-				BaseCreature bc = (BaseCreature)killer;
+            base.OnDeath(c);
 
-				Mobile master = bc.GetMaster();
-				if( master != null )
-					killer = master;
-			}
+            HueMod = -1;
+            NameMod = null;
 
-			Server.Guilds.Guild.HandleDeath( this, killer );
+            SetHairMods(-1, -1);
 
-			if( m_BuffTable != null )
-			{
-				List<BuffInfo> list = new List<BuffInfo>();
+            PolymorphSpell.StopTimer(this);
+            IncognitoSpell.StopTimer(this);
+            DisguiseTimers.RemoveTimer(this);
 
-				foreach( BuffInfo buff in m_BuffTable.Values )
-				{
-					if( !buff.RetainThroughDeath )
-					{
-						list.Add( buff );
-					}
-				}
+            EndAction(typeof(PolymorphSpell));
+            EndAction(typeof(IncognitoSpell));
 
-				for( int i = 0; i < list.Count; i++ )
-				{
-					RemoveBuff( list[i] );
-				}
-			}
-		}
+            SkillHandlers.StolenItem.ReturnOnDeath(this, c);
+
+            if (m_PermaFlags.Count > 0)
+            {
+                m_PermaFlags.Clear();
+
+                if (c is Corpse)
+                    ((Corpse)c).Criminal = true;
+            }
+
+            Mobile killer = this.FindMostRecentDamager(true);
+
+            if (killer is BaseCreature)
+            {
+                BaseCreature bc = (BaseCreature)killer;
+
+                Mobile master = bc.GetMaster();
+                if (master != null)
+                    killer = master;
+            }
+
+            Server.Guilds.Guild.HandleDeath(this, killer);
+
+            if (m_BuffTable != null)
+            {
+                List<BuffInfo> list = new List<BuffInfo>();
+
+                foreach (BuffInfo buff in m_BuffTable.Values)
+                {
+                    if (!buff.RetainThroughDeath)
+                    {
+                        list.Add(buff);
+                    }
+                }
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    RemoveBuff(list[i]);
+                }
+            }
+
+            //EndAction(typeof(ChauveSouris));
+            Transformation.DispelAllTransformations();
+            //CheckEtude();
+
+            if (!MortEngine.RisqueDeMort)
+            {
+                MortEngine.Corps = c;
+
+                EvanouieTimer timer = new EvanouieTimer(this, c, (int)Direction, MortEngine.RisqueDeMort);
+                MortEngine.TimerEvanouie = timer;
+                timer.Start();
+
+                Transformation.OnTransformationChange(0, null, -1, true); //Retirer spell transformation
+
+                CheckRaceGump();
+
+                BaseArmor.ValidateMobile(this);
+
+                if (Blessed && AccessLevel == AccessLevel.Player)
+                    Blessed = false;
+
+                MortEngine.MortCurrentState = MortState.Assomage;
+
+                //SendMessage("Vous êtes assommé pour une minute.");
+            }
+            else
+            {
+                /*if (m_DeguisementInfos != null)
+                {
+                    Deguisements.RemoveDeguisement(this);
+                }*/
+
+                //Disguised = false;
+
+                NameMod = null;
+                BodyMod = 0;
+                HueMod = -1;
+
+                CheckRaceGump();
+
+                BaseArmor.ValidateMobile(this);
+
+                MortEngine.RisqueDeMort = false;
+                MortEngine.Mort = true;
+                Send(PlayMusic.GetInstance(MusicName.Death));
+                Location = Utility.RandomBool() ? new Point3D(5280, 2160, 5) : new Point3D(5283, 2013, 60);
+                Frozen = false;
+
+                if (Blessed && AccessLevel == AccessLevel.Player)
+                    Blessed = false;
+
+                //m_MortState = MortState.MortDefinitive;
+            }
+        }
+
+        public virtual void CheckRaceGump()
+        {
+            Item racegump = FindItemOnLayer(Layer.Shirt);
+
+            if (racegump != null && racegump is RaceGump)
+                ((RaceGump)racegump).AddProperties(this);
+        }
 
 		private List<Mobile> m_PermaFlags;
 		private List<Mobile> m_VisList;
@@ -1839,8 +2092,10 @@ namespace Server.Mobiles
             Identities = new Identities(this);
             Experience = new Experience();
             MortEngine = new MortEngine(this);
+            Transformation = new Transformation(this);
 
             SkillsCap = 1000;
+            FollowersMax = 5;
 
 			InvalidateMyRunUO();
 		}
@@ -2082,11 +2337,21 @@ namespace Server.Mobiles
             base.Deserialize(reader);
             int version = reader.ReadInt();
 
-            Langues = new Langues(reader);
-            Identities = new Identities(reader);
+            Langues = new Langues(this, reader);
+            Identities = new Identities(this, reader);
             QuiOptions = (QuiOptions)reader.ReadInt();
             Experience = new Experience(reader);
-            MortEngine = new MortEngine(reader);
+            MortEngine = new MortEngine(this, reader);
+            Transformation = new Transformation(this);
+
+            m_QuickSpells = new ArrayList();
+            int count = reader.ReadInt();
+            for (int i = 0; i < count; i++)
+            {
+                m_QuickSpells.Add((int)reader.ReadInt());
+            }
+
+            m_LastTeinture = reader.ReadInt();
 
             m_PeacedUntil = reader.ReadDateTime();
 
@@ -2179,6 +2444,13 @@ namespace Server.Mobiles
 
 			if( Hidden )	//Hiding is the only buff where it has an effect that's serialized.
 				AddBuff( new BuffInfo( BuffIcon.HidingAndOrStealth, 1075655 ) );
+
+            if (Blessed && AccessLevel == AccessLevel.Player)
+                Blessed = false;
+
+            CheckRaceGump();
+
+            BaseArmor.ValidateMobile(this);
 		}
 
 		public override void Serialize( GenericWriter writer )
@@ -2206,6 +2478,12 @@ namespace Server.Mobiles
             writer.Write((int)QuiOptions);
             Experience.Serialize(writer);
             MortEngine.Serialize(writer);
+
+            writer.Write(m_QuickSpells.Count);
+            for (int i = 0; i < m_QuickSpells.Count; i++)
+                writer.Write((int)m_QuickSpells[i]);
+            
+            writer.Write((int)m_LastTeinture);
 
 			writer.Write( (DateTime) m_PeacedUntil );
 

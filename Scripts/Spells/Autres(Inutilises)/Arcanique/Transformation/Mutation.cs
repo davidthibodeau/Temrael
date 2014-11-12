@@ -50,7 +50,7 @@ namespace Server.Spells
                 if (Caster is TMobile)
                 {
                     TMobile pm = (TMobile)Caster;
-                    pm.OnTransformationChange(0, null, -1, true);
+                    pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
                 {
@@ -101,7 +101,7 @@ namespace Server.Spells
                         if (Caster is TMobile)
                         {
                             TMobile pm = (TMobile)Caster;
-                            pm.OnTransformationChange(m_NewBody, m_NameMod, m_HueMod, true);
+                            pm.Transformation.OnTransformationChange(m_NewBody, m_NameMod, m_HueMod, true);
                         }
                         else
                         {
@@ -126,7 +126,7 @@ namespace Server.Spells
                 if (m is TMobile)
                 {
                     TMobile pm = (TMobile)m;
-                    pm.OnTransformationChange(0, null, -1, true);
+                    pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
                 {

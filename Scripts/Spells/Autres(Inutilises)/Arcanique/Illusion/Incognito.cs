@@ -76,7 +76,7 @@ namespace Server.Spells
                 if (m is TMobile)
                 {
                     TMobile pm = (TMobile)m;
-                    pm.OnTransformationChange(Utility.Random(33, 76), "Quelqu'un", 0, true);
+                    pm.Transformation.OnTransformationChange(Utility.Random(33, 76), "Quelqu'un", 0, true);
                 }
                 else
                 {
@@ -111,7 +111,7 @@ namespace Server.Spells
                 if (m is TMobile)
                 {
                     TMobile pm = (TMobile)m;
-                    pm.OnTransformationChange(0, null, -1, true);
+                    pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
                 {
@@ -151,7 +151,7 @@ namespace Server.Spells
                     if (m_Owner is TMobile)
                     {
                         TMobile pm = (TMobile)m_Owner;
-                        pm.OnTransformationChange(0, null, -1, true);
+                        pm.Transformation.OnTransformationChange(0, null, -1, true);
                     }
                     else
                     {

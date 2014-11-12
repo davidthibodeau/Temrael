@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Server.Mobiles;
 using System.Collections;
+using Server.Items;
 
 namespace Server.Engines.Identities
 {
@@ -111,11 +112,11 @@ namespace Server.Engines.Identities
             idCachee = new IdentiteCachee();
         }
 
-        public Identities(GenericReader reader)
+        public Identities(Mobile m, GenericReader reader)
         {
-            int version = reader.ReadInt();
+            m_Mobile = m;
 
-            m_Mobile = reader.ReadMobile();
+            int version = reader.ReadInt();
 
             baseIdentity = new Identity(reader);
             m_currentIdentity = baseIdentity;
@@ -123,13 +124,13 @@ namespace Server.Engines.Identities
             idCachee = new IdentiteCachee(); //On ne sauvegarde pas idcache parce qu'il n'accumule pas d'informations.
 
             m_lastDeguisement = reader.ReadDateTime();
+
+            CagouleFix();
         }
 
         public void Serialize(GenericWriter writer)
         {
             writer.Write(0); //version
-
-            writer.Write(m_Mobile);
 
             baseIdentity.Serialize(writer);
             transformationIdentity.Serialize(writer);
@@ -195,6 +196,24 @@ namespace Server.Engines.Identities
                 return (m_currentIdentity == baseIdentity ? m_Mobile.Name : m_Mobile.Name + " (" + m_currentIdentity[m_Mobile] + ")");
 
             return m_currentIdentity[from];
+        }
+
+        public void CagouleFix()
+        {
+            bool Inconnu = false;
+            for (int i = 0; i < m_Mobile.Items.Count; i++)
+            {
+                if (m_Mobile.Items[i] is BaseClothing)
+                {
+                    if (((BaseClothing)m_Mobile.Items[i]).Disguise)
+                        Inconnu = true;
+                }
+            }
+
+            if (Inconnu)
+                DisguiseHidden = true;
+            else
+                DisguiseHidden = false;
         }
 
         public override string ToString()

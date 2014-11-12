@@ -44,7 +44,7 @@ namespace Server.Spells
                 {
                     TMobile pm = (TMobile)m;
 
-                    pm.DispelAllTransformations();
+                    pm.Transformation.DispelAllTransformations();
 
                     if (pm.Identities.Disguised)
                         pm.Identities.Disguised = false;

@@ -71,26 +71,24 @@ namespace Server.Spells
                     {
                         TMobile pm = (TMobile)Caster;
 
-                        // Trickster 2014.11.11: C'etait une arraylist dans TMobile... J'sais pas trop elle servait a quoi.
-                        //if (pm.MetamorphoseList == null)
-                        //    pm.MetamorphoseList = new ArrayList();
+                        if (pm.Transformation.MetamorphoseList == null)
+                            pm.Transformation.MetamorphoseList = new ArrayList();
 
                         int max = (int)(pm.Skills[SkillName.Hallucination].Base / 5);
 
-                        // Trickster 2014.11.11: C'etait une arraylist dans TMobile... J'sais pas trop elle servait a quoi.
-                        //if (pm.MetamorphoseList.Count >= max)
-                        //    pm.SendMessage("Vous ne pouvez pas avoir plus de " + max.ToString() + " créatures dans votre liste de métamorphoses.");
-                        //else
-                        //{
-                        //    pm.MetamorphoseList.Add((object)entry);
-                        //    pm.SendMessage("Vous ajoutez avec succès la créature à votre liste de métamorphoses.");
+                        if (pm.Transformation.MetamorphoseList.Count >= max)
+                            pm.SendMessage("Vous ne pouvez pas avoir plus de " + max.ToString() + " créatures dans votre liste de métamorphoses.");
+                        else
+                        {
+                            pm.Transformation.MetamorphoseList.Add((object)entry);
+                            pm.SendMessage("Vous ajoutez avec succès la créature à votre liste de métamorphoses.");
 
-                        //    Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
-                        //    Caster.PlaySound(0x3BD);
+                            Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                            Caster.PlaySound(0x3BD);
 
-                        //    m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
-                        //    m.PlaySound(0x3BD);
-                        //}
+                            m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                            m.PlaySound(0x3BD);
+                        }
                     }
                 }
                 else
@@ -107,7 +105,7 @@ namespace Server.Spells
                 if (Caster is TMobile)
                 {
                     TMobile pm = (TMobile)Caster;
-                    pm.OnTransformationChange(0, null, -1, true);
+                    pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
                 {
@@ -148,9 +146,8 @@ namespace Server.Spells
             {
                 ArrayList entries = null;
 
-                // Trickster 2014.11.11: C'etait une arraylist dans TMobile... J'sais pas trop elle servait a quoi.
-                //if (Caster is TMobile)
-                //    entries = ((TMobile)Caster).MetamorphoseList;
+                if (Caster is TMobile)
+                    entries = ((TMobile)Caster).Transformation.MetamorphoseList;
 
                 if(entries != null)
                     Caster.SendGump(new MetamorphoseGump(Caster, Scroll, entries, 5));
@@ -180,7 +177,7 @@ namespace Server.Spells
                         if (Caster is TMobile)
                         {
                             TMobile pm = (TMobile)Caster;
-                            pm.OnTransformationChange(m_NewBody, m_NameMod, m_HueMod, true);
+                            pm.Transformation.OnTransformationChange(m_NewBody, m_NameMod, m_HueMod, true);
                         }
                         else
                         {
@@ -205,7 +202,7 @@ namespace Server.Spells
                 if (m is TMobile)
                 {
                     TMobile pm = (TMobile)m;
-                    pm.OnTransformationChange(0, null, -1, true);
+                    pm.Transformation.OnTransformationChange(0, null, -1, true);
                 }
                 else
                 {
