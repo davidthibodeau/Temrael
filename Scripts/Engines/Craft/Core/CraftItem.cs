@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Items;
 using Server.Misc;
-using Server.Factions;
+
 using Server.Mobiles;
 using Server.Commands;
 
@@ -85,17 +85,8 @@ namespace Server.Engines.Craft
 		public static int ItemIDOf( Type type ) {
 			int itemId;
 
-			if ( !_itemIds.TryGetValue( type, out itemId ) ) {
-				if ( type == typeof( FactionExplosionTrap ) ) {
-					itemId = 14034;
-				} else if ( type == typeof( FactionGasTrap ) ) {
-					itemId = 4523;
-				} else if ( type == typeof( FactionSawTrap ) ) {
-					itemId = 4359;
-				} else if ( type == typeof( FactionSpikeTrap ) ) {
-					itemId = 4517;
-				}
-
+			if ( !_itemIds.TryGetValue( type, out itemId ) ) 
+            {
 				if ( itemId == 0 ) {
 					object[] attrs = type.GetCustomAttributes( typeof( CraftItemIDAttribute ), false );
 

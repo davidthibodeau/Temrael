@@ -122,11 +122,7 @@ namespace Server.Items
 		{
 			ClientFlags flags = m.NetState == null ? ClientFlags.None : m.NetState.Flags;
 
-			if ( Factions.Sigil.ExistsOn( m ) )
-			{
-				m.SendLocalizedMessage( 1061632 ); // You can't do that while carrying the sigil.
-			}
-			else if ( m.Spell != null )
+			if ( m.Spell != null )
 			{
 				m.SendLocalizedMessage( 1049616 ); // You are too busy to do that at the moment.
 			}

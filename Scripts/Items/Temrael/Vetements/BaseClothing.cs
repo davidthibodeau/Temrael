@@ -508,11 +508,6 @@ namespace Server.Items
 					attrs.Add( new EquipInfoAttribute( 1049643 ) ); // cursed
 			}
 
-			#region Factions
-			if ( FactionItemState != null )
-				attrs.Add( new EquipInfoAttribute( 1041350 ) ); // faction item
-			#endregion
-
 			if ( m_Quality == ClothingQuality.Exceptional )
 				attrs.Add( new EquipInfoAttribute( 1018305 - (int)m_Quality ) );
 		}

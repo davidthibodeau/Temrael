@@ -1,5 +1,5 @@
 ﻿using Server.ContextMenus;
-using Server.Factions;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace Server.Items
         Legendaire
     }
 
-    public abstract class BaseWearable : Item, IFactionItem
+    public abstract class BaseWearable : Item
     {
         private bool m_Identified;
         private RareteItem m_rarete;
@@ -34,24 +34,6 @@ namespace Server.Items
             get { return m_Identified; }
             set { m_Identified = value; InvalidateProperties(); }
         }
-
-        #region Factions
-        private FactionItem m_FactionState;
-
-        public FactionItem FactionItemState
-        {
-            get { return m_FactionState; }
-            set
-            {
-                m_FactionState = value;
-
-                if (m_FactionState == null)
-                    Hue = 0;// CraftResources.GetHue(Resource);
-
-                LootType = (m_FactionState == null ? LootType.Regular : LootType.Blessed);
-            }
-        }
-        #endregion
 
         public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
         {

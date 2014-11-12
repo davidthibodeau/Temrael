@@ -1040,22 +1040,6 @@ namespace Server.Spells
 
         public static bool CheckCast(Mobile caster, Spell spell)
         {
-            if (Factions.Sigil.ExistsOn(caster))
-            {
-                caster.SendLocalizedMessage(1061632); // You can't do that while carrying the sigil.
-                return false;
-            }
-            /*else if (!caster.CanBeginAction(typeof(PolymorphSpell)))
-            {
-                caster.SendLocalizedMessage(1061628); // You can't do that while polymorphed.
-                return false;
-            }
-            else if (AnimalForm.UnderTransformation(caster))
-            {
-                caster.SendLocalizedMessage(1061091); // You cannot cast that spell in this form.
-                return false;
-            }*/
-
             return true;
         }
 
@@ -1066,14 +1050,6 @@ namespace Server.Spells
             if (transformSpell == null)
                 return false;
 
-            if (Factions.Sigil.ExistsOn(caster))
-            {
-                caster.SendLocalizedMessage(1061632); // You can't do that while carrying the sigil.
-            }
-            /*else if (!caster.CanBeginAction(typeof(PolymorphSpell)))
-            {
-                caster.SendLocalizedMessage(1061628); // You can't do that while polymorphed.
-            }*/
             else if (DisguiseTimers.IsDisguised(caster))
             {
                 caster.SendLocalizedMessage(1061631); // You can't do that while disguised.

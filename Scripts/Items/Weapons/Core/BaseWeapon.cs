@@ -1291,11 +1291,6 @@ namespace Server.Items
                 if (m_CrafterName != null)
                     list.Add(1060394, "{0}\t{1}", couleur, "Fabriquèßpar: " + m_CrafterName); // Fabriquèßpar: ~1_NAME~
 
-                #region Factions
-                if (FactionItemState != null)
-                    list.Add(1041350); // faction item
-                #endregion
-
                 int prop;
 
                 AddARProperties(list, couleur);
@@ -1370,11 +1365,6 @@ namespace Server.Items
 				else if ( LootType == LootType.Cursed )
 					attrs.Add( new EquipInfoAttribute( 1049643 ) ); // cursed
 			}
-
-			#region Factions
-			if ( FactionItemState != null )
-				attrs.Add( new EquipInfoAttribute( 1041350 ) ); // faction item
-			#endregion
 
 			if ( m_Quality == WeaponQuality.Exceptional )
 				attrs.Add( new EquipInfoAttribute( 1018305 - (int)m_Quality ) );

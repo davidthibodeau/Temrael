@@ -1,7 +1,7 @@
 using System;
 using Server;
 using Server.Items;
-using Server.Factions;
+
 using Server.Targeting;
 using Server.Engines.Identities;
 
@@ -50,8 +50,6 @@ namespace Server.Engines.Craft
 				return 1044038; // You have worn out your tool!
 			else if ( !BaseTool.CheckAccessible( tool, from ) )
 				return 1044263; // The tool must be on your person to use.
-			else if ( itemType != null && ( itemType.IsSubclassOf( typeof( BaseFactionTrapDeed ) ) || itemType == typeof( FactionTrapRemovalKit ) ) && Faction.Find( from ) == null )
-				return 1044573; // You have to be in a faction to do that.
 
 			return 0;
 		}
@@ -114,14 +112,6 @@ namespace Server.Engines.Craft
 				else				
 					return 1044154; // You create the item.
 			}
-		}
-
-		public override bool ConsumeOnFailure( Mobile from, Type resourceType, CraftItem craftItem )
-		{
-			if ( resourceType == typeof( Silver ) )
-				return false;
-
-			return base.ConsumeOnFailure( from, resourceType, craftItem );
 		}
 
 		public override void InitCraftList()

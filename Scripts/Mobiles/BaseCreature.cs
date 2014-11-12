@@ -9,7 +9,7 @@ using Server.Misc;
 using Server.Items;
 using Server.ContextMenus;
 using Server.Engines.PartySystem;
-using Server.Factions;
+
 using Server.Engines.Quetes;
 
 
@@ -389,8 +389,6 @@ namespace Server.Mobiles
 			set { m_SummonEnd = value; }
 		}
 
-		public virtual Faction FactionAllegiance{ get{ return null; } }
-		public virtual int FactionSilverWorth{ get{ return 30; } }
 
 		#region Bonding
 		public const bool BondingEnabled = true;
@@ -841,35 +839,10 @@ namespace Server.Mobiles
 
 		#endregion
 
-		#region Allegiance
-
-		public enum Allegiance
-		{
-			None,
-			Ally,
-			Enemy
-		}
-
-		public virtual Allegiance GetFactionAllegiance( Mobile mob )
-		{
-			if ( mob == null || mob.Map != Faction.Facet || FactionAllegiance == null )
-				return Allegiance.None;
-
-			Faction fac = Faction.Find( mob, true );
-
-			if ( fac == null )
-				return Allegiance.None;
-
-			return ( fac == FactionAllegiance ? Allegiance.Ally : Allegiance.Enemy );
-		}
-		#endregion
 
 		public virtual bool IsEnemy( Mobile m )
 		{
 			if ( m is BaseGuard )
-				return false;
-
-			if ( GetFactionAllegiance( m ) == Allegiance.Ally )
 				return false;
 
             if (m.Player && PlayersAreEnemies)
@@ -4110,9 +4083,6 @@ namespace Server.Mobiles
 
 		public override bool CanBeHarmful( Mobile target, bool message, bool ignoreOurBlessedness )
 		{
-			if ( target is BaseFactionGuard )
-				return false;
-
 			if ( (target is BaseVendor && ((BaseVendor)target).IsInvulnerable) || target is PlayerVendor || target is TownCrier )
 			{
 				if ( message )
