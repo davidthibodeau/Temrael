@@ -499,13 +499,22 @@ namespace Server.Engines.Harvest
                 return;
             }
 
+            from.SendMessage("ID == " + tileID.ToString());
+
             HarvestDefinition def = GetDefinition(tileID);
+
+            if (def != null)
+                from.SendMessage("Tile 0 == " + def.Tiles[0].ToString());
+            else
+                from.SendMessage("Def == null");
 
             if (def == null)
             {
                 OnBadHarvestTarget(from, tool, toHarvest);
                 return;
             }
+
+            from.SendMessage("BUG fixé!");
 
             if (!CheckRange(from, tool, def, map, loc, false))
                 return;

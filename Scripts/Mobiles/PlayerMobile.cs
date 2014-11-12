@@ -1444,8 +1444,9 @@ namespace Server.Mobiles
 				return false;
 			}
 
-            if (((BaseClothing)item).Disguise)
-                Identities.DisguiseHidden = true;
+            if (item is BaseClothing)
+                if (((BaseClothing)item).Disguise)
+                    Identities.DisguiseHidden = true;
 
 			return true;
 		}

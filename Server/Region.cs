@@ -313,6 +313,19 @@ namespace Server
 			return false;
 		}
 
+        public bool Contains(Point2D p)
+        {
+            for (int i = 0; i < m_Area.Length; i++)
+            {
+                Rectangle3D rect = m_Area[i];
+
+                if (Utility.NumberBetween(p.X, rect.End.X, rect.Start.X, 0)
+                 && Utility.NumberBetween(p.Y, rect.End.Y, rect.Start.Y, 0))
+                    return true;
+            }
+            return false;
+        }
+
 		public bool IsChildOf( Region region )
 		{
 			if ( region == null )

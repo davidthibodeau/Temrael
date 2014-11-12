@@ -190,69 +190,54 @@ namespace Server.Engines.Harvest
             }
             else if (Skill == SkillName.Hache)
             {
-                int dist = -1;
+                from.SendMessage("ICI");
+                foreach (Region r in Lumberjacking.erableList)
+                {
+                    if (r.Contains(new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[15], null);
+                }
 
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_ErableTiles.Length; ++i)
-                    dist = (Lumberjacking.m_ErableTiles[i] - tileID);
+                foreach (Region r in Lumberjacking.cheneList)
+                {
+                    if (r.Contains( new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[20], null);
+                }
 
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[15], null);
+                foreach (Region r in Lumberjacking.pinList)
+                {
+                    if (r.Contains(new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[16], null);
+                }
 
-                dist = -1;
+                foreach (Region r in Lumberjacking.cedreList)
+                {
+                    if (r.Contains(new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[18], null);
+                }
 
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_CheneTiles.Length; ++i)
-                    dist = (Lumberjacking.m_CheneTiles[i] - tileID);
+                foreach (Region r in Lumberjacking.cypresList)
+                {
+                    if (r.Contains(new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[17], null);
+                }
 
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[20], null);
+                foreach (Region r in Lumberjacking.ebeneList)
+                {
+                    if (r.Contains(new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[21], null);
+                }
 
-                dist = -1;
+                foreach (Region r in Lumberjacking.acajouList)
+                {
+                    if (r.Contains(new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[22], null);
+                }
 
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_PinTiles.Length; ++i)
-                    dist = (Lumberjacking.m_PinTiles[i] - tileID);
-
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[16], null);
-
-                dist = -1;
-
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_CedreTiles.Length; ++i)
-                    dist = (Lumberjacking.m_CedreTiles[i] - tileID);
-
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[18], null);
-
-                dist = -1;
-
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_CypresTiles.Length; ++i)
-                    dist = (Lumberjacking.m_CypresTiles[i] - tileID);
-
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[17], null);
-
-                dist = -1;
-
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_EbeneTiles.Length; ++i)
-                    dist = (Lumberjacking.m_EbeneTiles[i] - tileID);
-
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[21], null);
-
-                dist = -1;
-
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_AcajouTiles.Length; ++i)
-                    dist = (Lumberjacking.m_AcajouTiles[i] - tileID);
-
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[22], null);
-
-                dist = -1;
-
-                for (int i = 0; dist < 0 && i < Lumberjacking.m_SauleTiles.Length; ++i)
-                    dist = (Lumberjacking.m_SauleTiles[i] - tileID);
-
-                if (dist == 0)
-                    return new HarvestVein(100.0, 0.0, m_Resources[19], null);
+                foreach (Region r in Lumberjacking.sauleList)
+                {
+                    if (r.Contains(new Point2D(x, y)))
+                        return new HarvestVein(100.0, 0.0, m_Resources[19], null);
+                }
             }
 
             return m_Veins[0];
@@ -383,9 +368,10 @@ namespace Server.Engines.Harvest
                 int dist = -1;
 
                 for (int i = 0; dist < 0 && i < m_Tiles.Length; ++i)
-                    dist = (m_Tiles[i] - tileID);
+                    if (dist == m_Tiles[i])
+                        return true;
 
-                return (dist == 0);
+                return false;
             }
         }
     }
