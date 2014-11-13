@@ -568,7 +568,7 @@ namespace Server.Items
 			{
 				case 0:
 				{
-					m_KeyValue = reader.ReadUInt();
+					m_KeyValue = reader.ReadLong();
 					m_Open = reader.ReadBool();
 					m_Locked = reader.ReadBool();
 					m_OpenedID = reader.ReadInt();

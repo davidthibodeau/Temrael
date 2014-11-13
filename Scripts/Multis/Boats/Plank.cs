@@ -55,7 +55,7 @@ namespace Server.Items
 					m_Boat = reader.ReadItem() as BaseBoat;
 					m_Side = (PlankSide) reader.ReadInt();
 					m_Locked = reader.ReadBool();
-					m_KeyValue = reader.ReadUInt();
+					m_KeyValue = reader.ReadLong();
 
 					if ( m_Boat == null )
 						Delete();

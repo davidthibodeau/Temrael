@@ -192,7 +192,7 @@ namespace Server.Items
 
 					m_Description = reader.ReadString();
 
-					m_KeyVal = reader.ReadUInt();
+					m_KeyVal = reader.ReadLong();
 
 					break;
 				}
