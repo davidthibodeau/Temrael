@@ -2421,13 +2421,6 @@ namespace Server
 		/// <returns>True if the move is allowed, false if not.</returns>
 		protected virtual bool OnMove( Direction d )
 		{
-            // On en a plus besoin ? Je le garde au cas...
-            if( m_Hidden && m_AccessLevel == AccessLevel.Player )
-			{
-				if( m_AllowedStealthSteps-- <= 0 || (d & Direction.Running) != 0 || this.Mounted )
-					RevealingAction();
-            }
-
             return true;
 		}
 

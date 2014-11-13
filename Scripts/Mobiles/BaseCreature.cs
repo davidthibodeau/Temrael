@@ -2679,6 +2679,7 @@ namespace Server.Mobiles
 		{
 			Poison p = HitPoison;
 
+            RevealingAction();
 
 			if ( p != null && HitPoisonChance >= Utility.RandomDouble() ) {
 				defender.ApplyPoison( this, p );

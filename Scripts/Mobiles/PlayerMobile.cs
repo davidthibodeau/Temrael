@@ -2607,14 +2607,7 @@ namespace Server.Mobiles
             {
                 if (AccessLevel > AccessLevel.Player)
                     return;
-                // Surtout pour le PvP.
-                foreach (Mobile m in GePlayerMobilesInRange(10))
-                {
-                    if (m != this)
-                        SkillHandlers.DetectHidden.OnUseSingleTarget(m, this, m.GetStepsBetweenYouAnd(this));
-                }
 
-                // Surtout pour le PVM.
                 if (!Mounted && Skills.Infiltration.Value >= 25.0)
                 {
                     if ((d & Direction.Running) != 0) // isRunning

@@ -224,6 +224,12 @@ namespace Server.Misc
 			if ( !m.Player || !m.Alive || m.AccessLevel > AccessLevel.Player )
 				return false;
 
+            // Fix pour les GMs en player avec .gm .
+            if (int.MaxValue == GetMaxWeight(m))
+            {
+                return false;
+            }
+
 			return ( (Mobile.BodyWeight + m.TotalWeight) > (GetMaxWeight( m ) + OverloadAllowance) );
 		}
 	}
