@@ -62,9 +62,10 @@ namespace Server.Misc
                 {
                     sw.WriteLine("====================================");
                     sw.WriteLine("EXCEPTION caught the {0}", DateTime.Now);
-                    sw.WriteLine("Catcher was {0} : line {1}", testframe.GetFileName(), testframe.GetFileLineNumber());
+                    if (testframe != null)
+                        sw.WriteLine("Catcher was {0} : line {1}", testframe.GetFileName(), testframe.GetFileLineNumber());
                     if (infos != "")
-                        sw.WriteLine("Additional infos: {0}", infos);
+                        sw.WriteLine("Additional infos: {0}", infos);                    
                     sw.WriteLine(e);
                     sw.WriteLine(catcher.ToString());
                     sw.WriteLine();

@@ -102,11 +102,16 @@ namespace Server.Engines.Identities
             get { return idCachee; }
         }
 
+        public void NewCharacterSetName()
+        {
+            baseIdentity[m_Mobile] = m_Mobile.Name;
+        }
+
         public Identities(Mobile mobile)
         {
             m_Mobile = mobile;
             baseIdentity = new Identity();
-            baseIdentity[mobile] = mobile.Name;
+            
             m_currentIdentity = baseIdentity;
             transformationIdentity = new Identity();
             idCachee = new IdentiteCachee();

@@ -1,4 +1,5 @@
 ﻿using Server.Accounting;
+using Server.Misc;
 using Server.Mobiles;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Server.Engines.Evolution
             Troisieme
         }
         
-        private Account account;
+        private string account;
         private DateTime prochainTransfert;
         private bool transfertDesactive;
 
@@ -28,7 +29,7 @@ namespace Server.Engines.Evolution
         public Experience Second { get; set; }
         public Experience Troisieme { get; set; }
 
-        public Transfert(Account acc)
+        public Transfert(string acc)
         {
             account = acc;
             ConvertTagsIntoActualTransferts();
@@ -42,11 +43,18 @@ namespace Server.Engines.Evolution
 
         private void ConvertTagsIntoActualTransferts()
         {
-            string save = account.GetTag("SavedXP1");
+            Account acc = Accounts.GetAccount(account) as Account;
+
+            if (acc == null)
+            {
+                ExceptionLogging.WriteLine(new NullReferenceException(), "Account {0} not found.", account);
+                return;
+            }
+            string save = acc.GetTag("SavedXP1");
 
             if (save != null)
             {
-                account.RemoveTag("SavedXP1");
+                acc.RemoveTag("SavedXP1");
                 if (save != "0")
                 {
                     Premier = new Experience();
@@ -58,11 +66,11 @@ namespace Server.Engines.Evolution
                 }
             }
 
-            save = account.GetTag("SavedXP2");
+            save = acc.GetTag("SavedXP2");
 
             if (save != null)
             {
-                account.RemoveTag("SavedXP2");
+                acc.RemoveTag("SavedXP2");
                 if (save != "0")
                 {
                     Second = new Experience();
@@ -74,11 +82,11 @@ namespace Server.Engines.Evolution
                 }
             }
 
-            save = account.GetTag("SavedXP3");
+            save = acc.GetTag("SavedXP3");
 
             if (save != null)
             {
-                account.RemoveTag("SavedXP3");
+                acc.RemoveTag("SavedXP3");
                 if (save != "0")
                 {
                     Troisieme = new Experience();
@@ -242,7 +250,7 @@ namespace Server.Engines.Evolution
 
             int version = reader.ReadInt();
 
-            account = Accounts.GetAccount(reader.ReadString()) as Account;
+            account = reader.ReadString();
 
             SaveFlag flags = (SaveFlag)reader.ReadInt();
 
@@ -272,7 +280,7 @@ namespace Server.Engines.Evolution
 
             writer.Write(0); // version
 
-            writer.Write(account.Username);
+            writer.Write(account);
 
             SaveFlag flags = SaveFlag.None;
 

@@ -78,14 +78,15 @@ namespace Server.Misc
 
 			bool young = false;
 
+			SetName( newChar, args.Name );
+
 			if ( newChar is PlayerMobile )
 			{
 				PlayerMobile pm = (PlayerMobile) newChar;
 
 				pm.Profession = args.Profession;
+                pm.Identities.NewCharacterSetName();
 			}
-
-			SetName( newChar, args.Name );
 
 			AddBackpack( newChar );
 

@@ -1715,14 +1715,14 @@ namespace Server.Mobiles
             if (name == null)
                 name = String.Empty;
 
-            string color = "#FFFFFF";
+            string color = "#ba52ff"; //"#FFFFFF";
 
             list.Add(1060526, String.Format("<h3><BASEFONT COLOR={0}>{1}, {2}</BASEFONT></h3>", color, name, Title)); // ~1_PREFIX~~2_NAME~~3_SUFFIX~
         }
 
         public override void SendPropertiesTo(Mobile from)
         {
-            string color = "#FFFFFF";
+            string color = "#ba52ff"; //"#FFFFFF";
 
             string displayName = GetNameUseBy(from);
             if (!CanBeginAction(typeof(IncognitoSpell)))
@@ -2248,6 +2248,19 @@ namespace Server.Mobiles
 
 			base.Damage( amount, from );
 		}
+
+        public override void OnAosSingleClick(Mobile from)
+        {
+            ObjectPropertyList opl = new ObjectPropertyList(this);
+            string name = GetNameUseBy(from);
+            opl.Add(name);
+
+            if (opl.Header > 0)
+            {
+                int hue = 11;
+                from.Send(new MessageLocalized(this.Serial, Body, MessageType.Label, hue, 3, opl.Header, name, opl.HeaderArgs));
+            }
+        }
 
 		#region Poison
 

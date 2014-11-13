@@ -149,7 +149,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 6 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( m_IsShipwreckedItem );
 
@@ -164,75 +164,20 @@ namespace Server.Items
 			writer.Write( (bool) m_Locked );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 6:
-				{
-					m_IsShipwreckedItem = reader.ReadBool();
-
-					goto case 5;
-				}
-				case 5:
-				{
-					m_TrapOnLockpick = reader.ReadBool();
-
-					goto case 4;
-				}
-				case 4:
-				{
-					m_RequiredSkill = reader.ReadInt();
-
-					goto case 3;
-				}
-				case 3:
-				{
-					m_MaxLockLevel = reader.ReadInt();
-
-					goto case 2;
-				}
-				case 2:
-				{
-					m_KeyValue = reader.ReadUInt();
-
-					goto case 1;
-				}
-				case 1:
-				{
-					m_LockLevel = reader.ReadInt();
-
-					goto case 0;
-				}
-				case 0:
-				{
-					if ( version < 3 )
-						m_MaxLockLevel = 100;
-
-					if ( version < 4 )
-					{
-						if ( (m_MaxLockLevel - m_LockLevel) == 40 )
-						{
-							m_RequiredSkill = m_LockLevel + 6;
-							m_LockLevel = m_RequiredSkill - 10;
-							m_MaxLockLevel = m_RequiredSkill + 39;
-						}
-						else
-						{
-							m_RequiredSkill = m_LockLevel;
-						}
-					}
-
-					m_Locked = reader.ReadBool();
-
-					break;
-				}
-			}
-		}
+            m_IsShipwreckedItem = reader.ReadBool();
+            m_TrapOnLockpick = reader.ReadBool();
+            m_RequiredSkill = reader.ReadInt();
+            m_MaxLockLevel = reader.ReadInt();
+            m_KeyValue = reader.ReadLong();
+            m_LockLevel = reader.ReadInt();
+            m_Locked = reader.ReadBool();
+        }
 
 		public LockableContainer( int itemID ) : base( itemID )
 		{

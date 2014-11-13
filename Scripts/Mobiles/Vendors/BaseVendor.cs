@@ -1171,7 +1171,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int)1 ); // version
+            writer.Write((int)0); // version
 
             List<SBInfo> sbInfos = this.SBInfos;
 
@@ -1208,67 +1208,58 @@ namespace Server.Mobiles
 			writer.WriteEncodedInt( 0 );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			LoadSBInfo();
+            LoadSBInfo();
 
-			List<SBInfo> sbInfos = this.SBInfos;
+            List<SBInfo> sbInfos = this.SBInfos;
 
-			switch ( version )
-			{
-				case 1:
-					{
-						int index;
+            int index;
 
-						while ( ( index = reader.ReadEncodedInt() ) > 0 )
-						{
-							int doubled = reader.ReadEncodedInt();
+            while ((index = reader.ReadEncodedInt()) > 0)
+            {
+                int doubled = reader.ReadEncodedInt();
 
-							if ( sbInfos != null )
-							{
-								index -= 1;
-								int sbInfoIndex = index % sbInfos.Count;
-								int buyInfoIndex = index / sbInfos.Count;
+                if (sbInfos != null)
+                {
+                    index -= 1;
+                    int sbInfoIndex = index % sbInfos.Count;
+                    int buyInfoIndex = index / sbInfos.Count;
 
-								if ( sbInfoIndex >= 0 && sbInfoIndex < sbInfos.Count )
-								{
-									SBInfo sbInfo = sbInfos[sbInfoIndex];
-                                    List<GenericBuyInfo> buyInfo = sbInfo.BuyInfo;
+                    if (sbInfoIndex >= 0 && sbInfoIndex < sbInfos.Count)
+                    {
+                        SBInfo sbInfo = sbInfos[sbInfoIndex];
+                        List<GenericBuyInfo> buyInfo = sbInfo.BuyInfo;
 
-									if ( buyInfo != null && buyInfoIndex >= 0 && buyInfoIndex < buyInfo.Count )
-									{
-										GenericBuyInfo gbi = (GenericBuyInfo)buyInfo[buyInfoIndex];
+                        if (buyInfo != null && buyInfoIndex >= 0 && buyInfoIndex < buyInfo.Count)
+                        {
+                            GenericBuyInfo gbi = (GenericBuyInfo)buyInfo[buyInfoIndex];
 
-										int amount = 20;
+                            int amount = 20;
 
-										switch ( doubled )
-										{
-											case 1: amount = 40; break;
-											case 2: amount = 80; break;
-											case 3: amount = 160; break;
-											case 4: amount = 320; break;
-											case 5: amount = 640; break;
-											case 6: amount = 999; break;
-										}
+                            switch (doubled)
+                            {
+                                case 1: amount = 40; break;
+                                case 2: amount = 80; break;
+                                case 3: amount = 160; break;
+                                case 4: amount = 320; break;
+                                case 5: amount = 640; break;
+                                case 6: amount = 999; break;
+                            }
 
-										gbi.Amount = gbi.MaxAmount = amount;
-									}
-								}
-							}
-						}
+                            gbi.Amount = gbi.MaxAmount = amount;
+                        }
+                    }
+                }
+            }
 
-						break;
-					}
-			}
-
-
-			if ( Core.AOS && NameHue == 0x35 )
-				NameHue = -1;
-		}
+            if (Core.AOS && NameHue == 0x35)
+                NameHue = -1;
+        }
 
 		public override void AddCustomContextEntries( Mobile from, List<ContextMenuEntry> list )
 		{

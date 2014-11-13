@@ -223,7 +223,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( (int) m_TrapLevel );
 
@@ -231,30 +231,15 @@ namespace Server.Items
 			writer.Write( (int) m_TrapType );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2:
-				{
-					m_TrapLevel = reader.ReadInt();
-					goto case 1;
-				}
-				case 1:
-				{
-					m_TrapPower = reader.ReadInt();
-					goto case 0;
-				}
-				case 0:
-				{
-					m_TrapType = (TrapType)reader.ReadInt();
-					break;
-				}
-			}
-		}
+            m_TrapLevel = reader.ReadInt();
+            m_TrapPower = reader.ReadInt();
+            m_TrapType = (TrapType)reader.ReadInt();
+        }
 	}
 }

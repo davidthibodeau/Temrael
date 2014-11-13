@@ -16,6 +16,9 @@ namespace Server.Commands
 		public static void Initialize()
 		{
 			CommandSystem.Register( "DocGen", AccessLevel.Coordinateur, new CommandEventHandler( DocGen_OnCommand ) );
+
+            CommandSystem.Register("TestMobiles", AccessLevel.Owner, new CommandEventHandler(TestMobiles_OnCommand));
+            CommandSystem.Register("TestItems", AccessLevel.Owner, new CommandEventHandler(TestItems_OnCommand));
 		}
 
 		[Usage( "DocGen" )]
@@ -47,6 +50,141 @@ namespace Server.Commands
 				Console.WriteLine( "Documentation failed." );
 			}
 		}
+
+        [Usage("TestMobiles")]
+        [Description("Creates an instance of every possible mobile to test for serialize/deserialize.")]
+        private static void TestMobiles_OnCommand(CommandEventArgs e)
+        {
+            World.Broadcast(0x35, true, "Documentation is being generated, please wait.");
+            Console.WriteLine("Documentation is being generated, please wait.");
+
+            Network.NetState.FlushAll();
+            Network.NetState.Pause();
+
+            DateTime startTime = DateTime.Now;
+
+            bool generated = Document();
+
+            DateTime endTime = DateTime.Now;
+
+            Network.NetState.Resume();
+
+            if (generated)
+            {
+                World.Broadcast(0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", (endTime - startTime).TotalSeconds);
+                Console.WriteLine("Documentation complete.");
+            }
+            else
+            {
+                World.Broadcast(0x35, true, "Docmentation failed: Documentation directories are locked and in use. Please close all open files and directories and try again.");
+                Console.WriteLine("Documentation failed.");
+            }
+        }
+
+        [Usage("TestItems")]
+        [Description("Creates an instance of every possible items to test for serialize/deserialize.")]
+        private static void TestItems_OnCommand(CommandEventArgs e)
+        {
+            World.Broadcast(0x35, true, "Documentation is being generated, please wait.");
+            Console.WriteLine("Documentation is being generated, please wait.");
+
+            Network.NetState.FlushAll();
+            Network.NetState.Pause();
+
+            DateTime startTime = DateTime.Now;
+
+            TestObjects(false, true);
+
+            DateTime endTime = DateTime.Now;
+
+            Network.NetState.Resume();
+
+            World.Broadcast(0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", (endTime - startTime).TotalSeconds);
+            Console.WriteLine("Documentation complete.");
+
+            //if (generated)
+            //{
+            //    World.Broadcast(0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", (endTime - startTime).TotalSeconds);
+            //    Console.WriteLine("Documentation complete.");
+            //}
+            //else
+            //{
+            //    World.Broadcast(0x35, true, "Docmentation failed: Documentation directories are locked and in use. Please close all open files and directories and try again.");
+            //    Console.WriteLine("Documentation failed.");
+            //}
+        }
+
+        public static void TestObjects(bool mobile, bool item)
+        {
+			m_Types = new Dictionary<Type, TypeInfo>();
+			m_Namespaces = new Dictionary<string, List<TypeInfo>>();
+
+			List<Assembly> assemblies = new List<Assembly>();
+
+			assemblies.Add( Core.Assembly );
+
+			foreach( Assembly asm in ScriptCompiler.Assemblies )
+				assemblies.Add( asm );
+
+			Assembly[] asms = assemblies.ToArray();
+
+			for( int i = 0; i < asms.Length; ++i )
+				LoadTypes( asms[i], asms );
+
+            List<TypeInfo> types = new List<TypeInfo>(m_Types.Values);
+            types.Sort(new TypeComparer());
+
+            ArrayList items = new ArrayList(), mobiles = new ArrayList();
+
+            for (int i = 0; i < types.Count; ++i)
+            {
+                Type t = types[i].m_Type;
+                bool isItem;
+
+                if (t.IsAbstract || !IsConstructable(t, out isItem))
+                    continue;
+
+                ConstructorInfo[] ctors = t.GetConstructors();
+                bool anyConstructable = false;
+
+                for (int j = 0; !anyConstructable && j < ctors.Length; ++j)
+                    anyConstructable = IsConstructable(ctors[j]);
+
+                if (anyConstructable)
+                {
+                    (isItem ? items : mobiles).Add(t);
+                    (isItem ? items : mobiles).Add(ctors);
+                }
+            }
+            if (item)
+            {
+                using (StreamWriter sw = new StreamWriter("testItems.log"))
+                {
+                    for (int i = 0; i < items.Count; i += 2)
+                    {
+                        ConstructorInfo[] ci = (ConstructorInfo[])items[i + 1];
+                        try
+                        {
+                            Item it = ci[0].Invoke(new object[0]) as Item;
+                            if (it != null)
+                            {
+                                it.MoveToWorld(new Point3D(1000, 2000, 10), Map.Felucca);
+
+                                sw.WriteLine(it.GetType().ToString() + " succeeded.");
+
+                            }
+                            else
+                                sw.WriteLine(((Type)items[i]).ToString() + " failed.");
+                        }
+                        catch
+                        {
+                            sw.WriteLine(((Type)items[i]).ToString() + " failed.");
+                        }
+                        //(Type)items[i] (ConstructorInfo[])items[i + 1] )
+                    }
+                }
+            }
+        }
 
 		private class MemberComparer : IComparer
 		{

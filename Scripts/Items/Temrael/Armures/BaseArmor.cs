@@ -433,9 +433,6 @@ namespace Server.Items
             if (GetSaveFlag(flags, SaveFlag.Quality))
                 writer.WriteEncodedInt((int)m_Quality);
 
-            if (GetSaveFlag(flags, SaveFlag.Durability))
-                writer.WriteEncodedInt((int)m_Durability);
-
             if (GetSaveFlag(flags, SaveFlag.Resource))
                 writer.WriteEncodedInt((int)m_Resource);
 

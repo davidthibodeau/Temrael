@@ -1270,7 +1270,7 @@ namespace Server.Mobiles
         {
             base.Serialize(writer);
 
-            writer.Write((int)4); //version
+            writer.Write((int)0); //version
 
             writer.Write(m_SpeechSalutation);
             writer.Write(m_SpeechAurevoir);
@@ -1294,46 +1294,22 @@ namespace Server.Mobiles
             Item i1 = null;
             Item i2 = null;
 
-            switch (version)
-            {
-                case 4:
-                    {
-                        m_SpeechSalutation = reader.ReadBool();
-                        m_SpeechAurevoir = reader.ReadBool();
-                        m_SpeechOccupation = reader.ReadBool();
-                        m_SpeechPresentation = reader.ReadBool();
-                        m_SpeechTemperature = reader.ReadBool();
-                        m_SpeechRumeur = reader.ReadBool();
-                        m_SpeechFamille = reader.ReadBool();
-                        goto case 3;
-                    }
-                case 3:
-                    {
-                        m_tagText = reader.ReadString();
-                        goto case 2;
-                    }
-                case 2:
-                    {
-                        i1 = reader.ReadItem();
-                        i2 = reader.ReadItem();
-                        goto case 1;
-                    }
-                case 1:
-                    {
-                        m_attitude = (Attitude)reader.ReadInt();
-                        m_wealth = (Wealth)reader.ReadInt();
-                        break;
-                    }
-                case 0:
-                    {
-                        // obsolete version
-                        break;
-                    }
-            }
+            m_SpeechSalutation = reader.ReadBool();
+            m_SpeechAurevoir = reader.ReadBool();
+            m_SpeechOccupation = reader.ReadBool();
+            m_SpeechPresentation = reader.ReadBool();
+            m_SpeechTemperature = reader.ReadBool();
+            m_SpeechRumeur = reader.ReadBool();
+            m_SpeechFamille = reader.ReadBool();
+            m_tagText = reader.ReadString();
+            i1 = reader.ReadItem();
+            i2 = reader.ReadItem();
+            m_attitude = (Attitude)reader.ReadInt();
+            m_wealth = (Wealth)reader.ReadInt();
 
             if (i1 != null && i1 is BaseWeapon)
                 m_weapon = (BaseWeapon)i1;
-            
+
             if (i2 != null && i2 is BaseWeapon)
                 m_staff = (BaseWeapon)i2;
 

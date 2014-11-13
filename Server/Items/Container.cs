@@ -1292,7 +1292,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)0); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -1313,69 +1313,33 @@ namespace Server.Items
 				writer.WriteEncodedInt( (int) m_DropSound );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2:
-				{
-					SaveFlag flags = (SaveFlag)reader.ReadByte();
+            SaveFlag flags = (SaveFlag)reader.ReadByte();
 
-					if ( GetSaveFlag( flags, SaveFlag.MaxItems ) )
-						m_MaxItems = reader.ReadEncodedInt();
-					else
-						m_MaxItems = -1;
+            if (GetSaveFlag(flags, SaveFlag.MaxItems))
+                m_MaxItems = reader.ReadEncodedInt();
+            else
+                m_MaxItems = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.GumpID ) )
-						m_GumpID = reader.ReadEncodedInt();
-					else
-						m_GumpID = -1;
+            if (GetSaveFlag(flags, SaveFlag.GumpID))
+                m_GumpID = reader.ReadEncodedInt();
+            else
+                m_GumpID = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.DropSound ) )
-						m_DropSound = reader.ReadEncodedInt();
-					else
-						m_DropSound = -1;
+            if (GetSaveFlag(flags, SaveFlag.DropSound))
+                m_DropSound = reader.ReadEncodedInt();
+            else
+                m_DropSound = -1;
 
-					m_LiftOverride = GetSaveFlag( flags, SaveFlag.LiftOverride );
+            m_LiftOverride = GetSaveFlag(flags, SaveFlag.LiftOverride);
 
-					break;
-				}
-				case 1:
-				{
-					m_MaxItems = reader.ReadInt();
-					goto case 0;
-				}
-				case 0:
-				{
-					if ( version < 1 )
-						m_MaxItems = m_GlobalMaxItems;
-
-					m_GumpID = reader.ReadInt();
-					m_DropSound = reader.ReadInt();
-
-					if ( m_GumpID == DefaultGumpID )
-						m_GumpID = -1;
-
-					if ( m_DropSound == DefaultDropSound )
-						m_DropSound = -1;
-
-					if ( m_MaxItems == DefaultMaxItems )
-						m_MaxItems = -1;
-
-					//m_Bounds = new Rectangle2D( reader.ReadPoint2D(), reader.ReadPoint2D() );
-					reader.ReadPoint2D();
-					reader.ReadPoint2D();
-
-					break;
-				}
-			}
-
-			UpdateContainerData();
-		}
+            UpdateContainerData();
+        }
 
 		private static int m_GlobalMaxItems = 125;
 		private static int m_GlobalMaxWeight = 400;

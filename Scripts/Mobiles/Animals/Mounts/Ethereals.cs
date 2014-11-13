@@ -161,7 +161,7 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int)3 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( m_IsDonationItem );
 
@@ -175,34 +175,18 @@ namespace Server.Mobiles
 			base.Deserialize( reader );
 			LootType = LootType.Blessed;
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch( version )
-			{
-				case 3:
-				{
-					m_IsDonationItem = reader.ReadBool();
-					goto case 2;
-				}
-				case 2:
-				{
-					reader.ReadBool();
-					goto case 0;
-				}
-				case 1: reader.ReadInt(); goto case 0;
-				case 0:
-				{
-					m_MountedID = reader.ReadInt();
-					m_RegularID = reader.ReadInt();
-					m_Rider = reader.ReadMobile();
+            m_IsDonationItem = reader.ReadBool();
 
-					if( m_MountedID == 0x3EA2 )
-						m_MountedID = 0x3EAA;
+            m_MountedID = reader.ReadInt();
+            m_RegularID = reader.ReadInt();
+            m_Rider = reader.ReadMobile();
 
-					break;
-				}
-			}
+            if (m_MountedID == 0x3EA2)
+                m_MountedID = 0x3EAA;
 
+		
 			AddFollowers();
 
 			if( version < 3 && Weight == 0 )

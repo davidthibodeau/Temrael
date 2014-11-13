@@ -51,7 +51,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( m_CanModifyBooks );
 		}
@@ -62,11 +62,7 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 0: m_CanModifyBooks = reader.ReadBool();
-                    break;
-			}
+            m_CanModifyBooks = reader.ReadBool();
 		}
 
 		public BookCaseContainer( int itemID ) 

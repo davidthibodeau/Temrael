@@ -1748,9 +1748,6 @@ namespace Server.Mobiles
 
             m_dMinTameSkill = reader.ReadDouble();
 
-            if (version < 9)
-                reader.ReadDouble();
-
             m_bTamable = reader.ReadBool();
             m_bSummoned = reader.ReadBool();
 
@@ -1789,7 +1786,8 @@ namespace Server.Mobiles
 
             m_HasGeneratedLoot = reader.ReadBool();
 
-            m_Friends = reader.ReadStrongMobileList();
+            if (reader.ReadBool())
+                m_Friends = reader.ReadStrongMobileList();
 
             Quete = new MonstreQueteInfo(reader);
 

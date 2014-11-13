@@ -521,7 +521,7 @@ namespace Server.Accounting
 
 			m_IPRestrictions = new string[0];
 			m_LoginIPs = new IPAddress[0];
-            m_Transfert = new Transfert(this);
+            m_Transfert = new Transfert(username);
 
 			Accounts.Add( this );
 		}
@@ -747,7 +747,7 @@ namespace Server.Accounting
             int serial = Utility.GetXMLInt32(Utility.GetText(node["transfert"], null), -1);
 
             if (serial == -1)
-                return new Transfert(this);
+                return new Transfert(Username);
             else
                 return World.FindItem(serial) as Transfert;
         }
@@ -1031,9 +1031,12 @@ namespace Server.Accounting
 				xml.WriteEndElement();
 			}
 
-            xml.WriteStartElement("transfert");
-            xml.WriteString(m_Transfert.Serial.Value.ToString());
-			xml.WriteEndElement();
+            if (m_Transfert != null)
+            {
+                xml.WriteStartElement("transfert");
+                xml.WriteString(m_Transfert.Serial.Value.ToString());
+                xml.WriteEndElement();
+            }
 
 			xml.WriteEndElement();
 		}
