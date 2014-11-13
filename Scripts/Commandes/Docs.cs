@@ -17,8 +17,8 @@ namespace Server.Commands
 		{
 			CommandSystem.Register( "DocGen", AccessLevel.Coordinateur, new CommandEventHandler( DocGen_OnCommand ) );
 
-            CommandSystem.Register("TestMobiles", AccessLevel.Owner, new CommandEventHandler(TestMobiles_OnCommand));
-            CommandSystem.Register("TestItems", AccessLevel.Owner, new CommandEventHandler(TestItems_OnCommand));
+            //CommandSystem.Register("TestMobiles", AccessLevel.Owner, new CommandEventHandler(TestMobiles_OnCommand));
+            //CommandSystem.Register("TestItems", AccessLevel.Owner, new CommandEventHandler(TestItems_OnCommand));
 		}
 
 		[Usage( "DocGen" )]
@@ -63,22 +63,15 @@ namespace Server.Commands
 
             DateTime startTime = DateTime.Now;
 
-            bool generated = Document();
+            TestObjects(true, false);
 
             DateTime endTime = DateTime.Now;
 
             Network.NetState.Resume();
 
-            if (generated)
-            {
-                World.Broadcast(0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", (endTime - startTime).TotalSeconds);
-                Console.WriteLine("Documentation complete.");
-            }
-            else
-            {
-                World.Broadcast(0x35, true, "Docmentation failed: Documentation directories are locked and in use. Please close all open files and directories and try again.");
-                Console.WriteLine("Documentation failed.");
-            }
+            World.Broadcast(0x35, true, "Documentation has been completed. The entire process took {0:F1} seconds.", (endTime - startTime).TotalSeconds);
+            Console.WriteLine("Documentation complete.");
+
         }
 
         [Usage("TestItems")]
@@ -156,6 +149,7 @@ namespace Server.Commands
                     (isItem ? items : mobiles).Add(ctors);
                 }
             }
+
             if (item)
             {
                 using (StreamWriter sw = new StreamWriter("testItems.log"))
@@ -179,6 +173,34 @@ namespace Server.Commands
                         catch
                         {
                             sw.WriteLine(((Type)items[i]).ToString() + " failed.");
+                        }
+                        //(Type)items[i] (ConstructorInfo[])items[i + 1] )
+                    }
+                }
+            }
+            if (mobile)
+            {
+                using (StreamWriter sw = new StreamWriter("testMobile.log"))
+                {
+                    for (int i = 0; i < mobiles.Count; i += 2)
+                    {
+                        ConstructorInfo[] ci = (ConstructorInfo[])mobiles[i + 1];
+                        try
+                        {
+                            Mobile it = ci[0].Invoke(new object[0]) as Mobile;
+                            if (it != null)
+                            {
+                                it.MoveToWorld(new Point3D(1000, 2000, 10), Map.Felucca);
+
+                                sw.WriteLine(it.GetType().ToString() + " succeeded.");
+
+                            }
+                            else
+                                sw.WriteLine(((Type)mobiles[i]).ToString() + " failed.");
+                        }
+                        catch
+                        {
+                            sw.WriteLine(((Type)mobiles[i]).ToString() + " failed.");
                         }
                         //(Type)items[i] (ConstructorInfo[])items[i + 1] )
                     }

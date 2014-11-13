@@ -155,50 +155,35 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( (int) m_MaxRange );
 
 			writer.Write( (Item) m_Link );
 
 			writer.Write( (string) m_Description );
-			writer.Write( (uint) m_KeyVal );
+            writer.Write(m_KeyVal);
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2:
-				{
-					m_MaxRange = reader.ReadInt();
+            m_MaxRange = reader.ReadInt();
 
-					goto case 1;
-				}
-				case 1:
-				{
-					m_Link = reader.ReadItem();
+            m_Link = reader.ReadItem();
 
-					goto case 0;
-				}
-				case 0:
-				{
-					if ( version < 2 || m_MaxRange == 0 )
-						m_MaxRange = 3;
+            if (version < 2 || m_MaxRange == 0)
+                m_MaxRange = 3;
 
-					m_Description = reader.ReadString();
+            m_Description = reader.ReadString();
 
-					m_KeyVal = reader.ReadLong();
+            m_KeyVal = reader.ReadLong();
 
-					break;
-				}
-			}
             LootType = LootType.Blessed;
-		}
+        }
 
 		[Constructable]
 		public Key() : this( KeyType.Iron, 0 )
