@@ -21,6 +21,8 @@ namespace Server.Mobiles.Monsters
 			SetHits( 200, 400 );
 			SetMana( 0 );
 
+            PlayersAreEnemies = true;
+
 			SetDamage( 5, 25 );
 
 			SetDamageType( ResistanceType.Physical, 100 );

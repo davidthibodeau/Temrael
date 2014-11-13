@@ -97,7 +97,9 @@
     <Compile Include="Custom\Army System\ArmyAI.cs" />
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
+    <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
+    <Compile Include="Engines\Combat\StrategyMonstre.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
     <Compile Include="Engines\Hiding\Detection.cs" />
     <Compile Include="Engines\Mort\Auxiliaires.cs" />

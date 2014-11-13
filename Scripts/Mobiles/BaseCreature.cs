@@ -11,6 +11,7 @@ using Server.ContextMenus;
 using Server.Engines.PartySystem;
 
 using Server.Engines.Quetes;
+using Server.Engines.Combat;
 
 
 namespace Server.Mobiles
@@ -3160,6 +3161,10 @@ namespace Server.Mobiles
 		}
 
 		#region Set[...]
+        public void SetArme(int min, int max, int speed)
+        {
+            AddItem(new ArmeMonstre(min, max, speed));
+        }
 
 		public void SetDamage( int val )
 		{
