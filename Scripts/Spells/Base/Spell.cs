@@ -97,7 +97,7 @@ namespace Server.Spells
                     chance += pm.Skills[SkillName.Meditation].Value / 333;
 
                     if (this is NecromancerSpell) //La nécro est une école de contact, donc besoin d'un bonus pour ne pas Fizzle
-                        chance += pm.Skills[SkillName.Necromancie].Value / 333;
+                        chance += pm.Skills[SkillName.Animisme].Value / 333;
                 }
                 if (chance > Utility.RandomDouble())
                     Caster.SendMessage("Vous réussissez à garder votre concentration.");
@@ -488,7 +488,7 @@ namespace Server.Spells
                              + atk.Skills[SkillName.Thaumaturgie].Value
                              + atk.Skills[SkillName.Hallucination].Value
                              + atk.Skills[SkillName.Ensorcellement].Value
-                             + atk.Skills[SkillName.Necromancie].Value;
+                             + atk.Skills[SkillName.Animisme].Value;
 
                 Scaling += (value * ScalScndBranche / 100);
             }

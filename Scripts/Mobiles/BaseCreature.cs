@@ -394,7 +394,7 @@ namespace Server.Mobiles
 		#region Bonding
 		public const bool BondingEnabled = true;
 
-		public virtual bool IsNecromancer { get { return ( Skills[ SkillName.Necromancie ].Value > 50 ); } }
+		public virtual bool IsNecromancer { get { return ( Skills[ SkillName.Animisme ].Value > 50 ); } }
 
 		public virtual bool IsBondable{ get{ return ( BondingEnabled && !Summoned ); } }
 		public virtual TimeSpan BondingDelay{ get{ return TimeSpan.FromDays( 7.0 ); } }
@@ -3405,9 +3405,6 @@ namespace Server.Mobiles
 		{
 			m_Spawning = spawning;
 
-			if ( !spawning )
-				m_KillersLuck = LootPack.GetLuckChanceForKiller( this );
-
 			GenerateLoot();
 
 			m_Spawning = false;
@@ -3440,7 +3437,7 @@ namespace Server.Mobiles
 				AddItem( backpack );
 			}
 
-			pack.Generate( this, backpack, m_Spawning, m_KillersLuck );
+			pack.Generate( this, backpack, m_Spawning );
 		}
 
 		public bool PackArmor( int minLevel, int maxLevel )

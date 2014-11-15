@@ -39,16 +39,6 @@ namespace Server.Mobiles
 			return 1134;
 		}
 
-		public override void GenerateLoot()
-        {
-            //AddLoot(LootPack.Foods, Utility.RandomMinMax(2, 3));
-            //AddLoot(LootPack.Others, Utility.RandomMinMax(2, 3));
-            //AddLoot(LootPack.NormalReagents, Utility.RandomMinMax(8, 12));
-            AddLoot(LootPack.LowScrolls, Utility.RandomMinMax(1, 2));
-
-            PackGold(90, 110);
-        }
-
 		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
 
 		public WispBete( Serial serial ) : base( serial )

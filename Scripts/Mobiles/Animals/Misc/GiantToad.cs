@@ -39,11 +39,6 @@ namespace Server.Mobiles
 			MinTameSkill = 40.0;
 		}
 
-		public override void GenerateLoot()
-		{
-			AddLoot( LootPack.Poor );
-		}
-
         public override double AttackSpeed { get { return 2.5; } }
 		public override int Hides{ get{ return 6; } }
 		public override HideType HideType{ get{ return HideType.Regular; } }

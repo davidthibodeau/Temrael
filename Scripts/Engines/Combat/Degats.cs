@@ -41,13 +41,17 @@ namespace Server.Engines.Combat
 
         public double GetDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
         {
-            return BaseDegatsMagiques(cercle, tempsCast) * (1 + Spell.GetSpellScaling(atk, branche));
+            return BaseDegatsMagique(tempsCast) * (1 + Spell.GetSpellScaling(atk, branche)) * ScalingCat(cercle);
         }
 
-        private double BaseDegatsMagiques(short cercle, TimeSpan tempsCast)
+        private double BaseDegatsMagique(TimeSpan tempsCast)
         {
-            // Calcul de la fiche Excel.
-            return (((((ScalingCategorie / NbTotalCercles) * cercle) + 1) * DPSBASE) * tempsCast.Seconds);
+            return DPSBASE * tempsCast.Seconds;
+        }
+
+        private double ScalingCat(short cercle)
+        {
+            return (((ScalingCategorie / NbTotalCercles) * cercle) + 1);
         }
         #endregion
 

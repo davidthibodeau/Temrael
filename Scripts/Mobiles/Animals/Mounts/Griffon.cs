@@ -135,12 +135,6 @@ namespace Server.Mobiles
 			return 0x4FB;
 		}
 
-		public override void GenerateLoot()
-		{
-			AddLoot( LootPack.FilthyRich, 3 );
-			AddLoot( LootPack.Gems, 4 );
-		}
-
 		public override int TreasureMapLevel { get { return 5; } }
 		public override int Meat { get { return 16; } }
 		public override int Hides { get { return 60; } }

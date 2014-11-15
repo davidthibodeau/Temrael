@@ -69,14 +69,6 @@ namespace Server.Mobiles
 			PackItem( new SulfurousAsh( Utility.RandomMinMax( 3, 5 ) ) );
 		}
 
-		public override void GenerateLoot()
-		{
-			AddLoot( LootPack.Rich );
-			AddLoot( LootPack.Average );
-			//AddLoot( LootPack.LowScrolls );
-			AddLoot( LootPack.Potions );
-		}
-
 		public override int GetAngerSound()
 		{
 			if ( !Controlled )

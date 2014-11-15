@@ -36,11 +36,6 @@ namespace Server.Mobiles
 			MinTameSkill = 97.0;
 		}
 
-		public override void GenerateLoot()
-		{
-			AddLoot( LootPack.AosUltraRich, 3 );
-		}
-
 		public override WeaponAbility GetWeaponAbility()
 		{
 			return WeaponAbility.ParalyzingBlow;

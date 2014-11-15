@@ -37,7 +37,7 @@ namespace Server.Mobiles.Monsters
 
 		public override void GenerateLoot()
 		{
-			AddLoot( LootPack.Meager );
+            AddLoot(LootPack.Food);
     	}
 
         public override bool AlwaysMurderer { get { return true; } }

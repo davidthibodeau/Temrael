@@ -87,13 +87,6 @@ namespace Server.Mobiles
 			MinTameSkill = 97.0;
 		}
 
-		public override void GenerateLoot()
-		{
-			AddLoot( LootPack.Rich );
-			//AddLoot( LootPack.LowScrolls );
-			AddLoot( LootPack.Potions );
-		}
-
 		public override Poison PoisonImmune{ get{ return Poison.Lethal; } }
 		public override int Meat{ get{ return 3; } }
 		public override int Hides{ get{ return 10; } }

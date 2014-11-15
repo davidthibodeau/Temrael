@@ -282,7 +282,7 @@ namespace Server.Gumps
             SkillName.Thaumaturgie,
             SkillName.Hallucination,
             SkillName.Ensorcellement,
-            SkillName.Necromancie
+            SkillName.Animisme
         };
 
         //public Hashtable m_NameColors = new Hashtable();
@@ -306,7 +306,7 @@ namespace Server.Gumps
             m_Names[SkillName.Thaumaturgie] = "Thaumaturgie";
             m_Names[SkillName.Hallucination] = "Hallucination";
             m_Names[SkillName.Ensorcellement] = "Ensorcellement";
-            m_Names[SkillName.Necromancie] = "Necromancie";
+            m_Names[SkillName.Animisme] = "Necromancie";
         }
         #endregion
 

@@ -108,7 +108,7 @@ namespace Server.Spells
 			AddHtmlLocalized( 30, 26, 200, 20, 1060147, EnabledColor16, false, false ); // Chose thy familiar...
 
             double necro = from.Skills[SkillName.ArtMagique].Base;
-			double spirit = from.Skills[SkillName.Necromancie].Base;
+			double spirit = from.Skills[SkillName.Animisme].Base;
 
 			for ( int i = 0; i < entries.Length; ++i )
 			{
@@ -136,7 +136,7 @@ namespace Server.Spells
 				FamilierEntry entry = m_Entries[index];
 
                 double necro = m_From.Skills[SkillName.ArtMagique].Base;
-				double spirit = m_From.Skills[SkillName.Necromancie].Base;
+				double spirit = m_From.Skills[SkillName.Animisme].Base;
 
                 //BaseCreature check = (BaseCreature)FamilierSpell.Table[m_From];
 
@@ -172,7 +172,7 @@ namespace Server.Spells
 
 						bc.Skills.Concentration = m_From.Skills.Concentration;
 
-						if ( BaseCreature.Summon( bc, m_From, m_From.Location, -1, TimeSpan.FromSeconds(10 + m_From.Skills[SkillName.Necromancie].Base * 2.4) ) )
+						if ( BaseCreature.Summon( bc, m_From, m_From.Location, -1, TimeSpan.FromSeconds(10 + m_From.Skills[SkillName.Animisme].Base * 2.4) ) )
 						{
 							m_From.FixedParticles( 0x3728, 1, 10, 9910, EffectLayer.Head );
 							bc.PlaySound( bc.GetIdleSound() );

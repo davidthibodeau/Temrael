@@ -26,7 +26,7 @@ namespace Server.Mobiles
 
             SetDamage(50, 55);
 
-            SetSkill(SkillName.Necromancie, 83.1, 85.5);
+            SetSkill(SkillName.Animisme, 83.1, 85.5);
             SetSkill(SkillName.ArtMagique, 83.0, 85.5);
             SetSkill(SkillName.Concentration, 73.1, 75.0);
             SetSkill(SkillName.Tactiques, 62.1, 64.0);

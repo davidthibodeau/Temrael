@@ -21,7 +21,7 @@ namespace Server.Spells
                 9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(1),
-                SkillName.Necromancie,
+                SkillName.Animisme,
 				Reagent.GraveDust,
 				Reagent.DaemonBlood,
                 Reagent.NoxCrystal,
@@ -57,7 +57,7 @@ namespace Server.Spells
 
 		public override void OnCast()
         {
-            double skill = (Caster.Skills[SkillName.ArtMagique].Base + Caster.Skills[SkillName.Necromancie].Base) / 2;
+            double skill = (Caster.Skills[SkillName.ArtMagique].Base + Caster.Skills[SkillName.Animisme].Base) / 2;
 
             if (CheckSequence())
             {

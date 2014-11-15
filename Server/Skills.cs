@@ -75,7 +75,7 @@ namespace Server
         Thaumaturgie,
         Hallucination,
         Ensorcellement,
-        Necromancie,
+        Animisme,
         Meditation,
         Inscription,
         MagieDeGuerre,
@@ -660,7 +660,7 @@ namespace Server
                 new SkillInfo( SkillName.Thaumaturgie,      "Thaumaturgie",     SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
                 new SkillInfo( SkillName.Hallucination,     "Hallucination",    SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
                 new SkillInfo( SkillName.Ensorcellement,    "Ensorcellement",   SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
-                new SkillInfo( SkillName.Necromancie,       "Necromancie",      SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
+                new SkillInfo( SkillName.Animisme,       "Necromancie",      SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	1.5,	1.0 ),
                 new SkillInfo( SkillName.Meditation,      "Meditation",			SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	1.5,	1.0 ),
 				new SkillInfo( SkillName.Inscription,     "Inscription",		SkillCategory.Magie,	0.0,	2.0,	8.0,	null,	0.0,	0.2,	0.8,	1.0 ),
                 new SkillInfo( SkillName.MagieDeGuerre,   "Magie de Guerre",	SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	1.5,	1.0 ),
@@ -819,7 +819,7 @@ namespace Server
         [CommandProperty(AccessLevel.Counselor)]
         public Skill Ensorcellement { get { return this[SkillName.Ensorcellement]; } set { } }
         [CommandProperty(AccessLevel.Counselor)]
-        public Skill Necromancie { get { return this[SkillName.Necromancie]; } set { } }
+        public Skill Animisme { get { return this[SkillName.Animisme]; } set { } }
 
 
         [CommandProperty(AccessLevel.Counselor)]

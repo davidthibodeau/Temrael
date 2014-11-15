@@ -18,7 +18,7 @@ namespace Server.Spells
                 9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(1),
-                SkillName.Necromancie,
+                SkillName.Animisme,
 				Reagent.Nightshade
             );
 
@@ -56,7 +56,7 @@ namespace Server.Spells
                 {*/
                     int level;
 
-                    double total = Caster.Skills[SkillName.Necromancie].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
+                    double total = Caster.Skills[SkillName.Animisme].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
 
                     //double dist = Caster.GetDistanceToSqrt(m);
 

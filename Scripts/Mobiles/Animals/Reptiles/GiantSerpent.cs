@@ -44,11 +44,6 @@ namespace Server.Mobiles
 			// TODO: Body parts
 		}
 
-		public override void GenerateLoot()
-		{
-			AddLoot( LootPack.Average );
-		}
-
         public override bool AlwaysMurderer { get { return true; } }
         public override double AttackSpeed { get { return 3.0; } }
 		public override Poison PoisonImmune{ get{ return Poison.Greater; } }

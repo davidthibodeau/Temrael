@@ -61,7 +61,7 @@ namespace Server.Spells
 
                 int level;
 
-                double total = Caster.Skills[SkillName.Necromancie].Value; // + Caster.Skills[SkillName.Empoisonner].Value;
+                double total = Caster.Skills[SkillName.Animisme].Value; // + Caster.Skills[SkillName.Empoisonner].Value;
 
                 if (total >= 90.0)
                     level = 3;
@@ -163,7 +163,7 @@ namespace Server.Spells
 
                 m_NextHit = DateTime.Now + TimeSpan.FromSeconds(m_HitDelay);
 
-                double toDamage = 5 + (10 * ((m_Caster.Skills[SkillName.ArtMagique].Value + m_Caster.Skills[SkillName.Necromancie].Value) / 200));
+                double toDamage = 5 + (10 * ((m_Caster.Skills[SkillName.ArtMagique].Value + m_Caster.Skills[SkillName.Animisme].Value) / 200));
 
                 m_Target.Damage((int)toDamage);
             }

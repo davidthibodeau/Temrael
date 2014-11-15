@@ -45,11 +45,6 @@ namespace Server.Mobiles
             PackItem(new Nightshade());
 		}
 
-		public override void GenerateLoot()
-		{
-			AddLoot( LootPack.Meager );
-		}
-
         public override bool AlwaysMurderer { get { return true; } }
         public override double AttackSpeed { get { return 3.0; } }
 		public override int Meat{ get{ return 1; } }

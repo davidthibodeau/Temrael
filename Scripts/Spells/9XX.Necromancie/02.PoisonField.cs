@@ -21,7 +21,7 @@ namespace Server.Spells
                 9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(1),
-                SkillName.Necromancie,
+                SkillName.Animisme,
                 Reagent.BlackPearl,
                 Reagent.Nightshade,
                 Reagent.SpidersSilk
@@ -174,7 +174,7 @@ namespace Server.Spells
 
                 Poison p;
 
-                double total = m_Caster.Skills[SkillName.Necromancie].Value;
+                double total = m_Caster.Skills[SkillName.Animisme].Value;
 
                 if (total >= 100)
                     p = Poison.Deadly;

@@ -54,7 +54,7 @@ namespace Server.Spells
 
 				if ( targ.Locked/* && targ.LockLevel != 0 */)
 				{
-					double level = Caster.Skills[SkillName.Necromancie].Value;
+					double level = Caster.Skills[SkillName.Animisme].Value;
 
                     level = SpellHelper.AdjustValue(Caster, level);
 

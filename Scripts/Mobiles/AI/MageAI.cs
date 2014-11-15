@@ -332,7 +332,7 @@ namespace Server.Mobiles
 			return spell;
 		}
 
-		public virtual double myNecro { get { return m_Mobile.Skills[ SkillName.Necromancie ].Value; } }
+		public virtual double myNecro { get { return m_Mobile.Skills[ SkillName.Animisme ].Value; } }
 
 		public virtual double myMagery { get { return m_Mobile.Skills[ SkillName.ArtMagique ].Value; } }
 

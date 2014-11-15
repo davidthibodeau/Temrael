@@ -21,7 +21,7 @@ namespace Server.Spells
 				9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(1),
-                SkillName.Necromancie,
+                SkillName.Animisme,
 				Reagent.BatWing,
 				Reagent.GraveDust,
 				Reagent.DaemonBlood
@@ -136,7 +136,7 @@ namespace Server.Spells
 			AddHtml( 30, 26, 200, 20, "Choisissez le familier...", false, false ); // Chose thy familiar...
 
             double necro = from.Skills[SkillName.ArtMagique].Base;
-			double spirit = from.Skills[SkillName.Necromancie].Base;
+			double spirit = from.Skills[SkillName.Animisme].Base;
 
 			for ( int i = 0; i < entries.Length; ++i )
 			{
@@ -164,7 +164,7 @@ namespace Server.Spells
 				SummonFamiliarEntry entry = m_Entries[index];
 
                 double necro = m_From.Skills[SkillName.ArtMagique].Base;
-				double spirit = m_From.Skills[SkillName.Necromancie].Base;
+				double spirit = m_From.Skills[SkillName.Animisme].Base;
 
 				//BaseCreature check = (BaseCreature)SummonFamiliarSpell.Table[m_From];
 
@@ -199,7 +199,7 @@ namespace Server.Spells
                         {
                             PlayerMobile tmob = (PlayerMobile)m_From;
 
-                            double duration = (2 * m_From.Skills.Necromancie.Fixed) / 5;
+                            double duration = (2 * m_From.Skills.Animisme.Fixed) / 5;
 
                             if (BaseCreature.Summon(bc, m_From, m_From.Location, -1, TimeSpan.FromMinutes(duration)))
                             {
