@@ -14,16 +14,56 @@ namespace Server
 	{
         //public static void Initialize()
         //{
-        //    CommandSystem.Register( "Freeze", AccessLevel.Administrator, new CommandEventHandler( Freeze_OnCommand ) );
-        //    CommandSystem.Register( "FreezeMap", AccessLevel.Administrator, new CommandEventHandler( FreezeMap_OnCommand ) );
-        //    CommandSystem.Register( "FreezeWorld", AccessLevel.Administrator, new CommandEventHandler( FreezeWorld_OnCommand ) );
+        //    CommandSystem.Register("Freeze", AccessLevel.Owner, new CommandEventHandler(Freeze_OnCommand));
+        //    CommandSystem.Register("FreezeMap", AccessLevel.Owner, new CommandEventHandler(FreezeMap_OnCommand));
+        //    CommandSystem.Register("FreezeWorld", AccessLevel.Owner, new CommandEventHandler(FreezeWorld_OnCommand));
 
-        //    CommandSystem.Register( "Unfreeze", AccessLevel.Administrator, new CommandEventHandler( Unfreeze_OnCommand ) );
-        //    CommandSystem.Register( "UnfreezeMap", AccessLevel.Administrator, new CommandEventHandler( UnfreezeMap_OnCommand ) );
-        //    CommandSystem.Register( "UnfreezeWorld", AccessLevel.Administrator, new CommandEventHandler( UnfreezeWorld_OnCommand ) );
+        //    CommandSystem.Register("Unfreeze", AccessLevel.Owner, new CommandEventHandler(Unfreeze_OnCommand));
+        //    CommandSystem.Register("UnfreezeMap", AccessLevel.Owner, new CommandEventHandler(UnfreezeMap_OnCommand));
+        //    CommandSystem.Register("UnfreezeWorld", AccessLevel.Owner, new CommandEventHandler(UnfreezeWorld_OnCommand));
+
+        //    CommandSystem.Register("converthue", AccessLevel.Owner, new CommandEventHandler(ConvertHueTo0));
         //}
 
 		private static Point3D NullP3D = new Point3D( int.MinValue, int.MinValue, int.MinValue );
+
+        public static void ConvertHueTo0(CommandEventArgs e)
+        {
+            int y = 0;
+
+            using (StreamWriter writer = new StreamWriter("converthue.log"))
+            {
+                foreach (Item i in World.Items.Values)
+                {
+                    switch (i.ItemID)
+                    {
+                        case 0x3ad4:
+                        case 0x3a9f:
+                        case 0x3aab:
+                        case 0x3aae:
+                        case 0x3aa5:
+                        case 0x3aa7:
+                        case 0x3aa3:
+                        case 0x3aba:
+                        case 0x3ab6:
+                        case 0x3ab8:
+                        case 0x3abd:
+                            if (i.Hue == 0)
+                            {
+                                writer.WriteLine("ItemID {0} not coloured.", i.ItemID);
+                            }
+                            else
+                            {
+                                y++;
+                                i.Hue = 0;
+                            }
+                            break;
+                    }
+                }
+                writer.WriteLine("========================");
+                writer.WriteLine("{0} arbres convertis.", y);
+            }
+        }
 
 		[Usage( "Freeze" )]
 		[Description( "Makes a targeted area of dynamic items static." )]

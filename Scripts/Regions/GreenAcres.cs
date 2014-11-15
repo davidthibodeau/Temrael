@@ -7,7 +7,7 @@ using Server.Spells;
 
 namespace Server.Regions
 {
-	public class GreenAcres : BaseRegion
+	public class GreenAcres : ZoneInterne
 	{
 		public GreenAcres( XmlElement xml, Map map, Region parent ) : base( xml, map, parent )
 		{
