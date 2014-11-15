@@ -176,7 +176,7 @@ namespace Server.Regions
 		{
 			BaseGuard useGuard = null;
 
-			foreach ( Mobile m in focus.GePlayerMobilesInRange( 8 ) )
+			foreach ( Mobile m in focus.GetMobilesInRange( 8 ) )
 			{
 				if ( m is BaseGuard )
 				{
@@ -271,7 +271,7 @@ namespace Server.Regions
 						Mobile fakeCall = null;
 						double prio = 0.0;
 
-						foreach ( Mobile v in m.GePlayerMobilesInRange( 8 ) )
+						foreach ( Mobile v in m.GetMobilesInRange( 8 ) )
 						{
 							if( !v.Player && v != m  && !IsGuardCandidate( v ) && ((v is BaseCreature)? ((BaseCreature)v).IsHumanInTown() : (v.Body.IsHuman && v.Region.IsPartOf( this ))) )
 							{

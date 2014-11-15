@@ -67,7 +67,7 @@ namespace Server {
 		private bool m_Active;
 
 		// TODO: Can we avoid this?
-		private static List<Mobile> m_DefaulPlayerMobileList = new List<Mobile>();
+		private static List<Mobile> m_DefaultMobileList = new List<Mobile>();
 		private static List<Item> m_DefaultItemList = new List<Item>();
 		private static List<NetState> m_DefaultClientList = new List<NetState>();
 		private static List<BaseMulti> m_DefaultMultiList = new List<BaseMulti>();
@@ -259,7 +259,7 @@ namespace Server {
 		public List<Mobile> Mobiles {
 			get {
 				if ( m_Mobiles == null )
-					return m_DefaulPlayerMobileList;
+					return m_DefaultMobileList;
 
 				return m_Mobiles;
 			}
@@ -286,7 +286,7 @@ namespace Server {
 		public List<Mobile> Players {
 			get {
 				if ( m_Players == null )
-					return m_DefaulPlayerMobileList;
+					return m_DefaultMobileList;
 
 				return m_Players;
 			}

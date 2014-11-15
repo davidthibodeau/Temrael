@@ -125,7 +125,6 @@
     <Compile Include="Mobiles\Monsters\TestMonstre.cs" />
     <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurPetitsFruits.cs" />
-    <Compile Include="Regions\ZoneCreation.cs" />
     <Compile Include="Regions\Hurlevent.cs" />
     <Compile Include="Regions\ZoneInterne.cs" />
     <Compile Include="Spells\2XX.Immuabilite\05.Etouffement.cs" />

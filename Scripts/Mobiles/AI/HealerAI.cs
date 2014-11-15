@@ -127,7 +127,7 @@ namespace Server.Mobiles
 				double prio = 0.0;
 				Mobile found = null;
 
-				foreach ( Mobile m in m_Mobile.GePlayerMobilesInRange( m_Mobile.RangePerception ) )
+				foreach ( Mobile m in m_Mobile.GetMobilesInRange( m_Mobile.RangePerception ) )
 				{
 					if ( !m_Mobile.CanSee( m ) || !(m is BaseCreature) || ((BaseCreature)m).Team != m_Mobile.Team )
 						continue;

@@ -195,7 +195,7 @@ namespace Server.Mobiles
 		}
 	}
 
-	public class BaseCreature : ScripPlayerMobile
+	public class BaseCreature : ScriptMobile
 	{
         #region Elevage
         public virtual bool HasASex { get { return false; } }
@@ -2786,7 +2786,7 @@ namespace Server.Mobiles
 		{
 			int iCount = 0;
 
-			foreach ( Mobile m in this.GePlayerMobilesInRange( iRange ) )
+			foreach ( Mobile m in this.GetMobilesInRange( iRange ) )
 			{
 				if (m is BaseCreature)
 				{
@@ -4603,7 +4603,7 @@ namespace Server.Mobiles
 		{
 			List<Mobile> move = new List<Mobile>();
 
-			foreach ( Mobile m in master.GePlayerMobilesInRange( 3 ) )
+			foreach ( Mobile m in master.GetMobilesInRange( 3 ) )
 			{
 				if ( m is BaseCreature )
 				{

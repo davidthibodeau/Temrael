@@ -432,7 +432,7 @@ namespace Server.Custom.CustomSpell
                 if (CheckSequence()) // Si le mana, les ingrédients... etc sont corrects.
                 {
                     UniqueEffect();
-                    foreach(Mobile target in Caster.GePlayerMobilesInRange(info.range))
+                    foreach(Mobile target in Caster.GetMobilesInRange(info.range))
                     {
                         TargetEffect(target);
                     }
@@ -502,7 +502,7 @@ namespace Server.Custom.CustomSpell
 
                     Priority = intervale;
 
-                    m_owner.targetsList = m_owner.Caster.GePlayerMobilesInRange(m_owner.info.range);
+                    m_owner.targetsList = m_owner.Caster.GetMobilesInRange(m_owner.info.range);
 
                     m_owner.UniqueEffect();
 
@@ -549,7 +549,7 @@ namespace Server.Custom.CustomSpell
                     }
                     else
                     {
-                        foreach (Mobile target in m_owner.Caster.GePlayerMobilesInRange(m_owner.info.range))
+                        foreach (Mobile target in m_owner.Caster.GetMobilesInRange(m_owner.info.range))
                         {
                             Fonction(target);
                         }

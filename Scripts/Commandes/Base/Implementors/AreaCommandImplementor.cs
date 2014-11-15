@@ -46,7 +46,7 @@ namespace Server.Commands.Generic
 				else if ( items )
 					eable = map.GetItemsInBounds( rect );
 				else if ( mobiles )
-					eable = map.GePlayerMobilesInBounds( rect );
+					eable = map.GetMobilesInBounds( rect );
 				else
 					return;
 

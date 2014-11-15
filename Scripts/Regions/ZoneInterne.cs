@@ -13,4 +13,20 @@ namespace Server.Regions
         {
         }
     }
+
+    public class ZoneCreation : ZoneInterne
+    {
+        public ZoneCreation(XmlElement xml, Map map, Region parent)
+            : base(xml, map, parent)
+        {
+        }
+    }
+
+    public class ZoneMort : ZoneInterne
+    {
+        public ZoneMort(XmlElement xml, Map map, Region parent)
+            : base(xml, map, parent)
+        {
+        }
+    }
 }

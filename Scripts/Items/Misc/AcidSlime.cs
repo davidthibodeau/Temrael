@@ -58,7 +58,7 @@ namespace Server.Items
 
 				List<Mobile> toDamage = new List<Mobile>();
 
-				foreach( Mobile m in GePlayerMobilesInRange( 0 ) )
+				foreach( Mobile m in GetMobilesInRange( 0 ) )
 				{
 					BaseCreature bc = m as BaseCreature;
 					if( m.Alive && !m.IsDeadBondedPet && (bc == null || bc.Controlled || bc.Summoned) )

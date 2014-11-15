@@ -54,7 +54,7 @@ namespace Server.Mobiles
 	}
 	#endregion
 
-	public class PlayerMobile : ScripPlayerMobile
+	public class PlayerMobile : ScriptMobile
 	{
 		private class CountAndTimeStamp
 		{
@@ -490,7 +490,7 @@ namespace Server.Mobiles
 			if ( !base.OnDroppedItemToWorld( item, location ) )
 				return false;
 
-			IPooledEnumerable mobiles = Map.GePlayerMobilesInRange( location, 0 );
+			IPooledEnumerable mobiles = Map.GetMobilesInRange( location, 0 );
 
 			foreach ( Mobile m in mobiles )
 			{
@@ -988,7 +988,7 @@ namespace Server.Mobiles
 				foreach ( Item item in context.Foundation.GetItems() )
 					item.Location = context.Foundation.BanLocation;
 
-				foreach ( Mobile mobile in context.Foundation.GePlayerMobiles() )
+				foreach ( Mobile mobile in context.Foundation.GetMobiles() )
 					mobile.Location = context.Foundation.BanLocation;
 
 				// Restore relocated entities
@@ -2093,6 +2093,7 @@ namespace Server.Mobiles
             Experience = new Experience();
             MortEngine = new MortEngine(this);
             Transformation = new Transformation(this);
+            Possess = new Possess();
 
             SkillsCap = 1000;
             FollowersMax = 5;
@@ -2155,7 +2156,7 @@ namespace Server.Mobiles
 
             if (e.Type == MessageType.Whisper)
             {
-                foreach (Mobile m in this.GePlayerMobilesInRange(10))
+                foreach (Mobile m in this.GetMobilesInRange(10))
                 {
                     if (m.AccessLevel >= AccessLevel.Counselor)
                         targets.Add(m);
@@ -2356,6 +2357,7 @@ namespace Server.Mobiles
             Experience = new Experience(reader);
             MortEngine = new MortEngine(this, reader);
             Transformation = new Transformation(this);
+            Possess = new Possess();
 
             m_QuickSpells = new ArrayList();
             int count = reader.ReadInt();
@@ -2808,7 +2810,7 @@ namespace Server.Mobiles
 
 		private void DeltaEnemies( Type oldType, Type newType )
 		{
-			foreach ( Mobile m in this.GePlayerMobilesInRange( 18 ) )
+			foreach ( Mobile m in this.GetMobilesInRange( 18 ) )
 			{
 				Type t = m.GetType();
 

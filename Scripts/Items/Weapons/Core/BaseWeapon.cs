@@ -591,7 +591,7 @@ namespace Server.Items
 
 			int inPack = 1;
 
-			foreach ( Mobile m in defender.GePlayerMobilesInRange( 1 ) )
+			foreach ( Mobile m in defender.GetMobilesInRange( 1 ) )
 			{
 				if ( m != attacker && m is BaseCreature )
 				{

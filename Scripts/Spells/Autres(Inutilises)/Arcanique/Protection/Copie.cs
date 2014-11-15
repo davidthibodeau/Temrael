@@ -131,7 +131,7 @@ namespace Server.Mobiles
 
             if (map != null)
             {
-                IPooledEnumerable eable = map.GePlayerMobilesInRange(this.Location, 12);
+                IPooledEnumerable eable = map.GetMobilesInRange(this.Location, 12);
 
                 foreach (Mobile m in eable)
                 {

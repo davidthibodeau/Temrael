@@ -28,7 +28,7 @@ namespace Server.SkillHandlers
 
             src.PublicOverheadMessage(MessageType.Regular, 0, true, "Jette un oeil aux allentours."); // Empêche quelqu'un de se mettre la détection manuelle en loop sans avoir l'air retardé.
 
-            foreach (Mobile m in src.GePlayerMobilesInRange(10))
+            foreach (Mobile m in src.GetMobilesInRange(10))
             {
                 if (m != src && m.Hidden)
                     if (OnUseSingleTarget(src, m))

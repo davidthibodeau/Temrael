@@ -245,7 +245,7 @@ namespace Server.Spells
 
 						if ( map != null && caster != null )
 						{
-							foreach ( Mobile m in m_Item.GePlayerMobilesInRange( 0 ) )
+							foreach ( Mobile m in m_Item.GetMobilesInRange( 0 ) )
 							{
 								if ( (m.Z + 16) > m_Item.Z && (m_Item.Z + 12) > m.Z && SpellHelper.ValidIndirectTarget( caster, m ) && caster.CanBeHarmful( m, false ) )
 									m_Queue.Enqueue( m );

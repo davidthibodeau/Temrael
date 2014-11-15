@@ -50,7 +50,7 @@ namespace Server.Spells
 				{
 					ArrayList targets = new ArrayList();
 
-					foreach ( Mobile m in Caster.GePlayerMobilesInRange( 4 ) )
+					foreach ( Mobile m in Caster.GetMobilesInRange( 4 ) )
 					{
 						if ( Caster != m && Caster.InLOS( m ) && SpellHelper.ValidIndirectTarget( Caster, m ) && Caster.CanBeHarmful( m, false ) )
                         {

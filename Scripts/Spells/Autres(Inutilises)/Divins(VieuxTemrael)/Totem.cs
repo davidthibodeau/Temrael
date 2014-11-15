@@ -149,7 +149,7 @@ namespace Server.Items
                 m_DeleteTimer.Start();
             }
 
-            foreach (Mobile m in this.GePlayerMobilesInRange(20))
+            foreach (Mobile m in this.GetMobilesInRange(20))
             {
                 m.InvalidateProperties();
                 m.Delta(MobileDelta.Armor);
@@ -215,7 +215,7 @@ namespace Server.Items
             if (m_TotemType == TotemType.PointDeParesse)
                 new PointDeParesseSpell.PointDeParesseTimer(this).Start();
 
-            foreach (Mobile m in this.GePlayerMobilesInRange(20))
+            foreach (Mobile m in this.GetMobilesInRange(20))
             {
                 m.InvalidateProperties();
                 m.Delta(MobileDelta.Armor);
@@ -234,7 +234,7 @@ namespace Server.Items
 
         public override void OnDelete()
         {
-            foreach (Mobile m in this.GePlayerMobilesInRange(20))
+            foreach (Mobile m in this.GetMobilesInRange(20))
             {
                 m.InvalidateProperties();
                 m.Delta(MobileDelta.Armor);

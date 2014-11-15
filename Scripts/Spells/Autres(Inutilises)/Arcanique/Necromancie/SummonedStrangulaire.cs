@@ -84,7 +84,7 @@ namespace Server.Mobiles
                     {
                         ArrayList targets = new ArrayList();
 
-                        foreach (Mobile m in m_Mobile.GePlayerMobilesInRange(2))
+                        foreach (Mobile m in m_Mobile.GetMobilesInRange(2))
                         {
                             if (m_Mobile != m && SpellHelper.ValidIndirectTarget(m_Mobile, m) && m_Mobile.CanBeHarmful(m, false))
                                 targets.Add(m);

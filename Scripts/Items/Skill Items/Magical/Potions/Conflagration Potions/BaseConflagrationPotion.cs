@@ -324,7 +324,7 @@ namespace Server.Items
 					
 					List<Mobile> mobiles = new List<Mobile>();
 
-					foreach( Mobile mobile in m_Item.GePlayerMobilesInRange( 0 ) )
+					foreach( Mobile mobile in m_Item.GetMobilesInRange( 0 ) )
 						mobiles.Add( mobile );
 
 					for( int i = 0; i < mobiles.Count; i++ )

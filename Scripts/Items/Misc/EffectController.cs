@@ -115,7 +115,7 @@ namespace Server.Items
 		public Item TargetItem{ get{ return m_Target as Item; } set{ m_Target = value; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public Mobile TargePlayerMobile{ get{ return m_Target as Mobile; } set{ m_Target = value; } }
+		public Mobile TargetMobile{ get{ return m_Target as Mobile; } set{ m_Target = value; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public bool TargetNull{ get{ return ( m_Target == null ); } set{ if ( value ) m_Target = null; } }

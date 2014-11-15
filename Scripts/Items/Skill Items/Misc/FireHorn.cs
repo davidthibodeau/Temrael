@@ -87,7 +87,7 @@ namespace Server.Items
 			ArrayList targets = new ArrayList();
 			bool playerVsPlayer = false;
 
-			IPooledEnumerable eable = from.Map.GePlayerMobilesInRange( new Point3D( loc ), 2 );
+			IPooledEnumerable eable = from.Map.GetMobilesInRange( new Point3D( loc ), 2 );
 
 			foreach ( Mobile m in eable )
 			{

@@ -46,7 +46,7 @@ namespace Server.Spells
                 Effects.SendLocationEffect(p, Caster.Map, 14120, 20, 10, 1441, 0); //p, map, item, duration, speed, hue, render
                 Effects.PlaySound(p, Caster.Map, 494);//p map sound
 
-                foreach(Mobile m in Caster.Map.GePlayerMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 10 + Caster.Skills[CastSkill].Base / 4, true)))
+                foreach(Mobile m in Caster.Map.GetMobilesInRange(new Point3D(p), (int)SpellHelper.AdjustValue(Caster, 10 + Caster.Skills[CastSkill].Base / 4, true)))
                 {
                     if (m != null && !(m is BaseVendor) && m is BaseCreature && ((BaseCreature)m).DefaultAI == AIType.AI_Animal)
                     {

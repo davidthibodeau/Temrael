@@ -851,7 +851,7 @@ namespace Server.Mobiles
 						actPrio = inactPrio = m_Mobile.GetDistanceToSqrt( comb );
 					}
 
-					foreach( Mobile m in m_Mobile.GePlayerMobilesInRange( Core.ML ? 10 : 12 ) )
+					foreach( Mobile m in m_Mobile.GetMobilesInRange( Core.ML ? 10 : 12 ) )
 					{
 						if( m != m_Mobile && CanDispel( m ) )
 						{

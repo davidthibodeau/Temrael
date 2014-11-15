@@ -43,19 +43,19 @@ namespace Server.Engines.Hiding
 
 		private static void EventSink_Connected( ConnectedEventArgs e )
 		{
-            ScripPlayerMobile sm = e.Mobile as ScripPlayerMobile;
+            ScriptMobile sm = e.Mobile as ScriptMobile;
 
             sm.ActiverTestsDetection();
 		}
 
 		private static void EventSink_Disconnected( DisconnectedEventArgs e )
 		{
-            ScripPlayerMobile sm = e.Mobile as ScripPlayerMobile;
+            ScriptMobile sm = e.Mobile as ScriptMobile;
 
             sm.Detection.ResetAlentours();
             foreach (NetState state in NetState.Instances)
             {
-                ScripPlayerMobile m = state.Mobile as ScripPlayerMobile;
+                ScriptMobile m = state.Mobile as ScriptMobile;
                 if (m != null)
                     m.Detection.RetirerJoueurDesAlentours(sm);
             }
@@ -73,10 +73,10 @@ namespace Server.Engines.Hiding
 
         public void DetecterAlentours()
         {
-            IPooledEnumerable<Mobile> eable = mobile.GePlayerMobilesInRange(5);
+            IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
             foreach (Mobile mob in eable)
             {
-                ScripPlayerMobile m = mob as ScripPlayerMobile;
+                ScriptMobile m = mob as ScriptMobile;
                 if (!m.Hidden || !mobile.InLOS(m))
                     continue;
                 double chance = 0;
@@ -117,7 +117,7 @@ namespace Server.Engines.Hiding
 
         public void TesterPresenceAlentours()
         {
-            IPooledEnumerable<Mobile> eable = mobile.GePlayerMobilesInRange(5);
+            IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
             foreach (Mobile m in eable)
             {
                 if (!m.InLOS(mobile))

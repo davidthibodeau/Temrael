@@ -24,7 +24,7 @@ namespace Server.Engines.Mort
 
             // Prise en mémoire des personnes autour du corps, lorsque le personnage a été achevé.
             List<Mobile> listePersoPresent = new List<Mobile>();
-            foreach (Mobile m in m_cs.Cible.Corpse.GePlayerMobilesInRange(20))
+            foreach (Mobile m in m_cs.Cible.Corpse.GetMobilesInRange(20))
             {
                 m_listePersoPresent.Add(m);
             }

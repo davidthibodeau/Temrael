@@ -84,7 +84,7 @@ namespace Server.Items
 		{
 			bool found = false;
 
-			foreach ( Mobile mob in GePlayerMobilesInRange( CurrentRange ) )
+			foreach ( Mobile mob in GetMobilesInRange( CurrentRange ) )
 			{
 				if ( mob.Hidden && mob.AccessLevel > AccessLevel.Player )
 					continue;

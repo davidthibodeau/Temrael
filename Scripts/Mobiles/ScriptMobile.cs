@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Server.Mobiles
 {
-    public class ScripPlayerMobile : Mobile
+    public class ScriptMobile : Mobile
     {
         [CommandProperty(AccessLevel.Batisseur)]
         public Detection Detection
@@ -15,12 +15,12 @@ namespace Server.Mobiles
             set;
         }
 
-        public ScripPlayerMobile()
+        public ScriptMobile()
         {
             Detection = new Detection(this);
         }
 
-        public ScripPlayerMobile(Serial serial)
+        public ScriptMobile(Serial serial)
             : base(serial)
         {
         }

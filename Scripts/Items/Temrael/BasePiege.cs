@@ -258,7 +258,7 @@ namespace Server.Items
         protected virtual void OnDeclenchement(PlayerMobile m)
         {
             int degats = mDegat;
-            foreach (PlayerMobile mob in this.GePlayerMobilesInRange(mRange))
+            foreach (PlayerMobile mob in this.GetMobilesInRange(mRange))
             {
                 if (mob.Skills.Pieges.Value / 100 > Utility.RandomDouble())
                 {

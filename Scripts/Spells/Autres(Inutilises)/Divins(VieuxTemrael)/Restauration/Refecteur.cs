@@ -92,7 +92,7 @@ namespace Server.Spells
                     return;
                 }
 
-                foreach (Mobile m in m_BaseTotem.GePlayerMobilesInRange(m_BaseTotem.MaxRange))
+                foreach (Mobile m in m_BaseTotem.GetMobilesInRange(m_BaseTotem.MaxRange))
                 {
                     if (m != null && m.Alive && m.CanSee(m_BaseTotem) && m is PlayerMobile)
                     {

@@ -162,7 +162,7 @@ namespace Server.Spells
         {
             int total = 0;
 
-            foreach (Mobile m in from.GePlayerMobilesInRange(range))
+            foreach (Mobile m in from.GetMobilesInRange(range))
             {
                 if (m != null && m.Alive && !m.Deleted)
                     total++;
@@ -175,7 +175,7 @@ namespace Server.Spells
         {
             int total = 0;
 
-            foreach (Mobile m in from.GePlayerMobilesInRange(range))
+            foreach (Mobile m in from.GetMobilesInRange(range))
             {
                 if (m != null && m.Alive && !m.Deleted && m is BaseCreature)
                     total++;

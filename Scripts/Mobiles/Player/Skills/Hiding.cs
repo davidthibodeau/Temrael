@@ -51,7 +51,7 @@ namespace Server.SkillHandlers
             {
                 if (!m_CombatOverride)
                 {
-                    foreach (Mobile check in m.GePlayerMobilesInRange(range))
+                    foreach (Mobile check in m.GetMobilesInRange(range))
                     {
                         if (check.InLOS(m) && check.Combatant == m)
                         {

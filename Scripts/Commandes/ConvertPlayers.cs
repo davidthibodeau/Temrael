@@ -30,7 +30,7 @@ namespace Server.Commands
 						m.NetState.Dispose();
 					
 					PlayerMobile pm = new PlayerMobile( m.Serial );
-					pm.DefaulPlayerMobileInit();
+					pm.DefaultMobileInit();
 					
 					List<Item> copy = new List<Item>( m.Items );
 					for (int i=0;i<copy.Count;i++)
