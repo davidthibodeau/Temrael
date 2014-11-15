@@ -14,9 +14,9 @@
       <rect x="5915" y="79" width="30" height="65" />
     </region>
 	<!-- Map principale -->
-	<region name="Archipel d'Elkoss" type="Archipel">
+	<!-- <region name="Archipel d'Elkoss" type="Archipel">
 		<rect x="8" y="8" width="3993" height="4080" />
-	</region>
+	</region> -->
 	<region name="Ile d'Hurlevent" type="IleHurlevent">
 		<rect x="1500" y="1080" width="1500" height="1595" />
 	</region>
