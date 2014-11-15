@@ -8,6 +8,7 @@ using System.Collections;
 using Server.Custom;
 using Server.Scripts.Commands;
 using Server.Engines.Equitation;
+using Server.Engines.Combat;
 
 //Adjuration
 
@@ -457,10 +458,20 @@ namespace Server.Spells
             return damage;
         }
 
-        const double ScalArtMag      = 0.5;// Bonus lié au skill ArtMagique.
-        const double ScalMainBranche = 0.3;  // Scaling sur le skill de la branche passée en paramètre.
-        const double ScalScndBranche = 0;  // Scaling sur les skills des autres branches.
-        const double ScalInscription = 0.2;// Bonus lié au skill Inscription.
+        const double ScalArtMag      = 0.625; // Bonus lié au skill ArtMagique.
+        const double BonusArtMag     = 6.25;
+
+        const double ScalMainBranche = 0.2;  // Bonus sur le skill de la branche passée en paramètre.
+        const double BonusMainBranch = 10;
+
+        const double ScalScndBranche = 0;    // Bonus sur les skills des autres branches.
+        const double BonusScndBranch = 0;
+
+        const double ScalInscription = 0.5;  // Bonus lié au skill Inscription.
+        const double BonusInscription= 5;
+
+        const double ScalIntel       = 0.3;  // Bonus lié à l'intelligence.
+        const double BonusIntel      = 5;
 
         public static double GetSpellScaling(Mobile atk, SkillName branche)
         {
@@ -469,33 +480,36 @@ namespace Server.Spells
             // Les ifs sont gérés à la compilation, donc pas de coût, juste un warning gossant.
             if (ScalArtMag != 0)
             {
-                Scaling += (atk.Skills[SkillName.ArtMagique].Value * ScalArtMag / 100);
+                Scaling += Damage.GetBonus(atk.Skills[SkillName.ArtMagique].Value, ScalArtMag, BonusArtMag);
             }
 
             if (ScalMainBranche != 0)
             {
                 // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
-                Scaling += (atk.Skills[branche].Value * (ScalMainBranche - ScalScndBranche) / 100);
+                Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche), BonusMainBranch);
             }
 
             if (ScalScndBranche != 0)
             {
-                double value = atk.Skills[SkillName.Evocation].Value
-                             + atk.Skills[SkillName.Immuabilite].Value
-                             + atk.Skills[SkillName.Alteration].Value
-                             + atk.Skills[SkillName.Providence].Value
-                             + atk.Skills[SkillName.Transmutation].Value
-                             + atk.Skills[SkillName.Thaumaturgie].Value
-                             + atk.Skills[SkillName.Hallucination].Value
-                             + atk.Skills[SkillName.Ensorcellement].Value
-                             + atk.Skills[SkillName.Animisme].Value;
-
-                Scaling += (value * ScalScndBranche / 100);
+                Scaling += Damage.GetBonus(atk.Skills[SkillName.Evocation].Value
+                                         + atk.Skills[SkillName.Immuabilite].Value
+                                         + atk.Skills[SkillName.Alteration].Value
+                                         + atk.Skills[SkillName.Providence].Value
+                                         + atk.Skills[SkillName.Transmutation].Value
+                                         + atk.Skills[SkillName.Thaumaturgie].Value
+                                         + atk.Skills[SkillName.Hallucination].Value
+                                         + atk.Skills[SkillName.Ensorcellement].Value
+                                         + atk.Skills[SkillName.Animisme].Value, ScalScndBranche, BonusScndBranch);
             }
 
             if (ScalInscription != 0)
             {
-                Scaling += (atk.Skills[SkillName.Inscription].Value * ScalInscription / 100);
+                Scaling += Damage.GetBonus(atk.Skills[SkillName.Inscription].Value, ScalInscription, BonusInscription);
+            }
+
+            if (ScalIntel != 0)
+            {
+                Scaling += Damage.GetBonus(atk.Int, ScalIntel, BonusIntel);
             }
 
             return Scaling;

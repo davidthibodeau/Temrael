@@ -34,14 +34,14 @@ namespace Server.Engines.Combat
             def.Damage((int)reducedDmg);
         }
 
-        const double DPSBASE = 6.45;
+        const double DPSBASE = 4.5;
         const short NbTotalCercles = 10; // Il y a présentement 10 cercles dans le système de magie.
         const double ScalingCategorie = 0.5;// Bonus qui fait la différence entre un spell de cercle 1, et de cercle 10, pour les dégâts.
 
 
         public double GetDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
         {
-            return BaseDegatsMagique(tempsCast) * (1 + Spell.GetSpellScaling(atk, branche)) * ScalingCat(cercle);
+            return BaseDegatsMagique(tempsCast) * (Spell.GetSpellScaling(atk, branche) + ScalingCat(cercle));
         }
 
         private double BaseDegatsMagique(TimeSpan tempsCast)
@@ -62,7 +62,7 @@ namespace Server.Engines.Combat
             return dmg * (1 - resist);
         }
 
-        protected double GetBonus(double value, double scalar, double offset)
+        public static double GetBonus(double value, double scalar, double offset)
         {
             double bonus = value * scalar;
 
