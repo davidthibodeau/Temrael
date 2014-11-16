@@ -8,6 +8,7 @@ using Server.Gumps;
 using CPA = Server.CommandPropertyAttribute;
 using Server.Commands;
 using Server.Commands.Generic;
+using Server.Misc;
 
 namespace Server.Commands
 {
@@ -520,8 +521,9 @@ namespace Server.Commands
 				prop.SetValue( obj, toSet, null );
 				return "Property has been set.";
 			}
-			catch
+			catch (Exception e)
 			{
+                ExceptionLogging.WriteLine(e);
 				return "An exception was caught, the property may not be set.";
 			}
 		}

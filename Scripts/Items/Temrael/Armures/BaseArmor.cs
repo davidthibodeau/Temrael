@@ -900,7 +900,7 @@ namespace Server.Items
                 //list.Add(1060394, "{0}\t{1}", couleur, rarete.ToString());
                 list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
-                if (m_Crafter.Name != null)
+                if (m_Crafter != null && m_Crafter.Name != null)
                     list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_Crafter.Name); // Fabriqué par: ~1_NAME~
 
                 AddARProperties(list, couleur);
