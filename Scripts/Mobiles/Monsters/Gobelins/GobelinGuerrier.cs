@@ -11,7 +11,7 @@ namespace Server.Mobiles
             : base(AIType.AI_Melee, FightMode.Closest, 8, 1, 0.2, 0.4)
         {
             Name = "Gobelin Guerrier";
-            Body = 245;
+            Body = 248;
             BaseSoundID = 462;
 
             PlayersAreEnemies = true;

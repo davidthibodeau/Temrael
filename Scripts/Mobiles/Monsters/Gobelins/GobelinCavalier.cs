@@ -11,7 +11,7 @@ namespace Server.Mobiles
             : base(AIType.AI_Berserk, FightMode.Aggressor, 8, 2, 0.1, 0.3)
         {
             Name = "Gobelin Cavalier";
-            Body = 257;
+            Body = 247;
             BaseSoundID = 462;
 
             PlayersAreEnemies = true;
