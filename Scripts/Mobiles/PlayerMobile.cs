@@ -2356,7 +2356,7 @@ namespace Server.Mobiles
             QuiOptions = (QuiOptions)reader.ReadInt();
             Experience = new Experience(reader);
             MortEngine = new MortEngine(this, reader);
-            Possess = new Possess(this);
+            Possess = new Possess(this, reader);
             Transformation = new Transformation(this);
 
             m_QuickSpells = new ArrayList();
