@@ -524,6 +524,26 @@ namespace Server.Items
             if (GetSaveFlag(flags, SaveFlag.PlayerConstructed))
                 m_PlayerConstructed = true;
 
+            int strBonus = ComputeStatBonus(StatType.Str);
+            int dexBonus = ComputeStatBonus(StatType.Dex);
+            int intBonus = ComputeStatBonus(StatType.Int);
+
+            if (Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0))
+            {
+                Mobile m = (Mobile)Parent;
+
+                string modName = Serial.ToString();
+
+                if (strBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Str, modName + "Str", strBonus, TimeSpan.Zero));
+
+                if (dexBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero));
+
+                if (intBonus != 0)
+                    m.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));
+            }
+
             if (Parent is Mobile)
                 ((Mobile)Parent).CheckStatTimers();
         }
@@ -627,6 +647,16 @@ namespace Server.Items
                 v = IntRequirement;
 
             return v;
+        }        
+
+        public int ComputeStatBonus(StatType type)
+        {
+            if (type == StatType.Str)
+                return StrBonus;
+            else if (type == StatType.Dex)
+                return DexBonus;
+            else
+                return IntBonus;
         }
 
         public override bool CanEquip(Mobile from)
@@ -653,21 +683,21 @@ namespace Server.Items
                 }
                 else
                 {
-                    int strReq = ComputeStatReq(StatType.Str);
-                    int dexReq = ComputeStatReq(StatType.Dex);
-                    int intReq = ComputeStatReq(StatType.Int);
-
-                    if (from.RawDex < dexReq || (from.Dex) < 1)
+                    int strBonus = ComputeStatBonus(StatType.Str), strReq = ComputeStatReq(StatType.Str);
+                    int dexBonus = ComputeStatBonus(StatType.Dex), dexReq = ComputeStatReq(StatType.Dex);
+                    int intBonus = ComputeStatBonus(StatType.Int), intReq = ComputeStatReq(StatType.Int);
+                   
+                    if (from.RawDex < dexReq || (from.Dex + dexBonus) < 1)
                     {
                         from.SendLocalizedMessage(502077); // You do not have enough dexterity to equip this item.
                         return false;
                     }
-                    else if (from.RawStr < strReq || (from.Str) < 1)
+                    else if (from.RawStr < strReq || (from.Str + strBonus) < 1)
                     {
                         from.SendLocalizedMessage(500213); // You are not strong enough to equip that.
                         return false;
                     }
-                    else if (from.RawInt < intReq || (from.Int) < 1)
+                    else if (from.RawInt < intReq || (from.Int + intBonus) < 1)
                     {
                         from.SendMessage("You are not smart enough to equip that.");
                         return false;
