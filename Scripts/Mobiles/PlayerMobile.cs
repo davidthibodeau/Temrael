@@ -2356,8 +2356,8 @@ namespace Server.Mobiles
             QuiOptions = (QuiOptions)reader.ReadInt();
             Experience = new Experience(reader);
             MortEngine = new MortEngine(this, reader);
+            Possess = new Possess(this);
             Transformation = new Transformation(this);
-            Possess = new Possess();
 
             m_QuickSpells = new ArrayList();
             int count = reader.ReadInt();
@@ -2493,6 +2493,7 @@ namespace Server.Mobiles
             writer.Write((int)QuiOptions);
             Experience.Serialize(writer);
             MortEngine.Serialize(writer);
+            Possess.Serialize(writer);
 
             writer.Write(m_QuickSpells.Count);
             for (int i = 0; i < m_QuickSpells.Count; i++)

@@ -17,6 +17,24 @@ namespace Server.Engines.Possess
         private Mobile possessed;
         private Mobile stored;
 
+        public Possess(Mobile m)
+        {
+            mobile = m;
+        }
+
+        public Possess(Mobile m, GenericReader reader)
+        {
+            mobile = m;
+            possessed = reader.ReadMobile();
+            stored = reader.ReadMobile();
+        }
+
+        public void Serialize(GenericWriter writer)
+        {
+            writer.Write(possessed);
+            writer.Write(stored);
+        }
+
         public bool OnBeforeDeath()
         {
             if (stored == null)
@@ -427,10 +445,9 @@ namespace Server.Engines.Possess
                 try
                 {
                     PlayerMobile from = from_mob as PlayerMobile;
-                    if (o is Mobile)
+                    Mobile m = o as Mobile;
+                    if (m != null)
                     {
-                        Mobile m = o as Mobile;
-
                         if (m.Account != null)
                         {
                             from.SendMessage("Vous ne pouvez posséder un autre joueur.");
