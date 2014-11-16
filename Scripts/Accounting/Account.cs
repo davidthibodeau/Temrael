@@ -521,9 +521,10 @@ namespace Server.Accounting
 
 			m_IPRestrictions = new string[0];
 			m_LoginIPs = new IPAddress[0];
-            m_Transfert = new Transfert(username);
 
 			Accounts.Add( this );
+
+            m_Transfert = new Transfert(username);
 		}
 
 		public Account( XmlElement node )
@@ -603,6 +604,7 @@ namespace Server.Accounting
 			m_LoginIPs = LoadAddressList( node );
 			m_IPRestrictions = LoadAccessCheck( node );
             m_Transfert = LoadTransfert(node);
+            
 
 			for ( int i = 0; i < m_Mobiles.Length; ++i )
 			{
@@ -746,10 +748,14 @@ namespace Server.Accounting
         {
             int serial = Utility.GetXMLInt32(Utility.GetText(node["transfert"], null), -1);
 
+            Transfert tr = null;
             if (serial == -1)
-                return new Transfert(Username);
+                tr = new Transfert(Username);
             else
-                return World.FindItem(serial) as Transfert;
+                tr = World.FindItem(serial) as Transfert;
+
+            tr.ConvertTagsIntoActualTransferts();
+            return tr;
         }
 
 		/// <summary>

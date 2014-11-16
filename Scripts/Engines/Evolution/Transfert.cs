@@ -32,7 +32,6 @@ namespace Server.Engines.Evolution
         public Transfert(string acc)
         {
             account = acc;
-            ConvertTagsIntoActualTransferts();
             prochainTransfert = DateTime.Now;
         }
 
@@ -41,7 +40,7 @@ namespace Server.Engines.Evolution
         {
         }
 
-        private void ConvertTagsIntoActualTransferts()
+        public void ConvertTagsIntoActualTransferts()
         {
             Account acc = Accounts.GetAccount(account) as Account;
 
