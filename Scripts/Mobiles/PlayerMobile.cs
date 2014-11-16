@@ -2093,7 +2093,7 @@ namespace Server.Mobiles
             Experience = new Experience();
             MortEngine = new MortEngine(this);
             Transformation = new Transformation(this);
-            Possess = new Possess();
+            Possess = new Possess(this);
 
             SkillsCap = 1000;
             FollowersMax = 5;
