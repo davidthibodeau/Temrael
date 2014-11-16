@@ -2679,7 +2679,7 @@ namespace Server.Network
 		public PlaySound( int soundID, IPoint3D target ) : base( 0x54, 12 )
 		{
 			m_Stream.Write( (byte) 1 ); // flags
-			m_Stream.Write( (short) soundID );
+			m_Stream.Write( (short) (soundID-1) );
 			m_Stream.Write( (short) 0 ); // volume
 			m_Stream.Write( (short) target.X );
 			m_Stream.Write( (short) target.Y );
