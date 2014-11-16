@@ -2829,15 +2829,15 @@ namespace Server
 
 					int number;
 
-					if( this.AccessLevel > AccessLevel.Player )
+					if( this.AccessLevel > AccessLevel.Player && !shoved.Hidden )
 					{
-						number = shoved.m_Hidden ? 1019041 : 1019040;
+                        SendLocalizedMessage(1019040);
 					}
-					else
+					else if (!shoved.Hidden)
 					{
 						if( Stam == StamMax )
 						{
-							number = shoved.m_Hidden ? 1019043 : 1019042;
+							SendLocalizedMessage(1019042);
 							Stam -= 10;
 
 							RevealingAction();
@@ -2848,7 +2848,7 @@ namespace Server
 						}
 					}
 
-					SendLocalizedMessage( number );
+					
 				}
 			}
 			return true;

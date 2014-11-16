@@ -1,4 +1,5 @@
 ﻿using Server.Accounting;
+using Server.DataStructures;
 using Server.Misc;
 using Server.Mobiles;
 using System;
@@ -18,16 +19,24 @@ namespace Server.Engines.Evolution
             Second,
             Troisieme
         }
-        
+
+        public static Transfert GetTransfert(PlayerMobile m)
+        {
+            if (m == null || m.Account == null)
+                return null;
+            Account a = m.Account as Account;
+            return a.Transfert;
+        }
+
         private string account;
         private DateTime prochainTransfert;
         private bool transfertDesactive;
 
         public const double pourcentageConserve = 0.80;
 
-        public Experience Premier { get; set; }
-        public Experience Second { get; set; }
-        public Experience Troisieme { get; set; }
+        public Pair<string, Experience> Premier { get; set; }
+        public Pair<string, Experience> Second { get; set; }
+        public Pair<string, Experience> Troisieme { get; set; }
 
         public Transfert(string acc)
         {
@@ -56,10 +65,10 @@ namespace Server.Engines.Evolution
                 acc.RemoveTag("SavedXP1");
                 if (save != "0")
                 {
-                    Premier = new Experience();
+                    Premier = new Pair<string, Experience>("", new Experience());
                     try
                     {
-                        Premier.XP = Convert.ToInt32(save);
+                        Premier.Right.XP = Convert.ToInt32(save);
                     }
                     catch { }
                 }
@@ -72,10 +81,10 @@ namespace Server.Engines.Evolution
                 acc.RemoveTag("SavedXP2");
                 if (save != "0")
                 {
-                    Second = new Experience();
+                    Second = new Pair<string, Experience>("", new Experience());
                     try
                     {
-                        Second.XP = Convert.ToInt32(save);
+                        Second.Right.XP = Convert.ToInt32(save);
                     }
                     catch { }
                 }
@@ -88,10 +97,10 @@ namespace Server.Engines.Evolution
                 acc.RemoveTag("SavedXP3");
                 if (save != "0")
                 {
-                    Troisieme = new Experience();
+                    Troisieme = new Pair<string, Experience>("", new Experience());
                     try
                     {
-                        Troisieme.XP = Convert.ToInt32(save);
+                        Troisieme.Right.XP = Convert.ToInt32(save);
                     }
                     catch { }
                 }
@@ -150,23 +159,23 @@ namespace Server.Engines.Evolution
         {
             Experience exp = m.Experience;
             exp.XP = (int) (exp.XP * pourcentageConserve);
-            m.Experience = null;
+            m.Experience = new Experience();
 
             if (Premier == null)
             {
-                Premier = exp;
+                Premier = new Pair<string,Experience>(m.Name, exp);
                 return true;
             }
 
             if (Second == null)
             {
-                Second = exp;
+                Second = new Pair<string, Experience>(m.Name, exp);
                 return true;
             }
 
             if (Troisieme == null)
             {
-                Troisieme = exp;
+                Troisieme = new Pair<string, Experience>(m.Name, exp);
                 return true;
             }
 
@@ -179,17 +188,17 @@ namespace Server.Engines.Evolution
             {
                 case Position.Premier:
                     if (Premier == null) return false;
-                    pm.Experience = Premier;
+                    pm.Experience = Premier.Right;
                     Premier = null;
                     break;
                 case Position.Second:
                     if (Second == null) return false;
-                    pm.Experience = Second;
+                    pm.Experience = Second.Right;
                     Second = null;
                     break;
                 case Position.Troisieme:
                     if (Troisieme == null) return false;
-                    pm.Experience = Troisieme;
+                    pm.Experience = Troisieme.Right;
                     Troisieme = null;
                     break;
             }
@@ -254,13 +263,28 @@ namespace Server.Engines.Evolution
             SaveFlag flags = (SaveFlag)reader.ReadInt();
 
             if (GetSaveFlag(flags, SaveFlag.Premier))
-                Premier = new Experience(reader);
+            {
+                string name = "";
+                if (version > 0)
+                    name = reader.ReadString();
+                Premier = new Pair<string, Experience>(name, new Experience(reader));
+            }
 
             if (GetSaveFlag(flags, SaveFlag.Second))
-                Second = new Experience(reader);
+            {
+                string name = "";
+                if (version > 0)
+                    name = reader.ReadString();
+                Second = new Pair<string, Experience>(name, new Experience(reader));
+            }
 
             if (GetSaveFlag(flags, SaveFlag.Troisieme))
-                Troisieme = new Experience(reader);
+             {
+                string name = "";
+                if (version > 0)
+                    name = reader.ReadString();
+                Troisieme = new Pair<string, Experience>(name, new Experience(reader));
+            }
 
             if (GetSaveFlag(flags, SaveFlag.Desactive))
                 transfertDesactive = reader.ReadBool();
@@ -277,7 +301,7 @@ namespace Server.Engines.Evolution
         {
             base.Serialize(writer);
 
-            writer.Write(0); // version
+            writer.Write(1); // version
 
             writer.Write(account);
 
@@ -292,13 +316,22 @@ namespace Server.Engines.Evolution
             writer.Write((int)flags);
 
             if (GetSaveFlag(flags, SaveFlag.Premier))
-                Premier.Serialize(writer);
+            {
+                writer.Write(Premier.Left);
+                Premier.Right.Serialize(writer);
+            }
 
             if (GetSaveFlag(flags, SaveFlag.Second))
-                Second.Serialize(writer);
+            {
+                writer.Write(Second.Left);
+                Second.Right.Serialize(writer);
+            }
 
             if (GetSaveFlag(flags, SaveFlag.Troisieme))
-                Troisieme.Serialize(writer);
+            {
+                writer.Write(Troisieme.Left);
+                Troisieme.Right.Serialize(writer);
+            }
 
             if (GetSaveFlag(flags, SaveFlag.Desactive))
                 writer.Write(transfertDesactive);

@@ -14,7 +14,6 @@ namespace Server.Engines.Evolution
 {
     public class CompensationGump : Gump
     {
-
         private static Dictionary<Account, MJ> compensations;
         private static List<MJ> compensationsIndexed;
         private static readonly string SavePath = Path.Combine(Directories.AppendPath(Directories.saves, "Misc"), "compensations.xml");
