@@ -10,13 +10,13 @@ namespace Server.Items
 
     /*
     #region IExtractable
-    public string getName()
+    public string getName
     {
-        return CraftResources.GetName(m_Resource);
+        get{ return CraftResources.GetName(m_Resource); }
     }
-    public int getHue()
+    public int getHue
     {
-        return CraftResources.GetHue(m_Resource);
+        get { return CraftResources.GetHue(m_Resource); }
     }
     #endregion
     */

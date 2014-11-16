@@ -3,8 +3,13 @@ using Server;
 
 namespace Server.Items
 {
-	public class Emerald : Item
+    public class Emerald : BaseGem
 	{
+        public override int m_Couleur
+        {
+            get { return 2389; }
+        }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

@@ -3,12 +3,12 @@ using Server;
 
 namespace Server.Items
 {
-	public class Ruby : Item
+	public class Ruby : BaseGem
 	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+        public override int m_Couleur
+        {
+            get { return 2380; }
+        }
 
 		[Constructable]
 		public Ruby() : this( 1 )

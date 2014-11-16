@@ -3,12 +3,12 @@ using Server;
 
 namespace Server.Items
 {
-	public class Sapphire : Item
-	{
-		public override double DefaultWeight
-		{
-			get { return 0.1; }
-		}
+    public class Sapphire : BaseGem
+    {
+        public override int m_Couleur
+        {
+            get { return 2346; }
+        }
 
 		[Constructable]
 		public Sapphire() : this( 1 )
