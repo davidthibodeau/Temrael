@@ -29,6 +29,87 @@ namespace Server.Engines.Combat
 
         protected override void AppliquerPoison(Mobile atk, Mobile def)
         {
+            BaseWeapon weapon = Weapon(atk);
+            Poison poison = weapon.Poison;
+            if (poison != null)
+            {
+                if (!def.Poisoned || poison.Level > def.Poison.Level)
+                {
+                    double skill = atk.Skills.Empoisonnement.Value;
+                    bool selfdmg = false;
+                    double chance = 0;
+                    switch (poison.Level)
+                    { //peut probablement rendre ca plus compact en utilisant regularite.
+                        case 0: //Lesser
+                            if (skill > 30)
+                                chance = 80;
+                            else
+                                chance = 20 + skill * 2;
+                            break;
+                        case 1: //Regular
+                            if (skill < 10)
+                            {
+                                selfdmg = true;
+                                chance = 10 - skill;
+                            }
+                            else if (skill < 30)
+                                chance = 0;
+                            else if (skill > 60)
+                                chance = 80;
+                            else
+                                chance = 20 + (skill - 30) * 2;
+                            break;
+                        case 2: //Greater
+                            if (skill < 40)
+                            {
+                                selfdmg = true;
+                                chance = 40 - skill;
+                            }
+                            else if (skill < 60)
+                                chance = 0;
+                            else if (skill > 90)
+                                chance = 80;
+                            else
+                                chance = 20 + (skill - 60) * 2;
+                            break;
+                        case 3: //Deadly
+                            if (skill < 70)
+                            {
+                                selfdmg = true;
+                                chance = 70 - skill;
+                            }
+                            else if (skill < 90)
+                                chance = 0;
+                            else if (skill > 100)
+                                chance = 40;
+                            else
+                                chance = 20 + (skill - 90) * 2;
+                            break;
+                        case 4: //Lethal
+                            if (skill < 90)
+                            {
+                                selfdmg = true;
+                                chance = 90 - skill;
+                            }
+                            else if (skill <= 100)
+                                chance = 0;
+                            else
+                                chance = 20 + (skill - 100) * 2;
+                            break;
+                    }
+                    if (chance < 0)
+                        chance = 0;
+                    chance = chance / 100;
+                    if (selfdmg)
+                    {
+                        if (Utility.RandomDouble() > chance)
+                            atk.ApplyPoison(atk, poison);
+                    }
+                    else
+                        if (atk.CheckSkill(SkillName.Empoisonnement, chance))
+                            def.ApplyPoison(atk, poison);
+                }
+            }
         }
 
         protected override double ParerChance(Mobile def)

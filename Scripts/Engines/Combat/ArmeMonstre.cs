@@ -37,6 +37,12 @@ namespace Server.Engines.Combat
             Layer = Layer.OneHanded;
         }
 
+        public ArmeMonstre(int min, int max, int speed, Poison poison)
+            : this(min, max, speed, false)
+        {
+            Poison = poison;
+        }
+
         public ArmeMonstre(Serial serial)
             : base(serial)
         {

@@ -3172,6 +3172,11 @@ namespace Server.Mobiles
             AddItem(new ArmeMonstre(min, max, speed, ranged));
         }
 
+        public void SetArme(int min, int max, int speed, Poison poison)
+        {
+            AddItem(new ArmeMonstre(min, max, speed, poison));
+        }
+
 		public void SetDamage( int val )
 		{
 			m_DamageMin = val;
