@@ -7,7 +7,30 @@ using Server.Items;
 
 namespace Server.Engines.Combat
 {
-    public class StrategyMonstreMelee : CombatStrategy
+    public abstract class StrategyMonstre : CombatStrategy
+    {
+        protected override void CheckEquitationAttaque(Mobile atk)
+        {
+        }
+
+        public override SkillName ToucherSkill
+        {
+            get { return SkillName.Epee; }
+        }
+
+        protected override double ParerChance(Mobile def)
+        {
+            return 0;
+        }
+
+        public override int Range(Mobile atk)
+        {
+            BaseCreature monstre = atk as BaseCreature;
+            return monstre.MaxRange;
+        }
+    }
+
+    public class StrategyMonstreMelee : StrategyMonstre
     {
         protected StrategyMonstreMelee() { }
 
@@ -16,15 +39,6 @@ namespace Server.Engines.Combat
         public override bool OnFired(Mobile atk, Mobile def)
         {
             return false;
-        }
-
-        protected override void CheckEquitationAttaque(Mobile atk)
-        {            
-        }
-
-        public override SkillName ToucherSkill
-        {
-            get { return SkillName.Epee; }
         }
 
         protected override void AppliquerPoison(Mobile atk, Mobile def)
@@ -111,62 +125,45 @@ namespace Server.Engines.Combat
                 }
             }
         }
-
-        protected override double ParerChance(Mobile def)
-        {
-            return 0;
-        }
-
-        public override int Range(Mobile atk)
-        {
-            BaseCreature monstre = atk as BaseCreature;
-            return monstre.RangeFight;
-        }
     }
 
-    public class StrategyMonstreDist : StrategyDistance
+    public class StrategyMonstreDist : StrategyMonstre
     {
-        public override int EffectID { get { return 0xF42; } }
-        public override Type AmmoType { get { return typeof(Arrow); } }
-        public override Item Ammo { get { return new Arrow(); } }
+        public int EffectID { get { return 0xF42; } }
+        public Type AmmoType { get { return typeof(Arrow); } }
+        public Item Ammo { get { return new Arrow(); } }
 
         protected StrategyMonstreDist() { }
 
         public readonly static CombatStrategy Strategy = new StrategyMonstreDist();
 
-        protected override void CheckEquitationAttaque(Mobile atk)
-        {
-        }
-
-        public override SkillName ToucherSkill
-        {
-            get { return SkillName.Epee; }
-        }
-
         protected override void AppliquerPoison(Mobile atk, Mobile def)
         {
         }
 
-        protected override double ParerChance(Mobile def)
+        public override void OnHit(Mobile atk, Mobile def)
         {
-            return 0;
+			if ( atk.Player && !def.Player && (def.Body.IsAnimal || def.Body.IsMonster) && 0.4 >= Utility.RandomDouble() )
+				def.AddToBackpack( Ammo );
+
+            base.OnHit(atk, def);
+        }
+
+        public override void OnMiss(Mobile atk, Mobile def)
+        {
+            if (atk.Player && 0.4 >= Utility.RandomDouble())
+            {
+                Ammo.MoveToWorld(new Point3D(def.X + Utility.RandomMinMax(-1, 1), def.Y + Utility.RandomMinMax(-1, 1), def.Z), def.Map);
+            }
+
+            base.OnMiss(atk, def);
         }
 
         public override bool OnFired(Mobile atk, Mobile def)
         {
-            def.PublicOverheadMessage(Network.MessageType.Regular, 0, true, "Herp derp");
-
             atk.MovingEffect( def, EffectID, 18, 1, false, false );
 
 			return true;
         }
-
-        public override int Range(Mobile atk)
-        {
-            BaseCreature monstre = atk as BaseCreature;
-            return monstre.RangeFight;
-        }
     }
-
-
 }

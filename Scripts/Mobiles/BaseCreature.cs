@@ -296,6 +296,7 @@ namespace Server.Mobiles
 
 		private int		m_iRangePerception;		// The view area
 		private int		m_iRangeFight;			// The fight distance
+        private int     m_iMaxRange;
 
 		private bool	m_bDebugAI;				// Show debug AI messages
 
@@ -1529,6 +1530,7 @@ namespace Server.Mobiles
 			m_iRangePerception = iRangePerception;
 			m_iRangeFight = iRangeFight;
             m_DetectionRange = iRangePerception;
+            m_iMaxRange = iRangeFight;
 
 			m_FightMode = mode;
 
@@ -1580,13 +1582,14 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
 
 			writer.Write( (int)m_CurrentAI );
 			writer.Write( (int)m_DefaultAI );
 
 			writer.Write( (int)m_iRangePerception );
 			writer.Write( (int)m_iRangeFight );
+            writer.Write(m_iMaxRange);
 
 			writer.Write( (int)m_iTeam );
 
@@ -1696,6 +1699,8 @@ namespace Server.Mobiles
 
             m_iRangePerception = reader.ReadInt();
             m_iRangeFight = reader.ReadInt();
+            if (version > 0)
+                m_iMaxRange = reader.ReadInt();
 
             m_iTeam = reader.ReadInt();
 
@@ -2253,6 +2258,19 @@ namespace Server.Mobiles
 			set
 			{
 				m_iRangePerception = value;
+			}
+		}
+
+		[CommandProperty( AccessLevel.Batisseur )]
+		public int MaxRange
+		{
+			get
+			{
+                return m_iMaxRange;
+			}
+			set
+			{
+				m_iMaxRange = value;
 			}
 		}
 
