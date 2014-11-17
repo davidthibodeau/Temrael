@@ -315,7 +315,7 @@ namespace Server.Commands.Generic
 				Mobile mob = (Mobile)obj;
 
 				CommandLogging.WriteLine( from, "{0} {1} playing sound {2} for {3}", from.AccessLevel, CommandLogging.Format( from ), index, CommandLogging.Format( mob ) );
-				mob.Send( new PlaySound( index, mob.Location ) );
+				mob.Send( new PlaySound( index-1, mob.Location ) );
 			}
 			else
 			{
