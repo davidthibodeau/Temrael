@@ -315,9 +315,9 @@ namespace Server.Misc
 
 			switch ( stat )
 			{
-				case Stat.Str: return ( from.StrLock == StatLockType.Up && from.RawStr < 125 );
-				case Stat.Dex: return ( from.DexLock == StatLockType.Up && from.RawDex < 125 );
-				case Stat.Int: return ( from.IntLock == StatLockType.Up && from.RawInt < 125 );
+				case Stat.Str: return ( from.StrLock == StatLockType.Up && from.RawStr < 100 );
+				case Stat.Dex: return ( from.DexLock == StatLockType.Up && from.RawDex < 100 );
+				case Stat.Int: return ( from.IntLock == StatLockType.Up && from.RawInt < 100 );
 			}
 
 			return false;
