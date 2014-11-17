@@ -8,21 +8,32 @@ namespace Server.Engines.Combat
 {
     public class ArmeMonstre : BaseWeapon
     {
-        public override CombatStrategy Strategy { get { return StrategyMonstre.Strategy; } }
+        public override CombatStrategy Strategy 
+        { get 
+        {
+            if (m_ranged)
+                return Combat.StrategyMonstreDist.Strategy;
+            else
+                return Combat.StrategyMonstreMelee.Strategy;
+        } 
+        }
 
         private int dMinDmg;
         private int dMaxDmg;
         private int dSpeed;
 
+        private bool m_ranged;
+
         public override int DefMinDamage { get { return dMinDmg; } }
         public override int DefMaxDamage { get { return dMaxDmg; } }
         public override int DefSpeed { get { return dSpeed; } }
 
-        public ArmeMonstre(int min, int max, int speed) : base(0)
+        public ArmeMonstre(int min, int max, int speed, bool ranged) : base(0)
         {
             dMinDmg = min;
             dMaxDmg = max;
             dSpeed = speed;
+            m_ranged = ranged;
             Layer = Layer.OneHanded;
         }
 
@@ -41,6 +52,7 @@ namespace Server.Engines.Combat
             writer.Write(dMinDmg);
             writer.Write(dMaxDmg);
             writer.Write(dSpeed);
+            writer.Write(m_ranged);
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -52,6 +64,7 @@ namespace Server.Engines.Combat
             dMinDmg = reader.ReadInt();
             dMaxDmg = reader.ReadInt();
             dSpeed = reader.ReadInt();
+            m_ranged = reader.ReadBool();
 		}
 
     }

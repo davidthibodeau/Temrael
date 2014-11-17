@@ -3164,7 +3164,12 @@ namespace Server.Mobiles
 		#region Set[...]
         public void SetArme(int min, int max, int speed)
         {
-            AddItem(new ArmeMonstre(min, max, speed));
+            AddItem(new ArmeMonstre(min, max, speed, false));
+        }
+
+        public void SetArme(int min, int max, int speed, bool ranged)
+        {
+            AddItem(new ArmeMonstre(min, max, speed, ranged));
         }
 
 		public void SetDamage( int val )
