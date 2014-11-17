@@ -133,6 +133,12 @@ namespace Server.Engines.Harvest
 
         public static void Initialize()
         {
+
+            // Mettre ici toutes les zones de lumberjacking. 
+            // Le bois par défaut est l'érable, si il n'est pas overridé par une zone.
+            // Si deux zones se chevauchent, alors les priorités seront celles-ci :
+            // Erable > Chene > Pin > Cedre > Cypres > Ebene > Acajou > Saule.
+
             Array.Sort(m_TreeTiles);
             cheneList.Add("GreenAcresTest", new Region("GreenAcresTest", Map.Internal, 100, new Rectangle2D(new Point2D(4030, 42), new Point2D(4035, 35))));
         }
@@ -164,7 +170,12 @@ namespace Server.Engines.Harvest
                 0x71BE, 0x71C0, 0x71D4, 0x71D5, 0x71D6, 0x71D7,
                 0x176C,
 
-                0x7AA2 // Gros arbre orange-vert.
+                // Nouveaux arbres.
+                0x7AA2, 0x7AB9, 0x7AAD, 0x7AB3, 0x7AB1, 0x7AB5, 0x7AA6, 0x7AA8, 0x7ABC,
+                0x7AAF, 0x7AA2, 0x7AA4, 0x7AAA, 0x7A9C, 0x7A9E, 0x7AA0, 0x7AAc, 0x7AB7,
+                0x7ABB, 0x7ABE, 0x7AC0, 0x7AC2, 0x7AC3, 0x7AC5, 0x7AC6, 0x7AC8, 0x7AC9,
+                0x7ACB, 0x7ACD, 0x7ACF, 0x7AD1, 0x7AD3, 0x7AD5, 0x7AD7, 0x7AD9, 0x7ADB,
+                0x7ADD, 0x7ADF, 0x7AE0, 0x7AE2, 0x7AE3, 0x7AE5, 0x7AE7
 			};
 		#endregion
 	}

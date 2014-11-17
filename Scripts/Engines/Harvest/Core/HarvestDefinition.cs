@@ -190,54 +190,63 @@ namespace Server.Engines.Harvest
             }
             else if (Skill == SkillName.Hache)
             {
-                from.SendMessage("ICI");
-                foreach (Region r in Lumberjacking.erableList)
-                {
-                    if (r.Contains(new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[15], null);
-                }
+                Point2D p = new Point2D(x, y);
 
-                foreach (Region r in Lumberjacking.cheneList)
-                {
-                    if (r.Contains( new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[20], null);
-                }
+                if (Lumberjacking.erableList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.erableList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[15], null);
+                    }
 
-                foreach (Region r in Lumberjacking.pinList)
-                {
-                    if (r.Contains(new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[16], null);
-                }
+                if(Lumberjacking.cheneList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.cheneList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[20], null);
+                    }
 
-                foreach (Region r in Lumberjacking.cedreList)
-                {
-                    if (r.Contains(new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[18], null);
-                }
+                if (Lumberjacking.pinList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.pinList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[16], null);
+                    }
 
-                foreach (Region r in Lumberjacking.cypresList)
-                {
-                    if (r.Contains(new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[17], null);
-                }
+                if (Lumberjacking.cedreList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.cedreList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[18], null);
+                    }
 
-                foreach (Region r in Lumberjacking.ebeneList)
-                {
-                    if (r.Contains(new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[21], null);
-                }
+                if (Lumberjacking.cypresList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.cypresList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[17], null);
+                    }
 
-                foreach (Region r in Lumberjacking.acajouList)
-                {
-                    if (r.Contains(new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[22], null);
-                }
+                if (Lumberjacking.ebeneList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.ebeneList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[21], null);
+                    }
 
-                foreach (Region r in Lumberjacking.sauleList)
-                {
-                    if (r.Contains(new Point2D(x, y)))
-                        return new HarvestVein(100.0, 0.0, m_Resources[19], null);
-                }
+                if (Lumberjacking.acajouList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.acajouList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[22], null);
+                    }
+
+                if (Lumberjacking.sauleList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.sauleList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein(100.0, 0.0, m_Resources[19], null);
+                    }
             }
 
             return m_Veins[0];
@@ -365,10 +374,8 @@ namespace Server.Engines.Harvest
             }
             else
             {
-                int dist = -1;
-
-                for (int i = 0; dist < 0 && i < m_Tiles.Length; ++i)
-                    if (dist == m_Tiles[i])
+                for (int i = 0; i < m_Tiles.Length; ++i)
+                    if (tileID == m_Tiles[i])
                         return true;
 
                 return false;
