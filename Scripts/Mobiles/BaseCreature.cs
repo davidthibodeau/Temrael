@@ -1287,40 +1287,18 @@ namespace Server.Mobiles
 
 		public virtual void OnCarve( Mobile from, Corpse corpse, Item with )
 		{
-			int feathers = Feathers;
-			int wool = Wool;
 			int meat = Meat;
-			int hides = Hides;
-			int scales = Scales;
-            int bones = Bones;
 
             if (from is PlayerMobile)
             {
                 PlayerMobile tmob = (PlayerMobile)from;
-               // Random rand = new Random();
 
                 // TOCHECK CUISINE
                 if (meat != 0)
                     meat += (int)(tmob.Skills.Cuisine.Value / 10) / 2;
-
-
-               /* if (tmob.GetAptitudeValue(NAptitude.Tanneur) > 0)
-                {
-                    if (tmob.GetAptitudeValue(NAptitude.Tanneur) * 5 > rand.Next(0, 100))
-                    {
-                        if (wool != 0)
-                            wool += tmob.GetAptitudeValue(NAptitude.Tanneur) / 2;
-
-                        if (hides != 0)
-                            hides += tmob.GetAptitudeValue(NAptitude.Tanneur) / 3;
-
-                        if (scales != 0)
-                            scales += tmob.GetAptitudeValue(NAptitude.Tanneur) / 3;
-                    }
-                }*/
             }
 
-			if ( (feathers == 0 && wool == 0 && meat == 0 && hides == 0 && scales == 0) || Summoned || IsBonded || corpse.Animated )
+            if ((Feathers == 0 && Wool == 0 && meat == 0 && Hides == 0 && Scales == 0 && Bones == 0) || Summoned || IsBonded || corpse.Animated)
 			{
 				if ( corpse.Animated ) 
 					corpse.SendLocalizedMessageTo( from, 500464 );	// Use this on corpses to carve away meat and hide
@@ -1329,30 +1307,17 @@ namespace Server.Mobiles
 			}
 			else
 			{
-				if ( corpse.Map == Map.Felucca )
-				{
-					/*feathers *= 2;
-					wool *= 2;
-					hides *= 2;*/
-
-					if (Core.ML)
-					{
-					/*	meat *= 2;
-						scales *= 2;*/
-					}
-				}
-
 				new Blood( 0x122D ).MoveToWorld( corpse.Location, corpse.Map );
 
-				if ( feathers != 0 )
+				if ( Feathers != 0 )
 				{
-					corpse.AddCarvedItem( new Feather( feathers ), from );
+					corpse.AddCarvedItem( new Feather( Feathers ), from );
 					from.SendLocalizedMessage( 500479 ); // You pluck the bird. The feathers are now on the corpse.
 				}
 
-				if ( wool != 0 )
+				if ( Wool != 0 )
 				{
-					corpse.AddCarvedItem( new TaintedWool( wool ), from );
+					corpse.AddCarvedItem( new TaintedWool( Wool ), from );
 					from.SendLocalizedMessage( 500483 ); // You shear it, and the wool is now on the corpse.
 				}
 
@@ -1368,141 +1333,105 @@ namespace Server.Mobiles
 					from.SendLocalizedMessage( 500467 ); // You carve some meat, which remains on the corpse.
 				}
 
-				if ( hides != 0 )
+				if ( Hides != 0 )
 				{
-					Item holding = from.Weapon as Item;
-					if ( Core.AOS && ( holding is BaseWeapon /* TODO: || holding is ButcherWarCleaver || with is ButcherWarCleaver */ ) )
+					Item leather = null;
+
+					switch ( HideType )
 					{
-						Item leather = null;
-
-						switch ( HideType )
-						{
-							case HideType.Regular: leather = new Hides( hides ); break;
-                            case HideType.Reptilien: leather = new ReptilienHides(hides); break;
-							case HideType.Nordique: leather = new NordiqueHides( hides ); break;
-							case HideType.Desertique: leather = new DesertiqueHides( hides ); break;
-							case HideType.Maritime: leather = new MaritimeHides( hides ); break;
-                            case HideType.Volcanique: leather = new VolcaniqueHides( hides ); break;
-                            case HideType.Geant: leather = new GeantHides( hides ); break;
-                            case HideType.Minotaure: leather = new MinotaureHides(hides); break;
-                            case HideType.Ophidien: leather = new OphidienHides( hides ); break;
-                            case HideType.Arachnide: leather = new ArachnideHides( hides ); break;
-                            case HideType.Magique: leather = new MagiqueHides(hides); break;
-                            case HideType.Ancien: leather = new AncienHides( hides ); break;
-                            case HideType.Demoniaque: leather = new DemoniaqueHides( hides ); break;
-                            case HideType.Dragonique: leather = new DragoniqueHides( hides ); break;
-                            case HideType.Lupus: leather = new LupusHides( hides ); break;
-						}
-
-						if ( leather != null )
-						{
-							if ( !from.PlaceInBackpack( leather ) )
-							{
-								corpse.DropItem( leather );
-								from.SendLocalizedMessage( 500471 ); // You skin it, and the hides are now in the corpse.
-							}
-							else
-								from.SendLocalizedMessage( 1073555 ); // You skin it and place the cut-up hides in your backpack.
-						}
+						case HideType.Regular: leather = new Hides( Hides ); break;
+                        case HideType.Reptilien: leather = new ReptilienHides(Hides); break;
+						case HideType.Nordique: leather = new NordiqueHides( Hides ); break;
+						case HideType.Desertique: leather = new DesertiqueHides( Hides ); break;
+						case HideType.Maritime: leather = new MaritimeHides( Hides ); break;
+                        case HideType.Volcanique: leather = new VolcaniqueHides( Hides ); break;
+                        case HideType.Geant: leather = new GeantHides( Hides ); break;
+                        case HideType.Minotaure: leather = new MinotaureHides(Hides); break;
+                        case HideType.Ophidien: leather = new OphidienHides( Hides ); break;
+                        case HideType.Arachnide: leather = new ArachnideHides( Hides ); break;
+                        case HideType.Magique: leather = new MagiqueHides(Hides); break;
+                        case HideType.Ancien: leather = new AncienHides( Hides ); break;
+                        case HideType.Demoniaque: leather = new DemoniaqueHides( Hides ); break;
+                        case HideType.Dragonique: leather = new DragoniqueHides( Hides ); break;
+                        case HideType.Lupus: leather = new LupusHides( Hides ); break;
 					}
-					/*else
-					{
-						if ( HideType == HideType.Regular )
-							corpse.DropItem( new Hides( hides ) );
-						else if ( HideType == HideType.Spined )
-							corpse.DropItem( new SpinedHides( hides ) );
-						else if ( HideType == HideType.Horned )
-							corpse.DropItem( new HornedHides( hides ) );
-						else if ( HideType == HideType.Barbed )
-							corpse.DropItem( new BarbedHides( hides ) );
 
-						from.SendLocalizedMessage( 500471 ); // You skin it, and the hides are now in the corpse.
-					}*/
+					if ( leather != null )
+					{
+						if ( !from.PlaceInBackpack( leather ) )
+						{
+							corpse.DropItem( leather );
+							from.SendLocalizedMessage( 500471 ); // You skin it, and the hides are now in the corpse.
+						}
+						else
+							from.SendLocalizedMessage( 1073555 ); // You skin it and place the cut-up hides in your backpack.
+					}
 				}
 
-                if (bones != 0)
+                if (Bones != 0)
                 {
-                    Item holding = from.Weapon as Item;
-                    if (Core.AOS && (holding is BaseWeapon /* TODO: || holding is ButcherWarCleaver || with is ButcherWarCleaver */ ))
+                    Item bone = null;
+
+                    switch (BoneType)
                     {
-                        Item bone = null;
-
-                        switch (BoneType)
-                        {
-                            case BoneType.Regular: bone = new Bone(bones); break;
-                            case BoneType.Gobelin: bone = new GobelinBone(bones); break;
-                            case BoneType.Reptilien: bone = new ReptilienBone(bones); break;
-                            case BoneType.Nordique: bone = new NordiqueBone(bones); break;
-                            case BoneType.Desertique: bone = new DesertiqueBone(bones); break;
-                            case BoneType.Maritime: bone = new MaritimeBone(bones); break;
-                            case BoneType.Volcanique: bone = new VolcaniqueBone(bones); break;
-                            case BoneType.Geant: bone = new GeantBone(bones); break;
-                            case BoneType.Minotaure: bone = new MinotaureBone(bones); break;
-                            case BoneType.Ophidien: bone = new OphidienBone(bones); break;
-                            case BoneType.Arachnide: bone = new ArachnideBone(bones); break;
-                            case BoneType.Magique: bone = new MagiqueBone(bones); break;
-                            case BoneType.Ancien: bone = new AncienBone(bones); break;
-                            case BoneType.Demon: bone = new DemonBone(bones); break;
-                            case BoneType.Dragon: bone = new DragonBone(bones); break;
-                            case BoneType.Balron: bone = new BalronBone(bones); break;
-                            case BoneType.Wyrm: bone = new WyrmBone(bones); break;
-                        }
-
-                        if (bone != null)
-                        {
-                            if (!from.PlaceInBackpack(bone))
-                            {
-                                corpse.DropItem(bone);
-                                from.SendMessage("Vous ne pouvez pas portez les os de la creature.");
-                                //from.SendLocalizedMessage(500471); // You skin it, and the hides are now in the corpse.
-                            }
-                            else
-                                from.SendMessage("Vous placez les os de la creature dans votre sac.");
-                                //from.SendLocalizedMessage(1073555); // You skin it and place the cut-up hides in your backpack.
-                        }
+                        case BoneType.Regular: bone = new Bone(Bones); break;
+                        case BoneType.Gobelin: bone = new GobelinBone(Bones); break;
+                        case BoneType.Reptilien: bone = new ReptilienBone(Bones); break;
+                        case BoneType.Nordique: bone = new NordiqueBone(Bones); break;
+                        case BoneType.Desertique: bone = new DesertiqueBone(Bones); break;
+                        case BoneType.Maritime: bone = new MaritimeBone(Bones); break;
+                        case BoneType.Volcanique: bone = new VolcaniqueBone(Bones); break;
+                        case BoneType.Geant: bone = new GeantBone(Bones); break;
+                        case BoneType.Minotaure: bone = new MinotaureBone(Bones); break;
+                        case BoneType.Ophidien: bone = new OphidienBone(Bones); break;
+                        case BoneType.Arachnide: bone = new ArachnideBone(Bones); break;
+                        case BoneType.Magique: bone = new MagiqueBone(Bones); break;
+                        case BoneType.Ancien: bone = new AncienBone(Bones); break;
+                        case BoneType.Demon: bone = new DemonBone(Bones); break;
+                        case BoneType.Dragon: bone = new DragonBone(Bones); break;
+                        case BoneType.Balron: bone = new BalronBone(Bones); break;
+                        case BoneType.Wyrm: bone = new WyrmBone(Bones); break;
                     }
-                    /*else
-                    {
-                        if ( HideType == HideType.Regular )
-                            corpse.DropItem( new Hides( hides ) );
-                        else if ( HideType == HideType.Spined )
-                            corpse.DropItem( new SpinedHides( hides ) );
-                        else if ( HideType == HideType.Horned )
-                            corpse.DropItem( new HornedHides( hides ) );
-                        else if ( HideType == HideType.Barbed )
-                            corpse.DropItem( new BarbedHides( hides ) );
 
-                        from.SendLocalizedMessage( 500471 ); // You skin it, and the hides are now in the corpse.
-                    }*/
+                    if (bone != null)
+                    {
+                        if (!from.PlaceInBackpack(bone))
+                        {
+                            corpse.DropItem(bone);
+                            from.SendMessage("Vous ne pouvez pas portez les os de la creature.");
+                        }
+                        else
+                            from.SendMessage("Vous placez les os de la creature dans votre sac.");
+                    }
                 }
 
-				if ( scales != 0 )
-				{
-					ScaleType sc = this.ScaleType;
+                if (Scales != 0)
+                {
+                    ScaleType sc = this.ScaleType;
 
-					switch ( sc )
-					{
-                        case ScaleType.Normal:      corpse.AddCarvedItem(new RegularScales(scales), from); break;
-                        case ScaleType.Nordique:    corpse.AddCarvedItem(new NordiqueScales(scales), from); break;
-						case ScaleType.Desertique:  corpse.AddCarvedItem( new DesertiqueScales( scales ), from ); break;
-						case ScaleType.Maritime:    corpse.AddCarvedItem( new MaritimeScales( scales ), from ); break;
-						case ScaleType.Volcanique:  corpse.AddCarvedItem( new VolcaniqueScales( scales ), from ); break;
-						case ScaleType.Ancien:      corpse.AddCarvedItem( new AncienScales( scales ), from ); break;
-                        case ScaleType.Wyrm:        corpse.AddCarvedItem( new WyrmScales( scales ), from ); break;
-						/*case ScaleType.All:
-						{
-							corpse.AddCarvedItem( new RedScales( scales ), from );
-							corpse.AddCarvedItem( new YellowScales( scales ), from );
-							corpse.AddCarvedItem( new BlackScales( scales ), from );
-							corpse.AddCarvedItem( new GreenScales( scales ), from );
-							corpse.AddCarvedItem( new WhiteScales( scales ), from );
-							corpse.AddCarvedItem( new BlueScales( scales ), from );
-							break;
-						}*/
-					}
+                    switch (sc)
+                    {
+                        case ScaleType.Normal: corpse.AddCarvedItem(new RegularScales(Scales), from); break;
+                        case ScaleType.Nordique: corpse.AddCarvedItem(new NordiqueScales(Scales), from); break;
+                        case ScaleType.Desertique: corpse.AddCarvedItem(new DesertiqueScales(Scales), from); break;
+                        case ScaleType.Maritime: corpse.AddCarvedItem(new MaritimeScales(Scales), from); break;
+                        case ScaleType.Volcanique: corpse.AddCarvedItem(new VolcaniqueScales(Scales), from); break;
+                        case ScaleType.Ancien: corpse.AddCarvedItem(new AncienScales(Scales), from); break;
+                        case ScaleType.Wyrm: corpse.AddCarvedItem(new WyrmScales(Scales), from); break;
+                        /*case ScaleType.All:
+                        {
+                            corpse.AddCarvedItem( new RedScales( scales ), from );
+                            corpse.AddCarvedItem( new YellowScales( scales ), from );
+                            corpse.AddCarvedItem( new BlackScales( scales ), from );
+                            corpse.AddCarvedItem( new GreenScales( scales ), from );
+                            corpse.AddCarvedItem( new WhiteScales( scales ), from );
+                            corpse.AddCarvedItem( new BlueScales( scales ), from );
+                            break;
+                        }*/
+                    }
 
-					from.SendMessage( "You cut away some scales, but they remain on the corpse." );
-				}
+                    from.SendMessage("You cut away some scales, but they remain on the corpse.");
+                }
 
 				corpse.Carved = true;
 
