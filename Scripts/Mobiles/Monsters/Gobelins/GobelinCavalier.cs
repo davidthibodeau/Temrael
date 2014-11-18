@@ -38,7 +38,7 @@ namespace Server.Mobiles
 
         public override void GenerateLoot()
         {
-            AddLoot(LootPack.Junk);
+            AddLoot(LootPack.UtilityItems);
             AddLoot(LootPack.Food);
         }
 

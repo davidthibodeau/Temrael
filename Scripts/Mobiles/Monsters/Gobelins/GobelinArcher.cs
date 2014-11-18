@@ -1,6 +1,5 @@
 ﻿using System;
 using Server.Mobiles;
-using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -9,41 +8,41 @@ namespace Server.Mobiles
     {
         [Constructable]
         public GobelinArcher()
-            : base(AIType.AI_Archer, FightMode.Closest, 9, 9, 0.2, 0.4)
-        {
-            Name = "Gobelin Archer";
-            Body = 249;
-            BaseSoundID = 462;
+            : base(AIType.AI_Archer, FightMode.Closest, 8, 2, 0.2, 0.4)
+                    {
+                            Name = "Gobelin Archer";
+                            Body = 249;
+                            BaseSoundID = 462;
 
-            PlayersAreEnemies = true;
-            Direction = Direction.Left;
-
-            SetStr(30);
-            SetDex(40);
-            SetInt(10);
-
-            SetHits(80);
-            SetMana(20);
-            SetStam(40);
-            SetArme(2, 5, 30, true);
-
-            SetResistance(ResistanceType.Physical, 10);
-            SetResistance(ResistanceType.Magie, 0);
-
-            SetSkill(SkillName.ArmureNaturelle, 26);
-            SetSkill(SkillName.Tactiques, 46);
-            SetSkill(SkillName.Epee, 46);
-            SetSkill(SkillName.CoupCritique, 42);
-
-        }
+                            PlayersAreEnemies = true;
+                            MaxRange = 8; 
+  
+ 
+                            SetStr( 30 );
+                            SetDex( 40 );
+                            SetInt( 10 );
+     
+                            SetHits( 80 );
+                            SetMana( 20);
+                            SetStam( 40);    
+                            SetArme(2, 5, 30);
+     
+                            SetResistance( ResistanceType.Physical, 10 );
+                            SetResistance( ResistanceType.Magie, 0 );
+     
+                            SetSkill( SkillName.ArmureNaturelle, 26 );
+                            SetSkill( SkillName.Tactiques, 46 );
+                            SetSkill( SkillName.Epee, 46 );
+                            SetSkill( SkillName.CoupCritique, 42 );
+     
+                    }
 
         public override void GenerateLoot()
         {
             AddLoot(LootPack.Junk);
             AddLoot(LootPack.UtilityItems);
             AddLoot(LootPack.Food);
-
-            Server.Items.Arrow arrow = new Server.Items.Arrow(25);
+            Server.Items.Arrow arrow = new Server.Items.Arrow(20);
             AddToBackpack(arrow);
         }
 

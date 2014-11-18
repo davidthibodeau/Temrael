@@ -8,7 +8,7 @@ namespace Server.Mobiles
     {
         [Constructable]
         public Serpent()
-            : base(AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.3)
+            : base(AIType.AI_Animal, FightMode.Closest, 4, 1, 0.2, 0.3)
         {
             Name = "Un Serpent";
             Body = 52;
@@ -22,7 +22,7 @@ namespace Server.Mobiles
             SetMana(0);
             SetStam(30);
 
-            SetArme(1, 5, 30);
+            SetArme(1, 5, 30, Poison.Lesser);
 
             SetResistance(ResistanceType.Physical, 1, 5);
             SetResistance(ResistanceType.Magie, 1, 5);
@@ -30,9 +30,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.Infiltration, 10.0);
             SetSkill(SkillName.Tactiques, 7.0);
             SetSkill(SkillName.Epee, 7.0);
-
-            Poison = Poison.Lesser;
-            Hidden = true;
+            SetSkill(SkillName.Empoisonnement, 30.0);
 
             Tamable = true;
             ControlSlots = 1;

@@ -30,6 +30,7 @@ namespace Server.Mobiles
             SetSkill(SkillName.Infiltration, 10.0);
             SetSkill(SkillName.Tactiques, 7.0);
             SetSkill(SkillName.Epee, 7.0);
+            SetSkill(SkillName.Empoisonnement, 30.0);
 
             Poison = Poison.Lesser;
             Hidden = true;

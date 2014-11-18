@@ -8,7 +8,7 @@ namespace Server.Mobiles
     {
         [Constructable]
         public GobelinChampion()
-            : base(AIType.AI_Thief, FightMode.Closest, 8, 1, 0.2, 0.4)
+            : base(AIType.AI_Melee, FightMode.Closest, 8, 1, 0.2, 0.4)
         {
             Name = "Gobelin Champion";
             Body = 250;

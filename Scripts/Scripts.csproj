@@ -129,6 +129,9 @@
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinChampion.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinFrancTireur.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinGuerrier.cs" />
+    <Compile Include="Mobiles\Monsters\Homme-Lezard\Homme-Lezard.cs" />
+    <Compile Include="Mobiles\Monsters\Homme-Lezard\HommeLezardChasseur.cs" />
+    <Compile Include="Mobiles\Monsters\Homme-Lezard\HommeLezardShaman.cs" />
     <Compile Include="Mobiles\Monsters\Orcs\Orc.cs" />
     <Compile Include="Mobiles\Monsters\Orcs\OrcChampion.cs" />
     <Compile Include="Mobiles\Monsters\Orcs\OrcGuerrier.cs" />
@@ -164,6 +167,7 @@
     <Compile Include="Mobiles\NewAnimals\Ours\OursBlanc.cs" />
     <Compile Include="Mobiles\NewAnimals\Ours\OursGrizzly.cs" />
     <Compile Include="Mobiles\NewAnimals\Ours\OursNoir.cs" />
+    <Compile Include="Mobiles\NewAnimals\SerpentGeant.cs" />
     <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurPetitsFruits.cs" />
     <Compile Include="Regions\Hurlevent.cs" />
