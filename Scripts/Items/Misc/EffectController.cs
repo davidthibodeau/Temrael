@@ -241,7 +241,10 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
+
+            writer.Write(m_ActivateMode);
+            writer.Write(m_ActivateItem);
 
 			writer.Write( m_EffectDelay );
 			writer.Write( m_TriggerDelay );
@@ -335,6 +338,46 @@ namespace Server.Items
 
 					break;
 				}
+                case 1:
+                {
+                    m_ActivateMode = reader.ReadInt();
+                    m_ActivateItem = reader.ReadItem();
+
+                    m_EffectDelay = reader.ReadTimeSpan();
+                    m_TriggerDelay = reader.ReadTimeSpan();
+                    m_SoundDelay = reader.ReadTimeSpan();
+
+                    m_Source = ReadEntity(reader);
+                    m_Target = ReadEntity(reader);
+                    m_Trigger = reader.ReadItem() as EffectController;
+
+                    m_FixedDirection = reader.ReadBool();
+                    m_Explodes = reader.ReadBool();
+                    m_PlaySoundAtTrigger = reader.ReadBool();
+
+                    m_PopMessage = reader.ReadBool();
+                    m_MessageDelay = reader.ReadTimeSpan();
+                    m_MessageAtTrigger = reader.ReadBool();
+                    m_Message = reader.ReadString();
+
+                    m_EffectType = (ECEffectType)reader.ReadEncodedInt();
+                    m_EffectLayer = (EffectLayer)reader.ReadEncodedInt();
+                    m_TriggerType = (EffectTriggerType)reader.ReadEncodedInt();
+
+                    m_ItemID = reader.ReadEncodedInt();
+                    m_Hue = reader.ReadEncodedInt();
+                    m_RenderMode = reader.ReadEncodedInt();
+                    m_Speed = reader.ReadEncodedInt();
+                    m_Duration = reader.ReadEncodedInt();
+                    m_ParticleEffect = reader.ReadEncodedInt();
+                    m_ExplodeParticleEffect = reader.ReadEncodedInt();
+                    m_ExplodeSound = reader.ReadEncodedInt();
+                    m_Unknown = reader.ReadEncodedInt();
+                    m_SoundID = reader.ReadEncodedInt();
+                    m_TriggerRange = reader.ReadEncodedInt();
+
+                    break;
+                }
 			}
 		}
 
