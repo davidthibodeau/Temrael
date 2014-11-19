@@ -20,9 +20,26 @@ namespace Server.Items
 		InRange
 	}
 
+    public interface IActivable
+    {
+        /*
+        #region IActivable
+        public void OnECActivate()
+        {
+            this.OnUse();
+        }
+        #endregion
+        */
+
+        void OnActivate(int mode, Mobile from);
+    }
+
 	public class EffectController : Item
 	{
 		private TimeSpan m_EffectDelay;
+
+        private int m_ActivateMode;
+        private Item m_ActivateItem;
 
 		private ECEffectType m_EffectType;
 		private EffectTriggerType m_TriggerType;
@@ -98,6 +115,14 @@ namespace Server.Items
          
         [CommandProperty(AccessLevel.Batisseur)]
         public string Message { get { return m_Message; } set { m_Message = value; } }
+
+
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int ActivateMode { get { return m_ActivateMode; } set { m_ActivateMode = value; } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Item ActivateItem { get { return m_ActivateItem; } set { m_ActivateItem = value; } }
 
 
 
@@ -354,6 +379,9 @@ namespace Server.Items
 
 			if( trigger is Mobile && ((Mobile)trigger).Hidden && ((Mobile)trigger).AccessLevel > AccessLevel.Player )
 				return;
+
+            if (ActivateItem != null && trigger is Mobile && ActivateItem is IActivable)
+                ((IActivable)ActivateItem).OnActivate(m_ActivateMode, (Mobile)trigger);
 
 			if ( m_SoundID > 0 )
 				Timer.DelayCall( m_SoundDelay, new TimerStateCallback( PlaySound ), trigger );

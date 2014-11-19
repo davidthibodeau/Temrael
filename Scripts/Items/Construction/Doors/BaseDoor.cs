@@ -6,8 +6,48 @@ using Server.Targeting;
 
 namespace Server.Items
 {
-	public abstract class BaseDoor : Item, ILockable, ITelekinesisable
-	{
+	public abstract class BaseDoor : Item, ILockable, ITelekinesisable, IActivable
+    {
+        #region IEffectControllerActivable
+        public void OnActivate(int mode, Mobile from)
+        {
+            // Mode 1 - Open
+            // Mode 2 - Close
+            // Mode 3 - Les deux.
+
+            bool open = false;
+
+            if (mode == 1 || (mode == 3 && !Open ))
+            {
+                open = true;
+                OnOpened(from);
+            }
+            else if (mode == 2 || (mode == 3 && Open))
+            {
+                open = false;
+                OnClosed(from);
+            }
+
+            if (UseChainedFunctionality)
+            {
+                List<BaseDoor> list = GetChain();
+
+                for (int i = 0; i < list.Count; ++i)
+                    list[i].Open = open;
+            }
+            else
+            {
+                Open = open;
+
+                BaseDoor link = this.Link;
+
+                if (m_Open && link != null && !link.Open)
+                    link.Open = true;
+            }
+        }
+        #endregion
+
+
 		private bool m_Open, m_Locked;
 		private int m_OpenedID, m_OpenedSound;
 		private int m_ClosedID, m_ClosedSound;
