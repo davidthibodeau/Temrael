@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Server;
 using Server.Mobiles;
+using Server.Items;
 
 namespace Server.Engines.Races
 {
@@ -100,7 +101,16 @@ namespace Server.Engines.Races
             if (race == Nain.RaceId)
                 return new Nain(reader);
 
+            if (race == AucuneRace.RaceId)
+                return new AucuneRace(reader);
+
             throw new Exception(String.Format("Index de race invalide. Index: {0}", race));
+        }
+
+        public static void SerializeRace(Race race, GenericWriter writer)
+        {
+            writer.Write(race.Id);
+            race.Serialize(writer);
         }
 
         public static Race GetRaceInstance(int raceId)
@@ -116,6 +126,13 @@ namespace Server.Engines.Races
                 case 7: return new Nain(0);
                 default: return null;
             }
+        }
+
+        public static void SupprimerSkin(Mobile m)
+        {
+            RaceSkin skin = m.FindItemOnLayer(Layer.Shirt) as RaceSkin;
+            if (skin != null)
+                skin.Delete();
         }
     }
 }

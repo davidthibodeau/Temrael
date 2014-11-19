@@ -117,7 +117,7 @@ namespace Server.Spells
                 Caster.EndAction(typeof(MetamorphoseSpell));
 
                 if (Caster is PlayerMobile)
-                    ((PlayerMobile)Caster).CheckRaceGump();
+                    ((PlayerMobile)Caster).CheckRaceSkin();
 
                 BaseArmor.ValidateMobile(Caster);
 
@@ -214,7 +214,7 @@ namespace Server.Spells
                 m.EndAction(typeof(MetamorphoseSpell));
 
                 if (m is PlayerMobile)
-                    ((PlayerMobile)m).CheckRaceGump();
+                    ((PlayerMobile)m).CheckRaceSkin();
 
                 BaseArmor.ValidateMobile(m);
 

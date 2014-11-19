@@ -64,7 +64,7 @@ namespace Server.Spells
                 Caster.PlaySound(0x3BD);
 
                 if (Caster is PlayerMobile)
-                    ((PlayerMobile)Caster).CheckRaceGump();
+                    ((PlayerMobile)Caster).CheckRaceSkin();
 
                 BaseArmor.ValidateMobile(Caster);
             }
@@ -135,7 +135,7 @@ namespace Server.Spells
                 m.EndAction(typeof(SubterfugeSpell));
 
                 if (m is PlayerMobile)
-                    ((PlayerMobile)m).CheckRaceGump();
+                    ((PlayerMobile)m).CheckRaceSkin();
 
                 m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
                 m.PlaySound(0x3BD);

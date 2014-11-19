@@ -122,7 +122,7 @@ namespace Server.Spells
                 m.EndAction(typeof(OmbreSpell));
 
                 if (m is PlayerMobile)
-                    ((PlayerMobile)m).CheckRaceGump();
+                    ((PlayerMobile)m).CheckRaceSkin();
 
                 BaseArmor.ValidateMobile(m);
 			}
@@ -162,7 +162,7 @@ namespace Server.Spells
 					m_Owner.EndAction( typeof( OmbreSpell ) );
 
                     if (m_Owner is PlayerMobile)
-                        ((PlayerMobile)m_Owner).CheckRaceGump();
+                        ((PlayerMobile)m_Owner).CheckRaceSkin();
 
                     BaseArmor.ValidateMobile(m_Owner);
 				}

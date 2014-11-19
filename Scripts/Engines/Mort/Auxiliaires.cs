@@ -73,7 +73,7 @@ namespace Server.Engines.Mort
                         if (item.Layer == Layer.Hair || item.Layer == Layer.FacialHair)
                             item.Delete();
 
-                        if (item is RaceGump || (m_Corpse is Corpse && ((Corpse)m_Corpse).EquipItems.Contains(item)))
+                        if (item is RaceSkin || (m_Corpse is Corpse && ((Corpse)m_Corpse).EquipItems.Contains(item)))
                         {
                             if (!m.EquipItem(item))
                                 m.AddToBackpack(item);
@@ -108,7 +108,7 @@ namespace Server.Engines.Mort
                 m.Resurrect();
             }*/
 
-            pm.CheckRaceGump();
+            pm.CheckRaceSkin();
         }
     }
 
@@ -157,7 +157,7 @@ namespace Server.Engines.Mort
                         if (pm.MortEngine.AmeLastFed.AddDays(7) < DateTime.Now)
                         {
                             pm.MortEngine.AmeLastFed = DateTime.Now;
-                            if (item is RaceGump)
+                            if (item is RaceSkin)
                                 item.Hue = 0;
                             pm.HueMod = 0;
                             pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 7 jours, votre corps se déteriore.");
@@ -172,7 +172,7 @@ namespace Server.Engines.Mort
                         if (pm.MortEngine.AmeLastFed.AddDays(14) < DateTime.Now)
                         {
                             pm.MortEngine.AmeLastFed = DateTime.Now;
-                            if (item is RaceGump)
+                            if (item is RaceSkin)
                                 item.Delete();
                             pm.SendMessage("Puisque vous ne vous êtes pas nourri de l'âme d'un vivant depuis 14 jours, votre corps se déteriore à nouveau.");
                             pm.MortEngine.MortEvo = MortEvo.Zombie;

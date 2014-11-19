@@ -108,7 +108,7 @@ namespace Server.Spells
                         if (item.Layer == Layer.Hair || item.Layer == Layer.FacialHair)
                             item.Delete();
 
-                        if (item is RaceGump || c.EquipItems.Contains(item))
+                        if (item is RaceSkin || c.EquipItems.Contains(item))
                         {
                             if (!pm.EquipItem(item))
                                 pm.AddToBackpack(item);
@@ -126,7 +126,7 @@ namespace Server.Spells
 
                     pm.Resurrect();
 
-                    pm.CheckRaceGump();
+                    pm.CheckRaceSkin();
                 }
 			}
 			FinishSequence();

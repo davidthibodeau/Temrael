@@ -68,7 +68,7 @@ namespace Server.Engines.Races
             if(raceSecrete == RaceSecrete.Aucun || Transformed == true)
                 return;
 
-            from.FindItemOnLayer(Layer.Shirt).Delete();
+            Race.SupprimerSkin(from);
 
             if (raceSecrete == RaceSecrete.Tieffelin)
             {

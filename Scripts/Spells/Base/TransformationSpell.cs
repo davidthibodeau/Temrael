@@ -181,7 +181,7 @@ namespace Server.Spells
 			context.Timer.Stop();
 
             if (m is PlayerMobile)
-                ((PlayerMobile)m).CheckRaceGump();
+                ((PlayerMobile)m).CheckRaceSkin();
 
 			//if ( context.Type == typeof( HorrificBeastSpell ) )
 			//	m.Delta( MobileDelta.WeaponDamage );

@@ -58,7 +58,7 @@ namespace Server.Spells
                 Caster.EndAction(typeof(PolymorphSpell));
 
                 if (Caster is PlayerMobile)
-                    ((PlayerMobile)Caster).CheckRaceGump();
+                    ((PlayerMobile)Caster).CheckRaceSkin();
                 /*Caster.SendLocalizedMessage(1005559); // This spell is already in effect.*/
                 return false;
             }
@@ -189,7 +189,7 @@ namespace Server.Spells
                     //BaseArmor.ValidateMobile(m_Owner);
 
                     if (m_Owner is PlayerMobile)
-                        ((PlayerMobile)m_Owner).CheckRaceGump();
+                        ((PlayerMobile)m_Owner).CheckRaceSkin();
 				}
 			}
 		}

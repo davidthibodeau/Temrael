@@ -93,7 +93,7 @@ namespace Server.Gumps
                                 if (item.Layer == Layer.Hair || item.Layer == Layer.FacialHair)
                                     item.Delete();
 
-                                if (item is RaceGump || (m_From.Corpse is Corpse && ((Corpse)m_From.Corpse).EquipItems.Contains(item)))
+                                if (item is RaceSkin || (m_From.Corpse is Corpse && ((Corpse)m_From.Corpse).EquipItems.Contains(item)))
                                 {
                                     if (!m_From.EquipItem(item))
                                         m_From.AddToBackpack(item);
@@ -108,7 +108,7 @@ namespace Server.Gumps
                         }
 
                         m_From.CheckStatTimers();
-                        m_From.CheckRaceGump();
+                        m_From.CheckRaceSkin();
                     }
                     break;
             }

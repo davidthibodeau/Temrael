@@ -77,7 +77,7 @@ namespace Server.Engines.Hiding
             foreach (Mobile mob in eable)
             {
                 ScriptMobile m = mob as ScriptMobile;
-                if (!m.Hidden || !mobile.InLOS(m))
+                if (m == null || !m.Hidden || !mobile.InLOS(m))
                     continue;
                 double chance = 0;
                 DetectionStatus status;

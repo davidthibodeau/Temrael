@@ -8,7 +8,7 @@ using Server.Engines.Mort;
 
 namespace Server.Items
 {
-    public class MortRaceGump : RaceGump
+    public class MortRaceGump : RaceSkin
     {
         public virtual MortEvo EMort { get { return MortEvo.Aucune; } }
 

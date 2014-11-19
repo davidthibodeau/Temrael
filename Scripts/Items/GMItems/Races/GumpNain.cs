@@ -5,7 +5,7 @@ using Server.Mobiles;
 
 namespace Server.Items
 {
-    public class CorpsNain : RaceGump
+    public class CorpsNain : RaceSkin
     {
         [Constructable]
         public CorpsNain()

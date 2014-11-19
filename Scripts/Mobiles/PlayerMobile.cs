@@ -229,13 +229,28 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.Batisseur)]
         public Race Race
         {
-            get { return race; }
+            get
+            {
+                if (race == null)
+                    return new AucuneRace();
+                return race;
+            }
             set
             {
-                race = value;
-                Hue = value.Hue;
-                FindItemOnLayer(Layer.Shirt).Delete();
-                AddItem((RaceGump)Activator.CreateInstance(value.Skin));
+                Race.SupprimerSkin(this);
+                if (value != null)
+                {
+                    race = value;
+                    Hue = value.Hue;
+                    if (value.Skin != null)
+                    {
+                        RaceSkin r = (RaceSkin)Activator.CreateInstance(value.Skin);
+                        r.Hue = value.Hue;
+                        AddItem(r);
+                    }
+                }
+                else
+                    race = new AucuneRace();
             }
         }
 
@@ -1968,7 +1983,7 @@ namespace Server.Mobiles
 
                 Transformation.OnTransformationChange(0, null, -1, true); //Retirer spell transformation
 
-                CheckRaceGump();
+                CheckRaceSkin();
 
                 BaseArmor.ValidateMobile(this);
 
@@ -1992,7 +2007,7 @@ namespace Server.Mobiles
                 BodyMod = 0;
                 HueMod = -1;
 
-                CheckRaceGump();
+                CheckRaceSkin();
 
                 BaseArmor.ValidateMobile(this);
 
@@ -2009,12 +2024,12 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual void CheckRaceGump()
+        public virtual void CheckRaceSkin()
         {
             Item racegump = FindItemOnLayer(Layer.Shirt);
 
-            if (racegump != null && racegump is RaceGump)
-                ((RaceGump)racegump).AddProperties(this);
+            if (racegump != null && racegump is RaceSkin)
+                ((RaceSkin)racegump).AddProperties(this);
         }
 
 		private List<Mobile> m_PermaFlags;
@@ -2358,6 +2373,8 @@ namespace Server.Mobiles
             MortEngine = new MortEngine(this, reader);
             Possess = new Possess(this, reader);
             Transformation = new Transformation(this);
+            if (version > 0)
+                Race = Race.Deserialize(reader);
 
             m_QuickSpells = new ArrayList();
             int count = reader.ReadInt();
@@ -2463,7 +2480,7 @@ namespace Server.Mobiles
             if (Blessed && AccessLevel == AccessLevel.Player)
                 Blessed = false;
 
-            CheckRaceGump();
+            CheckRaceSkin();
 
             BaseArmor.ValidateMobile(this);
 		}
@@ -2486,7 +2503,7 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
 
             Langues.Serialize(writer);
             Identities.Serialize(writer);
@@ -2494,6 +2511,7 @@ namespace Server.Mobiles
             Experience.Serialize(writer);
             MortEngine.Serialize(writer);
             Possess.Serialize(writer);
+            Race.SerializeRace(Race, writer);
 
             writer.Write(m_QuickSpells.Count);
             for (int i = 0; i < m_QuickSpells.Count; i++)

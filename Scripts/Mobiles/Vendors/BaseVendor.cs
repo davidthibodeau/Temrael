@@ -49,7 +49,7 @@ namespace Server.Mobiles
         {
             Race = race;
             Hue = race.Hue;
-            AddItem((RaceGump)Activator.CreateInstance(race.Skin));
+            AddItem((RaceSkin)Activator.CreateInstance(race.Skin));
         }
 
 		public virtual bool IsValidBulkOrder( Item item )
