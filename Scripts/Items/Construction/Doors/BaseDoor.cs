@@ -229,7 +229,8 @@ namespace Server.Items
 		{
 			private BaseDoor m_Door;
 
-			public InternalTimer( BaseDoor door ) : base( TimeSpan.FromSeconds( 20.0 ), TimeSpan.FromSeconds( 10.0 ) )
+            public InternalTimer(BaseDoor door, TimeSpan dureeFermeture)
+                : base(dureeFermeture, TimeSpan.FromSeconds(10.0))
 			{
 				Priority = TimerPriority.OneSecond;
 				m_Door = door;
@@ -241,6 +242,21 @@ namespace Server.Items
 					m_Door.Open = false;
 			}
 		}
+
+
+        private TimeSpan m_DureeFermeture;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public TimeSpan DureeFermeture
+        {
+            get
+            {
+                return m_DureeFermeture;
+            }
+            set
+            {
+                m_DureeFermeture = value;
+            }
+        }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Locked
@@ -570,8 +586,9 @@ namespace Server.Items
 			m_OpenedSound = openedSound;
 			m_ClosedSound = closedSound;
 			m_Offset = offset;
+            m_DureeFermeture = TimeSpan.FromSeconds(20.0);
 
-			m_Timer = new InternalTimer( this );
+            m_Timer = new InternalTimer(this, m_DureeFermeture);
 
 			Movable = false;
 		}
@@ -618,7 +635,7 @@ namespace Server.Items
 					m_Offset = reader.ReadPoint3D();
 					m_Link = reader.ReadItem() as BaseDoor;
 
-					m_Timer = new InternalTimer( this );
+					m_Timer = new InternalTimer( this, m_DureeFermeture );
 
 					if ( m_Open )
 						m_Timer.Start();
