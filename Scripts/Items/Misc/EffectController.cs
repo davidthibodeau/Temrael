@@ -490,7 +490,6 @@ namespace Server.Items
                 : base(TimeSpan.FromSeconds(10))
             {
                 item_ = new ItemInvisible();
-                from.Backpack.AddItem(item_);
                 item_.DropToWorld(from, new Point3D(location.X, location.Y, location.Z));
                 item_.Visible = true;
                 item_.PublicOverheadMessage(MessageType.Regular, 0, false, Message);
