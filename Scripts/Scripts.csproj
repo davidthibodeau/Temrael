@@ -102,6 +102,7 @@
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
     <Compile Include="Engines\Evolution\TransfertGump.cs" />
+    <Compile Include="Engines\Harvest\Excavation\Zones\TargueMont.cs" />
     <Compile Include="Engines\Hiding\Detection.cs" />
     <Compile Include="Engines\Mort\Auxiliaires.cs" />
     <Compile Include="Engines\Mort\ContratAssassinat.cs" />

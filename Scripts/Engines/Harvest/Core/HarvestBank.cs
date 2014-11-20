@@ -7,7 +7,9 @@ namespace Server.Engines.Harvest
 		private int m_Current;
 		private int m_Maximum;
 		private DateTime m_NextRespawn;
-		private HarvestVein m_Vein, m_DefaultVein;
+        private HarvestVein m_Vein;
+        private HarvestVein[] m_PossibleVeins;
+            
 
 		public int Current
 		{
@@ -31,12 +33,12 @@ namespace Server.Engines.Harvest
 			}
 		}
 
-        public HarvestVein DefaultVein
+        public HarvestVein[] PossibleVeins
         {
             get
             {
                 CheckRespawn();
-                return m_DefaultVein;
+                return m_PossibleVeins;
             }
         }
 
@@ -46,7 +48,7 @@ namespace Server.Engines.Harvest
 				return;
 
 			m_Current = m_Maximum;
-            m_Vein = m_DefaultVein;
+            m_Vein = ResetVein();
 		}
 
 		public void Consume( HarvestDefinition def, int amount, Point3D loc )
@@ -71,12 +73,30 @@ namespace Server.Engines.Harvest
 				m_Current = 0;
 		}
 
-		public HarvestBank( HarvestDefinition def, HarvestVein vein )
+		public HarvestBank( HarvestDefinition def, HarvestVein[] vein )
 		{
 			m_Maximum = Utility.RandomMinMax( def.MinTotal, def.MaxTotal );
             m_Current = m_Maximum;
-            m_DefaultVein = vein;
-			m_Vein = m_DefaultVein;
+            m_PossibleVeins = vein;
+			m_Vein = ResetVein();
 		}
-	}
+
+        public HarvestVein ResetVein()
+        {
+            double randomValue = Utility.RandomDouble() * 100;
+
+            HarvestVein[] veins = m_PossibleVeins;
+
+            for (int i = veins.Length - 1; i >= 0; i--)
+            {
+                if (randomValue <= veins[i].VeinChance)
+                {
+                    return veins[i];
+                }
+
+                randomValue -= veins[i].VeinChance;
+            }
+            return veins[0];
+        }
+    }
 }

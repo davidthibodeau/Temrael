@@ -80,21 +80,21 @@ namespace Server.Engines.Harvest
 
             veins = new HarvestVein[]
                 {
-					new HarvestVein( 70.6, 0.0, res[0], null ), // Iron
-                    new HarvestVein( 10.0, 0.0, res[1], res[0] ), // Copper
-                    new HarvestVein( 5.0, 0.0, res[2], res[0] ), // Bronze
-                    new HarvestVein( 4.0, 0.0, res[3], res[0] ), // Lithiar
-                    new HarvestVein( 3.0, 0.0, res[4], res[0] ), // Argent
-                    new HarvestVein( 2.0, 0.0, res[5], res[0] ), // Boreale
-                    new HarvestVein( 1.0, 0.0, res[6], res[0] ), // Chrysteliar
-                    new HarvestVein( 0.9, 0.0, res[7], res[0] ), // Glacias
-                    new HarvestVein( 0.8, 0.0, res[8], res[0] ), // Sonne
-                    new HarvestVein( 0.7, 0.0, res[9], res[0] ), // Volcanium
-                    new HarvestVein( 0.6, 0.0, res[10], res[0] ), // Acier
-                    new HarvestVein( 0.5, 0.0, res[11], res[0] ), // Agapite
-                    new HarvestVein( 0.4, 0.0, res[12], res[0] ), // Durian
-                    new HarvestVein( 0.3, 0.0, res[13], res[0] ), // Equilibrum
-                    new HarvestVein( 0.2, 0.0, res[14], res[0] ), // Etheryl
+					new HarvestVein( 100, 0.0, res[0], null ), // Iron
+                    //new HarvestVein( 10.0, 0.0, res[1], res[0] ), // Copper
+                    //new HarvestVein( 5.0, 0.0, res[2], res[0] ), // Bronze
+                    //new HarvestVein( 4.0, 0.0, res[3], res[0] ), // Lithiar
+                    //new HarvestVein( 3.0, 0.0, res[4], res[0] ), // Argent
+                    //new HarvestVein( 2.0, 0.0, res[5], res[0] ), // Boreale
+                    //new HarvestVein( 1.0, 0.0, res[6], res[0] ), // Chrysteliar
+                    //new HarvestVein( 0.9, 0.0, res[7], res[0] ), // Glacias
+                    //new HarvestVein( 0.8, 0.0, res[8], res[0] ), // Sonne
+                    //new HarvestVein( 0.7, 0.0, res[9], res[0] ), // Volcanium
+                    //new HarvestVein( 0.6, 0.0, res[10], res[0] ), // Acier
+                    //new HarvestVein( 0.5, 0.0, res[11], res[0] ), // Agapite
+                    //new HarvestVein( 0.4, 0.0, res[12], res[0] ), // Durian
+                    //new HarvestVein( 0.3, 0.0, res[13], res[0] ), // Equilibrum
+                    //new HarvestVein( 0.2, 0.0, res[14], res[0] ), // Etheryl
 				};
 
             oreAndStone.Resources = res;

@@ -101,7 +101,7 @@ namespace Server.Engines.Harvest
             HarvestBank bank = (HarvestBank)banks[key];
 
             if (bank == null)
-                banks[key] = bank = new HarvestBank(this, GetVeinAt(from, map, x, y, tool, tileID));
+                banks[key] = bank = new HarvestBank(this, GetVeinsAt(from, map, x, y, tool, tileID));
 
             return bank;
         }
@@ -128,65 +128,53 @@ namespace Server.Engines.Harvest
             }
         }
 
-        public HarvestVein GetVeinAt(Mobile from, Map map, int x, int y, Item tool, int tileID)
+        public HarvestVein[] GetVeinsAt(Mobile from, Map map, int x, int y, Item tool, int tileID)
         {
-            double randomValue = Utility.RandomDouble() * 100;
+            //double randomValue = Utility.RandomDouble() * 100;
 
-            /*if (from is PlayerMobile)
-                randomValue -= ((PlayerMobile)from).GetAptitudeValue(NAptitude.Exploitation) * 2;
+            ///*if (from is PlayerMobile)
+            //    randomValue -= ((PlayerMobile)from).GetAptitudeValue(NAptitude.Exploitation) * 2;
 
-            if (AOS.Testing)
-                from.SendMessage("Chance : " + randomValue.ToString());*/
+            //if (AOS.Testing)
+            //    from.SendMessage("Chance : " + randomValue.ToString());*/
 
-            if (tool is IFishingPole)
+            //if (tool is IFishingPole)
+            //{
+            //    IFishingPole pole = (IFishingPole)tool;
+
+            //    HarvestVein[] veins = GetVeins(from, tool, x, y);
+
+            //    if (veins == null)
+            //        veins = m_Veins;
+
+            //    for (int i = veins.Length - 1; i >= 0; i--)
+            //    {
+            //        if (ToBait(veins[i].PrimaryResource.Types[0].Name) == pole.Bait && pole.Charge > 0)
+            //        {
+            //            if (randomValue - 40 <= veins[i].VeinChance)
+            //                return veins[i];
+
+            //            //if (AOS.Testing)
+            //            //    from.SendMessage("Bait : " + ((int)randomValue).ToString() + " / " + ((int)veins[i].VeinChance).ToString());
+            //        }
+            //        else if (pole.Bait == Bait.Aucun || pole.Charge <= 0)
+            //        {
+            //            if (randomValue <= veins[i].VeinChance)
+            //                return veins[i];
+
+            //            randomValue -= veins[i].VeinChance;
+
+            //            //if (AOS.Testing)
+            //            //    from.SendMessage("No Bait : " + ((int)randomValue).ToString() + " / " + ((int)veins[i].VeinChance).ToString());
+            //        }
+            //    }
+
+            //    return null;
+            //}
+            //else 
+            if (Skill == SkillName.Excavation)
             {
-                IFishingPole pole = (IFishingPole)tool;
-
-                HarvestVein[] veins = GetVeins(from, tool, x, y);
-
-                if (veins == null)
-                    veins = m_Veins;
-
-                for (int i = veins.Length - 1; i >= 0; i--)
-                {
-                    if (ToBait(veins[i].PrimaryResource.Types[0].Name) == pole.Bait && pole.Charge > 0)
-                    {
-                        if (randomValue - 40 <= veins[i].VeinChance)
-                            return veins[i];
-
-                        //if (AOS.Testing)
-                        //    from.SendMessage("Bait : " + ((int)randomValue).ToString() + " / " + ((int)veins[i].VeinChance).ToString());
-                    }
-                    else if (pole.Bait == Bait.Aucun || pole.Charge <= 0)
-                    {
-                        if (randomValue <= veins[i].VeinChance)
-                            return veins[i];
-
-                        randomValue -= veins[i].VeinChance;
-
-                        //if (AOS.Testing)
-                        //    from.SendMessage("No Bait : " + ((int)randomValue).ToString() + " / " + ((int)veins[i].VeinChance).ToString());
-                    }
-                }
-
-                return null;
-            }
-            else if (Skill == SkillName.Excavation)
-            {
-                HarvestVein[] veins = GetVeins(from, tool, x, y);
-
-                //Console.WriteLine("Veins {0} random {1}", veins.Length, randomValue);
-
-                for (int i = veins.Length - 1; i >= 0; i--)
-                {
-                    if (randomValue <= veins[i].VeinChance)
-                    {
-                        //Console.WriteLine("Vein sortie: " + veins[i].PrimaryResource);
-                        return veins[i];
-                    }
-
-                    randomValue -= veins[i].VeinChance;
-                }
+                return GetVeins(from, tool, x, y);
             }
             else if (Skill == SkillName.Hache)
             {
@@ -196,60 +184,60 @@ namespace Server.Engines.Harvest
                     foreach (DictionaryEntry de in Lumberjacking.erableList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[15], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[15], null) };
                     }
 
-                if(Lumberjacking.cheneList.Count > 0)
+                if (Lumberjacking.cheneList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.cheneList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[20], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[20], null) };
                     }
 
                 if (Lumberjacking.pinList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.pinList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[16], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[16], null) };
                     }
 
                 if (Lumberjacking.cedreList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.cedreList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[18], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[18], null) };
                     }
 
                 if (Lumberjacking.cypresList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.cypresList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[17], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[17], null) };
                     }
 
                 if (Lumberjacking.ebeneList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.ebeneList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[21], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[21], null) };
                     }
 
                 if (Lumberjacking.acajouList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.acajouList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[22], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[22], null) };
                     }
 
                 if (Lumberjacking.sauleList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.sauleList)
                     {
                         if (((Region)de.Value).Contains(p))
-                            return new HarvestVein(100.0, 0.0, m_Resources[19], null);
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[19], null) };
                     }
             }
 
-            return m_Veins[0];
+            return m_Veins;
         }
 
         public static bool IsSea(int x, int y)

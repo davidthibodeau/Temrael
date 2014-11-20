@@ -393,10 +393,10 @@ namespace Server.Engines.Harvest
             //if ( vein.ChanceToFallback > Utility.RandomDouble() )
             //    return fallback;
 
-            //double skillValue = from.Skills[def.Skill].Value;
+            double skillValue = from.Skills[def.Skill].Value;
 
-            //if ( fallback != null && (skillValue < primary.ReqSkill || skillValue < primary.MinSkill) )
-            //    return fallback;
+            if (fallback != null && (skillValue < primary.ReqSkill || skillValue < primary.MinSkill))
+                return fallback;
 
             return primary;
         }
