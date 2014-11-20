@@ -16,7 +16,6 @@ namespace Server.Engines.Harvest
             : base(ZoneType.Mining)
         {
             //Add rectangles pour la zone.(nord ouest vers sud est)
-            //Area.Add(new Rectangle3D(new Point3D(4231, 1979, 0), new Point3D(4263, 2014, 2)));
             Area.Add(new Rectangle3D(new Point3D(1900, 1711, -70), new Point3D(2032, 1765, 50)));
             Area.Add(new Rectangle3D(new Point3D(1923, 1766, -70), new Point3D(1964, 1788, 50)));
             Area.Add(new Rectangle3D(new Point3D(1864, 1765, -70), new Point3D(1922, 1864, 50)));
