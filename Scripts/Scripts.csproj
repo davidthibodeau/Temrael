@@ -129,6 +129,7 @@
     <Compile Include="Items\Temrael\Alchimie\Teintures\TeintureModif.cs" />
     <Compile Include="Items\Temrael\Armures\ArmorEnums.cs" />
     <Compile Include="Engines\Races\Race.cs" />
+    <Compile Include="Items\Temrael\Meubles\BiblioRemplieGrise.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinArcher.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinCavalier.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinChampion.cs" />

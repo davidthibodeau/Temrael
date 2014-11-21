@@ -1979,7 +1979,7 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public bool Movable
+		public virtual bool Movable
 		{
 			get{ return GetFlag( ImplFlag.Movable ); }
 			set
