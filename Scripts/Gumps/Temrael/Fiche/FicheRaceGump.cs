@@ -51,7 +51,8 @@ namespace Server.Gumps
             if (from.Race != null)
             {
                 Race race = from.Race;
-                AddButton(x, y + line * scale, 8, race.Image);
+                if (race.Image != -1)
+                    AddButton(x, y + line * scale, 8, race.Image);
                 //AddTooltip(race.Tooltip);
 
                 line += 13;
