@@ -9,47 +9,26 @@ using Server.HuePickers;
 using System.Collections.Generic;
 using Server.Engines.Races;
 
-namespace Server.Gumps
+namespace Server.Gumps.Creation
 {
-    public class CreationRaceGump : GumpTemrael
+    public class CreationRaceGump : BaseCreationGump
     {
-        private PlayerMobile m_from;
         private Race m_Race;
-        private CreationInfos m_infos;
 
-        public CreationRaceGump(PlayerMobile from, CreationInfos infos)
-            : this(from, from.Race, infos)
+        public CreationRaceGump(PlayerMobile from)
+            : this(from, from.Race)
         {
         }
 
-        public CreationRaceGump(PlayerMobile from, Race race, CreationInfos infos)
-            : base("Race", 560, 622)
+        public CreationRaceGump(PlayerMobile from, Race race)
+            : base(from, "Race", 560, 622, 1)
         {
-            m_from = from;
             m_Race = race;
-            m_infos = infos;
 
             int x = XBase;
             int y = YBase;
             int line = 0;
             int scale = 25;
-
-            y = 650;
-            x = 90;
-            int space = 70;
-
-            AddCreationMenuItem(x, y, 1193, 2, false);
-            x += space;
-            AddCreationMenuItem(x, y, 1190, 3, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1188, 4, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1224, 6, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1182, 7, true);
-
-            x = XBase;
-            y = YBase;
 
             AddTitre(x + 360, y + line * scale, 190, "Races");
             ++line;
@@ -66,8 +45,11 @@ namespace Server.Gumps
                 int linetmp = line;
 
                 line = 0;
-                AddButton(x, y + line * scale, 8, race.Image);
-                AddTooltip(race.Tooltip);
+                if (race.Image != -1)
+                {
+                    AddButton(x, y + line * scale, 8, race.Image);
+                    AddTooltip(race.Tooltip);
+                }
 
                 line = linetmp;
                 AddSection(x + 260, y + line * scale, 275, 170, race.Name, race.Description);
@@ -87,17 +69,14 @@ namespace Server.Gumps
             if (from.Deleted || !from.Alive)
                 return;
 
+            if (info.ButtonID < 8)
+            {
+                base.OnResponse(sender, info);
+                return;
+            }
+
             switch (info.ButtonID)
             {
-                case 2:
-                    from.SendGump(new CreationRaceGump(from, m_infos));
-                    break;
-                case 4:
-                    from.SendGump(new CreationEquipementGump(from, m_infos));
-                    break;
-                case 7:
-                    from.SendGump(new CreationOverviewGump(from, m_infos));
-                    break;
                 case 8:
                     DeleteItemsOnChar(from);
                     from.Race = m_Race;
@@ -107,7 +86,7 @@ namespace Server.Gumps
 
             if (info.ButtonID >= 50)
             {
-                from.SendGump(new CreationRaceGump(from, Race.GetRaceInstance(info.ButtonID - 50), m_infos));
+                from.SendGump(new CreationRaceGump(from, Race.GetRaceInstance(info.ButtonID - 50)));
             }
         }
         public void DeleteItemsOnChar(PlayerMobile from)

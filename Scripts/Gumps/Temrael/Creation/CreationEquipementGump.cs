@@ -9,169 +9,148 @@ using Server.HuePickers;
 using System.Collections.Generic;
 using Server.Engines.Races;
 
-namespace Server.Gumps
+namespace Server.Gumps.Creation
 {
-    public class CreationEquipementGump : GumpTemrael
+    public class CreationEquipementGump : BaseCreationGump
     {
         private static List<PaperPreviewItem> m_gumpList = new List<PaperPreviewItem>();
-
-        private CreationInfos m_infos;
-
-        public CreationEquipementGump(PlayerMobile from, CreationInfos infos)
-            : base("Équipement", 560, 622)
+        
+        public CreationEquipementGump(PlayerMobile from)
+            : base(from, "Équipement", 560, 622, 4)
         {
-            m_infos = infos;
-
             int x = XBase;
             int y = YBase;
             int line = 2;
             int scale = 25;
 
-            y = 650;
-            x = 90;
-            int space = 70;
-
-            AddCreationMenuItem(x, y, 1193, 2, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1190, 3, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1188, 4, false);
-            x += space;
-            AddCreationMenuItem(x, y, 1224, 6, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1182, 7, true);
-
-            x = XBase;
-            y = YBase;
-
             AddBackground(100, 150, 180, 200, 2620);
 
             Race race = from.Race;
 
-            if (race is Capiceen)
-            {
-                if (m_infos.Hue == 0)
-                    m_infos.Hue = 1023;
+            //if (race is Capiceen)
+            //{
+            //    if (m_infos.Hue == 0)
+            //        m_infos.Hue = 1023;
 
-                if (from.Female)
-                    AddImage(95, 110, 13, m_infos.Hue);
-                else
-                    AddImage(95, 110, 12, m_infos.Hue);
-                AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
-            }
-            else if (race is Orcish)
-            {
-                if (m_infos.Hue == 0)
-                    m_infos.Hue = 1446;
+            //    if (from.Female)
+            //        AddImage(95, 110, 13, m_infos.Hue);
+            //    else
+            //        AddImage(95, 110, 12, m_infos.Hue);
+            //    AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
+            //}
+            //else if (race is Orcish)
+            //{
+            //    if (m_infos.Hue == 0)
+            //        m_infos.Hue = 1446;
 
-                if (from.Female)
-                    AddImage(95, 110, 60908, m_infos.Hue);
-                else
-                    AddImage(95, 110, 50908, m_infos.Hue);
-                AddButton(x + 55, y - 1, 458, 458, 12, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 29, y - 1, 459, 459, 13, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 48, y - 1, 460, 460, 14, GumpButtonType.Reply, 0);
-            }
-            else if (race is Elfe)
-            {
-                if (m_infos.Hue == 0)
-                    m_infos.Hue = 1023;
+            //    if (from.Female)
+            //        AddImage(95, 110, 60908, m_infos.Hue);
+            //    else
+            //        AddImage(95, 110, 50908, m_infos.Hue);
+            //    AddButton(x + 55, y - 1, 458, 458, 12, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 29, y - 1, 459, 459, 13, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 48, y - 1, 460, 460, 14, GumpButtonType.Reply, 0);
+            //}
+            //else if (race is Elfe)
+            //{
+            //    if (m_infos.Hue == 0)
+            //        m_infos.Hue = 1023;
 
-                if (from.Female)
-                    AddImage(95, 110, 61027, m_infos.Hue);
-                else
-                    AddImage(95, 110, 51027, m_infos.Hue);
-                AddButton(x + 55, y - 1, 449, 449, 15, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 29, y - 1, 450, 450, 16, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 48, y - 1, 451, 451, 17, GumpButtonType.Reply, 0);
-            }
-            else if (race is Nordique)
-            {
-                if (m_infos.Hue == 0)
-                    m_infos.Hue = 1023;
+            //    if (from.Female)
+            //        AddImage(95, 110, 61027, m_infos.Hue);
+            //    else
+            //        AddImage(95, 110, 51027, m_infos.Hue);
+            //    AddButton(x + 55, y - 1, 449, 449, 15, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 29, y - 1, 450, 450, 16, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 48, y - 1, 451, 451, 17, GumpButtonType.Reply, 0);
+            //}
+            //else if (race is Nordique)
+            //{
+            //    if (m_infos.Hue == 0)
+            //        m_infos.Hue = 1023;
 
-                if (from.Female)
-                    AddImage(95, 110, 61106, m_infos.Hue);
-                else
-                    AddImage(95, 110, 51106, m_infos.Hue);
-                AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
-            }
-            else if (race is Alfar)
-            {
-                if (m_infos.Hue == 0)
-                    m_infos.Hue = 2410;
+            //    if (from.Female)
+            //        AddImage(95, 110, 61106, m_infos.Hue);
+            //    else
+            //        AddImage(95, 110, 51106, m_infos.Hue);
+            //    AddButton(x + 55, y - 1, 449, 449, 9, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 29, y - 1, 450, 450, 10, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 48, y - 1, 451, 451, 11, GumpButtonType.Reply, 0);
+            //}
+            //else if (race is Alfar)
+            //{
+            //    if (m_infos.Hue == 0)
+            //        m_infos.Hue = 2410;
 
-                if (from.Female)
-                {
-                    AddImage(95, 110, 13, m_infos.Hue);
-                    AddImage(95, 110, 61029, m_infos.Hue);
-                }
-                else
-                {
-                    AddImage(95, 110, 12, m_infos.Hue);
-                    AddImage(95, 110, 51029, m_infos.Hue);
-                }
-                AddButton(x + 55, y - 1, 455, 455, 18, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 29, y - 1, 456, 456, 19, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 48, y - 1, 457, 457, 20, GumpButtonType.Reply, 0);
-            }
-            else if (race is Nain)
-            {
-                if (m_infos.Hue == 0)
-                    m_infos.Hue = 1054;
+            //    if (from.Female)
+            //    {
+            //        AddImage(95, 110, 13, m_infos.Hue);
+            //        AddImage(95, 110, 61029, m_infos.Hue);
+            //    }
+            //    else
+            //    {
+            //        AddImage(95, 110, 12, m_infos.Hue);
+            //        AddImage(95, 110, 51029, m_infos.Hue);
+            //    }
+            //    AddButton(x + 55, y - 1, 455, 455, 18, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 29, y - 1, 456, 456, 19, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 48, y - 1, 457, 457, 20, GumpButtonType.Reply, 0);
+            //}
+            //else if (race is Nain)
+            //{
+            //    if (m_infos.Hue == 0)
+            //        m_infos.Hue = 1054;
 
-                if (from.Female)
-                    AddImage(95, 110, 61033, m_infos.Hue);
-                else
-                    AddImage(95, 110, 51033, m_infos.Hue);
-                AddButton(x + 55, y - 1, 461, 461, 21, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 29, y - 1, 462, 462, 22, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 48, y - 1, 463, 463, 23, GumpButtonType.Reply, 0);
-            }
-            else if (race is Nomade)
-            {
-                if (m_infos.Hue == 0)
-                    m_infos.Hue = 1044;
+            //    if (from.Female)
+            //        AddImage(95, 110, 61033, m_infos.Hue);
+            //    else
+            //        AddImage(95, 110, 51033, m_infos.Hue);
+            //    AddButton(x + 55, y - 1, 461, 461, 21, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 29, y - 1, 462, 462, 22, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 48, y - 1, 463, 463, 23, GumpButtonType.Reply, 0);
+            //}
+            //else if (race is Nomade)
+            //{
+            //    if (m_infos.Hue == 0)
+            //        m_infos.Hue = 1044;
 
-                if (from.Female)
-                    AddImage(95, 110, 13, m_infos.Hue);
-                else
-                    AddImage(95, 110, 12, m_infos.Hue);
-                AddButton(x + 55, y - 1, 452, 452, 24, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 29, y - 1, 453, 453, 25, GumpButtonType.Reply, 0);
-                AddButton(x + 55 + 48, y - 1, 454, 454, 26, GumpButtonType.Reply, 0);
+            //    if (from.Female)
+            //        AddImage(95, 110, 13, m_infos.Hue);
+            //    else
+            //        AddImage(95, 110, 12, m_infos.Hue);
+            //    AddButton(x + 55, y - 1, 452, 452, 24, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 29, y - 1, 453, 453, 25, GumpButtonType.Reply, 0);
+            //    AddButton(x + 55 + 48, y - 1, 454, 454, 26, GumpButtonType.Reply, 0);
 
-                //case Race.Tieffelin:
-                //    if (from.Female)
-                //    {
-                //        AddImage(95, 110, 60681, 0);
-                //        AddImage(95, 110, 61001, 0);
-                //        AddImage(95, 110, 61000, 0);
-                //    }
-                //    else
-                //    {
-                //        AddImage(95, 110, 50681, 0);
-                //        AddImage(95, 110, 51001, 0);
-                //        AddImage(95, 110, 51000, 0);
-                //    }
-                //    break;
-                //case Race.Aasimar:
-                //    if (from.Female)
-                //    {
-                //        AddImage(95, 110, 60997, 0);
-                //    }
-                //    else
-                //    {
-                //        AddImage(95, 110, 50997, 0);
-                //    }
-                //    break;
-                //case Race.Aucun:
-                //    break;
-            }
+            //    //case Race.Tieffelin:
+            //    //    if (from.Female)
+            //    //    {
+            //    //        AddImage(95, 110, 60681, 0);
+            //    //        AddImage(95, 110, 61001, 0);
+            //    //        AddImage(95, 110, 61000, 0);
+            //    //    }
+            //    //    else
+            //    //    {
+            //    //        AddImage(95, 110, 50681, 0);
+            //    //        AddImage(95, 110, 51001, 0);
+            //    //        AddImage(95, 110, 51000, 0);
+            //    //    }
+            //    //    break;
+            //    //case Race.Aasimar:
+            //    //    if (from.Female)
+            //    //    {
+            //    //        AddImage(95, 110, 60997, 0);
+            //    //    }
+            //    //    else
+            //    //    {
+            //    //        AddImage(95, 110, 50997, 0);
+            //    //    }
+            //    //    break;
+            //    //case Race.Aucun:
+            //    //    break;
+            //}
             
 
             //if (from.Creation.race == Race.Tieffelin || from.Creation.race == Race.Aasimar)
@@ -246,17 +225,14 @@ namespace Server.Gumps
             if (from.Deleted || !from.Alive)
                 return;
 
+            if (info.ButtonID < 8)
+            {
+                base.OnResponse(sender, info);
+                return;
+            }
+
             switch (info.ButtonID)
             {
-                case 2:
-                    from.SendGump(new CreationRaceGump(from, m_infos));
-                    break;
-                case 4:
-                    from.SendGump(new CreationEquipementGump(from, m_infos));
-                    break;
-                case 7:
-                    from.SendGump(new CreationOverviewGump(from, m_infos));
-                    break;
                 case 8:
                     if (info.Switches.Length > 0)
                     {
@@ -321,7 +297,7 @@ namespace Server.Gumps
                                         }
                                     }
                                 }
-                                from.SendGump(new CreationEquipementGump(from, m_infos));
+                                from.SendGump(new CreationEquipementGump(from));
                             }
                         }
                         else
@@ -356,7 +332,7 @@ namespace Server.Gumps
                                             previewItem = m_gumpList[i];
                                     }
 
-                                    from.SendGump(new CreationEquipementGump(from, m_infos));
+                                    from.SendGump(new CreationEquipementGump(from));
                                 }
                             }
                             else
@@ -391,7 +367,7 @@ namespace Server.Gumps
                                     if (item != null)
                                         item.Delete();
 
-                                    from.SendGump(new CreationEquipementGump(from, m_infos));
+                                    from.SendGump(new CreationEquipementGump(from));
                                 }
                             }
                         }

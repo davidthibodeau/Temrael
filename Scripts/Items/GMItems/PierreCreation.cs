@@ -5,6 +5,7 @@ using Server.Mobiles;
 using System.Collections.Generic;
 using Server.Accounting;
 using Server.Engines.Mort;
+using Server.Gumps.Creation;
 
 namespace Server.Items
 {
@@ -60,7 +61,7 @@ namespace Server.Items
 
                 tMob.CloseGump(typeof(CreationRaceGump));
 
-                tMob.SendGump(new CreationRaceGump(tMob, new CreationInfos()));
+                tMob.SendGump(new CreationRaceGump(tMob));
             }
             else
             {

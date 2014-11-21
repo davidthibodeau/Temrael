@@ -11,9 +11,9 @@ namespace Server
 
         public static void Reset(PlayerMobile from)
         {
-            from.RawStr = 10;
-            from.RawDex = 10;
-            from.RawInt = 10;
+            from.RawStr = 25;
+            from.RawDex = 25;
+            from.RawInt = 25;
 
             //from.StatistiquesLibres = 225;
         }

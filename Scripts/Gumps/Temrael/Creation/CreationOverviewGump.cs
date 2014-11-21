@@ -10,49 +10,18 @@ using System.Collections.Generic;
 using Server.Engines.Langues;
 using Server.Engines.Races;
 
-namespace Server.Gumps
+namespace Server.Gumps.Creation
 {
-    public class CreationInfos
+
+    public class CreationOverviewGump : BaseCreationGump
     {
-        public int Hue { get; set; }
-        public Race Race { get; set; }
-
-        public CreationInfos()
+        public CreationOverviewGump(PlayerMobile from)
+            : base(from, "Résumé", 560, 622, 7)
         {
-        }
-    }
-
-    public class CreationOverviewGump : GumpTemrael
-    {
-        private PlayerMobile m_from;
-        private CreationInfos m_infos;
-
-        public CreationOverviewGump(PlayerMobile from, CreationInfos infos)
-            : base("Résumé", 560, 622)
-        {
-            m_from = from;
-            m_infos = infos;
             int x = XBase;
             int y = YBase;
             int line = 2;
             int scale = 25;
-
-            y = 650;
-            x = 90;
-            int space = 70;
-
-            AddCreationMenuItem(x, y, 1193, 2, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1190, 3, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1188, 4, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1224, 6, true);
-            x += space;
-            AddCreationMenuItem(x, y, 1182, 7, false);
-
-            x = XBase;
-            y = YBase;
 
             AddBackground(110, 125, 535, 90, 3500);
             AddHtml(125, 140, 510, 60, "<h3><basefont color=#5A4A31>Vérifiez les informations ci-dessous avant d'accepter. Une fois accepté, plusieurs de celles-ci ne peuvent être changés en jeu. Si vous souhaitez éditer l'une des valeurs, retournez à la page correspondante.<basefont></h3>", true, false);
@@ -88,24 +57,14 @@ namespace Server.Gumps
             if (from.Deleted || !from.Alive)
                 return;
 
+            if (info.ButtonID < 8)
+            {
+                base.OnResponse(sender, info);
+                return;
+            }
+
             switch (info.ButtonID)
             {
-                case 2:
-                    from.SendGump(new CreationRaceGump(from, m_infos));
-                    break;
-                case 3:
-                    if (from.Race != null)
-                    {
-                        from.SendGump(new CreationEquipementGump(from, m_infos));
-                    }
-                    else
-                    {
-                        goto case 3;
-                    }
-                    break;
-                case 7:
-                    from.SendGump(new CreationOverviewGump(from, m_infos));
-                    break;
                 case 8:
                     bool complete = true;
 
@@ -123,7 +82,7 @@ namespace Server.Gumps
                     if (complete)
                     {
 
-                        InitializeCreation(m_from, m_infos.Hue);
+                        InitializeCreation(m_from);
                         //switch (m_from.Creation.destination)
                         //{
                         //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Hasteindale:
@@ -162,7 +121,7 @@ namespace Server.Gumps
                     }
                     else
                     {
-                        from.SendGump(new CreationOverviewGump(from, m_infos));
+                        from.SendGump(new CreationOverviewGump(from));
                         from.SendMessage("Vous devez complete tout les champs !");
                     }
 
@@ -207,7 +166,7 @@ namespace Server.Gumps
                 item.Delete();
         }
 
-        private static void InitializeCreation(PlayerMobile from, int hue)
+        private static void InitializeCreation(PlayerMobile from)
         {
             from.Experience.Niveau = 0;
             SetSkills(from);
@@ -225,28 +184,28 @@ namespace Server.Gumps
             PackItem(from, new Candle());
 
             Race race = from.Race;
-            from.Hue = hue;
+            //from.Hue = hue;
 
-            if (race is Elfe)
-            {
-                EquipItem(from, new CorpsElfe(from.Hue));
-            }
-            else if (race is Alfar)
-            {
-                EquipItem(from, new CorpsElfe(from.Hue));
-            }
-            else if (race is Nain)
-            {
-                EquipItem(from, new CorpsNain(from.Hue));
-            }
-            else if (race is Nordique)
-            {
-                EquipItem(from, new CorpsNordique(from.Hue));
-            }
-            else if (race is Orcish)
-            {
-                EquipItem(from, new CorpsOrcish(from.Hue));
-            }
+            //if (race is Elfe)
+            //{
+            //    EquipItem(from, new CorpsElfe(from.Hue));
+            //}
+            //else if (race is Alfar)
+            //{
+            //    EquipItem(from, new CorpsElfe(from.Hue));
+            //}
+            //else if (race is Nain)
+            //{
+            //    EquipItem(from, new CorpsNain(from.Hue));
+            //}
+            //else if (race is Nordique)
+            //{
+            //    EquipItem(from, new CorpsNordique(from.Hue));
+            //}
+            //else if (race is Orcish)
+            //{
+            //    EquipItem(from, new CorpsOrcish(from.Hue));
+            //}
             //case Race.Tieffelin:
             //    from.RaceSecrete = from.Creation.secrete;
             //    switch (from.RaceSecrete)
