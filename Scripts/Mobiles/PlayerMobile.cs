@@ -501,10 +501,30 @@ namespace Server.Mobiles
 			return ret;
 		}
 
+        public override bool OnDroppedItemToMobile(Item item, Mobile target)
+        {
+            if(!base.OnDroppedItemToMobile(item, target))
+                return false;
+
+            if (Region is ZoneCreation && AccessLevel == AccessLevel.Player)
+            {
+                SendMessage("Vous ne pouvez transférer un objet dans la zone de création.");
+                return false;
+            }
+
+            return true;
+        }
+
 		public override bool OnDroppedItemToWorld( Item item, Point3D location )
 		{
 			if ( !base.OnDroppedItemToWorld( item, location ) )
 				return false;
+
+            if (Region is ZoneCreation && AccessLevel == AccessLevel.Player)
+            {
+                SendMessage("Vous ne pouvez déposer un objet dans la zone de création.");
+                return false;
+            }
 
 			IPooledEnumerable mobiles = Map.GetMobilesInRange( location, 0 );
 
