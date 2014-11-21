@@ -101,18 +101,6 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalSellInfo()
             {
-				Add(typeof(Banana), 1);
-                Add(typeof(Apple), 1);
-                Add(typeof(Grapes), 1);
-                Add(typeof(Peach), 1);
-                Add(typeof(Pear), 1);
-                Add(typeof(Squash), 1);
-                Add(typeof(Pumpkin), 1);
-                Add(typeof(Carrot), 1);
-                Add(typeof(Onion), 1);
-                Add(typeof(Lettuce), 1);
-                Add(typeof(Cabbage), 1);
-                Add(typeof(Watermelon), 1);
             }
         }
     }

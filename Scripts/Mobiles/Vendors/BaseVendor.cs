@@ -49,7 +49,8 @@ namespace Server.Mobiles
         {
             Race = race;
             Hue = race.Hue;
-            AddItem((RaceSkin)Activator.CreateInstance(race.Skin));
+            if (race.Skin != null)
+                AddItem((RaceSkin)Activator.CreateInstance(race.Skin));
         }
 
 		public virtual bool IsValidBulkOrder( Item item )
