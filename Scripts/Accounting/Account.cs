@@ -603,7 +603,6 @@ namespace Server.Accounting
 			m_Tags = LoadTags( node );
 			m_LoginIPs = LoadAddressList( node );
 			m_IPRestrictions = LoadAccessCheck( node );
-            m_Transfert = LoadTransfert(node);
             
 
 			for ( int i = 0; i < m_Mobiles.Length; ++i )
@@ -626,6 +625,8 @@ namespace Server.Accounting
 			m_TotalGameTime = totalGameTime;
 
 			Accounts.Add( this );
+            
+            m_Transfert = LoadTransfert(node);
 		}
 
 		/// <summary>

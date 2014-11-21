@@ -44,11 +44,14 @@ namespace Server.Items.Meubles
         {
             get
             {
-                return biblio.Movable;
+                if (biblio != null)
+                    return biblio.Movable;
+                return false;
             }
             set
             {
-                biblio.Movable = value;
+                if (biblio != null)
+                    biblio.Movable = value;
             }
         }
 
