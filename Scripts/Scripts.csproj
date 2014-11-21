@@ -118,6 +118,7 @@
     <Compile Include="Engines\Mort\MortGump.cs" />
     <Compile Include="Engines\Races\RaceGump.cs" />
     <Compile Include="Engines\Transformations\Transformation.cs" />
+    <Compile Include="Gumps\Temrael\Fiche\BaseFicheGump.cs" />
     <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\Gems\BaseGem.cs" />
     <Compile Include="Items\GMItems\GMItem.cs" />

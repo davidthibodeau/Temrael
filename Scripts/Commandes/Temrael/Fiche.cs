@@ -3,6 +3,7 @@ using Server;
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Gumps.Fiche;
 
 namespace Server.Scripts.Commands
 {

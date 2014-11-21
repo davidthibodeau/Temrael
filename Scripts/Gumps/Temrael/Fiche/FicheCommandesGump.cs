@@ -10,11 +10,10 @@ using System.Collections.Generic;
 using Server.Engines.Langues;
 using Server.Engines.Evolution;
 
-namespace Server.Gumps
+namespace Server.Gumps.Fiche
 {
-    public class FicheCommandesGump : GumpTemrael
+    public class FicheCommandesGump : BaseFicheGump
     {
-        private PlayerMobile m_from;
         private int m_chevelurePage;
         private int m_barbePage;
         private int m_tatooPage;
@@ -28,40 +27,19 @@ namespace Server.Gumps
         }
 
         public FicheCommandesGump(PlayerMobile from, int chevelurePage, int barbePage, int tatooPage)
-            : base("Commandes & Accessoires", 560, 622)
+            : base(from, "Commandes & Accessoires", 560, 622, 7)
         {
 
             m_chevelurePage = chevelurePage;
             m_barbePage = barbePage;
             m_tatooPage = tatooPage;
 
-            m_from = from;
-
             int x = XBase;
             int y = YBase;
 
-            y = 650;
-            x = 90;
             int space = 80;
             int line = 0;
             int scale = 20;
-
-            AddMenuItem(x, y, 1178, 1, true);
-            x += space;
-            AddMenuItem(x, y, 1179, 2, true);
-            x += space;
-            AddMenuItem(x, y, 1180, 3, true);
-            x += space;
-            AddMenuItem(x, y, 1194, 4, true);
-            x += space;
-            AddMenuItem(x, y, 1196, 5, true);
-            x += space;
-            AddMenuItem(x, y, 1221, 6, true);
-            x += space;
-            AddMenuItem(x, y, 1191, 7, false);
-
-            x = XBase;
-            y = YBase;
 
             AddBackground(515, 145, 95, 132, 2620);
             AddButton(520, 150, 1440, 1440, 7, GumpButtonType.Reply, 0);
@@ -210,29 +188,14 @@ namespace Server.Gumps
             if (from.Deleted || !from.Alive)
                 return;
 
+            if (info.ButtonID < 8)
+            {
+                base.OnResponse(sender, info);
+                return;
+            }
+
             switch (info.ButtonID)
             {
-                case 1:
-                    from.SendGump(new FicheRaceGump(from));
-                    break;
-                case 2:
-                    from.SendGump(new FicheClasseGump(from));
-                    break;
-                case 3:
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 4:
-                    from.SendGump(new FicheCompetencesGump(from));
-                    break;
-                case 5:
-                    from.SendGump(new FicheStatistiquesGump(from));
-                    break;
-                case 6:
-                    from.SendGump(new FicheStatutsGump(from));
-                    break;
-                case 7:
-                    from.SendGump(new FicheCommandesGump(from));
-                    break;
                 case 8:
                     //Vemotes
                     break;

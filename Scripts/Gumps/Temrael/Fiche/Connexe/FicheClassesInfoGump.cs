@@ -8,7 +8,7 @@ using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
 
-namespace Server.Gumps
+namespace Server.Gumps.Fiche
 {
     public class FicheClassesInfoGump : GumpTemrael
     {

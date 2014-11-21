@@ -12,6 +12,7 @@ using Server.Engines.Help;
 using Server.ContextMenus;
 using Server.Spells;
 using Server.Commands;
+using Server.Gumps.Fiche;
 
 namespace scripts.Quests
 {

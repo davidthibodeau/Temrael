@@ -9,43 +9,19 @@ using Server.HuePickers;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Server.Gumps
+namespace Server.Gumps.Fiche
 {
-    public class FicheStatistiquesGump : GumpTemrael
+    public class FicheStatistiquesGump : BaseFicheGump
     {
-        private PlayerMobile m_from;
-
         public FicheStatistiquesGump(PlayerMobile from)
-            : base("Statistiques", 560, 622)
+            : base(from, "Statistiques", 560, 622, 5)
         {
-            m_from = from;
-            Mobile m = (Mobile)from;
-            
             int x = XBase;
             int y = YBase;
             int line = 0;
             int scale = 20;
 
-            y = 650;
-            x = 90;
             int space = 80;
-
-            AddMenuItem(x, y, 1178, 1, true);
-            x += space;
-            AddMenuItem(x, y, 1179, 2, true);
-            x += space;
-            AddMenuItem(x, y, 1180, 3, true);
-            x += space;
-            AddMenuItem(x, y, 1194, 4, true);
-            x += space;
-            AddMenuItem(x, y, 1196, 5, false);
-            x += space;
-            AddMenuItem(x, y, 1222, 6, true);
-            x += space;
-            AddMenuItem(x, y, 1191, 7, true);
-
-            x = XBase;
-            y = YBase;
 
             /*Statistiques*/
             line = 0;
@@ -57,31 +33,31 @@ namespace Server.Gumps
             int i = 0;
 
             list[i++] = "Régénération de vie:";
-            list[i++] = ((1 / (Mobile.GetHitsRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
+            list[i++] = ((1 / (Mobile.GetHitsRegenRate(from).TotalSeconds)).ToString("0.00") + " points/seconde");
 
             list[i++] = "Régénération de mana:";
-            list[i++] = ((1 / (Mobile.GetManaRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
+            list[i++] = ((1 / (Mobile.GetManaRegenRate(from).TotalSeconds)).ToString("0.00") + " points/seconde");
 
             list[i++] = "Régénération de stamina:";
-            list[i++] = ((1 / (Mobile.GetStamRegenRate(m).TotalSeconds)).ToString("0.00") + " points/seconde");
+            list[i++] = ((1 / (Mobile.GetStamRegenRate(from).TotalSeconds)).ToString("0.00") + " points/seconde");
 
             list[i++] = "Armure:";
-            list[i++] = m.PhysicalResistance.ToString();
+            list[i++] = from.PhysicalResistance.ToString();
 
             list[i++] = "Armure naturelle:";
-            list[i++] = m.ArmureNaturelle.ToString();
+            list[i++] = from.ArmureNaturelle.ToString();
 
             list[i++] = "Résistance physique:";
-            list[i++] = (m.PhysicalResistance + m.ArmureNaturelle).ToString();
+            list[i++] = (from.PhysicalResistance + from.ArmureNaturelle).ToString();
 
             list[i++] = "Résistance magique:";
-            list[i++] = m.MagicResistance.ToString();
+            list[i++] = from.MagicResistance.ToString();
 
             list[i++] = "Vitesse d'attaque:";
-            list[i++] =  ((m.Weapon as BaseWeapon).Strategy.Vitesse(m) / 10).ToString("0.00") + " secondes / attaque";
+            list[i++] =  ((from.Weapon as BaseWeapon).Strategy.Vitesse(from) / 10).ToString("0.00") + " secondes / attaque";
 
             list[i++] = "Chances de Critique:";
-            list[i++] = ((int)((m.Weapon as BaseWeapon).Strategy.CritiqueChance(m) * 100)).ToString() + " %";
+            list[i++] = ((int)((from.Weapon as BaseWeapon).Strategy.CritiqueChance(from) * 100)).ToString() + " %";
 
             list[i++] = "Langue courante:";
             list[i++] = from.Langues.CurrentLangue.ToString();

@@ -9,7 +9,7 @@ using Server.HuePickers;
 using System.Collections.Generic;
 using Server.Engines.Races;
 
-namespace Server.Gumps
+namespace Server.Gumps.Fiche
 {
     public class FicheRacesInfoGump : GumpTemrael
     {

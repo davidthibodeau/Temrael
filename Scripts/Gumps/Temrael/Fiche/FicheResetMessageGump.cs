@@ -8,7 +8,7 @@ using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
 
-namespace Server.Gumps
+namespace Server.Gumps.Fiche
 {
     public class FicheResetMessageGump : GumpTemrael
     {
@@ -45,27 +45,6 @@ namespace Server.Gumps
 
             switch (info.ButtonID)
             {
-                case 1:
-                    from.SendGump(new FicheRaceGump(from));
-                    break;
-                case 2:
-                    from.SendGump(new FicheClasseGump(from));
-                    break;
-                case 3:
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 4:
-                    from.SendGump(new FicheCompetencesGump(from));
-                    break;
-                case 5:
-                    from.SendGump(new FicheStatistiquesGump(from));
-                    break;
-                case 6:
-                    from.SendGump(new FicheStatutsGump(from));
-                    break;
-                case 7:
-                    from.SendGump(new FicheCommandesGump(from));
-                    break;
                 case 8:
                     //from.Reset(false);
 

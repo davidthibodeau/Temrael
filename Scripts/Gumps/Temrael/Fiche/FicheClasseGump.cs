@@ -8,11 +8,10 @@ using System.Reflection;
 using Server.HuePickers;
 using System.Collections.Generic;
 
-namespace Server.Gumps
+namespace Server.Gumps.Fiche
 {
-    public class FicheClasseGump : GumpTemrael
+    public class FicheClasseGump : BaseFicheGump
     {
-        private PlayerMobile m_from;
         private ClasseType m_classeType;
         private int m_pageClasse;
         private int m_pageMetier;
@@ -23,9 +22,8 @@ namespace Server.Gumps
         }
 
         public FicheClasseGump(PlayerMobile from, ClasseType classeType, int pageClasse, int pageMetier)
-            : base("Classe", 560, 622)
+            : base(from, "Classe", 560, 622, 2)
         {
-            m_from = from;
             m_classeType = classeType;
             m_pageClasse = pageClasse;
             m_pageMetier = pageMetier;
@@ -38,23 +36,6 @@ namespace Server.Gumps
             y = 650;
             x = 90;
             int space = 80;
-
-            AddMenuItem(x, y, 1178, 1, true);
-            x += space;
-            AddMenuItem(x, y, 1179, 2, false);
-            x += space;
-            AddMenuItem(x, y, 1180, 3, true);
-            x += space;
-            AddMenuItem(x, y, 1194, 4, true);
-            x += space;
-            AddMenuItem(x, y, 1196, 5, true);
-            x += space;
-            AddMenuItem(x, y, 1222, 6, true);
-            x += space;
-            AddMenuItem(x, y, 1191, 7, true);
-
-            x = XBase;
-            y = YBase;
 
             List<string> listDon = new List<string>();
             string temp = String.Empty;
@@ -99,33 +80,17 @@ namespace Server.Gumps
             if (from.Deleted || !from.Alive)
                 return;
 
+            if (info.ButtonID < 8)
+            {
+                base.OnResponse(sender, info);
+                return;
+            }
+
             switch (info.ButtonID)
             {
-                case 1:
-                    from.SendGump(new FicheRaceGump(from));
-                    break;
-                case 2:
-                    from.SendGump(new FicheClasseGump(from));
-                    break;
-                case 3:
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 4:
-                    from.SendGump(new FicheCompetencesGump(from));
-                    break;
-                case 5:
-                    from.SendGump(new FicheStatistiquesGump(from));
-                    break;
-                case 6:
-                    from.SendGump(new FicheStatutsGump(from));
-                    break;
-                case 7:
-                    from.SendGump(new FicheCommandesGump(from));
-                    break;
                 case 8:
                     from.SendGump(new FicheClassesInfoGump(from, m_classeType, 0));
                     break;
-                
                 case 12:
                     --m_pageMetier;
                     from.SendGump(new FicheClasseGump(from, m_classeType, m_pageClasse, m_pageMetier));

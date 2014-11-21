@@ -24,6 +24,7 @@ using Server.Commands;
 using Server.Engines.Possess;
 using Server.Engines.Equitation;
 using Server.Engines.Transformations;
+using Server.Gumps.Fiche;
 
 namespace Server.Mobiles
 {
