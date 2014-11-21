@@ -67,8 +67,11 @@ namespace Server.Gumps.Fiche
                 int linetmp = line;
 
                 line = 0;
-                AddButton(x, y + line * scale, 8, race.Image);
-                AddTooltip(race.Tooltip);
+                if (race.Image != -1)
+                {
+                    AddButton(x, y + line * scale, 8, race.Image);
+                    AddTooltip(race.Tooltip);
+                }
 
                 line = linetmp;
                 AddSection(x + 260, y + line * scale, 275, 170, race.Name, race.Description);
