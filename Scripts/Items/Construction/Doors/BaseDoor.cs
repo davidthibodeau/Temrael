@@ -638,6 +638,7 @@ namespace Server.Items
 					m_ClosedSound = reader.ReadInt();
 					m_Offset = reader.ReadPoint3D();
 					m_Link = reader.ReadItem() as BaseDoor;
+                    m_DureeFermeture = TimeSpan.FromSeconds(20.0);
 
 					m_Timer = new InternalTimer( this, m_DureeFermeture );
 
