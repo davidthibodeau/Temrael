@@ -306,10 +306,13 @@ namespace Server.Items
 
 					Effects.PlaySound( this, Map, m_Open ? m_OpenedSound : m_ClosedSound );
 
-					if ( m_Open )
-						m_Timer.Start();
-					else
-						m_Timer.Stop();
+                    if (m_Open)
+                    {
+                        m_Timer = new InternalTimer(this, m_DureeFermeture);
+                        m_Timer.Start();
+                    }
+                    else
+                        m_Timer.Stop();
 				}
 			}
 		}
@@ -601,7 +604,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 
 			writer.Write( m_KeyValue );
 
@@ -613,6 +616,7 @@ namespace Server.Items
 			writer.Write( m_ClosedSound );
 			writer.Write( m_Offset );
 			writer.Write( m_Link );
+            writer.Write(m_DureeFermeture);
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -637,11 +641,31 @@ namespace Server.Items
 
 					m_Timer = new InternalTimer( this, m_DureeFermeture );
 
-					if ( m_Open )
-						m_Timer.Start();
+                    if (m_Open)
+                        m_Timer.Start();
 
 					break;
 				}
+                case 1:
+                {
+                    m_KeyValue = reader.ReadLong();
+                    m_Open = reader.ReadBool();
+                    m_Locked = reader.ReadBool();
+                    m_OpenedID = reader.ReadInt();
+                    m_ClosedID = reader.ReadInt();
+                    m_OpenedSound = reader.ReadInt();
+                    m_ClosedSound = reader.ReadInt();
+                    m_Offset = reader.ReadPoint3D();
+                    m_Link = reader.ReadItem() as BaseDoor;
+                    m_DureeFermeture = reader.ReadTimeSpan();
+
+                    m_Timer = new InternalTimer(this, m_DureeFermeture);
+
+                    if (m_Open)
+                        m_Timer.Start();
+
+                    break;
+                }
 			}
 		}
 	}
