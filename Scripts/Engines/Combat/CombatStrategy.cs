@@ -350,7 +350,7 @@ namespace Server.Engines.Combat
             return m.Weapon as BaseWeapon;
         }
 
-        public static CombatStrategy Strategy(Mobile m)
+        public static CombatStrategy GetStrategy(Mobile m)
         {
             BaseWeapon w = Weapon(m);
             if (w != null)
