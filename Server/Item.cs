@@ -2474,7 +2474,8 @@ namespace Server
 
             m_canBeAltered = reader.ReadBool();
 
-            m_GoldValue = reader.ReadInt();
+            if (version > 0)
+                m_GoldValue = reader.ReadInt();
 
             SaveFlag flags = (SaveFlag)reader.ReadInt();
 
