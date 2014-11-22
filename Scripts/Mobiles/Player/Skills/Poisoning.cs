@@ -84,11 +84,7 @@ namespace Server.SkillHandlers
 
 					bool startTimer = false;
 
-                    if (targeted is BaseWeapon)
-                    {
-                        startTimer = true;
-                    }
-                    else if (targeted is Food)
+                    if (targeted is BaseWeapon || targeted is Food || targeted is BaseBeverage)
                     {
                         startTimer = true;
                     }
@@ -134,11 +130,15 @@ namespace Server.SkillHandlers
 							{
 								((Food)m_Target).Poison = m_Poison;
 							}
-							else if ( m_Target is BaseWeapon )
-							{
-								((BaseWeapon)m_Target).Poison = m_Poison;
-								((BaseWeapon)m_Target).PoisonCharges = 18 - (m_Poison.Level * 2);
-							}
+                            else if (m_Target is BaseBeverage)
+                            {
+                                ((BaseBeverage)m_Target).Poison = m_Poison;
+                            }
+                            else if (m_Target is BaseWeapon)
+                            {
+                                ((BaseWeapon)m_Target).Poison = m_Poison;
+                                ((BaseWeapon)m_Target).PoisonCharges = 18 - (m_Poison.Level * 2);
+                            }
 
 							m_From.SendLocalizedMessage( 1010517 ); // You apply the poison
 						}
