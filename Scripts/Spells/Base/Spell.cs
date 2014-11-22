@@ -678,6 +678,8 @@ namespace Server.Spells
 
             if (Caster.Spell == this)
                 Caster.Spell = null;
+
+            CombatStrategy.Strategy(Caster).ResetAttackAfterCast(Caster);
         }
         #endregion
 

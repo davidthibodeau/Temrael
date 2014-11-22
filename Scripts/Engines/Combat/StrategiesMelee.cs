@@ -9,7 +9,7 @@ namespace Server.Engines.Combat
 {
     public abstract class StrategyMelee : CombatStrategy
     {
-        protected override double ParerChance(Mobile def)
+        protected override double BaseParerChance(Mobile def)
         {
             double parry = def.Skills[SkillName.Parer].Value;
             double chance = 0;
@@ -18,9 +18,6 @@ namespace Server.Engines.Combat
                 chance = GetBonus(parry, 0.25, 5);
             else
                 chance = GetBonus(parry, 0.125, 5);
-
-            if (def.Dex < 80)
-                chance = chance * (20 + def.Dex) / 100;
 
             return chance;
         }

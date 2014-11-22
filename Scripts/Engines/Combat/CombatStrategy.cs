@@ -258,6 +258,20 @@ namespace Server.Engines.Combat
             return (int)(Vitesse(atk) * 100);
         }
 
+        public void ResetAttackAfterCast(Mobile atk)
+        {
+            double delay = ProchaineAttaque(atk);
+
+            CheckSkillGain(atk, SkillName.MagieDeGuerre);
+
+            double magie = GetBonus(atk.Skills[SkillName.MagieDeGuerre].Value, 0.75, 15);
+            delay = ReduceValue(delay, magie);
+
+            long ticks = Core.TickCount + Core.GetTicks(TimeSpan.FromMilliseconds(delay));
+            if (atk.NextCombatTime < ticks)
+                atk.NextCombatTime = ticks;
+        }
+
         /// <summary>
         /// Calcule la vitesse du personnage en fonction de la vitesse de son arme (celle-ci calculée en dixième de seconde)
         /// </summary>
@@ -297,7 +311,33 @@ namespace Server.Engines.Combat
             return false;
         }
 
-        protected abstract double ParerChance(Mobile def);
+        protected virtual double BaseParerChance(Mobile def)
+        {
+            double parry = def.Skills[SkillName.Parer].Value;
+            double chance = 0;
+
+            if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
+                chance = GetBonus(parry, 0.125, 5);
+
+            return chance;
+        }
+
+        protected virtual double ParerChance(Mobile def)
+        {
+            double chance = BaseParerChance(def);
+
+            if (def.Dex < 80)
+                chance = chance * (20 + def.Dex) / 100;
+
+            if (def.Spell != null && def.Spell.IsCasting)
+            {
+                double magie = GetBonus(def.Skills[SkillName.Parer].Value, 0.85, 15);
+
+                chance = ReduceValue(chance, ReduceValue(0.75, magie));
+            }
+
+            return chance;
+        }
         #endregion
 
         protected CombatStrategy DefStrategy(Mobile def)
@@ -305,9 +345,18 @@ namespace Server.Engines.Combat
             return (def.Weapon as BaseWeapon).Strategy;
         }
 
-        protected BaseWeapon Weapon(Mobile m)
+        public static BaseWeapon Weapon(Mobile m)
         {
             return m.Weapon as BaseWeapon;
+        }
+
+        public static CombatStrategy Strategy(Mobile m)
+        {
+            BaseWeapon w = Weapon(m);
+            if (w != null)
+                return w.Strategy;
+
+            return null;
         }
 
         // Test passif pour un gain de skill

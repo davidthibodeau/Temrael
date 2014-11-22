@@ -18,11 +18,6 @@ namespace Server.Engines.Combat
             get { return SkillName.Epee; }
         }
 
-        protected override double ParerChance(Mobile def)
-        {
-            return 0;
-        }
-
         public override int Range(Mobile atk)
         {
             BaseCreature monstre = atk as BaseCreature;
