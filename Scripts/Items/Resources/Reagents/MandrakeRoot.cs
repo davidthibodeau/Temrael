@@ -17,6 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public MandrakeRoot( int amount ) : base( 0xF86, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public MandrakeRoot( Serial serial ) : base( serial )

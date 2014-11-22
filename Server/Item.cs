@@ -606,7 +606,21 @@ namespace Server
 		private LootType m_LootType;
 		private DateTime m_LastMovedTime;
 		private Direction m_Direction;
+
+        private int m_GoldValue;
 		#endregion
+
+        public int GoldValue
+        {
+            get { return m_GoldValue; }
+            set
+            {
+                if (value >= 0)
+                {
+                    m_GoldValue = value;
+                }
+            }
+        }
 
 		private ItemDelta m_DeltaFlags;
 		private ImplFlag m_Flags;
@@ -4538,6 +4552,8 @@ namespace Server
 		public Item()
 		{
 			m_Serial = Serial.NewItem;
+
+            m_GoldValue = int.MaxValue;
 
 			//m_Items = new ArrayList( 1 );
 			Visible = true;

@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public ContractOfEmployment() : base( 0x14F0 )
 		{
+            GoldValue = 3000;
 			Weight = 1.0;
 			//LootType = LootType.Blessed;
 		}

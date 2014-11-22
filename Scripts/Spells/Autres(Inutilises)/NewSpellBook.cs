@@ -75,6 +75,7 @@ namespace Server.Items
        public NewSpellbook(ulong content, int itemid)
            : base(content, itemid)
       {
+         GoldValue = 60;
          Name = "Grimoire";
          Layer = Layer.OneHanded;
          Weight = 6.0;

@@ -82,18 +82,18 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(Banana), 3, 20, 0x171f, 0));
-                Add(new GenericBuyInfo(typeof(Apple), 3, 20, 0x9D0, 0));
-                Add(new GenericBuyInfo(typeof(Grapes), 3, 20, 0x9D1, 0));
-                Add(new GenericBuyInfo(typeof(Peach), 3, 20, 0x9D2, 0));
-                Add(new GenericBuyInfo(typeof(Pear), 3, 20, 0x994, 0));
-                Add(new GenericBuyInfo(typeof(Squash), 3, 20, 0xc72, 0));
-                Add(new GenericBuyInfo(typeof(Pumpkin), 3, 20, 0xc64, 0));
-                Add(new GenericBuyInfo(typeof(Carrot), 3, 20, 0xc78, 0));
-                Add(new GenericBuyInfo(typeof(Onion), 3, 20, 0xc62, 0));
-                Add(new GenericBuyInfo(typeof(Lettuce), 3, 20, 0xc70, 0));
-                Add(new GenericBuyInfo(typeof(Cabbage), 3, 20, 0xc7b, 0));
-                Add(new GenericBuyInfo(typeof(Watermelon), 3, 20, 0xc5c, 0));
+                Add(new GenericBuyInfo(typeof(Banana), 20, 0x171f, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Apple), 20, 0x9D0, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Grapes), 20, 0x9D1, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Peach), 20, 0x9D2, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Pear), 20, 0x994, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Squash), 20, 0xc72, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Pumpkin), 20, 0xc64, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Carrot), 20, 0xc78, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Onion), 20, 0xc62, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Lettuce), 20, 0xc70, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Cabbage), 20, 0xc7b, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Watermelon), 20, 0xc5c, 0)); // 3
             }
         }
 
@@ -101,6 +101,7 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalSellInfo()
             {
+                // Add(typeof(Banana));
             }
         }
     }

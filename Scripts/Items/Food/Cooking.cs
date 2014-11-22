@@ -229,6 +229,7 @@ namespace Server.Items
 		[Constructable]
 		public JarHoney() : base( 0x9ec )
 		{
+            GoldValue = 3;
 			Weight = 1.0;
 			Stackable = true;
 		}

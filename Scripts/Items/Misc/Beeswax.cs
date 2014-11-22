@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public Beeswax( int amount ) : base( 0x1422 )
 		{
+            GoldValue = 3;
 			Weight = 1.0;
 			Stackable = true;
 			Amount = amount;

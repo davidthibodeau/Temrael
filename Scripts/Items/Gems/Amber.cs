@@ -23,6 +23,7 @@ namespace Server.Items
 		[Constructable]
 		public Amber( int amount ) : base( 0xF25 )
 		{
+            GoldValue = 6;
             Name = "Ambre";
 			Stackable = true;
 			Amount = amount;

@@ -17,6 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public SpidersSilk( int amount ) : base( 0xF8D, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public SpidersSilk( Serial serial ) : base( serial )

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Items;
+using Server.Engines.Economy;
 
 namespace Server.Mobiles
 {
@@ -12,6 +13,12 @@ namespace Server.Mobiles
 		public GenericSellInfo()
 		{
 		}
+
+        public void Add(Type type)
+        {
+            m_Table[type] = PrixNPC.SellPrice(type);
+            m_Types = null;
+        }
 
 		public void Add( Type type, int price )
 		{

@@ -17,6 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public GraveDust( int amount ) : base( 0xF8F, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public GraveDust( Serial serial ) : base( serial )

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server;
 using Server.Items;
 using Server.Network;
+using Server.Engines.Economy;
 
 namespace Server.Mobiles
 {
@@ -242,9 +243,9 @@ namespace Server.Mobiles
 		{
 		}
 
-		public GenericBuyInfo( Type type, int price, int amount, int itemID, int hue, object[] args ) : this( null, type, price, amount, itemID, hue, args )
-		{
-		}
+        public GenericBuyInfo(Type type, int amount, int itemID, int hue) : this(null, type, PrixNPC.BuyPrice(type), amount, itemID, hue, null)
+        {
+        }
 
 		public GenericBuyInfo( string name, Type type, int price, int amount, int itemID, int hue, object[] args )
 		{

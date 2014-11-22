@@ -540,6 +540,7 @@ namespace Server.Items
         public ButcherKnife()
             : base(0x13f6)
         {
+            GoldValue = 6;
             Weight = 3.0;
             Layer = Layer.OneHanded;
             Name = "Couteau de boucher";
@@ -575,6 +576,7 @@ namespace Server.Items
         public Cleaver()
             : base(0xec3)
         {
+            GoldValue = 6;
             Weight = 3.0;
             Layer = Layer.OneHanded;
             Name = "Couperet";

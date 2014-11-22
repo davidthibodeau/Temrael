@@ -17,6 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public Nightshade( int amount ) : base( 0xF88, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public Nightshade( Serial serial ) : base( serial )

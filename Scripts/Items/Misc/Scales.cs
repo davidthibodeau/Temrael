@@ -9,6 +9,7 @@ namespace Server.Items
 		[Constructable]
 		public Scales() : base( 0x1852 )
 		{
+            GoldValue = 15;
 			Weight = 4.0;
 		}
 

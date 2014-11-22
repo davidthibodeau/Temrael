@@ -150,6 +150,7 @@ namespace Server.Items
 		[Constructable]
 		public Bacon( int amount ) : base( amount, 0x979 )
 		{
+            GoldValue = 6;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -497,6 +498,7 @@ namespace Server.Items
 		[Constructable]
 		public Sausage( int amount ) : base( amount, 0x9C0 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
 		}
@@ -530,6 +532,7 @@ namespace Server.Items
 		[Constructable]
 		public Ham( int amount ) : base( amount, 0x9C9 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
 		}

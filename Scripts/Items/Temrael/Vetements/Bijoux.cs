@@ -9,6 +9,7 @@ namespace Server.Items
         public ColierCoquillages()
             : base(0x3171)
         {
+            GoldValue = 9;
             Weight = 0.1;
             Name = "Collier de Coquillages";
         }
@@ -531,6 +532,7 @@ namespace Server.Items
         public BracerMetal()
             : base(0x2686)
         {
+            GoldValue = 9;
             Weight = 0.1;
             Name = "Bracer de Metal";
         }

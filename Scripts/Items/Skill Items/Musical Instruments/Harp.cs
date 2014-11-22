@@ -8,6 +8,7 @@ namespace Server.Items
 		public Harp() : base( 0xEB1, 0x43, 0x44 )
 		{
 			Weight = 35.0;
+            GoldValue = 21;
 		}
 
 		public Harp( Serial serial ) : base( serial )

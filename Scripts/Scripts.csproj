@@ -100,6 +100,7 @@
     <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
+    <Compile Include="Engines\Economy\PrixNPC.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
     <Compile Include="Engines\Evolution\TransfertGump.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\TargueMont.cs" />
@@ -175,6 +176,14 @@
     <Compile Include="Mobiles\NewAnimals\Ours\OursNoir.cs" />
     <Compile Include="Mobiles\NewAnimals\SerpentGeant.cs" />
     <Compile Include="Mobiles\ScriptMobile.cs" />
+    <Compile Include="Mobiles\Vendeurs\Apiculteur.cs" />
+    <Compile Include="Mobiles\Vendeurs\Banquier.cs" />
+    <Compile Include="Mobiles\Vendeurs\Bijoutiere.cs" />
+    <Compile Include="Mobiles\Vendeurs\Boucher.cs" />
+    <Compile Include="Mobiles\Vendeurs\Fossoyeur.cs" />
+    <Compile Include="Mobiles\Vendeurs\Herboriste.cs" />
+    <Compile Include="Mobiles\Vendeurs\Luthier.cs" />
+    <Compile Include="Mobiles\Vendeurs\Magicienne.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurPetitsFruits.cs" />
     <Compile Include="Regions\Hurlevent.cs" />
     <Compile Include="Regions\ZoneInterne.cs" />
