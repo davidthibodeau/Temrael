@@ -3466,41 +3466,41 @@ namespace Server
 
 		public virtual int GetAngerSound()
 		{
-			if( m_BaseSoundID >= 1 )
-				return m_BaseSoundID-1;
+			if( m_BaseSoundID != 0 )
+				return m_BaseSoundID;
 
 			return -1;
 		}
 
 		public virtual int GetIdleSound()
 		{
-            if (m_BaseSoundID >= 1)
-				return m_BaseSoundID;
+			if( m_BaseSoundID != 0 )
+				return m_BaseSoundID + 1;
 
 			return -1;
 		}
 
 		public virtual int GetAttackSound()
 		{
-            if (m_BaseSoundID >= 1)
-				return m_BaseSoundID + 1;
+			if( m_BaseSoundID != 0 )
+				return m_BaseSoundID + 2;
 
 			return -1;
 		}
 
 		public virtual int GetHurtSound()
 		{
-            if (m_BaseSoundID >= 1)
-				return m_BaseSoundID + 2;
+			if( m_BaseSoundID != 0 )
+				return m_BaseSoundID + 3;
 
 			return -1;
 		}
 
 		public virtual int GetDeathSound()
 		{
-            if (m_BaseSoundID >= 1)
+			if( m_BaseSoundID != 0 )
 			{
-				return m_BaseSoundID + 3;
+				return m_BaseSoundID + 4;
 			}
 			else if( m_Body.IsHuman )
 			{
@@ -5423,8 +5423,6 @@ namespace Server
 
 		public void PlaySound( int soundID )
 		{
-            soundID -= 1;
-
 			if( soundID == -1 )
 				return;
 
