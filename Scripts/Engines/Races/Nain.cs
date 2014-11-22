@@ -20,6 +20,8 @@ namespace Server.Engines.Races
                 1057
             };
 
+        public override int[] HueGumps { get { return new int[] { 461, 462, 463, }; } }
+
         public override Type Skin { get { return typeof(CorpsNain); } }
 
         public override string Name { get { return "Nain"; } }

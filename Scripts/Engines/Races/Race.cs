@@ -12,6 +12,8 @@ namespace Server.Engines.Races
     {
         public abstract int Id { get; }
 
+        public abstract int[] HueGumps { get; }
+
         public abstract string Name{get;}
 		public abstract string NameF{get;}
 

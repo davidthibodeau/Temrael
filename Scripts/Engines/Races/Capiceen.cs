@@ -21,6 +21,8 @@ namespace Server.Engines.Races
                 1013
             };
 
+        public override int[] HueGumps { get { return new int[] { 449, 450, 451, }; } }
+
         public override string Name { get { return "Capiceen"; } }
         public override string NameF { get { return "Capiceene"; } }
 

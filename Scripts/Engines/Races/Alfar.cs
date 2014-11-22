@@ -20,10 +20,12 @@ namespace Server.Engines.Races
                 1908
             };
 
+        public override int[] HueGumps { get { return new int[] { 455, 456, 457, }; } }
+
         public override Type Skin { get { return typeof(CorpsElfe); } }
 
-        public override string Name { get { return "Elfe Noir"; } }
-        public override string NameF { get { return "Elfe Noire"; } }
+        public override string Name { get { return "Alfar"; } }
+        public override string NameF { get { return "Alfare"; } }
 
         public override bool isAasimaar { get { return false; } }
         public override bool isTieffelin { get { return false; } }

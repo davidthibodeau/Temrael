@@ -23,7 +23,7 @@ namespace Server.Gumps.Creation
             int line = 2;
             int scale = 25;
 
-            AddBackground(100, 150, 180, 200, 2620);
+            //AddBackground(100, 150, 180, 200, 2620);
 
             Race race = from.Race;
 
@@ -170,16 +170,16 @@ namespace Server.Gumps.Creation
             //    ++line;
             //}
 
-            AddBackground(100, 350, 545, 298, 3500);
-            AddBackground(295, 386, 337, 225, 3000);
-            AddHtml(123, 365, 565, 18, "<h3><basefont color=#025a>Équipement de départ<basefont></h3>", false, false);
+            AddBackground(100, 150, 545, 498, 3500);
+            AddBackground(295, 186, 337, 425, 3000);
+            AddHtml(123, 165, 565, 18, "<h3><basefont color=#025a>Équipement de départ<basefont></h3>", false, false);
             AddHtml(150, 611, 150, 18, "<h3><basefont color=#025a>Ajouter<basefont></h3>", false, false);
             AddButton(115, 610, 4005, 4007, 8, GumpButtonType.Reply, 0);
 
             AddButton(470, 645, 52, 52, 30, GumpButtonType.Reply, 0);
             AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Terminer<basefont></h3>", false, false);
 
-            y = 385;
+            y = 185;
 
             for (int i = 0; i < Categories.Length; i++)
             {
@@ -206,7 +206,7 @@ namespace Server.Gumps.Creation
                     {
                         CustomItem entry = (CustomItem)cat.Entries[c];
                         x = 298 + (c % 3) * 129;
-                        y = 388 + (c / 3) * 67;
+                        y = 188 + (c / 3) * 67;
 
                         AddHtml(x, y, 100, entry.LongText ? 36 : 18, "<h3><basefont color=#5A4A31>" + entry.Name + "<basefont></h3>", false, false);
 

@@ -27,6 +27,11 @@ namespace Server.Engines.Races
             get { return RaceId; }
         }
 
+        public override int[] HueGumps
+        {
+            get { return null; } 
+        }
+
         public override string Name
         {
             get { return "Aucune"; }

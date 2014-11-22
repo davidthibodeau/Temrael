@@ -19,6 +19,8 @@ namespace Server.Engines.Races
                 1881
             };
 
+        public override int[] HueGumps { get { return new int[] { 452, 453, 454, }; } }
+
         public override Type Skin { get { return null; } }
 
         public override string Name { get { return "Nomade"; } }
