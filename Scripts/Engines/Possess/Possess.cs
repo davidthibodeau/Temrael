@@ -161,6 +161,7 @@ namespace Server.Engines.Possess
 				"Y",
 				"Z",
 				"Player",
+                "Identities",
             };
 
         public static void Initialize()
