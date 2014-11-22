@@ -2150,10 +2150,11 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-            writer.Write(0); // version
+            writer.Write(1); // version
 
             writer.Write(m_CreationFrame);
             writer.Write(m_canBeAltered);
+            writer.Write(m_GoldValue);
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -2472,6 +2473,8 @@ namespace Server
             m_CreationFrame = reader.ReadString();
 
             m_canBeAltered = reader.ReadBool();
+
+            m_GoldValue = reader.ReadInt();
 
             SaveFlag flags = (SaveFlag)reader.ReadInt();
 
