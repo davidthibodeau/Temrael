@@ -162,6 +162,7 @@ namespace Server.Engines.Possess
 				"Z",
 				"Player",
                 "Identities",
+                "HideAdmin",
             };
 
         public static void Initialize()
