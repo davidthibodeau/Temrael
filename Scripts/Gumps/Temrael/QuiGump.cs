@@ -136,8 +136,19 @@ namespace Server.Gumps
             {
                 Mobile m = ((NetState)states[i]).Mobile;
 
-                if (m != null && (m == owner || !m.Hidden || owner.AccessLevel >= m.AccessLevel))
-                    list.Add(m);
+                if (m != null)
+                {
+                    if (m == owner)
+                        list.Add(m);
+                    else if (!m.Hidden)
+                        list.Add(m);
+                    else if (m.Hidden && owner.AccessLevel >= m.AccessLevel)
+                        list.Add(m);
+                    else if (owner.AccessLevel >= AccessLevel.Batisseur && !m.HideAdmin)
+                        list.Add(m);
+                    else if (m is PlayerMobile && ((PlayerMobile)m).VisibilityList.Contains(owner))
+                        list.Add(m);
+                }
             }
 
             list.Sort(new InternalComparer(owner));
@@ -298,11 +309,13 @@ namespace Server.Gumps
                                 from.SendGump(new ClientGump(from, m.NetState));
                             }
                         }
-                        else
+                        else if(m_Owner.AccessLevel > AccessLevel.Batisseur)
                         {
                             from.SendMessage("Vous ne pouvez pas accéder à la fenêtre d'un maître de jeu.");
                             from.SendGump(new QuiGump(from, m_Mobiles, m_Page));
                         }
+                        else
+                            from.SendGump(new ClientGump(from, m.NetState));
 
                         break;
                     }

@@ -245,20 +245,6 @@ namespace Server.Gumps
 
             int line = 0;
 
-            if (from.AccessLevel >= AccessLevel.Batisseur)
-            {
-                AddHtml(14, 36 + (line * 20), 200, 20, Color("Addresse:", LabelColor32), false, false);
-                AddHtml(70, 36 + (line++ * 20), 200, 20, Color(state.ToString(), LabelColor32), false, false);
-            }
-            if (from.AccessLevel >= AccessLevel.Counselor)
-            {
-                AddHtml(14, 36 + (line * 20), 200, 20, Color("Client:", LabelColor32), false, false);
-                AddHtml(70, 36 + (line++ * 20), 200, 20, Color(state.Version == null ? "(null)" : state.Version.ToString(), LabelColor32), false, false);
-
-                //AddHtml(14, 36 + (line * 20), 200, 20, Color("Version:", LabelColor32), false, false);
-                //AddHtml(70, 36 + (line++ * 20), 200, 20, Color(((state.Flags & 0x10) != 0) ? "Samurai Empire" : ((state.Flags & 0x08) != 0) ? "Age of Shadows" : ((state.Flags & 0x04) != 0) ? "Blackthorn's Revenge" : ((state.Flags & 0x02) != 0) ? "Third Dawn" : ((state.Flags & 0x01) != 0) ? "Renaissance" : "The Second Age", LabelColor32), false, false); // some flags yet unverified
-            }
-
             Account a = state.Account as Account;
             Mobile m = state.Mobile;
 
@@ -273,6 +259,21 @@ namespace Server.Gumps
 
             if (m != null)
             {
+
+                if (from.AccessLevel >= AccessLevel.Batisseur && (from.AccessLevel > m.AccessLevel))
+                {
+                    AddHtml(14, 36 + (line * 20), 200, 20, Color("Addresse:", LabelColor32), false, false);
+                    AddHtml(70, 36 + (line++ * 20), 200, 20, Color(state.ToString(), LabelColor32), false, false);
+                }
+                if (from.AccessLevel >= AccessLevel.Counselor && (from.AccessLevel > m.AccessLevel))
+                {
+                    AddHtml(14, 36 + (line * 20), 200, 20, Color("Client:", LabelColor32), false, false);
+                    AddHtml(70, 36 + (line++ * 20), 200, 20, Color(state.Version == null ? "(null)" : state.Version.ToString(), LabelColor32), false, false);
+
+                    //AddHtml(14, 36 + (line * 20), 200, 20, Color("Version:", LabelColor32), false, false);
+                    //AddHtml(70, 36 + (line++ * 20), 200, 20, Color(((state.Flags & 0x10) != 0) ? "Samurai Empire" : ((state.Flags & 0x08) != 0) ? "Age of Shadows" : ((state.Flags & 0x04) != 0) ? "Blackthorn's Revenge" : ((state.Flags & 0x02) != 0) ? "Third Dawn" : ((state.Flags & 0x01) != 0) ? "Renaissance" : "The Second Age", LabelColor32), false, false); // some flags yet unverified
+                }
+
                 if (from.AccessLevel >= AccessLevel.Counselor)
                 {
                     AddHtml(14, 36 + (line * 20), 200, 20, Color("Mobile:", LabelColor32), false, false);
@@ -308,13 +309,16 @@ namespace Server.Gumps
 
                 if (from != m)
                 {
-                    if (from.AccessLevel >= AccessLevel.Counselor && (from.AccessLevel >= m.AccessLevel))
+                    if (from.AccessLevel >= AccessLevel.Counselor)
                     {
                         AddButton(246, 36 + (line * 20), 0xFA5, 0xFA7, 5, GumpButtonType.Reply, 0);
                         AddHtml(280, 38 + (line++ * 20), 100, 20, Color("Go to", LabelColor32), false, false);
 
-                        AddButton(246, 36 + (line * 20), 0xFA5, 0xFA7, 6, GumpButtonType.Reply, 0);
-                        AddHtml(280, 38 + (line++ * 20), 100, 20, Color("Get here", LabelColor32), false, false);
+                        if (from.AccessLevel >= m.AccessLevel)
+                        {
+                            AddButton(246, 36 + (line * 20), 0xFA5, 0xFA7, 6, GumpButtonType.Reply, 0);
+                            AddHtml(280, 38 + (line++ * 20), 100, 20, Color("Get here", LabelColor32), false, false);
+                        }
                     }
                 }
                 if (from.AccessLevel >= AccessLevel.Counselor && (from.AccessLevel >= m.AccessLevel))

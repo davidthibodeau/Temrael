@@ -168,10 +168,6 @@ namespace Server.Gumps.Creation
 
         private static void InitializeCreation(PlayerMobile from)
         {
-            from.Experience.Niveau = 0;
-            SetSkills(from);
-            SetCaract(from);
-
             if (from.Backpack != null)
             {
                 while (from.Backpack.Items.Count > 0)

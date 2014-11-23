@@ -4773,7 +4773,8 @@ namespace Server
         {
             int version = reader.ReadInt();
 
-            //m_XP = reader.ReadInt();
+            if (version > 0)
+                HideAdmin = reader.ReadBool();
 
             m_LastStrGain = reader.ReadDeltaTime();
             m_LastIntGain = reader.ReadDeltaTime();
@@ -4956,9 +4957,9 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-			writer.Write( (int)0 ); // version
+            writer.Write((int)1); // version
 
-            //writer.Write(m_XP);
+            writer.Write(HideAdmin);
 
 			writer.WriteDeltaTime( m_LastStrGain );
 			writer.WriteDeltaTime( m_LastIntGain );
@@ -6856,6 +6857,13 @@ namespace Server
 				}
 			}
 		}
+
+        [CommandProperty(AccessLevel.Coordinateur)]
+        public bool HideAdmin
+        {
+            get;
+            set;
+        }
 
 		public virtual void OnAfterNameChange( string oldName, string newName )
 		{
