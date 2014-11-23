@@ -16,6 +16,7 @@ namespace Server.Items
 		[Constructable]
 		public Scissors() : base( 0xF9F )
 		{
+            GoldValue = 3;
 			Weight = 1.0;
             Layer = Layer.OneHanded;
 		}

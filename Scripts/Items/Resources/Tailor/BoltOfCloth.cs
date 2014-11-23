@@ -18,6 +18,7 @@ namespace Server.Items
 		[Constructable]
 		public BoltOfCloth( int amount ) : base( 0xF95 )
 		{
+            GoldValue = 51;
 			Stackable = true;
 			Weight = 5.0;
 			Amount = amount;

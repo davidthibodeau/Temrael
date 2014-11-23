@@ -12,12 +12,14 @@ namespace Server.Items
 		[Constructable]
 		public FletcherTools() : base( 0x1022 )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
 		}
 
 		[Constructable]
 		public FletcherTools( int uses ) : base( uses, 0x1022 )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
 		}
 

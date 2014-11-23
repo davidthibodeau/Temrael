@@ -11,6 +11,7 @@ namespace Server.Items
 		[Constructable]
 		public ExplosionPotion() : base( PotionEffect.Explosion )
 		{
+            GoldValue = 9;
             Name = "Potion explosive";
 		}
 

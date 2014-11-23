@@ -157,6 +157,7 @@ namespace Server.Items
 		[Constructable] 
 		public DyeTub() : base( 0xFAB )
 		{
+            GoldValue = 6;
 			Weight = 10.0;
 			m_Redyable = true;
             m_Charges = 5;

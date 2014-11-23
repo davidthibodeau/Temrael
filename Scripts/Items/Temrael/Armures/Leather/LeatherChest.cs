@@ -23,6 +23,7 @@ namespace Server.Items
 		[Constructable]
 		public LeatherChest() : base( 0x13CC )
 		{
+            GoldValue = 21;
 			Weight = 6.0;
 		}
 

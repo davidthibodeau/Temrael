@@ -63,6 +63,7 @@ namespace Server.Items
 		[Constructable]
 		public FishingPole() : base( 0x0DC0 )
         {
+            GoldValue = 9;
             Name = "canne à pêche";
 			Layer = Layer.OneHanded;
 			Weight = 8.0;

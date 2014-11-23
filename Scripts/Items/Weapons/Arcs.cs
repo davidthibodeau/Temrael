@@ -14,6 +14,7 @@ namespace Server.Items
         public Arc()
             : base(0x2d24)
         {
+            GoldValue = 21;
             Weight = 8.0;
             Layer = Layer.TwoHanded;
             Name = "Arc";

@@ -150,6 +150,7 @@ namespace Server.Items
 		[Constructable]
 		public Hides( int amount ) : base( CraftResource.RegularLeather, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public Hides( Serial serial ) : base( serial )

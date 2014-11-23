@@ -462,6 +462,7 @@ namespace Server.Items
         [Constructable]
         public AnchoieFish(int amount) : base(CraftResource.Anchoie, amount)
         {
+            GoldValue = 9;
             Name = "Anchoie";
             ItemID = 0xDD6;
         }
@@ -1270,6 +1271,7 @@ namespace Server.Items
         [Constructable]
         public HuitreFish() : base(CraftResource.Huitre)
         {
+            GoldValue = 9;
             Stackable = false;
             ItemID = 4175;
             Name = "Huitre";

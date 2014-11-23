@@ -149,6 +149,7 @@ namespace Server.Items
 		[Constructable]
 		public FerIngot( int amount ) : base( CraftResource.Fer, amount )
 		{
+            GoldValue = 3;
             Name = "Lingot de Fer";
 		}
 

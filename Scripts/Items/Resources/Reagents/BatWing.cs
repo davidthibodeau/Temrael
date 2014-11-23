@@ -17,6 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public BatWing( int amount ) : base( 0xF78, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public BatWing( Serial serial ) : base( serial )

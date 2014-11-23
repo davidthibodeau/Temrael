@@ -57,6 +57,16 @@ namespace Server.Items
 		public BeverageBottle( BeverageType type )
 			: base( type )
 		{
+            switch (type)
+            {
+                case BeverageType.Ale: GoldValue = 6; break;
+                case BeverageType.Cider: GoldValue = 6; break;
+                case BeverageType.Liquor: GoldValue = 6; break;
+                case BeverageType.Milk: GoldValue = 6; break;
+                case BeverageType.Water: GoldValue = 3; break;
+                case BeverageType.Wine: GoldValue = 9; break;
+            }
+
 			Weight = 1.0;
 		}
 

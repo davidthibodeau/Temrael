@@ -161,6 +161,7 @@ namespace Server.Items
 		[Constructable]
 		public Leather( int amount ) : base( CraftResource.RegularLeather, amount )
 		{
+            GoldValue = 3;
             Name = "Cuir";
 		}
 

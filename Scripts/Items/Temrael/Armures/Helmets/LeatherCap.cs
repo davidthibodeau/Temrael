@@ -22,6 +22,7 @@ namespace Server.Items
 		[Constructable]
 		public LeatherCap() : base( 0x1DB9 )
 		{
+            GoldValue = 9;
 			Weight = 2.0;
 		}
 

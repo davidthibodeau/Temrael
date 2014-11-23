@@ -22,6 +22,7 @@ namespace Server.Items
 		[Constructable]
 		public LeatherLegs() : base( 0x13CB )
 		{
+            GoldValue = 15;
 			Weight = 4.0;
 		}
 

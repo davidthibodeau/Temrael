@@ -40,6 +40,7 @@ namespace Server.Items
 		[Constructable]
 		public SmallStretchedHideEastDeed()
 		{
+            GoldValue = 27;
 		}
 
 		public SmallStretchedHideEastDeed( Serial serial ) : base( serial )
@@ -98,6 +99,7 @@ namespace Server.Items
 		[Constructable]
 		public SmallStretchedHideSouthDeed()
 		{
+            GoldValue = 27;
 		}
 
 		public SmallStretchedHideSouthDeed( Serial serial ) : base( serial )
@@ -156,6 +158,7 @@ namespace Server.Items
 		[Constructable]
 		public MediumStretchedHideEastDeed()
 		{
+            GoldValue = 33;
 		}
 
 		public MediumStretchedHideEastDeed( Serial serial ) : base( serial )
@@ -214,6 +217,7 @@ namespace Server.Items
 		[Constructable]
 		public MediumStretchedHideSouthDeed()
 		{
+            GoldValue = 33;
 		}
 
 		public MediumStretchedHideSouthDeed( Serial serial ) : base( serial )

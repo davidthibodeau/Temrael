@@ -10,6 +10,7 @@ namespace Server.Items
 		[Constructable]
 		public Dyes() : base( 0xFA9 )
 		{
+            GoldValue = 6;
 			Weight = 3.0;
 		}
 

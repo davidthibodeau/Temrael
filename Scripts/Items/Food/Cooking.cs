@@ -299,6 +299,7 @@ namespace Server.Items
 		[Constructable]
 		public BowlFlour() : base( 0xa1e )
 		{
+            GoldValue = 3;
 			Weight = 1.0;
 		}
 
@@ -438,6 +439,7 @@ namespace Server.Items
 		[Constructable]
 		public SackFlour() : base( 0x1039 )
 		{
+            GoldValue = 9;
 			Weight = 5.0;
 			m_Quantity = 20;
 		}

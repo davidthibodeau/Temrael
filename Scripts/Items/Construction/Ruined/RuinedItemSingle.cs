@@ -263,6 +263,7 @@ namespace Server.Items
 		[Constructable]
 		public RuinedPainting() : base( 0xC2C )
 		{
+            GoldValue = 27;
 			Movable = false;
 		}
 

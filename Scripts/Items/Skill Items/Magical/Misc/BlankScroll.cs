@@ -12,7 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public BlankScroll( int amount ) : base( 0xEF3 )
 		{
-            GoldValue = 6;
+            GoldValue = 3;
 			Stackable = true;
 			Weight = 1.0;
 			Amount = amount;

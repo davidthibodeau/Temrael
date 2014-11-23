@@ -27,6 +27,7 @@ namespace Server.Items
 		[Constructable]
 		public FishingNet() : base( 0xDCA )
         {
+            GoldValue = 21;
             Name = "filet de pêche";
 			Weight = 4.0;
 		}

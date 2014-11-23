@@ -117,6 +117,7 @@ namespace Server.Items
 		[Constructable]
 		public BreadLoaf( int amount ) : base( amount, 0x103B )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 3;
 		}
@@ -222,6 +223,7 @@ namespace Server.Items
 		[Constructable]
 		public FishSteak( int amount ) : base( amount, 0x97B )
 		{
+            GoldValue = 3;
 			this.FillFactor = 3;
 		}
 
@@ -365,6 +367,7 @@ namespace Server.Items
 		[Constructable]
 		public FrenchBread( int amount ) : base( amount, 0x98C )
 		{
+            GoldValue = 3;
 			this.Weight = 2.0;
 			this.FillFactor = 3;
 		}
@@ -561,6 +564,7 @@ namespace Server.Items
 		[Constructable]
 		public Cake() : base( 0x9E9 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 10;
@@ -623,6 +627,7 @@ namespace Server.Items
 		[Constructable]
 		public Cookies() : base( 0x160b )
 		{
+            GoldValue = 6;
 			Stackable = Core.ML;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
@@ -652,6 +657,7 @@ namespace Server.Items
 		[Constructable]
 		public Muffins() : base( 0x9eb )
 		{
+            GoldValue = 3;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
@@ -684,6 +690,7 @@ namespace Server.Items
 		[Constructable]
 		public CheesePizza() : base( 0x1040 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 6;
@@ -870,6 +877,7 @@ namespace Server.Items
 		[Constructable]
 		public ApplePie() : base( 0x1041 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 5;

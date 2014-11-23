@@ -189,6 +189,7 @@ namespace Server.Items
         public Crossbow()
             : base(0xf50)
         {
+            GoldValue = 21;
             Weight = 8.0;
             Layer = Layer.TwoHanded;
             Name = "Arbalete a manivelle";

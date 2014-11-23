@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public Tongs() : base( 0xFBB )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}
@@ -19,6 +20,7 @@ namespace Server.Items
 		[Constructable]
 		public Tongs( int uses ) : base( uses, 0xFBB )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}
