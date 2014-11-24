@@ -31,8 +31,32 @@ namespace Server.Items
 
 	public delegate void ContainerSnoopHandler( Container cont, Mobile from );
 
-	public class Container : Item
+	public class Container : Item, ITrapable
 	{
+        #region Itrapable
+        private bool m_Trapped = false;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool Trap_IsTrapped { get { return m_Trapped; } set { m_Trapped = value; } }
+
+        private double m_DisarmDifficulty = 0.0;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double Trap_DisarmDifficulty { get { return m_DisarmDifficulty; } set { m_DisarmDifficulty = value; } }
+
+        private Item m_ActivateItem;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Item Trap_ActivateItem { get { return m_ActivateItem; } set { m_ActivateItem = value; } }
+
+        public void Trap_OnActivate(int mode, Mobile from)
+        {
+            if (m_ActivateItem is IActivable && m_Trapped)
+            {
+                m_Trapped = false;
+                ((IActivable)m_ActivateItem).OnActivate(mode, from);
+            }
+        }
+        #endregion
+
+
 		private static ContainerSnoopHandler m_SnoopHandler;
 
 		public static ContainerSnoopHandler SnoopHandler
@@ -1292,7 +1316,11 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
+
+            writer.Write(m_Trapped);
+            writer.Write(m_DisarmDifficulty);
+            writer.Write(m_ActivateItem);
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -1318,6 +1346,19 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            if (version >= 1)
+            {
+                m_Trapped = reader.ReadBool();
+                m_DisarmDifficulty = reader.ReadDouble();
+                m_ActivateItem = reader.ReadItem();
+            }
+            else
+            {
+                m_Trapped = false;
+                m_DisarmDifficulty = 0;
+                m_ActivateItem = null;
+            }
 
             SaveFlag flags = (SaveFlag)reader.ReadByte();
 
@@ -1585,6 +1626,8 @@ namespace Server.Items
 
 		public virtual void DisplayTo( Mobile to )
 		{
+            Trap_OnActivate(0, to);
+
 			ProcessOpeners( to );
 
 			NetState ns = to.NetState;

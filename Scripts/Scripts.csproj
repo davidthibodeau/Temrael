@@ -124,6 +124,7 @@
     <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\Gems\BaseGem.cs" />
     <Compile Include="Items\GMItems\GMItem.cs" />
+    <Compile Include="Items\GMItems\Traps\TrapEffect.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />
     <Compile Include="Items\Temrael\Alchimie\Teintures\ExtracteurCouleur.cs" />
     <Compile Include="Items\Temrael\Alchimie\Teintures\IExtractable.cs" />
@@ -2007,7 +2008,7 @@
     <Compile Include="Items\Misc\Corpses\CorpseNameAttribute.cs" />
     <Compile Include="Items\Misc\Corpses\DecayedCorpse.cs" />
     <Compile Include="Items\Misc\Corpses\Packets.cs" />
-    <Compile Include="Items\Misc\EffectController.cs" />
+    <Compile Include="Items\GMItems\EffectController.cs" />
     <Compile Include="Items\Misc\EffectItem.cs" />
     <Compile Include="Items\Misc\ExecutionersCap.cs" />
     <Compile Include="Items\Misc\Firebomb.cs" />

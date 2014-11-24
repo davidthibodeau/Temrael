@@ -113,4 +113,50 @@ namespace Server
 
 		ISpawner Spawner { get; set; }
 	}
+
+    public interface ITrapable
+    {
+        /*
+        #region Itrapable
+        private bool m_Trapped = false;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool IsTrapped { get { return m_Trapped; } set { m_Trapped = value; } }
+
+        private double m_DisarmDifficulty = 0.0;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double DisarmDifficulty { get { return m_DisarmDifficulty; } set { m_DisarmDifficulty = value; } }
+
+        private Item m_ActivateItem;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Item ActivateItem { get { return m_ActivateItem; } set { m_ActivateItem = value; } }
+
+        public void OnActivate(int mode, Mobile from)
+        {
+            if (ActivateItem is IActivable && m_Trapped)
+                ((IActivable)m_ActivateItem).OnActivate(mode, from);
+        }
+        #endregion
+        */
+        
+        bool Trap_IsTrapped { get; set; }
+
+        double Trap_DisarmDifficulty { get; set; }
+
+        Item Trap_ActivateItem { get; set; }
+
+        void Trap_OnActivate(int mode, Mobile from);
+    }
+
+    public interface IActivable
+    {
+        /*
+        #region IActivable
+        public void OnECActivate()
+        {
+            this.OnUse();
+        }
+        #endregion
+        */
+        void OnActivate(int mode, Mobile from);
+    }
 }

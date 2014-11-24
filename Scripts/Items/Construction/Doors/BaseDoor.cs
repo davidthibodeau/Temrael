@@ -6,8 +6,31 @@ using Server.Targeting;
 
 namespace Server.Items
 {
-	public abstract class BaseDoor : Item, ILockable, ITelekinesisable, IActivable
+	public abstract class BaseDoor : Item, ILockable, ITelekinesisable, IActivable, ITrapable
     {
+        #region Itrapable
+        private bool m_Trapped = false;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool Trap_IsTrapped { get { return m_Trapped; } set { m_Trapped = value; } }
+
+        private double m_DisarmDifficulty = 0.0;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double Trap_DisarmDifficulty { get { return m_DisarmDifficulty; } set { m_DisarmDifficulty = value; } }
+
+        private Item m_ActivateItem;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Item Trap_ActivateItem { get { return m_ActivateItem; } set { m_ActivateItem = value; } }
+
+        public void Trap_OnActivate(int mode, Mobile from)
+        {
+            if (m_ActivateItem is IActivable && m_Trapped)
+            {
+                m_Trapped = false;
+                ((IActivable)m_ActivateItem).OnActivate(mode, from);
+            }
+        }
+        #endregion
+
         #region IEffectControllerActivable
         public void OnActivate(int mode, Mobile from)
         {
@@ -568,6 +591,7 @@ namespace Server.Items
 
 		public virtual void OnOpened( Mobile from )
 		{
+            Trap_OnActivate(0, from);
 		}
 
 		public virtual void OnClosed( Mobile from )
@@ -604,9 +628,13 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 1 ); // version
+			writer.Write( (int) 2 ); // version
 
-			writer.Write( m_KeyValue );
+            writer.Write(m_Trapped);
+            writer.Write(m_DisarmDifficulty);
+            writer.Write(m_ActivateItem);
+
+            writer.Write( m_KeyValue );
 
 			writer.Write( m_Open );
 			writer.Write( m_Locked );
@@ -625,49 +653,33 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 0:
-				{
-					m_KeyValue = reader.ReadLong();
-					m_Open = reader.ReadBool();
-					m_Locked = reader.ReadBool();
-					m_OpenedID = reader.ReadInt();
-					m_ClosedID = reader.ReadInt();
-					m_OpenedSound = reader.ReadInt();
-					m_ClosedSound = reader.ReadInt();
-					m_Offset = reader.ReadPoint3D();
-					m_Link = reader.ReadItem() as BaseDoor;
-                    m_DureeFermeture = TimeSpan.FromSeconds(20.0);
+            if(version >= 2)
+            {
+                m_Trapped = reader.ReadBool();
+                m_DisarmDifficulty = reader.ReadDouble();
+                m_ActivateItem = reader.ReadItem();
+            }
+            else
+            {
+                m_Trapped = false;
+                m_DisarmDifficulty = 0;
+                m_ActivateItem = null;
+            }
 
-					m_Timer = new InternalTimer( this, m_DureeFermeture );
+			m_KeyValue = reader.ReadLong();
+			m_Open = reader.ReadBool();
+			m_Locked = reader.ReadBool();
+			m_OpenedID = reader.ReadInt();
+			m_ClosedID = reader.ReadInt();
+			m_OpenedSound = reader.ReadInt();
+			m_ClosedSound = reader.ReadInt();
+			m_Offset = reader.ReadPoint3D();
+			m_Link = reader.ReadItem() as BaseDoor;
 
-                    if (m_Open)
-                        m_Timer.Start();
-
-					break;
-				}
-                case 1:
-                {
-                    m_KeyValue = reader.ReadLong();
-                    m_Open = reader.ReadBool();
-                    m_Locked = reader.ReadBool();
-                    m_OpenedID = reader.ReadInt();
-                    m_ClosedID = reader.ReadInt();
-                    m_OpenedSound = reader.ReadInt();
-                    m_ClosedSound = reader.ReadInt();
-                    m_Offset = reader.ReadPoint3D();
-                    m_Link = reader.ReadItem() as BaseDoor;
-                    m_DureeFermeture = reader.ReadTimeSpan();
-
-                    m_Timer = new InternalTimer(this, m_DureeFermeture);
-
-                    if (m_Open)
-                        m_Timer.Start();
-
-                    break;
-                }
-			}
+            if (version == 0)
+                m_DureeFermeture = TimeSpan.FromSeconds(20.0);
+            else
+                m_DureeFermeture = reader.ReadTimeSpan();
 		}
 	}
 }
