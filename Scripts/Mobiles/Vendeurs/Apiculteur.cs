@@ -83,7 +83,7 @@ namespace Server.Mobiles.Vendeurs
             public InternalBuyInfo()
             {
                 Add(new GenericBuyInfo(typeof(JarHoney), 20, 0x9EC, 0)); // 3
-                Add(new GenericBuyInfo(typeof(Beeswax), 20, 0x1622, 0)); // 27
+                Add(new GenericBuyInfo(typeof(Beeswax), 20, 0x1422, 0)); // 27
                 //Add(new GenericBuyInfo(typeof(Beeshive), 20, 0x91A, 0)); // 45
             }
         }

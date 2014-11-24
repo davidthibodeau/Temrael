@@ -82,7 +82,7 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(GraveDust), 20, 0x9C9, 0)); // 3
+                Add(new GenericBuyInfo(typeof(GraveDust), 20, 0xF8F, 0)); // 3
                 //Add(new GenericBuyInfo(typeof(UrneBleue), 20, 0x1609, 0)); // 27
                 //Add(new GenericBuyInfo(typeof(UrneBlanche), 20, 0x979, 0)); // 45
                 //Add(new GenericBuyInfo(typeof(UrneGrise), 20, 0xEC3, 0)); // 15
