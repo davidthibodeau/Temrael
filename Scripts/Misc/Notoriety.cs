@@ -264,9 +264,6 @@ namespace Server.Misc
 					else
 						return MobileNotoriety( source, master );
 				}
-
-				if( !bc.Summoned && !bc.Controlled && ((PlayerMobile)source).EnemyOfOneType == target.GetType() )
-					return Notoriety.Enemy;
 			}
 
 			Guild sourceGuild = GetGuildFor( source.Guild as Guild, source );

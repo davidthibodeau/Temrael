@@ -2821,55 +2821,6 @@ namespace Server.Mobiles
 
 		#endregion
 
-		#region Enemy of One
-		private Type m_EnemyOfOneType;
-		private bool m_WaitingForEnemy;
-
-		public Type EnemyOfOneType
-		{
-			get{ return m_EnemyOfOneType; }
-			set
-			{
-				Type oldType = m_EnemyOfOneType;
-				Type newType = value;
-
-				if ( oldType == newType )
-					return;
-
-				m_EnemyOfOneType = value;
-
-				DeltaEnemies( oldType, newType );
-			}
-		}
-
-		public bool WaitingForEnemy
-		{
-			get{ return m_WaitingForEnemy; }
-			set{ m_WaitingForEnemy = value; }
-		}
-
-		private void DeltaEnemies( Type oldType, Type newType )
-		{
-			foreach ( Mobile m in this.GetMobilesInRange( 18 ) )
-			{
-				Type t = m.GetType();
-
-				if ( t == oldType || t == newType ) {
-					NetState ns = this.NetState;
-
-					if ( ns != null ) {
-						if ( ns.StygianAbyss ) {
-							ns.Send( new MobileMoving( m, Notoriety.Compute( this, m ) ) );
-						} else {
-							ns.Send( new MobileMovingOld( m, Notoriety.Compute( this, m ) ) );
-						}
-					}
-				}
-			}
-		}
-
-		#endregion
-
 		#region Hair and beard mods
 		private int m_HairModID = -1, m_HairModHue;
 		private int m_BeardModID = -1, m_BeardModHue;
