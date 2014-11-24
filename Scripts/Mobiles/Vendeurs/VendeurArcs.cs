@@ -90,7 +90,7 @@ namespace Server.Mobiles.Vendeurs
                 Add(new GenericBuyInfo(typeof(Crossbow), 20, 0xF50, 0)); // 21
                 Add(new GenericBuyInfo(typeof(Bolt), 20, 0x1BFB, 0)); // 3
                 Add(new GenericBuyInfo(typeof(Arc), 20, 0x2D24, 0)); // 21
-                Add(new GenericBuyInfo(typeof(ArcheryButte), 20, 0x100A, 0)); // 21
+                //Add(new GenericBuyInfo(typeof(ArcheryButte), 20, 0x100A, 0)); // 21
             }
         }
 

@@ -87,7 +87,7 @@ namespace Server.Mobiles.Vendeurs
             public InternalBuyInfo()
             {
                 Add(new GenericBuyInfo(typeof(PaintsAndBrush), 20, 0xFC1, 0)); // 6
-                Add(new GenericBuyInfo(typeof(RuinedPainting), 20, 0xC2C, 0)); // 27
+                //Add(new GenericBuyInfo(typeof(RuinedPainting), 20, 0xC2C, 0)); // 27
                 Add(new BeverageBuyInfo(typeof(BeverageBottle), BeverageType.Wine, 6, 20, 0x9C7, 0 )); // 6 Du vin
             }
         }
