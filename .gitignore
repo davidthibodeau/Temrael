@@ -21,3 +21,5 @@ bin/
 obj/
 Logging/
 Temrael.userprefs
+*.pdb
+RunUO.vshost.exe.*
