@@ -63,7 +63,7 @@ namespace Server.Spells
                 m.PlaySound(0x210);
 
                 //Le dégât est ajusté sur le % de vie restant de la cible, puisque c'est un sort de type Exécution/Finisher
-                double damage = ((m.HitsMax / m.Hits)- 0.25) * Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime);
+                double damage = ((m.HitsMax / m.Hits) - 0.25) * Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime);
 
                 if (m_Table.Contains(m))
                     damage /= 10;

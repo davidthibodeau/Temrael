@@ -52,48 +52,51 @@ namespace Server.Spells
 
 			SpellHelper.GetSurfaceTop( ref p );
 
-			if ( Server.Misc.WeightOverloading.IsOverloaded( Caster ) )
-			{
-				Caster.SendLocalizedMessage( 502359, "", 0x22 ); // Thou art too encumbered to move.
-			}
-			/*else if ( !SpellHelper.CheckTravel( Caster, TravelCheckType.TeleportFrom ) )
-			{
-			}*/
-			else if ( !SpellHelper.CheckTravel( Caster, map, new Point3D( p ), TravelCheckType.TeleportTo ) )
-			{
-			}
-			else if ( map == null || !map.CanSpawnMobile( p.X, p.Y, p.Z ) )
-			{
-				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
-			}
-			else if ( SpellHelper.CheckMulti( new Point3D( p ), map ) )
-			{
-				Caster.SendLocalizedMessage( 501942 ); // That location is blocked.
-			}
-			else if ( CheckSequence() )
-			{
-				SpellHelper.Turn( Caster, orig );
+            if (Server.Misc.WeightOverloading.IsOverloaded(Caster))
+            {
+                Caster.SendLocalizedMessage(502359, "", 0x22); // Thou art too encumbered to move.
+            }
+            /*else if ( !SpellHelper.CheckTravel( Caster, TravelCheckType.TeleportFrom ) )
+            {
+            }*/
+            else if (!SpellHelper.CheckTravel(Caster, map, new Point3D(p), TravelCheckType.TeleportTo))
+            {
+            }
+            else if (! Caster.CanSee(p))
+            {
+            }
+            else if (map == null || !map.CanSpawnMobile(p.X, p.Y, p.Z))
+            {
+                Caster.SendLocalizedMessage(501942); // That location is blocked.
+            }
+            else if (SpellHelper.CheckMulti(new Point3D(p), map))
+            {
+                Caster.SendLocalizedMessage(501942); // That location is blocked.
+            }
+            else if (CheckSequence())
+            {
+                SpellHelper.Turn(Caster, orig);
 
-				Mobile m = Caster;
+                Mobile m = Caster;
 
-				Point3D from = m.Location;
-				Point3D to = new Point3D( p );
+                Point3D from = m.Location;
+                Point3D to = new Point3D(p);
 
-				m.Location = to;
-				m.ProcessDelta();
+                m.Location = to;
+                m.ProcessDelta();
 
-				if ( m.Player )
-				{
-					Effects.SendLocationParticles( EffectItem.Create( from, m.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 2023 );
-					Effects.SendLocationParticles( EffectItem.Create(   to, m.Map, EffectItem.DefaultDuration ), 0x3728, 10, 10, 5023 );
-				}
-				else
-				{
-					m.FixedParticles( 0x376A, 9, 32, 0x13AF, EffectLayer.Waist );
-				}
+                if (m.Player)
+                {
+                    Effects.SendLocationParticles(EffectItem.Create(from, m.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 2023);
+                    Effects.SendLocationParticles(EffectItem.Create(to, m.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 5023);
+                }
+                else
+                {
+                    m.FixedParticles(0x376A, 9, 32, 0x13AF, EffectLayer.Waist);
+                }
 
-				m.PlaySound( 0x1FE );
-			}
+                m.PlaySound(0x1FE);
+            }
 
 			FinishSequence();
 		}

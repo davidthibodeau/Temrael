@@ -6,13 +6,14 @@ using Server.Targeting;
 using Server.Mobiles;
 using Server.Engines.PartySystem;
 using Server.Misc;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
     class TotemRegenSpell : Spell
 	{
-        private const int MaxDuration = 60; // Un tick au 3 secondes.
-        private const int MaxHealed = 5;
+        private const int m_HealPerTick = 5;
+        private TimeSpan MaxDuration = TimeSpan.FromSeconds(60);
         public static int m_SpellID { get { return 604; } } // TOCHANGE
 
         private static short s_Cercle = 4;
@@ -44,27 +45,34 @@ namespace Server.Spells
             }
         }
 
-        public void Target( Point3D p )
+        public void Target( IPoint3D p )
 		{
-            if ( CheckBSequence( Caster ) )
-			{
+            if (!Caster.CanSee(p))
+            {
+                Caster.SendLocalizedMessage(500237); // Target can not be seen.
+            }
+            else if ( CheckBSequence( Caster ))
+            {
                 if (m_SpellDejaActif.Contains(Caster))
                 {
                     ((Item)m_SpellDejaActif[Caster]).Delete();
                 }
 
+                SpellHelper.GetSurfaceTop(ref p);
 				SpellHelper.Turn( Caster, p );
 
-                Totem totem = new Totem(p, Caster.Map);
+                Point3D point = new Point3D(p);
+
+                Totem totem = new Totem(point, Caster.Map);
 
                 m_SpellDejaActif[Caster] = totem;
 
-                TimeSpan duration = TimeSpan.FromSeconds( MaxDuration * GetSpellScaling(Caster, Info.skillForCasting));
+                TimeSpan intervale = TimeSpan.FromSeconds((MaxDuration.TotalSeconds * m_HealPerTick) / (Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) * 3));
 
 				Effects.PlaySound( p, Caster.Map, 0x506 );
                 Caster.FixedParticles(0x373A, 1, 17, 9919, 0x527, 0, EffectLayer.Waist);
 
-                new RegenTimer(Caster, totem, duration).Start();
+                new RegenTimer(Caster, totem, MaxDuration, intervale).Start();
 			}
 
 			FinishSequence();
@@ -76,14 +84,14 @@ namespace Server.Spells
             private Totem m_Totem;
             private DateTime m_End;
 
-            public RegenTimer(Mobile caster, Totem totem, TimeSpan duration)
-                : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(3.0))
+            public RegenTimer(Mobile caster, Totem totem, TimeSpan duration, TimeSpan intervale)
+                : base(TimeSpan.FromSeconds(1.0), intervale)
             {
                 m_Caster = caster;
                 m_Totem = totem;
                 m_End = DateTime.Now + duration;
 
-                Priority = TimerPriority.TwoFiftyMS;
+                Priority = TimerPriority.FiftyMS;
             }
 
             protected override void OnTick()
@@ -95,7 +103,7 @@ namespace Server.Spells
                         Effects.SendLocationParticles(m_Totem, 0x376A, 2, 50, 0);
                         foreach (Mobile m in m_Totem.GetMobilesInRange(5))
                         {
-                            m.Heal((int)(MaxHealed * GetSpellScaling(m_Caster, TotemRegenSpell.Info.skillForCasting)));
+                            m.Heal(m_HealPerTick);
                             m.FixedParticles(0x376A, 2, 50, 9919, 0x527, 0, EffectLayer.Waist);
                         }
                     }
@@ -127,10 +135,8 @@ namespace Server.Spells
 
 			protected override void OnTarget( Mobile from, object o )
 			{
-                if (o is LandTarget)
-                    m_Owner.Target(((LandTarget)o).Location);
-                else
-                    from.SendMessage("Vous devez viser le sol.");
+                if (o is IPoint3D)
+                    m_Owner.Target((IPoint3D)o);
 			}
 
 			protected override void OnTargetFinish( Mobile from )
@@ -147,6 +153,7 @@ namespace Server.Spells
             {
                 Name = "Totem de regeneration";
                 Movable = false;
+                CanBeAltered = false;
                 MoveToWorld(p, m);
                 Visible = true;
             }

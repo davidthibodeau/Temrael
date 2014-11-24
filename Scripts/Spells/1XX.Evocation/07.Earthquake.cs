@@ -80,7 +80,7 @@ namespace Server.Spells
 
                 Caster.PlaySound(0x2F3);
 
-                double damage = Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) / 2;
+                double damage = Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) / 2;
 
 				for ( int i = 0; i < targets.Count; ++i )
 				{

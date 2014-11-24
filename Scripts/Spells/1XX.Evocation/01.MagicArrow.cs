@@ -52,7 +52,7 @@ namespace Server.Spells
                 source.MovingParticles(m, 0x36E4, 5, 0, false, true, 3006, 4006, 0);
                 source.PlaySound(0x1E5);
 
-                Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
+                Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
             }
 
 			FinishSequence();

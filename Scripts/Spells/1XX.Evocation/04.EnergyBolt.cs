@@ -50,7 +50,7 @@ namespace Server.Spells
                 m.FixedParticles(0x36BD, 20, 10, 5044, EffectLayer.Head);
                 m.PlaySound(0x307);
 
-                Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
+                Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
 
 				m.MovingParticles( m, 0x379F, 7, 0, false, true, 3043, 4043, 0x211 );
 				m.PlaySound( 0x20A );

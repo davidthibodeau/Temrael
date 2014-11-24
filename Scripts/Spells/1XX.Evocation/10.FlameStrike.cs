@@ -50,7 +50,7 @@ namespace Server.Spells
 				m.FixedParticles( 0x3709, 10, 30, 5052, EffectLayer.LeftFoot );
 				m.PlaySound( 0x208 );
 
-                Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
+                Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
 			}
 
 			FinishSequence();

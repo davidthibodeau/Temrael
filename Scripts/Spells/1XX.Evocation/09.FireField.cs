@@ -184,7 +184,7 @@ namespace Server.Spells
 
 					m_Caster.DoHarmful( m );
 
-                    double damage = Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) / 2;
+                    double damage = Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) / 2;
 
                     if (m == m_Caster)
                         damage /= 2;

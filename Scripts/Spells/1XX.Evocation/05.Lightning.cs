@@ -51,7 +51,7 @@ namespace Server.Spells
 
                     m.BoltEffect(0);
 
-                    Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.GetDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
+                    Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
                 }
             /*}
             else

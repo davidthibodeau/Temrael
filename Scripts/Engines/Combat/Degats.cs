@@ -37,9 +37,23 @@ namespace Server.Engines.Combat
         const double DPSBASE = 4.5;
         const short NbTotalCercles = 10; // Il y a présentement 10 cercles dans le système de magie.
         const double ScalingCategorie = 0.5;// Bonus qui fait la différence entre un spell de cercle 1, et de cercle 10, pour les dégâts.
+        const double RandVariation = 0.2; // Les valeurs de dégâts peuvent varier de +- 20%.
 
+        public double RandDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
+        {
+            double degats = GetDegatsMagiques(atk, branche, cercle, tempsCast);
 
-        public double GetDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
+            if (Utility.RandomBool()) // +-
+            {
+                return (degats + (degats * Utility.RandomDouble() * RandVariation));
+            }
+            else
+            {
+                return (degats - (degats * Utility.RandomDouble() * RandVariation));
+            }
+        }
+
+        private double GetDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
         {
             return BaseDegatsMagique(tempsCast) * (Spell.GetSpellScaling(atk, branche) + ScalingCat(cercle));
         }

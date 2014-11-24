@@ -3,6 +3,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
@@ -18,7 +19,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Thaumaturgie,
 				Reagent.Garlic,
 				Reagent.Ginseng,
@@ -56,15 +57,7 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-				double toHeal;
-
-				toHeal = Caster.Skills[SkillName.Thaumaturgie].Value * 0.3;
-                toHeal += Caster.Skills[SkillName.ArtMagique].Value * 0.3;
-                toHeal += Utility.Random(1, 10);
-
-                toHeal = SpellHelper.AdjustValue(Caster, toHeal);
-
-				m.Heal( (int)toHeal );
+                m.Heal((int)Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
 
 				m.FixedParticles( 0x376A, 9, 32, 5005, EffectLayer.Waist );
 				m.PlaySound( 0x1F2 );

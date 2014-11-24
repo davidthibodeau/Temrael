@@ -105,40 +105,39 @@ namespace Server.Spells
 		{
             if (CheckSequence())
             {
-                while ((!Check || point == Caster.Location || point == new Point3D(0, 0, 0)) && Count < 30)
+                if (Server.Misc.WeightOverloading.IsOverloaded(Caster))
+                {
+                    Caster.SendLocalizedMessage(502359, "", 0x22); // Thou art too encumbered to move.
+                }
+
+                while ((!Check || point == Caster.Location || point == new Point3D(0, 0, 0)) && Count < 30 || !SpellHelper.CheckTravel( Caster, Caster.Map, point, TravelCheckType.TeleportTo ) || Caster.Map == null || !Caster.Map.CanSpawnMobile( point.X, point.Y, point.Z ) || ( SpellHelper.CheckMulti( new Point3D( point ), Caster.Map ) ) || ! Caster.CanSee(point))
                 {
                     GetLocation();
                 }
 
-                if (!Check)
+                SpellHelper.Turn(Caster, point);
+
+                Mobile m = Caster;
+
+                Point3D to = point;
+
+                Point3D from = m.Location;
+
+                m.Location = to;
+                m.ProcessDelta();
+
+                if (m.Player)
                 {
-                    Caster.SendMessage("Vous ne pouvez pas vous téléporter dans les environs.");
+                    Effects.SendLocationParticles(EffectItem.Create(from, m.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 2023);
+                    Effects.SendLocationParticles(EffectItem.Create(to, m.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 5023);
                 }
                 else
                 {
-                    SpellHelper.Turn(Caster, point);
-
-                    Mobile m = Caster;
-
-                    Point3D to = point;
-
-                    Point3D from = m.Location;
-
-                    m.Location = to;
-                    m.ProcessDelta();
-
-                    if (m.Player)
-                    {
-                        Effects.SendLocationParticles(EffectItem.Create(from, m.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 2023);
-                        Effects.SendLocationParticles(EffectItem.Create(to, m.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 5023);
-                    }
-                    else
-                    {
-                        m.FixedParticles(0x376A, 9, 32, 0x13AF, EffectLayer.Waist);
-                    }
-
-                    m.PlaySound(0x1FE);
+                    m.FixedParticles(0x376A, 9, 32, 0x13AF, EffectLayer.Waist);
                 }
+
+                m.PlaySound(0x1FE);
+
             }
 			FinishSequence();
 		}
