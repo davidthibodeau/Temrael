@@ -180,13 +180,6 @@ namespace Server.Engines.Harvest
             {
                 Point2D p = new Point2D(x, y);
 
-                if (Lumberjacking.erableList.Count > 0)
-                    foreach (DictionaryEntry de in Lumberjacking.erableList)
-                    {
-                        if (((Region)de.Value).Contains(p))
-                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[15], null) };
-                    }
-
                 if (Lumberjacking.cheneList.Count > 0)
                     foreach (DictionaryEntry de in Lumberjacking.cheneList)
                     {
@@ -234,6 +227,13 @@ namespace Server.Engines.Harvest
                     {
                         if (((Region)de.Value).Contains(p))
                             return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[19], null) };
+                    }
+
+                if (Lumberjacking.erableList.Count > 0)
+                    foreach (DictionaryEntry de in Lumberjacking.erableList)
+                    {
+                        if (((Region)de.Value).Contains(p))
+                            return new HarvestVein[] { new HarvestVein(100.0, 0.0, m_Resources[15], null) };
                     }
             }
 
