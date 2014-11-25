@@ -188,6 +188,7 @@
     <Compile Include="Mobiles\Vendeurs\Boulanger.cs" />
     <Compile Include="Mobiles\Vendeurs\Cordonnier.cs" />
     <Compile Include="Mobiles\Vendeurs\Couturier.cs" />
+    <Compile Include="Mobiles\Vendeurs\Eclaireur.cs" />
     <Compile Include="Mobiles\Vendeurs\Forgeron1.cs" />
     <Compile Include="Mobiles\Vendeurs\Forgeron2.cs" />
     <Compile Include="Mobiles\Vendeurs\Fossoyeur.cs" />
@@ -197,10 +198,15 @@
     <Compile Include="Mobiles\Vendeurs\Magicienne.cs" />
     <Compile Include="Mobiles\Vendeurs\Pecheur.cs" />
     <Compile Include="Mobiles\Vendeurs\Pecheur2.cs" />
+    <Compile Include="Mobiles\Vendeurs\Provisionneur.cs" />
+    <Compile Include="Mobiles\Vendeurs\Soigneur.cs" />
     <Compile Include="Mobiles\Vendeurs\Tanneur.cs" />
+    <Compile Include="Mobiles\Vendeurs\Tavernier.cs" />
+    <Compile Include="Mobiles\Vendeurs\Tenancier.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurArcs.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurPetitsFruits.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurSpecial.cs" />
+    <Compile Include="Mobiles\Vendeurs\Voleur.cs" />
     <Compile Include="Regions\Hurlevent.cs" />
     <Compile Include="Regions\ZoneInterne.cs" />
     <Compile Include="Spells\2XX.Immuabilite\05.Etouffement.cs" />

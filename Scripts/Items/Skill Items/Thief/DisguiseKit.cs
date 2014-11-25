@@ -16,6 +16,7 @@ namespace Server.Items
 		[Constructable]
 		public DisguiseKit() : base( 0xE05 )
 		{
+            GoldValue = 17;
 			Weight = 1.0;
 		}
 

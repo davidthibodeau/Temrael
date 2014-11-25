@@ -22,6 +22,7 @@ namespace Server.Items
         public Bandage(int amount)
             : base(0xE21)
         {
+            GoldValue = 3;
             Stackable = true;
             Weight = 0.1;
             Amount = amount;

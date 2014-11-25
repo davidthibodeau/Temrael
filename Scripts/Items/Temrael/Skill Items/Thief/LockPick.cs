@@ -30,6 +30,7 @@ namespace Server.Items
 		[Constructable]
 		public Lockpick( int amount ) : base( 0x14FC )
 		{
+            GoldValue = 5;
 			Stackable = true;
 			Amount = amount;
 		}

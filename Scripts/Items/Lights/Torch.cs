@@ -14,6 +14,8 @@ namespace Server.Items
 		[Constructable]
 		public Torch() : base( 0xF6B )
 		{
+            GoldValue = 6;
+
 			if ( Burnout )
 				Duration = TimeSpan.FromMinutes( 30 );
 			else

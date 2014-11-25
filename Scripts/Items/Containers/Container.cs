@@ -275,6 +275,7 @@ namespace Server.Items
 		[Constructable]
 		public Backpack() : base( 0xE75 )
 		{
+            GoldValue = 15;
 			Layer = Layer.Backpack;
 			Weight = 3.0;
 		}
@@ -330,6 +331,7 @@ namespace Server.Items
 		[Constructable]
 		public Pouch() : base( 0xE79 )
 		{
+            GoldValue = 9;
 			Weight = 1.0;
 		}
 
@@ -445,6 +447,7 @@ namespace Server.Items
 		[Constructable]
 		public Bag() : base( 0xE76 )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
 		}
 
@@ -594,6 +597,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenBox() : base( 0x9AA )
 		{
+            GoldValue = 9;
 			Weight = 4.0;
 		}
 

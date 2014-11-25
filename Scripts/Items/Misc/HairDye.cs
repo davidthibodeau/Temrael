@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public HairDye() : base( 0xEFF )
 		{
+            GoldValue = 30;
             Name = "Teinture a cheveux";
 			Weight = 1.0;
 		}

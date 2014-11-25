@@ -20,7 +20,7 @@ namespace Server.Items
 		[Constructable]
 		public Bolt( int amount ) : base( 0x1BFB )
 		{
-            GoldValue = 1;
+            GoldValue = 2;
 			Stackable = true;
 			Amount = amount;
 		}

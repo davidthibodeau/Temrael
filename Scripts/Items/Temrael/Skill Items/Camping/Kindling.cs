@@ -16,6 +16,7 @@ namespace Server.Items
 		[Constructable]
 		public Kindling( int amount ) : base( 0xDE1 )
 		{
+            GoldValue = 3;
 			Stackable = true;
 			Weight = 1.0;
 			Amount = amount;
