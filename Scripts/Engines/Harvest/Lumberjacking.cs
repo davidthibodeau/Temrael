@@ -141,6 +141,11 @@ namespace Server.Engines.Harvest
 
             Array.Sort(m_TreeTiles);
             cheneList.Add("GreenAcresTest", new Region("GreenAcresTest", Map.Internal, 100, new Rectangle2D(new Point2D(4030, 42), new Point2D(4035, 35))));
+
+
+            erableList.Add("Erable1", new Region("Erable1", Map.Internal, 100, new Rectangle2D(new Point2D(0, 0), new Point2D(4000, 4000))));
+            pinList.Add("Pin1", new Region("Pin1", Map.Internal, 100, new Rectangle2D(new Point2D(2200, 1500), new Point2D(2900, 2300))));
+            cypresList.Add("Cypres1", new Region("Cypres1", Map.Internal, 100, new Rectangle2D(new Point2D(1500, 1950), new Point2D(2300, 2700))));
         }
 
 		#region Tile lists

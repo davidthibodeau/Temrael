@@ -267,7 +267,12 @@ namespace Server.Engines.Combat
         /// <returns>Le délai en millisecondes.</returns>
         public int ProchaineAttaque(Mobile atk)
         {
-            return (int)(Vitesse(atk) * 100);
+            int vitesse = (int)(Vitesse(atk) * 100);
+
+            if (LenteurSpell.m_Table.Contains(atk))
+                LenteurSpell.GetOnHitEffect(atk, ref vitesse);
+
+            return vitesse;
         }
 
         public void ResetAttackAfterCast(Mobile atk)

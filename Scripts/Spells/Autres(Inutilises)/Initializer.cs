@@ -25,6 +25,7 @@ namespace Server.Spells
             Register(ParalyzeFieldSpell.m_SpellID,  typeof(ParalyzeFieldSpell));
             Register(ParalyzeSpell.m_SpellID,       typeof(ParalyzeSpell));
             Register(EtouffementSpell.m_SpellID,    typeof(EtouffementSpell));
+            Register(LenteurSpell.m_SpellID,        typeof(LenteurSpell));
 
             // Alteration
             Register(MindRotSpell.m_SpellID,        typeof(MindRotSpell));

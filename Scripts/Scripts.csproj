@@ -202,6 +202,7 @@
     <Compile Include="Regions\Hurlevent.cs" />
     <Compile Include="Regions\ZoneInterne.cs" />
     <Compile Include="Spells\2XX.Immuabilite\05.Etouffement.cs" />
+    <Compile Include="Spells\2XX.Immuabilite\06.Lenteur.cs" />
     <Compile Include="Spells\6XX.Thaumaturgie\04.TotemRegeneration.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />
     <Compile Include="Items\Weapons\Core\BaseEstoc.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Items\Temrael\Meubles\Statues.cs" />
     <Compile Include="Items\Temrael\Tatoos\TatooDye.cs" />
     <Compile Include="Spells\Scrolls\2XX.Immuabilite\EtouffementScroll.cs" />
+    <Compile Include="Spells\Scrolls\2XX.Immuabilite\LenteurScroll.cs" />
     <Compile Include="Spells\Scrolls\5XX.Transmutation\EvasionScroll.cs" />
     <Compile Include="Spells\TechniquesCombat\Assassinat.cs" />
     <Compile Include="Spells\TechniquesCombat\AttackSpeed.cs" />
