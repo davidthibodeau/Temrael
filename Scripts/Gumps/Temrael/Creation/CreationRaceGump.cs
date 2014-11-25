@@ -76,23 +76,23 @@ namespace Server.Gumps.Creation
                     AddHtml(x + 50, 600, 100, 20, "<h3><basefont color=#025a>Capicéen<basefont></h3>", false, false);
                     Race r = new Capiceen(0);
                     int[] hues = r.HueGumps;
-                    AddButton(x + 40, 615, 181, hues[0]);
-                    AddButton(x + 40 + 29, 615, 182, hues[1]);
-                    AddButton(x + 40 + 48, 615, 183, hues[2]);
+                    AddButton(x + 40, 615, 180, hues[0]);
+                    AddButton(x + 40 + 29, 615, 181, hues[1]);
+                    AddButton(x + 40 + 48, 615, 182, hues[2]);
 
                     AddHtml(x + 242, 600, 100, 20, "<h3><basefont color=#025a>Nomade<basefont></h3>", false, false);
                     r = new Nomade(0);
                     hues = r.HueGumps;
-                    AddButton(x + 230, 615, 381, hues[0]);
-                    AddButton(x + 230 + 29, 615, 382, hues[1]);
-                    AddButton(x + 230 + 48, 615, 383, hues[2]);
+                    AddButton(x + 230, 615, 380, hues[0]);
+                    AddButton(x + 230 + 29, 615, 381, hues[1]);
+                    AddButton(x + 230 + 48, 615, 382, hues[2]);
 
                     AddHtml(x + 430, 600, 100, 20, "<h3><basefont color=#025a>Nordique<basefont></h3>", false, false);
                     r = new Nordique(0);
                     hues = r.HueGumps;
-                    AddButton(x + 421, 615, 281, hues[0]);
-                    AddButton(x + 421 + 29, 615, 282, hues[1]);
-                    AddButton(x + 421 + 48, 615, 283, hues[2]);
+                    AddButton(x + 421, 615, 280, hues[0]);
+                    AddButton(x + 421 + 29, 615, 281, hues[1]);
+                    AddButton(x + 421 + 48, 615, 282, hues[2]);
 
                 }
                 else if (race == ChoixRace.Tieffelin)
@@ -115,23 +115,23 @@ namespace Server.Gumps.Creation
                     AddHtml(x + 50, 600, 100, 20, "<h3><basefont color=#025a>Capicéen<basefont></h3>", false, false);
                     Race r = new Capiceen(0);
                     int[] hues = r.HueGumps;
-                    AddButton(x + 40, 615, 191, hues[0]);
-                    AddButton(x + 40 + 29, 615, 192, hues[1]);
-                    AddButton(x + 40 + 48, 615, 193, hues[2]);
+                    AddButton(x + 40, 615, 190, hues[0]);
+                    AddButton(x + 40 + 29, 615, 191, hues[1]);
+                    AddButton(x + 40 + 48, 615, 192, hues[2]);
 
                     AddHtml(x + 242, 600, 100, 20, "<h3><basefont color=#025a>Nomade<basefont></h3>", false, false);
                     r = new Nomade(0);
                     hues = r.HueGumps;
-                    AddButton(x + 230, 615, 391, hues[0]);
-                    AddButton(x + 230 + 29, 615, 392, hues[1]);
-                    AddButton(x + 230 + 48, 615, 393, hues[2]);
+                    AddButton(x + 230, 615, 390, hues[0]);
+                    AddButton(x + 230 + 29, 615, 391, hues[1]);
+                    AddButton(x + 230 + 48, 615, 392, hues[2]);
 
                     AddHtml(x + 430, 600, 100, 20, "<h3><basefont color=#025a>Nordique<basefont></h3>", false, false);
                     r = new Nordique(0);
                     hues = r.HueGumps;
-                    AddButton(x + 421, 615, 291, hues[0]);
-                    AddButton(x + 421 + 29, 615, 292, hues[1]);
-                    AddButton(x + 421 + 48, 615, 293, hues[2]); 
+                    AddButton(x + 421, 615, 290, hues[0]);
+                    AddButton(x + 421 + 29, 615, 291, hues[1]);
+                    AddButton(x + 421 + 48, 615, 292, hues[2]); 
                 }
                 else
                 {
@@ -146,9 +146,9 @@ namespace Server.Gumps.Creation
                         "<h3><basefont color=#025a>Confirmez votre choix en sélectionnant une couleur de peau:<basefont></h3>", false, false);
 
                     int[] hues = r.HueGumps;
-                    AddButton(x + 430, 602, (int)race * 100 + 1, hues[0]);
-                    AddButton(x + 430 + 29, 602, (int)race * 100 + 2, hues[1]);
-                    AddButton(x + 430 + 48, 602, (int)race * 100 + 3, hues[2]);
+                    AddButton(x + 430, 602, (int)race * 100 + 0, hues[0]);
+                    AddButton(x + 430 + 29, 602, (int)race * 100 + 1, hues[1]);
+                    AddButton(x + 430 + 48, 602, (int)race * 100 + 2, hues[2]);
                 }
             }
         }
