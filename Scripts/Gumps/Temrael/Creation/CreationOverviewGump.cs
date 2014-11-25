@@ -23,32 +23,37 @@ namespace Server.Gumps.Creation
             int line = 2;
             int scale = 25;
 
-            AddBackground(110, 125, 535, 90, 3500);
-            AddHtml(125, 140, 510, 60, "<h3><basefont color=#5A4A31>Vérifiez les informations ci-dessous avant d'accepter. Une fois accepté, plusieurs de celles-ci ne peuvent être changés en jeu. Si vous souhaitez éditer l'une des valeurs, retournez à la page correspondante.<basefont></h3>", true, false);
+            AddBackground(110, 125, 535, 210, 3500);
+            AddHtml(125, 140, 510, 180, "<h3><basefont color=#5A4A31>Veuillez vérifier votre choix de race et vous assurer " 
+                + "que vos vêtements de départ sont tels que désirés. Vous ne pourrez conserver que ce que votre personnage " 
+                + "porte en ce moment, mais pas le contenu de votre sac. Si vous désirez modifier une de ses informations, " 
+                + "retournez à la page correspondante.<br /><br />Si vous avez de l'expérience en banque de transfert, veuillez " 
+                + "vous assurez de l'avoir transféré via la commande .transfert. Il ne vous sera plus possible de faire le transfert " 
+                + "par après.<basefont></h3>", true, false);
             AddButton(470, 645, 52, 52, 8, GumpButtonType.Reply, 0);
             AddHtml(520, 645 + 12, 200, 20, "<h3><basefont color=#025a>Confirmer<basefont></h3>", false, false);
 
-            x = 110;
-            y = 305;
-            AddSection(x, y, 400, 160, "<h3><basefont color=#025a>Informations<basefont></h3>");
-            x = 130;
-            y = 310;
-            AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race: " + from.Race.Name + "<basefont></h3>");
-            line++;
-            //AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Classe: " + from.Creation.classe.ToString() + "<basefont></h3>");
+            //x = 110;
+            //y = 305;
+            //AddSection(x, y, 400, 160, "<h3><basefont color=#025a>Informations<basefont></h3>");
+            //x = 130;
+            //y = 310;
+            //AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race: " + from.Race.Name + "<basefont></h3>");
             //line++;
-            //AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Destination: " + from.Creation.destination.ToString() + "<basefont></h3>");
-            //line++;
-            if (m_from.Race.isAasimaar)
-            {
-                AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: Aasimar<basefont></h3>");
-                line++;
-            }
-            else if (m_from.Race.isTieffelin)
-            {
-                AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: Tieffelin<basefont></h3>");
-                line++;
-            }
+            ////AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Classe: " + from.Creation.classe.ToString() + "<basefont></h3>");
+            ////line++;
+            ////AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Destination: " + from.Creation.destination.ToString() + "<basefont></h3>");
+            ////line++;
+            //if (m_from.Race.isAasimaar)
+            //{
+            //    AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: Aasimar<basefont></h3>");
+            //    line++;
+            //}
+            //else if (m_from.Race.isTieffelin)
+            //{
+            //    AddHtmlTexte(x, y + line * scale, 400, "<h3><basefont color=#5A4A31>Race Secrète: Tieffelin<basefont></h3>");
+            //    line++;
+            //}
         }
         public override void OnResponse(NetState sender, RelayInfo info)
         {
@@ -66,65 +71,20 @@ namespace Server.Gumps.Creation
             switch (info.ButtonID)
             {
                 case 8:
-                    bool complete = true;
-
-                    //if (m_from.Creation.race != Race.Aucun)
-                    //    m_from.Races = m_from.Creation.race;
-                    //else
-                    //    complete = false;
-
-                    //if (m_from.Creation.classe != ClasseType.None)
-                    //    m_from.ClasseType = m_from.Creation.classe;
-
-                    //if (m_from.Creation.destination == CreationCarteGump.DestinationsDepart.Aucune)
-                    //    complete = false;
-
-                    if (complete)
+                    if (from.Race is AucuneRace)
                     {
-
-                        InitializeCreation(m_from);
-                        //switch (m_from.Creation.destination)
-                        //{
-                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Hasteindale:
-                        //        InitializeCreation(m_from);
-                        //        m_from.MoveToWorld(new Point3D(861, 594, 0), Map.Ilshenar);
-                        //        break;
-                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Brandheim:
-                        //        InitializeCreation(m_from);
-                        //        m_from.MoveToWorld(new Point3D(2402, 1005, -80), Map.Felucca);
-                        //        break;
-                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Elamsham:
-                        //        InitializeCreation(m_from);
-                        //        m_from.MoveToWorld(new Point3D(2549, 1333, -81), Map.Felucca);
-                        //        break;
-                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Citarel:
-                        //        InitializeCreation(m_from);
-                        //        m_from.MoveToWorld(new Point3D(3388, 1996, -80), Map.Felucca);
-                        //        break;
-                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Serenite:
-                        //        InitializeCreation(m_from);
-                        //        m_from.MoveToWorld(new Point3D(2628, 2099, -6), Map.Felucca);
-                        //        break;
-                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Melandre:
-                        //        InitializeCreation(m_from);
-                        //        m_from.MoveToWorld(new Point3D(3088, 2809, -52), Map.Felucca);
-                        //        break;
-                        //    case Server.Gumps.CreationCarteGump.DestinationsDepart.Tartarus:
-                        //        InitializeCreation(m_from);
-                        //        m_from.MoveToWorld(new Point3D(1859, 3359, -79), Map.Felucca);
-                        //        break;
-                        //    default: break;
-                        //}
-                        m_from.MoveToWorld(new Point3D(1806, 1338, -80), Map.Felucca);
-                        m_from.SendMessage("Vous avez le droit d'apprendre une seconde langue.");
-                        m_from.SendGump(new GumpLanguage(m_from, true));
+                        from.SendGump(new CreationOverviewGump(from));
+                        from.SendMessage("Vous devez choisir une race");
                     }
                     else
                     {
-                        from.SendGump(new CreationOverviewGump(from));
-                        from.SendMessage("Vous devez complete tout les champs !");
-                    }
+                        InitializeCreation(m_from);
 
+                        m_from.MoveToWorld(new Point3D(1806, 1338, -80), Map.Felucca);
+
+                        m_from.SendMessage("Vous avez le droit d'apprendre une seconde langue.");
+                        m_from.SendGump(new GumpLanguage(m_from, true));
+                    }
                     break;
             }
         }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Misc;
@@ -508,7 +508,7 @@ namespace Server.Mobiles
 
             if (Region is ZoneCreation && AccessLevel == AccessLevel.Player)
             {
-                SendMessage("Vous ne pouvez transférer un objet dans la zone de création.");
+                SendMessage("Vous ne pouvez transfÃ©rer un objet dans la zone de crÃ©ation.");
                 return false;
             }
 
@@ -522,7 +522,7 @@ namespace Server.Mobiles
 
             if (Region is ZoneCreation && AccessLevel == AccessLevel.Player)
             {
-                SendMessage("Vous ne pouvez déposer un objet dans la zone de création.");
+                SendMessage("Vous ne pouvez dÃ©poser un objet dans la zone de crÃ©ation.");
                 return false;
             }
 
@@ -1713,14 +1713,14 @@ namespace Server.Mobiles
                         PlayerMobile from = (PlayerMobile)m;
                         from.SendMessage("Vous poussez le personnage hors de votre chemin.");
                         from.Stam -= 10;
-                        this.SendMessage("Vous etes pousse(e) hors du chemin par " + from.GetNameUseBy(this));
+                        this.SendMessage("Vous Ãªtes poussÃ©(e) hors du chemin par " + from.GetNameUseBy(this));
                         return true;
                     }
                     else
                     {
                         m.SendMessage("Vous poussez le personnage hors de votre chemin.");
                         m.Stam -= 10;
-                        this.SendMessage("Vous etes pousse(e) hors du chemin");
+                        this.SendMessage("Vous Ãªtes poussÃ©(e) hors du chemin");
                         return true;
                     }
                 }
@@ -2013,7 +2013,7 @@ namespace Server.Mobiles
 
                 MortEngine.MortCurrentState = MortState.Assomage;
 
-                //SendMessage("Vous êtes assommé pour une minute.");
+                //SendMessage("Vous Ãªtes assommÃ© pour une minute.");
             }
             else
             {
