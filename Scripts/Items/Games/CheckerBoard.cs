@@ -10,6 +10,7 @@ namespace Server.Items
 		[Constructable]
 		public CheckerBoard() : base( 0xFA6 )
 		{
+            GoldValue = 9;
 		}
 
 		public override void CreatePieces()

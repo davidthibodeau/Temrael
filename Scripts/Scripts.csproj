@@ -181,6 +181,7 @@
     <Compile Include="Mobiles\Vendeurs\Apiculteur.cs" />
     <Compile Include="Mobiles\Vendeurs\Archiviste.cs" />
     <Compile Include="Mobiles\Vendeurs\Artiste.cs" />
+    <Compile Include="Mobiles\Vendeurs\Aubergiste1.cs" />
     <Compile Include="Mobiles\Vendeurs\Banquier.cs" />
     <Compile Include="Mobiles\Vendeurs\Bijoutiere.cs" />
     <Compile Include="Mobiles\Vendeurs\Boucher.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Mobiles\Vendeurs\Luthier.cs" />
     <Compile Include="Mobiles\Vendeurs\Magicienne.cs" />
     <Compile Include="Mobiles\Vendeurs\Pecheur.cs" />
+    <Compile Include="Mobiles\Vendeurs\Pecheur2.cs" />
     <Compile Include="Mobiles\Vendeurs\Tanneur.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurArcs.cs" />
     <Compile Include="Mobiles\Vendeurs\VendeurPetitsFruits.cs" />

@@ -625,7 +625,7 @@ namespace Server.Items
         public Coquillage(int amount)
             : base(0xFC7)
         {
-            GoldValue = 3;
+            GoldValue = 6;
             Name = "Coquillage";
             Amount = amount;
         }

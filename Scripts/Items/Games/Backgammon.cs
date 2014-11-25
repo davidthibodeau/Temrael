@@ -9,6 +9,7 @@ namespace Server.Items
 		[Constructable]
 		public Backgammon() : base( 0xE1C )
 		{
+            GoldValue = 15;
 		}
 
 		public override void CreatePieces()

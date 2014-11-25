@@ -261,6 +261,7 @@ namespace Server.Items
 		[Constructable]
 		public CheeseWheel( int amount ) : base( amount, 0x97E )
 		{
+            GoldValue = 6;
 			this.FillFactor = 3;
 		}
 
@@ -435,6 +436,7 @@ namespace Server.Items
 		[Constructable]
 		public CookedBird( int amount ) : base( amount, 0x9B7 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
 		}
