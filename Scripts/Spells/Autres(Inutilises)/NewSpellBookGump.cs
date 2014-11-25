@@ -78,7 +78,7 @@ namespace Server.Gumps
             new SpellBookEntry( ParalyzeFieldSpell.Info.Circle, ParalyzeFieldSpell.Info.skillForCasting, "Mur Paralysie", ParalyzeFieldSpell.Info.Reagents, 0x8D7, ParalyzeFieldSpell.m_SpellID),
             new SpellBookEntry( ParalyzeSpell.Info.Circle,      ParalyzeSpell.Info.skillForCasting, "Paralysie", ParalyzeSpell.Info.Reagents, 0x8E5, ParalyzeSpell.m_SpellID),
             new SpellBookEntry( EtouffementSpell.Info.Circle,   EtouffementSpell.Info.skillForCasting, "Etouffement", EtouffementSpell.Info.Reagents, 0x8E5, EtouffementSpell.m_SpellID),
-            new SpellBookEntry( LenteurSpell.Info.Circle,       LenteurSpell.Info.skillForCasting, "Lenteur", LenteurSpell.Info.Reagents, 0x8E5, EtouffementSpell.m_SpellID),
+            new SpellBookEntry( LenteurSpell.Info.Circle,       LenteurSpell.Info.skillForCasting, "Lenteur", LenteurSpell.Info.Reagents, 0x8E5, LenteurSpell.m_SpellID),
             //new SpellBookEntry( 7, SkillName.Immuabilite, "Champs de stase", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
             //new SpellBookEntry( 8, SkillName.Immuabilite, "Golem", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
             //new SpellBookEntry( 9, SkillName.Immuabilite, "Pétrification", new Type[] { typeof(BlackPearl), typeof(Ginseng), typeof(SpidersSilk) }, 0x8EE, 6, 47),
