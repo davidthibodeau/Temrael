@@ -755,7 +755,6 @@ namespace Server.Accounting
             else
                 tr = World.FindItem(serial) as Transfert;
 
-            tr.ConvertTagsIntoActualTransferts();
             return tr;
         }
 

@@ -89,6 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accounting\AccountMerging.cs" />
     <Compile Include="Commandes\ConversionXP.cs" />
     <Compile Include="Commandes\Temrael\AddRandom.cs" />
     <Compile Include="Commandes\Temrael\GenerateKey.cs" />

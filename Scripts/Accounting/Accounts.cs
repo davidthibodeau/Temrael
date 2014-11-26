@@ -10,7 +10,7 @@ namespace Server.Accounting
 	{
 		private Dictionary<string, IAccount> m_Accounts = new Dictionary<string, IAccount>();
 
-        private static Accounts m_ServerAccounts;
+        private static Accounts m_ServerAccounts = new Accounts();
 
         public static Accounts ServerAccounts
         {
