@@ -37,7 +37,7 @@ namespace Server.Mobiles
 		public override bool PlayerRangeSensitive { get { return true; } }
 
 		public virtual bool IsActiveVendor { get { return true; } }
-		public virtual bool IsActiveBuyer { get { return IsActiveVendor; } } // response to vendor SELL
+		public virtual bool IsActiveBuyer { get { return false; } } // response to vendor SELL
 		public virtual bool IsActiveSeller { get { return IsActiveVendor; } } // repsonse to vendor BUY
 
 		public virtual bool IsInvulnerable { get { return true; } }
@@ -1033,7 +1033,7 @@ namespace Server.Mobiles
 			if ( !CheckVendorAccess( seller ) )
 			{
 				//Say( 501522 ); // I shall not treat with scum like thee!
-                Say("Je ne peux rien vous achetez.");
+                Say("Je ne peux rien vous acheter.");
 				return false;
 			}
 

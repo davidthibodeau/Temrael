@@ -33,7 +33,7 @@ namespace Server.Engines.Evolution
             if (LastReset.AddDays(7) < now)
             {
                 Console.WriteLine("Le dernier reset de gain d'xp hebdomadaire était le {0}. Un reset est maintenant fait.", LastReset.ToString());
-                ResetEndOfDay();
+                ResetWeek();
             }
 
             new XPTimer().Start();
@@ -41,7 +41,7 @@ namespace Server.Engines.Evolution
 
         private static void ManualXPReset_OnCommand(CommandEventArgs e)
         {
-            ResetEndOfDay();
+            ResetWeek();
         }
 
         private static void XPMode_OnCommand(CommandEventArgs e)
@@ -93,13 +93,13 @@ namespace Server.Engines.Evolution
 
             protected override void OnTick()
             {
-                ResetEndOfDay();
+                ResetWeek();
             }
         }
 
-        public static void ResetEndOfDay()
+        public static void ResetWeek()
         {
-            CommandLogging.WriteLine("Lancement d'un reset de gain d'xp journalier manuel.");
+            CommandLogging.WriteLine("Lancement d'un reset de gain d'xp hebdomadaire manuel.");
             
             foreach (Mobile m in World.Mobiles.Values)
             {
@@ -126,6 +126,8 @@ namespace Server.Engines.Evolution
                     mj.PayerXP();
                 }
             }
+
+            //Reset aussi l'acheteur.
 
             LastReset = DateTime.Now;
         }
