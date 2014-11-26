@@ -59,14 +59,25 @@ namespace Server.Misc
                 }
                 XmlElement hourlies = root["hourlies"];
                 foreach (XmlElement hourly in hourlies.ChildNodes)
-                    stats.ThisHour.Add(Accounts.ServerAccounts.GetAccount(hourly.InnerText), true);
+                {
+                    Account acc = Accounts.ServerAccounts.GetAccount(hourly.InnerText) as Account;
+                    if (acc != null)
+                        stats.ThisHour.Add(acc, true);
+                }
                 XmlElement dailies = root["dailies"];
                 foreach (XmlElement daily in dailies.ChildNodes)
-                    stats.ThisDay.Add(Accounts.ServerAccounts.GetAccount(daily.InnerText), true);
+                {
+                    Account acc = Accounts.ServerAccounts.GetAccount(daily.InnerText) as Account;
+                    if (acc != null)
+                        stats.ThisDay.Add(acc, true);
+                }
                 XmlElement weeklies = root["weeklies"];
                 foreach (XmlElement weekly in weeklies.ChildNodes)
-                    stats.ThisWeek.Add(Accounts.ServerAccounts.GetAccount(weekly.InnerText), true);
-
+                {
+                    Account acc = Accounts.ServerAccounts.GetAccount(weekly.InnerText) as Account;
+                    if (acc != null)
+                        stats.ThisWeek.Add(acc, true);
+                }
                 DateTime read = Utility.GetXMLDateTime(Utility.GetText(root["lasthour"], ""), DateTime.Now);
                 if (read < stats.LastHour)
                     stats.RecordHour();
