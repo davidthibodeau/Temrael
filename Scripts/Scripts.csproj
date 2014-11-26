@@ -124,6 +124,9 @@
     <Compile Include="Gumps\Temrael\Fiche\BaseFicheGump.cs" />
     <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\Gems\BaseGem.cs" />
+    <Compile Include="Items\Gems\BlueDiamond.cs" />
+    <Compile Include="Items\Gems\FireRuby.cs" />
+    <Compile Include="Items\Gems\PerfectEmerald.cs" />
     <Compile Include="Items\GMItems\GMItem.cs" />
     <Compile Include="Items\GMItems\Traps\TrapEffect.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />

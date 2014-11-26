@@ -7,7 +7,7 @@ namespace Server.Items
 	{
         public override int m_Couleur
         {
-            get { return 0; }
+            get { return 2143; }
         }
 
 		public override double DefaultWeight
