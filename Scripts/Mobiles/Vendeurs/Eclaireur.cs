@@ -26,23 +26,39 @@ namespace Server.Mobiles.Vendeurs
             Body = 0x190; //male
 
             SetRace(new Nain(1054));
-            HairItemID = 10204;
-            HairHue = 1149;
-            FacialHairItemID = 10302;
-            FacialHairHue = 1149;
+            Item hair = new Item(10204);
+            hair.Layer = Layer.Hair;
+            hair.Hue = 1149;
+            AddItem(hair);
+            Item facialhair = new Item(10302);
+            facialhair.Layer = Layer.FacialHair;
+            facialhair.Hue = 1149;
+            AddItem(facialhair);
         }
 
         public override void InitOutfit()
         {
-            AddItem(new Bonnet(1881));
-            AddItem(new FullApron(1881));
-            AddItem(new TuniqueBourgeoise(1881));
-            AddItem(new CeintureBourse(0));
-            AddItem(new PantalonsNordique(1130));
-            AddItem(new GoldRing(0));
-            AddItem(new Shoes(1846));
-
-
+            Item i = new Bonnet(1881);
+            i.Layer = Layer.Helm;
+            AddItem(i);
+            i = new FullApron(1881);
+            i.Layer = Layer.OuterTorso;
+            AddItem(i);
+            i = new TuniqueBourgeoise(1881);
+            i.Layer = Layer.MiddleTorso;
+            AddItem(i);
+            i = new CeintureBourse(0);
+            i.Layer = Layer.Waist;
+            AddItem(i);
+            i = new PantalonsNordique(1130);
+            i.Layer = Layer.Pants;
+            AddItem(i);
+            i = new GoldRing(0);
+            i.Layer = Layer.Ring;
+            AddItem(i);
+            i = new Shoes(1846);
+            i.Layer = Layer.Shoes;
+            AddItem(i);
         }
 
         private List<SBInfo> m_SBInfos = new List<SBInfo>();
