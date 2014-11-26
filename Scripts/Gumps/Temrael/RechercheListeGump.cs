@@ -151,7 +151,7 @@ namespace Server.Gumps
             ArrayList list_characters = new ArrayList();
             string result;
 
-            foreach (Account acct in Accounts.GetAccounts())
+            foreach (Account acct in Accounts.ServerAccounts.GetAccounts())
             {
                 for (int i = 0; i < acct.Length; ++i)
                 {
@@ -174,7 +174,7 @@ namespace Server.Gumps
 
         public static ArrayList BuildListAccounts()
         {
-            return new ArrayList((ICollection)Accounts.GetAccounts());
+            return new ArrayList((ICollection)Accounts.ServerAccounts.GetAccounts());
         }
 
         public void Initialize(int page)

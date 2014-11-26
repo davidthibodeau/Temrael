@@ -192,8 +192,8 @@ namespace Server.Engines.MyRunUO
 		{
 			if ( Config.LoadDataInFile )
 			{
-				if ( m_Index == 0 )
-					 m_Collecting.AddRange( Accounts.GetAccounts() );
+                if (m_Index == 0)
+                    m_Collecting.AddRange(Accounts.ServerAccounts.GetAccounts());
 
 				for ( int i = m_Index; i < m_Collecting.Count; ++i )
 				{

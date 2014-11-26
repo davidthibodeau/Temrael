@@ -8,7 +8,7 @@ namespace Server.Misc
 	{
 		public static void Initialize()
 		{
-			if ( Accounts.Count == 0 && !Core.Service )
+			if ( Accounts.ServerAccounts.Count == 0 && !Core.Service )
 			{
 				Console.WriteLine( "This server has no accounts." );
 				Console.Write( "Do you want to create the owner account now? (y/n)" );
@@ -23,7 +23,7 @@ namespace Server.Misc
 					Console.Write( "Password: " );
 					string password = Console.ReadLine();
 
-					Account a = new Account( username, password );
+					Account a = new Account(Accounts.ServerAccounts, username, password );
 					a.AccessLevel = AccessLevel.Owner;
 
 					Console.WriteLine( "Account created." );

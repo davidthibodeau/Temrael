@@ -68,30 +68,30 @@ namespace Server.RemoteAdmin
 
 			ArrayList list = new ArrayList();
 
-			foreach ( Account a in Accounts.GetAccounts() )
-			{
-				switch ( type )
-				{
-					case AcctSearchType.Username:
-					{
-						if ( a.Username.ToUpper().IndexOf( term ) != -1 )
-							list.Add( a );
-						break;
-					}
-					case AcctSearchType.IP:
-					{
-						for( int i=0;i<a.LoginIPs.Length;i++ )
-						{
-							if ( Utility.IPMatch( term, a.LoginIPs[i] ) )
-							{
-								list.Add( a );
-								break;
-							}
-						}
-						break;
-					}
-				}
-			}
+            foreach (Account a in Accounts.ServerAccounts.GetAccounts())
+            {
+                switch (type)
+                {
+                    case AcctSearchType.Username:
+                        {
+                            if (a.Username.ToUpper().IndexOf(term) != -1)
+                                list.Add(a);
+                            break;
+                        }
+                    case AcctSearchType.IP:
+                        {
+                            for (int i = 0; i < a.LoginIPs.Length; i++)
+                            {
+                                if (Utility.IPMatch(term, a.LoginIPs[i]))
+                                {
+                                    list.Add(a);
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                }
+            }
 
 			if ( list.Count > 0 )
 			{
@@ -108,7 +108,7 @@ namespace Server.RemoteAdmin
 
 		private static void RemoveAccount( NetState state, PacketReader pvSrc )
 		{
-			IAccount a = Accounts.GetAccount( pvSrc.ReadString() );
+            IAccount a = Accounts.ServerAccounts.GetAccount(pvSrc.ReadString());
 
 			if ( a == null )
 			{
@@ -130,10 +130,10 @@ namespace Server.RemoteAdmin
 			string username = pvSrc.ReadString();
 			string pass = pvSrc.ReadString();
 
-			Account a = Accounts.GetAccount( username ) as Account;
+            Account a = Accounts.ServerAccounts.GetAccount(username) as Account;
 
 			if ( a == null )
-				a = new Account( username, pass );
+				a = new Account(Accounts.ServerAccounts, username, pass );
 			else if ( pass != "(hidden)" )
 				a.SetPassword( pass );
 

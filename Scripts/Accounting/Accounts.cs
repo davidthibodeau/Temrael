@@ -8,7 +8,14 @@ namespace Server.Accounting
 {
 	public class Accounts
 	{
-		private static Dictionary<string, IAccount> m_Accounts = new Dictionary<string, IAccount>();
+		private Dictionary<string, IAccount> m_Accounts = new Dictionary<string, IAccount>();
+
+        private static Accounts m_ServerAccounts;
+
+        public static Accounts ServerAccounts
+        {
+            get { return m_ServerAccounts; }
+        } 
 
 		public static void Configure()
 		{
@@ -16,13 +23,10 @@ namespace Server.Accounting
 			EventSink.WorldSave += new WorldSaveEventHandler( Save );
 		}
 
-		static Accounts()
-		{
-		}
 
-		public static int Count { get { return m_Accounts.Count; } }
+		public int Count { get { return m_Accounts.Count; } }
 
-		public static ICollection<IAccount> GetAccounts()
+		public ICollection<IAccount> GetAccounts()
 		{
 #if !MONO
 			return m_Accounts.Values;
@@ -31,7 +35,7 @@ namespace Server.Accounting
 #endif
 		}
 
-		public static IAccount GetAccount( string username )
+		public IAccount GetAccount( string username )
 		{
 			IAccount a;
 
@@ -40,22 +44,27 @@ namespace Server.Accounting
 			return a;
 		}
 
-		public static void Add( IAccount a )
+		public void Add( IAccount a )
 		{
 			m_Accounts[a.Username] = a;
 		}
 		
-		public static void Remove( string username )
+		public void Remove( string username )
 		{
 			m_Accounts.Remove( username );
 		}
 
-		public static void Load()
-		{
-			m_Accounts = new Dictionary<string, IAccount>( 32, StringComparer.OrdinalIgnoreCase );
-
+        public static void Load()
+        {
             string path = Directories.AppendPath(Directories.saves, "Accounts");
             string filePath = Path.Combine(path, "accounts.xml");
+
+            ServerAccounts.Load(filePath);
+        }
+
+		public void Load(string filePath)
+		{
+			m_Accounts = new Dictionary<string, IAccount>( 32, StringComparer.OrdinalIgnoreCase );
 
 			if ( !File.Exists( filePath ) )
 				return;
@@ -69,7 +78,7 @@ namespace Server.Accounting
 			{
 				try
 				{
-					Account acct = new Account( account );
+					Account acct = new Account(this, account );
 				}
 				catch
 				{
@@ -78,12 +87,17 @@ namespace Server.Accounting
 			}
 		}
 
-		public static void Save( WorldSaveEventArgs e )
-		{
+        public static void Save(WorldSaveEventArgs e)
+        {
             string path = Directories.AppendPath(Directories.saves, "Accounts");
 
             string filePath = Path.Combine(path, "accounts.xml");
 
+            ServerAccounts.Save(filePath);
+        }
+
+        public void Save(string filePath)
+        {
 			using ( StreamWriter op = new StreamWriter( filePath ) )
 			{
 				XmlTextWriter xml = new XmlTextWriter( op );

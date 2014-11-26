@@ -134,7 +134,7 @@ namespace Server.RemoteAdmin
 			string user = pvSrc.ReadString( 30 );
 			string pw = pvSrc.ReadString( 30 );
 
-			Account a = Accounts.GetAccount( user ) as Account;
+            Account a = Accounts.ServerAccounts.GetAccount(user) as Account;
 			if ( a == null )
 			{
 				state.Send( new Login( LoginResponse.NoUser ) );

@@ -81,7 +81,7 @@ namespace Server.Engines.Chat
 				{
 					// TODO: Optimize this search
 
-					foreach ( Account checkAccount in Accounts.GetAccounts() )
+					foreach ( Account checkAccount in Accounts.ServerAccounts.GetAccounts() )
 					{
 						string existingName = checkAccount.GetTag( "ChatName" );
 

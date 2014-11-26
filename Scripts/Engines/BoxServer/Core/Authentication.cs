@@ -41,7 +41,7 @@ namespace TheBox.BoxServer
 		/// <returns>The Account object</returns>
 		public static Account GetAccount( string username )
 		{
-			return (Account)Server.Accounting.Accounts.GetAccount( username );
+			return (Account)Accounts.ServerAccounts.GetAccount( username );
 		}
 
 		/// <summary>

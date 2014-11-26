@@ -213,7 +213,7 @@ namespace Server.Gumps
 					int banned = 0;
 					int active = 0;
 
-					foreach ( Account acct in Accounts.GetAccounts() )
+					foreach ( Account acct in Accounts.ServerAccounts.GetAccounts() )
 					{
 						if ( acct.Banned )
 							++banned;
@@ -728,7 +728,7 @@ namespace Server.Gumps
                             m_List = new ArrayList(); // new ArrayList( (ICollection)Accounts.GetAccounts() );
                         else
                         {
-                            m_List = new ArrayList((ICollection)Accounts.GetAccounts());
+                            m_List = new ArrayList((ICollection)Accounts.ServerAccounts.GetAccounts());
                             m_List.Sort( AccountComparer.Instance );
                         }
 					}
@@ -1217,7 +1217,7 @@ namespace Server.Gumps
 					{
 						m_List = new ArrayList();
 
-						foreach ( Account acct in Accounts.GetAccounts() )
+						foreach ( Account acct in Accounts.ServerAccounts.GetAccounts() )
 						{
 							IPAddress[] loginList = acct.LoginIPs;
 
@@ -1334,20 +1334,20 @@ namespace Server.Gumps
 			Hashtable table = new Hashtable();
 			ArrayList list;
 
-			foreach ( Account acct in Accounts.GetAccounts() )
-			{
-				IPAddress[] theirAddresses = acct.LoginIPs;
+            foreach (Account acct in Accounts.ServerAccounts.GetAccounts())
+            {
+                IPAddress[] theirAddresses = acct.LoginIPs;
 
-				for ( int i = 0; i < theirAddresses.Length; ++i )
-				{
-					list = (ArrayList)table[theirAddresses[i]];
+                for (int i = 0; i < theirAddresses.Length; ++i)
+                {
+                    list = (ArrayList)table[theirAddresses[i]];
 
-					if ( list == null )
-						table[theirAddresses[i]] = list = new ArrayList();
+                    if (list == null)
+                        table[theirAddresses[i]] = list = new ArrayList();
 
-					list.Add( acct );
-				}
-			}
+                    list.Add(acct);
+                }
+            }
 
 			list = new ArrayList( table );
 
@@ -1392,7 +1392,7 @@ namespace Server.Gumps
 		{
 			ArrayList list = new ArrayList();
 
-			foreach ( Account acct in Accounts.GetAccounts() )
+			foreach ( Account acct in Accounts.ServerAccounts.GetAccounts() )
 			{
 				IPAddress[] theirAddresses = acct.LoginIPs;
 				bool contains = false;
@@ -1412,7 +1412,7 @@ namespace Server.Gumps
 		{
 			ArrayList list = new ArrayList();
 
-			foreach ( Account acct in Accounts.GetAccounts() )
+			foreach ( Account acct in Accounts.ServerAccounts.GetAccounts() )
 			{
 				IPAddress[] theirAddresses = acct.LoginIPs;
 				bool contains = false;
@@ -2017,7 +2017,7 @@ namespace Server.Gumps
 							}
 							else
 							{
-								IAccount account = Accounts.GetAccount( un );
+                                IAccount account = Accounts.ServerAccounts.GetAccount(un);
 
 								if ( account != null )
 								{
@@ -2025,7 +2025,7 @@ namespace Server.Gumps
 								}
 								else
 								{
-									dispAccount = new Account( un, pw );
+                                    dispAccount = new Account(Accounts.ServerAccounts, un, pw);
 									notice = String.Format( "{0} : Account added.", un );
 									CommandLogging.WriteLine( from, "{0} {1} adding new account: {2}", from.AccessLevel, CommandLogging.Format( from ), un );
 								}
@@ -2044,14 +2044,14 @@ namespace Server.Gumps
 
 							if ( match == null || match.Length == 0 )
 							{
-								results = new ArrayList( (ICollection)Accounts.GetAccounts() );
+								results = new ArrayList( (ICollection)Accounts.ServerAccounts.GetAccounts() );
 								results.Sort( AccountComparer.Instance );
 								//notice = "You must enter a username to search.";
 							}
 							else
 							{
 								results = new ArrayList();
-								foreach ( Account check in Accounts.GetAccounts() )
+								foreach ( Account check in Accounts.ServerAccounts.GetAccounts() )
 								{
 									if ( check.Username.ToLower().IndexOf( match ) >= 0 )
 										results.Add( check );
@@ -2338,16 +2338,16 @@ namespace Server.Gumps
 						{
 							ArrayList results = new ArrayList();
 
-							foreach ( Account acct in Accounts.GetAccounts() )
-							{
-								bool empty = true;
+                            foreach (Account acct in Accounts.ServerAccounts.GetAccounts())
+                            {
+                                bool empty = true;
 
-								for ( int i = 0; empty && i < acct.Length; ++i )
-									empty = ( acct[i] == null );
+                                for (int i = 0; empty && i < acct.Length; ++i)
+                                    empty = (acct[i] == null);
 
-								if ( empty )
-									results.Add( acct );
-							}
+                                if (empty)
+                                    results.Add(acct);
+                            }
 
 							if ( results.Count == 1 )
 								from.SendGump( new AdminGump( from, AdminGumpPage.AccountDetails_Information, 0, null, "One match found.", results[0] ) );
@@ -2360,11 +2360,11 @@ namespace Server.Gumps
 						{
 							ArrayList results = new ArrayList();
 
-							foreach ( Account acct in Accounts.GetAccounts() )
-							{
-								if ( acct.Inactive )
-									results.Add( acct );
-							}
+                            foreach (Account acct in Accounts.ServerAccounts.GetAccounts())
+                            {
+                                if (acct.Inactive)
+                                    results.Add(acct);
+                            }
 
 							if ( results.Count == 1 )
 								from.SendGump( new AdminGump( from, AdminGumpPage.AccountDetails_Information, 0, null, "One match found.", results[0] ) );
@@ -2377,12 +2377,12 @@ namespace Server.Gumps
 						{
 							ArrayList results = new ArrayList();
 
-							foreach ( Account acct in Accounts.GetAccounts() )
-							{
-								if ( acct.Banned )
-									results.Add( acct );
-							}
-
+                            foreach (Account acct in Accounts.ServerAccounts.GetAccounts())
+                            {
+                                if (acct.Banned)
+                                    results.Add(acct);
+                            }
+                        
 							if ( results.Count == 1 )
 								from.SendGump( new AdminGump( from, AdminGumpPage.AccountDetails_Information, 0, null, "One match found.", results[0] ) );
 							else

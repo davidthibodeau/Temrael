@@ -21,7 +21,7 @@ namespace Server.Commands
         {
             int count = 0;
             Console.WriteLine("Sauvegarde des xps dans les comptes.");
-            ICollection<IAccount> accounts = Accounts.GetAccounts();
+            ICollection<IAccount> accounts = Accounts.ServerAccounts.GetAccounts();
             using (StreamWriter w = new StreamWriter("convertxp.log"))
             {
                 foreach (Account act in accounts)

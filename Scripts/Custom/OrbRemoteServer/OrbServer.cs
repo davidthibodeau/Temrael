@@ -218,7 +218,7 @@ namespace Server.Engines.OrbRemoteServer
 			LoginCodes code = LoginCodes.Success;
 
 			//Console.WriteLine("OnValidateAccount");
-			IAccount account = Accounts.GetAccount(clientInfo.UserName);
+			IAccount account = Accounts.ServerAccounts.GetAccount(clientInfo.UserName);
 
 			if(account == null || account.CheckPassword(password) == false)
 			{

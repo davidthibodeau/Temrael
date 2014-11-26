@@ -114,7 +114,7 @@ namespace Server.Engines.Reports
 			report.Items.Add( "NPCs", npcs, "N0" );
 			report.Items.Add( "Players", players, "N0" );
 			report.Items.Add( "Clients", NetState.Instances.Count, "N0" );
-			report.Items.Add( "Accounts", Accounts.Count, "N0" );
+			report.Items.Add( "Accounts", Accounts.ServerAccounts.Count, "N0" );
 			report.Items.Add( "Items", World.Items.Count, "N0" );
 
 			return report;

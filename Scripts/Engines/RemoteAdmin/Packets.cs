@@ -65,7 +65,7 @@ namespace Server.RemoteAdmin
 			int banned = 0;
 			int active = 0;
 
-			foreach ( Account acct in Accounts.GetAccounts() )
+			foreach ( Account acct in Accounts.ServerAccounts.GetAccounts() )
 			{
 				if ( acct.Banned )
 					++banned;

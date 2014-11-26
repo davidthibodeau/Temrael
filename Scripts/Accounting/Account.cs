@@ -57,7 +57,7 @@ namespace Server.Accounting
 				m_Mobiles[i] = null;
 			}
 
-			Accounts.Remove( m_Username );
+            Accounts.ServerAccounts.Remove(m_Username);
 		}
 
 		/// <summary>
@@ -506,7 +506,7 @@ namespace Server.Accounting
 				return;
 		}
 
-		public Account( string username, string password )
+		public Account(Accounts acc, string username, string password )
 		{
 			m_Username = username;
 			
@@ -522,12 +522,12 @@ namespace Server.Accounting
 			m_IPRestrictions = new string[0];
 			m_LoginIPs = new IPAddress[0];
 
-			Accounts.Add( this );
+			acc.Add( this );
 
             m_Transfert = new Transfert(username);
 		}
 
-		public Account( XmlElement node )
+		public Account(Accounts accounts, XmlElement node )
 		{
 			m_Username = Utility.GetText( node["username"], "empty" );
 
@@ -624,7 +624,7 @@ namespace Server.Accounting
 			}
 			m_TotalGameTime = totalGameTime;
 
-			Accounts.Add( this );
+			accounts.Add( this );
             
             m_Transfert = LoadTransfert(node);
 		}

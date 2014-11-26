@@ -252,7 +252,7 @@ namespace Server.Misc
 				if ( CountAccounts )
 				{
 					// count accounts
-					foreach ( Account acc in Accounts.GetAccounts() )
+					foreach ( Account acc in Accounts.ServerAccounts.GetAccounts() )
 					{
 						for ( int i = 0; i < acc.Length; i++ )
 						{

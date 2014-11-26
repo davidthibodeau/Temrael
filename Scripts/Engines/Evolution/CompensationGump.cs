@@ -193,7 +193,7 @@ namespace Server.Engines.Evolution
 
             public void Init()
             {
-                m_AccountJoueur = (Account) Accounts.GetAccount(accountname);
+                m_AccountJoueur = (Account) Accounts.ServerAccounts.GetAccount(accountname);
             }
 
             public void Save(XmlTextWriter xml)
@@ -427,7 +427,7 @@ namespace Server.Engines.Evolution
             
             public override void OnResponse(Mobile from, string text)
             {
-                Account acc = Accounts.GetAccount(text) as Account;
+                Account acc = Accounts.ServerAccounts.GetAccount(text) as Account;
                 if (acc == null)
                 {
                     from.SendMessage("Cet account n'existe pas. Veuillez réessayer.");

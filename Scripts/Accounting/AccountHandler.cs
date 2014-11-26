@@ -237,7 +237,7 @@ namespace Server.Misc
 				{
 					m_IPTable = new Dictionary<IPAddress, Int32>();
 
-					foreach ( Account a in Accounts.GetAccounts() )
+					foreach ( Account a in Accounts.ServerAccounts.GetAccounts() )
 						if ( a.LoginIPs.Length > 0 )
 						{
 							IPAddress ip = a.LoginIPs[0];
@@ -277,7 +277,7 @@ namespace Server.Misc
 
 			Console.WriteLine( "Login: {0}: Creating new account '{1}'", state, un );
 
-			Account a = new Account( un, pw );
+            Account a = new Account(Accounts.ServerAccounts, un, pw);
 
 			return a;
 		}
@@ -301,7 +301,7 @@ namespace Server.Misc
 			string pw = e.Password;
 
 			e.Accepted = false;
-			Account acct = Accounts.GetAccount( un ) as Account;
+            Account acct = Accounts.ServerAccounts.GetAccount(un) as Account;
 
 			if ( acct == null )
 			{
@@ -364,7 +364,7 @@ namespace Server.Misc
 			string un = e.Username;
 			string pw = e.Password;
 
-			Account acct = Accounts.GetAccount( un ) as Account;
+            Account acct = Accounts.ServerAccounts.GetAccount(un) as Account;
 
 			if ( acct == null )
 			{
