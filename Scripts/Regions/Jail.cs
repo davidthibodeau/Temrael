@@ -5,7 +5,7 @@ using Server.Spells;
 
 namespace Server.Regions
 {
-	public class Jail : BaseRegion
+	public class Jail : ZoneInterne
 	{
 		public Jail( XmlElement xml, Map map, Region parent ) : base( xml, map, parent )
 		{

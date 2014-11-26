@@ -134,7 +134,7 @@ namespace Server.Engines.Evolution
         {
             if (pm == null)
                 return;
-            if (pm.Region is Jail) // Pas d'xp quand le joueur est en jail.
+            if (pm.Region is ZoneInterne) // Pas d'xp quand le joueur est en jail.
                 return;
 
             int XPgain = (int)(ExpGain * XPparCount(GetNextTick(pm.Experience)));
