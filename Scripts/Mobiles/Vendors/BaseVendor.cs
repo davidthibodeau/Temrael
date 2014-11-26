@@ -50,7 +50,11 @@ namespace Server.Mobiles
             Race = race;
             Hue = race.Hue;
             if (race.Skin != null)
-                AddItem((RaceSkin)Activator.CreateInstance(race.Skin));
+            {
+                RaceSkin skin = (RaceSkin)Activator.CreateInstance(race.Skin);
+                skin.Hue = race.Hue;
+                AddItem(skin);
+            }
         }
 
 		public virtual bool IsValidBulkOrder( Item item )
