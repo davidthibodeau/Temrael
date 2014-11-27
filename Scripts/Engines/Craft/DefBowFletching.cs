@@ -163,14 +163,14 @@ namespace Server.Engines.Craft
 
             // Add every material you want the player to be able to choose from
             // This will override the overridable material	TODO: Verify the required skill amount
-            AddSubRes(typeof(Log), "Érable", Log.SkillReq, 1072652);
-            AddSubRes(typeof(PinLog), "Pin", PinLog.SkillReq, 1072652);
-            AddSubRes(typeof(CypresLog), "Cyprès", CypresLog.SkillReq, 1072652);
-            AddSubRes(typeof(CedreLog), "Cèdre", CedreLog.SkillReq, 1072652);
-            AddSubRes(typeof(SauleLog), "Saule", SauleLog.SkillReq, 1072652);
-            AddSubRes(typeof(CheneLog), "Chêne", CheneLog.SkillReq, 1072652);
-            AddSubRes(typeof(EbeneLog), "Ébène", EbeneLog.SkillReq, 1072652);
-            AddSubRes(typeof(AcajouLog), "Acajou", AcajouLog.SkillReq, 1072652);
+            AddSubRes(typeof(Log), "Érable", CraftResources.GetSkill( CraftResource.RegularWood ), 1072652);
+            AddSubRes(typeof(PinLog), "Pin", CraftResources.GetSkill( CraftResource.PinWood ), 1072652);
+            AddSubRes(typeof(CypresLog), "Cyprès", CraftResources.GetSkill( CraftResource.CypresWood ), 1072652);
+            AddSubRes(typeof(CedreLog), "Cèdre", CraftResources.GetSkill( CraftResource.CedreWood ), 1072652);
+            AddSubRes(typeof(SauleLog), "Saule", CraftResources.GetSkill( CraftResource.SauleWood ), 1072652);
+            AddSubRes(typeof(CheneLog), "Chêne", CraftResources.GetSkill( CraftResource.CheneWood ), 1072652);
+            AddSubRes(typeof(EbeneLog), "Ébène", CraftResources.GetSkill( CraftResource.EbeneWood ), 1072652);
+            AddSubRes(typeof(AcajouLog), "Acajou", CraftResources.GetSkill( CraftResource.AcajouWood ), 1072652);
 
             MarkOption = true;
 			Repair = Core.AOS;

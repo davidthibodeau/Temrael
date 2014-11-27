@@ -506,21 +506,21 @@ namespace Server.Engines.Craft
 
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material
-            AddSubRes(typeof(Leather), "Cuir", Leather.SkillReq, 1049311);
-            AddSubRes(typeof(ReptilienLeather), "Cuir Reptilien", ReptilienLeather.SkillReq, 1049311);
-            AddSubRes(typeof(NordiqueLeather), "Cuir Nordique", NordiqueLeather.SkillReq, 1049311);
-            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", DesertiqueLeather.SkillReq, 1049311);
-            AddSubRes(typeof(MaritimeLeather), "Cuir Maritime", MaritimeLeather.SkillReq, 1049311);
-            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", VolcaniqueLeather.SkillReq, 1049311);
-            AddSubRes(typeof(GeantLeather), "Cuir Géant", GeantLeather.SkillReq, 1049311);
-            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", MinotaureLeather.SkillReq, 1049311);
-            AddSubRes(typeof(OphidienLeather), "Cuir Ophidien", OphidienLeather.SkillReq, 1049311);
-            AddSubRes(typeof(ArachnideLeather), "Cuir Arachnide", ArachnideLeather.SkillReq, 1049311);
-            AddSubRes(typeof(MagiqueLeather), "Cuir Magique", MagiqueLeather.SkillReq, 1049311);
-            AddSubRes(typeof(AncienLeather), "Cuir Ancien", AncienLeather.SkillReq, 1049311);
-            AddSubRes(typeof(DemoniaqueLeather), "Cuir Demoniaque", DemoniaqueLeather.SkillReq, 1049311);
-            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", DragoniqueLeather.SkillReq, 1049311);
-            AddSubRes(typeof(LupusLeather), "Cuir Lupus", LupusLeather.SkillReq, 1049311);
+            AddSubRes(typeof(Leather), "Cuir", CraftResources.GetSkill(CraftResource.RegularLeather), 1049311);
+            AddSubRes(typeof(ReptilienLeather), "Cuir Reptilien", CraftResources.GetSkill(CraftResource.ReptilienLeather), 1049311);
+            AddSubRes(typeof(NordiqueLeather), "Cuir Nordique", CraftResources.GetSkill(CraftResource.NordiqueLeather), 1049311);
+            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", CraftResources.GetSkill(CraftResource.DesertiqueLeather), 1049311);
+            AddSubRes(typeof(MaritimeLeather), "Cuir Maritime", CraftResources.GetSkill(CraftResource.MaritimeLeather), 1049311);
+            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", CraftResources.GetSkill(CraftResource.VolcaniqueLeather), 1049311);
+            AddSubRes(typeof(GeantLeather), "Cuir Géant", CraftResources.GetSkill(CraftResource.GeantLeather), 1049311);
+            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", CraftResources.GetSkill(CraftResource.MinotaurLeather), 1049311);
+            AddSubRes(typeof(OphidienLeather), "Cuir Ophidien", CraftResources.GetSkill(CraftResource.OphidienLeather), 1049311);
+            AddSubRes(typeof(ArachnideLeather), "Cuir Arachnide", CraftResources.GetSkill(CraftResource.ArachnideLeather), 1049311);
+            AddSubRes(typeof(MagiqueLeather), "Cuir Magique", CraftResources.GetSkill(CraftResource.MagiqueLeather), 1049311);
+            AddSubRes(typeof(AncienLeather), "Cuir Ancien", CraftResources.GetSkill(CraftResource.AncienLeather), 1049311);
+            AddSubRes(typeof(DemoniaqueLeather), "Cuir Demoniaque", CraftResources.GetSkill(CraftResource.DemoniaqueLeather), 1049311);
+            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", CraftResources.GetSkill(CraftResource.DragoniqueLeather), 1049311);
+            AddSubRes(typeof(LupusLeather), "Cuir Lupus", CraftResources.GetSkill(CraftResource.LupusLeather), 1049311);
 
 			MarkOption = true;
 			Repair = Core.AOS;
