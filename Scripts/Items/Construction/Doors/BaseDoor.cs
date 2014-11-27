@@ -6,33 +6,10 @@ using Server.Targeting;
 
 namespace Server.Items
 {
-	public abstract class BaseDoor : Item, ILockable, ITelekinesisable, IActivable, ITrapable
+	public abstract class BaseDoor : Item, ILockable, ITelekinesisable
     {
-        #region Itrapable
-        private bool m_Trapped = false;
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool Trap_IsTrapped { get { return m_Trapped; } set { m_Trapped = value; } }
-
-        private double m_DisarmDifficulty = 0.0;
-        [CommandProperty(AccessLevel.Batisseur)]
-        public double Trap_DisarmDifficulty { get { return m_DisarmDifficulty; } set { m_DisarmDifficulty = value; } }
-
-        private Item m_ActivateItem;
-        [CommandProperty(AccessLevel.Batisseur)]
-        public Item Trap_ActivateItem { get { return m_ActivateItem; } set { m_ActivateItem = value; } }
-
-        public void Trap_OnActivate(int mode, Mobile from)
-        {
-            if (m_ActivateItem is IActivable && m_Trapped)
-            {
-                m_Trapped = false;
-                ((IActivable)m_ActivateItem).OnActivate(mode, from);
-            }
-        }
-        #endregion
-
-        #region IEffectControllerActivable
-        public void OnActivate(int mode, Mobile from)
+        #region IActivable
+        public override void IActivableOnActivate(int mode, Mobile from)
         {
             // Mode 1 - Open
             // Mode 2 - Close
@@ -591,7 +568,7 @@ namespace Server.Items
 
 		public virtual void OnOpened( Mobile from )
 		{
-            Trap_OnActivate(0, from);
+            Trap_OnActivate(from);
 		}
 
 		public virtual void OnClosed( Mobile from )
@@ -628,11 +605,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
-
-            writer.Write(m_Trapped);
-            writer.Write(m_DisarmDifficulty);
-            writer.Write(m_ActivateItem);
+			writer.Write( (int) 3 ); // version
 
             writer.Write( m_KeyValue );
 
@@ -653,17 +626,11 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            if(version >= 2)
+            if(version <= 2)
             {
-                m_Trapped = reader.ReadBool();
-                m_DisarmDifficulty = reader.ReadDouble();
-                m_ActivateItem = reader.ReadItem();
-            }
-            else
-            {
-                m_Trapped = false;
-                m_DisarmDifficulty = 0;
-                m_ActivateItem = null;
+                reader.ReadBool();
+                reader.ReadDouble();
+                reader.ReadItem();
             }
 
 			m_KeyValue = reader.ReadLong();

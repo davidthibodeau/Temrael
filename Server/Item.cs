@@ -560,8 +560,57 @@ namespace Server
 		Spawner		= 0x100
 	}
 
-	public class Item : IEntity, IHued, IComparable<Item>, ISerializable, ISpawnable
+	public class Item : IEntity, IHued, IComparable<Item>, ISerializable, ISpawnable, ITrapable, IActivable
     {
+        #region Itrapable
+        private bool m_TrapTrapped = false;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool Trap_IsTrapped { get { return m_TrapTrapped; } set { m_TrapTrapped = value; } }
+
+        private double m_TrapDisarmDifficulty = 0.0;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double Trap_DisarmDifficulty { get { return m_TrapDisarmDifficulty; } set { m_TrapDisarmDifficulty = value; } }
+
+        private DateTime m_TrapLastEffect;
+        private TimeSpan m_TrapCooldown;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public TimeSpan Trap_Cooldown { get { return m_TrapCooldown; } set { m_TrapCooldown = value; } }
+
+        private Item m_TrapActivateItem;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Item Trap_ActivateItem { get { return m_TrapActivateItem; } set { m_TrapActivateItem = value; } }
+
+        private int m_TrapActivateMode;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int Trap_ActivateMode { get { return m_TrapActivateMode; } set { m_TrapActivateMode = value; } }
+
+
+        public void Trap_OnActivate(Mobile from)
+        {
+            if (m_TrapActivateItem is IActivable && m_TrapTrapped && m_TrapActivateItem != null && m_TrapLastEffect.Add(m_TrapCooldown) < DateTime.Now)
+            {
+                m_TrapLastEffect = DateTime.Now;
+                m_TrapTrapped = false;
+
+                new TrapResetTimer(m_TrapCooldown, this);
+
+                ((IActivable)m_TrapActivateItem).OnActivate(m_TrapActivateMode, from);
+            }
+        }
+        #endregion
+
+        #region IActivable
+        public void OnActivate(int mode, Mobile from)
+        {
+            IActivableOnActivate(mode, from);
+        }
+
+        public virtual void IActivableOnActivate(int mode, Mobile from)
+        {
+        }
+        #endregion
+
+
         #region Alteration By Players
         private bool m_canBeAltered = true;
         private DateTime m_lastAlteration;
@@ -2150,7 +2199,14 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-            writer.Write(1); // version
+            writer.Write(2); // version
+
+            writer.Write(m_TrapTrapped);
+            writer.Write(m_TrapDisarmDifficulty);
+            writer.Write(m_TrapLastEffect);
+            writer.Write(m_TrapCooldown);
+            writer.Write(m_TrapActivateItem);
+            writer.Write(m_TrapActivateMode);
 
             writer.Write(m_CreationFrame);
             writer.Write(m_canBeAltered);
@@ -2467,6 +2523,25 @@ namespace Server
         public virtual void Deserialize(GenericReader reader)
         {
             int version = reader.ReadInt();
+
+            if (version > 1)
+            {
+                m_TrapTrapped = reader.ReadBool();
+                m_TrapDisarmDifficulty = reader.ReadDouble();
+                m_TrapLastEffect = reader.ReadDateTime();
+                m_TrapCooldown = reader.ReadTimeSpan();
+                m_TrapActivateItem = reader.ReadItem();
+                m_TrapActivateMode = reader.ReadInt();
+            }
+            else
+            {
+                m_TrapTrapped = false;
+                m_TrapDisarmDifficulty = 0;
+                m_TrapLastEffect = DateTime.Now;
+                m_TrapCooldown = TimeSpan.Zero;
+                m_TrapActivateItem = null;
+                m_TrapActivateMode = 0;
+            }
 
             SetLastMoved();
 

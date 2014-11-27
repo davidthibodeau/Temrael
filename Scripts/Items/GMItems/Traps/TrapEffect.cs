@@ -6,8 +6,8 @@ namespace Server.Items
 {
     public class TrapEffect : Item, IActivable
     {
-        #region IEffectControllerActivable
-        public void OnActivate(int mode, Mobile from)
+        #region IActivable
+        public override void IActivableOnActivate(int mode, Mobile from)
         {
             DoEffect(from);
         }

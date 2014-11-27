@@ -2827,8 +2827,6 @@ namespace Server
 				{
 					m_Pushing = true;
 
-					int number;
-
 					if( this.AccessLevel > AccessLevel.Player && !shoved.Hidden )
 					{
                         SendLocalizedMessage(1019040);

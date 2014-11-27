@@ -20,16 +20,16 @@ namespace Server.Items
 		InRange
 	}
 
-	public class EffectController : Item, IActivable
-	{
-        #region IEffectControllerActivable
-        public void OnActivate(int mode, Mobile from)
+	public class EffectController : Item
+    {
+        #region IActivable
+        public override void IActivableOnActivate(int mode, Mobile from)
         {
             DoEffect(from);
         }
         #endregion
 
-        #region IActivable.
+        #region Activate un IActivable.
         private int m_ActivateMode;
         private Item m_ActivateItem;
 
@@ -215,7 +215,6 @@ namespace Server.Items
               && Utility.InRange(GetWorldLocation(), m.Location, m_TriggerRange)
               && !Utility.InRange(GetWorldLocation(), oldLocation, m_TriggerRange))
             {
-                m_LastEffect = DateTime.Now;
                 DoEffect(m);
             }
 		}
@@ -226,6 +225,8 @@ namespace Server.Items
             if (DateTime.Now < m_LastEffect.Add(m_Cooldown))
                 return;
 
+            m_LastEffect = DateTime.Now;
+
             if (Deleted || m_TriggerType == EffectTriggerType.None)
                 return;
 
@@ -234,6 +235,9 @@ namespace Server.Items
 
             if (ActivateItem != null && trigger is Mobile && ActivateItem is IActivable)
                 ((IActivable)ActivateItem).OnActivate(m_ActivateMode, (Mobile)trigger);
+
+            if (Trap_ActivateItem != null && trigger is Mobile && Trap_ActivateItem is IActivable)
+                Trap_OnActivate((Mobile)trigger);
 
             if (m_SoundID > 0)
                 Timer.DelayCall(m_SoundDelay, new TimerStateCallback(PlaySound), trigger);
