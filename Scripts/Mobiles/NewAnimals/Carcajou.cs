@@ -45,7 +45,7 @@ namespace Server.Mobiles.Animals
 
         }
 
-        public override int Hide { get { return 5; } }
+        public override int Hides { get { return 5; } }
         public override HideType HideType { get { return HideType.Nordique; } }
 
         public Carcajou(Serial serial)
@@ -55,11 +55,6 @@ namespace Server.Mobiles.Animals
 
         public override int Meat { get { return 2; } }
         public override MeatType MeatType { get { return MeatType.Ribs; } }
-
-        public Carcajou(Serial serial)
-            : base(serial)
-        {
-        }
 
         public override void Serialize(GenericWriter writer)
         {

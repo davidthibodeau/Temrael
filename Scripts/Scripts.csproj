@@ -137,6 +137,8 @@
     <Compile Include="Engines\Races\Race.cs" />
     <Compile Include="Items\Temrael\Meubles\BiblioRemplieGrise.cs" />
     <Compile Include="Misc\Notoriety.cs" />
+    <Compile Include="Mobiles\NewAnimals\Araignee.cs" />
+    <Compile Include="Mobiles\NewAnimals\Carcajou.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinArcher.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinCavalier.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinChampion.cs" />
@@ -153,6 +155,8 @@
     <Compile Include="Mobiles\Monsters\Ssins\SsinsGuerrier.cs" />
     <Compile Include="Mobiles\Monsters\Ssins\SsinsSorcier.cs" />
     <Compile Include="Mobiles\Monsters\TestMonstre.cs" />
+    <Compile Include="Mobiles\NewAnimals\Chevre.cs" />
+    <Compile Include="Mobiles\NewAnimals\Gorille.cs" />
     <Compile Include="Mobiles\NewAnimals\Loups\LoupBlanc.cs" />
     <Compile Include="Mobiles\NewAnimals\Loups\LoupBrun.cs" />
     <Compile Include="Mobiles\NewAnimals\Loups\LoupGris.cs" />
@@ -180,7 +184,9 @@
     <Compile Include="Mobiles\NewAnimals\Ours\OursBlanc.cs" />
     <Compile Include="Mobiles\NewAnimals\Ours\OursGrizzly.cs" />
     <Compile Include="Mobiles\NewAnimals\Ours\OursNoir.cs" />
+    <Compile Include="Mobiles\NewAnimals\Panther.cs" />
     <Compile Include="Mobiles\NewAnimals\SerpentGeant.cs" />
+    <Compile Include="Mobiles\NewAnimals\Taureau.cs" />
     <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Mobiles\Vendeurs\Apiculteur.cs" />
     <Compile Include="Mobiles\Vendeurs\Archiviste.cs" />
@@ -1150,7 +1156,6 @@
     <Compile Include="Mobiles\Animals\Misc\Gazelle.cs" />
     <Compile Include="Mobiles\Animals\Critters\Fox.cs" />
     <Compile Include="Mobiles\Animals\Critters\Furret.cs" />
-    <Compile Include="Mobiles\Animals\Felines\Panther.cs" />
     <Compile Include="Mobiles\Animals\Misc\BullFrog.cs" />
     <Compile Include="Mobiles\Animals\Misc\Dolphin.cs" />
     <Compile Include="Mobiles\Animals\Misc\GiantToad.cs" />

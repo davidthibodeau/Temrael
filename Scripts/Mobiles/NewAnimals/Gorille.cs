@@ -39,7 +39,7 @@ namespace Server.Mobiles.NewAnimals
 
         }
 
-        public override int Hide { get { return 3; } }
+        public override int Hides { get { return 3; } }
         public override HideType HideType { get { return HideType.Regular; } }
 
         public Gorille(Serial serial)
@@ -49,11 +49,6 @@ namespace Server.Mobiles.NewAnimals
 
         public override int Meat { get { return 2; } }
         public override MeatType MeatType { get { return MeatType.Ribs; } }
-
-        public Gorille(Serial serial)
-            : base(serial)
-        {
-        }
 
         public override void Serialize(GenericWriter writer)
         {

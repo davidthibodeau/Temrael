@@ -111,7 +111,7 @@ namespace Server.Spells
 			new SummonAnimauxEntry( 0x20D5, 20.0, typeof(GreyWolf), 4, 5 ),
             new SummonAnimauxEntry( 0x2131, 45.0, typeof(Alligator), 0, -15 ),
 			new SummonAnimauxEntry( 0x211C, 55.0, typeof(WhiteWolf), 7, 0 ),
-			new SummonAnimauxEntry( 0x2102, 65.0, typeof(Panther), 0, 0 ),
+			new SummonAnimauxEntry( 0x2102, 65.0, typeof(Panthere), 0, 0 ),
 			new SummonAnimauxEntry( 0x25BF, 75.0, typeof(GiantSerpent), 7, -6 )
 		};
 

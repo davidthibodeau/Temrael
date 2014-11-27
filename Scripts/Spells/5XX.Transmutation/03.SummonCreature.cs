@@ -121,7 +121,7 @@ namespace Server.Spells
 			new SummonCreatureEntry( 0x2103, 55.0, typeof(Cow), 0, 0 ),
 			new SummonCreatureEntry( 0x2118, 60.0, typeof(BlackBear), 7, -6 ),
 			new SummonCreatureEntry( 0x20DA, 70.0, typeof(Alligator), 0, 0 ),
-			new SummonCreatureEntry( 0x2119, 80.0, typeof(Panther), 1, 6 ),
+			new SummonCreatureEntry( 0x2119, 80.0, typeof(Panthere), 1, 6 ),
             //new SummonCreatureEntry( 0x20FC, 85.0, typeof(GiantSerpent), 3, -15 ),
             //new SummonCreatureEntry( 0x20DC, 90.0, typeof(Harpy), -52, -23 ),
             //new SummonCreatureEntry( 0x20E0, 92.0, typeof(Orc), 6, -5 ),

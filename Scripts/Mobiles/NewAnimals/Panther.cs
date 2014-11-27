@@ -40,7 +40,7 @@ namespace Server.Mobiles
 
         }
 
-        public override int Hide { get { return 2; } }
+        public override int Hides { get { return 2; } }
         public override HideType HideType { get { return HideType.Regular; } }
 
         public override int Meat { get { return 2; } }
