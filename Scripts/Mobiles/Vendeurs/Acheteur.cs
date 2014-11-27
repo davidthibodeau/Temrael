@@ -12,6 +12,7 @@ namespace Server.Mobiles.Vendeurs
     {
         private static Dictionary<Mobile, int> ventesAlloues = new Dictionary<Mobile, int>();
         private static readonly string SavePath = Path.Combine(Directories.AppendPath(Directories.saves, "Misc"), "ventes.xml");
+        public const int allocationHebdo = 500;
 
         public static void Configure()
         {
@@ -71,7 +72,7 @@ namespace Server.Mobiles.Vendeurs
             }
         }
 
-        private static bool TesterDepense(Mobile m, int x)
+        public static bool TesterDepense(Mobile m, int x)
         {
             try
             {
@@ -82,30 +83,30 @@ namespace Server.Mobiles.Vendeurs
             return true;
         }
 
-        private static int AjouterMontant(Mobile m, int x)
+        public static int AjouterMontant(Mobile m, int x)
         {
             try
             {
                 int y = ventesAlloues[m] + x;
                 ventesAlloues[m] = y;
-                return y;
+                return allocationHebdo - y;
             }
             catch 
             {
                 ventesAlloues.Add(m, x);
-                return x;
+                return allocationHebdo - x;
             }
         }
 
-        private static int VerifierDepense(Mobile m)
+        public static int VerifierDepense(Mobile m)
         {
             try
             {
-                return ventesAlloues[m];
+                return allocationHebdo - ventesAlloues[m];
             }
             catch
             {
-                return 0;
+                return allocationHebdo;
             }
         }
 
@@ -146,6 +147,8 @@ namespace Server.Mobiles.Vendeurs
         private List<SBInfo> m_SBInfos = new List<SBInfo>();
         protected override List<SBInfo> SBInfos { get { return m_SBInfos; } }
 
+        public override bool IsActiveBuyer { get { return true; } }
+
         public override void InitSBInfo()
         {
             m_SBInfos.Add(new SBAcheteur());
@@ -183,6 +186,7 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalBuyInfo()
             {
+                Add(new GenericBuyInfo(typeof(Ham), 20, 0x9C9, 0));
             }
         }
 
@@ -190,7 +194,33 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalSellInfo()
             {
-                Add( typeof( Tongs ), 1 ); 
+                Add(typeof(FerIngot));
+                Add(typeof(CuivreIngot));
+                Add(typeof(BronzeIngot));
+                Add(typeof(AcierIngot));
+                Add(typeof(ArgentIngot));
+
+                Add(typeof(Leather));
+                Add(typeof(LupusLeather));
+                Add(typeof(NordiqueLeather));
+                Add(typeof(ReptilienLeather));
+                Add(typeof(DesertiqueLeather));
+
+                Add(typeof(Bone));
+                Add(typeof(GobelinBone));
+                Add(typeof(NordiqueBone));
+                Add(typeof(ReptilienBone));
+                Add(typeof(DesertiqueBone));
+
+                Add(typeof(Coquillage));
+                Add(typeof(Amber));
+                Add(typeof(Citrine));
+                Add(typeof(Tourmaline));
+                Add(typeof(Amethyst));
+
+                Add(typeof(Board));
+                Add(typeof(PinBoard));
+                Add(typeof(CypresBoard));
             }
         }
     }

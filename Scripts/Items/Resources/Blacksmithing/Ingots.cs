@@ -171,8 +171,6 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 		}
-
-		
 	}
 
 	[FlipableAttribute( 0x1BF2, 0x1BEF )]

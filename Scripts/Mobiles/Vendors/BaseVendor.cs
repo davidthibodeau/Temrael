@@ -10,6 +10,7 @@ using Server.Engines.BulkOrders;
 using Server.Regions;
 
 using Server.Engines.Races;
+using Server.Mobiles.Vendeurs;
 
 namespace Server.Mobiles
 {
@@ -1075,6 +1076,31 @@ namespace Server.Mobiles
 				return true;
 			}
 
+            foreach (SellItemResponse resp in list)
+            {
+                if (resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || (resp.Item is Container && ((Container)resp.Item).Items.Count != 0))
+                    continue;
+
+                foreach (IShopSellInfo ssi in info)
+                {
+                    if (ssi.IsSellable(resp.Item))
+                    {
+                        int amount = resp.Amount;
+
+                        GiveGold += ssi.GetSellPriceFor( resp.Item ) * amount;
+                    }
+                }
+            }
+
+            if (!Acheteur.TesterDepense(seller, GiveGold))
+            {
+                SayTo(seller, "Vous ne pouvez vendre que pour {0} pièces d'or de matériel cette semaine.", Acheteur.VerifierDepense(seller));
+                return false;
+            }
+
+            int reste = Acheteur.AjouterMontant(seller, GiveGold);
+            SayTo(seller, "Vous pouvez encore vendre pour {0} pièces d'or de matériel cette semaine.", reste);
+
 			foreach ( SellItemResponse resp in list )
 			{
 				if ( resp.Item.RootParent != seller || resp.Amount <= 0 || !resp.Item.IsStandardLoot() || !resp.Item.Movable || ( resp.Item is Container && ( (Container)resp.Item ).Items.Count != 0 ) )
@@ -1138,7 +1164,7 @@ namespace Server.Mobiles
 								resp.Item.Delete();
 						}
 
-						GiveGold += ssi.GetSellPriceFor( resp.Item ) * amount;
+						
 						break;
 					}
 				}

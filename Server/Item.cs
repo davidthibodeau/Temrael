@@ -610,7 +610,7 @@ namespace Server
         private int m_GoldValue;
 		#endregion
 
-        public int GoldValue
+        public virtual int GoldValue
         {
             get { return m_GoldValue; }
             set
