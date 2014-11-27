@@ -15,6 +15,15 @@ namespace Server.Items
         {
             get { return m_Couleur; }
         }
+        public double getSkillReq
+        {
+            get { return m_SkillReq; }
+        }
+
+        public abstract double m_SkillReq
+        {
+            get;
+        }
 
         public abstract int m_Couleur
         {

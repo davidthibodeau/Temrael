@@ -41,9 +41,9 @@
                     {
 
                     }
- 
-     
-                    public override int Hide { get { return 4; } }
+
+
+                    public override int Hides { get { return 4; } }
                     public override HideType HideType { get { return HideType.Desertique; } }
      
                     public ScorpionGeant(Serial serial) : base(serial)
@@ -52,10 +52,6 @@
      
                     public override int Meat { get { return 3;} }
                     public override MeatType MeatType { get { return MeatType.Ribs; } }
-     
-                    public ScorpionGeant(Serial serial) : base(serial)
-                    {
-                    }
      
                     public override void Serialize(GenericWriter writer)
                     {

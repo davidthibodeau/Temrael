@@ -411,12 +411,12 @@ namespace Server.Engines.Craft
 
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material
-            AddSubRes(typeof(FerIngot), "Fer", 00.0, 1044267);
-            AddSubRes(typeof(CuivreIngot), "Cuivre", 40.0, 1044268);
-            AddSubRes(typeof(BronzeIngot), "Bronze", 40.0, 1044268);
-            AddSubRes(typeof(AcierIngot), "Acier", 60.0, 1044268);
-            AddSubRes(typeof(ArgentIngot), "Argent", 60.0, 1044268);
-            AddSubRes(typeof(OrIngot), "Or", 60.0, 1044268);
+            AddSubRes(typeof(FerIngot), "Fer", FerIngot.SkillReq, 1044267);
+            AddSubRes(typeof(CuivreIngot), "Cuivre", CuivreIngot.SkillReq, 1044268);
+            AddSubRes(typeof(BronzeIngot), "Bronze", BronzeIngot.SkillReq, 1044268);
+            AddSubRes(typeof(AcierIngot), "Acier", AcierIngot.SkillReq, 1044268);
+            AddSubRes(typeof(ArgentIngot), "Argent", ArgentIngot.SkillReq, 1044268);
+            AddSubRes(typeof(OrIngot), "Or", OrIngot.SkillReq, 1044268);
             //AddSubRes(typeof(MytherilIngot), "Mytheril", 70.0, 1044268);
             //AddSubRes(typeof(LuminiumIngot), "Luminium", 70.0, 1044268);
             //AddSubRes(typeof(ObscuriumIngot), "Obscurium", 70.0, 1044268);

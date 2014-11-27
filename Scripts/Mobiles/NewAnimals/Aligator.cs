@@ -44,7 +44,7 @@ namespace Server.Mobiles
         public override int Meat { get { return 6; } }
         public override MeatType MeatType { get { return MeatType.Ribs; } }
 
-        public override int Hide { get { return 2; } }
+        public override int Hides { get { return 2; } }
         public override HideType HideType { get { return HideType.Reptilien; } }
 
 

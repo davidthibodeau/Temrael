@@ -506,21 +506,21 @@ namespace Server.Engines.Craft
 
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material
-			AddSubRes(typeof(Leather), "Cuir", 00.0, 1049311);
-            AddSubRes(typeof(ReptilienLeather), "Cuir Reptilien", 50.0, 1049311);
-            AddSubRes(typeof(NordiqueLeather), "Cuir Nordique", 50.0, 1049311);
-            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", 50.0, 1049311);
-            AddSubRes(typeof(MaritimeLeather), "Cuir Maritime", 60.0, 1049311);
-            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", 60.0, 1049311);
-            AddSubRes(typeof(GeantLeather), "Cuir Géant", 60.0, 1049311);
-            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", 70.0, 1049311);
-            AddSubRes(typeof(OphidienLeather), "Cuir Ophidien", 70.0, 1049311);
-            AddSubRes(typeof(ArachnideLeather), "Cuir Arachnide", 70.0, 1049311);
-            AddSubRes(typeof(MagiqueLeather), "Cuir Magique", 80.0, 1049311);
-            AddSubRes(typeof(AncienLeather), "Cuir Ancien", 80.0, 1049311);
-            AddSubRes(typeof(DemoniaqueLeather), "Cuir Demoniaque", 80.0, 1049311);
-            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", 90.0, 1049311);
-            AddSubRes(typeof(LupusLeather), "Cuir Lupus", 90.0, 1049311);
+            AddSubRes(typeof(Leather), "Cuir", Leather.SkillReq, 1049311);
+            AddSubRes(typeof(ReptilienLeather), "Cuir Reptilien", ReptilienLeather.SkillReq, 1049311);
+            AddSubRes(typeof(NordiqueLeather), "Cuir Nordique", NordiqueLeather.SkillReq, 1049311);
+            AddSubRes(typeof(DesertiqueLeather), "Cuir Désertique", DesertiqueLeather.SkillReq, 1049311);
+            AddSubRes(typeof(MaritimeLeather), "Cuir Maritime", MaritimeLeather.SkillReq, 1049311);
+            AddSubRes(typeof(VolcaniqueLeather), "Cuir Volcanique", VolcaniqueLeather.SkillReq, 1049311);
+            AddSubRes(typeof(GeantLeather), "Cuir Géant", GeantLeather.SkillReq, 1049311);
+            AddSubRes(typeof(MinotaureLeather), "Cuir Minotaure", MinotaureLeather.SkillReq, 1049311);
+            AddSubRes(typeof(OphidienLeather), "Cuir Ophidien", OphidienLeather.SkillReq, 1049311);
+            AddSubRes(typeof(ArachnideLeather), "Cuir Arachnide", ArachnideLeather.SkillReq, 1049311);
+            AddSubRes(typeof(MagiqueLeather), "Cuir Magique", MagiqueLeather.SkillReq, 1049311);
+            AddSubRes(typeof(AncienLeather), "Cuir Ancien", AncienLeather.SkillReq, 1049311);
+            AddSubRes(typeof(DemoniaqueLeather), "Cuir Demoniaque", DemoniaqueLeather.SkillReq, 1049311);
+            AddSubRes(typeof(DragoniqueLeather), "Cuir Dragonique", DragoniqueLeather.SkillReq, 1049311);
+            AddSubRes(typeof(LupusLeather), "Cuir Lupus", LupusLeather.SkillReq, 1049311);
 
 			MarkOption = true;
 			Repair = Core.AOS;

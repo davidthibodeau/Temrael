@@ -9,6 +9,11 @@ namespace Server.Items
         {
             get { return 2125; }
         }
+        
+        public override double m_SkillReq
+        {
+            get { return 45; }
+        }
 
 		public override double DefaultWeight
 		{
@@ -31,7 +36,6 @@ namespace Server.Items
 		public Tourmaline( Serial serial ) : base( serial )
 		{
 		}
-
 		
 
 		public override void Serialize( GenericWriter writer )

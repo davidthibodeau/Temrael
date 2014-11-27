@@ -1,18 +1,20 @@
-using System;
-using Server;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace Server.Items
+namespace Server.Items.Gems
 {
-    public class Emerald : BaseGem
-	{
+    public class Coquillage : BaseGem
+    {
         public override int m_Couleur
         {
-            get { return 2389; }
+            get { return 2382; }
         }
 
         public override double m_SkillReq
         {
-            get { return 65; }
+            get { return 30; }
         }
 
 		public override double DefaultWeight
@@ -21,19 +23,20 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public Emerald() : this( 1 )
+		public Coquillage() : this( 1 )
 		{
 		}
 
 		[Constructable]
-		public Emerald( int amount ) : base( 0xF10 )
+		public Coquillage( int amount ) : base( 0xF15 )
 		{
-            Name = "Emeraude";
+            Name = "Coquillage";
 			Stackable = true;
 			Amount = amount;
 		}
 
-		public Emerald( Serial serial ) : base( serial )
+        public Coquillage(Serial serial)
+            : base(serial)
 		{
 		}
 
@@ -52,5 +55,5 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 		}
-	}
+    }
 }

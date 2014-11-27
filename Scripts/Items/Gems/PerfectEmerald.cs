@@ -10,6 +10,11 @@ namespace Server.Items
             get { return 2386; }
         }
 
+        public override double m_SkillReq
+        {
+            get { return 85; }
+        }
+
         [Constructable]
         public PerfectEmerald()
             : this(1)

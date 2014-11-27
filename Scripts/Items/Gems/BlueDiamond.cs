@@ -10,6 +10,11 @@ namespace Server.Items
             get { return 2174; }
         }
 
+        public override double m_SkillReq
+        {
+            get { return 90; }
+        }
+
         [Constructable]
         public BlueDiamond()
             : this(1)

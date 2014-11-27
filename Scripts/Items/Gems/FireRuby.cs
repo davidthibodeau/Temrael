@@ -10,6 +10,11 @@ namespace Server.Items
             get { return 2367; }
         }
 
+        public override double m_SkillReq
+        {
+            get { return 80; }
+        }
+
         [Constructable]
         public FireRuby()
             : this(1)

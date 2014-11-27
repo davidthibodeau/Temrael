@@ -10,6 +10,11 @@ namespace Server.Items
             get { return 2187; }
         }
 
+        public override double m_SkillReq
+        {
+            get { return 50; }
+        }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

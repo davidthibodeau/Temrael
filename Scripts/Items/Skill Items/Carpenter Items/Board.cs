@@ -15,6 +15,10 @@ namespace Server.Items
         {
             get { return CraftResources.GetHue(m_Resource); }
         }
+        public double getSkillReq
+        {
+            get { return CraftResources.GetSkill(m_Resource); }
+        }
         #endregion
 
 		private CraftResource m_Resource;

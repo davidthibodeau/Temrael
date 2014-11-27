@@ -25,5 +25,6 @@ namespace Server.Items
     {
         int getHue{get;}
         string getName{get;}
+        double getSkillReq { get; }
     }
 }

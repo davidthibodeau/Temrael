@@ -640,21 +640,21 @@ namespace Server.Engines.Craft
 
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material
-			AddSubRes( typeof( FerIngot ),			"Fer", 00.0, 1044267 );
-			AddSubRes( typeof( CuivreIngot ),   	"Cuivre", 40.0, 1044268 );
-			AddSubRes( typeof( BronzeIngot ),   	"Bronze", 40.0, 1044268 );
-			AddSubRes( typeof( AcierIngot ),		"Acier", 60.0, 1044268 );
-			AddSubRes( typeof( ArgentIngot ),		"Argent", 60.0, 1044268 );
-			AddSubRes( typeof( OrIngot ),			"Or", 60.0, 1044268 );
-			AddSubRes( typeof( MytherilIngot ),		"Mytheril", 80.0, 1044268 );
-			AddSubRes( typeof( LuminiumIngot ),		"Luminium", 80.0, 1044268 );
-			AddSubRes( typeof( ObscuriumIngot ),	"Obscurium", 80.0, 1044268 );
-            AddSubRes( typeof( MystiriumIngot ),    "Mystirium", 90.0, 1044268);
-            AddSubRes( typeof( DominiumIngot ),     "Dominium", 90.0, 1044268);
-            AddSubRes( typeof( VenariumIngot),      "Venarium", 90.0, 1044268);
-            AddSubRes( typeof( EclariumIngot ),     "Eclarium", 100.0, 1044268);
-            AddSubRes( typeof( AtheniumIngot ),     "Athenium", 100.0, 1044268);
-            AddSubRes( typeof( UmbrariumIngot ),    "Umbrarium", 100.0, 1044268);
+			AddSubRes( typeof( FerIngot ),	"Fer", CraftResources.GetSkill( CraftResource.Fer ), 1044267 );
+            AddSubRes(typeof(CuivreIngot), "Cuivre", CraftResources.GetSkill( CraftResource.Cuivre), 1044268);
+            AddSubRes(typeof(BronzeIngot), "Bronze", CraftResources.GetSkill( CraftResource.Bronze), 1044268);
+            AddSubRes(typeof(AcierIngot), "Acier", CraftResources.GetSkill( CraftResource.Acier), 1044268);
+            AddSubRes(typeof(ArgentIngot), "Argent", CraftResources.GetSkill( CraftResource.Argent), 1044268);
+            AddSubRes(typeof(OrIngot), "Or", CraftResources.GetSkill( CraftResource.Or), 1044268);
+            AddSubRes(typeof(MytherilIngot), "Mytheril", CraftResources.GetSkill( CraftResource.Mytheril), 1044268);
+            AddSubRes(typeof(LuminiumIngot), "Luminium", CraftResources.GetSkill( CraftResource.Luminium), 1044268);
+            AddSubRes(typeof(ObscuriumIngot), "Obscurium", CraftResources.GetSkill( CraftResource.Obscurium), 1044268);
+            AddSubRes(typeof(MystiriumIngot), "Mystirium", CraftResources.GetSkill( CraftResource.Mystirium), 1044268);
+            AddSubRes(typeof(DominiumIngot), "Dominium", CraftResources.GetSkill( CraftResource.Dominium), 1044268);
+            AddSubRes(typeof(VenariumIngot), "Venarium", CraftResources.GetSkill( CraftResource.Venarium), 1044268);
+            AddSubRes(typeof(EclariumIngot), "Eclarium", CraftResources.GetSkill( CraftResource.Eclarium), 1044268);
+            AddSubRes(typeof(AtheniumIngot), "Athenium", CraftResources.GetSkill( CraftResource.Athenium), 1044268);
+            AddSubRes(typeof(UmbrariumIngot), "Umbrarium", CraftResources.GetSkill( CraftResource.Umbrarium), 1044268);
 
 			/*SetSubRes2( typeof( RegularScales ),    "Écailles" );
 

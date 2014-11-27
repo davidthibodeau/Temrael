@@ -163,14 +163,14 @@ namespace Server.Engines.Craft
 
             // Add every material you want the player to be able to choose from
             // This will override the overridable material	TODO: Verify the required skill amount
-            AddSubRes(typeof(Log), "Érable", 00.0, 1072652);
-            AddSubRes(typeof(PinLog), "Pin", 10.0, 1072652);
-            AddSubRes(typeof(CypresLog), "Cyprès", 20.0, 1072652);
-            AddSubRes(typeof(CedreLog), "Cèdre", 30.0, 1072652);
-            AddSubRes(typeof(SauleLog), "Saule", 40.0, 1072652);
-            AddSubRes(typeof(CheneLog), "Chêne", 50.0, 1072652);
-            AddSubRes(typeof(EbeneLog), "Ébène", 60.0, 1072652);
-            AddSubRes(typeof(AcajouLog), "Acajou", 70.0, 1072652);
+            AddSubRes(typeof(Log), "Érable", Log.SkillReq, 1072652);
+            AddSubRes(typeof(PinLog), "Pin", PinLog.SkillReq, 1072652);
+            AddSubRes(typeof(CypresLog), "Cyprès", CypresLog.SkillReq, 1072652);
+            AddSubRes(typeof(CedreLog), "Cèdre", CedreLog.SkillReq, 1072652);
+            AddSubRes(typeof(SauleLog), "Saule", SauleLog.SkillReq, 1072652);
+            AddSubRes(typeof(CheneLog), "Chêne", CheneLog.SkillReq, 1072652);
+            AddSubRes(typeof(EbeneLog), "Ébène", EbeneLog.SkillReq, 1072652);
+            AddSubRes(typeof(AcajouLog), "Acajou", AcajouLog.SkillReq, 1072652);
 
             MarkOption = true;
 			Repair = Core.AOS;

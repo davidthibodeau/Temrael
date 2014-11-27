@@ -45,13 +45,8 @@
                     }
  
      
-                    public override int Hide { get { return 4; } }
+                    public override int Hides { get { return 4; } }
                     public override HideType HideType { get { return HideType.Desertique; } }
-     
-                    public Fourmilion(Serial serial) : base(serial)
-                    {
-                    }
-     
      
                     public Fourmilion(Serial serial) : base(serial)
                     {
@@ -59,10 +54,6 @@
      
                     public override int Meat { get { return 5;} }
                     public override MeatType MeatType { get { return MeatType.Ribs; } }
-     
-                    public Fourmilion(Serial serial) : base(serial)
-                    {
-                    }
      
                     public override void Serialize(GenericWriter writer)
                     {

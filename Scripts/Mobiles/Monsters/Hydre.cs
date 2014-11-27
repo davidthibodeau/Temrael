@@ -37,7 +37,7 @@ namespace Server.Mobiles
                 SetSkill(SkillName.Epee, 100);
                 SetSkill(SkillName.Anatomie, 100);
                 SetSkill(SkillName.ResistanceMagique, 100);
-                SetSkill(SkillName.CoupCritque, 60);
+                SetSkill(SkillName.CoupCritique, 60);
                 SetSkill(SkillName.Penetration, 40);
             }
  
@@ -46,19 +46,13 @@ namespace Server.Mobiles
             {
                 DeadlyPoisonPotion DeadlyPoisonPotion = new DeadlyPoisonPotion(1);
                 AddToBackpack(DeadlyPoisonPotion);
- 
-                Emerald emerald = new Emerald(1);
-                AddToBackpack(amber);
-                AddToBackpack(Emerald);
+
+                AddToBackpack(new Amber(1));
+                AddToBackpack(new Emerald(1));
             }
-     
-            public override int Hide { get { return 15; } }
+
+            public override int Hides { get { return 15; } }
             public override HideType HideType { get { return HideType.Reptilien; } }
-     
-            public Hydre(Serial serial) : base(serial)
-            {
-            }
-     
      
             public Hydre(Serial serial) : base(serial)
             {

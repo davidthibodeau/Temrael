@@ -10,6 +10,11 @@ namespace Server.Items
             get { return 2363; }
         }
 
+        public override double m_SkillReq
+        {
+            get { return 55; }
+        }
+
 		[Constructable]
 		public Ruby() : this( 1 )
 		{

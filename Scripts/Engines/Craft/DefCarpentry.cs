@@ -714,25 +714,25 @@ namespace Server.Engines.Craft
 
 			// Add every material you want the player to be able to choose from
 			// This will override the overridable material	TODO: Verify the required skill amount
-            AddSubRes(typeof(Board), "Planche d'Érable", 00.0, 1072652);
-            AddSubRes(typeof(PinBoard), "Planche de Pin", 20.0, 1072652);
-            AddSubRes(typeof(CypresBoard), "Planche de Cyprès", 30.0, 1072652);
-            AddSubRes(typeof(CedreBoard), "Planche de Cèdre", 40.0, 1072652);
-            AddSubRes(typeof(SauleBoard), "Planche de Saule", 50.0, 1072652);
-            AddSubRes(typeof(CheneBoard), "Planche de Chêne", 60.0, 1072652);
-            AddSubRes(typeof(EbeneBoard), "Planche d'Ébène", 70.0, 1072652);
-            AddSubRes(typeof(AcajouBoard), "Planche d'Acajou", 80.0, 1072652);
+            AddSubRes(typeof(Board), "Planche d'Érable", Board.SkillReq, 1072652);
+            AddSubRes(typeof(PinBoard), "Planche de Pin", PinBoard.SkillReq, 1072652);
+            AddSubRes(typeof(CypresBoard), "Planche de Cyprès", CypresBoard.SkillReq, 1072652);
+            AddSubRes(typeof(CedreBoard), "Planche de Cèdre", CedreBoard.SkillReq, 1072652);
+            AddSubRes(typeof(SauleBoard), "Planche de Saule", SauleBoard.SkillReq, 1072652);
+            AddSubRes(typeof(CheneBoard), "Planche de Chêne", CheneBoard.SkillReq, 1072652);
+            AddSubRes(typeof(EbeneBoard), "Planche d'Ébène", EbeneBoard.SkillReq, 1072652);
+            AddSubRes(typeof(AcajouBoard), "Planche d'Acajou", AcajouBoard.SkillReq, 1072652);
 
             SetSubRes2(typeof(Log), "Bûche d'Érable");
 
-            AddSubRes2(typeof(Log), "Bûche d'Érable", 0.0, 1072652);
-            AddSubRes2(typeof(PinLog), "Bûche de Pin", 20.0, 1072652);
-            AddSubRes2(typeof(CypresLog), "Bûche de Cyprès", 30.0, 1072652);
-            AddSubRes2(typeof(CedreLog), "Bûche de Cèdre", 40.0, 1072652);
-            AddSubRes2(typeof(SauleLog), "Bûche de Saule", 50.0, 1072652);
-            AddSubRes2(typeof(CheneLog), "Bûche de Chêne", 60.0, 1072652);
-            AddSubRes2(typeof(EbeneLog), "Bûche d'Ébène", 70.0, 1072652);
-            AddSubRes2(typeof(AcajouLog), "Bûche d'Acajou", 80.0, 1072652);
+            AddSubRes2(typeof(Log), "Érable", Log.SkillReq, 1072652);
+            AddSubRes2(typeof(PinLog), "Pin", PinLog.SkillReq, 1072652);
+            AddSubRes2(typeof(CypresLog), "Cyprès", CypresLog.SkillReq, 1072652);
+            AddSubRes2(typeof(CedreLog), "Cèdre", CedreLog.SkillReq, 1072652);
+            AddSubRes2(typeof(SauleLog), "Saule", SauleLog.SkillReq, 1072652);
+            AddSubRes2(typeof(CheneLog), "Chêne", CheneLog.SkillReq, 1072652);
+            AddSubRes2(typeof(EbeneLog), "Ébène", EbeneLog.SkillReq, 1072652);
+            AddSubRes2(typeof(AcajouLog), "Acajou", AcajouLog.SkillReq, 1072652);
 
             MarkOption = true;
             Repair = Core.AOS;

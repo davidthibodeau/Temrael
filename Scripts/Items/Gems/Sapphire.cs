@@ -10,6 +10,11 @@ namespace Server.Items
             get { return 2354; }
         }
 
+        public override double m_SkillReq
+        {
+            get { return 60; }
+        }
+
 		[Constructable]
 		public Sapphire() : this( 1 )
 		{
