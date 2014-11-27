@@ -73,9 +73,75 @@ namespace Server.Items
 		public virtual WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
         //public abstract int DefStrengthReq { get; }
-        public abstract int DefMinDamage { get; }
-        public abstract int DefMaxDamage { get; }
+        public virtual int DefMinDamage { get { return DPSMin(); } }
+        public virtual int DefMaxDamage { get { return DPSMax(); } }
         public abstract int DefSpeed { get; }
+
+        public int DPSMin()
+        {
+            if (Layer == Layer.OneHanded)
+            {
+                switch (DefSpeed)
+                {
+                    case 20: return 2;
+                    case 25: return 3;
+                    case 30: return 5;
+                    case 35: return 7;
+                    case 40: return 9;
+                    case 45: return 10;
+                    case 50: return 12;
+                    default: return 0;
+                }
+            }
+            if (Layer == Layer.TwoHanded)
+            {
+                switch (DefSpeed)
+                {
+                    case 20: return 4;
+                    case 25: return 6;
+                    case 30: return 7;
+                    case 35: return 9;
+                    case 40: return 11;
+                    case 45: return 13;
+                    case 50: return 14;
+                    default: return 0;
+                }
+            }
+            return 0;
+        }
+
+        public int DPSMax()
+        {
+            if (Layer == Layer.OneHanded)
+            {
+                switch (DefSpeed)
+                {
+                    case 20: return 5;
+                    case 25: return 7;
+                    case 30: return 9;
+                    case 35: return 11;
+                    case 40: return 13;
+                    case 45: return 15;
+                    case 50: return 17;
+                    default: return 0;
+                }
+            }
+            if (Layer == Layer.TwoHanded)
+            {
+                switch (DefSpeed)
+                {
+                    case 20: return 7;
+                    case 25: return 10;
+                    case 30: return 12;
+                    case 35: return 14;
+                    case 40: return 16;
+                    case 45: return 18;
+                    case 50: return 19;
+                    default: return 0;
+                }
+            }
+            return 0;
+        }
 
 		public virtual int InitMinHits{ get{ return 0; } }
 		public virtual int InitMaxHits{ get{ return 0; } }

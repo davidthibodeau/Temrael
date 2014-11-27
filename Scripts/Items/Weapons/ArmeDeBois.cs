@@ -6,8 +6,8 @@ namespace Server.Items
 {
     public class DagueEntrainement : BaseKnife
     {
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 4; } }
+        //public override int DefMinDamage { get { return 1; } }
+        //public override int DefMaxDamage { get { return 4; } }
         public override int DefSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -42,8 +42,8 @@ namespace Server.Items
     }
     public class LanceEntrainement : BaseSpear
     {
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 4; } }
+        //public override int DefMinDamage { get { return 1; } }
+        //public override int DefMaxDamage { get { return 4; } }
         public override int DefSpeed { get { return 35; } }
 
         public override int DefHitSound { get { return 0x237; } }
@@ -81,8 +81,8 @@ namespace Server.Items
     }
     public class MasseEntrainement : BaseBashing
     {
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 4; } }
+        //public override int DefMinDamage { get { return 1; } }
+        //public override int DefMaxDamage { get { return 4; } }
         public override int DefSpeed { get { return 35; } }
 
         public override int InitMinHits { get { return 31; } }
@@ -117,8 +117,8 @@ namespace Server.Items
     }
     public class BatonEntrainement : BaseStaff
     {
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 4; } }
+        //public override int DefMinDamage { get { return 1; } }
+        //public override int DefMaxDamage { get { return 4; } }
         public override int DefSpeed { get { return 35; } }
 
         public override int DefHitSound { get { return 0x237; } }
@@ -156,8 +156,8 @@ namespace Server.Items
     }
     public class EpeeEntrainement : BaseSword
     {
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 4; } }
+        //public override int DefMinDamage { get { return 1; } }
+        //public override int DefMaxDamage { get { return 4; } }
         public override int DefSpeed { get { return 35; } }
 
         public override int DefHitSound { get { return 0x237; } }

@@ -6,8 +6,8 @@ namespace Server.Items
 {
     public class Cuivardise : BaseEstoc
     {
-        public override int DefMinDamage { get { return 3; } }
-        public override int DefMaxDamage { get { return 7; } }
+        //public override int DefMinDamage { get { return 3; } }
+        //public override int DefMaxDamage { get { return 7; } }
         public override int DefSpeed { get { return 25; } }
 
         [Constructable]
@@ -41,8 +41,8 @@ namespace Server.Items
 
     public class Estoc : BaseEstoc
     {
-        public override int DefMinDamage { get { return 2; } }
-        public override int DefMaxDamage { get { return 5; } }
+        //public override int DefMinDamage { get { return 2; } }
+        //public override int DefMaxDamage { get { return 5; } }
         public override int DefSpeed { get { return 20; } }
 
         [Constructable]
@@ -76,8 +76,8 @@ namespace Server.Items
 
     public class Fleuret : BaseEstoc
     {
-        public override int DefMinDamage { get { return 2; } }
-        public override int DefMaxDamage { get { return 5; } }
+        //public override int DefMinDamage { get { return 2; } }
+        //public override int DefMaxDamage { get { return 5; } }
         public override int DefSpeed { get { return 20; } }
 
         [Constructable]
@@ -111,8 +111,8 @@ namespace Server.Items
 
     public class Lyzardese : BaseEstoc
     {
-        public override int DefMinDamage { get { return 3; } }
-        public override int DefMaxDamage { get { return 7; } }
+        //public override int DefMinDamage { get { return 3; } }
+        //public override int DefMaxDamage { get { return 7; } }
         public override int DefSpeed { get { return 25; } }
 
         [Constructable]
@@ -146,8 +146,8 @@ namespace Server.Items
 
     public class Musareche : BaseEstoc
     {
-        public override int DefMinDamage { get { return 2; } }
-        public override int DefMaxDamage { get { return 5; } }
+        //public override int DefMinDamage { get { return 2; } }
+        //public override int DefMaxDamage { get { return 5; } }
         public override int DefSpeed { get { return 20; } }
 
         [Constructable]
@@ -181,8 +181,8 @@ namespace Server.Items
 
     public class Percille : BaseEstoc
     {
-        public override int DefMinDamage { get { return 3; } }
-        public override int DefMaxDamage { get { return 7; } }
+        //public override int DefMinDamage { get { return 3; } }
+        //public override int DefMaxDamage { get { return 7; } }
         public override int DefSpeed { get { return 25; } }
 
         [Constructable]
@@ -216,8 +216,8 @@ namespace Server.Items
 
     public class Rapiere : BaseEstoc
     {
-        public override int DefMinDamage { get { return 5; } }
-        public override int DefMaxDamage { get { return 9; } }
+        //public override int DefMinDamage { get { return 5; } }
+        //public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
@@ -251,8 +251,8 @@ namespace Server.Items
 
     public class Brette : BaseEstoc
     {
-        public override int DefMinDamage { get { return 5; } }
-        public override int DefMaxDamage { get { return 9; } }
+        //public override int DefMinDamage { get { return 5; } }
+        //public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]

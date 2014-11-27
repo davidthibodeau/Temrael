@@ -8,8 +8,8 @@ namespace Server.Items
     // Une main
     public class Ecracheur : BaseBashing
     {
-        public override int DefMinDamage { get { return 10; } }
-        public override int DefMaxDamage { get { return 15; } }
+        //public override int DefMinDamage { get { return 10; } }
+        //public override int DefMaxDamage { get { return 15; } }
         public override int DefSpeed { get { return 45; } }
 
         [Constructable]
@@ -43,8 +43,8 @@ namespace Server.Items
 
     public class Ecraseface : BaseBashing
     {
-        public override int DefMinDamage { get { return 9; } }
-        public override int DefMaxDamage { get { return 13; } }
+        //public override int DefMinDamage { get { return 9; } }
+        //public override int DefMaxDamage { get { return 13; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -78,8 +78,8 @@ namespace Server.Items
 
     public class Mace : BaseBashing
     {
-        public override int DefMinDamage { get { return 3; } }
-        public override int DefMaxDamage { get { return 7; } }
+        //public override int DefMinDamage { get { return 3; } }
+        //public override int DefMaxDamage { get { return 7; } }
         public override int DefSpeed { get { return 25; } }
 
         [Constructable]
@@ -113,8 +113,8 @@ namespace Server.Items
 
     public class Massue : BaseBashing
     {
-        public override int DefMinDamage { get { return 9; } }
-        public override int DefMaxDamage { get { return 13; } }
+        //public override int DefMinDamage { get { return 9; } }
+        //public override int DefMaxDamage { get { return 13; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -148,8 +148,8 @@ namespace Server.Items
 
     public class WarMace : BaseBashing
     {
-        public override int DefMinDamage { get { return 7; } }
-        public override int DefMaxDamage { get { return 11; } }
+        //public override int DefMinDamage { get { return 7; } }
+        //public override int DefMaxDamage { get { return 11; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
@@ -183,8 +183,8 @@ namespace Server.Items
 
     public class Defonceur : BaseBashing
     {
-        public override int DefMinDamage { get { return 5; } }
-        public override int DefMaxDamage { get { return 9; } }
+        //public override int DefMinDamage { get { return 5; } }
+        //public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
@@ -218,8 +218,8 @@ namespace Server.Items
 
     public class Brisecrane : BaseBashing
     {
-        public override int DefMinDamage { get { return 5; } }
-        public override int DefMaxDamage { get { return 9; } }
+        //public override int DefMinDamage { get { return 5; } }
+        //public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
@@ -253,8 +253,8 @@ namespace Server.Items
 
     public class Fleau : BaseBashing
     {
-        public override int DefMinDamage { get { return 5; } }
-        public override int DefMaxDamage { get { return 9; } }
+        //public override int DefMinDamage { get { return 5; } }
+        //public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
@@ -288,8 +288,8 @@ namespace Server.Items
 
     public class Gourdin : BaseBashing
     {
-        public override int DefMinDamage { get { return 5; } }
-        public override int DefMaxDamage { get { return 9; } }
+        //public override int DefMinDamage { get { return 5; } }
+        //public override int DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
@@ -323,8 +323,8 @@ namespace Server.Items
 
     public class Gourpic : BaseBashing
     {
-        public override int DefMinDamage { get { return 3; } }
-        public override int DefMaxDamage { get { return 7; } }
+        //public override int DefMinDamage { get { return 3; } }
+        //public override int DefMaxDamage { get { return 7; } }
         public override int DefSpeed { get { return 25; } }
 
         [Constructable]
@@ -358,8 +358,8 @@ namespace Server.Items
 
     public class Club : BaseBashing
     {
-        public override int DefMinDamage { get { return 7; } }
-        public override int DefMaxDamage { get { return 11; } }
+        //public override int DefMinDamage { get { return 7; } }
+        //public override int DefMaxDamage { get { return 11; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
@@ -393,8 +393,8 @@ namespace Server.Items
 
     public class Pickaxe : BaseBashing
     {
-        public override int DefMinDamage { get { return 7; } }
-        public override int DefMaxDamage { get { return 11; } }
+        //public override int DefMinDamage { get { return 7; } }
+        //public override int DefMaxDamage { get { return 11; } }
         public override int DefSpeed { get { return 35; } }
 
         public virtual HarvestSystem HarvestSystem { get { return Mining.System; } }
@@ -456,8 +456,8 @@ namespace Server.Items
     // Deux mains
     public class Granmace : BaseBashing
     {
-        public override int DefMinDamage { get { return 11; } }
-        public override int DefMaxDamage { get { return 16; } }
+        //public override int DefMinDamage { get { return 11; } }
+        //public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -491,8 +491,8 @@ namespace Server.Items
 
     public class Maul : BaseBashing
     {
-        public override int DefMinDamage { get { return 9; } }
-        public override int DefMaxDamage { get { return 14; } }
+        //public override int DefMinDamage { get { return 9; } }
+        //public override int DefMaxDamage { get { return 14; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
@@ -526,8 +526,8 @@ namespace Server.Items
 
     public class Broyeur : BaseBashing
     {
-        public override int DefMinDamage { get { return 9; } }
-        public override int DefMaxDamage { get { return 14; } }
+        //public override int DefMinDamage { get { return 9; } }
+        //public override int DefMaxDamage { get { return 14; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
@@ -561,8 +561,8 @@ namespace Server.Items
 
     public class MarteauGuerre : BaseBashing
     {
-        public override int DefMinDamage { get { return 9; } }
-        public override int DefMaxDamage { get { return 14; } }
+        //public override int DefMinDamage { get { return 9; } }
+        //public override int DefMaxDamage { get { return 14; } }
         public override int DefSpeed { get { return 35; } }
 
         [Constructable]
@@ -596,8 +596,8 @@ namespace Server.Items
 
     public class WarHammer : BaseBashing
     {
-        public override int DefMinDamage { get { return 11; } }
-        public override int DefMaxDamage { get { return 16; } }
+        //public override int DefMinDamage { get { return 11; } }
+        //public override int DefMaxDamage { get { return 16; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -631,8 +631,8 @@ namespace Server.Items
 
     public class Malert : BaseBashing
     {
-        public override int DefMinDamage { get { return 14; } }
-        public override int DefMaxDamage { get { return 19; } }
+        //public override int DefMinDamage { get { return 14; } }
+        //public override int DefMaxDamage { get { return 19; } }
         public override int DefSpeed { get { return 50; } }
 
         [Constructable]
@@ -666,8 +666,8 @@ namespace Server.Items
 
     public class Batonmace : BaseBashing
     {
-        public override int DefMinDamage { get { return 13; } }
-        public override int DefMaxDamage { get { return 18; } }
+        //public override int DefMinDamage { get { return 13; } }
+        //public override int DefMaxDamage { get { return 18; } }
         public override int DefSpeed { get { return 45; } }
 
         [Constructable]
