@@ -316,7 +316,6 @@ namespace Server.Spells
 
 		public virtual bool Cast()
         {
-            Mobile m = Caster as Mobile;
 			m_StartCastTime = DateTime.Now;
 
             if ( canCast() )
@@ -331,7 +330,7 @@ namespace Server.Spells
 
                 TimeSpan castTime = Info.castTime;
 
-                double vitesse = 1 - m.Stam / 100.0;
+                double vitesse = 1 - Caster.Stam / 100.0;
                 castTime = castTime.Add(TimeSpan.FromSeconds(vitesse));
 
                 if (LenteurSpell.m_Table.Contains(Caster))
