@@ -8,7 +8,7 @@ namespace Server.Mobiles
     {
         [Constructable]
         public SsinsGuerrier()
-            : base(AIType.AI_Melee, FightMode.Closest, 5, 1, 0.3, 0.5)
+            : base(AIType.AI_Melee, FightMode.Closest, 7, 1, 0.3, 0.5)
         {
             Name = "Ssins Guerrier";
             Body = 45;
@@ -20,10 +20,10 @@ namespace Server.Mobiles
             SetDex(20);
             SetInt(10);
 
-            SetHits(50);
+            SetHits(150);
             SetMana(10);
             SetStam(40);
-            SetArme(2, 6, 40);
+            SetArme(3, 7, 40);
 
             SetResistance(ResistanceType.Physical, 0);
             SetResistance(ResistanceType.Magie, 0);

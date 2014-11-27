@@ -137,6 +137,15 @@
     <Compile Include="Engines\Races\Race.cs" />
     <Compile Include="Items\Temrael\Meubles\BiblioRemplieGrise.cs" />
     <Compile Include="Misc\Notoriety.cs" />
+    <Compile Include="Mobiles\Monsters\FeuFollet.cs" />
+    <Compile Include="Mobiles\Monsters\Fourmis\FourmiGeante.cs" />
+    <Compile Include="Mobiles\Monsters\Fourmis\Fourmilion.cs" />
+    <Compile Include="Mobiles\Monsters\Fourmis\FourmiMatriarche.cs" />
+    <Compile Include="Mobiles\Monsters\Fourmis\FourmiSoldat.cs" />
+    <Compile Include="Mobiles\Monsters\Hydre.cs" />
+    <Compile Include="Mobiles\Monsters\Mongbat.cs" />
+    <Compile Include="Mobiles\Monsters\ScarabeeGeant.cs" />
+    <Compile Include="Mobiles\NewAnimals\Aligator.cs" />
     <Compile Include="Mobiles\NewAnimals\Araignee.cs" />
     <Compile Include="Mobiles\NewAnimals\Carcajou.cs" />
     <Compile Include="Mobiles\Monsters\Gobelins\GobelinArcher.cs" />
@@ -185,6 +194,7 @@
     <Compile Include="Mobiles\NewAnimals\Ours\OursGrizzly.cs" />
     <Compile Include="Mobiles\NewAnimals\Ours\OursNoir.cs" />
     <Compile Include="Mobiles\NewAnimals\Panther.cs" />
+    <Compile Include="Mobiles\NewAnimals\ScorpionGeant.cs" />
     <Compile Include="Mobiles\NewAnimals\SerpentGeant.cs" />
     <Compile Include="Mobiles\NewAnimals\Taureau.cs" />
     <Compile Include="Mobiles\ScriptMobile.cs" />

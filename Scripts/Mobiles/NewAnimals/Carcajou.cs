@@ -15,7 +15,7 @@ namespace Server.Mobiles.Animals
             Name = "Carcajou";
             Body = 291;
             Hue = 2435;
-            BaseSoundID = 0;
+            BaseSoundID = 115;
 
             PlayersAreEnemies = true;
 
@@ -24,10 +24,10 @@ namespace Server.Mobiles.Animals
             SetDex(120);
             SetInt(5);
 
-            SetHits(350);
+            SetHits(280);
             SetMana(10);
             SetStam(240);
-            SetArme(13, 19, 40);
+            SetArme(13, 17, 40);
 
             SetResistance(ResistanceType.Physical, 0);
             SetResistance(ResistanceType.Magie, 0);

@@ -21,10 +21,10 @@ namespace Server.Mobiles
             SetDex(20);
             SetInt(10);
 
-            SetHits(80);
+            SetHits(150);
             SetMana(10);
             SetStam(40);
-            SetArme(2, 5, 30);
+            SetArme(3, 7, 30);
 
             SetResistance(ResistanceType.Physical, 10);
             SetResistance(ResistanceType.Magie, 0);

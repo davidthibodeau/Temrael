@@ -8,7 +8,7 @@ namespace Server.Mobiles
     {
         [Constructable]
         public GobelinFrancTireur()
-            : base(AIType.AI_Archer, FightMode.Closest, 8, 2, 0.3, 0.5)
+            : base(AIType.AI_Archer, FightMode.Closest, 9, 2, 0.3, 0.5)
         {
             Name = "Gobelin Franc-Tireur";
             Body = 251;
@@ -16,16 +16,16 @@ namespace Server.Mobiles
 
             PlayersAreEnemies = true;
             Hidden = true;
-            MaxRange = 8;
+            MaxRange = 9;
 
             SetStr(40);
             SetDex(60);
             SetInt(10);
 
-            SetHits(90);
+            SetHits(150);
             SetMana(20);
             SetStam(120);
-            SetArme(4, 7, 30);
+            SetArme(6, 9, 30);
 
             SetResistance(ResistanceType.Physical, 30);
             SetResistance(ResistanceType.Magie, 0);

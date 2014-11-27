@@ -7,35 +7,34 @@ namespace Server.Mobiles
     public class GobelinArcher : BaseCreature
     {
         [Constructable]
-        public GobelinArcher()
-            : base(AIType.AI_Archer, FightMode.Closest, 8, 2, 0.2, 0.4)
-                    {
-                            Name = "Gobelin Archer";
-                            Body = 249;
-                            BaseSoundID = 462;
-
-                            PlayersAreEnemies = true;
-                            MaxRange = 8; 
-  
+        public GobelinArcher() : base( AIType.AI_Archer, FightMode.Closest, 9, 2, 0.2, 0.4 )
+        {
+                Name = "Gobelin Archer";
+                Body = 249;
+                BaseSoundID = 462;
  
-                            SetStr( 30 );
-                            SetDex( 40 );
-                            SetInt( 10 );
+                PlayersAreEnemies = true;
+                MaxRange = 9;
+ 
+ 
+                SetStr( 30 );
+                SetDex( 40 );
+                SetInt( 10 );
      
-                            SetHits( 80 );
-                            SetMana( 20);
-                            SetStam( 40);    
-                            SetArme(2, 5, 30);
+                SetHits( 125 );
+                SetMana( 20);
+                SetStam( 40);    
+                SetArme(3, 7, 30);
      
-                            SetResistance( ResistanceType.Physical, 10 );
-                            SetResistance( ResistanceType.Magie, 0 );
+                SetResistance( ResistanceType.Physical, 10 );
+                SetResistance( ResistanceType.Magie, 0 );
      
-                            SetSkill( SkillName.ArmureNaturelle, 26 );
-                            SetSkill( SkillName.Tactiques, 46 );
-                            SetSkill( SkillName.Epee, 46 );
-                            SetSkill( SkillName.CoupCritique, 42 );
+                SetSkill( SkillName.ArmureNaturelle, 26 );
+                SetSkill( SkillName.Tactiques, 46 );
+                SetSkill( SkillName.Epee, 46 );
+                SetSkill( SkillName.CoupCritique, 42 );
      
-                    }
+        }
 
         public override void GenerateLoot()
         {

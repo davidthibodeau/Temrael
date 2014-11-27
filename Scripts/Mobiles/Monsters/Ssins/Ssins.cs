@@ -8,7 +8,7 @@ namespace Server.Mobiles
     {
         [Constructable]
         public Ssins()
-            : base(AIType.AI_Thief, FightMode.Closest, 5, 1, 0.3, 0.5)
+            : base(AIType.AI_Thief, FightMode.Closest, 7, 1, 0.3, 0.5)
         {
             Name = "Ssins";
             Body = 42;
@@ -20,10 +20,10 @@ namespace Server.Mobiles
             SetDex(30);
             SetInt(10);
 
-            SetHits(30);
+            SetHits(100);
             SetMana(10);
             SetStam(40);
-            SetArme(1, 5, 40);
+            SetArme(2, 6, 40);
 
             SetResistance(ResistanceType.Physical, 0);
             SetResistance(ResistanceType.Magie, 0);

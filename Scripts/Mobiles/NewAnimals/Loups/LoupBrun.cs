@@ -21,10 +21,10 @@ namespace Server.Mobiles
             SetDex(20);
             SetInt(5);
 
-            SetHits(80);
+            SetHits(150);
             SetMana(10);
             SetStam(40);
-            SetArme(4, 7, 40);
+            SetArme(4, 8, 40);
 
             SetResistance(ResistanceType.Physical, 0);
             SetResistance(ResistanceType.Magie, 0);
@@ -35,8 +35,8 @@ namespace Server.Mobiles
             SetSkill(SkillName.Anatomie, 22);
 
             Tamable = true;
-            ControlSlots = 1;
-            MinTameSkill = 15;
+            ControlSlots = 3;
+            MinTameSkill = 30;
 
         }
 

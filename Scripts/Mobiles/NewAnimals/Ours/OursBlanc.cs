@@ -25,21 +25,21 @@ namespace Server.Mobiles
             SetHits(300);
             SetMana(10);
             SetStam(120);
-            SetArme(10, 15, 40);
+            SetArme(12, 16, 40);
 
             SetResistance(ResistanceType.Physical, 15);
             SetResistance(ResistanceType.Magie, 0);
 
-            SetSkill(SkillName.ArmureNaturelle, 60);
-            SetSkill(SkillName.Tactiques, 60);
-            SetSkill(SkillName.Epee, 60);
-            SetSkill(SkillName.Anatomie, 60);
-            SetSkill(SkillName.ResistanceMagique, 40);
+            SetSkill(SkillName.ArmureNaturelle, 58);
+            SetSkill(SkillName.Tactiques, 58);
+            SetSkill(SkillName.Epee, 58);
+            SetSkill(SkillName.Anatomie, 58);
+            SetSkill(SkillName.ResistanceMagique, 58);
 
 
             Tamable = true;
-            ControlSlots = 3;
-            MinTameSkill = 45;
+            ControlSlots = 4;
+            MinTameSkill = 90;
 
         }
 

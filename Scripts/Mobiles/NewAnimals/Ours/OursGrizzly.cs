@@ -38,8 +38,8 @@ namespace Server.Mobiles
 
 
             Tamable = true;
-            ControlSlots = 3;
-            MinTameSkill = 40;
+            ControlSlots = 4;
+            MinTameSkill = 80;
 
         }
 

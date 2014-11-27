@@ -8,11 +8,13 @@ namespace Server.Mobiles
     {
         [Constructable]
         public SsinsSorcier()
-            : base(AIType.AI_Mage, FightMode.Closest, 6, 1, 0.3, 0.5)
+            : base(AIType.AI_Mage, FightMode.Closest, 9, 1, 0.2, 0.4)
         {
-            Name = "Ssins Sorcier";
+            Name = "SsinsSorcier";
             Body = 44;
-            BaseSoundID = 393;
+            BaseSoundID = 0x189;
+
+
 
             PlayersAreEnemies = true;
 
@@ -20,16 +22,16 @@ namespace Server.Mobiles
             SetDex(30);
             SetInt(50);
 
-            SetHits(40);
+            SetHits(115);
             SetMana(100);
             SetStam(40);
-            SetArme(1, 5, 40);
+            SetArme(2, 6, 40);
 
             SetResistance(ResistanceType.Physical, 0);
             SetResistance(ResistanceType.Magie, 0);
 
-            SetSkill(SkillName.ArtMagique, 50);
-            SetSkill(SkillName.Evocation, 50);
+            SetSkill(SkillName.ArtMagique, 55);
+            SetSkill(SkillName.Evocation, 55);
             SetSkill(SkillName.Epee, 10);
             SetSkill(SkillName.Tactiques, 10);
         }
@@ -37,11 +39,15 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.Regs);
-            AddLoot(LootPack.Food);
             AddLoot(LootPack.Regs);
+            AddLoot(LootPack.Regs);
+            AddLoot(LootPack.Regs);
+
+            AddLoot(LootPack.Junk);
+            AddLoot(LootPack.Food);
         }
 
-        public override int Bones { get { return 3; } }
+        public override int Bones { get { return 4; } }
         public override BoneType BoneType { get { return BoneType.Regular; } }
 
         public SsinsSorcier(Serial serial)

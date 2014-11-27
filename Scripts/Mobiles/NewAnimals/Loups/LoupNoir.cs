@@ -8,7 +8,7 @@ namespace Server.Mobiles
     {
         [Constructable]
         public LoupNoir()
-            : base(AIType.AI_Thief, FightMode.Closest, 8, 1, 0.2, 0.4)
+            : base(AIType.AI_Melee, FightMode.Closest, 8, 1, 0.2, 0.4)
         {
             Name = "Loup Noir";
             Body = 225;
@@ -23,10 +23,10 @@ namespace Server.Mobiles
             SetDex(50);
             SetInt(5);
 
-            SetHits(100);
+            SetHits(185);
             SetMana(10);
             SetStam(80);
-            SetArme(7, 10, 40);
+            SetArme(6, 10, 40);
 
             SetResistance(ResistanceType.Physical, 0);
             SetResistance(ResistanceType.Magie, 0);
@@ -38,8 +38,8 @@ namespace Server.Mobiles
 
 
             Tamable = true;
-            ControlSlots = 2;
-            MinTameSkill = 25;
+            ControlSlots = 3;
+            MinTameSkill = 50;
 
         }
 

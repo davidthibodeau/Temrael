@@ -1,36 +1,35 @@
 ﻿using System;
 using Server.Mobiles;
+using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Cadavre de Gobelin")]
-    public class GobelinChampion : BaseCreature
+    [CorpseName("Cadavre de Scarabée")]
+    public class ScarabeeGeant : BaseCreature
     {
         [Constructable]
-        public GobelinChampion()
+        public ScarabeeGeant()
             : base(AIType.AI_Melee, FightMode.Closest, 8, 1, 0.2, 0.4)
         {
-            Name = "Gobelin Champion";
-            Body = 250;
-            BaseSoundID = 462;
+            Name = "Scarabee Geant";
+            Body = 240;
+            BaseSoundID = 0x184;
 
             PlayersAreEnemies = true;
-            Hidden = true;
-            Direction = Direction.Left;
 
             SetStr(50);
             SetDex(30);
             SetInt(10);
 
-            SetHits(175);
+            SetHits(150);
             SetMana(20);
             SetStam(60);
-            SetArme(5, 9, 30);
+            SetArme(4, 7, 30);
 
             SetResistance(ResistanceType.Physical, 30);
             SetResistance(ResistanceType.Magie, 0);
 
-            SetSkill(SkillName.Infiltration, 36);
+            SetSkill(SkillName.Penetration, 36);
             SetSkill(SkillName.Tactiques, 48);
             SetSkill(SkillName.Epee, 48);
             SetSkill(SkillName.Parer, 48);
@@ -39,15 +38,12 @@ namespace Server.Mobiles
 
         public override void GenerateLoot()
         {
-            AddLoot(LootPack.Junk);
-            AddLoot(LootPack.UtilityItems);
-            AddLoot(LootPack.Food);
+            Amber amber = new Amber(1);
+            AddToBackpack(amber);
+            AddToBackpack(amber);
         }
 
-        public override int Bones { get { return 3; } }
-        public override BoneType BoneType { get { return BoneType.Gobelin; } }
-
-        public GobelinChampion(Serial serial)
+        public ScarabeeGeant(Serial serial)
             : base(serial)
         {
         }
