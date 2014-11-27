@@ -6137,15 +6137,6 @@ namespace Server
 			if( target == this )
 				return true;
 
-			// TODO: Pets
-			if( /*m_Player &&*/ !Region.AllowHarmful( this, target ) )//(target.m_Player || target.Body.IsHuman) && !Region.AllowHarmful( this, target )  )
-			{
-				if( message )
-					SendLocalizedMessage( 1001018 ); // You can not perform negative acts on your target.
-
-				return false;
-			}
-
 			return true;
 		}
 
