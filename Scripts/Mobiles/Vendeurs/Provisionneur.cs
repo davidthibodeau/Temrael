@@ -88,13 +88,13 @@ namespace Server.Mobiles.Vendeurs
                 Add(new GenericBuyInfo(typeof(Chessboard), 20, 0xFA6, 0)); // 9
                 Add(new GenericBuyInfo(typeof(CheckerBoard), 20, 0xFA6, 0)); // 9
                 Add(new GenericBuyInfo(typeof(Backgammon), 20, 0xE1C, 0)); // 15
-                Add(new GenericBuyInfo(typeof(Candle), 20, 0x2600, 0)); // 6
+                Add(new GenericBuyInfo(typeof(Candle), 20, 0xA28, 0)); // 6
                 Add(new GenericBuyInfo(typeof(Arrow), 100, 0xF3F, 0)); // 3
                 Add(new GenericBuyInfo(typeof(Bolt), 100, 0x1BFB, 0)); // 3
                 Add(new GenericBuyInfo(typeof(Backpack), 20, 0xE75, 0)); // 15
                 Add(new GenericBuyInfo(typeof(Pouch), 20, 0xE79, 0)); // 9
                 Add(new GenericBuyInfo(typeof(Bag), 20, 0xE76, 0)); // 6
-                Add(new GenericBuyInfo(typeof(Torch), 20, 0x3947, 0)); // 6
+                Add(new GenericBuyInfo(typeof(Torch), 20, 0xF6B, 0)); // 6
                 Add(new GenericBuyInfo(typeof(Lantern), 20, 0xA25, 0)); // 6
                 Add(new GenericBuyInfo(typeof(WoodenBox), 20, 0x9AA, 0)); // 9
                 Add(new GenericBuyInfo(typeof(Kindling), 20, 0xDE1, 0)); // 3

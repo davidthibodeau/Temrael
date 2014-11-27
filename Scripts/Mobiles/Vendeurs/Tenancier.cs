@@ -93,7 +93,7 @@ namespace Server.Mobiles.Vendeurs
                 Add(new BeverageBuyInfo(typeof(BeverageBottle), BeverageType.Wine, 15, 20, 0x9C7, 0 )); // 15  
                 Add(new BeverageBuyInfo(typeof(Jug), BeverageType.Cider, 9, 20, 0x9C8, 0)); // 9
                 Add(new BeverageBuyInfo(typeof(Pitcher), BeverageType.Cider, 21, 20, 0x1F97, 0)); // 21
-                Add(new GenericBuyInfo(typeof(Candle), 20, 0x2600, 0)); // 6
+                Add(new GenericBuyInfo(typeof(Candle), 20, 0xA28, 0)); // 6
                 Add(new GenericBuyInfo(typeof(Cake), 20, 0x9E9, 0)); // 3
                 Add(new GenericBuyInfo(typeof(CookedBird), 20, 0x9B7, 0)); // 3
             }

@@ -102,7 +102,7 @@ namespace Server.Mobiles.Vendeurs
                 Add(new GenericBuyInfo(typeof(Chessboard), 20, 0xFA6, 0)); // 9
                 Add(new GenericBuyInfo(typeof(CheckerBoard), 20, 0xFA6, 0)); // 9
                 Add(new GenericBuyInfo(typeof(Backgammon), 20, 0xE1C, 0)); // 15
-                Add(new GenericBuyInfo(typeof(Candle), 20, 0x2600, 0)); // 6
+                Add(new GenericBuyInfo(typeof(Candle), 20, 0xA28, 0)); // 6
                 Add(new GenericBuyInfo(typeof(BreadLoaf), 20, 0x103B, 0)); // 3
                 Add(new GenericBuyInfo(typeof(CheeseWheel), 20, 0x97E, 0)); // 6
                 Add(new GenericBuyInfo(typeof(CookedBird), 20, 0x9B7, 0)); // 3

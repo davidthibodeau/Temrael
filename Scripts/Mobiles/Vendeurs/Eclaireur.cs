@@ -105,13 +105,13 @@ namespace Server.Mobiles.Vendeurs
                 Add(new BeverageBuyInfo(typeof(Pitcher), BeverageType.Ale, 21, 20, 0x1F95, 0)); // 21  
                 Add(new BeverageBuyInfo(typeof(Jug), BeverageType.Cider, 9, 20, 0x9C8, 0)); // 9  
                 Add(new GenericBuyInfo(typeof(Dices), 20, 0xFA7, 0)); // 6
-                Add(new GenericBuyInfo(typeof(Candle), 20, 0x2600, 0)); // 6
+                Add(new GenericBuyInfo(typeof(Candle), 20, 0xA28, 0)); // 6
                 Add(new GenericBuyInfo(typeof(BreadLoaf), 20, 0x103B, 0)); // 3
                 Add(new GenericBuyInfo(typeof(CheeseWheel), 20, 0x97E, 0)); // 6
                 Add(new GenericBuyInfo(typeof(CookedBird), 20, 0x9B7, 0)); // 3
                 Add(new GenericBuyInfo(typeof(WoodenBowlOfStew), 20, 0x1604, 0)); // 6
                 Add(new GenericBuyInfo(typeof(Bag), 20, 0xE76, 0)); // 6
-                Add(new GenericBuyInfo(typeof(Torch), 20, 0x3947, 0)); // 6
+                Add(new GenericBuyInfo(typeof(Torch), 20, 0xF6B, 0)); // 6
                 Add(new GenericBuyInfo(typeof(RedBook), 20, 0xFF1, 0)); // 6
                 Add(new GenericBuyInfo(typeof(Bandage), 50, 0xE21, 0)); // 3
                 Add(new GenericBuyInfo(typeof(Sextant), 20, 0x1058, 0)); // 21
