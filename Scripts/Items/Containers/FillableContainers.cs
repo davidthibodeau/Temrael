@@ -748,7 +748,7 @@ namespace Server.Items
 				new FillableEntry( typeof( RefreshPotion ) ),
 				new FillableEntry( typeof( LesserHealPotion ) ),
 				new FillableEntry( typeof( LesserExplosionPotion ) ),
-				new FillableEntry( typeof( MortarPestle ) )
+				//new FillableEntry( typeof( MortarPestle ) )
 			} );
 
 		public static FillableContent Armorer = new FillableContent(
@@ -1405,7 +1405,7 @@ namespace Server.Items
 			new FillableEntry[]
 			{
 				new FillableEntry( 1, typeof( Bandage ) ),
-				new FillableEntry( 1, typeof( MortarPestle ) ),
+				//new FillableEntry( 1, typeof( MortarPestle ) ),
 				new FillableEntry( 1, typeof( LesserHealPotion ) ),
 				//new FillableEntry( 1, typeof( Wheat ) ),
 				new FillableEntry( 1, typeof( Carrot ) )

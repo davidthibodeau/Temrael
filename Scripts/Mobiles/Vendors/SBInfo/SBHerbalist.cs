@@ -25,7 +25,7 @@ namespace Server.Mobiles
 				Add( new GenericBuyInfo( typeof( MandrakeRoot ), 3, 20, 0xF86, 0 ) ); 
 				Add( new GenericBuyInfo( typeof( Nightshade ), 3, 20, 0xF88, 0 ) ); 
 				Add( new GenericBuyInfo( typeof( Bloodmoss ), 5, 20, 0xF7B, 0 ) ); 
-				Add( new GenericBuyInfo( typeof( MortarPestle ), 20, 20, 0xE9B, 0 ) );
+				//Add( new GenericBuyInfo( typeof( MortarPestle ), 20, 20, 0xE9B, 0 ) );
 				Add( new GenericBuyInfo( typeof( Bottle ), 5, 20, 0xF0E, 0 ) ); 
  
 			} 
@@ -41,7 +41,7 @@ namespace Server.Mobiles
 				Add( typeof( Ginseng ), 1 ); 
 				Add( typeof( Nightshade ), 1 ); 
 				Add( typeof( Bottle ), 1 ); 
-				Add( typeof( MortarPestle ), 1 ); 
+				//Add( typeof( MortarPestle ), 1 ); 
 			} 
 		} 
 	} 

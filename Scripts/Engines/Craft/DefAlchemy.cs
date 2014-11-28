@@ -3,6 +3,7 @@ using Server.Items;
 
 namespace Server.Engines.Craft
 {
+    /*
 	public class DefAlchemy : CraftSystem
 	{
 		public override SkillName MainSkill
@@ -161,4 +162,5 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Bottle), "Bouteille", 1, 500315);
 		}
 	}
+    */
 }

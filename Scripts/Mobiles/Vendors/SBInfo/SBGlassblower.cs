@@ -29,7 +29,7 @@ namespace Server.Mobiles
  				Add( new GenericBuyInfo( typeof( LesserCurePotion ), 15, 10, 0xF07, 0 ) );
 				Add( new GenericBuyInfo( typeof( LesserExplosionPotion ), 21, 10, 0xF0D, 0 ) );
                 */
-				Add( new GenericBuyInfo( typeof( MortarPestle ), 20, 10, 0xE9B, 0 ) );
+				//Add( new GenericBuyInfo( typeof( MortarPestle ), 20, 10, 0xE9B, 0 ) );
 
 				Add( new GenericBuyInfo( typeof( BlackPearl ), 5, 20, 0xF7A, 0 ) );
 				Add( new GenericBuyInfo( typeof( Bloodmoss ), 5, 20, 0xF7B, 0 ) );
@@ -63,7 +63,7 @@ namespace Server.Mobiles
 				Add( typeof( SpidersSilk ), 1 ); 
 				Add( typeof( SulfurousAsh ), 1 ); 
 				Add( typeof( Bottle ), 1 );
-				Add( typeof( MortarPestle ), 1 );
+				//Add( typeof( MortarPestle ), 1 );
 
 				Add( typeof( NightSightPotion ), 2 );
 				Add( typeof( AgilityPotion ), 2 );
