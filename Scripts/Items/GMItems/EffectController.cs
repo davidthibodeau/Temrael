@@ -94,6 +94,7 @@ namespace Server.Items
         private int m_MissileRenderMode;
 		private int m_MissileSpeed;
 		private int m_MissileDuration;
+        private TimeSpan m_MissileDelay;
 		private bool m_MissileFixedDirection;
 		private bool m_MissileExplodes;
 		private int m_MissileParticleEffect;
@@ -128,6 +129,9 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.Batisseur)]
         public int MissileDuration { get { return m_MissileDuration; } set { m_MissileDuration = value; } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public TimeSpan MissileDelay { get { return m_MissileDelay; } set { m_MissileDelay = value; } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public int MissileParticleEffect { get { return m_MissileParticleEffect; } set { m_MissileParticleEffect = value; } }
@@ -247,6 +251,9 @@ namespace Server.Items
 
             if (m_Trigger != null)
                 Timer.DelayCall(m_TriggerDelay, new TimerStateCallback(m_Trigger.DoEffect), trigger);
+
+            if (m_MissileEffectType != ECEffectType.None)
+                Timer.DelayCall(m_MissileDelay, new TimerStateCallback(MissileEffect), trigger);
         }
 
 		public void PlaySound( object trigger )
@@ -388,6 +395,7 @@ namespace Server.Items
 
             writer.Write(m_TriggerDelay);
             writer.Write(m_SoundDelay);
+            writer.Write(m_MissileDelay);
 
             if (m_Source is Item)
                 writer.Write(m_Source as Item);
@@ -442,6 +450,8 @@ namespace Server.Items
 
             m_TriggerDelay = reader.ReadTimeSpan();
             m_SoundDelay = reader.ReadTimeSpan();
+            if (version == 3)
+                m_MissileDelay = reader.ReadTimeSpan();
 
             m_Source = ReadEntity(reader);
             m_Target = ReadEntity(reader);
@@ -450,11 +460,12 @@ namespace Server.Items
             m_MissileFixedDirection = reader.ReadBool();
             m_MissileExplodes = reader.ReadBool();
             m_SoundAtTrigger = reader.ReadBool();
-
             if (version == 0 || version == 1)
             {
                 reader.ReadBool();
             }
+
+
             m_MessageDelay = reader.ReadTimeSpan();
             m_MessageAtTrigger = reader.ReadBool();
             m_Message = reader.ReadString();
