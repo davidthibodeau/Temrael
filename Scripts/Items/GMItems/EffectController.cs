@@ -450,8 +450,7 @@ namespace Server.Items
 
             m_TriggerDelay = reader.ReadTimeSpan();
             m_SoundDelay = reader.ReadTimeSpan();
-            if (version == 3)
-                m_MissileDelay = reader.ReadTimeSpan();
+            m_MissileDelay = reader.ReadTimeSpan();
 
             m_Source = ReadEntity(reader);
             m_Target = ReadEntity(reader);
