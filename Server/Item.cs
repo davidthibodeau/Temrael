@@ -584,15 +584,18 @@ namespace Server
         [CommandProperty(AccessLevel.Batisseur)]
         public int Trap_ActivateMode { get { return m_TrapActivateMode; } set { m_TrapActivateMode = value; } }
 
+        public void Trap_Disarm()
+        {
+            m_TrapLastEffect = DateTime.Now;
+            m_TrapTrapped = false;
+            new TrapResetTimer(m_TrapCooldown, this);
+        }
 
         public void Trap_OnActivate(Mobile from)
         {
             if (m_TrapActivateItem is IActivable && m_TrapTrapped && m_TrapActivateItem != null && m_TrapLastEffect.Add(m_TrapCooldown) < DateTime.Now)
             {
-                m_TrapLastEffect = DateTime.Now;
-                m_TrapTrapped = false;
-
-                new TrapResetTimer(m_TrapCooldown, this);
+                Trap_Disarm();
 
                 ((IActivable)m_TrapActivateItem).OnActivate(m_TrapActivateMode, from);
             }

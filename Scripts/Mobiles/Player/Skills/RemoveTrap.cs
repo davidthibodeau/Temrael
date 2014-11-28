@@ -52,7 +52,7 @@ namespace Server.SkillHandlers
 
                         if (from.CheckTargetSkill(SkillName.Pieges, targ, targ.Trap_DisarmDifficulty, targ.Trap_DisarmDifficulty + 20))
 					    {
-                            targ.Trap_IsTrapped = false;
+                            targ.Trap_Disarm();
 						    from.SendLocalizedMessage( 502377 ); // You successfully render the trap harmless
 					    }
 					    else

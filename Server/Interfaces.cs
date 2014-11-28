@@ -124,6 +124,8 @@ namespace Server
 
         int Trap_ActivateMode { get; set; }
 
+        void Trap_Disarm();
+
         void Trap_OnActivate(Mobile from);
     }
     public class TrapResetTimer : Timer
