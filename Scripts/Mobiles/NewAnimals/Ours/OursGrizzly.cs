@@ -4,10 +4,10 @@ using Server.Mobiles;
 namespace Server.Mobiles
 {
     [CorpseName("Cadavre d'ours")]
-    public class OursGrizzli : BaseCreature
+    public class OursGrizzly : BaseCreature
     {
         [Constructable]
-        public OursGrizzli()
+        public OursGrizzly()
             : base(AIType.AI_Melee, FightMode.Closest, 9, 1, 0.2, 0.4)
         {
             Name = "Grizzli";
@@ -43,12 +43,12 @@ namespace Server.Mobiles
 
         }
 
-        public override int Hides { get { return 16; } }
-        public override HideType HideType { get { return HideType.Regular; } }
-        public override int Meat { get { return 20; } }
+        public override int Hides { get { return 4; } }
+        public override HideType HideType { get { return HideType.Nordique; } }
+        public override int Meat { get { return 10; } }
         public override MeatType MeatType { get { return MeatType.Ribs; } }
 
-        public OursGrizzli(Serial serial)
+        public OursGrizzly(Serial serial)
             : base(serial)
         {
         }
