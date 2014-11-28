@@ -32,7 +32,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Epee, 7.0);
             SetSkill(SkillName.Empoisonnement, 30.0);
 
-            Poison = Poison.Lesser;
             Hidden = true;
 
             Tamable = true;
