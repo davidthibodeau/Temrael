@@ -178,6 +178,7 @@ namespace Server.Items
         public Board(int amount)
             : base(CraftResource.RegularWood, amount)
         {
+            GoldValue = 3;
         }
 
         public Board(Serial serial)

@@ -49,7 +49,10 @@ namespace Server.Items
                     return;
                 }
 
-                if (from.Skills[SkillName.Alchimie].Value >= 50)
+                from.SendMessage((from.Skills[SkillName.Alchimie].Value).ToString());
+                from.SendMessage((((IExtractable)targeted).getSkillReq).ToString());
+
+                if (from.Skills[SkillName.Alchimie].Value >= ((IExtractable)targeted).getSkillReq )
                 {
                     from.AddToBackpack(new TeintureModif((IExtractable)targeted));
                     item.Consume(5);

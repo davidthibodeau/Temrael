@@ -217,6 +217,7 @@
     <Compile Include="Mobiles\Vendeurs\Herboriste.cs" />
     <Compile Include="Mobiles\Vendeurs\Luthier.cs" />
     <Compile Include="Mobiles\Vendeurs\Magicienne.cs" />
+    <Compile Include="Mobiles\Vendeurs\Menuisier.cs" />
     <Compile Include="Mobiles\Vendeurs\Pecheur.cs" />
     <Compile Include="Mobiles\Vendeurs\Pecheur2.cs" />
     <Compile Include="Mobiles\Vendeurs\Provisionneur.cs" />

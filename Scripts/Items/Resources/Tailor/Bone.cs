@@ -16,7 +16,7 @@ namespace Server.Items
         }
         public double getSkillReq
         {
-            get { return CraftResources.GetHue(m_Resource); }
+            get { return CraftResources.GetSkill(m_Resource); }
         }
         #endregion
 

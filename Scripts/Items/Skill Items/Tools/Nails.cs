@@ -10,6 +10,7 @@ namespace Server.Items
 		[Constructable]
 		public Nails() : base( 0x102E )
 		{
+            GoldValue = 3;
             Weight = 0.1;
 		}
 
