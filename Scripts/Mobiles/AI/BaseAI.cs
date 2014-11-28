@@ -2574,8 +2574,13 @@ namespace Server.Mobiles
 							continue;
 					} else {
 
+
+						// Same goes for faction enemies.
+						if ( bFacFoe && !m_Mobile.IsEnemy( m ) )
+							continue;
+
 						// If it's an enemy factioned mobile, make sure we can be harmful to it.
-						if ( !m_Mobile.CanBeHarmful( m, false ) )
+						if ( bFacFoe && !bFacFriend && !m_Mobile.CanBeHarmful( m, false ) )
 							continue;
 					}
 
