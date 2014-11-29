@@ -44,8 +44,8 @@ namespace Server.Mobiles
      
             public override void GenerateLoot()
             {
-                DeadlyPoisonPotion DeadlyPoisonPotion = new DeadlyPoisonPotion(1);
-                AddToBackpack(DeadlyPoisonPotion);
+                //DeadlyPoisonPotion DeadlyPoisonPotion = new DeadlyPoisonPotion(1);
+                //AddToBackpack(DeadlyPoisonPotion);
 
                 AddToBackpack(new Amber(1));
                 AddToBackpack(new Emerald(1));
