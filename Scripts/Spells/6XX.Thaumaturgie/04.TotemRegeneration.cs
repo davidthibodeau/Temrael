@@ -7,6 +7,9 @@ using Server.Mobiles;
 using Server.Engines.PartySystem;
 using Server.Misc;
 using Server.Engines.Combat;
+using System.Threading;
+using Server.ContextMenus;
+using System.Collections.Generic;
 
 namespace Server.Spells
 {
@@ -63,13 +66,13 @@ namespace Server.Spells
 
                 Point3D point = new Point3D(p);
 
-                Totem totem = new Totem(point, Caster.Map);
+                Totem totem = new Totem(Caster, point, Caster.Map);
 
                 m_SpellDejaActif[Caster] = totem;
 
                 TimeSpan intervale = TimeSpan.FromSeconds((MaxDuration.TotalSeconds * m_HealPerTick) / (Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) * 3));
 
-				Effects.PlaySound( p, Caster.Map, 0x506 );
+                Effects.PlaySound(p, Caster.Map, 0x506);
                 Caster.FixedParticles(0x373A, 1, 17, 9919, 0x527, 0, EffectLayer.Waist);
 
                 new RegenTimer(Caster, totem, MaxDuration, intervale).Start();
@@ -148,7 +151,10 @@ namespace Server.Spells
         [DispellableField]
         private class Totem : Item
         {
-            public Totem(Point3D p, Map m)
+            private Mobile Caster;
+            public Timer timer;
+
+            public Totem(Mobile caster, Point3D p, Map m)
                 : base(0x38D7)
             {
                 Name = "Totem de regeneration";
@@ -156,6 +162,7 @@ namespace Server.Spells
                 CanBeAltered = false;
                 MoveToWorld(p, m);
                 Visible = true;
+                Caster = caster;
             }
 
             public Totem(Serial serial)
@@ -163,6 +170,35 @@ namespace Server.Spells
             {
 
             }
+
+            private class DispellEntry : ContextMenuEntry
+            {
+                private Mobile m_From;
+                private Totem Totem;
+
+                public DispellEntry(Mobile from, Totem totem)
+                    : base(6135, 1)
+                {
+                    m_From = from;
+                    Totem = totem;
+                }
+
+                public override void OnClick()
+                {
+                    if (m_From.Alive)
+                    {
+                        Totem.timer.Stop();
+                        Totem.Delete();
+                    }
+                }
+            }
+
+            public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
+            {
+                if(from == Caster) 
+                    list.Add(new DispellEntry(from, this));
+            }
+
 
             public override void Serialize(GenericWriter writer)
             {
