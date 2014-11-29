@@ -86,7 +86,7 @@ namespace Server.Spells
         {
             if (GetBloodOath(atk) == def)
             {
-                def.Damage((int)(damage * 0.25)); // Retourne 25% des dégâts.
+                atk.Damage((int)(damage * 0.25)); // Retourne 25% des dégâts.
                 damage = (int)(damage * 1.25);    // Augmente de 25% tous les dégâts.
             }
         }
