@@ -44,18 +44,6 @@ namespace Server.Items
 
                 Account act = tMob.Account as Account;
 
-                if (act.GetTag("XP") != "")
-                {
-                    tMob.Experience.XP = Convert.ToInt32(act.GetTag("XP"));
-                    act.SetTag("XP", "");
-                }
-
-                if (act.Created < new DateTime(2013, 6, 11) && act.GetTag("XPBeta") != "True")
-                {
-                    tMob.Experience.XP = 10000;
-                    act.SetTag("XPBeta", "True");
-                }
-
                 tMob.Title = "";
                 tMob.MortEngine.MortEvo = MortEvo.Aucune;
 
