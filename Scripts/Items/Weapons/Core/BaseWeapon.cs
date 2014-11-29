@@ -1212,7 +1212,6 @@ namespace Server.Items
                 m_Hits = m_MaxHits = Utility.RandomMinMax(InitMinHits, InitMaxHits);
             }
 
-            Hue = CraftResources.GetHue(m_Resource);
         }
 		#endregion
 
