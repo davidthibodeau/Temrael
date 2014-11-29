@@ -13,15 +13,15 @@ namespace Server.Custom.Commandes
     {
         public static void Initialize()
         {
-            CommandSystem.Register("TechniqueAssassin", AccessLevel.Player, new CommandEventHandler(TechniqueAssassin_OnCommand));
-            CommandSystem.Register("Technique1", AccessLevel.Player, new CommandEventHandler(Technique1_OnCommand));
-            // ...
-            CommandSystem.Register("Targeted", AccessLevel.Player, new CommandEventHandler(Targeted_OnCommand));
-            CommandSystem.Register("TargetedTimer", AccessLevel.Player, new CommandEventHandler(TargetedTimer_OnCommand));
-            CommandSystem.Register("AoE", AccessLevel.Player, new CommandEventHandler(AoE_OnCommand));
-            CommandSystem.Register("AoETimer", AccessLevel.Player, new CommandEventHandler(AoETimer_OnCommand));
-            CommandSystem.Register("SpellSelf", AccessLevel.Player, new CommandEventHandler(Self_OnCommand));
-            CommandSystem.Register("SelfTimer", AccessLevel.Player, new CommandEventHandler(SelfTimer_OnCommand));
+            //CommandSystem.Register("TechniqueAssassin", AccessLevel.Player, new CommandEventHandler(TechniqueAssassin_OnCommand));
+            //CommandSystem.Register("Technique1", AccessLevel.Player, new CommandEventHandler(Technique1_OnCommand));
+            //// ...
+            //CommandSystem.Register("Targeted", AccessLevel.Player, new CommandEventHandler(Targeted_OnCommand));
+            //CommandSystem.Register("TargetedTimer", AccessLevel.Player, new CommandEventHandler(TargetedTimer_OnCommand));
+            //CommandSystem.Register("AoE", AccessLevel.Player, new CommandEventHandler(AoE_OnCommand));
+            //CommandSystem.Register("AoETimer", AccessLevel.Player, new CommandEventHandler(AoETimer_OnCommand));
+            //CommandSystem.Register("SpellSelf", AccessLevel.Player, new CommandEventHandler(Self_OnCommand));
+            //CommandSystem.Register("SelfTimer", AccessLevel.Player, new CommandEventHandler(SelfTimer_OnCommand));
         }
 
         [Usage("TechniqueAssassin")]

@@ -4259,8 +4259,7 @@ namespace Server
 						NetState ns = heard.NetState;
 
 						if( ns != null ) {
-                            if (regp == null)
-                                regp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), text));
+                            regp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), text));
 
 							ns.Send( regp );
 						}
@@ -4271,8 +4270,7 @@ namespace Server
 						NetState ns = heard.NetState;
 
 						if( ns != null ) {
-							if( mutp == null )
-                                mutp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), mutatedText));
+                            mutp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), mutatedText));
 
 							ns.Send( mutp );
 						}
@@ -8861,7 +8859,7 @@ namespace Server
 					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) )
 					{
 						if( p == null )
-							p = Packet.Acquire( new MessageLocalized( m_Serial, Body, type, hue, 3, number, Name, args ) );
+							p = Packet.Acquire( new MessageLocalized( m_Serial, Body, type, hue, 3, number, GetNameUseBy(state.Mobile), args ) );
 
 						state.Send( p );
 					}

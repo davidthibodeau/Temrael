@@ -14,7 +14,7 @@ namespace Server.Commandes.Temrael
 
         public static void Initialize()
         {
-            CommandSystem.Register("AddRandom", AccessLevel.Player, new CommandEventHandler(AddRandom_OnCommand));
+            CommandSystem.Register("AddRandom", AccessLevel.Batisseur, new CommandEventHandler(AddRandom_OnCommand));
         }
 
 

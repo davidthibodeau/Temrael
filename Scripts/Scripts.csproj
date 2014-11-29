@@ -233,9 +233,13 @@
     <Compile Include="Regions\ZoneInterne.cs" />
     <Compile Include="Spells\2XX.Immuabilite\05.Etouffement.cs" />
     <Compile Include="Spells\2XX.Immuabilite\06.Lenteur.cs" />
+    <Compile Include="Spells\4XX.Providence\08.ChampEntropique.cs" />
+    <Compile Include="Spells\4XX.Providence\09.Sacrifice.cs" />
+    <Compile Include="Spells\8XX.Ensorcellement\08.Affaiblissement.cs" />
     <Compile Include="Spells\6XX.Thaumaturgie\04.TotemRegeneration.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />
     <Compile Include="Items\Weapons\Core\BaseEstoc.cs" />
+    <Compile Include="Spells\6XX.Thaumaturgie\05.DernierSouffle.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpell.cs" />
     <Compile Include="Spells\CustomSpell\CustomSpellInfo.cs" />
     <Compile Include="Spells\CustomSpell\Exemples.cs" />
@@ -473,7 +477,7 @@
     <Compile Include="Spells\6XX.Thaumaturgie\02.Cure.cs" />
     <Compile Include="Spells\8XX.Ensorcellement\05.Harm.cs" />
     <Compile Include="Spells\5XX.Transmutation\MagicTrap.cs" />
-    <Compile Include="Spells\4XX.Providence\02.Protection.cs" />
+    <Compile Include="Spells\4XX.Providence\02.PeauDePierre.cs" />
     <Compile Include="Spells\5XX.Transmutation\RemoveTrap.cs" />
     <Compile Include="Spells\4XX.Providence\04.Strength.cs" />
     <Compile Include="Spells\1XX.Evocation\08.ChainLightning.cs" />
@@ -971,7 +975,7 @@
     <Compile Include="Spells\Autres%28Inutilises%29\Arcanique\Poison\Poison.cs" />
     <Compile Include="Spells\Autres%28Inutilises%29\Arcanique\Poison\PoisonMineur.cs" />
     <Compile Include="Spells\Autres%28Inutilises%29\Arcanique\Protection\Armure.cs" />
-    <Compile Include="Spells\Autres%28Inutilises%29\Arcanique\Protection\ChampDeStase.cs" />
+    <Compile Include="Spells\2XX.Immuabilite\07.ChampDeStase.cs" />
     <Compile Include="Spells\Autres%28Inutilises%29\Arcanique\Protection\Copie.cs" />
     <Compile Include="Spells\Autres%28Inutilises%29\Arcanique\Protection\Protection.cs" />
     <Compile Include="Spells\Autres%28Inutilises%29\Arcanique\Protection\Reflection.cs" />

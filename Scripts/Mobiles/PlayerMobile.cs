@@ -1746,7 +1746,7 @@ namespace Server.Mobiles
 
         public override void AddNameProperties(ObjectPropertyList list)
         {
-            string name = Name;
+            string name = "";
 
             if (name == null)
                 name = String.Empty;
@@ -1761,10 +1761,10 @@ namespace Server.Mobiles
             string color = "#ba52ff"; //"#FFFFFF";
 
             string displayName = GetNameUseBy(from);
-            if (!CanBeginAction(typeof(IncognitoSpell)))
-            {
-                displayName = "Anonyme";
-            }
+            //if (!CanBeginAction(typeof(IncognitoSpell)))
+            //{
+            //    displayName = "Anonyme";
+            //}
 
             ObjectPropertyList list = new ObjectPropertyList(this);
 
@@ -2642,6 +2642,10 @@ namespace Server.Mobiles
 
 		public override bool NewGuildDisplay { get { return Server.Guilds.Guild.NewGuildSystem; } }
 
+		public override void OnAfterNameChange( string oldName, string newName )
+		{
+            Identities.NewCharacterSetName();
+		}
 
         public override void OnAfterMove(Direction d)
         {

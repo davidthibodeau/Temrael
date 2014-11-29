@@ -191,12 +191,7 @@ namespace Server.Engines.Evolution
         {
             if (niveau == 0) return 500;
             if (niveau == 1) return 1000;
-
-            int xp = 1000;
-            for (int i = niveau; i > 1; i--)
-            {
-                xp += niveau * 1000;
-            }
+            int xp = 1000 * niveau + RequiredXP(niveau - 1);
             return xp;
         }
 
