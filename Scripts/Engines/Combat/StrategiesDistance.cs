@@ -87,18 +87,6 @@ namespace Server.Engines.Combat
         public readonly static CombatStrategy Strategy = new StrategyArc();
         
         public override int BaseRange { get { return 10; } }
-
-        public override void AttaqueAnimation(Mobile atk)
-        {
-            if (atk.Body.Type == BodyType.Human)
-            {
-                atk.Animate(27, 7, 1, true, false, 0);
-            }
-            else
-            {
-                base.AttaqueAnimation(atk);
-            }
-        }
     }
 
     public class StrategyArbalete : StrategyDistance
@@ -112,17 +100,5 @@ namespace Server.Engines.Combat
         public readonly static CombatStrategy Strategy = new StrategyArbalete();
         
         public override int BaseRange { get { return 8; } }
-
-        public override void AttaqueAnimation(Mobile atk)
-        {
-            if (atk.Body.Type == BodyType.Human)
-            {
-                atk.Animate(28, 7, 1, true, false, 0);
-            }
-            else
-            {
-                base.AttaqueAnimation(atk);
-            }
-        }
     }
 }

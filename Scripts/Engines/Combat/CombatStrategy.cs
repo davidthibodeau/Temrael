@@ -79,22 +79,8 @@ namespace Server.Engines.Combat
 
         public virtual void AttaqueAnimation(Mobile atk)
         {
-            if (atk.Body.Type == BodyType.Human)
-            {
-                BaseWeapon weapon = Weapon(atk);
-                if (weapon != null && weapon.Layer == Layer.TwoHanded)
-                    atk.Animate(29, 7, 1, true, false, 0);
-                else
-                    atk.Animate(26, 7, 1, true, false, 0);
-            }
-            else if (atk.Body.Type == BodyType.Monster)
-            {
-                atk.Animate(Utility.Random(4, 3), 7, 1, true, false, 0);
-            }
-            else
-            {
-                atk.Animate(Utility.Random(5, 2), 7, 1, true, false, 0);
-            }
+            int action = Weapon(atk).SwingAnimation(atk);
+            atk.Animate(action, 7, 1, true, false, 0);
         }
         
         public virtual void DegatsAnimation(Mobile def)
