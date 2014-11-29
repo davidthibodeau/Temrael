@@ -19,7 +19,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(4),
+                TimeSpan.FromSeconds(2),
                 SkillName.Immuabilite,
 				Reagent.Bloodmoss,
 				Reagent.Garlic

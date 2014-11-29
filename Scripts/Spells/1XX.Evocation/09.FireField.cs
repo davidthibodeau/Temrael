@@ -13,7 +13,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 109; } } // TOCHANGE
 
-        private static short s_Cercle = 9;
+        private static short s_Cercle = 4;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Mur de Feu", "In Flam Grav",
@@ -21,7 +21,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(5),
+                TimeSpan.FromSeconds(2),
                 SkillName.Evocation,
 				Reagent.BlackPearl,
 				Reagent.SpidersSilk,

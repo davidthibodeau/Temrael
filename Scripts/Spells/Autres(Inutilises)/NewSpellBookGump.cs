@@ -61,23 +61,24 @@ namespace Server.Gumps
 
             //Evocation
             new SpellBookEntry( MagicArrowSpell.Info.Circle,    MagicArrowSpell.Info.skillForCasting, "Fleche Mag.", MagicArrowSpell.Info.Reagents, 0x8D2,  MagicArrowSpell.m_SpellID),
-            new SpellBookEntry( FireballSpell.Info.Circle,      FireballSpell.Info.skillForCasting, "Boule de Feu", FireballSpell.Info.Reagents, 0x8D1, FireballSpell.m_SpellID),
+            //new SpellBookEntry( FireballSpell.Info.Circle,      FireballSpell.Info.skillForCasting, "Boule de Feu", FireballSpell.Info.Reagents, 0x8D1, FireballSpell.m_SpellID),
             new SpellBookEntry( ExplosionSpell.Info.Circle,     ExplosionSpell.Info.skillForCasting, "Explosion", ExplosionSpell.Info.Reagents, 0x8EA, ExplosionSpell.m_SpellID),
             new SpellBookEntry( EnergyBoltSpell.Info.Circle,    EnergyBoltSpell.Info.skillForCasting, "Énergie", EnergyBoltSpell.Info.Reagents, 0x8E9, EnergyBoltSpell.m_SpellID),
+            new SpellBookEntry( FireFieldSpell.Info.Circle,     FireFieldSpell.Info.skillForCasting, "Mur de Feu", FireFieldSpell.Info.Reagents, 0x8DB, FireFieldSpell.m_SpellID),
             new SpellBookEntry( LightningSpell.Info.Circle,     LightningSpell.Info.skillForCasting,"Éclair", LightningSpell.Info.Reagents, 0x8DD, LightningSpell.m_SpellID),
             //new SpellBookEntry( 6, SkillName.Evocation,  "Vortex", new Type[] { typeof(Bloodmoss), typeof(BlackPearl), typeof(MandrakeRoot), typeof(Nightshade) }, 0x8F9, 8, 58),
-            new SpellBookEntry( EarthquakeSpell.Info.Circle,    EarthquakeSpell.Info.skillForCasting, "Tremblement", EarthquakeSpell.Info.Reagents, 0x8F8, EarthquakeSpell.m_SpellID),
+            //new SpellBookEntry( EarthquakeSpell.Info.Circle,    EarthquakeSpell.Info.skillForCasting, "Tremblement", EarthquakeSpell.Info.Reagents, 0x8F8, EarthquakeSpell.m_SpellID),
             new SpellBookEntry( ChainLightningSpell.Info.Circle, ChainLightningSpell.Info.skillForCasting, "Chaine d'Éclair", ChainLightningSpell.Info.Reagents, 0x8F0, ChainLightningSpell.m_SpellID),
-            new SpellBookEntry( FireFieldSpell.Info.Circle,     FireFieldSpell.Info.skillForCasting, "Mur de Feu", FireFieldSpell.Info.Reagents, 0x8DB, FireFieldSpell.m_SpellID),
-            new SpellBookEntry( FlameStrikeSpell.Info.Circle,   FlameStrikeSpell.Info.skillForCasting, "Jet de Flamme", FlameStrikeSpell.Info.Reagents, 0x8F2, FlameStrikeSpell.m_SpellID),
+            
+            //new SpellBookEntry( FlameStrikeSpell.Info.Circle,   FlameStrikeSpell.Info.skillForCasting, "Jet de Flamme", FlameStrikeSpell.Info.Reagents, 0x8F2, FlameStrikeSpell.m_SpellID),
 
 
             // Immuabilite
             new SpellBookEntry( WallOfStoneSpell.Info.Circle,   WallOfStoneSpell.Info.skillForCasting, "Mur de Pierre", WallOfStoneSpell.Info.Reagents, 0x8D7, WallOfStoneSpell.m_SpellID),
-            new SpellBookEntry( EnergyFieldSpell.Info.Circle,   EnergyFieldSpell.Info.skillForCasting, "Mur d'Energie", EnergyFieldSpell.Info.Reagents, 0x8D7, EnergyFieldSpell.m_SpellID),
-            new SpellBookEntry( ParalyzeFieldSpell.Info.Circle, ParalyzeFieldSpell.Info.skillForCasting, "Mur Paralysie", ParalyzeFieldSpell.Info.Reagents, 0x8D7, ParalyzeFieldSpell.m_SpellID),
             new SpellBookEntry( ParalyzeSpell.Info.Circle,      ParalyzeSpell.Info.skillForCasting, "Paralysie", ParalyzeSpell.Info.Reagents, 0x8E5, ParalyzeSpell.m_SpellID),
+            new SpellBookEntry( EnergyFieldSpell.Info.Circle,   EnergyFieldSpell.Info.skillForCasting, "Mur d'Energie", EnergyFieldSpell.Info.Reagents, 0x8D7, EnergyFieldSpell.m_SpellID),
             new SpellBookEntry( EtouffementSpell.Info.Circle,   EtouffementSpell.Info.skillForCasting, "Etouffement", EtouffementSpell.Info.Reagents, 0x8E5, EtouffementSpell.m_SpellID),
+            new SpellBookEntry( ParalyzeFieldSpell.Info.Circle, ParalyzeFieldSpell.Info.skillForCasting, "Mur Paralysie", ParalyzeFieldSpell.Info.Reagents, 0x8D7, ParalyzeFieldSpell.m_SpellID),
             new SpellBookEntry( LenteurSpell.Info.Circle,       LenteurSpell.Info.skillForCasting, "Lenteur", LenteurSpell.Info.Reagents, 0x8E5, LenteurSpell.m_SpellID),
             //new SpellBookEntry( 7, SkillName.Immuabilite, "Champs de stase", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
             //new SpellBookEntry( 8, SkillName.Immuabilite, "Golem", new Type[] { typeof(Garlic), typeof(MandrakeRoot), typeof(SpidersSilk) }, 0x8E5, 5, 38),
@@ -90,20 +91,20 @@ namespace Server.Gumps
             new SpellBookEntry( EvilOmenSpell.Info.Circle,      EvilOmenSpell.Info.skillForCasting, "Présage maléf.", EvilOmenSpell.Info.Reagents, 0x8D2, EvilOmenSpell.m_SpellID),
             new SpellBookEntry( PainSpikeSpell.Info.Circle,     PainSpikeSpell.Info.skillForCasting, "Douleur", PainSpikeSpell.Info.Reagents, 0x8D2, PainSpikeSpell.m_SpellID),
             new SpellBookEntry( StrangleSpell.Info.Circle,      StrangleSpell.Info.skillForCasting, "Étranglement", StrangleSpell.Info.Reagents, 0x8D2, StrangleSpell.m_SpellID),
-            new SpellBookEntry( CorpseSkinSpell.Info.Circle,    CorpseSkinSpell.Info.skillForCasting, "Peau de cadav.", CorpseSkinSpell.Info.Reagents, 0x8D2, CorpseSkinSpell.m_SpellID),
-            new SpellBookEntry( HorrificBeastSpell.Info.Circle, HorrificBeastSpell.Info.skillForCasting, "Monstre", HorrificBeastSpell.Info.Reagents, 0x8D2, HorrificBeastSpell.m_SpellID),
-
-
-
+            //new SpellBookEntry( CorpseSkinSpell.Info.Circle,    CorpseSkinSpell.Info.skillForCasting, "Peau de cadav.", CorpseSkinSpell.Info.Reagents, 0x8D2, CorpseSkinSpell.m_SpellID),
+            //new SpellBookEntry( HorrificBeastSpell.Info.Circle, HorrificBeastSpell.Info.skillForCasting, "Monstre", HorrificBeastSpell.Info.Reagents, 0x8D2, HorrificBeastSpell.m_SpellID),
 
             //Providence
-            new SpellBookEntry( ReactiveArmorSpell.Info.Circle, ReactiveArmorSpell.Info.skillForCasting, "Armure mage", ReactiveArmorSpell.Info.Reagents, 0x8D2, ReactiveArmorSpell.m_SpellID),
-            new SpellBookEntry( ProtectionSpell.Info.Circle,    ProtectionSpell.Info.skillForCasting, "Protection", ProtectionSpell.Info.Reagents, 0x8D2, ProtectionSpell.m_SpellID),
-            new SpellBookEntry( BlessSpell.Info.Circle,         BlessSpell.Info.skillForCasting, "Bénédiction", BlessSpell.Info.Reagents, 0x8D2, BlessSpell.m_SpellID),
             new SpellBookEntry( StrengthSpell.Info.Circle,      StrengthSpell.Info.skillForCasting, "Force", StrengthSpell.Info.Reagents, 0x8D2, StrengthSpell.m_SpellID),
             new SpellBookEntry( AgilitySpell.Info.Circle,       AgilitySpell.Info.skillForCasting, "Agilité", AgilitySpell.Info.Reagents, 0x8D2, AgilitySpell.m_SpellID),
             new SpellBookEntry( CunningSpell.Info.Circle,       CunningSpell.Info.skillForCasting, "Astuce", CunningSpell.Info.Reagents, 0x8D2, CunningSpell.m_SpellID),
+            new SpellBookEntry( PeauDePierreSpell.Info.Circle,    PeauDePierreSpell.Info.skillForCasting, "Peau de Pierre", PeauDePierreSpell.Info.Reagents, 0x8D2, PeauDePierreSpell.m_SpellID),
+            new SpellBookEntry( ChampEntropiqueSpell.Info.Circle, ChampEntropiqueSpell.Info.skillForCasting, "Champ Entropique", ChampEntropiqueSpell.Info.Reagents, 0x8D2, ChampEntropiqueSpell.m_SpellID),
+            new SpellBookEntry( SacrificeSpell.Info.Circle,         SacrificeSpell.Info.skillForCasting, "Sacrifice", SacrificeSpell.Info.Reagents, 0x8D2, SacrificeSpell.m_SpellID),
+            new SpellBookEntry( BlessSpell.Info.Circle,         BlessSpell.Info.skillForCasting, "Bénédiction", BlessSpell.Info.Reagents, 0x8D2, BlessSpell.m_SpellID),
+            new SpellBookEntry( ReactiveArmorSpell.Info.Circle, ReactiveArmorSpell.Info.skillForCasting, "Armure de mage", ReactiveArmorSpell.Info.Reagents, 0x8D2, ReactiveArmorSpell.m_SpellID),
             new SpellBookEntry( MagicReflectSpell.Info.Circle,  MagicReflectSpell.Info.skillForCasting, "Reflection", MagicReflectSpell.Info.Reagents, 0x8D2, MagicReflectSpell.m_SpellID),
+
             //new SpellBookEntry( 1, SkillName.Providence, "Sacrifice", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Providence, "Peau de pierre", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Providence, "Champ entropique", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
@@ -143,13 +144,14 @@ namespace Server.Gumps
             new SpellBookEntry( WeakenSpell.Info.Circle,        WeakenSpell.Info.skillForCasting, "Faiblesse", WeakenSpell.Info.Reagents, 0x8D2, WeakenSpell.m_SpellID),
             new SpellBookEntry( ClumsySpell.Info.Circle,        ClumsySpell.Info.skillForCasting, "Maladresse", ClumsySpell.Info.Reagents, 0x8D2, ClumsySpell.m_SpellID),
             new SpellBookEntry( FeeblemindSpell.Info.Circle,    FeeblemindSpell.Info.skillForCasting, "Abrutissement", FeeblemindSpell.Info.Reagents, 0x8D2, FeeblemindSpell.m_SpellID),
-            new SpellBookEntry( CurseSpell.Info.Circle,         CurseSpell.Info.skillForCasting, "Malédiction", CurseSpell.Info.Reagents, 0x8D2, CurseSpell.m_SpellID),
             new SpellBookEntry( HarmSpell.Info.Circle,          HarmSpell.Info.skillForCasting, "Douleur", HarmSpell.Info.Reagents, 0x8D2, HarmSpell.m_SpellID),
             new SpellBookEntry( ManaDrainSpell.Info.Circle,     ManaDrainSpell.Info.skillForCasting, "Drain de mana", ManaDrainSpell.Info.Reagents, 0x8D2, ManaDrainSpell.m_SpellID),
+            new SpellBookEntry( CurseSpell.Info.Circle,         CurseSpell.Info.skillForCasting, "Malédiction", CurseSpell.Info.Reagents, 0x8D2, CurseSpell.m_SpellID),
+            new SpellBookEntry( AffaiblissementSpell.Info.Circle, AffaiblissementSpell.Info.skillForCasting, "Affaiblissement", AffaiblissementSpell.Info.Reagents, 0x8D2, AffaiblissementSpell.m_SpellID),
             new SpellBookEntry( ManaVampireSpell.Info.Circle,   ManaVampireSpell.Info.skillForCasting, "Drain vampiriq.", ManaVampireSpell.Info.Reagents, 0x8D2, ManaVampireSpell.m_SpellID),
             //new SpellBookEntry( 1, SkillName.Ensorcellement, "Affaiblissement", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Ensorcellement, "Discordance", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
-            new SpellBookEntry( MassCurseSpell.Info.Circle,     MassCurseSpell.Info.skillForCasting, "Malediction su.", MassCurseSpell.Info.Reagents, 0x8D2, MassCurseSpell.m_SpellID),
+            //new SpellBookEntry( MassCurseSpell.Info.Circle,     MassCurseSpell.Info.skillForCasting, "Malediction su.", MassCurseSpell.Info.Reagents, 0x8D2, MassCurseSpell.m_SpellID),
 
             //Necromancie
             new SpellBookEntry( PoisonSpell.Info.Circle, PoisonSpell.Info.skillForCasting, "Poison", PoisonSpell.Info.Reagents, 0x8D2, PoisonSpell.m_SpellID),

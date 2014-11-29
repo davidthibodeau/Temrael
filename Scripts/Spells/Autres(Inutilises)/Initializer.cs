@@ -39,7 +39,7 @@ namespace Server.Spells
 
             // Providence
             Register(ReactiveArmorSpell.m_SpellID,  typeof(ReactiveArmorSpell));
-            Register(ProtectionSpell.m_SpellID,     typeof(ProtectionSpell));
+            Register(PeauDePierreSpell.m_SpellID,     typeof(PeauDePierreSpell));
             Register(BlessSpell.m_SpellID,          typeof(BlessSpell));
             Register(StrengthSpell.m_SpellID,       typeof(StrengthSpell));
             Register(AgilitySpell.m_SpellID,        typeof(AgilitySpell));

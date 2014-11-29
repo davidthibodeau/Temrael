@@ -6,17 +6,17 @@ using Server.Mobiles;
 
 namespace Server.Spells
 {
-	public class ReactiveArmorSpell : Spell
+	public class ChampEntropiqueSpell : Spell
 	{
-        private const int AmountBlock = 50; // Quantité de dégâts qui peuvent être bloqués par le spell à 100 prov, 100 artmagique.
+        public static int m_SpellID { get { return 408; } } // TOCHANGE
 
+        private const int maxARbonus = 10;
+        private const double dureeMax = 60;
 
-        public static int m_SpellID { get { return 401; } } // TOCHANGE
-
-        private static short s_Cercle = 5;
+        private static short s_Cercle = 2;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Armure Magique", "Flam Sanct",
+				"Champ Entropique", "Jux Sanct",
                 s_Cercle,
                 203,
                 9031,
@@ -24,17 +24,13 @@ namespace Server.Spells
                 TimeSpan.FromSeconds(4),
                 SkillName.Providence,
 				Reagent.Garlic,
-				Reagent.SpidersSilk,
+				Reagent.Ginseng,
 				Reagent.SulfurousAsh
             );
 
-		public ReactiveArmorSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
+		public ChampEntropiqueSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
-
-        private const int maxDmgBlock = 50;
-
-		private static Hashtable m_Table = new Hashtable();
 
         public override void OnCast()
         {
@@ -42,17 +38,12 @@ namespace Server.Spells
             {
                 Caster.Target = new InternalTarget(this);
             }
-            else if (Caster.MeleeDamageAbsorb > 0)
-            {
-                Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
-            }
             else
             {
                 if (CheckSequence())
                 {
                     DoEffect(Caster);
                 }
-
                 FinishSequence();
             }
         }
@@ -62,10 +53,6 @@ namespace Server.Spells
             if (!Caster.CanSee(m))
             {
                 Caster.SendLocalizedMessage(500237); // Target can not be seen.
-            }
-            else if (m.MeleeDamageAbsorb > 0)
-            {
-                Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
             else if (CheckSequence())
             {
@@ -77,19 +64,43 @@ namespace Server.Spells
 
         private void DoEffect(Mobile m)
         {
-            double value = GetSpellScaling(Caster, Info.skillForCasting) * maxDmgBlock;
+            double value = GetSpellScaling(Caster, Info.skillForCasting) * maxARbonus;
+            double duree = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
-            m.MeleeDamageAbsorb = (int)value;
+            new InternalTimer(m, (int)value, duree).Start();
 
-            m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
-            m.PlaySound(0x1F2);
+            m.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
+            m.PlaySound(0x1ED);
+        }
+
+        private class InternalTimer : Timer
+        {
+            private ResistanceMod m_resMod;
+            private Mobile m_Owner;
+
+            public InternalTimer(Mobile caster, int value, double duree) : base(TimeSpan.FromSeconds(duree))
+            {
+                Priority = TimerPriority.OneSecond;
+
+                m_Owner = caster;
+
+                m_resMod = new ResistanceMod(ResistanceType.Magie, (int)value);
+                m_Owner.AddResistanceMod(m_resMod);
+            }
+
+            protected override void OnTick()
+            {
+                m_Owner.RemoveResistanceMod(m_resMod);
+
+                m_Owner.SendMessage("Champ entropique prend fin.");
+            }
         }
 
         private class InternalTarget : Target
         {
-            private ReactiveArmorSpell m_Owner;
+            private ChampEntropiqueSpell m_Owner;
 
-            public InternalTarget(ReactiveArmorSpell owner)
+            public InternalTarget(ChampEntropiqueSpell owner)
                 : base(12, false, TargetFlags.Beneficial)
             {
                 m_Owner = owner;

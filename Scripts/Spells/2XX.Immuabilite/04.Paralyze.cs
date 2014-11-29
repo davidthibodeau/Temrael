@@ -9,7 +9,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 204; } } // TOCHANGE
 
-        private static short s_Cercle = 4;
+        private static short s_Cercle = 2;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Paralysie", "An Ex Por",

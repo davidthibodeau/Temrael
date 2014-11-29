@@ -10,19 +10,26 @@ namespace Server.Spells
 {
 	public class ChampDeStaseSpell : Spell
     {
-        public static int m_SpellID { get { return 0; } } // TOCHANGE
+        public static int m_SpellID { get { return 207; } } // TOCHANGE
+
+        private static short s_Cercle = 7;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Champ De Stase", "An Tym",
-				7,
-				Core.AOS ? 239 : 215,
+				s_Cercle,
+				239,
 				9011,
+                GetBaseManaCost(s_Cercle),
+                TimeSpan.FromSeconds(6),
+                SkillName.Immuabilite,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot,
 				Reagent.SulfurousAsh
 			);
 
         public static Hashtable m_Timers = new Hashtable();
+
+        private static int durationMax = 45;
 
         public ChampDeStaseSpell(Mobile caster, Item scroll)
             : base(caster, scroll, Info)
@@ -50,7 +57,9 @@ namespace Server.Spells
 
                 if (m != Caster && m.BeginAction(typeof(ChampDeStaseSpell)) && m.AccessLevel <= Caster.AccessLevel)
                 {
-                    TimeSpan duration = TimeSpan.FromSeconds(0);
+                    double dur = durationMax * Spell.GetSpellScaling(Caster, Info.skillForCasting);
+
+                    TimeSpan duration = TimeSpan.FromSeconds(dur);
 
                     m.Freeze(duration);
 

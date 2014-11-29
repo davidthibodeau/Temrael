@@ -6,17 +6,17 @@ using Server.Mobiles;
 
 namespace Server.Spells
 {
-	public class ProtectionSpell : Spell
+	public class AffaiblissementSpell : Spell
 	{
-        public static int m_SpellID { get { return 402; } } // TOCHANGE
+        public static int m_SpellID { get { return 808; } } // TOCHANGE
 
         private const int maxARbonus = 10;
         private const double dureeMax = 60;
 
-        private static short s_Cercle = 2;
+        private static short s_Cercle = 5;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Protection", "Uus Sanct",
+				"Affaiblissement", "An Sanct",
                 s_Cercle,
                 203,
                 9031,
@@ -24,11 +24,11 @@ namespace Server.Spells
                 TimeSpan.FromSeconds(4),
                 SkillName.Providence,
 				Reagent.Garlic,
-				Reagent.Ginseng,
+				Reagent.Nightshade,
 				Reagent.SulfurousAsh
             );
 
-		public ProtectionSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
+		public AffaiblissementSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 
@@ -75,7 +75,8 @@ namespace Server.Spells
 
         private class InternalTimer : Timer
         {
-            private ResistanceMod m_resMod;
+            private ResistanceMod m_resModPhys;
+            private ResistanceMod m_resModMag;
             private Mobile m_Owner;
 
             public InternalTimer(Mobile caster, int value, double duree) : base(TimeSpan.FromSeconds(duree))
@@ -84,24 +85,25 @@ namespace Server.Spells
 
                 m_Owner = caster;
 
-                m_resMod = new ResistanceMod(ResistanceType.Physical, (int)value);
-                m_Owner.AddResistanceMod(m_resMod);
+                m_resModMag = new ResistanceMod(ResistanceType.Magie, -1 * (int)value);
+                m_Owner.AddResistanceMod(m_resModMag);
+                m_resModPhys = new ResistanceMod(ResistanceType.Physical, -1 * (int)value);
+                m_Owner.AddResistanceMod(m_resModPhys);
             }
 
             protected override void OnTick()
             {
-                m_Owner.RemoveResistanceMod(m_resMod);
-
-                m_Owner.SendMessage("Protection prend fin");
+                m_Owner.RemoveResistanceMod(m_resModPhys);
+                m_Owner.RemoveResistanceMod(m_resModMag);
             }
         }
 
         private class InternalTarget : Target
         {
-            private ProtectionSpell m_Owner;
+            private AffaiblissementSpell m_Owner;
 
-            public InternalTarget(ProtectionSpell owner)
-                : base(12, false, TargetFlags.Beneficial)
+            public InternalTarget(AffaiblissementSpell owner)
+                : base(12, false, TargetFlags.Harmful)
             {
                 m_Owner = owner;
             }

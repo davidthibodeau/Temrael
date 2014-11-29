@@ -13,7 +13,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 108; } } // TOCHANGE
 
-        private static short s_Cercle = 8;
+        private static short s_Cercle = 6;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Éclair en Chaine", "Vas Ort Grav",
@@ -21,7 +21,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(4),
+                TimeSpan.FromSeconds(7),
                 SkillName.Evocation,
 				Reagent.BlackPearl,
 				Reagent.Bloodmoss,

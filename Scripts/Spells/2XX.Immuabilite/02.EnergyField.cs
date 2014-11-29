@@ -11,7 +11,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 202; } } // TOCHANGE
 
-        private static short s_Cercle = 2;
+        private static short s_Cercle = 3;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Energie de Masse", "In Sanct Grav",

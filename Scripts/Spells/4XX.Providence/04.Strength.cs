@@ -8,7 +8,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 404; } } // TOCHANGE
 
-        private static short s_Cercle = 4;
+        private static short s_Cercle = 1;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Force", "Uus Mani",

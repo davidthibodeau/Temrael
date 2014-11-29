@@ -35,7 +35,7 @@ namespace Server.Engines.Combat
         }
 
         const double DPSBASE = 4.5;
-        const short NbTotalCercles = 10; // Il y a présentement 10 cercles dans le système de magie.
+        const short NbTotalCercles = 7; // Il y a présentement 7 cercles dans le système de magie.
         const double ScalingCategorie = 0.5;// Bonus qui fait la différence entre un spell de cercle 1, et de cercle 10, pour les dégâts.
         const double RandVariation = 0.2; // Les valeurs de dégâts peuvent varier de +- 20%.
 

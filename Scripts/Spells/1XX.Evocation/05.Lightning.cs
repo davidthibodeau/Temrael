@@ -18,7 +18,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(6),
+                TimeSpan.FromSeconds(5),
                 SkillName.Evocation,
 				Reagent.MandrakeRoot,
 				Reagent.SulfurousAsh

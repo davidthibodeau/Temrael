@@ -13,7 +13,7 @@ namespace Server.Spells
 
         public readonly static Hashtable m_Table = new Hashtable();
 
-        private static short s_Cercle = 5;
+        private static short s_Cercle = 4;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Étouffement", "In Bal Vrii",

@@ -8,7 +8,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 405; } } // TOCHANGE
 
-        private static short s_Cercle = 5;
+        private static short s_Cercle = 1;
         private static short durationMax = 60;
         private static short bonusMax = 15;
 

@@ -13,7 +13,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 107; } } // TOCHANGE
 
-        private static short s_Cercle = 7;
+        private static short s_Cercle = 5;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Tremblement", "In Vas Por",

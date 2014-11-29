@@ -229,6 +229,7 @@ namespace Server.Spells
 			}
 
             CombatStrategy.GetStrategy(Caster).ResetAttackAfterCast(Caster);
+
 		}
 
         public virtual void DoHurtFizzle()

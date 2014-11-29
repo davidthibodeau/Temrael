@@ -8,7 +8,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 807; } } // TOCHANGE
 
-        private static short s_Cercle = 7;
+        private static short s_Cercle = 6;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Drain Vampirique", "Ort Sanct",
@@ -16,7 +16,7 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(1),
+                TimeSpan.FromSeconds(2),
                 SkillName.Ensorcellement,
 				Reagent.BlackPearl,
 				Reagent.Bloodmoss,

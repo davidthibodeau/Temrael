@@ -8,15 +8,15 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 403; } } // TOCHANGE
 
-        private static short s_Cercle = 3;
+        private static short s_Cercle = 4;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Puissance", "Rel Sanct",
+				"Bénédiction", "Rel Sanct",
                 s_Cercle,
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(3),
+                TimeSpan.FromSeconds(5),
                 SkillName.Providence,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot
