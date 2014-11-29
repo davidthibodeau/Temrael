@@ -80,7 +80,7 @@ namespace Server.Gumps.Creation
                     {
                         InitializeCreation(m_from);
 
-                        m_from.MoveToWorld(new Point3D(1806, 1338, -80), Map.Felucca);
+                        m_from.MoveToWorld(new Point3D(1572, 1405, -79), Map.Felucca);
 
                         m_from.SendMessage("Vous avez le droit d'apprendre une seconde langue.");
                         m_from.SendGump(new GumpLanguage(m_from, true));
@@ -139,7 +139,7 @@ namespace Server.Gumps.Creation
             PackItem(from, new Dagger());
             PackItem(from, new Candle());
 
-            Race race = from.Race;
+            
             //from.Hue = hue;
 
             //if (race is Elfe)
