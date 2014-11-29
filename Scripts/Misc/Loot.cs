@@ -39,18 +39,18 @@ namespace Server
         private static Type[] m_TemraelWeaponTypes = new Type[]
 			{
                 typeof( Astoria ),   typeof( Vorlame ),   typeof( Biliome ),   typeof( Rodere ),
-                typeof( Dravene ),   typeof( Vifcoupe ),   typeof( Draglast ),   typeof( Auderre ),   typeof( Batarde ),
-                typeof( Tranchevil ),   typeof( Ventmore ),   typeof( Excalior ),   typeof( Conquise ),   typeof( Runire ),
-                typeof( Nerfille ),   typeof( Myliron ),   typeof( Nhilarte ),   typeof( Abysse ),   typeof( Atargne ),
-                typeof( Querquoise ),   typeof( Merlame ),   typeof( Dorleane ),   typeof( Couliere ),   /*typeof( Dawn ),*/
+                typeof( Vifcoupe ),   typeof( Draglast ),   typeof( Auderre ),   
+                typeof( Excalior ),   typeof( Conquise ),   
+                typeof( Nerfille ),   typeof( Myliron ),   typeof( Abysse ),   typeof( Atargne ),
+                typeof( Querquoise ),   typeof( Merlame ),   typeof( Couliere ),   /*typeof( Dawn ),*/
                 typeof( Lerise ),   typeof( Gerumir ),   typeof( Narvegne ),   typeof( Hectmore ),
 
                 typeof( Sabre ),   typeof( Mersang ),   typeof( Raghash ),   typeof( Prisienne ),   /*typeof( Coutelas ),*/
                 typeof( Scimitar ),
 
-                typeof( Rougegorge ),   typeof( Monarque ),   typeof( Claymore ),   typeof( VikingSword ),   typeof( Courbelle ),
-                typeof( Tranchor ),   typeof( Flamberge ),   typeof( Sombrimur ),   typeof( Marquaise ),   typeof( Mortimer ),
-                typeof( Espadon ),   typeof( Zweihander ),   typeof( Morsame ),   typeof( Granlame ),
+                typeof( Rougegorge ),   typeof( VikingSword ),   typeof( Courbelle ),
+                typeof( Tranchor ),   typeof( Flamberge ),   typeof( Sombrimur ),   
+                typeof( Zweihander ),   typeof( Morsame ),   typeof( Granlame ),
                 
                 //typeof( Mirilione ),   typeof( Niropie ),   typeof( Zarel ),   typeof( Sefrio ),   typeof( Ferel ),
 

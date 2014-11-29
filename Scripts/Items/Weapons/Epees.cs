@@ -429,40 +429,40 @@ namespace Server.Items
         }
     }
 
-    public class Dravene : BaseSword
-    {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 11; } }
-        public override int DefSpeed { get { return 35; } }
+    //public class Dravene : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 7; } }
+    //    //public override int DefMaxDamage { get { return 11; } }
+    //    public override int DefSpeed { get { return 35; } }
 
-        [Constructable]
-        public Dravene()
-            : base(0x29d4)
-        {
-            Weight = 5.0;
-            Layer = Layer.OneHanded;
-            Name = "Dravene";
-        }
+    //    [Constructable]
+    //    public Dravene()
+    //        : base(0x29d4)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.OneHanded;
+    //        Name = "Dravene";
+    //    }
 
-        public Dravene(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Dravene(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Gerumir : BaseSword
     {
@@ -814,40 +814,40 @@ namespace Server.Items
         }
     }
 
-    public class Runire : BaseSword
-    {
-        //public override int DefMinDamage { get { return 3; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 25; } }
+    //public class Runire : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 3; } }
+    //    //public override int DefMaxDamage { get { return 7; } }
+    //    public override int DefSpeed { get { return 25; } }
 
-        [Constructable]
-        public Runire()
-            : base(0x2a27)
-        {
-            Weight = 5.0;
-            Layer = Layer.OneHanded;
-            Name = "Runire";
-        }
+    //    [Constructable]
+    //    public Runire()
+    //        : base(0x2a27)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.OneHanded;
+    //        Name = "Runire";
+    //    }
 
-        public Runire(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Runire(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Sabre : BaseSword
     {
@@ -1061,40 +1061,40 @@ namespace Server.Items
         }
     }
 
-    public class Batarde : BaseSword
-    {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
-        public override int DefSpeed { get { return 30; } }
+    //public class Batarde : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 7; } }
+    //    //public override int DefMaxDamage { get { return 12; } }
+    //    public override int DefSpeed { get { return 30; } }
 
-        [Constructable]
-        public Batarde()
-            : base(0x2a16)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Batarde";
-        }
+    //    [Constructable]
+    //    public Batarde()
+    //        : base(0x2a16)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Batarde";
+    //    }
 
-        public Batarde(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Batarde(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Conquise : BaseSword
     {
@@ -1166,40 +1166,40 @@ namespace Server.Items
         }
     }
 
-    public class Dorleane : BaseSword
-    {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 35; } }
+    //public class Dorleane : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 9; } }
+    //    //public override int DefMaxDamage { get { return 14; } }
+    //    public override int DefSpeed { get { return 35; } }
 
-        [Constructable]
-        public Dorleane()
-            : base(0x29d2)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Dorleane";
-        }
+    //    [Constructable]
+    //    public Dorleane()
+    //        : base(0x29d2)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Dorleane";
+    //    }
 
-        public Dorleane(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Dorleane(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Excalior : BaseSword
     {
@@ -1271,40 +1271,40 @@ namespace Server.Items
         }
     }
 
-    public class Nhilarte : BaseSword
-    {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 35; } }
+    //public class Nhilarte : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 9; } }
+    //    //public override int DefMaxDamage { get { return 14; } }
+    //    public override int DefSpeed { get { return 35; } }
 
-        [Constructable]
-        public Nhilarte()
-            : base(0x29d7)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Nhilarte";
-        }
+    //    [Constructable]
+    //    public Nhilarte()
+    //        : base(0x29d7)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Nhilarte";
+    //    }
 
-        public Nhilarte(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Nhilarte(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Querquoise : BaseSword
     {
@@ -1341,75 +1341,75 @@ namespace Server.Items
         }
     }
 
-    public class Tranchevil : BaseSword
-    {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
-        public override int DefSpeed { get { return 30; } }
+    //public class Tranchevil : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 7; } }
+    //    //public override int DefMaxDamage { get { return 12; } }
+    //    public override int DefSpeed { get { return 30; } }
 
-        [Constructable]
-        public Tranchevil()
-            : base(0x2a0d)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Tranchevil";
-        }
+    //    [Constructable]
+    //    public Tranchevil()
+    //        : base(0x2a0d)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Tranchevil";
+    //    }
 
-        public Tranchevil(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Tranchevil(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
-    public class Ventmore : BaseSword
-    {
-        //public override int DefMinDamage { get { return 6; } }
-        //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 25; } }
+    //public class Ventmore : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 6; } }
+    //    //public override int DefMaxDamage { get { return 10; } }
+    //    public override int DefSpeed { get { return 25; } }
 
-        [Constructable]
-        public Ventmore()
-            : base(0x29d1)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Ventmore";
-        }
+    //    [Constructable]
+    //    public Ventmore()
+    //        : base(0x29d1)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Ventmore";
+    //    }
 
-        public Ventmore(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Ventmore(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Vifcoupe : BaseSword
     {
@@ -1516,40 +1516,40 @@ namespace Server.Items
         }
     }
 
-    public class Espadon : BaseSword
-    {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
-        public override int DefSpeed { get { return 30; } }
+    //public class Espadon : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 7; } }
+    //    //public override int DefMaxDamage { get { return 12; } }
+    //    public override int DefSpeed { get { return 30; } }
 
-        [Constructable]
-        public Espadon()
-            : base(0x2a17)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Espadon";
-        }
+    //    [Constructable]
+    //    public Espadon()
+    //        : base(0x2a17)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Espadon";
+    //    }
 
-        public Espadon(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Espadon(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Flamberge : BaseSword
     {
@@ -1586,75 +1586,75 @@ namespace Server.Items
         }
     }
 
-    public class Marquaise : BaseSword
-    {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
-        public override int DefSpeed { get { return 30; } }
+    //public class Marquaise : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 7; } }
+    //    //public override int DefMaxDamage { get { return 12; } }
+    //    public override int DefSpeed { get { return 30; } }
 
-        [Constructable]
-        public Marquaise()
-            : base(0x29d9)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Marquaise";
-        }
+    //    [Constructable]
+    //    public Marquaise()
+    //        : base(0x29d9)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Marquaise";
+    //    }
 
-        public Marquaise(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Marquaise(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
-    public class Monarque : BaseSword
-    {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
-        public override int DefSpeed { get { return 30; } }
+    //public class Monarque : BaseSword
+    //{
+    //    public override int DefMinDamage { get { return 7; } }
+    //    public override int DefMaxDamage { get { return 12; } }
+    //    public override int DefSpeed { get { return 30; } }
 
-        [Constructable]
-        public Monarque()
-            : base(0x29d8)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Monarque";
-        }
+    //    [Constructable]
+    //    public Monarque()
+    //        : base(0x29d8)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Monarque";
+    //    }
 
-        public Monarque(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Monarque(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Morsame : BaseSword
     {
@@ -1691,40 +1691,40 @@ namespace Server.Items
         }
     }
 
-    public class Mortimer : BaseSword
-    {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 45; } }
+    //public class Mortimer : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 13; } }
+    //    //public override int DefMaxDamage { get { return 18; } }
+    //    public override int DefSpeed { get { return 45; } }
 
-        [Constructable]
-        public Mortimer()
-            : base(0x2a12)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Mortimer";
-        }
+    //    [Constructable]
+    //    public Mortimer()
+    //        : base(0x2a12)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Mortimer";
+    //    }
 
-        public Mortimer(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Mortimer(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 
     public class Rougegorge : BaseSword
     {
@@ -1901,38 +1901,38 @@ namespace Server.Items
         }
     }
 
-    public class Claymore : BaseSword
-    {
-        //public override int DefMinDamage { get { return 6; } }
-        //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 25; } }
+    //public class Claymore : BaseSword
+    //{
+    //    //public override int DefMinDamage { get { return 6; } }
+    //    //public override int DefMaxDamage { get { return 10; } }
+    //    public override int DefSpeed { get { return 25; } }
 
-        [Constructable]
-        public Claymore()
-            : base(0x29d0)
-        {
-            Weight = 5.0;
-            Layer = Layer.TwoHanded;
-            Name = "Claymore";
-        }
+    //    [Constructable]
+    //    public Claymore()
+    //        : base(0x29d0)
+    //    {
+    //        Weight = 5.0;
+    //        Layer = Layer.TwoHanded;
+    //        Name = "Claymore";
+    //    }
 
-        public Claymore(Serial serial)
-            : base(serial)
-        {
-        }
+    //    public Claymore(Serial serial)
+    //        : base(serial)
+    //    {
+    //    }
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
+    //    public override void Serialize(GenericWriter writer)
+    //    {
+    //        base.Serialize(writer);
 
-            writer.Write((int)0); // version
-        }
+    //        writer.Write((int)0); // version
+    //    }
 
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
+    //    public override void Deserialize(GenericReader reader)
+    //    {
+    //        base.Deserialize(reader);
 
-            int version = reader.ReadInt();
-        }
-    }
+    //        int version = reader.ReadInt();
+    //    }
+    //}
 }

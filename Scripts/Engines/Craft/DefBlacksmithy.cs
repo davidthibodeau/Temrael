@@ -379,7 +379,7 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(Astoria), "Épées", "Astoria", 10.0, 40.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Biliome), "Épées", "Biliome", 20.0, 50.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Runire), "Épées", "Runire", 30.0, 60.0, typeof(FerIngot), "Lingots", 8, 1044037);
+            //index = AddCraft(typeof(Runire), "Épées", "Runire", 30.0, 60.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Myliron), "Épées", "Myliron", 40.0, 70.0, typeof(FerIngot), "Lingots", 8, 1044037);
             index = AddCraft(typeof(Vorlame), "Épées", "Vorlame", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             //index = AddCraft(typeof(Dawn), "Épées", "Dawn", 60.0, 90.0, typeof(FerIngot), "Lingots", 10, 1044037);
@@ -389,7 +389,7 @@ namespace Server.Engines.Craft
             //Épées Longues
 
             index = AddCraft(typeof(Rodere), "Épées", "Rodère", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Dravene), "Épées", "Dravène", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Dravene), "Épées", "Dravène", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Draglast), "Épées", "Draglast", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Merlame), "Épées", "Merlarme", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Narvegne), "Épées", "Narvègne", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
@@ -408,32 +408,32 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(Vifcoupe), "Épées", "Vifcoupe", 10.0, 40.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Auderre), "Épées", "Audèrre", 10.0, 40.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Batarde), "Épées", "Batarde", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Tranchevil), "Épées", "Tranchevil", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Ventmore), "Épées", "Ventmore", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Batarde), "Épées", "Batarde", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Tranchevil), "Épées", "Tranchevil", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Ventmore), "Épées", "Ventmore", 30.0, 60.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Excalior), "Épées", "Excalior", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Conquise), "Épées", "Conquise", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Atargne), "Épées", "Atargne", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Nerfille), "Épées", "Nerfille", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Querquoise), "Épées", "Querquoise", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Nhilarte), "Épées", "Nhilarte", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Nhilarte), "Épées", "Nhilarte", 50.0, 80.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Abysse), "Épées", "Abysse", 60.0, 90.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            index = AddCraft(typeof(Dorleane), "Épées", "Dorleane", 60.0, 90.0, typeof(FerIngot), "Lingots", 10, 1044037);
+            //index = AddCraft(typeof(Dorleane), "Épées", "Dorleane", 60.0, 90.0, typeof(FerIngot), "Lingots", 10, 1044037);
             index = AddCraft(typeof(Couliere), "Épées", "Coulière", 70.0, 100.0, typeof(FerIngot), "Lingots", 12, 1044037);
 
             //Claymore
 
             index = AddCraft(typeof(Rougegorge), "Épées", "Rougegorge", 20.0, 50.0, typeof(FerIngot), "Lingots", 14, 1044037);
-            index = AddCraft(typeof(Monarque), "Épées", "Monarque", 30.0, 60.0, typeof(FerIngot), "Lingots", 12, 1044037);
-            index = AddCraft(typeof(Claymore), "Épées", "Claymore", 30.0, 60.0, typeof(FerIngot), "Lingots", 14, 1044037);
+            //index = AddCraft(typeof(Monarque), "Épées", "Monarque", 30.0, 60.0, typeof(FerIngot), "Lingots", 12, 1044037);
+            //index = AddCraft(typeof(Claymore), "Épées", "Claymore", 30.0, 60.0, typeof(FerIngot), "Lingots", 14, 1044037);
             index = AddCraft(typeof(VikingSword), "Épées", "Épée Lourde", 40.0, 70.0, typeof(FerIngot), "Lingots", 15, 1044037);
             index = AddCraft(typeof(Courbelle), "Épées", "Courbelle", 40.0, 70.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(Tranchor), "Épées", "Tranchor", 50.0, 80.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(Flamberge), "Épées", "Flamberge", 50.0, 80.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(Sombrimur), "Épées", "Sombrimur", 50.0, 80.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            index = AddCraft(typeof(Marquaise), "Épées", "Marquaise", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            index = AddCraft(typeof(Mortimer), "Épées", "Mortimer", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
-            index = AddCraft(typeof(Espadon), "Épées", "Espadon", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
+            //index = AddCraft(typeof(Marquaise), "Épées", "Marquaise", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
+            //index = AddCraft(typeof(Mortimer), "Épées", "Mortimer", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
+            //index = AddCraft(typeof(Espadon), "Épées", "Espadon", 60.0, 90.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(Zweihander), "Épées", "Zweihander", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(Morsame), "Épées", "Morsame", 70.0, 100.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(Granlame), "Épées", "Granlame", 70.0, 100.0, typeof(FerIngot), "Lingots", 18, 1044037);
