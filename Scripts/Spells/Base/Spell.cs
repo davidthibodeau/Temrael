@@ -227,6 +227,8 @@ namespace Server.Spells
 				Caster.FixedEffect( 0x3735, 6, 30 );
 				Caster.PlaySound( 0x5C );
 			}
+
+            CombatStrategy.GetStrategy(Caster).ResetAttackAfterCast(Caster);
 		}
 
         public virtual void DoHurtFizzle()
