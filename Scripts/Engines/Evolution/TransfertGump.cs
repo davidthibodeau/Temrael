@@ -146,8 +146,9 @@ namespace Server.Engines.Evolution
                     case Buttons.ChoisirPremier:
                     case Buttons.ChoisirSecond:
                     case Buttons.ChoisirTroisieme:
-                        m.SendMessage("Êtes-vous certain de vouloir choisr cette entrée? L'expérience sera transféré sur votre personnage" 
-                            + " actuel et le ramener en banque va coûter 20% de votre expérience. (Répondez oui ou non)");
+                        m.SendMessage("Êtes-vous certain de vouloir choisr cette entrée? L'expérience sera transféré sur votre personnage"
+                            + " actuel et écrasera l'expérience couramment sur ce personnage. Le ramener en banque va coûter 20% de votre" 
+                            + " expérience. (Répondez oui ou non)");
                         break;
                 }
             }

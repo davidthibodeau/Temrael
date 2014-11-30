@@ -223,6 +223,8 @@ namespace Server.Gumps.Creation
                         from.Race = new Nain(Nain.Hues[hueid]);
                         break;
                 }
+
+                from.SendGump(new CreationEquipementGump(from));
             }
         }
         public void DeleteItemsOnChar(PlayerMobile from)
