@@ -218,9 +218,9 @@ namespace Server.Mobiles.Vendeurs
                 Add(typeof(Tourmaline));
                 Add(typeof(Amethyst));
 
-                Add(typeof(Board));
-                Add(typeof(PinBoard));
-                Add(typeof(CypresBoard));
+                Add(typeof(Log));
+                Add(typeof(PinLog));
+                Add(typeof(CypresLog));
             }
         }
     }
