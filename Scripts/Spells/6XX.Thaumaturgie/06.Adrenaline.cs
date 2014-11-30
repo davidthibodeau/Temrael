@@ -7,14 +7,14 @@ using System.Collections.Generic;
 
 namespace Server.Spells
 {
-	public class DernierSouffleSpell : Spell
+	public class AdrenalineSpell : Spell
 	{
-        public static int m_SpellID { get { return 605; } } // TOCHANGE
+        public static int m_SpellID { get { return 606; } } // TOCHANGE
 
-        private static short s_Cercle = 5;
+        private static short s_Cercle = 6;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
-				"Dernier souffle", "In Sanct Mani",
+				"Adrenaline", "In Mani Flam",
                 s_Cercle,
                 203,
                 9031,
@@ -26,7 +26,7 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
-		public DernierSouffleSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
+		public AdrenalineSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
 		}
 
@@ -55,7 +55,7 @@ namespace Server.Spells
             {
                 Caster.SendLocalizedMessage(500237); // Target can not be seen.
             }
-            else if (m_SouffleTable.Contains(m) || m_CooldownTable.Contains(m))
+            else if (m_SouffleTable.ContainsKey(m) || m_CooldownTable.Contains(m))
             {
                 Caster.SendMessage("Vous ne pouvez pas lancer le sort de nouveau sur cette cible avant un certain temps");
             }
@@ -73,7 +73,7 @@ namespace Server.Spells
 
             new ExpireTimer(m, TimeSpan.FromSeconds(duree));
 
-            m_SouffleTable.Add(m);
+            m_SouffleTable.Add(m, 0);
 
             m.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
             m.PlaySound(0x1ED);
@@ -81,24 +81,14 @@ namespace Server.Spells
 
         public static void GetOnHitEffect(Mobile def, ref int damage)
         {
-            if (GetSouffle(def))
-            {
-                if (def.Hits <= 1)
-                    damage = 0;
-                else if (def.Hits - damage < 1)
-                    damage = def.Hits - 1;
-            }
+            if (def == null || m_SouffleTable.ContainsKey(def))
+                return;
+
+            m_SouffleTable[def] += damage;
+            damage = 0;
         }
 
-        public static bool GetSouffle(Mobile m)
-        {
-            if (m == null)
-                return false;
-
-            return m_SouffleTable.Contains(m);
-        }
-
-        private static HashSet<Mobile> m_SouffleTable = new HashSet<Mobile>();
+        private static Dictionary<Mobile, int> m_SouffleTable = new Dictionary<Mobile, int>();
         private static HashSet<Mobile> m_CooldownTable = new HashSet<Mobile>();
 
 		private class ExpireTimer : Timer
@@ -119,8 +109,9 @@ namespace Server.Spells
 			{
 				if (m_Target.Deleted || !m_Target.Alive || DateTime.Now >= m_End )
 				{
-                    m_Target.SendMessage("Votre dernier souffle a été rompu.");
+                    m_Target.SendMessage("Votre adrénaline se dissipe.");
 
+                    m_Target.Damage(m_SouffleTable[m_Target]);
                     m_CooldownTable.Add(m_Target);
                     m_SouffleTable.Remove(m_Target);
 					Stop();
@@ -156,9 +147,9 @@ namespace Server.Spells
 
         private class InternalTarget : Target
         {
-            private DernierSouffleSpell m_Owner;
+            private AdrenalineSpell m_Owner;
 
-            public InternalTarget(DernierSouffleSpell owner)
+            public InternalTarget(AdrenalineSpell owner)
                 : base(12, false, TargetFlags.Beneficial)
             {
                 m_Owner = owner;

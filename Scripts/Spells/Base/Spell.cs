@@ -466,6 +466,12 @@ namespace Server.Spells
             CurseWeaponSpell.GetOnHitEffect(atk, damage);
 
             BloodOathSpell.GetOnHitEffect(atk, def, ref damage);
+
+            SacrificeSpell.GetOnHitEffect(def, ref damage);
+
+            DernierSouffleSpell.GetOnHitEffect(def, ref damage);
+
+            AdrenalineSpell.GetOnHitEffect(def, ref damage);
             
             return damage;
         }

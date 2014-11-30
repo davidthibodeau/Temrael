@@ -5,22 +5,23 @@ using Server.Spells;
 
 namespace Server.Items
 {
-	public class ProtectionScroll : SpellScroll
+	public class AdrenalineScroll : SpellScroll
 	{
 		[Constructable]
-		public ProtectionScroll() : this( 1 )
+		public AdrenalineScroll() : this( 1 )
 		{
 		}
 
 		[Constructable]
-		public ProtectionScroll( int amount ) : base( PeauDePierreSpell.m_SpellID, 0x1F3B, amount )
+		public AdrenalineScroll( int amount ) : base( AdrenalineSpell.m_SpellID, 0x1F31, amount )
 		{
-            Name = "Providence: Protection";
+            Name = "Thaumaturgie: Adrénaline";
 		}
 
-		public ProtectionScroll( Serial serial ) : base( serial )
-		{
-		}
+        public AdrenalineScroll(Serial serial)
+            : base(serial)
+        {
+        }
 
         public override void Serialize(GenericWriter writer)
         {

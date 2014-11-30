@@ -178,12 +178,12 @@ namespace Server.Engines.Craft
 		{
             int index = -1;
 
-            index = AddCraft(typeof(BlankScroll), "Livres et Papier", "Parchemin Vierge", 0.0, 30.0, typeof(Kindling), "Brindilles", 5, 1044037);
-            SetUseAllRes(index, true);
+            //index = AddCraft(typeof(BlankScroll), "Livres et Papier", "Parchemin Vierge", 0.0, 30.0, typeof(Kindling), "Brindilles", 5, 1044037);
+            //SetUseAllRes(index, true);
             index = AddCraft(typeof(NewSpellbook), "Livres et Papier", "Grimoire", 10.0, 40.0, typeof(BlankScroll), "Parchemin Vierge", 10, 1044361);
             AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
-            index = AddCraft(typeof(Runebook), "Livres et Papier", "Grimoire de Runes", 15.0, 45.0, typeof(BlankScroll), "Parchemin Vierge", 10, 1044361);
-            AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
+            //index = AddCraft(typeof(Runebook), "Livres et Papier", "Grimoire de Runes", 15.0, 45.0, typeof(BlankScroll), "Parchemin Vierge", 10, 1044361);
+            //AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
             index = AddCraft(typeof(BlueBook), "Livres et Papier", "Livre Bleu", 5.0, 35.0, typeof(BlankScroll), "Parchemin Vierge", 5, 1044361);
             AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
             index = AddCraft(typeof(BrownBook), "Livres et Papier", "Livre Brun", 5.0, 35.0, typeof(BlankScroll), "Parchemin Vierge", 5, 1044361);
@@ -193,7 +193,53 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(TanBook), "Livres et Papier", "Livre Beige", 5.0, 35.0, typeof(BlankScroll), "Parchemin Vierge", 5, 1044361);
             AddRes(index, typeof(Leather), "Cuir", 2, 1044463);
 
-            //index = AddCraft(typeof(MagicArrowScroll), "Évocation", "Flêche Magique", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MagicArrowScroll), "Évocation", "Flèche magique", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ExplosionScroll), "Évocation", "Explosion", 42.0, 72.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EnergyBoltScroll), "Évocation", "Énergie", 54.0, 84.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FireFieldScroll), "Évocation", "Mur de feu", 66.0, 96.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(LightningScroll), "Évocation", "Éclair", 78.0, 108.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ChainLightningScroll), "Évocation", "Chaine d'éclair", 90.0, 120.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+
+            index = AddCraft(typeof(WallOfStoneScroll), "Immuabilité", "Mur de pierre", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ParalyzeScroll), "Immuabilité", "Paralysie", 42, 72, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EnergyFieldScroll), "Immuabilité", "Mur d'énergie", 54, 84, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EtouffementScroll), "Immuabilité", "Étouffement", 66, 96, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ParalyzeFieldScroll), "Immuabilité", "Mur de paralysie", 78, 108, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(LenteurScroll), "Immuabilité", "Lenteur", 90, 120, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+
+            index = AddCraft(typeof(MindRotScroll), "Altération", "Pourriture", 30, 60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(CurseWeaponScroll), "Altération", "Arme maudite", 42, 72, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(BloodOathScroll), "Altération", "Pacte de sang", 54, 84, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(EvilOmenScroll), "Altération", "Présage maléfique", 66, 96, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(PainSpikeScroll), "Altération", "Douleur", 78, 108, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(StrangleScroll), "Altération", "Étranglement", 90, 120, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+
+            index = AddCraft(typeof(StrengthScroll), "Providence", "Force", 30, 60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(AgilityScroll), "Providence", "Agilité", 30, 60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(CunningScroll), "Providence", "Astuce", 30, 60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(PeauDePierreScroll), "Providence", "Peau de pierre", 42, 72, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ChampEntropiqueScroll), "Providence", "Champ entropique", 42, 72, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(SacrificeScroll), "Providence", "Sacrifice", 54, 84, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(BlessScroll), "Providence", "Bénédiction", 66, 96, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ReactiveArmorScroll), "Providence", "Armure de mage", 78, 108, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(MagicReflectScroll), "Providence", "Reflet", 90, 120, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+
+            index = AddCraft(typeof(HealScroll), "Thaumaturgie", "Soins", 30, 60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(CureScroll), "Thaumaturgie", "Antidote", 42, 72, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(GreaterHealScroll), "Thaumaturgie", "Soins majeurs", 54, 84, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(TotemGuerisonScroll), "Thaumaturgie", "Totem de guérison", 66, 96, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(DernierSouffleScroll), "Thaumaturgie", "Dernier souffle", 78, 108, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(AdrenalineScroll), "Thaumaturgie", "Adrénaline", 90, 120, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+
+            index = AddCraft(typeof(WeakenScroll), "Ensorcellement", "Faiblesse", 30,  60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ClumsyScroll), "Ensorcellement", "Maladresse", 30, 60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(FeeblemindScroll), "Ensorcellement", "Abrutissement", 30, 60, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(HarmScroll), "Ensorcellement", "Blessure", 42, 72, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ManaDrainScroll), "Ensorcellement", "Drain de mana", 54, 84, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(CurseScroll), "Ensorcellement", "Malédiction", 66, 96, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(AffaiblissementScroll), "Ensorcellement", "Affaiblissement", 78, 108, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+            index = AddCraft(typeof(ManaVampireScroll), "Ensorcellement", "Drain vampirique", 90, 120, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
+
             //index = AddCraft(typeof(MagicArrowScroll), "Évocation", "Flêche Magique", 30.0, 60.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);
 
             //index = AddCraft(typeof(MagicLockScroll), "Adjuration", "Fermeture Magique", 25.0, 55.0, typeof(BlankScroll), "Parchemin Vierge", 1, 1044361);

@@ -74,7 +74,7 @@ namespace Server.Spells
             m.PlaySound(0x1ED);
         }
 
-        public static void GetOnHitEffect(Mobile atk, Mobile def, ref int damage)
+        public static void GetOnHitEffect(Mobile def, ref int damage)
         {
             Mobile caster = GetSacrifice(def);
             if (caster != null)
@@ -119,7 +119,7 @@ namespace Server.Spells
 				if ( m_Caster.Deleted || m_Target.Deleted || !m_Caster.Alive || !m_Target.Alive || DateTime.Now >= m_End )
 				{
                     m_Caster.SendMessage("Le lien de sacrifice a été rompu.");
-                    m_Target.SendMessage("Le Lien de sacrifice a été rompu.");
+                    m_Target.SendMessage("Le lien de sacrifice a été rompu.");
 
 					m_SacrificeTable.Remove( m_Caster );
 					m_SacrificeTable.Remove( m_Target );

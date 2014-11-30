@@ -235,6 +235,7 @@
     <Compile Include="Spells\2XX.Immuabilite\06.Lenteur.cs" />
     <Compile Include="Spells\4XX.Providence\08.ChampEntropique.cs" />
     <Compile Include="Spells\4XX.Providence\09.Sacrifice.cs" />
+    <Compile Include="Spells\6XX.Thaumaturgie\06.Adrenaline.cs" />
     <Compile Include="Spells\8XX.Ensorcellement\08.Affaiblissement.cs" />
     <Compile Include="Spells\6XX.Thaumaturgie\04.TotemRegeneration.cs" />
     <Compile Include="Spells\7XX.Hallucination\01.Invisibility.cs" />
@@ -254,7 +255,13 @@
     <Compile Include="Items\Temrael\Tatoos\TatooDye.cs" />
     <Compile Include="Spells\Scrolls\2XX.Immuabilite\EtouffementScroll.cs" />
     <Compile Include="Spells\Scrolls\2XX.Immuabilite\LenteurScroll.cs" />
+    <Compile Include="Spells\Scrolls\4XX.Providence\SacrificeScroll.cs" />
+    <Compile Include="Spells\Scrolls\4XX.Providence\PeauDePierreScroll.cs" />
     <Compile Include="Spells\Scrolls\5XX.Transmutation\EvasionScroll.cs" />
+    <Compile Include="Spells\Scrolls\6XX.Thaumaturgie\AdrenalineScroll.cs" />
+    <Compile Include="Spells\Scrolls\6XX.Thaumaturgie\DernierSouffleScroll.cs" />
+    <Compile Include="Spells\Scrolls\6XX.Thaumaturgie\TotemGuerisonScroll.cs" />
+    <Compile Include="Spells\Scrolls\8XX.Ensorcellement\AffaiblissementScroll.cs" />
     <Compile Include="Spells\TechniquesCombat\Assassinat.cs" />
     <Compile Include="Spells\TechniquesCombat\AttackSpeed.cs" />
     <Compile Include="Engines\Combat\CombatStrategy.cs" />
@@ -446,7 +453,7 @@
     <Compile Include="Spells\Scrolls\8XX.Ensorcellement\HarmScroll.cs" />
     <Compile Include="Spells\Scrolls\5XX.Transmutation\MagicTrapScroll.cs" />
     <Compile Include="Spells\Scrolls\5XX.Transmutation\MagicUnTrapScroll.cs" />
-    <Compile Include="Spells\Scrolls\4XX.Providence\ProtectionScroll.cs" />
+    <Compile Include="Spells\Scrolls\4XX.Providence\ChampEntropiqueScroll.cs" />
     <Compile Include="Spells\Scrolls\4XX.Providence\StrengthScroll.cs" />
     <Compile Include="Spells\Scrolls\1XX.Evocation\ChainLightningScroll.cs" />
     <Compile Include="Spells\Scrolls\2XX.Immuabilite\EnergyFieldScroll.cs" />

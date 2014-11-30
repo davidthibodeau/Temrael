@@ -125,6 +125,9 @@ namespace Server.Gumps
             new SpellBookEntry( CureSpell.Info.Circle,          CureSpell.Info.skillForCasting, "Antidote", CureSpell.Info.Reagents, 0x8D2, CureSpell.m_SpellID),
             new SpellBookEntry( GreaterHealSpell.Info.Circle,   GreaterHealSpell.Info.skillForCasting, "Soins majeurs", GreaterHealSpell.Info.Reagents, 0x8D2, GreaterHealSpell.m_SpellID),
             new SpellBookEntry( TotemRegenSpell.Info.Circle,    TotemRegenSpell.Info.skillForCasting, "Totem de guérison", TotemRegenSpell.Info.Reagents, 0x8D2, TotemRegenSpell.m_SpellID),
+            new SpellBookEntry( DernierSouffleSpell.Info.Circle, DernierSouffleSpell.Info.skillForCasting, "Dernier souffle", DernierSouffleSpell.Info.Reagents, 0x8D2, DernierSouffleSpell.m_SpellID),
+            new SpellBookEntry( AdrenalineSpell.Info.Circle, AdrenalineSpell.Info.skillForCasting, "Adrénaline", AdrenalineSpell.Info.Reagents, 0x8D2, AdrenalineSpell.m_SpellID),
+
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Pacification", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Dernier souffle", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
             //new SpellBookEntry( 1, SkillName.Thaumaturgie, "Adrénaline", new Type[] { typeof(Garlic), typeof(Bloodmoss), typeof(SulfurousAsh) }, 0x8D2, 3, 19),
@@ -144,7 +147,7 @@ namespace Server.Gumps
             new SpellBookEntry( WeakenSpell.Info.Circle,        WeakenSpell.Info.skillForCasting, "Faiblesse", WeakenSpell.Info.Reagents, 0x8D2, WeakenSpell.m_SpellID),
             new SpellBookEntry( ClumsySpell.Info.Circle,        ClumsySpell.Info.skillForCasting, "Maladresse", ClumsySpell.Info.Reagents, 0x8D2, ClumsySpell.m_SpellID),
             new SpellBookEntry( FeeblemindSpell.Info.Circle,    FeeblemindSpell.Info.skillForCasting, "Abrutissement", FeeblemindSpell.Info.Reagents, 0x8D2, FeeblemindSpell.m_SpellID),
-            new SpellBookEntry( HarmSpell.Info.Circle,          HarmSpell.Info.skillForCasting, "Douleur", HarmSpell.Info.Reagents, 0x8D2, HarmSpell.m_SpellID),
+            new SpellBookEntry( HarmSpell.Info.Circle,          HarmSpell.Info.skillForCasting, "Blessure", HarmSpell.Info.Reagents, 0x8D2, HarmSpell.m_SpellID),
             new SpellBookEntry( ManaDrainSpell.Info.Circle,     ManaDrainSpell.Info.skillForCasting, "Drain de mana", ManaDrainSpell.Info.Reagents, 0x8D2, ManaDrainSpell.m_SpellID),
             new SpellBookEntry( CurseSpell.Info.Circle,         CurseSpell.Info.skillForCasting, "Malédiction", CurseSpell.Info.Reagents, 0x8D2, CurseSpell.m_SpellID),
             new SpellBookEntry( AffaiblissementSpell.Info.Circle, AffaiblissementSpell.Info.skillForCasting, "Affaiblissement", AffaiblissementSpell.Info.Reagents, 0x8D2, AffaiblissementSpell.m_SpellID),
