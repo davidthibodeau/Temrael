@@ -77,7 +77,7 @@ namespace Server.Engines.Hiding
             foreach (Mobile mob in eable)
             {
                 ScriptMobile m = mob as ScriptMobile;
-                if (m == null || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player)
+                if (m == null || m == mobile || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player)
                     continue;
                 double chance = 0;
                 DetectionStatus status;
@@ -122,7 +122,7 @@ namespace Server.Engines.Hiding
             IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
             foreach (Mobile m in eable)
             {
-                if (!m.InLOS(mobile))
+                if (!m.InLOS(mobile) || mobile  == m)
                     continue;
                 double chance = 0;
                 DetectionStatus status;
