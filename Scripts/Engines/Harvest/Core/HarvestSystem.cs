@@ -58,7 +58,8 @@ namespace Server.Engines.Harvest
             bool available = (bank != null && bank.Current >= def.MinConsumedPerHarvest);
 
             if (!available)
-                def.SendMessageTo(from, timed ? def.DoubleHarvestMessage : def.NoResourcesMessage);
+                //def.SendMessageTo(from, timed ? def.DoubleHarvestMessage : def.NoResourcesMessage);
+                def.SendMessageTo(from, def.NoResourcesMessage);
 
             return available;
         }
