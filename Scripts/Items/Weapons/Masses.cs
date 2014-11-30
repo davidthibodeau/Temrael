@@ -397,6 +397,8 @@ namespace Server.Items
         //public override int DefMaxDamage { get { return 11; } }
         public override int DefSpeed { get { return 35; } }
 
+        public override int GoldValue { get { return 20; } set { } }
+
         public virtual HarvestSystem HarvestSystem { get { return Mining.System; } }
 
         [Constructable]

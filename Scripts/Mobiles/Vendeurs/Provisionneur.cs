@@ -100,6 +100,8 @@ namespace Server.Mobiles.Vendeurs
                 Add(new GenericBuyInfo(typeof(Kindling), 20, 0xDE1, 0)); // 3
                 Add(new GenericBuyInfo(typeof(RedBook), 20, 0xFF1, 0)); // 6
                 Add(new GenericBuyInfo(typeof(Bandage), 50, 0xE21, 0)); // 3
+                Add(new GenericBuyInfo(typeof(Pickaxe), 20, 0xe86, 0)); // 20
+                Add(new GenericBuyInfo(typeof(Axe), 20, 0xf49, 0)); //20
             }
         }
 
