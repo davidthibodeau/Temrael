@@ -137,8 +137,8 @@ namespace Server.Engines.BulkOrders
 
 						if ( allRequiredSkills && chance >= 0.0 )
 						{
-							if ( reqExceptional )
-								chance = item.GetExceptionalChance( chance, m );
+                            if (reqExceptional)
+                                chance = item.GetExceptionalChance(chance, m, false);
 
 							if ( chance > 0.0 )
 								validEntries.Add( entries[i] );

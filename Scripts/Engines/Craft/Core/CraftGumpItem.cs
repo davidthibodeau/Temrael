@@ -135,7 +135,7 @@ namespace Server.Engines.Craft
 
 			bool allRequiredSkills = true;
 			double chance = m_CraftItem.GetSuccessChance( m_From, resIndex > -1 ? res.GetAt( resIndex ).ItemType : null, m_CraftSystem, false, ref allRequiredSkills );
-			double excepChance = m_CraftItem.GetExceptionalChance( chance, m_From );
+            double excepChance = m_CraftItem.GetExceptionalChance(chance, m_From, false);
 
 			if ( chance < 0.0 )
 				chance = 0.0;
