@@ -634,7 +634,11 @@ namespace Server.Items
             }
 
 			m_KeyValue = reader.ReadLong();
-            m_Open = false;
+
+            m_Open = reader.ReadBool();
+            if (m_Open == true)
+                m_Open = false;
+
 			m_Locked = reader.ReadBool();
 			m_OpenedID = reader.ReadInt();
 			m_ClosedID = reader.ReadInt();
