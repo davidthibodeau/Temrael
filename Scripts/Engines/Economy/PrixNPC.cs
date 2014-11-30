@@ -61,6 +61,20 @@ namespace Server.Engines.Economy
                 }
             }
 
+            if (item is BaseBone)
+            {
+                BaseBone bone = item as BaseBone;
+
+                switch (bone.Resource)
+                {
+                    case CraftResource.RegularBones: return 1;
+                    case CraftResource.GobelinBones: return 2;
+                    case CraftResource.NordiqueBones: return 3;
+                    case CraftResource.ReptilienBones: return 5;
+                    case CraftResource.DesertiqueBones: return 7;
+                }
+            }
+
             if (item is BaseLeather)
             {
                 BaseLeather leath = item as BaseLeather;
