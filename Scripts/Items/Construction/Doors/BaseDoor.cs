@@ -311,7 +311,7 @@ namespace Server.Items
                         m_Timer = new InternalTimer(this, m_DureeFermeture);
                         m_Timer.Start();
                     }
-                    else
+                    else if (m_Timer != null)
                         m_Timer.Stop();
 				}
 			}
