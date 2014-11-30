@@ -807,15 +807,15 @@ namespace Server.Engines.Craft
 			return b.Hue.CompareTo( a.Hue );
 		}
 
-		public double GetExceptionalChance( double chance, Mobile from )
-		{
+        public double GetExceptionalChance(double chance, Mobile from, bool gainSkills)
+        {
             double bonus = 0;
 
             if (from is PlayerMobile)
                 bonus += (((PlayerMobile)from).Skills.Polissage.Value / 200);
 
             return chance * 0.20 + bonus;
-		}
+        }
 
         private static Type[] m_UseLeathers = new Type[]
 			{
@@ -1003,7 +1003,7 @@ namespace Server.Engines.Craft
 		public bool CheckSkills( Mobile from, Type typeRes, CraftSystem craftSystem, ref int quality, ref bool allRequiredSkills, bool gainSkills )
 		{
             double chance = GetSuccessChance(from, typeRes, craftSystem, gainSkills, ref allRequiredSkills);
-            double excepchance = GetExceptionalChance(chance, from);
+            double excepchance = GetExceptionalChance(chance, from, gainSkills);
 
             if (excepchance > chance)
                 excepchance = chance;
@@ -1152,8 +1152,11 @@ namespace Server.Engines.Craft
                     valMainSkill = valSkill;
                 }
 
-                if (gainSkills) // This is a passive check. Success chance is entirely dependant on the main skill
+                if (gainSkills)
+                {
                     from.CheckSkill(craftSkill.SkillToMake, minSkill, maxSkill);
+                    from.CheckSkill(SkillName.Fignolage, minSkill, maxSkill);
+                }
             }
 
             double chance = 0.0;
@@ -1693,7 +1696,7 @@ namespace Server.Engines.Craft
 					int quality = 1;
 					bool allRequiredSkills = true;
 
-					m_CraftItem.CheckSkills( m_From, m_TypeRes, m_CraftSystem, ref quality, ref allRequiredSkills, false );
+                    m_CraftItem.CheckSkills(m_From, m_TypeRes, m_CraftSystem, ref quality, ref allRequiredSkills, true);
 
 					CraftContext context = m_CraftSystem.GetContext( m_From );
 
