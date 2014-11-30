@@ -607,7 +607,7 @@ namespace Server.Items
 
 			writer.Write( (int) 3 ); // version
 
-            writer.Write( m_KeyValue );
+            writer.Write(m_KeyValue);
 
 			writer.Write( m_Open );
 			writer.Write( m_Locked );
@@ -634,7 +634,7 @@ namespace Server.Items
             }
 
 			m_KeyValue = reader.ReadLong();
-			m_Open = reader.ReadBool();
+            m_Open = false;
 			m_Locked = reader.ReadBool();
 			m_OpenedID = reader.ReadInt();
 			m_ClosedID = reader.ReadInt();

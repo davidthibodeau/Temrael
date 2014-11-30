@@ -35,8 +35,6 @@ namespace Server.Engines.Races
 
         public abstract bool Transformed { get; set; }
 
-        public abstract string Race { get; }
-
         public virtual void Transformer(PlayerMobile from)
         {
         }
