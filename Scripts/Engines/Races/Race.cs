@@ -14,8 +14,9 @@ namespace Server.Engines.Races
 
         public abstract int[] HueGumps { get; }
 
-        public abstract string Name{get;}
-		public abstract string NameF{get;}
+        [CommandProperty(AccessLevel.Batisseur)]
+        public virtual string Name { get { return ""; } }
+        public abstract string NameF { get; }
 
         public abstract Type Skin { get; }
 
@@ -28,14 +29,13 @@ namespace Server.Engines.Races
         [CommandProperty(AccessLevel.Batisseur)]
         public int Hue { get { return hue; } }
 
-        [CommandProperty(AccessLevel.Batisseur)]
         public abstract bool isTieffelin { get; }
 
-        [CommandProperty(AccessLevel.Batisseur)]
         public abstract bool isAasimaar { get; }
 
-        [CommandProperty(AccessLevel.Batisseur)]
         public abstract bool Transformed { get; set; }
+
+        public abstract string Race { get; }
 
         public virtual void Transformer(PlayerMobile from)
         {

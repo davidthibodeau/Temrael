@@ -15,16 +15,19 @@ namespace Server.Engines.Races
         private RaceSecrete raceSecrete;
         private int hueSecrete;
 
+        [CommandProperty(AccessLevel.Batisseur)]
         public override bool isAasimaar
         {
             get { return raceSecrete == RaceSecrete.Aasimar; }
         }
 
+        [CommandProperty(AccessLevel.Batisseur)]
         public override bool isTieffelin
         {
             get { return raceSecrete == RaceSecrete.Tieffelin; }
         }
 
+        [CommandProperty(AccessLevel.Batisseur)]
         public override bool Transformed
         {
             get;
