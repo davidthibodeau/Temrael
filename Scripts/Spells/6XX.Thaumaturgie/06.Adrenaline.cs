@@ -81,7 +81,7 @@ namespace Server.Spells
 
         public static void GetOnHitEffect(Mobile def, ref int damage)
         {
-            if (def == null || m_SouffleTable.ContainsKey(def))
+            if (def == null || !m_SouffleTable.ContainsKey(def))
                 return;
 
             m_SouffleTable[def] += damage;
