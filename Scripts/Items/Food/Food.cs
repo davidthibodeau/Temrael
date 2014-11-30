@@ -593,6 +593,17 @@ namespace Server.Items
 
 	public class Ribs : Food
 	{
+        public override int GoldValue
+        {
+            get
+            {
+                return 6;
+            }
+            set
+            {
+            }
+        }
+
 		[Constructable]
 		public Ribs() : this( 1 )
 		{
@@ -968,6 +979,17 @@ namespace Server.Items
 
 	public class LambLeg : Food
 	{
+        public override int GoldValue
+        {
+            get
+            {
+                return 3;
+            }
+            set
+            {
+            }
+        }
+
 		[Constructable]
 		public LambLeg() : this( 1 )
 		{

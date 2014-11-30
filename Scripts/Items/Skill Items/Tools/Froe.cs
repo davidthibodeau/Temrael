@@ -12,6 +12,7 @@ namespace Server.Items
 		public Froe() : base( 0x10E5 )
 		{
 			Weight = 1.0;
+            GoldValue = 6;
 		}
 
 		[Constructable]
