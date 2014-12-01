@@ -186,7 +186,6 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(Ham), 20, 0x9C9, 0));
             }
         }
 
@@ -221,6 +220,10 @@ namespace Server.Mobiles.Vendeurs
                 Add(typeof(Log));
                 Add(typeof(PinLog));
                 Add(typeof(CypresLog));
+
+                Add(typeof(RawRibs));
+                Add(typeof(RawBird));
+                Add(typeof(Feather));
             }
         }
     }

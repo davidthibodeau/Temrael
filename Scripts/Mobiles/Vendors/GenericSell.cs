@@ -120,7 +120,7 @@ namespace Server.Mobiles
 			//if ( item.Hue != 0 )
 				//return false;
 
-			return IsInList( item.GetType() );
+            return false;
 		}
 
 		public bool IsInList( Type type )
