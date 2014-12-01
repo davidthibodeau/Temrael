@@ -91,7 +91,7 @@ namespace Server.Gumps.Creation
 
         private static void SetSkills(PlayerMobile from)
         {
-            from.SkillsCap = 100 * 10;
+            from.SkillsCap = 100 * 10 * from.Experience.Niveau;
 
             for (int i = 0; i < from.Skills.Length; ++i)
             {
