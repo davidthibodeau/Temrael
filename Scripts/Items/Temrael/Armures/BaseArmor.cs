@@ -737,6 +737,24 @@ namespace Server.Items
         {
             from.CheckStatTimers();
 
+            int strBonus = 0;
+            int dexBonus = BaseDexBonus;
+            int intBonus = 0;	
+		
+            if (strBonus != 0 || dexBonus != 0 || intBonus != 0)		
+            {		
+                string modName = this.Serial.ToString();		
+		
+                if (strBonus != 0)		
+                    from.AddStatMod(new StatMod(StatType.Str, modName + "Str", strBonus, TimeSpan.Zero));		
+		
+                if (dexBonus != 0)		
+                    from.AddStatMod(new StatMod(StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero));		
+		
+                if (intBonus != 0)		
+                    from.AddStatMod(new StatMod(StatType.Int, modName + "Int", intBonus, TimeSpan.Zero));		
+            }		
+
             return base.OnEquip(from);
         }
 
@@ -745,6 +763,12 @@ namespace Server.Items
             if (parent is Mobile)
             {
                 Mobile m = (Mobile)parent;
+                string modName = this.Serial.ToString();
+
+				m.RemoveStatMod( modName + "Str" );
+				m.RemoveStatMod( modName + "Dex" );
+				m.RemoveStatMod( modName + "Int" );
+
                 m.Delta(MobileDelta.Armor); // Tell them armor rating has changed
                 m.CheckStatTimers();
             }
