@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public Garlic() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]

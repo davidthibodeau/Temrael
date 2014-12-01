@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public PigIron() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]

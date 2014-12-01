@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public GraveDust() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]

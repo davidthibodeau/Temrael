@@ -17,7 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public DaemonBlood( int amount ) : base( 0xF7D, amount )
 		{
-            GoldValue = 3;
+            GoldValue = 1;
 		}
 
 		public DaemonBlood( Serial serial ) : base( serial )

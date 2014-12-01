@@ -17,7 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public BlackPearl( int amount ) : base( 0xF7A, amount )
 		{
-            GoldValue = 3;
+            GoldValue = 1;
 		}
 
 		public BlackPearl( Serial serial ) : base( serial )
