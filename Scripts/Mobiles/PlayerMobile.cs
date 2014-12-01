@@ -2141,27 +2141,17 @@ namespace Server.Mobiles
 		{
             if (Alive)
             {
-                for (int h = 0; h < hears.Count; ++h)
-                {
-                    Mobile o = hears[h];
-                    if (o is PlayerMobile)
-                    {
-                        PlayerMobile player = o as PlayerMobile;
+                bool isEmote = false;
 
-                        bool isEmote = false;
+                char debut = text[0];
+                char fin = text[text.Length - 1];
 
-                        char debut = text[0];
-                        char fin = text[text.Length - 1];
+                isEmote = (debut.ToString() == "*" && fin.ToString() == "*");
 
-                        isEmote = (debut.ToString() == "*" && fin.ToString() == "*");
+                if (isEmote)
+                    return false;
 
-                        if (isEmote)
-                            return false;
-
-                        return Langues.MutateSpeech(ref text);
-                    }
-                }
-
+                return Langues.MutateSpeech(ref text);
             }
 
 			return base.MutateSpeech( hears, ref text, ref context );
@@ -2175,7 +2165,7 @@ namespace Server.Mobiles
 
                 return Langues.HearsGibberish(player);
             }
-            return true;
+            return false;
         }
 
         public override void OnSaid(SpeechEventArgs e)

@@ -354,9 +354,6 @@ namespace Server.Mobiles
 
                     #region Commandes
                     // First, check the all*
-
-                    e.Mobile.PublicOverheadMessage(MessageType.Regular, 0, true, "Speech : " + speech);
-
                     if (speech.Equals("all come"))
                     {
 						if( isOwner )
