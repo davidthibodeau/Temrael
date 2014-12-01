@@ -36,6 +36,7 @@ namespace Server.SkillHandlers
 			}
             else
             {
+                m.CheckSkill(SkillName.Infiltration, m.Skills[SkillName.Infiltration].Value);
 
                 // Malus de dex sur les chances de reussite.
                 int malusDex = 0;
@@ -45,9 +46,7 @@ namespace Server.SkillHandlers
                     malusDex = (int)((m.Skills[SkillName.Infiltration].Value / 2) - dex - 20) * 3; // -15% pour cap 4. -30% pour cap 5.
                 }
 
-
-
-                if (m.CheckSkill((SkillName.Infiltration - malusDex), 0, 100))
+                if (m.CheckSkill(SkillName.Infiltration, m.Skills[SkillName.Infiltration].Value - malusDex))
 				{
                     int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 4 steps en courrant.
 
