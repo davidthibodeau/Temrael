@@ -71,7 +71,7 @@ namespace Server.Mobiles
 		}
 
         public override double AttackSpeed { get { return 2.5; } }
-		public override int Meat{ get{ return 3; } }
+		public override int Meat{ get{ return 2; } }
 		public override MeatType MeatType{ get{ return MeatType.LambLeg; } }
 		public override FoodType FavoriteFood{ get{ return FoodType.FruitsAndVegies | FoodType.GrainsAndHay; } }
 

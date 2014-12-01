@@ -37,7 +37,7 @@ namespace Server.Mobiles.NewAnimals
 			MinTameSkill = 5;
         }
 
-        public override int Meat { get { return 2; } }
+        public override int Meat { get { return 1; } }
         public override MeatType MeatType { get { return MeatType.LambLeg; } }
         public override int Hides { get { return 1; } }
         public override HideType HideType { get { return HideType.Regular; } }

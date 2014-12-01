@@ -51,7 +51,7 @@ namespace Server.Mobiles
 
 		public override bool DeathAdderCharmable{ get{ return true; } }
 
-		public override int Meat{ get{ return 4; } }
+        public override int Meat { get { return 2; } }
         public override int Bones { get { return 4; } }
         public override int Hides { get { return 6; } }
         public override HideType HideType { get { return HideType.Reptilien; } }

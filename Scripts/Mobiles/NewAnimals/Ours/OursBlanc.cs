@@ -45,7 +45,7 @@ namespace Server.Mobiles
 
         public override int Hides { get { return 8; } }
         public override HideType HideType { get { return HideType.Nordique; } }
-        public override int Meat { get { return 20; } }
+        public override int Meat { get { return 8; } }
         public override MeatType MeatType { get { return MeatType.Ribs; } }
 
         public OursBlanc(Serial serial)

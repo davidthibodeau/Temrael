@@ -36,7 +36,7 @@ namespace Server.Mobiles
             MinTameSkill = 5;
         }
 
-        public override int Meat { get { return 10; } }
+        public override int Meat { get { return 4; } }
         public override MeatType MeatType { get { return MeatType.Ribs; } }
 
 
