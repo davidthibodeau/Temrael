@@ -99,34 +99,54 @@ namespace Server.Engines.Craft
 
             #region Matériaux
 
-            index = AddCraft(typeof(Kindling), "Matériaux", "Branchette", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
+            index = AddCraft(typeof(Kindling), "Matériaux", "Branchette (une)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
+
+            index = AddCraft(typeof(Kindling), "Matériaux", "Branchette (toutes)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(Board), "Matériaux", "Planche", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
+            index = AddCraft(typeof(Board), "Matériaux", "Planche (une)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
+
+            index = AddCraft(typeof(Board), "Matériaux", "Planche (toutes)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
             SetUseAllRes(index, true);
 
-            index = AddCraft(typeof(Shaft), "Matériaux", "Manche", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
+            index = AddCraft(typeof(Shaft), "Matériaux", "Manche (une)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
+
+            index = AddCraft(typeof(Shaft), "Matériaux", "Manche (toutes)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
             SetUseAllRes(index, true);
 
-			index = AddCraft(typeof(PinBoard), "Matériaux", "Planche de pin", 20, 40, typeof(PinLog), "Bûche de Pin", 1, 1044351);
+            index = AddCraft(typeof(PinBoard), "Matériaux", "Planche de pin (une)", 20, 40, typeof(PinLog), "Bûche de Pin", 1, 1044351);
+
+			index = AddCraft(typeof(PinBoard), "Matériaux", "Planche de pin (toutes)", 20, 40, typeof(PinLog), "Bûche de Pin", 1, 1044351);
             SetUseAllRes(index, true);
 			
-			index = AddCraft(typeof(CypresBoard), "Matériaux", "Planche de Cypres", 30.0, 50.0, typeof(CypresLog), "Bûche de Cypres", 1, 1044351);
+			index = AddCraft(typeof(CypresBoard), "Matériaux", "Planche de Cypres (une)", 30.0, 50.0, typeof(CypresLog), "Bûche de Cypres", 1, 1044351);
+
+            index = AddCraft(typeof(CypresBoard), "Matériaux", "Planche de Cypres (toutes)", 30.0, 50.0, typeof(CypresLog), "Bûche de Cypres", 1, 1044351);
             SetUseAllRes(index, true);
 			
-			index = AddCraft(typeof(CedreBoard), "Matériaux", "Planche de cèdre", 40.0, 60.0, typeof(CedreLog), "Bûche de cèdre", 1, 1044351);
+			index = AddCraft(typeof(CedreBoard), "Matériaux", "Planche de cèdre (une)", 40.0, 60.0, typeof(CedreLog), "Bûche de cèdre", 1, 1044351);
+
+            index = AddCraft(typeof(CedreBoard), "Matériaux", "Planche de cèdre (toutes)", 40.0, 60.0, typeof(CedreLog), "Bûche de cèdre", 1, 1044351);
             SetUseAllRes(index, true);
 			
-			index = AddCraft(typeof(SauleBoard), "Matériaux", "Planche de Saule", 50.0, 70.0, typeof(SauleLog), "Bûche de Saule", 1, 1044351);
+			index = AddCraft(typeof(SauleBoard), "Matériaux", "Planche de Saule (une)", 50.0, 70.0, typeof(SauleLog), "Bûche de Saule", 1, 1044351);
+
+            index = AddCraft(typeof(SauleBoard), "Matériaux", "Planche de Saule (toutes)", 50.0, 70.0, typeof(SauleLog), "Bûche de Saule", 1, 1044351);
             SetUseAllRes(index, true);
 			
-			index = AddCraft(typeof(CheneBoard), "Matériaux", "Planche de chêne", 60.0, 80.0, typeof(CheneLog), "Bûche de chêne", 1, 1044351);
+            index = AddCraft(typeof(CheneBoard), "Matériaux", "Planche de chêne (une)", 60.0, 80.0, typeof(CheneLog), "Bûche de chêne", 1, 1044351);
+
+			index = AddCraft(typeof(CheneBoard), "Matériaux", "Planche de chêne (toutes)", 60.0, 80.0, typeof(CheneLog), "Bûche de chêne", 1, 1044351);
             SetUseAllRes(index, true);
 			
-			index = AddCraft(typeof(EbeneBoard), "Matériaux", "Planche d'ébène", 70.0, 90.0, typeof(EbeneLog), "Bûche d'ébène", 1, 1044351);
+            index = AddCraft(typeof(EbeneBoard), "Matériaux", "Planche d'ébène (une)", 70.0, 90.0, typeof(EbeneLog), "Bûche d'ébène", 1, 1044351);
+
+			index = AddCraft(typeof(EbeneBoard), "Matériaux", "Planche d'ébène (toutes)", 70.0, 90.0, typeof(EbeneLog), "Bûche d'ébène", 1, 1044351);
             SetUseAllRes(index, true);
 			
-			index = AddCraft(typeof(AcajouBoard), "Matériaux", "Planche d'Acajou", 80.0, 100.0, typeof(AcajouLog), "Bûche d'Acajou", 1, 1044351);
+			index = AddCraft(typeof(AcajouBoard), "Matériaux", "Planche d'Acajou (une)", 80.0, 100.0, typeof(AcajouLog), "Bûche d'Acajou", 1, 1044351);
+
+            index = AddCraft(typeof(AcajouBoard), "Matériaux", "Planche d'Acajou (toutes)", 80.0, 100.0, typeof(AcajouLog), "Bûche d'Acajou", 1, 1044351);
             SetUseAllRes(index, true);
 
             index = AddCraft(typeof(BarrelStaves), "Matériaux", "Douves de Tonneau", 00.0, 25.0, typeof(Board), "Planches", 7, 1044351);
