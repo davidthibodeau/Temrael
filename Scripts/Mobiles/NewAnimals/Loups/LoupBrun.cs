@@ -8,7 +8,7 @@ namespace Server.Mobiles
     {
         [Constructable]
         public LoupBrun()
-            : base(AIType.AI_Melee, FightMode.Closest, 8, 1, 0.2, 0.4)
+            : base(AIType.AI_Melee, FightMode.Closest, 3, 1, 0.2, 0.4)
         {
             Name = "Loup Brun";
             Body = 225;
