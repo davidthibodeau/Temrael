@@ -70,8 +70,6 @@ namespace Server.Items
         AncienBones,
         DemonBones,
         DragonBones,
-        BalronBones,
-        WyrmBones,
 
         TruiteSauvage = 501,
         TruiteMer,
@@ -828,9 +826,6 @@ namespace Server.Items
                 /*TOCHANGE*/new CraftResourceInfo( 2174, 1049356, "Ancien", 80,		CraftAttributeInfo.Ancien,  	CraftResource.AncienBones,  	typeof( AncienBone ),	typeof( AncienBone ) ),
                 new CraftResourceInfo( 2234, 1049356, "Demoniaque", 80, 	CraftAttributeInfo.Demoniaque,	CraftResource.DemonBones,   	typeof( DemonBone ),	typeof( DemonBone ) ),
 				new CraftResourceInfo( 1940, 1049356, "Dragonique", 90,    CraftAttributeInfo.Dragonique,	CraftResource.DragonBones,  	typeof( DragonBone ),	typeof( DragonBone ) ),
-				/*TOCHANGE*/new CraftResourceInfo( 2055, 1049356, "Balron",	90,	CraftAttributeInfo.Balron,  	CraftResource.BalronBones,  	typeof( BalronBone ),	typeof( BalronBone ) ),
-				/*TOCHANGE*/new CraftResourceInfo( 1953, 1049356, "Wyrmique", 90,		CraftAttributeInfo.Wyrm,    	CraftResource.WyrmBones,    	typeof( WyrmBone ),	    typeof( WyrmBone ) )
-
 			};
 
 		private static CraftResourceInfo[] m_AOSLeatherInfo = new CraftResourceInfo[]
@@ -933,9 +928,6 @@ namespace Server.Items
 
 			if ( resource >= CraftResource.RegularWood && resource <= CraftResource.AcajouWood )
 				return CraftResourceType.Wood;
-
-            if (resource >= CraftResource.RegularBones && resource <= CraftResource.WyrmBones)
-                return CraftResourceType.Bones;
 
 			return CraftResourceType.None;
 		}
@@ -1114,10 +1106,6 @@ namespace Server.Items
                     return CraftResource.DemonBones;
                 else if (info.Level == 10)
                     return CraftResource.DragonBones;
-                else if (info.Level == 11)
-                    return CraftResource.BalronBones;
-                else if (info.Level == 12)
-                    return CraftResource.WyrmBones;
             }
 
 			return GetFromOreInfo( info );

@@ -237,8 +237,6 @@ namespace Server.Engines.Craft
             AddSubRes(typeof(AncienBone), "Os Ancien", CraftResources.GetSkill( CraftResource.AncienBones), 1049311);
             AddSubRes(typeof(DemonBone), "Os Demoniaque", CraftResources.GetSkill( CraftResource.DemonBones), 1049311);
             AddSubRes(typeof(DragonBone), "Os Dragonique", CraftResources.GetSkill( CraftResource.DragonBones), 1049311);
-            AddSubRes(typeof(BalronBone), "Os Balron", CraftResources.GetSkill( CraftResource.BalronBones), 1049311);
-            AddSubRes(typeof(WyrmBone), "Os Wyrmique", CraftResources.GetSkill( CraftResource.WyrmBones), 1049311);
 
             // Set the overridable material 2
             SetSubRes2(typeof(Leather), "Cuir");

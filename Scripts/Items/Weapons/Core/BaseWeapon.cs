@@ -370,6 +370,12 @@ namespace Server.Items
         }
 		#endregion
 
+        const double scalingRes = 0.3;
+        private double GetResScaling(int niveau, int nbRessource)
+        {
+            return (1 + niveau * scalingRes / nbRessource);
+        }
+
         public int RessourceBonus(int BaseDamage)
         {
             double dmg = BaseDamage;
@@ -377,29 +383,28 @@ namespace Server.Items
             // Les bonus vont de 0% à 30% de bonus d'AR.
             switch (m_Resource)
             {
-                case CraftResource.Cuivre: dmg *= 1.06; break;
-                case CraftResource.Bronze: dmg *= 1.06; break;
-                case CraftResource.Acier: dmg *= 1.12; break;
-                case CraftResource.Argent: dmg *= 1.12; break;
-                case CraftResource.Or: dmg *= 1.12; break;
-                case CraftResource.Mytheril: dmg *= 1.18; break;
-                case CraftResource.Luminium: dmg *= 1.18; break;
-                case CraftResource.Obscurium: dmg *= 1.18; break;
-                case CraftResource.Mystirium: dmg *= 1.24; break;
-                case CraftResource.Dominium: dmg *= 1.24; break;
-                case CraftResource.Venarium: dmg *= 1.24; break;
-                case CraftResource.Eclarium: dmg *= 1.3; break;
-                case CraftResource.Athenium: dmg *= 1.3; break;
-                case CraftResource.Umbrarium: dmg *= 1.3; break;
+                case CraftResource.Cuivre: dmg *= GetResScaling(1, 14); break;
+                case CraftResource.Bronze: dmg *= GetResScaling(2, 14); break;
+                case CraftResource.Acier: dmg *= GetResScaling(3, 14); break;
+                case CraftResource.Argent: dmg *= GetResScaling(4, 14); break;
+                case CraftResource.Or: dmg *= GetResScaling(5, 14); break;
+                case CraftResource.Mytheril: dmg *= GetResScaling(6, 14); break;
+                case CraftResource.Luminium: dmg *= GetResScaling(7, 14); break;
+                case CraftResource.Obscurium: dmg *= GetResScaling(8, 14); break;
+                case CraftResource.Mystirium: dmg *= GetResScaling(9, 14); break;
+                case CraftResource.Dominium: dmg *= GetResScaling(10, 14); break;
+                case CraftResource.Venarium: dmg *= GetResScaling(11, 14); break;
+                case CraftResource.Eclarium: dmg *= GetResScaling(12, 14); break;
+                case CraftResource.Athenium: dmg *= GetResScaling(13, 14); break;
+                case CraftResource.Umbrarium: dmg *= GetResScaling(14, 14); break;
 
-                case CraftResource.RegularWood: dmg *= 1.06; break;
-		        case CraftResource.PinWood: dmg *= 1.06; break;
-                case CraftResource.CypresWood: dmg *= 1.12; break;
-                case CraftResource.CedreWood: dmg *= 1.18; break;
-                case CraftResource.SauleWood: dmg *= 1.18; break;
-                case CraftResource.CheneWood: dmg *= 1.24; break;
-                case CraftResource.EbeneWood: dmg *= 1.3; break;
-                case CraftResource.AcajouWood: dmg *= 1.3; break;
+                case CraftResource.PinWood: dmg *= GetResScaling(1, 7); break;
+                case CraftResource.CypresWood: dmg *= GetResScaling(2, 7); break;
+                case CraftResource.CedreWood: dmg *= GetResScaling(3, 7); break;
+                case CraftResource.SauleWood: dmg *= GetResScaling(4, 7); break;
+                case CraftResource.CheneWood: dmg *= GetResScaling(5, 7); break;
+                case CraftResource.EbeneWood: dmg *= GetResScaling(6, 7); break;
+                case CraftResource.AcajouWood: dmg *= GetResScaling(7, 7); break;
             }
 
             return (int)dmg;

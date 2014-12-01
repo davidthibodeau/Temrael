@@ -552,6 +552,12 @@ namespace Server.Items
         #region Ressources
         public virtual CraftResource DefaultResource { get { return CraftResource.Fer; } }
 
+        const double scalingRes = 0.3;
+        private double GetResScaling(int niveau, int nbRessource)
+        {
+            return (1 + niveau * scalingRes / nbRessource);
+        }
+
         public virtual double ResistanceBonus(double BaseResistance)
         {
             double ar = BaseResistance;
@@ -559,45 +565,50 @@ namespace Server.Items
             // Les bonus vont de 0% à 30% de bonus d'AR.
             switch (m_Resource)
             {
-                case CraftResource.Cuivre: ar *= 1.06; break;
-                case CraftResource.Bronze: ar *= 1.06; break;
-                case CraftResource.Acier: ar *= 1.12; break;
-                case CraftResource.Argent: ar *= 1.12; break;
-                case CraftResource.Or: ar *= 1.12; break;
-                case CraftResource.Mytheril: ar *= 1.18; break;
-                case CraftResource.Luminium: ar *= 1.18; break;
-                case CraftResource.Obscurium: ar *= 1.18; break;
-                case CraftResource.Mystirium: ar *= 1.24; break;
-                case CraftResource.Dominium: ar *= 1.24; break;
-                case CraftResource.Venarium: ar *= 1.24; break;
-                case CraftResource.Eclarium: ar *= 1.3; break;
-                case CraftResource.Athenium: ar *= 1.3; break;
-                case CraftResource.Umbrarium: ar *= 1.3; break;
+                case CraftResource.Cuivre: ar *= GetResScaling(1, 14); break;
+                case CraftResource.Bronze: ar *= GetResScaling(2, 14); break;
+                case CraftResource.Acier: ar *= GetResScaling(3, 14); break;
+                case CraftResource.Argent: ar *= GetResScaling(4, 14); break;
+                case CraftResource.Or: ar *= GetResScaling(5, 14); break;
+                case CraftResource.Mytheril: ar *= GetResScaling(6, 14); break;
+                case CraftResource.Luminium: ar *= GetResScaling(7, 14); break;
+                case CraftResource.Obscurium: ar *= GetResScaling(8, 14); break;
+                case CraftResource.Mystirium: ar *= GetResScaling(9, 14); break;
+                case CraftResource.Dominium: ar *= GetResScaling(10, 14); break;
+                case CraftResource.Venarium: ar *= GetResScaling(11, 14); break;
+                case CraftResource.Eclarium: ar *= GetResScaling(12, 14); break;
+                case CraftResource.Athenium: ar *= GetResScaling(13, 14); break;
+                case CraftResource.Umbrarium: ar *= GetResScaling(14, 14); break;
 
-                case CraftResource.NordiqueLeather: ar *= 1.06; break;
-                case CraftResource.DesertiqueLeather: ar *= 1.06; break;
-                case CraftResource.MaritimeLeather: ar *= 1.12; break;
-                case CraftResource.VolcaniqueLeather: ar *= 1.12; break;
-                case CraftResource.GeantLeather: ar *= 1.18; break;
-                case CraftResource.OphidienLeather: ar *= 1.18; break;
-                case CraftResource.ArachnideLeather: ar *= 1.18; break;
-                case CraftResource.AncienLeather: ar *= 1.24; break;
-                case CraftResource.DemoniaqueLeather: ar *= 1.24; break;
-                case CraftResource.DragoniqueLeather: ar *= 1.3; break;
-                case CraftResource.LupusLeather: ar *= 1.3; break;
+                case CraftResource.LupusLeather: ar *= GetResScaling(1, 14); break;
+                case CraftResource.NordiqueLeather: ar *= GetResScaling(2, 14); break;
+                case CraftResource.ReptilienLeather: ar *= GetResScaling(3, 14); break;
+                case CraftResource.DesertiqueLeather: ar *= GetResScaling(4, 14); break;
+                case CraftResource.VolcaniqueLeather: ar *= GetResScaling(5, 14); break;
+                case CraftResource.MaritimeLeather: ar *= GetResScaling(6, 14); break;
+                case CraftResource.GeantLeather: ar *= GetResScaling(7, 14); break;
+                case CraftResource.MinotaurLeather: ar *= GetResScaling(8, 14); break;
+                case CraftResource.OphidienLeather: ar *= GetResScaling(9, 14); break;
+                case CraftResource.ArachnideLeather: ar *= GetResScaling(10, 14); break;
+                case CraftResource.MagiqueLeather: ar *= GetResScaling(11, 14); break;
+                case CraftResource.AncienLeather: ar *= GetResScaling(12, 14); break;
+                case CraftResource.DemoniaqueLeather: ar *= GetResScaling(13, 14); break;
+                case CraftResource.DragoniqueLeather: ar *= GetResScaling(14, 14); break;
 
-                case CraftResource.NordiqueBones: ar *= 1.06; break;
-                case CraftResource.DesertiqueBones: ar *= 1.06; break;
-                case CraftResource.MaritimeBones: ar *= 1.12; break;
-                case CraftResource.VolcaniqueBones: ar *= 1.12; break;
-                case CraftResource.GeantBones: ar *= 1.18; break;
-                case CraftResource.OphidienBones: ar *= 1.18; break;
-                case CraftResource.ArachnideBones: ar *= 1.18; break;
-                case CraftResource.AncienBones: ar *= 1.24; break;
-                case CraftResource.DemonBones: ar *= 1.24; break;
-                case CraftResource.DragonBones: ar *= 1.24; break;
-                case CraftResource.BalronBones: ar *= 1.3; break;
-                case CraftResource.WyrmBones: ar *= 1.3; break;
+                case CraftResource.GobelinBones: ar *= GetResScaling(1, 14); break;
+                case CraftResource.NordiqueBones: ar *= GetResScaling(2, 14); break;
+                case CraftResource.ReptilienBones: ar *= GetResScaling(3, 14); break;
+                case CraftResource.DesertiqueBones: ar *= GetResScaling(4, 14); break;
+                case CraftResource.VolcaniqueBones: ar *= GetResScaling(5, 14); break;
+                case CraftResource.MaritimeBones: ar *= GetResScaling(6, 14); break;
+                case CraftResource.GeantBones: ar *= GetResScaling(7, 14); break;
+                case CraftResource.MinotaureBones: ar *= GetResScaling(8, 14); break;
+                case CraftResource.OphidienBones: ar *= GetResScaling(9, 14); break;
+                case CraftResource.ArachnideBones: ar *= GetResScaling(10, 14); break;
+                case CraftResource.MagiqueBones: ar *= GetResScaling(11, 14); break;
+                case CraftResource.AncienBones: ar *= GetResScaling(12, 14); break;
+                case CraftResource.DemonBones: ar *= GetResScaling(13, 14); break;
+                case CraftResource.DragonBones: ar *= GetResScaling(14, 14); break;
             }
 
             return ar;

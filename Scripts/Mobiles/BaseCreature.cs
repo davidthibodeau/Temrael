@@ -1401,8 +1401,6 @@ namespace Server.Mobiles
                         case BoneType.Ancien: bone = new AncienBone(Bones); break;
                         case BoneType.Demon: bone = new DemonBone(Bones); break;
                         case BoneType.Dragon: bone = new DragonBone(Bones); break;
-                        case BoneType.Balron: bone = new BalronBone(Bones); break;
-                        case BoneType.Wyrm: bone = new WyrmBone(Bones); break;
                     }
 
                     if (bone != null)
