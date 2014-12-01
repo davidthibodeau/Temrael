@@ -41,7 +41,7 @@ namespace Server.SkillHandlers
                 // Malus de dex sur les chances de reussite.
                 int malusDex = 0;
                 int dex = m.RawDex - m.Dex; // Malus de dex de toutes les armures.
-                if ((m.Skills[SkillName.Infiltration].Value / 2) - dex < 20)
+                if ((m.Skills[SkillName.Infiltration].Value / 2) - dex < 20 && dex != 0)
                 {
                     malusDex = (int)((m.Skills[SkillName.Infiltration].Value / 2) - dex - 20) * 3; // -15% pour cap 4. -30% pour cap 5.
                 }
