@@ -14,6 +14,8 @@ namespace Server.Engines.Races
     {
         private RaceSecrete raceSecrete;
         private int hueSecrete;
+        private int hairhue;
+        private int beardhue;
 
         [CommandProperty(AccessLevel.Batisseur)]
         public override bool isAasimaar
@@ -53,17 +55,24 @@ namespace Server.Engines.Races
             raceSecrete = (RaceSecrete)reader.ReadInt();
             hueSecrete = reader.ReadInt();
             Transformed = reader.ReadBool();
+            if (version > 0)
+            {
+                beardhue = reader.ReadInt();
+                hairhue = reader.ReadInt();
+            }
         }
 
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
             
-            writer.Write(0); //version
+            writer.Write(1); //version
 
             writer.Write((int)raceSecrete);
             writer.Write(hueSecrete);
             writer.Write(Transformed);
+            writer.Write(beardhue);
+            writer.Write(hairhue);
         }
 
         public override void Transformer(PlayerMobile from)
@@ -91,6 +100,12 @@ namespace Server.Engines.Races
                 from.AddItem(new CorpsAasimar());
             }
             from.Hue = hueSecrete;
+            int tmphue = from.HairHue;
+            from.HairHue = hairhue;
+            hairhue = tmphue;
+            tmphue = from.FacialHairHue;
+            from.FacialHairHue = beardhue;
+            beardhue = tmphue;
             from.Identities.Transformer();
             Transformed = true;
        }
@@ -116,6 +131,12 @@ namespace Server.Engines.Races
             }
 
             from.Hue = Hue;
+            int tmphue = from.HairHue;
+            from.HairHue = hairhue;
+            hairhue = tmphue;
+            tmphue = from.FacialHairHue;
+            from.FacialHairHue = beardhue;
+            beardhue = tmphue;
             from.Identities.Detransformer();
             from.Race.Transformed = false;
         }
