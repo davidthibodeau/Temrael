@@ -224,7 +224,6 @@ namespace Server.Mobiles.Vendeurs
                 Add(typeof(RawRibs));
                 Add(typeof(RawBird));
                 Add(typeof(RawLambLeg));
-                Add(typeof(Feather));
             }
         }
     }

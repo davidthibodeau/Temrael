@@ -69,9 +69,9 @@ namespace Server.Targets
 					}
 					else
 					{
-                        bank.Consume(def, 3, loc);
+                        bank.Consume(def, 2, loc);
 
-						Item item = new Kindling();
+                        Item item = new Kindling(2);
 
 						if ( from.PlaceInBackpack( item ) )
 						{
