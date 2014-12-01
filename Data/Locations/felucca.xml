@@ -7,7 +7,7 @@
 				<child name="Cell 2" x="6065" y="186" z="0" />
 				<child name="Cell 3" x="6036" y="196" z="0" />
 			</parent>
-			<child name="Green Acres" x="4015" y="100" z="" />
+			<child name="Green Acres" x="4031" y="37" z="0" />
 			<child name="Zone de création" x="6024" y="107" z="10" />
 			<child name="Zone de mort" x="5923" y="119" z="0" />
 		</parent>
