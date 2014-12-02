@@ -2385,7 +2385,7 @@ namespace Server.Mobiles
             Possess = new Possess(this, reader);
             Transformation = new Transformation(this);
             if (version > 0)
-                Race = Race.Deserialize(reader);
+                race = Race.Deserialize(reader);
 
             m_QuickSpells = new ArrayList();
             int count = reader.ReadInt();
@@ -2522,7 +2522,7 @@ namespace Server.Mobiles
             Experience.Serialize(writer);
             MortEngine.Serialize(writer);
             Possess.Serialize(writer);
-            Race.SerializeRace(Race, writer);
+            Race.SerializeRace(race, writer);
 
             writer.Write(m_QuickSpells.Count);
             for (int i = 0; i < m_QuickSpells.Count; i++)
