@@ -39,14 +39,14 @@ namespace Server.SkillHandlers
                 m.CheckSkill(SkillName.Infiltration, m.Skills[SkillName.Infiltration].Value);
 
                 // Malus de dex sur les chances de reussite.
-                int malusDex = 0;
-                int dex = m.RawDex - m.Dex; // Malus de dex de toutes les armures.
-                if ((m.Skills[SkillName.Infiltration].Value / 2) - dex < 20 && dex != 0)
+                double malusDex = 0;
+                double dex = m.RawDex - m.Dex;
+                if ((m.Skills[SkillName.Infiltration].Value) - (dex * 5) - 60 < 0 && dex != 0)  // Requis en infiltration == cap 1 : 30%. cap 2 : 60%. cap 3 : 90%.
                 {
-                    malusDex = (int)((m.Skills[SkillName.Infiltration].Value / 2) - dex - 20) * 3; // -15% pour cap 4. -30% pour cap 5.
+                    malusDex = dex / 6;
                 }
 
-                if (m.CheckSkill(SkillName.Infiltration, m.Skills[SkillName.Infiltration].Value - malusDex))
+                if (m.CheckSkill(SkillName.Infiltration, m.Skills[SkillName.Infiltration].Value - dex))
 				{
                     int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 4 steps en courrant.
 
@@ -54,7 +54,7 @@ namespace Server.SkillHandlers
                     if (malusDex != 0)
                     {
                         m.SendMessage("Vous n'êtes pas assez agile pour vous déplacer efficacement avec cette armure.");
-                        steps = steps - steps * (-malusDex) * 4 / 100;
+                        steps = (int)(steps / malusDex);
                     }
 
                     if (steps < 1)
