@@ -46,7 +46,7 @@ namespace Server.SkillHandlers
                     malusDex = dex / 6;
                 }
 
-                if (m.CheckSkill(SkillName.Infiltration, m.Skills[SkillName.Infiltration].Value - dex))
+                if (m.CheckSkill(SkillName.Infiltration, (m.Skills[SkillName.Infiltration].Value - dex)/100))
 				{
                     int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 4 steps en courrant.
 
