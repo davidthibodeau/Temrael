@@ -461,18 +461,23 @@ namespace Server.Spells
 
         // Fonction appellée dans CombatStrategy
         // Gère les effets liés à la magie lorsqu'un coup est donné, chez l'attaquant et le défenseur.
-        public static int OnHitEffects(Mobile atk, Mobile def, int damage)
+        public static double OnHitEffects(Mobile atk, Mobile def, double damage)
         {
             CurseWeaponSpell.GetOnHitEffect(atk, damage);
 
             BloodOathSpell.GetOnHitEffect(atk, def, ref damage);
 
-            SacrificeSpell.GetOnHitEffect(def, ref damage);
+            if (def.MagicDamageAbsorb > damage)
+            {
+                def.MagicDamageAbsorb -= (int)damage;
+                damage = 0;
+            }
+            else
+            {
+                damage -= def.MagicDamageAbsorb;
+                def.MagicDamageAbsorb = 0;
+            }
 
-            DernierSouffleSpell.GetOnHitEffect(def, ref damage);
-
-            AdrenalineSpell.GetOnHitEffect(def, ref damage);
-            
             return damage;
         }
 

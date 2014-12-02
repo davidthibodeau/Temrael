@@ -65,7 +65,7 @@ namespace Server.Spells
 
 		public static Hashtable m_Table = new Hashtable();
 
-        public static void GetOnHitEffect(Mobile atk, int damage)
+        public static void GetOnHitEffect(Mobile atk, double damage)
         {
             if (CurseWeaponSpell.m_Table.Contains((BaseWeapon)atk.Weapon))
             {

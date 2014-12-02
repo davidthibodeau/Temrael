@@ -20,7 +20,7 @@ namespace Server.Spells
                 9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(2),
-                SkillName.Providence,
+                SkillName.Thaumaturgie,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot,
 				Reagent.SulfurousAsh
@@ -79,7 +79,7 @@ namespace Server.Spells
             m.PlaySound(0x1ED);
         }
 
-        public static void GetOnHitEffect(Mobile def, ref int damage)
+        public static void GetOnHitEffect(Mobile def, ref double damage)
         {
             if (GetSouffle(def))
             {

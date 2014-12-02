@@ -20,7 +20,7 @@ namespace Server.Spells
                 9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(2),
-                SkillName.Providence,
+                SkillName.Thaumaturgie,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot,
 				Reagent.SulfurousAsh
@@ -79,7 +79,7 @@ namespace Server.Spells
             m.PlaySound(0x1ED);
         }
 
-        public static void GetOnHitEffect(Mobile def, ref int damage)
+        public static void GetOnHitEffect(Mobile def, ref double damage)
         {
             if (def == null || !m_SouffleTable.ContainsKey(def))
                 return;
@@ -88,7 +88,7 @@ namespace Server.Spells
             damage = 0;
         }
 
-        private static Dictionary<Mobile, int> m_SouffleTable = new Dictionary<Mobile, int>();
+        private static Dictionary<Mobile, double> m_SouffleTable = new Dictionary<Mobile, double>();
         private static HashSet<Mobile> m_CooldownTable = new HashSet<Mobile>();
 
 		private class ExpireTimer : Timer
@@ -111,7 +111,7 @@ namespace Server.Spells
 				{
                     m_Target.SendMessage("Votre adrénaline se dissipe.");
 
-                    m_Target.Damage(m_SouffleTable[m_Target]);
+                    m_Target.Damage((int)m_SouffleTable[m_Target]);
                     m_CooldownTable.Add(m_Target);
                     m_SouffleTable.Remove(m_Target);
 					Stop();

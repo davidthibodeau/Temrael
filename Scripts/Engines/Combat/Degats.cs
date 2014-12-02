@@ -31,6 +31,23 @@ namespace Server.Engines.Combat
         {
             double reducedDmg = Reduction(dmg, def.MagicResistance);
 
+            SacrificeSpell.GetOnHitEffect(def, ref reducedDmg);
+
+            DernierSouffleSpell.GetOnHitEffect(def, ref reducedDmg);
+
+            AdrenalineSpell.GetOnHitEffect(def, ref reducedDmg);
+
+            if (def.MagicDamageAbsorb > reducedDmg)
+            {
+                def.MagicDamageAbsorb -= (int)reducedDmg;
+                reducedDmg = 0;
+            }
+            else
+            {
+                reducedDmg -= def.MagicDamageAbsorb;
+                def.MagicDamageAbsorb = 0;
+            }
+
             def.Damage((int)reducedDmg);
         }
 

@@ -47,7 +47,7 @@ namespace Server.Engines.Combat
             def.PlaySound(Weapon(def).GetHitDefendSound(atk, def));
 
             bool crit;
-            int degats = Degats(atk, def, out crit);
+            double degats = Degats(atk, def, out crit);
             if (DefStrategy(def).Parer(def))
             {
                 def.FixedEffect(0x37B9, 10, 16);
@@ -65,7 +65,7 @@ namespace Server.Engines.Combat
 
             degats = Spell.OnHitEffects(atk, def, degats);
 
-            def.Damage(degats, atk);
+            def.Damage((int)degats, atk);
         }
 
         public virtual void OnMiss(Mobile atk, Mobile def)
@@ -147,7 +147,7 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Degats
-        public int Degats(Mobile atk, Mobile def, out bool critique)
+        public double Degats(Mobile atk, Mobile def, out bool critique)
         {
             int basedmg = Utility.RandomMinMax((atk.Weapon as BaseWeapon).MinDamage, (atk.Weapon as BaseWeapon).MaxDamage);
             critique = false;

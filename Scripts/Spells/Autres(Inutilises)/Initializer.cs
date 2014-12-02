@@ -39,12 +39,15 @@ namespace Server.Spells
 
             // Providence
             Register(ReactiveArmorSpell.m_SpellID,  typeof(ReactiveArmorSpell));
-            Register(PeauDePierreSpell.m_SpellID,     typeof(PeauDePierreSpell));
+            Register(PeauDePierreSpell.m_SpellID,   typeof(PeauDePierreSpell));
             Register(BlessSpell.m_SpellID,          typeof(BlessSpell));
             Register(StrengthSpell.m_SpellID,       typeof(StrengthSpell));
             Register(AgilitySpell.m_SpellID,        typeof(AgilitySpell));
             Register(CunningSpell.m_SpellID,        typeof(CunningSpell));
             Register(MagicReflectSpell.m_SpellID,   typeof(MagicReflectSpell));
+            Register(ChampEntropiqueSpell.m_SpellID,typeof(ChampEntropiqueSpell));
+            Register(SacrificeSpell.m_SpellID,      typeof(SacrificeSpell));
+
 
             // Transmutation
             Register(EvasionSpell.m_SpellID,        typeof(EvasionSpell));
@@ -58,6 +61,8 @@ namespace Server.Spells
             Register(CureSpell.m_SpellID,           typeof(CureSpell));
             Register(GreaterHealSpell.m_SpellID,    typeof(GreaterHealSpell));
             Register(TotemRegenSpell.m_SpellID, typeof(TotemRegenSpell));
+            Register(DernierSouffleSpell.m_SpellID, typeof(DernierSouffleSpell));
+            Register(AdrenalineSpell.m_SpellID, typeof(AdrenalineSpell));
 
             // Hallucination
             Register(InvisibilitySpell.m_SpellID,   typeof(InvisibilitySpell));

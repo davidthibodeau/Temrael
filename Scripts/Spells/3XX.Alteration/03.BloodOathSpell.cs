@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Network;
 using Server.Mobiles;
 using Server.Targeting;
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {
@@ -61,7 +62,6 @@ namespace Server.Spells
 				 * ((ss-rm)/8)+8
 				 */
 
-				m_OathTable[Caster] = Caster;
 				m_OathTable[m] = Caster;
 
 				Caster.PlaySound( 0x175 );
@@ -82,12 +82,12 @@ namespace Server.Spells
 			FinishSequence();
 		}
 
-        public static void GetOnHitEffect(Mobile atk, Mobile def, ref int damage)
+        public static void GetOnHitEffect(Mobile atk, Mobile def, ref double damage)
         {
             if (GetBloodOath(atk) == def)
             {
-                atk.Damage((int)(damage * 0.25)); // Retourne 25% des dégâts.
-                damage = (int)(damage * 1.25);    // Augmente de 25% tous les dégâts.
+                damage = damage * 1.25;    // Augmente de 25% tous les dégâts.
+                Damage.instance.AppliquerDegatsMagiques(atk, damage); // Retourne 25% des dégâts.
             }
         }
 
@@ -128,7 +128,6 @@ namespace Server.Spells
 					m_Caster.SendLocalizedMessage( 1061620 ); // Your Blood Oath has been broken.
 					m_Target.SendLocalizedMessage( 1061620 ); // Your Blood Oath has been broken.
 
-					m_OathTable.Remove( m_Caster );
 					m_OathTable.Remove( m_Target );
 
 					Stop();

@@ -74,13 +74,13 @@ namespace Server.Spells
             m.PlaySound(0x1ED);
         }
 
-        public static void GetOnHitEffect(Mobile def, ref int damage)
+        public static void GetOnHitEffect(Mobile def, ref double damage)
         {
             Mobile caster = GetSacrifice(def);
             if (caster != null)
             {
                 caster.Damage((int)(damage * 0.25));
-                damage = (int)(damage * 0.75);
+                damage = damage * 0.75;
             }
         }
 
