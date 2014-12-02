@@ -92,6 +92,7 @@ namespace Server.Spells
             {
                 m_Caster = caster;
                 m_Totem = totem;
+                totem.timer = this;
                 m_End = DateTime.Now + duration;
 
                 Priority = TimerPriority.FiftyMS;
@@ -171,13 +172,13 @@ namespace Server.Spells
 
             }
 
-            private class DispellEntry : ContextMenuEntry
+            private class DispelEntry : ContextMenuEntry
             {
                 private Mobile m_From;
                 private Totem Totem;
 
-                public DispellEntry(Mobile from, Totem totem)
-                    : base(6135, 1)
+                public DispelEntry(Mobile from, Totem totem)
+                    : base(6257, 1)
                 {
                     m_From = from;
                     Totem = totem;
@@ -196,7 +197,7 @@ namespace Server.Spells
             public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
             {
                 if(from == Caster) 
-                    list.Add(new DispellEntry(from, this));
+                    list.Add(new DispelEntry(from, this));
             }
 
 
