@@ -512,7 +512,7 @@ namespace Server.Gumps
 
                     m.SendGump(new NewSpellbookGump(m, m_Book));
                 }
-                else if (info.ButtonID >= 1000 && info.ButtonID < 1300)
+                else if (info.ButtonID >= 1000 && info.ButtonID < 2000)
                 {
                     if (m.QuickSpells == null)
                         return;
