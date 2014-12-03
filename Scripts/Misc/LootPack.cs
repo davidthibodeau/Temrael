@@ -90,7 +90,6 @@ namespace Server
             new LootPackItem( typeof (Pouch)),
             new LootPackItem( typeof (Lantern)),
             new LootPackItem( typeof (Shovel)),
-            new LootPackItem( typeof (TinkerTools)),
             new LootPackItem( typeof (SmithHammer)),
             new LootPackItem( typeof (Tongs)),
             new LootPackItem( typeof (SewingKit)),
