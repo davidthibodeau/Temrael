@@ -149,7 +149,10 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
+
+            writer.Write(m_CanDropInWhenLocked);
+            writer.Write(m_CanSeeInWhenLocked);
 
 			writer.Write( m_IsShipwreckedItem );
 
@@ -169,6 +172,12 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            if (version == 1)
+            {
+                m_CanDropInWhenLocked = reader.ReadBool();
+                m_CanSeeInWhenLocked = reader.ReadBool();
+            }
 
             m_IsShipwreckedItem = reader.ReadBool();
             m_TrapOnLockpick = reader.ReadBool();

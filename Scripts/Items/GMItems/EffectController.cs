@@ -388,7 +388,10 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)2); // version
+            writer.Write((int)3); // version
+
+            writer.Write(m_Cooldown);
+            writer.Write(m_LastEffect);
 
             writer.Write(m_ActivateMode);
             writer.Write(m_ActivateItem);
@@ -444,6 +447,12 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            if (version == 3)
+            {
+                m_Cooldown = reader.ReadTimeSpan();
+                m_LastEffect = reader.ReadDateTime();
+            }
 
             ActivateMode = reader.ReadInt();
             ActivateItem = reader.ReadItem();
