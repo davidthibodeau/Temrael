@@ -1059,17 +1059,11 @@ namespace Server.Items
 
             if (Quality == ArmorQuality.Exceptional)
             {
-                switch (Utility.Random(2))
-                {
-                    case 0: m_PhysicalBonus++; break;
-                }
+                m_PhysicalBonus++;
             }
             else if (Quality == ArmorQuality.Low)
             {
-                switch (Utility.Random(2))
-                {
-                    case 0: m_PhysicalBonus--; break;
-                }
+                m_PhysicalBonus--;
             }
 
             return quality;
