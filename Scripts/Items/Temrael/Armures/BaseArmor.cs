@@ -987,15 +987,11 @@ namespace Server.Items
 
         public void AddARProperties(ObjectPropertyList list, string couleur)
         {
-            double v = PhysicalResistance;
+            if (PhysicalResistance != 0)
+                list.Add(1060448, "{0}\t{1}", couleur, String.Format("{0:0.00}", PhysicalResistance)); // physical resist ~1_val~%
 
-            if (v != 0)
-                list.Add(1060448, "{0}\t{1}", couleur, v.ToString()); // physical resist ~1_val~%
-
-            v = MagieResistance;
-
-            if (v != 0)
-                list.Add(1060446, "{0}\t{1}", couleur, v.ToString()); // energy resist ~1_val~%
+            if (MagieResistance != 0)
+                list.Add(1060446, "{0}\t{1}", couleur, String.Format("{0:0.00}", MagieResistance)); // energy resist ~1_val~%
 
         }
 
@@ -1066,7 +1062,6 @@ namespace Server.Items
                 switch (Utility.Random(2))
                 {
                     case 0: m_PhysicalBonus++; break;
-                    case 1: m_MagieBonus++; break;
                 }
             }
             else if (Quality == ArmorQuality.Low)
@@ -1074,7 +1069,6 @@ namespace Server.Items
                 switch (Utility.Random(2))
                 {
                     case 0: m_PhysicalBonus--; break;
-                    case 1: m_MagieBonus--; break;
                 }
             }
 
