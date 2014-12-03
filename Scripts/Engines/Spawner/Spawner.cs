@@ -14,6 +14,13 @@ namespace Server.Mobiles
 {
 	public class Spawner : Item, ISpawner
 	{
+        #region IActivable
+        public override void IActivableOnActivate(int mode, Mobile from)
+        {
+            this.Respawn();
+        }
+        #endregion
+
 
         public static void Initialize()
         {
