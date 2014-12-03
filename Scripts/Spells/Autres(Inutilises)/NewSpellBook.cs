@@ -35,7 +35,7 @@ namespace Server.Items
           public override void OnClick()
           {
               m_from.CloseGump(typeof(QuickSpellLaunchGump));
-              m_from.SendGump(new QuickSpellLaunchGump(m_from, m_book, null));
+              m_from.SendGump(new QuickSpellLaunchGump(m_from, null));
           }
       }
 

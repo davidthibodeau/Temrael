@@ -680,7 +680,6 @@
     <Compile Include="Commandes\Temrael\Meteo.cs" />
     <Compile Include="Commandes\Temrael\NiveauCommande.cs" />
     <Compile Include="Commandes\Temrael\PetSay.cs" />
-    <Compile Include="Commandes\Temrael\QSL.cs" />
     <Compile Include="Commandes\Temrael\ResetAllPlayers.cs" />
     <Compile Include="Commandes\Temrael\Suicide.cs" />
     <Compile Include="Commandes\Temrael\TempsCommandes.cs" />

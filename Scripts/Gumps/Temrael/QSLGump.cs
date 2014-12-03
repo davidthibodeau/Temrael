@@ -6,13 +6,78 @@ using Server.Mobiles;
 using Server.Gumps;
 using Server.Items;
 using Server.Spells;
+using Server.Commands;
+using Server.Targeting;
+using System.Collections.Generic;
 
 namespace Server.Gumps
 {
     public class QuickSpellLaunchGump : Gump
     {
+        public static void Initialize()
+        {
+            CommandSystem.Register("qsl", AccessLevel.Player, new CommandEventHandler(QSL_OnCommand));
+            //CommandSystem.Register("sort", AccessLevel.Player, new CommandEventHandler(Sort_OnCommand));
+        }
+
+        private static Dictionary<Mobile, NewSpellbook> Book = new Dictionary<Mobile, NewSpellbook>();
+
+        [Usage("QSL")]
+        [Description("Lance le menu de sorts rapides.")]
+        public static void QSL_OnCommand(CommandEventArgs e)
+        {
+            Mobile from = e.Mobile;
+
+            if (from is PlayerMobile)
+            {
+                PlayerMobile m = (PlayerMobile)from;
+
+                if (m != null)
+                {
+                    m.SendMessage("Choisissez le livre ou instrument a utiliser.");
+                    m.BeginTarget(12, false, TargetFlags.None, new TargetCallback(QSL_OnTarget));
+                }
+            }
+        }
+
+        public static void QSL_OnTarget(Mobile from, object targ)
+        {
+            if (targ is NewSpellbook && from.Backpack != null && ((Item)targ).Parent == from.Backpack)
+            {
+                Book[from] = targ as NewSpellbook;
+                from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, null));
+            }
+            else if (targ is BaseInstrument && from.Backpack != null && ((Item)targ).Parent == from.Backpack)
+                from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, (BaseInstrument)targ, null));
+        }
+
+        [Usage( "Sort <ID> | <Name>" )]
+		[Description( "Lance un sort en utilisant son ID ou son Nom." )]
+        public static void Sort_OnCommand(CommandEventArgs e)
+        {
+            if (e.Length == 1)
+            {
+                if (Book[e.Mobile] == null)
+                {
+                    e.Mobile.SendMessage("Veuillez choisir le livre de sort en faisant .qsl");
+                    return;
+                }
+
+                Spell spell = SpellRegistry.NewSpell(e.GetString(0), e.Mobile, null);
+
+                if (spell == null)
+                {
+                    e.Mobile.SendMessage("Le nom du sort n'existe pas");
+                    return;
+                }
+            }
+            else
+            {
+                e.Mobile.SendMessage("Format: Sort <Nom>");
+            }
+        }
+
         private PlayerMobile m_From;
-        private NewSpellbook m_Book;
         private BaseInstrument m_Instrument;
         private ArrayList m_List;
 
@@ -36,20 +101,19 @@ namespace Server.Gumps
             return list;
         }
 
-        public QuickSpellLaunchGump(PlayerMobile from, NewSpellbook book, ArrayList list)
+        public QuickSpellLaunchGump(PlayerMobile from, ArrayList list)
             : base(150, 200)
         {
             try
             {
                 if (list == null)
-                    list = GetSpellList(from, book);
+                    list = GetSpellList(from, Book[from]);
 
                 if (list != null)
                 {
                     m_List = list;
 
                     m_From = from;
-                    m_Book = book;
 
                     //m_From.Validate(ValidateType.Connaissances);
 
@@ -85,19 +149,14 @@ namespace Server.Gumps
                             vindex = 0;
                         }
 
-                        object obj = (object)list[i];
+                        SpellBookEntry entry = (SpellBookEntry)list[i];
 
-                        if (book is NewSpellbook)
+                        //Console.WriteLine(((SpellBookEntry)obj).ToString() + " " + entry.ToString());
+
+                        if (entry != null)
                         {
-                            SpellBookEntry entry = (SpellBookEntry)obj;
-
-                            //Console.WriteLine(((SpellBookEntry)obj).ToString() + " " + entry.ToString());
-
-                            if (entry != null)
-                            {
-                                AddButton(74 + hindex * 44, 42 + vindex * 44, entry.ImageID, entry.ImageID, entry.SpellID, GumpButtonType.Reply, 0);
-                                //AddButton(102 + hindex * 57, 71 + vindex * 45, 2103, 2104, entry.SpellID + 2000, GumpButtonType.Reply, 0);
-                            }
+                            AddButton(74 + hindex * 44, 42 + vindex * 44, entry.ImageID, entry.ImageID, entry.SpellID, GumpButtonType.Reply, 0);
+                            //AddButton(102 + hindex * 57, 71 + vindex * 45, 2103, 2104, entry.SpellID + 2000, GumpButtonType.Reply, 0);
                         }
 
                         vindex++;
@@ -186,34 +245,37 @@ namespace Server.Gumps
 
             if (info.ButtonID < 3000 && info.ButtonID != 0)
             {
-                if (m_Book != null && (m_Book.Parent == from || (from.Backpack != null && m_Book.Parent == from.Backpack)))
+                if (Book[from] != null && (Book[from].Parent == from || (from.Backpack != null && Book[from].Parent == from.Backpack)))
                 {
-                    Spell spell = SpellRegistry.NewSpell(info.ButtonID, from, null);
+                    if (Book[from].HasSpell(info.ButtonID))
+                    {
+                        Spell spell = SpellRegistry.NewSpell(info.ButtonID, from, null);
 
-                    try
-                    {
-                        spell.Cast();
-                    }
-                    catch (Exception e)
-                    {
-                        Misc.ExceptionLogging.WriteLine(e);
-                    }
+                        try
+                        {
+                            spell.Cast();
+                        }
+                        catch (Exception e)
+                        {
+                            Misc.ExceptionLogging.WriteLine(e);
+                        }
+                    }                
 
                     if (from is PlayerMobile)
-                        from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, m_Book, m_List));
+                        from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, m_List));
                 }
                 else
                     from.SendMessage("L'objet doit rester dans votre sac en tout temps !");
             }
             else if (info.ButtonID >= 3000 && info.ButtonID != 0)
             {
-                if (m_Book != null && (m_Book.Parent == from || (from.Backpack != null && m_Book.Parent == from.Backpack)))
+                if (Book[from] != null && (Book[from].Parent == from || (from.Backpack != null && Book[from].Parent == from.Backpack)))
                 {
                     string name = "Nom inconnu";
 
                     SpellBookEntry entry = (SpellBookEntry)NewSpellbookGump.FindEntryBySpellID(info.ButtonID - 2000);
 
-                    if (entry != null && m_Book.HasSpell(entry.SpellID))
+                    if (entry != null && Book[from].HasSpell(entry.SpellID))
                     {
                         name = entry.Nom;
                     }
@@ -221,7 +283,7 @@ namespace Server.Gumps
                     from.SendMessage(name);
 
                     if (from is PlayerMobile)
-                        from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, m_Book, m_List));
+                        from.SendGump(new QuickSpellLaunchGump((PlayerMobile)from, m_List));
                 }
                 else
                     from.SendMessage("L'objet doit rester dans votre sac en tout temps !");
