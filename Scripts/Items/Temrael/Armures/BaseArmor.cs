@@ -614,15 +614,6 @@ namespace Server.Items
             return ar;
         }
 
-        public CraftAttributeInfo GetResourceAttrs()
-        {
-            CraftResourceInfo info = CraftResources.GetInfo(m_Resource);
-
-            if (info == null)
-                return CraftAttributeInfo.Blank;
-
-            return info.AttributeInfo;
-        }
         #endregion
 
         #region Constructeurs

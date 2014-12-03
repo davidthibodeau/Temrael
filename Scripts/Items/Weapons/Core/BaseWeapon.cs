@@ -444,18 +444,6 @@ namespace Server.Items
 				case WeaponDurabilityLevel.Indestructible: bonus += 120; break;
 			}
 
-			if ( Core.AOS )
-			{
-				CraftResourceInfo resInfo = CraftResources.GetInfo( m_Resource );
-				CraftAttributeInfo attrInfo = null;
-
-				if ( resInfo != null )
-					attrInfo = resInfo.AttributeInfo;
-
-				if ( attrInfo != null )
-					bonus += attrInfo.WeaponDurability;
-			}
-
 			return bonus;
 		}
 
