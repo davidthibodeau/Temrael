@@ -136,7 +136,7 @@ namespace Server.Engines.Identities
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write(0); //version
+            writer.Write(1); //version
 
             baseIdentity.Serialize(writer);
             transformationIdentity.Serialize(writer);
