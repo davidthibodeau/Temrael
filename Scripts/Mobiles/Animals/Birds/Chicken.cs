@@ -43,7 +43,7 @@ namespace Server.Mobiles
 		public override MeatType MeatType{ get{ return MeatType.Bird; } }
 		public override FoodType FavoriteFood{ get{ return FoodType.GrainsAndHay; } }
 
-		public override int Feathers{ get{ return 6; } }
+		public override int Feathers{ get{ return 25; } }
 
 		public Chicken(Serial serial) : base(serial)
 		{

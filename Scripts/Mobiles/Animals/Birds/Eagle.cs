@@ -42,7 +42,7 @@ namespace Server.Mobiles
         public override double AttackSpeed { get { return 2.0; } }
 		public override int Meat{ get{ return 1; } }
 		public override MeatType MeatType{ get{ return MeatType.Bird; } }
-		public override int Feathers{ get{ return 3; } }
+		public override int Feathers{ get{ return 12; } }
 		public override FoodType FavoriteFood{ get{ return FoodType.Meat | FoodType.Fish; } }
 
 		public Eagle(Serial serial) : base(serial)

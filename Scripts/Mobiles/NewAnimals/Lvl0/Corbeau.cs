@@ -39,7 +39,7 @@ namespace Server.Mobiles
         public override int Meat { get { return 1; } }
         public override MeatType MeatType { get { return MeatType.Bird; } }
 
-        public override int Feathers { get { return 6; } }
+        public override int Feathers { get { return 15; } }
 
         public Corbeau(Serial serial)
             : base(serial)
