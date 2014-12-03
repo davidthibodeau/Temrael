@@ -124,9 +124,10 @@ namespace Server.Engines.Identities
             int version = reader.ReadInt();
 
             baseIdentity = new Identity(reader);
-            m_currentIdentity = baseIdentity;
             transformationIdentity = new Identity(reader);
             idCachee = new IdentiteCachee(); //On ne sauvegarde pas idcache parce qu'il n'accumule pas d'informations.
+            if (version > 0)
+                m_currentIdentity = GetIdFromIndex(reader.ReadInt());
 
             m_lastDeguisement = reader.ReadDateTime();
 
@@ -139,8 +140,33 @@ namespace Server.Engines.Identities
 
             baseIdentity.Serialize(writer);
             transformationIdentity.Serialize(writer);
+
+            writer.Write(GetIdIndex());
             
             writer.Write((DateTime)m_lastDeguisement);
+        }
+
+        private int GetIdIndex()
+        {
+            if (m_currentIdentity == baseIdentity)
+                return 0;
+            if (m_currentIdentity == idCachee)
+                return 1;
+            if (m_currentIdentity == transformationIdentity)
+                return 2;
+
+            return -1;
+        }
+
+        private Identity GetIdFromIndex(int i)
+        {
+            switch (i)
+            {
+                case 0: return baseIdentity;
+                case 1: return idCachee;
+                case 2: return transformationIdentity;
+                default: Console.WriteLine("Mauvais id d'identité pour {0}.", m_Mobile); return baseIdentity;
+            }
         }
 
         public void CacherIdentite()
@@ -168,6 +194,7 @@ namespace Server.Engines.Identities
                 return;
 
             m_currentIdentity = transformationIdentity;
+            transformationIdentity[m_Mobile] = m_Mobile.Name;
             m_Mobile.SendMessage("Vous êtes maintenant transformé.");
         }
 
