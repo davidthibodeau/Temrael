@@ -3169,7 +3169,7 @@ namespace Server.Network
 				//m_Stream.Write( (short) min ); // Damage min
 				//m_Stream.Write( (short) max ); // Damage max
 
-                m_Stream.Write((short)0); // Fire
+                m_Stream.Write((short)m.ArmureNaturelle); // Fire
                 m_Stream.Write((short)0); // Cold
                 m_Stream.Write((short)0); // Poison
                 m_Stream.Write((short)m.MagicResistance); // Energy
@@ -3290,7 +3290,7 @@ namespace Server.Network
 					//m_Stream.Write( (short) min ); // Damage min
 					//m_Stream.Write( (short) max ); // Damage max
 
-                    m_Stream.Write((short)0); // Fire
+                    m_Stream.Write((short)beheld.ArmureNaturelle); // Fire
                     m_Stream.Write((short)0); // Cold
                     m_Stream.Write((short)0); // Poison
                     m_Stream.Write((short)beheld.MagicResistance); // Energy
