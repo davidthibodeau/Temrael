@@ -467,15 +467,15 @@ namespace Server.Spells
 
             BloodOathSpell.GetOnHitEffect(atk, def, ref damage);
 
-            if (def.MagicDamageAbsorb > damage)
+            if (def.MeleeDamageAbsorb > damage)
             {
-                def.MagicDamageAbsorb -= (int)damage;
+                def.MeleeDamageAbsorb -= (int)damage;
                 damage = 0;
             }
             else
             {
-                damage -= def.MagicDamageAbsorb;
-                def.MagicDamageAbsorb = 0;
+                damage -= def.MeleeDamageAbsorb;
+                def.MeleeDamageAbsorb = 0;
             }
 
             return damage;
