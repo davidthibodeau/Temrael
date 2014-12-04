@@ -403,22 +403,12 @@ namespace Server.Spells
             }
         }
 
-		private const double ChanceOffsetMin = 50.0, ChanceOffsetMax = 10.0, ChanceLength = 100.0 / 13.0;
-                                               //0  1  2   3   4   5   6   7   8   9   10
-        private int[] ChanceDeCast = new int[] { 0, 5, 15, 20, 30, 40, 50, 60, 70, 75, 80, 90, 100 };
+        private const double VARIATION = 5.0;
 
 		public virtual void GetCastSkills( out double min, out double max )
 		{
-			int circle = (int)m_Info.Circle;
-
-            if (circle < 0)
-                circle = 0;
-
-			//double avg = ChanceLength * circle;
-            double avg = ChanceDeCast[circle];
-
-			min = avg - ChanceOffsetMin;
-            max = avg; // + ChanceOffsetMax;
+            min = m_Info.minSkillForCasting - VARIATION;
+            max = m_Info.minSkillForCasting + VARIATION;
 		}
 
 		public virtual bool CheckFizzle()
@@ -444,7 +434,7 @@ namespace Server.Spells
                 }
             }
 
-			return Caster.CheckSkill( CastSkill, minSkill, maxSkill );
+			return Caster.CheckSkill( m_Info.skillForCasting, minSkill, maxSkill );
 		}
 
         public virtual int RequiredSkillValue { get { return m_Info.minSkillForCasting; } }

@@ -327,6 +327,19 @@ namespace Server.Mobiles
 		private Timer m_NewsTimer;
 		private Timer m_AutoShoutTimer;
 
+        private TimeSpan m_Interval;
+        [CommandProperty(AccessLevel.Counselor)]
+        public TimeSpan Intervale
+        {
+            get { return m_Interval; }
+            set
+            {
+                m_Interval = value;
+                m_AutoShoutTimer.Stop();
+                m_AutoShoutTimer = m_AutoShoutTimer = Timer.DelayCall(TimeSpan.FromSeconds(5.0), m_Interval, new TimerCallback(AutoShout_Callback));
+            }
+        }
+
 		public List<TownCrierEntry> Entries
 		{
 			get{ return m_Entries; }
@@ -362,7 +375,7 @@ namespace Server.Mobiles
 		public void ForceBeginAutoShout()
 		{
 			if ( m_AutoShoutTimer == null )
-				m_AutoShoutTimer = Timer.DelayCall( TimeSpan.FromSeconds( 5.0 ), TimeSpan.FromMinutes( 1.0 ), new TimerCallback( AutoShout_Callback ) );
+                m_AutoShoutTimer = Timer.DelayCall(TimeSpan.FromSeconds(5.0), m_Interval, new TimerCallback(AutoShout_Callback));
 		}
 
 		public TownCrierEntry AddEntry( string[] lines, TimeSpan duration )
@@ -480,6 +493,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public TownCrier()
 		{
+            m_Interval = TimeSpan.FromMinutes(1);
 			m_Instances.Add( this );
 
 			InitStats( 100, 100, 25 );
@@ -550,7 +564,9 @@ namespace Server.Mobiles
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
+
+            writer.Write(m_Interval);
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -558,6 +574,11 @@ namespace Server.Mobiles
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            if (version == 1)
+            {
+                m_Interval = reader.ReadTimeSpan();
+            }
 
 			if ( Core.AOS && NameHue == 0x35 )
 				NameHue = -1;
