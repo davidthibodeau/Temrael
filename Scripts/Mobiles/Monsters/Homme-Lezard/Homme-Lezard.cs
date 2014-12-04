@@ -27,7 +27,7 @@ namespace Server.Mobiles
             SetArme(5, 10, 40);
 
             SetResistance(ResistanceType.Physical, 5);
-            SetResistance(ResistanceType.Magie, 0);
+            SetResistance(ResistanceType.Magical, 0);
 
             SetSkill(SkillName.Detection, 60);
             SetSkill(SkillName.Tactiques, 60);

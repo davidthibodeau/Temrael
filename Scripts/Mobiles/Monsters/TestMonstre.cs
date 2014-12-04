@@ -28,7 +28,7 @@ namespace Server.Mobiles.Monsters
 			SetDamageType( ResistanceType.Physical, 100 );
 
             SetResistance(ResistanceType.Physical, 10, 30);
-            SetResistance(ResistanceType.Magie, 10, 30);
+            SetResistance(ResistanceType.Magical, 10, 30);
 
 			SetSkill( SkillName.Concentration, 70.1, 85.0 );
 			SetSkill( SkillName.Epee, 60.1, 85.0 );

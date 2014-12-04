@@ -1090,7 +1090,7 @@ namespace Server.Spells
                         mods.Add(new ResistanceMod(ResistanceType.Physical, transformSpell.PhysResistOffset));
 
                     if (transformSpell.NrgyResistOffset != 0)
-                        mods.Add(new ResistanceMod(ResistanceType.Magie, transformSpell.NrgyResistOffset));
+                        mods.Add(new ResistanceMod(ResistanceType.Magical, transformSpell.NrgyResistOffset));
 
                     if (!((Body)transformSpell.Body).IsHuman)
                     {

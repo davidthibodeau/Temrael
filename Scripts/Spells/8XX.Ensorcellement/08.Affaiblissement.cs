@@ -85,7 +85,7 @@ namespace Server.Spells
 
                 m_Owner = caster;
 
-                m_resModMag = new ResistanceMod(ResistanceType.Magie, -1 * (int)value);
+                m_resModMag = new ResistanceMod(ResistanceType.Magical, -1 * (int)value);
                 m_Owner.AddResistanceMod(m_resModMag);
                 m_resModPhys = new ResistanceMod(ResistanceType.Physical, -1 * (int)value);
                 m_Owner.AddResistanceMod(m_resModPhys);

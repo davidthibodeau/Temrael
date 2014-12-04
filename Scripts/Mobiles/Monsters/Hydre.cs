@@ -29,7 +29,7 @@ namespace Server.Mobiles
                 SetArme(20, 25, 30, Poison.Deadly);
 
                 SetResistance(ResistanceType.Physical, 25);
-                SetResistance(ResistanceType.Magie, 0);
+                SetResistance(ResistanceType.Magical, 0);
 
                 SetSkill(SkillName.Empoisonnement, 100);
                 SetSkill(SkillName.ArmureNaturelle, 100);

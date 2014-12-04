@@ -40,10 +40,10 @@ namespace Server.Mobiles
             SetDamage(16, 22);
 
             SetDamageType(ResistanceType.Physical, 70);
-            SetDamageType(ResistanceType.Magie, 10);
+            SetDamageType(ResistanceType.Magical, 10);
 
             SetResistance(ResistanceType.Physical, 55, 65);
-            SetResistance(ResistanceType.Magie, 25, 35);
+            SetResistance(ResistanceType.Magical, 25, 35);
 
             //SetSkill( SkillName.EvalInt, 80.1, 90.0 );
             SetSkill(SkillName.ArtMagique, 60.4, 100.0);

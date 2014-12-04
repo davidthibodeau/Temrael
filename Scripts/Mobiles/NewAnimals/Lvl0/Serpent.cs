@@ -25,7 +25,7 @@ namespace Server.Mobiles
             SetArme(1, 5, 30, Poison.Lesser);
 
             SetResistance(ResistanceType.Physical, 1, 5);
-            SetResistance(ResistanceType.Magie, 1, 5);
+            SetResistance(ResistanceType.Magical, 1, 5);
 
             SetSkill(SkillName.Infiltration, 10.0);
             SetSkill(SkillName.Tactiques, 7.0);

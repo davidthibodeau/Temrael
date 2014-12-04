@@ -30,7 +30,7 @@ namespace Server.Mobiles.Animals
             SetArme(13, 17, 40);
 
             SetResistance(ResistanceType.Physical, 0);
-            SetResistance(ResistanceType.Magie, 0);
+            SetResistance(ResistanceType.Magical, 0);
 
             SetSkill(SkillName.ArmureNaturelle, 60);
             SetSkill(SkillName.Tactiques, 60);

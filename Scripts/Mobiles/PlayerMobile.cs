@@ -2727,6 +2727,11 @@ namespace Server.Mobiles
 
 		public override void OnSkillChange( SkillName skill, double oldBase )
 		{
+            if (skill == SkillName.ResistanceMagique)
+            {
+                UpdateResistances();
+            }
+            
             if (skill == SkillName.Langues)
                 Langues.FixLangues();
 

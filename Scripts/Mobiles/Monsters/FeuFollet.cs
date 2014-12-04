@@ -27,7 +27,7 @@ namespace Server.Mobiles
             SetArme(5, 10, 40);
 
             SetResistance(ResistanceType.Physical, 10);
-            SetResistance(ResistanceType.Magie, 50);
+            SetResistance(ResistanceType.Magical, 50);
 
             SetSkill(SkillName.ArtMagique, 60);
             SetSkill(SkillName.Evocation, 60);

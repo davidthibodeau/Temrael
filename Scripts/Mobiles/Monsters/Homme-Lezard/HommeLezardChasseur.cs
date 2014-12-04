@@ -26,7 +26,7 @@ namespace Server.Mobiles
             SetArme(7, 12, 40, Poison.Regular);
 
             SetResistance(ResistanceType.Physical, 10);
-            SetResistance(ResistanceType.Magie, 0);
+            SetResistance(ResistanceType.Magical, 0);
 
             SetSkill(SkillName.Empoisonnement, 70);
             SetSkill(SkillName.Tactiques, 62);

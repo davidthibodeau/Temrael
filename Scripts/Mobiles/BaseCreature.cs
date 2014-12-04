@@ -346,7 +346,7 @@ namespace Server.Mobiles
 		private int			m_DamageMax = -1;
 
 		private int			m_PhysicalResistance, m_PhysicalDamage = 100;
-		private int			m_MagieResistance, m_MagieDamage;
+		private int			m_MagicalResistance, m_MagieDamage;
 		private int			m_ChaosDamage;
 		private int			m_DirectDamage;
 
@@ -510,13 +510,13 @@ namespace Server.Mobiles
 		#region Elemental Resistance/Damage
 
 		public override int BasePhysicalResistance{ get{ return m_PhysicalResistance; } }
-		public override int BaseMagieResistance{ get{ return m_MagieResistance; } }
+		//public override double BaseMagicalResistance{ get{ return m_MagicalResistance; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int PhysicalResistanceSeed{ get{ return m_PhysicalResistance; } set{ m_PhysicalResistance = value; UpdateResistances(); } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
-        public int MagieResistSeed { get { return m_MagieResistance; } set { m_MagieResistance = value; UpdateResistances(); } }
+        public int MagieResistSeed { get { return m_MagicalResistance; } set { m_MagicalResistance = value; UpdateResistances(); } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int PhysicalDamage{ get{ return m_PhysicalDamage; } set{ m_PhysicalDamage = value; } }
@@ -1589,7 +1589,7 @@ namespace Server.Mobiles
 			writer.Write( (int) m_PhysicalResistance );
 			writer.Write( (int) m_PhysicalDamage );
 
-			writer.Write( (int) m_MagieResistance );
+			writer.Write( (int) m_MagicalResistance );
 			writer.Write( (int) m_MagieDamage );
 
 			writer.Write( m_Owners, true );
@@ -1724,7 +1724,7 @@ namespace Server.Mobiles
             m_PhysicalResistance = reader.ReadInt();
             m_PhysicalDamage = reader.ReadInt();
 
-            m_MagieResistance = reader.ReadInt();
+            m_MagicalResistance = reader.ReadInt();
             m_MagieDamage = reader.ReadInt();
 
             m_Owners = reader.ReadStrongMobileList();
@@ -3242,7 +3242,7 @@ namespace Server.Mobiles
 			switch ( type )
 			{
 				case ResistanceType.Physical: m_PhysicalDamage = val; break;
-				case ResistanceType.Magie: m_MagieDamage = val; break;
+				case ResistanceType.Magical: m_MagieDamage = val; break;
 			}
 		}
 
@@ -3256,7 +3256,7 @@ namespace Server.Mobiles
 			switch ( type )
 			{
 				case ResistanceType.Physical: m_PhysicalResistance = val; break;
-				case ResistanceType.Magie: m_MagieResistance = val; break;
+				case ResistanceType.Magical: m_MagicalResistance = val; break;
 			}
 
 			UpdateResistances();

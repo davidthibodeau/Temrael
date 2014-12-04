@@ -70,10 +70,10 @@ namespace Server.Mobiles
 			SetDamage( 16, 22 );
 
 			SetDamageType( ResistanceType.Physical, 75 );
-			SetDamageType( ResistanceType.Magie, 25 );
+			SetDamageType( ResistanceType.Magical, 25 );
 
 			SetResistance( ResistanceType.Physical, 55, 65 );
-			SetResistance( ResistanceType.Magie, 25, 40 );
+			SetResistance( ResistanceType.Magical, 25, 40 );
 
 			SetSkill( SkillName.Hallucination, 80.1, 90.0 );
 			SetSkill( SkillName.Thaumaturgie, 60.2, 80.0 );

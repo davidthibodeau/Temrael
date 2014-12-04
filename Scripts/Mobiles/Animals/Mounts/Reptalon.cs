@@ -21,10 +21,10 @@ namespace Server.Mobiles
 			SetDamage( 21, 28 );
 			
 			SetDamageType( ResistanceType.Physical, 0 );
-			SetDamageType( ResistanceType.Magie, 75 );
+			SetDamageType( ResistanceType.Magical, 75 );
 
 			SetResistance( ResistanceType.Physical, 53, 64 );
-			SetResistance( ResistanceType.Magie, 71, 83 );
+			SetResistance( ResistanceType.Magical, 71, 83 );
 
 			SetSkill( SkillName.Anatomie, 101.5, 118.2 );
 			SetSkill( SkillName.Tactiques, 101.7, 108.2 );

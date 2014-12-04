@@ -27,7 +27,7 @@
                             SetArme(13, 18, 40);
      
                             SetResistance( ResistanceType.Physical, 20 );
-                            SetResistance( ResistanceType.Magie, 0 );
+                            SetResistance( ResistanceType.Magical, 0 );
      
                             SetSkill( SkillName.Detection, 70 );
                             SetSkill( SkillName.ArmureNaturelle, 70 );

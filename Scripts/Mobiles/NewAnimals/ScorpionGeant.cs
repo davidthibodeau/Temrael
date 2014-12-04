@@ -25,7 +25,7 @@
                             SetArme(11, 16, 40, Poison.Regular);
      
                             SetResistance( ResistanceType.Physical, 10 );
-                            SetResistance( ResistanceType.Magie, 0 );
+                            SetResistance( ResistanceType.Magical, 0 );
      
                             SetSkill( SkillName.Empoisonnement, 68 );
                             SetSkill( SkillName.ArmureNaturelle, 68 );

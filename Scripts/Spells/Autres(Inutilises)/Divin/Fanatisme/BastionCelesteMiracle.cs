@@ -50,7 +50,7 @@ namespace Server.Spells
                 {
                     mods = new ResistanceMod[]
                     {
-                        new ResistanceMod(ResistanceType.Magie, (int)(Caster.Skills[CastSkill].Value / 4) ),
+                        new ResistanceMod(ResistanceType.Magical, (int)(Caster.Skills[CastSkill].Value / 4) ),
                     };
 
                     for (int i = 0; i < mods.Length; ++i)

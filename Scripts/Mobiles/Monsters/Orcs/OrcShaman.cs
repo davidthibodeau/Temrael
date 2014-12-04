@@ -26,7 +26,7 @@
                             SetArme(4, 8, 40);
      
                             SetResistance( ResistanceType.Physical, 10 );
-                            SetResistance( ResistanceType.Magie, 0 );
+                            SetResistance( ResistanceType.Magical, 0 );
      
                             SetSkill( SkillName.ArtMagique, 60 );
                             SetSkill( SkillName.Tactiques, 20 );

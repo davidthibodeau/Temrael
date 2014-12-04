@@ -167,7 +167,7 @@ namespace Server
 	public enum ResistanceType
 	{
 		Physical,
-		Magie,
+		Magical,
         Naturelle
 	}
 
@@ -442,7 +442,17 @@ namespace Server
 		public virtual int BaseContondantResistance { get { return 0; } }
 		public virtual int BaseTranchantResistance { get { return 0; } }
 		public virtual int BasePerforantResistance { get { return 0; } }
-		public virtual int BaseMagieResistance { get { return 0; } }
+        public virtual double BaseMagicalResistance
+        {
+            get
+            {
+                double sk = Skills[SkillName.ResistanceMagique].Value;
+                double resist = sk * 0.40;
+                if (sk >= 100)
+                    resist += 5;
+                return resist;
+            }
+        }
 
 		public virtual void ComputeLightLevels( out int global, out int personal )
 		{
@@ -471,14 +481,7 @@ namespace Server
 		[CommandProperty( AccessLevel.Counselor )]
 		public virtual double MagicResistance
 		{
-            get
-            {
-                double sk = Skills[SkillName.ResistanceMagique].Value;
-                double resist = sk * 0.40;
-                if (sk >= 100)
-                    resist += 5;
-                return resist;
-            }
+            get { return GetResistance(ResistanceType.Magical); }
 		}
 
         [CommandProperty(AccessLevel.Counselor)]
@@ -583,7 +586,7 @@ namespace Server
 				m_Resistances[i] = 0;
 
 			m_Resistances[0] += this.BasePhysicalResistance;
-			m_Resistances[1] += this.BaseMagieResistance;
+			m_Resistances[1] += this.BaseMagicalResistance;
 
 			for( int i = 0; m_ResistMods != null && i < m_ResistMods.Count; ++i )
 			{
