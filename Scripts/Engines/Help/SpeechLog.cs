@@ -78,7 +78,7 @@ namespace Server.Engines.Help
         
 		public void Add(Mobile listener, Mobile from, string speech )
 		{
-            SpeechLogEntry e = new SpeechLogEntry(from, speech);
+            SpeechLogEntry e = new SpeechLogEntry(from, DateTime.Now.ToString() + "\n" + speech);
             SpeechlogLogging.WriteLine(listener, e);
 			Add(e);
 		}
