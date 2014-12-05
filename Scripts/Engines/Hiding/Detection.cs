@@ -152,16 +152,13 @@ namespace Server.Engines.Hiding
             NetState ns = obs.NetState;
             if (ns != null)
             {
-                if (ns.StygianAbyss)
-                    obs.Send(new MobileIncoming(obs, mobile));
-                else
-                    obs.Send(new MobileIncomingOld(obs, mobile));
+                obs.Send(MobileIncoming.Create(ns, obs, mobile));
                 if (ObjectPropertyList.Enabled)
                 {
                     ns.Send(mobile.OPLPacket);
 
-                    foreach (Item item in mobile.Items)
-                        ns.Send(item.OPLPacket);
+                    //foreach (Item item in mobile.Items)
+                    //    ns.Send(item.OPLPacket);
                 }
 
                 alentours[obs] = DetectionStatus.Visible;
