@@ -40,7 +40,7 @@ namespace Server.Engines.Harvest
             oreAndStone.BankWidth = 1;
             oreAndStone.BankHeight = 1;
 
-            // Every bank holds from 10 to 34 ore
+            // Every bank holds from 5 to 12 ore
             oreAndStone.MinTotal = 5;
             oreAndStone.MaxTotal = 12;
 
