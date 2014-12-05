@@ -67,7 +67,7 @@ namespace Server.Spells
 
         public static void GetOnHitEffect(Mobile atk, double damage)
         {
-            if (CurseWeaponSpell.m_Table.Contains((BaseWeapon)atk.Weapon))
+            if (m_Table.Contains((BaseWeapon)atk.Weapon))
             {
                 atk.Heal((int)(CurseWeaponSpell.LifestealPercentMax * Spell.GetSpellScaling(atk, Info.skillForCasting) * damage));
             }
@@ -86,7 +86,8 @@ namespace Server.Spells
 			protected override void OnTick()
 			{
 				Effects.PlaySound( m_Weapon.GetWorldLocation(), m_Weapon.Map, 0xFA );
-				m_Table.Remove( this );
+                this.Stop();
+                m_Table.Remove(m_Weapon);
 			}
 		}
 
