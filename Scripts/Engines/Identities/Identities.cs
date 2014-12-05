@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Server.Mobiles;
 using System.Collections;
 using Server.Items;
+using Server.Engines.Races;
 
 namespace Server.Engines.Identities
 {
@@ -128,6 +129,14 @@ namespace Server.Engines.Identities
             idCachee = new IdentiteCachee(); //On ne sauvegarde pas idcache parce qu'il n'accumule pas d'informations.
             if (version > 0)
                 m_currentIdentity = GetIdFromIndex(reader.ReadInt());
+            else
+            {
+                PlayerMobile pm = m_Mobile as PlayerMobile;
+                if (pm.Race.Transformed)
+                    m_currentIdentity = transformationIdentity;
+                else
+                    m_currentIdentity = baseIdentity;
+            }
 
             m_lastDeguisement = reader.ReadDateTime();
 

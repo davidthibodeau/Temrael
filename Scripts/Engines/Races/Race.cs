@@ -109,8 +109,13 @@ namespace Server.Engines.Races
 
         public static void SerializeRace(Race race, GenericWriter writer)
         {
-            writer.Write(race.Id);
-            race.Serialize(writer);
+            if (race == null)
+                writer.Write(AucuneRace.RaceId);
+            else
+            {
+                writer.Write(race.Id);
+                race.Serialize(writer);
+            }
         }
 
         public static Race GetRaceInstance(int raceId)

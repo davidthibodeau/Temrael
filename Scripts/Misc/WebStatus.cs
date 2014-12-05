@@ -49,7 +49,7 @@ namespace Server.Misc
             try
             {
 #if SERVEUR
-                string path = @"/var/www/localhost/htdocs/Temrael/status.html";
+                string path = @"W:/status.html";
 #else
                 string path = @"Logging/status.html";
 #endif
