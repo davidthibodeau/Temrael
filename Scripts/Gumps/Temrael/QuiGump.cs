@@ -102,12 +102,18 @@ namespace Server.Gumps
                 if (a == null || b == null)
                     throw new ArgumentException();
 
+                int retour;
                 if (a.AccessLevel > b.AccessLevel)
                     return -1;
                 else if (a.AccessLevel < b.AccessLevel)
                     return 1;
                 else
-                    return Insensitive.Compare(a.GetNameUseBy(m_Owner), b.GetNameUseBy(m_Owner));
+                    retour = Insensitive.Compare(a.GetNameUseBy(m_Owner), b.GetNameUseBy(m_Owner));
+
+                if (a.GetNameUseBy(m_Owner).Equals("Anonyme"))
+                    return 1;
+                else
+                    return retour;
             }
         }
 
