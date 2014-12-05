@@ -1216,6 +1216,8 @@ namespace Server.Mobiles
 
 		#endregion
 
+        public override int MaxWeight { get { return 40 + (int)(3.5 * this.Str); } }
+
 		public override bool Move( Direction d )
 		{
             Equitation.CheckEquitation(this, EquitationType.Running);
