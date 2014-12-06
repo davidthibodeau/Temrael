@@ -1037,10 +1037,7 @@ namespace Server.Items
         {
             Quality = (ArmorQuality)quality;
 
-            if (makersMark)
-            {
-                Crafter = from;
-            }
+            Crafter = from;
 
             Type resourceType = typeRes;
 

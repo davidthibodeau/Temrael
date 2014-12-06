@@ -1479,9 +1479,10 @@ namespace Server.Items
 		{
 			Quality = (WeaponQuality)quality;
 
+            Crafter = from;
+
             if (makersMark)
             {
-                Crafter = from;
                 m_CrafterName = from.Name;
             }
 
