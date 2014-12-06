@@ -125,7 +125,7 @@ namespace Server.Engines.Combat
             if (chance < 0.02)
                 chance = 0.02;
 
-            if (atk.Hidden)
+            if (!def.CanSee(atk))
             {
                 CheckSkillGain(atk, SkillName.Poursuite);
                 double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.75, 15);
@@ -152,7 +152,7 @@ namespace Server.Engines.Combat
             int basedmg = Utility.RandomMinMax((atk.Weapon as BaseWeapon).MinDamage, (atk.Weapon as BaseWeapon).MaxDamage);
             critique = false;
             double dmg = ComputerDegats(atk, basedmg, true);
-            if (atk.Hidden)
+            if (! def.CanSee(atk))
             {
                 double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.20, 10);
                 dmg = IncreasedValue(dmg, poursuite);
