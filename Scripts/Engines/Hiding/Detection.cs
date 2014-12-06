@@ -62,7 +62,7 @@ namespace Server.Engines.Hiding
 		}
 
         private Mobile mobile; // Proprietaire de l'instance de detection
-        private Dictionary<Mobile, DetectionStatus> alentours;
+        private Dictionary<Mobile, DetectionStatus> alentours; //Indique a qui tu es visible.
 
         public Detection(Mobile m)
         {
@@ -70,6 +70,13 @@ namespace Server.Engines.Hiding
             alentours = new Dictionary<Mobile, DetectionStatus>();
         }
         // TODO: En ce moment, rien n'est sauve dans les saves. Si ca change. ScripPlayerMobile doit etre modifie.
+
+        /// <summary>
+        /// Indique le statut de visibilite du proprietaire de l'instance envers m.
+        /// </summary>
+        /// <param name="m">La personne qui observe le joueur a qui appartient l'instance.</param>
+        /// <returns></returns>
+        public DetectionStatus this[Mobile m] { get { return alentours[m]; } }
 
         public void DetecterAlentours()
         {

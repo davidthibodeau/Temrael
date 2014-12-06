@@ -54,6 +54,19 @@ namespace Server.Mobiles
             return base.OnMove(d);
         }
 
+        public override bool CanSee(Mobile m)
+        {
+            try
+            {
+                ScriptMobile sm = m as ScriptMobile;
+                if (sm.Detection[this] == DetectionStatus.Visible)
+                    return true;
+            }
+            catch { }
+
+            return base.CanSee(m);
+        }
+
         public void ActiverTestsDetection()
         {
             //Le systeme de detection fonctionne juste pour les joueurs.
