@@ -40,7 +40,8 @@ namespace Server.Engines.Identities
                 Mobile m = reader.ReadMobile();
                 string s = reader.ReadString();
 
-                names.Add(m, s);
+                if (m != null)
+                    names.Add(m, s);
             }
         }
 

@@ -17,6 +17,11 @@ namespace Server.Engines.Races
         {
         }
 
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
         public static int RaceId
         {
             get { return -1; }
