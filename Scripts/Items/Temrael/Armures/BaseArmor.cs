@@ -491,8 +491,6 @@ namespace Server.Items
             if (m_Resource == CraftResource.None)
                 m_Resource = DefaultResource;
 
-            Hue = CraftResources.GetHue(m_Resource);
-
             if (GetSaveFlag(flags, SaveFlag.StrBonus))
                 m_StrBonus = reader.ReadEncodedInt();
             else

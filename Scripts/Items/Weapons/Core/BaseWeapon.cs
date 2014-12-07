@@ -1194,8 +1194,6 @@ namespace Server.Items
             else
                 m_Resource = CraftResource.Fer;
 
-            Hue = CraftResources.GetHue(m_Resource);
-
             if (GetSaveFlag(flags, SaveFlag.PlayerConstructed))
                 m_PlayerConstructed = true;
 
