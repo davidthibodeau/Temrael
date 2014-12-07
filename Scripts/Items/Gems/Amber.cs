@@ -7,7 +7,7 @@ namespace Server.Items
 	{
         public override int m_Couleur
         {
-            get { return 2143; }
+            get { return 2171; }
         }
 
         public override double m_SkillReq

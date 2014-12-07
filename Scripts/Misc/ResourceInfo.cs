@@ -149,16 +149,16 @@ namespace Server.Items
 				new CraftResourceInfo( 0x000, 1053109, "Fer", 0,			CraftResource.Fer,				typeof( FerIngot ), 		typeof( FerOre ),			typeof( Granite ) ),
 				new CraftResourceInfo( 1542, 1053108, "Cuivre",	40,         CraftResource.Cuivre,   		typeof( CuivreIngot ),	    typeof( CuivreOre ),       	typeof( CuivreGranite ) ),
 				new CraftResourceInfo( 2469,  1053107, "Bronze", 40,   	    CraftResource.Bronze,   		typeof( BronzeIngot ),  	typeof( BronzeOre ),    	typeof( BronzeGranite ) ),
-				new CraftResourceInfo( 2065, 1053106, "Acier", 60,		    CraftResource.Acier,			typeof( AcierIngot ),		typeof( AcierOre ), 		typeof( AcierGranite ) ),
+				new CraftResourceInfo( 2394, 1053106, "Acier", 60,		    CraftResource.Acier,			typeof( AcierIngot ),		typeof( AcierOre ), 		typeof( AcierGranite ) ),
 				new CraftResourceInfo( 2357, 1053105, "Argent",	60,	        CraftResource.Argent,			typeof( ArgentIngot ),		typeof( ArgentOre ),		typeof( ArgentGranite ) ),
 				new CraftResourceInfo( 2360,  1053104, "Or", 60,			CraftResource.Or,				typeof( OrIngot ),	    	typeof( OrOre ),			typeof( OrGranite ) ),
-				new CraftResourceInfo( 2378,  1053103, "Mytheril", 80,		CraftResource.Mytheril,			typeof( MytherilIngot ),	typeof( MytherilOre ),		typeof( MytherilGranite ) ),
+				new CraftResourceInfo( 2438,  1053103, "Mytheril", 80,		CraftResource.Mytheril,			typeof( MytherilIngot ),	typeof( MytherilOre ),		typeof( MytherilGranite ) ),
 				new CraftResourceInfo( 1953,  1053102, "Luminium", 80,		CraftResource.Luminium,			typeof( LuminiumIngot ),	typeof( LuminiumOre ),		typeof( LuminiumGranite ) ),
 				new CraftResourceInfo( 2041, 1053101, "Obscurium", 80,		CraftResource.Obscurium,		typeof( ObscuriumIngot ),	typeof( ObscuriumOre ),		typeof( ObscuriumGranite ) ),
                 new CraftResourceInfo( 2331,  1053101, "Mystirium", 90,	    CraftResource.Mystirium,		typeof( MystiriumIngot ),	typeof( MystiriumOre ),		typeof( MystiriumGranite ) ),
                 new CraftResourceInfo( 2358,  1053101, "Dominium", 90,		CraftResource.Dominium,		    typeof( DominiumIngot ),	typeof( DominiumOre ),		typeof( DominiumGranite ) ),
-                /*TOCHANGE*/new CraftResourceInfo( 2176,  1053101, "Eclarium", 100,	CraftResource.Eclarium,		    typeof( EclariumIngot ),	typeof( EclariumOre ),		typeof( EclariumGranite ) ),
-                new CraftResourceInfo( 2389,  1053101, "Venarium", 90,		CraftResource.Venarium,		    typeof( VenariumIngot ),	typeof( VenariumOre ),		typeof( VenariumGranite ) ),
+                new CraftResourceInfo( 2037,  1053101, "Eclarium", 100,	CraftResource.Eclarium,		    typeof( EclariumIngot ),	typeof( EclariumOre ),		typeof( EclariumGranite ) ),
+                new CraftResourceInfo( 2391,  1053101, "Venarium", 90,		CraftResource.Venarium,		    typeof( VenariumIngot ),	typeof( VenariumOre ),		typeof( VenariumGranite ) ),
                 new CraftResourceInfo( 2380,  1053101, "Athenium", 100,		CraftResource.Athenium,		    typeof( AtheniumIngot ),	typeof( AtheniumOre ),		typeof( AtheniumGranite ) ),
                 new CraftResourceInfo( 2062,  1053101, "Umbrarium", 100,	CraftResource.Umbrarium,		typeof( UmbrariumIngot ),	typeof( UmbrariumOre ),		typeof( UmbrariumGranite ) ),
 			};
@@ -177,6 +177,7 @@ namespace Server.Items
 		private static CraftResourceInfo[] m_LeatherInfo = new CraftResourceInfo[]
 			{
 				new CraftResourceInfo( 0x000, 1049353, "Normal", 0,		    CraftResource.RegularLeather,	typeof( Leather ),			typeof( Hides ) ),
+                new CraftResourceInfo( 2065, 1049356, "Lupus", 50,		    CraftResource.LupusLeather, 	typeof( LupusLeather ),	    typeof( LupusHides ) ),
                 new CraftResourceInfo( 2180, 1049354, "Reptilien", 50,		CraftResource.ReptilienLeather,	typeof( ReptilienLeather ),	typeof( ReptilienHides ) ),
 				new CraftResourceInfo( 2059, 1049354, "Nordique", 50,		CraftResource.NordiqueLeather,	typeof( NordiqueLeather ),	typeof( NordiqueHides ) ),
 				new CraftResourceInfo( 2164, 1049355, "Desertique", 50, 	CraftResource.DesertiqueLeather,typeof( DesertiqueLeather ),typeof( DesertiqueHides ) ),
@@ -184,13 +185,12 @@ namespace Server.Items
                 new CraftResourceInfo( 2375, 1049356, "Volcanique", 60,     CraftResource.VolcaniqueLeather,typeof( VolcaniqueLeather ),typeof( VolcaniqueHides ) ),
 				new CraftResourceInfo( 2167, 1049356, "Geant", 60,  		CraftResource.GeantLeather, 	typeof( GeantLeather ),	    typeof( GeantHides ) ),
                 new CraftResourceInfo( 2373, 1049356, "Minotaure", 70,  	CraftResource.MinotaurLeather, 	typeof( MinotaureLeather ),	typeof( MinotaureHides ) ),
-				new CraftResourceInfo( 2441, 1049356, "Ophidien", 70,		CraftResource.OphidienLeather,	typeof( OphidienLeather ),	typeof( OphidienHides ) ),
+				new CraftResourceInfo( 2234, 1049356, "Ophidien", 70,		CraftResource.OphidienLeather,	typeof( OphidienLeather ),	typeof( OphidienHides ) ),
 				new CraftResourceInfo( 2448, 1049356, "Arachnide", 70,		CraftResource.ArachnideLeather,	typeof( ArachnideLeather ),	typeof( ArachnideHides ) ),
                 new CraftResourceInfo( 2459, 1049356, "Magique", 80, 		CraftResource.MagiqueLeather,	typeof( MagiqueLeather ),	typeof( MagiqueHides ) ),
-				/*TOCHANGE*/new CraftResourceInfo( 2174, 1049356, "Ancien", 80, 	CraftResource.AncienLeather,	typeof( AncienLeather ),	typeof( AncienHides ) ),
+				new CraftResourceInfo( 2398, 1049356, "Ancien", 80, 	    CraftResource.AncienLeather,	typeof( AncienLeather ),	typeof( AncienHides ) ),
 				new CraftResourceInfo( 2076, 1049356, "Demoniaque", 80, 	CraftResource.DemoniaqueLeather,typeof( DemoniaqueLeather ),typeof( DemoniaqueHides ) ),
-				new CraftResourceInfo( 2037, 1049356, "Dragonique", 90,	    CraftResource.DragoniqueLeather,typeof( DragoniqueLeather ),typeof( DragoniqueHides ) ),
-				new CraftResourceInfo( 2065, 1049356, "Lupus", 90,		    CraftResource.LupusLeather, 	typeof( LupusLeather ),	    typeof( LupusHides ) )
+				new CraftResourceInfo( 2146, 1049356, "Dragonique", 90,	    CraftResource.DragoniqueLeather,typeof( DragoniqueLeather ),typeof( DragoniqueHides ) )
 			};
 
         private static CraftResourceInfo[] m_BonesInfo = new CraftResourceInfo[]
@@ -202,13 +202,13 @@ namespace Server.Items
 				new CraftResourceInfo( 2460, 1049355, "Desertique", 50, 	CraftResource.DesertiqueBones,	typeof( DesertiqueBone ),typeof( DesertiqueBone ) ),
 				new CraftResourceInfo( 2235, 1049356, "Maritime", 60,		CraftResource.MaritimeBones,	typeof( MaritimeBone ),	typeof( MaritimeBone ) ),
                 new CraftResourceInfo( 2454, 1049356, "Volcanique", 60,	    CraftResource.VolcaniqueBones,	typeof( VolcaniqueBone ),typeof( VolcaniqueBone ) ),
-                new CraftResourceInfo( 2398, 1049356, "Geant", 60,		    CraftResource.GeantBones,   	typeof( GeantBone ),	typeof( GeantBone ) ),
+                new CraftResourceInfo( 2164, 1049356, "Geant", 60,		    CraftResource.GeantBones,   	typeof( GeantBone ),	typeof( GeantBone ) ),
                 new CraftResourceInfo( 2168, 1049356, "Minotaure", 70,		CraftResource.MinotaureBones,   typeof( MinotaureBone ),typeof( MinotaureBone ) ),
 				new CraftResourceInfo( 2076, 1049356, "Ophidien", 70,		CraftResource.OphidienBones,	typeof( OphidienBone ),	typeof( OphidienBone ) ),
-                new CraftResourceInfo( 2246, 1049356, "Arachnide", 70,		CraftResource.ArachnideBones,	typeof( ArachnideBone ),typeof( ArachnideBone ) ),
+                new CraftResourceInfo( 2390, 1049356, "Arachnide", 70,		CraftResource.ArachnideBones,	typeof( ArachnideBone ),typeof( ArachnideBone ) ),
                 new CraftResourceInfo( 2238, 1049356, "Magique", 80,		CraftResource.MagiqueBones,  	typeof( MagiqueBone ),	typeof( MagiqueBone ) ),
-                /*TOCHANGE*/new CraftResourceInfo( 2174, 1049356, "Ancien", 80,	CraftResource.AncienBones,  	typeof( AncienBone ),	typeof( AncienBone ) ),
-                new CraftResourceInfo( 2234, 1049356, "Demoniaque", 80,     CraftResource.DemonBones,   	typeof( DemonBone ),	typeof( DemonBone ) ),
+                new CraftResourceInfo( 2396, 1049356, "Ancien", 80,	CraftResource.AncienBones,  	typeof( AncienBone ),	typeof( AncienBone ) ),
+                new CraftResourceInfo( 2160, 1049356, "Demoniaque", 80,     CraftResource.DemonBones,   	typeof( DemonBone ),	typeof( DemonBone ) ),
 				new CraftResourceInfo( 1940, 1049356, "Dragonique", 90,     CraftResource.DragonBones,  	typeof( DragonBone ),	typeof( DragonBone ) ),
 			};
 
@@ -224,10 +224,10 @@ namespace Server.Items
 			{
 				new CraftResourceInfo( 0x000, 1011542, "Erable",0,      CraftResource.RegularWood,	typeof( Log ),			typeof( Board ) ),
 				new CraftResourceInfo( 2263, 1072533, "Pin", 10,		CraftResource.PinWood,		typeof( PinLog ),		typeof( PinBoard ) ),
-				new CraftResourceInfo( 2390, 1072534, "Cyprès", 20,	    CraftResource.CypresWood,	typeof( CypresLog ),	typeof( CypresBoard ) ),
+				new CraftResourceInfo( 2246, 1072534, "Cyprès", 20,	    CraftResource.CypresWood,	typeof( CypresLog ),	typeof( CypresBoard ) ),
 				new CraftResourceInfo( 2450, 1072535, "Cèdre", 30,	    CraftResource.CedreWood,	typeof( CedreLog ),		typeof( CedreBoard ) ),
 				new CraftResourceInfo( 2170, 1072536, "Saule", 40,		CraftResource.SauleWood,	typeof( SauleLog ),	    typeof( SauleBoard ) ),
-				new CraftResourceInfo( 2360, 1072538, "Chêne", 50,		CraftResource.CheneWood,	typeof( CheneLog ),	    typeof( CheneBoard ) ),
+				new CraftResourceInfo( 2144, 1072538, "Chêne", 50,		CraftResource.CheneWood,	typeof( CheneLog ),	    typeof( CheneBoard ) ),
 				new CraftResourceInfo( 2055, 1072539, "Ébène", 60,		CraftResource.EbeneWood,	typeof( EbeneLog ),	    typeof( EbeneBoard ) ),
                 new CraftResourceInfo( 2153, 1072539, "Acajou", 70,     CraftResource.AcajouWood,	typeof( AcajouLog ),	typeof( AcajouBoard ) )
 			};

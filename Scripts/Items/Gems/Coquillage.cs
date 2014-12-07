@@ -9,7 +9,7 @@ namespace Server.Items.Gems
     {
         public override int m_Couleur
         {
-            get { return 2382; }
+            get { return 2176; }
         }
 
         public override double m_SkillReq
