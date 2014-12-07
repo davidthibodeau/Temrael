@@ -113,7 +113,7 @@ namespace Server.Gumps
                 if (a.GetNameUseBy(m_Owner).Equals("Anonyme"))
                     return 1;
                 else if (b.GetNameUseBy(m_Owner).Equals("Anonyme"))
-                    return 1;
+                    return -1;
                 else
                     return retour;
             }
