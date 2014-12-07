@@ -26,7 +26,7 @@ namespace Server.SkillHandlers
         {
             bool foundAnyone = false;
 
-            src.PublicOverheadMessage(MessageType.Regular, 0, true, "Jette un oeil aux allentours."); // Empêche quelqu'un de se mettre la détection manuelle en loop sans avoir l'air retardé.
+            src.PublicOverheadMessage(MessageType.Regular, 0, true, "Jette un oeil aux alentours."); // Empêche quelqu'un de se mettre la détection manuelle en loop sans avoir l'air retardé.
 
             foreach (Mobile m in src.GetMobilesInRange(10))
             {
