@@ -55,6 +55,8 @@ namespace Server.Items
                         break;
                     }
             }
+
+            Hue = CraftResources.GetHue(m_Resource);
         }
 
         public BaseBone(CraftResource resource)

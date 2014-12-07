@@ -48,6 +48,7 @@ namespace Server.Items
 					break;
 				}
 			}
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 
 		public BaseHides( CraftResource resource ) : this( resource, 1 )

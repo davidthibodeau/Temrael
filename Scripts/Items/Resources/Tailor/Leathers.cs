@@ -63,6 +63,8 @@ namespace Server.Items
 					break;
 				}
 			}
+
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 
 		public BaseLeather( CraftResource resource ) : this( resource, 1 )

@@ -162,6 +162,8 @@ namespace Server.Items
 
 			if ( version <= 1 )
 				m_Resource = CraftResource.RegularWood;
+
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 	}
 
