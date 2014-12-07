@@ -45,6 +45,9 @@ namespace Server.SkillHandlers
 
         public static bool OnUseSingleTarget(Mobile src, Mobile trg)
         {
+            if (trg.AccessLevel >= src.AccessLevel)
+                return false;
+
             bool foundAnyone = false;
             double srcSkill = src.Skills[SkillName.Detection].Value * 2;
             double trgSkill = src.Skills[SkillName.Discretion].Value + src.Skills[SkillName.Infiltration].Value;
