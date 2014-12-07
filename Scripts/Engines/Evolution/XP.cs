@@ -9,6 +9,7 @@ using Server.Gumps;
 using Server.Accounting;
 using Server.Regions;
 using Server.Commands;
+using Server.Mobiles.Vendeurs;
 
 namespace Server.Engines.Evolution
 {
@@ -127,7 +128,7 @@ namespace Server.Engines.Evolution
                 }
             }
 
-            //Reset aussi l'acheteur.
+            Acheteur.Reset();
 
             LastReset = DateTime.Now;
         }
