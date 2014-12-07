@@ -430,7 +430,8 @@ namespace Server.Engines.Craft
         //    MarkOption = true;
         //    Repair = true;
         //    CanEnhance = Core.AOS;
-        //}
+        //
+        }
 	}
 
 	public abstract class TrapCraft : CustomCraft

@@ -4,10 +4,10 @@ using Server.Engines.Craft;
 
 namespace Server.Items
 {
-    /*
+    
 	public class MortarPestle : BaseTool
 	{
-		public override CraftSystem CraftSystem{ get{ return DefAlchemy.CraftSystem; } }
+        public override CraftSystem CraftSystem { get { return null; } }
 
 		[Constructable]
 		public MortarPestle() : base( 0xE9B )
@@ -41,5 +41,5 @@ namespace Server.Items
 			int version = reader.ReadInt();
 		}
 	}
-    */
+    
 }
