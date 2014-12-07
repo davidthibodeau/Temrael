@@ -71,7 +71,6 @@ namespace Server.Mobiles.Vendeurs
                     ventesAlloues.Add(m, Utility.GetXMLInt32(entry.GetAttribute("depense"), 0));
             }
 
-            Reset();
         }
 
         public static bool TesterDepense(Mobile m, int x)
