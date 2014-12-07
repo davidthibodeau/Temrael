@@ -177,7 +177,6 @@ namespace Server.Items
 		private static CraftResourceInfo[] m_LeatherInfo = new CraftResourceInfo[]
 			{
 				new CraftResourceInfo( 0x000, 1049353, "Normal", 0,		    CraftResource.RegularLeather,	typeof( Leather ),			typeof( Hides ) ),
-                new CraftResourceInfo( 2065, 1049356, "Lupus", 50,		    CraftResource.LupusLeather, 	typeof( LupusLeather ),	    typeof( LupusHides ) ),
                 new CraftResourceInfo( 2180, 1049354, "Reptilien", 50,		CraftResource.ReptilienLeather,	typeof( ReptilienLeather ),	typeof( ReptilienHides ) ),
 				new CraftResourceInfo( 2059, 1049354, "Nordique", 50,		CraftResource.NordiqueLeather,	typeof( NordiqueLeather ),	typeof( NordiqueHides ) ),
 				new CraftResourceInfo( 2164, 1049355, "Desertique", 50, 	CraftResource.DesertiqueLeather,typeof( DesertiqueLeather ),typeof( DesertiqueHides ) ),
@@ -190,7 +189,8 @@ namespace Server.Items
                 new CraftResourceInfo( 2459, 1049356, "Magique", 80, 		CraftResource.MagiqueLeather,	typeof( MagiqueLeather ),	typeof( MagiqueHides ) ),
 				new CraftResourceInfo( 2398, 1049356, "Ancien", 80, 	    CraftResource.AncienLeather,	typeof( AncienLeather ),	typeof( AncienHides ) ),
 				new CraftResourceInfo( 2076, 1049356, "Demoniaque", 80, 	CraftResource.DemoniaqueLeather,typeof( DemoniaqueLeather ),typeof( DemoniaqueHides ) ),
-				new CraftResourceInfo( 2146, 1049356, "Dragonique", 90,	    CraftResource.DragoniqueLeather,typeof( DragoniqueLeather ),typeof( DragoniqueHides ) )
+				new CraftResourceInfo( 2146, 1049356, "Dragonique", 90,	    CraftResource.DragoniqueLeather,typeof( DragoniqueLeather ),typeof( DragoniqueHides ) ),
+                new CraftResourceInfo( 2065, 1049356, "Lupus", 50,		    CraftResource.LupusLeather, 	typeof( LupusLeather ),	    typeof( LupusHides ) )
 			};
 
         private static CraftResourceInfo[] m_BonesInfo = new CraftResourceInfo[]
