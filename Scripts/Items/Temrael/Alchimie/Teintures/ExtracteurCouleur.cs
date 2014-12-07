@@ -8,6 +8,8 @@ namespace Server.Items
 {
     class ExtracteurCouleur : Item
     {
+        public override int GoldValue { get { return 100; } set { } }
+
         [Constructable]
         public ExtracteurCouleur() : base(0x1849)
         {
@@ -81,6 +83,8 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
+
+            Delete();
         }
     }
 }

@@ -95,6 +95,7 @@ namespace Server.Mobiles.Vendeurs
                 Add(new GenericBuyInfo(typeof(SulfurousAsh), 20, 0xF8C, 0)); // 3
                 Add(new GenericBuyInfo(typeof(Nightshade), 20, 0xF88, 0)); // 3
                 Add(new GenericBuyInfo(typeof(Bottle), 20, 0xF0E, 0)); // 3
+                Add(new GenericBuyInfo(typeof(ExtracteurCouleur), 20, 0x1849, 0)); ; // 100
 
             }
         }
