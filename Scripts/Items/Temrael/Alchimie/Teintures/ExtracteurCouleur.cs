@@ -23,7 +23,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.SendMessage("Choisissez la ressource de laquelle vous voulez extraire la couleur.");
+            from.SendMessage("Choisissez la ressource de laquelle vous voulez extraire la couleur. Cela détruira l'extracteur.");
             from.BeginTarget(1, false, TargetFlags.None, new TargetCallback(this.ChooseTarget_OnTarget));
         }
 
@@ -59,6 +59,7 @@ namespace Server.Items
                     from.AddToBackpack(new TeintureModif((IExtractable)targeted));
                     item.Consume(5);
                     from.SendMessage("La teinture est créée.");
+                    Delete();
                 }
                 else
                 {
