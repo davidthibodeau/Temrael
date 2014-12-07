@@ -66,7 +66,7 @@ namespace Server.Spells
         {
             double duree = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
-            new ExpireTimer(Caster, m, TimeSpan.FromSeconds(duree));
+            new ExpireTimer(Caster, m, TimeSpan.FromSeconds(duree)).Start();
 
             m_SacrificeTable[m] = Caster;
 
