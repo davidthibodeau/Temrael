@@ -603,13 +603,14 @@ namespace Server.Items
 
 		public override void Serialize( GenericWriter writer )
 		{
+            Open = false;
+
 			base.Serialize( writer );
 
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int) 0 ); // version
 
             writer.Write(m_KeyValue);
 
-			writer.Write( m_Open );
 			writer.Write( m_Locked );
 			writer.Write( m_OpenedID );
 			writer.Write( m_ClosedID );
@@ -626,18 +627,11 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-            if(version <= 2)
-            {
-                reader.ReadBool();
-                reader.ReadDouble();
-                reader.ReadItem();
-            }
-
 			m_KeyValue = reader.ReadLong();
 
-            m_Open = reader.ReadBool();
-            if (m_Open == true)
-                m_Open = false;
+            if(version == 3)
+                reader.ReadBool();
+            m_Open = false;
 
 			m_Locked = reader.ReadBool();
 			m_OpenedID = reader.ReadInt();
@@ -647,10 +641,7 @@ namespace Server.Items
 			m_Offset = reader.ReadPoint3D();
 			m_Link = reader.ReadItem() as BaseDoor;
 
-            if (version == 0)
-                m_DureeFermeture = TimeSpan.FromSeconds(20.0);
-            else
-                m_DureeFermeture = reader.ReadTimeSpan();
+            m_DureeFermeture = reader.ReadTimeSpan();
 		}
 	}
 }
