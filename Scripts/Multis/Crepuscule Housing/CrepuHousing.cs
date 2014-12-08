@@ -94,12 +94,18 @@ namespace Server.Items
                 ItemID = 0x1ED7;
             SetName();
             Proprio = null;
+
+            if (m_InstancesList == null)
+                m_InstancesList = new ArrayList();
+
             m_InstancesList.Add(this);
         }
 
         public override void Delete()
         {
-            m_InstancesList.Remove(this);
+            if (m_InstancesList != null)
+                m_InstancesList.Remove(this);
+
             base.Delete();
         }
 
@@ -146,6 +152,9 @@ namespace Server.Items
             owned = reader.ReadBool();
             m_Commerce = reader.ReadBool();
             m_ShowOwnerName = reader.ReadBool();
+
+            if (m_InstancesList == null)
+                m_InstancesList = new ArrayList();
 
             m_InstancesList.Add(this); // Permettrait d'ajouter les items existants à la Deserialization à la place de saver les instances... ça fonctionnerait ?
         }
