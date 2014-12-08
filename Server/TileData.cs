@@ -57,17 +57,19 @@ namespace Server
 		private byte m_Quantity;
 		private byte m_Value;
 		private byte m_Height;
+        private int m_Animation;
 
-		public ItemData( string name, TileFlag flags, int weight, int quality, int quantity, int value, int height )
-		{
-			m_Name = name;
-			m_Flags = flags;
-			m_Weight = (byte)weight;
-			m_Quality = (byte)quality;
-			m_Quantity = (byte)quantity;
-			m_Value = (byte)value;
-			m_Height = (byte)height;
-		}
+        public ItemData(string name, TileFlag flags, int weight, int quality, int quantity, int value, int height, int animation)
+        {
+            m_Name = name;
+            m_Flags = flags;
+            m_Weight = (byte)weight;
+            m_Quality = (byte)quality;
+            m_Quantity = (byte)quantity;
+            m_Value = (byte)value;
+            m_Height = (byte)height;
+            m_Animation = animation;
+        }
 
 		public string Name
 		{
@@ -146,6 +148,12 @@ namespace Server
 			get{ return m_Height; }
 			set{ m_Height = (byte)value; }
 		}
+
+        public int Animation
+        {
+            get { return m_Animation; }
+            set { m_Animation = value; }
+        }
 
 		public int CalcHeight
 		{
@@ -283,12 +291,12 @@ namespace Server
 							bin.ReadInt16();
 							bin.ReadByte();
 							int quantity = bin.ReadByte();
-							bin.ReadInt32();
+							int animation = bin.ReadInt32();
 							bin.ReadByte();
 							int value = bin.ReadByte();
 							int height = bin.ReadByte();
 
-							m_ItemData[i] = new ItemData( ReadNameString( bin ), flags, weight, quality, quantity, value, height );
+                            m_ItemData[i] = new ItemData(ReadNameString(bin), flags, weight, quality, quantity, value, height, animation);
 						}
 					} else {
 						m_LandData = new LandData[0x4000];
@@ -322,12 +330,12 @@ namespace Server
 								bin.ReadInt16();
 								bin.ReadByte();
 								int quantity = bin.ReadByte();
-								bin.ReadInt32();
+								int animation = bin.ReadInt32();
 								bin.ReadByte();
 								int value = bin.ReadByte();
 								int height = bin.ReadByte();
 
-								m_ItemData[i] = new ItemData( ReadNameString( bin ), flags, weight, quality, quantity, value, height );
+                                m_ItemData[i] = new ItemData(ReadNameString(bin), flags, weight, quality, quantity, value, height, animation);
 							}
 						} else {
 							m_ItemData = new ItemData[0x4000];
@@ -345,12 +353,12 @@ namespace Server
 								bin.ReadInt16();
 								bin.ReadByte();
 								int quantity = bin.ReadByte();
-								bin.ReadInt32();
+								int animation = bin.ReadInt32();
 								bin.ReadByte();
 								int value = bin.ReadByte();
 								int height = bin.ReadByte();
 
-								m_ItemData[i] = new ItemData( ReadNameString( bin ), flags, weight, quality, quantity, value, height );
+                                m_ItemData[i] = new ItemData(ReadNameString(bin), flags, weight, quality, quantity, value, height, animation);
 							}
 						}
 					}

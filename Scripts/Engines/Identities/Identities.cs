@@ -199,9 +199,6 @@ namespace Server.Engines.Identities
 
         public void Transformer()
         {
-            if (m_currentIdentity == transformationIdentity)
-                return;
-
             m_currentIdentity = transformationIdentity;
             transformationIdentity[m_Mobile] = m_Mobile.Name;
             m_Mobile.SendMessage("Vous êtes maintenant transformé.");
