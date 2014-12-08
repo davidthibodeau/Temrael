@@ -6,12 +6,15 @@ using Server.Mobiles;
 using Server.Prompts;
 using Server.Engines;
 using System.Collections;
+using Server.Commandes.Temrael;
 
 namespace Server.Items
 {
     [Flipable(0x1ED4, 0x1ED7)]
     public class BoiteAuLettreComponent : AddonComponent
     {
+        private static ArrayList m_InstancesList;
+
         private bool m_Commerce = false,
                      owned = false,
                      m_ShowOwnerName = false;
@@ -91,6 +94,13 @@ namespace Server.Items
                 ItemID = 0x1ED7;
             SetName();
             Proprio = null;
+            m_InstancesList.Add(this);
+        }
+
+        public override void Delete()
+        {
+            m_InstancesList.Remove(this);
+            base.Delete();
         }
 
         private void SetName()
@@ -136,6 +146,8 @@ namespace Server.Items
             owned = reader.ReadBool();
             m_Commerce = reader.ReadBool();
             m_ShowOwnerName = reader.ReadBool();
+
+            m_InstancesList.Add(this); // Permettrait d'ajouter les items existants à la Deserialization à la place de saver les instances... ça fonctionnerait ?
         }
 
         public void Acheter(Mobile from)
@@ -147,11 +159,50 @@ namespace Server.Items
                     from.SendMessage("Vous n'avez pas assez d'argent sur votre compte.");
                 else
                 {
-                    from.SendMessage("Vous avez achete le batiment.");
+                    from.SendMessage("Vous avez acheté le batiment.");
                     Proprio = from;
                     owned = true;
                     from.SendMessage("Sous quel nom voulez-vous l'enregistrer ?");
                     from.Prompt = new OwnerNamePrompt(this);
+                }
+            }
+        }
+
+        public void Disown()
+        {
+            if (Proprio != null)
+                Proprio.SendMessage("Vous ne possédez plus votre maison.");
+
+            foreach(Mobile m in CoProprio)
+                if (m != null)
+                    m.SendMessage("Vous ne possédez plus votre maison.");
+
+            Proprio = null;
+            CoProprio = new Mobile[] { null, null, null };
+            owned = false;
+
+            Porte1.KeyValue = 0;
+            Porte2.KeyValue = 0;
+
+            Porte1.Locked = true;
+            Porte2.Locked = true;
+        }
+
+        public static void WeeklyPay()
+        {
+            foreach(BoiteAuLettreComponent item in m_InstancesList)
+            {
+                if (item != null)
+                {
+                    if (!Banker.Withdraw(item.owner, item.PrixVente))
+                    {
+                        item.owner.SendMessage("Vous n'avez pas assez d'argent sur votre compte, votre maison a été mise en vente !");
+                        item.Disown();
+                    }
+                    else
+                    {
+                        item.owner.SendMessage("Un paiement de " + item.PrixVente + " a été fait pour votre maison.");
+                    }
                 }
             }
         }
@@ -226,7 +277,7 @@ namespace Server.Items
             PlayerMobile rpm = (PlayerMobile)from;
 
             AddBackground(55, 60, 260, 320, 9200);
-            AddLabel(140, 70, 0x26, "Gestion de la maison");
+            AddLabel(120, 70, 0x26, "Gestion de la maison");
 
             AddLabel(80, upmargin + num * 20, 0x00, string.Format("Prix : {0}", item.PrixVente)); num++;
 
@@ -252,11 +303,9 @@ namespace Server.Items
 
             if (m_from == m_item.Proprio || m_from.AccessLevel > AccessLevel.Player || m_from == m_item.CoProprio[0] || m_from == m_item.CoProprio[1] || m_from == m_item.CoProprio[2])
             {
-                AddButtonLabeled(80, upmargin + num * 20, 4, "Ouvrir les portes"); num++;
-
                 if (m_item.Proprio == m_from)
                 {
-                    AddButtonLabeled(80, upmargin + num * 20, 5, "Ajouter Coproprietaire"); num++;
+                    AddButtonLabeled(80, upmargin + num * 20, 4, "Ajouter Coproprietaire"); num++;
                 }
 
                 num++;
@@ -269,14 +318,27 @@ namespace Server.Items
                     {
                         AddLabelCropped(91, upmargin + num * 20 + 1, 180, 21, 0, m_item.CoProprio[i].GetNameUseBy(rpm)); // rpm.FindName(m_item.CoProprio[i].Serial.Value));
                         if (m_item.Proprio == m_from)
-                            AddButtonLabeledDel(270, upmargin + num * 20, 6 + i, "");
+                            AddButtonLabeledDel(270, upmargin + num * 20, 5 + i, "");
                     }
                     num++;
                 }
 
                 num++;
                 if (m_item.Proprio == m_from)
-                    AddButtonLabeled(80, upmargin + num * 20, 9, "Transferer la propriete");
+                    AddButtonLabeled(80, upmargin + num * 20, 8, "Transferer la propriete");
+
+                num++;
+                if (m_item.Proprio == m_from)
+                    AddButtonLabeled(80, upmargin + num * 20, 9, "Créer une clef : porte 1.");
+
+                num++;
+                if (m_item.Proprio == m_from)
+                    AddButtonLabeled(80, upmargin + num * 20, 10, "Créer une clef : porte 2.");
+
+                num++;
+                num++;
+                if (m_item.Proprio == m_from)
+                    AddButtonLabeled(80, upmargin + num * 20, 11, "Cesser de payer.");
             }
         }
 
@@ -305,46 +367,59 @@ namespace Server.Items
                     }
                 case 4:
                     {
-                        try
-                        {
-                            if (m_item.Porte1 != null)
-                            {
-                                m_item.Porte1.Open = !m_item.Porte1.Open;
-                                m_from.SendMessage("Vous ouvrez les portes");
-                                if (m_item.Porte2 != null)
-                                {
-                                    m_item.Porte2.Open = !m_item.Porte2.Open;
-                                }
-                            }
-                        }
-                        catch { }
-                        break;
-                    }
-                case 5:
-                    {
                         m_from.Target = new AddTargetCoproprio(m_item);
                         m_from.SendMessage("Qui desirez vous ajouter comme coproprietaire?");
                         break;
                     }
-                case 6:
+                case 5:
                     {
                         m_item.CoProprio[0] = null;
                         break;
                     }
-                case 7:
+                case 6:
                     {
                         m_item.CoProprio[1] = null;
                         break;
                     }
-                case 8:
+                case 7:
                     {
                         m_item.CoProprio[2] = null;
                         break;
                     }
-                case 9:
+                case 8:
                     {
                         m_from.Target = new AddTargetChangeProprio(m_item);
                         m_from.SendMessage("A qui voulez vous transferer la maison?");
+                        break;
+                    }
+                case 9:
+                    {
+                        if (m_item.Porte1 != null)
+                        {
+                            if (!GenerateKey.GenerateKeyFor(m_from, m_item.Porte1, 1))
+                            {
+                                GenerateKey.GenerateNewKey(m_from, m_item.Porte1, 1);
+                            }
+                        }
+
+                        break;
+                    }
+                case 10:
+                    {
+                        if (m_item.Porte2 != null)
+                        {
+                            if (! GenerateKey.GenerateKeyFor(m_from, m_item.Porte2, 1))
+                            {
+                                GenerateKey.GenerateNewKey(m_from, m_item.Porte2, 1);
+                            }
+                        }
+
+                        break;
+                    }
+                case 11:
+                    {
+                        m_item.Disown();
+
                         break;
                     }
             }

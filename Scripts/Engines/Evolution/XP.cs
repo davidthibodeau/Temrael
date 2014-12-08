@@ -130,6 +130,8 @@ namespace Server.Engines.Evolution
 
             Acheteur.Reset();
 
+            BoiteAuLettreComponent.WeeklyPay(); // Paiement des maisons.
+
             LastReset = DateTime.Now;
         }
 

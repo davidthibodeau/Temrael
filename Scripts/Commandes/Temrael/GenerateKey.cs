@@ -32,7 +32,7 @@ namespace Server.Commandes.Temrael
                 e.Mobile.SendMessage("Vous ne pouvez créer qu'entre 0 et 10 clefs à la fois.");
             }
         }
-        private static void GenerateNewKey(Mobile from, ILockable item, int nbKeys)
+        public static bool GenerateNewKey(Mobile from, ILockable item, int nbKeys)
         {
             long newKeyValue = DateTime.Now.Ticks;
             Key key;
@@ -47,6 +47,8 @@ namespace Server.Commandes.Temrael
 
                 from.AddToBackpack(key);
             }
+
+            return true;
         }
 
         [Usage("GenerateKeyFor [amount]")]
@@ -64,7 +66,7 @@ namespace Server.Commandes.Temrael
                 e.Mobile.SendMessage("Vous ne pouvez créer qu'entre 0 et 10 clefs à la fois.");
             }
         }
-        private static void GenerateKeyFor(Mobile from, ILockable item, int nbKeys)
+        public static bool GenerateKeyFor(Mobile from, ILockable item, int nbKeys)
         {
             if (item.KeyValue != 0)
             {
@@ -78,15 +80,16 @@ namespace Server.Commandes.Temrael
 
                     from.AddToBackpack(key);
                 }
+                return true;
             }
             else
             {
-                from.SendMessage("L'objet que vous avez choisi ne possède pas de KeyValue à copier.");
+                return false;
             }
         }
 
 
-        delegate void ActionLockable(Mobile from, ILockable item, int nbKeys);
+        delegate bool ActionLockable(Mobile from, ILockable item, int nbKeys);
 
         private static bool CheckNbKeys(int nbKeys)
         {
