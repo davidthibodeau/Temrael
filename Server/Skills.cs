@@ -647,7 +647,7 @@ namespace Server
                 new SkillInfo( SkillName.Anatomie,        "Anatomie",			SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	0.5,	0.5,	1.0,	1.0 ),
 				new SkillInfo( SkillName.Concentration,   "Concentration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	1.0,	1.0,	1.0 ),
                 new SkillInfo( SkillName.Penetration,     "Penetration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	1.0,	0.5,	0.5,	1.0 ),
-                new SkillInfo( SkillName.CoupCritique,    "Coup Critique",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.4,	1.6,	1.0,	1.0 ),
+                new SkillInfo( SkillName.CoupCritique,    "Coup Critique",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.4,	0.6,	1.0,	1.0 ),
                 new SkillInfo( SkillName.ResistanceMagique,"Resistance Magique",SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	2.0,	1.0 ),
                 new SkillInfo( SkillName.ArmureNaturelle, "Armure Naturelle",   SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	1.0,	0.0,	1.0,	1.0 ),
                 
@@ -675,7 +675,7 @@ namespace Server
 				new SkillInfo( SkillName.Dressage,        "Dressage",			SkillCategory.Roublardise,	14.0,	2.0,	4.0, 	null,	0.4,	0.8,	0.8,	1.0 ),
 				new SkillInfo( SkillName.Poursuite,       "Poursuite",			SkillCategory.Roublardise,	0.0,	12.5,	12.5, 	null,	0.0,	1.25,	0.75,	1.0 ),
 				new SkillInfo( SkillName.Infiltration,    "Infiltration",		SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	2.0,	0.0,	1.0 ),
-				new SkillInfo( SkillName.Pieges,          "Maitrise des Pieges",SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	1.6,	0.4,	1.0 ),
+				new SkillInfo( SkillName.Pieges,          "Maitrise des Pieges",SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.4,	1.6,	0.0,	1.0 ),
 				new SkillInfo( SkillName.Langues,         "Langues",			SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	2.0,	1.0 ),
                 new SkillInfo( SkillName.Deguisement,     "Deguisement",		SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	1.4,	0.6,	1.0 ),
                 new SkillInfo( SkillName.Musique,         "Musique",            SkillCategory.Roublardise,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	0.0,	1.0 ),
