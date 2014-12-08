@@ -1,5 +1,6 @@
 using System;
 using Server.Network;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -166,6 +167,7 @@ namespace Server.Items
         private int m_TriggerRange;
         private TimeSpan m_TriggerDelay;
         private EffectController m_Trigger;
+        private bool m_TriggerPlayersOnly;
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public EffectTriggerType TriggerType{ get{ return m_TriggerType; } set{ m_TriggerType = value; } }
@@ -178,6 +180,9 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.Batisseur)]
         public EffectController TriggerSequence { get { return m_Trigger; } set { m_Trigger = value; } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool TriggerPlayersOnly { get { return m_TriggerPlayersOnly; } set { m_TriggerPlayersOnly = value; } }
         #endregion
 
 
@@ -234,7 +239,10 @@ namespace Server.Items
             if (Deleted || m_TriggerType == EffectTriggerType.None)
                 return;
 
-            if (trigger is Mobile && ((Mobile)trigger).Hidden && ((Mobile)trigger).AccessLevel > AccessLevel.Player)
+            if (((Mobile)trigger).AccessLevel > AccessLevel.Player)
+                return;
+
+            if (trigger is BaseCreature && m_TriggerPlayersOnly)
                 return;
 
             if (ActivateItem != null && trigger is Mobile && ActivateItem is IActivable)
@@ -388,7 +396,9 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)3); // version
+            writer.Write((int)0); // version
+
+            writer.Write(m_TriggerPlayersOnly);
 
             writer.Write(m_Cooldown);
             writer.Write(m_LastEffect);
@@ -448,11 +458,11 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            if (version == 3)
-            {
-                m_Cooldown = reader.ReadTimeSpan();
-                m_LastEffect = reader.ReadDateTime();
-            }
+            if (version == 0)
+                m_TriggerPlayersOnly = reader.ReadBool();
+
+            m_Cooldown = reader.ReadTimeSpan();
+            m_LastEffect = reader.ReadDateTime();
 
             ActivateMode = reader.ReadInt();
             ActivateItem = reader.ReadItem();
@@ -468,11 +478,6 @@ namespace Server.Items
             m_MissileFixedDirection = reader.ReadBool();
             m_MissileExplodes = reader.ReadBool();
             m_SoundAtTrigger = reader.ReadBool();
-            if (version == 0 || version == 1)
-            {
-                reader.ReadBool();
-            }
-
 
             m_MessageDelay = reader.ReadTimeSpan();
             m_MessageAtTrigger = reader.ReadBool();
