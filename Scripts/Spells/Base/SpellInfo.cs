@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Engines.Combat
 
 namespace Server.Spells
 {
@@ -52,6 +53,10 @@ namespace Server.Spells
 		{
 			m_Name = name;
 			m_Mantra = mantra;
+
+            if(circle > Damage.instance.CercleMax)
+                circle = Damage.instance.CercleMax;
+
 			m_Circle = circle;
 			m_Action = action;
             m_ManaCost = manaCost;

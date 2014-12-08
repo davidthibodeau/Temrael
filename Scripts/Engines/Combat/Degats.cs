@@ -51,8 +51,8 @@ namespace Server.Engines.Combat
             def.Damage((int)reducedDmg);
         }
 
+        public short CercleMax { get { return 6; } } // Il y a présentement 6 cercles dans le système de magie.
         const double DPSBASE = 4.5;
-        const short NbTotalCercles = 7; // Il y a présentement 7 cercles dans le système de magie.
         const double ScalingCategorie = 0.5;// Bonus qui fait la différence entre un spell de cercle 1, et de cercle 10, pour les dégâts.
         const double RandVariation = 0.2; // Les valeurs de dégâts peuvent varier de +- 20%.
 
@@ -82,7 +82,7 @@ namespace Server.Engines.Combat
 
         private double ScalingCat(short cercle)
         {
-            return (((ScalingCategorie / NbTotalCercles) * cercle) + 1);
+            return (((ScalingCategorie / CercleMax) * cercle) + 1);
         }
         #endregion
 
