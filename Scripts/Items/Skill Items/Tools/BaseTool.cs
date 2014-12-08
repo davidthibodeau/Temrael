@@ -121,18 +121,21 @@ namespace Server.Items
 			{
 				CraftSystem system = this.CraftSystem;
 
-				int num = system.CanCraft( from, this, null );
+                if (system != null)
+                {
+                    int num = system.CanCraft(from, this, null);
 
-				if ( num > 0 && ( num != 1044267 || !Core.SE ) ) // Blacksmithing shows the gump regardless of proximity of an anvil and forge after SE
-				{
-					from.SendLocalizedMessage( num );
-				}
-				else
-				{
-					CraftContext context = system.GetContext( from );
+                    if (num > 0 && (num != 1044267 || !Core.SE)) // Blacksmithing shows the gump regardless of proximity of an anvil and forge after SE
+                    {
+                        from.SendLocalizedMessage(num);
+                    }
+                    else
+                    {
+                        CraftContext context = system.GetContext(from);
 
-					from.SendGump( new CraftGump( from, system, this, null ) );
-				}
+                        from.SendGump(new CraftGump(from, system, this, null));
+                    }
+                }
 			}
 			else
 			{
