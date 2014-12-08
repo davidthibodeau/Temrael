@@ -1,6 +1,6 @@
 using System;
 using Server;
-using Server.Engines.Combat
+using Server.Engines.Combat;
 
 namespace Server.Spells
 {

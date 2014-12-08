@@ -103,13 +103,16 @@ namespace Server.Items
 				private Mobile m_From;
 				private ILockpickable m_Item;
 				private Lockpick m_Lockpick;
-			
-				public InternalTimer( Mobile from, ILockpickable item, Lockpick lockpick ) : base( TimeSpan.FromSeconds( 3.0 ) )
+                private DateTime m_Time;
+
+                public InternalTimer(Mobile from, ILockpickable item, Lockpick lockpick)
+                    : base(TimeSpan.FromSeconds(3.0), TimeSpan.FromSeconds(3.0))
 				{
 					m_From = from;
 					m_Item = item;
 					m_Lockpick = lockpick;
 					Priority = TimerPriority.TwoFiftyMS;
+                    m_Time = DateTime.Now + TimeSpan.FromSeconds(12.0);
 				}
 
 				protected void BrokeLockPickTest()
@@ -129,44 +132,45 @@ namespace Server.Items
 				
 				protected override void OnTick()
 				{
-					Item item = (Item)m_Item;
+                    if (!m_From.InRange(((Item)m_Item).GetWorldLocation(), 1))
+                        return;
 
-					if ( !m_From.InRange( item.GetWorldLocation(), 1 ) )
-						return;
+                    if (DateTime.Now >= m_Time)
+                    {
+                        Item item = (Item)m_Item;
 
-					if ( m_Item.LockLevel == 0 || m_Item.LockLevel == -255 )
-					{
-						// LockLevel of 0 means that the door can't be picklocked
-						// LockLevel of -255 means it's magic locked
-						item.SendLocalizedMessageTo( m_From, 502073 ); // This lock cannot be picked by normal means
-						return;
-					}
+                        if (m_Item.LockLevel == 0 || m_Item.LockLevel == -255)
+                        {
+                            // LockLevel of 0 means that the door can't be picklocked
+                            // LockLevel of -255 means it's magic locked
+                            item.SendLocalizedMessageTo(m_From, 502073); // This lock cannot be picked by normal means
+                        }
+                        else if (m_From.Skills[SkillName.Crochetage].Value < m_Item.RequiredSkill)
+                        {
+                            m_From.CheckSkill(SkillName.Crochetage, 0, m_Item.LockLevel);
 
-                    // TOCHECK CROCHETAGE
-                    if (m_From.Skills[SkillName.Crochetage].Value < m_Item.RequiredSkill /*- (int)((PlayerMobile)m_From).GetAptitudeValue(Aptitude.Cambriolage) * 4*/)
-					{
-						/*
-						// Do some training to gain skills
-						m_From.CheckSkill( SkillName.Crochetage, 0, m_Item.LockLevel );*/
-
-						// The LockLevel is higher thant the LockPicking of the player
-						item.SendLocalizedMessageTo( m_From, 502072 ); // You don't see how that lock can be manipulated.
-						return;
-					}
-
-					if ( m_From.CheckTargetSkill( SkillName.Crochetage, m_Item, m_Item.LockLevel, m_Item.MaxLockLevel ) )
-					{
-						// Success! Pick the lock!
-						item.SendLocalizedMessageTo( m_From, 502076 ); // The lock quickly yields to your skill.
-						m_From.PlaySound( 0x4A );
-						m_Item.LockPick( m_From );
-					}
-					else
-					{
-						// The player failed to pick the lock
-						BrokeLockPickTest();
-						item.SendLocalizedMessageTo( m_From, 502075 ); // You are unable to pick the lock.
-					}
+                            // The LockLevel is higher thant the LockPicking of the player
+                            item.SendLocalizedMessageTo(m_From, 502072); // You don't see how that lock can be manipulated.
+                        }
+                        else if (m_From.CheckTargetSkill(SkillName.Crochetage, m_Item, m_Item.LockLevel, m_Item.MaxLockLevel))
+                        {
+                            // Success! Pick the lock!
+                            item.SendLocalizedMessageTo(m_From, 502076); // The lock quickly yields to your skill.
+                            m_From.PlaySound(0x4A);
+                            m_Item.LockPick(m_From);
+                        }
+                        else
+                        {
+                            // The player failed to pick the lock
+                            BrokeLockPickTest();
+                            item.SendLocalizedMessageTo(m_From, 502075); // You are unable to pick the lock.
+                        }
+                        Stop();
+                    }
+                    else
+                    {
+                        m_From.PlaySound(0x241);
+                    }
 				}
 			}
 		}
