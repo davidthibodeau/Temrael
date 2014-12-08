@@ -1280,8 +1280,6 @@ namespace Server.Mobiles
 			//if( Confidence.IsRegenerating( this ) )
 			//	Confidence.StopRegenerating( this );
 
-			WeightOverloading.FatigueOnDamage( this, amount );
-
 			InhumanSpeech speechType = this.SpeechType;
 
 			if ( speechType != null && !willKill )

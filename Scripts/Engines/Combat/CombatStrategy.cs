@@ -65,6 +65,9 @@ namespace Server.Engines.Combat
 
             degats = Spell.OnHitEffects(atk, def, degats);
 
+            def.Stam -= (int)(degats * 0.8);
+            atk.Stam -= (int)(degats * 0.4);
+
             def.Damage((int)degats, atk);
         }
 

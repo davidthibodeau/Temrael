@@ -1820,8 +1820,6 @@ namespace Server.Mobiles
 			//if( Confidence.IsRegenerating( this ) )
 			//	Confidence.StopRegenerating( this );
 
-			WeightOverloading.FatigueOnDamage( this, amount );
-
 			if ( willKill && from is PlayerMobile )
 				Timer.DelayCall( TimeSpan.FromSeconds( 10 ), new TimerCallback( ((PlayerMobile) from).RecoverAmmo ) );
 
