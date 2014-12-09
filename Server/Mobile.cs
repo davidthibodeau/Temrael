@@ -491,7 +491,7 @@ namespace Server
             {
                 double ArNatSkill = Skills[SkillName.ArmureNaturelle].Value;
 
-                double baseArNat = ArNatSkill * 0.25 + (ArNatSkill >= 100 ? 5 : 0);
+                double baseArNat = ArNatSkill * 0.20 + (ArNatSkill >= 100 ? 5 : 0);
                 double reducedAr = (75 - PhysicalResistance * 5 / 4) / 75 * baseArNat;
 
                 if (reducedAr < 0)
