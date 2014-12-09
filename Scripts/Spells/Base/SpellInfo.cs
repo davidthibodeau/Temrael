@@ -92,7 +92,7 @@ namespace Server.Spells
 
         private int GetMinSkill(int cercle)
         {
-            return (cercle * 10) + 30; // 40, 50... 90. +- 5. 
+            return (cercle * 10) + 35; // 45, 55... 95. +- 5. 
         }
 	}
 }
