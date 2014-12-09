@@ -11,6 +11,8 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 302; } } // TOCHANGE
 
+        private static short s_Cercle = 2;
+
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Maudire", "An Sanct Gra Char",
                 s_Cercle,
@@ -23,7 +25,6 @@ namespace Server.Spells
             );
 
 
-        private static short s_Cercle = 2;
         public static double LifestealPercentMax = 0.3;
 
 		public CurseWeaponSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )

@@ -474,10 +474,10 @@ namespace Server.Spells
         const double ScalArtMag      = 0.625; // Bonus lié au skill ArtMagique.
         const double BonusArtMag     = 6.25;
 
-        const double ScalMainBranche = 0.2;  // Bonus sur le skill de la branche passée en paramètre.
+        const double ScalMainBranche = 0.3;  // Bonus sur le skill de la branche passée en paramètre.
         const double BonusMainBranch = 10;
 
-        const double ScalScndBranche = 0;    // Bonus sur les skills des autres branches.
+        const double ScalScndBranche = 0.2;    // Bonus sur les skills des autres branches.
         const double BonusScndBranch = 0;
 
         const double ScalInscription = 0.5;  // Bonus lié au skill Inscription.

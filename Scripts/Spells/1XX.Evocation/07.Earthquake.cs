@@ -48,10 +48,7 @@ namespace Server.Spells
 
 				if ( map != null )
                 {
-                    double tile = 4;
-
-                    if (tile > 12)
-                        tile = 12;
+                    double tile = 7;
 
 					foreach ( Mobile m in Caster.GetMobilesInRange( (int)tile ) )
 					{

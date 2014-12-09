@@ -13,7 +13,7 @@ namespace Server.Spells
 
         public readonly static Hashtable m_Table = new Hashtable();
 
-        private static short s_Cercle = 6;
+        private static short s_Cercle = 5;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Lenteur", "Mas Nuuh",
