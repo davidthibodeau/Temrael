@@ -4,6 +4,7 @@ using Server.Network;
 using Server.Items;
 using Server.Mobiles;
 using Server.Targeting;
+using System.Collections.Generic;
 
 namespace Server.Spells
 {
@@ -11,7 +12,12 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 206; } }
 
-        public readonly static Hashtable m_Table = new Hashtable();
+        private readonly static Dictionary<Mobile, int> m_Table = new Dictionary<Mobile, int>();
+
+        public static bool Contains(Mobile m)
+        {
+            return m_Table.ContainsKey(m);
+        }
 
         private static short s_Cercle = 5;
 
@@ -53,7 +59,7 @@ namespace Server.Spells
                 TimeSpan duration = TimeSpan.FromSeconds(baseDuration * Spell.GetSpellScaling(Caster, Info.skillForCasting));
                 int PourcentRate = 30;
 
-                if (!m_Table.Contains(m))
+                if (!m_Table.ContainsKey(m))
                 {
                     m_Table.Add(m, PourcentRate);
                     new LenteurTimer(m, duration).Start();
@@ -67,15 +73,15 @@ namespace Server.Spells
 
         public static void RemoveBonus(Mobile m)
         {
-            if (m_Table.Contains(m))
+            if (m_Table.ContainsKey(m))
                 m_Table.Remove(m);
         }
 
-        public static void GetOnHitEffect(Mobile atk, ref int attackSpeed)
+        public static void GetOnHitEffect(Mobile atk, ref double attackSpeed)
         {
-            if (m_Table.Contains(atk))
+            if (m_Table.ContainsKey(atk))
             {
-                attackSpeed = (attackSpeed * 140) / 100;
+                attackSpeed = (attackSpeed * (1 + m_Table[atk])) / 100;
             }
         }
 

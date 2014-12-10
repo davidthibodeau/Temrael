@@ -336,9 +336,9 @@ namespace Server.Spells
                 double vitesse = 1 - Caster.Stam / 100.0;
                 castTime = castTime.Add(TimeSpan.FromSeconds(vitesse));
 
-                if (LenteurSpell.m_Table.Contains(Caster))
+                if (LenteurSpell.Contains(Caster))
                 {
-                    int vit = (int)(castTime.TotalSeconds * 1000);
+                    double vit = castTime.TotalSeconds * 1000;
                     LenteurSpell.GetOnHitEffect(Caster, ref vit);
                     castTime = TimeSpan.FromMilliseconds(vit);
                 }

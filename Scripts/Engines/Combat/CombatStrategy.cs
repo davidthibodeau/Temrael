@@ -272,9 +272,6 @@ namespace Server.Engines.Combat
         {
             int vitesse = (int)(Vitesse(atk) * 100);
 
-            if (LenteurSpell.m_Table.Contains(atk))
-                LenteurSpell.GetOnHitEffect(atk, ref vitesse);
-
             return vitesse;
         }
 
@@ -305,6 +302,9 @@ namespace Server.Engines.Combat
             //Le délai minimal est de 1 secondes entre deux attaques.
             if (s < 10)
                 s = 10;
+
+            if (LenteurSpell.Contains(atk))
+                LenteurSpell.GetOnHitEffect(atk, ref s);
 
             return s;
         }
