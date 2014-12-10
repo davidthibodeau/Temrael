@@ -93,25 +93,28 @@ namespace Server.Engines.PartySystem
 				m_Mobile.SendLocalizedMessage( 1005437 ); // You have rejoined the party.
 				m_Mobile.Send( new PartyMemberList( p ) );
 
-				Packet message = Packet.Acquire( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008087, "", AffixType.Prepend | AffixType.System, m_Mobile.Name, "" ) );
-				Packet attrs   = Packet.Acquire( new MobileAttributesN( m_Mobile ) );
 
-				foreach ( PartyMemberInfo mi in p.Members )
-				{
-					Mobile m = mi.Mobile;
 
-					if ( m != m_Mobile )
-					{
-						m.Send( message );
-						m.Send( new MobileStatusCompact( m_Mobile.CanBeRenamedBy( m ), m_Mobile, m ) );
-						m.Send( attrs );
-						m_Mobile.Send( new MobileStatusCompact( m.CanBeRenamedBy( m_Mobile ), m, m_Mobile ) );
-						m_Mobile.Send( new MobileAttributesN( m ) );
-					}
-				}
+                foreach (PartyMemberInfo mi in p.Members)
+                {
+                    Mobile m = mi.Mobile;
 
-				Packet.Release( message );
-				Packet.Release( attrs );
+                    if (m != m_Mobile)
+                    {
+                        Packet message = Packet.Acquire(new MessageLocalizedAffix(Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008087,
+                            m_Mobile.GetNameUseBy(m), AffixType.Prepend | AffixType.System, m_Mobile.GetNameUseBy(m), ""));
+                        Packet attrs = Packet.Acquire(new MobileAttributesN(m_Mobile));
+
+                        m.Send(message);
+                        m.Send(new MobileStatusCompact(m_Mobile.CanBeRenamedBy(m), m_Mobile, m));
+                        m.Send(attrs);
+                        m_Mobile.Send(new MobileStatusCompact(m.CanBeRenamedBy(m_Mobile), m, m_Mobile));
+                        m_Mobile.Send(new MobileAttributesN(m));
+
+                        Packet.Release(message);
+                        Packet.Release(attrs);
+                    }
+                }
 			}
 		}
 
