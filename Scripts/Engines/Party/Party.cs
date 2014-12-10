@@ -93,8 +93,6 @@ namespace Server.Engines.PartySystem
 				m_Mobile.SendLocalizedMessage( 1005437 ); // You have rejoined the party.
 				m_Mobile.Send( new PartyMemberList( p ) );
 
-
-
                 foreach (PartyMemberInfo mi in p.Members)
                 {
                     Mobile m = mi.Mobile;
