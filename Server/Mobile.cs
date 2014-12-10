@@ -8817,23 +8817,22 @@ namespace Server
 
 				foreach( NetState state in eable )
 				{
-					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) )
-					{
-						if( p == null )
-						{
-							if( ascii )
-								p = new AsciiMessage( m_Serial, Body, type, hue, 3, GetNameUseBy(state.Mobile), text );
-							else
-								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(state.Mobile), text );
+                    if (state.Mobile.CanSee(this) && (noLineOfSight || state.Mobile.InLOS(this)))
+                    {
+                        if (ascii)
+                            p = new AsciiMessage(m_Serial, Body, type, hue, 3, GetNameUseBy(state.Mobile), text);
+                        else
+                            p = new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(state.Mobile), text);
 
-							p.Acquire();
-						}
+                        p.Acquire();
 
-						state.Send( p );
-					}
+                        state.Send(p);
+
+                        Packet.Release(p);
+                    }
 				}
 
-				Packet.Release( p );
+				
 
 				eable.Free();
 			}
