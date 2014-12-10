@@ -96,7 +96,7 @@ namespace Server.Items
         public override int InitMaxHits { get { return ArmorPlaqueGoth.max_Durabilite; } }
 
         public override int BaseStrReq { get { return ArmorPlaqueGoth.force_Requise; } }
-        public override int BaseDexBonus { get { return ArmorPlaqueGoth.force_Requise; } }
+        public override int BaseDexBonus { get { return ArmorPlaqueGoth.malus_Dex; } }
 
         public override ArmorMaterialType MaterialType { get { return ArmorMaterialType.Plate; } }
         public override CraftResource DefaultResource { get { return CraftResource.Fer; } }
