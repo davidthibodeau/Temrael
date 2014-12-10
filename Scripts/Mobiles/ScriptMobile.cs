@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Spells;
 
 namespace Server.Mobiles
 {
@@ -80,6 +81,18 @@ namespace Server.Mobiles
         {
             base.OnHiddenChanged();
             Detection.ResetAlentours();
+        }
+
+        public override void Damage(int amount)
+        {
+            double damage = amount;
+            SacrificeSpell.GetOnHitEffect(this, ref damage);
+
+            DernierSouffleSpell.GetOnHitEffect(this, ref damage);
+
+            AdrenalineSpell.GetOnHitEffect(this, ref damage);
+
+            base.Damage((int)damage);
         }
 
     }

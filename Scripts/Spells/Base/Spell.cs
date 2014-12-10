@@ -477,8 +477,7 @@ namespace Server.Spells
         const double ScalMainBranche = 0.3;  // Bonus sur le skill de la branche passée en paramètre.
         const double BonusMainBranch = 10;
 
-        const double ScalScndBranche = 0.2;    // Bonus sur les skills des autres branches.
-        const double BonusScndBranch = 0;
+        const double ScalScndBranche = 0.3;  // Bonus sur les skills des autres branches.
 
         const double ScalInscription = 0.5;  // Bonus lié au skill Inscription.
         const double BonusInscription= 5;
@@ -486,7 +485,7 @@ namespace Server.Spells
         const double ScalIntel       = 0.3;  // Bonus lié à l'intelligence.
         const double BonusIntel      = 5;
 
-        public static double GetSpellScaling(Mobile atk, SkillName branche)
+        public static double GetSpellScaling(Mobile atk, SkillName branche, double ScalingMax)
         {
             double Scaling = 0;
 
@@ -498,8 +497,9 @@ namespace Server.Spells
 
             if (ScalMainBranche != 0)
             {
-                // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
+                if ( (ScalMainBranche - ScalScndBranche) <= 0)
                 Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche), BonusMainBranch);
+                // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
             }
 
             if (ScalScndBranche != 0)
@@ -512,7 +512,7 @@ namespace Server.Spells
                                          + atk.Skills[SkillName.Thaumaturgie].Value
                                          + atk.Skills[SkillName.Hallucination].Value
                                          + atk.Skills[SkillName.Ensorcellement].Value
-                                         + atk.Skills[SkillName.Animisme].Value, ScalScndBranche, BonusScndBranch);
+                                         + atk.Skills[SkillName.Animisme].Value, ScalScndBranche, 0);
             }
 
             if (ScalInscription != 0)
@@ -525,9 +525,21 @@ namespace Server.Spells
                 Scaling += Damage.GetBonus(atk.Int, ScalIntel, BonusIntel);
             }
 
+            // S'assure que le maximum de scaling soit égal à ScalingMax, tout en conservant l'importance de chacun des facteurs.
+            Scaling = Scaling * (ScalingMax / (
+                ( ScalArtMag + (BonusArtMag / 100)) +
+                ( ScalMainBranche + ( BonusMainBranch / 100)) +
+                ( 9 * ScalScndBranche ) +
+                ( ScalInscription + ( BonusInscription / 100)) +
+                ( ScalIntel + ( BonusIntel / 100))));
+
             return Scaling;
         }
 
+        public static double GetSpellScaling(Mobile atk, SkillName branche)
+        {
+            return GetSpellScaling(atk, branche, 1);
+        }
 
 		public virtual int CastRecoveryBase{ get{ return 2; } }
 		public virtual int CastRecoveryCircleScalar{ get{ return 0; } }

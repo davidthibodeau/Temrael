@@ -31,12 +31,6 @@ namespace Server.Engines.Combat
         {
             double reducedDmg = Reduction(dmg, def.MagicResistance);
 
-            SacrificeSpell.GetOnHitEffect(def, ref reducedDmg);
-
-            DernierSouffleSpell.GetOnHitEffect(def, ref reducedDmg);
-
-            AdrenalineSpell.GetOnHitEffect(def, ref reducedDmg);
-
             if (def.MagicDamageAbsorb > reducedDmg)
             {
                 def.MagicDamageAbsorb -= (int)reducedDmg;
@@ -52,9 +46,10 @@ namespace Server.Engines.Combat
         }
 
         public short CercleMax { get { return 6; } } // Il y a présentement 6 cercles dans le système de magie.
-        const double DPSBASE = 4.5;
+        const double DPSBASE = 4;
         const double ScalingCategorie = 0.5;// Bonus qui fait la différence entre un spell de cercle 1, et de cercle 10, pour les dégâts.
-        const double RandVariation = 0.2; // Les valeurs de dégâts peuvent varier de +- 20%.
+        const double ScalingSpellMax = 5;   // Le SpellScaling peut augmenter les dégâts jusqu'à un maximum de *5.
+        const double RandVariation = 0.1;   // Les valeurs de dégâts peuvent varier de +- 20%.
 
         public double RandDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
         {
@@ -72,17 +67,14 @@ namespace Server.Engines.Combat
 
         private double GetDegatsMagiques(Mobile atk, SkillName branche, short cercle, TimeSpan tempsCast)
         {
-            return BaseDegatsMagique(tempsCast) * (Spell.GetSpellScaling(atk, branche) + ScalingCat(cercle));
+            return (BaseDegatsMagique(tempsCast) *
+                   (Spell.GetSpellScaling(atk, branche, ScalingSpellMax) + 1) *
+                   (((ScalingCategorie / CercleMax) * cercle) + 1));
         }
 
         private double BaseDegatsMagique(TimeSpan tempsCast)
         {
             return DPSBASE * tempsCast.Seconds;
-        }
-
-        private double ScalingCat(short cercle)
-        {
-            return (((ScalingCategorie / CercleMax) * cercle) + 1);
         }
         #endregion
 
