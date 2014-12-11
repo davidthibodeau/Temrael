@@ -95,7 +95,7 @@ namespace Server.Spells
                                         bc.SetHits((int)(bc.Hits / 2));
                                         bc.SetStam((int)(bc.Stam / 2));
                                         bc.SetMana((int)(bc.Mana / 2));
-                                        bc.SetDamage((int)(Utility.RandomMinMax(bc.DamageMin, bc.DamageMax) / 2));
+                                        bc.SetDamage(((bc.DamageMin + (Utility.RandomDouble() * (bc.DamageMax - bc.DamageMin))) / 2));
 
                                         BaseCreature.Summon(bc, true, Caster, m_Location, 0x217, TimeSpan.FromDays(90));
 

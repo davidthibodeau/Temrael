@@ -194,7 +194,7 @@ namespace Server.Engines.Combat
         
         public override SkillName ToucherSkill { get { return SkillName.Hache; } }
 
-        protected override double ComputerDegats(Mobile atk, int basedmg, bool skillup)
+        protected override double ComputerDegats(Mobile atk, double basedmg, bool skillup)
         {
             double dmg = base.ComputerDegats(atk, basedmg, skillup);
             double foresterieBonus = GetBonus(atk.Skills[SkillName.Hache].Value, 0.2, 10);

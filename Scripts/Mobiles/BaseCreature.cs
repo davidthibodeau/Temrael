@@ -342,8 +342,8 @@ namespace Server.Mobiles
 		private int			m_HitsMax = -1;
 		private	int			m_StamMax = -1;
 		private int			m_ManaMax = -1;
-		private int			m_DamageMin = -1;
-		private int			m_DamageMax = -1;
+		private double		m_DamageMin = -1;
+        private double      m_DamageMax = -1;
 
 		private int			m_PhysicalResistance, m_PhysicalDamage = 100;
 		private int			m_MagicalResistance, m_MagieDamage;
@@ -1138,10 +1138,10 @@ namespace Server.Mobiles
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public virtual int DamageMin{ get{ return m_DamageMin; } set{ m_DamageMin = value; } }
+		public virtual double DamageMin{ get{ return m_DamageMin; } set{ m_DamageMin = value; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public virtual int DamageMax{ get{ return m_DamageMax; } set{ m_DamageMax = value; } }
+        public virtual double DamageMax { get { return m_DamageMax; } set { m_DamageMax = value; } }
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public override int HitsMax
@@ -3137,13 +3137,13 @@ namespace Server.Mobiles
             AddItem(new ArmeMonstre(min, max, speed, poison));
         }
 
-		public void SetDamage( int val )
+		public void SetDamage( double val )
 		{
 			m_DamageMin = val;
 			m_DamageMax = val;
 		}
 
-		public void SetDamage( int min, int max )
+        public void SetDamage(double min, double max)
 		{
 			m_DamageMin = min;
 			m_DamageMax = max;

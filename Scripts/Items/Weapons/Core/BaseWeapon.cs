@@ -54,7 +54,7 @@ namespace Server.Items
 
 		// Overridable values. These values are provided to override the defaults which get defined in the individual weapon scripts.
 		private int m_StrReq, m_DexReq, m_IntReq;
-		private int m_MinDamage, m_MaxDamage;
+		private double m_MinDamage, m_MaxDamage;
 		private int m_HitSound, m_MissSound;
 		private int m_Speed;
 		private int m_MaxRange;
@@ -295,16 +295,16 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int MinDamage
+        public double MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? RessourceBonus(DefMinDamage) : RessourceBonus(m_MinDamage) ); }
+			get{ return ( m_MinDamage == -1 ? ExceptBonus(RessourceBonus(DefMinDamage)) : ExceptBonus(RessourceBonus(m_MinDamage))); }
 			set{ m_MinDamage = value; InvalidateProperties(); }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public int MaxDamage
+		public double MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? RessourceBonus(DefMaxDamage) : RessourceBonus(m_MaxDamage) ); }
+			get{ return ( m_MaxDamage == -1 ? ExceptBonus(RessourceBonus(DefMaxDamage)) : ExceptBonus(RessourceBonus(m_MaxDamage))); }
 			set{ m_MaxDamage = value; InvalidateProperties(); }
 		}
 
@@ -376,10 +376,19 @@ namespace Server.Items
             return (1 + niveau * scalingRes / nbRessource);
         }
 
-        public int RessourceBonus(int BaseDamage)
+        public virtual double ExceptBonus(double dmg)
         {
-            double dmg = BaseDamage;
+            switch (this.Quality)
+            {
+                case WeaponQuality.Low: dmg *= 0.80; break;
+                case WeaponQuality.Regular: dmg *= 1; break;
+                case WeaponQuality.Exceptional: dmg *= 1.20; break;
+            }
+            return dmg;
+        }
 
+        public double RessourceBonus(double dmg)
+        {
             // Les bonus vont de 0% à 30% de bonus d'AR.
             switch (m_Resource)
             {
@@ -407,7 +416,7 @@ namespace Server.Items
                 case CraftResource.AcajouWood: dmg *= GetResScaling(7, 7); break;
             }
 
-            return (int)dmg;
+            return dmg;
         }
 
 		public virtual void UnscaleDurability()
@@ -1347,7 +1356,7 @@ namespace Server.Items
                 list.Add(1060394, "{0}\t{1}", couleur, Quality.ToString());
 
                 if (m_CrafterName != null)
-                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriquèßpar: " + m_CrafterName); // Fabriquèßpar: ~1_NAME~
+                    list.Add(1060394, "{0}\t{1}", couleur, "Fabriqué par: " + m_CrafterName); // Fabriquèßpar: ~1_NAME~
 
                 int prop;
 
@@ -1362,7 +1371,7 @@ namespace Server.Items
                 /*if (Core.ML && this is BaseRanged && ((BaseRanged)this).Balanced)
                     list.Add(1072792); // Balanced*/
 
-                list.Add(1061168, "{0}\t{1}\t{2}", couleur, MinDamage.ToString(), MaxDamage.ToString()); // weapon damage ~1_val~ - ~2_val~
+                list.Add(1061168, "{0}\t{1}\t{2}", couleur, String.Format("{0:0.00}", MinDamage), String.Format("{0:0.00}", MaxDamage)); // weapon damage ~1_val~ - ~2_val~
 
                 if (Core.ML)
                     list.Add(1061167, String.Format("{0}s", Speed)); // weapon speed ~1_val~
@@ -1503,11 +1512,6 @@ namespace Server.Items
 					Hue = 0;
 
                 RareteInit.InitItem(this, quality, Crafter);
-
-				if ( Quality == WeaponQuality.Exceptional )
-				{
-					
-				}
 			}
             //else if ( tool is BaseRunicTool )
             //{

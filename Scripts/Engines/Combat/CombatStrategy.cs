@@ -152,7 +152,7 @@ namespace Server.Engines.Combat
         #region Degats
         public double Degats(Mobile atk, Mobile def, out bool critique)
         {
-            int basedmg = Utility.RandomMinMax((atk.Weapon as BaseWeapon).MinDamage, (atk.Weapon as BaseWeapon).MaxDamage);
+            double basedmg = (atk.Weapon as BaseWeapon).MinDamage + (Utility.RandomDouble() * ((atk.Weapon as BaseWeapon).MaxDamage - (atk.Weapon as BaseWeapon).MinDamage));
             critique = false;
             double dmg = ComputerDegats(atk, basedmg, true);
             if (! def.CanSee(atk))
@@ -179,7 +179,7 @@ namespace Server.Engines.Combat
             return (int)ComputerDegats(atk, (atk.Weapon as BaseWeapon).MaxDamage, false);
         }
 
-        protected virtual double ComputerDegats(Mobile atk, int basedmg, bool skillup)
+        protected virtual double ComputerDegats(Mobile atk, double basedmg, bool skillup)
         {
             if (skillup)
             {
@@ -190,19 +190,15 @@ namespace Server.Engines.Combat
             double strBonus = GetBonus(atk.Str, 0.3, 5);
             double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.625, 6.25);
             double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.5, 5);
+
             double exceptBonus = 0;
-            switch ((atk.Weapon as BaseWeapon).Quality)
+
+            if((atk.Weapon as BaseWeapon).Quality == WeaponQuality.Exceptional)
             {
-                case WeaponQuality.Low: exceptBonus = -0.20; break;
-                case WeaponQuality.Regular: exceptBonus = 0; break;
-                case WeaponQuality.Exceptional:
-                    exceptBonus = 0.20;
-                    if (skillup)
-                        CheckSkillGain(atk, SkillName.Polissage);
-                    exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.2, 10);
-                    break;
+                if (skillup)
+                    CheckSkillGain(atk, SkillName.Polissage);
+                exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.2, 10);
             }
-            // TODO : Ajouter effet de la qualité et du dmg level basé sur le minerais ?
 
             return basedmg * (1 + strBonus + tactiqueBonus + anatomyBonus + exceptBonus);
         }
