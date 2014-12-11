@@ -54,7 +54,7 @@ namespace Server.Items
 
 		// Overridable values. These values are provided to override the defaults which get defined in the individual weapon scripts.
 		private int m_StrReq, m_DexReq, m_IntReq;
-		private double m_MinDamage, m_MaxDamage;
+		private int m_MinDamage, m_MaxDamage;
 		private int m_HitSound, m_MissSound;
 		private int m_Speed;
 		private int m_MaxRange;
@@ -298,14 +298,14 @@ namespace Server.Items
         public double MinDamage
 		{
 			get{ return ( m_MinDamage == -1 ? ExceptBonus(RessourceBonus(DefMinDamage)) : ExceptBonus(RessourceBonus(m_MinDamage))); }
-			set{ m_MinDamage = value; InvalidateProperties(); }
+			set{ }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public double MaxDamage
 		{
 			get{ return ( m_MaxDamage == -1 ? ExceptBonus(RessourceBonus(DefMaxDamage)) : ExceptBonus(RessourceBonus(m_MaxDamage))); }
-			set{ m_MaxDamage = value; InvalidateProperties(); }
+			set{ }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]

@@ -69,7 +69,7 @@ namespace Server.Mobiles
             if (lacopie.Weapon != null)
             {
                 BaseWeapon weapon = (BaseWeapon)lacopie.Weapon;
-                SetDamage(weapon.MinDamage - 5, weapon.MaxDamage + 5);
+                SetDamage((int)weapon.MinDamage - 5, (int)weapon.MaxDamage + 5);
             }
             else
             {
