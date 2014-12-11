@@ -10,7 +10,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 308; } }// TOCHANGE
 
-        private static short s_Cercle = 6;
+        private static short s_Cercle = 8;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Bête Horrifique", "Rel Xen Vas Bal",

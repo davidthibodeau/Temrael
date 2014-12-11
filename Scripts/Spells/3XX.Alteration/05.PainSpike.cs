@@ -12,7 +12,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 305; } } // TOCHANGE
 
-        private static short s_Cercle = 4;
+        private static short s_Cercle = 5;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Corruption", "In Sar",

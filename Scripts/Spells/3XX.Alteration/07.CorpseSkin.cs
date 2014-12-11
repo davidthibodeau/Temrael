@@ -10,7 +10,7 @@ namespace Server.Spells
     {
         public static int m_SpellID { get { return 307; } } // TOCHANGE
 
-        private static short s_Cercle = 5;
+        private static short s_Cercle = 7;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Corps Mortifié", "In Agle Corp Ylem",

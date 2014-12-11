@@ -19,7 +19,7 @@ namespace Server.Spells
             return m_Table.ContainsKey(m);
         }
 
-        private static short s_Cercle = 5;
+        private static short s_Cercle = 6;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Lenteur", "Mas Nuuh",

@@ -11,7 +11,7 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 304; } } // TOCHANGE
 
-        private static short s_Cercle = 3;
+        private static short s_Cercle = 4;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Présage Malsain", "Pas Tym An Sanct",
