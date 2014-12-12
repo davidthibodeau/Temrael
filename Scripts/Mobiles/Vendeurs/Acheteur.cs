@@ -77,10 +77,14 @@ namespace Server.Mobiles.Vendeurs
         {
             try
             {
-                if(ventesAlloues[m] + x > 500)
+                if(ventesAlloues[m] + x > allocationHebdo)
                     return false;
             }
-            catch {}
+            catch 
+            {
+                if (x > allocationHebdo)
+                    return false;
+            }
             return true;
         }
 
