@@ -482,7 +482,7 @@ namespace Server.Spells
         const double ScalMainBranche = 0.3;  // Bonus sur le skill de la branche passée en paramètre.
         const double BonusMainBranch = 10;
 
-        const double ScalScndBranche = 0.3;  // Bonus sur les skills des autres branches.
+        const double ScalScndBranche = 0.05;  // Bonus sur les skills des autres branches.
 
         const double ScalInscription = 0.5;  // Bonus lié au skill Inscription.
         const double BonusInscription= 5;
@@ -502,8 +502,8 @@ namespace Server.Spells
 
             if (ScalMainBranche != 0)
             {
-                if ( (ScalMainBranche - ScalScndBranche) <= 0)
-                Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche), BonusMainBranch);
+                if ((ScalMainBranche - ScalScndBranche) > 0)
+                    Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche), BonusMainBranch);
                 // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
             }
 
