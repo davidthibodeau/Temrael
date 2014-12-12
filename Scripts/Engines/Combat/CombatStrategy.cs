@@ -47,7 +47,8 @@ namespace Server.Engines.Combat
             def.PlaySound(Weapon(def).GetHitDefendSound(atk, def));
 
             bool crit;
-            double degats = Degats(atk, def, out crit);
+            double basedmg = (atk.Weapon as BaseWeapon).MinDamage + (Utility.RandomDouble() * ((atk.Weapon as BaseWeapon).MaxDamage - (atk.Weapon as BaseWeapon).MinDamage));
+            double degats = Degats(basedmg, atk, def, out crit);
             if (DefStrategy(def).Parer(def))
             {
                 def.FixedEffect(0x37B9, 10, 16);
@@ -65,8 +66,8 @@ namespace Server.Engines.Combat
 
             degats = Spell.OnHitEffects(atk, def, degats);
 
-            def.Stam -= (int)(degats * 0.8);
-            atk.Stam -= (int)(degats * 0.4);
+            def.Stam -= (int)(degats * 0.3);
+            atk.Stam -= (int)(basedmg * 0.3);
 
             def.Damage((int)degats, atk);
         }
@@ -150,9 +151,8 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Degats
-        public double Degats(Mobile atk, Mobile def, out bool critique)
+        public double Degats(double basedmg, Mobile atk, Mobile def, out bool critique)
         {
-            double basedmg = (atk.Weapon as BaseWeapon).MinDamage + (Utility.RandomDouble() * ((atk.Weapon as BaseWeapon).MaxDamage - (atk.Weapon as BaseWeapon).MinDamage));
             critique = false;
             double dmg = ComputerDegats(atk, basedmg, true);
             if (! def.CanSee(atk))
