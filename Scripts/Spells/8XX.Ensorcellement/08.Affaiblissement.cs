@@ -22,7 +22,7 @@ namespace Server.Spells
                 9031,
                 GetBaseManaCost(s_Cercle),
                 TimeSpan.FromSeconds(4),
-                SkillName.Providence,
+                SkillName.Ensorcellement,
 				Reagent.Garlic,
 				Reagent.Nightshade,
 				Reagent.SulfurousAsh

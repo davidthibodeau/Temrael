@@ -76,6 +76,7 @@ namespace Server.Spells
             Register(ManaDrainSpell.m_SpellID,      typeof(ManaDrainSpell));
             Register(ManaVampireSpell.m_SpellID,    typeof(ManaVampireSpell));
             Register(MassCurseSpell.m_SpellID,      typeof(MassCurseSpell));
+            Register(AffaiblissementSpell.m_SpellID,typeof(AffaiblissementSpell));
 
             // Necromancie
             Register(PoisonSpell.m_SpellID,         typeof(PoisonSpell));
