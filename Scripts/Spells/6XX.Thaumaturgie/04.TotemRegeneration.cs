@@ -16,7 +16,7 @@ namespace Server.Spells
     class TotemRegenSpell : Spell
 	{
         private const int m_HealPerTick = 5;
-        private TimeSpan MaxDuration = TimeSpan.FromSeconds(60);
+        private TimeSpan MaxDuration = TimeSpan.FromSeconds(120);
         public static int m_SpellID { get { return 604; } } // TOCHANGE
 
         private static short s_Cercle = 4;

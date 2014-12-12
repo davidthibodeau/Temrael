@@ -10,6 +10,8 @@ namespace Server.Spells
         public static int m_SpellID { get { return 804; } } // TOCHANGE
 
         private static short s_Cercle = 4;
+        private static short durationMax = 180;
+        private static short malusMax = 15;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Malediction", "Des Sanct",
@@ -23,9 +25,6 @@ namespace Server.Spells
 				Reagent.Garlic,
 				Reagent.SulfurousAsh
             );
-
-        private static short durationMax = 60;
-        private static short malusMax = 10;
 
 		public CurseSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

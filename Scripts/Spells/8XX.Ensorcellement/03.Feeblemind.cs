@@ -9,6 +9,8 @@ namespace Server.Spells
         public static int m_SpellID { get { return 803; } } // TOCHANGE
 
         private static short s_Cercle = 1;
+        private static short durationMax = 180;
+        private static short malusMax = 30;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Débilité", "Rel Wis",
@@ -21,9 +23,6 @@ namespace Server.Spells
 				Reagent.Ginseng,
 				Reagent.Nightshade
             );
-
-        private static short durationMax = 60;
-        private static short malusMax = 15;
 
 		public FeeblemindSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

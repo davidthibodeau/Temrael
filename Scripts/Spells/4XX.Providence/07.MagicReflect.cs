@@ -30,7 +30,7 @@ namespace Server.Spells
 		{
 		}
 
-        private const int maxDmgBlock = 50;
+        private const int maxDmgBlock = 100;
 
 		public override bool CheckCast()
 		{

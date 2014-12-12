@@ -8,7 +8,7 @@ namespace Server.Spells
 {
 	public class ReactiveArmorSpell : Spell
 	{
-        private const int AmountBlock = 50; // Quantité de dégâts qui peuvent être bloqués par le spell à 100 prov, 100 artmagique.
+        private const int AmountBlock = 100; // Quantité de dégâts qui peuvent être bloqués par le spell à 100% scaling (Donc 100 dans tous les skills magiques, intel, inscription).
 
 
         public static int m_SpellID { get { return 401; } } // TOCHANGE

@@ -22,8 +22,8 @@ namespace Server.Spells
 				Reagent.MandrakeRoot
             );
 
-        private static short durationMax = 60;
-        private static short bonusMax = 10;
+        private static short durationMax = 180;
+        private static short bonusMax = 15;
 
 		public BlessSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

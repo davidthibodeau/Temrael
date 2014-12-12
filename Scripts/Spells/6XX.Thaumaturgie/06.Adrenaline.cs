@@ -30,7 +30,7 @@ namespace Server.Spells
 		{
 		}
 
-        private const double dureeMax = 15;
+        private const double dureeMax = 30;
         private const double dureeCooldown = 60;
 
         public override void OnCast()

@@ -9,6 +9,8 @@ namespace Server.Spells
         public static int m_SpellID { get { return 802; } } // TOCHANGE
 
         private static short s_Cercle = 1;
+        private static short durationMax = 180;
+        private static short malusMax = 30;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Maladroit", "Uus Jux",
@@ -21,9 +23,6 @@ namespace Server.Spells
 				Reagent.Bloodmoss,
 				Reagent.Nightshade
             );
-
-        private static short durationMax = 60;
-        private static short malusMax = 15;
 
 		public ClumsySpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

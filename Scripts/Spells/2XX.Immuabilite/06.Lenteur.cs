@@ -54,7 +54,7 @@ namespace Server.Spells
                 m.PlaySound(0x1F1);
                 m.FixedParticles(0x3789, 1, 20, 9911, 0, 5, EffectLayer.Head);
 
-                int baseDuration = 20;
+                int baseDuration = 40;
 
                 TimeSpan duration = TimeSpan.FromSeconds(baseDuration * Spell.GetSpellScaling(Caster, Info.skillForCasting));
                 int PourcentRate = 30;

@@ -27,7 +27,7 @@ namespace Server.Spells
 				Reagent.SulfurousAsh
             );
 
-        private const double durationMax = 30;
+        private const double durationMax = 60;
 
 		public EnergyFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

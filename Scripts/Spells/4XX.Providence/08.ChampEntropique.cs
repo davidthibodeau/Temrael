@@ -10,8 +10,8 @@ namespace Server.Spells
 	{
         public static int m_SpellID { get { return 408; } } // TOCHANGE
 
-        private const int maxARbonus = 10;
-        private const double dureeMax = 60;
+        private const int maxARbonus = 20;
+        private const double dureeMax = 180;
 
         private static short s_Cercle = 2;
 

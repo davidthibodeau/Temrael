@@ -22,8 +22,8 @@ namespace Server.Spells
 				Reagent.Nightshade
             );
 
-        private static short durationMax = 60;
-        private static short bonusMax = 15;
+        private static short durationMax = 180;
+        private static short bonusMax = 30;
 
 		public StrengthSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

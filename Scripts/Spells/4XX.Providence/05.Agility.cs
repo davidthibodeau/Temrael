@@ -9,8 +9,8 @@ namespace Server.Spells
         public static int m_SpellID { get { return 405; } } // TOCHANGE
 
         private static short s_Cercle = 1;
-        private static short durationMax = 60;
-        private static short bonusMax = 15;
+        private static short durationMax = 180;
+        private static short bonusMax = 30;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Agilité", "Ex Uus",

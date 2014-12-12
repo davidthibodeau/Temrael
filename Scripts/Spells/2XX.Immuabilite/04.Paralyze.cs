@@ -17,14 +17,14 @@ namespace Server.Spells
                 203,
                 9031,
                 GetBaseManaCost(s_Cercle),
-                TimeSpan.FromSeconds(3),
+                TimeSpan.FromSeconds(4),
                 SkillName.Immuabilite,
 				Reagent.Garlic,
 				Reagent.MandrakeRoot,
 				Reagent.SpidersSilk
             );
 
-        private static int durationMax = 10;
+        private static int durationMax = 12;
 
 		public ParalyzeSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
