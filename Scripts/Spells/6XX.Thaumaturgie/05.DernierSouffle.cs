@@ -71,7 +71,7 @@ namespace Server.Spells
         {
             double duree = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
-            new ExpireTimer(m, TimeSpan.FromSeconds(duree));
+            new ExpireTimer(m, TimeSpan.FromSeconds(duree)).Start();
 
             m_SouffleTable.Add(m);
 
