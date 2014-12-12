@@ -127,15 +127,20 @@ namespace Server.Engines.Identities
             baseIdentity = new Identity(reader);
             transformationIdentity = new Identity(reader);
             idCachee = new IdentiteCachee(); //On ne sauvegarde pas idcache parce qu'il n'accumule pas d'informations.
-            if (version > 0)
-                m_currentIdentity = GetIdFromIndex(reader.ReadInt());
+            if (version == 1)
+                reader.ReadInt();
+
+            PlayerMobile pm = m_Mobile as PlayerMobile;
+            if (pm.Race.Transformed)
+                m_currentIdentity = transformationIdentity;
             else
+                m_currentIdentity = baseIdentity;
+
+            if (version > 1)
             {
-                PlayerMobile pm = m_Mobile as PlayerMobile;
-                if (pm.Race.Transformed)
-                    m_currentIdentity = transformationIdentity;
-                else
-                    m_currentIdentity = baseIdentity;
+                etatCachee = (StatutCachee)reader.ReadInt();
+                if (etatCachee == StatutCachee.Cache)
+                    CacherIdentite();
             }
 
             m_lastDeguisement = reader.ReadDateTime();
@@ -145,23 +150,23 @@ namespace Server.Engines.Identities
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write(1); //version
+            writer.Write(2); //version
 
             baseIdentity.Serialize(writer);
             transformationIdentity.Serialize(writer);
 
-            writer.Write(GetIdIndex());
+            writer.Write((int)etatCachee);
             
             writer.Write((DateTime)m_lastDeguisement);
         }
 
-        private int GetIdIndex()
+        private int GetIdIndex(Identity courante)
         {
-            if (m_currentIdentity == baseIdentity)
+            if (courante == baseIdentity)
                 return 0;
-            if (m_currentIdentity == idCachee)
+            if (courante == idCachee)
                 return 1;
-            if (m_currentIdentity == transformationIdentity)
+            if (courante == transformationIdentity)
                 return 2;
 
             return -1;
@@ -226,7 +231,7 @@ namespace Server.Engines.Identities
         }
 
         public string GetNameUseBy(Mobile from)
-        {          
+        {
             if ((m_Mobile.Account != null && m_Mobile.Account.AccessLevel > AccessLevel.Player))
                 return m_Mobile.Name;
 

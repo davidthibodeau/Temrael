@@ -2377,15 +2377,29 @@ namespace Server.Mobiles
             base.Deserialize(reader);
             int version = reader.ReadInt();
 
-            Langues = new Langues(this, reader);
-            Identities = new Identities(this, reader);
-            QuiOptions = (QuiOptions)reader.ReadInt();
-            Experience = new Experience(reader);
-            MortEngine = new MortEngine(this, reader);
-            Possess = new Possess(this, reader);
-            Transformation = new Transformation(this);
-            if (version > 0)
+            if (version < 2) //race must be deserialized before identities.
+            {
+                Langues = new Langues(this, reader);
+                Identities = new Identities(this, reader);
+                QuiOptions = (QuiOptions)reader.ReadInt();
+                Experience = new Experience(reader);
+                MortEngine = new MortEngine(this, reader);
+                Possess = new Possess(this, reader);
+                Transformation = new Transformation(this);
+                if (version > 0)
+                    race = Race.Deserialize(reader);
+            }
+            else
+            {
                 race = Race.Deserialize(reader);
+                Transformation = new Transformation(this);
+                Langues = new Langues(this, reader);
+                QuiOptions = (QuiOptions)reader.ReadInt();
+                Experience = new Experience(reader);
+                MortEngine = new MortEngine(this, reader);
+                Possess = new Possess(this, reader);
+                Identities = new Identities(this, reader);
+            }
 
             m_QuickSpells = new ArrayList();
             int count = reader.ReadInt();
@@ -2514,15 +2528,16 @@ namespace Server.Mobiles
 
 			base.Serialize( writer );
 
-            writer.Write((int)1); // version
+            writer.Write((int)2); // version
 
+            Race.SerializeRace(race, writer);
             Langues.Serialize(writer);
-            Identities.Serialize(writer);
             writer.Write((int)QuiOptions);
             Experience.Serialize(writer);
             MortEngine.Serialize(writer);
             Possess.Serialize(writer);
-            Race.SerializeRace(race, writer);
+            Identities.Serialize(writer);
+            
 
             writer.Write(m_QuickSpells.Count);
             for (int i = 0; i < m_QuickSpells.Count; i++)
