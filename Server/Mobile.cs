@@ -6481,6 +6481,11 @@ namespace Server
 		{
 		}
 
+        public bool IsConnected
+        {
+            get { return (m_NetState != null); }
+        }
+
 		[CommandProperty( AccessLevel.Batisseur, AccessLevel.Owner )]
 		public NetState NetState
 		{

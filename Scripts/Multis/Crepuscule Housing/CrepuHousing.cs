@@ -15,21 +15,24 @@ namespace Server.Items
     {
         private static ArrayList m_InstancesList;
 
-        private bool m_Commerce = false,
-                     owned = false,
-                     m_ShowOwnerName = false;
-        private Mobile owner = null;
-        private BaseDoor m_Doors1 = null,
-                         m_Doors2 = null;
-        private string m_OwnerName = "A vendre";
-        private int m_SellPrice = 1000;
+        private bool m_Commerce = false;
+        private bool m_Owned = false;
+        private bool m_ShowOwnerName = false;
 
-        private Mobile[] m_CoProprio = new Mobile[]
-                        {
-                          null,
-                          null,
-                          null
-                        };
+        private string m_OwnerName = "A vendre";
+        private Mobile m_Proprio = null;
+        private Mobile[] m_CoProprio = new Mobile[] { null, null, null };
+
+        private BaseDoor m_Door1 = null;
+        private BaseDoor m_Door2 = null;
+
+        private int m_Price = 1000;
+
+        private Point3D m_Point1;
+        private Point3D m_Point2;
+        private LockableContainer m_Container;
+        private Point3D m_BootLocation;
+
 
         [CommandProperty(AccessLevel.Batisseur)]
         public Mobile[] CoProprio
@@ -48,22 +51,22 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Batisseur)]
         public BaseDoor Porte1
         {
-            get { return m_Doors1; }
-            set { m_Doors1 = value; }
+            get { return m_Door1; }
+            set { m_Door1 = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public BaseDoor Porte2
         {
-            get { return m_Doors2; }
-            set { m_Doors2 = value; }
+            get { return m_Door2; }
+            set { m_Door2 = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int PrixVente
+        public int PrixLocation
         {
-            get { return m_SellPrice; }
-            set { m_SellPrice = value; }
+            get { return m_Price; }
+            set { m_Price = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -76,8 +79,8 @@ namespace Server.Items
         [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Proprio
         {
-            get { return owner; }
-            set { if (owner == null) NomProprio = "A vendre"; owner = value; }
+            get { return m_Proprio; }
+            set { if (m_Proprio == null) NomProprio = "A vendre"; m_Proprio = value; }
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -85,6 +88,34 @@ namespace Server.Items
         {
             get { return m_Commerce; }
             set { m_Commerce = value; }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Point3D RegionPoint1
+        {
+            get { return m_Point1; }
+            set { m_Point1 = value; }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Point3D RegionPoint2
+        {
+            get { return m_Point2; }
+            set { m_Point2 = value; }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public LockableContainer LockableContainer
+        {
+            get { return m_Container; }
+            set { m_Container = value; }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Point3D BootLocation
+        {
+            get { return m_BootLocation; }
+            set { m_BootLocation = value; }
         }
 
         public BoiteAuLettreComponent(int dir)
@@ -120,21 +151,28 @@ namespace Server.Items
             Proprio = null;
         }
 
+        #region Serialize/Deserialize
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
+
             for (int i = 0; i < CoProprio.Length; i++)
                 writer.Write((Mobile)CoProprio[i]);
             writer.Write((string)m_OwnerName);
-            writer.Write((int)m_SellPrice);
-            writer.Write((BaseDoor)m_Doors2);
-            writer.Write((BaseDoor)m_Doors1);
-            writer.Write((Mobile)owner);
-            writer.Write((bool)owned);
+            writer.Write((int)m_Price);
+            writer.Write((BaseDoor)m_Door2);
+            writer.Write((BaseDoor)m_Door1);
+            writer.Write((Mobile)m_Proprio);
+            writer.Write((bool)m_Owned);
             writer.Write((bool)m_Commerce);
             writer.Write((bool)m_ShowOwnerName);
+
+            writer.Write(m_Point1);
+            writer.Write(m_Point2);
+            writer.Write(m_Container);
+            writer.Write(m_BootLocation);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -145,32 +183,41 @@ namespace Server.Items
             for (int i = 0; i < CoProprio.Length; i++)
                 CoProprio[i] = reader.ReadMobile();
             m_OwnerName = reader.ReadString();
-            m_SellPrice = reader.ReadInt();
-            m_Doors2 = (BaseDoor)reader.ReadItem();
-            m_Doors1 = (BaseDoor)reader.ReadItem();
-            owner = reader.ReadMobile();
-            owned = reader.ReadBool();
+            m_Price = reader.ReadInt();
+            m_Door2 = (BaseDoor)reader.ReadItem();
+            m_Door1 = (BaseDoor)reader.ReadItem();
+            m_Proprio = reader.ReadMobile();
+            m_Owned = reader.ReadBool();
             m_Commerce = reader.ReadBool();
             m_ShowOwnerName = reader.ReadBool();
+
+            if (version == 1)
+            {
+                m_Point1 = reader.ReadPoint3D();
+                m_Point2 = reader.ReadPoint3D();
+                m_Container = (LockableContainer)reader.ReadItem();
+                m_BootLocation = reader.ReadPoint3D();
+            }
 
             if (m_InstancesList == null)
                 m_InstancesList = new ArrayList();
 
             m_InstancesList.Add(this); // Permettrait d'ajouter les items existants à la Deserialization à la place de saver les instances... ça fonctionnerait ?
         }
+        #endregion
 
-        public void Acheter(Mobile from)
+        public void Louer(Mobile from)
         {
             if (from is PlayerMobile)
             {
                 PlayerMobile rpm = (PlayerMobile)from;
-                if (!Banker.Withdraw(from, this.PrixVente))
+                if (!Banker.Withdraw(from, this.PrixLocation))
                     from.SendMessage("Vous n'avez pas assez d'argent sur votre compte.");
                 else
                 {
-                    from.SendMessage("Vous avez acheté le batiment.");
+                    from.SendMessage("Vous louez le batiment.");
                     Proprio = from;
-                    owned = true;
+                    m_Owned = true;
                     from.SendMessage("Sous quel nom voulez-vous l'enregistrer ?");
                     from.Prompt = new OwnerNamePrompt(this);
                 }
@@ -180,37 +227,113 @@ namespace Server.Items
         public void Disown()
         {
             if (Proprio != null)
+            {
                 Proprio.SendMessage("Vous ne possédez plus votre maison.");
 
-            foreach(Mobile m in CoProprio)
-                if (m != null)
-                    m.SendMessage("Vous ne possédez plus votre maison.");
+                foreach (Mobile m in CoProprio)
+                    if (m != null)
+                        m.SendMessage("Vous ne possédez plus votre maison.");
 
-            Proprio = null;
-            CoProprio = new Mobile[] { null, null, null };
-            owned = false;
+                if (Porte1 != null)
+                {
+                    Porte1.KeyValue = 0;
+                    Porte1.Locked = true;
+                }
+                if (Porte2 != null)
+                {
+                    Porte2.KeyValue = 0;
+                    Porte2.Locked = true;
+                }
 
-            Porte1.KeyValue = 0;
-            Porte2.KeyValue = 0;
+                FlushItems();
 
-            Porte1.Locked = true;
-            Porte2.Locked = true;
+                BootMobiles();
+
+                Proprio = null;
+                CoProprio = new Mobile[] { null, null, null };
+                m_Owned = false;
+            }
+        }
+
+        private void FlushItems()
+        {
+            if (m_Container != null)
+            {
+                WoodenBox b = new WoodenBox();
+                b.MaxItems = int.MaxValue;
+                b.Name = m_OwnerName;
+
+
+                IPooledEnumerable<Item> list = Map.Felucca.GetItemsInBounds(new Rectangle2D(RegionPoint1, RegionPoint2));
+                try
+                {
+                    foreach (Item i in list)
+                    {
+                        if (i != null)
+                        {
+                            b.DropItem(i);
+                        }
+                    }
+                }
+                catch (ArgumentOutOfRangeException) // Empêche le cas où la zone ne contient pas d'items. Il ne semble pas y avoir de manière de tester "if(list.isEmpty())".
+                { }
+
+
+                // Seulement ouvrable par le owner, qui obtient une nouvelle clef à chaque fois.
+                GenerateKey.GenerateNewKey(m_Proprio, b, 1);
+                b.Locked = true;
+
+                // Ajout de la boite lockée dans le container lié à la maison.
+                m_Container.DropItem(b);
+                b.CanBeAltered = false;
+                b.Movable = false;
+            }
+        }
+
+        private void BootMobiles()
+        {
+            if (m_BootLocation.X != 0 && m_BootLocation.Y != 0)
+            {
+                IPooledEnumerable<Mobile> list = Map.Felucca.GetMobilesInBounds(new Rectangle2D(RegionPoint1, RegionPoint2));
+                try
+                {
+                    foreach (Mobile m in list)
+                    {
+                        if (m != null)
+                        {
+                            m.MoveToWorld(m_BootLocation, m.Map);
+                            if (!m.IsConnected)
+                            {
+                                m.LogoutLocation = m_BootLocation;
+                            }
+                        }
+                    }
+                }
+                catch (ArgumentOutOfRangeException) // Empêche le cas où la zone ne contient pas de mobiles. Il ne semble pas y avoir de manière de tester "if(list.isEmpty())".
+                { }
+            }
         }
 
         public static void WeeklyPay()
         {
-            foreach(BoiteAuLettreComponent item in m_InstancesList)
+            if (m_InstancesList != null)
             {
-                if (item != null)
+                if (m_InstancesList.Count > 0)
                 {
-                    if (!Banker.Withdraw(item.owner, item.PrixVente))
+                    foreach (BoiteAuLettreComponent item in m_InstancesList)
                     {
-                        item.owner.SendMessage("Vous n'avez pas assez d'argent sur votre compte, votre maison a été mise en vente !");
-                        item.Disown();
-                    }
-                    else
-                    {
-                        item.owner.SendMessage("Un paiement de " + item.PrixVente + " a été fait pour votre maison.");
+                        if (item != null && item.m_Owned && item.m_Proprio != null)
+                        {
+                            if (!Banker.Withdraw(item.m_Proprio, item.PrixLocation))
+                            {
+                                item.m_Proprio.SendMessage("Vous n'avez pas assez d'argent sur votre compte, votre maison a été mise en vente !");
+                                item.Disown();
+                            }
+                            else
+                            {
+                                item.m_Proprio.SendMessage("Un paiement de " + item.PrixLocation + " a été fait pour votre maison.");
+                            }
+                        }
                     }
                 }
             }
@@ -288,7 +411,7 @@ namespace Server.Items
             AddBackground(55, 60, 260, 320, 9200);
             AddLabel(120, 70, 0x26, "Gestion de la maison");
 
-            AddLabel(80, upmargin + num * 20, 0x00, string.Format("Prix : {0}", item.PrixVente)); num++;
+            AddLabel(80, upmargin + num * 20, 0x00, string.Format("Prix : {0}", item.PrixLocation)); num++;
 
             if (m_item.Proprio == null)
             {
@@ -360,7 +483,7 @@ namespace Server.Items
                 default: break;
                 case 1:
                     {
-                        m_item.Acheter(m_from);
+                        m_item.Louer(m_from);
                         break;
                     }
                 case 2:
