@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Server.Engines.Harvest
 {
-    public class TargueMont : HarvestZone
+    public class MineTarguemont : HarvestZone
     {
         public static void Initialize()
         {
-            HarvestZone.AddZone(new TargueMont());
+            HarvestZone.AddZone(new MineTarguemont());
         }
 
-        public TargueMont()
+        public MineTarguemont()
             : base(ZoneType.Mining)
         {
             //Add rectangles pour la zone.(nord ouest vers sud est)
