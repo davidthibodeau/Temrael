@@ -6,28 +6,77 @@ using System.Text;
 namespace Server.Engines.Evolution
 {
     // Abstraction des valeurs de cote. De la pire a la meilleure.
-    public enum ValeurCote { Inacceptable, Interdit, Questionnable, Passable, Normal }
+    public enum ValeurCote { Interdit, Questionnable, Passable, Normal }
 
     public class Cote
     {
         // Valeur d'expérience qui reste à récupérer.
         private int xp; 
         private Cotes cotes;
+        private ValeurCote cote;
+
+        public bool Active { get { return xp != 0; } }
         
         public Cote(Cotes cotes, ValeurCote cote)
         {
-            xp = ReductionExperience(cote);
             this.cotes = cotes;
+            this.cote = cote;
+            xp = ReductionExperience();
         }
 
-        private int ReductionExperience(ValeurCote cote)
+        private int ReductionExperience()
         {
             switch (cote)
             {
                 case ValeurCote.Normal: return 0;
-                    //TODO: Offrir d'autres valeurs
+                case ValeurCote.Passable: return 1000;
+                case ValeurCote.Questionnable: return 2000;
+                case ValeurCote.Interdit: return 5000;
                 default: return 0;
             }
+        }
+
+        public int Consommer(int tick)
+        {
+            if (tick < 100)
+                return 0;
+
+            int valeur = 0;
+
+            switch (cote)
+            {
+                case ValeurCote.Normal: valeur = 0; break;
+                case ValeurCote.Passable: valeur = 25; break;
+                case ValeurCote.Questionnable: valeur = 50; break;
+                case ValeurCote.Interdit: valeur = 100; break;
+            }
+
+            if (xp < valeur)
+                valeur = xp;
+
+            if (tick - valeur < 100)
+                valeur = tick - 100;
+
+            xp -= valeur;
+            return valeur;
+        }
+
+        public Cote(Cotes cotes, GenericReader reader)
+        {
+            this.cotes = cotes;
+
+            int version = reader.ReadInt();
+
+            xp = reader.ReadInt();
+            cote = (ValeurCote)reader.ReadInt();
+        }
+
+        public void Serialize(GenericWriter writer)
+        {
+            writer.Write(0); //version
+
+            writer.Write(xp);
+            writer.Write((int)cote);
         }
 
         //private void AttribuerCote(Mobile from, int cote)
