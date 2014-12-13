@@ -158,6 +158,20 @@ namespace Server.Engines.Evolution
 #endif
         }
 
+        public static void CompenserGMs()
+        {
+            foreach (CompensationGump.MJ mj in CompensationGump.GetMJs())
+            {
+                CompensationGump.WriteLine(String.Format(
+                    "Verification de paiement pour {0}. Son prochain paiement est le {1}.",
+                    mj.Nom, mj.NextCompensation.ToString()));
+                if (mj.NextCompensation < DateTime.Now)
+                {
+                    mj.PayerXP();
+                }
+            }
+        }
+
         public class MJ
         {
             private string m_Nom;

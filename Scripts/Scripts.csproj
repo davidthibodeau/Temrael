@@ -138,6 +138,7 @@
     <Compile Include="Engines\Races\Race.cs" />
     <Compile Include="Items\Temrael\Meubles\BiblioRemplieGrise.cs" />
     <Compile Include="Misc\Notoriety.cs" />
+    <Compile Include="Misc\ResetHebdomadaire.cs" />
     <Compile Include="Mobiles\Monsters\FeuFollet.cs" />
     <Compile Include="Mobiles\Monsters\Fourmis\FourmiGeante.cs" />
     <Compile Include="Mobiles\Monsters\Fourmis\Fourmilion.cs" />
