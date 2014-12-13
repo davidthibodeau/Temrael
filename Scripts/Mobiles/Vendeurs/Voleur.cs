@@ -86,7 +86,7 @@ namespace Server.Mobiles.Vendeurs
             {
                 Add(new BeverageBuyInfo(typeof(Jug), BeverageType.Cider, 9, 20, 0x9C8, 0 )); // 9  
                 Add(new GenericBuyInfo(typeof(Lockpick), 20, 0x14FC, 0)); // 6
-                Add(new GenericBuyInfo(typeof(DisguiseKit), 20, 0x1EBA, 0)); // 6
+                //Add(new GenericBuyInfo(typeof(DisguiseKit), 20, 0x1EBA, 0)); // 6
                 Add(new GenericBuyInfo(typeof(SewingKit), 20, 0xF9D, 0)); // 3
                 Add(new GenericBuyInfo(typeof(HairDye), 20, 0xEFF, 0)); // 6
                 Add(new GenericBuyInfo(typeof(Bag), 20, 0xE76, 0)); // 6

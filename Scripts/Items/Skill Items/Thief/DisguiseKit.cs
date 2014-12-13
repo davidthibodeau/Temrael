@@ -69,12 +69,6 @@ namespace Server.Items
 
 			return false;
 		}
-
-		public override void OnDoubleClick( Mobile from )
-		{
-			if ( ValidateUse( from ) )
-				from.SendGump( new DisguiseGump( from, this, true, false ) );
-		}
 	}
 
 	public class DisguiseGump : Gump
