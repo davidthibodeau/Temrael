@@ -1,4 +1,4 @@
-<?xml version="1.0" standalone="yes"?>
+﻿<?xml version="1.0" standalone="yes"?>
 <dsSpeechRules xmlns="http://tempuri.org/SpeechRules.xsd">
   <xs:schema id="dsSpeechRules" targetNamespace="http://tempuri.org/SpeechRules.xsd" xmlns:mstns="http://tempuri.org/SpeechRules.xsd" xmlns="http://tempuri.org/SpeechRules.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
     <xs:element name="dsSpeechRules" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
@@ -494,7 +494,7 @@
     <playerGender>0</playerGender>
     <questObject />
     <packObject />
-    <npcAttitude>1</npcAttitude>
+    <npcAttitude>0</npcAttitude>
     <npcAnimation>0</npcAnimation>
     <npcGender>0</npcGender>
     <questObjDelete>false</questObjDelete>
@@ -508,11 +508,11 @@
     <index>4</index>
     <response>Puisses le soleil vous guider.</response>
     <npcName />
-    <npcRegion>Melandre</npcRegion>
+    <npcRegion/>
     <playerGender>0</playerGender>
     <questObject />
     <packObject />
-    <npcAttitude>0</npcAttitude>
+    <npcAttitude>1</npcAttitude>
     <npcAnimation>0</npcAnimation>
     <npcGender>0</npcGender>
     <questObjDelete>false</questObjDelete>
