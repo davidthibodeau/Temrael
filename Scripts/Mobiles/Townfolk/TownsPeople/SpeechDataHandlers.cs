@@ -170,7 +170,6 @@ namespace Server.Mobiles.Data
                         if (item != null && (int)drv["objStatus"] == 2)
                             continue;
                     }
-
                     alReplies.Add(drv);
                 }
 

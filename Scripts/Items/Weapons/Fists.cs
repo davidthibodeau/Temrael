@@ -18,8 +18,8 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-		//public override int DefMinDamage{ get{ return 1; } }
-		//public override int DefMaxDamage{ get{ return 4; } }
+		public override int DefMinDamage{ get{ return 1; } }
+		public override int DefMaxDamage{ get{ return 4; } }
 		public override int DefSpeed{ get{ return 40; } }
 
 		public override int DefHitSound{ get{ return -1; } }
