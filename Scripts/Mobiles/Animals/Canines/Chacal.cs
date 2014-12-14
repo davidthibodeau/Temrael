@@ -48,7 +48,7 @@ namespace Server.Mobiles
         public override int Meat { get { return 1; } }
         public override int Hides { get { return 3; } }
         //public override int Bones { get { return 3; } }
-        public override HideType HideType { get { return HideType.Desertique; } }
+        public override HideType HideType { get { return HideType.Lupus; } }
         //public override BoneType BoneType { get { return BoneType.Desertique; } }
         public override FoodType FavoriteFood { get { return FoodType.Meat; } }
         public override PackInstinct PackInstinct { get { return PackInstinct.Canine; } }
