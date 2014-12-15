@@ -9,7 +9,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 6; } }
         //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 25; } }
+        public override int DefSpeed { get { return 35; } }
 
         [Constructable]
         public Griffes()
@@ -44,7 +44,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 7; } }
         //public override int DefMaxDamage { get { return 12; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 40; } }
 
         [Constructable]
         public Katar()
@@ -79,7 +79,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 9; } }
         //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 45; } }
 
         [Constructable]
         public Katara()

@@ -52,12 +52,12 @@ namespace Server.Engines.Combat
             if (DefStrategy(def).Parer(def))
             {
                 def.FixedEffect(0x37B9, 10, 16);
-                def.Mana -= 5;
+                def.Mana -= ParerCoutMana;
                 degats = 0;
             }
             else if(crit)
             {
-                atk.Mana -= 10;
+                atk.Mana -= (int)(basedmg * 0.4);
                 atk.SendMessage("Vous effectuez un coup critique.");
                 def.SendMessage("Vous recevez un coup critique.");
             }
@@ -66,8 +66,8 @@ namespace Server.Engines.Combat
 
             degats = Spell.OnHitEffects(atk, def, degats);
 
-            def.Stam -= (int)(degats * 0.3);
-            atk.Stam -= (int)(basedmg * 0.3);
+            def.Stam -= (int)(degats * 0.4);
+            atk.Stam -= (int)(basedmg * 0.4);
 
             def.Damage((int)degats, atk);
         }
@@ -254,7 +254,7 @@ namespace Server.Engines.Combat
         public virtual double CritiqueDegats(Mobile atk, double dmg)
         {
             // Tentative de dégâts % constants.
-            return IncreasedValue(dmg, 0.35);
+            return IncreasedValue(dmg, 0.5);
         }
         #endregion
 
@@ -293,7 +293,7 @@ namespace Server.Engines.Combat
         public double Vitesse(Mobile atk)
         {
             //Par tranche de 50 de stam, on retire 0.25 secondes (ou 0.1 secondes tous les 20 de stam)
-            double s = Weapon(atk).Speed - atk.Stam/20;
+            double s = Weapon(atk).Speed - atk.Stam/10;
 
             //Le délai minimal est de 1 secondes entre deux attaques.
             if (s < 10)
@@ -307,6 +307,9 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Parer
+
+        const int ParerCoutMana = 20;
+
         /// <summary>
         /// Cette fonction sert à déterminer si le défenseur a paré le coup.
         /// Elle est appelée du module de stratégie du défendeur et utilise donc les informations de la class CombatStrategy courante.
@@ -315,11 +318,11 @@ namespace Server.Engines.Combat
         /// <returns>true si le défendeur a paré le coup.</returns>
         public bool Parer(Mobile def)
         {
-            if (def.Mana <= 5)
+            if (def.Mana <= ParerCoutMana)
                 return false;
 
             double chance = ParerChance(def);
-            
+
             // On donne la possibilite d'augmenter Parer seulement s'il y a chance de parer
             // Cela exclue donc a mains nues ou a distance
             if (chance > 0 || (def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
@@ -333,7 +336,7 @@ namespace Server.Engines.Combat
             double chance = 0;
 
             if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
-                chance = GetBonus(parry, 0.125, 5);
+                chance = GetBonus(parry, 0.15, 2.5);
 
             return chance;
         }
