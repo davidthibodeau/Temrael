@@ -46,18 +46,18 @@ namespace Server.Engines.Combat
             atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));
             def.PlaySound(Weapon(def).GetHitDefendSound(atk, def));
 
-            bool crit;
             double basedmg = (atk.Weapon as BaseWeapon).MinDamage + (Utility.RandomDouble() * ((atk.Weapon as BaseWeapon).MaxDamage - (atk.Weapon as BaseWeapon).MinDamage));
-            double degats = Degats(basedmg, atk, def, out crit);
+            double degats = Degats(basedmg, atk, def);
             if (DefStrategy(def).Parer(def))
             {
                 def.FixedEffect(0x37B9, 10, 16);
                 def.Mana -= ParerCoutMana;
                 degats = 0;
             }
-            else if(crit)
+            else if (Critique(atk) && atk.Mana > CritiqueManaCost(basedmg))
             {
-                atk.Mana -= (int)(basedmg * 0.4);
+                degats = CritiqueDegats(atk, degats);
+                atk.Mana -= CritiqueManaCost(basedmg);
                 atk.SendMessage("Vous effectuez un coup critique.");
                 def.SendMessage("Vous recevez un coup critique.");
             }
@@ -66,8 +66,8 @@ namespace Server.Engines.Combat
 
             degats = Spell.OnHitEffects(atk, def, degats);
 
-            def.Stam -= (int)(degats * 0.4);
-            atk.Stam -= (int)(basedmg * 0.4);
+            def.Stam -= (int)(degats * 0.75);
+            atk.Stam -= (int)(basedmg * 0.75);
 
             def.Damage((int)degats, atk);
         }
@@ -151,19 +151,13 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Degats
-        public double Degats(double basedmg, Mobile atk, Mobile def, out bool critique)
+        public double Degats(double basedmg, Mobile atk, Mobile def)
         {
-            critique = false;
             double dmg = ComputerDegats(atk, basedmg, true);
             if (! def.CanSee(atk))
             {
                 double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.20, 10);
                 dmg = IncreasedValue(dmg, poursuite);
-            }
-            if (Critique(atk) && atk.Mana > 10)
-            {
-                critique = true;
-                dmg = CritiqueDegats(atk, dmg);
             }
 
             return (int)DegatsReduits(atk, def, dmg);
@@ -240,6 +234,11 @@ namespace Server.Engines.Combat
         protected abstract void AppliquerPoison(Mobile atk, Mobile def);
 
         #region Coup Critique
+        public int CritiqueManaCost(double degats)
+        {
+            return (int)(degats * 1.5);
+        }
+
         public bool Critique(Mobile atk)
         {
             return atk.CheckSkill(SkillName.CoupCritique, CritiqueChance(atk));
@@ -308,7 +307,7 @@ namespace Server.Engines.Combat
 
         #region Parer
 
-        const int ParerCoutMana = 20;
+        const int ParerCoutMana = 25;
 
         /// <summary>
         /// Cette fonction sert à déterminer si le défenseur a paré le coup.

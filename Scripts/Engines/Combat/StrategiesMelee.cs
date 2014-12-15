@@ -15,7 +15,7 @@ namespace Server.Engines.Combat
             double chance = 0;
 
             if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
-                chance = GetBonus(parry, 0.3, 5);
+                chance = GetBonus(parry, 0.6, 5);
             else
                 chance = GetBonus(parry, 0.15, 2.5);
 

@@ -36,7 +36,7 @@ namespace Server.Misc
 			return m.MaxWeight;
 		}
 
-        const int PERTE_STAM_RUNNING = 2;
+        const int PERTE_STAM_RUNNING = 4;
         const int MULTI_TILE_ACCIDENTE = 3; // Il coûte 3 fois plus cher de courrir sur du terrain accidenté que non.
 
 		public static void EventSink_Movement( MovementEventArgs e )

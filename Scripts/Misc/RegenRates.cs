@@ -48,7 +48,7 @@ namespace Server.Misc
             CheckBonusSkill(from, from.Stam, from.StamMax, SkillName.Concentration);
 
             double points = (from.Dex / 20) + (from.Skills[SkillName.Concentration].Value / 10);
-            return TimeSpan.FromSeconds(1.0 / (0.1 * (1 + points)));
+            return TimeSpan.FromSeconds(1.0 / (0.15 * (1 + points)));
 		}
 
 		private static TimeSpan Mobile_ManaRegenRate( Mobile from )
