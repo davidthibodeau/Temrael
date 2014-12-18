@@ -139,5 +139,10 @@ namespace Server.Engines.Races
             if (skin != null)
                 skin.Delete();
         }
+
+        public override string ToString()
+        {
+            return "...";
+        }
     }
 }

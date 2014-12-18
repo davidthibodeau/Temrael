@@ -3,10 +3,15 @@ using System.Collections.Generic;
 
 namespace Server.Engines.Identities
 {
+    public enum IdentityType { Base, Transformation, Cachee }
+
     [PropertyObject]
     public class Identity
     {
         private Dictionary<Mobile, string> names;
+
+        [CommandProperty(AccessLevel.Chroniqueur)]
+        public IdentityType IdType { get; private set; }
 
         public virtual string this[Mobile m]
         {
@@ -24,16 +29,16 @@ namespace Server.Engines.Identities
             set { names[m] = value; }
         }
 
-        public Identity()
+        public Identity(IdentityType type)
         {
+            IdType = type;
             names = new Dictionary<Mobile, string>();
         }
 
-        public Identity(GenericReader reader)
+        public Identity(IdentityType type, GenericReader reader)
+            : this(type)
         {
             int version = reader.ReadInt();
-
-            names = new Dictionary<Mobile,string>();
             int count = reader.ReadInt();
             for (int i = 0; i < count; i++)
             {
@@ -56,6 +61,11 @@ namespace Server.Engines.Identities
                 writer.Write(names[m]);
             }
         }
+
+        public override string ToString()
+        {
+            return IdType.ToString();
+        }
     }
 
     public class IdentiteCachee : Identity
@@ -64,6 +74,11 @@ namespace Server.Engines.Identities
         {
             get { return "Identite Cachee"; }
             set { }
+        }
+
+        public IdentiteCachee()
+            : base(IdentityType.Cachee)
+        {
         }
     }
 }
