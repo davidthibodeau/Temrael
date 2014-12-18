@@ -447,9 +447,6 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ClotureTroisPlanchesVerticales), "Clôtures", "Planches verticales", 17.0, 47.0, typeof(Board), "Planches", 6, 1044351);
             AddRes(index, typeof(Nails), "Clou", 1, 1044563);
 
-            index = AddCraft(typeof(CloturePlanchesCroisees), "Clôtures", "Planches croisées", 11.0, 48.0, typeof(Board), "Planches", 6, 1044351);
-            AddRes(index, typeof(Nails), "Clou", 1, 1044563);
-
             #endregion
 
             #region Utilitaires
