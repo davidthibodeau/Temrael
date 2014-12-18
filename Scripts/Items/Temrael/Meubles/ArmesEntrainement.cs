@@ -2,13 +2,16 @@ using System;
 
 namespace Server.Items
 {
-	[Furniture]
-	public class DagueBois : Item
+    public class DagueBois : BaseKnife
 	{
+        public override int DefSpeed { get { return 30; } }
+        public override int DefMinDamage { get { return 1; } }
+        public override int DefMaxDamage { get { return 2; } }
+        
 		[Constructable]
 		public DagueBois() : base( 0x1494 )
 		{
-			Weight = 5.0;
+			Weight = 1.0;
             Name = "Dague d'entrainement";
 		}
 
@@ -33,14 +36,17 @@ namespace Server.Items
 		}
 	}
 
-    [Furniture]
-    public class LanceBois : Item
+    public class LanceBois : BaseSpear
     {
+        public override int DefSpeed { get { return 30; } }
+        public override int DefMinDamage { get { return 1; } }
+        public override int DefMaxDamage { get { return 2; } }
+
         [Constructable]
         public LanceBois()
             : base(0x1495)
         {
-            Weight = 5.0;
+            Weight = 2.0;
             Name = "Lance d'entrainement";
         }
 
@@ -65,14 +71,17 @@ namespace Server.Items
         }
     }
 
-    [Furniture]
-    public class MasseBois : Item
+    public class MasseBois : BaseBashing
     {
+        public override int DefSpeed { get { return 30; } }
+        public override int DefMinDamage { get { return 1; } }
+        public override int DefMaxDamage { get { return 2; } }
+
         [Constructable]
         public MasseBois()
             : base(0x1496)
         {
-            Weight = 5.0;
+            Weight = 2.0;
             Name = "Masse d'entrainement";
         }
 
@@ -97,15 +106,18 @@ namespace Server.Items
         }
     }
 
-    [Furniture]
-    public class BatonBois : Item
+    public class BatonBois : BaseStaff
     {
+        public override int DefSpeed { get { return 30; } }
+        public override int DefMinDamage { get { return 1; } }
+        public override int DefMaxDamage { get { return 2; } }
+
         [Constructable]
         public BatonBois()
             : base(0x1497)
         {
-            Weight = 5.0;
-            Name = "Baton d'entrainement";
+            Weight = 2.0;
+            Name = "Bâton d'entrainement";
         }
 
         public BatonBois(Serial serial)
@@ -129,14 +141,17 @@ namespace Server.Items
         }
     }
 
-    [Furniture]
-    public class EpeeBois : Item
+    public class EpeeBois : BaseSword
     {
+        public override int DefSpeed { get { return 30; } }
+        public override int DefMinDamage { get { return 1; } }
+        public override int DefMaxDamage { get { return 2; } }
+
         [Constructable]
         public EpeeBois()
-            : base(0x1495)
+            : base(0x1498)
         {
-            Weight = 5.0;
+            Weight = 2.0;
             Name = "Epée d'entrainement";
         }
 
@@ -160,16 +175,4 @@ namespace Server.Items
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
