@@ -20,7 +20,7 @@ namespace Server.Misc
             if (beheld is PlayerMobile)
             {
                 string name;
-                name = ((PlayerMobile)beheld).GetNameUseBy(((PlayerMobile)beholder));
+                name = ((PlayerMobile)beheld).GetNameUsedBy(((PlayerMobile)beholder));
                 //if (name == "-1") { if (beholder.Female) { name = "Inconnue"; } else { name = "Inconnu"; } }
 
                 //title.Append(((RacePlayerMobile)beheld).PlayerName);

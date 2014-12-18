@@ -108,7 +108,7 @@ namespace Server.Misc
                     if (m != null && m.AccessLevel >= AccessLevel.Batisseur && m.AccessLevel > from.AccessLevel)
                     {
                         //m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, ((PlayerMobile)from).PlayerName, String.Format("[Chuchotte]: {0}", texte)));
-                        m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, from.GetNameUseBy(m), String.Format("[Chuchote]: {0}", texte)));
+                        m.Send(new UnicodeMessage(from.Serial, from.Body, MessageType.Regular, from.SpeechHue, 3, from.Language, from.GetNameUsedBy(m), String.Format("[Chuchote]: {0}", texte)));
                     }
                     if (m != null && m.Skills[SkillName.Discretion].Value > from.Skills[SkillName.Discretion].Value)
                     {

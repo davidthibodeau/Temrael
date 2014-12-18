@@ -55,7 +55,7 @@ namespace Server.Gumps
 
                         if (text != null)
                         {
-                            focus.SendMessage(0x482, "{0} {1} vous a envoye un message HRP: ", from.GetNameUseBy(focus));
+                            focus.SendMessage(0x482, "{0} {1} vous a envoye un message HRP: ", from.GetNameUsedBy(focus));
                             focus.SendMessage(0x482, text.Text);
 
                             CommandLogging.WriteLine(from, "{0} {1} telling {2} \"{3}\" ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus), text.Text);
@@ -71,7 +71,7 @@ namespace Server.Gumps
 
                         if (text != null)
                         {
-                            string name = from.GetNameUseBy(focus);
+                            string name = from.GetNameUsedBy(focus);
                             if (focus is PlayerMobile)
                             {
                                 PlayerMobile pm = focus as PlayerMobile;
@@ -80,12 +80,12 @@ namespace Server.Gumps
                                 Console.WriteLine("q = {0:X}, canBeDelivered = {1}, q & 0x100 = {2}, name == \"Anonyme\" = {3}", q, cantBeDelivered, q & 0x100, name == "Anonyme");
                                 if (from.AccessLevel > AccessLevel.Player || !cantBeDelivered)
                                 {
-                                    focus.SendGump(new ClientGump(focus, state, from.GetNameUseBy(focus), "", text.Text));
+                                    focus.SendGump(new ClientGump(focus, state, from.GetNameUsedBy(focus), "", text.Text));
                                     CommandLogging.WriteLine(from, "{0} {1} telling {2} \"{3}\" ", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(focus), text.Text);
                                 }
                                 else
                                 {
-                                    from.SendMessage("{0} refuse de recevoir votre message", focus.GetNameUseBy(from));
+                                    from.SendMessage("{0} refuse de recevoir votre message", focus.GetNameUsedBy(from));
                                 }
                             }
                         }
@@ -351,7 +351,7 @@ namespace Server.Gumps
 
         private static string GetNameFor(Mobile m, Mobile m_Owner)
         {
-            return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner),
+            return String.Format("{0}, {1}", m.GetNameUsedBy(m_Owner),
                              m is PlayerMobile && ((PlayerMobile)m).Race != null ? (m.Female ? ((PlayerMobile)m).Race.NameF : ((PlayerMobile)m).Race.Name) : "");
         }
     }

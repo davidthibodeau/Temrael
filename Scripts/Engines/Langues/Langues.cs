@@ -247,7 +247,7 @@ namespace Server.Engines.Langues
                 {
                     string sla = CurrentLangue.ToString();
                     m.NetState.Send(new UnicodeMessage(m_Mobile.Serial, m_Mobile.Body, MessageType.Regular, 0x3B2, 3,
-                                                       m_Mobile.Language, m_Mobile.GetNameUseBy(m), "[" + sla + "]"));
+                                                       m_Mobile.Language, m_Mobile.GetNameUsedBy(m), "[" + sla + "]"));
                 }
                 return false;
             }

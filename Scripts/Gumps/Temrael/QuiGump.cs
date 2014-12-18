@@ -108,11 +108,11 @@ namespace Server.Gumps
                 else if (a.AccessLevel < b.AccessLevel)
                     return 1;
                 else
-                    retour = Insensitive.Compare(a.GetNameUseBy(m_Owner), b.GetNameUseBy(m_Owner));
+                    retour = Insensitive.Compare(a.GetNameUsedBy(m_Owner), b.GetNameUsedBy(m_Owner));
 
-                if (a.GetNameUseBy(m_Owner).Equals("Anonyme"))
+                if (a.GetNameUsedBy(m_Owner).Equals("Anonyme"))
                     return 1;
-                else if (b.GetNameUseBy(m_Owner).Equals("Anonyme"))
+                else if (b.GetNameUsedBy(m_Owner).Equals("Anonyme"))
                     return -1;
                 else
                     return retour;
@@ -243,7 +243,7 @@ namespace Server.Gumps
 
         private static string GetNameFor(Mobile m, Mobile m_Owner)
         {
-            return String.Format("{0}, {1}", m.GetNameUseBy(m_Owner),
+            return String.Format("{0}, {1}", m.GetNameUsedBy(m_Owner),
                  m is PlayerMobile && ((PlayerMobile)m).Race != null ? (m.Female ? ((PlayerMobile)m).Race.NameF : ((PlayerMobile)m).Race.Name) : "");
 
         }

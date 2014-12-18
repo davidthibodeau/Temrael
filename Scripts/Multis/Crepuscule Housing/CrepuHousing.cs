@@ -448,7 +448,7 @@ namespace Server.Items
                     AddImageTiled(81, upmargin + num * 20 + 1, 180, 21, 0xBBC);
                     if (m_item.CoProprio[i] != null)
                     {
-                        AddLabelCropped(91, upmargin + num * 20 + 1, 180, 21, 0, m_item.CoProprio[i].GetNameUseBy(rpm)); // rpm.FindName(m_item.CoProprio[i].Serial.Value));
+                        AddLabelCropped(91, upmargin + num * 20 + 1, 180, 21, 0, m_item.CoProprio[i].GetNameUsedBy(rpm)); // rpm.FindName(m_item.CoProprio[i].Serial.Value));
                         if (m_item.Proprio == m_from)
                             AddButtonLabeledDel(270, upmargin + num * 20, 5 + i, "");
                     }

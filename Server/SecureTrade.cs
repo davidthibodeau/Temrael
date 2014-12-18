@@ -223,7 +223,7 @@ namespace Server
 				from.Send( new SecureTradeEquip6017( m_From.Container, from ) );
 			else
 				from.Send( new SecureTradeEquip( m_From.Container, from ) );
-			from.Send( new DisplaySecureTrade( to, m_From.Container, m_To.Container, to.GetNameUseBy(from) ) );
+			from.Send( new DisplaySecureTrade( to, m_From.Container, m_To.Container, to.GetNameUsedBy(from) ) );
 			from.Send( new UpdateSecureTrade( m_From.Container, false, false ) );
 
 			to.Send( new MobileStatus( to, from ) );
@@ -237,7 +237,7 @@ namespace Server
 				to.Send( new SecureTradeEquip6017( m_To.Container, to ) );
 			else
 				to.Send( new SecureTradeEquip( m_To.Container, to ) );
-			to.Send( new DisplaySecureTrade( from, m_To.Container, m_From.Container, from.GetNameUseBy(to) ) );
+			to.Send( new DisplaySecureTrade( from, m_To.Container, m_From.Container, from.GetNameUsedBy(to) ) );
 			to.Send( new UpdateSecureTrade( m_To.Container, false, false ) );
 		}
 	}

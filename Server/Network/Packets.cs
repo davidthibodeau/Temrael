@@ -544,28 +544,12 @@ namespace Server.Network
 		{
 			EquipInfoAttribute[] attrs = info.Attributes;
 
-			this.EnsureCapacity( 17 + (info.Crafter == null ? 0 : 6 + info.Crafter.Name == null ? 0 : info.Crafter.Name.Length) + (info.Unidentified ? 4 : 0) + (attrs.Length * 6) );
+			this.EnsureCapacity( 17 + (info.Unidentified ? 4 : 0) + (attrs.Length * 6) );
 
 			m_Stream.Write( (short) 0x10 );
 			m_Stream.Write( (int) item.Serial );
 
 			m_Stream.Write( (int) info.Number );
-
-			if ( info.Crafter != null )
-			{
-				string name = info.Crafter.Name;
-
-				m_Stream.Write( (int) -3 );
-
-				if ( name == null ) 
-					m_Stream.Write( (ushort) 0 );
-				else
-				{
-					int length = name.Length;
-					m_Stream.Write( (ushort) length );
-					m_Stream.WriteAsciiFixed( name, length );
-				}
-			}
 
 			if ( info.Unidentified )
 			{
@@ -3008,7 +2992,7 @@ namespace Server.Network
         public MobileName( Mobile m, Mobile from ) : base( 0x98 )
 		{
 			//string name = m.Name;
-            string name = m.GetNameUseBy(from);
+            string name = m.GetNameUsedBy(from);
 
 			if ( name == null ) name = "";
 
@@ -3066,7 +3050,7 @@ namespace Server.Network
         public MobileStatusCompact(bool canBeRenamed, Mobile beheld, Mobile beholder)
             : base(0x11)
         {
-            string name = beheld.GetNameUseBy(beholder);
+            string name = beheld.GetNameUsedBy(beholder);
             if (name == null) name = "";
 
             this.EnsureCapacity(43);
@@ -3091,7 +3075,7 @@ namespace Server.Network
 		public MobileStatusExtended( Mobile m, NetState ns ) : base( 0x11 )
 		{
             Mobile from = ns.Mobile;
-			string name = m.GetNameUseBy(from);
+			string name = m.GetNameUsedBy(from);
 			if ( name == null ) name = "";
 
 			int type;
@@ -3205,7 +3189,7 @@ namespace Server.Network
 		public MobileStatus( Mobile beholder, Mobile beheld, NetState ns ) : base( 0x11 )
 		{
 			//string name = beheld.Name;
-            string name = beheld.GetNameUseBy(beholder);
+            string name = beheld.GetNameUsedBy(beholder);
 			if ( name == null ) name = "";
 
 			int type;

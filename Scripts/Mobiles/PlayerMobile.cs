@@ -973,7 +973,7 @@ namespace Server.Mobiles
 				((PlayerMobile)e.Mobile).AutoStablePets();
 		}
 
-        public override string GetNameUseBy(Mobile from)
+        public override string GetNameUsedBy(Mobile from)
         {           
             return Identities.GetNameUseBy(from);
         }
@@ -1715,7 +1715,7 @@ namespace Server.Mobiles
                         PlayerMobile from = (PlayerMobile)m;
                         from.SendMessage("Vous poussez le personnage hors de votre chemin.");
                         from.Stam -= 10;
-                        this.SendMessage("Vous êtes poussé(e) hors du chemin par " + from.GetNameUseBy(this));
+                        this.SendMessage("Vous êtes poussé(e) hors du chemin par " + from.GetNameUsedBy(this));
                         return true;
                     }
                     else
@@ -1762,7 +1762,7 @@ namespace Server.Mobiles
         {
             string color = "#ba52ff"; //"#FFFFFF";
 
-            string displayName = GetNameUseBy(from);
+            string displayName = GetNameUsedBy(from);
             //if (!CanBeginAction(typeof(IncognitoSpell)))
             //{
             //    displayName = "Anonyme";
@@ -2279,7 +2279,7 @@ namespace Server.Mobiles
         public override void OnAosSingleClick(Mobile from)
         {
             ObjectPropertyList opl = new ObjectPropertyList(this);
-            string name = GetNameUseBy(from);
+            string name = GetNameUsedBy(from);
             opl.Add(name);
 
             if (opl.Header > 0)

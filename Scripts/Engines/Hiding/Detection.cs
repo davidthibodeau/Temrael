@@ -174,7 +174,7 @@ namespace Server.Engines.Hiding
                 // que son jet a echoue a cause d'un gain de skill.
                 obs.CheckSkill(SkillName.Detection, 0);
 
-                obs.SendMessage("Vous détectez la présence de {0}", mobile.GetNameUseBy(obs));
+                obs.SendMessage("Vous détectez la présence de {0}", mobile.GetNameUsedBy(obs));
             }
         }
 

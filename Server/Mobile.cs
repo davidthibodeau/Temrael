@@ -245,7 +245,7 @@ namespace Server
 			set { m_DragEffects = value; }
 		}
 
-        public virtual string GetNameUseBy(Mobile from)
+        public virtual string GetNameUsedBy(Mobile from)
         {
             return Name;
         }
@@ -661,7 +661,7 @@ namespace Server
 				else
 					hue = Notoriety.GetHue( Notoriety.Compute( from, this ) );
 
-				from.Send( new MessageLocalized( m_Serial, Body, MessageType.Label, hue, 3, opl.Header, Name, opl.HeaderArgs ) );
+				from.Send( new MessageLocalized( m_Serial, Body, MessageType.Label, hue, 3, opl.Header, GetNameUsedBy(from), opl.HeaderArgs ) );
 			}
 		}
 
@@ -4262,7 +4262,7 @@ namespace Server
 						NetState ns = heard.NetState;
 
 						if( ns != null ) {
-                            regp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), text));
+                            regp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUsedBy(heard), text));
 
 							ns.Send( regp );
 						}
@@ -4273,7 +4273,7 @@ namespace Server
 						NetState ns = heard.NetState;
 
 						if( ns != null ) {
-                            mutp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(heard), mutatedText));
+                            mutp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUsedBy(heard), mutatedText));
 
 							ns.Send( mutp );
 						}
@@ -5520,12 +5520,12 @@ namespace Server
 
 		public void SayTo( Mobile to, int number )
 		{
-			to.Send( new MessageLocalized( m_Serial, Body, MessageType.Regular, m_SpeechHue, 3, number, Name, "" ) );
+			to.Send( new MessageLocalized( m_Serial, Body, MessageType.Regular, m_SpeechHue, 3, number, GetNameUsedBy(to), "" ) );
 		}
 
 		public void SayTo( Mobile to, int number, string args )
 		{
-			to.Send( new MessageLocalized( m_Serial, Body, MessageType.Regular, m_SpeechHue, 3, number, Name, args ) );
+			to.Send( new MessageLocalized( m_Serial, Body, MessageType.Regular, m_SpeechHue, 3, number, GetNameUsedBy(to), args ) );
 		}
 
 		public void Say( bool ascii, string text )
@@ -8825,9 +8825,9 @@ namespace Server
                     if (state.Mobile.CanSee(this) && (noLineOfSight || state.Mobile.InLOS(this)))
                     {
                         if (ascii)
-                            p = new AsciiMessage(m_Serial, Body, type, hue, 3, GetNameUseBy(state.Mobile), text);
+                            p = new AsciiMessage(m_Serial, Body, type, hue, 3, GetNameUsedBy(state.Mobile), text);
                         else
-                            p = new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUseBy(state.Mobile), text);
+                            p = new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUsedBy(state.Mobile), text);
 
                         p.Acquire();
 
@@ -8863,17 +8863,15 @@ namespace Server
 
 				foreach( NetState state in eable )
 				{
-					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) )
-					{
-						if( p == null )
-							p = Packet.Acquire( new MessageLocalized( m_Serial, Body, type, hue, 3, number, GetNameUseBy(state.Mobile), args ) );
+                    if (state.Mobile.CanSee(this) && (noLineOfSight || state.Mobile.InLOS(this)))
+                    {
+                        p = Packet.Acquire(new MessageLocalized(m_Serial, Body, type, hue, 3, number, GetNameUsedBy(state.Mobile), args));
 
-						state.Send( p );
-					}
+                        state.Send(p);
+
+                        Packet.Release(p);
+                    }
 				}
-
-				Packet.Release( p );
-
 				eable.Free();
 			}
 		}
@@ -8893,16 +8891,16 @@ namespace Server
 
 				foreach( NetState state in eable )
 				{
-					if( state.Mobile.CanSee( this ) && (noLineOfSight || state.Mobile.InLOS( this )) )
-					{
-						if( p == null )
-							p = Packet.Acquire( new MessageLocalizedAffix( m_Serial, Body, type, hue, 3, number, Name, affixType, affix, args ) );
+                    if (state.Mobile.CanSee(this) && (noLineOfSight || state.Mobile.InLOS(this)))
+                    {
+                        p = Packet.Acquire(new MessageLocalizedAffix(m_Serial, Body, type, hue, 3, number, GetNameUsedBy(state.Mobile), affixType, affix, args));
 
-						state.Send( p );
-					}
+                        state.Send(p);
+
+                        Packet.Release(p);
+                    }
 				}
 
-				Packet.Release( p );
 
 				eable.Free();
 			}
@@ -8914,9 +8912,9 @@ namespace Server
 				return;
 
 			if( ascii )
-				state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text ) );
+				state.Send( new AsciiMessage( m_Serial, Body, type, hue, 3, GetNameUsedBy(state.Mobile), text ) );
 			else
-				state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, Name, text ) );
+				state.Send( new UnicodeMessage( m_Serial, Body, type, hue, 3, m_Language, GetNameUsedBy(state.Mobile), text ) );
 		}
 
 		public void PrivateOverheadMessage( MessageType type, int hue, int number, NetState state )
@@ -8929,7 +8927,7 @@ namespace Server
 			if( state == null )
 				return;
 
-			state.Send( new MessageLocalized( m_Serial, Body, type, hue, 3, number, Name, args ) );
+			state.Send( new MessageLocalized( m_Serial, Body, type, hue, 3, number, GetNameUsedBy(state.Mobile), args ) );
 		}
 
 		public void LocalOverheadMessage( MessageType type, int hue, bool ascii, string text )
@@ -8975,14 +8973,13 @@ namespace Server
 				{
 					if( state != m_NetState && state.Mobile.CanSee( this ) )
 					{
-						if( p == null )
-							p = Packet.Acquire( new MessageLocalized( m_Serial, Body, type, hue, 3, number, Name, args ) );
+                        p = Packet.Acquire(new MessageLocalized(m_Serial, Body, type, hue, 3, number, GetNameUsedBy(state.Mobile), args));
 
 						state.Send( p );
+
+                        Packet.Release(p);
 					}
 				}
-
-				Packet.Release( p );
 
 				eable.Free();
 			}
@@ -8998,23 +8995,20 @@ namespace Server
 
 				foreach( NetState state in eable )
 				{
-					if( state != m_NetState && state.Mobile.CanSee( this ) )
-					{
-						if( p == null )
-						{
-							if( ascii )
-								p = new AsciiMessage( m_Serial, Body, type, hue, 3, Name, text );
-							else
-								p = new UnicodeMessage( m_Serial, Body, type, hue, 3, Language, Name, text );
+                    if (state != m_NetState && state.Mobile.CanSee(this))
+                    {
+                        if (ascii)
+                            p = new AsciiMessage(m_Serial, Body, type, hue, 3, GetNameUsedBy(state.Mobile), text);
+                        else
+                            p = new UnicodeMessage(m_Serial, Body, type, hue, 3, Language, GetNameUsedBy(state.Mobile), text);
 
-							p.Acquire();
-						}
+                        p.Acquire();
 
-						state.Send( p );
-					}
+                        state.Send(p);
+
+                        Packet.Release(p);
+                    }
 				}
-
-				Packet.Release( p );
 
 				eable.Free();
 			}
@@ -9380,7 +9374,7 @@ namespace Server
 			else
 				hue = Notoriety.GetHue( Notoriety.Compute( from, this ) );
 
-			string name = Name;
+			string name = GetNameUsedBy(from);
 
 			if( name == null )
 				name = String.Empty;

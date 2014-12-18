@@ -350,8 +350,8 @@ namespace Server.Items
 
 			base.GetProperties( list );
 
-			if ( m_Crafter != null )
-				list.Add( 1050043, m_Crafter.Name ); // crafted by ~1_NAME~
+            //if ( m_Crafter != null )
+            //    list.Add( 1050043, m_Crafter.Name ); // crafted by ~1_NAME~
 
 			if ( m_Quality == InstrumentQuality.Exceptional )
 				list.Add( 1060636 ); // exceptional

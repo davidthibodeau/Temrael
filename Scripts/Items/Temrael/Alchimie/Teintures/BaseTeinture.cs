@@ -154,7 +154,7 @@ namespace Server.Items
                 }
 
                 to.SendGump(m_Gump);
-                to.SendMessage("{0} vous montre cet échantillon.", from.GetNameUseBy(to));
+                to.SendMessage("{0} vous montre cet échantillon.", from.GetNameUsedBy(to));
             }
         }
 

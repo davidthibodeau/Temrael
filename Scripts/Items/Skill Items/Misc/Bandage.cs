@@ -434,7 +434,7 @@ namespace Server.Items
                 m_Table[healer] = context;
 
                 if (!onSelf)
-                    patient.SendLocalizedMessage(1008078, false, healer.Name); //  : Attempting to heal you.
+                    patient.SendLocalizedMessage(1008078, false, healer.GetNameUsedBy(patient)); //  : Attempting to heal you.
 
                 healer.SendLocalizedMessage(500956); // You begin applying the bandages.
                 return context;

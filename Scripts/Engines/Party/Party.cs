@@ -100,7 +100,7 @@ namespace Server.Engines.PartySystem
                     if (m != m_Mobile)
                     {
                         Packet message = Packet.Acquire(new MessageLocalizedAffix(Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008087,
-                            m_Mobile.GetNameUseBy(m), AffixType.Prepend | AffixType.System, m_Mobile.GetNameUseBy(m), ""));
+                            m_Mobile.GetNameUsedBy(m), AffixType.Prepend | AffixType.System, m_Mobile.GetNameUsedBy(m), ""));
                         Packet attrs = Packet.Acquire(new MobileAttributesN(m_Mobile));
 
                         m.Send(message);
@@ -202,7 +202,7 @@ namespace Server.Engines.PartySystem
             #region SendToAll
             for (int i = 0; i < m_Members.Count; ++i)
                 m_Members[i].Mobile.Send(new MessageLocalizedAffix(
-                    Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, from.GetNameUseBy(m_Members[i].Mobile),
+                    Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, from.GetNameUsedBy(m_Members[i].Mobile),
                     AffixType.Prepend | AffixType.System, "", ""));
 
             for (int i = 0; i < m_Listeners.Count; ++i)
@@ -210,7 +210,7 @@ namespace Server.Engines.PartySystem
                 Mobile mob = m_Listeners[i];
 
                 if (mob.Party != this)
-                    mob.Send(new MessageLocalizedAffix(Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, from.GetNameUseBy(mob),
+                    mob.Send(new MessageLocalizedAffix(Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008094, from.GetNameUsedBy(mob),
                         AffixType.Prepend | AffixType.System, "", ""));
             }
             #endregion
@@ -224,7 +224,7 @@ namespace Server.Engines.PartySystem
 		public void OnDecline( Mobile from, Mobile leader )
 		{
 			//  : Does not wish to join the party.
-			leader.SendLocalizedMessage( 1008091, false, from.Name );
+			leader.SendLocalizedMessage( 1008091, false, from.GetNameUsedBy(leader) );
 
 			from.SendLocalizedMessage( 1008092 ); // You notify them that you do not wish to join the party.
 
@@ -306,7 +306,7 @@ namespace Server.Engines.PartySystem
 				p.Candidates.Add( target );
 
 			//  : You are invited to join the party. Type /accept to join or /decline to decline the offer.
-			target.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008089, from.GetNameUseBy(target), AffixType.Prepend | AffixType.System, from.Name, "" ) );
+			target.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008089, from.GetNameUsedBy(target), AffixType.Prepend | AffixType.System, from.GetNameUsedBy(target), "" ) );
 
 			from.SendLocalizedMessage( 1008090 ); // You have invited them to join the party.
 
@@ -340,7 +340,7 @@ namespace Server.Engines.PartySystem
 				Mobile mob = m_Listeners[i];
 
 				if ( mob.Party != this )
-					m_Listeners[i].SendMessage( "[{0}]: {1}", from.GetNameUseBy(mob), text );
+					m_Listeners[i].SendMessage( "[{0}]: {1}", from.GetNameUsedBy(mob), text );
 			}
 
 			SendToStaffMessage( from, "[Party]: {0}", text );
@@ -355,7 +355,7 @@ namespace Server.Engines.PartySystem
 				Mobile mob = m_Listeners[i];
 
 				if ( mob.Party != this )
-                    m_Listeners[i].SendMessage("[{0}]->[{1}]: {2}", from.GetNameUseBy(to), to.GetNameUseBy(mob), text);
+                    m_Listeners[i].SendMessage("[{0}]->[{1}]: {2}", from.GetNameUsedBy(to), to.GetNameUsedBy(mob), text);
 			}
 
 			SendToStaffMessage( from, "[Party]->[{0}]: {1}", to.Name, text );

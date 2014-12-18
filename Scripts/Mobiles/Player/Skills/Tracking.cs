@@ -293,7 +293,7 @@ namespace Server.SkillHandlers
 				AddButton( 20 + ((i % 4) * 100), 130 + ((i / 4) * 155), 4005, 4007, i + 1, GumpButtonType.Reply, 0 );
 
 				if ( m.Name != null )
-					AddHtml( 20 + ((i % 4) * 100), 90 + ((i / 4) * 155), 90, 40, m.GetNameUseBy(from), false, false );
+					AddHtml( 20 + ((i % 4) * 100), 90 + ((i / 4) * 155), 90, 40, m.GetNameUsedBy(from), false, false );
 			}
 		}
 
