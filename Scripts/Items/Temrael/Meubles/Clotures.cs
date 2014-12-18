@@ -86,7 +86,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)0);
+            writer.Write((int)1);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -95,6 +95,8 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
+            if (version < 1)
+                Delete();
         }
     }
 }
