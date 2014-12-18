@@ -2502,7 +2502,7 @@ namespace Server.Mobiles
 			if( Hidden )	//Hiding is the only buff where it has an effect that's serialized.
 				AddBuff( new BuffInfo( BuffIcon.HidingAndOrStealth, 1075655 ) );
 
-            if (Blessed && AccessLevel == AccessLevel.Player)
+            if (Blessed && Player && AccessLevel == AccessLevel.Player)
                 Blessed = false;
 
             CheckRaceSkin();
