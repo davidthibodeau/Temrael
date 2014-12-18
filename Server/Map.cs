@@ -128,6 +128,31 @@ namespace Server
 			throw new ArgumentException( "Invalid map name" );
 		}
 
+        /// <summary>
+        /// Prend en paramètre un rectangle, et réarrange les points pour que le start soit en haut, et la fin en bas.
+        /// </summary>
+        /// <param name="rect">Le rectangle à normaliser.</param>
+        /// <returns>Le rectangle normalisé.</returns>
+        public static Rectangle2D NormalizeR2D(Rectangle2D rect)
+        {
+            Rectangle2D newRect = rect;
+
+            if (rect.Start.X < rect.End.X)
+                newRect.X = rect.Start.X;
+            else
+                newRect.X = rect.End.X;
+
+            if (rect.Start.Y < rect.End.Y)
+                newRect.Y = rect.Start.Y;
+            else
+                newRect.Y = rect.End.Y;
+
+            newRect.Width = Utility.AbsoluteInt(rect.Width);
+            newRect.Height = Utility.AbsoluteInt(rect.Height);
+
+            return newRect;
+        }
+
 		private static void CheckNamesAndValues()
 		{
 			if ( m_MapNames != null && m_MapNames.Length == m_AllMaps.Count )
@@ -1167,6 +1192,7 @@ namespace Server
 
 			public static ClientEnumerator Instantiate(Map map, Rectangle2D bounds)
 			{
+                bounds = NormalizeR2D(bounds);
 				ClientEnumerator e = null;
 
 				lock (m_InstancePool)
@@ -1289,6 +1315,7 @@ namespace Server
 
 			public static EntityEnumerator Instantiate(Map map, Rectangle2D bounds)
 			{
+                bounds = NormalizeR2D(bounds);
 				EntityEnumerator e = null;
 
 				lock (m_InstancePool)
@@ -1436,6 +1463,7 @@ namespace Server
 
 			public static ItemEnumerator Instantiate(Map map, Rectangle2D bounds)
 			{
+                bounds = NormalizeR2D(bounds);
 				ItemEnumerator e = null;
 
 				lock (m_InstancePool)
@@ -1557,6 +1585,7 @@ namespace Server
 
 			public static MobileEnumerator Instantiate(Map map, Rectangle2D bounds)
 			{
+                bounds = NormalizeR2D(bounds);
 				MobileEnumerator e = null;
 
 				lock (m_InstancePool)

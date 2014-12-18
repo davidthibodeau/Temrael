@@ -7,6 +7,7 @@ using Server.Prompts;
 using Server.Engines;
 using System.Collections;
 using Server.Commandes.Temrael;
+using System.Collections.Generic;
 
 namespace Server.Items
 {
@@ -263,21 +264,23 @@ namespace Server.Items
                 b.MaxItems = int.MaxValue;
                 b.Name = m_OwnerName;
 
+                List<Item> toMove = new List<Item>();
+                Rectangle2D rect = new Rectangle2D(RegionPoint1, RegionPoint2);
+                IPooledEnumerable<Item> list = Map.Felucca.GetItemsInBounds(rect);
 
-                IPooledEnumerable<Item> list = Map.Felucca.GetItemsInBounds(new Rectangle2D(RegionPoint1, RegionPoint2));
-                try
+                foreach (Item i in list)
                 {
-                    foreach (Item i in list)
+                    if (i != null)
                     {
-                        if (i != null)
-                        {
-                            b.DropItem(i);
-                        }
+                        toMove.Add(i);
                     }
                 }
-                catch (ArgumentOutOfRangeException) // Empêche le cas où la zone ne contient pas d'items. Il ne semble pas y avoir de manière de tester "if(list.isEmpty())".
-                { }
+                list.Free();
 
+                for (int i = 0; i < toMove.Count; ++i)
+                {
+                    b.DropItem(toMove[i]);
+                }
 
                 // Seulement ouvrable par le owner, qui obtient une nouvelle clef à chaque fois.
                 GenerateKey.GenerateNewKey(m_Proprio, b, 1);
@@ -294,23 +297,47 @@ namespace Server.Items
         {
             if (m_BootLocation.X != 0 && m_BootLocation.Y != 0)
             {
-                IPooledEnumerable<Mobile> list = Map.Felucca.GetMobilesInBounds(new Rectangle2D(RegionPoint1, RegionPoint2));
-                try
+                List<Mobile> toBootC = new List<Mobile>();
+                List<Mobile> toBootDC = new List<Mobile>();
+                Rectangle2D rect = new Rectangle2D(RegionPoint1, RegionPoint2);
+                IPooledEnumerable<Mobile> listC = Map.Felucca.GetMobilesInBounds(rect);
+                IPooledEnumerable<Mobile> listDC = Map.Internal.GetMobilesInBounds(rect);
+
+                #region Déconnecté
+                foreach (Mobile m in listDC)
                 {
-                    foreach (Mobile m in list)
+                    if (m != null)
                     {
-                        if (m != null)
-                        {
-                            m.MoveToWorld(m_BootLocation, m.Map);
-                            if (!m.IsConnected)
-                            {
-                                m.LogoutLocation = m_BootLocation;
-                            }
-                        }
+                        toBootDC.Add(m);
                     }
                 }
-                catch (ArgumentOutOfRangeException) // Empêche le cas où la zone ne contient pas de mobiles. Il ne semble pas y avoir de manière de tester "if(list.isEmpty())".
-                { }
+                listDC.Free();
+
+                for (int i = 0; i < toBootDC.Count; ++i)
+                {
+                    Mobile m = toBootDC[i];
+
+                    m.MoveToWorld(m_BootLocation, Map.Internal);
+                }
+                #endregion
+
+                #region Connecté
+                foreach (Mobile m in listC)
+                {
+                    if (m != null && !toBootC.Contains(m))
+                    {
+                        toBootC.Add(m);
+                    }
+                }
+                listC.Free();
+
+                for (int i = 0; i < toBootC.Count; ++i)
+                {
+                    Mobile m = toBootC[i];
+
+                    m.MoveToWorld(m_BootLocation, Map.Felucca);
+                }
+                #endregion
             }
         }
 
