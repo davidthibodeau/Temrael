@@ -24,7 +24,7 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-        private static int durationMax = 12;
+        private static int durationMax = 15;
 
 		public ParalyzeSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

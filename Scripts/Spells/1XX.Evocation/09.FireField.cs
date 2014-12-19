@@ -37,6 +37,8 @@ namespace Server.Spells
 			Caster.Target = new InternalTarget( this );
 		}
 
+        private const double dureeMax = 120;
+
 		public void Target( IPoint3D p )
 		{
 			if ( !Caster.CanSee( p ) )
@@ -77,9 +79,7 @@ namespace Server.Spells
 
 				int itemID = eastToWest ? 0x398C : 0x3996;
 
-                double duration = 4.0 + (Caster.Skills[SkillName.Evocation].Value * 0.4);
-
-                duration = SpellHelper.AdjustValue(Caster, duration);
+                double duration = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
 				for ( int i = -3; i <= 3; ++i )
 				{

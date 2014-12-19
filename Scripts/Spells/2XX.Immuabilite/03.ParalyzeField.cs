@@ -26,7 +26,7 @@ namespace Server.Spells
 				Reagent.SpidersSilk
             );
 
-        private const double durationMax = 60;
+        private const double durationMax = 120;
 
 		public ParalyzeFieldSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
