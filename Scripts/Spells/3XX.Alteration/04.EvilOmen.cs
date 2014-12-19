@@ -66,7 +66,7 @@ namespace Server.Spells
 					m_Table[m] = mod;
 				}
 
-                double duration = 7.0;
+                double duration = 10.0;
 
                 duration = SpellHelper.AdjustValue(Caster, duration);
 
