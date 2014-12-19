@@ -86,6 +86,9 @@ namespace Server.Spells
 
             m_SouffleTable[def] += damage;
             damage = 0;
+
+            def.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
+            def.PlaySound(0x1ED);
         }
 
         private static Dictionary<Mobile, double> m_SouffleTable = new Dictionary<Mobile, double>();
@@ -111,9 +114,9 @@ namespace Server.Spells
 				{
                     m_Target.SendMessage("Votre adrénaline se dissipe.");
 
-                    m_Target.Damage((int)m_SouffleTable[m_Target]);
                     m_CooldownTable.Add(m_Target);
                     m_SouffleTable.Remove(m_Target);
+                    m_Target.Damage((int)m_SouffleTable[m_Target]);
 					Stop();
 
                     new CooldownTimer(m_Target, TimeSpan.FromSeconds(dureeCooldown)).Start();

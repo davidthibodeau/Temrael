@@ -85,14 +85,20 @@ namespace Server.Mobiles
 
         public override void Damage(int amount)
         {
+            Damage(amount, null);
+        }
+
+        public override void Damage(int amount, Mobile from)
+        {
             double damage = amount;
+
             SacrificeSpell.GetOnHitEffect(this, ref damage);
 
             DernierSouffleSpell.GetOnHitEffect(this, ref damage);
 
             AdrenalineSpell.GetOnHitEffect(this, ref damage);
 
-            base.Damage((int)damage);
+            base.Damage((int)damage, from);
         }
 
     }
