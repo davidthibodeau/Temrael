@@ -53,7 +53,7 @@ namespace Server.Spells
 				m.PlaySound( 0x258 );
 				m.FixedParticles( 0x373A, 1, 17, 9903, 15, 4, EffectLayer.Head );
 
-                double duration = 40;
+                double duration = 40 * Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
                 double scalar = Spell.GetSpellScaling(Caster, Info.skillForCasting);
 

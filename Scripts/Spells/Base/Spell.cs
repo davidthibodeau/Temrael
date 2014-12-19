@@ -186,8 +186,7 @@ namespace Server.Spells
         {
             double scalar = 1.0;
 
-            if (PourritureDEspritSpell.HasMindRotScalar(Caster))
-                scalar = PourritureDEspritSpell.GetMindRotScalar(Caster);
+            MindRotSpell.GetMindRotScalar(Caster, ref scalar);
 
             if (scalar < 1.0)
                 scalar = 1.0;
