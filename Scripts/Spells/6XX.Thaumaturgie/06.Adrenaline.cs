@@ -75,7 +75,7 @@ namespace Server.Spells
 
             m_SouffleTable.Add(m, 0);
 
-            m.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
+            m.FixedParticles(0x374A, 9, 20, 5016, EffectLayer.Waist);
             m.PlaySound(0x1ED);
         }
 
@@ -87,7 +87,7 @@ namespace Server.Spells
             m_SouffleTable[def] += damage;
             damage = 0;
 
-            def.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
+            def.FixedParticles(0x374A, 9, 20, 5016, EffectLayer.Waist);
             def.PlaySound(0x1ED);
         }
 

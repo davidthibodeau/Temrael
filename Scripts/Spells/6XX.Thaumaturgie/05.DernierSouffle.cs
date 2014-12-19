@@ -75,7 +75,7 @@ namespace Server.Spells
 
             m_SouffleTable.Add(m);
 
-            m.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
+            m.FixedParticles(0x3779, 9, 20, 5016, EffectLayer.Waist);
             m.PlaySound(0x1ED);
         }
 
@@ -84,9 +84,17 @@ namespace Server.Spells
             if (GetSouffle(def))
             {
                 if (def.Hits <= 1)
+                {
                     damage = 0;
+                    def.FixedParticles(0x3779, 9, 20, 5016, EffectLayer.Waist);
+                    def.PlaySound(0x1ED);
+                }
                 else if (def.Hits - damage < 1)
+                {
                     damage = def.Hits - 1;
+                    def.FixedParticles(0x3779, 9, 20, 5016, EffectLayer.Waist);
+                    def.PlaySound(0x1ED);
+                }
             }
         }
 
