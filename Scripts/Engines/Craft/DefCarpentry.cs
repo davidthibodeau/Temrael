@@ -99,6 +99,11 @@ namespace Server.Engines.Craft
 
             #region Matériaux
 
+            index = AddCraft(typeof(Nails), "Matériaux", "Clou (un)", 0.0, 5.0, typeof(FerIngot), "Lingot de fer", 1, 1044037);
+
+            index = AddCraft(typeof(Nails), "Matériaux", "Clou (tous)", 0.0, 5.0, typeof(FerIngot), "Lingot de fer", 1, 1044037);
+            SetUseAllRes(index, true);
+
             index = AddCraft(typeof(Kindling), "Matériaux", "Branchette (une)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
 
             index = AddCraft(typeof(Kindling), "Matériaux", "Branchette (toutes)", 0.0, 5.0, typeof(Log), "Bûche", 1, 1044351);
