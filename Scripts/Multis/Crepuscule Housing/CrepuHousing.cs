@@ -31,10 +31,10 @@ namespace Server.Items
 
         private Point3D m_Point1;
         private Point3D m_Point2;
-        private LockableContainer m_Container;
+        private Container m_Container;
         private Point3D m_BootLocation;
 
-
+        #region Propriétés
         [CommandProperty(AccessLevel.Batisseur)]
         public Mobile[] CoProprio
         {
@@ -106,7 +106,7 @@ namespace Server.Items
         }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public LockableContainer LockableContainer
+        public Container DumpContainer
         {
             get { return m_Container; }
             set { m_Container = value; }
@@ -118,13 +118,15 @@ namespace Server.Items
             get { return m_BootLocation; }
             set { m_BootLocation = value; }
         }
+        #endregion
 
         public BoiteAuLettreComponent(int dir)
             : base(0x1ED4)
         {
             if (dir == 1)
                 ItemID = 0x1ED7;
-            SetName();
+            Name = "Batiment";
+
             Proprio = null;
 
             if (m_InstancesList == null)
@@ -141,15 +143,178 @@ namespace Server.Items
             base.Delete();
         }
 
-        private void SetName()
-        {
-            Name = "Batiment";
-        }
-
         public BoiteAuLettreComponent(Serial serial)
             : base(serial)
         {
             Proprio = null;
+        }
+
+        // Enlève le montant d'or à payer pour la location au propriétaire, et leur enlève la maison si ils n'ont pas l'or.
+        public static void WeeklyPay()
+        {
+            if (m_InstancesList != null)
+            {
+                if (m_InstancesList.Count > 0)
+                {
+                    foreach (BoiteAuLettreComponent item in m_InstancesList)
+                    {
+                        if (item != null && item.m_Owned && item.m_Proprio != null)
+                        {
+                            if (!Banker.Withdraw(item.m_Proprio, item.PrixLocation))
+                            {
+                                item.m_Proprio.SendMessage("Vous n'avez pas assez d'argent sur votre compte, votre maison a été mise en vente !");
+                                item.Disown();
+                            }
+                            else
+                            {
+                                item.m_Proprio.SendMessage("Un paiement de " + item.PrixLocation + " a été fait pour votre maison.");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Louer(Mobile from)
+        {
+            if (!Banker.Withdraw(from, this.PrixLocation))
+                from.SendMessage("Vous n'avez pas assez d'argent sur votre compte.");
+            else
+            {
+                from.SendMessage("Vous louez le batiment.");
+                Proprio = from;
+                m_Owned = true;
+                from.SendMessage("Sous quel nom voulez-vous l'enregistrer ?");
+                from.Prompt = new OwnerNamePrompt(this);
+            }
+        }
+
+        public void Disown()
+        {
+            if (Proprio != null)
+            {
+                Proprio.SendMessage("Vous ne possédez plus votre maison.");
+
+                foreach (Mobile m in CoProprio)
+                    if (m != null)
+                        m.SendMessage("Vous ne possédez plus votre maison.");
+
+                if (Porte1 != null)
+                {
+                    Porte1.KeyValue = 0;
+                    Porte1.Locked = true;
+                }
+                if (Porte2 != null)
+                {
+                    Porte2.KeyValue = 0;
+                    Porte2.Locked = true;
+                }
+
+                DumpItems();
+
+                BootMobiles();
+
+                Proprio = null;
+                CoProprio = new Mobile[] { null, null, null };
+                m_Owned = false;
+            }
+        }
+        // Deux sous fonctions qui permettent de vider la zone de location, lorsque le proprio perd la maison.
+        private void DumpItems()
+        {
+            if (m_Container != null)
+            {
+                WoodenBox b = new WoodenBox();
+                b.MaxItems = int.MaxValue;
+                b.Name = m_OwnerName;
+
+                List<Item> toMove = new List<Item>();
+                Rectangle2D rect = new Rectangle2D(RegionPoint1, RegionPoint2);
+                IPooledEnumerable<Item> list = Map.Felucca.GetItemsInBounds(rect);
+
+                foreach (Item i in list)
+                {
+                    if (i != null)
+                    {
+                        toMove.Add(i);
+                    }
+                }
+                list.Free();
+
+                for (int i = 0; i < toMove.Count; ++i)
+                {
+                    b.DropItem(toMove[i]);
+                }
+
+                // Seulement ouvrable par le owner, qui obtient une nouvelle clef à chaque fois.
+                GenerateKey.GenerateNewKey(m_Proprio, b, 1);
+                b.Locked = true;
+
+                // Ajout de la boite lockée dans le container lié à la maison.
+                m_Container.DropItem(b);
+                b.CanBeAltered = false;
+                b.Movable = false;
+            }
+        }
+        private void BootMobiles()
+        {
+            if (m_BootLocation.X != 0 && m_BootLocation.Y != 0)
+            {
+                List<Mobile> toBoot = new List<Mobile>();
+
+                Rectangle2D rect = new Rectangle2D(RegionPoint1, RegionPoint2);
+
+                // Ajout des joueurs déconnectés à la liste de boot.
+                Region regionDC = new Region("Loc", Map.Felucca, 0, rect);
+                foreach (Mobile m in World.Mobiles.Values)
+                {
+                    if (m != null)
+                    {
+                        if (regionDC.Contains(m.LogoutLocation) && !m.IsConnected)
+                        {
+                            toBoot.Add(m);
+                        }
+                    }
+                }
+
+                // Ajout des joueurs connectés à la liste de boot.
+                IPooledEnumerable<Mobile> list = Map.Felucca.GetMobilesInBounds(rect);
+                foreach (Mobile m in list)
+                {
+                    if (m != null && !toBoot.Contains(m)) // Better be safe than sorry.
+                    {
+                        toBoot.Add(m);
+                    }
+                }
+                list.Free();
+
+                // Application du boot.
+                for (int i = 0; i < toBoot.Count; ++i)
+                {
+                    Mobile m = toBoot[i];
+
+                    m.Location = m_BootLocation;
+                    m.LogoutLocation = m_BootLocation;
+                }
+            }
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            from.CloseGump(typeof(InternalGump));
+            from.SendGump(new InternalGump(from, this));
+        }
+
+        public void AddCoproprio(Mobile target, Mobile from)
+        {
+            for (int i = 0; i < CoProprio.Length; i++)
+            {
+                if (CoProprio[i] == null)
+                {
+                    CoProprio[i] = (Mobile)target;
+                    return;
+                }
+            }
         }
 
         #region Serialize/Deserialize
@@ -206,183 +371,6 @@ namespace Server.Items
             m_InstancesList.Add(this); // Permettrait d'ajouter les items existants à la Deserialization à la place de saver les instances... ça fonctionnerait ?
         }
         #endregion
-
-        public void Louer(Mobile from)
-        {
-            if (from is PlayerMobile)
-            {
-                PlayerMobile rpm = (PlayerMobile)from;
-                if (!Banker.Withdraw(from, this.PrixLocation))
-                    from.SendMessage("Vous n'avez pas assez d'argent sur votre compte.");
-                else
-                {
-                    from.SendMessage("Vous louez le batiment.");
-                    Proprio = from;
-                    m_Owned = true;
-                    from.SendMessage("Sous quel nom voulez-vous l'enregistrer ?");
-                    from.Prompt = new OwnerNamePrompt(this);
-                }
-            }
-        }
-
-        public void Disown()
-        {
-            if (Proprio != null)
-            {
-                Proprio.SendMessage("Vous ne possédez plus votre maison.");
-
-                foreach (Mobile m in CoProprio)
-                    if (m != null)
-                        m.SendMessage("Vous ne possédez plus votre maison.");
-
-                if (Porte1 != null)
-                {
-                    Porte1.KeyValue = 0;
-                    Porte1.Locked = true;
-                }
-                if (Porte2 != null)
-                {
-                    Porte2.KeyValue = 0;
-                    Porte2.Locked = true;
-                }
-
-                FlushItems();
-
-                BootMobiles();
-
-                Proprio = null;
-                CoProprio = new Mobile[] { null, null, null };
-                m_Owned = false;
-            }
-        }
-
-        private void FlushItems()
-        {
-            if (m_Container != null)
-            {
-                WoodenBox b = new WoodenBox();
-                b.MaxItems = int.MaxValue;
-                b.Name = m_OwnerName;
-
-                List<Item> toMove = new List<Item>();
-                Rectangle2D rect = new Rectangle2D(RegionPoint1, RegionPoint2);
-                IPooledEnumerable<Item> list = Map.Felucca.GetItemsInBounds(rect);
-
-                foreach (Item i in list)
-                {
-                    if (i != null)
-                    {
-                        toMove.Add(i);
-                    }
-                }
-                list.Free();
-
-                for (int i = 0; i < toMove.Count; ++i)
-                {
-                    b.DropItem(toMove[i]);
-                }
-
-                // Seulement ouvrable par le owner, qui obtient une nouvelle clef à chaque fois.
-                GenerateKey.GenerateNewKey(m_Proprio, b, 1);
-                b.Locked = true;
-
-                // Ajout de la boite lockée dans le container lié à la maison.
-                m_Container.DropItem(b);
-                b.CanBeAltered = false;
-                b.Movable = false;
-            }
-        }
-
-        private void BootMobiles()
-        {
-            if (m_BootLocation.X != 0 && m_BootLocation.Y != 0)
-            {
-                List<Mobile> toBootC = new List<Mobile>();
-                List<Mobile> toBootDC = new List<Mobile>();
-                Rectangle2D rect = new Rectangle2D(RegionPoint1, RegionPoint2);
-                IPooledEnumerable<Mobile> listC = Map.Felucca.GetMobilesInBounds(rect);
-                IPooledEnumerable<Mobile> listDC = Map.Internal.GetMobilesInBounds(rect);
-
-                #region Déconnecté
-                foreach (Mobile m in listDC)
-                {
-                    if (m != null)
-                    {
-                        toBootDC.Add(m);
-                    }
-                }
-                listDC.Free();
-
-                for (int i = 0; i < toBootDC.Count; ++i)
-                {
-                    Mobile m = toBootDC[i];
-
-                    m.MoveToWorld(m_BootLocation, Map.Internal);
-                }
-                #endregion
-
-                #region Connecté
-                foreach (Mobile m in listC)
-                {
-                    if (m != null && !toBootC.Contains(m))
-                    {
-                        toBootC.Add(m);
-                    }
-                }
-                listC.Free();
-
-                for (int i = 0; i < toBootC.Count; ++i)
-                {
-                    Mobile m = toBootC[i];
-
-                    m.MoveToWorld(m_BootLocation, Map.Felucca);
-                }
-                #endregion
-            }
-        }
-
-        public static void WeeklyPay()
-        {
-            if (m_InstancesList != null)
-            {
-                if (m_InstancesList.Count > 0)
-                {
-                    foreach (BoiteAuLettreComponent item in m_InstancesList)
-                    {
-                        if (item != null && item.m_Owned && item.m_Proprio != null)
-                        {
-                            if (!Banker.Withdraw(item.m_Proprio, item.PrixLocation))
-                            {
-                                item.m_Proprio.SendMessage("Vous n'avez pas assez d'argent sur votre compte, votre maison a été mise en vente !");
-                                item.Disown();
-                            }
-                            else
-                            {
-                                item.m_Proprio.SendMessage("Un paiement de " + item.PrixLocation + " a été fait pour votre maison.");
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        public override void OnDoubleClick(Mobile from)
-        {
-            from.CloseGump(typeof(InternalGump));
-            from.SendGump(new InternalGump(from, this));
-        }
-
-        public void AddCoproprio(Mobile target, Mobile from)
-        {
-            for (int i = 0; i < CoProprio.Length; i++)
-            {
-                if (CoProprio[i] == null)
-                {
-                    CoProprio[i] = (Mobile)target;
-                    return;
-                }
-            }
-        }
     }
 
     public class OwnerNamePrompt : Prompt
