@@ -32,10 +32,10 @@ namespace Server.Commandes
             {
                 if (targeted is Item)
                 {
-                    Type t = targeted.GetType();
                     foreach (Mobile m in World.Mobiles.Values)
                     {
-                        m.AddToBackpack( (Item)Activator.CreateInstance(t) );
+                        Item i = Dupe.DupeItem( null, (Item)targeted, true);
+                        m.AddToBackpack(i);
                     }
                 }
                 else

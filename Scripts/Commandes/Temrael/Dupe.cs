@@ -102,7 +102,9 @@ namespace Server.Commands
             object o = Construct(t);
             if (o == null)
             {
-                from.SendMessage("Unable to dupe {0}. Item must have a 0 parameter constructor.", t.Name);
+                if (from != null)
+                    from.SendMessage("Unable to dupe {0}. Item must have a 0 parameter constructor.", t.Name);
+
                 return null;
             }
 
@@ -120,7 +122,7 @@ namespace Server.Commands
                     newContainer.Items.Clear(); // if container object type adds items in its constructor, we need to remove them.
                     for (int i = 0; i < srcContainer.Items.Count; i++)
                     {
-                        Item a = DupeItem(from, srcContainer.Items, true);
+                        Item a = DupeItem(from, srcContainer.Items[i], true);
 
                         if (a != null)
                         {
