@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Accounting\AccountMerging.cs" />
     <Compile Include="Commandes\ConversionXP.cs" />
+    <Compile Include="Commandes\Temrael\Hohoho.cs" />
     <Compile Include="Commandes\Temrael\AddRandom.cs" />
     <Compile Include="Commandes\Temrael\GenerateKey.cs" />
     <Compile Include="Commandes\Temrael\Reveler.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Mobiles\Vendeurs\Boulanger.cs" />
     <Compile Include="Mobiles\Vendeurs\Cordonnier.cs" />
     <Compile Include="Mobiles\Vendeurs\Couturier.cs" />
+    <Compile Include="Mobiles\Vendeurs\Dresseur.cs" />
     <Compile Include="Mobiles\Vendeurs\Eclaireur.cs" />
     <Compile Include="Mobiles\Vendeurs\Forgeron1.cs" />
     <Compile Include="Mobiles\Vendeurs\Forgeron2.cs" />
