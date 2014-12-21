@@ -110,7 +110,10 @@ namespace Server.Engines.Races
         public static void SerializeRace(Race race, GenericWriter writer)
         {
             if (race == null)
+            {
                 writer.Write(AucuneRace.RaceId);
+                new AucuneRace().Serialize(writer);
+            }
             else
             {
                 writer.Write(race.Id);
