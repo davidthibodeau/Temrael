@@ -14,7 +14,7 @@ namespace Server.Engines.Combat
             double parry = def.Skills[SkillName.Parer].Value;
             double chance = 0;
 
-            if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
+            if (Weapon(def).Layer == Layer.OneHanded)
                 chance = GetBonus(parry, 0.6, 5);
             else
                 chance = GetBonus(parry, 0.15, 2.5);
