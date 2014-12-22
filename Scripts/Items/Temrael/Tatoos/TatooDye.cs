@@ -15,6 +15,7 @@ namespace Server.Items
             : base(0xEFF)
         {
             Name = "Encre a tatouage";
+            GoldValue = 30;
             Weight = 1.0;
         }
 

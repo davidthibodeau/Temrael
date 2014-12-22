@@ -89,6 +89,7 @@ namespace Server.Mobiles.Vendeurs
                 //Add(new GenericBuyInfo(typeof(DisguiseKit), 20, 0x1EBA, 0)); // 6
                 Add(new GenericBuyInfo(typeof(SewingKit), 20, 0xF9D, 0)); // 3
                 Add(new GenericBuyInfo(typeof(HairDye), 20, 0xEFF, 0)); // 6
+                Add(new GenericBuyInfo(typeof(TatooDye), 20, 0xEFF,0));
                 Add(new GenericBuyInfo(typeof(Bag), 20, 0xE76, 0)); // 6
             }
         }
