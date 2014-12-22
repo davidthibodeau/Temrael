@@ -107,6 +107,8 @@
     <Compile Include="Engines\Evolution\TransfertGump.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\Targuemont.cs" />
     <Compile Include="Engines\Hiding\Detection.cs" />
+    <Compile Include="Misc\Institutions\InstitutionGump.cs" />
+    <Compile Include="Misc\Institutions\InstitutionHandler.cs" />
     <Compile Include="Engines\Mort\Auxiliaires.cs" />
     <Compile Include="Engines\Mort\ContratAssassinat.cs" />
     <Compile Include="Engines\Equitation.cs" />

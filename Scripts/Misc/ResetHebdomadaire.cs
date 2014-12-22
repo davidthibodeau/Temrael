@@ -52,6 +52,8 @@ namespace Server.Misc
 
             Acheteur.Reset();
 
+            InstitutionHandler.Pay(); // Salaire venant des institutions.
+
             BoiteAuLettreComponent.WeeklyPay(); // Paiement des maisons.
 
             LastReset = DateTime.Now;
