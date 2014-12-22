@@ -17,15 +17,15 @@ namespace Server.Items
         private Dictionary<Mobile, int> m_Mobiles;  // Mobile --- Rang.
         private List<Mobile> m_RegisteredMobiles;   // Contient tous ceux qui ont déjà joint cette institution. (Empêche l'abus du rang 1)
 
-        public const int NBRANK = 4;
+        public const int RANKMAX = 3;
         public List<Container> m_Containers;    // Contient les containers à duper lors du rankup.
         public List<String> m_RangTitre;        // Contient les titres des différents échelons.
         private readonly int[] m_RangSalaire =  // Contient les salaires des différents échelons.
         {
-            250,
-            500,
-            1000,
-            1500
+            250, // Rang 0. Matelot etc.
+            500, // Rang 1.
+            1000,// Rang 2.
+            1500 // Rang 3.
         };
         #endregion
 
@@ -105,33 +105,39 @@ namespace Server.Items
         /// <summary>
         /// Trouve le titre lié au rang passé en paramètre.
         /// </summary>
-        /// <param name="rank">Le rang, doit être entre 1 et 5 [].</param>
+        /// <param name="rank">Le rang, doit être entre 0 et RANKMAX.</param>
         /// <returns>Une string contenant le titre lié au rang.</returns>
         public String GetTitre(int rank)
         {
-            try
+            if (CheckValidRank(rank))
             {
-                return m_RangTitre[rank];
+                try
+                {
+                    return m_RangTitre[rank];
+                }
+                catch (Exception)
+                {
+                }
             }
-            catch (Exception)
-            {
-            }
-            return "NON INITIALISÉ";
+            return "NON VALIDE";
         }
 
         /// <summary>
         /// Trouve le salaire lié au rang passé en paramètre.
         /// </summary>
-        /// <param name="rank">Le rang, doit être entre 1 et 5 [].</param>
+        /// <param name="rank">Le rang, doit être entre 0 et RANKMAX.</param>
         /// <returns>Une string contenant le salaire lié au rang.</returns>
         public int GetSalaire(int rank)
         {
-            try
+            if (CheckValidRank(rank))
             {
-                return m_RangSalaire[rank];
-            }
-            catch (Exception)
-            {
+                try
+                {
+                    return m_RangSalaire[rank];
+                }
+                catch (Exception)
+                {
+                }
             }
             return 0;
         }
@@ -153,7 +159,7 @@ namespace Server.Items
 
                 if (!m_Mobiles.ContainsKey(m))
                 {
-                    m_Mobiles.Add(m, 0); // Rang 0 par défaut, augmenté à 1 juste après pour dropper l'item lié au rang.
+                    m_Mobiles.Add(m, -1); // Rang -1 par défaut, augmenté à 0 juste après pour dropper l'item lié au rang.
                     RankUp(m);
                 }
             }
@@ -186,10 +192,10 @@ namespace Server.Items
         {
             if (m_Mobiles.ContainsKey(m))
             {
-                if (m_Mobiles[m] < NBRANK)
+                m_Mobiles[m]++;
+                if (CheckValidRank(m_Mobiles[m]))
                 {
-                    m_Mobiles[m]++;
-                    if (!(m_RegisteredMobiles.Contains(m) && (m_Mobiles[m]-1) == 1)) // Si l'ancien rang == 1.
+                    if (!(m_RegisteredMobiles.Contains(m) && (m_Mobiles[m]-1) == -1)) // Si l'ancien rang == -1.
                     {
                         if (m_Containers[m_Mobiles[m]] != null)
                         {
@@ -208,13 +214,18 @@ namespace Server.Items
         {
             if (m_Mobiles.ContainsKey(m))
             {
-                if (m_Mobiles[m] > 1)
+                if (CheckValidRank(m_Mobiles[m]))
                 {
                     m_Mobiles[m]--;
                 }
             }
         }
         #endregion
+
+        bool CheckValidRank(int rank)
+        {
+            return (rank >= 0 && rank <= RANKMAX);
+        }
 
         #endregion
 
