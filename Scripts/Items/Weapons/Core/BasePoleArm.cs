@@ -41,12 +41,10 @@ namespace Server.Items
 		public BasePoleArm( int itemID ) : base( itemID )
 		{
 			m_UsesRemaining = 150;
-            Layer = Layer.TwoHanded;
 		}
 
 		public BasePoleArm( Serial serial ) : base( serial )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public override void OnDoubleClick( Mobile from )

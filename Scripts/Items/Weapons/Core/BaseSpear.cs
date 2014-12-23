@@ -17,12 +17,10 @@ namespace Server.Items
 
 		public BaseSpear( int itemID ) : base( itemID )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public BaseSpear( Serial serial ) : base( serial )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public override void Serialize( GenericWriter writer )

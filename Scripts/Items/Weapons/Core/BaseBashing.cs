@@ -17,12 +17,10 @@ namespace Server.Items
 
 		public BaseBashing( int itemID ) : base( itemID )
 		{
-            Layer = Layer.OneHanded;
 		}
 
 		public BaseBashing( Serial serial ) : base( serial )
 		{
-            Layer = Layer.OneHanded;
 		}
 
 		public override void Serialize( GenericWriter writer )

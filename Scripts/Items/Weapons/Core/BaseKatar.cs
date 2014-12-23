@@ -18,12 +18,10 @@ namespace Server.Items
 
 		public BaseKatar( int itemID ) : base( itemID )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public BaseKatar( Serial serial ) : base( serial )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public override void Serialize( GenericWriter writer )

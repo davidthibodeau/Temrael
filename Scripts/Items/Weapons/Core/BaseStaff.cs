@@ -14,12 +14,10 @@ namespace Server.Items
 
 		public BaseStaff( int itemID ) : base( itemID )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public BaseStaff( Serial serial ) : base( serial )
 		{
-            Layer = Layer.TwoHanded;
 		}
 
 		public override void Serialize( GenericWriter writer )
