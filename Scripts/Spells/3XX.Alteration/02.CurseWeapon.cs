@@ -25,7 +25,7 @@ namespace Server.Spells
             );
 
 
-        public static double LifestealPercentMax = 0.3;
+        public static double LifestealPercentMax = 0.5;
 
 		public CurseWeaponSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{

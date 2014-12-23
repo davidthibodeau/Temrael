@@ -72,7 +72,7 @@ namespace Server.Spells
 				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
 				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
-                double duration = 40;
+                double duration = 60;
 
                 duration *= Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
