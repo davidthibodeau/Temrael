@@ -145,6 +145,14 @@ namespace Server
 
 					break;
 				}
+                case 2:
+                {
+                    m_Base = (ushort)reader.ReadShort();
+                    m_Cap = (ushort)reader.ReadShort();
+                    m_Lock = (SkillLock)reader.ReadByte();
+
+                    break;
+                }
 				default:
 				{
 					if ( (version & 0xC0) == 0x00 )
@@ -191,34 +199,11 @@ namespace Server
 
 		public void Serialize( GenericWriter writer )
 		{
-			if ( m_Base == 0 && m_Cap == 1000 && m_Lock == SkillLock.Locked )
-			{
-				writer.Write( (byte) 0xFF ); // default
-			}
-			else
-			{
-				int flags = 0x0;
+            writer.Write((byte)2); // version
 
-				if ( m_Base != 0 )
-					flags |= 0x1;
-
-				if ( m_Cap != 1000 )
-					flags |= 0x2;
-
-				if ( m_Lock != SkillLock.Locked )
-					flags |= 0x4;
-
-				writer.Write( (byte) flags ); // version
-
-				if ( m_Base != 0 )
-					writer.Write( (short) m_Base );
-
-				if ( m_Cap != 1000 )
-					writer.Write( (short) m_Cap );
-
-				if ( m_Lock != SkillLock.Locked )
-					writer.Write( (byte) m_Lock );
-			}
+            writer.Write(m_Base);
+            writer.Write((short)m_Cap);
+            writer.Write((byte)m_Lock);
 		}
 
 		public Skills Owner
