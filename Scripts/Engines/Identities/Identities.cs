@@ -27,6 +27,7 @@ namespace Server.Engines.Identities
         private Identity m_currentIdentity;
         private Identity couranteNonCachee;
 
+        // Note: transformation a besoin d'ajustements pour fonctionner avec les transformations aasimar/tieffelin
         private Identity baseIdentity;
         private Identity transformationIdentity;
         private Identity[] deguisements;
@@ -204,16 +205,23 @@ namespace Server.Engines.Identities
 
         public void Transformer()
         {
-            m_currentIdentity = transformationIdentity;
+            if (m_currentIdentity == idCachee)
+                couranteNonCachee = transformationIdentity;
+            else
+                m_currentIdentity = transformationIdentity;
+
             transformationIdentity[m_Mobile] = m_Mobile.Name;
             m_Mobile.SendMessage("Vous êtes maintenant transformé.");
         }
 
         public void Detransformer()
         {
-            if (m_currentIdentity != transformationIdentity)
-                return;
+            if (m_currentIdentity == idCachee)
+                couranteNonCachee = baseIdentity;
+            else
+                m_currentIdentity = transformationIdentity;
 
+            //Note: La forme actuelle va retirer les deguisements.
             m_currentIdentity = baseIdentity;
             m_Mobile.SendMessage("Vous reprenez votre forme originelle.");
         }
