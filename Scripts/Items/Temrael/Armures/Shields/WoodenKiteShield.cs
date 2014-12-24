@@ -14,6 +14,7 @@ namespace Server.Items
         public override int InitMaxHits { get { return ShldWoodnKite.max_Durabilite; } }
 
         public override int BaseStrReq { get { return ShldWoodnKite.force_Requise; } }
+        public override int BaseDexBonus { get { return ShldWoodnKite.malus_Dex; } }
 
 		[Constructable]
 		public WoodenKiteShield() : base( 0x1B79 )
