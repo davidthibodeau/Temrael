@@ -1535,6 +1535,12 @@ namespace Server.Mobiles
 			if ( !base.CheckEquip( item ) )
 				return false;
 
+            if (BandageContext.m_Table.Contains(this))
+            {
+                this.SendMessage("Vous ne pouvez pas équiper un arme en vous soignant.");
+                return false;
+            }
+
 			if ( this.AccessLevel < AccessLevel.Batisseur && item.Layer != Layer.Mount && this.HasTrade )
 			{
 				BounceInfo bounce = item.GetBounce();

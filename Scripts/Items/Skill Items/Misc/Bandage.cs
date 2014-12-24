@@ -218,7 +218,7 @@ namespace Server.Items
             m_Timer = null;
         }
 
-        private static Hashtable m_Table = new Hashtable();
+        public static Hashtable m_Table = new Hashtable();
 
         public static BandageContext GetContext(Mobile healer)
         {
