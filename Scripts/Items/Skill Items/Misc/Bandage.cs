@@ -197,6 +197,7 @@ namespace Server.Items
         {
             m_Healer.SendLocalizedMessage(500961); // Your fingers slip!
             ++m_Slips;
+            StopHeal();
         }
 
         public BandageContext(Mobile healer, Mobile patient, TimeSpan delay)
@@ -238,6 +239,9 @@ namespace Server.Items
         public void EndHeal()
         {
             StopHeal();
+
+            if (Slips != 0)
+                return;
 
             int healerNumber = -1, patientNumber = -1;
             bool playSound = true;
@@ -413,7 +417,7 @@ namespace Server.Items
                 if (onSelf)
                 {
                     //seconds = AOS.GeneralTimeScaling * (9.4 + (0.6 * ((double)(120 - dex) / 10)));
-                    seconds = 6.0 + (100 - (healer.Skills[SkillName.Soins].Value)) / 10;
+                    seconds = 10.0 + (100 - (healer.Skills[SkillName.Soins].Value)) / 10;
                 }
                 else
                 {

@@ -307,6 +307,10 @@ namespace Server.Spells
                 {
                     Caster.LocalOverheadMessage(MessageType.Regular, 0, true, "Vous n'avez pas assez de mana pour lancer ce sort.");
                 }
+                else if (BandageContext.m_Table.Contains(Caster))
+                {
+                    Caster.SendMessage("Vous ne pouvez pas lancer de sort tout en vous soignant avec des bandages.");
+                }
                 else if (Caster.Spell == null && Caster.CheckSpellCast(this) && CheckCast() && Caster.Region.OnBeginSpellCast(Caster, this))
                 {
                     return true;

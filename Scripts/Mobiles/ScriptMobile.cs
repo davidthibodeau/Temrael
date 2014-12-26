@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Spells;
+using Server.Items;
 
 namespace Server.Mobiles
 {
@@ -99,6 +100,9 @@ namespace Server.Mobiles
             AdrenalineSpell.GetOnHitEffect(this, ref damage);
 
             Stam -= (int)(amount * 0.60);
+
+            if (BandageContext.m_Table.Contains(this))
+                BandageContext.GetContext(this).Slip();
 
             base.Damage((int)damage, from);
         }

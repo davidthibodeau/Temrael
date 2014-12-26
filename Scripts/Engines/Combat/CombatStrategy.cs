@@ -26,12 +26,19 @@ namespace Server.Engines.Combat
         /// <returns>Le délai nécessaire avant de pouvoir porter le prochain coup.</returns>
         public int Sequence(Mobile atk, Mobile def)
         {
-            if (Toucher(atk, def))
-                OnHit(atk, def);
-            else
-                OnMiss(atk, def);
+            if (!BandageContext.m_Table.Contains(atk))
+            {
+                if (Toucher(atk, def))
+                    OnHit(atk, def);
+                else
+                    OnMiss(atk, def);
 
-            CheckEquitationAttaque(atk);
+                CheckEquitationAttaque(atk);
+            }
+            else
+            {
+                atk.SendMessage("Vous ne pouvez pas vous battre tout en vous soignant avec des bandages.");
+            }
             
             return ProchaineAttaque(atk);
         }
