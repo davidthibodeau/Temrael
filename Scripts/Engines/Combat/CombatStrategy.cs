@@ -235,7 +235,7 @@ namespace Server.Engines.Combat
         #region Coup Critique
         public int CritiqueManaCost(double degats)
         {
-            return (int)(degats * 1.5);
+            return (int)(degats * 0.75);
         }
 
         public bool Critique(Mobile atk)
