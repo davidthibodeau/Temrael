@@ -83,15 +83,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    //case 20: return 2;
-                    //case 25: return 3;
-                    case 30: return 5;
-                    case 35: return 7;
-                    case 40: return 9;
-                    case 45: return 10;
-                    case 50: return 12;
-                    case 55: return 14;
-                    case 60: return 16;
+                    case 30: return 2;
+                    case 35: return 3;
+                    case 40: return 5;
+                    case 45: return 7;
+                    case 50: return 9;
+                    case 55: return 10;
+                    case 60: return 12;
                     default: return 0;
                 }
             }
@@ -99,15 +97,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    //case 20: return 4;
-                    //case 25: return 6;
-                    case 30: return 7;
-                    case 35: return 9;
-                    case 40: return 11;
-                    case 45: return 13;
-                    case 50: return 14;
-                    case 55: return 16;
-                    case 60: return 18;
+                    case 30: return 4;
+                    case 35: return 6;
+                    case 40: return 7;
+                    case 45: return 9;
+                    case 50: return 11;
+                    case 55: return 13;
+                    case 60: return 14;
                     default: return 0;
                 }
             }
@@ -120,15 +116,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    //case 20: return 5;
-                    //case 25: return 7;
-                    case 30: return 9;
-                    case 35: return 11;
-                    case 40: return 13;
-                    case 45: return 15;
-                    case 50: return 17;
-                    case 55: return 19;
-                    case 60: return 21;
+                    case 30: return 5;
+                    case 35: return 7;
+                    case 40: return 9;
+                    case 45: return 11;
+                    case 50: return 13;
+                    case 55: return 15;
+                    case 60: return 17;
                     default: return 0;
                 }
             }
@@ -136,15 +130,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    //case 20: return 7;
-                    //case 25: return 10;
-                    case 30: return 12;
-                    case 35: return 14;
-                    case 40: return 16;
-                    case 45: return 18;
-                    case 50: return 19;
-                    case 55: return 22;
-                    case 60: return 24;
+                    case 30: return 7;
+                    case 35: return 10;
+                    case 40: return 12;
+                    case 45: return 14;
+                    case 50: return 16;
+                    case 55: return 18;
+                    case 60: return 19;
                     default: return 0;
                 }
             }
