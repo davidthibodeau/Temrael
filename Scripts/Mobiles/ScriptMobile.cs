@@ -98,7 +98,7 @@ namespace Server.Mobiles
 
             AdrenalineSpell.GetOnHitEffect(this, ref damage);
 
-            Stam -= (int)(amount * 0.75);
+            Stam -= (int)(amount * 0.60);
 
             base.Damage((int)damage, from);
         }
