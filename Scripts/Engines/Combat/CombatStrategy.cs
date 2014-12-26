@@ -290,8 +290,8 @@ namespace Server.Engines.Combat
         /// <returns>Retourne le délai entre deux attaques en dixième de seconde.</returns>
         public double Vitesse(Mobile atk)
         {
-            // 30 speed minimum pour les armes - 66.666..% * 30 = 10. Le minimum d'AS est de 10.
-            double s = Weapon(atk).Speed - (Weapon(atk).Speed * (0.6666666 * atk.Stam / 225));
+            //Par tranche de 50 de stam, on retire 0.25 secondes (ou 0.1 secondes tous les 20 de stam)
+            double s = Weapon(atk).Speed - atk.Stam / 10;
 
 
             //Le délai minimal est de 1 secondes entre deux attaques.
