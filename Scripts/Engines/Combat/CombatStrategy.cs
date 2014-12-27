@@ -150,7 +150,7 @@ namespace Server.Engines.Combat
             double atkvalue = atk.Skills[ToucherSkill].Value;
             double defvalue = def.Skills[(def.Weapon as BaseWeapon).Strategy.ToucherSkill].Value;
 
-            double chance = (atkvalue + 20.0) * 100 / ((defvalue + 20.0) * 200);
+            double chance = (atkvalue + 20.0) * 150 / ((defvalue + 20.0) * 200);
 
             return chance;
         }
@@ -188,8 +188,8 @@ namespace Server.Engines.Combat
             }
 
             double strBonus = GetBonus(atk.Str, 0.3, 5);
-            double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.625, 6.25);
-            double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.5, 5);
+            double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.5, 5);
+            double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.35, 3.5);
 
             double exceptBonus = 0;
 
@@ -298,7 +298,7 @@ namespace Server.Engines.Combat
         public double Vitesse(Mobile atk)
         {
             //Par tranche de 50 de stam, on retire 0.25 secondes (ou 0.1 secondes tous les 20 de stam)
-            double s = Weapon(atk).Speed - atk.Stam / 10;
+            double s = Weapon(atk).Speed - (((double)atk.Stam / (double)atk.StamMax) * 20); // 0 à 2 secondes d'AS bonus.
 
 
             //Le délai minimal est de 1 secondes entre deux attaques.

@@ -313,12 +313,10 @@ namespace Server.Items
 		{
 			get
 			{
-				if ( m_Speed != -1 )
-					return m_Speed;
+			    if ( m_Speed != -1 )
+				    return m_Speed;
 
-					return DefSpeed;
-
-
+				return DefSpeed;
 			}
 			set{ m_Speed = value; InvalidateProperties(); }
 		}
@@ -950,7 +948,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -1033,7 +1031,7 @@ namespace Server.Items
 				writer.Write( (int) m_MissSound );
 
 			if ( GetSaveFlag( flags, SaveFlag.Speed ) )
-				writer.Write( (float) m_Speed );
+				writer.Write( (int) m_Speed );
 
 			if ( GetSaveFlag( flags, SaveFlag.MaxRange ) )
 				writer.Write( (int) m_MaxRange );
@@ -1173,10 +1171,20 @@ namespace Server.Items
             else
                 m_MissSound = -1;
 
-            if (GetSaveFlag(flags, SaveFlag.Speed))
-                m_Speed = reader.ReadInt();
+            if (version == 1)
+            {
+                if (GetSaveFlag(flags, SaveFlag.Speed))
+                    m_Speed = reader.ReadInt();
+                else
+                    m_Speed = -1;
+            }
             else
-                m_Speed = -1;
+            {
+                if (GetSaveFlag(flags, SaveFlag.Speed))
+                    m_Speed = (int) reader.ReadFloat(); // CANCER ALERT, CANCER ALERT.
+                else
+                    m_Speed = -1;
+            }
 
             if (GetSaveFlag(flags, SaveFlag.MaxRange))
                 m_MaxRange = reader.ReadInt();
