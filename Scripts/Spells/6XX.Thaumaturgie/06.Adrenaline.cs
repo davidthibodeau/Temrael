@@ -114,9 +114,11 @@ namespace Server.Spells
 				{
                     m_Target.SendMessage("Votre adrénaline se dissipe.");
 
+                    int dmg = (int)m_SouffleTable[m_Target];
+
                     m_CooldownTable.Add(m_Target);
                     m_SouffleTable.Remove(m_Target);
-                    m_Target.Damage((int)m_SouffleTable[m_Target]);
+                    m_Target.Damage(dmg);
 					Stop();
 
                     new CooldownTimer(m_Target, TimeSpan.FromSeconds(dureeCooldown)).Start();
