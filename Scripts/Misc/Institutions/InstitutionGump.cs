@@ -214,13 +214,13 @@ namespace Server.Engines.Institutions
             TextRelay relay = info.GetTextEntry(1);
             m_Institution.Description = relay.Text;
 
-            int cpt = 1;
-            foreach( string s in m_Institution.RangTitre)
-            {
-                TextRelay relay2 = info.GetTextEntry(cpt);
-                s = relay2.Text;
-                cpt++;
-            }
+            //int cpt = 1;
+            //foreach( string s in m_Institution.RangTitre)
+            //{
+            //    TextRelay relay2 = info.GetTextEntry(cpt);
+            //    s = relay2.Text;
+            //    cpt++;
+            //}
 
             switch (type)
             {
