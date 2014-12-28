@@ -89,8 +89,9 @@ namespace Server.Engines.Institutions
                 if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
                 {
                     // En faire une boite de texte modifiable, avec m_Institution.Description comme string par défaut ?
-                    AddSection(x, y + (line * scale), 450, 120, "<h3>Description<h3>", "");
-                    AddTextEntry(x, y + (line * scale), 450, 120, 0, 0, m_Institution.Description);
+                    AddHtml(x, y + (line * scale), 450, 20, "<h3>Description<h3>", false, false);
+                    line++;
+                    AddTextEntry(x, y + (line * scale), 450, 160, 0, 0, m_Institution.Description);
                     line += 8;
 
                     // Bouton qui permet de modifier m_Institution.Description
