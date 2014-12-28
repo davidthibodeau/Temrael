@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Server.Mobiles;
 using Server.Commands;
+using Server.Engines.Institutions;
 
 namespace Server.Items
 {
@@ -247,6 +248,11 @@ namespace Server.Items
             m_RegisteredMobiles = new List<Mobile>();
             m_RangTitre = new List<String>();
             m_Containers = new List<Container>();
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            from.SendGump(new InstitutionGump((Mobile)from));
         }
 
         public override void Delete()
