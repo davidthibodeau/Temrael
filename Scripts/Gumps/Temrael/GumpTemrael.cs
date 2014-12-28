@@ -73,6 +73,7 @@ namespace Server.Gumps
 
             int col = _x+m_Colonne;
 
+            if( m_Largeur != 0 && m_Hauteur != 0)
             if (craft)
             {
                 AddBackground(_x + 30, _y + 43, m_Largeur, m_Hauteur + 12, 3500);

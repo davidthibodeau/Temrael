@@ -39,9 +39,11 @@ namespace Server.Engines.Institutions
            joueur au sein de l'institution. Le gump devrait aussi donner l'option de pouvoir ouvrir
            un sac, dans lequel on pourrait mettre les items à duper.
          */
-        private int m_Page;
+
         private Mobile m_From;
-        private string Description = "Ceci est la légion. Elle s’occupe de balbh blah";
+        private int m_Page;
+
+        private InstitutionHandler m_Institution;
 
         int x = 20;
         int y = 20;
@@ -49,82 +51,98 @@ namespace Server.Engines.Institutions
         int line = 0;
         int scale = 25;
 
-        private enum InstitutionPage
-        {
-            None
-        }
-
         public InstitutionGump(Mobile from)
             : this(from, 0)
         {
         }
 
-        private InstitutionGump(Mobile from, int page)
-            : base("",40, 40)
+        public InstitutionGump(Mobile from, int cur_page)
+            : base("", 0, 0)
         {
             m_From = from;
-            m_Page = page;
+            m_Page = cur_page;
+            m_Institution = null;
+            try
+            {
+                m_Institution = (InstitutionHandler)InstitutionHandler.m_InstancesList[m_Page];
+            }
+            catch( Exception ) // Outofbounds... etc.
+            {
+                m_Institution = null;
+                m_From.SendMessage("Aucune institution existante.");
+            }
 
             from.CloseGump(typeof(InstitutionGump));
 
-            AddPage(0);
+            if (m_Institution != null)
+            {
+                AddPage(0);
 
-            if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
-                AddBackground(0, 0, 500, 550, 5054);
-            else
-                AddBackground(0, 0, 500, 425, 5054);
+                if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
+                    AddBackground(0, 0, 500, 550, 5054);
+                else
+                    AddBackground(0, 0, 500, 425, 5054);
 
-            AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Gérance d'institution" + "</h3>", false, false);
-            line++;
-            AddSection(x, y + (line * scale), 450, 120, "<h3>Description<h3>", Description);
-            line+=8;
-            AddHtml(x, y + (line * scale), 400, 20, "<h3>Rangs/Titres</h3>", false, false);
-            line++;
+                AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Gérance d'institution" + "</h3>", false, false);
+                line++;
 
-            if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
-            {                
-                List<string> list = new List<string>();
-
-                list.Add("Matelot");
-                list.Add("Légionnaire");
-                list.Add("Capitaine");
-
-                foreach (string titre in list)
+                if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
                 {
-                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(0, 0), GumpButtonType.Reply, 0);
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>" + titre + "</h3>", false, false);
+                    // En faire une boite de texte modifiable, avec m_Institution.Description comme string par défaut ?
+                    AddSection(x, y + (line * scale), 450, 120, "<h3>Description<h3>", "");
+                    AddTextEntry(x, y + (line * scale), 450, 120, 0, 0, m_Institution.Description);
+                    line += 8;
+
+                    // Bouton qui permet de modifier m_Institution.Description
+                    //
+
+                    AddHtml(x, y + (line * scale), 400, 20, "<h3>Rangs/Titres</h3>", false, false);
+                    line++;
+
+                    int cpt = 1;
+                    foreach (string titre in m_Institution.RangTitre)
+                    {
+                        AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(0, 0), GumpButtonType.Reply, 0);
+                        AddTextEntry(x + 35, y + (line * scale), 400, 20, 0, cpt, titre);
+                        cpt++;
+                        line++;
+                    }
+
+                    line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(1, 0), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Augmenter le rang d’un joueur</h3>", false, false);
+                    line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(1, 1), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Diminuer le rang d’un joueur</h3>", false, false);
+                    line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, 0), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Ajouter un joueur</h3>", false, false);
+                    line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, 1), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Retirer un joueur</h3>", false, false);
+                    line++;
+                }
+                else
+                {
+                    AddSection(x, y + (line * scale), 450, 120, "<h3>Description<h3>", m_Institution.Description);
+                    line += 8;
+                    AddHtml(x, y + (line * scale), 400, 20, "<h3>Rangs/Titres</h3>", false, false);
+                    line++;
+
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est: " + m_Institution.GetTitre( m_Institution.GetRank( m_From)) + "</h3>", false, false);
+                    line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 0), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux joindre l'institution</h3>", false, false);
+                    line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 1), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux quitter l'institution</h3>", false, false);
                     line++;
                 }
 
                 line++;
-                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(1, 0), GumpButtonType.Reply, 0);
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Augmenter le rang d’un joueur</h3>", false, false);
-                line++;
-                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(1, 1), GumpButtonType.Reply, 0);
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Diminuer le rang d’un joueur</h3>", false, false);
-                line++;
-                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, 0), GumpButtonType.Reply, 0);
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Ajouter un joueur</h3>", false, false);
-                line++;
-                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, 1), GumpButtonType.Reply, 0);
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Retirer un joueur</h3>", false, false);
-                line++;
+                AddButton(x, y + (line * scale), 4017, 4019, 0, GumpButtonType.Reply, 0);
+                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Quitter</h3>", false, false);
             }
-            else
-            {
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est: " + InstitutionHandler.GetTitreList(m_From) + "</h3>", false, false);
-                line++;
-                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 0), GumpButtonType.Reply, 0);
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux joindre l'institution</h3>", false, false);
-                line++;
-                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 1), GumpButtonType.Reply, 0);
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux quitter l'institution</h3>", false, false);
-                line++;
-            }
-
-            line++;
-            AddButton(x, y + (line * scale), 4017, 4019, 0, GumpButtonType.Reply, 0);
-            AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Quitter</h3>", false, false);
         }
 
         public static int GetButtonID(int type, int index)
@@ -136,8 +154,7 @@ namespace Server.Engines.Institutions
         {
             if (targeted is PlayerMobile)
             {
-                InstitutionHandler ins = new InstitutionHandler();
-                ins.AjouterInstitution((Mobile)targeted);
+                m_Institution.AjouterInstitution((Mobile)targeted);
             }
             else
             {
@@ -150,8 +167,7 @@ namespace Server.Engines.Institutions
         {
             if (targeted is PlayerMobile)
             {
-                InstitutionHandler ins = new InstitutionHandler();
-                ins.RetirerInstitution((Mobile)targeted);
+                m_Institution.RetirerInstitution((Mobile)targeted);
             }
             else
             {
@@ -164,8 +180,7 @@ namespace Server.Engines.Institutions
         {
             if (targeted is PlayerMobile)
             {
-                InstitutionHandler ins = new InstitutionHandler();
-                ins.RankUp((Mobile)targeted);
+                m_Institution.RankUp((Mobile)targeted);
             }
             else
             {
@@ -178,8 +193,7 @@ namespace Server.Engines.Institutions
         {
             if (targeted is PlayerMobile)
             {
-                InstitutionHandler ins = new InstitutionHandler();
-                ins.RankDown((Mobile)targeted);
+                m_Institution.RankDown((Mobile)targeted);
             }
             else
             {
@@ -197,14 +211,22 @@ namespace Server.Engines.Institutions
             int type = buttonID % 4;
             int index = buttonID / 4;
 
-            
+            TextRelay relay = info.GetTextEntry(1);
+            m_Institution.Description = relay.Text;
+
+            int cpt = 1;
+            foreach( string s in m_Institution.RangTitre)
+            {
+                TextRelay relay2 = info.GetTextEntry(cpt);
+                s = relay2.Text;
+                cpt++;
+            }
 
             switch (type)
             {
                 case 0: // Containers
                     {
                         m_From.SendMessage("N'a pas été scripté encore");
-                        m_From.SendGump(new InstitutionGump((Mobile)m_From));
                         break;
                     }
                 case 1: // Misc. buttons
@@ -215,14 +237,12 @@ namespace Server.Engines.Institutions
                             {
                                 m_From.SendMessage("Augmenter le rang d’un joueur");
                                 m_From.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AugmenterRang_OnTarget));
-                                m_From.SendGump(new InstitutionGump((Mobile)m_From));
                                 break;
                             }
                         case 1: // Diminuer le rang d’un joueur
                             {
                                 m_From.SendMessage("Diminuer le rang d’un joueur");
                                 m_From.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(DiminuerRang_OnTarget));
-                                m_From.SendGump(new InstitutionGump((Mobile)m_From));
                                 break;
                             }
                     }
@@ -236,14 +256,12 @@ namespace Server.Engines.Institutions
                             {
                                 m_From.SendMessage("Ajouter un joueur à la liste des joueurs dans l'institution.");
                                 m_From.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AjouterMobile_OnTarget));
-                                m_From.SendGump(new InstitutionGump((Mobile)m_From));
                                 break;
                             }
                         case 1: // Retire un mobile de la liste des joueurs dans l'institution
                             {
                                 m_From.SendMessage("Retirer un joueur de la liste des joueurs dans l'institution");
                                 m_From.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(RetirerMobile_OnTarget));
-                                m_From.SendGump(new InstitutionGump((Mobile)m_From));
                                 break;
                             }
                     }
@@ -251,28 +269,25 @@ namespace Server.Engines.Institutions
                 }
                 case 3: // Misc. buttons
                 {
-                    InstitutionHandler ins = new InstitutionHandler();
-
                     switch (index)
                     {
                         case 0: // Je veux joindre l'institution
                             {
                                 m_From.SendMessage("Je veux joindre l'institution");
-                                ins.AjouterInstitution((Mobile)m_From);
-                                m_From.SendGump(new InstitutionGump((Mobile)m_From));
+                                m_Institution.AjouterInstitution((Mobile)m_From);
                                 break;
                             }
                         case 1: // Je veux quitter l'institution
                             {
                                 m_From.SendMessage("Je veux quitter l'institution");
-                                ins.RetirerInstitution((Mobile)m_From);
-                                m_From.SendGump(new InstitutionGump((Mobile)m_From));
+                                m_Institution.RetirerInstitution((Mobile)m_From);
                                 break;
                             }
                     }
                     break;
                 }
             }
+            m_From.SendGump(new InstitutionGump((Mobile)m_From));
         }
     }
 }

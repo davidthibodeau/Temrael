@@ -13,15 +13,16 @@ namespace Server.Items
     class InstitutionHandler : TownCrier
     {
         #region Membres / Consts
-        private static ArrayList m_InstancesList;
+        public static ArrayList m_InstancesList;
 
         private Dictionary<Mobile, int> m_Mobiles;  // Mobile --- Rang.
         private List<Mobile> m_RegisteredMobiles;   // Contient tous ceux qui ont déjà joint cette institution. (Empêche l'abus du rang 1)
 
         public const int RANKMAX = 3;
-        public List<Container> m_Containers;    // Contient les containers à duper lors du rankup.
-        public List<String> m_RangTitre;        // Contient les titres des différents échelons.
-        private readonly int[] m_RangSalaire =  // Contient les salaires des différents échelons.
+        public string Description = "NOT SET";// Contient la description de l'institution.
+        public List<Container> Containers;    // Contient les containers à duper lors du rankup.
+        public List<String> RangTitre;        // Contient les titres des différents échelons.
+        public readonly int[] RangSalaire =   // Contient les salaires des différents échelons.
         {
             250, // Rang 0. Matelot etc.
             500, // Rang 1.
@@ -114,13 +115,13 @@ namespace Server.Items
             {
                 try
                 {
-                    return m_RangTitre[rank];
+                    return RangTitre[rank];
                 }
                 catch (Exception)
                 {
                 }
             }
-            return "NON VALIDE";
+            return "Aucun Titre";
         }
 
         /// <summary>
@@ -134,13 +135,22 @@ namespace Server.Items
             {
                 try
                 {
-                    return m_RangSalaire[rank];
+                    return RangSalaire[rank];
                 }
                 catch (Exception)
                 {
                 }
             }
             return 0;
+        }
+
+        public int GetRank(Mobile m)
+        {
+            if (m_Mobiles.ContainsKey(m))
+            {
+                return m_Mobiles[m];
+            }
+            return -1;
         }
         #endregion
 
@@ -198,9 +208,9 @@ namespace Server.Items
                 {
                     if (!(m_RegisteredMobiles.Contains(m) && (m_Mobiles[m]-1) == -1)) // Si l'ancien rang == -1.
                     {
-                        if (m_Containers[m_Mobiles[m]] != null)
+                        if (Containers[m_Mobiles[m]] != null)
                         {
-                            m.AddToBackpack(Dupe.DupeItem(null, m_Containers[m_Mobiles[m]], true)); // On dupe le container lié au rang du mobile.
+                            m.AddToBackpack(Dupe.DupeItem(null, Containers[m_Mobiles[m]], true)); // On dupe le container lié au rang du mobile.
                         }
                     }
                 }
@@ -246,8 +256,14 @@ namespace Server.Items
 
             m_Mobiles = new Dictionary<Mobile,int>();
             m_RegisteredMobiles = new List<Mobile>();
-            m_RangTitre = new List<String>();
-            m_Containers = new List<Container>();
+
+            RangTitre = new List<String>();
+            for (int i = 0; i <= RANKMAX; i++)
+            {
+                RangTitre.Add("NOT SET");
+            }
+
+            Containers = new List<Container>();
         }
 
         public override void OnDoubleClick(Mobile from)
@@ -289,14 +305,16 @@ namespace Server.Items
                 writer.Write(m);
             }
 
-            writer.Write(m_Containers.Count);
-            foreach (Container c in m_Containers)
+            writer.Write(Description);
+
+            writer.Write(Containers.Count);
+            foreach (Container c in Containers)
             {
                 writer.Write((Item)c);
             }
 
-            writer.Write(m_RangTitre.Count);
-            foreach (String s in m_RangTitre)
+            writer.Write(RangTitre.Count);
+            foreach (String s in RangTitre)
             {
                 writer.Write(s);
             }
@@ -328,20 +346,22 @@ namespace Server.Items
                 m_RegisteredMobiles.Add(reader.ReadMobile());
             }
 
-            if (m_Containers == null)
-                m_Containers = new List<Container>();
+            Description = reader.ReadString();
+
+            if (Containers == null)
+                Containers = new List<Container>();
             count = reader.ReadInt();
             for (int i = 0; i < count; ++i)
             {
-                m_Containers.Add((Container)reader.ReadItem());
+                Containers.Add((Container)reader.ReadItem());
             }
 
-            if (m_RangTitre == null)
-                m_RangTitre = new List<String>();
+            if (RangTitre == null)
+                RangTitre = new List<String>();
             count = reader.ReadInt();
             for (int i = 0; i < count; ++i)
             {
-                m_RangTitre.Add(reader.ReadString());
+                RangTitre.Add(reader.ReadString());
             }
             #endregion
 
