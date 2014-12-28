@@ -86,12 +86,12 @@ namespace Server.Items
         //ARMURES DIVERS                                                                                       Mettre valeur negative pour les dex malus.
 
         //                                               Physique    Magique    Force_req   Dex_malus     Min_Dura     Max_Dura
-        public ArmorValues ArmorDivers1 = new ArmorValues(  2.8,          0,          10,         -4,          100,        125);
-        public ArmorValues ArmorDivers2 = new ArmorValues(  3.6,          0,          20,         -5,          125,        150);
-        public ArmorValues ArmorDivers3 = new ArmorValues(  4.4,          0,          30,         -6,          150,        175);
-        public ArmorValues ArmorDivers4 = new ArmorValues(  5.2,          0,          40,         -7,          175,        200);
-        public ArmorValues ArmorDivers5 = new ArmorValues(  6,          0,          50,         -8,          200,        225);
-        public ArmorValues ArmorDivers6 = new ArmorValues(  7,          0,          60,         -9,          225,        250);
+        public ArmorValues ArmorDivers1 = new ArmorValues(  2.8,          0,          10,         -3,          100,        125);
+        public ArmorValues ArmorDivers2 = new ArmorValues(  3.6,          0,          20,         -4,          125,        150);
+        public ArmorValues ArmorDivers3 = new ArmorValues(  4.4,          0,          30,         -5,          150,        175);
+        public ArmorValues ArmorDivers4 = new ArmorValues(  5.2,          0,          40,         -6,          175,        200);
+        public ArmorValues ArmorDivers5 = new ArmorValues(  6,            0,          50,         -7,          200,        225);
+        public ArmorValues ArmorDivers6 = new ArmorValues(  6.8,          0,          60,         -8,          225,        250);
 
 
         #endregion
