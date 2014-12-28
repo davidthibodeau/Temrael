@@ -23,6 +23,7 @@ namespace Server.Items
 		public ChainChest() : base( 0x13BF )
 		{
 			Weight = 7.0;
+            Layer = Layer.InnerTorso;
 		}
 
 		public ChainChest( Serial serial ) : base( serial )
@@ -39,6 +40,7 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
 		}
 	}
 }

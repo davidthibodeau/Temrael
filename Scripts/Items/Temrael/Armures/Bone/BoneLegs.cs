@@ -23,6 +23,7 @@ namespace Server.Items
 		public BoneLegs() : base( 0x1452 )
 		{
 			Weight = 3.0;
+            Layer = Layer.Pants;
 		}
 
 		public BoneLegs( Serial serial ) : base( serial )
@@ -39,6 +40,8 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+
+            Layer = Layer.Pants;
 		}
 	}
 }

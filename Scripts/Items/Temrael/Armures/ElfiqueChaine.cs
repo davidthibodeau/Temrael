@@ -25,6 +25,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Elfique";
+            Layer = Layer.InnerTorso;
         }
 
         public ElfiqueChaineTunic(Serial serial)
@@ -42,6 +43,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class ElfiqueChaineLeggings : BaseArmor
@@ -66,6 +68,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres Elfiques";
+            Layer = Layer.Pants;
         }
 
         public ElfiqueChaineLeggings(Serial serial)
@@ -83,6 +86,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
 }

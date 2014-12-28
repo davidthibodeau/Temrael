@@ -149,6 +149,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres Decores";
+            Layer = Layer.Pants;
         }
 
         public JambieresDecorer(Serial serial)
@@ -166,6 +167,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
     public class GantsDecorer : BaseArmor
@@ -231,6 +233,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse Decore";
+            Layer = Layer.InnerTorso;
         }
 
         public CuirasseDecorer(Serial serial)
@@ -248,6 +251,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class BrassardsDecorer : BaseArmor

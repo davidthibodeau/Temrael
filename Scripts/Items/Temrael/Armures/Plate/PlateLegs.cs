@@ -23,6 +23,7 @@ namespace Server.Items
 		public PlateLegs() : base( 0x1411 )
 		{
 			Weight = 7.0;
+            Layer = Layer.Pants;
 		}
 
 		public PlateLegs( Serial serial ) : base( serial )
@@ -39,6 +40,7 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+            Layer = Layer.Pants;
 		}
 	}
 }

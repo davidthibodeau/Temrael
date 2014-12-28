@@ -25,6 +25,7 @@ namespace Server.Items
 		{
             GoldValue = 21;
 			Weight = 6.0;
+            Layer = Layer.InnerTorso;
 		}
 
 		public LeatherChest( Serial serial ) : base( serial )
@@ -44,6 +45,8 @@ namespace Server.Items
 
 			if ( Weight == 1.0 )
 				Weight = 6.0;
+
+            Layer = Layer.InnerTorso;
 		}
 	}
 }

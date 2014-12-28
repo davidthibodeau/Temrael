@@ -144,6 +144,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres de Feuilles";
+            Layer = Layer.Pants;
         }
 
         public ElfeLeggings(Serial serial)
@@ -161,6 +162,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
     public class ElfeTunic : BaseArmor
@@ -184,6 +186,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique de Feuilles";
+            Layer = Layer.InnerTorso;
         }
 
         public ElfeTunic(Serial serial)
@@ -201,6 +204,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

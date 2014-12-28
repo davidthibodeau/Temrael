@@ -24,6 +24,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres Roublardes";
+            Layer = Layer.Pants;
         }
 
         public RoublardLeggings(Serial serial)
@@ -41,6 +42,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
     public class RoublardTunic : BaseArmor
@@ -64,6 +66,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Roublarde";
+            Layer = Layer.InnerTorso;
         }
 
         public RoublardTunic(Serial serial)
@@ -81,6 +84,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

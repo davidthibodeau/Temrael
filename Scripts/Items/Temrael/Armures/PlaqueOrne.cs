@@ -25,6 +25,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse Orne";
+            Layer = Layer.InnerTorso;
         }
 
         public CuirasseOrne(Serial serial)
@@ -42,6 +43,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class BrassardsOrne : BaseArmor

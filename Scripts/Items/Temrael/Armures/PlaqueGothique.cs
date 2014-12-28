@@ -107,6 +107,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse Gothique";
+            Layer = Layer.InnerTorso;
         }
 
         public CuirasseGothique(Serial serial)
@@ -124,6 +125,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

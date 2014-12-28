@@ -23,6 +23,7 @@ namespace Server.Items
 		public ChainLegs() : base( 0x13BE )
 		{
 			Weight = 7.0;
+            Layer = Layer.Pants;
 		}
 
 		public ChainLegs( Serial serial ) : base( serial )
@@ -39,6 +40,7 @@ namespace Server.Items
 		{
 			base.Deserialize( reader );
 			int version = reader.ReadInt();
+            Layer = Layer.Pants;
 		}
 	}
 }

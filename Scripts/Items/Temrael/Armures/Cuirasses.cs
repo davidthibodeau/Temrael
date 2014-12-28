@@ -25,6 +25,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse Religieuse";
+            Layer = Layer.InnerTorso;
         }
 
         public CuirasseReligieuse(Serial serial)
@@ -42,6 +43,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class TuniqueChaine : BaseArmor
@@ -66,6 +68,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique de Chaine";
+            Layer = Layer.InnerTorso;
         }
 
         public TuniqueChaine(Serial serial)
@@ -83,6 +86,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class Cuirasse : BaseArmor
@@ -107,6 +111,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse";
+            Layer = Layer.InnerTorso;
         }
 
         public Cuirasse(Serial serial)
@@ -124,6 +129,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class CuirasseDraconique : BaseArmor
@@ -148,6 +154,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse Draconique";
+            Layer = Layer.InnerTorso;
         }
 
         public CuirasseDraconique(Serial serial)
@@ -165,6 +172,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class CuirasseBarbare : BaseArmor
@@ -189,6 +197,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse Barbare";
+            Layer = Layer.InnerTorso;
         }
 
         public CuirasseBarbare(Serial serial)
@@ -206,6 +215,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class CuirasseNordique : BaseArmor
@@ -230,6 +240,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Cuirasse Nordique";
+            Layer = Layer.InnerTorso;
         }
 
         public CuirasseNordique(Serial serial)
@@ -247,6 +258,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

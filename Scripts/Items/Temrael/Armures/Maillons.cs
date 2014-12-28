@@ -66,6 +66,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres de Maillons";
+            Layer = Layer.Pants;
         }
 
         public MaillonsLeggings(Serial serial)
@@ -83,6 +84,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
     public class MaillonsTunic : BaseArmor
@@ -107,6 +109,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique de Maillons";
+            Layer = Layer.InnerTorso;
         }
 
         public MaillonsTunic(Serial serial)
@@ -124,6 +127,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

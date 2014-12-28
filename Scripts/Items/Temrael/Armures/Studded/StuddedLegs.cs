@@ -23,6 +23,7 @@ namespace Server.Items
 		public StuddedLegs() : base( 0x13DA )
 		{
 			Weight = 5.0;
+            Layer = Layer.Pants;
 		}
 
 		public StuddedLegs( Serial serial ) : base( serial )
@@ -42,6 +43,8 @@ namespace Server.Items
 
 			if ( Weight == 3.0 )
 				Weight = 5.0;
+
+            Layer = Layer.Pants;
 		}
 	}
 }

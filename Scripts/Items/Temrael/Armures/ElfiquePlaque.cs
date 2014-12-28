@@ -66,6 +66,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres Elfiques";
+            Layer = Layer.Pants;
         }
 
         public ElfiquePlaqueLeggings(Serial serial)
@@ -83,6 +84,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
     public class ElfiquePlaqueTunic : BaseArmor
@@ -107,6 +109,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Elfique";
+            Layer = Layer.InnerTorso;
         }
 
         public ElfiquePlaqueTunic(Serial serial)
@@ -124,6 +127,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

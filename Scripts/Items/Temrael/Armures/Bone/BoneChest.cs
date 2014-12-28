@@ -23,6 +23,7 @@ namespace Server.Items
 		public BoneChest() : base( 0x144F )
 		{
 			Weight = 6.0;
+            Layer = Layer.InnerTorso;
 		}
 
 		public BoneChest( Serial serial ) : base( serial )
@@ -36,6 +37,8 @@ namespace Server.Items
 
 			if ( Weight == 1.0 )
 				Weight = 6.0;
+
+            Layer = Layer.InnerTorso;
 		}
 		
 		public override void Deserialize(GenericReader reader)

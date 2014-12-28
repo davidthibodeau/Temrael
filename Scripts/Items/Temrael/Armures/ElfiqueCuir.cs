@@ -24,6 +24,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Elfique";
+            Layer = Layer.InnerTorso;
         }
 
         public ElfiqueCuirTunic(Serial serial)
@@ -41,6 +42,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class ElfiqueCuirRobe : BaseArmor

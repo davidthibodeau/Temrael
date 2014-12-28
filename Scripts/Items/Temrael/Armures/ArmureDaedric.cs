@@ -66,6 +66,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Daedric";
+            Layer = Layer.InnerTorso;
         }
 
         public ArmureDaedricTunic(Serial serial)
@@ -83,6 +84,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class ArmureDaedricHelm : BaseArmor
@@ -228,6 +230,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres Daedric";
+            Layer = Layer.Pants;
         }
 
         public ArmureDaedricLeggings(Serial serial)
@@ -245,6 +248,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
 }

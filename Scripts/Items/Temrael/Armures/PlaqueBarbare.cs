@@ -107,6 +107,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres Barbares";
+            Layer = Layer.Pants;
         }
 
         public PlaqueBarbareLeggings(Serial serial)
@@ -124,6 +125,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
     public class PlaqueBarbareTunic : BaseArmor
@@ -148,6 +150,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Barbare";
+            Layer = Layer.InnerTorso;
         }
 
         public PlaqueBarbareTunic(Serial serial)
@@ -165,6 +168,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

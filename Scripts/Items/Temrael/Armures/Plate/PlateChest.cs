@@ -23,6 +23,7 @@ namespace Server.Items
 		public PlateChest() : base( 0x1415 )
 		{
 			Weight = 10.0;
+            Layer = Layer.InnerTorso;
 		}
 
 		public PlateChest( Serial serial ) : base( serial )
@@ -42,6 +43,8 @@ namespace Server.Items
 
 			if ( Weight == 1.0 )
 				Weight = 10.0;
+
+            Layer = Layer.InnerTorso;
 		}
 	}
 }

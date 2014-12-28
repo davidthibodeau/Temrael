@@ -66,6 +66,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambières Bourgeon";
+            Layer = Layer.Pants;
         }
 
         public BourgeonLeggings(Serial serial)
@@ -83,6 +84,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
     public class BourgeonTunic : BaseArmor
@@ -107,6 +109,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Bourgeon";
+            Layer = Layer.InnerTorso;
         }
 
         public BourgeonTunic(Serial serial)
@@ -124,6 +127,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
 }

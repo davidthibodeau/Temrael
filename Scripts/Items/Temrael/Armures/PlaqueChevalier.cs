@@ -66,6 +66,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Tunique Royale";
+            Layer = Layer.InnerTorso;
         }
 
         public PlaqueChevalierTunic(Serial serial)
@@ -83,6 +84,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.InnerTorso;
         }
     }
     public class PlaqueChevalierHelm : BaseArmor
@@ -230,6 +232,7 @@ namespace Server.Items
         {
             Weight = 2.0;
             Name = "Jambieres Royales";
+            Layer = Layer.Pants;
         }
 
         public PlaqueChevalierLeggings(Serial serial)
@@ -247,6 +250,7 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            Layer = Layer.Pants;
         }
     }
 }

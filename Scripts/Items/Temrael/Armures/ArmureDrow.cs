@@ -223,7 +223,7 @@ namespace Server.Items
         {
             get
             {
-                return Server.Layer.MiddleTorso;
+                return Server.Layer.InnerTorso;
             }
             set
             {

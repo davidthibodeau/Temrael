@@ -23,6 +23,7 @@ namespace Server.Items
 		public StuddedChest() : base( 0x13DB )
 		{
 			Weight = 8.0;
+            Layer = Layer.InnerTorso;
 		}
 
 		public StuddedChest( Serial serial ) : base( serial )
@@ -42,6 +43,8 @@ namespace Server.Items
 
 			if ( Weight == 1.0 )
 				Weight = 8.0;
+
+            Layer = Layer.InnerTorso;
 		}
 	}
 }
