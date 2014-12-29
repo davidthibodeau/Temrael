@@ -127,7 +127,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(WideBrimHat), "Chapeaux", "Chapeau à large bord", 10.0, 30.0, typeof(Cloth), "Tissu", 12, 1044287);
             index = AddCraft(typeof(StrawHat), "Chapeaux", "Chapeau de Paille", 20.0, 40.0, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(TallStrawHat), "Chapeaux", "Grand Chapeau de Paille", 20.0, 40.0, typeof(Cloth), "Tissu", 13, 1044287);
-            index = AddCraft(typeof(WizardsHat), "Chapeaux", "Béret", 7.2, 32.2, typeof(Cloth), "Tissu", 15, 1044287);
+            //index = AddCraft(typeof(WizardsHat), "Chapeaux", "Béret", 7.2, 32.2, typeof(Cloth), "Tissu", 15, 1044287);
             index = AddCraft(typeof(Bonnet), "Chapeaux", "Bonnet", 30.0, 50.0, typeof(Cloth), "Tissu", 11, 1044287);
             index = AddCraft(typeof(FeatheredHat), "Chapeaux", "Chapeau à plume", 40.0, 60.0, typeof(Cloth), "Tissu", 12, 1044287);
             index = AddCraft(typeof(TricorneHat), "Chapeaux", "Tricone", 40.0, 60.0, typeof(Cloth), "Tissu", 12, 1044287);
@@ -263,7 +263,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(TogeAmple), "Toges & Manteaux", "Toge Ample", 70.0, 90.0, typeof(Cloth), "Tissu", 18, 1044287);
             index = AddCraft(typeof(TogeMystique), "Toges & Manteaux", "Toge Mystique", 70.0, 90.0, typeof(Cloth), "Tissu", 16, 1044287);
             index = AddCraft(typeof(TogeArchiMage), "Toges & Manteaux", "Toge d'Archimage", 80.0, 100.0, typeof(Cloth), "Tissu", 16, 1044287);
-            index = AddCraft(typeof(TogeFeminine), "Toges & Manteaux", "Toge de Prêtrise", 90.0, 110.0, typeof(Cloth), "Tissu", 17, 1044287);
+            index = AddCraft(typeof(TogeFeminine), "Toges & Manteaux", "Toge féminine", 90.0, 110.0, typeof(Cloth), "Tissu", 17, 1044287);
             index = AddCraft(typeof(TogeSorcier), "Toges & Manteaux", "Toge de Sorcier", 90.0, 110.0, typeof(Cloth), "Tissu", 18, 1044287);
             index = AddCraft(typeof(TogeOr), "Toges & Manteaux", "Toge d'Or", 90.0, 120.0, typeof(Cloth), "Tissu", 18, 1044287);
             index = AddCraft(typeof(ManteauPardessus), "Toges & Manteaux", "Vieux Manteau", 30.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
