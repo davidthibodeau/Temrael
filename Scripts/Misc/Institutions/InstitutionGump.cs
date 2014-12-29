@@ -10,26 +10,6 @@ using Server.Targeting;
 
 namespace Server.Engines.Institutions
 {
-    public class Institution
-    {
-        public static void Initialize()
-        {
-            CommandSystem.Register("Institution", AccessLevel.Player, new CommandEventHandler(Institution_OnCommand));
-        }
-
-        [Usage("Institution")]
-        [Description("Permet d'ouvrir le menu de gérance des institutions.")]
-        public static void Institution_OnCommand(CommandEventArgs e)
-        {
-            Mobile from = e.Mobile;
-
-            if (from is PlayerMobile)
-            {
-                from.SendGump(new InstitutionGump((Mobile)from));
-            }
-        }
-    }
-
     class InstitutionGump : GumpTemrael
     {
         // https://docs.google.com/drawings/d/1oLILHTfi4ERtvJFgqBu8g4X0pzkVz6jvDS58kewMROk/edit?usp=sharing
@@ -41,7 +21,6 @@ namespace Server.Engines.Institutions
          */
 
         private Mobile m_From;
-        private int m_Page;
 
         private InstitutionHandler m_Institution;
 
@@ -51,26 +30,11 @@ namespace Server.Engines.Institutions
         int line = 0;
         int scale = 25;
 
-        public InstitutionGump(Mobile from)
-            : this(from, 0)
-        {
-        }
-
-        public InstitutionGump(Mobile from, int cur_page)
+        public InstitutionGump(Mobile from, InstitutionHandler handler)
             : base("", 0, 0)
         {
             m_From = from;
-            m_Page = cur_page;
-            m_Institution = null;
-            try
-            {
-                m_Institution = (InstitutionHandler)InstitutionHandler.m_InstancesList[m_Page];
-            }
-            catch( Exception ) // Outofbounds... etc.
-            {
-                m_Institution = null;
-                m_From.SendMessage("Aucune institution existante.");
-            }
+            m_Institution = handler;
 
             from.CloseGump(typeof(InstitutionGump));
 
@@ -79,33 +43,30 @@ namespace Server.Engines.Institutions
                 AddPage(0);
 
                 if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
-                    AddBackground(0, 0, 500, 550, 5054);
+                    AddBackground(0, 0, 500, 525, 5054);
                 else
-                    AddBackground(0, 0, 500, 425, 5054);
-
-                AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Gérance d'institution" + "</h3>", false, false);
-                line++;
+                    AddBackground(0, 0, 500, 400, 5054);
 
                 if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
                 {
-                    // En faire une boite de texte modifiable, avec m_Institution.Description comme string par défaut ?
-                    AddHtml(x, y + (line * scale), 450, 20, "<h3>Description<h3>", false, false);
+                    AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Gérance d'institution : " + "</h3>", false, false);
+                    AddTextEntry(x + 160, y + (line * scale), 450, 160, 0, 0, m_Institution.Titre);
                     line++;
-                    AddTextEntry(x, y + (line * scale), 450, 160, 0, 0, m_Institution.Description);
-                    line += 8;
 
-                    // Bouton qui permet de modifier m_Institution.Description
-                    //
+                    AddHtml(x, y + (line * scale), 450, 20, "<h3>Description : <h3>", false, false);
+                    line++;
+                    AddTextEntry(x, y + (line * scale), 450, 160, 0, 1, m_Institution.Description);
+                    line += 6;
 
                     AddHtml(x, y + (line * scale), 400, 20, "<h3>Rangs/Titres</h3>", false, false);
                     line++;
 
-                    int cpt = 1;
-                    foreach (string titre in m_Institution.RangTitre)
+                    // Donne un bouton container et un text entry pour chaque rang. N'affiche pas le rang 0 qui est "Aucun titre".
+                    int count = m_Institution.RangTitre.Count - 1;
+                    for (int i = 1; i <= count; i++)
                     {
                         AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(0, 0), GumpButtonType.Reply, 0);
-                        AddTextEntry(x + 35, y + (line * scale), 400, 20, 0, cpt, titre);
-                        cpt++;
+                        AddTextEntry(x + 35, y + (line * scale), 400, 20, 0, i+1, m_Institution.RangTitre[i]);
                         line++;
                     }
 
@@ -122,16 +83,23 @@ namespace Server.Engines.Institutions
                     AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, 1), GumpButtonType.Reply, 0);
                     AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Retirer un joueur</h3>", false, false);
                     line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 2), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Obtenir des infos sur un joueur</h3>", false, false);
+                    line++;
                 }
                 else
                 {
-                    AddSection(x, y + (line * scale), 450, 120, "<h3>Description<h3>", m_Institution.Description);
-                    line += 8;
-                    AddHtml(x, y + (line * scale), 400, 20, "<h3>Rangs/Titres</h3>", false, false);
+                    AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Institution : " + m_Institution.Titre + "</h3>", false, false);
                     line++;
 
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est: " + m_Institution.GetTitre( m_Institution.GetRank( m_From)) + "</h3>", false, false);
+                    AddSection(x, y + (line * scale), 450, 120, "<h3>Description<h3>", m_Institution.Description);
+                    line += 8;
+
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est : " + m_Institution.GetTitre(m_Institution.GetRank( m_From)) + "</h3>", false, false);
                     line++;
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre salaire est de : " + m_Institution.GetSalaire(m_Institution.GetRank(m_From)) + " pièces d'or" + "</h3>", false, false);
+                    line += 2;
+
                     AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 0), GumpButtonType.Reply, 0);
                     AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux joindre l'institution</h3>", false, false);
                     line++;
@@ -139,10 +107,6 @@ namespace Server.Engines.Institutions
                     AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux quitter l'institution</h3>", false, false);
                     line++;
                 }
-
-                line++;
-                AddButton(x, y + (line * scale), 4017, 4019, 0, GumpButtonType.Reply, 0);
-                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Quitter</h3>", false, false);
             }
         }
 
@@ -156,6 +120,7 @@ namespace Server.Engines.Institutions
             if (targeted is PlayerMobile)
             {
                 m_Institution.AjouterInstitution((Mobile)targeted);
+                from.SendMessage("Le joueur a été rajouté à l'institution.");
             }
             else
             {
@@ -169,6 +134,7 @@ namespace Server.Engines.Institutions
             if (targeted is PlayerMobile)
             {
                 m_Institution.RetirerInstitution((Mobile)targeted);
+                from.SendMessage("Le joueur a été retiré de l'institution.");
             }
             else
             {
@@ -182,6 +148,7 @@ namespace Server.Engines.Institutions
             if (targeted is PlayerMobile)
             {
                 m_Institution.RankUp((Mobile)targeted);
+                from.SendMessage("Son rang est maintenant : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
             }
             else
             {
@@ -195,6 +162,23 @@ namespace Server.Engines.Institutions
             if (targeted is PlayerMobile)
             {
                 m_Institution.RankDown((Mobile)targeted);
+                from.SendMessage("Son rang est maintenant : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
+            }
+            else
+            {
+                from.SendMessage("Vous devez choisir un joueur");
+                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(DiminuerRang_OnTarget));
+            }
+        }
+
+        private void Infos_OnTarget(Mobile from, object targeted)
+        {
+            if (targeted is PlayerMobile)
+            {
+                from.SendMessage("INSTITUTION : " + m_Institution.Titre);
+                from.SendMessage("RANG : " + m_Institution.GetRank((Mobile)targeted));
+                from.SendMessage("TITRE : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
+                from.SendMessage("SALAIRE : " + m_Institution.GetSalaire(m_Institution.GetRank((Mobile)targeted)));
             }
             else
             {
@@ -205,23 +189,50 @@ namespace Server.Engines.Institutions
 
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            if (info.ButtonID <= 0)
-                return; // Canceled
-
             int buttonID = info.ButtonID - 1;
             int type = buttonID % 4;
             int index = buttonID / 4;
 
-            TextRelay relay = info.GetTextEntry(1);
-            m_Institution.Description = relay.Text;
+            // Update du titre.
+            TextRelay relay = info.GetTextEntry(0);
+            if (relay != null)
+            {
+                if (relay.Text != null)
+                {
+                    m_Institution.Titre = relay.Text;
+                }
+                else
+                {
+                    m_Institution.Titre = "";
+                }
+            }
 
-            //int cpt = 1;
-            //foreach( string s in m_Institution.RangTitre)
-            //{
-            //    TextRelay relay2 = info.GetTextEntry(cpt);
-            //    s = relay2.Text;
-            //    cpt++;
-            //}
+            // Update de la description.
+            relay = info.GetTextEntry(1);
+            if (relay != null)
+            {
+                if (relay.Text != null)
+                {
+                    m_Institution.Description = relay.Text;
+                }
+                else
+                {
+                    m_Institution.Description = "";
+                }
+            }
+
+            // Update des titres pour chaque rang.
+            int count = m_Institution.RangTitre.Count-1;
+            for (int i = 1; i <= count; i++)
+            {
+                TextRelay relay2 = info.GetTextEntry(i+1);
+
+                if( relay2 != null)
+                    m_Institution.RangTitre[i] = relay2.Text;
+            }
+
+            if (info.ButtonID <= 0)
+                return; // Canceled
 
             switch (type)
             {
@@ -284,11 +295,17 @@ namespace Server.Engines.Institutions
                                 m_Institution.RetirerInstitution((Mobile)m_From);
                                 break;
                             }
+                        case 2: // Infos
+                            {
+                                m_From.SendMessage("Obtenir des informations sur un joueur.");
+                                m_From.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(Infos_OnTarget));
+                                break;
+                            }
                     }
                     break;
                 }
             }
-            m_From.SendGump(new InstitutionGump((Mobile)m_From));
+            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
         }
     }
 }

@@ -18,12 +18,14 @@ namespace Server.Items
         private Dictionary<Mobile, int> m_Mobiles;  // Mobile --- Rang.
         private List<Mobile> m_RegisteredMobiles;   // Contient tous ceux qui ont déjà joint cette institution. (Empêche l'abus du rang 1)
 
-        public const int RANKMAX = 3;
+        public const int RANKMAX = 4;
+        public string Titre = "NOT SET";      // Contient le nom de l'institution.
         public string Description = "NOT SET";// Contient la description de l'institution.
         public List<Container> Containers;    // Contient les containers à duper lors du rankup.
         public List<String> RangTitre;        // Contient les titres des différents échelons.
         public readonly int[] RangSalaire =   // Contient les salaires des différents échelons.
         {
+            0,   // Aucun rang.
             250, // Rang 0. Matelot etc.
             500, // Rang 1.
             1000,// Rang 2.
@@ -121,7 +123,7 @@ namespace Server.Items
                 {
                 }
             }
-            return "Aucun Titre";
+            return RangTitre[0];
         }
 
         /// <summary>
@@ -141,7 +143,7 @@ namespace Server.Items
                 {
                 }
             }
-            return 0;
+            return RangSalaire[0];
         }
 
         public int GetRank(Mobile m)
@@ -150,7 +152,7 @@ namespace Server.Items
             {
                 return m_Mobiles[m];
             }
-            return -1;
+            return 0;
         }
         #endregion
 
@@ -170,7 +172,7 @@ namespace Server.Items
 
                 if (!m_Mobiles.ContainsKey(m))
                 {
-                    m_Mobiles.Add(m, -1); // Rang -1 par défaut, augmenté à 0 juste après pour dropper l'item lié au rang.
+                    m_Mobiles.Add(m, 0); // Rang 0 par défaut, augmenté à 1 juste après pour dropper l'item lié au rang.
                     RankUp(m);
                 }
             }
@@ -203,10 +205,10 @@ namespace Server.Items
         {
             if (m_Mobiles.ContainsKey(m))
             {
-                m_Mobiles[m]++;
-                if (CheckValidRank(m_Mobiles[m]))
+                if (m_Mobiles[m] >= 0 && m_Mobiles[m] < RANKMAX)
                 {
-                    if (!(m_RegisteredMobiles.Contains(m) && (m_Mobiles[m]-1) == -1)) // Si l'ancien rang == -1.
+                    m_Mobiles[m]++;
+                    if (!(m_RegisteredMobiles.Contains(m)))
                     {
                         if (Containers[m_Mobiles[m]] != null)
                         {
@@ -225,7 +227,7 @@ namespace Server.Items
         {
             if (m_Mobiles.ContainsKey(m))
             {
-                if (CheckValidRank(m_Mobiles[m]))
+                if (m_Mobiles[m] > 0 && m_Mobiles[m] <= RANKMAX)
                 {
                     m_Mobiles[m]--;
                 }
@@ -262,13 +264,18 @@ namespace Server.Items
             {
                 RangTitre.Add("NOT SET");
             }
+            RangTitre[0] = "Aucun titre.";
 
             Containers = new List<Container>();
+            for (int i = 0; i <= RANKMAX; i++)
+            {
+                Containers.Add(null);
+            }
         }
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.SendGump(new InstitutionGump((Mobile)from));
+            from.SendGump(new InstitutionGump(from, this));
         }
 
         public override void Delete()
@@ -305,6 +312,7 @@ namespace Server.Items
                 writer.Write(m);
             }
 
+            writer.Write(Titre);
             writer.Write(Description);
 
             writer.Write(Containers.Count);
@@ -346,6 +354,7 @@ namespace Server.Items
                 m_RegisteredMobiles.Add(reader.ReadMobile());
             }
 
+            Titre = reader.ReadString();
             Description = reader.ReadString();
 
             if (Containers == null)
