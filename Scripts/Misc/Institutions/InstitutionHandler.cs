@@ -19,11 +19,11 @@ namespace Server.Items
         private List<Mobile> m_RegisteredMobiles;   // Contient tous ceux qui ont déjà joint cette institution. (Empêche l'abus du rang 1)
 
         public const int RANKMAX = 4;
-        public string Titre = "NOT SET";      // Contient le nom de l'institution.
-        public string Description = "NOT SET";// Contient la description de l'institution.
-        public List<Container> Containers;    // Contient les containers à duper lors du rankup.
-        public List<String> RangTitre;        // Contient les titres des différents échelons.
-        public readonly int[] RangSalaire =   // Contient les salaires des différents échelons.
+        public string Titre = "NOT SET";            // Contient le nom de l'institution.
+        public string Description = "NOT SET";      // Contient la description de l'institution.
+        public List<Container> Containers;          // Contient les containers à duper lors du rankup.
+        public List<String> RangTitre;              // Contient les titres des différents échelons.
+        public static readonly int[] RangSalaire =  // Contient les salaires des différents échelons.
         {
             0,   // Aucun rang.
             250, // Rang 0. Matelot etc.
@@ -74,9 +74,9 @@ namespace Server.Items
                         {
                             foreach (KeyValuePair<Mobile, int> pair in i.m_Mobiles)
                             {
-                                if (!Paie.Contains(pair))
+                                if (!Paie.ContainsKey(pair.Key))
                                 {
-                                    Paie.Add(pair.Key, pair.Value);
+                                    Paie.Add(pair.Key, GetSalaire(pair.Value));
                                 }
                                 else
                                 {
@@ -131,7 +131,7 @@ namespace Server.Items
         /// </summary>
         /// <param name="rank">Le rang, doit être entre 0 et RANKMAX.</param>
         /// <returns>Une string contenant le salaire lié au rang.</returns>
-        public int GetSalaire(int rank)
+        public static int GetSalaire(int rank)
         {
             if (CheckValidRank(rank))
             {
@@ -165,15 +165,15 @@ namespace Server.Items
         {
             if(m != null)
             {
-                if (!m_RegisteredMobiles.Contains(m))
-                {
-                    m_RegisteredMobiles.Add(m);
-                }
-
                 if (!m_Mobiles.ContainsKey(m))
                 {
                     m_Mobiles.Add(m, 0); // Rang 0 par défaut, augmenté à 1 juste après pour dropper l'item lié au rang.
                     RankUp(m);
+                }
+
+                if (!m_RegisteredMobiles.Contains(m))
+                {
+                    m_RegisteredMobiles.Add(m);
                 }
             }
         }
@@ -208,11 +208,12 @@ namespace Server.Items
                 if (m_Mobiles[m] >= 0 && m_Mobiles[m] < RANKMAX)
                 {
                     m_Mobiles[m]++;
-                    if (!(m_RegisteredMobiles.Contains(m)))
+                    if ( !(m_RegisteredMobiles.Contains(m)) || m_Mobiles[m] != 1) // Si le nouveau rang est == 1, cela veut dire que l'ancien était 0.
                     {
                         if (Containers[m_Mobiles[m]] != null)
                         {
-                            m.AddToBackpack(Dupe.DupeItem(null, Containers[m_Mobiles[m]], true)); // On dupe le container lié au rang du mobile.
+                            Item i = Dupe.DupeItem(m, Containers[m_Mobiles[m]], true); // On dupe le container lié au rang du mobile.
+                            m.Backpack.AddItem(i);
                         }
                     }
                 }
@@ -235,7 +236,7 @@ namespace Server.Items
         }
         #endregion
 
-        bool CheckValidRank(int rank)
+        private static bool CheckValidRank(int rank)
         {
             return (rank >= 0 && rank <= RANKMAX);
         }

@@ -65,7 +65,7 @@ namespace Server.Engines.Institutions
                     int count = m_Institution.RangTitre.Count - 1;
                     for (int i = 1; i <= count; i++)
                     {
-                        AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(0, 0), GumpButtonType.Reply, 0);
+                        AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(0, i), GumpButtonType.Reply, 0);
                         AddTextEntry(x + 35, y + (line * scale), 400, 20, 0, i+1, m_Institution.RangTitre[i]);
                         line++;
                     }
@@ -97,7 +97,7 @@ namespace Server.Engines.Institutions
 
                     AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est : " + m_Institution.GetTitre(m_Institution.GetRank( m_From)) + "</h3>", false, false);
                     line++;
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre salaire est de : " + m_Institution.GetSalaire(m_Institution.GetRank(m_From)) + " pièces d'or" + "</h3>", false, false);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre salaire est de : " + InstitutionHandler.GetSalaire(m_Institution.GetRank(m_From)) + " pièces d'or" + "</h3>", false, false);
                     line += 2;
 
                     AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 0), GumpButtonType.Reply, 0);
@@ -178,7 +178,7 @@ namespace Server.Engines.Institutions
                 from.SendMessage("INSTITUTION : " + m_Institution.Titre);
                 from.SendMessage("RANG : " + m_Institution.GetRank((Mobile)targeted));
                 from.SendMessage("TITRE : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
-                from.SendMessage("SALAIRE : " + m_Institution.GetSalaire(m_Institution.GetRank((Mobile)targeted)));
+                from.SendMessage("SALAIRE : " + InstitutionHandler.GetSalaire(m_Institution.GetRank((Mobile)targeted)));
             }
             else
             {
@@ -234,11 +234,23 @@ namespace Server.Engines.Institutions
             if (info.ButtonID <= 0)
                 return; // Canceled
 
+            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
+
             switch (type)
             {
                 case 0: // Containers
                     {
-                        m_From.SendMessage("N'a pas été scripté encore");
+                        if (m_Institution.Containers[index] == null)
+                        {
+                            Bag b = new Bag();
+                            b.Visible = false;
+                            b.Map = m_Institution.Map;
+                            b.Location = new Point3D(m_Institution.Location.X, m_Institution.Location.Y, m_Institution.Location.Z - 50); // Berk, mais le seul moyen que j'ai trouvé.
+
+                            m_Institution.Containers[index] = b;
+                        }
+
+                        m_Institution.Containers[index].DisplayTo(m_From);
                         break;
                     }
                 case 1: // Misc. buttons
@@ -305,7 +317,6 @@ namespace Server.Engines.Institutions
                     break;
                 }
             }
-            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
         }
     }
 }

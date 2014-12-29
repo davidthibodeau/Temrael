@@ -22,7 +22,7 @@ namespace Server.Scripts.Commands
         [Description("Test de scripts")]
         public static void Test_OnCommand(CommandEventArgs e)
         {
-            BoiteAuLettreComponent.WeeklyPay();
+            InstitutionHandler.Pay();
         }
     }
 }
