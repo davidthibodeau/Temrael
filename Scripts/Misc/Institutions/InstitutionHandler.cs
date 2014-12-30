@@ -26,10 +26,10 @@ namespace Server.Items
         public static readonly int[] RangSalaire =  // Contient les salaires des différents échelons.
         {
             0,   // Aucun rang.
-            250, // Rang 0. Matelot etc.
-            500, // Rang 1.
-            1000,// Rang 2.
-            1500 // Rang 3.
+            250, // Rang 1. Matelot etc.
+            500, // Rang 2.
+            1000,// Rang 3.
+            1500 // Rang 4.
         };
         #endregion
 
@@ -110,7 +110,7 @@ namespace Server.Items
         /// Trouve le titre lié au rang passé en paramètre.
         /// </summary>
         /// <param name="rank">Le rang, doit être entre 0 et RANKMAX.</param>
-        /// <returns>Une string contenant le titre lié au rang.</returns>
+        /// <returns>Une string contenant le titre lié au rang. Si le rang est invalide, il retourne "Aucun Titre" par défaut.</returns>
         public String GetTitre(int rank)
         {
             if (CheckValidRank(rank))
@@ -130,7 +130,7 @@ namespace Server.Items
         /// Trouve le salaire lié au rang passé en paramètre.
         /// </summary>
         /// <param name="rank">Le rang, doit être entre 0 et RANKMAX.</param>
-        /// <returns>Une string contenant le salaire lié au rang.</returns>
+        /// <returns>Une string contenant le salaire lié au rang. Si le salaire est invalide, il retourne le salaire[0] par défaut.</returns>
         public static int GetSalaire(int rank)
         {
             if (CheckValidRank(rank))
@@ -146,6 +146,11 @@ namespace Server.Items
             return RangSalaire[0];
         }
 
+        /// <summary>
+        /// Trouve le rang lié au mobile passé en paramètre.
+        /// </summary>
+        /// <param name="m">Le mobile dont on veut connaître le rang.</param>
+        /// <returns>Le rang du mobile. Si le mobile n'a pas de rang au sein de l'institution, il retourne le rang 0 par défaut.</returns>
         public int GetRank(Mobile m)
         {
             if (m_Mobiles.ContainsKey(m))
