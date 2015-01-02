@@ -9,7 +9,7 @@ namespace Server.Items
 		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
 
 		[Constructable]
-		public Hammer() : this(1)
+        public Hammer() : base(0x102A)
 		{
 		}
 
