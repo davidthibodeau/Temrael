@@ -29,7 +29,7 @@ namespace Server.Items
 
         public static long RandomValue()
 		{
-			return (long)Utility.RandomDouble()+ 1;
+            return (long)Utility.Random(int.MaxValue - 1) + 1;
 		}
 
 		public static void RemoveKeys( Mobile m, long keyValue )
