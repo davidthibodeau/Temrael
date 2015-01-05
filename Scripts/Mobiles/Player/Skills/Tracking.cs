@@ -41,6 +41,18 @@ namespace Server.SkillHandlers
 			}
 		}
 
+        public static bool IsTracking(Mobile tracker, Mobile tracked)
+        {
+            TrackingInfo info = null;
+            m_Table.TryGetValue(tracker, out info);
+
+            if (info == null || info.m_Target != tracked)
+            {
+                return false;
+            }
+            return true;
+        }
+
 		public static Dictionary<Mobile, TrackingInfo> m_Table = new Dictionary<Mobile, TrackingInfo>();
 
 		public static void AddInfo( Mobile tracker, Mobile target )
@@ -307,8 +319,7 @@ namespace Server.SkillHandlers
 
 				m_From.QuestArrow = new TrackArrow( m_From, m, m_Range * 2 );
 
-				if ( Core.SE )
-					Tracking.AddInfo( m_From, m );
+				Tracking.AddInfo( m_From, m );
 			}
 		}
 	}

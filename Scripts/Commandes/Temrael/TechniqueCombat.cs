@@ -29,7 +29,7 @@ namespace Server.Custom.Commandes
         public static void TechniqueAssassin_OnCommand(CommandEventArgs e)
         {
             e.Mobile.Say("TechniqueAssassin");
-            new Assassinat((PlayerMobile)e.Mobile);
+            //new Assassinat((PlayerMobile)e.Mobile);
         }
 
         [Usage("Technique1")]

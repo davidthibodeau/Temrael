@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.TechniquesCombat;
 
 namespace Server.Engines.Combat
 {
@@ -76,6 +77,9 @@ namespace Server.Engines.Combat
             atk.Stam -= (int)(basedmg * 0.60);
 
             def.Damage((int)degats, atk);
+
+            atk.RevealingAction();
+            def.RevealingAction();
         }
 
         public virtual void OnMiss(Mobile atk, Mobile def)
@@ -160,11 +164,8 @@ namespace Server.Engines.Combat
         public double Degats(double basedmg, Mobile atk, Mobile def)
         {
             double dmg = ComputerDegats(atk, basedmg, true);
-            if (! def.CanSee(atk))
-            {
-                double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.20, 10);
-                dmg = IncreasedValue(dmg, poursuite);
-            }
+
+            Assassinat.Instance.OnHit(atk, def, ref dmg);
 
             return (int)DegatsReduits(atk, def, dmg);
         }
