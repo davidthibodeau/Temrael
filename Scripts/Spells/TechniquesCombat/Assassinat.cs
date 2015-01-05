@@ -38,22 +38,24 @@ namespace Server.TechniquesCombat
 
         public void OnHit(Mobile atk, Mobile def, ref double dmg)
         {
-            if(MobilesBonus.Contains(atk))
+            if (!MobilesBonus.Contains(atk))
             {
-                double scaling = (double)MobilesBonus[atk];
-
                 if (!MobilesList.Contains(atk))  // First hit.
                 {
+                    double scaling = ScalingBonus(atk, def);
+
                     def.SendMessage("On vous prend en chasse !");
 
                     def.Stam -= (int)(def.Stam * (scaling * MalusStam));
 
-                    new CooldownTimer(atk, def, Cooldown);
+                    new CooldownTimer(atk, def, scaling, Cooldown);
                 }
-                
+            }
+            else
+            {
                 if (MobilesList[atk] == def) // Following hits.
                 {
-                    dmg *= 1 + ( scaling * BonusDegats);
+                    dmg *= 1 + ((double)MobilesBonus[atk] * BonusDegats);
                 }
             }
         }
@@ -84,13 +86,13 @@ namespace Server.TechniquesCombat
         {
             Mobile m_atk, m_def;
 
-            public CooldownTimer(Mobile atk, Mobile def, TimeSpan duration)
+            public CooldownTimer(Mobile atk, Mobile def, double scaling, TimeSpan duration)
                 : base(duration)
             {
                 m_atk = atk;
                 m_def = def;
                 Assassinat.instance.MobilesList.Add(atk, def);
-                Assassinat.instance.MobilesBonus.Add(atk, Assassinat.instance.ScalingBonus(atk,def));
+                Assassinat.instance.MobilesBonus.Add(atk, scaling);
                 Start();
             }
 
