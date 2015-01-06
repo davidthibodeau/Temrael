@@ -51,6 +51,7 @@ namespace Server
 		private static Thread m_Thread;
 		private static bool m_Service;
 		private static bool m_Debug;
+        private static bool m_Balancing;
 		private static bool m_Cache = true;
 		private static bool m_HaltOnWarning;
 		private static bool m_VBdotNET;
@@ -100,6 +101,7 @@ namespace Server
 
 		public static bool Service { get { return m_Service; } }
 		public static bool Debug { get { return m_Debug; } }
+        public static bool Balancing { get { return m_Balancing; } }
 		internal static bool HaltOnWarning { get { return m_HaltOnWarning; } }
 		internal static bool VBdotNet { get { return m_VBdotNET; } }
 		public static List<string> DataDirectories { get { return m_DataDirectories; } }
@@ -451,6 +453,8 @@ namespace Server
 					m_Debug = true;
 				else if ( Insensitive.Equals( args[i], "-service" ) )
 					m_Service = true;
+                else if (Insensitive.Equals(args[i], "-balancing"))
+                    m_Balancing = true;
 				else if ( Insensitive.Equals( args[i], "-profile" ) )
 					Profiling = true;
 				else if ( Insensitive.Equals( args[i], "-nocache" ) )
@@ -553,14 +557,19 @@ namespace Server
 
 			ScriptCompiler.Invoke( "Initialize" );
 
-			MessagePump messagePump = m_MessagePump = new MessagePump();
+            MessagePump messagePump = null;
+            if (!Core.Balancing)
+                messagePump = m_MessagePump = new MessagePump();
 
 			timerThread.Start();
 
 			for( int i = 0; i < Map.AllMaps.Count; ++i )
 				Map.AllMaps[i].Tiles.Force();
 
-			NetState.Initialize();
+            if (Core.Balancing)
+                Console.WriteLine("Le serveur fut démarré en mode balancing test. Il est impossible de s'y connecter et les tests vont simplement avoir lieu en background.");
+            else
+                NetState.Initialize();
 
 			EventSink.InvokeServerStarted();
 
@@ -581,10 +590,14 @@ namespace Server
 					Item.ProcessDeltaQueue();
 
 					Timer.Slice();
-					messagePump.Slice();
+                    if (!Core.Balancing)
+                        messagePump.Slice();
 
-					NetState.FlushAll();
-					NetState.ProcessDisposedQueue();
+                    if (!Core.Balancing)
+                    {
+                        NetState.FlushAll();
+                        NetState.ProcessDisposedQueue();
+                    }
 
 					if( Slice != null )
 						Slice();

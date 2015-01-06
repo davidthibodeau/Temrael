@@ -34,6 +34,9 @@ namespace Server.Engines.OrbRemoteServer
 
 		static OrbServer()
 		{
+            if (Core.Balancing)
+                return;
+
 			StartServer();
 
 			OrbConnection.OnLogin += new OrbConnection.LoginEvent(OnLogin);
