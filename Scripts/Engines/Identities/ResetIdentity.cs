@@ -15,7 +15,7 @@ namespace Server.Engines.Identities
 
         public static void ResetIdentity_OnCommand(CommandEventArgs e)
         {
-            e.Mobile.SendMessage("Veuillez choisir le joueur que vous dont vous désirez reset l'identité.");
+            e.Mobile.SendMessage("Veuillez choisir le joueur que vous dont vous désirez remettre à neuf l'identité.");
         }
 
         private class ResetTarget : Target
@@ -34,7 +34,7 @@ namespace Server.Engines.Identities
                     return;
                 }
 
-                from.SendMessage("Êtes-vous certain de vouloir reset l'identité courante ({0}) de ce joueur?", 
+                from.SendMessage("Êtes-vous certain de vouloir remettre à neuf l'identité courante ({0}) de ce joueur?", 
                     pm.Identities.CurrentIdentity.IdType.ToString());
                 from.SendMessage("Plus personne ne reconnaîtra cette identité et cette opération est irréversible. (Répondez oui ou non)");
                 from.Prompt = new ResetPrompt(pm);
@@ -58,7 +58,7 @@ namespace Server.Engines.Identities
                 {
                     joueur.Identities.CurrentIdentity.Reset();
                     from.SendMessage("L'opération fut complétée.");
-                    joueur.SendMessage("Votre identité courante fut reset. Plus personne ne la reconnaîtra");
+                    joueur.SendMessage("Votre identité courante fut remise à neuf. Plus personne ne la reconnaîtra");
                 }
                 else
                 {
