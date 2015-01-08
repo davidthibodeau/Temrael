@@ -141,8 +141,8 @@
     <Compile Include="Misc\Balancing\Balancing.cs" />
     <Compile Include="Misc\Balancing\MobilesToTest.cs" />
     <Compile Include="Misc\Balancing\TestMobile.cs" />
-    <Compile Include="Misc\Institutions\InstitutionGump.cs" />
-    <Compile Include="Misc\Institutions\InstitutionHandler.cs" />
+    <Compile Include="Engines\Institutions\InstitutionGump.cs" />
+    <Compile Include="Engines\Institutions\InstitutionHandler.cs" />
     <Compile Include="Misc\Notoriety.cs" />
     <Compile Include="Misc\ResetHebdomadaire.cs" />
     <Compile Include="Mobiles\Monsters\FeuFollet.cs" />
