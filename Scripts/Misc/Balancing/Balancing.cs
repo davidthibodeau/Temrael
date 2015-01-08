@@ -91,6 +91,7 @@ namespace Server.Misc.Balancing
             }
             TimeSpan duration = end - start;
             string durText = String.Format("{0}:{1}:{2}", duration.Hours, duration.Minutes, duration.Seconds);
+            Console.WriteLine(mob1.Name + " CONTRE " + mob2.Name);
             Console.WriteLine("Combat {1}\n\tDurée: {0}.\n\tGagnant: combattant {2}.\n\tVie restante: {3}.", 
                durText, combats, gagnant, hitsleft);
             Console.WriteLine("\tRésultats préliminaires:\n\t\tCombattant {2} : {0} ({4}%).\n\t\tCombattant {3} : {1} ({5}%).", 

@@ -59,8 +59,14 @@ namespace Server.Misc.Balancing
                     torse = new StuddedChest();
                     jambes = new StuddedLegs();
                     break;
-
-
+                case ArmorClass.Os:
+                    tete = new BoneHelm();
+                    gorget = new StuddedGorget();
+                    bras = new BoneArms();
+                    mains = new BoneGloves();
+                    torse = new BoneChest();
+                    jambes = new BoneLegs();
+                    break;
                 case ArmorClass.Plaque:
                     tete = new PlateHelm();
                     gorget = new PlateGorget();
@@ -68,6 +74,14 @@ namespace Server.Misc.Balancing
                     mains = new PlateGloves();
                     torse = new PlateChest();
                     jambes = new PlateLegs();
+                    break;
+                case ArmorClass.PlaqueLourde:
+                    tete = new ArmureDaedricHelm();
+                    gorget = new ArmureDaedricGorget();
+                    bras = new ArmureDaedricGreaves();
+                    mains = new ArmureDaedricGloves();
+                    torse = new ArmureDaedricTunic();
+                    jambes = new ArmureDaedricLeggings();
                     break;
             }
 

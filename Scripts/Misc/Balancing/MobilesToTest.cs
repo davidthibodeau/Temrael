@@ -4,6 +4,7 @@ using Server.Items;
 
 namespace Server.Misc.Balancing
 {
+    #region POUR LES TESTS RELATIF AUX ARMES. MÊMES COMPÉTENCES.
     public class MobilePlaqueEpeeLente : TestMobile
     {
         public MobilePlaqueEpeeLente()
@@ -82,9 +83,9 @@ namespace Server.Misc.Balancing
     {
         public MobilePlaqueEpeeLenteBouclier()
         {
-            RawStr = 100;
-            RawDex = 100;
-            RawInt = 25;
+            RawStr = 80;
+            RawDex = 85;
+            RawInt = 60;
 
             SetSkill(SkillName.Epee, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
@@ -122,9 +123,9 @@ namespace Server.Misc.Balancing
     {
         public MobilePlaqueEpeeRapideBouclier()
         {
-            RawStr = 100;
-            RawDex = 50;
-            RawInt = 75;
+            RawStr = 80;
+            RawDex = 85;
+            RawInt = 60;
 
             SetSkill(SkillName.Epee, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
@@ -157,6 +158,9 @@ namespace Server.Misc.Balancing
             base.Serialize(writer);
         }
     }
+
+    #endregion
+
 
     public class MobileCuirEpeeLente : TestMobile
     {
