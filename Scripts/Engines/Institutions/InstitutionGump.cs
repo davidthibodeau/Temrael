@@ -95,17 +95,32 @@ namespace Server.Engines.Institutions
                     AddSection(x, y + (line * scale), 450, 120, "<h3>Description<h3>", m_Institution.Description);
                     line += 8;
 
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est : " + m_Institution.GetTitre(m_Institution.GetRank( m_From)) + "</h3>", false, false);
-                    line++;
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre salaire est de : " + InstitutionHandler.GetSalaire(m_Institution.GetRank(m_From)) + " pièces d'or" + "</h3>", false, false);
+                    int rank = m_Institution.GetRank(m_From);
+                    if (rank == -1)
+                    {
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Vous n'êtes pas membre de l'institution.</h3>", false, false);
+                        line++;
+                    }
+                    else
+                    {
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est : " + m_Institution.GetTitre(m_Institution.GetRank(m_From)) + "</h3>", false, false);
+                        line++;
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre salaire est de : " + InstitutionHandler.GetSalaire(m_Institution.GetRank(m_From)) + " pièces d'or" + "</h3>", false, false);
+                    }
                     line += 2;
 
-                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 0), GumpButtonType.Reply, 0);
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux joindre l'institution</h3>", false, false);
-                    line++;
-                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 1), GumpButtonType.Reply, 0);
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux quitter l'institution</h3>", false, false);
-                    line++;
+                    if (rank == -1)
+                    {
+                        AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 0), GumpButtonType.Reply, 0);
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux joindre l'institution</h3>", false, false);
+                        line++;
+                    }
+                    else
+                    {
+                        AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 1), GumpButtonType.Reply, 0);
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Je veux quitter l'institution</h3>", false, false);
+                        line++;
+                    }
                 }
             }
         }
@@ -234,8 +249,6 @@ namespace Server.Engines.Institutions
             if (info.ButtonID <= 0)
                 return; // Canceled
 
-            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
-
             switch (type)
             {
                 case 0: // Containers
@@ -297,13 +310,13 @@ namespace Server.Engines.Institutions
                     {
                         case 0: // Je veux joindre l'institution
                             {
-                                m_From.SendMessage("Je veux joindre l'institution");
+                                m_From.SendMessage("Vous joignez l'institution.");
                                 m_Institution.AjouterInstitution((Mobile)m_From);
                                 break;
                             }
                         case 1: // Je veux quitter l'institution
                             {
-                                m_From.SendMessage("Je veux quitter l'institution");
+                                m_From.SendMessage("Vous quittez l'institution.");
                                 m_Institution.RetirerInstitution((Mobile)m_From);
                                 break;
                             }
@@ -317,6 +330,8 @@ namespace Server.Engines.Institutions
                     break;
                 }
             }
+
+            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
         }
     }
 }

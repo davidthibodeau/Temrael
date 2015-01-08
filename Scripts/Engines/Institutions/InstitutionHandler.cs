@@ -157,7 +157,7 @@ namespace Server.Items
             {
                 return m_Mobiles[m];
             }
-            return 0;
+            return -1;
         }
         #endregion
 
