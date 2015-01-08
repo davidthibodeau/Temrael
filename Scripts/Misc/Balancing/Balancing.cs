@@ -1,43 +1,65 @@
 ﻿using System;
+using System.IO;
 
 namespace Server.Misc.Balancing
 {
     public delegate void DeathEventHandler( DeathEventArgs e );
 
-    public static class Balancing
+    public class Balancing
     {
-        private static DateTime start;
-        private static DateTime end;
-        private static bool done;
-        private static Mobile loser;
-        private static Mobile mob1, mob2;
-        private static int combats, gains1, gains2;
-        public static event DeathEventHandler Death;
+        private DateTime start;
+        private DateTime end;
+        private bool done;
+        private TestMobile loser;
+        private TestMobile mob1, mob2;
+        private int combats, gains1, gains2;
+        private event DeathEventHandler Death;
+        private string fileLocation;
 
         public static void Initialize()
         {
             if (!Core.Balancing)
                 return;
 
+            TestMobile mob1 = new MobilePlaqueEpeeLente();
+            mob1.Name = "Two handed lente";
+            TestMobile mob2 = new MobilePlaqueEpeeRapide();
+            mob2.Name = "Two handed rapide";
+            new Balancing(mob1, mob2, "test1.txt");
+
             mob1 = new MobilePlaqueEpeeLente();
             mob1.Name = "Two handed lente";
-            mob2 = new MobilePlaqueEpeeRapideBouclier();
-            mob2.Name = "One handed rapide 75 int";
+            mob2 = new MobilePlaqueEpeeRapide();
+            mob2.Name = "Two handed rapide";
+            new Balancing(mob1, mob2, "test2.txt");
+        }
+
+        public Balancing(TestMobile m1, TestMobile m2)
+        {
+            m1.Balance = this;
+            m2.Balance = this;
+            mob1 = m1;
+            mob2 = m2;
+            fileLocation = null;
 
             Death += new DeathEventHandler(EventSink_Death);
 
             StartCombat();
-            new FinishTimer().Start();
-            Console.WriteLine("Début des tests");
+            new FinishTimer(this).Start();
         }
 
-        public static void InvokeDeath(DeathEventArgs e)
+        public Balancing(TestMobile m1, TestMobile m2, string loc) : this(m1, m2)
+        {
+            fileLocation = loc;   
+        }
+
+        public void InvokeDeath(DeathEventArgs e)
         {
             if (Death != null)
                 Death(e);
         }
 
-        public static void StartCombat()
+        public void StartCombat()
         {
             done = false;
             Heal(mob1);
@@ -50,29 +72,47 @@ namespace Server.Misc.Balancing
             start = DateTime.Now;
         }
 
-        public static void Heal(Mobile m)
+        public void Heal(Mobile m)
         {
             m.Hits = m.HitsMax;
             m.Stam = m.StamMax;
             m.Mana = m.ManaMax;
         }
 
-        public static void EventSink_Death(DeathEventArgs e)
+        public void WriteLine(string format, params object[] args)
         {
-            Mobile from = e.Mobile;
+            WriteLine(String.Format(format, args));
+        }
+
+        public void WriteLine(string text)
+        {
+            if (fileLocation == null)
+            {
+                Console.WriteLine(text);
+            }
+            else
+            {
+                using (StreamWriter sw = new StreamWriter(fileLocation, true))
+                    sw.WriteLine(text);
+            }
+        }
+
+        public void EventSink_Death(DeathEventArgs e)
+        {
+            TestMobile from = e.Mobile;
             loser = from;
             end = DateTime.Now;
 
             done = true;
         }
 
-        public static void Loop()
+        public void Loop()
         {
             ReportFight();
             StartCombat();
         }
 
-        public static void ReportFight()
+        public void ReportFight()
         {
             int hitsleft = 0;
             string gagnant = "";
@@ -91,27 +131,30 @@ namespace Server.Misc.Balancing
             }
             TimeSpan duration = end - start;
             string durText = String.Format("{0}:{1}:{2}", duration.Hours, duration.Minutes, duration.Seconds);
-            Console.WriteLine(mob1.Name + " CONTRE " + mob2.Name);
-            Console.WriteLine("Combat {1}\n\tDurée: {0}.\n\tGagnant: combattant {2}.\n\tVie restante: {3}.", 
+            WriteLine(mob1.Name + " CONTRE " + mob2.Name);
+            WriteLine("Combat {1}\n\tDurée: {0}.\n\tGagnant: combattant {2}.\n\tVie restante: {3}.", 
                durText, combats, gagnant, hitsleft);
-            Console.WriteLine("\tRésultats préliminaires:\n\t\tCombattant {2} : {0} ({4}%).\n\t\tCombattant {3} : {1} ({5}%).", 
+            WriteLine("\tRésultats préliminaires:\n\t\tCombattant {2} : {0} ({4}%).\n\t\tCombattant {3} : {1} ({5}%).", 
                 gains1, gains2, mob1.Name, mob2.Name, gains1 * 100 /combats, gains2 * 100 /combats);
         }
 
         public class FinishTimer : Timer
         {
-            public FinishTimer() : base(new TimeSpan(0,0,1), new TimeSpan(0,0,1))
+            private Balancing balance;
+
+            public FinishTimer(Balancing b) : base(new TimeSpan(0,0,1), new TimeSpan(0,0,1))
             {
+                balance = b;
             }
 
             protected override void OnTick()
             {
-                if (done)
+                if (balance.done)
                 {
-                    done = false;
-                    mob1.Combatant = null;
-                    mob2.Combatant = null;
-                    Loop();
+                    balance.done = false;
+                    balance.mob1.Combatant = null;
+                    balance.mob2.Combatant = null;
+                    balance.Loop();
                 }
             }
         }
@@ -119,13 +162,13 @@ namespace Server.Misc.Balancing
 
 	public class DeathEventArgs : EventArgs
 	{
-		private Mobile m_Mobile;
+		private TestMobile m_Mobile;
 
-		public Mobile Mobile{ get{ return m_Mobile; } }
+		public TestMobile Mobile{ get{ return m_Mobile; } }
 
-		public DeathEventArgs( Mobile mobile )
-		{
-			m_Mobile = mobile;
-		}
+        public DeathEventArgs(TestMobile mobile)
+        {
+            m_Mobile = mobile;
+        }
 	}
 }

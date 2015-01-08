@@ -18,9 +18,10 @@ namespace Server.Misc.Balancing
 
     public class TestMobile : PlayerMobile
     {
+        public Balancing Balance { get; set; }
+
         public TestMobile()
         {
-            
         }
 
         public TestMobile(Serial serial)
@@ -126,7 +127,7 @@ namespace Server.Misc.Balancing
         public override void OnDeath(Container c)
         {
             Combatant = null;
-            Balancing.InvokeDeath(new DeathEventArgs(this));
+            Balance.InvokeDeath(new DeathEventArgs(this));
             for (int i = c.Items.Count - 1; i >= 0; i--)
             {
                 EquipItem(c.Items[i]);
