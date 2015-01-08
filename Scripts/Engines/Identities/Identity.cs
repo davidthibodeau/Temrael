@@ -62,6 +62,11 @@ namespace Server.Engines.Identities
             }
         }
 
+        public void Reset()
+        {
+            names = new Dictionary<Mobile, string>();
+        }
+
         public override string ToString()
         {
             return IdType.ToString();
