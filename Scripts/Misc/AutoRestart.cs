@@ -26,9 +26,10 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Restart", AccessLevel.Coordinateur, new CommandEventHandler( Restart_OnCommand ) );
-            CommandSystem.Register( "Miseajour", AccessLevel.Coordinateur, new CommandEventHandler( Miseajour_OnCommand ) );
-            CommandSystem.Register( "Cancelrestart", AccessLevel.Coordinateur, new CommandEventHandler(CancelRestart_OnCommand ) );
+            CommandSystem.Register("Restart", AccessLevel.Coordinateur, new CommandEventHandler(Restart_OnCommand));
+            CommandSystem.Register("Miseajour", AccessLevel.Coordinateur, new CommandEventHandler(Miseajour_OnCommand));
+            CommandSystem.Register("Maintenance", AccessLevel.Coordinateur, new CommandEventHandler(Maintenance_OnCommand));
+            CommandSystem.Register("Cancelrestart", AccessLevel.Coordinateur, new CommandEventHandler(CancelRestart_OnCommand));
 			new AutoRestart().Start();
 		}
 
@@ -60,6 +61,21 @@ namespace Server.Misc
                 m_RestartTime = DateTime.Now.AddMinutes(2.0);
 			}
 		}
+
+        public static void Maintenance_OnCommand(CommandEventArgs e)
+        {
+            if (m_Restarting)
+            {
+                e.Mobile.SendMessage("The server is already restarting.");
+            }
+            else
+            {
+                e.Mobile.SendMessage("You have initiated server shutdown.");
+                World.Broadcast(0x22, true, "Le serveur doit proceder a un redemarrage dans deux minutes en raison d'une maintenance du systeme.");
+                Enabled = true;
+                m_RestartTime = DateTime.Now.AddMinutes(2.0);
+            }
+        }
 
         public static void CancelRestart_OnCommand(CommandEventArgs e)
 		{
