@@ -9,6 +9,8 @@ namespace Server.Misc.Balancing
     {
         private DateTime start;
         private DateTime end;
+        private int tempsEcoule;
+        private int hprestantTotal;
         private bool done;
         private TestMobile loser;
         private TestMobile mob1, mob2;
@@ -21,17 +23,37 @@ namespace Server.Misc.Balancing
             if (!Core.Balancing)
                 return;
 
-            TestMobile mob1 = new MobilePlaqueEpeeLente();
-            mob1.Name = "Two handed lente";
-            TestMobile mob2 = new MobilePlaqueEpeeRapide();
-            mob2.Name = "Two handed rapide";
-            new Balancing(mob1, mob2, "test1.txt");
+            #region Tests des différentes armes, plaque seulement.
+            TestMobile mob1 = new MobilePlaqueEpeeRapide();
+            TestMobile mob2 = new MobilePlaqueEpeeLente();
+            new Balancing(mob1, mob2, "2H Rapide vs 2H Lente.txt");
 
-            mob1 = new MobilePlaqueEpeeLente();
-            mob1.Name = "Two handed lente";
+            mob1 = new MobilePlaqueEpeeLenteBouclier();
+            mob2 = new MobilePlaqueEpeeLente();
+            new Balancing(mob1, mob2, "1H Lente vs 2H Lente.txt");
+
+            mob1 = new MobilePlaqueEpeeLenteBouclier();
             mob2 = new MobilePlaqueEpeeRapide();
-            mob2.Name = "Two handed rapide";
-            new Balancing(mob1, mob2, "test2.txt");
+            new Balancing(mob1, mob2, "1H Lente vs 2H Rapide.txt");
+
+            mob1 = new MobilePlaqueEpeeRapideBouclier();
+            mob2 = new MobilePlaqueEpeeLente();
+            new Balancing(mob1, mob2, "1H Rapide vs 2H Lente.txt");
+
+            mob1 = new MobilePlaqueEpeeRapideBouclier();
+            mob2 = new MobilePlaqueEpeeRapide();
+            new Balancing(mob1, mob2, "1H Rapide vs 2H Rapide.txt");
+
+            mob1 = new MobilePlaqueEpeeRapideBouclier();
+            mob2 = new MobilePlaqueEpeeLenteBouclier();
+            new Balancing(mob1, mob2, "1H Rapide vs 1H Lente.txt");
+            #endregion
+
+            #region Tests d'armure.
+            mob1 = new MobilePlaqueEpeeRapideBouclier();
+            mob2 = new MobileCuirEpeeRapideBouclier();
+            new Balancing(mob1, mob2, "Plaque rapide vs Cuir rapide.txt");
+            #endregion
         }
 
         public Balancing(TestMobile m1, TestMobile m2)
@@ -92,7 +114,7 @@ namespace Server.Misc.Balancing
             }
             else
             {
-                using (StreamWriter sw = new StreamWriter(fileLocation, true))
+                using (StreamWriter sw = new StreamWriter(fileLocation, false))
                     sw.WriteLine(text);
             }
         }
@@ -130,12 +152,22 @@ namespace Server.Misc.Balancing
                 gagnant = mob1.Name;
             }
             TimeSpan duration = end - start;
+            tempsEcoule += (int)duration.TotalSeconds;
+            hprestantTotal += hitsleft;
+
+            string s;
             string durText = String.Format("{0}:{1}:{2}", duration.Hours, duration.Minutes, duration.Seconds);
-            WriteLine(mob1.Name + " CONTRE " + mob2.Name);
-            WriteLine("Combat {1}\n\tDurée: {0}.\n\tGagnant: combattant {2}.\n\tVie restante: {3}.", 
+
+            s = "-----------------------------\r\n";
+            s += mob1.Name + " CONTRE " + mob2.Name + "\r\n";
+            s += String.Format("\tCombat {1}\tDurée: {0}.\r\n\tGagnant: combattant {2}.\r\n\tVie restante: {3}.", 
                durText, combats, gagnant, hitsleft);
-            WriteLine("\tRésultats préliminaires:\n\t\tCombattant {2} : {0} ({4}%).\n\t\tCombattant {3} : {1} ({5}%).", 
+            s += String.Format("\tRésultats préliminaires:\r\n\t\tCombattant {2} : {0} ({4}%).\r\n\t\tCombattant {3} : {1} ({5}%).", 
                 gains1, gains2, mob1.Name, mob2.Name, gains1 * 100 /combats, gains2 * 100 /combats);
+            s += "\r\n\t\tTemps moyen: " + (tempsEcoule / combats);
+            s += "\r\n\t\tHp restant moyen: " + (hprestantTotal / combats);
+
+            WriteLine(s);
         }
 
         public class FinishTimer : Timer

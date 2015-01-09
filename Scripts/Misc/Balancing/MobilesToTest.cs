@@ -4,11 +4,13 @@ using Server.Items;
 
 namespace Server.Misc.Balancing
 {
-    #region POUR LES TESTS RELATIF AUX ARMES. MÊMES COMPÉTENCES.
+    #region POUR LES TESTS RELATIF AUX ARMES.
     public class MobilePlaqueEpeeLente : TestMobile
     {
         public MobilePlaqueEpeeLente()
         {
+            Name = "2H Plaque Lente";
+
             RawStr = 100;
             RawDex = 100;
             RawInt = 25;
@@ -16,9 +18,6 @@ namespace Server.Misc.Balancing
             SetSkill(SkillName.Epee, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
-            SetSkill(SkillName.CoupCritique, 100.0);
-            SetSkill(SkillName.Concentration, 100.0);
-            SetSkill(SkillName.Penetration, 100.0);
             SetSkill(SkillName.Parer, 100.0);
 
             ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
@@ -46,6 +45,8 @@ namespace Server.Misc.Balancing
     {
         public MobilePlaqueEpeeRapide()
         {
+            Name = "2H Plaque Rapide";
+
             RawStr = 100;
             RawDex = 100;
             RawInt = 25;
@@ -53,9 +54,6 @@ namespace Server.Misc.Balancing
             SetSkill(SkillName.Epee, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
-            SetSkill(SkillName.CoupCritique, 100.0);
-            SetSkill(SkillName.Concentration, 100.0);
-            SetSkill(SkillName.Penetration, 100.0);
             SetSkill(SkillName.Parer, 100.0);
 
             ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
@@ -83,6 +81,8 @@ namespace Server.Misc.Balancing
     {
         public MobilePlaqueEpeeLenteBouclier()
         {
+            Name = "1H Plaque Lente";
+
             RawStr = 80;
             RawDex = 85;
             RawInt = 60;
@@ -90,9 +90,6 @@ namespace Server.Misc.Balancing
             SetSkill(SkillName.Epee, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
-            SetSkill(SkillName.CoupCritique, 100.0);
-            SetSkill(SkillName.Concentration, 100.0);
-            SetSkill(SkillName.Penetration, 100.0);
             SetSkill(SkillName.Parer, 100.0);
 
             ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
@@ -123,6 +120,8 @@ namespace Server.Misc.Balancing
     {
         public MobilePlaqueEpeeRapideBouclier()
         {
+            Name = "1H Plaque Rapide";
+
             RawStr = 80;
             RawDex = 85;
             RawInt = 60;
@@ -130,9 +129,6 @@ namespace Server.Misc.Balancing
             SetSkill(SkillName.Epee, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
-            SetSkill(SkillName.CoupCritique, 100.0);
-            SetSkill(SkillName.Concentration, 100.0);
-            SetSkill(SkillName.Penetration, 100.0);
             SetSkill(SkillName.Parer, 100.0);
 
             ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
@@ -159,13 +155,13 @@ namespace Server.Misc.Balancing
         }
     }
 
-    #endregion
-
 
     public class MobileCuirEpeeLente : TestMobile
     {
         public MobileCuirEpeeLente()
         {
+            Name = "2H Cuir Lente";
+
             RawStr = 100;
             RawDex = 100;
             RawInt = 25;
@@ -173,9 +169,6 @@ namespace Server.Misc.Balancing
             SetSkill(SkillName.Epee, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
-            SetSkill(SkillName.CoupCritique, 100.0);
-            SetSkill(SkillName.Concentration, 100.0);
-            SetSkill(SkillName.Penetration, 100.0);
             SetSkill(SkillName.Parer, 100.0);
 
             ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
@@ -198,4 +191,121 @@ namespace Server.Misc.Balancing
             base.Serialize(writer);
         }
     }
+
+    public class MobileCuirEpeeRapide : TestMobile
+    {
+        public MobileCuirEpeeRapide()
+        {
+            Name = "2H Cuir Rapide";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.Parer, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuirEpeeRapide(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirEpeeLenteBouclier : TestMobile
+    {
+        public MobileCuirEpeeLenteBouclier()
+        {
+            Name = "1H Cuir Lente";
+
+            RawStr = 80;
+            RawDex = 85;
+            RawInt = 60;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.Parer, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Narvegne();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+            BaseShield shield = new BouclierPavoisNoir();
+            shield.Quality = ArmorQuality.Exceptional;
+            shield.Resource = CraftResource.Argent;
+        }
+
+        public MobileCuirEpeeLenteBouclier(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirEpeeRapideBouclier : TestMobile
+    {
+        public MobileCuirEpeeRapideBouclier()
+        {
+            Name = "1H Cuir Rapide";
+
+            RawStr = 80;
+            RawDex = 85;
+            RawInt = 60;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.Parer, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Hectmore();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+            BaseShield shield = new BouclierPavoisNoir();
+            shield.Quality = ArmorQuality.Exceptional;
+            shield.Resource = CraftResource.Argent;
+        }
+
+        public MobileCuirEpeeRapideBouclier(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    #endregion
+
 }
