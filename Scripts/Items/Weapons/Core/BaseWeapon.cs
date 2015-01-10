@@ -83,13 +83,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    case 30: return 2;
-                    case 35: return 3;
-                    case 40: return 5;
+                    case 30: return 3;
+                    case 35: return 4;
+                    case 40: return 6;
                     case 45: return 7;
                     case 50: return 9;
                     case 55: return 10;
-                    case 60: return 12;
+                    case 60: return 11;
                     default: return 0;
                 }
             }
@@ -99,7 +99,7 @@ namespace Server.Items
                 {
                     case 30: return 4;
                     case 35: return 6;
-                    case 40: return 7;
+                    case 40: return 8;
                     case 45: return 9;
                     case 50: return 11;
                     case 55: return 13;
@@ -116,13 +116,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    case 30: return 5;
-                    case 35: return 7;
+                    case 30: return 6;
+                    case 35: return 8;
                     case 40: return 9;
                     case 45: return 11;
-                    case 50: return 13;
-                    case 55: return 15;
-                    case 60: return 17;
+                    case 50: return 12;
+                    case 55: return 14;
+                    case 60: return 15;
                     default: return 0;
                 }
             }
@@ -130,13 +130,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    case 30: return 7;
+                    case 30: return 8;
                     case 35: return 10;
                     case 40: return 12;
                     case 45: return 14;
                     case 50: return 16;
                     case 55: return 18;
-                    case 60: return 19;
+                    case 60: return 20;
                     default: return 0;
                 }
             }

@@ -315,7 +315,7 @@ namespace Server.Engines.Combat
 
         #region Parer
 
-        const int ParerCoutMana = 20;
+        const int ParerCoutMana = 15;
 
         /// <summary>
         /// Cette fonction sert à déterminer si le défenseur a paré le coup.
@@ -340,20 +340,13 @@ namespace Server.Engines.Combat
         protected virtual double BaseParerChance(Mobile def)
         {
             double parry = def.Skills[SkillName.Parer].Value;
-            double chance = 0;
 
-            if ((def.FindItemOnLayer(Layer.TwoHanded) as BaseShield) != null)
-                chance = GetBonus(parry, 0.15, 2.5);
-
-            return chance;
+            return GetBonus(parry, 0.15, 2.5);
         }
 
         protected virtual double ParerChance(Mobile def)
         {
             double chance = BaseParerChance(def);
-
-            if (def.Dex < 80)
-                chance = chance * (20 + def.Dex) / 100;
 
             if (def.Spell != null && def.Spell.IsCasting)
             {

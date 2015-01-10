@@ -91,14 +91,14 @@ namespace Server.Spells
             if (CheckHurt)
             {
                 PlayerMobile pm = Caster as PlayerMobile;
-                double chance = Caster.Skills[SkillName.ArtMagique].Value / 333;
+                double chance = Caster.Skills[SkillName.ArtMagique].Value / 266;
 
                 if (pm != null)
                 {
-                    chance += pm.Skills[SkillName.Meditation].Value / 333;
+                    chance += pm.Skills[SkillName.Meditation].Value / 266;
 
                     if (this is NecromancerSpell) //La nécro est une école de contact, donc besoin d'un bonus pour ne pas Fizzle
-                        chance += pm.Skills[SkillName.Animisme].Value / 333;
+                        chance += pm.Skills[SkillName.Animisme].Value / 266;
                 }
                 if (chance > Utility.RandomDouble())
                     Caster.SendMessage("Vous réussissez à garder votre concentration.");
