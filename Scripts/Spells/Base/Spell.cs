@@ -307,7 +307,7 @@ namespace Server.Spells
                 {
                     Caster.LocalOverheadMessage(MessageType.Regular, 0, true, "Vous n'avez pas assez de mana pour lancer ce sort.");
                 }
-                else if (BandageContext.m_Table.Contains(Caster))
+                else if (BandageContext.IsHealingSelf(Caster))
                 {
                     Caster.SendMessage("Vous ne pouvez pas lancer de sort tout en vous soignant avec des bandages.");
                 }

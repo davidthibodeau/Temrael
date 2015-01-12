@@ -1535,7 +1535,7 @@ namespace Server.Mobiles
 			if ( !base.CheckEquip( item ) )
 				return false;
 
-            if (BandageContext.m_Table.Contains(this))
+            if (BandageContext.IsHealingSelf(this))
             {
                 this.SendMessage("Vous ne pouvez pas équiper un arme en vous soignant.");
                 return false;

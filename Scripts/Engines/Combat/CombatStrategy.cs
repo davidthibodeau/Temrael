@@ -27,7 +27,7 @@ namespace Server.Engines.Combat
         /// <returns>Le délai nécessaire avant de pouvoir porter le prochain coup.</returns>
         public int Sequence(Mobile atk, Mobile def)
         {
-            if (!BandageContext.m_Table.Contains(atk))
+            if (!BandageContext.IsHealingSelf(atk))
             {
                 if (Toucher(atk, def))
                     OnHit(atk, def);

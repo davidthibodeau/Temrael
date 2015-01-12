@@ -219,6 +219,19 @@ namespace Server.Items
             m_Timer = null;
         }
 
+        // Un joueur ne peut pas se battre si il se heale lui-même.
+        public static bool IsHealingSelf(Mobile atk)
+        {
+            if (m_Table.Contains(atk))
+            {
+                if (((BandageContext)m_Table[atk]).m_Patient == atk)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static Hashtable m_Table = new Hashtable();
 
         public static BandageContext GetContext(Mobile healer)

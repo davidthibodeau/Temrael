@@ -70,6 +70,11 @@ namespace Server.Engines.Combat
             //Un arc n'applique pas le poison.
         }
 
+        protected override double BaseParerChance(Mobile def)
+        {
+            return 0;
+        }
+
         protected override void CheckEquitationAttaque(Mobile atk)
         {
             CheckEquitation(atk, EquitationType.Ranged);
