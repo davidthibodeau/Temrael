@@ -81,7 +81,7 @@ namespace Server.Spells
         {
             if (m_Table.ContainsKey(atk))
             {
-                attackSpeed = (attackSpeed * (1 + m_Table[atk])) / 100;
+                attackSpeed = (attackSpeed * (100 + m_Table[atk])) / 100;
             }
         }
 
