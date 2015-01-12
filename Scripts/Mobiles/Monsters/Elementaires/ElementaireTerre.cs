@@ -43,7 +43,7 @@ namespace Server.Mobiles
             Amethyst Amethyst = new Amethyst(1);
             AddToBackpack(Amethyst);
 
-            Amethyst Amethyst = new Amethyst(1);
+            Amethyst = new Amethyst(1);
             AddToBackpack(Amethyst);
 
         }

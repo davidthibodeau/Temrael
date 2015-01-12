@@ -146,6 +146,9 @@
     <Compile Include="Engines\Institutions\InstitutionHandler.cs" />
     <Compile Include="Misc\Notoriety.cs" />
     <Compile Include="Misc\ResetHebdomadaire.cs" />
+    <Compile Include="Mobiles\Monsters\Basilic.cs" />
+    <Compile Include="Mobiles\Monsters\Elementaires\ElementaireFeu.cs" />
+    <Compile Include="Mobiles\Monsters\Elementaires\ElementaireTerre.cs" />
     <Compile Include="Mobiles\Monsters\FeuFollet.cs" />
     <Compile Include="Mobiles\Monsters\Fourmis\FourmiGeante.cs" />
     <Compile Include="Mobiles\Monsters\Fourmis\Fourmilion.cs" />
@@ -154,6 +157,9 @@
     <Compile Include="Mobiles\Monsters\Hydre.cs" />
     <Compile Include="Mobiles\Monsters\Mongbat.cs" />
     <Compile Include="Mobiles\Monsters\ScarabeeGeant.cs" />
+    <Compile Include="Mobiles\Monsters\Troll\Troll.cs" />
+    <Compile Include="Mobiles\Monsters\Troll\TrollGuerrier.cs" />
+    <Compile Include="Mobiles\Monsters\Troll\TrollShaman.cs" />
     <Compile Include="Mobiles\NewAnimals\Aligator.cs" />
     <Compile Include="Mobiles\NewAnimals\Araignee.cs" />
     <Compile Include="Mobiles\NewAnimals\Carcajou.cs" />
@@ -204,7 +210,8 @@
     <Compile Include="Mobiles\NewAnimals\Ours\OursNoir.cs" />
     <Compile Include="Mobiles\NewAnimals\Panther.cs" />
     <Compile Include="Mobiles\NewAnimals\ScorpionGeant.cs" />
-    <Compile Include="Mobiles\NewAnimals\SerpentGeant.cs" />
+    <Compile Include="Mobiles\NewAnimals\Serpents\SerpentGeant.cs" />
+    <Compile Include="Mobiles\NewAnimals\Serpents\SerpentVolcanique.cs" />
     <Compile Include="Mobiles\NewAnimals\Taureau.cs" />
     <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Mobiles\Vendeurs\Apiculteur.cs" />

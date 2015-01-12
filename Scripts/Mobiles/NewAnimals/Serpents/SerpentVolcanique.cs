@@ -40,7 +40,7 @@ namespace Server.Mobiles
         }
 
 
-        public override int Hide { get { return 5; } }
+        public override int Hides { get { return 5; } }
         public override HideType HideType { get { return HideType.Volcanique; } }
 
         public SerpentVolcanique(Serial serial)
