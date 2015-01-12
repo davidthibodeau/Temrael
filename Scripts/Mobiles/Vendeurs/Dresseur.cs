@@ -461,10 +461,10 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalBuyInfo()
             {
-                Add(new AnimalBuyInfo(1, typeof(Cat), 132, 10, 201, 0));
-                Add(new AnimalBuyInfo(1, typeof(Dog), 170, 10, 217, 0));
-                Add(new AnimalBuyInfo(1, typeof(HorseScelle), 550, 10, 204, 0));
-                Add(new AnimalBuyInfo(1, typeof(PackHorse), 631, 10, 291, 0));
+                Add(new AnimalBuyInfo(1, typeof(Cat), 100, 10, 201, 0));
+                Add(new AnimalBuyInfo(1, typeof(Dog), 150, 10, 217, 0));
+                Add(new AnimalBuyInfo(1, typeof(HorseScelle), 500, 10, 204, 0));
+                Add(new AnimalBuyInfo(1, typeof(PackHorse), 400, 10, 291, 0));
             }
         }
 
