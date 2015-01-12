@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Targeting;
 using System.Collections.Generic;
 using Server.Engines.Equitation;
+using Server.Engines.Alchimie;
 
 namespace Server.Scripts.Commands
 {
@@ -22,7 +23,8 @@ namespace Server.Scripts.Commands
         [Description("Test de scripts")]
         public static void Test_OnCommand(CommandEventArgs e)
         {
-            InstitutionHandler.Pay();
+            Server.Engines.Alchimie.PotionEffect p = new PotionStrBuffScal();
+            Server.Engines.Alchimie.PotionEffectHandler.Instance.ApplyEffect(e.Mobile, p, Source.Potion);
         }
     }
 }

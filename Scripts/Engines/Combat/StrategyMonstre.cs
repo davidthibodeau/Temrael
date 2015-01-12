@@ -39,7 +39,7 @@ namespace Server.Engines.Combat
         protected override void AppliquerPoison(Mobile atk, Mobile def)
         {
             BaseWeapon weapon = Weapon(atk);
-            Poison poison = weapon.Poison;
+            Server.Poison poison = weapon.Poison;
             if (poison != null)
             {
                 if (!def.Poisoned || poison.Level > def.Poison.Level)

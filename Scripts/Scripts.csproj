@@ -99,6 +99,7 @@
     <Compile Include="Custom\Army System\ArmyAI.cs" />
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
+    <Compile Include="Engines\Alchimie\PotionsList.cs" />
     <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
@@ -115,6 +116,8 @@
     <Compile Include="Engines\Evolution\Cotes.cs" />
     <Compile Include="Engines\Evolution\Experience.cs" />
     <Compile Include="Engines\Mort\MortEngine.cs" />
+    <Compile Include="Engines\Alchimie\PotionEffectHandler.cs" />
+    <Compile Include="Engines\Alchimie\PotionEffect.cs" />
     <Compile Include="Engines\Quetes\MonstreQueteInfo.cs" />
     <Compile Include="Engines\Races\AucuneRace.cs" />
     <Compile Include="Engines\Races\Humain.cs" />
