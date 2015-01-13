@@ -41,7 +41,7 @@ namespace Server.Gumps
                 from.SendMessage("Le personnage n'existe plus.");
                 return;
             }
-            else if (from != focus && focus.Hidden && from.AccessLevel < focus.AccessLevel)
+            else if (from != focus && (focus.Hidden && from.AccessLevel < AccessLevel.Batisseur || focus.HideAdmin && from.AccessLevel < focus.AccessLevel))
             {
                 from.SendMessage("Le personnage n'est plus visible.");
                 return;
