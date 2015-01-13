@@ -87,7 +87,7 @@ namespace Server.Items
                 IPoint3D p = (IPoint3D)targeted;
                 Point3D point = new Point3D(p.X, p.Y, p.Z);
 
-                if (Region.Find(point, Map.Felucca).GetType().ToString().Contains("Commerce"))
+                if (Region.Find(point, Map.Felucca) is MarcheHurlevent)
                 {
                     Mobile v = new PlayerVendor(from, BaseHouse.FindHouseAt(from));
 
