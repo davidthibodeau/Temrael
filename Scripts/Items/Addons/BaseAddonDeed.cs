@@ -71,8 +71,11 @@ namespace Server.Items
 				{
 					BaseAddon addon = m_Deed.Addon;
 
-                    if (addon == null)
+                    if (!addon.CanBePlacedInRegion(new Point3D(p), map))
+                    {
+                        from.SendMessage("Vous ne pouvez déposer cet objet qu'à Hurlevent.");
                         return;
+                    }
 
 					Server.Spells.SpellHelper.GetSurfaceTop( ref p );
 

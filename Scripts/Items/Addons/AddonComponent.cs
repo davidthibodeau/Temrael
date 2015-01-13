@@ -9,6 +9,8 @@ namespace Server.Items
 		[Constructable]
 		public AnvilComponent( int itemID ) : base( itemID )
 		{
+            Movable = false;
+            CanBeAltered = false;
 		}
 
 		public AnvilComponent( Serial serial ) : base( serial )
@@ -27,6 +29,9 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Movable = false;
+            CanBeAltered = false;
 		}
 	}
 
@@ -36,6 +41,8 @@ namespace Server.Items
 		[Constructable]
 		public ForgeComponent( int itemID ) : base( itemID )
 		{
+            Movable = false;
+            CanBeAltered = false;
 		}
 
 		public ForgeComponent( Serial serial ) : base( serial )
@@ -54,6 +61,9 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            Movable = false;
+            CanBeAltered = false;
 		}
 	}
 
