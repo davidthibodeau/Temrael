@@ -71,6 +71,9 @@ namespace Server.Items
 				{
 					BaseAddon addon = m_Deed.Addon;
 
+                    if (addon == null)
+                        return;
+
 					Server.Spells.SpellHelper.GetSurfaceTop( ref p );
 
 					BaseHouse house = null;
