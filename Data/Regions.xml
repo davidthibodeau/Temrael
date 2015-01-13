@@ -22,7 +22,10 @@
 	</region>
 	<region name="Ville d'Hurlevent" type="VilleHurlevent" priority="50">
 		<rect x="1620" y="1163" width="258" height="252" />
-		<rect x="1720" y="1129" width="70" height="35" />
+		<rect x="1720" y="1129" width="70"  height="35"  />
+		<rect x="4626" y="116"  width="57"  height="45"  />
+		<rect x="4218" y="228"  width="22"  height="20"  />
+		<rect x="4085" y="219"  width="52"  height="34"  />
 	  <!-- Note: Il manque des rectangles avant la riviere et au port
 	  <rect x="1832" y="1415" width="24" height="9" /> 
 	  -->
