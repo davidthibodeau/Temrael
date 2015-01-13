@@ -102,6 +102,7 @@ namespace Server.Spells
 			{
 				Visible = false;
 				Movable = false;
+                CanBeAltered = false;
 				Light = LightType.Circle300;
 
 				MoveToWorld( loc, map );
