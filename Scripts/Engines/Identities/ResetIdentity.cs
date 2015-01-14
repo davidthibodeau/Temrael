@@ -16,6 +16,7 @@ namespace Server.Engines.Identities
         public static void ResetIdentity_OnCommand(CommandEventArgs e)
         {
             e.Mobile.SendMessage("Veuillez choisir le joueur que vous dont vous désirez remettre à neuf l'identité.");
+            e.Mobile.Target = new ResetTarget();
         }
 
         private class ResetTarget : Target
