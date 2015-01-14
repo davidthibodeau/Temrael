@@ -13,7 +13,6 @@ namespace Server.Items
         public ArrayList m_TreasureLocations;
         private int m_Delay;
         private int m_LockLevelSeed;
-        private int m_TrapLevelSeed;
 
         #region items
         private int m_WeaponQuantity;
@@ -130,13 +129,6 @@ namespace Server.Items
             set { m_LockLevelSeed = value; SetLockLevel(); }
         }
 
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int TrapLevelSeed
-        {
-            get { return m_TrapLevelSeed; }
-            set { m_TrapLevelSeed = value; SetTrapLevel(); }
-        }
-
 		public BaseTreasureChest( int itemID ) : base ( itemID )
 		{
 			Movable = false;
@@ -169,12 +161,6 @@ namespace Server.Items
             if(LockLevelSeed > 0)
                 Locked = true;
 		}
-
-        protected virtual void SetTrapLevel()
-        {
-            this.TrapType = TrapType.ExplosionTrap;
-            this.TrapPower = TrapLevelSeed;
-        }
 
 		private void StartResetTimer()
 		{
@@ -383,7 +369,6 @@ namespace Server.Items
                     m_Delay = 2;
 
                 SetLockLevel();
-                SetTrapLevel();
                 SetLockedName();
                 ClearContents();
                 GenerateTreasure();
@@ -424,10 +409,9 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)0);
+            writer.Write((int)1);
             writer.Write(m_Delay);
             writer.Write(m_LockLevelSeed);
-            writer.Write(m_TrapLevelSeed);
 
             ////////////////
 
@@ -472,7 +456,9 @@ namespace Server.Items
             int version = reader.ReadInt();
             m_Delay = reader.ReadInt();
             m_LockLevelSeed = reader.ReadInt();
-            m_TrapLevelSeed = reader.ReadInt();
+
+            if(version == 0)
+                reader.ReadInt();
 
             ////////////////
 

@@ -131,41 +131,38 @@ namespace Server.Gumps
             AddLabel(127, 352, 0, @"Sauvegarder");
             AddButton(110, 352, 1209, 1210, 1, GumpButtonType.Reply, 0);
 
-            AddLabel(55, 75, 0, "Trap Level : ");
-            AddTextEntry(135, 75, 120, 20, 0, 1, Chest.TrapLevelSeed.ToString());
+            AddLabel(55, 75, 0, "Lock Level : ");
+            AddTextEntry(135, 75, 120, 20, 0, 1, Chest.LockLevelSeed.ToString());
 
-            AddLabel(55, 95, 0, "Lock Level : ");
-            AddTextEntry(135, 95, 120, 20, 0, 2, Chest.LockLevelSeed.ToString());
+            AddLabel(55, 95, 0, "Delay : ");
+            AddTextEntry(135, 95, 120, 20, 0, 2, Chest.Delay.ToString());
 
-            AddLabel(55, 115, 0, "Delay : ");
-            AddTextEntry(135, 115, 120, 20, 0, 3, Chest.Delay.ToString());
+            AddLabel(55, 115, 0, "Pièces : ");
+            AddTextEntry(135, 115, 120, 20, 0, 3, m_StartGold.ToString());
 
-            AddLabel(55, 135, 0, "Pièces : ");
-            AddTextEntry(135, 135, 120, 20, 0, 4, m_StartGold.ToString());
+            AddLabel(55, 135, 0, "Armures : ");
+            AddTextEntry(135, 135, 120, 20, 0, 4, m_StartArmors.ToString());
 
-            AddLabel(55, 155, 0, "Armures : ");
-            AddTextEntry(135, 155, 120, 20, 0, 5, m_StartArmors.ToString());
+            AddLabel(55, 155, 0, "Armes : ");
+            AddTextEntry(135, 155, 120, 20, 0, 5, m_StartWeapons.ToString());
 
-            AddLabel(55, 175, 0, "Armes : ");
-            AddTextEntry(135, 175, 120, 20, 0, 6, m_StartWeapons.ToString());
+            AddLabel(55, 175, 0, "Vêtements : ");
+            AddTextEntry(135, 175, 120, 20, 0, 6, m_StartClothing.ToString());
 
-            AddLabel(55, 195, 0, "Vêtements : ");
-            AddTextEntry(135, 195, 120, 20, 0, 7, m_StartClothing.ToString());
+            AddLabel(55, 195, 0, "Bijoux : ");
+            AddTextEntry(135, 195, 120, 20, 0, 7, m_StartJewels.ToString());
 
-            AddLabel(55, 215, 0, "Bijoux : ");
-            AddTextEntry(135, 215, 120, 20, 0, 8, m_StartJewels.ToString());
+            AddLabel(55, 215, 0, "Parchemins : ");
+            AddTextEntry(135, 215, 120, 20, 0, 8, m_StartScrolls.ToString());
 
-            AddLabel(55, 235, 0, "Parchemins : ");
-            AddTextEntry(135, 235, 120, 20, 0, 9, m_StartScrolls.ToString());
+            AddLabel(55, 235, 0, "Pierres : ");
+            AddTextEntry(135, 235, 120, 20, 0, 9, m_StartGems.ToString());
 
-            AddLabel(55, 255, 0, "Pierres : ");
-            AddTextEntry(135, 255, 120, 20, 0, 10, m_StartGems.ToString());
+            AddLabel(55, 255, 0, "Potions : ");
+            AddTextEntry(135, 255, 120, 20, 0, 10, m_StartPotions.ToString());
 
-            AddLabel(55, 275, 0, "Potions : ");
-            AddTextEntry(135, 275, 120, 20, 0, 11, m_StartPotions.ToString());
-
-            AddLabel(55, 295, 0, "Réactifs : ");
-            AddTextEntry(135, 295, 120, 20, 0, 12, m_StartRegs.ToString());
+            AddLabel(55, 275, 0, "Réactifs : ");
+            AddTextEntry(135, 275, 120, 20, 0, 11, m_StartRegs.ToString());
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -182,17 +179,6 @@ namespace Server.Gumps
                 {
                     entry = info.GetTextEntry(1);
                     text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.TrapLevelSeed = Convert.ToInt32(Utility.FixHtml(text));
-                }
-                catch
-                {
-                    m_Chest.TrapLevelSeed = m_StartTrapLevel;
-                }
-
-                try
-                {
-                    entry = info.GetTextEntry(2);
-                    text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.LockLevelSeed = Convert.ToInt32(Utility.FixHtml(text));
                 }
                 catch
@@ -202,7 +188,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(3);
+                    entry = info.GetTextEntry(2);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.Delay = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -213,7 +199,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(4);
+                    entry = info.GetTextEntry(3);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.GoldQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -224,7 +210,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(5);
+                    entry = info.GetTextEntry(4);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.ArmorQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -235,7 +221,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(6);
+                    entry = info.GetTextEntry(5);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.WeaponQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -246,7 +232,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(7);
+                    entry = info.GetTextEntry(6);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.ClothingQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -257,7 +243,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(8);
+                    entry = info.GetTextEntry(7);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.JewelQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -269,7 +255,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(9);
+                    entry = info.GetTextEntry(8);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.ScrollsQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -281,7 +267,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(10);
+                    entry = info.GetTextEntry(9);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.GemQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -293,7 +279,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(11);
+                    entry = info.GetTextEntry(10);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.PotionQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
@@ -304,7 +290,7 @@ namespace Server.Gumps
 
                 try
                 {
-                    entry = info.GetTextEntry(12);
+                    entry = info.GetTextEntry(11);
                     text = (entry == null ? "" : entry.Text.Trim());
                     m_Chest.RegsQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
