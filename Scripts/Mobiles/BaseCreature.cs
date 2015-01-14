@@ -1502,8 +1502,6 @@ namespace Server.Mobiles
 			if ( speechType != null )
 				speechType.OnConstruct( this );
 
-			GenerateLoot( true );
-
             Quete = new MonstreQueteInfo();
 		}
 
@@ -3374,6 +3372,17 @@ namespace Server.Mobiles
 		public virtual void GenerateLoot( bool spawning )
 		{
 			m_Spawning = spawning;
+
+            Container backpack = Backpack;
+
+            if (backpack == null)
+            {
+                backpack = new Backpack();
+
+                backpack.Movable = false;
+
+                AddItem(backpack);
+            }
 
 			GenerateLoot();
 
