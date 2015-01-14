@@ -36,7 +36,7 @@ namespace Server.Misc
 			return m.MaxWeight;
 		}
 
-        const int PERTE_STAM_RUNNING = 5;
+        const int PERTE_STAM_RUNNING = 4;
         const int MULTI_TILE_ACCIDENTE = 3; // Il coûte 3 fois plus cher de courrir sur du terrain accidenté que non.
 
 		public static void EventSink_Movement( MovementEventArgs e )
@@ -78,8 +78,8 @@ namespace Server.Misc
             {
                 PlayerMobile pm = (PlayerMobile)from;
 
-                int PerteStam = PERTE_STAM_RUNNING * from.StamMax / 100;
-                int amt = (from.Mounted ?  4 : 3); // Nombre de pas de course avant de perdre de la stam.
+                int PerteStam = PERTE_STAM_RUNNING;
+                int amt = (from.Mounted ?  3 : 2); // Nombre de pas de course avant de perdre de la stam.
 
 
                 if (Deplacement.IsActive(from) && Deplacement.GetTileType(from) != TileType.Other) // Si terrain accidenté.
