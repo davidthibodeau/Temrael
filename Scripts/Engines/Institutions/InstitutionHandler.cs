@@ -218,6 +218,7 @@ namespace Server.Items
                         if (Containers[m_Mobiles[m]] != null)
                         {
                             Item i = Dupe.DupeItem(m, Containers[m_Mobiles[m]], true); // On dupe le container lié au rang du mobile.
+                            i.Visible = true;
                             m.Backpack.AddItem(i);
                         }
                     }

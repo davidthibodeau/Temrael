@@ -15,9 +15,9 @@ namespace Server.Engines.Combat
             double chance = 0;
 
             if (Weapon(def).Layer == Layer.OneHanded)
-                chance = GetBonus(parry, 0.8, 5);
+                chance = GetBonus(parry, 0.5, 5);
             else
-                chance = GetBonus(parry, 0.25, 5);
+                chance = GetBonus(parry, 0.20, 2.5);
 
             return chance;
         }
