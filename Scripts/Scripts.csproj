@@ -105,6 +105,9 @@
     <Compile Include="Engines\Economy\PrixNPC.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
     <Compile Include="Engines\Evolution\TransfertGump.cs" />
+    <Compile Include="Engines\Harvest\Excavation\Zones\CordiliereEparse.cs" />
+    <Compile Include="Engines\Harvest\Excavation\Zones\MineDonjonGobelin.cs" />
+    <Compile Include="Engines\Harvest\Excavation\Zones\MineVolcan.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\Targuemont.cs" />
     <Compile Include="Engines\Hiding\Detection.cs" />
     <Compile Include="Engines\Identities\ResetIdentity.cs" />
