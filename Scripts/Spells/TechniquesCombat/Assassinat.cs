@@ -38,20 +38,27 @@ namespace Server.TechniquesCombat
 
         public void OnHit(Mobile atk, Mobile def, ref double dmg)
         {
+            if (atk is BaseCreature)
+                return;
+
             if (!MobilesBonus.Contains(atk))
             {
                 if (!MobilesList.Contains(atk))  // First hit.
                 {
                     double scaling = ScalingBonus(atk, def);
 
-                    def.SendMessage("On vous prend en chasse !");
+                    if (scaling != 0)
+                    {
+                        def.SendMessage("On vous prend en chasse !");
 
-                    def.Stam -= (int)(def.Stam * (scaling * MalusStam));
+                        def.Stam -= (int)(def.Stam * (scaling * MalusStam));
 
-                    new CooldownTimer(atk, def, scaling, Cooldown);
+                        new CooldownTimer(atk, def, scaling, Cooldown);
+                    }
                 }
             }
-            else
+            
+            if(MobilesBonus.Contains(atk))
             {
                 if (MobilesList[atk] == def) // Following hits.
                 {
