@@ -10,7 +10,9 @@ namespace Server.Items
         public override void IActivableOnActivate(int mode, Mobile from)
         {
             DoEffect(from);
-            Trap_ActivateItem.OnActivate(Trap_ActivateMode, from);
+
+            if(Trap_ActivateItem != null)
+                Trap_ActivateItem.OnActivate(Trap_ActivateMode, from);
         }
         #endregion
 
