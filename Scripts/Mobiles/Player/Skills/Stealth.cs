@@ -19,6 +19,34 @@ namespace Server.SkillHandlers
 			SkillInfo.Table[(int)SkillName.Infiltration].Callback = new SkillUseCallback( OnUse );
 		}
 
+        /*
+        Coord 0 : x = 0 + skill        x = 100
+        Coord 1 : x = -3 * 6 + skill   x = 82          y = -50
+        Coord 2 : x = -4 * 6 + skill   x = 76          y = -20
+        Coord 3 : x = -5 * 6 + skill   x = 70          y = 10
+        Coord 4 : x = -6 * 6 + skill   x = 64          y = 40 
+        Coord 5 : x = -7 * 6 + skill   x = 58          y = 70
+        
+        f(x) = -5x + 360
+        */
+        public static double ScalMalusArmure( Mobile m )
+        {
+            double dex = m.RawDex - m.Dex;
+            double malus = 0;
+            double val = 0;
+
+            val = ((-5 * (m.Skills[SkillName.Infiltration].Value - dex)) + 360) / 100;
+
+            if (val > 0)
+            {
+                malus = val;
+            }
+
+            return malus;
+        }
+
+
+
 		public static TimeSpan OnUse( Mobile m )
 		{
 			if ( !m.Hidden )
@@ -36,25 +64,17 @@ namespace Server.SkillHandlers
 			}
             else
             {
-                m.CheckSkill(SkillName.Infiltration, m.Skills[SkillName.Infiltration].Value);
 
-                // Malus de dex sur les chances de reussite.
-                double malusDex = 0;
-                double dex = m.RawDex - m.Dex;
-                if ((m.Skills[SkillName.Infiltration].Value) - (dex * 5) - 60 < 0 && dex != 0)  // Requis en infiltration == cap 1 : 30%. cap 2 : 60%. cap 3 : 90%.
-                {
-                    malusDex = dex / 6;
-                }
-
-                if (m.CheckSkill(SkillName.Infiltration, (m.Skills[SkillName.Infiltration].Value - dex)/100))
+                if (m.CheckSkill(SkillName.Infiltration, (m.Skills[SkillName.Infiltration].Value * (1 - ScalMalusArmure(m)) / 100)))
 				{
                     int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 4 steps en courrant.
 
                     // Malus de dex sur le nombre de pas possible.
-                    if (malusDex != 0)
+                    int val = (int)(steps * (1 - ScalMalusArmure(m)));
+                    if (val != steps)
                     {
+                        steps = val;
                         m.SendMessage("Vous n'êtes pas assez agile pour vous déplacer efficacement avec cette armure.");
-                        steps = (int)(steps / malusDex);
                     }
 
                     if (steps < 1)
