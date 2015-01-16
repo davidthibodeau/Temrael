@@ -308,4 +308,302 @@ namespace Server.Misc.Balancing
 
     #endregion
 
+    #region TESTS D'ARMURE NATURELLE VS ARMOR PENETRATION
+
+    /*
+    Devrait être :
+    Cuir < Plaque
+    Cuir + ArNaturelle == Plaque + ArNaturelle
+    Cuir + Penetration == Plaque + Penetration
+    Cuir + ArNaturelle + Penetration > Plaque + ArNaturelle + Penetration
+    
+    Cuir + ArNaturelle > Cuir + Penetration
+    Plaque + Penetration > Plaque + ArNaturelle
+    
+    */
+
+    public class MobileCuir : TestMobile
+    {
+        public MobileCuir()
+        {
+            Name = "Cuir";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuir(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+    public class MobileCuir_ArNat : TestMobile
+    {
+        public MobileCuir_ArNat()
+        {
+            Name = "Cuir ArNat";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.ArmureNaturelle, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuir_ArNat(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+    public class MobileCuir_Pen : TestMobile
+    {
+        public MobileCuir_Pen()
+        {
+            Name = "Cuir Pen";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.Penetration, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuir_Pen(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+    public class MobileCuir_ArNat_Pen : TestMobile
+    {
+        public MobileCuir_ArNat_Pen()
+        {
+            Name = "Cuir ArNat Pen";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.Penetration, 100.0);
+            SetSkill(SkillName.ArmureNaturelle, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuir_ArNat_Pen(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobilePlaque : TestMobile
+    {
+        public MobilePlaque()
+        {
+            Name = "Plaque";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.PlaqueLourde, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaque(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+    public class MobilePlaque_ArNat : TestMobile
+    {
+        public MobilePlaque_ArNat()
+        {
+            Name = "Plaque ArNat";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.ArmureNaturelle, 100.0);
+
+            ChooseArmor(ArmorClass.PlaqueLourde, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaque_ArNat(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+    public class MobilePlaque_Pen : TestMobile
+    {
+        public MobilePlaque_Pen()
+        {
+            Name = "Plaque Pen";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.Penetration, 100.0);
+
+            ChooseArmor(ArmorClass.PlaqueLourde, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaque_Pen(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+    public class MobilePlaque_ArNat_Pen : TestMobile
+    {
+        public MobilePlaque_ArNat_Pen()
+        {
+            Name = "Plaque ArNat Pen";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.Penetration, 100.0);
+            SetSkill(SkillName.ArmureNaturelle, 100.0);
+
+            ChooseArmor(ArmorClass.PlaqueLourde, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Couliere();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaque_ArNat_Pen(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    #endregion
+
 }

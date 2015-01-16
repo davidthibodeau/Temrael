@@ -23,57 +23,51 @@ namespace Server.Misc.Balancing
             if (!Core.Balancing)
                 return;
 
-            #region Tests des différentes armes, plaque seulement.
-            TestMobile mob1 = new MobilePlaqueEpeeRapide();
-            TestMobile mob2 = new MobilePlaqueEpeeLente();
-            new Balancing(mob1, mob2, "PLAQUE - 2H Rapide vs 2H Lente.txt");
+            //#region Tests des différentes armes, plaque seulement.
+            //new Balancing(new MobilePlaqueEpeeRapide(), new MobilePlaqueEpeeLente(), "PLAQUE - 2H Rapide vs 2H Lente.txt");
 
-            mob1 = new MobilePlaqueEpeeLenteBouclier();
-            mob2 = new MobilePlaqueEpeeLente();
-            new Balancing(mob1, mob2, "PLAQUE - 1H Lente vs 2H Lente.txt");
+            //new Balancing(new MobilePlaqueEpeeLenteBouclier(), new MobilePlaqueEpeeLente(), "PLAQUE - 1H Lente vs 2H Lente.txt");
 
-            mob1 = new MobilePlaqueEpeeLenteBouclier();
-            mob2 = new MobilePlaqueEpeeRapide();
-            new Balancing(mob1, mob2, "PLAQUE - 1H Lente vs 2H Rapide.txt");
+            //new Balancing(new MobilePlaqueEpeeLenteBouclier(), new MobilePlaqueEpeeRapide(), "PLAQUE - 1H Lente vs 2H Rapide.txt");
 
-            mob1 = new MobilePlaqueEpeeRapideBouclier();
-            mob2 = new MobilePlaqueEpeeLente();
-            new Balancing(mob1, mob2, "PLAQUE - 1H Rapide vs 2H Lente.txt");
+            //new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeLente(), "PLAQUE - 1H Rapide vs 2H Lente.txt");
 
-            mob1 = new MobilePlaqueEpeeRapideBouclier();
-            mob2 = new MobilePlaqueEpeeRapide();
-            new Balancing(mob1, mob2, "PLAQUE - 1H Rapide vs 2H Rapide.txt");
+            //new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeRapide(), "PLAQUE - 1H Rapide vs 2H Rapide.txt");
 
-            mob1 = new MobilePlaqueEpeeRapideBouclier();
-            mob2 = new MobilePlaqueEpeeLenteBouclier();
-            new Balancing(mob1, mob2, "PLAQUE - 1H Rapide vs 1H Lente.txt");
+            //new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeLenteBouclier(), "PLAQUE - 1H Rapide vs 1H Lente.txt");
+            //#endregion
+
+            //#region Tests des différentes armes, cuir seulement.
+            //new Balancing(new MobileCuirEpeeRapide(), new MobileCuirEpeeLente(), "CUIR - 2H Rapide vs 2H Lente.txt");
+
+            //new Balancing(new MobileCuirEpeeLenteBouclier(), new MobileCuirEpeeLente(), "CUIR - 1H Lente vs 2H Lente.txt");
+
+            //new Balancing(new MobileCuirEpeeLenteBouclier(), new MobileCuirEpeeRapide(), "CUIR - 1H Lente vs 2H Rapide.txt");
+
+            //new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeLente(), "CUIR - 1H Rapide vs 2H Lente.txt");
+
+            //new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeRapide(), "CUIR - 1H Rapide vs 2H Rapide.txt");
+
+            //new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeLenteBouclier(), "CUIR - 1H Rapide vs 1H Lente.txt");
+            //#endregion
+
+            #region Tests du cuir, de la plaque, de l'armure naturelle et de l'armor pen.
+
+            new Balancing(new MobileCuir(), new MobilePlaque(), "1.Cuir vs Plaque.txt");
+
+            new Balancing(new MobileCuir_ArNat(), new MobilePlaque_ArNat(), "2.CuirArNat vs PlaqueArNat.txt");
+
+            new Balancing(new MobileCuir_Pen(), new MobilePlaque_Pen(), "3.CuirPen vs PlaquePen.txt");
+
+            new Balancing(new MobileCuir_ArNat_Pen(), new MobilePlaque_ArNat_Pen(), "4.CuirArNatPen vs PlaqueArNatPen.txt");
+
+            new Balancing(new MobileCuir_ArNat(), new MobileCuir_Pen(), "5.CuirArNat vs CuirPen.txt");
+
+            new Balancing(new MobilePlaque_Pen(), new MobilePlaque_ArNat(), "6.PlaquePen vs PlaqueArNat.txt");
+
             #endregion
 
-            #region Tests des différentes armes, cuir seulement.
-            mob1 = new MobileCuirEpeeRapide();
-            mob2 = new MobileCuirEpeeLente();
-            new Balancing(mob1, mob2, "CUIR - 2H Rapide vs 2H Lente.txt");
 
-            mob1 = new MobileCuirEpeeLenteBouclier();
-            mob2 = new MobileCuirEpeeLente();
-            new Balancing(mob1, mob2, "CUIR - 1H Lente vs 2H Lente.txt");
-
-            mob1 = new MobileCuirEpeeLenteBouclier();
-            mob2 = new MobileCuirEpeeRapide();
-            new Balancing(mob1, mob2, "CUIR - 1H Lente vs 2H Rapide.txt");
-
-            mob1 = new MobileCuirEpeeRapideBouclier();
-            mob2 = new MobileCuirEpeeLente();
-            new Balancing(mob1, mob2, "CUIR - 1H Rapide vs 2H Lente.txt");
-
-            mob1 = new MobileCuirEpeeRapideBouclier();
-            mob2 = new MobileCuirEpeeRapide();
-            new Balancing(mob1, mob2, "CUIR - 1H Rapide vs 2H Rapide.txt");
-
-            mob1 = new MobileCuirEpeeRapideBouclier();
-            mob2 = new MobileCuirEpeeLenteBouclier();
-            new Balancing(mob1, mob2, "CUIR - 1H Rapide vs 1H Lente.txt");
-            #endregion
         }
 
         public Balancing(TestMobile m1, TestMobile m2)
