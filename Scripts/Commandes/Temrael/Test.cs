@@ -15,7 +15,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Test", AccessLevel.Batisseur, new CommandEventHandler(Test_OnCommand));
+            CommandSystem.Register("Test", AccessLevel.Owner, new CommandEventHandler(Test_OnCommand));
         }
 
         [Usage("Test")]
