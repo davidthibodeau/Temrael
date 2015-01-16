@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.SkillHandlers;
 
 namespace Server.Engines.Hiding
 {
@@ -191,7 +192,7 @@ namespace Server.Engines.Hiding
             }
 
             double detection = obs.Skills.Detection.Value * 2;
-            double cachette = mobile.Skills.Infiltration.Value + mobile.Skills.Discretion.Value;
+            double cachette = mobile.Skills.Infiltration.Value + mobile.Skills.Discretion.Value * (1 - Stealth.ScalMalusArmure(mobile));
 
             double chance = detection / cachette;
             status = det;
