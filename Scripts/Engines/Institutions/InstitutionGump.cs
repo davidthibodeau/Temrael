@@ -10,7 +10,67 @@ using Server.Targeting;
 
 namespace Server.Engines.Institutions
 {
-    class InstitutionGump : GumpTemrael
+    abstract class InstitutionBaseGump : GumpTemrael
+    {
+        protected Mobile m_From;
+        protected InstitutionHandler m_Institution;
+
+        public InstitutionBaseGump(Mobile from, InstitutionHandler handler)
+            : base("", 0, 0)
+        {
+            m_From = from;
+            m_Institution = handler;
+        }
+
+        protected void RetirerMobile_OnTarget(Mobile from, object targeted)
+        {
+            if (targeted is PlayerMobile)
+            {
+                m_Institution.RetirerInstitution((Mobile)targeted);
+                from.SendMessage("Le joueur a été retiré de l'institution.");
+            }
+            else
+            {
+                from.SendMessage("Vous devez choisir un joueur");
+                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(RetirerMobile_OnTarget));
+            }
+        }
+
+        protected void AugmenterRang_OnTarget(Mobile from, object targeted)
+        {
+            if (targeted is PlayerMobile)
+            {
+                m_Institution.RankUp((Mobile)targeted);
+                from.SendMessage("Son rang est maintenant : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
+            }
+            else
+            {
+                from.SendMessage("Vous devez choisir un joueur");
+                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AugmenterRang_OnTarget));
+            }
+        }
+
+        protected void DiminuerRang_OnTarget(Mobile from, object targeted)
+        {
+            if (targeted is PlayerMobile)
+            {
+                m_Institution.RankDown((Mobile)targeted);
+                from.SendMessage("Son rang est maintenant : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
+            }
+            else
+            {
+                from.SendMessage("Vous devez choisir un joueur");
+                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(DiminuerRang_OnTarget));
+            }
+        }
+
+        public static int GetButtonID(int type, int index)
+        {
+            return 1 + type + (index * 4);
+        }
+    }
+
+    class InstitutionGump : InstitutionBaseGump
     {
         // https://docs.google.com/drawings/d/1oLILHTfi4ERtvJFgqBu8g4X0pzkVz6jvDS58kewMROk/edit?usp=sharing
 
@@ -20,10 +80,6 @@ namespace Server.Engines.Institutions
            un sac, dans lequel on pourrait mettre les items à duper.
          */
 
-        private Mobile m_From;
-
-        private InstitutionHandler m_Institution;
-
         int x = 20;
         int y = 20;
 
@@ -31,7 +87,7 @@ namespace Server.Engines.Institutions
         int scale = 25;
 
         public InstitutionGump(Mobile from, InstitutionHandler handler)
-            : base("", 0, 0)
+            : base(from, handler)
         {
             m_From = from;
             m_Institution = handler;
@@ -43,7 +99,7 @@ namespace Server.Engines.Institutions
                 AddPage(0);
 
                 if (m_From.AccessLevel >= AccessLevel.Chroniqueur)
-                    AddBackground(0, 0, 500, 525, 5054);
+                    AddBackground(0, 0, 500, 533, 5054);
                 else
                     AddBackground(0, 0, 500, 400, 5054);
 
@@ -86,6 +142,9 @@ namespace Server.Engines.Institutions
                     AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, 2), GumpButtonType.Reply, 0);
                     AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Obtenir des infos sur un joueur</h3>", false, false);
                     line++;
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, 2), GumpButtonType.Reply, 0);
+                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Consulter la liste des membres</h3>", false, false);
+                    line++;
                 }
                 else
                 {
@@ -124,12 +183,7 @@ namespace Server.Engines.Institutions
                 }
             }
         }
-
-        public static int GetButtonID(int type, int index)
-        {
-            return 1 + type + (index * 4);
-        }
-
+                
         private void AjouterMobile_OnTarget(Mobile from, object targeted)
         {
             if (targeted is PlayerMobile)
@@ -143,49 +197,7 @@ namespace Server.Engines.Institutions
                 from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AjouterMobile_OnTarget));
             }
         }
-
-        private void RetirerMobile_OnTarget(Mobile from, object targeted)
-        {
-            if (targeted is PlayerMobile)
-            {
-                m_Institution.RetirerInstitution((Mobile)targeted);
-                from.SendMessage("Le joueur a été retiré de l'institution.");
-            }
-            else
-            {
-                from.SendMessage("Vous devez choisir un joueur");
-                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(RetirerMobile_OnTarget));
-            }
-        }
-
-        private void AugmenterRang_OnTarget(Mobile from, object targeted)
-        {
-            if (targeted is PlayerMobile)
-            {
-                m_Institution.RankUp((Mobile)targeted);
-                from.SendMessage("Son rang est maintenant : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
-            }
-            else
-            {
-                from.SendMessage("Vous devez choisir un joueur");
-                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AugmenterRang_OnTarget));
-            }
-        }
-
-        private void DiminuerRang_OnTarget(Mobile from, object targeted)
-        {
-            if (targeted is PlayerMobile)
-            {
-                m_Institution.RankDown((Mobile)targeted);
-                from.SendMessage("Son rang est maintenant : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
-            }
-            else
-            {
-                from.SendMessage("Vous devez choisir un joueur");
-                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(DiminuerRang_OnTarget));
-            }
-        }
-
+                
         private void Infos_OnTarget(Mobile from, object targeted)
         {
             if (targeted is PlayerMobile)
@@ -249,6 +261,8 @@ namespace Server.Engines.Institutions
             if (info.ButtonID <= 0)
                 return; // Canceled
 
+            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
+
             switch (type)
             {
                 case 0: // Containers
@@ -301,6 +315,12 @@ namespace Server.Engines.Institutions
                                 m_From.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(RetirerMobile_OnTarget));
                                 break;
                             }
+                        case 2: //Liste des joueurs
+                            {
+                                m_From.SendMessage("Obtenir la liste des membres.");
+                                m_From.SendGump(new MembersListInstitution(m_From, m_Institution, 0));
+                                break;
+                            }
                     }
                     break;
                 }
@@ -330,8 +350,154 @@ namespace Server.Engines.Institutions
                     break;
                 }
             }
+        }
+    }
 
-            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
+    class MembersListInstitution : InstitutionBaseGump
+    {
+        private int currentPage;
+        private Mobile currentMember;
+        private List<Mobile> list;
+
+        public MembersListInstitution(Mobile from, InstitutionHandler handler, int page) : base(from, handler)
+        {
+            this.currentPage = page;
+            this.list = handler.GetList();
+
+            AddPage(0);
+            AddBackground(31, 48, 416, 432, 9250);
+            AddBackground(39, 56, 400, 417, 3500);
+            AddLabel(174, 78, 1301, @"Liste des membres de " + m_Institution.Description);
+
+            int basey = 110;
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (i >= (page + 1) * 10)
+                    break;
+                if (i < page * 10)
+                    continue;
+                Mobile m = list[i];
+                AddLabel(80, basey + (i % 10) * 30, 1301, m.Name);
+                AddLabel(270, basey + (i % 10) * 30, 1301, m_Institution.GetTitre(m_Institution.GetRank(m)));
+                AddButton(383, basey + (i % 10) * 30 - 1, 4005, 4006, i + 10, GumpButtonType.Reply, 0);
+            }
+            AddButton(402, 411, 5601, 5605, GetButtonID(1, 0), GumpButtonType.Reply, 0);
+            AddButton(61, 410, 5603, 5607, GetButtonID(1, 1), GumpButtonType.Reply, 0);
+        }
+
+        public MembersListInstitution(Mobile from, InstitutionHandler handler, Mobile member)
+            : base(from, handler)
+        {
+            from.CloseGump(typeof(MembersListInstitution));
+            this.currentMember = member;
+
+            AddPage(0);
+
+            AddBackground(31, 48, 416, 190, 9250);
+            AddBackground(39, 56, 400, 178, 3500);
+            AddLabel(174, 78, 1301, @"Fiche de " + member.Name);
+
+            AddLabel(81, 110, 1301, @"Promouvoir au rang :");
+            AddLabel(210, 110, 1301, m_Institution.GetTitre(m_Institution.GetRank(member) + 1));
+            AddButton(383, 109, 4005, 4006, GetButtonID(2, 0), GumpButtonType.Reply, 0);
+
+            AddLabel(81, 140, 1301, @"Destituer au rang :");
+            AddLabel(210, 140, 1301, m_Institution.GetTitre(m_Institution.GetRank(member) - 1));
+            AddButton(383, 139, 4005, 4006, GetButtonID(2, 1), GumpButtonType.Reply, 0);
+
+            AddLabel(81, 170, 1301, @"Expulser de l'institution");
+            AddButton(383, 169, 4005, 4006, GetButtonID(2, 2), GumpButtonType.Reply, 0);
+        }
+
+        public override void OnResponse(NetState sender, RelayInfo info)
+        {
+            int buttonID = info.ButtonID - 1;
+            int type = buttonID % 4;
+            int index = buttonID / 4;
+            int mIndex = 4 * index - 8;
+
+            if (info.ButtonID <= 0)
+               return;
+
+            switch (type)
+            {
+                case 0:
+                    {
+                        if (mIndex < list.Count && mIndex >= 0)
+                        {
+                            if (list[mIndex] != null)
+                            {
+                                m_From.SendGump(new MembersListInstitution(m_From, m_Institution, list[mIndex]));
+                            }
+                        }
+                        break;
+                    }
+                 case 1:
+                     {
+                         switch (index)
+                         {
+                             case 0:
+                                 {
+                                     m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage + 1));
+                                     break;
+                                 }
+                             case 1:
+                                 {
+                                     m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage - 1));
+                                     break;
+                                 }
+                             default:
+                                 {
+                                     if (mIndex < list.Count && mIndex >= 0)
+                                     {
+                                         if (list[mIndex] != null)
+                                         {
+                                             m_From.SendGump(new MembersListInstitution(m_From, m_Institution, list[mIndex]));
+                                         }
+                                     }
+                                     break;
+                                 }
+                         }
+                         break;
+                     }
+                 case 2:
+                     {
+                         switch (index)
+                         {
+                             case 0:
+                                 {
+                                     if (currentMember != null)
+                                         AugmenterRang_OnTarget(m_From, currentMember);
+                                     break;
+                                 }
+                             case 1:
+                                 {
+                                     if (currentMember != null)
+                                         DiminuerRang_OnTarget(m_From, currentMember);
+                                     break;
+                                 }
+                             case 2:
+                                 {
+                                     if (currentMember != null)
+                                         RetirerMobile_OnTarget(m_From, currentMember);
+                                     break;
+                                 }
+                         }
+                         m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage));
+                         break;
+                     }
+                 default:
+                     {
+                         if (mIndex < list.Count && mIndex >= 0)
+                         {
+                             if (list[mIndex] != null)
+                             {
+                                 m_From.SendGump(new MembersListInstitution(m_From, m_Institution, list[mIndex]));
+                             }
+                         }
+                         break;
+                     }
+             }
         }
     }
 }

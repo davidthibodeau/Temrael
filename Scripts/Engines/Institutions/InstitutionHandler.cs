@@ -106,6 +106,11 @@ namespace Server.Items
         #region Methodes
 
         #region Get
+        public List<Mobile> GetList()
+        {
+            return m_Mobiles.Keys.ToList<Mobile>();
+        }
+
         /// <summary>
         /// Trouve le titre lié au rang passé en paramètre.
         /// </summary>
