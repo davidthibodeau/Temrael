@@ -77,19 +77,22 @@ namespace Server.Items
         public virtual int DefMaxDamage { get { return DPSMax(); } }
         public abstract int DefSpeed { get; }
 
+        public const int MinWeaponSpeed = 30;
+        public const int MaxWeaponSpeed = 60;
+
         public int DPSMin()
         {
             if (Layer == Layer.OneHanded)
             {
                 switch (DefSpeed)
                 {
-                    case 30: return 3;
+                    case MinWeaponSpeed: return 3;
                     case 35: return 4;
                     case 40: return 6;
                     case 45: return 7;
                     case 50: return 9;
                     case 55: return 10;
-                    case 60: return 11;
+                    case MaxWeaponSpeed: return 11;
                     default: return 0;
                 }
             }
@@ -97,13 +100,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    case 30: return 4;
+                    case MinWeaponSpeed: return 4;
                     case 35: return 6;
                     case 40: return 8;
                     case 45: return 9;
                     case 50: return 11;
                     case 55: return 13;
-                    case 60: return 14;
+                    case MaxWeaponSpeed: return 14;
                     default: return 0;
                 }
             }
@@ -116,13 +119,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    case 30: return 6;
+                    case MinWeaponSpeed: return 6;
                     case 35: return 8;
                     case 40: return 9;
                     case 45: return 11;
                     case 50: return 12;
                     case 55: return 14;
-                    case 60: return 15;
+                    case MaxWeaponSpeed: return 15;
                     default: return 0;
                 }
             }
@@ -130,13 +133,13 @@ namespace Server.Items
             {
                 switch (DefSpeed)
                 {
-                    case 30: return 8;
+                    case MinWeaponSpeed: return 8;
                     case 35: return 10;
                     case 40: return 12;
                     case 45: return 14;
                     case 50: return 16;
                     case 55: return 18;
-                    case 60: return 20;
+                    case MaxWeaponSpeed: return 20;
                     default: return 0;
                 }
             }

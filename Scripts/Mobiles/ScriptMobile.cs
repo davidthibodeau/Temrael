@@ -91,6 +91,8 @@ namespace Server.Mobiles
 
         public override void Damage(int amount, Mobile from)
         {
+            OnDamageDurabilityLoss(from);
+
             double damage = amount;
 
             SacrificeSpell.GetOnHitEffect(this, ref damage);
@@ -107,5 +109,31 @@ namespace Server.Mobiles
             base.Damage((int)damage, from);
         }
 
+        private const double ChancePerteDura = 0.5;
+
+        public void OnAttackDurabilityLoss()
+        {
+            if (Utility.RandomDouble() < ((1 / 6) * ChancePerteDura) && Utility.RandomDouble() < ((double)((BaseWeapon)this.Weapon).Speed / (double)BaseWeapon.MaxWeaponSpeed))
+            {
+                ((BaseWeapon)this.Weapon).Durability -= 1;
+            }
+        }
+
+        public void OnDamageDurabilityLoss(Mobile atk)
+        {
+            if (Utility.RandomDouble() < ((double)((BaseWeapon)this.Weapon).Speed / (double)BaseWeapon.MaxWeaponSpeed * ChancePerteDura))
+            {
+                switch (Utility.Random(6))
+                {
+                    case 0: if (HeadArmor != null) (HeadArmor as BaseArmor).Durability -= 1; break;
+                    case 1: if (NeckArmor != null) (NeckArmor as BaseArmor).Durability -= 1; break;
+                    case 2: if (ChestArmor != null) (ChestArmor as BaseArmor).Durability -= 1; break;
+                    case 3: if (ArmsArmor != null) (ArmsArmor as BaseArmor).Durability -= 1; break;
+                    case 4: if (HandArmor != null) (HandArmor as BaseArmor).Durability -= 1; break;
+                    case 5: if (LegsArmor != null) (LegsArmor as BaseArmor).Durability -= 1; break;
+                    case 6: if (ShieldArmor != null) (ShieldArmor as BaseArmor).Durability -= 1; break;
+                }
+            }
+        }
     }
 }

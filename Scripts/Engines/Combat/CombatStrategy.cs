@@ -48,6 +48,8 @@ namespace Server.Engines.Combat
             AttaqueAnimation(atk);
             DegatsAnimation(def);
 
+            if (atk is ScriptMobile) { ((ScriptMobile)atk).OnAttackDurabilityLoss(); }
+
             CheckEquitation(def, EquitationType.BeingAttacked);
 
             atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));

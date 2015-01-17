@@ -242,6 +242,8 @@ namespace Server.Items
                     else if (m_Durability > MaxDurability)
                         m_Durability = MaxDurability;
 
+                    PublicOverheadMessage(MessageType.Regular, 0, true, "Nouvelle durabilité de " + Name + " : " + m_Durability);
+
                     InvalidateProperties();
                 }
             }
