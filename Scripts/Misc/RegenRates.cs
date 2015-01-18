@@ -49,7 +49,10 @@ namespace Server.Misc
 
             double pourc = (from.Dex / 120.0) + (from.Skills[SkillName.Concentration].Value / 120);
             double points = from.StamMax * pourc / 100;
-            return TimeSpan.FromSeconds(1.0 / points);
+            double delay = 1.0 / points;
+            if (delay > 60.0)
+                delay = 60.0;
+            return TimeSpan.FromSeconds(delay);
 		}
 
 		private static TimeSpan Mobile_ManaRegenRate( Mobile from )
