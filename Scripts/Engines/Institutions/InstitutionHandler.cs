@@ -290,6 +290,27 @@ namespace Server.Items
             from.SendGump(new InstitutionGump(from, this));
         }
 
+        protected override void OnLocationChange(Point3D oldLocation)
+        {
+            VerifyLocation();
+
+            base.OnLocationChange(oldLocation);
+        }
+
+        public void VerifyLocation()
+        {
+            if (Containers != null)
+            {
+                foreach (Container c in Containers)
+                {
+                    if (c != null)
+                    {
+                        c.Location = new Point3D(Location.X, Location.Y, Location.Z - 50); // Berk, mais le seul moyen que j'ai trouvé.
+                    }
+                }
+            }
+        }
+
         public override void Delete()
         {
             if (m_InstancesList != null)

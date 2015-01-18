@@ -261,7 +261,8 @@ namespace Server.Engines.Institutions
             if (info.ButtonID <= 0)
                 return; // Canceled
 
-            m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
+            if(type == 0)
+                m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
 
             switch (type)
             {
@@ -272,9 +273,9 @@ namespace Server.Engines.Institutions
                             Bag b = new Bag();
                             b.Visible = false;
                             b.Map = m_Institution.Map;
-                            b.Location = new Point3D(m_Institution.Location.X, m_Institution.Location.Y, m_Institution.Location.Z - 50); // Berk, mais le seul moyen que j'ai trouvé.
-
                             m_Institution.Containers[index] = b;
+
+                            m_Institution.VerifyLocation();
                         }
 
                         m_Institution.Containers[index].DisplayTo(m_From);
@@ -350,6 +351,9 @@ namespace Server.Engines.Institutions
                     break;
                 }
             }
+
+            if (type != 0)
+                m_From.SendGump(new InstitutionGump((Mobile)m_From, m_Institution));
         }
     }
 
