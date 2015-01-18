@@ -497,6 +497,71 @@ namespace Server.Items
 
 			return GetFromOreInfo( info );
 		}
+
+        // Zzzz...
+        public static Type GetTypeFromCraftResource(CraftResource res)
+        {
+            switch (res)
+            {
+                case CraftResource.Fer: return typeof(FerIngot);
+                case CraftResource.Cuivre: return typeof(CuivreIngot);
+                case CraftResource.Bronze: return typeof(BronzeIngot);
+                case CraftResource.Acier: return typeof(AcierIngot);
+                case CraftResource.Argent: return typeof(ArgentIngot);
+                case CraftResource.Or: return typeof(OrIngot);
+                case CraftResource.Mytheril: return typeof(MytherilIngot);
+                case CraftResource.Luminium: return typeof(LuminiumIngot);
+                case CraftResource.Obscurium: return typeof(ObscuriumIngot);
+                case CraftResource.Mystirium: return typeof(MystiriumIngot);
+                case CraftResource.Dominium: return typeof(DominiumIngot);
+                case CraftResource.Eclarium: return typeof(EclariumIngot);
+                case CraftResource.Venarium: return typeof(VenariumIngot);
+                case CraftResource.Athenium: return typeof(AtheniumIngot);
+                case CraftResource.Umbrarium: return typeof(UmbrariumIngot);
+
+                case CraftResource.RegularLeather: return typeof(Leather);
+                case CraftResource.ReptilienLeather: return typeof(ReptilienLeather);
+                case CraftResource.NordiqueLeather: return typeof(NordiqueLeather);
+                case CraftResource.DesertiqueLeather: return typeof(DesertiqueLeather);
+                case CraftResource.MaritimeLeather: return typeof(MaritimeLeather);
+                case CraftResource.VolcaniqueLeather: return typeof(VolcaniqueLeather);
+                case CraftResource.GeantLeather: return typeof(GeantLeather);
+                case CraftResource.MinotaurLeather: return typeof(MinotaureLeather);
+                case CraftResource.OphidienLeather: return typeof(OphidienLeather);
+                case CraftResource.ArachnideLeather: return typeof(ArachnideLeather);
+                case CraftResource.MagiqueLeather: return typeof(MagiqueLeather);
+                case CraftResource.AncienLeather: return typeof(AncienLeather);
+                case CraftResource.DemoniaqueLeather: return typeof(DemoniaqueLeather);
+                case CraftResource.DragoniqueLeather: return typeof(DragoniqueLeather);
+                case CraftResource.LupusLeather: return typeof(LupusLeather);
+
+				case CraftResource.RegularBones: return typeof( Bone );
+                case CraftResource.GobelinBones: return typeof( GobelinBone );
+                case CraftResource.ReptilienBones: return typeof( ReptilienBone );
+				case CraftResource.NordiqueBones: return typeof( NordiqueBone );
+				case CraftResource.DesertiqueBones: return typeof( DesertiqueBone );
+				case CraftResource.MaritimeBones: return typeof( MaritimeBone );
+                case CraftResource.VolcaniqueBones: return typeof( VolcaniqueBone );
+                case CraftResource.GeantBones: return typeof( GeantBone );
+                case CraftResource.MinotaureBones: return typeof( MinotaureBone );
+				case CraftResource.OphidienBones: return typeof( OphidienBone );
+                case CraftResource.ArachnideBones: return typeof( ArachnideBone );
+                case CraftResource.MagiqueBones: return typeof( MagiqueBone );
+                case CraftResource.AncienBones: return typeof( AncienBone );
+                case CraftResource.DemonBones: return typeof( DemonBone );
+				case CraftResource.DragonBones: return typeof( DragonBone );
+
+                case CraftResource.RegularWood: return typeof( Log );
+				case CraftResource.PinWood: return typeof( PinLog );
+				case CraftResource.CypresWood: return typeof( CypresLog );
+				case CraftResource.CedreWood: return typeof( CedreLog );
+				case CraftResource.SauleWood: return typeof( SauleLog );
+				case CraftResource.CheneWood: return typeof( CheneLog );
+				case CraftResource.EbeneWood: return typeof( EbeneLog );
+                case CraftResource.AcajouWood: return typeof(AcajouLog);
+            }
+            return null;
+        }
 	}
 
 	// NOTE: This class is only for compatability with very old RunUO versions.

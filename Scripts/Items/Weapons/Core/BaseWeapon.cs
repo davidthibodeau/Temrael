@@ -146,8 +146,8 @@ namespace Server.Items
             return 0;
         }
 
-		public virtual int InitMinHits{ get{ return 0; } }
-		public virtual int InitMaxHits{ get{ return 0; } }
+		public virtual int InitMinHits{ get{ return 150; } }
+		public virtual int InitMaxHits{ get{ return 200; } }
 
 		public virtual bool CanFortify{ get{ return true; } }
 		#endregion
@@ -171,18 +171,20 @@ namespace Server.Items
 		public int Durability
 		{
 			get{ return m_Hits; }
-			set
-			{
-				if ( m_Hits == value )
-					return;
+            set
+            {
+                if (value != m_Hits && MaxDurability > 0)
+                {
+                    m_Hits = value;
 
-				if ( value > m_MaxHits )
-					value = m_MaxHits;
+                    if (m_Hits < 0)
+                        Delete();
+                    else if (m_Hits > MaxDurability)
+                        m_Hits = MaxDurability;
 
-				m_Hits = value;
-
-				InvalidateProperties();
-			}
+                    InvalidateProperties();
+                }
+            }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -300,14 +302,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
         public double MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? ExceptBonus(RessourceBonus(DefMinDamage)) : ExceptBonus(RessourceBonus(m_MinDamage))); }
+			get{ return ( m_MinDamage == -1 ? DurabilityMalus(ExceptBonus(RessourceBonus(DefMinDamage))) : DurabilityMalus(ExceptBonus(RessourceBonus(m_MinDamage)))); }
 			set{ }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public double MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? ExceptBonus(RessourceBonus(DefMaxDamage)) : ExceptBonus(RessourceBonus(m_MaxDamage))); }
+			get{ return ( m_MaxDamage == -1 ? DurabilityMalus(ExceptBonus(RessourceBonus(DefMaxDamage))) : DurabilityMalus(ExceptBonus(RessourceBonus(m_MaxDamage)))); }
 			set{ }
 		}
 
@@ -375,6 +377,17 @@ namespace Server.Items
         private double GetResScaling(int niveau, int nbRessource)
         {
             return (1 + niveau * scalingRes / nbRessource);
+        }
+
+        public virtual double DurabilityMalus(double dmg)
+        {
+            if (m_Hits == 0)
+                return 0;
+
+            if (m_MaxHits == 0)
+                return dmg;
+
+            return ((m_Hits / m_MaxHits) * 0.3 * dmg) + (dmg * 0.7);
         }
 
         public virtual double ExceptBonus(double dmg)

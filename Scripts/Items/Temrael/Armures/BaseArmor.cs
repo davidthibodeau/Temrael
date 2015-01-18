@@ -133,7 +133,7 @@ namespace Server.Items
         {
             get
             {
-                return ResistanceBonus(BasePhysicalResistance);
+                return DurabilityMalus(ResistanceBonus(BasePhysicalResistance));
             }
         }
 
@@ -242,8 +242,6 @@ namespace Server.Items
                     else if (m_Durability > MaxDurability)
                         m_Durability = MaxDurability;
 
-                    PublicOverheadMessage(MessageType.Regular, 0, true, "Nouvelle durabilité de " + Name + " : " + m_Durability);
-
                     InvalidateProperties();
                 }
             }
@@ -272,10 +270,10 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.Batisseur)]
         public override double PhysicalResistance 
-        { get { return (double)(ScaleArmorByDurability(ResistanceBonus(BasePhysicalResistance)) + m_PhysicalBonus); } }
+        { get { return (double)(DurabilityMalus(ResistanceBonus(BasePhysicalResistance)) + m_PhysicalBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public override double MagieResistance { get { return (double)(ScaleArmorByDurability(ResistanceBonus(BaseMagieResistance)) + m_MagieBonus); } }
+        public override double MagieResistance { get { return (double)(DurabilityMalus(ResistanceBonus(BaseMagieResistance)) + m_MagieBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public ArmorBodyType BodyPosition
@@ -342,14 +340,15 @@ namespace Server.Items
                 return 0;
         }
 
-        public virtual double ScaleArmorByDurability(double armor)
+        public virtual double DurabilityMalus(double armor)
         {
-            int scale = 100;
+            if (Durability == 0)
+                return 0;
 
-            if (m_MaxDurability > 0 && m_Durability < m_MaxDurability)
-                scale = 50 + ((50 * m_Durability) / m_MaxDurability);
+            if (MaxDurability == 0)
+                return armor;
 
-            return (armor * scale) / 100;
+            return ((Durability / MaxDurability) * 0.3 * armor) + (armor * 0.7);
         }
         #endregion
 
