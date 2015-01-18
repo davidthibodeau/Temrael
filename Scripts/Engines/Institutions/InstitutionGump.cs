@@ -359,6 +359,15 @@ namespace Server.Engines.Institutions
         private Mobile currentMember;
         private List<Mobile> list;
 
+        public enum Buttons
+        {
+            NextPage = 1,
+            PreviousPage,
+            UpMember,
+            DownMember,
+            KickMember,
+        }
+
         public MembersListInstitution(Mobile from, InstitutionHandler handler, int page) : base(from, handler)
         {
             this.currentPage = page;
@@ -367,7 +376,7 @@ namespace Server.Engines.Institutions
             AddPage(0);
             AddBackground(31, 48, 416, 432, 9250);
             AddBackground(39, 56, 400, 417, 3500);
-            AddLabel(174, 78, 1301, @"Liste des membres de " + m_Institution.Description);
+            AddLabel(171, 78, 1301, @"Liste des membres de " + m_Institution.Description);
 
             int basey = 110;
             for (int i = 0; i < list.Count; i++)
@@ -381,8 +390,8 @@ namespace Server.Engines.Institutions
                 AddLabel(270, basey + (i % 10) * 30, 1301, m_Institution.GetTitre(m_Institution.GetRank(m)));
                 AddButton(383, basey + (i % 10) * 30 - 1, 4005, 4006, i + 10, GumpButtonType.Reply, 0);
             }
-            AddButton(402, 411, 5601, 5605, GetButtonID(1, 0), GumpButtonType.Reply, 0);
-            AddButton(61, 410, 5603, 5607, GetButtonID(1, 1), GumpButtonType.Reply, 0);
+            AddButton(402, 411, 5601, 5605, (int)Buttons.NextPage, GumpButtonType.Reply, 0);
+            AddButton(61, 410, 5603, 5607, (int)Buttons.PreviousPage, GumpButtonType.Reply, 0);
         }
 
         public MembersListInstitution(Mobile from, InstitutionHandler handler, Mobile member)
@@ -395,108 +404,73 @@ namespace Server.Engines.Institutions
 
             AddBackground(31, 48, 416, 190, 9250);
             AddBackground(39, 56, 400, 178, 3500);
-            AddLabel(174, 78, 1301, @"Fiche de " + member.Name);
+            AddLabel(174, 78, 1301, @"Menu pour " + member.Name);
 
             AddLabel(81, 110, 1301, @"Promouvoir au rang :");
             AddLabel(210, 110, 1301, m_Institution.GetTitre(m_Institution.GetRank(member) + 1));
-            AddButton(383, 109, 4005, 4006, GetButtonID(2, 0), GumpButtonType.Reply, 0);
+            AddButton(383, 109, 4005, 4006, (int)Buttons.UpMember, GumpButtonType.Reply, 0);
 
             AddLabel(81, 140, 1301, @"Destituer au rang :");
             AddLabel(210, 140, 1301, m_Institution.GetTitre(m_Institution.GetRank(member) - 1));
-            AddButton(383, 139, 4005, 4006, GetButtonID(2, 1), GumpButtonType.Reply, 0);
+            AddButton(383, 139, 4005, 4006, (int)Buttons.DownMember, GumpButtonType.Reply, 0);
 
             AddLabel(81, 170, 1301, @"Expulser de l'institution");
-            AddButton(383, 169, 4005, 4006, GetButtonID(2, 2), GumpButtonType.Reply, 0);
+            AddButton(383, 169, 4005, 4006, (int)Buttons.KickMember, GumpButtonType.Reply, 0);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
         {
-            int buttonID = info.ButtonID - 1;
-            int type = buttonID % 4;
-            int index = buttonID / 4;
-            int mIndex = 4 * index - 8;
+            int buttonID = info.ButtonID;
 
             if (info.ButtonID <= 0)
                return;
 
-            switch (type)
+            switch (buttonID)
             {
-                case 0:
+                case (int)Buttons.NextPage:
                     {
-                        if (mIndex < list.Count && mIndex >= 0)
+                        m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage + 1));
+                        break;
+                    }
+                case (int)Buttons.PreviousPage:
+                    {
+                        m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage - 1));
+                        break;
+                    }
+                case (int)Buttons.UpMember:
+                    {
+                        if (currentMember != null)
+                            AugmenterRang_OnTarget(m_From, currentMember);
+                        m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage));
+                        break;
+                    }
+                case (int)Buttons.DownMember:
+                    {
+                        if (currentMember != null)
+                            DiminuerRang_OnTarget(m_From, currentMember);
+                        m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage));
+                        break;
+                    }
+                case (int)Buttons.KickMember:
+                    {
+                        if (currentMember != null)
+                            RetirerMobile_OnTarget(m_From, currentMember);
+                        m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage));
+                        break;
+                    }  
+                         
+                default:
+                    {
+                        int index = buttonID - 10;
+                        if (index < list.Count && index >= 0)
                         {
-                            if (list[mIndex] != null)
+                            if (list[index] != null)
                             {
-                                m_From.SendGump(new MembersListInstitution(m_From, m_Institution, list[mIndex]));
+                                m_From.SendGump(new MembersListInstitution(m_From, m_Institution, list[index]));
                             }
                         }
                         break;
                     }
-                 case 1:
-                     {
-                         switch (index)
-                         {
-                             case 0:
-                                 {
-                                     m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage + 1));
-                                     break;
-                                 }
-                             case 1:
-                                 {
-                                     m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage - 1));
-                                     break;
-                                 }
-                             default:
-                                 {
-                                     if (mIndex < list.Count && mIndex >= 0)
-                                     {
-                                         if (list[mIndex] != null)
-                                         {
-                                             m_From.SendGump(new MembersListInstitution(m_From, m_Institution, list[mIndex]));
-                                         }
-                                     }
-                                     break;
-                                 }
-                         }
-                         break;
-                     }
-                 case 2:
-                     {
-                         switch (index)
-                         {
-                             case 0:
-                                 {
-                                     if (currentMember != null)
-                                         AugmenterRang_OnTarget(m_From, currentMember);
-                                     break;
-                                 }
-                             case 1:
-                                 {
-                                     if (currentMember != null)
-                                         DiminuerRang_OnTarget(m_From, currentMember);
-                                     break;
-                                 }
-                             case 2:
-                                 {
-                                     if (currentMember != null)
-                                         RetirerMobile_OnTarget(m_From, currentMember);
-                                     break;
-                                 }
-                         }
-                         m_From.SendGump(new MembersListInstitution(m_From, m_Institution, currentPage));
-                         break;
-                     }
-                 default:
-                     {
-                         if (mIndex < list.Count && mIndex >= 0)
-                         {
-                             if (list[mIndex] != null)
-                             {
-                                 m_From.SendGump(new MembersListInstitution(m_From, m_Institution, list[mIndex]));
-                             }
-                         }
-                         break;
-                     }
              }
         }
     }
