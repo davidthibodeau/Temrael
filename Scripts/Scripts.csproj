@@ -152,6 +152,9 @@
     <Compile Include="Mobiles\Monsters\Basilic.cs" />
     <Compile Include="Mobiles\Monsters\Elementaires\ElementaireFeu.cs" />
     <Compile Include="Mobiles\Monsters\Elementaires\ElementaireTerre.cs" />
+    <Compile Include="Mobiles\Brigands\Brigand10.cs" />
+    <Compile Include="Mobiles\Brigands\Brigand15.cs" />
+    <Compile Include="Mobiles\Brigands\Brigand20.cs" />
     <Compile Include="Mobiles\Monsters\FeuFollet.cs" />
     <Compile Include="Mobiles\Monsters\Fourmis\FourmiGeante.cs" />
     <Compile Include="Mobiles\Monsters\Fourmis\Fourmilion.cs" />
