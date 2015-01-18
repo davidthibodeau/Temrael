@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Mobiles;
 using Server.Items;
 using Server;
+using Server.Engines.Combat;
 
 namespace Server.TechniquesCombat
 {
@@ -33,19 +34,20 @@ namespace Server.TechniquesCombat
         private const double MalusStam = 0.75;  // Le defenseur peut perdre jusqu'à 75% de sa stamina au premier hit.
         private const double BonusDegats = 0.4; // 0 à 40% de degats bonus contre la cible.
 
+        private const double MeleeScal = 1;
+        private const double RangedScal = 0.4;
+        private const double MonsterScal = 0.3;
+
         private readonly TimeSpan Cooldown = new TimeSpan(0, 2, 0);
 
 
         public void OnHit(Mobile atk, Mobile def, ref double dmg)
         {
-            if (atk is BaseCreature)
-                return;
-
             if (!MobilesBonus.Contains(atk))
             {
                 if (!MobilesList.Contains(atk))  // First hit.
                 {
-                    double scaling = ScalingBonus(atk, def);
+                    double scaling = ScalingBonus(atk, def) * TypeMultiplier(atk,def);
 
                     if (scaling != 0)
                     {
@@ -71,7 +73,7 @@ namespace Server.TechniquesCombat
         {
             double scaling = 0;
 
-            if (SkillHandlers.Tracking.IsTracking(atk, def))
+            if (SkillHandlers.Tracking.IsTracking(atk, def) || atk is BaseCreature)
             {
                 scaling += (TrackingOffs * atk.Skills[SkillName.Poursuite].Value / 100);
             }
@@ -87,6 +89,30 @@ namespace Server.TechniquesCombat
             }
 
             return scaling;
+        }
+
+        private double TypeMultiplier(Mobile atk, Mobile def)
+        {
+            CombatStrategy strategy = ((BaseWeapon)atk.Weapon).Strategy;
+            if (strategy is StrategyMonstre)
+            {
+                return MonsterScal;
+            }
+            else if (strategy is StrategyDistance)
+            {
+                if (atk.InRange(def, 5))
+                {
+                    return RangedScal;
+                }
+                else
+                {
+                    return 0; // Rend l'attaque non-surnoise.
+                }
+            }
+            else
+            {
+                return MeleeScal;
+            }
         }
 
         private class CooldownTimer : Timer

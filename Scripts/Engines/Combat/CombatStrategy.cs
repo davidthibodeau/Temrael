@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.TechniquesCombat;
 
 namespace Server.Engines.Combat
 {
@@ -57,6 +58,9 @@ namespace Server.Engines.Combat
 
             double basedmg = (atk.Weapon as BaseWeapon).MinDamage + (Utility.RandomDouble() * ((atk.Weapon as BaseWeapon).MaxDamage - (atk.Weapon as BaseWeapon).MinDamage));
             double degats = Degats(basedmg, atk, def);
+
+            Assassinat.Instance.OnHit(atk, def, ref degats);
+
             if (DefStrategy(def).Parer(def))
             {
                 def.FixedEffect(0x37B9, 10, 16);

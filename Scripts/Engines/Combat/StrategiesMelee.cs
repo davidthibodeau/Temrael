@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Server.TechniquesCombat;
 
 namespace Server.Engines.Combat
 {
@@ -26,8 +25,6 @@ namespace Server.Engines.Combat
         public override double Degats(double basedmg, Mobile atk, Mobile def)
         {
             double dmg = ComputerDegats(atk, basedmg, true);
-
-            Assassinat.Instance.OnHit(atk, def, ref dmg);
 
             return (int)DegatsReduits(atk, def, dmg);
         }
