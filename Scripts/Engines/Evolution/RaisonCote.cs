@@ -31,5 +31,23 @@ namespace Server.Engines.Evolution
             auteur = from;
             timestamp = DateTime.Now;
         }
+
+        public RaisonCote(GenericReader reader)
+        {
+            int version = reader.ReadInt();
+
+            message = reader.ReadByte();
+            timestamp = reader.ReadDateTime();
+            auteur = reader.ReadMobile();
+        }
+
+        public void Serialize(GenericWriter writer)
+        {
+            writer.Write(0); //version
+
+            writer.Write(message);
+            writer.Write(timestamp);
+            writer.Write(auteur);
+        }
     }
 }

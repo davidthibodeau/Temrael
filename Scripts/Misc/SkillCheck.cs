@@ -5,6 +5,7 @@ using Server.Mobiles;
 using Server.Network;
 using System.Collections.Generic;
 using Server.Engines.Evolution;
+using Server.Regions;
 
 namespace Server.Misc
 {
@@ -145,7 +146,7 @@ namespace Server.Misc
         {
             PlayerMobile pm = from as PlayerMobile;
 
-            if (pm == null || pm.Experience.Cotes.HasAFKPenalite())
+            if (pm == null || pm.Experience.Cotes.HasAFKPenalite() || pm.Region is ZoneInterne)
                 return;
 
             Skills sks = pm.Skills;

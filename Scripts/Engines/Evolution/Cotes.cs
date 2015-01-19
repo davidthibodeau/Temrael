@@ -28,6 +28,12 @@ namespace Server.Engines.Evolution
             LastCotation = DateTime.Now;
         }
 
+        public void OctoyerFiole(Mobile from, byte message)
+        {
+            raisons.Add(new RaisonCote(from, message));
+            LastFiole = DateTime.Now;
+        }
+
         public void AFK(Mobile from)
         {
             OctroyerCote(ValeurCote.Interdit, from, 1);
@@ -66,12 +72,20 @@ namespace Server.Engines.Evolution
             int version = reader.ReadInt();
 
             LastCotation = reader.ReadDateTime();
+            LastFiole = reader.ReadDateTime();
 
             int count = reader.ReadInt();
 
             for (int i = 0; i < count; i++)
             {
                 cotes.Add(new Cote(this, reader));
+            }
+
+            count = reader.ReadInt();
+
+            for (int i = 0; i < count; i++)
+            {
+                raisons.Add(new RaisonCote(reader));
             }
         }
 
@@ -80,6 +94,7 @@ namespace Server.Engines.Evolution
             writer.Write(0); //version
 
             writer.Write(LastCotation);
+            writer.Write(LastFiole);
 
             for (int i = cotes.Count - 1; i > -1; i--)
             {
@@ -92,6 +107,13 @@ namespace Server.Engines.Evolution
             foreach (Cote cote in cotes)
             {
                 cote.Serialize(writer);
+            }
+
+            writer.Write(raisons.Count);
+
+            foreach (RaisonCote raison in raisons)
+            {
+                raison.Serialize(writer);
             }
         }
     }

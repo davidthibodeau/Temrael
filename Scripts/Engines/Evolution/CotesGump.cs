@@ -2,11 +2,45 @@
 using Server.Gumps;
 using Server.Mobiles;
 using Server.Network;
+using Server.Commands;
+using Server.Targeting;
 
 namespace Server.Engines.Evolution
 {
     public class CotesGump : Gump
     {
+        public static void Initialize()
+        {
+            CommandSystem.Register("cotes", AccessLevel.Chroniqueur, new CommandEventHandler(Cotes_OnCommand));
+        }
+
+        public static void Cotes_OnCommand(CommandEventArgs e)
+        {
+            Mobile from = e.Mobile;
+
+            from.SendMessage("Veuillez choisir le joueur dont vous voulez voir les cotes.");
+        }
+
+        private class CotesTarget : Target
+        {
+            public CotesTarget() : base (12, false, TargetFlags.None)
+            {
+
+            }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                PlayerMobile mobile = targeted as PlayerMobile;
+                if (mobile == null)
+                {
+                    from.SendMessage("Vous devez viser un joueur.");
+                    return;
+                }
+
+                from.SendGump(new CotesGump(mobile, 0));
+            }
+        }
+
         private int page;
         private PlayerMobile mobile;
 
@@ -24,7 +58,7 @@ namespace Server.Engines.Evolution
             AddBackground(39, 56, 400, 417, 3500);
             AddLabel(174, 78, 1301, @"Historique de cotes de " + pm.Name);
             AddButton(285, 430, 4005, 4006, 1, GumpButtonType.Reply, 0);
-            AddLabel(185, 431, 1301, @"Ajouter cote");
+            AddLabel(185, 431, 1301, @"Ajouter cote/fiole");
 
             Cotes cotes = pm.Experience.Cotes;
 
@@ -52,7 +86,7 @@ namespace Server.Engines.Evolution
             switch(info.ButtonID)
             {
                 case 1:
-
+                    m.SendGump(new AjouterCoteGump(mobile));
                     break;
 
                 case 2:
