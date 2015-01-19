@@ -103,6 +103,7 @@
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
     <Compile Include="Engines\Economy\PrixNPC.cs" />
+    <Compile Include="Engines\Evolution\RaisonCote.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
     <Compile Include="Engines\Evolution\TransfertGump.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\CordiliereEparse.cs" />

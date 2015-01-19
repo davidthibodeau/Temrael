@@ -9,13 +9,15 @@ namespace Server.Engines.Evolution
     public class Cotes
     {
         private List<Cote> cotes = new List<Cote>();
+        private List<RaisonCote> raisons = new List<RaisonCote>();
 
         [CommandProperty(AccessLevel.Batisseur, true)]
         public DateTime LastCotation { get; set; }
 
-        public void OctroyerCote(ValeurCote cote)
+        public void OctroyerCote(ValeurCote cote, Mobile from, byte message)
         {
             cotes.Add(new Cote(this, cote));
+            raisons.Add(new RaisonCote(from, message));
         }
 
         public int OctroyerXP(int tick)
