@@ -2449,7 +2449,7 @@ namespace Server
 
 		private static int m_WalkFoot = 400;
 		private static int m_RunFoot = 200;
-		private static int m_WalkMount = 300;
+		private static int m_WalkMount = 200;
 		private static int m_RunMount = 100;
 
 		public static int WalkFoot { get { return m_WalkFoot; } set { m_WalkFoot = value; } }
