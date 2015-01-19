@@ -4,6 +4,7 @@ using Server.Mobiles;
 
 using Server.Network;
 using System.Collections.Generic;
+using Server.Engines.Evolution;
 
 namespace Server.Misc
 {
@@ -142,9 +143,12 @@ namespace Server.Misc
 
         public static void IncreaseRandomUpSkill(Mobile from)
         {
-            if (from == null)
+            PlayerMobile pm = from as PlayerMobile;
+
+            if (pm == null || pm.Experience.Cotes.HasAFKPenalite())
                 return;
-            Skills sks = from.Skills;
+
+            Skills sks = pm.Skills;
             List<Skill> l = new List<Skill>();
             foreach (Skill sk in sks)
             {
@@ -152,7 +156,7 @@ namespace Server.Misc
                     l.Add(sk);
             }
             if (l.Count > 0)
-                Gain(from, l[Utility.Random(l.Count)], true);
+                Gain(pm, l[Utility.Random(l.Count)], true);
         }
 
 		public static bool CheckSkill( Mobile from, Skill skill, object amObj, double chance )

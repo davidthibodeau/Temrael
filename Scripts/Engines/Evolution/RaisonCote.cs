@@ -13,6 +13,7 @@ namespace Server.Engines.Evolution
             {
                 default:
                 case 0: return "Continuez votre bon roleplay.";
+                case 1: return "Vous étiez AFK.";
             }
         }
 

@@ -13,11 +13,35 @@ namespace Server.Engines.Evolution
 
         [CommandProperty(AccessLevel.Batisseur, true)]
         public DateTime LastCotation { get; set; }
+        [CommandProperty(AccessLevel.Batisseur, true)]
+        public DateTime LastFiole { get; set; }
+        [CommandProperty(AccessLevel.Batisseur, true)]
+        public int AFKPenalite { get; set; }
+
+        public RaisonCote this[int i] { get { return raisons[i]; } }
+        public int Count { get { return raisons.Count; } }
 
         public void OctroyerCote(ValeurCote cote, Mobile from, byte message)
         {
             cotes.Add(new Cote(this, cote));
             raisons.Add(new RaisonCote(from, message));
+            LastCotation = DateTime.Now;
+        }
+
+        public void AFK(Mobile from)
+        {
+            OctroyerCote(ValeurCote.Interdit, from, 1);
+            AFKPenalite += 3600;
+        }
+
+        public bool HasAFKPenalite()
+        {
+            if (AFKPenalite > 0)
+            {
+                AFKPenalite -= 20;
+                return true;
+            }
+            return false;
         }
 
         public int OctroyerXP(int tick)

@@ -2488,6 +2488,9 @@
     <Compile Include="Misc\PhpBB.cs" />
     <Compile Include="Mobiles\Vendeurs\Acheteur.cs" />
     <Compile Include="Items\Ballot.cs" />
+    <Compile Include="Engines\Evolution\CotesGump.cs" />
+    <Compile Include="Engines\Evolution\AjouterCoteGump.cs" />
+    <Compile Include="Engines\Evolution\AFK.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">
