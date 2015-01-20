@@ -4,7 +4,7 @@ using Server.Items;
 
 namespace Server.Misc.Balancing
 {
-    #region POUR LES TESTS RELATIF AUX ARMES.
+    #region POUR LES TESTS RELATIF AUX VITESSES DES ARMES.
     public class MobilePlaqueEpeeLente : TestMobile
     {
         public MobilePlaqueEpeeLente()
@@ -606,4 +606,509 @@ namespace Server.Misc.Balancing
 
     #endregion
 
+    #region POUR LES TESTS RELATIFS AUX TYPES D'ARMES.
+
+    public class MobilePlaqueEpee : TestMobile
+    {
+        public MobilePlaqueEpee()
+        {
+            Name = "2H Plaque Epee";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Flamberge();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaqueEpee(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirEpee : TestMobile
+    {
+        public MobileCuirEpee()
+        {
+            Name = "2H Cuir Epee";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Flamberge();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuirEpee(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobilePlaqueHache : TestMobile
+    {
+        public MobilePlaqueHache()
+        {
+            Name = "2H Plaque Hache";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Hache, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new TwoHandedAxe();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaqueHache(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirHache : TestMobile
+    {
+        public MobileCuirHache()
+        {
+            Name = "2H Cuir Hache";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.Hache, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new TwoHandedAxe();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuirHache(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobilePlaqueMasse : TestMobile
+    {
+        public MobilePlaqueMasse()
+        {
+            Name = "2H Plaque Masse";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeContondante, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new MarteauGuerre();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaqueMasse(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirMasse : TestMobile
+    {
+        public MobileCuirMasse()
+        {
+            Name = "2H Cuir Masse";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeContondante, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new MarteauGuerre();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuirMasse(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobilePlaquePerforant : TestMobile
+    {
+        public MobilePlaquePerforant()
+        {
+            Name = "2H Plaque Perforant";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmePerforante, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Katara();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaquePerforant(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirPerforant : TestMobile
+    {
+        public MobileCuirPerforant()
+        {
+            Name = "2H Cuir Perforant";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmePerforante, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Katara();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuirPerforant(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobilePlaqueHaste : TestMobile
+    {
+        public MobilePlaqueHaste()
+        {
+            Name = "2H Plaque Haste";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeHaste, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new PerceTronc();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaqueHaste(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirHaste : TestMobile
+    {
+        public MobileCuirHaste()
+        {
+            Name = "2H Cuir Haste";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeHaste, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new PerceTronc();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobileCuirHaste(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobilePlaqueArbalete : TestMobile
+    {
+        public MobilePlaqueArbalete()
+        {
+            Name = "2H Plaque Arbalete";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeDistance, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Arbavive();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+
+            Bolt bolts = new Bolt(50);
+            AddItem(bolts);
+        }
+
+        public MobilePlaqueArbalete(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirArbalete : TestMobile
+    {
+        public MobileCuirArbalete()
+        {
+            Name = "2H Cuir Arbalete";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeDistance, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Arbavive();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+
+            Bolt bolts = new Bolt(50);
+            AddItem(bolts);
+        }
+
+        public MobileCuirArbalete(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobilePlaqueArc : TestMobile
+    {
+        public MobilePlaqueArc()
+        {
+            Name = "2H Plaque Arc";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeDistance, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Chantefleche();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+
+            Arrow bolts = new Arrow(50);
+            AddItem(bolts);
+        }
+
+        public MobilePlaqueArc(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    public class MobileCuirArc : TestMobile
+    {
+        public MobileCuirArc()
+        {
+            Name = "2H Cuir Arc";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 25;
+
+            SetSkill(SkillName.ArmeDistance, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+
+            ChooseArmor(ArmorClass.Cuir, CraftResource.DesertiqueLeather, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Chantefleche();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+
+            Arrow bolts = new Arrow(50);
+            AddItem(bolts);
+        }
+
+        public MobileCuirArc(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
+    #endregion
 }

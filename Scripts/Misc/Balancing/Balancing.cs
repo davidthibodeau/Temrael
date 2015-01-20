@@ -51,23 +51,35 @@ namespace Server.Misc.Balancing
             //new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeLenteBouclier(), "CUIR - 1H Rapide vs 1H Lente.txt");
             //#endregion
 
-            #region Tests du cuir, de la plaque, de l'armure naturelle et de l'armor pen.
+            //#region Tests du cuir, de la plaque, de l'armure naturelle et de l'armor pen.
 
-            new Balancing(new MobileCuir(), new MobilePlaque(), "1.Cuir vs Plaque.txt");
+            //new Balancing(new MobileCuir(), new MobilePlaque(), "1.Cuir vs Plaque.txt");
 
-            new Balancing(new MobileCuir_ArNat(), new MobilePlaque_ArNat(), "2.CuirArNat vs PlaqueArNat.txt");
+            //new Balancing(new MobileCuir_ArNat(), new MobilePlaque_ArNat(), "2.CuirArNat vs PlaqueArNat.txt");
 
-            new Balancing(new MobileCuir_Pen(), new MobilePlaque_Pen(), "3.CuirPen vs PlaquePen.txt");
+            //new Balancing(new MobileCuir_Pen(), new MobilePlaque_Pen(), "3.CuirPen vs PlaquePen.txt");
 
-            new Balancing(new MobileCuir_ArNat_Pen(), new MobilePlaque_ArNat_Pen(), "4.CuirArNatPen vs PlaqueArNatPen.txt");
+            //new Balancing(new MobileCuir_ArNat_Pen(), new MobilePlaque_ArNat_Pen(), "4.CuirArNatPen vs PlaqueArNatPen.txt");
 
-            new Balancing(new MobileCuir_ArNat(), new MobileCuir_Pen(), "5.CuirArNat vs CuirPen.txt");
+            //new Balancing(new MobileCuir_ArNat(), new MobileCuir_Pen(), "5.CuirArNat vs CuirPen.txt");
 
-            new Balancing(new MobilePlaque_Pen(), new MobilePlaque_ArNat(), "6.PlaquePen vs PlaqueArNat.txt");
+            //new Balancing(new MobilePlaque_Pen(), new MobilePlaque_ArNat(), "6.PlaquePen vs PlaqueArNat.txt");
+
+            //#endregion
+
+            #region Test des différentes catégories d'armes.
+
+            // On utilise l'épée comme base.
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHache(), "1.PLAQUE vs Plaque Hache.txt");
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueMasse(), "2.PLAQUE vs Plaque Masse.txt");
+            new Balancing(new MobileCuirEpee(), new MobilePlaqueMasse(), "3.CUIR vs Plaque Masse.txt");
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaquePerforant(), "4.PLAQUE vs Plaque Perforant.txt");
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHaste(), "5.PLAQUE vs Plaque Haste.txt");
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArbalete(), "6.PLAQUE vs Plaque Arbalete.txt");
+            new Balancing(new MobileCuirEpee(), new MobilePlaqueArbalete(), "7.CUIR vs Plaque Arbalete.txt");
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArc(), "8.PLAQUE vs Plaque Arc.txt");
 
             #endregion
-
-
         }
 
         public Balancing(TestMobile m1, TestMobile m2)
