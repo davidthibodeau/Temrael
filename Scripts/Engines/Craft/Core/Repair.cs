@@ -69,7 +69,7 @@ namespace Server.Engines.Craft
                             }
                             else
                             {
-                                mob.SendMessage("Vous ne possédez pas assez de lingots pour réparer l'arme.");
+                                mob.SendMessage("Vous ne possédez pas assez de ressources pour réparer l'arme.");
                             }
                         }
                     }
@@ -99,7 +99,7 @@ namespace Server.Engines.Craft
                             }
                             else
                             {
-                                mob.SendMessage("Vous ne possédez pas assez de lingots pour réparer l'armure.");
+                                mob.SendMessage("Vous ne possédez pas assez de ressources pour réparer l'armure.");
                             }
                         }
                     }
