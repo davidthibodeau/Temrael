@@ -24,7 +24,10 @@ namespace Server.Scripts.Commands
         public static void Test_OnCommand(CommandEventArgs e)
         {
             Server.Engines.Alchimie.PotionEffect p = new PotionStrBuffScal();
-            Server.Engines.Alchimie.PotionEffectHandler.Instance.ApplyEffect(e.Mobile, p, Source.Potion);
+
+            ((BaseWeapon)e.Mobile.Weapon).Poison = p;
+            e.Mobile.SendMessage(p.GetType().Name);
+            //Server.Engines.Alchimie.PotionEffectHandler.Instance.ApplyEffect(e.Mobile, p, Source.Potion);
         }
     }
 }

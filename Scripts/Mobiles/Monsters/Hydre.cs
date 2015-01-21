@@ -26,7 +26,7 @@ namespace Server.Mobiles
                 SetHits(500);
                 SetMana(200);
                 SetStam(400);
-                SetArme(20, 25, 30, Poison.Deadly);
+                SetArme(20, 25, 30/*, Poison.Deadly*/);
 
                 SetResistance(ResistanceType.Physical, 25);
                 SetResistance(ResistanceType.Magical, 0);

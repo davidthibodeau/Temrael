@@ -69,10 +69,10 @@ namespace Server.Items
 				{
 					from.SendLocalizedMessage( 1005425 ); // You may only wipe down items you are holding or carrying.
 				}
-				else if ( weapon.Poison == null || weapon.PoisonCharges <= 0 )
-				{
-					from.LocalOverheadMessage( Network.MessageType.Regular, 0x3B2, 1005422 ); // Hmmmm... this does not need to be cleaned.
-				}
+                //else if ( weapon.Poison == null || weapon.PoisonCharges <= 0 )
+                //{
+                //    from.LocalOverheadMessage( Network.MessageType.Regular, 0x3B2, 1005422 ); // Hmmmm... this does not need to be cleaned.
+                //}
 				else
 				{
 					if ( weapon.PoisonCharges < 2 )

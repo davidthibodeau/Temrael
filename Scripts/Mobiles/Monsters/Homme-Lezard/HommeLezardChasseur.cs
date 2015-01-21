@@ -23,7 +23,7 @@ namespace Server.Mobiles
             SetHits(200);
             SetMana(40);
             SetStam(140);
-            SetArme(7, 12, 40, Poison.Regular);
+            SetArme(7, 12, 40/*, Poison.Regular*/);
 
             SetResistance(ResistanceType.Physical, 10);
             SetResistance(ResistanceType.Magical, 0);

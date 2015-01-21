@@ -136,7 +136,7 @@ namespace Server.SkillHandlers
                             }
                             else if (m_Target is BaseWeapon)
                             {
-                                ((BaseWeapon)m_Target).Poison = m_Poison;
+                                //((BaseWeapon)m_Target).Poison = m_Poison;
                                 ((BaseWeapon)m_Target).PoisonCharges = 18 - (m_Poison.Level * 2);
                             }
 

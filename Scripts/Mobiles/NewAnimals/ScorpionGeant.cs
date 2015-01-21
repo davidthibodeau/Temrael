@@ -22,7 +22,7 @@
                             SetHits( 225 );
                             SetMana( 20);
                             SetStam( 240);    
-                            SetArme(11, 16, 40, Poison.Regular);
+                            SetArme(11, 16, 40/*, Poison.Regular*/);
      
                             SetResistance( ResistanceType.Physical, 10 );
                             SetResistance( ResistanceType.Magical, 0 );

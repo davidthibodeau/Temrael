@@ -3132,7 +3132,7 @@ namespace Server.Mobiles
             AddItem(new ArmeMonstre(min, max, speed, ranged));
         }
 
-        public void SetArme(int min, int max, int speed, Poison poison)
+        public void SetArme(int min, int max, int speed, Server.Engines.Alchimie.PotionEffect poison)
         {
             AddItem(new ArmeMonstre(min, max, speed, poison));
         }

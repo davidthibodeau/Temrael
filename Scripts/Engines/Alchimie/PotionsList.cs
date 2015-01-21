@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Items;
 
 namespace Server.Engines.Alchimie
 {
@@ -15,6 +16,18 @@ namespace Server.Engines.Alchimie
             Stacks = 50;
             MaxStacks = 50;
             FilterPerTick = 0.02;
+        }
+
+        public override Type[] Ingredients 
+        {
+            get
+            {
+                return new Type[]{
+                    typeof(BlackPearl),
+                    typeof(Bloodmoss)
+                };
+
+            }
         }
 
         StatMod s;
