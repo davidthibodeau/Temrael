@@ -31,21 +31,7 @@ namespace Server.Engines.Combat
         {
             double reducedDmg = Reduction(dmg, def.MagicResistance);
 
-            if (def.MagicDamageAbsorb > 0)
-            {
-                def.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
-                def.PlaySound(0x1E9);
-                if (def.MagicDamageAbsorb > reducedDmg)
-                {
-                    def.MagicDamageAbsorb -= (int)reducedDmg;
-                    reducedDmg = 0;
-                }
-                else
-                {
-                    reducedDmg -= def.MagicDamageAbsorb;
-                    def.MagicDamageAbsorb = 0;
-                }
-            }
+            MagicReflectSpell.GetOnHitEffect(def, ref reducedDmg);
 
             def.Damage((int)reducedDmg);
         }

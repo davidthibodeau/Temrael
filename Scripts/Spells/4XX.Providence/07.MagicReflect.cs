@@ -4,6 +4,7 @@ using Server;
 using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
+using System.Collections.Generic;
 
 namespace Server.Spells
 {
@@ -31,22 +32,43 @@ namespace Server.Spells
 		}
 
         private const int maxDmgBlock = 100;
+        private const int duration = 30;
 
-		public override bool CheckCast()
-		{
-			if ( Caster.MagicDamageAbsorb > 0 )
-			{
-				Caster.SendLocalizedMessage( 1005559 ); // This spell is already in effect.
-				return false;
-			}
-			else if ( !Caster.CanBeginAction( typeof( DefensiveSpell ) ) )
-			{
-				Caster.SendLocalizedMessage( 1005385 ); // The spell will not adhere to you at this time.
-				return false;
-			}
+        private static Dictionary<Mobile, double> m_Table = new Dictionary<Mobile, double>();
 
-			return true;
-		}
+        public static bool InTable(Mobile m)
+        {
+            return m_Table.ContainsKey(m);
+        }
+
+        public static void GetOnHitEffect(Mobile def, ref double damage)
+        {
+            if (InTable(def) && damage > 1)
+            {
+                double block = m_Table[def];
+
+                if (block > 0)
+                {
+                    def.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
+                    def.PlaySound(0x1E9);
+                }
+
+                double dmg = damage - 1;
+                
+                if (block > dmg)
+                {
+                    block -= dmg;
+                    dmg = 0;
+                }
+                else
+                {
+                    dmg -= block;
+                    block = 0;
+                }
+                damage = dmg + 1;
+                m_Table[def] = block;
+            }
+        }
 
         public override void OnCast()
         {
@@ -54,7 +76,7 @@ namespace Server.Spells
             {
                 Caster.Target = new InternalTarget(this);
             }
-            else if (Caster.MagicDamageAbsorb > 0)
+            else if (m_Table.ContainsKey(Caster) || ReactiveArmorSpell.InTable(Caster))
             {
                 Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
@@ -83,7 +105,7 @@ namespace Server.Spells
             {
                 Caster.SendLocalizedMessage(500237); // Target can not be seen.
             }
-            else if (m.MagicDamageAbsorb > 0)
+            else if (m_Table.ContainsKey(m) || ReactiveArmorSpell.InTable(Caster))
             {
                 Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
@@ -99,7 +121,9 @@ namespace Server.Spells
         {
             double value = GetSpellScaling(Caster, Info.skillForCasting) * maxDmgBlock;
 
-            m.MagicDamageAbsorb = (int)value;
+            m_Table.Add(m, value);
+
+            new ExpireTimer(m, TimeSpan.FromSeconds(duration)).Start();
 
             m.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
             m.PlaySound(0x1E9);
@@ -126,6 +150,32 @@ namespace Server.Spells
             protected override void OnTargetFinish(Mobile from)
             {
                 m_Owner.FinishSequence();
+            }
+        }
+
+        private class ExpireTimer : Timer
+        {
+            private Mobile m_Target;
+            private DateTime m_End;
+
+            public ExpireTimer(Mobile target, TimeSpan delay)
+                : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0))
+            {
+                m_Target = target;
+                m_End = DateTime.Now + delay;
+
+                Priority = TimerPriority.TwoFiftyMS;
+            }
+
+            protected override void OnTick()
+            {
+                if (m_Target.Deleted || !m_Target.Alive || DateTime.Now >= m_End)
+                {
+                    m_Target.SendMessage("Votre reflet a été rompu.");
+
+                    m_Table.Remove(m_Target);
+                    Stop();
+                }
             }
         }
 	}

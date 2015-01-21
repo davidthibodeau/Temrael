@@ -460,21 +460,7 @@ namespace Server.Spells
 
             BloodOathSpell.GetOnHitEffect(atk, def, ref damage);
 
-            if (def.MeleeDamageAbsorb > 0)
-            {
-                def.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
-                def.PlaySound(0x1F2);
-                if (def.MeleeDamageAbsorb > damage)
-                {
-                    def.MeleeDamageAbsorb -= (int)damage;
-                    damage = 0;
-                }
-                else
-                {
-                    damage -= def.MeleeDamageAbsorb;
-                    def.MeleeDamageAbsorb = 0;
-                }
-            }
+            ReactiveArmorSpell.GetOnHitEffect(def, ref damage);
 
             return damage;
         }
