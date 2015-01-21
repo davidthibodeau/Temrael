@@ -19,6 +19,7 @@ namespace Server.Engines.Evolution
             Mobile from = e.Mobile;
 
             from.SendMessage("Veuillez choisir le joueur dont vous voulez voir les cotes.");
+            from.Target = new CotesTarget();
         }
 
         private class CotesTarget : Target
@@ -54,13 +55,16 @@ namespace Server.Engines.Evolution
             Resizable=false;
 
             AddPage(0);
-            AddBackground(31, 48, 416, 432, 9250);
-            AddBackground(39, 56, 400, 417, 3500);
-            AddLabel(174, 78, 1301, @"Historique de cotes de " + pm.Name);
-            AddButton(285, 430, 4005, 4006, 1, GumpButtonType.Reply, 0);
-            AddLabel(185, 431, 1301, @"Ajouter cote/fiole");
+            AddBackground(31, 48, 616, 462, 9250);
+            AddBackground(39, 56, 600, 447, 3500);
+            AddLabel(274, 78, 1301, @"Historique de cotes de " + pm.Name);
+            //AddButton(545, 460, 4005, 4006, 1, GumpButtonType.Reply, 0);
+            AddLabel(405, 461, 1301, @"Ajouter cote/fiole");
 
             Cotes cotes = pm.Experience.Cotes;
+
+            AddLabel(65, 431, 1301, String.Format("Dernière cote: {0}", cotes.LastCotation));
+            AddLabel(365, 431, 1301, String.Format("Dernière fiole: {0}", cotes.LastFiole));
 
             int basey = 110;
             for (int i = 0; i < cotes.Count; i++)
@@ -70,14 +74,16 @@ namespace Server.Engines.Evolution
                 if (i < page * 10)
                     continue;
                 RaisonCote cote = cotes[i];
-                AddLabel(80, basey + (i % 10) * 30, 1301, cote.Auteur.ToString());
-                AddLabel(160, basey + (i % 10) * 30, 1301, cote.Timestamp.ToString());
-                AddLabel(270, basey + (i % 10) * 30, 1301, cote.Message);
+                AddLabel(60, basey + (i % 10) * 30, 1301, cote.Auteur.Account.Username);
+                AddLabel(150, basey + (i % 10) * 30, 1301, cote.Timestamp.ToString());
+                AddLabel(350, basey + (i % 10) * 30, 1301, cote.Message);
                 //AddButton(383, basey + (i % 10) * 30 - 1, 4005, 4006, i + 10, GumpButtonType.Reply, 0);
 
             }
-            AddButton(402, 411, 5601, 5605, 2, GumpButtonType.Reply, 0);
-            AddButton(61, 410, 5603, 5607, 3, GumpButtonType.Reply, 0);
+            if (page + 1 < cotes.Count / 10)
+                AddButton(602, 411, 5601, 5605, 2, GumpButtonType.Reply, 0);
+            if (page > 0)
+                AddButton(61, 410, 5603, 5607, 3, GumpButtonType.Reply, 0);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)

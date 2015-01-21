@@ -23,7 +23,7 @@ namespace Server.Engines.Evolution
         {
             if (pm.NetState != null)
             {
-                CommandLogging.WriteLine(from, "a kické {1} pour AFK.", pm.ToString());
+                CommandLogging.WriteLine(from, "a kické {0} pour AFK.", pm.ToString());
                 pm.Experience.Cotes.AFK(from);
                 pm.SendMessage("Vous avez été kické pour AFK.");
                 pm.NetState.Dispose();
