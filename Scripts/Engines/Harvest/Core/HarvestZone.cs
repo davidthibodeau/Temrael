@@ -21,6 +21,13 @@ namespace Server.Engines.Harvest
         private HarvestVein[] m_Veins;
         private static ArrayList m_HarvestZones = new ArrayList();
         private Type m_RequiredTool;
+        private Map m_Map;
+
+        public Map Map
+        {
+            get { return m_Map; }
+            set { m_Map = value; }
+        }
 
         public ZoneType ZoneType
         {
@@ -62,6 +69,7 @@ namespace Server.Engines.Harvest
         {
             m_ZoneType = zoneType;
             m_Area = new ArrayList();
+            m_Map = Map.Felucca;
         }
 
         public HarvestZone(ZoneType zoneType, Type tool)
@@ -69,6 +77,14 @@ namespace Server.Engines.Harvest
             m_ZoneType = zoneType;
             m_Area = new ArrayList();
             m_RequiredTool = tool;
+            m_Map = Map.Felucca;
+        }
+
+        public HarvestZone(ZoneType zoneType, Map map)
+        {
+            m_ZoneType = zoneType;
+            m_Area = new ArrayList();
+            m_Map = map;
         }
 
         private static HarvestResource[] m_Resources = new HarvestResource[]
