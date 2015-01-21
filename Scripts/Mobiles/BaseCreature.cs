@@ -865,7 +865,11 @@ namespace Server.Mobiles
 			BaseCreature c = m as BaseCreature;
 
             if (c != null)
+            {
+                if ((c.m_bControlled || c.m_bSummoned) && IsEnemy(c.ControlMaster))
+                    return true;
                 return (m_iTeam != c.m_iTeam || ((m_bSummoned || m_bControlled) != (c.m_bSummoned || c.m_bControlled))/* || c.Combatant == this*/ );
+            }
             return false;
 		}
 
