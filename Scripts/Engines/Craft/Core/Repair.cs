@@ -55,7 +55,7 @@ namespace Server.Engines.Craft
                         Item i = mob.Backpack.FindItemByType(t);
                         if (i != null)
                         {
-                            int RequiredResAmount = (weapon.MaxDurability - weapon.Durability) / 25;
+                            int RequiredResAmount = 1 + (weapon.MaxDurability - weapon.Durability) / 25;
                             if (i.Amount > RequiredResAmount)
                             {
                                 if (0.5 > Utility.RandomDouble())
