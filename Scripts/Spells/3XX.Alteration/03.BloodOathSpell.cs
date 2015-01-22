@@ -108,12 +108,12 @@ namespace Server.Spells
 			return oath;
 		}
 
-		public static int GetBloodOathScaling( Mobile m )
+		public static double GetBloodOathScaling( Mobile m )
 		{
 			if ( m == null )
 				return 0;
 
-			int oath = (int)m_OathTable[m];
+			double oath = (double)m_OathTableScaling[m];
 
 			return oath;
 		}
