@@ -125,13 +125,13 @@ namespace Server.Mobiles
             {
                 switch (Utility.Random(6))
                 {
-                    case 0: if (HeadArmor != null) (HeadArmor as BaseArmor).Durability -= 1; break;
-                    case 1: if (NeckArmor != null) (NeckArmor as BaseArmor).Durability -= 1; break;
-                    case 2: if (ChestArmor != null) (ChestArmor as BaseArmor).Durability -= 1; break;
-                    case 3: if (ArmsArmor != null) (ArmsArmor as BaseArmor).Durability -= 1; break;
-                    case 4: if (HandArmor != null) (HandArmor as BaseArmor).Durability -= 1; break;
-                    case 5: if (LegsArmor != null) (LegsArmor as BaseArmor).Durability -= 1; break;
-                    case 6: if (ShieldArmor != null) (ShieldArmor as BaseArmor).Durability -= 1; break;
+                    case 0: if (HeadArmor as BaseArmor != null) (HeadArmor as BaseArmor).Durability -= 1; break;
+                    case 1: if (NeckArmor as BaseArmor != null) (NeckArmor as BaseArmor).Durability -= 1; break;
+                    case 2: if (ChestArmor as BaseArmor != null) (ChestArmor as BaseArmor).Durability -= 1; break;
+                    case 3: if (ArmsArmor as BaseArmor != null) (ArmsArmor as BaseArmor).Durability -= 1; break;
+                    case 4: if (HandArmor as BaseArmor != null) (HandArmor as BaseArmor).Durability -= 1; break;
+                    case 5: if (LegsArmor as BaseArmor != null) (LegsArmor as BaseArmor).Durability -= 1; break;
+                    case 6: if (ShieldArmor as BaseArmor != null) (ShieldArmor as BaseArmor).Durability -= 1; break;
                 }
             }
         }
