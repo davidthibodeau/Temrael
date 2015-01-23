@@ -615,14 +615,7 @@ namespace Server.Commands
 						int indexOf = m_Params[i].IndexOf( '=' );
 
 						if ( indexOf >= 0 )
-							tp.Substring = m_Params[i].Substring( ++indexOf );
-					}
-					else if ( m_Params[i].StartsWith( "Keyword" ) )
-					{
-						int indexOf = m_Params[i].IndexOf( '=' );
-
-						if ( indexOf >= 0 )
-							tp.Keyword = Utility.ToInt32( m_Params[i].Substring( ++indexOf ) );
+							tp.KeyWord = m_Params[i].Substring( ++indexOf );
 					}
 					else if ( m_Params[i].StartsWith( "Range" ) )
 					{
