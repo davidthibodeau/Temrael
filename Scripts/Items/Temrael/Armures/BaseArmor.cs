@@ -348,7 +348,7 @@ namespace Server.Items
             if (MaxDurability == 0)
                 return armor;
 
-            return ((Durability / MaxDurability) * 0.3 * armor) + (armor * 0.7);
+            return (((double)Durability / (double)MaxDurability) * 0.3 * armor) + (armor * 0.7);
         }
         #endregion
 
