@@ -387,7 +387,7 @@ namespace Server.Items
             if (m_MaxHits == 0)
                 return dmg;
 
-            return ((m_Hits / m_MaxHits) * 0.3 * dmg) + (dmg * 0.7);
+            return (((double)m_Hits / (double)m_MaxHits) * 0.3 * dmg) + (dmg * 0.7);
         }
 
         public virtual double ExceptBonus(double dmg)
