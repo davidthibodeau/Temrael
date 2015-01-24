@@ -217,6 +217,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(PardessusBarbare), "Accessoires", "Pardessus Barbare", 40.0, 60.0, typeof(Leather), "Cuir", 6, 1044463, true);
             index = AddCraft(typeof(EpauliereBarbare), "Accessoires", "Épaulière Barbare", 60.0, 80.0, typeof(Leather), "Cuir", 8, 1044463, true);
 
+            index = AddCraft(typeof(FouetCuir), "Accessoires", "Fouet en cuir", 80, 100, typeof(Leather), "Cuir", 6, 1044463, true);
+
             // Set the overridable material
             SetSubRes(typeof(Bone), "Os");
 
