@@ -74,7 +74,6 @@ namespace Server.Items
             }
             else if (MobilesList.Contains(target))
             {
-                atk.SendMessage("Target immuned");
                 DoAnimation(atk, target, Sounds.Miss);
             }
             else
@@ -90,26 +89,22 @@ namespace Server.Items
             if (weapon.Layer == Layer.TwoHanded) //Target has a two-handed weapon
             {
                 chances = chances / 1.5;
-                atk.SendMessage("TwoHanded" + chances);
 
                 if (chances >= Utility.RandomDouble())
                 {
                     if (chances / 1.5 >= Utility.RandomDouble() && !atk.Mounted) //Weapon is stolen
                     {
-                        atk.SendMessage("TwoHanded.SuccessSteal" + chances / 1.5);
                         atk.AddToBackpack(weapon);
                         DoAnimation(atk, def, Sounds.SuccessSteal);
                     }
                     else                                         //Weapon drops on ground
                     {
-                        atk.SendMessage("TwoHanded.SuccessDrop");
                         weapon.MoveToWorld(weapon.GetWorldLocation(), weapon.Map);
                         DoAnimation(atk, def, Sounds.SuccessDrop);
                     }
                 }
                 else
                 {
-                    atk.SendMessage("TwoHanded.Fail");
                     DoAnimation(atk, def, Sounds.Miss);
                 }
 
@@ -117,7 +112,6 @@ namespace Server.Items
             }
             else if (weapon.Layer == Layer.OneHanded) //Target has a one-handed weapon
             {
-                atk.SendMessage("OneHanded" + chances);
                 if (def.FindItemOnLayer(Layer.TwoHanded) as BaseShield != null)
                     chances = chances - def.Skills[SkillName.Parer].Value * 0.001;
 
@@ -125,20 +119,17 @@ namespace Server.Items
                 {
                     if (chances / 1.5 >= Utility.RandomDouble() && !atk.Mounted) //Weapon is stolen 
                     {
-                        atk.SendMessage("OneHanded.SuccessSteal");
                         atk.AddToBackpack(weapon);
                         DoAnimation(atk, def, Sounds.SuccessSteal);
                     }
                     else                                         //Weapon drops on ground
                     {
-                        atk.SendMessage("OneHanded.SuccessDrop");
                         weapon.MoveToWorld(weapon.GetWorldLocation(), weapon.Map);
                         DoAnimation(atk, def, Sounds.SuccessDrop);
                     }
                 }
                 else
                 {
-                    atk.SendMessage("OneHanded.Miss");
                     DoAnimation(atk, def, Sounds.Miss);
                 }
                 new WaitTimer(def, TimeSpan.FromSeconds(WaitTime)).Start();
@@ -151,6 +142,8 @@ namespace Server.Items
             def.RevealingAction();
             atk.DisruptiveAction();
             def.DisruptiveAction();
+            CombatStrategy.GetStrategy(atk).ResetAttackAfterCast(atk);
+            CombatStrategy.GetStrategy(def).ResetAttackAfterCast(def);
         }
 
         public double GetChances(Mobile atk, Mobile def)
@@ -173,7 +166,6 @@ namespace Server.Items
             {
                 case Sounds.Miss:
                     {
-                        from.SendMessage("Miss");
                         from.Animate(9, 7, 1, true, false, 0);
                         from.PlaySound(((int)Sounds.Miss - 1));
                         target.SendMessage("Un coup de fouet vous frôle de près!");
@@ -182,7 +174,6 @@ namespace Server.Items
                     }
                 case Sounds.SuccessDrop: 
                     {
-                        from.SendMessage("Drop");
                         from.Animate(9, 7, 1, true, false, 0);
                         from.PlaySound(((int)Sounds.Miss - 1));
                         target.SendMessage("Vous recevez un coup de fouet et échappez votre arme!");
@@ -192,17 +183,15 @@ namespace Server.Items
                     }
                 case Sounds.SuccessSteal:
                     {
-                        from.SendMessage("Steal");
                         from.Animate(9, 7, 1, true, false, 0);
                         from.PlaySound(((int)Sounds.Miss - 1));
-                        target.SendMessage("Votre arme vous glisse des mains!");
+                        target.SendMessage("Vous recevez un coup de fouet et votre arme vous glisse des mains!");
                         target.Animate(20, 5, 1, true, false, 0);
                         target.PlaySound(((int)Sounds.SuccessSteal - 3));
                         break;
                     }
                 case Sounds.Whip:
                     {
-                        from.SendMessage("Whip");
                         from.Animate(9, 7, 1, true, false, 0);
                         from.PlaySound(((int)Sounds.Miss - 1));
                         target.SendMessage("Vous recevez un coup de fouet!");
@@ -238,7 +227,6 @@ namespace Server.Items
 
             protected override void OnTargetFinish(Mobile from)
             {
-                CombatStrategy.GetStrategy(from).ResetAttackAfterCast(from);
             }
         }
 
