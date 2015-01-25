@@ -1506,6 +1506,12 @@ namespace Server.Mobiles
 			if ( speechType != null )
 				speechType.OnConstruct( this );
 
+            if (!m_HasGeneratedLoot)
+            {
+                m_HasGeneratedLoot = true;
+                GenerateLoot(true);
+            }
+
             Quete = new MonstreQueteInfo();
 		}
 
