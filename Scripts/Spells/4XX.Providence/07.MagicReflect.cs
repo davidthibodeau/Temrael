@@ -19,7 +19,7 @@ namespace Server.Spells
                 s_Cercle,
                 203,
                 9031,
-                GetBaseManaCost(s_Cercle),
+                20,
                 TimeSpan.FromSeconds(3),
                 SkillName.Providence,
 				Reagent.Garlic,

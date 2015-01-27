@@ -392,17 +392,29 @@ namespace Server.Spells
 		public static bool AddStatBonus( Mobile caster, Mobile target, StatType type, int bonus, TimeSpan duration )
 		{
 			int offset = bonus;
-			string name = String.Format( "Bénédiction : {0}", type );
+            string name = "Bénédiction";
 
-			StatMod mod = target.GetStatMod( name );
+            StatMod mod = target.GetStatMod(name);
 
-			if ( mod == null || mod.Offset < offset )
+			if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
 			{
                 target.RemoveStatMod(name);
-				target.AddStatMod( new StatMod( type, name, offset, duration ) );
+                target.AddStatMod(new StatMod(type, name, offset, duration));
+                target.SendMessage("Vous sentez une nouvelle force vous envahir, supplantant la précédente.");
 				return true;
-			}
+			} 
+            else if (mod == null)
+            {
+                mod = target.GetStatMod("Malédiction");
+                if (mod != null && mod.Type == type)
+                {
+                    target.RemoveStatMod(name);
+                    target.SendMessage("Vous sentez une force vous envahir, écrasant les forces obscures vous tourmentant.");
+                    return true;
+                }
+            }
 
+            target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
 			return false;
 		}
 
@@ -419,21 +431,29 @@ namespace Server.Spells
 		public static bool AddStatCurse( Mobile caster, Mobile target, StatType type, int curse, TimeSpan duration )
 		{
 			int offset = -curse;
-			string name = String.Format( "Malédiction : {0}", type );
+            string name = "Malédiction";
 
-			StatMod mod = target.GetStatMod( name );
+            StatMod mod = target.GetStatMod(name);
 
-			if ( mod != null && mod.Offset > 0 )
+			if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
 			{
-				target.AddStatMod( new StatMod( type, name, mod.Offset + offset, duration ) );
+                target.RemoveStatMod(name);
+                target.AddStatMod(new StatMod(type, name, offset, duration));
+                target.SendMessage("Vous sentez une nouvelle force vous tourmenter, supplantant la précédente.");
 				return true;
-			}
-			else if ( mod == null || mod.Offset > offset )
-			{
-				target.AddStatMod( new StatMod( type, name, offset, duration ) );
-				return true;
-			}
+			} 
+            else if (mod == null)
+            {
+                mod = target.GetStatMod("Bénédiction");
+                if (mod != null && mod.Type == type)
+                {
+                    target.RemoveStatMod(name);
+                    target.SendMessage("Vous sentez une force vous tourmenter, écrasant les forces bénéfiques en vous.");
+                    return true;
+                }
+            }
 
+            target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
 			return false;
 		}
 

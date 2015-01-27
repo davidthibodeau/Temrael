@@ -22,8 +22,8 @@ namespace Server.Spells
 				Reagent.MandrakeRoot
             );
 
-        private static short durationMax = 180;
-        private static short bonusMax = 15;
+        private static short durationMax = 600;
+        private static short bonusMax = 20;
 
 		public BlessSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
@@ -48,9 +48,7 @@ namespace Server.Spells
                 int bonus = (int)(bonusMax * GetSpellScaling(Caster, Info.skillForCasting));
                 TimeSpan duration = TimeSpan.FromSeconds(durationMax * GetSpellScaling(Caster, Info.skillForCasting));
 
-                SpellHelper.AddStatBonus(Caster, m, StatType.Str, bonus, duration); SpellHelper.DisableSkillCheck = true;
-                SpellHelper.AddStatBonus(Caster, m, StatType.Dex, bonus, duration);
-                SpellHelper.AddStatBonus(Caster, m, StatType.Int, bonus, duration); SpellHelper.DisableSkillCheck = false;
+                SpellHelper.AddStatBonus(Caster, m, StatType.All, bonus, duration); SpellHelper.DisableSkillCheck = true;
 
 				m.FixedParticles( 0x373A, 10, 15, 5018, EffectLayer.Waist );
 				m.PlaySound( 0x1EA );

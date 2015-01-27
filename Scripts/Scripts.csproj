@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Accounting\AccountMerging.cs" />
     <Compile Include="Commandes\ConversionXP.cs" />
+    <Compile Include="Commandes\StatMods.cs" />
     <Compile Include="Commandes\Temrael\Hohoho.cs" />
     <Compile Include="Commandes\Temrael\AddRandom.cs" />
     <Compile Include="Commandes\Temrael\GenerateKey.cs" />

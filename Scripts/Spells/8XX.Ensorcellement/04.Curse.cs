@@ -48,9 +48,7 @@ namespace Server.Spells
                 int malus = (int)(malusMax * GetSpellScaling(Caster, Info.skillForCasting));
                 TimeSpan duration = TimeSpan.FromSeconds(durationMax * GetSpellScaling(Caster, Info.skillForCasting));
 
-                SpellHelper.AddStatCurse(Caster, m, StatType.Str, malus, duration); SpellHelper.DisableSkillCheck = true;
-                SpellHelper.AddStatCurse(Caster, m, StatType.Dex, malus, duration);
-                SpellHelper.AddStatCurse(Caster, m, StatType.Int, malus, duration); SpellHelper.DisableSkillCheck = false;
+                SpellHelper.AddStatCurse(Caster, m, StatType.All, malus, duration); SpellHelper.DisableSkillCheck = true;
 
 				if ( m.Spell != null )
 					m.Spell.OnCasterHurt();

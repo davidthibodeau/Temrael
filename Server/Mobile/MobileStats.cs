@@ -332,6 +332,15 @@ namespace Server
 		/// </summary>
 		public List<StatMod> StatMods { get { return m_StatMods; } }
 
+        public bool RemoveAllStatMods()
+        {
+            m_StatMods = new List<StatMod>();
+            CheckStatTimers();
+            Delta(MobileDelta.Stat);
+
+            return true;
+        }
+
 		public bool RemoveStatMod( string name )
 		{
 			for( int i = 0; i < m_StatMods.Count; ++i )
