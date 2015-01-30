@@ -145,5 +145,10 @@ namespace Server.Engines.Evolution
                 }
             }
         }
+
+        public override string ToString()
+        {
+            return "...";
+        }
     }
 }
