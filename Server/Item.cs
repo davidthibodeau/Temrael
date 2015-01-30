@@ -603,12 +603,12 @@ namespace Server
         #endregion
 
         #region IActivable
-        public void OnActivate(int mode, Mobile from)
+        public void OnActivate(int mode, Mobile from, int overflow)
         {
-            IActivableOnActivate(mode, from);
+            IActivableOnActivate(mode, from, overflow);
         }
 
-        public virtual void IActivableOnActivate(int mode, Mobile from)
+        public virtual void IActivableOnActivate(int mode, Mobile from, int overflow)
         {
         }
         #endregion
