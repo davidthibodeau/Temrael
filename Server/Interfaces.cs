@@ -148,6 +148,6 @@ namespace Server
 
     public interface IActivable
     {
-        void OnActivate(int mode, Mobile from);
+        void OnActivate(int mode, Mobile from, int overflow);
     }
 }
