@@ -597,7 +597,7 @@ namespace Server
             {
                 Trap_Disarm();
 
-                ((IActivable)m_TrapActivateItem).OnActivate(m_TrapActivateMode, from);
+                ((IActivable)m_TrapActivateItem).OnActivate(m_TrapActivateMode, from, 0);
             }
         }
         #endregion

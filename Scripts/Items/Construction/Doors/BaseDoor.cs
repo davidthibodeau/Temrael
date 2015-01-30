@@ -9,7 +9,7 @@ namespace Server.Items
 	public abstract class BaseDoor : Item, ILockable, ITelekinesisable
     {
         #region IActivable
-        public override void IActivableOnActivate(int mode, Mobile from)
+        public override void IActivableOnActivate(int mode, Mobile from, int overflow)
         {
             // Mode 1 - Open
             // Mode 2 - Close
