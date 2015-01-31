@@ -59,7 +59,7 @@ namespace Server.Spells
 
                     SpellHelper.Heal(m, (int)toHeal + Utility.Random(1, 3), true);
 
-                    m.FixedParticles(0x376A, 9, 32, 5005, EffectLayer.Waist);
+                    Effects.SendTargetParticles(m,0x376A, 9, 32, 5005, EffectLayer.Waist);
                     m.PlaySound(483);
                 }
             }

@@ -194,7 +194,7 @@ namespace Server.Items
 
 			from.Direction = from.GetDirectionTo( GetWorldLocation() );
 			bow.SwingAnimation( from );
-			from.MovingEffect( this, bow.EffectID, 18, 1, false, false );
+			Effects.SendMovingEffect(from, this, bow.EffectID, 18, 1, false, false );
 
 			ScoreEntry se = GetEntryFor( from );
 

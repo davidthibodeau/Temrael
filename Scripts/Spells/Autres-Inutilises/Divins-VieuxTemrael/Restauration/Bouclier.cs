@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(8902, 9, 18, 5005, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,8902, 9, 18, 5005, EffectLayer.Waist);
                 m.PlaySound(490);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_BouclierTable.Remove(m);
 
-                m.FixedParticles(8902, 9, 18, 5005, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,8902, 9, 18, 5005, EffectLayer.Waist);
                 m.PlaySound(490);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     BouclierSpell.m_BouclierTable.Remove(m_target);
                     BouclierSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(8902, 9, 18, 5005, EffectLayer.Waist);
+                    Effects.SendTargetParticles(m_target,8902, 9, 18, 5005, EffectLayer.Waist);
                     m_target.PlaySound(490);
 
                     Stop();

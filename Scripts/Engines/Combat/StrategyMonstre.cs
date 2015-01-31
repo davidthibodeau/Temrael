@@ -156,7 +156,7 @@ namespace Server.Engines.Combat
 
         public override bool OnFired(Mobile atk, Mobile def)
         {
-            atk.MovingEffect( def, EffectID, 18, 1, false, false );
+            Effects.SendMovingEffect(atk, def, EffectID, 18, 1, false, false);
 
 			return true;
         }

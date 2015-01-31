@@ -16,7 +16,7 @@ namespace Server.Spells
 
         public static void MiracleEffet(Mobile Caster, Mobile mob, int ID, int speed, int dura, int effect, int hue, int render, EffectLayer layer)
         {
-            mob.FixedParticles(ID, speed, dura, effect, layer);
+            Effects.SendTargetParticles(mob,ID, speed, dura, effect, layer);
 
         }
     }

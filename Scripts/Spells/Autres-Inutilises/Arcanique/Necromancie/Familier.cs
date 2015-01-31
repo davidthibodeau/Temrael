@@ -174,7 +174,7 @@ namespace Server.Spells
 
 						if ( BaseCreature.Summon( bc, m_From, m_From.Location, -1, TimeSpan.FromSeconds(10 + m_From.Skills[SkillName.Animisme].Base * 2.4) ) )
 						{
-							m_From.FixedParticles( 0x3728, 1, 10, 9910, EffectLayer.Head );
+							Effects.SendTargetParticles(m_From, 0x3728, 1, 10, 9910, EffectLayer.Head );
 							bc.PlaySound( bc.GetIdleSound() );
 							FamilierSpell.Table[m_From] = bc;
 						}

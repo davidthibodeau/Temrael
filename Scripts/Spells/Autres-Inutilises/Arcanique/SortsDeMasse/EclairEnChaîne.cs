@@ -84,7 +84,7 @@ namespace Server.Spells
 						Caster.DoHarmful( m );
                         //SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
 
-						m.BoltEffect( 0 );
+						Effects.SendBoltEffect(m, true, 0);
 					}
 				}
 			}

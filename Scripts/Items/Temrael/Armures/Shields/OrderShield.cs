@@ -65,7 +65,7 @@ namespace Server.Items
 
 			if ( g == null || g.Type != GuildType.Order )
 			{
-				m.FixedEffect( 0x3728, 10, 13 );
+				Effects.SendTargetEffect(m, 0x3728, 10, 13 );
 				Delete();
 
 				return false;

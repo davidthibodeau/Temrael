@@ -156,7 +156,7 @@ namespace Server.Items
 
 						from.Direction = from.GetDirectionTo( to );
 						from.Animate( 11, 5, 1, true, false, 0 );
-						from.MovingEffect( to, 0x26AC, 10, 0, false, false );
+						Effects.SendMovingEffect(from, to, 0x26AC, 10, 0, false, false );
 
 						Timer.DelayCall( TimeSpan.FromSeconds( 0.5 ), new TimerStateCallback( FinishThrow ), new object[]{ from, to } );
 					}

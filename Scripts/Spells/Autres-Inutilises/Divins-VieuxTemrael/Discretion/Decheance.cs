@@ -62,7 +62,7 @@ namespace Server.Spells
                     m.HueMod = -1;
                 }
 
-                m.FixedParticles(14170, 10, 15, 5013, 1109, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 15, 5013, 1109, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(501);
             }
 

@@ -64,7 +64,7 @@ namespace Server.Spells
                 if (totem != null)
                 {
                     totem.MoveToWorld(new Point3D(p), Caster.Map);
-                    totem.FixedParticles(effectid, effectspeed, effectduration, 5005, hue, 0, layer);
+                    Effects.SendTargetParticles(totem,effectid, effectspeed, effectduration, 5005, hue, 0, layer);
                     totem.PlaySound(soundid); 
                 }
 
@@ -110,7 +110,7 @@ namespace Server.Spells
                                 SpellHelper.Turn(m_BaseTotem.Caster, pm);
 
                                 pm.PlaySound(0x214);
-                                pm.FixedEffect(0x376A, 10, 16);
+                                Effects.SendTargetEffect(pm,0x376A, 10, 16);
 
                                 if (pm.MortEngine.TimerEvanouie != null)
                                 {

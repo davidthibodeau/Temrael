@@ -42,7 +42,7 @@ namespace Server.Spells
 
             m.MagicDamageAbsorb = (int)value;
 
-            m.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x375A, 10, 15, 5037, EffectLayer.Waist);
             m.PlaySound(0x1E9);
         }
 

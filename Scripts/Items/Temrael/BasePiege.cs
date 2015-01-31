@@ -263,7 +263,7 @@ namespace Server.Items
                 if (mob.Skills.Pieges.Value / 100 > Utility.RandomDouble())
                 {
                     mob.RevealingAction();
-                    mob.FixedParticles(mEffectID, 7, 5, 0, EffectLayer.Head);
+                    Effects.SendTargetParticles(mob, mEffectID, 7, 5, 0, EffectLayer.Head);
                     mob.Damage(degats);
                     mob.Poison = mPoison;
                 }

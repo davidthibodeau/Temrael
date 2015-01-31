@@ -71,7 +71,7 @@ namespace Server.Custom.CustomSpell
                     // Ici mettre la fonction qui s'occupe de faire du dégâts magique (Probablement une fonction CombatStrategy.)
                     // m_Target.SpellDamage((int)damage);
 
-                    Caster.MovingParticles(m_target, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160);
+                    Effects.SendMovingParticles(Caster,m_target, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160);
                     Caster.PlaySound(0x44B);
                 }
             }

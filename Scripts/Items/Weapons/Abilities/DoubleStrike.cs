@@ -26,7 +26,7 @@ namespace Server.Items
 			defender.SendLocalizedMessage( 1060085 ); // Your attacker strikes with lightning speed!
 
 			defender.PlaySound( 0x3BB );
-			defender.FixedEffect( 0x37B9, 244, 25 );
+            Effects.SendTargetEffect(defender, 0x37B9, 244, 25);
 
 			// Swing again:
 

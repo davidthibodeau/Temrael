@@ -52,7 +52,7 @@ namespace Server.Spells
                 new InternalItem(0x1AA0, loc, Caster, m.Map, duration);
 
 				m.PlaySound( 0x204 );
-				m.FixedEffect( 0x376A, 6, 1 );
+				Effects.SendTargetEffect(m, 0x376A, 6, 1 );
 			}
 
 			FinishSequence();

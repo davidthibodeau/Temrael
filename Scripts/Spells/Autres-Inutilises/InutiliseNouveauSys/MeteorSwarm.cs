@@ -113,7 +113,7 @@ namespace Server.Spells
 						Caster.DoHarmful( m );
                         SpellHelper.Damage(this, m, damage, 0, 0, 0, 0, 100);
 
-						Caster.MovingParticles( m, 0x36D4, 7, 0, false, true, 9501, 1, 0, 0x100 );
+						Effects.SendMovingParticles(Caster, m, 0x36D4, 7, 0, false, true, 9501, 1, 0, 0x100 );
 					}
 				}
 			}

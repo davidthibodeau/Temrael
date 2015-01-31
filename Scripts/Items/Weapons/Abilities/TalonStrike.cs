@@ -41,7 +41,7 @@ namespace Server.Items
 			attacker.SendLocalizedMessage( 1063358 ); // You deliver a talon strike!
 			defender.SendLocalizedMessage( 1063359 ); // Your attacker delivers a talon strike!
 
-			defender.FixedParticles( 0x373A, 1, 17, 0x26BC, 0x662, 0, EffectLayer.Waist );
+			Effects.SendTargetParticles(defender, 0x373A, 1, 17, 0x26BC, 0x662, 0, EffectLayer.Waist );
 
 			Timer t = new InternalTimer( defender, (int)(10.0 * (attacker.Skills[SkillName.ArmePerforante].Value - 50.0) / 70.0 + 5), attacker );	//5 - 15 damage
 

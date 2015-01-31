@@ -59,7 +59,7 @@ namespace Server.Spells
 
                         //SpellHelper.Damage(TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100);
 
-                        Caster.MovingParticles(m, 0x36D4, 7, 0, false, false, 2056, 0, 3006, 4006, 0, 0);
+                        Effects.SendMovingParticles(Caster,m, 0x36D4, 7, 0, false, false, 2056, 0, 3006, 4006, 0, 0);
                         Caster.PlaySound(903);
                     }
                     else

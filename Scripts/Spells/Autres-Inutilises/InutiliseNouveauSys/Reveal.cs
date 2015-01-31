@@ -73,7 +73,7 @@ namespace Server.Spells
 
 					m.RevealingAction();
 
-					m.FixedParticles( 0x375A, 9, 20, 5049, EffectLayer.Head );
+					Effects.SendTargetParticles(m, 0x375A, 9, 20, 5049, EffectLayer.Head );
 					m.PlaySound( 0x1FD );
 				}
 			}

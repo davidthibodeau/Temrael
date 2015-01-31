@@ -102,7 +102,7 @@ namespace Server.Spells
             {
                 toheal = (int)(toheal * (double)RegenerescenceSpell.m_RegenerescenceTable[from]);
 
-                from.FixedParticles(14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(from,14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 from.PlaySound(508);
             }
 
@@ -121,7 +121,7 @@ namespace Server.Spells
             }
             else
             {
-                from.FixedParticles(14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(from,14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
             }
             from.PlaySound(508);
 
@@ -509,7 +509,7 @@ namespace Server.Spells
                 if (RudesseSpell.m_RudesseTable.Contains(caster))
                 {
                     value *= (double)RudesseSpell.m_RudesseTable[caster];
-                    caster.FixedParticles(14138, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(caster,14138, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     caster.PlaySound(521);
                 }
             }
@@ -866,7 +866,7 @@ namespace Server.Spells
 
                 if (Utility.Random(0, 100) < chance)
                 {
-                    target.FixedEffect(0x37B9, 10, 5);
+                    Effects.SendTargetEffect(target,0x37B9, 10, 5);
 
                     Mobile temp = caster;
                     caster = target;
@@ -1098,7 +1098,7 @@ namespace Server.Spells
                     if (ourTransform)
                     {
                         caster.PlaySound(0xFA);
-                        caster.FixedParticles(0x3728, 1, 13, 5042, EffectLayer.Waist);
+                        Effects.SendTargetParticles(caster,0x3728, 1, 13, 5042, EffectLayer.Waist);
                     }
                 }
 

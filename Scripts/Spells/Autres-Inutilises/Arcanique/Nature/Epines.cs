@@ -55,7 +55,7 @@ namespace Server.Spells
                 if (m.Spell != null)
                     m.Spell.OnCasterHurt();
 
-                Caster.MovingEffect(m, 0x1BFE, 7, 1, false, false, 1043, 0);
+                Effects.SendMovingEffect(Caster,m, 0x1BFE, 7, 1, false, false, 1043, 0);
                 Caster.PlaySound(903);
 
                 //SpellHelper.Damage(TimeSpan.Zero, m, Caster, damage, 0, 0, 0, 0, 100);

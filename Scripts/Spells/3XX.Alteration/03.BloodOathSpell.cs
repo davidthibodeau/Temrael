@@ -67,11 +67,11 @@ namespace Server.Spells
 
 				Caster.PlaySound( 0x175 );
 
-				Caster.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
-				Caster.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
+				Effects.SendTargetParticles(Caster, 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
+				Effects.SendTargetParticles(Caster, 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
-				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
-				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
+				Effects.SendTargetParticles(m, 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
+				Effects.SendTargetParticles(m, 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
                 double duration = 60;
 

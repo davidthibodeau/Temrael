@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(527);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_ConscienceTable.Remove(m);
 
-                m.FixedParticles(14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(527);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     ConscienceSpell.m_ConscienceTable.Remove(m_target);
                     ConscienceSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(527);
 
                     Stop();

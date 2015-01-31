@@ -62,7 +62,7 @@ namespace Server.Spells
                     
                     t.Start();
 
-                    targ.FixedParticles(14276, 9, 32, 5007, EffectLayer.Waist);
+                    Effects.SendTargetParticles(targ,14276, 9, 32, 5007, EffectLayer.Waist);
                     targ.PlaySound(534);
                 }
 

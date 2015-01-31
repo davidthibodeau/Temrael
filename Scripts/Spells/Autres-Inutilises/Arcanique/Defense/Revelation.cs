@@ -68,7 +68,7 @@ namespace Server.Spells
 					m.RevealingAction();
                     m.SendLocalizedMessage(500814); // You have been revealed!
 
-					m.FixedParticles( 0x375A, 9, 20, 5049, EffectLayer.Head );
+					Effects.SendTargetParticles(m, 0x375A, 9, 20, 5049, EffectLayer.Head );
 					m.PlaySound( 0x1FD );
 				}
 			}

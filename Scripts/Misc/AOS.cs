@@ -175,11 +175,11 @@ namespace Server
                 }
 
                 ReligiousSpell.MiracleEffet(info.Caster, m, 8902, 10, 15, 5013, 0x7f9, 0, EffectLayer.CenterFeet);
-                //m.FixedParticles(8902, 10, 15, 5013, 1437, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                //Effects.SendTargetParticles(m,8902, 10, 15, 5013, 1437, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(555);
 
                 ReligiousSpell.MiracleEffet(info.Caster, info.Caster, 8902, 10, 15, 5013, 0x860, 0, EffectLayer.CenterFeet);
-                //info.Caster.FixedParticles(8902, 10, 15, 5013, 1437, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                //info.Effects.SendTargetParticles(Caster,8902, 10, 15, 5013, 1437, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 info.Caster.PlaySound(555);
             }
 
@@ -197,8 +197,8 @@ namespace Server
                     ReligiousSpell.MiracleEffet(m, m, 14138, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
                     ReligiousSpell.MiracleEffet(m, target, 14138, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet);
 
-                    //m.FixedParticles(14170, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-                    //target.FixedParticles(14170, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    //Effects.SendTargetParticles(m,14170, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    //Effects.SendTargetParticles(target,14170, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m.PlaySound(1923);
                 }
             }

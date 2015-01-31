@@ -39,7 +39,7 @@ namespace Server.Spells
 
                 SpellHelper.AddStatBonus(Caster, m, StatType.Int, TimeSpan.FromSeconds(0));
 
-				m.FixedParticles( 0x375A, 10, 15, 5011, EffectLayer.Head );
+				Effects.SendTargetParticles(m, 0x375A, 10, 15, 5011, EffectLayer.Head );
 				m.PlaySound( 0x1EB );
 			}
 

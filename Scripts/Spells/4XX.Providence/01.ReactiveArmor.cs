@@ -51,7 +51,7 @@ namespace Server.Spells
 
                 if (block > 0)
                 {
-                    def.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+                    Effects.SendTargetParticles(def,0x376A, 9, 32, 5008, EffectLayer.Waist);
                     def.PlaySound(0x1F2);
                 }
 
@@ -119,7 +119,7 @@ namespace Server.Spells
 
             new ExpireTimer(m, TimeSpan.FromSeconds(duration)).Start();
 
-            m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x376A, 9, 32, 5008, EffectLayer.Waist);
             m.PlaySound(0x1F2);
         }
 

@@ -53,7 +53,7 @@ namespace Server.Spells
                     new ArmurePierreSpell.InternalTimer(targ, duration).Start();
                     //targ.ArmurePierre = true;
 
-                    targ.FixedParticles(6899, 9, 32, 5007, 2302, 0, EffectLayer.LeftFoot);
+                    Effects.SendTargetParticles(targ,6899, 9, 32, 5007, 2302, 0, EffectLayer.LeftFoot);
 					targ.PlaySound( 508 );
 				}
 

@@ -46,7 +46,7 @@ namespace Server.Items
 			}
 
 			defender.PlaySound( 0x133 );
-			defender.FixedParticles( 0x377A, 244, 25, 9950, 31, 0, EffectLayer.Waist );
+			Effects.SendTargetParticles(defender, 0x377A, 244, 25, 9950, 31, 0, EffectLayer.Waist );
 
 			BeginBleed( defender, attacker );
 		}

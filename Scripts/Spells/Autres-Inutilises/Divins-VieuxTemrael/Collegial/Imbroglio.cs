@@ -46,7 +46,7 @@ namespace Server.Spells
                 if (p is Item)
                     p = ((Item)p).GetWorldLocation();
 
-                Caster.FixedParticles(14276, 10, 20, 5013, 2041, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14276, 10, 20, 5013, 2041, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(21);
 
                 TimeSpan duration = TimeSpan.FromSeconds(0);

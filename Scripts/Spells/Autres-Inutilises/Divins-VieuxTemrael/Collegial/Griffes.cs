@@ -48,7 +48,7 @@ namespace Server.Spells
 
                 TimeSpan duration = TimeSpan.FromSeconds(0);
 
-                m.FixedParticles(2339, 10, 30, 5013, 1942, 0, EffectLayer.Waist); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,2339, 10, 30, 5013, 1942, 0, EffectLayer.Waist); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(481);
 
                 //BaseWeapon griffe = BaseWeapon.SummonWeapon(93, 3, 1, 2041, SkillName.ArmePoing, CraftResource.Iron, (WeaponQuality)2, typeof(Griffes), DateTime.Now + duration);

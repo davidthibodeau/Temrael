@@ -63,8 +63,8 @@ namespace Server.Spells
                     m_LinkTable[m] = Caster;
                     m_LinkTable[Caster] = m;
 
-                    Caster.FixedParticles(14154, 10, 15, 5013, 1942, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-                    m.FixedParticles(14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(Caster,14154, 10, 15, 5013, 1942, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m,14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m.PlaySound(486);
                     m.InvalidateProperties();
                     Caster.InvalidateProperties();
@@ -108,7 +108,7 @@ namespace Server.Spells
 
                 m.Hits -= 1;
 
-                m.FixedParticles(14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(486);
             }
         }
@@ -147,7 +147,7 @@ namespace Server.Spells
 
                     m_target.Hits -= 1;
 
-                    m_target.FixedParticles(14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(486);
 
                     Stop();

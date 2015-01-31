@@ -43,7 +43,7 @@ namespace Server.Spells
 
                 //double damage = GetNewAosDamage(35, 1, 5, true);
 
-                m.BoltEffect(0);
+                Effects.SendBoltEffect(m, true, 0);
 
                 Effects.PlaySound(m.Location, Caster.Map, 0x20C);
 

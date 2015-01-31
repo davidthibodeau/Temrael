@@ -55,7 +55,7 @@ namespace Server.Spells
 				m.Mana -= toDrain;
 				Caster.Mana += toDrain;
 
-				m.FixedParticles( 0x374A, 10, 15, 5054, EffectLayer.Head );
+				Effects.SendTargetParticles(m, 0x374A, 10, 15, 5054, EffectLayer.Head );
 				m.PlaySound( 0x1F9 );
 			}
 

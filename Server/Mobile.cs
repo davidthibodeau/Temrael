@@ -454,20 +454,6 @@ namespace Server
             }
         }
 
-		public virtual void ComputeLightLevels( out int global, out int personal )
-		{
-			ComputeBaseLightLevels( out global, out personal );
-
-			if( m_Region != null )
-				m_Region.AlterLightLevel( this, ref global, ref personal );
-		}
-
-		public virtual void ComputeBaseLightLevels( out int global, out int personal )
-		{
-			global = 0;
-			personal = m_LightLevel;
-		}
-
 		public virtual void CheckLightLevels( bool forceResend )
 		{
 		}
@@ -5146,13 +5132,13 @@ namespace Server
 
 		private static string[] m_AccessLevelNames = new string[]
 			{
-				"a player",
+				"un joueur",
 				"a counselor",
-				"a game master",
-				"a seer",
-				"an administrator",
-				"a developer",
-				"an owner"
+				"un batiseur",
+				"un chroniqueur",
+				"un coordinateur",
+				"un developpeur",
+				"un administrateur"
 			};
 
 		public static string GetAccessLevelName( AccessLevel level )
@@ -6188,11 +6174,6 @@ namespace Server
 
 		#endregion
 
-		public virtual int Luck
-		{
-			get { return 0; }
-		}
-		
 		public virtual int HuedItemID
 		{
 			get
@@ -7894,65 +7875,6 @@ namespace Server
 			get { return m_Location.m_Z; }
 			set { Location = new Point3D( m_Location.m_X, m_Location.m_Y, value ); }
 		}
-
-		#region Effects & Particles
-
-		public void MovingEffect( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode )
-		{
-			Effects.SendMovingEffect( this, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode );
-		}
-
-		public void MovingEffect( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes )
-		{
-			Effects.SendMovingEffect( this, to, itemID, speed, duration, fixedDirection, explodes, 0, 0 );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode, int effect, int explodeEffect, int explodeSound, EffectLayer layer, int unknown )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode, effect, explodeEffect, explodeSound, layer, unknown );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode, int effect, int explodeEffect, int explodeSound, int unknown )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode, effect, explodeEffect, explodeSound, (EffectLayer)255, unknown );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int effect, int explodeEffect, int explodeSound, int unknown )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, effect, explodeEffect, explodeSound, unknown );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int effect, int explodeEffect, int explodeSound )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, 0, 0, effect, explodeEffect, explodeSound, 0 );
-		}
-
-		public void FixedEffect( int itemID, int speed, int duration, int hue, int renderMode )
-		{
-			Effects.SendTargetEffect( this, itemID, speed, duration, hue, renderMode );
-		}
-
-		public void FixedEffect( int itemID, int speed, int duration )
-		{
-			Effects.SendTargetEffect( this, itemID, speed, duration, 0, 0 );
-		}
-
-		public void FixedParticles( int itemID, int speed, int duration, int effect, int hue, int renderMode, EffectLayer layer )
-		{
-			Effects.SendTargetParticles( this, itemID, speed, duration, hue, renderMode, effect, layer, 0 );
-		}
-
-		public void FixedParticles( int itemID, int speed, int duration, int effect, EffectLayer layer )
-		{
-			Effects.SendTargetParticles( this, itemID, speed, duration, 0, 0, effect, layer, 0 );
-		}
-
-		public void BoltEffect( int hue )
-		{
-			Effects.SendBoltEffect( this, true, hue );
-		}
-
-		#endregion
 
 		public void SendIncomingPacket()
 		{

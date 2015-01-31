@@ -108,7 +108,7 @@ namespace Server.Mobiles
 				ProcessDelta();
 
 				Effects.SendLocationParticles( EffectItem.Create( from, fromMap, EffectItem.DefaultDuration ), 0x3728, 1, 13, 37, 7, 5023, 0 );
-				FixedParticles( 0x3728, 1, 13, 5023, 37, 7, EffectLayer.Waist );
+                Effects.SendTargetParticles(this, 0x3728, 1, 13, 5023, 37, 7, EffectLayer.Waist);
 
 				PlaySound( 0x37D );
 			}

@@ -47,7 +47,7 @@ namespace Server.Engines.Combat
 				}
 			}
 
-			attacker.MovingEffect( defender, EffectID, 18, 1, false, false );
+            Effects.SendMovingEffect(attacker, defender, EffectID, 18, 1, false, false);
 
 			return true;
 		}

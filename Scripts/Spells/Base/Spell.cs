@@ -223,7 +223,7 @@ namespace Server.Spells
 
 			if ( Caster.Player )
 			{
-				Caster.FixedEffect( 0x3735, 6, 30 );
+				Effects.SendTargetEffect(Caster, 0x3735, 6, 30 );
 				Caster.PlaySound( 0x5C );
 			}
 
@@ -233,7 +233,7 @@ namespace Server.Spells
 
         public virtual void DoHurtFizzle()
         {
-            Caster.FixedEffect(0x3735, 6, 30);
+            Effects.SendTargetEffect(Caster,0x3735, 6, 30);
             Caster.PlaySound(0x5C);
         }
         #endregion
@@ -357,10 +357,10 @@ namespace Server.Spells
                     }
 
                     if (m_Info.LeftHandEffect > 0)
-                        Caster.FixedParticles(0, 10, 5, Info.LeftHandEffect, EffectLayer.LeftHand);
+                        Effects.SendTargetParticles(Caster,0, 10, 5, Info.LeftHandEffect, EffectLayer.LeftHand);
 
                     if (m_Info.RightHandEffect > 0)
-                        Caster.FixedParticles(0, 10, 5, Info.RightHandEffect, EffectLayer.RightHand);
+                        Effects.SendTargetParticles(Caster,0, 10, 5, Info.RightHandEffect, EffectLayer.RightHand);
                 }
 
                 if (ClearHandsOnCast)
@@ -401,7 +401,7 @@ namespace Server.Spells
                 SpellHelper.Heal(Caster, (int)ExaltationSpell.m_ExaltationTable[Caster], true);
                 ExaltationSpell.StopTimer(Caster);
 
-                Caster.FixedParticles(14265, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14265, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(534);
             }
         }
@@ -572,22 +572,22 @@ namespace Server.Spells
             if (PromptitudeSpell.m_PromptitudeTable.Contains(Caster))
             {
                 bonus -= (double)PromptitudeSpell.m_PromptitudeTable[Caster];
-                Caster.FixedParticles(14186, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-                Caster.FixedParticles(14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14186, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(480);
             }
 
             if (ConscienceSpell.m_ConscienceTable.Contains(Caster))
             {
                 bonus -= (double)ConscienceSpell.m_ConscienceTable[Caster] * SpellHelper.GetTotalCreaturesInRange(Caster, 5);
-                Caster.FixedParticles(14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(527);
             }
 
             if (SoifDuCombatSpell.m_SoifDuCombatTable.Contains(Caster))
             {
                 bonus -= ((double)SoifDuCombatSpell.m_SoifDuCombatTable[Caster] - 1);
-                Caster.FixedParticles(14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
             }
 
             if (value < CastDelayMinimum)

@@ -49,7 +49,7 @@ namespace Server.Spells
 
                 SpellHelper.AddStatBonus(Caster, m, StatType.Str, bonus, duration); SpellHelper.DisableSkillCheck = true;
 
-				m.FixedParticles( 0x375A, 10, 15, 5017, EffectLayer.Waist );
+				Effects.SendTargetParticles(m, 0x375A, 10, 15, 5017, EffectLayer.Waist );
 				m.PlaySound( 0x1EE );
 			}
 

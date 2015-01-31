@@ -49,7 +49,7 @@ namespace Server.Spells
 
 				m.PlaySound( 0x1FB );
 				m.PlaySound( 0x258 );
-				m.FixedParticles( 0x373A, 1, 17, 9903, 15, 4, EffectLayer.Head );
+				Effects.SendTargetParticles(m, 0x373A, 1, 17, 9903, 15, 4, EffectLayer.Head );
 
                 TimeSpan duration = TimeSpan.FromSeconds(0);
 

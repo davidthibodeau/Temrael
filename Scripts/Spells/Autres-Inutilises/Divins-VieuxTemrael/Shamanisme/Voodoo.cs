@@ -43,7 +43,7 @@ namespace Server.Spells
 
                 m.Freeze(duration);
 
-                m.FixedParticles(2339, 10, 15, 5013, 1328, 0, EffectLayer.CenterFeet);
+                Effects.SendTargetParticles(m,2339, 10, 15, 5013, 1328, 0, EffectLayer.CenterFeet);
                 m.PlaySound(527);
             }
 

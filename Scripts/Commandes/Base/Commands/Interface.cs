@@ -546,7 +546,7 @@ namespace Server.Commands.Generic
 					if ( m_From == m_Mobile || m_From.AccessLevel > m_Mobile.AccessLevel )
 					{
 						m_Mobile.PlaySound( 0x214 );
-						m_Mobile.FixedEffect( 0x376A, 10, 16 );
+						Effects.SendTargetEffect(m_Mobile, 0x376A, 10, 16 );
 
 						m_Mobile.Resurrect();
 					}

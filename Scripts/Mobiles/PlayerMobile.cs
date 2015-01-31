@@ -689,12 +689,6 @@ namespace Server.Mobiles
 			m_LastPersonalLight = -1;
 		}
 
-		public override void ComputeBaseLightLevels( out int global, out int personal )
-		{
-			global = LightCycle.ComputeLevelFor( this );
-            personal = this.LightLevel;
-		}
-
 		public override void CheckLightLevels( bool forceResend )
 		{
 			NetState ns = this.NetState;
@@ -704,7 +698,7 @@ namespace Server.Mobiles
 
 			int global, personal;
 
-			ComputeLightLevels( out global, out personal );
+            Region.ComputeLightLevels(this, out global, out personal);
 
 			if ( !forceResend )
 				forceResend = ( global != m_LastGlobalLight || personal != m_LastPersonalLight );
@@ -1935,7 +1929,7 @@ namespace Server.Mobiles
             //            this.DoHarmful(m);
             //            AOS.Damage(m, Caster, (int)damage, 0, 0, 0, 100, 0);
 
-            //            m.FixedParticles(14000, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+            //            Effects.SendTargetParticles(m,14000, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
             //            m.PlaySound(1099);
             //        }
             //    }

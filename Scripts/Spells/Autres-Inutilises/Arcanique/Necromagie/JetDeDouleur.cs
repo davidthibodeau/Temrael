@@ -43,8 +43,8 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                m.FixedParticles(0x37C4, 1, 8, 9916, 39, 3, EffectLayer.Head);
-                m.FixedParticles(0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x37C4, 1, 8, 9916, 39, 3, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head);
                 m.PlaySound(0x210);
 
                 //double damage = GetNewAosDamage(30, 1, 4, true);

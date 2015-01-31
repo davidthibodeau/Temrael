@@ -83,10 +83,10 @@ namespace Server.Spells
                             pm.Transformation.MetamorphoseList.Add((object)entry);
                             pm.SendMessage("Vous ajoutez avec succès la créature à votre liste de métamorphoses.");
 
-                            Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                            Effects.SendTargetParticles(Caster,0x373A, 10, 15, 5036, EffectLayer.Head);
                             Caster.PlaySound(0x3BD);
 
-                            m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                            Effects.SendTargetParticles(m,0x373A, 10, 15, 5036, EffectLayer.Head);
                             m.PlaySound(0x3BD);
                         }
                     }
@@ -121,7 +121,7 @@ namespace Server.Spells
 
                 BaseArmor.ValidateMobile(Caster);
 
-                Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                Effects.SendTargetParticles(Caster,0x373A, 10, 15, 5036, EffectLayer.Head);
                 Caster.PlaySound(0x3BD);
 
                 string name = String.Format("[Transformation] {0} Offset", StatType.Str);
@@ -186,7 +186,7 @@ namespace Server.Spells
                             Caster.HueMod = m_HueMod;
                         }
 
-                        Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                        Effects.SendTargetParticles(Caster,0x373A, 10, 15, 5036, EffectLayer.Head);
                         Caster.PlaySound(0x3BD);
                     }
                 }
@@ -218,7 +218,7 @@ namespace Server.Spells
 
                 BaseArmor.ValidateMobile(m);
 
-                m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x373A, 10, 15, 5036, EffectLayer.Head);
                 m.PlaySound(0x3BD);
 
                 string name = String.Format("[Transformation] {0} Offset", StatType.Str);

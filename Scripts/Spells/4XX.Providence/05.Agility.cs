@@ -48,7 +48,7 @@ namespace Server.Spells
 
                 SpellHelper.AddStatBonus(Caster, m, StatType.Dex, bonus, duration); SpellHelper.DisableSkillCheck = true;
 
-				m.FixedParticles( 0x375A, 10, 15, 5010, EffectLayer.Waist );
+				Effects.SendTargetParticles(m, 0x375A, 10, 15, 5010, EffectLayer.Waist );
 				m.PlaySound( 0x28E );
 			}
 

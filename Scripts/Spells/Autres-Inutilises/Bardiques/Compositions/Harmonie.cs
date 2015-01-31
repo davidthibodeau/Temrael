@@ -88,7 +88,7 @@ namespace Server.Spells
                     m_Timers[targ] = t;
                     t.Start();
 
-                    targ.FixedParticles(14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(targ,14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     targ.PlaySound(517);
                 }
             }
@@ -106,7 +106,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_HarmonieTable.Remove(m);
 
-                m.FixedParticles(14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(517);
             }
         }
@@ -138,14 +138,14 @@ namespace Server.Spells
 
                     m_target.VirtualArmorMod -= m_total;
 
-                    m_target.FixedParticles(14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(517);
 
                     Stop();
                 }
                 else
                 {
-                    m_target.FixedParticles(14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14170, 10, 20, 5013, 1328, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.VirtualArmorMod += (int)m_amount;
                     m_total += (int)m_amount;
                 }

@@ -41,12 +41,12 @@ namespace Server.Spells
 			{
 				SpellHelper.Turn( Caster, m );
 
-				SpellHelper.CheckReflect( (int)this.Circle, Caster, ref m );
+                SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-				if ( m.Spell != null )
-					m.Spell.OnCasterHurt();
+                if (m.Spell != null)
+                    m.Spell.OnCasterHurt();
 
-				m.Paralyzed = false;
+                m.Paralyzed = false;
 
                 /*if (CheckResisted(m))
                 {
@@ -54,35 +54,36 @@ namespace Server.Spells
                 }
                 else
                 {*/
-                    int level;
+                int level;
 
-                    double total = Caster.Skills[SkillName.Animisme].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
+                double total = Caster.Skills[SkillName.Animisme].Value; // +Caster.Skills[SkillName.Empoisonner].Value;
 
-                    //double dist = Caster.GetDistanceToSqrt(m);
+                //double dist = Caster.GetDistanceToSqrt(m);
 
-                    //if (dist >= 3.0)
-                    //    total -= (dist - 3.0) * 10.0;
+                //if (dist >= 3.0)
+                //    total -= (dist - 3.0) * 10.0;
 
-                    if (total >= 90.0)
-                        level = 3;
-                    else if (total > 70.0)
-                        level = 2;
-                    else if (total > 45.0)
-                        level = 1;
-                    else
-                        level = 0;
+                if (total >= 90.0)
+                    level = 3;
+                else if (total > 70.0)
+                    level = 2;
+                else if (total > 45.0)
+                    level = 1;
+                else
+                    level = 0;
 
-                    if (level > 0 && CheckResisted(m))
-                    {
-                        level = 0;
-                        m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
-                    }
+                if (level > 0 && CheckResisted(m))
+                {
+                    level = 0;
+                    m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
+                }
 
-                    m.ApplyPoison(Caster, Poison.GetPoison(level));
+                m.ApplyPoison(Caster, Poison.GetPoison(level));
                 //}
 
-				m.FixedParticles( 0x374A, 10, 15, 5021, EffectLayer.Waist );
-				m.PlaySound( 0x474 );
+                Effects.SendTargetParticles(m, 0x374A, 10, 15, 5021, EffectLayer.Waist);
+                m.PlaySound(0x474);
+
 			}
 
 			FinishSequence();

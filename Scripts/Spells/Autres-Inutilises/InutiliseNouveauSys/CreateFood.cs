@@ -54,7 +54,7 @@ namespace Server.Spells
 					// You magically create food in your backpack:
 					Caster.SendLocalizedMessage( 1042695, true, " " + foodInfo.Name );
 
-					Caster.FixedParticles( 0, 10, 5, 2003, EffectLayer.RightHand );
+					Effects.SendTargetParticles(Caster, 0, 10, 5, 2003, EffectLayer.RightHand );
 					Caster.PlaySound( 0x1E2 );
 				}
 			}

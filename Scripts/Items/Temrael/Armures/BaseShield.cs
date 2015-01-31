@@ -107,7 +107,7 @@ namespace Server.Items
 					if( damage < 0 )
 						damage = 0;
 
-					owner.FixedEffect( 0x37B9, 10, 16 );
+					Effects.SendTargetEffect(owner, 0x37B9, 10, 16 );
 
 					if( 25 > Utility.Random( 100 ) ) // 25% chance to lower durability
 					{

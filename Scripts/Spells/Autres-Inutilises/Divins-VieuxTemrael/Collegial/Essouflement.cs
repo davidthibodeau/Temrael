@@ -59,7 +59,7 @@ namespace Server.Spells
                     
                     t.Start();
 
-                    targ.FixedParticles(14154, 9, 18, 5007, 1942, 0, EffectLayer.Waist);
+                    Effects.SendTargetParticles(targ,14154, 9, 18, 5007, 1942, 0, EffectLayer.Waist);
                     targ.PlaySound(497);
                 }
 
@@ -81,7 +81,7 @@ namespace Server.Spells
                 t.Stop();
                 m_Timers.Remove(m);
 
-                m.FixedParticles(14154, 9, 18, 5007, 1942, 0, EffectLayer.CenterFeet);
+                Effects.SendTargetParticles(m,14154, 9, 18, 5007, 1942, 0, EffectLayer.CenterFeet);
                 m.PlaySound(497);
             }
         }
@@ -107,7 +107,7 @@ namespace Server.Spells
                     int damage = Utility.Random(0, 10) + 5;
                     m_From.Mana -= damage;
 
-                    m_From.FixedParticles(14154, 9, 18, 5007, 1942, 0, EffectLayer.CenterFeet);
+                    Effects.SendTargetParticles(m_From,14154, 9, 18, 5007, 1942, 0, EffectLayer.CenterFeet);
 
                     if (m_From.Mana <= 20)
                         Stop();
@@ -116,7 +116,7 @@ namespace Server.Spells
                 {
                     Stop();
 
-                    m_From.FixedParticles(14154, 9, 18, 5007, 1942, 0, EffectLayer.CenterFeet);
+                    Effects.SendTargetParticles(m_From,14154, 9, 18, 5007, 1942, 0, EffectLayer.CenterFeet);
                     m_From.PlaySound(497);
                 }
             }

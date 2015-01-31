@@ -36,7 +36,7 @@ namespace Server.Items
 			attacker.SendLocalizedMessage( 1063345 ); // You block an attack!
 			defender.SendLocalizedMessage( 1063346 ); // Your attack was blocked!
 
-			attacker.FixedParticles( 0x37C4, 1, 16, 0x251D, 0x39D, 0x3, EffectLayer.RightHand );
+			Effects.SendTargetParticles(attacker, 0x37C4, 1, 16, 0x251D, 0x39D, 0x3, EffectLayer.RightHand );
 
 			int bonus = (int)(10.0 * ((Math.Max( attacker.Skills[SkillName.Tactiques].Value, attacker.Skills[SkillName.Parer].Value ) - 50.0) / 70.0 + 5));
 

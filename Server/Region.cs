@@ -790,6 +790,20 @@ namespace Server
 			return true;
 		}
 
+        public virtual void ComputeLightLevels(Mobile m, out int global, out int personal)
+        {
+            ComputeBaseLightLevels(m, out global, out personal);
+
+            if (m.Region != null)
+                m.Region.AlterLightLevel(m, ref global, ref personal);
+        }
+
+		public virtual void ComputeBaseLightLevels(Mobile m, out int global, out int personal )
+		{
+			global = 0;
+			personal = m.LightLevel;
+		}
+
 		public virtual void AlterLightLevel( Mobile m, ref int global, ref int personal )
 		{
 			if ( m_Parent != null )

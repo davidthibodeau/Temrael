@@ -46,7 +46,7 @@ namespace Server.Spells
 
             if (chosen != null && m != null && chosen.TotemType != TotemType.Amulette && chosen.TotemType != TotemType.Miracle && chosen.TotemType != TotemType.Refecteur)
             {
-                m.FixedParticles(chosen.EffectID, chosen.EffectSpeed, chosen.EffectDuration, 5005, chosen.Hue, 0, chosen.EffectLayer);
+                Effects.SendTargetParticles(m,chosen.EffectID, chosen.EffectSpeed, chosen.EffectDuration, 5005, chosen.Hue, 0, chosen.EffectLayer);
             }
 
             if (chosen == null)

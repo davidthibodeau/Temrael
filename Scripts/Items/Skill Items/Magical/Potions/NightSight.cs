@@ -36,7 +36,7 @@ namespace Server.Items
 				new LightCycle.NightSightTimer( from ).Start();
 				from.LightLevel = LightCycle.DungeonLevel / 2;
 
-				from.FixedParticles( 0x376A, 9, 32, 5007, EffectLayer.Waist );
+				Effects.SendTargetParticles(from, 0x376A, 9, 32, 5007, EffectLayer.Waist );
 				from.PlaySound( 0x1E3 );
 
 				BasePotion.PlayDrinkEffect( from );

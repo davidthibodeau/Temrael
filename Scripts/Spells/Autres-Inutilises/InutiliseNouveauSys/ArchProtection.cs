@@ -97,7 +97,7 @@ namespace Server.Spells
                                 m.VirtualArmorMod += (int)value;
                                 new InternalTimer(m, (int)value, duree).Start();
 
-                                m.FixedParticles(0x375A, 9, 20, 5027, EffectLayer.Waist);
+                                Effects.SendTargetParticles(m,0x375A, 9, 20, 5027, EffectLayer.Waist);
                                 m.PlaySound(0x1F7);
                             }
                         }

@@ -39,7 +39,7 @@ namespace Server.Spells
                 SpellHelper.AddStatBonus(Caster, m, StatType.Dex);
                 SpellHelper.AddStatBonus(Caster, m, StatType.Int); SpellHelper.DisableSkillCheck = false;
 
-                m.FixedParticles(0x373A, 10, 15, 5018, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,0x373A, 10, 15, 5018, EffectLayer.Waist);
                 m.PlaySound(0x1EA);
             }
 

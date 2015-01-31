@@ -57,7 +57,7 @@ namespace Server.Spells
                 m.Hits -= 1;
                 m.Stam -= 1;
 
-                m.FixedParticles(14186, 10, 20, 5013, 0, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14186, 10, 20, 5013, 0, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(494);
             }
 
@@ -79,7 +79,7 @@ namespace Server.Spells
                 m.Hits -= 1;
                 m.Stam -= 1;
 
-                m.FixedParticles(14186, 10, 20, 5013, 0, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14186, 10, 20, 5013, 0, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(494);
             }
         }
@@ -110,7 +110,7 @@ namespace Server.Spells
                     m_target.Hits -= 1;
                     m_target.Stam -= 1;
 
-                    m_target.FixedParticles(14186, 10, 20, 5013, 0, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14186, 10, 20, 5013, 0, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(494);
 
                     Stop();

@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14170, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet);
+                Effects.SendTargetParticles(m,14170, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet);
                 m.PlaySound(516);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_HypnoseTable.Remove(m);
 
-                m.FixedParticles(14170, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet);
+                Effects.SendTargetParticles(m,14170, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet);
                 m.PlaySound(516);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     HypnoseSpell.m_HypnoseTable.Remove(m_target);
                     HypnoseSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14170, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet);
+                    Effects.SendTargetParticles(m_target,14170, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet);
                     m_target.PlaySound(516);
 
                     Stop();

@@ -38,8 +38,8 @@ namespace Server.Spells
                 SpellHelper.Turn(Caster, m);
 
                 m.PlaySound(0xFC);
-                m.FixedParticles(14186, 1, 13, 9912, 2062, 7, EffectLayer.Head);
-                m.FixedParticles(14138, 1, 15, 9502, 1109, 7, EffectLayer.Head);
+                Effects.SendTargetParticles(m,14186, 1, 13, 9912, 2062, 7, EffectLayer.Head);
+                Effects.SendTargetParticles(m,14138, 1, 15, 9502, 1109, 7, EffectLayer.Head);
 
                 TimeSpan duration = TimeSpan.FromSeconds(0);
                 TimeSpan delay = TimeSpan.FromSeconds(11 - Caster.Skills[CastSkill].Value / 20);
@@ -69,8 +69,8 @@ namespace Server.Spells
                 m_Timers.Remove(m);
 
                 m.PlaySound(0xFC);
-                m.FixedParticles(14186, 1, 13, 9912, 2062, 7, EffectLayer.Head);
-                m.FixedParticles(14138, 1, 15, 9502, 1109, 7, EffectLayer.Head);
+                Effects.SendTargetParticles(m,14186, 1, 13, 9912, 2062, 7, EffectLayer.Head);
+                Effects.SendTargetParticles(m,14138, 1, 15, 9502, 1109, 7, EffectLayer.Head);
             }
 		}
 
@@ -99,8 +99,8 @@ namespace Server.Spells
 
                 target.Mana += amount + Utility.Random(-3, 9);
 
-                target.FixedParticles(14186, 1, 13, 9912, 2062, 7, EffectLayer.Head);
-                target.FixedParticles(14138, 1, 15, 9502, 1109, 7, EffectLayer.Head);
+                Effects.SendTargetParticles(target,14186, 1, 13, 9912, 2062, 7, EffectLayer.Head);
+                Effects.SendTargetParticles(target,14138, 1, 15, 9502, 1109, 7, EffectLayer.Head);
             }
         }
 

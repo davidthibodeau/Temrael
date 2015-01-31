@@ -27,7 +27,7 @@ namespace Server.Items
 			defender.SendLocalizedMessage( 1060077 ); // The blow penetrated your armor!
 
 			defender.PlaySound( 0x56 );
-			defender.FixedParticles( 0x3728, 200, 25, 9942, EffectLayer.Waist );
+			Effects.SendTargetParticles(defender, 0x3728, 200, 25, 9942, EffectLayer.Waist );
 		}
 	}
 }

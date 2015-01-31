@@ -52,7 +52,7 @@ namespace Server.Spells
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
                 m.PlaySound(0x1F1);
-                m.FixedParticles(0x3789, 1, 20, 9911, 0, 5, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x3789, 1, 20, 9911, 0, 5, EffectLayer.Head);
 
                 int baseDuration = 40;
 

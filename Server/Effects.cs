@@ -235,6 +235,11 @@ namespace Server
 			SendTargetParticles( target, itemID, speed, duration, 0, 0, effect, layer, unknown );
 		}
 
+        public static void SendTargetParticles(IEntity target, int itemID, int speed, int duration, int hue, int renderMode, int effect, EffectLayer layer)
+        {
+            SendTargetParticles(target, itemID, speed, duration, hue, renderMode, effect, layer, 0);
+        }
+
 		public static void SendTargetParticles( IEntity target, int itemID, int speed, int duration, int hue, int renderMode, int effect, EffectLayer layer, int unknown )
 		{
 			if ( target is Mobile )

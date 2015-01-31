@@ -82,7 +82,7 @@ namespace Server.Spells
                                 m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                             }
 
-                            m.FixedParticles(0x36BD, 20, 10, 5044, EffectLayer.Head);
+                            Effects.SendTargetParticles(m,0x36BD, 20, 10, 5044, EffectLayer.Head);
                             m.PlaySound(0x307);
 
                             //SpellHelper.Damage(this, m, damage, 0, 100, 0, 0, 0);

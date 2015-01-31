@@ -35,7 +35,7 @@ namespace Server.Items
 
 			attacker.SendLocalizedMessage( 1063353 ); // You perform a masterful defense!
 
-			attacker.FixedParticles( 0x375A, 1, 17, 0x7F2, 0x3E8, 0x3, EffectLayer.Waist );
+			Effects.SendTargetParticles(attacker, 0x375A, 1, 17, 0x7F2, 0x3E8, 0x3, EffectLayer.Waist );
 
 			int modifier = (int)(30.0 * ((Math.Max( attacker.Skills[SkillName.Tactiques].Value, attacker.Skills[SkillName.Parer].Value ) - 50.0) / 70.0));
 

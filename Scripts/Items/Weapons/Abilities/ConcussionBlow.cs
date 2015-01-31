@@ -24,7 +24,7 @@ namespace Server.Items
 			defender.SendLocalizedMessage( 1060166 ); // You feel disoriented!
 
 			defender.PlaySound( 0x213 );
-			defender.FixedParticles( 0x377A, 1, 32, 9949, 1153, 0, EffectLayer.Head );
+			Effects.SendTargetParticles(defender, 0x377A, 1, 32, 9949, 1153, 0, EffectLayer.Head );
 
 			Effects.SendMovingParticles( new Entity( Serial.Zero, new Point3D( defender.X, defender.Y, defender.Z + 10 ), defender.Map ), new Entity( Serial.Zero, new Point3D( defender.X, defender.Y, defender.Z + 20 ), defender.Map ), 0x36FE, 1, 0, false, false, 1133, 3, 9501, 1, 0, EffectLayer.Waist, 0x100 );
 

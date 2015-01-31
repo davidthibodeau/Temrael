@@ -46,7 +46,7 @@ namespace Server.Spells
 
             m.MeleeDamageAbsorb = (int)value;
 
-            m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x376A, 9, 32, 5008, EffectLayer.Waist);
             m.PlaySound(0x1F2);
         }
 

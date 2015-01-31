@@ -47,7 +47,7 @@ namespace Server.Spells
 				//double damage = GetNewAosDamage( 10, 1, 3, true);
 
                 m.PlaySound(22);
-                m.FixedEffect(0x923, 3, 30);
+                Effects.SendTargetEffect(m, 0x923, 3, 30);
 
                 if (Utility.RandomDouble() <= 0.15)
                 {

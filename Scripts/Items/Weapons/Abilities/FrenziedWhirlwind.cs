@@ -77,7 +77,7 @@ namespace Server.Items
 				if( !CheckMana( attacker, true ) )
 					return;
 
-				attacker.FixedEffect( 0x3728, 10, 15 );
+				Effects.SendTargetEffect(attacker, 0x3728, 10, 15);
 				attacker.PlaySound( 0x2A1 );
 
 				// 5-15 damage
@@ -109,7 +109,7 @@ namespace Server.Items
 		{
 			Mobile attacker = (Mobile)state;
 
-			attacker.FixedEffect( 0x3728, 10, 15 );
+			Effects.SendTargetEffect(attacker, 0x3728, 10, 15);
 			attacker.PlaySound( 0x2A1 );
 		}
 

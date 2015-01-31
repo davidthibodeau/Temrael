@@ -86,7 +86,7 @@ namespace Server.Spells
                         Effects.SendLocationParticles(EffectItem.Create(m.Location, map, EffectItem.DefaultDuration), 0x37CC, 1, 40, 97, 3, 9917, 0);
 
                         Caster.DoHarmful(m);
-                        m.FixedParticles(0x374A, 1, 15, 9502, 97, 3, (EffectLayer)255);
+                        Effects.SendTargetParticles(m,0x374A, 1, 15, 9502, 97, 3, (EffectLayer)255);
 
                         //double damage = GetNewAosDamage(10, 1, 4, true);
 

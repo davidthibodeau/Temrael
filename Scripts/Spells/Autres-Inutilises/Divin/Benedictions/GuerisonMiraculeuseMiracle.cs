@@ -49,7 +49,7 @@ namespace Server.Spells
                             SpellHelper.Turn(Caster, pm);
 
                             pm.PlaySound(0x214);
-                            pm.FixedEffect(0x376A, 10, 16);
+                            Effects.SendTargetEffect(pm,0x376A, 10, 16);
 
                             if (pm.MortEngine.TimerEvanouie != null)
                             {

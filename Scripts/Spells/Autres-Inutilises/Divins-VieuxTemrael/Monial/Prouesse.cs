@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14170, 10, 20, 5013, 2407, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 20, 5013, 2407, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(493);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_ProuesseTable.Remove(m);
 
-                m.FixedParticles(14170, 10, 20, 5013, 2407, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 20, 5013, 2407, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(493);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     ProuesseSpell.m_ProuesseTable.Remove(m_target);
                     ProuesseSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14170, 10, 20, 5013, 2407, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14170, 10, 20, 5013, 2407, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(493);
 
                     Stop();

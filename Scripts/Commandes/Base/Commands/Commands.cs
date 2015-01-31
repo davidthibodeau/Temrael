@@ -850,7 +850,7 @@ namespace Server.Commands.Generic
 						CommandLogging.WriteLine( from, "{0} {1} resurrecting {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( mob ) );
 
 						bc.PlaySound( 0x214 );
-						bc.FixedEffect( 0x376A, 10, 16 );
+                        Effects.SendTargetEffect(bc, 0x376A, 10, 16);
 
 						bc.ResurrectPet();
 
@@ -862,7 +862,7 @@ namespace Server.Commands.Generic
 					CommandLogging.WriteLine( from, "{0} {1} resurrecting {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( mob ) );
 
 					mob.PlaySound( 0x214 );
-					mob.FixedEffect( 0x376A, 10, 16 );
+					Effects.SendTargetEffect(mob, 0x376A, 10, 16 );
 
 					mob.Resurrect();
 

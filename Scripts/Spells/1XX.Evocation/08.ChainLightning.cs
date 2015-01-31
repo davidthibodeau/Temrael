@@ -108,7 +108,7 @@ namespace Server.Spells
                             Caster.DoHarmful(m);
                             Damage.instance.AppliquerDegatsMagiques(m, damage);
 
-                            m.BoltEffect(0);
+                            Effects.SendBoltEffect(m, true, 0);
                         }
                     }
                 }

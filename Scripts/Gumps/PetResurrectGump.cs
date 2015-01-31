@@ -62,7 +62,7 @@ namespace Server.Gumps
 				}
 
 				m_Pet.PlaySound( 0x214 );
-				m_Pet.FixedEffect( 0x376A, 10, 16 );
+                Effects.SendTargetEffect(m_Pet, 0x376A, 10, 16);
 				m_Pet.ResurrectPet();
 
 				double decreaseAmount;

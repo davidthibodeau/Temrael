@@ -178,7 +178,7 @@ namespace Server.Gumps
                         if (from.AccessLevel >= AccessLevel.Batisseur && from.AccessLevel > focus.AccessLevel)
                         {
                             focus.PlaySound(0x214);
-                            focus.FixedEffect(0x376A, 10, 16);
+                            Effects.SendTargetEffect(focus,0x376A, 10, 16);
 
                             focus.Resurrect();
 

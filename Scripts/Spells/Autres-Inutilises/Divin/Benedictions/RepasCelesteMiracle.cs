@@ -38,7 +38,7 @@ namespace Server.Spells
             {
                 SpellHelper.Turn(Caster, m);
 
-                m.FixedParticles(14170, 10, 20, 5013, 2010, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 20, 5013, 2010, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(586);
             }
 

@@ -74,7 +74,7 @@ namespace Server.Spells
                     }
                     else
                     {
-                        m.FixedEffect(0x3779, 10, 20);
+                        Effects.SendTargetEffect(m,0x3779, 10, 20);
                         Caster.SendLocalizedMessage(1010084); // The creature resisted the attempt to dispel it!
                     }
                 }
@@ -101,7 +101,7 @@ namespace Server.Spells
                     }
                     else
                     {
-                        m.FixedEffect(0x3779, 10, 20);
+                        Effects.SendTargetEffect(m,0x3779, 10, 20);
                         Caster.SendLocalizedMessage(1010084); // The creature resisted the attempt to dispel it!
                     }
                 }

@@ -124,9 +124,9 @@ namespace Server.Spells
                 }
 
                 if(m_target != null)
-                    m_target.FixedParticles(0x3779, 5, 10, 5052, EffectLayer.LeftFoot);
+                    Effects.SendTargetParticles(m_target,0x3779, 5, 10, 5052, EffectLayer.LeftFoot);
                 else if(m_creature != null)
-                    m_creature.FixedParticles(0x3779, 5, 10, 5052, EffectLayer.LeftFoot);
+                    Effects.SendTargetParticles(m_creature, 0x3779, 5, 10, 5052, EffectLayer.LeftFoot);
             }
         }
 

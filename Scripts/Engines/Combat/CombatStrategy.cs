@@ -63,7 +63,7 @@ namespace Server.Engines.Combat
 
             if (DefStrategy(def).Parer(def))
             {
-                def.FixedEffect(0x37B9, 10, 16);
+                Effects.SendTargetEffect(def,0x37B9, 10, 16);
                 def.Mana -= ParerCoutMana;
                 degats = 0;
             }

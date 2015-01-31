@@ -68,7 +68,7 @@ namespace Server.Items
 				defender.SendLocalizedMessage( 1060083 ); // You fall off of your mount and take damage!
 
 			defender.PlaySound( 0x140 );
-			defender.FixedParticles( 0x3728, 10, 15, 9955, EffectLayer.Waist );
+			Effects.SendTargetParticles(defender, 0x3728, 10, 15, 9955, EffectLayer.Waist );
 
 			mount.Rider = null;
 

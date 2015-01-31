@@ -51,7 +51,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14170, 9, 32, 5005, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,14170, 9, 32, 5005, EffectLayer.Waist);
                 m.PlaySound(532);
             }
 
@@ -67,7 +67,7 @@ namespace Server.Spells
                 t.Stop();
                 m_Timers.Remove(m);
 
-                m.FixedParticles(14170, 9, 32, 5005, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,14170, 9, 32, 5005, EffectLayer.Waist);
                 m.PlaySound(532);
             }
         }
@@ -83,7 +83,7 @@ namespace Server.Spells
 
             SpellHelper.Heal(m, (int)toHeal, true);
 
-            m.FixedParticles(0x376A, 9, 32, 5005, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x376A, 9, 32, 5005, EffectLayer.Waist);
             m.PlaySound(0x1F2);
         }
 
@@ -111,7 +111,7 @@ namespace Server.Spells
                 {
                     RetablissementSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14170, 9, 32, 5005, EffectLayer.Waist);
+                    Effects.SendTargetParticles(m_target,14170, 9, 32, 5005, EffectLayer.Waist);
                     m_target.PlaySound(532);
 
                     Stop();

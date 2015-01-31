@@ -168,7 +168,7 @@ namespace Server.Mobiles
 
 				ResistanceMod mod = new ResistanceMod( ResistanceType.Physical, effect );
 
-				defender.FixedEffect( 0x37B9, 10, 5 );
+				Effects.SendTargetEffect(defender, 0x37B9, 10, 5 );
 				defender.AddResistanceMod( mod );
 
 				timer = new ExpireTimer( defender, mod, TimeSpan.FromSeconds( 5.0 ) );

@@ -18,7 +18,7 @@ namespace Server.Items
 		{
 			if ( from.BeginAction( typeof( RejuvinationAddonComponent ) ) )
 			{
-				from.FixedEffect( 0x373A, 1, 16 );
+                Effects.SendTargetEffect(from, 0x373A, 1, 16);
 
 				int random = Utility.Random( 1, 4 );
 
