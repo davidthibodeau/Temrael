@@ -407,8 +407,6 @@ namespace Server
 		private int m_BaseSoundID;
 		private int m_VirtualArmor;
 		private bool m_Squelched;
-		private int m_MeleeDamageAbsorb;
-		private int m_MagicDamageAbsorb;
 		private int m_Followers, m_FollowersMax;
 		private List<object> _actions; // prefer List<object> over ArrayList for more specific profiling information
 		private Queue<MovementRecord> m_MoveRecords;
@@ -439,9 +437,6 @@ namespace Server
         public double[] Resistances { get { return m_Resistances; } }
 
 		public virtual int BasePhysicalResistance { get { return 0; } }
-		public virtual int BaseContondantResistance { get { return 0; } }
-		public virtual int BaseTranchantResistance { get { return 0; } }
-		public virtual int BasePerforantResistance { get { return 0; } }
         public virtual double BaseMagicalResistance
         {
             get
@@ -969,32 +964,6 @@ namespace Server
 			}
 
 			Warmode = value;
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int MeleeDamageAbsorb
-		{
-			get
-			{
-				return m_MeleeDamageAbsorb;
-			}
-			set
-			{
-				m_MeleeDamageAbsorb = value;
-			}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int MagicDamageAbsorb
-		{
-			get
-			{
-				return m_MagicDamageAbsorb;
-			}
-			set
-			{
-				m_MagicDamageAbsorb = value;
-			}
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -4787,7 +4756,8 @@ namespace Server
 
             m_FollowersMax = reader.ReadInt();
 
-            m_MagicDamageAbsorb = reader.ReadInt();
+            if (version < 2)
+                reader.ReadInt();
 
             m_GuildFealty = reader.ReadMobile();
 
@@ -4977,8 +4947,6 @@ namespace Server
 			writer.Write( m_BAC );
 
 			writer.Write( m_FollowersMax );
-
-			writer.Write( m_MagicDamageAbsorb );
 
 			writer.Write( m_GuildFealty );
 

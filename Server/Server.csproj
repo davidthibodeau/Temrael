@@ -145,7 +145,7 @@
     <Compile Include="Menus\ItemListMenu.cs" />
     <Compile Include="Menus\QuestionMenu.cs" />
     <Compile Include="Mobile.cs" />
-    <Compile Include="Mobile\MobileMods.cs" />
+    <Compile Include="Mobile\Mods.cs" />
     <Compile Include="Mobile\MobileStats.cs" />
     <Compile Include="Movement.cs" />
     <Compile Include="MultiData.cs" />
