@@ -4912,10 +4912,10 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-            writer.Write((int)1); // version
+            writer.Write((int)2); // version
 
             writer.Write(HideAdmin);
-
+            
 			writer.WriteDeltaTime( m_LastStrGain );
 			writer.WriteDeltaTime( m_LastIntGain );
 			writer.WriteDeltaTime( m_LastDexGain );
