@@ -3,7 +3,7 @@ using Server;
 using Server.Mobiles;
 using Server.Gumps;
 using Server.Network;
-using Server.Factions;
+
 using Server.Misc;
 
 namespace Server.Guilds
@@ -76,56 +76,12 @@ namespace Server.Guilds
 
 		public static bool IsLeader( Mobile m, Guild g )
 		{
-			return !( m.Deleted || g.Disbanded || !( m is PlayerMobile ) || (m.AccessLevel < AccessLevel.GameMaster && g.Leader != m) );
+			return !( m.Deleted || g.Disbanded || !( m is PlayerMobile ) || (m.AccessLevel < AccessLevel.Batisseur && g.Leader != m) );
 		}
 
 		public static bool IsMember( Mobile m, Guild g )
 		{
-			return !( m.Deleted || g.Disbanded || !( m is PlayerMobile ) || (m.AccessLevel < AccessLevel.GameMaster && !g.IsMember( m )) );
-		}
-
-		public static bool CheckProfanity( string s )
-		{
-			return CheckProfanity( s, 50 );
-		}
-		public static bool CheckProfanity( string s, int maxLength )
-		{
-			//return NameVerification.Validate( s, 1, 50, true, true, false, int.MaxValue, ProfanityProtection.Exceptions, ProfanityProtection.Disallowed, ProfanityProtection.StartDisallowed );	//What am I doing wrong, this still allows chars like the <3 symbol... 3 AM.  someone change this to use this
-
-			//With testing on OSI, Guild stuff seems to follow a 'simpler' method of profanity protection
-			if( s.Length < 1 || s.Length > maxLength )
-				return false;
-
-			char[] exceptions = ProfanityProtection.Exceptions;
-
-			s = s.ToLower();
-
-			for ( int i = 0; i < s.Length; ++i )
-			{
-				char c = s[i];
-
-				if ( (c < 'a' || c > 'z') && (c < '0' || c > '9'))
-				{
-					bool except = false;
-
-					for( int j = 0; !except && j < exceptions.Length; j++ )
-						if( c == exceptions[j] )
-							except = true;
-
-					if( !except )
-						return false;
-				}
-			}
-
-			string[] disallowed = ProfanityProtection.Disallowed;
-
-			for( int i = 0; i < disallowed.Length; i++ )
-			{
-				if ( s.IndexOf( disallowed[i] ) != -1 )
-					return false;
-			}
-
-			return true;			
+			return !( m.Deleted || g.Disbanded || !( m is PlayerMobile ) || (m.AccessLevel < AccessLevel.Batisseur && !g.IsMember( m )) );
 		}
 
 		public void AddHtmlText( int x, int y, int width, int height, TextDefinition text, bool back, bool scroll )

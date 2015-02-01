@@ -4,11 +4,26 @@ namespace Server.Items
 {
 	[Furniture]
 	[FlipableAttribute( 0x1BD7, 0x1BDA )]
-	public abstract class BaseTBoard : Item, ICommodity
+    public abstract class BaseTBoard : Item, ICommodity, IExtractable
 	{
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        public double getSkillReq
+        {
+            get { return CraftResources.GetSkill(m_Resource); }
+        }
+        #endregion
+
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get { return m_Resource; }
@@ -86,13 +101,13 @@ namespace Server.Items
 
         public static string[] m_Material = new string[]
             {
-		        "Érable",
+		        "Ã‰rable",
 		        "Pin",
-                "Cyprès",
-                "Cèdre",
+                "CyprÃ¨s",
+                "CÃ¨dre",
                 "Saule",
-                "Chêne",
-                "Ébène",
+                "ChÃªne",
+                "Ã‰bÃ¨ne",
                 "Acajou",
             };
 
@@ -147,6 +162,8 @@ namespace Server.Items
 
 			if ( version <= 1 )
 				m_Resource = CraftResource.RegularWood;
+
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 	}
 
@@ -163,6 +180,7 @@ namespace Server.Items
         public Board(int amount)
             : base(CraftResource.RegularWood, amount)
         {
+            GoldValue = 3;
         }
 
         public Board(Serial serial)
@@ -401,7 +419,7 @@ namespace Server.Items
 
         [Constructable]
         public AcajouBoard(int amount)
-            : base(CraftResource.CedreWood, amount)
+            : base(CraftResource.AcajouWood, amount)
         {
         }
 

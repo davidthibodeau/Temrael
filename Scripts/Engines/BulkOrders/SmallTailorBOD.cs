@@ -133,12 +133,12 @@ namespace Server.Engines.BulkOrders
 					{
 						bool allRequiredSkills = true;
                         bool allRequiredAptitudes = true;
-						double chance = item.GetSuccessChance( m, null, system, false, ref allRequiredSkills, ref allRequiredAptitudes );
+						double chance = item.GetSuccessChance( m, null, system, false, ref allRequiredSkills );
 
 						if ( allRequiredSkills && chance >= 0.0 )
 						{
-							if ( reqExceptional )
-								chance = item.GetExceptionalChance( system, chance, m );
+                            if (reqExceptional)
+                                chance = item.GetExceptionalChance(chance, m, false);
 
 							if ( chance > 0.0 )
 								validEntries.Add( entries[i] );

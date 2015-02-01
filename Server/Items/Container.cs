@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Container.cs 564 2010-10-18 04:56:28Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -31,7 +31,7 @@ namespace Server.Items
 
 	public delegate void ContainerSnoopHandler( Container cont, Mobile from );
 
-	public class Container : Item
+	public class Container : Item, ITrapable
 	{
 		private static ContainerSnoopHandler m_SnoopHandler;
 
@@ -67,7 +67,7 @@ namespace Server.Items
 			set{ m_ContainerData = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ItemID
 		{
 			get{ return base.ItemID; }
@@ -82,28 +82,28 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GumpID
 		{
 			get{ return ( m_GumpID == -1 ? DefaultGumpID : m_GumpID ); }
 			set{ m_GumpID = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DropSound
 		{
 			get{ return ( m_DropSound == -1 ? DefaultDropSound : m_DropSound ); }
 			set{ m_DropSound = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxItems
 		{
 			get{ return ( m_MaxItems == -1 ? DefaultMaxItems : m_MaxItems ); }
 			set{ m_MaxItems = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int MaxWeight
 		{
 			get
@@ -119,7 +119,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool LiftOverride
 		{
 			get{ return m_LiftOverride; }
@@ -158,7 +158,7 @@ namespace Server.Items
 
 		public override bool CheckLift( Mobile from, Item item, ref LRReason reject )
 		{
-			if ( from.AccessLevel < AccessLevel.GameMaster && IsDecoContainer )
+			if ( from.AccessLevel < AccessLevel.Batisseur && IsDecoContainer )
 			{
 				reject = LRReason.CannotLift;
 				return false;
@@ -169,7 +169,7 @@ namespace Server.Items
 
 		public override bool CheckItemUse( Mobile from, Item item )
 		{
-			if ( item != this && from.AccessLevel < AccessLevel.GameMaster && IsDecoContainer )
+			if ( item != this && from.AccessLevel < AccessLevel.Batisseur && IsDecoContainer )
 			{
 				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 1019045 ); // I can't reach that.
 				return false;
@@ -190,7 +190,7 @@ namespace Server.Items
 
 		public virtual bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
 		{
-			if ( m.AccessLevel < AccessLevel.GameMaster )
+			if ( m.AccessLevel < AccessLevel.Batisseur )
 			{
 				if ( IsDecoContainer )
 				{
@@ -1292,7 +1292,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)2); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -1313,69 +1313,40 @@ namespace Server.Items
 				writer.WriteEncodedInt( (int) m_DropSound );
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2:
-				{
-					SaveFlag flags = (SaveFlag)reader.ReadByte();
+            if (version <= 1)
+            {
+                reader.ReadBool();
+                reader.ReadDouble();
+                reader.ReadItem();
+            }
 
-					if ( GetSaveFlag( flags, SaveFlag.MaxItems ) )
-						m_MaxItems = reader.ReadEncodedInt();
-					else
-						m_MaxItems = -1;
+            SaveFlag flags = (SaveFlag)reader.ReadByte();
 
-					if ( GetSaveFlag( flags, SaveFlag.GumpID ) )
-						m_GumpID = reader.ReadEncodedInt();
-					else
-						m_GumpID = -1;
+            if (GetSaveFlag(flags, SaveFlag.MaxItems))
+                m_MaxItems = reader.ReadEncodedInt();
+            else
+                m_MaxItems = -1;
 
-					if ( GetSaveFlag( flags, SaveFlag.DropSound ) )
-						m_DropSound = reader.ReadEncodedInt();
-					else
-						m_DropSound = -1;
+            if (GetSaveFlag(flags, SaveFlag.GumpID))
+                m_GumpID = reader.ReadEncodedInt();
+            else
+                m_GumpID = -1;
 
-					m_LiftOverride = GetSaveFlag( flags, SaveFlag.LiftOverride );
+            if (GetSaveFlag(flags, SaveFlag.DropSound))
+                m_DropSound = reader.ReadEncodedInt();
+            else
+                m_DropSound = -1;
 
-					break;
-				}
-				case 1:
-				{
-					m_MaxItems = reader.ReadInt();
-					goto case 0;
-				}
-				case 0:
-				{
-					if ( version < 1 )
-						m_MaxItems = m_GlobalMaxItems;
+            m_LiftOverride = GetSaveFlag(flags, SaveFlag.LiftOverride);
 
-					m_GumpID = reader.ReadInt();
-					m_DropSound = reader.ReadInt();
-
-					if ( m_GumpID == DefaultGumpID )
-						m_GumpID = -1;
-
-					if ( m_DropSound == DefaultDropSound )
-						m_DropSound = -1;
-
-					if ( m_MaxItems == DefaultMaxItems )
-						m_MaxItems = -1;
-
-					//m_Bounds = new Rectangle2D( reader.ReadPoint2D(), reader.ReadPoint2D() );
-					reader.ReadPoint2D();
-					reader.ReadPoint2D();
-
-					break;
-				}
-			}
-
-			UpdateContainerData();
-		}
+            UpdateContainerData();
+        }
 
 		private static int m_GlobalMaxItems = 125;
 		private static int m_GlobalMaxWeight = 400;
@@ -1598,7 +1569,8 @@ namespace Server.Items
 			base.OnSingleClick( from );
 
 			if ( CheckContentDisplay( from ) )
-				LabelTo( from, "({0} items, {1} stones)", TotalItems, TotalWeight );
+				LabelTo(from, "({0} items, {1} stones)", TotalItems, TotalWeight);
+				//LabelTo(from, 1050044, String.Format("{0}\t{1}", TotalItems, TotalWeight)); // ~1_COUNT~ items, ~2_WEIGHT~ stones
 		}
 
 		private List<Mobile> m_Openers;
@@ -1620,6 +1592,8 @@ namespace Server.Items
 
 		public virtual void DisplayTo( Mobile to )
 		{
+            Trap_OnActivate(to);
+
 			ProcessOpeners( to );
 
 			NetState ns = to.NetState;

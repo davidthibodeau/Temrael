@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Prompt.cs 644 2010-12-23 09:18:45Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 

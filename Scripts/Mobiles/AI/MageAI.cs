@@ -2,14 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Server.Spells;
-using Server.Spells.Fifth;
-using Server.Spells.First;
-using Server.Spells.Fourth;
-using Server.Spells.Necromancy;
-using Server.Spells.Second;
-using Server.Spells.Seventh;
-using Server.Spells.Sixth;
-using Server.Spells.Third;
 using Server.Targeting;
 
 namespace Server.Mobiles
@@ -37,7 +29,7 @@ namespace Server.Mobiles
 
 		public virtual bool SmartAI
 		{
-			get { return ( m_Mobile is BaseVendor || m_Mobile is BaseEscortable ); }
+			get { return (m_Mobile is BaseVendor); }
 		}
 
 		private const double HealChance = 0.10; // 10% chance to heal at gm magery
@@ -64,7 +56,7 @@ namespace Server.Mobiles
 			{
 				m_Mobile.DebugSay( "I am going to meditate" );
 
-				m_Mobile.UseSkill( SkillName.Concentration );
+				m_Mobile.UseSkill( SkillName.Meditation );
 			}
 			else
 			{
@@ -340,11 +332,11 @@ namespace Server.Mobiles
 			return spell;
 		}
 
-		public virtual double myNecro { get { return m_Mobile.Skills[ SkillName.Goetie ].Value; } }
+		public virtual double myNecro { get { return m_Mobile.Skills[ SkillName.Animisme ].Value; } }
 
 		public virtual double myMagery { get { return m_Mobile.Skills[ SkillName.ArtMagique ].Value; } }
 
-		public virtual double mySpiritSpeak { get { return m_Mobile.Skills[ SkillName.Concentration ].Value; } }
+		public virtual double mySpiritSpeak { get { return m_Mobile.Skills[ SkillName.Meditation ].Value; } }
 
 		public virtual Spell ChooseSpell( Mobile c )
 		{
@@ -453,7 +445,7 @@ namespace Server.Mobiles
 							{
 								m_Mobile.DebugSay( "I am going to meditate" );
 
-								m_Mobile.UseSkill( SkillName.Concentration );
+								m_Mobile.UseSkill( SkillName.Meditation );
 							}
 							else if( !c.Poisoned )
 							{
@@ -591,7 +583,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if( SmartAI && !m_Mobile.StunReady && m_Mobile.Skills[ SkillName.ArmePoing ].Value >= 80.0 && m_Mobile.Skills[ SkillName.Tactiques ].Value >= 80.0 )
+			if( SmartAI && !m_Mobile.StunReady && m_Mobile.Skills[ SkillName.Anatomie ].Value >= 80.0 && m_Mobile.Skills[ SkillName.Tactiques ].Value >= 80.0 )
 				EventSink.InvokeStunRequest( new StunRequestEventArgs( m_Mobile ) );
 
 			if( !m_Mobile.InRange( c, m_Mobile.RangePerception ) )
@@ -619,7 +611,7 @@ namespace Server.Mobiles
 				}
 			}
 
-			if( !m_Mobile.Controlled && !m_Mobile.Summoned && !m_Mobile.IsParagon )
+			if( !m_Mobile.Controlled && !m_Mobile.Summoned)
 			{
 				if( m_Mobile.Hits < m_Mobile.HitsMax * 20 / 100 )
 				{

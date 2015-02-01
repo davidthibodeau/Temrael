@@ -44,7 +44,7 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
 			}
-			else if ( from.AccessLevel >= AccessLevel.GameMaster )
+			else if ( from.AccessLevel >= AccessLevel.Batisseur )
 			{
 				from.SendLocalizedMessage( 503248 ); // Your godly powers allow you to place this vendor whereever you wish.
 

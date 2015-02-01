@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Effects.cs 644 2010-12-23 09:18:45Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -20,6 +20,8 @@
 
 using System;
 using System.Collections;
+using System.Linq;
+using System.Threading.Tasks;
 using Server.Network;
 
 namespace Server
@@ -66,10 +68,9 @@ namespace Server
 			{
 				Packet playSound = null;
 
-                IPooledEnumerable<NetState> eable = map.GetClientsInRange(new Point3D(p));
+				IPooledEnumerable<NetState> eable = map.GetClientsInRange( new Point3D( p ) );
 
-				foreach ( NetState state in eable )
-				{
+				foreach ( NetState state in eable ) {
 					state.Mobile.ProcessDelta();
 
 					if ( playSound == null )
@@ -105,14 +106,11 @@ namespace Server
 
 			Packet preEffect = null, boltEffect = null, playSound = null;
 
-            IPooledEnumerable<NetState> eable = map.GetClientsInRange(e.Location);
+			IPooledEnumerable<NetState> eable = map.GetClientsInRange(e.Location);
 
-			foreach ( NetState state in eable )
-			{
-				if ( state.Mobile.CanSee( e ) )
-				{
-					if ( SendParticlesTo( state ) )
-					{
+			foreach ( NetState state in eable ) {
+				if ( state.Mobile.CanSee( e ) ) {
+					if ( SendParticlesTo( state ) ) {
 						if ( preEffect == null )
 							preEffect = Packet.Acquire( new TargetParticleEffect( e, 0, 10, 5, 0, 0, 5031, 3, 0 ) );
 
@@ -124,8 +122,7 @@ namespace Server
 
 					state.Send( boltEffect );
 
-					if ( sound )
-					{
+					if ( sound ) {
 						if ( playSound == null )
 							playSound = Packet.Acquire( new PlaySound( 0x29, e ) );
 
@@ -179,21 +176,17 @@ namespace Server
 			{
 				Packet particles = null, regular = null;
 
-                IPooledEnumerable<NetState> eable = map.GetClientsInRange(e.Location);
+				IPooledEnumerable<NetState> eable = map.GetClientsInRange(e.Location);
 
-				foreach ( NetState state in eable )
-				{
+				foreach ( NetState state in eable ) {
 					state.Mobile.ProcessDelta();
 
-					if ( SendParticlesTo( state ) )
-					{
+					if ( SendParticlesTo( state ) ) {
 						if ( particles == null )
 							particles = Packet.Acquire( new LocationParticleEffect( e, itemID, speed, duration, hue, renderMode, effect, unknown ) );
 
 						state.Send( particles );
-					}
-					else if ( itemID != 0 )
-					{
+					} else if ( itemID != 0 ) {
 						if ( regular == null )
 							regular = Packet.Acquire( new LocationEffect( e, itemID, speed, duration, hue, renderMode ) );
 
@@ -242,6 +235,11 @@ namespace Server
 			SendTargetParticles( target, itemID, speed, duration, 0, 0, effect, layer, unknown );
 		}
 
+        public static void SendTargetParticles(IEntity target, int itemID, int speed, int duration, int hue, int renderMode, int effect, EffectLayer layer)
+        {
+            SendTargetParticles(target, itemID, speed, duration, hue, renderMode, effect, layer, 0);
+        }
+
 		public static void SendTargetParticles( IEntity target, int itemID, int speed, int duration, int hue, int renderMode, int effect, EffectLayer layer, int unknown )
 		{
 			if ( target is Mobile )
@@ -253,21 +251,17 @@ namespace Server
 			{
 				Packet particles = null, regular = null;
 
-                IPooledEnumerable<NetState> eable = map.GetClientsInRange(target.Location);
+				IPooledEnumerable<NetState> eable = map.GetClientsInRange(target.Location);
 
-				foreach ( NetState state in eable )
-				{
+				foreach ( NetState state in eable ) {
 					state.Mobile.ProcessDelta();
 
-					if ( SendParticlesTo( state ) )
-					{
+					if ( SendParticlesTo( state ) ) {
 						if ( particles == null )
 							particles = Packet.Acquire( new TargetParticleEffect( target, itemID, speed, duration, hue, renderMode, effect, (int)layer, unknown ) );
 
 						state.Send( particles );
-					}
-					else if ( itemID != 0 )
-					{
+					} else if ( itemID != 0 ) {
 						if ( regular == null )
 							regular = Packet.Acquire( new TargetEffect( target, itemID, speed, duration, hue, renderMode ) );
 
@@ -329,21 +323,17 @@ namespace Server
 			{
 				Packet particles = null, regular = null;
 
-                IPooledEnumerable<NetState> eable = map.GetClientsInRange(from.Location);
+				IPooledEnumerable<NetState> eable = map.GetClientsInRange(from.Location);
 
-				foreach ( NetState state in eable )
-				{
+				foreach ( NetState state in eable ) {
 					state.Mobile.ProcessDelta();
 
-					if ( SendParticlesTo( state ) )
-					{
+					if ( SendParticlesTo( state ) ) {
 						if ( particles == null )
 							particles = Packet.Acquire( new MovingParticleEffect( from, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode, effect, explodeEffect, explodeSound, layer, unknown ) );
 
 						state.Send( particles );
-					}
-					else if ( itemID > 1 )
-					{
+					} else if ( itemID > 1 ) {
 						if ( regular == null )
 							regular = Packet.Acquire( new MovingEffect( from, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode ) );
 
@@ -362,16 +352,13 @@ namespace Server
 
 		public static void SendPacket( Point3D origin, Map map, Packet p )
 		{
-			if ( map != null )
-			{
-                IPooledEnumerable<NetState> eable = map.GetClientsInRange(origin);
+			if ( map != null ) {
+				IPooledEnumerable<NetState> eable = map.GetClientsInRange(origin);
 
 				p.Acquire();
 
-				foreach ( NetState state in eable )
-				{
+				foreach ( NetState state in eable ) {
 					state.Mobile.ProcessDelta();
-
 					state.Send( p );
 				}
 
@@ -385,14 +372,12 @@ namespace Server
 		{
 			if ( map != null )
 			{
-                IPooledEnumerable<NetState> eable = map.GetClientsInRange(new Point3D(origin));
+				IPooledEnumerable<NetState> eable = map.GetClientsInRange(new Point3D(origin));
 
 				p.Acquire();
 
-				foreach ( NetState state in eable )
-				{
+				foreach ( NetState state in eable ) {
 					state.Mobile.ProcessDelta();
-
 					state.Send( p );
 				}
 

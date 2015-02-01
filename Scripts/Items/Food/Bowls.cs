@@ -61,6 +61,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenBowlOfCarrots() : base( 0x15F9 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -99,6 +100,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenBowlOfCorn() : base( 0x15FA )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -137,6 +139,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenBowlOfLettuce() : base( 0x15FB )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -175,6 +178,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenBowlOfPeas() : base( 0x15FC )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -213,6 +217,7 @@ namespace Server.Items
 		[Constructable]
 		public PewterBowlOfCarrots() : base( 0x15FE )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -251,6 +256,7 @@ namespace Server.Items
 		[Constructable]
 		public PewterBowlOfCorn() : base( 0x15FF )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -289,6 +295,7 @@ namespace Server.Items
 		[Constructable]
 		public PewterBowlOfLettuce() : base( 0x1600 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -327,6 +334,7 @@ namespace Server.Items
 		[Constructable]
 		public PewterBowlOfPeas() : base( 0x1601 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -365,6 +373,7 @@ namespace Server.Items
 		[Constructable]
 		public PewterBowlOfPotatos() : base( 0x1602 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -404,6 +413,7 @@ namespace Server.Items
 		[Constructable]
 		public EmptyWoodenTub() : base( 0x1605 )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
 		}
 
@@ -432,6 +442,7 @@ namespace Server.Items
 		[Constructable]
 		public EmptyPewterTub() : base( 0x1603 )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
 		}
 
@@ -459,6 +470,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenBowlOfStew() : base( 0x1604 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 2.0;
 			FillFactor = 2;
@@ -497,6 +509,7 @@ namespace Server.Items
 		[Constructable]
 		public WoodenBowlOfTomatoSoup() : base( 0x1606 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			Weight = 2.0;
 			FillFactor = 2;

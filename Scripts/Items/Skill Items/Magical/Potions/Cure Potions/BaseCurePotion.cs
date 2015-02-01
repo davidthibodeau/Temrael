@@ -73,7 +73,7 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 500231 ); // You feel cured of poison!
 
-				from.FixedEffect( 0x373A, 10, 15 );
+				Effects.SendTargetEffect(from, 0x373A, 10, 15 );
 				from.PlaySound( 0x1E0 );
 			}
 			else if ( !cure )
@@ -84,7 +84,7 @@ namespace Server.Items
 
 		public override void Drink( Mobile from )
 		{
-			/*if ( TransformationSpellHelper.UnderTransformation( from, typeof( Spells.Necromancy.VampiricEmbraceSpell ) ) )
+			/*if ( TransformationSpellHelper.UnderTransformation( from, typeof( Spells.VampiricEmbraceSpell ) ) )
 			{
 				from.SendLocalizedMessage( 1061652 ); // The garlic in the potion would surely kill you.
 			}*/
@@ -94,7 +94,7 @@ namespace Server.Items
 
 				BasePotion.PlayDrinkEffect( from );
 
-				from.FixedParticles( 0x373A, 10, 15, 5012, EffectLayer.Waist );
+				Effects.SendTargetParticles(from, 0x373A, 10, 15, 5012, EffectLayer.Waist );
 				from.PlaySound( 0x1E0 );
 
 				this.Consume();

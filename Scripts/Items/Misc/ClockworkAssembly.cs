@@ -31,7 +31,7 @@ namespace Server.Items
 				return;
 			}
 
-			double tinkerSkill = from.Skills[SkillName.Bricolage].Value;
+			double tinkerSkill = from.Skills[SkillName.Menuiserie].Value;
 
 			if ( tinkerSkill < 60.0 )
 			{
@@ -102,15 +102,15 @@ namespace Server.Items
 				}
 				default:
 				{
-					Golem g = new Golem( true, scalar );
+                    //Golem g = new Golem( true, scalar );
 
-					if ( g.SetControlMaster( from ) )
-					{
-						Delete();
+                    //if ( g.SetControlMaster( from ) )
+                    //{
+                    //    Delete();
 
-						g.MoveToWorld( from.Location, from.Map );
-						from.PlaySound( 0x241 );
-					}
+                    //    g.MoveToWorld( from.Location, from.Map );
+                    //    from.PlaySound( 0x241 );
+                    //}
 
 					break;
 				}

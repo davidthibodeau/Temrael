@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: BaseMulti.cs 591 2010-12-06 06:45:45Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -34,7 +34,7 @@ namespace Server.Items
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override int ItemID {
 			get {
 				return base.ItemID;
@@ -86,6 +86,11 @@ namespace Server.Items
 
 				return base.LabelNumber;
 			}
+		}
+
+		public virtual bool AllowsRelativeDrop
+		{
+			get { return false; }
 		}
 
 		public override int GetMaxUpdateRange()

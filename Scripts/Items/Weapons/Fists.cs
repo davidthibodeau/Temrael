@@ -1,6 +1,7 @@
 using System;
 using Server.Items;
 using Server.Network;
+using Server.Engines.Combat;
 
 namespace Server.Items
 {
@@ -17,23 +18,17 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.Disarm; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ParalyzingBlow; } }
 
-		public override int AosStrengthReq{ get{ return 0; } }
-		public override int AosMinDamage{ get{ return 1; } }
-		public override int AosMaxDamage{ get{ return 4; } }
-		public override double AosSpeed{ get{ return 4.0; } }
-		public override float MlSpeed{ get{ return 2.50f; } }
-
-		public override int OldStrengthReq{ get{ return 0; } }
-		public override int OldMinDamage{ get{ return 1; } }
-		public override int OldMaxDamage{ get{ return 8; } }
-		public override int OldSpeed{ get{ return 30; } }
+		public override int DefMinDamage{ get{ return 1; } }
+		public override int DefMaxDamage{ get{ return 4; } }
+		public override int DefSpeed{ get{ return 40; } }
 
 		public override int DefHitSound{ get{ return -1; } }
 		public override int DefMissSound{ get{ return -1; } }
 
-		public override SkillName DefSkill{ get{ return SkillName.ArmePoing; } }
 		public override WeaponType DefType{ get{ return WeaponType.Fists; } }
 		public override WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Wrestle; } }
+
+        public override CombatStrategy Strategy { get { return StrategyPoings.Strategy; } }
 
 		public Fists() : base( 0 )
 		{
@@ -45,132 +40,6 @@ namespace Server.Items
 		public Fists( Serial serial ) : base( serial )
 		{
 		}
-
-		public override double GetDefendSkillValue( Mobile attacker, Mobile defender )
-		{
-			double wresValue = defender.Skills[SkillName.ArmePoing].Value;
-			//double anatValue = defender.Skills[SkillName.Anatomy].Value;
-			//double evalValue = defender.Skills[SkillName.EvalInt].Value;
-			//double incrValue = (anatValue + evalValue + 20.0) * 0.5;
-
-            return wresValue;
-
-			//if ( incrValue > 120.0 )
-			//	incrValue = 120.0;
-            //
-			//if ( wresValue > incrValue )
-			//	return wresValue;
-			//else
-			//	return incrValue;
-		}
-
-		public override TimeSpan OnSwing( Mobile attacker, Mobile defender )
-		{
-			if ( attacker.StunReady )
-			{
-				if ( attacker.CanBeginAction( typeof( Fists ) ) )
-				{
-					if ( attacker.Skills[SkillName.ArmePoing].Value >= 80.0 )
-					{
-						if ( attacker.Stam >= 15 )
-						{
-							attacker.Stam -= 15;
-
-							if ( CheckMove( attacker, SkillName.Tactiques ) )
-							{
-								StartMoveDelay( attacker );
-
-								attacker.StunReady = false;
-
-								attacker.SendLocalizedMessage( 1004013 ); // You successfully stun your opponent!
-								defender.SendLocalizedMessage( 1004014 ); // You have been stunned!
-
-								defender.Freeze( TimeSpan.FromSeconds( 4.0 ) );
-							}
-							else
-							{
-								attacker.SendLocalizedMessage( 1004010 ); // You failed in your attempt to stun.
-								defender.SendLocalizedMessage( 1004011 ); // Your opponent tried to stun you and failed.
-							}
-						}
-						else
-						{
-							attacker.SendLocalizedMessage( 1004009 ); // You are too fatigued to attempt anything.
-						}
-					}
-					else
-					{
-						attacker.SendLocalizedMessage( 1004008 ); // You are not skilled enough to stun your opponent.
-						attacker.StunReady = false;
-					}
-				}
-			}
-			else if ( attacker.DisarmReady )
-			{
-				if ( attacker.CanBeginAction( typeof( Fists ) ) )
-				{
-					if ( defender.Player || defender.Body.IsHuman )
-					{
-						if ( attacker.Skills[SkillName.ArmePoing].Value >= 80.0 )
-						{
-							if ( attacker.Stam >= 15 )
-							{
-								Item toDisarm = defender.FindItemOnLayer( Layer.OneHanded );
-
-								if ( toDisarm == null || !toDisarm.Movable )
-									toDisarm = defender.FindItemOnLayer( Layer.TwoHanded );
-
-								Container pack = defender.Backpack;
-
-								if ( pack == null || toDisarm == null || !toDisarm.Movable )
-								{
-									attacker.SendLocalizedMessage( 1004001 ); // You cannot disarm your opponent.
-								}
-								else if ( CheckMove( attacker, SkillName.Tactiques ) )
-								{
-									StartMoveDelay( attacker );
-
-									attacker.Stam -= 15;
-									attacker.DisarmReady = false;
-
-									attacker.SendLocalizedMessage( 1004006 ); // You successfully disarm your opponent!
-									defender.SendLocalizedMessage( 1004007 ); // You have been disarmed!
-
-									pack.DropItem( toDisarm );
-								}
-								else
-								{
-									attacker.Stam -= 15;
-
-									attacker.SendLocalizedMessage( 1004004 ); // You failed in your attempt to disarm.
-									defender.SendLocalizedMessage( 1004005 ); // Your opponent tried to disarm you but failed.
-								}
-							}
-							else
-							{
-								attacker.SendLocalizedMessage( 1004003 ); // You are too fatigued to attempt anything.
-							}
-						}
-						else
-						{
-							attacker.SendLocalizedMessage( 1004002 ); // You are not skilled enough to disarm your opponent.
-							attacker.DisarmReady = false;
-						}
-					}
-					else
-					{
-						attacker.SendLocalizedMessage( 1004001 ); // You cannot disarm your opponent.
-					}
-				}
-			}
-
-			return base.OnSwing( attacker, defender );
-		}
-
-		/*public override void OnMiss( Mobile attacker, Mobile defender )
-		{
-			base.PlaySwingAnimation( attacker );
-		}*/
 
 		public override void Serialize( GenericWriter writer )
 		{
@@ -192,7 +61,7 @@ namespace Server.Items
 
 		private static bool CheckMove( Mobile m, SkillName other )
 		{
-			double wresValue = m.Skills[SkillName.ArmePoing].Value;
+			double wresValue = m.Skills[SkillName.Anatomie].Value;
 			double scndValue = m.Skills[other].Value;
 
 			/* 40% chance at 80, 80
@@ -220,7 +89,7 @@ namespace Server.Items
 			Mobile m = e.Mobile;
 
 			double armsValue = m.Skills[SkillName.Tactiques].Value;
-			double wresValue = m.Skills[SkillName.ArmePoing].Value;
+			double wresValue = m.Skills[SkillName.Anatomie].Value;
 
 			if ( !HasFreeHands( m ) )
 			{
@@ -245,7 +114,7 @@ namespace Server.Items
 			Mobile m = e.Mobile;
 
 			//double anatValue = m.Skills[SkillName.Anatomy].Value;
-			double wresValue = m.Skills[SkillName.ArmePoing].Value;
+			double wresValue = m.Skills[SkillName.Anatomie].Value;
 
 			if ( !HasFreeHands( m ) )
 			{

@@ -15,7 +15,7 @@ namespace Server.Items
 		private Map m_TargetMap;
 		private bool m_bDispellable;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Target
 		{
 			get
@@ -28,7 +28,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map TargetMap
 		{
 			get
@@ -41,7 +41,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Dispellable
 		{
 			get
@@ -122,19 +122,7 @@ namespace Server.Items
 		{
 			ClientFlags flags = m.NetState == null ? ClientFlags.None : m.NetState.Flags;
 
-			if ( Factions.Sigil.ExistsOn( m ) )
-			{
-				m.SendLocalizedMessage( 1061632 ); // You can't do that while carrying the sigil.
-			}
-			else if ( m_TargetMap == Map.Felucca && m is PlayerMobile && ((PlayerMobile)m).Young )
-			{
-				m.SendLocalizedMessage( 1049543 ); // You decide against traveling to Felucca while you are still young.
-			}
-			else if ( (m.Kills >= 5 && m_TargetMap != Map.Felucca) || ( m_TargetMap == Map.Tokuno && (flags & ClientFlags.Tokuno) == 0 ) || ( m_TargetMap == Map.Malas && (flags & ClientFlags.Malas) == 0 ) || ( m_TargetMap == Map.Ilshenar && (flags & ClientFlags.Ilshenar) == 0 ) )
-			{
-				m.SendLocalizedMessage( 1019004 ); // You are not allowed to travel there.
-			}
-			else if ( m.Spell != null )
+			if ( m.Spell != null )
 			{
 				m.SendLocalizedMessage( 1049616 ); // You are too busy to do that at the moment.
 			}
@@ -274,49 +262,49 @@ namespace Server.Items
 
 		private string m_MessageString;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GumpWidth
 		{
 			get{ return m_GumpWidth; }
 			set{ m_GumpWidth = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int GumpHeight
 		{
 			get{ return m_GumpHeight; }
 			set{ m_GumpHeight = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TitleColor
 		{
 			get{ return m_TitleColor; }
 			set{ m_TitleColor = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MessageColor
 		{
 			get{ return m_MessageColor; }
 			set{ m_MessageColor = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int TitleNumber
 		{
 			get{ return m_TitleNumber; }
 			set{ m_TitleNumber = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MessageNumber
 		{
 			get{ return m_MessageNumber; }
 			set{ m_MessageNumber = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string MessageString
 		{
 			get{ return m_MessageString; }

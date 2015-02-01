@@ -9,7 +9,7 @@ namespace Server.Items
 		private PotionEffect m_Type;
 		private int m_Held;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Held
 		{
 			get
@@ -27,7 +27,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PotionEffect Type
 		{
 			get

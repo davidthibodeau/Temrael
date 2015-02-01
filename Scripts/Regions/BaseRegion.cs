@@ -19,8 +19,6 @@ namespace Server.Regions
 
 	public class BaseRegion : Region
 	{
-		public virtual bool YoungProtected { get { return false; } }
-
 		public static void Configure()
 		{
 			Region.DefaultRegionType = typeof( BaseRegion );
@@ -78,11 +76,17 @@ namespace Server.Regions
 			return null;
 		}
 
+		public override void ComputeBaseLightLevels(Mobile m, out int global, out int personal )
+		{
+            global = LightCycle.ComputeLevelFor(m);
+            personal = m.LightLevel;
+		}
+
 		public override TimeSpan GetLogoutDelay( Mobile m )
 		{
 			if ( m_NoLogoutDelay )
 			{
-				if ( m.Aggressors.Count == 0 && m.Aggressed.Count == 0 && !m.Criminal )
+				if ( m.Aggressors.Count == 0 && m.Aggressed.Count == 0)
 					return TimeSpan.Zero;
 			}
 
@@ -119,17 +123,6 @@ namespace Server.Regions
 			}
 
 			return false;
-		}
-
-		public override void OnEnter(Mobile m)
-		{
-			if (m is PlayerMobile && ((PlayerMobile)m).Young)
-			{
-				if(!this.YoungProtected)
-				{
-					m.SendGump(new YoungDungeonWarning());
-				}
-			}
 		}
 
 		public override bool AcceptsSpawnsFrom( Region region )

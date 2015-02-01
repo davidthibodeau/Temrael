@@ -47,7 +47,7 @@ namespace Server.Items
 			attacker.SendLocalizedMessage( 1063360 ); // You baffle your target with a feint!
 			defender.SendLocalizedMessage( 1063361 ); // You were deceived by an attacker's feint!
 
-			attacker.FixedParticles( 0x3728, 1, 13, 0x7F3, 0x962, 0, EffectLayer.Waist );
+			Effects.SendTargetParticles(attacker, 0x3728, 1, 13, 0x7F3, 0x962, 0, EffectLayer.Waist );
 
 			Timer t = new FeintTimer( defender, (int)(20.0 + 3.0 * (Math.Max( attacker.Skills[SkillName.ArmePerforante].Value, attacker.Skills[SkillName.Tactiques].Value ) - 50.0) / 7.0) );	//20-50 % decrease
 

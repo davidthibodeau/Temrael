@@ -59,17 +59,14 @@ namespace Server.Mobiles
 
             SetDamage(10, 23);
 
-            SetSkill(SkillName.ArmeTranchante, 66.0, 97.5);
+            SetSkill(SkillName.Epee, 66.0, 97.5);
             //SetSkill(SkillName.Anatomy, 65.0, 87.5);
             SetSkill(SkillName.Concentration, 25.0, 47.5);
             SetSkill(SkillName.Soins, 65.0, 87.5);
             SetSkill(SkillName.Tactiques, 65.0, 87.5);
-            SetSkill(SkillName.ArmePoing, 15.0, 37.5);
+            SetSkill(SkillName.Anatomie, 15.0, 37.5);
             SetSkill(SkillName.Parer, 45.0, 60.5);
-            SetSkill(SkillName.Miracles, 85, 100);
-
-            Fame = 100;
-            Karma = 250;
+            SetSkill(SkillName.ArtMagique, 85, 100);
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());

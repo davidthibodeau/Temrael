@@ -11,12 +11,14 @@ namespace Server.Items
 		[Constructable]
 		public FlourSifter() : base( 0x103E )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 
 		[Constructable]
 		public FlourSifter( int uses ) : base( uses, 0x103E )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 

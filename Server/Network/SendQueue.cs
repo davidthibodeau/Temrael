@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: SendQueue.cs 80 2006-08-27 20:41:31Z krrios $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -104,22 +104,27 @@ namespace Server.Network {
 				if ( m_CoalesceBufferSize == value )
 					return;
 
-				if ( m_UnusedBuffers != null )
-					m_UnusedBuffers.Free();
+				BufferPool old = m_UnusedBuffers;
 
-				m_CoalesceBufferSize = value;
-				m_UnusedBuffers = new BufferPool( "Coalesced", 2048, m_CoalesceBufferSize );
+				lock (old) {
+					if ( m_UnusedBuffers != null )
+						m_UnusedBuffers.Free();
+
+					m_CoalesceBufferSize = value;
+					m_UnusedBuffers = new BufferPool( "Coalesced", 2048, m_CoalesceBufferSize );
+				}
 			}
 		}
 
 		public static byte[] AcquireBuffer() {
-			return m_UnusedBuffers.AcquireBuffer();
+			lock (m_UnusedBuffers)
+				return m_UnusedBuffers.AcquireBuffer();
 		}
 
 		public static void ReleaseBuffer( byte[] buffer ) {
-			if ( buffer != null && buffer.Length == m_CoalesceBufferSize ) {
-				m_UnusedBuffers.ReleaseBuffer( buffer );
-			}
+			lock (m_UnusedBuffers)
+				if ( buffer != null && buffer.Length == m_CoalesceBufferSize )
+					m_UnusedBuffers.ReleaseBuffer( buffer );
 		}
 
 		private Queue<Gram> _pending;
@@ -143,15 +148,9 @@ namespace Server.Network {
 		}
 
 		public Gram CheckFlushReady() {
-			Gram gram = null;
-
-			if ( _pending.Count == 0 && _buffered != null ) {
-				gram = _buffered;
-
-				_pending.Enqueue( _buffered );
-				_buffered = null;
-			}
-
+			Gram gram = _buffered;
+			_pending.Enqueue(_buffered);
+			_buffered = null;
 			return gram;
 		}
 
@@ -169,7 +168,7 @@ namespace Server.Network {
 			return gram;
 		}
 
-		private const int PendingCap = 96 * 1024;
+		private const int PendingCap = 256 * 1024;
 
 		public Gram Enqueue( byte[] buffer, int length ) {
 			return Enqueue( buffer, 0, length );
@@ -229,6 +228,7 @@ namespace Server.Network {
 		}
 	}
 
+	[Serializable]
 	public sealed class CapacityExceededException : Exception {
 		public CapacityExceededException()
 			: base( "Too much data pending." ) {

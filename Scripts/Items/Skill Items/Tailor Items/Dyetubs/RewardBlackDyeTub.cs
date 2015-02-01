@@ -2,13 +2,13 @@ using System;
 
 namespace Server.Items
 {
-	public class RewardBlackDyeTub : DyeTub, Engines.VeteranRewards.IRewardItem
+	public class RewardBlackDyeTub : DyeTub
 	{
 		public override int LabelNumber{ get{ return 1006008; } } // Black Dye Tub
 
 		private bool m_IsRewardItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsRewardItem
 		{
 			get{ return m_IsRewardItem; }
@@ -25,9 +25,6 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
-			if ( m_IsRewardItem && !Engines.VeteranRewards.RewardSystem.CheckIsUsableBy( from, this, null ) )
-				return;
-
 			base.OnDoubleClick( from );
 		}
 

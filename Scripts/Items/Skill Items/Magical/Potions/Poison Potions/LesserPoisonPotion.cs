@@ -13,6 +13,7 @@ namespace Server.Items
 		[Constructable]
 		public LesserPoisonPotion() : base( PotionEffect.PoisonLesser )
 		{
+            GoldValue = 9;
             Name = "Poison mineur";
 		}
 

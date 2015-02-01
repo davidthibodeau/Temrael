@@ -9,7 +9,7 @@ namespace Server.Scripts.UOArchitect
 	{
 		public static void Initialize()
 		{
-			OrbServer.Register("UOAR_MoveItems", typeof(MoveItemsCommand), AccessLevel.GameMaster, true);
+			OrbServer.Register("UOAR_MoveItems", typeof(MoveItemsCommand), AccessLevel.Batisseur, true);
 		}
 
 		public override void OnCommand(OrbClientInfo client, OrbCommandArgs cmdArgs)

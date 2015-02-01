@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public Carrot( int amount ) : base( amount, 0xc78 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -47,6 +48,7 @@ namespace Server.Items
 		[Constructable]
 		public Cabbage( int amount ) : base( amount, 0xc7b )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -80,6 +82,7 @@ namespace Server.Items
 		[Constructable]
 		public Onion( int amount ) : base( amount, 0xc6d )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -113,6 +116,7 @@ namespace Server.Items
 		[Constructable]
 		public Lettuce( int amount ) : base( amount, 0xc70 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -146,6 +150,7 @@ namespace Server.Items
 		[Constructable]
 		public Pumpkin( int amount ) : base( amount, 0xC6A )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 8;
 		}

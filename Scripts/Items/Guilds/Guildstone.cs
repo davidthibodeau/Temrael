@@ -3,7 +3,7 @@ using System.IO;
 using Server.Gumps;
 using Server.Guilds;
 using Server.Network;
-using Server.Factions;
+
 using Server.Multis;
 
 namespace Server.Items
@@ -183,27 +183,13 @@ namespace Server.Items
 			}
 			else if( m_Guild.Accepted.Contains( from ) )
 			{
-				#region Factions
-				PlayerState guildState = PlayerState.Find( m_Guild.Leader );
-				PlayerState targetState = PlayerState.Find( from );
-
-				Faction guildFaction = (guildState == null ? null : guildState.Faction);
-				Faction targetFaction = (targetState == null ? null : targetState.Faction);
-
-				if( guildFaction != targetFaction || (targetState != null && targetState.IsLeaving) )
-					return;
-
-				if( guildState != null && targetState != null )
-					targetState.Leaving = guildState.Leaving;
-				#endregion
-
 				m_Guild.Accepted.Remove( from );
 				m_Guild.AddMember( from );
 
 				GuildGump.EnsureClosed( from );
 				from.SendGump( new GuildGump( from, m_Guild ) );
 			}
-			else if( from.AccessLevel < AccessLevel.GameMaster && !m_Guild.IsMember( from ) )
+			else if( from.AccessLevel < AccessLevel.Batisseur && !m_Guild.IsMember( from ) )
 			{
 				from.Send( new MessageLocalized( Serial, ItemID, MessageType.Regular, 0x3B2, 3, 501158, "", "" ) ); // You are not a member ...
 			}

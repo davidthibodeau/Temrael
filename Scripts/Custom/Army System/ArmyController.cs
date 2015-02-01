@@ -26,36 +26,36 @@ namespace Server.Items
     {
 
         private Mobile m_Owner;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Mobile Owner { get { return m_Owner; } set { m_Owner = value; } }
 
         private bool m_War;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool War { get { return m_War; } set { m_War = value; } }
 
         private bool m_Free;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Free { get { return m_Free; } set { m_Free = value; } }
 
         private Point3D m_ArmyHome;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Point3D ArmyHome { get { return m_ArmyHome; } set { m_ArmyHome = value; } }
 
         private Direction m_ArmyDirection = Direction.North;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Direction ArmyDirection { get { return m_ArmyDirection; } set { m_ArmyDirection = value; } }
 
         private Direction m_ArmyFormationDirection = Direction.North;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public Direction ArmyFormationDirection { get { return m_ArmyFormationDirection; } set { m_ArmyFormationDirection = value; } }
 
         private ArmyFormationEnum m_CurrentFormation = ArmyFormationEnum.FullSquare;
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public ArmyFormationEnum CurrentFormation { get { return m_CurrentFormation; } set { m_CurrentFormation = value; } }
 
         private ArrayList Soldiers = new ArrayList();
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int ArmySize { get { return Soldiers.Count; } }
 
         [Constructable]
@@ -187,48 +187,49 @@ namespace Server.Items
             }
             UpdateAction();
         }
+        
+        //public bool GeoRecruit(Mobile from, BaseCreature soldier)
+        //{
 
-        public bool GeoRecruit(Mobile from, BaseCreature soldier)
-        {
-            if (!Soldiers.Contains(soldier))
-            {
-                    //BaseHire recruit = soldier as BaseHire;
-                    if (from is TMobile)
-                    {
-                        if (Soldiers.Count + 1 <= ((TMobile)from).GetAptitudeValue(Aptitude.Commandement))
-                        Soldiers.Add(soldier);
-                        soldier.ChangeAIType(AIType.AI_Army);
-                        soldier.Controlled = false;
-                        soldier.ControlMaster = null;
-                        from.SendMessage("{0} has joined the Army.", soldier.Name);
-                        //SetFormation(ArmyFormationEnum.Latest);
-                        //SetDirection(m_ArmyDirection);
-                        return true;
-                    }
-                    /*else if (Soldiers.Count + 1 <= CalculateMaxFollowers(from))
-                    {
-                        Soldiers.Add(soldier);
-                        soldier.ChangeAIType(AIType.AI_Army);
-                        soldier.Controlled = false;
-                        soldier.ControlMaster = null;
-                        from.SendMessage("{0} has joined the Army.", recruit.Title);
-                        //SetFormation(ArmyFormationEnum.Latest);
-                        //SetDirection(m_ArmyDirection);
-                        return true;
-                    }*/
-                    else
-                    {
-                        from.SendMessage("Vous avez {0} soldats et pouvez seulement en avoir {1}", ArmySize, ((TMobile)from).GetAptitudeValue(Aptitude.Commandement));
-                        //soldier.Say("You have {0} soldiers already, and can only have {1}!", ArmySize, CalculateMaxFollowers(from));
-                        return false;
-                    }
-            }
-            else
-            {
-                soldier.Say("Sir, I am already in the Army!");
-                return false;
-            }
-        }
+        //    if (!Soldiers.Contains(soldier))
+        //    {
+        //            //BaseHire recruit = soldier as BaseHire;
+        //            if (from is PlayerMobile)
+        //            {
+        //                if (Soldiers.Count + 1 <= ((PlayerMobile)from).GetAptitudeValue(Aptitude.Commandement))
+        //                Soldiers.Add(soldier);
+        //                soldier.ChangeAIType(AIType.AI_Army);
+        //                soldier.Controlled = false;
+        //                soldier.ControlMaster = null;
+        //                from.SendMessage("{0} has joined the Army.", soldier.Name);
+        //                //SetFormation(ArmyFormationEnum.Latest);
+        //                //SetDirection(m_ArmyDirection);
+        //                return true;
+        //            }
+        //            /*else if (Soldiers.Count + 1 <= CalculateMaxFollowers(from))
+        //            {
+        //                Soldiers.Add(soldier);
+        //                soldier.ChangeAIType(AIType.AI_Army);
+        //                soldier.Controlled = false;
+        //                soldier.ControlMaster = null;
+        //                from.SendMessage("{0} has joined the Army.", recruit.Title);
+        //                //SetFormation(ArmyFormationEnum.Latest);
+        //                //SetDirection(m_ArmyDirection);
+        //                return true;
+        //            }*/
+        //            else
+        //            {
+        //                from.SendMessage("Vous avez {0} soldats et pouvez seulement en avoir {1}", ArmySize, ((PlayerMobile)from).GetAptitudeValue(Aptitude.Commandement));
+        //                //soldier.Say("You have {0} soldiers already, and can only have {1}!", ArmySize, CalculateMaxFollowers(from));
+        //                return false;
+        //            }
+        //    }
+        //    else
+        //    {
+        //        soldier.Say("Sir, I am already in the Army!");
+        //        return false;
+        //    }
+        //}
 
         public void Recruit(Mobile from, BaseCreature soldier)
         {
@@ -279,30 +280,6 @@ namespace Server.Items
 
         private int CalculateMaxFollowers(Mobile from)
         {
-            //REMOVE ME: if (!TestBool) Console.WriteLine("About to calculate Max Army Size.");
-            for (int x = 0; x < FameLevels.Length; x++)
-            {
-                if (from.Fame >= FameLevels[x])
-                {
-                    #region Test Console Messages
-                    //REMOVE ME: if (!TestBool)
-                    //REMOVE ME: {
-                    //REMOVE ME:     Console.WriteLine("from.Fame - {0} is greater than or equal to FameLevels - {1}.",
-                    //REMOVE ME:         from.Fame.ToString(), FameLevels[x].ToString());
-                    //REMOVE ME:     Console.WriteLine("from.Followers = {0}.", from.Followers);
-                    //REMOVE ME:     Console.WriteLine("6 - from.Followers = {0}.",((int)(6 - from.Followers)).ToString());
-                    //REMOVE ME:     Console.WriteLine("ArmyLimit[{0}] = {1}.", x.ToString(), ArmyLimit[x].ToString());
-                    //REMOVE ME:     Console.WriteLine("So returning Army Size of {0}.", (ArmyLimit[x] * (6 - from.Followers) / 6));
-                    //REMOVE ME: }
-                    //REMOVE ME: TestBool = true;
-                    //REMOVE ME: Console.WriteLine("Returning Army Size of {0}.", (ArmyLimit[x]*(6 - from.Followers) / 6));
-                    #endregion
-                    return (ArmyLimit[x] * (6 - from.Followers) / 6);
-                }
-                //REMOVE ME: if (!TestBool) Console.WriteLine("Iteration {0}: FameLevels[x] is {1}. from.Fame is {2}, so go again.",
-                //REMOVE ME:    x.ToString(),FameLevels[x].ToString(),from.Fame.ToString());
-            }
-            //REMOVE ME: TestBool = true;
             return 0;
         }
 
@@ -495,7 +472,7 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from.AccessLevel >= AccessLevel.GameMaster)
+            if (from.AccessLevel >= AccessLevel.Batisseur)
                 m_Owner = from;
             if (m_Owner == null)
             {

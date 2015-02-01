@@ -51,32 +51,19 @@ namespace Server.Mobiles
 
             SetDamage(13, 24);
 
-            SetSkill(SkillName.ArmePoing, 15, 37);
+            SetSkill(SkillName.Anatomie, 15, 37);
             SetSkill(SkillName.Parer, 45, 60);
             SetSkill(SkillName.ArmeDistance, 66, 97);
             SetSkill(SkillName.ArtMagique, 62, 62);
-            SetSkill(SkillName.ArmeTranchante, 35, 57);
+            SetSkill(SkillName.Epee, 35, 57);
             SetSkill(SkillName.ArmePerforante, 15, 37);
             SetSkill(SkillName.Tactiques, 65, 87);
-
-            Fame = 100;
-            Karma = 125;
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
 
-            // Pick a random sword
-            switch (Utility.Random(2))
-            {
-                case 0: AddItem(new Bow()); break;
-                case 1: AddItem(new CompositeBow()); break;
-            }
 
-            AddItem(new RangerChest());
-            AddItem(new RangerArms());
-            AddItem(new RangerGloves());
-            AddItem(new RangerGorget());
-            AddItem(new RangerLegs());
+            AddItem(new GrandArc());
 
             PackItem(new Arrow(20));
             PackGold(10, 75);

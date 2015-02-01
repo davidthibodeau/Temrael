@@ -82,7 +82,7 @@ namespace Server.Gumps
 		{
 			Mobile from = sender.Mobile;
 
-			if ( from.AccessLevel < AccessLevel.Administrator )
+			if ( from.AccessLevel < AccessLevel.Coordinateur )
 				return;
 
 			TextRelay d = info.GetTextEntry( 0 );

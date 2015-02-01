@@ -23,7 +23,7 @@ namespace Server.Items
 
 		public static readonly bool Burnout = false;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Burning
 		{
 			get { return m_Burning; }
@@ -37,21 +37,21 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool BurntOut
 		{
 			get { return m_BurntOut; }
 			set { m_BurntOut = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Protected
 		{
 			get { return m_Protected; }
 			set { m_Protected = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan Duration
 		{
 			get

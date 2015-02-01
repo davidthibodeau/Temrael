@@ -424,6 +424,7 @@ namespace Server.Items
 		[Constructable]
 		public PaintsAndBrush() : base( 0xFC1 )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 

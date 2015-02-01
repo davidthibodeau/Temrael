@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: GumpTextEntryLimited.cs 77 2006-08-27 19:36:26Z krrios $
+ *   $Id$
  *
  ***************************************************************************/
 

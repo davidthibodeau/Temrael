@@ -17,7 +17,7 @@ namespace Server.Items
 
 		public override bool CheckSkills( Mobile from )
 		{
-			if( GetSkill( from, SkillName.ArmeTranchante ) < 50.0  && GetSkill( from, SkillName.ArmeContondante ) < 50.0 )
+			if( GetSkill( from, SkillName.Epee ) < 50.0  && GetSkill( from, SkillName.ArmeContondante ) < 50.0 )
 			{
 				from.SendLocalizedMessage( 1063347, "50" ); // You need ~1_SKILL_REQUIREMENT~ Bushido or Ninjitsu skill to perform that attack!
 				return false;
@@ -77,11 +77,11 @@ namespace Server.Items
 				if( !CheckMana( attacker, true ) )
 					return;
 
-				attacker.FixedEffect( 0x3728, 10, 15 );
+				Effects.SendTargetEffect(attacker, 0x3728, 10, 15);
 				attacker.PlaySound( 0x2A1 );
 
 				// 5-15 damage
-				int amount = (int)(10.0 * ((Math.Max( attacker.Skills[SkillName.ArmeTranchante].Value, attacker.Skills[SkillName.ArmeContondante].Value ) - 50.0) / 70.0 + 5));
+				int amount = (int)(10.0 * ((Math.Max( attacker.Skills[SkillName.Epee].Value, attacker.Skills[SkillName.ArmeContondante].Value ) - 50.0) / 70.0 + 5));
 
 				for( int i = 0; i < targets.Count; ++i )
 				{
@@ -109,7 +109,7 @@ namespace Server.Items
 		{
 			Mobile attacker = (Mobile)state;
 
-			attacker.FixedEffect( 0x3728, 10, 15 );
+			Effects.SendTargetEffect(attacker, 0x3728, 10, 15);
 			attacker.PlaySound( 0x2A1 );
 		}
 

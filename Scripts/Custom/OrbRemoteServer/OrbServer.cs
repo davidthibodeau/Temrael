@@ -14,7 +14,7 @@ namespace Server.Engines.OrbRemoteServer
 	class OrbServer
 	{
 		private static readonly int SERVER_PORT = 2594;
-		private static readonly AccessLevel REQUIRED_ACCESS_LEVEL = AccessLevel.GameMaster;
+		private static readonly AccessLevel REQUIRED_ACCESS_LEVEL = AccessLevel.Batisseur;
 		private static readonly string SERVER_VERSION = "";
 		private static readonly string SERVER_NAME = "UO Architect Server for RunUO 2.0";
 
@@ -34,6 +34,9 @@ namespace Server.Engines.OrbRemoteServer
 
 		static OrbServer()
 		{
+            if (Core.Balancing)
+                return;
+
 			StartServer();
 
 			OrbConnection.OnLogin += new OrbConnection.LoginEvent(OnLogin);
@@ -218,7 +221,7 @@ namespace Server.Engines.OrbRemoteServer
 			LoginCodes code = LoginCodes.Success;
 
 			//Console.WriteLine("OnValidateAccount");
-			IAccount account = Accounts.GetAccount(clientInfo.UserName);
+			IAccount account = Accounts.ServerAccounts.GetAccount(clientInfo.UserName);
 
 			if(account == null || account.CheckPassword(password) == false)
 			{

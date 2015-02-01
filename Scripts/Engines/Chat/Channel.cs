@@ -150,7 +150,7 @@ namespace Server.Engines.Chat
 				m_Users.Add( user );
 				user.CurrentChannel = this;
 				
-				if ( user.Mobile.AccessLevel >= AccessLevel.GameMaster || (!m_AlwaysAvailable && m_Users.Count == 1) )
+				if ( user.Mobile.AccessLevel >= AccessLevel.Batisseur || (!m_AlwaysAvailable && m_Users.Count == 1) )
 					AddModerator( user );
 
 				SendUsersTo( user );

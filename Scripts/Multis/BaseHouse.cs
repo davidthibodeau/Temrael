@@ -35,14 +35,14 @@ namespace Server.Multis
 		private DateTime m_LastRefreshed;
 		private bool m_RestrictDecay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime LastRefreshed
 		{
 			get{ return m_LastRefreshed; }
 			set{ m_LastRefreshed = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool RestrictDecay
 		{
 			get{ return m_RestrictDecay; }
@@ -66,14 +66,14 @@ namespace Server.Multis
 				if ( acct == null )
 					return Core.AOS ? DecayType.Condemned : DecayType.ManualRefresh;
 
-				if ( acct.AccessLevel >= AccessLevel.GameMaster )
+				if ( acct.AccessLevel >= AccessLevel.Batisseur )
 					return DecayType.Ageless;
 
 				for ( int i = 0; i < acct.Length; ++i )
 				{
 					Mobile mob = acct[i];
 
-					if ( mob != null && mob.AccessLevel >= AccessLevel.GameMaster )
+					if ( mob != null && mob.AccessLevel >= AccessLevel.Batisseur )
 						return DecayType.Ageless;
 				}
 
@@ -128,7 +128,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual DecayLevel DecayLevel
 		{
 			get
@@ -209,7 +209,7 @@ namespace Server.Multis
 
 		public virtual TimeSpan RestrictedPlacingTime { get { return TimeSpan.FromHours( 1.0 ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual double BonusStorageScalar { get { return (Core.ML ? 1.2 : 1.0); } }
 
 		private bool m_Public;
@@ -914,7 +914,7 @@ namespace Server.Multis
 
 		public static bool CheckAccessible( Mobile m, Item item )
 		{
-			if ( m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m.AccessLevel >= AccessLevel.Batisseur )
 				return true; // Staff can access anything
 
 			BaseHouse house = FindHouseAt( item );
@@ -998,40 +998,38 @@ namespace Server.Multis
 				case SecureAccessResult.Inaccessible: return false;
 			}
 
-			if ( !IsLockedDown( item ) )
-				return true;
-			else if ( from.AccessLevel >= AccessLevel.GameMaster )
-				return true;
-			else if ( item is Runebook )
-				return true;
-			else if ( item is ISecurable )
-				return HasSecureAccess( from, ((ISecurable)item).Level );
-			else if ( item is Container )
-				return IsCoOwner( from );
-			else if ( item.Stackable )
-				return true;
-			else if ( item is BaseLight )
-				return IsFriend( from );
-			else if ( item is PotionKeg )
-				return IsFriend( from );
-			else if ( item is BaseBoard )
-				return true;
-			else if ( item is Dices )
-				return true;
-			else if ( item is RecallRune )
-				return true;
-			else if ( item is TreasureMap )
-				return true;
-			else if ( item is Clock )
-				return true;
-			else if ( item is BaseInstrument )
-				return true;
-			else if ( item is Dyes || item is DyeTub )
-				return true;
-			else if ( item is VendorRentalContract )
-				return true;
-			else if ( item is RewardBrazier )
-				return true;
+            if (!IsLockedDown(item))
+                return true;
+            else if (from.AccessLevel >= AccessLevel.Batisseur)
+                return true;
+            else if (item is Runebook)
+                return true;
+            else if (item is ISecurable)
+                return HasSecureAccess(from, ((ISecurable)item).Level);
+            else if (item is Container)
+                return IsCoOwner(from);
+            else if (item.Stackable)
+                return true;
+            else if (item is BaseLight)
+                return IsFriend(from);
+            else if (item is PotionKeg)
+                return IsFriend(from);
+            else if (item is BaseBoard)
+                return true;
+            else if (item is Dices)
+                return true;
+            else if (item is RecallRune)
+                return true;
+            else if (item is TreasureMap)
+                return true;
+            else if (item is Clock)
+                return true;
+            else if (item is BaseInstrument)
+                return true;
+            else if (item is Dyes || item is DyeTub)
+                return true;
+            else if (item is VendorRentalContract)
+                return true;
 
 			return false;
 		}
@@ -1257,12 +1255,12 @@ namespace Server.Multis
 			return door;
 		}
 
-		public BaseDoor AddEastDoor( int x, int y, int z, uint k )
+        public BaseDoor AddEastDoor(int x, int y, int z, long k)
 		{
 			return AddEastDoor( true, x, y, z, k );
 		}
 
-		public BaseDoor AddEastDoor( bool wood, int x, int y, int z, uint k )
+        public BaseDoor AddEastDoor(bool wood, int x, int y, int z, long k)
 		{
 			BaseDoor door = MakeDoor( wood, DoorFacing.SouthCW );
 
@@ -1274,12 +1272,12 @@ namespace Server.Multis
 			return door;
 		}
 
-		public BaseDoor AddSouthDoor( int x, int y, int z, uint k )
+        public BaseDoor AddSouthDoor(int x, int y, int z, long k)
 		{
 			return AddSouthDoor( true, x, y, z, k );
 		}
 
-		public BaseDoor AddSouthDoor( bool wood, int x, int y, int z, uint k )
+        public BaseDoor AddSouthDoor(bool wood, int x, int y, int z, long k)
 		{
 			BaseDoor door = MakeDoor( wood, DoorFacing.WestCW );
 
@@ -1291,12 +1289,12 @@ namespace Server.Multis
 			return door;
 		}
 
-		public BaseDoor[] AddSouthDoors( int x, int y, int z, uint k )
+		public BaseDoor[] AddSouthDoors( int x, int y, int z, long k )
 		{
 			return AddSouthDoors( true, x, y, z, k );
 		}
 
-		public BaseDoor[] AddSouthDoors( bool wood, int x, int y, int z, uint k )
+        public BaseDoor[] AddSouthDoors(bool wood, int x, int y, int z, long k)
 		{
 			BaseDoor westDoor = MakeDoor( wood, DoorFacing.WestCW );
 			BaseDoor eastDoor = MakeDoor( wood, DoorFacing.EastCCW );
@@ -1316,9 +1314,9 @@ namespace Server.Multis
 			return new BaseDoor[2]{ westDoor, eastDoor };
 		}
 
-		public uint CreateKeys( Mobile m )
+		public long CreateKeys( Mobile m )
 		{
-			uint value = Key.RandomValue();
+            long value = Key.RandomValue();
 
 			if ( !IsAosRules )
 			{
@@ -1328,8 +1326,8 @@ namespace Server.Multis
 				packKey.KeyValue = value;
 				bankKey.KeyValue = value;
 
-				packKey.LootType = LootType.Newbied;
-				bankKey.LootType = LootType.Newbied;
+				packKey.LootType = LootType.Blessed;
+				bankKey.LootType = LootType.Blessed;
 
 				BankBox box = m.BankBox;
 
@@ -1488,10 +1486,6 @@ namespace Server.Multis
 				{
 					m.SendLocalizedMessage( 1005525 );//That is not in your house
 				}
-				else if ( Ethics.Ethic.IsImbued( item ) )
-				{
-					m.SendLocalizedMessage( 1005377 );//You cannot lock that down
-				}
 				else if ( IsSecure( rootItem ) )
 				{
 					m.SendLocalizedMessage( 501737 ); // You need not lock down items in a secure container.
@@ -1565,7 +1559,7 @@ namespace Server.Multis
 				bool valid = m_House != null && Sextant.Format( m_House.Location, m_House.Map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth );
 
 				if ( valid )
-					location = String.Format( "{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+					location = String.Format( "{0}Â° {1}'{2}, {3}Â° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				else
 					location = "unknown";
 
@@ -1801,9 +1795,6 @@ namespace Server.Multis
 				item.PublicOverheadMessage( Server.Network.MessageType.Label, 0x3B2, 501657 );//[no longer locked down]
 				SetLockdown( item, false );
 				//TidyItemList( m_LockDowns );
-
-				if ( item is RewardBrazier )
-					((RewardBrazier) item).TurnOff();
 			}
 			else if ( IsSecure( item ) )
 			{
@@ -1885,7 +1876,7 @@ namespace Server.Multis
 
 		public virtual bool IsCombatRestricted( Mobile m )
 		{
-			if ( m == null || !m.Player || m.AccessLevel >= AccessLevel.GameMaster || !IsAosRules || ( m_Owner != null && m_Owner.AccessLevel >= AccessLevel.GameMaster ))
+			if ( m == null || !m.Player || m.AccessLevel >= AccessLevel.Batisseur || !IsAosRules || ( m_Owner != null && m_Owner.AccessLevel >= AccessLevel.Batisseur ))
 				return false;
 
 			for ( int i = 0; i < m.Aggressed.Count; ++i )
@@ -1904,7 +1895,7 @@ namespace Server.Multis
 
 		public bool HasSecureAccess( Mobile m, SecureLevel level )
 		{
-			if ( m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			if ( IsCombatRestricted( m ) )
@@ -2644,7 +2635,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get
@@ -2684,14 +2675,14 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Visits
 		{
 			get{ return m_Visits; }
 			set{ m_Visits = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Public
 		{
 			get
@@ -2713,7 +2704,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxSecures
 		{
 			get
@@ -2726,7 +2717,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D BanLocation
 		{
 			get
@@ -2739,7 +2730,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D RelativeBanLocation
 		{
 			get
@@ -2753,7 +2744,7 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxLockDowns
 		{
 			get
@@ -3122,7 +3113,7 @@ namespace Server.Multis
 			if ( m == null )
 				return false;
 
-			if ( m == m_Owner || m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m == m_Owner || m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			return IsAosRules && CheckAccount( m, m_Owner );
@@ -3151,7 +3142,7 @@ namespace Server.Multis
 		{
 			if ( m_Doors != null )
 			{
-				uint keyValue = 0;
+				long keyValue = 0;
 
 				for ( int i = 0; keyValue == 0 && i < m_Doors.Count; ++i )
 				{
@@ -3167,7 +3158,7 @@ namespace Server.Multis
 
 		public void ChangeLocks( Mobile m )
 		{
-			uint keyValue = CreateKeys( m );
+			long keyValue = CreateKeys( m );
 
 			if ( m_Doors != null )
 			{
@@ -3205,7 +3196,7 @@ namespace Server.Multis
 
 		public virtual int DefaultPrice{ get{ return 0; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Price{ get{ return m_Price; } set{ m_Price = value; } }
 
 		public virtual HouseDeed GetDeed()

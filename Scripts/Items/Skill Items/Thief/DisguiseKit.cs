@@ -3,9 +3,6 @@ using System.Collections;
 using Server;
 using Server.Gumps;
 using Server.Spells;
-using Server.Spells.Fifth;
-using Server.Spells.Seventh;
-using Server.Spells.Necromancy;
 using Server.Mobiles;
 using Server.Network;
 using Server.SkillHandlers;
@@ -19,6 +16,7 @@ namespace Server.Items
 		[Constructable]
 		public DisguiseKit() : base( 0xE05 )
 		{
+            GoldValue = 17;
 			Weight = 1.0;
 		}
 
@@ -49,30 +47,11 @@ namespace Server.Items
 				// That must be in your pack for you to use it.
 				from.SendLocalizedMessage( 1042001 );
 			}
-			else if ( pm == null || pm.NpcGuild != NpcGuild.ThievesGuild )
-			{
-				// Only Members of the thieves guild are trained to use this item.
-				from.SendLocalizedMessage( 501702 );
-			}
-			else if ( Stealing.SuspendOnMurder && pm.Kills > 0 )
-			{
-				// You are currently suspended from the thieves guild.  They would frown upon your actions.
-				from.SendLocalizedMessage( 501703 );
-			}
 			else if ( !from.CanBeginAction( typeof( IncognitoSpell ) ) )
 			{
 				// You cannot disguise yourself while incognitoed.
 				from.SendLocalizedMessage( 501704 );
 			}
-			else if ( Factions.Sigil.ExistsOn( from ) )
-			{
-				from.SendLocalizedMessage( 1010465 ); // You cannot disguise yourself while holding a sigil
-			}
-			/*else if ( TransformationSpellHelper.UnderTransformation( from ) )
-			{
-				// You cannot disguise yourself while in that form.
-				from.SendLocalizedMessage( 1061634 );
-			}*/
 			else if ( from.BodyMod == 183 || from.BodyMod == 184 )
 			{
 				// You cannot disguise yourself while wearing body paint
@@ -89,12 +68,6 @@ namespace Server.Items
 			}
 
 			return false;
-		}
-
-		public override void OnDoubleClick( Mobile from )
-		{
-			if ( ValidateUse( from ) )
-				from.SendGump( new DisguiseGump( from, this, true, false ) );
 		}
 	}
 

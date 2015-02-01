@@ -26,7 +26,7 @@ namespace Server.Items
         {
             if (Locked && !Open && UseLocks())
             {
-                if (from.AccessLevel >= AccessLevel.GameMaster)
+                if (from.AccessLevel >= AccessLevel.Batisseur)
                 {
                     from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 502502); // That is locked, but you open it with your godly powers.
                     //from.Send( new MessageLocalized( Serial, ItemID, MessageType.Regular, 0x3B2, 3, 502502, "", "" ) ); // That is locked, but you open it with your godly powers.

@@ -14,7 +14,7 @@ namespace Server.Gumps
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "ViewHouses", AccessLevel.GameMaster, new CommandEventHandler( ViewHouses_OnCommand ) );
+			CommandSystem.Register( "ViewHouses", AccessLevel.Batisseur, new CommandEventHandler( ViewHouses_OnCommand ) );
 		}
 
 		[Usage( "ViewHouses" )]
@@ -136,7 +136,7 @@ namespace Server.Gumps
 				bool valid = Sextant.Format( sel.Location, map, ref xLong, ref yLat, ref xMins, ref yMins, ref xEast, ref ySouth );
 
 				if ( valid )
-					location = String.Format( "{0}° {1}'{2}, {3}° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
+					location = String.Format( "{0}Â° {1}'{2}, {3}Â° {4}'{5}", yLat, yMins, ySouth ? "S" : "N", xLong, xMins, xEast ? "E" : "W" );
 				else
 					location = "unknown";
 

@@ -71,21 +71,21 @@ namespace Server.Items
 
 		private Mobile m_Crafter;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public RepairSkillType RepairSkill
 		{
 			get { return m_Skill; }
 			set { m_Skill = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double SkillLevel
 		{
 			get { return m_SkillLevel; }
 			set { m_SkillLevel = Math.Max( Math.Min( value, 120.0 ), 0 ) ; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get { return m_Crafter; }
@@ -200,7 +200,7 @@ namespace Server.Items
 			if( !m.Region.IsPartOf( typeof( TownRegion ) ) )
 				return false;
 
-			return Server.Factions.Faction.IsNearType( m, RepairSkillInfo.GetInfo( m_Skill ).NearbyTypes, 6 );
+            return true;
 		}
 
 		public override void Serialize( GenericWriter writer )

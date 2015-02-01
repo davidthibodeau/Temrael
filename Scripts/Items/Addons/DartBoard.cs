@@ -63,7 +63,7 @@ namespace Server.Items
 			}
 
 			from.Animate( from.Mounted ? 26 : 9, 7, 1, true, false, 0 );
-			from.MovingEffect( this, knife.ItemID, 7, 1, false, false );
+			Effects.SendMovingEffect(from, this, knife.ItemID, 7, 1, false, false );
 			from.PlaySound( 0x238 );
 
 			double rand = Utility.RandomDouble();

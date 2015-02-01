@@ -12,11 +12,13 @@ namespace Server.Items
 		[Constructable]
 		public NoxCrystal() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]
 		public NoxCrystal( int amount ) : base( 0xF8E, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public NoxCrystal( Serial serial ) : base( serial )

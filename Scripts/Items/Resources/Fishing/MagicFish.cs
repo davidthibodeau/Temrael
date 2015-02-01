@@ -40,7 +40,7 @@ namespace Server.Items
 			}
 			else if ( Apply( from ) )
 			{
-				from.FixedEffect( 0x375A, 10, 15 );
+				Effects.SendTargetEffect(from, 0x375A, 10, 15);
 				from.PlaySound( 0x1E7 );
 				from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 501774 ); // You swallow the fish whole!
 				Delete();

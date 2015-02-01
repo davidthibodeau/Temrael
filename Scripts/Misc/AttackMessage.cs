@@ -9,7 +9,7 @@ namespace Server.Misc
 	public class AttackMessage
 	{
 		private const string AggressorFormat = "Vous attaquez !";
-		private const string AggressedFormat = "Vous êtes sous attaque !";
+		private const string AggressedFormat = "Vous Ãªtes sous attaque !";
 		private const int Hue = 0x22;
 
 		private static TimeSpan Delay = TimeSpan.FromMinutes( 1.0 );

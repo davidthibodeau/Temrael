@@ -12,11 +12,13 @@ namespace Server.Items
 		[Constructable]
 		public Ginseng() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]
 		public Ginseng( int amount ) : base( 0xF85, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public Ginseng( Serial serial ) : base( serial )

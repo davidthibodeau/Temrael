@@ -3,8 +3,18 @@ using Server;
 
 namespace Server.Items
 {
-	public class Tourmaline : Item
+    public class Tourmaline : BaseGem
 	{
+        public override int m_Couleur
+        {
+            get { return 2125; }
+        }
+        
+        public override double m_SkillReq
+        {
+            get { return 45; }
+        }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }
@@ -26,7 +36,6 @@ namespace Server.Items
 		public Tourmaline( Serial serial ) : base( serial )
 		{
 		}
-
 		
 
 		public override void Serialize( GenericWriter writer )

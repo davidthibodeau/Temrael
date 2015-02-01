@@ -6,7 +6,6 @@ namespace Server.Mobiles
 {
 	public class Samurai : BaseCreature
 	{
-		public override bool CanTeach{ get{ return true; } }
 		public override bool ClickTitle{ get{ return false; } }
 
 		[Constructable]
@@ -19,7 +18,7 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.ArmsLore, 64.0, 80.0 );
 			//SetSkill( SkillName.Bushido, 64.0, 85.0 );
 			SetSkill( SkillName.Parer, 64.0, 80.0 );
-			SetSkill( SkillName.ArmeTranchante, 64.0, 85.0 );
+			SetSkill( SkillName.Epee, 64.0, 85.0 );
 
 			SpeechHue = Utility.RandomDyedHue();
 
@@ -36,30 +35,6 @@ namespace Server.Mobiles
 				Name = NameList.RandomName( "male" );
 			}
 
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0:	AddItem( new Lajatang() );	break;
-				case 1:	AddItem( new Wakizashi() );	break;
-				case 2:	AddItem( new NoDachi() );	break;
-			}
-
-			switch ( Utility.Random( 3 ) )
-			{
-				case 0:	AddItem( new LeatherSuneate() );	break;
-				case 1:	AddItem( new PlateSuneate() );		break;
-				case 2:	AddItem( new StuddedHaidate() );	break;
-			}
-
-			switch ( Utility.Random( 4 ) )
-			{
-				case 0:	AddItem( new LeatherJingasa() );		break;
-				case 1:	AddItem( new ChainHatsuburi() );		break;
-				case 2:	AddItem( new HeavyPlateJingasa() );		break;
-				case 3:	AddItem( new DecorativePlateKabuto() );	break;
-			}
-
-			AddItem( new LeatherDo() );
-			AddItem( new LeatherHiroSode() );
 			AddItem( new SamuraiTabi( Utility.RandomNondyedHue() ) ); // TODO: Hue
 
 			int hairHue = Utility.RandomNondyedHue();

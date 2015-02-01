@@ -12,7 +12,6 @@ namespace Server.Regions
 {
     public class TavernRegion : Region
     {
-        public virtual Races RaceType { get { return Races.Aucun; } }
         public override MusicName DefaultMusic { get { return MusicName.Tavern04; } }
             
         public TavernRegion(XmlElement xml, Map map, Region parent) : base(xml, map, parent)
@@ -21,7 +20,7 @@ namespace Server.Regions
 
         public override void OnEnter(Mobile m)
         {
-            m.SendMessage("Vous pénétrez une région reposante.");
+            m.SendMessage("Vous pÃ©nÃ©trez une rÃ©gion reposante.");
         }
 
         public override void OnExit(Mobile m)
@@ -53,13 +52,13 @@ namespace Server.Misc
 
         public static void Decay()
         {
-            foreach (NetState state in NetState.Instances)
-            {
-                Mobile m = state.Mobile;
-
-                if (m is TMobile && (m.Region is TavernRegion || m.Region is HouseRegion || IsInCampFireRange(m)))
-                    FatigueDecay((TMobile)m);
-            }
+//            foreach (NetState state in NetState.Instances)
+//            {
+//                Mobile m = state.Mobile;
+//
+//                if (m is PlayerMobile && (m.Region is TavernRegion || m.Region is HouseRegion || IsInCampFireRange(m)))
+//                    FatigueDecay((PlayerMobile)m);
+//            }
         }
 
         public static bool IsInCampFireRange(Mobile m)
@@ -71,16 +70,6 @@ namespace Server.Misc
             }
 
             return false;
-        }
-
-        private static void FatigueDecay(TMobile m)
-        {
-            double points = 42;
-
-            m.Fatigue += (-1 * (int)(points / 7));
-
-            if (m.Fatigue < 0)
-                m.Fatigue = 0;
         }
     }
 }

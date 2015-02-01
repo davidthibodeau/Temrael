@@ -30,6 +30,8 @@ namespace Server.Items
 		[Constructable]
 		public Lantern() : base( 0xA25 )
 		{
+            GoldValue = 6;
+
 			if ( Burnout )
 				Duration = TimeSpan.FromMinutes( 20 );
 			else

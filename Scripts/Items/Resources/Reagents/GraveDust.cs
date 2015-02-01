@@ -12,11 +12,13 @@ namespace Server.Items
 		[Constructable]
 		public GraveDust() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]
 		public GraveDust( int amount ) : base( 0xF8F, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public GraveDust( Serial serial ) : base( serial )

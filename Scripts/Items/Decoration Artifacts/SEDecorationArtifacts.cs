@@ -1418,7 +1418,7 @@ namespace Server.Items
 	{
 		public override int ArtifactRarity{ get{ return 3; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsOn
 		{
 			get{ return this.ItemID == 0x24BF; }

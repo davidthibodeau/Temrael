@@ -134,7 +134,7 @@ namespace Server.Items
 			Ankhs.GetContextMenuEntries( from, this, list );
 		}
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get{ return base.Hue; }
@@ -233,7 +233,7 @@ namespace Server.Items
 				Ankhs.GetContextMenuEntries( from, this, list );
 			}
 
-			[Hue, CommandProperty( AccessLevel.GameMaster )]
+			[Hue, CommandProperty( AccessLevel.Batisseur )]
 			public override int Hue
 			{
 				get{ return base.Hue; }
@@ -302,7 +302,7 @@ namespace Server.Items
 			Ankhs.GetContextMenuEntries( from, this, list );
 		}
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get{ return base.Hue; }
@@ -403,7 +403,7 @@ namespace Server.Items
 				Ankhs.GetContextMenuEntries( from, this, list );
 			}
 
-			[Hue, CommandProperty( AccessLevel.GameMaster )]
+			[Hue, CommandProperty( AccessLevel.Batisseur )]
 			public override int Hue
 			{
 				get{ return base.Hue; }

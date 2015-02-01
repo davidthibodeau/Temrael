@@ -53,13 +53,13 @@ namespace Server.Items
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime Created
 		{
 			get{ return m_Created; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CampfireStatus Status
 		{
 			get

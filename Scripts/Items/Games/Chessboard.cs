@@ -10,6 +10,7 @@ namespace Server.Items
 		[Constructable]
 		public Chessboard() : base( 0xFA6 )
 		{
+            GoldValue = 9;
 		}
 
 		public override void CreatePieces()

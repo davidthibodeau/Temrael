@@ -12,11 +12,13 @@ namespace Server.Items
 		[Constructable]
 		public PigIron() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]
 		public PigIron( int amount ) : base( 0xF8A, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public PigIron( Serial serial ) : base( serial )

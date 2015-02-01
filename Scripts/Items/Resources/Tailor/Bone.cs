@@ -3,11 +3,26 @@ using Server.Items;
 
 namespace Server.Items
 {
-    public abstract class BaseBone : Item
+    public abstract class BaseBone : Item, IExtractable
     {
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        public double getSkillReq
+        {
+            get { return CraftResources.GetSkill(m_Resource); }
+        }
+        #endregion
+
         private CraftResource m_Resource;
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public CraftResource Resource
         {
             get { return m_Resource; }
@@ -40,6 +55,8 @@ namespace Server.Items
                         break;
                     }
             }
+
+            Hue = CraftResources.GetHue(m_Resource);
         }
 
         public BaseBone(CraftResource resource)
@@ -277,7 +294,7 @@ namespace Server.Items
         public DesertiqueBone(int amount)
             : base(CraftResource.DesertiqueBones, amount)
         {
-            Name = "Os Désertique";
+            Name = "Os DÃ©sertique";
         }
 
         public DesertiqueBone(Serial serial)
@@ -382,7 +399,7 @@ namespace Server.Items
         public GeantBone(int amount)
             : base(CraftResource.GeantBones, amount)
         {
-            Name = "Os Géant";
+            Name = "Os GÃ©ant";
         }
 
         public GeantBone(Serial serial)
@@ -592,7 +609,7 @@ namespace Server.Items
         public DemonBone(int amount)
             : base(CraftResource.DemonBones, amount)
         {
-            Name = "Os Démoniaque";
+            Name = "Os DÃ©moniaque";
         }
 
         public DemonBone(Serial serial)
@@ -633,76 +650,6 @@ namespace Server.Items
         public DragonBone(Serial serial)
             : base(serial)
         {
-        }
-
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-
-            writer.Write((int)0); // version
-        }
-
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
-
-            int version = reader.ReadInt();
-        }
-    }
-
-    public class BalronBone : BaseBone
-    {
-        [Constructable]
-        public BalronBone()
-            : this(1)
-        {
-        }
-
-        [Constructable]
-        public BalronBone(int amount)
-            : base(CraftResource.BalronBones, amount)
-        {
-            Name = "Os Balronique";
-        }
-
-        public BalronBone(Serial serial)
-            : base(serial)
-        {
-        }
-
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-
-            writer.Write((int)0); // version
-        }
-
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
-
-            int version = reader.ReadInt();
-        }
-    }
-
-    public class WyrmBone : BaseBone
-    {
-        [Constructable]
-        public WyrmBone()
-            : this(1)
-        {
-        }
-
-        [Constructable]
-        public WyrmBone(int amount)
-            : base(CraftResource.WyrmBones, amount)
-        {
-        }
-
-        public WyrmBone(Serial serial)
-            : base(serial)
-        {
-            Name = "Os Wyrmique";
         }
 
         public override void Serialize(GenericWriter writer)

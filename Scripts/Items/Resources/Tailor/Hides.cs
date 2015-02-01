@@ -8,7 +8,7 @@ namespace Server.Items
 	{
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource; }
@@ -48,6 +48,7 @@ namespace Server.Items
 					break;
 				}
 			}
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 
 		public BaseHides( CraftResource resource ) : this( resource, 1 )
@@ -150,6 +151,7 @@ namespace Server.Items
 		[Constructable]
 		public Hides( int amount ) : base( CraftResource.RegularLeather, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public Hides( Serial serial ) : base( serial )

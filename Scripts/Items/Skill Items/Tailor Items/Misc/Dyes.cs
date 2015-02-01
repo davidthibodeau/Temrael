@@ -10,6 +10,7 @@ namespace Server.Items
 		[Constructable]
 		public Dyes() : base( 0xFA9 )
 		{
+            GoldValue = 6;
 			Weight = 3.0;
 		}
 
@@ -62,10 +63,6 @@ namespace Server.Items
                     {
                         from.SendGump(new TeintureGump(from, TeintureTabs.Baies, tub));
                     }
-                    else if (tub is BlackDyeTub)
-                    {
-                        from.SendLocalizedMessage(1010092); // You can not use this on a black dye tub.
-                    }
                     else
                     {
                         from.SendMessage("That dye tub may not be redyed.");
@@ -77,60 +74,5 @@ namespace Server.Items
                 }
             }
         }
-
-		/*private class InternalTarget : Target
-		{
-			public InternalTarget() : base( 1, false, TargetFlags.None )
-			{
-			}
-
-			private class InternalPicker : HuePicker
-			{
-				private DyeTub m_Tub;
-
-				public InternalPicker( DyeTub tub ) : base( tub.ItemID )
-				{
-					m_Tub = tub;
-				}
-
-				public override void OnResponse( int hue )
-				{
-					m_Tub.DyedHue = hue;
-				}
-			}
-
-			private static void SetTubHue( Mobile from, object state, int hue )
-			{
-				((DyeTub)state).DyedHue = hue;
-			}
-
-			protected override void OnTarget( Mobile from, object targeted )
-			{
-				if ( targeted is DyeTub )
-				{
-					DyeTub tub = (DyeTub) targeted;
-
-					if ( tub.Redyable )
-					{
-						if ( tub.CustomHuePicker == null )
-							from.SendHuePicker( new InternalPicker( tub ) );
-						else
-							from.SendGump( new CustomHuePickerGump( from, tub.CustomHuePicker, new CustomHuePickerCallback( SetTubHue ), tub ) );
-					}
-					else if ( tub is BlackDyeTub )
-					{
-						from.SendLocalizedMessage( 1010092 ); // You can not use this on a black dye tub.
-					}
-					else
-					{
-						from.SendMessage( "That dye tub may not be redyed." );
-					}
-				}
-				else
-				{
-					from.SendLocalizedMessage( 500857 ); // Use this on a dye tub.
-				}
-			}
-		}*/
 	}
 }

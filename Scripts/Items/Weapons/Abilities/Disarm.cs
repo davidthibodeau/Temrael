@@ -40,7 +40,7 @@ namespace Server.Items
 			if ( weapon == null )
 				return false;
 
-			return weapon.Skill != SkillName.ArmePoing;
+			return weapon.Skill != SkillName.Anatomie;
 		}
 
 		public static readonly TimeSpan BlockEquipDuration = TimeSpan.FromSeconds( 5.0 );
@@ -73,7 +73,7 @@ namespace Server.Items
 				defender.SendLocalizedMessage( 1060093 ); // Your weapon has been disarmed!
 
 				defender.PlaySound( 0x3B9 );
-				defender.FixedParticles( 0x37BE, 232, 25, 9948, EffectLayer.LeftHand );
+				Effects.SendTargetParticles(defender, 0x37BE, 232, 25, 9948, EffectLayer.LeftHand );
 
 				pack.DropItem( toDisarm );
 

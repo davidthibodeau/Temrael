@@ -7,6 +7,7 @@ namespace Server.Items
 		[Constructable]
 		public BambooFlute() : base( 0x2805, 0x504, 0x503 )
 		{
+            GoldValue = 15;
 			Weight = 2.0;
 		}
 

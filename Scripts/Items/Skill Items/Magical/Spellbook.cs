@@ -20,14 +20,14 @@ namespace Server.Items
 		Arcanist
 	}
 
-	public class Spellbook : Item, ICraftable, ISlayer
+	public class Spellbook : Item, ICraftable
 	{
 		public static void Initialize()
 		{
 			EventSink.OpenSpellbookRequest += new OpenSpellbookRequestEventHandler( EventSink_OpenSpellbookRequest );
 			EventSink.CastSpellRequest += new CastSpellRequestEventHandler( EventSink_CastSpellRequest );
 
-			CommandSystem.Register( "AllSpells", AccessLevel.GameMaster, new CommandEventHandler( AllSpells_OnCommand ) );
+			CommandSystem.Register( "AllSpells", AccessLevel.Batisseur, new CommandEventHandler( AllSpells_OnCommand ) );
 		}
 
 		[Usage( "AllSpells" )]
@@ -42,22 +42,31 @@ namespace Server.Items
 		{
 			if ( obj is Spellbook )
 			{
-				Spellbook book = (Spellbook)obj;
+                Spellbook book = (Spellbook)obj;
 
-				if ( book.BookCount == 64 )
-					book.Content = ulong.MaxValue;
-				else
-					book.Content = (1ul << book.BookCount) - 1;
+                //if ( book.BookCount == 64 )
+                //    book.Content = ulong.MaxValue;
+                //else
+                //    book.Content = (1ul << book.BookCount) - 1;
 
-				from.SendMessage( "The spellbook has been filled." );
+                //from.SendMessage( "The spellbook has been filled." );
 
-				CommandLogging.WriteLine( from, "{0} {1} filling spellbook {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( book ) );
+                //CommandLogging.WriteLine( from, "{0} {1} filling spellbook {2}", from.AccessLevel, CommandLogging.Format( from ), CommandLogging.Format( book ) );
+
+                for (int i = 0; i <= 1000; i++)
+                {
+                    book.OnDragDrop(from, new SpellScroll(i, 0));
+                }
+
+                from.SendMessage( "The spellbook has been filled." );
 			}
 			else
 			{
 				from.BeginTarget( -1, false, TargetFlags.None, new TargetCallback( AllSpells_OnTarget ) );
 				from.SendMessage( "That is not a spellbook. Try again." );
 			}
+
+
 		}
 
 		private static void EventSink_OpenSpellbookRequest( OpenSpellbookRequestEventArgs e )
@@ -269,31 +278,6 @@ namespace Server.Items
 
 		public override bool DisplayWeight { get { return false; } }
 
-		private AosAttributes m_AosAttributes;
-		private AosSkillBonuses m_AosSkillBonuses;
-        private TemraelAttributes m_TemraelAttributes;
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public AosAttributes Attributes
-		{
-			get{ return m_AosAttributes; }
-			set{}
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public AosSkillBonuses SkillBonuses
-		{
-			get{ return m_AosSkillBonuses; }
-			set{}
-		}
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public TemraelAttributes TemAttributes
-        {
-            get { return m_TemraelAttributes; }
-            set { }
-        }
-
 		public virtual SpellbookType SpellbookType{ get{ return SpellbookType.Regular; } }
 		public virtual int BookOffset{ get{ return 0; } }
 		public virtual int BookCount{ get{ return 64; } }
@@ -301,21 +285,9 @@ namespace Server.Items
 		private ulong m_Content;
 		private int m_Count;
 
-		public override bool AllowSecureTrade( Mobile from, Mobile to, Mobile newOwner, bool accepted )
-		{
-			if ( !Ethics.Ethic.CheckTrade( from, to, newOwner, this ) )
-				return false;
-
-			return base.AllowSecureTrade( from, to, newOwner, accepted );
-		}
-
 		public override bool CanEquip( Mobile from )
 		{
-			if ( !Ethics.Ethic.CheckEquip( from, this ) )
-			{
-				return false;
-			}
-			else if ( !from.CanBeginAction( typeof( BaseWeapon ) ) )
+			if ( !from.CanBeginAction( typeof( BaseWeapon ) ) )
 			{
 				return false;
 			}
@@ -371,7 +343,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ulong Content
 		{
 			get
@@ -397,7 +369,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SpellCount
 		{
 			get
@@ -418,10 +390,6 @@ namespace Server.Items
 
 		public Spellbook( ulong content, int itemID ) : base( itemID )
 		{
-			m_AosAttributes = new AosAttributes( this );
-			m_AosSkillBonuses = new AosSkillBonuses( this );
-            m_TemraelAttributes = new TemraelAttributes( this );
-
 			Weight = 3.0;
 			Layer = Layer.OneHanded;
 
@@ -434,48 +402,23 @@ namespace Server.Items
 
 			if ( book == null )
 				return;
-
-			book.m_AosAttributes = new AosAttributes( newItem, m_AosAttributes );
-			book.m_AosSkillBonuses = new AosSkillBonuses( newItem, m_AosSkillBonuses );
 		}
 
-		public override void OnAdded( object parent )
+		public override void OnAdded(IEntity parent)
 		{
 			if ( Core.AOS && parent is Mobile )
 			{
 				Mobile from = (Mobile)parent;
-
-				m_AosSkillBonuses.AddTo( from );
-
-				int strBonus = m_AosAttributes.BonusStr;
-				int dexBonus = m_AosAttributes.BonusDex;
-				int intBonus = m_AosAttributes.BonusInt;
-
-				if ( strBonus != 0 || dexBonus != 0 || intBonus != 0 )
-				{
-					string modName = this.Serial.ToString();
-
-					if ( strBonus != 0 )
-						from.AddStatMod( new StatMod( StatType.Str, modName + "Str", strBonus, TimeSpan.Zero ) );
-
-					if ( dexBonus != 0 )
-						from.AddStatMod( new StatMod( StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero ) );
-
-					if ( intBonus != 0 )
-						from.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
-				}
 
 				from.CheckStatTimers();
 			}
 		}
 
-		public override void OnRemoved( object parent )
+		public override void OnRemoved(IEntity parent)
 		{
 			if ( Core.AOS && parent is Mobile )
 			{
 				Mobile from = (Mobile)parent;
-
-				m_AosSkillBonuses.Remove();
 
 				string modName = this.Serial.ToString();
 
@@ -548,7 +491,7 @@ namespace Server.Items
 
 		private Mobile m_Crafter;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
@@ -563,94 +506,7 @@ namespace Server.Items
 
 			if ( m_Crafter != null )
 				list.Add( 1050043, m_Crafter.Name ); // crafted by ~1_NAME~
-				
-			m_AosSkillBonuses.GetProperties( list );
-
-			if( m_Slayer != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer );
-				if( entry != null )
-					list.Add( entry.Title );
-			}
-
-			if( m_Slayer2 != SlayerName.None )
-			{
-				SlayerEntry entry = SlayerGroup.GetEntryByName( m_Slayer2 );
-				if( entry != null )
-					list.Add( entry.Title );
-			}
-
-			int prop;
-
-			if ( (prop = m_AosAttributes.WeaponDamage) != 0 )
-				list.Add( 1060401, prop.ToString() ); // damage increase ~1_val~%
-
-			if ( (prop = m_AosAttributes.DefendChance) != 0 )
-				list.Add( 1060408, prop.ToString() ); // defense chance increase ~1_val~%
-
-			if ( (prop = m_AosAttributes.BonusDex) != 0 )
-				list.Add( 1060409, prop.ToString() ); // dexterity bonus ~1_val~
-
-			if ( (prop = m_AosAttributes.EnhancePotions) != 0 )
-				list.Add( 1060411, prop.ToString() ); // enhance potions ~1_val~%
-
-			if ( (prop = m_AosAttributes.CastRecovery) != 0 )
-				list.Add( 1060412, prop.ToString() ); // faster cast recovery ~1_val~
-
-			if ( (prop = m_AosAttributes.CastSpeed) != 0 )
-				list.Add( 1060413, prop.ToString() ); // faster casting ~1_val~
-
-			if ( (prop = m_AosAttributes.AttackChance) != 0 )
-				list.Add( 1060415, prop.ToString() ); // hit chance increase ~1_val~%
-
-			if ( (prop = m_AosAttributes.BonusHits) != 0 )
-				list.Add( 1060431, prop.ToString() ); // hit point increase ~1_val~
-
-			if ( (prop = m_AosAttributes.BonusInt) != 0 )
-				list.Add( 1060432, prop.ToString() ); // intelligence bonus ~1_val~
-
-			if ( (prop = m_AosAttributes.LowerManaCost) != 0 )
-				list.Add( 1060433, prop.ToString() ); // lower mana cost ~1_val~%
-
-			if ( (prop = m_AosAttributes.LowerRegCost) != 0 )
-				list.Add( 1060434, prop.ToString() ); // lower reagent cost ~1_val~%
-
-			if ( (prop = m_AosAttributes.Luck) != 0 )
-				list.Add( 1060436, prop.ToString() ); // luck ~1_val~
-
-			if ( (prop = m_AosAttributes.BonusMana) != 0 )
-				list.Add( 1060439, prop.ToString() ); // mana increase ~1_val~
-
-			if ( (prop = m_AosAttributes.RegenMana) != 0 )
-				list.Add( 1060440, prop.ToString() ); // mana regeneration ~1_val~
-
-			if ( (prop = m_AosAttributes.NightSight) != 0 )
-				list.Add( 1060441 ); // night sight
-
-			if ( (prop = m_AosAttributes.ReflectPhysical) != 0 )
-				list.Add( 1060442, prop.ToString() ); // reflect physical damage ~1_val~%
-
-			if ( (prop = m_AosAttributes.RegenStam) != 0 )
-				list.Add( 1060443, prop.ToString() ); // stamina regeneration ~1_val~
-
-			if ( (prop = m_AosAttributes.RegenHits) != 0 )
-				list.Add( 1060444, prop.ToString() ); // hit point regeneration ~1_val~
-
-			if ( (prop = m_AosAttributes.SpellChanneling) != 0 )
-				list.Add( 1060482 ); // spell channeling
-
-			if ( (prop = m_AosAttributes.SpellDamage) != 0 )
-				list.Add( 1060483, prop.ToString() ); // spell damage increase ~1_val~%
-
-			if ( (prop = m_AosAttributes.BonusStam) != 0 )
-				list.Add( 1060484, prop.ToString() ); // stamina increase ~1_val~
-
-			if ( (prop = m_AosAttributes.BonusStr) != 0 )
-				list.Add( 1060485, prop.ToString() ); // strength bonus ~1_val~
-
-			if ( (prop = m_AosAttributes.WeaponSpeed) != 0 )
-				list.Add( 1060486, prop.ToString() ); // swing speed increase ~1_val~%
-
+			
 			list.Add( 1042886, m_Count.ToString() ); // ~1_NUMBERS_OF_SPELLS~ Spells
 		}
 
@@ -674,38 +530,12 @@ namespace Server.Items
 				from.SendLocalizedMessage( 500207 ); // The spellbook must be in your backpack (and not in a container within) to open.
 		}
 
-
-		private SlayerName m_Slayer;
-		private SlayerName m_Slayer2;
-		//Currently though there are no dual slayer spellbooks, OSI has a habit of putting dual slayer stuff in later
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public SlayerName Slayer
-		{
-			get { return m_Slayer; }
-			set { m_Slayer = value; InvalidateProperties(); }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
-		public SlayerName Slayer2
-		{
-			get { return m_Slayer2; }
-			set { m_Slayer2 = value; InvalidateProperties(); }
-		}
-
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 3 ); // version
+			writer.Write( (int) 0 ); // version
 			writer.Write( m_Crafter );
-
-			writer.Write( (int)m_Slayer );
-			writer.Write( (int)m_Slayer2 );
-
-			m_AosAttributes.Serialize( writer );
-			m_AosSkillBonuses.Serialize( writer );
-
 			writer.Write( m_Content );
 			writer.Write( m_Count );
 		}
@@ -716,63 +546,9 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 3:
-				{
-					m_Crafter = reader.ReadMobile();
-					goto case 2;
-				}
-				case 2:
-				{
-					m_Slayer = (SlayerName)reader.ReadInt();
-					m_Slayer2 = (SlayerName)reader.ReadInt();
-					goto case 1;
-				}
-				case 1:
-				{
-					m_AosAttributes = new AosAttributes( this, reader );
-					m_AosSkillBonuses = new AosSkillBonuses( this, reader );
-
-					goto case 0;
-				}
-				case 0:
-				{
-					m_Content = reader.ReadULong();
-					m_Count = reader.ReadInt();
-
-					break;
-				}
-			}
-
-			if ( m_AosAttributes == null )
-				m_AosAttributes = new AosAttributes( this );
-
-			if ( m_AosSkillBonuses == null )
-				m_AosSkillBonuses = new AosSkillBonuses( this );
-
-			if ( Core.AOS && Parent is Mobile )
-				m_AosSkillBonuses.AddTo( (Mobile) Parent );
-
-			int strBonus = m_AosAttributes.BonusStr;
-			int dexBonus = m_AosAttributes.BonusDex;
-			int intBonus = m_AosAttributes.BonusInt;
-
-			if ( Parent is Mobile && (strBonus != 0 || dexBonus != 0 || intBonus != 0) )
-			{
-				Mobile m = (Mobile)Parent;
-
-				string modName = Serial.ToString();
-
-				if ( strBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Str, modName + "Str", strBonus, TimeSpan.Zero ) );
-
-				if ( dexBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Dex, modName + "Dex", dexBonus, TimeSpan.Zero ) );
-
-				if ( intBonus != 0 )
-					m.AddStatMod( new StatMod( StatType.Int, modName + "Int", intBonus, TimeSpan.Zero ) );
-			}
+            m_Crafter = reader.ReadMobile();
+            m_Content = reader.ReadULong();
+            m_Count = reader.ReadInt();
 
 			if ( Parent is Mobile )
 				((Mobile)Parent).CheckStatTimers();
@@ -854,8 +630,6 @@ namespace Server.Items
 				}
 
 				int propertyCount = propertyCounts[Utility.Random( propertyCounts.Length )];
-
-				BaseRunicTool.ApplyAttributesTo( this, true, 0, propertyCount, minIntensity, maxIntensity );
 			}
 
 			if ( makersMark )

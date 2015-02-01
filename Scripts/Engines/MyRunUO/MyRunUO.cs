@@ -24,7 +24,7 @@ namespace Server.Engines.MyRunUO
 			{
 				Timer.DelayCall( TimeSpan.FromSeconds( 10.0 ), Config.CharacterUpdateInterval, new TimerCallback( Begin ) );
 
-				CommandSystem.Register( "UpdateMyRunUO", AccessLevel.Administrator, new CommandEventHandler( UpdateMyRunUO_OnCommand ) );
+				CommandSystem.Register( "UpdateMyRunUO", AccessLevel.Coordinateur, new CommandEventHandler( UpdateMyRunUO_OnCommand ) );
 
 				CommandSystem.Register( "PublicChar", AccessLevel.Player, new CommandEventHandler( PublicChar_OnCommand ) );
 				CommandSystem.Register( "PrivateChar", AccessLevel.Player, new CommandEventHandler( PrivateChar_OnCommand ) );
@@ -169,7 +169,7 @@ namespace Server.Engines.MyRunUO
 		{
 			switch ( m_Stage )
 			{
-				case Stage.CollectingMobiles: CollectMobiles( endTime ); break;
+				case Stage.CollectingMobiles: CollecPlayerMobiles( endTime ); break;
 				case Stage.DumpingMobiles: DumpMobiles( endTime ); break;
 				case Stage.CollectingGuilds: CollectGuilds( endTime ); break;
 				case Stage.DumpingGuilds: DumpGuilds( endTime ); break;
@@ -188,12 +188,12 @@ namespace Server.Engines.MyRunUO
 			m_MobilesToUpdate.Add( m );
 		}
 
-		public void CollectMobiles( DateTime endTime )
+		public void CollecPlayerMobiles( DateTime endTime )
 		{
 			if ( Config.LoadDataInFile )
 			{
-				if ( m_Index == 0 )
-					 m_Collecting.AddRange( Accounts.GetAccounts() );
+                if (m_Index == 0)
+                    m_Collecting.AddRange(Accounts.ServerAccounts.GetAccounts());
 
 				for ( int i = m_Index; i < m_Collecting.Count; ++i )
 				{
@@ -342,7 +342,7 @@ namespace Server.Engines.MyRunUO
 		public const string EntrySep = "\",\"";
 		public const string LineEnd = "\"\n";
 
-		public void InsertMobile( Mobile mob )
+		public void InserPlayerMobile( Mobile mob )
 		{
 			string guildTitle = mob.GuildTitle;
 
@@ -375,7 +375,6 @@ namespace Server.Engines.MyRunUO
 				m_OpMobiles.Write( EntrySep );
 				m_OpMobiles.Write( female );
 				m_OpMobiles.Write( EntrySep );
-				m_OpMobiles.Write( mob.Kills );
 				m_OpMobiles.Write( EntrySep );
 				m_OpMobiles.Write( guildId );
 				m_OpMobiles.Write( EntrySep );
@@ -390,7 +389,8 @@ namespace Server.Engines.MyRunUO
 			}
 			else
 			{
-				ExecuteNonQuery( "INSERT INTO myrunuo_characters (char_id, char_name, char_str, char_dex, char_int, char_female, char_counts, char_guild, char_guildtitle, char_nototitle, char_bodyhue, char_public ) VALUES ({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7}, {8}, '{9}', {10}, {11})", mob.Serial.Value.ToString(), SafeString( mob.Name ), mob.RawStr.ToString(), mob.RawDex.ToString(), mob.RawInt.ToString(), female, mob.Kills.ToString(), guildId, guildTitle, notoTitle, mob.Hue.ToString(), pubString );
+				ExecuteNonQuery( "INSERT INTO myrunuo_characters (char_id, char_name, char_str, char_dex, char_int, char_female, char_counts, char_guild, char_guildtitle, char_nototitle, char_bodyhue, char_public ) VALUES ({0}, '{1}', {2}, {3}, {4}, {5}, {6}, {7}, {8}, '{9}', {10}, {11})", 
+                    mob.Serial.Value.ToString(), SafeString( mob.Name ), mob.RawStr.ToString(), mob.RawDex.ToString(), mob.RawInt.ToString(), "", guildId, guildTitle, notoTitle, mob.Hue.ToString(), pubString );
 			}
 		}
 
@@ -538,7 +538,7 @@ namespace Server.Engines.MyRunUO
 					if ( !Config.LoadDataInFile )
 						DeleteMobile( mob );
 
-					InsertMobile( mob );
+					InserPlayerMobile( mob );
 					InsertSkills( mob );
 					InsertItems( mob );
 				}

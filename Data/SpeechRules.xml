@@ -1,4 +1,4 @@
-<?xml version="1.0" standalone="yes"?>
+﻿<?xml version="1.0" standalone="yes"?>
 <dsSpeechRules xmlns="http://tempuri.org/SpeechRules.xsd">
   <xs:schema id="dsSpeechRules" targetNamespace="http://tempuri.org/SpeechRules.xsd" xmlns:mstns="http://tempuri.org/SpeechRules.xsd" xmlns="http://tempuri.org/SpeechRules.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
     <xs:element name="dsSpeechRules" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
@@ -494,42 +494,6 @@
     <playerGender>0</playerGender>
     <questObject />
     <packObject />
-    <npcAttitude>1</npcAttitude>
-    <npcAnimation>0</npcAnimation>
-    <npcGender>0</npcGender>
-    <questObjDelete>false</questObjDelete>
-    <timeOfDay>0</timeOfDay>
-    <npcReaction>0</npcReaction>
-    <npcTitle />
-    <objStatus>0</objStatus>
-    <npcTag />
-  </dtResponses>
-  <dtResponses>
-    <index>4</index>
-    <response>Ah! {1}, une femme de renom pour sûr !</response>
-    <npcName />
-    <npcRegion />
-    <playerGender>2</playerGender>
-    <questObject />
-    <packObject />
-    <npcAttitude>1</npcAttitude>
-    <npcAnimation>0</npcAnimation>
-    <npcGender>0</npcGender>
-    <questObjDelete>false</questObjDelete>
-    <timeOfDay>0</timeOfDay>
-    <npcReaction>0</npcReaction>
-    <npcTitle />
-    <objStatus>0</objStatus>
-    <npcTag />
-  </dtResponses>
-  <dtResponses>
-    <index>4</index>
-    <response>{1}, un bon nom !</response>
-    <npcName />
-    <npcRegion />
-    <playerGender>0</playerGender>
-    <questObject />
-    <packObject />
     <npcAttitude>0</npcAttitude>
     <npcAnimation>0</npcAnimation>
     <npcGender>0</npcGender>
@@ -542,13 +506,13 @@
   </dtResponses>
   <dtResponses>
     <index>4</index>
-    <response>Puisses le soleil vous guidez.</response>
+    <response>Puisses le soleil vous guider.</response>
     <npcName />
-    <npcRegion>Melandre</npcRegion>
+    <npcRegion/>
     <playerGender>0</playerGender>
     <questObject />
     <packObject />
-    <npcAttitude>0</npcAttitude>
+    <npcAttitude>1</npcAttitude>
     <npcAnimation>0</npcAnimation>
     <npcGender>0</npcGender>
     <questObjDelete>false</questObjDelete>
@@ -668,7 +632,7 @@
   </dtResponses>
   <dtResponses>
     <index>2</index>
-    <response>À dieu mon seigneur !</response>
+    <response>Adieu mon seigneur !</response>
     <npcName />
     <npcRegion />
     <playerGender>1</playerGender>
@@ -769,60 +733,6 @@
     <npcGender>0</npcGender>
     <questObjDelete>false</questObjDelete>
     <timeOfDay>1</timeOfDay>
-    <npcReaction>0</npcReaction>
-    <npcTitle />
-    <objStatus>0</objStatus>
-    <npcTag />
-  </dtResponses>
-  <dtResponses>
-    <index>4</index>
-    <response>Un plaisir de vous connaître {1}.</response>
-    <npcName />
-    <npcRegion />
-    <playerGender>0</playerGender>
-    <questObject />
-    <packObject />
-    <npcAttitude>1</npcAttitude>
-    <npcAnimation>0</npcAnimation>
-    <npcGender>0</npcGender>
-    <questObjDelete>false</questObjDelete>
-    <timeOfDay>0</timeOfDay>
-    <npcReaction>0</npcReaction>
-    <npcTitle />
-    <objStatus>0</objStatus>
-    <npcTag />
-  </dtResponses>
-  <dtResponses>
-    <index>4</index>
-    <response>{1}, quel bon nom pour une belle femme tel que vous !</response>
-    <npcName />
-    <npcRegion />
-    <playerGender>2</playerGender>
-    <questObject />
-    <packObject />
-    <npcAttitude>0</npcAttitude>
-    <npcAnimation>0</npcAnimation>
-    <npcGender>0</npcGender>
-    <questObjDelete>false</questObjDelete>
-    <timeOfDay>0</timeOfDay>
-    <npcReaction>0</npcReaction>
-    <npcTitle />
-    <objStatus>0</objStatus>
-    <npcTag />
-  </dtResponses>
-  <dtResponses>
-    <index>4</index>
-    <response>{1}, quel bon nom!</response>
-    <npcName />
-    <npcRegion />
-    <playerGender>0</playerGender>
-    <questObject />
-    <packObject />
-    <npcAttitude>0</npcAttitude>
-    <npcAnimation>0</npcAnimation>
-    <npcGender>0</npcGender>
-    <questObjDelete>false</questObjDelete>
-    <timeOfDay>0</timeOfDay>
     <npcReaction>0</npcReaction>
     <npcTitle />
     <objStatus>0</objStatus>
@@ -945,24 +855,6 @@
     <questObject />
     <packObject />
     <npcAttitude>0</npcAttitude>
-    <npcAnimation>0</npcAnimation>
-    <npcGender>0</npcGender>
-    <questObjDelete>false</questObjDelete>
-    <timeOfDay>0</timeOfDay>
-    <npcReaction>0</npcReaction>
-    <npcTitle />
-    <objStatus>0</objStatus>
-    <npcTag />
-  </dtResponses>
-  <dtResponses>
-    <index>4</index>
-    <response>{1} d'accord...</response>
-    <npcName />
-    <npcRegion />
-    <playerGender>0</playerGender>
-    <questObject />
-    <packObject />
-    <npcAttitude>2</npcAttitude>
     <npcAnimation>0</npcAnimation>
     <npcGender>0</npcGender>
     <questObjDelete>false</questObjDelete>

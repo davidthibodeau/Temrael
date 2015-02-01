@@ -9,7 +9,7 @@ namespace Server.Items
 	{
 		private int m_CookingLevel;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CookingLevel
 		{
 			get
@@ -182,6 +182,7 @@ namespace Server.Items
 		[Constructable]
 		public RawRibs( int amount ) : base( 0x9F1, 10 )
 		{
+            GoldValue = 3;
 			Weight = 1.0;
 			Stackable = true;
 			Amount = amount;
@@ -223,6 +224,7 @@ namespace Server.Items
 		[Constructable]
 		public RawLambLeg( int amount ) : base( 0x1609, 10 )
 		{
+            GoldValue = 3;
 			Stackable = true;
 			Amount = amount;
 		}
@@ -260,6 +262,7 @@ namespace Server.Items
 		[Constructable]
 		public RawChickenLeg() : base( 0x1607, 10 )
 		{
+            GoldValue = 3;
 			Weight = 1.0;
 			Stackable = true;
 		}
@@ -300,6 +303,7 @@ namespace Server.Items
 		[Constructable]
 		public RawBird( int amount ) : base( 0x9B9, 10 )
 		{
+            GoldValue = 3;
 			Weight = 1.0;
 			Stackable = true;
 			Amount = amount;

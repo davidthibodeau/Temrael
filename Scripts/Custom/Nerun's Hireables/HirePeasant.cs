@@ -50,8 +50,6 @@ namespace Server.Mobiles
                 AddItem(beard);
             }
 
-            AddItem(new Katana());
-
             SetStr(26, 26);
             SetDex(21, 21);
             SetInt(16, 16);
@@ -59,11 +57,8 @@ namespace Server.Mobiles
             SetDamage(10, 23);
 
             SetSkill(SkillName.Tactiques, 5, 27);
-            SetSkill(SkillName.ArmePoing, 5, 5);
-            SetSkill(SkillName.ArmeTranchante, 5, 27);
-
-            Fame = 0;
-            Karma = 0;
+            SetSkill(SkillName.Anatomie, 5, 5);
+            SetSkill(SkillName.Epee, 5, 27);
 
             AddItem(new Sandals(Utility.RandomNeutralHue()));
             switch (Utility.Random(2))

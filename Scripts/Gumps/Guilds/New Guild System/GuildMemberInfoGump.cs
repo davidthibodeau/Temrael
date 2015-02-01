@@ -215,8 +215,6 @@ namespace Server.Guilds
 
 			if( title.Length > 20 )
 				from.SendLocalizedMessage( 501178 ); // That title is too long.
-			else if( !BaseGuildGump.CheckProfanity( title ) )
-				from.SendLocalizedMessage( 501179 ); // That title is disallowed.
 			else
 			{
 				if( Insensitive.Equals( title, "none" ) )

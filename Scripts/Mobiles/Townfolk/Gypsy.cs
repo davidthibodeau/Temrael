@@ -56,8 +56,6 @@ namespace Server.Mobiles
 			AddItem( pack );
 		}
 
-
-		public override bool CanTeach { get { return true; } }
 		public override bool ClickTitle { get { return false; } }
 
 		public Gypsy( Serial serial )

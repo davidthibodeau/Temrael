@@ -15,6 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public Bottle( int amount ) : base( 0xF0E )
 		{
+            GoldValue = 3;
 			Stackable = true;
 			Weight = 1.0;
 			Amount = amount;

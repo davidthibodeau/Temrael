@@ -2,7 +2,6 @@ using System;
 using Server;
 using Server.Regions;
 using Server.Targeting;
-using Server.Engines.CannedEvil;
 using Server.Network;
 
 namespace Server.Multis
@@ -12,10 +11,10 @@ namespace Server.Multis
 		private int m_MultiID;
 		private Point3D m_Offset;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MultiID{ get{ return m_MultiID; } set{ m_MultiID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Offset{ get{ return m_Offset; } set{ m_Offset = value; } }
 
 		public BaseBoatDeed( int id, Point3D offset ) : base( 0x14F2 )
@@ -23,7 +22,7 @@ namespace Server.Multis
 			Weight = 1.0;
 
 			if ( !Core.AOS )
-				LootType = LootType.Newbied;
+				LootType = LootType.Blessed;
 
 			m_MultiID = id;
 			m_Offset = offset;
@@ -70,7 +69,7 @@ namespace Server.Multis
 			{
 				from.SendLocalizedMessage( 1042001 ); // That must be in your pack for you to use it.
 			}
-			else if ( from.AccessLevel < AccessLevel.GameMaster && (from.Map == Map.Ilshenar || from.Map == Map.Malas) )
+			else if ( from.AccessLevel < AccessLevel.Batisseur && (from.Map == Map.Ilshenar || from.Map == Map.Malas) )
 			{
 				from.SendLocalizedMessage( 1010567, null, 0x25 ); // You may not place a boat from this location.
 			}
@@ -104,7 +103,7 @@ namespace Server.Multis
 				if ( map == null )
 					return;
 
-				if ( from.AccessLevel < AccessLevel.GameMaster && (map == Map.Ilshenar || map == Map.Malas) )
+				if ( from.AccessLevel < AccessLevel.Batisseur && (map == Map.Ilshenar || map == Map.Malas) )
 				{
 					from.SendLocalizedMessage( 1043284 ); // A ship can not be created here.
 					return;
@@ -130,7 +129,7 @@ namespace Server.Multis
 					boat.Owner = from;
 					boat.Anchored = true;
 
-					uint keyValue = boat.CreateKeys( from );
+                    long keyValue = boat.CreateKeys(from);
 
 					if ( boat.PPlank != null )
 						boat.PPlank.KeyValue = keyValue;
@@ -172,7 +171,7 @@ namespace Server.Multis
 
 					if ( region.IsPartOf( typeof( DungeonRegion ) ) )
 						from.SendLocalizedMessage( 502488 ); // You can not place a ship inside a dungeon.
-					else if ( region.IsPartOf( typeof( HouseRegion ) ) || region.IsPartOf( typeof( ChampionSpawnRegion ) ) )
+					else if (region.IsPartOf(typeof(HouseRegion)))
 						from.SendLocalizedMessage( 1042549 ); // A boat may not be placed in this area.
 					else
 						m_Deed.OnPlacement( from, p );

@@ -15,6 +15,7 @@ namespace Server.Items
 		[Constructable]
 		public DaemonBone() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]

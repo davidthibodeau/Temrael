@@ -11,7 +11,7 @@ namespace Server.Items
 
 		private bool m_IsShipwreckedItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsShipwreckedItem
 		{
 			get { return m_IsShipwreckedItem; }
@@ -73,11 +73,6 @@ namespace Server.Items
 
 		public override int OnCraft( int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, BaseTool tool, CraftItem craftItem, int resHue )
 		{
-			Quality = (ClothingQuality)quality;
-
-			if( Quality == ClothingQuality.Exceptional )
-				DistributeBonuses( (tool is BaseRunicTool ? 6 : (Core.SE ? 15 : 14)) );	//BLAME OSI. (We can't confirm it's an OSI bug yet.)
-
 			return base.OnCraft( quality, makersMark, from, craftSystem, typeRes, tool, craftItem, resHue );
 		}
 
@@ -640,7 +635,7 @@ namespace Server.Items
 			return true;
 		}
 
-		public override void OnAdded( object parent )
+		public override void OnAdded(IEntity parent)
 		{
 			base.OnAdded( parent );
 
@@ -738,7 +733,7 @@ namespace Server.Items
 		public WizardsHat( int hue ) : base( 0x1718, hue )
 		{
 			Weight = 1.0;
-            Name = "Bérêt";
+            Name = "BÃ©rÃªt";
 		}
 
 		public WizardsHat( Serial serial ) : base( serial )

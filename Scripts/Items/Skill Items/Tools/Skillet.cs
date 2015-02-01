@@ -13,12 +13,14 @@ namespace Server.Items
 		[Constructable]
 		public Skillet() : base( 0x97F )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 
 		[Constructable]
 		public Skillet( int uses ) : base( uses, 0x97F )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 

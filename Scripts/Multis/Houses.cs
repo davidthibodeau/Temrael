@@ -19,7 +19,7 @@ namespace Server.Multis
 
 		public SmallOldHouse( Mobile owner, int id ) : base( id, owner, 425, 3 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoor( 0, 3, 7, keyValue );
 
@@ -72,7 +72,7 @@ namespace Server.Multis
 
 		public GuildHouse( Mobile owner ) : base( 0x74, owner, 1100, 8 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( -1, 6, 7, keyValue );
 
@@ -112,7 +112,7 @@ namespace Server.Multis
 
 		public TwoStoryHouse( Mobile owner, int id ) : base( id, owner, 1370, 10 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( -3, 6, 7, keyValue );
 
@@ -163,7 +163,7 @@ namespace Server.Multis
 
 		public Tower( Mobile owner ) : base( 0x7A, owner, 2119, 15 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( false, 0, 6, 6, keyValue );
 
@@ -204,7 +204,7 @@ namespace Server.Multis
 
 		public Keep( Mobile owner ) : base( 0x7C, owner, 2625, 18 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( false, 0, 10, 6, keyValue );
 			
@@ -241,7 +241,7 @@ namespace Server.Multis
 
 		public Castle( Mobile owner ) : base( 0x7E, owner, 4076, 28 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( false, 0, 15, 6, keyValue );
 
@@ -285,7 +285,7 @@ namespace Server.Multis
 
 		public LargePatioHouse( Mobile owner ) : base( 0x8C, owner, 1100, 8 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( -4, 6, 7, keyValue );
 			
@@ -329,7 +329,7 @@ namespace Server.Multis
 
 		public LargeMarbleHouse( Mobile owner ) : base( 0x96, owner, 1370, 10 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( false, -4, 3, 4, keyValue );
 
@@ -368,7 +368,7 @@ namespace Server.Multis
 
 		public SmallTower( Mobile owner ) : base( 0x98, owner, 580, 4 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoor( false, 3, 3, 6, keyValue );
 
@@ -407,7 +407,7 @@ namespace Server.Multis
 
 		public LogCabin( Mobile owner ) : base( 0x9A, owner, 1100, 8 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoor( 1, 4, 8, keyValue );
 			
@@ -449,7 +449,7 @@ namespace Server.Multis
 
 		public SandStonePatio( Mobile owner ) : base( 0x9C, owner, 850, 6 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoor( -1, 3, 6, keyValue );
 			
@@ -488,7 +488,7 @@ namespace Server.Multis
 
 		public TwoStoryVilla( Mobile owner ) : base( 0x9E, owner, 1100, 8 )
 		{
-			uint keyValue = CreateKeys( owner );
+            long keyValue = CreateKeys(owner);
 
 			AddSouthDoors( 3, 1, 5, keyValue );
 			
@@ -531,7 +531,7 @@ namespace Server.Multis
 
 		public SmallShop( Mobile owner, int id ) : base( id, owner, 425, 3 )
 		{
-			uint keyValue = CreateKeys( owner );
+			long keyValue = CreateKeys( owner );
 
 			BaseDoor door = MakeDoor( false, DoorFacing.EastCW );
 

@@ -39,7 +39,7 @@ namespace Server.Items
 
 		public virtual CustomHuePicker CustomHuePicker{ get{ return null; } }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Charges
         {
             get { return m_Charges; }
@@ -111,7 +111,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Redyable
 		{
 			get
@@ -141,7 +141,7 @@ namespace Server.Items
 			}
 		}*/
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get
@@ -157,6 +157,7 @@ namespace Server.Items
 		[Constructable] 
 		public DyeTub() : base( 0xFAB )
 		{
+            GoldValue = 6;
 			Weight = 10.0;
 			m_Redyable = true;
             m_Charges = 5;
@@ -390,7 +391,7 @@ namespace Server.Items
                             }
 						}
 					}
-					else if ( item is MonsterStatuette && m_Tub.AllowStatuettes )
+					else if ( m_Tub.AllowStatuettes )
 					{
 						if ( !from.InRange( m_Tub.GetWorldLocation(), 1 ) || !from.InRange( item.GetWorldLocation(), 1 ) )
 						{

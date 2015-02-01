@@ -19,6 +19,7 @@ namespace Server.Items
 		[Constructable]
 		public Fish( int amount ) : base( Utility.Random( 0x09CC, 4 ) )
 		{
+            GoldValue = 9;
 			Stackable = true;
 			Weight = 1.0;
 			Amount = amount;

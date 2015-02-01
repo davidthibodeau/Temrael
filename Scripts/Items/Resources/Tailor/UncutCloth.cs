@@ -23,6 +23,7 @@ namespace Server.Items
 		[Constructable]
 		public UncutCloth( int amount ) : base( 0x1767 )
 		{
+            GoldValue = 3;
 			Stackable = true;
 			Amount = amount;
 		}

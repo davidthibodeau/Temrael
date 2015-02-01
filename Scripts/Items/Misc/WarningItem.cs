@@ -13,28 +13,28 @@ namespace Server.Items
 		private int m_Range;
 		private TimeSpan m_ResetDelay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string WarningString
 		{
 			get{ return m_WarningString; }
 			set{ m_WarningString = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int WarningNumber
 		{
 			get{ return m_WarningNumber; }
 			set{ m_WarningNumber = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Range
 		{
 			get{ return m_Range; }
 			set{ if ( value > 18 ) value = 18; m_Range = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan ResetDelay
 		{
 			get{ return m_ResetDelay; }
@@ -174,14 +174,14 @@ namespace Server.Items
 		private string m_HintString;
 		private int m_HintNumber;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string HintString
 		{
 			get{ return m_HintString; }
 			set{ m_HintString = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int HintNumber
 		{
 			get{ return m_HintNumber; }

@@ -131,8 +131,6 @@ namespace Server.Items
 						int min, max;
 
 						GetRandomAOSStats( out attributeCount, out min, out max );
-
-						BaseRunicTool.ApplyAttributesTo( weapon, attributeCount, min, max );
 					}
 					else
 					{
@@ -153,13 +151,6 @@ namespace Server.Items
 						int min, max;
 
 						GetRandomAOSStats( out attributeCount, out min, out max );
-
-						BaseRunicTool.ApplyAttributesTo( armor, attributeCount, min, max );
-					}
-					else
-					{
-						armor.ProtectionLevel = (ArmorProtectionLevel)Utility.Random( 6 );
-						armor.Durability = (ArmorDurabilityLevel)Utility.Random( 6 );
 					}
 
 					DropItem( item );
@@ -174,8 +165,6 @@ namespace Server.Items
 						int min, max;
 
 						GetRandomAOSStats( out attributeCount, out min, out  max );
-
-						BaseRunicTool.ApplyAttributesTo( hat, attributeCount, min, max );
 					}
 
 					DropItem( item );
@@ -186,8 +175,6 @@ namespace Server.Items
 					int min, max;
 
 					GetRandomAOSStats( out attributeCount, out min, out max );
-
-					BaseRunicTool.ApplyAttributesTo( (BaseJewel)item, attributeCount, min, max );
 
 					DropItem( item );
 				}

@@ -45,7 +45,7 @@ namespace Server.Items
 			if ( weapon == null )
 				return true;
 
-			return weapon.Skill != SkillName.ArmePoing;
+			return weapon.Skill != SkillName.Anatomie;
 		}
 
 		public override bool OnBeforeSwing( Mobile attacker, Mobile defender )
@@ -73,7 +73,7 @@ namespace Server.Items
 				return;
 			}
 
-			defender.FixedEffect( 0x376A, 9, 32 );
+			Effects.SendTargetEffect(defender, 0x376A, 9, 32 );
 			defender.PlaySound( 0x204 );
 
 			attacker.SendLocalizedMessage( 1060163 ); // You deliver a paralyzing blow!

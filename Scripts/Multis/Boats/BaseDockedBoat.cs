@@ -2,7 +2,6 @@ using System;
 using Server;
 using Server.Regions;
 using Server.Targeting;
-using Server.Engines.CannedEvil;
 
 namespace Server.Multis
 {
@@ -12,13 +11,13 @@ namespace Server.Multis
 		private Point3D m_Offset;
 		private string m_ShipName;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MultiID{ get{ return m_MultiID; } set{ m_MultiID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Offset{ get{ return m_Offset; } set{ m_Offset = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string ShipName{ get{ return m_ShipName; } set{ m_ShipName = value; InvalidateProperties(); } }
 
 		public BaseDockedBoat( int id, Point3D offset, BaseBoat boat ) : base( 0x14F4 )
@@ -69,7 +68,7 @@ namespace Server.Multis
 				}
 			}
 
-			if ( LootType == LootType.Newbied )
+			if ( LootType == LootType.Blessed )
 				LootType = LootType.Blessed;
 
 			if ( Weight == 0.0 )
@@ -140,7 +139,7 @@ namespace Server.Multis
 					boat.Anchored = true;
 					boat.ShipName = m_ShipName;
 
-					uint keyValue = boat.CreateKeys( from );
+                    long keyValue = boat.CreateKeys(from);
 
 					if ( boat.PPlank != null )
 						boat.PPlank.KeyValue = keyValue;
@@ -182,7 +181,7 @@ namespace Server.Multis
 
 					if ( region.IsPartOf( typeof( DungeonRegion ) ) )
 						from.SendLocalizedMessage( 502488 ); // You can not place a ship inside a dungeon.
-					else if ( region.IsPartOf( typeof( HouseRegion ) ) || region.IsPartOf( typeof( ChampionSpawnRegion ) ) )
+					else if ( region.IsPartOf( typeof( HouseRegion ) ))
 						from.SendLocalizedMessage( 1042549 ); // A boat may not be placed in this area.
 					else
 						m_Model.OnPlacement( from, p );

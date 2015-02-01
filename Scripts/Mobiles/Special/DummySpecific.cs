@@ -51,21 +51,21 @@ namespace Server.Mobiles
 
 			ChainChest cht = new ChainChest();
 			cht.Movable = false;
-			cht.LootType = LootType.Newbied;
+			cht.LootType = LootType.Blessed;
 			cht.Crafter = this;
 			cht.Quality = ArmorQuality.Regular;
 			AddItem( cht );
 
 			ChainLegs chl = new ChainLegs();
 			chl.Movable = false;
-			chl.LootType = LootType.Newbied;
+			chl.LootType = LootType.Blessed;
 			chl.Crafter = this;
 			chl.Quality = ArmorQuality.Regular;
 			AddItem( chl );
 
 			PlateArms pla = new PlateArms();
 			pla.Movable = false;
-			pla.LootType = LootType.Newbied;
+			pla.LootType = LootType.Blessed;
 			pla.Crafter = this;
 			pla.Quality = ArmorQuality.Regular;
 			AddItem( pla );
@@ -122,26 +122,26 @@ namespace Server.Mobiles
 
 			Boots snd = new Boots();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			ChainChest cht = new ChainChest();
 			cht.Movable = false;
-			cht.LootType = LootType.Newbied;
+			cht.LootType = LootType.Blessed;
 			cht.Crafter = this;
 			cht.Quality = ArmorQuality.Regular;
 			AddItem( cht );
 
 			ChainLegs chl = new ChainLegs();
 			chl.Movable = false;
-			chl.LootType = LootType.Newbied;
+			chl.LootType = LootType.Blessed;
 			chl.Crafter = this;
 			chl.Quality = ArmorQuality.Regular;
 			AddItem( chl );
 
 			PlateArms pla = new PlateArms();
 			pla.Movable = false;
-			pla.LootType = LootType.Newbied;
+			pla.LootType = LootType.Blessed;
 			pla.Crafter = this;
 			pla.Quality = ArmorQuality.Regular;
 			AddItem( pla );
@@ -181,7 +181,7 @@ namespace Server.Mobiles
 
 			// Skills and Stats
 			this.InitStats( 125, 125, 90 );
-			this.Skills[SkillName.ArmeTranchante].Base = 120;
+			this.Skills[SkillName.Epee].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 120;
 			this.Skills[SkillName.Soins].Base = 120;
 			this.Skills[SkillName.Tactiques].Base = 120;
@@ -191,34 +191,27 @@ namespace Server.Mobiles
 			// Name
 			this.Name = "Swordsman";
 
-			// Equip
-			Katana kat = new Katana();
-			kat.Crafter = this;
-			kat.Movable = true;
-			kat.Quality = WeaponQuality.Regular;
-			AddItem( kat );
-
 			Boots bts = new Boots();
 			bts.Hue = iHue;
 			AddItem( bts );
 
 			ChainChest cht = new ChainChest();
 			cht.Movable = false;
-			cht.LootType = LootType.Newbied;
+			cht.LootType = LootType.Blessed;
 			cht.Crafter = this;
 			cht.Quality = ArmorQuality.Regular;
 			AddItem( cht );
 
 			ChainLegs chl = new ChainLegs();
 			chl.Movable = false;
-			chl.LootType = LootType.Newbied;
+			chl.LootType = LootType.Blessed;
 			chl.Crafter = this;
 			chl.Quality = ArmorQuality.Regular;
 			AddItem( chl );
 
 			PlateArms pla = new PlateArms();
 			pla.Movable = false;
-			pla.LootType = LootType.Newbied;
+			pla.LootType = LootType.Blessed;
 			pla.Crafter = this;
 			pla.Quality = ArmorQuality.Regular;
 			AddItem( pla );
@@ -262,9 +255,9 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			this.Skills[SkillName.Inscription].Base = 100;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 
 
 			// Name
@@ -273,7 +266,7 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
@@ -283,7 +276,7 @@ namespace Server.Mobiles
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			SkullCap skc = new SkullCap();
@@ -291,11 +284,11 @@ namespace Server.Mobiles
 			AddItem( skc );
 
 			// Spells
-			AddSpellAttack( typeof(Spells.First.MagicArrowSpell) );
-			AddSpellAttack( typeof(Spells.First.WeakenSpell) );
-			AddSpellAttack( typeof(Spells.Third.FireballSpell) );
-			AddSpellDefense( typeof(Spells.Third.WallOfStoneSpell) );
-			AddSpellDefense( typeof(Spells.First.HealSpell) );
+			AddSpellAttack( typeof(Spells.MagicArrowSpell) );
+			AddSpellAttack( typeof(Spells.WeakenSpell) );
+			AddSpellAttack( typeof(Spells.FireballSpell) );
+			AddSpellDefense( typeof(Spells.WallOfStoneSpell) );
+			AddSpellDefense( typeof(Spells.HealSpell) );
 		}
 
 		public DummyNox( Serial serial ) : base( serial )
@@ -333,9 +326,9 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 100;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 80;
-			this.Skills[SkillName.ArmePoing].Base = 80;
+			this.Skills[SkillName.Anatomie].Base = 80;
 			this.Skills[SkillName.Concentration].Base = 100;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 
 
 			// Name
@@ -344,34 +337,34 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
@@ -385,11 +378,11 @@ namespace Server.Mobiles
 			AddItem( cap );
 
 			// Spells
-			AddSpellAttack( typeof(Spells.First.MagicArrowSpell) );
-			AddSpellAttack( typeof(Spells.First.WeakenSpell) );
-			AddSpellAttack( typeof(Spells.Third.FireballSpell) );
-			AddSpellDefense( typeof(Spells.Third.WallOfStoneSpell) );
-			AddSpellDefense( typeof(Spells.First.HealSpell) );
+			AddSpellAttack( typeof(Spells.MagicArrowSpell) );
+			AddSpellAttack( typeof(Spells.WeakenSpell) );
+			AddSpellAttack( typeof(Spells.FireballSpell) );
+			AddSpellDefense( typeof(Spells.WallOfStoneSpell) );
+			AddSpellDefense( typeof(Spells.HealSpell) );
 		}
 
 		public DummyStun( Serial serial ) : base( serial )
@@ -426,9 +419,9 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 120;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 			this.Skills[SkillName.Inscription].Base = 100;
 
 			// Name
@@ -437,41 +430,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			JesterHat jhat = new JesterHat();
@@ -483,11 +476,11 @@ namespace Server.Mobiles
 			AddItem( dblt );
 
 			// Spells
-			AddSpellAttack( typeof(Spells.First.MagicArrowSpell) );
-			AddSpellAttack( typeof(Spells.First.WeakenSpell) );
-			AddSpellAttack( typeof(Spells.Third.FireballSpell) );
-			AddSpellDefense( typeof(Spells.Third.WallOfStoneSpell) );
-			AddSpellDefense( typeof(Spells.First.HealSpell) );
+			AddSpellAttack( typeof(Spells.MagicArrowSpell) );
+			AddSpellAttack( typeof(Spells.WeakenSpell) );
+			AddSpellAttack( typeof(Spells.FireballSpell) );
+			AddSpellDefense( typeof(Spells.WallOfStoneSpell) );
+			AddSpellDefense( typeof(Spells.HealSpell) );
 		}
 
 		public DummySuper( Serial serial ) : base( serial )
@@ -524,7 +517,7 @@ namespace Server.Mobiles
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
 			//this.Skills[SkillName.Anatomy].Base = 120;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
 			this.Skills[SkillName.Soins].Base = 100;
 
@@ -534,41 +527,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			Cap cap = new Cap();
@@ -614,10 +607,10 @@ namespace Server.Mobiles
 			this.InitStats( 105, 105, 105 );
 			this.Skills[SkillName.ArtMagique].Base = 120;
 			//this.Skills[SkillName.EvalInt].Base = 120;
-			this.Skills[SkillName.ArmeTranchante].Base = 120;
+			this.Skills[SkillName.Epee].Base = 120;
 			this.Skills[SkillName.Tactiques].Base = 120;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.Empoisonner].Base = 100;
+			this.Skills[SkillName.Empoisonnement].Base = 100;
 
 			// Name
 			this.Name = "Hybrid Assassin";
@@ -625,50 +618,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddToBackpack( book );
 
-			Katana kat = new Katana();
-			kat.Movable = false;
-			kat.LootType = LootType.Newbied;
-			kat.Crafter = this;
-			kat.Poison = Poison.Deadly;
-			kat.PoisonCharges = 12;
-			kat.Quality = WeaponQuality.Regular;
-			AddToBackpack( kat );
-
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			Cap cap = new Cap();
@@ -680,19 +664,19 @@ namespace Server.Mobiles
 			AddItem( robe );
 
 			DeadlyPoisonPotion pota = new DeadlyPoisonPotion();
-			pota.LootType = LootType.Newbied;
+			pota.LootType = LootType.Blessed;
 			AddToBackpack( pota );
 
 			DeadlyPoisonPotion potb = new DeadlyPoisonPotion();
-			potb.LootType = LootType.Newbied;
+			potb.LootType = LootType.Blessed;
 			AddToBackpack( potb );
 
 			DeadlyPoisonPotion potc = new DeadlyPoisonPotion();
-			potc.LootType = LootType.Newbied;
+			potc.LootType = LootType.Blessed;
 			AddToBackpack( potc );
 
 			DeadlyPoisonPotion potd = new DeadlyPoisonPotion();
-			potd.LootType = LootType.Newbied;
+			potd.LootType = LootType.Blessed;
 			AddToBackpack( potd );
 
 			Bandage band = new Bandage( 50 );
@@ -736,7 +720,7 @@ namespace Server.Mobiles
 			this.Skills[SkillName.Vol].Base = 120;
 			//this.Skills[SkillName.ArmsLore].Base = 100;
 			this.Skills[SkillName.Concentration].Base = 120;
-			this.Skills[SkillName.ArmePoing].Base = 120;
+			this.Skills[SkillName.Anatomie].Base = 120;
 
 			// Name
 			this.Name = "Hybrid Theif";
@@ -744,41 +728,41 @@ namespace Server.Mobiles
 			// Equip
 			Spellbook book = new Spellbook();
 			book.Movable = false;
-			book.LootType = LootType.Newbied;
+			book.LootType = LootType.Blessed;
 			book.Content =0xFFFFFFFFFFFFFFFF;
 			AddItem( book );
 
 			LeatherArms lea = new LeatherArms();
 			lea.Movable = false;
-			lea.LootType = LootType.Newbied;
+			lea.LootType = LootType.Blessed;
 			lea.Crafter = this;
 			lea.Quality = ArmorQuality.Regular;
 			AddItem( lea );
 
 			LeatherChest lec = new LeatherChest();
 			lec.Movable = false;
-			lec.LootType = LootType.Newbied;
+			lec.LootType = LootType.Blessed;
 			lec.Crafter = this;
 			lec.Quality = ArmorQuality.Regular;
 			AddItem( lec );
 
 			LeatherGorget leg = new LeatherGorget();
 			leg.Movable = false;
-			leg.LootType = LootType.Newbied;
+			leg.LootType = LootType.Blessed;
 			leg.Crafter = this;
 			leg.Quality = ArmorQuality.Regular;
 			AddItem( leg );
 
 			LeatherLegs lel = new LeatherLegs();
 			lel.Movable = false;
-			lel.LootType = LootType.Newbied;
+			lel.LootType = LootType.Blessed;
 			lel.Crafter = this;
 			lel.Quality = ArmorQuality.Regular;
 			AddItem( lel );
 
 			Sandals snd = new Sandals();
 			snd.Hue = iHue;
-			snd.LootType = LootType.Newbied;
+			snd.LootType = LootType.Blessed;
 			AddItem( snd );
 
 			Cap cap = new Cap();

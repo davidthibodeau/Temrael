@@ -338,7 +338,7 @@ namespace Server.Engines.Help
 				if ( m != null && m.AccessLevel >= AccessLevel.Counselor && m.AutoPageNotify && !IsHandling( m ) )
 					m.SendMessage( "A new page has been placed in the queue." );
 
-				if ( m != null && m.AccessLevel >= AccessLevel.Counselor && m.AutoPageNotify && m.LastMoveTime >= (DateTime.Now - TimeSpan.FromMinutes( 10.0 )) )
+				if ( m != null && m.AccessLevel >= AccessLevel.Counselor && m.AutoPageNotify && m.LastMoveTime >= (Core.TickCount - 600000 ) )
 					isStaffOnline = true;
 			}
 

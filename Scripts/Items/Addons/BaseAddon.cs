@@ -88,6 +88,11 @@ namespace Server.Items
 			}
 		}
 
+        public virtual bool CanBePlacedInRegion(Point3D p, Map map)
+        {
+            return true;
+        }
+
 		public virtual BaseAddonDeed Deed{ get{ return null; } }
 
 		Item IAddon.Deed
@@ -228,7 +233,7 @@ namespace Server.Items
 
 		public virtual bool ShareHue{ get{ return true; } }
 
-		[Hue, CommandProperty( AccessLevel.GameMaster )]
+		[Hue, CommandProperty( AccessLevel.Batisseur )]
 		public override int Hue
 		{
 			get

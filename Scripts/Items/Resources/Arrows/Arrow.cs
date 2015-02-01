@@ -20,6 +20,7 @@ namespace Server.Items
 		[Constructable]
 		public Arrow( int amount ) : base( 0xF3F )
 		{
+            GoldValue = 2;
 			Stackable = true;
 			Amount = amount;
 		}

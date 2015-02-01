@@ -58,9 +58,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Tactiques, 100, 125);
             SetSkill(SkillName.ArmeContondante, 100, 125);
 
-            Fame = 100;
-            Karma = 100;
-
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
 

@@ -6,7 +6,6 @@ namespace Server.Mobiles
 {
 	public class Ninja : BaseCreature
 	{
-		public override bool CanTeach{ get{ return true; } }
 		public override bool ClickTitle{ get{ return false; } }
 
 		[Constructable]
@@ -21,7 +20,7 @@ namespace Server.Mobiles
 			//SetSkill( SkillName.Ninjitsu, 60.0, 80.0 );
 			SetSkill( SkillName.Parer, 64.0, 80.0 );
 			SetSkill( SkillName.Tactiques, 64.0, 85.0 );
-			SetSkill( SkillName.ArmeTranchante, 64.0, 85.0 );
+			SetSkill( SkillName.Epee, 64.0, 85.0 );
 
 			SpeechHue = Utility.RandomDyedHue();
 
@@ -39,11 +38,11 @@ namespace Server.Mobiles
 			}
 
 			if ( !Female )
-				AddItem( new LeatherNinjaHood() );
+				//AddItem( new LeatherNinjaHood() );
 
-			AddItem( new LeatherNinjaPants() );
+			//AddItem( new LeatherNinjaPants() );
 			//AddItem( new LeatherNinjaBelt() );
-			AddItem( new LeatherNinjaJacket() );
+			//AddItem( new LeatherNinjaJacket() );
 			AddItem( new NinjaTabi() );
 
 			int hairHue = Utility.RandomNondyedHue();

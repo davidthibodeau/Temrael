@@ -75,7 +75,7 @@ namespace Server.Items
 
 		public bool IsOwner( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			BaseHouse house = BaseHouse.FindHouseAt( this );

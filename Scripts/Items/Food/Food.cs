@@ -12,21 +12,21 @@ namespace Server.Items
 		private Poison m_Poison;
 		private int m_FillFactor;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Poisoner
 		{
 			get { return m_Poisoner; }
 			set { m_Poisoner = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Poison Poison
 		{
 			get { return m_Poison; }
 			set { m_Poison = value; }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int FillFactor
 		{
 			get { return m_FillFactor; }
@@ -67,66 +67,27 @@ namespace Server.Items
 			}
 		}
 
-		public virtual bool Eat( Mobile from )
-		{
-			// Fill the Mobile with FillFactor
-			if ( FillHunger( from, m_FillFactor ) )
-			{
-				// Play a random "eat" sound
-				from.PlaySound( Utility.Random( 0x3A, 3 ) );
+        public virtual bool Eat(Mobile from)
+        {
+            // Play a random "eat" sound
+            from.PlaySound(Utility.Random(0x3A, 3));
 
-				if ( from.Body.IsHuman && !from.Mounted )
-					from.Animate( 34, 5, 1, true, false, 0 );
+            if (from.Body.IsHuman && !from.Mounted)
+                from.Animate(34, 5, 1, true, false, 0);
 
-				if ( m_Poison != null )
-					from.ApplyPoison( m_Poisoner, m_Poison );
+            if (m_Poison != null)
+                from.ApplyPoison(m_Poisoner, m_Poison);
 
-				Consume();
+            Consume();
 
-				return true;
-			}
-
-			return false;
-		}
-
-		static public bool FillHunger( Mobile from, int fillFactor )
-		{
-			if ( from.Hunger >= 20 )
-			{
-				from.SendLocalizedMessage( 500867 ); // You are simply too full to eat any more!
-				return false;
-			}
-			
-			int iHunger = from.Hunger + fillFactor;
-			if ( from.Stam < from.StamMax )
-				from.Stam += Utility.Random( 6, 3 ) + fillFactor/5;//restore some stamina
-			if ( iHunger >= 20 )
-			{
-				from.Hunger = 20;
-				from.SendLocalizedMessage( 500872 ); // You manage to eat the food, but you are stuffed!
-			}
-			else
-			{
-				from.Hunger = iHunger;
-
-				if ( iHunger < 5 )
-					from.SendLocalizedMessage( 500868 ); // You eat the food, but are still extremely hungry.
-				else if ( iHunger < 10 )
-					from.SendLocalizedMessage( 500869 ); // You eat the food, and begin to feel more satiated.
-				else if ( iHunger < 15 )
-					from.SendLocalizedMessage( 500870 ); // After eating the food, you feel much less hungry.
-				else
-					from.SendLocalizedMessage( 500871 ); // You feel quite full after consuming the food.
-			}
-
-			return true;
-		}
+            return true;
+        }
 
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 4 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( m_Poisoner );
 
@@ -136,44 +97,15 @@ namespace Server.Items
 
 		public override void Deserialize( GenericReader reader )
 		{
-			base.Deserialize( reader );
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 1:
-				{
-					switch ( reader.ReadInt() )
-					{
-						case 0: m_Poison = null; break;
-						case 1: m_Poison = Poison.Lesser; break;
-						case 2: m_Poison = Poison.Regular; break;
-						case 3: m_Poison = Poison.Greater; break;
-						case 4: m_Poison = Poison.Deadly; break;
-					}
-
-					break;
-				}
-				case 2:
-				{
-					m_Poison = Poison.Deserialize( reader );
-					break;
-				}
-				case 3:
-				{
-					m_Poison = Poison.Deserialize( reader );
-					m_FillFactor = reader.ReadInt();
-					break;
-				}
-				case 4:
-				{
-					m_Poisoner = reader.ReadMobile();
-					goto case 3;
-				}
-			}
-		}
-	}
+            m_Poisoner = reader.ReadMobile();
+            m_Poison = Poison.Deserialize(reader);
+            m_FillFactor = reader.ReadInt();
+        }
+    }
 
 	public class BreadLoaf : Food
 	{
@@ -185,6 +117,7 @@ namespace Server.Items
 		[Constructable]
 		public BreadLoaf( int amount ) : base( amount, 0x103B )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 3;
 		}
@@ -218,6 +151,7 @@ namespace Server.Items
 		[Constructable]
 		public Bacon( int amount ) : base( amount, 0x979 )
 		{
+            GoldValue = 6;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -289,6 +223,7 @@ namespace Server.Items
 		[Constructable]
 		public FishSteak( int amount ) : base( amount, 0x97B )
 		{
+            GoldValue = 3;
 			this.FillFactor = 3;
 		}
 
@@ -326,6 +261,7 @@ namespace Server.Items
 		[Constructable]
 		public CheeseWheel( int amount ) : base( amount, 0x97E )
 		{
+            GoldValue = 6;
 			this.FillFactor = 3;
 		}
 
@@ -432,6 +368,7 @@ namespace Server.Items
 		[Constructable]
 		public FrenchBread( int amount ) : base( amount, 0x98C )
 		{
+            GoldValue = 3;
 			this.Weight = 2.0;
 			this.FillFactor = 3;
 		}
@@ -499,6 +436,7 @@ namespace Server.Items
 		[Constructable]
 		public CookedBird( int amount ) : base( amount, 0x9B7 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
 		}
@@ -565,6 +503,7 @@ namespace Server.Items
 		[Constructable]
 		public Sausage( int amount ) : base( amount, 0x9C0 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
 		}
@@ -598,6 +537,7 @@ namespace Server.Items
 		[Constructable]
 		public Ham( int amount ) : base( amount, 0x9C9 )
 		{
+            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
 		}
@@ -626,6 +566,7 @@ namespace Server.Items
 		[Constructable]
 		public Cake() : base( 0x9E9 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 10;
@@ -652,6 +593,17 @@ namespace Server.Items
 
 	public class Ribs : Food
 	{
+        public override int GoldValue
+        {
+            get
+            {
+                return 6;
+            }
+            set
+            {
+            }
+        }
+
 		[Constructable]
 		public Ribs() : this( 1 )
 		{
@@ -688,6 +640,7 @@ namespace Server.Items
 		[Constructable]
 		public Cookies() : base( 0x160b )
 		{
+            GoldValue = 6;
 			Stackable = Core.ML;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
@@ -717,6 +670,7 @@ namespace Server.Items
 		[Constructable]
 		public Muffins() : base( 0x9eb )
 		{
+            GoldValue = 3;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
@@ -749,6 +703,7 @@ namespace Server.Items
 		[Constructable]
 		public CheesePizza() : base( 0x1040 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 6;
@@ -935,6 +890,7 @@ namespace Server.Items
 		[Constructable]
 		public ApplePie() : base( 0x1041 )
 		{
+            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
@@ -1023,6 +979,17 @@ namespace Server.Items
 
 	public class LambLeg : Food
 	{
+        public override int GoldValue
+        {
+            get
+            {
+                return 3;
+            }
+            set
+            {
+            }
+        }
+
 		[Constructable]
 		public LambLeg() : this( 1 )
 		{

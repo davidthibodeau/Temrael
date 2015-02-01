@@ -12,11 +12,11 @@ namespace Server.Items
 		private BaseBoat m_Boat;
 		private PlankSide m_Side;
 		private bool m_Locked;
-		private uint m_KeyValue;
+		private long m_KeyValue;
 
 		private Timer m_CloseTimer;
 
-		public Plank( BaseBoat boat, PlankSide side, uint keyValue ) : base( 0x3EB1 + (int)side )
+		public Plank( BaseBoat boat, PlankSide side, long keyValue ) : base( 0x3EB1 + (int)side )
 		{
 			m_Boat = boat;
 			m_Side = side;
@@ -55,7 +55,7 @@ namespace Server.Items
 					m_Boat = reader.ReadItem() as BaseBoat;
 					m_Side = (PlankSide) reader.ReadInt();
 					m_Locked = reader.ReadBool();
-					m_KeyValue = reader.ReadUInt();
+					m_KeyValue = reader.ReadLong();
 
 					if ( m_Boat == null )
 						Delete();
@@ -71,22 +71,22 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BaseBoat Boat{ get{ return m_Boat; } set{ m_Boat = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlankSide Side{ get{ return m_Side; } set{ m_Side = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Locked{ get{ return m_Locked; } set{ m_Locked = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public uint KeyValue{ get{ return m_KeyValue; } set{ m_KeyValue = value; } }
+		[CommandProperty( AccessLevel.Batisseur )]
+        public long KeyValue { get { return m_KeyValue; } set { m_KeyValue = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsOpen{ get{ return ( ItemID == 0x3ED5 || ItemID == 0x3ED4 || ItemID == 0x3E84 || ItemID == 0x3E89 ); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Starboard{ get{ return ( m_Side == PlankSide.Starboard ); } }
 
 		public void SetFacing( Direction dir )
@@ -169,26 +169,26 @@ namespace Server.Items
 					{
 						z = from.Z + j;
 
-						if ( map.CanFit( x, y, z, 16, false, false ) && !Server.Spells.SpellHelper.CheckMulti( new Point3D( x, y, z ), map ) && !Region.Find( new Point3D( x, y, z ), map ).IsPartOf( typeof( Factions.StrongholdRegion ) ) )
-						{
-							if ( i == 1 && j >= -2 && j <= 2 )
-								return true;
+                        if (map.CanFit(x, y, z, 16, false, false) && !Server.Spells.SpellHelper.CheckMulti(new Point3D(x, y, z), map))
+                        {
+                            if (i == 1 && j >= -2 && j <= 2)
+                                return true;
 
-							from.Location = new Point3D( x, y, z );
-							return false;
-						}
+                            from.Location = new Point3D(x, y, z);
+                            return false;
+                        }
 					}
 
 					z = map.GetAverageZ( x, y );
 
-					if ( map.CanFit( x, y, z, 16, false, false ) && !Server.Spells.SpellHelper.CheckMulti( new Point3D( x, y, z ), map ) && !Region.Find( new Point3D( x, y, z ), map ).IsPartOf( typeof( Factions.StrongholdRegion ) ) )
-					{
-						if ( i == 1 )
-							return true;
+                    if (map.CanFit(x, y, z, 16, false, false) && !Server.Spells.SpellHelper.CheckMulti(new Point3D(x, y, z), map))
+                    {
+                        if (i == 1)
+                            return true;
 
-						from.Location = new Point3D( x, y, z );
-						return false;
-					}
+                        from.Location = new Point3D(x, y, z);
+                        return false;
+                    }
 				}
 
 				return true;
@@ -264,7 +264,7 @@ namespace Server.Items
 						{
 							Open();
 						}
-						else if ( from.AccessLevel >= AccessLevel.GameMaster )
+						else if ( from.AccessLevel >= AccessLevel.Batisseur )
 						{
 							from.LocalOverheadMessage( Network.MessageType.Regular, 0x00, 502502 ); // That is locked but your godly powers allow access
 							Open();
@@ -278,7 +278,7 @@ namespace Server.Items
 					{
 						from.Location = new Point3D( this.X, this.Y, this.Z + 3 );
 					}
-					else if ( from.AccessLevel >= AccessLevel.GameMaster )
+					else if ( from.AccessLevel >= AccessLevel.Batisseur )
 					{
 						from.LocalOverheadMessage( Network.MessageType.Regular, 0x00, 502502 ); // That is locked but your godly powers allow access
 						from.Location = new Point3D( this.X, this.Y, this.Z + 3 );

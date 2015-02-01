@@ -9,6 +9,7 @@ namespace Server.Items
 		[Constructable]
 		public Dices() : base( 0xFA7 )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 

@@ -1,9 +1,6 @@
 using System;
 using System.Collections;
 using Server.Engines.Plants;
-using Server.Engines.Quests;
-using Server.Engines.Quests.Hag;
-using Server.Engines.Quests.Matriarch;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
@@ -60,6 +57,16 @@ namespace Server.Items
 		public BeverageBottle( BeverageType type )
 			: base( type )
 		{
+            switch (type)
+            {
+                case BeverageType.Ale: GoldValue = 15; break;
+                case BeverageType.Cider: GoldValue = 15; break;
+                case BeverageType.Liquor: GoldValue = 15; break;
+                case BeverageType.Milk: GoldValue = 15; break;
+                case BeverageType.Water: GoldValue = 15; break;
+                case BeverageType.Wine: GoldValue = 15; break;
+            }
+
 			Weight = 1.0;
 		}
 
@@ -129,6 +136,16 @@ namespace Server.Items
 		public Jug( BeverageType type )
 			: base( type )
 		{
+            switch (type)
+            {
+                case BeverageType.Ale: GoldValue = 11; break;
+                case BeverageType.Cider: GoldValue = 11; break;
+                case BeverageType.Liquor: GoldValue = 11; break;
+                case BeverageType.Milk: GoldValue = 11; break;
+                case BeverageType.Water: GoldValue = 11; break;
+                case BeverageType.Wine: GoldValue = 11; break;
+            }
+
 			Weight = 1.0;
 		}
 
@@ -328,6 +345,16 @@ namespace Server.Items
 		public GlassMug( BeverageType type )
 			: base( type )
 		{
+            switch (type)
+            {
+                case BeverageType.Ale: GoldValue = 6; break;
+                case BeverageType.Cider: GoldValue = 6; break;
+                case BeverageType.Liquor: GoldValue = 6; break;
+                case BeverageType.Milk: GoldValue = 6; break;
+                case BeverageType.Water: GoldValue = 6; break;
+                case BeverageType.Wine: GoldValue = 6; break;
+            }
+
 			Weight = 1.0;
 		}
 
@@ -471,6 +498,16 @@ namespace Server.Items
 		public Pitcher( BeverageType type )
 			: base( type )
 		{
+            switch (type)
+            {
+                case BeverageType.Ale: GoldValue = 21; break;
+                case BeverageType.Cider: GoldValue = 21; break;
+                case BeverageType.Liquor: GoldValue = 21; break;
+                case BeverageType.Milk: GoldValue = 21; break;
+                case BeverageType.Water: GoldValue = 21; break;
+                case BeverageType.Wine: GoldValue = 21; break;
+            }
+
 			Weight = 2.0;
 		}
 
@@ -576,39 +613,39 @@ namespace Server.Items
 
 		public abstract int ComputeItemID();
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsEmpty
 		{
 			get { return ( m_Quantity <= 0 ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ContainsAlchohol
 		{
 			get { return ( !IsEmpty && m_Content != BeverageType.Milk && m_Content != BeverageType.Water ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsFull
 		{
 			get { return ( m_Quantity >= MaxQuantity ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Poison Poison
 		{
 			get { return m_Poison; }
 			set { m_Poison = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Poisoner
 		{
 			get { return m_Poisoner; }
 			set { m_Poisoner = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BeverageType Content
 		{
 			get { return m_Content; }
@@ -627,7 +664,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Quantity
 		{
 			get { return m_Quantity; }
@@ -1038,8 +1075,6 @@ namespace Server.Items
 			}
 			else if( from == targ )
 			{
-				if( from.Thirst < 20 )
-					from.Thirst += 1;
 
 				if( ContainsAlchohol )
 				{
@@ -1068,64 +1103,9 @@ namespace Server.Items
 
 				--Quantity;
 			}
-			else if( targ is BaseWaterContainer )
-			{
-				BaseWaterContainer bwc = targ as BaseWaterContainer;
-
-				if( ( !this.IsEmpty || this.Content == BeverageType.Water ) && bwc.Items.Count == 0 )
-				{
-					int It_Needs = Math.Min( ( bwc.MaxQuantity - bwc.Quantity ), Quantity );
-
-					if( It_Needs > 0 && ( !IsEmpty && !bwc.IsFull ) )
-					{
-						bwc.Quantity += It_Needs;
-						Quantity -= It_Needs;
-
-						from.PlaySound( 0x4E );
-					}
-				}
-			}
 			else if( targ is PlantItem )
 			{
 				( (PlantItem)targ ).Pour( from, this );
-			}
-			else if( targ is AddonComponent &&
-				( ( (AddonComponent)targ ).Addon is WaterVatEast || ( (AddonComponent)targ ).Addon is WaterVatSouth ) &&
-				this.Content == BeverageType.Water )
-			{
-				PlayerMobile player = from as PlayerMobile;
-
-				if( player != null )
-				{
-					SolenMatriarchQuest qs = player.Quest as SolenMatriarchQuest;
-
-					if( qs != null )
-					{
-						QuestObjective obj = qs.FindObjective( typeof( GatherWaterObjective ) );
-
-						if( obj != null && !obj.Completed )
-						{
-							BaseAddon vat = ( (AddonComponent)targ ).Addon;
-
-							if( vat.X > 5784 && vat.X < 5814 && vat.Y > 1903 && vat.Y < 1934 &&
-								( ( qs.RedSolen && vat.Map == Map.Trammel ) || ( !qs.RedSolen && vat.Map == Map.Felucca ) ) )
-							{
-								if( obj.CurProgress + Quantity > obj.MaxProgress )
-								{
-									int delta = obj.MaxProgress - obj.CurProgress;
-
-									Quantity -= delta;
-									obj.CurProgress = obj.MaxProgress;
-								}
-								else
-								{
-									obj.CurProgress += Quantity;
-									Quantity = 0;
-								}
-							}
-						}
-					}
-				}
 			}
 			else
 			{

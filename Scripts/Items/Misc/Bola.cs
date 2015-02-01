@@ -84,12 +84,7 @@ namespace Server.Items
 
 			to.Damage( 1, from );
 
-			if ( to is ChaosDragoon || to is ChaosDragoonElite )
-				from.SendLocalizedMessage( 1042047 ); // You fail to knock the rider from its mount.
-
 			IMount mt = to.Mount;
-			if ( mt != null && !( to is ChaosDragoon || to is ChaosDragoonElite ) )
-				mt.Rider = null;
 
 			to.SendLocalizedMessage( 1040023 ); // You have been knocked off of your mount!
 
@@ -161,7 +156,7 @@ namespace Server.Items
 
 						from.Direction = from.GetDirectionTo( to );
 						from.Animate( 11, 5, 1, true, false, 0 );
-						from.MovingEffect( to, 0x26AC, 10, 0, false, false );
+						Effects.SendMovingEffect(from, to, 0x26AC, 10, 0, false, false );
 
 						Timer.DelayCall( TimeSpan.FromSeconds( 0.5 ), new TimerStateCallback( FinishThrow ), new object[]{ from, to } );
 					}

@@ -11,7 +11,7 @@ namespace Server.Items
 	{
 		private bool m_TurnedOn;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool TurnedOn
 		{
 			get{ return m_TurnedOn; }

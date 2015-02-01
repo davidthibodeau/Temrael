@@ -4,11 +4,26 @@ using Server.Network;
 
 namespace Server.Items
 {
-	public abstract class BaseLeather : Item, ICommodity
+	public abstract class BaseLeather : Item, ICommodity, IExtractable
 	{
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        public double getSkillReq
+        {
+            get { return CraftResources.GetSkill(m_Resource); }
+        }
+        #endregion
+
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource; }
@@ -48,6 +63,8 @@ namespace Server.Items
 					break;
 				}
 			}
+
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 
 		public BaseLeather( CraftResource resource ) : this( resource, 1 )
@@ -150,6 +167,7 @@ namespace Server.Items
 		[Constructable]
 		public Leather( int amount ) : base( CraftResource.RegularLeather, amount )
 		{
+            GoldValue = 3;
             Name = "Cuir";
 		}
 
@@ -255,7 +273,7 @@ namespace Server.Items
         public DesertiqueLeather(int amount)
             : base(CraftResource.DesertiqueLeather, amount)
 		{
-            Name = "Cuir Désertique";
+            Name = "Cuir DÃ©sertique";
 		}
 
         public DesertiqueLeather(Serial serial)
@@ -362,7 +380,7 @@ namespace Server.Items
         public GeantLeather(int amount)
             : base(CraftResource.GeantLeather, amount)
         {
-            Name = "Cuir Géant";
+            Name = "Cuir GÃ©ant";
         }
 
         public GeantLeather(Serial serial)
@@ -578,7 +596,7 @@ namespace Server.Items
         public DemoniaqueLeather(int amount)
             : base(CraftResource.DemoniaqueLeather, amount)
         {
-            Name = "Cuir Démoniaque";
+            Name = "Cuir DÃ©moniaque";
         }
 
         public DemoniaqueLeather(Serial serial)

@@ -8,6 +8,8 @@ namespace Server.Items
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
+        public override int GoldValue { get { return 3; } set { } }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

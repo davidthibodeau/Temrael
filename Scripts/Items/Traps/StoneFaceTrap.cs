@@ -13,7 +13,7 @@ namespace Server.Items
 
 	public class StoneFaceTrap : BaseTrap
 	{
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public StoneFaceTrapType Type
 		{
 			get

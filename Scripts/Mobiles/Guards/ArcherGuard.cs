@@ -47,7 +47,7 @@ namespace Server.Mobiles
 			AddItem( new Boots() );
 			AddItem( new SkullCap() );
 
-			Bow bow = new Bow();
+			GrandArc bow = new GrandArc();
 
 			bow.Movable = false;
 			bow.Crafter = this;
@@ -61,7 +61,7 @@ namespace Server.Mobiles
 
 			Arrow arrows = new Arrow( 250 );
 
-			arrows.LootType = LootType.Newbied;
+			arrows.LootType = LootType.Blessed;
 
 			pack.DropItem( arrows );
 			pack.DropItem( new Gold( 10, 25 ) );
@@ -74,7 +74,7 @@ namespace Server.Mobiles
 			Skills[SkillName.Concentration].Base = 120.0;
 			Skills[SkillName.Detection].Base = 100.0;
 
-			this.NextCombatTime = DateTime.Now + TimeSpan.FromSeconds( 0.5 );
+			this.NextCombatTime = Core.TickCount + 500;
 			this.Focus = target;
 		}
 
@@ -90,7 +90,7 @@ namespace Server.Mobiles
 			return base.OnBeforeDeath();
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override Mobile Focus
 		{
 			get
@@ -242,9 +242,6 @@ namespace Server.Mobiles
 					Stop();
 					return;
 				}
-
-				m_Owner.Criminal = false;
-				m_Owner.Kills = 0;
 				m_Owner.Stam = m_Owner.StamMax;
 
 				Mobile target = m_Owner.Focus;
@@ -272,7 +269,7 @@ namespace Server.Mobiles
 				else
 				{// <instakill>
 					TeleportTo( target );
-					target.BoltEffect( 0 );
+					Effects.SendBoltEffect(target, true, 0);
 
 					if ( target is BaseCreature )
 						((BaseCreature)target).NoKillAwards = true;
@@ -336,7 +333,7 @@ namespace Server.Mobiles
 
 			private bool TimeToSpare()
 			{
-				return (m_Owner.NextCombatTime - DateTime.Now) > TimeSpan.FromSeconds( 1.0 );
+				return (m_Owner.NextCombatTime - Core.TickCount) > 1000;
 			}
 
 			private bool OutOfMaxDistance( Mobile target )

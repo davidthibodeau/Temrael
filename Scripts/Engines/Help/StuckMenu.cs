@@ -176,11 +176,7 @@ namespace Server.Menus.Questions
 		{
 			StopClose();
 
-			if ( Factions.Sigil.ExistsOn( m_Mobile ) )
-			{
-				m_Mobile.SendLocalizedMessage( 1061632 ); // You can't do that while carrying the sigil.
-			}
-			else if ( info.ButtonID == 0 )
+			if ( info.ButtonID == 0 )
 			{
 				if ( m_Mobile == m_Sender )
 					m_Mobile.SendLocalizedMessage( 1010588 ); // You choose not to go to any city.
@@ -203,7 +199,7 @@ namespace Server.Menus.Questions
 
 				new TeleportTimer( m_Mobile, entry, TimeSpan.FromSeconds( 10.0 + (Utility.RandomDouble() * 110.0) ) ).Start();
 
-				m_Mobile.UsedStuckMenu();
+				//m_Mobile.UsedStuckMenu();
 			}
 			else
 			{
@@ -264,22 +260,10 @@ namespace Server.Menus.Questions
 					m_Mobile.Frozen = false;
 					Stop();
 
-					if ( Factions.Sigil.ExistsOn( m_Mobile ) )
-					{
-						m_Mobile.SendLocalizedMessage( 1061632 ); // You can't do that while carrying the sigil.
-						return;
-					}
-
 					int idx = Utility.Random( m_Destination.Locations.Length );
 					Point3D dest = m_Destination.Locations[idx];
 
-					Map destMap;
-					if ( m_Mobile.Map == Map.Trammel )
-						destMap = Map.Trammel;
-					else if ( m_Mobile.Map == Map.Felucca )
-						destMap = Map.Felucca;
-					else
-						destMap = m_Mobile.Kills >= 5 ? Map.Felucca : Map.Trammel;
+					Map destMap = Map.Felucca;
 
 					Mobiles.BaseCreature.TeleportPets( m_Mobile, dest, destMap );
 					m_Mobile.MoveToWorld( dest, destMap );

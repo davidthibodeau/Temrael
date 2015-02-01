@@ -204,7 +204,7 @@ namespace Server.Multis
 			if( m_Fixtures == null )
 				m_Fixtures = new List<Item>();
 
-			uint keyValue = 0;
+			long keyValue = 0;
 
 			for( int i = 0; i < list.Length; ++i )
 			{
@@ -738,7 +738,7 @@ namespace Server.Multis
 
 			PacketHandlers.RegisterEncoded( 0x1A, true, new OnEncodedPacketReceive( Designer_Revert ) );
 
-			CommandSystem.Register( "DesignInsert", AccessLevel.GameMaster, new CommandEventHandler( DesignInsert_OnCommand ) );
+			CommandSystem.Register( "DesignInsert", AccessLevel.Batisseur, new CommandEventHandler( DesignInsert_OnCommand ) );
 
 			EventSink.Speech += new SpeechEventHandler( EventSink_Speech );
 		}
@@ -895,7 +895,7 @@ namespace Server.Multis
 			int cost = newPrice - oldPrice;
 
 			if ( !this.Deleted ) { // Temporary Fix. We should be booting a client out of customization mode in the delete handler.
-				if ( from.AccessLevel >= AccessLevel.GameMaster && cost != 0 )
+				if ( from.AccessLevel >= AccessLevel.Batisseur && cost != 0 )
 				{
 					from.SendMessage( "{0} gold would have been {1} your bank if you were not a GM.", cost.ToString(), ((cost > 0 )? "withdrawn from" : "deposited into" ) );
 				}
@@ -1487,7 +1487,7 @@ namespace Server.Multis
 				// Add component
 				DesignState design = context.Foundation.DesignState;
 
-				if( from.AccessLevel < AccessLevel.GameMaster && !ValidPiece( itemID ) )
+				if( from.AccessLevel < AccessLevel.Batisseur && !ValidPiece( itemID ) )
 				{
 					TraceValidity( state, itemID );
 					design.SendDetailedInfoTo( state );
@@ -1610,7 +1610,7 @@ namespace Server.Multis
 			Mobile from = state.Mobile;
 			DesignContext context = DesignContext.Find( from );
 
-			if( context != null && (Core.SE || from.AccessLevel >= AccessLevel.GameMaster) )
+			if( context != null && (Core.SE || from.AccessLevel >= AccessLevel.Batisseur) )
 			{
 				// Read data detailing component graphic and location
 				int itemID = pvSrc.ReadInt32();
@@ -1621,7 +1621,7 @@ namespace Server.Multis
 				// Add component
 				DesignState design = context.Foundation.DesignState;
 
-				if( from.AccessLevel < AccessLevel.GameMaster && !ValidPiece( itemID, true ) )
+				if( from.AccessLevel < AccessLevel.Batisseur && !ValidPiece( itemID, true ) )
 				{
 					TraceValidity( state, itemID );
 					design.SendDetailedInfoTo( state );

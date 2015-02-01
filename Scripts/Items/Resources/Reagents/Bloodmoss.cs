@@ -17,6 +17,7 @@ namespace Server.Items
 		[Constructable]
 		public Bloodmoss( int amount ) : base( 0xF7B, amount )
 		{
+            GoldValue = 1;
 		}
 
 		public Bloodmoss( Serial serial ) : base( serial )

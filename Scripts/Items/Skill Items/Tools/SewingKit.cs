@@ -11,6 +11,7 @@ namespace Server.Items
 		[Constructable]
 		public SewingKit() : base( 0xF9D )
 		{
+            GoldValue = 15;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}
@@ -18,6 +19,7 @@ namespace Server.Items
 		[Constructable]
 		public SewingKit( int uses ) : base( uses, 0xF9D )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}

@@ -10,7 +10,7 @@ namespace Server.Engines.Plants
 		private PlantHue m_PlantHue;
 		private bool m_ShowType;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlantType PlantType
 		{
 			get { return m_PlantType; }
@@ -21,7 +21,7 @@ namespace Server.Engines.Plants
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public PlantHue PlantHue
 		{
 			get { return m_PlantHue; }
@@ -33,7 +33,7 @@ namespace Server.Engines.Plants
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool ShowType
 		{
 			get { return m_ShowType; }

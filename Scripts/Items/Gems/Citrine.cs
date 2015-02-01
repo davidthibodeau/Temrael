@@ -3,8 +3,18 @@ using Server;
 
 namespace Server.Items
 {
-	public class Citrine : Item
+    public class Citrine : BaseGem
 	{
+        public override int m_Couleur
+        {
+            get { return 2382; }
+        }
+
+        public override double m_SkillReq
+        {
+            get { return 40; }
+        }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

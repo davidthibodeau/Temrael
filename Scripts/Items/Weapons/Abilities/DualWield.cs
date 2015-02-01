@@ -46,7 +46,7 @@ namespace Server.Items
 
 			attacker.SendLocalizedMessage( 1063362 ); // You dually wield for increased speed!
 
-			attacker.FixedParticles( 0x3779, 1, 15, 0x7F6, 0x3E8, 3, EffectLayer.LeftHand );
+			Effects.SendTargetParticles(attacker, 0x3779, 1, 15, 0x7F6, 0x3E8, 3, EffectLayer.LeftHand );
 
 			Timer t = new DualWieldTimer( attacker, (int)(20.0 + 3.0 * (attacker.Skills[SkillName.ArmePerforante].Value - 50.0) / 7.0) );	//20-50 % increase
 

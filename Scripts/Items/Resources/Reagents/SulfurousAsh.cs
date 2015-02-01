@@ -12,11 +12,13 @@ namespace Server.Items
 		[Constructable]
 		public SulfurousAsh() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]
 		public SulfurousAsh( int amount ) : base( 0xF8C, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public SulfurousAsh( Serial serial ) : base( serial )

@@ -52,27 +52,22 @@ namespace Server.Mobiles
 
             SetSkill(SkillName.Tactiques, 36, 67);
             SetSkill(SkillName.ArtMagique, 22, 22);
-            SetSkill(SkillName.ArmeTranchante, 64, 100);
+            SetSkill(SkillName.Epee, 64, 100);
             SetSkill(SkillName.Parer, 60, 82);
             SetSkill(SkillName.ArmeContondante, 36, 67);
             //SetSkill(SkillName.Focus, 36, 67);
-            SetSkill(SkillName.ArmePoing, 25, 47);
+            SetSkill(SkillName.Anatomie, 25, 47);
 
-
-            Fame = 100;
-            Karma = 100;
 
             AddItem(new Shoes(Utility.RandomNeutralHue()));
             AddItem(new Shirt());
 
             // Pick a random sword
-            switch (Utility.Random(5))
+            switch (Utility.Random(3))
             {
-                case 0: AddItem(new Longsword()); break;
-                case 1: AddItem(new Broadsword()); break;
+                //case 0: AddItem(new Longsword()); break;
                 case 2: AddItem(new VikingSword()); break;
-                case 3: AddItem(new BattleAxe()); break;
-                case 4: AddItem(new TwoHandedAxe()); break;
+                case 1: AddItem(new TwoHandedAxe()); break;
             }
 
             // Pick a random shield

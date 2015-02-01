@@ -11,6 +11,7 @@ using Server.Misc;
 using Server.Mobiles;
 using Server.Multis;
 using Server.Network;
+using Server.Engines.Evolution;
 
 namespace Server.Accounting
 {
@@ -31,6 +32,7 @@ namespace Server.Accounting
 		private string[] m_IPRestrictions;
 		private IPAddress[] m_LoginIPs;
 		private HardwareInfo m_HardwareInfo;
+        private Transfert m_Transfert;
 
 		/// <summary>
 		/// Deletes the account, all characters of the account, and all houses of those characters
@@ -55,7 +57,7 @@ namespace Server.Accounting
 				m_Mobiles[i] = null;
 			}
 
-			Accounts.Remove( m_Username );
+            Accounts.ServerAccounts.Remove(m_Username);
 		}
 
 		/// <summary>
@@ -186,24 +188,6 @@ namespace Server.Accounting
 		}
 
 		/// <summary>
-		/// Gets or sets a flag indicating if the characters created on this account will have the young status.
-		/// </summary>
-		public bool Young
-		{
-			get { return !GetFlag( 1 ); }
-			set
-			{
-				SetFlag( 1, !value );
-
-				if ( m_YoungTimer != null )
-				{
-					m_YoungTimer.Stop();
-					m_YoungTimer = null;
-				}
-			}
-		}
-
-		/// <summary>
 		/// The date and time of when this account was created.
 		/// </summary>
 		public DateTime Created
@@ -247,6 +231,11 @@ namespace Server.Accounting
 				return m_TotalGameTime;
 			}
 		}
+
+        public Transfert Transfert
+        {
+            get { return m_Transfert; }
+        }
 
 		/// <summary>
 		/// Gets the value of a specific flag in the Flags bitfield.
@@ -475,8 +464,6 @@ namespace Server.Accounting
 			return ok;
 		}
 
-		private Timer m_YoungTimer;
-
 		public static void Initialize()
 		{
 			EventSink.Connected += new ConnectedEventHandler( EventSink_Connected );
@@ -490,12 +477,6 @@ namespace Server.Accounting
 
 			if ( acc == null )
 				return;
-
-			if ( acc.Young && acc.m_YoungTimer == null )
-			{
-				acc.m_YoungTimer = new YoungTimer( acc );
-				acc.m_YoungTimer.Start();
-			}
 		}
 
 		private static void EventSink_Disconnected( DisconnectedEventArgs e )
@@ -504,12 +485,6 @@ namespace Server.Accounting
 
 			if ( acc == null )
 				return;
-
-			if ( acc.m_YoungTimer != null )
-			{
-				acc.m_YoungTimer.Stop();
-				acc.m_YoungTimer = null;
-			}
 
 			PlayerMobile m = e.Mobile as PlayerMobile;
 			if ( m == null )
@@ -529,64 +504,9 @@ namespace Server.Accounting
 
 			if ( acc == null )
 				return;
-
-			if ( m.Young && acc.Young )
-			{
-				TimeSpan ts = YoungDuration - acc.TotalGameTime;
-				int hours = Math.Max( (int) ts.TotalHours, 0 );
-
-				m.SendAsciiMessage( "You will enjoy the benefits and relatively safe status of a young player for {0} more hour{1}.", hours, hours != 1 ? "s" : "" );
-			}
 		}
 
-		public void RemoveYoungStatus( int message )
-		{
-			this.Young = false;
-
-			for ( int i = 0; i < m_Mobiles.Length; i++ )
-			{
-				PlayerMobile m = m_Mobiles[i] as PlayerMobile;
-
-				if ( m != null && m.Young )
-				{
-					m.Young = false;
-
-					if ( m.NetState != null )
-					{
-						if ( message > 0 )
-							m.SendLocalizedMessage( message );
-
-						m.SendLocalizedMessage( 1019039 ); // You are no longer considered a young player of Ultima Online, and are no longer subject to the limitations and benefits of being in that caste.
-					}
-				}
-			}
-		}
-
-		public void CheckYoung()
-		{
-			if ( TotalGameTime >= YoungDuration )
-				RemoveYoungStatus( 1019038 ); // You are old enough to be considered an adult, and have outgrown your status as a young player!
-		}
-
-		private class YoungTimer : Timer
-		{
-			private Account m_Account;
-
-			public YoungTimer( Account account )
-				: base( TimeSpan.FromMinutes( 1.0 ), TimeSpan.FromMinutes( 1.0 ) )
-			{
-				m_Account = account;
-
-				Priority = TimerPriority.FiveSeconds;
-			}
-
-			protected override void OnTick()
-			{
-				m_Account.CheckYoung();
-			}
-		}
-
-		public Account( string username, string password )
+		public Account(Accounts acc, string username, string password )
 		{
 			m_Username = username;
 			
@@ -602,10 +522,12 @@ namespace Server.Accounting
 			m_IPRestrictions = new string[0];
 			m_LoginIPs = new IPAddress[0];
 
-			Accounts.Add( this );
+			acc.Add( this );
+
+            m_Transfert = new Transfert(username);
 		}
 
-		public Account( XmlElement node )
+		public Account(Accounts accounts, XmlElement node )
 		{
 			m_Username = Utility.GetText( node["username"], "empty" );
 
@@ -655,9 +577,24 @@ namespace Server.Accounting
 						break;
 					}
 			}
-
-			m_AccessLevel = (AccessLevel)Enum.Parse( typeof( AccessLevel ), Utility.GetText( node["accessLevel"], "Player" ), true );
-			m_Flags = Utility.GetXMLInt32( Utility.GetText( node["flags"], "0" ), 0 );
+            try
+            {
+                m_AccessLevel = (AccessLevel)Enum.Parse(typeof(AccessLevel), Utility.GetText(node["accessLevel"], "Player"), true);
+            }
+            catch
+            {
+                switch (Utility.GetText(node["accessLevel"], "Player"))
+                {
+                    case "GameMaster": m_AccessLevel = AccessLevel.Batisseur; break;
+                    case "Seer": m_AccessLevel = AccessLevel.Chroniqueur; break;
+                    case "Administrator": m_AccessLevel = AccessLevel.Chroniqueur; break;
+                    default:
+                        Console.WriteLine("ERROR: Incapable d'identifier le accesslevel d'un compte (accesslevel: {0}). Avez-vous changé leurs noms?",
+                            Utility.GetText(node["accessLevel"], "Player"));
+                        break;
+                }
+            }
+            m_Flags = Utility.GetXMLInt32(Utility.GetText(node["flags"], "0"), 0);
 			m_Created = Utility.GetXMLDateTime( Utility.GetText( node["created"], null ), DateTime.Now );
 			m_LastLogin = Utility.GetXMLDateTime( Utility.GetText( node["lastLogin"], null ), DateTime.Now );
 
@@ -666,6 +603,7 @@ namespace Server.Accounting
 			m_Tags = LoadTags( node );
 			m_LoginIPs = LoadAddressList( node );
 			m_IPRestrictions = LoadAccessCheck( node );
+            
 
 			for ( int i = 0; i < m_Mobiles.Length; ++i )
 			{
@@ -686,10 +624,9 @@ namespace Server.Accounting
 			}
 			m_TotalGameTime = totalGameTime;
 
-			if ( this.Young )
-				CheckYoung();
-
-			Accounts.Add( this );
+			accounts.Add( this );
+            
+            m_Transfert = LoadTransfert(node);
 		}
 
 		/// <summary>
@@ -807,6 +744,19 @@ namespace Server.Accounting
 
 			return list;
 		}
+
+        public Transfert LoadTransfert(XmlElement node)
+        {
+            int serial = Utility.GetXMLInt32(Utility.GetText(node["transfert"], null), -1);
+
+            Transfert tr = null;
+            if (serial == -1)
+                tr = new Transfert(Username);
+            else
+                tr = World.FindItem(serial) as Transfert;
+
+            return tr;
+        }
 
 		/// <summary>
 		/// Deserializes a list of AccountComment instances from an xml element.
@@ -1087,6 +1037,13 @@ namespace Server.Accounting
 				xml.WriteEndElement();
 			}
 
+            if (m_Transfert != null)
+            {
+                xml.WriteStartElement("transfert");
+                xml.WriteString(m_Transfert.Serial.Value.ToString());
+                xml.WriteEndElement();
+            }
+
 			xml.WriteEndElement();
 		}
 
@@ -1114,7 +1071,7 @@ namespace Server.Accounting
 		/// </summary>
 		public int Limit
 		{
-			get { return ( Core.SA ? 7 : Core.AOS ? 6 : 5 ); }
+			get { return 3; }
 		}
 
 		/// <summary>
@@ -1175,6 +1132,14 @@ namespace Server.Accounting
 			return m_Username.CompareTo( other.m_Username );
 		}
 
+		public int CompareTo( IAccount other )
+		{
+			if ( other == null )
+				return 1;
+
+			return m_Username.CompareTo( other.Username );
+		}
+
 		public int CompareTo( object obj )
 		{
 			if ( obj is Account )
@@ -1182,5 +1147,5 @@ namespace Server.Accounting
 
 			throw new ArgumentException();
 		}
-	}
+    }
 }

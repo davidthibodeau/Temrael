@@ -63,28 +63,28 @@ namespace Server.Items
 		private bool m_Writable;
 		private SecureLevel m_SecureLevel;
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Title
 		{
 			get { return m_Title; }
 			set { m_Title = value; InvalidateProperties(); }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Author
 		{
 			get { return m_Author; }
 			set { m_Author = value; InvalidateProperties(); }
 		}
 		
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Writable
 		{
 			get { return m_Writable; }
 			set { m_Writable = value; }
 		}
 
-		[CommandProperty(AccessLevel.GameMaster)]
+		[CommandProperty(AccessLevel.Batisseur)]
 		public int PagesCount
 		{
 			get { return m_Pages.Length; }
@@ -431,7 +431,7 @@ namespace Server.Items
 
 		#region ISecurable Members
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get

@@ -7,6 +7,7 @@ namespace Server.Items
 		[Constructable]
 		public TambourineTassel() : base( 0xE9E, 0x52, 0x53 )
 		{
+            GoldValue = 9;
 			Weight = 1.0;
 		}
 

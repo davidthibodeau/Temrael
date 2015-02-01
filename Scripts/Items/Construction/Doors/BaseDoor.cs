@@ -7,13 +7,53 @@ using Server.Targeting;
 namespace Server.Items
 {
 	public abstract class BaseDoor : Item, ILockable, ITelekinesisable
-	{
+    {
+        #region IActivable
+        public override void IActivableOnActivate(int mode, Mobile from, int overflow)
+        {
+            // Mode 1 - Open
+            // Mode 2 - Close
+            // Mode 3 - Les deux.
+
+            bool open = false;
+
+            if (mode == 1 || (mode == 3 && !Open ))
+            {
+                open = true;
+                OnOpened(from);
+            }
+            else if (mode == 2 || (mode == 3 && Open))
+            {
+                open = false;
+                OnClosed(from);
+            }
+
+            if (UseChainedFunctionality)
+            {
+                List<BaseDoor> list = GetChain();
+
+                for (int i = 0; i < list.Count; ++i)
+                    list[i].Open = open;
+            }
+            else
+            {
+                Open = open;
+
+                BaseDoor link = this.Link;
+
+                if (m_Open && link != null && !link.Open)
+                    link.Open = true;
+            }
+        }
+        #endregion
+
+
 		private bool m_Open, m_Locked;
 		private int m_OpenedID, m_OpenedSound;
 		private int m_ClosedID, m_ClosedSound;
 		private Point3D m_Offset;
 		private BaseDoor m_Link;
-		private uint m_KeyValue;
+		private long m_KeyValue;
 
         public override bool CanBeAltered { get { return false; } }
 
@@ -41,8 +81,8 @@ namespace Server.Items
 		{
 			EventSink.OpenDoorMacroUsed += new OpenDoorMacroEventHandler( EventSink_OpenDoorMacroUsed );
 
-			CommandSystem.Register( "Link", AccessLevel.GameMaster, new CommandEventHandler( Link_OnCommand ) );
-			CommandSystem.Register( "ChainLink", AccessLevel.GameMaster, new CommandEventHandler( ChainLink_OnCommand ) );
+			CommandSystem.Register( "Link", AccessLevel.Batisseur, new CommandEventHandler( Link_OnCommand ) );
+			CommandSystem.Register( "ChainLink", AccessLevel.Batisseur, new CommandEventHandler( ChainLink_OnCommand ) );
 		}
 
 		[Usage( "Link" )]
@@ -189,7 +229,8 @@ namespace Server.Items
 		{
 			private BaseDoor m_Door;
 
-			public InternalTimer( BaseDoor door ) : base( TimeSpan.FromSeconds( 20.0 ), TimeSpan.FromSeconds( 10.0 ) )
+            public InternalTimer(BaseDoor door, TimeSpan dureeFermeture)
+                : base(dureeFermeture, TimeSpan.FromSeconds(10.0))
 			{
 				Priority = TimerPriority.OneSecond;
 				m_Door = door;
@@ -202,7 +243,22 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+
+        private TimeSpan m_DureeFermeture;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public TimeSpan DureeFermeture
+        {
+            get
+            {
+                return m_DureeFermeture;
+            }
+            set
+            {
+                m_DureeFermeture = value;
+            }
+        }
+
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Locked
 		{
 			get
@@ -215,8 +271,8 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public uint KeyValue
+		[CommandProperty( AccessLevel.Batisseur )]
+        public long KeyValue
 		{
 			get
 			{
@@ -228,7 +284,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Open
 		{
 			get
@@ -250,10 +306,13 @@ namespace Server.Items
 
 					Effects.PlaySound( this, Map, m_Open ? m_OpenedSound : m_ClosedSound );
 
-					if ( m_Open )
-						m_Timer.Start();
-					else
-						m_Timer.Stop();
+                    if (m_Open)
+                    {
+                        m_Timer = new InternalTimer(this, m_DureeFermeture);
+                        m_Timer.Start();
+                    }
+                    else if (m_Timer != null)
+                        m_Timer.Stop();
 				}
 			}
 		}
@@ -321,7 +380,7 @@ namespace Server.Items
 			return true;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OpenedID
 		{
 			get
@@ -334,7 +393,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ClosedID
 		{
 			get
@@ -347,7 +406,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OpenedSound
 		{
 			get
@@ -360,7 +419,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ClosedSound
 		{
 			get
@@ -373,7 +432,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Offset
 		{
 			get
@@ -386,7 +445,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public BaseDoor Link
 		{
 			get
@@ -455,7 +514,7 @@ namespace Server.Items
 		{
 			if ( m_Locked && !m_Open && UseLocks() )
 			{
-				if ( from.AccessLevel >= AccessLevel.GameMaster )
+				if ( from.AccessLevel >= AccessLevel.Batisseur )
 				{
 					from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 502502 ); // That is locked, but you open it with your godly powers.
 					//from.Send( new MessageLocalized( Serial, ItemID, MessageType.Regular, 0x3B2, 3, 502502, "", "" ) ); // That is locked, but you open it with your godly powers.
@@ -509,6 +568,7 @@ namespace Server.Items
 
 		public virtual void OnOpened( Mobile from )
 		{
+            Trap_OnActivate(from);
 		}
 
 		public virtual void OnClosed( Mobile from )
@@ -530,8 +590,9 @@ namespace Server.Items
 			m_OpenedSound = openedSound;
 			m_ClosedSound = closedSound;
 			m_Offset = offset;
+            m_DureeFermeture = TimeSpan.FromSeconds(20.0);
 
-			m_Timer = new InternalTimer( this );
+            m_Timer = new InternalTimer(this, m_DureeFermeture);
 
 			Movable = false;
 		}
@@ -542,13 +603,14 @@ namespace Server.Items
 
 		public override void Serialize( GenericWriter writer )
 		{
+            Open = false;
+
 			base.Serialize( writer );
 
 			writer.Write( (int) 0 ); // version
 
-			writer.Write( m_KeyValue );
+            writer.Write(m_KeyValue);
 
-			writer.Write( m_Open );
 			writer.Write( m_Locked );
 			writer.Write( m_OpenedID );
 			writer.Write( m_ClosedID );
@@ -556,6 +618,7 @@ namespace Server.Items
 			writer.Write( m_ClosedSound );
 			writer.Write( m_Offset );
 			writer.Write( m_Link );
+            writer.Write(m_DureeFermeture);
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -564,28 +627,21 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 0:
-				{
-					m_KeyValue = reader.ReadUInt();
-					m_Open = reader.ReadBool();
-					m_Locked = reader.ReadBool();
-					m_OpenedID = reader.ReadInt();
-					m_ClosedID = reader.ReadInt();
-					m_OpenedSound = reader.ReadInt();
-					m_ClosedSound = reader.ReadInt();
-					m_Offset = reader.ReadPoint3D();
-					m_Link = reader.ReadItem() as BaseDoor;
+			m_KeyValue = reader.ReadLong();
 
-					m_Timer = new InternalTimer( this );
+            if(version == 3)
+                reader.ReadBool();
+            m_Open = false;
 
-					if ( m_Open )
-						m_Timer.Start();
+			m_Locked = reader.ReadBool();
+			m_OpenedID = reader.ReadInt();
+			m_ClosedID = reader.ReadInt();
+			m_OpenedSound = reader.ReadInt();
+			m_ClosedSound = reader.ReadInt();
+			m_Offset = reader.ReadPoint3D();
+			m_Link = reader.ReadItem() as BaseDoor;
 
-					break;
-				}
-			}
+            m_DureeFermeture = reader.ReadTimeSpan();
 		}
 	}
 }

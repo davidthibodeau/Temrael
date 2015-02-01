@@ -9,35 +9,35 @@ namespace Server.Items
 		private int m_InRange;
 		private int m_OutRange;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int InactiveItemID
 		{
 			get{ return m_InactiveItemID; }
 			set{ m_InactiveItemID = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int ActiveItemID
 		{
 			get{ return m_ActiveItemID; }
 			set{ m_ActiveItemID = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int InRange
 		{
 			get{ return m_InRange; }
 			set{ if ( value > 18 ) value = 18; m_InRange = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int OutRange
 		{
 			get{ return m_OutRange; }
 			set{ if ( value > 18 ) value = 18; m_OutRange = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CurrentRange{ get{ return ItemID == InactiveItemID ? InRange : OutRange; } }
 
 		[Constructable]

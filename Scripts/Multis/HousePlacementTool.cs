@@ -202,7 +202,7 @@ namespace Server.Items
 
 			if ( index >= 0 && index < m_Entries.Length )
 			{
-				if ( m_From.AccessLevel < AccessLevel.GameMaster && BaseHouse.HasAccountHouse( m_From ) )
+				if ( m_From.AccessLevel < AccessLevel.Batisseur && BaseHouse.HasAccountHouse( m_From ) )
 					m_From.SendLocalizedMessage( 501271 ); // You already own a house, you may not place another!
 				else
 					m_From.Target = new NewHousePlacementTarget( m_Entries, m_Entries[index] );
@@ -245,7 +245,7 @@ namespace Server.Items
 
 				Region reg = Region.Find( new Point3D( p ), from.Map );
 
-				if ( from.AccessLevel >= AccessLevel.GameMaster || reg.AllowHousing( from, p ) )
+				if ( from.AccessLevel >= AccessLevel.Batisseur || reg.AllowHousing( from, p ) )
 					m_Placed = m_Entry.OnPlacement( from, p );
 				//else if ( reg.IsPartOf( typeof( TreasureRegion ) ) )
 				//	from.SendLocalizedMessage( 1043287 ); // The house could not be created here.  Either something is blocking the house, or the house would not be on valid terrain.
@@ -362,7 +362,7 @@ namespace Server.Items
 			{
 				case HousePlacementResult.Valid:
 				{
-					if ( from.AccessLevel < AccessLevel.GameMaster && BaseHouse.HasAccountHouse( from ) )
+					if ( from.AccessLevel < AccessLevel.Batisseur && BaseHouse.HasAccountHouse( from ) )
 					{
 						from.SendLocalizedMessage( 501271 ); // You already own a house, you may not place another!
 					}
@@ -375,7 +375,7 @@ namespace Server.Items
 
 						house.Price = m_Cost;
 
-						if ( from.AccessLevel >= AccessLevel.GameMaster )
+						if ( from.AccessLevel >= AccessLevel.Batisseur )
 						{
 							from.SendMessage( "{0} gold would have been withdrawn from your bank if you were not a GM.", m_Cost.ToString() );
 						}
@@ -449,7 +449,7 @@ namespace Server.Items
 			{
 				case HousePlacementResult.Valid:
 				{
-					if ( from.AccessLevel < AccessLevel.GameMaster && BaseHouse.HasAccountHouse( from ) )
+					if ( from.AccessLevel < AccessLevel.Batisseur && BaseHouse.HasAccountHouse( from ) )
 					{
 						from.SendLocalizedMessage( 501271 ); // You already own a house, you may not place another!
 					}

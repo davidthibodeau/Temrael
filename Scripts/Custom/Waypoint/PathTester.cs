@@ -18,8 +18,6 @@ namespace Server.Mobiles
             SetStr( 10, 30 );
             SetDex( 10, 30 );
             SetInt( 10, 30 );
-            Fame = 50;
-            Karma = 50;
             SpeechHue = Utility.RandomDyedHue();
             Title = "Path Tester";
             Hue = Utility.RandomSkinHue();

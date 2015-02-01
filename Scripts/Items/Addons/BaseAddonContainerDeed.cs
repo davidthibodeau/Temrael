@@ -14,7 +14,7 @@ namespace Server.Items
 		
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource;	}
@@ -35,7 +35,7 @@ namespace Server.Items
 			Weight = 1.0;
 
 			if ( !Core.AOS )
-				LootType = LootType.Newbied;
+				LootType = LootType.Blessed;
 		}
 
 		public BaseAddonContainerDeed( Serial serial ) : base( serial )

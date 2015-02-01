@@ -23,7 +23,7 @@ namespace Server.Items
 			MaxItems = 25;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner
 		{
 			get
@@ -126,7 +126,7 @@ namespace Server.Items
 
 		public override bool IsAccessibleTo( Mobile m )
 		{
-			if ( m_Owner == null || m_Owner.Deleted || m_House == null || m_House.Deleted || m.AccessLevel >= AccessLevel.GameMaster )
+			if ( m_Owner == null || m_Owner.Deleted || m_House == null || m_House.Deleted || m.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			return m == m_Owner && m_House.IsCoOwner( m ) && base.IsAccessibleTo( m );

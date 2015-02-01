@@ -14,6 +14,7 @@ namespace Server.Items
 		[Constructable]
 		public SextantParts( int amount ) : base( 0x1059 )
 		{
+            GoldValue = 21;
 			Stackable = true;
 			Amount = amount;
 			Weight = 2.0;

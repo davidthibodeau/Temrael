@@ -42,9 +42,9 @@ namespace Server.Mobiles
 				return true;
 			}
 
-			if ( (m_Mobile.LastMoveTime + TimeSpan.FromSeconds( 1.0 )) < DateTime.Now )
+			if ((m_Mobile.LastMoveTime + 1000) < Core.TickCount)
 			{
-				if (WalkMobileRange(m_Mobile.Combatant, 1, true, m_Mobile.RangeFight, m_Mobile.Weapon.MaxRange))
+				if (WalkMobileRange(m_Mobile.Combatant, 1, true, m_Mobile.RangeFight, m_Mobile.MaxRange))
 				{
 					// Be sure to face the combatant
 					m_Mobile.Direction = m_Mobile.GetDirectionTo(m_Mobile.Combatant.Location);

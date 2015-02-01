@@ -86,11 +86,11 @@ namespace Server.Mobiles
 
 			//Skills[SkillName.Anatomy].Base = 120.0;
 			Skills[SkillName.Tactiques].Base = 120.0;
-			Skills[SkillName.ArmeTranchante].Base = 120.0;
+			Skills[SkillName.Epee].Base = 120.0;
 			Skills[SkillName.Concentration].Base = 120.0;
 			Skills[SkillName.Detection].Base = 100.0;
 
-			this.NextCombatTime = DateTime.Now + TimeSpan.FromSeconds( 0.5 );
+			this.NextCombatTime = Core.TickCount + 500;
 			this.Focus = target;
 		}
 
@@ -106,7 +106,7 @@ namespace Server.Mobiles
 			return base.OnBeforeDeath();
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override Mobile Focus
 		{
 			get
@@ -258,8 +258,6 @@ namespace Server.Mobiles
 					return;
 				}
 
-				m_Owner.Criminal = false;
-				m_Owner.Kills = 0;
 				m_Owner.Stam = m_Owner.StamMax;
 
 				Mobile target = m_Owner.Focus;
@@ -287,7 +285,7 @@ namespace Server.Mobiles
 				else
 				{// <instakill>
 					TeleportTo( target );
-					target.BoltEffect( 0 );
+					Effects.SendBoltEffect(target, true, 0);
 
 					if ( target is BaseCreature )
 						((BaseCreature)target).NoKillAwards = true;

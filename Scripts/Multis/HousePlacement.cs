@@ -51,7 +51,7 @@ namespace Server.Multis
 			if ( map == null || map == Map.Internal )
 				return HousePlacementResult.BadLand; // A house cannot go here
 
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return HousePlacementResult.Valid; // Staff can place anywhere
 
 			//if ( map == Map.Ilshenar || SpellHelper.IsFeluccaT2A( map, center ) )

@@ -20,7 +20,7 @@ namespace Server.Items
 
 		private int m_MinDamage;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int MinDamage
 		{
 			get { return m_MinDamage; }
@@ -29,7 +29,7 @@ namespace Server.Items
 
 		private int m_MaxDamage;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual int MaxDamage
 		{
 			get { return m_MaxDamage; }
@@ -38,7 +38,7 @@ namespace Server.Items
 
 		private bool m_WarningFlame;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public virtual bool WarningFlame
 		{
 			get { return m_WarningFlame; }

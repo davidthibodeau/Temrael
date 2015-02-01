@@ -12,7 +12,7 @@ namespace Server.Items
 
 		private int m_RecipeID;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int RecipeID
 		{
 			get { return m_RecipeID; }
@@ -75,8 +75,7 @@ namespace Server.Items
 				if( !pm.HasRecipe( r ) )
 				{
 					bool allRequiredSkills = true;
-                    bool allRequiredAptitudes = true;
-                    double chance = r.CraftItem.GetSuccessChance(from, null, r.CraftSystem, false, ref allRequiredSkills, ref allRequiredAptitudes);
+                    double chance = r.CraftItem.GetSuccessChance(from, null, r.CraftSystem, false, ref allRequiredSkills );
 
 					if ( allRequiredSkills && chance >= 0.0 )
 					{

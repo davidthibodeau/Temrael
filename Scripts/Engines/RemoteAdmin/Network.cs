@@ -134,7 +134,7 @@ namespace Server.RemoteAdmin
 			string user = pvSrc.ReadString( 30 );
 			string pw = pvSrc.ReadString( 30 );
 
-			Account a = Accounts.GetAccount( user ) as Account;
+            Account a = Accounts.ServerAccounts.GetAccount(user) as Account;
 			if ( a == null )
 			{
 				state.Send( new Login( LoginResponse.NoUser ) );
@@ -153,7 +153,7 @@ namespace Server.RemoteAdmin
 				Console.WriteLine( "ADMIN: Invalid password '{0}' for user '{1}' from {2}", pw, user, state );
 				DelayedDisconnect( state );
 			}
-			else if ( a.AccessLevel < AccessLevel.Administrator || a.Banned )
+			else if ( a.AccessLevel < AccessLevel.Coordinateur || a.Banned )
 			{
 				Console.WriteLine( "ADMIN: Account '{0}' does not have admin access. Connection Denied.", user );
 				state.Send( new Login( LoginResponse.NoAccess ) ); 

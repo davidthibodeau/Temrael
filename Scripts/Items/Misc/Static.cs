@@ -48,7 +48,7 @@ namespace Server.Items
 	{
 		private int m_LabelNumber;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Number
 		{
 			get{ return m_LabelNumber; }

@@ -20,21 +20,21 @@ namespace Server.Items
 		private ToolQuality m_Quality;
 		private int m_UsesRemaining;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ToolQuality Quality
 		{
 			get{ return m_Quality; }
 			set{ UnscaleUses(); m_Quality = value; InvalidateProperties(); ScaleUses(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int UsesRemaining
 		{
 			get { return m_UsesRemaining; }

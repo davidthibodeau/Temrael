@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Listener.cs 646 2010-12-23 22:29:59Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -36,7 +36,7 @@ namespace Server.Network
 		private Queue<Socket> m_Accepted;
 		private object m_AcceptedSyncRoot;
 
-#if Framework_4_0
+#if NewAsyncSockets
 		private SocketAsyncEventArgs m_EventArgs;
 #else
 		private AsyncCallback m_OnAccept;
@@ -63,7 +63,7 @@ namespace Server.Network
 
 			DisplayListener();
 
-#if Framework_4_0
+#if NewAsyncSockets
 			m_EventArgs = new SocketAsyncEventArgs();
 			m_EventArgs.Completed += new EventHandler<SocketAsyncEventArgs>( Accept_Completion );
 			Accept_Start();
@@ -85,9 +85,8 @@ namespace Server.Network
 			try
 			{
 				s.LingerState.Enabled = false;
-#if !MONO
 				s.ExclusiveAddressUse = false;
-#endif
+
 				s.Bind( ipep );
 				s.Listen( 8 );
 
@@ -146,7 +145,7 @@ namespace Server.Network
 			}
 		}
 
-#if Framework_4_0
+#if NewAsyncSockets
 		private void Accept_Start()
 		{
 			bool result = false;
@@ -268,12 +267,22 @@ namespace Server.Network
 			return array;
 		}
 
-		public void Dispose() {
-			Socket socket = Interlocked.Exchange<Socket>( ref m_Listener, null );
+		public void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				Socket socket = Interlocked.Exchange<Socket>(ref m_Listener, null);
 
-			if ( socket != null ) {
-				socket.Close();
+				if (socket != null)
+				{
+					socket.Close();
+				}
 			}
+		}
+
+		public void Dispose() {
+			Dispose(true);
+			GC.SuppressFinalize(this);
 		}
 	}
 }

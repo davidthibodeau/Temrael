@@ -15,56 +15,56 @@ namespace Server.Items
 		private int m_SoundID;
 		private TimeSpan m_Delay;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool SourceEffect
 		{
 			get{ return m_SourceEffect; }
 			set{ m_SourceEffect = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool DestEffect
 		{
 			get{ return m_DestEffect; }
 			set{ m_DestEffect = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int SoundID
 		{
 			get{ return m_SoundID; }
 			set{ m_SoundID = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public TimeSpan Delay
 		{
 			get{ return m_Delay; }
 			set{ m_Delay = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get { return m_Active; }
 			set { m_Active = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D PointDest
 		{
 			get { return m_PointDest; }
 			set { m_PointDest = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map MapDest
 		{
 			get { return m_MapDest; }
 			set { m_MapDest = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Creatures
 		{
 			get { return m_Creatures; }
@@ -72,7 +72,7 @@ namespace Server.Items
 		}
 
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool CombatCheck
 		{
 			get { return m_CombatCheck; }
@@ -273,28 +273,28 @@ namespace Server.Items
 		private string m_MessageString;
 		private int m_MessageNumber;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SkillName Skill
 		{
 			get{ return m_Skill; }
 			set{ m_Skill = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double Required
 		{
 			get{ return m_Required; }
 			set{ m_Required = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string MessageString
 		{
 			get{ return m_MessageString; }
 			set{ m_MessageString = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MessageNumber
 		{
 			get{ return m_MessageNumber; }
@@ -401,25 +401,17 @@ namespace Server.Items
 
 	public class KeywordTeleporter : Teleporter
 	{
-		private string m_Substring;
-		private int m_Keyword;
+		private string m_KeyWord;
 		private int m_Range;
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public string Substring
+		[CommandProperty( AccessLevel.Batisseur )]
+		public string KeyWord
 		{
-			get{ return m_Substring; }
-			set{ m_Substring = value; InvalidateProperties(); }
+            get { return m_KeyWord; }
+            set { m_KeyWord = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public int Keyword
-		{
-			get{ return m_Keyword; }
-			set{ m_Keyword = value; InvalidateProperties(); }
-		}
-
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Range
 		{
 			get{ return m_Range; }
@@ -440,18 +432,14 @@ namespace Server.Items
 				if ( !m.InRange( GetWorldLocation(), m_Range ) )
 					return;
 
-				bool isMatch = false;
-
-				if ( m_Keyword >= 0 && e.HasKeyword( m_Keyword ) )
-					isMatch = true;
-				else if ( m_Substring != null && e.Speech.ToLower().IndexOf( m_Substring.ToLower() ) >= 0 )
-					isMatch = true;
-
-				if ( !isMatch )
-					return;
-
-				e.Handled = true;
-				StartTeleport( m );
+                if (KeyWord != null)
+                {
+                    if (e.Speech.ToLower().Contains(m_KeyWord.ToLower()))
+                    {
+                        e.Handled = true;
+                        StartTeleport(m);
+                    }
+                }
 			}
 		}
 
@@ -466,18 +454,14 @@ namespace Server.Items
 
 			list.Add( 1060661, "Range\t{0}", m_Range );
 
-			if ( m_Keyword >= 0 )
-				list.Add( 1060662, "Keyword\t{0}", m_Keyword );
-
-			if ( m_Substring != null )
-				list.Add( 1060663, "Substring\t{0}", m_Substring );
+            if (m_KeyWord != null)
+                list.Add(1060663, "Substring\t{0}", m_KeyWord);
 		}
 
 		[Constructable]
 		public KeywordTeleporter()
 		{
-			m_Keyword = -1;
-			m_Substring = null;
+            m_KeyWord = null;
 		}
 
 		public KeywordTeleporter( Serial serial ) : base( serial )
@@ -488,10 +472,9 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 
-			writer.Write( m_Substring );
-			writer.Write( m_Keyword );
+            writer.Write(m_KeyWord);
 			writer.Write( m_Range );
 		}
 
@@ -505,12 +488,19 @@ namespace Server.Items
 			{
 				case 0:
 				{
-					m_Substring = reader.ReadString();
-					m_Keyword = reader.ReadInt();
+                    m_KeyWord = reader.ReadString();
+					reader.ReadInt();
 					m_Range = reader.ReadInt();
 
 					break;
 				}
+                case 1:
+                {
+                    m_KeyWord = reader.ReadString();
+                    m_Range = reader.ReadInt();
+
+                    break;
+                }
 			}
 		}
 	}

@@ -8,7 +8,7 @@ namespace Server.Items
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "SecretLocGen", AccessLevel.Administrator, new CommandEventHandler( SecretLocGen_OnCommand ) );
+			CommandSystem.Register( "SecretLocGen", AccessLevel.Coordinateur, new CommandEventHandler( SecretLocGen_OnCommand ) );
 		}
 
 		[Usage( "SecretLocGen" )]
@@ -66,7 +66,7 @@ namespace Server.Items
 		private Point3D m_Target;
 		private string m_Description;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool AutoLock
 		{
 			get { return m_AutoLock; }
@@ -81,13 +81,13 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map TargetMap { get { return m_TargetMap; } set { m_TargetMap = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D Target { get { return m_Target; } set { m_Target = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Bone
 		{
 			get { return ItemID == 0xECA; }
@@ -98,7 +98,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Description { get { return m_Description; } set { m_Description = value; } }
 
 		public override bool IsDecoContainer
@@ -135,7 +135,7 @@ namespace Server.Items
 		{
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public override bool Locked
 		{
 			get { return base.Locked; }

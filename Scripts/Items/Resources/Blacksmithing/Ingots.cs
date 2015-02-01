@@ -4,11 +4,26 @@ using Server.Network;
 
 namespace Server.Items
 {
-	public abstract class BaseIngot : Item, ICommodity
-	{
-		private CraftResource m_Resource;
+	public abstract class BaseIngot : Item, ICommodity, IExtractable
+    {
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        public double getSkillReq
+        {
+            get { return CraftResources.GetSkill(m_Resource); }
+        }
+        #endregion
 
-		[CommandProperty( AccessLevel.GameMaster )]
+        private CraftResource m_Resource;
+
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource; }
@@ -139,6 +154,7 @@ namespace Server.Items
 		[Constructable]
 		public FerIngot( int amount ) : base( CraftResource.Fer, amount )
 		{
+            GoldValue = 3;
             Name = "Lingot de Fer";
 		}
 
@@ -160,8 +176,6 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 		}
-
-		
 	}
 
 	[FlipableAttribute( 0x1BF2, 0x1BEF )]
@@ -541,7 +555,7 @@ namespace Server.Items
         public EclariumIngot(int amount)
             : base(CraftResource.Eclarium, amount)
         {
-            Name = "Lingot d'Éclarium";
+            Name = "Lingot d'Ã‰clarium";
         }
 
         public EclariumIngot(Serial serial)
@@ -617,7 +631,7 @@ namespace Server.Items
         public AtheniumIngot(int amount)
             : base(CraftResource.Athenium, amount)
         {
-            Name = "Lingot d'Athénium";
+            Name = "Lingot d'AthÃ©nium";
         }
 
         public AtheniumIngot(Serial serial)

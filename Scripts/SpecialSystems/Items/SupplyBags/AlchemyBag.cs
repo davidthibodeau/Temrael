@@ -21,7 +21,7 @@ namespace Server.Items
 		[Constructable]
 		public AlchemyBag( int amount )
 		{
-			DropItem( new MortarPestle( 5 ) );
+			//DropItem( new MortarPestle( 5 ) );
 			DropItem( new BagOfReagents( 5000 ) );
 			DropItem( new Bottle( 5000 ) );
 		}

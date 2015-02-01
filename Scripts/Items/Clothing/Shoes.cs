@@ -29,7 +29,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)0); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -38,20 +38,6 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2: break; // empty, resource removed
-				case 1:
-				{
-					m_Resource = (CraftResource)reader.ReadInt();
-					break;
-				}
-				case 0:
-				{
-					m_Resource = DefaultResource;
-					break;
-				}
-			}
 		}
 	}
 
@@ -130,21 +116,21 @@ namespace Server.Items
 		#region Arcane Impl
 		private int m_MaxArcaneCharges, m_CurArcaneCharges;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxArcaneCharges
 		{
 			get{ return m_MaxArcaneCharges; }
 			set{ m_MaxArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CurArcaneCharges
 		{
 			get{ return m_CurArcaneCharges; }
 			set{ m_CurArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsArcane
 		{
 			get{ return ( m_MaxArcaneCharges > 0 && m_CurArcaneCharges >= 0 ); }
@@ -260,6 +246,7 @@ namespace Server.Items
 		[Constructable]
 		public Shoes( int hue ) : base( 0x170F, hue )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
             Name = "Souliers";
 		}
@@ -428,7 +415,6 @@ namespace Server.Items
 	{
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
 
-		public override Race RequiredRace { get { return Race.Elf; } }
 
 		[Constructable]
 		public ElvenBoots() : this( 0 )

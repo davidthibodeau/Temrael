@@ -26,9 +26,10 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Restart", AccessLevel.Administrator, new CommandEventHandler( Restart_OnCommand ) );
-            CommandSystem.Register( "Miseajour", AccessLevel.Administrator, new CommandEventHandler( Miseajour_OnCommand ) );
-            CommandSystem.Register( "Cancelrestart", AccessLevel.Administrator, new CommandEventHandler(CancelRestart_OnCommand ) );
+            CommandSystem.Register("Restart", AccessLevel.Coordinateur, new CommandEventHandler(Restart_OnCommand));
+            CommandSystem.Register("Miseajour", AccessLevel.Coordinateur, new CommandEventHandler(Miseajour_OnCommand));
+            CommandSystem.Register("Maintenance", AccessLevel.Coordinateur, new CommandEventHandler(Maintenance_OnCommand));
+            CommandSystem.Register("Cancelrestart", AccessLevel.Coordinateur, new CommandEventHandler(CancelRestart_OnCommand));
 			new AutoRestart().Start();
 		}
 
@@ -61,6 +62,21 @@ namespace Server.Misc
 			}
 		}
 
+        public static void Maintenance_OnCommand(CommandEventArgs e)
+        {
+            if (m_Restarting)
+            {
+                e.Mobile.SendMessage("The server is already restarting.");
+            }
+            else
+            {
+                e.Mobile.SendMessage("You have initiated server shutdown.");
+                World.Broadcast(0x22, true, "Le serveur doit proceder a un redemarrage dans deux minutes en raison d'une maintenance du systeme.");
+                Enabled = true;
+                m_RestartTime = DateTime.Now.AddMinutes(2.0);
+            }
+        }
+
         public static void CancelRestart_OnCommand(CommandEventArgs e)
 		{
             if (m_Restarting)
@@ -69,13 +85,13 @@ namespace Server.Misc
             }
             else if (Enabled)
             {
-                e.Mobile.SendMessage("Vous avez annulé l'arrêt serveur.");
+                e.Mobile.SendMessage("Vous avez annulÃ© l'arrÃªt serveur.");
                 World.Broadcast(0x22, true, "La sequence de redemarrage a ete annule.");
                 Enabled = false;
             }
             else
             {
-                e.Mobile.SendMessage("L'arrêt serveur n'était pas programmé.");
+                e.Mobile.SendMessage("L'arrÃªt serveur n'Ã©tait pas programmÃ©.");
             }
 		}
 

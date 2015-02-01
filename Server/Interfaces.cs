@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Interfaces.cs 649 2010-12-26 05:18:57Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -68,7 +68,7 @@ namespace Server
 	{
 		int MaxRange{ get; }
 		void OnBeforeSwing( Mobile attacker, Mobile defender );
-		TimeSpan OnSwing( Mobile attacker, Mobile defender );
+		int OnSwing( Mobile attacker, Mobile defender );
 		void GetStatusDamage( Mobile from, out int min, out int max );
 	}
 
@@ -113,4 +113,41 @@ namespace Server
 
 		ISpawner Spawner { get; set; }
 	}
+
+    public interface ITrapable
+    {
+        bool Trap_IsTrapped { get; set; }
+
+        double Trap_DisarmDifficulty { get; set; }
+
+        Item Trap_ActivateItem { get; set; }
+
+        int Trap_ActivateMode { get; set; }
+
+        void Trap_Disarm();
+
+        void Trap_OnActivate(Mobile from);
+    }
+    public class TrapResetTimer : Timer
+    {
+        private ITrapable m_Item;
+
+        public TrapResetTimer(TimeSpan duration, ITrapable item)
+            : base(duration)
+        {
+            m_Item = item;
+            Start();
+        }
+
+        protected override void OnTick()
+        {
+            m_Item.Trap_IsTrapped = true;
+            Stop();
+        }
+    }
+
+    public interface IActivable
+    {
+        void OnActivate(int mode, Mobile from, int overflow);
+    }
 }

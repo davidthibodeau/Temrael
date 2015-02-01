@@ -22,7 +22,7 @@ namespace Server.Engines.UOArchitect
 
 		public static void Initialize()
 		{
-			OrbRemoteServer.OrbServer.Register("UOAR_ExtractDesign", typeof(ExtractItemsRequest), AccessLevel.GameMaster, true);
+			OrbRemoteServer.OrbServer.Register("UOAR_ExtractDesign", typeof(ExtractItemsRequest), AccessLevel.Batisseur, true);
 		}
 
 		public override void OnRequest(OrbClientInfo client, OrbRequestArgs args)

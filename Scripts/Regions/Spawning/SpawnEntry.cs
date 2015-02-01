@@ -312,14 +312,14 @@ namespace Server.Regions
 
 			SpawnPersistence.EnsureExistence();
 
-			CommandSystem.Register( "RespawnAllRegions", AccessLevel.Administrator, new CommandEventHandler( RespawnAllRegions_OnCommand ) );
-			CommandSystem.Register( "RespawnRegion", AccessLevel.GameMaster, new CommandEventHandler( RespawnRegion_OnCommand ) );
-			CommandSystem.Register( "DelAllRegionSpawns", AccessLevel.Administrator, new CommandEventHandler( DelAllRegionSpawns_OnCommand ) );
-			CommandSystem.Register( "DelRegionSpawns", AccessLevel.GameMaster, new CommandEventHandler( DelRegionSpawns_OnCommand ) );
-			CommandSystem.Register( "StartAllRegionSpawns", AccessLevel.Administrator, new CommandEventHandler( StartAllRegionSpawns_OnCommand ) );
-			CommandSystem.Register( "StartRegionSpawns", AccessLevel.GameMaster, new CommandEventHandler( StartRegionSpawns_OnCommand ) );
-			CommandSystem.Register( "StopAllRegionSpawns", AccessLevel.Administrator, new CommandEventHandler( StopAllRegionSpawns_OnCommand ) );
-			CommandSystem.Register( "StopRegionSpawns", AccessLevel.GameMaster, new CommandEventHandler( StopRegionSpawns_OnCommand ) );
+			CommandSystem.Register( "RespawnAllRegions", AccessLevel.Coordinateur, new CommandEventHandler( RespawnAllRegions_OnCommand ) );
+			CommandSystem.Register( "RespawnRegion", AccessLevel.Batisseur, new CommandEventHandler( RespawnRegion_OnCommand ) );
+			CommandSystem.Register( "DelAllRegionSpawns", AccessLevel.Coordinateur, new CommandEventHandler( DelAllRegionSpawns_OnCommand ) );
+			CommandSystem.Register( "DelRegionSpawns", AccessLevel.Batisseur, new CommandEventHandler( DelRegionSpawns_OnCommand ) );
+			CommandSystem.Register( "StartAllRegionSpawns", AccessLevel.Coordinateur, new CommandEventHandler( StartAllRegionSpawns_OnCommand ) );
+			CommandSystem.Register( "StartRegionSpawns", AccessLevel.Batisseur, new CommandEventHandler( StartRegionSpawns_OnCommand ) );
+			CommandSystem.Register( "StopAllRegionSpawns", AccessLevel.Coordinateur, new CommandEventHandler( StopAllRegionSpawns_OnCommand ) );
+			CommandSystem.Register( "StopRegionSpawns", AccessLevel.Batisseur, new CommandEventHandler( StopRegionSpawns_OnCommand ) );
             //CommandSystem.Register("ResetSpawnTime", AccessLevel.Administrator, new CommandEventHandler(ResetSpawnTime_OnCommand));
 		}
 
@@ -449,7 +449,7 @@ namespace Server.Regions
 		}
 
         [Usage("ResetSpawnTime")]
-        [Description("Remet une valeur par défaut (30 à 45 min) pour tous les spawns du serveur.")]
+        [Description("Remet une valeur par dÃ©faut (30 Ã  45 min) pour tous les spawns du serveur.")]
         private static void ResetSpawnTime_OnCommand(CommandEventArgs args)
         {
             foreach (SpawnEntry entry in m_Table.Values)

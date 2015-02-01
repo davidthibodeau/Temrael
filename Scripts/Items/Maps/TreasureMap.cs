@@ -19,22 +19,22 @@ namespace Server.Items
 		private Map m_Map;
 		private Point2D m_Location;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Level{ get{ return m_Level; } set{ m_Level = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Completed{ get{ return m_Completed; } set{ m_Completed = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile CompletedBy{ get{ return m_CompletedBy; } set{ m_CompletedBy = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Decoder{ get{ return m_Decoder; } set{ m_Decoder = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Map ChestMap{ get{ return m_Map; } set{ m_Map = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point2D ChestLocation{ get{ return m_Location; } set{ m_Location = value; } }
 
 		private static Point2D[] m_Locations;
@@ -42,13 +42,13 @@ namespace Server.Items
 
 		private static Type[][] m_SpawnTypes = new Type[][]
 		{
-			new Type[]{ typeof( HeadlessOne ), typeof( Skeleton ) },
-			new Type[]{ typeof( Mongbat ), typeof( Ratman ), typeof( HeadlessOne ), typeof( Skeleton ), typeof( Zombie ) },
-			new Type[]{ typeof( OrcishMage ), typeof( Gargoyle ), typeof( Gazer ), typeof( HellHound ), typeof( EarthElemental ) },
-			new Type[]{ typeof( Lich ), typeof( OgreLord ), typeof( DreadSpider ), typeof( AirElemental ), typeof( FireElemental ) },
-			new Type[]{ typeof( DreadSpider ), typeof( LichLord ), typeof( Daemon ), typeof( ElderGazer ), typeof( OgreLord ) },
-			new Type[]{ typeof( LichLord ), typeof( Daemon ), typeof( ElderGazer ), typeof( PoisonElemental ), typeof( BloodElemental ) },
-			new Type[]{ typeof( AncientWyrm ), typeof( Balron ), typeof( BloodElemental ), typeof( PoisonElemental ), typeof( Titan ) }
+            //new Type[]{ typeof( HeadlessOne ), typeof( Skeleton ) },
+            //new Type[]{ typeof( Mongbat ), typeof( Ratman ), typeof( HeadlessOne ), typeof( Skeleton ), typeof( Zombie ) },
+            //new Type[]{ typeof( OrcishMage ), typeof( Gargoyle ), typeof( Gazer ), typeof( HellHound ), typeof( EarthElemental ) },
+            //new Type[]{ typeof( Lich ), typeof( OgreLord ), typeof( DreadSpider ), typeof( AirElemental ), typeof( FireElemental ) },
+            //new Type[]{ typeof( DreadSpider ), typeof( LichLord ), typeof( Daemon ), typeof( ElderGazer ), typeof( OgreLord ) },
+            //new Type[]{ typeof( LichLord ), typeof( Daemon ), typeof( ElderGazer ), typeof( PoisonElemental ), typeof( BloodElemental ) },
+            //new Type[]{ typeof( AncientWyrm ), typeof( Balron ), typeof( BloodElemental ), typeof( PoisonElemental ), typeof( Titan ) }
 		};
 
 		public const double LootChance = 0.01; // 1% chance to appear as loot
@@ -266,16 +266,6 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 503028 ); // The treasure for this map has already been found.
 			}
-			else if ( m_Level == 0 && !CheckYoung( from ) )
-			{
-				from.SendLocalizedMessage( 1046447 ); // Only a young player may use this treasure map.
-			}
-			/*
-			else if ( from != m_Decoder )
-			{
-				from.SendLocalizedMessage( 503016 ); // Only the person who decoded this map may actually dig up the treasure.
-			}
-			*/
 			else if ( m_Decoder != from && !HasRequiredSkill( from ) )
 			{
 				from.SendLocalizedMessage( 503031 ); // You did not decode this map and have no clue where to look for the treasure.
@@ -444,10 +434,10 @@ namespace Server.Items
 
 			private int m_Count;
 
-			private DateTime m_NextSkillTime;
-			private DateTime m_NextSpellTime;
-			private DateTime m_NextActionTime;
-			private DateTime m_LastMoveTime;
+			private long m_NextSkillTime;
+			private long m_NextSpellTime;
+			private long m_NextActionTime;
+			private long m_LastMoveTime;
 
 			public DigTimer( Mobile from, TreasureMap treasureMap, Point3D location, Map map ) : base( TimeSpan.Zero, TimeSpan.FromSeconds( 1.0 ) )
 			{
@@ -616,24 +606,6 @@ namespace Server.Items
 				DisplayTo( from );
 		}
 
-		private bool CheckYoung( Mobile from )
-		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
-				return true;
-
-			if ( from is PlayerMobile && ((PlayerMobile)from).Young )
-				return true;
-
-			if ( from == this.Decoder )
-			{
-				this.Level = 1;
-				from.SendLocalizedMessage( 1046446 ); // This is now a level one treasure map.
-				return true;
-			}
-
-			return false;
-		}
-
 		private double GetMinSkillLevel()
 		{
 			switch ( m_Level )
@@ -651,7 +623,7 @@ namespace Server.Items
 
 		private bool HasRequiredSkill( Mobile from )
 		{
-			return ( from.Skills[SkillName.ConnaissanceHistoire].Value >= GetMinSkillLevel() );
+			return ( from.Skills[SkillName.Langues].Value >= GetMinSkillLevel() );
 		}
 
 		public void Decode( Mobile from )
@@ -661,22 +633,17 @@ namespace Server.Items
 
 			if ( m_Level == 0 )
 			{
-				if ( !CheckYoung( from ) )
-				{
-					from.SendLocalizedMessage( 1046447 ); // Only a young player may use this treasure map.
-					return;
-				}
 			}
 			else
 			{
 				double minSkill = GetMinSkillLevel();
 
-                if (from.Skills[SkillName.ConnaissanceHistoire].Value < minSkill)
+                if (from.Skills[SkillName.Langues].Value < minSkill)
 					from.SendLocalizedMessage( 503013 ); // The map is too difficult to attempt to decode.
 
 				double maxSkill = minSkill + 60.0;
 
-                if (!from.CheckSkill(SkillName.ConnaissanceHistoire, minSkill, maxSkill))
+                if (!from.CheckSkill(SkillName.Langues, minSkill, maxSkill))
 				{
 					from.LocalOverheadMessage( MessageType.Regular, 0x3B2, 503018 ); // You fail to make anything of the map.
 					return;
@@ -694,11 +661,6 @@ namespace Server.Items
 			if ( m_Completed )
 			{
 				SendLocalizedMessageTo( from, 503014 ); // This treasure hunt has already been completed.
-			}
-			else if ( m_Level == 0 && !CheckYoung( from ) )
-			{
-				from.SendLocalizedMessage( 1046447 ); // Only a young player may use this treasure map.
-				return;
 			}
 			else if ( m_Decoder != from && !HasRequiredSkill( from ) )
 			{

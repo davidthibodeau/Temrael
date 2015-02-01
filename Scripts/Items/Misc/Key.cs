@@ -17,22 +17,22 @@ namespace Server.Items
 	public interface ILockable
 	{
 		bool Locked{ get; set; }
-		uint KeyValue{ get; set; }
+		long KeyValue{ get; set; }
 	}
 
 	public class Key : Item
 	{
 		private string m_Description;
-		private uint m_KeyVal;
+		private long m_KeyVal;
 		private Item m_Link;
 		private int m_MaxRange;
 
-		public static uint RandomValue()
+        public static long RandomValue()
 		{
-			return (uint)(0xFFFFFFFE * Utility.RandomDouble()) + 1;
+            return (long)Utility.Random(int.MaxValue - 1) + 1;
 		}
 
-		public static void RemoveKeys( Mobile m, uint keyValue )
+		public static void RemoveKeys( Mobile m, long keyValue )
 		{
 			if ( keyValue == 0 )
 				return;
@@ -41,7 +41,7 @@ namespace Server.Items
 			RemoveKeys( m.BankBox, keyValue );
 		}
 
-		public static void RemoveKeys( Container cont, uint keyValue )
+        public static void RemoveKeys(Container cont, long keyValue)
 		{
 			if ( cont == null || keyValue == 0 )
 				return;
@@ -66,7 +66,7 @@ namespace Server.Items
 			}
 		}
 
-		public static bool ContainsKey( Container cont, uint keyValue )
+        public static bool ContainsKey(Container cont, long keyValue)
 		{
 			if ( cont == null )
 				return false;
@@ -94,7 +94,7 @@ namespace Server.Items
 			return false;
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string Description
 		{
 			get
@@ -108,7 +108,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxRange
 		{
 			get
@@ -122,8 +122,8 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
-		public uint KeyValue
+		[CommandProperty( AccessLevel.Batisseur )]
+        public long KeyValue
 		{
 			get
 			{
@@ -137,7 +137,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Item Link
 		{
 			get
@@ -155,50 +155,35 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 2 ); // version
+            writer.Write((int)0); // version
 
 			writer.Write( (int) m_MaxRange );
 
 			writer.Write( (Item) m_Link );
 
 			writer.Write( (string) m_Description );
-			writer.Write( (uint) m_KeyVal );
+            writer.Write(m_KeyVal);
 		}
 
-		public override void Deserialize( GenericReader reader )
-		{
-			base.Deserialize( reader );
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
 
-			int version = reader.ReadInt();
+            int version = reader.ReadInt();
 
-			switch ( version )
-			{
-				case 2:
-				{
-					m_MaxRange = reader.ReadInt();
+            m_MaxRange = reader.ReadInt();
 
-					goto case 1;
-				}
-				case 1:
-				{
-					m_Link = reader.ReadItem();
+            m_Link = reader.ReadItem();
 
-					goto case 0;
-				}
-				case 0:
-				{
-					if ( version < 2 || m_MaxRange == 0 )
-						m_MaxRange = 3;
+            if (version < 2 || m_MaxRange == 0)
+                m_MaxRange = 3;
 
-					m_Description = reader.ReadString();
+            m_Description = reader.ReadString();
 
-					m_KeyVal = reader.ReadUInt();
+            m_KeyVal = reader.ReadLong();
 
-					break;
-				}
-			}
             LootType = LootType.Blessed;
-		}
+        }
 
 		[Constructable]
 		public Key() : this( KeyType.Iron, 0 )
@@ -211,16 +196,18 @@ namespace Server.Items
 		}
 
 		[Constructable]
-		public Key( uint val ) : this ( KeyType.Iron, val )
+		public Key( long val ) : this ( KeyType.Iron, val )
 		{
 		}
 
 		[Constructable]
-		public Key( KeyType type, uint LockVal ) : this( type, LockVal, null )
+        public Key(KeyType type, long LockVal)
+            : this(type, LockVal, null)
 		{
 		}
 
-		public Key( KeyType type, uint LockVal, Item link ) : base( (int)type )
+        public Key(KeyType type, long LockVal, Item link)
+            : base((int)type)
 		{
 			Weight = 1.0;
 
@@ -435,7 +422,7 @@ namespace Server.Items
 					{
 						number = 501675; // This key is also blank.
 					}
-					else if ( from.CheckTargetSkill( SkillName.Bricolage, k, 0, 75.0 ) )
+					else if ( from.CheckTargetSkill( SkillName.Menuiserie, k, 0, 75.0 ) )
 					{
 						number = 501676; // You make a copy of the key.
 

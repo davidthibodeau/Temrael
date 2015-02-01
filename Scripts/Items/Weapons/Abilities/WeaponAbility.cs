@@ -56,10 +56,10 @@ namespace Server.Items
 		{
 			int mana = BaseMana;
 
-			double skillTotal = GetSkill( from, SkillName.ArmeTranchante ) + GetSkill( from, SkillName.ArmeContondante )
+			double skillTotal = GetSkill( from, SkillName.Epee ) + GetSkill( from, SkillName.ArmeContondante )
 				+ GetSkill( from, SkillName.ArmePerforante ) + GetSkill( from, SkillName.ArmeDistance ) + GetSkill( from, SkillName.Parer )
-				+ GetSkill( from, SkillName.Foresterie ) + GetSkill( from, SkillName.Infiltration )
-				+ GetSkill( from, SkillName.Empoisonner ) + GetSkill( from, SkillName.Tactiques );
+				+ GetSkill( from, SkillName.Hache ) + GetSkill( from, SkillName.Infiltration )
+				+ GetSkill( from, SkillName.Empoisonnement ) + GetSkill( from, SkillName.Tactiques );
 
 			if ( skillTotal >= 300.0 )
 				mana -= 10;
@@ -67,14 +67,8 @@ namespace Server.Items
 				mana -= 5;
 
 			double scalar = 1.0;
-			if ( !Server.Spells.Necromancy.MindRotSpell.GetMindRotScalar( from, ref scalar ) )
+			if ( !Server.Spells.MindRotSpell.GetMindRotScalar( from, ref scalar ) )
 				scalar = 1.0;
-
-			// Lower Mana Cost = 40%
-			int lmc = Math.Min( AosAttributes.GetValue( from, AosAttribute.LowerManaCost ), 40 );
-
-			scalar -= (double)lmc / 100;
-			mana = (int)(mana * scalar);
 
 			// Using a special move within 3 seconds of the previous special move costs double mana 
 			if ( GetContext( from ) != null )
@@ -102,11 +96,6 @@ namespace Server.Items
 
 			if ( skill != null && skill.Base >= reqSkill )
 				return true;
-
-			/* <UBWS> */
-			if ( weapon.WeaponAttributes.UseBestSkill > 0 && (from.Skills[SkillName.ArmeTranchante].Base >= reqSkill || from.Skills[SkillName.ArmeContondante].Base >= reqSkill || from.Skills[SkillName.ArmePerforante].Base >= reqSkill) )
-				return true;
-			/* </UBWS> */
 
 			if ( reqTactics )
 			{

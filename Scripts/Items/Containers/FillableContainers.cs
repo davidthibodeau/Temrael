@@ -20,10 +20,10 @@ namespace Server.Items
 		protected DateTime m_NextRespawnTime;
 		protected Timer m_RespawnTimer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime NextRespawnTime { get { return m_NextRespawnTime; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public FillableContentType ContentType
 		{
 			get { return FillableContent.Lookup( m_Content ); }
@@ -748,7 +748,7 @@ namespace Server.Items
 				new FillableEntry( typeof( RefreshPotion ) ),
 				new FillableEntry( typeof( LesserHealPotion ) ),
 				new FillableEntry( typeof( LesserExplosionPotion ) ),
-				new FillableEntry( typeof( MortarPestle ) )
+				//new FillableEntry( typeof( MortarPestle ) )
 			} );
 
 		public static FillableContent Armorer = new FillableContent(
@@ -793,7 +793,6 @@ namespace Server.Items
 				new FillableEntry( 1, typeof( BustSouth ) ),
 				new FillableEntry( 1, typeof( BearMask ) ),
 				new FillableEntry( 1, typeof( DeerMask ) ),
-				new FillableEntry( 4, typeof( OrcHelm ) ),
 				new FillableEntry( 1, typeof( TribalMask ) ),
 				new FillableEntry( 1, typeof( HornedTribalMask ) )
 			} );
@@ -816,8 +815,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Bard ),
-				typeof( BardGuildmaster )
+				typeof( Bard )
 			},
 			new FillableEntry[]
 			{
@@ -832,8 +830,7 @@ namespace Server.Items
 			2,
 			new Type[]
 			{
-				typeof( Blacksmith ),
-				typeof( BlacksmithGuildmaster )
+				typeof( Blacksmith )
 			},
 			new FillableEntry[]
 			{
@@ -858,7 +855,7 @@ namespace Server.Items
 			},
 			new FillableEntry[]
 			{
-				new FillableEntry( 2, typeof( Bow ) ),
+				new FillableEntry( 2, typeof( GrandArc ) ),
 				new FillableEntry( 2, typeof( Crossbow ) ),
 				new FillableEntry( 1, typeof( Arrow ) )
 			} );
@@ -919,8 +916,7 @@ namespace Server.Items
 			new Type[]
 			{
 				typeof( Tailor ),
-				typeof( Weaver ),
-				typeof( TailorGuildmaster )
+				typeof( Weaver )
 			},
 			new FillableEntry[]
 			{
@@ -957,8 +953,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Fisherman ),
-				typeof( FisherGuildmaster )
+				typeof( Fisherman )
 			},
 			new FillableEntry[]
 			{
@@ -1002,7 +997,6 @@ namespace Server.Items
 			3,
 			new Type[]
 			{
-				typeof( WarriorGuildmaster )
 			},
 			new FillableEntry[]
 			{
@@ -1023,20 +1017,6 @@ namespace Server.Items
 				new FillableEntry(  8, Loot.WeaponTypes ),
 				new FillableEntry(  3, Loot.ShieldTypes ),
 				new FillableEntry(  1, typeof( Arrow ) )
-			} );
-
-		public static FillableContent Healer = new FillableContent(
-			1,
-			new Type[]
-			{
-				typeof( Healer ),
-				typeof( HealerGuildmaster )
-			},
-			new FillableEntry[]
-			{
-				new FillableEntry( 1, typeof( Bandage ) ),
-				new FillableEntry( 1, typeof( MortarPestle ) ),
-				new FillableEntry( 1, typeof( LesserHealPotion ) )
 			} );
 
 		public static FillableContent Herbalist = new FillableContent(
@@ -1105,8 +1085,7 @@ namespace Server.Items
 			new Type[]
 			{
 				typeof( Mage ),
-				typeof( HolyMage ),
-				typeof( MageGuildmaster )
+				typeof( HolyMage )
 			},
 			new FillableEntry[]
 			{
@@ -1126,7 +1105,6 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( MerchantGuildmaster )
 			},
 			new FillableEntry[]
 			{
@@ -1297,8 +1275,7 @@ namespace Server.Items
 			2,
 			new Type[]
 			{
-				typeof( Ranger ),
-				typeof( RangerGuildmaster )
+				typeof( Ranger )
 			},
 			new FillableEntry[]
 			{
@@ -1325,7 +1302,7 @@ namespace Server.Items
 				new FillableEntry( 2, typeof( GnarledStaff ) ),
 				new FillableEntry( 1, typeof( Whip ) ),
 
-				new FillableEntry( 2, typeof( Bow ) ),
+				new FillableEntry( 2, typeof( GrandArc ) ),
 				new FillableEntry( 2, typeof( Crossbow ) ),
 				new FillableEntry( 2, typeof( HeavyCrossbow ) ),
 				new FillableEntry( 4, typeof( Arrow ) )
@@ -1384,8 +1361,7 @@ namespace Server.Items
 			1,
 			new Type[]
 			{
-				typeof( Thief ),
-				typeof( ThiefGuildmaster )
+				typeof( Thief )
 			},
 			new FillableEntry[]
 			{
@@ -1394,15 +1370,13 @@ namespace Server.Items
 				new FillableEntry( 1, typeof( DeerMask ) ),
 				new FillableEntry( 1, typeof( TribalMask ) ),
 				new FillableEntry( 1, typeof( HornedTribalMask ) ),
-				new FillableEntry( 4, typeof( OrcHelm ) )
 			} );
 
 		public static FillableContent Tinker = new FillableContent(
 			1,
 			new Type[]
 			{
-				typeof( Tinker ),
-				typeof( TinkerGuildmaster )
+				typeof( Tinker )
 			},
 			new FillableEntry[]
 			{
@@ -1420,9 +1394,6 @@ namespace Server.Items
 				new FillableEntry( 2, typeof( Springs ) ),
 				new FillableEntry( 5, typeof( TinkerTools ) ),
 				new FillableEntry( 4, typeof( Key ) ),
-				new FillableEntry( 1, typeof( DecoArrowShafts )),
-				new FillableEntry( 1, typeof( Lockpicks )),
-				new FillableEntry( 1, typeof( ToolKit ))
 			} );
 
 		public static FillableContent Veterinarian = new FillableContent(
@@ -1434,7 +1405,7 @@ namespace Server.Items
 			new FillableEntry[]
 			{
 				new FillableEntry( 1, typeof( Bandage ) ),
-				new FillableEntry( 1, typeof( MortarPestle ) ),
+				//new FillableEntry( 1, typeof( MortarPestle ) ),
 				new FillableEntry( 1, typeof( LesserHealPotion ) ),
 				//new FillableEntry( 1, typeof( Wheat ) ),
 				new FillableEntry( 1, typeof( Carrot ) )
@@ -1480,7 +1451,7 @@ namespace Server.Items
 				Bowyer,			Butcher,		Carpenter,
 				Clothier,		Cobbler,		Docks,
 				Farm,			FighterGuild,	Guard,
-				Healer,			Herbalist,		Inn,
+                Herbalist,		Inn,
 				Jeweler,		Library,		Merchant,
 				Mill,			Mine,			Observatory,
 				Painter,		Ranger,			Stables,

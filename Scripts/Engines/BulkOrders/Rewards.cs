@@ -178,83 +178,16 @@ namespace Server.Engines.BulkOrders
 	{
 		#region Constructors
 		private static readonly ConstructCallback SturdyShovel = new ConstructCallback( CreateSturdyShovel );
-		private static readonly ConstructCallback SturdyPickaxe = new ConstructCallback( CreateSturdyPickaxe );
-		private static readonly ConstructCallback MiningGloves = new ConstructCallback( CreateMiningGloves );
-		private static readonly ConstructCallback GargoylesPickaxe = new ConstructCallback( CreateGargoylesPickaxe );
 		private static readonly ConstructCallback ProspectorsTool = new ConstructCallback( CreateProspectorsTool );
-		private static readonly ConstructCallback PowderOfTemperament = new ConstructCallback( CreatePowderOfTemperament );
-		private static readonly ConstructCallback RunicHammer = new ConstructCallback( CreateRunicHammer );
-		private static readonly ConstructCallback PowerScroll = new ConstructCallback( CreatePowerScroll );
-		private static readonly ConstructCallback ColoredAnvil = new ConstructCallback( CreateColoredAnvil );
-		private static readonly ConstructCallback AncientHammer = new ConstructCallback( CreateAncientHammer );
 
 		private static Item CreateSturdyShovel( int type )
 		{
 			return new SturdyShovel();
 		}
 
-		private static Item CreateSturdyPickaxe( int type )
-		{
-			return new SturdyPickaxe();
-		}
-
-		private static Item CreateMiningGloves( int type )
-		{
-			if ( type == 1 )
-				return new LeatherGlovesOfMining( 1 );
-			else if ( type == 3 )
-				return new StuddedGlovesOfMining( 3 );
-			else if ( type == 5 )
-				return new RingmailGlovesOfMining( 5 );
-
-			throw new InvalidOperationException();
-		}
-
-		private static Item CreateGargoylesPickaxe( int type )
-		{
-			return new GargoylesPickaxe();
-		}
-
 		private static Item CreateProspectorsTool( int type )
 		{
 			return new ProspectorsTool();
-		}
-
-		private static Item CreatePowderOfTemperament( int type )
-		{
-			return new PowderOfTemperament();
-		}
-
-		private static Item CreateRunicHammer( int type )
-		{
-			if ( type >= 1 && type <= 8 )
-				return new RunicHammer( CraftResource.Fer + type, Core.AOS ? ( 55 - (type*5) ) : 50 );
-
-			throw new InvalidOperationException();
-		}
-
-		private static Item CreatePowerScroll( int type )
-		{
-			if ( type == 5 || type == 10 || type == 15 || type == 20 )
-				return new PowerScroll( SkillName.Forge, 100 + type );
-
-			throw new InvalidOperationException();
-		}
-
-		private static Item CreateColoredAnvil( int type )
-		{
-			// Generate an anvil deed, not an actual anvil.
-			//return new ColoredAnvilDeed();
-
-			return new ColoredAnvil();
-		}
-
-		private static Item CreateAncientHammer( int type )
-		{
-			if ( type == 10 || type == 15 || type == 30 || type == 60 )
-				return new AncientSmithyHammer( type );
-
-			throw new InvalidOperationException();
 		}
 		#endregion
 
@@ -269,10 +202,10 @@ namespace Server.Engines.BulkOrders
 
 				// Weapons
 				new RewardType( 200, typeof( Bardiche ), typeof( Halberd ) ),
-				new RewardType( 300, typeof( Dagger ), typeof( ShortSpear ), typeof( Spear ), typeof( WarFork ), typeof( Kryss ) ),	//OSI put the dagger in there.  Odd, ain't it.
-				new RewardType( 350, typeof( Axe ), typeof( BattleAxe ), typeof( DoubleAxe ), typeof( ExecutionersAxe ), typeof( LargeBattleAxe ), typeof( TwoHandedAxe ) ),
-				new RewardType( 350, typeof( Broadsword ), typeof( Cutlass ), typeof( Katana ), typeof( Longsword ), typeof( Scimitar ), /*typeof( ThinLongsword ),*/ typeof( VikingSword ) ),
-				new RewardType( 350, typeof( WarAxe ), typeof( HammerPick ), typeof( Mace ), typeof( Maul ), typeof( WarHammer ), typeof( WarMace ) )
+				new RewardType( 300, typeof( Dagger ), typeof( ShortSpear ), typeof( Spear ), typeof( WarFork )),	//OSI put the dagger in there.  Odd, ain't it.
+				new RewardType( 350, typeof( Axe ), typeof( DoubleAxe ), typeof( ExecutionersAxe ), typeof( LargeBattleAxe ), typeof( TwoHandedAxe ) ),
+				new RewardType( 350, /*typeof( Coutelas ),*/ /*typeof( Longsword ),*/ typeof( Scimitar ), /*typeof( ThinLongsword ),*/ typeof( VikingSword ) ),
+				new RewardType( 350, typeof( WarAxe ),  typeof( Mace ), typeof( Maul ), typeof( WarHammer ), typeof( WarMace ) )
 			};
 
 		public override int ComputePoints( int quantity, bool exceptional, BulkMaterialType material, int itemCount, Type type )
@@ -432,28 +365,9 @@ namespace Server.Engines.BulkOrders
 			Groups = new RewardGroup[]
 				{
 					new RewardGroup(    0, new RewardItem( 1, SturdyShovel ) ),
-					new RewardGroup(   25, new RewardItem( 1, SturdyPickaxe ) ),
-					new RewardGroup(   50, new RewardItem( 45, SturdyShovel ), new RewardItem( 45, SturdyPickaxe ), new RewardItem( 10, MiningGloves, 1 ) ),
-					new RewardGroup(  200, new RewardItem( 45, GargoylesPickaxe ), new RewardItem( 45, ProspectorsTool ), new RewardItem( 10, MiningGloves, 3 ) ),
-					new RewardGroup(  400, new RewardItem( 2, GargoylesPickaxe ), new RewardItem( 2, ProspectorsTool ), new RewardItem( 1, PowderOfTemperament ) ),
-					new RewardGroup(  450, new RewardItem( 9, PowderOfTemperament ), new RewardItem( 1, MiningGloves, 5 ) ),
-					new RewardGroup(  500, new RewardItem( 1, RunicHammer, 1 ) ),
-					new RewardGroup(  550, new RewardItem( 3, RunicHammer, 1 ), new RewardItem( 2, RunicHammer, 2 ) ),
-					new RewardGroup(  600, new RewardItem( 1, RunicHammer, 2 ) ),
-					new RewardGroup(  625, new RewardItem( 3, RunicHammer, 2 ), new RewardItem( 6, PowerScroll, 5 ), new RewardItem( 1, ColoredAnvil ) ),
-					new RewardGroup(  650, new RewardItem( 1, RunicHammer, 3 ) ),
-					new RewardGroup(  675, new RewardItem( 1, ColoredAnvil ), new RewardItem( 6, PowerScroll, 10 ), new RewardItem( 3, RunicHammer, 3 ) ),
-					new RewardGroup(  700, new RewardItem( 1, RunicHammer, 4 ) ),
-					new RewardGroup(  750, new RewardItem( 1, AncientHammer, 10 ) ),
-					new RewardGroup(  800, new RewardItem( 1, PowerScroll, 15 ) ),
-					new RewardGroup(  850, new RewardItem( 1, AncientHammer, 15 ) ),
-					new RewardGroup(  900, new RewardItem( 1, PowerScroll, 20 ) ),
-					new RewardGroup(  950, new RewardItem( 1, RunicHammer, 5 ) ),
-					new RewardGroup( 1000, new RewardItem( 1, AncientHammer, 30 ) ),
-					new RewardGroup( 1050, new RewardItem( 1, RunicHammer, 6 ) ),
-					new RewardGroup( 1100, new RewardItem( 1, AncientHammer, 60 ) ),
-					new RewardGroup( 1150, new RewardItem( 1, RunicHammer, 7 ) ),
-					new RewardGroup( 1200, new RewardItem( 1, RunicHammer, 8 ) )
+
+					new RewardGroup(   50, new RewardItem( 45, SturdyShovel ) ),
+					new RewardGroup(  200, new RewardItem( 45, ProspectorsTool )),
 				};
 		}
 	}
@@ -464,9 +378,7 @@ namespace Server.Engines.BulkOrders
 		private static readonly ConstructCallback Cloth = new ConstructCallback( CreateCloth );
 		private static readonly ConstructCallback Sandals = new ConstructCallback( CreateSandals );
 		private static readonly ConstructCallback StretchedHide = new ConstructCallback( CreateStretchedHide );
-		private static readonly ConstructCallback RunicKit = new ConstructCallback( CreateRunicKit );
 		private static readonly ConstructCallback Tapestry = new ConstructCallback( CreateTapestry );
-		private static readonly ConstructCallback PowerScroll = new ConstructCallback( CreatePowerScroll );
 		private static readonly ConstructCallback BearRug = new ConstructCallback( CreateBearRug );
 		private static readonly ConstructCallback ClothingBlessDeed = new ConstructCallback( CreateCBD );
 
@@ -539,21 +451,6 @@ namespace Server.Engines.BulkOrders
 			}
 		}
 
-		private static Item CreateRunicKit( int type )
-		{
-			if ( type >= 1 && type <= 3 )
-				return new RunicSewingKit( CraftResource.RegularLeather + type, 60 - (type*15) );
-
-			throw new InvalidOperationException();
-		}
-
-		private static Item CreatePowerScroll( int type )
-		{
-			if ( type == 5 || type == 10 || type == 15 || type == 20 )
-				return new PowerScroll( SkillName.Couture, 100 + type );
-
-			throw new InvalidOperationException();
-		}
 
 		private static Item CreateCBD( int type )
 		{
@@ -724,15 +621,9 @@ namespace Server.Engines.BulkOrders
 					new RewardGroup( 150, new RewardItem( 9, Cloth, 3 ), new RewardItem( 1, Sandals ) ),
 					new RewardGroup( 200, new RewardItem( 4, Cloth, 4 ), new RewardItem( 1, Sandals ) ),
 					new RewardGroup( 300, new RewardItem( 1, StretchedHide ) ),
-					new RewardGroup( 350, new RewardItem( 1, RunicKit, 1 ) ),
-					new RewardGroup( 400, new RewardItem( 2, PowerScroll, 5 ), new RewardItem( 3, Tapestry ) ),
+					new RewardGroup( 400, new RewardItem( 3, Tapestry ) ),
 					new RewardGroup( 450, new RewardItem( 1, BearRug ) ),
-					new RewardGroup( 500, new RewardItem( 1, PowerScroll, 10 ) ),
 					new RewardGroup( 550, new RewardItem( 1, ClothingBlessDeed ) ),
-					new RewardGroup( 575, new RewardItem( 1, PowerScroll, 15 ) ),
-					new RewardGroup( 600, new RewardItem( 1, RunicKit, 2 ) ),
-					new RewardGroup( 650, new RewardItem( 1, PowerScroll, 20 ) ),
-					new RewardGroup( 700, new RewardItem( 1, RunicKit, 3 ) )
 				};
 		}
 	}

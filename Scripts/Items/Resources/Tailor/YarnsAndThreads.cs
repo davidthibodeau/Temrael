@@ -125,6 +125,7 @@ namespace Server.Items
         public DarkYarn(int amount)
             : base(0xE1D, amount)
         {
+            GoldValue = 3;
         }
 
         public DarkYarn(Serial serial)
@@ -159,6 +160,7 @@ namespace Server.Items
         public LightYarn(int amount)
             : base(0xE1E, amount)
         {
+            GoldValue = 3;
         }
 
         public LightYarn(Serial serial)
@@ -193,6 +195,7 @@ namespace Server.Items
         public LightYarnUnraveled(int amount)
             : base(0xE1F, amount)
         {
+            GoldValue = 3;
         }
 
         public LightYarnUnraveled(Serial serial)

@@ -29,7 +29,7 @@ namespace Server.Engines.Reports
 
 				if ( m_Account != null )
 				{
-					IAccount acct = Accounts.GetAccount( m_Account );
+					IAccount acct = Accounts.ServerAccounts.GetAccount( m_Account );
 
 					if ( acct != null )
 					{

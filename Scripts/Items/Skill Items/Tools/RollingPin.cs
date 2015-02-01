@@ -11,12 +11,14 @@ namespace Server.Items
 		[Constructable]
 		public RollingPin() : base( 0x1043 )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 
 		[Constructable]
 		public RollingPin( int uses ) : base( uses, 0x1043 )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 

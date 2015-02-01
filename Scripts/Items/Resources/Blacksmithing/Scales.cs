@@ -4,13 +4,28 @@ using Server.Network;
 
 namespace Server.Items
 {
-	public abstract class BaseScales : Item, ICommodity
+	public abstract class BaseScales : Item, ICommodity, IExtractable
 	{
+        #region IExtractable
+        public string getName
+        {
+            get { return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        public double getSkillReq
+        {
+            get { return CraftResources.GetSkill(m_Resource); ; }
+        }
+        #endregion
+
 		public override int LabelNumber{ get{ return 1053139; } } // dragon scales
 
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get{ return m_Resource; }
@@ -92,7 +107,7 @@ namespace Server.Items
 
         public override void AddNameProperty(ObjectPropertyList list)
         {
-            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "Écaille(s) [", GetMaterial(), "]", Amount);
+            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "Ã‰caille(s) [", GetMaterial(), "]", Amount);
             /*if (Amount > 1)
                 list.Add(1060532, String.Format("{3} {0}{1}{2}", "Os [", GetMaterial(), "]", Amount)); // ~1_NUMBER~ ~2_ITEMNAME~
             else

@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Poison.cs 511 2010-04-25 06:09:43Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -130,13 +130,6 @@ namespace Server
             switch ( reader.ReadByte() )
             {
                 case 1: return GetPoison( reader.ReadByte() );
-                case 2:
-                    //no longer used, safe to remove?
-                    reader.ReadInt();
-                    reader.ReadDouble();
-                    reader.ReadInt();
-                    reader.ReadTimeSpan();
-                    break;
             }
             return null;
         }

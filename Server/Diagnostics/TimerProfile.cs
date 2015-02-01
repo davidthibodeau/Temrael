@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: TimerProfile.cs 169 2007-04-22 07:31:23Z krrios $
+ *   $Id$
  *
  ***************************************************************************/
 

@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: QueuedMemoryWriter.cs 645 2010-12-23 11:36:25Z asayre $
+ *   $Id$
  *
  ***************************************************************************/
 

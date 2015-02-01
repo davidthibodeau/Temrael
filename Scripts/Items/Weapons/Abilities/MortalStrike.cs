@@ -30,7 +30,7 @@ namespace Server.Items
 			defender.SendLocalizedMessage( 1060087 ); // You have been mortally wounded!
 
 			defender.PlaySound( 0x1E1 );
-			defender.FixedParticles( 0x37B9, 244, 25, 9944, 31, 0, EffectLayer.Waist );
+			Effects.SendTargetParticles(defender, 0x37B9, 244, 25, 9944, 31, 0, EffectLayer.Waist );
 
 			// Do not reset timer if one is already in place.
 			if ( !IsWounded( defender ) )

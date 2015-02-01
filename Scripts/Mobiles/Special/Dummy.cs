@@ -38,7 +38,7 @@ namespace Server.Mobiles
 
 			LeatherGloves glv = new LeatherGloves();
 			glv.Hue = iHue;
-			glv.LootType = LootType.Newbied;
+			glv.LootType = LootType.Blessed;
 			AddItem(glv);
 
 			Container pack = new Backpack();
@@ -73,7 +73,7 @@ namespace Server.Mobiles
 
 		public override bool HandlesOnSpeech( Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster )
+			if ( from.AccessLevel >= AccessLevel.Batisseur )
 				return true;
 
 			return base.HandlesOnSpeech( from );
@@ -83,7 +83,7 @@ namespace Server.Mobiles
 		{
 			base.OnSpeech( e );
 
-			if (e.Mobile.AccessLevel >= AccessLevel.GameMaster)
+			if (e.Mobile.AccessLevel >= AccessLevel.Batisseur)
 			{
 				if (e.Speech == "kill")
 				{

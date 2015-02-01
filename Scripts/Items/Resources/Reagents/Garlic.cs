@@ -12,11 +12,13 @@ namespace Server.Items
 		[Constructable]
 		public Garlic() : this( 1 )
 		{
+            GoldValue = 1;
 		}
 
 		[Constructable]
 		public Garlic( int amount ) : base( 0xF84, amount )
 		{
+            GoldValue = 3;
 		}
 
 		public Garlic( Serial serial ) : base( serial )

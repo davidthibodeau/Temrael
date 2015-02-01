@@ -12,6 +12,8 @@ namespace Server.Items
 		[Constructable]
 		public HairDye() : base( 0xEFF )
 		{
+            GoldValue = 30;
+            Name = "Teinture a cheveux";
 			Weight = 1.0;
 		}
 
@@ -114,10 +116,13 @@ namespace Server.Items
 			AddBackground( 100, 10, 350, 355, 2600 );
 			AddBackground( 120, 54, 110, 270, 5100 );
 
-			AddHtmlLocalized( 70, 25, 400, 35, 1011013, false, false ); // <center>Hair Color Selection Menu</center>
+			AddHtml( 70, 25, 400, 35, "<center>Menu de la sélection de la couleur des cheveux</center>", false, false ); // <center>Hair Color Selection Menu</center>
 
-			AddButton( 149, 328, 4005, 4007, 1, GumpButtonType.Reply, 0 );
-			AddHtmlLocalized( 185, 329, 250, 35, 1011014, false, false ); // Dye my hair this color!
+            AddButton(119, 328, 4005, 4007, 2, GumpButtonType.Reply, 0);
+            AddHtml(155, 329, 250, 35, "Tester", false, false);
+
+			AddButton( 219, 328, 4005, 4007, 1, GumpButtonType.Reply, 0 );
+            AddHtml(255, 329, 250, 35, "Teindre mes cheveux !", false, false);
 
 			for ( int i = 0; i < m_Entries.Length; ++i )
 			{
@@ -159,7 +164,7 @@ namespace Server.Items
 				{
 					m.SendLocalizedMessage( 502623 );	// You have no hair to dye and cannot use this
 				}
-				else
+				else if (info.ButtonID == 1)
 				{
 					// To prevent this from being exploited, the hue is abstracted into an internal list
 
@@ -177,17 +182,100 @@ namespace Server.Items
 							m.HairHue = hue;
 							m.FacialHairHue = hue;
 
-							m.SendLocalizedMessage( 501199 );  // You dye your hair
+							m.SendMessage( "Vous teignez vos cheveux" );
 							m_HairDye.Delete();
 							m.PlaySound( 0x4E );
 						}
 					}
 				}
+                else if (info.ButtonID == 2)
+                {
+                    int entryIndex = switches[0] / 100;
+					int hueOffset = switches[0] % 100;
+
+                    if (entryIndex >= 0 && entryIndex < m_Entries.Length)
+                    {
+                        HairDyeEntry e = m_Entries[entryIndex];
+
+                        if (hueOffset >= 0 && hueOffset < e.HueCount)
+                        {
+                            int hue = e.HueStart + hueOffset;
+
+                            m.SendGump(new EchantillonGump(m, hue, m_HairDye));
+                        }
+
+                    }
+                }
 			}
 			else
 			{
-				m.SendLocalizedMessage( 501200 ); // You decide not to dye your hair
+                m.SendMessage("Vous décidez de ne pas teindre vos cheveux."); // You decide not to dye your hair
 			}
 		}
+
+        private class EchantillonGump : Gump
+        {
+            private HairDye m_HairDye;
+            private int Hue;
+
+            public EchantillonGump(Mobile m, int hue, HairDye Dye)
+                : base(50, 50)
+            {
+                m_HairDye = Dye;
+                Hue = hue;
+
+                AddBackground(0, 0, 300, 380, 5054);
+                //AddItem(20, 300, target.ItemID, hue);
+                AddBackground(20, 20, 250, 250, 0xa3c);
+                AddLabel(95, 305, 0, "Utiliser cette couleur");
+                AddButton(235, 304, 4005, 4007, 1, GumpButtonType.Reply, 0);
+                if (m.Female)
+                {
+                    AddImage(30, 30, 0xD);
+                    if (m.HairItemID > 0)
+                    {
+                        AddImage(30, 30, TileData.ItemTable[m.HairItemID].Animation + 60000, hue);
+                    }
+
+                    if (m.FacialHairItemID > 0)
+                    {
+                        AddImage(30, 30, TileData.ItemTable[m.FacialHairItemID].Animation + 60000, hue);
+                    }
+                }
+                else
+                {
+                    AddImage(30, 30, 0xC);
+
+                    if (m.HairItemID > 0)
+                    {
+                        AddImage(30, 30, TileData.ItemTable[m.HairItemID].Animation + 50000, hue);
+                    }
+
+                    if (m.FacialHairItemID > 0)
+                    {
+                        AddImage(30, 30, TileData.ItemTable[m.FacialHairItemID].Animation + 50000, hue);
+                    }
+                }
+            }
+
+            public override void OnResponse(NetState sender, RelayInfo info)
+            {
+                Mobile m = sender.Mobile;
+
+                if (info.ButtonID == 1)
+                {
+                    m.HairHue = Hue;
+                    m.FacialHairHue = Hue;
+
+                    m.SendMessage("Vous teignez vos cheveux");
+                    m_HairDye.Delete();
+                    m.PlaySound(0x4E);
+                }
+                else
+                {
+                    m.SendGump(new HairDyeGump(m_HairDye));
+                }
+            }
+        }
 	}
 }

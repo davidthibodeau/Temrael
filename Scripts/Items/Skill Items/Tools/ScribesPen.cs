@@ -14,12 +14,14 @@ namespace Server.Items
 		[Constructable]
 		public ScribesPen() : base( 0x0FBF )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 
 		[Constructable]
 		public ScribesPen( int uses ) : base( uses, 0x0FBF )
 		{
+            GoldValue = 6;
 			Weight = 1.0;
 		}
 

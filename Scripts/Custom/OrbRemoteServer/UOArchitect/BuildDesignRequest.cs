@@ -17,7 +17,7 @@ namespace Server.Engines.UOArchitect
 
 		public static void Initialize()
 		{
-			OrbServer.Register("UOAR_BuildDesign", typeof(BuildDesignRequest), AccessLevel.GameMaster, true);
+			OrbServer.Register("UOAR_BuildDesign", typeof(BuildDesignRequest), AccessLevel.Batisseur, true);
 		}
 
 		public override void OnRequest(OrbClientInfo clientInfo, OrbRequestArgs args)

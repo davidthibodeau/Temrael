@@ -3,8 +3,18 @@ using Server;
 
 namespace Server.Items
 {
-	public class Amethyst : Item
+    public class Amethyst : BaseGem
 	{
+        public override int m_Couleur
+        {
+            get { return 2187; }
+        }
+
+        public override double m_SkillReq
+        {
+            get { return 50; }
+        }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }
@@ -18,7 +28,7 @@ namespace Server.Items
 		[Constructable]
 		public Amethyst( int amount ) : base( 0xF16 )
 		{
-            Name = "Améthyste";
+            Name = "AmÃ©thyste";
 			Stackable = true;
 			Amount = amount;
 		}

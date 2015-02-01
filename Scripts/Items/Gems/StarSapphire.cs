@@ -3,8 +3,18 @@ using Server;
 
 namespace Server.Items
 {
-	public class StarSapphire : Item
+    public class StarSapphire : BaseGem
 	{
+        public override int m_Couleur
+        {
+            get { return 2443; }
+        }
+
+        public override double m_SkillReq
+        {
+            get { return 75; }
+        }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }

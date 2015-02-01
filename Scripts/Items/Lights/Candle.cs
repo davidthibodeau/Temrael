@@ -11,6 +11,8 @@ namespace Server.Items
 		[Constructable]
 		public Candle() : base( 0xA28 )
 		{
+            GoldValue = 6;
+
 			if ( Burnout )
 				Duration = TimeSpan.FromMinutes( 20 );
 			else

@@ -238,7 +238,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "LanguageStatistics", AccessLevel.Administrator, new CommandEventHandler( LanguageStatistics_OnCommand ) );
+			CommandSystem.Register( "LanguageStatistics", AccessLevel.Coordinateur, new CommandEventHandler( LanguageStatistics_OnCommand ) );
 		}
 
 		[Usage( "LanguageStatistics" )]
@@ -252,7 +252,7 @@ namespace Server.Misc
 				if ( CountAccounts )
 				{
 					// count accounts
-					foreach ( Account acc in Accounts.GetAccounts() )
+					foreach ( Account acc in Accounts.ServerAccounts.GetAccounts() )
 					{
 						for ( int i = 0; i < acc.Length; i++ )
 						{

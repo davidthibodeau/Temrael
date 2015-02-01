@@ -8,7 +8,7 @@ namespace Server.Items
 	{
 		private Mobile m_Fisher;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Fisher
 		{
 			get{ return m_Fisher; }

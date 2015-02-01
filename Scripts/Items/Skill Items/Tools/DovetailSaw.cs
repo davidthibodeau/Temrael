@@ -12,12 +12,14 @@ namespace Server.Items
 		[Constructable]
 		public DovetailSaw() : base( 0x1028 )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
 		}
 
 		[Constructable]
 		public DovetailSaw( int uses ) : base( uses, 0x1028 )
 		{
+            GoldValue = 6;
 			Weight = 2.0;
 		}
 

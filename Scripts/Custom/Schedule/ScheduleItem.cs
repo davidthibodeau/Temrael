@@ -9,7 +9,6 @@ namespace Server.Items
 	{
 		None,
 		Eat,
-		Sleep,
 		Wander
 	};
 	
@@ -58,7 +57,7 @@ namespace Server.Items
 			}
 		}
 				
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ScheduleProps Schedule { get { return m_ScheduleProps; } set { } }
 
 		// serialize saver
@@ -120,40 +119,40 @@ namespace Server.Items
 				m_Schedule = s;
 			}
 			
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour00 { get { return m_Schedule.Entries[0]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour02 { get { return m_Schedule.Entries[1]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour04 { get { return m_Schedule.Entries[2]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour06 { get { return m_Schedule.Entries[3]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour08 { get { return m_Schedule.Entries[4]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour10 { get { return m_Schedule.Entries[5]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour12 { get { return m_Schedule.Entries[6]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour14 { get { return m_Schedule.Entries[7]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour16 { get { return m_Schedule.Entries[8]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour18 { get { return m_Schedule.Entries[9]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour20 { get { return m_Schedule.Entries[10]; } set { } }
 
-			[CommandProperty( AccessLevel.GameMaster )]
+			[CommandProperty( AccessLevel.Batisseur )]
 			public ScheduleEntry Hour22 { get { return m_Schedule.Entries[11]; } set { } }
 		}
 	}
@@ -175,10 +174,10 @@ namespace Server.Items
 			waypoint = null;
 			activity = ScheduleAct.None;
 		}
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public WayPoint Waypoint { get { return waypoint; } set { waypoint = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ScheduleAct Activity { get { return activity; } set { activity = value; } }
 	}
 }

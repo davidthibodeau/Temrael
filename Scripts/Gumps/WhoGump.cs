@@ -10,8 +10,8 @@ namespace Server.Gumps
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "Who", AccessLevel.Counselor, new CommandEventHandler( WhoList_OnCommand ) );
-			CommandSystem.Register( "WhoList", AccessLevel.Counselor, new CommandEventHandler( WhoList_OnCommand ) );
+            //CommandSystem.Register( "Who", AccessLevel.Counselor, new CommandEventHandler( WhoList_OnCommand ) );
+            //CommandSystem.Register( "WhoList", AccessLevel.Counselor, new CommandEventHandler( WhoList_OnCommand ) );
 		}
 
 		[Usage( "WhoList [filter]" )]
@@ -223,19 +223,11 @@ namespace Server.Gumps
 			{
 				case AccessLevel.Owner:
 				case AccessLevel.Developer:
-				case AccessLevel.Administrator: return 0x516;
-				case AccessLevel.Seer: return 0x144;
-				case AccessLevel.GameMaster: return 0x21;
+				case AccessLevel.Coordinateur: return 0x516;
+				case AccessLevel.Chroniqueur: return 0x144;
+				case AccessLevel.Batisseur: return 0x21;
 				case AccessLevel.Counselor: return 0x2;
-				case AccessLevel.Player: default:
-				{
-					if ( m.Kills >= 5 )
-						return 0x21;
-					else if ( m.Criminal )
-						return 0x3B1;
-
-					return 0x58;
-				}
+				case AccessLevel.Player: default: return 0x58;
 			}
 		}
 

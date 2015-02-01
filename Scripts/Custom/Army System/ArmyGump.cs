@@ -25,7 +25,7 @@ namespace Server.Gumps
             Resizable = false;
             
             AddPage(0);
-            if (controller.Owner.AccessLevel >= AccessLevel.GameMaster)
+            if (controller.Owner.AccessLevel >= AccessLevel.Batisseur)
             {
                 AddBackground(5, 221, 214, 154, 9200);
                 AddAlphaRegion(8, 224, 207, 147);
@@ -66,7 +66,7 @@ namespace Server.Gumps
             AddImageTiledButton(7, 230, 4014, 4016, (int)Buttons.GOTO, GumpButtonType.Reply, 0, 4014, 0, 10, 10, 3005134);
             AddImageTiledButton(157, 229, 4029, 4031, (int)Buttons.SAY, GumpButtonType.Reply, 10741, 0, 0, 10, 10, 3002076);
             
-            if (controller.Owner.AccessLevel >= AccessLevel.GameMaster)
+            if (controller.Owner.AccessLevel >= AccessLevel.Batisseur)
                 AddImageTiledButton(187, 229, 4011, 4013, (int)Buttons.RECRUIT, GumpButtonType.Reply, 0, 11400, 0, 10, 10, 3006116);
 
             AddButton(132, 249, 2336, 2336, (int)Buttons.CARRE_PLEIN, GumpButtonType.Reply, 0);
@@ -115,7 +115,7 @@ namespace Server.Gumps
         {
             Mobile from = sender.Mobile;
 
-            if (from.AccessLevel < AccessLevel.GameMaster)
+            if (from.AccessLevel < AccessLevel.Batisseur)
                 if (from.Deleted || !from.Alive)
                     return;
 

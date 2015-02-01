@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Utility.cs 591 2010-12-06 06:45:45Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 
@@ -30,12 +30,12 @@ using System.Text;
 using System.Xml;
 using Microsoft.Win32;
 using Server.Network;
+using Server.Gumps;
 
 namespace Server
 {
 	public static class Utility
 	{
-		private static Random m_Random = new Random();
 		private static Encoding m_UTF8, m_UTF8WithEncoding;
 
 		public static Encoding UTF8
@@ -555,6 +555,23 @@ namespace Server
 			}
 		}
 
+		public static DateTimeOffset GetXMLDateTimeOffset( string dateTimeOffsetString, DateTimeOffset defaultValue )
+		{
+			try
+			{
+				return XmlConvert.ToDateTimeOffset( dateTimeOffsetString );
+			}
+			catch
+			{
+				DateTimeOffset d;
+
+				if( DateTimeOffset.TryParse( dateTimeOffsetString, out d ) )
+					return d;
+
+				return defaultValue;
+			}
+		}
+
 		public static TimeSpan GetXMLTimeSpan( string timeSpanString, TimeSpan defaultValue )
 		{
 			try
@@ -608,10 +625,6 @@ namespace Server
 		}
 		#endregion
 
-		public static double RandomDouble()
-		{
-			return m_Random.NextDouble();
-		}
 		#region In[...]Range
 		public static bool InRange( Point3D p1, Point3D p2, int range )
 		{
@@ -644,8 +657,8 @@ namespace Server
 				&& ( p1.Y >= (p2.Y - 18) )
 				&& ( p1.Y <= (p2.Y + 18) );
 		}
-
 		#endregion
+
 		public static Direction GetDirection( IPoint2D from, IPoint2D to )
 		{
 			int dx = to.X - from.X;
@@ -757,24 +770,27 @@ namespace Server
 			}
 		}
 
+		#region Random
 		//4d6+8 would be: Utility.Dice( 4, 6, 8 )
 		public static int Dice( int numDice, int numSides, int bonus )
 		{
 			int total = 0;
-			for (int i=0;i<numDice;++i)
-				total += Random( numSides ) + 1;
+
+			for (int i = 0; i < numDice; ++i)
+				total += RandomImpl.Next(numSides) + 1;
+
 			total += bonus;
 			return total;
 		}
 
 		public static int RandomList( params int[] list )
 		{
-			return list[m_Random.Next( list.Length )];
+			return list[RandomImpl.Next(list.Length)];
 		}
 
 		public static bool RandomBool()
 		{
-			return ( m_Random.Next( 2 ) == 0 );
+			return RandomImpl.NextBool();
 		}
 
 		public static int RandomMinMax( int min, int max )
@@ -790,32 +806,41 @@ namespace Server
 				return min;
 			}
 
-			return min + m_Random.Next( (max - min) + 1 );
+			return min + RandomImpl.Next((max - min) + 1);
 		}
 
 		public static int Random( int from, int count )
 		{
-			if ( count == 0 )
-			{
+			if ( count == 0 ) {
 				return from;
-			}
-			else if ( count > 0 )
-			{
-				return from + m_Random.Next( count );
-			}
-			else
-			{
-				return from - m_Random.Next( -count );
+			} else if ( count > 0 ) {
+				return from + RandomImpl.Next(count);
+			} else {
+				return from - RandomImpl.Next(-count);
 			}
 		}
 
 		public static int Random( int count )
 		{
-			return m_Random.Next( count );
+			return RandomImpl.Next(count);
 		}
+
+		public static void RandomBytes( byte[] buffer )
+		{
+			RandomImpl.NextBytes(buffer);
+		}
+
+		public static double RandomDouble()
+		{
+			return RandomImpl.NextDouble();
+		}
+		#endregion
 
 		#region Random Hues
 
+		/// <summary>
+		/// Random pink, blue, green, orange, red or yellow hue
+		/// </summary>
 		public static int RandomNondyedHue()
 		{
 			switch ( Random( 6 ) )
@@ -831,61 +856,97 @@ namespace Server
 			return 0;
 		}
 
+		/// <summary>
+		/// Random hue in the range 1201-1254
+		/// </summary>
 		public static int RandomPinkHue()
 		{
 			return Random( 1201, 54 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 1301-1354
+		/// </summary>
 		public static int RandomBlueHue()
 		{
 			return Random( 1301, 54 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 1401-1454
+		/// </summary>
 		public static int RandomGreenHue()
 		{
 			return Random( 1401, 54 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 1501-1554
+		/// </summary>
 		public static int RandomOrangeHue()
 		{
 			return Random( 1501, 54 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 1601-1654
+		/// </summary>
 		public static int RandomRedHue()
 		{
 			return Random( 1601, 54 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 1701-1754
+		/// </summary>
 		public static int RandomYellowHue()
 		{
 			return Random( 1701, 54 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 1801-1908
+		/// </summary>
 		public static int RandomNeutralHue()
 		{
 			return Random( 1801, 108 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 2001-2018
+		/// </summary>
 		public static int RandomSnakeHue()
 		{
 			return Random( 2001, 18 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 2101-2130
+		/// </summary>
 		public static int RandomBirdHue()
 		{
 			return Random( 2101, 30 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 2201-2224
+		/// </summary>
 		public static int RandomSlimeHue()
 		{
 			return Random( 2201, 24 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 2301-2318
+		/// </summary>
 		public static int RandomAnimalHue()
 		{
 			return Random( 2301, 18 );
 		}
 
+		/// <summary>
+		/// Random hue in the range 2401-2430
+		/// </summary>
 		public static int RandomMetalHue()
 		{
 			return Random( 2401, 30 );
@@ -901,9 +962,23 @@ namespace Server
 				return hue;
 		}
 
+		/// <summary>
+		/// Random hue in the range 2-1001
+		/// </summary>
 		public static int RandomDyedHue()
 		{
 			return Random( 2, 1000 );
+		}
+
+		/// <summary>
+		/// Random hue from 0x62, 0x71, 0x03, 0x0D, 0x13, 0x1C, 0x21, 0x30, 0x37, 0x3A, 0x44, 0x59
+		/// </summary>
+		public static int RandomBrightHue()
+		{
+			if ( Utility.RandomDouble() < 0.1  )
+				return Utility.RandomList( 0x62, 0x71 );
+
+			return Utility.RandomList( 0x03, 0x0D, 0x13, 0x1C, 0x21, 0x30, 0x37, 0x3A, 0x44, 0x59 );
 		}
 
 		//[Obsolete( "Depreciated, use the methods for the Mobile's race", false )]
@@ -944,83 +1019,86 @@ namespace Server
 
 		private static SkillName[] m_AllSkills = new SkillName[]
 			{
-				SkillName.Alchimie,
-		        SkillName.ArmeHaste,
-		        SkillName.Agriculture,
-		        SkillName.Identification,
-		        SkillName.FabricationArt,
-		        SkillName.Parer,
-		        SkillName.Illusion,
-		        SkillName.Forge,
-		        SkillName.Equitation,
-		        SkillName.Conjuration,
-		        SkillName.Survie,
-		        SkillName.Menuiserie,
-		        SkillName.Destruction,
-		        SkillName.Cuisine,
-		        SkillName.Detection,
-		        SkillName.Tenebrea,
-		        SkillName.Restoration,
-		        SkillName.Soins,
-		        SkillName.Peche,
-		        SkillName.Reve,
-		        SkillName.Elevage,
-		        SkillName.Discretion,
-		        SkillName.Goetie,
-		        SkillName.Inscription,
-		        SkillName.Crochetage,
-		        SkillName.ArtMagique,
-		        SkillName.Mysticisme,
-		        SkillName.Tactiques,
-		        SkillName.Fouille,
-		        SkillName.Musique,
-		        SkillName.Empoisonner,
-		        SkillName.ArmeDistance,
-		        SkillName.Priere,
-		        SkillName.Vol,
-		        SkillName.Couture,
-		        SkillName.Dressage,
-		        SkillName.Degustation,
-		        SkillName.Bricolage,
-		        SkillName.Poursuite,
-		        SkillName.Miracles,
-		        SkillName.ArmeTranchante,
-		        SkillName.ArmeContondante,
-		        SkillName.ArmePerforante,
-		        SkillName.ArmePoing,
-		        SkillName.Foresterie,
-		        SkillName.Excavation,
-		        SkillName.Concentration,
-		        SkillName.Infiltration,
-		        SkillName.Pieges,
-		        SkillName.ConnaissanceLangue,
-		        SkillName.ConnaissanceNoblesse,
-		        SkillName.ConnaissanceNature,
-		        SkillName.ConnaissanceBestiaire,
-		        SkillName.ConnaissanceHistoire,
-		        SkillName.ConnaissanceReligion,
-			};
-
-		private static SkillName[] m_CombatSkills = new SkillName[]
-			{
-                SkillName.ArmeDistance,
-                SkillName.ArmeTranchante,
+                // Combat
+                SkillName.Tactiques,
+                SkillName.Parer,
+                SkillName.Epee,
                 SkillName.ArmeContondante,
                 SkillName.ArmePerforante,
-                SkillName.ArmePoing,
-                SkillName.ArmeHaste
+                SkillName.ArmeHaste,
+                SkillName.ArmeDistance,
+                SkillName.Equitation,
+                SkillName.CoupCritique,
+                SkillName.Soins,
+                SkillName.Penetration,
+                SkillName.Anatomie,                
+                SkillName.ResistanceMagique,
+                SkillName.Concentration,
+
+                // Magie
+                SkillName.ArtMagique,
+                // 9 branches de magie
+                SkillName.Meditation,               
+                SkillName.Inscription,
+                SkillName.MagieDeGuerre,
+        
+                // Roublardise
+                SkillName.Discretion,
+                SkillName.Infiltration,
+                SkillName.Pieges,
+                SkillName.Crochetage,
+                SkillName.Empoisonnement,
+                SkillName.Fouille,                
+                SkillName.Vol,
+                SkillName.Dressage,
+                SkillName.Poursuite,
+                SkillName.Survie,
+                SkillName.Deguisement,
+                SkillName.Langues,
+                SkillName.Detection,
+
+                // Artisanat
+                SkillName.Fignolage,
+                SkillName.Polissage,
+                SkillName.Excavation,
+                SkillName.Hache,
+                SkillName.Forge,
+                SkillName.Couture,
+                SkillName.Menuiserie,
+                SkillName.Cuisine,
+                SkillName.Alchimie
+	
+			};
+
+        private static SkillName[] m_CombatSkills = new SkillName[]
+			{
+                 SkillName.Tactiques,
+                 SkillName.Parer,
+                 SkillName.Epee,
+                 SkillName.ArmeContondante,
+                 SkillName.ArmePerforante,
+                 SkillName.ArmeHaste,
+                 SkillName.ArmeDistance,
+                 SkillName.Equitation,
+                 SkillName.CoupCritique,
+                 SkillName.Soins,
+                 SkillName.Penetration,
+                 SkillName.Anatomie,
+                 SkillName.ResistanceMagique,
+                 SkillName.Concentration,
 			};
 
 		private static SkillName[] m_CraftSkills = new SkillName[]
 			{
-                SkillName.Alchimie,
-                SkillName.Forge,
-                SkillName.FabricationArt,
-                SkillName.Menuiserie,
-                SkillName.Cuisine,
-                SkillName.Inscription,
-                SkillName.Couture,
-                SkillName.Bricolage
+                 SkillName.Fignolage,
+                 SkillName.Polissage,
+                 SkillName.Excavation,
+                 SkillName.Hache,
+                 SkillName.Forge,
+                 SkillName.Couture,
+                 SkillName.Menuiserie,
+                 SkillName.Cuisine,
+                 SkillName.Alchimie
 			};
 
 		public static SkillName RandomSkill()
@@ -1114,7 +1192,7 @@ namespace Server
 						bytes.Append( "  " );
 					}
 
-					if ( c >= 0x20 && c < 0x80 )
+					if ( c >= 0x20 && c < 0x7F )
 					{
 						chars.Append( (char)c );
 					}
@@ -1153,7 +1231,7 @@ namespace Server
 							bytes.Append( "  " );
 						}
 
-						if ( c >= 0x20 && c < 0x80 )
+						if ( c >= 0x20 && c < 0x7F )
 						{
 							chars.Append( (char)c );
 						}
@@ -1217,47 +1295,71 @@ namespace Server
 		{
 			AssignRandomHair( m, true );
 		}
+
+        public static int RandomHair( bool female )   //Random hair doesn't include baldness
+        {
+            switch (Random(9))
+            {
+                case 0: return 0x203B;  //Short
+                case 1: return 0x203C;  //Long
+                case 2: return 0x203D;  //Pony Tail
+                case 3: return 0x2044;  //Mohawk
+                case 4: return 0x2045;  //Pageboy
+                case 5: return 0x2047;  //Afro
+                case 6: return 0x2049;  //Pig tails
+                case 7: return 0x204A;  //Krisna
+                default:
+                    return (female ? 0x2046 : 0x2048); //Buns or Receeding Hair
+            }
+        }
+
 		public static void AssignRandomHair( Mobile m, int hue )
-		{
-			m.HairItemID = m.Race.RandomHair( m );
-			m.HairHue = hue;
-		}
+        {
+            m.HairItemID = RandomHair(m.Female);
+            m.HairHue = hue;
+        }
+
 		public static void AssignRandomHair( Mobile m, bool randomHue )
 		{
-			m.HairItemID = m.Race.RandomHair( m );
+            m.HairItemID = RandomHair(m.Female);
 
 			if( randomHue )
-				m.HairHue = m.Race.RandomHairHue();
+				m.HairHue = RandomHairHue();
 		}
 
 		public static void AssignRandomFacialHair( Mobile m )
 		{
 			AssignRandomFacialHair( m, true );
 		}
+
+        public static int RandomFacialHair( bool female )
+        {
+            if (female)
+                return 0;
+
+            int rand = Utility.Random(7);
+
+            return ((rand < 4) ? 0x203E : 0x2047) + rand;
+        }
+
 		public static void AssignRandomFacialHair( Mobile m, int hue )
 		{
-			m.FacialHairHue = m.Race.RandomFacialHair( m );
+            m.FacialHairItemID = RandomFacialHair(m.Female);
 			m.FacialHairHue = hue;
 		}
+
 		public static void AssignRandomFacialHair( Mobile m, bool randomHue )
 		{
-			m.FacialHairItemID = m.Race.RandomFacialHair( m );
+            m.FacialHairItemID = RandomFacialHair(m.Female);
 
 			if( randomHue )
-				m.FacialHairHue = m.Race.RandomHairHue();
+				m.FacialHairHue = RandomHairHue();
 		}
 
-#if MONO
-		public static List<TOutput> CastConvertList<TInput, TOutput>( List<TInput> list ) where TInput : class where TOutput : class
-		{
-			return list.ConvertAll<TOutput>( new  Converter<TInput, TOutput>( delegate( TInput value ) { return value as TOutput; } ) );
-		}
-#else
 		public static List<TOutput> CastConvertList<TInput, TOutput>( List<TInput> list ) where TOutput : TInput
 		{
 			return list.ConvertAll<TOutput>( new Converter<TInput, TOutput>( delegate( TInput value ) { return (TOutput)value; } ) );
 		}
-#endif
 
 		public static List<TOutput> SafeConvertList<TInput, TOutput>( List<TInput> list ) where TOutput : class
 		{
@@ -1273,5 +1375,14 @@ namespace Server
 
 			return output;
 		}
+
+        public static int AbsoluteInt(int value)
+        {
+            if (value >= 0)
+                return value;
+            else
+                return -value;
+        }
+
 	}
 }

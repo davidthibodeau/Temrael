@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: BaseVendor.cs 511 2010-04-25 06:09:43Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 

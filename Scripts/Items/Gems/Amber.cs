@@ -3,8 +3,18 @@ using Server;
 
 namespace Server.Items
 {
-	public class Amber : Item
+    public class Amber : BaseGem
 	{
+        public override int m_Couleur
+        {
+            get { return 2171; }
+        }
+
+        public override double m_SkillReq
+        {
+            get { return 35; }
+        }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }
@@ -18,6 +28,7 @@ namespace Server.Items
 		[Constructable]
 		public Amber( int amount ) : base( 0xF25 )
 		{
+            GoldValue = 6;
             Name = "Ambre";
 			Stackable = true;
 			Amount = amount;

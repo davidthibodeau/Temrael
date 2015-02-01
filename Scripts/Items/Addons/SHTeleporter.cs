@@ -9,7 +9,7 @@ namespace Server.Items
 		private SHTeleComponent m_TeleDest;
 		private Point3D m_TeleOffset;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Active
 		{
 			get { return m_Active; }
@@ -24,7 +24,7 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Point3D TeleOffset
 		{
 			get { return m_TeleOffset; }
@@ -38,7 +38,7 @@ namespace Server.Items
 			set { m_TeleOffset = new Point3D( value.X - Location.X, value.Y - Location.Y, value.Z - Location.Z ); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SHTeleComponent TeleDest
 		{
 			get { return m_TeleDest; }
@@ -134,7 +134,7 @@ namespace Server.Items
 	{
 		public static void Initialize()
 		{
-			CommandSystem.Register( "SHTelGen", AccessLevel.Administrator, new CommandEventHandler( SHTelGen_OnCommand ) );
+			CommandSystem.Register( "SHTelGen", AccessLevel.Coordinateur, new CommandEventHandler( SHTelGen_OnCommand ) );
 		}
 
 		[Usage( "SHTelGen" )]
@@ -292,7 +292,7 @@ namespace Server.Items
 
 		private bool m_Changing;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool External { get { return m_External; } }
 
 		public SHTeleComponent UpTele { get { return m_UpTele; } }

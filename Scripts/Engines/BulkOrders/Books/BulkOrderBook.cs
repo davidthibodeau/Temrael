@@ -19,14 +19,14 @@ namespace Server.Engines.BulkOrders
 		private SecureLevel m_Level;
 		private int m_ItemCount;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public string BookName
 		{
 			get{ return m_BookName; }
 			set{ m_BookName = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public SecureLevel Level
 		{
 			get{ return m_Level; }

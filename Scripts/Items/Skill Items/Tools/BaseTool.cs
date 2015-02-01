@@ -18,21 +18,21 @@ namespace Server.Items
 		private ToolQuality m_Quality;
 		private int m_UsesRemaining;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Crafter
 		{
 			get{ return m_Crafter; }
 			set{ m_Crafter = value; InvalidateProperties(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public ToolQuality Quality
 		{
 			get{ return m_Quality; }
 			set{ UnscaleUses(); m_Quality = value; InvalidateProperties(); ScaleUses(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int UsesRemaining
 		{
 			get { return m_UsesRemaining; }
@@ -105,16 +105,6 @@ namespace Server.Items
 
 		public static bool CheckTool( Item tool, Mobile m )
 		{
-			Item check = m.FindItemOnLayer( Layer.OneHanded );
-
-			if ( check is BaseTool && check != tool && !(check is AncientSmithyHammer) )
-				return false;
-
-			check = m.FindItemOnLayer( Layer.TwoHanded );
-
-			if ( check is BaseTool && check != tool && !(check is AncientSmithyHammer) )
-				return false;
-
 			return true;
 		}
 
@@ -131,18 +121,21 @@ namespace Server.Items
 			{
 				CraftSystem system = this.CraftSystem;
 
-				int num = system.CanCraft( from, this, null );
+                if (system != null)
+                {
+                    int num = system.CanCraft(from, this, null);
 
-				if ( num > 0 && ( num != 1044267 || !Core.SE ) ) // Blacksmithing shows the gump regardless of proximity of an anvil and forge after SE
-				{
-					from.SendLocalizedMessage( num );
-				}
-				else
-				{
-					CraftContext context = system.GetContext( from );
+                    if (num > 0 && num != 1044267) // Blacksmithing shows the gump regardless of proximity of an anvil and forge after SE
+                    {
+                        from.SendLocalizedMessage(num);
+                    }
+                    else
+                    {
+                        CraftContext context = system.GetContext(from);
 
-					from.SendGump( new CraftGump( from, system, this, null ) );
-				}
+                        from.SendGump(new CraftGump(from, system, this, null));
+                    }
+                }
 			}
 			else
 			{

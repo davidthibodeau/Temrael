@@ -67,8 +67,6 @@ namespace Server.Mobiles
             SetSkill(SkillName.Crochetage, 65, 87);
             SetSkill(SkillName.Discretion, 65, 87);
             SetSkill(SkillName.Fouille, 65, 87);
-            Fame = 100;
-            Karma = 0;
 
             AddItem(new Sandals(Utility.RandomNeutralHue()));
             AddItem(new Dagger());

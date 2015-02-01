@@ -58,9 +58,9 @@ namespace Server.Items
 			new TrophyInfo( typeof( GreatHart ),	0x1E61,		1041095, 1041109 ),
 			new TrophyInfo( typeof( BigFish ),		0x1E62,		1041096, 1041110 ),
 			new TrophyInfo( typeof( Gorilla ),		0x1E63,		1041091, 1041105 ),
-			new TrophyInfo( typeof( Orc ),			0x1E64,		1041090, 1041104 ),
+			//new TrophyInfo( typeof( Orc ),			0x1E64,		1041090, 1041104 ),
 			new TrophyInfo( typeof( PolarBear ),	0x1E65,		1041094, 1041108 ),
-			new TrophyInfo( typeof( Troll ),		0x1E66,		1041092, 1041106 )
+			//new TrophyInfo( typeof( Troll ),		0x1E66,		1041092, 1041106 )
         };
 
         public class TrophyInfo
@@ -184,16 +184,16 @@ namespace Server.Items
 		private Mobile m_Hunter;
 		private int m_AnimalWeight;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int WestID{ get{ return m_WestID; } set{ m_WestID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int NorthID{ get{ return m_NorthID; } set{ m_NorthID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DeedNumber{ get{ return m_DeedNumber; } set{ m_DeedNumber = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AddonNumber{ get{ return m_AddonNumber; } set{ m_AddonNumber = value; InvalidateProperties(); } }
 
 		public override int LabelNumber{ get{ return m_AddonNumber; } }
@@ -346,22 +346,22 @@ namespace Server.Items
 		private Mobile m_Hunter;
 		private int m_AnimalWeight;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int WestID{ get{ return m_WestID; } set{ m_WestID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int NorthID{ get{ return m_NorthID; } set{ m_NorthID = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int DeedNumber{ get{ return m_DeedNumber; } set{ m_DeedNumber = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AddonNumber{ get{ return m_AddonNumber; } set{ m_AddonNumber = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Hunter{ get{ return m_Hunter; } set{ m_Hunter = value; InvalidateProperties(); } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int AnimalWeight{ get{ return m_AnimalWeight; } set{ m_AnimalWeight = value; InvalidateProperties(); } }
 
 		public override int LabelNumber{ get{ return m_DeedNumber; } }

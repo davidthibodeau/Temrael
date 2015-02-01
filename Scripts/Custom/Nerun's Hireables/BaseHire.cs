@@ -113,7 +113,7 @@ namespace Server.Mobiles
             base.OnDeath(c);
         }
 
-        [CommandProperty(AccessLevel.Administrator)]
+        [CommandProperty(AccessLevel.Coordinateur)]
         public ArmyController Army
         {
             get
@@ -131,7 +131,7 @@ namespace Server.Mobiles
             }
         }
 
-        [CommandProperty(AccessLevel.Administrator)]
+        [CommandProperty(AccessLevel.Coordinateur)]
         public bool IsInArmy
         {
             get
@@ -149,7 +149,7 @@ namespace Server.Mobiles
             }
         }
 
-        [CommandProperty(AccessLevel.Administrator)]
+        [CommandProperty(AccessLevel.Coordinateur)]
         public bool IsHired
         {
             get
@@ -222,7 +222,7 @@ namespace Server.Mobiles
         {
             if (IsInArmy || IsHired) return false;
             //m_Pay = (int)m.Skills[SkillName.Anatomy].Value + (int)m.Skills[SkillName.Tactiques].Value;
-            m_Pay = (int)m.Skills[SkillName.ArmeContondante].Value + (int)m.Skills[SkillName.ArmeTranchante].Value;
+            m_Pay = (int)m.Skills[SkillName.ArmeContondante].Value + (int)m.Skills[SkillName.Epee].Value;
             m_Pay += (int)m.Skills[SkillName.ArmePerforante].Value + (int)m.Skills[SkillName.ArmeDistance].Value;
             m_Pay += (int)m.Skills[SkillName.Concentration].Value + (int)m.Skills[SkillName.Soins].Value;
             m_Pay += (int)m.Skills[SkillName.ArtMagique].Value + (int)m.Skills[SkillName.Parer].Value;

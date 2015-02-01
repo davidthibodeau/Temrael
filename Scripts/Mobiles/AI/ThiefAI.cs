@@ -65,70 +65,44 @@ namespace Server.Mobiles
 					if ( m_toDisarm == null )
 						m_toDisarm = combatant.FindItemOnLayer( Layer.TwoHanded );
 				}
-				if ( !m_Mobile.DisarmReady && m_Mobile.Skills[SkillName.ArmePoing].Value >= 80.0 && m_Mobile.Skills[SkillName.Tactiques].Value >= 80.0 && m_toDisarm != null )
+				if ( !m_Mobile.DisarmReady && m_Mobile.Skills[SkillName.Anatomie].Value >= 80.0 && m_Mobile.Skills[SkillName.Tactiques].Value >= 80.0 && m_toDisarm != null )
 					EventSink.InvokeDisarmRequest( new DisarmRequestEventArgs( m_Mobile ) );
 
-				if ( m_toDisarm != null && m_toDisarm.IsChildOf( combatant.Backpack ) && m_Mobile.NextSkillTime <= DateTime.Now && (m_toDisarm.LootType != LootType.Blessed && m_toDisarm.LootType != LootType.Newbied) )
-				{
-					m_Mobile.DebugSay( "Trying to steal from combatant." );
-					m_Mobile.UseSkill( SkillName.Vol );
-					if ( m_Mobile.Target != null )
-						m_Mobile.Target.Invoke( m_Mobile, m_toDisarm );
-				}
-				else if ( m_toDisarm == null && m_Mobile.NextSkillTime <= DateTime.Now )
-				{
-					Container cpack = combatant.Backpack;
+                if (m_Mobile.Skills[SkillName.Vol].Value != 0)
+                {
+                    if (m_toDisarm != null && m_toDisarm.IsChildOf(combatant.Backpack) && m_Mobile.NextSkillTime <= Core.TickCount && (m_toDisarm.LootType != LootType.Blessed && m_toDisarm.LootType != LootType.Blessed))
+                    {
+                        m_Mobile.DebugSay("Trying to steal from combatant.");
+                        m_Mobile.UseSkill(SkillName.Vol);
+                        if (m_Mobile.Target != null)
+                            m_Mobile.Target.Invoke(m_Mobile, m_toDisarm);
+                    }
+                    else if (m_toDisarm == null && m_Mobile.NextSkillTime <= Core.TickCount)
+                    {
+                        Container cpack = combatant.Backpack;
 
-					if ( cpack != null )
-					{
-						Item steala = cpack.FindItemByType( typeof ( Bandage ) );
-						if ( steala != null ) 
-						{
-							m_Mobile.DebugSay( "Trying to steal from combatant." );
-							m_Mobile.UseSkill( SkillName.Vol );
-							if ( m_Mobile.Target != null )
-								m_Mobile.Target.Invoke( m_Mobile, steala );
-						}
-						Item stealb = cpack.FindItemByType( typeof ( Nightshade ) );
-						if ( stealb != null ) 
-						{
-							m_Mobile.DebugSay( "Trying to steal from combatant." );
-							m_Mobile.UseSkill( SkillName.Vol );
-							if ( m_Mobile.Target != null )
-								m_Mobile.Target.Invoke( m_Mobile, stealb );
-						}
-						Item stealc = cpack.FindItemByType( typeof ( BlackPearl ) );
-						if ( stealc != null ) 
-						{
-							m_Mobile.DebugSay( "Trying to steal from combatant." );
-							m_Mobile.UseSkill( SkillName.Vol );
-							if ( m_Mobile.Target != null )
-								m_Mobile.Target.Invoke( m_Mobile, stealc );
-						}
+                        if (cpack != null)
+                        {
+                            m_Mobile.DebugSay("Trying to steal from combatant.");
+                            m_Mobile.UseSkill(SkillName.Vol);
+                            if (m_Mobile.Target != null)
+                                m_Mobile.Target.Invoke(m_Mobile, combatant);
+                        }
+                        else
+                        {
+                            m_Mobile.DebugSay("I am going to flee from {0}", combatant.Name);
 
-						Item steald = cpack.FindItemByType( typeof ( MandrakeRoot ) );
-						if ( steald != null ) 
-						{
-							m_Mobile.DebugSay( "Trying to steal from combatant." );
-							m_Mobile.UseSkill( SkillName.Vol );
-							if ( m_Mobile.Target != null )
-								m_Mobile.Target.Invoke( m_Mobile, steald );
-						}
-						else if ( steala == null && stealb == null && stealc == null && steald == null )
-						{
-							m_Mobile.DebugSay( "I am going to flee from {0}", combatant.Name );
-
-							Action = ActionType.Flee;
-						}
-					}
-				}
+                            Action = ActionType.Flee;
+                        }
+                    }
+                }
 			}
 			else
 			{
 				m_Mobile.DebugSay( "I should be closer to {0}", combatant.Name );
 			}
 
-			if ( m_Mobile.Hits < m_Mobile.HitsMax * 20/100 && !m_Mobile.IsParagon )
+			if ( m_Mobile.Hits < m_Mobile.HitsMax * 20/100 )
 			{
 				// We are low on health, should we flee?
 

@@ -7,6 +7,7 @@ namespace Server.Items
 		[Constructable]
 		public Drums() : base( 0xE9C, 0x38, 0x39 )
 		{
+            GoldValue = 9;
 			Weight = 4.0;
 		}
 

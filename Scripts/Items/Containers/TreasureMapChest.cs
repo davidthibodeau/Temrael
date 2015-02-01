@@ -17,13 +17,7 @@ namespace Server.Items
 
 		private static Type[] m_Artifacts = new Type[]
 		{
-			typeof( CandelabraOfSouls ), typeof( GoldBricks ), typeof( PhillipsWoodenSteed ),
-			typeof( ArcticDeathDealer ), typeof( BlazeOfDeath ), typeof( BurglarsBandana ),
-			typeof( CavortingClub ), typeof( DreadPirateHat ),
-			typeof( EnchantedTitanLegBone ), typeof( GwennosHarp ), typeof( IolosLute ),
-			typeof( LunaLance ), typeof( NightsKiss ), typeof( NoxRangersHeavyCrossbow ),
-			typeof( PolarBearMask ), typeof( VioletCourage ), typeof( HeartOfTheLion ),
-			typeof( ColdBlood ), typeof( AlchemistsBauble )
+			
 		};
 
 		private int m_Level;
@@ -34,16 +28,16 @@ namespace Server.Items
 
 		private List<Mobile> m_Guardians;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Level{ get{ return m_Level; } set{ m_Level = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile Owner{ get{ return m_Owner; } set{ m_Owner = value; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public DateTime DeleteTime{ get{ return m_DeleteTime; } }
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Temporary{ get{ return m_Temporary; } set{ m_Temporary = value; } }
 
 		public List<Mobile> Guardians { get { return m_Guardians; } }
@@ -208,8 +202,6 @@ namespace Server.Items
 							int min, max;
 
 							GetRandomAOSStats( out attributeCount, out min, out max );
-
-							BaseRunicTool.ApplyAttributesTo( weapon, attributeCount, min, max );
 						}
 						else
 						{
@@ -230,13 +222,6 @@ namespace Server.Items
 							int min, max;
 
 							GetRandomAOSStats( out attributeCount, out min, out max );
-
-							BaseRunicTool.ApplyAttributesTo( armor, attributeCount, min, max );
-						}
-						else
-						{
-							armor.ProtectionLevel = (ArmorProtectionLevel)Utility.Random( 6 );
-							armor.Durability = (ArmorDurabilityLevel)Utility.Random( 6 );
 						}
 
 						cont.DropItem( item );
@@ -251,8 +236,6 @@ namespace Server.Items
 							int min, max;
 
 							GetRandomAOSStats( out attributeCount, out min, out  max );
-
-							BaseRunicTool.ApplyAttributesTo( hat, attributeCount, min, max );
 						}
 
 						cont.DropItem( item );
@@ -263,8 +246,6 @@ namespace Server.Items
 						int min, max;
 
 						GetRandomAOSStats( out attributeCount, out min, out max );
-
-						BaseRunicTool.ApplyAttributesTo( (BaseJewel)item, attributeCount, min, max );
 
 						cont.DropItem( item );
 					}
@@ -305,7 +286,7 @@ namespace Server.Items
 			if ( !this.Locked )
 				return false;
 
-			if ( this.Level == 0 && from.AccessLevel < AccessLevel.GameMaster )
+			if ( this.Level == 0 && from.AccessLevel < AccessLevel.Batisseur )
 			{
 				foreach ( Mobile m in this.Guardians )
 				{
@@ -332,7 +313,7 @@ namespace Server.Items
 			if ( m_Temporary )
 				return false;
 
-			if ( m.AccessLevel >= AccessLevel.GameMaster || m_Owner == null || m == m_Owner )
+			if ( m.AccessLevel >= AccessLevel.Batisseur || m_Owner == null || m == m_Owner )
 				return true;
 
 			Party p = Party.Get( m_Owner );
@@ -344,11 +325,6 @@ namespace Server.Items
 
 			if ( map != null && (map.Rules & MapRules.HarmfulRestrictions) == 0 )
 			{
-				if ( criminalAction )
-					m.CriminalAction( true );
-				else
-					m.SendLocalizedMessage( 1010630 ); // Taking someone else's treasure is a criminal offense!
-
 				return true;
 			}
 
@@ -390,7 +366,7 @@ namespace Server.Items
 
 		public override bool CheckHold( Mobile m, Item item, bool message, bool checkItems, int plusItems, int plusWeight )
 		{
-			if ( m.AccessLevel < AccessLevel.GameMaster )
+			if ( m.AccessLevel < AccessLevel.Batisseur )
 			{
 				m.SendLocalizedMessage( 1048122, "", 0x8A5 ); // The chest refuses to be filled with treasure again.
 				return false;

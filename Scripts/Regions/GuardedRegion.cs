@@ -24,9 +24,9 @@ namespace Server.Regions
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "CheckGuarded", AccessLevel.GameMaster, new CommandEventHandler( CheckGuarded_OnCommand ) );
-			CommandSystem.Register( "SetGuarded", AccessLevel.Administrator, new CommandEventHandler( SetGuarded_OnCommand ) );
-			CommandSystem.Register( "ToggleGuarded", AccessLevel.Administrator, new CommandEventHandler( ToggleGuarded_OnCommand ) );
+			CommandSystem.Register( "CheckGuarded", AccessLevel.Batisseur, new CommandEventHandler( CheckGuarded_OnCommand ) );
+			CommandSystem.Register( "SetGuarded", AccessLevel.Coordinateur, new CommandEventHandler( SetGuarded_OnCommand ) );
+			CommandSystem.Register( "ToggleGuarded", AccessLevel.Coordinateur, new CommandEventHandler( ToggleGuarded_OnCommand ) );
 		}
 
 		[Usage( "CheckGuarded" )]
@@ -106,10 +106,10 @@ namespace Server.Regions
 
 		public virtual bool CheckVendorAccess( BaseVendor vendor, Mobile from )
 		{
-			if ( from.AccessLevel >= AccessLevel.GameMaster || IsDisabled() )
+			if ( from.AccessLevel >= AccessLevel.Batisseur || IsDisabled() )
 				return true;
 
-			return ( from.Kills < 5 );
+            return true;
 		}
 
 		public virtual Type DefaultGuardType
@@ -204,9 +204,6 @@ namespace Server.Regions
 		{
 			if ( IsDisabled() )
 				return;
-
-			if ( !AllowReds && m.Kills >= 5 )
-				CheckGuardCandidate( m );
 		}
 
 		public override void OnExit( Mobile m )
@@ -245,14 +242,6 @@ namespace Server.Regions
 
 			if ( helper != helped && (noto == Notoriety.Criminal || noto == Notoriety.Murderer) )
 				CheckGuardCandidate( helper );
-		}
-
-		public override void OnCriminalAction( Mobile m, bool message )
-		{
-			base.OnCriminalAction( m, message );
-
-			if ( !IsDisabled() )
-				CheckGuardCandidate( m );
 		}
 
 		private Dictionary<Mobile, GuardTimer> m_GuardCandidates = new Dictionary<Mobile, GuardTimer>();
@@ -316,31 +305,31 @@ namespace Server.Regions
 
 		public void CallGuards( Point3D p )
 		{
-			if ( IsDisabled() )
-				return;
+            //if ( IsDisabled() )
+            //    return;
 
-			IPooledEnumerable eable = Map.GetMobilesInRange( p, 14 );
+            //IPooledEnumerable eable = Map.GePlayerMobilesInRange( p, 14 );
 
-			foreach ( Mobile m in eable )
-			{
-				if ( IsGuardCandidate( m ) && ( ( !AllowReds && m.Kills >= 5 && m.Region.IsPartOf( this ) ) || m_GuardCandidates.ContainsKey( m ) ) )
-				{
-					GuardTimer timer = null;
-					m_GuardCandidates.TryGetValue( m, out timer );
+            //foreach ( Mobile m in eable )
+            //{
+            //    if ( IsGuardCandidate( m ) && ( ( !AllowReds && m.Kills >= 5 && m.Region.IsPartOf( this ) ) || m_GuardCandidates.ContainsKey( m ) ) )
+            //    {
+            //        GuardTimer timer = null;
+            //        m_GuardCandidates.TryGetValue( m, out timer );
 
-					if ( timer != null )
-					{
-						timer.Stop();
-						m_GuardCandidates.Remove( m );
-					}
+            //        if ( timer != null )
+            //        {
+            //            timer.Stop();
+            //            m_GuardCandidates.Remove( m );
+            //        }
 
-					MakeGuard( m );
-					m.SendLocalizedMessage( 502276 ); // Guards can no longer be called on you.
-					break;
-				}
-			}
+            //        MakeGuard( m );
+            //        m.SendLocalizedMessage( 502276 ); // Guards can no longer be called on you.
+            //        break;
+            //    }
+            //}
 
-			eable.Free();
+            //eable.Free();
 		}
 
 		public bool IsGuardCandidate( Mobile m )
@@ -348,7 +337,7 @@ namespace Server.Regions
 			if ( m is BaseGuard || !m.Alive || m.AccessLevel > AccessLevel.Player || m.Blessed || IsDisabled() )
 				return false;
 
-			return (!AllowReds && m.Kills >= 5) || m.Criminal;
+            return false;
 		}
 
 		private class GuardTimer : Timer

@@ -1,5 +1,4 @@
 using System;
-using Server.Engines.VeteranRewards;
 
 namespace Server.Items
 {
@@ -40,21 +39,21 @@ namespace Server.Items
 		#region Arcane Impl
 		private int m_MaxArcaneCharges, m_CurArcaneCharges;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int MaxArcaneCharges
 		{
 			get{ return m_MaxArcaneCharges; }
 			set{ m_MaxArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int CurArcaneCharges
 		{
 			get{ return m_CurArcaneCharges; }
 			set{ m_CurArcaneCharges = value; InvalidateProperties(); Update(); }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsArcane
 		{
 			get{ return ( m_MaxArcaneCharges > 0 && m_CurArcaneCharges >= 0 ); }
@@ -159,19 +158,19 @@ namespace Server.Items
 	}
 
 	[Flipable]
-	public class RewardCloak : BaseCloak, IRewardItem
+	public class RewardCloak : BaseCloak
 	{
 		private int m_LabelNumber;
 		private bool m_IsRewardItem;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool IsRewardItem
 		{
 			get{ return m_IsRewardItem; }
 			set{ m_IsRewardItem = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Number
 		{
 			get{ return m_LabelNumber; }
@@ -189,9 +188,7 @@ namespace Server.Items
 			}
 		}
 
-		public override int BasePhysicalResistance{ get{ return 3; } }
-
-		public override void OnAdded( object parent )
+		public override void OnAdded(IEntity parent)
 		{
 			base.OnAdded( parent );
 
@@ -199,7 +196,7 @@ namespace Server.Items
 				((Mobile)parent).VirtualArmorMod += 2;
 		}
 
-		public override void OnRemoved(object parent)
+		public override void OnRemoved(IEntity parent)
 		{
 			base.OnRemoved( parent );
 
@@ -216,9 +213,6 @@ namespace Server.Items
 		public override void GetProperties( ObjectPropertyList list )
 		{
 			base.GetProperties( list );
-
-			if ( Core.ML && m_IsRewardItem )
-				list.Add( RewardSystem.GetRewardYearLabel( this, new object[]{ Hue, m_LabelNumber } ) ); // X Year Veteran Reward
 		}
 
 		public override bool CanEquip( Mobile m )
@@ -226,7 +220,7 @@ namespace Server.Items
 			if ( !base.CanEquip( m ) )
 				return false;
 
-			return !m_IsRewardItem || Engines.VeteranRewards.RewardSystem.CheckIsUsableBy( m, this, new object[]{ Hue, m_LabelNumber } );
+            return true;
 		}
 
 		[Constructable]

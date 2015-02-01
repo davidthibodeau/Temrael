@@ -18,6 +18,7 @@ namespace Server.Items
 		[Constructable]
 		public BoltOfCloth( int amount ) : base( 0xF95 )
 		{
+            GoldValue = 51;
 			Stackable = true;
 			Weight = 5.0;
 			Amount = amount;
@@ -39,7 +40,7 @@ namespace Server.Items
             }
             else
             {
-                from.SendMessage("Vous ne pouvez pas teindre plus d'un rouleau à la fois.");
+                from.SendMessage("Vous ne pouvez pas teindre plus d'un rouleau Ã  la fois.");
                 return false;
             }
 		}*/

@@ -31,14 +31,14 @@ namespace Server.Items
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public int Price
 		{
 			get{ return m_Price; }
 			set{ m_Price = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool LandlordRenew
 		{
 			get{ return m_LandlordRenew; }

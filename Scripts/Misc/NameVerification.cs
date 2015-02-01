@@ -15,7 +15,7 @@ namespace Server.Misc
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "ValidateName", AccessLevel.Administrator, new CommandEventHandler( ValidateName_OnCommand ) );
+			CommandSystem.Register( "ValidateName", AccessLevel.Coordinateur, new CommandEventHandler( ValidateName_OnCommand ) );
 		}
 
 		[Usage( "ValidateName" )]

@@ -11,21 +11,21 @@ namespace Server.Items
 
 		private Timer m_Timer;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double MinSkill
 		{
 			get{ return m_MinSkill; }
 			set{ m_MinSkill = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public double MaxSkill
 		{
 			get{ return m_MaxSkill; }
 			set{ m_MaxSkill = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool Swinging
 		{
 			get{ return ( m_Timer != null ); } 

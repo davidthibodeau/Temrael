@@ -23,14 +23,14 @@ namespace Server.Mobiles
 
         public bool IsFull { get { return (m_Plants != null && m_Plants.Count >= m_Count); } }
         
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TileType TileType
         {
             get { return m_TileType; }
             set { m_TileType = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public PlantType[] PlantName
         {
             get { return m_Plant; }
@@ -40,14 +40,14 @@ namespace Server.Mobiles
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int Count
         {
             get { return m_Count; }
             set { m_Count = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public bool Running
         {
             get { return m_Running; }
@@ -60,28 +60,28 @@ namespace Server.Mobiles
             }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public int HomeRange
         {
             get { return m_HomeRange; }
             set { m_HomeRange = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TimeSpan MinDelay
         {
             get { return m_MinDelay; }
             set { m_MinDelay = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TimeSpan MaxDelay
         {
             get { return m_MaxDelay; }
             set { m_MaxDelay = value; }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
+        [CommandProperty(AccessLevel.Batisseur)]
         public TimeSpan NextSpawn
         {
             get
@@ -127,7 +127,7 @@ namespace Server.Mobiles
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from.AccessLevel < AccessLevel.GameMaster)
+            if (from.AccessLevel < AccessLevel.Batisseur)
                 return;
 
             PlantSpawnerGump g = new PlantSpawnerGump(this);

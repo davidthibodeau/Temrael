@@ -4,11 +4,23 @@ using Server.Items;
 namespace Server.Items
 {
 	[FlipableAttribute( 0x1bdd, 0x1be0 )]
-	public abstract class BaseLog : Item, ICommodity, IAxe
+    public abstract class BaseLog : Item, ICommodity, IAxe, IExtractable
 	{
+        public string getName
+        {
+            get{ return CraftResources.GetName(m_Resource); }
+        }
+        public int getHue
+        {
+            get { return CraftResources.GetHue(m_Resource); }
+        }
+        public double getSkillReq
+        {
+            get { return CraftResources.GetSkill(m_Resource); }
+        }
 		private CraftResource m_Resource;
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public CraftResource Resource
 		{
 			get { return m_Resource; }
@@ -46,13 +58,13 @@ namespace Server.Items
 
         public static string[] m_Material = new string[]
             {
-		        "Érable",
+		        "Ã‰rable",
 		        "Pin",
-                "Cyprès",
-                "Cèdre",
+                "CyprÃ¨s",
+                "CÃ¨dre",
                 "Saule",
-                "Chêne",
-                "Ébène",
+                "ChÃªne",
+                "Ã‰bÃ¨ne",
                 "Acajou",
             };
 
@@ -74,7 +86,7 @@ namespace Server.Items
 
         public override void AddNameProperty(ObjectPropertyList list)
         {
-            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "Bûche(s) [", GetMaterial(), "]", Amount);
+            list.Add("<h3><basefont color=#FFFFFF>{3} {0}{1}{2}</h3></basefont>", "BÃ»che(s) [", GetMaterial(), "]", Amount);
         }
 
 		public override void GetProperties( ObjectPropertyList list )
@@ -122,6 +134,8 @@ namespace Server.Items
 
 			if ( version == 0 )
 				m_Resource = CraftResource.RegularWood;
+
+            Hue = CraftResources.GetHue(m_Resource);
 		}
 
 		public virtual bool TryCreateBoards( Mobile from, double skill, Item item )

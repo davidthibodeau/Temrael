@@ -27,7 +27,6 @@ namespace Server.Items
 			DropItem( new BoltOfCloth( 20 ) );
 			DropItem( new DyeTub() );
 			DropItem( new DyeTub() );
-			DropItem( new BlackDyeTub() );
 			DropItem( new Dyes() );
 		}
 		

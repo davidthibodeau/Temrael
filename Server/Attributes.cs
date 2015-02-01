@@ -5,7 +5,7 @@
  *   copyright            : (C) The RunUO Software Team
  *   email                : info@runuo.com
  *
- *   $Id: Attributes.cs 274 2007-12-17 20:41:34Z mark $
+ *   $Id$
  *
  ***************************************************************************/
 

@@ -82,11 +82,6 @@ namespace Server.Items
 				// Doom - Artifact rarity 9
 				new StealableEntry( Map.Malas, new Point3D( 433,  11, -1 ), 18432, 27648, typeof( SaddleArtifact ) ),
 				new StealableEntry( Map.Malas, new Point3D( 403,  31,  4 ), 18432, 27648, typeof( LeatherTunicArtifact ) ),
-				// Doom - Artifact rarity 10
-				new StealableEntry( Map.Malas, new Point3D( 257,  70, -2 ), 36864, 55296, typeof( ZyronicClaw ) ),
-				new StealableEntry( Map.Malas, new Point3D( 354, 176,  7 ), 36864, 55296, typeof( TitansHammer ) ),
-				new StealableEntry( Map.Malas, new Point3D( 369, 389, -1 ), 36864, 55296, typeof( BladeOfTheRighteous ) ),
-				new StealableEntry( Map.Malas, new Point3D( 467,  92,  4 ), 36864, 55296, typeof( InquisitorsResolution ) ),
 				// Doom - Artifact rarity 12
 				new StealableEntry( Map.Malas, new Point3D( 487, 364, -1 ), 147456, 221184, typeof( RuinedPaintingArtifact ) ),
 
@@ -193,8 +188,8 @@ namespace Server.Items
 
 		public static void Initialize()
 		{
-			CommandSystem.Register( "GenStealArties", AccessLevel.Administrator, new CommandEventHandler( GenStealArties_OnCommand ) );
-			CommandSystem.Register( "RemoveStealArties", AccessLevel.Administrator, new CommandEventHandler( RemoveStealArties_OnCommand ) );
+			CommandSystem.Register( "GenStealArties", AccessLevel.Coordinateur, new CommandEventHandler( GenStealArties_OnCommand ) );
+			CommandSystem.Register( "RemoveStealArties", AccessLevel.Coordinateur, new CommandEventHandler( RemoveStealArties_OnCommand ) );
 		}
 
 		[Usage( "GenStealArties" )]

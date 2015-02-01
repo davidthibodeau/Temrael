@@ -14,7 +14,7 @@ namespace Server.Misc
 		public static void Initialize()
 		{
 			new AutoSave().Start();
-			CommandSystem.Register( "SetSaves", AccessLevel.Administrator, new CommandEventHandler( SetSaves_OnCommand ) );
+			CommandSystem.Register( "SetSaves", AccessLevel.Coordinateur, new CommandEventHandler( SetSaves_OnCommand ) );
 		}
 
 		private static bool m_SavesEnabled = true;
@@ -47,7 +47,7 @@ namespace Server.Misc
 
 		protected override void OnTick()
 		{
-			if ( !m_SavesEnabled || AutoRestart.Restarting )
+			if ( !m_SavesEnabled || AutoRestart.Restarting || Core.Balancing)
 				return;
 
 			if ( m_Warning == TimeSpan.Zero )

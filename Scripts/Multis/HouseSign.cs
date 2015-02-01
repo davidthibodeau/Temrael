@@ -40,14 +40,14 @@ namespace Server.Multis
 			}
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public bool RestrictDecay
 		{
 			get{ return ( m_Owner != null && m_Owner.RestrictDecay ); }
 			set{ if ( m_Owner != null ) m_Owner.RestrictDecay = value; }
 		}
 
-		[CommandProperty( AccessLevel.GameMaster )]
+		[CommandProperty( AccessLevel.Batisseur )]
 		public Mobile OriginalOwner
 		{
 			get
@@ -125,7 +125,7 @@ namespace Server.Multis
 		{
 			if ( m_Owner != null )
 			{
-				if ( m_Owner.IsFriend( m ) && m.AccessLevel < AccessLevel.GameMaster )
+				if ( m_Owner.IsFriend( m ) && m.AccessLevel < AccessLevel.Batisseur )
 				{
 					#region Mondain's Legacy
 					if ( ( Core.ML && m_Owner.IsOwner( m ) ) || !Core.ML )
@@ -168,7 +168,7 @@ namespace Server.Multis
 			if ( m_Owner == null )
 				return;
 
-			if ( m.AccessLevel < AccessLevel.GameMaster && m_Owner.Owner == null && m_Owner.DecayLevel != DecayLevel.DemolitionPending )
+			if ( m.AccessLevel < AccessLevel.Batisseur && m_Owner.Owner == null && m_Owner.DecayLevel != DecayLevel.DemolitionPending )
 			{
 				bool canClaim = false;
 

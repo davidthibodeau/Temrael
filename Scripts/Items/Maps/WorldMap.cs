@@ -15,7 +15,7 @@ namespace Server.Items
 		{
 			// Unlike the others, world map is not based on crafted location
 
-			double skillValue = from.Skills[SkillName.ConnaissanceHistoire].Value;
+			double skillValue = from.Skills[SkillName.Langues].Value;
 			int x20 = (int)(skillValue * 20);
 			int size = 25 + (int)(skillValue * 6.6);
 

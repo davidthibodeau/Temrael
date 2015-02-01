@@ -61,7 +61,7 @@ namespace Server.Items
 			attacker.SendLocalizedMessage( 1063348 ); // You launch two shots at once!
 			defender.SendLocalizedMessage( 1063349 ); // You're attacked with a barrage of shots!
 
-			defender.FixedParticles( 0x37B9, 1, 19, 0x251D, EffectLayer.Waist );
+			Effects.SendTargetParticles(defender, 0x37B9, 1, 19, 0x251D, EffectLayer.Waist );
 
 			attacker.Weapon.OnSwing( attacker, defender );
 		}

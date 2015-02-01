@@ -12,6 +12,7 @@ namespace Server.Items
 		[Constructable]
 		public Saw() : base( 0x1034 )
 		{
+            GoldValue = 9;
 			Weight = 2.0;
             Layer = Layer.OneHanded;
 		}
@@ -19,6 +20,7 @@ namespace Server.Items
 		[Constructable]
 		public Saw( int uses ) : base( uses, 0x1034 )
 		{
+            GoldValue = 9;
 			Weight = 2.0;
             Layer = Layer.OneHanded;
 		}
