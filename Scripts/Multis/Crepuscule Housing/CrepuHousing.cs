@@ -186,6 +186,9 @@ namespace Server.Items
                 m_Owned = true;
                 from.SendMessage("Sous quel nom voulez-vous l'enregistrer ?");
                 from.Prompt = new OwnerNamePrompt(this);
+
+                GenerateKey.GenerateNewKey(from, Porte1, 1);
+                GenerateKey.GenerateNewKey(from, Porte2, 1);
             }
         }
 
@@ -234,7 +237,7 @@ namespace Server.Items
 
                 foreach (Item i in list)
                 {
-                    if (i != null)
+                    if (i != null && !(i is BaseDoor))
                     {
                         toMove.Add(i);
                     }
@@ -244,6 +247,7 @@ namespace Server.Items
                 for (int i = 0; i < toMove.Count; ++i)
                 {
                     b.DropItem(toMove[i]);
+                    b.Movable = true;
                 }
 
                 // Seulement ouvrable par le owner, qui obtient une nouvelle clef à chaque fois.
