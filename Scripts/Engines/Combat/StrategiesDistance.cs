@@ -92,6 +92,11 @@ namespace Server.Engines.Combat
         public readonly static CombatStrategy Strategy = new StrategyArc();
         
         public override int BaseRange { get { return 10; } }
+
+        protected override double ComputerDegats(Mobile atk, double basedmg, bool skillup)
+        {
+            return base.ComputerDegats(atk, basedmg, skillup) - basedmg * 0.15;
+        }
     }
 
     public class StrategyArbalete : StrategyDistance
@@ -105,5 +110,15 @@ namespace Server.Engines.Combat
         public readonly static CombatStrategy Strategy = new StrategyArbalete();
         
         public override int BaseRange { get { return 8; } }
+
+        public override int ProchaineAttaque(Mobile atk)
+        {
+            return (int)(1.3 * base.ProchaineAttaque(atk));
+        }
+
+        public override double DegatsReduits(Mobile atk, Mobile def, double dmg)
+        {
+            return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg, 0.2);
+        }
     }
 }

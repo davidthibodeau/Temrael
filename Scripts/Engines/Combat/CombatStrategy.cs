@@ -117,7 +117,7 @@ namespace Server.Engines.Combat
 
         protected abstract void CheckEquitationAttaque(Mobile atk);
 
-        public void CheckEquitation(Mobile m, EquitationType type)
+        public virtual void CheckEquitation(Mobile m, EquitationType type)
         {
             Equitation.Equitation.CheckEquitation(m, type);
         }
@@ -244,7 +244,7 @@ namespace Server.Engines.Combat
         protected abstract void AppliquerPoison(Mobile atk, Mobile def);
 
         #region Coup Critique
-        public int CritiqueManaCost(double degats)
+        public virtual int CritiqueManaCost(double degats)
         {
             return (int)(degats * 0.75);
         }
@@ -273,7 +273,7 @@ namespace Server.Engines.Combat
         /// </summary>
         /// <param name="atk">Le personnage portant l'attaque.</param>
         /// <returns>Le délai en millisecondes.</returns>
-        public int ProchaineAttaque(Mobile atk)
+        public virtual int ProchaineAttaque(Mobile atk)
         {
             int vitesse = (int)(Vitesse(atk) * 100);
 

@@ -139,8 +139,13 @@ namespace Server.Engines.Combat
         public override double CritiqueChance(Mobile atk)
         {
             double chance = base.CritiqueChance(atk);
-            double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.05, 5);
+            double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.25, 5);
             return IncValueDimReturn(chance, incChance);
+        }
+
+        public override double CritiqueDegats(Mobile atk, double dmg)
+        {
+            return base.CritiqueDegats(atk, dmg) + (atk.Skills[SkillName.CoupCritique].Value / 100 * 0.5);
         }
     }
 
@@ -170,7 +175,7 @@ namespace Server.Engines.Combat
 
         public override double DegatsReduits(Mobile atk, Mobile def, double dmg)
         {
-            double contpen = GetBonus(atk.Skills[SkillName.ArmeContondante].Value, 0.05, 5);
+            double contpen = GetBonus(atk.Skills[SkillName.ArmeContondante].Value, 0.3, 10);
             return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg, contpen);
         }
     }
@@ -190,6 +195,11 @@ namespace Server.Engines.Combat
             if (atk.Mounted)
                 return base.BaseRange;
             return BaseRange;
+        }
+
+        public override void CheckEquitation(Mobile m, EquitationType type)
+        {
+            Equitation.Equitation.CheckEquitation(m, type, 20);
         }
     }
 
