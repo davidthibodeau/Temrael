@@ -45,7 +45,6 @@ namespace Server.Items
 		private int m_PoisonCharges;
 		private int m_Hits;
 		private int m_MaxHits;
-		private SkillMod m_SkillMod, m_MageMod;
 		private CraftResource m_Resource;
 		private bool m_PlayerConstructed;
 
@@ -345,22 +344,6 @@ namespace Server.Items
 				if ( m_AccuracyLevel != value )
 				{
 					m_AccuracyLevel = value;
-
-					if ( UseSkillMod )
-					{
-						if ( m_AccuracyLevel == WeaponAccuracyLevel.Regular )
-						{
-							if ( m_SkillMod != null )
-								m_SkillMod.Remove();
-
-							m_SkillMod = null;
-						}
-						else if ( m_SkillMod != null )
-						{
-							m_SkillMod.Value = (int)m_AccuracyLevel * 5;
-						}
-					}
-
 					InvalidateProperties();
 				}
 			}
@@ -470,11 +453,6 @@ namespace Server.Items
 			return bonus;
 		}
 
-		public int GetLowerStatReq()
-		{
-            return 0;
-		}
-
 		public static void BlockEquip( Mobile m, TimeSpan duration )
 		{
 			if ( m.BeginAction( typeof( BaseWeapon ) ) )
@@ -533,8 +511,6 @@ namespace Server.Items
 			}
 		}
 
-		public virtual bool UseSkillMod{ get{ return !Core.AOS; } }
-
 		public override bool OnEquip( Mobile from )
 		{
             from.NextCombatTime = Core.TickCount + Core.GetTicks(GetDelay(from));
@@ -570,18 +546,6 @@ namespace Server.Items
 
                 if (weapon != null)
                     m.NextCombatTime = Core.TickCount + Core.GetTicks(weapon.GetDelay(m));
-
-				if ( UseSkillMod && m_SkillMod != null )
-				{
-					m_SkillMod.Remove();
-					m_SkillMod = null;
-				}
-
-				if ( m_MageMod != null )
-				{
-					m_MageMod.Remove();
-					m_MageMod = null;
-				}
 
 				m.CheckStatTimers();
 
@@ -651,57 +615,6 @@ namespace Server.Items
 			}
             attacker.RevealingAction();
             return Strategy.ProchaineAttaque(attacker);
-		}
-
-		public virtual int GetPackInstinctBonus( Mobile attacker, Mobile defender )
-		{
-			if ( attacker.Player || defender.Player )
-				return 0;
-
-			BaseCreature bc = attacker as BaseCreature;
-
-			if ( bc == null || bc.PackInstinct == PackInstinct.None || (!bc.Controlled && !bc.Summoned) )
-				return 0;
-
-			Mobile master = bc.ControlMaster;
-
-			if ( master == null )
-				master = bc.SummonMaster;
-
-			if ( master == null )
-				return 0;
-
-			int inPack = 1;
-
-			foreach ( Mobile m in defender.GetMobilesInRange( 1 ) )
-			{
-				if ( m != attacker && m is BaseCreature )
-				{
-					BaseCreature tc = (BaseCreature)m;
-
-					if ( (tc.PackInstinct & bc.PackInstinct) == 0 || (!tc.Controlled && !tc.Summoned) )
-						continue;
-
-					Mobile theirMaster = tc.ControlMaster;
-
-					if ( theirMaster == null )
-						theirMaster = tc.SummonMaster;
-
-					if ( master == theirMaster && tc.Combatant == defender )
-						++inPack;
-				}
-			}
-
-			if ( inPack >= 5 )
-				return 100;
-			else if ( inPack >= 4 )
-				return 75;
-			else if ( inPack >= 3 )
-				return 50;
-			else if ( inPack >= 2 )
-				return 25;
-
-			return 0;
 		}
 
 		private static bool m_InDoubleStrike;
@@ -779,47 +692,6 @@ namespace Server.Items
 			//if ( move != null )
 			//	move.OnMiss( attacker, defender );
 
-		}
-
-		public virtual int GetHitChanceBonus()
-		{
-			if ( !Core.AOS )
-				return 0;
-
-			int bonus = 0;
-
-			switch ( m_AccuracyLevel )
-			{
-				case WeaponAccuracyLevel.Accurate:		bonus += 02; break;
-				case WeaponAccuracyLevel.Surpassingly:	bonus += 04; break;
-				case WeaponAccuracyLevel.Eminently:		bonus += 06; break;
-				case WeaponAccuracyLevel.Exceedingly:	bonus += 08; break;
-				case WeaponAccuracyLevel.Supremely:		bonus += 10; break;
-			}
-
-			return bonus;
-		}
-
-		public virtual int GetDamageBonus()
-		{
-            int bonus = 0;
-
-			switch ( m_Quality )
-			{
-				case WeaponQuality.Low:			bonus -= 20; break;
-				case WeaponQuality.Exceptional:	bonus += 20; break;
-			}
-
-			switch ( m_DamageLevel )
-			{
-				case WeaponDamageLevel.Ruin:	bonus += 15; break;
-				case WeaponDamageLevel.Might:	bonus += 20; break;
-				case WeaponDamageLevel.Force:	bonus += 25; break;
-				case WeaponDamageLevel.Power:	bonus += 30; break;
-				case WeaponDamageLevel.Vanq:	bonus += 35; break;
-			}
-
-			return bonus;
 		}
 
 		public virtual void GetStatusDamage( Mobile from, out int min, out int max )
@@ -1409,9 +1281,6 @@ namespace Server.Items
                     list.Add(1061171, couleur); // two-handed weapon
                 else
                     list.Add(1061824, couleur); // one-handed weapon
-
-                if ((prop = GetLowerStatReq()) != 0)
-                    list.Add(1060435, "{0}\t{1}", couleur, prop.ToString()); // lower requirements ~1_val~%
 
                 if ((prop = GetDurabilityBonus()) > 0)
                     list.Add(1060410, "{0}\t{1}", couleur, prop.ToString()); // durability ~1_val~%

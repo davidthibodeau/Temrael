@@ -453,6 +453,15 @@ namespace Server
 		{
 		}
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public virtual int Vitesse
+        {
+            get
+            {
+                return Dex + Stam * Dex / StamMax;
+            }
+        }
+
 		[CommandProperty( AccessLevel.Counselor )]
         public virtual double PhysicalResistance
 		{
