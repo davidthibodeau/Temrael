@@ -608,6 +608,42 @@ namespace Server.Misc.Balancing
 
     #region POUR LES TESTS RELATIFS AUX TYPES D'ARMES.
 
+    public class MobilePlaqueEpeeCrit : TestMobile
+    {
+        public MobilePlaqueEpeeCrit()
+        {
+            Name = "2H Plaque Epee Crit";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 100;
+
+            SetSkill(SkillName.ArmeDistance, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.CoupCritique, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Flamberge();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaqueEpeeCrit(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
     public class MobilePlaqueEpee : TestMobile
     {
         public MobilePlaqueEpee()
@@ -616,9 +652,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -651,9 +687,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.Epee, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -686,9 +722,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.Hache, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -721,9 +757,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.Hache, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -756,9 +792,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.ArmeContondante, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -791,9 +827,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.ArmeContondante, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -818,6 +854,42 @@ namespace Server.Misc.Balancing
         }
     }
 
+    public class MobilePlaquePerforantCrit : TestMobile
+    {
+        public MobilePlaquePerforantCrit()
+        {
+            Name = "2H Plaque Perforant Crit";
+
+            RawStr = 100;
+            RawDex = 100;
+            RawInt = 100;
+
+            SetSkill(SkillName.ArmeDistance, 100.0);
+            SetSkill(SkillName.Tactiques, 100.0);
+            SetSkill(SkillName.Anatomie, 100.0);
+            SetSkill(SkillName.CoupCritique, 100.0);
+
+            ChooseArmor(ArmorClass.Plaque, CraftResource.Argent, ArmorQuality.Exceptional);
+
+            BaseWeapon weapon = new Katara();
+            weapon.Quality = WeaponQuality.Exceptional;
+            weapon.Resource = CraftResource.Argent;
+            AddItem(weapon);
+        }
+
+        public MobilePlaquePerforantCrit(Serial serial) : base(serial) { }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+    }
+
     public class MobilePlaquePerforant : TestMobile
     {
         public MobilePlaquePerforant()
@@ -826,9 +898,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.ArmePerforante, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -861,9 +933,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.ArmePerforante, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -896,9 +968,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.ArmeHaste, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -931,9 +1003,9 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
-            SetSkill(SkillName.ArmeHaste, 100.0);
+            SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
             SetSkill(SkillName.Anatomie, 100.0);
 
@@ -966,7 +1038,7 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
             SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
@@ -1004,7 +1076,7 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
             SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
@@ -1042,7 +1114,7 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
             SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);
@@ -1080,7 +1152,7 @@ namespace Server.Misc.Balancing
 
             RawStr = 100;
             RawDex = 100;
-            RawInt = 25;
+            RawInt = 100;
 
             SetSkill(SkillName.ArmeDistance, 100.0);
             SetSkill(SkillName.Tactiques, 100.0);

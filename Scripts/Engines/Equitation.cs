@@ -40,6 +40,11 @@ namespace Server.Engines.Equitation
 
         static public bool CheckEquitation(Mobile m, EquitationType type)
         {
+            return CheckEquitation(m, type, 0);
+        }
+
+        static public bool CheckEquitation(Mobile m, EquitationType type, double malus)
+        {
             if (m.AccessLevel >= AccessLevel.Batisseur)
                 return true;
 
@@ -67,6 +72,8 @@ namespace Server.Engines.Equitation
                 case EquitationType.Cast: chance = m_CastingTable[equitation]; break;
                 case EquitationType.Ranged: chance = m_RangedAttackTable[equitation]; break;
             }
+
+            chance += malus;
 
             // Si le personnage rate son jet.
             if (chance >= Utility.RandomDouble())
@@ -97,7 +104,7 @@ namespace Server.Engines.Equitation
             mount.Animate(5, 5, 1, true, false, 0);
             m.Animate(22, 5, 1, true, false, 0);
 
-            m.Damage(Utility.RandomMinMax(2, 6));
+            m.Damage(( m.HitsMax * 20 / 100 ));
 
             m.BeginAction(typeof(BaseMount));
             m.EndAction(typeof(BaseMount));

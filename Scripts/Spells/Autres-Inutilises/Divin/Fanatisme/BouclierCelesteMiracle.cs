@@ -33,7 +33,7 @@ namespace Server.Spells
 
         public void Target(Mobile m)
         {
-            if (Caster.MeleeDamageAbsorb > 0)
+            /*if (Caster.MeleeDamageAbsorb > 0)
             {
                 Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
@@ -65,7 +65,7 @@ namespace Server.Spells
                     Caster.SendLocalizedMessage(1005385); // The spell will not adhere to you at this time.
                 }
             }
-
+            */
             FinishSequence();
         }
 

@@ -72,12 +72,11 @@ namespace Server.Misc.Balancing
             // On utilise l'épée comme base.
             new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHache(), "1.PLAQUE vs Plaque Hache.txt");
             new Balancing(new MobilePlaqueEpee(), new MobilePlaqueMasse(), "2.PLAQUE vs Plaque Masse.txt");
-            new Balancing(new MobileCuirEpee(), new MobilePlaqueMasse(), "3.CUIR vs Plaque Masse.txt");
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaquePerforant(), "4.PLAQUE vs Plaque Perforant.txt");
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaquePerforant(), "3.PLAQUE vs Plaque Perforant.txt");
+            new Balancing(new MobilePlaqueEpeeCrit(), new MobilePlaquePerforantCrit(), "4.PLAQUE vs Plaque Perforant Crit.txt");
             new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHaste(), "5.PLAQUE vs Plaque Haste.txt");
             new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArbalete(), "6.PLAQUE vs Plaque Arbalete.txt");
-            new Balancing(new MobileCuirEpee(), new MobilePlaqueArbalete(), "7.CUIR vs Plaque Arbalete.txt");
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArc(), "8.PLAQUE vs Plaque Arc.txt");
+            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArc(), "7.PLAQUE vs Plaque Arc.txt");
 
             #endregion
         }
