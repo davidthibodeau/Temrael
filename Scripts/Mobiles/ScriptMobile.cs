@@ -109,11 +109,11 @@ namespace Server.Mobiles
             base.Damage((int)damage, from);
         }
 
-        private const double ChancePerteDura = 0.5;
+        private const double ChancePerteDura = 0.3;
 
         public void OnAttackDurabilityLoss()
         {
-            if (Utility.RandomDouble() < ((1 / 6) * ChancePerteDura) && Utility.RandomDouble() < ((double)((BaseWeapon)this.Weapon).Speed / (double)BaseWeapon.MaxWeaponSpeed))
+            if (Utility.RandomDouble() < (1.0 / 6.0) * ((double)((BaseWeapon)this.Weapon).Speed / (double)BaseWeapon.MaxWeaponSpeed * ChancePerteDura))
             {
                 ((BaseWeapon)this.Weapon).Durability -= 1;
             }
@@ -121,7 +121,7 @@ namespace Server.Mobiles
 
         public void OnDamageDurabilityLoss(Mobile atk)
         {
-            if (Utility.RandomDouble() < ((double)((BaseWeapon)this.Weapon).Speed / (double)BaseWeapon.MaxWeaponSpeed * ChancePerteDura))
+            if (Utility.RandomDouble() < ((double)((BaseWeapon)atk.Weapon).Speed / (double)BaseWeapon.MaxWeaponSpeed * ChancePerteDura))
             {
                 switch (Utility.Random(6))
                 {
