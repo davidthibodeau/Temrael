@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Engines.Craft;
 
 namespace Server.Items
 {
@@ -45,6 +46,13 @@ namespace Server.Items
             return true;
         }
 
+        public override void OnItemLifted(Mobile from, Item item)
+        {
+            base.OnItemLifted(from, item);
+
+            if(!CanModifyBooks)
+                ((BaseBook)item).Writable = true;
+        }
 
 
         public override void Serialize( GenericWriter writer )
@@ -68,13 +76,15 @@ namespace Server.Items
 		public BookCaseContainer( int itemID ) 
             :  base( itemID )
 		{
-            m_CanModifyBooks = true;
+            CanModifyBooks = false;
+            CanSeeInWhenLocked = true;
 		}
 
         public BookCaseContainer(Serial serial)
             : base(serial)
 		{
-            m_CanModifyBooks = true;
+            CanModifyBooks = false;
+            CanSeeInWhenLocked = true;
 		}
 
     }
