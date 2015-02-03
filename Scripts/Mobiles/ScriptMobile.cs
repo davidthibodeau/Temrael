@@ -50,11 +50,13 @@ namespace Server.Mobiles
             ActiverTestsDetection();
         }
 
-        protected override bool OnMove(Direction d)
+        public override bool Move(Direction d)
         {
+            bool retour = base.Move(d);
+
             ActiverTestsDetection();
 
-            return base.OnMove(d);
+            return retour;
         }
 
         public override bool CanSee(Mobile m)
