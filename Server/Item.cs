@@ -1295,13 +1295,9 @@ namespace Server
                     m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir décrire un objet.");
                     return;
                 }
-                if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
-                {
-                    m_From.Prompt = new DecrirePrompt(m_From, m_Item);
-                    m_Item.LastAlteration = DateTime.Now;
-                }
-                else
-                    m_From.SendMessage("Cet objet a deja recemment ete modifie !");
+
+                m_From.Prompt = new DecrirePrompt(m_From, m_Item);
+                m_Item.LastAlteration = DateTime.Now;
             }
         }
 
