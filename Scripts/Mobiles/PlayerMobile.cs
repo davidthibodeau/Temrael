@@ -2659,18 +2659,18 @@ namespace Server.Mobiles
                 if (AccessLevel > AccessLevel.Player)
                     return;
 
-                if (!Mounted && Skills.Infiltration.Value >= 25.0)
+                if (!Mounted)
                 {
                     if ((d & Direction.Running) != 0) // isRunning
                     {
                         if ((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasCourse) <= 0)
                         {
-                            Server.SkillHandlers.Stealth.OnUse(this);
+                            Skills.UseSkill(this, SkillName.Infiltration);
                         }
                     }
                     else if ((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasMarche) <= 0)
                     {
-                        Server.SkillHandlers.Stealth.OnUse(this);
+                        Skills.UseSkill(this, SkillName.Infiltration);
                     }
                 }
                 else

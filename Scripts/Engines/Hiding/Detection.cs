@@ -192,7 +192,7 @@ namespace Server.Engines.Hiding
             }
 
             double detection = obs.Skills.Detection.Value * 2;
-            double cachette = mobile.Skills.Infiltration.Value + mobile.Skills.Discretion.Value * (1 - Stealth.ScalMalusArmure(mobile));
+            double cachette = mobile.Skills.Infiltration.Value + mobile.Skills.Discretion.Value * (1 - Stealth.ScalMalusArmure(mobile, SkillName.Discretion));
 
             double chance = detection / cachette;
             status = det;

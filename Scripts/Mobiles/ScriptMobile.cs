@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Server.Spells;
 using Server.Items;
+using Server.SkillHandlers;
 
 namespace Server.Mobiles
 {
@@ -87,6 +88,14 @@ namespace Server.Mobiles
         public override void Damage(int amount)
         {
             Damage(amount, null);
+        }
+
+        public override void RevealingAction()
+        {
+            if(Hidden)
+                NextSkillTime = Core.TickCount + (int)(Stealth.TempsJetRate).TotalMilliseconds;
+
+            base.RevealingAction();
         }
 
         public override void Damage(int amount, Mobile from)

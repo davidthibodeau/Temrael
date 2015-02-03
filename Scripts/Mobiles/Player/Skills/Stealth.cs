@@ -11,7 +11,7 @@ namespace Server.SkillHandlers
         public const int CoutPasCourse = 5;  // Le coût d'un pas lorsque l'on courre en étant stealth.
 
         private static TimeSpan TempsJetReussit = TimeSpan.FromSeconds(0.0);
-        private static TimeSpan TempsJetRate = TimeSpan.FromSeconds(10.0);
+        public static TimeSpan TempsJetRate = TimeSpan.FromSeconds(10.0);
         private static TimeSpan TempsJetImposs = TimeSpan.FromSeconds(0.0); // Si le jet n'a pas pu être fait à cause d'une cause extérieure.
 
 		public static void Initialize()
@@ -29,13 +29,13 @@ namespace Server.SkillHandlers
         
         f(x) = -5x + 360
         */
-        public static double ScalMalusArmure( Mobile m )
+        public static double ScalMalusArmure( Mobile m, SkillName skill )
         {
             double dex = m.RawDex - m.Dex;
             double malus = 0;
             double val = 0;
 
-            val = ((-5 * (m.Skills[SkillName.Infiltration].Value - dex)) + 360) / 100;
+            val = ((-5 * (m.Skills[skill].Value - dex)) + 360) / 100;
 
             if (val > 0)
             {
@@ -65,12 +65,12 @@ namespace Server.SkillHandlers
             else
             {
 
-                if (m.CheckSkill(SkillName.Infiltration, (m.Skills[SkillName.Infiltration].Value * (1 - ScalMalusArmure(m)) / 100)))
+                if (m.CheckSkill(SkillName.Infiltration, (m.Skills[SkillName.Infiltration].Value * (1 - ScalMalusArmure(m, SkillName.Infiltration)) / 100)))
 				{
                     int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 4 steps en courrant.
 
                     // Malus de dex sur le nombre de pas possible.
-                    int val = (int)(steps * (1 - ScalMalusArmure(m)));
+                    int val = (int)(steps * (1 - ScalMalusArmure(m, SkillName.Infiltration)));
                     if (val != steps)
                     {
                         steps = val;
