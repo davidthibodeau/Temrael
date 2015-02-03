@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Server.Mobiles;
 using Server.Commands;
 using Server.Engines.Institutions;
@@ -80,7 +81,7 @@ namespace Server.Items
                                 }
                                 else
                                 {
-                                    Paie[pair.Key] = Math.Max(Paie[pair.Key], pair.Value);
+                                    Paie[pair.Key] = Math.Max(Paie[pair.Key], GetSalaire(pair.Value));
                                 }
                             }
                         }
@@ -97,8 +98,27 @@ namespace Server.Items
                             pair.Key.SendMessage("Il y a eu une erreur lors du dépot de " +  pair.Value + " pièces d'or dans votre coffre de banque. Le salaire a donc été versé directement dans votre sac pour éviter la perte.");
                             pair.Key.AddToBackpack(new Gold(pair.Value));
                         }
+
+                        PayLogging(pair.Key, pair.Value);
                     }
                 }
+            }
+        }
+
+        private static void PayLogging(Mobile m, int amount)
+        {
+            if (m != null)
+            {
+                string fileName = "./Logging/PayLogging/" + m.Name + ".txt";
+
+                if (!Directory.Exists(fileName))
+                    Directory.CreateDirectory(Path.GetDirectoryName(fileName));
+
+                using (StreamWriter sw = new StreamWriter(fileName, true))
+                    sw.WriteLine(
+                        "Joueur : " + m.Name + "\r\n" +
+                        "Date : " + DateTime.Now.ToString() + "\r\n" +
+                        "Montant : " + amount.ToString() + "\r\n\n");
             }
         }
         #endregion
