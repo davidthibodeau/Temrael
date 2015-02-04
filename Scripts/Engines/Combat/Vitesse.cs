@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Spells;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,11 +8,20 @@ namespace Server.Engines.Combat
 {
     public class Vitesse
     {
+        private Vitesse() { }
+
+        public static readonly Vitesse instance = new Vitesse();
+
         public double CalculerVitesse(Mobile atk, double baseTime)
         {
-            int vit = atk.Vitesse;
+             double s = baseTime / (1 + atk.Vitesse/ 200.0);
 
-            return baseTime / (1 + vit / 200.0);
+            // Lenteur devrait modifier la props Vitesse directement.
+            // Todo: introduire VitesseMod
+            if (LenteurSpell.Contains(atk))
+                LenteurSpell.GetOnHitEffect(atk, ref s);
+
+            return s;
         } 
     }
 }

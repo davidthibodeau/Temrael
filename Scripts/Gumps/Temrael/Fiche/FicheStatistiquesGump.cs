@@ -54,7 +54,7 @@ namespace Server.Gumps.Fiche
             list[i++] = from.MagicResistance.ToString();
 
             list[i++] = "Vitesse d'attaque:";
-            list[i++] =  ((from.Weapon as BaseWeapon).Strategy.Vitesse(from) / 10).ToString("0.00") + " secondes / attaque";
+            list[i++] =  ((from.Weapon as BaseWeapon).Strategy.CalculerVitesse(from) / 10).ToString("0.00") + " secondes / attaque";
 
             list[i++] = "Chances de Critique:";
             list[i++] = ((int)((from.Weapon as BaseWeapon).Strategy.CritiqueChance(from) * 100)).ToString() + " %";
