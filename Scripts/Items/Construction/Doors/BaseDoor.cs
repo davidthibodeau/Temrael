@@ -15,6 +15,9 @@ namespace Server.Items
             // Mode 2 - Close
             // Mode 3 - Les deux.
 
+            if (Trap_ActivateItem != null)
+                Trap_ActivateItem.IActivableOnActivate(mode, from, overflow);
+
             bool open = false;
 
             if (mode == 1 || (mode == 3 && !Open ))
