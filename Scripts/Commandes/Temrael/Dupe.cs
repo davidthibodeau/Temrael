@@ -132,6 +132,20 @@ namespace Server.Commands
                     }
                 }
 
+                if ((o is KeyRing) && RecurseContainers)
+                {
+                    KeyRing srcRing = (KeyRing)item;
+                    KeyRing newRing = new KeyRing();
+
+                    int count = srcRing.Keys.Count;
+                    for(int i = 0; i < count; i++)
+                    {
+                        Key newkey = new Key(srcRing.Keys[i].KeyValue);
+                        newRing.Add(newkey);
+                    }
+                    return newRing;
+                }
+
                 newItem.UpdateTotals();
                 return newItem;
             }
