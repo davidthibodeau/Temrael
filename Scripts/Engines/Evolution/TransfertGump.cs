@@ -109,8 +109,7 @@ namespace Server.Engines.Evolution
                 if (!readOnly)
                 {
                     AddButton(383, 119, 4017, 4019, (int)Buttons.PremierSupprimer, GumpButtonType.Reply, 0);
-                    if (m.Region is ZoneCreation)
-                        AddButton(345, 119, 4005, 4007, (int)Buttons.ChoisirPremier, GumpButtonType.Reply, 0);
+                    AddButton(345, 119, 4005, 4007, (int)Buttons.ChoisirPremier, GumpButtonType.Reply, 0);
                 }
             }
 
@@ -121,8 +120,7 @@ namespace Server.Engines.Evolution
                 if (!readOnly)
                 {
                     AddButton(383, 149, 4017, 4019, (int)Buttons.SecondSupprimer, GumpButtonType.Reply, 0);
-                    if (m.Region is ZoneCreation)
-                        AddButton(345, 149, 4005, 4007, (int)Buttons.ChoisirSecond, GumpButtonType.Reply, 0);
+                    AddButton(345, 149, 4005, 4007, (int)Buttons.ChoisirSecond, GumpButtonType.Reply, 0);
                 }
             }
 
@@ -133,8 +131,7 @@ namespace Server.Engines.Evolution
                 if (!readOnly)
                 {
                     AddButton(383, 179, 4017, 4019, (int)Buttons.TroisiemeSupprimer, GumpButtonType.Reply, 0);
-                    if (m.Region is ZoneCreation)
-                        AddButton(345, 179, 4005, 4007, (int)Buttons.ChoisirTroisieme, GumpButtonType.Reply, 0);
+                    AddButton(345, 179, 4005, 4007, (int)Buttons.ChoisirTroisieme, GumpButtonType.Reply, 0);
                 }
             }
         }
@@ -253,31 +250,16 @@ namespace Server.Engines.Evolution
                             tr.Extraire(mobile);
                             break;
                         case Buttons.ChoisirPremier:
-                            if (!(from.Region is ZoneCreation))
-                            {
-                                from.SendMessage("Vous n'êtes plus dans la zone de création. Vous ne pouvez donc plus effectuer un tel transfert.");
-                                return;
-                            }
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
                                 mobile.Account, tr.Premier.Left, tr.Premier.Right);
                             tr.Transferer(mobile, Transfert.Position.Premier);
                             break;
                         case Buttons.ChoisirSecond:
-                            if (!(from.Region is ZoneCreation))
-                            {
-                                from.SendMessage("Vous n'êtes plus dans la zone de création. Vous ne pouvez donc plus effectuer un tel transfert.");
-                                return;
-                            }
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
                                 mobile.Account, tr.Second.Left, tr.Second.Right);
                             tr.Transferer(mobile, Transfert.Position.Second);
                             break;
                         case Buttons.ChoisirTroisieme:
-                            if (!(from.Region is ZoneCreation))
-                            {
-                                from.SendMessage("Vous n'êtes plus dans la zone de création. Vous ne pouvez donc plus effectuer un tel transfert.");
-                                return;
-                            }
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
                                 mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right);
                             tr.Transferer(mobile, Transfert.Position.Troisieme);
