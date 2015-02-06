@@ -103,6 +103,7 @@
     <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
+    <Compile Include="Engines\Craft\DefJewelcrafting.cs" />
     <Compile Include="Engines\Economy\PrixNPC.cs" />
     <Compile Include="Engines\Evolution\RaisonCote.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Items\GMItems\GMItem.cs" />
     <Compile Include="Items\GMItems\Traps\TrapEffect.cs" />
     <Compile Include="Items\Misc\BaseWaterContainer.cs" />
+    <Compile Include="Items\Skill Items\Tools\JewelcrafterTool.cs" />
     <Compile Include="Items\Temrael\Skill Items\Thief\Fouet.cs" />
     <Compile Include="Items\Temrael\Alchimie\Teintures\ExtracteurCouleur.cs" />
     <Compile Include="Items\Temrael\Alchimie\Teintures\IExtractable.cs" />
