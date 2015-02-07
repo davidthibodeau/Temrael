@@ -128,6 +128,7 @@ namespace Server.Gumps
             : base(GumpOffsetX, GumpOffsetY)
         {
             owner.CloseGump(typeof(WhoGump));
+            owner.CloseGump(typeof(QuiGump));
 
             m_Owner = owner;
             m_Mobiles = list;
