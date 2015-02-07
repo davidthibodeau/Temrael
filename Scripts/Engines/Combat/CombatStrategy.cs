@@ -275,7 +275,7 @@ namespace Server.Engines.Combat
         /// <returns>Le délai en millisecondes.</returns>
         public virtual int ProchaineAttaque(Mobile atk)
         {
-            int vitesse = (int)(CalculerVitesse(atk) * 100);
+            int vitesse = (int)(Vitesse(atk) * 100);
 
             return vitesse;
         }
@@ -299,9 +299,20 @@ namespace Server.Engines.Combat
         /// </summary>
         /// <param name="atk">Le personnage portant l'attaque.</param>
         /// <returns>Retourne le délai entre deux attaques en dixième de seconde.</returns>
-        public double CalculerVitesse(Mobile atk)
+        public double Vitesse(Mobile atk)
         {
-            return Vitesse.instance.CalculerVitesse(atk, Weapon(atk).Speed);
+            //Par tranche de 50 de stam, on retire 0.25 secondes (ou 0.1 secondes tous les 20 de stam)
+            double s = Weapon(atk).Speed - (((double)atk.Stam / (double)atk.StamMax) * 20); // 0 à 2 secondes d'AS bonus.
+
+
+            //Le délai minimal est de 1 secondes entre deux attaques.
+            if (s < 10)
+                s = 10;
+
+            if (LenteurSpell.Contains(atk))
+                LenteurSpell.GetOnHitEffect(atk, ref s);
+
+            return s;
         }
         #endregion
 
