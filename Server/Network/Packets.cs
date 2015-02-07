@@ -3154,7 +3154,7 @@ namespace Server.Network
 				//m_Stream.Write( (short) max ); // Damage max
 
                 m_Stream.Write((short)m.ArmureNaturelle); // Fire
-                m_Stream.Write((short)m.Vitesse); // Cold
+                m_Stream.Write((short)0); // Cold
                 m_Stream.Write((short)0); // Poison
                 m_Stream.Write((short)m.MagicResistance); // Energy
                 m_Stream.Write((short)0); // Luck
