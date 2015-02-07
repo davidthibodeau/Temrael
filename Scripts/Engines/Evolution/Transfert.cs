@@ -160,6 +160,10 @@ namespace Server.Engines.Evolution
             Experience exp = m.Experience;
             exp.XP = (int) (exp.XP * pourcentageConserve);
             m.Experience = new Experience();
+            foreach(Skill sk in m.Skills)
+            {
+                sk.Base = 0;
+            }
 
             if (Premier == null)
             {
