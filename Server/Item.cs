@@ -1333,13 +1333,13 @@ namespace Server
 
             public override void OnClick()
             {
-                if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
+                if (m_Item.LastAlteration.AddSeconds(1) < DateTime.Now)
                 {
                     m_Item.Movable = false;
                     m_Item.LastAlteration = DateTime.Now;
                 }
                 else
-                    m_From.SendMessage("Cet objet a deja recemment ete modifie !");
+                    m_From.SendMessage("Cet objet a déjà récemment été modifié !");
             }
         }
 
@@ -1363,14 +1363,14 @@ namespace Server
                     return;
                 }
 
-                if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
+                if (m_Item.LastAlteration.AddSeconds(1) < DateTime.Now)
                 {
                     m_Item.SetLastMoved();
                     m_Item.Movable = true;
                     m_Item.LastAlteration = DateTime.Now;
                 }
                 else
-                    m_From.SendMessage("Cet objet a deja recemment ete modifie !");
+                    m_From.SendMessage("Cet objet a déjà récemment été modifié !");
             }
         }
 

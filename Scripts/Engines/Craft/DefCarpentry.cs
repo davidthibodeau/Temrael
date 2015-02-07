@@ -160,6 +160,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(BarrelLid), "Matériaux", "Couvercle de Tonneau", 11.0, 36.0, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
+            index = AddCraft(typeof(BarrelHoops), "Matériaux", "Cercle de Tonneau", 11.0, 36.0, typeof(FerIngot), "Lingot de fer", 1, 1044037);
+
             #endregion
 
             #region Chaises
