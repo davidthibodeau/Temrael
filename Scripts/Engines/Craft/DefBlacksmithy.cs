@@ -605,7 +605,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Mace), "Armes Contondantes", "Mace", 20.0, 50.0, typeof(FerIngot), "Lingots", 6, 1044037);
             index = AddCraft(typeof(WarMace), "Armes Contondantes", "Masse de Guerre", 30.0, 60.0, typeof(FerIngot), "Lingots", 14, 1044037);
             index = AddCraft(typeof(Maul), "Armes Contondantes", "Maul", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
-            index = AddCraft(typeof(Brisecrane), "Armes Contondantes", "Brisecrane", 40.0, 70.0, typeof(FerIngot), "Lingots", 16, 1044037);
+            //index = AddCraft(typeof(Brisecrane), "Armes Contondantes", "Brisecrane", 40.0, 70.0, typeof(FerIngot), "Lingots", 16, 1044037);
             index = AddCraft(typeof(WarHammer), "Armes Contondantes", "Marteau", 40.0, 70.0, typeof(FerIngot), "Lingots", 16, 1044037);
             AddRes(index, typeof(Log), "Bûches d'érable", 3, 1044351);
             index = AddCraft(typeof(Massue), "Armes Contondantes", "Massue", 40.0, 70.0, typeof(FerIngot), "Lingots", 10, 1044037);
