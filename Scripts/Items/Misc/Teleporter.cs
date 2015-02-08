@@ -7,6 +7,13 @@ namespace Server.Items
 {
 	public class Teleporter : Item
 	{
+        #region IActivable
+        public override void IActivableOnActivate(int mode, Mobile from, int overflow)
+        {
+            StartTeleport(from);
+        }
+        #endregion
+
 		private bool m_Active, m_Creatures, m_CombatCheck;
 		private Point3D m_PointDest;
 		private Map m_MapDest;
