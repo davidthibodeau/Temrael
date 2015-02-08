@@ -107,10 +107,10 @@ namespace Server.Items
 
         private static void PayLogging(Mobile m, int amount)
         {
-            if (m != null)
+            if (m != null && m.Account != null)
             {
                 string path = "Logging/PayLogging";
-                string fileName = path + m.Name + ".txt";
+                string fileName = path + m.Account.Username + ".txt";
 
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
