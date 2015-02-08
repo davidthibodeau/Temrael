@@ -109,10 +109,11 @@ namespace Server.Items
         {
             if (m != null)
             {
-                string fileName = "./Logging/PayLogging/" + m.Name + ".txt";
+                string path = "Logging/PayLogging";
+                string fileName = path + m.Name + ".txt";
 
-                if (!Directory.Exists(fileName))
-                    Directory.CreateDirectory(Path.GetDirectoryName(fileName));
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
 
                 using (StreamWriter sw = new StreamWriter(fileName, true))
                     sw.WriteLine(
