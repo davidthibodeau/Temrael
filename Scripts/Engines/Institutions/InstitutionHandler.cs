@@ -109,7 +109,7 @@ namespace Server.Items
         {
             if (m != null && m.Account != null)
             {
-                string path = "Logging/PayLogging";
+                string path = "Logging/PayLogging/";
                 string fileName = path + m.Account.Username + ".txt";
 
                 if (!Directory.Exists(path))
