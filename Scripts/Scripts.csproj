@@ -175,6 +175,7 @@
     <Compile Include="Mobiles\Monsters\Mongbat.cs" />
     <Compile Include="Mobiles\Monsters\ScarabeeGeant.cs" />
     <Compile Include="Mobiles\Monsters\Troll\Troll.cs" />
+    <Compile Include="Mobiles\Monsters\Troll\TrollChef.cs" />
     <Compile Include="Mobiles\Monsters\Troll\TrollGuerrier.cs" />
     <Compile Include="Mobiles\Monsters\Troll\TrollShaman.cs" />
     <Compile Include="Mobiles\NewAnimals\Aligator.cs" />

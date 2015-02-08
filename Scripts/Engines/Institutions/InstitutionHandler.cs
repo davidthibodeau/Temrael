@@ -107,12 +107,13 @@ namespace Server.Items
 
         private static void PayLogging(Mobile m, int amount)
         {
-            if (m != null)
+            if (m != null && m.Account != null)
             {
-                string fileName = "./Logging/PayLogging/" + m.Name + ".txt";
+                string path = "Logging/PayLogging/";
+                string fileName = path + m.Account.Username + ".txt";
 
-                if (!Directory.Exists(fileName))
-                    Directory.CreateDirectory(Path.GetDirectoryName(fileName));
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
 
                 using (StreamWriter sw = new StreamWriter(fileName, true))
                     sw.WriteLine(
