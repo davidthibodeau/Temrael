@@ -83,6 +83,11 @@ namespace Server.Items
 					if ( ((ILockpickable)targeted).Locked )
 					{
 						from.PlaySound( 0x241 );
+                        if (from.Hidden)
+                        {
+                            from.RevealingAction();
+                            from.SendMessage("Votre action ne passe pas inaperçue...");
+                        }
 
 						new InternalTimer( from, (ILockpickable)targeted, m_Item ).Start();
 					}
