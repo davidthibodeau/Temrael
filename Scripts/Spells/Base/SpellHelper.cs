@@ -414,7 +414,8 @@ namespace Server.Spells
                 }
                 else if (mod == null)
                 {
-                    target.SendMessage("Vous sentez une nouvelle force vous envahir");
+                    target.SendMessage("Vous sentez une nouvelle force vous envahir.");
+                    target.AddStatMod(new StatMod(type, name, offset, duration));
                     return true;
                 }
             }
@@ -459,6 +460,7 @@ namespace Server.Spells
                 else if (mod == null)
                 {
                     target.SendMessage("Vous sentez une force vous tourmenter.");
+                    target.AddStatMod(new StatMod(type, name, offset, duration));
                     return true;
                 }
             }
