@@ -85,7 +85,7 @@ namespace Server
 		Str=1,
 		Dex=2,
 		Int=4,
-		All=8
+		All=7
 	}
 
 	public enum StatLockType : byte
