@@ -105,6 +105,7 @@
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
     <Compile Include="Engines\Combat\Vitesse.cs" />
     <Compile Include="Engines\Craft\DefJewelcrafting.cs" />
+    <Compile Include="Engines\Durability\Durability.cs" />
     <Compile Include="Engines\Economy\PrixNPC.cs" />
     <Compile Include="Engines\Evolution\RaisonCote.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
