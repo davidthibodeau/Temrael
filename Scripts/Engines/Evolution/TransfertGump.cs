@@ -231,37 +231,37 @@ namespace Server.Engines.Evolution
                     {
                         case Buttons.PremierSupprimer:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Retrait de l'entrée {1} contenant {2} xp.",
-                                mobile.Account, tr.Premier.Left, tr.Premier.Right);
+                                mobile.Account, tr.Premier.Left, tr.Premier.Right.XP);
                             tr.Supprimer(Transfert.Position.Premier);
                             break;
                         case Buttons.SecondSupprimer:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Retrait de l'entrée {1} contenant {2} xp.",
-                                mobile.Account, tr.Second.Left, tr.Second.Right);
+                                mobile.Account, tr.Second.Left, tr.Second.Right.XP);
                             tr.Supprimer(Transfert.Position.Second);
                             break;
                         case Buttons.TroisiemeSupprimer:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Retrait de l'entrée {1} contenant {2} xp.",
-                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right);
+                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right.XP);
                             tr.Supprimer(Transfert.Position.Troisieme);
                             break;
                         case Buttons.Transferer:
-                            CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de {1} xp vers la banque.",
-                                mobile.Account, mobile.Experience.XP);
+                            CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de {1} xp depuis {2} vers la banque.",
+                                mobile.Account, mobile.Experience.XP, mobile.Name);
                             tr.Extraire(mobile);
                             break;
                         case Buttons.ChoisirPremier:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
-                                mobile.Account, tr.Premier.Left, tr.Premier.Right);
+                                mobile.Account, tr.Premier.Left, tr.Premier.Right.XP);
                             tr.Transferer(mobile, Transfert.Position.Premier);
                             break;
                         case Buttons.ChoisirSecond:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
-                                mobile.Account, tr.Second.Left, tr.Second.Right);
+                                mobile.Account, tr.Second.Left, tr.Second.Right.XP);
                             tr.Transferer(mobile, Transfert.Position.Second);
                             break;
                         case Buttons.ChoisirTroisieme:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
-                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right);
+                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right.XP);
                             tr.Transferer(mobile, Transfert.Position.Troisieme);
                             break;
                     }
