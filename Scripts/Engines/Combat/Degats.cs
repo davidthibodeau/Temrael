@@ -1,5 +1,6 @@
 using System;
 using Server.Spells;
+using Server.Engines.Durability;
 
 namespace Server.Engines.Combat
 {
@@ -32,6 +33,8 @@ namespace Server.Engines.Combat
             double reducedDmg = Reduction(dmg, def.MagicResistance);
 
             MagicReflectSpell.GetOnHitEffect(def, ref reducedDmg);
+
+            DurabilityHandler.OnMagicDamageReceive(def);
 
             def.Damage((int)reducedDmg);
         }

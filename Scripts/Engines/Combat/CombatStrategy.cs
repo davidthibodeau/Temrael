@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.TechniquesCombat;
+using Server.Engines.Durability;
 
 namespace Server.Engines.Combat
 {
@@ -49,7 +50,8 @@ namespace Server.Engines.Combat
             AttaqueAnimation(atk);
             DegatsAnimation(def);
 
-            if (atk is ScriptMobile) { ((ScriptMobile)atk).OnAttackDurabilityLoss(); }
+            DurabilityHandler.OnPhysAttack(atk);
+            DurabilityHandler.OnPhysDamageReceive(atk, def);
 
             CheckEquitation(def, EquitationType.BeingAttacked);
 
