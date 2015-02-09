@@ -161,7 +161,7 @@ namespace Server.Items
 
         private static int[] m_WaterStaticTiles = new int[]
 			{
-				0x1796, 0x17B2,
+				0x1796, 0x17B2,         
 				0x346E, 0x3485,
 				0x3490, 0x34AB,
 				0x34B5, 0x34D5,
@@ -170,6 +170,8 @@ namespace Server.Items
 				0x1559, 0x1559,
 				0x1796, 0x17B2,
 				0x1FA3, 0x1FCA,
+                0x1FC7, 0x2694, 
+                0x25E3,  
 			};
     }
 }
