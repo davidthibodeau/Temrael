@@ -50,7 +50,7 @@ namespace Server.Items
         {
             base.OnItemLifted(from, item);
 
-            if(!CanModifyBooks)
+            if (!CanModifyBooks && item is BaseBook)
                 ((BaseBook)item).Writable = true;
         }
 
