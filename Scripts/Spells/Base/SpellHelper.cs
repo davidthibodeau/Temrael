@@ -412,6 +412,11 @@ namespace Server.Spells
                     target.SendMessage("Vous sentez une force vous envahir, écrasant les forces obscures vous tourmentant.");
                     return true;
                 }
+                else if (mod == null)
+                {
+                    target.SendMessage("Vous sentez une nouvelle force vous envahir");
+                    return true;
+                }
             }
 
             target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
@@ -449,6 +454,11 @@ namespace Server.Spells
                 {
                     target.RemoveStatMod(name);
                     target.SendMessage("Vous sentez une force vous tourmenter, écrasant les forces bénéfiques en vous.");
+                    return true;
+                }
+                else if (mod == null)
+                {
+                    target.SendMessage("Vous sentez une force vous tourmenter.");
                     return true;
                 }
             }
