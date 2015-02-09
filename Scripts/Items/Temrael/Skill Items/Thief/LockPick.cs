@@ -171,6 +171,8 @@ namespace Server.Items
                             item.SendLocalizedMessageTo(m_From, 502075); // You are unable to pick the lock.
                         }
                         Stop();
+
+                        m_From.NextSkillTime = Core.TickCount + 10000; // 10 seconds.
                     }
                     else
                     {
