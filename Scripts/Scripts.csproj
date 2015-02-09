@@ -2471,6 +2471,7 @@
     <Compile Include="Spells\Base\Reagent.cs" />
     <Compile Include="Spells\Base\UnsummonTimer.cs" />
     <Compile Include="Engines\Evolution\CompensationGump.cs" />
+    <Compile Include="Spells\TechniquesCombat\Snare.cs" />
     <Compile Include="Targets\BladedItemTarget.cs" />
     <Compile Include="Targets\MoveTarget.cs" />
     <Compile Include="Targets\PickMoveTarget.cs" />

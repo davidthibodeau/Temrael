@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Movement;
+using Server.Spells.TechniquesCombat;
 
 namespace Server.Misc
 {
@@ -49,6 +50,13 @@ namespace Server.Misc
             if (from.StamMax == 0 || from.ManaMax == 0 || from.Dex <= 0)
             {
                 from.SendMessage("Impossible de marcher sans mana, stam ou dex maximale.");
+                e.Blocked = true;
+                return;
+            }
+
+            if (SnareEffect.IsSnared(from))
+            {
+                from.SendMessage("Vous ne pouvez marchez pour le moment !");
                 e.Blocked = true;
                 return;
             }

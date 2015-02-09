@@ -9,6 +9,7 @@ using Server.Custom;
 using Server.Scripts.Commands;
 using Server.Engines.Equitation;
 using Server.Engines.Combat;
+using Server.Spells.TechniquesCombat;
 
 //Adjuration
 
@@ -461,6 +462,8 @@ namespace Server.Spells
             BloodOathSpell.GetOnHitEffect(atk, def, ref damage);
 
             ReactiveArmorSpell.GetOnHitEffect(def, ref damage);
+
+            SnareTechnique.GetOnHitEffect(atk, def);
 
             return damage;
         }
