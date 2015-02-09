@@ -297,6 +297,7 @@
     <Compile Include="Spells\Scrolls\6XX.Thaumaturgie\DernierSouffleScroll.cs" />
     <Compile Include="Spells\Scrolls\6XX.Thaumaturgie\TotemGuerisonScroll.cs" />
     <Compile Include="Spells\Scrolls\8XX.Ensorcellement\AffaiblissementScroll.cs" />
+    <Compile Include="Spells\SpellEffects\SnareEffect.cs" />
     <Compile Include="Spells\TechniquesCombat\Assassinat.cs" />
     <Compile Include="Spells\TechniquesCombat\AttackSpeed.cs" />
     <Compile Include="Engines\Combat\CombatStrategy.cs" />
@@ -2472,7 +2473,9 @@
     <Compile Include="Spells\Base\Reagent.cs" />
     <Compile Include="Spells\Base\UnsummonTimer.cs" />
     <Compile Include="Engines\Evolution\CompensationGump.cs" />
-    <Compile Include="Spells\TechniquesCombat\Snare.cs" />
+    <Compile Include="Spells\TechniquesCombat\BaseTechnique.cs" />
+    <Compile Include="Spells\TechniquesCombat\ProtectionTechnique.cs" />
+    <Compile Include="Spells\TechniquesCombat\SnareTechnique.cs" />
     <Compile Include="Targets\BladedItemTarget.cs" />
     <Compile Include="Targets\MoveTarget.cs" />
     <Compile Include="Targets\PickMoveTarget.cs" />

@@ -51,6 +51,7 @@ namespace Server.TechniquesCombat
 
                     if (scaling != 0)
                     {
+                        atk.SendMessage("Vous prenez " + def.GetNameUsedBy(atk) + " en chasse !");
                         def.SendMessage("On vous prend en chasse !");
 
                         def.Stam -= (int)(def.Stam * (scaling * MalusStam));

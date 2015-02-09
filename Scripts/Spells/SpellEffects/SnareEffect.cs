@@ -2,67 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Timers;
 
-namespace Server.Spells.TechniquesCombat
+namespace Server.Spells
 {
-    // Un snare empêche le mouvement, mais 
-    // n'empêche pas le joueur de donner des coups
-    // ou d'utiliser des spells.
-
-    public class SnareTechnique
-    {
-        #region Membres / consts.
-
-        private const int ManaCost = 30;
-        private static List<Mobile> ReadyMobiles;
-
-        #endregion
-
-        #region Ctor
-        public SnareTechnique(Mobile atk)
-        {
-            if (ReadyMobiles == null)
-                ReadyMobiles = new List<Mobile>();
-
-            if (!ReadyMobiles.Contains(atk))
-            {
-                ReadyMobiles.Add(atk);
-            }
-        }
-        #endregion
-
-        public static void GetOnHitEffect(Mobile atk, Mobile def)
-        {
-            if (ReadyMobiles != null)
-            {
-                if (ReadyMobiles.Contains(atk))
-                {
-                    if (CheckMana(atk))
-                    {
-                        Effects.SendTargetParticles(def, 0x3789, 2, 3000, 0, EffectLayer.CenterFeet);
-                        new SnareEffect(def, new TimeSpan(0, 0, 5));
-                        ReadyMobiles.Remove(atk);
-                    }
-                }
-            }
-        }
-
-        private static bool CheckMana(Mobile atk)
-        {
-            if (atk.Mana >= ManaCost)
-            {
-                atk.Mana -= ManaCost;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-
-
     public class SnareEffect
     {
         #region Membres / consts.

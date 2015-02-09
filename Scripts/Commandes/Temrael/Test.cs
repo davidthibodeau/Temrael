@@ -8,6 +8,7 @@ using Server.Network;
 using Server.Targeting;
 using System.Collections.Generic;
 using Server.Engines.Equitation;
+using Server.Spells;
 using Server.Spells.TechniquesCombat;
 
 namespace Server.Scripts.Commands

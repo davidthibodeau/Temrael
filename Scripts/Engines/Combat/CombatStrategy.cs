@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using Server.TechniquesCombat;
 using Server.Engines.Durability;
+using Server.Spells.TechniquesCombat;
 
 namespace Server.Engines.Combat
 {
@@ -31,7 +32,10 @@ namespace Server.Engines.Combat
             if (!BandageContext.IsHealingSelf(atk))
             {
                 if (Toucher(atk, def))
+                {
+                    def = ProtectionTechnique.GetOnHitEffect(def);
                     OnHit(atk, def);
+                }
                 else
                     OnMiss(atk, def);
 

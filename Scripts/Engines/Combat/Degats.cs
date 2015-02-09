@@ -1,6 +1,7 @@
 using System;
 using Server.Spells;
 using Server.Engines.Durability;
+using Server.Spells.TechniquesCombat;
 
 namespace Server.Engines.Combat
 {
@@ -30,6 +31,8 @@ namespace Server.Engines.Combat
         #region Degats Magiques
         public void AppliquerDegatsMagiques(Mobile def, double dmg)
         {
+            def = ProtectionTechnique.GetOnHitEffect(def);
+
             double reducedDmg = Reduction(dmg, def.MagicResistance);
 
             MagicReflectSpell.GetOnHitEffect(def, ref reducedDmg);

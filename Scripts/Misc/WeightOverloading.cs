@@ -2,6 +2,7 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Movement;
+using Server.Spells;
 using Server.Spells.TechniquesCombat;
 
 namespace Server.Misc
