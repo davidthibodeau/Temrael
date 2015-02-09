@@ -2868,7 +2868,10 @@ namespace Server.Mobiles
 			if ( m_bTamable && !m_bControlled && from.Alive )
 				list.Add( new TameEntry( from, this ) );
 
-			AddCustomContextEntries( from, list );
+            if (InRange(from.Location, 5) && InLOS(from))
+            {
+                AddCustomContextEntries(from, list);
+            }
 
             if (from != this)
             {
