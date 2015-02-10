@@ -51,39 +51,30 @@ namespace Server.Mobiles
             /*------------------*/
             Item it = new Vorlame();
             it.Hue = 1904;
-            //it.Layer = Layer.OneHanded;
             items.Add(it);
             it = new CagouleCuir();
             it.Hue = 1904;
-            //it.Layer = Layer.Neck;
             items.Add(it);
             it = new CagouleGrande();
             it.Hue = 1906;
-            //it.Layer = Layer.Helm;
             items.Add(it);
             it = new RoublardTunic();
             it.Hue = 1904;
-            //it.Layer = Layer.InnerTorso;
             items.Add(it);
             it = new Cloak();
             it.Hue = 1904;
-            //it.Layer = Layer.Cloak;
             items.Add(it);
             it = new RoublardLeggings();
             it.Hue = 1904;
-            //it.Layer = Layer.OuterLegs;
             items.Add(it);
             it = new FourreauEpee();
             it.Hue = 0;
-            //it.Layer = Layer.Waist;
             items.Add(it);
             it = new LeatherGloves();
             it.Hue = 2412;
-            //it.Layer = Layer.Gloves;
             items.Add(it);
             it = new CorpsOrcish();
             it.Hue = 1446;
-            it.Layer = Layer.Pants;
             items.Add(it);
             
             /*------------------*/
