@@ -7,6 +7,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x1765, 0x1767 )]
 	public class UncutCloth : Item, IScissorable, IDyable, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
@@ -23,7 +25,6 @@ namespace Server.Items
 		[Constructable]
 		public UncutCloth( int amount ) : base( 0x1767 )
 		{
-            GoldValue = 3;
 			Stackable = true;
 			Amount = amount;
 		}

@@ -8,6 +8,8 @@ namespace Server.Items
 {
     public class TatooDye : Item
     {
+        public override int GoldValue { get { return 30; } }
+
         public override int LabelNumber { get { return 1041060; } } // Hair Dye
 
         [Constructable]
@@ -15,7 +17,6 @@ namespace Server.Items
             : base(0xEFF)
         {
             Name = "Encre a tatouage";
-            GoldValue = 30;
             Weight = 1.0;
         }
 

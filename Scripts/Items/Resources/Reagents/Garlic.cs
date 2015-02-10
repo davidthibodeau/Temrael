@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class Garlic : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public Garlic() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public Garlic( int amount ) : base( 0xF84, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public Garlic( Serial serial ) : base( serial )

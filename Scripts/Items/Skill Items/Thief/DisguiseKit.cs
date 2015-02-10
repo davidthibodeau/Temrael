@@ -11,12 +11,13 @@ namespace Server.Items
 {
 	public class DisguiseKit : Item
 	{
+        public override int GoldValue { get { return 17; } }
+
 		public override int LabelNumber{ get{ return 1041078; } } // a disguise kit
 
 		[Constructable]
 		public DisguiseKit() : base( 0xE05 )
 		{
-            GoldValue = 17;
 			Weight = 1.0;
 		}
 

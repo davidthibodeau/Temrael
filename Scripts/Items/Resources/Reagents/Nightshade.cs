@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class Nightshade : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public Nightshade() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public Nightshade( int amount ) : base( 0xF88, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public Nightshade( Serial serial ) : base( serial )

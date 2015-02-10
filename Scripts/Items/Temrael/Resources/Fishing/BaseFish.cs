@@ -454,6 +454,8 @@ namespace Server.Items
 
     public class AnchoieFish : BaseFish, ICarvable
     {
+        public override int GoldValue { get { return 9; } }
+
         [Constructable]
         public AnchoieFish() : this(1)
         {
@@ -462,7 +464,6 @@ namespace Server.Items
         [Constructable]
         public AnchoieFish(int amount) : base(CraftResource.Anchoie, amount)
         {
-            GoldValue = 9;
             Name = "Anchoie";
             ItemID = 0xDD6;
         }
@@ -1268,10 +1269,11 @@ namespace Server.Items
 
     public class HuitreFish : BaseFish, ICarvable
     {
+        public override int GoldValue { get { return 9; } }
+
         [Constructable]
         public HuitreFish() : base(CraftResource.Huitre)
         {
-            GoldValue = 9;
             Stackable = false;
             ItemID = 4175;
             Name = "Huitre";

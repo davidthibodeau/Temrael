@@ -226,10 +226,11 @@ namespace Server.Items
 	// ********** JarHoney **********
 	public class JarHoney : Item
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public JarHoney() : base( 0x9ec )
 		{
-            GoldValue = 3;
 			Weight = 1.0;
 			Stackable = true;
 		}
@@ -296,10 +297,11 @@ namespace Server.Items
 	// ********** BowlFlour **********
 	public class BowlFlour : Item
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public BowlFlour() : base( 0xa1e )
 		{
-            GoldValue = 3;
 			Weight = 1.0;
 		}
 
@@ -436,10 +438,11 @@ namespace Server.Items
 			}
 		}
 
+        public override int GoldValue { get { return 9; } }
+
 		[Constructable]
 		public SackFlour() : base( 0x1039 )
 		{
-            GoldValue = 9;
 			Weight = 5.0;
 			m_Quantity = 20;
 		}

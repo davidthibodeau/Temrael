@@ -22,6 +22,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x14fc, 0x14fb )]
 	public class Lockpick : Item
 	{
+        public override int GoldValue { get { return 5; } }
+
 		[Constructable]
 		public Lockpick() : this( 1 )
 		{
@@ -30,7 +32,6 @@ namespace Server.Items
 		[Constructable]
 		public Lockpick( int amount ) : base( 0x14FC )
 		{
-            GoldValue = 5;
 			Stackable = true;
 			Amount = amount;
 		}

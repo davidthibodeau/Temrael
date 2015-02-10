@@ -6,13 +6,14 @@ namespace Server.Items
 {
 	public class JewelcrafterTool : BaseTool
 	{
+        public override int GoldValue { get { return 15; } }
+
         public override CraftSystem CraftSystem { get { return DefJewelcrafting.CraftSystem; } }
 
 		[Constructable]
 		public JewelcrafterTool()
 			: base(0x1EBC)
 		{
-            GoldValue = 6;
             Weight = 2.0;
             Name = "Outil d'orfèvrerie (Bijoux)";
 		}
@@ -21,7 +22,6 @@ namespace Server.Items
 		public JewelcrafterTool(int uses)
 			: base(uses, 0x1EBC)
 		{
-            GoldValue = 6;
             Weight = 2.0;
 		}
 

@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class Fish : Item, ICarvable
 	{
+        public override int GoldValue { get { return 9; } }
+
 		public void Carve( Mobile from, Item item )
 		{
 			base.ScissorHelper( from, new RawFishSteak(), 4 );
@@ -19,7 +21,6 @@ namespace Server.Items
 		[Constructable]
 		public Fish( int amount ) : base( Utility.Random( 0x09CC, 4 ) )
 		{
-            GoldValue = 9;
 			Stackable = true;
 			Weight = 1.0;
 			Amount = amount;

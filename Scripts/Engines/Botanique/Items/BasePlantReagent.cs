@@ -613,6 +613,9 @@ namespace Server.Items
 
     public class Coquillage : BasePlantReagent
     {
+        public override int GoldValue { get { return 6; } }
+
+
         public override string Description { get { return ""; } }
 
         [Constructable]
@@ -625,7 +628,6 @@ namespace Server.Items
         public Coquillage(int amount)
             : base(0xFC7)
         {
-            GoldValue = 6;
             Name = "Coquillage";
             Amount = amount;
         }

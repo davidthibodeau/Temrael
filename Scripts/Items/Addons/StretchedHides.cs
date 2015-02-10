@@ -37,10 +37,11 @@ namespace Server.Items
 		public override BaseAddon Addon{ get{ return new SmallStretchedHideEastAddon(); } }
 		public override int LabelNumber{ get{ return 1049401; } } // a small stretched hide deed facing east
 
+        public override int GoldValue { get { return 27; } }
+
 		[Constructable]
 		public SmallStretchedHideEastDeed()
 		{
-            GoldValue = 27;
 		}
 
 		public SmallStretchedHideEastDeed( Serial serial ) : base( serial )
@@ -96,10 +97,11 @@ namespace Server.Items
 		public override BaseAddon Addon{ get{ return new SmallStretchedHideSouthAddon(); } }
 		public override int LabelNumber{ get{ return 1049402; } } // a small stretched hide deed facing south
 
+        public override int GoldValue { get { return 27; } }
+
 		[Constructable]
 		public SmallStretchedHideSouthDeed()
 		{
-            GoldValue = 27;
 		}
 
 		public SmallStretchedHideSouthDeed( Serial serial ) : base( serial )
@@ -155,10 +157,11 @@ namespace Server.Items
 		public override BaseAddon Addon{ get{ return new MediumStretchedHideEastAddon(); } }
 		public override int LabelNumber{ get{ return 1049403; } } // a medium stretched hide deed facing east
 
+        public override int GoldValue { get { return 33; } }
+
 		[Constructable]
 		public MediumStretchedHideEastDeed()
 		{
-            GoldValue = 33;
 		}
 
 		public MediumStretchedHideEastDeed( Serial serial ) : base( serial )
@@ -214,10 +217,11 @@ namespace Server.Items
 		public override BaseAddon Addon{ get{ return new MediumStretchedHideSouthAddon(); } }
 		public override int LabelNumber{ get{ return 1049404; } } // a medium stretched hide deed facing south
 
+        public override int GoldValue { get { return 33; } }
+
 		[Constructable]
 		public MediumStretchedHideSouthDeed()
 		{
-            GoldValue = 33;
 		}
 
 		public MediumStretchedHideSouthDeed( Serial serial ) : base( serial )

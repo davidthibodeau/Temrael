@@ -10,10 +10,11 @@ namespace Server.Items
 		public override double MinPoisoningSkill{ get{ return 0.0; } }
 		public override double MaxPoisoningSkill{ get{ return 60.0; } }
 
+        public override int GoldValue { get { return 9; } }
+
 		[Constructable]
 		public LesserPoisonPotion() : base( PotionEffect.PoisonLesser )
 		{
-            GoldValue = 9;
             Name = "Poison mineur";
 		}
 

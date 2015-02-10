@@ -7,12 +7,13 @@ namespace Server.Items
 {
 	public class HairDye : Item
 	{
+        public override int GoldValue { get { return 30; } }
+
 		public override int LabelNumber{ get{ return 1041060; } } // Hair Dye
 
 		[Constructable]
 		public HairDye() : base( 0xEFF )
 		{
-            GoldValue = 30;
             Name = "Teinture a cheveux";
 			Weight = 1.0;
 		}

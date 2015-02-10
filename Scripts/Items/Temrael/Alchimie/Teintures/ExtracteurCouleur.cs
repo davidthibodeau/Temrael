@@ -8,7 +8,7 @@ namespace Server.Items
 {
     class ExtracteurCouleur : Item
     {
-        public override int GoldValue { get { return 100; } set { } }
+        public override int GoldValue { get { return 100; } }
 
         [Constructable]
         public ExtracteurCouleur() : base(0x1849)

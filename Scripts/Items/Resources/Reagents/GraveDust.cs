@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class GraveDust : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public GraveDust() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public GraveDust( int amount ) : base( 0xF8F, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public GraveDust( Serial serial ) : base( serial )

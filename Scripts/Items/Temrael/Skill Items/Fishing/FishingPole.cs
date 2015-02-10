@@ -60,10 +60,11 @@ namespace Server.Items
             set { m_Charge = value; }
         }
 
+        public override int GoldValue { get { return 9; } }
+
 		[Constructable]
 		public FishingPole() : base( 0x0DC0 )
         {
-            GoldValue = 9;
             Name = "canne à pêche";
 			Layer = Layer.OneHanded;
 			Weight = 8.0;

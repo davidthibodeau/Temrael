@@ -53,20 +53,12 @@ namespace Server.Items
 			return 0;
 		}
 
+        public override int GoldValue { get { return 15; } }
+
 		[Constructable]
 		public BeverageBottle( BeverageType type )
 			: base( type )
 		{
-            switch (type)
-            {
-                case BeverageType.Ale: GoldValue = 15; break;
-                case BeverageType.Cider: GoldValue = 15; break;
-                case BeverageType.Liquor: GoldValue = 15; break;
-                case BeverageType.Milk: GoldValue = 15; break;
-                case BeverageType.Water: GoldValue = 15; break;
-                case BeverageType.Wine: GoldValue = 15; break;
-            }
-
 			Weight = 1.0;
 		}
 
@@ -132,20 +124,12 @@ namespace Server.Items
 			return 0;
 		}
 
+        public override int GoldValue { get { return 11; } }
+
 		[Constructable]
 		public Jug( BeverageType type )
 			: base( type )
 		{
-            switch (type)
-            {
-                case BeverageType.Ale: GoldValue = 11; break;
-                case BeverageType.Cider: GoldValue = 11; break;
-                case BeverageType.Liquor: GoldValue = 11; break;
-                case BeverageType.Milk: GoldValue = 11; break;
-                case BeverageType.Water: GoldValue = 11; break;
-                case BeverageType.Wine: GoldValue = 11; break;
-            }
-
 			Weight = 1.0;
 		}
 
@@ -341,20 +325,12 @@ namespace Server.Items
 			Weight = 1.0;
 		}
 
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public GlassMug( BeverageType type )
 			: base( type )
 		{
-            switch (type)
-            {
-                case BeverageType.Ale: GoldValue = 6; break;
-                case BeverageType.Cider: GoldValue = 6; break;
-                case BeverageType.Liquor: GoldValue = 6; break;
-                case BeverageType.Milk: GoldValue = 6; break;
-                case BeverageType.Water: GoldValue = 6; break;
-                case BeverageType.Wine: GoldValue = 6; break;
-            }
-
 			Weight = 1.0;
 		}
 
@@ -494,20 +470,14 @@ namespace Server.Items
 			Weight = 2.0;
 		}
 
+
+        public override int GoldValue { get { return 21; } }
+
+
 		[Constructable]
 		public Pitcher( BeverageType type )
 			: base( type )
 		{
-            switch (type)
-            {
-                case BeverageType.Ale: GoldValue = 21; break;
-                case BeverageType.Cider: GoldValue = 21; break;
-                case BeverageType.Liquor: GoldValue = 21; break;
-                case BeverageType.Milk: GoldValue = 21; break;
-                case BeverageType.Water: GoldValue = 21; break;
-                case BeverageType.Wine: GoldValue = 21; break;
-            }
-
 			Weight = 2.0;
 		}
 

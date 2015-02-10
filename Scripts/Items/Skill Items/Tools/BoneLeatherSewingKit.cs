@@ -6,13 +6,14 @@ namespace Server.Items
 {
     public class BoneLeatherSewingKit : BaseTool
     {
+        public override int GoldValue { get { return 6; } }
+
         public override CraftSystem CraftSystem { get { return DefBoneLeatherTailoring.CraftSystem; } }
 
         [Constructable]
         public BoneLeatherSewingKit()
             : base(0xF9D)
         {
-            GoldValue = 6;
             Weight = 2.0;
             Name = "Kit de couture (Cuir/Os)";
             Hue = 1833;
@@ -23,7 +24,6 @@ namespace Server.Items
         public BoneLeatherSewingKit(int uses)
             : base(uses, 0xF9D)
         {
-            GoldValue = 6;
             Weight = 2.0;
             Name = "Kit de couture (Cuir/Os)";
             Hue = 1833;

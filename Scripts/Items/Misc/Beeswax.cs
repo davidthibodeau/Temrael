@@ -4,6 +4,8 @@ namespace Server.Items
 {
 	public class Beeswax : Item
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Beeswax() : this( 1 )
 		{
@@ -12,7 +14,6 @@ namespace Server.Items
 		[Constructable]
 		public Beeswax( int amount ) : base( 0x1422 )
 		{
-            GoldValue = 3;
 			Weight = 1.0;
 			Stackable = true;
 			Amount = amount;

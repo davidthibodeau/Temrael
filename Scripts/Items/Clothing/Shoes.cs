@@ -238,6 +238,8 @@ namespace Server.Items
 	{
 		public override CraftResource DefaultResource{ get{ return CraftResource.RegularLeather; } }
 
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Shoes() : this( 0 )
 		{
@@ -246,7 +248,6 @@ namespace Server.Items
 		[Constructable]
 		public Shoes( int hue ) : base( 0x170F, hue )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
             Name = "Souliers";
 		}

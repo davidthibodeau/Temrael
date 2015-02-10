@@ -6,6 +6,8 @@ namespace Server.Items
 {
     public class Arc : BaseArc
     {
+        public override int GoldValue { get { return 21; } }
+
         //public override int DefMinDamage { get { return 6; } }
         //public override int DefMaxDamage { get { return 10; } }
         public override int DefSpeed { get { return 35; } }
@@ -14,7 +16,6 @@ namespace Server.Items
         public Arc()
             : base(0x2d24)
         {
-            GoldValue = 21;
             Weight = 8.0;
             Layer = Layer.TwoHanded;
             Name = "Arc";

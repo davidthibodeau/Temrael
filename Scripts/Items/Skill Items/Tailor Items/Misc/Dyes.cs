@@ -7,10 +7,11 @@ namespace Server.Items
 {
 	public class Dyes : Item
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Dyes() : base( 0xFA9 )
 		{
-            GoldValue = 6;
 			Weight = 3.0;
 		}
 

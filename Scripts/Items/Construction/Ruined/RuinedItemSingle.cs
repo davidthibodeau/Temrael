@@ -260,10 +260,11 @@ namespace Server.Items
 
 	public class RuinedPainting : Item
 	{
+        public override int GoldValue { get { return 27; } }
+
 		[Constructable]
 		public RuinedPainting() : base( 0xC2C )
 		{
-            GoldValue = 27;
 			Movable = false;
 		}
 

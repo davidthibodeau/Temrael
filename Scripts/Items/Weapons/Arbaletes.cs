@@ -181,6 +181,8 @@ namespace Server.Items
 
     public class Crossbow : BaseArbalete
     {
+        public override int GoldValue { get { return 21; } }
+
         //public override int DefMinDamage { get { return 13; } }
         //public override int DefMaxDamage { get { return 18; } }
         public override int DefSpeed { get { return 55; } }
@@ -189,7 +191,6 @@ namespace Server.Items
         public Crossbow()
             : base(0xf50)
         {
-            GoldValue = 21;
             Weight = 8.0;
             Layer = Layer.TwoHanded;
             Name = "Arbalete a manivelle";

@@ -6,10 +6,11 @@ namespace Server.Items
 {
 	public class Dices : Item, ITelekinesisable
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Dices() : base( 0xFA7 )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 		}
 

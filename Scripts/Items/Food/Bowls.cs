@@ -57,11 +57,12 @@ namespace Server.Items
 	}
 
 	public class WoodenBowlOfCarrots : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public WoodenBowlOfCarrots() : base( 0x15F9 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -96,11 +97,12 @@ namespace Server.Items
 	}
 
 	public class WoodenBowlOfCorn : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public WoodenBowlOfCorn() : base( 0x15FA )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -135,11 +137,12 @@ namespace Server.Items
 	}
 
 	public class WoodenBowlOfLettuce : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public WoodenBowlOfLettuce() : base( 0x15FB )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -174,11 +177,12 @@ namespace Server.Items
 	}
 
 	public class WoodenBowlOfPeas : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public WoodenBowlOfPeas() : base( 0x15FC )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -213,11 +217,12 @@ namespace Server.Items
 	}
 
 	public class PewterBowlOfCarrots : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public PewterBowlOfCarrots() : base( 0x15FE )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -252,11 +257,12 @@ namespace Server.Items
 	}
 
 	public class PewterBowlOfCorn : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public PewterBowlOfCorn() : base( 0x15FF )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -291,11 +297,12 @@ namespace Server.Items
 	}
 
 	public class PewterBowlOfLettuce : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public PewterBowlOfLettuce() : base( 0x1600 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -330,11 +337,12 @@ namespace Server.Items
 	}
 
 	public class PewterBowlOfPeas : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public PewterBowlOfPeas() : base( 0x1601 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -369,11 +377,12 @@ namespace Server.Items
 	}
 
 	public class PewterBowlOfPotatos : Food
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public PewterBowlOfPotatos() : base( 0x1602 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 1.0;
 			FillFactor = 2;
@@ -409,11 +418,12 @@ namespace Server.Items
 
 	[TypeAlias( "Server.Items.EmptyLargeWoodenBowl" )]
 	public class EmptyWoodenTub : Item
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public EmptyWoodenTub() : base( 0x1605 )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
 		}
 
@@ -438,11 +448,12 @@ namespace Server.Items
 
 	[TypeAlias( "Server.Items.EmptyLargePewterBowl" )]
 	public class EmptyPewterTub : Item
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public EmptyPewterTub() : base( 0x1603 )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
 		}
 
@@ -467,10 +478,11 @@ namespace Server.Items
 
 	public class WoodenBowlOfStew : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public WoodenBowlOfStew() : base( 0x1604 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 2.0;
 			FillFactor = 2;
@@ -506,10 +518,11 @@ namespace Server.Items
 
 	public class WoodenBowlOfTomatoSoup : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public WoodenBowlOfTomatoSoup() : base( 0x1606 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			Weight = 2.0;
 			FillFactor = 2;

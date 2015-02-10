@@ -7,10 +7,11 @@ namespace Server.Items
 	[Flipable( 0x102E, 0x102F )]
 	public class Nails : Item
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Nails() : base( 0x102E )
 		{
-            GoldValue = 3;
             Weight = 0.1;
 		}
 

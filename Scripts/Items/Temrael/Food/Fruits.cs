@@ -43,7 +43,9 @@ namespace Server.Items
 
 	[FlipableAttribute( 0x171f, 0x1720 )]
 	public class Banana : Food
-	{
+    {
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Banana() : this( 1 )
 		{
@@ -52,7 +54,6 @@ namespace Server.Items
 		[Constructable]
 		public Banana( int amount ) : base( amount, 0x171f )
 		{
-            GoldValue = 3;
 			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
@@ -366,6 +367,8 @@ namespace Server.Items
 
 	public class Grapes : Food
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Grapes() : this( 1 )
 		{
@@ -374,7 +377,6 @@ namespace Server.Items
 		[Constructable]
 		public Grapes( int amount ) : base( amount, 0x9D1 )
 		{
-            GoldValue = 3;
 			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
@@ -399,6 +401,8 @@ namespace Server.Items
 
 	public class Peach : Food
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Peach() : this( 1 )
 		{
@@ -407,7 +411,6 @@ namespace Server.Items
 		[Constructable]
 		public Peach( int amount ) : base( amount, 0x9D2 )
 		{
-            GoldValue = 3;
 			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
@@ -432,6 +435,8 @@ namespace Server.Items
 
 	public class Pear : Food
 	{
+        public override int GoldValue { get { return 2; } }
+
 		[Constructable]
 		public Pear() : this( 1 )
 		{
@@ -440,7 +445,6 @@ namespace Server.Items
 		[Constructable]
 		public Pear( int amount ) : base( amount, 0x994 )
 		{
-            GoldValue = 3;
 			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
@@ -465,6 +469,8 @@ namespace Server.Items
 
 	public class Apple : Food
 	{
+        public override int GoldValue { get { return 2; } }
+
 		[Constructable]
 		public Apple() : this( 1 )
 		{
@@ -473,7 +479,6 @@ namespace Server.Items
 		[Constructable]
 		public Apple( int amount ) : base( amount, 0x9D0 )
 		{
-            GoldValue = 3;
 			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}
@@ -498,6 +503,8 @@ namespace Server.Items
 
 	public class Watermelon : Food
 	{
+        public override int GoldValue { get { return 12; } }
+
 		[Constructable]
 		public Watermelon() : this( 1 )
 		{
@@ -506,7 +513,6 @@ namespace Server.Items
 		[Constructable]
 		public Watermelon( int amount ) : base( amount, 0xC5C )
 		{
-            GoldValue = 3;
 			this.Weight = 5.0;
 			this.FillFactor = 5;
 		}
@@ -573,6 +579,8 @@ namespace Server.Items
 	[FlipableAttribute( 0xc72, 0xc73 )]
 	public class Squash : Food
 	{
+        public override int GoldValue { get { return 5; } }
+
 		[Constructable]
 		public Squash() : this( 1 )
 		{
@@ -581,7 +589,6 @@ namespace Server.Items
 		[Constructable]
 		public Squash( int amount ) : base( amount, 0xc72 )
 		{
-            GoldValue = 3;
 			this.Weight = 0.5;
 			this.FillFactor = 1;
 		}

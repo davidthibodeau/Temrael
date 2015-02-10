@@ -307,10 +307,11 @@ namespace Server.Items
 			}
 		}
 
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public RecallRune() : base( 0x1F14 )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 			CalculateHue();
 		}

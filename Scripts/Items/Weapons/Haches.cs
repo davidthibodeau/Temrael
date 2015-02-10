@@ -396,7 +396,7 @@ namespace Server.Items
     // Deux mains droite
     public class Axe : BaseAxe
     {
-        public override int GoldValue { get { return 20; } set { } }
+        public override int GoldValue { get { return 20; } }
 
         //public override int DefMinDamage { get { return 7; } }
         //public override int DefMaxDamage { get { return 12; } }

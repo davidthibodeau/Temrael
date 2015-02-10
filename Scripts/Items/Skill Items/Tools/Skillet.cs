@@ -6,6 +6,7 @@ namespace Server.Items
 {
 	public class Skillet : BaseTool
 	{
+        public override int GoldValue { get { return 6; } }
 		public override int LabelNumber{ get{ return 1044567; } } // skillet
 
 		public override CraftSystem CraftSystem{ get{ return DefCooking.CraftSystem; } }
@@ -13,14 +14,12 @@ namespace Server.Items
 		[Constructable]
 		public Skillet() : base( 0x97F )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 		}
 
 		[Constructable]
 		public Skillet( int uses ) : base( uses, 0x97F )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 		}
 

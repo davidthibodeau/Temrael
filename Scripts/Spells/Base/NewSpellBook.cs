@@ -71,11 +71,12 @@ namespace Server.Items
        {
        }
 
+       public override int GoldValue { get { return 40; } }
+
       [Constructable]
        public NewSpellbook(ulong content, int itemid)
            : base(content, itemid)
       {
-         GoldValue = 40;
          Name = "Grimoire";
          Layer = Layer.OneHanded;
          Weight = 6.0;

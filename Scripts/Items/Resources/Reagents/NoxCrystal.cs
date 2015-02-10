@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class NoxCrystal : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public NoxCrystal() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public NoxCrystal( int amount ) : base( 0xF8E, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public NoxCrystal( Serial serial ) : base( serial )

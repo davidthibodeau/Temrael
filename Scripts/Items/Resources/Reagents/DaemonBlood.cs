@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class DaemonBlood : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
@@ -17,7 +19,6 @@ namespace Server.Items
 		[Constructable]
 		public DaemonBlood( int amount ) : base( 0xF7D, amount )
 		{
-            GoldValue = 1;
 		}
 
 		public DaemonBlood( Serial serial ) : base( serial )

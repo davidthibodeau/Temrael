@@ -6,10 +6,11 @@ namespace Server.Items
 {
 	public class Scales : Item
 	{
+        public override int GoldValue { get { return 15; } }
+
 		[Constructable]
 		public Scales() : base( 0x1852 )
 		{
-            GoldValue = 15;
 			Weight = 4.0;
 		}
 

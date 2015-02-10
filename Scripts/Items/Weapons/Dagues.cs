@@ -532,6 +532,8 @@ namespace Server.Items
 
     public class ButcherKnife : BaseKnife
     {
+        public override int GoldValue { get { return 6; } }
+
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
         public override int DefSpeed { get { return 30; } }
@@ -540,7 +542,6 @@ namespace Server.Items
         public ButcherKnife()
             : base(0x13f6)
         {
-            GoldValue = 6;
             Weight = 3.0;
             Layer = Layer.OneHanded;
             Name = "Couteau de boucher";
@@ -568,6 +569,8 @@ namespace Server.Items
 
     public class Cleaver : BaseKnife
     {
+        public override int GoldValue { get { return 6; } }
+
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
         public override int DefSpeed { get { return 35; } }
@@ -576,7 +579,6 @@ namespace Server.Items
         public Cleaver()
             : base(0xec3)
         {
-            GoldValue = 6;
             Weight = 3.0;
             Layer = Layer.OneHanded;
             Name = "Couperet";

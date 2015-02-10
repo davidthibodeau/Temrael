@@ -659,19 +659,11 @@ namespace Server
 		private DateTime m_LastMovedTime;
 		private Direction m_Direction;
 
-        private int m_GoldValue;
 		#endregion
 
         public virtual int GoldValue
         {
-            get { return m_GoldValue; }
-            set
-            {
-                if (value >= 0)
-                {
-                    m_GoldValue = value;
-                }
-            }
+            get { return int.MaxValue; }
         }
 
 		private ItemDelta m_DeltaFlags;
@@ -2198,7 +2190,7 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-            writer.Write(2); // version
+            writer.Write(3); // version
 
             writer.Write(m_TrapTrapped);
             writer.Write(m_TrapDisarmDifficulty);
@@ -2209,7 +2201,6 @@ namespace Server
 
             writer.Write(m_CreationFrame);
             writer.Write(m_canBeAltered);
-            writer.Write(m_GoldValue);
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -2548,8 +2539,8 @@ namespace Server
 
             m_canBeAltered = reader.ReadBool();
 
-            if (version > 0)
-                m_GoldValue = reader.ReadInt();
+            if (version < 3)
+                reader.ReadInt();
 
             SaveFlag flags = (SaveFlag)reader.ReadInt();
 
@@ -4630,8 +4621,6 @@ namespace Server
 		public Item()
 		{
 			m_Serial = Serial.NewItem;
-
-            m_GoldValue = int.MaxValue;
 
 			//m_Items = new ArrayList( 1 );
 			Visible = true;

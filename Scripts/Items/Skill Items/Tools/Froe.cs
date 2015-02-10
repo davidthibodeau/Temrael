@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class Froe : BaseTool
 	{
+        public override int GoldValue { get { return 6; } }
+
 		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
 
 		[Constructable]
 		public Froe() : base( 0x10E5 )
 		{
 			Weight = 1.0;
-            GoldValue = 6;
 		}
 
 		[Constructable]
 		public Froe( int uses ) : base( uses, 0x10E5 )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 		}
 

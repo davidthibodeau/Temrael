@@ -9,12 +9,13 @@ namespace Server.Items
 {
 	public class ContractOfEmployment : Item
 	{
+        public override int GoldValue { get { return 1500; } }
+
 		public override int LabelNumber{ get{ return 1041243; } } // a contract of employment
 
 		[Constructable]
 		public ContractOfEmployment() : base( 0x14F0 )
 		{
-            GoldValue = 3000;
 			Weight = 1.0;
 			//LootType = LootType.Blessed;
 		}

@@ -5,7 +5,9 @@ namespace Server.Items
 {
 	[FlipableAttribute( 0x13cb, 0x13d2 )]
 	public class LeatherLegs : BaseArmor
-	{
+    {
+        public override int GoldValue { get { return 15; } }
+
 
         public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
         public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
@@ -22,7 +24,6 @@ namespace Server.Items
 		[Constructable]
 		public LeatherLegs() : base( 0x13CB )
 		{
-            GoldValue = 15;
 			Weight = 4.0;
             Layer = Layer.Pants;
 		}

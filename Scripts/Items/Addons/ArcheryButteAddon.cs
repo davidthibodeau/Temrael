@@ -57,6 +57,8 @@ namespace Server.Items
 			set{ m_Bolts = value; }
 		}
 
+        public override int GoldValue { get { return 21; } }
+
 		[Constructable]
 		public ArcheryButte() : this( 0x100A )
 		{
@@ -64,7 +66,6 @@ namespace Server.Items
 
 		public ArcheryButte( int itemID ) : base( itemID )
 		{
-            GoldValue = 21;
 			m_MinSkill = -25.0;
 			m_MaxSkill = +25.0;
 		}

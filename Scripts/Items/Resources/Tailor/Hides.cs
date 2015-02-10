@@ -143,6 +143,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x1079, 0x1078 )]
 	public class Hides : BaseHides, IScissorable
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Hides() : this( 1 )
 		{
@@ -151,7 +153,6 @@ namespace Server.Items
 		[Constructable]
 		public Hides( int amount ) : base( CraftResource.RegularLeather, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public Hides( Serial serial ) : base( serial )

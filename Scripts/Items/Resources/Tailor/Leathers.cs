@@ -159,6 +159,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x1081, 0x1082 )]
 	public class Leather : BaseLeather
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Leather() : this( 1 )
 		{
@@ -167,7 +169,6 @@ namespace Server.Items
 		[Constructable]
 		public Leather( int amount ) : base( CraftResource.RegularLeather, amount )
 		{
-            GoldValue = 3;
             Name = "Cuir";
 		}
 

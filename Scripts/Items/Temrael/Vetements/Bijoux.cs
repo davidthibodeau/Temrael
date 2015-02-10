@@ -5,11 +5,12 @@ namespace Server.Items
 {
     public class ColierCoquillages : BaseNecklace
     {
+        public override int GoldValue { get { return 9; } }
+
         [Constructable]
         public ColierCoquillages()
             : base(0x3171)
         {
-            GoldValue = 9;
             Weight = 0.1;
             Name = "Collier de Coquillages";
         }
@@ -528,11 +529,12 @@ namespace Server.Items
     }
     public class BracerMetal : BaseBrassards
     {
+        public override int GoldValue { get { return 9; } }
+
         [Constructable]
         public BracerMetal()
             : base(0x2686)
         {
-            GoldValue = 9;
             Weight = 0.1;
             Name = "Bracer de Metal";
         }

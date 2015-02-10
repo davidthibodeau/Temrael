@@ -6,6 +6,8 @@ namespace Server.Items
 	[Flipable( 0x1059, 0x105A )]
 	public class SextantParts : Item
 	{
+        public override int GoldValue { get { return 21; } }
+
 		[Constructable]
 		public SextantParts() : this( 1 )
 		{
@@ -14,7 +16,6 @@ namespace Server.Items
 		[Constructable]
 		public SextantParts( int amount ) : base( 0x1059 )
 		{
-            GoldValue = 21;
 			Stackable = true;
 			Amount = amount;
 			Weight = 2.0;

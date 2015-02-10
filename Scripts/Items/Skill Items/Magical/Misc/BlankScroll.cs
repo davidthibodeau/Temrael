@@ -4,6 +4,8 @@ namespace Server.Items
 {
 	public class BlankScroll : Item, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public BlankScroll() : this( 1 )
 		{
@@ -12,7 +14,6 @@ namespace Server.Items
 		[Constructable]
 		public BlankScroll( int amount ) : base( 0xEF3 )
 		{
-            GoldValue = 3;
 			Stackable = true;
 			Weight = 1.0;
 			Amount = amount;

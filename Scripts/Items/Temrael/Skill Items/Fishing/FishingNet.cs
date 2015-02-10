@@ -24,10 +24,11 @@ namespace Server.Items
             set { m_Charge = value; }
         }
 
+        public override int GoldValue { get { return 21; } }
+
 		[Constructable]
 		public FishingNet() : base( 0xDCA )
         {
-            GoldValue = 21;
             Name = "filet de pêche";
 			Weight = 4.0;
 		}

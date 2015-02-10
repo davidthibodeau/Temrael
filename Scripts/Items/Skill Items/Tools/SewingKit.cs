@@ -6,12 +6,12 @@ namespace Server.Items
 {
 	public class SewingKit : BaseTool
 	{
+        public override int GoldValue { get { return 15; } }
 		public override CraftSystem CraftSystem{ get{ return DefTailoring.CraftSystem; } }
 
 		[Constructable]
 		public SewingKit() : base( 0xF9D )
 		{
-            GoldValue = 15;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}
@@ -19,7 +19,6 @@ namespace Server.Items
 		[Constructable]
 		public SewingKit( int uses ) : base( uses, 0xF9D )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}

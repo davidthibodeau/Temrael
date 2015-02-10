@@ -18,11 +18,12 @@ namespace Server.Items
         {
         }
 
+        public override int GoldValue { get { return 3; } }
+
         [Constructable]
         public Bandage(int amount)
             : base(0xE21)
         {
-            GoldValue = 3;
             Stackable = true;
             Weight = 0.1;
             Amount = amount;

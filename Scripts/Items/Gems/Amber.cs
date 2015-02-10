@@ -25,10 +25,11 @@ namespace Server.Items
 		{
 		}
 
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Amber( int amount ) : base( 0xF25 )
 		{
-            GoldValue = 6;
             Name = "Ambre";
 			Stackable = true;
 			Amount = amount;

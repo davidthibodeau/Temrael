@@ -4,10 +4,11 @@ namespace Server.Items
 {
 	public class Lute : BaseInstrument
 	{
+        public override int GoldValue { get { return 15; } }
+
 		[Constructable]
 		public Lute() : base( 0xEB3, 0x4C, 0x4D )
 		{
-            GoldValue = 15;
 			Weight = 5.0;
 		}
 
