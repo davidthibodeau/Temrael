@@ -29,20 +29,20 @@ namespace Server.SkillHandlers
         
         f(x) = -5x + 360
         */
-        public static double ScalMalusArmure( Mobile m, SkillName skill )
+        public static double ScalMalusArmure(Mobile m)
         {
             double dex = m.RawDex - m.Dex;
             double malus = 0;
             double val = 0;
 
-            val = ((-5 * (m.Skills[skill].Value - dex)) + 360) / 100;
+            val = ((-5 * (100 - dex)) + 360) / 100;
 
             if (val > 0)
             {
                 malus = val;
             }
 
-            return malus;
+            return 1 - malus;
         }
 
 
@@ -65,12 +65,12 @@ namespace Server.SkillHandlers
             else
             {
 
-                if (m.CheckSkill(SkillName.Infiltration, (m.Skills[SkillName.Infiltration].Value * (1 - ScalMalusArmure(m, SkillName.Infiltration)) / 100)))
+                if (m.CheckSkill(SkillName.Infiltration, (m.Skills[SkillName.Infiltration].Value * ScalMalusArmure(m))))
 				{
                     int steps = (int)(m.Skills[SkillName.Infiltration].Value / Diviseur); // A 100, 20 steps, ou 4 steps en courrant.
 
                     // Malus de dex sur le nombre de pas possible.
-                    int val = (int)(steps * (1 - ScalMalusArmure(m, SkillName.Infiltration)));
+                    int val = (int)(steps * ScalMalusArmure(m));
                     if (val != steps)
                     {
                         steps = val;

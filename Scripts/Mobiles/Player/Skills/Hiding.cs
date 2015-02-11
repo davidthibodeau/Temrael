@@ -62,7 +62,7 @@ namespace Server.SkillHandlers
                     }
                 }
 
-                ok = (!badCombat && m.CheckSkill(SkillName.Discretion, Stealth.ScalMalusArmure(m, SkillName.Discretion) * 100.0, 100.0));
+                ok = (!badCombat && m.CheckSkill(SkillName.Discretion, (m.Skills[SkillName.Discretion].Value * Stealth.ScalMalusArmure(m))));
             }
 
             if (badCombat)
