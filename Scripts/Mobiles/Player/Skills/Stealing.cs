@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Network;
 
 using Server.Spells;
+using Server.Commands;
 
 
 namespace Server.SkillHandlers
@@ -245,6 +246,8 @@ namespace Server.SkillHandlers
 						}*/
 					}
 				}
+
+                CommandLogging.WriteLine(from, "{2} à voler {0} appartenant à {1} en étant {3}", target, root, stolen != null ? "Réussit" : "Échoue", from.Hidden ? "caché" : "à découvert");
 			}
 		}
 

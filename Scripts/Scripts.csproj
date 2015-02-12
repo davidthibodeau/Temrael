@@ -100,6 +100,7 @@
     <Compile Include="Custom\Army System\ArmyAI.cs" />
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
+    <Compile Include="Engines\BuffHandling\Buffs.cs" />
     <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
@@ -2359,7 +2360,7 @@
     <Compile Include="Misc\AutoRestart.cs" />
     <Compile Include="Misc\AutoSave.cs" />
     <Compile Include="Misc\Broadcasts.cs" />
-    <Compile Include="Misc\BuffIcons.cs" />
+    <Compile Include="Engines\BuffHandling\BuffIcons.cs" />
     <Compile Include="Misc\Cleanup.cs" />
     <Compile Include="Misc\ClientVerification.cs" />
     <Compile Include="Misc\DispellableAttribute.cs" />

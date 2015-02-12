@@ -4,7 +4,7 @@ using Server;
 using Server.Mobiles;
 using Server.Network;
 
-namespace Server
+namespace Server.Engines.BuffHandling
 {
 	public class BuffInfo
 	{

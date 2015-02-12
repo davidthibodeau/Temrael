@@ -92,7 +92,7 @@ namespace Server.Spells
             {
                 m_Owner.RemoveResistanceMod(m_resMod);
 
-                m_Owner.SendMessage("Peau de pierre prend fin");
+                m_Owner.SendMessage("Peau de pierre prend fin.");
             }
         }
 
