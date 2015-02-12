@@ -24,7 +24,7 @@ namespace Server.Mobiles
             SetHits( 275 );
             SetMana( 100 );
             SetStam( 160 );    
-            SetArme(12, 18, 30);
+            SetArme(12, 18, 40);
 
             SetResistance( ResistanceType.Physical, 20 );
             SetResistance( ResistanceType.Magical, 0 );
