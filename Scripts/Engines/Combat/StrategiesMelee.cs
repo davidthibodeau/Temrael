@@ -199,7 +199,7 @@ namespace Server.Engines.Combat
 
         public override void CheckEquitation(Mobile m, EquitationType type)
         {
-            Equitation.Equitation.CheckEquitation(m, type, 20);
+            Equitation.Equitation.CheckEquitation(m, type, 0.2);
         }
     }
 
