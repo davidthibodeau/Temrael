@@ -5,6 +5,7 @@ using Server.Commands;
 using Server.Items;
 using Server.Mobiles;
 using Server.Misc;
+using Server.Engines.BuffHandling;
 
 namespace Server
 {
