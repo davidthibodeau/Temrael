@@ -157,36 +157,25 @@ namespace Server.Engines.Hiding
 
         public void AfficherVisiblePour(Mobile obs)
         {
-            alentours[obs] = DetectionStatus.Visible;
-
-            if (Utility.InUpdateRange(obs, mobile))
+            NetState ns = obs.NetState;
+            if (ns != null)
             {
-
-                NetState ns = obs.NetState;
-                if (ns != null)
+                obs.Send(MobileIncoming.Create(ns, obs, mobile));
+                if (ObjectPropertyList.Enabled)
                 {
-                    if (obs.CanSee(mobile))
-                    {
-                        obs.Send(MobileIncoming.Create(ns, obs, mobile));
-                        if (ObjectPropertyList.Enabled)
-                        {
-                            ns.Send(mobile.OPLPacket);
+                    ns.Send(mobile.OPLPacket);
 
-                            foreach (Item item in mobile.Items)
-                                ns.Send(item.OPLPacket);
-                        }
-
-                        // On test un gain de skill seulement en cas de reussite pour eviter que le joueur sache
-                        // que son jet a echoue a cause d'un gain de skill.
-                        obs.CheckSkill(SkillName.Detection, 0);
-
-                        obs.SendMessage("Vous détectez la présence de {0}", mobile.GetNameUsedBy(obs));
-                    }
-                    else
-                    {
-                        ns.Send(mobile.RemovePacket);
-                    }
+                    //foreach (Item item in mobile.Items)
+                    //    ns.Send(item.OPLPacket);
                 }
+
+                alentours[obs] = DetectionStatus.Visible;
+
+                // On test un gain de skill seulement en cas de reussite pour eviter que le joueur sache
+                // que son jet a echoue a cause d'un gain de skill.
+                obs.CheckSkill(SkillName.Detection, 0);
+
+                obs.SendMessage("Vous détectez la présence de {0}", mobile.GetNameUsedBy(obs));
             }
         }
 
