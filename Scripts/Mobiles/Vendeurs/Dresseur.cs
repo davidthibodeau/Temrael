@@ -236,13 +236,13 @@ namespace Server.Mobiles.Vendeurs
 
 			Container bank = from.FindBankNoCreate();
 			
-			if ( ( from.Backpack == null || from.Backpack.GetAmount( typeof( Gold ) ) < 30 ) && ( bank == null || bank.GetAmount( typeof( Gold ) ) < 30 ) )
+			if ( ( from.Backpack == null || from.Backpack.GetAmount( typeof( Gold ) ) < 3 ) && ( bank == null || bank.GetAmount( typeof( Gold ) ) < 3 ) )
 			{
 				SayTo( from, 1042556 ); // Thou dost not have enough gold, not even in thy bank account.
 			}
 			else
 			{
-				/* I charge 30 gold per pet for a real week's stable time.
+				/* I charge 3 gold per pet for a real week's stable time.
 				 * I will withdraw it from thy bank account.
 				 * Which animal wouldst thou like to stable here?
 				 */
@@ -293,7 +293,7 @@ namespace Server.Mobiles.Vendeurs
 			{
 				Container bank = from.FindBankNoCreate();
 
-				if ( ( from.Backpack != null && from.Backpack.ConsumeTotal( typeof( Gold ), 30 ) ) || ( bank != null && bank.ConsumeTotal( typeof( Gold ), 30 ) ) )
+				if ( ( from.Backpack != null && from.Backpack.ConsumeTotal( typeof( Gold ), 3 ) ) || ( bank != null && bank.ConsumeTotal( typeof( Gold ), 3 ) ) )
 				{
 					pet.ControlTarget = null;
 					pet.ControlOrder = OrderType.Stay;
