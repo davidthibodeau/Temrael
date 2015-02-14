@@ -26,6 +26,7 @@ namespace Server.Mobiles
         {
             CommandSystem.Register( "ResetSpawners", AccessLevel.Coordinateur, new CommandEventHandler( ResetSpawners_OnCommand ) );
             CommandSystem.Register( "GenSpawnerDocs", AccessLevel.Coordinateur, new CommandEventHandler( GenSpawnerDocs_OnCommand ) );
+            CommandSystem.Register( "RespawnSpawners", AccessLevel.Coordinateur, new CommandEventHandler( RespawnSpawners_OnCommand) );
         }
 
         private static void GenSpawnerDocs_OnCommand(CommandEventArgs e)
@@ -126,6 +127,23 @@ namespace Server.Mobiles
                 //TODO: Add confirmation gump for resetting all spawners.
             }
     
+        }
+
+        private static void RespawnSpawners_OnCommand(CommandEventArgs e)
+        {
+            List<Spawner> l = new List<Spawner>();
+            foreach (Item i in World.Items.Values)
+            {
+                if (i is Spawner)
+                {
+                    l.Add((Spawner)i);
+                }
+            }
+
+            foreach (Spawner spawner in l)
+            {
+                spawner.Respawn();
+            }
         }
 
 		private int m_Team;

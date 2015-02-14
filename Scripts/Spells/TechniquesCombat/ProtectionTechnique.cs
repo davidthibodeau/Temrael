@@ -56,14 +56,17 @@ namespace Server.Spells.TechniquesCombat
             bool blocked = false;
             Mobile retour = protege;
 
-            foreach (DictionaryEntry pair in MobilesList)
+            if (MobilesList != null)
             {
-                if (pair.Value == protege)
+                foreach (DictionaryEntry pair in MobilesList)
                 {
-                    if (CheckProtection((Mobile)pair.Key, protege))
+                    if (pair.Value == protege)
                     {
-                        retour = (Mobile)pair.Key;
-                        break;
+                        if (CheckProtection((Mobile)pair.Key, protege))
+                        {
+                            retour = (Mobile)pair.Key;
+                            break;
+                        }
                     }
                 }
             }
