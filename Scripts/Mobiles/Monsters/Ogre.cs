@@ -38,6 +38,12 @@ namespace Server.Mobiles
             SetSkill( SkillName.Parer, 35 );   
         }
 
+        public Ogre(Serial serial)
+            : base(serial)
+        {
+
+        }
+
         public override void GenerateLoot()
         {
             AddLoot(LootPack.Food);

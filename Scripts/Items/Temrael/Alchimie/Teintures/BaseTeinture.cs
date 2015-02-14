@@ -117,9 +117,9 @@ namespace Server.Items
                 if (target.ItemData.Animation > 0)
                 {
                     AddImage(30, 30, 0xC);
-                    AddImage(30, 30, target.ItemData.Animation + 50000, hue);
+                    AddImage(30, 30, target.ItemData.Animation + 50000, hue - 1);
                     AddImage(280, 30, 0xD);
-                    AddImage(280, 30, target.ItemData.Animation + 60000, hue);
+                    AddImage(280, 30, target.ItemData.Animation + 60000, hue - 1);
                 }
             }
 
