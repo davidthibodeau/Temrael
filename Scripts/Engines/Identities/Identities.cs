@@ -58,7 +58,7 @@ namespace Server.Engines.Identities
         [CommandProperty(AccessLevel.Batisseur)]
         public bool FoulardCacheIdentite
         {
-            get { return (((int)etatCachee) & 0x10) == 0x00; }
+            get { return (((int)etatCachee) & 0x10) != 0x00; }
             set
             {
                 if (value)
@@ -80,7 +80,7 @@ namespace Server.Engines.Identities
         [CommandProperty(AccessLevel.Batisseur)]
         public bool PossedeFoulard
         {
-            get { return (((int)etatCachee) & 0x01) == 0x00; }
+            get { return (((int)etatCachee) & 0x01) != 0x00; }
             set
             {
                 if (value)

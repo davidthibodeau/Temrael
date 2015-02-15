@@ -263,7 +263,7 @@ namespace Server.Spells
 		public virtual void SayMantra()
 		{
 			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && Caster.Player )
-				Caster.PublicOverheadMessage( MessageType.Spell, Caster.SpeechHue, true, Info.Mantra, false );
+				Caster.PublicOverheadMessage( MessageType.Regular, Caster.SpeechHue, false, Info.Mantra, false );
 		}
 
 		public virtual bool BlockedByHorrificBeast{ get{ return false; } }
