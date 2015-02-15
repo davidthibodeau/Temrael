@@ -458,7 +458,7 @@ namespace Server
         {
             get
             {
-                return Dex + Stam * Dex / StamMax;
+                return (Dex + Stam * Dex / StamMax) / 4;
             }
         }
 

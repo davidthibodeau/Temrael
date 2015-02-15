@@ -337,15 +337,9 @@ namespace Server.Spells
 
                 TimeSpan castTime = Info.castTime;
 
-                double vitesse = 1 - Caster.Stam / 100.0;
-                castTime = castTime.Add(TimeSpan.FromSeconds(vitesse));
+                double time = castTime.TotalSeconds;
 
-                if (LenteurSpell.Contains(Caster))
-                {
-                    double vit = castTime.TotalSeconds * 1000;
-                    LenteurSpell.GetOnHitEffect(Caster, ref vit);
-                    castTime = TimeSpan.FromMilliseconds(vit);
-                }
+                castTime = TimeSpan.FromSeconds(Vitesse.instance.CalculerVitesse(Caster, time));
 
                 if (Caster.Body.IsHuman)
                 {

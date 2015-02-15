@@ -14,7 +14,7 @@ namespace Server.Engines.Combat
 
         public double CalculerVitesse(Mobile atk, double baseTime)
         {
-             double s = baseTime / (1 + atk.Vitesse/ 200.0);
+             double s = baseTime / (1 + atk.Vitesse / 50.0);
 
             // Lenteur devrait modifier la props Vitesse directement.
             // Todo: introduire VitesseMod
