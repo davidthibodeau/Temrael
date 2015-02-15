@@ -228,7 +228,7 @@ namespace Server.Items
                 PlayerMobile from = (PlayerMobile)parent;
 
                 if (Disguise)
-                    from.Identities.DisguiseHidden = false;
+                    from.Identities.PossedeFoulard = false;
             }
         }
 

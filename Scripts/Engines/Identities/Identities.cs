@@ -4,12 +4,31 @@ using Server.Mobiles;
 using System.Collections;
 using Server.Items;
 using Server.Engines.Races;
+using Server.Commands;
 
 namespace Server.Engines.Identities
 {
     [PropertyObject]
     public class Identities
     {
+        public static void Initialize()
+        {
+            CommandSystem.Register("Foulard", AccessLevel.Player, new CommandEventHandler(RevealIdentity_OnCommand));
+        }
+
+
+        [Usage("Foulard")]
+        [Description("Permet de cacher ou non son identite avec un foulard ou une cagoule.")]
+        public static void RevealIdentity_OnCommand(CommandEventArgs e)
+        {
+            if (e.Mobile is PlayerMobile)
+            {
+                PlayerMobile from = (PlayerMobile)e.Mobile;
+
+                from.Identities.ToggleUtilisationFoulard();
+            }
+        }
+
         [Flags]
         private enum StatutCachee
         {
@@ -37,13 +56,14 @@ namespace Server.Engines.Identities
         private bool m_Disguised = false;
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public bool RevealIdentity
+        public bool FoulardCacheIdentite
         {
             get { return (((int)etatCachee) & 0x10) == 0x00; }
             set
             {
-                if (!value)
+                if (value)
                 {
+                    if(m_Mobile.Skills[SkillName.Deguisement].Value >= 50)
                     etatCachee = (StatutCachee)(0x10 | (int)etatCachee);
                     if (etatCachee == StatutCachee.Cache)
                         CacherIdentite();
@@ -53,6 +73,27 @@ namespace Server.Engines.Identities
                     if (etatCachee == StatutCachee.Cache)
                         RevelerIdentite();
                     etatCachee = (StatutCachee)(0x01 & (int)etatCachee);
+                }
+            }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public bool PossedeFoulard
+        {
+            get { return (((int)etatCachee) & 0x01) == 0x00; }
+            set
+            {
+                if (value)
+                {
+                    etatCachee = (StatutCachee)(0x01 | (int)etatCachee);
+                    if (etatCachee == StatutCachee.Cache)
+                        CacherIdentite();
+                }
+                else
+                {
+                    if (etatCachee == StatutCachee.Cache)
+                        RevelerIdentite();
+                    etatCachee = (StatutCachee)(0x10 & (int)etatCachee);
                 }
             }
         }
@@ -76,27 +117,6 @@ namespace Server.Engines.Identities
         {
             get { return m_Disguised; }
             set { m_Disguised = value; }
-        }
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public bool DisguiseHidden
-        {
-            get { return (((int)etatCachee) & 0x01) == 0x00; }
-            set
-            {
-                if (value)
-                {
-                    etatCachee = (StatutCachee)(0x01 | (int)etatCachee);
-                    if (etatCachee == StatutCachee.Cache)
-                        CacherIdentite();
-                }
-                else
-                {
-                    if (etatCachee == StatutCachee.Cache)
-                        RevelerIdentite();
-                    etatCachee = (StatutCachee)(0x10 & (int)etatCachee);
-                }
-            }
         }
 
         public Identity IdCachee
@@ -140,8 +160,17 @@ namespace Server.Engines.Identities
             if (version > 1)
             {
                 etatCachee = (StatutCachee)reader.ReadInt();
+                if(version < 3 && (StatutCachee)(0x10 | (int)etatCachee) == StatutCachee.DesireCacher)
+                {
+                    if(m_Mobile.Skills[SkillName.Deguisement].Value < 50)
+                    {
+                        etatCachee = (StatutCachee)(0x10 & (int)etatCachee);
+                    }
+                }
                 if (etatCachee == StatutCachee.Cache)
+                {
                     CacherIdentite();
+                }
             }
 
             m_lastDeguisement = reader.ReadDateTime();
@@ -151,7 +180,7 @@ namespace Server.Engines.Identities
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write(2); //version
+            writer.Write(3); //version
 
             baseIdentity.Serialize(writer);
             transformationIdentity.Serialize(writer);
@@ -181,6 +210,38 @@ namespace Server.Engines.Identities
                 case 1: return idCachee;
                 case 2: return transformationIdentity;
                 default: Console.WriteLine("Mauvais id d'identité pour {0}.", m_Mobile); return baseIdentity;
+            }
+        }
+
+        public void VerifierFoulard()
+        {
+            if(FoulardCacheIdentite)
+            {
+                if (m_Mobile.Skills[SkillName.Deguisement].Value < 50)
+                {
+                    FoulardCacheIdentite = false;
+                    m_Mobile.SendMessage("Il vous faut 50 en déguisement pour cacher votre idendité avec un foulard.");
+                }
+            }
+        }
+
+        public void ToggleUtilisationFoulard()
+        {
+            if(!FoulardCacheIdentite)
+            {
+                if (m_Mobile.Skills[SkillName.Deguisement].Value < 50)
+                {
+                    m_Mobile.SendMessage("Il vous faut 50 en déguisement pour cacher votre identité avec un foulard.");
+                    return;
+                }
+
+                FoulardCacheIdentite = true;
+                m_Mobile.SendMessage("Vous cachez votre identité avec le foulard.");
+            }
+            else
+            {
+                FoulardCacheIdentite = false;
+                m_Mobile.SendMessage("Vous révélez votre identité avec l'utilisation d'un foulard.");
             }
         }
 
@@ -262,9 +323,9 @@ namespace Server.Engines.Identities
             }
 
             if (Inconnu)
-                DisguiseHidden = true;
+                PossedeFoulard = true;
             else
-                DisguiseHidden = false;
+                PossedeFoulard = false;
         }
 
         public override string ToString()

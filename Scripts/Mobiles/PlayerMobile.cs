@@ -1565,7 +1565,7 @@ namespace Server.Mobiles
 
             if (item is BaseClothing)
                 if (((BaseClothing)item).Disguise)
-                    Identities.DisguiseHidden = true;
+                    Identities.PossedeFoulard = true;
 
 			return true;
 		}
@@ -2747,9 +2747,14 @@ namespace Server.Mobiles
 
 		public override void OnSkillChange( SkillName skill, double oldBase )
 		{
-            if (skill == SkillName.ResistanceMagique)
+            if (skill == SkillName.ResistanceMagique || skill == SkillName.ArmureNaturelle)
             {
                 UpdateResistances();
+            }
+
+            if (skill == SkillName.Deguisement)
+            {
+                Identities.VerifierFoulard();
             }
             
             if (skill == SkillName.Langues)
