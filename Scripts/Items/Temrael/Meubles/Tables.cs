@@ -107,7 +107,7 @@ namespace Server.Items
     {
         [Constructable]
         public TableElegante()
-            : base(0x0AFD)
+            : base(0x0B6B)
         {
             Weight = 2.0;
             Name = "Table élégante";
@@ -140,7 +140,7 @@ namespace Server.Items
     {
         [Constructable]
         public TableDeBoisSombre()
-            : base(0x0AFD)
+            : base(0x0B6E)
         {
             Weight = 2.0;
             Name = "Table de bois sombre";
@@ -173,7 +173,7 @@ namespace Server.Items
     {
         [Constructable]
         public TableDeBoisClair()
-            : base(0x0AFD)
+            : base(0x0B75)
         {
             Weight = 2.0;
             Name = "Table de bois clair";
