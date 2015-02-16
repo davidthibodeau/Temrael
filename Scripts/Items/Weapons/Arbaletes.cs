@@ -43,7 +43,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 11; } }
         //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public ArbaleteLourde()
@@ -78,7 +78,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 4; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 45; } }
+        public override int DefSpeed { get { return 50; } }
 
         [Constructable]
         public ArbaletePistolet()
@@ -113,7 +113,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 4; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public ArbaleteRepetition()
@@ -148,7 +148,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 9; } }
         //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 45; } }
+        public override int DefSpeed { get { return 50; } }
 
         [Constructable]
         public Arbavive()
@@ -185,7 +185,7 @@ namespace Server.Items
 
         //public override int DefMinDamage { get { return 13; } }
         //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public Crossbow()
@@ -220,7 +220,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 14; } }
         //public override int DefMaxDamage { get { return 19; } }
-        public override int DefSpeed { get { return 60; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public HeavyCrossbow()
@@ -255,7 +255,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 6; } }
         //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Lumitrait()
@@ -290,7 +290,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 12; } }
         //public override int DefMaxDamage { get { return 20; } }
-        public override int DefSpeed { get { return 60; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Percemurs()

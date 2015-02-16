@@ -8,7 +8,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 1; } }
         //public override int DefMaxDamage { get { return 4; } }
-        public override int DefSpeed { get { return 45; } }
+        public override int DefSpeed { get { return 50; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 100; } }
@@ -44,7 +44,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 1; } }
         //public override int DefMaxDamage { get { return 4; } }
-        public override int DefSpeed { get { return 45; } }
+        public override int DefSpeed { get { return 50; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -83,7 +83,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 1; } }
         //public override int DefMaxDamage { get { return 4; } }
-        public override int DefSpeed { get { return 45; } }
+        public override int DefSpeed { get { return 50; } }
 
         public override int InitMinHits { get { return 31; } }
         public override int InitMaxHits { get { return 100; } }
@@ -119,7 +119,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 1; } }
         //public override int DefMaxDamage { get { return 4; } }
-        public override int DefSpeed { get { return 45; } }
+        public override int DefSpeed { get { return 50; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }
@@ -158,7 +158,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 1; } }
         //public override int DefMaxDamage { get { return 4; } }
-        public override int DefSpeed { get { return 45; } }
+        public override int DefSpeed { get { return 50; } }
 
         public override int DefHitSound { get { return 0x237; } }
         public override int DefMissSound { get { return 0x23A; } }

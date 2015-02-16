@@ -8,7 +8,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Cuivardise()
@@ -43,7 +43,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Estoc()
@@ -78,7 +78,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Fleuret()
@@ -113,7 +113,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Lyzardese()
@@ -148,7 +148,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Musareche()
@@ -183,7 +183,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Percille()

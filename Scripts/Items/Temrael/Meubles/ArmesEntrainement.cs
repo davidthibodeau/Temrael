@@ -4,7 +4,7 @@ namespace Server.Items
 {
     public class DagueBois : BaseKnife
 	{
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
         public override int DefMinDamage { get { return 1; } }
         public override int DefMaxDamage { get { return 2; } }
         
@@ -38,7 +38,7 @@ namespace Server.Items
 
     public class LanceBois : BaseSpear
     {
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
         public override int DefMinDamage { get { return 1; } }
         public override int DefMaxDamage { get { return 2; } }
 
@@ -73,7 +73,7 @@ namespace Server.Items
 
     public class MasseBois : BaseBashing
     {
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
         public override int DefMinDamage { get { return 1; } }
         public override int DefMaxDamage { get { return 2; } }
 
@@ -108,7 +108,7 @@ namespace Server.Items
 
     public class BatonBois : BaseStaff
     {
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
         public override int DefMinDamage { get { return 1; } }
         public override int DefMaxDamage { get { return 2; } }
 
@@ -143,7 +143,7 @@ namespace Server.Items
 
     public class EpeeBois : BaseSword
     {
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
         public override int DefMinDamage { get { return 1; } }
         public override int DefMaxDamage { get { return 2; } }
 

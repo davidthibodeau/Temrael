@@ -9,7 +9,7 @@ namespace Server.Items
     //{
     //    //public override int DefMinDamage { get { return 2; } }
     //    //public override int DefMaxDamage { get { return 5; } }
-    //    public override int DefSpeed { get { return 30; } }
+    //    public override int DefSpeed { get { return 20; } }
 
     //    [Constructable]
     //    public Imperlame()
@@ -44,7 +44,7 @@ namespace Server.Items
     //{
     //    //public override int DefMinDamage { get { return 2; } }
     //    //public override int DefMaxDamage { get { return 5; } }
-    //    public override int DefSpeed { get { return 30; } }
+    //    public override int DefSpeed { get { return 20; } }
 
     //    [Constructable]
     //    public Poignard()
@@ -79,7 +79,7 @@ namespace Server.Items
     //{
     //    //public override int DefMinDamage { get { return 2; } }
     //    //public override int DefMaxDamage { get { return 5; } }
-    //    public override int DefSpeed { get { return 30; } }
+    //    public override int DefSpeed { get { return 20; } }
 
     //    [Constructable]
     //    public Eblame()
@@ -114,7 +114,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Basilarda()
@@ -149,7 +149,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Dagger()
@@ -184,7 +184,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Dentsombre()
@@ -219,7 +219,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Dracourbe()
@@ -254,7 +254,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Ecorchette()
@@ -289,7 +289,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Elvine()
@@ -324,7 +324,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Lozure()
@@ -359,7 +359,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Osseuse()
@@ -394,7 +394,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Safrine()
@@ -429,7 +429,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Serpentine()
@@ -464,7 +464,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Spadasine()
@@ -499,7 +499,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Brillaume()
@@ -536,7 +536,7 @@ namespace Server.Items
 
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public ButcherKnife()
@@ -573,7 +573,7 @@ namespace Server.Items
 
         //public override int DefMinDamage { get { return 3; } }
         //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Cleaver()
@@ -608,7 +608,7 @@ namespace Server.Items
     {
         //public override int DefMinDamage { get { return 2; } }
         //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public SkinningKnife()
