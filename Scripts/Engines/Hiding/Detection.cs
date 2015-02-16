@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.SkillHandlers;
+using Server.Commands;
+using Server.Targeting;
 
 namespace Server.Engines.Hiding
 {
@@ -38,19 +40,20 @@ namespace Server.Engines.Hiding
     {
         public static void Initialize()
         {
-            EventSink.Connected += new ConnectedEventHandler(EventSink_Connected);
-            EventSink.Disconnected += new DisconnectedEventHandler(EventSink_Disconnected);
+            EventSink.Login += new LoginEventHandler(EventSink_Login);
+            EventSink.Logout += new LogoutEventHandler(EventSink_Logout);
+            CommandSystem.Register("signaler", AccessLevel.Player, new CommandEventHandler(Signaler_OnCommand));
         }
 
-		private static void EventSink_Connected( ConnectedEventArgs e )
-		{
+        private static void EventSink_Login(LoginEventArgs e)
+        {
             ScriptMobile sm = e.Mobile as ScriptMobile;
 
             sm.ActiverTestsDetection();
-		}
+        }
 
-		private static void EventSink_Disconnected( DisconnectedEventArgs e )
-		{
+        private static void EventSink_Logout(LogoutEventArgs e)
+        {
             ScriptMobile sm = e.Mobile as ScriptMobile;
 
             sm.Detection.ResetAlentours();
@@ -60,7 +63,46 @@ namespace Server.Engines.Hiding
                 if (m != null)
                     m.Detection.RetirerJoueurDesAlentours(sm);
             }
-		}
+        }
+
+        private static void Signaler_OnCommand(CommandEventArgs e)
+        {
+            ScriptMobile from = e.Mobile as ScriptMobile;
+
+            if (!from.Hidden)
+            {
+                from.SendMessage("Vous devez être caché pour signaler votre présence à quelqu'un.");
+                return;
+            }
+
+            from.SendMessage("Veuillez viser le joueur à qui vous désirez signaler votre présence. (Vous devez lui être adjacent.)");
+            from.Target = new SignalerTarget();
+        }
+
+        private class SignalerTarget : Target
+        {
+            public SignalerTarget()
+                : base(1, false, TargetFlags.None)
+            {
+            }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                ScriptMobile target = targeted as ScriptMobile;
+                ScriptMobile sfrom = from as ScriptMobile;
+
+                if (target == null)
+                {
+                    from.SendMessage("Vous devez viser un joueur.");
+                    return;
+                }
+
+                sfrom.Detection.AfficherVisiblePour(target);
+                from.SendMessage("Vous signalez à {0} votre présence.", target.GetNameUsedBy(from));
+                target.SendMessage("{0} vous signale sa présence.", from.GetNameUsedBy(target));
+            }
+        }
+
 
         private Mobile mobile; // Proprietaire de l'instance de detection
         private Dictionary<Mobile, DetectionStatus> alentours; //Indique a qui tu es visible.
