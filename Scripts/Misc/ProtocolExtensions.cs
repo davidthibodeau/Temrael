@@ -81,27 +81,28 @@ namespace Server.Misc
 
 	public class AckPartyLocations : ProtocolExtension
 	{
-		public AckPartyLocations( Mobile from, Party party ) : base( 0x01, ((party.Members.Count - 1) * 9) + 4 )
-		{
-			for ( int i = 0; i < party.Members.Count; ++i )
-			{
-				PartyMemberInfo pmi = (PartyMemberInfo)party.Members[i];
+        public AckPartyLocations(Mobile from, Party party)
+            : base(0x01, ((party.Members.Count - 1) * 9) + 4)
+        {
+            for (int i = 0; i < party.Members.Count; ++i)
+            {
+                PartyMemberInfo pmi = (PartyMemberInfo)party.Members[i];
 
-				if ( pmi == null || pmi.Mobile == from )
-					continue;
+                if (pmi == null || pmi.Mobile == from)
+                    continue;
 
-				Mobile mob = pmi.Mobile;
+                Mobile mob = pmi.Mobile;
 
-				if ( Utility.InUpdateRange( from, mob ) && from.CanSee( mob ) )
-					continue;
+                if (Utility.InUpdateRange(from, mob) && from.CanSee(mob))
+                    continue;
 
-				m_Stream.Write( (int) mob.Serial );
-				m_Stream.Write( (short) mob.X );
-				m_Stream.Write( (short) mob.Y );
-				m_Stream.Write( (byte) (mob.Map == null ? 0 : mob.Map.MapID) );
-			}
+                m_Stream.Write((int)mob.Serial);
+                m_Stream.Write((short)0);
+                m_Stream.Write((short)0);
+                m_Stream.Write((byte)0x7F);
+            }
 
-			m_Stream.Write( (int) 0 );
-		}
+            m_Stream.Write((int)0);
+        }
 	}
 }
