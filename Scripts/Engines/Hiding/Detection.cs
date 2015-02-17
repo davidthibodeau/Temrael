@@ -411,6 +411,5 @@ namespace Server.Engines.Hiding
                 chance += (1 - chance) * jets[i];
             return chance;
         }
-
     }
 }

@@ -6615,7 +6615,6 @@ namespace Server
 				(!m.Hidden || (m_AccessLevel != AccessLevel.Player 
                 && (m_AccessLevel >= m.AccessLevel || m_AccessLevel >= AccessLevel.Developer))) 
                 && (!Alive || m_AccessLevel > AccessLevel.Player || m.Warmode));
-
 		}
 
 		public virtual bool CanBeRenamedBy( Mobile from )
