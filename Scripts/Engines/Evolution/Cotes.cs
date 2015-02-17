@@ -21,7 +21,7 @@ namespace Server.Engines.Evolution
         public RaisonCote this[int i] { get { return raisons[i]; } }
         public int Count { get { return raisons.Count; } }
 
-        public void OctroyerCote(ValeurCote cote, Mobile from, byte message)
+        public void OctroyerCote(ValeurCote cote, Mobile from, int message)
         {
             cotes.Add(new Cote(this, cote));
             raisons.Add(new RaisonCote(from, message));

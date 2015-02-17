@@ -48,6 +48,7 @@ namespace Server.Engines.Evolution
         public CotesGump(PlayerMobile pm, int page) : base(50, 50)
         {
             this.page = page;
+            mobile = pm;
 
             Closable=true;
             Disposable=true;
@@ -57,13 +58,16 @@ namespace Server.Engines.Evolution
             AddPage(0);
             AddBackground(31, 48, 616, 462, 9250);
             AddBackground(39, 56, 600, 447, 3500);
-            AddLabel(274, 78, 1301, @"Historique de cotes de " + pm.Name);
-            //AddButton(545, 460, 4005, 4006, 1, GumpButtonType.Reply, 0);
+            AddLabel(244, 78, 1301, @"Historique de cotes de " + pm.Name);
+            AddButton(545, 460, 4005, 4006, 1, GumpButtonType.Reply, 0);
             AddLabel(405, 461, 1301, @"Ajouter cote/fiole");
 
             Cotes cotes = pm.Experience.Cotes;
 
-            AddLabel(65, 431, 1301, String.Format("Dernière cote: {0}", cotes.LastCotation));
+            if (cotes.LastCotation.AddDays(1) < DateTime.Now)
+                AddLabel(65, 431, 1301, String.Format("Dernière cote: {0}", cotes.LastCotation));
+            else
+                AddLabel(65, 431, 1201, String.Format("Dernière cote: {0}", cotes.LastCotation));
             AddLabel(365, 431, 1301, String.Format("Dernière fiole: {0}", cotes.LastFiole));
 
             int basey = 110;
@@ -76,8 +80,7 @@ namespace Server.Engines.Evolution
                 RaisonCote cote = cotes[i];
                 AddLabel(60, basey + (i % 10) * 30, 1301, cote.Auteur.Account.Username);
                 AddLabel(150, basey + (i % 10) * 30, 1301, cote.Timestamp.ToString());
-                AddLabel(350, basey + (i % 10) * 30, 1301, cote.Message);
-                //AddButton(383, basey + (i % 10) * 30 - 1, 4005, 4006, i + 10, GumpButtonType.Reply, 0);
+                AddLabel(350, basey + (i % 10) * 30, 1301, cote.GMMessage);
 
             }
             if (page + 1 < cotes.Count / 10)
