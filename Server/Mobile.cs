@@ -6610,11 +6610,21 @@ namespace Server
 			if( m_Deleted || m.m_Deleted || m_Map == Map.Internal || m.m_Map == Map.Internal )
 				return false;
 
-			return this == m || (
-				m.m_Map == m_Map &&
-				(!m.Hidden || (m_AccessLevel != AccessLevel.Player 
-                && (m_AccessLevel >= m.AccessLevel || m_AccessLevel >= AccessLevel.Developer))) 
-                && (!Alive || m_AccessLevel > AccessLevel.Player || m.Warmode));
+            //(!Alive || m_AccessLevel > AccessLevel.Player || m.Warmode) // Je crois vraiment pas que ce soit utile.
+
+            // Note: La fonction était inline en une combinaison de conditions. Celles-ci sont séparées pour aider la clarté de la fonction.
+            if(this == m)
+                return true;
+
+            if(m.Map == Map)
+            {
+                if(AccessLevel > AccessLevel.Player && AccessLevel >= m.AccessLevel)
+                    return true;
+
+                if(!m.Hidden && m.Alive)
+                    return true;
+            }
+            return false;
 		}
 
 		public virtual bool CanBeRenamedBy( Mobile from )
