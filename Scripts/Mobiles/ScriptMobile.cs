@@ -12,7 +12,7 @@ namespace Server.Mobiles
     public class ScriptMobile : Mobile
     {
         [CommandProperty(AccessLevel.Batisseur)]
-        public Detection Detection
+        public virtual Detection Detection
         {
             get;
             set;

@@ -6612,9 +6612,9 @@ namespace Server
 
 			return this == m || (
 				m.m_Map == m_Map &&
-				(!m.Hidden || (m_AccessLevel != AccessLevel.Player && (m_AccessLevel >= m.AccessLevel || m_AccessLevel >= AccessLevel.Developer))) &&
-				//Temrael skills fix
-                ((m.Alive || (Core.SE && Skills.Concentration.Value >= 100.0)) || !Alive || m_AccessLevel > AccessLevel.Player || m.Warmode));
+				(!m.Hidden || (m_AccessLevel != AccessLevel.Player 
+                && (m_AccessLevel >= m.AccessLevel || m_AccessLevel >= AccessLevel.Developer))) 
+                && (!Alive || m_AccessLevel > AccessLevel.Player || m.Warmode));
 
 		}
 

@@ -104,7 +104,7 @@ namespace Server.Engines.Hiding
         }
 
 
-        private Mobile mobile; // Proprietaire de l'instance de detection
+        protected Mobile mobile; // Proprietaire de l'instance de detection
         private Dictionary<Mobile, DetectionStatus> alentours; //Indique a qui tu es visible.
 
         public Detection(Mobile m)
@@ -121,7 +121,7 @@ namespace Server.Engines.Hiding
         /// <returns></returns>
         public DetectionStatus this[Mobile m] { get { return alentours[m]; } }
 
-        public void DetecterAlentours()
+        public virtual void DetecterAlentours()
         {
             IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
             foreach (Mobile mob in eable)
@@ -174,6 +174,15 @@ namespace Server.Engines.Hiding
             {
                 if (!m.InLOS(mobile) || mobile  == m)
                     continue;
+
+                Garde garde = m as Garde;
+                if (garde != null)
+                {
+                    garde.Detection.DetecterAlentours();
+                    continue;
+                }
+
+
                 double chance = 0;
                 DetectionStatus status;
                 if (mobile.InRange(m, 0))
@@ -203,7 +212,6 @@ namespace Server.Engines.Hiding
 
             if (Utility.InUpdateRange(obs, mobile))
             {
-
                 NetState ns = obs.NetState;
                 if (ns != null)
                 {
