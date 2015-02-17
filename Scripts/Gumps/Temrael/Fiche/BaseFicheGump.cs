@@ -31,7 +31,7 @@ namespace Server.Gumps.Fiche
             AddMenuItem(x, y, 1191, 7, onglet == 7);
             //AddMenuItem(x, y, 1180, 3, onglet == 3);
             x += space;
-            //AddMenuItem(x, y, 1194, 4, onglet == 4);
+            AddMenuItem(x, y, 1193, 4, onglet == 4);
             x += space;
             x += space;
             //AddMenuItem(x, y, 1222, 6, onglet == 6);
@@ -56,9 +56,9 @@ namespace Server.Gumps.Fiche
                 //case 3:
                 //    from.SendGump(new FicheCaracteristiqueGump(m_from));
                 //    break;
-                //case 4:
-                //    from.SendGump(new FicheCompetencesGump(m_from));
-                //    break;
+                case 4:
+                    from.SendGump(new FicheCotesGump(m_from));
+                    break;
                 case 5:
                     from.SendGump(new FicheStatistiquesGump(m_from));
                     break;

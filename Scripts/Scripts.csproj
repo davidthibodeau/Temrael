@@ -116,6 +116,7 @@
     <Compile Include="Engines\Harvest\Excavation\Zones\MineVolcan.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\Targuemont.cs" />
     <Compile Include="Engines\Hiding\Detection.cs" />
+    <Compile Include="Engines\Hiding\DetectionGarde.cs" />
     <Compile Include="Engines\Identities\ResetIdentity.cs" />
     <Compile Include="Engines\Mort\Auxiliaires.cs" />
     <Compile Include="Engines\Mort\ContratAssassinat.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Engines\Transformations\Transformation.cs" />
     <Compile Include="Gumps\Temrael\Creation\BaseCreationGump.cs" />
     <Compile Include="Gumps\Temrael\Fiche\BaseFicheGump.cs" />
+    <Compile Include="Gumps\Temrael\Fiche\FicheCotesGump.cs" />
     <Compile Include="Items\Containers\BookCaseContainer.cs" />
     <Compile Include="Items\Gems\BaseGem.cs" />
     <Compile Include="Items\Gems\BlueDiamond.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Mobiles\Brigands\NpcReseauArbaleteM.cs" />
     <Compile Include="Mobiles\Brigands\NpcReseauEpeeF.cs" />
     <Compile Include="Mobiles\Brigands\NpcReseauEpeeM.cs" />
+    <Compile Include="Mobiles\Guards\Garde.cs" />
     <Compile Include="Mobiles\Monsters\Basilic.cs" />
     <Compile Include="Mobiles\Monsters\Elementaires\ElementaireFeu.cs" />
     <Compile Include="Mobiles\Monsters\Elementaires\ElementaireTerre.cs" />

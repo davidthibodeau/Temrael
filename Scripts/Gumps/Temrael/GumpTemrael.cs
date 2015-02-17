@@ -196,10 +196,17 @@ namespace Server.Gumps
         {
             AddHtml(x, y, largeur, 20, String.Concat("<h3><basefont color=#025a>", texte, "<basefont></h3>"), false, false);
         }
+
         public void AddHtmlTexte(int x, int y, int largeur, string texte)
         {
             AddHtml(x, y, largeur, 20, String.Concat("<h3><basefont color=#241b0d>", texte, "<basefont></h3>"), false, false);
         }
+
+        public void AddHtmlTexte(int x, int y, int largeur, int hauteur, string texte)
+        {
+            AddHtml(x, y, largeur, hauteur, String.Concat("<h3><basefont color=#241b0d>", texte, "<basefont></h3>"), false, false);
+        }
+
         public void AddHtmlTexteColored(int x, int y, int largeur, string texte, string color)
         {
             AddHtml(x, y, largeur, 20, String.Concat("<h3><basefont color=", color, ">", texte, "<basefont></h3>"), false, false);
