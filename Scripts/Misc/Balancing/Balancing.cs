@@ -23,33 +23,33 @@ namespace Server.Misc.Balancing
             if (!Core.Balancing)
                 return;
 
-            //#region Tests des différentes armes, plaque seulement.
-            //new Balancing(new MobilePlaqueEpeeRapide(), new MobilePlaqueEpeeLente(), "PLAQUE - 2H Rapide vs 2H Lente.txt");
+            #region Tests des différentes armes, plaque seulement.
+            new Balancing(new MobilePlaqueEpeeRapide(), new MobilePlaqueEpeeLente(), "PLAQUE - 2H Rapide vs 2H Lente.txt");
 
-            //new Balancing(new MobilePlaqueEpeeLenteBouclier(), new MobilePlaqueEpeeLente(), "PLAQUE - 1H Lente vs 2H Lente.txt");
+            new Balancing(new MobilePlaqueEpeeLenteBouclier(), new MobilePlaqueEpeeLente(), "PLAQUE - 1H Lente vs 2H Lente.txt");
 
-            //new Balancing(new MobilePlaqueEpeeLenteBouclier(), new MobilePlaqueEpeeRapide(), "PLAQUE - 1H Lente vs 2H Rapide.txt");
+            new Balancing(new MobilePlaqueEpeeLenteBouclier(), new MobilePlaqueEpeeRapide(), "PLAQUE - 1H Lente vs 2H Rapide.txt");
 
-            //new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeLente(), "PLAQUE - 1H Rapide vs 2H Lente.txt");
+            new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeLente(), "PLAQUE - 1H Rapide vs 2H Lente.txt");
 
-            //new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeRapide(), "PLAQUE - 1H Rapide vs 2H Rapide.txt");
+            new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeRapide(), "PLAQUE - 1H Rapide vs 2H Rapide.txt");
 
-            //new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeLenteBouclier(), "PLAQUE - 1H Rapide vs 1H Lente.txt");
-            //#endregion
+            new Balancing(new MobilePlaqueEpeeRapideBouclier(), new MobilePlaqueEpeeLenteBouclier(), "PLAQUE - 1H Rapide vs 1H Lente.txt");
+            #endregion
 
-            //#region Tests des différentes armes, cuir seulement.
-            //new Balancing(new MobileCuirEpeeRapide(), new MobileCuirEpeeLente(), "CUIR - 2H Rapide vs 2H Lente.txt");
+            #region Tests des différentes armes, cuir seulement.
+            new Balancing(new MobileCuirEpeeRapide(), new MobileCuirEpeeLente(), "CUIR - 2H Rapide vs 2H Lente.txt");
 
-            //new Balancing(new MobileCuirEpeeLenteBouclier(), new MobileCuirEpeeLente(), "CUIR - 1H Lente vs 2H Lente.txt");
+            new Balancing(new MobileCuirEpeeLenteBouclier(), new MobileCuirEpeeLente(), "CUIR - 1H Lente vs 2H Lente.txt");
 
-            //new Balancing(new MobileCuirEpeeLenteBouclier(), new MobileCuirEpeeRapide(), "CUIR - 1H Lente vs 2H Rapide.txt");
+            new Balancing(new MobileCuirEpeeLenteBouclier(), new MobileCuirEpeeRapide(), "CUIR - 1H Lente vs 2H Rapide.txt");
 
-            //new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeLente(), "CUIR - 1H Rapide vs 2H Lente.txt");
+            new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeLente(), "CUIR - 1H Rapide vs 2H Lente.txt");
 
-            //new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeRapide(), "CUIR - 1H Rapide vs 2H Rapide.txt");
+            new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeRapide(), "CUIR - 1H Rapide vs 2H Rapide.txt");
 
-            //new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeLenteBouclier(), "CUIR - 1H Rapide vs 1H Lente.txt");
-            //#endregion
+            new Balancing(new MobileCuirEpeeRapideBouclier(), new MobileCuirEpeeLenteBouclier(), "CUIR - 1H Rapide vs 1H Lente.txt");
+            #endregion
 
             //#region Tests du cuir, de la plaque, de l'armure naturelle et de l'armor pen.
 
@@ -67,18 +67,18 @@ namespace Server.Misc.Balancing
 
             //#endregion
 
-            #region Test des différentes catégories d'armes.
+            //#region Test des différentes catégories d'armes.
 
-            // On utilise l'épée comme base.
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHache(), "1.PLAQUE vs Plaque Hache.txt");
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueMasse(), "2.PLAQUE vs Plaque Masse.txt");
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaquePerforant(), "3.PLAQUE vs Plaque Perforant.txt");
-            new Balancing(new MobilePlaqueEpeeCrit(), new MobilePlaquePerforantCrit(), "4.PLAQUE vs Plaque Perforant Crit.txt");
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHaste(), "5.PLAQUE vs Plaque Haste.txt");
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArbalete(), "6.PLAQUE vs Plaque Arbalete.txt");
-            new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArc(), "7.PLAQUE vs Plaque Arc.txt");
+            //// On utilise l'épée comme base.
+            //new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHache(), "1.PLAQUE vs Plaque Hache.txt");
+            //new Balancing(new MobilePlaqueEpee(), new MobilePlaqueMasse(), "2.PLAQUE vs Plaque Masse.txt");
+            //new Balancing(new MobilePlaqueEpee(), new MobilePlaquePerforant(), "3.PLAQUE vs Plaque Perforant.txt");
+            //new Balancing(new MobilePlaqueEpeeCrit(), new MobilePlaquePerforantCrit(), "4.PLAQUE vs Plaque Perforant Crit.txt");
+            //new Balancing(new MobilePlaqueEpee(), new MobilePlaqueHaste(), "5.PLAQUE vs Plaque Haste.txt");
+            //new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArbalete(), "6.PLAQUE vs Plaque Arbalete.txt");
+            //new Balancing(new MobilePlaqueEpee(), new MobilePlaqueArc(), "7.PLAQUE vs Plaque Arc.txt");
 
-            #endregion
+            //#endregion
         }
 
         public Balancing(TestMobile m1, TestMobile m2)

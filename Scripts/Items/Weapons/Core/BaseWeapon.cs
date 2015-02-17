@@ -119,11 +119,11 @@ namespace Server.Items
                 switch (DefSpeed)
                 {
                     case MinWeaponSpeed: return 6;
-                    case 35: return 8;
+                    case 30: return 8;
                     case 40: return 9;
-                    case 45: return 11;
-                    case 50: return 12;
-                    case 55: return 14;
+                    case 50: return 11;
+                    case 60: return 12;
+                    case 70: return 14;
                     case MaxWeaponSpeed: return 15;
                     default: return 0;
                 }
