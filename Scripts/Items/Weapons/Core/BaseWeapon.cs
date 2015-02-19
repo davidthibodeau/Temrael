@@ -80,7 +80,7 @@ namespace Server.Items
         public const int MaxWeaponSpeed = 80;
 
         const double MinDPS = 1.5;
-        const double MaxDPS = 4.5;
+        const double MaxDPS = 3;
 
         public double DPSMin()
         {

@@ -15,8 +15,8 @@ namespace Server.Custom.Commandes
         public static void Initialize()
         {
             //CommandSystem.Register("Technique1", AccessLevel.Player, new CommandEventHandler(Technique1_OnCommand));
-            CommandSystem.Register("SnareTechnique", AccessLevel.Player, new CommandEventHandler(Technique_Snare_OnCommand));
-            CommandSystem.Register("ProtectionTechnique", AccessLevel.Player, new CommandEventHandler(Technique_Protection_OnCommand));
+            //CommandSystem.Register("SnareTechnique", AccessLevel.Player, new CommandEventHandler(Technique_Snare_OnCommand));
+            //CommandSystem.Register("ProtectionTechnique", AccessLevel.Player, new CommandEventHandler(Technique_Protection_OnCommand));
         }
 
 
