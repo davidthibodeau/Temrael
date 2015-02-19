@@ -11,6 +11,7 @@ namespace Server.Misc.Balancing
         private DateTime end;
         private int tempsEcoule;
         private int hprestantTotal;
+        private int stamrestantTotal;
         private bool done;
         private TestMobile loser;
         private TestMobile mob1, mob2;
@@ -162,23 +163,27 @@ namespace Server.Misc.Balancing
         public void ReportFight()
         {
             int hitsleft = 0;
+            int stamleft = 0;
             string gagnant = "";
             combats++;
             if(loser == mob1)
             {
                 gains2++;
                 hitsleft = mob2.Hits;
+                stamleft = mob2.Stam;
                 gagnant = mob2.Name;
             }
             else if(loser == mob2)
             {
                 gains1++;
                 hitsleft = mob1.Hits;
+                stamleft = mob1.Stam;
                 gagnant = mob1.Name;
             }
             TimeSpan duration = end - start;
             tempsEcoule += (int)duration.TotalSeconds;
             hprestantTotal += hitsleft;
+            stamrestantTotal += stamleft;
 
             string s;
             string durText = String.Format("{0}:{1}:{2}", duration.Hours, duration.Minutes, duration.Seconds);
@@ -191,6 +196,7 @@ namespace Server.Misc.Balancing
                 gains1, gains2, mob1.Name, mob2.Name, gains1 * 100 /combats, gains2 * 100 /combats);
             s += "\r\n\t\tTemps moyen: " + (tempsEcoule / combats);
             s += "\r\n\t\tHp restant moyen: " + (hprestantTotal / combats);
+            s += "\r\n\t\tStam restant moyen: " + (stamrestantTotal / combats);
 
             WriteLine(s);
         }

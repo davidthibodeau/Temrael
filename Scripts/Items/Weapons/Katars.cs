@@ -7,8 +7,8 @@ namespace Server.Items
     // Deux mains.
     public class Griffes : BaseKatar
     {
-        //public override int DefMinDamage { get { return 6; } }
-        //public override int DefMaxDamage { get { return 10; } }
+        //public override double DefMinDamage { get { return 6; } }
+        //public override double DefMaxDamage { get { return 10; } }
         public override int DefSpeed { get { return 30; } }
 
         [Constructable]
@@ -42,8 +42,8 @@ namespace Server.Items
 
     public class Katar : BaseKatar
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -77,8 +77,8 @@ namespace Server.Items
 
     public class Katara : BaseKatar
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 14; } }
         public override int DefSpeed { get { return 50; } }
 
         [Constructable]

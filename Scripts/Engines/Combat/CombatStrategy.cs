@@ -313,7 +313,7 @@ namespace Server.Engines.Combat
 
         #region Parer
 
-        const int ParerCoutMana = 15;
+        const int ParerCoutMana = 20;
 
         /// <summary>
         /// Cette fonction sert à déterminer si le défenseur a paré le coup.

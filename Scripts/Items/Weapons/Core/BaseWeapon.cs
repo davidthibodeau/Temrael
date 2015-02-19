@@ -72,77 +72,24 @@ namespace Server.Items
 		public virtual WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
         //public abstract int DefStrengthReq { get; }
-        public virtual int DefMinDamage { get { return DPSMin(); } }
-        public virtual int DefMaxDamage { get { return DPSMax(); } }
+        public virtual double DefMinDamage { get { return DPSMin(); } }
+        public virtual double DefMaxDamage { get { return DPSMax(); } }
         public abstract int DefSpeed { get; }
 
         public const int MinWeaponSpeed = 20;
         public const int MaxWeaponSpeed = 80;
 
-        public int DPSMin()
+        const double MinDPS = 1.5;
+        const double MaxDPS = 4.5;
+
+        public double DPSMin()
         {
-            if (Layer == Layer.OneHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case MinWeaponSpeed: return 3;
-                    case 30: return 4;
-                    case 40: return 6;
-                    case 50: return 7;
-                    case 60: return 9;
-                    case 70: return 10;
-                    case MaxWeaponSpeed: return 11;
-                    default: return 0;
-                }
-            }
-            if (Layer == Layer.TwoHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case MinWeaponSpeed: return 4;
-                    case 30: return 6;
-                    case 40: return 8;
-                    case 50: return 9;
-                    case 60: return 11;
-                    case 70: return 13;
-                    case MaxWeaponSpeed: return 14;
-                    default: return 0;
-                }
-            }
-            return 0;
+            return (MinDPS / 10 * DefSpeed);
         }
 
-        public int DPSMax()
+        public double DPSMax()
         {
-            if (Layer == Layer.OneHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case MinWeaponSpeed: return 6;
-                    case 30: return 8;
-                    case 40: return 9;
-                    case 50: return 11;
-                    case 60: return 12;
-                    case 70: return 14;
-                    case MaxWeaponSpeed: return 15;
-                    default: return 0;
-                }
-            }
-            if (Layer == Layer.TwoHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case MinWeaponSpeed: return 8;
-                    case 30: return 11;
-                    case 40: return 13;
-                    case 50: return 15;
-                    case 60: return 16;
-                    case 70: return 18;
-                    case MaxWeaponSpeed: return 20;
-                    default: return 0;
-                }
-            }
-            return 0;
+            return (MaxDPS / 10 * DefSpeed);
         }
 
 		public virtual int InitMinHits{ get{ return 150; } }
@@ -301,14 +248,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
         public double MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? DurabilityMalus(ExceptBonus(RessourceBonus(DefMinDamage))) : DurabilityMalus(ExceptBonus(RessourceBonus(m_MinDamage)))); }
+			get{ return ( m_MinDamage == -1 ? ComputeDamage(DefMinDamage) : ComputeDamage(m_MinDamage)); }
 			set{ }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public double MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? DurabilityMalus(ExceptBonus(RessourceBonus(DefMaxDamage))) : DurabilityMalus(ExceptBonus(RessourceBonus(m_MaxDamage)))); }
+			get{ return ( m_MaxDamage == -1 ? ComputeDamage(DefMaxDamage) : ComputeDamage(m_MaxDamage)); }
 			set{ }
 		}
 
@@ -356,34 +303,59 @@ namespace Server.Items
         }
 		#endregion
 
-        const double scalingRes = 0.3;
-        private double GetResScaling(int niveau, int nbRessource)
+        #region Compute Damage
+
+        // Affecte le balancement.
+        const double BonusAttackSpeed = 4; // À changer pour compenser le kiting.
+        const double Malus1Handed = 0.35; // À modifier si on pense que les armes 1H ont un trop grand DPS.
+
+        // N'affecte pas le balancement.
+        const double DiffExcept = 0.2;
+        const double BonusResource = 0.3;
+        const double MalusDurabilite = 0.3;
+
+        protected double ComputeDamage(double dmg)
         {
-            return (1 + niveau * scalingRes / nbRessource);
+            dmg = AttackSpeedBonus(dmg);
+
+            dmg = RessourceBonus(dmg);
+
+            dmg = ExceptBonus(dmg);
+
+            dmg = DurabilityMalus(dmg);
+
+            dmg = OneHandedMalus(dmg);
+
+            return dmg;
         }
 
-        public virtual double DurabilityMalus(double dmg)
-        {
-            if (m_Hits == 0)
-                return 0;
-
-            if (m_MaxHits == 0)
-                return dmg;
-
-            return (((double)m_Hits / (double)m_MaxHits) * 0.3 * dmg) + (dmg * 0.7);
-        }
-
-        public virtual double ExceptBonus(double dmg)
+        private double ExceptBonus(double dmg)
         {
             switch (this.Quality)
             {
-                case WeaponQuality.Low: dmg *= 0.80; break;
+                case WeaponQuality.Low: dmg *= (1 - DiffExcept); break;
                 case WeaponQuality.Regular: dmg *= 1; break;
-                case WeaponQuality.Exceptional: dmg *= 1.20; break;
+                case WeaponQuality.Exceptional: dmg *= (1 + DiffExcept); break;
             }
             return dmg;
         }
 
+        private double AttackSpeedBonus(double dmg)
+        {
+            if (DefSpeed == MinWeaponSpeed)
+            {
+                return dmg * (1 + BonusAttackSpeed);
+            }
+            else
+            {
+                return dmg * (1 + BonusAttackSpeed - (BonusAttackSpeed * ((double)(DefSpeed - MinWeaponSpeed) / (double)(MaxWeaponSpeed - MinWeaponSpeed))));
+            }
+        }
+
+        private double GetResScaling(int niveau, int nbRessource)
+        {
+            return (1 + niveau * BonusResource / nbRessource);
+        }
         public double RessourceBonus(double dmg)
         {
             // Les bonus vont de 0% à 30% de bonus d'AR.
@@ -416,7 +388,30 @@ namespace Server.Items
             return dmg;
         }
 
-		public virtual void UnscaleDurability()
+        private double DurabilityMalus(double dmg)
+        {
+            if (m_Hits == 0)
+                return 0;
+
+            if (m_MaxHits == 0)
+                return dmg;
+
+            return (((double)m_Hits / (double)m_MaxHits) * MalusDurabilite * dmg) + (dmg * (1 - MalusDurabilite));
+        }
+
+        private double OneHandedMalus(double dmg)
+        {
+            if (Layer.OneHanded == Layer)
+            {
+                dmg *= (1 - Malus1Handed);
+            }
+            return dmg;
+        }
+
+        #endregion
+
+
+        public virtual void UnscaleDurability()
 		{
 			int scale = 100 + GetDurabilityBonus();
 

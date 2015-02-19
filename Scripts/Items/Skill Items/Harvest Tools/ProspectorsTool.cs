@@ -23,8 +23,8 @@ namespace Server.Items
 		public override WeaponAbility PrimaryAbility{ get{ return WeaponAbility.CrushingBlow; } }
 		public override WeaponAbility SecondaryAbility{ get{ return WeaponAbility.ShadowStrike; } }
 
-		//public override int DefMinDamage{ get{ return 13; } }
-		//public override int DefMaxDamage{ get{ return 15; } }
+		//public override double DefMinDamage{ get{ return 13; } }
+		//public override double DefMaxDamage{ get{ return 15; } }
 		public override int DefSpeed{ get{ return 33; } }
 
 		[Constructable]

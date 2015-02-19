@@ -24,8 +24,8 @@ namespace Server.Engines.Combat
 
         private bool m_ranged;
 
-        public override int DefMinDamage { get { return dMinDmg; } }
-        public override int DefMaxDamage { get { return dMaxDmg; } }
+        public override double DefMinDamage { get { return dMinDmg; } }
+        public override double DefMaxDamage { get { return dMaxDmg; } }
         public override int DefSpeed { get { return dSpeed; } }
 
         public ArmeMonstre(int min, int max, int speed, bool ranged) : base(0)
