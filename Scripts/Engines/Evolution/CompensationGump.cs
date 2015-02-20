@@ -41,7 +41,7 @@ namespace Server.Engines.Evolution
         private static void Compensation_OnCommand(CommandEventArgs e)
         {
             Mobile from = e.Mobile;
-            if (from.AccessLevel < AccessLevel.Owner)
+            if (from.AccessLevel < AccessLevel.Coordinateur)
             {
 
                 MJ mj = GetMJ((Account)from.Account);
