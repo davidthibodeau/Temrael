@@ -237,7 +237,7 @@ namespace Server.Mobiles
 
 		public virtual Spell GetRandomDamageSpell()
 		{
-			int maxCircle = (int)( ( myMagery + 20.0 ) / ( 100.0 / 7.0 ) );
+			int maxCircle = (int)( ( myMagery + 20.0 ) / ( 100.0 / 5.0 ) );
 
 			if( maxCircle < 1 )
 				maxCircle = 1;
@@ -247,15 +247,13 @@ namespace Server.Mobiles
 				case 0:
 				case 1: return new MagicArrowSpell( m_Mobile, null );
 				case 2:
-				case 3: return new HarmSpell( m_Mobile, null );
+                case 3: return new FireballSpell(m_Mobile, null);
 				case 4:
-				case 5: return new FireballSpell( m_Mobile, null );
+                case 5: return new ExplosionSpell(m_Mobile, null);
 				case 6:
-				case 7: return new LightningSpell( m_Mobile, null );
+                case 7: return new EnergyBoltSpell(m_Mobile, null);
 				case 8:
-				case 9: return new MindBlastSpell( m_Mobile, null );
-				case 10: return new EnergyBoltSpell( m_Mobile, null );
-				case 11: return new ExplosionSpell( m_Mobile, null );
+                case 9: return new LightningSpell(m_Mobile, null);
 				default: return new FlameStrikeSpell( m_Mobile, null );
 			}
 		}
