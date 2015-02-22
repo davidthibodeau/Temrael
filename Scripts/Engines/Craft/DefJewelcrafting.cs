@@ -201,8 +201,20 @@ namespace Server.Engines.Craft
             #endregion
 
             #region Doigts
-            index = AddCraft(typeof(GoldRing), "Doigts", "Bague", 30.0, 50.0, typeof(FerIngot), "Lingot de Fer", 2, 1044037);
+            index = AddCraft(typeof(GoldRing), "Doigts", "Bague, Tourmaline", 30.0, 50.0, typeof(FerIngot), "Lingot de Fer", 2, 1044037);
+            AddRes(index, typeof(Tourmaline), "Tourmaline", 1, 1044240);
+
+            index = AddCraft(typeof(GoldRing), "Doigts", "Bague, Rubis", 40.0, 60.0, typeof(FerIngot), "Lingot de Fer", 2, 1044037);
             AddRes(index, typeof(Ruby), "Rubis", 1, 1044240);
+
+            index = AddCraft(typeof(GoldRing), "Doigts", "Bague, Améthyste", 50.0, 70.0, typeof(FerIngot), "Lingot de Fer", 2, 1044037);
+            AddRes(index, typeof(Amethyst), "Améthyste", 1, 1044240);
+
+            index = AddCraft(typeof(GoldRing), "Doigts", "Bague, Émeraude", 55.0, 75.0, typeof(FerIngot), "Lingot de Fer", 2, 1044037);
+            AddRes(index, typeof(Emerald), "Émeraude", 1, 1044240);
+
+            index = AddCraft(typeof(GoldRing), "Doigts", "Bague, Saphir", 60.0, 80.0, typeof(FerIngot), "Lingot de Fer", 2, 1044037);
+            AddRes(index, typeof(Sapphire), "Saphir", 1, 1044240);
 
             #endregion
 

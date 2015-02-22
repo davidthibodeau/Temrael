@@ -51,6 +51,7 @@ namespace Server.Scripts.Commands
                         {
                             PersoVise.NextSkillTime = 5; // Empêche le joueur visé d'utiliser un skill pour les 5 prochaines secondes.
                             PersoVise.RevealingAction();
+                            PersoVise.SendMessage("Quelqu'un a révélé votre présence.");
                         }
                         else
                         {
