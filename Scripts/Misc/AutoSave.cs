@@ -104,9 +104,10 @@ namespace Server.Misc
 		{
 
             string root = Directories.AppendPath(Directories.bsaves, "Automatic");
+            string back = Directories.AppendPath(Directories.bsaves, "LongTerm");
 
             DateTime now = DateTime.Now;
-            string path = Directories.AppendPath(root, String.Format("{0:D4}-{1:D2}", now.Year, now.Month));
+            string path = Directories.AppendPath(back, String.Format("{0:D4}-{1:D2}", now.Year, now.Month));
             string todaypath = Directories.AppendPath(root, "Today");
 
             string saves = Directories.saves;
