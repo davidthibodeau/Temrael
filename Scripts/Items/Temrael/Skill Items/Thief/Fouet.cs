@@ -13,8 +13,9 @@ namespace Server.Items
     public abstract class BaseFouet : BaseWearable, ICraftable, IScissorable
     {
         protected int m_Range;
-        protected const double WaitTime = 10.0;                               //Wait time on individual target (seconds)
+        protected const double WaitTime = 15.0;                               //Wait time on individual target (seconds)
         protected const double CooldownTime = 5.0;                            //Cooldown time between each use (seconds)
+        protected const double BlockEquipDuration = 15.0;                     //Wait time before target can reequip weapon in case of success drop
         protected static HashSet<Mobile> MobilesList = new HashSet<Mobile>(); //Immuned mobiles
         protected DateTime NextUse;                                           //Next time the whipe is usable
 
@@ -22,7 +23,7 @@ namespace Server.Items
         protected const double StealingBonus = 30.0;                          //Bonus if stealing is at 100
         protected const double SnoopingScaling = 0.20;                        //Scaling off snooping
         protected const double SnoopingBonus = 20.0;                          //Bonus if snooping is at 100
-
+        
         private Mobile m_Crafter;
         private string m_CrafterName;
         private FouetQuality m_Quality;
@@ -211,7 +212,7 @@ namespace Server.Items
         {
             if (DateTime.Now < NextUse)
                 from.SendMessage("Vous ne pouvez pas utiliser le fouet maintenant.");
-            else if (from.Dex < 65)
+            else if (from.Dex < 50)
                 from.SendMessage("Vous n'êtes pas assez à l'aise pour utiliser le fouet.");
             else if (from.FindItemOnLayer(Layer.OneHanded) != this)
                 from.SendMessage("Vous devez avoir le fouet en main pour l'utiliser.");
@@ -228,9 +229,45 @@ namespace Server.Items
             else if (MobilesList.Contains(target))
             {
                 DoAnimation(atk, target, Sounds.Miss);
+                atk.SendMessage("Vous devez attendre avant de tenter de voler l'arme de votre cible à nouveau");
             }
             else
                 DoEffect(atk, target);
+        }
+
+        protected double GetBonus(double value, double scalar, double offset)
+        {
+            double bonus = value * scalar;
+
+            if (value >= 100)
+                bonus += offset;
+
+            return bonus / 100;
+        }
+
+        public double GetChances(Mobile atk, Mobile def)
+        {
+            double chances = 0;
+            chances = GetBonus(atk.Skills[SkillName.Vol].Value, StealingScaling, StealingBonus);
+            chances += GetBonus(atk.Skills[SkillName.Fouille].Value, SnoopingScaling, SnoopingBonus);
+
+            Item weapon = Weapon(def);
+
+            if (weapon != null)
+            {
+                chances -= GetBonus(def.Skills[(CombatStrategy.GetStrategy(def).ToucherSkill)].Value, 0.05, 5);
+
+                if (weapon.Layer == Layer.TwoHanded)
+                {
+                    chances -= 0.15;
+                }
+                if (def.FindItemOnLayer(Layer.TwoHanded) as BaseShield != null)
+                {
+                    chances -= GetBonus(def.Skills[SkillName.Parer].Value, 0.15, 5);
+                }
+            }
+
+            return chances;
         }
 
         public void DoEffect(Mobile atk, Mobile def)
@@ -241,83 +278,46 @@ namespace Server.Items
 
             if (def.Spell != null)
             {
-                if (def.Spell.IsCasting && (chances - def.Skills[SkillName.Concentration].Value / 1000) >= Utility.RandomDouble())
+                if (def.Spell.IsCasting && (GetBonus(def.Skills[SkillName.ArtMagique].Value, 0.2, 5) + GetBonus(def.Skills[SkillName.Meditation].Value, 0.2, 5)) <= Utility.RandomDouble())
                 {
                     def.DisruptiveAction();
                 }
             }
 
-            if (weapon.Layer == Layer.TwoHanded) //Target has a two-handed weapon
+            if (chances >= Utility.RandomDouble())
             {
-                chances = chances / 1.5;
-
-                if (chances >= Utility.RandomDouble())
+                new WaitTimer(def, TimeSpan.FromSeconds(2*WaitTime)).Start();
+                if (weapon != null)
                 {
-                    if (chances / 1.5 >= Utility.RandomDouble() && !atk.Mounted) //Weapon is stolen
+                    double malus = (weapon.Layer == Layer.OneHanded) ? 0.5 : 0.3;
+                    if (malus * chances >= Utility.RandomDouble() && !atk.Mounted) //Steal the weapon
                     {
                         atk.AddToBackpack(weapon);
                         DoAnimation(atk, def, Sounds.SuccessSteal);
                     }
-                    else                                         //Weapon drops on ground
+                    else                                                           //Drop the weapon
                     {
                         weapon.MoveToWorld(weapon.GetWorldLocation(), weapon.Map);
                         DoAnimation(atk, def, Sounds.SuccessDrop);
                     }
+                    BaseWeapon.BlockEquip(def, TimeSpan.FromSeconds(chances * BlockEquipDuration));
                 }
-                else
+                else                                                               //Fail
                 {
-                    DoAnimation(atk, def, Sounds.Miss);
+                    DoAnimation(atk, def, Sounds.Whip);
                 }
-
-                new WaitTimer(def, TimeSpan.FromSeconds(WaitTime)).Start();
-            }
-            else if (weapon.Layer == Layer.OneHanded) //Target has a one-handed weapon
-            {
-                if (def.FindItemOnLayer(Layer.TwoHanded) as BaseShield != null)
-                    chances = chances - def.Skills[SkillName.Parer].Value * 0.001;
-
-                if (chances >= Utility.RandomDouble())
-                {
-                    if (chances / 1.5 >= Utility.RandomDouble() && !atk.Mounted) //Weapon is stolen 
-                    {
-                        atk.AddToBackpack(weapon);
-                        DoAnimation(atk, def, Sounds.SuccessSteal);
-                    }
-                    else                                         //Weapon drops on ground
-                    {
-                        weapon.MoveToWorld(weapon.GetWorldLocation(), weapon.Map);
-                        DoAnimation(atk, def, Sounds.SuccessDrop);
-                    }
-                }
-                else
-                {
-                    DoAnimation(atk, def, Sounds.Miss);
-                }
-                new WaitTimer(def, TimeSpan.FromSeconds(WaitTime)).Start();
+                atk.Stam -= (int)((1 - chances) * 150);
+                def.Damage(15, atk);
             }
             else
             {
-                DoAnimation(atk, def, Sounds.Whip);
+                new WaitTimer(def, TimeSpan.FromSeconds(WaitTime)).Start();
+                DoAnimation(atk, def, Sounds.Miss);
             }
+
             atk.RevealingAction();
             def.RevealingAction();
             atk.DisruptiveAction();
-            CombatStrategy.GetStrategy(atk).ResetAttackAfterCast(atk);
-            CombatStrategy.GetStrategy(def).ResetAttackAfterCast(def);
-        }
-
-        public double GetChances(Mobile atk, Mobile def)
-        {
-            double chances = 0;
-
-            chances += atk.Skills[SkillName.Vol].Value * StealingScaling;
-            if (atk.Skills[SkillName.Vol].Value == 100)
-                chances += StealingBonus;
-            chances += atk.Skills[SkillName.Fouille].Value * SnoopingScaling;
-            if (atk.Skills[SkillName.Fouille].Value == 100)
-                chances += SnoopingBonus;
-
-            return (chances / 100) - 0.003 * def.Skills[(CombatStrategy.GetStrategy(def).ToucherSkill)].Value;
         }
 
         public void DoAnimation(Mobile from, Mobile target, Sounds sound)
