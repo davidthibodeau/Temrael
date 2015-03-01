@@ -79,8 +79,8 @@ namespace Server.Items
         public const int MinWeaponSpeed = 20;
         public const int MaxWeaponSpeed = 80;
 
-        const double MinDPS = 1.5;
-        const double MaxDPS = 3;
+        const double MinDPS = 2;
+        const double MaxDPS = 3.5;
 
         public double DPSMin()
         {
@@ -306,8 +306,8 @@ namespace Server.Items
         #region Compute Damage
 
         // Affecte le balancement.
-        const double BonusAttackSpeed = 4; // À changer pour compenser le kiting.
-        const double Malus1Handed = 0.35; // À modifier si on pense que les armes 1H ont un trop grand DPS.
+        const double BonusAttackSpeed = 1; // À changer pour compenser le kiting.
+        const double Malus1Handed = 0.25; // À modifier si on pense que les armes 1H ont un trop grand DPS.
 
         // N'affecte pas le balancement.
         const double DiffExcept = 0.2;
