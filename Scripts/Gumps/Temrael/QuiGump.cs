@@ -149,6 +149,8 @@ namespace Server.Gumps
                 {
                     if (m == owner)
                         list.Add(m);
+                    else if (m.AccessLevel > owner.AccessLevel && owner.AccessLevel == AccessLevel.Player)
+                    { }
                     else if (!m.Hidden)
                         list.Add(m);
                     else if (m.Hidden && owner.AccessLevel >= m.AccessLevel)
