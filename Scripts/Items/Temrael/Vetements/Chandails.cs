@@ -3,6 +3,42 @@ using Server.Items;
 
 namespace Server.Items
 {
+    public class DoubletNobleAjuste : BaseMiddleTorso
+    {
+        [Constructable]
+        public DoubletNobleAjuste()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public DoubletNobleAjuste(int hue)
+            : base(0x2B0F, hue)
+        {
+            Weight = 5.0;
+            Name = "Doublet Noble";
+        }
+
+        public DoubletNobleAjuste(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
     public class ChandailLongBarbare : BaseMiddleTorso
     {
         [Constructable]
