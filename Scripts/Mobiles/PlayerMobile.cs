@@ -1703,53 +1703,21 @@ namespace Server.Mobiles
             {
                 return true;
             }
-            if (Hidden)
+            else if (m.Stam == m.StamMax)
             {
+                m.SendMessage("Vous poussez le personnage hors de votre chemin.");
+                Stam -= 10;
+                if (CanSee(m))
+                {
+                    SendMessage("Vous êtes poussé(e) hors du chemin par " + m.GetNameUsedBy(this));
+                }
                 return true;
-            }
-            if (m.Hidden)
-            {
-                m.Hidden = false;
-            }
-            if (!Mounted)
-            {
-                if (m.Stam == m.StamMax)
-                {
-                    if (m is PlayerMobile)
-                    {
-                        PlayerMobile from = (PlayerMobile)m;
-                        from.SendMessage("Vous poussez le personnage hors de votre chemin.");
-                        from.Stam -= 10;
-                        this.SendMessage("Vous êtes poussé(e) hors du chemin par " + from.GetNameUsedBy(this));
-                        return true;
-                    }
-                    else
-                    {
-                        m.SendMessage("Vous poussez le personnage hors de votre chemin.");
-                        m.Stam -= 10;
-                        this.SendMessage("Vous êtes poussé(e) hors du chemin");
-                        return true;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
             }
             else
             {
-                return true;
+                return false;
             }
         }
-
-		public override bool CheckShove( Mobile shoved )
-		{
-			//if( m_IgnoreMobiles || TransformationSpellHelper.UnderTransformation( shoved, typeof( WraithFormSpell ) ) )
-			//	return true;
-			//else
-				return base.CheckShove( shoved );
-		}
-
 
         public override void AddNameProperties(ObjectPropertyList list)
         {

@@ -2804,8 +2804,6 @@ namespace Server
 						{
 							SendLocalizedMessage(1019042);
 							Stam -= 10;
-
-							RevealingAction();
 						}
 						else
 						{
