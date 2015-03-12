@@ -197,9 +197,10 @@ namespace Server.Engines.Combat
             return BaseRange;
         }
 
-        public override void CheckEquitation(Mobile m, EquitationType type)
+        public override void OnHit(Mobile atk, Mobile def)
         {
-            Equitation.Equitation.CheckEquitation(m, type, 0.2);
+            Equitation.Equitation.CheckEquitation(def, EquitationType.BeingAttacked, 0.2);
+            base.OnHit(atk, def);
         }
     }
 
