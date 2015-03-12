@@ -43,13 +43,6 @@ namespace Server.Mobiles
             Detection = new Detection(this);
         }
 
-        protected override void OnLocationChange(Point3D oldLocation)
-        {
-            base.OnLocationChange(oldLocation);
-
-            ActiverTestsDetection();
-        }
-
         public override bool Move(Direction d)
         {
             bool retour = base.Move(d);
@@ -77,8 +70,6 @@ namespace Server.Mobiles
             //Le systeme de detection fonctionne juste pour les joueurs.
             if (AccessLevel > AccessLevel.Player) return;
             Detection.DetecterAlentours();
-            if (Hidden)
-                Detection.TesterPresenceAlentours();
         }
 
         public override void OnHiddenChanged()

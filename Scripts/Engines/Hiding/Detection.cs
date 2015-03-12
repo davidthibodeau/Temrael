@@ -143,6 +143,7 @@ namespace Server.Engines.Hiding
             return JetEtUpdate(obs, chance * SkillChance(obs), DetectionStatus.Jet);
         }
 
+        // Demande à tous les joueurs dans un rayon de 5 tiles de faire un jet de détection vers lui-même.
         public virtual void DetecterAlentours()
         {
             IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
@@ -150,47 +151,27 @@ namespace Server.Engines.Hiding
             {
                 ScriptMobile m = mob as ScriptMobile;
 
-                if (m != null)
+                if (m != mobile)
                 {
-                    if (m != mobile)
+                    // Quand les joueurs autour du mobile observateur bouge.
+                    if (mobile.InRange(m, 0))
+                        FaireJet(m, DetectionZone.ZeroTile);
+                    else if (mobile.InRange(m, 1))
+                        FaireJet(m, DetectionZone.UneTile);
+                    else
+                        FaireJet(m, DetectionZone.CinqTiles);
+
+                    if (m.Hidden)
                     {
+                        // Quand le joueur observateur bouge.
                         if (mobile.InRange(m, 0))
-                            FaireJet(m, DetectionZone.ZeroTile);
+                            m.Detection.FaireJet(mobile, DetectionZone.ZeroTile);
                         else if (mobile.InRange(m, 1))
-                            FaireJet(m, DetectionZone.UneTile);
+                            m.Detection.FaireJet(mobile, DetectionZone.UneTile);
                         else
-                            m.Detection.FaireJet(m, DetectionZone.CinqTiles);
+                            m.Detection.FaireJet(mobile, DetectionZone.CinqTiles);
                     }
                 }
-            }
-
-            eable.Free();
-        }
-
-        public void TesterPresenceAlentours()
-        {
-            if (mobile.AccessLevel > AccessLevel.Player)
-                return;
-
-            IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
-            foreach (Mobile m in eable)
-            {
-                if (!m.InLOS(mobile) || mobile  == m)
-                    continue;
-
-                Garde garde = m as Garde;
-                if (garde != null)
-                {
-                    garde.Detection.DetecterAlentours();
-                    continue;
-                }
-
-                if (mobile.InRange(m, 0))
-                    FaireJet(m, DetectionZone.ZeroTile);
-                else if (mobile.InRange(m, 1))
-                    FaireJet(m, DetectionZone.UneTile);
-                else
-                    FaireJet(m, DetectionZone.CinqTiles);
             }
 
             eable.Free();
@@ -256,6 +237,7 @@ namespace Server.Engines.Hiding
             ScriptMobile m = mobile as ScriptMobile;
             if (m == null || obs == mobile || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player || status == DetectionStatus.Visible)
                 return false;
+
             obs.SendMessage("Debug -- Chances de detection : " + String.Format("{0:0.00}", chance));
 
             if (chance >= Utility.RandomDouble())
@@ -265,7 +247,7 @@ namespace Server.Engines.Hiding
             }
             else
             {
-                m.Detection.MettreAJourAlentours(mobile, status);
+                m.Detection.MettreAJourAlentours(obs, status);
                 return false;
             }
         }
