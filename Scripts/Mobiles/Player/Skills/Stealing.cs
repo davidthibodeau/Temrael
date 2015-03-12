@@ -183,6 +183,17 @@ namespace Server.SkillHandlers
                             caught = true;
 						}
 
+                        if (m_Thief is ScriptMobile)
+                        {
+                            ScriptMobile sm = (ScriptMobile)m_Thief;
+
+                            IPooledEnumerable<Mobile> eable = m_Thief.GetMobilesInRange(3);
+                            foreach (Mobile mob in eable)
+                            {
+                                sm.Detection.FaireJet(mob, 0.1);
+                            }
+                        }
+
 						//caught = ( m_Thief.Skills[SkillName.Vol].Value < Utility.Random( 150 ) );
 					}
 				}

@@ -2913,6 +2913,16 @@ namespace Server.Mobiles
 
 		public override void OnSpeech( SpeechEventArgs e )
 		{
+            if (e.Mobile.Hidden && (e.Type == MessageType.Whisper || e.Type == MessageType.Regular))
+            {
+                if (e.Mobile is ScriptMobile)
+                {
+                    ScriptMobile sm = (ScriptMobile)e.Mobile;
+
+                    sm.Detection.FaireJet(this, 0.1);
+                }
+            }
+
 			if ( SpeechLog.Enabled && this.NetState != null )
 			{
 				if ( m_SpeechLog == null )
