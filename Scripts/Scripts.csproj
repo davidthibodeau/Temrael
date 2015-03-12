@@ -116,8 +116,8 @@
     <Compile Include="Engines\Evolution\Cotes.cs" />
     <Compile Include="Engines\Evolution\Experience.cs" />
     <Compile Include="Engines\Mort\MortEngine.cs" />
-    <Compile Include="Engines\Alchimie\PotionEffectHandler.cs" />
-    <Compile Include="Engines\Alchimie\PotionEffect.cs" />
+    <Compile Include="Engines\Alchimie\BuffHandler.cs" />
+    <Compile Include="Engines\Alchimie\BaseBuff.cs" />
     <Compile Include="Engines\Quetes\MonstreQueteInfo.cs" />
     <Compile Include="Engines\Races\AucuneRace.cs" />
     <Compile Include="Engines\Races\Humain.cs" />

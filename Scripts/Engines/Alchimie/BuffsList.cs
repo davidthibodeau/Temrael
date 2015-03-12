@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using Server.Items;
 
-namespace Server.Engines.Alchimie
+namespace Server.Engines.Buffs
 {
     #region Potions à buff.
 
-    public class PotionStrBuffScal : PotionEffect
+    public class PotionStrBuffScal : Poison
     {
         public PotionStrBuffScal()
         {
@@ -16,18 +16,6 @@ namespace Server.Engines.Alchimie
             Stacks = 50;
             MaxStacks = 50;
             FilterPerTick = 0.02;
-        }
-
-        public override Type[] Ingredients 
-        {
-            get
-            {
-                return new Type[]{
-                    typeof(BlackPearl),
-                    typeof(Bloodmoss)
-                };
-
-            }
         }
 
         StatMod s;
@@ -60,6 +48,43 @@ namespace Server.Engines.Alchimie
 
 
 
+
+    #endregion
+
+    #region Buffs
+    public class BuffForce : Buff
+    {
+        private int m_Bonus;
+
+        public BuffForce(int bonus)
+        {
+            m_Bonus = bonus;
+        }
+
+        StatMod s;
+        public override void Effect(Mobile trg)
+        {
+            if (!trg.StatMods.Contains(s))
+            {
+                trg.RemoveStatMod("Buff de force");
+                s = new StatMod(StatType.Str, "Buff de force", m_Bonus, TimeSpan.FromSeconds(2));
+                trg.AddStatMod(s);
+            }
+            else
+            {
+                s = new StatMod(StatType.Str, "Buff de force", m_Bonus, TimeSpan.FromSeconds(2));
+                trg.AddStatMod(s);
+            }
+        }
+
+        public override void RemoveEffect(Mobile trg)
+        {
+            trg.RemoveStatMod("Buff de force");
+        }
+    }
+    #endregion
+
+    #region Debuffs
 
     #endregion
 }

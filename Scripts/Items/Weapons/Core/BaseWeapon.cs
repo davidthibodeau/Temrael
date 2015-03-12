@@ -41,7 +41,7 @@ namespace Server.Items
 		private WeaponQuality m_Quality;
 		private Mobile m_Crafter;
         private string m_CrafterName;
-        private Server.Engines.Alchimie.PotionEffect m_Poison;
+        private Server.Engines.Buffs.Poison m_Poison;
 		private int m_PoisonCharges;
 		private int m_Hits;
 		private int m_MaxHits;
@@ -197,7 +197,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-        public Server.Engines.Alchimie.PotionEffect Poison
+        public Server.Engines.Buffs.Poison Poison
 		{
 			get{ return m_Poison; }
 			set{ m_Poison = value; InvalidateProperties(); }
@@ -1125,7 +1125,7 @@ namespace Server.Items
                 m_MaxHits = reader.ReadInt();
 
             if (GetSaveFlag(flags, SaveFlag.Poison))
-                m_Poison = Server.Engines.Alchimie.PotionEffect.Deserialize(reader);
+                m_Poison = (Engines.Buffs.Poison)Server.Engines.Buffs.BaseBuff.Deserialize(reader);
 
             if (GetSaveFlag(flags, SaveFlag.PoisonCharges))
                 m_PoisonCharges = reader.ReadInt();

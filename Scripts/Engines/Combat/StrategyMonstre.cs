@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Items;
-using Server.Engines.Alchimie;
+using Server.Engines.Buffs;
 
 namespace Server.Engines.Combat
 {
@@ -40,7 +40,7 @@ namespace Server.Engines.Combat
         protected override void AppliquerPoison(Mobile atk, Mobile def)
         {
             BaseWeapon weapon = Weapon(atk);
-            Server.Engines.Alchimie.PotionEffect poison = weapon.Poison;
+            Server.Engines.Buffs.Poison poison = weapon.Poison;
             if (poison != null && weapon.PoisonCharges > 0)
             {
                 if (!def.Poisoned)
@@ -57,11 +57,11 @@ namespace Server.Engines.Combat
                     if (selfdmg)
                     {
                         if (Utility.RandomDouble() > chance)
-                            PotionEffectHandler.Instance.ApplyEffect(atk, poison, Source.Weapon);
+                            BuffHandler.Instance.ApplyEffect(atk, poison, Source.Weapon);
                     }
                     else
                         if (atk.CheckSkill(SkillName.Empoisonnement, chance))
-                            PotionEffectHandler.Instance.ApplyEffect(def, poison, Source.Weapon);
+                            BuffHandler.Instance.ApplyEffect(def, poison, Source.Weapon);
                 }
             }
         }
