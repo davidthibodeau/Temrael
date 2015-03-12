@@ -99,7 +99,7 @@
     <Compile Include="Custom\Army System\ArmyAI.cs" />
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
-    <Compile Include="Engines\Alchimie\PotionsList.cs" />
+    <Compile Include="Engines\Alchimie\BuffsList.cs" />
     <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
