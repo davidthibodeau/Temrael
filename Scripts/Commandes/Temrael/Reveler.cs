@@ -44,9 +44,9 @@ namespace Server.Scripts.Commands
             {
                 if (from is PlayerMobile)
                 {
-                    if (targeted is PlayerMobile && targeted != from)
+                    if (targeted is Mobile && targeted != from)
                     {
-                        PlayerMobile PersoVise = (PlayerMobile)targeted;
+                        Mobile PersoVise = (Mobile)targeted;
                         if (PersoVise.Hidden) // Si le target est caché.
                         {
                             PersoVise.NextSkillTime = 5; // Empêche le joueur visé d'utiliser un skill pour les 5 prochaines secondes.
