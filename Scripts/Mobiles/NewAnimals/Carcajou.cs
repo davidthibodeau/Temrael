@@ -41,7 +41,7 @@ namespace Server.Mobiles.Animals
 
             Tamable = true;
             ControlSlots = 5;
-            MinTameSkill = 100;
+            MinTameSkill = 95;
 
         }
 
