@@ -4,36 +4,36 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Cadavre d'élémentaire de feu")]
-    public class ElementaireFeu : BaseCreature
+    [CorpseName("Cadavre d'élémentaire de magma")]
+    public class ElementaireMagma : BaseCreature
     {
         [Constructable]
-        public ElementaireFeu()
+        public ElementaireMagma()
             : base(AIType.AI_Mage, FightMode.Closest, 11, 1, 0.2, 0.4)
         {
-            Name = "Élémentaire de Feu";
-            Body = 15;
+            Name = "Élémentaire de Magma";
+            Body = 253;
             BaseSoundID = 273;
 
             PlayersAreEnemies = true;
 
             SetStr(120);
             SetDex(40);
-            SetInt(25);
+            SetInt(100);
 
             SetHits(275);
-            SetMana(50);
+            SetMana(300);
             SetStam(80);
-            SetArme(13, 20, 40);
+            SetArme(12, 19, 40);
 
             SetResistance(ResistanceType.Physical, 20);
-            SetResistance(ResistanceType.Magical, 50);
+            SetResistance(ResistanceType.Magical, 20);
 
             SetSkill(SkillName.ArmureNaturelle, 80);
-            SetSkill(SkillName.Tactiques, 80);
-            SetSkill(SkillName.Epee, 80);
-            SetSkill(SkillName.ArtMagique, 80);
-            SetSkill(SkillName.Evocation, 80);
+            SetSkill(SkillName.Tactiques, 60);
+            SetSkill(SkillName.Epee, 60);
+            SetSkill(SkillName.ArtMagique, 100);
+            SetSkill(SkillName.Evocation, 100);
             SetSkill(SkillName.CoupCritique, 50);
             SetSkill(SkillName.MagieDeGuerre, 50);
         }
@@ -50,7 +50,7 @@ namespace Server.Mobiles
         }
 
 
-        public ElementaireFeu(Serial serial)
+        public ElementaireMagma(Serial serial)
             : base(serial)
         {
         }
