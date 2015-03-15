@@ -238,8 +238,8 @@ namespace Server.Engines.Hiding
             if (m == null || obs == mobile || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player || status == DetectionStatus.Visible)
                 return false;
 
-            if (Core.Debug)
-                obs.SendMessage("Debug -- Chances de detection : " + String.Format("{0:0.00}", chance));
+            //if (Core.Debug)
+            //    obs.SendMessage("Debug -- Chances de detection : " + String.Format("{0:0.00}", chance));
 
             if (chance >= Utility.RandomDouble())
             {
