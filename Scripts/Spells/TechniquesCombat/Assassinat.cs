@@ -99,20 +99,17 @@ namespace Server.TechniquesCombat
             {
                 return MonsterScal;
             }
-            else if (strategy is StrategyDistance)
+            else if (atk.InRange(def, 1))
             {
-                if (atk.InRange(def, 5))
-                {
-                    return RangedScal;
-                }
-                else
-                {
-                    return 0; // Rend l'attaque non-surnoise.
-                }
+                return MeleeScal;
+            }
+            else if (atk.InRange(def, 5))
+            {
+                return RangedScal;
             }
             else
             {
-                return MeleeScal;
+                return 0;
             }
         }
 
