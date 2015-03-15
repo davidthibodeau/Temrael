@@ -1699,7 +1699,7 @@ namespace Server.Mobiles
 
         public override bool OnMoveOver(Mobile m)
         {
-            if (m.Hidden && m.AccessLevel > AccessLevel.Player)
+            if (m.Hidden && (m.AccessLevel > AccessLevel.Player || AccessLevel > AccessLevel.Player))
             {
                 return true;
             }
