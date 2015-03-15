@@ -45,14 +45,8 @@ namespace Server.Mobiles
         {
         }
 
-        public override int Hide { get { return 3; } }
+        public override int Hides { get { return 3; } }
         public override HideType HideType { get { return HideType.Maritime; } }
-
-        public GrenouilleVeneneuse(Serial serial)
-            : base(serial)
-        {
-        }
-
 
         public GrenouilleVeneneuse(Serial serial)
             : base(serial)
