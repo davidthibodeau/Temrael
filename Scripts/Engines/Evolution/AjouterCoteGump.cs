@@ -31,7 +31,7 @@ namespace Server.Engines.Evolution
 
             int y = 110;
             AddLabel(60, y, 1301, RaisonCote.GetGMMessage(0));
-            AddButton(383, y - 1, 4005, 4006, 100, GumpButtonType.Reply, 0);
+            AddButton(383, y - 1, 4005, 4006, 1, GumpButtonType.Reply, 0);
             y += 30;
             
             for (int i = 100; i < RaisonCote.LimiteMaximale(ValeurCote.Passable) + 1; i++)
@@ -76,8 +76,9 @@ namespace Server.Engines.Evolution
             {
                 case ValeurCote.Normal:
                     if (raison == 1)
+                        mobile.Experience.Cotes.OctroyerCote(ValeurCote.Normal, from, 0);
+                    else
                         return;
-                    mobile.Experience.Cotes.OctroyerCote(ValeurCote.Normal, from, raison);
                     break;
                 case ValeurCote.Passable:
                     mobile.Experience.Cotes.OctroyerCote(ValeurCote.Passable, from, raison);
