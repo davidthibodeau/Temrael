@@ -153,7 +153,7 @@ namespace Server.Engines.Combat
             if (!def.CanSee(atk))
             {
                 CheckSkillGain(atk, SkillName.Poursuite);
-                double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.75, 15);
+                double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.85);
                 chance = IncreasedValue(chance, poursuite);
             }
 
@@ -197,9 +197,9 @@ namespace Server.Engines.Combat
                 CheckSkillGain(atk, SkillName.Anatomie);
             }
 
-            double strBonus = GetBonus(atk.Str, 0.3, 5);
-            double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.5, 5);
-            double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.35, 3.5);
+            double strBonus = atk.Str * 0.35 / 100; // pas de bonus a 100 pour la force.
+            double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.55);
+            double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.40);
 
             double exceptBonus = 0;
 
@@ -207,7 +207,7 @@ namespace Server.Engines.Combat
             {
                 if (skillup)
                     CheckSkillGain(atk, SkillName.Polissage);
-                exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.2, 10);
+                exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.30);
             }
 
             return basedmg * (1 + strBonus + tactiqueBonus + anatomyBonus + exceptBonus);
@@ -218,12 +218,12 @@ namespace Server.Engines.Combat
             return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg);
         }
 
-        protected double GetBonus(double value, double scalar, double offset)
+        protected double GetBonus(double value, double scalar)
         {
             double bonus = value * scalar;
 
             if (value >= 100)
-                bonus += offset;
+                bonus += scalar * 5; //5% de la valeur a 100 est ajoutee.
 
             return bonus / 100;
         }
@@ -262,7 +262,7 @@ namespace Server.Engines.Combat
 
         public virtual double CritiqueChance(Mobile atk)
         {
-            double chance = GetBonus(atk.Skills[SkillName.CoupCritique].Value, 0.2, 5);
+            double chance = GetBonus(atk.Skills[SkillName.CoupCritique].Value, 0.25);
             return chance;
         }
 
@@ -292,7 +292,7 @@ namespace Server.Engines.Combat
 
             CheckSkillGain(atk, SkillName.MagieDeGuerre);
 
-            double magie = GetBonus(atk.Skills[SkillName.MagieDeGuerre].Value, 0.75, 15);
+            double magie = GetBonus(atk.Skills[SkillName.MagieDeGuerre].Value, 0.85);
             delay = ReduceValue(delay, magie);
 
             long ticks = Core.TickCount + Core.GetTicks(TimeSpan.FromMilliseconds(delay));
@@ -339,7 +339,7 @@ namespace Server.Engines.Combat
         {
             double parry = def.Skills[SkillName.Parer].Value;
 
-            return GetBonus(parry, 0.15, 2.5);
+            return GetBonus(parry, 0.15);
         }
 
         protected virtual double ParerChance(Mobile def)
@@ -348,7 +348,7 @@ namespace Server.Engines.Combat
 
             if (def.Spell != null && def.Spell.IsCasting)
             {
-                double magie = GetBonus(def.Skills[SkillName.Parer].Value, 0.85, 15);
+                double magie = GetBonus(def.Skills[SkillName.Parer].Value, 0.95);
 
                 chance = ReduceValue(chance, ReduceValue(0.75, magie));
             }

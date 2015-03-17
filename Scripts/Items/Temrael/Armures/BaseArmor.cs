@@ -273,7 +273,7 @@ namespace Server.Items
         { get { return (double)(DurabilityMalus(ResistanceBonus(BasePhysicalResistance)) + m_PhysicalBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public override double MagieResistance { get { return (double)(DurabilityMalus(ResistanceBonus(BaseMagieResistance)) + m_MagieBonus); } }
+        public override double MagicalResistance { get { return (double)(DurabilityMalus(ResistanceBonus(BaseMagieResistance)) + m_MagieBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public ArmorBodyType BodyPosition
@@ -991,8 +991,8 @@ namespace Server.Items
             if (PhysicalResistance != 0)
                 list.Add(1060448, "{0}\t{1}", couleur, String.Format("{0:0.00}", PhysicalResistance)); // physical resist ~1_val~%
 
-            if (MagieResistance != 0)
-                list.Add(1060446, "{0}\t{1}", couleur, String.Format("{0:0.00}", MagieResistance)); // energy resist ~1_val~%
+            if (MagicalResistance != 0)
+                list.Add(1060446, "{0}\t{1}", couleur, String.Format("{0:0.00}", MagicalResistance)); // energy resist ~1_val~%
 
         }
 

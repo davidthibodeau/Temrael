@@ -60,7 +60,7 @@ namespace Server.Engines.Combat
                 CheckSkillGain(atk, SkillName.Anatomie);
 
             double dmg = base.ComputerDegats(atk, basedmg, skillup);
-            double menuiserieBonus = GetBonus(atk.Skills[SkillName.Menuiserie].Value, 0.2, 10);
+            double menuiserieBonus = GetBonus(atk.Skills[SkillName.Menuiserie].Value, 0.3);
 
             return dmg + basedmg * menuiserieBonus;
         }

@@ -20,7 +20,7 @@ namespace Server.Engines.Combat
         public double DegatsPhysiquesReduits(Mobile atk, Mobile def, double dmg, double incpen)
         {
             double basear = def.PhysicalResistance > 75 ? 75 : def.PhysicalResistance;
-            double basepen = GetBonus(atk.Skills[SkillName.Penetration].Value, 0.3, 5);
+            double basepen = GetBonus(atk.Skills[SkillName.Penetration].Value, 0.35);
             double reducedar = ReduceValue(basear, basepen);
             reducedar = ReduceValue(reducedar, incpen);
 
@@ -82,12 +82,12 @@ namespace Server.Engines.Combat
             return dmg * (1 - resist);
         }
 
-        public static double GetBonus(double value, double scalar, double offset)
+        public static double GetBonus(double value, double scalar)
         {
             double bonus = value * scalar;
 
             if (value >= 100)
-                bonus += offset;
+                bonus += scalar * 5; // 5% de la valeur a 100 est donnee en bonus.
 
             return bonus / 100;
         }

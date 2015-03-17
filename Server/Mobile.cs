@@ -442,9 +442,7 @@ namespace Server
             get
             {
                 double sk = Skills[SkillName.ResistanceMagique].Value;
-                double resist = sk * 0.40;
-                if (sk >= 100)
-                    resist += 5;
+                double resist = sk * 0.25;
                 return resist;
             }
         }
@@ -481,7 +479,7 @@ namespace Server
             {
                 double ArNatSkill = Skills[SkillName.ArmureNaturelle].Value;
 
-                double baseArNat = ArNatSkill * 0.25 + (ArNatSkill >= 100 ? 5 : 0);
+                double baseArNat = ArNatSkill * 0.30;
                 double reducedAr = (75 - PhysicalResistance * 5 / 4) / 75 * baseArNat;
 
                 if (reducedAr < 0)
@@ -595,7 +593,7 @@ namespace Server
 					continue;
 
 				m_Resistances[0] += item.PhysicalResistance;
-				m_Resistances[1] += item.MagieResistance;
+				m_Resistances[1] += item.MagicalResistance;
 			}
 
 			for( int i = 0; i < m_Resistances.Length; ++i )
@@ -5232,7 +5230,7 @@ namespace Server
 			item.OnAdded( this );
 			OnItemAdded( item );
 
-			if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
+			if( item.PhysicalResistance != 0 || item.MagicalResistance != 0 )
 				UpdateResistances();
 		}
 
@@ -5275,7 +5273,7 @@ namespace Server
 				item.OnRemoved( this );
 				OnItemRemoved( item );
 
-				if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
+				if( item.PhysicalResistance != 0 || item.MagicalResistance != 0 )
 					UpdateResistances();
 			}
 		}

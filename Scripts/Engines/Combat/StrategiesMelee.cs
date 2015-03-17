@@ -15,9 +15,9 @@ namespace Server.Engines.Combat
             double chance = 0;
 
             if (Weapon(def).Layer == Layer.OneHanded)
-                chance = GetBonus(parry, 0.5, 5);
+                chance = GetBonus(parry, 0.50);
             else
-                chance = GetBonus(parry, 0.20, 2.5);
+                chance = GetBonus(parry, 0.20);
 
             return chance;
         }
@@ -139,7 +139,7 @@ namespace Server.Engines.Combat
         public override double CritiqueChance(Mobile atk)
         {
             double chance = base.CritiqueChance(atk);
-            double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.25, 5);
+            double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.3);
             return IncValueDimReturn(chance, incChance);
         }
 
@@ -160,7 +160,7 @@ namespace Server.Engines.Combat
         protected override double ToucherChance(Mobile atk, Mobile def)
         {
             double chance = base.ToucherChance(atk, def);
-            double incChance = GetBonus(atk.Skills[SkillName.Epee].Value, 0.05, 5);
+            double incChance = GetBonus(atk.Skills[SkillName.Epee].Value, 0.1);
             return IncreasedValue(chance, incChance);
         }
     }
@@ -175,7 +175,7 @@ namespace Server.Engines.Combat
 
         public override double DegatsReduits(Mobile atk, Mobile def, double dmg)
         {
-            double contpen = GetBonus(atk.Skills[SkillName.ArmeContondante].Value, 0.3, 10);
+            double contpen = GetBonus(atk.Skills[SkillName.ArmeContondante].Value, 0.4);
             return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg, contpen);
         }
     }
@@ -215,7 +215,7 @@ namespace Server.Engines.Combat
         protected override double ComputerDegats(Mobile atk, double basedmg, bool skillup)
         {
             double dmg = base.ComputerDegats(atk, basedmg, skillup);
-            double foresterieBonus = GetBonus(atk.Skills[SkillName.Hache].Value, 0.2, 10);
+            double foresterieBonus = GetBonus(atk.Skills[SkillName.Hache].Value, 0.3);
 
             return dmg + basedmg * foresterieBonus;
         }

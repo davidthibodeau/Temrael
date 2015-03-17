@@ -1047,7 +1047,7 @@ namespace Server
 			if ( v != 0 )
 				list.Add( 1060448, v.ToString() ); // physical resist ~1_val~%
 
-			v = MagieResistance;
+			v = MagicalResistance;
 
 			if ( v != 0 )
 				list.Add( 1060446, v.ToString() ); // energy resist ~1_val~%
@@ -3528,7 +3528,7 @@ namespace Server
 		}
 
 		public virtual double PhysicalResistance{ get{ return 0.0; } }
-        public virtual double MagieResistance { get { return 0.0; } }
+        public virtual double MagicalResistance { get { return 0.0; } }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Serial Serial

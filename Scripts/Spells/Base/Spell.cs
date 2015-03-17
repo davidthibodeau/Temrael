@@ -462,19 +462,15 @@ namespace Server.Spells
             return damage;
         }
 
-        const double ScalArtMag      = 0.625; // Bonus lié au skill ArtMagique.
-        const double BonusArtMag     = 6.25;
-
-        const double ScalMainBranche = 0.3;  // Bonus sur le skill de la branche passée en paramètre.
-        const double BonusMainBranch = 10;
-
+        const double ScalArtMag      = 0.65; // Bonus lié au skill ArtMagique.
+        
+        const double ScalMainBranche = 0.4;  // Bonus sur le skill de la branche passée en paramètre.
+        
         const double ScalScndBranche = 0.05;  // Bonus sur les skills des autres branches.
 
-        const double ScalInscription = 0.5;  // Bonus lié au skill Inscription.
-        const double BonusInscription= 5;
-
-        const double ScalIntel       = 0.3;  // Bonus lié à l'intelligence.
-        const double BonusIntel      = 5;
+        const double ScalInscription = 0.55;  // Bonus lié au skill Inscription.
+        
+        const double ScalIntel       = 0.35;  // Bonus lié à l'intelligence.
 
         public static double GetSpellScaling(Mobile atk, SkillName branche, double ScalingMax)
         {
@@ -483,46 +479,44 @@ namespace Server.Spells
             // Les ifs sont gérés à la compilation, donc pas de coût, juste un warning gossant.
             if (ScalArtMag != 0)
             {
-                Scaling += Damage.GetBonus(atk.Skills[SkillName.ArtMagique].Value, ScalArtMag, BonusArtMag);
+                Scaling += Damage.GetBonus(atk.Skills[SkillName.ArtMagique].Value, ScalArtMag);
             }
 
             if (ScalMainBranche != 0)
             {
                 if ((ScalMainBranche - ScalScndBranche) > 0)
-                    Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche), BonusMainBranch);
+                    Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche));
                 // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
             }
 
             if (ScalScndBranche != 0)
             {
-                Scaling += Damage.GetBonus(atk.Skills[SkillName.Evocation].Value
-                                         + atk.Skills[SkillName.Immuabilite].Value
-                                         + atk.Skills[SkillName.Alteration].Value
-                                         + atk.Skills[SkillName.Providence].Value
-                                         + atk.Skills[SkillName.Transmutation].Value
-                                         + atk.Skills[SkillName.Thaumaturgie].Value
-                                         + atk.Skills[SkillName.Hallucination].Value
-                                         + atk.Skills[SkillName.Ensorcellement].Value
-                                         + atk.Skills[SkillName.Animisme].Value, ScalScndBranche, 0);
+                Scaling += 
+                    (atk.Skills[SkillName.Evocation].Value
+                        + atk.Skills[SkillName.Immuabilite].Value
+                        + atk.Skills[SkillName.Alteration].Value
+                        + atk.Skills[SkillName.Providence].Value
+                        + atk.Skills[SkillName.Transmutation].Value
+                        + atk.Skills[SkillName.Thaumaturgie].Value
+                        + atk.Skills[SkillName.Hallucination].Value
+                        + atk.Skills[SkillName.Ensorcellement].Value
+                        + atk.Skills[SkillName.Animisme].Value) * ScalScndBranche / 100;
             }
 
             if (ScalInscription != 0)
             {
-                Scaling += Damage.GetBonus(atk.Skills[SkillName.Inscription].Value, ScalInscription, BonusInscription);
+                Scaling += Damage.GetBonus(atk.Skills[SkillName.Inscription].Value, ScalInscription);
             }
 
             if (ScalIntel != 0)
             {
-                Scaling += Damage.GetBonus(atk.Int, ScalIntel, BonusIntel);
+                Scaling += atk.Int * ScalIntel / 100;
             }
 
+            double maxscale = (ScalArtMag + ScalMainBranche + 8 * ScalScndBranche + ScalInscription) * 1.05 + ScalIntel;
+
             // S'assure que le maximum de scaling soit égal à ScalingMax, tout en conservant l'importance de chacun des facteurs.
-            Scaling = Scaling * (ScalingMax / (
-                ( ScalArtMag + (BonusArtMag / 100)) +
-                ( ScalMainBranche + ( BonusMainBranch / 100)) +
-                ( 9 * ScalScndBranche ) +
-                ( ScalInscription + ( BonusInscription / 100)) +
-                ( ScalIntel + ( BonusIntel / 100))));
+            Scaling = Scaling * ScalingMax / maxscale;
 
             return Scaling;
         }
