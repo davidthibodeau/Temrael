@@ -54,32 +54,46 @@ namespace Server.Engines.Buffs
     #region Buffs
     public class BuffForce : Buff
     {
-        private int m_Bonus;
-
-        public BuffForce(int bonus)
+        public override MobileDelta mobileDelta
         {
-            m_Bonus = bonus;
+            get
+            {
+                return MobileDelta.Stat;
+            }
         }
 
-        StatMod s;
+        private int forceOffset;
+
+        public BuffForce(int offset, TimeSpan duration) : base(duration)
+        {
+            forceOffset = offset;
+        }
+
         public override void Effect(Mobile trg)
         {
-            if (!trg.StatMods.Contains(s))
-            {
-                trg.RemoveStatMod("Buff de force");
-                s = new StatMod(StatType.Str, "Buff de force", m_Bonus, TimeSpan.FromSeconds(2));
-                trg.AddStatMod(s);
-            }
-            else
-            {
-                s = new StatMod(StatType.Str, "Buff de force", m_Bonus, TimeSpan.FromSeconds(2));
-                trg.AddStatMod(s);
-            }
+            RetourGetOffset = forceOffset;
         }
 
         public override void RemoveEffect(Mobile trg)
         {
-            trg.RemoveStatMod("Buff de force");
+            RetourGetOffset = 0;
+        }
+
+        public override bool CompareNewEntry(Buff buff)
+        {
+            if (buff is BuffForce)
+            {
+                BuffForce buffForce = (BuffForce)buff;
+
+                if (Math.Abs(buffForce.forceOffset) > Math.Abs(RetourGetOffset))
+                {
+                    forceOffset = buffForce.forceOffset;
+                }
+
+                return true;
+            }
+
+            return false;
         }
     }
     #endregion

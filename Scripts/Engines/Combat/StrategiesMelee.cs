@@ -38,14 +38,14 @@ namespace Server.Engines.Combat
                 if (chance > 0.7) chance = 0.7;
 
                 if (Utility.RandomDouble() < chance)
-                    BuffHandler.Instance.ApplyEffect(atk, poison, Source.Weapon);
+                    BuffHandler.Instance.ApplyPoison(atk, poison, Source.Weapon);
 
                 chance = 1 - atk.Skills.Empoisonnement.Value / poison.NiveauSkillRequis;
                 if (chance > 1) chance = 1;
                 if (chance < 0.05) chance = 0.05;
 
                 if (Utility.RandomDouble() < chance)
-                    BuffHandler.Instance.ApplyEffect(def, poison, Source.Weapon);
+                    BuffHandler.Instance.ApplyPoison(def, poison, Source.Weapon);
 			}
         }
 

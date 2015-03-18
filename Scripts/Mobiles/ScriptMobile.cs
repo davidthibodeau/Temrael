@@ -107,5 +107,26 @@ namespace Server.Mobiles
             base.Damage((int)damage, from);
         }
 
+        public override int Str
+        {
+            get
+            {
+                int value = RawStr + GetStatOffset(StatType.Str);
+
+                value += (int)Server.Engines.Buffs.BuffHandler.Instance.GetBuffCumul(this, typeof(Server.Engines.Buffs.BuffForce));
+
+                if (value < 1)
+                    value = 1;
+                else if (value > 65000)
+                    value = 65000;
+
+                return value;
+            }
+            set
+            {
+                RawStr = value;
+            }
+        }
+
     }
 }

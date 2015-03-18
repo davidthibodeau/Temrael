@@ -57,11 +57,11 @@ namespace Server.Engines.Combat
                     if (selfdmg)
                     {
                         if (Utility.RandomDouble() > chance)
-                            BuffHandler.Instance.ApplyEffect(atk, poison, Source.Weapon);
+                            BuffHandler.Instance.ApplyPoison(atk, poison, Source.Weapon);
                     }
                     else
                         if (atk.CheckSkill(SkillName.Empoisonnement, chance))
-                            BuffHandler.Instance.ApplyEffect(def, poison, Source.Weapon);
+                            BuffHandler.Instance.ApplyPoison(def, poison, Source.Weapon);
                 }
             }
         }

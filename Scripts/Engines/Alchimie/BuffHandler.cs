@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Items;
 using Server.Engines.Combat;
+using Server.Mobiles;
 
 namespace Server.Engines.Buffs
 {
@@ -31,7 +33,56 @@ namespace Server.Engines.Buffs
 
         #region Ajout / Retrait d'un effet.
 
-        public void ApplyEffect(Mobile trg, BaseBuff effect, Source s)
+        public void ApplyBuff(Mobile trg, Buff newbuff)
+        {
+            if (!AffectedMobiles.ContainsKey(trg))
+            {
+                AffectedMobiles.Add(trg, new List<BuffInfo>());
+            }
+
+            // Reflection, pour connaitre le typeof de la classe qui appelle cette fonction.
+            // Cela fait en sorte que un "Buff" d'un type X est alloué par classe, par joueur.
+            // Cela fait donc en sorte qu'un joueur ne peut pas stacker le spell "Buff de force" plusieurs fois, 
+            // mais peut stacker un spell avec un potion, par exemple.
+            StackFrame frame = new StackFrame(1);
+            Type callertype = (frame.GetMethod()).DeclaringType;
+
+            List<BuffInfo> list = (List<BuffInfo>)AffectedMobiles[trg];
+
+            // On trouve voir si un buff de ce type et de la même provenance existe deja sur le mobile.
+            BuffInfo b = null;
+            foreach (BuffInfo buffInfo in list)
+            {
+                if (buffInfo.effect.GetType() == newbuff.GetType())
+                {
+                    if (buffInfo.callingclass == callertype)
+                    {
+                        b = buffInfo;
+                        break;
+                    }
+                }
+            }
+
+            if (b == null)
+            {
+                b = new BuffInfo(trg, newbuff, callertype);
+                list.Add(b);
+            }
+            else // if(b.effect is Buff) // non nécessaire, fait plus tôt.
+            {
+                Buff buff = (Buff)b.effect;
+
+                if (buff.CompareNewEntry(newbuff))
+                {
+                    ((BuffTimer)b.timer).Restart();
+                }
+            }
+
+            if (!b.timer.Running)
+                b.timer.Start();
+        }
+
+        public void ApplyPoison(Mobile trg, Poison poison, Source s)
         {
             if (!AffectedMobiles.ContainsKey(trg))
             {
@@ -40,10 +91,11 @@ namespace Server.Engines.Buffs
 
             List<BuffInfo> list = (List<BuffInfo>)AffectedMobiles[trg];
 
+            // On trouve voir si un buff de ce type et de la même provenance existe deja sur le mobile.
             BuffInfo b = null;
             foreach (BuffInfo buffInfo in list)
             {
-                if (buffInfo.effect.GetType() == effect.GetType())
+                if (buffInfo.effect.GetType() == poison.GetType())
                 {
                     b = buffInfo;
                     break;
@@ -52,37 +104,28 @@ namespace Server.Engines.Buffs
 
             if (b == null)
             {
-                b = new BuffInfo(trg, effect);
+                b = new BuffInfo(trg, poison);
                 list.Add(b);
             }
-
-            if (effect is Poison)
+            else // if (b.effect is Poison)
             {
-                Poison pot = (Poison)effect;
+                double stacks = ApplyRate(poison.Stacks, s);
 
-                double stacks = ApplyRate(pot.Stacks, s);
-
-                if (b.stacks + stacks > pot.MaxStacks)
+                if (b.stacks + stacks > poison.MaxStacks)
                 {
-                    b.stacks = pot.MaxStacks;
+                    b.stacks = poison.MaxStacks;
                 }
                 else
                 {
                     b.stacks += stacks;
                 }
             }
-            else if (effect is Buff)
-            {
-                Buff buff = (Buff)effect;
-
-                ((BuffTimer)b.timer).Restart();
-            }
 
             if (!b.timer.Running)
                 b.timer.Start();
         }
 
-        public void CureEffect(Mobile trg, double stacks)
+        public void CurePoison(Mobile trg, double stacks)
         {
             if (!AffectedMobiles.ContainsKey(trg))
                 return;
@@ -98,8 +141,57 @@ namespace Server.Engines.Buffs
             }
         }
 
+        public void RemoveBaseBuff(Mobile trg, BaseBuff buff)
+        {
+            if (!AffectedMobiles.ContainsKey(trg))
+                return;
+
+            List<BuffInfo> list = (List<BuffInfo>)AffectedMobiles[trg];
+
+            // On trouve voir si un buff de ce type et de la même provenance existe deja sur le mobile.
+            BuffInfo b = null;
+            foreach (BuffInfo buffInfo in list)
+            {
+                if (buffInfo.effect.GetType() == buff.GetType())
+                {
+                    b = buffInfo;
+                    break;
+                }
+            }
+
+            list.Remove(b);
+        }
+
+        public double GetBuffCumul(Mobile trg, Type buff)
+        {
+            if (!AffectedMobiles.ContainsKey(trg))
+                return 0;
+
+            double cumul = 0;
+
+            List<BuffInfo> list = (List<BuffInfo>)AffectedMobiles[trg];
+
+            foreach( BuffInfo buffinfo in list )
+            {
+                if (buffinfo.timer.Running)
+                {
+                    if (buffinfo.effect is Buff)
+                    {
+                        Buff buffinfobuff = (Buff)buffinfo.effect;
+
+                        if (buff == buffinfo.effect.GetType())
+                        {
+                            cumul += buffinfobuff.GetOffset();
+                        }
+                    }
+                }
+            }
+
+            return cumul;
+        }
+
         // Taux dépendant de la méthode d'application
-        double ApplyRate(double value, Source t)
+        private double ApplyRate(double value, Source t)
         {
             switch (t)
             {
@@ -118,7 +210,7 @@ namespace Server.Engines.Buffs
         /// <param name="value">Le chiffre duquel on veut soustraire.</param>
         /// <param name="amount">Le nombre que l'on veut soustraire.</param>
         /// <returns>Le nombre qui a reussit a être soustrait.</returns>
-        double Retirer(ref double value, double amount)
+        private double Retirer(ref double value, double amount)
         {
             if (value - amount >= 0)
             {
@@ -176,12 +268,14 @@ namespace Server.Engines.Buffs
             public double stacks;
             public BaseBuff effect;
             public Timer timer;
+            public Type callingclass;
 
-            public BuffInfo(Mobile trg, BaseBuff eff)
+            public BuffInfo(Mobile trg, BaseBuff eff, Type typeOfCaller)
             {
                 target = trg;
                 stacks = 0;
                 effect = eff;
+                callingclass = typeOfCaller;
 
                 if (eff is Poison)
                 {
@@ -191,6 +285,11 @@ namespace Server.Engines.Buffs
                 {
                     timer = new BuffTimer((Buff)eff, this);
                 }
+            }
+
+            public BuffInfo(Mobile trg, BaseBuff eff)
+                : this(trg, eff, null)
+            {
             }
         }
 
@@ -214,11 +313,21 @@ namespace Server.Engines.Buffs
 
                     m_info.stacks *= (1 - m_effect.FilterPerTick);
                 }
-
                 else
                 {
                     m_effect.RemoveEffect(m_info.target);
                     Stop(); // S'arrête, et se réactive lorsque l'on rajoute des stacks, dans "ApplyEffect".
+                }
+            }
+
+            public void UpdateStatus()
+            {
+                if (m_info.target is PlayerMobile)
+                {
+                    PlayerMobile pm = (PlayerMobile)m_info.target;
+
+                    pm.Delta(MobileDelta.HealthbarPoison
+                    pm.Delta(m_info.effect.mobileDelta);
                 }
             }
         }
@@ -234,7 +343,7 @@ namespace Server.Engines.Buffs
             {
                 m_effect = effect;
                 m_info = info;
-                Start();
+                Restart();
             }
 
             protected override void OnTick()
@@ -246,6 +355,7 @@ namespace Server.Engines.Buffs
                 else
                 {
                     m_effect.RemoveEffect(m_info.target);
+                    UpdateStatus();
                     Stop(); // S'arrête, et se réactive lorsque l'on rajoute des stacks, dans "ApplyEffect".
                 }
             }
@@ -254,6 +364,17 @@ namespace Server.Engines.Buffs
             {
                 m_End = DateTime.Now + m_effect.duree;
                 Start();
+                UpdateStatus();
+            }
+
+            public void UpdateStatus()
+            {
+                if (m_info.target is PlayerMobile)
+                {
+                    PlayerMobile pm = (PlayerMobile)m_info.target;
+
+                    pm.Delta(m_info.effect.mobileDelta);
+                }
             }
         }
     }
