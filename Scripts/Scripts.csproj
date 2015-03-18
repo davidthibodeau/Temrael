@@ -95,6 +95,7 @@
     <Compile Include="Commandes\Temrael\Hohoho.cs" />
     <Compile Include="Commandes\Temrael\AddRandom.cs" />
     <Compile Include="Commandes\Temrael\GenerateKey.cs" />
+    <Compile Include="Commandes\Temrael\Report.cs" />
     <Compile Include="Commandes\Temrael\Reveler.cs" />
     <Compile Include="Commandes\Temrael\TechniqueCombat.cs" />
     <Compile Include="Custom\Army System\ArmyAI.cs" />
