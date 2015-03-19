@@ -3,6 +3,7 @@ using Server.Items;
 using Server.Network;
 using System;
 using System.Collections;
+using Server.Commands;
 
 namespace Server.Items
 {
@@ -14,50 +15,56 @@ namespace Server.Items
         private int m_Delay;
         private int m_LockLevelSeed;
 
+        public Container cont;
+
         #region items
-        private int m_WeaponQuantity;
 
+        /*
+         * Food
+         * Junk
+         * UtilityItems
+         * Regs
+         * NecroRegs
+         * LeatherAR
+         * ChainAR
+         * RingAR
+         * PlateAR
+         * 
+         * */
+
+        private int m_SpecialItemsQuantity;
         [CommandProperty(AccessLevel.Batisseur)]
-        public int WeaponQuantity
+        public int SpecialItemsQuantity
         {
-            get { return m_WeaponQuantity; }
-            set { m_WeaponQuantity = value; }
+            get { return m_SpecialItemsQuantity; }
+            set { m_SpecialItemsQuantity = value; }
         }
 
-        private int m_ArmorQuantity;
+        private int m_FoodQuantity;
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int ArmorQuantity
+        public int FoodQuantity
         {
-            get { return m_ArmorQuantity; }
-            set { m_ArmorQuantity = value; }
+            get { return m_FoodQuantity; }
+            set { m_FoodQuantity = value; }
         }
 
-        private int m_JewelQuantity;
+        private int m_JunkQuantity;
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int JewelQuantity
+        public int JunkQuantity
         {
-            get { return m_JewelQuantity; }
-            set { m_JewelQuantity = value; }
+            get { return m_JunkQuantity; }
+            set { m_JunkQuantity = value; }
         }
 
-        private int m_ClothingQuantity;
+        private int m_UtilityQuantity;
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int ClothingQuantity
+        public int UtilityQuantity
         {
-            get { return m_ClothingQuantity; }
-            set { m_ClothingQuantity = value; }
-        }
-
-        private int m_GemQuantity;
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int GemQuantity
-        {
-            get { return m_GemQuantity; }
-            set { m_GemQuantity = value; }
+            get { return m_UtilityQuantity; }
+            set { m_UtilityQuantity = value; }
         }
 
         private int m_RegsQuantity;
@@ -69,13 +76,31 @@ namespace Server.Items
             set { m_RegsQuantity = value; }
         }
 
-        private int m_DiversQuantity;
+        private int m_NecroRegsQuantity;
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int DiversQuantity
+        public int NecroRegsQuantity
         {
-            get { return m_DiversQuantity; }
-            set { m_DiversQuantity = value; }
+            get { return m_NecroRegsQuantity; }
+            set { m_NecroRegsQuantity = value; }
+        }
+
+        private int m_LeatherARQuantity;
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int LeatherARQuantity
+        {
+            get { return m_LeatherARQuantity; }
+            set { m_LeatherARQuantity = value; }
+        }
+
+        private int m_ChainARQuantity;
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int ChainARQuantity
+        {
+            get { return m_ChainARQuantity; }
+            set { m_ChainARQuantity = value; }
         }
 
         private int m_GoldQuantity;
@@ -87,22 +112,22 @@ namespace Server.Items
             set { m_GoldQuantity = value; }
         }
 
-        private int m_PotionQuantity;
+        private int m_RingARQuantity;
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int PotionQuantity
+        public int RingARQuantity
         {
-            get { return m_PotionQuantity; }
-            set { m_PotionQuantity = value; }
+            get { return m_RingARQuantity; }
+            set { m_RingARQuantity = value; }
         }
 
-        private int m_ArtefactQuantity;
+        private int m_PlateARQuantity;
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public int ArtefactQuantity
+        public int PlateARQuantity
         {
-            get { return m_ArtefactQuantity; }
-            set { m_ArtefactQuantity = value; }
+            get { return m_PlateARQuantity; }
+            set { m_PlateARQuantity = value; }
         }
 
         private int m_ScrollsQuantity;
@@ -137,6 +162,8 @@ namespace Server.Items
             Delay = 20;
 
 			Key key = (Key)FindItemByType( typeof(Key) );
+
+            GenBag();
 
 			if( key != null )
 				key.Delete();
@@ -174,160 +201,67 @@ namespace Server.Items
             m_ResetTimer.Start();
 		}
 
+        public void GenBag()
+        {
+            if (cont == null)
+            {
+                Bag b = new Bag();
+                cont = b;
+            }
+
+            cont.Map = this.Map;
+            cont.MoveToWorld(new Point3D(this.Location.X, this.Location.Y, this.Location.Z - 50));
+
+            //cont.Visible = false;
+        }
+
         protected virtual void GenerateTreasure()
         {
             Item item = null;
 
+            AddLoot(LootPack.Food, m_FoodQuantity);
+            AddLoot(LootPack.Junk, m_JunkQuantity);
+            AddLoot(LootPack.UtilityItems, m_UtilityQuantity);
+            AddLoot(LootPack.Regs, m_RegsQuantity);
+            AddLoot(LootPack.NecroRegs, m_NecroRegsQuantity);
+            AddLoot(LootPack.LeatherAr, m_LeatherARQuantity);
+            AddLoot(LootPack.ChainAr, m_ChainARQuantity);
+            AddLoot(LootPack.RingAr, m_RingARQuantity);
+            AddLoot(LootPack.PlateAr, m_PlateARQuantity);
+            //AddLoot(LootPack.Scrolls, m_ScrollsQuantity);
+
+            if (m_GoldQuantity >= 1)
+            {
+                item = new Gold(m_GoldQuantity + Utility.Random(1, 5));
+                this.DropItem(item);
+            }
+
+            if (m_SpecialItemsQuantity >= 1)
+            {
+                System.Collections.Generic.List<Item> itemlist = cont.Items;
+
+                for (int i = 0; i < m_SpecialItemsQuantity; ++i)
+                {
+                    this.DropItem(Dupe.DupeItem(null, itemlist[Utility.Random(0, itemlist.Count)], true));
+                }
+            }
+        }
+
+        private void AddLoot( LootPack lootpack, int amount)
+        {
             try
             {
-                if (m_WeaponQuantity >= 1)
+                if (amount >= 1)
                 {
-                    for (int i = 0; i < m_WeaponQuantity; i++)
+                    for (int i = 0; i < amount; ++i)
                     {
-                        item = Loot.RandomWeapon(); 
-
-                        this.DropItem(item);
+                        lootpack.Generate(this);
                     }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("TreasureChest Exception Weapons: {0}", e.Message);
-            }
-
-            try
-            {
-                if (m_ArmorQuantity >= 1)
-                {
-                    for (int i = 0; i < m_ArmorQuantity; i++)
-                    {
-                        item = Loot.RandomArmor(); 
-
-                        this.DropItem(item);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception Armors: {0}", e.Message);
-            }
-
-            try
-            {
-                if (m_JewelQuantity >= 1)
-                {
-                    for (int i = 0; i < m_JewelQuantity; i++)
-                    {
-                        item = Loot.RandomJewelry();
-
-                        this.DropItem(item);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception Jewels: {0}", e.Message);
-            }
-
-            try
-            {
-                if (m_ClothingQuantity >= 1)
-                {
-                    for (int i = 0; i < m_ClothingQuantity; i++)
-                    {
-                        item = Loot.RandomClothing();
-
-                        this.DropItem(item);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception Clothing: {0} {1} {2}", e.Message, (item != null ? item.GetType().ToString() : ""), this.Location);
-            }
-
-
-            try
-            {
-                if (m_GemQuantity >= 1)
-                {
-                    for (int i = 0; i < m_GemQuantity; i++)
-                    {
-                        item = Loot.RandomGem();
-                        this.DropItem(item);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception Gems: {0}", e.Message);
-            }
-
-            try
-            {
-                if (m_RegsQuantity >= 1)
-                {
-                    for (int i = 0; i < m_RegsQuantity; i++)
-                    {
-                        item = Loot.RandomReagent();
-                        this.DropItem(item);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception Regs: {0}", e.Message);
-            }
-
-            try
-            {
-                if (m_PotionQuantity >= 1)
-                {
-                    for (int i = 0; i < m_PotionQuantity; i++)
-                    {
-                        item = Loot.RandomPotion();
-                        this.DropItem(item);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception Potions: {0}", e.Message);
-            }
-
-            try
-            {
-                if (m_GoldQuantity >= 1)
-                {
-                    item = new Gold(m_GoldQuantity + Utility.Random(1,5));
-                    this.DropItem(item);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception PutGold: {0}", e.Message);
-            }
-
-            try
-            {
-                if (m_ScrollsQuantity >= 1)
-                {
-                    for (int i = 0; i < m_ScrollsQuantity; i++)
-                    {
-                        /*if (0.10 > Utility.RandomDouble())
-                            item = Loot.HighScroll();
-                        else
-                            item = Loot.RandomScrolls();*/
-
-                        item = Loot.RandomScroll(0, 63, SpellbookType.Regular);
-
-                        this.DropItem(item);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("TreasureChest Exception Scrolls: {0}", e.Message);
+                Console.WriteLine("TreasureChest Exception: {0}", e.Message);
             }
         }
 
@@ -370,6 +304,7 @@ namespace Server.Items
 
                 SetLockLevel();
                 SetLockedName();
+                GenBag();
                 ClearContents();
                 GenerateTreasure();
 
@@ -378,6 +313,7 @@ namespace Server.Items
 
                 if (resetlocation)
                     GenerateLocation();
+
             }
             catch (Exception ex)
             {
@@ -415,24 +351,25 @@ namespace Server.Items
 
             ////////////////
 
-            writer.Write(m_WeaponQuantity);
+            writer.Write(m_FoodQuantity);
 
-            writer.Write(m_ArmorQuantity);
+            writer.Write(m_JunkQuantity);
 
-            writer.Write(m_JewelQuantity);
-
-            writer.Write(m_ClothingQuantity);
-
-            writer.Write(m_GemQuantity);
+            writer.Write(m_UtilityQuantity);
 
             writer.Write(m_RegsQuantity);
-            writer.Write(m_DiversQuantity);
+
+            writer.Write(m_NecroRegsQuantity);
+
+            writer.Write(m_LeatherARQuantity);
+
+            writer.Write(m_ChainARQuantity);
 
             writer.Write(m_GoldQuantity);
 
-            writer.Write(m_PotionQuantity);
+            writer.Write(m_RingARQuantity);
 
-            writer.Write(m_ArtefactQuantity);
+            writer.Write(m_PlateARQuantity);
 
             writer.Write(m_ScrollsQuantity);
 
@@ -462,25 +399,25 @@ namespace Server.Items
 
             ////////////////
 
-            m_WeaponQuantity = reader.ReadInt();
+            m_FoodQuantity = reader.ReadInt();
 
-            m_ArmorQuantity = reader.ReadInt();
+            m_JunkQuantity = reader.ReadInt();
 
-            m_JewelQuantity = reader.ReadInt();
-
-            m_ClothingQuantity = reader.ReadInt();
-
-            m_GemQuantity = reader.ReadInt();
+            m_UtilityQuantity = reader.ReadInt();
 
             m_RegsQuantity = reader.ReadInt();
 
-            m_DiversQuantity = reader.ReadInt();
+            m_NecroRegsQuantity = reader.ReadInt();
+
+            m_LeatherARQuantity = reader.ReadInt();
+
+            m_ChainARQuantity = reader.ReadInt();
 
             m_GoldQuantity = reader.ReadInt();
 
-            m_PotionQuantity = reader.ReadInt();
+            m_RingARQuantity = reader.ReadInt();
 
-            m_ArtefactQuantity = reader.ReadInt();
+            m_PlateARQuantity = reader.ReadInt();
 
             m_ScrollsQuantity = reader.ReadInt();
 

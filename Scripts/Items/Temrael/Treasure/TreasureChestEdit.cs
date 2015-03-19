@@ -87,15 +87,15 @@ namespace Server.Gumps
         private int m_StartDelay;
 
         private int m_StartGold;
-        private int m_StartWeapons;
-        private int m_StartArmors;
-        private int m_StartArtefact;
-        private int m_StartClothing;
-        private int m_StartVarious;
-        private int m_StartGems;
-        private int m_StartJewels;
-        private int m_StartPotions;
+        private int m_StartFood;
+        private int m_StartJunk;
+        private int m_StartPlate;
         private int m_StartRegs;
+        private int m_StartChain;
+        private int m_StartNecroRegs;
+        private int m_StartUtility;
+        private int m_StartRingAR;
+        private int m_StartSpecialItems;
         private int m_StartScrolls;
 
         public SetChestInfo(BaseTreasureChest Chest)
@@ -107,16 +107,16 @@ namespace Server.Gumps
             m_StartDelay = Chest.Delay;
 
             m_StartGold = Chest.GoldQuantity;
-        m_StartWeapons = Chest.WeaponQuantity;
-        m_StartArmors = Chest.ArmorQuantity;
-        m_StartArtefact = Chest.ArtefactQuantity;
-        m_StartClothing = Chest.ClothingQuantity;
-        m_StartVarious = Chest.DiversQuantity;
-        m_StartGems = Chest.GemQuantity;
-        m_StartJewels = Chest.JewelQuantity;
-        m_StartPotions = Chest.PotionQuantity;
-        m_StartRegs = Chest.RegsQuantity;
-        m_StartScrolls = Chest.ScrollsQuantity;
+            m_StartFood = Chest.FoodQuantity;
+            m_StartJunk = Chest.JunkQuantity;
+            m_StartPlate = Chest.PlateARQuantity;
+            m_StartRegs = Chest.RegsQuantity;
+            m_StartChain = Chest.ChainARQuantity;
+            m_StartNecroRegs = Chest.NecroRegsQuantity;
+            m_StartUtility = Chest.UtilityQuantity;
+            m_StartRingAR = Chest.RingARQuantity;
+            m_StartSpecialItems = Chest.SpecialItemsQuantity;
+            m_StartScrolls = Chest.ScrollsQuantity;
 
             Closable = true;
             Disposable = true;
@@ -137,32 +137,32 @@ namespace Server.Gumps
             AddLabel(55, 95, 0, "Delay : ");
             AddTextEntry(135, 95, 120, 20, 0, 2, Chest.Delay.ToString());
 
-            AddLabel(55, 115, 0, "Pièces : ");
+            AddLabel(55, 115, 0, "Gold : ");
             AddTextEntry(135, 115, 120, 20, 0, 3, m_StartGold.ToString());
 
-            AddLabel(55, 135, 0, "Armures : ");
-            AddTextEntry(135, 135, 120, 20, 0, 4, m_StartArmors.ToString());
+            AddLabel(55, 155, 0, "Food : ");
+            AddTextEntry(135, 155, 120, 20, 0, 5, m_StartFood.ToString());
 
-            AddLabel(55, 155, 0, "Armes : ");
-            AddTextEntry(135, 155, 120, 20, 0, 5, m_StartWeapons.ToString());
+            AddLabel(55, 135, 0, "Junk : ");
+            AddTextEntry(135, 135, 120, 20, 0, 4, m_StartJunk.ToString());
 
-            AddLabel(55, 175, 0, "Vêtements : ");
-            AddTextEntry(135, 175, 120, 20, 0, 6, m_StartClothing.ToString());
+            AddLabel(55, 175, 0, "Regs : ");
+            AddTextEntry(135, 175, 120, 20, 0, 6, m_StartRegs.ToString());
 
-            AddLabel(55, 195, 0, "Bijoux : ");
-            AddTextEntry(135, 195, 120, 20, 0, 7, m_StartJewels.ToString());
+            AddLabel(55, 215, 0, "Utility : ");
+            AddTextEntry(135, 215, 120, 20, 0, 8, m_StartUtility.ToString());
 
-            AddLabel(55, 215, 0, "Parchemins : ");
-            AddTextEntry(135, 215, 120, 20, 0, 8, m_StartScrolls.ToString());
+            AddLabel(55, 235, 0, "Scrolls : ");
+            AddTextEntry(135, 235, 120, 20, 0, 9, m_StartScrolls.ToString());
 
-            AddLabel(55, 235, 0, "Pierres : ");
-            AddTextEntry(135, 235, 120, 20, 0, 9, m_StartGems.ToString());
+            AddLabel(55, 195, 0, "NecroRegs : ");
+            AddTextEntry(135, 195, 120, 20, 0, 7, m_StartNecroRegs.ToString());
 
-            AddLabel(55, 255, 0, "Potions : ");
-            AddTextEntry(135, 255, 120, 20, 0, 10, m_StartPotions.ToString());
+            AddLabel(55, 255, 0, "SpecialItems : ");
+            AddTextEntry(135, 255, 120, 20, 0, 10, m_StartSpecialItems.ToString());
 
-            AddLabel(55, 275, 0, "Réactifs : ");
-            AddTextEntry(135, 275, 120, 20, 0, 11, m_StartRegs.ToString());
+            AddLabel(55, 275, 0, "Sac Item Speciaux");
+            AddButton(135, 275, 1209, 1210, 2, GumpButtonType.Reply, 0);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
@@ -212,44 +212,44 @@ namespace Server.Gumps
                 {
                     entry = info.GetTextEntry(4);
                     text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.ArmorQuantity = Convert.ToInt32(Utility.FixHtml(text));
+                    m_Chest.FoodQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
                 catch
                 {
-                    m_Chest.ArmorQuantity = m_StartArmors;
+                    m_Chest.FoodQuantity = m_StartFood;
                 }
 
                 try
                 {
                     entry = info.GetTextEntry(5);
                     text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.WeaponQuantity = Convert.ToInt32(Utility.FixHtml(text));
+                    m_Chest.JunkQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
                 catch
                 {
-                    m_Chest.WeaponQuantity = m_StartWeapons;
+                    m_Chest.JunkQuantity = m_StartJunk;
                 }
 
                 try
                 {
                     entry = info.GetTextEntry(6);
                     text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.ClothingQuantity = Convert.ToInt32(Utility.FixHtml(text));
+                    m_Chest.RegsQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
                 catch
                 {
-                    m_Chest.ClothingQuantity = m_StartClothing;
+                    m_Chest.RegsQuantity = m_StartRegs;
                 }
 
                 try
                 {
                     entry = info.GetTextEntry(7);
                     text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.JewelQuantity = Convert.ToInt32(Utility.FixHtml(text));
+                    m_Chest.UtilityQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
                 catch
                 {
-                    m_Chest.JewelQuantity = m_StartJewels;
+                    m_Chest.UtilityQuantity = m_StartUtility;
                 }
 
 
@@ -269,11 +269,11 @@ namespace Server.Gumps
                 {
                     entry = info.GetTextEntry(9);
                     text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.GemQuantity = Convert.ToInt32(Utility.FixHtml(text));
+                    m_Chest.NecroRegsQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
                 catch
                 {
-                    m_Chest.GemQuantity = m_StartGems;
+                    m_Chest.NecroRegsQuantity = m_StartNecroRegs;
                 }
 
 
@@ -281,22 +281,11 @@ namespace Server.Gumps
                 {
                     entry = info.GetTextEntry(10);
                     text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.PotionQuantity = Convert.ToInt32(Utility.FixHtml(text));
+                    m_Chest.SpecialItemsQuantity = Convert.ToInt32(Utility.FixHtml(text));
                 }
                 catch
                 {
-                    m_Chest.PotionQuantity = m_StartPotions;
-                }
-
-                try
-                {
-                    entry = info.GetTextEntry(11);
-                    text = (entry == null ? "" : entry.Text.Trim());
-                    m_Chest.RegsQuantity = Convert.ToInt32(Utility.FixHtml(text));
-                }
-                catch
-                {
-                    m_Chest.RegsQuantity = m_StartRegs;
+                    m_Chest.SpecialItemsQuantity = m_StartSpecialItems;
                 }
 #endregion
 
@@ -310,6 +299,12 @@ namespace Server.Gumps
             {
                 from.CloseGump(typeof(SetChestInfo));
                 from.CloseGump(typeof(SetChestLocations));
+            }
+
+            if (info.ButtonID == 2)
+            {
+                m_Chest.GenBag();
+                m_Chest.cont.DisplayTo(from);
             }
         }
     }

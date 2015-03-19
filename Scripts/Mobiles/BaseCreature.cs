@@ -3429,7 +3429,7 @@ namespace Server.Mobiles
 				AddItem( backpack );
 			}
 
-			pack.Generate( this, backpack );
+			pack.Generate( backpack );
 		}
 
 		public bool PackArmor( int minLevel, int maxLevel )
