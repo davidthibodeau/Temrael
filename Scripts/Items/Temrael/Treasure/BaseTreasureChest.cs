@@ -345,7 +345,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)1);
+            writer.Write((int)2);
             writer.Write(m_Delay);
             writer.Write(m_LockLevelSeed);
 
@@ -384,6 +384,8 @@ namespace Server.Items
             {
                 writer.Write((Point3D)m_TreasureLocations[i]);
             }
+
+            writer.Write(m_SpecialItemsQuantity);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -429,6 +431,11 @@ namespace Server.Items
             for (int i = 0; i < m_TreasureLocationsCount; i++)
             {
                 m_TreasureLocations.Add((Point3D)reader.ReadPoint3D());
+            }
+
+            if (version >= 2)
+            {
+                m_SpecialItemsQuantity = reader.ReadInt();
             }
 
             Reset(true, false);
