@@ -258,7 +258,8 @@ namespace Server.SkillHandlers
 					}
 				}
 
-                CommandLogging.WriteLine(from, "{2} à voler {0} appartenant à {1} en étant {3}", target, root, stolen != null ? "Réussit" : "Échoue", from.Hidden ? "caché" : "à découvert");
+                CommandLogging.WriteLine(from, "{4} {2} à voler {0} appartenant à {1} en étant {3}", 
+                    target, root, stolen != null ? "réussit" : "échoue", from.Hidden ? "caché" : "à découvert", from);
 			}
 		}
 

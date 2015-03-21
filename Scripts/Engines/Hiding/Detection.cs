@@ -151,7 +151,7 @@ namespace Server.Engines.Hiding
             {
                 ScriptMobile m = mob as ScriptMobile;
 
-                if (m != mobile)
+                if (m != mobile && m != null)
                 {
                     // Quand les joueurs autour du mobile observateur bouge.
                     if (mobile.InRange(m, 0))

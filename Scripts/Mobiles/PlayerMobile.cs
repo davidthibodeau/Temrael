@@ -989,7 +989,7 @@ namespace Server.Mobiles
 
 			//Timer.DelayCall( TimeSpan.Zero, new TimerStateCallback( ClearSpecialMovesCallback ), e.Mobile );
 
-            CommandLogging.WriteLine(pm, "Le personnage vient de se connecter à la position {0} sur la map {1}", pm.Location, pm.Map);
+            CommandLogging.WriteLine(pm, "{2} vient de se connecter à la position {0} sur la map {1}", pm.LogoutLocation, pm.LogoutMap, pm);
 		}
 
 		/*private static void ClearSpecialMovesCallback( object state )
@@ -1040,7 +1040,7 @@ namespace Server.Mobiles
 
 			DisguiseTimers.StopTimer( from );
 
-            CommandLogging.WriteLine(pm, "Le personnage vient de se déconnecter à la position {0} sur la map {1}", pm.Location, pm.Map);
+            CommandLogging.WriteLine(pm, "{2} vient de se déconnecter à la position {0} sur la map {1}", pm.Location, pm.Map, pm);
 		}
 
 		public override void OnHiddenChanged()
