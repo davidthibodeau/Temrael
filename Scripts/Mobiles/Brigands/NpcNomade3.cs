@@ -1,29 +1,24 @@
-﻿using System;
-using Server.Mobiles;
-using Server.Items;
+﻿using Server.Items;
 using System.Collections.Generic;
-     
 namespace Server.Mobiles
 {
     [CorpseName( "Cadavre de brigand" )]
-    public class NpcReseauArbaleteM : BaseCreature
+    public class NpcNomade3 : BaseCreature
     {
         [Constructable]
-        public NpcReseauArbaleteM() : base( AIType.AI_Archer, FightMode.Closest, 11, 1, 0.2, 0.4 )
+        public NpcNomade3() : base( AIType.AI_Melee, FightMode.Closest, 11, 1, 0.2, 0.4 )
         {
-            Name = "Brigand";
-            Body = 400;
-            BaseSoundID = 418;
-            Hue = 33810;
+            Name = "Brigand Nomade";
+            Body = 401;
+            BaseSoundID = -1;
+            Hue = 1044;
 
-            HairItemID = 8252;
-            HairHue = 1146;
+            HairItemID = 10399;
+            HairHue = 2420;
             FacialHairItemID = 0;
             FacialHairHue = 0;
  
             PlayersAreEnemies = true;
-
-            MaxRange = 9;
 
             SetStr( 90 );
             SetDex( 90 );
@@ -38,7 +33,7 @@ namespace Server.Mobiles
      
             SetSkill( SkillName.Detection, 60 );
             SetSkill( SkillName.Tactiques, 60 );
-            SetSkill( SkillName.ArmeDistance, 100 );
+            SetSkill( SkillName.Epee, 100 );
             SetSkill( SkillName.Anatomie, 40 );
             SetSkill( SkillName.Parer, 60 );
 
@@ -51,30 +46,27 @@ namespace Server.Mobiles
 
             /*On ajoute ici les items que l'on veut que le PNJ porte, seule cette section doit être modifiée*/
             /*------------------*/
-            Item it = new ArbaletePistolet();
-            it.Hue = 1881;
+            Item it = new Rapiere();
+            it.Hue = 2416;
             items.Add(it);
-            it = new CagouleCuir();
-            it.Hue = 1904;
+            it = new CagouleGorget();
+            it.Hue = 1875;
             items.Add(it);
-            it = new TuniqueAssassin();
-            it.Hue = 1899;
+            it = new RobeGitane();
+            it.Hue = 2375;
             items.Add(it);
-            it = new Cloak();
-            it.Hue = 1904;
+            it = new BrassardsFeminins();
+            it.Hue = 1875;
             items.Add(it);
             it = new LeatherLegs();
-            it.Hue = 1904;
+            it.Hue = 1875;
             items.Add(it);
-            it = new FourreauDague();
-            it.Hue = 0;
+            it = new FourreauDecouvert();
+            it.Hue = 2416;
             items.Add(it);
-            it = new LeatherGloves();
-            it.Hue = 2412;
-            items.Add(it);
-            it = new BottesVoyage();
-            it.Hue = 2306;
-            items.Add(it);            
+            it = new BottesLourdes();
+            it.Hue = 2307;
+            items.Add(it);          
             
             /*------------------*/
 
@@ -93,12 +85,13 @@ namespace Server.Mobiles
         {
             AddLoot( LootPack.Food );
             AddLoot( LootPack.UtilityItems );
-            AddLoot( LootPack.UtilityItems );
-            Server.Items.Bolt bolt = new Server.Items.Bolt(20);
-            AddToBackpack(bolt);
+            AddLoot( LootPack.LeatherAr );
+            Server.Items.Gold Gold = new Server.Items.Gold(9);
+            AddToBackpack(Gold);
         }
 
-        public NpcReseauArbaleteM(Serial serial)
+
+        public NpcNomade3(Serial serial)
             : base(serial)
         {
         }

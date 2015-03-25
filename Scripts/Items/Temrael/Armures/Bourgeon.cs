@@ -8,7 +8,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorBourgeon.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorBourgeon.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorBourgeon.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBourgeon.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBourgeon.max_Durabilite; } }
@@ -49,7 +49,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorBourgeon.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorBourgeon.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorBourgeon.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBourgeon.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBourgeon.max_Durabilite; } }
@@ -92,7 +92,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Bourgeon_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorBourgeon.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorBourgeon.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorBourgeon.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBourgeon.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBourgeon.max_Durabilite; } }

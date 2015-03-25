@@ -123,7 +123,7 @@ namespace Server.Items
         public virtual int BaseIntReq { get { return 0; } }
 
         public virtual double BasePhysicalResistance { get { return 0; } }
-        public virtual double BaseMagieResistance { get { return 0; } }
+        public virtual double BaseMagicalResistance { get { return 0; } }
 
 
         #region Getters & Setters
@@ -273,7 +273,7 @@ namespace Server.Items
         { get { return (double)(DurabilityMalus(ResistanceBonus(BasePhysicalResistance)) + m_PhysicalBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public override double MagicalResistance { get { return (double)(DurabilityMalus(ResistanceBonus(BaseMagieResistance)) + m_MagieBonus); } }
+        public override double MagicalResistance { get { return (double)(DurabilityMalus(ResistanceBonus(BaseMagicalResistance)) + m_MagieBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public ArmorBodyType BodyPosition

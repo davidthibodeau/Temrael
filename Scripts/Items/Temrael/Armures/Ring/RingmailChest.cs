@@ -9,7 +9,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Ring_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorRingmail.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorRingmail.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorRingmail.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorRingmail.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorRingmail.max_Durabilite; } }

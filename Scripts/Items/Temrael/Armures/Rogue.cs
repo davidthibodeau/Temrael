@@ -7,7 +7,7 @@ namespace Server.Items
     {
 
         public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorLeather.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }
@@ -49,7 +49,7 @@ namespace Server.Items
     {
 
         public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorLeather.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }

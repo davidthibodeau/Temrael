@@ -8,7 +8,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Maillures_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorMaillures.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorMaillures.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorMaillures.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillures.min_Durabilite; } }
@@ -52,7 +52,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Maillures_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorMaillures.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorMaillures.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorMaillures.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillures.max_Durabilite; } }
@@ -95,7 +95,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Maillures_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorMaillures.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorMaillures.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorMaillures.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorMaillures.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorMaillures.max_Durabilite; } }

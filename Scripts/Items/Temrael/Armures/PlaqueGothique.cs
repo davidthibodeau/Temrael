@@ -8,7 +8,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueGothique_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueGoth.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueGoth.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueGoth.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueGoth.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueGoth.max_Durabilite; } }
@@ -49,7 +49,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueGothique_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueGoth.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueGoth.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueGoth.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueGoth.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueGoth.max_Durabilite; } }
@@ -90,7 +90,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueGothique_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueGoth.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueGoth.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueGoth.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueGoth.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueGoth.max_Durabilite; } }

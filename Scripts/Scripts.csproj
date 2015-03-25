@@ -164,6 +164,10 @@
     <Compile Include="Mobiles\Brigands\Brigand10.cs" />
     <Compile Include="Mobiles\Brigands\Brigand15.cs" />
     <Compile Include="Mobiles\Brigands\Brigand20.cs" />
+    <Compile Include="Mobiles\Brigands\NpcNomade1.cs" />
+    <Compile Include="Mobiles\Brigands\NpcNomade2.cs" />
+    <Compile Include="Mobiles\Brigands\NpcNomade3.cs" />
+    <Compile Include="Mobiles\Brigands\NpcNomade4.cs" />
     <Compile Include="Mobiles\Brigands\NpcReseauArbaleteF.cs" />
     <Compile Include="Mobiles\Brigands\NpcReseauArbaleteM.cs" />
     <Compile Include="Mobiles\Brigands\NpcReseauEpeeF.cs" />

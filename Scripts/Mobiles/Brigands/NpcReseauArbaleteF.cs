@@ -9,7 +9,7 @@ namespace Server.Mobiles
     public class NpcReseauArbaleteF : BaseCreature
     {
         [Constructable]
-        public NpcReseauArbaleteF() : base( AIType.AI_Melee, FightMode.Closest, 11, 1, 0.2, 0.4 )
+        public NpcReseauArbaleteF() : base( AIType.AI_Archer, FightMode.Closest, 11, 1, 0.2, 0.4 )
         {
             Name = "Brigand";
             Body = 401;
@@ -22,6 +22,8 @@ namespace Server.Mobiles
             FacialHairHue = 0;
  
             PlayersAreEnemies = true;
+
+            MaxRange = 9;
 
             SetStr( 90 );
             SetDex( 90 );
