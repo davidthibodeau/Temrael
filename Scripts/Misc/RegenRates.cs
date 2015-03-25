@@ -6,7 +6,8 @@ using Server.Mobiles;
 
 namespace Server.Misc
 {
-	public class RegenRates
+	
+    public class RegenRates
 	{
 		[CallPriority( 10 )]
 		public static void Configure()
