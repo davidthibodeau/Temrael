@@ -141,27 +141,27 @@ namespace Server.Gumps
             AddTextEntry(135, 115, 120, 20, 0, 3, m_StartGold.ToString());
 
             AddLabel(55, 155, 0, "Food : ");
-            AddTextEntry(135, 155, 120, 20, 0, 5, m_StartFood.ToString());
+            AddTextEntry(135, 155, 120, 20, 0, 4, m_StartFood.ToString());
 
             AddLabel(55, 135, 0, "Junk : ");
-            AddTextEntry(135, 135, 120, 20, 0, 4, m_StartJunk.ToString());
+            AddTextEntry(135, 135, 120, 20, 0, 5, m_StartJunk.ToString());
 
             AddLabel(55, 175, 0, "Regs : ");
             AddTextEntry(135, 175, 120, 20, 0, 6, m_StartRegs.ToString());
 
             AddLabel(55, 215, 0, "Utility : ");
-            AddTextEntry(135, 215, 120, 20, 0, 8, m_StartUtility.ToString());
+            AddTextEntry(135, 215, 120, 20, 0, 7, m_StartUtility.ToString());
 
             AddLabel(55, 235, 0, "Scrolls : ");
-            AddTextEntry(135, 235, 120, 20, 0, 9, m_StartScrolls.ToString());
+            AddTextEntry(135, 235, 120, 20, 0, 8, m_StartScrolls.ToString());
 
             AddLabel(55, 195, 0, "NecroRegs : ");
-            AddTextEntry(135, 195, 120, 20, 0, 7, m_StartNecroRegs.ToString());
+            AddTextEntry(135, 195, 120, 20, 0, 9, m_StartNecroRegs.ToString());
 
             AddLabel(55, 255, 0, "SpecialItems : ");
             AddTextEntry(135, 255, 120, 20, 0, 10, m_StartSpecialItems.ToString());
 
-            AddLabel(55, 275, 0, "Sac Item Speciaux");
+            AddLabel(55, 275, 0, "Sac Item");
             AddButton(135, 275, 1209, 1210, 2, GumpButtonType.Reply, 0);
         }
 

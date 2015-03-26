@@ -20,6 +20,7 @@ namespace Server.Items
         #region items
 
         /*
+         * Gold
          * Food
          * Junk
          * UtilityItems
@@ -29,19 +30,19 @@ namespace Server.Items
          * ChainAR
          * RingAR
          * PlateAR
-         * 
+         * Special items
          * */
 
-        private int m_SpecialItemsQuantity;
+
+        private int m_GoldQuantity;
         [CommandProperty(AccessLevel.Batisseur)]
-        public int SpecialItemsQuantity
+        public int GoldQuantity
         {
-            get { return m_SpecialItemsQuantity; }
-            set { m_SpecialItemsQuantity = value; }
+            get { return m_GoldQuantity; }
+            set { m_GoldQuantity = value; }
         }
 
         private int m_FoodQuantity;
-
         [CommandProperty(AccessLevel.Batisseur)]
         public int FoodQuantity
         {
@@ -59,7 +60,6 @@ namespace Server.Items
         }
 
         private int m_UtilityQuantity;
-
         [CommandProperty(AccessLevel.Batisseur)]
         public int UtilityQuantity
         {
@@ -68,7 +68,6 @@ namespace Server.Items
         }
 
         private int m_RegsQuantity;
-
         [CommandProperty(AccessLevel.Batisseur)]
         public int RegsQuantity
         {
@@ -77,7 +76,6 @@ namespace Server.Items
         }
 
         private int m_NecroRegsQuantity;
-
         [CommandProperty(AccessLevel.Batisseur)]
         public int NecroRegsQuantity
         {
@@ -85,8 +83,23 @@ namespace Server.Items
             set { m_NecroRegsQuantity = value; }
         }
 
-        private int m_LeatherARQuantity;
+        private int m_ScrollsQuantity;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int ScrollsQuantity
+        {
+            get { return m_ScrollsQuantity; }
+            set { m_ScrollsQuantity = value; }
+        }
 
+        private int m_SpecialItemsQuantity;
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int SpecialItemsQuantity
+        {
+            get { return m_SpecialItemsQuantity; }
+            set { m_SpecialItemsQuantity = value; }
+        }
+
+        private int m_LeatherARQuantity;
         [CommandProperty(AccessLevel.Batisseur)]
         public int LeatherARQuantity
         {
@@ -95,7 +108,6 @@ namespace Server.Items
         }
 
         private int m_ChainARQuantity;
-
         [CommandProperty(AccessLevel.Batisseur)]
         public int ChainARQuantity
         {
@@ -103,17 +115,7 @@ namespace Server.Items
             set { m_ChainARQuantity = value; }
         }
 
-        private int m_GoldQuantity;
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int GoldQuantity
-        {
-            get { return m_GoldQuantity; }
-            set { m_GoldQuantity = value; }
-        }
-
         private int m_RingARQuantity;
-
         [CommandProperty(AccessLevel.Batisseur)]
         public int RingARQuantity
         {
@@ -122,21 +124,11 @@ namespace Server.Items
         }
 
         private int m_PlateARQuantity;
-
         [CommandProperty(AccessLevel.Batisseur)]
         public int PlateARQuantity
         {
             get { return m_PlateARQuantity; }
             set { m_PlateARQuantity = value; }
-        }
-
-        private int m_ScrollsQuantity;
-
-        [CommandProperty(AccessLevel.Batisseur)]
-        public int ScrollsQuantity
-        {
-            get { return m_ScrollsQuantity; }
-            set { m_ScrollsQuantity = value; }
         }
         #endregion
 
@@ -345,7 +337,7 @@ namespace Server.Items
         {
             base.Serialize(writer);
 
-            writer.Write((int)2);
+            writer.Write((int)3);
             writer.Write(m_Delay);
             writer.Write(m_LockLevelSeed);
 
@@ -386,6 +378,8 @@ namespace Server.Items
             }
 
             writer.Write(m_SpecialItemsQuantity);
+
+            writer.Write((Item)cont);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -436,6 +430,11 @@ namespace Server.Items
             if (version >= 2)
             {
                 m_SpecialItemsQuantity = reader.ReadInt();
+            }
+
+            if (version >= 3)
+            {
+                cont = (Bag)reader.ReadItem();
             }
 
             Reset(true, false);
