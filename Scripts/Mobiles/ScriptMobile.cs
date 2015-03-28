@@ -68,7 +68,6 @@ namespace Server.Mobiles
         public void ActiverTestsDetection()
         {
             //Le systeme de detection fonctionne juste pour les joueurs.
-            if (AccessLevel > AccessLevel.Player) return;
             Detection.DetecterAlentours();
         }
 
