@@ -235,7 +235,17 @@ namespace Server.Engines.Hiding
         private bool JetEtUpdate(Mobile obs, double chance, DetectionStatus status)
         {
             ScriptMobile m = mobile as ScriptMobile;
-            if (m == null || obs == mobile || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player || status == DetectionStatus.Visible)
+
+            if (m == null || obs == mobile || !m.Hidden || !mobile.InLOS(m) || status == DetectionStatus.Visible)
+                return false;
+
+            if (obs.AccessLevel > AccessLevel.Player)
+            {
+                m.Detection.AfficherVisiblePour(obs);
+                return true;
+            }
+
+            if (m.AccessLevel > AccessLevel.Player)
                 return false;
 
             //if (Core.Debug)
