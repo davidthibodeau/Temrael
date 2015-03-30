@@ -230,11 +230,9 @@ namespace Server.Items
 
             if (m_SpecialItemsQuantity >= 1)
             {
-                System.Collections.Generic.List<Item> itemlist = cont.Items;
-
                 for (int i = 0; i < m_SpecialItemsQuantity; ++i)
                 {
-                    this.DropItem(Dupe.DupeItem(null, itemlist[Utility.Random(0, itemlist.Count)], true));
+                    this.DropItem(Dupe.DupeItem(null, cont.Items[Utility.Random(0, cont.Items.Count - 1)], true));
                 }
             }
         }
