@@ -541,6 +541,11 @@ namespace Server
 		{
 			return String.Format( "({0}, {1})+({2}, {3})", X, Y, Width, Height );
 		}
+
+        public Point2D RandomPoint()
+        {
+            return new Point2D(Utility.Random(Start.X, End.X - Start.X), Utility.Random(Start.Y, End.Y - Start.Y));
+        }
 	}
 
 	[NoSort]
@@ -634,5 +639,14 @@ namespace Server
 				&& ( p.Z >= m_Start.m_Z )
 				&& ( p.Z <  m_End.m_Z );
 		}
+
+        // Le Z est le plus grand entre les deux Z.
+        public Point3D RandomPoint()
+        {
+            Rectangle2D rect = new Rectangle2D(Start, End);
+            rect = Map.NormalizeR2D(rect);
+            return new Point3D(Start.X + Utility.Random(rect.Width), Start.Y + Utility.Random(rect.Height), Math.Max(Start.Z, End.Z));
+        }
+
 	}
 }

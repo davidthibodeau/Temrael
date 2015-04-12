@@ -160,6 +160,13 @@
     <Compile Include="Engines\Institutions\InstitutionGump.cs" />
     <Compile Include="Engines\Institutions\InstitutionHandler.cs" />
     <Compile Include="Misc\Notoriety.cs" />
+    <Compile Include="Misc\PVP\PVPEvent.cs" />
+    <Compile Include="Misc\PVP\PVPMap.cs" />
+    <Compile Include="Misc\PVP\PVPMode.cs" />
+    <Compile Include="Misc\PVP\PVPModeDef\FFA.cs" />
+    <Compile Include="Misc\PVP\PVPModeDef\TDTickets.cs" />
+    <Compile Include="Misc\PVP\PVPStone.cs" />
+    <Compile Include="Misc\PVP\PVPTeam.cs" />
     <Compile Include="Misc\ResetHebdomadaire.cs" />
     <Compile Include="Mobiles\Brigands\Brigand10.cs" />
     <Compile Include="Mobiles\Brigands\Brigand15.cs" />

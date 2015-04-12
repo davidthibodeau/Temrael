@@ -1241,6 +1241,26 @@ namespace Server
 			return false;
 		}
 
+        public void MakeUnique()
+        {
+            List<Item> ToDelete = new List<Item>();
+            foreach (KeyValuePair<Serial, Item> pair in World.Items)
+            {
+                if (pair.Value.GetType() == this.GetType())
+                {
+                    if (!pair.Value.Equals(this))
+                    {
+                        ToDelete.Add(pair.Value);
+                    }
+                }
+            }
+
+            foreach (Item i in ToDelete)
+            {
+                i.Delete();
+            }
+        }
+
 		public virtual bool CheckConflictingLayer( Mobile m, Item item, Layer layer )
 		{
 			return ( m_Layer == layer );

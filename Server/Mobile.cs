@@ -2921,6 +2921,8 @@ namespace Server
 						item.Delete();
 				}
 
+                Frozen = false;
+
 				this.SendIncomingPacket();
 				this.SendIncomingPacket();
 
