@@ -692,8 +692,8 @@ namespace Server.Mobiles
                     if (m_HitsTimer != null)
                         m_HitsTimer.Stop();
 
-                    for (int i = 0; i < m_Aggressors.Count; i++) //reset reports on full HP
-                    m_Aggressors[i].CanReportMurder = false;
+                    for (int i = 0; i < Aggressors.Count; i++) //reset reports on full HP
+                    Aggressors[i].CanReportMurder = false;
 
                     if (m_DamageEntries.Count > 0)
                         m_DamageEntries.Clear(); // reset damage entries on full HP
@@ -851,7 +851,7 @@ namespace Server.Mobiles
         /// Overridable. Gets the maximum mana of the Mobile. By default, this returns: <c><see cref="Int" /></c>
         /// </summary>
         [CommandProperty( AccessLevel.Batisseur )]
-        public virtual int ManaMax
+        public override int ManaMax
         {
             get
             {
@@ -937,9 +937,9 @@ namespace Server.Mobiles
 
         public virtual bool RegenThroughPoison { get { return m_GlobalRegenThroughPoison; } }
 
-        public virtual bool CanRegenHits { get { return this.Alive && (RegenThroughPoison || !this.Poisoned); } }
-        public virtual bool CanRegenStam { get { return this.Alive; } }
-        public virtual bool CanRegenMana { get { return this.Alive; } }
+        public override bool CanRegenHits { get { return this.Alive && (RegenThroughPoison || !this.Poisoned); } }
+        public override bool CanRegenStam { get { return this.Alive; } }
+        public override bool CanRegenMana { get { return this.Alive; } }
 
         private class ManaTimer : Timer
         {
@@ -1071,13 +1071,6 @@ namespace Server.Mobiles
         /// </summary>
         protected override void OnAfterDelete()
         {
-            StopAggrExpire();
-
-            CheckAggrExpire();
-
-            if( m_PoisonTimer != null )
-                m_PoisonTimer.Stop();
-
             if( m_HitsTimer != null )
                 m_HitsTimer.Stop();
 
@@ -1087,84 +1080,15 @@ namespace Server.Mobiles
             if( m_ManaTimer != null )
                 m_ManaTimer.Stop();
 
-            if( m_CombatTimer != null )
-                m_CombatTimer.Stop();
-
-            if( m_ExpireCombatant != null )
-                m_ExpireCombatant.Stop();
-
-            if( m_LogoutTimer != null )
-                m_LogoutTimer.Stop();
-
-            if( m_WarmodeTimer != null )
-                m_WarmodeTimer.Stop();
-
             if( m_ParaTimer != null )
                 m_ParaTimer.Stop();
 
             if( m_FrozenTimer != null )
                 m_FrozenTimer.Stop();
 
-            if( m_AutoManifestTimer != null )
-                m_AutoManifestTimer.Stop();
+            base.OnAfterDelete();
         }
 
-        private class CombatTimer : Timer
-        {
-            private Mobile m_Mobile;
-
-            public CombatTimer( Mobile m )
-                : base( TimeSpan.FromSeconds( 0.0 ), TimeSpan.FromSeconds( 0.01 ), 0 )
-            {
-                m_Mobile = m;
-
-                if( !m_Mobile.m_Player && m_Mobile.Dex <= 100 )
-                    Priority = TimerPriority.FiftyMS;
-            }
-
-            protected override void OnTick()
-            {
-                if (Core.TickCount - m_Mobile.m_NextCombatTime >= 0)
-                {
-                    Mobile combatant = m_Mobile.Combatant;
-
-                    // If no combatant, wrong map, one of us is a ghost, or cannot see, or deleted, then stop combat
-                    if( combatant == null || combatant.m_Deleted || m_Mobile.m_Deleted || combatant.m_Map != m_Mobile.m_Map || !combatant.Alive || !m_Mobile.Alive || !m_Mobile.CanSee( combatant ) || combatant.IsDeadBondedPet || m_Mobile.IsDeadBondedPet )
-                    {
-                        m_Mobile.Combatant = null;
-                        return;
-                    }
-
-                    IWeapon weapon = m_Mobile.Weapon;
-
-                    if( !m_Mobile.InRange( combatant, weapon.MaxRange ) )
-                        return;
-
-                    if( m_Mobile.InLOS( combatant ) )
-                    {
-                        weapon.OnBeforeSwing( m_Mobile, combatant );    
-                        m_Mobile.m_NextCombatTime = Core.TickCount + weapon.OnSwing(m_Mobile, combatant);
-                    }
-                }
-            }
-        }
-
-        private class ExpireCombatantTimer : Timer
-        {
-            private Mobile m_Mobile;
-
-            public ExpireCombatantTimer( Mobile m )
-                : base( TimeSpan.FromMinutes( 1.0 ) )
-            {
-                this.Priority = TimerPriority.FiveSeconds;
-                m_Mobile = m;
-            }
-
-            protected override void OnTick()
-            {
-                m_Mobile.Combatant = null;
-            }
-        }
 
         [CommandProperty( AccessLevel.Batisseur )]
         public override bool Paralyzed

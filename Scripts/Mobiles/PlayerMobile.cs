@@ -1743,15 +1743,6 @@ namespace Server.Mobiles
             }
         }
 
-		public override bool CheckShove( Mobile shoved )
-		{
-			//if( m_IgnoreMobiles || TransformationSpellHelper.UnderTransformation( shoved, typeof( WraithFormSpell ) ) )
-			//	return true;
-			//else
-				return base.CheckShove( shoved );
-		}
-
-
         public override void AddNameProperties(ObjectPropertyList list)
         {
             string name = "";

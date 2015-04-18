@@ -357,6 +357,10 @@ namespace Server
         }
 
 
+        public abstract bool CanRegenHits { get; }
+        public abstract bool CanRegenStam { get; }
+        public abstract bool CanRegenMana { get; }
+
         #region Stats
 
         /// <summary>
@@ -488,13 +492,10 @@ namespace Server
         /// <summary>
         /// Overridable. Gets the maximum mana of the Mobile. By default, this returns: <c><see cref="Int" /></c>
         /// </summary>
-        [CommandProperty( AccessLevel.Batisseur )]
-        public virtual int ManaMax
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract int ManaMax
         {
-            get
-            {
-                return 2 * Int;
-            }
+            get;
         }
 
         #endregion
@@ -797,16 +798,7 @@ namespace Server
 
 		public virtual double RacialSkillBonus { get { return 0; } }
 
-		private List<ResistanceMod> m_ResistMods;
 
-		private double[] m_Resistances;
-
-        public double[] Resistances { get { return m_Resistances; } }
-
-		public virtual int BasePhysicalResistance { get { return 0; } }
-		public virtual int BaseContondantResistance { get { return 0; } }
-		public virtual int BaseTranchantResistance { get { return 0; } }
-		public virtual int BasePerforantResistance { get { return 0; } }
         public virtual double BaseMagicalResistance
         {
             get
@@ -837,22 +829,22 @@ namespace Server
 		{
 		}
 
-		[CommandProperty( AccessLevel.Counselor )]
-        public virtual double PhysicalResistance
-		{
-			get { return GetResistance( ResistanceType.Physical ); }
-		}
+        [CommandProperty(AccessLevel.Counselor)]
+        public abstract double PhysicalResistance
+        {
+            get;
+        }
 
 		[CommandProperty( AccessLevel.Counselor )]
-		public virtual double MagicResistance
+		public abstract double MagicalResistance
 		{
-            get { return GetResistance(ResistanceType.Magical); }
+            get;
 		}
 
         [CommandProperty(AccessLevel.Counselor)]
-        public virtual double ArmureNaturelle
+        public abstract double ArmureNaturelle
         {
-            get
+            get;
             {
                 double ArNatSkill = Skills[SkillName.ArmureNaturelle].Value;
 
@@ -886,27 +878,6 @@ namespace Server
 
 			if( delta )
 				Delta( MobileDelta.Resistances );
-		}
-
-		public virtual double GetResistance( ResistanceType type )
-		{
-			if( m_Resistances == null )
-                m_Resistances = new double[2] { double.MinValue, double.MinValue };
-
-			int v = (int)type;
-
-			if( v < 0 || v >= m_Resistances.Length )
-				return 0;
-
-			double res = m_Resistances[v];
-
-			if( res == double.MinValue )
-			{
-				ComputeResistances();
-				res = m_Resistances[v];
-			}
-
-			return res;
 		}
 
 		public List<ResistanceMod> ResistanceMods
@@ -2112,6 +2083,64 @@ namespace Server
 			UpdateAggrExpire();
 		}
 
+
+        private class CombatTimer : Timer
+        {
+            private Mobile m_Mobile;
+
+            public CombatTimer( Mobile m )
+                : base( TimeSpan.FromSeconds( 0.0 ), TimeSpan.FromSeconds( 0.01 ), 0 )
+            {
+                m_Mobile = m;
+
+                if( !m_Mobile.Player && m_Mobile.Dex <= 100 )
+                    Priority = TimerPriority.FiftyMS;
+            }
+
+            protected override void OnTick()
+            {
+                if (Core.TickCount - m_Mobile.m_NextCombatTime >= 0)
+                {
+                    Mobile combatant = m_Mobile.Combatant;
+
+                    // If no combatant, wrong map, one of us is a ghost, or cannot see, or deleted, then stop combat
+                    if( combatant == null || combatant.m_Deleted || m_Mobile.m_Deleted || combatant.m_Map != m_Mobile.m_Map || !combatant.Alive || !m_Mobile.Alive || !m_Mobile.CanSee( combatant ) || combatant.IsDeadBondedPet || m_Mobile.IsDeadBondedPet )
+                    {
+                        m_Mobile.Combatant = null;
+                        return;
+                    }
+
+                    IWeapon weapon = m_Mobile.Weapon;
+
+                    if( !m_Mobile.InRange( combatant, weapon.MaxRange ) )
+                        return;
+
+                    if( m_Mobile.InLOS( combatant ) )
+                    {
+                        weapon.OnBeforeSwing( m_Mobile, combatant );    
+                        m_Mobile.m_NextCombatTime = Core.TickCount + weapon.OnSwing(m_Mobile, combatant);
+                    }
+                }
+            }
+        }
+
+        private class ExpireCombatantTimer : Timer
+        {
+            private Mobile m_Mobile;
+
+            public ExpireCombatantTimer( Mobile m )
+                : base( TimeSpan.FromMinutes( 1.0 ) )
+            {
+                this.Priority = TimerPriority.FiveSeconds;
+                m_Mobile = m;
+            }
+
+            protected override void OnTick()
+            {
+                m_Mobile.Combatant = null;
+            }
+        }
+
 		[CommandProperty( AccessLevel.Batisseur )]
 		public int TotalGold
 		{
@@ -3314,7 +3343,30 @@ namespace Server
 			FreeCache();
 		}
 
-        protected abstract void OnAfterDelete();
+        protected virtual void OnAfterDelete()
+        {
+            StopAggrExpire();
+
+            CheckAggrExpire();
+
+            if( m_PoisonTimer != null )
+                m_PoisonTimer.Stop();
+
+            if (m_CombatTimer != null)
+                m_CombatTimer.Stop();
+
+            if (m_ExpireCombatant != null)
+                m_ExpireCombatant.Stop();
+
+            if (m_LogoutTimer != null)
+                m_LogoutTimer.Stop();
+
+            if (m_WarmodeTimer != null)
+                m_WarmodeTimer.Stop();
+
+            if (m_AutoManifestTimer != null)
+                m_AutoManifestTimer.Stop();
+        }
 
 		/// <summary>
 		/// Overridable. Virtual event invoked before the Mobile is deleted.

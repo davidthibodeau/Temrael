@@ -1002,36 +1002,6 @@ namespace Server
 			return false;
 		}
 
-		public Skill Highest
-		{
-			get
-			{
-				if ( m_Highest == null )
-				{
-					Skill highest = null;
-					int value = int.MinValue;
-
-					for ( int i = 0; i < m_Skills.Length; ++i )
-					{
-						Skill sk = m_Skills[i];
-
-						if ( sk != null && sk.BaseFixedPoint > value )
-						{
-							value = sk.BaseFixedPoint;
-							highest = sk;
-						}
-					}
-
-					if ( highest == null && m_Skills.Length > 0 )
-						highest = this[0];
-
-					m_Highest = highest;
-				}
-
-				return m_Highest;
-			}
-		}
-
 		public void Serialize( GenericWriter writer )
 		{
 			m_Total = 0;
