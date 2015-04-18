@@ -1,5 +1,7 @@
 using System;
 using Server.Network;
+using Server.Mobiles;
+using Server.Engines.Combat;
 
 namespace Server
 {
@@ -14,7 +16,7 @@ namespace Server
 			bool Enabled = Core.AOS;
 
 			ObjectPropertyList.Enabled = Enabled;
-			Mobile.VisibleDamageType = Enabled ? VisibleDamageType.Related : VisibleDamageType.None;
+			BaseMobile.VisibleDamageType = Enabled ? VisibleDamageType.Related : VisibleDamageType.None;
 			Mobile.GuildClickMessage = !Enabled;
 			Mobile.AsciiClickMessage = !Enabled;
 

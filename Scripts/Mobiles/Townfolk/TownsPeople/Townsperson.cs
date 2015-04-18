@@ -851,7 +851,7 @@ namespace Server.Mobiles
             return false;
         }
 
-        public override void OnAfterDelete()
+        protected override void OnAfterDelete()
         {
             if (m_pausetimer != null)
                 m_pausetimer.Stop();

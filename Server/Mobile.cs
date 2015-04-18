@@ -51,32 +51,7 @@ namespace Server
 	public delegate void PromptStateCallback<T>( Mobile from, string text, T state );
 	#endregion
 
-	public class DamageEntry
-	{
-		private Mobile m_Damager;
-		private int m_DamageGiven;
-		private DateTime m_LastDamage;
-		private List<DamageEntry> m_Responsible;
 
-		public Mobile Damager { get { return m_Damager; } }
-		public int DamageGiven { get { return m_DamageGiven; } set { m_DamageGiven = value; } }
-		public DateTime LastDamage { get { return m_LastDamage; } set { m_LastDamage = value; } }
-		public bool HasExpired { get { return (DateTime.Now > (m_LastDamage + m_ExpireDelay)); } }
-		public List<DamageEntry> Responsible { get { return m_Responsible; } set { m_Responsible = value; } }
-
-		private static TimeSpan m_ExpireDelay = TimeSpan.FromMinutes( 2.0 );
-
-		public static TimeSpan ExpireDelay
-		{
-			get { return m_ExpireDelay; }
-			set { m_ExpireDelay = value; }
-		}
-
-		public DamageEntry( Mobile damager )
-		{
-			m_Damager = damager;
-		}
-	}
 
 	#region Enums
 	[Flags]
@@ -156,14 +131,6 @@ namespace Server
 		Owner
 	}
 
-	public enum VisibleDamageType
-	{
-		None,
-		Related,
-		Everyone,
-        Selective
-	}
-
 	public enum ResistanceType
 	{
 		Physical,
@@ -212,8 +179,411 @@ namespace Server
 	/// <summary>
 	/// Base class representing players, npcs, and creatures.
 	/// </summary>
-	public partial class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable
+	public abstract class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable
 	{
+        #region Regeneration
+
+        private static RegenRateHandler m_HitsRegenRate, m_StamRegenRate, m_ManaRegenRate;
+        private static TimeSpan m_DefaultHitsRate, m_DefaultStamRate, m_DefaultManaRate;
+
+        public static RegenRateHandler HitsRegenRateHandler
+        {
+            get { return m_HitsRegenRate; }
+            set { m_HitsRegenRate = value; }
+        }
+
+        public static TimeSpan DefaultHitsRate
+        {
+            get { return m_DefaultHitsRate; }
+            set { m_DefaultHitsRate = value; }
+        }
+
+        public static RegenRateHandler StamRegenRateHandler
+        {
+            get { return m_StamRegenRate; }
+            set { m_StamRegenRate = value; }
+        }
+
+        public static TimeSpan DefaultStamRate
+        {
+            get { return m_DefaultStamRate; }
+            set { m_DefaultStamRate = value; }
+        }
+
+        public static RegenRateHandler ManaRegenRateHandler
+        {
+            get { return m_ManaRegenRate; }
+            set { m_ManaRegenRate = value; }
+        }
+
+        public static TimeSpan DefaultManaRate
+        {
+            get { return m_DefaultManaRate; }
+            set { m_DefaultManaRate = value; }
+        }
+
+        public static TimeSpan GetHitsRegenRate( Mobile m )
+        {
+            if( m_HitsRegenRate == null )
+                return m_DefaultHitsRate;
+            else
+                return m_HitsRegenRate( m );
+        }
+
+        public static TimeSpan GetStamRegenRate( Mobile m )
+        {
+            if( m_StamRegenRate == null )
+                return m_DefaultStamRate;
+            else
+                return m_StamRegenRate( m );
+        }
+
+        public static TimeSpan GetManaRegenRate( Mobile m )
+        {
+            if( m_ManaRegenRate == null )
+                return m_DefaultManaRate;
+            else
+                return m_ManaRegenRate( m );
+        }
+
+        #endregion
+
+        private StatLockType m_StrLock, m_DexLock, m_IntLock;
+
+
+        /// <summary>
+        /// Gets or sets the <see cref="StatLockType">lock state</see> for the <see cref="RawStr" /> property.
+        /// </summary>
+        [CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
+        public StatLockType StrLock
+        {
+            get
+            {
+                return m_StrLock;
+            }
+            set
+            {
+                if( m_StrLock != value )
+                {
+                    m_StrLock = value;
+
+                    if( m_NetState != null )
+                        m_NetState.Send( new StatLockInfo( this ) );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the <see cref="StatLockType">lock state</see> for the <see cref="RawDex" /> property.
+        /// </summary>
+        [CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
+        public StatLockType DexLock
+        {
+            get
+            {
+                return m_DexLock;
+            }
+            set
+            {
+                if( m_DexLock != value )
+                {
+                    m_DexLock = value;
+
+                    if( m_NetState != null )
+                        m_NetState.Send( new StatLockInfo( this ) );
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the <see cref="StatLockType">lock state</see> for the <see cref="RawInt" /> property.
+        /// </summary>
+        [CommandProperty( AccessLevel.Counselor, AccessLevel.Batisseur )]
+        public StatLockType IntLock
+        {
+            get
+            {
+                return m_IntLock;
+            }
+            set
+            {
+                if( m_IntLock != value )
+                {
+                    m_IntLock = value;
+
+                    if( m_NetState != null )
+                        m_NetState.Send( new StatLockInfo( this ) );
+                }
+            }
+        }
+
+        public abstract bool ShouldCheckStatTimers { get; }
+
+        public abstract void CheckStatTimers();
+
+        public void Heal(int amount)
+        {
+            Heal( amount, this, true );
+        }
+
+        public void Heal( int amount, Mobile from )
+        {
+            Heal( amount, from, true );
+        }
+
+        public void Heal( int amount, Mobile from, bool message )
+        {
+            if( !Alive || IsDeadBondedPet )
+                return;
+
+            if( !Region.OnHeal( this, ref amount ) )
+                return;
+
+            OnHeal( ref amount, from );
+
+            if( (Hits + amount) > HitsMax )
+            {
+                amount = HitsMax - Hits;
+            }
+
+            Hits += amount;
+
+            if( message && amount > 0 && m_NetState != null )
+                m_NetState.Send( new MessageLocalizedAffix( Serial.MinusOne, -1, MessageType.Label, 0x3B2, 3, 1008158, "", AffixType.Append | AffixType.System, amount.ToString(), "" ) );
+        }
+
+        public virtual void OnHeal( ref int amount, Mobile from )
+        {
+        }
+
+
+        #region Stats
+
+        /// <summary>
+        /// Gets or sets the base, unmodified, strength of the Mobile. Ranges from 1 to 65000, inclusive.
+        /// <seealso cref="Str" />
+        /// <seealso cref="StatMod" />
+        /// <seealso cref="OnRawStrChange" />
+        /// <seealso cref="OnRawStatChange" />
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int RawStr
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the effective strength of the Mobile. This is the sum of the <see cref="RawStr" /> plus any additional modifiers. Any attempts to set this value when under the influence of a <see cref="StatMod" /> will result in no change. It ranges from 1 to 65000, inclusive.
+        /// <seealso cref="RawStr" />
+        /// <seealso cref="StatMod" />
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int Str
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the base, unmodified, dexterity of the Mobile. Ranges from 1 to 65000, inclusive.
+        /// <seealso cref="Dex" />
+        /// <seealso cref="StatMod" />
+        /// <seealso cref="OnRawDexChange" />
+        /// <seealso cref="OnRawStatChange" />
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int RawDex
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the effective dexterity of the Mobile. This is the sum of the <see cref="RawDex" /> plus any additional modifiers. Any attempts to set this value when under the influence of a <see cref="StatMod" /> will result in no change. It ranges from 1 to 65000, inclusive.
+        /// <seealso cref="RawDex" />
+        /// <seealso cref="StatMod" />
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int Dex
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the base, unmodified, intelligence of the Mobile. Ranges from 1 to 65000, inclusive.
+        /// <seealso cref="Int" />
+        /// <seealso cref="StatMod" />
+        /// <seealso cref="OnRawIntChange" />
+        /// <seealso cref="OnRawStatChange" />
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int RawInt
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the effective intelligence of the Mobile. This is the sum of the <see cref="RawInt" /> plus any additional modifiers. Any attempts to set this value when under the influence of a <see cref="StatMod" /> will result in no change. It ranges from 1 to 65000, inclusive.
+        /// <seealso cref="RawInt" />
+        /// <seealso cref="StatMod" />
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int Int
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Gets or sets the current hit point of the Mobile. This value ranges from 0 to <see cref="HitsMax" />, inclusive. When set to the value of <see cref="HitsMax" />, the <see cref="AggressorInfo.CanReportMurder">CanReportMurder</see> flag of all aggressors is reset to false, and the list of damage entries is cleared.
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int Hits
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Overridable. Gets the maximum hit point of the Mobile. By default, this returns: <c>50 + (<see cref="Str" /> / 2)</c>
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int HitsMax
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets or sets the current stamina of the Mobile. This value ranges from 0 to <see cref="StamMax" />, inclusive.
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int Stam
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Overridable. Gets the maximum stamina of the Mobile. By default, this returns: <c><see cref="Dex" /></c>
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int StamMax
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Gets or sets the current stamina of the Mobile. This value ranges from 0 to <see cref="ManaMax" />, inclusive.
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public abstract int Mana
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Overridable. Gets the maximum mana of the Mobile. By default, this returns: <c><see cref="Int" /></c>
+        /// </summary>
+        [CommandProperty( AccessLevel.Batisseur )]
+        public virtual int ManaMax
+        {
+            get
+            {
+                return 2 * Int;
+            }
+        }
+
+        #endregion
+
+
+        [CommandProperty( AccessLevel.Batisseur )]
+        public DateTime LastStrGain
+        {
+            get
+            {
+                return m_LastStrGain;
+            }
+            set
+            {
+                m_LastStrGain = value;
+            }
+        }
+
+        [CommandProperty( AccessLevel.Batisseur )]
+        public DateTime LastIntGain
+        {
+            get
+            {
+                return m_LastIntGain;
+            }
+            set
+            {
+                m_LastIntGain = value;
+            }
+        }
+
+        [CommandProperty( AccessLevel.Batisseur )]
+        public DateTime LastDexGain
+        {
+            get
+            {
+                return m_LastDexGain;
+            }
+            set
+            {
+                m_LastDexGain = value;
+            }
+        }
+
+        public DateTime LastStatGain
+        {
+            get
+            {
+                DateTime d = m_LastStrGain;
+
+                if( m_LastIntGain > d )
+                    d = m_LastIntGain;
+
+                if( m_LastDexGain > d )
+                    d = m_LastDexGain;
+
+                return d;
+            }
+            set
+            {
+                m_LastStrGain = value;
+                m_LastIntGain = value;
+                m_LastDexGain = value;
+            }
+        }
+
+        public abstract void InitStats(int str, int dex, int intel);
+
+        /// <summary>
+        /// Gets or sets the maximum attainable value for <see cref="RawStr" />, <see cref="RawDex" />, and <see cref="RawInt" />.
+        /// </summary>
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract int StatCap
+        {
+            get;
+            set;
+        }
+
+
+        [CommandProperty( AccessLevel.Batisseur )]
+        public int RawStatTotal
+        {
+            get
+            {
+                return RawStr + RawDex + RawInt;
+            }
+        }
+
+
 		#region CompareTo(...)
 		public int CompareTo( IEntity other )
 		{
@@ -392,14 +762,9 @@ namespace Server
 		private Timer m_ExpireAggrTimer;
 		private Timer m_LogoutTimer;
 		private Timer m_CombatTimer;
-		private Timer m_ManaTimer, m_HitsTimer, m_StamTimer;
         private long m_NextSkillTime;
 		private long m_NextActionTime;
 		private long m_NextActionMessage;
-		private bool m_Paralyzed;
-		private ParalyzedTimer m_ParaTimer;
-		private bool m_Frozen;
-		private FrozenTimer m_FrozenTimer;
 		private int m_AllowedStealthSteps;
 		private int m_NameHue = -1;
 		private Region m_Region;
@@ -742,6 +1107,26 @@ namespace Server
 		public virtual void GetChildNameProperties( ObjectPropertyList list, Item item )
 		{
 		}
+
+        private class ExpireAggressorsTimer : Timer
+        {
+            private Mobile m_Mobile;
+
+            public ExpireAggressorsTimer( Mobile m )
+                : base( TimeSpan.FromSeconds( 5.0 ), TimeSpan.FromSeconds( 5.0 ) )
+            {
+                m_Mobile = m;
+                Priority = TimerPriority.FiveSeconds;
+            }
+
+            protected override void OnTick()
+            {
+                if( m_Mobile.Deleted || (m_Mobile.Aggressors.Count == 0 && m_Mobile.Aggressed.Count == 0) )
+                    m_Mobile.StopAggrExpire();
+                else
+                    m_Mobile.CheckAggrExpire();
+            }
+        }
 
 		private void UpdateAggrExpire()
 		{
@@ -1239,28 +1624,10 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public virtual bool Paralyzed
-		{
-			get
-			{
-				return m_Paralyzed;
-			}
-			set
-			{
-				if( m_Paralyzed != value )
-				{
-					m_Paralyzed = value;
-					Delta( MobileDelta.Flags );
-
-					this.SendLocalizedMessage( m_Paralyzed ? 502381 : 502382 );
-
-					if( m_ParaTimer != null )
-					{
-						m_ParaTimer.Stop();
-						m_ParaTimer = null;
-					}
-				}
-			}
+		public abstract bool Paralyzed
+        {
+            get;
+            set;
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -1292,49 +1659,15 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public bool Frozen
-		{
-			get
-			{
-				return m_Frozen;
-			}
-			set
-			{
-				if( m_Frozen != value )
-				{
-					m_Frozen = value;
-					Delta( MobileDelta.Flags );
-
-					if( m_FrozenTimer != null )
-					{
-						m_FrozenTimer.Stop();
-						m_FrozenTimer = null;
-					}
-				}
-			}
+		public abstract bool Frozen
+        {
+            get;
+            set;
 		}
 
-		public void Paralyze( TimeSpan duration )
-		{
-			if( !m_Paralyzed )
-			{
-				Paralyzed = true;
+        public abstract void Paralyze(TimeSpan duration);
 
-				m_ParaTimer = new ParalyzedTimer( this, duration );
-				m_ParaTimer.Start();
-			}
-		}
-
-		public void Freeze( TimeSpan duration )
-		{
-			if( !m_Frozen )
-			{
-				Frozen = true;
-
-				m_FrozenTimer = new FrozenTimer( this, duration );
-				m_FrozenTimer.Start();
-			}
-		}
+        public abstract void Freeze(TimeSpan duration);
 
 		public override string ToString()
 		{
@@ -1442,117 +1775,7 @@ namespace Server
 				}
 			}
 		}
-
-		private class ParalyzedTimer : Timer
-		{
-			private Mobile m_Mobile;
-
-			public ParalyzedTimer( Mobile m, TimeSpan duration )
-				: base( duration )
-			{
-				this.Priority = TimerPriority.TwentyFiveMS;
-				m_Mobile = m;
-			}
-
-			protected override void OnTick()
-			{
-				m_Mobile.Paralyzed = false;
-			}
-		}
-
-		private class FrozenTimer : Timer
-		{
-			private Mobile m_Mobile;
-
-			public FrozenTimer( Mobile m, TimeSpan duration )
-				: base( duration )
-			{
-				this.Priority = TimerPriority.TwentyFiveMS;
-				m_Mobile = m;
-			}
-
-			protected override void OnTick()
-			{
-				m_Mobile.Frozen = false;
-			}
-		}
-
-		private class CombatTimer : Timer
-		{
-			private Mobile m_Mobile;
-
-			public CombatTimer( Mobile m )
-				: base( TimeSpan.FromSeconds( 0.0 ), TimeSpan.FromSeconds( 0.01 ), 0 )
-			{
-				m_Mobile = m;
-
-				if( !m_Mobile.m_Player && m_Mobile.m_Dex <= 100 )
-					Priority = TimerPriority.FiftyMS;
-			}
-
-			protected override void OnTick()
-			{
-				if (Core.TickCount - m_Mobile.m_NextCombatTime >= 0)
-				{
-					Mobile combatant = m_Mobile.Combatant;
-
-					// If no combatant, wrong map, one of us is a ghost, or cannot see, or deleted, then stop combat
-					if( combatant == null || combatant.m_Deleted || m_Mobile.m_Deleted || combatant.m_Map != m_Mobile.m_Map || !combatant.Alive || !m_Mobile.Alive || !m_Mobile.CanSee( combatant ) || combatant.IsDeadBondedPet || m_Mobile.IsDeadBondedPet )
-					{
-						m_Mobile.Combatant = null;
-						return;
-					}
-
-					IWeapon weapon = m_Mobile.Weapon;
-
-					if( !m_Mobile.InRange( combatant, weapon.MaxRange ) )
-						return;
-
-					if( m_Mobile.InLOS( combatant ) )
-					{
-						weapon.OnBeforeSwing( m_Mobile, combatant );	
-						m_Mobile.m_NextCombatTime = Core.TickCount + weapon.OnSwing(m_Mobile, combatant);
-					}
-				}
-			}
-		}
-
-		private class ExpireCombatantTimer : Timer
-		{
-			private Mobile m_Mobile;
-
-			public ExpireCombatantTimer( Mobile m )
-				: base( TimeSpan.FromMinutes( 1.0 ) )
-			{
-				this.Priority = TimerPriority.FiveSeconds;
-				m_Mobile = m;
-			}
-
-			protected override void OnTick()
-			{
-				m_Mobile.Combatant = null;
-			}
-		}
-
-		private class ExpireAggressorsTimer : Timer
-		{
-			private Mobile m_Mobile;
-
-			public ExpireAggressorsTimer( Mobile m )
-				: base( TimeSpan.FromSeconds( 5.0 ), TimeSpan.FromSeconds( 5.0 ) )
-			{
-				m_Mobile = m;
-				Priority = TimerPriority.FiveSeconds;
-			}
-
-			protected override void OnTick()
-			{
-				if( m_Mobile.Deleted || (m_Mobile.Aggressors.Count == 0 && m_Mobile.Aggressed.Count == 0) )
-					m_Mobile.StopAggrExpire();
-				else
-					m_Mobile.CheckAggrExpire();
-			}
-		}
+            
 
 		#endregion
 
@@ -2505,7 +2728,7 @@ namespace Server
 				if( m_Spell != null && !m_Spell.OnCasterMoving( d ) )
 					return false;
 
-				if( m_Paralyzed || m_Frozen )
+				if( Paralyzed || Frozen )
 				{
 					SendLocalizedMessage( 500111 ); // You are frozen and can not move.
 
@@ -3086,10 +3309,12 @@ namespace Server
 
 			World.RemoveMobile( this );
 
-			OnAfterDelete();
+            OnAfterDelete();
 
 			FreeCache();
 		}
+
+        protected abstract void OnAfterDelete();
 
 		/// <summary>
 		/// Overridable. Virtual event invoked before the Mobile is deleted.
@@ -3142,49 +3367,7 @@ namespace Server
 		{
 		}
 
-		/// <summary>
-		/// Overridable. Invoked after the mobile is deleted. When overriden, be sure to call the base method.
-		/// </summary>
-		public virtual void OnAfterDelete()
-		{
-			StopAggrExpire();
-
-			CheckAggrExpire();
-
-			if( m_PoisonTimer != null )
-				m_PoisonTimer.Stop();
-
-			if( m_HitsTimer != null )
-				m_HitsTimer.Stop();
-
-			if( m_StamTimer != null )
-				m_StamTimer.Stop();
-
-			if( m_ManaTimer != null )
-				m_ManaTimer.Stop();
-
-			if( m_CombatTimer != null )
-				m_CombatTimer.Stop();
-
-			if( m_ExpireCombatant != null )
-				m_ExpireCombatant.Stop();
-
-			if( m_LogoutTimer != null )
-				m_LogoutTimer.Stop();
-
-			if( m_WarmodeTimer != null )
-				m_WarmodeTimer.Stop();
-
-			if( m_ParaTimer != null )
-				m_ParaTimer.Stop();
-
-			if( m_FrozenTimer != null )
-				m_FrozenTimer.Stop();
-
-			if( m_AutoManifestTimer != null )
-				m_AutoManifestTimer.Stop();
-		}
-
+		
 		public virtual bool AllowSkillUse( SkillName name )
 		{
 			return true;
@@ -3260,22 +3443,6 @@ namespace Server
 
 			Poison = null;
 			Combatant = null;
-
-			if( Paralyzed )
-			{
-				Paralyzed = false;
-
-				if( m_ParaTimer != null )
-					m_ParaTimer.Stop();
-			}
-
-			if( Frozen )
-			{
-				Frozen = false;
-
-				if( m_FrozenTimer != null )
-					m_FrozenTimer.Stop();
-			}
 
 			List<Item> content = new List<Item>();
 			List<Item> equip = new List<Item>();
@@ -4144,361 +4311,184 @@ namespace Server
 		private static List<IEntity> m_OnSpeech = new List<IEntity>();
 
 		public virtual void DoSpeech( string text, int[] keywords, MessageType type, int hue )
-		{
-			if( m_Deleted || CommandSystem.Handle( this, text, type ) )
-				return;
+        {
+            if (m_Deleted || CommandSystem.Handle(this, text, type))
+                return;
 
-			int range = 12;
+            int range = 12;
 
-			switch( type )
-			{
-				case MessageType.Regular:
-					m_SpeechHue = hue;
-					break;
-				case MessageType.Emote:
-					m_EmoteHue = hue;
-					break;
-				case MessageType.Whisper: // CHUCHOT1:
-					m_WhisperHue = 936;   // Couleur blanche par defaut.
+            switch (type)
+            {
+                case MessageType.Regular:
+                    m_SpeechHue = hue;
+                    break;
+                case MessageType.Emote:
+                    m_EmoteHue = hue;
+                    break;
+                case MessageType.Whisper: // CHUCHOT1:
+                    m_WhisperHue = 936;   // Couleur blanche par defaut.
                     hue = m_WhisperHue;
-					range = 1;
-					break;
-				case MessageType.Yell:
-					m_YellHue = hue;
-					range = 18;
-					break;
-				default:
-					type = MessageType.Regular;
-					break;
-			}
+                    range = 1;
+                    break;
+                case MessageType.Yell:
+                    m_YellHue = hue;
+                    range = 18;
+                    break;
+                default:
+                    type = MessageType.Regular;
+                    break;
+            }
 
             // CHUCHOT2:
             // Revele une personne hidee qui ne whisper ou ne fait pas une emote.
-            if (Hidden && !(MessageType.Whisper == type || MessageType.Emote == type)) 
+            if (Hidden && !(MessageType.Whisper == type || MessageType.Emote == type))
                 RevealingAction();
 
-			SpeechEventArgs regArgs = new SpeechEventArgs( this, text, type, hue, keywords );
+            SpeechEventArgs regArgs = new SpeechEventArgs(this, text, type, hue, keywords);
 
-			EventSink.InvokeSpeech( regArgs );
-			this.Region.OnSpeech( regArgs );
-			OnSaid( regArgs );
+            EventSink.InvokeSpeech(regArgs);
+            this.Region.OnSpeech(regArgs);
+            OnSaid(regArgs);
 
-			if( regArgs.Blocked )
-				return;
+            if (regArgs.Blocked)
+                return;
 
-			text = regArgs.Speech;
+            text = regArgs.Speech;
 
-			if( string.IsNullOrEmpty( text ) )
-				return;
+            if (string.IsNullOrEmpty(text))
+                return;
 
-			List<Mobile> hears = m_Hears;
-			List<IEntity> onSpeech = m_OnSpeech;
+            List<Mobile> hears = m_Hears;
+            List<IEntity> onSpeech = m_OnSpeech;
 
-			if( m_Map != null )
-			{
-				IPooledEnumerable<IEntity> eable = m_Map.GetObjectsInRange( m_Location, range );
+            if (m_Map != null)
+            {
+                IPooledEnumerable<IEntity> eable = m_Map.GetObjectsInRange(m_Location, range);
 
-				foreach(IEntity o in eable) {
-					if( o is Mobile ) {
-						Mobile heard = (Mobile)o;
+                foreach (IEntity o in eable)
+                {
+                    if (o is Mobile)
+                    {
+                        Mobile heard = (Mobile)o;
 
                         // CHUCHOT3: Permet aux autres joueurs de voir les messages Whisper par les personnes invisibles.
-						if( ((heard.CanSee( this )) || MessageType.Whisper == type) && (m_NoSpeechLOS || !heard.Player || heard.InLOS( this )) )
-						{
-							if( heard.m_NetState != null )
-								hears.Add( heard );
+                        if (((heard.CanSee(this)) || MessageType.Whisper == type) && (m_NoSpeechLOS || !heard.Player || heard.InLOS(this)))
+                        {
+                            if (heard.m_NetState != null)
+                                hears.Add(heard);
 
-							if( heard.HandlesOnSpeech( this ) )
-								onSpeech.Add( heard );
+                            if (heard.HandlesOnSpeech(this))
+                                onSpeech.Add(heard);
 
-							for( int i = 0; i < heard.Items.Count; ++i )
-							{
-								Item item = heard.Items[i];
+                            for (int i = 0; i < heard.Items.Count; ++i)
+                            {
+                                Item item = heard.Items[i];
 
-								if( item.HandlesOnSpeech )
-									onSpeech.Add( item );
+                                if (item.HandlesOnSpeech)
+                                    onSpeech.Add(item);
 
-								if( item is Container )
-									AddSpeechItemsFrom( onSpeech, (Container)item );
-							}
-						}
-					}
-					else if( o is Item )
-					{
-						if( ((Item)o).HandlesOnSpeech )
-							onSpeech.Add(o);
+                                if (item is Container)
+                                    AddSpeechItemsFrom(onSpeech, (Container)item);
+                            }
+                        }
+                    }
+                    else if (o is Item)
+                    {
+                        if (((Item)o).HandlesOnSpeech)
+                            onSpeech.Add(o);
 
-						if( o is Container )
-							AddSpeechItemsFrom( onSpeech, (Container)o );
-					}
-				}
+                        if (o is Container)
+                            AddSpeechItemsFrom(onSpeech, (Container)o);
+                    }
+                }
 
-				eable.Free();
+                eable.Free();
 
-				object mutateContext = null;
-				string mutatedText = text;
-				SpeechEventArgs mutatedArgs = null;
+                object mutateContext = null;
+                string mutatedText = text;
+                SpeechEventArgs mutatedArgs = null;
 
-				if( MutateSpeech( hears, ref mutatedText, ref mutateContext ) )
-					mutatedArgs = new SpeechEventArgs( this, mutatedText, type, hue, new int[0] );
+                if (MutateSpeech(hears, ref mutatedText, ref mutateContext))
+                    mutatedArgs = new SpeechEventArgs(this, mutatedText, type, hue, new int[0]);
 
-				CheckSpeechManifest();
+                CheckSpeechManifest();
 
-				ProcessDelta();
+                ProcessDelta();
 
-				Packet regp = null;
-				Packet mutp = null;
+                Packet regp = null;
+                Packet mutp = null;
 
-				// TODO: Should this be sorted like onSpeech is below?
+                // TODO: Should this be sorted like onSpeech is below?
 
-				for( int i = 0; i < hears.Count ; ++i ) {
-					Mobile heard = hears[i];
+                for (int i = 0; i < hears.Count; ++i)
+                {
+                    Mobile heard = hears[i];
                     SendPropertiesTo(heard);
 
-					if( mutatedArgs == null || !CheckHearsMutatedSpeech( heard, mutateContext ) ) {
+                    if (mutatedArgs == null || !CheckHearsMutatedSpeech(heard, mutateContext))
+                    {
 
-						heard.OnSpeech( regArgs );
+                        heard.OnSpeech(regArgs);
 
-						NetState ns = heard.NetState;
+                        NetState ns = heard.NetState;
 
-						if( ns != null ) {
+                        if (ns != null)
+                        {
                             regp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUsedBy(heard), text));
 
-							ns.Send( regp );
-						}
-					} else {
+                            ns.Send(regp);
+                        }
+                    }
+                    else
+                    {
 
-						heard.OnSpeech( mutatedArgs );
+                        heard.OnSpeech(mutatedArgs);
 
-						NetState ns = heard.NetState;
+                        NetState ns = heard.NetState;
 
-						if( ns != null ) {
+                        if (ns != null)
+                        {
                             mutp = Packet.Acquire(new UnicodeMessage(m_Serial, Body, type, hue, 3, m_Language, GetNameUsedBy(heard), mutatedText));
 
-							ns.Send( mutp );
-						}
-					}
-				}
+                            ns.Send(mutp);
+                        }
+                    }
+                }
 
-				Packet.Release( regp );
-				Packet.Release( mutp );
+                Packet.Release(regp);
+                Packet.Release(mutp);
 
-				if( onSpeech.Count > 1 )
-					onSpeech.Sort( LocationComparer.GetInstance( this ) );
+                if (onSpeech.Count > 1)
+                    onSpeech.Sort(LocationComparer.GetInstance(this));
 
-				for( int i = 0; i < onSpeech.Count; ++i ) {
-					IEntity obj = onSpeech[i];
+                for (int i = 0; i < onSpeech.Count; ++i)
+                {
+                    IEntity obj = onSpeech[i];
 
-					if( obj is Mobile ) {
-						Mobile heard = (Mobile)obj;
+                    if (obj is Mobile)
+                    {
+                        Mobile heard = (Mobile)obj;
 
-						if( mutatedArgs == null || !CheckHearsMutatedSpeech( heard, mutateContext ) )
-							heard.OnSpeech( regArgs );
-						else
-							heard.OnSpeech( mutatedArgs );
-					} else {
-						Item item = (Item)obj;
+                        if (mutatedArgs == null || !CheckHearsMutatedSpeech(heard, mutateContext))
+                            heard.OnSpeech(regArgs);
+                        else
+                            heard.OnSpeech(mutatedArgs);
+                    }
+                    else
+                    {
+                        Item item = (Item)obj;
 
-						item.OnSpeech( regArgs );
-					}
-				}
+                        item.OnSpeech(regArgs);
+                    }
+                }
 
-				if(m_Hears.Count > 0)
-					m_Hears.Clear();
+                if (m_Hears.Count > 0)
+                    m_Hears.Clear();
 
-				if(m_OnSpeech.Count > 0)
-					m_OnSpeech.Clear();
-			}
-		}
-
-		private static VisibleDamageType m_VisibleDamageType;
-
-		public static VisibleDamageType VisibleDamageType
-		{
-			get { return m_VisibleDamageType; }
-			set { m_VisibleDamageType = value; }
-		}
-
-		private List<DamageEntry> m_DamageEntries;
-
-		public List<DamageEntry> DamageEntries
-		{
-			get { return m_DamageEntries; }
-		}
-
-		public static Mobile GetDamagerFrom( DamageEntry de )
-		{
-			return (de == null ? null : de.Damager);
-		}
-
-		public Mobile FindMostRecentDamager( bool allowSelf )
-		{
-			return GetDamagerFrom( FindMostRecentDamageEntry( allowSelf ) );
-		}
-
-		public DamageEntry FindMostRecentDamageEntry( bool allowSelf )
-		{
-			for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-			{
-				if( i >= m_DamageEntries.Count )
-					continue;
-
-				DamageEntry de = m_DamageEntries[i];
-
-				if( de.HasExpired )
-					m_DamageEntries.RemoveAt( i );
-				else if( allowSelf || de.Damager != this )
-					return de;
-			}
-
-			return null;
-		}
-
-		public Mobile FindLeastRecentDamager( bool allowSelf )
-		{
-			return GetDamagerFrom( FindLeastRecentDamageEntry( allowSelf ) );
-		}
-
-		public DamageEntry FindLeastRecentDamageEntry( bool allowSelf )
-		{
-			for( int i = 0; i < m_DamageEntries.Count; ++i )
-			{
-				if( i < 0 )
-					continue;
-
-				DamageEntry de = m_DamageEntries[i];
-
-				if( de.HasExpired )
-				{
-					m_DamageEntries.RemoveAt( i );
-					--i;
-				}
-				else if( allowSelf || de.Damager != this )
-				{
-					return de;
-				}
-			}
-
-			return null;
-		}
-
-		public Mobile FindMostTotalDamger( bool allowSelf )
-		{
-			return GetDamagerFrom( FindMostTotalDamageEntry( allowSelf ) );
-		}
-
-		public DamageEntry FindMostTotalDamageEntry( bool allowSelf )
-		{
-			DamageEntry mostTotal = null;
-
-			for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-			{
-				if( i >= m_DamageEntries.Count )
-					continue;
-
-				DamageEntry de = m_DamageEntries[i];
-
-				if( de.HasExpired )
-					m_DamageEntries.RemoveAt( i );
-				else if( (allowSelf || de.Damager != this) && (mostTotal == null || de.DamageGiven > mostTotal.DamageGiven) )
-					mostTotal = de;
-			}
-
-			return mostTotal;
-		}
-
-		public Mobile FindLeastTotalDamger( bool allowSelf )
-		{
-			return GetDamagerFrom( FindLeastTotalDamageEntry( allowSelf ) );
-		}
-
-		public DamageEntry FindLeastTotalDamageEntry( bool allowSelf )
-		{
-			DamageEntry mostTotal = null;
-
-			for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-			{
-				if( i >= m_DamageEntries.Count )
-					continue;
-
-				DamageEntry de = m_DamageEntries[i];
-
-				if( de.HasExpired )
-					m_DamageEntries.RemoveAt( i );
-				else if( (allowSelf || de.Damager != this) && (mostTotal == null || de.DamageGiven < mostTotal.DamageGiven) )
-					mostTotal = de;
-			}
-
-			return mostTotal;
-		}
-
-		public DamageEntry FindDamageEntryFor( Mobile m )
-		{
-			for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-			{
-				if( i >= m_DamageEntries.Count )
-					continue;
-
-				DamageEntry de = m_DamageEntries[i];
-
-				if( de.HasExpired )
-					m_DamageEntries.RemoveAt( i );
-				else if( de.Damager == m )
-					return de;
-			}
-
-			return null;
-		}
-
-		public virtual Mobile GetDamageMaster( Mobile damagee )
-		{
-			return null;
-		}
-
-		public virtual DamageEntry RegisterDamage( int amount, Mobile from )
-		{
-			DamageEntry de = FindDamageEntryFor( from );
-
-			if( de == null )
-				de = new DamageEntry( from );
-
-			de.DamageGiven += amount;
-			de.LastDamage = DateTime.Now;
-
-			m_DamageEntries.Remove( de );
-			m_DamageEntries.Add( de );
-
-			Mobile master = from.GetDamageMaster( this );
-
-			if( master != null )
-			{
-				List<DamageEntry> list = de.Responsible;
-
-				if( list == null )
-					de.Responsible = list = new List<DamageEntry>();
-
-				DamageEntry resp = null;
-
-				for( int i = 0; i < list.Count; ++i )
-				{
-					DamageEntry check = list[i];
-
-					if( check.Damager == master )
-					{
-						resp = check;
-						break;
-					}
-				}
-
-				if( resp == null )
-					list.Add( resp = new DamageEntry( master ) );
-
-				resp.DamageGiven += amount;
-				resp.LastDamage = DateTime.Now;
-			}
-
-			return de;
-		}
+                if (m_OnSpeech.Count > 0)
+                    m_OnSpeech.Clear();
+            }
+        }
 
 		private Mobile m_LastKiller;
 
@@ -4519,87 +4509,16 @@ namespace Server
 		{
 		}
 
-		public virtual void Damage( int amount )
-		{
-			Damage( amount, null );
-		}
-
+        public abstract void Damage(int amount);
+		
 		public virtual bool CanBeDamaged()
 		{
 			return !m_Blessed;
 		}
 
-		public virtual void Damage( int amount, Mobile from )
-		{
-			Damage( amount, from, true );
-		}
+        public abstract Mobile FindMostRecentDamager(bool allowSelf);
 
-		public virtual void Damage( int amount, Mobile from, bool informMount )
-		{
-			if( !CanBeDamaged() || m_Deleted )
-				return;
-
-			if( !this.Region.OnDamage( this, ref amount ) )
-				return;
-
-			if( amount > 0 )
-			{
-				int oldHits = Hits;
-				int newHits = oldHits - amount;
-
-				if( m_Spell != null )
-					m_Spell.OnCasterHurt();
-
-				//if ( m_Spell != null && m_Spell.State == SpellState.Casting )
-				//	m_Spell.Disturb( DisturbType.Hurt, false, true );
-
-				if( from != null )
-					RegisterDamage( amount, from );
-
-				DisruptiveAction();
-
-				Paralyzed = false;
-
-				switch( m_VisibleDamageType )
-				{
-					case VisibleDamageType.Related:
-						{
-							SendVisibleDamageRelated(from, amount);
-							break;
-						}
-					case VisibleDamageType.Everyone:
-						{
-							SendVisibleDamageEveryone(amount);
-							break;
-						}
-					case VisibleDamageType.Selective:
-						{
-							SendVisibleDamageSelective(from, amount);
-							break;
-						}
-				}
-
-				OnDamage( amount, from, newHits < 0 );
-
-				IMount m = this.Mount;
-				if( m != null && informMount )
-					m.OnRiderDamaged( amount, from, newHits < 0 );
-
-				if( newHits < 0 )
-				{
-					m_LastKiller = from;
-
-					Hits = 0;
-
-					if( oldHits >= 0 )
-						Kill();
-				}
-				else
-				{
-					Hits = newHits;
-				}
-			}
-		}
+        public abstract void Damage(int amount, Mobile from);
 
 		public void SendVisibleDamageRelated(Mobile from, int amount)
 		{
@@ -4701,6 +4620,8 @@ namespace Server
 
 		public virtual bool ShowVisibleDamage { get { return m_DefaultShowVisibleDamage; } }
 		public virtual bool CanSeeVisibleDamage { get { return m_DefaultCanSeeVisibleDamage; } }
+
+        public abstract Mobile GetDamageMaster(Mobile damagee);
 
 		public void SendVisibleDamageSelective(Mobile from, int amount)
 		{
@@ -4823,7 +4744,9 @@ namespace Server
             m_DisarmReady = reader.ReadBool();
             m_StunReady = reader.ReadBool();
 
+            #if false //TODO:deal with those.
             m_StatCap = reader.ReadInt();
+            #endif
 
             m_NameHue = reader.ReadInt();
 
@@ -4842,12 +4765,14 @@ namespace Server
             m_Hidden = reader.ReadBool();
             m_Direction = (Direction)reader.ReadByte();
             m_Hue = reader.ReadInt();
+            #if false //TODO: Deal with those.
             m_Str = reader.ReadInt();
             m_Dex = reader.ReadInt();
             m_Int = reader.ReadInt();
             m_Hits = reader.ReadInt();
             m_Stam = reader.ReadInt();
             m_Mana = reader.ReadInt();
+            #endif
             m_Map = reader.ReadMap();
             m_Blessed = reader.ReadBool();
             m_AccessLevel = (AccessLevel)reader.ReadByte();
@@ -4871,7 +4796,6 @@ namespace Server
             m_DexLock = (StatLockType)reader.ReadByte();
             m_IntLock = (StatLockType)reader.ReadByte();
 
-            m_StatMods = new List<StatMod>();
             m_SkillMods = new List<SkillMod>();
 
 
@@ -4889,7 +4813,7 @@ namespace Server
             if (ShouldCheckStatTimers)
                 CheckStatTimers();
 
-            if (!m_Player && m_Dex <= 100 && m_CombatTimer != null)
+            if (!m_Player && Dex <= 100 && m_CombatTimer != null)
                 m_CombatTimer.Priority = TimerPriority.FiftyMS;
             else if (m_CombatTimer != null)
                 m_CombatTimer.Priority = TimerPriority.EveryTick;
@@ -5015,7 +4939,7 @@ namespace Server
 
 			//Poison.Serialize( m_Poison, writer );
 
-			writer.Write( m_StatCap );
+			//writer.Write( m_StatCap );
 
 			writer.Write( m_NameHue );
 
@@ -5033,12 +4957,12 @@ namespace Server
 			writer.Write( m_Hidden );
 			writer.Write( (byte)m_Direction );
 			writer.Write( m_Hue );
-			writer.Write( m_Str );
-			writer.Write( m_Dex );
-			writer.Write( m_Int );
-			writer.Write( m_Hits );
-			writer.Write( m_Stam );
-			writer.Write( m_Mana );
+//			writer.Write( m_Str );
+//			writer.Write( m_Dex );
+//			writer.Write( m_Int );
+//			writer.Write( m_Hits );
+//			writer.Write( m_Stam );
+//			writer.Write( m_Mana );
 
 			writer.Write( m_Map );
 
@@ -5121,7 +5045,7 @@ namespace Server
 				m_Player = value;
 				InvalidateProperties();
 
-				if( !m_Player && m_Dex <= 100 && m_CombatTimer != null )
+				if( !m_Player && Dex <= 100 && m_CombatTimer != null )
 					m_CombatTimer.Priority = TimerPriority.FiftyMS;
 				else if( m_CombatTimer != null )
 					m_CombatTimer.Priority = TimerPriority.EveryTick;
@@ -6281,7 +6205,7 @@ namespace Server
 		{
 			int flags = 0x0;
 
-			if( m_Paralyzed || m_Frozen )
+			if( Paralyzed || Frozen )
 				flags |= 0x01;
 
 			if( m_Female )
@@ -6307,7 +6231,7 @@ namespace Server
 		{
 			int flags = 0x0;
 
-			if( m_Paralyzed || m_Frozen )
+			if( Paralyzed || Frozen )
 				flags |= 0x01;
 
 			if( m_Female )
@@ -8247,8 +8171,7 @@ namespace Server
 			m_Aggressors = new List<AggressorInfo>();
 			m_Aggressed = new List<AggressorInfo>();
 			m_NextSkillTime = Core.TickCount;
-			m_DamageEntries = new List<DamageEntry>();
-
+		
 			Type ourType = this.GetType();
 			m_TypeRef = World.m_MobileTypes.IndexOf( ourType );
 
@@ -8280,18 +8203,15 @@ namespace Server
 
 		public void DefaultMobileInit()
 		{
-			m_StatCap = 225;
 			m_FollowersMax = 5;
 			m_Skills = new Skills( this );
 			m_Items = new List<Item>();
-			m_StatMods = new List<StatMod>();
 			m_SkillMods = new List<SkillMod>();
 			Map = Map.Internal;
 			m_AutoPageNotify = true;
 			m_Aggressors = new List<AggressorInfo>();
 			m_Aggressed = new List<AggressorInfo>();
 			m_Stabled = new List<Mobile>();
-			m_DamageEntries = new List<DamageEntry>();
 
 			m_NextSkillTime = Core.TickCount;
 			m_CreationTime = DateTime.Now;

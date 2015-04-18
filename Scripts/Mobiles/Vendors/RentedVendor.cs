@@ -175,7 +175,7 @@ namespace Server.Mobiles
 			to.SendLocalizedMessage( 1062464, days.ToString() + "\t" + hours.ToString() ); // The rental contract on this vendor will expire in ~1_DAY~ day(s) and ~2_HOUR~ hour(s).
 		}
 
-		public override void OnAfterDelete()
+		protected override void OnAfterDelete()
 		{
 			base.OnAfterDelete();
 

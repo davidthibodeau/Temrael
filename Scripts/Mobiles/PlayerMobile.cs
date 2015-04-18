@@ -55,7 +55,7 @@ namespace Server.Mobiles
 	}
 	#endregion
 
-	public class PlayerMobile : ScriptMobile
+	public class PlayerMobile : BaseMobile
 	{
 		private class CountAndTimeStamp
 		{
@@ -2642,7 +2642,7 @@ namespace Server.Mobiles
 			return base.CanSee( item );
 		}
 
-		public override void OnAfterDelete()
+		protected override void OnAfterDelete()
 		{
 			base.OnAfterDelete();
 

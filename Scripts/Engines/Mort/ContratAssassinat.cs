@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Mobiles;
 
 namespace Server.Engines.Mort
 {
@@ -15,9 +16,9 @@ namespace Server.Engines.Mort
 
         public ContratAssassinat()
         {
-            Commanditaire = new Mobile();
-            Assassin = new Mobile();
-            Cible = new Mobile();
+            Commanditaire = new BaseMobile();
+            Assassin = new BaseMobile();
+            Cible = new BaseMobile();
 
             Commanditaire.Name = "Aucun";
             Assassin.Name = "Aucun";

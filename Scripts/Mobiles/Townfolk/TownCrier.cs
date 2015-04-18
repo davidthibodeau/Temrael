@@ -321,7 +321,7 @@ namespace Server.Mobiles
 		}
 	}
 
-	public class TownCrier : Mobile, ITownCrierEntryList
+	public class TownCrier : BaseMobile, ITownCrierEntryList
 	{
 		private List<TownCrierEntry> m_Entries;
 		private Timer m_NewsTimer;

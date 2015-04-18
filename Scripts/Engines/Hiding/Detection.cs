@@ -43,19 +43,19 @@ namespace Server.Engines.Hiding
 
 		private static void EventSink_Connected( ConnectedEventArgs e )
 		{
-            ScriptMobile sm = e.Mobile as ScriptMobile;
+            BaseMobile sm = e.Mobile as BaseMobile;
 
             sm.ActiverTestsDetection();
 		}
 
 		private static void EventSink_Disconnected( DisconnectedEventArgs e )
 		{
-            ScriptMobile sm = e.Mobile as ScriptMobile;
+            BaseMobile sm = e.Mobile as BaseMobile;
 
             sm.Detection.ResetAlentours();
             foreach (NetState state in NetState.Instances)
             {
-                ScriptMobile m = state.Mobile as ScriptMobile;
+                BaseMobile m = state.Mobile as BaseMobile;
                 if (m != null)
                     m.Detection.RetirerJoueurDesAlentours(sm);
             }
@@ -83,7 +83,7 @@ namespace Server.Engines.Hiding
             IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
             foreach (Mobile mob in eable)
             {
-                ScriptMobile m = mob as ScriptMobile;
+                BaseMobile m = mob as BaseMobile;
                 if (m == null || m == mobile || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player)
                     continue;
                 double chance = 0;

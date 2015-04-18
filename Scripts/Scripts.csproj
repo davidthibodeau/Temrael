@@ -209,7 +209,6 @@
     <Compile Include="Mobiles\NewAnimals\ScorpionGeant.cs" />
     <Compile Include="Mobiles\NewAnimals\SerpentGeant.cs" />
     <Compile Include="Mobiles\NewAnimals\Taureau.cs" />
-    <Compile Include="Mobiles\ScriptMobile.cs" />
     <Compile Include="Mobiles\Vendeurs\Apiculteur.cs" />
     <Compile Include="Mobiles\Vendeurs\Archiviste.cs" />
     <Compile Include="Mobiles\Vendeurs\Artiste.cs" />
@@ -1217,7 +1216,6 @@
     <Compile Include="Mobiles\Animals\Mounts\Griffon.cs" />
     <Compile Include="Mobiles\Animals\Mounts\Horse.cs" />
     <Compile Include="Mobiles\Animals\Mounts\HorseScelle.cs" />
-    <Compile Include="Mobiles\Animals\Mounts\Kirin.cs" />
     <Compile Include="Mobiles\Animals\Mounts\Licorne.cs" />
     <Compile Include="Mobiles\Animals\Mounts\Lion.cs" />
     <Compile Include="Mobiles\Animals\Mounts\MontureMortVivante.cs" />
@@ -2477,6 +2475,8 @@
     <Compile Include="Misc\PhpBB.cs" />
     <Compile Include="Mobiles\Vendeurs\Acheteur.cs" />
     <Compile Include="Items\Ballot.cs" />
+    <Compile Include="Mobiles\BaseMobile.cs" />
+    <Compile Include="Engines\Combat\DamageEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Server\Server.csproj">

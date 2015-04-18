@@ -493,7 +493,7 @@ namespace Server.Engines.Possess
 
                     if (o is BaseVendor)
                     {
-                        copy = new Mobile();
+                        copy = new BaseMobile();
                     }
 
                     CopySkills(origo, copy);

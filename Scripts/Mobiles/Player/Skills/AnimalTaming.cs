@@ -7,6 +7,7 @@ using Server.Mobiles;
 
 using Server.Spells;
 //using Server.Spells.Spellweaving;
+using Server.Engines.Combat;
 
 namespace Server.SkillHandlers
 {

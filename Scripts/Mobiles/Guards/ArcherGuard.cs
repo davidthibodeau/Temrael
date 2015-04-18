@@ -188,7 +188,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnAfterDelete()
+		protected override void OnAfterDelete()
 		{
 			if ( m_AttackTimer != null )
 			{

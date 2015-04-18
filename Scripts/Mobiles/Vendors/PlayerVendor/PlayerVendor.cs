@@ -741,7 +741,7 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnAfterDelete()
+		protected override void OnAfterDelete()
 		{
 			base.OnAfterDelete();
 

@@ -6,7 +6,7 @@ using Server.Mobiles;
 
 namespace Server.Mobiles
 {
-	public abstract class BaseGuard : Mobile
+	public abstract class BaseGuard : BaseMobile
 	{
 		public static void Spawn( Mobile caller, Mobile target )
 		{

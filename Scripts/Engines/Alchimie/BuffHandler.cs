@@ -181,7 +181,7 @@ namespace Server.Engines.Buffs
 
                         if (buff == buffinfo.effect.GetType())
                         {
-                            cumul += buffinfobuff.GetOffset();
+                            //cumul += buffinfobuff.GetOffset();
                         }
                     }
                 }
@@ -326,7 +326,7 @@ namespace Server.Engines.Buffs
                 {
                     PlayerMobile pm = (PlayerMobile)m_info.target;
 
-                    pm.Delta(MobileDelta.HealthbarPoison
+                    pm.Delta(MobileDelta.HealthbarPoison);
                     pm.Delta(m_info.effect.mobileDelta);
                 }
             }

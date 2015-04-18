@@ -195,7 +195,7 @@ namespace Server.Mobiles
 		}
 	}
 
-	public class BaseCreature : ScriptMobile
+	public class BaseCreature : BaseMobile
 	{
         #region Elevage
         public virtual bool HasASex { get { return false; } }
@@ -2651,7 +2651,7 @@ namespace Server.Mobiles
 				Dispel( defender );
 		}
 
-		public override void OnAfterDelete()
+		protected override void OnAfterDelete()
 		{
 			if ( m_AI != null )
 			{

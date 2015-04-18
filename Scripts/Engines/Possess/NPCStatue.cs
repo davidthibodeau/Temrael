@@ -315,7 +315,7 @@ namespace Server.Items
                     try
                     {
                         Mobile origo = targeted as Mobile;
-                        m_Item.Store = new Mobile();
+                        m_Item.Store = new BaseMobile();
 
                         CleanupEquipItems(m_Item.Store);
                         CopySkills(origo, m_Item.Store);

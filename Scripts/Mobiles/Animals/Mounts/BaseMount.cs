@@ -72,7 +72,7 @@ namespace Server.Mobiles
 			return base.OnBeforeDeath();
 		}
 
-		public override void OnAfterDelete()
+		protected override void OnAfterDelete()
 		{
 			if ( m_InternalItem != null )
 				m_InternalItem.Delete();
