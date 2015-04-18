@@ -112,6 +112,7 @@
     <Compile Include="Engines\Evolution\RaisonCote.cs" />
     <Compile Include="Engines\Evolution\Transfert.cs" />
     <Compile Include="Engines\Evolution\TransfertGump.cs" />
+    <Compile Include="Engines\Harvest\Excavation\Zones\MineDonjonMaritime.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\CordiliereEparse.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\MineDonjonGobelin.cs" />
     <Compile Include="Engines\Harvest\Excavation\Zones\MineVolcan.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Mobiles\Guards\Garde.cs" />
     <Compile Include="Mobiles\Monsters\Basilic.cs" />
     <Compile Include="Mobiles\Monsters\BasilicDesMarais.cs" />
+    <Compile Include="Mobiles\Monsters\Egouts\GeleeGrise.cs" />
     <Compile Include="Mobiles\Monsters\Egouts\GeleePutride.cs" />
     <Compile Include="Mobiles\Monsters\Egouts\VerCharognard.cs" />
     <Compile Include="Mobiles\Monsters\Elementaires\ElementaireEau.cs" />
