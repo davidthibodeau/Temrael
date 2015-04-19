@@ -49,7 +49,7 @@ namespace Server.Items
 			Effects.SendLocationParticles( EffectItem.Create( attacker.Location, attacker.Map, EffectItem.DefaultDuration ), 0x376A, 8, 12, 9943 );
 			attacker.PlaySound( 0x482 );
 
-			defender.FixedEffect( 0x37BE, 20, 25 );
+			Effects.SendTargetEffect(defender, 0x37BE, 20, 25 );
 
 			attacker.Combatant = null;
 			attacker.Warmode = false;

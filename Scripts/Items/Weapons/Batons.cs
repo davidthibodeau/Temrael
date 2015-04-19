@@ -6,9 +6,9 @@ namespace Server.Items
 {
     public class BatonDruide : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BatonDruide()
@@ -41,9 +41,9 @@ namespace Server.Items
 
     public class BatonElement : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BatonElement()
@@ -76,9 +76,9 @@ namespace Server.Items
 
     public class BatonElfique : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BatonElfique()
@@ -111,9 +111,9 @@ namespace Server.Items
 
     public class Batonentrainement : BaseStaff
     {
-        //public override int DefMinDamage { get { return 6; } }
-        //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 35; } }
+        //public override double DefMinDamage { get { return 6; } }
+        //public override double DefMaxDamage { get { return 10; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Batonentrainement()
@@ -146,9 +146,9 @@ namespace Server.Items
 
     public class BatonOsseux : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BatonOsseux()
@@ -181,9 +181,9 @@ namespace Server.Items
 
     public class BatonSoleil : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BatonSoleil()
@@ -216,9 +216,9 @@ namespace Server.Items
 
     public class BatonSorcier : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BatonSorcier()
@@ -251,9 +251,9 @@ namespace Server.Items
 
     public class BatonTenebreux : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BatonTenebreux()
@@ -286,9 +286,9 @@ namespace Server.Items
 
     public class Batonlumineux : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Batonlumineux()
@@ -321,9 +321,9 @@ namespace Server.Items
 
     public class GnarledStaff: BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public GnarledStaff()
@@ -356,9 +356,9 @@ namespace Server.Items
 
     public class Boulnar : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Boulnar()
@@ -391,9 +391,9 @@ namespace Server.Items
 
     public class Crochire : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Crochire()
@@ -426,9 +426,9 @@ namespace Server.Items
 
     public class BatonLourd : BaseStaff
     {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        //public override double DefMinDamage { get { return 13; } }
+        //public override double DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public BatonLourd()
@@ -461,9 +461,9 @@ namespace Server.Items
 
     public class Seliphore : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Seliphore()
@@ -496,8 +496,8 @@ namespace Server.Items
 
     public class Canne : BaseStaff
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -531,8 +531,8 @@ namespace Server.Items
 
     public class CanneOsseuse : BaseStaff
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -566,9 +566,9 @@ namespace Server.Items
 
     public class BlackStaff : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public BlackStaff()
@@ -601,9 +601,9 @@ namespace Server.Items
 
     public class ShepherdsCrook : BaseStaff
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public ShepherdsCrook()
@@ -636,8 +636,8 @@ namespace Server.Items
 
     public class QuarterStaff : BaseStaff
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -671,9 +671,9 @@ namespace Server.Items
 
     public class Batonsauvage : BaseStaff
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 13; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 13; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Batonsauvage()
@@ -706,9 +706,9 @@ namespace Server.Items
 
     public class Canalisateur : BaseStaff
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 13; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 13; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Canalisateur()

@@ -7,6 +7,8 @@ namespace Server.Items
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return (Core.ML); } }
 
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Bottle() : this( 1 )
 		{
@@ -15,7 +17,6 @@ namespace Server.Items
 		[Constructable]
 		public Bottle( int amount ) : base( 0xF0E )
 		{
-            GoldValue = 3;
 			Stackable = true;
 			Weight = 1.0;
 			Amount = amount;
@@ -24,8 +25,6 @@ namespace Server.Items
 		public Bottle( Serial serial ) : base( serial )
 		{
 		}
-
-		
 
 		public override void Serialize( GenericWriter writer )
 		{

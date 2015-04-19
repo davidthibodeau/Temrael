@@ -295,6 +295,9 @@ namespace Server.Engines.Harvest
 
                     if (zone != null && zone.ZoneType == ZoneType.Mining)
                     {
+                        if (zone.Map != from.Map)
+                            continue;
+
                         foreach (Rectangle3D rect in zone.Area)
                         {
                             Rectangle2D rectangle = new Rectangle2D((IPoint2D)(rect.Start), (IPoint2D)(rect.End));

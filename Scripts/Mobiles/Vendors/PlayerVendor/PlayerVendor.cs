@@ -770,7 +770,14 @@ namespace Server.Mobiles
 
 		public VendorItem GetVendorItem( Item item )
 		{
-			return (VendorItem) m_SellItems[item];
+            if (m_SellItems == null)
+                ExceptionLogging.WriteLine(new NullReferenceException(), "m_SellItems is null");
+            else if(item == null)
+                ExceptionLogging.WriteLine(new NullReferenceException(), "item is null");
+            else
+                return m_SellItems[item] as VendorItem;
+
+            return null;
 		}
 
 		private VendorItem SetVendorItem( Item item, int price, string description )

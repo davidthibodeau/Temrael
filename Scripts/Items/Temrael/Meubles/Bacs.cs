@@ -74,7 +74,7 @@ namespace Server.Items
     {
         [Constructable]
         public BacVide()
-            : base(0x1496)
+            : base(0x22C0)
         {
             Weight = 5.0;
             Name = "Bac vide";

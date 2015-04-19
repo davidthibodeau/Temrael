@@ -18,9 +18,6 @@ namespace Server.Engines.Evolution
         public bool XPMode { get; set; }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public DateTime NextFiole { get; set; }
-
-        [CommandProperty(AccessLevel.Batisseur)]
         public DateTime NextExp { get; set; }
 
         [CommandProperty(AccessLevel.Batisseur)]
@@ -36,17 +33,18 @@ namespace Server.Engines.Evolution
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write(0); //version
+            writer.Write(1); //version
             
             writer.Write(XP);
             writer.Write(Niveau);
             writer.Write(XPMode);
-            writer.Write(NextFiole);
             writer.Write(NextExp);
 
             for (int i = 0; i < 7; i++)
                 for (int j = 0; j < 9; j++)
                     writer.Write(Ticks[i, j]);
+
+            Cotes.Serialize(writer);
         }
 
         public Experience(GenericReader reader)
@@ -56,21 +54,27 @@ namespace Server.Engines.Evolution
             XP = reader.ReadInt();
             Niveau = reader.ReadInt();
             XPMode = reader.ReadBool();
-            NextFiole = reader.ReadDateTime();
+            if (version == 0)
+                reader.ReadDateTime();
             NextExp = reader.ReadDateTime();
 
             Ticks = new bool[7, 9];
             for (int i = 0; i < 7; i++)
                 for (int j = 0; j < 9; j++)
                     Ticks[i, j] = reader.ReadBool();
+
+            if(version == 0)
+                Cotes = new Cotes();
+            else
+                Cotes = new Cotes(reader);
         }
 
         public Experience()
         {
             XPMode = true;
-            NextFiole = DateTime.Now;
             NextExp = DateTime.Now.AddMinutes(20);
             Ticks = new bool[7, 9];
+            Cotes = new Cotes();
         }
 
         public void Tick(PlayerMobile pm)
@@ -140,6 +144,11 @@ namespace Server.Engines.Evolution
                     pm.Experience.ResetTicks();
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return "...";
         }
     }
 }

@@ -101,7 +101,7 @@ namespace Server.Spells
 
                     m.Paralyzed = false;
 
-					m.FixedParticles( 0x374A, 10, 15, 5028, EffectLayer.Waist );
+					Effects.SendTargetParticles(m, 0x374A, 10, 15, 5028, EffectLayer.Waist );
 					m.PlaySound( 0x1FB );
 				}
 			}

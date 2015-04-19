@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class Ginseng : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public Ginseng() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public Ginseng( int amount ) : base( 0xF85, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public Ginseng( Serial serial ) : base( serial )

@@ -5,7 +5,7 @@ namespace Server.Items
 {
 	public class Sextant : Item
 	{
-        public override int GoldValue { get { return 21; } set { } }
+        public override int GoldValue { get { return 21; } }
 
 		[Constructable]
 		public Sextant() : base( 0x1058 )

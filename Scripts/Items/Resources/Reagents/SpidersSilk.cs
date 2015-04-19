@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class SpidersSilk : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public SpidersSilk() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public SpidersSilk( int amount ) : base( 0xF8D, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public SpidersSilk( Serial serial ) : base( serial )

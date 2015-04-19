@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14170, 10, 15, 5013, 139, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 15, 5013, 139, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(507);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_AuraDeFatigueTable.Remove(m);
 
-                m.FixedParticles(14170, 10, 15, 5013, 139, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 15, 5013, 139, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(507);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     AuraDeFatigueSpell.m_AuraDeFatigueTable.Remove(m_target);
                     AuraDeFatigueSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14170, 10, 15, 5013, 139, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14170, 10, 15, 5013, 139, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(507);
 
                     Stop();

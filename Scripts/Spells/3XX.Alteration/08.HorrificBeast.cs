@@ -35,7 +35,7 @@ namespace Server.Spells
 		public override void PlayEffect( Mobile m )
 		{
 			m.PlaySound( 0x165 );
-			m.FixedParticles( 0x3728, 1, 13, 9918, 92, 3, EffectLayer.Head );
+			Effects.SendTargetParticles(m, 0x3728, 1, 13, 9918, 92, 3, EffectLayer.Head );
 		}
 	}
 }

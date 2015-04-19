@@ -58,7 +58,7 @@ namespace Server.Spells
 
                 m.Mana -= (int)manaLost;
 
-                m.FixedParticles(0x374A, 10, 15, 5032, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x374A, 10, 15, 5032, EffectLayer.Head);
                 m.PlaySound(0x1F8);
             }
 

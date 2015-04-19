@@ -84,7 +84,7 @@ namespace Server.Spells
                     Caster.NameMod = "Quelqu'un";
                 }
 
-                m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x373A, 10, 15, 5036, EffectLayer.Head);
                 m.PlaySound(0x3BD);
 
                 BaseArmor.ValidateMobile(m);

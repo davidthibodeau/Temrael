@@ -9,8 +9,8 @@ namespace Server.Spells
         public static int m_SpellID { get { return 405; } } // TOCHANGE
 
         private static short s_Cercle = 1;
-        private static short durationMax = 180;
-        private static short bonusMax = 30;
+        private static short durationMax = 600;
+        private static short bonusMax = 45;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
 				"Agilité", "Ex Uus",
@@ -48,7 +48,7 @@ namespace Server.Spells
 
                 SpellHelper.AddStatBonus(Caster, m, StatType.Dex, bonus, duration); SpellHelper.DisableSkillCheck = true;
 
-				m.FixedParticles( 0x375A, 10, 15, 5010, EffectLayer.Waist );
+				Effects.SendTargetParticles(m, 0x375A, 10, 15, 5010, EffectLayer.Waist );
 				m.PlaySound( 0x28E );
 			}
 

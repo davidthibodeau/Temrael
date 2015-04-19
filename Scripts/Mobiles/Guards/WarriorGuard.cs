@@ -285,7 +285,7 @@ namespace Server.Mobiles
 				else
 				{// <instakill>
 					TeleportTo( target );
-					target.BoltEffect( 0 );
+					Effects.SendBoltEffect(target, true, 0);
 
 					if ( target is BaseCreature )
 						((BaseCreature)target).NoKillAwards = true;

@@ -52,7 +52,7 @@ namespace Server.Spells
                     m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                 }
 
-				m.BoltEffect( 0 );
+                Effects.SendBoltEffect(m, true, 0);
 
 				//SpellHelper.Damage( this, m, damage, 0, 0, 0, 0, 100 );
 			}

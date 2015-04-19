@@ -90,6 +90,13 @@ namespace Server.Items
 			}
 		}
 
+        [CommandProperty( AccessLevel.Batisseur )]
+        public bool Accorde
+        {
+            get;
+            set;
+        }
+
 		public void CheckReplenishUses()
 		{
 			CheckReplenishUses( true );
@@ -132,35 +139,41 @@ namespace Server.Items
 			return 100;
 		}
 
-        private class LivreEntry : ContextMenuEntry
+        private class AccorderEntry : ContextMenuEntry
         {
+            private BaseInstrument instr;
             private Mobile m_from;
-            private BaseInstrument m_instrument;
 
-            public LivreEntry(Mobile from, BaseInstrument instrument)
-                : base(6269, -1)
+            public AccorderEntry(Mobile from, BaseInstrument i)
+                : base(6259)
             {
                 m_from = from;
-                m_instrument = instrument;
-            }
-        }
-
-        private class QSLEntry : ContextMenuEntry
-        {
-            private PlayerMobile m_from;
-            private BaseInstrument m_instrument;
-
-            public QSLEntry(PlayerMobile from, BaseInstrument instrument)
-                : base(6268, -1)
-            {
-                m_from = from;
-                m_instrument = instrument;
+                instr = i;
             }
 
             public override void OnClick()
             {
-                m_from.CloseGump(typeof(QuickSpellLaunchGump));
-                m_from.SendGump(new QuickSpellLaunchGump(m_from, m_instrument, null));
+                m_from.SendMessage("Vous accordez l'instrument.");
+                instr.Accorde = true;
+            }
+        }
+
+        private class DesaccorderEntry : ContextMenuEntry
+        {
+            private BaseInstrument instr;
+            private Mobile m_from;
+
+            public DesaccorderEntry(Mobile from, BaseInstrument i)
+                : base(6260)
+            {
+                m_from = from;
+                instr = i;
+            }
+
+            public override void OnClick()
+            {
+                m_from.SendMessage("Vous désaccordez l'instrument.");
+                instr.Accorde = false;
             }
         }
 
@@ -170,11 +183,12 @@ namespace Server.Items
 
             Container pack = m_from.Backpack;
 
-            if (Parent == m_from || (pack != null && Parent == pack))
+            if (RootParent == m_from || (pack != null && Parent == pack))
             {
-                list.Add(new LivreEntry(m_from, this));
-                if (m_from is PlayerMobile)
-                    list.Add(new QSLEntry(((PlayerMobile)m_from), this));
+                if(!Accorde)
+                    list.Add(new AccorderEntry(m_from, this));
+                else
+                    list.Add(new DesaccorderEntry(m_from, this));
             }
         }
 
@@ -411,7 +425,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+			writer.Write( (int) 1 ); // version
 
 			writer.Write( m_ReplenishesCharges );
 			if( m_ReplenishesCharges )
@@ -425,6 +439,8 @@ namespace Server.Items
 
 			writer.WriteEncodedInt( (int) m_WellSound );
 			writer.WriteEncodedInt( (int) m_BadlySound );
+
+            writer.Write(Accorde);
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -448,7 +464,9 @@ namespace Server.Items
 
             m_WellSound = reader.ReadEncodedInt();
             m_BadlySound = reader.ReadEncodedInt();
-					
+
+            if (version > 0)
+                Accorde = reader.ReadBool();
 
 
 			CheckReplenishUses();
@@ -460,22 +478,22 @@ namespace Server.Items
 			{
 				from.SendLocalizedMessage( 500446 ); // That is too far away.
 			}
-			else if ( from.BeginAction( typeof( BaseInstrument ) ) )
-			{
-				SetInstrument( from, this );
+            else if (from.BeginAction(typeof(BaseInstrument)))
+            {
+                SetInstrument(from, this);
 
-				// Delay of 7 second before beign able to play another instrument again
-				new InternalTimer( from ).Start();
+                // Delay of 7 second before beign able to play another instrument again
+                new InternalTimer(from).Start();
 
-				if ( CheckMusicianship( from ) )
-					PlayInstrumentWell( from );
-				else
-					PlayInstrumentBadly( from );
-			}
-			else
-			{
-				from.SendLocalizedMessage( 500119 ); // You must wait to perform another action
-			}
+                if (Accorde)
+                    PlayInstrumentWell(from);
+                else
+                    PlayInstrumentBadly(from);
+            }
+            else
+            {
+                from.SendLocalizedMessage(500119); // You must wait to perform another action
+            }
 		}
 
 		public static bool CheckMusicianship( Mobile m )

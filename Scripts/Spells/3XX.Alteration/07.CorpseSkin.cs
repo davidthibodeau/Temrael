@@ -46,7 +46,7 @@ namespace Server.Spells
                 else
                     m.SendLocalizedMessage(1061689); // Your skin turns dry and corpselike.
 
-                m.FixedParticles(0x373A, 1, 15, 9913, 67, 7, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x373A, 1, 15, 9913, 67, 7, EffectLayer.Head);
                 m.PlaySound(0x1BB);
 
                 double ss = Caster.Skills[DamageSkill].Value;

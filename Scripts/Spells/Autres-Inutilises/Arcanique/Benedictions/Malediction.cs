@@ -66,7 +66,7 @@ namespace Server.Spells
 
             m.Paralyzed = false;
 
-            m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x374A, 10, 15, 5028, EffectLayer.Waist);
             m.PlaySound(0x1EA);
         }
 
@@ -86,7 +86,7 @@ namespace Server.Spells
                     return;
 
                 target.PlaySound(0x1ED);
-                target.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
+                Effects.SendTargetParticles(target,0x375A, 10, 15, 5037, EffectLayer.Waist);
             }
         }
 

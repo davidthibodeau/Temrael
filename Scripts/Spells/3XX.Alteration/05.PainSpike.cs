@@ -58,8 +58,8 @@ namespace Server.Spells
                  * NOTE : If target already has a pain spike in effect, damage dealt /= 10
                  */
 
-                m.FixedParticles(0x37C4, 1, 8, 9916, 39, 3, EffectLayer.Head);
-                m.FixedParticles(0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x37C4, 1, 8, 9916, 39, 3, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x37C4, 1, 8, 9502, 39, 4, EffectLayer.Head);
                 m.PlaySound(0x210);
 
                 //Le dégât est ajusté sur le % de vie restant de la cible, puisque c'est un sort de type Exécution/Finisher

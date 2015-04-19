@@ -421,10 +421,11 @@ namespace Server.Items
 
 	public class PaintsAndBrush : Item
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public PaintsAndBrush() : base( 0xFC1 )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 		}
 

@@ -160,6 +160,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(BarrelLid), "Matériaux", "Couvercle de Tonneau", 11.0, 36.0, typeof(Board), "Planches", 5, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
+            index = AddCraft(typeof(BarrelHoops), "Matériaux", "Cercle de Tonneau", 11.0, 36.0, typeof(FerIngot), "Lingot de fer", 1, 1044037);
+
             #endregion
 
             #region Chaises
@@ -173,13 +175,13 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(WoodenChair), "Chaises", "Chaise en bois", 21.0, 46.0, typeof(Board), "Planches", 15, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(FancyWoodenChairCushion), "Chaises", "Chaise avec coussin", 42.1, 67.1, typeof(Board), "Planches", 18, 1044351);
+            index = AddCraft(typeof(FancyWoodenChairCushion), "Chaises", "Chaise travaillée avec coussin", 42.1, 67.1, typeof(Board), "Planches", 18, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(WoodenChairCushion), "Chaises", "Chaise avec coussin", 42.1, 67.1, typeof(Board), "Planches", 15, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(Throne), "Chaises", "Trône", 73.6, 98.6, typeof(Board), "Planches", 22, 1044351);
+            index = AddCraft(typeof(Throne), "Chaises", "Trône coussiné", 73.6, 98.6, typeof(Board), "Planches", 22, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             /*index = AddCraft(typeof(FootStool), "Chaises", "Tabouret de pied (Bug)", 11.0, 36.0, typeof(Board), "Planches", 10, 1044351);
@@ -197,7 +199,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(BancTemple), "Chaises", "Banc de temple", 55.0, 85.0, typeof(Board), "Planches", 13, 1044351);
             AddRes(index, typeof(Nails), "Clous", 3, 1044563);
 
-            index = AddCraft(typeof(BancTemple), "Chaises", "Chaise coussinée", 25.0, 55.0, typeof(Board), "Planches", 9, 1044351);
+            index = AddCraft(typeof(ChaiseCoussinee), "Chaises", "Chaise coussinée", 25.0, 55.0, typeof(Board), "Planches", 9, 1044351);
             AddRes(index, typeof(Nails), "Clous", 2, 1044563);
             AddRes(index, typeof(Cloth), "Coton", 1, 1044287);
 
@@ -211,10 +213,10 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(WritingTable), "Tables", "Table d'écriture", 63.1, 88.1, typeof(Board), "Planches", 20, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(YewWoodTable), "Tables", "Table", 63.1, 88.1, typeof(Board), "Planches", 25, 1044351);
+            index = AddCraft(typeof(YewWoodTable), "Tables", "Table rustique", 63.1, 88.1, typeof(Board), "Planches", 25, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
-            index = AddCraft(typeof(LargeTable), "Tables", "Table", 84.2, 109.2, typeof(Board), "Planches", 30, 1044351);
+            index = AddCraft(typeof(LargeTable), "Tables", "Table de planche longue", 84.2, 109.2, typeof(Board), "Planches", 30, 1044351);
             AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(ShortMusicStand), "Tables", "Petit support à musique", 78.9, 103.9, typeof(Board), "Planches", 15, 1044351);
@@ -232,8 +234,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(TableDeVitre), "Tables", "Table de vitre", 75.0, 105.0, typeof(Board), "Planches", 15, 1044351);
             AddRes(index, typeof(Nails), "Clous", 6, 1044563);
 
-            index = AddCraft(typeof(TableDeNuit), "Tables", "Table de nuit", 20.0, 50.0, typeof(Board), "Planches", 18, 1044351);
-            AddRes(index, typeof(Nails), "Clous", 6, 1044563);
+            index = AddCraft(typeof(TableDeNuit), "Tables", "Table de nuit", 20.0, 50.0, typeof(Board), "Planches", 20, 1044351);
+            AddRes(index, typeof(Nails), "Clous", 1, 1044563);
 
             index = AddCraft(typeof(TableDeBoisRustique), "Tables", "Table de bois rustique", 22.0, 52.0, typeof(Board), "Planches", 18, 1044351);
             AddRes(index, typeof(Nails), "Clous", 6, 1044563);
@@ -404,35 +406,35 @@ namespace Server.Engines.Craft
             #region Contenant à fruits
             index = AddCraft(typeof(FruitContainerA), "Conteneurs", "Tonneau de pommes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Apple), "Pommes", 25, 1044563);
+            AddRes(index, typeof(Apple), "Pommes", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerB), "Conteneurs", "Tonneau de bananes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Banana), "Bananes", 25, 1044563);
+            AddRes(index, typeof(Banana), "Bananes", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerC), "Conteneurs", "Tonneau de pain", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Banana), "BreadLoaf", 25, 1044563);
+            AddRes(index, typeof(Banana), "BreadLoaf", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerD), "Conteneurs", "Tonneau de dattes", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Dates), "Dattes", 25, 1044563);
+            AddRes(index, typeof(Dates), "Dattes", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerE), "Conteneurs", "Tonneau de citrons", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Lemon), "Citrons", 25, 1044563);
+            AddRes(index, typeof(Lemon), "Citrons", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerF), "Conteneurs", "Tonneau de citrons verts", 69.0, 75.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Lime), "Citrons verts", 25, 1044563);
+            AddRes(index, typeof(Lime), "Citrons verts", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerG), "Conteneurs", "Tonneau de pommes renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Apple), "Pommes", 25, 1044563);
+            AddRes(index, typeof(Apple), "Pommes", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerH), "Conteneurs", "Tonneau de bananes renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Banana), "Bananes", 25, 1044563);
+            AddRes(index, typeof(Banana), "Bananes", 25, 1042081);
 
             index = AddCraft(typeof(FruitContainerI), "Conteneurs", "Tonneau de patates renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
@@ -440,7 +442,7 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(FruitContainerJ), "Conteneurs", "Tonneau de pêches renversé", 80.0, 90.0, typeof(Board), "Planches", 10, 1044351);
             AddRes(index, typeof(FerIngot), "Fer", 4, 1044563);
-            AddRes(index, typeof(Peach), "Pêches", 25, 1044563);
+            AddRes(index, typeof(Peach), "Pêches", 25, 1042081);
 
             #endregion
 
@@ -582,7 +584,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(Gourdin), "Équipement", "Gourdin", 20.0, 50.0, typeof(Board), "Planches", 3, 1044351);
             index = AddCraft(typeof(Batonmace), "Équipement", "Bâton de Guerre", 60.0, 80.0, typeof(Board), "Planches", 8, 1044351);
 
-            index = AddCraft(typeof(BouclierCuir), "Équipement", "Bouclier de Cuir", 20.0, 40.0, typeof(Leather), "Cuir", 9, 1044351);
+            index = AddCraft(typeof(BouclierCuir), "Équipement", "Bouclier de Cuir", 20.0, 40.0, typeof(Leather), "Cuir", 9, 1044463);
             AddRes(index, typeof(Board), "Planches", 5, 1044287);
 
             index = AddCraft(typeof(WoodenShield), "Équipement", "Bouclier de Bois", 10.0, 30.0, typeof(Board), "Planches", 12, 1044351);

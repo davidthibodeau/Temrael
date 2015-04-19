@@ -7,9 +7,12 @@ namespace Server.Items
     public class TrapEffect : Item, IActivable
     {
         #region IActivable
-        public override void IActivableOnActivate(int mode, Mobile from)
+        public override void IActivableOnActivate(int mode, Mobile from, int overflow)
         {
             DoEffect(from);
+
+            if(Trap_ActivateItem != null && overflow < 5000) // overflow a une limite arbitraire mais avant qu'un stack overflow pop.
+                Trap_ActivateItem.OnActivate(Trap_ActivateMode, from, overflow + 1);
         }
         #endregion
 

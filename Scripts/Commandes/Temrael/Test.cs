@@ -9,6 +9,8 @@ using Server.Targeting;
 using System.Collections.Generic;
 using Server.Engines.Equitation;
 using Server.Engines.Buffing;
+using Server.Spells;
+using Server.Spells.TechniquesCombat;
 
 namespace Server.Scripts.Commands
 {
@@ -16,8 +18,8 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Test", AccessLevel.Batisseur, new CommandEventHandler(Test_OnCommand));
-            CommandSystem.Register("Test2", AccessLevel.Batisseur, new CommandEventHandler(Test2_OnCommand));
+            CommandSystem.Register("Test", AccessLevel.Owner, new CommandEventHandler(Test_OnCommand));
+            CommandSystem.Register("Test2", AccessLevel.Owner, new CommandEventHandler(Test2_OnCommand));
         }
 
         [Usage("Test")]

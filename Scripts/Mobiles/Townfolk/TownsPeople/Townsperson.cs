@@ -1077,7 +1077,7 @@ namespace Server.Mobiles
 
         public override bool HandlesOnSpeech(Mobile from)
         {
-            if (!Hidden && from.Player && from.Alive && InLOS(from))
+            if (!Hidden && from.Player && from.Alive && InLOS(from) && InRange(from.Location, 5))
                 return true;
             else
                 return false;

@@ -342,6 +342,8 @@ namespace Server.SkillHandlers
 			{
 				Tracking.ClearTrackingInfo( m_From );
 
+                m_From.CloseGump(typeof(TrackDistanceGump));
+
 				m_From = null;
 
 				Stop();
@@ -357,9 +359,53 @@ namespace Server.SkillHandlers
 				Tracking.ClearTrackingInfo( m_From );
 
 				m_From.SendLocalizedMessage( 503177 ); // You have lost your quarry.
+
+                m_From.CloseGump(typeof(TrackDistanceGump));
 			}
 		}
 	}
+
+    public class TrackDistanceGump : Gump
+	{
+        private Mobile m_From;
+        private Mobile m_Target;
+        private string message;
+        private double distance;
+        
+        public TrackDistanceGump( Mobile from, Mobile target) : base( 20, 30 )
+		{
+			m_From = from;
+			m_Target = target;
+
+			AddPage( 0 );
+
+			AddBackground( 0, 0, 400, 60, 5054 );
+
+			AddBackground( 10, 10, 380, 40, 2620 );
+			AddBackground( 20, 20, 360, 20, 3000 );
+
+            distance = getDistance(m_From, m_Target);
+
+            if (distance <= 1) message = "Votre cible est à côté de vous.";
+            else if (distance > 1 && distance <= 5) message = "Votre cible est très proche de vous.";
+            else if (distance > 5 && distance <= 10) message = "Votre cible est proche de vous.";
+            else if (distance > 10 && distance <= 15) message = "Votre cible est moyennement proche de vous.";
+            else if (distance > 15 && distance <= 20) message = "Votre cible est loin de vous.";
+            else if (distance > 20 && distance <= 25) message = "Votre cible est moyennement loin de vous.";
+            else if (distance > 25 && distance <= 30) message = "Votre cible est très loin de vous.";
+            else if (distance > 30 && distance <= 40) message = "Votre cible est à une grande distance de vous.";
+            else if (distance > 40 && distance <= 60) message = "Votre cible est à une très grande distance de vous.";
+            else message = "Votre cible est à quelques lieux de vous.";
+
+            AddHtml(30, 20, 360, 20, message, false, false);
+        }
+
+        private double getDistance(Mobile from, Mobile target)
+        {
+            return Math.Round(Math.Sqrt(Math.Pow((from.Location.X - target.Location.X), 2) + Math.Pow((from.Location.Y - target.Location.Y), 2)));
+        }
+	}
+
 
 	public class TrackTimer : Timer
 	{
@@ -367,6 +413,7 @@ namespace Server.SkillHandlers
 		private int m_Range;
 		private int m_LastX, m_LastY;
 		private QuestArrow m_Arrow;
+        private double distance;
 
 		public TrackTimer( Mobile from, Mobile target, int range, QuestArrow arrow ) : base( TimeSpan.FromSeconds( 0.25 ), TimeSpan.FromSeconds( 2.5 ) )
 		{
@@ -379,24 +426,30 @@ namespace Server.SkillHandlers
 
 		protected override void OnTick()
 		{
-			if ( !m_Arrow.Running )
+            m_From.CloseGump(typeof(TrackDistanceGump));
+
+            if ( !m_Arrow.Running )
 			{
 				Stop();
 				return;
 			}
-			else if ( m_From.NetState == null || m_From.Deleted || m_Target.Deleted || m_From.Map != m_Target.Map || !m_From.InRange( m_Target, m_Range ) )
-			{
-				m_Arrow.Stop();
-				Stop();
-				return;
-			}
+            else if (m_From.NetState == null || m_From.Deleted || m_Target.Deleted || m_From.Map != m_Target.Map || !m_From.InRange(m_Target, m_Range))
+            {
+                m_Arrow.Stop();
+                Stop();
+                return;
+            }
+            else
+            {
+                m_From.SendGump(new TrackDistanceGump(m_From, m_Target));
+            }
 
 			if ( m_LastX != m_Target.X || m_LastY != m_Target.Y )
 			{
 				m_LastX = m_Target.X;
 				m_LastY = m_Target.Y;
 
-				m_Arrow.Update();
+				m_Arrow.Update();  
 			}
 		}
 	}

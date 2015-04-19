@@ -9,7 +9,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return Chain_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorChain.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorChain.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorChain.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChain.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChain.max_Durabilite; } }

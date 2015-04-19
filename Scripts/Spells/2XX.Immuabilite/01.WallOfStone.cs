@@ -97,19 +97,13 @@ namespace Server.Spells
 			private Timer m_Timer;
 			private DateTime m_End;
 
-            public override bool CanBeAltered
-            {
-                get
-                {
-                    return false;
-                }
-            }
 			public override bool BlocksFit{ get{ return true; } }
 
 			public InternalItem( Point3D loc, Map map, Mobile caster ) : base( 0x80 )
 			{
 				Visible = false;
 				Movable = false;
+                CanBeAltered = false;
 
 				MoveToWorld( loc, map );
 

@@ -17,17 +17,16 @@ namespace Server
 			m_Entry = entry;
 		}
 
-		public void Generate( Mobile from, Container cont, bool spawning)
+		public void Generate( Container cont )
 		{
 			if ( cont == null )
 				return;
 
-            Item item = m_Entry.Construct(from, spawning);
+            Item item = m_Entry.Construct();
 
 			if ( item != null )
 			{
-				if ( !item.Stackable || !cont.TryDropItem( from, item, false ) )
-					cont.DropItem( item );
+                cont.AddItem(item);
 			}
 		}
 
@@ -186,11 +185,8 @@ namespace Server
 			set{ m_Quantity = value; }
 		}
 
-		public Item Construct( Mobile from, bool spawning )
+		public Item Construct()
 		{
-			if ( m_AtSpawnTime != spawning )
-				return null;
-
             if (m_Items == null) // m_Items == null ?.. Wtf ?
             {
                 Console.WriteLine("Wtf");
@@ -209,7 +205,6 @@ namespace Server
                     if (i is BaseWeapon || i is BaseArmor || i is BaseJewel || i is BaseClothing)
                     {
                         int Quality = Utility.RandomList((int)WeaponQuality.Low, (int)WeaponQuality.Regular, (int)WeaponQuality.Exceptional);
-                        RareteInit.InitItem(i, Quality, from);
                     }
 
                     if (i.Stackable)

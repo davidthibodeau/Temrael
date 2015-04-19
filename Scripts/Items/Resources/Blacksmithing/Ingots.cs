@@ -146,6 +146,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x1BF2, 0x1BEF )]
 	public class FerIngot : BaseIngot
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public FerIngot() : this( 1 )
 		{
@@ -154,7 +156,6 @@ namespace Server.Items
 		[Constructable]
 		public FerIngot( int amount ) : base( CraftResource.Fer, amount )
 		{
-            GoldValue = 3;
             Name = "Lingot de Fer";
 		}
 

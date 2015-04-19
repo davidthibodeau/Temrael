@@ -9,12 +9,13 @@ namespace Server.Items
 {
 	public class ContractOfEmployment : Item
 	{
+        public override int GoldValue { get { return 1500; } }
+
 		public override int LabelNumber{ get{ return 1041243; } } // a contract of employment
 
 		[Constructable]
 		public ContractOfEmployment() : base( 0x14F0 )
 		{
-            GoldValue = 3000;
 			Weight = 1.0;
 			//LootType = LootType.Blessed;
 		}
@@ -87,7 +88,7 @@ namespace Server.Items
                 IPoint3D p = (IPoint3D)targeted;
                 Point3D point = new Point3D(p.X, p.Y, p.Z);
 
-                if (Region.Find(point, Map.Felucca).GetType().ToString().Contains("Commerce"))
+                if (Region.Find(point, Map.Felucca) is MarcheHurlevent)
                 {
                     Mobile v = new PlayerVendor(from, BaseHouse.FindHouseAt(from));
 

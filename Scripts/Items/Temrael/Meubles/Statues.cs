@@ -42,7 +42,8 @@ namespace Server.Items
 	public class StatueBoisHomme : Item
 	{
 		[Constructable]
-		public StatueBoisHomme() : base( 0x24CB )
+        public StatueBoisHomme()
+            : base(0x2D12)
 		{
 			Weight = 10.0;
             Name = "Statue d'homme";
@@ -76,7 +77,8 @@ namespace Server.Items
 	public class StatueBoisEcureuil : Item
 	{
 		[Constructable]
-		public StatueBoisEcureuil() : base( 0x24D0 )
+        public StatueBoisEcureuil()
+            : base(0x2D10)
 		{
 			Weight = 10.0;
             Name = "Statue d'écureuil";

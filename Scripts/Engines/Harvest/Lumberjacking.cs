@@ -146,6 +146,9 @@ namespace Server.Engines.Harvest
             erableList.Add("Erable1", new Region("Erable1", Map.Felucca, 100, new Rectangle2D(new Point2D(0, 0), new Point2D(4000, 4000))));
             pinList.Add("Pin1", new Region("Pin1", Map.Felucca, 100, new Rectangle2D(new Point2D(2200, 1500), new Point2D(2900, 2300))));
             cypresList.Add("Cypres1", new Region("Cypres1", Map.Felucca, 100, new Rectangle2D(new Point2D(1500, 1950), new Point2D(2300, 2700))));
+            cedreList.Add("Cedre1", new Region("Cedre1", Map.Felucca, 100, new Rectangle2D(new Point2D(1530, 2180), new Point2D(1715, 2280))));
+            cedreList.Add("Cedre2", new Region("Cedre2", Map.Felucca, 100, new Rectangle2D(new Point2D(1530, 1940), new Point2D(1780, 2180))));
+            cedreList.Add("Cedre3", new Region("Cedre3", Map.Malas, 100, new Rectangle2D(new Point2D(742, 761), new Point2D(750, 767))));
         }
 
 		#region Tile lists

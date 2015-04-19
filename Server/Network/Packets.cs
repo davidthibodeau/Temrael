@@ -3118,7 +3118,7 @@ namespace Server.Network
 			m_Stream.Write( (short) m.Mana );
 			m_Stream.Write( (short) m.ManaMax );
 
-			m_Stream.Write( (int) m.TotalGold );
+            m_Stream.Write((int)0);
             m_Stream.Write((short)m.PhysicalResistance);
 			m_Stream.Write( (short) (Mobile.BodyWeight + m.TotalWeight) );
 
@@ -3154,7 +3154,7 @@ namespace Server.Network
 				//m_Stream.Write( (short) max ); // Damage max
 
                 m_Stream.Write((short)m.ArmureNaturelle); // Fire
-                m_Stream.Write((short)0); // Cold
+                m_Stream.Write((short)m.Vitesse); // Cold
                 m_Stream.Write((short)0); // Poison
                 m_Stream.Write((short)m.MagicalResistance); // Energy
                 m_Stream.Write((short)0); // Luck
@@ -3239,8 +3239,9 @@ namespace Server.Network
 				WriteAttr( beheld.Stam, beheld.StamMax );
 				WriteAttr( beheld.Mana, beheld.ManaMax );
 
-				m_Stream.Write( (int) beheld.TotalGold );
+                m_Stream.Write((int)0);
                 m_Stream.Write((short)beheld.PhysicalResistance);
+
 				m_Stream.Write( (short) (Mobile.BodyWeight + beheld.TotalWeight) );
 
 				if ( type >= 5 )
@@ -3275,7 +3276,7 @@ namespace Server.Network
 					//m_Stream.Write( (short) max ); // Damage max
 
                     m_Stream.Write((short)beheld.ArmureNaturelle); // Fire
-                    m_Stream.Write((short)0); // Cold
+                    m_Stream.Write((short)beheld.Vitesse); // Cold
                     m_Stream.Write((short)0); // Poison
                     m_Stream.Write((short)beheld.MagicalResistance); // Energy
                     m_Stream.Write((short)0); // Luck or Cha

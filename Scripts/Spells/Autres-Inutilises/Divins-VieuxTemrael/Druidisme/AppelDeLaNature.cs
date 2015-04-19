@@ -51,7 +51,7 @@ namespace Server.Spells
                     if (m != null && !(m is BaseVendor) && m is BaseCreature && ((BaseCreature)m).DefaultAI == AIType.AI_Animal)
                     {
                         ((BaseCreature)m).TargetLocation = new Point2D((IPoint2D)p);
-                        m.FixedParticles(14120, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                        Effects.SendTargetParticles(m,14120, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                         m.PlaySound(494);
                     }
                 }

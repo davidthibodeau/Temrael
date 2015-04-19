@@ -26,7 +26,7 @@ namespace Server.Items
 			defender.SendLocalizedMessage( 1060091 ); // You take extra damage from the crushing attack!
 
 			defender.PlaySound( 0x1E1 );
-			defender.FixedParticles( 0, 1, 0, 9946, EffectLayer.Head );
+			Effects.SendTargetParticles(defender, 0, 1, 0, 9946, EffectLayer.Head );
 
 			Effects.SendMovingParticles( new Entity( Serial.Zero, new Point3D( defender.X, defender.Y, defender.Z + 50 ), defender.Map ), new Entity( Serial.Zero, new Point3D( defender.X, defender.Y, defender.Z + 20 ), defender.Map ), 0xFB4, 1, 0, false, false, 0, 3, 9501, 1, 0, EffectLayer.Head, 0x100 );
 		}

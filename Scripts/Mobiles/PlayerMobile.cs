@@ -25,6 +25,7 @@ using Server.Engines.Possess;
 using Server.Engines.Equitation;
 using Server.Engines.Transformations;
 using Server.Gumps.Fiche;
+using Server.Engines.BuffHandling;
 
 namespace Server.Mobiles
 {
@@ -673,12 +674,6 @@ namespace Server.Mobiles
 			m_LastPersonalLight = -1;
 		}
 
-		public override void ComputeBaseLightLevels( out int global, out int personal )
-		{
-			global = LightCycle.ComputeLevelFor( this );
-            personal = this.LightLevel;
-		}
-
 		public override void CheckLightLevels( bool forceResend )
 		{
 			NetState ns = this.NetState;
@@ -688,7 +683,7 @@ namespace Server.Mobiles
 
 			int global, personal;
 
-			ComputeLightLevels( out global, out personal );
+            Region.ComputeLightLevels(this, out global, out personal);
 
 			if ( !forceResend )
 				forceResend = ( global != m_LastGlobalLight || personal != m_LastPersonalLight );
@@ -977,6 +972,8 @@ namespace Server.Mobiles
 			DisguiseTimers.StartTimer( e.Mobile );
 
 			//Timer.DelayCall( TimeSpan.Zero, new TimerStateCallback( ClearSpecialMovesCallback ), e.Mobile );
+
+            CommandLogging.WriteLine(pm, "{2} vient de se connecter à la position {0} sur la map {1}", pm.LogoutLocation, pm.LogoutMap, pm);
 		}
 
 		/*private static void ClearSpecialMovesCallback( object state )
@@ -1026,6 +1023,8 @@ namespace Server.Mobiles
 			}
 
 			DisguiseTimers.StopTimer( from );
+
+            CommandLogging.WriteLine(pm, "{2} vient de se déconnecter à la position {0} sur la map {1}", pm.Location, pm.Map, pm);
 		}
 
 		public override void OnHiddenChanged()
@@ -1491,7 +1490,7 @@ namespace Server.Mobiles
 			if ( !base.CheckEquip( item ) )
 				return false;
 
-            if (BandageContext.m_Table.Contains(this))
+            if (BandageContext.IsHealingSelf(this))
             {
                 this.SendMessage("Vous ne pouvez pas équiper un arme en vous soignant.");
                 return false;
@@ -1522,7 +1521,7 @@ namespace Server.Mobiles
 
             if (item is BaseClothing)
                 if (((BaseClothing)item).Disguise)
-                    Identities.DisguiseHidden = true;
+                    Identities.PossedeFoulard = true;
 
 			return true;
 		}
@@ -1656,46 +1655,23 @@ namespace Server.Mobiles
 
         public override bool OnMoveOver(Mobile m)
         {
-            if (m.Hidden && m.AccessLevel > AccessLevel.Player)
+            if (m.Hidden && (m.AccessLevel > AccessLevel.Player || AccessLevel > AccessLevel.Player))
             {
                 return true;
             }
-            if (Hidden)
+            else if (m.Stam == m.StamMax)
             {
+                m.SendMessage("Vous poussez le personnage hors de votre chemin.");
+                Stam -= 10;
+                if (CanSee(m))
+                {
+                    SendMessage("Vous êtes poussé(e) hors du chemin par " + m.GetNameUsedBy(this));
+                }
                 return true;
-            }
-            if (m.Hidden)
-            {
-                m.Hidden = false;
-            }
-            if (!Mounted)
-            {
-                if (m.Stam == m.StamMax)
-                {
-                    if (m is PlayerMobile)
-                    {
-                        PlayerMobile from = (PlayerMobile)m;
-                        from.SendMessage("Vous poussez le personnage hors de votre chemin.");
-                        from.Stam -= 10;
-                        this.SendMessage("Vous êtes poussé(e) hors du chemin par " + from.GetNameUsedBy(this));
-                        return true;
-                    }
-                    else
-                    {
-                        m.SendMessage("Vous poussez le personnage hors de votre chemin.");
-                        m.Stam -= 10;
-                        this.SendMessage("Vous êtes poussé(e) hors du chemin");
-                        return true;
-                    }
-                }
-                else
-                {
-                    return false;
-                }
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -1882,7 +1858,7 @@ namespace Server.Mobiles
             //            this.DoHarmful(m);
             //            AOS.Damage(m, Caster, (int)damage, 0, 0, 0, 100, 0);
 
-            //            m.FixedParticles(14000, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+            //            Effects.SendTargetParticles(m,14000, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
             //            m.PlaySound(1099);
             //        }
             //    }
@@ -2593,18 +2569,18 @@ namespace Server.Mobiles
                 if (AccessLevel > AccessLevel.Player)
                     return;
 
-                if (!Mounted && Skills.Infiltration.Value >= 25.0)
+                if (!Mounted)
                 {
                     if ((d & Direction.Running) != 0) // isRunning
                     {
                         if ((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasCourse) <= 0)
                         {
-                            Server.SkillHandlers.Stealth.OnUse(this);
+                            Skills.UseSkill(this, SkillName.Infiltration);
                         }
                     }
                     else if ((AllowedStealthSteps -= Server.SkillHandlers.Stealth.CoutPasMarche) <= 0)
                     {
-                        Server.SkillHandlers.Stealth.OnUse(this);
+                        Skills.UseSkill(this, SkillName.Infiltration);
                     }
                 }
                 else
@@ -2676,9 +2652,14 @@ namespace Server.Mobiles
 
 		public override void OnSkillChange( SkillName skill, double oldBase )
 		{
-            if (skill == SkillName.ResistanceMagique)
+            if (skill == SkillName.ResistanceMagique || skill == SkillName.ArmureNaturelle)
             {
                 UpdateResistances();
+            }
+
+            if (skill == SkillName.Deguisement)
+            {
+                Identities.VerifierFoulard();
             }
             
             if (skill == SkillName.Langues)
@@ -2837,6 +2818,16 @@ namespace Server.Mobiles
 
 		public override void OnSpeech( SpeechEventArgs e )
 		{
+            if (e.Mobile.Hidden && (e.Type == MessageType.Whisper || e.Type == MessageType.Regular))
+            {
+                if (e.Mobile is BaseMobile)
+                {
+                    BaseMobile sm = (BaseMobile)e.Mobile;
+
+                    sm.Detection.FaireJet(this, 0.1);
+                }
+            }
+
 			if ( SpeechLog.Enabled && this.NetState != null )
 			{
 				if ( m_SpeechLog == null )

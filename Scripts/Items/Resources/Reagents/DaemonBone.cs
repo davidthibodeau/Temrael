@@ -7,6 +7,8 @@ namespace Server.Items
 	// TODO: Commodity?
 	public class DaemonBone : BaseReagent
 	{
+        public override int GoldValue { get { return 3; } }
+
 		public override double DefaultWeight
 		{
 			get { return 1.0; }
@@ -15,7 +17,6 @@ namespace Server.Items
 		[Constructable]
 		public DaemonBone() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]

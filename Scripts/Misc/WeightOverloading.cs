@@ -2,6 +2,8 @@ using System;
 using Server;
 using Server.Mobiles;
 using Server.Movement;
+using Server.Spells;
+using Server.Spells.TechniquesCombat;
 
 namespace Server.Misc
 {
@@ -53,6 +55,13 @@ namespace Server.Misc
                 return;
             }
 
+            if (SnareEffect.IsSnared(from))
+            {
+                from.SendMessage("Vous ne pouvez marchez pour le moment !");
+                e.Blocked = true;
+                return;
+            }
+
             if ((e.Direction & Direction.Running) != 0 && from.Dex < 20)
             {
                 from.SendMessage("Vous ne pouvez pas courir a moins de 20 de dexterite.");
@@ -79,7 +88,7 @@ namespace Server.Misc
                 PlayerMobile pm = (PlayerMobile)from;
 
                 int PerteStam = PERTE_STAM_RUNNING;
-                int amt = (from.Mounted ?  4 : 3); // Nombre de pas de course avant de perdre de la stam.
+                int amt = (from.Mounted ?  3 : 2); // Nombre de pas de course avant de perdre de la stam.
 
 
                 if (Deplacement.IsActive(from) && Deplacement.GetTileType(from) != TileType.Other) // Si terrain accidenté.

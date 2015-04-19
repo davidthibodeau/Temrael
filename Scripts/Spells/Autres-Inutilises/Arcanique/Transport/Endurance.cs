@@ -68,7 +68,7 @@ namespace Server.Spells
                 t.Stop();
                 m_Timers.Remove(m);
                 //m.Endurance = false;
-                m.FixedParticles(0x373A, 10, 15, 5018, 2041, 0, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,0x373A, 10, 15, 5018, 2041, 0, EffectLayer.Waist);
                 m.PlaySound(0x1EA);
             }
         }
@@ -109,7 +109,7 @@ namespace Server.Spells
                 m_end = endtime;
                 //m_target.Endurance = true;
 
-                m_target.FixedParticles(0x373A, 10, 15, 5018, 2041, 0, EffectLayer.Waist);
+                Effects.SendTargetParticles(m_target,0x373A, 10, 15, 5018, 2041, 0, EffectLayer.Waist);
                 m_target.PlaySound(0x1EA);
                 m_target.SendMessage("Vous vous sentez soutenu d'une endurance significative.");
 
@@ -121,7 +121,7 @@ namespace Server.Spells
                 if (!m_target.Alive || DateTime.Now >= m_end)
                 {
                     //m_target.Endurance = false;
-                    m_target.FixedParticles(0x373A, 10, 15, 5018, 2041, 0, EffectLayer.Waist);
+                    Effects.SendTargetParticles(m_target,0x373A, 10, 15, 5018, 2041, 0, EffectLayer.Waist);
                     m_target.PlaySound(0x1EA);
                     Stop();
                 }

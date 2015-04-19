@@ -8,11 +8,11 @@ namespace Server.Items
 		public override int LitItemID{ get { return 0xA0F; } }
 		public override int UnlitItemID{ get { return 0xA28; } }
 
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Candle() : base( 0xA28 )
 		{
-            GoldValue = 6;
-
 			if ( Burnout )
 				Duration = TimeSpan.FromMinutes( 20 );
 			else

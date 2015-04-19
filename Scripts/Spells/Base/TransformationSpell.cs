@@ -92,7 +92,7 @@ namespace Server.Spells
 					if ( ourTransform )
 					{
 						caster.PlaySound( 0xFA );
-						caster.FixedParticles( 0x3728, 1, 13, 5042, EffectLayer.Waist );
+						Effects.SendTargetParticles(Caster, 0x3728, 1, 13, 5042, EffectLayer.Waist );
 					}
 				}
 

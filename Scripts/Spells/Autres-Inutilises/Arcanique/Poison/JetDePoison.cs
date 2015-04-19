@@ -81,7 +81,7 @@ namespace Server.Spells
 
                         //SpellHelper.Damage(this, targ, damage * 0.33, 0, 0, 0, 0, 100);
 
-                        m.FixedParticles(0x374A, 10, 15, 5021, EffectLayer.Waist);
+                        Effects.SendTargetParticles(m,0x374A, 10, 15, 5021, EffectLayer.Waist);
                         m.PlaySound(0x474);
 					}
 				}

@@ -4,6 +4,8 @@ namespace Server.Items
 {
 	public class Bolt : Item, ICommodity
 	{
+        public override int GoldValue { get { return 2; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
@@ -20,7 +22,6 @@ namespace Server.Items
 		[Constructable]
 		public Bolt( int amount ) : base( 0x1BFB )
 		{
-            GoldValue = 2;
 			Stackable = true;
 			Amount = amount;
 		}

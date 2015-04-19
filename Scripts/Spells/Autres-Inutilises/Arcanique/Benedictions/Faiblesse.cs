@@ -46,7 +46,7 @@ namespace Server.Spells
 
 				m.Paralyzed = false;
 
-				m.FixedParticles( 0x3779, 10, 15, 5009, EffectLayer.Waist );
+				Effects.SendTargetParticles(m, 0x3779, 10, 15, 5009, EffectLayer.Waist );
 				m.PlaySound( 0x1E6 );
 			}
 

@@ -7,12 +7,12 @@ namespace Server.Items
 	[FlipableAttribute( 0xfbb, 0xfbc )]
 	public class Tongs : BaseTool
 	{
+        public override int GoldValue { get { return 6; } }
 		public override CraftSystem CraftSystem{ get{ return DefBlacksmithy.CraftSystem; } }
 
 		[Constructable]
 		public Tongs() : base( 0xFBB )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}
@@ -20,7 +20,6 @@ namespace Server.Items
 		[Constructable]
 		public Tongs( int uses ) : base( uses, 0xFBB )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
             Layer = Layer.TwoHanded;
 		}

@@ -38,7 +38,7 @@ namespace Server.Items
 				defender.SendLocalizedMessage(1062002); // You can no longer wear your ~1_ARMOR~
 
 				defender.PlaySound( 0x3B9 );
-				//defender.FixedParticles( 0x37BE, 232, 25, 9948, EffectLayer.InnerTorso );
+				//Effects.SendTargetParticles(defender, 0x37BE, 232, 25, 9948, EffectLayer.InnerTorso );
 
 				pack.DropItem( toDisrobe );
 

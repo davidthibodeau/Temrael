@@ -198,37 +198,107 @@ namespace Server.Mobiles.Vendeurs
         {
             public InternalSellInfo()
             {
-                Add(typeof(FerIngot));
-                Add(typeof(CuivreIngot));
-                Add(typeof(BronzeIngot));
-                Add(typeof(AcierIngot));
-                Add(typeof(ArgentIngot));
+                Add(typeof(FerIngot), PriceList(1));
+                Add(typeof(CuivreIngot), PriceList(2));
+                Add(typeof(BronzeIngot), PriceList(3));
+                Add(typeof(AcierIngot), PriceList(4));
+                Add(typeof(ArgentIngot), PriceList(5));
+                Add(typeof(OrIngot), PriceList(6));
+                Add(typeof(MytherilIngot), PriceList(7));
+                Add(typeof(LuminiumIngot), PriceList(8));
+                Add(typeof(ObscuriumIngot), PriceList(9));
+                Add(typeof(MystiriumIngot), PriceList(10));
+                Add(typeof(DominiumIngot), PriceList(11));
+                Add(typeof(VenariumIngot), PriceList(12));
+                Add(typeof(EclariumIngot), PriceList(13));
+                Add(typeof(AtheniumIngot), PriceList(14));
+                Add(typeof(UmbrariumIngot), PriceList(15));
 
-                Add(typeof(Leather));
-                Add(typeof(LupusLeather));
-                Add(typeof(NordiqueLeather));
-                Add(typeof(ReptilienLeather));
-                Add(typeof(DesertiqueLeather));
+                Add(typeof(Leather), PriceList(1));
+                Add(typeof(LupusLeather), PriceList(2));
+                Add(typeof(NordiqueLeather), PriceList(3));
+                Add(typeof(ReptilienLeather), PriceList(4));
+                Add(typeof(DesertiqueLeather), PriceList(5));
+                Add(typeof(VolcaniqueLeather), PriceList(6));
+                Add(typeof(MaritimeLeather), PriceList(7));
+                Add(typeof(GeantLeather), PriceList(8));
+                Add(typeof(MinotaureLeather), PriceList(9));
+                Add(typeof(OphidienLeather), PriceList(10));
+                Add(typeof(ArachnideLeather), PriceList(11));
+                Add(typeof(MagiqueLeather), PriceList(12));
+                Add(typeof(AncienLeather), PriceList(13));
+                Add(typeof(DemoniaqueLeather), PriceList(14));
+                Add(typeof(DragoniqueLeather), PriceList(15));
 
-                Add(typeof(Bone));
-                Add(typeof(GobelinBone));
-                Add(typeof(NordiqueBone));
-                Add(typeof(ReptilienBone));
-                Add(typeof(DesertiqueBone));
+                Add(typeof(Bone), PriceList(1));
+                Add(typeof(GobelinBone), PriceList(2));
+                Add(typeof(NordiqueBone), PriceList(3));
+                Add(typeof(ReptilienBone), PriceList(4));
+                Add(typeof(DesertiqueBone), PriceList(5));
+                Add(typeof(VolcaniqueBone), PriceList(6));
+                Add(typeof(MaritimeBone), PriceList(7));
+                Add(typeof(GeantBone), PriceList(8));
+                Add(typeof(MinotaureBone), PriceList(9));
+                Add(typeof(OphidienBone), PriceList(10));
+                Add(typeof(ArachnideBone), PriceList(11));
+                Add(typeof(MagiqueBone), PriceList(12));
+                Add(typeof(AncienBone), PriceList(13));
+                Add(typeof(DemonBone), PriceList(14));
+                Add(typeof(DragonBone), PriceList(15));
 
-                Add(typeof(Coquillage));
-                Add(typeof(Amber));
-                Add(typeof(Citrine));
-                Add(typeof(Tourmaline));
-                Add(typeof(Amethyst));
+                Add(typeof(Coquillage), PriceList(1));
+                Add(typeof(Amber), PriceList(2));
+                Add(typeof(Citrine), PriceList(3));
+                Add(typeof(Tourmaline), PriceList(4));
+                Add(typeof(Amethyst), PriceList(5));
+                Add(typeof(Ruby), PriceList(6));
+                Add(typeof(Sapphire), PriceList(7));
+                Add(typeof(Emerald), PriceList(8));
+                Add(typeof(Diamond), PriceList(9));
+                Add(typeof(StarSapphire), PriceList(10));
+                Add(typeof(FireRuby), PriceList(11));
+                Add(typeof(PerfectEmerald), PriceList(12));
+                Add(typeof(BlueDiamond), PriceList(13));
 
-                Add(typeof(Log));
-                Add(typeof(PinLog));
-                Add(typeof(CypresLog));
+                Add(typeof(Log), PriceList(1));
+                Add(typeof(PinLog), PriceList(2));
+                Add(typeof(CypresLog), PriceList(4));
+                Add(typeof(CedreLog), PriceList(6));
+                Add(typeof(SauleLog), PriceList(8));
+                Add(typeof(CheneLog), PriceList(10));
+                Add(typeof(EbeneLog), PriceList(12));
+                Add(typeof(AcajouLog), PriceList(15));
 
                 Add(typeof(RawRibs));
                 Add(typeof(RawBird));
                 Add(typeof(RawLambLeg));
+            }
+
+            // Choisi de faire une liste pour l'acheteur seulement pour ces ressources, parce que
+            // de toute manière ces ressources ne sont pas suposées être achetables chez un NPC. Ça veut dire qu'on
+            // ne se servira pas du GoldValue pour décider du prix d'achat / de vente pour ces ressources
+            // en particulier.
+            public int PriceList(int level)
+            {
+                switch (level)
+                {
+                    case 1: return 1;
+                    case 2: return 2;
+                    case 3: return 3;
+                    case 4: return 5;
+                    case 5: return 7;
+                    case 6: return 9;
+                    case 7: return 11;
+                    case 8: return 13;
+                    case 9: return 15;
+                    case 10: return 17;
+                    case 11: return 20;
+                    case 12: return 25;
+                    case 13: return 30;
+                    case 14: return 40;
+                    case 15: return 50;
+                }
+                return 0;
             }
         }
     }

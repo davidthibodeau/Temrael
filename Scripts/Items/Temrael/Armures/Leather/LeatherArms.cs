@@ -5,10 +5,12 @@ namespace Server.Items
 {
 	[FlipableAttribute( 0x13cd, 0x13c5 )]
 	public class LeatherArms : BaseArmor
-	{
+    {
+        public override int GoldValue { get { return 9; } }
+
 
         public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorLeather.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }
@@ -22,7 +24,6 @@ namespace Server.Items
 		[Constructable]
 		public LeatherArms() : base( 0x13CD )
 		{
-            GoldValue = 9;
 			Weight = 2.0;
 		}
 

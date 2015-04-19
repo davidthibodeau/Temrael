@@ -46,7 +46,7 @@ namespace Server.Spells
 				}
 
                 Caster.PlaySound(503);
-                Caster.FixedParticles(14154, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14154, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
 
                 TimeSpan duration = TimeSpan.FromSeconds(0);
 
@@ -54,7 +54,7 @@ namespace Server.Spells
 				{
                     Mobile m = (Mobile)targets[i];
 
-                    m.FixedParticles(14154, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m,14154, 10, 15, 5013, 1108, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
 
                     Disturb(m);
                     m.Freeze(duration);

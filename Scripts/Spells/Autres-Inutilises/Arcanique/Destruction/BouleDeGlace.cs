@@ -56,7 +56,7 @@ namespace Server.Spells
                     m.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                 }
 
-				source.MovingParticles( m, 0x36D4, 7, 0, false, true, 1941, 0, 9502, 4019, 0x160, 0 );
+				Effects.SendMovingParticles(source, m, 0x36D4, 7, 0, false, true, 1941, 0, 9502, 4019, 0x160, 0 );
 				source.PlaySound( 282 );
 
 				//SpellHelper.Damage( this, m, damage, 0, 100, 0, 0, 0 );

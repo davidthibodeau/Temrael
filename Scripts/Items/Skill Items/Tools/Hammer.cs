@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class Hammer : BaseTool
 	{
+        public override int GoldValue { get { return 15; } }
+
 		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
 
 		[Constructable]
@@ -16,7 +18,6 @@ namespace Server.Items
 		[Constructable]
 		public Hammer( int uses ) : base( uses, 0x102A )
 		{
-            GoldValue = 15;
 			Weight = 2.0;
 		}
 

@@ -22,8 +22,8 @@ namespace Server.Spells
 				Reagent.Nightshade
                 );
 
-        private static short durationMax = 180;
-        private static short bonusMax = 30;
+        private static short durationMax = 600;
+        private static short bonusMax = 45;
 
 		public CunningSpell( Mobile caster, Item scroll ) : base( caster, scroll, Info )
 		{
@@ -49,7 +49,7 @@ namespace Server.Spells
 
                 SpellHelper.AddStatBonus(Caster, m, StatType.Int, bonus, duration); SpellHelper.DisableSkillCheck = true;
 
-				m.FixedParticles( 0x375A, 10, 15, 5011, EffectLayer.Head );
+				Effects.SendTargetParticles(m, 0x375A, 10, 15, 5011, EffectLayer.Head );
 				m.PlaySound( 0x1EB );
 			}
 

@@ -59,8 +59,8 @@ namespace Server.Spells
 
                 SummonedEspritVengeur rev = new SummonedEspritVengeur(Caster, m, duration);
 
-				if ( BaseCreature.Summon( rev, false, Caster, m.Location, 0x81, duration ) )
-					rev.FixedParticles( 0x373A, 1, 15, 9909, EffectLayer.Waist );
+                if (BaseCreature.Summon(rev, false, Caster, m.Location, 0x81, duration))
+                    Effects.SendTargetParticles(rev, 0x373A, 1, 15, 9909, EffectLayer.Waist);
 			}
 
 			FinishSequence();

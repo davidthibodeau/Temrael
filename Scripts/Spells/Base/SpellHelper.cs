@@ -102,7 +102,7 @@ namespace Server.Spells
             {
                 toheal = (int)(toheal * (double)RegenerescenceSpell.m_RegenerescenceTable[from]);
 
-                from.FixedParticles(14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(from,14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 from.PlaySound(508);
             }
 
@@ -121,7 +121,7 @@ namespace Server.Spells
             }
             else
             {
-                from.FixedParticles(14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(from,14217, 10, 20, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
             }
             from.PlaySound(508);
 
@@ -392,17 +392,35 @@ namespace Server.Spells
 		public static bool AddStatBonus( Mobile caster, Mobile target, StatType type, int bonus, TimeSpan duration )
 		{
 			int offset = bonus;
-			string name = String.Format( "Bénédiction : {0}", type );
+            string name = "Bénédiction";
 
-			StatMod mod = target.GetStatMod( name );
+            StatMod mod = target.GetStatMod(name);
 
-			if ( mod == null || mod.Offset < offset )
+			if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
 			{
                 target.RemoveStatMod(name);
-				target.AddStatMod( new StatMod( type, name, offset, duration ) );
+                target.AddStatMod(new StatMod(type, name, offset, duration));
+                target.SendMessage("Vous sentez une nouvelle force vous envahir, supplantant la précédente.");
 				return true;
-			}
+			} 
+            else if (mod == null)
+            {
+                mod = target.GetStatMod("Malédiction");
+                if (mod != null && mod.Type == type)
+                {
+                    target.RemoveStatMod(name);
+                    target.SendMessage("Vous sentez une force vous envahir, écrasant les forces obscures vous tourmentant.");
+                    return true;
+                }
+                else if (mod == null)
+                {
+                    target.SendMessage("Vous sentez une nouvelle force vous envahir.");
+                    target.AddStatMod(new StatMod(type, name, offset, duration));
+                    return true;
+                }
+            }
 
+            target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
 			return false;
 		}
 
@@ -419,21 +437,35 @@ namespace Server.Spells
 		public static bool AddStatCurse( Mobile caster, Mobile target, StatType type, int curse, TimeSpan duration )
 		{
 			int offset = -curse;
-			string name = String.Format( "Malédiction : {0}", type );
+            string name = "Malédiction";
 
-			StatMod mod = target.GetStatMod( name );
+            StatMod mod = target.GetStatMod(name);
 
-			if ( mod != null && mod.Offset > 0 )
+			if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
 			{
-				target.AddStatMod( new StatMod( type, name, mod.Offset + offset, duration ) );
+                target.RemoveStatMod(name);
+                target.AddStatMod(new StatMod(type, name, offset, duration));
+                target.SendMessage("Vous sentez une nouvelle force vous tourmenter, supplantant la précédente.");
 				return true;
-			}
-			else if ( mod == null || mod.Offset > offset )
-			{
-				target.AddStatMod( new StatMod( type, name, offset, duration ) );
-				return true;
-			}
+			} 
+            else if (mod == null)
+            {
+                mod = target.GetStatMod("Bénédiction");
+                if (mod != null && mod.Type == type)
+                {
+                    target.RemoveStatMod(name);
+                    target.SendMessage("Vous sentez une force vous tourmenter, écrasant les forces bénéfiques en vous.");
+                    return true;
+                }
+                else if (mod == null)
+                {
+                    target.SendMessage("Vous sentez une force vous tourmenter.");
+                    target.AddStatMod(new StatMod(type, name, offset, duration));
+                    return true;
+                }
+            }
 
+            target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
 			return false;
 		}
 
@@ -489,7 +521,7 @@ namespace Server.Spells
                 if (RudesseSpell.m_RudesseTable.Contains(caster))
                 {
                     value *= (double)RudesseSpell.m_RudesseTable[caster];
-                    caster.FixedParticles(14138, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(caster,14138, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     caster.PlaySound(521);
                 }
             }
@@ -846,7 +878,7 @@ namespace Server.Spells
 
                 if (Utility.Random(0, 100) < chance)
                 {
-                    target.FixedEffect(0x37B9, 10, 5);
+                    Effects.SendTargetEffect(target,0x37B9, 10, 5);
 
                     Mobile temp = caster;
                     caster = target;
@@ -1078,7 +1110,7 @@ namespace Server.Spells
                     if (ourTransform)
                     {
                         caster.PlaySound(0xFA);
-                        caster.FixedParticles(0x3728, 1, 13, 5042, EffectLayer.Waist);
+                        Effects.SendTargetParticles(caster,0x3728, 1, 13, 5042, EffectLayer.Waist);
                     }
                 }
 

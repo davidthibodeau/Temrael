@@ -24,9 +24,9 @@ namespace Server.Items
 	public class EffectController : Item
     {
         #region IActivable
-        public override void IActivableOnActivate(int mode, Mobile from)
+        public override void IActivableOnActivate(int mode, Mobile from, int overflow)
         {
-            DoEffect(from);
+            DoEffect(from, overflow);
         }
         #endregion
 
@@ -228,8 +228,13 @@ namespace Server.Items
             }
 		}
 
-        // Effects
         public void DoEffect(object trigger)
+        {
+            DoEffect(trigger, 0);
+        }
+
+        // Effects
+        public void DoEffect(object trigger, int overflow)
         {
             if (DateTime.Now < m_LastEffect.Add(m_Cooldown))
                 return;
@@ -246,7 +251,7 @@ namespace Server.Items
                 return;
 
             if (ActivateItem != null && trigger is Mobile && ActivateItem is IActivable)
-                ((IActivable)ActivateItem).OnActivate(m_ActivateMode, (Mobile)trigger);
+                ((IActivable)ActivateItem).OnActivate(m_ActivateMode, (Mobile)trigger, overflow);
 
             if (Trap_ActivateItem != null && trigger is Mobile && Trap_ActivateItem is IActivable)
                 Trap_OnActivate((Mobile)trigger);
@@ -348,7 +353,8 @@ namespace Server.Items
                 : base(TimeSpan.FromSeconds(10))
             {
                 item_ = new ItemInvisible();
-                item_.DropToWorld(from, new Point3D(location.X, location.Y, location.Z));
+                item_.Map = from.Map;
+                item_.MoveToWorld(new Point3D(location.X, location.Y, location.Z));
                 item_.Visible = true;
                 item_.PublicOverheadMessage(MessageType.Regular, 0, false, Message);
                 Start();

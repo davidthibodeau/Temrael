@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14276, 10, 15, 5013, 211, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14276, 10, 15, 5013, 211, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(493);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_IntrinsequeTable.Remove(m);
 
-                m.FixedParticles(14276, 10, 15, 5013, 211, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14276, 10, 15, 5013, 211, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(493);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     IntrinsequeSpell.m_IntrinsequeTable.Remove(m_target);
                     IntrinsequeSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14276, 10, 15, 5013, 211, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14276, 10, 15, 5013, 211, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(493);
 
                     Stop();

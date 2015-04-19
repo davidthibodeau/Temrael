@@ -44,7 +44,7 @@ namespace Server.Spells
 
                 //double damage = GetNewAosDamage(8, 1, 3, true); ;
 
-                m.FixedParticles(0x374A, 10, 15, 5013, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,0x374A, 10, 15, 5013, EffectLayer.Waist);
                 m.PlaySound(0x1F1);
 
                 //SpellHelper.Damage(this, m, damage, 0, 0, 100, 0, 0);

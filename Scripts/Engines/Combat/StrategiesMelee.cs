@@ -16,11 +16,18 @@ namespace Server.Engines.Combat
             double chance = 0;
 
             if (Weapon(def).Layer == Layer.OneHanded)
-                chance = GetBonus(parry, 0.8, 5);
+                chance = GetBonus(parry, 0.50);
             else
-                chance = GetBonus(parry, 0.25, 5);
+                chance = GetBonus(parry, 0.20);
 
             return chance;
+        }
+
+        public override double Degats(double basedmg, Mobile atk, Mobile def)
+        {
+            double dmg = ComputerDegats(atk, basedmg, true);
+
+            return (int)DegatsReduits(atk, def, dmg);
         }
 
         protected override void AppliquerPoison(Mobile atk, Mobile def)
@@ -72,8 +79,13 @@ namespace Server.Engines.Combat
         public override double CritiqueChance(Mobile atk)
         {
             double chance = base.CritiqueChance(atk);
-            double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.05, 5);
+            double incChance = GetBonus(atk.Skills[SkillName.ArmePerforante].Value, 0.3);
             return IncValueDimReturn(chance, incChance);
+        }
+
+        public override double CritiqueDegats(Mobile atk, double dmg)
+        {
+            return base.CritiqueDegats(atk, dmg) + (atk.Skills[SkillName.CoupCritique].Value / 100 * 0.5);
         }
     }
 
@@ -88,7 +100,7 @@ namespace Server.Engines.Combat
         protected override double ToucherChance(Mobile atk, Mobile def)
         {
             double chance = base.ToucherChance(atk, def);
-            double incChance = GetBonus(atk.Skills[SkillName.Epee].Value, 0.05, 5);
+            double incChance = GetBonus(atk.Skills[SkillName.Epee].Value, 0.1);
             return IncreasedValue(chance, incChance);
         }
     }
@@ -103,7 +115,7 @@ namespace Server.Engines.Combat
 
         public override double DegatsReduits(Mobile atk, Mobile def, double dmg)
         {
-            double contpen = GetBonus(atk.Skills[SkillName.ArmeContondante].Value, 0.05, 5);
+            double contpen = GetBonus(atk.Skills[SkillName.ArmeContondante].Value, 0.4);
             return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg, contpen);
         }
     }
@@ -124,6 +136,12 @@ namespace Server.Engines.Combat
                 return base.BaseRange;
             return BaseRange;
         }
+
+        public override void OnHit(Mobile atk, Mobile def)
+        {
+            Equitation.Equitation.CheckEquitation(def, EquitationType.BeingAttacked, 0.2);
+            base.OnHit(atk, def);
+        }
     }
 
     public class StrategyHache : StrategyMelee
@@ -137,7 +155,7 @@ namespace Server.Engines.Combat
         protected override double ComputerDegats(Mobile atk, double basedmg, bool skillup)
         {
             double dmg = base.ComputerDegats(atk, basedmg, skillup);
-            double foresterieBonus = GetBonus(atk.Skills[SkillName.Hache].Value, 0.2, 10);
+            double foresterieBonus = GetBonus(atk.Skills[SkillName.Hache].Value, 0.3);
 
             return dmg + basedmg * foresterieBonus;
         }

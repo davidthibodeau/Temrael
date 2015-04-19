@@ -22,6 +22,8 @@ namespace Server.Items
 	[FlipableAttribute( 0x14fc, 0x14fb )]
 	public class Lockpick : Item
 	{
+        public override int GoldValue { get { return 5; } }
+
 		[Constructable]
 		public Lockpick() : this( 1 )
 		{
@@ -30,7 +32,6 @@ namespace Server.Items
 		[Constructable]
 		public Lockpick( int amount ) : base( 0x14FC )
 		{
-            GoldValue = 5;
 			Stackable = true;
 			Amount = amount;
 		}
@@ -83,6 +84,11 @@ namespace Server.Items
 					if ( ((ILockpickable)targeted).Locked )
 					{
 						from.PlaySound( 0x241 );
+                        if (from.Hidden)
+                        {
+                            from.RevealingAction();
+                            from.SendMessage("Votre action ne passe pas inaperçue...");
+                        }
 
 						new InternalTimer( from, (ILockpickable)targeted, m_Item ).Start();
 					}
@@ -166,6 +172,8 @@ namespace Server.Items
                             item.SendLocalizedMessageTo(m_From, 502075); // You are unable to pick the lock.
                         }
                         Stop();
+
+                        m_From.NextSkillTime = Core.TickCount + 10000; // 10 seconds.
                     }
                     else
                     {

@@ -54,8 +54,8 @@ namespace Server.Items
 			defender.SendLocalizedMessage( 1063357 ); // Your attacker dealt a crippling nerve strike!
 
 			attacker.PlaySound( 0x204 );
-			defender.FixedEffect( 0x376A, 9, 32 );
-			defender.FixedParticles( 0x37C4, 1, 8, 0x13AF, 0, 0, EffectLayer.Waist );
+			Effects.SendTargetEffect(defender, 0x376A, 9, 32 );
+			Effects.SendTargetParticles(defender, 0x37C4, 1, 8, 0x13AF, 0, 0, EffectLayer.Waist );
 
 			if ( Core.ML )
 			{

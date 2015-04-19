@@ -228,7 +228,7 @@ namespace Server.Items
                 PlayerMobile from = (PlayerMobile)parent;
 
                 if (Disguise)
-                    from.Identities.DisguiseHidden = false;
+                    from.Identities.PossedeFoulard = false;
             }
         }
 
@@ -466,7 +466,7 @@ namespace Server.Items
             if (v != 0)
                 list.Add(1060448, "{0}\t{1}", couleur, v.ToString()); // physical resist ~1_val~%
 
-            v = MagieResistance;
+            v = MagicalResistance;
 
             if (v != 0)
                 list.Add(1060446, "{0}\t{1}", couleur, v.ToString()); // energy resist ~1_val~%

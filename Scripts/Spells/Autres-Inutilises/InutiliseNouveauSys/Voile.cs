@@ -62,7 +62,7 @@ namespace Server.Spells
 
                         targ.LightLevel = -100;
 
-                        targ.FixedParticles(0x376A, 9, 32, 5007, EffectLayer.Waist);
+                        Effects.SendTargetParticles(targ,0x376A, 9, 32, 5007, EffectLayer.Waist);
                         targ.PlaySound(0x1E3);
                     }
                     else

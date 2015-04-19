@@ -20,7 +20,7 @@ namespace Server.Items
         }
 
         public override double BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
@@ -73,7 +73,7 @@ namespace Server.Items
         }
 
         public override double BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
@@ -126,7 +126,7 @@ namespace Server.Items
         }
 
         public override double BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
@@ -179,7 +179,7 @@ namespace Server.Items
         }
 
         public override double BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }
@@ -232,7 +232,7 @@ namespace Server.Items
         }
 
         public override double BasePhysicalResistance { get { return ArmorChainNoir.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorChainNoir.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorChainNoir.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorChainNoir.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorChainNoir.max_Durabilite; } }

@@ -76,6 +76,12 @@ namespace Server.Regions
 			return null;
 		}
 
+		public override void ComputeBaseLightLevels(Mobile m, out int global, out int personal )
+		{
+            global = LightCycle.ComputeLevelFor(m);
+            personal = m.LightLevel;
+		}
+
 		public override TimeSpan GetLogoutDelay( Mobile m )
 		{
 			if ( m_NoLogoutDelay )

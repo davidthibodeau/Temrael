@@ -109,6 +109,8 @@ namespace Server.Items
 
 	public class BreadLoaf : Food
 	{
+        public override int GoldValue { get { return 5; } }
+
 		[Constructable]
 		public BreadLoaf() : this( 1 )
 		{
@@ -117,7 +119,6 @@ namespace Server.Items
 		[Constructable]
 		public BreadLoaf( int amount ) : base( amount, 0x103B )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 3;
 		}
@@ -143,6 +144,8 @@ namespace Server.Items
 
 	public class Bacon : Food
 	{
+        public override int GoldValue { get { return 24; } }
+
 		[Constructable]
 		public Bacon() : this( 1 )
 		{
@@ -151,7 +154,6 @@ namespace Server.Items
 		[Constructable]
 		public Bacon( int amount ) : base( amount, 0x979 )
 		{
-            GoldValue = 6;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -210,6 +212,8 @@ namespace Server.Items
 
 	public class FishSteak : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }
@@ -223,7 +227,6 @@ namespace Server.Items
 		[Constructable]
 		public FishSteak( int amount ) : base( amount, 0x97B )
 		{
-            GoldValue = 3;
 			this.FillFactor = 3;
 		}
 
@@ -248,6 +251,8 @@ namespace Server.Items
 
 	public class CheeseWheel : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		public override double DefaultWeight
 		{
 			get { return 0.1; }
@@ -261,7 +266,6 @@ namespace Server.Items
 		[Constructable]
 		public CheeseWheel( int amount ) : base( amount, 0x97E )
 		{
-            GoldValue = 6;
 			this.FillFactor = 3;
 		}
 
@@ -360,6 +364,8 @@ namespace Server.Items
 
 	public class FrenchBread : Food
 	{
+        public override int GoldValue { get { return 4; } }
+
 		[Constructable]
 		public FrenchBread() : this( 1 )
 		{
@@ -368,7 +374,6 @@ namespace Server.Items
 		[Constructable]
 		public FrenchBread( int amount ) : base( amount, 0x98C )
 		{
-            GoldValue = 3;
 			this.Weight = 2.0;
 			this.FillFactor = 3;
 		}
@@ -428,6 +433,8 @@ namespace Server.Items
 
 	public class CookedBird : Food
 	{
+        public override int GoldValue { get { return 10; } }
+
 		[Constructable]
 		public CookedBird() : this( 1 )
 		{
@@ -436,7 +443,6 @@ namespace Server.Items
 		[Constructable]
 		public CookedBird( int amount ) : base( amount, 0x9B7 )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
 		}
@@ -495,6 +501,8 @@ namespace Server.Items
 
 	public class Sausage : Food
 	{
+        public override int GoldValue { get { return 8; } }
+
 		[Constructable]
 		public Sausage() : this( 1 )
 		{
@@ -503,7 +511,6 @@ namespace Server.Items
 		[Constructable]
 		public Sausage( int amount ) : base( amount, 0x9C0 )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
 		}
@@ -529,6 +536,8 @@ namespace Server.Items
 
 	public class Ham : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Ham() : this( 1 )
 		{
@@ -537,7 +546,6 @@ namespace Server.Items
 		[Constructable]
 		public Ham( int amount ) : base( amount, 0x9C9 )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
 		}
@@ -563,10 +571,11 @@ namespace Server.Items
 
 	public class Cake : Food
 	{
+        public override int GoldValue { get { return 11; } }
+
 		[Constructable]
 		public Cake() : base( 0x9E9 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 10;
@@ -593,16 +602,7 @@ namespace Server.Items
 
 	public class Ribs : Food
 	{
-        public override int GoldValue
-        {
-            get
-            {
-                return 6;
-            }
-            set
-            {
-            }
-        }
+        public override int GoldValue { get { return 6; } }
 
 		[Constructable]
 		public Ribs() : this( 1 )
@@ -637,10 +637,11 @@ namespace Server.Items
 
 	public class Cookies : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Cookies() : base( 0x160b )
 		{
-            GoldValue = 6;
 			Stackable = Core.ML;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
@@ -667,10 +668,11 @@ namespace Server.Items
 
 	public class Muffins : Food
 	{
+        public override int GoldValue { get { return 5; } }
+
 		[Constructable]
 		public Muffins() : base( 0x9eb )
 		{
-            GoldValue = 3;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 4;
@@ -698,12 +700,13 @@ namespace Server.Items
 	[TypeAlias( "Server.Items.Pizza" )]
 	public class CheesePizza : Food
 	{
+        public override int GoldValue { get { return 18; } }
+
 		public override int LabelNumber{ get{ return 1044516; } } // cheese pizza
 
 		[Constructable]
 		public CheesePizza() : base( 0x1040 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 6;
@@ -885,12 +888,13 @@ namespace Server.Items
 
 	public class ApplePie : Food
 	{
+        public override int GoldValue { get { return 17; } }
+
 		public override int LabelNumber{ get{ return 1041343; } } // baked apple pie
 
 		[Constructable]
 		public ApplePie() : base( 0x1041 )
 		{
-            GoldValue = 6;
 			Stackable = false;
 			this.Weight = 1.0;
 			this.FillFactor = 5;
@@ -979,16 +983,7 @@ namespace Server.Items
 
 	public class LambLeg : Food
 	{
-        public override int GoldValue
-        {
-            get
-            {
-                return 3;
-            }
-            set
-            {
-            }
-        }
+        public override int GoldValue { get { return 3; } }
 
 		[Constructable]
 		public LambLeg() : this( 1 )

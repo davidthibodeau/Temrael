@@ -7,12 +7,12 @@ namespace Server.Items
 	[FlipableAttribute( 0x13E3, 0x13E4 )]
 	public class SmithHammer : BaseTool
 	{
+        public override int GoldValue { get { return 6; } }
 		public override CraftSystem CraftSystem{ get{ return DefBlacksmithy.CraftSystem; } }
 
 		[Constructable]
 		public SmithHammer() : base( 0x13E3 )
 		{
-            GoldValue = 6;
 			Weight = 8.0;
 			Layer = Layer.OneHanded;
 		}

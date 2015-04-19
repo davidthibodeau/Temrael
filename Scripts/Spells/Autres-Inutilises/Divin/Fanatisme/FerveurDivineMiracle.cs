@@ -39,7 +39,7 @@ namespace Server.Spells
                 m_Timers[Caster] = t;
                 t.Start();
 
-                Caster.FixedParticles(14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(506);
             }
 
@@ -59,7 +59,7 @@ namespace Server.Spells
                 m_FerveurDivineTable.Remove(m);
                 m_FerveurDivineRegistry.Remove(m);
 
-                m.FixedParticles(14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(506);
             }
         }
@@ -86,7 +86,7 @@ namespace Server.Spells
                     FerveurDivineMiracle.m_Timers.Remove(m_target);
                     FerveurDivineMiracle.m_FerveurDivineRegistry.Remove(m_target);
 
-                    m_target.FixedParticles(14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(506);
 
                     Stop();

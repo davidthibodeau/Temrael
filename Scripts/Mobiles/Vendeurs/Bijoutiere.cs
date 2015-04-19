@@ -87,6 +87,7 @@ namespace Server.Mobiles.Vendeurs
                 Add(new GenericBuyInfo(typeof(ColierCoquillages), 20, 0x3171, 0)); // 9
                 Add(new GenericBuyInfo(typeof(Coquillage), 20, 0xFC7, 0)); // 3
                 Add(new GenericBuyInfo(typeof(Amber), 20, 0xF25, 0)); // 6
+                Add(new GenericBuyInfo(typeof(JewelcrafterTool), 20, 0x1EBC, 0)); // 6
             }
         }
 

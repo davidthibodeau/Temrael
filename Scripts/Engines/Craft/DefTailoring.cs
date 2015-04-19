@@ -127,8 +127,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(WideBrimHat), "Chapeaux", "Chapeau à large bord", 10.0, 30.0, typeof(Cloth), "Tissu", 12, 1044287);
             index = AddCraft(typeof(StrawHat), "Chapeaux", "Chapeau de Paille", 20.0, 40.0, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(TallStrawHat), "Chapeaux", "Grand Chapeau de Paille", 20.0, 40.0, typeof(Cloth), "Tissu", 13, 1044287);
-            //index = AddCraft(typeof(WizardsHat), "Chapeaux", "Béret", 7.2, 32.2, typeof(Cloth), "Tissu", 15, 1044287);
             index = AddCraft(typeof(Bonnet), "Chapeaux", "Bonnet", 30.0, 50.0, typeof(Cloth), "Tissu", 11, 1044287);
+            index = AddCraft(typeof(ChapeauMage), "Chapeaux", "Chapeau de Mage", 40.0, 60.0, typeof(Cloth), "Tissu", 15, 1044287);
             index = AddCraft(typeof(FeatheredHat), "Chapeaux", "Chapeau à plume", 40.0, 60.0, typeof(Cloth), "Tissu", 12, 1044287);
             index = AddCraft(typeof(TricorneHat), "Chapeaux", "Tricone", 40.0, 60.0, typeof(Cloth), "Tissu", 12, 1044287);
             index = AddCraft(typeof(JesterHat), "Chapeaux", "Chapeau des Fols", 50.0, 70.0, typeof(Cloth), "Tissu", 15, 1044287);
@@ -204,6 +204,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(CorsetLong), "Chandails & Chemises", "Corset Long", 60.0, 90.0, typeof(Cloth), "Tissu", 8, 1044287);
             index = AddCraft(typeof(CorsetAmple), "Chandails & Chemises", "Corset Ample", 70.0, 100.0, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(CorsetSombre), "Chandails & Chemises", "Corset Sombre", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(DoubletNobleAjuste), "Chandails & Chemises", "Doublet Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 8, 1044287);
             #endregion
 
             #region Tuniques & Veston
@@ -226,10 +227,14 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(JesterSuit), "Tuniques & Veston", "Tunique des Fols", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TuniqueOrientale), "Tuniques & Veston", "Tunique Orientale", 60.0, 90.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TuniqueNomade), "Tuniques & Veston", "Tunique de Nomade", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueLegereOrient), "Tuniques & Veston", "Tunique Légère d'Orient", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TuniqueBourgeoise), "Tuniques & Veston", "Tunique Bourgeoise", 70.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TuniquePage), "Tuniques & Veston", "Tunique de Page", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TuniqueAssassin), "Tuniques & Veston", "Tunique d'Assassin", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueRobuste), "Tuniques & Veston", "Tunique Robuste", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueElfique), "Tuniques & Veston", "Tunique Elfique", 80.0, 110.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(TuniqueNoble), "Tuniques & Veston", "Tunique Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 14, 1044287);
+            index = AddCraft(typeof(TuniqueDaedric), "Tuniques & Veston", "Tunique Daedric", 90.0, 120.0, typeof(Cloth), "Tissu", 14, 1044287);
 
             index = AddCraft(typeof(Veston), "Tuniques & Veston", "Veston", 10.0, 30.0, typeof(Cloth), "Tissu", 10, 1044287);
             index = AddCraft(typeof(VesteCuir), "Tuniques & Veston", "Veste de Cuir", 30.0, 50.0, typeof(Leather), "Cuir", 10, 1044463);
@@ -265,11 +270,15 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(TogeArchiMage), "Toges & Manteaux", "Toge d'Archimage", 80.0, 100.0, typeof(Cloth), "Tissu", 16, 1044287);
             index = AddCraft(typeof(TogeFeminine), "Toges & Manteaux", "Toge féminine", 90.0, 110.0, typeof(Cloth), "Tissu", 17, 1044287);
             index = AddCraft(typeof(TogeSorcier), "Toges & Manteaux", "Toge de Sorcier", 90.0, 110.0, typeof(Cloth), "Tissu", 18, 1044287);
+            index = AddCraft(typeof(TogeDaedric), "Toges & Manteaux", "Toge daedric", 90.0, 110.0, typeof(Cloth), "Tissu", 18, 1044287);
+            index = AddCraft(typeof(TogeSudiste), "Toges & Manteaux", "Toge sudiste", 60.0, 80.0, typeof(Cloth), "Tissu", 18, 1044287);
+            index = AddCraft(typeof(GrandeTogeElfique), "Toges & Manteaux", "Grande toge elfique", 90.0, 110.0, typeof(Cloth), "Tissu", 18, 1044287);
             index = AddCraft(typeof(TogeOr), "Toges & Manteaux", "Toge d'Or", 90.0, 120.0, typeof(Cloth), "Tissu", 18, 1044287);
             index = AddCraft(typeof(ManteauPardessus), "Toges & Manteaux", "Vieux Manteau", 30.0, 60.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(ManteauTabar), "Toges & Manteaux", "Manteau d'Arme", 40.0, 70.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(ManteauCourt), "Toges & Manteaux", "Manteau Court", 60.0, 80.0, typeof(Cloth), "Tissu", 11, 1044287);
             index = AddCraft(typeof(ManteauLong), "Toges & Manteaux", "Manteau Long", 70.0, 90.0, typeof(Cloth), "Tissu", 13, 1044287);
+            index = AddCraft(typeof(ManteauAventurier), "Toges & Manteaux", "Manteau d'aventurier", 70.0, 90.0, typeof(Cloth), "Tissu", 13, 1044287);
             index = AddCraft(typeof(ManteauRaye), "Toges & Manteaux", "Manteau Rayé", 80.0, 100.0, typeof(Cloth), "Tissu", 14, 1044287);
             index = AddCraft(typeof(ManteauNoble), "Toges & Manteaux", "Manteau Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 18, 1044287);
             #endregion
@@ -350,6 +359,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(PantalonsLongs), "Pantalons", "Pantalons Amples Longs", 60.0, 90.0, typeof(Cloth), "Tissu", 9, 1044287);
             index = AddCraft(typeof(PantalonsCuir), "Pantalons", "Pantalons de Cuir", 70.0, 100.0, typeof(Leather), "Cuir", 8, 1044463);
             index = AddCraft(typeof(PantalonsMoulant), "Pantalons", "Pantalons Moulants", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
+            index = AddCraft(typeof(PantalonsElfiques), "Pantalons", "Pantalons Elfiques", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
             index = AddCraft(typeof(PantalonsArmure), "Pantalons", "Pantalons Armuré", 90.0, 120.0, typeof(Leather), "Cuir", 9, 1044463);
             #endregion
 
@@ -377,6 +387,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(JupeGrande), "Kilt & Jupes", "Grande Jupe", 80.0, 110.0, typeof(Cloth), "Tissu", 13, 1044287);
             index = AddCraft(typeof(JupeBordel), "Kilt & Jupes", "Jupe de Bordel", 80.0, 110.0, typeof(Cloth), "Tissu", 8, 1044287);
             index = AddCraft(typeof(JupeNoble), "Kilt & Jupes", "Jupe Noble", 90.0, 120.0, typeof(Cloth), "Tissu", 13, 1044287);
+            index = AddCraft(typeof(JupeDaedric), "Kilt & Jupes", "Jupe Daedric", 90.0, 120.0, typeof(Cloth), "Tissu", 13, 1044287);
 
 			#endregion
 

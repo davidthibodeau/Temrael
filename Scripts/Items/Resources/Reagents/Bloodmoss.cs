@@ -6,6 +6,8 @@ namespace Server.Items
 {
 	public class Bloodmoss : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
@@ -17,7 +19,6 @@ namespace Server.Items
 		[Constructable]
 		public Bloodmoss( int amount ) : base( 0xF7B, amount )
 		{
-            GoldValue = 1;
 		}
 
 		public Bloodmoss( Serial serial ) : base( serial )

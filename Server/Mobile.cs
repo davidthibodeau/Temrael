@@ -60,7 +60,7 @@ namespace Server
 		Str=1,
 		Dex=2,
 		Int=4,
-		All=8
+		All=7
 	}
 
 	public enum StatLockType : byte
@@ -771,8 +771,6 @@ namespace Server
 		private int m_BaseSoundID;
 		private int m_VirtualArmor;
 		private bool m_Squelched;
-		private int m_MeleeDamageAbsorb;
-		private int m_MagicDamageAbsorb;
 		private int m_Followers, m_FollowersMax;
 		private List<object> _actions; // prefer List<object> over ArrayList for more specific profiling information
 		private Queue<MovementRecord> m_MoveRecords;
@@ -820,6 +818,12 @@ namespace Server
             get;
         }
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract int Vitesse
+        {
+            get;
+        }
+
 		[CommandProperty( AccessLevel.Counselor )]
 		public abstract double MagicalResistance
 		{
@@ -837,7 +841,6 @@ namespace Server
         {
             get;
         }
-
 
         [CommandProperty(AccessLevel.Batisseur)]
         public abstract int AbsorpttionPhysique
@@ -2538,7 +2541,7 @@ namespace Server
 
 		private static int m_WalkFoot = 400;
 		private static int m_RunFoot = 200;
-		private static int m_WalkMount = 300;
+		private static int m_WalkMount = 200;
 		private static int m_RunMount = 100;
 
 		public static int WalkFoot { get { return m_WalkFoot; } set { m_WalkFoot = value; } }
@@ -2929,8 +2932,6 @@ namespace Server
 						{
 							SendLocalizedMessage(1019042);
 							Stam -= 10;
-
-							RevealingAction();
 						}
 						else
 						{
@@ -3047,6 +3048,8 @@ namespace Server
 					if( item.ItemID == 0x204E )
 						item.Delete();
 				}
+
+                Frozen = false;
 
 				this.SendIncomingPacket();
 				this.SendIncomingPacket();
@@ -4595,7 +4598,8 @@ namespace Server
 
             m_FollowersMax = reader.ReadInt();
 
-            m_MagicDamageAbsorb = reader.ReadInt();
+            if (version < 2)
+                reader.ReadInt();
 
             m_GuildFealty = reader.ReadMobile();
 
@@ -4753,10 +4757,10 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-            writer.Write((int)1); // version
+            writer.Write((int)2); // version
 
             writer.Write(HideAdmin);
-
+            
 			writer.WriteDeltaTime( m_LastStrGain );
 			writer.WriteDeltaTime( m_LastIntGain );
 			writer.WriteDeltaTime( m_LastDexGain );
@@ -4788,8 +4792,6 @@ namespace Server
 			writer.Write( m_BAC );
 
 			writer.Write( m_FollowersMax );
-
-			writer.Write( m_MagicDamageAbsorb );
 
 			writer.Write( m_GuildFealty );
 
@@ -4943,13 +4945,13 @@ namespace Server
 
 		private static string[] m_AccessLevelNames = new string[]
 			{
-				"a player",
+				"un joueur",
 				"a counselor",
-				"a game master",
-				"a seer",
-				"an administrator",
-				"a developer",
-				"an owner"
+				"un batiseur",
+				"un chroniqueur",
+				"un coordinateur",
+				"un developpeur",
+				"un administrateur"
 			};
 
 		public static string GetAccessLevelName( AccessLevel level )
@@ -5113,7 +5115,7 @@ namespace Server
 
                 //if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
                 //    UpdateResistances();
-			}
+            }
 		}
 
 		public virtual void Animate( int action, int frameCount, int repeatCount, bool forward, bool repeat, int delay )
@@ -5985,11 +5987,6 @@ namespace Server
 
 		#endregion
 
-		public virtual int Luck
-		{
-			get { return 0; }
-		}
-		
 		public virtual int HuedItemID
 		{
 			get
@@ -6449,12 +6446,21 @@ namespace Server
 			if( m_Deleted || m.m_Deleted || m_Map == Map.Internal || m.m_Map == Map.Internal )
 				return false;
 
-			return this == m || (
-				m.m_Map == m_Map &&
-				(!m.Hidden || (m_AccessLevel != AccessLevel.Player && (m_AccessLevel >= m.AccessLevel || m_AccessLevel >= AccessLevel.Developer))) &&
-				//Temrael skills fix
-                ((m.Alive || (Core.SE && Skills.Concentration.Value >= 100.0)) || !Alive || m_AccessLevel > AccessLevel.Player || m.Warmode));
+            //(!Alive || m_AccessLevel > AccessLevel.Player || m.Warmode) // Je crois vraiment pas que ce soit utile.
 
+            // Note: La fonction était inline en une combinaison de conditions. Celles-ci sont séparées pour aider la clarté de la fonction.
+            if(this == m)
+                return true;
+
+            if(m.Map == Map)
+            {
+                if(AccessLevel > AccessLevel.Player && AccessLevel >= m.AccessLevel)
+                    return true;
+
+                if(!m.Hidden && m.Alive)
+                    return true;
+            }
+            return false;
 		}
 
 		public virtual bool CanBeRenamedBy( Mobile from )
@@ -7687,65 +7693,6 @@ namespace Server
 			get { return m_Location.m_Z; }
 			set { Location = new Point3D( m_Location.m_X, m_Location.m_Y, value ); }
 		}
-
-		#region Effects & Particles
-
-		public void MovingEffect( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode )
-		{
-			Effects.SendMovingEffect( this, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode );
-		}
-
-		public void MovingEffect( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes )
-		{
-			Effects.SendMovingEffect( this, to, itemID, speed, duration, fixedDirection, explodes, 0, 0 );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode, int effect, int explodeEffect, int explodeSound, EffectLayer layer, int unknown )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode, effect, explodeEffect, explodeSound, layer, unknown );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int hue, int renderMode, int effect, int explodeEffect, int explodeSound, int unknown )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, hue, renderMode, effect, explodeEffect, explodeSound, (EffectLayer)255, unknown );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int effect, int explodeEffect, int explodeSound, int unknown )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, effect, explodeEffect, explodeSound, unknown );
-		}
-
-		public void MovingParticles( IEntity to, int itemID, int speed, int duration, bool fixedDirection, bool explodes, int effect, int explodeEffect, int explodeSound )
-		{
-			Effects.SendMovingParticles( this, to, itemID, speed, duration, fixedDirection, explodes, 0, 0, effect, explodeEffect, explodeSound, 0 );
-		}
-
-		public void FixedEffect( int itemID, int speed, int duration, int hue, int renderMode )
-		{
-			Effects.SendTargetEffect( this, itemID, speed, duration, hue, renderMode );
-		}
-
-		public void FixedEffect( int itemID, int speed, int duration )
-		{
-			Effects.SendTargetEffect( this, itemID, speed, duration, 0, 0 );
-		}
-
-		public void FixedParticles( int itemID, int speed, int duration, int effect, int hue, int renderMode, EffectLayer layer )
-		{
-			Effects.SendTargetParticles( this, itemID, speed, duration, hue, renderMode, effect, layer, 0 );
-		}
-
-		public void FixedParticles( int itemID, int speed, int duration, int effect, EffectLayer layer )
-		{
-			Effects.SendTargetParticles( this, itemID, speed, duration, 0, 0, effect, layer, 0 );
-		}
-
-		public void BoltEffect( int hue )
-		{
-			Effects.SendBoltEffect( this, true, hue );
-		}
-
-		#endregion
 
 		public void SendIncomingPacket()
 		{

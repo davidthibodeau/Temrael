@@ -203,7 +203,7 @@ namespace Server.Spells
 
                             if (BaseCreature.Summon(bc, m_From, m_From.Location, -1, TimeSpan.FromMinutes(duration)))
                             {
-                                m_From.FixedParticles(0x3728, 1, 10, 9910, EffectLayer.Head);
+                                Effects.SendTargetParticles(m_From,0x3728, 1, 10, 9910, EffectLayer.Head);
                                 bc.PlaySound(bc.GetIdleSound());
                                 SummonFamiliarSpell.Table[m_From] = bc;
                                 /*if( m_From is PlayerMobile )

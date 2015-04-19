@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.TechniquesCombat;
+using Server.Engines.Durability;
+using Server.Spells.TechniquesCombat;
 
 namespace Server.Engines.Combat
 {
@@ -27,10 +29,13 @@ namespace Server.Engines.Combat
         /// <returns>Le délai nécessaire avant de pouvoir porter le prochain coup.</returns>
         public int Sequence(Mobile atk, Mobile def)
         {
-            if (!BandageContext.m_Table.Contains(atk))
+            if (!BandageContext.IsHealingSelf(atk))
             {
                 if (Toucher(atk, def))
+                {
+                    def = ProtectionTechnique.GetOnHitEffect(def);
                     OnHit(atk, def);
+                }
                 else
                     OnMiss(atk, def);
 
@@ -49,6 +54,9 @@ namespace Server.Engines.Combat
             AttaqueAnimation(atk);
             DegatsAnimation(def);
 
+            DurabilityHandler.OnPhysAttack(atk);
+            DurabilityHandler.OnPhysDamageReceive(atk, def);
+
             CheckEquitation(def, EquitationType.BeingAttacked);
 
             atk.PlaySound(Weapon(atk).GetHitAttackSound(atk, def));
@@ -56,9 +64,12 @@ namespace Server.Engines.Combat
 
             double basedmg = (atk.Weapon as BaseWeapon).MinDamage + (Utility.RandomDouble() * ((atk.Weapon as BaseWeapon).MaxDamage - (atk.Weapon as BaseWeapon).MinDamage));
             double degats = Degats(basedmg, atk, def);
+
+            Assassinat.Instance.OnHit(atk, def, ref degats);
+
             if (DefStrategy(def).Parer(def))
             {
-                def.FixedEffect(0x37B9, 10, 16);
+                Effects.SendTargetEffect(def,0x37B9, 10, 16);
                 def.Mana -= ParerCoutMana;
                 degats = 0;
             }
@@ -112,7 +123,7 @@ namespace Server.Engines.Combat
 
         protected abstract void CheckEquitationAttaque(Mobile atk);
 
-        public void CheckEquitation(Mobile m, EquitationType type)
+        public virtual void CheckEquitation(Mobile m, EquitationType type)
         {
             Equitation.Equitation.CheckEquitation(m, type);
         }
@@ -142,7 +153,7 @@ namespace Server.Engines.Combat
             if (!def.CanSee(atk))
             {
                 CheckSkillGain(atk, SkillName.Poursuite);
-                double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.75, 15);
+                double poursuite = GetBonus(atk.Skills[SkillName.Poursuite].Value, 0.85);
                 chance = IncreasedValue(chance, poursuite);
             }
 
@@ -161,11 +172,9 @@ namespace Server.Engines.Combat
         #endregion
 
         #region Degats
-        public double Degats(double basedmg, Mobile atk, Mobile def)
+        public virtual double Degats(double basedmg, Mobile atk, Mobile def)
         {
             double dmg = ComputerDegats(atk, basedmg, true);
-
-            Assassinat.Instance.OnHit(atk, def, ref dmg);
 
             return (int)DegatsReduits(atk, def, dmg);
         }
@@ -188,9 +197,9 @@ namespace Server.Engines.Combat
                 CheckSkillGain(atk, SkillName.Anatomie);
             }
 
-            double strBonus = GetBonus(atk.Str, 0.3, 5);
-            double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.5, 5);
-            double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.35, 3.5);
+            double strBonus = atk.Str * 0.35 / 100; // pas de bonus a 100 pour la force.
+            double tactiqueBonus = GetBonus(atk.Skills[SkillName.Tactiques].Value, 0.55);
+            double anatomyBonus = GetBonus(atk.Skills[SkillName.Anatomie].Value, 0.40);
 
             double exceptBonus = 0;
 
@@ -198,7 +207,7 @@ namespace Server.Engines.Combat
             {
                 if (skillup)
                     CheckSkillGain(atk, SkillName.Polissage);
-                exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.2, 10);
+                exceptBonus += GetBonus(atk.Skills[SkillName.Polissage].Value, 0.30);
             }
 
             return basedmg * (1 + strBonus + tactiqueBonus + anatomyBonus + exceptBonus);
@@ -209,12 +218,12 @@ namespace Server.Engines.Combat
             return Damage.instance.DegatsPhysiquesReduits(atk, def, dmg);
         }
 
-        protected double GetBonus(double value, double scalar, double offset)
+        protected double GetBonus(double value, double scalar)
         {
             double bonus = value * scalar;
 
             if (value >= 100)
-                bonus += offset;
+                bonus += scalar * 5; //5% de la valeur a 100 est ajoutee.
 
             return bonus / 100;
         }
@@ -241,7 +250,7 @@ namespace Server.Engines.Combat
         protected abstract void AppliquerPoison(Mobile atk, Mobile def);
 
         #region Coup Critique
-        public int CritiqueManaCost(double degats)
+        public virtual int CritiqueManaCost(double degats)
         {
             return (int)(degats * 0.75);
         }
@@ -253,7 +262,7 @@ namespace Server.Engines.Combat
 
         public virtual double CritiqueChance(Mobile atk)
         {
-            double chance = GetBonus(atk.Skills[SkillName.CoupCritique].Value, 0.2, 5);
+            double chance = GetBonus(atk.Skills[SkillName.CoupCritique].Value, 0.25);
             return chance;
         }
 
@@ -270,9 +279,9 @@ namespace Server.Engines.Combat
         /// </summary>
         /// <param name="atk">Le personnage portant l'attaque.</param>
         /// <returns>Le délai en millisecondes.</returns>
-        public int ProchaineAttaque(Mobile atk)
+        public virtual int ProchaineAttaque(Mobile atk)
         {
-            int vitesse = (int)(Vitesse(atk) * 100);
+            int vitesse = (int)(CalculerVitesse(atk) * 100);
 
             return vitesse;
         }
@@ -283,7 +292,7 @@ namespace Server.Engines.Combat
 
             CheckSkillGain(atk, SkillName.MagieDeGuerre);
 
-            double magie = GetBonus(atk.Skills[SkillName.MagieDeGuerre].Value, 0.75, 15);
+            double magie = GetBonus(atk.Skills[SkillName.MagieDeGuerre].Value, 0.85);
             delay = ReduceValue(delay, magie);
 
             long ticks = Core.TickCount + Core.GetTicks(TimeSpan.FromMilliseconds(delay));
@@ -296,26 +305,15 @@ namespace Server.Engines.Combat
         /// </summary>
         /// <param name="atk">Le personnage portant l'attaque.</param>
         /// <returns>Retourne le délai entre deux attaques en dixième de seconde.</returns>
-        public double Vitesse(Mobile atk)
+        public double CalculerVitesse(Mobile atk)
         {
-            //Par tranche de 50 de stam, on retire 0.25 secondes (ou 0.1 secondes tous les 20 de stam)
-            double s = Weapon(atk).Speed - (((double)atk.Stam / (double)atk.StamMax) * 20); // 0 à 2 secondes d'AS bonus.
-
-
-            //Le délai minimal est de 1 secondes entre deux attaques.
-            if (s < 10)
-                s = 10;
-
-            if (LenteurSpell.Contains(atk))
-                LenteurSpell.GetOnHitEffect(atk, ref s);
-
-            return s;
+            return Vitesse.instance.CalculerVitesse(atk, Weapon(atk).Speed);
         }
         #endregion
 
         #region Parer
 
-        const int ParerCoutMana = 15;
+        const int ParerCoutMana = 25;
 
         /// <summary>
         /// Cette fonction sert à déterminer si le défenseur a paré le coup.
@@ -341,7 +339,7 @@ namespace Server.Engines.Combat
         {
             double parry = def.Skills[SkillName.Parer].Value;
 
-            return GetBonus(parry, 0.15, 2.5);
+            return GetBonus(parry, 0.15);
         }
 
         protected virtual double ParerChance(Mobile def)
@@ -350,7 +348,7 @@ namespace Server.Engines.Combat
 
             if (def.Spell != null && def.Spell.IsCasting)
             {
-                double magie = GetBonus(def.Skills[SkillName.Parer].Value, 0.85, 15);
+                double magie = GetBonus(def.Skills[SkillName.Parer].Value, 0.95);
 
                 chance = ReduceValue(chance, ReduceValue(0.75, magie));
             }

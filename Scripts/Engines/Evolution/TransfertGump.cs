@@ -109,8 +109,7 @@ namespace Server.Engines.Evolution
                 if (!readOnly)
                 {
                     AddButton(383, 119, 4017, 4019, (int)Buttons.PremierSupprimer, GumpButtonType.Reply, 0);
-                    if (m.Region is ZoneCreation)
-                        AddButton(345, 119, 4005, 4007, (int)Buttons.ChoisirPremier, GumpButtonType.Reply, 0);
+                    AddButton(345, 119, 4005, 4007, (int)Buttons.ChoisirPremier, GumpButtonType.Reply, 0);
                 }
             }
 
@@ -121,8 +120,7 @@ namespace Server.Engines.Evolution
                 if (!readOnly)
                 {
                     AddButton(383, 149, 4017, 4019, (int)Buttons.SecondSupprimer, GumpButtonType.Reply, 0);
-                    if (m.Region is ZoneCreation)
-                        AddButton(345, 149, 4005, 4007, (int)Buttons.ChoisirSecond, GumpButtonType.Reply, 0);
+                    AddButton(345, 149, 4005, 4007, (int)Buttons.ChoisirSecond, GumpButtonType.Reply, 0);
                 }
             }
 
@@ -133,8 +131,7 @@ namespace Server.Engines.Evolution
                 if (!readOnly)
                 {
                     AddButton(383, 179, 4017, 4019, (int)Buttons.TroisiemeSupprimer, GumpButtonType.Reply, 0);
-                    if (m.Region is ZoneCreation)
-                        AddButton(345, 179, 4005, 4007, (int)Buttons.ChoisirTroisieme, GumpButtonType.Reply, 0);
+                    AddButton(345, 179, 4005, 4007, (int)Buttons.ChoisirTroisieme, GumpButtonType.Reply, 0);
                 }
             }
         }
@@ -234,52 +231,37 @@ namespace Server.Engines.Evolution
                     {
                         case Buttons.PremierSupprimer:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Retrait de l'entrée {1} contenant {2} xp.",
-                                mobile.Account, tr.Premier.Left, tr.Premier.Right);
+                                mobile.Account, tr.Premier.Left, tr.Premier.Right.XP);
                             tr.Supprimer(Transfert.Position.Premier);
                             break;
                         case Buttons.SecondSupprimer:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Retrait de l'entrée {1} contenant {2} xp.",
-                                mobile.Account, tr.Second.Left, tr.Second.Right);
+                                mobile.Account, tr.Second.Left, tr.Second.Right.XP);
                             tr.Supprimer(Transfert.Position.Second);
                             break;
                         case Buttons.TroisiemeSupprimer:
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Retrait de l'entrée {1} contenant {2} xp.",
-                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right);
+                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right.XP);
                             tr.Supprimer(Transfert.Position.Troisieme);
                             break;
                         case Buttons.Transferer:
-                            CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de {1} xp vers la banque.",
-                                mobile.Account, mobile.Experience.XP);
+                            CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de {1} xp depuis {2} vers la banque.",
+                                mobile.Account, mobile.Experience.XP, mobile.Name);
                             tr.Extraire(mobile);
                             break;
                         case Buttons.ChoisirPremier:
-                            if (!(from.Region is ZoneCreation))
-                            {
-                                from.SendMessage("Vous n'êtes plus dans la zone de création. Vous ne pouvez donc plus effectuer un tel transfert.");
-                                return;
-                            }
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
-                                mobile.Account, tr.Premier.Left, tr.Premier.Right);
+                                mobile.Account, tr.Premier.Left, tr.Premier.Right.XP);
                             tr.Transferer(mobile, Transfert.Position.Premier);
                             break;
                         case Buttons.ChoisirSecond:
-                            if (!(from.Region is ZoneCreation))
-                            {
-                                from.SendMessage("Vous n'êtes plus dans la zone de création. Vous ne pouvez donc plus effectuer un tel transfert.");
-                                return;
-                            }
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
-                                mobile.Account, tr.Second.Left, tr.Second.Right);
+                                mobile.Account, tr.Second.Left, tr.Second.Right.XP);
                             tr.Transferer(mobile, Transfert.Position.Second);
                             break;
                         case Buttons.ChoisirTroisieme:
-                            if (!(from.Region is ZoneCreation))
-                            {
-                                from.SendMessage("Vous n'êtes plus dans la zone de création. Vous ne pouvez donc plus effectuer un tel transfert.");
-                                return;
-                            }
                             CommandLogging.WriteLine(mobile, "Banque de transfert de {0}: Transfert de l'entrée {1} contenant {2} xp vers le personnage.",
-                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right);
+                                mobile.Account, tr.Troisieme.Left, tr.Troisieme.Right.XP);
                             tr.Transferer(mobile, Transfert.Position.Troisieme);
                             break;
                     }

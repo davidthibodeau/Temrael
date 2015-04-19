@@ -170,6 +170,8 @@ namespace Server.Items
 	[Furniture]
     public class Board : BaseTBoard
     {
+        public override int GoldValue { get { return 3; } }
+
         [Constructable]
         public Board()
             : this(1)
@@ -180,7 +182,6 @@ namespace Server.Items
         public Board(int amount)
             : base(CraftResource.RegularWood, amount)
         {
-            GoldValue = 3;
         }
 
         public Board(Serial serial)

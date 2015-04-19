@@ -59,7 +59,7 @@ namespace Server.Spells
                                 creature.SetControlMaster(from);
                                 creature.IsBonded = false;
 
-                                creature.FixedParticles(14186, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                                Effects.SendTargetParticles(creature, 14186, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                                 creature.PlaySound(497);
                             }
                         }

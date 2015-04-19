@@ -272,10 +272,11 @@ namespace Server.Items
 
 	public class Backpack : BaseContainer, IDyable
 	{
+        public override int GoldValue { get { return 15; } }
+
 		[Constructable]
 		public Backpack() : base( 0xE75 )
 		{
-            GoldValue = 15;
 			Layer = Layer.Backpack;
 			Weight = 3.0;
 		}
@@ -328,10 +329,11 @@ namespace Server.Items
 
 	public class Pouch : TrapableContainer
 	{
+        public override int GoldValue { get { return 9; } }
+
 		[Constructable]
 		public Pouch() : base( 0xE79 )
 		{
-            GoldValue = 9;
 			Weight = 1.0;
 		}
 
@@ -443,11 +445,12 @@ namespace Server.Items
 	}
 
 	public class Bag : BaseContainer, IDyable
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Bag() : base( 0xE76 )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
 		}
 
@@ -594,10 +597,11 @@ namespace Server.Items
 	[Flipable( 0x9AA, 0xE7D )]
 	public class WoodenBox : LockableContainer
 	{
+        public override int GoldValue { get { return 9; } }
+
 		[Constructable]
 		public WoodenBox() : base( 0x9AA )
 		{
-            GoldValue = 9;
 			Weight = 4.0;
 		}
 

@@ -9,6 +9,7 @@ using Server.Custom;
 using Server.Scripts.Commands;
 using Server.Engines.Equitation;
 using Server.Engines.Combat;
+using Server.Spells.TechniquesCombat;
 
 //Adjuration
 
@@ -223,7 +224,7 @@ namespace Server.Spells
 
 			if ( Caster.Player )
 			{
-				Caster.FixedEffect( 0x3735, 6, 30 );
+				Effects.SendTargetEffect(Caster, 0x3735, 6, 30 );
 				Caster.PlaySound( 0x5C );
 			}
 
@@ -233,7 +234,7 @@ namespace Server.Spells
 
         public virtual void DoHurtFizzle()
         {
-            Caster.FixedEffect(0x3735, 6, 30);
+            Effects.SendTargetEffect(Caster,0x3735, 6, 30);
             Caster.PlaySound(0x5C);
         }
         #endregion
@@ -262,7 +263,7 @@ namespace Server.Spells
 		public virtual void SayMantra()
 		{
 			if ( m_Info.Mantra != null && m_Info.Mantra.Length > 0 && Caster.Player )
-				Caster.PublicOverheadMessage( MessageType.Spell, Caster.SpeechHue, true, Info.Mantra, false );
+				Caster.PublicOverheadMessage( MessageType.Regular, Caster.SpeechHue, false, Info.Mantra, false );
 		}
 
 		public virtual bool BlockedByHorrificBeast{ get{ return false; } }
@@ -307,7 +308,7 @@ namespace Server.Spells
                 {
                     Caster.LocalOverheadMessage(MessageType.Regular, 0, true, "Vous n'avez pas assez de mana pour lancer ce sort.");
                 }
-                else if (BandageContext.m_Table.Contains(Caster))
+                else if (BandageContext.IsHealingSelf(Caster))
                 {
                     Caster.SendMessage("Vous ne pouvez pas lancer de sort tout en vous soignant avec des bandages.");
                 }
@@ -336,15 +337,9 @@ namespace Server.Spells
 
                 TimeSpan castTime = Info.castTime;
 
-                double vitesse = 1 - Caster.Stam / 100.0;
-                castTime = castTime.Add(TimeSpan.FromSeconds(vitesse));
+                double time = castTime.TotalSeconds;
 
-                if (LenteurSpell.Contains(Caster))
-                {
-                    double vit = castTime.TotalSeconds * 1000;
-                    LenteurSpell.GetOnHitEffect(Caster, ref vit);
-                    castTime = TimeSpan.FromMilliseconds(vit);
-                }
+                castTime = TimeSpan.FromSeconds(Vitesse.instance.CalculerVitesse(Caster, time));
 
                 if (Caster.Body.IsHuman)
                 {
@@ -357,10 +352,10 @@ namespace Server.Spells
                     }
 
                     if (m_Info.LeftHandEffect > 0)
-                        Caster.FixedParticles(0, 10, 5, Info.LeftHandEffect, EffectLayer.LeftHand);
+                        Effects.SendTargetParticles(Caster,0, 10, 5, Info.LeftHandEffect, EffectLayer.LeftHand);
 
                     if (m_Info.RightHandEffect > 0)
-                        Caster.FixedParticles(0, 10, 5, Info.RightHandEffect, EffectLayer.RightHand);
+                        Effects.SendTargetParticles(Caster,0, 10, 5, Info.RightHandEffect, EffectLayer.RightHand);
                 }
 
                 if (ClearHandsOnCast)
@@ -401,7 +396,7 @@ namespace Server.Spells
                 SpellHelper.Heal(Caster, (int)ExaltationSpell.m_ExaltationTable[Caster], true);
                 ExaltationSpell.StopTimer(Caster);
 
-                Caster.FixedParticles(14265, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14265, 10, 15, 5013, 0, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(534);
             }
         }
@@ -460,38 +455,22 @@ namespace Server.Spells
 
             BloodOathSpell.GetOnHitEffect(atk, def, ref damage);
 
-            if (def.MeleeDamageAbsorb > 0)
-            {
-                def.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
-                def.PlaySound(0x1F2);
-                if (def.MeleeDamageAbsorb > damage)
-                {
-                    def.MeleeDamageAbsorb -= (int)damage;
-                    damage = 0;
-                }
-                else
-                {
-                    damage -= def.MeleeDamageAbsorb;
-                    def.MeleeDamageAbsorb = 0;
-                }
-            }
+            ReactiveArmorSpell.GetOnHitEffect(def, ref damage);
+
+            SnareTechnique.GetOnHitEffect(atk, def);
 
             return damage;
         }
 
-        const double ScalArtMag      = 0.625; // Bonus lié au skill ArtMagique.
-        const double BonusArtMag     = 6.25;
-
-        const double ScalMainBranche = 0.3;  // Bonus sur le skill de la branche passée en paramètre.
-        const double BonusMainBranch = 10;
-
+        const double ScalArtMag      = 0.65; // Bonus lié au skill ArtMagique.
+        
+        const double ScalMainBranche = 0.4;  // Bonus sur le skill de la branche passée en paramètre.
+        
         const double ScalScndBranche = 0.05;  // Bonus sur les skills des autres branches.
 
-        const double ScalInscription = 0.5;  // Bonus lié au skill Inscription.
-        const double BonusInscription= 5;
-
-        const double ScalIntel       = 0.3;  // Bonus lié à l'intelligence.
-        const double BonusIntel      = 5;
+        const double ScalInscription = 0.55;  // Bonus lié au skill Inscription.
+        
+        const double ScalIntel       = 0.35;  // Bonus lié à l'intelligence.
 
         public static double GetSpellScaling(Mobile atk, SkillName branche, double ScalingMax)
         {
@@ -500,46 +479,44 @@ namespace Server.Spells
             // Les ifs sont gérés à la compilation, donc pas de coût, juste un warning gossant.
             if (ScalArtMag != 0)
             {
-                Scaling += Damage.GetBonus(atk.Skills[SkillName.ArtMagique].Value, ScalArtMag, BonusArtMag);
+                Scaling += Damage.GetBonus(atk.Skills[SkillName.ArtMagique].Value, ScalArtMag);
             }
 
             if (ScalMainBranche != 0)
             {
                 if ((ScalMainBranche - ScalScndBranche) > 0)
-                    Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche), BonusMainBranch);
+                    Scaling += Damage.GetBonus(atk.Skills[branche].Value, (ScalMainBranche - ScalScndBranche));
                 // "ScalMainBranche - ScalScndBranche" parce qu'on reprend l'influence de la branche principale comme une branche secondaire, plus tard.
             }
 
             if (ScalScndBranche != 0)
             {
-                Scaling += Damage.GetBonus(atk.Skills[SkillName.Evocation].Value
-                                         + atk.Skills[SkillName.Immuabilite].Value
-                                         + atk.Skills[SkillName.Alteration].Value
-                                         + atk.Skills[SkillName.Providence].Value
-                                         + atk.Skills[SkillName.Transmutation].Value
-                                         + atk.Skills[SkillName.Thaumaturgie].Value
-                                         + atk.Skills[SkillName.Hallucination].Value
-                                         + atk.Skills[SkillName.Ensorcellement].Value
-                                         + atk.Skills[SkillName.Animisme].Value, ScalScndBranche, 0);
+                Scaling += 
+                    (atk.Skills[SkillName.Evocation].Value
+                        + atk.Skills[SkillName.Immuabilite].Value
+                        + atk.Skills[SkillName.Alteration].Value
+                        + atk.Skills[SkillName.Providence].Value
+                        + atk.Skills[SkillName.Transmutation].Value
+                        + atk.Skills[SkillName.Thaumaturgie].Value
+                        + atk.Skills[SkillName.Hallucination].Value
+                        + atk.Skills[SkillName.Ensorcellement].Value
+                        + atk.Skills[SkillName.Animisme].Value) * ScalScndBranche / 100;
             }
 
             if (ScalInscription != 0)
             {
-                Scaling += Damage.GetBonus(atk.Skills[SkillName.Inscription].Value, ScalInscription, BonusInscription);
+                Scaling += Damage.GetBonus(atk.Skills[SkillName.Inscription].Value, ScalInscription);
             }
 
             if (ScalIntel != 0)
             {
-                Scaling += Damage.GetBonus(atk.Int, ScalIntel, BonusIntel);
+                Scaling += atk.Int * ScalIntel / 100;
             }
 
+            double maxscale = (ScalArtMag + ScalMainBranche + 8 * ScalScndBranche + ScalInscription) * 1.05 + ScalIntel;
+
             // S'assure que le maximum de scaling soit égal à ScalingMax, tout en conservant l'importance de chacun des facteurs.
-            Scaling = Scaling * (ScalingMax / (
-                ( ScalArtMag + (BonusArtMag / 100)) +
-                ( ScalMainBranche + ( BonusMainBranch / 100)) +
-                ( 9 * ScalScndBranche ) +
-                ( ScalInscription + ( BonusInscription / 100)) +
-                ( ScalIntel + ( BonusIntel / 100))));
+            Scaling = Scaling * ScalingMax / maxscale;
 
             return Scaling;
         }
@@ -586,22 +563,22 @@ namespace Server.Spells
             if (PromptitudeSpell.m_PromptitudeTable.Contains(Caster))
             {
                 bonus -= (double)PromptitudeSpell.m_PromptitudeTable[Caster];
-                Caster.FixedParticles(14186, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
-                Caster.FixedParticles(14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14186, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14154, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(480);
             }
 
             if (ConscienceSpell.m_ConscienceTable.Contains(Caster))
             {
                 bonus -= (double)ConscienceSpell.m_ConscienceTable[Caster] * SpellHelper.GetTotalCreaturesInRange(Caster, 5);
-                Caster.FixedParticles(14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14276, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 Caster.PlaySound(527);
             }
 
             if (SoifDuCombatSpell.m_SoifDuCombatTable.Contains(Caster))
             {
                 bonus -= ((double)SoifDuCombatSpell.m_SoifDuCombatTable[Caster] - 1);
-                Caster.FixedParticles(14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(Caster,14170, 10, 15, 5013, 44, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
             }
 
             if (value < CastDelayMinimum)

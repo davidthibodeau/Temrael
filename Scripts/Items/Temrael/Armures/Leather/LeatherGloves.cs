@@ -5,10 +5,12 @@ namespace Server.Items
 {
 	[Flipable]
 	public class LeatherGloves : BaseArmor, IArcaneEquip
-	{
+    {
+        public override int GoldValue { get { return 9; } }
+
 
         public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorLeather.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }
@@ -22,8 +24,7 @@ namespace Server.Items
 		[Constructable]
 		public LeatherGloves() : base( 0x13C6 )
 		{
-            GoldValue = 9;
-			Weight = 1.0;
+            Weight = 1.0;
 		}
 
 		public LeatherGloves( Serial serial ) : base( serial )

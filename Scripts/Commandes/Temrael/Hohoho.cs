@@ -11,7 +11,7 @@ namespace Server.Commandes
     {
         public static void Initialize()
         {
-            CommandSystem.Register("Hohoho", AccessLevel.Batisseur, new CommandEventHandler(Hohoho_OnCommand));
+            //CommandSystem.Register("Hohoho", AccessLevel.Batisseur, new CommandEventHandler(Hohoho_OnCommand));
         }
 
         [Usage("Hohoho")]

@@ -1,5 +1,6 @@
 using System;
 using Server;
+using Server.Regions;
 
 namespace Server.Items
 {
@@ -14,17 +15,24 @@ namespace Server.Items
 			AddComponent( new ForgeComponent( 0x198A ), 0, 1, 0 );
 			AddComponent( new ForgeComponent( 0x1996 ), 0, 2, 0 );
 			AddComponent( new ForgeComponent( 0x1992 ), 0, 3, 0 );
+            Movable = false;
+            CanBeAltered = false;
 		}
 
 		public LargeForgeEastAddon( Serial serial ) : base( serial )
 		{
 		}
 
+        public override bool CanBePlacedInRegion(Point3D p, Map map)
+        {
+            return Region.Find(p, map) is VilleHurlevent;
+        }
+
 		public override void Serialize( GenericWriter writer )
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int) 0 ); // version
+            writer.Write((int)1); // version
 		}
 
 		public override void Deserialize( GenericReader reader )
@@ -32,6 +40,21 @@ namespace Server.Items
 			base.Deserialize( reader );
 
 			int version = reader.ReadInt();
+
+            if (version == 0)
+            {
+                if (Parent != null && Parent is Container)
+                {
+                    ((Container)Parent).AddItem(new LargeForgeEastDeed());
+
+                    Delete();
+                }
+                else
+                {
+                    Movable = false;
+                    CanBeAltered = false;
+                }
+            }
 		}
 	}
 

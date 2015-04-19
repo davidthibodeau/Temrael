@@ -83,7 +83,7 @@ namespace Server.Spells
 						Mobile m = (Mobile)targets[i];
 
 						Caster.DoHarmful( m );
-						m.FixedParticles( 0x374A, 1, 15, 9502, 97, 3, (EffectLayer)255 );
+						Effects.SendTargetParticles(m, 0x374A, 1, 15, 9502, 97, 3, (EffectLayer)255 );
 
                         double damage = Utility.RandomMinMax(30, 35);
 

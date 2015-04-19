@@ -9,7 +9,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return 3; } }
 
         public override double BasePhysicalResistance { get { return ShldOrder.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ShldOrder.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ShldOrder.resistance_Magique; } }
 
         public override int InitMinHits { get { return ShldOrder.min_Durabilite; } }
         public override int InitMaxHits { get { return ShldOrder.max_Durabilite; } }
@@ -65,7 +65,7 @@ namespace Server.Items
 
 			if ( g == null || g.Type != GuildType.Order )
 			{
-				m.FixedEffect( 0x3728, 10, 13 );
+				Effects.SendTargetEffect(m, 0x3728, 10, 13 );
 				Delete();
 
 				return false;

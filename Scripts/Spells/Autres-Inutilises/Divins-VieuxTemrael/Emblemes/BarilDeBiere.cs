@@ -63,7 +63,7 @@ namespace Server.Spells
                 if (totem != null)
                 {
                     totem.MoveToWorld(new Point3D(p), Caster.Map);
-                    totem.FixedParticles(effectid, effectspeed, effectduration, 5005, hue, 0, layer);
+                    Effects.SendTargetParticles(totem,effectid, effectspeed, effectduration, 5005, hue, 0, layer);
                     totem.PlaySound(soundid);
                 }
             }

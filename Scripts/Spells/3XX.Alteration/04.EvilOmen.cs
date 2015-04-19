@@ -53,8 +53,8 @@ namespace Server.Spells
 				 */
 
 				m.PlaySound( 0xFC );
-				m.FixedParticles( 0x3728, 1, 13, 9912, 1150, 7, EffectLayer.Head );
-				m.FixedParticles( 0x3779, 1, 15, 9502, 67, 7, EffectLayer.Head );
+				Effects.SendTargetParticles(m, 0x3728, 1, 13, 9912, 1150, 7, EffectLayer.Head );
+				Effects.SendTargetParticles(m, 0x3779, 1, 15, 9502, 67, 7, EffectLayer.Head );
 
 				if ( !m_Table.Contains( m ) )
 				{

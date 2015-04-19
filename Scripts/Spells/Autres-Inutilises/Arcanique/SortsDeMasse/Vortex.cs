@@ -135,7 +135,7 @@ namespace Server.Spells
                                 m_caster.DoHarmful(m);
                                 AOS.Damage(m, m_caster, (int)s_damage, 0, 0, 0, 0, 100);
 
-                                m.BoltEffect(0);
+                                Effects.SendBoltEffect(m, true, 0);
                             }
                         }
                     }

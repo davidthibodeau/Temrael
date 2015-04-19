@@ -57,7 +57,7 @@ namespace Server.Spells
             if (m_Registry.Contains(target))
             {
                 target.PlaySound(0x1ED);
-                target.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
+                Effects.SendTargetParticles(target,0x375A, 10, 15, 5037, EffectLayer.Waist);
 
                 m_Registry.Remove(target);
             }
@@ -68,7 +68,7 @@ namespace Server.Spells
             if (!m_Registry.Contains(target))
             {
                 target.PlaySound(0x1E9);
-                target.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
+                Effects.SendTargetParticles(target,0x375A, 10, 15, 5037, EffectLayer.Waist);
 
                 m_Registry.Add(target);
 
@@ -126,7 +126,7 @@ namespace Server.Spells
                 if (Registry.Contains(m_Caster))
                 {
                     m_Caster.PlaySound(0x1ED);
-                    m_Caster.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
+                    Effects.SendTargetParticles(m_Caster,0x375A, 10, 15, 5037, EffectLayer.Waist);
 
                    m_Registry.Remove(m_Caster);
                 }

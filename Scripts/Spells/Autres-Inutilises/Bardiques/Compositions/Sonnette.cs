@@ -88,7 +88,7 @@ namespace Server.Spells
                     m_Timers[targ] = t;
                     t.Start();
 
-                    targ.FixedParticles(14170, 10, 20, 5013, 32, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(targ,14170, 10, 20, 5013, 32, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     targ.PlaySound(494);
                 }
             }
@@ -106,7 +106,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_SonnetteTable.Remove(m);
 
-                m.FixedParticles(14170, 10, 20, 5013, 32, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 20, 5013, 32, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(494);
             }
         }
@@ -134,14 +134,14 @@ namespace Server.Spells
                     SonnetteSpell.m_SonnetteTable.Remove(m_target);
                     SonnetteSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(8902, 10, 20, 5013, 32, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,8902, 10, 20, 5013, 32, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(494);
 
                     Stop();
                 }
                 else
                 {
-                    m_target.FixedParticles(14201, 10, 20, 5013, 1944, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14201, 10, 20, 5013, 1944, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.Stam += (int)m_amount;
                 }
             }

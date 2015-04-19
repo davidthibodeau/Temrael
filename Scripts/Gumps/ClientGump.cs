@@ -41,7 +41,12 @@ namespace Server.Gumps
                 from.SendMessage("Le personnage n'existe plus.");
                 return;
             }
-            else if (from != focus && focus.Hidden && from.AccessLevel < focus.AccessLevel)
+            else if (focus.AccessLevel > from.AccessLevel && from.AccessLevel == AccessLevel.Player)
+            {
+                from.SendMessage("Vous ne pouvez envoyer un message à un maitre du jeu. Veuillez utiliser le systèmes de pages.");
+                return;
+            }
+            else if (from != focus && (focus.Hidden && focus.HideAdmin && from.AccessLevel < focus.AccessLevel))
             {
                 from.SendMessage("Le personnage n'est plus visible.");
                 return;
@@ -178,7 +183,7 @@ namespace Server.Gumps
                         if (from.AccessLevel >= AccessLevel.Batisseur && from.AccessLevel > focus.AccessLevel)
                         {
                             focus.PlaySound(0x214);
-                            focus.FixedEffect(0x376A, 10, 16);
+                            Effects.SendTargetEffect(focus,0x376A, 10, 16);
 
                             focus.Resurrect();
 

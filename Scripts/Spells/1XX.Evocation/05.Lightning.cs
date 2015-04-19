@@ -49,7 +49,7 @@ namespace Server.Spells
 
                     SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                    m.BoltEffect(0);
+                    Effects.SendBoltEffect(m, true, 0);
 
                     Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));
                 }

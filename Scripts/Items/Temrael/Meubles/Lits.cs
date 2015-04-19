@@ -3,7 +3,7 @@ using System;
 namespace Server.Items
 {
 	[Furniture]
-    [Flipable(0x0908, 0x0909)]
+    [Flipable(0x0908, 0x0909, 0x090A, 0x090B)]
 	public class LitDeuxEtages : Item
 	{
 		[Constructable]

@@ -88,7 +88,7 @@ namespace Server.Spells
                     m_Timers[targ] = t;
                     t.Start();
 
-                    targ.FixedParticles(14170, 10, 20, 5013, 2144, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(targ,14170, 10, 20, 5013, 2144, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     targ.PlaySound(526);
                 }
             }
@@ -106,7 +106,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_SonTable.Remove(m);
 
-                m.FixedParticles(14170, 10, 20, 5013, 2144, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14170, 10, 20, 5013, 2144, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(526);
             }
         }
@@ -132,7 +132,7 @@ namespace Server.Spells
                     SonSpell.m_SonTable.Remove(m_target);
                     SonSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14170, 10, 20, 5013, 2144, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14170, 10, 20, 5013, 2144, 0, EffectLayer.Head); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(526);
 
                     Stop();

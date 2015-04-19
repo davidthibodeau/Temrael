@@ -1,5 +1,7 @@
 using System;
 using Server.Spells;
+using Server.Engines.Durability;
+using Server.Spells.TechniquesCombat;
 
 namespace Server.Engines.Combat
 {
@@ -18,7 +20,7 @@ namespace Server.Engines.Combat
         public double DegatsPhysiquesReduits(Mobile atk, Mobile def, double dmg, double incpen)
         {
             double basear = def.PhysicalResistance > 75 ? 75 : def.PhysicalResistance;
-            double basepen = GetBonus(atk.Skills[SkillName.Penetration].Value, 0.3, 5);
+            double basepen = GetBonus(atk.Skills[SkillName.Penetration].Value, 0.35);
             double reducedar = ReduceValue(basear, basepen);
             reducedar = ReduceValue(reducedar, incpen);
 
@@ -29,23 +31,13 @@ namespace Server.Engines.Combat
         #region Degats Magiques
         public void AppliquerDegatsMagiques(Mobile def, double dmg)
         {
+            def = ProtectionTechnique.GetOnHitEffect(def);
+
             double reducedDmg = Reduction(dmg, def.MagicResistance);
 
-            if (def.MagicDamageAbsorb > 0)
-            {
-                def.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
-                def.PlaySound(0x1E9);
-                if (def.MagicDamageAbsorb > reducedDmg)
-                {
-                    def.MagicDamageAbsorb -= (int)reducedDmg;
-                    reducedDmg = 0;
-                }
-                else
-                {
-                    reducedDmg -= def.MagicDamageAbsorb;
-                    def.MagicDamageAbsorb = 0;
-                }
-            }
+            MagicReflectSpell.GetOnHitEffect(def, ref reducedDmg);
+
+            DurabilityHandler.OnMagicDamageReceive(def);
 
             def.Damage((int)reducedDmg);
         }
@@ -90,12 +82,12 @@ namespace Server.Engines.Combat
             return dmg * (1 - resist);
         }
 
-        public static double GetBonus(double value, double scalar, double offset)
+        public static double GetBonus(double value, double scalar)
         {
             double bonus = value * scalar;
 
             if (value >= 100)
-                bonus += offset;
+                bonus += scalar * 5; // 5% de la valeur a 100 est donnee en bonus.
 
             return bonus / 100;
         }

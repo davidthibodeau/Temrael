@@ -69,7 +69,7 @@ namespace Server.Spells
 
             m.Heal((int)toHeal);
 
-            m.FixedParticles(0x376A, 9, 32, 5030, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x376A, 9, 32, 5030, EffectLayer.Waist);
             m.PlaySound(0x202);
         }
 

@@ -6,9 +6,9 @@ namespace Server.Items
 {
     public class Cuivardise : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 3; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        //public override double DefMinDamage { get { return 3; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Cuivardise()
@@ -41,9 +41,9 @@ namespace Server.Items
 
     public class Estoc : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 2; } }
-        //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 2; } }
+        //public override double DefMaxDamage { get { return 5; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Estoc()
@@ -76,9 +76,9 @@ namespace Server.Items
 
     public class Fleuret : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 2; } }
-        //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 2; } }
+        //public override double DefMaxDamage { get { return 5; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Fleuret()
@@ -111,9 +111,9 @@ namespace Server.Items
 
     public class Lyzardese : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 3; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        //public override double DefMinDamage { get { return 3; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Lyzardese()
@@ -146,9 +146,9 @@ namespace Server.Items
 
     public class Musareche : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 2; } }
-        //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 2; } }
+        //public override double DefMaxDamage { get { return 5; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Musareche()
@@ -181,9 +181,9 @@ namespace Server.Items
 
     public class Percille : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 3; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        //public override double DefMinDamage { get { return 3; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Percille()
@@ -216,8 +216,8 @@ namespace Server.Items
 
     public class Rapiere : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -251,8 +251,8 @@ namespace Server.Items
 
     public class Brette : BaseEstoc
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]

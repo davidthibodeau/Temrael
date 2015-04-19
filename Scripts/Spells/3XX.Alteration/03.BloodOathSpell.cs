@@ -63,14 +63,15 @@ namespace Server.Spells
 				 */
 
 				m_OathTable[m] = Caster;
+                m_OathTableScaling[Caster] = Spell.GetSpellScaling(Caster, Info.skillForCasting);
 
 				Caster.PlaySound( 0x175 );
 
-				Caster.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
-				Caster.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
+				Effects.SendTargetParticles(Caster, 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
+				Effects.SendTargetParticles(Caster, 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
-				m.FixedParticles( 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
-				m.FixedParticles( 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
+				Effects.SendTargetParticles(m, 0x375A, 1, 17, 9919, 33, 7, EffectLayer.Waist );
+				Effects.SendTargetParticles(m, 0x3728, 1, 13, 9502, 33, 7, (EffectLayer)255 );
 
                 double duration = 60;
 
@@ -87,11 +88,12 @@ namespace Server.Spells
             if (GetBloodOath(atk) == def)
             {
                 damage = damage * 1.25;    // Augmente de 25% tous les dégâts.
-                Damage.instance.AppliquerDegatsMagiques(atk, damage); // Retourne 25% des dégâts.
+                Damage.instance.AppliquerDegatsMagiques(atk, GetBloodOathScaling(def)*damage); // Retourne une partie des degats.
             }
         }
 
 		private static Hashtable m_OathTable = new Hashtable();
+		private static Hashtable m_OathTableScaling = new Hashtable();
 
 		public static Mobile GetBloodOath( Mobile m )
 		{
@@ -102,6 +104,16 @@ namespace Server.Spells
 
 			if ( oath == m )
 				oath = null;
+
+			return oath;
+		}
+
+		public static double GetBloodOathScaling( Mobile m )
+		{
+			if ( m == null )
+				return 0;
+
+			double oath = (double)m_OathTableScaling[m];
 
 			return oath;
 		}
@@ -128,7 +140,8 @@ namespace Server.Spells
 					m_Caster.SendLocalizedMessage( 1061620 ); // Your Blood Oath has been broken.
 					m_Target.SendLocalizedMessage( 1061620 ); // Your Blood Oath has been broken.
 
-					m_OathTable.Remove( m_Target );
+                    m_OathTable.Remove(m_Target);
+                    m_OathTableScaling.Remove(m_Caster);
 
 					Stop();
 				}

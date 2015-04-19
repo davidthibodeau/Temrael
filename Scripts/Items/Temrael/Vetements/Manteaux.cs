@@ -3,6 +3,42 @@ using Server.Items;
 
 namespace Server.Items
 {
+    public class ManteauAventurier : BaseOuterTorso
+    {
+        [Constructable]
+        public ManteauAventurier()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public ManteauAventurier(int hue)
+            : base(0x2B0D, hue)
+        {
+            Weight = 5.0;
+            Name = "Manteau d'aventurier";
+        }
+
+        public ManteauAventurier(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
     public class ManteauRaye : BaseOuterTorso
     {
         [Constructable]

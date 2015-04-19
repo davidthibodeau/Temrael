@@ -3,6 +3,7 @@ using System.Collections;
 using Server.Targeting;
 using Server.Network;
 using Server.Mobiles;
+using System.Collections.Generic;
 
 namespace Server.Spells
 {
@@ -20,7 +21,7 @@ namespace Server.Spells
                 s_Cercle,
                 203,
                 9031,
-                GetBaseManaCost(s_Cercle),
+                20,
                 TimeSpan.FromSeconds(4),
                 SkillName.Providence,
 				Reagent.Garlic,
@@ -33,8 +34,43 @@ namespace Server.Spells
 		}
 
         private const int maxDmgBlock = 100;
+        private const int duration = 30;
 
-		private static Hashtable m_Table = new Hashtable();
+		private static Dictionary<Mobile, double> m_Table = new Dictionary<Mobile, double>();
+
+        public static bool InTable(Mobile m)
+        {
+            return m_Table.ContainsKey(m);
+        }
+
+        public static void GetOnHitEffect(Mobile def, ref double damage)
+        {
+            if (InTable(def) && damage > 1)
+            {
+                double block = m_Table[def];
+
+                if (block > 0)
+                {
+                    Effects.SendTargetParticles(def,0x376A, 9, 32, 5008, EffectLayer.Waist);
+                    def.PlaySound(0x1F2);
+                }
+
+                double dmg = damage - 1;
+                
+                if (block > dmg)
+                {
+                    block -= dmg;
+                    dmg = 0;
+                }
+                else
+                {
+                    dmg -= block;
+                    block = 0;
+                }
+                damage = dmg + 1;
+                m_Table[def] = block;
+            }
+        }
 
         public override void OnCast()
         {
@@ -42,7 +78,7 @@ namespace Server.Spells
             {
                 Caster.Target = new InternalTarget(this);
             }
-            else if (Caster.MeleeDamageAbsorb > 0)
+            else if (m_Table.ContainsKey(Caster) || MagicReflectSpell.InTable(Caster))
             {
                 Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
@@ -63,7 +99,7 @@ namespace Server.Spells
             {
                 Caster.SendLocalizedMessage(500237); // Target can not be seen.
             }
-            else if (m.MeleeDamageAbsorb > 0)
+            else if (m_Table.ContainsKey(m) || MagicReflectSpell.InTable(Caster))
             {
                 Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
@@ -79,9 +115,11 @@ namespace Server.Spells
         {
             double value = GetSpellScaling(Caster, Info.skillForCasting) * maxDmgBlock;
 
-            m.MeleeDamageAbsorb = (int)value;
+            m_Table.Add(m, value);
 
-            m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+            new ExpireTimer(m, TimeSpan.FromSeconds(duration)).Start();
+
+            Effects.SendTargetParticles(m,0x376A, 9, 32, 5008, EffectLayer.Waist);
             m.PlaySound(0x1F2);
         }
 
@@ -108,5 +146,31 @@ namespace Server.Spells
                 m_Owner.FinishSequence();
             }
         }
+
+		private class ExpireTimer : Timer
+		{
+			private Mobile m_Target;
+			private DateTime m_End;
+
+            public ExpireTimer(Mobile target, TimeSpan delay)
+                : base(TimeSpan.FromSeconds(1.0), TimeSpan.FromSeconds(1.0))
+            {
+                m_Target = target;
+                m_End = DateTime.Now + delay;
+
+                Priority = TimerPriority.TwoFiftyMS;
+            }
+
+			protected override void OnTick()
+			{
+				if (m_Target.Deleted || !m_Target.Alive || DateTime.Now >= m_End )
+				{
+                    m_Target.SendMessage("Votre armure de mage a été rompue.");
+
+                    m_Table.Remove(m_Target);
+					Stop();
+				}
+			}
+		}
 	}
 }

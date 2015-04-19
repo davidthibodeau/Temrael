@@ -7,19 +7,19 @@ namespace Server.Items
 	[FlipableAttribute( 0x1022, 0x1023 )]
 	public class FletcherTools : BaseTool
 	{
+        public override int GoldValue { get { return 6; } }
+
 		public override CraftSystem CraftSystem{ get{ return DefBowFletching.CraftSystem; } }
 
 		[Constructable]
 		public FletcherTools() : base( 0x1022 )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
 		}
 
 		[Constructable]
 		public FletcherTools( int uses ) : base( uses, 0x1022 )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
 		}
 

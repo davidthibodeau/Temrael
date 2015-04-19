@@ -57,7 +57,7 @@ namespace Server.Spells
 
                 m.ApplyPoison(Caster, Poison.GetPoison(level));
 
-				m.FixedParticles( 0x374A, 10, 15, 5021, EffectLayer.Waist );
+				Effects.SendTargetParticles(m, 0x374A, 10, 15, 5021, EffectLayer.Waist );
 				m.PlaySound( 0x474 );
 
                 //double damage = GetNewAosDamage(2, 1, 2, false);

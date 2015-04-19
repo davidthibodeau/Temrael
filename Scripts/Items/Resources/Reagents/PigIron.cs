@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class PigIron : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public PigIron() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public PigIron( int amount ) : base( 0xF8A, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public PigIron( Serial serial ) : base( serial )

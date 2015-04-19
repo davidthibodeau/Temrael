@@ -4,10 +4,12 @@ using Server.Items;
 namespace Server.Items
 {
 	public class LeatherGorget : BaseArmor
-	{
+    {
+        public override int GoldValue { get { return 9; } }
+
 
         public override double BasePhysicalResistance { get { return ArmorLeather.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorLeather.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorLeather.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorLeather.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorLeather.max_Durabilite; } }
@@ -21,7 +23,6 @@ namespace Server.Items
 		[Constructable]
 		public LeatherGorget() : base( 0x13C7 )
 		{
-            GoldValue = 9;
 			Weight = 1.0;
 		}
 

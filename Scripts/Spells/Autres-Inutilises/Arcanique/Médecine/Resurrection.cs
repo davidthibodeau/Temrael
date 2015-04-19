@@ -65,7 +65,7 @@ namespace Server.Spells
                     pm.AddFatigue(-250);*/
 
                     pm.PlaySound(0x214);
-                    pm.FixedEffect(0x376A, 10, 16);
+                    Effects.SendTargetEffect(pm,0x376A, 10, 16);
 
                     if (pm.MortEngine.TimerEvanouie != null)
                     {

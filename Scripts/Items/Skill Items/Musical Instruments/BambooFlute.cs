@@ -4,10 +4,11 @@ namespace Server.Items
 {
 	public class BambooFlute : BaseInstrument
 	{
+        public override int GoldValue { get { return 15; } }
+
 		[Constructable]
 		public BambooFlute() : base( 0x2805, 0x504, 0x503 )
 		{
-            GoldValue = 15;
 			Weight = 2.0;
 		}
 

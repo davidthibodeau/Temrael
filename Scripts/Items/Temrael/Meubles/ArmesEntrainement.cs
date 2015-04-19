@@ -4,9 +4,9 @@ namespace Server.Items
 {
     public class DagueBois : BaseKnife
 	{
-        public override int DefSpeed { get { return 30; } }
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 2; } }
+        public override int DefSpeed { get { return 20; } }
+        public override double DefMinDamage { get { return 1; } }
+        public override double DefMaxDamage { get { return 2; } }
         
 		[Constructable]
 		public DagueBois() : base( 0x1494 )
@@ -38,9 +38,9 @@ namespace Server.Items
 
     public class LanceBois : BaseSpear
     {
-        public override int DefSpeed { get { return 30; } }
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 2; } }
+        public override int DefSpeed { get { return 20; } }
+        public override double DefMinDamage { get { return 1; } }
+        public override double DefMaxDamage { get { return 2; } }
 
         [Constructable]
         public LanceBois()
@@ -73,9 +73,9 @@ namespace Server.Items
 
     public class MasseBois : BaseBashing
     {
-        public override int DefSpeed { get { return 30; } }
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 2; } }
+        public override int DefSpeed { get { return 20; } }
+        public override double DefMinDamage { get { return 1; } }
+        public override double DefMaxDamage { get { return 2; } }
 
         [Constructable]
         public MasseBois()
@@ -108,9 +108,9 @@ namespace Server.Items
 
     public class BatonBois : BaseStaff
     {
-        public override int DefSpeed { get { return 30; } }
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 2; } }
+        public override int DefSpeed { get { return 20; } }
+        public override double DefMinDamage { get { return 1; } }
+        public override double DefMaxDamage { get { return 2; } }
 
         [Constructable]
         public BatonBois()
@@ -143,9 +143,9 @@ namespace Server.Items
 
     public class EpeeBois : BaseSword
     {
-        public override int DefSpeed { get { return 30; } }
-        public override int DefMinDamage { get { return 1; } }
-        public override int DefMaxDamage { get { return 2; } }
+        public override int DefSpeed { get { return 20; } }
+        public override double DefMinDamage { get { return 1; } }
+        public override double DefMaxDamage { get { return 2; } }
 
         [Constructable]
         public EpeeBois()

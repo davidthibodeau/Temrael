@@ -33,7 +33,7 @@ namespace Server.Spells
 
         public void Target(Mobile m)
         {
-            if (Caster.MeleeDamageAbsorb > 0)
+            /*if (Caster.MeleeDamageAbsorb > 0)
             {
                 Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
@@ -57,7 +57,7 @@ namespace Server.Spells
 
                     Caster.MeleeDamageAbsorb = (int)value;
 
-                    Caster.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+                    Effects.SendTargetParticles(Caster,0x376A, 9, 32, 5008, EffectLayer.Waist);
                     Caster.PlaySound(0x1F2);
                 }
                 else
@@ -65,7 +65,7 @@ namespace Server.Spells
                     Caster.SendLocalizedMessage(1005385); // The spell will not adhere to you at this time.
                 }
             }
-
+            */
             FinishSequence();
         }
 

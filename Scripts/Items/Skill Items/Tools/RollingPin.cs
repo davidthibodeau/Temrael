@@ -5,20 +5,20 @@ using Server.Engines.Craft;
 namespace Server.Items
 {
 	public class RollingPin : BaseTool
-	{
+    {
+        public override int GoldValue { get { return 6; } }
+
 		public override CraftSystem CraftSystem{ get{ return DefCooking.CraftSystem; } }
 
 		[Constructable]
 		public RollingPin() : base( 0x1043 )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 		}
 
 		[Constructable]
 		public RollingPin( int uses ) : base( uses, 0x1043 )
 		{
-            GoldValue = 6;
 			Weight = 1.0;
 		}
 

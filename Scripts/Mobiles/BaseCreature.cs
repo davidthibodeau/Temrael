@@ -866,7 +866,11 @@ namespace Server.Mobiles
 			BaseCreature c = m as BaseCreature;
 
             if (c != null)
+            {
+                if ((c.m_bControlled || c.m_bSummoned) && IsEnemy(c.ControlMaster))
+                    return true;
                 return (m_iTeam != c.m_iTeam || ((m_bSummoned || m_bControlled) != (c.m_bSummoned || c.m_bControlled))/* || c.Combatant == this*/ );
+            }
             return false;
 		}
 
@@ -1477,7 +1481,11 @@ namespace Server.Mobiles
 			if ( speechType != null )
 				speechType.OnConstruct( this );
 
-			GenerateLoot( true );
+            if (!m_HasGeneratedLoot)
+            {
+                m_HasGeneratedLoot = true;
+                GenerateLoot(true);
+            }
 
             Quete = new MonstreQueteInfo();
 		}
@@ -2835,7 +2843,10 @@ namespace Server.Mobiles
 			if ( m_bTamable && !m_bControlled && from.Alive )
 				list.Add( new TameEntry( from, this ) );
 
-			AddCustomContextEntries( from, list );
+            if (InRange(from.Location, 5) && InLOS(from))
+            {
+                AddCustomContextEntries(from, list);
+            }
 
             if (from != this)
             {
@@ -3350,6 +3361,17 @@ namespace Server.Mobiles
 		{
 			m_Spawning = spawning;
 
+            Container backpack = Backpack;
+
+            if (backpack == null)
+            {
+                backpack = new Backpack();
+
+                backpack.Movable = false;
+
+                AddItem(backpack);
+            }
+
 			GenerateLoot();
 
 			m_Spawning = false;
@@ -3382,7 +3404,7 @@ namespace Server.Mobiles
 				AddItem( backpack );
 			}
 
-			pack.Generate( this, backpack, m_Spawning );
+			pack.Generate( backpack );
 		}
 
 		public bool PackArmor( int minLevel, int maxLevel )

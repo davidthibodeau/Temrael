@@ -10,7 +10,7 @@ namespace Server.Spells
 
         private static short s_Cercle = 1;
         private static short durationMax = 180;
-        private static short malusMax = 30;
+        private static short malusMax = 40;
 
 		public static readonly new SpellInfo Info = new SpellInfo(
                 "Débilité", "Rel Wis",
@@ -53,7 +53,7 @@ namespace Server.Spells
 
 				m.Paralyzed = false;
 
-				m.FixedParticles( 0x3779, 10, 15, 5004, EffectLayer.Head );
+				Effects.SendTargetParticles(m, 0x3779, 10, 15, 5004, EffectLayer.Head );
 				m.PlaySound( 0x1E4 );
 			}
 

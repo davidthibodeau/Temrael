@@ -48,7 +48,7 @@ namespace Server.Spells
 
                 //double damage = GetNewAosDamage(8, 1, 3, false);
 
-                source.MovingParticles(m, 0x381C, 7, 0, false, false, 1903, 0, 3006, 4006, 0, 0);
+                Effects.SendMovingParticles(source,m, 0x381C, 7, 0, false, false, 1903, 0, 3006, 4006, 0, 0);
                 source.PlaySound(903);
 
                 //SpellHelper.Damage(this, m, damage, 0, 0, 0, 100, 0);

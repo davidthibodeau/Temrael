@@ -6,6 +6,8 @@ namespace Server.Items
 	[FlipableAttribute( 0xc77, 0xc78 )]
 	public class Carrot : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Carrot() : this( 1 )
 		{
@@ -14,7 +16,6 @@ namespace Server.Items
 		[Constructable]
 		public Carrot( int amount ) : base( amount, 0xc78 )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -40,6 +41,8 @@ namespace Server.Items
 	[FlipableAttribute( 0xc7b, 0xc7c )]
 	public class Cabbage : Food
 	{
+        public override int GoldValue { get { return 8; } }
+
 		[Constructable]
 		public Cabbage() : this( 1 )
 		{
@@ -48,7 +51,6 @@ namespace Server.Items
 		[Constructable]
 		public Cabbage( int amount ) : base( amount, 0xc7b )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -74,6 +76,8 @@ namespace Server.Items
 	[FlipableAttribute( 0xc6d, 0xc6e )]
 	public class Onion : Food
 	{
+        public override int GoldValue { get { return 6; } }
+
 		[Constructable]
 		public Onion() : this( 1 )
 		{
@@ -82,7 +86,6 @@ namespace Server.Items
 		[Constructable]
 		public Onion( int amount ) : base( amount, 0xc6d )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -108,6 +111,8 @@ namespace Server.Items
 	[FlipableAttribute( 0xc70, 0xc71 )]
 	public class Lettuce : Food
 	{
+        public override int GoldValue { get { return 9; } }
+
 		[Constructable]
 		public Lettuce() : this( 1 )
 		{
@@ -116,7 +121,6 @@ namespace Server.Items
 		[Constructable]
 		public Lettuce( int amount ) : base( amount, 0xc70 )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 1;
 		}
@@ -142,6 +146,8 @@ namespace Server.Items
 	[FlipableAttribute( 0xC6A, 0xC6B )]
 	public class Pumpkin : Food
 	{
+        public override int GoldValue { get { return 7; } }
+
 		[Constructable]
 		public Pumpkin() : this( 1 )
 		{
@@ -150,7 +156,6 @@ namespace Server.Items
 		[Constructable]
 		public Pumpkin( int amount ) : base( amount, 0xC6A )
 		{
-            GoldValue = 3;
 			this.Weight = 1.0;
 			this.FillFactor = 8;
 		}

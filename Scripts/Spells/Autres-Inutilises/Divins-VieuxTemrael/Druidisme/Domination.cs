@@ -57,7 +57,7 @@ namespace Server.Spells
                     m.SetControlMaster(Caster);
                     m.IsBonded = false;
 
-                    m.FixedParticles(14186, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m,14186, 10, 20, 5013, 1441, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m.PlaySound(497);
                 }
             }

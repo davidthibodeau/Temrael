@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_FortificationDivineTable.Remove(m);
 
-                m.FixedParticles(8902, 9, 18, 5005, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,8902, 9, 18, 5005, EffectLayer.Waist);
                 m.PlaySound(490);
             }
         }

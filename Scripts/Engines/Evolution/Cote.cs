@@ -6,7 +6,7 @@ using System.Text;
 namespace Server.Engines.Evolution
 {
     // Abstraction des valeurs de cote. De la pire a la meilleure.
-    public enum ValeurCote { Interdit, Questionnable, Passable, Normal }
+    public enum ValeurCote { Normal = 0, Passable = 1, Questionnable = 2, Interdit = 3}
 
     public class Cote
     {

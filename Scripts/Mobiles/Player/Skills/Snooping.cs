@@ -70,10 +70,16 @@ namespace Server.SkillHandlers
 				//if ( from.AccessLevel == AccessLevel.Player )
 				//	Titles.AwardKarma( from, -4, true );
 
-				if ( from.AccessLevel > AccessLevel.Player || from.CheckTargetSkill( SkillName.Fouille, cont, 0.0, 100.0 ) )
+				if ( from.AccessLevel > AccessLevel.Player || from.CheckTargetSkill( SkillName.Fouille, cont, 0.0, 102.0 ) )
 				{
 					if ( cont is TrapableContainer && ((TrapableContainer)cont).ExecuteTrap( from ) )
 						return;
+
+                    if (from is ScriptMobile)
+                    {
+                        ScriptMobile pm = (ScriptMobile)from;
+                        pm.Detection.FaireJet(root, 0.05);
+                    }
 
 					cont.DisplayTo( from );
 				}

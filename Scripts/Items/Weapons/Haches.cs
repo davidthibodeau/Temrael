@@ -7,9 +7,9 @@ namespace Server.Items
     /* Main gauche
     public class Furagne : BaseAxe
     {
-        //public override int DefMinDamage { get { return 2; } }
-        //public override int DefMaxDamage { get { return 5; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 2; } }
+        //public override double DefMaxDamage { get { return 5; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Furagne()
@@ -42,8 +42,8 @@ namespace Server.Items
 
     public class Biliane : BaseAxe
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -78,8 +78,8 @@ namespace Server.Items
     // Deux mains gauche
     public class Duxtranche : BaseAxe
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -115,9 +115,9 @@ namespace Server.Items
     // Main Droite
     public class Grochette : BaseAxe
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 13; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 13; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Grochette()
@@ -150,8 +150,8 @@ namespace Server.Items
 
     public class Loragne : BaseAxe
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -185,8 +185,8 @@ namespace Server.Items
 
     public class Luminar : BaseAxe
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -220,9 +220,9 @@ namespace Server.Items
 
     public class Minarque : BaseAxe
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 11; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 11; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Minarque()
@@ -255,9 +255,9 @@ namespace Server.Items
 
     public class Montorgne : BaseAxe
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 11; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 11; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Montorgne()
@@ -290,9 +290,9 @@ namespace Server.Items
 
     public class Noctame : BaseAxe
     {
-        //public override int DefMinDamage { get { return 3; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 35; } }
+        //public override double DefMinDamage { get { return 3; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Noctame()
@@ -325,8 +325,8 @@ namespace Server.Items
 
     public class Orcarinia : BaseAxe
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -360,8 +360,8 @@ namespace Server.Items
 
     public class WarAxe : BaseAxe
     {
-        //public override int DefMinDamage { get { return 5; } }
-        //public override int DefMaxDamage { get { return 9; } }
+        //public override double DefMinDamage { get { return 5; } }
+        //public override double DefMaxDamage { get { return 9; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -396,10 +396,10 @@ namespace Server.Items
     // Deux mains droite
     public class Axe : BaseAxe
     {
-        public override int GoldValue { get { return 20; } set { } }
+        public override int GoldValue { get { return 20; } }
 
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -433,9 +433,9 @@ namespace Server.Items
 
     public class Hachettedouble : BaseAxe
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Hachettedouble()
@@ -468,9 +468,9 @@ namespace Server.Items
 
     public class Coupecrane : BaseAxe
     {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        //public override double DefMinDamage { get { return 13; } }
+        //public override double DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public Coupecrane()
@@ -503,9 +503,9 @@ namespace Server.Items
 
     public class Elvetrine : BaseAxe
     {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        //public override double DefMinDamage { get { return 13; } }
+        //public override double DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public Elvetrine()
@@ -538,9 +538,9 @@ namespace Server.Items
 
     public class HacheDouble : BaseAxe
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public HacheDouble()
@@ -573,9 +573,9 @@ namespace Server.Items
 
     public class LargeBattleAxe : BaseAxe
     {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        //public override double DefMinDamage { get { return 13; } }
+        //public override double DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public LargeBattleAxe()
@@ -608,9 +608,9 @@ namespace Server.Items
 
     public class Morgrove : BaseAxe
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Morgrove()
@@ -643,9 +643,9 @@ namespace Server.Items
 
     public class Tranchecorps : BaseAxe
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 14; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Tranchecorps()
@@ -678,9 +678,9 @@ namespace Server.Items
 
     public class TwoHandedAxe : BaseAxe
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 14; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public TwoHandedAxe()
@@ -713,8 +713,8 @@ namespace Server.Items
 
     public class Venmar : BaseAxe
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -748,8 +748,8 @@ namespace Server.Items
 
     public class Viftranche : BaseAxe
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -783,9 +783,9 @@ namespace Server.Items
 
     public class Morgate : BaseAxe
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 14; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Morgate()
@@ -818,9 +818,9 @@ namespace Server.Items
 
     public class DoubleAxe : BaseAxe
     {
-        //public override int DefMinDamage { get { return 4; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 4; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public DoubleAxe()

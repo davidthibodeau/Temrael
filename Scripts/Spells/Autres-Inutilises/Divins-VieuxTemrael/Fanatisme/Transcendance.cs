@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14186, 10, 15, 5013, 2061, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14186, 10, 15, 5013, 2061, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(509);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_TranscendanceTable.Remove(m);
 
-                m.FixedParticles(14186, 10, 15, 5013, 2061, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14186, 10, 15, 5013, 2061, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(509);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     TranscendanceSpell.m_TranscendanceTable.Remove(m_target);
                     TranscendanceSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14186, 10, 15, 5013, 2061, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14186, 10, 15, 5013, 2061, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(509);
 
                     Stop();

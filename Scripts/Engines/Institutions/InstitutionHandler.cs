@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using Server.Mobiles;
 using Server.Commands;
 using Server.Engines.Institutions;
@@ -80,7 +81,7 @@ namespace Server.Items
                                 }
                                 else
                                 {
-                                    Paie[pair.Key] = Math.Max(Paie[pair.Key], pair.Value);
+                                    Paie[pair.Key] = Math.Max(Paie[pair.Key], GetSalaire(pair.Value));
                                 }
                             }
                         }
@@ -97,8 +98,28 @@ namespace Server.Items
                             pair.Key.SendMessage("Il y a eu une erreur lors du dépot de " +  pair.Value + " pièces d'or dans votre coffre de banque. Le salaire a donc été versé directement dans votre sac pour éviter la perte.");
                             pair.Key.AddToBackpack(new Gold(pair.Value));
                         }
+
+                        PayLogging(pair.Key, pair.Value);
                     }
                 }
+            }
+        }
+
+        private static void PayLogging(Mobile m, int amount)
+        {
+            if (m != null && m.Account != null)
+            {
+                string path = "Logging/PayLogging/";
+                string fileName = path + m.Account.Username + ".txt";
+
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                using (StreamWriter sw = new StreamWriter(fileName, true))
+                    sw.WriteLine(
+                        "Joueur : " + m.Name + "\r\n" +
+                        "Date : " + DateTime.Now.ToString() + "\r\n" +
+                        "Montant : " + amount.ToString() + "\r\n\n");
             }
         }
         #endregion
@@ -106,6 +127,11 @@ namespace Server.Items
         #region Methodes
 
         #region Get
+        public List<Mobile> GetList()
+        {
+            return m_Mobiles.Keys.ToList<Mobile>();
+        }
+
         /// <summary>
         /// Trouve le titre lié au rang passé en paramètre.
         /// </summary>
@@ -218,6 +244,7 @@ namespace Server.Items
                         if (Containers[m_Mobiles[m]] != null)
                         {
                             Item i = Dupe.DupeItem(m, Containers[m_Mobiles[m]], true); // On dupe le container lié au rang du mobile.
+                            i.Visible = true;
                             m.Backpack.AddItem(i);
                         }
                     }
@@ -282,6 +309,27 @@ namespace Server.Items
         public override void OnDoubleClick(Mobile from)
         {
             from.SendGump(new InstitutionGump(from, this));
+        }
+
+        protected override void OnLocationChange(Point3D oldLocation)
+        {
+            VerifyLocation();
+
+            base.OnLocationChange(oldLocation);
+        }
+
+        public void VerifyLocation()
+        {
+            if (Containers != null)
+            {
+                foreach (Container c in Containers)
+                {
+                    if (c != null)
+                    {
+                        c.Location = new Point3D(Location.X, Location.Y, Location.Z - 50); // Berk, mais le seul moyen que j'ai trouvé.
+                    }
+                }
+            }
         }
 
         public override void Delete()

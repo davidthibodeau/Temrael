@@ -8,7 +8,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorBarbare.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorBarbare.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorBarbare.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBarbare.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBarbare.max_Durabilite; } }
@@ -51,7 +51,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return ArmureBarbare_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorBarbare.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorBarbare.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorBarbare.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorBarbare.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorBarbare.max_Durabilite; } }

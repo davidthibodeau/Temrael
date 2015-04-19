@@ -597,18 +597,18 @@ namespace Server
             {
                 Trap_Disarm();
 
-                ((IActivable)m_TrapActivateItem).OnActivate(m_TrapActivateMode, from);
+                ((IActivable)m_TrapActivateItem).OnActivate(m_TrapActivateMode, from, 0);
             }
         }
         #endregion
 
         #region IActivable
-        public void OnActivate(int mode, Mobile from)
+        public void OnActivate(int mode, Mobile from, int overflow)
         {
-            IActivableOnActivate(mode, from);
+            IActivableOnActivate(mode, from, overflow);
         }
 
-        public virtual void IActivableOnActivate(int mode, Mobile from)
+        public virtual void IActivableOnActivate(int mode, Mobile from, int overflow)
         {
         }
         #endregion
@@ -659,19 +659,11 @@ namespace Server
 		private DateTime m_LastMovedTime;
 		private Direction m_Direction;
 
-        private int m_GoldValue;
 		#endregion
 
         public virtual int GoldValue
         {
-            get { return m_GoldValue; }
-            set
-            {
-                if (value >= 0)
-                {
-                    m_GoldValue = value;
-                }
-            }
+            get { return int.MaxValue; }
         }
 
 		private ItemDelta m_DeltaFlags;
@@ -1055,7 +1047,7 @@ namespace Server
 			if ( v != 0 )
 				list.Add( 1060448, v.ToString() ); // physical resist ~1_val~%
 
-			v = MagieResistance;
+			v = MagicalResistance;
 
 			if ( v != 0 )
 				list.Add( 1060446, v.ToString() ); // energy resist ~1_val~%
@@ -1249,6 +1241,26 @@ namespace Server
 			return false;
 		}
 
+        public void MakeUnique()
+        {
+            List<Item> ToDelete = new List<Item>();
+            foreach (KeyValuePair<Serial, Item> pair in World.Items)
+            {
+                if (pair.Value.GetType() == this.GetType())
+                {
+                    if (!pair.Value.Equals(this))
+                    {
+                        ToDelete.Add(pair.Value);
+                    }
+                }
+            }
+
+            foreach (Item i in ToDelete)
+            {
+                i.Delete();
+            }
+        }
+
 		public virtual bool CheckConflictingLayer( Mobile m, Item item, Layer layer )
 		{
 			return ( m_Layer == layer );
@@ -1295,13 +1307,9 @@ namespace Server
                     m_From.SendMessage("Vous devez être à un maximum d'une case pour pouvoir décrire un objet.");
                     return;
                 }
-                if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
-                {
-                    m_From.Prompt = new DecrirePrompt(m_From, m_Item);
-                    m_Item.LastAlteration = DateTime.Now;
-                }
-                else
-                    m_From.SendMessage("Cet objet a deja recemment ete modifie !");
+
+                m_From.Prompt = new DecrirePrompt(m_From, m_Item);
+                m_Item.LastAlteration = DateTime.Now;
             }
         }
 
@@ -1337,13 +1345,13 @@ namespace Server
 
             public override void OnClick()
             {
-                if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
+                if (m_Item.LastAlteration.AddSeconds(1) < DateTime.Now)
                 {
                     m_Item.Movable = false;
                     m_Item.LastAlteration = DateTime.Now;
                 }
                 else
-                    m_From.SendMessage("Cet objet a deja recemment ete modifie !");
+                    m_From.SendMessage("Cet objet a déjà récemment été modifié !");
             }
         }
 
@@ -1367,14 +1375,14 @@ namespace Server
                     return;
                 }
 
-                if (m_Item.LastAlteration.AddMinutes(1) < DateTime.Now)
+                if (m_Item.LastAlteration.AddSeconds(1) < DateTime.Now)
                 {
                     m_Item.SetLastMoved();
                     m_Item.Movable = true;
                     m_Item.LastAlteration = DateTime.Now;
                 }
                 else
-                    m_From.SendMessage("Cet objet a deja recemment ete modifie !");
+                    m_From.SendMessage("Cet objet a déjà récemment été modifié !");
             }
         }
 
@@ -2202,7 +2210,7 @@ namespace Server
 
 		public virtual void Serialize( GenericWriter writer )
 		{
-            writer.Write(2); // version
+            writer.Write(3); // version
 
             writer.Write(m_TrapTrapped);
             writer.Write(m_TrapDisarmDifficulty);
@@ -2213,7 +2221,6 @@ namespace Server
 
             writer.Write(m_CreationFrame);
             writer.Write(m_canBeAltered);
-            writer.Write(m_GoldValue);
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -2552,8 +2559,8 @@ namespace Server
 
             m_canBeAltered = reader.ReadBool();
 
-            if (version > 0)
-                m_GoldValue = reader.ReadInt();
+            if (version < 3)
+                reader.ReadInt();
 
             SaveFlag flags = (SaveFlag)reader.ReadInt();
 
@@ -3541,7 +3548,7 @@ namespace Server
 		}
 
 		public virtual double PhysicalResistance{ get{ return 0.0; } }
-        public virtual double MagieResistance { get { return 0.0; } }
+        public virtual double MagicalResistance { get { return 0.0; } }
 
 		[CommandProperty( AccessLevel.Counselor )]
 		public Serial Serial
@@ -4634,8 +4641,6 @@ namespace Server
 		public Item()
 		{
 			m_Serial = Serial.NewItem;
-
-            m_GoldValue = int.MaxValue;
 
 			//m_Items = new ArrayList( 1 );
 			Visible = true;

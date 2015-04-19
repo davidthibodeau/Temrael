@@ -8,7 +8,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueNobl.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueNobl.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueNobl.max_Durabilite; } }
@@ -49,7 +49,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueNobl.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueNobl.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueNobl.max_Durabilite; } }
@@ -92,7 +92,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueNobl.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueNobl.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueNobl.max_Durabilite; } }
@@ -133,7 +133,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueNobl.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueNobl.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueNobl.max_Durabilite; } }
@@ -174,7 +174,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueNobl.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueNobl.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueNobl.max_Durabilite; } }
@@ -215,7 +215,7 @@ namespace Server.Items
         //public override int NiveauAttirail { get { return PlaqueNoble_Niveau; } }
 
         public override double BasePhysicalResistance { get { return ArmorPlaqueNobl.resistance_Physique; } }
-        public override double BaseMagieResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
+        public override double BaseMagicalResistance { get { return ArmorPlaqueNobl.resistance_Magique; } }
 
         public override int InitMinHits { get { return ArmorPlaqueNobl.min_Durabilite; } }
         public override int InitMaxHits { get { return ArmorPlaqueNobl.max_Durabilite; } }

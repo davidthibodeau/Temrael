@@ -68,8 +68,8 @@ namespace Server.Spells
                     m.Heal(toGain);
                     Caster.Mana -= m_ManaTable[sacrifice - 1];
 
-                    Caster.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
-                    m.FixedParticles(0x376A, 9, 32, 5005, EffectLayer.Waist);
+                    Effects.SendTargetParticles(Caster,0x375A, 9, 20, 5016, EffectLayer.Waist);
+                    Effects.SendTargetParticles(m,0x376A, 9, 32, 5005, EffectLayer.Waist);
                     Caster.PlaySound(0x0F5);
                 }
             }

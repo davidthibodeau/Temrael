@@ -4,6 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.SkillHandlers;
+using Server.Commands;
+using Server.Targeting;
 
 namespace Server.Engines.Hiding
 {
@@ -19,7 +22,8 @@ namespace Server.Engines.Hiding
         Test5Dep1,       //1 tiles test effectue, mais bouge depuis, test 5 effectue ensuite
         Test5Dep0,       //0 tiles test effectue, mais bouge depuis, test 5 effectue ensuite
         Test1Dep0,       //0 tiles test effectue, mais bouge depuis, test 1 effectue ensuite
-        Visible
+        Visible,
+        Jet
     }
 
     public enum DetectionZone
@@ -35,40 +39,6 @@ namespace Server.Engines.Hiding
     /// </summary>
     public class Detection
     {
-        public static void Initialize()
-        {
-            EventSink.Connected += new ConnectedEventHandler(EventSink_Connected);
-            EventSink.Disconnected += new DisconnectedEventHandler(EventSink_Disconnected);
-        }
-
-		private static void EventSink_Connected( ConnectedEventArgs e )
-		{
-            BaseMobile sm = e.Mobile as BaseMobile;
-
-            sm.ActiverTestsDetection();
-		}
-
-		private static void EventSink_Disconnected( DisconnectedEventArgs e )
-		{
-            BaseMobile sm = e.Mobile as BaseMobile;
-
-            sm.Detection.ResetAlentours();
-            foreach (NetState state in NetState.Instances)
-            {
-                BaseMobile m = state.Mobile as BaseMobile;
-                if (m != null)
-                    m.Detection.RetirerJoueurDesAlentours(sm);
-            }
-		}
-
-        private Mobile mobile; // Proprietaire de l'instance de detection
-        private Dictionary<Mobile, DetectionStatus> alentours; //Indique a qui tu es visible.
-
-        public Detection(Mobile m)
-        {
-            mobile = m;
-            alentours = new Dictionary<Mobile, DetectionStatus>();
-        }
         // TODO: En ce moment, rien n'est sauve dans les saves. Si ca change. ScripPlayerMobile doit etre modifie.
 
         /// <summary>
@@ -78,35 +48,138 @@ namespace Server.Engines.Hiding
         /// <returns></returns>
         public DetectionStatus this[Mobile m] { get { return alentours[m]; } }
 
-        public void DetecterAlentours()
+        protected Mobile mobile; // Proprietaire de l'instance de detection
+        private Dictionary<Mobile, DetectionStatus> alentours; //Indique a qui tu es visible.
+
+        #region Initialization / OnLogin, OnLogout / Constructeur
+        public static void Initialize()
+        {
+            EventSink.Login += new LoginEventHandler(EventSink_Login);
+            EventSink.Logout += new LogoutEventHandler(EventSink_Logout);
+            CommandSystem.Register("signaler", AccessLevel.Player, new CommandEventHandler(Signaler_OnCommand));
+        }
+
+		private static void EventSink_Login(LoginEventArgs e)
+		{
+            BaseMobile sm = e.Mobile as BaseMobile;
+
+            sm.ActiverTestsDetection();
+        }
+
+		private static void EventSink_Logout(LogoutEventArgs e)
+		{
+            BaseMobile sm = e.Mobile as BaseMobile;
+
+
+            sm.Detection.ResetAlentours();
+            foreach (NetState state in NetState.Instances)
+            {
+                BaseMobile m = state.Mobile as BaseMobile;
+                if (m != null)
+                    m.Detection.RetirerJoueurDesAlentours(sm);
+            }
+        }
+
+        public Detection(Mobile m)
+        {
+            mobile = m;
+            alentours = new Dictionary<Mobile, DetectionStatus>();
+        }
+        #endregion
+
+        #region Fonction .signaler
+        private static void Signaler_OnCommand(CommandEventArgs e)
+        {
+            BaseMobile from = e.Mobile as BaseMobile;
+
+            if (!from.Hidden)
+            {
+                from.SendMessage("Vous devez être caché pour signaler votre présence à quelqu'un.");
+                return;
+            }
+
+            from.SendMessage("Veuillez viser le joueur à qui vous désirez signaler votre présence. (Vous devez lui être adjacent.)");
+            from.Target = new SignalerTarget();
+        }
+
+        private class SignalerTarget : Target
+        {
+            public SignalerTarget()
+                : base(1, false, TargetFlags.None)
+            {
+            }
+
+            protected override void OnTarget(Mobile from, object targeted)
+            {
+                BaseMobile target = targeted as BaseMobile;
+                BaseMobile sfrom = from as BaseMobile;
+
+                if (target == null)
+                {
+                    from.SendMessage("Vous devez viser un joueur.");
+                    return;
+                }
+
+                sfrom.Detection.AfficherVisiblePour(target);
+                from.SendMessage("Vous signalez à {0} votre présence.", target.GetNameUsedBy(from));
+                target.SendMessage("{0} vous signale sa présence.", from.GetNameUsedBy(target));
+            }
+        }
+        #endregion
+
+        #region Fonctions publiques.
+        // Retourne true si le jet de detection a été reussi.
+        public bool FaireJet(Mobile obs, DetectionZone zone)
+        {
+            DetectionStatus status = DetectionStatus.None;
+
+            double chance = DetectionChance(obs, zone, ref status);
+
+            return JetEtUpdate(obs, chance, status);
+        }
+
+        public bool FaireJet(Mobile obs, double chance)
+        {
+            DetectionStatus status = DetectionStatus.Jet;
+            return JetEtUpdate(obs, chance * SkillChance(obs), DetectionStatus.Jet);
+        }
+
+        // Demande à tous les joueurs dans un rayon de 5 tiles de faire un jet de détection vers lui-même.
+        public virtual void DetecterAlentours()
         {
             IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
             foreach (Mobile mob in eable)
             {
                 BaseMobile m = mob as BaseMobile;
-                if (m == null || m == mobile || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player)
-                    continue;
-                double chance = 0;
-                DetectionStatus status;
-                if (mobile.InRange(m, 0))
-                    chance = m.Detection.DetectionChance(mobile, DetectionZone.ZeroTile, out status);
-                else if (mobile.InRange(m, 1))
-                    chance = m.Detection.DetectionChance(mobile, DetectionZone.UneTile, out status);
-                else
-                    chance = m.Detection.DetectionChance(mobile, DetectionZone.CinqTiles, out status);
 
-                if (status == DetectionStatus.Visible)
-                    continue;
+                if (m != mobile && m != null)
+                {
+                    // Quand les joueurs autour du mobile observateur bouge.
+                    if (mobile.InRange(m, 0))
+                        FaireJet(m, DetectionZone.ZeroTile);
+                    else if (mobile.InRange(m, 1))
+                        FaireJet(m, DetectionZone.UneTile);
+                    else
+                        FaireJet(m, DetectionZone.CinqTiles);
 
-                if (chance >= Utility.RandomDouble())
-                    m.Detection.AfficherVisiblePour(mobile);
-                else
-                    m.Detection.MettreAJourAlentours(mobile, status);
+                    if (m.Hidden)
+                    {
+                        // Quand le joueur observateur bouge.
+                        if (mobile.InRange(m, 0))
+                            m.Detection.FaireJet(mobile, DetectionZone.ZeroTile);
+                        else if (mobile.InRange(m, 1))
+                            m.Detection.FaireJet(mobile, DetectionZone.UneTile);
+                        else
+                            m.Detection.FaireJet(mobile, DetectionZone.CinqTiles);
+                    }
+                }
             }
 
             eable.Free();
         }
+        #endregion
 
+        #region Gestion de la liste de vision des alentours.
         private void MettreAJourAlentours(Mobile m, DetectionStatus d)
         {
             alentours[m] = d;
@@ -122,79 +195,92 @@ namespace Server.Engines.Hiding
             alentours.Remove(m);
         }
 
-        public void TesterPresenceAlentours()
-        {
-            if (mobile.AccessLevel > AccessLevel.Player)
-                return;
-            IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(5);
-            foreach (Mobile m in eable)
-            {
-                if (!m.InLOS(mobile) || mobile  == m)
-                    continue;
-                double chance = 0;
-                DetectionStatus status;
-                if (mobile.InRange(m, 0))
-                    chance = DetectionChance(m, DetectionZone.ZeroTile, out status);
-                else if (mobile.InRange(m, 1))
-                    chance = DetectionChance(m, DetectionZone.UneTile, out status);
-                else
-                    chance = DetectionChance(m, DetectionZone.CinqTiles, out status);
-
-                if (status == DetectionStatus.Visible)
-                    continue;
-
-                if (chance >= Utility.RandomDouble())
-                {
-                    AfficherVisiblePour(m);
-                }
-                else
-                    alentours[m] = status;
-            }
-
-            eable.Free();
-        }
-
         public void AfficherVisiblePour(Mobile obs)
         {
-            NetState ns = obs.NetState;
-            if (ns != null)
+            alentours[obs] = DetectionStatus.Visible;
+
+            if (Utility.InUpdateRange(obs, mobile))
             {
-                obs.Send(MobileIncoming.Create(ns, obs, mobile));
-                if (ObjectPropertyList.Enabled)
+                NetState ns = obs.NetState;
+                if (ns != null)
                 {
-                    ns.Send(mobile.OPLPacket);
+                    if (obs.CanSee(mobile))
+                    {
+                        obs.Send(MobileIncoming.Create(ns, obs, mobile));
+                        if (ObjectPropertyList.Enabled)
+                        {
+                            ns.Send(mobile.OPLPacket);
 
-                    //foreach (Item item in mobile.Items)
-                    //    ns.Send(item.OPLPacket);
+                            foreach (Item item in mobile.Items)
+                                ns.Send(item.OPLPacket);
+                        }
+
+                        // On test un gain de skill seulement en cas de reussite pour eviter que le joueur sache
+                        // que son jet a echoue a cause d'un gain de skill.
+                        obs.CheckSkill(SkillName.Detection, 0);
+
+                        obs.SendMessage("Vous détectez la présence de {0}", mobile.GetNameUsedBy(obs));
+                    }
+                    else
+                    {
+                        ns.Send(mobile.RemovePacket);
+                    }
                 }
+            }
+        }
+        #endregion
 
-                alentours[obs] = DetectionStatus.Visible;
+        #region Fonctions de calcul des chances
 
-                // On test un gain de skill seulement en cas de reussite pour eviter que le joueur sache
-                // que son jet a echoue a cause d'un gain de skill.
-                obs.CheckSkill(SkillName.Detection, 0);
+        // Fait un jet avec les chances, update la vision, et met à jour le status au besoin.
+        private bool JetEtUpdate(Mobile obs, double chance, DetectionStatus status)
+        {
+            BaseMobile m = mobile as BaseMobile;
 
-                obs.SendMessage("Vous détectez la présence de {0}", mobile.GetNameUsedBy(obs));
+            if (m == null || obs == mobile || !m.Hidden || !mobile.InLOS(m) || status == DetectionStatus.Visible)
+                return false;
+
+            if (obs.AccessLevel > AccessLevel.Player)
+            {
+                m.Detection.AfficherVisiblePour(obs);
+                return true;
+            }
+
+            if (m.AccessLevel > AccessLevel.Player)
+                return false;
+
+            //if (Core.Debug)
+            //    obs.SendMessage("Debug -- Chances de detection : " + String.Format("{0:0.00}", chance));
+
+            if (chance >= Utility.RandomDouble())
+            {
+                m.Detection.AfficherVisiblePour(obs);
+                return true;
+            }
+            else
+            {
+                if (status != DetectionStatus.Jet)
+                {
+                    m.Detection.MettreAJourAlentours(obs, status);
+                }
+                return false;
             }
         }
 
-        public double DetectionChance(Mobile obs, DetectionZone zone, out DetectionStatus status)
+        private double DetectionChance(Mobile obs, DetectionZone zone, ref DetectionStatus status)
         {
-            DetectionStatus det = DetectionStatus.None;
-            try { det = alentours[obs]; }
+            double chance = SkillChance(obs);
+
+            if (status == DetectionStatus.Jet)
+                return chance;
+
+            try { status = alentours[obs]; }
             catch { alentours.Add(obs, DetectionStatus.None); }
 
-            if(det == DetectionStatus.Visible)
+            if (status == DetectionStatus.Visible)
             {
-                status = DetectionStatus.Visible;
                 return 0;
             }
-
-            double detection = obs.Skills.Detection.Value * 2;
-            double cachette = mobile.Skills.Infiltration.Value + mobile.Skills.Discretion.Value;
-
-            double chance = detection / cachette;
-            status = det;
 
             switch(zone)
             {
@@ -202,7 +288,7 @@ namespace Server.Engines.Hiding
                     chance = BaseChance(zone, false); // Should never be hit
                     break;
                 case DetectionZone.CinqTiles:
-                    switch (det)
+                    switch (status)
                     {
                         case DetectionStatus.None:
                             chance *= BaseChance(zone, true);
@@ -226,7 +312,7 @@ namespace Server.Engines.Hiding
                     }
                     break;
                 case DetectionZone.UneTile:
-                    switch (det)
+                    switch (status)
                     {
                         case DetectionStatus.None:
                             chance *= CombinerChanceJets(new double[] { BaseChance(DetectionZone.CinqTiles, true) 
@@ -266,7 +352,7 @@ namespace Server.Engines.Hiding
                     }
                     break;
                 case DetectionZone.ZeroTile:
-                    switch (det)
+                    switch (status)
                     {
                         case DetectionStatus.None:
                             chance *= CombinerChanceJets(new double[] { BaseChance(DetectionZone.CinqTiles, true) 
@@ -307,7 +393,7 @@ namespace Server.Engines.Hiding
                             chance *= BaseChance(DetectionZone.ZeroTile, false);
                             break;
                     }
-                    if (det != DetectionStatus.Visible)
+                    if (status != DetectionStatus.Visible)
                         status = DetectionStatus.Tentative0;
                     break;
             }
@@ -342,6 +428,14 @@ namespace Server.Engines.Hiding
             return 0; // Unreachable
         }
 
+        private double SkillChance(Mobile obs)
+        {
+            double detection = obs.Skills.Detection.Value * 2;
+            double cachette = (mobile.Skills.Infiltration.Value + mobile.Skills.Discretion.Value) * Stealth.ScalMalusArmure(mobile);
+
+            return detection / cachette;
+        }
+
         private double CombinerChanceJets(double[] jets)
         {
             double chance = 0;
@@ -349,6 +443,6 @@ namespace Server.Engines.Hiding
                 chance += (1 - chance) * jets[i];
             return chance;
         }
-
+        #endregion
     }
 }

@@ -48,7 +48,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, ref source, ref m);
 
-				source.MovingParticles( m, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160 );
+				Effects.SendMovingParticles(source, m, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160 );
 				source.PlaySound( 0x44B );
 
                 Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));

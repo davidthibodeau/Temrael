@@ -5,29 +5,26 @@ namespace Server.Items
 {
 	public class BlueBook : BaseBook
 	{
+        public override int GoldValue { get { return 6; } }
 
 		[Constructable]
 		public BlueBook() : base( 0xFF2, 40, true )
 		{
-            GoldValue = 6;
 		}
 
 		[Constructable]
 		public BlueBook( int pageCount, bool writable ) : base( 0xFF2, pageCount, writable )
 		{
-            GoldValue = 6;
 		}
 
 		[Constructable]
 		public BlueBook( string title, string author, int pageCount, bool writable ) : base( 0xFF2, title, author, pageCount, writable )
 		{
-            GoldValue = 6;
 		}
 
 		// Intended for defined books only
 		public BlueBook( bool writable ) : base( 0xFF2, writable )
 		{
-            GoldValue = 6;
 		}
 
 		public BlueBook( Serial serial ) : base( serial )

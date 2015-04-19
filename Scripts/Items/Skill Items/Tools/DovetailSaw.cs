@@ -7,19 +7,19 @@ namespace Server.Items
 	[Flipable( 0x1028, 0x1029 )]
 	public class DovetailSaw : BaseTool
 	{
+        public override int GoldValue { get { return 6; } }
+
 		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
 
 		[Constructable]
 		public DovetailSaw() : base( 0x1028 )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
 		}
 
 		[Constructable]
 		public DovetailSaw( int uses ) : base( uses, 0x1028 )
 		{
-            GoldValue = 6;
 			Weight = 2.0;
 		}
 

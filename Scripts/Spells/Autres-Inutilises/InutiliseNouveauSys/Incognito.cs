@@ -152,7 +152,7 @@ namespace Server.Spells
 							hair.Hue = Utility.RandomHairHue();
 					}*/
 
-					Caster.FixedParticles( 0x373A, 10, 15, 5036, EffectLayer.Head );
+					Effects.SendTargetParticles(Caster, 0x373A, 10, 15, 5036, EffectLayer.Head );
 					Caster.PlaySound( 0x3BD );
 
 					StopTimer( Caster );

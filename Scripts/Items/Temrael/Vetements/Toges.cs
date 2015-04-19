@@ -3,6 +3,114 @@ using Server.Items;
 
 namespace Server.Items
 {
+    public class TogeSudiste : BaseOuterTorso
+    {
+        [Constructable]
+        public TogeSudiste()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public TogeSudiste(int hue)
+            : base(0x2B02, hue)
+        {
+            Weight = 5.0;
+            Name = "Grande toge elfique";
+        }
+
+        public TogeSudiste(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class GrandeTogeElfique : BaseOuterTorso
+    {
+        [Constructable]
+        public GrandeTogeElfique()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public GrandeTogeElfique(int hue)
+            : base(0x2B07, hue)
+        {
+            Weight = 5.0;
+            Name = "Grande toge elfique";
+        }
+
+        public GrandeTogeElfique(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class TogeDaedric : BaseOuterTorso
+    {
+        [Constructable]
+        public TogeDaedric()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public TogeDaedric(int hue)
+            : base(0x2B0A, hue)
+        {
+            Weight = 5.0;
+            Name = "Toge daedric";
+        }
+
+        public TogeDaedric(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
     public class TogeSorcier : BaseOuterTorso
     {
         [Constructable]

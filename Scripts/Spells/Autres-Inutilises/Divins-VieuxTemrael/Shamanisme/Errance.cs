@@ -52,7 +52,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14201, 10, 15, 5013, 1628, 0, EffectLayer.CenterFeet);
+                Effects.SendTargetParticles(m,14201, 10, 15, 5013, 1628, 0, EffectLayer.CenterFeet);
                 m.PlaySound(529);
             }
 
@@ -69,7 +69,7 @@ namespace Server.Spells
                 m_Timers.Remove(m);
                 m_ErranceTable.Remove(m);
 
-                m.FixedParticles(14201, 10, 15, 5013, 1628, 0, EffectLayer.CenterFeet);
+                Effects.SendTargetParticles(m,14201, 10, 15, 5013, 1628, 0, EffectLayer.CenterFeet);
                 m.PlaySound(529);
             }
         }
@@ -95,7 +95,7 @@ namespace Server.Spells
                     ErranceSpell.m_ErranceTable.Remove(m_target);
                     ErranceSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14201, 10, 15, 5013, 1628, 0, EffectLayer.CenterFeet);
+                    Effects.SendTargetParticles(m_target,14201, 10, 15, 5013, 1628, 0, EffectLayer.CenterFeet);
                     m_target.PlaySound(529);
 
                     Stop();

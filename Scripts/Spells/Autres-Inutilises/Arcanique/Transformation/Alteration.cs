@@ -60,7 +60,7 @@ namespace Server.Spells
 
                 Caster.EndAction(typeof(AlterationSpell));
 
-                Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                Effects.SendTargetParticles(Caster,0x373A, 10, 15, 5036, EffectLayer.Head);
                 Caster.PlaySound(0x3BD);
 
                 if (Caster is PlayerMobile)
@@ -108,7 +108,7 @@ namespace Server.Spells
                             Caster.HueMod = m_HueMod;
                         }
 
-                        Caster.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                        Effects.SendTargetParticles(Caster,0x373A, 10, 15, 5036, EffectLayer.Head);
                         Caster.PlaySound(0x3BD);
                     }
                 }
@@ -135,7 +135,7 @@ namespace Server.Spells
 
                 m.EndAction(typeof(AlterationSpell));
 
-                m.FixedParticles(0x373A, 10, 15, 5036, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x373A, 10, 15, 5036, EffectLayer.Head);
                 m.PlaySound(0x3BD);
 
                 if (m is PlayerMobile)

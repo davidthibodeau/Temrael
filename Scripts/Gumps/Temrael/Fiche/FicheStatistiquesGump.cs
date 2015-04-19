@@ -54,7 +54,7 @@ namespace Server.Gumps.Fiche
             list[i++] = from.MagicResistance.ToString();
 
             list[i++] = "Vitesse d'attaque:";
-            list[i++] =  ((from.Weapon as BaseWeapon).Strategy.Vitesse(from) / 10).ToString("0.00") + " secondes / attaque";
+            list[i++] =  ((from.Weapon as BaseWeapon).Strategy.CalculerVitesse(from) / 10).ToString("0.00") + " secondes / attaque";
 
             list[i++] = "Chances de Critique:";
             list[i++] = ((int)((from.Weapon as BaseWeapon).Strategy.CritiqueChance(from) * 100)).ToString() + " %";
@@ -97,29 +97,10 @@ namespace Server.Gumps.Fiche
             if (from.Deleted || !from.Alive)
                 return;
 
-            switch (info.ButtonID)
+            if (info.ButtonID < 8)
             {
-                case 1:
-                    from.SendGump(new FicheRaceGump(from));
-                    break;
-                case 2:
-                    from.SendGump(new FicheClasseGump(from));
-                    break;
-                case 3:
-                    from.SendGump(new FicheCaracteristiqueGump(from));
-                    break;
-                case 4:
-                    from.SendGump(new FicheCompetencesGump(from));
-                    break;
-                case 5:
-                    from.SendGump(new FicheStatistiquesGump(from));
-                    break;
-                case 6:
-                    from.SendGump(new FicheStatutsGump(from));
-                    break;
-                case 7:
-                    from.SendGump(new FicheCommandesGump(from));
-                    break;
+                base.OnResponse(sender, info);
+                return;
             }
         }
     }

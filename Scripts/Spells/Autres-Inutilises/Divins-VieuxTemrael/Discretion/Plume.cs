@@ -54,7 +54,7 @@ namespace Server.Spells
 
                 m.InvalidateProperties();
 
-                m.FixedParticles(14120, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14120, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(526);
             }
 
@@ -73,7 +73,7 @@ namespace Server.Spells
 
                 m.InvalidateProperties();
 
-                m.FixedParticles(14120, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14120, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(526);
             }
         }
@@ -100,7 +100,7 @@ namespace Server.Spells
                     PlumeSpell.m_Timers.Remove(m_target);
                     m_target.InvalidateProperties();
 
-                    m_target.FixedParticles(14120, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14120, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(526);
 
                     Stop();

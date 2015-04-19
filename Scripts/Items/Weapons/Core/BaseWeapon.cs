@@ -46,7 +46,6 @@ namespace Server.Items
 		private int m_PoisonCharges;
 		private int m_Hits;
 		private int m_MaxHits;
-		private SkillMod m_SkillMod, m_MageMod;
 		private CraftResource m_Resource;
 		private bool m_PlayerConstructed;
 
@@ -74,78 +73,28 @@ namespace Server.Items
 		public virtual WeaponAnimation DefAnimation{ get{ return WeaponAnimation.Slash1H; } }
 
         //public abstract int DefStrengthReq { get; }
-        public virtual int DefMinDamage { get { return DPSMin(); } }
-        public virtual int DefMaxDamage { get { return DPSMax(); } }
+        public virtual double DefMinDamage { get { return DPSMin(); } }
+        public virtual double DefMaxDamage { get { return DPSMax(); } }
         public abstract int DefSpeed { get; }
 
-        public int DPSMin()
+        public const int MinWeaponSpeed = 20;
+        public const int MaxWeaponSpeed = 80;
+
+        const double MinDPS = 1.5;
+        const double MaxDPS = 2.0;
+
+        public double DPSMin()
         {
-            if (Layer == Layer.OneHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case 30: return 3;
-                    case 35: return 4;
-                    case 40: return 6;
-                    case 45: return 7;
-                    case 50: return 9;
-                    case 55: return 10;
-                    case 60: return 11;
-                    default: return 0;
-                }
-            }
-            if (Layer == Layer.TwoHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case 30: return 4;
-                    case 35: return 6;
-                    case 40: return 8;
-                    case 45: return 9;
-                    case 50: return 11;
-                    case 55: return 13;
-                    case 60: return 14;
-                    default: return 0;
-                }
-            }
-            return 0;
+            return (MinDPS / 10 * DefSpeed);
         }
 
-        public int DPSMax()
+        public double DPSMax()
         {
-            if (Layer == Layer.OneHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case 30: return 6;
-                    case 35: return 8;
-                    case 40: return 9;
-                    case 45: return 11;
-                    case 50: return 12;
-                    case 55: return 14;
-                    case 60: return 15;
-                    default: return 0;
-                }
-            }
-            if (Layer == Layer.TwoHanded)
-            {
-                switch (DefSpeed)
-                {
-                    case 30: return 8;
-                    case 35: return 10;
-                    case 40: return 12;
-                    case 45: return 14;
-                    case 50: return 16;
-                    case 55: return 18;
-                    case 60: return 20;
-                    default: return 0;
-                }
-            }
-            return 0;
+            return (MaxDPS / 10 * DefSpeed);
         }
 
-		public virtual int InitMinHits{ get{ return 0; } }
-		public virtual int InitMaxHits{ get{ return 0; } }
+		public virtual int InitMinHits{ get{ return 150; } }
+		public virtual int InitMaxHits{ get{ return 200; } }
 
 		public virtual bool CanFortify{ get{ return true; } }
 		#endregion
@@ -169,18 +118,20 @@ namespace Server.Items
 		public int Durability
 		{
 			get{ return m_Hits; }
-			set
-			{
-				if ( m_Hits == value )
-					return;
+            set
+            {
+                if (value != m_Hits && MaxDurability > 0)
+                {
+                    m_Hits = value;
 
-				if ( value > m_MaxHits )
-					value = m_MaxHits;
+                    if (m_Hits < 0)
+                        Delete();
+                    else if (m_Hits > MaxDurability)
+                        m_Hits = MaxDurability;
 
-				m_Hits = value;
-
-				InvalidateProperties();
-			}
+                    InvalidateProperties();
+                }
+            }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -298,14 +249,14 @@ namespace Server.Items
 		[CommandProperty( AccessLevel.Batisseur )]
         public double MinDamage
 		{
-			get{ return ( m_MinDamage == -1 ? ExceptBonus(RessourceBonus(DefMinDamage)) : ExceptBonus(RessourceBonus(m_MinDamage))); }
+			get{ return ( m_MinDamage == -1 ? ComputeDamage(DefMinDamage) : ComputeDamage(m_MinDamage)); }
 			set{ }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
 		public double MaxDamage
 		{
-			get{ return ( m_MaxDamage == -1 ? ExceptBonus(RessourceBonus(DefMaxDamage)) : ExceptBonus(RessourceBonus(m_MaxDamage))); }
+			get{ return ( m_MaxDamage == -1 ? ComputeDamage(DefMaxDamage) : ComputeDamage(m_MaxDamage)); }
 			set{ }
 		}
 
@@ -341,22 +292,6 @@ namespace Server.Items
 				if ( m_AccuracyLevel != value )
 				{
 					m_AccuracyLevel = value;
-
-					if ( UseSkillMod )
-					{
-						if ( m_AccuracyLevel == WeaponAccuracyLevel.Regular )
-						{
-							if ( m_SkillMod != null )
-								m_SkillMod.Remove();
-
-							m_SkillMod = null;
-						}
-						else if ( m_SkillMod != null )
-						{
-							m_SkillMod.Value = (int)m_AccuracyLevel * 5;
-						}
-					}
-
 					InvalidateProperties();
 				}
 			}
@@ -369,23 +304,59 @@ namespace Server.Items
         }
 		#endregion
 
-        const double scalingRes = 0.3;
-        private double GetResScaling(int niveau, int nbRessource)
+        #region Compute Damage
+
+        // Affecte le balancement.
+        const double BonusAttackSpeed = 1; // À changer pour compenser le kiting.
+        const double Malus1Handed = 0.25; // À modifier si on pense que les armes 1H ont un trop grand DPS.
+
+        // N'affecte pas le balancement.
+        const double DiffExcept = 0.2;
+        const double BonusResource = 0.3;
+        const double MalusDurabilite = 0.3;
+
+        protected double ComputeDamage(double dmg)
         {
-            return (1 + niveau * scalingRes / nbRessource);
+            dmg = AttackSpeedBonus(dmg);
+
+            dmg = RessourceBonus(dmg);
+
+            dmg = ExceptBonus(dmg);
+
+            dmg = DurabilityMalus(dmg);
+
+            dmg = OneHandedMalus(dmg);
+
+            return dmg;
         }
 
-        public virtual double ExceptBonus(double dmg)
+        private double ExceptBonus(double dmg)
         {
             switch (this.Quality)
             {
-                case WeaponQuality.Low: dmg *= 0.80; break;
+                case WeaponQuality.Low: dmg *= (1 - DiffExcept); break;
                 case WeaponQuality.Regular: dmg *= 1; break;
-                case WeaponQuality.Exceptional: dmg *= 1.20; break;
+                case WeaponQuality.Exceptional: dmg *= (1 + DiffExcept); break;
             }
             return dmg;
         }
 
+        private double AttackSpeedBonus(double dmg)
+        {
+            if (DefSpeed == MinWeaponSpeed)
+            {
+                return dmg * (1 + BonusAttackSpeed);
+            }
+            else
+            {
+                return dmg * (1 + BonusAttackSpeed - (BonusAttackSpeed * ((double)(DefSpeed - MinWeaponSpeed) / (double)(MaxWeaponSpeed - MinWeaponSpeed))));
+            }
+        }
+
+        private double GetResScaling(int niveau, int nbRessource)
+        {
+            return (1 + niveau * BonusResource / nbRessource);
+        }
         public double RessourceBonus(double dmg)
         {
             // Les bonus vont de 0% à 30% de bonus d'AR.
@@ -418,7 +389,30 @@ namespace Server.Items
             return dmg;
         }
 
-		public virtual void UnscaleDurability()
+        private double DurabilityMalus(double dmg)
+        {
+            if (m_Hits == 0)
+                return 0;
+
+            if (m_MaxHits == 0)
+                return dmg;
+
+            return (((double)m_Hits / (double)m_MaxHits) * MalusDurabilite * dmg) + (dmg * (1 - MalusDurabilite));
+        }
+
+        private double OneHandedMalus(double dmg)
+        {
+            if (Layer.OneHanded == Layer)
+            {
+                dmg *= (1 - Malus1Handed);
+            }
+            return dmg;
+        }
+
+        #endregion
+
+
+        public virtual void UnscaleDurability()
 		{
 			int scale = 100 + GetDurabilityBonus();
 
@@ -453,11 +447,6 @@ namespace Server.Items
 			}
 
 			return bonus;
-		}
-
-		public int GetLowerStatReq()
-		{
-            return 0;
 		}
 
 		public static void BlockEquip( Mobile m, TimeSpan duration )
@@ -518,8 +507,6 @@ namespace Server.Items
 			}
 		}
 
-		public virtual bool UseSkillMod{ get{ return !Core.AOS; } }
-
 		public override bool OnEquip( Mobile from )
 		{
             from.NextCombatTime = Core.TickCount + Core.GetTicks(GetDelay(from));
@@ -555,18 +542,6 @@ namespace Server.Items
 
                 if (weapon != null)
                     m.NextCombatTime = Core.TickCount + Core.GetTicks(weapon.GetDelay(m));
-
-				if ( UseSkillMod && m_SkillMod != null )
-				{
-					m_SkillMod.Remove();
-					m_SkillMod = null;
-				}
-
-				if ( m_MageMod != null )
-				{
-					m_MageMod.Remove();
-					m_MageMod = null;
-				}
 
 				m.CheckStatTimers();
 
@@ -636,57 +611,6 @@ namespace Server.Items
 			}
             attacker.RevealingAction();
             return Strategy.ProchaineAttaque(attacker);
-		}
-
-		public virtual int GetPackInstinctBonus( Mobile attacker, Mobile defender )
-		{
-			if ( attacker.Player || defender.Player )
-				return 0;
-
-			BaseCreature bc = attacker as BaseCreature;
-
-			if ( bc == null || bc.PackInstinct == PackInstinct.None || (!bc.Controlled && !bc.Summoned) )
-				return 0;
-
-			Mobile master = bc.ControlMaster;
-
-			if ( master == null )
-				master = bc.SummonMaster;
-
-			if ( master == null )
-				return 0;
-
-			int inPack = 1;
-
-			foreach ( Mobile m in defender.GetMobilesInRange( 1 ) )
-			{
-				if ( m != attacker && m is BaseCreature )
-				{
-					BaseCreature tc = (BaseCreature)m;
-
-					if ( (tc.PackInstinct & bc.PackInstinct) == 0 || (!tc.Controlled && !tc.Summoned) )
-						continue;
-
-					Mobile theirMaster = tc.ControlMaster;
-
-					if ( theirMaster == null )
-						theirMaster = tc.SummonMaster;
-
-					if ( master == theirMaster && tc.Combatant == defender )
-						++inPack;
-				}
-			}
-
-			if ( inPack >= 5 )
-				return 100;
-			else if ( inPack >= 4 )
-				return 75;
-			else if ( inPack >= 3 )
-				return 50;
-			else if ( inPack >= 2 )
-				return 25;
-
-			return 0;
 		}
 
 		private static bool m_InDoubleStrike;
@@ -764,47 +688,6 @@ namespace Server.Items
 			//if ( move != null )
 			//	move.OnMiss( attacker, defender );
 
-		}
-
-		public virtual int GetHitChanceBonus()
-		{
-			if ( !Core.AOS )
-				return 0;
-
-			int bonus = 0;
-
-			switch ( m_AccuracyLevel )
-			{
-				case WeaponAccuracyLevel.Accurate:		bonus += 02; break;
-				case WeaponAccuracyLevel.Surpassingly:	bonus += 04; break;
-				case WeaponAccuracyLevel.Eminently:		bonus += 06; break;
-				case WeaponAccuracyLevel.Exceedingly:	bonus += 08; break;
-				case WeaponAccuracyLevel.Supremely:		bonus += 10; break;
-			}
-
-			return bonus;
-		}
-
-		public virtual int GetDamageBonus()
-		{
-            int bonus = 0;
-
-			switch ( m_Quality )
-			{
-				case WeaponQuality.Low:			bonus -= 20; break;
-				case WeaponQuality.Exceptional:	bonus += 20; break;
-			}
-
-			switch ( m_DamageLevel )
-			{
-				case WeaponDamageLevel.Ruin:	bonus += 15; break;
-				case WeaponDamageLevel.Might:	bonus += 20; break;
-				case WeaponDamageLevel.Force:	bonus += 25; break;
-				case WeaponDamageLevel.Power:	bonus += 30; break;
-				case WeaponDamageLevel.Vanq:	bonus += 35; break;
-			}
-
-			return bonus;
 		}
 
 		public virtual void GetStatusDamage( Mobile from, out int min, out int max )
@@ -1395,9 +1278,6 @@ namespace Server.Items
                 else
                     list.Add(1061824, couleur); // one-handed weapon
 
-                if ((prop = GetLowerStatReq()) != 0)
-                    list.Add(1060435, "{0}\t{1}", couleur, prop.ToString()); // lower requirements ~1_val~%
-
                 if ((prop = GetDurabilityBonus()) > 0)
                     list.Add(1060410, "{0}\t{1}", couleur, prop.ToString()); // durability ~1_val~%
 
@@ -1424,7 +1304,7 @@ namespace Server.Items
             if (v != 0)
                 list.Add(1060448, "{0}\t{1}", couleur, v.ToString()); // physical resist ~1_val~%
 
-            v = MagieResistance;
+            v = MagicalResistance;
 
             if (v != 0)
                 list.Add(1060446, "{0}\t{1}", couleur, v.ToString()); // energy resist ~1_val~%

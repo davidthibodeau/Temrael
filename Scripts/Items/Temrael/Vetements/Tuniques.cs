@@ -3,6 +3,150 @@ using Server.Items;
 
 namespace Server.Items
 {
+    public class TuniqueRobuste : BaseMiddleTorso
+    {
+        [Constructable]
+        public TuniqueRobuste()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public TuniqueRobuste(int hue)
+            : base(0x2A73, hue)
+        {
+            Weight = 5.0;
+            Name = "Tunique Robuste";
+        }
+
+        public TuniqueRobuste(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class TuniqueLegereOrient : BaseMiddleTorso
+    {
+        [Constructable]
+        public TuniqueLegereOrient()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public TuniqueLegereOrient(int hue)
+            : base(0x2A71, hue)
+        {
+            Weight = 5.0;
+            Name = "Tunique Légère d'Orient";
+        }
+
+        public TuniqueLegereOrient(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class TuniqueElfique : BaseMiddleTorso
+    {
+        [Constructable]
+        public TuniqueElfique()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public TuniqueElfique(int hue)
+            : base(0x2B09, hue)
+        {
+            Weight = 5.0;
+            Name = "Tunique Elfique";
+        }
+
+        public TuniqueElfique(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class TuniqueDaedric : BaseMiddleTorso
+    {
+        [Constructable]
+        public TuniqueDaedric()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public TuniqueDaedric(int hue)
+            : base(0x2B0C, hue)
+        {
+            Weight = 5.0;
+            Name = "Tunique Daedric";
+        }
+
+        public TuniqueDaedric(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
     public class DoubletAmple : BaseMiddleTorso
     {
         [Constructable]

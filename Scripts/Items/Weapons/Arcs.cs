@@ -6,15 +6,16 @@ namespace Server.Items
 {
     public class Arc : BaseArc
     {
-        //public override int DefMinDamage { get { return 6; } }
-        //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 35; } }
+        public override int GoldValue { get { return 21; } }
+
+        //public override double DefMinDamage { get { return 6; } }
+        //public override double DefMaxDamage { get { return 10; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Arc()
             : base(0x2d24)
         {
-            GoldValue = 21;
             Weight = 8.0;
             Layer = Layer.TwoHanded;
             Name = "Arc";
@@ -42,9 +43,9 @@ namespace Server.Items
 
     public class Barbatrine : BaseArc
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Barbatrine()
@@ -77,8 +78,8 @@ namespace Server.Items
 
     public class Blancorde : BaseArc
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -112,9 +113,9 @@ namespace Server.Items
 
     public class GrandArc : BaseArc
     {
-        //public override int DefMinDamage { get { return 14; } }
-        //public override int DefMaxDamage { get { return 19; } }
-        public override int DefSpeed { get { return 60; } }
+        //public override double DefMinDamage { get { return 14; } }
+        //public override double DefMaxDamage { get { return 19; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public GrandArc()
@@ -147,9 +148,9 @@ namespace Server.Items
 
     public class Composite : BaseArc
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 14; } }
+        public override int DefSpeed { get { return 50; } }
 
         [Constructable]
         public Composite()
@@ -182,8 +183,8 @@ namespace Server.Items
 
     public class Ebonie : BaseArc
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -217,9 +218,9 @@ namespace Server.Items
 
     public class Flamfleche : BaseArc
     {
-        //public override int DefMinDamage { get { return 4; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 4; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Flamfleche()
@@ -252,8 +253,8 @@ namespace Server.Items
 
     public class Foliere : BaseArc
     {
-        //public override int DefMinDamage { get { return 7; } }
-        //public override int DefMaxDamage { get { return 12; } }
+        //public override double DefMinDamage { get { return 7; } }
+        //public override double DefMaxDamage { get { return 12; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
@@ -287,9 +288,9 @@ namespace Server.Items
 
     public class Sifflecrin : BaseArc
     {
-        //public override int DefMinDamage { get { return 4; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 4; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Sifflecrin()
@@ -322,9 +323,9 @@ namespace Server.Items
 
     public class Souplecorde : BaseArc
     {
-        //public override int DefMinDamage { get { return 6; } }
-        //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 35; } }
+        //public override double DefMinDamage { get { return 6; } }
+        //public override double DefMaxDamage { get { return 10; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Souplecorde()
@@ -357,9 +358,9 @@ namespace Server.Items
 
     public class Sombrevent : BaseArc
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Sombrevent()
@@ -392,9 +393,9 @@ namespace Server.Items
 
     public class Chantefleche : BaseArc
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 14; } }
+        public override int DefSpeed { get { return 50; } }
 
         [Constructable]
         public Chantefleche()
@@ -427,9 +428,9 @@ namespace Server.Items
 
     public class Mirielle : BaseArc
     {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        //public override double DefMinDamage { get { return 13; } }
+        //public override double DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public Mirielle()
@@ -462,9 +463,9 @@ namespace Server.Items
 
     public class Legarc : BaseArc
     {
-        //public override int DefMinDamage { get { return 4; } }
-        //public override int DefMaxDamage { get { return 7; } }
-        public override int DefSpeed { get { return 30; } }
+        //public override double DefMinDamage { get { return 4; } }
+        //public override double DefMaxDamage { get { return 7; } }
+        public override int DefSpeed { get { return 20; } }
 
         [Constructable]
         public Legarc()
@@ -497,9 +498,9 @@ namespace Server.Items
 
     public class Vigne : BaseArc
     {
-        //public override int DefMinDamage { get { return 14; } }
-        //public override int DefMaxDamage { get { return 19; } }
-        public override int DefSpeed { get { return 60; } }
+        //public override double DefMinDamage { get { return 14; } }
+        //public override double DefMaxDamage { get { return 19; } }
+        public override int DefSpeed { get { return 80; } }
 
         [Constructable]
         public Vigne()
@@ -532,9 +533,9 @@ namespace Server.Items
 
     public class Glaciale : BaseArc
     {
-        //public override int DefMinDamage { get { return 11; } }
-        //public override int DefMaxDamage { get { return 16; } }
-        public override int DefSpeed { get { return 50; } }
+        //public override double DefMinDamage { get { return 11; } }
+        //public override double DefMaxDamage { get { return 16; } }
+        public override int DefSpeed { get { return 60; } }
 
         [Constructable]
         public Glaciale()
@@ -567,9 +568,9 @@ namespace Server.Items
 
     public class Maegie : BaseArc
     {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        //public override double DefMinDamage { get { return 13; } }
+        //public override double DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public Maegie()
@@ -602,9 +603,9 @@ namespace Server.Items
 
     public class Foudre : BaseArc
     {
-        //public override int DefMinDamage { get { return 9; } }
-        //public override int DefMaxDamage { get { return 14; } }
-        public override int DefSpeed { get { return 45; } }
+        //public override double DefMinDamage { get { return 9; } }
+        //public override double DefMaxDamage { get { return 14; } }
+        public override int DefSpeed { get { return 50; } }
 
         [Constructable]
         public Foudre()
@@ -637,9 +638,9 @@ namespace Server.Items
 
     public class Tarkarc : BaseArc
     {
-        //public override int DefMinDamage { get { return 6; } }
-        //public override int DefMaxDamage { get { return 10; } }
-        public override int DefSpeed { get { return 35; } }
+        //public override double DefMinDamage { get { return 6; } }
+        //public override double DefMaxDamage { get { return 10; } }
+        public override int DefSpeed { get { return 30; } }
 
         [Constructable]
         public Tarkarc()
@@ -672,9 +673,9 @@ namespace Server.Items
 
     public class Pieuse : BaseArc
     {
-        //public override int DefMinDamage { get { return 13; } }
-        //public override int DefMaxDamage { get { return 18; } }
-        public override int DefSpeed { get { return 55; } }
+        //public override double DefMinDamage { get { return 13; } }
+        //public override double DefMaxDamage { get { return 18; } }
+        public override int DefSpeed { get { return 70; } }
 
         [Constructable]
         public Pieuse()

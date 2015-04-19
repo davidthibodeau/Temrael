@@ -6,19 +6,19 @@ namespace Server.Items
 {
 	public class MandrakeRoot : BaseReagent, ICommodity
 	{
+        public override int GoldValue { get { return 3; } }
+
 		int ICommodity.DescriptionNumber { get { return LabelNumber; } }
 		bool ICommodity.IsDeedable { get { return true; } }
 
 		[Constructable]
 		public MandrakeRoot() : this( 1 )
 		{
-            GoldValue = 1;
 		}
 
 		[Constructable]
 		public MandrakeRoot( int amount ) : base( 0xF86, amount )
 		{
-            GoldValue = 3;
 		}
 
 		public MandrakeRoot( Serial serial ) : base( serial )

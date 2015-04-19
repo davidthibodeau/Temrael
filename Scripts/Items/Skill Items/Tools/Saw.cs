@@ -7,12 +7,13 @@ namespace Server.Items
 	[FlipableAttribute( 0x1034, 0x1035 )]
 	public class Saw : BaseTool
 	{
+        public override int GoldValue { get { return 9; } }
+
 		public override CraftSystem CraftSystem{ get{ return DefCarpentry.CraftSystem; } }
 
 		[Constructable]
 		public Saw() : base( 0x1034 )
 		{
-            GoldValue = 9;
 			Weight = 2.0;
             Layer = Layer.OneHanded;
 		}
@@ -20,7 +21,6 @@ namespace Server.Items
 		[Constructable]
 		public Saw( int uses ) : base( uses, 0x1034 )
 		{
-            GoldValue = 9;
 			Weight = 2.0;
             Layer = Layer.OneHanded;
 		}

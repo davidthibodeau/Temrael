@@ -102,6 +102,7 @@ namespace Server.Spells
 			{
 				Visible = false;
 				Movable = false;
+                CanBeAltered = false;
 				Light = LightType.Circle300;
 
 				MoveToWorld( loc, map );
@@ -178,7 +179,7 @@ namespace Server.Spells
 					m.Paralyze( TimeSpan.FromSeconds( duration ) );
 
 					m.PlaySound( 0x204 );
-					m.FixedEffect( 0x376A, 10, 16 );
+					Effects.SendTargetEffect(m, 0x376A, 10, 16 );
 				}
 
 				return true;

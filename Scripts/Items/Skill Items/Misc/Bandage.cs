@@ -18,11 +18,12 @@ namespace Server.Items
         {
         }
 
+        public override int GoldValue { get { return 3; } }
+
         [Constructable]
         public Bandage(int amount)
             : base(0xE21)
         {
-            GoldValue = 3;
             Stackable = true;
             Weight = 0.1;
             Amount = amount;
@@ -219,6 +220,19 @@ namespace Server.Items
             m_Timer = null;
         }
 
+        // Un joueur ne peut pas se battre si il se heale lui-même.
+        public static bool IsHealingSelf(Mobile atk)
+        {
+            if (m_Table.Contains(atk))
+            {
+                if (((BandageContext)m_Table[atk]).m_Patient == atk)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static Hashtable m_Table = new Hashtable();
 
         public static BandageContext GetContext(Mobile healer)
@@ -319,7 +333,7 @@ namespace Server.Items
 
                 double healing = m_Healer.Skills[primarySkill].Value;
                 double anatomy = m_Healer.Skills[secondarySkill].Value;
-                double chance = (((healing + anatomy / 2) + 10.0) / 100.0) - (m_Slips * 0.02);
+                double chance = ((healing + 10.0) / 100.0) - (m_Slips * 0.02);
 
                 if (chance > Utility.RandomDouble())
                 {
@@ -327,8 +341,8 @@ namespace Server.Items
 
                     double min, max;
 
-                    min = (anatomy / 5.0) + (healing / 5.0) + 5;
-                    max = (anatomy / 1.5) + (healing / 1.5) + 20;
+                    min = (anatomy / 8.0) + (healing / 4.0) + 5;
+                    max = (anatomy / 5.0) + (healing / 1.5) + 20;
 
                     double toHeal = min + (Utility.RandomDouble() * (max - min));
 

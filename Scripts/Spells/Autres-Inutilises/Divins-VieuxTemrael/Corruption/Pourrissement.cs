@@ -54,7 +54,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(14120, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14120, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(484);
             }
 
@@ -72,7 +72,7 @@ namespace Server.Spells
                 m_PourrissementTable.Remove(m);
                 m_PourrissementRegistry.Remove(m);
 
-                m.FixedParticles(14120, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,14120, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(484);
             }
         }
@@ -99,7 +99,7 @@ namespace Server.Spells
                     PourrissementSpell.m_PourrissementRegistry.Remove(m_target);
                     PourrissementSpell.m_Timers.Remove(m_target);
 
-                    m_target.FixedParticles(14120, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,14120, 10, 15, 5013, 264, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(484);
 
                     Stop();

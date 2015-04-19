@@ -4,10 +4,11 @@ namespace Server.Items
 {
 	public class TambourineTassel : BaseInstrument
 	{
+        public override int GoldValue { get { return 9; } }
+
 		[Constructable]
 		public TambourineTassel() : base( 0xE9E, 0x52, 0x53 )
 		{
-            GoldValue = 9;
 			Weight = 1.0;
 		}
 

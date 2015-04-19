@@ -47,7 +47,7 @@ namespace Server.Spells
 
                 SpellHelper.CheckReflect((int)this.Circle, Caster, ref m);
 
-                m.FixedParticles(0x36BD, 20, 10, 5044, EffectLayer.Head);
+                Effects.SendTargetParticles(m,0x36BD, 20, 10, 5044, EffectLayer.Head);
                 m.PlaySound(0x307);
 
                 Damage.instance.AppliquerDegatsMagiques(m, Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime));

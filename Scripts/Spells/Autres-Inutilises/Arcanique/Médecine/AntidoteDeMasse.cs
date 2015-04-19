@@ -88,7 +88,7 @@ namespace Server.Spells
 								++cured;
 						}
 
-						m.FixedParticles( 0x373A, 10, 15, 5012, EffectLayer.Waist );
+						Effects.SendTargetParticles(m, 0x373A, 10, 15, 5012, EffectLayer.Waist );
 						m.PlaySound( 0x1E0 );
 					}
 

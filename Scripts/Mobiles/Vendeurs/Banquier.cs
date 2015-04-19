@@ -244,14 +244,6 @@ namespace Server.Mobiles.Vendeurs
 			}
 		}
 
-		public override bool HandlesOnSpeech( Mobile from )
-		{
-			if ( from.InRange( this.Location, 12 ) )
-				return true;
-
-			return base.HandlesOnSpeech( from );
-		}
-
 		public override void OnSpeech( SpeechEventArgs e )
 		{
 			if ( !e.Handled && e.Mobile.InRange( this.Location, 12 ) )

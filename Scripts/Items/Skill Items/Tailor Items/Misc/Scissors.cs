@@ -13,10 +13,11 @@ namespace Server.Items
 	[FlipableAttribute( 0xf9f, 0xf9e )]
 	public class Scissors : Item
 	{
+        public override int GoldValue { get { return 3; } }
+
 		[Constructable]
 		public Scissors() : base( 0xF9F )
 		{
-            GoldValue = 3;
 			Weight = 1.0;
             Layer = Layer.OneHanded;
 		}

@@ -6,10 +6,11 @@ namespace Server.Items
 	[Flipable( 0xE1C, 0xFAD )]
 	public class Backgammon : BaseBoard
 	{
+        public override int GoldValue { get { return 18; } }
+
 		[Constructable]
 		public Backgammon() : base( 0xE1C )
 		{
-            GoldValue = 15;
 		}
 
 		public override void CreatePieces()

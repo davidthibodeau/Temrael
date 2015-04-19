@@ -7,6 +7,7 @@ using Server.Items;
 using Server.Network;
 
 using Server.Spells;
+using Server.Commands;
 
 
 namespace Server.SkillHandlers
@@ -182,6 +183,17 @@ namespace Server.SkillHandlers
                             caught = true;
 						}
 
+                        if (m_Thief is ScriptMobile)
+                        {
+                            ScriptMobile sm = (ScriptMobile)m_Thief;
+
+                            IPooledEnumerable<Mobile> eable = m_Thief.GetMobilesInRange(3);
+                            foreach (Mobile mob in eable)
+                            {
+                                sm.Detection.FaireJet(mob, 0.1);
+                            }
+                        }
+
 						//caught = ( m_Thief.Skills[SkillName.Vol].Value < Utility.Random( 150 ) );
 					}
 				}
@@ -245,6 +257,9 @@ namespace Server.SkillHandlers
 						}*/
 					}
 				}
+
+                CommandLogging.WriteLine(from, "{4} {2} à voler {0} appartenant à {1} en étant {3}", 
+                    target, root, stolen != null ? "réussit" : "échoue", from.Hidden ? "caché" : "à découvert", from);
 			}
 		}
 

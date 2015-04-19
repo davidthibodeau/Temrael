@@ -128,6 +128,7 @@ namespace Server.Gumps
             : base(GumpOffsetX, GumpOffsetY)
         {
             owner.CloseGump(typeof(WhoGump));
+            owner.CloseGump(typeof(QuiGump));
 
             m_Owner = owner;
             m_Mobiles = list;
@@ -148,6 +149,8 @@ namespace Server.Gumps
                 {
                     if (m == owner)
                         list.Add(m);
+                    else if (m.AccessLevel > owner.AccessLevel && owner.AccessLevel == AccessLevel.Player)
+                    { }
                     else if (!m.Hidden)
                         list.Add(m);
                     else if (m.Hidden && owner.AccessLevel >= m.AccessLevel)

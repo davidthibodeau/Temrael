@@ -27,7 +27,7 @@ namespace Server.Items
 			if ( !m.Alive && m.Map != null && m.Map.CanFit( m.Location, 16, false, false ) )
 			{
 				m.PlaySound( 0x214 );
-				m.FixedEffect( 0x376A, 10, 16 );
+				Effects.SendTargetEffect(m, 0x376A, 10, 16);
 
 				m.CloseGump( typeof( ResurrectGump ) );
 				m.SendGump( new ResurrectGump( m ) );

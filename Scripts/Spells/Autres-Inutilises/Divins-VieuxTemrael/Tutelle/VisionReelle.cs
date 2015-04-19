@@ -61,7 +61,7 @@ namespace Server.Spells
                 m_Timers[m] = t;
                 t.Start();
 
-                m.FixedParticles(7897, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,7897, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(483);
             }
 
@@ -85,7 +85,7 @@ namespace Server.Spells
                 if (caster != null)
                     m_VisionReelleRegistry.Remove(caster);
 
-                m.FixedParticles(7897, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                Effects.SendTargetParticles(m,7897, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                 m.PlaySound(483);
             }
         }
@@ -117,7 +117,7 @@ namespace Server.Spells
                     if (caster != null)
                         VisionReelleSpell.m_VisionReelleRegistry.Remove(caster);
 
-                    m_target.FixedParticles(7897, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
+                    Effects.SendTargetParticles(m_target,7897, 10, 15, 5013, 2042, 0, EffectLayer.CenterFeet); //ID, speed, dura, effect, hue, render, layer
                     m_target.PlaySound(483);
 
                     Stop();

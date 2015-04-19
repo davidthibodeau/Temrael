@@ -97,7 +97,7 @@ namespace Server.Spells
                 }
                 else
                 {
-                    m_target.FixedParticles(0x376A, 9, 32, 5005, EffectLayer.Waist);
+                    Effects.SendTargetParticles(m_target,0x376A, 9, 32, 5005, EffectLayer.Waist);
                     m_target.PlaySound(22);
                     m_target.Stam -= 2;
                 }

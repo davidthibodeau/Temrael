@@ -73,7 +73,7 @@ namespace Server.Spells
                 TimeSpan intervale = TimeSpan.FromSeconds((MaxDuration.TotalSeconds * m_HealPerTick) / (Damage.instance.RandDegatsMagiques(Caster, Info.skillForCasting, Info.Circle, Info.castTime) * 3));
 
                 Effects.PlaySound(p, Caster.Map, 0x506);
-                Caster.FixedParticles(0x373A, 1, 17, 9919, 0x527, 0, EffectLayer.Waist);
+                Effects.SendTargetParticles(Caster,0x373A, 1, 17, 9919, 0x527, 0, EffectLayer.Waist);
 
                 new RegenTimer(Caster, totem, MaxDuration, intervale).Start();
 			}
@@ -108,7 +108,7 @@ namespace Server.Spells
                         foreach (Mobile m in m_Totem.GetMobilesInRange(5))
                         {
                             m.Heal(m_HealPerTick);
-                            m.FixedParticles(0x376A, 2, 50, 9919, 0x527, 0, EffectLayer.Waist);
+                            Effects.SendTargetParticles(m,0x376A, 2, 50, 9919, 0x527, 0, EffectLayer.Waist);
                         }
                     }
                     else

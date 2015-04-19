@@ -44,9 +44,9 @@ namespace Server.Spells
             else if (value > 250)
                 value = 250;
 
-            m.MeleeDamageAbsorb = (int)value;
+            //m.MeleeDamageAbsorb = (int)value;
 
-            m.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x376A, 9, 32, 5008, EffectLayer.Waist);
             m.PlaySound(0x1F2);
         }
 

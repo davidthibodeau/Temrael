@@ -123,7 +123,7 @@ namespace Server.Items
         public virtual int BaseIntReq { get { return 0; } }
 
         public virtual double BasePhysicalResistance { get { return 0; } }
-        public virtual double BaseMagieResistance { get { return 0; } }
+        public virtual double BaseMagicalResistance { get { return 0; } }
 
 
         #region Getters & Setters
@@ -133,7 +133,7 @@ namespace Server.Items
         {
             get
             {
-                return ResistanceBonus(BasePhysicalResistance);
+                return DurabilityMalus(ResistanceBonus(BasePhysicalResistance));
             }
         }
 
@@ -270,10 +270,10 @@ namespace Server.Items
 
         [CommandProperty(AccessLevel.Batisseur)]
         public override double PhysicalResistance 
-        { get { return (double)(ScaleArmorByDurability(ResistanceBonus(BasePhysicalResistance)) + m_PhysicalBonus); } }
+        { get { return (double)(DurabilityMalus(ResistanceBonus(BasePhysicalResistance)) + m_PhysicalBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
-        public override double MagieResistance { get { return (double)(ScaleArmorByDurability(ResistanceBonus(BaseMagieResistance)) + m_MagieBonus); } }
+        public override double MagicalResistance { get { return (double)(DurabilityMalus(ResistanceBonus(BaseMagicalResistance)) + m_MagieBonus); } }
 
         [CommandProperty(AccessLevel.Batisseur)]
         public ArmorBodyType BodyPosition
@@ -340,14 +340,15 @@ namespace Server.Items
                 return 0;
         }
 
-        public virtual double ScaleArmorByDurability(double armor)
+        public virtual double DurabilityMalus(double armor)
         {
-            int scale = 100;
+            if (Durability == 0)
+                return 0;
 
-            if (m_MaxDurability > 0 && m_Durability < m_MaxDurability)
-                scale = 50 + ((50 * m_Durability) / m_MaxDurability);
+            if (MaxDurability == 0)
+                return armor;
 
-            return (armor * scale) / 100;
+            return (((double)Durability / (double)MaxDurability) * 0.3 * armor) + (armor * 0.7);
         }
         #endregion
 
@@ -990,8 +991,8 @@ namespace Server.Items
             if (PhysicalResistance != 0)
                 list.Add(1060448, "{0}\t{1}", couleur, String.Format("{0:0.00}", PhysicalResistance)); // physical resist ~1_val~%
 
-            if (MagieResistance != 0)
-                list.Add(1060446, "{0}\t{1}", couleur, String.Format("{0:0.00}", MagieResistance)); // energy resist ~1_val~%
+            if (MagicalResistance != 0)
+                list.Add(1060446, "{0}\t{1}", couleur, String.Format("{0:0.00}", MagicalResistance)); // energy resist ~1_val~%
 
         }
 

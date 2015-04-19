@@ -40,9 +40,9 @@ namespace Server.Spells
             else if (value > 250)
                 value = 250;
 
-            m.MagicDamageAbsorb = (int)value;
+            //m.MagicDamageAbsorb = (int)value;
 
-            m.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
+            Effects.SendTargetParticles(m,0x375A, 10, 15, 5037, EffectLayer.Waist);
             m.PlaySound(0x1E9);
         }
 

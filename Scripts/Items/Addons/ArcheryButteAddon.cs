@@ -57,6 +57,8 @@ namespace Server.Items
 			set{ m_Bolts = value; }
 		}
 
+        public override int GoldValue { get { return 21; } }
+
 		[Constructable]
 		public ArcheryButte() : this( 0x100A )
 		{
@@ -64,7 +66,6 @@ namespace Server.Items
 
 		public ArcheryButte( int itemID ) : base( itemID )
 		{
-            GoldValue = 21;
 			m_MinSkill = -25.0;
 			m_MaxSkill = +25.0;
 		}
@@ -194,7 +195,7 @@ namespace Server.Items
 
 			from.Direction = from.GetDirectionTo( GetWorldLocation() );
 			bow.SwingAnimation( from );
-			from.MovingEffect( this, bow.EffectID, 18, 1, false, false );
+			Effects.SendMovingEffect(from, this, bow.EffectID, 18, 1, false, false );
 
 			ScoreEntry se = GetEntryFor( from );
 

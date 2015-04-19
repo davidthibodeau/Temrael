@@ -51,7 +51,7 @@ namespace Server.Spells
                         ((PlayerMobile)m).NextFamine = DateTime.Now + TimeSpan.FromMinutes(5);*/
                 }
 
-                m.FixedParticles(14154, 10, 15, 5013, 0, 0, EffectLayer.Waist);
+                Effects.SendTargetParticles(m,14154, 10, 15, 5013, 0, 0, EffectLayer.Waist);
                 m.PlaySound(496);
             }
 

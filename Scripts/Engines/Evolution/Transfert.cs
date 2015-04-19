@@ -160,6 +160,10 @@ namespace Server.Engines.Evolution
             Experience exp = m.Experience;
             exp.XP = (int) (exp.XP * pourcentageConserve);
             m.Experience = new Experience();
+            foreach(Skill sk in m.Skills)
+            {
+                sk.Base = 0;
+            }
 
             if (Premier == null)
             {
@@ -189,16 +193,19 @@ namespace Server.Engines.Evolution
                 case Position.Premier:
                     if (Premier == null) return false;
                     pm.Experience = Premier.Right;
+                    pm.Experience.Niveau = 0;
                     Premier = null;
                     break;
                 case Position.Second:
                     if (Second == null) return false;
                     pm.Experience = Second.Right;
+                    pm.Experience.Niveau = 0;
                     Second = null;
                     break;
                 case Position.Troisieme:
                     if (Troisieme == null) return false;
                     pm.Experience = Troisieme.Right;
+                    pm.Experience.Niveau = 0;
                     Troisieme = null;
                     break;
             }
@@ -222,7 +229,7 @@ namespace Server.Engines.Evolution
                 
             if (Premier != null && Second != null && Troisieme != null)
             {
-                error = "Vous ne pouvez avoir plus de trois transferts dans votre liste";
+                error = "Vous ne pouvez avoir plus de trois transferts dans votre liste.";
                 return false;
             }
 
