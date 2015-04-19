@@ -99,7 +99,8 @@
     <Compile Include="Custom\Army System\ArmyAI.cs" />
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
-    <Compile Include="Engines\Alchimie\BuffsList.cs" />
+    <Compile Include="Engines\Buffing\Buffs.cs" />
+    <Compile Include="Engines\Buffing\BuffsList.cs" />
     <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />
@@ -116,8 +117,8 @@
     <Compile Include="Engines\Evolution\Cotes.cs" />
     <Compile Include="Engines\Evolution\Experience.cs" />
     <Compile Include="Engines\Mort\MortEngine.cs" />
-    <Compile Include="Engines\Alchimie\BuffHandler.cs" />
-    <Compile Include="Engines\Alchimie\BaseBuff.cs" />
+    <Compile Include="Engines\Buffing\BuffHandler.cs" />
+    <Compile Include="Engines\Buffing\BaseBuff.cs" />
     <Compile Include="Engines\Quetes\MonstreQueteInfo.cs" />
     <Compile Include="Engines\Races\AucuneRace.cs" />
     <Compile Include="Engines\Races\Humain.cs" />

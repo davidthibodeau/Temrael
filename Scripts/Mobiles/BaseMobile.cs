@@ -6,6 +6,7 @@ using System.Text;
 using Server.Spells;
 using Server.Items;
 using Server.Engines.Combat;
+using Server.Engines.Buffing;
 
 namespace Server.Mobiles
 {
@@ -15,7 +16,6 @@ namespace Server.Mobiles
         private int m_StatCap;
         private int m_Str, m_Dex, m_Int;
         private int m_Hits, m_Stam, m_Mana;
-        private List<StatMod> m_StatMods;
         private bool m_Paralyzed;
         private ParalyzedTimer m_ParaTimer;
         private bool m_Frozen;
@@ -339,105 +339,6 @@ namespace Server.Mobiles
         }
 
         /// <summary>
-        /// Gets a list of all <see cref="StatMod">StatMod's</see> currently active for the Mobile.
-        /// </summary>
-        public List<StatMod> StatMods { get { return m_StatMods; } }
-
-        public bool RemoveStatMod( string name )
-        {
-            for( int i = 0; i < m_StatMods.Count; ++i )
-            {
-                StatMod check = m_StatMods[i];
-
-                if( check.Name == name )
-                {
-                    m_StatMods.RemoveAt( i );
-                    CheckStatTimers();
-                    Delta( MobileDelta.Stat | GetStatDelta( check.Type ) );
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public StatMod GetStatMod( string name )
-        {
-            for( int i = 0; i < m_StatMods.Count; ++i )
-            {
-                StatMod check = m_StatMods[i];
-
-                if( check.Name == name )
-                    return check;
-            }
-
-            return null;
-        }
-
-        public void AddStatMod( StatMod mod )
-        {
-            for( int i = 0; i < m_StatMods.Count; ++i )
-            {
-                StatMod check = m_StatMods[i];
-
-                if( check.Name == mod.Name )
-                {
-                    Delta( MobileDelta.Stat | GetStatDelta( check.Type ) );
-                    m_StatMods.RemoveAt( i );
-                    break;
-                }
-            }
-
-            m_StatMods.Add( mod );
-            Delta( MobileDelta.Stat | GetStatDelta( mod.Type ) );
-            CheckStatTimers();
-        }
-
-        private MobileDelta GetStatDelta( StatType type )
-        {
-            MobileDelta delta = 0;
-
-            if( (type & StatType.Str) != 0 )
-                delta |= MobileDelta.Hits;
-
-            if( (type & StatType.Dex) != 0 )
-                delta |= MobileDelta.Stam;
-
-            if( (type & StatType.Int) != 0 )
-                delta |= MobileDelta.Mana;
-
-            return delta;
-        }
-
-        /// <summary>
-        /// Computes the total modified offset for the specified stat type. Expired <see cref="StatMod" /> instances are removed.
-        /// </summary>
-        public int GetStatOffset( StatType type )
-        {
-            int offset = 0;
-
-            for( int i = 0; i < m_StatMods.Count; ++i )
-            {
-                StatMod mod = m_StatMods[i];
-
-                if( mod.HasElapsed() )
-                {
-                    m_StatMods.RemoveAt( i );
-                    Delta( MobileDelta.Stat | GetStatDelta( mod.Type ) );
-                    CheckStatTimers();
-
-                    --i;
-                }
-                else if( (mod.Type & type) != 0 )
-                {
-                    offset += mod.Offset;
-                }
-            }
-
-            return offset;
-        }
-
-        /// <summary>
         /// Overridable. Virtual event invoked when the <see cref="RawStr" /> changes.
         /// <seealso cref="RawStr" />
         /// <seealso cref="OnRawStatChange" />
@@ -474,6 +375,33 @@ namespace Server.Mobiles
         {
         }
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public Buffs Buffs
+        {
+            get;
+            private set;
+        }
+
+        public void AddBuff(BaseBuff buff)
+        {
+            Buffs.AddBuff(buff);
+
+            if (buff.ContainsStat(BuffStat.Str) 
+                || buff.ContainsStat(BuffStat.Dex) 
+                || buff.ContainsStat(BuffStat.Int))
+                Delta(MobileDelta.Stat);
+
+            if (buff.ContainsStat(BuffStat.HitsMax))
+                Delta(MobileDelta.Hits);
+            if (buff.ContainsStat(BuffStat.StamMax))
+                Delta(MobileDelta.Stam);
+            if (buff.ContainsStat(BuffStat.ManaMax))
+                Delta(MobileDelta.Mana);
+
+            if (buff.ContainsStat(BuffStat.ResistancePhysique)
+                || buff.ContainsStat(BuffStat.ResistanceMagique))
+                Delta(MobileDelta.Resistances);
+        }
 
         [CommandProperty( AccessLevel.Batisseur )]
         public override int RawStr
@@ -518,9 +446,7 @@ namespace Server.Mobiles
         {
             get
             {
-                int value = RawStr + GetStatOffset(StatType.Str);
-
-                value += (int)Server.Engines.Buffs.BuffHandler.Instance.GetBuffCumul(this, typeof(Server.Engines.Buffs.BuffForce));
+                int value = RawStr + Buffs.Str;
 
                 if (value < 1)
                     value = 1;
@@ -669,6 +595,7 @@ namespace Server.Mobiles
         {
         }
 
+        private int curHitsM = -1, curStamM = -1, curManaM = -1;
 
         public override int Hits
         {
@@ -728,7 +655,14 @@ namespace Server.Mobiles
         {
             get
             {
-                return 50 + (Str / 2);
+                int value = (RawStr == 100 ? 110 : 100) + Str;
+
+                if (curHitsM == -1)
+                    curHitsM = value;
+                else if (curHitsM != value)
+                    Hits = (int) (Hits * value / (double) curHitsM);
+
+                return value;
             }
         }
 
@@ -785,7 +719,14 @@ namespace Server.Mobiles
         {
             get
             {
-                return 2 * Dex;
+                int value = (RawDex == 100 ? 110 : 100) + Dex;
+
+                if (curStamM == -1)
+                    curStamM = value;
+                else if (curStamM != value)
+                    Stam = (int) (Stam * value / (double) curStamM);
+
+                return value;
             }
         }
 
@@ -855,9 +796,80 @@ namespace Server.Mobiles
         {
             get
             {
-                return 2 * Int;
+                int value = (RawInt == 100 ? 110 : 100) + Int;
+
+                if (curManaM == -1)
+                    curManaM = value;
+                else if (curManaM != value)
+                    Mana = (int) (Mana * value / (double) curManaM);
+
+                return value;
             }
         }
+
+        public override double PhysicalResistance
+        {
+            get { return ComputePhysicalResistance(); }
+        }
+
+        private double ComputePhysicalResistance()
+        {
+            double res = 0;
+
+            if (ShieldArmor is BaseShield)
+                res += ((BaseShield)ShieldArmor).PhysicalResistance;
+            if (NeckArmor is BaseArmor)
+                res += ((BaseArmor)NeckArmor).PhysicalResistance;
+            if (HandArmor is BaseArmor)
+                res += ((BaseArmor)HandArmor).PhysicalResistance;
+            if (HeadArmor is BaseArmor)
+                res += ((BaseArmor)HeadArmor).PhysicalResistance;
+            if (ArmsArmor is BaseArmor)
+                res += ((BaseArmor)ArmsArmor).PhysicalResistance;
+            if (LegsArmor is BaseArmor)
+                res += ((BaseArmor)LegsArmor).PhysicalResistance;
+            if (ChestArmor is BaseArmor)
+                res += ((BaseArmor)ChestArmor).PhysicalResistance;
+
+            res += ArmureNaturelle;
+            res += Buffs.ResistancePhysique;
+
+            return res;
+        }
+
+        public override double MagicalResistance
+        {
+            get
+            {
+                double sk = Skills[SkillName.ResistanceMagique].Value;
+                double resist = sk * 0.35;
+                if (sk >= 100)
+                    resist *= 1.05;
+                return resist;
+            }
+        }
+
+        public override double ArmureNaturelle
+        {
+            get
+            {
+                double ArNatSkill = Skills[SkillName.ArmureNaturelle].Value;
+
+                double baseArNat = ArNatSkill * 0.25 + (ArNatSkill >= 100 ? 5 : 0);
+                double reducedAr = (75 - PhysicalResistance * 5 / 4) / 75 * baseArNat;
+
+                if (reducedAr < 0)
+                    return 0;
+                else
+                    return reducedAr;
+            }
+        }
+
+        public override double Penetration
+        {
+            get { return 0; } //TODO: Ajouter valeur en fonction de l'arme.
+        }
+
 
 
         public virtual void Damage( int amount, Mobile from, bool informMount )

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Server.Engines.Buffs;
+using Server.Engines.Buffing;
 
 namespace Server.Engines.Combat
 {
@@ -26,7 +26,7 @@ namespace Server.Engines.Combat
         protected override void AppliquerPoison(Mobile atk, Mobile def)
         {
             BaseWeapon weapon = Weapon(atk);
-            Server.Engines.Buffs.Poison poison = weapon.Poison;
+            Poison poison = weapon.Poison;
             if (poison != null && weapon.PoisonCharges > 0)
 			{
                 --weapon.PoisonCharges;

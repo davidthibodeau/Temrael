@@ -4,8 +4,28 @@ using System.Linq;
 using System.Text;
 using Server.Items;
 
-namespace Server.Engines.Buffs
+namespace Server.Engines.Buffing
 {
+
+    public enum BuffID
+    {
+        Benediction,
+    }
+
+    public enum BuffStat
+    {
+        Str,
+        Dex,
+        Int,
+        HitsMax,
+        StamMax,
+        ManaMax,
+        Vitesse,
+        Penetration,
+        ResistancePhysique,
+        ResistanceMagique,
+    }
+
     #region Potions à buff.
 
     public class PotionStrBuffScal : Poison

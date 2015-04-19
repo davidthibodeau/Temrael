@@ -201,7 +201,7 @@ namespace Server.Items
 				new RidingSwipe(),
 				new FrenziedWhirlwind(),
 				new Block(),
-				new DefenseMastery(),
+				null,//new DefenseMastery(),
 				new NerveStrike(),
 				new TalonStrike(),
 				new Feint(),

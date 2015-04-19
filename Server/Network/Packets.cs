@@ -3119,7 +3119,7 @@ namespace Server.Network
 			m_Stream.Write( (short) m.ManaMax );
 
 			m_Stream.Write( (int) m.TotalGold );
-			m_Stream.Write( (short) (Core.AOS ? m.PhysicalResistance : (int)(m.ArmorRating + 0.5)) );
+            m_Stream.Write((short)m.PhysicalResistance);
 			m_Stream.Write( (short) (Mobile.BodyWeight + m.TotalWeight) );
 
 			if ( type >= 5 )
@@ -3156,7 +3156,7 @@ namespace Server.Network
                 m_Stream.Write((short)m.ArmureNaturelle); // Fire
                 m_Stream.Write((short)0); // Cold
                 m_Stream.Write((short)0); // Poison
-                m_Stream.Write((short)m.MagicResistance); // Energy
+                m_Stream.Write((short)m.MagicalResistance); // Energy
                 m_Stream.Write((short)0); // Luck
 
                 IWeapon weapon = m.Weapon;
@@ -3240,7 +3240,7 @@ namespace Server.Network
 				WriteAttr( beheld.Mana, beheld.ManaMax );
 
 				m_Stream.Write( (int) beheld.TotalGold );
-				m_Stream.Write( (short) (Core.AOS ? beheld.PhysicalResistance : (int)(beheld.ArmorRating + 0.5)) );
+                m_Stream.Write((short)beheld.PhysicalResistance);
 				m_Stream.Write( (short) (Mobile.BodyWeight + beheld.TotalWeight) );
 
 				if ( type >= 5 )
@@ -3277,7 +3277,7 @@ namespace Server.Network
                     m_Stream.Write((short)beheld.ArmureNaturelle); // Fire
                     m_Stream.Write((short)0); // Cold
                     m_Stream.Write((short)0); // Poison
-                    m_Stream.Write((short)beheld.MagicResistance); // Energy
+                    m_Stream.Write((short)beheld.MagicalResistance); // Energy
                     m_Stream.Write((short)0); // Luck or Cha
 
                     IWeapon weapon = beheld.Weapon;
@@ -3313,23 +3313,24 @@ namespace Server.Network
 
 	public sealed class HealthbarPoison : Packet
 	{
-		public HealthbarPoison( Mobile m ) : base( 0x17 )
-		{
-			EnsureCapacity( 12 );
+        public HealthbarPoison(Mobile m) : base(0x17)
+        {
+            EnsureCapacity(12);
 
-			m_Stream.Write( (int)   m.Serial );
-			m_Stream.Write( (short) 1 );
-			
-			m_Stream.Write( (short) 1 );
+            m_Stream.Write((int)m.Serial);
+            m_Stream.Write((short)1);
 
-			Poison p = m.Poison;
+            m_Stream.Write((short)1);
 
-			if ( p != null ) {
-				m_Stream.Write( (byte) (p.Level + 1) );
-			} else {
-				m_Stream.Write( (byte) 0 );
-			}
-		}
+            if (m.Poisoned)
+            {
+                m_Stream.Write((byte)1);
+            }
+            else
+            {
+                m_Stream.Write((byte)0);
+            }
+        }
 	}
 
 	public sealed class HealthbarYellow : Packet

@@ -8,7 +8,7 @@ using Server.Items;
 using Server.Engines.Combat;
 using Server.Mobiles;
 
-namespace Server.Engines.Buffs
+namespace Server.Engines.Buffing
 {
     public class BuffHandler
     {

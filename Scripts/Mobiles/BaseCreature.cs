@@ -12,6 +12,7 @@ using Server.Engines.PartySystem;
 
 using Server.Engines.Quetes;
 using Server.Engines.Combat;
+using Server.Engines.Buffing;
 
 
 namespace Server.Mobiles
@@ -1036,32 +1037,6 @@ namespace Server.Mobiles
 			//	IsParagon = true;
 
 			base.OnBeforeSpawn( location, m );
-		}
-
-		public override ApplyPoisonResult ApplyPoison( Mobile from, Poison poison )
-		{
-			if ( !Alive || IsDeadPet )
-				return ApplyPoisonResult.Immune;
-
-			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
-				poison = PoisonImpl.IncreaseLevel( poison );
-
-			ApplyPoisonResult result = base.ApplyPoison( from, poison );
-
-			if ( from != null && result == ApplyPoisonResult.Poisoned && PoisonTimer is PoisonImpl.PoisonTimer )
-				(PoisonTimer as PoisonImpl.PoisonTimer).From = from;
-
-			return result;
-		}
-
-		public override bool CheckPoisonImmunity( Mobile from, Poison poison )
-		{
-			if ( base.CheckPoisonImmunity( from, poison ) )
-				return true;
-
-			Poison p = this.PoisonImmune;
-
-			return ( p != null && p.Level >= poison.Level );
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -3132,7 +3107,7 @@ namespace Server.Mobiles
             AddItem(new ArmeMonstre(min, max, speed, ranged));
         }
 
-        public void SetArme(int min, int max, int speed, Server.Engines.Buffs.Poison poison)
+        public void SetArme(int min, int max, int speed, Poison poison)
         {
             AddItem(new ArmeMonstre(min, max, speed, poison));
         }
@@ -3957,8 +3932,6 @@ namespace Server.Mobiles
 					Effects.PlaySound( this, this.Map, sound );
 
 				Warmode = false;
-
-				Poison = null;
 				Combatant = null;
 
 				Hits = 0;
@@ -4597,8 +4570,6 @@ namespace Server.Mobiles
 				return;
 
 			OnBeforeResurrect();
-
-			Poison = null;
 
 			Warmode = false;
 

@@ -8,7 +8,7 @@ using Server.Network;
 using Server.Targeting;
 using System.Collections.Generic;
 using Server.Engines.Equitation;
-using Server.Engines.Buffs;
+using Server.Engines.Buffing;
 
 namespace Server.Scripts.Commands
 {
@@ -24,17 +24,17 @@ namespace Server.Scripts.Commands
         [Description("Test de scripts")]
         public static void Test_OnCommand(CommandEventArgs e)
         {
-            Server.Engines.Buffs.Buff b = new BuffForce(30, TimeSpan.FromSeconds(15));
+            Buff b = new BuffForce(30, TimeSpan.FromSeconds(15));
 
             e.Mobile.SendMessage(b.GetType().Name);
-            Server.Engines.Buffs.BuffHandler.Instance.ApplyBuff(e.Mobile, b);
+            BuffHandler.Instance.ApplyBuff(e.Mobile, b);
         }
 
         [Usage("Test2")]
         [Description("Test de scripts")]
         public static void Test2_OnCommand(CommandEventArgs e)
         {
-            e.Mobile.SendMessage(Server.Engines.Buffs.BuffHandler.Instance.GetBuffCumul(e.Mobile, typeof(Server.Engines.Buffs.BuffForce)).ToString());
+            e.Mobile.SendMessage(BuffHandler.Instance.GetBuffCumul(e.Mobile, typeof(BuffForce)).ToString());
         }
     }
 }

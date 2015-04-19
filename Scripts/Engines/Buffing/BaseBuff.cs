@@ -6,10 +6,17 @@ using System.Text;
 using Server.Spells;
 using Server.Items;
 
-namespace Server.Engines.Buffs
+namespace Server.Engines.Buffing
 {
     public abstract class BaseBuff
     {
+        private HashSet<BuffStat> statSet = new HashSet<BuffStat>();
+
+        public bool ContainsStat(BuffStat stat)
+        {
+            return statSet.Contains(stat);
+        }
+
         /* Le ID doit être unique.
            Type (BaseBuff) --- int ID.*/
         public static readonly Dictionary<Type, int> typeTable = new Dictionary<Type, int>()

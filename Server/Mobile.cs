@@ -726,8 +726,6 @@ namespace Server
 		private Direction m_Direction;
 		private Body m_Body;
 		private int m_Hue;
-		private Poison m_Poison;
-		private Timer m_PoisonTimer;
 		private BaseGuild m_Guild;
 		private string m_GuildTitle;
 		private string m_Name;
@@ -798,19 +796,6 @@ namespace Server
 
 		public virtual double RacialSkillBonus { get { return 0; } }
 
-
-        public virtual double BaseMagicalResistance
-        {
-            get
-            {
-                double sk = Skills[SkillName.ResistanceMagique].Value;
-                double resist = sk * 0.40;
-                if (sk >= 100)
-                    resist += 5;
-                return resist;
-            }
-        }
-
 		public virtual void ComputeLightLevels( out int global, out int personal )
 		{
 			ComputeBaseLightLevels( out global, out personal );
@@ -845,132 +830,28 @@ namespace Server
         public abstract double ArmureNaturelle
         {
             get;
-            {
-                double ArNatSkill = Skills[SkillName.ArmureNaturelle].Value;
+        }
 
-                double baseArNat = ArNatSkill * 0.25 + (ArNatSkill >= 100 ? 5 : 0);
-                double reducedAr = (75 - PhysicalResistance * 5 / 4) / 75 * baseArNat;
-
-                if (reducedAr < 0)
-                    return 0;
-                else
-                    return reducedAr;
-
-            }
+        [CommandProperty(AccessLevel.Counselor)]
+        public abstract double Penetration
+        {
+            get;
         }
 
 
-		public virtual void UpdateResistances()
-		{
-			if( m_Resistances == null )
-				m_Resistances = new double[2] { double.MinValue, double.MinValue };
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract int AbsorpttionPhysique
+        {
+            get;
+            set;
+        }
 
-			bool delta = false;
-
-			for( int i = 0; i < m_Resistances.Length; ++i )
-			{
-                if (m_Resistances[i] != double.MinValue)
-				{
-                    m_Resistances[i] = double.MinValue;
-					delta = true;
-				}
-			}
-
-			if( delta )
-				Delta( MobileDelta.Resistances );
-		}
-
-		public List<ResistanceMod> ResistanceMods
-		{
-			get { return m_ResistMods; }
-			set { m_ResistMods = value; }
-		}
-
-		public virtual void AddResistanceMod( ResistanceMod toAdd )
-		{
-			if ( m_ResistMods == null ) {
-				m_ResistMods = new List<ResistanceMod>();
-			}
-
-			m_ResistMods.Add( toAdd );
-			UpdateResistances();
-		}
-
-		public virtual void RemoveResistanceMod( ResistanceMod toRemove )
-		{
-			if( m_ResistMods != null )
-			{
-				m_ResistMods.Remove( toRemove );
-
-				if( m_ResistMods.Count == 0 )
-					m_ResistMods = null;
-			}
-
-			UpdateResistances();
-		}
-
-		private static int m_MaxPlayerResistance = 75;
-
-		public static int MaxPlayerResistance { get { return m_MaxPlayerResistance; } set { m_MaxPlayerResistance = value; } }
-
-		public virtual void ComputeResistances()
-		{
-			if( m_Resistances == null )
-                m_Resistances = new double[2] { double.MinValue, double.MinValue };
-
-			for( int i = 0; i < m_Resistances.Length; ++i )
-				m_Resistances[i] = 0;
-
-			m_Resistances[0] += this.BasePhysicalResistance;
-			m_Resistances[1] += this.BaseMagicalResistance;
-
-			for( int i = 0; m_ResistMods != null && i < m_ResistMods.Count; ++i )
-			{
-				ResistanceMod mod = m_ResistMods[i];
-				int v = (int)mod.Type;
-
-				if( v >= 0 && v < m_Resistances.Length )
-					m_Resistances[v] += mod.Offset;
-			}
-
-			for( int i = 0; i < m_Items.Count; ++i )
-			{
-				Item item = m_Items[i];
-
-				if( item.CheckPropertyConfliction( this ) )
-					continue;
-
-				m_Resistances[0] += item.PhysicalResistance;
-				m_Resistances[1] += item.MagieResistance;
-			}
-
-			for( int i = 0; i < m_Resistances.Length; ++i )
-			{
-				int min = GetMinResistance( (ResistanceType)i );
-				int max = GetMaxResistance( (ResistanceType)i );
-
-				if( max < min )
-					max = min;
-
-				if( m_Resistances[i] > max )
-					m_Resistances[i] = max;
-				else if( m_Resistances[i] < min )
-					m_Resistances[i] = min;
-			}
-		}
-
-		public virtual int GetMinResistance( ResistanceType type )
-		{
-			return int.MinValue;
-		}
-
-		public virtual int GetMaxResistance( ResistanceType type )
-		{
-			if( m_Player )
-				return m_MaxPlayerResistance;
-
-			return int.MaxValue;
-		}
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract int AbsorptionMagique
+        {
+            get;
+            set;
+        }
 
 		public int GetAOSStatus( int index )
 		{
@@ -1172,24 +1053,6 @@ namespace Server
 		public object Party { get { return m_Party; } set { m_Party = value; } }
 		public List<SkillMod> SkillMods { get { return m_SkillMods; } }
 
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int VirtualArmorMod
-		{
-			get
-			{
-				return m_VirtualArmorMod;
-			}
-			set
-			{
-				if( m_VirtualArmorMod != value )
-				{
-					m_VirtualArmorMod = value;
-
-					Delta( MobileDelta.Armor );
-				}
-			}
-		}
-
 		/// <summary>
 		/// Overridable. Virtual event invoked when <paramref name="skill" /> changes in some way.
 		/// </summary>
@@ -1339,32 +1202,6 @@ namespace Server
 			}
 
 			Warmode = value;
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int MeleeDamageAbsorb
-		{
-			get
-			{
-				return m_MeleeDamageAbsorb;
-			}
-			set
-			{
-				m_MeleeDamageAbsorb = value;
-			}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public int MagicDamageAbsorb
-		{
-			get
-			{
-				return m_MagicDamageAbsorb;
-			}
-			set
-			{
-				m_MagicDamageAbsorb = value;
-			}
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -3189,8 +3026,6 @@ namespace Server
 				if( box != null && box.Opened )
 					box.Close();
 
-				Poison = null;
-
 				Warmode = false;
 
 				Hits = 10;
@@ -3262,15 +3097,6 @@ namespace Server
 
 					Delta( MobileDelta.Armor );
 				}
-			}
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public virtual double ArmorRating
-		{
-			get
-			{
-				return 0.0;
 			}
 		}
 
@@ -3348,9 +3174,6 @@ namespace Server
             StopAggrExpire();
 
             CheckAggrExpire();
-
-            if( m_PoisonTimer != null )
-                m_PoisonTimer.Stop();
 
             if (m_CombatTimer != null)
                 m_CombatTimer.Stop();
@@ -3493,7 +3316,6 @@ namespace Server
 			Stam = 0;
 			Mana = 0;
 
-			Poison = null;
 			Combatant = null;
 
 			List<Item> content = new List<Item>();
@@ -3665,7 +3487,6 @@ namespace Server
 				m_Items.Remove( deathShroud );
 				m_Items.Insert( 0, deathShroud );
 
-				Poison = null;
 				Combatant = null;
 
 				Hits = 0;
@@ -4872,7 +4693,7 @@ namespace Server
 
             UpdateRegion();
 
-            UpdateResistances();
+            //UpdateResistances();
 
 
 
@@ -5247,8 +5068,8 @@ namespace Server
 			item.OnAdded( this );
 			OnItemAdded( item );
 
-			if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
-				UpdateResistances();
+            //if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
+            //    UpdateResistances();
 		}
 
 		private static IWeapon m_DefaultWeapon;
@@ -5290,8 +5111,8 @@ namespace Server
 				item.OnRemoved( this );
 				OnItemRemoved( item );
 
-				if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
-					UpdateResistances();
+                //if( item.PhysicalResistance != 0 || item.MagieResistance != 0 )
+                //    UpdateResistances();
 			}
 		}
 
@@ -6289,7 +6110,7 @@ namespace Server
 			if( m_Female )
 				flags |= 0x02;
 
-			if( m_Poison != null )
+			if(Poisoned)
 				flags |= 0x04;
 
 			if( m_Blessed || m_YellowHealthbar )
@@ -6869,208 +6690,208 @@ namespace Server
 		{
 		}
 
-		#region Poison/Curing
+        //#region Poison/Curing
 
-		public Timer PoisonTimer
-		{
-			get { return m_PoisonTimer; }
-		}
+        //public Timer PoisonTimer
+        //{
+        //    get { return m_PoisonTimer; }
+        //}
 
-		[CommandProperty( AccessLevel.Batisseur )]
-		public Poison Poison
-		{
-			get
-			{
-				return m_Poison;
-			}
-			set
-			{
-				/*if ( m_Poison != value && (m_Poison == null || value == null || m_Poison.Level < value.Level) )
-				{*/
-				m_Poison = value;
-				Delta( MobileDelta.HealthbarPoison );
+        //[CommandProperty( AccessLevel.Batisseur )]
+        //public Poison Poison
+        //{
+        //    get
+        //    {
+        //        return m_Poison;
+        //    }
+        //    set
+        //    {
+        //        /*if ( m_Poison != value && (m_Poison == null || value == null || m_Poison.Level < value.Level) )
+        //        {*/
+        //        m_Poison = value;
+        //        Delta( MobileDelta.HealthbarPoison );
 
-				if( m_PoisonTimer != null )
-				{
-					m_PoisonTimer.Stop();
-					m_PoisonTimer = null;
-				}
+        //        if( m_PoisonTimer != null )
+        //        {
+        //            m_PoisonTimer.Stop();
+        //            m_PoisonTimer = null;
+        //        }
 
-				if( m_Poison != null )
-				{
-					m_PoisonTimer = m_Poison.ConstructTimer( this );
+        //        if( m_Poison != null )
+        //        {
+        //            m_PoisonTimer = m_Poison.ConstructTimer( this );
 
-					if( m_PoisonTimer != null )
-						m_PoisonTimer.Start();
-				}
+        //            if( m_PoisonTimer != null )
+        //                m_PoisonTimer.Start();
+        //        }
 
-				CheckStatTimers();
-				/*}*/
-			}
-		}
+        //        CheckStatTimers();
+        //        /*}*/
+        //    }
+        //}
 
-		/// <summary>
-		/// Overridable. Event invoked when a call to <see cref="ApplyPoison" /> failed because <see cref="CheckPoisonImmunity" /> returned false: the Mobile was resistant to the poison. By default, this broadcasts an overhead message: * The poison seems to have no effect. *
-		/// <seealso cref="CheckPoisonImmunity" />
-		/// <seealso cref="ApplyPoison" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual void OnPoisonImmunity( Mobile from, Poison poison )
-		{
-			this.PublicOverheadMessage( MessageType.Emote, 0x3B2, 1005534 ); // * The poison seems to have no effect. *
-		}
+        ///// <summary>
+        ///// Overridable. Event invoked when a call to <see cref="ApplyPoison" /> failed because <see cref="CheckPoisonImmunity" /> returned false: the Mobile was resistant to the poison. By default, this broadcasts an overhead message: * The poison seems to have no effect. *
+        ///// <seealso cref="CheckPoisonImmunity" />
+        ///// <seealso cref="ApplyPoison" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual void OnPoisonImmunity( Mobile from, Poison poison )
+        //{
+        //    this.PublicOverheadMessage( MessageType.Emote, 0x3B2, 1005534 ); // * The poison seems to have no effect. *
+        //}
 
-		/// <summary>
-		/// Overridable. Virtual event invoked when a call to <see cref="ApplyPoison" /> failed because <see cref="CheckHigherPoison" /> returned false: the Mobile was already poisoned by an equal or greater strength poison.
-		/// <seealso cref="CheckHigherPoison" />
-		/// <seealso cref="ApplyPoison" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual void OnHigherPoison( Mobile from, Poison poison )
-		{
-		}
+        ///// <summary>
+        ///// Overridable. Virtual event invoked when a call to <see cref="ApplyPoison" /> failed because <see cref="CheckHigherPoison" /> returned false: the Mobile was already poisoned by an equal or greater strength poison.
+        ///// <seealso cref="CheckHigherPoison" />
+        ///// <seealso cref="ApplyPoison" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual void OnHigherPoison( Mobile from, Poison poison )
+        //{
+        //}
 
-		/// <summary>
-		/// Overridable. Event invoked when a call to <see cref="ApplyPoison" /> succeeded. By default, this broadcasts an overhead message varying by the level of the poison. Example: * Zippy begins to spasm uncontrollably. *
-		/// <seealso cref="ApplyPoison" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual void OnPoisoned( Mobile from, Poison poison, Poison oldPoison )
-		{
-			if( poison != null )
-			{
-				this.LocalOverheadMessage( MessageType.Regular, 0x21, 1042857 + (poison.Level * 2) );
-				this.NonlocalOverheadMessage( MessageType.Regular, 0x21, 1042858 + (poison.Level * 2), Name );
-			}
-		}
+        ///// <summary>
+        ///// Overridable. Event invoked when a call to <see cref="ApplyPoison" /> succeeded. By default, this broadcasts an overhead message varying by the level of the poison. Example: * Zippy begins to spasm uncontrollably. *
+        ///// <seealso cref="ApplyPoison" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual void OnPoisoned( Mobile from, Poison poison, Poison oldPoison )
+        //{
+        //    if( poison != null )
+        //    {
+        //        this.LocalOverheadMessage( MessageType.Regular, 0x21, 1042857 + (poison.Level * 2) );
+        //        this.NonlocalOverheadMessage( MessageType.Regular, 0x21, 1042858 + (poison.Level * 2), Name );
+        //    }
+        //}
 
-		/// <summary>
-		/// Overridable. Called from <see cref="ApplyPoison" />, this method checks if the Mobile is immune to some <see cref="Poison" />. If true, <see cref="OnPoisonImmunity" /> will be invoked and <see cref="ApplyPoisonResult.Immune" /> is returned.
-		/// <seealso cref="OnPoisonImmunity" />
-		/// <seealso cref="ApplyPoison" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual bool CheckPoisonImmunity( Mobile from, Poison poison )
-		{
-			return false;
-		}
+        ///// <summary>
+        ///// Overridable. Called from <see cref="ApplyPoison" />, this method checks if the Mobile is immune to some <see cref="Poison" />. If true, <see cref="OnPoisonImmunity" /> will be invoked and <see cref="ApplyPoisonResult.Immune" /> is returned.
+        ///// <seealso cref="OnPoisonImmunity" />
+        ///// <seealso cref="ApplyPoison" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual bool CheckPoisonImmunity( Mobile from, Poison poison )
+        //{
+        //    return false;
+        //}
 
-		/// <summary>
-		/// Overridable. Called from <see cref="ApplyPoison" />, this method checks if the Mobile is already poisoned by some <see cref="Poison" /> of equal or greater strength. If true, <see cref="OnHigherPoison" /> will be invoked and <see cref="ApplyPoisonResult.HigherPoisonActive" /> is returned.
-		/// <seealso cref="OnHigherPoison" />
-		/// <seealso cref="ApplyPoison" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual bool CheckHigherPoison( Mobile from, Poison poison )
-		{
-			return (m_Poison != null && m_Poison.Level >= poison.Level);
-		}
+        ///// <summary>
+        ///// Overridable. Called from <see cref="ApplyPoison" />, this method checks if the Mobile is already poisoned by some <see cref="Poison" /> of equal or greater strength. If true, <see cref="OnHigherPoison" /> will be invoked and <see cref="ApplyPoisonResult.HigherPoisonActive" /> is returned.
+        ///// <seealso cref="OnHigherPoison" />
+        ///// <seealso cref="ApplyPoison" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual bool CheckHigherPoison( Mobile from, Poison poison )
+        //{
+        //    return (m_Poison != null && m_Poison.Level >= poison.Level);
+        //}
 
-		/// <summary>
-		/// Overridable. Attempts to apply poison to the Mobile. Checks are made such that no <see cref="CheckHigherPoison">higher poison is active</see> and that the Mobile is not <see cref="CheckPoisonImmunity">immune to the poison</see>. Provided those assertions are true, the <paramref name="poison" /> is applied and <see cref="OnPoisoned" /> is invoked.
-		/// <seealso cref="Poison" />
-		/// <seealso cref="CurePoison" />
-		/// </summary>
-		/// <returns>One of four possible values:
-		/// <list type="table">
-		/// <item>
-		/// <term><see cref="ApplyPoisonResult.Cured">Cured</see></term>
-		/// <description>The <paramref name="poison" /> parameter was null and so <see cref="CurePoison" /> was invoked.</description>
-		/// </item>
-		/// <item>
-		/// <term><see cref="ApplyPoisonResult.HigherPoisonActive">HigherPoisonActive</see></term>
-		/// <description>The call to <see cref="CheckHigherPoison" /> returned false.</description>
-		/// </item>
-		/// <item>
-		/// <term><see cref="ApplyPoisonResult.Immune">Immune</see></term>
-		/// <description>The call to <see cref="CheckPoisonImmunity" /> returned false.</description>
-		/// </item>
-		/// <item>
-		/// <term><see cref="ApplyPoisonResult.Poisoned">Poisoned</see></term>
-		/// <description>The <paramref name="poison" /> was successfully applied.</description>
-		/// </item>
-		/// </list>
-		/// </returns>
-		public virtual ApplyPoisonResult ApplyPoison( Mobile from, Poison poison )
-		{
-			if( poison == null )
-			{
-				CurePoison( from );
-				return ApplyPoisonResult.Cured;
-			}
+        ///// <summary>
+        ///// Overridable. Attempts to apply poison to the Mobile. Checks are made such that no <see cref="CheckHigherPoison">higher poison is active</see> and that the Mobile is not <see cref="CheckPoisonImmunity">immune to the poison</see>. Provided those assertions are true, the <paramref name="poison" /> is applied and <see cref="OnPoisoned" /> is invoked.
+        ///// <seealso cref="Poison" />
+        ///// <seealso cref="CurePoison" />
+        ///// </summary>
+        ///// <returns>One of four possible values:
+        ///// <list type="table">
+        ///// <item>
+        ///// <term><see cref="ApplyPoisonResult.Cured">Cured</see></term>
+        ///// <description>The <paramref name="poison" /> parameter was null and so <see cref="CurePoison" /> was invoked.</description>
+        ///// </item>
+        ///// <item>
+        ///// <term><see cref="ApplyPoisonResult.HigherPoisonActive">HigherPoisonActive</see></term>
+        ///// <description>The call to <see cref="CheckHigherPoison" /> returned false.</description>
+        ///// </item>
+        ///// <item>
+        ///// <term><see cref="ApplyPoisonResult.Immune">Immune</see></term>
+        ///// <description>The call to <see cref="CheckPoisonImmunity" /> returned false.</description>
+        ///// </item>
+        ///// <item>
+        ///// <term><see cref="ApplyPoisonResult.Poisoned">Poisoned</see></term>
+        ///// <description>The <paramref name="poison" /> was successfully applied.</description>
+        ///// </item>
+        ///// </list>
+        ///// </returns>
+        //public virtual ApplyPoisonResult ApplyPoison( Mobile from, Poison poison )
+        //{
+        //    if( poison == null )
+        //    {
+        //        CurePoison( from );
+        //        return ApplyPoisonResult.Cured;
+        //    }
 
-			if( CheckHigherPoison( from, poison ) )
-			{
-				OnHigherPoison( from, poison );
-				return ApplyPoisonResult.HigherPoisonActive;
-			}
+        //    if( CheckHigherPoison( from, poison ) )
+        //    {
+        //        OnHigherPoison( from, poison );
+        //        return ApplyPoisonResult.HigherPoisonActive;
+        //    }
 
-			if( CheckPoisonImmunity( from, poison ) )
-			{
-				OnPoisonImmunity( from, poison );
-				return ApplyPoisonResult.Immune;
-			}
+        //    if( CheckPoisonImmunity( from, poison ) )
+        //    {
+        //        OnPoisonImmunity( from, poison );
+        //        return ApplyPoisonResult.Immune;
+        //    }
 
-			Poison oldPoison = m_Poison;
-			this.Poison = poison;
+        //    Poison oldPoison = m_Poison;
+        //    this.Poison = poison;
 
-			OnPoisoned( from, poison, oldPoison );
+        //    OnPoisoned( from, poison, oldPoison );
 
-			return ApplyPoisonResult.Poisoned;
-		}
+        //    return ApplyPoisonResult.Poisoned;
+        //}
 
-		/// <summary>
-		/// Overridable. Called from <see cref="CurePoison" />, this method checks to see that the Mobile can be cured of <see cref="Poison" />
-		/// <seealso cref="CurePoison" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual bool CheckCure( Mobile from )
-		{
-			return true;
-		}
+        ///// <summary>
+        ///// Overridable. Called from <see cref="CurePoison" />, this method checks to see that the Mobile can be cured of <see cref="Poison" />
+        ///// <seealso cref="CurePoison" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual bool CheckCure( Mobile from )
+        //{
+        //    return true;
+        //}
 
-		/// <summary>
-		/// Overridable. Virtual event invoked when a call to <see cref="CurePoison" /> succeeded.
-		/// <seealso cref="CurePoison" />
-		/// <seealso cref="CheckCure" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual void OnCured( Mobile from, Poison oldPoison )
-		{
-		}
+        ///// <summary>
+        ///// Overridable. Virtual event invoked when a call to <see cref="CurePoison" /> succeeded.
+        ///// <seealso cref="CurePoison" />
+        ///// <seealso cref="CheckCure" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual void OnCured( Mobile from, Poison oldPoison )
+        //{
+        //}
 
-		/// <summary>
-		/// Overridable. Virtual event invoked when a call to <see cref="CurePoison" /> failed.
-		/// <seealso cref="CurePoison" />
-		/// <seealso cref="CheckCure" />
-		/// <seealso cref="Poison" />
-		/// </summary>
-		public virtual void OnFailedCure( Mobile from )
-		{
-		}
+        ///// <summary>
+        ///// Overridable. Virtual event invoked when a call to <see cref="CurePoison" /> failed.
+        ///// <seealso cref="CurePoison" />
+        ///// <seealso cref="CheckCure" />
+        ///// <seealso cref="Poison" />
+        ///// </summary>
+        //public virtual void OnFailedCure( Mobile from )
+        //{
+        //}
 
-		/// <summary>
-		/// Overridable. Attempts to cure any poison that is currently active.
-		/// </summary>
-		/// <returns>True if poison was cured, false if otherwise.</returns>
-		public virtual bool CurePoison( Mobile from )
-		{
-			if( CheckCure( from ) )
-			{
-				Poison oldPoison = m_Poison;
-				this.Poison = null;
+        ///// <summary>
+        ///// Overridable. Attempts to cure any poison that is currently active.
+        ///// </summary>
+        ///// <returns>True if poison was cured, false if otherwise.</returns>
+        //public virtual bool CurePoison( Mobile from )
+        //{
+        //    if( CheckCure( from ) )
+        //    {
+        //        Poison oldPoison = m_Poison;
+        //        this.Poison = null;
 
-				OnCured( from, oldPoison );
+        //        OnCured( from, oldPoison );
 
-				return true;
-			}
+        //        return true;
+        //    }
 
-			OnFailedCure( from );
+        //    OnFailedCure( from );
 
-			return false;
-		}
+        //    return false;
+        //}
 
-		#endregion
+        //#endregion
 
 		private ISpawner m_Spawner;
 
@@ -7089,12 +6910,9 @@ namespace Server
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public bool Poisoned
+		public abstract bool Poisoned
 		{
-			get
-			{
-				return (m_Poison != null);
-			}
+			get;
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -7557,7 +7375,7 @@ namespace Server
 									m.m_NetState.Send(MobileIncoming.Create(m.m_NetState, m, this));
 
 									if ( m.m_NetState.StygianAbyss ) {
-										if ( m_Poison != null )
+										if (Poisoned)
 											m.m_NetState.Send( new HealthbarPoison( this ) );
 
 										if ( m_Blessed || m_YellowHealthbar )
@@ -7615,7 +7433,7 @@ namespace Server
 								ns.Send(MobileIncoming.Create(ns, ns.Mobile, this));
 
 								if ( ns.StygianAbyss ) {
-									if ( m_Poison != null )
+									if (Poisoned)
 										ns.Send( new HealthbarPoison( this ) );
 
 									if ( m_Blessed || m_YellowHealthbar )
@@ -7941,7 +7759,7 @@ namespace Server
 						state.Send(MobileIncoming.Create(state, state.Mobile, this));
 
 						if ( state.StygianAbyss ) {
-							if ( m_Poison != null )
+							if (Poisoned)
 								state.Send( new HealthbarPoison( this ) );
 
 							if ( m_Blessed || m_YellowHealthbar )

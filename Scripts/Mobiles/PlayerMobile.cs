@@ -665,22 +665,6 @@ namespace Server.Mobiles
 			}
 		}
 
-		public override void OnSkillInvalidated( Skill skill )
-		{
-			if ( Core.AOS && skill.SkillName == SkillName.Meditation )
-				UpdateResistances();
-		}
-
-		public override int GetMaxResistance( ResistanceType type )
-		{
-			if ( AccessLevel > AccessLevel.Player )
-				return int.MaxValue;
-
-			int max = base.GetMaxResistance( type );
-
-			return max;
-		}
-
 		private int m_LastGlobalLight = -1, m_LastPersonalLight = -1;
 
 		public override void OnNetStateChanged()
@@ -1135,34 +1119,6 @@ namespace Server.Mobiles
 
 			InvalidateMyRunUO();
 		}
-
-		public override double ArmorRating
-		{
-			get
-			{
-                return VirtualArmor + VirtualArmorMod;
-			}
-		}
-
-		#region [Stats]Max
-		[CommandProperty( AccessLevel.Batisseur )]
-		public override int HitsMax
-		{
-            get { return Str + (RawStr >= 100 ? 125 : 100); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public override int StamMax
-		{
-            get { return 2 * Dex + (RawDex >= 100 ? 25 : 0); }
-		}
-
-		[CommandProperty( AccessLevel.Batisseur )]
-		public override int ManaMax
-		{
-			get { return 2 * Int + (RawInt >= 100 ? 25 : 0); }
-		}
-		#endregion
 
 		#region Stat Getters/Setters
 
@@ -2285,25 +2241,6 @@ namespace Server.Mobiles
                 from.Send(new MessageLocalized(this.Serial, Body, MessageType.Label, hue, 3, opl.Header, name, opl.HeaderArgs));
             }
         }
-
-		#region Poison
-
-		public override ApplyPoisonResult ApplyPoison( Mobile from, Poison poison )
-		{
-			if ( !Alive )
-				return ApplyPoisonResult.Immune;
-
-			if ( Spells.EvilOmenSpell.CheckEffect( this ) )
-				poison = PoisonImpl.IncreaseLevel( poison );
-
-			ApplyPoisonResult result = base.ApplyPoison( from, poison );
-
-			if ( from != null && result == ApplyPoisonResult.Poisoned && PoisonTimer is PoisonImpl.PoisonTimer )
-				(PoisonTimer as PoisonImpl.PoisonTimer).From = from;
-
-			return result;
-		}
-		#endregion
 
 		public PlayerMobile( Serial s ) : base( s )
 		{
