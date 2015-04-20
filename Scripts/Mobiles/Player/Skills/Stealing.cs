@@ -183,9 +183,9 @@ namespace Server.SkillHandlers
                             caught = true;
 						}
 
-                        if (m_Thief is ScriptMobile)
+                        if (m_Thief is BaseMobile)
                         {
-                            ScriptMobile sm = (ScriptMobile)m_Thief;
+                            BaseMobile sm = (BaseMobile)m_Thief;
 
                             IPooledEnumerable<Mobile> eable = m_Thief.GetMobilesInRange(3);
                             foreach (Mobile mob in eable)

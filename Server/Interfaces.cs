@@ -70,6 +70,7 @@ namespace Server
 		void OnBeforeSwing( Mobile attacker, Mobile defender );
 		int OnSwing( Mobile attacker, Mobile defender );
 		void GetStatusDamage( Mobile from, out int min, out int max );
+        int Penetration { get; }
 	}
 
 	public interface IHued

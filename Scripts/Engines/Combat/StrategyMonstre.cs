@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Items;
-using Server.Engines.Buffing;
+using Server.Engines.BuffHandling;
 
 namespace Server.Engines.Combat
 {

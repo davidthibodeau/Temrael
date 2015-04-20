@@ -6,7 +6,7 @@ using System.Text;
 using Server.Spells;
 using Server.Items;
 using Server.Engines.Combat;
-using Server.Engines.Buffing;
+using Server.Engines.BuffHandling;
 
 namespace Server.Mobiles
 {
@@ -83,10 +83,7 @@ namespace Server.Mobiles
         public void ActiverTestsDetection()
         {
             //Le systeme de detection fonctionne juste pour les joueurs.
-            if (AccessLevel > AccessLevel.Player) return;
             Detection.DetecterAlentours();
-            if (Hidden)
-                Detection.TesterPresenceAlentours();
         }
 
         public override void OnHiddenChanged()
@@ -386,20 +383,20 @@ namespace Server.Mobiles
         {
             Buffs.AddBuff(buff);
 
-            if (buff.ContainsStat(BuffStat.Str) 
-                || buff.ContainsStat(BuffStat.Dex) 
-                || buff.ContainsStat(BuffStat.Int))
+            if (buff.ContainsEffect(BuffEffect.Str) 
+                || buff.ContainsEffect(BuffEffect.Dex) 
+                || buff.ContainsEffect(BuffEffect.Int))
                 Delta(MobileDelta.Stat);
 
-            if (buff.ContainsStat(BuffStat.HitsMax))
+            if (buff.ContainsEffect(BuffEffect.HitsMax))
                 Delta(MobileDelta.Hits);
-            if (buff.ContainsStat(BuffStat.StamMax))
+            if (buff.ContainsEffect(BuffEffect.StamMax))
                 Delta(MobileDelta.Stam);
-            if (buff.ContainsStat(BuffStat.ManaMax))
+            if (buff.ContainsEffect(BuffEffect.ManaMax))
                 Delta(MobileDelta.Mana);
 
-            if (buff.ContainsStat(BuffStat.ResistancePhysique)
-                || buff.ContainsStat(BuffStat.ResistanceMagique))
+            if (buff.ContainsEffect(BuffEffect.ResistancePhysique)
+                || buff.ContainsEffect(BuffEffect.ResistanceMagique))
                 Delta(MobileDelta.Resistances);
         }
 
@@ -506,7 +503,7 @@ namespace Server.Mobiles
         {
             get
             {
-                int value = m_Dex + GetStatOffset( StatType.Dex );
+                int value = m_Dex + Buffs.Dex;
 
                 if( value < 1 )
                     value = 1;
@@ -514,11 +511,6 @@ namespace Server.Mobiles
                     value = 65000;
 
                 return value;
-            }
-            set
-            {
-                if( m_StatMods.Count == 0 )
-                    RawDex = value;
             }
         }
 
@@ -566,7 +558,7 @@ namespace Server.Mobiles
         {
             get
             {
-                int value = m_Int + GetStatOffset( StatType.Int );
+                int value = m_Int + Buffs.Int;
 
                 if( value < 1 )
                     value = 1;
@@ -574,11 +566,6 @@ namespace Server.Mobiles
                     value = 65000;
 
                 return value;
-            }
-            set
-            {
-                if( m_StatMods.Count == 0 )
-                    RawInt = value;
             }
         }
 
@@ -655,7 +642,7 @@ namespace Server.Mobiles
         {
             get
             {
-                int value = (RawStr == 100 ? 110 : 100) + Str;
+                int value = (RawStr == 100 ? 110 : 100) + Str + Buffs.HitsMax;
 
                 if (curHitsM == -1)
                     curHitsM = value;
@@ -719,7 +706,7 @@ namespace Server.Mobiles
         {
             get
             {
-                int value = (RawDex == 100 ? 110 : 100) + Dex;
+                int value = (RawDex == 100 ? 110 : 100) + Dex + Buffs.StamMax;
 
                 if (curStamM == -1)
                     curStamM = value;
@@ -796,7 +783,7 @@ namespace Server.Mobiles
         {
             get
             {
-                int value = (RawInt == 100 ? 110 : 100) + Int;
+                int value = (RawInt == 100 ? 110 : 100) + Int + Buffs.ManaMax;
 
                 if (curManaM == -1)
                     curManaM = value;
@@ -804,6 +791,15 @@ namespace Server.Mobiles
                     Mana = (int) (Mana * value / (double) curManaM);
 
                 return value;
+            }
+        }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public override int Vitesse
+        {
+            get
+            {
+                return (int) ((Dex + Stam * Dex / (double)StamMax) / 4 * (1 + Buffs.Vitesse));
             }
         }
 
@@ -845,6 +841,8 @@ namespace Server.Mobiles
                 double resist = sk * 0.35;
                 if (sk >= 100)
                     resist *= 1.05;
+
+                resist += Buffs.ResistanceMagique;
                 return resist;
             }
         }
@@ -867,7 +865,24 @@ namespace Server.Mobiles
 
         public override double Penetration
         {
-            get { return 0; } //TODO: Ajouter valeur en fonction de l'arme.
+            get
+            {
+                double pen = GetBonus(Skills[SkillName.Penetration].Value, 0.35);
+                pen += Weapon.Penetration;
+                pen += Buffs.Penetration;
+                return pen;
+            }
+        }
+
+        
+        public static double GetBonus(double value, double scalar)
+        {
+            double bonus = value * scalar;
+
+            if (value >= 100)
+                bonus += scalar * 5; // 5% de la valeur a 100 est donnee en bonus.
+
+            return bonus / 100;
         }
 
 

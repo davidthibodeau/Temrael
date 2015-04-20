@@ -1,41 +1,78 @@
-﻿using System;
+﻿using Server.Misc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Server.Engines.BuffHandling
 {
+    [PropertyObject]
     public class Buffs
     {
-        /* Caractéristiques d'un personnage
-         * - Statistiques (force, dextérité, intelligence)
-         * - Ressources (points de vie, stamina, mana)
-         * - Régénération
-         * - Résistances (physique, magique)
-         * - Vitesse
-         * 
-         * 
-         * Buff/Debuff possibles:
-         * - Status effect
-         * --- Paralysé (breaks on dmg)
-         * --- Assomé (doesn't break on dmg)
-         * --- Enraciné (ne peut simplement pas se déplacer)
-         * --- Empoisonné (plusieurs types de poison possibles. Un seul devrait s'appliquer)
-         * --- Béni (stat buff)
-         * --- Maudit (stat debuff)
-         * --- Resistance buff
-         * --- Resistance debuff
-         * --- Armure Mod (+ Resistance. - dex)
-         * --- Rapide
-         * --- Lent
-         * --- Transformations
-         * --- Autres modificateurs de sorts (Dernier souffle, adrénaline, serment, arme maudite, etc.)
-         * 
-         * Différents mods nécessaire
-         * - Resistance
-         * - Statistique
-         * - Vitesse
-        */
+        private Dictionary<BuffID, BaseBuff> buffList = new Dictionary<BuffID, BaseBuff>();
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int Str { get { return (int)ComputeBuffValue(BuffEffect.Str); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int Dex { get { return (int)ComputeBuffValue(BuffEffect.Dex); } }
+        
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int Int { get { return (int)ComputeBuffValue(BuffEffect.Int); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int HitsMax { get { return (int)ComputeBuffValue(BuffEffect.HitsMax); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int StamMax { get { return (int)ComputeBuffValue(BuffEffect.StamMax); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int ManaMax { get { return (int)ComputeBuffValue(BuffEffect.ManaMax); } }
+
+        // La vitesse est calculee en pourcventage de la vitesse du personnage.
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double Vitesse { get { return ComputeBuffValue(BuffEffect.Vitesse); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public int Penetration { get { return (int)ComputeBuffValue(BuffEffect.Penetration); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double ResistancePhysique { get { return ComputeBuffValue(BuffEffect.ResistancePhysique); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double ResistanceMagique { get { return ComputeBuffValue(BuffEffect.ResistanceMagique); } }
+
+        private double ComputeBuffValue(BuffEffect stat)
+        {
+            double value = 0;
+            foreach (BaseBuff buff in buffList.Values)
+            {
+                value += buff.Effect(stat);
+            }
+
+            return value;
+        }
+
+        public bool AddBuff(BaseBuff buff)
+        {
+            if (buffList.ContainsKey(buff.Id))
+            {
+                //TODO: Introduire une notion de comparaison adéquate.
+                if(buff.CompareTo(buffList[buff.Id]) > 0)
+                {
+                    buffList[buff.Id] = buff;
+                    return true;
+                }
+                return false;
+            }
+
+            buffList.Add(buff.Id, buff);
+            return true;
+        }
+
+        public override string ToString()
+        {
+            return "...";
+        }
     }
 }

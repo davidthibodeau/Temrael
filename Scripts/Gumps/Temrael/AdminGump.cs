@@ -237,7 +237,7 @@ namespace Server.Gumps
 					AddLabel( 150, 210, LabelHue, World.Mobiles.Count.ToString() );
 
 					AddLabel( 20, 230, LabelHue, "Mobile Scripts:" );
-					AddLabel( 150, 230, LabelHue, Core.ScriptMobiles.ToString() );
+					AddLabel( 150, 230, LabelHue, Core.BaseMobiles.ToString() );
 
 					AddLabel( 20, 250, LabelHue, "Items:" );
 					AddLabel( 150, 250, LabelHue, World.Items.Count.ToString() );

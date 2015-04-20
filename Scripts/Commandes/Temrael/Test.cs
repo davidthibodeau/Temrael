@@ -8,7 +8,7 @@ using Server.Network;
 using Server.Targeting;
 using System.Collections.Generic;
 using Server.Engines.Equitation;
-using Server.Engines.Buffing;
+using Server.Engines.BuffHandling;
 using Server.Spells;
 using Server.Spells.TechniquesCombat;
 

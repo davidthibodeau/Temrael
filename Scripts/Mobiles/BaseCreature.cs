@@ -12,7 +12,7 @@ using Server.Engines.PartySystem;
 
 using Server.Engines.Quetes;
 using Server.Engines.Combat;
-using Server.Engines.Buffing;
+using Server.Engines.BuffHandling;
 
 
 namespace Server.Mobiles

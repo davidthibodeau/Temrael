@@ -42,7 +42,7 @@ namespace Server.Engines.Hiding
             IPooledEnumerable<Mobile> eable = mobile.GetMobilesInRange(DetectionRange);
             foreach (Mobile mob in eable)
             {
-                ScriptMobile m = mob as ScriptMobile;
+                BaseMobile m = mob as BaseMobile;
                 if (m == null || m == mobile || !m.Hidden || !mobile.InLOS(m) || m.AccessLevel > AccessLevel.Player)
                     continue;
 

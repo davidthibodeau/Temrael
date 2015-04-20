@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using Server.ContextMenus;
 using Server.Engines.Combat;
 using System.Text.RegularExpressions;
-using Server.Engines.Buffing;
+using Server.Engines.BuffHandling;
 
 namespace Server.Items
 {
@@ -42,7 +42,7 @@ namespace Server.Items
 		private WeaponQuality m_Quality;
 		private Mobile m_Crafter;
         private string m_CrafterName;
-        private Server.Engines.Buffing.Poison m_Poison;
+        private Server.Engines.BuffHandling.Poison m_Poison;
 		private int m_PoisonCharges;
 		private int m_Hits;
 		private int m_MaxHits;

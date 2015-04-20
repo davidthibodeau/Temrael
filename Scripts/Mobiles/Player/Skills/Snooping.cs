@@ -75,9 +75,9 @@ namespace Server.SkillHandlers
 					if ( cont is TrapableContainer && ((TrapableContainer)cont).ExecuteTrap( from ) )
 						return;
 
-                    if (from is ScriptMobile)
+                    if (from is BaseMobile)
                     {
-                        ScriptMobile pm = (ScriptMobile)from;
+                        BaseMobile pm = (BaseMobile)from;
                         pm.Detection.FaireJet(root, 0.05);
                     }
 

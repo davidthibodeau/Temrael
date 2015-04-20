@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Server.Items;
 
-namespace Server.Engines.Buffing
+namespace Server.Engines.BuffHandling
 {
 
     public enum BuffID
@@ -12,18 +12,20 @@ namespace Server.Engines.Buffing
         Benediction,
     }
 
-    public enum BuffStat
+    [Flags]
+    public enum BuffEffect
     {
-        Str,
-        Dex,
-        Int,
-        HitsMax,
-        StamMax,
-        ManaMax,
-        Vitesse,
-        Penetration,
-        ResistancePhysique,
-        ResistanceMagique,
+        None                = 0x000,
+        Str                 = 0x001,
+        Dex                 = 0x002,
+        Int                 = 0x004,
+        HitsMax             = 0x008,
+        StamMax             = 0x010,
+        ManaMax             = 0x020,
+        Vitesse             = 0x040,
+        Penetration         = 0x080,
+        ResistancePhysique  = 0x100,
+        ResistanceMagique   = 0x200,
     }
 
     #region Potions à buff.
