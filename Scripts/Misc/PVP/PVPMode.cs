@@ -24,7 +24,7 @@ namespace Server.Misc.PVP
 
         public void SpawnAll()
         {
-            foreach (PVPTeam team in m_pvpevent.Teams)
+            foreach (PVPTeam team in m_pvpevent.teams)
             {
                 List<Mobile> moblist = new List<Mobile>();
 
@@ -48,7 +48,7 @@ namespace Server.Misc.PVP
 
         public void DespawnAll()
         {
-            foreach (PVPTeam team in m_pvpevent.Teams)
+            foreach (PVPTeam team in m_pvpevent.teams)
             {
                 List<Mobile> moblist = new List<Mobile>();
 
@@ -76,7 +76,7 @@ namespace Server.Misc.PVP
             m.Stam = m.StamMax;
             m.Mana = m.ManaMax;
 
-            m_pvpevent.Stone.TeleportRand(m);
+            m_pvpevent.stone.TeleportRand(m);
             //m.LogoutLocation = m.Location;
         }
 

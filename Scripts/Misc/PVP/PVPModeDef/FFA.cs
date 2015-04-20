@@ -17,11 +17,11 @@ namespace Server.Misc.PVP.PVPModeDef
 
         protected override void Spawn(Mobile m)
         {
-            IPoint3D p = new Point3D(m_pvpevent.Map.Region.RandomPoint(), 0);
+            IPoint3D p = new Point3D(m_pvpevent.map.Region.RandomPoint(), 0);
             Spells.SpellHelper.GetSurfaceTop(ref p);
 
             m.Location = (Point3D)p;
-            m.Map = m_pvpevent.Map.Map;
+            m.Map = m_pvpevent.map.Map;
         }
 
         public override void Start()
@@ -29,7 +29,7 @@ namespace Server.Misc.PVP.PVPModeDef
             Console.WriteLine("Starting");
 
             NbPlayersAlive = 0;
-            foreach (PVPTeam team in m_pvpevent.Teams)
+            foreach (PVPTeam team in m_pvpevent.teams)
             {
                 NbPlayersAlive += team.joueurs.Count;
             }
@@ -50,7 +50,7 @@ namespace Server.Misc.PVP.PVPModeDef
 
         private void CheckConditions(Mobile m)
         {
-            if (m_pvpevent.Map.Region.Contains(m))
+            if (m_pvpevent.map.Region.Contains(m))
             {
                 if (m.Corpse != null)
                 {

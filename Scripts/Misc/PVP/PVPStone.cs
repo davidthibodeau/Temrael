@@ -23,8 +23,6 @@ namespace Server.Misc.PVP
 
         private Rectangle3D rect;
 
-        private PVPEvent pvpevent;
-
         [Constructable]
         public PVPStone() 
             : base(0x2312)
@@ -42,27 +40,7 @@ namespace Server.Misc.PVP
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (pvpevent == null)
-            {
-                pvpevent = new PVPEvent(this);
-            }
-
-            pvpevent.SetMap(0);
-            pvpevent.SetMode(0);
-
-            if (pvpevent.Teams.Count == 0)
-            {
-                pvpevent.AjouterEquipe();
-            }
-
-            pvpevent.Inscrire(from, 0);
-
-            pvpevent.debutEvent = DateTime.Now.Add(TimeSpan.FromSeconds(20));
-
-            if (pvpevent.Teams[0].joueurs.Count == 2)
-            {
-                pvpevent.PrepareEvent();
-            }
+            from.SendGump(new PVPGumpCreation(from, this));
         }
 
         public void TeleportRand(Mobile m)

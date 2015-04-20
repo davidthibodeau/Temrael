@@ -24,31 +24,19 @@ namespace Server.Misc.PVP
 
         private PVPEventState state; // L'état de l'event : Restreint l'utilisation de certaines fonctions (Ex : Empêcher le changement de map quand un combat a lieu).
 
-        private List<PVPTeam> m_teams;
-        private PVPMap m_map;
-        private PVPMode m_mode;
+        public String nom;
+        public List<PVPTeam> teams;
+        public PVPMap map;
+        public PVPMode mode;
 
         public DateTime debutEvent; // La date qui dicte quand est-ce que l'événement va se produire.
         private Timer debutTimer;   // Le timer qui s'occupe de starter l'événement à la date "debutEvent".
 
-        #region Get
-        public PVPMode Mode
+        public PVPStone stone
         {
-            get { return m_mode; }
+            get{ return m_stone; }
         }
-        public List<PVPTeam> Teams
-        {
-            get { return m_teams; }
-        }
-        public PVPMap Map
-        {
-            get { return m_map; }
-        }
-        public PVPStone Stone
-        {
-            get { return m_stone; }
-        }
-        #endregion
+
         #endregion
 
         #region Gestion de l'Event.
@@ -63,7 +51,7 @@ namespace Server.Misc.PVP
         {
             if (state == PVPEventState.Setting)
             {
-                if (m_map == null || m_mode == null || m_teams.Count == 0)
+                if (map == null || mode == null || teams.Count == 0 || debutEvent == null)
                     return false;
 
                 Console.WriteLine("Preparation de l'event.");
@@ -80,28 +68,30 @@ namespace Server.Misc.PVP
         /// </summary>
         private void StartEvent()
         {
-            if (m_teams.Count != 0 &&
-                m_map.UseMap())
+            if (teams.Count != 0 &&
+                map.UseMap())
             {
                 debutTimer.Stop();
 
                 state = PVPEventState.Preparing;
 
-                m_mode.SpawnAll();
+                mode.SpawnAll();
 
-                m_mode.Start();
+                mode.Start();
             }
         }
 
         public void StopEvent()
         {
-            m_map.StopUsing();
+            map.StopUsing();
 
             state = PVPEventState.Done;
             
             // Logging, si on veut en faire.
 
             m_InstancesList.Remove(this);
+
+            // Garbage collector s'occupera de detruire l'event.
         }
         #endregion
 
@@ -110,9 +100,32 @@ namespace Server.Misc.PVP
         {
             if (state == PVPEventState.Setting)
             {
-                if (m_teams.Count < m_map.GetNbSpawnPoints())
+                if (teams.Count < map.GetNbSpawnPoints())
                 {
-                    m_teams.Add(new PVPTeam());
+                    teams.Add(new PVPTeam());
+                }
+            }
+        }
+
+        public void SetNbEquipe(int nb)
+        {
+            if (state == PVPEventState.Setting)
+            {
+                bool set = false;
+                while (!set)
+                {
+                    if (teams.Count == nb)
+                    {
+                        set = true;
+                    }
+                    else if (teams.Count < nb)
+                    {
+                        AjouterEquipe();
+                    }
+                    else
+                    {
+                        EnleverEquipe();
+                    }
                 }
             }
         }
@@ -121,17 +134,17 @@ namespace Server.Misc.PVP
         {
             if (state == PVPEventState.Setting)
             {
-                m_teams.RemoveAt(m_teams.Count - 1);
+                teams.RemoveAt(teams.Count - 1);
             }
         }
 
         public void Inscrire(Mobile m, int TeamNumber)
         {
-            if (state == PVPEventState.Setting || state == PVPEventState.Waiting)
+            if (state == PVPEventState.Setting ||state == PVPEventState.Waiting)
             {
                 try
                 {
-                    bool i = (null == m_teams[TeamNumber]);
+                    bool i = (null == teams[TeamNumber]);
                 }
                 catch (Exception)
                 {
@@ -140,7 +153,7 @@ namespace Server.Misc.PVP
                 }
 
                 // Un joueur ne peut pas s'inscrire dans deux équipes à la fois.
-                foreach (PVPTeam team in m_teams)
+                foreach (PVPTeam team in teams)
                 {
                     if(team.joueurs.Contains(m))
                     {
@@ -148,13 +161,13 @@ namespace Server.Misc.PVP
                     }
                 }
 
-                if (m_map != null)
+                if (map != null)
                 {
-                    if (TeamNumber >= 0 && TeamNumber < m_map.GetNbSpawnPoints())
+                    if (TeamNumber >= 0 && TeamNumber < map.GetNbSpawnPoints())
                     {
-                        if (!m_teams[TeamNumber].joueurs.Contains(m))
+                        if (!teams[TeamNumber].joueurs.Contains(m))
                         {
-                            m_teams[TeamNumber].joueurs.Add(m, PVPPlayerState.None);
+                            teams[TeamNumber].joueurs.Add(m, PVPPlayerState.None);
                         }
                     }
                 }
@@ -165,7 +178,7 @@ namespace Server.Misc.PVP
         {
             if (state == PVPEventState.Setting || state == PVPEventState.Waiting)
             {
-                foreach (PVPTeam team in m_teams)
+                foreach (PVPTeam team in teams) // La boucle pourrait s'arrêter au premier remove de fait.
                 {
                     if (team.joueurs.Contains(m))
                     {
@@ -183,7 +196,7 @@ namespace Server.Misc.PVP
                 {
                     PVPMap tempMap = PVPMap.MapList[ID];
 
-                    m_map = tempMap;
+                    map = tempMap;
 
                     return true;
                 }
@@ -203,7 +216,7 @@ namespace Server.Misc.PVP
                 {
                     PVPMode tempMode = (PVPMode)Activator.CreateInstance(PVPMode.ModeList[ID], this);
 
-                    m_mode = tempMode;
+                    mode = tempMode;
 
                     return true;
                 }
@@ -242,7 +255,9 @@ namespace Server.Misc.PVP
 
             m_stone = stone;
 
-            m_teams = new List<PVPTeam>();
+            nom = "";
+            debutEvent = DateTime.Now;
+            teams = new List<PVPTeam>();
 
             if (m_InstancesList == null)
             {

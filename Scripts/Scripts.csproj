@@ -162,6 +162,7 @@
     <Compile Include="Engines\Institutions\InstitutionHandler.cs" />
     <Compile Include="Misc\Notoriety.cs" />
     <Compile Include="Misc\PVP\PVPEvent.cs" />
+    <Compile Include="Misc\PVP\Gumps\PVPGumpCreation.cs" />
     <Compile Include="Misc\PVP\PVPMap.cs" />
     <Compile Include="Misc\PVP\PVPMode.cs" />
     <Compile Include="Misc\PVP\PVPModeDef\FFA.cs" />
