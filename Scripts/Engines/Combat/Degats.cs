@@ -33,7 +33,7 @@ namespace Server.Engines.Combat
         {
             def = ProtectionTechnique.GetOnHitEffect(def);
 
-            double reducedDmg = Reduction(dmg, def.MagicResistance);
+            double reducedDmg = Reduction(dmg, def.MagicalResistance);
 
             MagicReflectSpell.GetOnHitEffect(def, ref reducedDmg);
 

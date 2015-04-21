@@ -92,218 +92,6 @@ namespace Server.Mobiles
             Detection.ResetAlentours();
         }
 
-        public override void Damage(int amount)
-        {
-            Damage(amount, null);
-        }
-
-        public override void Damage(int amount, Mobile from)
-        {
-            double damage = amount;
-
-            SacrificeSpell.GetOnHitEffect(this, ref damage);
-
-            DernierSouffleSpell.GetOnHitEffect(this, ref damage);
-
-            AdrenalineSpell.GetOnHitEffect(this, ref damage);
-
-            Stam -= (int)(amount * 0.60);
-
-            if (BandageContext.m_Table.Contains(this))
-                BandageContext.GetContext(this).Slip();
-
-            Damage((int)damage, from, true);
-        }
-            
-        private static VisibleDamageType m_VisibleDamageType;
-
-        public static VisibleDamageType VisibleDamageType
-        {
-            get { return m_VisibleDamageType; }
-            set { m_VisibleDamageType = value; }
-        }
-
-        private List<DamageEntry> m_DamageEntries;
-
-        public List<DamageEntry> DamageEntries
-        {
-            get { return m_DamageEntries; }
-        }
-
-        public static Mobile GetDamagerFrom( DamageEntry de )
-        {
-            return (de == null ? null : de.Damager);
-        }
-
-        public override Mobile FindMostRecentDamager( bool allowSelf )
-        {
-            return GetDamagerFrom( FindMostRecentDamageEntry( allowSelf ) );
-        }
-
-        public DamageEntry FindMostRecentDamageEntry( bool allowSelf )
-        {
-            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-            {
-                if( i >= m_DamageEntries.Count )
-                    continue;
-
-                DamageEntry de = m_DamageEntries[i];
-
-                if( de.HasExpired )
-                    m_DamageEntries.RemoveAt( i );
-                else if( allowSelf || de.Damager != this )
-                    return de;
-            }
-
-            return null;
-        }
-
-        public Mobile FindLeastRecentDamager( bool allowSelf )
-        {
-            return GetDamagerFrom( FindLeastRecentDamageEntry( allowSelf ) );
-        }
-
-        public DamageEntry FindLeastRecentDamageEntry( bool allowSelf )
-        {
-            for( int i = 0; i < m_DamageEntries.Count; ++i )
-            {
-                if( i < 0 )
-                    continue;
-
-                DamageEntry de = m_DamageEntries[i];
-
-                if( de.HasExpired )
-                {
-                    m_DamageEntries.RemoveAt( i );
-                    --i;
-                }
-                else if( allowSelf || de.Damager != this )
-                {
-                    return de;
-                }
-            }
-
-            return null;
-        }
-
-        public Mobile FindMostTotalDamger( bool allowSelf )
-        {
-            return GetDamagerFrom( FindMostTotalDamageEntry( allowSelf ) );
-        }
-
-        public DamageEntry FindMostTotalDamageEntry( bool allowSelf )
-        {
-            DamageEntry mostTotal = null;
-
-            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-            {
-                if( i >= m_DamageEntries.Count )
-                    continue;
-
-                DamageEntry de = m_DamageEntries[i];
-
-                if( de.HasExpired )
-                    m_DamageEntries.RemoveAt( i );
-                else if( (allowSelf || de.Damager != this) && (mostTotal == null || de.DamageGiven > mostTotal.DamageGiven) )
-                    mostTotal = de;
-            }
-
-            return mostTotal;
-        }
-
-        public Mobile FindLeastTotalDamger( bool allowSelf )
-        {
-            return GetDamagerFrom( FindLeastTotalDamageEntry( allowSelf ) );
-        }
-
-        public DamageEntry FindLeastTotalDamageEntry( bool allowSelf )
-        {
-            DamageEntry mostTotal = null;
-
-            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-            {
-                if( i >= m_DamageEntries.Count )
-                    continue;
-
-                DamageEntry de = m_DamageEntries[i];
-
-                if( de.HasExpired )
-                    m_DamageEntries.RemoveAt( i );
-                else if( (allowSelf || de.Damager != this) && (mostTotal == null || de.DamageGiven < mostTotal.DamageGiven) )
-                    mostTotal = de;
-            }
-
-            return mostTotal;
-        }
-
-        public DamageEntry FindDamageEntryFor( Mobile m )
-        {
-            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
-            {
-                if( i >= m_DamageEntries.Count )
-                    continue;
-
-                DamageEntry de = m_DamageEntries[i];
-
-                if( de.HasExpired )
-                    m_DamageEntries.RemoveAt( i );
-                else if( de.Damager == m )
-                    return de;
-            }
-
-            return null;
-        }
-
-        public override Mobile GetDamageMaster( Mobile damagee )
-        {
-            return null;
-        }
-
-        public virtual DamageEntry RegisterDamage( int amount, Mobile from )
-        {
-            DamageEntry de = FindDamageEntryFor( from );
-
-            if( de == null )
-                de = new DamageEntry( from );
-
-            de.DamageGiven += amount;
-            de.LastDamage = DateTime.Now;
-
-            m_DamageEntries.Remove( de );
-            m_DamageEntries.Add( de );
-
-            Mobile master = from.GetDamageMaster( this );
-
-            if( master != null )
-            {
-                List<DamageEntry> list = de.Responsible;
-
-                if( list == null )
-                    de.Responsible = list = new List<DamageEntry>();
-
-                DamageEntry resp = null;
-
-                for( int i = 0; i < list.Count; ++i )
-                {
-                    DamageEntry check = list[i];
-
-                    if( check.Damager == master )
-                    {
-                        resp = check;
-                        break;
-                    }
-                }
-
-                if( resp == null )
-                    list.Add( resp = new DamageEntry( master ) );
-
-                resp.DamageGiven += amount;
-                resp.LastDamage = DateTime.Now;
-            }
-
-            return de;
-        }
-
         public override void InitStats(int str, int dex, int intel)
         {
             m_StatCap = 225;
@@ -383,10 +171,12 @@ namespace Server.Mobiles
         {
             Buffs.AddBuff(buff);
 
-            if (buff.ContainsEffect(BuffEffect.Str) 
-                || buff.ContainsEffect(BuffEffect.Dex) 
-                || buff.ContainsEffect(BuffEffect.Int))
-                Delta(MobileDelta.Stat);
+            if (buff.ContainsEffect(BuffEffect.Str))
+                Delta(MobileDelta.Stat | MobileDelta.Hits);
+            if (buff.ContainsEffect(BuffEffect.Dex))
+                Delta(MobileDelta.Stat | MobileDelta.Stam);
+            if (buff.ContainsEffect(BuffEffect.Int))
+                Delta(MobileDelta.Stat | MobileDelta.Mana);
 
             if (buff.ContainsEffect(BuffEffect.HitsMax))
                 Delta(MobileDelta.Hits);
@@ -451,10 +241,6 @@ namespace Server.Mobiles
                     value = 65000;
 
                 return value;
-            }
-            set
-            {
-                RawStr = value;
             }
         }
 
@@ -838,9 +624,7 @@ namespace Server.Mobiles
             get
             {
                 double sk = Skills[SkillName.ResistanceMagique].Value;
-                double resist = sk * 0.35;
-                if (sk >= 100)
-                    resist *= 1.05;
+                double resist = GetBonus(sk, 0.35);
 
                 resist += Buffs.ResistanceMagique;
                 return resist;
@@ -852,8 +636,7 @@ namespace Server.Mobiles
             get
             {
                 double ArNatSkill = Skills[SkillName.ArmureNaturelle].Value;
-
-                double baseArNat = ArNatSkill * 0.25 + (ArNatSkill >= 100 ? 5 : 0);
+                double baseArNat = GetBonus(ArNatSkill, 0.25);
                 double reducedAr = (75 - PhysicalResistance * 5 / 4) / 75 * baseArNat;
 
                 if (reducedAr < 0)
@@ -1239,6 +1022,218 @@ namespace Server.Mobiles
             }
 
             base.Kill();
+        }
+
+        public override void Damage(int amount)
+        {
+            Damage(amount, null);
+        }
+
+        public override void Damage(int amount, Mobile from)
+        {
+            double damage = amount;
+
+            SacrificeSpell.GetOnHitEffect(this, ref damage);
+
+            DernierSouffleSpell.GetOnHitEffect(this, ref damage);
+
+            AdrenalineSpell.GetOnHitEffect(this, ref damage);
+
+            Stam -= (int)(amount * 0.60);
+
+            if (BandageContext.m_Table.Contains(this))
+                BandageContext.GetContext(this).Slip();
+
+            Damage((int)damage, from, true);
+        }
+            
+        private static VisibleDamageType m_VisibleDamageType;
+
+        public static VisibleDamageType VisibleDamageType
+        {
+            get { return m_VisibleDamageType; }
+            set { m_VisibleDamageType = value; }
+        }
+
+        private List<DamageEntry> m_DamageEntries;
+
+        public List<DamageEntry> DamageEntries
+        {
+            get { return m_DamageEntries; }
+        }
+
+        public static Mobile GetDamagerFrom( DamageEntry de )
+        {
+            return (de == null ? null : de.Damager);
+        }
+
+        public override Mobile FindMostRecentDamager( bool allowSelf )
+        {
+            return GetDamagerFrom( FindMostRecentDamageEntry( allowSelf ) );
+        }
+
+        public DamageEntry FindMostRecentDamageEntry( bool allowSelf )
+        {
+            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
+            {
+                if( i >= m_DamageEntries.Count )
+                    continue;
+
+                DamageEntry de = m_DamageEntries[i];
+
+                if( de.HasExpired )
+                    m_DamageEntries.RemoveAt( i );
+                else if( allowSelf || de.Damager != this )
+                    return de;
+            }
+
+            return null;
+        }
+
+        public Mobile FindLeastRecentDamager( bool allowSelf )
+        {
+            return GetDamagerFrom( FindLeastRecentDamageEntry( allowSelf ) );
+        }
+
+        public DamageEntry FindLeastRecentDamageEntry( bool allowSelf )
+        {
+            for( int i = 0; i < m_DamageEntries.Count; ++i )
+            {
+                if( i < 0 )
+                    continue;
+
+                DamageEntry de = m_DamageEntries[i];
+
+                if( de.HasExpired )
+                {
+                    m_DamageEntries.RemoveAt( i );
+                    --i;
+                }
+                else if( allowSelf || de.Damager != this )
+                {
+                    return de;
+                }
+            }
+
+            return null;
+        }
+
+        public Mobile FindMostTotalDamger( bool allowSelf )
+        {
+            return GetDamagerFrom( FindMostTotalDamageEntry( allowSelf ) );
+        }
+
+        public DamageEntry FindMostTotalDamageEntry( bool allowSelf )
+        {
+            DamageEntry mostTotal = null;
+
+            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
+            {
+                if( i >= m_DamageEntries.Count )
+                    continue;
+
+                DamageEntry de = m_DamageEntries[i];
+
+                if( de.HasExpired )
+                    m_DamageEntries.RemoveAt( i );
+                else if( (allowSelf || de.Damager != this) && (mostTotal == null || de.DamageGiven > mostTotal.DamageGiven) )
+                    mostTotal = de;
+            }
+
+            return mostTotal;
+        }
+
+        public Mobile FindLeastTotalDamger( bool allowSelf )
+        {
+            return GetDamagerFrom( FindLeastTotalDamageEntry( allowSelf ) );
+        }
+
+        public DamageEntry FindLeastTotalDamageEntry( bool allowSelf )
+        {
+            DamageEntry mostTotal = null;
+
+            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
+            {
+                if( i >= m_DamageEntries.Count )
+                    continue;
+
+                DamageEntry de = m_DamageEntries[i];
+
+                if( de.HasExpired )
+                    m_DamageEntries.RemoveAt( i );
+                else if( (allowSelf || de.Damager != this) && (mostTotal == null || de.DamageGiven < mostTotal.DamageGiven) )
+                    mostTotal = de;
+            }
+
+            return mostTotal;
+        }
+
+        public DamageEntry FindDamageEntryFor( Mobile m )
+        {
+            for( int i = m_DamageEntries.Count - 1; i >= 0; --i )
+            {
+                if( i >= m_DamageEntries.Count )
+                    continue;
+
+                DamageEntry de = m_DamageEntries[i];
+
+                if( de.HasExpired )
+                    m_DamageEntries.RemoveAt( i );
+                else if( de.Damager == m )
+                    return de;
+            }
+
+            return null;
+        }
+
+        public override Mobile GetDamageMaster( Mobile damagee )
+        {
+            return null;
+        }
+
+        public virtual DamageEntry RegisterDamage( int amount, Mobile from )
+        {
+            DamageEntry de = FindDamageEntryFor( from );
+
+            if( de == null )
+                de = new DamageEntry( from );
+
+            de.DamageGiven += amount;
+            de.LastDamage = DateTime.Now;
+
+            m_DamageEntries.Remove( de );
+            m_DamageEntries.Add( de );
+
+            Mobile master = from.GetDamageMaster( this );
+
+            if( master != null )
+            {
+                List<DamageEntry> list = de.Responsible;
+
+                if( list == null )
+                    de.Responsible = list = new List<DamageEntry>();
+
+                DamageEntry resp = null;
+
+                for( int i = 0; i < list.Count; ++i )
+                {
+                    DamageEntry check = list[i];
+
+                    if( check.Damager == master )
+                    {
+                        resp = check;
+                        break;
+                    }
+                }
+
+                if( resp == null )
+                    list.Add( resp = new DamageEntry( master ) );
+
+                resp.DamageGiven += amount;
+                resp.LastDamage = DateTime.Now;
+            }
+
+            return de;
         }
 
     }
