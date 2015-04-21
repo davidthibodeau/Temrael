@@ -161,6 +161,7 @@
     <Compile Include="Engines\Institutions\InstitutionGump.cs" />
     <Compile Include="Engines\Institutions\InstitutionHandler.cs" />
     <Compile Include="Misc\Notoriety.cs" />
+    <Compile Include="Misc\PVP\Gumps\PVPGumpJoin.cs" />
     <Compile Include="Misc\PVP\PVPEvent.cs" />
     <Compile Include="Misc\PVP\Gumps\PVPGumpCreation.cs" />
     <Compile Include="Misc\PVP\PVPMap.cs" />

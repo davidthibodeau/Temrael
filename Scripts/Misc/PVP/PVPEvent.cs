@@ -148,26 +148,20 @@ namespace Server.Misc.PVP
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("La tentative d'inscription n'a pas fonctionné : Inscription à une equipe non existante.");
+                    m.SendMessage("La tentative d'inscription n'a pas fonctionné : Inscription à une equipe non existante.");
                     return;
                 }
 
-                // Un joueur ne peut pas s'inscrire dans deux équipes à la fois.
-                foreach (PVPTeam team in teams)
+                if (!EstInscrit(m)) // Un joueur ne peut pas s'inscrire dans deux équipes à la fois.
                 {
-                    if(team.joueurs.Contains(m))
+                    if (map != null)
                     {
-                        return;
-                    }
-                }
-
-                if (map != null)
-                {
-                    if (TeamNumber >= 0 && TeamNumber < map.GetNbSpawnPoints())
-                    {
-                        if (!teams[TeamNumber].joueurs.Contains(m))
+                        if (TeamNumber >= 0 && TeamNumber < map.GetNbSpawnPoints())
                         {
-                            teams[TeamNumber].joueurs.Add(m, PVPPlayerState.None);
+                            if (!teams[TeamNumber].joueurs.Contains(m))
+                            {
+                                teams[TeamNumber].joueurs.Add(m, PVPPlayerState.None);
+                            }
                         }
                     }
                 }
@@ -186,6 +180,29 @@ namespace Server.Misc.PVP
                     }
                 }
             }
+        }
+
+        public bool EstInscrit(Mobile m)
+        {
+            foreach (PVPTeam team in teams)
+            {
+                if (team.joueurs.Contains(m))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public int TotalJoueursInscrit()
+        {
+            int cpt = 0;
+            foreach (PVPTeam team in teams)
+            {
+                cpt += team.joueurs.Count;
+            }
+
+            return cpt;
         }
 
         public bool SetMap(int ID)

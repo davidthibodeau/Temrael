@@ -23,6 +23,8 @@ namespace Server.Misc.PVP
 
         private Rectangle3D rect;
 
+        private List<PVPEvent> m_PVPevent;
+
         [Constructable]
         public PVPStone() 
             : base(0x2312)
@@ -40,7 +42,22 @@ namespace Server.Misc.PVP
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.SendGump(new PVPGumpCreation(from, this));
+            m_PVPevent = new List<PVPEvent>();
+
+            for (int i = 0; i < 40; i++)
+            {
+                PVPEvent p = new PVPEvent(this);
+
+                p.nom = "Derp" + i.ToString();
+                p.SetMap(0);
+                p.SetMode(0);
+                p.debutEvent = DateTime.Now.AddMinutes(10);
+                p.AjouterEquipe();
+
+                m_PVPevent.Add(p);
+            }
+
+            from.SendGump(new PVPGumpJoin(from));
         }
 
         public void TeleportRand(Mobile m)
