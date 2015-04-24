@@ -129,7 +129,7 @@
     <Compile Include="Engines\Evolution\Experience.cs" />
     <Compile Include="Engines\Mort\MortEngine.cs" />
     <Compile Include="Engines\BuffHandling\BuffHandler.cs" />
-    <Compile Include="Engines\BuffHandling\BaseBuff.cs" />
+    <Compile Include="Engines\BuffHandling\Poison.cs" />
     <Compile Include="Engines\Quetes\MonstreQueteInfo.cs" />
     <Compile Include="Engines\Races\AucuneRace.cs" />
     <Compile Include="Engines\Races\Humain.cs" />
