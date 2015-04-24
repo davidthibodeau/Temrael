@@ -67,34 +67,51 @@ namespace Server.Spells
             double value = GetSpellScaling(Caster, Info.skillForCasting) * maxARbonus;
             double duree = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
-            new InternalTimer(m, (int)value, duree).Start();
+            m.AddBuff(new AffaiblissementDebuff(value, (int)duree));
 
             Effects.SendTargetParticles(m,0x375A, 9, 20, 5016, EffectLayer.Waist);
             m.PlaySound(0x1ED);
         }
 
-        private class InternalTimer : Timer
+        private class AffaiblissementDebuff : BaseBuff
         {
-            private ResistanceMod m_resModPhys;
-            private ResistanceMod m_resModMag;
-            private Mobile m_Owner;
+            private double value;
 
-            public InternalTimer(Mobile caster, int value, double duree) : base(TimeSpan.FromSeconds(duree))
+            public AffaiblissementDebuff(double v, int duration)
+                : base(new TimeSpan(0, 0, duration))
             {
-                Priority = TimerPriority.OneSecond;
-
-                m_Owner = caster;
-
-                m_resModMag = new ResistanceMod(ResistanceType.Magical, -1 * (int)value);
-                m_Owner.AddResistanceMod(m_resModMag);
-                m_resModPhys = new ResistanceMod(ResistanceType.Physical, -1 * (int)value);
-                m_Owner.AddResistanceMod(m_resModPhys);
+                value = v;
             }
 
-            protected override void OnTick()
+            protected override BuffEffect effect
             {
-                m_Owner.RemoveResistanceMod(m_resModPhys);
-                m_Owner.RemoveResistanceMod(m_resModMag);
+                get { return BuffEffect.ResistanceMagique | BuffEffect.ResistancePhysique; }
+            }
+
+            public override double Effect(BuffEffect stat)
+            {
+                switch (stat)
+                {
+                    case BuffEffect.ResistancePhysique:
+                        return value;
+                    case BuffEffect.ResistanceMagique:
+                        return value;
+                    default:
+                        return 0;
+                }
+            }
+
+            public override BuffID Id
+            {
+                get { return BuffID.Affaiblissement; }
+            }
+
+            public override int CompareTo(object obj)
+            {
+                BaseBuff b = obj as BaseBuff;
+
+                double diff = value - b.Effect(BuffEffect.ResistancePhysique);
+                return diff < 0 ? -1 : diff > 0 ? 1 : 0;
             }
         }
 

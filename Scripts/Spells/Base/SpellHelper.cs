@@ -369,122 +369,109 @@ namespace Server.Spells
 			}
 		}
 
-		public static bool AddStatOffset( Mobile m, StatType type, int offset, TimeSpan duration )
-		{
-			if ( offset > 0 )
-				return AddStatBonus( m, m, type, offset, duration );
-			else if ( offset < 0 )
-				return AddStatCurse( m, m, type, -offset, duration );
+        //public static bool AddStatOffset( Mobile m, StatType type, int offset, TimeSpan duration )
+        //{
+        //    if ( offset > 0 )
+        //        return AddStatBonus( m, m, type, offset, duration );
+        //    else if ( offset < 0 )
+        //        return AddStatCurse( m, m, type, -offset, duration );
 
-			return true;
-		}
+        //    return true;
+        //}
 
-		public static bool AddStatBonus( Mobile caster, Mobile target, StatType type )
-		{
-			return AddStatBonus( caster, target, type, GetOffset( caster, target, type, false ), GetDuration( caster, target ) );
-		}
+        //public static bool AddStatBonus( Mobile caster, Mobile target, StatType type )
+        //{
+        //    return AddStatBonus( caster, target, type, GetOffset( caster, target, type, false ), GetDuration( caster, target ) );
+        //}
 
-        public static bool AddStatBonus(Mobile caster, Mobile target, StatType type, TimeSpan duration)
-        {
-            return AddStatBonus(caster, target, type, GetOffset(caster, target, type, false), duration);
-        }
+        //public static bool AddStatBonus(Mobile caster, Mobile target, StatType type, TimeSpan duration)
+        //{
+        //    return AddStatBonus(caster, target, type, GetOffset(caster, target, type, false), duration);
+        //}
 
-		public static bool AddStatBonus( Mobile caster, Mobile target, StatType type, int bonus, TimeSpan duration )
-		{
-			int offset = bonus;
-            string name = "Bénédiction";
+        //public static bool AddStatBonus( Mobile caster, Mobile target, StatType type, int bonus, TimeSpan duration )
+        //{
+        //    int offset = bonus;
+        //    string name = "Bénédiction";
 
-            StatMod mod = target.GetStatMod(name);
+        //    StatMod mod = target.GetStatMod(name);
 
-			if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
-			{
-                target.RemoveStatMod(name);
-                target.AddStatMod(new StatMod(type, name, offset, duration));
-                target.SendMessage("Vous sentez une nouvelle force vous envahir, supplantant la précédente.");
-				return true;
-			} 
-            else if (mod == null)
-            {
-                mod = target.GetStatMod("Malédiction");
-                if (mod != null && mod.Type == type)
-                {
-                    target.RemoveStatMod(name);
-                    target.SendMessage("Vous sentez une force vous envahir, écrasant les forces obscures vous tourmentant.");
-                    return true;
-                }
-                else if (mod == null)
-                {
-                    target.SendMessage("Vous sentez une nouvelle force vous envahir.");
-                    target.AddStatMod(new StatMod(type, name, offset, duration));
-                    return true;
-                }
-            }
+        //    if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
+        //    {
+        //        target.RemoveStatMod(name);
+        //        target.AddStatMod(new StatMod(type, name, offset, duration));
+        //        target.SendMessage("Vous sentez une nouvelle force vous envahir, supplantant la précédente.");
+        //        return true;
+        //    } 
+        //    else if (mod == null)
+        //    {
+        //        mod = target.GetStatMod("Malédiction");
+        //        if (mod != null && mod.Type == type)
+        //        {
+        //            target.RemoveStatMod(name);
+        //            target.SendMessage("Vous sentez une force vous envahir, écrasant les forces obscures vous tourmentant.");
+        //            return true;
+        //        }
+        //        else if (mod == null)
+        //        {
+        //            target.SendMessage("Vous sentez une nouvelle force vous envahir.");
+        //            target.AddStatMod(new StatMod(type, name, offset, duration));
+        //            return true;
+        //        }
+        //    }
 
-            target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
-			return false;
-		}
+        //    target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
+        //    return false;
+        //}
 
-		public static bool AddStatCurse( Mobile caster, Mobile target, StatType type )
-		{
-			return AddStatCurse( caster, target, type, GetOffset( caster, target, type, true ), GetDuration( caster, target ) );
-		}
+        //public static bool AddStatCurse( Mobile caster, Mobile target, StatType type )
+        //{
+        //    return AddStatCurse( caster, target, type, GetOffset( caster, target, type, true ), GetDuration( caster, target ) );
+        //}
 
-        public static bool AddStatCurse(Mobile caster, Mobile target, StatType type, TimeSpan duration)
-        {
-            return AddStatCurse(caster, target, type, GetOffset(caster, target, type, true), duration);
-        }
+        //public static bool AddStatCurse(Mobile caster, Mobile target, StatType type, TimeSpan duration)
+        //{
+        //    return AddStatCurse(caster, target, type, GetOffset(caster, target, type, true), duration);
+        //}
 
-		public static bool AddStatCurse( Mobile caster, Mobile target, StatType type, int curse, TimeSpan duration )
-		{
-			int offset = -curse;
-            string name = "Malédiction";
+        //public static bool AddStatCurse( Mobile caster, Mobile target, StatType type, int curse, TimeSpan duration )
+        //{
+        //    int offset = -curse;
+        //    string name = "Malédiction";
 
-            StatMod mod = target.GetStatMod(name);
+        //    StatMod mod = target.GetStatMod(name);
 
-			if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
-			{
-                target.RemoveStatMod(name);
-                target.AddStatMod(new StatMod(type, name, offset, duration));
-                target.SendMessage("Vous sentez une nouvelle force vous tourmenter, supplantant la précédente.");
-				return true;
-			} 
-            else if (mod == null)
-            {
-                mod = target.GetStatMod("Bénédiction");
-                if (mod != null && mod.Type == type)
-                {
-                    target.RemoveStatMod(name);
-                    target.SendMessage("Vous sentez une force vous tourmenter, écrasant les forces bénéfiques en vous.");
-                    return true;
-                }
-                else if (mod == null)
-                {
-                    target.SendMessage("Vous sentez une force vous tourmenter.");
-                    target.AddStatMod(new StatMod(type, name, offset, duration));
-                    return true;
-                }
-            }
+        //    if (mod != null && (mod.Type == type && mod.Offset < offset || mod.Type != type))
+        //    {
+        //        target.RemoveStatMod(name);
+        //        target.AddStatMod(new StatMod(type, name, offset, duration));
+        //        target.SendMessage("Vous sentez une nouvelle force vous tourmenter, supplantant la précédente.");
+        //        return true;
+        //    } 
+        //    else if (mod == null)
+        //    {
+        //        mod = target.GetStatMod("Bénédiction");
+        //        if (mod != null && mod.Type == type)
+        //        {
+        //            target.RemoveStatMod(name);
+        //            target.SendMessage("Vous sentez une force vous tourmenter, écrasant les forces bénéfiques en vous.");
+        //            return true;
+        //        }
+        //        else if (mod == null)
+        //        {
+        //            target.SendMessage("Vous sentez une force vous tourmenter.");
+        //            target.AddStatMod(new StatMod(type, name, offset, duration));
+        //            return true;
+        //        }
+        //    }
 
-            target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
-			return false;
-		}
+        //    target.SendMessage("Étant sous l'effet d'un pouvoir plus grand, celui-ci demeure sans effet.");
+        //    return false;
+        //}
 
 		public static TimeSpan GetDuration( Mobile caster, Mobile target )
         {
             double value = caster.Skills[SkillName.ArtMagique].Value * 5.4;
-
-            if (caster is PlayerMobile)
-            {
-                PlayerMobile pm = caster as PlayerMobile;
-                /* TOCHECK SCALINGSPELLS
-                if (pm != null)
-                {
-                    if (pm.GetAptitudeValue(Aptitude.Spiritisme) > 0)
-                        value *= 1 + (pm.GetAptitudeValue(Aptitude.Spiritisme) * 0.05);
-                }
-                */
-            }
-
             return TimeSpan.FromSeconds(value);
 		}
 
@@ -495,27 +482,6 @@ namespace Server.Spells
 
         public static double AdjustValue(Mobile caster, double value, bool rayon)
         {
-            PlayerMobile m = caster as PlayerMobile;
-
-            //if (m != null)
-            //{
-            //    switch (aptitude)
-            //    {
-            //        case Aptitude.Sorcellerie:
-            //            value *= (m.GetAptitudeValue(Aptitude.Sorcellerie) * 0.04) + 1; break; //0.06
-            //        //case NAptitude.Sorcellerie:
-            //        //    value *= (m.GetAptitudeValue(NAptitude.Sorcellerie) * 0.04) + 1; break; //0.06
-            //        case Aptitude.Spiritisme:
-            //            value *= (m.GetAptitudeValue(Aptitude.Spiritisme) * 0.05) + 1; break; //0.10
-            //        case Aptitude.FaveurDivine:
-            //            value *= (m.GetAptitudeValue(Aptitude.GraceDivine) * 0.04) + 1; break; //0.04
-            //        //case NAptitude.ConnaissancesAccrues:
-            //        //    value *= 1 - (m.GetAptitudeValue(NAptitude.ConnaissancesAccrues) * 0.04); break; //0.05
-            //        //case NAptitude.BonusDivin:
-            //        //    value *= 1 - (m.GetAptitudeValue(NAptitude.BonusDivin) * 0.03); break; //0.04
-            //    }
-            //}
-
             if (rayon)
             {
                 if (RudesseSpell.m_RudesseTable.Contains(caster))
@@ -1005,152 +971,152 @@ namespace Server.Spells
 			}
 		}
 	}
-    public class TransformationSpellHelper
-    {
-        #region Context Stuff
-        private static Dictionary<Mobile, TransformContext> m_Table = new Dictionary<Mobile, TransformContext>();
+    //public class TransformationSpellHelper
+    //{
+    //    #region Context Stuff
+    //    private static Dictionary<Mobile, TransformContext> m_Table = new Dictionary<Mobile, TransformContext>();
 
-        public static void AddContext(Mobile m, TransformContext context)
-        {
-            m_Table[m] = context;
-        }
+    //    public static void AddContext(Mobile m, TransformContext context)
+    //    {
+    //        m_Table[m] = context;
+    //    }
 
-        public static void RemoveContext(Mobile m, bool resetGraphics)
-        {
-            TransformContext context = GetContext(m);
+    //    public static void RemoveContext(Mobile m, bool resetGraphics)
+    //    {
+    //        TransformContext context = GetContext(m);
 
-            if (context != null)
-                RemoveContext(m, context, resetGraphics);
-        }
+    //        if (context != null)
+    //            RemoveContext(m, context, resetGraphics);
+    //    }
 
-        public static void RemoveContext(Mobile m, TransformContext context, bool resetGraphics)
-        {
-            if (m_Table.ContainsKey(m))
-            {
-                m_Table.Remove(m);
-
-
-                List<ResistanceMod> mods = new List<ResistanceMod>(context.Mods.Count);
-                foreach (ResistanceMod item in context.Mods) mods.Add(item);
+    //    public static void RemoveContext(Mobile m, TransformContext context, bool resetGraphics)
+    //    {
+    //        if (m_Table.ContainsKey(m))
+    //        {
+    //            m_Table.Remove(m);
 
 
-                for (int i = 0; i < mods.Count; ++i)
-                    m.RemoveResistanceMod(mods[i]);
+    //            List<ResistanceMod> mods = new List<ResistanceMod>(context.Mods.Count);
+    //            foreach (ResistanceMod item in context.Mods) mods.Add(item);
 
-                if (resetGraphics)
-                {
-                    m.HueMod = -1;
-                    m.BodyMod = 0;
-                }
 
-                context.Timer.Stop();
-                context.Spell.RemoveEffect(m);
-            }
-        }
+    //            for (int i = 0; i < mods.Count; ++i)
+    //                m.RemoveResistanceMod(mods[i]);
 
-        public static TransformContext GetContext(Mobile m)
-        {
-            TransformContext context = null;
+    //            if (resetGraphics)
+    //            {
+    //                m.HueMod = -1;
+    //                m.BodyMod = 0;
+    //            }
 
-            m_Table.TryGetValue(m, out context);
+    //            context.Timer.Stop();
+    //            context.Spell.RemoveEffect(m);
+    //        }
+    //    }
 
-            return context;
-        }
+    //    public static TransformContext GetContext(Mobile m)
+    //    {
+    //        TransformContext context = null;
 
-        public static bool UnderTransformation(Mobile m)
-        {
-            return (GetContext(m) != null);
-        }
+    //        m_Table.TryGetValue(m, out context);
 
-        public static bool UnderTransformation(Mobile m, Type type)
-        {
-            TransformContext context = GetContext(m);
+    //        return context;
+    //    }
 
-            return (context != null && context.Type == type);
-        }
-        #endregion
+    //    public static bool UnderTransformation(Mobile m)
+    //    {
+    //        return (GetContext(m) != null);
+    //    }
 
-        public static bool CheckCast(Mobile caster, Spell spell)
-        {
-            return true;
-        }
+    //    public static bool UnderTransformation(Mobile m, Type type)
+    //    {
+    //        TransformContext context = GetContext(m);
 
-        public static bool OnCast(Mobile caster, Spell spell)
-        {
-            ITransformationSpell transformSpell = spell as ITransformationSpell;
+    //        return (context != null && context.Type == type);
+    //    }
+    //    #endregion
 
-            if (transformSpell == null)
-                return false;
+    //    public static bool CheckCast(Mobile caster, Spell spell)
+    //    {
+    //        return true;
+    //    }
 
-            else if (DisguiseTimers.IsDisguised(caster))
-            {
-                caster.SendLocalizedMessage(1061631); // You can't do that while disguised.
-                return false;
-            }
-            /*else if (AnimalForm.UnderTransformation(caster))
-            {
-                caster.SendLocalizedMessage(1061091); // You cannot cast that spell in this form.
-            }*/
-            else if (!caster.CanBeginAction(typeof(IncognitoSpell)) || (caster.IsBodyMod && GetContext(caster) == null))
-            {
-                spell.DoFizzle();
-            }
-            else if (spell.CheckSequence())
-            {
-                TransformContext context = GetContext(caster);
-                Type ourType = spell.GetType();
+    //    public static bool OnCast(Mobile caster, Spell spell)
+    //    {
+    //        ITransformationSpell transformSpell = spell as ITransformationSpell;
 
-                bool wasTransformed = (context != null);
-                bool ourTransform = (wasTransformed && context.Type == ourType);
+    //        if (transformSpell == null)
+    //            return false;
 
-                if (wasTransformed)
-                {
-                    RemoveContext(caster, context, ourTransform);
+    //        else if (DisguiseTimers.IsDisguised(caster))
+    //        {
+    //            caster.SendLocalizedMessage(1061631); // You can't do that while disguised.
+    //            return false;
+    //        }
+    //        /*else if (AnimalForm.UnderTransformation(caster))
+    //        {
+    //            caster.SendLocalizedMessage(1061091); // You cannot cast that spell in this form.
+    //        }*/
+    //        else if (!caster.CanBeginAction(typeof(IncognitoSpell)) || (caster.IsBodyMod && GetContext(caster) == null))
+    //        {
+    //            spell.DoFizzle();
+    //        }
+    //        else if (spell.CheckSequence())
+    //        {
+    //            TransformContext context = GetContext(caster);
+    //            Type ourType = spell.GetType();
 
-                    if (ourTransform)
-                    {
-                        caster.PlaySound(0xFA);
-                        Effects.SendTargetParticles(caster,0x3728, 1, 13, 5042, EffectLayer.Waist);
-                    }
-                }
+    //            bool wasTransformed = (context != null);
+    //            bool ourTransform = (wasTransformed && context.Type == ourType);
 
-                if (!ourTransform)
-                {
-                    List<ResistanceMod> mods = new List<ResistanceMod>();
+    //            if (wasTransformed)
+    //            {
+    //                RemoveContext(caster, context, ourTransform);
 
-                    if (transformSpell.PhysResistOffset != 0)
-                        mods.Add(new ResistanceMod(ResistanceType.Physical, transformSpell.PhysResistOffset));
+    //                if (ourTransform)
+    //                {
+    //                    caster.PlaySound(0xFA);
+    //                    Effects.SendTargetParticles(caster,0x3728, 1, 13, 5042, EffectLayer.Waist);
+    //                }
+    //            }
 
-                    if (transformSpell.NrgyResistOffset != 0)
-                        mods.Add(new ResistanceMod(ResistanceType.Magical, transformSpell.NrgyResistOffset));
+    //            if (!ourTransform)
+    //            {
+    //                List<ResistanceMod> mods = new List<ResistanceMod>();
 
-                    if (!((Body)transformSpell.Body).IsHuman)
-                    {
-                        Mobiles.IMount mt = caster.Mount;
+    //                if (transformSpell.PhysResistOffset != 0)
+    //                    mods.Add(new ResistanceMod(ResistanceType.Physical, transformSpell.PhysResistOffset));
 
-                        if (mt != null)
-                            mt.Rider = null;
-                    }
+    //                if (transformSpell.NrgyResistOffset != 0)
+    //                    mods.Add(new ResistanceMod(ResistanceType.Magical, transformSpell.NrgyResistOffset));
 
-                    caster.BodyMod = transformSpell.Body;
-                    caster.HueMod = transformSpell.Hue;
+    //                if (!((Body)transformSpell.Body).IsHuman)
+    //                {
+    //                    Mobiles.IMount mt = caster.Mount;
 
-                    for (int i = 0; i < mods.Count; ++i)
-                        caster.AddResistanceMod(mods[i]);
+    //                    if (mt != null)
+    //                        mt.Rider = null;
+    //                }
 
-                    transformSpell.DoEffect(caster);
+    //                caster.BodyMod = transformSpell.Body;
+    //                caster.HueMod = transformSpell.Hue;
 
-                    Timer timer = new TransformTimer(caster, transformSpell);
-                    timer.Start();
+    //                for (int i = 0; i < mods.Count; ++i)
+    //                    caster.AddResistanceMod(mods[i]);
 
-                    AddContext(caster, new TransformContext(timer, mods, ourType, transformSpell));
-                    return true;
-                }
-            }
+    //                transformSpell.DoEffect(caster);
 
-            return false;
-        }
-    }
+    //                Timer timer = new TransformTimer(caster, transformSpell);
+    //                timer.Start();
+
+    //                AddContext(caster, new TransformContext(timer, mods, ourType, transformSpell));
+    //                return true;
+    //            }
+    //        }
+
+    //        return false;
+    //    }
+    //}
 
     public interface ITransformationSpell
     {
@@ -1168,68 +1134,68 @@ namespace Server.Spells
     }
 
 
-    public class TransformContext
-    {
-        private Timer m_Timer;
-        private ArrayList m_Mods;
-        private Type m_Type;
-        private ITransformationSpell m_Spell;
+    //public class TransformContext
+    //{
+    //    private Timer m_Timer;
+    //    private ArrayList m_Mods;
+    //    private Type m_Type;
+    //    private ITransformationSpell m_Spell;
 
-        public Timer Timer { get { return m_Timer; } }
-        public ArrayList Mods { get { return m_Mods; } }
-        public Type Type { get { return m_Type; } }
-        public ITransformationSpell Spell { get { return m_Spell; } }
+    //    public Timer Timer { get { return m_Timer; } }
+    //    public ArrayList Mods { get { return m_Mods; } }
+    //    public Type Type { get { return m_Type; } }
+    //    public ITransformationSpell Spell { get { return m_Spell; } }
 
-        public TransformContext(Timer timer, List<ResistanceMod> mods, Type type, ITransformationSpell spell)
-        {
-            m_Timer = timer;
-            m_Mods = new ArrayList(mods);
-            m_Type = type;
-            m_Spell = spell;
-        }
+    //    public TransformContext(Timer timer, List mods, Type type, ITransformationSpell spell)
+    //    {
+    //        m_Timer = timer;
+    //        m_Mods = new ArrayList(mods);
+    //        m_Type = type;
+    //        m_Spell = spell;
+    //    }
 
-        public TransformContext(Timer timer, ArrayList mods, Type type)
-        {
-            m_Timer = timer;
-            m_Mods = mods;
-            m_Type = type;
-        }
-    }
+    //    public TransformContext(Timer timer, ArrayList mods, Type type)
+    //    {
+    //        m_Timer = timer;
+    //        m_Mods = mods;
+    //        m_Type = type;
+    //    }
+    //}
 
-    public class TransformTimer : Timer
-    {
-        private Mobile m_Mobile;
-        private TransformationSpell m_Spell;
+    //public class TransformTimer : Timer
+    //{
+    //    private Mobile m_Mobile;
+    //    private TransformationSpell m_Spell;
 
-        public TransformTimer(Mobile from, ITransformationSpell spell)
-            : base(TimeSpan.FromSeconds(spell.TickRate), TimeSpan.FromSeconds(spell.TickRate))
-        {
-            m_Mobile = from;
-            m_Spell = (TransformationSpell)spell;
+    //    public TransformTimer(Mobile from, ITransformationSpell spell)
+    //        : base(TimeSpan.FromSeconds(spell.TickRate), TimeSpan.FromSeconds(spell.TickRate))
+    //    {
+    //        m_Mobile = from;
+    //        m_Spell = (TransformationSpell)spell;
 
-            Priority = TimerPriority.TwoFiftyMS;
-        }
+    //        Priority = TimerPriority.TwoFiftyMS;
+    //    }
 
-        public TransformTimer(Mobile from, TransformationSpell spell)
-            : base(TimeSpan.FromSeconds(spell.TickRate), TimeSpan.FromSeconds(spell.TickRate))
-        {
-            m_Mobile = from;
-            m_Spell = spell;
+    //    public TransformTimer(Mobile from, TransformationSpell spell)
+    //        : base(TimeSpan.FromSeconds(spell.TickRate), TimeSpan.FromSeconds(spell.TickRate))
+    //    {
+    //        m_Mobile = from;
+    //        m_Spell = spell;
 
-            Priority = TimerPriority.TwoFiftyMS;
-        }
+    //        Priority = TimerPriority.TwoFiftyMS;
+    //    }
 
-        protected override void OnTick()
-        {
-            if (m_Mobile.Deleted || !m_Mobile.Alive || m_Mobile.Body != m_Spell.Body || m_Mobile.Hue != m_Spell.Hue)
-            {
-                TransformationSpellHelper.RemoveContext(m_Mobile, true);
-                Stop();
-            }
-            else
-            {
-                m_Spell.OnTick(m_Mobile);
-            }
-        }
-    }
+    //    protected override void OnTick()
+    //    {
+    //        if (m_Mobile.Deleted || !m_Mobile.Alive || m_Mobile.Body != m_Spell.Body || m_Mobile.Hue != m_Spell.Hue)
+    //        {
+    //            TransformationSpellHelper.RemoveContext(m_Mobile, true);
+    //            Stop();
+    //        }
+    //        else
+    //        {
+    //            m_Spell.OnTick(m_Mobile);
+    //        }
+    //    }
+    //}
 }

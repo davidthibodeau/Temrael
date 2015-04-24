@@ -8,24 +8,7 @@ using Server.Items;
 
 namespace Server.Engines.BuffHandling
 {
-    public abstract class BaseBuff : IComparable
-    {
-        protected abstract BuffEffect effect
-        {
-            get;
-        }
 
-        public bool ContainsEffect(BuffEffect stat)
-        {
-            return (effect & stat) == stat;
-        }
-
-        public abstract double Effect(BuffEffect stat);
-
-        public abstract BuffID Id { get; }
-
-        public abstract int CompareTo(object obj);
-    }
 
     public abstract class Poison : BaseBuff
     {
@@ -48,23 +31,10 @@ namespace Server.Engines.BuffHandling
 
     public abstract class Buff : BaseBuff
     {
-        public TimeSpan duree;
-
-        // Retourne la valeur d'offset ( si il y en a une ). Par exemple, un buff qui donne 30 de force devrait retourner 30.
-        protected double RetourGetOffset;
 
         public Buff(TimeSpan duration)
-        {
-            duree = duration;
-            RetourGetOffset = 0;
-        }
-
-        public virtual void Effect(Mobile trg)
+            : base(duration)
         {
         }
-
-        // Retourne true si le timer gérant le buff doit restarter, retourne false sinon.
-        // Peut décider d'updater sa valeur si celle de la valeur entrée est "meilleure" que la sienne.
-        public abstract bool CompareNewEntry( Buff buff );
     }
 }

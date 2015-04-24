@@ -1571,7 +1571,6 @@
     <Compile Include="Spells\3XX.Alteration\06.Strangle.cs" />
     <Compile Include="Spells\9XX.Necromancie\07.SummonFamiliar.cs" />
     <Compile Include="Spells\Base\TransformationSpell.cs" />
-    <Compile Include="Spells\Autres-Inutilises\InutiliseNouveauSys\VampiricEmbrace.cs" />
     <Compile Include="Spells\9XX.Necromancie\06.VengefulSpirit.cs" />
     <Compile Include="Spells\Autres-Inutilises\InutiliseNouveauSys\Wither.cs" />
     <Compile Include="Spells\9XX.Necromancie\03.WraithForm.cs" />

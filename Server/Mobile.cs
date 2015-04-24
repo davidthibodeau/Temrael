@@ -51,9 +51,62 @@ namespace Server
 	public delegate void PromptStateCallback<T>( Mobile from, string text, T state );
 	#endregion
 
+    public abstract class BaseBuff : IComparable
+    {
+        private DateTime expiration;
 
+        public BaseBuff(TimeSpan duration)
+        {
+            expiration = DateTime.Now.Add(duration);
+        }
+
+        protected abstract BuffEffect effect
+        {
+            get;
+        }
+
+        public bool ContainsEffect(BuffEffect stat)
+        {
+            return (effect & stat) == stat;
+        }
+
+        public abstract double Effect(BuffEffect stat);
+
+        public abstract BuffID Id { get; }
+
+        public abstract int CompareTo(object obj);
+
+        public TimeSpan TempsRestant
+        {
+            get { return expiration - DateTime.Now; }
+        }
+    }
 
 	#region Enums
+    public enum BuffID
+    {
+        Benediction,
+        Malediction,
+        ResistanceBuffSpell,
+        Affaiblissement,
+    }
+
+    [Flags]
+    public enum BuffEffect
+    {
+        None                = 0x000,
+        Str                 = 0x001,
+        Dex                 = 0x002,
+        Int                 = 0x004,
+        HitsMax             = 0x008,
+        StamMax             = 0x010,
+        ManaMax             = 0x020,
+        Vitesse             = 0x040,
+        Penetration         = 0x080,
+        ResistancePhysique  = 0x100,
+        ResistanceMagique   = 0x200,
+    }
+
 	[Flags]
 	public enum StatType
 	{
@@ -583,6 +636,8 @@ namespace Server
                 return RawStr + RawDex + RawInt;
             }
         }
+
+        public abstract void AddBuff(BaseBuff buff);
 
 
 		#region CompareTo(...)

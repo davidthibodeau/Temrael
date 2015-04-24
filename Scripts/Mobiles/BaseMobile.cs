@@ -167,7 +167,7 @@ namespace Server.Mobiles
             private set;
         }
 
-        public void AddBuff(BaseBuff buff)
+        public override void AddBuff(BaseBuff buff)
         {
             Buffs.AddBuff(buff);
 

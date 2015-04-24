@@ -67,32 +67,42 @@ namespace Server.Spells
             double value = GetSpellScaling(Caster, Info.skillForCasting) * maxARbonus;
             double duree = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
-            new InternalTimer(m, (int)value, duree).Start();
+            m.AddBuff(new ChampEntropiqueBuff(value, (int)duree));
 
             Effects.SendTargetParticles(m,0x375A, 9, 20, 5016, EffectLayer.Waist);
             m.PlaySound(0x1ED);
         }
 
-        private class InternalTimer : Timer
+        private class ChampEntropiqueBuff : BaseBuff
         {
-            private ResistanceMod m_resMod;
-            private Mobile m_Owner;
+            private double value;
 
-            public InternalTimer(Mobile caster, int value, double duree) : base(TimeSpan.FromSeconds(duree))
+            public ChampEntropiqueBuff(double v, int duration)
+                : base(new TimeSpan(0, 0, duration))
             {
-                Priority = TimerPriority.OneSecond;
-
-                m_Owner = caster;
-
-                m_resMod = new ResistanceMod(ResistanceType.Magical, (int)value);
-                m_Owner.AddResistanceMod(m_resMod);
+                value = v;
             }
 
-            protected override void OnTick()
+            protected override BuffEffect effect
             {
-                m_Owner.RemoveResistanceMod(m_resMod);
+                get { return BuffEffect.ResistanceMagique; }
+            }
 
-                m_Owner.SendMessage("Champ entropique prend fin.");
+            public override double Effect(BuffEffect stat)
+            {
+                if (stat == BuffEffect.ResistanceMagique)
+                    return value;
+                return 0;
+            }
+
+            public override BuffID Id
+            {
+                get { return BuffID.ResistanceBuffSpell; }
+            }
+
+            public override int CompareTo(object obj)
+            {
+                return 0;
             }
         }
 

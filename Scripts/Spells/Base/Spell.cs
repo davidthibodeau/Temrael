@@ -24,11 +24,11 @@ namespace Server.Spells
                 Caster.SendMessage(m.Name + " est déjà affecté par Incognito.");
                 return false;
             }
-            else if (!m.CanBeginAction(typeof(MetamorphoseSpell)) || !m.CanBeginAction(typeof(MutationSpell)) || !m.CanBeginAction(typeof(AlterationSpell)) || !m.CanBeginAction(typeof(SubterfugeSpell)) || !m.CanBeginAction(typeof(ChimereSpell)) || !m.CanBeginAction(typeof(TransmutationSpell)))
-            {
-                Caster.SendMessage(m.Name + " est déjà transformé.");
-                return false;
-            }
+            //else if (!m.CanBeginAction(typeof(MetamorphoseSpell)) || !m.CanBeginAction(typeof(MutationSpell)) || !m.CanBeginAction(typeof(AlterationSpell)) || !m.CanBeginAction(typeof(SubterfugeSpell)) || !m.CanBeginAction(typeof(ChimereSpell)) || !m.CanBeginAction(typeof(TransmutationSpell)))
+            //{
+            //    Caster.SendMessage(m.Name + " est déjà transformé.");
+            //    return false;
+            //}
             else if (!m.CanBeginAction(typeof(InstinctCharnelSpell)))
             {
                 Caster.SendMessage(m.Name + " est déjà transformé.");
@@ -288,10 +288,10 @@ namespace Server.Spells
                 {
                     Caster.SendLocalizedMessage(502642); // You are already casting a spell.
                 }
-                else if (BlockedByHorrificBeast && TransformationSpell.UnderTransformation(Caster, typeof(HorrificBeastSpell)))
-                {
-                    Caster.SendLocalizedMessage(1061091); // You cannot cast that spell in this form.
-                }
+                //else if (BlockedByHorrificBeast && TransformationSpell.UnderTransformation(Caster, typeof(HorrificBeastSpell)))
+                //{
+                //    Caster.SendLocalizedMessage(1061091); // You cannot cast that spell in this form.
+                //}
                 else if (Caster.Frozen)
                 {
                     Caster.SendLocalizedMessage(502643); // You can not cast a spell while frozen.

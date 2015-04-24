@@ -67,34 +67,67 @@ namespace Server.Spells
             double value = GetSpellScaling(Caster, Info.skillForCasting) * maxARbonus;
             double duree = GetSpellScaling(Caster, Info.skillForCasting) * dureeMax;
 
-            new InternalTimer(m, (int)value, duree).Start();
+            m.AddBuff(new PeauDePierreBuff(value, (int)duree));
 
             Effects.SendTargetParticles(m,0x375A, 9, 20, 5016, EffectLayer.Waist);
             m.PlaySound(0x1ED);
         }
 
-        private class InternalTimer : Timer
+        private class PeauDePierreBuff : BaseBuff
         {
-            private ResistanceMod m_resMod;
-            private Mobile m_Owner;
+            private double value;
 
-            public InternalTimer(Mobile caster, int value, double duree) : base(TimeSpan.FromSeconds(duree))
+            public PeauDePierreBuff(double v, int duration)
+                : base(new TimeSpan(0, 0, duration))
             {
-                Priority = TimerPriority.OneSecond;
-
-                m_Owner = caster;
-
-                m_resMod = new ResistanceMod(ResistanceType.Physical, (int)value);
-                m_Owner.AddResistanceMod(m_resMod);
+                value = v;
             }
 
-            protected override void OnTick()
+            protected override BuffEffect effect
             {
-                m_Owner.RemoveResistanceMod(m_resMod);
+                get { return BuffEffect.ResistanceMagique; }
+            }
 
-                m_Owner.SendMessage("Peau de pierre prend fin.");
+            public override double Effect(BuffEffect stat)
+            {
+                if (stat == BuffEffect.ResistancePhysique)
+                    return value;
+                return 0;
+            }
+
+            public override BuffID Id
+            {
+                get { return BuffID.ResistanceBuffSpell; }
+            }
+
+            public override int CompareTo(object obj)
+            {
+                return 0;
             }
         }
+
+        //private class InternalTimer : Timer
+        //{
+        //    private ResistanceMod m_resMod;
+        //    private Mobile m_Owner;
+
+        //    public InternalTimer(Mobile caster, int value, double duree) : base(TimeSpan.FromSeconds(duree))
+        //    {
+        //        Priority = TimerPriority.OneSecond;
+
+        //        m_Owner = caster;
+
+        //        m_resMod = new ResistanceMod(ResistanceType.Physical, (int)value);
+        //        m_Owner.AddResistanceMod(m_resMod);
+        //    }
+
+        //    protected override void OnTick()
+        //    {
+        //        m_Owner.RemoveResistanceMod(m_resMod);
+
+        //        m_Owner.SendMessage("Peau de pierre prend fin.");
+        //    }
+        //}
 
         private class InternalTarget : Target
         {
