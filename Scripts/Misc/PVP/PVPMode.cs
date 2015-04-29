@@ -22,6 +22,18 @@ namespace Server.Misc.PVP
             m_pvpevent = pvpevent;
         }
 
+        public abstract TimeSpan timeout
+        {
+            get;
+        }
+
+        // 0 veut dire que le nombre d'équipes est limité par la map seulement.
+        public abstract int NbMaxEquipes
+        {
+            get;
+        }
+
+        #region Spawning
         public void SpawnAll()
         {
             foreach (PVPTeam team in m_pvpevent.teams)
@@ -79,7 +91,9 @@ namespace Server.Misc.PVP
             m_pvpevent.stone.TeleportRand(m);
             //m.LogoutLocation = m.Location;
         }
+        #endregion
 
+        #region Debut fin du combat.
         public abstract void Start();
 
         /// <summary>
@@ -91,5 +105,6 @@ namespace Server.Misc.PVP
             Console.WriteLine("Stopping");
             m_pvpevent.StopEvent();
         }
+        #endregion
     }
 }

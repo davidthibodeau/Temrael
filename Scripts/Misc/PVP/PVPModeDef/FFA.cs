@@ -15,6 +15,16 @@ namespace Server.Misc.PVP.PVPModeDef
         {
         }
 
+        public override TimeSpan timeout
+        {
+            get { return TimeSpan.FromMinutes(10); }
+        }
+
+        public override int NbMaxEquipes
+        {
+            get { return 1; }
+        }
+
         protected override void Spawn(Mobile m)
         {
             IPoint3D p = new Point3D(m_pvpevent.map.Region.RandomPoint(), 0);

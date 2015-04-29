@@ -12,6 +12,16 @@ namespace Server.Misc.PVP.PVPModeDef
         {
         }
 
+        public override TimeSpan timeout
+        {
+            get { return TimeSpan.FromMinutes(10); }
+        }
+
+        public override int NbMaxEquipes
+        {
+            get { return 0; }
+        }
+
         public override void Start()
         {
         }

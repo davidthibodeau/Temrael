@@ -9,7 +9,7 @@ using Server.Commands;
 using Server.Mobiles;
 using Server.Targeting;
 
-namespace Server.Misc.PVP
+namespace Server.Misc.PVP.Gumps
 {
     public class PVPGumpCreation : GumpTemrael
     {
@@ -62,27 +62,27 @@ namespace Server.Misc.PVP
             // Nom du combat.
             if (m_Pvpevent.nom == "")
             {
-                NbLignes = 2 + 1; // Entête + textbox.
+                NbLignes = 2 + 1 + 1; // Entête + textbox + suivant.
             }
             // Choix de date.
             else if (m_Pvpevent.debutEvent <= DateTime.Now)
             {
-                NbLignes = 2 + 1; // Entête + textbox.
+                NbLignes = 2 + 1 + 1; // Entête + textbox + suivant.
             }
             // Choix de map.
             else if (m_Pvpevent.map == null)
             {
-                NbLignes = PVPMap.MapList.Count + 2; // Nb de map possible + 1 Pour l'entête.
+                NbLignes = PVPMap.MapList.Count + 2; // Nb de map possible + entête.
             }
             // Choix de mode.
             else if (m_Pvpevent.mode == null)
             {
-                NbLignes = PVPMode.ModeList.Count + 2; // Nb de modes possible + 1 Pour l'entête.
+                NbLignes = PVPMode.ModeList.Count + 2; // Nb de modes possible + entête.
             }
             // Choix du nombre d'équipes.
             else if (m_Pvpevent.teams.Count == 0)
             {
-                NbLignes = 2 + 1; // Entête + textbox.
+                NbLignes = 2 + 1 + 1; // Entête + textbox + suivant.
             }
             // Résumé et confirmation.
             else
@@ -103,12 +103,9 @@ namespace Server.Misc.PVP
                 AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Nom du combat : " + "</h3>", false, false);
                 AddTextEntry(x + 150, y + (line * scale), 450, 20, 0, 0, m_Pvpevent.nom);
                 line++;
-            }
-            // Choix de date.
-            else if (m_Pvpevent.debutEvent <= DateTime.Now)
-            {
-                AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Date du combat : " + "</h3>", false, false);
-                AddTextEntry(x + 155, y + (line * scale), 450, 20, 0, 1, m_Pvpevent.debutEvent.ToString());
+
+                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(6, 0), GumpButtonType.Reply, 0);
+                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3> Suivant </h3>", false, false);
                 line++;
             }
             // Choix de map.
@@ -117,7 +114,7 @@ namespace Server.Misc.PVP
                 int cpt = 0;
                 foreach (PVPMap map in PVPMap.MapList)
                 {
-                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, cpt), GumpButtonType.Reply, 0);
+                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(1, cpt), GumpButtonType.Reply, 0);
                     AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>" + map.Name + "</h3>", false, false);
                     line++;
                     cpt++;
@@ -129,17 +126,39 @@ namespace Server.Misc.PVP
                 int cpt = 0;
                 foreach (Type mode in PVPMode.ModeList)
                 {
-                    AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(3, cpt), GumpButtonType.Reply, 0);
-                    AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>" + mode.Name + "</h3>", false, false);
-                    line++;
-                    cpt++;
+                    if (m_Pvpevent.map.IsAllowedMode(mode))
+                    {
+                        AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, cpt), GumpButtonType.Reply, 0);
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>" + mode.Name + "</h3>", false, false);
+                        line++;
+                        cpt++;
+                    }
                 }
             }
             // Choix du nombre d'équipes.
             else if (m_Pvpevent.teams.Count == 0)
             {
                 AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Nombre d'équipes (1 à " + m_Pvpevent.map.GetNbSpawnPoints() + ") : " + "</h3>", false, false);
-                AddTextEntry(x + 185, y + (line * scale), 450, 20, 0, 4, m_Pvpevent.teams.Count.ToString());
+                AddTextEntry(x + 185, y + (line * scale), 450, 20, 0, 3, m_Pvpevent.teams.Count.ToString());
+                line++;
+
+                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(6, 0), GumpButtonType.Reply, 0);
+                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3> Suivant </h3>", false, false);
+                line++;
+            }
+            // Choix de date.
+            else if (m_Pvpevent.debutEvent <= DateTime.Now)
+            {
+                line--;
+                AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Format :", false, false);
+                AddHtml(x + 155, y + (line * scale), 450, 20, "<h3>" + "aaaa-mm-jj_hh:mm:ss", false, false);
+                line++;
+                AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Date du combat : " + "</h3>", false, false);
+                AddTextEntry(x + 155, y + (line * scale), 450, 20, 0, 4, m_Pvpevent.debutEvent.ToString());
+                line++;
+
+                AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(6, 0), GumpButtonType.Reply, 0);
+                AddHtml(x + 35, y + (line * scale), 400, 20, "<h3> Suivant </h3>", false, false);
                 line++;
             }
             // Résumé et confirmation.
@@ -182,6 +201,11 @@ namespace Server.Misc.PVP
             int type = buttonID % NbMapModeMax;
             int index = buttonID / NbMapModeMax;
 
+            if (buttonID == -1)
+            {
+                m_Pvpevent.StopEvent();
+                return;
+            }
 
             // 0 Nom
             TextRelay relay = info.GetTextEntry(0);
@@ -192,34 +216,21 @@ namespace Server.Misc.PVP
                     m_Pvpevent.nom = relay.Text;
                 }
             }
-            // 1 Date
-            relay = info.GetTextEntry(1);
-            if (relay != null)
+
+            // 1 Map
+            if(type == 1)
             {
-                if (relay.Text != null)
-                {
-                    DateTime time;
-                    if (DateTime.TryParse(relay.Text, out time))
-                    {
-                        m_Pvpevent.debutEvent = time;
-                    }
-                }
+                m_Pvpevent.SetMapByID(index);
             }
 
-            // 2 Map
+            // 2 Mode
             if(type == 2)
             {
-                m_Pvpevent.SetMap(index);
+                m_Pvpevent.SetModeByID(index);
             }
 
-            // 3 Mode
-            if(type == 3)
-            {
-                m_Pvpevent.SetMode(index);
-            }
-
-            // 4 Teams
-            relay = info.GetTextEntry(4);
+            // 3 Teams
+            relay = info.GetTextEntry(3);
             if (relay != null)
             {
                 if (relay.Text != null)
@@ -231,6 +242,20 @@ namespace Server.Misc.PVP
                         {
                             m_Pvpevent.SetNbEquipe(value);
                         }
+                    }
+                }
+            }
+
+            // 4 Date
+            relay = info.GetTextEntry(4);
+            if (relay != null)
+            {
+                if (relay.Text != null)
+                {
+                    DateTime time;
+                    if (DateTime.TryParse(relay.Text, out time))
+                    {
+                        m_Pvpevent.debutEvent = time;
                     }
                 }
             }
@@ -280,6 +305,8 @@ namespace Server.Misc.PVP
                         }
                 }
             }
+
+            // Bouton #6 Fait un refresh de la page.
 
             m_From.SendGump(new PVPGumpCreation((Mobile)m_From, m_Pvpevent));
         }

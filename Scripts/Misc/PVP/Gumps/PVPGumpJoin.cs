@@ -9,7 +9,7 @@ using Server.Commands;
 using Server.Mobiles;
 using Server.Targeting;
 
-namespace Server.Misc.PVP
+namespace Server.Misc.PVP.Gumps
 {
     public class PVPGumpJoin : GumpTemrael
     {
@@ -43,12 +43,12 @@ namespace Server.Misc.PVP
 
             m_From.CloseGump(typeof(PVPGumpJoin));
 
-            AddBackground(0, 0, 800, 735, 5054);
+            AddBackground(0, 0, 950, 735, 5054);
 
             int column = 1;
 
-            AddHtml(350, y + (line * scale), 150, 20, "<h3>" + "Inscriptions" + "</h3>", false, false);
-            AddHtml(700, y + (line * scale), 150, 20, "<h3>" + "Page : " + m_page.ToString() + "</h3>", false, false);
+            AddHtml(400, y + (line * scale), 150, 20, "<h3>" + "Inscriptions" + "</h3>", false, false);
+            AddHtml(750, y + (line * scale), 150, 20, "<h3>" + "Page : " + m_page.ToString() + "</h3>", false, false);
             line+=2;
             AddHtml(x + (column * columnScale), y + (line * scale), 150, 20, "<h3>" + "Nom" + "</h3>", false, false);
             column+= 3;
@@ -59,8 +59,10 @@ namespace Server.Misc.PVP
             AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + "Mode" + "</h3>", false, false);
             column += 2;
             AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + "Joueurs" + "</h3>", false, false);
+            column += 2;
+            AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + "État" + "</h3>", false, false);
             line++;
-            AddImageTiled(15, y + (line * scale), 770, 3, 96);
+            AddImageTiled(15, y + (line * scale), 930, 3, 96);
             line++;
 
             PVPEvent m_Pvpevent;
@@ -71,8 +73,9 @@ namespace Server.Misc.PVP
                 {
                     m_Pvpevent = (PVPEvent)PVPEvent.m_InstancesList[(page * NbEventParPage) + i];
                 }
-                catch (ArgumentOutOfRangeException)
+                catch (Exception)
                 {
+                    line += ((2* (NbEventParPage - i))-1);
                     break;
                 }
 
@@ -103,17 +106,20 @@ namespace Server.Misc.PVP
                 column += 2;
                 //Joueurs
                 AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + m_Pvpevent.TotalJoueursInscrit() + "</h3>", false, false);
+                // État
+                column += 2;
+                AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + m_Pvpevent.state.ToString() + "</h3>", false, false);
 
                 line++;
                 if (i != NbEventParPage - 1)
                 {
-                    AddImageTiled(50, y + (line * scale), 700, 3, 96);
+                    AddImageTiled(50, y + (line * scale), 800, 3, 96);
                     line++;
                 }
             }
 
             line++;
-            AddImageTiled(15, y + (line * scale), 770, 3, 96);
+            AddImageTiled(15, y + (line * scale), 930, 3, 96);
             line++;
 
             // Bouton pour rafraîchir.
@@ -121,11 +127,11 @@ namespace Server.Misc.PVP
             AddHtml(150, y + (line * scale), 150, 20, "<h3> Rafraîchir </h3>", false, false);
 
             // Page precedente
-            AddHtml(450, y + (line * scale), 150, 20, "<h3> Precedent </h3>", false, false);
-            AddButton(540, y + (line * scale), 0xFAE, 0xFB0, GetButtonID(4, 0), GumpButtonType.Reply, 0);
+            AddHtml(600, y + (line * scale), 150, 20, "<h3> Precedent </h3>", false, false);
+            AddButton(690, y + (line * scale), 0xFAE, 0xFB0, GetButtonID(4, 0), GumpButtonType.Reply, 0);
             // Page suivante
-            AddButton(565, y + (line * scale), 0xFA5, 0xFA7, GetButtonID(5, 0), GumpButtonType.Reply, 0);
-            AddHtml(605, y + (line * scale), 150, 20, "<h3> Suivant </h3>", false, false);
+            AddButton(715, y + (line * scale), 0xFA5, 0xFA7, GetButtonID(5, 0), GumpButtonType.Reply, 0);
+            AddHtml(755, y + (line * scale), 150, 20, "<h3> Suivant </h3>", false, false);
         }
 
 
@@ -167,7 +173,7 @@ namespace Server.Misc.PVP
                                 m_page--;
                             }
                         }
-                        catch (ArgumentOutOfRangeException)
+                        catch (Exception)
                         {
                         }
                         break;
@@ -181,7 +187,7 @@ namespace Server.Misc.PVP
                                 m_page++;
                             }
                         }
-                        catch (ArgumentOutOfRangeException)
+                        catch (Exception)
                         {
                         }
                         break;
