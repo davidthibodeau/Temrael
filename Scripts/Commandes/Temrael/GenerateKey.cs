@@ -39,6 +39,13 @@ namespace Server.Commandes.Temrael
             
             item.KeyValue = newKeyValue;
 
+            if (item is BaseDoor)
+            {
+                BaseDoor door = (BaseDoor)item;
+
+                door.Link.KeyValue = newKeyValue;
+            }
+
             for (int i = 0; i < nbKeys; i++)
             {
                 key = new Key(KeyType.Iron);
