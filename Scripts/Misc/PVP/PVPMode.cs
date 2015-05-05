@@ -106,5 +106,24 @@ namespace Server.Misc.PVP
             m_pvpevent.StopEvent();
         }
         #endregion
+
+        #region Serialize / Deserialize
+        public void Serialize(GenericWriter writer)
+        {
+            for (int i = 0; i < ModeList.Count; i++)
+            {
+                if (ModeList[i] == this.GetType())
+                {
+                    writer.Write(i);
+                    break;
+                }
+            }
+        }
+
+        public static Type Deserialize(GenericReader reader)
+        {
+            return ModeList[reader.ReadInt()];
+        }
+        #endregion
     }
 }

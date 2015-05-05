@@ -8,12 +8,12 @@ namespace Server.Misc.PVP
 {
     public class PVPTeam
     {
-        public Hashtable joueurs; // Mobile -- PVPPlayerState
+        public Dictionary<Mobile,PVPPlayerState> joueurs;
         public Point3D spawnLoc;
 
         public PVPTeam()
         {
-            joueurs = new Hashtable();
+            joueurs = new Dictionary<Mobile,PVPPlayerState>();
             spawnLoc = new Point3D();
         }
     }

@@ -62,6 +62,13 @@ namespace Server.Misc.PVP
             base.Serialize(writer);
 
             writer.Write(rect);
+
+            int count = PVPEvent.m_InstancesList.Count;
+            writer.Write(count);
+            for (int i = 0; i < count; ++i)
+            {
+                ((PVPEvent)PVPEvent.m_InstancesList[i]).Serialize(writer);
+            }
         }
 
         public override void Deserialize(GenericReader reader)
@@ -69,6 +76,13 @@ namespace Server.Misc.PVP
             base.Deserialize(reader);
 
             rect = reader.ReadRect3D();
+
+            int count = reader.ReadInt();
+            for(int i = 0; i < count; ++i)
+            {
+                PVPEvent pvpevent = new PVPEvent(this);
+                pvpevent.Deserialize(reader);
+            }
         }
     }
 }

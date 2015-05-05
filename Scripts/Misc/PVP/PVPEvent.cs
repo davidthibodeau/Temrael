@@ -10,8 +10,7 @@ namespace Server.Misc.PVP
     {
         Setting,   // L'Event est en train d'être créé, les informations sont mises en place.
         Waiting,   // En attente de la date/heure de début.
-        Preparing, // Les joueurs se préparent en ce moment.
-        Started,   // Les joueurs se battent en ce moment.
+        Started,   // Les joueurs se préparent à se battre ou se battent en ce moment (Dépend du PVPMode).
         Done       // La bataille est terminée, les résultats sont compilés.
     }
 
@@ -64,13 +63,17 @@ namespace Server.Misc.PVP
             {
                 if (state == PVPEventState.Setting && map != null)
                 {
-                    if (map.IsAllowedMode(value.GetType()))
+                    if (value == null)
                     {
                         m_mode = value;
-
-                        debutEvent = DateTime.Now;
-                        SetNbEquipe(0);
                     }
+                    else if (map.IsAllowedMode(value.GetType()))
+                    {
+                        m_mode = value;
+                    }
+
+                    debutEvent = DateTime.Now;
+                    SetNbEquipe(0);
                 }
             }
         }
@@ -91,7 +94,7 @@ namespace Server.Misc.PVP
                     {
                         foreach (PVPEvent pvpevent in m_InstancesList)
                         {
-                            if (pvpevent.map != null && pvpevent.mode != null)
+                            if (pvpevent.map != null && pvpevent.mode != null && pvpevent != this)
                             {
                                 if (map == pvpevent.map)
                                 {
@@ -150,7 +153,7 @@ namespace Server.Misc.PVP
             {
                 debutTimer.Stop();
 
-                state = PVPEventState.Preparing;
+                state = PVPEventState.Started;
 
                 mode.SpawnAll();
 
@@ -160,7 +163,7 @@ namespace Server.Misc.PVP
 
         public void StopEvent()
         {
-            if (state >= PVPEventState.Preparing)
+            if (state >= PVPEventState.Started)
             {
                 map.StopUsing();
             }
@@ -263,7 +266,7 @@ namespace Server.Misc.PVP
                     {
                         if (TeamNumber >= 0 && TeamNumber < map.GetNbSpawnPoints())
                         {
-                            if (!teams[TeamNumber].joueurs.Contains(m))
+                            if (!teams[TeamNumber].joueurs.ContainsKey(m))
                             {
                                 teams[TeamNumber].joueurs.Add(m, PVPPlayerState.None);
                                 m.SendMessage("Vous avez été inscrit à l'event \" " + nom + " \" avec succès.");
@@ -280,7 +283,7 @@ namespace Server.Misc.PVP
             {
                 foreach (PVPTeam team in teams) // La boucle pourrait s'arrêter au premier remove de fait.
                 {
-                    if (team.joueurs.Contains(m))
+                    if (team.joueurs.ContainsKey(m))
                     {
                         team.joueurs.Remove(m);
                     }
@@ -292,7 +295,7 @@ namespace Server.Misc.PVP
         {
             foreach (PVPTeam team in teams)
             {
-                if (team.joueurs.Contains(m))
+                if (team.joueurs.ContainsKey(m))
                 {
                     return true;
                 }
@@ -383,6 +386,78 @@ namespace Server.Misc.PVP
                 m_InstancesList = new ArrayList();
             }
             m_InstancesList.Add(this);
+        }
+
+        public void Serialize(GenericWriter writer)
+        {
+            writer.Write((int)state);
+            writer.Write(m_stone);
+            writer.Write(m_nom);
+            m_map.Serialize(writer);
+            m_mode.Serialize(writer);
+            writer.Write(m_debutEvent);
+
+            writer.Write(m_teams.Count);
+            foreach (PVPTeam team in m_teams)
+            {
+                writer.Write(team.spawnLoc);
+
+                writer.Write(team.joueurs.Count);
+                foreach (KeyValuePair<Mobile, PVPPlayerState> pair in team.joueurs)
+                {
+                    writer.Write(pair.Key);
+                    writer.Write((int)pair.Value);
+                }
+            }
+        }
+
+        public void Deserialize(GenericReader reader)
+        {
+            state = (PVPEventState)reader.ReadInt();
+            m_stone = (PVPStone)reader.ReadItem();
+            m_nom = reader.ReadString();
+            m_map = PVPMap.Deserialize(reader);
+            m_mode = (PVPMode)Activator.CreateInstance(PVPMode.Deserialize(reader), this);
+            m_debutEvent = reader.ReadDateTime();
+
+            int TeamsCount = reader.ReadInt();
+            for (int i = 0; i < TeamsCount; ++i)
+            {
+                PVPTeam team = new PVPTeam();
+                m_teams.Add(team);
+
+                team.spawnLoc = reader.ReadPoint3D();
+
+                int JoueursCount = reader.ReadInt();
+                for (int j = 0; j < JoueursCount; ++j)
+                {
+                    Mobile mob = reader.ReadMobile();
+                    PVPPlayerState playerstate = (PVPPlayerState)reader.ReadInt();
+
+                    team.joueurs.Add(mob, playerstate);
+                }
+            }
+
+
+
+            debutTimer = new PreparationTimer(this);
+
+            if (state == PVPEventState.Started)
+            {
+                Console.WriteLine("Event commencé : Despawn et effaçage.");
+                mode.DespawnAll();
+                StopEvent();
+            }
+            else if (m_debutEvent < DateTime.Now)
+            {
+                Console.WriteLine("Event surpassé : Effaçage.");
+                StopEvent();
+            }
+            else
+            {
+                Console.WriteLine("Event non débuté : Reboot.");
+                debutTimer.Start();
+            }
         }
     }
 }

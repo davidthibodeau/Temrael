@@ -72,12 +72,12 @@ namespace Server.Misc.PVP.Gumps
             // Choix de map.
             else if (m_Pvpevent.map == null)
             {
-                NbLignes = PVPMap.MapList.Count + 2; // Nb de map possible + entête.
+                NbLignes = PVPMap.MapList.Count + 1; // Nb de map possible + entête.
             }
             // Choix de mode.
             else if (m_Pvpevent.mode == null)
             {
-                NbLignes = PVPMode.ModeList.Count + 2; // Nb de modes possible + entête.
+                NbLignes = PVPMode.ModeList.Count - m_Pvpevent.map.ForbiddenModesList.Count + 1; // Nb de modes possible + entête.
             }
             // Choix du nombre d'équipes.
             else if (m_Pvpevent.teams.Count == 0)
@@ -131,8 +131,8 @@ namespace Server.Misc.PVP.Gumps
                         AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, cpt), GumpButtonType.Reply, 0);
                         AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>" + mode.Name + "</h3>", false, false);
                         line++;
-                        cpt++;
                     }
+                    cpt++;
                 }
             }
             // Choix du nombre d'équipes.
@@ -200,6 +200,9 @@ namespace Server.Misc.PVP.Gumps
             int buttonID = info.ButtonID - 1;
             int type = buttonID % NbMapModeMax;
             int index = buttonID / NbMapModeMax;
+
+            Console.WriteLine(buttonID + " " + type + " " + index);
+
 
             if (buttonID == -1)
             {

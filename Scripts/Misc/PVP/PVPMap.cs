@@ -13,7 +13,7 @@ namespace Server.Misc.PVP
         public static List<PVPMap> MapList = new List<PVPMap>
         {
             // ID                 Nom          Zone de combat(              X Y 1,                X Y 2),                   Liste des spawnpoints.                       Liste des modes non permis.         )
-            /* 0 */ new PVPMap("Bob Donjon", Map.Felucca, new Rectangle2D(new Point2D(4045, 53), new Point2D(4052,60)), new List<Point3D>(){new Point3D(4049,57,0)}, new List<Type>(){typeof(FFA)})
+            /* 0 */ new PVPMap("Bob Donjon", Map.Felucca, new Rectangle2D(new Point2D(4045, 53), new Point2D(4052,60)), new List<Point3D>(){new Point3D(4049,57,0)}, new List<Type>(){})
         };
 
         #region Membres
@@ -42,6 +42,11 @@ namespace Server.Misc.PVP
         {
             get { return m_SpawnPoints; }
         }
+        public List<Type> ForbiddenModesList
+        {
+            get { return m_forbiddenModesList; }
+        }
+
         #endregion
         #endregion
 
@@ -95,23 +100,21 @@ namespace Server.Misc.PVP
             m_IsInUse = false;
         }
 
-        public static void Serialize(GenericWriter writer)
+        public void Serialize(GenericWriter writer)
         {
-            writer.Write(MapList.Count);
-            foreach (PVPMap map in MapList)
+            for (int i = 0; i < MapList.Count; i++)
             {
-                writer.Write(map.m_IsInUse);
+                if (MapList[i] == this)
+                {
+                    writer.Write(i);
+                    break;
+                }
             }
         }
 
-        public static void Deserialize(GenericReader reader)
+        public static PVPMap Deserialize(GenericReader reader)
         {
-            int Count = reader.ReadInt();
-
-            for (int i = 0; i < Count; ++i)
-            {
-                MapList[i].m_IsInUse = reader.ReadBool();
-            }
+            return MapList[reader.ReadInt()];
         }
     }
 }
