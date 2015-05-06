@@ -1699,17 +1699,33 @@ namespace Server.Mobiles
 
         public override bool OnMoveOver(Mobile m)
         {
-            if (m.Hidden && (m.AccessLevel > AccessLevel.Player || AccessLevel > AccessLevel.Player))
-            {
+            // m == Celui qui marche sur this.
+
+            if (m.AccessLevel > AccessLevel.Player)
                 return true;
-            }
-            else if (m.Stam == m.StamMax)
+
+            if (AccessLevel > AccessLevel.Player)
             {
-                m.SendMessage("Vous poussez le personnage hors de votre chemin.");
-                Stam -= 10;
+                if (Hidden)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (m.Stam == m.StamMax)
+            {
                 if (CanSee(m))
                 {
                     SendMessage("Vous êtes poussé(e) hors du chemin par " + m.GetNameUsedBy(this));
+                }
+                if (m.CanSee(this))
+                {
+                    m.Stam -= 10;
+                    m.SendMessage("Vous poussez le personnage hors de votre chemin.");
                 }
                 return true;
             }
