@@ -9,11 +9,6 @@ namespace Server.Items
 	{
         public override int GoldValue { get { return 3; } }
 
-		public override double DefaultWeight
-		{
-			get { return 1.0; }
-		}
-
 		[Constructable]
 		public DaemonBone() : this( 1 )
 		{

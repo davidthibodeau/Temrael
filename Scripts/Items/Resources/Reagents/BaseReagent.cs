@@ -7,7 +7,7 @@ namespace Server.Items
 	{
 		public override double DefaultWeight
 		{
-			get { return 0.1; }
+			get { return 0.07; }
 		}
 
 		public BaseReagent( int itemID ) : this( itemID, 1 )
