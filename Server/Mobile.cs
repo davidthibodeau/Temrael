@@ -91,22 +91,26 @@ namespace Server
         Malediction,
         ResistanceBuffSpell,
         Affaiblissement,
+        Poison,
     }
 
     [Flags]
     public enum BuffEffect
     {
-        None                = 0x000,
-        Str                 = 0x001,
-        Dex                 = 0x002,
-        Int                 = 0x004,
-        HitsMax             = 0x008,
-        StamMax             = 0x010,
-        ManaMax             = 0x020,
-        Vitesse             = 0x040,
-        Penetration         = 0x080,
-        ResistancePhysique  = 0x100,
-        ResistanceMagique   = 0x200,
+        None                = 0x0000,
+        Str                 = 0x0001,
+        Dex                 = 0x0002,
+        Int                 = 0x0004,
+        HitsMax             = 0x0008,
+        StamMax             = 0x0010,
+        ManaMax             = 0x0020,
+        Vitesse             = 0x0040,
+        Penetration         = 0x0080,
+        ResistancePhysique  = 0x0100,
+        ResistanceMagique   = 0x0200,
+        HitRegen            = 0x0400,
+        StamRegen           = 0x0800,
+        ManaRegen           = 0x1000,
     }
 
 	[Flags]
@@ -220,8 +224,6 @@ namespace Server
 	public delegate bool SkillCheckDirectTargetHandler( Mobile from, SkillName skill, object target, double chance );
 	public delegate bool SkillCheckDirectLocationHandler( Mobile from, SkillName skill, double chance );
 
-	public delegate TimeSpan RegenRateHandler( Mobile from );
-
 	public delegate bool AllowBeneficialHandler( Mobile from, Mobile target );
 	public delegate bool AllowHarmfulHandler( Mobile from, Mobile target );
 
@@ -236,73 +238,6 @@ namespace Server
 	/// </summary>
 	public abstract class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable
 	{
-        #region Regeneration
-
-        private static RegenRateHandler m_HitsRegenRate, m_StamRegenRate, m_ManaRegenRate;
-        private static TimeSpan m_DefaultHitsRate, m_DefaultStamRate, m_DefaultManaRate;
-
-        public static RegenRateHandler HitsRegenRateHandler
-        {
-            get { return m_HitsRegenRate; }
-            set { m_HitsRegenRate = value; }
-        }
-
-        public static TimeSpan DefaultHitsRate
-        {
-            get { return m_DefaultHitsRate; }
-            set { m_DefaultHitsRate = value; }
-        }
-
-        public static RegenRateHandler StamRegenRateHandler
-        {
-            get { return m_StamRegenRate; }
-            set { m_StamRegenRate = value; }
-        }
-
-        public static TimeSpan DefaultStamRate
-        {
-            get { return m_DefaultStamRate; }
-            set { m_DefaultStamRate = value; }
-        }
-
-        public static RegenRateHandler ManaRegenRateHandler
-        {
-            get { return m_ManaRegenRate; }
-            set { m_ManaRegenRate = value; }
-        }
-
-        public static TimeSpan DefaultManaRate
-        {
-            get { return m_DefaultManaRate; }
-            set { m_DefaultManaRate = value; }
-        }
-
-        public static TimeSpan GetHitsRegenRate( Mobile m )
-        {
-            if( m_HitsRegenRate == null )
-                return m_DefaultHitsRate;
-            else
-                return m_HitsRegenRate( m );
-        }
-
-        public static TimeSpan GetStamRegenRate( Mobile m )
-        {
-            if( m_StamRegenRate == null )
-                return m_DefaultStamRate;
-            else
-                return m_StamRegenRate( m );
-        }
-
-        public static TimeSpan GetManaRegenRate( Mobile m )
-        {
-            if( m_ManaRegenRate == null )
-                return m_DefaultManaRate;
-            else
-                return m_ManaRegenRate( m );
-        }
-
-        #endregion
-
         private StatLockType m_StrLock, m_DexLock, m_IntLock;
 
 
@@ -552,6 +487,15 @@ namespace Server
         {
             get;
         }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract double HitsRegen { get; }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract double StamRegen { get; }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public abstract double ManaRegen { get; }
 
         #endregion
 

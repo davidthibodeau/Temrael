@@ -42,6 +42,15 @@ namespace Server.Engines.BuffHandling
         [CommandProperty(AccessLevel.Batisseur)]
         public double ResistanceMagique { get { return ComputeBuffValue(BuffEffect.ResistanceMagique); } }
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double HitRegen { get { return ComputeBuffValue(BuffEffect.HitRegen); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double StamRegen { get { return ComputeBuffValue(BuffEffect.StamRegen); } }
+
+        [CommandProperty(AccessLevel.Batisseur)]
+        public double ManaRegen { get { return ComputeBuffValue(BuffEffect.ManaRegen); } }
+
         private double ComputeBuffValue(BuffEffect stat)
         {
             double value = 0;

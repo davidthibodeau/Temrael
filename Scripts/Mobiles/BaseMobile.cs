@@ -580,6 +580,78 @@ namespace Server.Mobiles
             }
         }
 
+        public override double HitsRegen
+        {
+            get
+            {
+                double points = Str / 20;
+                points += Buffs.HitRegen;
+                //double delay = 1.0 / (0.1 * (1 + points));
+                return points;
+            }
+        }
+
+        public override double StamRegen
+        {
+            get
+            {
+                double pourc = (Dex / 120.0) + (Skills[SkillName.Concentration].Value / 120);
+                double points = StamMax * pourc / 100;
+                points += Buffs.StamRegen;
+                //double delay = 1.0 / points;
+                //if (delay > 60.0)
+                //    delay = 60.0;
+                return points;
+            }
+        }
+
+        public override double ManaRegen
+        {
+            get
+            {
+                double armorPenalty = GetArmorOffset();
+                double med = Skills[SkillName.Meditation].Value;
+
+                double points = (Int / 20) + med / 8;
+                if (med >= 100)
+                    points *= 1.1;
+
+                points += (Skills[SkillName.Concentration].Value / 20);
+
+                if (armorPenalty > 0)
+                    points /= armorPenalty;
+
+                double totalPoints = points + (Meditating ? points : 0.0);
+
+                return totalPoints; //TimeSpan.FromSeconds(1.0 / (0.1 * (1 + totalPoints)));
+            }
+        }
+
+        private double GetArmorOffset()
+        {
+            double rating = 0.0;
+
+            if (NeckArmor != null)
+                rating += GetArmorMeditationValue(NeckArmor as BaseArmor);
+            if (HandArmor != null)
+                rating += GetArmorMeditationValue(HandArmor as BaseArmor);
+            if (HeadArmor != null)
+                rating += GetArmorMeditationValue(HeadArmor as BaseArmor);
+            if (ArmsArmor != null)
+                rating += GetArmorMeditationValue(ArmsArmor as BaseArmor);
+            if (LegsArmor != null)
+                rating += GetArmorMeditationValue(LegsArmor as BaseArmor);
+            if (ChestArmor != null)
+                rating += GetArmorMeditationValue(ChestArmor as BaseArmor);
+
+            return rating;
+        }
+
+        private static double GetArmorMeditationValue(BaseArmor ar)
+        {
+            return 0; // Mettre ici bonus ou malus sur le regénération dépendant du type d'armure.
+        }
+
         [CommandProperty(AccessLevel.Batisseur)]
         public override int Vitesse
         {
