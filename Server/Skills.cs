@@ -630,7 +630,7 @@ namespace Server
 				new SkillInfo( SkillName.ArmeContondante, "Armes Contondantes",	SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	2.0,	0.1,	0.0,	1.0 ),
 				new SkillInfo( SkillName.ArmePerforante,  "Armes Perforantes",	SkillCategory.Combat,	4.5,	5.5,	0.0,	null,	0.9,	1.1,	0.0,	1.0 ),
                 new SkillInfo( SkillName.Anatomie,        "Anatomie",			SkillCategory.Combat,	9.0,	1.0,	0.0,	null,	0.5,	0.5,	1.0,	1.0 ),
-				new SkillInfo( SkillName.Concentration,   "Concentration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	1.0,	1.0,	1.0 ),
+				new SkillInfo( SkillName.Concentration,   "Concentration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	1.0,	1.0,	0.1 ),
                 new SkillInfo( SkillName.Penetration,     "Penetration",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	1.0,	0.5,	0.5,	1.0 ),
                 new SkillInfo( SkillName.CoupCritique,    "Coup Critique",		SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.4,	0.6,	1.0,	1.0 ),
                 new SkillInfo( SkillName.ResistanceMagique,"Resistance Magique",SkillCategory.Combat,	0.0,	0.0,	0.0,	null,	0.0,	0.0,	2.0,	1.0 ),
@@ -646,7 +646,7 @@ namespace Server
                 new SkillInfo( SkillName.Hallucination,     "Hallucination",    SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	2.0,	1.0 ),
                 new SkillInfo( SkillName.Ensorcellement,    "Ensorcellement",   SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	2.0,	1.0 ),
                 new SkillInfo( SkillName.Animisme,          "Necromancie",      SkillCategory.Magie,    0.0,    0.0,    15.0,   null,   0.0,    0.0,	2.0,	1.0 ),
-                new SkillInfo( SkillName.Meditation,      "Meditation",			SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	2.0,	1.0 ),
+                new SkillInfo( SkillName.Meditation,      "Meditation",			SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.0,	0.0,	2.0,	0.1 ),
 				new SkillInfo( SkillName.Inscription,     "Inscription",		SkillCategory.Magie,	0.0,	2.0,	8.0,	null,	0.0,	0.6,	1.4,	1.0 ),
                 new SkillInfo( SkillName.MagieDeGuerre,   "Magie de Guerre",	SkillCategory.Magie,   	0.0,	0.0,	15.0,	null,	0.8,	0.0,	1.2,	1.0 ),
 
