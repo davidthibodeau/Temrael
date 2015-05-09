@@ -104,6 +104,10 @@ namespace Server.Spells
             {
                 return 0;
             }
+
+            public override void EndBuff(Mobile mobile)
+            {                
+            }
         }
 
         private class InternalTarget : Target

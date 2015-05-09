@@ -80,6 +80,8 @@ namespace Server
         {
             get { return expiration - DateTime.Now; }
         }
+
+        public abstract void EndBuff(Mobile mobile);
     }
 
 	#region Enums
