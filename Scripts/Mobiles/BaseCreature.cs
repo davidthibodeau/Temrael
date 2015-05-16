@@ -868,7 +868,8 @@ namespace Server.Mobiles
             {
                 if ((c.m_bControlled || c.m_bSummoned) && IsEnemy(c.ControlMaster))
                     return true;
-                return (m_iTeam != c.m_iTeam || ((m_bSummoned || m_bControlled) != (c.m_bSummoned || c.m_bControlled))/* || c.Combatant == this*/ );
+                
+                return (m_iTeam != c.m_iTeam  || c.Combatant == this);
             }
             return false;
 		}
