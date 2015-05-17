@@ -6,11 +6,14 @@ using System.Text;
 using Server.Spells;
 using Server.Items;
 using Server.SkillHandlers;
+using Server.Misc.PVP;
 
 namespace Server.Mobiles
 {
     public class ScriptMobile : Mobile
     {
+        public PVPEvent CurrentPVPEventInstance; // null == pas sur un terrain de PVP atm.
+
         [CommandProperty(AccessLevel.Batisseur)]
         public virtual Detection Detection
         {
@@ -92,6 +95,11 @@ namespace Server.Mobiles
 
         public override void Damage(int amount, Mobile from)
         {
+            if (!CurrentPVPEventInstance.mode.AllowFriendlyDamage(this, from))
+            {
+                return;
+            }
+
             double damage = amount;
 
             SacrificeSpell.GetOnHitEffect(this, ref damage);

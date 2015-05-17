@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Misc.PVP.PVPModeDef;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
     public abstract class PVPMode
     {
-        public static readonly List<Type> ModeList = new List<Type>
+        public static readonly Dictionary<Type, String> ModeList = new Dictionary<Type, String>
         {
             // ID
-            /* 0 */ typeof(FFA),
-            /* 1 */ typeof(TDTickets),
+            /* 0 */ {typeof(FFA), "Free for all, YOLO"},
+            /* 1 */ {typeof(TDTickets), "Team Deathmatch, Tickets"}
         };
 
         protected PVPEvent m_pvpevent;
+
+        protected bool AllowFriendlyFire = false;
+        protected bool AllowLoot = false;
 
         protected PVPMode(PVPEvent pvpevent)
         {
@@ -33,8 +37,32 @@ namespace Server.Misc.PVP
             get;
         }
 
+        public bool AllowFriendlyDamage(Mobile mob1, Mobile mob2)
+        {
+            if (AllowFriendlyFire) 
+                return true;
+
+            int cpt = 0;
+            bool found = false;
+            foreach (PVPTeam team in m_pvpevent.teams)
+            {
+                foreach (KeyValuePair<Mobile,PVPPlayerState> pair in team.joueurs)
+                {
+                    if (pair.Key == mob1)
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (found) break;
+                ++cpt;
+            }
+
+            return ! m_pvpevent.teams[cpt].joueurs.ContainsKey(mob2);
+        }
+
         #region Spawning
-        public void SpawnAll()
+        protected void SpawnAll()
         {
             foreach (PVPTeam team in m_pvpevent.teams)
             {
@@ -93,16 +121,83 @@ namespace Server.Misc.PVP
         }
         #endregion
 
-        #region Debut fin du combat.
-        public abstract void Start();
+        #region Debut fin du combat / Events
+        public void Start()
+        {
+            EventSink.PlayerDeath += new PlayerDeathEventHandler(EventSink_PlayerDeath);
+            EventSink.Disconnected += new DisconnectedEventHandler(EventSink_PlayerDisc);
+
+            foreach (PVPTeam team in m_pvpevent.teams)
+            {
+                foreach (KeyValuePair<Mobile, PVPPlayerState> pair in team.joueurs)
+                {
+                    if (((ScriptMobile)pair.Key).CurrentPVPEventInstance == null)
+                    {
+                        ((ScriptMobile)pair.Key).CurrentPVPEventInstance = m_pvpevent;
+                    }
+                    else
+                    {
+                        ((ScriptMobile)pair.Key).CurrentPVPEventInstance.Desinscrire(pair.Key);
+                    }
+                }
+            }
+
+            SpawnAll();
+
+            // Début du timeouttimer.
+
+            OnStart();
+        }
+
+        protected abstract void OnStart();
+
+        private void EventSink_PlayerDeath(PlayerDeathEventArgs e)
+        {
+            if (!AllowLoot)
+            {
+                if (m_pvpevent.EstInscrit(e.Mobile))
+                {
+                    if (e.Mobile.Corpse != null)
+                    {
+                        e.Mobile.Corpse.Visible = false;
+                    }
+                }
+            }
+
+            OnPlayerDeath(e);
+        }
+
+        protected virtual void OnPlayerDeath(PlayerDeathEventArgs e)
+        {
+        }
+
+        private void EventSink_PlayerDisc(DisconnectedEventArgs e)
+        {
+            OnPlayerDisc(e);
+        }
+
+        protected virtual void OnPlayerDisc(DisconnectedEventArgs e)
+        {
+        }
 
         /// <summary>
         /// Fonction qui doit être appellée à la fin de l'event (Ex: Les membres d'une équipe ont été tués 50 fois.)
         /// Cette fonction doit être appellée par la classe déviant de la classe PVPMode manuellement.
         /// </summary>
-        protected void Stop()
+        public void Stop()
         {
-            Console.WriteLine("Stopping");
+            m_pvpevent.state = PVPEventState.Done;
+
+            // Stop le timeouttimer.
+
+            foreach (PVPTeam team in m_pvpevent.teams)
+            {
+                foreach (KeyValuePair<Mobile, PVPPlayerState> pair in team.joueurs)
+                {
+                    ((ScriptMobile)pair.Key).CurrentPVPEventInstance = null;
+                }
+            }
+
             m_pvpevent.StopEvent();
         }
         #endregion
@@ -112,7 +207,7 @@ namespace Server.Misc.PVP
         {
             for (int i = 0; i < ModeList.Count; i++)
             {
-                if (ModeList[i] == this.GetType())
+                if (ModeList.Keys.ElementAt(i) == this.GetType())
                 {
                     writer.Write(i);
                     break;
@@ -122,7 +217,7 @@ namespace Server.Misc.PVP
 
         public static Type Deserialize(GenericReader reader)
         {
-            return ModeList[reader.ReadInt()];
+            return ModeList.Keys.ElementAt(reader.ReadInt());
         }
         #endregion
     }

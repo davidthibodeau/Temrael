@@ -14,6 +14,8 @@ namespace Server.Gumps.Fiche
         public BaseFicheGump(PlayerMobile from, string fiche, int hauteur, int largeur, int onglet)
             : base(fiche, hauteur, largeur)
         {
+            from.CloseGump(typeof(BaseFicheGump));
+
             m_from = from;
 
             int y = 650;

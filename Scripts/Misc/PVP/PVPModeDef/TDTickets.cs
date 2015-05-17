@@ -22,7 +22,7 @@ namespace Server.Misc.PVP.PVPModeDef
             get { return 0; }
         }
 
-        public override void Start()
+        protected override void OnStart()
         {
         }
     }

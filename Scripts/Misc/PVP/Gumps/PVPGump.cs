@@ -15,7 +15,6 @@ namespace Server.Misc.PVP.Gumps
     {
         Mobile m_From;
         PVPStone m_Stone;
-        int m_page = 0;
 
         int x = 50;
         int y = 50;

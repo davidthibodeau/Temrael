@@ -250,7 +250,7 @@ namespace Server.Items
                 for (int i = 0; i < toMove.Count; ++i)
                 {
                     b.DropItem(toMove[i]);
-                    b.Movable = true;
+                    toMove[i].Movable = true;
                 }
 
                 // Seulement ouvrable par le owner, qui obtient une nouvelle clef à chaque fois.

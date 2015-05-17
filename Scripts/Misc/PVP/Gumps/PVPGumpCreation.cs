@@ -124,12 +124,12 @@ namespace Server.Misc.PVP.Gumps
             else if (m_Pvpevent.mode == null)
             {
                 int cpt = 0;
-                foreach (Type mode in PVPMode.ModeList)
+                foreach (Type mode in PVPMode.ModeList.Keys)
                 {
                     if (m_Pvpevent.map.IsAllowedMode(mode))
                     {
                         AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(2, cpt), GumpButtonType.Reply, 0);
-                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>" + mode.Name + "</h3>", false, false);
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>" + PVPMode.ModeList[mode] + "</h3>", false, false);
                         line++;
                     }
                     cpt++;
@@ -181,7 +181,7 @@ namespace Server.Misc.PVP.Gumps
 
                 AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(5, 4), GumpButtonType.Reply, 0);
                 AddHtml(x + 35, y + (line * scale), 450, 20, "<h3> Mode </h3>", false, false);
-                AddHtml(x + 120, y + (line * scale), 450, 20, "<h3>" + m_Pvpevent.mode.GetType().Name + "</h3>", false, false);
+                AddHtml(x + 120, y + (line * scale), 450, 20, "<h3>" + PVPMode.ModeList[m_Pvpevent.mode.GetType()] + "</h3>", false, false);
                 line++;
 
                 AddButton(x, y + (line * scale), 4005, 4007, GetButtonID(5, 5), GumpButtonType.Reply, 0);

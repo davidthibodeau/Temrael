@@ -134,7 +134,6 @@ namespace Server.Misc.PVP
                 if (map == null || mode == null || teams.Count == 0)
                     return false;
 
-                Console.WriteLine("Preparation de l'event.");
                 debutTimer.Start();
 
                 state = PVPEventState.Waiting;
@@ -155,14 +154,18 @@ namespace Server.Misc.PVP
 
                 state = PVPEventState.Started;
 
-                mode.SpawnAll();
-
                 mode.Start();
             }
         }
 
         public void StopEvent()
         {
+            if (state == PVPEventState.Started && m_mode != null)
+            {
+                m_mode.Stop();
+                return; // m_mode.Stop() appelle la fonction StopEvent().
+            }
+
             if (state >= PVPEventState.Started)
             {
                 map.StopUsing();
@@ -337,7 +340,7 @@ namespace Server.Misc.PVP
             {
                 try
                 {
-                    mode = (PVPMode)Activator.CreateInstance(PVPMode.ModeList[ID], this);
+                    mode = (PVPMode)Activator.CreateInstance(PVPMode.ModeList.Keys.ElementAt(ID), this);
                     return true;
                 }
                 catch (IndexOutOfRangeException)
@@ -400,8 +403,6 @@ namespace Server.Misc.PVP
             writer.Write(m_teams.Count);
             foreach (PVPTeam team in m_teams)
             {
-                writer.Write(team.spawnLoc);
-
                 writer.Write(team.joueurs.Count);
                 foreach (KeyValuePair<Mobile, PVPPlayerState> pair in team.joueurs)
                 {
@@ -426,8 +427,6 @@ namespace Server.Misc.PVP
                 PVPTeam team = new PVPTeam();
                 m_teams.Add(team);
 
-                team.spawnLoc = reader.ReadPoint3D();
-
                 int JoueursCount = reader.ReadInt();
                 for (int j = 0; j < JoueursCount; ++j)
                 {
@@ -444,18 +443,18 @@ namespace Server.Misc.PVP
 
             if (state == PVPEventState.Started)
             {
-                Console.WriteLine("Event commencé : Despawn et effaçage.");
+                // Event commencé : Despawn et effaçage.
                 mode.DespawnAll();
                 StopEvent();
             }
             else if (m_debutEvent < DateTime.Now)
             {
-                Console.WriteLine("Event surpassé : Effaçage.");
+                 // Event surpassé : Effaçage.
                 StopEvent();
             }
             else
             {
-                Console.WriteLine("Event non débuté : Reboot.");
+                // Event non débuté : Reboot.
                 debutTimer.Start();
             }
         }

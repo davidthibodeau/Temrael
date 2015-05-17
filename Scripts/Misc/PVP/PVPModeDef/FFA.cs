@@ -13,6 +13,7 @@ namespace Server.Misc.PVP.PVPModeDef
         public FFA(PVPEvent pvpevent)
             : base(pvpevent)
         {
+            AllowFriendlyFire = true;
         }
 
         public override TimeSpan timeout
@@ -34,26 +35,21 @@ namespace Server.Misc.PVP.PVPModeDef
             m.Map = m_pvpevent.map.Map;
         }
 
-        public override void Start()
+        protected override void OnStart()
         {
-            Console.WriteLine("Starting");
-
             NbPlayersAlive = 0;
             foreach (PVPTeam team in m_pvpevent.teams)
             {
                 NbPlayersAlive += team.joueurs.Count;
             }
-
-            EventSink.PlayerDeath += new PlayerDeathEventHandler(EventSink_PlayerDeath);
-            EventSink.Disconnected += new DisconnectedEventHandler(EventSink_PlayerDisc);
         }
 
-        private void EventSink_PlayerDeath(PlayerDeathEventArgs e)
+        protected override void OnPlayerDeath(PlayerDeathEventArgs e)
         {
             CheckConditions(e.Mobile);
         }
 
-        private void EventSink_PlayerDisc(DisconnectedEventArgs e)
+        protected override void OnPlayerDisc(DisconnectedEventArgs e)
         {
             CheckConditions(e.Mobile);
         }
@@ -62,11 +58,6 @@ namespace Server.Misc.PVP.PVPModeDef
         {
             if (m_pvpevent.map.Region.Contains(m))
             {
-                if (m.Corpse != null)
-                {
-                    m.Corpse.Visible = false;
-                }
-
                 Timer.DelayCall(TimeSpan.FromSeconds(3), new TimerStateCallback(CheckEvent), m);
             }
         }
@@ -75,37 +66,31 @@ namespace Server.Misc.PVP.PVPModeDef
         {
             Mobile m = (Mobile)state;
 
-            Console.WriteLine(m.Name + " est mort !");
             NbPlayersAlive -= 1;
 
             m.Resurrect();
             if (m.Corpse != null)
             {
-                if (m.Corpse is Corpse)
+                List<Item> toAdd = new List<Item>();
+                if (m.Corpse.Items != null)
                 {
-                    Corpse c = (Corpse)m.Corpse;
-
-                    List<Item> toAdd = new List<Item>();
-                    if (c.Items != null)
+                    foreach (Item i in m.Corpse.Items)
                     {
-                        foreach (Item i in c.Items)
-                        {
-                            toAdd.Add(i);
-                        }
-                    }
-
-                    foreach (Item i in toAdd)
-                    {
-                        m.Backpack.AddItem(i);
+                        toAdd.Add(i);
                     }
                 }
-            }
 
-            m.Corpse.Delete();
+                foreach (Item i in toAdd)
+                {
+                    m.Backpack.AddItem(i);
+                }
+
+                m.Corpse.Delete();
+            }
 
             Despawn(m);
 
-            if (NbPlayersAlive == 1) // Dernier survivant, donc fin de l'event.
+            if (NbPlayersAlive <= 1) // Dernier survivant, donc fin de l'event.
             {
                 DespawnAll();
                 Stop();

@@ -102,7 +102,7 @@ namespace Server.Misc.PVP.Gumps
                 AddHtml(x + (column * columnScale), y + (line * scale), 150, 20, "<h3>" + m_Pvpevent.map.Name + "</h3>", false, false);
                 column += 3;
                 //Mode
-                AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + m_Pvpevent.mode.GetType().Name + "</h3>", false, false);
+                AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + PVPMode.ModeList[m_Pvpevent.mode.GetType()] + "</h3>", false, false);
                 column += 2;
                 //Joueurs
                 AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + m_Pvpevent.TotalJoueursInscrit() + "</h3>", false, false);
