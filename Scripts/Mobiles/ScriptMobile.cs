@@ -95,9 +95,12 @@ namespace Server.Mobiles
 
         public override void Damage(int amount, Mobile from)
         {
-            if (!CurrentPVPEventInstance.mode.AllowFriendlyDamage(this, from))
+            if (CurrentPVPEventInstance != null)
             {
-                return;
+                if (!CurrentPVPEventInstance.mode.AllowFriendlyDamage(this, from))
+                {
+                    return;
+                }
             }
 
             double damage = amount;
