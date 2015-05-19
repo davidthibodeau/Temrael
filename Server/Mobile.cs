@@ -481,12 +481,12 @@ namespace Server
 
                 double baseArNat = ArNatSkill * 0.30;
                 double reducedAr = (75 - PhysicalResistance * 5 / 4) / 75 * baseArNat;
+                double reducedAr = baseArNat - ( PhysicalResistance / BaseArmor * 15 );
 
                 if (reducedAr < 0)
                     return 0;
                 else
                     return reducedAr;
-
             }
         }
 
