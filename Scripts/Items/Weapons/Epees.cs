@@ -6,8 +6,8 @@ namespace Server.Items
 {
     public class EpeeTest : BaseSword
     {
-        //public override double DefMinDamage { get { return 10; } }
-        //public override double DefMaxDamage { get { return 10; } }
+        public override double DefMinDamage { get { return 10; } }
+        public override double DefMaxDamage { get { return 10; } }
         public override int DefSpeed { get { return 40; } }
 
         [Constructable]
