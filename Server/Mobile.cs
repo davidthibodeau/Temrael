@@ -3517,7 +3517,7 @@ namespace Server
 			if( item == null || item.Deleted || this.Deleted )
 				return;
 
-			DisruptiveAction();
+			//DisruptiveAction();
 
 			if( m_Spell != null && !m_Spell.OnCasterUsingObject( item ) )
 				return;
@@ -3564,7 +3564,7 @@ namespace Server
 			if( m == null || m.Deleted || this.Deleted )
 				return;
 
-			DisruptiveAction();
+			//DisruptiveAction();
 
 			if( m_Spell != null && !m_Spell.OnCasterUsingObject( m ) )
 				return;
@@ -3602,7 +3602,7 @@ namespace Server
 			{
 				if( from.CheckAlive() )
 				{
-					from.DisruptiveAction();
+					//from.DisruptiveAction();
 
 					if( from.Holding != null )
 					{
@@ -4517,7 +4517,7 @@ namespace Server
 				if( from != null )
 					RegisterDamage( amount, from );
 
-				DisruptiveAction();
+				//DisruptiveAction();
 
 				Paralyzed = false;
 
@@ -5454,7 +5454,7 @@ namespace Server
 			if( m_Hidden && m_AccessLevel == AccessLevel.Player )
 				Hidden = false;
 
-			DisruptiveAction(); // Anything that unhides you will also distrupt meditation
+			//DisruptiveAction(); // Anything that unhides you will also distrupt meditation
 		}
 
 		#region Say/SayTo/Emote/Whisper/Yell

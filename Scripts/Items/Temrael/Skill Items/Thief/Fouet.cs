@@ -280,7 +280,7 @@ namespace Server.Items
             {
                 if (def.Spell.IsCasting && (GetBonus(def.Skills[SkillName.ArtMagique].Value, 0.2, 5) + GetBonus(def.Skills[SkillName.Meditation].Value, 0.2, 5)) <= Utility.RandomDouble())
                 {
-                    def.DisruptiveAction();
+                    //def.DisruptiveAction();
                 }
             }
 
@@ -317,7 +317,7 @@ namespace Server.Items
 
             atk.RevealingAction();
             def.RevealingAction();
-            atk.DisruptiveAction();
+            //atk.DisruptiveAction();
         }
 
         public void DoAnimation(Mobile from, Mobile target, Sounds sound)

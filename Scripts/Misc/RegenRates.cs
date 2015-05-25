@@ -61,49 +61,25 @@ namespace Server.Misc
                 CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Meditation);
             CheckBonusSkill(from, from.Mana, from.ManaMax, SkillName.Concentration);
 
-			double armorPenalty = GetArmorOffset( from );
             double med = from.Skills[SkillName.Meditation].Value;
 
             double points = (from.Int / 20) + med / 8;
-            if(med >= 100)
-                points *= 1.1;
 
             points += (from.Skills[SkillName.Concentration].Value / 20);
 
-            if (armorPenalty > 0)
-                points /= armorPenalty;
+            points *= GetArmorOffset(from);
 
-            double totalPoints = points + (from.Meditating ? points : 0.0);
+            if (from.Meditating)
+            {
+                points *= 1.7;
+            }
 
-            return TimeSpan.FromSeconds(1.0 / (0.1 * (1 + totalPoints)));
+            return TimeSpan.FromSeconds(1.0 / (0.1 * (1 + points)));
 		}
 
 		public static double GetArmorOffset( Mobile from )
 		{
-			double rating = 0.0;
-
-            if (from != null)
-            {
-                if (from.NeckArmor != null)
-                    rating += GetArmorMeditationValue(from.NeckArmor as BaseArmor);
-                if (from.HandArmor != null)
-                    rating += GetArmorMeditationValue(from.HandArmor as BaseArmor);
-                if (from.HeadArmor != null)
-                    rating += GetArmorMeditationValue(from.HeadArmor as BaseArmor);
-                if (from.ArmsArmor != null)
-                    rating += GetArmorMeditationValue(from.ArmsArmor as BaseArmor);
-                if (from.LegsArmor != null)
-                    rating += GetArmorMeditationValue(from.LegsArmor as BaseArmor);
-                if (from.ChestArmor != null)
-                    rating += GetArmorMeditationValue(from.ChestArmor as BaseArmor);
-            }
-
-            return rating;
-		}
-
-		private static double GetArmorMeditationValue( BaseArmor ar )
-		{
-            return 0; // Mettre ici bonus ou malus sur le regénération dépendant du type d'armure.
+            return 1 - (from.PhysicalResistance / 75) * 0.5;
 		}
 	}
 }
