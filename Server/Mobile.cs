@@ -4461,10 +4461,10 @@ namespace Server
 			return de;
 		}
 
-		private Mobile m_LastKiller;
+		protected Mobile m_LastKiller;
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public Mobile LastKiller
+		public virtual Mobile LastKiller
 		{
 			get { return m_LastKiller; }
 			set { m_LastKiller = value; }
@@ -4548,7 +4548,7 @@ namespace Server
 
 				if( newHits < 0 )
 				{
-					m_LastKiller = from;
+					LastKiller = from;
 
 					Hits = 0;
 

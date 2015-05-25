@@ -102,6 +102,20 @@ namespace Server.Mobiles
 
 		#region Getters & Setters
 
+        [CommandProperty(AccessLevel.Batisseur)]
+        public override Mobile LastKiller
+        {
+            get { return m_LastKiller; }
+            set 
+            { 
+                m_LastKiller = value;
+
+                Console.WriteLine("DERP");
+
+                CommandLogging.WriteLine(this, this.Name + " a été tué par " + value.Name);
+            }
+        }
+
 		public List<Mobile> RecentlyReported
 		{
 			get

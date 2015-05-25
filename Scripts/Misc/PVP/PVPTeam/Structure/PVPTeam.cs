@@ -8,19 +8,12 @@ namespace Server.Misc.PVP
 {
     public class PVPTeam
     {
-        public Dictionary<Mobile,PVPPlayerState> joueurs;
+        // Mobile -- IsDespawned
+        public Dictionary<Mobile,bool> joueurs;
 
         public PVPTeam()
         {
-            joueurs = new Dictionary<Mobile,PVPPlayerState>();
+            joueurs = new Dictionary<Mobile,bool>();
         }
-    }
-
-    public enum PVPPlayerState
-    {
-        None,
-        Spawned,
-        Despawned,
-        Done
     }
 }

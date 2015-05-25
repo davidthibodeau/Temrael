@@ -43,7 +43,7 @@ namespace Server.Misc.PVP.Gumps
 
             m_From.CloseGump(typeof(PVPGumpJoin));
 
-            AddBackground(0, 0, 950, 735, 5054);
+            AddBackground(0, 0, 1050, 735, 5054);
 
             int column = 1;
 
@@ -56,13 +56,15 @@ namespace Server.Misc.PVP.Gumps
             column += 4;
             AddHtml(x + (column * columnScale), y + (line * scale), 150, 20, "<h3>" + "Map" + "</h3>", false, false);
             column += 3;
+            AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + "Team" + "</h3>", false, false);
+            column += 2;
             AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + "Mode" + "</h3>", false, false);
             column += 2;
             AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + "Joueurs" + "</h3>", false, false);
             column += 2;
             AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + "État" + "</h3>", false, false);
             line++;
-            AddImageTiled(15, y + (line * scale), 930, 3, 96);
+            AddImageTiled(15, y + (line * scale), 1030, 3, 96);
             line++;
 
             PVPEvent m_Pvpevent;
@@ -79,7 +81,7 @@ namespace Server.Misc.PVP.Gumps
                     break;
                 }
 
-                if (m_Pvpevent.EstInscrit(m_From))
+                if (m_Pvpevent.teams.EstInscrit(m_From))
                 {
                     // Bouton inscrit.
                     AddButton(x + (column * columnScale), y + (line * scale), 0xFB7, 0xFB9, GetButtonID(1,i), GumpButtonType.Reply, 0);
@@ -101,11 +103,14 @@ namespace Server.Misc.PVP.Gumps
                 //Map
                 AddHtml(x + (column * columnScale), y + (line * scale), 150, 20, "<h3>" + m_Pvpevent.map.Name + "</h3>", false, false);
                 column += 3;
+                //Team
+                AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + PVPTeamArrangement.TeamArrangementList[m_Pvpevent.teams.GetType()] + "</h3>", false, false);
+                column += 2;
                 //Mode
                 AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + PVPMode.ModeList[m_Pvpevent.mode.GetType()] + "</h3>", false, false);
                 column += 2;
                 //Joueurs
-                AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + m_Pvpevent.TotalJoueursInscrit() + "</h3>", false, false);
+                AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + m_Pvpevent.teams.TotalJoueursInscrit() + "</h3>", false, false);
                 // État
                 column += 2;
                 AddHtml(x + (column * columnScale), y + (line * scale), 100, 20, "<h3>" + m_Pvpevent.state.ToString() + "</h3>", false, false);
@@ -119,7 +124,7 @@ namespace Server.Misc.PVP.Gumps
             }
 
             line++;
-            AddImageTiled(15, y + (line * scale), 930, 3, 96);
+            AddImageTiled(15, y + (line * scale), 1030, 3, 96);
             line++;
 
             // Bouton pour rafraîchir.
@@ -151,13 +156,20 @@ namespace Server.Misc.PVP.Gumps
             {
                 case 1: // Se desinscrire
                     {
-                        ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + index]).Desinscrire(sender.Mobile);
+                        ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + index]).teams.Desinscrire(sender.Mobile);
                         break;
                     }
                 case 2: // S'inscrire
                     {
-                        m_From.SendMessage("Vous pouvez choisir un numero d'équipe ( entre 0 et " + (((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Count - 1).ToString() + " ) :");
-                        m_From.BeginPrompt(new PromptStateCallback(PromptCallBack),index);
+                        if( ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.NbMaxEquipes != 0 )
+                        {
+                            m_From.SendMessage("Vous pouvez choisir un numero d'équipe ( entre 0 et " + (((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Count - 1).ToString() + " ) :");
+                            m_From.BeginPrompt(new PromptStateCallback(PromptCallBack),index);
+                        }
+                        else
+                        {
+                            ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Inscrire(m_From, 0);
+                        }
                         break;
                     }
                 /*case 3: // Rafraichir la page
@@ -202,7 +214,7 @@ namespace Server.Misc.PVP.Gumps
             int result = 0;
             if(int.TryParse(s, out result))
             {
-                ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).Inscrire(m, result);
+                ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Inscrire(m, result);
             }
             else
             {
