@@ -11,7 +11,7 @@ using Server.Engines.Institutions;
 namespace Server.Items
 {
 
-    class InstitutionHandler : TownCrier
+    public class InstitutionHandler : TownCrier
     {
         #region Membres / Consts
         public static ArrayList m_InstancesList;
@@ -19,19 +19,28 @@ namespace Server.Items
         private Dictionary<Mobile, int> m_Mobiles;  // Mobile --- Rang.
         private List<Mobile> m_RegisteredMobiles;   // Contient tous ceux qui ont déjà joint cette institution. (Empêche l'abus du rang 1)
 
-        public const int RANKMAX = 4;
+        public int RANKMAX
+        {
+            get { return RangSalaire.Count - 1; }
+        }
         public string Titre = "NOT SET";            // Contient le nom de l'institution.
         public string Description = "NOT SET";      // Contient la description de l'institution.
         public List<Container> Containers;          // Contient les containers à duper lors du rankup.
         public List<String> RangTitre;              // Contient les titres des différents échelons.
-        public static readonly int[] RangSalaire =  // Contient les salaires des différents échelons.
+        public virtual List<int> RangSalaire        // Contient les salaires des différents échelons.
         {
-            0,   // Aucun rang.
-            250, // Rang 1. Matelot etc.
-            500, // Rang 2.
-            1000,// Rang 3.
-            1500 // Rang 4.
-        };
+            get 
+            { 
+                return new List<int> 
+                {
+                    0,   // Aucun rang.
+                    250, // Rang 1. Matelot etc.
+                    500, // Rang 2.
+                    1000,// Rang 3.
+                    1500 // Rang 4.
+                };
+            }
+        }
         #endregion
 
         #region Methodes static
@@ -66,6 +75,7 @@ namespace Server.Items
                 if (m_InstancesList.Count > 0)
                 {
                     Dictionary<Mobile,int> Paie = new Dictionary<Mobile,int>();
+                    Dictionary<Mobile,int> BonusRepublique = new Dictionary<Mobile, int>();
 
                     // Construit une liste key-val pour chaque Mobile institutionnalisé.
                     // Lui set un salaire qui correspond au salaire le plus élevé de toutes les institutions dans lesquelles il a un rang.
@@ -73,33 +83,52 @@ namespace Server.Items
                     {
                         if (i != null)
                         {
-                            foreach (KeyValuePair<Mobile, int> pair in i.m_Mobiles)
+                            if (i is RepubliqueInstitutionHandler)
                             {
-                                if (!Paie.ContainsKey(pair.Key))
+                                foreach (KeyValuePair<Mobile, int> pair in i.m_Mobiles)
                                 {
-                                    Paie.Add(pair.Key, GetSalaire(pair.Value));
+                                    BonusRepublique.Add(pair.Key, i.GetSalaire(pair.Value));
                                 }
-                                else
+                            }
+                            else
+                            {
+                                foreach (KeyValuePair<Mobile, int> pair in i.m_Mobiles)
                                 {
-                                    Paie[pair.Key] = Math.Max(Paie[pair.Key], GetSalaire(pair.Value));
+                                    if (!Paie.ContainsKey(pair.Key))
+                                    {
+                                        Paie.Add(pair.Key, i.GetSalaire(pair.Value));
+                                    }
+                                    else
+                                    {
+                                        Paie[pair.Key] = Math.Max(Paie[pair.Key], i.GetSalaire(pair.Value));
+                                    }
                                 }
                             }
                         }
                     }
 
+                    int amount = 0;
                     foreach (KeyValuePair<Mobile, int> pair in Paie)
                     {
-                        if (Banker.Deposit(pair.Key, pair.Value))
+                        amount = 0;
+                        if (BonusRepublique.ContainsKey(pair.Key))
                         {
-                            pair.Key.SendMessage("Un dépot de " + pair.Value + " pièces d'or a été fait par votre institution.");
+                            amount += BonusRepublique[pair.Key];
+                            pair.Key.SendMessage("Votre fonction au sein de la république ajoute " + amount + " pièces d'or à votre salaire.");
+                        }
+
+                        amount += pair.Value;
+                        if (Banker.Deposit(pair.Key, amount))
+                        {
+                            pair.Key.SendMessage("Un dépot de " + amount + " pièces d'or a été fait par vos institutions.");
                         }
                         else
                         {
-                            pair.Key.SendMessage("Il y a eu une erreur lors du dépot de " +  pair.Value + " pièces d'or dans votre coffre de banque. Le salaire a donc été versé directement dans votre sac pour éviter la perte.");
-                            pair.Key.AddToBackpack(new Gold(pair.Value));
+                            pair.Key.SendMessage("Il y a eu une erreur lors du dépot de " + amount + " pièces d'or dans votre coffre de banque. Le salaire a donc été versé directement dans votre sac pour éviter la perte.");
+                            pair.Key.AddToBackpack(new Gold(amount));
                         }
 
-                        PayLogging(pair.Key, pair.Value);
+                        PayLogging(pair.Key, amount);
                     }
                 }
             }
@@ -157,7 +186,7 @@ namespace Server.Items
         /// </summary>
         /// <param name="rank">Le rang, doit être entre 0 et RANKMAX.</param>
         /// <returns>Une string contenant le salaire lié au rang. Si le salaire est invalide, il retourne le salaire[0] par défaut.</returns>
-        public static int GetSalaire(int rank)
+        public int GetSalaire(int rank)
         {
             if (CheckValidRank(rank))
             {
@@ -268,7 +297,7 @@ namespace Server.Items
         }
         #endregion
 
-        private static bool CheckValidRank(int rank)
+        private bool CheckValidRank(int rank)
         {
             return (rank >= 0 && rank <= RANKMAX);
         }

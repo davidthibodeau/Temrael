@@ -120,6 +120,7 @@
     <Compile Include="Engines\Hiding\Detection.cs" />
     <Compile Include="Engines\Hiding\DetectionGarde.cs" />
     <Compile Include="Engines\Identities\ResetIdentity.cs" />
+    <Compile Include="Engines\Institutions\RepubliqueInstitutionHandler.cs" />
     <Compile Include="Engines\Mort\Auxiliaires.cs" />
     <Compile Include="Engines\Mort\ContratAssassinat.cs" />
     <Compile Include="Engines\Equitation.cs" />

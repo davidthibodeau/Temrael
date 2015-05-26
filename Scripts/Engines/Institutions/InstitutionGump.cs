@@ -164,7 +164,7 @@ namespace Server.Engines.Institutions
                     {
                         AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre titre/rang est : " + m_Institution.GetTitre(m_Institution.GetRank(m_From)) + "</h3>", false, false);
                         line++;
-                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre salaire est de : " + InstitutionHandler.GetSalaire(m_Institution.GetRank(m_From)) + " pièces d'or" + "</h3>", false, false);
+                        AddHtml(x + 35, y + (line * scale), 400, 20, "<h3>Votre salaire est de : " + m_Institution.GetSalaire(m_Institution.GetRank(m_From)) + " pièces d'or" + "</h3>", false, false);
                     }
                     line += 2;
 
@@ -205,7 +205,7 @@ namespace Server.Engines.Institutions
                 from.SendMessage("INSTITUTION : " + m_Institution.Titre);
                 from.SendMessage("RANG : " + m_Institution.GetRank((Mobile)targeted));
                 from.SendMessage("TITRE : " + m_Institution.GetTitre(m_Institution.GetRank((Mobile)targeted)));
-                from.SendMessage("SALAIRE : " + InstitutionHandler.GetSalaire(m_Institution.GetRank((Mobile)targeted)));
+                from.SendMessage("SALAIRE : " + m_Institution.GetSalaire(m_Institution.GetRank((Mobile)targeted)));
             }
             else
             {
