@@ -306,7 +306,7 @@ namespace Server.Items
         #region Compute Damage
 
         // Affecte le balancement.
-        const double BonusAttackSpeed = 1; // À changer pour compenser le kiting.
+        const double BonusAttackSpeed = 0.7; // À changer pour compenser le kiting.
         const double Malus1Handed = 0.25; // À modifier si on pense que les armes 1H ont un trop grand DPS.
 
         // N'affecte pas le balancement.
