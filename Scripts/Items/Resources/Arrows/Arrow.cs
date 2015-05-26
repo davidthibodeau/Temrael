@@ -1,4 +1,6 @@
 using System;
+using Server.ContextMenus;
+using System.Collections.Generic;
 
 namespace Server.Items
 {
@@ -30,7 +32,36 @@ namespace Server.Items
 		{
 		}
 
-		
+        #region Tranformer Bolts en arrow.
+        public override void GetContextMenuEntries(Mobile from, List<ContextMenuEntry> list)
+        {
+            base.GetContextMenuEntries(from, list);
+
+            if (from.Backpack.Items.Contains(this))
+            {
+                list.Add(new TranformerArrowEntry(from, this));
+            }
+        }
+
+        private class TranformerArrowEntry : ContextMenuEntry
+        {
+            private Mobile m_From;
+            private Item m_Item;
+
+            public TranformerArrowEntry(Mobile from, Item item)
+                : base(6285, -1)
+            {
+                m_From = (Mobile)from;
+                m_Item = (Item)item;
+            }
+
+            public override void OnClick()
+            {
+                m_From.AddToBackpack(new Bolt(m_Item.Amount));
+                m_Item.Delete();
+            }
+        }
+        #endregion
 
 		public override void Serialize( GenericWriter writer )
 		{
