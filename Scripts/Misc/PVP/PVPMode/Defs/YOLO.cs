@@ -22,11 +22,9 @@ namespace Server.Misc.PVP
 
         protected override void OnStart()
         {
-            int cpt = 0;
-
             for (int i = 0; i < m_pvpevent.teams.Count; i++)
             {
-                NbPlayersAlive[i] = m_pvpevent.teams[i].joueurs.Count;
+                NbPlayersAlive.Add(m_pvpevent.teams[i].joueurs.Count);
             }
         }
 
@@ -47,6 +45,7 @@ namespace Server.Misc.PVP
                 if (m_pvpevent.teams[i].joueurs.ContainsKey(m))
                 {
                     NbPlayersAlive[i] -= 1;
+                    Server.Commands.CommandHandlers.BroadcastMessage(AccessLevel.Player, 0, m.Name + " est mort, il reste " + NbPlayersAlive[i] + " joueurs dans l'équipe.");
                     break;
                 }
             }

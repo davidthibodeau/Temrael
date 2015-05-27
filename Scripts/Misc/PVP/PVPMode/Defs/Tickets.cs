@@ -8,6 +8,7 @@ namespace Server.Misc.PVP
     public class Tickets : PVPMode
     {
         List<int> tickets;
+        const int maxtickets = 10;
 
         public override TimeSpan timeout
         {
@@ -22,11 +23,9 @@ namespace Server.Misc.PVP
 
         protected override void OnStart()
         {
-            int cpt = 0;
-
             for (int i = 0; i < m_pvpevent.teams.Count; i++)
             {
-                tickets[i] = 50;
+                tickets.Add(maxtickets);
             }
         }
 
@@ -55,6 +54,7 @@ namespace Server.Misc.PVP
                     {
                         m_pvpevent.teams.Despawn(m);
                     }
+                    //Server.Commands.CommandHandlers.BroadcastMessage(AccessLevel.Player, 0, "L'équipe #" + i + " a perdu un ticket. Il lui reste " + tickets[i] + " tickets");
                     break;
                 }
             }

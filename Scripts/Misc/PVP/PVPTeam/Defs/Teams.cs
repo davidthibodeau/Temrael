@@ -41,7 +41,7 @@ namespace Server.Misc.PVP
             return false;
         }
 
-        public override void Spawn(Mobile m)
+        protected override void SpawnDef(Mobile m)
         {
             int cpt = 0;
             foreach (PVPTeam team in m_teams)

@@ -160,7 +160,18 @@ namespace Server.Misc.PVP
             }
         }
 
-        public abstract void Spawn(Mobile m);
+        public void Spawn(Mobile m)
+        {
+            m.Warmode = false;
+
+            m.Hits = m.HitsMax;
+            m.Stam = m.StamMax;
+            m.Mana = m.ManaMax;
+
+            SpawnDef(m);
+        }
+
+        protected abstract void SpawnDef(Mobile m);
 
         public void DespawnAll()
         {

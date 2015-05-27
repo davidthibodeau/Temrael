@@ -56,6 +56,8 @@ namespace Server.Misc.PVP
                 if (state == PVPEventState.Setting)
                 {
                     m_map = value;
+
+                    debutEvent = DateTime.Now;
                 }
             }
         }
@@ -132,17 +134,16 @@ namespace Server.Misc.PVP
         /// Si les informations ont déjà été settées par le passé, ou que tout se déroule normalement, la fonction retournera true.</returns>
         public bool PrepareEvent()
         {
-            if (state == PVPEventState.Setting)
+            if (state == PVPEventState.Setting && (map != null || mode != null || teams != null || m_debutEvent > DateTime.Now))
             {
-                if (map == null || mode == null || teams == null || m_debutEvent <= DateTime.Now)
-                    return false;
-
                 debutTimer.Start();
 
                 state = PVPEventState.Waiting;
+
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         /// <summary>

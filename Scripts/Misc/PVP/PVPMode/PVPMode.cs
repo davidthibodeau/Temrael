@@ -11,9 +11,9 @@ namespace Server.Misc.PVP
         public static readonly Dictionary<Type, String> ModeList = new Dictionary<Type, String>
         {
             // ID
-            /* 0 */ {typeof(Tickets), "Tickets. (50)"},
-            /* 1 */ {typeof(YOLO), "Une seule vie."}
-            //* 2 */ {typeof(KillCount), "KillCount."},
+            /* 0 */ {typeof(Tickets), "Tickets. (10)"},
+            /* 1 */ {typeof(YOLO), "Une seule vie."},
+            /* 2 */ {typeof(KillCount), "KillCount.(10)"},
             //* 3 */ {typeof(CaptureTheFlag), "Capture the flag."},
         };
 
@@ -167,7 +167,10 @@ namespace Server.Misc.PVP
             {
                 foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
                 {
-                    ((ScriptMobile)pair.Key).CurrentPVPEventInstance = null;
+                    if (m_pvpevent == ((ScriptMobile)pair.Key).CurrentPVPEventInstance)
+                    {
+                        ((ScriptMobile)pair.Key).CurrentPVPEventInstance = null;
+                    }
                 }
             }
 

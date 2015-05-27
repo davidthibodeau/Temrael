@@ -26,7 +26,7 @@ namespace Server.Misc.PVP
             return true;
         }
 
-        public override void Spawn(Mobile m)
+        protected override void SpawnDef(Mobile m)
         {
             IPoint3D p = new Point3D(m_pvpevent.map.Region.RandomPoint(), 0);
             Spells.SpellHelper.GetSurfaceTop(ref p);
