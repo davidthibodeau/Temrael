@@ -379,9 +379,15 @@ namespace Server.Items
 
             protected override void OnTarget(Mobile from, object o)
             {
-                if (o is Mobile)
+                Mobile mob = (Mobile)o;
+
+                if (mob is PlayerMobile && !mob.Blessed)
                 {
                     m_Owner.Target(from, (Mobile)o);
+                }
+                else
+                {
+                    from.SendMessage("Votre cible doit être un joueur.");
                 }
             }
 
