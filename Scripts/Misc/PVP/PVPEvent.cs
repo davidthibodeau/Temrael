@@ -21,6 +21,7 @@ namespace Server.Misc.PVP
 
         public PVPEventState state; // L'état de l'event : Restreint l'utilisation de certaines fonctions (Ex : Empêcher le changement de map quand un combat a lieu).
 
+        private Mobile m_maker;
         private PVPStone m_stone;
         private String m_nom;
         private PVPMap m_map;
@@ -31,6 +32,11 @@ namespace Server.Misc.PVP
         private Timer debutTimer;   // Le timer qui s'occupe de starter l'événement à la date "debutEvent".
 
         #region Get/Set
+        public Mobile maker
+        {
+            get { return m_maker; }
+        }
+
         public PVPStone stone
         {
             get { return m_stone; }
@@ -121,6 +127,57 @@ namespace Server.Misc.PVP
                 }
             }
         }
+
+        public bool SetMapByID(int ID)
+        {
+            if (state == PVPEventState.Setting)
+            {
+                try
+                {
+                    map = PVPMap.MapList[ID];
+                    return true;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                }
+            }
+
+            return false;
+        }
+
+        public bool SetTeamByID(int ID)
+        {
+            if (state == PVPEventState.Setting)
+            {
+                try
+                {
+                    teams = (PVPTeamArrangement)Activator.CreateInstance(PVPTeamArrangement.TeamArrangementList.Keys.ElementAt(ID), this);
+                    return true;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                }
+            }
+
+            return false;
+        }
+
+        public bool SetModeByID(int ID)
+        {
+            if (state == PVPEventState.Setting)
+            {
+                try
+                {
+                    mode = (PVPMode)Activator.CreateInstance(PVPMode.ModeList.Keys.ElementAt(ID), this);
+                    return true;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                }
+            }
+
+            return false;
+        }
         #endregion
         #endregion
 
@@ -197,59 +254,6 @@ namespace Server.Misc.PVP
         }
         #endregion
 
-        #region Fonctions de Set.
-        public bool SetMapByID(int ID)
-        {
-            if (state == PVPEventState.Setting)
-            {
-                try
-                {
-                    map = PVPMap.MapList[ID];
-                    return true;
-                }
-                catch (IndexOutOfRangeException)
-                {
-                }
-            }
-
-            return false;
-        }
-
-        public bool SetTeamByID(int ID)
-        {
-            if (state == PVPEventState.Setting)
-            {
-                try
-                {
-                    teams = (PVPTeamArrangement)Activator.CreateInstance(PVPTeamArrangement.TeamArrangementList.Keys.ElementAt(ID), this);
-                    return true;
-                }
-                catch (IndexOutOfRangeException)
-                {
-                }
-            }
-
-            return false;
-        }
-
-        public bool SetModeByID(int ID)
-        {
-            if (state == PVPEventState.Setting)
-            {
-                try
-                {
-                    mode = (PVPMode)Activator.CreateInstance(PVPMode.ModeList.Keys.ElementAt(ID), this);
-                    return true;
-                }
-                catch (IndexOutOfRangeException)
-                {
-                }
-            }
-
-            return false;
-        }
-        #endregion
-
         public class PreparationTimer : Timer
         {
             PVPEvent m_pvpevent;
@@ -269,11 +273,32 @@ namespace Server.Misc.PVP
             }
         }
 
-        public PVPEvent(PVPStone stone)
+        public static PVPEvent CreateEvent(Mobile maker, PVPStone stone)
+        {
+            PVPEvent pvpevent = new PVPEvent(maker, stone);
+
+            if (maker != null)
+            {
+                foreach (PVPEvent _event in PVPEvent.m_InstancesList)
+                {
+                    if (maker == _event.m_maker)
+                    {
+                        maker.SendMessage("Vous ne pouvez pas créer un autre event, étant donné que vous avez déjà créé " + _event.nom);
+                        pvpevent.StopEvent();
+                        return pvpevent = null;
+                    }
+                }
+            }
+
+            return pvpevent;
+        }
+
+        private PVPEvent(Mobile maker, PVPStone stone)
         {
             debutTimer = new PreparationTimer(this);
             state = PVPEventState.Setting;
 
+            m_maker = maker;
             m_stone = stone;
 
             m_nom = "";
@@ -292,6 +317,7 @@ namespace Server.Misc.PVP
         public void Serialize(GenericWriter writer)
         {
             writer.Write((int)state);
+            writer.Write(m_maker);
             writer.Write(m_stone);
             writer.Write(m_nom);
             m_teams.Serialize(writer);
@@ -303,6 +329,7 @@ namespace Server.Misc.PVP
         public void Deserialize(GenericReader reader)
         {
             state = (PVPEventState)reader.ReadInt();
+            m_maker = reader.ReadMobile();
             m_stone = (PVPStone)reader.ReadItem();
             m_nom = reader.ReadString();
             m_teams = PVPTeamArrangement.Deserialize(reader);

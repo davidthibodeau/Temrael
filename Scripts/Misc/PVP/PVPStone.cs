@@ -80,7 +80,7 @@ namespace Server.Misc.PVP
             int count = reader.ReadInt();
             for(int i = 0; i < count; ++i)
             {
-                PVPEvent pvpevent = new PVPEvent(this);
+                PVPEvent pvpevent = PVPEvent.CreateEvent(null, this);
                 pvpevent.Deserialize(reader);
             }
         }

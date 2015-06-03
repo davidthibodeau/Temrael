@@ -27,7 +27,7 @@ namespace Server.Misc.PVP.Gumps
         const int NbMapModeMax = 10;
 
         public PVPGumpCreation(Mobile from, PVPStone stone)
-            : this(from, new PVPEvent(stone))
+            : this(from, PVPEvent.CreateEvent(from, stone))
         {
         }
 
