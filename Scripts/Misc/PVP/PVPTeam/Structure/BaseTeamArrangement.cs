@@ -27,7 +27,7 @@ namespace Server.Misc.PVP
         #region Inscription
         public void Inscrire(Mobile mob, int teamNumber)
         {
-            if (m_pvpevent.state <= PVPEventState.Preparing)
+            if (m_pvpevent.state <= PVPEventState.Waiting)
             {
                 if (!EstInscrit(mob))
                 {
@@ -85,13 +85,13 @@ namespace Server.Misc.PVP
         #endregion
 
         #region Modifier le nombre d'équipes.
-        public virtual bool AjouterEquipe()
+        public bool AjouterEquipe()
         {
             if (m_pvpevent.state == PVPEventState.Setting)
             {
                 if (m_pvpevent.map != null)
                 {
-                    if (this.Count < m_pvpevent.map.GetNbSpawnPoints())
+                    if (this.Count < m_pvpevent.map.NbTeamSpawnpoints)
                     {
                         if (this.Count < NbMaxEquipes || NbMaxEquipes == 0)
                         {
@@ -105,7 +105,7 @@ namespace Server.Misc.PVP
             return false;
         }
 
-        public virtual void SetNbEquipe(int nb)
+        public void SetNbEquipe(int nb)
         {
             if (m_pvpevent.state == PVPEventState.Setting)
             {
@@ -130,7 +130,7 @@ namespace Server.Misc.PVP
             }
         }
 
-        public virtual bool EnleverEquipe()
+        public bool EnleverEquipe()
         {
             if (m_pvpevent.state == PVPEventState.Setting)
             {
@@ -270,9 +270,9 @@ namespace Server.Misc.PVP
             }
         }
 
-        public static PVPTeamArrangement Deserialize(GenericReader reader)
+        public static PVPTeamArrangement Deserialize(GenericReader reader, PVPEvent pvpevent)
         {
-            PVPTeamArrangement teamArrangement = (PVPTeamArrangement)Activator.CreateInstance(TeamArrangementList.Keys.ElementAt(reader.ReadInt()));
+            PVPTeamArrangement teamArrangement = (PVPTeamArrangement)Activator.CreateInstance(TeamArrangementList.Keys.ElementAt(reader.ReadInt()), pvpevent);
             
             int TeamsCount = reader.ReadInt();
             for (int i = 0; i < TeamsCount; ++i)
@@ -285,7 +285,7 @@ namespace Server.Misc.PVP
                     Mobile mob = reader.ReadMobile();
                     bool playerstate = reader.ReadBool();
 
-                    teamArrangement[j].joueurs.Add(mob, playerstate);
+                    teamArrangement[i].joueurs.Add(mob, playerstate);
                 }
             }
 
@@ -293,7 +293,7 @@ namespace Server.Misc.PVP
         }
         #endregion
 
-        protected PVPTeamArrangement(PVPEvent pvpevent)
+        public PVPTeamArrangement(PVPEvent pvpevent)
         {
             m_pvpevent = pvpevent;
             m_teams = new List<PVPTeam>();

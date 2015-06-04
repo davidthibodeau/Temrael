@@ -21,7 +21,7 @@ namespace Server.Misc.PVP
         {
             if (m_pvpevent.map != null)
             {
-                if (teamNumber >= 0 && teamNumber < m_pvpevent.map.GetNbSpawnPoints())
+                if (teamNumber >= 0 && teamNumber < m_pvpevent.map.NbTeamSpawnpoints)
                 {
                     if (!m_teams[teamNumber].joueurs.ContainsKey(mob))
                     {

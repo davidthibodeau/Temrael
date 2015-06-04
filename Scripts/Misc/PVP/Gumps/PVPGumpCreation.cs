@@ -154,7 +154,7 @@ namespace Server.Misc.PVP.Gumps
             // Choix du nombre d'équipes.
             else if (m_Pvpevent.teams.Count == 0 && m_Pvpevent.teams.NbMaxEquipes != 0)
             {
-                AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Nombre d'équipes (1 à " + m_Pvpevent.map.GetNbSpawnPoints() + ") : " + "</h3>", false, false);
+                AddHtml(x, y + (line * scale), 450, 20, "<h3>" + "Nombre d'équipes (1 à " + m_Pvpevent.map.NbTeamSpawnpoints + ") : " + "</h3>", false, false);
                 AddTextEntry(x + 185, y + (line * scale), 450, 20, 0, 4, m_Pvpevent.teams.Count.ToString());
                 line++;
 
@@ -266,7 +266,7 @@ namespace Server.Misc.PVP.Gumps
                     int value = 0;
                     if (int.TryParse(relay.Text, out value))
                     {
-                        if (value > 0 && value <= m_Pvpevent.map.GetNbSpawnPoints())
+                        if (value > 0 && value <= m_Pvpevent.map.NbTeamSpawnpoints)
                         {
                             m_Pvpevent.teams.SetNbEquipe(value);
                         }

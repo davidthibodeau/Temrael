@@ -74,8 +74,6 @@ namespace Server.Misc.PVP
                 }
             }
 
-            m_pvpevent.teams.SpawnAll();
-
             m_timeoutTimer.Start();
 
             OnStart();
@@ -216,9 +214,9 @@ namespace Server.Misc.PVP
             }
         }
 
-        public static PVPMode Deserialize(GenericReader reader)
+        public static PVPMode Deserialize(GenericReader reader, PVPEvent pvpevent)
         {
-            return (PVPMode)Activator.CreateInstance(ModeList.Keys.ElementAt(reader.ReadInt()));
+            return (PVPMode)Activator.CreateInstance(ModeList.Keys.ElementAt(reader.ReadInt()), pvpevent);
         }
         #endregion
     }

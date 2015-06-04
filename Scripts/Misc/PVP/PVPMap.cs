@@ -11,14 +11,28 @@ namespace Server.Misc.PVP
         // Ne pas changer l'ordre des maps pour aucune raison : Pourrait causer des bugs de serialize. Il faut ajouter à la fin.
         public static List<PVPMap> MapList = new List<PVPMap>
         {
-            // ID                 Nom          Zone de combat(              X Y 1,                X Y 2),                   Liste des spawnpoints.       )
-            /* 0 */ new PVPMap("Bob Donjon", Map.Felucca, new Rectangle2D(new Point2D(4045, 53), new Point2D(4052,60)), new List<Point3D>(){new Point3D(4049,57,0)})
+            /* 0 */ new PVPMap("Ville de Vénore", Map.Ilshenar, 4, new List<Point3D>()
+            {
+                // Spawnpoints.
+                new Point3D(163,261,-59),
+                new Point3D(189, 101, -59),
+                new Point3D(221, 194, -79),
+                new Point3D(137, 168, -58),
+
+                new Point3D(197, 207, -54),
+                new Point3D(197, 225, -54),
+                new Point3D(177, 234, -59),
+                new Point3D(130, 215, -54),
+                new Point3D(184, 148, -54),
+                new Point3D(228, 150, -59),
+                new Point3D(218, 110, -59)
+            })
         };
 
         #region Membres
         private String m_Name;                  // Nom du terrain de bataille.
         private Map m_Map;                      // Map du terrain de bataille, pour que la teleportation se fasse au bon endroit.
-        private Rectangle2D m_Region;           // Region définissant la zone de combat : La zone doit être plus petite que le terrain en entier.
+        private int m_NbTeamSpawnpoints;        // Nombre de spawnpoints fait pour les équipes.
         private List<Point3D> m_SpawnPoints;    // List des spawnpoints : Team 1 spawn à m_Spawnpoints[0], etc. 
 
         private bool m_IsInUse;                 // Bool qui permet de savoir si un autre event utilise présentement le terrain.
@@ -32,9 +46,9 @@ namespace Server.Misc.PVP
         {
             get { return m_Map; }
         }
-        public Rectangle2D Region
+        public int NbTeamSpawnpoints
         {
-            get { return m_Region; }
+            get { return m_NbTeamSpawnpoints; }
         }
         public List<Point3D> SpawnPoints
         {
@@ -44,18 +58,13 @@ namespace Server.Misc.PVP
         #endregion
         #endregion
 
-        PVPMap(String name, Map map, Rectangle2D region, List<Point3D> spawnpoints)
+        PVPMap(String name, Map map, int nbTeamSpawnPoints, List<Point3D> spawnpoints)
         {
             m_Name = name;
             m_Map = map;
-            m_Region = region;
+            m_NbTeamSpawnpoints = nbTeamSpawnPoints;
             m_SpawnPoints = spawnpoints;
             m_IsInUse = false;
-        }
-
-        public int GetNbSpawnPoints()
-        {
-            return m_SpawnPoints.Count;
         }
 
         public bool UseMap()

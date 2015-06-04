@@ -28,21 +28,9 @@ namespace Server.Misc.PVP
 
         protected override void SpawnDef(Mobile m)
         {
-            IPoint3D p = new Point3D(m_pvpevent.map.Region.RandomPoint(), 0);
-            Spells.SpellHelper.GetSurfaceTop(ref p);
+            m.Location = m_pvpevent.map.SpawnPoints[Utility.Random(m_pvpevent.map.SpawnPoints.Count)];
 
-            m.Location = (Point3D)p;
             m.Map = m_pvpevent.map.Map;
-        }
-
-        public override bool AjouterEquipe()
-        {
-            return false;
-        }
-
-        public override bool EnleverEquipe()
-        {
-            return false;
         }
     }
 }

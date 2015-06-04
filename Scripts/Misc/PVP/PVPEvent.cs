@@ -385,26 +385,30 @@ namespace Server.Misc.PVP
 
         public void Serialize(GenericWriter writer)
         {
-            writer.Write((int)state);
             writer.Write(m_maker);
             writer.Write(m_stone);
             writer.Write(m_nom);
+            m_map.Serialize(writer);  // Important d'avoir la map avant le teamArrangement.
             m_teams.Serialize(writer);
-            m_map.Serialize(writer);
             m_mode.Serialize(writer);
             writer.Write(m_debutEvent);
+
+            writer.Write((int)state); // Important de mettre le state à la fin.
         }
 
         public void Deserialize(GenericReader reader)
         {
-            state = (PVPEventState)reader.ReadInt();
+            state = PVPEventState.Setting;
+
             m_maker = reader.ReadMobile();
             m_stone = (PVPStone)reader.ReadItem();
             m_nom = reader.ReadString();
-            m_teams = PVPTeamArrangement.Deserialize(reader);
             m_map = PVPMap.Deserialize(reader);
-            m_mode = PVPMode.Deserialize(reader);
+            m_teams = PVPTeamArrangement.Deserialize(reader, this);
+            m_mode = PVPMode.Deserialize(reader,this);
             m_debutEvent = reader.ReadDateTime();
+
+            state = (PVPEventState)reader.ReadInt();
 
             debutTimer = new WaitingTimer(this);
 
