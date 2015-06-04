@@ -27,15 +27,18 @@ namespace Server.Misc.PVP
         #region Inscription
         public void Inscrire(Mobile mob, int teamNumber)
         {
-            if (!EstInscrit(mob))
+            if (m_pvpevent.state <= PVPEventState.Preparing)
             {
-                if (InscrireDef(mob, teamNumber))
+                if (!EstInscrit(mob))
                 {
-                    mob.SendMessage("Vous avez été inscrit à l'event " + m_pvpevent.nom + " avec succès.");
-                }
-                else
-                {
-                    mob.SendMessage("Il y a eu une erreur lors de votre inscription à l'event " + m_pvpevent.nom);
+                    if (InscrireDef(mob, teamNumber))
+                    {
+                        mob.SendMessage("Vous avez été inscrit à l'event " + m_pvpevent.nom + " avec succès.");
+                    }
+                    else
+                    {
+                        mob.SendMessage("Il y a eu une erreur lors de votre inscription à l'event " + m_pvpevent.nom);
+                    }
                 }
             }
         }
@@ -44,7 +47,7 @@ namespace Server.Misc.PVP
 
         public void Desinscrire(Mobile m)
         {
-            if (m_pvpevent.state == PVPEventState.Setting || m_pvpevent.state == PVPEventState.Waiting)
+            if (m_pvpevent.state <= PVPEventState.Preparing)
             {
                 foreach (PVPTeam team in this)
                 {

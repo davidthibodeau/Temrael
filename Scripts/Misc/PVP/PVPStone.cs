@@ -63,8 +63,17 @@ namespace Server.Misc.PVP
 
             writer.Write(rect);
 
-            int count = PVPEvent.m_InstancesList.Count;
+            int count;
+            if (PVPEvent.m_InstancesList != null)
+            {
+                count = PVPEvent.m_InstancesList.Count;
+            }
+            else
+            {
+                count = 0;
+            }
             writer.Write(count);
+
             for (int i = 0; i < count; ++i)
             {
                 ((PVPEvent)PVPEvent.m_InstancesList[i]).Serialize(writer);

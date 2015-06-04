@@ -222,9 +222,6 @@ namespace Server.Misc.PVP.Gumps
             int type = buttonID % NbMapModeMax;
             int index = buttonID / NbMapModeMax;
 
-            Console.WriteLine(buttonID + " " + type + " " + index);
-
-
             if (buttonID == -1)
             {
                 m_Pvpevent.StopEvent();

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Misc.PVP.Gumps;
 
 namespace Server.Misc.PVP
 {
@@ -10,7 +11,8 @@ namespace Server.Misc.PVP
     {
         Setting,   // L'Event est en train d'être créé, les informations sont mises en place.
         Waiting,   // En attente de la date/heure de début.
-        Started,   // Les joueurs se préparent à se battre ou se battent en ce moment (Dépend du PVPMode).
+        Preparing, // Les joueurs sont en train de se préparer / de se faire spawner sur la map.
+        Started,   // Les joueurs se battent en ce moment (Dépend du PVPMode).
         Done       // La bataille est terminée, les résultats sont compilés.
     }
 
@@ -211,8 +213,6 @@ namespace Server.Misc.PVP
             if (teams.Count != 0 &&
                 map.UseMap())
             {
-                debutTimer.Stop();
-
                 state = PVPEventState.Started;
 
                 mode.Start();
@@ -254,11 +254,11 @@ namespace Server.Misc.PVP
         }
         #endregion
 
-        public class PreparationTimer : Timer
+        public class WaitingTimer : Timer
         {
             PVPEvent m_pvpevent;
 
-            public PreparationTimer(PVPEvent pvpevent)
+            public WaitingTimer(PVPEvent pvpevent)
                 : base(TimeSpan.Zero, TimeSpan.FromSeconds(3))
             {
                 m_pvpevent = pvpevent;
@@ -268,7 +268,76 @@ namespace Server.Misc.PVP
             {
                 if (DateTime.Now >= m_pvpevent.debutEvent)
                 {
-                    m_pvpevent.StartEvent();
+                    m_pvpevent.debutTimer = new PreparationTimer(m_pvpevent);
+                    m_pvpevent.debutTimer.Start();
+                    Stop();
+                }
+            }
+        }
+
+        public class PreparationTimer : Timer
+        {
+            PVPEvent m_pvpevent;
+            List<Mobile> m_toCheck;
+            DateTime m_EndTime;
+
+            TimeSpan tempsAttente { get { return TimeSpan.FromSeconds(30); } }
+
+            public PreparationTimer(PVPEvent pvpevent) :
+                base(TimeSpan.Zero, TimeSpan.FromSeconds(1))
+            {
+                m_pvpevent = pvpevent;
+                m_toCheck = new List<Mobile>();
+                m_EndTime = DateTime.Now + tempsAttente;
+
+                m_pvpevent.state = PVPEventState.Preparing;
+
+                foreach (PVPTeam team in m_pvpevent.teams)
+                {
+                    foreach (KeyValuePair<Mobile,bool> pair in team.joueurs)
+                    {
+                        m_toCheck.Add(pair.Key);
+                    }
+                }
+
+                // Send Gump le gump de choix.
+                foreach (Mobile mob in m_toCheck)
+                {
+                    mob.SendGump(new PVPGumpPreparation(mob, m_pvpevent, m_toCheck));
+                }
+            }
+
+            protected override void OnTick()
+            {
+                if (m_EndTime - DateTime.Now <= TimeSpan.FromSeconds(10))
+                {
+                    foreach (PVPTeam team in m_pvpevent.teams)
+                    {
+                        foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
+                        {
+                            pair.Key.SendMessage(((int)(m_EndTime - DateTime.Now).TotalSeconds).ToString() + "..");
+                        }
+                    }
+
+                    if (m_EndTime <= DateTime.Now)
+                    {
+                        foreach (Mobile mob in m_toCheck)
+                        {
+                            m_pvpevent.teams.Desinscrire(mob);
+                            mob.CloseGump(typeof(PVPGumpPreparation));
+                        }
+
+                        foreach (PVPTeam team in m_pvpevent.teams)
+                        {
+                            foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
+                            {
+                                pair.Key.Frozen = false;
+                            }
+                        }
+
+                        m_pvpevent.StartEvent();
+                        Stop();
+                    }
                 }
             }
         }
@@ -281,7 +350,7 @@ namespace Server.Misc.PVP
             {
                 foreach (PVPEvent _event in PVPEvent.m_InstancesList)
                 {
-                    if (maker == _event.m_maker)
+                    if (maker == _event.m_maker && _event != pvpevent)
                     {
                         maker.SendMessage("Vous ne pouvez pas créer un autre event, étant donné que vous avez déjà créé " + _event.nom);
                         pvpevent.StopEvent();
@@ -295,7 +364,7 @@ namespace Server.Misc.PVP
 
         private PVPEvent(Mobile maker, PVPStone stone)
         {
-            debutTimer = new PreparationTimer(this);
+            debutTimer = new WaitingTimer(this);
             state = PVPEventState.Setting;
 
             m_maker = maker;
@@ -337,9 +406,9 @@ namespace Server.Misc.PVP
             m_mode = PVPMode.Deserialize(reader);
             m_debutEvent = reader.ReadDateTime();
 
-            debutTimer = new PreparationTimer(this);
+            debutTimer = new WaitingTimer(this);
 
-            if (state == PVPEventState.Started)
+            if (state >= PVPEventState.Preparing)
             {
                 // Event commencé : Despawn et effaçage.
                 teams.DespawnAll();
