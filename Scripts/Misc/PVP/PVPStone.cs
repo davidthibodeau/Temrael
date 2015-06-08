@@ -29,6 +29,7 @@ namespace Server.Misc.PVP
             : base(0x2312)
         {
             MakeUnique();
+            Name = "Babillard des guerres.";
         }
 
         public override void OnLocationChange(Point3D oldLocation)
@@ -74,9 +75,12 @@ namespace Server.Misc.PVP
             }
             writer.Write(count);
 
-            for (int i = 0; i < count; ++i)
+            if (PVPEvent.m_InstancesList != null)
             {
-                ((PVPEvent)PVPEvent.m_InstancesList[i]).Serialize(writer);
+                for (int i = 0; i < count; ++i)
+                {
+                    ((PVPEvent)PVPEvent.m_InstancesList[i]).Serialize(writer);
+                }
             }
         }
 

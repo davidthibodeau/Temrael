@@ -388,11 +388,10 @@ namespace Server.Misc.PVP
             writer.Write(m_maker);
             writer.Write(m_stone);
             writer.Write(m_nom);
-            m_map.Serialize(writer);  // Important d'avoir la map avant le teamArrangement.
-            m_teams.Serialize(writer);
-            m_mode.Serialize(writer);
+            PVPMap.Serialize(writer, m_map); // Important d'avoir la map avant le teamArrangement.
+            PVPTeamArrangement.Serialize(writer, m_teams);
+            PVPMode.Serialize(writer, m_mode);
             writer.Write(m_debutEvent);
-
             writer.Write((int)state); // Important de mettre le state à la fin.
         }
 

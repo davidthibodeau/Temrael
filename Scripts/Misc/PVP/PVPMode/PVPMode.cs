@@ -23,6 +23,9 @@ namespace Server.Misc.PVP
         protected bool AllowFriendlyFire = false;
         protected bool AllowLoot = false;
 
+        PlayerDeathEventHandler playerdeathhandler;
+        DisconnectedEventHandler disconnectedhandler;
+
         public PVPMode(PVPEvent pvpevent)
         {
             m_pvpevent = pvpevent;
@@ -56,15 +59,20 @@ namespace Server.Misc.PVP
         #region Debut fin du combat / Events
         public void Start()
         {
-            EventSink.PlayerDeath += new PlayerDeathEventHandler(EventSink_PlayerDeath);
-            EventSink.Disconnected += new DisconnectedEventHandler(EventSink_PlayerDisc);
+            playerdeathhandler = new PlayerDeathEventHandler(EventSink_PlayerDeath);
+            disconnectedhandler = new DisconnectedEventHandler(EventSink_PlayerDisc);
 
+            EventSink.PlayerDeath += playerdeathhandler;
+            EventSink.Disconnected += disconnectedhandler;
+
+            int cpt = 0;
             foreach (PVPTeam team in m_pvpevent.teams)
             {
                 foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
                 {
                     if (((ScriptMobile)pair.Key).CurrentPVPEventInstance == null)
                     {
+                        cpt++;
                         ((ScriptMobile)pair.Key).CurrentPVPEventInstance = m_pvpevent;
                     }
                     else
@@ -74,9 +82,16 @@ namespace Server.Misc.PVP
                 }
             }
 
-            m_timeoutTimer.Start();
+            if (cpt > 1)
+            {
+                m_timeoutTimer.Start();
 
-            OnStart();
+                OnStart();
+            }
+            else
+            {
+                Stop();
+            }
         }
 
         protected abstract void OnStart();
@@ -172,6 +187,15 @@ namespace Server.Misc.PVP
                 }
             }
 
+            if (playerdeathhandler != null)
+            {
+                EventSink.PlayerDeath -= playerdeathhandler;
+            }
+            if (disconnectedhandler != null)
+            {
+                EventSink.Disconnected -= disconnectedhandler;
+            }
+
             m_pvpevent.StopEvent();
         }
         #endregion
@@ -202,21 +226,37 @@ namespace Server.Misc.PVP
         #endregion
 
         #region Serialize / Deserialize
-        public void Serialize(GenericWriter writer)
+        public static void Serialize(GenericWriter writer, PVPMode mode)
         {
-            for (int i = 0; i < ModeList.Count; i++)
+            if (mode != null)
             {
-                if (ModeList.Keys.ElementAt(i) == this.GetType())
+                for (int i = 0; i < ModeList.Count; i++)
                 {
-                    writer.Write(i);
-                    break;
+                    if (ModeList.Keys.ElementAt(i) == mode.GetType())
+                    {
+                        writer.Write(i);
+                        break;
+                    }
                 }
+            }
+            else
+            {
+                writer.Write(-1);
             }
         }
 
         public static PVPMode Deserialize(GenericReader reader, PVPEvent pvpevent)
         {
-            return (PVPMode)Activator.CreateInstance(ModeList.Keys.ElementAt(reader.ReadInt()), pvpevent);
+            int val = reader.ReadInt();
+
+            if (val != -1)
+            {
+                return (PVPMode)Activator.CreateInstance(ModeList.Keys.ElementAt(val), pvpevent);
+            }
+            else
+            {
+                return null;
+            }
         }
         #endregion
     }

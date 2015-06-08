@@ -250,45 +250,58 @@ namespace Server.Misc.PVP
         #endregion
 
         #region Serialize / Deserialize
-        public void Serialize(GenericWriter writer)
+        public static void Serialize(GenericWriter writer, PVPTeamArrangement teamArrangement)
         {
-            for (int i = 0; i < TeamArrangementList.Count; i++)
+            if (teamArrangement != null)
             {
-                if (TeamArrangementList.Keys.ElementAt(i) == this.GetType())
+                for (int i = 0; i < TeamArrangementList.Count; i++)
                 {
-                    writer.Write(i);
-                    break;
+                    if (TeamArrangementList.Keys.ElementAt(i) == teamArrangement.GetType())
+                    {
+                        writer.Write(i);
+                        break;
+                    }
+                }
+
+                writer.Write(teamArrangement.m_teams.Count);
+                foreach (PVPTeam team in teamArrangement.m_teams)
+                {
+                    writer.Write(team.joueurs.Count);
+                    foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
+                    {
+                        writer.Write(pair.Key);
+                        writer.Write(pair.Value);
+                    }
                 }
             }
-
-            writer.Write(m_teams.Count);
-            foreach (PVPTeam team in m_teams)
+            else
             {
-                writer.Write(team.joueurs.Count);
-                foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
-                {
-                    writer.Write(pair.Key);
-                    writer.Write(pair.Value);
-                }
+                writer.Write(-1);
             }
         }
 
         public static PVPTeamArrangement Deserialize(GenericReader reader, PVPEvent pvpevent)
         {
-            PVPTeamArrangement teamArrangement = (PVPTeamArrangement)Activator.CreateInstance(TeamArrangementList.Keys.ElementAt(reader.ReadInt()), pvpevent);
-            
-            int TeamsCount = reader.ReadInt();
-            for (int i = 0; i < TeamsCount; ++i)
+            int val = reader.ReadInt();
+            PVPTeamArrangement teamArrangement = null;
+
+            if (val != -1)
             {
-                teamArrangement.AjouterEquipe();
+                teamArrangement = (PVPTeamArrangement)Activator.CreateInstance(TeamArrangementList.Keys.ElementAt(val), pvpevent);
 
-                int JoueursCount = reader.ReadInt();
-                for (int j = 0; j < JoueursCount; ++j)
+                int TeamsCount = reader.ReadInt();
+                for (int i = 0; i < TeamsCount; ++i)
                 {
-                    Mobile mob = reader.ReadMobile();
-                    bool playerstate = reader.ReadBool();
+                    teamArrangement.AjouterEquipe();
 
-                    teamArrangement[i].joueurs.Add(mob, playerstate);
+                    int JoueursCount = reader.ReadInt();
+                    for (int j = 0; j < JoueursCount; ++j)
+                    {
+                        Mobile mob = reader.ReadMobile();
+                        bool playerstate = reader.ReadBool();
+
+                        teamArrangement[i].joueurs.Add(mob, playerstate);
+                    }
                 }
             }
 
@@ -313,6 +326,11 @@ namespace Server.Misc.PVP
             CanBeAltered = false;
         }
 
+        public PVPDossard(Serial serial)
+            : base(serial)
+        {
+        }
+
         public static void ForcePut(Mobile mob, int hue)
         {
             if (mob.FindItemOnLayer(Layer.Cloak) != null)
@@ -329,6 +347,16 @@ namespace Server.Misc.PVP
             {
                 mob.FindItemOnLayer(Layer.Cloak).Delete();
             }
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+ 	         base.Deserialize(reader);
         }
     }
 }

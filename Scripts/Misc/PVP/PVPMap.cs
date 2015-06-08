@@ -135,21 +135,37 @@ namespace Server.Misc.PVP
             m_IsInUse = false;
         }
 
-        public void Serialize(GenericWriter writer)
+        public static void Serialize(GenericWriter writer, PVPMap map)
         {
-            for (int i = 0; i < MapList.Count; i++)
+            if (map != null)
             {
-                if (MapList[i] == this)
+                for (int i = 0; i < MapList.Count; i++)
                 {
-                    writer.Write(i);
-                    break;
+                    if (MapList[i] == map)
+                    {
+                        writer.Write(i);
+                        break;
+                    }
                 }
+            }
+            else
+            {
+                writer.Write(-1);
             }
         }
 
         public static PVPMap Deserialize(GenericReader reader)
         {
-            return MapList[reader.ReadInt()];
+            int val = reader.ReadInt();
+
+            if (val != -1)
+            {
+                return MapList[val];
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
