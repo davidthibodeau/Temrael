@@ -34,28 +34,35 @@ namespace Server.Commandes.Temrael
         }
         public static bool GenerateNewKey(Mobile from, ILockable item, int nbKeys)
         {
-            long newKeyValue = DateTime.Now.Ticks;
-            Key key;
-            
-            item.KeyValue = newKeyValue;
-
-            if (item is BaseDoor)
+            if (item != null)
             {
-                BaseDoor door = (BaseDoor)item;
+                long newKeyValue = DateTime.Now.Ticks;
+                Key key;
 
-                door.Link.KeyValue = newKeyValue;
+                item.KeyValue = newKeyValue;
+
+                if (item is BaseDoor)
+                {
+                    BaseDoor door = (BaseDoor)item;
+
+                    door.Link.KeyValue = newKeyValue;
+                }
+
+                for (int i = 0; i < nbKeys; i++)
+                {
+                    key = new Key(KeyType.Iron);
+
+                    key.KeyValue = newKeyValue;
+
+                    from.AddToBackpack(key);
+                }
+
+                return true;
             }
-
-            for (int i = 0; i < nbKeys; i++)
+            else
             {
-                key = new Key(KeyType.Iron);
-
-                key.KeyValue = newKeyValue;
-
-                from.AddToBackpack(key);
+                return false;
             }
-
-            return true;
         }
 
         [Usage("GenerateKeyFor [amount]")]
@@ -75,19 +82,26 @@ namespace Server.Commandes.Temrael
         }
         public static bool GenerateKeyFor(Mobile from, ILockable item, int nbKeys)
         {
-            if (item.KeyValue != 0)
+            if (item != null)
             {
-                Key key;
-
-                for (int i = 0; i < nbKeys; i++)
+                if (item.KeyValue != 0)
                 {
-                    key = new Key(KeyType.Iron);
+                    Key key;
 
-                    key.KeyValue = item.KeyValue;
+                    for (int i = 0; i < nbKeys; i++)
+                    {
+                        key = new Key(KeyType.Iron);
 
-                    from.AddToBackpack(key);
+                        key.KeyValue = item.KeyValue;
+
+                        from.AddToBackpack(key);
+                    }
+                    return true;
                 }
-                return true;
+                else
+                {
+                    return false;
+                }
             }
             else
             {

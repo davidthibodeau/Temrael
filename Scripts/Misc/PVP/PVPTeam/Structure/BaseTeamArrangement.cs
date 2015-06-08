@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using Server.Items;
 
 namespace Server.Misc.PVP
 {
@@ -208,6 +209,8 @@ namespace Server.Misc.PVP
 
             m_pvpevent.stone.TeleportRand(m);
             //m.LogoutLocation = m.Location;
+
+            PVPDossard.Remove(m);
         }
 
         public bool IsDespawned(Mobile m)
@@ -297,6 +300,35 @@ namespace Server.Misc.PVP
         {
             m_pvpevent = pvpevent;
             m_teams = new List<PVPTeam>();
+        }
+    }
+
+    public class PVPDossard : BaseClothing
+    {
+        [Constructable]
+        public PVPDossard(int hue)
+            : base(0x2752, Layer.Cloak, hue)
+        {
+            Movable = false;
+            CanBeAltered = false;
+        }
+
+        public static void ForcePut(Mobile mob, int hue)
+        {
+            if (mob.FindItemOnLayer(Layer.Cloak) != null)
+            {
+                mob.Backpack.AddItem(mob.FindItemOnLayer(Layer.Cloak));
+            }
+
+            mob.AddItem(new PVPDossard(hue));
+        }
+
+        public static void Remove(Mobile mob)
+        {
+            if (mob.FindItemOnLayer(Layer.Cloak) is PVPDossard)
+            {
+                mob.FindItemOnLayer(Layer.Cloak).Delete();
+            }
         }
     }
 }

@@ -83,7 +83,7 @@ namespace Server.Items
                     m_From.SendMessage("L'objet doit être dans votre sac pour que vous l'équipiez.");
                     return;
                 }
-                if (((BaseWearable)m_Item).CanEquip(m_From))
+                if (((BaseWearable)m_Item).CanEquip(m_From) && m_Item.Movable)
                 {
                     if (!(m_From.EquipItem(m_Item)))
                         m_From.SendMessage("Vous ne parvenez pas a equiper cet objet.");
@@ -109,7 +109,14 @@ namespace Server.Items
 
             public override void OnClick()
             {
-                m_From.PlaceInBackpack(m_Item);
+                if (m_Item.Movable)
+                {
+                    m_From.PlaceInBackpack(m_Item);
+                }
+                else
+                {
+                    m_From.SendMessage("Vous ne parvenez pas à retirer cet objet");
+                }
                 //m_From.EquipItem(m_Item);
             }
         }

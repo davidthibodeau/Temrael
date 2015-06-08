@@ -7,6 +7,16 @@ namespace Server.Misc.PVP
 {
     class Teams : PVPTeamArrangement
     {
+        private List<int> hueList = new List<int>
+        {
+            0x3, // Team 1
+            0x21,// Team 2
+            0x35,// Team 3
+            0x44 // Team 4
+        };
+
+
+
         public Teams(PVPEvent pvpevent)
             : base(pvpevent)
         {
@@ -50,6 +60,9 @@ namespace Server.Misc.PVP
                 {
                     m.Location = m_pvpevent.map.SpawnPoints[cpt];
                     m.Map = m_pvpevent.map.Map;
+
+                    PVPDossard.ForcePut(m, hueList[cpt]);
+
                     return;
                 }
                 ++cpt;
