@@ -54,7 +54,7 @@ namespace Server.Spells
             {
                 Caster.SendLocalizedMessage(500237); // Target can not be seen.
             }
-            else if (CheckSequence())
+            else if (CheckBSequence(m))
             {
                 DoEffect(m);
             }

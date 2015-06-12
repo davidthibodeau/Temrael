@@ -59,7 +59,7 @@ namespace Server.Spells
             {
                 Caster.SendMessage("Vous ne pouvez pas lancer le sort de nouveau sur cette cible avant un certain temps");
             }
-            else if (CheckSequence())
+            else if (CheckBSequence(m))
             {
                 DoEffect(m);
             }

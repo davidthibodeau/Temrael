@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Mobiles;
+using Server.Items;
 
 namespace Server.Misc.PVP
 {
@@ -20,8 +21,8 @@ namespace Server.Misc.PVP
         protected PVPEvent m_pvpevent;
         private TimeoutTimer m_timeoutTimer;
 
-        protected bool AllowFriendlyFire = false;
-        protected bool AllowLoot = false;
+        protected bool m_AllowFriendlyFire = false;
+        protected bool m_AllowLoot = false;
 
         PlayerDeathEventHandler playerdeathhandler;
         DisconnectedEventHandler disconnectedhandler;
@@ -32,9 +33,9 @@ namespace Server.Misc.PVP
             m_timeoutTimer = new TimeoutTimer(this);
         }
 
-        public virtual bool AllowFriendlyDamage(Mobile mob1, Mobile mob2)
+        public virtual bool AllowFriendlyFire(Mobile mob1, Mobile mob2)
         {
-            if (AllowFriendlyFire) 
+            if (m_AllowFriendlyFire) 
                 return true;
 
             int cpt = 0;
@@ -54,6 +55,11 @@ namespace Server.Misc.PVP
             }
 
             return !m_pvpevent.teams[cpt].joueurs.ContainsKey(mob2);
+        }
+
+        public virtual bool AllowLoot()
+        {
+            return m_AllowLoot;
         }
 
         #region Debut fin du combat / Events
@@ -107,13 +113,13 @@ namespace Server.Misc.PVP
             {
                 if (!m_pvpevent.teams.IsDespawned(e.Mobile))
                 {
-                    if (!AllowLoot)
-                    {
-                        if (e.Mobile.Corpse != null)
-                        {
-                            e.Mobile.Corpse.Visible = false;
-                        }
-                    }
+                    //if (!m_AllowLoot)
+                    //{
+                    //    if (e.Mobile.Corpse != null)
+                    //    {
+                    //        e.Mobile.Corpse.Visible = false;
+                    //    }
+                    //}
 
                     Timer.DelayCall(DeathTime, new TimerStateCallback(Delayed_Ondeath), e);
                 }
@@ -125,7 +131,7 @@ namespace Server.Misc.PVP
             PlayerDeathEventArgs e = (PlayerDeathEventArgs)obj;
 
             e.Mobile.Resurrect();
-            if (e.Mobile.Corpse != null && !AllowLoot)
+            if (e.Mobile.Corpse != null && !m_AllowLoot)
             {
                 List<Item> toAdd = new List<Item>();
                 if (e.Mobile.Corpse.Items != null)
@@ -140,8 +146,6 @@ namespace Server.Misc.PVP
                 {
                     e.Mobile.Backpack.AddItem(i);
                 }
-
-                e.Mobile.Corpse.Delete();
             }
 
             OnPlayerDeath(e);
@@ -194,6 +198,21 @@ namespace Server.Misc.PVP
             if (disconnectedhandler != null)
             {
                 EventSink.Disconnected -= disconnectedhandler;
+            }
+
+            foreach (KeyValuePair<Serial, Item> pair in World.Items)
+            {
+                if (pair.Value is Corpse)
+                {
+                    Corpse c = (Corpse)pair.Value;
+                    foreach(PVPTeam team in m_pvpevent.teams)
+                    {
+                        if (team.joueurs.ContainsKey(c.Owner))
+                        {
+                            c.Open(c.Owner, true);
+                        }
+                    }
+                }
             }
 
             m_pvpevent.StopEvent();

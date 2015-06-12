@@ -289,6 +289,29 @@ namespace Server.Items
                 new WaitTimer(def, TimeSpan.FromSeconds(2*WaitTime)).Start();
                 if (weapon != null)
                 {
+                    if (atk is ScriptMobile)
+                    {
+                        ScriptMobile mob = (ScriptMobile)atk;
+                        if (mob.CurrentPVPEventInstance != null)
+                        {
+                            if (mob.CurrentPVPEventInstance.mode != null)
+                            {
+                                if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
+                                {
+                                    def.AddToBackpack(weapon);
+                                    DoAnimation(atk, def, Sounds.SuccessDrop);
+
+                                    BaseWeapon.BlockEquip(def, TimeSpan.FromSeconds(chances * BlockEquipDuration));
+                                    atk.Stam -= (int)((1 - chances) * 150);
+                                    def.Damage(15, atk);
+                                    atk.RevealingAction();
+                                    def.RevealingAction();
+                                    return;
+                                }
+                            }
+                        }
+                    }
+
                     double malus = (weapon.Layer == Layer.OneHanded) ? 0.5 : 0.3;
                     if (malus * chances >= Utility.RandomDouble() && !atk.Mounted) //Steal the weapon
                     {

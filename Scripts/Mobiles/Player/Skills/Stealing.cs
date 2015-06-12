@@ -45,6 +45,21 @@ namespace Server.SkillHandlers
 				if ( toSteal.Parent == null || !toSteal.Movable )
 					si = StealableArtifactsSpawner.GetStealableInstance( toSteal );
 
+                if (m_Thief is ScriptMobile)
+                {
+                    ScriptMobile mob = (ScriptMobile)m_Thief;
+                    if (mob.CurrentPVPEventInstance != null)
+                    {
+                        if (mob.CurrentPVPEventInstance.mode != null)
+                        {
+                            if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
+                            {
+                                return stolen;
+                            }
+                        }
+                    }
+                }
+
 				if ( !IsEmptyHanded( m_Thief ) )
 				{
 					m_Thief.SendLocalizedMessage( 1005584 ); // Both hands must be free to steal.

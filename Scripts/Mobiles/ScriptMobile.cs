@@ -97,9 +97,12 @@ namespace Server.Mobiles
         {
             if (CurrentPVPEventInstance != null)
             {
-                if (!CurrentPVPEventInstance.mode.AllowFriendlyDamage(this, from))
+                if (CurrentPVPEventInstance.mode != null)
                 {
-                    return;
+                    if (!CurrentPVPEventInstance.mode.AllowFriendlyFire(this, from))
+                    {
+                        return;
+                    }
                 }
             }
 

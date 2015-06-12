@@ -10,6 +10,7 @@ using Server.Scripts.Commands;
 using Server.Engines.Equitation;
 using Server.Engines.Combat;
 using Server.Spells.TechniquesCombat;
+using Server.Misc.PVP;
 
 //Adjuration
 
@@ -666,6 +667,21 @@ namespace Server.Spells
 
 		public bool CheckHSequence( Mobile target )
 		{
+            if (Caster is ScriptMobile)
+            {
+                ScriptMobile mob = (ScriptMobile)Caster;
+                if (mob.CurrentPVPEventInstance != null)
+                {
+                    if (mob.CurrentPVPEventInstance.mode != null)
+                    {
+                        if (!mob.CurrentPVPEventInstance.mode.AllowFriendlyFire(mob, target))
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
 			if ( !target.Alive )
 			{
 				Caster.SendLocalizedMessage( 501857 ); // This spell won't work on that!

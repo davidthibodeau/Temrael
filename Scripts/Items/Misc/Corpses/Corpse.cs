@@ -964,6 +964,21 @@ namespace Server.Items
 			if ( map == null || (map.Rules & MapRules.HarmfulRestrictions) != 0 )
 				return false;*/
 
+            if (from is ScriptMobile)
+            {
+                ScriptMobile mob = (ScriptMobile)from;
+                if (mob.CurrentPVPEventInstance != null)
+                {
+                    if (mob.CurrentPVPEventInstance.mode != null)
+                    {
+                        if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
 			return true;
 		}
 
@@ -985,6 +1000,21 @@ namespace Server.Items
 				else
 					from.SendLocalizedMessage( 1005038 ); // Looting this corpse will be a criminal act!
 			}*/
+
+            if (from is ScriptMobile)
+            {
+                ScriptMobile mob = (ScriptMobile)from;
+                if (mob.CurrentPVPEventInstance != null)
+                {
+                    if (mob.CurrentPVPEventInstance.mode != null)
+                    {
+                        if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
 
 			return true;
 		}

@@ -109,7 +109,7 @@ namespace Server.Spells
             {
                 Caster.SendLocalizedMessage(1005559); // This spell is already in effect.
             }
-            else if (CheckSequence())
+            else if (CheckBSequence(m))
             {
                 DoEffect(m);
             }

@@ -5,6 +5,7 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 using Server.Regions;
+using Server.Misc.PVP;
 
 namespace Server.SkillHandlers
 {
@@ -36,6 +37,21 @@ namespace Server.SkillHandlers
 
 				if ( root != null && !root.Alive )
 					return;
+
+                if (from is ScriptMobile)
+                {
+                    ScriptMobile mob = (ScriptMobile)from;
+                    if (mob.CurrentPVPEventInstance != null)
+                    {
+                        if (mob.CurrentPVPEventInstance.mode != null)
+                        {
+                            if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
 
 				if ( root != null && root.AccessLevel > AccessLevel.Player && from.AccessLevel == AccessLevel.Player )
 				{
