@@ -13,7 +13,7 @@ namespace Server.Engines.Mort
     {
         private PlayerMobile mobile;
 
-        public List<ContratAssassinat> m_contratListe = new List<ContratAssassinat>();
+        private List<ContratAssassinat> m_contratListe = new List<ContratAssassinat>();
         private Container m_Corps;
         private bool m_RisqueDeMort;
         private Timer m_TimerEvanouie;
@@ -176,6 +176,8 @@ namespace Server.Engines.Mort
 
         public void Serialize(GenericWriter writer)
         {
+            writer.Write((int)0); // Version
+
             writer.Write(m_Achever);
             writer.Write(m_Suicide);
             writer.Write((DateTime)m_lastAchever);
@@ -191,6 +193,15 @@ namespace Server.Engines.Mort
 
             writer.Write((DateTime)m_AmeLastFed);
             writer.Write((bool)m_MortVivant);
+
+            if (m_contratListe != null)
+            {
+                writer.Write(m_contratListe.Count);
+                foreach (ContratAssassinat contrat in m_contratListe)
+                {
+                    ContratAssassinat.Serialize(writer, contrat);
+                }
+            }
         }
 
         public MortEngine(PlayerMobile m)
@@ -202,6 +213,9 @@ namespace Server.Engines.Mort
         public MortEngine(PlayerMobile m, GenericReader reader)
         {
             mobile = m;
+
+            int version = reader.ReadInt();
+
             m_Achever = reader.ReadBool();
             m_Suicide = reader.ReadBool();
             m_lastAchever = reader.ReadDateTime();
@@ -238,6 +252,17 @@ namespace Server.Engines.Mort
                 MortVivantEvoTimer timer = new MortVivantEvoTimer(mobile);
                 m_MortVivantTimer = timer;
                 timer.Start();
+            }
+
+            if (m_contratListe == null)
+            {
+                m_contratListe = new List<ContratAssassinat>();
+            }
+
+            int count = reader.ReadInt();
+            for (int i = 0; i < count; i++)
+            {
+                m_contratListe.Add(ContratAssassinat.Deserialize(reader));
             }
         }
     }

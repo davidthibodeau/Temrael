@@ -254,6 +254,7 @@ namespace Server.Misc.PVP
         }
         #endregion
 
+        // Le timer pendant que l'event est en attente pour débuter.
         public class WaitingTimer : Timer
         {
             PVPEvent m_pvpevent;
@@ -275,6 +276,7 @@ namespace Server.Misc.PVP
             }
         }
 
+        // Le timer pendant que l'event est sur le bord de débuter : Envoie le gump pour savoir si les joueurs veulent rejoindre la partie.
         public class PreparationTimer : Timer
         {
             PVPEvent m_pvpevent;

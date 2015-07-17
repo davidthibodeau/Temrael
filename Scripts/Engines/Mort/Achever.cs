@@ -33,7 +33,7 @@ namespace Server.Engines.Mort
             PlayerMobile m_corpseOwner;
 
             public AcheverTarget()
-                : base(3, true, TargetFlags.None)
+                : base(1, true, TargetFlags.None)
             {
                 AllowNonlocal = true;
             }
@@ -101,11 +101,12 @@ namespace Server.Engines.Mort
                 if (startingHits <= from.Hits) // Si le joueur n'a pas perdu d'HP pendant l'achèvement..
                 {
                     ContratAssassinat cs = null;
-                    for (int i = 0; cs == null && i < from.MortEngine.ContratListe.Count; i++)
+                    for (int i = 0; i < from.MortEngine.ContratListe.Count; i++)
                     {
                         if (from.MortEngine.ContratListe[i].Cible == m_corpseOwner)
                         {
                             cs = from.MortEngine.ContratListe[i];
+                            break;
                         }
                     }
 

@@ -132,51 +132,52 @@ namespace Server.Engines.Mort
                 switch (info.ButtonID)
                 {
                     case 1:
-
-                        String message = (info.GetTextEntry(2)).Text;
-
-                        // Transformation de la liste de nom en un string.
-                        String noms = "";
-
-                        foreach (Mobile m in m_listePersoPresent)
                         {
-                            noms += m.Name += "\n";
+                            String message = (info.GetTextEntry(2)).Text;
+
+                            // Transformation de la liste de nom en un string.
+                            String noms = "";
+
+                            foreach (Mobile m in m_listePersoPresent)
+                            {
+                                noms += m.Name += "\n";
+                            }
+
+
+                            // Make forum ticket.
+                            PhpBB forumPost = new PhpBB("USERNAME", "PASSWORD");
+
+                            forumPost.Login();
+
+                            m_cs.Cible.SendMessage("Envoi de la demande...");
+
+                            forumPost.Post("117", "PERSONNAGE ACHEVÉ : " + m_From.Name,
+                            "\n" +
+                            " DATE DE L'ACHÈVEMENT : " + DateTime.Now.ToString() + "\n" +
+                            "\n" +
+                            " INFORMATIONS RELATIVES AU CONTRAT \n" +
+                            " ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n" +
+                            " Nom du commanditaire : " + m_cs.Commanditaire.Name + "\n" +
+                            " Nom de l'assassin    : " + m_cs.Assassin.Name + "\n" +
+                            " Nom de la cible      : " + m_cs.Cible.Name + "\n" +
+                            " Explication          : " + m_cs.Explication + "\n" +
+                            "\n" +
+                            "\n" +
+                            " COMMENTAIRE DE L'ACHEVÉ \n" +
+                            " ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n" +
+                            message + "\n" +
+                            "\n" +
+                            "\n" +
+                            " PERSONNAGES PRÉSENTS \n" +
+                            " ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n" +
+                            noms);
+
+                            //
+
+                            m_cs.Cible.SendMessage("Une demande de contestation a été envoyée à l'équipe, et sera traitée dans les plus brefs délais !");
+
+                            break;
                         }
-
-
-                        // Make forum ticket.
-                        PhpBB forumPost = new PhpBB("USERNAME", "PASSWORD");
-
-                        forumPost.Login();
-
-                        m_cs.Cible.SendMessage("Envoi de la demande...");
-
-                        forumPost.Post("117", "PERSONNAGE ACHEVÉ : " + m_From.Name,
-                        "\n" +
-                        " DATE DE L'ACHÈVEMENT : " + DateTime.Now.ToString() + "\n" +
-                        "\n" +
-                        " INFORMATIONS RELATIVES AU CONTRAT \n" +
-                        " ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n" +
-                        " Nom du commanditaire : " + m_cs.Commanditaire.Name + "\n" +
-                        " Nom de l'assassin    : " + m_cs.Assassin.Name + "\n" +
-                        " Nom de la cible      : " + m_cs.Cible.Name + "\n" +
-                        " Explication          : " + m_cs.Explication + "\n" +
-                        "\n" +
-                        "\n" +
-                        " COMMENTAIRE DE L'ACHEVÉ \n" +
-                        " ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n" +
-                        message + "\n" +
-                        "\n" +
-                        "\n" +
-                        " PERSONNAGES PRÉSENTS \n" +
-                        " ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ \n" +
-                        noms);
-                        
-                        //
-
-                        m_cs.Cible.SendMessage("Une demande de contestation a été envoyée à l'équipe, et sera traitée dans les plus brefs délais !");
-
-                        break;
                     default: break;
                 }
             }
