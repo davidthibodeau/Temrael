@@ -13,7 +13,7 @@ namespace Server.Engines.OrbRemoteServer
 {
 	class OrbServer
 	{
-		private static readonly int SERVER_PORT = 2594;
+		private static readonly int SERVER_PORT = 2595;
 		private static readonly AccessLevel REQUIRED_ACCESS_LEVEL = AccessLevel.Batisseur;
 		private static readonly string SERVER_VERSION = "";
 		private static readonly string SERVER_NAME = "UO Architect Server for RunUO 2.0";

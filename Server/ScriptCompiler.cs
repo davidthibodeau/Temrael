@@ -250,6 +250,7 @@ namespace Server
 				if( results.Errors.Count > 0 ) {
 					foreach( CompilerError err in results.Errors ) {
 						if ( !err.IsWarning ) {
+                                                        Console.WriteLine("Error found: {0}", err);
 							assembly = null;
 							return false;
 						}

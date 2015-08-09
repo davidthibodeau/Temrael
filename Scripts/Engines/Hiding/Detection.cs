@@ -268,6 +268,8 @@ namespace Server.Engines.Hiding
 
         private double DetectionChance(Mobile obs, DetectionZone zone, ref DetectionStatus status)
         {
+            if (obs == null)
+                return 0;
             double chance = SkillChance(obs);
 
             if (status == DetectionStatus.Jet)
@@ -429,6 +431,8 @@ namespace Server.Engines.Hiding
 
         private double SkillChance(Mobile obs)
         {
+            if (obs == null)
+                return 0;
             double detection = obs.Skills.Detection.Value * 2;
             double cachette = (mobile.Skills.Infiltration.Value + mobile.Skills.Discretion.Value) * Stealth.ScalMalusArmure(mobile);
 

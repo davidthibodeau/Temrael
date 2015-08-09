@@ -16,9 +16,6 @@ namespace Server.Engines.Evolution
     public class XP
     {
         public static TimeSpan m_IntervaleXP = TimeSpan.FromMinutes(10);
-        public static DateTime LastReset = DateTime.Now;
-
-        
 
         public static void Initialize()
         {

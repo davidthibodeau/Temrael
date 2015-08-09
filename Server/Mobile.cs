@@ -9049,7 +9049,9 @@ namespace Server
 		}
 
 		public bool InRange( IPoint2D p, int range )
-		{
+        {
+            if (p == null)
+                return false;
 			return (p.X >= (m_Location.m_X - range))
 				&& (p.X <= (m_Location.m_X + range))
 				&& (p.Y >= (m_Location.m_Y - range))

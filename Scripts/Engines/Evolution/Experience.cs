@@ -89,7 +89,7 @@ namespace Server.Engines.Evolution
             else
                 valeur = (int)(valeur * (1 - tick * 0.05));
 
-            valeur = Cotes.OctroyerXP(valeur);
+            //valeur = Cotes.OctroyerXP(valeur);
 
             XP += valeur;
 

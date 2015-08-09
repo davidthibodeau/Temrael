@@ -1176,7 +1176,7 @@ namespace Server.Mobiles
 
         public virtual void SpeechHandler(SpeechResponse sr)
         {
-            string m_name = (sr.Speaker.NameMod == null ? sr.Speaker.Name : sr.Speaker.NameMod);
+            string m_name = (sr.Speaker == null ? "" : (sr.Speaker.NameMod == null ? sr.Speaker.Name : sr.Speaker.NameMod));
             string m_response = String.Format(sr.Response, this.Name, m_name, this.Region);
 
             if (!isEmpty(sr.Response))

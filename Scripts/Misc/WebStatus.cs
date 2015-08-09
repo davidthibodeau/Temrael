@@ -46,13 +46,14 @@ namespace Server.Misc
 
         protected override void OnTick()
         {
+            return;
             try
             {
-#if SERVEUR
-                string path = @"W:/status.html";
-#else
-                string path = @"Logging/status.html";
-#endif
+//#if SERVEUR
+                string path = @"\\192.168.1.2\TemraelWeb\status.html";
+//#else
+//                string path = @"Logging/status.html";
+//#endif
 
                 using (StreamWriter op = new StreamWriter(path))
                 {
@@ -187,8 +188,8 @@ namespace Server.Misc
                     op.WriteLine("<html>");
                     op.WriteLine("<head>");
                     op.WriteLine("<title>Temrael - Serveur Ultima Online</title>");
-                    op.WriteLine("<link rel=\"stylesheet\" href=\"/Status/Styles/Site.css\" type=\"text/css\" media=\"all\" />");
-                    op.WriteLine("<link rel=\"stylesheet\" href=\"/Status/Styles/Menu.css\" type=\"text/css\" media=\"all\" />");
+                    op.WriteLine("<link rel=\"stylesheet\" href=\"Styles/Site.css\" type=\"text/css\" media=\"all\" />");
+                    op.WriteLine("<link rel=\"stylesheet\" href=\"Styles/Menu.css\" type=\"text/css\" media=\"all\" />");
                     op.WriteLine("</head>");
                     op.WriteLine("<body>");
                     op.WriteLine("<div id=\"main\">");
@@ -215,8 +216,12 @@ namespace Server.Misc
                     op.WriteLine("<ul class=\"guidemenu\">");
                     op.WriteLine("<li class=\"biblio\">");
                     op.WriteLine("<ul>");
-                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/Carte.aspx\">Carte</a><br/>");
+//                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/Carte.aspx\">Carte</a><br/>");
                     op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/Races.aspx\">Races</a><br/>");
+                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/Hurlevent.aspx\">Hurlevent</a><br/>");
+                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/HistoirePolitique.aspx\">Histoire Pol.</a>");
+                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/SystemePolitique.aspx\">Politique</a>");
+                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/Institutions.aspx\">Institutions</a>");
                     op.WriteLine("<a href=\"http://uotemrael.com/Pages/Guide/Religions.aspx\">Religions</a>");
                     op.WriteLine("</ul>");
                     op.WriteLine("</li>");
@@ -226,11 +231,10 @@ namespace Server.Misc
                     op.WriteLine("<ul class=\"sysmenu\">");
                     op.WriteLine("<li class=\"sys\">");
                     op.WriteLine("<ul>");
-                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Aptitudes.aspx\">Aptitudes</a><br/>");
-                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Classes.aspx\">Classes</a><br/>");
                     op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Creation.aspx\">Cr&eacute;ation</a><br/>");
                     op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Evolution.aspx\">Evolution</a><br/>");
-                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Metiers.aspx\">M&eacute;tiers</a><br/>");
+                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Competences.aspx\">Comp&eacute;tences</a><br/>");
+                    op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Commandes.aspx\">Commandes</a><br/>");
                     op.WriteLine("<a href=\"http://uotemrael.com/Pages/Systemes/Tutoriels.aspx\">Tutoriels</a>");
                     op.WriteLine("</ul>");
                     op.WriteLine("</li>");
@@ -335,36 +339,36 @@ namespace Server.Misc
 
                     op.WriteLine("<br/><br/>");
 
-                    op.WriteLine("<table width=\"100%\" border=\"1\" align=\"center\">");
-                    op.WriteLine("<tr><td colspan=\"5\"><b>Joueurs class&eacute;s par localisation :</b></td></tr>");
-                    op.WriteLine("<tr><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine("<h1>Brandheim :</h1> ");
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine("<h1>Elamsham :</h1> ");
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine("<h1>Citarel :</h1> ");
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine("<h1>Serenit&eacute; :</h1> ");
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine("<h1>M&eacute;landre :</h1> ");
-                    op.WriteLine("</td></tr>");
-                    op.WriteLine("<tr><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine(cNordique.ToString());
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine(cElfeNoir.ToString());
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine(cHumain.ToString());
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine(cElfe.ToString());
-                    op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
-                    op.WriteLine(cNomade.ToString());
-                    op.WriteLine("</td></tr>");
-                    op.WriteLine("<tr><td width=\"100%\" align=\"center\" valign=\"middle\" colspan=\"5\">");
-                    op.WriteLine("<h1>Landes de Temrael :</h1> ");
-                    op.WriteLine("</td></tr>");
-                    op.WriteLine("<tr><td width=\"100%\" align=\"center\" valign=\"middle\" colspan=\"5\">");
-                    op.WriteLine(Landes.ToString());
-                    op.WriteLine("</td></tr>");
+                    //op.WriteLine("<table width=\"100%\" border=\"1\" align=\"center\">");
+                    //op.WriteLine("<tr><td colspan=\"5\"><b>Joueurs class&eacute;s par localisation :</b></td></tr>");
+                    //op.WriteLine("<tr><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine("<h1>Brandheim :</h1> ");
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine("<h1>Elamsham :</h1> ");
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine("<h1>Citarel :</h1> ");
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine("<h1>Serenit&eacute; :</h1> ");
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine("<h1>M&eacute;landre :</h1> ");
+                    //op.WriteLine("</td></tr>");
+                    //op.WriteLine("<tr><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine(cNordique.ToString());
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine(cElfeNoir.ToString());
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine(cHumain.ToString());
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine(cElfe.ToString());
+                    //op.WriteLine("</td><td width=\"20%\" align=\"center\" valign=\"middle\">");
+                    //op.WriteLine(cNomade.ToString());
+                    //op.WriteLine("</td></tr>");
+                    //op.WriteLine("<tr><td width=\"100%\" align=\"center\" valign=\"middle\" colspan=\"5\">");
+                    //op.WriteLine("<h1>Landes de Temrael :</h1> ");
+                    //op.WriteLine("</td></tr>");
+                    //op.WriteLine("<tr><td width=\"100%\" align=\"center\" valign=\"middle\" colspan=\"5\">");
+                    //op.WriteLine(Landes.ToString());
+                    //op.WriteLine("</td></tr>");
                     op.WriteLine("</table>");
 
                     /*op.WriteLine("<table width=\"100%\" border=\"1\" background=\"images/fond2.jpg\" align=\"center\" cellpadding=\"5\" bordercolor=\"#444444\">");
@@ -475,8 +479,9 @@ namespace Server.Misc
                     op.WriteLine("</html>");
                 }
             }
-            catch
+            catch(Exception e)
             {
+                ExceptionLogging.WriteLine(e);
             }
         }
 

@@ -174,22 +174,31 @@ namespace Server.Mobiles.Data
                 }
 
                 int cnt = alReplies.Count;
-                DataRowView reply = (DataRowView)alReplies[Utility.Random(cnt)];
+                int rand = Utility.Random(cnt);
+                if (rand < cnt)
+                {
+                    DataRowView reply = (DataRowView)alReplies[Utility.Random(cnt)];
 
-                if (Townsperson.Logging == Townsperson.LogLevel.Debug)
-                    TownspersonLogging.WriteLine(Speaker, "Matched {0} Responses.", cnt);
+                    if (Townsperson.Logging == Townsperson.LogLevel.Debug)
+                        TownspersonLogging.WriteLine(Speaker, "Matched {0} Responses.", cnt);
 
-                string toSay = reply["response"].ToString();
-                if (toSay == "{blank}")
-                    toSay = "";
-                int anim = (int)reply["npcAnimation"];
-                int react = (int)reply["npcReaction"];
-                string reward = reply["packObject"].ToString(); // is it better to pass empty string or null?
-                string remove = null;
-                if (!isEmpty(reply["questObject"].ToString()) && (bool)reply["questObjDelete"])
-                    remove = reply["questObject"].ToString();
+                    string toSay = reply["response"].ToString();
+                    if (toSay == "{blank}")
+                        toSay = "";
+                    int anim = (int)reply["npcAnimation"];
+                    int react = (int)reply["npcReaction"];
+                    string reward = reply["packObject"].ToString(); // is it better to pass empty string or null?
+                    string remove = null;
+                    if (!isEmpty(reply["questObject"].ToString()) && (bool)reply["questObjDelete"])
+                        remove = reply["questObject"].ToString();
 
-                sr = new SpeechResponse(toSay, Speaker, anim, react, reward, remove);
+                    sr = new SpeechResponse(toSay, Speaker, anim, react, reward, remove);
+                }
+                else
+                {
+                    if (Townsperson.Logging == Townsperson.LogLevel.Debug)
+                        TownspersonLogging.WriteLine(Speaker, "No responses found");
+                }
             }
 
             // Delay results for more realistic conversation

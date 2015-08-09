@@ -41,7 +41,6 @@ namespace Server.Mobiles
         public Ogre(Serial serial)
             : base(serial)
         {
-
         }
 
         public override void GenerateLoot()

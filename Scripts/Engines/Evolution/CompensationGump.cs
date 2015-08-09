@@ -1,6 +1,7 @@
 ﻿using Server.Accounting;
 using Server.Commands;
 using Server.Gumps;
+using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 using Server.Prompts;
@@ -113,7 +114,7 @@ namespace Server.Engines.Evolution
                     xml.WriteEndElement();
                 }
                 xml.WriteStartElement("lastreset");
-                xml.WriteString(XP.LastReset.ToString());
+                xml.WriteString(ResetHebdomadaire.LastReset.ToString());
                 xml.WriteEndElement();
                 xml.Close();
             }
@@ -139,7 +140,7 @@ namespace Server.Engines.Evolution
                 MJ m = new MJ(mj);
                 compensationsIndexed.Add(m);
             }
-            XP.LastReset = Utility.GetXMLDateTime(Utility.GetText(root["lastreset"], null), DateTime.Now);
+            ResetHebdomadaire.LastReset = Utility.GetXMLDateTime(Utility.GetText(root["lastreset"], null), DateTime.Now);
         }
 
         public static MJ GetMJ(Account acc)

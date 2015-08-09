@@ -397,7 +397,8 @@ namespace Server.Items
                 Mobile key = reader.ReadMobile();
                 int val = reader.ReadInt();
 
-                m_Mobiles.Add(key, val);
+                if (key != null)
+                    m_Mobiles.Add(key, val);
             }
 
             if (m_RegisteredMobiles == null)

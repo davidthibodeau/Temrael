@@ -41,17 +41,17 @@ namespace Server.Misc
 			if ( CustomPath != null ) 
 				Core.DataDirectories.Add( CustomPath ); 
 
-			if ( pathUO != null ) 
-				Core.DataDirectories.Add( pathUO ); 
+            //if ( pathUO != null ) 
+            //    Core.DataDirectories.Add( pathUO ); 
 
-			if ( pathTD != null ) 
-				Core.DataDirectories.Add( pathTD );
+            //if ( pathTD != null ) 
+            //    Core.DataDirectories.Add( pathTD );
 
-			if ( pathKR != null )
-				Core.DataDirectories.Add( pathKR );
+            //if ( pathKR != null )
+            //    Core.DataDirectories.Add( pathKR );
 
-			if ( pathSA != null )
-				Core.DataDirectories.Add( pathSA );
+            //if ( pathSA != null )
+            //    Core.DataDirectories.Add( pathSA );
 
 			if ( Core.DataDirectories.Count == 0 && !Core.Service )
 			{
