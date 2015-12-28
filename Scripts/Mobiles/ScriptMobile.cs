@@ -12,7 +12,7 @@ namespace Server.Mobiles
 {
     public class ScriptMobile : Mobile
     {
-        public PVPEvent CurrentPVPEventInstance; // null == pas sur un terrain de PVP atm.
+        public PVPInfo PVPInfo; // null == pas sur un terrain de PVP atm.
 
         [CommandProperty(AccessLevel.Batisseur)]
         public virtual Detection Detection
@@ -95,11 +95,11 @@ namespace Server.Mobiles
 
         public override void Damage(int amount, Mobile from)
         {
-            if (CurrentPVPEventInstance != null)
+            if (from is ScriptMobile)
             {
-                if (CurrentPVPEventInstance.mode != null)
+                if (PVPInfo != null)
                 {
-                    if (!CurrentPVPEventInstance.mode.AllowFriendlyFire(this, from))
+                    if (!PVPInfo.CurrentEvent.mode.AllowFriendlyFire(this, (ScriptMobile)from))
                     {
                         return;
                     }

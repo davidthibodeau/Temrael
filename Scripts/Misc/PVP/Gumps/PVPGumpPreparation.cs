@@ -14,9 +14,9 @@ namespace Server.Misc.PVP.Gumps
     public class PVPGumpPreparation : GumpTemrael
     {
 
-        Mobile m_From;
+        ScriptMobile m_From;
         PVPEvent m_Pvpevent;
-        List<Mobile> m_List;
+        List<ScriptMobile> m_List;
 
         int x = 50;
         int y = 50;
@@ -32,7 +32,7 @@ namespace Server.Misc.PVP.Gumps
             return 1 + type + (index * NbEventParPage);
         }
 
-        public PVPGumpPreparation(Mobile from, PVPEvent pvpevent, List<Mobile> list)
+        public PVPGumpPreparation(ScriptMobile from, PVPEvent pvpevent, List<ScriptMobile> list)
             : base("", 0, 0)
         {
             m_From = from;
@@ -62,7 +62,8 @@ namespace Server.Misc.PVP.Gumps
             {
                 case 1: // Oui
                     {
-                        m_Pvpevent.teams.Spawn(m_From);
+                        ((ScriptMobile)m_From).PVPInfo = new PVPInfo(m_Pvpevent, (ScriptMobile)m_From);
+                        m_Pvpevent.teams.Spawn((ScriptMobile)m_From);
                         m_List.Remove(m_From);
                         m_From.Frozen = true;
                         break;

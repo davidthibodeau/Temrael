@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
@@ -17,16 +18,16 @@ namespace Server.Misc.PVP
             get { return 0; }
         }
 
-        protected override bool InscrireDef(Mobile mob, int teamNumber)
+        protected override bool InscrireDef(ScriptMobile mob, int teamNumber)
         {
             PVPTeam team = new PVPTeam();
-            team.joueurs.Add(mob, false);
+            team.Add(mob);
             m_teams.Add(team);
 
             return true;
         }
 
-        protected override void SpawnDef(Mobile m)
+        protected override void SpawnDef(ScriptMobile m)
         {
             m.Location = m_pvpevent.map.SpawnPoints[Utility.Random(m_pvpevent.map.SpawnPoints.Count)];
 

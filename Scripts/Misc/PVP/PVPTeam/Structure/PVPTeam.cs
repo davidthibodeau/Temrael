@@ -3,17 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
-    public class PVPTeam
+    public class PVPTeam : List<ScriptMobile>
     {
-        // Mobile -- IsDespawned
-        public Dictionary<Mobile,bool> joueurs;
-
-        public PVPTeam()
-        {
-            joueurs = new Dictionary<Mobile,bool>();
-        }
     }
 }

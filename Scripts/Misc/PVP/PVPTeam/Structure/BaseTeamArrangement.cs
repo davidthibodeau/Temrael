@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using Server.Items;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
@@ -26,7 +27,7 @@ namespace Server.Misc.PVP
         }
 
         #region Inscription
-        public void Inscrire(Mobile mob, int teamNumber)
+        public void Inscrire(ScriptMobile mob, int teamNumber)
         {
             if (m_pvpevent.state <= PVPEventState.Waiting)
             {
@@ -44,28 +45,28 @@ namespace Server.Misc.PVP
             }
         }
 
-        protected abstract bool InscrireDef(Mobile mob, int teamNumber);
+        protected abstract bool InscrireDef(ScriptMobile mob, int teamNumber);
 
-        public void Desinscrire(Mobile m)
+        public void Desinscrire(ScriptMobile m)
         {
             if (m_pvpevent.state <= PVPEventState.Preparing)
             {
                 foreach (PVPTeam team in this)
                 {
-                    if (team.joueurs.ContainsKey(m))
+                    if (team.Contains(m))
                     {
-                        team.joueurs.Remove(m);
+                        team.Remove(m);
                         return;
                     }
                 }
             }
         }
 
-        public bool EstInscrit(Mobile m)
+        public bool EstInscrit(ScriptMobile m)
         {
             foreach (PVPTeam team in this)
             {
-                if (team.joueurs.ContainsKey(m))
+                if (team.Contains(m))
                 {
                     return true;
                 }
@@ -78,7 +79,7 @@ namespace Server.Misc.PVP
             int cpt = 0;
             foreach (PVPTeam team in this)
             {
-                cpt += team.joueurs.Count;
+                cpt += team.Count;
             }
 
             return cpt;
@@ -150,22 +151,17 @@ namespace Server.Misc.PVP
         {
             foreach (PVPTeam team in this)
             {
-                List<Mobile> moblist = new List<Mobile>();
-
-                foreach (Mobile m in team.joueurs.Keys)
-                {
-                    moblist.Add(m);
-                }
-
-                foreach (Mobile m in moblist)
+                foreach (ScriptMobile m in team)
                 {
                     Spawn(m);
                 }
             }
         }
 
-        public void Spawn(Mobile m)
+        public void Spawn(ScriptMobile m)
         {
+            m.PVPInfo.m_IsDespawned = false;
+
             m.Warmode = false;
 
             m.Hits = m.HitsMax;
@@ -175,54 +171,36 @@ namespace Server.Misc.PVP
             SpawnDef(m);
         }
 
-        protected abstract void SpawnDef(Mobile m);
+        protected abstract void SpawnDef(ScriptMobile m);
 
         public void DespawnAll()
         {
             foreach (PVPTeam team in this)
             {
-                List<Mobile> moblist = new List<Mobile>();
-
-                foreach (Mobile m in team.joueurs.Keys)
-                {
-                    if (team.joueurs[m] == false) // S'assure qu'un joueur ne se fait pas despawn plusieurs fois.
-                    {
-                        moblist.Add(m);
-                    }
-                }
-
-                foreach (Mobile m in moblist)
+                foreach (ScriptMobile m in team)
                 {
                     Despawn(m);
-                    team.joueurs[m] = true;
                 }
             }
         }
 
-        public void Despawn(Mobile m)
+        public void Despawn(ScriptMobile m)
         {
-            m.Warmode = false;
-
-            m.Hits = m.HitsMax;
-            m.Stam = m.StamMax;
-            m.Mana = m.ManaMax;
-
-            m_pvpevent.stone.TeleportRand(m);
-            //m.LogoutLocation = m.Location;
-
-            PVPDossard.Remove(m);
-        }
-
-        public bool IsDespawned(Mobile m)
-        {
-            foreach (PVPTeam team in this)
+            if (!m.PVPInfo.m_IsDespawned) // S'assure qu'un joueur ne se fait pas despawn plusieurs fois.
             {
-                if (team.joueurs.ContainsKey(m))
-                {
-                    return team.joueurs[m];
-                }
+                m.PVPInfo.m_IsDespawned = true;
+
+                m.Warmode = false;
+
+                m.Hits = m.HitsMax;
+                m.Stam = m.StamMax;
+                m.Mana = m.ManaMax;
+
+                m_pvpevent.stone.TeleportRand(m);
+                //m.LogoutLocation = m.Location;
+
+                PVPDossard.Remove(m);
             }
-            return false;
         }
         #endregion
 
@@ -266,11 +244,10 @@ namespace Server.Misc.PVP
                 writer.Write(teamArrangement.m_teams.Count);
                 foreach (PVPTeam team in teamArrangement.m_teams)
                 {
-                    writer.Write(team.joueurs.Count);
-                    foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
+                    writer.Write(team.Count);
+                    foreach (ScriptMobile joueur in team)
                     {
-                        writer.Write(pair.Key);
-                        writer.Write(pair.Value);
+                        writer.Write(joueur);
                     }
                 }
             }
@@ -297,10 +274,10 @@ namespace Server.Misc.PVP
                     int JoueursCount = reader.ReadInt();
                     for (int j = 0; j < JoueursCount; ++j)
                     {
-                        Mobile mob = reader.ReadMobile();
-                        bool playerstate = reader.ReadBool();
+                        ScriptMobile mob = (ScriptMobile)reader.ReadMobile();
 
-                        teamArrangement[i].joueurs.Add(mob, playerstate);
+                        teamArrangement[i].Add(mob);
+                        mob.PVPInfo = new PVPInfo(pvpevent, teamArrangement[i]);
                     }
                 }
             }
@@ -331,7 +308,7 @@ namespace Server.Misc.PVP
         {
         }
 
-        public static void ForcePut(Mobile mob, int hue)
+        public static void ForcePut(ScriptMobile mob, int hue)
         {
             if (mob.FindItemOnLayer(Layer.Cloak) != null)
             {
@@ -341,7 +318,7 @@ namespace Server.Misc.PVP
             mob.AddItem(new PVPDossard(hue));
         }
 
-        public static void Remove(Mobile mob)
+        public static void Remove(ScriptMobile mob)
         {
             if (mob.FindItemOnLayer(Layer.Cloak) is PVPDossard)
             {

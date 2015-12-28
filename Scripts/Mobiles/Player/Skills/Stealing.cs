@@ -48,14 +48,11 @@ namespace Server.SkillHandlers
                 if (m_Thief is ScriptMobile)
                 {
                     ScriptMobile mob = (ScriptMobile)m_Thief;
-                    if (mob.CurrentPVPEventInstance != null)
+                    if (mob.PVPInfo != null)
                     {
-                        if (mob.CurrentPVPEventInstance.mode != null)
+                        if (!mob.PVPInfo.CurrentEvent.mode.AllowLoot())
                         {
-                            if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
-                            {
-                                return stolen;
-                            }
+                            return stolen;
                         }
                     }
                 }

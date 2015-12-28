@@ -110,8 +110,6 @@ namespace Server.Mobiles
             { 
                 m_LastKiller = value;
 
-                Console.WriteLine("DERP");
-
                 CommandLogging.WriteLine(this, this.Name + " a été tué par " + value.Name);
             }
         }

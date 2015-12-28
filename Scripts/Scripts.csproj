@@ -168,6 +168,7 @@
     <Compile Include="Misc\PVP\Gumps\PVPGumpCreation.cs" />
     <Compile Include="Misc\PVP\Gumps\PVPGumpJoin.cs" />
     <Compile Include="Misc\PVP\Gumps\PVPGumpPreparation.cs" />
+    <Compile Include="Misc\PVP\PVPInfo.cs" />
     <Compile Include="Misc\PVP\PVPMode\PVPMode.cs">
       <SubType>Code</SubType>
     </Compile>

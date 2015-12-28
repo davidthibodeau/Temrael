@@ -33,28 +33,17 @@ namespace Server.Misc.PVP
             m_timeoutTimer = new TimeoutTimer(this);
         }
 
-        public virtual bool AllowFriendlyFire(Mobile mob1, Mobile mob2)
+        public virtual bool AllowFriendlyFire(ScriptMobile mob1, ScriptMobile mob2)
         {
             if (m_AllowFriendlyFire) 
                 return true;
 
-            int cpt = 0;
-            bool found = false;
-            foreach (PVPTeam team in m_pvpevent.teams)
+            if (mob1.PVPInfo.CurrentEvent == mob2.PVPInfo.CurrentEvent)
             {
-                foreach (KeyValuePair<Mobile,bool> pair in team.joueurs)
-                {
-                    if (pair.Key == mob1)
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-                if (found) break;
-                ++cpt;
+                return !(mob1.PVPInfo.CurrentTeam == mob2.PVPInfo.CurrentTeam);
             }
 
-            return !m_pvpevent.teams[cpt].joueurs.ContainsKey(mob2);
+            return true;
         }
 
         public virtual bool AllowLoot()
@@ -74,18 +63,7 @@ namespace Server.Misc.PVP
             int cpt = 0;
             foreach (PVPTeam team in m_pvpevent.teams)
             {
-                foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
-                {
-                    if (((ScriptMobile)pair.Key).CurrentPVPEventInstance == null)
-                    {
-                        cpt++;
-                        ((ScriptMobile)pair.Key).CurrentPVPEventInstance = m_pvpevent;
-                    }
-                    else
-                    {
-                        ((ScriptMobile)pair.Key).CurrentPVPEventInstance.teams.Desinscrire(pair.Key);
-                    }
-                }
+                cpt += team.Count;
             }
 
             if (cpt > 1)
@@ -109,18 +87,10 @@ namespace Server.Misc.PVP
 
         private void EventSink_PlayerDeath(PlayerDeathEventArgs e)
         {
-            if (m_pvpevent.teams.EstInscrit(e.Mobile))
+            if (((ScriptMobile)e.Mobile).PVPInfo.CurrentEvent == m_pvpevent)
             {
-                if (!m_pvpevent.teams.IsDespawned(e.Mobile))
+                if (!((ScriptMobile)e.Mobile).PVPInfo.m_IsDespawned)
                 {
-                    //if (!m_AllowLoot)
-                    //{
-                    //    if (e.Mobile.Corpse != null)
-                    //    {
-                    //        e.Mobile.Corpse.Visible = false;
-                    //    }
-                    //}
-
                     Timer.DelayCall(DeathTime, new TimerStateCallback(Delayed_Ondeath), e);
                 }
             }
@@ -157,9 +127,9 @@ namespace Server.Misc.PVP
 
         private void EventSink_PlayerDisc(DisconnectedEventArgs e)
         {
-            if (m_pvpevent.teams.EstInscrit(e.Mobile))
+            if (((ScriptMobile)e.Mobile).PVPInfo.CurrentEvent == m_pvpevent)
             {
-                if (!m_pvpevent.teams.IsDespawned(e.Mobile))
+                if (!((ScriptMobile)e.Mobile).PVPInfo.m_IsDespawned)
                 {
                     OnPlayerDisc(e);
                 }
@@ -178,16 +148,15 @@ namespace Server.Misc.PVP
         {
             m_pvpevent.state = PVPEventState.Done;
 
+            m_pvpevent.teams.DespawnAll();
+
             m_timeoutTimer.Stop();
 
             foreach (PVPTeam team in m_pvpevent.teams)
             {
-                foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
+                foreach (ScriptMobile joueur in team)
                 {
-                    if (m_pvpevent == ((ScriptMobile)pair.Key).CurrentPVPEventInstance)
-                    {
-                        ((ScriptMobile)pair.Key).CurrentPVPEventInstance = null;
-                    }
+                    joueur.PVPInfo = null;
                 }
             }
 
@@ -200,15 +169,15 @@ namespace Server.Misc.PVP
                 EventSink.Disconnected -= disconnectedhandler;
             }
 
-            foreach (KeyValuePair<Serial, Item> pair in World.Items)
+            foreach (PVPTeam team in m_pvpevent.teams)
             {
-                if (pair.Value is Corpse)
+                foreach (ScriptMobile joueur in team)
                 {
-                    Corpse c = (Corpse)pair.Value;
-                    foreach(PVPTeam team in m_pvpevent.teams)
+                    if (joueur.Corpse != null)
                     {
-                        if (team.joueurs.ContainsKey(c.Owner))
+                        if (joueur.Corpse is Corpse)
                         {
+                            Corpse c = (Corpse)joueur.Corpse;
                             c.Open(c.Owner, true);
                         }
                     }

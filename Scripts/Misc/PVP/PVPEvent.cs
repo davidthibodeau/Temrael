@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Misc.PVP.Gumps;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
@@ -31,7 +32,7 @@ namespace Server.Misc.PVP
         private PVPTeamArrangement m_teams;
         private DateTime m_debutEvent;
 
-        private Timer debutTimer;   // Le timer qui s'occupe de starter l'événement à la date "debutEvent".
+        private Timer debutTimer;   // Espace pouvant contenir le waitingTimer ou le preparationTimer.
 
         #region Get/Set
         public Mobile maker
@@ -193,7 +194,7 @@ namespace Server.Misc.PVP
         /// Si les informations ont déjà été settées par le passé, ou que tout se déroule normalement, la fonction retournera true.</returns>
         public bool PrepareEvent()
         {
-            if (state == PVPEventState.Setting && (map != null || mode != null || teams != null || m_debutEvent > DateTime.Now))
+            if (state == PVPEventState.Setting && map != null && mode != null && teams != null && m_debutEvent > DateTime.Now)
             {
                 debutTimer.Start();
 
@@ -206,10 +207,18 @@ namespace Server.Misc.PVP
         }
 
         /// <summary>
-        /// S'occupe de teleporter les joueurs aux spawns, et d'activer les spécificités propres au mode.
+        /// S'occupe d'activer les spécificités propres au mode. Cette fonction est call-backed par le timer de début.
         /// </summary>
         private void StartEvent()
         {
+            foreach (PVPTeam team in teams)
+            {
+                foreach (ScriptMobile joueur in team)
+                {
+                    joueur.Frozen = false;
+                }
+            }
+
             if (teams.Count != 0 &&
                 map.UseMap())
             {
@@ -239,6 +248,7 @@ namespace Server.Misc.PVP
 
             m_InstancesList.Remove(this);
 
+            // Le garbage collector devrait déjà faire le travail de détruire après le remove de l'instance_list., mais on met tout à null par précaution.
             debutTimer.Stop();
             debutTimer = null;
 
@@ -280,7 +290,7 @@ namespace Server.Misc.PVP
         public class PreparationTimer : Timer
         {
             PVPEvent m_pvpevent;
-            List<Mobile> m_toCheck;
+            List<ScriptMobile> m_toCheck;
             DateTime m_EndTime;
 
             TimeSpan tempsAttente { get { return TimeSpan.FromSeconds(30); } }
@@ -289,21 +299,21 @@ namespace Server.Misc.PVP
                 base(TimeSpan.Zero, TimeSpan.FromSeconds(1))
             {
                 m_pvpevent = pvpevent;
-                m_toCheck = new List<Mobile>();
+                m_toCheck = new List<ScriptMobile>();
                 m_EndTime = DateTime.Now + tempsAttente;
 
                 m_pvpevent.state = PVPEventState.Preparing;
 
                 foreach (PVPTeam team in m_pvpevent.teams)
                 {
-                    foreach (KeyValuePair<Mobile,bool> pair in team.joueurs)
+                    foreach (ScriptMobile joueur in team)
                     {
-                        m_toCheck.Add(pair.Key);
+                        m_toCheck.Add(joueur);
                     }
                 }
 
                 // Send Gump le gump de choix.
-                foreach (Mobile mob in m_toCheck)
+                foreach (ScriptMobile mob in m_toCheck)
                 {
                     mob.SendGump(new PVPGumpPreparation(mob, m_pvpevent, m_toCheck));
                 }
@@ -315,26 +325,19 @@ namespace Server.Misc.PVP
                 {
                     foreach (PVPTeam team in m_pvpevent.teams)
                     {
-                        foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
+                        foreach (ScriptMobile joueur in team)
                         {
-                            pair.Key.SendMessage(((int)(m_EndTime - DateTime.Now).TotalSeconds).ToString() + "..");
+                            joueur.SendMessage(((int)(m_EndTime - DateTime.Now).TotalSeconds).ToString() + "..");
                         }
                     }
 
                     if (m_EndTime <= DateTime.Now)
                     {
-                        foreach (Mobile mob in m_toCheck)
+                        foreach (ScriptMobile mob in m_toCheck) // Les joueurs restant dans le m_ToCheck sont ceux qui ont choisis l'option "Non" du gump envoyé
+                                                          // Ou qui n'ont pas répondus à la demande une fois le délai passé.
                         {
                             m_pvpevent.teams.Desinscrire(mob);
                             mob.CloseGump(typeof(PVPGumpPreparation));
-                        }
-
-                        foreach (PVPTeam team in m_pvpevent.teams)
-                        {
-                            foreach (KeyValuePair<Mobile, bool> pair in team.joueurs)
-                            {
-                                pair.Key.Frozen = false;
-                            }
                         }
 
                         m_pvpevent.StartEvent();

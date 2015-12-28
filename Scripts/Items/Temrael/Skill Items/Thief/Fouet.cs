@@ -292,22 +292,19 @@ namespace Server.Items
                     if (atk is ScriptMobile)
                     {
                         ScriptMobile mob = (ScriptMobile)atk;
-                        if (mob.CurrentPVPEventInstance != null)
+                        if (mob.PVPInfo != null)
                         {
-                            if (mob.CurrentPVPEventInstance.mode != null)
+                            if (!mob.PVPInfo.CurrentEvent.mode.AllowLoot())
                             {
-                                if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
-                                {
-                                    def.AddToBackpack(weapon);
-                                    DoAnimation(atk, def, Sounds.SuccessDrop);
+                                def.AddToBackpack(weapon);
+                                DoAnimation(atk, def, Sounds.SuccessDrop);
 
-                                    BaseWeapon.BlockEquip(def, TimeSpan.FromSeconds(chances * BlockEquipDuration));
-                                    atk.Stam -= (int)((1 - chances) * 150);
-                                    def.Damage(15, atk);
-                                    atk.RevealingAction();
-                                    def.RevealingAction();
-                                    return;
-                                }
+                                BaseWeapon.BlockEquip(def, TimeSpan.FromSeconds(chances * BlockEquipDuration));
+                                atk.Stam -= (int)((1 - chances) * 150);
+                                def.Damage(15, atk);
+                                atk.RevealingAction();
+                                def.RevealingAction();
+                                return;
                             }
                         }
                     }

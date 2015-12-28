@@ -13,7 +13,7 @@ namespace Server.Misc.PVP.Gumps
 {
     public class PVPGump : GumpTemrael
     {
-        Mobile m_From;
+        ScriptMobile m_From;
         PVPStone m_Stone;
 
         int x = 50;
@@ -30,7 +30,7 @@ namespace Server.Misc.PVP.Gumps
             return 1 + type + (index * NbEventParPage);
         }
 
-        public PVPGump(Mobile from, PVPStone stone)
+        public PVPGump(ScriptMobile from, PVPStone stone)
             : base("", 0, 0)
         {
             m_From = from;
@@ -57,12 +57,12 @@ namespace Server.Misc.PVP.Gumps
             {
                 case 1: // Rejoindre
                     {
-                        sender.Mobile.SendGump(new PVPGumpJoin(sender.Mobile));
+                        sender.Mobile.SendGump(new PVPGumpJoin((ScriptMobile)sender.Mobile));
                         break;
                     }
                 case 2: // Creer
                     {
-                        sender.Mobile.SendGump(new PVPGumpCreation(sender.Mobile, m_Stone));
+                        sender.Mobile.SendGump(new PVPGumpCreation((ScriptMobile)sender.Mobile, m_Stone));
                         break;
                     }
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
@@ -24,25 +25,25 @@ namespace Server.Misc.PVP
         {
             for (int i = 0; i < m_pvpevent.teams.Count; i++)
             {
-                NbPlayersAlive.Add(m_pvpevent.teams[i].joueurs.Count);
+                NbPlayersAlive.Add(m_pvpevent.teams[i].Count);
             }
         }
 
         protected override void OnPlayerDeath(PlayerDeathEventArgs e)
         {
-            CheckEvent(e.Mobile);
+            CheckEvent((ScriptMobile)e.Mobile);
         }
 
         protected override void OnPlayerDisc(DisconnectedEventArgs e)
         {
-            CheckEvent(e.Mobile);
+            CheckEvent((ScriptMobile)e.Mobile);
         }
 
-        private void CheckEvent(Mobile m)
+        private void CheckEvent(ScriptMobile m)
         {
             for (int i = 0; i < m_pvpevent.teams.Count; i++)
             {
-                if (m_pvpevent.teams[i].joueurs.ContainsKey(m))
+                if (m_pvpevent.teams[i] == m.PVPInfo.CurrentTeam)
                 {
                     NbPlayersAlive[i] -= 1;
                     Server.Commands.CommandHandlers.BroadcastMessage(AccessLevel.Player, 0, m.Name + " est mort, il reste " + NbPlayersAlive[i] + " joueurs dans l'équipe.");
@@ -63,7 +64,6 @@ namespace Server.Misc.PVP
 
             if (cpt <= 1)
             {
-                m_pvpevent.teams.DespawnAll();
                 Stop();
             }
         }

@@ -25,7 +25,7 @@ namespace Server.Commandes.Temrael
             {
                 if (pair.Value is PVPStone)
                 {
-                    e.Mobile.SendGump(new PVPGump(e.Mobile, (PVPStone)pair.Value));
+                    e.Mobile.SendGump(new PVPGump((ScriptMobile)e.Mobile, (PVPStone)pair.Value));
                     break;
                 }
             }

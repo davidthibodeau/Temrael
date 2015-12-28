@@ -667,17 +667,14 @@ namespace Server.Spells
 
 		public bool CheckHSequence( Mobile target )
 		{
-            if (Caster is ScriptMobile)
+            if (Caster is ScriptMobile && target is ScriptMobile)
             {
                 ScriptMobile mob = (ScriptMobile)Caster;
-                if (mob.CurrentPVPEventInstance != null)
+                if (mob.PVPInfo != null)
                 {
-                    if (mob.CurrentPVPEventInstance.mode != null)
+                    if (!mob.PVPInfo.CurrentEvent.mode.AllowFriendlyFire(mob, (ScriptMobile)target))
                     {
-                        if (!mob.CurrentPVPEventInstance.mode.AllowFriendlyFire(mob, target))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
             }

@@ -41,14 +41,11 @@ namespace Server.SkillHandlers
                 if (from is ScriptMobile)
                 {
                     ScriptMobile mob = (ScriptMobile)from;
-                    if (mob.CurrentPVPEventInstance != null)
+                    if (mob.PVPInfo != null)
                     {
-                        if (mob.CurrentPVPEventInstance.mode != null)
+                        if (!mob.PVPInfo.CurrentEvent.mode.AllowLoot())
                         {
-                            if (!mob.CurrentPVPEventInstance.mode.AllowLoot())
-                            {
-                                return;
-                            }
+                            return;
                         }
                     }
                 }

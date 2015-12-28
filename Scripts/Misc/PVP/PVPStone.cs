@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Server.Misc.PVP.Gumps;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
@@ -42,7 +43,7 @@ namespace Server.Misc.PVP
 
         public override void OnDoubleClick(Mobile from)
         {
-            from.SendGump(new PVPGump(from, this));
+            from.SendGump(new PVPGump((ScriptMobile)from, this));
         }
 
         public void TeleportRand(Mobile m)

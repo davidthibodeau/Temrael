@@ -13,7 +13,7 @@ namespace Server.Misc.PVP.Gumps
 {
     public class PVPGumpCreation : GumpTemrael
     {
-        Mobile m_From;
+        ScriptMobile m_From;
         PVPEvent m_Pvpevent;
 
         int x = 50;
@@ -26,12 +26,12 @@ namespace Server.Misc.PVP.Gumps
 
         const int NbMapModeMax = 10;
 
-        public PVPGumpCreation(Mobile from, PVPStone stone)
+        public PVPGumpCreation(ScriptMobile from, PVPStone stone)
             : this(from, PVPEvent.CreateEvent(from, stone))
         {
         }
 
-        public PVPGumpCreation(Mobile from, PVPEvent pvpevent)
+        public PVPGumpCreation(ScriptMobile from, PVPEvent pvpevent)
             : base("", 0, 0)
         {
             m_From = from;
@@ -341,7 +341,7 @@ namespace Server.Misc.PVP.Gumps
 
             // Bouton #6 Fait un refresh de la page.
 
-            m_From.SendGump(new PVPGumpCreation((Mobile)m_From, m_Pvpevent));
+            m_From.SendGump(new PVPGumpCreation(m_From, m_Pvpevent));
         }
     }
 }

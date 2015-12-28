@@ -13,7 +13,7 @@ namespace Server.Misc.PVP.Gumps
 {
     public class PVPGumpJoin : GumpTemrael
     {
-        Mobile m_From;
+        ScriptMobile m_From;
         int m_page = 0;
 
         int x = 50;
@@ -30,12 +30,12 @@ namespace Server.Misc.PVP.Gumps
             return 1 + type + (index * NbEventParPage);
         }
 
-        public PVPGumpJoin(Mobile from)
+        public PVPGumpJoin(ScriptMobile from)
             : this(from, 0)
         {
         }
 
-        private PVPGumpJoin(Mobile from, int page)
+        private PVPGumpJoin(ScriptMobile from, int page)
             : base("",0,0)
         {
             m_From = from;
@@ -81,7 +81,7 @@ namespace Server.Misc.PVP.Gumps
                     break;
                 }
 
-                if (m_Pvpevent.teams.EstInscrit(m_From))
+                if (m_Pvpevent.teams.EstInscrit((ScriptMobile)m_From))
                 {
                     // Bouton inscrit.
                     AddButton(x + (column * columnScale), y + (line * scale), 0xFB7, 0xFB9, GetButtonID(1,i), GumpButtonType.Reply, 0);
@@ -156,7 +156,7 @@ namespace Server.Misc.PVP.Gumps
             {
                 case 1: // Se desinscrire
                     {
-                        ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + index]).teams.Desinscrire(sender.Mobile);
+                        ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + index]).teams.Desinscrire((ScriptMobile)sender.Mobile);
                         break;
                     }
                 case 2: // S'inscrire
@@ -168,7 +168,7 @@ namespace Server.Misc.PVP.Gumps
                         }
                         else
                         {
-                            ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Inscrire(m_From, 0);
+                            ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Inscrire((ScriptMobile)m_From, 0);
                         }
                         break;
                     }
@@ -206,7 +206,7 @@ namespace Server.Misc.PVP.Gumps
                     }
             }
 
-            m_From.SendGump(new PVPGumpJoin((Mobile)m_From, m_page));
+            m_From.SendGump(new PVPGumpJoin(m_From, m_page));
         }
 
         private void PromptCallBack(Mobile m, String s, object index)
@@ -214,14 +214,14 @@ namespace Server.Misc.PVP.Gumps
             int result = 0;
             if(int.TryParse(s, out result))
             {
-                ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Inscrire(m, result);
+                ((PVPEvent)PVPEvent.m_InstancesList[(m_page * NbEventParPage) + (int)index]).teams.Inscrire((ScriptMobile)m, result);
             }
             else
             {
                 m.SendMessage("Nombre invalide.");
             }
 
-            m_From.SendGump(new PVPGumpJoin((Mobile)m_From, m_page));
+            m_From.SendGump(new PVPGumpJoin(m_From, m_page));
         }
     }
 }

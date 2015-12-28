@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Mobiles;
 
 namespace Server.Misc.PVP
 {
@@ -27,17 +28,17 @@ namespace Server.Misc.PVP
             get { return 4; }
         }
 
-        protected override bool InscrireDef(Mobile mob, int teamNumber)
+        protected override bool InscrireDef(ScriptMobile mob, int teamNumber)
         {
             if (m_pvpevent.map != null)
             {
                 if (teamNumber >= 0 && teamNumber < m_pvpevent.map.NbTeamSpawnpoints)
                 {
-                    if (!m_teams[teamNumber].joueurs.ContainsKey(mob))
+                    if (!m_teams[teamNumber].Contains(mob))
                     {
                         try
                         {
-                            m_teams[teamNumber].joueurs.Add(mob, false);
+                            m_teams[teamNumber].Add(mob);
 
                             return true;
                         }
@@ -51,12 +52,12 @@ namespace Server.Misc.PVP
             return false;
         }
 
-        protected override void SpawnDef(Mobile m)
+        protected override void SpawnDef(ScriptMobile m)
         {
             int cpt = 0;
             foreach (PVPTeam team in m_teams)
             {
-                if (team.joueurs.ContainsKey(m))
+                if (team.Contains(m))
                 {
                     m.Location = m_pvpevent.map.SpawnPoints[cpt];
                     m.Map = m_pvpevent.map.Map;
