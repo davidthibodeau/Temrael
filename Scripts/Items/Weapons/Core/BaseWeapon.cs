@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using Server.ContextMenus;
 using Server.Engines.Combat;
 using System.Text.RegularExpressions;
+using Server.Engines.Alchimie;
 
 namespace Server.Items
 {
@@ -41,7 +42,7 @@ namespace Server.Items
 		private WeaponQuality m_Quality;
 		private Mobile m_Crafter;
         private string m_CrafterName;
-        private Server.Engines.Buffs.Poison m_Poison;
+        private WeaponPotion m_Poison;
 		private int m_PoisonCharges;
 		private int m_Hits;
 		private int m_MaxHits;
@@ -197,7 +198,7 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-        public Server.Engines.Buffs.Poison Poison
+        public WeaponPotion Poison
 		{
 			get{ return m_Poison; }
 			set{ m_Poison = value; InvalidateProperties(); }
@@ -948,7 +949,7 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-            writer.Write((int)1); // version
+            writer.Write((int)2); // version
 
 			SaveFlag flags = SaveFlag.None;
 
@@ -958,7 +959,7 @@ namespace Server.Items
 			SetSaveFlag( ref flags, SaveFlag.Quality,			m_Quality != WeaponQuality.Regular );
 			SetSaveFlag( ref flags, SaveFlag.Hits,				m_Hits != 0 );
 			SetSaveFlag( ref flags, SaveFlag.MaxHits,			m_MaxHits != 0 );
-			SetSaveFlag( ref flags, SaveFlag.Poison,			m_Poison != null );
+            SetSaveFlag( ref flags, SaveFlag.Poison,            m_Poison != null);
 			SetSaveFlag( ref flags, SaveFlag.PoisonCharges,		m_PoisonCharges != 0 );
 			SetSaveFlag( ref flags, SaveFlag.Crafter,			m_Crafter != null );
             SetSaveFlag( ref flags, SaveFlag.CrafterName,       m_CrafterName != null);
@@ -996,9 +997,8 @@ namespace Server.Items
 
 			if ( GetSaveFlag( flags, SaveFlag.MaxHits ) )
 				writer.Write( (int) m_MaxHits );
-
-            if (GetSaveFlag(flags, SaveFlag.Poison))
-                Poison.Serialize(writer);
+            
+            m_Poison.Serialize(writer);
 
 			if ( GetSaveFlag( flags, SaveFlag.PoisonCharges ) )
 				writer.Write( (int) m_PoisonCharges );
@@ -1124,8 +1124,15 @@ namespace Server.Items
             if (GetSaveFlag(flags, SaveFlag.MaxHits))
                 m_MaxHits = reader.ReadInt();
 
-            if (GetSaveFlag(flags, SaveFlag.Poison))
-                m_Poison = (Engines.Buffs.Poison)Server.Engines.Buffs.BaseBuff.Deserialize(reader);
+            if (version >= 2)
+            {
+                m_Poison = WeaponPotion.Deserialize(reader);
+            }
+            else
+            {
+                Server.Poison.Deserialize(reader);
+                m_Poison = new WeaponPotion();
+            }
 
             if (GetSaveFlag(flags, SaveFlag.PoisonCharges))
                 m_PoisonCharges = reader.ReadInt();
@@ -1246,6 +1253,8 @@ namespace Server.Items
 			m_Hits = m_MaxHits = Utility.RandomMinMax( InitMinHits, InitMaxHits );
 
 			m_Resource = CraftResource.Fer;
+
+            m_Poison = new WeaponPotion();
 		}
 
 		public BaseWeapon( Serial serial ) : base( serial )

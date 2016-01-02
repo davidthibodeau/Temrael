@@ -3,6 +3,7 @@ using Server;
 using Server.Targeting;
 using Server.Mobiles;
 using Server.Gumps;
+using Server.Engines.Alchimie;
 
 namespace Server.Items
 {
@@ -54,6 +55,10 @@ namespace Server.Items
                             BasePlantReagent reg = o as BasePlantReagent;
 
                             from.SendGump(new RegIdentificationGump(from, reg));
+                        }
+                        else if (o is Potion)
+                        {
+                            ((Potion)o).Identified = true;
                         }
                         else
                             from.SendMessage("Vous pouvez seulement identifier une arme, armure, bijou, vetement ou bouclier.");

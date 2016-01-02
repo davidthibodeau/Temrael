@@ -12,6 +12,7 @@ using Server.Engines.PartySystem;
 
 using Server.Engines.Quetes;
 using Server.Engines.Combat;
+using Server.Engines.Alchimie;
 
 
 namespace Server.Mobiles
@@ -3132,7 +3133,7 @@ namespace Server.Mobiles
             AddItem(new ArmeMonstre(min, max, speed, ranged));
         }
 
-        public void SetArme(int min, int max, int speed, Server.Engines.Buffs.Poison poison)
+        public void SetArme(int min, int max, int speed, WeaponPotion poison)
         {
             AddItem(new ArmeMonstre(min, max, speed, poison));
         }

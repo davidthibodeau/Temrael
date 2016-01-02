@@ -4,6 +4,7 @@ using Server.Engines.Plants;
 using Server.Mobiles;
 using Server.Network;
 using Server.Targeting;
+using Server.Engines.Alchimie;
 
 namespace Server.Items
 {
@@ -587,7 +588,7 @@ namespace Server.Items
 		private BeverageType m_Content;
 		private int m_Quantity;
 		private Mobile m_Poisoner;
-		private Poison m_Poison;
+		private BeveragePotion m_Poison;
 
 		public override int LabelNumber
 		{
@@ -632,10 +633,10 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public Poison Poison
+		public BeveragePotion Poison
 		{
-			get { return m_Poison; }
-			set { m_Poison = value; }
+            get { return m_Poison; }
+            set { m_Poison = value; }
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -812,7 +813,7 @@ namespace Server.Items
 				}
 
 				this.Content = BeverageType.Water;
-				this.Poison = null;
+                this.Poison = new BeveragePotion();
 				this.Poisoner = null;
 
 				if( src.Quantity > this.MaxQuantity )
@@ -877,7 +878,7 @@ namespace Server.Items
                     if (contains)
                     {
                         this.Content = BeverageType.Water;
-				        this.Poison = null;
+                        this.Poison = new BeveragePotion();
 				        this.Poisoner = null;
                         this.Quantity = this.MaxQuantity;
                     }
@@ -896,7 +897,7 @@ namespace Server.Items
                 if (contains)
                 {
                     this.Content = BeverageType.Water;
-                    this.Poison = null;
+                    this.Poison = new BeveragePotion();
                     this.Poisoner = null;
                     this.Quantity = this.MaxQuantity;
                 }
@@ -1099,7 +1100,7 @@ namespace Server.Items
 				from.PlaySound( Utility.RandomList( 0x30, 0x2D6 ) );
 
 				if( m_Poison != null )
-					from.ApplyPoison( m_Poisoner, m_Poison );
+                    m_Poison.OnDrink((ScriptMobile)from, this);
 
 				--Quantity;
 			}
@@ -1184,6 +1185,7 @@ namespace Server.Items
 		public BaseBeverage()
 		{
 			ItemID = ComputeItemID();
+            m_Poison = new BeveragePotion();
 		}
 
 		public BaseBeverage( BeverageType type )
@@ -1191,6 +1193,7 @@ namespace Server.Items
 			m_Content = type;
 			m_Quantity = MaxQuantity;
 			ItemID = ComputeItemID();
+            m_Poison = new BeveragePotion();
 		}
 
 		public BaseBeverage( Serial serial )
@@ -1202,11 +1205,12 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-			writer.Write( (int)1 ); // version
+			writer.Write( (int)2 ); // version
 
 			writer.Write( (Mobile)m_Poisoner );
 
-			Poison.Serialize( m_Poison, writer );
+            m_Poison.Serialize(writer);
+
 			writer.Write( (int)m_Content );
 			writer.Write( (int)m_Quantity );
 		}
@@ -1230,21 +1234,19 @@ namespace Server.Items
 
 			int version = reader.ReadInt();
 
-			switch( version )
-			{
-				case 1:
-					{
-						m_Poisoner = reader.ReadMobile();
-						goto case 0;
-					}
-				case 0:
-					{
-						m_Poison = Poison.Deserialize( reader );
-						m_Content = (BeverageType)reader.ReadInt();
-						m_Quantity = reader.ReadInt();
-						break;
-					}
-			}
+			if(version >= 1)
+			    m_Poisoner = reader.ReadMobile();
+
+            if (version >= 2)
+                m_Poison = BeveragePotion.Deserialize(reader);
+            else
+            {
+                Server.Poison.Deserialize(reader);
+                m_Poison = new BeveragePotion();
+            }
+
+			m_Content = (BeverageType)reader.ReadInt();
+			m_Quantity = reader.ReadInt();
 		}
 	}
 }

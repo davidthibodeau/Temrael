@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Server.Engines.Alchimie;
 
 namespace Server.Engines.Combat
 {
@@ -37,7 +38,7 @@ namespace Server.Engines.Combat
             Layer = Layer.OneHanded;
         }
 
-        public ArmeMonstre(int min, int max, int speed, Server.Engines.Buffs.Poison poison)
+        public ArmeMonstre(int min, int max, int speed, WeaponPotion poison)
             : this(min, max, speed, false)
         {
             Poison = poison;

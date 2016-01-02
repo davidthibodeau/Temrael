@@ -3,13 +3,15 @@ using System.Collections;
 using Server.Network;
 using System.Collections.Generic;
 using Server.ContextMenus;
+using Server.Engines.Alchimie;
+using Server.Mobiles;
 
 namespace Server.Items
 {
 	public abstract class Food : Item
 	{
 		private Mobile m_Poisoner;
-		private Poison m_Poison;
+        private FoodPotion m_Poison;
 		private int m_FillFactor;
 
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -20,10 +22,10 @@ namespace Server.Items
 		}
 
 		[CommandProperty( AccessLevel.Batisseur )]
-		public Poison Poison
+        public FoodPotion Poison
 		{
-			get { return m_Poison; }
-			set { m_Poison = value; }
+            get { return m_Poison; }
+            set { m_Poison = value; }
 		}
 		
 		[CommandProperty( AccessLevel.Batisseur )]
@@ -42,6 +44,7 @@ namespace Server.Items
 			Stackable = true;
 			Amount = amount;
 			m_FillFactor = 1;
+            m_Poison = new FoodPotion();
 		}
 
 		public Food( Serial serial ) : base( serial )
@@ -76,7 +79,7 @@ namespace Server.Items
                 from.Animate(34, 5, 1, true, false, 0);
 
             if (m_Poison != null)
-                from.ApplyPoison(m_Poisoner, m_Poison);
+                m_Poison.OnEat((ScriptMobile)from);
 
             Consume();
 
@@ -87,11 +90,12 @@ namespace Server.Items
 		{
 			base.Serialize( writer );
 
-            writer.Write((int)0); // version
+            writer.Write((int)1); // version
 
 			writer.Write( m_Poisoner );
 
-			Poison.Serialize( m_Poison, writer );
+            m_Poison.Serialize(writer);
+
 			writer.Write( m_FillFactor );
 		}
 
@@ -102,7 +106,17 @@ namespace Server.Items
             int version = reader.ReadInt();
 
             m_Poisoner = reader.ReadMobile();
-            m_Poison = Poison.Deserialize(reader);
+
+            if (version >= 1)
+            {
+                m_Poison = FoodPotion.Deserialize(reader);
+            }
+            else
+            {
+                Server.Poison.Deserialize(reader);
+                m_Poison = new FoodPotion();
+            }
+
             m_FillFactor = reader.ReadInt();
         }
     }

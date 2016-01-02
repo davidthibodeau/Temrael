@@ -113,8 +113,6 @@ namespace Server.Mobiles
             {
                 int value = RawStr + GetStatOffset(StatType.Str);
 
-                value += (int)Server.Engines.Buffs.BuffHandler.Instance.GetBuffCumul(this, typeof(Server.Engines.Buffs.BuffForce));
-
                 if (value < 1)
                     value = 1;
                 else if (value > 65000)

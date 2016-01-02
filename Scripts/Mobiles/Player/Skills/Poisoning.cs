@@ -2,6 +2,8 @@ using System;
 using Server.Targeting;
 using Server.Items;
 using Server.Network;
+using Server.Engines.Alchimie;
+using Server.Mobiles;
 
 namespace Server.SkillHandlers
 {
@@ -18,7 +20,7 @@ namespace Server.SkillHandlers
 
 			m.SendMessage("Sélectionnez votre poison, ou la nourriture à identifier.");
 
-			return TimeSpan.FromSeconds( 10.0 ); // 10 second delay before beign able to re-use a skill
+			return TimeSpan.FromSeconds( 10.0 ); // 10 second delay before being able to re-use a skill
 		}
 
 		private class InternalTargetPoison : Target
@@ -30,10 +32,10 @@ namespace Server.SkillHandlers
 			protected override void OnTarget( Mobile from, object targeted )
 			{
                 // Application de poison à un item.
-				if ( targeted is BasePoisonPotion )
+				if ( targeted is Potion )
 				{
 					from.SendMessage("Quel objet voulez vous empoisonner?");
-					from.Target = new InternalTarget( (BasePoisonPotion)targeted );
+                    from.Target = new InternalTarget((Potion)targeted);
 				}
                 // Jet de tasteID.
                 else if (targeted is Food)
@@ -41,10 +43,14 @@ namespace Server.SkillHandlers
                     TasteID(from, (Food)targeted);
                 }
                 // Not a poison potion.
+                else if (targeted is BaseBeverage)
+                {
+                    TasteID(from, (BaseBeverage)targeted);
+                }
                 else
-				{
-                    from.SendMessage("Ceci n'est pas une potion de poison.") ; // That is not a poison potion.
-				}
+                {
+                    from.SendMessage("Ceci n'est pas une potion de poison."); // That is not a poison potion.
+                }
 			}
 
             void TasteID(Mobile from, Food food)
@@ -68,11 +74,33 @@ namespace Server.SkillHandlers
                 }
             }
 
+            void TasteID(Mobile from, BaseBeverage drink)
+            {
+                if (from.CheckTargetSkill(SkillName.Empoisonnement, drink, 0, 100))
+                {
+                    if (drink.Poison != null)
+                    {
+                        drink.SendLocalizedMessageTo(from, 1038284); // It appears to have poison smeared on it.
+                    }
+                    else
+                    {
+                        // No poison on the food
+                        drink.SendLocalizedMessageTo(from, 1010600); // You detect nothing unusual about this substance.
+                    }
+                }
+                else
+                {
+                    // Skill check failed
+                    drink.SendLocalizedMessageTo(from, 502823); // You cannot discern anything about this substance.
+                }
+            }
+
 			private class InternalTarget : Target
 			{
-				private BasePoisonPotion m_Potion;
+                private Potion m_Potion;
 
-				public InternalTarget( BasePoisonPotion potion ) :  base ( 2, false, TargetFlags.None )
+                public InternalTarget(Potion potion)
+                    : base(2, false, TargetFlags.None)
 				{
 					m_Potion = potion;
 				}
@@ -86,22 +114,14 @@ namespace Server.SkillHandlers
 
                     if (targeted is BaseWeapon || targeted is Food || targeted is BaseBeverage)
                     {
-                        startTimer = true;
-                    }
-
-
-					if ( startTimer )
-					{
 						new InternalTimer( from, (Item)targeted, m_Potion ).Start();
 
-						from.PlaySound( 0x4F );
-
-						m_Potion.Consume();
-						from.AddToBackpack( new Bottle() );
+                        m_Potion.Empty();
+                        from.AddToBackpack(new Bottle());
 					}
 					else // Target can't be poisoned
 					{
-                        from.SendMessage("Vous ne pouvez pas empoisonner celà ! Vous pouvez seulement empoisonner les armes ou la nourriture.");
+                        from.SendMessage("Vous ne pouvez pas empoisonner ceci.");
 					}
 				}
 
@@ -109,35 +129,33 @@ namespace Server.SkillHandlers
 				{
 					private Mobile m_From;
 					private Item m_Target;
-					private Poison m_Poison;
-					private double m_MinSkill, m_MaxSkill;
+                    private Potion m_Potion;
 
-					public InternalTimer( Mobile from, Item target, BasePoisonPotion potion ) : base( TimeSpan.FromSeconds( 2.0 ) )
+                    public InternalTimer(Mobile from, Item target, Potion potion)
+                        : base(TimeSpan.FromSeconds(2.0))
 					{
 						m_From = from;
 						m_Target = target;
-						m_Poison = potion.Poison;
-						m_MinSkill = potion.MinPoisoningSkill;
-						m_MaxSkill = potion.MaxPoisoningSkill;
+                        m_Potion = potion;
 						Priority = TimerPriority.TwoFiftyMS;
 					}
 
 					protected override void OnTick()
 					{
-						if ( m_From.CheckTargetSkill( SkillName.Empoisonnement, m_Target, m_MinSkill, m_MaxSkill ) )
+                        if (m_From.CheckTargetSkill(SkillName.Empoisonnement, m_Target, m_Potion.Pot.MinSkill, m_Potion.Pot.MinSkill))
 						{
 							if ( m_Target is Food )
 							{
-								((Food)m_Target).Poison = m_Poison;
+                                ((Food)m_Target).Poison = new FoodPotion(m_Potion);
 							}
                             else if (m_Target is BaseBeverage)
                             {
-                                ((BaseBeverage)m_Target).Poison = m_Poison;
+                                ((BaseBeverage)m_Target).Poison = new BeveragePotion(m_Potion);
                             }
                             else if (m_Target is BaseWeapon)
                             {
-                                //((BaseWeapon)m_Target).Poison = m_Poison;
-                                ((BaseWeapon)m_Target).PoisonCharges = 18 - (m_Poison.Level * 2);
+                                ((BaseWeapon)m_Target).Poison = new WeaponPotion(m_Potion);
+                                ((BaseWeapon)m_Target).PoisonCharges = 20;
                             }
 
 							m_From.SendLocalizedMessage( 1010517 ); // You apply the poison
@@ -148,7 +166,7 @@ namespace Server.SkillHandlers
 							if ( m_From.Skills[SkillName.Empoisonnement].Base < 80.0 && Utility.Random( 20 ) == 0 )
 							{
 								m_From.SendLocalizedMessage( 502148 ); // You make a grave mistake while applying the poison.
-								m_From.ApplyPoison( m_From, m_Poison );
+                                m_Potion.Pot.DoAllEffects((ScriptMobile)m_From, 1);
 							}
 							else
 							{

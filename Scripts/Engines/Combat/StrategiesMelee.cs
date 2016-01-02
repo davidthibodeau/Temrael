@@ -4,7 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Server.Engines.Buffs;
+using Server.Engines.Alchimie;
+using Server.Mobiles;
 
 namespace Server.Engines.Combat
 {
@@ -26,26 +27,26 @@ namespace Server.Engines.Combat
         protected override void AppliquerPoison(Mobile atk, Mobile def)
         {
             BaseWeapon weapon = Weapon(atk);
-            Server.Engines.Buffs.Poison poison = weapon.Poison;
+            WeaponPotion poison = weapon.Poison;
             if (poison != null && weapon.PoisonCharges > 0)
 			{
                 --weapon.PoisonCharges;
 
                 bool selfdmg = false;
 
-                double chance = .7 * atk.Skills.Empoisonnement.Value / poison.NiveauSkillRequis;
+                double chance = .7 * atk.Skills.Empoisonnement.Value / poison.PotImpl.MinSkill;
 
                 if (chance > 0.7) chance = 0.7;
 
                 if (Utility.RandomDouble() < chance)
-                    BuffHandler.Instance.ApplyPoison(atk, poison, Source.Weapon);
+                    poison.OnWeaponHit((ScriptMobile)def);
 
-                chance = 1 - atk.Skills.Empoisonnement.Value / poison.NiveauSkillRequis;
+                chance = 1 - atk.Skills.Empoisonnement.Value / poison.PotImpl.MinSkill;
                 if (chance > 1) chance = 1;
                 if (chance < 0.05) chance = 0.05;
 
                 if (Utility.RandomDouble() < chance)
-                    BuffHandler.Instance.ApplyPoison(def, poison, Source.Weapon);
+                    poison.OnWeaponHit((ScriptMobile)atk);
 			}
         }
 
