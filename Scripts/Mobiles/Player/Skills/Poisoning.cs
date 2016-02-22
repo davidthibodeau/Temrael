@@ -116,7 +116,7 @@ namespace Server.SkillHandlers
                     {
 						new InternalTimer( from, (Item)targeted, m_Potion ).Start();
 
-                        m_Potion.Empty();
+                        from.PlaySound(Utility.RandomList(0x30, 0x2D6));
                         from.AddToBackpack(new Bottle());
 					}
 					else // Target can't be poisoned

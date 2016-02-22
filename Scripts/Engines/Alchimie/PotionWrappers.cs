@@ -12,11 +12,13 @@ namespace Server.Engines.Alchimie
     public abstract class PotionWrapper
     {
         private PotionImpl m_PotImpl;
+
         public PotionImpl PotImpl
         {
             get { return m_PotImpl; }
         }
 
+        protected virtual bool MakeStackable { get { return false; } }
         protected abstract double PourcentEffect { get; }
 
         protected void DoAllEffects(ScriptMobile target, double strength)
@@ -25,38 +27,53 @@ namespace Server.Engines.Alchimie
                 m_PotImpl.DoAllEffects(target, PourcentEffect * strength);
         }
 
-        public PotionWrapper(Potion potion)
-            : this(potion.Pot)
+        public PotionWrapper(Potion potion) : this(potion.Pot)
         {
             potion.Consume();
+            CheckStackable();
         }
-
-        public PotionWrapper(PotionWrapper wrapper)
-            : this(wrapper.m_PotImpl)
+        public PotionWrapper(PotionWrapper wrapper) : this(wrapper.m_PotImpl)
         {
             wrapper.m_PotImpl = null;
+            CheckStackable();
         }
-
         protected PotionWrapper(PotionImpl potimpl)
         {
             m_PotImpl = potimpl;
+            CheckStackable();
         }
-
         protected PotionWrapper()
         {
             m_PotImpl = null;
+            CheckStackable();
+        }
+        private void CheckStackable()
+        {
+            if (m_PotImpl !=null)
+            {
+                foreach (BasePotionEffect effect in m_PotImpl.EffectsList)
+                {
+                    effect.m_Stackable = MakeStackable;
+                }
+            }
         }
 
-        public virtual void Serialize(GenericWriter writer)
+        public void Serialize(GenericWriter writer)
         {
             writer.Write(m_PotImpl != null);
             if (m_PotImpl != null)
                 m_PotImpl.Serialize(writer);
         }
+
     }
 
     public class WeaponPotion : PotionWrapper
     {
+        protected override bool MakeStackable
+        {
+            get { return true; } 
+        }
+
         protected override double PourcentEffect
         {
             get { return 0.2; }
@@ -124,11 +141,6 @@ namespace Server.Engines.Alchimie
         protected BeveragePotion(PotionImpl potimpl) : base(potimpl){}
         public BeveragePotion() : base(){}
 
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-        }
-
         static public BeveragePotion Deserialize(GenericReader reader)
         {
             if (reader.ReadBool())
@@ -141,50 +153,25 @@ namespace Server.Engines.Alchimie
     public class Potion : Item
     {
         private PotionImpl m_pot;
+        private bool m_Identified;
+
         public PotionImpl Pot
         {
             get { return m_pot; }
         }
-        private bool m_Identified;
         public bool Identified
         {
             get { return m_Identified; }
             set { m_Identified = value; InvalidateProperties(); }
         }
 
-        #region Ctor
-        public Potion(Potion pot)
-        {
-            Name = pot.Name;
-            m_Identified = pot.m_Identified;
-            m_pot = pot.m_pot;
-        }
-
-        public Potion(PotionImpl pot)
-            : this()
-        {
-            m_pot = pot;
-        }
-
-        private Potion()
-            : base(0xF0A)
-        {
-            Name = "Potion";
-            m_Identified = false;
-        }
-
-        public Potion(Serial serial)
-            : base(serial)
-        {
-        }
-        #endregion
-
         // This devient la potion modifiée. Le paramètre est "détruit".
         public void Mix(Potion potion)
         {
             m_pot.Mix(potion.m_pot);
 
-            potion.Empty();
+            Effects.PlaySound(this, this.Map, 0x4E);
+            potion.Consume();
             InvalidateProperties();
         }
 
@@ -194,11 +181,6 @@ namespace Server.Engines.Alchimie
             InvalidateProperties();
         }
 
-        public void Empty()
-        {
-            Effects.PlaySound(this, this.Map, 0x4E);
-            Consume();
-        }
 
         public override void OnDoubleClick(Mobile from)
         {
@@ -210,7 +192,8 @@ namespace Server.Engines.Alchimie
 
             m_pot.DoAllEffects((ScriptMobile)from, 1);
 
-            Empty();
+            from.PlaySound(Utility.RandomList(0x30, 0x2D6));
+            Consume();
             from.AddToBackpack(new Bottle());
         }
 
@@ -225,9 +208,20 @@ namespace Server.Engines.Alchimie
 
                 str += "Puissance : " + (int)(m_pot.PotionStrength * 100);
 
-                foreach (BasePotionEffect effect in m_pot.EffectsList)
+                if (m_pot.EffectsList.Count > 0)
                 {
-                    str += '\n' + effect.GetPotionInfo();
+                    foreach (BasePotionEffect effect in m_pot.EffectsList)
+                    {
+                        str += '\n' + effect.GetPotionInfo();
+                    }
+                }
+
+                if (m_pot.SynergyList.Count > 0)
+                {
+                    foreach (BaseSynergy synergy in m_pot.SynergyList)
+                    {
+                        str += '\n' + synergy.GetPotionInfo();
+                    }
                 }
 
                 list.Add(str);
@@ -237,7 +231,6 @@ namespace Server.Engines.Alchimie
                 list.Add("Potion");
             }
         }
-
 
         public override void Serialize(GenericWriter writer)
         {
@@ -258,5 +251,32 @@ namespace Server.Engines.Alchimie
 
             m_pot = PotionImpl.Deserialize(reader);
         }
+
+        #region Ctors
+        public Potion(Potion pot)
+        {
+            Name = pot.Name;
+            m_Identified = pot.m_Identified;
+            m_pot = new PotionImpl(pot.m_pot);
+        }
+
+        public Potion(PotionImpl pot)
+            : this()
+        {
+            m_pot = pot;
+        }
+
+        private Potion()
+            : base(0xF0A)
+        {
+            Name = "Potion";
+            m_Identified = false;
+        }
+
+        public Potion(Serial serial)
+            : base(serial)
+        {
+        }
+        #endregion
     }
 }

@@ -9,7 +9,7 @@ namespace Server.Engines.Alchimie
 {
     public class PotForce : BasePotionEffect
     {
-        public override ulong ID { get { return 1; } }
+        public override ulong ID { get { return 1; } } // Berk.
         public override string Name { get { return "Force"; } }
         public override double MinSkill { get { return 0; } }
         public override double MaxSkill { get { return 30; } }

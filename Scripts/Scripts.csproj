@@ -100,9 +100,13 @@
     <Compile Include="Custom\Army System\ArmyController.cs" />
     <Compile Include="Custom\Army System\ArmyGump.cs" />
     <Compile Include="Engines\Alchimie\BasePotionEffect.cs" />
+    <Compile Include="Engines\Alchimie\BaseSynergy.cs" />
     <Compile Include="Engines\Alchimie\Effects\Stats.cs" />
+    <Compile Include="Engines\Alchimie\GumpAlchimie.cs" />
+    <Compile Include="Engines\Alchimie\ComposantAlchimique.cs" />
     <Compile Include="Engines\Alchimie\PotionImpl.cs" />
     <Compile Include="Engines\Alchimie\PotionWrappers.cs" />
+    <Compile Include="Engines\Alchimie\Synergies\NightVision.cs" />
     <Compile Include="Engines\Combat\ArmeMonstre.cs" />
     <Compile Include="Engines\Combat\Degats.cs" />
     <Compile Include="Engines\Combat\StrategyMonstre.cs" />

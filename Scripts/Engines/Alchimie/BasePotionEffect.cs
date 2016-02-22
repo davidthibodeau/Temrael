@@ -17,6 +17,7 @@ namespace Server.Engines.Alchimie
             { BasePotionEffect.getID(typeof(PotInt)), typeof(PotInt) },     // 3
         };
 
+        #region Ss-module de generation d'ID semi-unique.
         public static ulong getID(Type type) 
         {
             var cur = Activator.CreateInstance(type);
@@ -56,13 +57,14 @@ namespace Server.Engines.Alchimie
         {
             return Use_ID % Use_ID_Increment;
         }
+        #endregion
 
         public abstract double MinSkill { get; }
         public abstract double MaxSkill { get; }
         public abstract string Name { get; }
 
-        protected readonly TargetFlags m_EffectType;
-        protected readonly bool m_Stackable;
+        public TargetFlags m_EffectType;
+        public bool m_Stackable;
 
         public abstract void PutEffect(ScriptMobile target, double strength);
         public abstract void RemoveEffect(ScriptMobile target);
@@ -71,6 +73,12 @@ namespace Server.Engines.Alchimie
         {
             m_EffectType = effectType;
             m_Stackable = stackable;
+        }
+
+        public BasePotionEffect(BasePotionEffect effect)
+        {
+            m_EffectType = effect.m_EffectType;
+            m_Stackable = effect.m_Stackable;
         }
 
         public string GetPotionInfo()

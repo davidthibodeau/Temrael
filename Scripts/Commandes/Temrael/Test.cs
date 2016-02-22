@@ -25,17 +25,14 @@ namespace Server.Scripts.Commands
         [Description("Test de scripts")]
         public static void Test_OnCommand(CommandEventArgs e)
         {
-            Potion pot = new Potion(PotionImpl.Create((ScriptMobile)e.Mobile, new PotForce(TargetFlags.Beneficial, true)));
-
-            if(pot != null)
-                e.Mobile.AddToBackpack(pot);
+            e.Mobile.SendGump(new GumpAlchimie(e.Mobile));
         }
 
         [Usage("Test2")]
         [Description("Test de scripts")]
         public static void Test2_OnCommand(CommandEventArgs e)
         {
-            Potion pot = new Potion(PotionImpl.Create((ScriptMobile)e.Mobile, new PotDex(TargetFlags.Harmful, true)));
+            Potion pot = new Potion(PotionImpl.TryCreate((ScriptMobile)e.Mobile, new List<BasePotionEffect>() { new PotDex(TargetFlags.Beneficial, false) }));
 
             if (pot != null)
                 e.Mobile.AddToBackpack(pot);

@@ -239,6 +239,13 @@ namespace Server
 		{
 			private Mobile m_Owner;
 
+            public NightSightTimer(Mobile owner, TimeSpan duration)
+                : base(duration)
+            {
+                m_Owner = owner;
+                Priority = TimerPriority.OneMinute;
+            }
+
 			public NightSightTimer( Mobile owner ) : base( TimeSpan.FromMinutes( Utility.Random( 15, 25 ) ) )
 			{
 				m_Owner = owner;
