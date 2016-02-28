@@ -8,6 +8,7 @@ using Server.Network;
 
 using Server.Spells;
 using Server.Commands;
+using Server.Mobiles.GuardsVersion2;
 
 
 namespace Server.SkillHandlers
@@ -180,6 +181,7 @@ namespace Server.SkillHandlers
 
 						if ( stolen != null )
 						{
+                            GuardVer2.CheckOnSteal(m_Thief);
 							m_Thief.SendLocalizedMessage( 502724 ); // You succesfully steal the item.
 
 							if ( si != null )

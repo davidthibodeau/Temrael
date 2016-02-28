@@ -9,6 +9,7 @@ using System.Text;
 using Server.TechniquesCombat;
 using Server.Engines.Durability;
 using Server.Spells.TechniquesCombat;
+using Server.Mobiles.GuardsVersion2;
 
 namespace Server.Engines.Combat
 {
@@ -29,6 +30,8 @@ namespace Server.Engines.Combat
         /// <returns>Le délai nécessaire avant de pouvoir porter le prochain coup.</returns>
         public int Sequence(Mobile atk, Mobile def)
         {
+            GuardVer2.CheckOnHit(atk); // La séquence est activée seulement si le joueur attaquant est "InRange" du défenseur. Donc le warmode ne trigger pas le OnHit.
+
             if (!BandageContext.IsHealingSelf(atk))
             {
                 if (Toucher(atk, def))

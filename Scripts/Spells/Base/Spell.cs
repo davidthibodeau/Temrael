@@ -11,6 +11,7 @@ using Server.Engines.Equitation;
 using Server.Engines.Combat;
 using Server.Spells.TechniquesCombat;
 using Server.Misc.PVP;
+using Server.Mobiles.GuardsVersion2;
 
 //Adjuration
 
@@ -686,6 +687,7 @@ namespace Server.Spells
 			}
 			else if ( Caster.CanBeHarmful( target ) && CheckSequence() )
 			{
+                GuardVer2.CheckOnHSpell(Caster);
 				Caster.DoHarmful( target );
 				return true;
 			}

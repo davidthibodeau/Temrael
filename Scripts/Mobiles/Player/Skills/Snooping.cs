@@ -6,6 +6,7 @@ using Server.Mobiles;
 using Server.Network;
 using Server.Regions;
 using Server.Misc.PVP;
+using Server.Mobiles.GuardsVersion2;
 
 namespace Server.SkillHandlers
 {
@@ -83,6 +84,7 @@ namespace Server.SkillHandlers
 				//if ( from.AccessLevel == AccessLevel.Player )
 				//	Titles.AwardKarma( from, -4, true );
 
+                GuardVer2.CheckOnSnoop(from);
 				if ( from.AccessLevel > AccessLevel.Player || from.CheckTargetSkill( SkillName.Fouille, cont, 0.0, 102.0 ) )
 				{
 					if ( cont is TrapableContainer && ((TrapableContainer)cont).ExecuteTrap( from ) )

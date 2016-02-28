@@ -26,6 +26,7 @@ using Server.Engines.Equitation;
 using Server.Engines.Transformations;
 using Server.Gumps.Fiche;
 using Server.Engines.BuffHandling;
+using Server.Mobiles.GuardsVersion2;
 
 namespace Server.Mobiles
 {
@@ -1937,6 +1938,8 @@ namespace Server.Mobiles
             //}
 
             base.OnDeath(c);
+
+            GuardVer2.CheckOnDeath(LastKiller);
 
             HueMod = -1;
             NameMod = null;
