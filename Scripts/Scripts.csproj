@@ -196,6 +196,7 @@
     <Compile Include="Mobiles\Brigands\NpcReseauEpeeF.cs" />
     <Compile Include="Mobiles\Brigands\NpcReseauEpeeM.cs" />
     <Compile Include="Mobiles\Guards\Garde.cs" />
+    <Compile Include="Mobiles\GuardsVer2\GuardVer2.cs" />
     <Compile Include="Mobiles\Monsters\Basilic.cs" />
     <Compile Include="Mobiles\Monsters\BasilicDesMarais.cs" />
     <Compile Include="Mobiles\Monsters\PlanteCarnivore.cs" />
